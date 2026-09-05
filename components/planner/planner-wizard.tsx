@@ -164,6 +164,46 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     date: date ?? undefined,
     enabled: open && step === 'date' && Boolean(park && date),
   });
+  /**
+   * The park's photograph, held for as long as the park is the park.
+   *
+   * `parkBackgroundImage` rides on the `/plan/day` payload and is a property of
+   * the PARK — the same file for every date it is ever asked about. The query
+   * it rides on is keyed by the DATE though, so every arrow press in the
+   * calendar starts a new one, `planDay.data` is `undefined` for as long as
+   * that is in flight, and the band fell back to its no-photo state and faded
+   * the same picture back in on arrival: a photograph blinking once per press,
+   * on the one screen whose whole job is pressing them. A day the park is shut
+   * did it for good — `/plan/day` answers 404 there and the hook resolves that
+   * to `null`, so the picture left and did not come back, on a step where the
+   * park has not changed and the picture is a statement about the park.
+   *
+   * The slug travels with the photo, so there is nothing here to clear: a
+   * picture remembered for another park is simply not this park's, and the read
+   * below says so. That is also what makes going back to the search and picking
+   * a second park safe without an effect watching for it.
+   *
+   * **Adjusted during render rather than in an effect**, which is the shape
+   * React documents for holding a value across a prop change and the shape this
+   * codebase is held to anyway (`react-hooks/set-state-in-effect`). It is also
+   * the better of the two here: an effect would commit the photo one render
+   * late, which is a frame of the no-photo state on the way IN as well.
+   *
+   * The search path never comes through here — a hit carries its own
+   * `imageUrl`, and {@link WizardHero} prefers it.
+   */
+  const [parkPhoto, setParkPhoto] = useState<{
+    slug: string;
+    src: string;
+    position?: string;
+  } | null>(null);
+  const parkSlug = park?.slug;
+  const dayPhoto = planDay.data?.parkBackgroundImage;
+  const dayPhotoPosition = planDay.data?.parkBackgroundPosition;
+  if (parkSlug && dayPhoto && (parkPhoto?.slug !== parkSlug || parkPhoto.src !== dayPhoto)) {
+    setParkPhoto({ slug: parkSlug, src: dayPhoto, position: dayPhotoPosition });
+  }
+  const heldPhoto = parkSlug && parkPhoto?.slug === parkSlug ? parkPhoto : null;
   // The park's own zone where the forecast has arrived, the reader's until then.
   // Never a constant: `todayInZone` names that fallback and is the only door to it.
   const today = todayInZone(facts.timezone ?? park?.timezone);
@@ -320,9 +360,10 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
              the search — „+ Weiterer Tag", the panel's „+", the in-park CTA —
              where the park comes out of the plan and a plan stores slugs rather
              than asset URLs. It is the same photograph, from a payload this
-             dialog already fetches. */
-          dayPhoto={planDay.data?.parkBackgroundImage ?? null}
-          dayPhotoPosition={planDay.data?.parkBackgroundPosition}
+             dialog already fetches — held per park rather than read off the
+             current answer, see `parkPhoto`. */
+          dayPhoto={heldPhoto?.src ?? null}
+          dayPhotoPosition={heldPhoto?.position}
         />
         <WizardRail steps={steps} current={index} onJump={(to) => goTo(steps[to])} />
 
@@ -542,7 +583,9 @@ const STEP_MOTION: Record<string, string> = {
  * the date step's hours and weather, and which the panel behind it already
  * paints. So the picture arrives with the day rather than with the park on those
  * paths — one beat later, in the same fixed-height band, and never a request
- * that was not already being made.
+ * that was not already being made. Once, though: `parkPhoto` in the dialog
+ * above holds it for the park, so walking the calendar does not take it away
+ * and hand it back per press.
  *
  * The client-safe media manifest (`@/lib/media/hero`, 21 KB) is still not used
  * and is now not needed: it holds a picture for eight of 212 parks, and the

@@ -28,6 +28,7 @@ import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
 import { maxColumnsFor, plannerSecondColumn } from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
+import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -222,12 +223,72 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const unplannedPagePark =
     pagePark && !(activeParkSlug === pagePark.slug && activeDate) ? pagePark : null;
 
+  /**
+   * The photograph behind the panel, if the media database has one.
+   *
+   * Source and focal point travel as a PAIR: a `src` from `/plan/day` under a
+   * `position` from the page beacon would crop one park's picture to another
+   * park's curated point, and the two are separate fields with nothing
+   * connecting them.
+   *
+   * The second branch is what changed. While the plan's park IS the page's park
+   * — the ordinary case, since a day is usually started from the park's own
+   * page — its picture is already here on the beacon, out of the same media
+   * database `/plan/day` reads. Waiting for the query to say so opened the panel
+   * on the drawn ground and swapped the photo in a moment later, and where
+   * `/plan/day` 404s (it still does until the backend ships) the swap never came
+   * at all. A DIFFERENT park is unchanged and still shows no photo until its own
+   * answer arrives, which is the rule this branch was written for: a day whose
+   * query is in flight must not briefly show another park's façade.
+   */
+  const samePark = pagePark && pagePark.slug === activeParkSlug ? pagePark : null;
+  const panelPhoto = !activeParkSlug
+    ? { src: pagePark?.backgroundImage, position: pagePark?.backgroundPosition }
+    : day?.parkBackgroundImage
+      ? { src: day.parkBackgroundImage, position: day.parkBackgroundPosition }
+      : { src: samePark?.backgroundImage, position: samePark?.backgroundPosition };
+
   /** Starts the wizard on the CALENDAR — which park is settled by the route. */
   const startPagePark = useCallback(() => {
     if (!unplannedPagePark) return;
     setWizardPark({ ...unplannedPagePark });
     setWizardOpen(true);
   }, [unplannedPagePark]);
+
+  /**
+   * The park page's own button, answered.
+   *
+   * `ParkPlannerLink` in the park header asks for the panel AND for the wizard
+   * on the park the route is about — `plannerUi.requestOpen('page-park-wizard')`
+   * — and until this it only got the first half: the panel opened on whatever
+   * it had been showing, with „Tag im Phantasialand planen" as a second button
+   * inside it. The panel is the only place that can answer, because
+   * `startPagePark` is the action and it reads the beacon, the plan and the
+   * columns to decide what „this park, unplanned" means.
+   *
+   * The counter is compared against the last one SEEN rather than against zero,
+   * for the same reason `PlannerLauncher` does it: a second press after the
+   * reader has closed the panel is a second event, and a boolean would collapse
+   * the two. `useRef(0)` is what makes the first press work at all — the panel
+   * is lazily mounted, so on a page that has never opened it this effect first
+   * runs with the counter already at 1, which is the press that mounted it.
+   *
+   * It is the store's WIZARD counter, so a plain `requestOpen()` from the park
+   * calendar or a ride button never reaches here at all — see
+   * `plannerUi.getWizardSnapshot`, which explains why that question is answered
+   * by a second subscription rather than by an intent read inside this effect.
+   */
+  const wizardRequests = useSyncExternalStore(
+    plannerUi.subscribe,
+    plannerUi.getWizardSnapshot,
+    plannerUi.getWizardServerSnapshot
+  );
+  const lastWizardRequest = useRef(0);
+  useEffect(() => {
+    if (wizardRequests === lastWizardRequest.current) return;
+    lastWizardRequest.current = wizardRequests;
+    startPagePark();
+  }, [wizardRequests, startPagePark]);
 
   /**
    * A block the visitor writes themselves — a lunch break, a show, a meeting
@@ -414,15 +475,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             the one screen that has to say what this thing is for, was the one
             screen with no park in it. Branching on the ACTIVE park rather than
             falling back per field, so a day whose query is still in flight
-            shows nothing rather than briefly showing a different park. */}
-        <PlannerPanelPhoto
-          src={activeParkSlug ? day?.parkBackgroundImage : pagePark?.backgroundImage}
-          position={
-            activeParkSlug
-              ? day?.parkBackgroundPosition
-              : (pagePark?.backgroundPosition ?? undefined)
-          }
-        />
+            shows nothing rather than briefly showing a different park.
+
+            Nothing at all is now a drawn ground rather than a black rectangle —
+            see `PlannerPanelPhoto`, which is where the 9-of-212 count that
+            makes that the normal case is written down. */}
+        <PlannerPanelPhoto src={panelPhoto.src} position={panelPhoto.position} />
 
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a

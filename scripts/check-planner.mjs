@@ -331,6 +331,16 @@ const browser = await chromium.launch(
 );
 
 const consoleErrors = [];
+/**
+ * Pages that ask `/plan/day` for a 404 ON PURPOSE.
+ *
+ * The waiver below covers the run's own stubbed pages, and only while the
+ * backend is not answering (`!live`). One check needs the opposite: it routes a
+ * 404 deliberately, to see what the wizard's photo band does when a day has no
+ * answer — and the browser logs a failed resource for it either way. Keyed by
+ * the page, so the waiver stops at that flow instead of covering the run.
+ */
+const allowPlanDay404 = new Set();
 const noteErrors = (page) =>
   page.on('console', async (msg) => {
     // ARGUMENTS, not just `msg.text()`. The text is the FORMATTED message, and
@@ -357,6 +367,8 @@ const noteErrors = (page) =>
     if (msg.type() !== 'error' && !/MISSING_MESSAGE/.test(text)) return;
     // The one 404 the probe above already established. Everything else counts.
     if (!live && /404/.test(text) && /plan\/day|Failed to load resource/.test(text)) return;
+    // …and the one a check asks for itself — see {@link allowPlanDay404}.
+    if (allowPlanDay404.has(page) && /404|Failed to load resource/.test(text)) return;
     // WHERE it happened, because this array is fed by every page in the run —
     // desktop, phone, the stubbed grid, the drag pair, the locale sweep — and a
     // failure that only prints the message sends the next reader hunting
@@ -4466,6 +4478,170 @@ if (reachable) {
   );
 
   await phone.close();
+}
+
+// ---------------------------------------------------------------------------
+// The park header's button, and the photograph it opens the wizard on.
+//
+// Two halves of one press. `ParkPlannerLink` cancels its own navigation and
+// asks `plannerUi` for the panel AND the wizard; the panel is the only place
+// that can answer, because the action reads the page beacon to decide which
+// park "this one, unplanned" is. Half of that shipped once with nothing reading
+// the request, so the press opened a panel with a second button in it.
+//
+// The photo is the other report. `parkBackgroundImage` is a property of the
+// PARK and rides on a payload keyed by the DATE, so every arrow press in the
+// calendar emptied `planDay.data` for as long as the next answer was in flight
+// and the band fell back to its no-photo state — a photograph blinking once per
+// press, on the screen whose whole job is pressing them. The mock below holds
+// each answer for 700 ms on purpose: that window IS the bug, and without it the
+// old code would pass.
+{
+  const wiz = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(wiz);
+
+  const PARK_PHOTO = '/media/phantasialand/taron.jpg?v=04eb2f11';
+  /** Days off {@link DATE} by string arithmetic — see the note on `NEXT_DATE`. */
+  const dayFrom = (offset) =>
+    new Date(new Date(`${DATE}T12:00:00Z`).getTime() + offset * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+
+  let planDayCalls = 0;
+  await wiz.route('**/plan/day**', async (route) => {
+    planDayCalls += 1;
+    const date = new URL(route.request().url()).searchParams.get('date') ?? DATE;
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        parkName: PARK.name,
+        timezone: 'Europe/Berlin',
+        parkBackgroundImage: PARK_PHOTO,
+        parkBackgroundPosition: '50% 30%',
+        context: {
+          date,
+          status: 'OPERATING',
+          openHour: 9,
+          closeHour: 18,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
+        rides: [],
+      }),
+    });
+  });
+
+  const parkUrl = `${BASE}/de/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}`;
+  await wiz.goto(parkUrl, { waitUntil: 'networkidle' });
+
+  const link = wiz.locator('[data-park-planner-link]');
+  check('der Parkkopf trägt den Planer-Knopf', (await link.count()) === 1);
+
+  await link.first().click();
+  await wiz.waitForTimeout(1500);
+
+  check('und der Klick navigiert nicht weg', wiz.url().startsWith(parkUrl), wiz.url());
+
+  // The PANEL is a dialog too. The wizard is the one holding the month grid,
+  // which is also the assertion that the press landed on the date step rather
+  // than on the park search.
+  const wizard = wiz
+    .locator('[role="dialog"]')
+    .filter({ has: wiz.locator('[data-planner-day]') })
+    .first();
+  check('er öffnet den Assistenten auf der Tagesauswahl', (await wizard.count()) === 1);
+
+  const heroTitle =
+    (await wizard.locator('[data-slot="dialog-title"], h2').first().textContent()) ?? '';
+  check('auf dem Park, um den es auf der Seite geht', heroTitle.includes(PARK.name), heroTitle);
+
+  await wizard.locator(`button[data-planner-day="${dayFrom(1)}"]`).click();
+  await wizard
+    .locator('img')
+    .first()
+    .waitFor({ state: 'attached', timeout: 8000 })
+    .catch(() => {});
+  await wiz.waitForTimeout(400);
+  const firstSrc = await wizard
+    .locator('img')
+    .first()
+    .getAttribute('src')
+    .catch(() => null);
+  check(
+    'nach der ersten Tageswahl steht das Foto des Parks im Kopf',
+    Boolean(firstSrc && firstSrc.includes('taron')),
+    String(firstSrc).slice(0, 56)
+  );
+
+  // Walk three more days, sampling the band the whole way. The samples fall
+  // INSIDE the 700 ms each answer is held for, which is where the picture used
+  // to be gone.
+  const samples = [];
+  const sampler = setInterval(async () => {
+    try {
+      samples.push(await wizard.locator('img').count());
+    } catch {
+      /* the dialog is mid-render — not a reading */
+    }
+  }, 40);
+  const before = planDayCalls;
+  for (const offset of [2, 3, 4]) {
+    await wizard.locator(`button[data-planner-day="${dayFrom(offset)}"]`).click();
+    await wiz.waitForTimeout(350);
+  }
+  await wiz.waitForTimeout(1500);
+  clearInterval(sampler);
+
+  check(
+    'jeder Tageswechsel fragt den Tag neu an',
+    planDayCalls - before >= 3,
+    `${before} → ${planDayCalls}`
+  );
+  const missing = samples.filter((count) => count === 0).length;
+  check(
+    'und das Foto verschwindet dabei in keiner Messung',
+    samples.length > 20 && missing === 0,
+    `${samples.length} Messungen, ${missing} ohne Bild`
+  );
+  const lastSrc = await wizard
+    .locator('img')
+    .first()
+    .getAttribute('src')
+    .catch(() => null);
+  check('es ist dieselbe Datei geblieben', lastSrc === firstSrc, `${firstSrc} → ${lastSrc}`);
+
+  // A day the park is shut answers 404, which the hook resolves to `null`. That
+  // is a statement about the day, never about the park's photograph.
+  allowPlanDay404.add(wiz);
+  await wiz.route('**/plan/day**', (route) => route.fulfill({ status: 404, body: '' }));
+  const shut = [];
+  const sampler2 = setInterval(async () => {
+    try {
+      shut.push(await wizard.locator('img').count());
+    } catch {
+      /* mid-render */
+    }
+  }, 40);
+  await wizard.locator(`button[data-planner-day="${dayFrom(5)}"]`).click();
+  await wiz.waitForTimeout(1200);
+  clearInterval(sampler2);
+  check(
+    'und ein Tag ohne Antwort nimmt es auch nicht weg',
+    shut.length > 10 && shut.filter((count) => count === 0).length === 0,
+    `${shut.length} Messungen, ${shut.filter((count) => count === 0).length} ohne Bild`
+  );
+
+  await wiz.close();
 }
 
 check(

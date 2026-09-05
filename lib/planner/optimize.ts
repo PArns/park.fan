@@ -14,19 +14,62 @@ import type { PlannerDayPrefs, PlannerEntry } from './types';
  *
  * ## What is being minimised
  *
- * Three things, lexicographically, and the order between them is the whole
- * design:
+ * Two things, lexicographically, and then a tie-break:
  *
  * 1. **Rides that do not fit before the park closes.** A plan with one ride
  *    fewer that actually happens beats a plan with one more that does not.
- * 2. **Total minutes queued.** This is what a visitor feels and what they asked
- *    for.
- * 3. **The clock at which the last queue is joined.** Between two plans that
- *    cost the same, the one that leaves the evening free wins.
+ * 2. **What the day costs**, which is queued minutes plus idle minutes at
+ *    {@link IDLE_WEIGHT}:
  *
- * There is no tunable weight anywhere in that, on purpose: a λ balancing "queue
- * minutes" against "hanging about" would be a number nobody could defend, and
- * the first person to disagree with it would be right.
+ *        cost = Σ wait + IDLE_WEIGHT × Σ idle
+ *
+ *    Idle is the standing about between two stops that this file DECIDED on,
+ *    which is not the same as every minute somebody is not in a queue — the
+ *    walk in from the gates and the rounding to the quarter hour are neither of
+ *    them a choice. {@link idleFor} draws that line and says what each half of
+ *    it cost when it was drawn somewhere else.
+ * 3. **The moment the last queue is left**, and only to settle a tie. Two plans
+ *    that cost the same differ to a visitor in one thing, which is that one of
+ *    them hands the evening back.
+ *
+ * ## The weight is real, and this file denied it twice
+ *
+ * Two versions of this docstring claimed in as many words that the ordering
+ * needed no weight — one with queued minutes above the clock, one with the
+ * clock above queued minutes — and each broke on the case the other got right.
+ * Both cases are real and both are in `scripts/test-planner-optimize.mjs`.
+ *
+ * **Phantasialand, Sunday 2026-09-06, reported from production** (§17). Crazy
+ * Bats frees the visitor at 12:05, Taron is 355 m away — a 15-minute transfer,
+ * so the earliest slot is 12:30 — and costs 55 minutes at 12:30 or 50 at 13:00:
+ *
+ *     A  queue at 12:30    55 queued    0 idle   done 13:25
+ *     B  queue at 13:00    50 queued   30 idle   done 13:50
+ *
+ * Queued minutes ranked first takes **B**: five minutes less queueing, bought
+ * with forty minutes of standing about — thirty of them past the first slot the
+ * grid offers, which is the part a plan is charged for — and a day that ends
+ * twenty-five minutes later. Nobody wants that trade. Both of the orders that
+ * shipped answered this day with "already in the right order", which is the
+ * shape the report arrived in.
+ *
+ * **A queue that collapses at 11:00** (§11). One ride costing 90 minutes before
+ * 11:00 and 20 after it, plus a ten-minute filler:
+ *
+ *     A  filler, then queue at once   100 queued    0 idle   done 11:15
+ *     B  filler, then wait for 11:00    30 queued   75 idle   done 11:20
+ *
+ * The clock ranked first takes **A**: seventy minutes of extra queueing to be
+ * finished five minutes sooner. Nobody wants that one either — and no
+ * lexicographic order over the two can refuse both, because whichever of them
+ * goes first decides one of these cases wrongly.
+ *
+ * So there is an exchange rate, it is {@link IDLE_WEIGHT}, and the two cases
+ * bracket it: the first needs **k > 1/6** (five queued minutes may not buy
+ * thirty idle ones) and the second **k < 14/15** (seventy queued minutes must
+ * outweigh seventy-five idle ones). Both bounds are arithmetic on the figures
+ * above; 0.5 sits between them with room on either side, and anything strictly
+ * inside the bracket plans both days the way a visitor would.
  *
  * ## The schedule is contiguous, and that is what makes the search finite
  *
@@ -35,16 +78,17 @@ import type { PlannerDayPrefs, PlannerEntry } from './types';
  * ORDER — the clock follows from it — and the search is over permutations
  * rather than over (permutation × start times).
  *
- * The one exception is a deliberate delay, and it needs no weight either.
- * Idling for `d` minutes and then queueing `w(t+d)` costs `w(t+d)` queued
- * minutes and leaves the visitor free at `t + d + w(t+d)`, so a delay trades
- * the second thing on that list against the third — and the list is what
- * settles it, rather than a second rule invented for the occasion.
+ * The one exception is a deliberate delay, and it is the whole reason there is
+ * an exchange rate. Idling for `d` minutes and then queueing `w(t+d)` costs
+ * `w(t+d) + IDLE_WEIGHT × d` and leaves the visitor free at `t + d + w(t+d)`,
+ * so a delay buys queued minutes with idle ones at a price — which is a
+ * question with an answer, where "is it worth it" against a lexicographic order
+ * was a question with two.
  *
- * Which is why {@link placementsFor} hands back the PARETO FRONT over (queued
- * minutes, the clock) among the delay candidates rather than one winner. It
- * used to return the option that left the visitor free soonest, i.e. the third
- * criterion standing in for the second, and the two disagree: a ride costing 90
+ * Which is why {@link placementsFor} hands back the PARETO FRONT over (cost,
+ * the clock) among the delay candidates rather than one winner. It used to
+ * return the option that left the visitor free soonest, i.e. the tie-break
+ * standing in for the objective, and the two disagree: a ride costing 90
  * minutes before 11:00 and 20 after it was queued for at 09:45 because that
  * finished at 11:25 against 11:20. The plan a visitor would actually make —
  * fill the gap, ride it at 11:00, 70 minutes cheaper and five minutes later —
@@ -52,8 +96,8 @@ import type { PlannerDayPrefs, PlannerEntry } from './types';
  * reach it and the brute-force test could not see it missing either.
  *
  * The front is at most nine options wide ({@link MAX_DELAY_MIN} over 15-minute
- * steps) and is usually one or two: an equal wait later is dominated, so only a
- * FALLING queue buys an entry. `scheduleOrder` walks those fronts with a small
+ * steps) and is usually one or two: a later start pays idle for the privilege,
+ * so only a queue that falls by more than the delay's own price buys an entry. `scheduleOrder` walks those fronts with a small
  * forward pass and keeps the completions that are not dominated, which is what
  * makes the choice of delay part of the plan rather than a fact about it.
  *
@@ -87,12 +131,47 @@ import type { PlannerDayPrefs, PlannerEntry } from './types';
  * had to pay for itself on the CLOCK, anything longer than the longest queue
  * this app has ever seen could not: `d + w(t+d) < w(t)` was arithmetic with a
  * known answer past 120 minutes, and the extra candidates were free to leave
- * out. Weighed on queued minutes a longer delay can keep buying, so the ceiling
- * is now a judgement about the visitor rather than about the arithmetic — two
- * hours of standing about is the most this will ever propose, and past that it
- * stops being a plan somebody would follow.
+ * out. Priced at {@link IDLE_WEIGHT} a delay keeps buying for as long as it
+ * saves more than half its own length in queue, so a 180-minute collapse would
+ * justify six hours of it and the arithmetic stops deciding. The ceiling is a
+ * judgement about the visitor instead: two hours of standing about is the most
+ * this will ever propose, and past that it stops being a plan somebody would
+ * follow.
  */
 export const MAX_DELAY_MIN = 120;
+
+/**
+ * What a minute of standing about costs, measured in minutes of queueing.
+ *
+ * Half, and the sentence to disagree with is this one: a minute somebody is not
+ * queueing is a minute they still have — a coffee, a show, the walk over to the
+ * next land — so it is worth something, and it is worth less than a minute
+ * handed to a queue. Anybody who thinks their idle hour in a theme park is
+ * worth as much as an hour in line should raise it; anybody who would stand
+ * about all afternoon to shave five minutes off a queue should lower it.
+ *
+ * It is a judgement, but it is not a free one: the two cases in the module
+ * docstring bracket it at **1/6 < k < 14/15**, and everything strictly inside
+ * that range plans both of them the way a visitor would. 0.5 is roughly the
+ * middle of it on a log scale and is a number somebody can say out loud.
+ *
+ * Changing it changes plans, so it is exported: the tests read it rather than
+ * writing 0.5 down a second time, which is what keeps the brute-force
+ * comparison in `scripts/test-planner-optimize.mjs` measuring the same thing
+ * {@link better} does.
+ */
+export const IDLE_WEIGHT = 0.5;
+
+/**
+ * The one number every comparison in this file is made of.
+ *
+ * Not rounded, and that matters: at {@link IDLE_WEIGHT} a cost lands on halves,
+ * and rounding them away would collapse exactly the differences a delay of one
+ * SNAP_MIN_FINE step is decided by.
+ */
+function planCost(waitMinutes: number, idleMinutes: number): number {
+  return waitMinutes + IDLE_WEIGHT * idleMinutes;
+}
 
 /**
  * How many partial plans the search carries forward at each step.
@@ -125,11 +204,12 @@ export const BEAM_WIDTH = 192;
  * Labels kept per (visited set, last ride).
  *
  * Two partial plans over the same rides ending on the same ride are only
- * comparable where one is worse at BOTH things that matter — queued minutes and
- * the clock — so the beam keeps a small Pareto front instead of the single best.
- * Dropping to one label costs real plans: a prefix half an hour ahead on the
- * clock is often worth five minutes more queueing, and it is the one that fits
- * the last headliner in before closing.
+ * comparable where one is worse at BOTH things that matter — see
+ * {@link dominates} for what those are now that idle is priced — so the beam
+ * keeps a small Pareto front instead of the single best. Dropping to one label
+ * costs real plans: a prefix half an hour ahead on the clock is often worth
+ * five minutes more queueing, and it is the one that fits the last headliner in
+ * before closing.
  */
 const LABELS_PER_KEY = 4;
 
@@ -162,6 +242,15 @@ export interface OptimizedPlan {
   stops: OptimizeStop[];
   /** Minutes queued across every stop that has a figure. */
   totalWaitMinutes: number;
+  /**
+   * Minutes spent standing about between stops — the plan's holes, added up.
+   *
+   * Reported because it is the thing that went wrong: a plan is chosen on
+   * `wait + IDLE_WEIGHT × idle` (see {@link IDLE_WEIGHT}) and a caller that can
+   * only see the queue total cannot tell a day that was tidied up from a day
+   * that had forty minutes of nothing sewn into it.
+   */
+  idleMinutes: number;
   /** When the last queue is left, in park-local minutes. */
   endMinute: number;
   /** Stops that do not fit before the park closes. */
@@ -431,15 +520,24 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
 
   // `fits` needs no dimension of its own: it is `freeAt <= closeMin`, so an
   // option that beats another on the clock already fits at least as well.
+  //
+  // The cost a delay is judged on is the queue PLUS what the delay itself costs
+  // at IDLE_WEIGHT. Measured from `first`, which is common to every option here
+  // and therefore cancels in the comparison — the true idle depends on where the
+  // stop before ended and is added by the callers, which is the only place that
+  // knows it. Ranking the front on the bare queue instead would keep an option
+  // that is cheaper by a minute and half an hour later, i.e. exactly the trade
+  // the module docstring exists to refuse.
+  const costOf = (option: Placement) => planCost(waitCost(option), option.startMinute - first);
   options.sort(
-    (a, b) => a.freeAt - b.freeAt || waitCost(a) - waitCost(b) || a.startMinute - b.startMinute
+    (a, b) => a.freeAt - b.freeAt || costOf(a) - costOf(b) || a.startMinute - b.startMinute
   );
   const front: Placement[] = [];
   let cheapest = Infinity;
   for (const option of options) {
-    const wait = waitCost(option);
-    if (wait >= cheapest) continue;
-    cheapest = wait;
+    const cost = costOf(option);
+    if (cost >= cheapest) continue;
+    cheapest = cost;
     front.push(option);
   }
   return front;
@@ -455,6 +553,66 @@ function waitCost(placement: Placement): number {
   return placement.waitMinutes ?? 0;
 }
 
+/**
+ * The earliest minute a stop could be filed at, walk and opening included.
+ *
+ * One function because two things need the same answer and must not drift: the
+ * placement front starts here, and {@link idleFor} measures the standing about
+ * a plan CHOSE against it.
+ */
+function earliestStart(
+  ctx: Context,
+  index: number,
+  freeBefore: number | null,
+  transferMinutes: number
+): number {
+  const candidate = ctx.candidates[index];
+  const earliest = freeBefore === null ? ctx.grid.openMin : freeBefore + transferMinutes;
+  return snapUp(Math.max(earliest, candidate.floorMin), SNAP_MIN_FINE);
+}
+
+/**
+ * The standing about one stop adds — the part of it this file decided on.
+ *
+ * Two things are deliberately NOT in it, and each of them was a wrong plan
+ * before it was a paragraph.
+ *
+ * **The way in.** For the first stop the charge runs from
+ * {@link earliestStart}, not from the park's opening, so the walk from the
+ * gates and a ride that does not run before eleven cost nothing: when somebody
+ * arrives is not a decision this makes. But the DELAY past that minute is one,
+ * and leaving it out gave the whole morning away for free — a queue collapsing
+ * at 11:00 was ridden at 11:00 as the FIRST stop, with the ten-minute filler
+ * that fits in front of it moved behind it, because idling from 09:15 to 11:00
+ * cost nothing while riding the filler cost ten minutes of queue. Same plan,
+ * half an hour longer, and only the first stop of a day is ever mispriced this
+ * way, which is what makes it easy to miss.
+ *
+ * **The quarter-hour grid.** The base is the arrival snapped UP, so the ≤14
+ * minutes between getting somewhere and the next slot on the grid are not
+ * charged to the plan that got there. They are real minutes and they are not a
+ * choice — every start in this app sits on a quarter hour — and pricing them
+ * pays a plan for arriving at an awkward minute: on a park of thirty identical
+ * rides in a row, a route walking eight minutes between them collected seven
+ * minutes of rounding per stop while a route walking thirty minutes collected
+ * none, so the cheaper plan was the one that crossed the park between every
+ * ride, and the beam pruned the compact prefixes away long before the last ride
+ * failed to fit.
+ */
+function idleFor(
+  ctx: Context,
+  index: number,
+  freeBefore: number | null,
+  transferMinutes: number,
+  startMinute: number
+): number {
+  const base =
+    freeBefore === null
+      ? earliestStart(ctx, index, null, 0)
+      : snapUp(freeBefore + transferMinutes, SNAP_MIN_FINE);
+  return Math.max(0, startMinute - base);
+}
+
 /** {@link placementsFrom}, addressed by the state the search is actually in. */
 function placementsFor(
   ctx: Context,
@@ -463,8 +621,7 @@ function placementsFor(
   transferMinutes: number
 ): Placement[] {
   const candidate = ctx.candidates[index];
-  const earliest = freeBefore === null ? ctx.grid.openMin : freeBefore + transferMinutes;
-  const first = snapUp(Math.max(earliest, candidate.floorMin), SNAP_MIN_FINE);
+  const first = earliestStart(ctx, index, freeBefore, transferMinutes);
 
   if (first >= FRONT_KEY_STRIDE) return placementsFrom(ctx, candidate, first);
 
@@ -479,6 +636,7 @@ function placementsFor(
 interface Scored {
   stops: OptimizeStop[];
   totalWaitMinutes: number;
+  idleMinutes: number;
   endMinute: number;
   overflow: number;
 }
@@ -499,6 +657,7 @@ const SCHEDULE_STATES = 4;
 interface PartialSchedule {
   stops: OptimizeStop[];
   totalWaitMinutes: number;
+  idleMinutes: number;
   overflow: number;
   /** When the visitor is free after the last stop. `null` before the first. */
   freeAt: number | null;
@@ -506,7 +665,9 @@ interface PartialSchedule {
 
 function comparePartials(a: PartialSchedule, b: PartialSchedule): number {
   if (a.overflow !== b.overflow) return a.overflow - b.overflow;
-  if (a.totalWaitMinutes !== b.totalWaitMinutes) return a.totalWaitMinutes - b.totalWaitMinutes;
+  const aCost = planCost(a.totalWaitMinutes, a.idleMinutes);
+  const bCost = planCost(b.totalWaitMinutes, b.idleMinutes);
+  if (aCost !== bCost) return aCost - bCost;
   const aFree = a.freeAt ?? 0;
   const bFree = b.freeAt ?? 0;
   if (aFree !== bFree) return aFree - bFree;
@@ -517,13 +678,55 @@ function comparePartials(a: PartialSchedule, b: PartialSchedule): number {
 }
 
 function partialDominates(a: PartialSchedule, b: PartialSchedule): boolean {
-  const aFree = a.freeAt ?? 0;
-  const bFree = b.freeAt ?? 0;
+  return schedulingDominates(
+    {
+      overflow: a.overflow,
+      cost: planCost(a.totalWaitMinutes, a.idleMinutes),
+      freeAt: a.freeAt ?? 0,
+    },
+    {
+      overflow: b.overflow,
+      cost: planCost(b.totalWaitMinutes, b.idleMinutes),
+      freeAt: b.freeAt ?? 0,
+    }
+  );
+}
+
+/** What dominance is decided on, whichever of the two searches is asking. */
+interface Frontier {
+  overflow: number;
+  cost: number;
+  freeAt: number;
+}
+
+/**
+ * Whether `a` can be kept and `b` thrown away.
+ *
+ * Three quantities, and the third one is where pricing idle changed the answer.
+ * Overflow and cost are obvious. The clock is a dimension of its own because a
+ * state that is free earlier can reach starts a later one cannot, so it is
+ * never merely a worse version of it.
+ *
+ * The subtle half: cost is NOT comparable across two different clocks. Both
+ * states go on to the same remaining rides, and if `a` is free earlier and then
+ * schedules them exactly where `b` did, it stands about for the difference —
+ * `IDLE_WEIGHT` per minute of it. So being free earlier is not free, and the
+ * quantity that survives a continuation is the cost with that charge already
+ * netted out, `cost − IDLE_WEIGHT × freeAt`, which is what is compared here.
+ *
+ * Comparing raw costs instead would discard a state that is behind on the clock
+ * and ahead on the very idle it is about to be excused — the plan the whole
+ * exchange rate exists to keep. It costs nothing to be right about: the
+ * survivors are capped by {@link LABELS_PER_KEY} either way.
+ */
+function schedulingDominates(a: Frontier, b: Frontier): boolean {
+  const aNet = a.cost - IDLE_WEIGHT * a.freeAt;
+  const bNet = b.cost - IDLE_WEIGHT * b.freeAt;
   return (
     a.overflow <= b.overflow &&
-    a.totalWaitMinutes <= b.totalWaitMinutes &&
-    aFree <= bFree &&
-    (a.overflow < b.overflow || a.totalWaitMinutes < b.totalWaitMinutes || aFree < bFree)
+    aNet <= bNet &&
+    a.freeAt <= b.freeAt &&
+    (a.overflow < b.overflow || aNet < bNet || a.freeAt < b.freeAt)
   );
 }
 
@@ -539,7 +742,9 @@ function partialDominates(a: PartialSchedule, b: PartialSchedule): boolean {
  * what stops the scheduler from having an objective of its own.
  */
 function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
-  let states: PartialSchedule[] = [{ stops: [], totalWaitMinutes: 0, overflow: 0, freeAt: null }];
+  let states: PartialSchedule[] = [
+    { stops: [], totalWaitMinutes: 0, idleMinutes: 0, overflow: 0, freeAt: null },
+  ];
   let previous = -1;
 
   for (const index of order) {
@@ -561,6 +766,8 @@ function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
             },
           ],
           totalWaitMinutes: state.totalWaitMinutes + (placement.waitMinutes ?? 0),
+          idleMinutes:
+            state.idleMinutes + idleFor(ctx, index, state.freeAt, transfer, placement.startMinute),
           overflow: state.overflow + (placement.fits ? 0 : 1),
           freeAt: placement.freeAt,
         });
@@ -581,19 +788,30 @@ function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
   }
 
   const best = states[0];
-  if (!best) return { stops: [], totalWaitMinutes: 0, endMinute: ctx.grid.openMin, overflow: 0 };
+  if (!best) {
+    return {
+      stops: [],
+      totalWaitMinutes: 0,
+      idleMinutes: 0,
+      endMinute: ctx.grid.openMin,
+      overflow: 0,
+    };
+  }
   return {
     stops: best.stops,
     totalWaitMinutes: best.totalWaitMinutes,
+    idleMinutes: best.idleMinutes,
     endMinute: best.freeAt ?? ctx.grid.openMin,
     overflow: best.overflow,
   };
 }
 
-/** Lexicographic: fits first, then queued minutes, then the clock. */
+/** Fits first, then {@link planCost}, then the clock to settle a tie. */
 function better(a: Scored, b: Scored): boolean {
   if (a.overflow !== b.overflow) return a.overflow < b.overflow;
-  if (a.totalWaitMinutes !== b.totalWaitMinutes) return a.totalWaitMinutes < b.totalWaitMinutes;
+  const aCost = planCost(a.totalWaitMinutes, a.idleMinutes);
+  const bCost = planCost(b.totalWaitMinutes, b.idleMinutes);
+  if (aCost !== bCost) return aCost < bCost;
   return a.endMinute < b.endMinute;
 }
 
@@ -603,15 +821,14 @@ interface Label {
   order: number[];
   freeAt: number;
   totalWait: number;
+  totalIdle: number;
   overflow: number;
 }
 
 function dominates(a: Label, b: Label): boolean {
-  return (
-    a.overflow <= b.overflow &&
-    a.totalWait <= b.totalWait &&
-    a.freeAt <= b.freeAt &&
-    (a.overflow < b.overflow || a.totalWait < b.totalWait || a.freeAt < b.freeAt)
+  return schedulingDominates(
+    { overflow: a.overflow, cost: planCost(a.totalWait, a.totalIdle), freeAt: a.freeAt },
+    { overflow: b.overflow, cost: planCost(b.totalWait, b.totalIdle), freeAt: b.freeAt }
   );
 }
 
@@ -627,7 +844,9 @@ function search(ctx: Context, beamWidth: number): number[] {
   const n = ctx.candidates.length;
   if (n === 0) return [];
 
-  let beam: Label[] = [{ placed: 0, last: -1, order: [], freeAt: 0, totalWait: 0, overflow: 0 }];
+  let beam: Label[] = [
+    { placed: 0, last: -1, order: [], freeAt: 0, totalWait: 0, totalIdle: 0, overflow: 0 },
+  ];
 
   for (let step = 0; step < n; step++) {
     const grown: Label[] = [];
@@ -637,18 +856,16 @@ function search(ctx: Context, beamWidth: number): number[] {
         const transfer = label.last < 0 ? 0 : ctx.transfer[label.last][index];
         // Every worthwhile delay for this ride is a branch of its own, so the
         // beam chooses when to queue as well as in which order.
-        for (const placement of placementsFor(
-          ctx,
-          index,
-          label.last < 0 ? null : label.freeAt,
-          transfer
-        )) {
+        const freeBefore = label.last < 0 ? null : label.freeAt;
+        for (const placement of placementsFor(ctx, index, freeBefore, transfer)) {
           grown.push({
             placed: label.placed | (1 << index),
             last: index,
             order: [...label.order, index],
             freeAt: placement.freeAt,
             totalWait: label.totalWait + (placement.waitMinutes ?? 0),
+            totalIdle:
+              label.totalIdle + idleFor(ctx, index, freeBefore, transfer, placement.startMinute),
             overflow: label.overflow + (placement.fits ? 0 : 1),
           });
         }
@@ -678,8 +895,12 @@ function search(ctx: Context, beamWidth: number): number[] {
 }
 
 function compareLabels(a: Label, b: Label): number {
+  // The same order `better` uses, and it has to be: a beam that prunes toward
+  // one objective while the winner is picked by another throws the winner away.
   if (a.overflow !== b.overflow) return a.overflow - b.overflow;
-  if (a.totalWait !== b.totalWait) return a.totalWait - b.totalWait;
+  const aCost = planCost(a.totalWait, a.totalIdle);
+  const bCost = planCost(b.totalWait, b.totalIdle);
+  if (aCost !== bCost) return aCost - bCost;
   if (a.freeAt !== b.freeAt) return a.freeAt - b.freeAt;
   // The last tie-break is the order itself, so two runs cannot disagree.
   for (let i = 0; i < Math.min(a.order.length, b.order.length); i++) {
@@ -869,6 +1090,7 @@ export function optimizeDay(input: OptimizeInput): OptimizedPlan | null {
   return {
     stops: scored.stops,
     totalWaitMinutes: scored.totalWaitMinutes,
+    idleMinutes: scored.idleMinutes,
     endMinute: scored.endMinute,
     overflow: scored.overflow,
     capped: ctx.capped,
@@ -939,7 +1161,7 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
 export function scoreOrder(
   input: OptimizeInput,
   slugs: readonly string[]
-): { totalWaitMinutes: number; endMinute: number; overflow: number } | null {
+): { totalWaitMinutes: number; idleMinutes: number; endMinute: number; overflow: number } | null {
   const ctx = buildContext(input);
   if (!ctx) return null;
   const order: number[] = [];
@@ -953,6 +1175,7 @@ export function scoreOrder(
   const scored = scheduleOrder(ctx, order);
   return {
     totalWaitMinutes: scored.totalWaitMinutes,
+    idleMinutes: scored.idleMinutes,
     endMinute: scored.endMinute,
     overflow: scored.overflow,
   };
@@ -964,6 +1187,15 @@ export function scoreOrder(
  * Not the sum of the blocks' own figures: those come from where the entries
  * ARE, which is the same thing, and going through the scorer means the two
  * numbers a visitor is shown were produced by one function rather than two.
+ *
+ * The idle total is what makes this comparable to a plan at all. A day whose
+ * three rides sit at 10:00, 13:00 and 16:00 queues exactly as much as the same
+ * three rides back to back, so on queued minutes alone it scored as well as
+ * anything the optimiser could build and the button answered "already in the
+ * right order" — over two hours of nothing. The holes are counted here the way
+ * the search counts its own, against the same walk (`transferBetween`'s
+ * ceiling) and the same block heights, so pressing the button twice still
+ * changes nothing the second time.
  */
 export function scoreCurrent(input: OptimizeInput): Scored | null {
   const { day, grid, entries } = input;
@@ -975,17 +1207,31 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
   if (movable.length === 0) return null;
 
   let totalWaitMinutes = 0;
+  let idleMinutes = 0;
   let overflow = 0;
   let endMinute = grid.openMin;
+  let freeBefore: number | null = null;
+  let previous: PlanDayRide | null = null;
   const stops: OptimizeStop[] = [];
 
   for (const entry of movable) {
     const estimate = estimateFor(day, entry);
     const span = Math.max(occupiedMinutes(day, entry), SNAP_MIN_FINE);
     const freeAt = entry.startMinute + span;
+    const ride = day.rides.find((r) => r.attractionSlug === entry.attractionSlug) ?? null;
+    const transfer = previous === null ? 0 : transferBetween(previous, ride).ceilingMinutes;
     if (estimate.wait !== null) totalWaitMinutes += estimate.wait;
+    // {@link idleFor}'s rule, against a day nobody planned: the arrival snapped
+    // up to the grid, and nothing at all before the first block — the visitor
+    // put that one where they put it, and this file does not know what time
+    // they came through the gates.
+    if (freeBefore !== null) {
+      idleMinutes += Math.max(0, entry.startMinute - snapUp(freeBefore + transfer, SNAP_MIN_FINE));
+    }
     if (freeAt > grid.closeMin) overflow++;
     endMinute = Math.max(endMinute, freeAt);
+    freeBefore = freeAt;
+    previous = ride;
     stops.push({
       entryId: entry.id,
       attractionSlug: entry.attractionSlug as string,
@@ -996,5 +1242,5 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
     });
   }
 
-  return { stops, totalWaitMinutes, endMinute, overflow };
+  return { stops, totalWaitMinutes, idleMinutes, endMinute, overflow };
 }
