@@ -26,6 +26,15 @@ interface RopeDropCardProps {
    * appear on every headliner as noise.
    */
   parkHasRecommendations?: boolean;
+  /**
+   * Drop the card's own glass and padding.
+   *
+   * For a `PANEL_CELL`, which already draws the box, the padding and the hairline rules — a
+   * `GlassCard` inside one is a second frame around the same content, and on the ride page it
+   * was three boxes for one chapter. The tinted BORDER goes with it, so the tier the border used
+   * to carry has to be legible from the badge and the icon; both already say it.
+   */
+  bare?: boolean;
   className?: string;
 }
 
@@ -49,11 +58,32 @@ interface RopeDropCardProps {
  * value right, where there is nothing left to overflow. Both grids carry it — the morning one and
  * the evening one.
  */
+/**
+ * The card's frame when it is already inside a box.
+ *
+ * A plain `<div>` with the `GlassCard` signature, so the three call sites below can pick their
+ * frame with one ternary instead of duplicating their whole subtree. `variant` is accepted and
+ * ignored — there is no glass to grade when the enclosing `PANEL_CELL` is the surface.
+ */
+function BareCardFrame({
+  className,
+  children,
+  ...rest
+}: React.HTMLAttributes<HTMLDivElement> & { variant?: string }) {
+  const { variant: _variant, ...divProps } = rest as { variant?: string };
+  return (
+    <div className={className} {...divProps}>
+      {children}
+    </div>
+  );
+}
+
 export function RopeDropCard({
   ropeDrop,
   timezone,
   todayClosingUtc,
   parkHasRecommendations = true,
+  bare = false,
   className,
 }: RopeDropCardProps) {
   const t = useTranslations('attractions.ropeDrop');
@@ -111,10 +141,11 @@ export function RopeDropCard({
             ]
           : null;
 
+      const EveningFrame = bare ? BareCardFrame : GlassCard;
       return (
-        <GlassCard
+        <EveningFrame
           variant="medium"
-          className={cn('border-indigo-500/30', className)}
+          className={cn(!bare && 'border-indigo-500/30', className)}
           aria-label={t('eveningTitle')}
         >
           <SectionHeading
@@ -178,19 +209,21 @@ export function RopeDropCard({
               {t('confidenceLow')}
             </p>
           )}
-        </GlassCard>
+        </EveningFrame>
       );
     }
 
     if (!parkHasRecommendations) return null;
 
+    const NoteFrame = bare ? BareCardFrame : GlassCard;
+
     return (
-      <GlassCard variant="light" className={cn('p-4', className)}>
+      <NoteFrame variant="light" className={cn(!bare && 'p-4', className)}>
         <p className="text-muted-foreground flex items-center gap-2 text-sm">
           <Sunrise className="h-4 w-4 shrink-0" aria-hidden="true" />
           {t('notWorth', { openWait: ropeDrop.openWait })}
         </p>
-      </GlassCard>
+      </NoteFrame>
     );
   }
 
@@ -231,10 +264,11 @@ export function RopeDropCard({
     { icon: TrendingDown, label: t('savings'), value: ropeDrop.savings, highlight: true },
   ];
 
+  const Frame = bare ? BareCardFrame : GlassCard;
   return (
-    <GlassCard
+    <Frame
       variant="medium"
-      className={cn('border-emerald-500/30', className)}
+      className={cn(!bare && 'border-emerald-500/30', className)}
       aria-label={t('title')}
     >
       <SectionHeading
@@ -322,6 +356,6 @@ export function RopeDropCard({
           </span>
         )}
       </div>
-    </GlassCard>
+    </Frame>
   );
 }

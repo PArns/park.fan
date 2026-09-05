@@ -256,7 +256,10 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
       {/* What kind of day it was, in one word — or why there is no curve. */}
       <div
         className={cn(
-          'mt-1.5 truncate text-[9.5px] font-bold tracking-wider uppercase lg:mt-2 lg:text-[10.5px]',
+          // `line-clamp-2`, not `truncate`: a crowd tier is one word but „Ganztägig geschlossen"
+          // is two, and at seven columns it came out „GANZTÄGIG GESCHLOS…". The tile has ~33 px of
+          // slack under its `min-h`, so a second line costs the grid nothing.
+          'mt-1.5 line-clamp-2 text-[9.5px] font-bold tracking-wider uppercase lg:mt-2 lg:text-[10.5px]',
           !isOpen
             ? 'text-status-closed'
             : colored

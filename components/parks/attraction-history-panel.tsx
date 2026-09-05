@@ -54,7 +54,7 @@ export function AttractionHistoryPanel({
   className,
 }: AttractionHistoryPanelProps) {
   const t = useTranslations('attractions');
-  const reservation = historyGridReservation(todayIso);
+  const reservation = historyGridReservation();
 
   return (
     <section id="history" className={cn('mt-10 scroll-mt-24', className)}>

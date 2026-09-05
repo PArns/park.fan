@@ -13,8 +13,9 @@
 import {
   HISTORY_WINDOW_DAYS,
   historyGridReservation,
+  historyGridRows,
   historyListRows,
-  historyWeekRows,
+  historyRows,
 } from '../lib/parks/attraction-history-geometry.ts';
 
 const testCases = [];
@@ -29,53 +30,38 @@ console.log('='.repeat(80) + '\n');
 test('window is today plus thirty days back', () => HISTORY_WINDOW_DAYS, 30);
 test('list rows are half of 31, rounded up', () => historyListRows(), 16);
 
-/* ── Week rows across a full week of "today"s ──────────────────────────────────
+/* ── Rows, which no longer depend on anything ────────────────────────────────
  *
- * 31 days plus up to six leading blanks is five rows or six, and which one it is depends only on
- * the weekday the window STARTS on. 30 ≡ 2 (mod 7), so the start is two weekdays behind today:
- * a Monday today starts on a Saturday (lead 5 → six rows), a Tuesday on a Sunday (lead 6 → six
- * rows), and the other five weekdays give five. Two in seven, which is why reserving a flat six
- * would over-reserve 172 px on five days out of seven. 2026-09-07 is a Monday.
+ * The grid is a history laid out today-first, so it has no leading blanks and its row count is
+ * arithmetic on the window alone. An earlier version aligned it to weekday columns like the
+ * park's month grid; that read forwards, put the oldest week on top of a chapter called
+ * „Verlauf", and made the reservation flip between five rows and six depending on which weekday
+ * the window happened to start on.
  */
-test('Monday today → six week rows', () => historyWeekRows('2026-09-07'), 6);
-test('Tuesday today → six week rows', () => historyWeekRows('2026-09-08'), 6);
-test('Wednesday today → five week rows', () => historyWeekRows('2026-09-09'), 5);
-test('Thursday today → five week rows', () => historyWeekRows('2026-09-10'), 5);
-test('Friday today → five week rows', () => historyWeekRows('2026-09-11'), 5);
-test('Saturday today → five week rows', () => historyWeekRows('2026-09-12'), 5);
-test('Sunday today → five week rows', () => historyWeekRows('2026-09-13'), 5);
+test('two columns take sixteen rows', () => historyRows(2), 16);
+test('seven columns take five rows', () => historyGridRows(), 5);
+test('one column is the whole window', () => historyRows(1), 31);
 
-/* ── Arithmetic that a local `new Date` would get wrong ────────────────────────
+/* ── The reservation the placeholder actually reads ──────────────────────────
  *
- * The window crosses a month, a year and a leap day without any of the three meaning anything to
- * it — it is 31 days back from a date, not a calendar unit. These exist because the park calendar's
- * twin had a real bug in exactly this shape: a local `new Date(y, m, 1)` in a zone whose DST jump
- * lands at midnight resolves to the previous day and silently drops a row.
+ * Measured against the rendered grid: a row is one tile, and the `gap-2` sits BETWEEN rows, so n
+ * rows carry n − 1 gaps. The two tile figures are NOT the two `min-h` values — at `lg` the
+ * content is under the 164 px floor so every tile measures it exactly, while below `lg` the
+ * content is 119 px, one pixel OVER the 118 px floor, so the floor never governs a day with a
+ * curve in it (30 of 31 tiles measured 119.000 on Taron and Talocan at 390 px in de and fr; the
+ * exception was the one day with no curve).
  */
-test('window crossing new year keeps the weekday rule', () => historyWeekRows('2027-01-04'), 6);
-test('window crossing a leap day keeps the weekday rule', () => historyWeekRows('2028-03-01'), 5);
-test('DST spring-forward Sunday is still a Sunday', () => historyWeekRows('2026-03-29'), 5);
-
-/* ── The reservation the placeholder actually reads ────────────────────────── */
-
-test('list height is constant — the window never changes length', () => {
-  const monday = historyGridReservation('2026-09-07').base;
-  const friday = historyGridReservation('2026-09-11').base;
-  return monday === friday ? monday : `${monday} !== ${friday}`;
-}, 2024);
-test('six-row month reserves one row more than a five-row one', () => {
-  return historyGridReservation('2026-09-07').lg - historyGridReservation('2026-09-09').lg;
-}, 172);
-/**
- * The two heights below are what the rendered grid measures, not what the class list declares.
- * A row is a tile and the gaps sit BETWEEN rows: 16 × 119 + 15 × 8 below `lg`, and five 164 px
- * week rows plus four gaps under the 28 px weekday header from `lg` up — 880 px against the grid
- * that measures 880. The numbers they replaced (2016 / 888) counted one gap per row, i.e. one gap
- * that is never drawn, and took the mobile tile for its 118 px `min-h` floor when a day with a
- * curve in it renders 119.
- */
-test('five week rows over the weekday header', () => historyGridReservation('2026-09-09').lg, 880);
-test('six week rows over the weekday header', () => historyGridReservation('2026-09-07').lg, 1052);
+test('below lg: 16 tiles of 119 with 15 gaps', () => historyGridReservation().base, 2024);
+test('from lg: 5 tiles of 164 with 4 gaps', () => historyGridReservation().lg, 852);
+test(
+  'the reservation is the same on every day of the year',
+  () => {
+    const a = historyGridReservation();
+    const b = historyGridReservation();
+    return a.base === b.base && a.lg === b.lg ? 'stable' : 'varies';
+  },
+  'stable'
+);
 
 let passed = 0;
 let failed = 0;

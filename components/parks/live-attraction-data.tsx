@@ -4,7 +4,8 @@ import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { AlertCircle, Layers, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { Badge } from '@/components/ui/badge';
 import { SectionHeading } from '@/components/common/section-heading';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
@@ -119,7 +120,7 @@ export function LiveAttractionData({
           panel inside, so the empty case never came up; a ride with no forecast and no reading
           today (verified on `hansa-park/animal-babies-of-peterhof`) got exactly that. */}
       {(!mounted || isDetailLoading || hasTodayChart) && (
-        <Card className="mb-8 gap-0 overflow-hidden p-0">
+        <>
           {/* Loading state and chart share ONE box with a reserved height, because the placeholder
               used to stand in for the chart at less than half its size: 213 px held for the
               401-421 px the chart occupies, so the moment the detail fetch landed the rest of the
@@ -174,22 +175,33 @@ export function LiveAttractionData({
               </div>
             </div>
           )}
-        </Card>
+        </>
       )}
 
-      {/* Other Queue Types */}
+      {/* The ride's other queues — single rider, a paid lane, a return window. A band of
+          hairline-ruled columns under the chart in the SAME box, not a row of cards under a
+          second heading: they are a reading about this ride's day like the chart above them, and
+          three floating cards under a chapter band was the shape this page was rebuilt to stop
+          drawing. The `border-t` is the rule that separates them from the chart. */}
       {attraction.queues && attraction.queues.length > 1 && (
-        <section className="mb-8">
-          {/* Sub-section of the live chapter, not a chapter of its own — plain h3
-              so the outline reads live wait time › other queues. */}
-          <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="border-border/50 border-t">
+          <div className="px-4 pt-4 md:px-6">
+            {/* Sub-section of the live chapter, not a chapter of its own — plain h3
+                so the outline reads today's chart › other queues. */}
+            <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
+          </div>
+          <PanelGrid
+            columnCount={Math.min(
+              3,
+              attraction.queues.filter((q) => q.queueType !== 'STANDBY').length
+            )}
+          >
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')
               .map((queue, i) => (
-                <Card key={i}>
-                  <CardContent className="p-4">
-                    <div className="mb-2 flex items-center justify-between">
+                <div key={i} className={PANEL_CELL}>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-medium">
                         {QUEUE_TYPE_TERM[queue.queueType] ? (
                           <GlossaryTermLink termId={QUEUE_TYPE_TERM[queue.queueType]!}>
@@ -203,9 +215,7 @@ export function LiveAttractionData({
                     </div>
                     {/* Canonical queue detail (price, single-rider time, boarding groups,
                         virtual-queue window/state) — same component used on attraction cards. */}
-                    <div className="mb-2">
-                      <QueueTypeBadge queue={queue} timezone={park.timezone} />
-                    </div>
+                    <QueueTypeBadge queue={queue} timezone={park.timezone} />
                     {/* Short-term wait-time trend (e.g. single-rider rising/falling). Only the
                         client-side detail fetch carries per-queue trend; the live park poll that
                         feeds `attraction.queues` above does not. Derive both the arrow and the
@@ -218,11 +228,7 @@ export function LiveAttractionData({
                       const delta =
                         Math.round((trend.recentAverage - trend.previousAverage) / 5) * 5;
                       const direction = delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable';
-                      return (
-                        <div className="mb-2">
-                          <TrendPill direction={direction} delta={delta} />
-                        </div>
-                      );
+                      return <TrendPill direction={direction} delta={delta} />;
                     })()}
                     {/* Paid standby lanes carry both a price (shown in the badge above) and a
                         wait time — surface the wait prominently. */}
@@ -242,11 +248,11 @@ export function LiveAttractionData({
                           <LocalTime time={queue.returnEnd} timeZone={park.timezone} />
                         </p>
                       )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
-          </div>
-        </section>
+          </PanelGrid>
+        </div>
       )}
     </>
   );

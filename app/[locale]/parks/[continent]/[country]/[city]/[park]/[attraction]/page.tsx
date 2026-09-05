@@ -20,7 +20,8 @@ import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
-import { PageSection } from '@/components/common/page-section';
+import { ChapterPanel } from '@/components/common/chapter-panel';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -65,7 +66,7 @@ import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { stripNewPrefix, cn } from '@/lib/utils';
+import { stripNewPrefix } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
@@ -609,7 +610,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               this chapter is about is the day — what the queue has done since opening and what it
               is forecast to do — plus the ride's other queues. */}
             {waitsReadable && (
-              <PageSection
+              <ChapterPanel
                 icon={Clock}
                 title={t('todayChart.title')}
                 // The chart's own h3 said this same string one line under the h2, so it draws no
@@ -623,8 +624,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     </Badge>
                   </GlossaryTermLink>
                 }
-                frosted
                 id="live"
+                // The chart brings its own padding and the queue band under it is a `PanelGrid`
+                // whose cells bring theirs — a `p-4` here would be a second box inside the box.
+                bodyClassName="p-0"
               >
                 {/* initialPark is trimmed to THIS attraction AND to the park-level fields this page
                 actually reads (see leanParkForAttractionShell): passing the full park serialized
@@ -639,7 +642,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   city={city}
                   parkSlug={parkSlug}
                 />
-              </PageSection>
+              </ChapterPanel>
             )}
 
             {/* Chapter: plan your visit — rope-drop and typical waits, both server-rendered in
@@ -654,37 +657,49 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               this chapter and is its own now, which left a ride with neither card opening a
               chapter under a heading and closing it again. */}
             {hasPlanChapter && (
-              <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted id="plan">
-                {/* `hasPlanChapter` above is this same predicate — the grid is the chapter's
-                  whole body now that the calendar has its own. */}
-                <div
-                  className={cn(
-                    'grid items-start gap-6',
-                    attraction.ropeDrop && attraction.typicalWaits?.displayable && 'lg:grid-cols-2'
-                  )}
+              <ChapterPanel
+                icon={Sparkles}
+                title={t('sectionPlanVisit')}
+                id="plan"
+                bodyClassName="p-0"
+              >
+                {/* Two readings, one box, a hairline between them — the shape „Heute im Park"
+                  and the statistics panel use. They were two `GlassCard`s side by side under a
+                  band, i.e. three boxes for one chapter, each drawing its own border over the
+                  ride's hero photo. Both render `bare` here because the `PANEL_CELL` around them
+                  already is the box. */}
+                <PanelGrid
+                  columnCount={
+                    attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1
+                  }
                 >
                   {attraction.ropeDrop && (
-                    <RopeDropCard
-                      ropeDrop={attraction.ropeDrop}
-                      timezone={park.timezone}
-                      todayClosingUtc={
-                        park.schedule?.find(
-                          (s) => s.date === todayIso && s.scheduleType === 'OPERATING'
-                        )?.closingTime ?? null
-                      }
-                      parkHasRecommendations={(park.attractions ?? []).some(
-                        (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
-                      )}
-                    />
+                    <div className={PANEL_CELL}>
+                      <RopeDropCard
+                        bare
+                        ropeDrop={attraction.ropeDrop}
+                        timezone={park.timezone}
+                        todayClosingUtc={
+                          park.schedule?.find(
+                            (sch) => sch.date === todayIso && sch.scheduleType === 'OPERATING'
+                          )?.closingTime ?? null
+                        }
+                        parkHasRecommendations={(park.attractions ?? []).some(
+                          (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+                        )}
+                      />
+                    </div>
                   )}
-                  {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
-                    rendered in the static shell for SEO + instant paint. Non-headliner
-                    displayable rides fall back to the client render below. */}
+                  {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner, rendered
+                    in the static shell for SEO and instant paint. Non-headliner displayable rides
+                    fall back to the client render under the calendar. */}
                   {attraction.typicalWaits?.displayable && (
-                    <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
+                    <div className={PANEL_CELL}>
+                      <AttractionTypicalWaits bare typicalWaits={attraction.typicalWaits} />
+                    </div>
                   )}
-                </div>
-              </PageSection>
+                </PanelGrid>
+              </ChapterPanel>
             )}
 
             {/* Chapter: the ride's own 30-day calendar — its own chapter now, where it used to be
