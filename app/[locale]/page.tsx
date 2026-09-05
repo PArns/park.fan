@@ -208,12 +208,25 @@ export default async function HomePage({ params }: HomePageProps) {
               which meant the two panels ended up blurring different backdrops: the left a
               dimmed one, the right the raw photo. Same 64 px filter, visibly different glass.
               The plate's own blur now does the legibility work for both. */}
-            <div className="relative container mx-auto">
+            {/* Tailwind's `container` spelled out against `@container/page` instead of the
+              window, because it is a MEDIA-query utility: its max-width tier is picked from
+              how wide the window is, while its own box is what the planner's padding leaves.
+              With a 900 px panel on a 2000 px window the tier was 1536 (never binding, so the
+              row ran the full 1052 px) where the same 1052 px as a window gives 1024 — and one
+              breakpoint further down the gap is 223 px, at a window of 1720 with the default
+              448 px panel. Same five tiers as the utility, so nothing moves with the panel shut.
+              The header did this to its own row first — see components/layout/header.tsx. */}
+            <div className="relative mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
               {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
                 max-content width, and the horizontally scrollable pill row inside is wider than
                 a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
                 container instead — without it the whole hero overflowed the viewport. */}
-              <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
+              {/* The two-column split asks the PAGE, not the window. `xl:`/`2xl:` read 2000 px
+                while the planner had left 1100, so the map column kept its 640 px and the text
+                column was cut to 356: the headline broke over 4 lines instead of 2 (192 px
+                against 96) and the intro over 7 instead of 3 (204.8 px against 87.8). Same two
+                thresholds, asked of the page's box. */}
+              <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
                 {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
                 <HeroTextPanel className="hero-in-stagger">
@@ -232,13 +245,16 @@ export default async function HomePage({ params }: HomePageProps) {
                   <HeroNearbyBubbles className="mt-8" />
                 </HeroTextPanel>
 
-                {/* Right: world-map panel — only rendered when there is room (xl+).
+                {/* Right: world-map panel — only rendered when there is room, and "room" is the
+                  page's box rather than the window's. It kept its 640 px column with the planner
+                  open (624.4 px of map beside a 356 px text column); at the same 1100 px as a
+                  window it is `display: none`, which is what the grid above now also decides.
 
                   Pushed DOWN while the text column is pulled up (`items-start` + these offsets):
                   the search field sits in the left column and its dropdown is open at rest, so
                   the two columns are staggered to give that list room instead of centring both
                   against each other. */}
-                <div className="hero-in-late hidden xl:mt-24 xl:block 2xl:mt-28">
+                <div className="hero-in-late hidden @min-[1280px]/page:mt-24 @min-[1280px]/page:block @min-[1536px]/page:mt-28">
                   <Suspense fallback={<HeroWorldPanelSkeleton />}>
                     <HeroWorldPanel />
                   </Suspense>
