@@ -82,8 +82,8 @@ const ROCK_WARM = rgb(0x7d7060);
 const DIRT_DARK = rgb(0x43331f);
 const DIRT_LIGHT = rgb(0x765c39);
 const PEBBLE = rgb(0x8d8477);
-const CONCRETE_DARK = rgb(0x7e7c78);
-const CONCRETE_LIGHT = rgb(0xb8b5af);
+const CONCRETE_DARK = rgb(0x8a867e);
+const CONCRETE_LIGHT = rgb(0xc0bbb1);
 const WOOD_DARK = rgb(0x6a4728);
 const WOOD_LIGHT = rgb(0x9c7443);
 const WOOD_GAP = rgb(0x2c1e14);
@@ -173,18 +173,20 @@ function shadeLayer(
       return { height: clump, roughness: 0.86 };
     }
     case 5: {
-      // concrete — float-finished slab: fine aggregate, a hairline crack network from the mid
-      // field's zero crossing, and stains that only touch the colour
-      const aggregate = smoothstep(0.88, 0.97, high);
-      const crack = smoothstep(0.03, 0.004, Math.abs(mid - 0.5));
-      const h = clamp01(0.55 + aggregate * 0.35 - crack * 0.6);
-      let c = lerpRgb(CONCRETE_DARK, CONCRETE_LIGHT, clamp01(0.5 + mid * 0.45));
-      c = lerpRgb(c, CONCRETE_DARK, crack * 0.9);
-      const shade = 0.94 + 0.12 * high - 0.08 * smoothstep(0.3, 0.8, low);
+      // concrete — float-finished slab: fine aggregate and faint staining, and deliberately
+      // nothing larger. The first version drew a hairline crack network off the mid field's zero
+      // crossing; over a 26 m terrace that is eight tiles of the same crack pattern, and the
+      // terrace rendered as a grid of panels. A surface with no feature bigger than a centimetre
+      // has no visible repeat.
+      const aggregate = smoothstep(0.86, 0.98, high);
+      const h = clamp01(0.6 + aggregate * 0.3 + (high - 0.5) * 0.12);
+      let c = lerpRgb(CONCRETE_DARK, CONCRETE_LIGHT, clamp01(0.55 + (high - 0.5) * 0.5));
+      c = lerpRgb(c, CONCRETE_LIGHT, aggregate * 0.5);
+      const shade = 0.96 + 0.08 * high;
       out.r = c.r * shade;
       out.g = c.g * shade;
       out.b = c.b * shade;
-      return { height: h, roughness: 0.55 + 0.2 * aggregate + 0.15 * crack };
+      return { height: h, roughness: 0.58 + 0.18 * aggregate };
     }
     default: {
       // wood — eight boards across the tile, each with its own hue offset and its grain stretched

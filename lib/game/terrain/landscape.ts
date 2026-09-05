@@ -44,8 +44,29 @@ function scarpZ(x: number, seed: number): number {
   return -66 + 16 * Math.sin(x * 0.017) + 44 * (fbm2(x, -400, 1 / 170, 2, seed + 5) - 0.5);
 }
 
-function bump(x: number, z: number, cx: number, cz: number, r: number, h: number, p: number) {
-  const d = Math.hypot(x - cx, z - cz) / r;
+/**
+ * A landform. The radius is warped by direction and by a noise field, because an unwarped
+ * `pow(1 - d/r, p)` is a cone of revolution and reads as one from every camera: the outcrop in the
+ * `close` shot was a traffic cone until this took its circular plan away.
+ */
+function bump(
+  x: number,
+  z: number,
+  cx: number,
+  cz: number,
+  r: number,
+  h: number,
+  p: number,
+  seed = 0
+) {
+  const dx = x - cx;
+  const dz = z - cz;
+  const dist = Math.hypot(dx, dz);
+  if (dist >= r * 1.45) return 0;
+  const angle = Math.atan2(dz, dx);
+  const lobes = 1 + 0.22 * Math.sin(angle * 3 + seed) + 0.13 * Math.sin(angle * 5 - seed * 1.7);
+  const warp = 0.82 + 0.36 * fbm2(x, z, 1 / Math.max(12, r * 0.6), 2, seed + 700);
+  const d = dist / (r * lobes * warp);
   if (d >= 1) return 0;
   return h * Math.pow(1 - d, p);
 }
@@ -85,17 +106,16 @@ function heightAt(x: number, z: number, seed: number): number {
   // Two hills on the plateau above the scarp, and one steep outcrop south-west of the origin,
   // which is the direction the `close` preset looks — that shot has to contain a rock face and a
   // meadow at once or nothing in it says the splat is doing anything.
-  h += bump(x, z, -74, -168, 108, 33, 1.7);
-  h += bump(x, z, 96, -196, 82, 21, 1.8);
-  h += bump(x, z, -34, 40, 16, 10.5, 1.55);
+  h += bump(x, z, -74, -168, 108, 33, 1.7, 11);
+  h += bump(x, z, 96, -196, 82, 21, 1.8, 29);
+  h += bump(x, z, -34, 40, 16, 10.5, 1.55, 53);
 
   h -= smoothstep(-14, 130, z - zs) * 13;
 
-  // Relief at the scale of the sample grid itself (cells are 2 m). Without it a hill is an
-  // analytic dome and reads as a cone; with it the slope wanders, which is also what gives the
-  // cliff rule ragged edges instead of a clean contour ring.
-  // Damped right at the waterline (the showcase floods at 0): a noisy shore turns the lake edge
-  // into a fringe of puddles and islands rather than a beach.
+  // Relief at the scale of the sample grid itself (cells are 2 m). Without it every slope is a
+  // smooth analytic surface and the cliff rule draws clean contour rings on it; with it the slope
+  // wanders and the rock comes out ragged. Damped right at the waterline (the showcase floods at
+  // 0), because a noisy shore turns the lake edge into a fringe of puddles and islands.
   const nearWater = 1 - smoothstep(1.0, 3.5, Math.abs(h));
   h += (fbm2(x, z, 1 / 17, 2, seed + 6) - 0.5) * 1.35 * (1 - 0.75 * nearWater);
 
@@ -158,13 +178,21 @@ export function generateShowcaseLandscape(t: TerrainData, options: LandscapeOpti
       let layer = LAYER_GRASS;
 
       // Meadow in patches on the terrace — never uniform, never everywhere.
-      if (h > 2 && fbm2(x, z, 1 / 74, 3, seed + 21) > 0.56) layer = LAYER_MEADOW;
+      //
+      // The threshold carries a fine dither term. Paint is one integer per 2 m cell and the shader
+      // blends over one cell, so a clean threshold on smooth noise gives a clean arc: at overview
+      // distance the first version read as a political map, light-green countries with a hard
+      // border. Ten metres of noise on the threshold frays that border into interlocking cells the
+      // splat can actually blend.
+      const grain = (fbm2(x, z, 1 / 9, 2, seed + 41) - 0.5) * 0.22;
+      if (h > 2 && fbm2(x, z, 1 / 74, 3, seed + 21) + grain > 0.56) layer = LAYER_MEADOW;
 
       // Below the shallows the bed is silt, not the grass the default would leave there: the
       // water is see-through and a green lake floor is the first thing anyone notices.
       const above = h - t.waterLevel;
       if (above < -2.6) layer = LAYER_DIRT;
-      if (above > -3.0 && above < 1.3 + 1.2 * fbm2(x, z, 1 / 33, 2, seed + 31)) layer = LAYER_SAND;
+      const sandTop = 1.3 + 1.2 * fbm2(x, z, 1 / 33, 2, seed + 31) + grain * 6;
+      if (above > -3.0 && above < sandTop) layer = LAYER_SAND;
 
       // Rock a little before the material's own cliff threshold, so the two agree at the seam
       // instead of leaving a ring of grass on a 30° slope.

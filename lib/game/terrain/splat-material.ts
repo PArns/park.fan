@@ -302,9 +302,10 @@ export function createGroundMaterial(
   const material = new PBRMaterial('terrain-ground', scene);
   material.metallic = 0;
   material.roughness = 0.86;
-  // The sun is the only strong specular source on open ground; letting the PBR specular run at
-  // full strength turns a wet-looking sheen onto every slope facing it.
-  material.specularIntensity = 0.45;
+  // The sun is the only strong specular source on open ground, and Fresnel takes reflectance to 1
+  // at grazing angles: at full strength a low sun laid a wet sheet of highlight across the whole
+  // meadow — measured at 16:00, where the glare covered about a third of the frame.
+  material.specularIntensity = 0.28;
   material.albedoColor = new Color3(1, 1, 1);
   material.backFaceCulling = true;
   material.transparencyMode = Material.MATERIAL_OPAQUE;

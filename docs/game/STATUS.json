@@ -43,16 +43,16 @@
   },
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
-    "readFrom": ".game-render/env4/report.json",
-    "bootMs": 5729,
+    "readFrom": ".game-render/t2/report.json",
+    "bootMs": 11468,
     "consoleErrors": 0,
     "hydrationWarnings": 0,
-    "drawCalls": 66,
-    "triangles": 128626,
+    "drawCalls": 51,
+    "triangles": 140164,
     "activeMeshes": 1,
     "engine": "webgl2",
     "preset": "medium",
-    "note": "Read from .game-render/env4/report.json at this commit: 66 draw calls, 128,626 triangles, 0 console errors — but the picture is not passable and STATUS.openIssues says why. fps in headless Chromium is SwiftShader and means nothing; draw calls and triangles are what the budget is read from."
+    "note": "Ground reads as grass; sky is black at noon. Numbers are within budget, the frame is not finished. fps in headless Chromium is SwiftShader and means nothing."
   },
   "budget": {
     "fps": 50,
@@ -256,7 +256,8 @@
     }
   },
   "openIssues": [
-    "The scene is washed out to near-white at noon: the terrain reads as a faint silhouette and nothing else. It was black chunks with bright seams an hour ago, so the exposure/albedo argument between terrain and environment is moving, not settled. 66 draw calls, 128,626 tris, 0 console errors — the numbers are fine and the picture is not. Wave 1 gate has not run.",
+    "The sky renders PURE BLACK at 12:00 in the ground camera while the terrain below it is lit and correctly textured — the sky dome is either not drawn or culled at that pitch. Was a golden-hour gradient two rounds ago, so it is a regression inside the environment module's own round.",
+    "Terrain ground is the first thing in this build that reads as a real surface: grass with low-frequency variation, 51 draw calls (down from 66), 140,164 tris. Recorded as the baseline the wave-1 gate should hold, not as a pass — the gate has not run.",
     "Wave 1 has not landed: the baseline screenshot is an untextured terrain edge under the HUD.",
     "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
     "demo-park is a terrain shaper, not yet a park.",
