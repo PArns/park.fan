@@ -3,11 +3,12 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
 import type { CrowdLevel } from '@/lib/api/types';
-import { ChevronRight, ShieldCheck, type LucideIcon } from 'lucide-react';
+import { ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 
@@ -449,26 +450,28 @@ export function TouchpointGrid({
 }
 
 // ── FAQ: accordion + FAQPage structured data ─────────────────────────────────
+/**
+ * The editorial pages' FAQ — the same rows as the park and ride pages, plus its own `FAQPage`.
+ *
+ * The list itself is {@link FaqAccordion}, which every FAQ on the site draws. It used to be a
+ * third treatment: a chevron rotating 90° the other way, no hover, no rule under the question and
+ * its own padding, so the same object looked different depending on which page a reader had
+ * arrived from. No icons here, because these arrays carry none and an invented one per question
+ * would be decoration with nothing behind it.
+ *
+ * The structured data stays where it is, emitted from the same array it renders, so the markup
+ * cannot drift from the page. The rows are not wrapped in a `ChapterPanel`: these sit inside
+ * `SectionShell` on a page with no photo backdrop, where the chapter's box is the section band
+ * itself.
+ */
 export function FaqList({ items }: { items: ReadonlyArray<{ question: string; answer: string }> }) {
   return (
     <>
       <FaqStructuredData items={items} />
-      <div className="divide-border divide-y">
-        {items.map((item) => (
-          <details key={item.question} className="group py-3">
-            <summary
-              className={cn(
-                'flex cursor-pointer items-center justify-between gap-3 font-semibold',
-                'marker:content-none [&::-webkit-details-marker]:hidden'
-              )}
-            >
-              {item.question}
-              <ChevronRight className="text-muted-foreground h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
-            </summary>
-            <p className="text-muted-foreground mt-2 leading-relaxed">{item.answer}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion
+        items={items.map((item) => ({ question: item.question, answer: item.answer }))}
+        padding="flush"
+      />
     </>
   );
 }
