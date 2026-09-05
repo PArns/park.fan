@@ -14,6 +14,7 @@ import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 export interface DayDataProps {
@@ -42,22 +43,41 @@ interface AttractionHistoryDayProps {
  * The neighbour signal is suppressed on a day the park was shut, exactly as over there: nobody
  * travelled in. A day where only the RIDE stood keeps it — the day-trippers still came.
  */
-function daySignals(day: DayDataProps) {
+function daySignals(
+  day: DayDataProps,
+  labels: { school: string; neighbor: string; holiday: string; bridge: string }
+) {
   const s = day.scheduleData;
-  const signals: { key: string; className: string }[] = [];
+  const signals: { key: string; className: string; label: string }[] = [];
   if (!s) return signals;
 
   if (s.isSchoolHoliday || s.isSchoolVacation) {
-    signals.push({ key: 'school', className: 'bg-yellow-500 dark:bg-yellow-400' });
+    signals.push({
+      key: 'school',
+      className: 'bg-yellow-500 dark:bg-yellow-400',
+      label: labels.school,
+    });
   }
   if ((s.influencingHolidays?.length ?? 0) > 0 && day.attractionStatus !== 'PARK_CLOSED') {
-    signals.push({ key: 'neighbor', className: 'bg-amber-600 dark:bg-amber-500' });
+    signals.push({
+      key: 'neighbor',
+      className: 'bg-amber-600 dark:bg-amber-500',
+      label: labels.neighbor,
+    });
   }
   if (s.isPublicHoliday) {
-    signals.push({ key: 'holiday', className: 'bg-red-500 dark:bg-red-400' });
+    signals.push({
+      key: 'holiday',
+      className: 'bg-red-500 dark:bg-red-400',
+      label: labels.holiday,
+    });
   }
   if (s.isBridgeDay) {
-    signals.push({ key: 'bridge', className: 'bg-blue-500 dark:bg-blue-400' });
+    signals.push({
+      key: 'bridge',
+      className: 'bg-blue-500 dark:bg-blue-400',
+      label: labels.bridge,
+    });
   }
   return signals;
 }
@@ -134,7 +154,23 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
           ? t('rideClosed')
           : tParks('crowdLevels.unknown');
 
-  const signals = daySignals(day);
+  /**
+   * The bar's segments, each with the name of what it marks.
+   *
+   * The old cell put the holiday's own name in a tooltip on its corner icon — „Sommerferien",
+   * not „Schulferien" — and the rewrite dropped it: the name survived only in the cell's
+   * `aria-label`, so a sighted reader could no longer find out WHICH holiday a coloured segment
+   * meant. The legend names the category; only the day knows the day.
+   */
+  const signals = daySignals(day, {
+    school:
+      (day.scheduleData?.holidayType === 'school'
+        ? translateHolidayName(day.scheduleData?.holidayName, locale)
+        : '') || tLegend('schoolVacation'),
+    neighbor: tParks('influencingHolidays'),
+    holiday: translateHolidayName(day.scheduleData?.holidayName, locale) || tLegend('holiday'),
+    bridge: tLegend('bridgeDay'),
+  });
   const signalHint = [
     day.scheduleData?.isPublicHoliday
       ? translateHolidayName(day.scheduleData.holidayName, locale) || tLegend('holiday')
@@ -164,9 +200,20 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
     >
       {/* The signal bar, on the cell's own top edge and inside its rounding. */}
       {signals.length > 0 && (
-        <span className="pointer-events-none absolute inset-x-0 top-0 flex h-[3px]">
+        // 6 px of hit area for a 3 px bar: the segment is drawn at the cell's edge and the
+        // wrapper reaches under it, so the name is reachable by pointer without the bar growing.
+        <span className="absolute inset-x-0 top-0 flex h-1.5">
           {signals.map((s) => (
-            <span key={s.key} className={cn('h-full flex-1', s.className)} />
+            <Tooltip key={s.key}>
+              <TooltipTrigger asChild>
+                <span className="flex h-full flex-1 cursor-help items-start" aria-label={s.label}>
+                  <span className={cn('h-[3px] w-full', s.className)} aria-hidden="true" />
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{s.label}</p>
+              </TooltipContent>
+            </Tooltip>
           ))}
         </span>
       )}

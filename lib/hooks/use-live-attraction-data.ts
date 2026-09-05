@@ -68,6 +68,19 @@ export function useLiveAttractionData({
       ? {
           ...shellAttraction,
           status: detail.status ?? shellAttraction.status,
+          // The field `getLiveAttractionStatus` prefers over everything else, and the one this
+          // overlay used to leave behind: without it the ride page read `effectiveStatus` off the
+          // shell, which comes from a fetch cached for a day. A ride that opened at 10:00, or went
+          // DOWN at 13:00 and recovered at 13:40, kept whatever the shell was written with for the
+          // rest of the day — so the fold said „Geschlossen" with no number while the chart under
+          // it drew today's live curve. Cast because `effectiveStatus` is not on `ParkAttraction`
+          // (it is read through an `in` guard in `park-utils`), but both payloads carry it.
+          ...((detail as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus
+            ? {
+                effectiveStatus: (detail as { effectiveStatus?: ParkAttraction['status'] })
+                  .effectiveStatus,
+              }
+            : {}),
           queues: detail.queues ?? shellAttraction.queues,
           statistics: detail.statistics ?? shellAttraction.statistics,
           trend: detail.trend ?? shellAttraction.trend,

@@ -8,7 +8,7 @@ import { EntryTileBody, SelectionBar, tileCell } from '@/components/parks/park-e
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
-import { getStandbyWait } from '@/lib/utils/park-utils';
+import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { formatTime } from '@/lib/utils/intl-format';
 import { useLocale } from 'next-intl';
@@ -24,6 +24,13 @@ interface RideNavTilesProps {
   /** The server-rendered snapshot — what the row draws from before any fetch lands. */
   attraction: ParkAttraction;
   timezone: string;
+  /**
+   * The park publishes wait times, so „Wartezeiten heute" and „Wartezeit-Verlauf" render.
+   *
+   * Both chapters answer a question that has no answer without a source — see the page, which
+   * reads the curated `liveWaitTimes` flag rather than deriving it from an empty payload.
+   */
+  hasWaitTimeChapters: boolean;
   /** „Beste Besuchszeit planen" renders — it has a rope-drop card, typical waits, or both. */
   hasPlanChapter: boolean;
   /** The ride-profile chapter renders for this ride — the same predicate the section asks. */
@@ -80,6 +87,7 @@ export function RideNavTiles({
   attractionSlug,
   attraction,
   timezone,
+  hasWaitTimeChapters,
   hasPlanChapter,
   hasRideProfile,
   rideProfileCount,
@@ -112,7 +120,18 @@ export function RideNavTiles({
         status: detail.status ?? attraction.status,
       }
     : attraction;
-  const wait = getStandbyWait(live);
+  /**
+   * The wait, and only when the ride is actually open.
+   *
+   * `getStandbyWait` says so in its own docstring — "a closed ride reports the last number its
+   * queue carried" — and the number it carries is usually `0`. Verified against the live API: at
+   * 06:37 UTC Phantasialand returns Taron `CLOSED` with `queues: [{ STANDBY, status: CLOSED,
+   * waitTime: 0 }]`, so this tile served „Jetzt 0 Min." in the first HTML of every ride page of
+   * every closed park, two rows under a panel saying „Geschlossen". The park's own tile row gates
+   * on the display status for the same reason.
+   */
+  const status = getLiveAttractionStatus(live, undefined);
+  const wait = status === 'OPERATING' ? getStandbyWait(live) : null;
 
   /** The next recommended slot still ahead of the reader — the plan tile's whole point. */
   const nextSlot = useMemo(() => {
@@ -136,7 +155,9 @@ export function RideNavTiles({
     let peak = 0;
     let measured = 0;
     for (const day of detail?.history ?? []) {
-      if (!day.hourlyP90?.length) continue;
+      // `> 1`, the same threshold the grid calls a day OPEN. At `>= 1` the tile counted a day the
+      // grid draws as closed and said „29 Tage" over a grid showing 28.
+      if ((day.hourlyP90?.length ?? 0) < 2) continue;
       measured += 1;
       for (const point of day.hourlyP90) if (point.value > peak) peak = point.value;
     }
@@ -150,18 +171,22 @@ export function RideNavTiles({
     count?: number;
     hint: React.ReactNode;
   }[] = [
-    {
-      href: '#live',
-      icon: Clock,
-      // The chapter it points at, not the reading in the hint: the live minute now opens the page
-      // inside the header card this row is the footer of, and a tile labelled „Wartezeit jetzt"
-      // that scrolls PAST it to a chart is a tile that lies about where it goes.
-      label: t('todayChart.title'),
-      hint:
-        wait !== null
-          ? t.rich('tiles.live', { min: roundWaitTo5(wait), b: bold })
-          : t('tiles.liveClosed'),
-    },
+    ...(hasWaitTimeChapters
+      ? [
+          {
+            href: '#live',
+            icon: Clock,
+            // The chapter it points at, not the reading in the hint: the live minute now opens the page
+            // inside the header card this row is the footer of, and a tile labelled „Wartezeit jetzt"
+            // that scrolls PAST it to a chart is a tile that lies about where it goes.
+            label: t('todayChart.title'),
+            hint:
+              wait !== null
+                ? t.rich('tiles.live', { min: roundWaitTo5(wait), b: bold })
+                : t('tiles.liveClosed'),
+          },
+        ]
+      : []),
     ...(hasPlanChapter
       ? [
           {
@@ -172,18 +197,22 @@ export function RideNavTiles({
           },
         ]
       : []),
-    {
-      href: '#history',
-      icon: CalendarDays,
-      label: t('historyCalendar'),
-      hint: historyPeak
-        ? t.rich('tiles.history', {
-            days: historyPeak.measured,
-            max: historyPeak.peak,
-            b: bold,
-          })
-        : null,
-    },
+    ...(hasWaitTimeChapters
+      ? [
+          {
+            href: '#history',
+            icon: CalendarDays,
+            label: t('historyCalendar'),
+            hint: historyPeak
+              ? t.rich('tiles.history', {
+                  days: historyPeak.measured,
+                  max: historyPeak.peak,
+                  b: bold,
+                })
+              : null,
+          },
+        ]
+      : []),
     ...(hasRideProfile
       ? [
           {
@@ -220,7 +249,8 @@ export function RideNavTiles({
         items.length === 5 && 'lg:grid-cols-5',
         items.length === 4 && 'lg:grid-cols-4',
         items.length === 3 && 'lg:grid-cols-3',
-        items.length === 2 && 'lg:grid-cols-2'
+        items.length === 2 && 'lg:grid-cols-2',
+        items.length === 1 && 'grid-cols-1'
       )}
     >
       {items.map((item) => (

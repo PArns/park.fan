@@ -61,7 +61,8 @@ export function AttractionHistoryPanel({
       <ChapterHeading
         icon={CalendarDays}
         title={t('historyCalendar')}
-        hint={t('typicalWaits.basedOn', { days: HISTORY_WINDOW_DAYS })}
+        // `+ 1`: the window is today AND the thirty days behind it, so the grid draws 31 cells.
+        hint={t('typicalWaits.basedOn', { days: HISTORY_WINDOW_DAYS + 1 })}
         frosted
         className="mb-0 rounded-b-none"
       />
@@ -84,11 +85,20 @@ export function AttractionHistoryPanel({
           step. */}
         <ParkCalendarLegend />
 
-        {loading ? (
-          <AttractionHistoryGridPlaceholder />
-        ) : (
-          <AttractionHistoryGrid history={history} schedule={schedule} />
-        )}
+        {/* The grid's box, held by the placeholder AND by whatever replaces it.
+          A ride can have thirty quiet days — verified on `phantasialand/moptis-monkey-depot` and
+          `phantasialand/avoras`, 2 of 8 non-headliners sampled — and the grid then renders one
+          sentence. Without this the chapter went from 2024 px to 40 px on a phone the moment the
+          fetch landed, pulling the whole page tail up with it. Nothing in the shell predicts it
+          (`statistics` is null on every attraction of the park payload), so the reservation
+          cannot be conditional; what it can do is not be given back. */}
+        <div className="min-h-[var(--ride-cal-h)] lg:min-h-[var(--ride-cal-h-lg)]">
+          {loading ? (
+            <AttractionHistoryGridPlaceholder />
+          ) : (
+            <AttractionHistoryGrid history={history} schedule={schedule} todayIso={todayIso} />
+          )}
+        </div>
       </div>
     </section>
   );

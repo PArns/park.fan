@@ -13,6 +13,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { Link } from '@/i18n/navigation';
 import { Clock, MapPin, Sparkles } from 'lucide-react';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
@@ -58,7 +59,7 @@ import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
-import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
+import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
@@ -360,6 +361,29 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // profile and the FAQ tiles already follow.
   const hasPlanChapter = Boolean(attraction.ropeDrop || attraction.typicalWaits?.displayable);
 
+  /**
+   * Does this park publish wait times at all?
+   *
+   * Two whole chapters answer questions that have no answer without them — today's curve and the
+   * 30-day calendar — and both are client-loaded behind a reserved box. On Hansa-Park, which
+   * publishes wait times only inside its own app, that box was 880 px on a desktop and 2024 px on
+   * a phone, and what landed in it was the one-line „Keine historischen Daten"; the chart card
+   * collapsed from its 401 px skeleton to 2 px. Measured with `pnpm measure:cls --late --scroll`
+   * on `hansa-park/nessie`: **0.5325** with the reader parked on the chapter, all of it those two
+   * boxes deflating.
+   *
+   * The curated `liveWaitTimes` flag is the only honest signal here and the server has it — a
+   * park with no source is byte-for-byte a park shut for the night, so this may never be derived
+   * from an empty payload. `NoLiveWaitTimesNotice` above the chapters already says why they are
+   * gone.
+   *
+   * What this does NOT cover is a ride inside a wait-times park that has no measured day of its
+   * own (2 of 8 non-headliners sampled at Phantasialand). Nothing in the shell can predict it —
+   * `statistics` is null on every attraction of the park payload — so it is left alone rather
+   * than guessed at, the same call `NearbyParksSection` makes one page over.
+   */
+  const waitsReadable = hasReadableWaitTimes(park);
+
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
       <>
@@ -560,6 +584,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   attractionSlug={attractionSlug}
                   attraction={attraction}
                   timezone={park.timezone}
+                  hasWaitTimeChapters={waitsReadable}
                   hasPlanChapter={hasPlanChapter}
                   hasRideProfile={hasRideProfile}
                   rideProfileCount={attraction.rideProfile?.elements?.length ?? 0}
@@ -583,21 +608,39 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Chapter: today's curve. The live minute moved up into the header card, so what
               this chapter is about is the day — what the queue has done since opening and what it
               is forecast to do — plus the ride's other queues. */}
-            <PageSection icon={Clock} title={t('todayChart.title')} frosted id="live">
-              {/* initialPark is trimmed to THIS attraction AND to the park-level fields this page
+            {waitsReadable && (
+              <PageSection
+                icon={Clock}
+                title={t('todayChart.title')}
+                // The chart's own h3 said this same string one line under the h2, so it draws no
+                // heading here (`hideTitle`) and its KI-Prognose pill rides up with the title it
+                // belonged to — the glossary link is the reason it is worth carrying over.
+                badge={
+                  <GlossaryTermLink termId="ai-forecast">
+                    <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
+                      <Sparkles className="h-3 w-3" aria-hidden="true" />
+                      {t('todayChart.aiBadge')}
+                    </Badge>
+                  </GlossaryTermLink>
+                }
+                frosted
+                id="live"
+              >
+                {/* initialPark is trimmed to THIS attraction AND to the park-level fields this page
                 actually reads (see leanParkForAttractionShell): passing the full park serialized
                 all ~95 sibling attractions plus 46 restaurants, 17 opening days, the weather block
                 and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was
                 read. */}
-              <LiveAttractionData
-                initialPark={shellPark}
-                attractionSlug={attractionSlug}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-              />
-            </PageSection>
+                <LiveAttractionData
+                  initialPark={shellPark}
+                  attractionSlug={attractionSlug}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                />
+              </PageSection>
+            )}
 
             {/* Chapter: plan your visit — rope-drop and typical waits, both server-rendered in
               the shell for headliners so they paint together; side by side on wide screens,
@@ -651,15 +694,17 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               CDN-cached attraction detail route (shared by key with the chart above and the
               header card, so all three are one fetch); the heading and the legend need no data
               and are in the served HTML, only the grid's own box is held. */}
-            <AttractionHistorySections
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              attractionSlug={attractionSlug}
-              todayIso={todayIso}
-              suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
-            />
+            {waitsReadable && (
+              <AttractionHistorySections
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                attractionSlug={attractionSlug}
+                todayIso={todayIso}
+                suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
+              />
+            )}
 
             {/* Chapter: what this ride is and what it does — the curated link into
               the glossary. Static (hand-seeded) data, so it renders straight into

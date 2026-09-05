@@ -7,13 +7,14 @@ import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
+import { formatPeakDate } from '@/components/parks/attraction-typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { LocalTime } from '@/components/ui/local-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { formatTime } from '@/lib/utils/intl-format';
 import { getStandbyWait } from '@/lib/utils/park-utils';
-import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
+import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 import type {
   AccuracyBadge,
@@ -50,6 +51,13 @@ interface RideNowPanelProps {
    * JavaScript. This route is `force-dynamic`, so the server clock costs nothing here.
    */
   todayIso: string;
+  /**
+   * How many best-visit slots the SERVER render saw, for the column's row reservation.
+   *
+   * Separate from `attraction.bestVisitTimes` because that field is overlaid by the live merge —
+   * see `slotSlots` below for what reading the merged one did to the fold.
+   */
+  shellSlotCount: number;
   /** Today's schedule row for the park, from the client detail fetch. */
   todaySchedule?: ScheduleItem | null;
   /** A background poll is in flight. */
@@ -82,6 +90,7 @@ export function RideNowPanel({
   status,
   statusLabel,
   todayIso,
+  shellSlotCount,
   todaySchedule,
   isRefreshing,
 }: RideNowPanelProps) {
@@ -107,18 +116,14 @@ export function RideNowPanel({
     : (stats?.maxWaitToday ?? null);
 
   /**
-   * The trend arrow's delta, in minutes.
+   * The queue's short-term movement — arrow and figure from ONE derivation.
    *
-   * `roundWaitDeltaTo5` and never `roundWaitTo5`: the latter floors everything under 2.5 to zero
-   * because no queue is minus fifteen minutes long, which deletes the whole falling half of the
-   * scale and renders every shrinking queue as „stabil".
+   * `shortTermWaitTrend` is `AttractionCard`'s, so the panel and the ride's own card on the park
+   * page cannot disagree. This used to take its direction from `attraction.trend` (the API's
+   * reading) and its number from today's second half against its first, which is a different
+   * question: at 18:00 a queue reading 70, 70, 55, 50 drew a falling arrow next to `+30 min`.
    */
-  const trendDelta = useMemo(() => {
-    if (!history || history.length < 4) return null;
-    const half = Math.floor(history.length / 2);
-    const avg = (xs: { waitTime: number }[]) => xs.reduce((n, x) => n + x.waitTime, 0) / xs.length;
-    return roundWaitDeltaTo5(avg(history.slice(half)) - avg(history.slice(0, half)));
-  }, [history]);
+  const trend = useMemo(() => shortTermWaitTrend(history), [history]);
 
   /**
    * Today's typical pair, from the ride's own weekday rather than the weekday/weekend average.
@@ -146,9 +151,17 @@ export function RideNowPanel({
       .slice(0, SLOT_ROWS);
   }, [attraction.bestVisitTimes, browserNow]);
 
-  // Reserved from the SHELL's own list, not from what is still ahead: the row count must not
-  // shrink as the day's slots pass, or the panel — and everything under it — moves at 14:00.
-  const slotSlots = Math.min(SLOT_ROWS, attraction.bestVisitTimes?.length ?? 0);
+  /**
+   * Rows the slot column reserves.
+   *
+   * From `shellSlotCount`, which the server render measured, and NOT from `attraction` — that one
+   * is the merged object, and `useLiveAttractionData` overlays `bestVisitTimes` from the detail
+   * response. Six of Phantasialand's forty rides ship an empty list in the park payload and get
+   * two slots from the detail endpoint, so reading it here made `columnCount` go 2 → 3 about
+   * 300 ms in: a whole `PANEL_CELL` appearing under the h1, in the fold. It must not shrink as
+   * the day's slots pass either, which is why it is not `slots.length`.
+   */
+  const slotSlots = Math.min(SLOT_ROWS, shellSlotCount);
 
   const accuracy = attraction.predictionAccuracy;
   const cell = PANEL_CELL;
@@ -237,9 +250,7 @@ export function RideNowPanel({
                     {roundWaitTo5(wait)}
                   </span>
                   <span className="text-muted-foreground text-base">{tCommon('minutes')}</span>
-                  {attraction.trend && trendDelta !== null && (
-                    <TrendPill direction={attraction.trend} delta={trendDelta} className="ml-0.5" />
-                  )}
+                  {trend && <TrendPill {...trend} className="ml-0.5" />}
                 </div>
               ) : (
                 <span className="text-xl font-semibold">{statusLabel}</span>
@@ -277,7 +288,7 @@ export function RideNowPanel({
                 poll overlays the park's `status` and nothing else, so `currentLoad` would still
                 hold whatever the day-cached shell fetch was written with. */}
               <PanelMetric caption={t('peakToday')}>
-                {stats?.peakWaitToday ? (
+                {stats?.peakWaitToday != null ? (
                   <span className="text-lg font-bold tabular-nums">
                     {roundWaitTo5(stats.peakWaitToday)}
                     <span className="text-muted-foreground ml-1 text-sm font-normal">
@@ -406,7 +417,9 @@ export function RideNowPanel({
                 <p className="text-muted-foreground mt-auto text-xs">
                   {t('typicalWaits.peak', {
                     value: roundWaitTo5(attraction.typicalWaits.peak.value),
-                    date: attraction.typicalWaits.peak.date,
+                    // Never the raw field: it is `yyyy-MM-dd`, and it rendered as „Rekord 135 Min
+                    // · 2026-07-16" beside a card two chapters down saying „16. Juli 2026".
+                    date: formatPeakDate(attraction.typicalWaits.peak.date, locale),
                   })}
                 </p>
               )}

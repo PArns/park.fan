@@ -6,11 +6,11 @@ import { AlertCircle, Layers, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
 import { SectionHeading } from '@/components/common/section-heading';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
+import { DailyWaitTimeChartPlaceholder } from '@/components/parks/daily-wait-time-chart-placeholder';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
@@ -110,69 +110,72 @@ export function LiveAttractionData({
           </div>
         </Card>
       )}
+      {/* Today's curve. The live value, the status badge and the accuracy chip that used to sit
+          above it now open the page inside the header card, where the park page puts the same
+          readings, so what is left here is the chart.
 
-      {/* Today's „Wartezeiten heute" chart. It used to sit under a header carrying the live
-          value, the status badge and the accuracy chip — all three now open the page inside the
-          header card („Heute an dieser Bahn"), where the park page puts the same readings, so
-          what is left here is the chart and the chapter is about the day rather than the minute.
-      */}
-      <Card className="mb-8 gap-0 overflow-hidden p-0">
-        {/* Loading state and chart share ONE box with a reserved height, because the placeholder used to stand in
-            for the chart at less than half its size: 213px held for the 401–421px the chart
-            actually occupies, so the moment the detail fetch landed the rest of the ride page
-            dropped ~208px. The height is the chart's own anatomy measured at each breakpoint
-            (title 28 + explainer 20 + legend 17 + plot 145/160/189 + best-slot lines + the
-            Fancast link, plus p-4/sm:p-6) — the plot grows at `sm` with the taller bars and again
-            at `md`, where the hour-label row appears. Reserved at the one-line best-slot variant,
-            so a ride that renders two of them still settles within ~20px instead of 208. */}
-        {!mounted || isDetailLoading ? (
-          <div className="min-h-[352px] p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
-            <div className="space-y-3" aria-hidden="true">
-              <Skeleton className="h-7 w-44 max-w-full" />
-              <Skeleton className="h-5 w-full max-w-md" />
-              <Skeleton className="h-4 w-48 max-w-full" />
-              <Skeleton className="h-[145px] w-full rounded-lg sm:h-[160px] md:h-[189px]" />
-              <Skeleton className="h-4 w-40 max-w-full" />
-              <Skeleton className="h-5 w-32 max-w-full" />
+          The whole card is gated: with `hasTodayChart` false it used to render as a bordered box
+          with nothing in it, ~2 px tall under a chapter heading. The old code always had the live
+          panel inside, so the empty case never came up; a ride with no forecast and no reading
+          today (verified on `hansa-park/animal-babies-of-peterhof`) got exactly that. */}
+      {(!mounted || isDetailLoading || hasTodayChart) && (
+        <Card className="mb-8 gap-0 overflow-hidden p-0">
+          {/* Loading state and chart share ONE box with a reserved height, because the placeholder
+              used to stand in for the chart at less than half its size: 213 px held for the
+              401-421 px the chart occupies, so the moment the detail fetch landed the rest of the
+              ride page dropped ~208 px. The skeleton mirrors the chart's anatomy row for row:
+              explainer, legend, plot, best-slot line, Fancast link. It carries no title row,
+              because the chart no longer draws one (`hideTitle`; the chapter heading above says
+              it). The plot grows at `sm` with the taller bars and again at `md`, where the
+              hour-label row appears. */}
+          {!mounted || isDetailLoading ? (
+            <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
+              <DailyWaitTimeChartPlaceholder />
             </div>
-          </div>
-        ) : hasTodayChart ? (
-          <div className="min-h-[352px] p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
-            <DailyWaitTimeChartClient
-              history={detail!.history}
-              hourlyForecast={detail!.hourlyForecast}
-              timezone={park.timezone}
-              schedule={detail!.schedule}
-              bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
-              corridor={{ continent, country, city, parkSlug, attractionSlug }}
-              translations={{
-                title: tChart('title'),
-                now: tChart('now'),
-                bestSlots: tChart('bestSlots', { hours: '{hours}' }),
-                bestSlotsGood: tChart('bestSlotsGood', { hours: '{hours}' }),
-                timeSuffix: tChart('timeSuffix'),
-                min: tChart('min'),
-                ratingOptimal: tChart('ratingOptimal'),
-                ratingGood: tChart('ratingGood'),
-                aiBadge: tChart('aiBadge'),
-                aiExplainer: tChart('aiExplainer'),
-                legendRecorded: tChart('legendRecorded'),
-                legendForecast: tChart('legendForecast'),
-                legendTypical: tChart('legendTypical'),
-              }}
-            />
-            <div className="mt-3">
-              <Link
-                href="/fancast"
-                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
-              >
-                {tChart('fancastLink')}
-                <ArrowRight className="h-3 w-3" aria-hidden="true" />
-              </Link>
+          ) : (
+            <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
+              <DailyWaitTimeChartClient
+                // The chapter heading above already reads the chart's own title, so it draws
+                // none. The KI-Prognose badge moved up beside that h2 with it.
+                hideTitle
+                // The same box this card held a moment ago, for the frame in which the chart's
+                // own mount gate has not caught up with this component's.
+                fallback={<DailyWaitTimeChartPlaceholder />}
+                history={detail!.history}
+                hourlyForecast={detail!.hourlyForecast}
+                timezone={park.timezone}
+                schedule={detail!.schedule}
+                bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
+                corridor={{ continent, country, city, parkSlug, attractionSlug }}
+                translations={{
+                  title: tChart('title'),
+                  now: tChart('now'),
+                  bestSlots: tChart('bestSlots', { hours: '{hours}' }),
+                  bestSlotsGood: tChart('bestSlotsGood', { hours: '{hours}' }),
+                  timeSuffix: tChart('timeSuffix'),
+                  min: tChart('min'),
+                  ratingOptimal: tChart('ratingOptimal'),
+                  ratingGood: tChart('ratingGood'),
+                  aiBadge: tChart('aiBadge'),
+                  aiExplainer: tChart('aiExplainer'),
+                  legendRecorded: tChart('legendRecorded'),
+                  legendForecast: tChart('legendForecast'),
+                  legendTypical: tChart('legendTypical'),
+                }}
+              />
+              <div className="mt-3">
+                <Link
+                  href="/fancast"
+                  className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+                >
+                  {tChart('fancastLink')}
+                  <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
-          </div>
-        ) : null}
-      </Card>
+          )}
+        </Card>
+      )}
 
       {/* Other Queue Types */}
       {attraction.queues && attraction.queues.length > 1 && (

@@ -40,6 +40,11 @@ export function RideLiveHeader({
 }: RideLiveHeaderProps) {
   const t = useTranslations('attractions');
 
+  // Measured on the SHELL, before the live merge can overlay `bestVisitTimes` — see the panel's
+  // `slotSlots`. `initialPark` is the one-attraction snapshot the page built.
+  const shellSlotCount =
+    initialPark.attractions?.find((a) => a.slug === attractionSlug)?.bestVisitTimes?.length ?? 0;
+
   const { park, attraction, isFetching } = useLiveAttractionData({
     continent,
     country,
@@ -74,6 +79,7 @@ export function RideLiveHeader({
       status={status}
       statusLabel={t(`status.${status.toLowerCase()}` as 'status.operating')}
       todayIso={todayIso}
+      shellSlotCount={shellSlotCount}
       todaySchedule={todaySchedule}
       isRefreshing={isFetching}
     />

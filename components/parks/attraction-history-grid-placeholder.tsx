@@ -10,6 +10,6 @@ import { Skeleton } from '@/components/ui/skeleton';
  */
 export function AttractionHistoryGridPlaceholder() {
   return (
-    <Skeleton className="h-[var(--ride-cal-h)] w-full rounded-xl lg:h-[var(--ride-cal-h-lg)]" />
+    <Skeleton className="h-full min-h-[var(--ride-cal-h)] w-full rounded-xl lg:min-h-[var(--ride-cal-h-lg)]" />
   );
 }

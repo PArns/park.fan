@@ -51,21 +51,29 @@ export function AttractionHistorySections({
 
   return (
     <>
-      {/* Typical (P50) vs busy (P90) peak waits. For headliners this is rendered in the static
-          shell instead (suppressTypicalWaits) for SEO + instant paint; non-headliner displayable
-          rides still get it client-side here. */}
-      {!suppressTypicalWaits && detail?.typicalWaits?.displayable && (
-        <section className="mb-8">
-          <AttractionTypicalWaits typicalWaits={detail.typicalWaits} />
-        </section>
-      )}
-
       <AttractionHistoryPanel
         history={detail?.history}
         schedule={detail?.schedule}
         loading={loading}
         todayIso={todayIso}
       />
+
+      {/* Typical (P50) vs busy (P90) peak waits. For headliners the shell already carries this and
+        renders it in „Beste Besuchszeit planen" (`suppressTypicalWaits`); for everyone else it
+        exists only on the attraction detail — the park payload carries `typicalWaits` for the ten
+        headliners of Phantasialand and for none of its thirty other rides — so it can only arrive
+        client-side, and nothing in the shell predicts whether it will: 2 of 8 sampled
+        non-headliners get a displayable one. Reserving its 331 px for the other six would be the
+        `NearbyParksSection` mistake, so the box is not reserved and the position is what pays
+        instead. UNDER the calendar, where its arrival pushes the page's tail rather than the
+        1064–2258 px grid a reader at this chapter is looking at (measured: most of Talocan's
+        0.3264 on a phone). It sits well there for the same reason the park's crowd calendar puts
+        the historical statistics under its grid — the same question, one grain coarser. */}
+      {!suppressTypicalWaits && detail?.typicalWaits?.displayable && (
+        <section className="mt-8">
+          <AttractionTypicalWaits typicalWaits={detail.typicalWaits} />
+        </section>
+      )}
     </>
   );
 }
