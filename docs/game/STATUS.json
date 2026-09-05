@@ -43,16 +43,16 @@
   },
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
-    "readFrom": ".game-render/sky/report.json",
+    "readFrom": ".game-render/skyfix/report.json",
     "bootMs": 10276,
     "consoleErrors": 0,
     "hydrationWarnings": 0,
-    "drawCalls": 62,
-    "triangles": 32118,
+    "drawCalls": 70,
+    "triangles": 31862,
     "activeMeshes": 1,
     "engine": "webgl2",
     "preset": "medium",
-    "note": "12:00 has no sky in frame; 20:30 is black. Numbers within budget, frame not passable."
+    "note": "Sky renders after the emissiveTexture fix; washed out. 70 draw calls, 0 console errors."
   },
   "budget": {
     "fps": 50,
@@ -281,8 +281,8 @@
   },
   "openIssues": [
     "NOTHING HAS PASSED A GATE. The critic never ran for any module; every number in this file is a budget measurement, not a quality verdict.",
-    "12:00 renders no sky and dim ground (.game-render/final1/1200-overview.png).",
-    "22:00 is very nearly black (.game-render/final1/2200-overview.png) — ART_BIBLE asks for a deep blue with readable silhouettes. Half of that frame belongs to effects and scenery, which never started.",
+    "The sky renders now but is WASHED OUT: a flat pale grey at noon instead of blue. The emissive path clamps the HDR sky to white — emissiveTexture.level made no difference in the probe, so the clamp happens before it. Next step is measured tuning of the emissive term, not another guess.",
+    "The camera fallback presets were wrong and are fixed: overview looked 37 degrees down with a 25.8-degree half-FOV, so the horizon was 11.3 degrees out of frame and NO screenshot of that preset could ever contain sky. Several rounds of 'the sky is black' were partly this.",
     "20 of 24 modules are scaffolds: paths, pools, track, buildings, scenery, shops, rides, flumes, trains, guests, staff, management, overlays, tools, camera, scenarios, persistence, audio, effects, demo-park.",
     "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
     "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour."

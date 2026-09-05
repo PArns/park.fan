@@ -551,6 +551,18 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
         render.scene.onAfterRenderObservable.addOnce(() => resolve());
       }),
     world: () => world,
+    /**
+     * The Babylon scene and engine, for a debugger and for the critic agents the brief asks to
+     * inspect draw calls, materials and meshes.
+     *
+     * They are not reachable any other way: deep imports mean there is no `BABYLON` global and no
+     * `EngineStore` to read `LastCreatedScene` off, so an outside probe can see the canvas and
+     * nothing behind it. Finding out why the sky dome drew black cost a round for exactly that
+     * reason — every question about a mesh had to be answered by reading source instead of asking
+     * the running scene.
+     */
+    scene: () => render.scene,
+    engine: () => render.engine,
   };
   (window as unknown as { __parkfan_game: typeof harness }).__parkfan_game = harness;
 
@@ -583,16 +595,36 @@ export function orderModules(modules: readonly GameModule[], showcase: string | 
   return Array.from(wanted);
 }
 
+/**
+ * Camera presets the harness applies, and the fallback for a scene with no `camera` module.
+ *
+ * **`beta` is the angle from +Y, so the view points `90 - beta` degrees DOWN, and the horizon is
+ * only in frame while that is less than half the vertical FOV.** With `camera.fov = 0.9` rad the
+ * half-angle is 25.8 degrees, so the old `overview` at `beta = PI/3.4` looked 37.1 degrees down and
+ * put its top edge 11.3 degrees BELOW the horizon: no sky could appear in it at any time of day,
+ * under any weather, however well the sky module worked.
+ *
+ * That cost real time. Screenshot after screenshot of this preset was read as "the sky renders
+ * black" and then as "the sky is missing", and one round was spent recording it against the
+ * environment module — which was rendering a dome the camera was never pointed at. The lesson is
+ * in the arithmetic rather than in the picture: a frame with no horizon in it cannot be evidence
+ * about a sky.
+ *
+ * `overview` is 23.5 degrees down now, which leaves the horizon and a 2.2-degree strip of sky in
+ * the top of the frame — enough to judge time of day and weather, still steep enough to read a
+ * park layout. `night` follows it. The radius grows with the shallower angle because a flatter
+ * camera sees less ground for the same distance.
+ */
 const FALLBACK_PRESETS: Record<
   string,
   { alpha: number; beta: number; radius: number; target: [number, number, number] }
 > = {
-  overview: { alpha: -Math.PI / 3, beta: Math.PI / 3.4, radius: 260, target: [0, 0, 0] },
+  overview: { alpha: -Math.PI / 3, beta: 1.16, radius: 340, target: [0, 8, 0] },
   entrance: { alpha: Math.PI / 2, beta: Math.PI / 2.6, radius: 90, target: [0, 2, 170] },
   close: { alpha: -Math.PI / 4, beta: Math.PI / 2.4, radius: 40, target: [0, 2, 0] },
   coaster: { alpha: -Math.PI / 2.5, beta: Math.PI / 3, radius: 140, target: [-90, 10, -40] },
   pool: { alpha: Math.PI / 5, beta: Math.PI / 3, radius: 110, target: [110, 0, 60] },
-  night: { alpha: -Math.PI / 3, beta: Math.PI / 3.4, radius: 220, target: [0, 0, 0] },
+  night: { alpha: -Math.PI / 3, beta: 1.16, radius: 300, target: [0, 8, 0] },
   ground: { alpha: Math.PI / 2, beta: Math.PI / 2.05, radius: 12, target: [0, 1.7, 120] },
 };
 

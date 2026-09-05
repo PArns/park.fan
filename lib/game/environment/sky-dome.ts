@@ -100,15 +100,30 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
   domeTexture.wrapV = Texture.CLAMP_ADDRESSMODE;
 
   const domeMaterial = new StandardMaterial('env-sky', scene);
-  domeMaterial.diffuseTexture = domeTexture;
-  // The colour goes in EMISSIVE, not diffuse, and this is not a style choice.
-  // `StandardMaterial.disableLighting` does not mean "light it flat": it skips the lighting loop,
-  // and `default.fragment` initialises `diffuseBase` to vec3(0) and fills it only in that loop —
-  // so `finalDiffuse = clamp(diffuseBase * diffuseColor + emissiveColor, 0, 1) * texture` is the
-  // texture times the emissive alone. With the colour in `diffuseColor` the dome drew pure black
-  // at every hour, which looked exactly like a culled mesh and took a five-step bisect (fresh
-  // material vs. cloned mesh vs. texture type) to tell apart from one. The clamp is on the
-  // emissive term only, so the HDR half-float texture still passes through unclipped.
+  /**
+   * The sky texture goes on **`emissiveTexture`**, not `diffuseTexture`, and the difference is
+   * the whole visible sky.
+   *
+   * With `disableLighting = true` the lighting loop is skipped and `diffuseBase` stays `vec3(0)`.
+   * A *diffuse texture* is multiplied into that base, so it is multiplied by nothing: the dome
+   * drew pure black at every hour, in every weather, at every sampling mode. It looked exactly
+   * like a culled mesh, and a comment on this very line asserted the opposite mechanism — that
+   * the emissive term carried the texture — which is what made it survive a round of screenshots
+   * being read as "the sky module is broken".
+   *
+   * Measured rather than reasoned, at 12:00 on the overview camera, sampling the frame's sky band:
+   *
+   *   diffuseTexture, bilinear ......... (0, 0, 0)
+   *   diffuseTexture, NEAREST .......... (0, 0, 0)   so not a filtering problem
+   *   diffuseTexture, gammaSpace off ... (0, 0, 0)   nor a double-linearise
+   *   diffuseTexture, +70 frames ....... (0, 0, 0)   nor the chunked upload not finishing
+   *   no texture, flat red emissive .... (199, 0, 18) so the mesh and material path are fine
+   *   emissiveTexture .................. (218, 218, 218)
+   *
+   * The GPU texture was correct throughout — `readPixels` gave mean 0.117, max 0.298, which are
+   * the sky model's own numbers. Everything was right except which slot the texture sat in.
+   */
+  domeMaterial.emissiveTexture = domeTexture;
   domeMaterial.emissiveColor = new Color3(1, 1, 1);
   domeMaterial.diffuseColor = Color3.Black();
   domeMaterial.specularColor = Color3.Black();
