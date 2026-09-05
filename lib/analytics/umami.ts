@@ -41,7 +41,9 @@
  * - glossary_category_filtered: category (slug or 'none')
  * - glossary_searched: queryLength
  * - preferred_source_clicked / feedback_opened: (no properties)
+ * - planner_opened: source
  * - plan_day_started: parkName
+ * - plan_optimized: parkName
  * - web-vital-inp: value, target, phase, path (only for non-`good` samples, see WebVitalsReporter)
  */
 
@@ -95,7 +97,9 @@ export const UMAMI_EVENTS = {
   // Feedback (Userback widget — fired when the visitor opens the feedback form)
   FEEDBACK_OPENED: 'feedback_opened',
 
-  // Trip planner (fired once per park+date, when that day gains its first block)
+  // Trip planner (fired when the panel goes from closed to open, whichever way in)
+  PLANNER_OPENED: 'planner_opened',
+  // …once per park+date, when that day gains its first block
   PLAN_DAY_STARTED: 'plan_day_started',
   // …and when the visitor lets the day sort itself. A click, not a load.
   PLAN_OPTIMIZED: 'plan_optimized',
@@ -164,6 +168,29 @@ export interface TabChangedProps {
   parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
+
+/**
+ * Which way into the trip planner produced an open.
+ *
+ * A closed union rather than a free string, so a typo is a compile error at the
+ * call site instead of a value nobody notices in the report until the column has
+ * two spellings of the same entry point.
+ *
+ * - `tab` — the tab on the window's right edge, drawn on every page.
+ * - `park-header` — "Tag im Phantasialand planen" in a park page's or a wait-time
+ *   calendar's header (`ParkPlannerLink`).
+ * - `calendar-day` — "diesen Tag planen" in the wait-time calendar's day dialog
+ *   (`PlanDayButton`).
+ * - `wizard` — the wizard's last step on the planner's own page. From inside the
+ *   panel the wizard opens nothing, so that press is not an open and is absent
+ *   here by construction.
+ * - `plan-list` — a day picked out of the list on the planner's own page.
+ *
+ * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
+ * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
+ * inside the already-open panel. Neither is a way in.
+ */
+export type PlannerOpenedSource = 'tab' | 'park-header' | 'calendar-day' | 'wizard' | 'plan-list';
 
 /**
  * Helper function to remove undefined values from event data
@@ -270,6 +297,39 @@ export function trackLocationBannerClicked(): void {
 
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
+}
+
+/**
+ * The trip planner's panel came on screen.
+ *
+ * The top of the funnel, and the one measurement the planner did not have: with
+ * only `plan_day_started` and `plan_optimized` a quiet month is unreadable —
+ * nobody opens the thing, and everybody who opens it walks away again, look
+ * identical from the outside.
+ *
+ * ONE property, and it is the only one here that leads to a decision. Several
+ * ways in were added over a few weeks (the button in the park header, the
+ * calendar's day dialog, the planner page's own list) and whether any of them
+ * earns its place is exactly what `source` answers; the value is a closed union,
+ * so a report cannot end up with two spellings of one entry point. What is
+ * deliberately NOT sent: `parkName` (opened from the edge tab there is often no
+ * park at all, and where there is one `plan_day_started` already names it),
+ * `date`, how many rides are already planned, and the locale and path Umami
+ * carries on every payload anyway. Cardinality is free — Umami bills one row per
+ * property per event, not per distinct value — so five sources cost the same as
+ * two.
+ *
+ * Fired on the CLOSED → OPEN edge and nowhere else. A request while the panel is
+ * already up — a second day pressed in the calendar, the wizard finishing inside
+ * the panel — is not an opening and bills nothing; closing and opening again is
+ * two.
+ *
+ * Cost: 2 billed rows per opening (the event plus its property). At a few
+ * hundred openings a month that is under 1 % of the 100k plan; it would have to
+ * run to ~50,000 openings a month before it were worth pricing again.
+ */
+export function trackPlannerOpened(source: PlannerOpenedSource): void {
+  trackEvent(UMAMI_EVENTS.PLANNER_OPENED, { source });
 }
 
 /**

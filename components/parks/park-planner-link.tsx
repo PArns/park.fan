@@ -24,7 +24,7 @@ import type { Locale } from '@/i18n/config';
  *
  * **It is an anchor that does not navigate, and that is a change of mind.** The
  * click asks for the panel and for the wizard's date step on the park already on
- * screen — `plannerUi.requestOpen('page-park-wizard')` — which is the same
+ * screen — `plannerUi.requestOpen('park-header', 'page-park-wizard')` — which is the same
  * gesture the calendar's "plan this day" makes. The note that used to stand here
  * said a link cancelling its own navigation would lie to the reader, and that
  * was true of what the alternative was then: a planner page that opens by asking
@@ -86,7 +86,7 @@ export function ParkPlannerLink({
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         if (event.button !== 0) return;
         event.preventDefault();
-        plannerUi.requestOpen('page-park-wizard');
+        plannerUi.requestOpen('park-header', 'page-park-wizard');
       }}
       className={cn(
         'bg-primary/10 text-primary hover:bg-primary/20 inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors max-sm:min-h-11',

@@ -15,6 +15,8 @@
  * boolean would collapse them into once the panel had been closed in between.
  */
 
+import type { PlannerOpenedSource } from '@/lib/analytics/umami';
+
 type Listener = () => void;
 
 /**
@@ -39,6 +41,20 @@ export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 
 let requests = 0;
 let wizardRequests = 0;
+/**
+ * Who asked last, for the one `planner_opened` property.
+ *
+ * NOT a third counter and not part of any snapshot: it is read once, by the
+ * launcher, in the commit where the panel actually goes from closed to open, and
+ * nothing renders from it. `useSyncExternalStore` wants a primitive it can
+ * compare, and a source in the snapshot would either be a second number to map
+ * back to a string or an object that loops the subscribers — see
+ * {@link plannerUi.getWizardSnapshot}.
+ *
+ * The initial value is the edge tab because that is the only way in that exists
+ * on every page; it is overwritten before it is ever read.
+ */
+let openSource: PlannerOpenedSource = 'tab';
 const listeners = new Set<Listener>();
 
 export const plannerUi = {
@@ -82,10 +98,38 @@ export const plannerUi = {
    * A wizard request is ALSO a panel request — the panel has to be on screen
    * for the dialog to open over it — so it moves both counters and the panel's
    * own subscriber needs no special case for it.
+   *
+   * `source` comes FIRST and has no default, so a new way in cannot reach
+   * production unattributed: leaving it out is a compile error, and the two
+   * unions share no member, so swapping the arguments is one too. The intent
+   * keeps its default, which is why every existing caller reads as before bar
+   * the one word it now names itself with.
    */
-  requestOpen(next: PlannerOpenIntent = 'panel'): void {
+  requestOpen(source: PlannerOpenedSource, next: PlannerOpenIntent = 'panel'): void {
+    openSource = source;
     requests += 1;
     if (next === 'page-park-wizard') wizardRequests += 1;
     for (const listener of listeners) listener();
+  },
+  /**
+   * Say who is opening the panel without going through the counter.
+   *
+   * One caller, and it is the edge tab: it holds no plan and points at no day,
+   * so it sets the launcher's `open` itself rather than sending a request the
+   * launcher would only turn back into the same `setOpen(true)`. It still owes
+   * the report a name, and this is the whole of what it owes.
+   */
+  noteOpenSource(source: PlannerOpenedSource): void {
+    openSource = source;
+  },
+  /**
+   * The way in that produced the open now on screen.
+   *
+   * Only meaningful in the commit where the panel goes from closed to open —
+   * read at any other moment it names whoever asked last, which may be a request
+   * that arrived while the panel was already up and opened nothing.
+   */
+  getOpenSource(): PlannerOpenedSource {
+    return openSource;
   },
 };

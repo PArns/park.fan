@@ -336,7 +336,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * The park page's own button, answered.
    *
    * `ParkPlannerLink` in the park header asks for the panel AND for the wizard
-   * on the park the route is about — `plannerUi.requestOpen('page-park-wizard')`
+   * on the park the route is about — `requestOpen(source, 'page-park-wizard')`
    * — and until this it only got the first half: the panel opened on whatever
    * it had been showing, with „Tag im Phantasialand planen" as a second button
    * inside it. The panel is the only place that can answer, because
@@ -350,7 +350,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * is lazily mounted, so on a page that has never opened it this effect first
    * runs with the counter already at 1, which is the press that mounted it.
    *
-   * It is the store's WIZARD counter, so a plain `requestOpen()` from the park
+   * It is the store's WIZARD counter, so a plain panel request from the park
    * calendar or a ride button never reaches here at all — see
    * `plannerUi.getWizardSnapshot`, which explains why that question is answered
    * by a second subscription rather than by an intent read inside this effect.
