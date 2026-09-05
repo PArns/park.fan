@@ -4234,14 +4234,28 @@ if (reachable) {
   await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await cols.waitForTimeout(1500);
 
-  // The default panel is 448 px and two columns need 681 (twice the floor a
-  // single column has, plus the divider). So the switch must not be there —
-  // offering it would mean either two columns below the width one is allowed
-  // to be, or a press that does nothing.
+  /** The panel's real box, because the stored number is not what is on screen. */
+  const panelBox = () =>
+    cols.locator(SHEET).evaluate((el) => Math.round(el.getBoundingClientRect().width));
+
+  // This used to assert the opposite — "schmales Panel bietet keine zweite
+  // Spalte an" — on the grounds that the default panel is 448 px, two columns
+  // need 681, and a switch offering what the panel cannot hold would either draw
+  // a column below the floor or do nothing when pressed. What that reasoning
+  // missed is that 448 is the width EVERY visitor starts on: the switch was
+  // invisible until somebody dragged the edge past 681 for reasons of their own,
+  // so the feature announced itself to nobody. The switch is now gated on the
+  // WINDOW and the press is what widens the panel, so at 1440 px it is here at
+  // 448 px too — off, over a single column.
+  const narrowPanel = await panelBox();
+  const toggle = cols.locator(`${SHEET} [data-planner-second-column]`);
   check(
-    'schmales Panel bietet keine zweite Spalte an',
-    (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
-      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1
+    'schmales Panel bietet die zweite Spalte trotzdem an',
+    (await toggle.count()) === 1 &&
+      (await toggle.getAttribute('data-planner-second-column')) === 'off' &&
+      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      narrowPanel < 681,
+    `${narrowPanel} px`
   );
 
   // The day picker moved onto the column with the park name: with two columns a
@@ -4256,21 +4270,59 @@ if (reachable) {
         .count()) === 0
   );
 
+  // The other half of the promise, and the reason the switch may be offered at
+  // all: pressing it at 448 px widens the panel to at least the 681 two columns
+  // need and draws them. Measured off the DOM rather than off
+  // `parkfan_planner_width`, because the stored number is capped against the
+  // window on the way out (`fitToViewport`) and a check that believed storage
+  // would pass on a panel nobody can see.
+  await toggle.click();
+  await cols.waitForTimeout(2500);
+  const widenedPanel = await panelBox();
+  check(
+    'ein Klick verbreitert das schmale Panel auf zwei Spalten',
+    widenedPanel >= 681 && (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2,
+    `${narrowPanel} → ${widenedPanel} px`
+  );
+
+  // And closing it again leaves the width where the press put it. Somebody who
+  // has a 681 px panel asked for one; snapping back to 448 would undo a gesture
+  // nobody made.
+  await toggle.click();
+  await cols.waitForTimeout(800);
+  const afterClose = await panelBox();
+  check(
+    'das Schließen setzt die Breite nicht zurück',
+    afterClose === widenedPanel &&
+      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1,
+    `${afterClose} px`
+  );
+
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
   await cols.reload({ waitUntil: 'networkidle' });
   await cols.locator(LAUNCHER).click();
   await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await cols.waitForTimeout(1500);
 
-  const toggle = cols.locator(`${SHEET} [data-planner-second-column]`);
   check(
     'breites Panel bietet die zweite Spalte an',
     (await toggle.count()) === 1 &&
       (await toggle.getAttribute('data-planner-second-column')) === 'off'
   );
 
+  const widePanel = await panelBox();
   await toggle.click();
   await cols.waitForTimeout(2500);
+
+  // A panel that is ALREADY wide enough keeps the width it was dragged to. The
+  // press only ever raises it to the floor two columns need — somebody who set
+  // 780 px does not want to be thrown back to 681 for pressing a switch.
+  const wideAfterOpen = await panelBox();
+  check(
+    'ein schon breites Panel behält seine Breite',
+    wideAfterOpen === widePanel && widePanel >= 780,
+    `${widePanel} → ${wideAfterOpen} px`
+  );
 
   const columns = cols.locator(`${SHEET} [data-planner-column]`);
   const keys = await columns.evaluateAll((els) =>
@@ -4468,9 +4520,12 @@ if (reachable) {
     (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2
   );
 
-  // Narrowed below the floor the second column is not DRAWN and not offered —
-  // and it is not forgotten either, so widening the panel brings the same day
-  // back instead of making somebody arrange it again.
+  // Narrowed below the floor the second column is not DRAWN — and it is not
+  // forgotten either, so widening the panel brings the same day back instead of
+  // making somebody arrange it again. This used to assert that the switch was
+  // gone as well; it is not, because it is gated on the window now, and the
+  // press is exactly what makes the room. So the assertion is about the two
+  // things that still hold: one column on screen, and the day still in storage.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '448'));
   await cols.reload({ waitUntil: 'networkidle' });
   await cols.locator(LAUNCHER).click();
@@ -4482,9 +4537,26 @@ if (reachable) {
   check(
     'zu schmal blendet die zweite Spalte aus, ohne sie zu vergessen',
     (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
-      (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (await toggle.getAttribute('data-planner-second-column')) === 'off' &&
       (remembered ?? '').includes(NEXT_DATE),
     remembered ?? '(nichts gemerkt)'
+  );
+
+  // Pressed at a narrow panel with something remembered, the switch widens and
+  // brings THAT day back — it does not open tomorrow. Opening tomorrow here
+  // would quietly discard an arrangement somebody made, and the only sign of it
+  // would be a date they did not choose.
+  await toggle.click();
+  await cols.waitForTimeout(2500);
+  const revivedWidth = await panelBox();
+  const revived = await cols
+    .locator(`${SHEET} [data-planner-column]`)
+    .last()
+    .getAttribute('data-planner-column');
+  check(
+    'der Schalter holt am schmalen Panel den gemerkten Tag zurück',
+    revived === `${PARK.slug}:${NEXT_DATE}` && revivedWidth >= 681,
+    `${revived} @ ${revivedWidth} px`
   );
 
   // And back. The stored width is what decides it, so the same press that took
@@ -4517,10 +4589,42 @@ if (reachable) {
   await cols.close();
 }
 
+// The switch is offered on the WINDOW, and this is where that stops. Two columns
+// need 681 px of panel and the page keeps 360 of the window whatever the stored
+// width says (`fitToViewport` caps at `innerWidth - PAGE_MIN_PX`), so under
+// 1041 px the widest panel anybody can have is too narrow: at 900 px it is 540.
+// A switch here would promise a width the cap takes back in the same frame.
+// Deliberately a desktop viewport and not a phone — `isPhone` stops at 639 px
+// and would make this pass for the other reason.
+{
+  const tight = await browser.newPage({ viewport: { width: 900, height: 900 } });
+  noteErrors(tight);
+  await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await tight.evaluate((plan) => {
+    window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+    window.localStorage.removeItem('parkfan_planner_column2');
+    // Stored wide, so the refusal is the window's and not the number's.
+    window.localStorage.setItem('parkfan_planner_width', '780');
+  }, PLAN);
+  await tight.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await tight.locator(LAUNCHER).click();
+  await tight.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await tight.waitForTimeout(1500);
+  check(
+    'ein Fenster unter 1041 px bietet keine zweite Spalte an',
+    (await tight.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (await tight.locator(`${SHEET} [data-planner-column]`).count()) === 1
+  );
+  await tight.close();
+}
+
 // A phone has no second column and must not pretend otherwise: the sheet is the
 // width of the screen there, no drag makes it wider, and two 195 px columns
-// would be two unusable ones. The switch is gated on `isPhone` as well as on the
-// width, so this is a real assertion rather than a restatement of the one above.
+// would be two unusable ones. Since the switch moved onto the window, 390 px is
+// below the 1041 the check above uses too — so this no longer isolates
+// `isPhone`. It is kept because a phone refuses for its own reason, and because
+// everything below it (one foot, nothing painting over anything) is only ever
+// asserted here.
 {
   const phone = await browser.newPage({
     viewport: { width: 390, height: 844 },

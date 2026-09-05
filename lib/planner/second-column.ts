@@ -1,6 +1,6 @@
 'use client';
 
-import { PANEL_WIDTH_MIN } from './panel-width';
+import { PAGE_MIN_PX, PANEL_WIDTH_MIN } from './panel-width';
 
 /**
  * The SECOND day column, when the panel is wide enough to hold one.
@@ -43,6 +43,33 @@ const KEY = 'parkfan_planner_column2';
  * back rather than making somebody arrange it again.
  */
 export const TWO_COLUMN_MIN_WIDTH = PANEL_WIDTH_MIN * 2 + 1;
+
+/**
+ * The WINDOW a two-column panel needs — which is a different question from the
+ * one above, and conflating them hid the whole feature.
+ *
+ * The switch used to be gated on the panel's own width, so at the default 448 px
+ * it was not drawn at all: the only way to learn that the planner has two
+ * columns was to drag the edge past 681 px on the off chance. Offered on the
+ * window instead, the switch is what widens the panel — see the handler in
+ * `planner-flyout.tsx`.
+ *
+ * Derived from both floors rather than typed, because `fitToViewport` caps the
+ * panel at exactly `innerWidth - PAGE_MIN_PX`: below this the panel CANNOT reach
+ * {@link TWO_COLUMN_MIN_WIDTH}, so a switch promising two columns would be
+ * undone by the cap in the same frame. 681 + 360 = 1041 px today, and it moves
+ * on its own if either floor does.
+ */
+export const TWO_COLUMN_MIN_VIEWPORT = TWO_COLUMN_MIN_WIDTH + PAGE_MIN_PX;
+
+/**
+ * The same threshold as a media query, so `useMediaQuery` gets a module-level
+ * string. The hook memoizes `subscribe`/`getSnapshot` on the query, and a
+ * template literal built in a render body would be a fresh string each time —
+ * equal by value, so React keeps the listener, but there is no reason to make
+ * that guarantee depend on `Object.is` over strings.
+ */
+export const TWO_COLUMN_VIEWPORT_QUERY = `(min-width: ${TWO_COLUMN_MIN_VIEWPORT}px)`;
 
 export interface PlannerColumn {
   parkSlug: string;

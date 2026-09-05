@@ -24,7 +24,12 @@ import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
-import { maxColumnsFor, plannerSecondColumn } from '@/lib/planner/second-column';
+import {
+  TWO_COLUMN_MIN_WIDTH,
+  TWO_COLUMN_VIEWPORT_QUERY,
+  maxColumnsFor,
+  plannerSecondColumn,
+} from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
@@ -100,20 +105,37 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   );
 
   /**
-   * The second column, if there is room for one.
+   * The second column, if there is room for one — and the switch, if there
+   * COULD be. Two questions, and they used to be one.
    *
-   * Two gates, and they mean different things. `maxColumnsFor` is about the
-   * PANEL: below two minimum widths plus a divider, a second column would be
-   * narrower than a single one is ever allowed to be. `isPhone` is about the
-   * screen: there the sheet is the width of the phone and no amount of dragging
-   * makes it wider, so the switch is not offered at all.
+   * `twoColumnsFit` is about the PANEL as it stands: below two minimum widths
+   * plus a divider, a second column would be narrower than a single one is ever
+   * allowed to be, so this is what decides whether one is DRAWN. Gated rather
+   * than hidden, because a column is not free — it is a `/plan/day` query, a
+   * best-days snapshot and a grid — and a column nobody can see must not be paid
+   * for. The arrangement itself survives: narrowing the panel puts the second
+   * column away and widening it brings the same day back.
    *
-   * Gated rather than hidden, because a column is not free — it is a
-   * `/plan/day` query, a best-days snapshot and a grid — and a column nobody can
-   * see must not be paid for. The arrangement itself survives: narrowing the
-   * panel puts the second column away and widening it brings the same day back.
+   * `twoColumnsOffered` is about the WINDOW, and it decides whether the switch
+   * is there. Hanging the switch on the panel's width made the feature
+   * self-concealing: the default panel is 448 px, two columns need 681, so at
+   * the width every visitor starts on there was no switch and nothing said the
+   * planner had a second column at all — it had to be found by dragging the edge
+   * far enough. The switch now widens the panel itself (below), which is only an
+   * honest offer where the window can carry it: `fitToViewport` caps the panel
+   * at `innerWidth - PAGE_MIN_PX`, so under `TWO_COLUMN_MIN_VIEWPORT` the cap
+   * would take the width back in the same frame.
+   *
+   * `isPhone` is kept beside it although 639 px cannot also be 1041 px, so it
+   * cannot fire today. The two thresholds are independent — one is a breakpoint,
+   * the other falls out of `PANEL_WIDTH_MIN` and `PAGE_MIN_PX` — and a phone is
+   * a bottom sheet the width of the screen, where no stored width applies at
+   * all: that refusal should not depend on arithmetic elsewhere staying above
+   * the breakpoint.
    */
   const twoColumnsFit = !isPhone && maxColumnsFor(panelWidth) === 2;
+  const windowFitsTwoColumns = useMediaQuery(TWO_COLUMN_VIEWPORT_QUERY);
+  const twoColumnsOffered = !isPhone && windowFitsTwoColumns;
   const storedColumn = useSyncExternalStore(
     plannerSecondColumn.subscribe,
     plannerSecondColumn.getSnapshot,
@@ -636,15 +658,31 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     active, so switching either column's park is one press away
                     and neither is decided here.
 
-                    Only where it fits — see `twoColumnsFit`. */}
-                {activeDate && !showOverview && twoColumnsFit && (
+                    Wherever the WINDOW could carry two — see
+                    `twoColumnsOffered` — and the press makes room for them. */}
+                {activeDate && !showOverview && twoColumnsOffered && (
                   <button
                     type="button"
                     onClick={() => {
                       if (secondColumn) {
+                        // Closing leaves the width alone: somebody who dragged
+                        // the panel to 820 px asked for 820 px, and a switch
+                        // that reset it would be undoing a different gesture.
                         plannerSecondColumn.close();
                         return;
                       }
+                      // Widening is the switch's job now that it is offered
+                      // below the width two columns need. `commit` rather than a
+                      // write of our own, so this goes through the same clamp
+                      // and the same storage key the edge drag uses — and only
+                      // upwards, for the same reason closing does not touch it.
+                      if (panelWidth < TWO_COLUMN_MIN_WIDTH) {
+                        plannerPanelWidth.commit(TWO_COLUMN_MIN_WIDTH);
+                      }
+                      // A column narrowed away is remembered rather than
+                      // forgotten, so widening brings that day back instead of
+                      // overwriting it with tomorrow.
+                      if (storedColumn) return;
                       if (!activeParkSlug) return;
                       plannerSecondColumn.open({
                         parkSlug: activeParkSlug,
