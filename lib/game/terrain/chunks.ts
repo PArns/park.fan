@@ -192,6 +192,8 @@ function buildChunkData(
 const SURROUND_REACH = 1500;
 const SURROUND_RINGS = 12;
 const SURROUND_SEGMENTS = 40;
+/** Metres above the water table the far land settles at. */
+const SURROUND_SHORE = 7;
 
 function buildSurroundData(t: TerrainData, noise: (x: number, z: number) => number): Surface {
   const half = t.size / 2;
@@ -236,8 +238,14 @@ function buildSurroundData(t: TerrainData, noise: (x: number, z: number) => numb
         Math.max(-half, Math.min(half, x)),
         Math.max(-half, Math.min(half, z))
       );
-      const blend = Math.min(1, dist / 260);
-      const y = edge * (1 - blend * 0.55) + noise(x, z) * blend - blend * blend * 22;
+      // The apron leaves the boundary height and climbs to a far shore rather than sinking away
+      // from it. Sinking was the first attempt and it put a black trench right across the horizon
+      // in the overview shot: south of the park the boundary is 11 m of lake bed, so an apron that
+      // drops further is lake floor with no water over it — the water surface only reaches
+      // `WATER_MARGIN` past the park. Rising to a low far shore needs no second water mesh and
+      // gives the lake an opposite bank, which is what a lake usually has.
+      const blend = Math.min(1, dist / 320);
+      const y = edge * (1 - blend) + (SURROUND_SHORE + Math.max(0, noise(x, z))) * blend;
       const at = (r * perimeter + k) * 3;
       positions[at] = x;
       positions[at + 1] = y;

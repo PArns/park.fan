@@ -43,16 +43,16 @@
   },
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
-    "readFrom": ".game-render/t2/report.json",
-    "bootMs": 11468,
+    "readFrom": ".game-render/sky/report.json",
+    "bootMs": 10276,
     "consoleErrors": 0,
     "hydrationWarnings": 0,
-    "drawCalls": 51,
-    "triangles": 140164,
+    "drawCalls": 62,
+    "triangles": 32118,
     "activeMeshes": 1,
     "engine": "webgl2",
     "preset": "medium",
-    "note": "Ground reads as grass; sky is black at noon. Numbers are within budget, the frame is not finished. fps in headless Chromium is SwiftShader and means nothing."
+    "note": "12:00 has no sky in frame; 20:30 is black. Numbers within budget, frame not passable."
   },
   "budget": {
     "fps": 50,
@@ -256,9 +256,9 @@
     }
   },
   "openIssues": [
-    "The sky renders PURE BLACK at 12:00 in the ground camera while the terrain below it is lit and correctly textured — the sky dome is either not drawn or culled at that pitch. Was a golden-hour gradient two rounds ago, so it is a regression inside the environment module's own round.",
-    "NOT a camera bug — corrected. The overview preset was read as 'frames a close-up of grass'; the geometry says otherwise: beta = PI/3.4 with fov 0.9 rad puts the frame's top edge 11.3 degrees ABOVE the horizon, so the thin strip at the top of the frame IS the sky and the framing is a reasonable RTS overview. The frame reads as grass because the park is empty — no paths, buildings, rides or trees exist yet (waves 2-3) — and because that strip of sky renders black.",
-    "Terrain ground is the first thing in this build that reads as a real surface: grass with low-frequency variation, 51 draw calls (down from 66), 140,164 tris. Recorded as the baseline the wave-1 gate should hold, not as a pass — the gate has not run.",
+    "At 20:30 the whole frame is essentially black — ground, sky and terrain alike, nothing readable. ART_BIBLE requires the opposite: night ambient is a deep blue so silhouettes stay readable, and the park is lit by its own light. This is the clearest wave-1 failure in the current build.",
+    "At 12:00 there is no sky in frame at all: terrain fills the viewport edge to edge from the overview preset. Two rounds ago the same preset showed a (black) sky strip, so the horizon has moved out of frame — terrain scale, height or chunk bounds changed under it.",
+    "Draw calls and triangles are moving in opposite directions between rounds (66/128k -> 51/140k -> 62/32k). None of these is out of budget; they are recorded because the trend, not the value, is what says whether chunk LOD is settling.",
     "Wave 1 has not landed: the baseline screenshot is an untextured terrain edge under the HUD.",
     "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
     "demo-park is a terrain shaper, not yet a park.",

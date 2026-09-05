@@ -101,8 +101,16 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
 
   const domeMaterial = new StandardMaterial('env-sky', scene);
   domeMaterial.diffuseTexture = domeTexture;
-  domeMaterial.diffuseColor = new Color3(1, 1, 1);
-  domeMaterial.emissiveColor = Color3.Black();
+  // The colour goes in EMISSIVE, not diffuse, and this is not a style choice.
+  // `StandardMaterial.disableLighting` does not mean "light it flat": it skips the lighting loop,
+  // and `default.fragment` initialises `diffuseBase` to vec3(0) and fills it only in that loop —
+  // so `finalDiffuse = clamp(diffuseBase * diffuseColor + emissiveColor, 0, 1) * texture` is the
+  // texture times the emissive alone. With the colour in `diffuseColor` the dome drew pure black
+  // at every hour, which looked exactly like a culled mesh and took a five-step bisect (fresh
+  // material vs. cloned mesh vs. texture type) to tell apart from one. The clamp is on the
+  // emissive term only, so the HDR half-float texture still passes through unclipped.
+  domeMaterial.emissiveColor = new Color3(1, 1, 1);
+  domeMaterial.diffuseColor = Color3.Black();
   domeMaterial.specularColor = Color3.Black();
   domeMaterial.disableLighting = true;
   domeMaterial.backFaceCulling = false;
@@ -144,7 +152,9 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
     const material = new StandardMaterial(`env-cloud-${spec.kind}`, scene);
     material.diffuseTexture = texture;
     material.useAlphaFromDiffuseTexture = true;
-    material.diffuseColor = new Color3(1, 1, 1);
+    // Emissive carries the tint — see the note on the dome's material.
+    material.emissiveColor = new Color3(1, 1, 1);
+    material.diffuseColor = Color3.Black();
     material.specularColor = Color3.Black();
     material.disableLighting = true;
     material.backFaceCulling = false;
@@ -191,7 +201,8 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
   const starMaterial = new StandardMaterial('env-star', scene);
   starMaterial.diffuseTexture = starTexture;
   starMaterial.useAlphaFromDiffuseTexture = true;
-  starMaterial.diffuseColor = new Color3(1, 1, 1);
+  starMaterial.emissiveColor = new Color3(1, 1, 1);
+  starMaterial.diffuseColor = Color3.Black();
   starMaterial.specularColor = Color3.Black();
   starMaterial.disableLighting = true;
   starMaterial.backFaceCulling = false;
@@ -290,7 +301,7 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
         clamp01(lit * mix(1, sunTint[1], warm * 0.8) + 0.05 * state.night),
         clamp01(lit * mix(1, sunTint[2], warm * 0.6) + 0.075 * state.night)
       );
-      layer.material.diffuseColor.copyFrom(layer.tint);
+      layer.material.emissiveColor.copyFrom(layer.tint);
       const coverage = high
         ? smoothstep(0.05, 0.55, state.cloud) * 0.75
         : smoothstep(0.03, 0.85, state.cloud);
