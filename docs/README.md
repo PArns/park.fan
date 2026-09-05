@@ -107,7 +107,7 @@
 | [Attraction Filter Panel](features/attraction-filter-panel.md) | The park page's search + rider-height + off-season band, and how the three filters compose                                                                                                           |
 | [The Guide Page](features/how-park-fan-works.md)               | What `/{locale}/{howto-segment}` teaches, why every block is a production component, and the claims it may make                                                                                      |
 | [Trip Planner](features/trip-planner.md)                       | The visitor's own day: the wizard, the month grid, park-local time, the drag payload, and life without the endpoint                                                                                  |
-| [park.fan Coaster](game/ARCHITECTURE.md)                       | The park builder at `/game`: [integration](game/INTEGRATION.md), architecture, [content packs](game/CONTENT_PACKS.md), [art bible](game/ART_BIBLE.md), [decisions](game/DECISIONS.md), `STATUS.json` |
+| [park.fan Coaster](game/ARCHITECTURE.md)                       | The park builder at `/game`: [integration](game/INTEGRATION.md), architecture, [content packs](game/CONTENT_PACKS.md), [art bible](game/ART_BIBLE.md), [assets](game/ASSETS.md), [decisions](game/DECISIONS.md), `STATUS.json` |
 
 ### Product
 

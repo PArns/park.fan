@@ -37,6 +37,24 @@ stream per module seeded from `world.meta.seed` and the module id. `Math.random`
 `lib/game/**` (grep guard in `scripts/test-game-lint.mjs`). Command order is the tick order; the
 save contains the command log tail (`world.log`) so a replay reproduces the world.
 
+Six rules make that hold, and each has a check behind it rather than a good intention — a rule
+written down is not a rule applied:
+
+1. **One stream per module.** Not tidiness: with a single shared generator, adding one `rng.next()`
+   to the weather system shifts every guest decision for the rest of the run, so a one-line change
+   to an unrelated module invalidates every saved comparison.
+2. **No wall clock in the sim.** `Date.now()`, `new Date()` and `performance.now()` are banned in
+   anything a sim file can reach. In-game time is `world.clock`, derived from the tick.
+3. **Fixed step.** Speed multiplies how many park minutes a tick advances, never how long a tick
+   is. A variable `dt` is how an integration stops being reproducible.
+4. **Declared iteration order.** Sim handles run in the module-graph order, never in `Object.keys`
+   or `Set` order over identity keys.
+5. **The save round-trips byte-for-byte.** `serialize(load(serialize(w))) === serialize(w)`,
+   asserted by `pnpm test:game-save-roundtrip` on a world that has been run, not on a fresh one.
+6. **Non-finite numbers are refused at write time.** A `NaN` that reaches a file is a save nobody
+   can load and a bug with no scene of the crime; `serializeWorld` throws instead, and
+   `pnpm test:game-soak` walks the whole world for them after a 48-hour run.
+
 ## 2. Units and coordinates
 
 - Metres, +Y up, right-handed (`scene.useRightHandedSystem = true`). 1 unit = 1 m.
@@ -202,3 +220,25 @@ docs/game/                this folder; STATUS.json is the persisted scoreboard
 
 `?showcase=<module>` skips 4 and stages the module's own scene; `?seed=`, `?quality=`, `?tod=`,
 `?cam=` are read by `parseBootQuery()`.
+
+## 9. Teardown
+
+Boot is only half a lifecycle, and the other half is the one a single-page app gets wrong. A route
+change away from `/game` — or a React strict-mode double mount in development — must leave **zero
+live GPU contexts**: browsers cap them at 8–16, and a leaked one is not an error anybody sees until
+the fourth navigation returns a blank canvas.
+
+`host.dispose()` runs the reverse of §8 and is idempotent:
+
+1. stop the render loop (`engine.stopRenderLoop`, cancel any pending `requestAnimationFrame`)
+2. dispose every module in reverse mount order, so a module's dependencies outlive it
+3. remove every observer, DOM listener and `ResizeObserver` the host added
+4. `postMessage({ type: 'dispose' })` and then `worker.terminate()` — in that order, so a module
+   with a save in flight gets to finish it
+5. `scene.dispose()`, then `engine.dispose()`
+6. close IndexedDB handles
+
+Verified rather than assumed: the harness navigates away and back three times and asserts the
+number of live contexts does not grow. A module's own `dispose()` is held to the same standard —
+anything it allocated (meshes, materials, textures, thin-instance buffers, observers) it frees, and
+"the scene disposes it for me" is only true for things actually parented to the scene.

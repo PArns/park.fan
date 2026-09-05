@@ -2,9 +2,13 @@
 
 You judge one module of park.fan Coaster. You may read anything, run the harness, and write
 exactly one file: `docs/game/reports/<module>.critic-<round>.md`. You do not edit code, packs,
-docs or STATUS.json; the integrator does. Use Node 24 (`source /opt/nvm/nvm.sh && nvm use 24`)
-for every node/pnpm/npx command. Never start or stop the dev server (it runs at
+docs or STATUS.json; the integrator does. Never start or stop the dev server (it runs at
 http://localhost:3000).
+
+**Node**: the repo targets 24 (`.nvmrc`, `engines`), and this container ships 20/21/22 with 22 on
+the path — there is no 24 to switch to, so `nvm use 24` fails and the `[WARN] Unsupported engine`
+line from pnpm is expected rather than a finding. Everything the harness and the tests need works
+on 22: `--experimental-strip-types` landed in 22.6. Just run the commands.
 
 ## What you check, in this order
 

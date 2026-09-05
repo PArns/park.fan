@@ -93,6 +93,7 @@
     "game:shot": "node scripts/game-shot.mjs",
     "game:soak": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
     "game:assets": "node scripts/fetch-game-assets.mjs",
+    "game:bundle": "node scripts/check-game-bundle.mjs",
     "test:game": "pnpm test:game-save-roundtrip && pnpm test:game-registry && pnpm test:game-lint && pnpm test:game-i18n && pnpm test:game-soak",
     "test:game-save-roundtrip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-save-roundtrip.mjs",
     "test:game-registry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-registry.mjs",
