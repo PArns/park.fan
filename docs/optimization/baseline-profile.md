@@ -230,6 +230,16 @@ client component here (`LiveAttractionData`'s `initialPark` is already trimmed t
 `leanParkForAttractionShell`). There is no media-catalog leak. The attraction route's
 egress problem is the generic one from §4.2, not a fat prop.
 
+> **Stale since the ride-page redesign (Sept 2026).** `RideSectionNav` no longer exists.
+> Its replacement `RideNavTiles` and the header card's `RideLiveHeader` are Client
+> Components, because both draw live values, and each takes the ride's own record across
+> the boundary — `RideNavTiles` as `attraction`, `RideLiveHeader` and `LiveAttractionData`
+> as `leanParkForAttractionShell(park, attraction)`, called once per call site. So the same
+> attraction is serialized into the RSC payload more than once and the "nothing large
+> crosses" half of this paragraph wants re-measuring. The rest of the section — the 60 % of
+> every parsed park that is discarded, the sibling-array passes, the missing `cache()` —
+> is untouched by that change.
+
 One free fix already documented but never implemented: `SeasonalBadge` uses **6 flat keys**
 and pulls the whole **17.22 kB `parks` namespace** onto this route.
 

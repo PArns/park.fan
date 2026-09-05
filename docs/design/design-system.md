@@ -268,12 +268,12 @@ One component opens every chapter on the site: `ChapterHeading`
 (`components/common/chapter-heading.tsx`). An oversized translucent glyph on the left, an optional
 kicker, the title, and the rule that closes it.
 
-| Surface                        | Renders it through                        | Glyph                       |
-| ------------------------------ | ----------------------------------------- | --------------------------- |
-| Guide page, Fancast, best-time | `SectionShell` (`marketing/editorial-ui`) | chapter number, `size="lg"` |
-| Blog post `##`                 | `blog-content.tsx` h2 renderer            | chapter number              |
-| Ride page chapters             | `PageSection` → `SectionHeading`          | section icon                |
-| Park page chapters             | `ChapterHeading` directly                 | section icon                |
+| Surface                        | Renders it through                                                                      | Glyph                       |
+| ------------------------------ | --------------------------------------------------------------------------------------- | --------------------------- |
+| Guide page, Fancast, best-time | `SectionShell` (`marketing/editorial-ui`)                                               | chapter number, `size="lg"` |
+| Blog post `##`                 | `blog-content.tsx` h2 renderer                                                          | chapter number              |
+| Ride page chapters             | `PageSection` → `SectionHeading`, and `ChapterHeading` directly for the history chapter | section icon                |
+| Park page chapters             | `ChapterHeading` directly                                                               | section icon                |
 
 Before this there were five. A park page carried `text-xl font-semibold` with an icon, `text-xl
 font-bold` with an icon, a `text-2xl` frosted pill, a bare `<h2 class="text-xl font-bold">` and
@@ -307,6 +307,94 @@ difference. See [system-overview](../architecture/system-overview.md#5-a-streame
 `SectionHeading`'s `plain` variant is untouched and is still the right choice **inside** a card
 (the rope-drop panel, the typical-waits block, a city row on a country page) — a chapter header
 nested in a chapter's own content is what the split is for.
+
+---
+
+## The ride page is the park page's anatomy
+
+A ride page and its park page are one click apart over the same photograph, and they used to open
+as two different kinds of object. The park page's fold is a title card on `GlassCard
+variant="tile"` and then `ParkHeaderCard` — „Heute im Park" as the upper band, the entry-tile row
+as its footer, one box with one hairline between them. The ride page's was a title card on
+`variant="medium"` (a second grade of glass, on the same picture), a gap, and four rounded gapped
+tiles carrying an icon and a label and nothing else, over a live wait time that did not appear
+until the first chapter heading had gone by.
+
+It is the same card now, built from the same parts:
+
+| Park page                                 | Ride page                                 |
+| ----------------------------------------- | ----------------------------------------- |
+| `GlassCard variant="tile"`                | `GlassCard variant="tile"` (was `medium`) |
+| `ParkHeaderCard` panel → `ParkTodayPanel` | `ParkHeaderCard` panel → `RideNowPanel`   |
+| `ParkHeaderCard` tiles → `ParkTabsList`   | `ParkHeaderCard` tiles → `RideNavTiles`   |
+
+- **The panel is the same object.** `RideNowPanel` takes the park panel's header strip with the
+  live dot and the clock, its `PanelGrid` of hairline-ruled columns and its `PanelMetric` captions.
+  What it puts in them is what the ride page was already saying in four places metres apart: the
+  live wait sat in a card under the first chapter heading, the park's own status and hours were
+  nowhere on the page at all, the day's best slots were a caption under a bar chart, and the
+  typical/busy pair was a card in the chapter after that. Someone arriving from a search for
+  „Taron Wartezeit" had to assemble it.
+- **The chapter row stays jump links.** The park's tiles switch a `Tabs` whose inactive panels are
+  not in the DOM; doing that here would take the typical-wait table, the 30-day history, the ride
+  profile and the FAQ out of the served HTML of all 42,756 attraction URLs, which is most of what a
+  ride page is for. `RideNavTiles` takes the park row's cell (`tileCell`), body (`EntryTileBody`
+  with its reserved two-line hint) and place in the layout, and renders `SelectionBar` as well —
+  it is `opacity-0` without `data-state=active` or `aria-current`, so one span keeps the two rows
+  structurally identical. Its hints ride on the query the panel above it already runs, by the same
+  key, so the row costs no request.
+- **Its two chapter titles come in as props.** `RideNavTiles` is a Client Component, so a
+  `useTranslations('seo.faq.attraction')` inside it would put that namespace and
+  `attraction.rideProfile` with it into the routed message payload of every one of those 42,756
+  URLs, for two strings the server already holds. The page passes
+  `labels={{ rideProfile, faq }}` instead, and `pnpm generate:route-namespaces` produces no diff.
+- **A tile may not point at an anchor that is not on the page.** „Beste Besuchszeit planen" has two
+  optional cards, so one `hasPlanChapter` gates the tile and the chapter together — the same rule
+  the ride-profile and FAQ tiles already followed. A ride with neither card used to open that
+  chapter under a heading and close it again.
+
+### The ride's calendar cell is `ParkCalendarDay` plus a sparkline
+
+The 30-day wait-time history is its own chapter (`#history`), drawn in the crowd calendar's
+language: the `CROWD_TILE_CLASS` fill, the four-signal bar on the top edge, the oversized day
+number in the tier's colour, the one-word verdict under it, weekday-aligned week rows from `lg` up
+and a newest-first two-column list below. Before, the same statement was a white `Card` with a
+coloured **border** and one corner icon picked by priority — so a Friday in the summer holidays
+that was also a public holiday next door showed a third of what it knew — sitting under someone
+else's chapter title over a hand-built badge row. Two grids about the same park, in two visual
+languages, one click apart.
+
+The guide page settles which of the two is canonical: `CalendarDaysDemo` in
+`app/[locale]/how-park-fan-works/_demos.tsx` teaches `ParkCalendarDay` itself as "the real calendar
+cell", colours and signals included. A ride cell speaking a second language makes that lesson wrong
+on the next page the reader opens.
+
+What the ride cell has that the park cell does not is the **sparkline**, which is why it is still
+its own component rather than a prop on `ParkCalendarDay`. A park day is a forecast: one level, one
+number, opening hours. A ride day is a measured curve, and the curve's shape is the finding — two
+days can both read „hoch" and want visiting at different hours. So it takes the floor of the tile,
+where the park cell puts hours and weather, with the rounded min–max pair under it. The whole grid
+shares **one `yMax`**: `Sparkline` fits each instance to its own maximum, so without it a flat
+twenty-minute Tuesday is drawn exactly as dramatically as a hundred-minute Saturday, which is the
+trap the guide page's own notes name.
+
+The legend is the shared `ParkCalendarLegend`. A second one written for this grid would be a second
+thing to keep in step with `CROWD_TILE_CLASS` and the four signals the tiles already draw.
+
+Two things about the loading state:
+
+- **Only the grid's box is held.** `AttractionHistoryPanel` renders its `ChapterHeading` and the
+  legend into the served HTML — neither reads any data — and stands a `Skeleton` where the grid
+  will be. `AttractionHistorySectionsSkeleton` used to hide the whole chapter, heading included,
+  behind a grey box that then had to guess how a wrapping title falls per locale.
+- **That box's height is a formula.** `lib/parks/attraction-history-geometry.ts` derives the number
+  of week rows the 31-day window spans from the weekday it starts on (five, or six for two weekdays
+  in seven) and multiplies by one tile plus the grid's gap, per breakpoint. It replaced four
+  hand-measured pixel heights whose own comment said they were measured and would have to be
+  re-measured. „Today" comes from the server in the **park's** timezone: a Florida park is still on
+  yesterday's date for six hours after midnight in Berlin, and the two sides of the hydration
+  boundary would otherwise reserve different row counts. `pnpm test:attraction-history-geometry`
+  pins the row count across all seven weekdays, a year boundary, a leap day and a DST Sunday.
 
 ---
 

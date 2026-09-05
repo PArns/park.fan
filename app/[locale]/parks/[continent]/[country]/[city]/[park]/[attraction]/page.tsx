@@ -599,37 +599,35 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               chapter under a heading and closing it again. */}
             {hasPlanChapter && (
               <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted id="plan">
-                {(attraction.ropeDrop || attraction.typicalWaits?.displayable) && (
-                  <div
-                    className={cn(
-                      'mb-6 grid items-start gap-6',
-                      attraction.ropeDrop &&
-                        attraction.typicalWaits?.displayable &&
-                        'lg:grid-cols-2'
-                    )}
-                  >
-                    {attraction.ropeDrop && (
-                      <RopeDropCard
-                        ropeDrop={attraction.ropeDrop}
-                        timezone={park.timezone}
-                        todayClosingUtc={
-                          park.schedule?.find(
-                            (s) => s.date === todayIso && s.scheduleType === 'OPERATING'
-                          )?.closingTime ?? null
-                        }
-                        parkHasRecommendations={(park.attractions ?? []).some(
-                          (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
-                        )}
-                      />
-                    )}
-                    {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
+                {/* `hasPlanChapter` above is this same predicate — the grid is the chapter's
+                  whole body now that the calendar has its own. */}
+                <div
+                  className={cn(
+                    'grid items-start gap-6',
+                    attraction.ropeDrop && attraction.typicalWaits?.displayable && 'lg:grid-cols-2'
+                  )}
+                >
+                  {attraction.ropeDrop && (
+                    <RopeDropCard
+                      ropeDrop={attraction.ropeDrop}
+                      timezone={park.timezone}
+                      todayClosingUtc={
+                        park.schedule?.find(
+                          (s) => s.date === todayIso && s.scheduleType === 'OPERATING'
+                        )?.closingTime ?? null
+                      }
+                      parkHasRecommendations={(park.attractions ?? []).some(
+                        (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+                      )}
+                    />
+                  )}
+                  {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
                     rendered in the static shell for SEO + instant paint. Non-headliner
                     displayable rides fall back to the client render below. */}
-                    {attraction.typicalWaits?.displayable && (
-                      <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
-                    )}
-                  </div>
-                )}
+                  {attraction.typicalWaits?.displayable && (
+                    <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
+                  )}
+                </div>
               </PageSection>
             )}
 

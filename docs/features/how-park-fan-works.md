@@ -91,7 +91,9 @@ Things the audit caught, worth not re-introducing:
   saves 40 minutes off a 50-minute peak and gets no recommendation, against the
   ≥ 60 peak / ≥ 45 saved gate.
 - `minimumHeight` (Taron 140 cm) and the per-ride `predictionAccuracy` badge
-  **are** rendered — `AttractionMetaBadges` and `AttractionLivePanel`.
+  **are** rendered — `AttractionMetaBadges` and `RideNowPanel` (the accuracy chip
+  moved there with the rest of the live readings when the ride page took the park
+  page's header card; `AttractionLivePanel` is gone).
 - **A shared row template holds exactly one card.** `AttractionCard` is
   `row-span-3` + subgrid, so two of them in one three-row grid put the second on
   implicit `auto` rows: at 390 px card 1 got the 32 px spacer row and card 2 a
