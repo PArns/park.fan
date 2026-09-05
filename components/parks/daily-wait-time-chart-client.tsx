@@ -19,6 +19,18 @@ interface DailyWaitTimeChartClientProps {
   schedule?: ScheduleItem[];
   bestVisitTimes?: BestVisitSlot[] | null;
   translations: DailyWaitTimeChartData['translations'];
+  /** The caller renders the heading itself — see `DailyWaitTimeChartData.hideTitle`. */
+  hideTitle?: boolean;
+  /**
+   * What stands here while this component cannot draw yet.
+   *
+   * It has a `useMounted()` gate of its own, one commit behind whatever gate its parent uses, so
+   * `null` here means the caller's own skeleton has already been taken down and nothing has
+   * replaced it — a card collapsing to its remaining chrome for one frame. On the ride page that
+   * was a 269 px jump of the Fancast link under it. Pass the same box the caller holds during its
+   * own wait.
+   */
+  fallback?: React.ReactNode;
   /**
    * Where to read this ride's historical corridor from. All four are needed
    * because `/stats/day` is a park-scoped route; the ride is pinned by slug so
@@ -268,6 +280,6 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mounted, props.timezone, corridorByHour]);
 
-  if (!data) return null;
-  return <DailyWaitTimeChart {...data} />;
+  if (!data) return <>{props.fallback ?? null}</>;
+  return <DailyWaitTimeChart {...data} hideTitle={props.hideTitle} />;
 }

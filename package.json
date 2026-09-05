@@ -38,6 +38,7 @@
     "check:brand-pin": "node scripts/generate-brand-pin.mjs --check",
     "test:calendar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-utils.mjs",
     "test:calendar-month": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-month.mjs",
+    "test:attraction-history-geometry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-attraction-history-geometry.mjs",
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",

@@ -4,7 +4,7 @@ import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, GripVertical, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
-import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -124,26 +124,10 @@ export function AttractionCard({
   const stats = attraction.statistics;
   const history = stats?.history;
 
-  // Short-term trend — compares last 2 data points against the 2 before them.
-  // Fixed window of 2 prevents comparing against hours-old data when history
-  // is sparse (e.g. 8 points over 100 minutes would otherwise show total
-  // change rather than recent movement).
-  const trend: { direction: 'up' | 'down' | 'stable'; delta: number } | null = (() => {
-    if (!isOperatingOrUnknown || waitTime === null) return null;
-    if (!history || history.length < 4) return null;
-    const WINDOW = 2;
-    const recent = history.slice(-WINDOW);
-    const prior = history.slice(-WINDOW * 2, -WINDOW);
-    const avg = (pts: typeof history) =>
-      pts.reduce((s, p) => s + (typeof p.waitTime === 'number' ? p.waitTime : 0), 0) / pts.length;
-    // A delta, not a wait time — the signed rounder, or every falling queue
-    // reads as "stable" (see `roundWaitDeltaTo5`).
-    const delta = roundWaitDeltaTo5(avg(recent) - avg(prior));
-    if (delta === 0) {
-      return { direction: 'stable', delta: 0 };
-    }
-    return { direction: delta > 0 ? 'up' : 'down', delta };
-  })();
+  // Short-term trend — the shared derivation in `shortTermWaitTrend`, which this block used to
+  // be. It moved out when the ride page's live panel grew a second copy that took its arrow from
+  // the API's `trend` field and its number from a different average, and drew the two disagreeing.
+  const trend = isOperatingOrUnknown && waitTime !== null ? shortTermWaitTrend(history) : null;
 
   // Best-visit slot (only for OPERATING). The "in X min" text is time-relative, so it's
   // rendered by the client <AttractionCardBestTime> (cacheComponents-safe).

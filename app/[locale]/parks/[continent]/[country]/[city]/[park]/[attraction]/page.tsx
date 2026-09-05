@@ -13,13 +13,15 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { Link } from '@/i18n/navigation';
 import { Clock, MapPin, Sparkles } from 'lucide-react';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
-import { PageSection } from '@/components/common/page-section';
+import { ChapterPanel } from '@/components/common/chapter-panel';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -46,7 +48,9 @@ import {
 import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-structured-data';
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
 import { buildAttractionFaqItems } from '@/lib/faq/attraction-faq';
-import { RideSectionNav } from '@/components/parks/ride-section-nav';
+import { ParkHeaderCard } from '@/components/parks/park-header-card';
+import { RideLiveHeader } from '@/components/parks/ride-live-header';
+import { RideNavTiles } from '@/components/parks/ride-nav-tiles';
 import { rideProfileRenders } from '@/lib/glossary/ride-profile';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
@@ -56,13 +60,13 @@ import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
-import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
+import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { stripNewPrefix, cn } from '@/lib/utils';
+import { stripNewPrefix } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
@@ -327,12 +331,59 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     : false;
 
   const tFaqItems = await getTranslations('seo.faq.attraction');
-  const hasFaq =
-    buildAttractionFaqItems(
-      attraction,
-      park,
-      tFaqItems as Parameters<typeof buildAttractionFaqItems>[2]
-    ).length > 0;
+  const tRideProfile = await getTranslations('attraction.rideProfile');
+  const faqCount = buildAttractionFaqItems(
+    attraction,
+    park,
+    tFaqItems as Parameters<typeof buildAttractionFaqItems>[2]
+  ).length;
+
+  // Today in the PARK's timezone. Two things read it and both would be wrong from the browser's:
+  // the rope-drop card's closing cap below, and the history calendar's row reservation — a
+  // Florida park is still on yesterday's date for six hours after midnight in Berlin. Safe to
+  // read the server clock here because this route is `force-dynamic`; there is no ISR window for
+  // it to pin.
+  const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
+
+  /**
+   * The one shell snapshot both client trees read, built ONCE.
+   *
+   * `leanParkForAttractionShell` is what takes this route's serialized park data from 36.3 KB to
+   * 3.7 KB (see docs/architecture/api-budget.md), and calling it twice undoes half of that: React
+   * Flight dedupes by object IDENTITY, so two calls producing equal objects are written to the
+   * payload twice, on 42,756 URLs × 6 locales. One call, one reference, one copy in the payload —
+   * and `attraction` below is the very object inside it, so that prop costs a back-reference
+   * rather than a third copy.
+   */
+  const shellPark = leanParkForAttractionShell(park, attraction);
+
+  // Does „Beste Besuchszeit planen" render anything? Both of its cards are optional, and the
+  // chapter row must not offer a jump to an anchor that is not on the page — same rule the ride
+  // profile and the FAQ tiles already follow.
+  const hasPlanChapter = Boolean(attraction.ropeDrop || attraction.typicalWaits?.displayable);
+
+  /**
+   * Does this park publish wait times at all?
+   *
+   * Two whole chapters answer questions that have no answer without them — today's curve and the
+   * 30-day calendar — and both are client-loaded behind a reserved box. On Hansa-Park, which
+   * publishes wait times only inside its own app, that box was 880 px on a desktop and 2024 px on
+   * a phone, and what landed in it was the one-line „Keine historischen Daten"; the chart card
+   * collapsed from its 401 px skeleton to 2 px. Measured with `pnpm measure:cls --late --scroll`
+   * on `hansa-park/nessie`: **0.5325** with the reader parked on the chapter, all of it those two
+   * boxes deflating.
+   *
+   * The curated `liveWaitTimes` flag is the only honest signal here and the server has it — a
+   * park with no source is byte-for-byte a park shut for the night, so this may never be derived
+   * from an empty payload. `NoLiveWaitTimesNotice` above the chapters already says why they are
+   * gone.
+   *
+   * What this does NOT cover is a ride inside a wait-times park that has no measured day of its
+   * own (2 of 8 non-headliners sampled at Phantasialand). Nothing in the shell can predict it —
+   * `statistics` is null on every attraction of the park payload — so it is left alone rather
+   * than guessed at, the same call `NearbyParksSection` makes one page over.
+   */
+  const waitsReadable = hasReadableWaitTimes(park);
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
@@ -385,11 +436,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           />
 
           <article itemScope itemType="https://schema.org/TouristAttraction">
-            {/* Header — same anatomy as the park header (title row with the favourite
-              pinned right, a hairline-separated facts band, the intro inside the
-              card), so a ride reads like the park it belongs to. */}
-            <div className="mb-8">
-              <GlassCard variant="medium">
+            {/* Header — the park header's card, not a lookalike: `variant="tile"` is the
+              recipe `ParkPageShell` wraps its own title card in, and this one carried `medium`.
+              Two pages one click apart over the same photograph opened on two grades of glass,
+              which reads as two kinds of surface rather than one. The `mb-4` is the park's too:
+              the title card and the header card under it are one stack. */}
+            <div className="mb-4">
+              <GlassCard variant="tile">
                 {/* Title row: ride name + where it is on the left, favourite top-right.
                   In flow, not absolutely positioned — a long name now wraps beside the
                   star instead of underneath it. */}
@@ -502,100 +555,171 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </GlassCard>
             </div>
 
-            {/* The chapter row — the park page's entry tiles, one page type over, so a ride
-              reads like the park it belongs to (the header above already does this on purpose).
-              Jump links rather than tabs: switching a Tabs would take the typical-wait table,
-              the 30-day history, the ride profile and the FAQ out of this page's served HTML,
-              which is most of what a ride page is for. Server-rendered at a fixed height, so it
-              owes the page nothing when the live panel below it settles. */}
-            <RideSectionNav hasRideProfile={hasRideProfile} hasFaq={hasFaq} className="mb-8" />
+            {/* The fold — one card, exactly as the park page's is: „Heute an dieser Bahn" on
+              top and the chapter row as its footer band. They were a title card, a gap, and a row
+              of four rounded tiles with an icon and a label in them, over a live wait time that
+              did not appear until the first chapter heading had gone by.
 
-            {/* Chapter: the live wait time — the reason people are here. Was the only
-              block on the page without a heading, so it read as a stray card between
-              the header and the first chapter. */}
-            <PageSection icon={Clock} title={t('sectionLiveNow')} frosted id="live">
-              {/* Why this chapter is empty, for the parks that publish wait times only inside
-                their own app. Above the live panel rather than below it: it is the answer to the
-                question the blank panel raises. Renders nothing everywhere else. */}
-              <NoLiveWaitTimesNotice
-                reason={noLiveWaitTimesReason(park)}
-                scope="ride"
-                className="mb-4"
-              />
-              {/* Live: status, wait time, queues — auto-refreshes every 5 min.
-              initialPark is trimmed to THIS attraction AND to the park-level fields this page
-              actually reads (see leanParkForAttractionShell): passing the full park serialized
-              all ~95 sibling attractions plus 46 restaurants, 17 opening days, the weather block
-              and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was read.
-              The live poll (getParkByGeoPathFresh) still returns the full park client-side. */}
-              <LiveAttractionData
-                initialPark={leanParkForAttractionShell(park, attraction)}
-                attractionSlug={attractionSlug}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-              />
-            </PageSection>
+              The tiles are jump links rather than tabs, and that part does not change: switching
+              a `Tabs` here would take the typical-wait table, the 30-day history, the ride profile
+              and the FAQ out of every ride page's served HTML, which is most of what a ride page
+              is for. */}
+            <ParkHeaderCard
+              panel={
+                <RideLiveHeader
+                  initialPark={shellPark}
+                  todayIso={todayIso}
+                  attractionSlug={attractionSlug}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                />
+              }
+              tiles={
+                <RideNavTiles
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  attractionSlug={attractionSlug}
+                  attraction={attraction}
+                  timezone={park.timezone}
+                  hasWaitTimeChapters={waitsReadable}
+                  hasPlanChapter={hasPlanChapter}
+                  hasRideProfile={hasRideProfile}
+                  rideProfileCount={attraction.rideProfile?.elements?.length ?? 0}
+                  hasFaq={faqCount > 0}
+                  faqCount={faqCount}
+                  labels={{ rideProfile: tRideProfile('title'), faq: tFaqItems('title') }}
+                />
+              }
+            />
 
-            {/* Rope-drop recommendation — precomputed daily on the server, present
-              only for tier1/tier2 headliners in parks with a schedule. Today's
-              closing caps displayed times to the operating day. The "no need to
-              rush" note renders only when some ride in the park IS recommended,
-              so it never sits on every headliner of an unrecommended park. */}
-            {/* Chapter: plan your visit — rope-drop, typical waits, today's chart and the
-              30-day history grid are grouped under one heading so the page reads as
-              chapters instead of a long stack of separator-divided blocks. */}
-            <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted id="plan">
-              {/* Rope-drop + typical waits — both server-rendered in the shell for
-                headliners, so they paint together; side by side on wide screens,
-                stacked when only one is present. */}
-              {(attraction.ropeDrop || attraction.typicalWaits?.displayable) && (
-                <div
-                  className={cn(
-                    'mb-6 grid items-start gap-6',
-                    attraction.ropeDrop && attraction.typicalWaits?.displayable && 'lg:grid-cols-2'
-                  )}
+            {/* Parks that publish wait times only inside their own app (Hansa-Park). Above the
+              chapters rather than inside the live one, exactly where the park page puts it: it is
+              the answer to the question the empty panel above already raised. Renders nothing for
+              the other 212 parks. */}
+            <NoLiveWaitTimesNotice
+              reason={noLiveWaitTimesReason(park)}
+              scope="ride"
+              className="mt-4 mb-8"
+            />
+
+            {/* Chapter: today's curve. The live minute moved up into the header card, so what
+              this chapter is about is the day — what the queue has done since opening and what it
+              is forecast to do — plus the ride's other queues. */}
+            {waitsReadable && (
+              <ChapterPanel
+                icon={Clock}
+                title={t('todayChart.title')}
+                // The chart's own h3 said this same string one line under the h2, so it draws no
+                // heading here (`hideTitle`) and its KI-Prognose pill rides up with the title it
+                // belonged to — the glossary link is the reason it is worth carrying over.
+                badge={
+                  <GlossaryTermLink termId="ai-forecast">
+                    <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
+                      <Sparkles className="h-3 w-3" aria-hidden="true" />
+                      {t('todayChart.aiBadge')}
+                    </Badge>
+                  </GlossaryTermLink>
+                }
+                id="live"
+                // The chart brings its own padding and the queue band under it is a `PanelGrid`
+                // whose cells bring theirs — a `p-4` here would be a second box inside the box.
+                bodyClassName="p-0"
+              >
+                {/* initialPark is trimmed to THIS attraction AND to the park-level fields this page
+                actually reads (see leanParkForAttractionShell): passing the full park serialized
+                all ~95 sibling attractions plus 46 restaurants, 17 opening days, the weather block
+                and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was
+                read. */}
+                <LiveAttractionData
+                  initialPark={shellPark}
+                  attractionSlug={attractionSlug}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                />
+              </ChapterPanel>
+            )}
+
+            {/* Chapter: plan your visit — rope-drop and typical waits, both server-rendered in
+              the shell for headliners so they paint together; side by side on wide screens,
+              stacked when only one is present. The rope-drop recommendation is precomputed daily
+              and exists only for tier1/tier2 headliners in parks with a schedule; today's closing
+              caps its displayed times to the operating day, and the „no need to rush" note
+              renders only when some ride in the park IS recommended, so it never sits on every
+              headliner of an unrecommended park.
+
+              Gated on having something to say. The 30-day calendar used to be the second half of
+              this chapter and is its own now, which left a ride with neither card opening a
+              chapter under a heading and closing it again. */}
+            {hasPlanChapter && (
+              <ChapterPanel
+                icon={Sparkles}
+                title={t('sectionPlanVisit')}
+                id="plan"
+                bodyClassName="p-0"
+              >
+                {/* Two readings, one box, a hairline between them — the shape „Heute im Park"
+                  and the statistics panel use. They were two `GlassCard`s side by side under a
+                  band, i.e. three boxes for one chapter, each drawing its own border over the
+                  ride's hero photo. Both render `bare` here because the `PANEL_CELL` around them
+                  already is the box. */}
+                <PanelGrid
+                  columnCount={
+                    attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1
+                  }
                 >
                   {attraction.ropeDrop && (
-                    <RopeDropCard
-                      ropeDrop={attraction.ropeDrop}
-                      timezone={park.timezone}
-                      todayClosingUtc={
-                        park.schedule?.find(
-                          (s) =>
-                            s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
-                            s.scheduleType === 'OPERATING'
-                        )?.closingTime ?? null
-                      }
-                      parkHasRecommendations={(park.attractions ?? []).some(
-                        (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
-                      )}
-                    />
+                    <div className={PANEL_CELL}>
+                      <RopeDropCard
+                        bare
+                        ropeDrop={attraction.ropeDrop}
+                        timezone={park.timezone}
+                        todayClosingUtc={
+                          park.schedule?.find(
+                            (sch) => sch.date === todayIso && sch.scheduleType === 'OPERATING'
+                          )?.closingTime ?? null
+                        }
+                        parkHasRecommendations={(park.attractions ?? []).some(
+                          (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+                        )}
+                      />
+                    </div>
                   )}
-                  {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
-                    rendered in the static shell for SEO + instant paint. Non-headliner
-                    displayable rides fall back to the client render below. */}
+                  {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner, rendered
+                    in the static shell for SEO and instant paint. Non-headliner displayable rides
+                    fall back to the client render under the calendar. */}
                   {attraction.typicalWaits?.displayable && (
-                    <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
+                    <div className={PANEL_CELL}>
+                      <AttractionTypicalWaits bare typicalWaits={attraction.typicalWaits} />
+                    </div>
                   )}
-                </div>
-              )}
+                </PanelGrid>
+              </ChapterPanel>
+            )}
 
-              {/* 30-day history grid — client-loaded from the CDN-cached attraction
-                detail route so the heavy history time-series stays out of the ISR
-                shell (a skeleton holds the layout until it lands). The "Wartezeiten
-                heute" daily chart now lives in the unified live card above. */}
+            {/* Chapter: the ride's own 30-day calendar — its own chapter now, where it used to be
+              the second half of „Beste Besuchszeit planen". The park has a calendar chapter with
+              its own heading, its own legend and its own panel; the ride's was a bare `Card` with
+              a hand-built badge legend, tucked under someone else's title. Client-loaded from the
+              CDN-cached attraction detail route (shared by key with the chart above and the
+              header card, so all three are one fetch); the heading and the legend need no data
+              and are in the served HTML, only the grid's own box is held. */}
+            {waitsReadable && (
               <AttractionHistorySections
                 continent={continent}
                 country={country}
                 city={city}
                 parkSlug={parkSlug}
                 attractionSlug={attractionSlug}
-                attractionName={attractionName}
+                todayIso={todayIso}
                 suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
               />
-            </PageSection>
+            )}
 
             {/* Chapter: what this ride is and what it does — the curated link into
               the glossary. Static (hand-seeded) data, so it renders straight into

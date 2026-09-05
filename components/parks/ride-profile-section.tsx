@@ -21,8 +21,7 @@ import { Badge } from '@/components/ui/badge';
 import { Speed, TrackLength } from '@/components/common/unit-display';
 import { formatDuration } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
-import { GlassCard } from '@/components/common/glass-card';
-import { PageSection } from '@/components/common/page-section';
+import { ChapterPanel } from '@/components/common/chapter-panel';
 import { RideLayoutRail } from '@/components/parks/ride-layout-rail';
 import {
   hasRideProfileFacts,
@@ -107,141 +106,139 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
   };
 
   return (
-    /* One chapter like the others (same top rhythm, same gap under the title),
-       frosted because the heading sits directly on the ride's hero photo. The
-       id is the anchor the header teaser's "9 figures" jumps to. */
-    <PageSection icon={Boxes} title={t('title')} frosted id="ride-profile">
-      {/* `strong` rather than the default `medium`: this card sits over the
-          attraction's hero photo, and /60 is not reliably readable over the
-          bright parts of an arbitrary image. */}
-      <GlassCard variant="strong" className="space-y-6 p-5 sm:p-6">
-        {hasFacts && (
-          <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {profile.manufacturer && (
-              <Fact icon={Wrench} label={t('manufacturer')}>
-                {manufacturerHref ? (
-                  <Link
-                    href={manufacturerHref}
-                    prefetch={false}
-                    className="hover:text-primary transition-colors"
-                  >
-                    {profile.manufacturer}
-                  </Link>
-                ) : (
-                  profile.manufacturer
-                )}
-                {profile.model && (
-                  <span className="text-muted-foreground block text-xs font-normal">
-                    {profile.model}
-                  </span>
-                )}
-              </Fact>
-            )}
+    /* The heading is the lid of the box under it, not a band floating over one — see
+       `ChapterPanel`. It used to be a `PageSection` over a `GlassCard`, so the chapter read as a
+       title and a separate card with a strip of the ride's hero photo between them. The id is
+       the anchor the header teaser's "9 figures" jumps to. */
+    <ChapterPanel
+      icon={Boxes}
+      title={t('title')}
+      id="ride-profile"
+      bodyClassName="space-y-6 p-5 sm:p-6"
+    >
+      {hasFacts && (
+        <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {profile.manufacturer && (
+            <Fact icon={Wrench} label={t('manufacturer')}>
+              {manufacturerHref ? (
+                <Link
+                  href={manufacturerHref}
+                  prefetch={false}
+                  className="hover:text-primary transition-colors"
+                >
+                  {profile.manufacturer}
+                </Link>
+              ) : (
+                profile.manufacturer
+              )}
+              {profile.model && (
+                <span className="text-muted-foreground block text-xs font-normal">
+                  {profile.model}
+                </span>
+              )}
+            </Fact>
+          )}
 
-            {profile.openedYear != null && (
-              <Fact icon={CalendarDays} label={t('opened')} numeric>
-                {profile.openedYear}
-              </Fact>
-            )}
+          {profile.openedYear != null && (
+            <Fact icon={CalendarDays} label={t('opened')} numeric>
+              {profile.openedYear}
+            </Fact>
+          )}
 
-            {profile.inversions != null && (
-              <Fact icon={RefreshCcw} label={t('inversions')} numeric>
-                {profile.inversions}
-              </Fact>
-            )}
+          {profile.inversions != null && (
+            <Fact icon={RefreshCcw} label={t('inversions')} numeric>
+              {profile.inversions}
+            </Fact>
+          )}
 
-            {/* Measurements from Wikidata. Each is independently nullable —
+          {/* Measurements from Wikidata. Each is independently nullable —
                 Wikidata states what somebody entered, which for most rides is
                 nothing — so each renders only when it has a number. */}
-            {stats?.topSpeedKmh != null && (
-              <Fact icon={Gauge} label={t('topSpeed')} numeric>
-                <Speed kmh={stats.topSpeedKmh} />
-              </Fact>
-            )}
-            {stats?.heightM != null && (
-              <Fact icon={MoveVertical} label={t('height')} numeric>
-                <TrackLength meters={stats.heightM} />
-              </Fact>
-            )}
-            {stats?.lengthM != null && (
-              <Fact icon={MoveHorizontal} label={t('length')} numeric>
-                <TrackLength meters={stats.lengthM} />
-              </Fact>
-            )}
-            {stats?.durationSeconds != null && (
-              <Fact icon={Timer} label={t('duration')} numeric>
-                {formatDuration(stats.durationSeconds)}
-              </Fact>
-            )}
-          </dl>
-        )}
+          {stats?.topSpeedKmh != null && (
+            <Fact icon={Gauge} label={t('topSpeed')} numeric>
+              <Speed kmh={stats.topSpeedKmh} />
+            </Fact>
+          )}
+          {stats?.heightM != null && (
+            <Fact icon={MoveVertical} label={t('height')} numeric>
+              <TrackLength meters={stats.heightM} />
+            </Fact>
+          )}
+          {stats?.lengthM != null && (
+            <Fact icon={MoveHorizontal} label={t('length')} numeric>
+              <TrackLength meters={stats.lengthM} />
+            </Fact>
+          )}
+          {stats?.durationSeconds != null && (
+            <Fact icon={Timer} label={t('duration')} numeric>
+              {formatDuration(stats.durationSeconds)}
+            </Fact>
+          )}
+        </dl>
+      )}
 
-        {/* Whose numbers these are. The API resolves this — `attribution` is
+      {/* Whose numbers these are. The API resolves this — `attribution` is
             null exactly when every surviving number is hand-curated and nobody
             outside is owed a credit — so there is no rule to reimplement here
             and no URL to assemble. */}
-        {stats?.attribution && (
-          <p className="text-muted-foreground text-xs">
-            <a
-              href={stats.attribution.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
-            >
-              {t('statsSource', { source: stats.attribution.label })}
-              <ExternalLink className="h-3 w-3" aria-hidden="true" />
-            </a>
-          </p>
-        )}
+      {stats?.attribution && (
+        <p className="text-muted-foreground text-xs">
+          <a
+            href={stats.attribution.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
+          >
+            {t('statsSource', { source: stats.attribution.label })}
+            <ExternalLink className="h-3 w-3" aria-hidden="true" />
+          </a>
+        </p>
+      )}
 
-        {types.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-              {t('typeLabel')}
-            </h3>
-            <ul className="flex flex-wrap gap-2">
-              {types.map((term) => (
-                <li key={term.id}>
-                  <Link href={term.href} prefetch={false}>
-                    <Badge
-                      variant="secondary"
-                      className="hover:bg-primary/15 hover:text-primary transition-colors"
-                    >
-                      {term.name}
-                    </Badge>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      {types.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            {t('typeLabel')}
+          </h3>
+          <ul className="flex flex-wrap gap-2">
+            {types.map((term) => (
+              <li key={term.id}>
+                <Link href={term.href} prefetch={false}>
+                  <Badge
+                    variant="secondary"
+                    className="hover:bg-primary/15 hover:text-primary transition-colors"
+                  >
+                    {term.name}
+                  </Badge>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-        {elements.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-              {t('elementsLabel')}
-            </h3>
-            <RideLayoutRail
-              elements={elements}
-              playerLabels={playerLabels}
-              labels={{
-                hint: t('elementsHint'),
-                has3d: t('has3d'),
-                openGlossary: t('openGlossary'),
-                // Formatted here, not passed as a formatter: functions cannot
-                // cross the RSC boundary. Repeated figures collapse to the same
-                // key, which is exactly right — the title only depends on the name.
-                viewerTitles: Object.fromEntries(
-                  elements.map((element) => [
-                    element.name,
-                    t('viewerTitle', { name: element.name }),
-                  ])
-                ),
-              }}
-            />
-          </div>
-        )}
-      </GlassCard>
-    </PageSection>
+      {elements.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            {t('elementsLabel')}
+          </h3>
+          <RideLayoutRail
+            elements={elements}
+            playerLabels={playerLabels}
+            labels={{
+              hint: t('elementsHint'),
+              has3d: t('has3d'),
+              openGlossary: t('openGlossary'),
+              // Formatted here, not passed as a formatter: functions cannot
+              // cross the RSC boundary. Repeated figures collapse to the same
+              // key, which is exactly right — the title only depends on the name.
+              viewerTitles: Object.fromEntries(
+                elements.map((element) => [element.name, t('viewerTitle', { name: element.name })])
+              ),
+            }}
+          />
+        </div>
+      )}
+    </ChapterPanel>
   );
 }

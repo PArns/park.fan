@@ -10,6 +10,12 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 
 interface AttractionTypicalWaitsProps {
   typicalWaits?: TypicalWaits | null;
+  /**
+   * Drop the card's own fill, border and padding, for a `PANEL_CELL` that already draws all
+   * three. Same reason as `RopeDropCard`'s: a card inside a cell is a second frame around one
+   * piece of content.
+   */
+  bare?: boolean;
   className?: string;
 }
 
@@ -23,7 +29,14 @@ function dayLabel(dayOfWeek: number, locale: string): string {
   return getDateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' }).format(d);
 }
 
-function formatPeakDate(date: string, locale: string): string {
+/**
+ * The record peak's date, in the reader's locale.
+ *
+ * Exported because the ride page's header panel prints the same sentence, and printed it raw:
+ * „Rekord 135 Min · 2026-07-16" in the panel against „Rekord 135 Min · 16. Juli 2026" in this
+ * card, on one page. The same trap the park panel's `peakHour` documents one component over.
+ */
+export function formatPeakDate(date: string, locale: string): string {
   // Date-only string — anchor at noon to avoid a timezone day-shift.
   const d = new Date(`${date}T12:00:00`);
   if (Number.isNaN(d.getTime())) return date;
@@ -34,7 +47,11 @@ function formatPeakDate(date: string, locale: string): string {
   }).format(d);
 }
 
-export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTypicalWaitsProps) {
+export function AttractionTypicalWaits({
+  typicalWaits,
+  bare = false,
+  className,
+}: AttractionTypicalWaitsProps) {
   const t = useTranslations('attractions.typicalWaits');
   const locale = useLocale();
 
@@ -74,7 +91,7 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
 
   return (
     <section
-      className={cn('bg-card/60 rounded-xl border p-5 backdrop-blur-sm', className)}
+      className={cn(!bare && 'bg-card/60 rounded-xl border p-5 backdrop-blur-sm', className)}
       aria-label={t('title')}
     >
       {/* Same card title as its neighbour <RopeDropCard>: the two sit side by side

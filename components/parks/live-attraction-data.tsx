@@ -2,38 +2,21 @@
 
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import {
-  AlertCircle,
-  Clock,
-  AlertTriangle,
-  HelpCircle,
-  Wrench,
-  XCircle,
-  Layers,
-  ArrowRight,
-} from 'lucide-react';
+import { AlertCircle, Layers, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
 import { SectionHeading } from '@/components/common/section-heading';
-import { AttractionLivePanel } from '@/components/parks/attraction-live-panel';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
+import { DailyWaitTimeChartPlaceholder } from '@/components/parks/daily-wait-time-chart-placeholder';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import type {
-  ParkWithAttractions,
-  AttractionStatus,
-  QueueDataItem,
-  QueueType,
-  QueueStatus,
-  StandbyQueue,
-  AccuracyBadge,
-} from '@/lib/api/types';
+import type { ParkWithAttractions, QueueType, QueueStatus } from '@/lib/api/types';
 
 const QUEUE_TYPE_KEYS = {
   STANDBY: 'queue.STANDBY',
@@ -59,19 +42,6 @@ const QUEUE_STATUS_KEYS = {
   REFURBISHMENT: 'queue.status.REFURBISHMENT',
 } as const satisfies Record<QueueStatus, string>;
 
-const ACCURACY_BADGE_KEYS = {
-  excellent: 'accuracy.excellent',
-  good: 'accuracy.good',
-  fair: 'accuracy.fair',
-  poor: 'accuracy.poor',
-  insufficient_data: 'accuracy.insufficient_data',
-} as const satisfies Record<AccuracyBadge, string>;
-
-function getMainQueue(queues?: QueueDataItem[]): QueueDataItem | null {
-  if (!queues || queues.length === 0) return null;
-  return queues.find((q) => q.queueType === 'STANDBY') || queues[0];
-}
-
 interface LiveAttractionDataProps {
   initialPark: ParkWithAttractions;
   attractionSlug: string;
@@ -96,7 +66,7 @@ export function LiveAttractionData({
   // force-dynamic; the refetch-on-mount flips `isFetching` true and would otherwise mismatch).
   const mounted = useMounted();
 
-  const { park, attraction, isFetching, isError, error } = useLiveAttractionData({
+  const { park, attraction, isError, error } = useLiveAttractionData({
     continent,
     country,
     city,
@@ -118,44 +88,6 @@ export function LiveAttractionData({
   });
 
   if (!attraction) return null;
-
-  const mainQueue = getMainQueue(attraction.queues);
-  const isParkClosed = park.status !== 'OPERATING';
-  const status: AttractionStatus = isParkClosed
-    ? 'CLOSED'
-    : mainQueue?.status || attraction.status || 'CLOSED';
-
-  const history = attraction.statistics?.history;
-  const calculatedMinWaitToday = history?.length
-    ? Math.min(...history.map((h) => h.waitTime))
-    : null;
-  const calculatedMaxWaitToday = history?.length
-    ? Math.max(...history.map((h) => h.waitTime))
-    : null;
-
-  const statusConfig: Record<
-    AttractionStatus,
-    { icon: typeof Clock; color: string; label: string }
-  > = {
-    OPERATING: { icon: Clock, color: 'text-status-operating', label: t('status.operating') },
-    DOWN: { icon: AlertTriangle, color: 'text-status-down', label: t('status.down') },
-    CLOSED: { icon: XCircle, color: 'text-status-closed', label: t('status.closed') },
-    REFURBISHMENT: {
-      icon: Wrench,
-      color: 'text-status-refurbishment',
-      label: t('status.refurbishment'),
-    },
-    // Reached when the park is open but its wait times are unreadable — the API stops
-    // guessing rather than reporting every ride as running. Deliberately not styled as
-    // closed: the ride may well be going round, we just cannot see it.
-    UNKNOWN: { icon: HelpCircle, color: 'text-muted-foreground', label: t('status.unknown') },
-  };
-  const config = statusConfig[status];
-  const StatusIcon = config.icon;
-
-  // Prefer the live park poll if it returns predictionAccuracy; otherwise use the client-fetched
-  // attraction detail (the live poll strips it via leanParkForShell).
-  const effectivePredictionAccuracy = attraction.predictionAccuracy ?? detail?.predictionAccuracy;
 
   // Whether the detail carries enough to render the "Wartezeiten heute" bar chart.
   const hasTodayChart =
@@ -179,131 +111,102 @@ export function LiveAttractionData({
           </div>
         </Card>
       )}
+      {/* Today's curve. The live value, the status badge and the accuracy chip that used to sit
+          above it now open the page inside the header card, where the park page puts the same
+          readings, so what is left here is the chart.
 
-      {/* The background-refetch indicator used to live here, in a reserved h-4 band above the
-          card. It was empty space between the chapter heading and the card almost all the time
-          and pushed this chapter a step lower than every other one — it now sits on the
-          "updated HH:MM" line inside the panel, next to the timestamp it refreshes. */}
+          The whole card is gated: with `hasTodayChart` false it used to render as a bordered box
+          with nothing in it, ~2 px tall under a chapter heading. The old code always had the live
+          panel inside, so the empty case never came up; a ride with no forecast and no reading
+          today (verified on `hansa-park/animal-babies-of-peterhof`) got exactly that. */}
+      {(!mounted || isDetailLoading || hasTodayChart) && (
+        <>
+          {/* Loading state and chart share ONE box with a reserved height, because the placeholder
+              used to stand in for the chart at less than half its size: 213 px held for the
+              401-421 px the chart occupies, so the moment the detail fetch landed the rest of the
+              ride page dropped ~208 px. The skeleton mirrors the chart's anatomy row for row:
+              explainer, legend, plot, best-slot line, Fancast link. It carries no title row,
+              because the chart no longer draws one (`hideTitle`; the chapter heading above says
+              it). The plot grows at `sm` with the taller bars and again at `md`, where the
+              hour-label row appears.
 
-      {/* Unified "live now" card: current wait + status + KI accuracy as the header, with today's
-          "Wartezeiten heute" bar chart in the same box right below — the value and the chart read
-          as one unit. The header paints immediately from the live poll; the chart fills in once the
-          (deduped) detail fetch lands. */}
-      <Card className="mb-8 gap-0 overflow-hidden p-0">
-        <AttractionLivePanel
-          waitTime={
-            status === 'OPERATING' && !isParkClosed && mainQueue && 'waitTime' in mainQueue
-              ? ((mainQueue as StandbyQueue).waitTime ?? null)
-              : null
-          }
-          status={status}
-          statusIcon={StatusIcon}
-          statusLabel={config.label}
-          trend={attraction.trend ?? undefined}
-          minWaitToday={calculatedMinWaitToday}
-          maxWaitToday={calculatedMaxWaitToday}
-          timezone={park.timezone}
-          lastUpdated={mainQueue?.lastUpdated}
-          // `mounted &&` keeps SSR and the first client render in agree­ment: the page is
-          // force-dynamic and the refetch-on-mount would otherwise flip this true mid-hydration.
-          isRefreshing={mounted && isFetching && !isError}
-          predictionAccuracy={effectivePredictionAccuracy}
-          accuracyLabel={
-            effectivePredictionAccuracy
-              ? t(ACCURACY_BADGE_KEYS[effectivePredictionAccuracy.badge])
-              : undefined
-          }
-          labels={{
-            waitTime: t('waitTime'),
-            minutes: tCommon('minutes'),
-            status: tCommon('status'),
-            updated: tCommon('updated'),
-            updating: tCommon('updating'),
-            todayMin: t('todayChart.todayMin'),
-            todayMax: t('todayChart.todayMax'),
-            min: t('todayChart.min'),
-            predictionAccuracy: t('predictionAccuracy'),
-            trendLabel: attraction.trend
-              ? tCommon(attraction.trend.toLowerCase() as string)
-              : undefined,
-          }}
-        />
-
-        {/* Today's wait-time bar chart — same card, divided from the header. Loading state and
-            chart share ONE box with a reserved height, because the placeholder used to stand in
-            for the chart at less than half its size: 213px held for the 401–421px the chart
-            actually occupies, so the moment the detail fetch landed the rest of the ride page
-            dropped ~208px. The height is the chart's own anatomy measured at each breakpoint
-            (title 28 + explainer 20 + legend 17 + plot 145/160/189 + best-slot lines + the
-            Fancast link, plus p-4/sm:p-6) — the plot grows at `sm` with the taller bars and again
-            at `md`, where the hour-label row appears. Reserved at the one-line best-slot variant,
-            so a ride that renders two of them still settles within ~20px instead of 208.
-
-            Window breakpoints, not `@container/page`: the row this reserves for is itself gated on
-            the window (see <DailyWaitTimeChart>), and a reservation that asks a different question
-            from the thing it reserves for is how a box comes out 200 px short. */}
-        {!mounted || isDetailLoading ? (
-          <div className="border-border/60 min-h-[352px] border-t p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
-            <div className="space-y-3" aria-hidden="true">
-              <Skeleton className="h-7 w-44 max-w-full" />
-              <Skeleton className="h-5 w-full max-w-md" />
-              <Skeleton className="h-4 w-48 max-w-full" />
-              <Skeleton className="h-[145px] w-full rounded-lg sm:h-[160px] md:h-[189px]" />
-              <Skeleton className="h-4 w-40 max-w-full" />
-              <Skeleton className="h-5 w-32 max-w-full" />
+              Window breakpoints, not `@container/page`: the rows this reserves for are themselves
+              gated on the window inside <DailyWaitTimeChart>, and a reservation that asks a
+              different question from the thing it reserves for is how a box comes out 200 px
+              short. */}
+          {!mounted || isDetailLoading ? (
+            <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
+              <DailyWaitTimeChartPlaceholder />
             </div>
-          </div>
-        ) : hasTodayChart ? (
-          <div className="border-border/60 min-h-[352px] border-t p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
-            <DailyWaitTimeChartClient
-              history={detail!.history}
-              hourlyForecast={detail!.hourlyForecast}
-              timezone={park.timezone}
-              schedule={detail!.schedule}
-              bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
-              corridor={{ continent, country, city, parkSlug, attractionSlug }}
-              translations={{
-                title: tChart('title'),
-                now: tChart('now'),
-                bestSlots: tChart('bestSlots', { hours: '{hours}' }),
-                bestSlotsGood: tChart('bestSlotsGood', { hours: '{hours}' }),
-                timeSuffix: tChart('timeSuffix'),
-                min: tChart('min'),
-                ratingOptimal: tChart('ratingOptimal'),
-                ratingGood: tChart('ratingGood'),
-                aiBadge: tChart('aiBadge'),
-                aiExplainer: tChart('aiExplainer'),
-                legendRecorded: tChart('legendRecorded'),
-                legendForecast: tChart('legendForecast'),
-                legendTypical: tChart('legendTypical'),
-              }}
-            />
-            <div className="mt-3">
-              <Link
-                href="/fancast"
-                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
-              >
-                {tChart('fancastLink')}
-                <ArrowRight className="h-3 w-3" aria-hidden="true" />
-              </Link>
+          ) : (
+            <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
+              <DailyWaitTimeChartClient
+                // The chapter heading above already reads the chart's own title, so it draws
+                // none. The KI-Prognose badge moved up beside that h2 with it.
+                hideTitle
+                // The same box this card held a moment ago, for the frame in which the chart's
+                // own mount gate has not caught up with this component's.
+                fallback={<DailyWaitTimeChartPlaceholder />}
+                history={detail!.history}
+                hourlyForecast={detail!.hourlyForecast}
+                timezone={park.timezone}
+                schedule={detail!.schedule}
+                bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
+                corridor={{ continent, country, city, parkSlug, attractionSlug }}
+                translations={{
+                  title: tChart('title'),
+                  now: tChart('now'),
+                  bestSlots: tChart('bestSlots', { hours: '{hours}' }),
+                  bestSlotsGood: tChart('bestSlotsGood', { hours: '{hours}' }),
+                  timeSuffix: tChart('timeSuffix'),
+                  min: tChart('min'),
+                  ratingOptimal: tChart('ratingOptimal'),
+                  ratingGood: tChart('ratingGood'),
+                  aiBadge: tChart('aiBadge'),
+                  aiExplainer: tChart('aiExplainer'),
+                  legendRecorded: tChart('legendRecorded'),
+                  legendForecast: tChart('legendForecast'),
+                  legendTypical: tChart('legendTypical'),
+                }}
+              />
+              <div className="mt-3">
+                <Link
+                  href="/fancast"
+                  className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+                >
+                  {tChart('fancastLink')}
+                  <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
-          </div>
-        ) : null}
-      </Card>
+          )}
+        </>
+      )}
 
-      {/* Other Queue Types */}
+      {/* The ride's other queues — single rider, a paid lane, a return window. A band of
+          hairline-ruled columns under the chart in the SAME box, not a row of cards under a
+          second heading: they are a reading about this ride's day like the chart above them, and
+          three floating cards under a chapter band was the shape this page was rebuilt to stop
+          drawing. The `border-t` is the rule that separates them from the chart. */}
       {attraction.queues && attraction.queues.length > 1 && (
-        <section className="mb-8">
-          {/* Sub-section of the live chapter, not a chapter of its own — plain h3
-              so the outline reads live wait time › other queues. */}
-          <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
-          <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+        <div className="border-border/50 border-t">
+          <div className="px-4 pt-4 md:px-6">
+            {/* Sub-section of the live chapter, not a chapter of its own — plain h3
+                so the outline reads today's chart › other queues. */}
+            <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
+          </div>
+          <PanelGrid
+            columnCount={Math.min(
+              3,
+              attraction.queues.filter((q) => q.queueType !== 'STANDBY').length
+            )}
+          >
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')
               .map((queue, i) => (
-                <Card key={i}>
-                  <CardContent className="p-4">
-                    <div className="mb-2 flex items-center justify-between">
+                <div key={i} className={PANEL_CELL}>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-medium">
                         {QUEUE_TYPE_TERM[queue.queueType] ? (
                           <GlossaryTermLink termId={QUEUE_TYPE_TERM[queue.queueType]!}>
@@ -317,9 +220,7 @@ export function LiveAttractionData({
                     </div>
                     {/* Canonical queue detail (price, single-rider time, boarding groups,
                         virtual-queue window/state) — same component used on attraction cards. */}
-                    <div className="mb-2">
-                      <QueueTypeBadge queue={queue} timezone={park.timezone} />
-                    </div>
+                    <QueueTypeBadge queue={queue} timezone={park.timezone} />
                     {/* Short-term wait-time trend (e.g. single-rider rising/falling). Only the
                         client-side detail fetch carries per-queue trend; the live park poll that
                         feeds `attraction.queues` above does not. Derive both the arrow and the
@@ -332,11 +233,7 @@ export function LiveAttractionData({
                       const delta =
                         Math.round((trend.recentAverage - trend.previousAverage) / 5) * 5;
                       const direction = delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable';
-                      return (
-                        <div className="mb-2">
-                          <TrendPill direction={direction} delta={delta} />
-                        </div>
-                      );
+                      return <TrendPill direction={direction} delta={delta} />;
                     })()}
                     {/* Paid standby lanes carry both a price (shown in the badge above) and a
                         wait time — surface the wait prominently. */}
@@ -356,11 +253,11 @@ export function LiveAttractionData({
                           <LocalTime time={queue.returnEnd} timeZone={park.timezone} />
                         </p>
                       )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
-          </div>
-        </section>
+          </PanelGrid>
+        </div>
       )}
     </>
   );

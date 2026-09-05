@@ -1230,6 +1230,18 @@
     },
     "sectionLiveNow": "Tiempo de espera ahora",
     "sectionPlanVisit": "Planifica el mejor momento para visitar",
+    "todayRange": "Rango de hoy",
+    "peakToday": "Pico de hoy",
+    "parkToday": "El parque hoy",
+    "bestTimesToday": "Mejores horas hoy",
+    "noBestTimesLeft": "Hoy ya no queda ninguna",
+    "typicalToday": "Habitual hoy",
+    "tiles": {
+      "live": "<b>{min}</b> min ahora",
+      "liveClosed": "Cerrada ahora mismo",
+      "plan": "Mejor hora <b>{time}</b>",
+      "history": "<b>{days}</b> días · pico <b>{max}</b> min"
+    },
     "meta": {
       "minHeightLabel": "Desde",
       "maxHeightLabel": "Hasta",

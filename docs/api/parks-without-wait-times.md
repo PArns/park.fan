@@ -33,15 +33,15 @@ exactly as before instead of warning about parks that are fine.
 
 ## Where it lands
 
-| Surface                                 | Behaviour                                                                 |
-| --------------------------------------- | ------------------------------------------------------------------------- |
-| Park page                               | `<NoLiveWaitTimesNotice scope="park">` above the ride tabs                |
-| Ride page                               | `<NoLiveWaitTimesNotice scope="ride">` inside the "wait time now" chapter |
-| `ParkStatus` (`detailed`/`card`/`hero`) | wait/peak/occupancy/open-count cards dropped                              |
-| `AttractionWaitOverview`                | the SEO summary line becomes "no wait times available"                    |
-| `LandSection`                           | "82 attractions" instead of "0/82 operating"                              |
-| Ride cards & the ride page's live panel | `UNKNOWN` status, `unknown` crowd — both already supported                |
-| `/api/parks/live`, nearby, favourites   | wait-derived fields stripped at the projection boundary                   |
+| Surface                                 | Behaviour                                                                        |
+| --------------------------------------- | -------------------------------------------------------------------------------- |
+| Park page                               | `<NoLiveWaitTimesNotice scope="park">` above the ride tabs                       |
+| Ride page                               | `<NoLiveWaitTimesNotice scope="ride">` under the header card, above the chapters |
+| `ParkStatus` (`detailed`/`card`/`hero`) | wait/peak/occupancy/open-count cards dropped                                     |
+| `AttractionWaitOverview`                | the SEO summary line becomes "no wait times available"                           |
+| `LandSection`                           | "82 attractions" instead of "0/82 operating"                                     |
+| Ride cards & `RideNowPanel`             | `UNKNOWN` status, `unknown` crowd — both already supported                       |
+| `/api/parks/live`, nearby, favourites   | wait-derived fields stripped at the projection boundary                          |
 
 ### Out of the snippet, never out of the index
 

@@ -1230,6 +1230,18 @@
     },
     "sectionLiveNow": "Wachttijd op dit moment",
     "sectionPlanVisit": "Plan de beste bezoektijd",
+    "todayRange": "Bereik vandaag",
+    "peakToday": "Piek vandaag",
+    "parkToday": "Park vandaag",
+    "bestTimesToday": "Beste tijden vandaag",
+    "noBestTimesLeft": "Vandaag niets meer",
+    "typicalToday": "Typisch vandaag",
+    "tiles": {
+      "live": "Nu <b>{min}</b> min.",
+      "liveClosed": "Momenteel gesloten",
+      "plan": "Beste tijd <b>{time}</b>",
+      "history": "<b>{days}</b> dagen · piek <b>{max}</b> min."
+    },
     "meta": {
       "minHeightLabel": "Vanaf",
       "maxHeightLabel": "Tot",

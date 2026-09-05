@@ -4,6 +4,58 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: the ride page opens the way its park page does
+
+A ride page and its park page are one click apart over the same photograph, and they opened as two
+different objects. The park's fold is a title card and then one header card: „Heute im Park" on
+top, the chapter row as its footer band, every cell saying what is behind it right now. The ride's
+was a title card on a second grade of glass, a gap, and four rounded tiles carrying an icon and a
+label and nothing else — over a live wait time that did not appear until the first chapter heading
+had gone by, on the page people arrive at from a search for „Taron Wartezeit".
+
+**„Heute an dieser Bahn" is the park's panel, one page type over.** Same header strip with the live
+dot and the clock, same hairline-ruled columns, same captions. What it collects was already on the
+page in four places metres apart: the live wait with its trend, today's range and peak, the day's
+recommended slots and the typical/busy pair — plus the park's own status and opening hours, which a
+ride page never stated at all.
+
+**The chapter row keeps the park's hairlines and gains hints.** `RideNavTiles` is the park's tile
+row, still jump links and not tabs: switching a `Tabs` here would take the typical-wait table, the
+30-day history, the ride profile and the FAQ out of the served HTML of 42,756 attraction URLs,
+which is most of what a ride page is for. The hints ride on the query the panel above it already
+runs, by the same key, so the row costs no request. Its two chapter titles come in as props —
+`useTranslations('seo.faq.attraction')` in a Client Component would ship that namespace and
+`attraction.rideProfile` with it to every one of those URLs, for two strings the server already
+holds. `pnpm generate:route-namespaces` produces no diff.
+
+**The 30-day history is a chapter now, drawn in the crowd calendar's language.** The two grids on a
+park's own pages used to explain the same colours twice: the park's tinted tiles with a four-signal
+bar against a white card with one coloured border and one corner icon picked by priority, so a
+Friday in the summer holidays that was also a public holiday next door showed a third of what it
+knew. The ride cell is `ParkCalendarDay`'s anatomy with the queue curve on the floor of the tile —
+which is what a ride day has and a park day does not, and the reason the component still exists.
+One `yMax` across the grid, or a flat twenty-minute Tuesday is drawn as dramatically as a
+hundred-minute Saturday. Week rows are weekday-aligned from `lg` up, where the grid ran seven per
+row from today backwards before and put a different weekday in every column each month. The legend
+is the park's own `ParkCalendarLegend` instead of a hand-built badge row.
+
+**The chapter stopped waiting for its data before it could have a heading.** The old skeleton hid
+the whole thing, title included, behind a grey box; the heading and the legend need no data and are
+in the served HTML now, and only the grid's box is reserved. That box's height is a formula rather
+than four hand-measured pixel values whose comment already said they would have to be re-measured:
+`lib/parks/attraction-history-geometry.ts` derives the week rows from the weekday the 31-day window
+starts on — five, or six for two weekdays in seven — with today read in the **park's** timezone,
+since a Florida park is still on yesterday's date for six hours after midnight in Berlin.
+`pnpm test:attraction-history-geometry` covers all seven weekdays, a year boundary, a leap day and
+a DST Sunday.
+
+Deleted with it: `ride-section-nav.tsx`, `attraction-live-panel.tsx` and
+`attraction-history-sections-skeleton.tsx`.
+
+See [design system → the ride page is the park page's anatomy](design/design-system.md#the-ride-page-is-the-park-pages-anatomy).
+
+---
+
 ## Unreleased – feat: Größenfilter auf der Parkseite, und ein Panel für die drei Filter
 
 Wer mit Kind in einen Park fährt, hat eine Frage vor allen anderen: was darf es fahren. Die Antwort

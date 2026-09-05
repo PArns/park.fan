@@ -46,6 +46,14 @@ export interface DailyWaitTimeChartData {
    * the whole chart and everything under it down.
    */
   expectTypical?: boolean;
+  /**
+   * The caller's own heading already says what this chart is, so it draws none.
+   *
+   * Set by the ride page, where the chart is the whole of a chapter titled „Wartezeiten heute" —
+   * `translations.title` is that same string, and the two rendered one under the other. The
+   * caller takes the KI-Prognose badge with it, so the pill still sits beside the title.
+   */
+  hideTitle?: boolean;
   translations: {
     title: string;
     now: string;
@@ -115,6 +123,7 @@ export function DailyWaitTimeChart({
   timezone,
   bestSlots,
   expectTypical,
+  hideTitle,
   translations,
 }: DailyWaitTimeChartData) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -212,22 +221,28 @@ export function DailyWaitTimeChart({
   return (
     // Bare section (no Card) — rendered inside the unified live card on the attraction page.
     <div>
-      {/* Title + KI-Prognose pill (links to the AI-forecast glossary term) */}
-      <SectionHeading
-        icon={ChartColumn}
-        title={translations.title}
-        badge={
-          <GlossaryTermLink termId="ai-forecast">
-            <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
-              <Sparkles className="h-3 w-3" />
-              {translations.aiBadge}
-            </Badge>
-          </GlossaryTermLink>
-        }
-        variant="plain"
-        as="h3"
-        className="mb-1.5"
-      />
+      {/* Title + KI-Prognose pill (links to the AI-forecast glossary term).
+        Suppressed where the chapter heading above already says it: on the ride page the chart's
+        chapter is „Wartezeiten heute" and this h3 repeated the string verbatim, two headings in a
+        row saying one thing. The badge travels with the title, so the caller that hides this one
+        renders it beside its own h2. */}
+      {!hideTitle && (
+        <SectionHeading
+          icon={ChartColumn}
+          title={translations.title}
+          badge={
+            <GlossaryTermLink termId="ai-forecast">
+              <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
+                <Sparkles className="h-3 w-3" />
+                {translations.aiBadge}
+              </Badge>
+            </GlossaryTermLink>
+          }
+          variant="plain"
+          as="h3"
+          className="mb-1.5"
+        />
+      )}
 
       {/* Explainer: past bars are real measurements, future bars are AI predictions */}
       <p className="text-muted-foreground mb-3 text-xs sm:text-sm">{translations.aiExplainer}</p>
