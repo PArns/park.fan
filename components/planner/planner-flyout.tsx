@@ -19,8 +19,8 @@ import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
-import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
+import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
+import { addDays, dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
@@ -426,6 +426,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    */
   const addFreeBlock = () => {
     if (!park || !activeDate) return;
+    const clock = dayClock(activeDate, resolveTimeZone(day?.timezone ?? park.timezone));
     addCustom({
       parkSlug: park.slug,
       parkName: park.name,
@@ -434,7 +435,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       date: activeDate,
       label: t('custom.defaultLabel'),
       icon: 'break',
-      startMinute: grid ? nextFreeStart(spans, grid) : undefined,
+      // Never before now: a break filed into a morning that has gone is the
+      // same fault as a queue filed there. `nowFloor` is `openMin` on every
+      // other date, so nothing about a future plan moves.
+      startMinute: grid ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock)) : undefined,
     });
   };
 

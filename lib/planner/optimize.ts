@@ -4,6 +4,7 @@ import { type DayGrid, SNAP_MIN_FINE, rideFloor } from './day-grid';
 import { estimateFor, occupiedMinutes } from './estimate';
 import { transferBetween } from './leg';
 import { partyFlags } from './party';
+import type { DayClock } from './park-time';
 import type { PlannerDayPrefs, PlannerEntry } from './types';
 
 /**
@@ -35,10 +36,16 @@ import type { PlannerDayPrefs, PlannerEntry } from './types';
  * outcome the search is content with — see the third rule, where it is the thing
  * minimised before anything else.
  *
- * **Nothing is planned before now, on a day that is today.** `nowMinute` raises
- * every candidate's floor, the same lever a ride's published opening pulls. The
- * optimiser had no clock at all, so a day sorted at 09:43 came back with a block
- * at 09:15.
+ * **Nothing is planned before now, and nothing already under way is moved.**
+ * The optimiser had no clock at all, so a day sorted at 09:43 came back with a
+ * block at 09:15. `clock` does two separate things about that: `today` raises
+ * every candidate's floor, the same lever a ride's published opening pulls, and
+ * it takes every entry whose slot has already STARTED out of the search and
+ * puts it among the fixed blocks. Two mechanisms because they answer two
+ * questions — the floor decides WHERE a stop goes, the exclusion decides WHO is
+ * planned at all — and a ride at 10:00 pressed at 09:43 needs the first without
+ * the second. `past` refuses the day outright: one that has been walked is a
+ * record, and sorting it would rewrite what happened.
  *
  * **What does not fit is ranked in three tiers, not counted**, which is
  * {@link OVERFLOW_STRIDE}: an entry the visitor already had, then a headliner
@@ -253,6 +260,54 @@ function overflowTier(
 }
 
 /**
+ * Whether the clock has passed this entry's start.
+ *
+ * A slot that has STARTED counts, not only one that has fully passed: at 14:00
+ * somebody is standing in the queue a block gives 13:30–14:25, and the other
+ * reading leaves that entry movable, lets the floor file it at 14:00 or later,
+ * and the plan is then telling them to leave a queue and rejoin it.
+ *
+ * Strictly `<`, and the boundary is not a detail. The floor snaps UP to the
+ * quarter hour, so a press at 14:00 files the next ride AT 14:00 — with `<=`
+ * that ride is elapsed the instant it is planned, the bar's own `movable` count
+ * drops below two, and the whole component unmounts taking the sentence it just
+ * wrote and its undo with it. `check:planner` found that by pressing the button
+ * against a fixed clock. A block starting exactly now is somebody arriving, not
+ * somebody queueing.
+ *
+ * Worth naming: the span such a block occupies comes from `occupiedMinutes`,
+ * i.e. the model's queue for an hour that has already happened. It is a
+ * forecast — and it is the same forecast the block is drawn at on the axis and
+ * measured with everywhere else, which beats a truer number nobody can see.
+ * Somebody who knows better ticks the block off, and the real minutes are read
+ * from `actualWait` after that.
+ */
+function hasStarted(entry: PlannerEntry, clock?: DayClock): boolean {
+  return clock?.phase === 'today' && entry.startMinute < clock.nowMinute;
+}
+
+/**
+ * The entries a press may move: not ticked off, not a free block, a real ride,
+ * and not already under way.
+ *
+ * Exported because that filter was written out four times — here, in
+ * `isExecutable`, in {@link scoreCurrent} and in the bar that draws the buttons
+ * — and every failure this rule had to fix was two of those copies disagreeing.
+ * `isExecutable` walked a set holding an entry that was ALSO in `ctx.fixed`, so
+ * the overlap test compared a block against itself and was true for every day:
+ * the guard never fired and `optimizeDay` could never answer "already sorted" on
+ * today. `scoreCurrent` summed a morning the plan had not seen, so the saving it
+ * printed was the morning's queues. And the bar counted rides the engine
+ * refused, so it offered a button for a day with nothing left to sort. One
+ * function makes the disagreement impossible rather than unlikely.
+ */
+export function movableEntries(entries: readonly PlannerEntry[], clock?: DayClock): PlannerEntry[] {
+  return entries.filter(
+    (entry) => !entry.done && !entry.custom && entry.attractionSlug && !hasStarted(entry, clock)
+  );
+}
+
+/**
  * The one number every comparison in this file is made of.
  *
  * Not rounded, and that matters: at {@link IDLE_WEIGHT} a cost lands on halves,
@@ -364,22 +419,22 @@ export interface OptimizeInput {
   /** Rides to add on top of what the day already holds. */
   add?: readonly PlanDayRide[];
   /**
-   * Park-local minutes since midnight, for a day that is TODAY. Omitted or
-   * `null` for every other date.
+   * Where this day sits against the PARK's clock. Omitted means `future`, and
+   * every rule keyed to it then reduces to the expression it had before the
+   * clock existed — which is what keeps a plan for next Saturday reckoned the
+   * way it always was.
    *
-   * The optimiser had no clock and therefore planned the morning again at
-   * half past nine: a day being sorted at 09:43 came back with a ride at 10:00
-   * and the one before it at 09:15, which is a plan for a queue the visitor
-   * cannot be in. It raises the FLOOR of every candidate, which is the same
-   * lever a ride's own opening time pulls — see `buildContext`. Deliberately
-   * not a hard bound on the axis: the grid still draws the whole day, and a
-   * block somebody dragged into the past by hand stays where they put it.
+   * One value rather than a date plus a minute, because the two decide the same
+   * things and a caller that sets one and forgets the other is the bug: the
+   * optimiser was handed a minute for today and nothing at all for yesterday,
+   * so it re-planned a day that had already been walked. The three phases and
+   * what each does are in the module docstring.
    *
    * Passed rather than read here, because "now" is a render-time value and this
    * module is pure — the tests set the clock by argument, which is what makes
    * "at 09:43 nothing lands before 09:45" an assertion rather than a flake.
    */
-  nowMinute?: number | null;
+  clock?: DayClock;
 }
 
 /**
@@ -1107,44 +1162,29 @@ function improve(ctx: Context, order: readonly number[]): number[] {
 
 /** Everything the search needs, precomputed once. */
 function buildContext(input: OptimizeInput): Context | null {
-  const { day, grid, entries, add = [], nowMinute } = input;
+  const { day, grid, entries, add = [], clock } = input;
   if (!canOptimize(day, grid) || !day) return null;
+  // A day that has been walked is a record, not a plan. Refused here rather
+  // than only at the button, so `optimizeDay`, `scoreOrder` and `scoreCurrent`
+  // all answer the same way whatever a caller forgets.
+  if (clock?.phase === 'past') return null;
 
-  // Fixed: a ticked-off entry happened, and a free block is a decision.
+  // Fixed: a ticked-off entry happened, a free block is a decision, and a slot
+  // the clock has reached is being lived through — see `hasStarted`.
   const fixed: FixedBlock[] = entries
-    .filter((entry) => entry.done || entry.custom)
+    .filter((entry) => entry.done || entry.custom || hasStarted(entry, clock))
     .map((entry) => ({
       from: entry.startMinute,
       to: entry.startMinute + Math.max(occupiedMinutes(day, entry), SNAP_MIN_FINE),
     }))
     .sort((a, b) => a.from - b.from);
 
-  const movable = entries.filter((entry) => !entry.done && !entry.custom && entry.attractionSlug);
+  // Filtered BEFORE the `MAX_STOPS` split below, deliberately: applied after
+  // it, `capped` would report rides that were never going to be planned, and
+  // `addKept` would refuse headliners the remaining minutes had room for.
+  const movable = movableEntries(entries, clock);
 
   const rideOf = (slug: string) => day.rides.find((r) => r.attractionSlug === slug) ?? null;
-
-  /**
-   * A ride's earliest minute: its own floor, and never before now.
-   *
-   * `rideFloor` answers with the park's gates, the ride's published opening and
-   * the walk from the turnstiles. What it cannot know is what time it is — so a
-   * day sorted at 09:43 got its first block at 09:15, a queue nobody can join.
-   * `nowMinute` is only set for TODAY, so every other date reduces to the old
-   * expression exactly.
-   *
-   * Snapped UP to the grid's step rather than used raw: every start in this app
-   * sits on a quarter hour, and a floor of 09:43 would otherwise put the front's
-   * first option at 09:43 and every later one 15 minutes apart from it.
-   *
-   * Capped like `rideFloor` caps its own, so a press made after closing time
-   * still produces placements — they will not fit, and not fitting is a thing
-   * this plan can say.
-   */
-  const floorFor = (ride: PlanDayRide | null | undefined) => {
-    const own = rideFloor(grid, ride).softMin;
-    if (typeof nowMinute !== 'number') return own;
-    return Math.min(Math.max(own, snapUp(nowMinute, SNAP_MIN_FINE)), grid.closeMin - SNAP_MIN_FINE);
-  };
 
   /**
    * The {@link MAX_STOPS} budget, split BEFORE the cut rather than by it.
@@ -1176,7 +1216,7 @@ function buildContext(input: OptimizeInput): Context | null {
         slug,
         name: entry.attractionName ?? ride?.attractionName ?? slug,
         ride,
-        floorMin: floorFor(ride),
+        floorMin: rideFloor(grid, ride, clock).softMin,
         headliner: Boolean(ride?.isHeadliner),
         ...tabulate(day, slug),
       };
@@ -1186,7 +1226,7 @@ function buildContext(input: OptimizeInput): Context | null {
       slug: ride.attractionSlug,
       name: ride.attractionName,
       ride,
-      floorMin: floorFor(ride),
+      floorMin: rideFloor(grid, ride, clock).softMin,
       headliner: Boolean(ride.isHeadliner),
       ...tabulate(day, ride.attractionSlug),
     })),
@@ -1315,9 +1355,13 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
   const { day } = input;
   if (!day) return false;
 
-  const stops = input.entries
-    .filter((entry) => !entry.done && !entry.custom && entry.attractionSlug)
-    .sort((a, b) => a.startMinute - b.startMinute);
+  // The same set the search works on, and that is load-bearing: walked with the
+  // bare filter, this reaches an entry that is ALSO in `ctx.fixed`, compares the
+  // block against itself, and the overlap test is true for every day — the
+  // guard never fires and `optimizeDay` can never answer "already sorted".
+  const stops = movableEntries(input.entries, input.clock).sort(
+    (a, b) => a.startMinute - b.startMinute
+  );
 
   for (let i = 0; i < stops.length; i++) {
     const entry = stops[i];
@@ -1346,6 +1390,10 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
  * `scripts/test-planner-optimize.mjs` brute-forces every permutation through —
  * a comparison against a plan produced by the search itself would be the search
  * marking its own homework.
+ *
+ * The slug list has to be the MOVABLE set: a slug that is not a candidate —
+ * because its slot has elapsed, or because `MAX_STOPS` cut it — is answered
+ * with `null` rather than a worse score.
  */
 export function scoreOrder(
   input: OptimizeInput,
@@ -1387,12 +1435,16 @@ export function scoreOrder(
  * changes nothing the second time.
  */
 export function scoreCurrent(input: OptimizeInput): Scored | null {
-  const { day, grid, entries } = input;
+  const { day, grid, entries, clock } = input;
   if (!canOptimize(day, grid) || !day) return null;
+  if (clock?.phase === 'past') return null;
 
-  const movable = entries
-    .filter((entry) => !entry.done && !entry.custom && entry.attractionSlug)
-    .sort((a, b) => a.startMinute - b.startMinute);
+  // The clock decides WHICH rides this covers and never where they sit. As a
+  // floor it would be wrong here: this scores the day where the blocks actually
+  // are, which is what makes it a usable incumbent. As a membership rule it is
+  // required, because a before-figure over five rides against an after-figure
+  // over two is not a saving, it is a subtraction.
+  const movable = movableEntries(entries, clock).sort((a, b) => a.startMinute - b.startMinute);
   if (movable.length === 0) return null;
 
   let totalWaitMinutes = 0;

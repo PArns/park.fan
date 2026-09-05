@@ -3623,6 +3623,329 @@ if (reachable) {
   await past.close();
 }
 
+// ── Nothing is planned into a day that has been walked ──────────────────────
+// The month calendar lets a past day be opened again as soon as something was
+// planned on it (`planner-month-calendar.tsx`, "a past cell is reachable only
+// where something was planned"), and `/plan/day` answers 200 for it with a full
+// ride set — so until this rule the panel drew the optimise bar and the
+// headliner band on yesterday, and pressing either rewrote a record.
+//
+// What must NOT disappear is the other half: a past day is kept so somebody can
+// write down what actually happened, so the hand controls stay. The free-block
+// row is the one asserted, because it is the desktop's own and it sits in the
+// very component the two hidden ones were taken out of.
+{
+  const gone = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(gone);
+
+  const OPEN = 9;
+  const CLOSE = 18;
+  // `parkDay(-1)`, not `Date.now() - 86_400_000`: between 22:00 and 24:00 UTC
+  // the two name different days, which is the trap `parkDay`'s own docstring
+  // was written for.
+  const YESTERDAY = parkDay(-1);
+  const RIDES = ['taron', 'black-mamba', 'chiapas-die-wasserbahn'];
+  const dayFor = (date) => ({
+    parkSlug: PARK.slug,
+    timezone: 'Europe/Berlin',
+    context: {
+      date,
+      status: 'OPERATING',
+      openHour: OPEN,
+      closeHour: CLOSE,
+      crowdLevel: 'moderate',
+      weather: null,
+      isHoliday: false,
+      isBridgeDay: false,
+      isSchoolVacation: false,
+      isWeekend: false,
+    },
+    tier: date < YESTERDAY ? 'observed' : 'measured',
+    leadDays: 1,
+    leadTimeMae: null,
+    rides: RIDES.map((slug, i) => ({
+      attractionSlug: slug,
+      attractionName: slug,
+      land: 'Mystery',
+      latitude: 50.8 + i * 0.002,
+      longitude: 6.87,
+      hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, h) => ({
+        hour: OPEN + h,
+        wait: 20 + h * 5,
+      })),
+      dayPeak: 70,
+      uncertaintyMinutes: null,
+      sampleDays: 90,
+      // The third one is the headliner nobody planned, so the band has
+      // something to offer and its absence below means something.
+      isHeadliner: i === 2,
+    })),
+    shows: [],
+  });
+
+  await gone.route('**/plan/day**', (route) => {
+    const date = new URL(route.request().url()).searchParams.get('date') ?? YESTERDAY;
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(dayFor(date)),
+    });
+  });
+
+  /** The same two-ride day, filed under whichever date is asked for. */
+  const seedOn = async (date) => {
+    await gone.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await gone.evaluate(
+      ([plan, on]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [on]: {
+            date: on,
+            entries: [
+              { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+              {
+                id: 'black-mamba-1',
+                attractionSlug: 'black-mamba',
+                attractionName: 'Black Mamba',
+                startMinute: 960,
+              },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = on;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        window.localStorage.setItem('parkfan_planner_width', '520');
+      },
+      [PLAN, date]
+    );
+    await gone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await gone.locator(LAUNCHER).click();
+    await gone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await gone.waitForTimeout(2500);
+  };
+
+  // The positive control FIRST, so a selector typo cannot pass the two counts
+  // below by matching nothing at all.
+  await seedOn(DATE);
+  check(
+    'auf einem künftigen Tag stehen beide Planer-Angebote',
+    (await gone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
+      (await gone.locator(`${SHEET} [data-planner-headliner-hint]`).count()) === 1,
+    `Leiste ${await gone.locator(`${SHEET} [data-planner-optimize]`).count()}, Bande ${await gone.locator(`${SHEET} [data-planner-headliner-hint]`).count()}`
+  );
+
+  await seedOn(YESTERDAY);
+  check(
+    'ein vergangener Tag bietet kein Sortieren an',
+    (await gone.locator(`${SHEET} [data-planner-optimize]`).count()) === 0
+  );
+  check(
+    'und keine Headliner-Bande',
+    (await gone.locator(`${SHEET} [data-planner-headliner-hint]`).count()) === 0
+  );
+  // The load-bearing half, and the reason this is not a blanket store guard:
+  // a walked day is a record, and writing the record down still has to work.
+  check(
+    'von Hand eintragen geht auf ihm weiterhin',
+    (await gone.locator(`${SHEET} [data-planner-add-custom]`).count()) === 1
+  );
+
+  await gone.close();
+}
+
+// ── The morning is not planned again at two in the afternoon ────────────────
+// Reported against the clock rule that shipped before this one: raising every
+// candidate's floor to "now" is exactly what MOVES a 10:00 block into the
+// afternoon. A slot the clock has reached leaves the search and joins the fixed
+// blocks instead, so `applyPlan` never touches its minute.
+//
+// Deterministic at any hour, which is the point: `page.clock.setFixedTime` puts
+// the browser at 14:00 park-local whatever time the run starts, and the day
+// payload is stubbed because today's real one is `tier: composed` with half the
+// rides of tomorrow's.
+{
+  const late = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(late);
+
+  const OPEN = 9;
+  const CLOSE = 20;
+  const TODAY = parkDay(0);
+  const ZONE = 'Europe/Berlin';
+
+  /**
+   * The epoch of a wall-clock time in the park's zone.
+   *
+   * Two passes, because the offset has to be read at the instant it applies:
+   * the first guess is off by the offset, and reading `longOffset` there is
+   * enough to land on the right one everywhere except the hour a DST change
+   * skips — which is why the second pass repeats the read.
+   */
+  const parkInstant = (date, hour, minute) => {
+    const [y, m, d] = date.split('-').map(Number);
+    const offsetAt = (ms) => {
+      const label =
+        new Intl.DateTimeFormat('en-US', { timeZone: ZONE, timeZoneName: 'longOffset' })
+          .formatToParts(new Date(ms))
+          .find((p) => p.type === 'timeZoneName')?.value ?? 'GMT+00:00';
+      const [, sign, hh, mm] = /GMT([+-])(\d{2}):(\d{2})/.exec(label) ?? [, '+', '00', '00'];
+      return (sign === '-' ? -1 : 1) * (Number(hh) * 60 + Number(mm));
+    };
+    const naive = Date.UTC(y, m - 1, d, hour, minute);
+    let guess = naive - offsetAt(naive) * 60_000;
+    guess = naive - offsetAt(guess) * 60_000;
+    return guess;
+  };
+
+  const NOW = parkInstant(TODAY, 14, 0);
+  await late.clock.setFixedTime(NOW);
+
+  await late.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: ZONE,
+        context: {
+          date: TODAY,
+          status: 'OPERATING',
+          openHour: OPEN,
+          closeHour: CLOSE,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 0,
+        leadTimeMae: null,
+        rides: ['taron', 'black-mamba', 'fly', 'winjas-force'].map((slug, i) => ({
+          attractionSlug: slug,
+          attractionName: slug,
+          land: 'Mystery',
+          latitude: 50.8 + i * 0.002,
+          longitude: 6.87,
+          hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, h) => ({
+            hour: OPEN + h,
+            wait: 20 + (h % 3) * 10,
+          })),
+          dayPeak: 40,
+          uncertaintyMinutes: null,
+          sampleDays: 90,
+          isHeadliner: false,
+        })),
+        shows: [],
+      }),
+    })
+  );
+
+  await late.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await late.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            // Two behind the fixed clock, two ahead of it, and the two ahead are
+            // three hours apart so there is something worth sorting.
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            {
+              id: 'black-mamba-1',
+              attractionSlug: 'black-mamba',
+              attractionName: 'Black Mamba',
+              startMinute: 780,
+            },
+            { id: 'fly-1', attractionSlug: 'fly', attractionName: 'F.L.Y.', startMinute: 1020 },
+            {
+              id: 'winja-1',
+              attractionSlug: 'winjas-force',
+              attractionName: "Winja's Force",
+              startMinute: 1140,
+            },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      window.localStorage.setItem('parkfan_planner_width', '520');
+    },
+    [PLAN, TODAY]
+  );
+  await late.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await late.locator(LAUNCHER).click();
+  await late.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await late.waitForTimeout(3000);
+
+  const readToday = () =>
+    late.evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const day = Object.values(plan.parks?.phantasialand?.days ?? {})[0];
+      return Object.fromEntries((day?.entries ?? []).map((e) => [e.id, e.startMinute]));
+    });
+
+  const run = late.locator(`${SHEET} [data-planner-optimize-run]`);
+  check('die Optimier-Leiste steht auf dem heutigen Tag', (await run.count()) === 1);
+  if (await run.count()) {
+    const before = await readToday();
+    await run.click();
+    await late.waitForTimeout(1500);
+    const after = await readToday();
+
+    check(
+      'der Optimierer lässt die abgelaufenen Bahnen stehen',
+      after['taron-1'] === before['taron-1'] && after['black-mamba-1'] === before['black-mamba-1'],
+      JSON.stringify(after)
+    );
+    check(
+      'und plant nichts vor der aktuellen Uhrzeit',
+      after['fly-1'] >= 840 && after['winja-1'] >= 840,
+      JSON.stringify(after)
+    );
+    // The sentence covers the rides that were re-planned and nothing else, so
+    // it has to say something. Two ways it did not: `scoreCurrent` counting the
+    // morning made the guard around the saving fail and the status line render
+    // empty, and an elapsed test of `<=` made the ride just filed AT 14:00
+    // elapsed on the spot, which took `movable` under two and unmounted the
+    // whole bar — sentence, undo and all — one render after the press.
+    //
+    // `count()` before `textContent()`, because a Playwright locator that
+    // matches nothing does not return an empty string, it throws after the
+    // default timeout and takes the rest of this file's assertions with it.
+    const resultLine = late.locator(`${SHEET} [data-planner-optimize-result]`);
+    const said = (await resultLine.count()) ? ((await resultLine.textContent()) ?? '') : '';
+    check('die Leiste sagt, was sie getan hat', said.trim().length > 0, said.slice(0, 80));
+
+    check(
+      'und sie steht nach dem Druck noch da',
+      (await late.locator(`${SHEET} [data-planner-optimize-run]`).count()) === 1
+    );
+
+    if (await late.locator(`${SHEET} [data-planner-optimize-run]`).count()) {
+      await run.click();
+      await late.waitForTimeout(1200);
+      const twice = (await resultLine.count()) ? ((await resultLine.textContent()) ?? '') : '';
+      check(
+        'und ein zweiter Druck sagt, dass es passt',
+        /Passt schon so/.test(twice),
+        twice.slice(0, 80)
+      );
+    }
+  }
+
+  await late.close();
+}
+
 // ── The weather rail ────────────────────────────────────────────────────────
 // A band down the edge of the day and a label only where the weather turns.
 // It lives in the HOUR GUTTER, which is the whole reason it can exist: the
@@ -4661,8 +4984,16 @@ if (reachable) {
 
   // And back. The stored width is what decides it, so the same press that took
   // it away brings it back with the day it had.
+  //
+  // `domcontentloaded` and not `networkidle`, unlike the four reloads above it:
+  // the assertion before this one navigated the tab to a PARK page, and a park
+  // page has a live poll, a weather query and a best-days snapshot on it — so
+  // there is no guarantee of 500 ms without a request inside 30 s, and a run
+  // made while the backend was recomputing that snapshot died here with 274
+  // green checks behind it. Nothing below needs the network to be quiet: the
+  // launcher click and the sheet wait already wait for the things this measures.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
-  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.reload({ waitUntil: 'domcontentloaded' });
   await cols.locator(LAUNCHER).click();
   await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await cols.waitForTimeout(2000);

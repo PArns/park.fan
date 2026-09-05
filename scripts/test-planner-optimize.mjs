@@ -811,7 +811,11 @@ function idleOfPlan(payload, stops) {
 // Reported from a park page at 09:43: the day was sorted and came back with a
 // ride at 10:00 and the one before it at 09:15 — a queue nobody can join, since
 // the visitor is standing in the park with the morning already gone. The
-// optimiser had no clock at all; `nowMinute` is one, and only for TODAY.
+// optimiser had no clock at all; `clock` is one, and only `today` carries a
+// minute. The FLOOR is what this block measures; §12b2 measures the other half,
+// which is that a slot the clock has already reached leaves the search
+// entirely — and it is what makes this block's second check true for the right
+// reason, since `a-1@540` is elapsed at 09:43 rather than merely floored.
 {
   const rides = [
     ride('a', flat(10), { land: 'X', lat: 50.8 }),
@@ -830,7 +834,7 @@ function idleOfPlan(payload, stops) {
   const base = { day: payload, grid: grid(payload), entries };
 
   const withoutClock = optimizeDay(base);
-  const withClock = optimizeDay({ ...base, nowMinute: 9 * 60 + 43 });
+  const withClock = optimizeDay({ ...base, clock: { phase: 'today', nowMinute: 9 * 60 + 43 } });
 
   check(
     'ohne heutigen Tag plant der Optimierer wie bisher in den Morgen',
@@ -853,11 +857,154 @@ function idleOfPlan(payload, stops) {
   );
   // A clock past closing produces placements that do not fit rather than a
   // crash or an empty plan — not fitting is a thing this plan can say.
-  const afterClose = optimizeDay({ ...base, nowMinute: 23 * 60 });
+  const afterClose = optimizeDay({ ...base, clock: { phase: 'today', nowMinute: 23 * 60 } });
   check(
     'eine Uhrzeit nach Feierabend liefert einen Plan, der nicht passt',
     afterClose === null || afterClose.overflow === afterClose.stops.length,
     afterClose ? `${afterClose.overflow} von ${afterClose.stops.length}` : 'null'
+  );
+}
+
+// ── 12b2. An elapsed slot is not re-planned ────────────────────────────────
+// Reported after the block above shipped: at 14:00, a day holding a ride at
+// 09:00 came back with that ride moved into the afternoon. The floor alone
+// cannot answer it — raising a candidate's earliest minute to "now" is exactly
+// what moves a morning block forward. So a slot the clock has reached leaves
+// the search and joins the fixed blocks, the same place a ticked-off ride and
+// a lunch break already sit, and `applyPlan` then never touches its minute.
+{
+  const rides = [
+    ride('a', flat(10), { land: 'X', lat: 50.8 }),
+    ride('b', flat(10), { land: 'X', lat: 50.8005 }),
+    ride('c', flat(10), { land: 'X', lat: 50.801 }),
+  ];
+  const payload = day(rides);
+  const entries = [
+    entry('a-1', 'a', 9 * 60),
+    entry('b-1', 'b', 13 * 60),
+    entry('c-1', 'c', 16 * 60),
+  ];
+  const base = { day: payload, grid: grid(payload), entries };
+  const atTwo = { ...base, clock: { phase: 'today', nowMinute: 14 * 60 } };
+
+  const found = optimizeDay(atTwo);
+  check(
+    'eine abgelaufene Bahn wird nicht mehr umgeplant',
+    found !== null && found.stops.every((s) => s.entryId !== 'a-1' && s.entryId !== 'b-1'),
+    JSON.stringify(found?.stops.map((s) => [s.entryId, s.startMinute]))
+  );
+
+  // The other half, and the one a visitor sees: `applyPlan` moves and adds and
+  // never removes, so a stop that is not in the plan keeps the minute it had.
+  const date = payload.context.date;
+  const state = {
+    parks: {
+      'test-park': {
+        slug: 'test-park',
+        name: 'Test',
+        geo: { continent: 'europe', country: 'germany', city: 'test' },
+        days: { [date]: { date, entries } },
+      },
+    },
+    activeParkSlug: 'test-park',
+    activeDate: date,
+    version: 1,
+  };
+  const written = applyPlan(state, {
+    parkSlug: 'test-park',
+    parkName: 'Test',
+    geo: state.parks['test-park'].geo,
+    date,
+    stops: found.stops.map((s) => ({
+      entryId: s.entryId,
+      attractionSlug: s.attractionSlug,
+      attractionName: s.attractionName,
+      startMinute: s.startMinute,
+    })),
+  });
+  const byId = new Map(
+    written.parks['test-park'].days[date].entries.map((e) => [e.id, e.startMinute])
+  );
+  check(
+    'und behält im Plan die Minute, die sie hatte',
+    byId.get('a-1') === 9 * 60 && byId.get('b-1') === 13 * 60,
+    `a-1@${byId.get('a-1')}, b-1@${byId.get('b-1')}`
+  );
+
+  // A slot that has STARTED counts, not only one that has finished: at 13:05 the
+  // visitor is standing in b's queue, and an optimiser allowed to move that
+  // block is telling them to leave it and rejoin.
+  const inQueue = optimizeDay({ ...base, clock: { phase: 'today', nowMinute: 13 * 60 + 5 } });
+  check(
+    'eine Bahn, in deren Schlange gerade gestanden wird, bleibt auch stehen',
+    inQueue !== null && inQueue.stops.every((s) => s.entryId !== 'b-1'),
+    JSON.stringify(inQueue?.stops.map((s) => [s.entryId, s.startMinute]))
+  );
+  // And the ride after it waits until that queue is through — which is what the
+  // fixed block buys and a plain exclusion would not.
+  const afterQueue = inQueue?.stops.find((s) => s.entryId === 'c-1');
+  check(
+    'und die nächste Bahn wartet, bis diese Schlange durch ist',
+    afterQueue !== undefined && afterQueue.startMinute >= 13 * 60 + spanOf(payload, 'b', 13 * 60),
+    `${afterQueue?.startMinute} gegen ${13 * 60 + spanOf(payload, 'b', 13 * 60)}`
+  );
+
+  // The boundary, and it is strict. A block starting exactly now is somebody
+  // arriving, not somebody queueing — and `<=` here had a second cost the UI
+  // paid: the floor snaps up to the quarter hour, so a press at 14:00 files the
+  // next ride AT 14:00, which would then be elapsed the instant it was planned.
+  const onTheDot = optimizeDay({ ...base, clock: { phase: 'today', nowMinute: 13 * 60 } });
+  check(
+    'eine Bahn, die genau jetzt anfängt, bleibt planbar',
+    onTheDot !== null && onTheDot.stops.some((s) => s.entryId === 'b-1'),
+    JSON.stringify(onTheDot?.stops.map((s) => [s.entryId, s.startMinute]))
+  );
+
+  // The before-figure covers what is being re-planned and nothing else. Without
+  // this, `saved` is the morning's queues: rides the press never touched.
+  check(
+    'der Vorher-Wert zählt nur die Bahnen, die noch geplant werden',
+    scoreCurrent(atTwo).stops.length === 1 && scoreCurrent(base).stops.length === 3,
+    `${scoreCurrent(atTwo).stops.length} von ${scoreCurrent(base).stops.length}`
+  );
+
+  // Pressing twice is a no-op on today as well. It was not: `isExecutable`
+  // walked a set that still held the elapsed entry while `ctx.fixed` held it
+  // too, so the block overlapped itself, the day never counted as walkable and
+  // the plan was rewritten on every press.
+  const settled = optimizeDay({
+    ...atTwo,
+    entries: [entries[0], entries[1], { ...entries[2], startMinute: found.stops[0].startMinute }],
+  });
+  check(
+    'ein zweiter Druck ändert auch heute nichts mehr',
+    settled === null,
+    JSON.stringify(settled)
+  );
+
+  // Everything behind us: there is nothing to sort, and the honest answer is
+  // no plan rather than a plan of nothing.
+  check(
+    'ist der ganze Tag abgelaufen, gibt es nichts zu sortieren',
+    optimizeDay({ ...base, clock: { phase: 'today', nowMinute: 23 * 60 } }) === null
+  );
+
+  // A day that has been walked is a record. Refused in the engine, so the
+  // button is not the only thing standing between a press and a rewrite.
+  check(
+    'ein vergangener Tag wird gar nicht erst geplant',
+    optimizeDay({ ...base, clock: { phase: 'past' } }) === null &&
+      scoreCurrent({ ...base, clock: { phase: 'past' } }) === null
+  );
+
+  // And a date in the future reckons exactly as it did before any of this.
+  check(
+    'ohne Uhr bleibt alles, wie es war',
+    JSON.stringify(optimizeDay(base)) ===
+      JSON.stringify(optimizeDay({ ...base, clock: { phase: 'future' } })),
+    JSON.stringify(
+      optimizeDay({ ...base, clock: { phase: 'future' } })?.stops.map((s) => s.startMinute)
+    )
   );
 }
 

@@ -9,6 +9,7 @@ import { RiderHeight } from '@/components/common/unit-display';
 import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
+import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { startRideDrag } from '@/lib/planner/ride-drag';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
@@ -102,6 +103,11 @@ export function PlannerRideSearch({
   // because the floor is the ride's, not the park's: filing every ride at the
   // opening hour puts a block in hours the ride has no measured curve for.
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
+  // Recomputed per render for the same reason the start is: this list stays
+  // open, and a row tapped at 14:00 may not file into a morning that has gone.
+  // `resolveTimeZone` here and not at the call site — the flyout hands this
+  // component the raw `day?.timezone ?? park?.timezone`, which can be undefined.
+  const clock = dayClock(date, resolveTimeZone(timezone));
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
@@ -111,7 +117,7 @@ export function PlannerRideSearch({
           })),
           grid,
           45,
-          rideFloor(grid, ride).softMin
+          rideFloor(grid, ride, clock).softMin
         )
       : undefined;
 

@@ -1,4 +1,5 @@
 import type { PlanDayRide } from '@/lib/api/types';
+import type { DayClock } from './park-time';
 
 /**
  * The day grid's geometry. Pure — no React, no DOM, no clock.
@@ -321,6 +322,31 @@ export function opensAtMinute(opensAt: string | null | undefined): number | null
 export const GATE_TO_FIRST_RIDE_MIN = 15;
 
 /**
+ * The earliest minute a block may be FILED at today, and `openMin` on every
+ * other date.
+ *
+ * The planner files a block at a minute it picks itself in four places — the
+ * optimiser, a headliner pill, a ride-search row and a free block — and none of
+ * them knew what time it was. Pressed at 14:00, all four still filed into the
+ * morning: a queue nobody can join, on a day the visitor is standing in.
+ *
+ * It raises the SOFT floor and never the hard one (see {@link rideFloor}): a
+ * drag into the recorded morning stays legal, because writing down when you
+ * actually rode something is the reason a day is kept at all.
+ */
+export function nowFloor(grid: DayGrid, clock?: DayClock): number {
+  if (clock?.phase !== 'today') return grid.openMin;
+  // Snapped UP, not to the nearest: every start in this app sits on a quarter
+  // hour, and rounding 14:03 down to 14:00 would file a block three minutes
+  // into a past nobody can act on. Capped like the floors below it, so a press
+  // made after closing still yields a minute rather than an impossible one.
+  return Math.min(
+    Math.max(grid.openMin, Math.ceil(clock.nowMinute / SNAP_MIN_FINE) * SNAP_MIN_FINE),
+    grid.closeMin - SNAP_MIN_FINE
+  );
+}
+
+/**
  * The two floors under a ride, and the difference between them is the point.
  *
  * The HARD floor is a FACT and is what a drag is clamped to: the ride's own
@@ -342,8 +368,17 @@ export const GATE_TO_FIRST_RIDE_MIN = 15;
  *
  * The measurement gates are deliberate: at least a month of measured days, and
  * at least an hour past the floor, or a single quiet morning becomes a wall.
+ *
+ * The soft floor carries a third thing, and it is not about the ride: today's
+ * clock, through {@link nowFloor}. A block filed before now is a queue nobody
+ * can join. `clock` is optional and every other phase reduces to the expression
+ * this function had before it existed.
  */
-export function rideFloor(grid: DayGrid, ride: PlanDayRide | undefined | null): RideFloor {
+export function rideFloor(
+  grid: DayGrid,
+  ride: PlanDayRide | undefined | null,
+  clock?: DayClock
+): RideFloor {
   const opens = opensAtMinute(ride?.opensAt);
   const knowsOpening = opens !== null && opens > grid.openMin;
   const hardMin = Math.min(knowsOpening ? opens : grid.openMin, grid.closeMin - SNAP_MIN_FINE);
@@ -363,7 +398,7 @@ export function rideFloor(grid: DayGrid, ride: PlanDayRide | undefined | null): 
 
   return {
     hardMin,
-    softMin: Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE),
+    softMin: Math.min(Math.max(withEntry, nowFloor(grid, clock)), grid.closeMin - SNAP_MIN_FINE),
     reason: raised > hardMin || knowsOpening ? 'ride' : 'park',
   };
 }

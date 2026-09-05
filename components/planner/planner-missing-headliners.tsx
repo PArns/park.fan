@@ -7,6 +7,7 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
+import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { startRideDrag } from '@/lib/planner/ride-drag';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
@@ -77,9 +78,16 @@ export function PlannerMissingHeadliners({
   }, [day, planned, prefs]);
 
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
+  // Read on every render rather than once: this band is open for as long as the
+  // panel is, and a pill pressed at 14:00 may not file into the morning because
+  // the clock was read when the sheet opened. No subscription — nothing here
+  // has to disappear on a tick, and the value that matters is the one at the
+  // moment of the press.
+  const clock = dayClock(date, resolveTimeZone(timezone));
   // Per ride, not per park: filing every ride at the opening hour puts a block
   // in hours the ride has no measured curve for — and some of them do not open
-  // with the gates at all.
+  // with the gates at all. The clock is the third floor under the same rule:
+  // a queue in an hour that has passed is one nobody can join.
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
@@ -89,11 +97,15 @@ export function PlannerMissingHeadliners({
           })),
           grid,
           45,
-          rideFloor(grid, ride).softMin
+          rideFloor(grid, ride, clock).softMin
         )
       : undefined;
 
   if (missing.length === 0) return null;
+  // A day that has been walked is a record, and "these headliners are still
+  // missing" is an offer about a day somebody can still have. On yesterday it
+  // is a reproach, and a pill files a ride at a minute the app picked.
+  if (clock.phase === 'past') return null;
 
   return (
     <div data-planner-headliner-hint="" className="border-border/60 shrink-0 border-t px-2 py-2">

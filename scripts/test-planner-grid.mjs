@@ -25,6 +25,7 @@ import {
   minuteAt,
   nextFreeStart,
   packLanes,
+  nowFloor,
   rideFloor,
   MAX_SHOW_LINES,
   showLinePositions,
@@ -226,6 +227,50 @@ test(
   rideFloor(g, undefined).softMin - g.openMin,
   GATE_TO_FIRST_RIDE_MIN
 );
+
+// ── 13b. The clock is the third floor, and only on the soft one ─────────────
+// A block filed before now is a queue nobody can join. It belongs to the SOFT
+// floor because that is where a new block is FILED; the hard floor is what a
+// drag is clamped to, and dragging a block into the morning is how somebody
+// writes down when they actually rode something.
+{
+  const today = (nowMinute) => ({ phase: 'today', nowMinute });
+  test('ohne Uhr bleibt der weiche Boden, was er war', rideFloor(g, undefined).softMin, GATE);
+  test('eine künftige Uhr auch', rideFloor(g, undefined, { phase: 'future' }).softMin, GATE);
+  test(
+    'heute Mittag hebt sie ihn auf die volle Viertelstunde',
+    rideFloor(g, undefined, today(14 * 60 + 3)).softMin,
+    14 * 60 + 15
+  );
+  // Snapped UP: 14:03 rounded to the nearest quarter is 14:00, three minutes
+  // into a past nobody can act on.
+  test(
+    'genau auf dem Raster wird nicht weiter geschoben',
+    rideFloor(g, undefined, today(14 * 60)).softMin,
+    14 * 60
+  );
+  test(
+    'der harte Boden bleibt davon unberührt',
+    rideFloor(g, undefined, today(14 * 60)).hardMin,
+    g.openMin
+  );
+  // The higher of the two wins, whichever it is: a ride that opens at 11:00 is
+  // not queued for at 09:45, and at 14:00 it is not queued for at 11:00 either.
+  test(
+    'die spätere der beiden Untergrenzen gewinnt',
+    `${rideFloor(g, opening('11:00'), today(9 * 60 + 30)).softMin} ${rideFloor(g, opening('11:00'), today(14 * 60)).softMin}`,
+    `660 840`
+  );
+  // Capped like every other floor here, so a press after closing yields a
+  // minute rather than an impossible one.
+  test(
+    'nach Feierabend wird der Boden gedeckelt',
+    rideFloor(g, undefined, today(23 * 60)).softMin,
+    g.closeMin - 15
+  );
+  test('und nowFloor sagt dasselbe ohne Bahn', nowFloor(g, today(14 * 60 + 1)), 14 * 60 + 15);
+  test('ohne Uhr ist nowFloor die Öffnung', nowFloor(g, undefined), g.openMin);
+}
 
 // ── 14. Show label collapse ──────────────────────────────────────────────────
 {
