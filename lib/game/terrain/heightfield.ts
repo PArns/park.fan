@@ -98,6 +98,51 @@ export function samplePaint(t: TerrainData, x: number, z: number): number {
   return t.paint[j * n + i];
 }
 
+/**
+ * Where a ray meets the ground, or null within `maxDistance`. Marching the heightfield beats
+ * `scene.pick` for a tool that runs on pointer move: it needs no mesh, it is exact at the sample
+ * resolution rather than at the drawn LOD, and it is the same answer on the sim thread — a build
+ * tool must not place a ride somewhere the simulation thinks is a metre lower.
+ */
+export function raycast(
+  t: TerrainData,
+  origin: [number, number, number],
+  direction: [number, number, number],
+  maxDistance = 4000
+): [number, number, number] | null {
+  const len = Math.hypot(direction[0], direction[1], direction[2]) || 1;
+  const dx = direction[0] / len;
+  const dy = direction[1] / len;
+  const dz = direction[2] / len;
+  const step = cellSize(t) * 0.5;
+  let prev = 0;
+  let prevGap = origin[1] - sampleHeight(t, origin[0], origin[2]);
+  if (prevGap <= 0) return [origin[0], origin[1], origin[2]];
+  for (let d = step; d <= maxDistance; d += step) {
+    const x = origin[0] + dx * d;
+    const y = origin[1] + dy * d;
+    const z = origin[2] + dz * d;
+    const gap = y - sampleHeight(t, x, z);
+    if (gap <= 0) {
+      // Bisect between the last two samples; eight rounds put the hit inside a millimetre of a
+      // 1 m step, which is finer than anything a build tool snaps to.
+      let lo = prev;
+      let hi = d;
+      for (let k = 0; k < 8; k++) {
+        const mid = (lo + hi) * 0.5;
+        const my = origin[1] + dy * mid;
+        const mgap = my - sampleHeight(t, origin[0] + dx * mid, origin[2] + dz * mid);
+        if (mgap <= 0) hi = mid;
+        else lo = mid;
+      }
+      return [origin[0] + dx * hi, origin[1] + dy * hi, origin[2] + dz * hi];
+    }
+    prev = d;
+    prevGap = gap;
+  }
+  return null;
+}
+
 export type BrushShape = 'raise' | 'lower' | 'smooth' | 'flatten' | 'paint';
 
 export interface BrushStroke {

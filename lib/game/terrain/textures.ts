@@ -37,7 +37,10 @@ export interface TerrainTextureSet {
   albedo: RawTexture2DArray;
   surface: RawTexture2DArray;
   macro: RawTexture;
+  /** Two ripple normals for the lake: the same generator at two seeds, so the second scrolling
+   *  layer is a different wave train rather than the same one offset. */
   water: RawTexture;
+  waterDetail: RawTexture;
   resolution: number;
   /** Wall-clock cost of generating the set, ms — reported, not guessed. */
   generateMs: number;
@@ -402,18 +405,24 @@ export function createTerrainTextures(
   macro.wrapV = Texture.WRAP_ADDRESSMODE;
 
   const waterRes = Math.max(128, res >> 1);
-  const water = new RawTexture(
-    buildWaterNormal(waterRes, seed + 613),
-    waterRes,
-    waterRes,
-    Constants.TEXTUREFORMAT_RGBA,
-    scene,
-    true,
-    false,
-    Texture.TRILINEAR_SAMPLINGMODE
-  );
-  water.wrapU = Texture.WRAP_ADDRESSMODE;
-  water.wrapV = Texture.WRAP_ADDRESSMODE;
+  const makeWater = (waterSeed: number, name: string) => {
+    const tex = new RawTexture(
+      buildWaterNormal(waterRes, waterSeed),
+      waterRes,
+      waterRes,
+      Constants.TEXTUREFORMAT_RGBA,
+      scene,
+      true,
+      false,
+      Texture.TRILINEAR_SAMPLINGMODE
+    );
+    tex.name = name;
+    tex.wrapU = Texture.WRAP_ADDRESSMODE;
+    tex.wrapV = Texture.WRAP_ADDRESSMODE;
+    return tex;
+  };
+  const water = makeWater(seed + 613, 'terrain-ripple-a');
+  const waterDetail = makeWater(seed + 1289, 'terrain-ripple-b');
 
   const generateMs = (typeof performance !== 'undefined' ? performance.now() : 0) - t0;
 
@@ -422,6 +431,7 @@ export function createTerrainTextures(
     surface,
     macro,
     water,
+    waterDetail,
     resolution: res,
     generateMs,
     dispose() {
@@ -429,6 +439,7 @@ export function createTerrainTextures(
       surface.dispose();
       macro.dispose();
       water.dispose();
+      waterDetail.dispose();
     },
   };
 }

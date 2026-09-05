@@ -95,7 +95,19 @@ export async function detectCapabilities(
   let webgl2 = false;
   if (typeof document !== 'undefined') {
     const probe = document.createElement('canvas');
-    webgl2 = !!probe.getContext('webgl2');
+    const context = probe.getContext('webgl2');
+    webgl2 = !!context;
+    /**
+     * Give the probe's context back at once.
+     *
+     * A browser allows 8–16 live WebGL contexts per document and evicts the oldest when it runs
+     * out. This one is created to answer a boolean and then held for the life of the document by
+     * the canvas the closure still references, so the engine's own context starts life one slot
+     * from the limit — and the symptom of running out is a blank canvas on some later mount, with
+     * nothing pointing back here. `scripts/check-game-teardown.mjs` counts contexts per document
+     * and is what found it: two created, one engine.
+     */
+    context?.getExtension('WEBGL_lose_context')?.loseContext();
   }
 
   let preset: QualityPreset;

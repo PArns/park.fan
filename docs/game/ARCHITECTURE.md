@@ -238,7 +238,21 @@ the fourth navigation returns a blank canvas.
 5. `scene.dispose()`, then `engine.dispose()`
 6. close IndexedDB handles
 
-Verified rather than assumed: the harness navigates away and back three times and asserts the
-number of live contexts does not grow. A module's own `dispose()` is held to the same standard —
-anything it allocated (meshes, materials, textures, thin-instance buffers, observers) it frees, and
-"the scene disposes it for me" is only true for things actually parented to the scene.
+Verified rather than assumed: `pnpm game:teardown` (`scripts/check-game-teardown.mjs`) wraps
+`getContext` before the page's own script runs, tags each context with whose canvas it belongs to,
+and walks three dispose/reboot cycles. It found two real leaks and one bug in itself:
+
+- **The capability probe never gave its context back.** `capabilities.ts` created a canvas to ask
+  WebGL2 a boolean and held the answer's context for the life of the document, so the engine
+  started one slot from the browser's limit.
+- **`engine.dispose()` leaves the GL context to the garbage collector.** Babylon frees its own
+  resources; the context itself lingers. `renderer.ts` loses it explicitly now, which makes
+  teardown deterministic rather than eventual.
+- **The check's first version measured nothing.** It called `__parkfan_game.dispose()`, which does
+  not exist (the handle is at `.handle`), and read liveness from the `webglcontextlost` event —
+  which does not fire reliably on a **detached** canvas, i.e. exactly the probe's. It reads
+  `isContextLost()` now, a synchronous property of the context, and asks the question it meant to.
+
+A module's own `dispose()` is held to the same standard — anything it allocated (meshes, materials,
+textures, thin-instance buffers, observers) it frees, and "the scene disposes it for me" is only
+true for things actually parented to the scene.

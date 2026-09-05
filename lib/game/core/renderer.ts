@@ -245,6 +245,27 @@ export async function createRenderContext(
         scene.dispose();
       } finally {
         engine.dispose();
+        /**
+         * Give the GL context back explicitly.
+         *
+         * `engine.dispose()` releases Babylon's own resources but leaves the context itself to the
+         * garbage collector, so between an unmount and the next collection the document is holding
+         * one of the browser's 8–16 slots for a canvas nobody is drawing to. Losing it is the only
+         * way to make teardown deterministic rather than eventual, and it costs nothing: the
+         * context is finished either way.
+         *
+         * `getContext` returns the SAME context for a canvas that already has one, so a later
+         * boot on this canvas would otherwise inherit the dead one. WebGPU has no equivalent and
+         * needs none — `WebGPUEngine.dispose()` destroys its device.
+         *
+         * Found by `scripts/check-game-teardown.mjs`, which counts live contexts per canvas.
+         */
+        try {
+          const gl = canvas.getContext('webgl2') as WebGL2RenderingContext | null;
+          gl?.getExtension('WEBGL_lose_context')?.loseContext();
+        } catch {
+          /* a canvas already detached, or a WebGPU context: nothing to give back */
+        }
       }
     },
   };
