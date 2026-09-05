@@ -46,3 +46,18 @@ command sent *after* `world:ready`, never an await in the boot path. The reason 
 is ordering rather than risk: seeding a park from real park.fan data means placing rides, paths and
 shops, and the modules that own those are still being written. Building the adapter against
 placeholder modules would mean writing it twice.
+
+**D-021 — Wetness and seasonal tint stay a runtime material modulation; no `MaterialPluginBase` yet.**
+The `environment` module asked for one, correctly: a scene-level `wetness` uniform in a plugin
+registered against every PBR material is the only way to get puddles in the cavities of a path, a
+sheen that follows the normal map, or water pooling by curvature. What it costs is the reason it is
+not in this change — the shader has to be written **twice**, in GLSL and in WGSL, because the engine
+boots WebGPU wherever the browser has it, and a mistake in it takes every material in the game down
+at once rather than one of them.
+
+What ships instead is honest about being less: `surfaces.ts` captures each material's own
+`albedoColor`/`roughness` the first time it sees it and writes a modulation of the captured values
+back, reversibly. It is a multiply, not a shader, and it says so. The two `metadata` conventions in
+ARCHITECTURE §4 replace the name-matching fallback that would otherwise have decided a
+`treehouse-roof` is foliage. *Reversed by:* somebody wanting per-pixel wet and willing to write and
+verify both shader languages against the render harness.

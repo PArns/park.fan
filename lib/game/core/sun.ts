@@ -64,6 +64,10 @@ export interface EnvironmentInputs {
   cloud?: number;
   wetness?: number;
   temperatureC?: number;
+  /** 0..1, how hard the weather is doing whatever it does. */
+  intensity?: number;
+  /** Metres per second. */
+  windMs?: number;
 }
 
 export function computeEnvironment(input: EnvironmentInputs): EnvironmentState {
@@ -116,7 +120,50 @@ export function computeEnvironment(input: EnvironmentInputs): EnvironmentState {
     skyColor,
     ambientIntensity,
     night,
+    intensity: input.intensity ?? defaultIntensity(weather),
+    windMs: input.windMs ?? defaultWind(weather),
+    /**
+     * Snow is rain below about 1.5 °C.
+     *
+     * Not a sixth `WeatherKind`, on the environment module's own argument: the difference is a
+     * temperature, and it behaves the same way for a guest either way — the decision to go home is
+     * about getting wet, not about the crystal. Storm counts as rain because a storm that dropped
+     * nothing would be a light show.
+     */
+    precipitation:
+      weather === 'rain' || weather === 'storm' ? (temperatureC <= 1.5 ? 'snow' : 'rain') : 'none',
   };
+}
+
+/** A default for a caller that has no weather chain of its own — the fallback `environment()`. */
+function defaultIntensity(weather: WeatherKind): number {
+  switch (weather) {
+    case 'storm':
+      return 0.9;
+    case 'rain':
+      return 0.5;
+    case 'overcast':
+      return 0.3;
+    case 'cloudy':
+      return 0.15;
+    default:
+      return 0;
+  }
+}
+
+function defaultWind(weather: WeatherKind): number {
+  switch (weather) {
+    case 'storm':
+      return 16;
+    case 'rain':
+      return 6;
+    case 'overcast':
+      return 4;
+    case 'cloudy':
+      return 3;
+    default:
+      return 2;
+  }
 }
 
 function defaultCloud(weather: WeatherKind): number {

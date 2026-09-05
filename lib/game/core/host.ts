@@ -174,6 +174,13 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
     capabilities: caps,
     scene: render.scene,
     engine: render.engine,
+    // Handed over rather than looked up by name — see the docblock on `MainContext.lights`.
+    lights: {
+      sun: render.sun,
+      hemi: render.hemi,
+      shadow: render.shadow,
+      pipeline: render.pipeline,
+    },
     dispatch,
     module: <T>(other: string) => handles.get(other)?.api as T | undefined,
     assetsUrl: opts.assetsUrl ?? '/game/assets',

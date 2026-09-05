@@ -139,6 +139,23 @@ export interface EnvironmentState {
   ambientIntensity: number;
   /** 0..1, 1 at midnight. Drives night light rigs. */
   night: number;
+  /**
+   * 0..1, how hard the weather is doing whatever it does — a shower against a downpour.
+   *
+   * These three arrived on request from the `environment` module, which produced all of them and
+   * had to expose them on its own `api` instead, so every consumer had to reach for
+   * `ctx.module('environment')` rather than read the state core already hands it.
+   */
+  intensity: number;
+  /** Metres per second. Flags, foliage and particles read it. */
+  windMs: number;
+  /**
+   * What is falling, if anything.
+   *
+   * Deliberately not a sixth `WeatherKind`: snow is rain below about 1.5 °C, and that is how it
+   * behaves for a guest too — the decision to go home is about getting wet, not about the crystal.
+   */
+  precipitation: 'none' | 'rain' | 'snow';
 }
 
 // ── Frames ──────────────────────────────────────────────────────────────────────────────────
@@ -210,6 +227,28 @@ export interface MainContext {
   scene: unknown;
   /** `import('@babylonjs/core/Engines/abstractEngine').AbstractEngine` */
   engine: unknown;
+  /**
+   * The renderer's own objects, handed over rather than looked up.
+   *
+   * The `environment` module was finding all four by name — `scene.getLightByName('sun')`,
+   * `…('sky')`, `sun.getShadowGenerator()`, and the pipeline by `p.name === 'default'` — which is a
+   * contract written in string literals that nothing enforces. Renaming the light in
+   * `core/renderer.ts` would have left the sky drawn and the scene lit by whatever the renderer
+   * last wrote, with no error anywhere. Passing them makes that a compile error.
+   *
+   * Typed loosely for the same reason `scene` and `engine` are: this file is imported on the
+   * worker and in node, and must stay Babylon-free. The host casts.
+   */
+  lights: {
+    /** `DirectionalLight` — the sun. */
+    sun: unknown;
+    /** `HemisphericLight` — the sky term. */
+    hemi: unknown;
+    /** `CascadedShadowGenerator | null` — null below the preset that affords one. */
+    shadow: unknown;
+    /** `DefaultRenderingPipeline | null` — null when it failed to build. */
+    pipeline: unknown;
+  };
   /** Post a command to the worker (and log it). */
   dispatch(type: string, payload: unknown): number;
   /** Read another module's main handle (may be a stub if it failed). */
