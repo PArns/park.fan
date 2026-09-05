@@ -35,7 +35,7 @@ import type { Scene } from '@babylonjs/core/scene';
 import type { Camera } from '@babylonjs/core/Cameras/camera';
 import type { QualitySettings, Vec3 } from '../core/types';
 import type { Rng } from '../core/rng';
-import { evalSky, makeSkyRow, type SkyState } from './sky-model';
+import { evalSky, makeSkyRow, sampleSky, type SkyState } from './sky-model';
 import { floatToHalf } from './half-float';
 import { clamp01, mix, smoothstep } from './noise';
 import { cloudSheet, moonFace, radialGlow, softDot, sunDisc } from './textures';
@@ -138,11 +138,18 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
    *   - `useEmissiveAsIllumination`, `linkEmissiveWithDiffuse` and turning `disableLighting` off
    *     each change which branch runs and none of them make the texture appear.
    *
-   * So it is the RawTexture's sampler rather than the material wiring. The obvious next move is to
-   * stop fighting it: the dome has 2,993 vertices for what is a smooth gradient, `VERTEXCOLOR` is
-   * already defined on this material and already works, and evaluating the sky per vertex is 2,993
-   * evaluations against 32,768 texels. The texture stays worth having for the IBL cube, which is a
-   * different object on a different path and is demonstrably lighting the terrain.
+   * So it is the RawTexture's sampler rather than the material wiring, and the fix was to stop
+   * fighting it: the sky is written into **vertex colours** (see `paintDome`), which
+   * `default.fragment` multiplies into `baseColor` and which need no sampler at all. The dome now
+   * renders a real gradient at every hour.
+   *
+   * That took one more measurement to land. The first attempt painted the colours and changed
+   * nothing, because `buildDome` created the colour buffer non-updatable and `updateVerticesData`
+   * on a non-updatable buffer is a **silent no-op** — a frame identical to the bug it was meant to
+   * fix. The buffer is updatable now and the comment beside it says why.
+   *
+   * The texture and its chunked fill stay: they cost a few milliseconds a change, they are the
+   * obvious source for anything that wants to sample the dome, and they are not what is on screen.
    */
   domeMaterial.emissiveTexture = domeTexture;
   domeMaterial.emissiveColor = new Color3(1, 1, 1);
@@ -152,12 +159,48 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
   domeMaterial.backFaceCulling = false;
   domeMaterial.metadata = { envOwned: true };
 
+  /**
+   * The dome's vertex directions, kept so the sky can be written into VERTEX COLOURS.
+   *
+   * See the material docblock above for why the texture does not reach the frame. What does reach
+   * it is `baseColor`, and with `VERTEXCOLOR` defined — it already is, the builder gave the dome a
+   * colour buffer — `default.fragment` multiplies `baseColor.rgb` by `vColor.rgb`. With lighting
+   * disabled that makes the whole shading `clamp(emissiveColor) * vertexColour`, i.e. exactly the
+   * per-vertex sky, with no sampler in the path at all.
+   *
+   * 2,993 vertices against 32,768 texels, for what is a smooth gradient: this is the cheaper half
+   * of the two as well as the one that works.
+   */
+  const domeDirs: Vec3[] = [];
   const dome = buildDome(scene, 'env-sky-dome', DOME_RADIUS, 72, 40, Math.PI, (dir) => ({
     u: 0,
     v: 0,
     alpha: 1,
     dir,
   }));
+  {
+    const pos = dome.getVerticesData(VertexBuffer.PositionKind);
+    if (pos) {
+      for (let i = 0; i < pos.length; i += 3) {
+        const len = Math.hypot(pos[i]!, pos[i + 1]!, pos[i + 2]!) || 1;
+        domeDirs.push([pos[i]! / len, pos[i + 1]! / len, pos[i + 2]! / len]);
+      }
+    }
+  }
+  const domeColors = new Float32Array(domeDirs.length * 4);
+  for (let i = 3; i < domeColors.length; i += 4) domeColors[i] = 1;
+
+  /** Re-evaluate the sky at every dome vertex and push it as vertex colours. */
+  function paintDome(state: SkyState): void {
+    const c: Vec3 = [0, 0, 0];
+    for (let v = 0; v < domeDirs.length; v++) {
+      sampleSky(state, domeDirs[v]!, c);
+      domeColors[v * 4] = c[0];
+      domeColors[v * 4 + 1] = c[1];
+      domeColors[v * 4 + 2] = c[2];
+    }
+    dome.updateVerticesData(VertexBuffer.ColorKind, domeColors, false, false);
+  }
   dome.material = domeMaterial;
   makeCelestial(dome);
 
@@ -274,6 +317,9 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
     const key = stateKey(state);
     if (!force && key === lastKey) return;
     lastKey = key;
+    // The vertex colours are the sky the camera actually sees; the texture fill below stays for
+    // the day it works and for anything that wants to sample the dome.
+    paintDome(state);
     fillState = state;
     fillRow = 0;
     if (force) {
@@ -546,7 +592,10 @@ function buildDome(
   data.colors = colors;
   const mesh = new Mesh(name, scene);
   data.applyToMesh(mesh, false);
-  mesh.setVerticesData(VertexBuffer.ColorKind, colors, false, 4);
+  // Updatable: the dome rewrites this buffer every time the sky changes (see `paintDome`), and
+  // `updateVerticesData` on a non-updatable buffer is a silent no-op — it cost a round of
+  // screenshots that looked identical to the bug they were meant to fix.
+  mesh.setVerticesData(VertexBuffer.ColorKind, colors, true, 4);
   return mesh;
 }
 
@@ -612,6 +661,9 @@ function buildStarField(scene: Scene, rng: Rng, radius: number): Mesh {
   data.colors = colors;
   const mesh = new Mesh('env-stars', scene);
   data.applyToMesh(mesh, false);
-  mesh.setVerticesData(VertexBuffer.ColorKind, colors, false, 4);
+  // Updatable: the dome rewrites this buffer every time the sky changes (see `paintDome`), and
+  // `updateVerticesData` on a non-updatable buffer is a silent no-op — it cost a round of
+  // screenshots that looked identical to the bug they were meant to fix.
+  mesh.setVerticesData(VertexBuffer.ColorKind, colors, true, 4);
   return mesh;
 }
