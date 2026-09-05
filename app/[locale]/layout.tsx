@@ -167,11 +167,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
   // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading
-  // cookies() in the root layout would opt every route into dynamic rendering.
-  // The unit only matters for weather/calendar on park detail pages, so the
-  // cookie is read in the park-scoped layout instead — keeping the homepage and
-  // all geo pages statically prerenderable (ISR). The global provider below
-  // resolves the unit client-side for any other page.
+  // cookies() in the root layout would opt every route into dynamic rendering,
+  // which is the whole reason every value the pages behind this layout are
+  // cached on stays out of it. Nothing else reads it on the server either — the
+  // park-scoped layout this note used to point at is gone, and the unit is
+  // resolved before paint by the inline script below plus the `.u-metric` /
+  // `.u-imperial` pair, so the markup carries BOTH units and the attribute
+  // picks one. Nothing about that varies per visitor, so nothing about it
+  // varies the cache.
 
   // Umami is the only third-party origin the browser talks to (analytics script + beacons,
   // loaded afterInteractive). A dns-prefetch warms the DNS lookup without a full preconnect that
@@ -315,9 +318,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   <Footer locale={locale} showBlog={showBlog} />
                 </Suspense>
               </div>
-              {/* Fixed, so it is outside the flow and reserves nothing — and it
-                  renders nothing at all until the visitor has planned something,
-                  which on the server is always. */}
+              {/* `fixed`, so it is outside the flow and reserves nothing. The
+                  TAB is drawn on every page — a feature nobody can see is a
+                  feature nobody starts — and the panel behind it is what waits
+                  for somebody to ask, along with the 15 KB `planner` namespace
+                  it reads. A Client Component either way: it reads
+                  `localStorage` through `useSyncExternalStore`, whose server
+                  snapshot is the empty one, so the first HTML is identical for
+                  every visitor and this layout stays cacheable. */}
               <PlannerLauncher />
             </NextIntlClientProvider>
           </Providers>

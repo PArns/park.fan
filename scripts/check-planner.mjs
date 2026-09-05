@@ -181,7 +181,6 @@ async function seed(page) {
   await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
   await page.evaluate((plan) => {
     window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
-    document.cookie = 'planner=1; path=/';
   }, PLAN);
   await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
 }
@@ -925,7 +924,6 @@ await cal.goto(CAL_URL, { waitUntil: 'domcontentloaded' });
 // No plan at all: the point is that this works from nothing.
 await cal.evaluate(() => {
   window.localStorage.removeItem('parkfan_planner');
-  document.cookie = 'planner=0; path=/';
 });
 await cal.reload({ waitUntil: 'networkidle' });
 await cal.waitForTimeout(4000);
@@ -1360,7 +1358,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -1954,7 +1951,6 @@ if (reachable) {
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
       window.localStorage.setItem('parkfan_planner_dragcoach', '1');
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -2108,7 +2104,6 @@ if (reachable) {
         seeded.activeDate = date;
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
         window.localStorage.removeItem('parkfan_planner_dragcoach');
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -2189,7 +2184,6 @@ if (reachable) {
     await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
     await bare.evaluate(() => {
       window.localStorage.removeItem('parkfan_planner');
-      document.cookie = 'planner=1; path=/';
     });
     await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
     await bare.locator(LAUNCHER).click();
@@ -2414,7 +2408,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, todayInPark]
   );
@@ -2537,7 +2530,6 @@ if (reachable) {
   // ── Empty ─────────────────────────────────────────────────────────────────
   await page.evaluate(() => {
     window.localStorage.removeItem('parkfan_planner');
-    document.cookie = 'planner=1; path=/';
   });
   await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(1200);
@@ -2666,7 +2658,6 @@ if (reachable) {
       seeded.activeParkSlug = null;
       seeded.activeDate = null;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE, PAST]
   );
@@ -2815,7 +2806,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -2946,7 +2936,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = future;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE, YESTERDAY, LAST_WEEK]
   );
@@ -3107,7 +3096,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3205,7 +3193,6 @@ if (reachable) {
         seeded.activeParkSlug = 'phantasialand';
         seeded.activeDate = date;
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -3270,7 +3257,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3342,7 +3328,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3437,7 +3422,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3578,7 +3562,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, YESTERDAY]
   );
@@ -3730,7 +3713,6 @@ if (reachable) {
         seeded.activeParkSlug = 'phantasialand';
         seeded.activeDate = date;
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -3901,7 +3883,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3956,7 +3937,6 @@ if (reachable) {
     await page.goto(`${BASE}/${locale}`, { waitUntil: 'domcontentloaded' });
     await page.evaluate((plan) => {
       window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
-      document.cookie = 'planner=1; path=/';
     }, PLAN);
     await page.goto(`${BASE}/${locale}`, { waitUntil: 'networkidle' });
 
@@ -4050,7 +4030,6 @@ if (reachable) {
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
         window.localStorage.setItem('parkfan_planner_width', '520');
         window.localStorage.removeItem('parkfan_planner_column2');
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -4220,7 +4199,6 @@ if (reachable) {
         })
       );
       window.localStorage.setItem('parkfan_planner_width', '520');
-      document.cookie = 'planner=1; path=/';
     },
     [DATE]
   );
@@ -4250,7 +4228,6 @@ if (reachable) {
   await cols.evaluate((plan) => {
     window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
     window.localStorage.removeItem('parkfan_planner_column2');
-    document.cookie = 'planner=1; path=/';
   }, PLAN);
   await cols.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await cols.locator(LAUNCHER).click();
@@ -4562,7 +4539,6 @@ if (reachable) {
         'parkfan_planner_column2',
         JSON.stringify({ parkSlug: 'phantasialand', date: second })
       );
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, NEXT_DATE]
   );
