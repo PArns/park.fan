@@ -45,20 +45,44 @@ export function historyListRows(): number {
 }
 
 /**
- * Per-breakpoint pixel model, read off the layout rather than fitted to a screenshot.
+ * The gap between two rows — `gap-2` on the two-column list, `space-y-2` between week rows.
+ *
+ * It sits BETWEEN rows, so a grid of n rows carries n − 1 of them. Counting it into a per-row
+ * height instead (the first version of this model did: 118 + 8, 164 + 8) reserves one gap that is
+ * never drawn, which is where the desktop placeholder's 8 px of over-reservation came from.
+ */
+const ROW_GAP = 8;
+
+/**
+ * Per-breakpoint pixel model, measured against the rendered grid at both breakpoints.
  *
  * Every tile is a fixed `min-h` and nothing inside it wraps or repeats — the signals are a
  * three-pixel bar, the sparkline box holds its height on a day with no curve, and the min/max
- * line is one row whatever the numbers are. So a row is exactly one tile plus the grid's `gap-2`,
- * and the only offset is the weekday header the desktop layout carries. Keep it that way: a cell
- * that can grow with its content brings back the ±75 px fit the park calendar's model documents.
+ * line is one row whatever the numbers are. So a row is exactly one tile, the rows are separated
+ * by {@link ROW_GAP}, and the only offset is the weekday header the desktop layout carries. Keep
+ * it that way: a cell that can grow with its content brings back the ±75 px fit the park
+ * calendar's model documents.
+ *
+ * The two tile numbers are NOT the two `min-h` values, and that difference is the point of
+ * measuring rather than reading them off the class list. At `lg` the cell's content is smaller
+ * than its floor, so every one of the 31 tiles measures exactly the 164 px it declares. Below
+ * `lg` the content is 119 px — one pixel OVER the 118 px floor — so the floor never governs a day
+ * that has a curve: measured on Taron and Talocan (Phantasialand) at 390 px in de and fr, 30 of
+ * 31 tiles came out at 119.000 px and the one that did not was the lone day with no curve, alone
+ * in the last row. Reserving the floor made the placeholder 7 px short of the grid it stands in
+ * for; reserving 119 is 1 px long on that same grid, and long is the safe side of a reservation.
  */
 const MODEL = {
-  /** Below `lg` — two-column list: 118 px tile + 8 px gap. */
-  list: { perRow: 126, base: 0 },
-  /** From `lg` — seven-column week grid: 164 px tile + 8 px gap, over the 28 px weekday header. */
-  lg: { perRow: 172, base: 28 },
+  /** Below `lg` — two-column list of `min-h-[118px]` tiles that measure 119 with a curve in them. */
+  list: { tile: 119, base: 0 },
+  /** From `lg` — seven-column week grid of 164 px tiles under a 20 px header with `mb-2`. */
+  lg: { tile: 164, base: 28 },
 } as const;
+
+/** `rows` tiles of `tile` px, separated (not followed) by a gap, over whatever `base` the layout carries. */
+function stackHeight({ tile, base }: { tile: number; base: number }, rows: number): number {
+  return base + rows * tile + Math.max(0, rows - 1) * ROW_GAP;
+}
 
 export interface HistoryGridReservation {
   /** Placeholder height below `lg`, in px. */
@@ -76,7 +100,7 @@ export interface HistoryGridReservation {
  */
 export function historyGridReservation(todayIso: string): HistoryGridReservation {
   return {
-    base: MODEL.list.base + historyListRows() * MODEL.list.perRow,
-    lg: MODEL.lg.base + historyWeekRows(todayIso) * MODEL.lg.perRow,
+    base: stackHeight(MODEL.list, historyListRows()),
+    lg: stackHeight(MODEL.lg, historyWeekRows(todayIso)),
   };
 }

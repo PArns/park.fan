@@ -62,11 +62,20 @@ test('list height is constant — the window never changes length', () => {
   const monday = historyGridReservation('2026-09-07').base;
   const friday = historyGridReservation('2026-09-11').base;
   return monday === friday ? monday : `${monday} !== ${friday}`;
-}, 2016);
+}, 2024);
 test('six-row month reserves one row more than a five-row one', () => {
   return historyGridReservation('2026-09-07').lg - historyGridReservation('2026-09-09').lg;
 }, 172);
-test('five week rows over the weekday header', () => historyGridReservation('2026-09-09').lg, 888);
+/**
+ * The two heights below are what the rendered grid measures, not what the class list declares.
+ * A row is a tile and the gaps sit BETWEEN rows: 16 × 119 + 15 × 8 below `lg`, and five 164 px
+ * week rows plus four gaps under the 28 px weekday header from `lg` up — 880 px against the grid
+ * that measures 880. The numbers they replaced (2016 / 888) counted one gap per row, i.e. one gap
+ * that is never drawn, and took the mobile tile for its 118 px `min-h` floor when a day with a
+ * curve in it renders 119.
+ */
+test('five week rows over the weekday header', () => historyGridReservation('2026-09-09').lg, 880);
+test('six week rows over the weekday header', () => historyGridReservation('2026-09-07').lg, 1052);
 
 let passed = 0;
 let failed = 0;

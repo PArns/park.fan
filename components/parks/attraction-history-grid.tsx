@@ -6,6 +6,7 @@ import { format, eachDayOfInterval, startOfWeek } from 'date-fns';
 import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { AttractionHistoryDay as HistoryDay, type DayDataProps } from './attraction-history-day';
+import { AttractionHistoryGridPlaceholder } from './attraction-history-grid-placeholder';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { HISTORY_WINDOW_DAYS } from '@/lib/parks/attraction-history-geometry';
 
@@ -135,6 +136,16 @@ export function AttractionHistoryGrid({ history, schedule }: AttractionHistoryGr
       yMax: peak > 0 ? peak : undefined,
     };
   }, [browserNow, history, schedule, dateLocale]);
+
+  // The clock arrives one commit AFTER this component mounts — `useBrowserNow` sets it from an
+  // effect — and until it does `days` is empty, so the grid would paint its two containers and
+  // nothing inside them: the box the placeholder was holding is given up and taken back a frame
+  // later. Measured on Taron before this guard: the chapter went 1072 → 212 → 1064 px at 1440
+  // (657 ms, then 700 ms) and 2251 → 235 → 2258 px at 390, which `measure:cls --late --scroll`
+  // scored as two shifts of 0.19 each with the reader parked at the chapter. So keep holding the
+  // same box the panel reserved — the placeholder reads it from the panel's own custom
+  // properties, so there is one number here, not two that have to agree.
+  if (!browserNow) return <AttractionHistoryGridPlaceholder />;
 
   // Thirty days in which the ride never once ran. The grid would be a wall of grey tiles saying
   // the same thing thirty-one times, so it says it once.
