@@ -81,7 +81,28 @@ shift happened during load or long after — the difference between a late-arriv
 something that only moves once somebody scrolls, which is exactly the open question. Drop it, and
 the event, once the sources are known.
 
-### The trip planner's one event (Sep 2026)
+### The trip planner's three events (Sep 2026)
+
+One property each, and the three are one funnel: was the panel opened, did a day get a first
+block, did anybody let it sort itself.
+
+`planner_opened` — **one** property, `source`, fired on the closed → open edge of the panel.
+
+It is the top of the funnel and it was the piece that was missing: with only the two below, a quiet
+month cannot be read. "Nobody opens the planner" and "everybody opens it and walks away again" bill
+the same and look the same. `source` is a closed union (`tab`, `park-header`, `calendar-day`,
+`wizard`, `plan-list`) rather than a free string, so the report cannot end up with two spellings of
+one entry point — and it is the only property here that leads to a decision, because several ways in
+were added over a few weeks and whether they earn their place is exactly what it answers.
+
+- **The edge, not the request.** `plannerUi.requestOpen` fires on a second calendar day pressed
+  while the panel is already up, and on the wizard finishing _inside_ the panel; neither opens
+  anything. The launcher watches its own `open` state instead, so those cost nothing. Closing and
+  reopening is two.
+- **No `parkName`.** Opened from the edge tab there is often no park at all, and where there is one
+  `plan_day_started` already names it.
+- **Cardinality is free.** Umami bills one row per property per event, not per distinct value, so
+  five sources cost exactly what two would: 2 billed rows per opening.
 
 `plan_day_started` — **one** property, `parkName`, fired the moment a park+date goes from holding
 nothing to holding its first block.
@@ -96,6 +117,11 @@ Three decisions, each of them the budget rule applied:
   far ahead do people plan") is not the question that was asked.
 - **Not on finishing the wizard.** That is a park and a date with nothing in them yet — an
   intention rather than a plan, and it would count the visitor who set a day up and bounced.
+
+`plan_optimized` — **one** property, the same `parkName` key, fired on the click on "Tag
+optimieren" / "alle Headliner" and only where the plan actually changed, so a press on an
+already-optimal day costs nothing. Not sent: the minutes saved, the number of rides that moved, and
+which of the two buttons it was.
 
 `parkName` rather than the slug, matching `tab_changed` and `nearby_parks_loaded`: a report that
 groups parks has to group them on one key, and shipping both would be the same fact twice.

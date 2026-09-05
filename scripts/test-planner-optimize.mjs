@@ -28,8 +28,10 @@
 
 import { buildDayGrid } from '../lib/planner/day-grid.ts';
 import { occupiedMinutes } from '../lib/planner/estimate.ts';
+import { transferBetween } from '../lib/planner/leg.ts';
 import { applyPlan } from '../lib/planner/actions.ts';
 import {
+  IDLE_WEIGHT,
   MAX_STOPS,
   canOptimize,
   headlinersSkipped,
@@ -141,7 +143,7 @@ const grid = (payload) => buildDayGrid(payload.context.openHour, payload.context
 // disagree it is the search that is wrong, not the model.
 
 function costOf(plan) {
-  return [plan.overflow, plan.totalWaitMinutes, plan.endMinute];
+  return [plan.overflow, plan.totalWaitMinutes + IDLE_WEIGHT * plan.idleMinutes, plan.endMinute];
 }
 
 function permutations(items) {
@@ -175,9 +177,44 @@ function bruteForce(input, slugs) {
   return best;
 }
 
-/** Lexicographic as one comparable number: overflow ≫ wait ≫ clock. */
-function lex([overflow, wait, end]) {
-  return overflow * 1e8 + wait * 1e4 + end;
+/**
+ * Lexicographic as one comparable number: overflow ≫ cost ≫ clock.
+ *
+ * It has to be `better`'s order, and `IDLE_WEIGHT` is imported rather than
+ * written down again for the same reason: a brute force that ranks orders
+ * differently from the thing it is checking proves nothing about it. This
+ * mirror was one revision behind once and it did not fail loudly — it failed by
+ * calling a worse plan optimal.
+ */
+function lex([overflow, cost, end]) {
+  return overflow * 1e8 + cost * 1e4 + end;
+}
+
+/**
+ * A finished plan's holes, added up from the stops themselves.
+ *
+ * The point of computing it a second way: `idleMinutes` is the figure the
+ * optimiser chose the plan ON, so a test that reads it back is asking the
+ * search whether it agrees with itself. This walks the stops instead — the
+ * block height from `occupiedMinutes`, the walk from `transferBetween` — and is
+ * the plan as a visitor would time it. The base is the arrival snapped up to
+ * the quarter hour, which is the rule in `idleFor`: a start on the grid is not
+ * standing about.
+ */
+function idleOfPlan(payload, stops) {
+  const rideOf = (slug) => payload.rides.find((r) => r.attractionSlug === slug) ?? null;
+  let idle = 0;
+  for (let i = 1; i < stops.length; i++) {
+    const previous = stops[i - 1];
+    const free =
+      previous.startMinute + spanOf(payload, previous.attractionSlug, previous.startMinute);
+    const transfer = transferBetween(
+      rideOf(previous.attractionSlug),
+      rideOf(stops[i].attractionSlug)
+    ).ceilingMinutes;
+    idle += Math.max(0, stops[i].startMinute - Math.ceil((free + transfer) / 15) * 15);
+  }
+  return idle;
 }
 
 {
@@ -643,15 +680,22 @@ function lex([overflow, wait, end]) {
   );
 }
 
-// ── 11. A delay is part of the plan, not a fact about it ───────────────────
+// ── 11. Waiting is bought with idle minutes, and there is a price ──────────
 //
 // One ride costing 90 minutes before 11:00 and 20 after it, plus a ten-minute
-// filler. Queueing at once finishes at 11:15 for 100 minutes of queue; filling
-// the morning and riding it at 11:00 finishes at 11:20 for 30. The scheduler
-// used to take the first, because it minimised the CLOCK and let the queue
-// decide ties — the second criterion in the module's own list standing behind
-// the third — so the better plan was not in the search space at all and the
-// brute force above could not notice: it varies the order and never the delay.
+// filler. Both plans ride the filler first; the question is what to do with the
+// hour after it:
+//
+//     A  queue at once            100 queued    0 idle   done 11:15
+//     B  wait for 11:00            30 queued   75 idle   done 11:20
+//
+// B is what a visitor would do and no lexicographic order can produce it: rank
+// the clock first and A wins by five minutes, five minutes that cost seventy in
+// a queue. This is the upper half of the bracket around IDLE_WEIGHT — B wins
+// while 30 + k×75 < 100, i.e. k < 14/15 — and §17 is the lower half, a case
+// that runs the other way. The one that used to stand here claimed the delay
+// was weighed against the queue and not against the clock, which was the same
+// mistake in the other direction and is why §17 exists.
 {
   const rides = [
     ride('cliff', morningRide(90, 20, 11), { land: 'X' }),
@@ -664,14 +708,18 @@ function lex([overflow, wait, end]) {
   const before = scoreCurrent(input);
   const found = optimizeDay(input);
   check(
-    'die Verzögerung wird gegen die Warteminuten abgewogen, nicht gegen die Uhr',
-    found !== null && found.totalWaitMinutes === 30,
-    found ? `${before.totalWaitMinutes} → ${found.totalWaitMinutes}` : 'kein Plan'
+    'für einen Einbruch um 11 Uhr wird eine Stunde Leerlauf in Kauf genommen',
+    found !== null && found.totalWaitMinutes === 30 && found.idleMinutes === 75,
+    found
+      ? `${found.totalWaitMinutes} Min. Schlange, ${found.idleMinutes} Min. Leerlauf`
+      : 'kein Plan'
   );
   check(
-    'und der Tag ist dafür nur wenige Minuten länger',
-    found !== null && found.endMinute <= before.endMinute + 15,
-    `${before.endMinute} → ${found?.endMinute}`
+    'und siebzig Warteminuten sind fünf Minuten später Feierabend wert',
+    found !== null &&
+      before.totalWaitMinutes - found.totalWaitMinutes === 70 &&
+      found.endMinute - before.endMinute === 5,
+    `${before.totalWaitMinutes}/${before.endMinute} → ${found?.totalWaitMinutes}/${found?.endMinute}`
   );
 
   // `scoreOrder` sees the same choice, which is what makes the brute force above
@@ -933,6 +981,135 @@ function benchInput(n) {
       `  8 Bahnen: Brute Force ${(bruteMs / 1000).toFixed(2)} s gegen ${heuristicMs.toFixed(1)} ms\n`
     );
   }
+}
+
+// ── 17. The 40-minute hole, as it was reported ─────────────────────────────
+//
+// Phantasialand, Sunday 2026-09-06, from production. Crazy Bats frees the
+// visitor at 12:05 and Taron is 355 m away — a 15-minute transfer, so the
+// earliest slot on the grid is 12:30, where Taron costs 55 minutes against 50
+// at 13:00:
+//
+//     A  queue at 12:30    55 queued    0 idle   done 13:25
+//     B  queue at 13:00    50 queued   30 idle   done 13:50
+//
+// The optimiser shipped **B**: five minutes less queueing, bought with forty
+// minutes of standing about and a day ending twenty-five minutes later. This is
+// the lower half of the bracket around IDLE_WEIGHT — A wins while
+// 55 < 50 + k×30, i.e. k > 1/6 — and §11 is the other half. Between them there
+// is no ordering of "queued minutes" and "the clock" that gets both right,
+// which is the whole reason there is a weight.
+//
+// The park's opening is the fixture's own and nothing else about the case is:
+// at 11:00 the walk from the gates files Crazy Bats at 11:15, its 50 minutes of
+// queue leave the visitor free at 12:05, and everything this turns on happens
+// after that minute.
+{
+  const OPEN_LATE = 11;
+  const rides = [
+    // 0.003193° of latitude is 355 m, which is the distance in the report and
+    // what makes the transfer 15 minutes rather than a number chosen to fit.
+    ride(
+      'crazy-bats',
+      { 11: 50, 12: 55, 13: 60, 14: 60, 15: 60, 16: 55, 17: 55, 18: 55, 19: 50, 20: 50 },
+      { land: 'Berlin', lat: 50.8 }
+    ),
+    ride(
+      'taron',
+      { 11: 70, 12: 55, 13: 50, 14: 60, 15: 60, 16: 60, 17: 55, 18: 55, 19: 50, 20: 45 },
+      { land: 'Klugheim', lat: 50.8 + 0.003193, headliner: true }
+    ),
+  ];
+  const payload = day(rides, { openHour: OPEN_LATE, date: '2026-09-06', isWeekend: true });
+  // The day as it was planned, which is the plan that was reported.
+  const entries = [
+    entry('crazy-bats-1', 'crazy-bats', 11 * 60 + 15),
+    entry('taron-1', 'taron', 13 * 60),
+  ];
+  const input = { day: payload, grid: grid(payload), entries };
+
+  const before = scoreCurrent(input);
+  const found = optimizeDay(input);
+  const taron = found?.stops.find((stop) => stop.attractionSlug === 'taron');
+
+  check(
+    'Taron wird um 12:30 angestellt und nicht um 13:00',
+    taron?.startMinute === 12 * 60 + 30 && taron?.waitMinutes === 55,
+    found?.stops.map((s) => `${s.attractionSlug}@${s.startMinute}=${s.waitMinutes}`).join(' → ') ??
+      'kein Plan'
+  );
+  check(
+    'der Plan nimmt dafür fünf Warteminuten mehr in Kauf',
+    before !== null && found !== null && found.totalWaitMinutes - before.totalWaitMinutes === 5,
+    `${before?.totalWaitMinutes} → ${found?.totalWaitMinutes} Min. Schlange`
+  );
+  check(
+    'und das Loch von 30 Minuten ist weg',
+    before?.idleMinutes === 30 && found?.idleMinutes === 0,
+    `${before?.idleMinutes} → ${found?.idleMinutes} Min. Leerlauf`
+  );
+  check(
+    'der Tag endet 25 Minuten früher',
+    before !== null && found !== null && before.endMinute - found.endMinute === 25,
+    `${before?.endMinute} → ${found?.endMinute}`
+  );
+}
+
+// ── 17b. The idle total describes the plan, and is not just carried around ──
+//
+// The reported symptom was a hole, so a plan has to be able to say how much
+// standing about is in it — and the figure has to be the plan's, not the
+// search's opinion of it. `idleOfPlan` walks the stops with the app's own block
+// heights and transfers; if the two ever disagree, the optimiser is choosing on
+// a number that describes something other than what it hands back.
+{
+  const rides = [
+    ride('a', morningRide(5, 80), { land: 'X' }),
+    ride('b', morningRide(80, 5), { land: 'X' }),
+    ride('c', flat(25), { land: 'X' }),
+    ride('d', morningRide(10, 50), { land: 'X' }),
+    ride('e', morningRide(50, 10), { land: 'X' }),
+  ];
+  const payload = day(rides);
+  const entries = rides.map((r, i) =>
+    entry(`${r.attractionSlug}-1`, r.attractionSlug, 9 * 60 + i * 45)
+  );
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries });
+
+  check(
+    'die gemeldete Leerlaufsumme ist die des fertigen Plans',
+    found !== null && found.idleMinutes === idleOfPlan(payload, found.stops),
+    `gemeldet ${found?.idleMinutes}, nachgerechnet ${idleOfPlan(payload, found?.stops ?? [])}`
+  );
+  // The sixty minutes in that plan are bought and not left lying about: `b`
+  // costs 80 minutes before noon and 5 after it, so an hour of standing about
+  // saves seventy-five in a queue. Where nothing falls there is nothing to buy,
+  // and the plan then has no holes at all — which is the assertion that would
+  // have caught what was reported, on a day with no cliff in it to explain it.
+  check(
+    'die Stunde Leerlauf kauft fünfundsiebzig Warteminuten',
+    found !== null && found.idleMinutes === 60 && found.totalWaitMinutes === 55,
+    `${found?.idleMinutes} Min. Leerlauf, ${found?.totalWaitMinutes} Min. Schlange`
+  );
+
+  const steady = day([
+    ride('p', flat(20), { land: 'X', lat: 50.8 }),
+    ride('q', flat(35), { land: 'X', lat: 50.8005 }),
+    ride('r', flat(15), { land: 'Y', lat: 50.803 }),
+    ride('s', flat(45), { land: 'Y', lat: 50.8035 }),
+    ride('t', flat(25), { land: 'X', lat: 50.801 }),
+  ]);
+  const steadyEntries = ['p', 'q', 'r', 's', 't'].map((slug, i) =>
+    entry(`${slug}-1`, slug, 10 * 60 + i * 75)
+  );
+  const steadyPlan = optimizeDay({ day: steady, grid: grid(steady), entries: steadyEntries });
+  check(
+    'und ein Tag ohne Einbruch bekommt gar kein Loch',
+    steadyPlan !== null &&
+      steadyPlan.idleMinutes === 0 &&
+      steadyPlan.idleMinutes === idleOfPlan(steady, steadyPlan.stops),
+    `${steadyPlan?.idleMinutes} Min. Leerlauf: ${steadyPlan?.stops.map((s) => `${s.attractionSlug}@${s.startMinute}`).join(' → ')}`
+  );
 }
 
 console.log(`\n${passed}/${passed + failures.length} bestanden`);

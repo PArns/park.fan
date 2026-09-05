@@ -54,12 +54,18 @@ export async function ParkTitleHeader({
   children,
 }: ParkTitleHeaderProps) {
   const tGeo = await getTranslations('geo');
+  // The planner button's sentence, resolved HERE rather than inside the button: that one is a
+  // Client Component now (it opens the panel instead of navigating), and `parks` is 15.1 KB.
+  const tParks = await getTranslations('parks');
 
   return (
     <>
       {/* Title row: park name + location on the left, favourite button pinned top-right. */}
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
+          {/* Left on the window on purpose: 30 px against 36 px changes how the name looks, not
+            where anything sits, and this heading wraps to as many lines as its column needs at
+            either size. Nothing measures it. */}
           <h1 className="mb-2 text-3xl font-bold md:text-4xl">
             {parkName} <span className="font-normal">– {suffix}</span>
           </h1>
@@ -87,19 +93,31 @@ export async function ParkTitleHeader({
 
       <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">{intro}</p>
 
-      {/* The way into the planner, BEFORE the park's own links and visually apart from them: what
-        follows is a row of outbound links (website, tickets, Wikipedia) and this is the one thing
-        in the header that stays on the site. It was also the planner's only missing inbound link
-        that carries any intent — see `ParkPlannerLink`. */}
-      <div className="mt-4">
-        <ParkPlannerLink parkName={parkName} locale={locale} />
-      </div>
+      {/* One row for everything this header offers to press: the park's own site, ticket shop and
+        Wikipedia entry on the left, the way into the planner pushed to the right edge. They used
+        to be two rows, the planner above the links, so that the one action staying on this site
+        would not read as a fourth outbound link — the right edge and the tint say that better
+        than the order did, and the header is a row shorter for it. The right edge is not invented
+        here either: the favourite star already holds it, directly above.
 
-      {/* The park's own site and ticket shop, right under the intro. They used to be the bottom
-        row of a titled "Infos zum Park" section far down the page — which on most parks was a
-        heading and a frame around exactly these two buttons. Renders nothing for a park nobody
-        has curated. */}
-      <ParkQuickLinks info={park.info} className="mt-3" />
+        The quick links used to be the bottom row of a titled "Infos zum Park" section far down the
+        page, which on most parks was a heading and a frame around exactly these two buttons. They
+        render nothing at all for a park nobody has curated, and then the planner button is simply
+        the row.
+
+        `flex-wrap` with NO shrink override on either child is what makes this safe on a phone:
+        flex breaks the line before it shrinks anything, so once the two no longer fit the button
+        drops onto a line of its own and `ParkQuickLinks` keeps the width — and therefore the
+        wrapping — it had when it was alone. `ml-auto` rather than `justify-between`, because
+        `justify-between` puts a lone item on that second line at the START. */}
+      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
+        <ParkQuickLinks info={park.info} />
+        <ParkPlannerLink
+          label={tParks('planDayCta', { park: parkName })}
+          locale={locale}
+          className="ml-auto"
+        />
+      </div>
 
       {children}
     </>

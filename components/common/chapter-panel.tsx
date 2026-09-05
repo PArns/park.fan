@@ -74,7 +74,7 @@ export function ChapterPanel({
           // `overflow-hidden` is what clips a `PanelGrid`'s trailing hairlines — the grid bleeds
           // its last row and column by a pixel and relies on the box to cut them off.
           'border-border/50 overflow-hidden rounded-b-xl border border-t-0',
-          'p-4 md:p-6',
+          'p-4 @min-[768px]/page:p-6',
           bodyClassName
         )}
       >

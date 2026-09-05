@@ -246,10 +246,10 @@ export function RideNavTiles({
         // the park's row does one card over. No `gap`: the cells touch and the rules between them
         // are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
-        items.length === 5 && 'lg:grid-cols-5',
-        items.length === 4 && 'lg:grid-cols-4',
-        items.length === 3 && 'lg:grid-cols-3',
-        items.length === 2 && 'lg:grid-cols-2',
+        items.length === 5 && '@min-[1024px]/page:grid-cols-5',
+        items.length === 4 && '@min-[1024px]/page:grid-cols-4',
+        items.length === 3 && '@min-[1024px]/page:grid-cols-3',
+        items.length === 2 && '@min-[1024px]/page:grid-cols-2',
         items.length === 1 && 'grid-cols-1'
       )}
     >

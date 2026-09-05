@@ -26,6 +26,7 @@ import {
   nextFreeStart,
   packLanes,
   rideFloor,
+  MAX_SHOW_LINES,
   showLinePositions,
   snapTo,
   unfoldedCloseHour,
@@ -232,6 +233,32 @@ test(
   const lines = showLinePositions(g, [600, 606, 700]);
   test('near-simultaneous showtimes collapse into one line', lines.length, 2);
   test('…and the folded one is reported', lines[0].collapsedWith.length, 1);
+}
+
+// ── 14b. …and a park that runs a show every quarter hour ─────────────────────
+// Europa-Park answers 33 shows for a Sunday, whose times land about every 15
+// minutes — 18 px apart at 1.2 px/min, so the 14 px label rule folded NOTHING
+// and a nine-hour axis carried 28 dashed rules with the day's two blocks behind
+// them. The cap widens the fold instead of dropping the tail.
+{
+  const quarterly = [];
+  for (let m = 9 * 60; m <= 18 * 60; m += 15) quarterly.push(m);
+  const lines = showLinePositions(g, quarterly);
+  test('a show every quarter hour is capped', lines.length <= MAX_SHOW_LINES, true);
+  test(
+    '…and every showtime is still on the axis somewhere',
+    lines.reduce((sum, line) => sum + 1 + line.collapsedWith.length, 0),
+    quarterly.length
+  );
+  // Sparse days are untouched, which is the assertion that keeps the cap from
+  // being a change to the 92 % of park-days with a handful of shows.
+  const sparse = showLinePositions(g, [600, 700, 800, 900]);
+  test('a park with four showtimes draws four lines', sparse.length, 4);
+  test(
+    '…and folds none of them',
+    sparse.every((line) => line.collapsedWith.length === 0),
+    true
+  );
 }
 
 // ── 15. Snapping and placement ───────────────────────────────────────────────

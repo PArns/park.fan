@@ -35,7 +35,11 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
       className={
         inRow
           ? 'not-prose grid h-full w-full [grid-template-rows:auto_1fr] gap-3'
-          : 'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_1fr] gap-3 sm:w-1/2 lg:w-1/3'
+          : // The fraction is of the article column, and how wide that column is follows
+            // the page, not the window — with the trip planner open the two stopped being
+            // the same number, so a third of a narrowed column is a card nobody can read.
+            // `sm:` stays: below it the planner is a modal sheet and nothing is inset.
+            'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_1fr] gap-3 sm:w-1/2 @min-[1024px]/page:w-1/3'
       }
     >
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">

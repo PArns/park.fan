@@ -99,6 +99,23 @@ const howtoHeaderSegments = [
   'hoe-park-fan-werkt',
   'como-funciona-park-fan',
 ];
+/**
+ * The trip planner, in the six segments a browser actually asks for.
+ *
+ * The rewrites below serve all six on the English route folder, but a header
+ * rule matches the INCOMING path — so `/de/tagesplaner` needs its own entry and
+ * a rule on `/:locale/trip-planner` would cover one locale in six. Same list as
+ * `PLANNER_SEGMENTS` in `lib/planner/segments.ts`; spelled out here because this
+ * file is the build config and cannot import from `@/`.
+ */
+const plannerHeaderSegments = [
+  'trip-planner',
+  'tagesplaner',
+  'planificateur',
+  'pianificatore',
+  'dagplanner',
+  'planificador',
+];
 
 const parkCalendarHeaderSegments: Record<string, string> = {
   en: 'wait-time-calendar',
@@ -853,8 +870,15 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
+        // A day, and it is the handler's own number rather than a second opinion: the route
+        // was raised from 300 s to 86400 on 2026-09-02 when today's cell stopped carrying a
+        // live occupancy reading, and this rule stayed at 300 — so the two halves disagreed by
+        // a factor of 288 for three days, and which one a visitor got depended on the platform.
+        // Measured against `pnpm start` on this build, `curl -D -` gave `s-maxage=300` while
+        // the handler was asking for a day. Keep the two identical; the reasoning for the value
+        // lives at the handler, where the payload is.
         source: '/api/parks/:continent/:country/:city/:park/calendar',
-        headers: sharedCache('public, s-maxage=300, stale-while-revalidate=600'),
+        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
         source: '/api/parks/:continent/:country/:city/:park/best-days',
@@ -886,6 +910,18 @@ const nextConfig: NextConfig = {
         // the note above this block was written about, on the one branch nobody had listed.
         source: '/api/parks/:continent/:country/:city/:park/stats/day',
         headers: sharedCache('public, s-maxage=300, stale-while-revalidate=600'),
+      },
+      {
+        // `/plan/day` was the same branch one release later: the handler returns
+        // `s-maxage=900, stale-while-revalidate=1800` and nothing listed it here, so the two
+        // sides answered differently — measured against `pnpm start` on this build,
+        // `curl -D -` gave `no-store, must-revalidate` for `plan/day` while `stats/day` beside
+        // it gave its real window. On Vercel the handler wins and production caches the fifteen
+        // minutes; locally the blanket rule wins and nothing caches at all, which is a planner
+        // panel re-fetching every park-day on every open for anyone measuring it here. Identical
+        // to the handler's own value, like every rule in this block.
+        source: '/api/parks/:continent/:country/:city/:park/plan/day',
+        headers: sharedCache('public, s-maxage=900, stale-while-revalidate=1800'),
       },
       {
         // Attraction detail (history + hourlyForecast time-series) backing the attraction page's
@@ -1037,7 +1073,19 @@ const nextConfig: NextConfig = {
         { source: `/:locale/${segment}`, headers: edgeCache(CONTENT_WINDOW) },
         { source: `/:locale/${segment}/:term`, headers: edgeCache(CONTENT_WINDOW) },
       ]),
-      ...[...bestTimeHeaderSegments, ...howtoHeaderSegments, 'fancast'].map((segment) => ({
+      ...[
+        ...bestTimeHeaderSegments,
+        ...howtoHeaderSegments,
+        // The trip planner's own page. It was left out of this block, and the
+        // reason is visible in its own docblock: it shipped `force-dynamic`,
+        // where an edge window would have been meaningless, and when it became
+        // a prerendered route nothing brought it back here. It is
+        // `initialRevalidateSeconds: 604800` in the manifest — the longest
+        // window in the house — and was still leaving Vercel in full on every
+        // request, which is the transfer line rather than the compute one.
+        ...plannerHeaderSegments,
+        'fancast',
+      ].map((segment) => ({
         source: `/:locale/${segment}`,
         headers: edgeCache(CONTENT_WINDOW),
       })),

@@ -128,7 +128,12 @@ export function LiveAttractionData({
               explainer, legend, plot, best-slot line, Fancast link. It carries no title row,
               because the chart no longer draws one (`hideTitle`; the chapter heading above says
               it). The plot grows at `sm` with the taller bars and again at `md`, where the
-              hour-label row appears. */}
+              hour-label row appears.
+
+              Window breakpoints, not `@container/page`: the rows this reserves for are themselves
+              gated on the window inside <DailyWaitTimeChart>, and a reservation that asks a
+              different question from the thing it reserves for is how a box comes out 200 px
+              short. */}
           {!mounted || isDetailLoading ? (
             <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
               <DailyWaitTimeChartPlaceholder />

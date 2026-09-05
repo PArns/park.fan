@@ -582,12 +582,32 @@ carries the weather rail, the showtime chips and the now pill — all three per
 showtimes.
 
 The floor is `TWO_COLUMN_MIN_WIDTH` = `PANEL_WIDTH_MIN * 2 + 1` (681): the same
-minimum a single column has, applied twice. Below it the switch is **not offered
-and the second column is not drawn** — but it is remembered, so narrowing the
-panel puts the arrangement away and widening it brings the same day back rather
-than making somebody build it again. A phone is excluded on its own account
-(`isPhone`), not because its number is small: the sheet is the width of the
-screen there and no drag makes it wider.
+minimum a single column has, applied twice. Below it the second column is **not
+drawn** — but it is remembered, so narrowing the panel puts the arrangement away
+and widening it brings the same day back rather than making somebody build it
+again.
+
+**The switch asks a different question from the column, and for a while it did
+not.** Both hung on the panel's own width, so at the 448 px every visitor starts
+on there was no switch at all: the only way to discover that the planner has two
+columns was to drag the edge past 681 for reasons of one's own. The switch is
+offered on the **window** now — `TWO_COLUMN_MIN_VIEWPORT`, the 681 above plus
+`PAGE_MIN_PX`, so 1041 — read through `useMediaQuery`, and the press is what
+widens the panel, via the same `plannerPanelWidth.commit` the edge drag uses.
+Measured: at 1041 px of window the switch is there and one press takes the panel
+448 → 681 px with two columns in it; at 1040 it is not there at all, because
+`fitToViewport` caps the panel at `innerWidth - PAGE_MIN_PX` and the cap would
+take that width back in the same frame. The number is derived from both floors
+rather than typed, so it moves when either does.
+
+The press only ever raises the width, and only to the floor: a panel already at
+780 px keeps 780, and closing the second column leaves the width where it is —
+both would otherwise undo a drag nobody asked to have undone. Pressed at a narrow
+panel with a day remembered, it widens and brings **that** day back instead of
+opening tomorrow over it. A phone is excluded on its own account (`isPhone`), not
+because its number is small: the sheet is the width of the screen there and no
+drag makes it wider. That gate cannot fire today — 639 px cannot also be 1041 —
+and is kept because the two thresholds are independent.
 
 **Which chrome moved, and why it is about what a control speaks for.** With one
 column the panel header answered both per-day questions — one park name, one day

@@ -97,7 +97,7 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
               {/* A grid, not a fixed three-column row: a term can have fewer than
                   three rides (celestial-spin has exactly one) and a rigid raster
                   would leave holes. */}
-              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="grid gap-3 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                 {top.map((ride) => (
                   <li key={`top-${parkPath(ride)}/${ride.slug}`}>
                     <Link

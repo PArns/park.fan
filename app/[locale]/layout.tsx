@@ -167,11 +167,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
   // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading
-  // cookies() in the root layout would opt every route into dynamic rendering.
-  // The unit only matters for weather/calendar on park detail pages, so the
-  // cookie is read in the park-scoped layout instead — keeping the homepage and
-  // all geo pages statically prerenderable (ISR). The global provider below
-  // resolves the unit client-side for any other page.
+  // cookies() in the root layout would opt every route into dynamic rendering,
+  // which is the whole reason every value the pages behind this layout are
+  // cached on stays out of it. Nothing else reads it on the server either — the
+  // park-scoped layout this note used to point at is gone, and the unit is
+  // resolved before paint by the inline script below plus the `.u-metric` /
+  // `.u-imperial` pair, so the markup carries BOTH units and the attribute
+  // picks one. Nothing about that varies per visitor, so nothing about it
+  // varies the cache.
 
   // Umami is the only third-party origin the browser talks to (analytics script + beacons,
   // loaded afterInteractive). A dns-prefetch warms the DNS lookup without a full preconnect that
@@ -296,7 +299,60 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   under a pointer, where the page would lag a third of a second
                   behind the edge somebody is holding. The tab sets it to 0 for
                   the length of a drag. */}
-              <div className="flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out sm:pr-[var(--planner-inset,0px)]">
+              {/* `@container/page` — the page's own width, for every route below.
+
+                  This element is the one that gets narrowed, so it is the one
+                  worth asking. `sm:` and `lg:` and `xl:` all read the WINDOW,
+                  and the two numbers stopped being the same the moment the
+                  padding above started reserving room for the panel. The
+                  homepage hero is what it looked like: window 2000, panel 900,
+                  so 1100 px of page — and the hero still laid itself out for
+                  2000. Its grid took `2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)]`,
+                  handed 640 px to a world map and 356 to everything else, and
+                  the headline broke over 4 lines at 192 px where the same 1100 px
+                  as a window gives it 2 lines at 96. The intro went 3 lines to 7.
+
+                  The header solved this for itself in Sep 2026 (`@container` on
+                  `<header>`, see components/layout/header.tsx) and that fix
+                  reached exactly the 48 px it sits in. This is the same fix for
+                  the 16,000 px below it, in one place, so a route opts in by
+                  writing `@min-[1280px]/page:` instead of `xl:`.
+
+                  NAMED, and that is not decoration. An unnamed container query
+                  matches the nearest ancestor query container whatever it is
+                  called, so an unnamed `@min-[1280px]:` written on a park page
+                  would be answered by `@container/card-header` in
+                  components/ui/card.tsx the moment it landed inside a card.
+                  `/page` can only ever be answered by this element.
+
+                  Four side effects were measured against a bare Chromium before
+                  this was set, because the naive spec reading says it should
+                  break three of them. `container-type: inline-size` applies
+                  STYLE and INLINE-SIZE containment and establishes an
+                  independent formatting context — it does NOT apply layout
+                  containment (css-conditional-5 § container-type), and the
+                  difference is the whole risk:
+                    - `position: fixed` / `absolute` descendants keep the initial
+                      containing block. Measured: a `fixed` child of a container
+                      sits at viewport y=0 and y=780 exactly as without it, while
+                      the same element under `contain: layout` moves to y=-300
+                      and y=3710. So `BlogReadingProgress`, `ChapterRail` and
+                      `LocationBanner` — the three `fixed` overlays that render
+                      INSIDE `<main>` — are untouched.
+                    - No stacking context: a `z-50` descendant still paints over
+                      a `z-40` sibling of this div (the planner launcher). Under
+                      `contain: layout` the launcher wins instead.
+                    - No backdrop root, so the menu band's `backdrop-blur-xl`
+                      still samples the page behind it. Same measurement the
+                      header's note reports.
+                    - The independent formatting context costs nothing here: this
+                      div is `display: flex` and `<main>` below it is a flex
+                      item, so both already were one.
+
+                  What it does change is that the container's width has to be
+                  resolvable without looking at the contents — which it is: the
+                  div is block-level in `<body>` and fills it. */}
+              <div className="@container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out sm:pr-[var(--planner-inset,0px)]">
                 {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}
@@ -315,9 +371,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   <Footer locale={locale} showBlog={showBlog} />
                 </Suspense>
               </div>
-              {/* Fixed, so it is outside the flow and reserves nothing — and it
-                  renders nothing at all until the visitor has planned something,
-                  which on the server is always. */}
+              {/* `fixed`, so it is outside the flow and reserves nothing. The
+                  TAB is drawn on every page — a feature nobody can see is a
+                  feature nobody starts — and the panel behind it is what waits
+                  for somebody to ask, along with the 15 KB `planner` namespace
+                  it reads. A Client Component either way: it reads
+                  `localStorage` through `useSyncExternalStore`, whose server
+                  snapshot is the empty one, so the first HTML is identical for
+                  every visitor and this layout stays cacheable. */}
               <PlannerLauncher />
             </NextIntlClientProvider>
           </Providers>

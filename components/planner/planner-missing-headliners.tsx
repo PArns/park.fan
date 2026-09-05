@@ -103,7 +103,12 @@ export function PlannerMissingHeadliners({
           the panel's ground with a crown on it. The photo behind the panel is
           in a negative layer now and no longer thins anything, so the band can
           go back to being what it says it is: the crowd tint, over the panel. */}
-      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
+      {/* Capped on a phone, where this band and the ride search under it are two
+          ways to add the same ride and 716 px of sheet has to carry both: a park
+          with ten missing headliners drew three rows of pills, 127 px, and took
+          them off the axis. Every pill stays reachable — the box scrolls — and
+          above `sm` there is nothing to ration. */}
+      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5 max-sm:max-h-[5.5rem] max-sm:overflow-y-auto max-sm:overscroll-y-contain">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
           {t('headliners.missing', { count: missing.length })}

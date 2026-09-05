@@ -264,7 +264,7 @@ export function Highlight({ children }: { children: React.ReactNode }) {
 
 // ── Ingredient / feature cards ───────────────────────────────────────────────
 export function IngredientGrid({ children }: { children: React.ReactNode }) {
-  return <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{children}</div>;
+  return <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">{children}</div>;
 }
 
 export function IngredientCard({
@@ -310,7 +310,7 @@ export function CrowdSpectrum({
           aria-hidden
         />
       </Reveal>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
         {items.map((item, i) => (
           <Reveal key={item.level} delay={i * 60}>
             <div className="bg-card h-full rounded-xl border p-4">
@@ -344,11 +344,25 @@ export function SplitFigure({
 }) {
   return (
     <Reveal>
-      <div className="grid items-center gap-6 md:grid-cols-2 md:gap-10">
+      {/* All three of these are one decision and have to switch together: the second
+          column, the gutter that only exists once there is one, and the swap that puts
+          the picture on the right. They ask `@container/page` (app/[locale]/layout.tsx)
+          because what decides whether a picture and a paragraph fit side by side is the
+          room this row has, and with the trip planner open the window is no longer that
+          — a 2000 px window with a 900 px panel laid a 1100 px page out for 2000.
+
+          The image `sizes` below cannot follow: a `sizes` condition has no container
+          form. So with the panel open it can now under-serve — page 600 draws one
+          full-width picture while the hint, reading a 1400 px window, still asks for the
+          two-column 500 px — which is a slightly soft image, not a broken row. Left as
+          it is because the same hint already under-serves without any panel (at 1536 px
+          the column is ~750 px), so that is a pre-existing number to correct on its own
+          terms rather than under this change. */}
+      <div className="grid items-center gap-6 @min-[768px]/page:grid-cols-2 @min-[768px]/page:gap-10">
         <div
           className={cn(
             'relative aspect-[4/3] overflow-hidden rounded-2xl border shadow-lg',
-            reverse && 'md:order-2'
+            reverse && '@min-[768px]/page:order-2'
           )}
         >
           <Image

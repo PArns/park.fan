@@ -1,9 +1,7 @@
-import { getCookie, setCookie } from 'cookies-next';
 import {
   EMPTY_PLANNER_STATE,
   MAX_PLANNED_MINUTE,
   PLANNER_BLOCK_ICONS,
-  hasAnyPlan,
   type PlannerBlockIcon,
   type PlannerCustomBlock,
   type PlannerDayPrefs,
@@ -16,12 +14,21 @@ import { clampRiderHeight } from './party';
 /**
  * The planner's storage, as an external store.
  *
- * Split across two places on purpose. The **cookie** holds one character —
- * whether a plan exists at all — because it is the only half the server can read,
- * and knowing "there is something to open" is all the server needs to reserve the
- * right box before hydration. The **plan itself** lives in localStorage: a
- * multi-day, multi-park trip runs to a few KB and a cookie caps out at 4, and it
- * would be sent up with every single request for nothing.
+ * localStorage, and nothing else. A multi-day, multi-park trip runs to a few KB
+ * against a cookie's 4, and it would ride up with every single request for
+ * nothing.
+ *
+ * There WAS a `planner` cookie beside it, one character saying whether a plan
+ * exists at all, and the reason written here was that the server could read it
+ * and reserve the right box before hydration. Neither half of that was true.
+ * `plannerCookieSaysHasPlan()` was exported and had no callers — verified in the
+ * production chunks, where the identifier does not appear at all — so nothing
+ * ever read it; and there is no box to reserve, because the way in is a `fixed`
+ * edge tab that is drawn on every page whether or not anything is planned and
+ * takes no space in the flow. What the cookie did do was travel with every
+ * request to this origin, images and static chunks included, for a year, for a
+ * reader that did not exist. It is not written any more. One that a visitor
+ * already carries expires on its own, and nothing reads it in the meantime.
  *
  * It is an external store rather than React state for the reason
  * `temperature-unit-context.tsx` documents at length: hydration is not one pass.
@@ -34,8 +41,6 @@ import { clampRiderHeight } from './party';
  */
 
 const STORAGE_KEY = 'parkfan_planner';
-const COOKIE_NAME = 'planner';
-const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year
 
 /** What the server rendered, and therefore what hydration has to see. */
 const SERVER_STATE: PlannerState = EMPTY_PLANNER_STATE;
@@ -239,23 +244,11 @@ function write(next: PlannerState): void {
   current = next;
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    // One character, and only so the SERVER can reserve the right box before
-    // hydration. Never the plan itself: that would ride along on every request.
-    setCookie(COOKIE_NAME, hasAnyPlan(next) ? '1' : '0', {
-      maxAge: COOKIE_MAX_AGE,
-      sameSite: 'lax',
-      path: '/',
-    });
   } catch {
     // Storage refused. The change still applies in memory for this session
     // rather than being silently discarded under the visitor's hands.
   }
   for (const listener of listeners) listener();
-}
-
-/** Server-readable hint that this visitor has a plan. Read during SSR. */
-export function plannerCookieSaysHasPlan(): boolean {
-  return getCookie(COOKIE_NAME) === '1';
 }
 
 export const plannerStore = {
@@ -270,4 +263,4 @@ export const plannerStore = {
   },
 };
 
-export { STORAGE_KEY as PLANNER_STORAGE_KEY, COOKIE_NAME as PLANNER_COOKIE_NAME };
+export { STORAGE_KEY as PLANNER_STORAGE_KEY };

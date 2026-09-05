@@ -408,7 +408,7 @@ export function ParkTodayPanel({
           stay correct at four, two and one column. */}
       <div className="overflow-hidden">
         {/* Two of the four columns are conditional, so the wide track count is counted rather
-            than written down. At a fixed `lg:grid-cols-4` a park with no headliners and no
+            than written down. At a fixed four-column track set a park with no headliners and no
             showtimes left two empty tracks sitting inside the panel's border — which is exactly
             what shipped. */}
         <PanelGrid columnCount={columnCount}>

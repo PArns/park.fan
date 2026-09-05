@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown, Columns2, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import type { PlannerDayState } from './planner-context-band';
@@ -11,23 +11,28 @@ import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { PlannerInParkCta } from './planner-in-park-cta';
-import { PlannerMissingHeadliners } from './planner-missing-headliners';
-import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerPanelPhoto } from './planner-panel-photo';
+import { PlannerDayFoot } from './planner-day-foot';
 import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
-import { occupiedMinutes, totalsFor } from '@/lib/planner/estimate';
+import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { useRouter } from '@/i18n/navigation';
-import { formatShortDuration } from '@/lib/utils/duration';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
 import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
-import { maxColumnsFor, plannerSecondColumn } from '@/lib/planner/second-column';
+import {
+  TWO_COLUMN_MIN_WIDTH,
+  TWO_COLUMN_VIEWPORT_QUERY,
+  maxColumnsFor,
+  plannerSecondColumn,
+} from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -47,6 +52,9 @@ interface PlannerFlyoutProps {
  * button off screen. `components/ui/sheet.tsx` says so at the button, and the
  * burger menu solves it the same way.
  */
+/** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
+const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
+
 /** Far enough that it cannot be a tap; short enough for a thumb. */
 const SHEET_EXPAND_PX = 24;
 /** Under this, the gesture was a tap and the tap handler owns it. */
@@ -55,7 +63,6 @@ const SHEET_DISMISS_PX = 90;
 
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
-  const locale = useLocale();
   // Only what the PANEL itself still uses. Everything that edits a day — the
   // moves, the ticks, the removals, the party prefs — moved into
   // `PlannerDayColumn` with the grid it acts on, because with two columns open
@@ -94,6 +101,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
   const isPhone = useMediaQuery('(max-width: 639px)');
   const router = useRouter();
+  /**
+   * Whether the page behind the panel is the planner's own.
+   *
+   * `usePathname` from `@/i18n/navigation` strips the LOCALE and keeps the
+   * localized SEGMENT — the two are different things, and reading it as the
+   * first was a bug that shipped: matching `/trip-planner` alone left the guard
+   * dead on `/de/tagesplaner`, `/fr/planificateur` and three more, i.e. in five
+   * of six languages, on the one route it exists to protect. The rewrites in
+   * `next.config.ts` serve all six on the English route folder, but a rewrite
+   * does not change what the browser asked for and `usePathname` answers that.
+   *
+   * So: every segment, compared exactly. `header.tsx` matches
+   * `BEST_TIME_SEGMENTS` the same way for the same reason, and `PLANNER_SEGMENTS`
+   * is the one place those slugs are written down — a seventh locale adds itself
+   * here. Exact rather than a prefix, or `/trip-planner-anything` would count.
+   */
+  const pathname = usePathname();
+  const isPlannerPage = PLANNER_PATHS.has(pathname);
 
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
@@ -102,20 +127,37 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   );
 
   /**
-   * The second column, if there is room for one.
+   * The second column, if there is room for one — and the switch, if there
+   * COULD be. Two questions, and they used to be one.
    *
-   * Two gates, and they mean different things. `maxColumnsFor` is about the
-   * PANEL: below two minimum widths plus a divider, a second column would be
-   * narrower than a single one is ever allowed to be. `isPhone` is about the
-   * screen: there the sheet is the width of the phone and no amount of dragging
-   * makes it wider, so the switch is not offered at all.
+   * `twoColumnsFit` is about the PANEL as it stands: below two minimum widths
+   * plus a divider, a second column would be narrower than a single one is ever
+   * allowed to be, so this is what decides whether one is DRAWN. Gated rather
+   * than hidden, because a column is not free — it is a `/plan/day` query, a
+   * best-days snapshot and a grid — and a column nobody can see must not be paid
+   * for. The arrangement itself survives: narrowing the panel puts the second
+   * column away and widening it brings the same day back.
    *
-   * Gated rather than hidden, because a column is not free — it is a
-   * `/plan/day` query, a best-days snapshot and a grid — and a column nobody can
-   * see must not be paid for. The arrangement itself survives: narrowing the
-   * panel puts the second column away and widening it brings the same day back.
+   * `twoColumnsOffered` is about the WINDOW, and it decides whether the switch
+   * is there. Hanging the switch on the panel's width made the feature
+   * self-concealing: the default panel is 448 px, two columns need 681, so at
+   * the width every visitor starts on there was no switch and nothing said the
+   * planner had a second column at all — it had to be found by dragging the edge
+   * far enough. The switch now widens the panel itself (below), which is only an
+   * honest offer where the window can carry it: `fitToViewport` caps the panel
+   * at `innerWidth - PAGE_MIN_PX`, so under `TWO_COLUMN_MIN_VIEWPORT` the cap
+   * would take the width back in the same frame.
+   *
+   * `isPhone` is kept beside it although 639 px cannot also be 1041 px, so it
+   * cannot fire today. The two thresholds are independent — one is a breakpoint,
+   * the other falls out of `PANEL_WIDTH_MIN` and `PAGE_MIN_PX` — and a phone is
+   * a bottom sheet the width of the screen, where no stored width applies at
+   * all: that refusal should not depend on arithmetic elsewhere staying above
+   * the breakpoint.
    */
   const twoColumnsFit = !isPhone && maxColumnsFor(panelWidth) === 2;
+  const windowFitsTwoColumns = useMediaQuery(TWO_COLUMN_VIEWPORT_QUERY);
+  const twoColumnsOffered = !isPhone && windowFitsTwoColumns;
   const storedColumn = useSyncExternalStore(
     plannerSecondColumn.subscribe,
     plannerSecondColumn.getSnapshot,
@@ -161,11 +203,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         ? 'ready'
         : 'empty';
 
-  const totals = totalsFor(day ?? null, activeEntries);
-
-  // The axis, or null when the park's hours are unknown — in which case there is
-  // no honest grid to draw and the flat list is the answer.
-  const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   /**
    * How much of the day each block occupies, which two things need: the axis
    * has to be tall enough to contain them, and a new block has to be filed
@@ -222,12 +259,160 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const unplannedPagePark =
     pagePark && !(activeParkSlug === pagePark.slug && activeDate) ? pagePark : null;
 
+  /**
+   * The photograph behind the panel, if the media database has one.
+   *
+   * Source and focal point travel as a PAIR: a `src` from `/plan/day` under a
+   * `position` from the page beacon would crop one park's picture to another
+   * park's curated point, and the two are separate fields with nothing
+   * connecting them.
+   *
+   * The second branch is what changed. While the plan's park IS the page's park
+   * — the ordinary case, since a day is usually started from the park's own
+   * page — its picture is already here on the beacon, out of the same media
+   * database `/plan/day` reads. Waiting for the query to say so opened the panel
+   * on the drawn ground and swapped the photo in a moment later, and where
+   * `/plan/day` 404s (it still does until the backend ships) the swap never came
+   * at all. A DIFFERENT park is unchanged and still shows no photo until its own
+   * answer arrives, which is the rule this branch was written for: a day whose
+   * query is in flight must not briefly show another park's façade.
+   */
+  const samePark = pagePark && pagePark.slug === activeParkSlug ? pagePark : null;
+  const panelPhoto = !activeParkSlug
+    ? { src: pagePark?.backgroundImage, position: pagePark?.backgroundPosition }
+    : day?.parkBackgroundImage
+      ? { src: day.parkBackgroundImage, position: day.parkBackgroundPosition }
+      : { src: samePark?.backgroundImage, position: samePark?.backgroundPosition };
+
   /** Starts the wizard on the CALENDAR — which park is settled by the route. */
   const startPagePark = useCallback(() => {
     if (!unplannedPagePark) return;
     setWizardPark({ ...unplannedPagePark });
     setWizardOpen(true);
   }, [unplannedPagePark]);
+
+  /**
+   * Take the page behind the panel to a park's own page.
+   *
+   * Switching subject in the panel is switching subject on the page: the ride
+   * cards a plan is filled from are on the park's own page, and a panel about
+   * Europa-Park in front of Phantasialand's rides is a drag gesture with no
+   * valid target — the grid refuses a ride whose park is not its own.
+   *
+   * It used to refuse wherever `plannerPagePark` was `null` — every route that
+   * is not park-scoped — on the reasoning that there is no park page to return
+   * from. That was the wrong half of the question and it was reported from the
+   * homepage: two columns open, Toverland in the right one, and clicking it did
+   * nothing at all. Whether the page in front of the reader is a park page has
+   * no bearing on whether they want the park they just clicked; what decides it
+   * is that the columns are the subject and the page is where the rides come
+   * from.
+   *
+   * Two guards are left. A target that is already the page's park is a no-op
+   * rather than a reload. And the planner's own page is not left at all — see
+   * `isPlannerPage`.
+   */
+  const goToPark = useCallback(
+    (slug: string | null) => {
+      if (!slug || pagePark?.slug === slug) return;
+      // The planner's OWN page is the one route this may not leave. Everywhere
+      // else the page is a place to drag rides out of and following the panel
+      // is the point; there, the page IS the panel's subject and navigating
+      // away would close the thing somebody just opened.
+      if (isPlannerPage) return;
+      const target = state.parks[slug];
+      if (!target) return;
+      router.push(
+        `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
+      );
+    },
+    [pagePark?.slug, isPlannerPage, router, state.parks]
+  );
+
+  /**
+   * Which of the two columns the reader is working in.
+   *
+   * Not the plan's active day, and the difference is the whole point: the
+   * primary column IS `activeParkSlug`, so making a click there change it would
+   * put the same day in both columns. This is a lighter thing — where the
+   * pointer last was — and it decides two things: which column is marked, and
+   * which park the page behind the panel shows.
+   *
+   * Local state rather than the store, so it lives exactly as long as the panel
+   * does. A remembered focus would be a claim about what somebody was doing
+   * yesterday.
+   */
+  const [focusSecond, setFocusSecond] = useState(false);
+  /**
+   * Focus a column, and — where the gesture was a plain one — take the page.
+   *
+   * The navigation hangs on the CHANGE, never on the press. With one column
+   * open the focus can never change, so reading Toverland's page with a
+   * Phantasialand plan open and touching the panel navigates nowhere.
+   *
+   * **`navigate` is what keeps a control from relocating the reader.** The
+   * column arms this from `onPointerDownCapture` on its own root, so it fires
+   * before the press reaches anything inside — including that column's close
+   * button, its optimise bar, its free-block row and the grip of a block
+   * somebody is starting to drag. Marking the column is right in all of those
+   * (it IS the one being worked in); pushing a new route under a half-finished
+   * drag, or moving the whole page as the answer to "close this column", is
+   * not. The column decides which kind of press it was; see its capture
+   * handler.
+   *
+   * **The push is outside the updater**, which is not a style question: React
+   * may call an updater more than once — it does in StrictMode — and a
+   * `router.push` in there is two history entries and two RSC fetches for one
+   * press. The comparison it replaced is done against `focusSecond` here, where
+   * a dependency covers it.
+   */
+  const focusColumn = useCallback(
+    (second: boolean, navigate: boolean) => {
+      if (second === focusSecond) return;
+      setFocusSecond(second);
+      if (navigate) goToPark(second ? (secondColumn?.parkSlug ?? null) : activeParkSlug);
+    },
+    [focusSecond, goToPark, secondColumn?.parkSlug, activeParkSlug]
+  );
+  // A closed second column cannot be the focused one. Adjusted during render
+  // rather than in an effect — the state is derived from `secondColumn`, and an
+  // effect would leave one render with the marker on a column that is gone.
+  if (focusSecond && !secondColumn) setFocusSecond(false);
+
+  /**
+   * The park page's own button, answered.
+   *
+   * `ParkPlannerLink` in the park header asks for the panel AND for the wizard
+   * on the park the route is about — `requestOpen(source, 'page-park-wizard')`
+   * — and until this it only got the first half: the panel opened on whatever
+   * it had been showing, with „Tag im Phantasialand planen" as a second button
+   * inside it. The panel is the only place that can answer, because
+   * `startPagePark` is the action and it reads the beacon, the plan and the
+   * columns to decide what „this park, unplanned" means.
+   *
+   * The counter is compared against the last one SEEN rather than against zero,
+   * for the same reason `PlannerLauncher` does it: a second press after the
+   * reader has closed the panel is a second event, and a boolean would collapse
+   * the two. `useRef(0)` is what makes the first press work at all — the panel
+   * is lazily mounted, so on a page that has never opened it this effect first
+   * runs with the counter already at 1, which is the press that mounted it.
+   *
+   * It is the store's WIZARD counter, so a plain panel request from the park
+   * calendar or a ride button never reaches here at all — see
+   * `plannerUi.getWizardSnapshot`, which explains why that question is answered
+   * by a second subscription rather than by an intent read inside this effect.
+   */
+  const wizardRequests = useSyncExternalStore(
+    plannerUi.subscribe,
+    plannerUi.getWizardSnapshot,
+    plannerUi.getWizardServerSnapshot
+  );
+  const lastWizardRequest = useRef(0);
+  useEffect(() => {
+    if (wizardRequests === lastWizardRequest.current) return;
+    lastWizardRequest.current = wizardRequests;
+    startPagePark();
+  }, [wizardRequests, startPagePark]);
 
   /**
    * A block the visitor writes themselves — a lunch break, a show, a meeting
@@ -414,15 +599,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             the one screen that has to say what this thing is for, was the one
             screen with no park in it. Branching on the ACTIVE park rather than
             falling back per field, so a day whose query is still in flight
-            shows nothing rather than briefly showing a different park. */}
-        <PlannerPanelPhoto
-          src={activeParkSlug ? day?.parkBackgroundImage : pagePark?.backgroundImage}
-          position={
-            activeParkSlug
-              ? day?.parkBackgroundPosition
-              : (pagePark?.backgroundPosition ?? undefined)
-          }
-        />
+            shows nothing rather than briefly showing a different park.
+
+            Nothing at all is now a drawn ground rather than a black rectangle —
+            see `PlannerPanelPhoto`, which is where the 9-of-212 count that
+            makes that the normal case is written down. */}
+        <PlannerPanelPhoto src={panelPhoto.src} position={panelPhoto.position} />
 
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a
@@ -523,15 +705,31 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     active, so switching either column's park is one press away
                     and neither is decided here.
 
-                    Only where it fits — see `twoColumnsFit`. */}
-                {activeDate && !showOverview && twoColumnsFit && (
+                    Wherever the WINDOW could carry two — see
+                    `twoColumnsOffered` — and the press makes room for them. */}
+                {activeDate && !showOverview && twoColumnsOffered && (
                   <button
                     type="button"
                     onClick={() => {
                       if (secondColumn) {
+                        // Closing leaves the width alone: somebody who dragged
+                        // the panel to 820 px asked for 820 px, and a switch
+                        // that reset it would be undoing a different gesture.
                         plannerSecondColumn.close();
                         return;
                       }
+                      // Widening is the switch's job now that it is offered
+                      // below the width two columns need. `commit` rather than a
+                      // write of our own, so this goes through the same clamp
+                      // and the same storage key the edge drag uses — and only
+                      // upwards, for the same reason closing does not touch it.
+                      if (panelWidth < TWO_COLUMN_MIN_WIDTH) {
+                        plannerPanelWidth.commit(TWO_COLUMN_MIN_WIDTH);
+                      }
+                      // A column narrowed away is remembered rather than
+                      // forgotten, so widening brings that day back instead of
+                      // overwriting it with tomorrow.
+                      if (storedColumn) return;
                       if (!activeParkSlug) return;
                       plannerSecondColumn.open({
                         parkSlug: activeParkSlug,
@@ -567,16 +765,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 setActive(slug, date);
                 setShowOverview(false);
                 // …and go to that park's page, because switching plans is
-                // switching subject: the ride cards a plan is filled from are
-                // on the park's own page, and staying on a different park's
-                // left the panel and the page disagreeing about which park was
-                // being planned. Skipped when it is already the page's park, so
-                // picking another DAY of the park on screen does not reload it.
-                const target = state.parks[slug];
-                if (!target || pagePark?.slug === slug) return;
-                router.push(
-                  `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
-                );
+                // switching subject — see `goToPark`, which the column focus
+                // uses for the same reason.
+                goToPark(slug);
               }}
               onClearDay={clearDay}
               onNewDay={() => setWizardOpen(true)}
@@ -602,22 +793,44 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 under the sheet header with nothing above it. */}
             {/* The columns. One is the plan's active day; a second is the day
                 beside it, and both draw the same component so the chrome exists
-                once in the code. `flex-1` with `min-w-0` on each, so two columns
-                halve the canvas rather than overflowing it, and a divider
-                between them because two grids of hour rules need an edge to be
-                told apart by.
+                once in the code.
+
+                A GRID rather than a flex row, and that is the whole of "make
+                the two columns look like a pair". Side by side as flex children
+                each column stacked its own head, its own context band and its
+                own axis — and the band's height is DATA: a park whose day
+                carries a school-holiday chip has a taller one, so the right
+                column's 09:00 sat 28 px below the left column's 09:00 and every
+                hour rule after it was out of step. Three rows here — head, band,
+                body — which each column takes as `grid-rows-subgrid`, so the two
+                bands are as tall as the taller one and the axes start on the
+                same pixel. `minmax(0,1fr)` because a grid track's default `auto`
+                minimum is its content, which a long ride name would push past
+                the panel.
+
+                A divider on the second column, because two grids of hour rules
+                need an edge to be told apart by.
 
                 Never on a phone: the sheet is the width of the screen there, and
                 two columns of a 390 px one would be 195 px each against the
                 318 px a single honest column needs. `isPhone` rather than a CSS
                 breakpoint, because a second column also costs a `/plan/day`
                 query and a hidden one must not be paid for. */}
-            <div className="flex min-h-0 flex-1">
+            <div
+              className={cn(
+                'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
+                secondColumn ? 'grid-cols-2' : 'grid-cols-1'
+              )}
+            >
               <PlannerDayColumn
                 parkSlug={activeParkSlug}
                 date={activeDate}
                 primary
+                active={Boolean(secondColumn) && !focusSecond}
+                onActivate={(navigate) => focusColumn(false, navigate)}
                 open={open}
+                withFoot={!isPhone}
+                className="row-span-3 grid grid-rows-subgrid"
                 onPickPark={(slug) => setActive(slug, activeDate)}
                 onPickDate={(date) => setActive(activeParkSlug, date)}
                 onNewPark={() => {
@@ -641,24 +854,31 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                    because the column is already correct the moment it is there
                    and the animation is only saying where it came from.
                    `motion-reduce:animate-none` for a reader who has asked for
-                   none of this. */
-                <div className="border-border/60 animate-in fade-in slide-in-from-right-4 flex min-w-0 flex-1 border-l duration-200 ease-out motion-reduce:animate-none">
-                  <PlannerDayColumn
-                    parkSlug={secondColumn.parkSlug}
-                    date={secondColumn.date}
-                    primary={false}
-                    open={open}
-                    onPickPark={(slug) =>
-                      plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
-                    }
-                    onPickDate={(date) => plannerSecondColumn.setDate(date)}
-                    onNewPark={() => {
-                      setWizardPark(null);
-                      setWizardOpen(true);
-                    }}
-                    onClose={() => plannerSecondColumn.close()}
-                  />
-                </div>
+                   none of this.
+
+                   On the column itself rather than on a wrapper around it: a
+                   `subgrid` child has to be a DIRECT child of the grid that owns
+                   the rows, and a div in between would have taken the three rows
+                   for itself and handed the column back one. */
+                <PlannerDayColumn
+                  parkSlug={secondColumn.parkSlug}
+                  date={secondColumn.date}
+                  primary={false}
+                  active={focusSecond}
+                  onActivate={(navigate) => focusColumn(true, navigate)}
+                  open={open}
+                  withFoot={!isPhone}
+                  className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
+                  onPickPark={(slug) =>
+                    plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
+                  }
+                  onPickDate={(date) => plannerSecondColumn.setDate(date)}
+                  onNewPark={() => {
+                    setWizardPark(null);
+                    setWizardOpen(true);
+                  }}
+                  onClose={() => plannerSecondColumn.close()}
+                />
               )}
             </div>
 
@@ -704,57 +924,36 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
             />
 
-            {/* Letting the day sort itself, above the band that names what is
-                missing from it — the headliner button is the same question one
-                gesture further on ("and put them in"), so the two belong
-                together and in that order. It follows the PRIMARY column, like
-                everything else in the panel's foot. */}
-            {park && activeDate && (
-              <PlannerOptimizeActions
-                parkSlug={park.slug}
-                parkName={park.name}
-                geo={park.geo}
-                date={activeDate}
-                day={day ?? null}
-                grid={grid}
-                timezone={day?.timezone ?? park.timezone}
-                prefs={prefs}
-              />
-            )}
+            {/* The active day's foot, PHONE ONLY — the desktop's copy is drawn
+                by each column, one set per column, because every control in
+                here names a park and a date and there are two of each once a
+                second column is open. A phone never has a second column, and
+                the arithmetic that keeps it here is in `PlannerDayFoot`: inside
+                the column it would leave the axis 119 px of a 716 px sheet.
 
-            {/* Which of the park's big rides are still missing from the day.
-                Above the free-block row and outside the `sm:hidden` search,
-                because it is the one thing in the panel's foot that both
-                pointers need: the phone adds by tapping a pill, the desktop
-                drags one onto an hour. */}
-            {park && activeDate && (
-              <PlannerMissingHeadliners
-                parkSlug={park.slug}
-                parkName={park.name}
-                geo={park.geo}
-                date={activeDate}
-                day={day ?? null}
-                timezone={timezone}
-                prefs={prefs}
-              />
-            )}
-
-            {/* A free block — a lunch break, a show, a meeting point — on its
-                own row, DESKTOP only. It used to sit inside the ride search,
-                which is now the phone's surface alone, and it is the one thing
-                in there that is not a ride: the catalogue has no answer for
-                "and then we eat". The phone keeps its copy inside the search,
-                where the same question is being asked. */}
-            {park && activeDate && (
-              <button
-                type="button"
-                onClick={addFreeBlock}
-                data-planner-add-custom=""
-                className="text-muted-foreground hover:text-foreground hover:bg-accent/50 border-border/60 hidden shrink-0 items-center gap-2 border-t px-3 py-2 text-left text-xs transition-colors sm:flex"
-              >
-                <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
-                <span className="truncate">{t('custom.add')}</span>
-              </button>
+                `isPhone` rather than the `sm:hidden` the ride search below
+                uses, and the difference is real: that class exists because
+                `useMediaQuery` answers `false` on its server snapshot, and this
+                panel is never server-rendered — it is mounted client-side the
+                first time somebody asks for it, so the hook is right on its
+                first render here. Two copies in the DOM would be two of every
+                `data-planner-optimize` for a selector to pick the wrong one
+                of. */}
+            {isPhone && park && activeDate && (
+              <>
+                <PlannerDayFoot
+                  parkSlug={park.slug}
+                  parkName={park.name}
+                  geo={park.geo}
+                  date={activeDate}
+                  day={day ?? null}
+                  grid={grid}
+                  timezone={resolveTimeZone(day?.timezone ?? park.timezone)}
+                  prefs={prefs}
+                  entries={activeEntries}
+                  onAddFreeBlock={addFreeBlock}
+                />
+              </>
             )}
 
             {/* Above the push toggle and below the search, because it is an
@@ -771,40 +970,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             {activeEntries.length > 0 && (
               <div className="border-border/60 shrink-0 border-t">
                 <PlannerPushToggle />
-              </div>
-            )}
-
-            {activeEntries.length > 0 && (
-              <div className="border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs">
-                <span>
-                  {t('summary.rides', { count: activeEntries.length - totals.custom })}
-                  {totals.custom > 0 && ` · ${t('summary.blocks', { count: totals.custom })}`}
-                </span>
-                <span className="flex items-baseline gap-3">
-                  {totals.done > 0 && (
-                    <span>
-                      {t('summary.done', { done: totals.done, total: activeEntries.length })}
-                    </span>
-                  )}
-                  {/* Expected and actual are never added together: one is a
-                  prediction and the other a measurement, and a single figure
-                  mixing them moves for two reasons at once. */}
-                  {totals.counted > 0 && (
-                    <span className="flex items-baseline gap-1" title={t('summary.waiting')}>
-                      {/* Named, not just hinted. The `title` said what this
-                          figure is and a phone has no hover, so on the surface
-                          where this planner is actually used the row ended in a
-                          duration with nothing saying which duration. */}
-                      <span>{t('summary.waitingLabel')}</span>
-                      {/* The site's own duration format, not a second one invented
-                      here: `formatShortDuration` is what the weather warnings
-                      already print and it knows all six locales' unit labels. */}
-                      <span className="text-foreground font-mono tabular-nums">
-                        {formatShortDuration(totals.expectedMinutes, locale)}
-                      </span>
-                    </span>
-                  )}
-                </span>
               </div>
             )}
           </>

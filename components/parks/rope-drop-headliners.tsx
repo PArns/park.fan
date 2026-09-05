@@ -52,9 +52,12 @@ export function RopeDropHeadliners({ headliners, attractions, parkPath }: RopeDr
 
   return (
     <section
-      // w-fit + max-w keeps the panel clear of the search input, which sits
-      // absolutely at the top right of the attractions tab on md+.
-      className="border-border/50 bg-background/60 w-fit rounded-xl border p-4 shadow-md backdrop-blur-md md:max-w-[calc(100%-320px)] dark:bg-[oklch(0.12_0.025_241_/_0.55)]"
+      // w-fit + max-w keeps the panel clear of the search input, which used to sit absolutely at
+      // the top right of the attractions tab. It sits in <AttractionFilterPanel>'s own band above
+      // this one now, so the 320 px is a reservation for a neighbour that has moved out — kept as
+      // it was rather than removed here, because that is a layout decision and not a breakpoint
+      // one. The width it does hold now follows the page, not the window.
+      className="border-border/50 bg-background/60 w-fit rounded-xl border p-4 shadow-md backdrop-blur-md @min-[768px]/page:max-w-[calc(100%-320px)] dark:bg-[oklch(0.12_0.025_241_/_0.55)]"
       aria-label={t('title')}
     >
       <div className="mb-1 flex items-center gap-2">

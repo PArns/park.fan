@@ -193,7 +193,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         signalHint ? ` · ${signalHint}` : ''
       }`}
       className={cn(
-        'relative flex h-full min-h-[118px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] lg:min-h-[164px] lg:p-3',
+        'relative flex h-full min-h-[118px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] @min-[1024px]/page:min-h-[164px] @min-[1024px]/page:p-3',
         colored ? CROWD_TILE_CLASS[colored] : 'bg-muted/25 border-border/60',
         day.isToday && 'border-primary border-2'
       )}
@@ -225,7 +225,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         <div className="flex shrink-0 items-baseline gap-1.5">
           <span
             className={cn(
-              'text-[21px] leading-none font-bold tabular-nums lg:text-[26px]',
+              'text-[21px] leading-none font-bold tabular-nums @min-[1024px]/page:text-[26px]',
               colored ? CROWD_TEXT_CLASS[colored] : 'text-muted-foreground'
             )}
           >
@@ -236,7 +236,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
               {tCommon('today')}
             </span>
           ) : (
-            <span className="text-muted-foreground text-[11px] font-medium lg:text-xs">
+            <span className="text-muted-foreground text-[11px] font-medium @min-[1024px]/page:text-xs">
               {dayOfWeek}
             </span>
           )}
@@ -244,7 +244,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         {displayMax !== null && (
           <span
             className={cn(
-              'ml-auto text-[13px] leading-tight font-bold whitespace-nowrap tabular-nums lg:text-[15px]',
+              'ml-auto text-[13px] leading-tight font-bold whitespace-nowrap tabular-nums @min-[1024px]/page:text-[15px]',
               colored ? CROWD_TEXT_CLASS[colored] : 'text-muted-foreground'
             )}
           >
@@ -259,7 +259,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
           // `line-clamp-2`, not `truncate`: a crowd tier is one word but „Ganztägig geschlossen"
           // is two, and at seven columns it came out „GANZTÄGIG GESCHLOS…". The tile has ~33 px of
           // slack under its `min-h`, so a second line costs the grid nothing.
-          'mt-1.5 line-clamp-2 text-[9.5px] font-bold tracking-wider uppercase lg:mt-2 lg:text-[10.5px]',
+          'mt-1.5 line-clamp-2 text-[9.5px] font-bold tracking-wider uppercase @min-[1024px]/page:mt-2 @min-[1024px]/page:text-[10.5px]',
           !isOpen
             ? 'text-status-closed'
             : colored
@@ -274,7 +274,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         the park cell gives its hours and weather, and it keeps its box on a day with no data so a
         closed Tuesday does not shorten the week it sits in. */}
       <div className="mt-auto flex flex-col gap-0.5 pt-1.5">
-        <div className="h-8 w-full lg:h-11">
+        <div className="h-8 w-full @min-[1024px]/page:h-11">
           {hasCurve && (
             <HourlyP90Sparkline
               hourlyP90={curve}
@@ -284,7 +284,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
           )}
         </div>
         {displayMin !== null && displayMax !== null && (
-          <div className="text-muted-foreground flex items-center justify-between text-[9.5px] tabular-nums lg:text-[10.5px]">
+          <div className="text-muted-foreground flex items-center justify-between text-[9.5px] tabular-nums @min-[1024px]/page:text-[10.5px]">
             <span>
               {tCommon('min')} {displayMin}
             </span>

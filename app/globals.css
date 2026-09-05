@@ -18,8 +18,23 @@
  * upper edge is `H - 64`, which clears by `(H - 944) / 2`. 980 is what buys ~18 px of it and
  * still catches the 14-inch laptop at 1512x982; at 900 the plate fills the section and the pill
  * lands on the nearby-park bubbles.
+ *
+ * The WIDTH half asks `@container/page` (app/[locale]/layout.tsx) and the HEIGHT half stays a
+ * media query, because the two questions have different subjects: the pill and the caption share
+ * a line inside the hero section, whose width the trip planner takes from — while the height they
+ * clear in is the window's, which no panel changes. Measured with a 900 px panel on a 2000 px
+ * window: the media query still matched, so the pill went absolute and centred over a 1100 px
+ * section at x=301.3..798.6 while the caption sat at x=762.5..1084 — 36.1 px of the German pill
+ * under the image credit, on the same baseline. At 1100 px as a window the pill stays in flow and
+ * they never meet. Nesting is what expresses "both": Tailwind's block form wraps `@slot` in each.
  */
-@variant hero-bottom-line (@media (min-width: 1440px) and (min-height: 980px));
+@variant hero-bottom-line {
+  @container page (min-width: 1440px) {
+    @media (min-height: 980px) {
+      @slot;
+    }
+  }
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -82,6 +97,27 @@
   --color-element-inversion: var(--element-inversion);
   --color-element-turn: var(--element-turn);
   --color-element-brake: var(--element-brake);
+  /* Park accent and the semantic pair, as Tailwind colors rather than as
+     hand-written utility classes.
+
+     They were the latter, and the difference is invisible until somebody writes
+     an opacity modifier: a `.bg-park-primary` rule in `@utility` is a class
+     name, so `bg-park-primary/5` matches nothing at all and compiles to no
+     declaration — no error, no warning, a `div` with no background. Four call
+     sites had been shipping that way. `bg-park-primary/5` on the nearby-parks
+     band (`nearby-in-park-view`), `from-park-primary/10` on the hero wash and on
+     the homepage's announce band — where a gradient stop that resolves to
+     nothing takes the whole `radial-gradient` with it — and `bg-success/10`,
+     `bg-error/10` and `bg-warning/10` on every `IconContainer` in those three
+     tones, which drew their icon on the panel's own ground.
+
+     Registered here, Tailwind generates the whole family — `bg-`, `text-`,
+     `border-`, the gradient stops and every `/opacity` — from one line each. */
+  --color-park-primary: var(--park-primary);
+  --color-park-primary-foreground: var(--park-primary-foreground);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
   /* Trend colors — enables opacity modifiers like bg-trend-up/65, border-trend-down/80 */
   --color-trend-up: var(--trend-up);
   --color-trend-down: var(--trend-down);
@@ -870,47 +906,10 @@
     @apply min-h-[44px] min-w-[44px];
   }
 
-  /* Park Primary Colors */
-  .bg-park-primary {
-    background-color: var(--park-primary);
-  }
-  .text-park-primary {
-    color: var(--park-primary);
-  }
-  .border-park-primary {
-    border-color: var(--park-primary);
-  }
-
-  /* Semantic Colors */
-  .bg-success {
-    background-color: var(--success);
-  }
-  .text-success {
-    color: var(--success);
-  }
-  .border-success {
-    border-color: var(--success);
-  }
-
-  .bg-error {
-    background-color: var(--error);
-  }
-  .text-error {
-    color: var(--error);
-  }
-  .border-error {
-    border-color: var(--error);
-  }
-
-  .bg-warning {
-    background-color: var(--warning);
-  }
-  .text-warning {
-    color: var(--warning);
-  }
-  .border-warning {
-    border-color: var(--warning);
-  }
+  /* `.bg-park-primary`, `.bg-success`, `.bg-error`, `.bg-warning` and their
+     `text-`/`border-` twins used to be written out here by hand. They are
+     generated from `@theme inline` now — see the note there for what the
+     hand-written version silently could not do. */
 
   /* Trend Colors */
   .text-trend-up {

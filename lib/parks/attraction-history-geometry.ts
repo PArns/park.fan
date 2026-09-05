@@ -20,7 +20,7 @@
 /** Today plus the thirty days behind it — the window `AttractionHistoryGrid` builds. */
 export const HISTORY_WINDOW_DAYS = 30;
 
-/** Columns the grid draws from `lg` up. Below that it is two. */
+/** Columns the grid draws at a page width of 1024 px and up. Below that it is two. */
 const LG_COLUMNS = 7;
 
 /**
@@ -36,12 +36,12 @@ export function historyRows(columns: number): number {
   return Math.ceil((HISTORY_WINDOW_DAYS + 1) / columns);
 }
 
-/** Rows the below-`lg` two-column list needs. */
+/** Rows the two-column list below that needs. */
 export function historyListRows(): number {
   return historyRows(2);
 }
 
-/** Rows the seven-column grid needs from `lg` up. */
+/** Rows the seven-column grid needs above it. */
 export function historyGridRows(): number {
   return historyRows(LG_COLUMNS);
 }
@@ -74,9 +74,9 @@ const ROW_GAP = 8;
  * for; reserving 119 is 1 px long on that same grid, and long is the safe side of a reservation.
  */
 const MODEL = {
-  /** Below `lg` — two columns of `min-h-[118px]` tiles that measure 119 with a curve in them. */
+  /** Narrow page — two columns of `min-h-[118px]` tiles that measure 119 with a curve in them. */
   list: { tile: 119, base: 0 },
-  /** From `lg` — seven columns of 164 px tiles. No weekday header row to sit under. */
+  /** Wide page — seven columns of 164 px tiles. No weekday header row to sit under. */
   lg: { tile: 164, base: 0 },
 } as const;
 
@@ -86,9 +86,9 @@ function stackHeight({ tile, base }: { tile: number; base: number }, rows: numbe
 }
 
 export interface HistoryGridReservation {
-  /** Placeholder height below `lg`, in px. */
+  /** Placeholder height below a page width of 1024 px, in px. */
   base: number;
-  /** Placeholder height from `lg` up, in px. */
+  /** Placeholder height at 1024 px of PAGE and up, in px. */
   lg: number;
 }
 

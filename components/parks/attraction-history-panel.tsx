@@ -70,7 +70,7 @@ export function AttractionHistoryPanel({
       <div
         className={cn(
           TILE_GLASS,
-          'border-border/50 flex flex-col gap-4 rounded-b-xl border border-t-0 p-4 md:p-6'
+          'border-border/50 flex flex-col gap-4 rounded-b-xl border border-t-0 p-4 @min-[768px]/page:p-6'
         )}
         style={
           {
@@ -92,7 +92,7 @@ export function AttractionHistoryPanel({
           fetch landed, pulling the whole page tail up with it. Nothing in the shell predicts it
           (`statistics` is null on every attraction of the park payload), so the reservation
           cannot be conditional; what it can do is not be given back. */}
-        <div className="min-h-[var(--ride-cal-h)] lg:min-h-[var(--ride-cal-h-lg)]">
+        <div className="min-h-[var(--ride-cal-h)] @min-[1024px]/page:min-h-[var(--ride-cal-h-lg)]">
           {loading ? (
             <AttractionHistoryGridPlaceholder />
           ) : (

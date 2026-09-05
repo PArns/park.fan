@@ -49,7 +49,7 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
         const Icon = ICON_MAP[faq.iconName];
         return (
           <details key={index} className="group">
-            <summary className="hover:bg-muted/40 flex cursor-pointer list-none items-center justify-between gap-3 p-4 transition-colors md:px-6">
+            <summary className="hover:bg-muted/40 flex cursor-pointer list-none items-center justify-between gap-3 p-4 transition-colors @min-[768px]/page:px-6">
               <div className="flex items-center gap-3">
                 <Icon className="text-primary h-5 w-5 shrink-0" aria-hidden="true" />
                 <span className="text-left font-medium">{faq.question}</span>
@@ -59,7 +59,7 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
                 aria-hidden="true"
               />
             </summary>
-            <div className="text-muted-foreground border-border/50 border-t px-4 pt-3 pb-4 md:px-6">
+            <div className="text-muted-foreground border-border/50 border-t px-4 pt-3 pb-4 @min-[768px]/page:px-6">
               <GlossaryInject>{faq.answer}</GlossaryInject>
             </div>
           </details>

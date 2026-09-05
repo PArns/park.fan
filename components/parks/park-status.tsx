@@ -127,7 +127,7 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
     return (
       <div className={cn('space-y-4', className)}>
         {/* Main Stats Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {/* Status & Crowd Card */}
           {crowdLevel && status && (
             <Card>

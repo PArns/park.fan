@@ -174,7 +174,11 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
       {/* Thumbnail grid */}
       {images.length > 0 && (
         <>
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5">
+          {/* How many thumbnails fit is room, so the fifth column asks `@container/page`
+              (app/[locale]/layout.tsx). The `max-sm:size-9` on the remove button below is
+              the other kind of question and stays a media query: it is a thumb on a phone,
+              not a narrow box. */}
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 @min-[768px]/page:grid-cols-5">
             {images.map((img) => (
               <figure
                 key={img.id}

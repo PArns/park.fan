@@ -107,7 +107,7 @@ export function AttractionHistoryGrid({ history, schedule, todayIso }: Attractio
     // One flow, today first. No weekday alignment and no week rows: this is a history, and a
     // reader looking at a chapter called „Verlauf" starts from the most recent day. See the
     // component docblock for why the park's month grid is laid out the other way.
-    <div className="grid grid-cols-2 gap-2 lg:grid-cols-7">
+    <div className="grid grid-cols-2 gap-2 @min-[1024px]/page:grid-cols-7">
       {days.map((day) => (
         <HistoryDay key={day.dateStr} day={day} yMax={yMax} />
       ))}

@@ -170,7 +170,11 @@ export async function ParkCalendarMonthSummary({
         {monthLabel}
       </span>
 
-      <p className="text-sm leading-relaxed text-pretty md:text-base">{prose}</p>
+      {/* The type size steps with the MEASURE, not with the device, and it has to: the skeleton
+        below reserves this paragraph line by line at exactly these two line heights, and a page
+        narrowed by the trip planner wraps the same sentences onto five lines while a reservation
+        cut for three sits under them. The two ask one question in one place. */}
+      <p className="text-sm leading-relaxed text-pretty @min-[768px]/page:text-base">{prose}</p>
 
       {/* The same numbers again, scannable. Not decoration: the prose above is what an answer
         engine quotes, this row is what a person skims before deciding to read it. */}
@@ -222,39 +226,40 @@ export async function ParkCalendarMonthSummary({
  *
  * Built from the real card's own box model rather than a round number: same `Card`, same padding,
  * same `gap-4`, and each skeleton line set to the line-height of the text it replaces — `text-sm`
- * at `leading-relaxed` is 22.75 px, `md:text-base` is 26 px. The prose runs five to six lines on a
- * phone and three on a desktop, which is where the two paragraph blocks come from.
+ * at `leading-relaxed` is 22.75 px, `text-base` from 768 px of page is 26 px. The prose runs
+ * five to six lines on a phone and three in a wide column, which is where the two paragraph
+ * blocks come from.
  *
  * **What it cannot reserve honestly is its own absence.** The summary is `null` for a month with
  * no operating day (a park shut for the season) and for a seed that hit its three-second timeout,
  * and the boundary has already drawn this box by then — so those pages pay a collapse of roughly
- * 185 px at `md` and up. It is left that way on purpose, for the reason CLAUDE.md gives for the
- * nearby-parks section: the caller cannot know before the fetch, and reserving for the common
- * outcome costs less in total than reserving for none. A seasonal park in February pays it; a
- * year-round park never does.
+ * 185 px from 768 px of page up. It is left that way on purpose, for the reason CLAUDE.md gives
+ * for the nearby-parks section: the caller cannot know before the fetch, and reserving for the
+ * common outcome costs less in total than reserving for none. A seasonal park in February pays
+ * it; a year-round park never does.
  *
  * The fact row's shape is data-dependent (two to four entries), so it reserves the four-entry
  * case: that is one line tall on `sm` and up either way, so the guess costs nothing there.
  *
  * Two things are deliberately NOT reserved, both measured. The quiet-days strip is only rendered
  * for a month that has one, and about half do not — reserving it charged every other month 49 px
- * it never used. And the prose runs two lines at `md` and up, not three: `pnpm measure:cls` read
- * **−89 px** on November 2026 against the first attempt, an over-reservation that pulls the whole
- * page up when the summary lands. Below `sm` the same sentences wrap to five lines, which is
- * where the extra `md:hidden` rows come from.
+ * it never used. And the prose runs two lines from 768 px of page up, not three: `pnpm
+ * measure:cls` read **−89 px** on November 2026 against the first attempt, an over-reservation
+ * that pulls the whole page up when the summary lands. Below `sm` the same sentences wrap to
+ * five lines, which is where the extra collapsing rows come from.
  */
 export function ParkCalendarMonthSummarySkeleton() {
   return (
     <div className="flex flex-col gap-4" aria-hidden="true">
       <Skeleton className="h-[15px] w-32" />
       <div className="flex flex-col gap-[6px]">
-        {/* Five lines below `sm`, three from `md` — the last two collapse away where the wider
-          measure fits the same words on fewer lines. */}
-        <Skeleton className="h-[22.75px] w-full md:h-[26px]" />
-        <Skeleton className="h-[22.75px] w-full md:h-[26px]" />
-        <Skeleton className="h-[22.75px] w-[88%] md:hidden" />
-        <Skeleton className="h-[22.75px] w-full md:hidden" />
-        <Skeleton className="h-[22.75px] w-[54%] md:hidden" />
+        {/* Five lines below `sm`, three from 768 px of page — the last two collapse away where
+          the wider measure fits the same words on fewer lines. */}
+        <Skeleton className="h-[22.75px] w-full @min-[768px]/page:h-[26px]" />
+        <Skeleton className="h-[22.75px] w-full @min-[768px]/page:h-[26px]" />
+        <Skeleton className="h-[22.75px] w-[88%] @min-[768px]/page:hidden" />
+        <Skeleton className="h-[22.75px] w-full @min-[768px]/page:hidden" />
+        <Skeleton className="h-[22.75px] w-[54%] @min-[768px]/page:hidden" />
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
