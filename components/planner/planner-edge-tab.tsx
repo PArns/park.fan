@@ -121,7 +121,16 @@ export function PlannerEdgeTab({
     >
       <button
         type="button"
-        onClick={onToggle}
+        /* `detail > 1` is the SECOND click of a double-click, and it is skipped
+           because the button carries a double-click gesture of its own (reset
+           the width, below). Without this a double-click toggled the panel
+           twice — closed and reopened it — which reset `showOverview` and the
+           sheet's phone height as a side effect and billed a `planner_opened`
+           for an opening nobody performed. */
+        onClick={(event) => {
+          if (event.detail > 1) return;
+          onToggle();
+        }}
         onPointerDown={startResize}
         onDoubleClick={() => open && plannerPanelWidth.commit(PANEL_WIDTH_DEFAULT)}
         aria-expanded={open}

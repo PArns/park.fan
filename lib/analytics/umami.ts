@@ -47,6 +47,17 @@
  * - web-vital-inp: value, target, phase, path (only for non-`good` samples, see WebVitalsReporter)
  */
 
+/**
+ * The planner's own vocabulary, imported rather than declared here.
+ *
+ * `PlannerOpenedSource` names the ways INTO the panel, which is a fact about the
+ * planner and not about analytics — so it lives beside `PlannerOpenIntent` in
+ * `lib/planner/ui-store.ts`. It sat here first, which meant `ui-store.ts` (a
+ * module every park page pulls in through `ParkPlannerLink`) depended on this
+ * one, and adding a way into the planner meant editing an analytics file.
+ */
+import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
+
 // Extend Window interface for Umami
 declare global {
   interface Window {
@@ -168,29 +179,6 @@ export interface TabChangedProps {
   parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
-
-/**
- * Which way into the trip planner produced an open.
- *
- * A closed union rather than a free string, so a typo is a compile error at the
- * call site instead of a value nobody notices in the report until the column has
- * two spellings of the same entry point.
- *
- * - `tab` — the tab on the window's right edge, drawn on every page.
- * - `park-header` — "Tag im Phantasialand planen" in a park page's or a wait-time
- *   calendar's header (`ParkPlannerLink`).
- * - `calendar-day` — "diesen Tag planen" in the wait-time calendar's day dialog
- *   (`PlanDayButton`).
- * - `wizard` — the wizard's last step on the planner's own page. From inside the
- *   panel the wizard opens nothing, so that press is not an open and is absent
- *   here by construction.
- * - `plan-list` — a day picked out of the list on the planner's own page.
- *
- * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
- * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
- * inside the already-open panel. Neither is a way in.
- */
-export type PlannerOpenedSource = 'tab' | 'park-header' | 'calendar-day' | 'wizard' | 'plan-list';
 
 /**
  * Helper function to remove undefined values from event data

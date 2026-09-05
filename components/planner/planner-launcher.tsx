@@ -88,12 +88,32 @@ export function PlannerLauncher() {
    * not what forced the split — the over-counting is. This effect holds no
    * `setState` either way, so the question cannot come back.
    */
+  // The panel is worth loading once it has been opened, once there is something
+  // in it, or once something has asked for it. Closing it again does not unload
+  // the chunk: it is already in the browser, and unmounting the panel on close
+  // is what resets the wizard.
+  const wanted = open || total > 0 || openRequests > 0;
+  const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
+  /**
+   * The panel is on screen — which is NOT the same as `open`.
+   *
+   * The `planner` namespace is 15 KB and arrives as its own chunk, so between
+   * the press and the panel there is a fetch. `open` flips at the press; the
+   * panel is drawn when the chunk lands. Billing the press counts an opening
+   * the visitor never saw — and `useLazyMessages` does not retry a failed
+   * fetch, so on a blocked asset it is an opening that never happens at all,
+   * followed by a second and a third as somebody presses again because nothing
+   * did. The edge tab already draws its own state off this composite rather
+   * than off `open`; the event now agrees with it.
+   */
+  const panelVisible = wanted && messages.ready && open;
+
   const reported = useRef(false);
   useEffect(() => {
-    if (open === reported.current) return;
-    reported.current = open;
-    if (open) trackPlannerOpened(plannerUi.getOpenSource());
-  }, [open]);
+    if (panelVisible === reported.current) return;
+    reported.current = panelVisible;
+    if (panelVisible) trackPlannerOpened(plannerUi.getOpenSource());
+  }, [panelVisible]);
 
   /**
    * How much of the window the panel is holding, for the page beside it.
@@ -130,13 +150,9 @@ export function PlannerLauncher() {
     };
   }, [open, panelWidth]);
 
-  // The panel is worth loading once it has been opened, once there is something
-  // in it, or once something has asked for it. Closing it again does not unload
-  // the chunk: it is already in the browser, and unmounting the panel on close
-  // is what resets the wizard.
-  const wanted = open || total > 0 || openRequests > 0;
-  const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
-
+  // MOUNTED as soon as the chunk is there, not only while open: the sheet plays
+  // its own close animation and the wizard resets by unmounting with the panel,
+  // so tying this to `open` would cut both.
   const panel =
     wanted && messages.ready ? <PlannerFlyoutHost open={open} onOpenChange={setOpen} /> : null;
 

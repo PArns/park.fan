@@ -15,8 +15,6 @@
  * boolean would collapse them into once the panel had been closed in between.
  */
 
-import type { PlannerOpenedSource } from '@/lib/analytics/umami';
-
 type Listener = () => void;
 
 /**
@@ -37,6 +35,29 @@ type Listener = () => void;
  * action, and it has only ever been reachable from a button drawn inside the
  * panel. This is what lets something outside ask for it.
  */
+/**
+ * Which way into the trip planner produced an open.
+ *
+ * A closed union rather than a free string, so a typo is a compile error at the
+ * call site instead of a value nobody notices in the report until the column has
+ * two spellings of the same entry point.
+ *
+ * - `tab` — the tab on the window's right edge, drawn on every page.
+ * - `park-header` — "Tag im Phantasialand planen" in a park page's or a wait-time
+ *   calendar's header (`ParkPlannerLink`).
+ * - `calendar-day` — "diesen Tag planen" in the wait-time calendar's day dialog
+ *   (`PlanDayButton`).
+ * - `wizard` — the wizard's last step on the planner's own page. From inside the
+ *   panel the wizard opens nothing, so that press is not an open and is absent
+ *   here by construction.
+ * - `plan-list` — a day picked out of the list on the planner's own page.
+ *
+ * Not in the list, and deliberately: `AddToPlannerButton` on a ride puts an
+ * entry in without opening the panel, and `PlannerInParkCta` is only ever drawn
+ * inside the already-open panel. Neither is a way in.
+ */
+export type PlannerOpenedSource = 'tab' | 'park-header' | 'calendar-day' | 'wizard' | 'plan-list';
+
 export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 
 let requests = 0;

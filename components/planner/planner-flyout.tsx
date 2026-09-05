@@ -31,7 +31,7 @@ import {
   plannerSecondColumn,
 } from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
-import { PLANNER_CANONICAL_SEGMENT } from '@/lib/planner/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
 
@@ -52,6 +52,9 @@ interface PlannerFlyoutProps {
  * button off screen. `components/ui/sheet.tsx` says so at the button, and the
  * burger menu solves it the same way.
  */
+/** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
+const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
+
 /** Far enough that it cannot be a tap; short enough for a thumb. */
 const SHEET_EXPAND_PX = 24;
 /** Under this, the gesture was a tap and the tap handler owns it. */
@@ -101,13 +104,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   /**
    * Whether the page behind the panel is the planner's own.
    *
-   * `usePathname` from `@/i18n/navigation` answers WITHOUT the locale prefix, so
-   * one comparison covers all six — and it is the canonical segment that comes
-   * back even on `/de/tagesplaner`, because the localized paths are rewrites
-   * onto the English route folder.
+   * `usePathname` from `@/i18n/navigation` strips the LOCALE and keeps the
+   * localized SEGMENT — the two are different things, and reading it as the
+   * first was a bug that shipped: matching `/trip-planner` alone left the guard
+   * dead on `/de/tagesplaner`, `/fr/planificateur` and three more, i.e. in five
+   * of six languages, on the one route it exists to protect. The rewrites in
+   * `next.config.ts` serve all six on the English route folder, but a rewrite
+   * does not change what the browser asked for and `usePathname` answers that.
+   *
+   * So: every segment, compared exactly. `header.tsx` matches
+   * `BEST_TIME_SEGMENTS` the same way for the same reason, and `PLANNER_SEGMENTS`
+   * is the one place those slugs are written down — a seventh locale adds itself
+   * here. Exact rather than a prefix, or `/trip-planner-anything` would count.
    */
   const pathname = usePathname();
-  const isPlannerPage = pathname.startsWith(`/${PLANNER_CANONICAL_SEGMENT}`);
+  const isPlannerPage = PLANNER_PATHS.has(pathname);
 
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
@@ -333,22 +344,35 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    */
   const [focusSecond, setFocusSecond] = useState(false);
   /**
-   * Focus a column, and take the page with it.
+   * Focus a column, and — where the gesture was a plain one — take the page.
    *
-   * The navigation hangs on the CHANGE, never on the click. With one column
+   * The navigation hangs on the CHANGE, never on the press. With one column
    * open the focus can never change, so reading Toverland's page with a
-   * Phantasialand plan open and touching the panel does not navigate anywhere —
-   * which is the behaviour that existed before this and had to survive it.
+   * Phantasialand plan open and touching the panel navigates nowhere.
+   *
+   * **`navigate` is what keeps a control from relocating the reader.** The
+   * column arms this from `onPointerDownCapture` on its own root, so it fires
+   * before the press reaches anything inside — including that column's close
+   * button, its optimise bar, its free-block row and the grip of a block
+   * somebody is starting to drag. Marking the column is right in all of those
+   * (it IS the one being worked in); pushing a new route under a half-finished
+   * drag, or moving the whole page as the answer to "close this column", is
+   * not. The column decides which kind of press it was; see its capture
+   * handler.
+   *
+   * **The push is outside the updater**, which is not a style question: React
+   * may call an updater more than once — it does in StrictMode — and a
+   * `router.push` in there is two history entries and two RSC fetches for one
+   * press. The comparison it replaced is done against `focusSecond` here, where
+   * a dependency covers it.
    */
   const focusColumn = useCallback(
-    (second: boolean) => {
-      setFocusSecond((was) => {
-        if (was === second) return was;
-        goToPark(second ? (secondColumn?.parkSlug ?? null) : activeParkSlug);
-        return second;
-      });
+    (second: boolean, navigate: boolean) => {
+      if (second === focusSecond) return;
+      setFocusSecond(second);
+      if (navigate) goToPark(second ? (secondColumn?.parkSlug ?? null) : activeParkSlug);
     },
-    [goToPark, secondColumn?.parkSlug, activeParkSlug]
+    [focusSecond, goToPark, secondColumn?.parkSlug, activeParkSlug]
   );
   // A closed second column cannot be the focused one. Adjusted during render
   // rather than in an effect — the state is derived from `secondColumn`, and an
@@ -803,7 +827,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 date={activeDate}
                 primary
                 active={Boolean(secondColumn) && !focusSecond}
-                onActivate={() => focusColumn(false)}
+                onActivate={(navigate) => focusColumn(false, navigate)}
                 open={open}
                 withFoot={!isPhone}
                 className="row-span-3 grid grid-rows-subgrid"
@@ -841,7 +865,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   date={secondColumn.date}
                   primary={false}
                   active={focusSecond}
-                  onActivate={() => focusColumn(true)}
+                  onActivate={(navigate) => focusColumn(true, navigate)}
                   open={open}
                   withFoot={!isPhone}
                   className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"

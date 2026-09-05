@@ -27,6 +27,19 @@ import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { cn } from '@/lib/utils';
 
+/**
+ * What a press has to land OUTSIDE for it to count as "show me this park".
+ *
+ * Everything here does its own job, and the job is never "navigate": the
+ * controls, the form fields the free-block label is one of, and anything
+ * draggable — the blocks, whose drag would otherwise start under a route being
+ * replaced. `[data-planner-block]` is listed beside `[draggable]` because a
+ * block's grip is what carries the attribute, and a press on the block's body
+ * selects it, which is equally not a request for another page.
+ */
+const SELF_ACTING =
+  'button, a, input, textarea, select, [role="button"], [role="slider"], [draggable="true"], [data-planner-block]';
+
 interface PlannerDayColumnProps {
   parkSlug: string | null;
   date: string | null;
@@ -68,8 +81,14 @@ interface PlannerDayColumnProps {
    * one there is says nothing. The panel decides; see `focusColumn`.
    */
   active: boolean;
-  /** The reader touched this column. See `focusColumn` in `PlannerFlyout`. */
-  onActivate?: () => void;
+  /**
+   * The reader touched this column.
+   *
+   * `navigate` says whether the press was a plain one — on the column's own
+   * ground rather than on something in it that does its own job. See the
+   * capture handler for what that distinction is worth.
+   */
+  onActivate?: (navigate: boolean) => void;
   /**
    * The column's place in the panel's grid, from the flyout.
    *
@@ -316,9 +335,27 @@ export function PlannerDayColumn({
          the block. Focus covers the keyboard, which reaches a column through its
          head. Both are cheap and idempotent — `focusColumn` returns early when
          the focus does not actually change, which is what keeps a single-column
-         panel from navigating anywhere. */
-      onPointerDownCapture={onActivate}
-      onFocusCapture={onActivate}
+         panel from navigating anywhere.
+
+         Capturing is also why the press has to be CLASSIFIED. It fires before
+         the event reaches whatever is under the pointer, so the column's own
+         close button, its optimise bar, its free-block row, its day picker and
+         the grip of a block somebody is starting to drag all arrive here first.
+         Marking the column is right for every one of them. Taking the page to
+         that park is not: "close this column" would relocate the whole page
+         before closing it, and a drag would begin under a route that is being
+         replaced. So an activation coming from something interactive marks and
+         nothing more. `closest` rather than a check on the target, because the
+         pointer lands on an icon or a span inside the control, never on the
+         control itself. */
+      onPointerDownCapture={(event) => {
+        const target = event.target as HTMLElement | null;
+        onActivate?.(!target?.closest(SELF_ACTING));
+      }}
+      onFocusCapture={(event) => {
+        const target = event.target as HTMLElement | null;
+        onActivate?.(!target?.closest(SELF_ACTING));
+      }}
       className={cn('relative flex min-w-0 flex-col', className)}
     >
       {/* The marker. A 2 px rule along the column's own top edge rather than a
