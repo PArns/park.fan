@@ -90,7 +90,17 @@ export function BlogPostCardView({
     <>
       {/* Phones get the row, everything from `sm` up the panelled card. Two
           markups rather than one responsive tree: the glass is a block of inline
-          styles, which no breakpoint can switch off. */}
+          styles, which no breakpoint can switch off.
+
+          It stays a media query while the grids around it moved to `@container/page`,
+          for two reasons that point the same way. The row is a phone treatment, not a
+          narrow-box treatment — it drops the cover to a 96px thumbnail and gives up the
+          composition, which is not what a card wants merely because a trip-planner panel
+          took 300px off the page. And `sizes` above says `(max-width: 640px) 96px`, a
+          condition with no container form: move the switch and the painted markup and
+          the picked candidate start disagreeing, the row asking for 96px and getting the
+          50vw one. Below `sm` the page is never inset anyway (the panel is a modal sheet
+          there), so window and container are the same number at this threshold. */}
       <BlogPostRow
         post={post}
         cover={cover}

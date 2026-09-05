@@ -10,6 +10,10 @@ export function BuildInfo() {
       <span>
         Version <span className="font-mono">{buildInfo.buildNumber}</span>
       </span>
+      {/* `md:` and not `@min-[768px]/page:`: the whole line is ~240px of `text-xs` and
+          fits at 320, so 768 was never the width at which it stops fitting — it is where
+          a phone stops wanting a build date under the footer. A question about the device,
+          so it keeps asking the window. */}
       <span className="text-muted-foreground/60 hidden items-center md:inline-flex">•</span>
       <span className="hidden md:inline">
         Built{' '}

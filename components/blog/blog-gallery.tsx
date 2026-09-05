@@ -48,6 +48,12 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
       <h2 className="text-foreground mb-4 text-lg font-semibold">
         {heading ?? t('gallery.title')}
       </h2>
+      {/* Three columns is a statement about room, so it asks `@container/page`
+          (app/[locale]/layout.tsx) rather than the window the trip planner no longer
+          speaks for. The `sizes` below cannot follow — there is no container form of a
+          `sizes` media condition — but it errs the safe way: the container query drops
+          to two columns exactly where the old one kept three in a narrowed page, so the
+          candidate the browser picks is now too large rather than too small. */}
       <div
         className={cn(
           '[column-gap:0.75rem]',
@@ -55,7 +61,7 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
             ? 'columns-1'
             : images.length === 2
               ? 'columns-1 sm:columns-2'
-              : 'columns-1 sm:columns-2 lg:columns-3'
+              : 'columns-1 sm:columns-2 @min-[1024px]/page:columns-3'
         )}
       >
         {images.map((img, i) => (

@@ -219,7 +219,7 @@ export function GlossaryOverviewClient({
             {filtered.map(({ category, categoryLabel, terms }) => (
               <section key={category}>
                 <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                   {terms.map((term) => (
                     <GlossaryTermCard
                       key={term.id}
