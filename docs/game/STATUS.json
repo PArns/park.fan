@@ -257,6 +257,7 @@
   },
   "openIssues": [
     "The sky renders PURE BLACK at 12:00 in the ground camera while the terrain below it is lit and correctly textured — the sky dome is either not drawn or culled at that pitch. Was a golden-hour gradient two rounds ago, so it is a regression inside the environment module's own round.",
+    "The `overview` camera preset frames a close-up of grass rather than the park: at 12:00 the whole frame is ground with a thin strip of sky. Every screenshot taken in this run is therefore judging texture, not composition — the camera module has not started its round (2-agent concurrency on a 4-core container; terrain and environment are in flight).",
     "Terrain ground is the first thing in this build that reads as a real surface: grass with low-frequency variation, 51 draw calls (down from 66), 140,164 tris. Recorded as the baseline the wave-1 gate should hold, not as a pass — the gate has not run.",
     "Wave 1 has not landed: the baseline screenshot is an untextured terrain edge under the HUD.",
     "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
