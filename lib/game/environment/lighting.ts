@@ -38,9 +38,9 @@ import { clamp01, mix, smoothstep } from './noise';
  * mean radiance into a rough irradiance, and `0.55` is the average cosine over surfaces that are
  * not all facing the sun. The `^0.7` is what stops a dusk sky from metering as if it were night.
  */
-const EXPOSURE_KEY = 0.364;
+const EXPOSURE_KEY = 0.42;
 const EXPOSURE_MIN = 0.55;
-const EXPOSURE_MAX = 2.8;
+const EXPOSURE_MAX = 2.2;
 /** Seconds to cross most of an exposure change. */
 const EXPOSURE_TAU = 0.55;
 
@@ -152,7 +152,7 @@ export function createLighting(
     const morning = env.minute > 240 && env.minute < 600 ? 1 : 0;
     const lowSun = smoothstep(0.22, -0.02, Math.sin(env.sunElevation));
     scene.fogDensity =
-      0.00045 +
+      0.0008 +
       0.0013 * env.cloud +
       (rainy ? 0.0016 * (0.4 + 0.6 * env.wetness) : 0) +
       0.0016 * morning * lowSun * (1 - 0.6 * env.cloud);

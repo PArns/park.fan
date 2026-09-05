@@ -62,8 +62,8 @@ export async function stageEnvironmentShowcase(ctx: MainContext): Promise<void> 
 
   const PAVING: PbrRecipe = {
     name: 'paving',
-    base: [0.52, 0.5, 0.47],
-    accent: [0.36, 0.34, 0.32],
+    base: [0.4, 0.385, 0.36],
+    accent: [0.27, 0.255, 0.24],
     roughness: [0.55, 0.86],
     metallic: 0,
     pattern: 'stone',
@@ -71,8 +71,8 @@ export async function stageEnvironmentShowcase(ctx: MainContext): Promise<void> 
   };
   const RENDER: PbrRecipe = {
     name: 'render',
-    base: [0.74, 0.71, 0.64],
-    accent: [0.62, 0.58, 0.52],
+    base: [0.62, 0.59, 0.53],
+    accent: [0.5, 0.47, 0.42],
     roughness: [0.62, 0.9],
     metallic: 0,
     pattern: 'plaster',

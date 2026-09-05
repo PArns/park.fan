@@ -68,23 +68,26 @@
       "score": null,
       "consoleErrors": null,
       "extensibilityPass": null,
-      "owner": "integrator"
+      "owner": "integrator",
+      "gated": false
     },
     "terrain": {
       "wave": 1,
-      "status": "built",
+      "status": "partial (builder killed by session limit, ungated)",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "environment": {
       "wave": 1,
-      "status": "built",
+      "status": "partial (builder killed by session limit, ungated)",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "ui": {
       "wave": 1,
@@ -92,7 +95,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "camera": {
       "wave": 1,
@@ -100,7 +104,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "audio": {
       "wave": 4,
@@ -108,7 +113,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "effects": {
       "wave": 4,
@@ -116,7 +122,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "paths": {
       "wave": 2,
@@ -124,7 +131,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "pools": {
       "wave": 2,
@@ -132,7 +140,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "track": {
       "wave": 2,
@@ -140,7 +149,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "buildings": {
       "wave": 2,
@@ -148,7 +158,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "scenery": {
       "wave": 2,
@@ -156,7 +167,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "shops": {
       "wave": 2,
@@ -164,7 +176,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "rides": {
       "wave": 3,
@@ -172,7 +185,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "flumes": {
       "wave": 3,
@@ -180,7 +194,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "trains": {
       "wave": 3,
@@ -188,7 +203,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "guests": {
       "wave": 3,
@@ -196,7 +212,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "staff": {
       "wave": 3,
@@ -204,7 +221,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "management": {
       "wave": 3,
@@ -212,7 +230,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "overlays": {
       "wave": 3,
@@ -220,7 +239,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "tools": {
       "wave": 4,
@@ -228,7 +248,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "scenarios": {
       "wave": 4,
@@ -236,7 +257,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "persistence": {
       "wave": 4,
@@ -244,7 +266,8 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     },
     "demo-park": {
       "wave": 5,
@@ -252,19 +275,17 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null
+      "extensibilityPass": null,
+      "gated": false
     }
   },
   "openIssues": [
-    "At 20:30 the whole frame is essentially black — ground, sky and terrain alike, nothing readable. ART_BIBLE requires the opposite: night ambient is a deep blue so silhouettes stay readable, and the park is lit by its own light. This is the clearest wave-1 failure in the current build.",
-    "At 12:00 there is no sky in frame at all: terrain fills the viewport edge to edge from the overview preset. Two rounds ago the same preset showed a (black) sky strip, so the horizon has moved out of frame — terrain scale, height or chunk bounds changed under it.",
-    "Draw calls and triangles are moving in opposite directions between rounds (66/128k -> 51/140k -> 62/32k). None of these is out of budget; they are recorded because the trend, not the value, is what says whether chunk LOD is settling.",
-    "Wave 1 has not landed: the baseline screenshot is an untextured terrain edge under the HUD.",
+    "NOTHING HAS PASSED A GATE. The critic never ran for any module; every number in this file is a budget measurement, not a quality verdict.",
+    "12:00 renders no sky and dim ground (.game-render/final1/1200-overview.png).",
+    "22:00 is very nearly black (.game-render/final1/2200-overview.png) — ART_BIBLE asks for a deep blue with readable silhouettes. Half of that frame belongs to effects and scenery, which never started.",
+    "20 of 24 modules are scaffolds: paths, pools, track, buildings, scenery, shops, rides, flumes, trains, guests, staff, management, overlays, tools, camera, scenarios, persistence, audio, effects, demo-park.",
     "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
-    "demo-park is a terrain shaper, not yet a park.",
-    "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour.",
-    "HUD overflows a phone: measured at 390x844 the top-right cash pill runs off the right edge and 'Day 1' wraps to two lines. Belongs to the ui module.",
-    "The graphics-preset notice is clipped at both ends at 390 px, between the feedback widget and the bottom-right corner. The brand mark stepped out of that row (hidden below sm); the notice itself is still the ui module's to place."
+    "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour."
   ],
   "history": [
     {
@@ -290,5 +311,15 @@
       "capabilities.ts held the WebGL2 probe's context for the life of the document",
       "renderer.ts left the engine's context to the garbage collector on dispose"
     ]
+  },
+  "fanOut": {
+    "runId": "wf_f63fb504-4f2",
+    "outcome": "FAILED — all 22 builder agents hit the account session limit",
+    "agentsCompleted": 0,
+    "agentsErrored": 22,
+    "subagentTokens": 940352,
+    "durationMs": 4183942,
+    "note": "Two agents (terrain, environment) ran for ~70 minutes and produced real, committed work before the limit stopped everything; the other 20 never started. No critic gate ran, so no module has a score. The environment builder was killed mid-sentence while writing its own 'what is weak' section — the integrator filled that section in from measurement and labelled it as such.",
+    "lesson": "22 concurrent-capable agents at xhigh effort is more than the account budget allows in one run. A re-run has to be smaller and sequential, not the same fan-out again."
   }
 }

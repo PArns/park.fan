@@ -40,9 +40,21 @@ import type { Vec3, WeatherKind } from '../core/types';
  * a taste knob either — the `^1.5` in the in-scattering term stretches blue/green to about 2.2
  * where a real clear sky measures 1.4–1.8.
  */
-const SKY_GAIN = 0.2;
-const SKY_WHITE = 6;
-const SKY_DESATURATE = 0.3;
+const SKY_GAIN = 0.09;
+const SKY_WHITE = 4;
+const SKY_DESATURATE = 0.22;
+/**
+ * The gain is set against the PBR surfaces the sky has to sit behind, and the factor that decides
+ * it is not obvious: Babylon's PBR diffuse carries the Lambert 1/π and `StandardMaterial` — which
+ * is what the unlit dome uses — does not. A directional sun at intensity 2.4 therefore paints a
+ * white PBR surface at 2.4/π ≈ 0.76, not 2.4. At the first gain that looked right in isolation
+ * the horizon read 0.5 against a sunlit plaza at 0.10, so the sky was five times too bright
+ * relative to the park and the auto exposure closed down to compensate — a clear 09:00 that
+ * looked like an overcast one, with the ground and the sky at the same value.
+ *
+ * `haze` and `ground` below are absolute values in the SAME post-gain units, so they move with
+ * this constant; the night terms do not, because they are absolute by construction.
+ */
 
 const RAYLEIGH_ZENITH_LENGTH = 8.4e3;
 const MIE_ZENITH_LENGTH = 1.25e3;
@@ -174,9 +186,9 @@ export function makeSkyState(input: SkyInputs): SkyState {
   // direction" is exactly this split. These are grass radiances in the same post-gain units the
   // sky ends up in, not albedos — everything below is added after the shoulder.
   const ground: Vec3 = [
-    mix(0.0045, 0.082, daylight) * (1 - 0.25 * input.cloud),
-    mix(0.005, 0.094, daylight) * (1 - 0.25 * input.cloud),
-    mix(0.006, 0.058, daylight) * (1 - 0.2 * input.cloud),
+    mix(0.0045, 0.037, daylight) * (1 - 0.25 * input.cloud),
+    mix(0.005, 0.042, daylight) * (1 - 0.25 * input.cloud),
+    mix(0.006, 0.026, daylight) * (1 - 0.2 * input.cloud),
   ];
 
   return {
@@ -258,7 +270,10 @@ export function evalSky(
     const a = state.sunE * num * row.oneMinusFex[i];
     const inscatter = a * Math.sqrt(a);
     const b = state.sunE * num * row.fex[i];
-    const horizonMix = 1 + (Math.sqrt(b) - 1) * state.sunUpMix;
+    // Capped at 5. With the sun on the horizon the Mie lobe drives this term into the hundreds
+    // near the solar disc, and the whole sun side of a sunset came out as one flat white ellipse
+    // with a hard edge where it hit the shoulder's asymptote — brighter than the sun's own disc.
+    const horizonMix = Math.min(5, 1 + (Math.sqrt(b) - 1) * state.sunUpMix);
     const value = (inscatter * horizonMix + 0.1 * row.fex[i]) * 0.04;
     if (i === 0) raw0 = value;
     else if (i === 1) raw1 = value;

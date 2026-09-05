@@ -89,6 +89,8 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
 
   let iblKey = '';
   let moonDay = -1;
+  let lastMinute = env.minute;
+  let lastDay = env.day;
 
   function skyFor(state: EnvironmentState): SkyState {
     const moon = moonFor(state.minute, state.day);
@@ -113,7 +115,16 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
     ].join(',');
   }
 
-  function applyAll(next: EnvironmentState, force: boolean): void {
+  function applyAll(next: EnvironmentState, requested: boolean): void {
+    // A jump of more than a quarter of an hour is a clock control or the screenshot harness, not
+    // the clock ticking, and the dome's chunked refill would spend eight frames still showing the
+    // sky of the old time. At 60 fps that is invisible; in the harness, which renders about one
+    // frame a second under SwiftShader, it is the wrong time of day in the picture.
+    const jumped =
+      next.day !== lastDay || Math.abs(shortestMinuteGap(next.minute, lastMinute)) > 15;
+    const force = requested || jumped;
+    lastMinute = next.minute;
+    lastDay = next.day;
     env = next;
     sky = skyFor(next);
     dome.setState(sky, force);
@@ -125,10 +136,13 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
     }
     lighting.apply(next, sky, ibl.meanLuminance(), force);
     surfaces.apply(next.wetness, next.season, force);
+    // `precipitation`, `intensity` and `windMs` are core's fields now — they were this module's
+    // own api until the request in docs/game/requests/environment.md landed — so the particle
+    // layer reads exactly the state every other module reads.
     precipitation.set(
-      view.weather === 'rain' || view.weather === 'storm' ? (view.snowing ? 'snow' : 'rain') : null,
-      view.intensity || (view.weather === 'storm' ? 0.85 : 0.5),
-      view.windMs
+      next.precipitation === 'none' ? null : next.precipitation,
+      next.intensity,
+      next.windMs
     );
 
     const moon = moonFor(next.minute, next.day);
@@ -264,6 +278,12 @@ function moonFor(minute: number, day: number): MoonView {
     illuminated: (1 - Math.cos(phaseAngle)) / 2,
     waxing: age < SYNODIC_DAYS / 2,
   };
+}
+
+/** Signed minutes between two park times, the short way round midnight. */
+function shortestMinuteGap(a: number, b: number): number {
+  const wrapped = (((a - b) % 1440) + 1440) % 1440;
+  return wrapped > 720 ? wrapped - 1440 : wrapped;
 }
 
 /** Re-exported so other modules can name the type without importing `sky-model` themselves. */
