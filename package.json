@@ -93,6 +93,10 @@
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {
+    "@babylonjs/core": "9.25.0",
+    "@babylonjs/gui": "9.25.0",
+    "@babylonjs/loaders": "9.25.0",
+    "@babylonjs/materials": "9.25.0",
     "@octokit/rest": "^22.0.1",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-dialog": "^1.1.23",
