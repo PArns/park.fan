@@ -4340,6 +4340,73 @@ if (reachable) {
   const grids = await cols.locator(`${SHEET} [data-planner-grid]`).count();
   check('jede Spalte zeichnet ihre eigene Achse', grids === 2, `${grids} Achsen`);
 
+  // The two axes start on the same pixel, which is what the subgrid is for.
+  // Before it, each column stacked its own head and its own context band and the
+  // band's height is DATA — Europa-Park on a Sunday in the holidays carries a
+  // "Ferien nebenan" chip that Phantasialand does not — so the right column's
+  // 09:00 sat 28 px below the left column's 09:00 and every rule after it was
+  // out of step.
+  const gridTops = await cols
+    .locator(`${SHEET} [data-planner-grid]`)
+    .evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().top)));
+  check(
+    'und beide Achsen fangen auf demselben Pixel an',
+    gridTops.length === 2 && Math.abs(gridTops[0] - gridTops[1]) <= 1,
+    gridTops.join(' / ')
+  );
+
+  // ── The foot belongs to the column, not to the panel ────────────────────────
+  // Reported as "die eigener Block Buttons sowie optimieren gehen nur auf die
+  // linke Spalte", and it was worse than that: the row said nothing about which
+  // day it meant, so the headliner band listed Phantasialand's missing rides
+  // under a panel whose right half was Europa-Park.
+  const optimizeBars = await cols.locator(`${SHEET} [data-planner-optimize]`).count();
+  check('jede Spalte hat ihre eigene Optimier-Leiste', optimizeBars === 2, `${optimizeBars}`);
+  const customButtons = await cols.locator(`${SHEET} [data-planner-add-custom]`).count();
+  check('und ihren eigenen Eigener-Block-Knopf', customButtons === 2, `${customButtons}`);
+
+  // The headliner bands name DIFFERENT parks' rides, which is the assertion that
+  // a second copy of the same component is not the same claim twice.
+  const bands = await cols
+    .locator(`${SHEET} [data-planner-headliner-hint]`)
+    .evaluateAll((els) => els.map((el) => (el.textContent ?? '').replace(/\s+/g, ' ').trim()));
+  check(
+    'und jede Bande nennt die Bahnen ihres eigenen Parks',
+    bands.length === 2 && bands[0] !== bands[1],
+    bands.map((b) => b.slice(0, 40)).join('  |  ')
+  );
+
+  // The summary counts the COLUMN's day. The second column here is the same
+  // park on the next date and holds nothing, so exactly one row is drawn — and
+  // it is the primary's. Panel-level, that row said "3 Bahnen" under both
+  // halves; the assertion is that it is now inside the column it counts.
+  const summaryOwners = await cols.locator(`${SHEET} [data-planner-summary]`).evaluateAll((els) =>
+    els.map((el) => ({
+      column: el.closest('[data-planner-column]')?.getAttribute('data-planner-column') ?? null,
+      text: (el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+    }))
+  );
+  check(
+    'die Zusammenfassung sitzt in der Spalte, die sie zählt',
+    summaryOwners.length === 1 && summaryOwners[0].column === `${PARK.slug}:${DATE}`,
+    summaryOwners.map((row) => `${row.column} → ${row.text}`).join('  |  ')
+  );
+  check(
+    'und die leere zweite Spalte zählt gar nichts',
+    (await cols
+      .locator(
+        `${SHEET} [data-planner-column]:not([data-planner-column-primary]) [data-planner-summary]`
+      )
+      .count()) === 0
+  );
+
+  // What stays panel-level has exactly one of: the push toggle subscribes for
+  // the trip rather than for a day, and the drag hint is about the gesture.
+  check(
+    'der Push-Schalter bleibt einmal im Panel',
+    (await cols.locator(`${SHEET} [data-planner-push]`).count()) <= 1
+  );
+
   // Only the second column may be closed. The first is the plan's active day and
   // closing it would leave the panel with nothing to be about.
   check(
@@ -4458,6 +4525,57 @@ if (reachable) {
     'das Telefon zeigt genau eine Spalte und keinen Schalter',
     (await phone.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
       (await phone.locator(`${SHEET} [data-planner-second-column]`).count()) === 0
+  );
+
+  // The foot is drawn ONCE, and on a phone it is the panel that draws it — the
+  // column's box is 295 px of a 716 px sheet there and this row measures 195, so
+  // inside the column it would leave the axis 100 px. Two copies in the DOM
+  // would also be two of every selector below.
+  check(
+    'der Fuß wird auf dem Telefon genau einmal gezeichnet',
+    (await phone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
+      (await phone.locator(`${SHEET} [data-planner-summary]`).count()) === 1
+  );
+
+  // Nothing in the sheet paints over anything else. It did: with the foot inside
+  // the column, the column's content ran 98 px past its box and the headliner
+  // band and the totals were drawn across the ride search under them.
+  const stack = await phone.locator(SHEET).evaluate((sheet) =>
+    [...sheet.children]
+      .map((el) => {
+        const box = el.getBoundingClientRect();
+        return {
+          cls: el.className.slice(0, 40),
+          top: Math.round(box.top),
+          bottom: Math.round(box.bottom),
+          // `display: contents` and hidden rows have no box and cannot overlap.
+          real: box.height > 0 && getComputedStyle(el).position !== 'absolute',
+        };
+      })
+      .filter((row) => row.real)
+  );
+  const overlaps = stack
+    .slice(1)
+    .map((row, i) => ({ a: stack[i], b: row }))
+    .filter((pair) => pair.b.top < pair.a.bottom - 1);
+  check(
+    'und keine Zeile des Telefon-Panels malt über die nächste',
+    overlaps.length === 0,
+    overlaps.map((pair) => `${pair.a.cls} ${pair.a.bottom} > ${pair.b.top}`).join(' | ') ||
+      stack.map((row) => `${row.top}-${row.bottom}`).join(' ')
+  );
+
+  // …and the column itself fits its box, which is the same defect one level in:
+  // a column whose content is taller than its grid row overflows into the row
+  // below rather than shrinking its axis.
+  const colFit = await phone
+    .locator(`${SHEET} [data-planner-column]`)
+    .first()
+    .evaluate((el) => ({ h: Math.round(el.getBoundingClientRect().height), sh: el.scrollHeight }));
+  check(
+    'die Spalte läuft nicht über ihren Kasten hinaus',
+    colFit.sh <= colFit.h + 1,
+    `${colFit.sh} px Inhalt in ${colFit.h} px`
   );
 
   // The column head has to fit a 390 px sheet: park name, day picker, nothing

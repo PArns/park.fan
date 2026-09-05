@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown, Columns2, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import type { PlannerDayState } from './planner-context-band';
@@ -11,16 +11,14 @@ import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { PlannerInParkCta } from './planner-in-park-cta';
-import { PlannerMissingHeadliners } from './planner-missing-headliners';
-import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerPanelPhoto } from './planner-panel-photo';
+import { PlannerDayFoot } from './planner-day-foot';
 import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
-import { occupiedMinutes, totalsFor } from '@/lib/planner/estimate';
+import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useRouter } from '@/i18n/navigation';
-import { formatShortDuration } from '@/lib/utils/duration';
 import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
 import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
@@ -56,7 +54,6 @@ const SHEET_DISMISS_PX = 90;
 
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
-  const locale = useLocale();
   // Only what the PANEL itself still uses. Everything that edits a day — the
   // moves, the ticks, the removals, the party prefs — moved into
   // `PlannerDayColumn` with the grid it acts on, because with two columns open
@@ -162,11 +159,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         ? 'ready'
         : 'empty';
 
-  const totals = totalsFor(day ?? null, activeEntries);
-
-  // The axis, or null when the park's hours are unknown — in which case there is
-  // no honest grid to draw and the flat list is the answer.
-  const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   /**
    * How much of the day each block occupies, which two things need: the axis
    * has to be tall enough to contain them, and a new block has to be filed
@@ -660,22 +652,42 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 under the sheet header with nothing above it. */}
             {/* The columns. One is the plan's active day; a second is the day
                 beside it, and both draw the same component so the chrome exists
-                once in the code. `flex-1` with `min-w-0` on each, so two columns
-                halve the canvas rather than overflowing it, and a divider
-                between them because two grids of hour rules need an edge to be
-                told apart by.
+                once in the code.
+
+                A GRID rather than a flex row, and that is the whole of "make
+                the two columns look like a pair". Side by side as flex children
+                each column stacked its own head, its own context band and its
+                own axis — and the band's height is DATA: a park whose day
+                carries a school-holiday chip has a taller one, so the right
+                column's 09:00 sat 28 px below the left column's 09:00 and every
+                hour rule after it was out of step. Three rows here — head, band,
+                body — which each column takes as `grid-rows-subgrid`, so the two
+                bands are as tall as the taller one and the axes start on the
+                same pixel. `minmax(0,1fr)` because a grid track's default `auto`
+                minimum is its content, which a long ride name would push past
+                the panel.
+
+                A divider on the second column, because two grids of hour rules
+                need an edge to be told apart by.
 
                 Never on a phone: the sheet is the width of the screen there, and
                 two columns of a 390 px one would be 195 px each against the
                 318 px a single honest column needs. `isPhone` rather than a CSS
                 breakpoint, because a second column also costs a `/plan/day`
                 query and a hidden one must not be paid for. */}
-            <div className="flex min-h-0 flex-1">
+            <div
+              className={cn(
+                'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
+                secondColumn ? 'grid-cols-2' : 'grid-cols-1'
+              )}
+            >
               <PlannerDayColumn
                 parkSlug={activeParkSlug}
                 date={activeDate}
                 primary
                 open={open}
+                withFoot={!isPhone}
+                className="row-span-3 grid grid-rows-subgrid"
                 onPickPark={(slug) => setActive(slug, activeDate)}
                 onPickDate={(date) => setActive(activeParkSlug, date)}
                 onNewPark={() => {
@@ -699,24 +711,29 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                    because the column is already correct the moment it is there
                    and the animation is only saying where it came from.
                    `motion-reduce:animate-none` for a reader who has asked for
-                   none of this. */
-                <div className="border-border/60 animate-in fade-in slide-in-from-right-4 flex min-w-0 flex-1 border-l duration-200 ease-out motion-reduce:animate-none">
-                  <PlannerDayColumn
-                    parkSlug={secondColumn.parkSlug}
-                    date={secondColumn.date}
-                    primary={false}
-                    open={open}
-                    onPickPark={(slug) =>
-                      plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
-                    }
-                    onPickDate={(date) => plannerSecondColumn.setDate(date)}
-                    onNewPark={() => {
-                      setWizardPark(null);
-                      setWizardOpen(true);
-                    }}
-                    onClose={() => plannerSecondColumn.close()}
-                  />
-                </div>
+                   none of this.
+
+                   On the column itself rather than on a wrapper around it: a
+                   `subgrid` child has to be a DIRECT child of the grid that owns
+                   the rows, and a div in between would have taken the three rows
+                   for itself and handed the column back one. */
+                <PlannerDayColumn
+                  parkSlug={secondColumn.parkSlug}
+                  date={secondColumn.date}
+                  primary={false}
+                  open={open}
+                  withFoot={!isPhone}
+                  className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
+                  onPickPark={(slug) =>
+                    plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
+                  }
+                  onPickDate={(date) => plannerSecondColumn.setDate(date)}
+                  onNewPark={() => {
+                    setWizardPark(null);
+                    setWizardOpen(true);
+                  }}
+                  onClose={() => plannerSecondColumn.close()}
+                />
               )}
             </div>
 
@@ -762,57 +779,36 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
             />
 
-            {/* Letting the day sort itself, above the band that names what is
-                missing from it — the headliner button is the same question one
-                gesture further on ("and put them in"), so the two belong
-                together and in that order. It follows the PRIMARY column, like
-                everything else in the panel's foot. */}
-            {park && activeDate && (
-              <PlannerOptimizeActions
-                parkSlug={park.slug}
-                parkName={park.name}
-                geo={park.geo}
-                date={activeDate}
-                day={day ?? null}
-                grid={grid}
-                timezone={day?.timezone ?? park.timezone}
-                prefs={prefs}
-              />
-            )}
+            {/* The active day's foot, PHONE ONLY — the desktop's copy is drawn
+                by each column, one set per column, because every control in
+                here names a park and a date and there are two of each once a
+                second column is open. A phone never has a second column, and
+                the arithmetic that keeps it here is in `PlannerDayFoot`: inside
+                the column it would leave the axis 119 px of a 716 px sheet.
 
-            {/* Which of the park's big rides are still missing from the day.
-                Above the free-block row and outside the `sm:hidden` search,
-                because it is the one thing in the panel's foot that both
-                pointers need: the phone adds by tapping a pill, the desktop
-                drags one onto an hour. */}
-            {park && activeDate && (
-              <PlannerMissingHeadliners
-                parkSlug={park.slug}
-                parkName={park.name}
-                geo={park.geo}
-                date={activeDate}
-                day={day ?? null}
-                timezone={timezone}
-                prefs={prefs}
-              />
-            )}
-
-            {/* A free block — a lunch break, a show, a meeting point — on its
-                own row, DESKTOP only. It used to sit inside the ride search,
-                which is now the phone's surface alone, and it is the one thing
-                in there that is not a ride: the catalogue has no answer for
-                "and then we eat". The phone keeps its copy inside the search,
-                where the same question is being asked. */}
-            {park && activeDate && (
-              <button
-                type="button"
-                onClick={addFreeBlock}
-                data-planner-add-custom=""
-                className="text-muted-foreground hover:text-foreground hover:bg-accent/50 border-border/60 hidden shrink-0 items-center gap-2 border-t px-3 py-2 text-left text-xs transition-colors sm:flex"
-              >
-                <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
-                <span className="truncate">{t('custom.add')}</span>
-              </button>
+                `isPhone` rather than the `sm:hidden` the ride search below
+                uses, and the difference is real: that class exists because
+                `useMediaQuery` answers `false` on its server snapshot, and this
+                panel is never server-rendered — it is mounted client-side the
+                first time somebody asks for it, so the hook is right on its
+                first render here. Two copies in the DOM would be two of every
+                `data-planner-optimize` for a selector to pick the wrong one
+                of. */}
+            {isPhone && park && activeDate && (
+              <>
+                <PlannerDayFoot
+                  parkSlug={park.slug}
+                  parkName={park.name}
+                  geo={park.geo}
+                  date={activeDate}
+                  day={day ?? null}
+                  grid={grid}
+                  timezone={resolveTimeZone(day?.timezone ?? park.timezone)}
+                  prefs={prefs}
+                  entries={activeEntries}
+                  onAddFreeBlock={addFreeBlock}
+                />
+              </>
             )}
 
             {/* Above the push toggle and below the search, because it is an
@@ -829,40 +825,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             {activeEntries.length > 0 && (
               <div className="border-border/60 shrink-0 border-t">
                 <PlannerPushToggle />
-              </div>
-            )}
-
-            {activeEntries.length > 0 && (
-              <div className="border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs">
-                <span>
-                  {t('summary.rides', { count: activeEntries.length - totals.custom })}
-                  {totals.custom > 0 && ` · ${t('summary.blocks', { count: totals.custom })}`}
-                </span>
-                <span className="flex items-baseline gap-3">
-                  {totals.done > 0 && (
-                    <span>
-                      {t('summary.done', { done: totals.done, total: activeEntries.length })}
-                    </span>
-                  )}
-                  {/* Expected and actual are never added together: one is a
-                  prediction and the other a measurement, and a single figure
-                  mixing them moves for two reasons at once. */}
-                  {totals.counted > 0 && (
-                    <span className="flex items-baseline gap-1" title={t('summary.waiting')}>
-                      {/* Named, not just hinted. The `title` said what this
-                          figure is and a phone has no hover, so on the surface
-                          where this planner is actually used the row ended in a
-                          duration with nothing saying which duration. */}
-                      <span>{t('summary.waitingLabel')}</span>
-                      {/* The site's own duration format, not a second one invented
-                      here: `formatShortDuration` is what the weather warnings
-                      already print and it knows all six locales' unit labels. */}
-                      <span className="text-foreground font-mono tabular-nums">
-                        {formatShortDuration(totals.expectedMinutes, locale)}
-                      </span>
-                    </span>
-                  )}
-                </span>
               </div>
             )}
           </>
