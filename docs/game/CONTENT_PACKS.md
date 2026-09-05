@@ -68,3 +68,45 @@ theme(key): Theme | undefined
 
 The registry is created once per thread; the worker registers the same manifests from the `init`
 message so both sides answer the same question the same way.
+
+## A guest need is content
+
+The brief grades extensibility on four things by name — a new coaster type, a new shop, a new
+scenery theme, **and a new guest need** — and the last one was the one this pack format could not
+do. `shopSchema.need` was a closed `z.enum(['hunger', 'thirst', 'toilet', 'energy', 'happiness',
+'cash', 'none'])`, so adding a need meant editing `lib/game/core/pack-schema.ts`, which is core.
+The gate failed and nothing said so, because a closed enum reads as a design decision rather than
+as a missing feature.
+
+A pack declares needs now:
+
+```json
+"needs": [
+  {
+    "id": "cooling",
+    "name": { "en": "Cooling off", "de": "Abkühlung" },
+    "decayPerHour": 18,
+    "moodWeight": 0.9,
+    "urgentAt": 175,
+    "criticalAt": 235,
+    "icon": "thermometer-sun",
+    "weather": "warm",
+    "thoughts": [{ "en": "It is far too warm for this.", "de": "Mir ist viel zu warm." }]
+  }
+]
+```
+
+and a shop answers one by id (`"need": "cooling"`, `"needRelief": 220`). `neon-lagoon` ships
+exactly that pair — the need and the misting station that relieves it — as the proof, and neither
+required a line of TypeScript.
+
+Two consequences are load-bearing:
+
+- **The reference is checked at registration**, not by the schema. Widening the enum to a string
+  moved a typo from a validation error to nothing at all, so `Registry.registerPack` cross-checks
+  every shop's `need` against the needs any registered pack has declared and throws with the pack
+  and shop that made the mistake. `pnpm test:game-registry` asserts both halves: a pack-declared
+  need works, and `"shaed"` is refused by name.
+- **`needOrder()` is registration order, never sorted.** The guest store is struct-of-arrays and
+  indexes needs by column position, so a sort would silently re-map every need in a saved world
+  the first time a pack was added. Appending cannot.

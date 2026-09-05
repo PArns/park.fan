@@ -1,31 +1,169 @@
 {
   "id": "core-classic",
   "version": 1,
-  "name": { "en": "Classic", "de": "Klassik" },
+  "name": {
+    "en": "Classic",
+    "de": "Klassik"
+  },
   "requires": [],
+  "needs": [
+    {
+      "id": "hunger",
+      "name": {
+        "en": "Hunger",
+        "de": "Hunger"
+      },
+      "decayPerHour": 26,
+      "moodWeight": 1.2,
+      "urgentAt": 170,
+      "criticalAt": 225,
+      "icon": "utensils",
+      "weather": "none",
+      "thoughts": [
+        {
+          "en": "I could eat.",
+          "de": "Ich h\u00e4tte Hunger."
+        },
+        {
+          "en": "Something warm would be good now.",
+          "de": "Etwas Warmes w\u00e4re jetzt gut."
+        }
+      ]
+    },
+    {
+      "id": "thirst",
+      "name": {
+        "en": "Thirst",
+        "de": "Durst"
+      },
+      "decayPerHour": 34,
+      "moodWeight": 1.1,
+      "urgentAt": 165,
+      "criticalAt": 220,
+      "icon": "cup-soda",
+      "weather": "warm",
+      "thoughts": [
+        {
+          "en": "I need a drink.",
+          "de": "Ich br\u00e4uchte was zu trinken."
+        }
+      ]
+    },
+    {
+      "id": "toilet",
+      "name": {
+        "en": "Toilet",
+        "de": "Toilette"
+      },
+      "decayPerHour": 21,
+      "moodWeight": 1.6,
+      "urgentAt": 185,
+      "criticalAt": 235,
+      "icon": "door-open",
+      "weather": "none",
+      "thoughts": [
+        {
+          "en": "Where are the toilets?",
+          "de": "Wo sind hier die Toiletten?"
+        }
+      ]
+    },
+    {
+      "id": "energy",
+      "name": {
+        "en": "Tiredness",
+        "de": "M\u00fcdigkeit"
+      },
+      "decayPerHour": 14,
+      "moodWeight": 1.0,
+      "urgentAt": 190,
+      "criticalAt": 240,
+      "icon": "battery-low",
+      "weather": "none",
+      "thoughts": [
+        {
+          "en": "My feet hurt.",
+          "de": "Mir tun die F\u00fc\u00dfe weh."
+        }
+      ]
+    },
+    {
+      "id": "happiness",
+      "name": {
+        "en": "Boredom",
+        "de": "Langeweile"
+      },
+      "decayPerHour": 30,
+      "moodWeight": 1.4,
+      "urgentAt": 190,
+      "criticalAt": 240,
+      "icon": "smile",
+      "weather": "none",
+      "thoughts": [
+        {
+          "en": "I want to ride something.",
+          "de": "Ich will endlich fahren."
+        }
+      ]
+    },
+    {
+      "id": "cash",
+      "name": {
+        "en": "Out of money",
+        "de": "Kein Bargeld"
+      },
+      "decayPerHour": 6,
+      "moodWeight": 0.7,
+      "urgentAt": 200,
+      "criticalAt": 250,
+      "icon": "banknote",
+      "weather": "none",
+      "thoughts": [
+        {
+          "en": "I am nearly out of cash.",
+          "de": "Mein Bargeld geht zur Neige."
+        }
+      ]
+    }
+  ],
   "themes": [
     {
       "id": "classic-brick",
-      "name": { "en": "Old Town", "de": "Altstadt" },
+      "name": {
+        "en": "Old Town",
+        "de": "Altstadt"
+      },
       "palette": {
         "primary": "#b04a3c",
         "secondary": "#e8dcc4",
         "trim": "#2f3a44",
         "accent": "#d9a441"
       },
-      "materials": ["brick-red", "plaster-cream", "slate-grey", "timber-dark"],
+      "materials": [
+        "brick-red",
+        "plaster-cream",
+        "slate-grey",
+        "timber-dark"
+      ],
       "ambience": "ambience-day"
     },
     {
       "id": "garden",
-      "name": { "en": "Garden", "de": "Garten" },
+      "name": {
+        "en": "Garden",
+        "de": "Garten"
+      },
       "palette": {
         "primary": "#3f7d4e",
         "secondary": "#f2eee4",
         "trim": "#5a4634",
         "accent": "#e2b23c"
       },
-      "materials": ["plaster-cream", "timber-dark", "cobble-grey"]
+      "materials": [
+        "plaster-cream",
+        "timber-dark",
+        "cobble-grey"
+      ]
     }
   ],
   "materials": [
@@ -113,9 +251,15 @@
   "scenery": [
     {
       "id": "lamp-victorian",
-      "name": { "en": "Victorian lamp", "de": "Gaslaterne" },
+      "name": {
+        "en": "Victorian lamp",
+        "de": "Gaslaterne"
+      },
       "category": "path-furniture",
-      "footprint": [0.4, 0.4],
+      "footprint": [
+        0.4,
+        0.4
+      ],
       "height": 3.2,
       "cost": 12000,
       "procedural": "lamp-victorian",
@@ -132,9 +276,15 @@
     },
     {
       "id": "bench-wood",
-      "name": { "en": "Park bench", "de": "Parkbank" },
+      "name": {
+        "en": "Park bench",
+        "de": "Parkbank"
+      },
       "category": "path-furniture",
-      "footprint": [1.8, 0.6],
+      "footprint": [
+        1.8,
+        0.6
+      ],
       "height": 0.9,
       "cost": 3500,
       "mesh": "kenney/bench.glb",
@@ -143,9 +293,15 @@
     },
     {
       "id": "bin-green",
-      "name": { "en": "Litter bin", "de": "Mülleimer" },
+      "name": {
+        "en": "Litter bin",
+        "de": "M\u00fclleimer"
+      },
       "category": "path-furniture",
-      "footprint": [0.5, 0.5],
+      "footprint": [
+        0.5,
+        0.5
+      ],
       "height": 1.0,
       "cost": 1500,
       "procedural": "bin",
@@ -153,18 +309,30 @@
     },
     {
       "id": "planter-round",
-      "name": { "en": "Round planter", "de": "Rundes Pflanzbeet" },
+      "name": {
+        "en": "Round planter",
+        "de": "Rundes Pflanzbeet"
+      },
       "category": "garden",
-      "footprint": [2.4, 2.4],
+      "footprint": [
+        2.4,
+        2.4
+      ],
       "height": 0.6,
       "cost": 6000,
       "procedural": "planter-round"
     },
     {
       "id": "fountain-tier",
-      "name": { "en": "Tiered fountain", "de": "Etagenbrunnen" },
+      "name": {
+        "en": "Tiered fountain",
+        "de": "Etagenbrunnen"
+      },
       "category": "garden",
-      "footprint": [6, 6],
+      "footprint": [
+        6,
+        6
+      ],
       "height": 4.2,
       "cost": 48000,
       "procedural": "fountain-tier",
@@ -180,39 +348,69 @@
     },
     {
       "id": "sign-entrance",
-      "name": { "en": "Entrance arch", "de": "Eingangsbogen" },
+      "name": {
+        "en": "Entrance arch",
+        "de": "Eingangsbogen"
+      },
       "category": "signage",
-      "footprint": [12, 2],
+      "footprint": [
+        12,
+        2
+      ],
       "height": 7.5,
       "cost": 120000,
       "procedural": "entrance-arch",
       "night": {
-        "light": { "color": "#4fb3ff", "intensity": 12, "height": 6, "range": 18, "mode": "steady" }
+        "light": {
+          "color": "#4fb3ff",
+          "intensity": 12,
+          "height": 6,
+          "range": 18,
+          "mode": "steady"
+        }
       }
     },
     {
       "id": "flag-parkfan",
-      "name": { "en": "park.fan flag", "de": "park.fan-Fahne" },
+      "name": {
+        "en": "park.fan flag",
+        "de": "park.fan-Fahne"
+      },
       "category": "signage",
-      "footprint": [0.3, 0.3],
+      "footprint": [
+        0.3,
+        0.3
+      ],
       "height": 6,
       "cost": 2500,
       "procedural": "flag"
     },
     {
       "id": "fence-iron",
-      "name": { "en": "Iron fence", "de": "Eisenzaun" },
+      "name": {
+        "en": "Iron fence",
+        "de": "Eisenzaun"
+      },
       "category": "fence",
-      "footprint": [2, 0.1],
+      "footprint": [
+        2,
+        0.1
+      ],
       "height": 1.2,
       "cost": 900,
       "procedural": "fence-iron"
     },
     {
       "id": "hedge-box",
-      "name": { "en": "Box hedge", "de": "Buchsbaumhecke" },
+      "name": {
+        "en": "Box hedge",
+        "de": "Buchsbaumhecke"
+      },
       "category": "garden",
-      "footprint": [2, 0.8],
+      "footprint": [
+        2,
+        0.8
+      ],
       "height": 1.0,
       "cost": 1800,
       "procedural": "hedge"
@@ -221,48 +419,83 @@
   "foliage": [
     {
       "id": "oak",
-      "name": { "en": "Oak", "de": "Eiche" },
+      "name": {
+        "en": "Oak",
+        "de": "Eiche"
+      },
       "kind": "broadleaf",
       "procedural": "tree-broadleaf",
       "mesh": "quaternius/trees/oak.glb",
-      "lod": [40, 120, 300],
+      "lod": [
+        40,
+        120,
+        300
+      ],
       "height": 14,
       "cost": 4000
     },
     {
       "id": "linden",
-      "name": { "en": "Linden", "de": "Linde" },
+      "name": {
+        "en": "Linden",
+        "de": "Linde"
+      },
       "kind": "broadleaf",
       "procedural": "tree-broadleaf",
-      "lod": [40, 120, 300],
+      "lod": [
+        40,
+        120,
+        300
+      ],
       "height": 11,
       "cost": 3500
     },
     {
       "id": "spruce",
-      "name": { "en": "Spruce", "de": "Fichte" },
+      "name": {
+        "en": "Spruce",
+        "de": "Fichte"
+      },
       "kind": "conifer",
       "procedural": "tree-conifer",
       "mesh": "quaternius/trees/pine.glb",
-      "lod": [40, 120, 300],
+      "lod": [
+        40,
+        120,
+        300
+      ],
       "height": 16,
       "cost": 3800
     },
     {
       "id": "shrub-round",
-      "name": { "en": "Shrub", "de": "Strauch" },
+      "name": {
+        "en": "Shrub",
+        "de": "Strauch"
+      },
       "kind": "shrub",
       "procedural": "shrub",
-      "lod": [25, 70, 160],
+      "lod": [
+        25,
+        70,
+        160
+      ],
       "height": 1.6,
       "cost": 600
     },
     {
       "id": "flowerbed",
-      "name": { "en": "Flower bed", "de": "Blumenbeet" },
+      "name": {
+        "en": "Flower bed",
+        "de": "Blumenbeet"
+      },
       "kind": "flower",
       "procedural": "flowers",
-      "lod": [20, 50, 100],
+      "lod": [
+        20,
+        50,
+        100
+      ],
       "height": 0.4,
       "cost": 400
     }
@@ -271,54 +504,84 @@
     {
       "id": "burger",
       "kind": "food",
-      "name": { "en": "Burger stand", "de": "Burgerstand" },
+      "name": {
+        "en": "Burger stand",
+        "de": "Burgerstand"
+      },
       "need": "hunger",
       "price": 650,
       "cost": 40000,
       "upkeep": 300,
-      "footprint": [4, 4],
+      "footprint": [
+        4,
+        4
+      ],
       "throughput": 4,
       "power": 6,
       "procedural": "kiosk-a",
-      "night": { "signage": "#ffb347" }
+      "night": {
+        "signage": "#ffb347"
+      }
     },
     {
       "id": "ice-cream",
       "kind": "food",
-      "name": { "en": "Ice cream", "de": "Eisdiele" },
+      "name": {
+        "en": "Ice cream",
+        "de": "Eisdiele"
+      },
       "need": "hunger",
       "price": 350,
       "cost": 30000,
       "upkeep": 220,
-      "footprint": [3, 3],
+      "footprint": [
+        3,
+        3
+      ],
       "throughput": 6,
       "power": 4,
       "procedural": "kiosk-round",
-      "night": { "signage": "#ff9ecb" }
+      "night": {
+        "signage": "#ff9ecb"
+      }
     },
     {
       "id": "lemonade",
       "kind": "drink",
-      "name": { "en": "Lemonade", "de": "Limonade" },
+      "name": {
+        "en": "Lemonade",
+        "de": "Limonade"
+      },
       "need": "thirst",
       "price": 300,
       "cost": 22000,
       "upkeep": 150,
-      "footprint": [3, 3],
+      "footprint": [
+        3,
+        3
+      ],
       "throughput": 8,
       "power": 3,
       "procedural": "kiosk-round",
-      "night": { "signage": "#fff176" }
+      "night": {
+        "signage": "#fff176"
+      }
     },
     {
       "id": "toilets",
       "kind": "toilet",
-      "name": { "en": "Toilets", "de": "Toiletten" },
+      "name": {
+        "en": "Toilets",
+        "de": "Toiletten"
+      },
       "need": "toilet",
       "price": 50,
       "cost": 35000,
       "upkeep": 200,
-      "footprint": [6, 4],
+      "footprint": [
+        6,
+        4
+      ],
       "throughput": 10,
       "power": 2,
       "water": 2,
@@ -327,12 +590,18 @@
     {
       "id": "first-aid",
       "kind": "first-aid",
-      "name": { "en": "First aid", "de": "Sanitäter" },
+      "name": {
+        "en": "First aid",
+        "de": "Sanit\u00e4ter"
+      },
       "need": "energy",
       "price": 0,
       "cost": 28000,
       "upkeep": 400,
-      "footprint": [4, 4],
+      "footprint": [
+        4,
+        4
+      ],
       "throughput": 2,
       "power": 2,
       "procedural": "kiosk-a"
@@ -340,12 +609,18 @@
     {
       "id": "atm",
       "kind": "atm",
-      "name": { "en": "Cash machine", "de": "Geldautomat" },
+      "name": {
+        "en": "Cash machine",
+        "de": "Geldautomat"
+      },
       "need": "cash",
       "price": 0,
       "cost": 15000,
       "upkeep": 50,
-      "footprint": [1, 1],
+      "footprint": [
+        1,
+        1
+      ],
       "throughput": 3,
       "power": 1,
       "procedural": "atm"
@@ -353,26 +628,40 @@
     {
       "id": "souvenirs",
       "kind": "souvenir",
-      "name": { "en": "Souvenir shop", "de": "Souvenirladen" },
+      "name": {
+        "en": "Souvenir shop",
+        "de": "Souvenirladen"
+      },
       "need": "happiness",
       "price": 1500,
       "cost": 60000,
       "upkeep": 350,
-      "footprint": [6, 5],
+      "footprint": [
+        6,
+        5
+      ],
       "throughput": 3,
       "power": 5,
       "procedural": "shop-b",
-      "night": { "signage": "#4fb3ff" }
+      "night": {
+        "signage": "#4fb3ff"
+      }
     },
     {
       "id": "info",
       "kind": "info",
-      "name": { "en": "Information", "de": "Information" },
+      "name": {
+        "en": "Information",
+        "de": "Information"
+      },
       "need": "none",
       "price": 0,
       "cost": 12000,
       "upkeep": 100,
-      "footprint": [3, 3],
+      "footprint": [
+        3,
+        3
+      ],
       "throughput": 4,
       "power": 1,
       "procedural": "kiosk-round"
@@ -382,7 +671,10 @@
     {
       "id": "carousel",
       "kind": "flat",
-      "name": { "en": "Carousel", "de": "Karussell" },
+      "name": {
+        "en": "Carousel",
+        "de": "Karussell"
+      },
       "rig": "rig-carousel",
       "capacity": 24,
       "cycleMinutes": 3,
@@ -391,7 +683,10 @@
       "nausea": 0.6,
       "cost": 18000000,
       "upkeep": 800,
-      "footprint": [14, 14],
+      "footprint": [
+        14,
+        14
+      ],
       "power": 40,
       "procedural": "carousel",
       "night": {
@@ -401,14 +696,21 @@
           "height": 5,
           "range": 18,
           "mode": "chase",
-          "colors": ["#ffe1a8", "#ff9e7a", "#ffd166"]
+          "colors": [
+            "#ffe1a8",
+            "#ff9e7a",
+            "#ffd166"
+          ]
         }
       }
     },
     {
       "id": "ferris-wheel",
       "kind": "flat",
-      "name": { "en": "Ferris wheel", "de": "Riesenrad" },
+      "name": {
+        "en": "Ferris wheel",
+        "de": "Riesenrad"
+      },
       "rig": "rig-ferris",
       "capacity": 48,
       "cycleMinutes": 6,
@@ -417,7 +719,10 @@
       "nausea": 0.4,
       "cost": 65000000,
       "upkeep": 2200,
-      "footprint": [12, 30],
+      "footprint": [
+        12,
+        30
+      ],
       "power": 90,
       "procedural": "ferris-wheel",
       "night": {
@@ -427,14 +732,22 @@
           "height": 20,
           "range": 40,
           "mode": "cycle",
-          "colors": ["#4fb3ff", "#ff5fa2", "#ffd166", "#6bf0a8"]
+          "colors": [
+            "#4fb3ff",
+            "#ff5fa2",
+            "#ffd166",
+            "#6bf0a8"
+          ]
         }
       }
     },
     {
       "id": "swing-ride",
       "kind": "flat",
-      "name": { "en": "Chair swing", "de": "Kettenkarussell" },
+      "name": {
+        "en": "Chair swing",
+        "de": "Kettenkarussell"
+      },
       "rig": "rig-swing",
       "capacity": 32,
       "cycleMinutes": 2.5,
@@ -443,7 +756,10 @@
       "nausea": 2.2,
       "cost": 32000000,
       "upkeep": 1400,
-      "footprint": [22, 22],
+      "footprint": [
+        22,
+        22
+      ],
       "power": 70,
       "minHeightCm": 120,
       "procedural": "swing-ride"
@@ -451,7 +767,10 @@
     {
       "id": "top-spin",
       "kind": "flat",
-      "name": { "en": "Top spin", "de": "Top Spin" },
+      "name": {
+        "en": "Top spin",
+        "de": "Top Spin"
+      },
       "rig": "rig-topspin",
       "capacity": 20,
       "cycleMinutes": 2,
@@ -460,7 +779,10 @@
       "nausea": 6.5,
       "cost": 48000000,
       "upkeep": 2600,
-      "footprint": [16, 12],
+      "footprint": [
+        16,
+        12
+      ],
       "power": 160,
       "minHeightCm": 140,
       "procedural": "top-spin"
@@ -468,7 +790,10 @@
     {
       "id": "wooden-classic",
       "kind": "coaster",
-      "name": { "en": "Wooden coaster", "de": "Holzachterbahn" },
+      "name": {
+        "en": "Wooden coaster",
+        "de": "Holzachterbahn"
+      },
       "trackStyle": "wood",
       "trainStyle": "wood-6",
       "carsPerTrain": 6,
@@ -481,12 +806,19 @@
       "trackCostPerM": 180000,
       "power": 120,
       "minHeightCm": 120,
-      "limits": { "vertical": 4.2, "lateral": 2.4, "negative": -1.5 }
+      "limits": {
+        "vertical": 4.2,
+        "lateral": 2.4,
+        "negative": -1.5
+      }
     },
     {
       "id": "steel-hyper",
       "kind": "coaster",
-      "name": { "en": "Hyper coaster", "de": "Hyper Coaster" },
+      "name": {
+        "en": "Hyper coaster",
+        "de": "Hyper Coaster"
+      },
       "trackStyle": "steel-box",
       "trainStyle": "steel-open-7",
       "carsPerTrain": 7,
@@ -499,12 +831,19 @@
       "trackCostPerM": 260000,
       "power": 180,
       "minHeightCm": 130,
-      "limits": { "vertical": 5.0, "lateral": 2.6, "negative": -1.8 }
+      "limits": {
+        "vertical": 5.0,
+        "lateral": 2.6,
+        "negative": -1.8
+      }
     },
     {
       "id": "family-invert",
       "kind": "coaster",
-      "name": { "en": "Family coaster", "de": "Familienachterbahn" },
+      "name": {
+        "en": "Family coaster",
+        "de": "Familienachterbahn"
+      },
       "trackStyle": "steel-tube",
       "trainStyle": "steel-open-5",
       "carsPerTrain": 5,
@@ -517,19 +856,35 @@
       "trackCostPerM": 140000,
       "power": 80,
       "minHeightCm": 100,
-      "limits": { "vertical": 3.5, "lateral": 2.0, "negative": -1.0 }
+      "limits": {
+        "vertical": 3.5,
+        "lateral": 2.0,
+        "negative": -1.0
+      }
     }
   ],
   "rigs": [
     {
       "id": "rig-carousel",
       "parts": [
-        { "id": "base", "procedural": "carousel-base" },
+        {
+          "id": "base",
+          "procedural": "carousel-base"
+        },
         {
           "id": "platform",
           "parent": "base",
           "procedural": "carousel-platform",
-          "animate": { "yaw": { "curve": "ease-in-out", "revolutions": 8, "window": [0.05, 0.95] } }
+          "animate": {
+            "yaw": {
+              "curve": "ease-in-out",
+              "revolutions": 8,
+              "window": [
+                0.05,
+                0.95
+              ]
+            }
+          }
         },
         {
           "id": "horses",
@@ -538,26 +893,46 @@
           "count": 16,
           "radius": 5.2,
           "seats": 1,
-          "animate": { "y": { "curve": "sine", "amplitude": 0.35, "revolutions": 24 } }
+          "animate": {
+            "y": {
+              "curve": "sine",
+              "amplitude": 0.35,
+              "revolutions": 24
+            }
+          }
         },
-        { "id": "canopy", "parent": "base", "procedural": "carousel-canopy" }
+        {
+          "id": "canopy",
+          "parent": "base",
+          "procedural": "carousel-canopy"
+        }
       ]
     },
     {
       "id": "rig-ferris",
       "parts": [
-        { "id": "frame", "procedural": "ferris-frame" },
+        {
+          "id": "frame",
+          "procedural": "ferris-frame"
+        },
         {
           "id": "wheel",
           "parent": "frame",
-          "offset": [0, 14, 0],
+          "offset": [
+            0,
+            14,
+            0
+          ],
           "procedural": "ferris-wheel-rim",
           "animate": {
             "roll": {
               "curve": "ease-in-out",
               "revolutions": 3,
               "axis": "z",
-              "window": [0.05, 0.95]
+              "window": [
+                0.05,
+                0.95
+              ]
             }
           }
         },
@@ -574,15 +949,37 @@
     {
       "id": "rig-swing",
       "parts": [
-        { "id": "tower", "procedural": "swing-tower" },
+        {
+          "id": "tower",
+          "procedural": "swing-tower"
+        },
         {
           "id": "crown",
           "parent": "tower",
-          "offset": [0, 9, 0],
+          "offset": [
+            0,
+            9,
+            0
+          ],
           "procedural": "swing-crown",
           "animate": {
-            "yaw": { "curve": "ease-in-out", "revolutions": 12, "window": [0.05, 0.95] },
-            "tilt": { "curve": "sine", "amplitude": 0.18, "revolutions": 1, "window": [0.2, 0.8] }
+            "yaw": {
+              "curve": "ease-in-out",
+              "revolutions": 12,
+              "window": [
+                0.05,
+                0.95
+              ]
+            },
+            "tilt": {
+              "curve": "sine",
+              "amplitude": 0.18,
+              "revolutions": 1,
+              "window": [
+                0.2,
+                0.8
+              ]
+            }
           }
         },
         {
@@ -598,24 +995,51 @@
     {
       "id": "rig-topspin",
       "parts": [
-        { "id": "columns", "procedural": "topspin-columns" },
+        {
+          "id": "columns",
+          "procedural": "topspin-columns"
+        },
         {
           "id": "arms",
           "parent": "columns",
-          "offset": [0, 8, 0],
+          "offset": [
+            0,
+            8,
+            0
+          ],
           "procedural": "topspin-arms",
           "animate": {
-            "roll": { "curve": "sine", "revolutions": 3, "axis": "x", "window": [0.1, 0.9] }
+            "roll": {
+              "curve": "sine",
+              "revolutions": 3,
+              "axis": "x",
+              "window": [
+                0.1,
+                0.9
+              ]
+            }
           }
         },
         {
           "id": "gondola",
           "parent": "arms",
-          "offset": [0, -5.5, 0],
+          "offset": [
+            0,
+            -5.5,
+            0
+          ],
           "procedural": "topspin-gondola",
           "seats": 20,
           "animate": {
-            "roll": { "curve": "sine", "revolutions": 5, "axis": "x", "window": [0.3, 0.85] }
+            "roll": {
+              "curve": "sine",
+              "revolutions": 5,
+              "axis": "x",
+              "window": [
+                0.3,
+                0.85
+              ]
+            }
           }
         }
       ]
@@ -624,26 +1048,51 @@
   "trackStyles": [
     {
       "id": "wood",
-      "rail": { "profile": "box", "radius": 0.05, "gauge": 1.2 },
-      "ties": { "every": 0.45, "width": 2.6 },
+      "rail": {
+        "profile": "box",
+        "radius": 0.05,
+        "gauge": 1.2
+      },
+      "ties": {
+        "every": 0.45,
+        "width": 2.6
+      },
       "supports": "timber",
       "material": "timber-dark",
       "color": "#7a5a3a"
     },
     {
       "id": "steel-box",
-      "rail": { "profile": "round", "radius": 0.07, "gauge": 1.3 },
-      "spine": { "profile": "box", "size": 0.55 },
-      "ties": { "every": 1.6 },
+      "rail": {
+        "profile": "round",
+        "radius": 0.07,
+        "gauge": 1.3
+      },
+      "spine": {
+        "profile": "box",
+        "size": 0.55
+      },
+      "ties": {
+        "every": 1.6
+      },
       "supports": "steel",
       "material": "steel-painted",
       "color": "#c9402f"
     },
     {
       "id": "steel-tube",
-      "rail": { "profile": "round", "radius": 0.06, "gauge": 1.1 },
-      "spine": { "profile": "round", "size": 0.4 },
-      "ties": { "every": 1.2 },
+      "rail": {
+        "profile": "round",
+        "radius": 0.06,
+        "gauge": 1.1
+      },
+      "spine": {
+        "profile": "round",
+        "size": 0.4
+      },
+      "ties": {
+        "every": 1.2
+      },
       "supports": "steel",
       "material": "steel-painted",
       "color": "#2f7fc9"
@@ -652,80 +1101,147 @@
   "trainStyles": [
     {
       "id": "wood-6",
-      "car": { "length": 2.8, "width": 1.8, "height": 1.15, "seats": 4, "procedural": "car-wood" },
+      "car": {
+        "length": 2.8,
+        "width": 1.8,
+        "height": 1.15,
+        "seats": 4,
+        "procedural": "car-wood"
+      },
       "color": "#8a2f24"
     },
     {
       "id": "steel-open-7",
-      "car": { "length": 3.0, "width": 1.9, "height": 1.1, "seats": 4, "procedural": "car-open" },
+      "car": {
+        "length": 3.0,
+        "width": 1.9,
+        "height": 1.1,
+        "seats": 4,
+        "procedural": "car-open"
+      },
       "color": "#f2c230"
     },
     {
       "id": "steel-open-5",
-      "car": { "length": 2.6, "width": 1.7, "height": 1.1, "seats": 4, "procedural": "car-open" },
+      "car": {
+        "length": 2.6,
+        "width": 1.7,
+        "height": 1.1,
+        "seats": 4,
+        "procedural": "car-open"
+      },
       "color": "#2fa4c9"
     }
   ],
   "buildings": [
     {
       "id": "wall-brick",
-      "name": { "en": "Brick wall", "de": "Ziegelwand" },
+      "name": {
+        "en": "Brick wall",
+        "de": "Ziegelwand"
+      },
       "category": "wall",
-      "size": [4, 4, 0.3],
+      "size": [
+        4,
+        4,
+        0.3
+      ],
       "cost": 2400,
       "material": "brick-red",
       "procedural": "wall"
     },
     {
       "id": "wall-plaster",
-      "name": { "en": "Plaster wall", "de": "Putzwand" },
+      "name": {
+        "en": "Plaster wall",
+        "de": "Putzwand"
+      },
       "category": "wall",
-      "size": [4, 4, 0.3],
+      "size": [
+        4,
+        4,
+        0.3
+      ],
       "cost": 2000,
       "material": "plaster-cream",
       "procedural": "wall"
     },
     {
       "id": "window-arched",
-      "name": { "en": "Arched window", "de": "Rundbogenfenster" },
+      "name": {
+        "en": "Arched window",
+        "de": "Rundbogenfenster"
+      },
       "category": "window",
-      "size": [4, 4, 0.3],
+      "size": [
+        4,
+        4,
+        0.3
+      ],
       "cost": 3200,
       "material": "plaster-cream",
       "procedural": "wall-window-arched"
     },
     {
       "id": "door-double",
-      "name": { "en": "Double door", "de": "Doppeltür" },
+      "name": {
+        "en": "Double door",
+        "de": "Doppelt\u00fcr"
+      },
       "category": "door",
-      "size": [4, 4, 0.3],
+      "size": [
+        4,
+        4,
+        0.3
+      ],
       "cost": 3600,
       "material": "timber-dark",
       "procedural": "wall-door"
     },
     {
       "id": "roof-slate",
-      "name": { "en": "Slate roof", "de": "Schieferdach" },
+      "name": {
+        "en": "Slate roof",
+        "de": "Schieferdach"
+      },
       "category": "roof",
-      "size": [4, 2, 4],
+      "size": [
+        4,
+        2,
+        4
+      ],
       "cost": 3000,
       "material": "slate-grey",
       "procedural": "roof-gable"
     },
     {
       "id": "floor-timber",
-      "name": { "en": "Timber floor", "de": "Holzboden" },
+      "name": {
+        "en": "Timber floor",
+        "de": "Holzboden"
+      },
       "category": "floor",
-      "size": [4, 0.2, 4],
+      "size": [
+        4,
+        0.2,
+        4
+      ],
       "cost": 1200,
       "material": "timber-dark",
       "procedural": "floor"
     },
     {
       "id": "column-stone",
-      "name": { "en": "Stone column", "de": "Steinsäule" },
+      "name": {
+        "en": "Stone column",
+        "de": "Steins\u00e4ule"
+      },
       "category": "column",
-      "size": [0.6, 4, 0.6],
+      "size": [
+        0.6,
+        4,
+        0.6
+      ],
       "cost": 1500,
       "material": "plaster-cream",
       "procedural": "column"
@@ -772,7 +1288,13 @@
       "gain": 0.5,
       "procedural": "crowd"
     },
-    { "id": "ui-click", "src": "audio/click.ogg", "bus": "ui", "gain": 0.7, "procedural": "click" }
+    {
+      "id": "ui-click",
+      "src": "audio/click.ogg",
+      "bus": "ui",
+      "gain": 0.7,
+      "procedural": "click"
+    }
   ],
   "icons": {
     "carousel": "lucide:ferris-wheel",
@@ -792,34 +1314,55 @@
   "scenarios": [
     {
       "id": "sandbox",
-      "name": { "en": "Sandbox", "de": "Sandkasten" },
+      "name": {
+        "en": "Sandbox",
+        "de": "Sandkasten"
+      },
       "description": {
         "en": "Unlimited money, no objectives.",
         "de": "Unbegrenztes Geld, keine Ziele."
       },
-      "rules": { "cash": 10000000000, "objectives": [], "startPark": "empty" }
+      "rules": {
+        "cash": 10000000000,
+        "objectives": [],
+        "startPark": "empty"
+      }
     },
     {
       "id": "first-season",
-      "name": { "en": "First season", "de": "Die erste Saison" },
+      "name": {
+        "en": "First season",
+        "de": "Die erste Saison"
+      },
       "description": {
         "en": "Reach 800 guests and a park rating of 700 by day 30.",
-        "de": "800 Gäste und eine Parkbewertung von 700 bis Tag 30."
+        "de": "800 G\u00e4ste und eine Parkbewertung von 700 bis Tag 30."
       },
       "rules": {
         "cash": 250000000,
         "loanMax": 200000000,
         "days": 30,
         "objectives": [
-          { "type": "guests", "value": 800, "byDay": 30 },
-          { "type": "rating", "value": 700, "byDay": 30 }
+          {
+            "type": "guests",
+            "value": 800,
+            "byDay": 30
+          },
+          {
+            "type": "rating",
+            "value": 700,
+            "byDay": 30
+          }
         ],
         "startPark": "empty"
       }
     },
     {
       "id": "coaster-county",
-      "name": { "en": "Coaster County", "de": "Achterbahn-Land" },
+      "name": {
+        "en": "Coaster County",
+        "de": "Achterbahn-Land"
+      },
       "description": {
         "en": "Build three coasters with an excitement of 6 or more and stay profitable.",
         "de": "Drei Achterbahnen mit Spannung 6 oder mehr, und der Park bleibt profitabel."
@@ -829,26 +1372,45 @@
         "loanMax": 300000000,
         "days": 45,
         "objectives": [
-          { "type": "coasters", "value": 3, "byDay": 45 },
-          { "type": "profit", "value": 1, "byDay": 45 }
+          {
+            "type": "coasters",
+            "value": 3,
+            "byDay": 45
+          },
+          {
+            "type": "profit",
+            "value": 1,
+            "byDay": 45
+          }
         ],
         "startPark": "seeded"
       }
     },
     {
       "id": "resort-rescue",
-      "name": { "en": "Resort rescue", "de": "Rettet das Resort" },
+      "name": {
+        "en": "Resort rescue",
+        "de": "Rettet das Resort"
+      },
       "description": {
         "en": "Take over park.fan Resort with a loan to repay and 1,500 guests to win back.",
-        "de": "Übernimm das park.fan Resort mit einem Kredit und hol 1.500 Gäste zurück."
+        "de": "\u00dcbernimm das park.fan Resort mit einem Kredit und hol 1.500 G\u00e4ste zur\u00fcck."
       },
       "rules": {
         "cash": 50000000,
         "loanMax": 500000000,
         "days": 60,
         "objectives": [
-          { "type": "guests", "value": 1500, "byDay": 60 },
-          { "type": "cash", "value": 100000000, "byDay": 60 }
+          {
+            "type": "guests",
+            "value": 1500,
+            "byDay": 60
+          },
+          {
+            "type": "cash",
+            "value": 100000000,
+            "byDay": 60
+          }
         ],
         "startPark": "demo"
       }

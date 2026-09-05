@@ -46,12 +46,50 @@ export function sampleNormal(t: TerrainData, x: number, z: number): [number, num
   return [nx / len, ny / len, nz / len];
 }
 
+/**
+ * Steepness at world (x, z) as 1 - n.y, i.e. 0 on the flat and 1 on a wall. The renderer paints
+ * rock past `CLIFF_SLOPE_START` and the showcase uses the same number, so a cliff in the material
+ * and a cliff in the paint layer are the same cliff.
+ */
+export function sampleSlope(t: TerrainData, x: number, z: number): number {
+  return 1 - sampleNormal(t, x, z)[1];
+}
+
+/** 1 - cos(26°): where the ground stops being walkable and the rock starts showing through. */
+export const CLIFF_SLOPE_START = 0.101;
+/** 1 - cos(45°): fully rock. */
+export const CLIFF_SLOPE_FULL = 0.293;
+
 export function isInsidePark(t: Pick<TerrainData, 'size'>, x: number, z: number): boolean {
   const half = t.size / 2;
   return x >= -half && x <= half && z >= -half && z <= half;
 }
 
-/** Paint index at world (x, z). 0 = grass, 1 = sand, 2 = rock, 3 = dirt, 4 = meadow (module-defined). */
+/**
+ * The paint layers, in the order the shader's texture array is built. The first five indices are
+ * the ones the module shipped with and are kept where they were, because `world.terrain.paint`
+ * survives a save: renumbering grass would repaint every existing park.
+ */
+export const LAYER_GRASS = 0;
+export const LAYER_SAND = 1;
+export const LAYER_ROCK = 2;
+export const LAYER_DIRT = 3;
+export const LAYER_MEADOW = 4;
+export const LAYER_CONCRETE = 5;
+export const LAYER_WOOD = 6;
+export const LAYER_COUNT = 7;
+
+export const LAYER_NAMES: readonly string[] = [
+  'grass',
+  'sand',
+  'rock',
+  'dirt',
+  'meadow',
+  'concrete',
+  'wood',
+];
+
+/** Paint index at world (x, z). See `LAYER_*`. */
 export function samplePaint(t: TerrainData, x: number, z: number): number {
   const n = t.resolution;
   const cell = t.size / n;

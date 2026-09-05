@@ -6,6 +6,7 @@
 import { parsePack, type PackManifest } from './pack-schema';
 
 export type ItemCategory =
+  | 'needs'
   | 'themes'
   | 'materials'
   | 'scenery'
@@ -59,6 +60,9 @@ export class Registry {
     }
     this.packList.push(manifest);
     const categories: ItemCategory[] = [
+      // `needs` first: a shop in the same manifest may reference one, and the cross-check below
+      // reads the index this loop fills.
+      'needs',
       'themes',
       'materials',
       'scenery',
@@ -80,8 +84,41 @@ export class Registry {
         map.set(key, { key, pack: manifest.id, category, def: def as never });
       }
     }
+    /**
+     * A shop's `need` is a string reference, not an enum (see `pack-schema.ts`), which is what
+     * makes a guest need addable by manifest. The cost of that is that a typo is no longer a
+     * schema error, so it becomes one here — named, with the pack and the shop that made it, and
+     * checked across every registered pack because a theme pack may legitimately sell against a
+     * need the base pack declared.
+     */
+    const knownNeeds = this.mapFor('needs');
+    for (const shop of manifest.shops) {
+      if (shop.need === 'none') continue;
+      const local = `${manifest.id}:${shop.need}`;
+      const known =
+        knownNeeds.has(local) || [...knownNeeds.keys()].some((k) => k.endsWith(`:${shop.need}`));
+      if (!known) {
+        throw new Error(
+          `Pack "${manifest.id}": shop "${shop.id}" answers need "${shop.need}", which no ` +
+            `registered pack declares. Add it to this pack's "needs", or fix the id.`
+        );
+      }
+    }
+
     for (const fn of this.listeners) fn(manifest);
     return manifest;
+  }
+
+  /**
+   * Every registered need, in registration order.
+   *
+   * The order is the guest store's column order — the struct-of-arrays layout indexes needs by
+   * position — so it has to be stable for a save to survive a reload. It is registration order and
+   * not a sort, because a pack loaded later appends rather than reshuffling the columns a saved
+   * world was written against.
+   */
+  needOrder(): string[] {
+    return [...this.mapFor('needs').values()].map((item) => (item.def as { id: string }).id);
   }
 
   async loadPackFromUrl(url: string): Promise<PackManifest> {

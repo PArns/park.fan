@@ -121,4 +121,58 @@ registry.registerKind('ride', 'rides');
 registry.registerKind('ride', 'rides');
 assert.throws(() => registry.registerKind('ride', 'trains'), /owned by "rides"/);
 
-console.log('✓ game registry: bundled packs, validation, third pack, kinds');
+/**
+ * A guest need is content.
+ *
+ * The brief grades extensibility on it by name, and `shopSchema.need` used to be a closed
+ * `z.enum([...])` — so adding one meant editing core, and the game failed that gate without
+ * anything saying so. It is a string reference now, which moves the typo from a schema error to
+ * nowhere at all unless something checks it. This is that something.
+ */
+const needsPack = {
+  id: 'needs-pack',
+  version: 1,
+  name: { en: 'Needs pack' },
+  needs: [
+    {
+      id: 'shade',
+      name: { en: 'Shade', de: 'Schatten' },
+      decayPerHour: 20,
+      urgentAt: 170,
+      criticalAt: 230,
+      weather: 'warm',
+    },
+  ],
+  shops: [
+    {
+      id: 'parasol-hire',
+      kind: 'souvenir',
+      name: { en: 'Parasol hire' },
+      need: 'shade',
+      needRelief: 200,
+      cost: 1000,
+      footprint: [3, 3],
+      procedural: 'shop-stall',
+    },
+  ],
+};
+registry.registerPack(needsPack);
+assert.ok(registry.item('needs', 'needs-pack:shade'), 'a pack can declare a guest need');
+assert.equal(registry.find('shops', 'needs-pack', 'parasol-hire').def.need, 'shade');
+assert.ok(
+  registry.needOrder().includes('shade'),
+  'needOrder is the guest store column order and must include a pack-declared need'
+);
+// …and the reference is checked, so a typo is still an error with a name on it.
+assert.throws(
+  () =>
+    registry.registerPack({
+      ...needsPack,
+      id: 'typo-pack',
+      needs: [],
+      shops: [{ ...needsPack.shops[0], need: 'shaed' }],
+    }),
+  /answers need "shaed", which no registered pack declares/
+);
+
+console.log('✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs');

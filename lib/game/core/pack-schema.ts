@@ -31,6 +31,35 @@ const nightLight = z.object({
   colors: z.array(color).optional(),
 });
 
+/**
+ * A guest need, declared by a pack.
+ *
+ * This is content and not an enum on purpose. The brief grades extensibility on it — "if a new
+ * coaster type, shop, scenery theme or guest need cannot be added by dropping in a manifest, the
+ * module fails its gate" — and `shopSchema.need` used to be a closed `z.enum([...])`, which made
+ * a new need a core edit and quietly failed that gate for the whole game. It is a string
+ * reference now, checked against the registered needs at pack-registration time so a typo is
+ * still an error with a path, just not a schema-level one.
+ */
+export const needSchema = z.object({
+  id: z.string(),
+  name: localized,
+  /** Points per park HOUR the need rises by, on a 0-255 scale. */
+  decayPerHour: z.number().positive(),
+  /** Weight in the guest's mood mix. Normalised across the registered needs at load. */
+  moodWeight: z.number().nonnegative().default(1),
+  /** Above this the guest starts looking for something that answers it. */
+  urgentAt: z.number().int().min(0).max(255).default(180),
+  /** Above this the guest's happiness falls every tick until it is answered. */
+  criticalAt: z.number().int().min(0).max(255).default(230),
+  /** Lucide icon name for the HUD. */
+  icon: z.string().optional(),
+  /** What a guest thinks when it is urgent. Localized; the UI picks one. */
+  thoughts: z.array(localized).default([]),
+  /** Rises faster in heat (`warm`) or in cold (`cold`); `none` ignores the weather. */
+  weather: z.enum(['none', 'warm', 'cold', 'wet']).default('none'),
+});
+
 export const themeSchema = z.object({
   id: z.string(),
   name: localized,
@@ -93,9 +122,15 @@ export const shopSchema = visual.extend({
     'info',
   ]),
   name: localized,
-  need: z
-    .enum(['hunger', 'thirst', 'toilet', 'energy', 'happiness', 'cash', 'none'])
-    .default('none'),
+  /**
+   * The need this shop answers, by id, from any registered pack's `needs`.
+   *
+   * A string rather than an enum: see {@link needSchema}. `'none'` is still accepted and means
+   * the shop sells something nobody needs — a souvenir stand is a real thing.
+   */
+  need: z.string().default('none'),
+  /** How much of the need one visit removes, on the 0-255 scale. */
+  needRelief: z.number().int().min(0).max(255).default(160),
   price: z.number().int().nonnegative().default(0),
   cost: z.number().int().nonnegative(),
   upkeep: z.number().int().nonnegative().default(0),
@@ -259,6 +294,7 @@ export const packManifestSchema = z.object({
   version: z.number().int().positive(),
   name: localized,
   requires: z.array(z.string()).default([]),
+  needs: z.array(needSchema).default([]),
   themes: z.array(themeSchema).default([]),
   materials: z.array(materialSchema).default([]),
   scenery: z.array(scenerySchema).default([]),
@@ -278,6 +314,7 @@ export type PackManifest = z.infer<typeof packManifestSchema>;
 export type PackManifestInput = z.input<typeof packManifestSchema>;
 export type Theme = z.infer<typeof themeSchema>;
 export type MaterialDef = z.infer<typeof materialSchema>;
+export type NeedDef = z.infer<typeof needSchema>;
 export type SceneryDef = z.infer<typeof scenerySchema>;
 export type FoliageDef = z.infer<typeof foliageSchema>;
 export type ShopDef = z.infer<typeof shopSchema>;
