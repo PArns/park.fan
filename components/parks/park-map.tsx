@@ -190,6 +190,8 @@ export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
   }
 
   return (
+    // `md:` and not `@min-[768px]/page:`: this switches a share of the WINDOW's height for a fixed
+    // one, i.e. it asks how much screen there is. The map fills whatever width it is given.
     <div className="relative h-[65vh] w-full overflow-hidden rounded-lg border md:h-[800px]">
       <MapContainer
         center={center}

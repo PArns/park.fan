@@ -10,9 +10,10 @@ import { cn } from '@/lib/utils';
 
 /**
  * Placeholder that mirrors the NearbyParksCard "nearby parks" layout 1:1 — heading + subtitle +
- * the same responsive card grid, including the mobile collapse to 2 cards (`hidden md:block`).
- * Reusing this for the `next/dynamic` loading fallback AND the component's own not-yet-mounted /
- * loading state keeps every placeholder identical and reserves the real grid height, so the swap
+ * the same responsive card grid, including the collapse to 2 cards in a narrow column
+ * (`hidden @min-[768px]/page:block`). Reusing this for the `next/dynamic` loading fallback AND
+ * the component's own not-yet-mounted / loading state keeps every placeholder identical and
+ * reserves the real grid height, so the swap
  * to live parks doesn't shift layout (the previous `min-h-[200px]` box under-reserved by ~1000px
  * on mobile, where 6 skeleton cards collapsed to 2 real cards).
  *
@@ -52,10 +53,11 @@ export function NearbyParksCardSkeleton({ className }: { className?: string }) {
       {/* The live view wraps its grid in a plain <div> (it holds the "show all" button too),
           so this one does as well — same depth, same nesting. */}
       <div>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {Array.from({ length: HOME_NEARBY_LIMIT }).map((_, i) => (
-            // Match the live grid's mobile collapse: only the first two cards show below md.
-            <li key={i} className={cn(i >= 2 && 'hidden md:block')}>
+            // Match the live grid's collapse: only the first two cards show below 768 px
+            // of page.
+            <li key={i} className={cn(i >= 2 && 'hidden @min-[768px]/page:block')}>
               <ParkCardNearbySkeleton />
             </li>
           ))}

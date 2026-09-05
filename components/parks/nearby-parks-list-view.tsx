@@ -79,7 +79,7 @@ export function NearbyParksListView({
         {/* The location prompt lives in the floating LocationBanner now — an inline,
             conditionally-rendered hint here would re-introduce an in-flow layout shift
             (and duplicate the banner's message). */}
-        <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {parks.map((park, index) => {
             const hidden = !isExpanded && index >= 2;
 
@@ -88,7 +88,7 @@ export function NearbyParksListView({
                 key={park.id}
                 className={cn(
                   'row-span-3 grid [grid-template-rows:subgrid]',
-                  hidden && 'hidden md:grid'
+                  hidden && 'hidden @min-[768px]/page:grid'
                 )}
               >
                 <ParkCard
@@ -117,9 +117,16 @@ export function NearbyParksListView({
           })}
         </ul>
 
-        {/* Show More Button (Mobile Only) */}
+        {/* The rest of the list, where the column is too narrow to lay six cards out flat.
+
+            `@min-[768px]/page:` on both halves — the hidden cards above and this button —
+            because the question is how wide THIS list is: with the trip planner open, a 1440 px
+            window can leave the page 700, and six cards there is the same long scroll a phone
+            gets. The
+            skeleton in nearby-parks-card-skeleton.tsx collapses at the same width, or the box it
+            holds is four cards taller than what lands in it. */}
         {!isExpanded && parks.length > 2 && (
-          <div className="mt-4 flex justify-center md:hidden">
+          <div className="mt-4 flex justify-center @min-[768px]/page:hidden">
             <Button
               variant="secondary"
               size="sm"

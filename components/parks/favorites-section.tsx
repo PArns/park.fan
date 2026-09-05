@@ -136,7 +136,7 @@ export function FavoritesSection() {
           {parkCount > 0 && (
             <div>
               <div className="bg-muted mb-4 h-6 w-24 rounded" />
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                 {Array.from({ length: parkCount }).map((_, i) => (
                   <ParkCardNearbySkeleton key={i} />
                 ))}
@@ -146,7 +146,7 @@ export function FavoritesSection() {
           {attractionCount > 0 && (
             <div>
               <div className="bg-muted mb-4 h-6 w-24 rounded" />
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                 {Array.from({ length: attractionCount }).map((_, i) => (
                   <AttractionCardSkeleton key={i} />
                 ))}
@@ -219,7 +219,7 @@ export function FavoritesSection() {
                 <LazyMount
                   grid={{ count: sortedFavorites.parks.length, rowHeight: 200, headerHeight: 64 }}
                 >
-                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                     {sortedFavorites.parks.map((park) => (
                       <ParkCard
                         key={park.id}
@@ -264,7 +264,7 @@ export function FavoritesSection() {
                     headerHeight: 64,
                   }}
                 >
-                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                     {sortedFavorites.attractions.map((attraction) => (
                       <AttractionCard
                         key={attraction.id}
@@ -288,7 +288,7 @@ export function FavoritesSection() {
             <>
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('shows')}</h3>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                   {sortedFavorites.shows.map((show) => {
                     // Build show URL: always use park URL with #shows hash
                     let showHref = '#';
@@ -341,7 +341,7 @@ export function FavoritesSection() {
           {sortedFavorites.restaurants.length > 0 && (
             <div>
               <h3 className="mb-4 text-lg font-semibold">{t('restaurants')}</h3>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                 {sortedFavorites.restaurants.map((restaurant) => {
                   // Build restaurant URL: always use park URL with #restaurants hash
                   let restaurantHref = '#';

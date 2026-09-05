@@ -63,6 +63,9 @@ export async function ParkTitleHeader({
       {/* Title row: park name + location on the left, favourite button pinned top-right. */}
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
+          {/* Left on the window on purpose: 30 px against 36 px changes how the name looks, not
+            where anything sits, and this heading wraps to as many lines as its column needs at
+            either size. Nothing measures it. */}
           <h1 className="mb-2 text-3xl font-bold md:text-4xl">
             {parkName} <span className="font-normal">– {suffix}</span>
           </h1>

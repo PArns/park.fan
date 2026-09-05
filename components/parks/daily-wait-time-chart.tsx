@@ -253,7 +253,13 @@ export function DailyWaitTimeChart({
       {/* Horizontally scrollable chart — current time centered on mount */}
       <div ref={scrollRef} className="no-scrollbar -mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6">
         <div style={{ minWidth: `${Math.max(320, typedSlots.length * 15)}px` }}>
-          {/* Value labels above bars — hidden on small screens */}
+          {/* Value labels above bars — hidden on small screens.
+
+              `md:`/`xl:` and not `@min-[…]/page:`: the row above scrolls at a fixed `minWidth`,
+              so a narrower page does not squeeze these labels, it just scrolls further. What the
+              breakpoint buys is quiet on a phone, where a number over every fifteen-minute bar is
+              noise — a question about the device, not about the column. <LiveAttractionData>'s
+              reserved box steps at the same two widths for the same reason. */}
           <div className="mb-2 hidden gap-0.5 md:flex">
             {typedSlots.map((slot) => (
               <div

@@ -7,9 +7,9 @@ import { Skeleton } from '@/components/ui/skeleton';
  *
  * It has to mirror <AttractionHistoryGrid> row for row, and it stopped doing that when that grid
  * changed shape: this reserved a 7-column calendar of square cells while the real thing renders
- * `grid-cols-2 md:grid-cols-7` of ~142px day cards under a legend row. The reservation came out
- * hundreds of pixels short, and the ride page's largest measured shift was this section dropping
- * in at full height (+812px on desktop, `pnpm measure:cls`).
+ * `grid-cols-2 @min-[768px]/page:grid-cols-7` of ~142px day cards under a legend row. The
+ * reservation came out hundreds of pixels short, and the ride page's largest measured shift was
+ * this section dropping in at full height (+812px on desktop, `pnpm measure:cls`).
  *
  * The numbers below are measured, not guessed — re-run the script after changing the day card and
  * correct them here, because nothing else will notice.
@@ -25,7 +25,7 @@ export function AttractionHistorySectionsSkeleton() {
       <Card className="relative p-4 md:p-6">
         <div className="space-y-4">
           {/* Title row + the legend badges beside it (closed · holiday · school · bridge day) */}
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 @min-[768px]/page:flex-row @min-[768px]/page:items-center @min-[768px]/page:justify-between">
             <Skeleton className="h-7 w-64 max-w-full" />
             <div className="flex flex-wrap items-center gap-2">
               {['w-24', 'w-24', 'w-32', 'w-28'].map((w) => (
@@ -47,11 +47,11 @@ export function AttractionHistorySectionsSkeleton() {
               per breakpoint off the real grid (`div.grid` in <AttractionHistoryGrid>, height
               divided by its row count) — re-measure after changing the day card, because
               nothing else will notice. */}
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-7">
+          <div className="grid grid-cols-2 gap-2 @min-[768px]/page:grid-cols-7">
             {Array.from({ length: 31 }).map((_, i) => (
               <Skeleton
                 key={i}
-                className="h-[134px] w-full rounded-xl md:h-[175px] lg:h-[152px] xl:h-[137px]"
+                className="h-[134px] w-full rounded-xl @min-[768px]/page:h-[175px] @min-[1024px]/page:h-[152px] @min-[1280px]/page:h-[137px]"
               />
             ))}
           </div>

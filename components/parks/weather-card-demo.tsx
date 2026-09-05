@@ -315,7 +315,7 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
         }}
       >
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
-        <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="relative z-10 grid grid-cols-1 gap-4 @min-[768px]/page:grid-cols-2">
           <ParkTimeInfo
             timezone="Europe/Berlin"
             status="OPERATING"
@@ -348,7 +348,7 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
       <WeatherCard weather={buildWeather(today, 'partly')} />
       <WeatherCard
         weather={buildWeather(today, 'rainy')}

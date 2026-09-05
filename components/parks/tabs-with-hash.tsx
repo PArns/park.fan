@@ -279,7 +279,7 @@ export const TabsWithHash = memo(function TabsWithHash({
               // box is deferred — the rope-drop picks and the headliner cards are real cards
               // too, so leaving them out of this branch kept the urgent commit expensive and the
               // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                 {Array.from({ length: 6 }, (_, i) => (
                   <AttractionCardSkeleton key={i} />
                 ))}
@@ -421,7 +421,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                 />
               </div>
             )}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
               {visibleShows.map((show) => {
                 const showHref =
                   `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
@@ -459,7 +459,7 @@ export const TabsWithHash = memo(function TabsWithHash({
             value="restaurants"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
               {deferredTab === 'restaurants'
                 ? park.restaurants?.map((restaurant) => (
                     <RestaurantCard key={restaurant.id} restaurant={restaurant} />

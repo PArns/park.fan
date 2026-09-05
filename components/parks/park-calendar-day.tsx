@@ -150,6 +150,9 @@ function ParkCalendarDayComponent({
     .join(' · ');
 
   return (
+    // Every `lg:` below is the cell dressed for the seven-column week grid, and which grid it
+    // lands in is decided by the `matchMedia('(min-width: 1024px)')` in <ParkCalendarGrid> — so
+    // these stay on the window until that query does. See the note there.
     <Card
       className={cn(
         'relative flex h-full min-h-[92px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] lg:min-h-[150px] lg:p-3',

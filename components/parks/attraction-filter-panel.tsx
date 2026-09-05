@@ -57,9 +57,9 @@ interface AttractionFilterPanelProps {
 /**
  * The hairline between the search box and the height slider.
  *
- * Desktop only: below `md` the two are stacked, and a rule across a stack of
- * captioned blocks is a line between things that are already apart. The captions
- * do that job there.
+ * Only drawn where the two cells fit beside each other: below that they are
+ * stacked, and a rule across a stack of captioned blocks is a line between things
+ * that are already apart. The captions do that job there.
  */
 function CellDivider() {
   // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is
@@ -69,7 +69,7 @@ function CellDivider() {
   return (
     <div
       aria-hidden="true"
-      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center md:block md:h-14"
+      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center @min-[768px]/page:block @min-[768px]/page:h-14"
     />
   );
 }
@@ -85,7 +85,7 @@ function CellDivider() {
  * nowhere to put a third.
  *
  * **Two bands, not one row.** The first holds the two controls that carry a VALUE
- * you set — a query and a height — and they sit side by side from `md` with a
+ * you set — a query and a height — and they sit side by side from 768 px of page with a
  * hairline between them. The second is the pills, which carry no value: each is on
  * or off (the wet one has a third state) and any of them may be missing entirely,
  * so they are a wrapping row rather than a cell of fixed width.
@@ -187,8 +187,8 @@ export function AttractionFilterPanel({
         className="mb-3 gap-3 pb-3 sm:gap-3"
       />
 
-      <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-4">
-        <div className="md:w-[220px] lg:w-[260px]">
+      <div className="flex flex-col gap-3 @min-[768px]/page:flex-row @min-[768px]/page:items-start @min-[768px]/page:gap-4">
+        <div className="@min-[768px]/page:w-[220px] @min-[1024px]/page:w-[260px]">
           <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
             {t('filterSection.searchLabel')}
           </p>
@@ -223,7 +223,7 @@ export function AttractionFilterPanel({
           <>
             <CellDivider />
             <RiderHeightFilter
-              className="md:w-[280px] lg:w-[320px]"
+              className="@min-[768px]/page:w-[280px] @min-[1024px]/page:w-[320px]"
               stops={heightStops}
               value={riderHeight}
               onChange={onRiderHeightChange}

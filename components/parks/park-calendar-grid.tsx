@@ -93,6 +93,15 @@ export function ParkCalendarGrid({
   // or hydration). This grid is `ssr: false` (see tabs-with-hash) and only mounts once the calendar
   // tab is opened, so we can pick the layout from the live viewport — no hydration mismatch — and
   // each day card mounts exactly once.
+  //
+  // This is the one layout switch on a park page that stayed on the WINDOW when the rest moved to
+  // `@container/page` (app/[locale]/layout.tsx), and deliberately: the class and this query are
+  // one decision made twice, so converting only the classes leaves an open trip planner showing
+  // NEITHER layout — the container says list, `matchMedia` says week grid, and each branch is
+  // guarded by the other's answer. Moving it needs a container-width read here as well; until
+  // there is one, both halves stay on `(min-width: 1024px)` — and so do the day card's own `lg:`
+  // classes and <ParkCalendarGridPlaceholder>'s reservation, which dress and measure whichever
+  // layout this picks.
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window === 'undefined' ? true : window.matchMedia('(min-width: 1024px)').matches
   );

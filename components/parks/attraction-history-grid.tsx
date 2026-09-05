@@ -125,7 +125,7 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
   return (
     <Card className="relative p-4 md:p-6">
       <div className="space-y-4">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 @min-[768px]/page:flex-row @min-[768px]/page:items-center @min-[768px]/page:justify-between">
           {/* Card title inside the "plan your visit" chapter — icon + h3 like every
               other card title on the page (it was the one bare heading left). */}
           <SectionHeading
@@ -169,7 +169,7 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
         </div>
 
         {/* Reversed List (Today -> Past) */}
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-7">
+        <div className="grid grid-cols-2 gap-2 @min-[768px]/page:grid-cols-7">
           {days
             .slice()
             .reverse()

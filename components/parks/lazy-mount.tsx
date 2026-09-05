@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect, type CSSProperties, type ReactNode } from 'react';
 import './lazy-mount.css';
 
-/** Column counts of the shared card grid (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`). */
+/** Column counts of the shared card grid
+ *  (`grid-cols-1 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3`). */
 const GRID_COLUMNS = [1, 2, 3] as const;
 
 export interface LazyMountGrid {
