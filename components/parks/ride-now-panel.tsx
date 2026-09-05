@@ -3,7 +3,6 @@
 import { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Clock, Loader2, Sparkles, Star } from 'lucide-react';
-import { formatInTimeZone } from 'date-fns-tz';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
@@ -12,6 +11,7 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { LocalTime } from '@/components/ui/local-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { formatTime } from '@/lib/utils/intl-format';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
@@ -41,6 +41,15 @@ interface RideNowPanelProps {
   /** The ride's effective status, already resolved against the park's — see the ride page. */
   status: AttractionStatus;
   statusLabel: string;
+  /**
+   * Today in the PARK's timezone (`yyyy-MM-dd`), resolved on the server.
+   *
+   * It exists so the typical/busy pair can be picked during the SERVER render. Derived from the
+   * browser clock it was `null` until mount, so the two figures a „typische Wartezeit Taron"
+   * query is about rendered as em dashes in the served HTML and only appeared for a visitor with
+   * JavaScript. This route is `force-dynamic`, so the server clock costs nothing here.
+   */
+  todayIso: string;
   /** Today's schedule row for the park, from the client detail fetch. */
   todaySchedule?: ScheduleItem | null;
   /** A background poll is in flight. */
@@ -72,6 +81,7 @@ export function RideNowPanel({
   attraction,
   status,
   statusLabel,
+  todayIso,
   todaySchedule,
   isRefreshing,
 }: RideNowPanelProps) {
@@ -110,16 +120,21 @@ export function RideNowPanel({
     return roundWaitDeltaTo5(avg(history.slice(half)) - avg(history.slice(0, half)));
   }, [history]);
 
-  /** Today's typical pair, from the ride's own weekday rather than the weekday/weekend average. */
-  const typicalToday = useMemo((): (TypicalWaitBucket & { isWeekend: boolean }) | null => {
+  /**
+   * Today's typical pair, from the ride's own weekday rather than the weekday/weekend average.
+   *
+   * Read off `todayIso` and not off the browser clock, so it is in the served HTML — see the prop.
+   * Reading the day back as UTC midnight cannot drift across a DST boundary the way a local
+   * `new Date(y, m, d)` can.
+   */
+  const typicalToday = useMemo((): (TypicalWaitBucket & { isWeekend?: boolean }) | null => {
     const tw = attraction.typicalWaits;
-    if (!tw?.displayable || !browserNow) return null;
-    const dow = Number(formatInTimeZone(browserNow, timezone, 'i')) % 7; // 1=Mon…7=Sun → 0=Sun
+    if (!tw?.displayable) return null;
+    const dow = new Date(`${todayIso}T00:00:00Z`).getUTCDay(); // 0=Sun…6=Sat, as `byDayOfWeek` is
     const own = tw.byDayOfWeek?.find((d) => d.dayOfWeek === dow);
     if (own && (own.typical !== null || own.busy !== null)) return own;
-    const isWeekend = dow === 0 || dow === 6;
-    return { ...(isWeekend ? tw.weekend : tw.weekday), isWeekend };
-  }, [attraction.typicalWaits, browserNow, timezone]);
+    return dow === 0 || dow === 6 ? tw.weekend : tw.weekday;
+  }, [attraction.typicalWaits, todayIso]);
 
   /** The next few recommended slots — the ones still ahead of the reader. */
   const slots = useMemo(() => {
@@ -145,7 +160,12 @@ export function RideNowPanel({
         park panel's, down to the static dot — an `animate-pulse` inside a `backdrop-filter` box
         dirties its region every frame and costs the card a repaint, which is what made the park
         header flicker. */}
-      <div className="border-border/50 flex items-center gap-3 border-b px-5 py-3">
+      {/* 46 px = `py-3` over the tallest thing the row can hold, which is the accuracy badge
+        (16 px of `text-xs` + `py-0.5` + its 1 px borders = 22) rather than the 20 px heading. The
+        badge is not in the shell — `leanParkForShell` strips `predictionAccuracy`, so it arrives
+        with the client detail fetch — and without the reservation its arrival moved this row, the
+        card, and the whole page under it by two pixels. */}
+      <div className="border-border/50 flex min-h-[46px] items-center gap-3 border-b px-5 py-3">
         <div className="flex shrink-0 items-center gap-2">
           <span
             className={cn(
@@ -154,7 +174,14 @@ export function RideNowPanel({
             )}
             aria-hidden="true"
           />
-          <h2 className="text-[13px] font-bold tracking-[0.06em] uppercase">{t('todayAtRide')}</h2>
+          {/* „Wartezeit jetzt" and not a „Heute an dieser Bahn" of its own, for the query this
+            page is written for. The chapter that used to carry this h2 sat under the fold and has
+            become „Wartezeiten heute" (the chart); putting the keyword back on the heading
+            directly above the number is the stronger placement of the two, and the page keeps
+            both headings rather than trading one for the other. */}
+          <h2 className="text-[13px] font-bold tracking-[0.06em] uppercase">
+            {t('sectionLiveNow')}
+          </h2>
         </div>
 
         {accuracy && (
@@ -162,6 +189,11 @@ export function RideNowPanel({
             <TooltipTrigger className="min-w-0 cursor-default">
               <Badge className={cn('gap-1.5', ACCURACY_BADGE_CLASS[accuracy.badge])}>
                 <Sparkles className="h-3 w-3" aria-hidden="true" />
+                {/* „Gut" on its own says nothing about what is good. The prefix names it where
+                  there is room and goes below `sm`, where the row also carries the clock — the
+                  same split the park panel's weather reading uses. A truncated „KI-Genauigk…"
+                  would be worse than the bare grade. */}
+                <span className="hidden sm:inline">{t('predictionAccuracy')}:</span>
                 <span className="truncate">{t(`accuracy.${accuracy.badge}`)}</span>
               </Badge>
             </TooltipTrigger>
@@ -179,7 +211,11 @@ export function RideNowPanel({
             {isRefreshing && (
               <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
             )}
-            {formatInTimeZone(browserNow, timezone, 'HH:mm')}
+            {formatTime(browserNow, locale, {
+              hour: '2-digit',
+              minute: '2-digit',
+              timeZone: timezone,
+            })}
             {tCommon('timeSuffix')} · {tParks('localTime')}
           </span>
         )}

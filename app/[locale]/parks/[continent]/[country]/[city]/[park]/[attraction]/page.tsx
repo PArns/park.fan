@@ -343,6 +343,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // it to pin.
   const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
 
+  /**
+   * The one shell snapshot both client trees read, built ONCE.
+   *
+   * `leanParkForAttractionShell` is what takes this route's serialized park data from 36.3 KB to
+   * 3.7 KB (see docs/architecture/api-budget.md), and calling it twice undoes half of that: React
+   * Flight dedupes by object IDENTITY, so two calls producing equal objects are written to the
+   * payload twice, on 42,756 URLs × 6 locales. One call, one reference, one copy in the payload —
+   * and `attraction` below is the very object inside it, so that prop costs a back-reference
+   * rather than a third copy.
+   */
+  const shellPark = leanParkForAttractionShell(park, attraction);
+
   // Does „Beste Besuchszeit planen" render anything? Both of its cards are optional, and the
   // chapter row must not offer a jump to an anchor that is not on the page — same rule the ride
   // profile and the FAQ tiles already follow.
@@ -530,7 +542,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             <ParkHeaderCard
               panel={
                 <RideLiveHeader
-                  initialPark={leanParkForAttractionShell(park, attraction)}
+                  initialPark={shellPark}
+                  todayIso={todayIso}
                   attractionSlug={attractionSlug}
                   continent={continent}
                   country={country}
@@ -577,7 +590,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was
                 read. */}
               <LiveAttractionData
-                initialPark={leanParkForAttractionShell(park, attraction)}
+                initialPark={shellPark}
                 attractionSlug={attractionSlug}
                 continent={continent}
                 country={country}

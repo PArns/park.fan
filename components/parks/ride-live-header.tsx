@@ -1,10 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { formatInTimeZone } from 'date-fns-tz';
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { RideNowPanel } from '@/components/parks/ride-now-panel';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -16,6 +14,8 @@ interface RideLiveHeaderProps {
   country: string;
   city: string;
   parkSlug: string;
+  /** Today in the park's timezone (`yyyy-MM-dd`), from the server — see `RideNowPanel`. */
+  todayIso: string;
 }
 
 /**
@@ -36,9 +36,9 @@ export function RideLiveHeader({
   country,
   city,
   parkSlug,
+  todayIso,
 }: RideLiveHeaderProps) {
   const t = useTranslations('attractions');
-  const browserNow = useBrowserNow(60_000);
 
   const { park, attraction, isFetching } = useLiveAttractionData({
     continent,
@@ -62,12 +62,10 @@ export function RideLiveHeader({
   // prefers the API's `effectiveStatus`, which is the only source that knows a ride is out of
   // season, and reports UNKNOWN rather than flattening it to closed.
   const status = getLiveAttractionStatus(attraction, park.status);
-  const timezone = park.timezone ?? 'UTC';
-  // Today in the PARK's timezone — the row a Florida park is on is not the row Berlin is on.
-  const todayIso = browserNow ? formatInTimeZone(browserNow, timezone, 'yyyy-MM-dd') : null;
-  const todaySchedule = todayIso
-    ? (detail?.schedule?.find((s) => s.date === todayIso) ?? null)
-    : null;
+  // `todayIso` is the SERVER's answer, in the park's timezone. A tab left open across midnight in
+  // the park would keep yesterday's row until the next navigation; the alternative is a browser
+  // clock, and that one costs the typical/busy pair its place in the served HTML for every visit.
+  const todaySchedule = detail?.schedule?.find((s) => s.date === todayIso) ?? null;
 
   return (
     <RideNowPanel
@@ -75,6 +73,7 @@ export function RideLiveHeader({
       attraction={attraction}
       status={status}
       statusLabel={t(`status.${status.toLowerCase()}` as 'status.operating')}
+      todayIso={todayIso}
       todaySchedule={todaySchedule}
       isRefreshing={isFetching}
     />
