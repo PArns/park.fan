@@ -153,4 +153,6 @@ scripts/_tmp-measure-history.mjs
 # scratchpad because module resolution walks up from the SCRIPT, not from the cwd.
 /.*-probe.mjs
 /.*-probe.mts
+/.*-probe.png
 /.tune-*.mjs
+/.crop-*.png
