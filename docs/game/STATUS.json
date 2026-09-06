@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "1311098",
+  "updatedAtCommit": "dbba8de",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -22,7 +22,7 @@
       "pnpm test:game green, tsc clean, eslint clean"
     ],
     "roundsRun": 6,
-    "note": "Every built module is graded once and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. All six have had a round 2 shipped by the integrator and none has been re-graded. ui and camera are scaffolds and their nulls below are honest.",
+    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. All six have a round 2 shipped by the integrator and none has been re-graded. `guests` is built and ungated. ui and camera are scaffolds and their nulls are honest.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -53,18 +53,14 @@
   },
   "soak": {
     "command": "pnpm game:soak",
-    "hours": 48,
-    "speed": 100,
     "ticks": 576,
-    "meanTickMs": 0.005,
-    "maxTickMs": 0.341,
-    "budgetTickMs": 6,
-    "assertionsPassed": 9,
-    "assertionsTotal": 9,
-    "notMeasured": [
-      "stuckGuests / guests — no guests module api yet",
-      "unreachableQueues — no paths module api yet"
-    ]
+    "parkHours": 48,
+    "speed": "100x",
+    "meanTickMs": 0.8,
+    "maxTickMs": 28.7,
+    "assertions": "9/9",
+    "notMeasured": [],
+    "note": "`no stuck guests` and `no unreachable queues` used to print \"not measured — no guests module api yet\". They run for real now."
   },
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
@@ -88,7 +84,7 @@
   "modules": {
     "core": {
       "wave": 1,
-      "status": "built, ungated",
+      "status": "built, ungated — plus three bugs the gauntlet and the guests module found in it: a stripped manifest schema, a state write into another module's slot, and a step control that did nothing while paused.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
@@ -321,12 +317,12 @@
     },
     "guests": {
       "wave": 3,
-      "status": "scaffolded",
+      "status": "built, ungated — ~4,700 lines in 13 files. The builder was killed by the account session limit with the sim and the crowd renderer written and NOTHING wired: no main.ts, a scaffold index.ts, and a module that had never been run. The integrator finished it and fixed four bugs that are what \"never been run\" looks like. Measured: 713 guests at 14 draw calls (1.2 % of the 1,200 budget) and 154,018 triangles; 676/386/148 triangles per guest by LOD; sim mean 0.80 ms/tick against a 6 ms whole-sim budget.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
       "gated": false,
-      "lines": null,
+      "lines": 4700,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
@@ -418,6 +414,10 @@
     }
   },
   "openIssues": [
+    "CORE BUG, found by the guests module being photographed: a step control that does nothing while paused. `SimRuntime.tick()` computes dt from clock.speed and skips its whole body at dt <= 0, so the worker's `step` message ran the scheduler over a world that stood still. The screenshot harness runs at speed=0 for repeatability, so every frame of the guests module photographed an empty avenue with 'Guests 0' in the HUD. `runtime.step()` forces one tick at speed 1 now — the only reading of 'one tick' that does not depend on a speed the caller deliberately set to zero — and game-shot.mjs takes --step=N.",
+    "guests: `destKind` was declared on GuestStore and allocated nowhere. `allocate` builds the store with `as unknown as GuestStore`, so the compiler was told the column existed and never checked, and grow/zero/serialize/load each listed their byte columns by hand and each missed the same one. Every tick threw. Fixed with a BYTE_FIELDS list the five sites share, a GuestColumn union the type is checked against, and a runtime guard that names an unallocated column.",
+    "guests: THREE unsaved accumulators broke save -> resume, and a field-by-field diff of two serialisations found them. The four xoshiro streams were the obvious one; the gate's fractional party debt and the thought scanner's cursor and budget were not. The debt made the first guest to arrive after a save come in at park minute 2006 in the uninterrupted run and 2006.25 in the resumed one — one tick — with the people, their ids and their slots identical. The diff is zero fields now.",
+    "STILL OPEN (guests): there is nothing in the park to WANT. No shops, no rides, no toilets — those modules do not exist — so every need runs to its critical threshold and stays there, and the interesting half of this module is untested against real demand. And the crowd bunches into tight knots on the fountain square, which may simply be the wayfinding funnelling everyone down one lane; the lane offset has never been tuned against a park with destinations in it.",
     "CORRECTION to something this file carried for three rounds: the world's edge fix recorded here as 'more apron, or a distance fade' was half WRONG. The terrain critic measured that the apron already runs to 1,756 m and projects to screen row 188, while the visible step is at row 231 and 900 m out — which is DOME_RADIUS in sky-dome.ts. More apron cannot help; 1,600 of the surround's 3,840 triangles are already permanently occluded by the dome. Planting needs 28-52 m, not the 65 m estimated earlier. The one lever that works is a distance fade in the fragment injection point terrain already owns; the fog alternative needs 2.9x the density and is environment's.",
     "terrain round 2: extensibility was 4.0, UNDER the 5.0 floor — the first hard-gate failure in this gauntlet. The module touched registry/pack/manifest nowhere at all and its ground catalogue was a switch over indices with 21 colour constants beside it. Ground layers are a manifest now, split the way paths already splits: the PATTERN is an algorithm and stays in code, the colours and relief are data. A pack can retint a built-in in place (by id, so a save's paint indices keep meaning) or add one past the built-ins; a bad recipe is named and skipped. LAYER_COUNT stays 7 and that limit is written down. Pinned by pnpm test:game-registry.",
     "terrain round 2: the shadow proxy was 33.9 % of the whole frame — stride 2 over a 256-cell heightfield is 32,768 triangles rendered once per cascade, 98,304 of the demo park's 290,262 at overview. The critic proved it twice (render list 75.6 % proxy; showcase 141,340 at noon against 43,038 at 18:30, a difference of 98,302). Stride 4 now (3 on ultra): 290,262 -> 216,534 triangles, -73,728, -25.4 %, at an unchanged 145 draw calls, and the frame is indistinguishable.",

@@ -8,6 +8,7 @@
  *
  *   node scripts/game-shot.mjs                                   # demo park, 3 times × 3 cameras
  *   node scripts/game-shot.mjs --showcase=terrain --cam=overview,close --tod=09:00,18:30,23:00
+ *   node scripts/game-shot.mjs --step=1200                          # advance the sim first
  *   node scripts/game-shot.mjs --url=http://localhost:3000 --seed=7 --quality=high --out=.game-render/x
  *
  * Runs against `pnpm dev` (default port 3000) or `pnpm build && pnpm start`. WebGPU is not
@@ -33,6 +34,7 @@ const out = args.out ?? path.join('.game-render', showcase ? `showcase-${showcas
 const settleMs = Number(args.wait ?? 1200);
 const viewport = { width: Number(args.w ?? 1280), height: Number(args.h ?? 720) };
 const engine = args.engine ?? 'webgl2';
+const stepTicks = Number(args.step ?? 0);
 
 const query = new URLSearchParams({ harness: '1', speed: args.speed ?? '0', engine });
 if (showcase) query.set('showcase', showcase);
@@ -90,6 +92,26 @@ if (bootMs != null) {
         { tod, cam }
       );
       await page.waitForTimeout(settleMs);
+      // `--step=N` advances the simulation N ticks and waits for them to land.
+      //
+      // The harness runs at `speed=0` so a screenshot is repeatable, and that is right for
+      // everything the world builds at boot — but it means a module whose output only exists once
+      // the sim has run photographs as an empty park. The first frames of the guests module were
+      // exactly that: "Guests 0" and an avenue with nobody on it, because nobody had been admitted
+      // yet. Stepping is still deterministic (a fixed number of fixed-length ticks from a seeded
+      // world), so `--step=1200` is the same picture every run.
+      if (stepTicks > 0) {
+        const before = await page.evaluate(() => globalThis.__parkfan_game.metrics().tick);
+        await page.evaluate((n) => globalThis.__parkfan_game.step(n), stepTicks);
+        await page
+          .waitForFunction(
+            (t) => globalThis.__parkfan_game.metrics().tick >= t,
+            before + stepTicks,
+            { timeout: Number(args.timeout ?? 90000) }
+          )
+          .catch(() => console_.warnings.push(`step: only reached tick ${before}+`));
+        await page.waitForTimeout(400);
+      }
       await page.evaluate(() => globalThis.__parkfan_game.nextFrame());
       await page.evaluate(() => globalThis.__parkfan_game.nextFrame());
       const file = path.join(out, `${tod.replace(':', '')}-${cam}.png`);

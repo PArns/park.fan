@@ -38,7 +38,7 @@ self.onmessage = (e: MessageEvent<MainToWorker>) => {
         runtime.start();
         break;
       case 'step':
-        for (let i = 0; i < msg.ticks; i++) runtime.scheduler.step();
+        runtime.step(msg.ticks);
         break;
       case 'dispose':
         runtime.dispose();

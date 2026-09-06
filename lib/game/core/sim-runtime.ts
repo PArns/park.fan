@@ -269,10 +269,27 @@ export class SimRuntime {
     this.world.clock.speed = speed;
   }
 
-  tick(): void {
+  /**
+   * Advance `ticks` fixed ticks even while the clock is paused.
+   *
+   * A step control that does nothing when paused is a step control nobody can use, and that is
+   * what this was: `tick()` computes `dt` from `clock.speed` and skips its whole body at `dt <= 0`,
+   * so the worker's `step` message ran the scheduler and the world stood still. The screenshot
+   * harness runs at `speed=0` for repeatability, so every frame of the guests module photographed
+   * an empty park with "Guests 0" in the HUD — the sim had never been given a minute to run in.
+   *
+   * A step is one tick at speed 1, which is the only reading of "one tick" that does not depend on
+   * a speed the caller has deliberately set to zero. It stays deterministic: fixed count, fixed
+   * length, seeded world.
+   */
+  step(ticks: number): void {
+    for (let i = 0; i < ticks; i++) this.tick(MINUTES_PER_TICK_AT_SPEED_1);
+  }
+
+  tick(dtOverride?: number): void {
     const t0 = now();
     const speed = this.world.clock.speed;
-    const dt = speed * MINUTES_PER_TICK_AT_SPEED_1;
+    const dt = dtOverride ?? speed * MINUTES_PER_TICK_AT_SPEED_1;
     if (dt > 0) {
       const clock = this.world.clock;
       clock.minute += dt;
