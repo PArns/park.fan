@@ -44,8 +44,20 @@ export const MAX_DRIVE_ACCEL = 11.8;
 /** Below this a train that is not being held is considered stalled and reported. */
 export const STALL_SPEED = 0.35;
 
-/** A train never leaves the station slower than this, whatever the transport section says. */
+/** A train never leaves a stop line slower than this, whatever the section after it says. */
 export const MIN_DISPATCH_SPEED = 1.2;
+
+/**
+ * Speed the station's drive tyres pull an arriving train in at, m/s.
+ *
+ * A station platform is powered in both directions — the tyres pull the train up to the stop line
+ * and push it out again — and the `speed: 0` on the `station` element means "hold it at rest once
+ * it is there", not "let it coast". Without this a train that arrives on the platform at walking
+ * pace stops 20 m short of its own stop line under nothing but rolling resistance and blocks the
+ * circuit for ever, which is what `Nordwind` did for five simulated minutes: 1 dispatch, 0 laps,
+ * three trains standing still.
+ */
+export const STATION_CREEP = 1.4;
 
 /** Restraint types a train may carry. Content chooses; geometry draws. */
 export type RestraintKind = 'lap' | 'shoulder' | 'vest' | 'none';

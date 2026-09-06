@@ -30,6 +30,7 @@ import {
   nextBlock,
   planBlocks,
   type BlockPlan,
+  type BlockSection,
 } from './blocks';
 import { attachTrainContent, resolveTrainProfile, trainLengthM, trainMassKg } from './manifest';
 import { samplerFor, stepTrain, type MotionContext, type SplineLike } from './motion';
@@ -366,7 +367,11 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
 
       const hold =
         cleared || !inHoldSection ? null : { from: b.from, stop: b.stop, distance: toStop };
-      applyDispatchPush(fleet, t);
+      // Both this block's stop line and the one behind it: a train released from a stop line 16 m
+      // before the next block boundary crosses it before its own tail has cleared the tyres.
+      const behind = plan.blocks[(block - 1 + n) % n];
+      applyReleasePush(fleet, t, b);
+      if (behind && behind !== b) applyReleasePush(fleet, t, behind);
       const result = stepTrain(t, fleet.motion, hold, dt, scratch);
       if (result.stalled && !fleet.reportedStall) {
         fleet.reportedStall = true;
@@ -397,20 +402,29 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
   }
 
   /**
-   * A departing train needs a push, and the station drive is the only thing that can give it one.
+   * A train released from a stop line leaves it at the section's own speed, under the section's own
+   * drive.
    *
-   * Modelled as a floor on the speed for as long as the train's tail is still on the platform,
-   * which is what the drive tyres do. Without it a station whose next element is plain level track
-   * dispatches a train at 0 m/s onto a 0 % gradient and it never moves — and a layout whose next
-   * element is a transport section would hide the bug, which is exactly what the three showcase
-   * layouts do.
+   * **This is what a powered block brake actually is, and getting it wrong deadlocked the fleet
+   * twice.** A mid-course block does not merely stop a train, it returns it to line speed and
+   * pushes it off; Intamin and B&M blocks do it with tyres or LSMs. Model the release as a nudge
+   * instead and `Nordwind` dies: its block brake sits at 829 m and the next 104 m are a level
+   * turnaround, so a train let go at 1.2 m/s decayed to the stall floor and spent four hundred
+   * simulated seconds crawling at 0.35 m/s with two trains queued behind it. Released at the
+   * block's declared 11 m/s it coasts the turnaround the way the layout was designed for.
+   *
+   * The first version of this only pushed out of the STATION, which looked right because
+   * `Alte Mühle` has a transport section after its platform and worked; `Nordwind` and
+   * `Kleiner Kreisel` both end their brake runs on plain level track and both stopped dead there.
+   *
+   * A floor and not an impulse: a train that arrives at speed is unaffected, so this can never add
+   * energy to a lap that was already running.
    */
-  function applyDispatchPush(fleet: Fleet, t: TrainState): void {
-    const { plan } = fleet;
-    if (t.mode !== 'running' || plan.station < 0) return;
-    const station = plan.blocks[plan.station];
-    const since = distanceAhead(plan, station.stop, t.s);
-    if (since >= 0 && since < fleet.trainLength) t.v = Math.max(t.v, MIN_DISPATCH_SPEED);
+  function applyReleasePush(fleet: Fleet, t: TrainState, block: BlockSection): void {
+    if (t.mode !== 'running') return;
+    const since = distanceAhead(fleet.plan, block.stop, t.s);
+    if (since < 0 || since >= fleet.trainLength) return;
+    t.v = Math.max(t.v, Math.max(block.speed, MIN_DISPATCH_SPEED));
   }
 
   // ── entity wiring ─────────────────────────────────────────────────────────────────────────

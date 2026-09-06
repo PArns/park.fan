@@ -38,18 +38,38 @@ import {
   MOTION_SUBSTEPS,
   RHO,
   STALL_SPEED,
+  STATION_CREEP,
   type TrainState,
 } from './types';
 
 /** Samples spread along the train for the mean-gradient term. */
 export const TRAIN_SAMPLES = 5;
 
+/**
+ * How hard a block hold brakes, m/s².
+ *
+ * Below `MAX_DRIVE_ACCEL` on purpose: 1.2 g is what a brake run is capable of and 0.45 g is what a
+ * scheduled stop feels like. It is also what decides how early the brakes come on, because the
+ * engagement test is "am I within my own braking distance", so a gentler number means a longer,
+ * smoother approach to the stop line.
+ */
+const HOLD_DECEL = 4.5;
+
 /** What the integrator needs to know about the curve. */
 export interface TrackSampler {
   /** Mean of the tangent's Y component over a train whose FRONT is at `s`, i.e. `dh/ds`. */
   gradeAt(s: number, trainLength: number): number;
-  /** Curvature magnitude at `s`, 1/m. */
-  curvatureAt(s: number): number;
+  /**
+   * The curvature VECTOR at `s`, 1/m, pointing at the centre of the osculating circle.
+   *
+   * A vector and not a magnitude, and that was a real bug rather than a tidiness point: rolling
+   * resistance is `µ·N` and `N` is `|v²κ⃗ + g⃗|`, so on an airtime crest — where κ⃗ points DOWN and
+   * very nearly cancels gravity — the wheels barely touch and the loss is close to zero. Summing
+   * the magnitudes instead charges `µ(G + |κ|v²)` there, i.e. the most friction exactly where
+   * there is least. Over `Alte Mühle`'s nine hops that took the lap from 104 s to 460 s and left
+   * the train creeping at the stall floor for the last 130 m.
+   */
+  curvatureAt(s: number): readonly [number, number, number];
   /** Wrap or clamp an arc length onto the layout. */
   wrap(s: number): number;
   length(): number;
@@ -89,13 +109,38 @@ export interface StepResult {
   stalled: boolean;
 }
 
-/** Every drive section covering `s`, honouring the wrap on a circuit. */
+/**
+ * Every drive section acting on a train whose front is at `s`, honouring the wrap on a circuit.
+ *
+ * **A lift and a transport section act on the whole train; a brake, a launch and a station act
+ * from the front.** That is not a convenience: a chain lift engages a dog under every car, so the
+ * chain keeps hauling until the LAST car leaves the lift — and testing the front alone let go of
+ * the train the moment its nose passed the crest, 17 m early, on a gradient that was still
+ * climbing. `Alte Mühle` stalled there every lap, at 3 m/s with 0.65 m/s² against it, and sat
+ * creeping over its own lift crest for twenty-five seconds. The other three solve
+ * `(v² − target²)/2s` over the distance they have LEFT, which is a question about the front and
+ * becomes meaningless once the front is past the section.
+ */
 function drivesAt(ctx: MotionContext, s: number, out: DriveSection[]): void {
   out.length = 0;
   const total = ctx.sampler.length();
+  // The seam: a section is tested against the train three times, shifted by ±one lap, which is the
+  // same trick `track/physics.ts`'s own `drivesAt` uses and is cheaper than normalising both ends.
+  const shifts = ctx.closed ? [0, -total, total] : [0];
   for (const d of ctx.drives) {
-    if (s >= d.from && s < d.to) out.push(d);
-    else if (ctx.closed && s + total >= d.from && s + total < d.to) out.push(d);
+    const body = d.kind === 'lift' || d.kind === 'transport';
+    const lo = body ? s - ctx.trainLength : s;
+    let hit = false;
+    for (const shift of shifts) {
+      const from = d.from + shift;
+      const to = d.to + shift;
+      // Half-open on the far end so a train exactly on a boundary belongs to one section only.
+      if (lo < to && s >= from) {
+        hit = true;
+        break;
+      }
+    }
+    if (hit) out.push(d);
   }
 }
 
@@ -123,11 +168,35 @@ export function stepTrain(
   for (let step = 0; step < MOTION_SUBSTEPS; step++) {
     const s = state.s;
     drivesAt(ctx, s, scratch);
+    const kappa = ctx.sampler.curvatureAt(s);
+    const grade = ctx.sampler.gradeAt(s, ctx.trainLength);
+    const gravity = -G * grade;
+
+    /**
+     * Is the block hold actually braking this sub-step?
+     *
+     * **Not "is the train inside the hold section" — that was a real deadlock.** A chain lift is
+     * 101 m long on `Nordwind`, so a train held for the block after it was cut loose from the
+     * chain the moment its nose entered the lift, 93 m before the stop line, on a 28° gradient:
+     * it decelerated at 4.6 m/s², stopped 8 m up the hill with its tail still in the station
+     * block, and the whole three-train fleet deadlocked behind it for ever. A real block stop is
+     * the opposite — the chain hauls the train all the way to the crest and the anti-rollbacks
+     * hold it there.
+     *
+     * So the brakes come on when the train is close enough to need them: within its own braking
+     * distance at a firm-but-not-emergency rate, plus a metre, and gravity's help or hindrance
+     * counted in. Before that the section's own drives run untouched.
+     */
+    const braked =
+      hold !== null &&
+      remaining > 0 &&
+      insideHold(ctx, s, hold) &&
+      remaining <= (state.v * state.v) / (2 * Math.max(1, HOLD_DECEL - gravity)) + 1;
 
     let driveAccel = 0;
     let clampTo: number | null = null;
     let floorTo: number | null = null;
-    let braking = false;
+    let braking = braked;
     for (const d of scratch) {
       const ahead = Math.max(1, d.to - s);
       if (d.kind === 'lift') {
@@ -144,33 +213,35 @@ export function stepTrain(
           const want = (state.v * state.v - d.speed * d.speed) / (2 * ahead);
           driveAccel -= Math.min(MAX_DRIVE_ACCEL, Math.max(0, want));
         }
+        // A platform's tyres run in both directions. The block hold is what stops the train at the
+        // end of them; see `STATION_CREEP`.
+        if (d.kind === 'station') {
+          floorTo = floorTo === null ? STATION_CREEP : Math.max(floorTo, STATION_CREEP);
+        }
       }
     }
 
-    // The block hold. It is a brake, so it only acts where there are brakes: inside the hold
-    // section. Outside it the train coasts and arrives at the section's brakes at whatever speed
-    // the layout gives it, which is what a block brake is sized for.
-    if (hold && remaining > 0 && insideHold(ctx, s, hold)) {
+    if (braked) {
       // A chain that is holding a train has stopped, and so have the friction wheels.
       clampTo = null;
       floorTo = null;
-      braking = true;
-      const need = (state.v * state.v) / (2 * Math.max(0.05, remaining));
+      // Gravity is in the solve because a brake run on a downgrade has to beat it as well as the
+      // train, and one that only cancelled kinetic energy would coast through its own stop line.
+      const need = (state.v * state.v) / (2 * Math.max(0.05, remaining)) + Math.max(0, gravity);
       driveAccel = Math.min(driveAccel, -Math.min(MAX_DRIVE_ACCEL, need));
     }
 
     if (clampTo !== null) state.v = Math.min(state.v, clampTo);
     if (floorTo !== null) state.v = Math.max(state.v, floorTo);
 
-    const kappa = ctx.sampler.curvatureAt(s);
-    const grade = ctx.sampler.gradeAt(s, ctx.trainLength);
-    // Specific normal force: the centripetal term and gravity, which is what presses the wheels
-    // into the rail. `kappa` is a magnitude here; the vertical bias is what makes a straight cost
-    // µ·g and a 4 g loop cost four times that.
-    const normal = Math.abs(kappa * state.v * state.v) + G;
+    // Specific normal force: `|v²κ⃗ + g⃗|`, which is what presses the wheels into the rail. A
+    // straight costs µ·g, a 4 g loop costs four times that, and an airtime crest costs almost
+    // nothing — the term `track/physics.ts` writes as `hypot(c0, c1 + G, c2)`.
+    const v2 = state.v * state.v;
+    const normal = Math.hypot(kappa[0] * v2, kappa[1] * v2 + G, kappa[2] * v2);
     const loss =
       state.v > STALL_SPEED ? ctx.rollingResistance * normal + dragK * state.v * state.v : 0;
-    const accel = -G * grade + driveAccel - loss;
+    const accel = gravity + driveAccel - loss;
 
     let v = state.v + accel * sub;
     if (v < 0) v = 0;
@@ -193,7 +264,9 @@ export function stepTrain(
     state.s = ctx.sampler.wrap(s + advance);
     if (hold) {
       remaining -= advance;
-      if (remaining <= 0) {
+      // Parked either by arriving at the stop line or by running out of speed within a metre of
+      // it, which is what the solve does when the last sub-step lands short.
+      if (remaining <= 0 || (braked && v < 0.02 && remaining < 1.5)) {
         state.s = ctx.sampler.wrap(hold.stop);
         state.v = 0;
         parked = true;
@@ -210,7 +283,6 @@ export function stepTrain(
 
 /** True when `s` is inside the hold section `[from, stop]`, honouring the wrap. */
 function insideHold(ctx: MotionContext, s: number, hold: HoldOrder): boolean {
-  const total = ctx.sampler.length();
   const from = hold.from;
   const stop = hold.stop;
   if (stop >= from) return s >= from && s <= stop;
@@ -241,8 +313,7 @@ export function samplerFor(spline: SplineLike): TrackSampler {
     length: () => total,
     wrap,
     curvatureAt(s) {
-      const k = spline.curvatureAt(wrap(s));
-      return Math.hypot(k[0], k[1], k[2]);
+      return spline.curvatureAt(wrap(s));
     },
     gradeAt(s, trainLength) {
       let sum = 0;
