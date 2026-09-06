@@ -7,27 +7,27 @@ mode: published
 featured: true
 excerpt: >-
   Ein Wartezeiten-Feed sagt dir, wie lang die Schlange gerade ist. Er sagt dir
-  nicht, ob du nach Taron noch rechtzeitig bei F.L.Y. bist. Dafür gibt es jetzt
-  den Tagesplaner: deine Bahnen auf einer Zeitleiste, jeder Block so hoch wie
-  seine vorhergesagte Wartezeit, und dazwischen der Weg.
+  nicht, ob deine Liste bis zum Parkschluss durchkommt. Dafür gibt es jetzt den
+  Tagesplaner: deine Bahnen auf einer Zeitleiste, jeder Block so hoch wie seine
+  vorhergesagte Wartezeit, und dazwischen der Weg.
 tags:
   - park-fan
   - tagesplaner
   - wartezeiten
   - tipps
-  - phantasialand
+  - orlando
   - hinter-den-kulissen
 category: news
 parkLinks:
-  # Hansa-Park bekommt einen eigenen Absatz: warum der Planer dort keine
+  # Hansa-Park bekommt einen eigenen Absatz darüber, warum der Planer dort keine
   # Knöpfe anbietet. Genau das fragt sich jemand auf dieser Parkseite.
-  - phantasialand
+  - magic-kingdom-park
   - hansa-park
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/background-16x9.jpg
-  alt: 'Ein beleuchtetes Kettenkarussell dreht sich im Phantasialand, links ein Lichterbaum'
-  caption: 'Kurz nach acht im Phantasialand. Bis hierhin muss ein Parktag erst mal kommen.'
+  src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
+  alt: 'Ein voll besetztes Freilufttheater von hinten, vor der Bühne wartet das Publikum im Dunkeln'
+  caption: 'Alle sind zur selben Zeit am selben Ort. Das ist der Normalfall, nicht die Ausnahme.'
   credit: 'Patrick Arns'
 seo:
   title: 'Tagesplaner für den Freizeitpark: Wartezeiten vorher einrechnen'
@@ -39,25 +39,31 @@ seo:
     - Freizeitpark Tag planen
     - Tagesplaner Freizeitpark
     - Wartezeiten planen
-    - Phantasialand Tag planen
+    - Magic Kingdom Tag planen
+    - Orlando Parkplanung
     - Reihenfolge Achterbahnen
     - Rope Drop
-    - Parkplan erstellen
 ---
 
-Es ist 15:40, ich stehe in Rookburgh, und der Plan war bis eben ein guter Plan.
-Noch [F.L.Y.](ref:phantasialand/fly), dann rüber zu
-[Taron](ref:phantasialand/taron), zum Schluss
-[Chiapas](ref:phantasialand/chiapas-die-wasserbahn), und um sechs will ich am
-Parkplatz stehen. An F.L.Y. hängen 55 Minuten, an Taron 50. Beide Zahlen
-stimmen. Trotzdem weiß ich in diesem Moment nicht, welche der drei Bahnen ich
-streichen muss. Ich merke es um zehn nach fünf, an der Absperrung in Klugheim,
-und da ist die Entscheidung schon für mich getroffen.
+Der Plan im Kopf hält bis ungefähr zwei Uhr nachmittags. Bis dahin hast du drei
+von acht Bahnen geschafft, stehst in der falschen Schlange und weißt, dass sich
+das nicht mehr ausgeht. Die Zahl über dem Eingang stimmt dabei die ganze Zeit.
+Sie stimmt praktisch immer. Sie sagt nur nichts darüber, ob der Rest deiner
+Liste heute noch passiert.
 
-Das war die Lücke. „Wie lang steht es gerade an“ beantwortet park.fan seit dem
-ersten Tag. „Ist das viel für einen Dienstag“ seit
-[letztem Sommer](/blog/sind-70-minuten-viel). Die dritte Frage stand nie
-irgendwo: Geht mein Tag so überhaupt auf?
+In einem kompakten Park kostet dich das eine Bahn, und du fährst sie beim
+nächsten Mal. In einem Park, der morgens um acht aufmacht und erst um elf abends
+zusperrt, der ein Dutzend Attraktionen hat, vor denen man ohne Weiteres eine
+Stunde steht, und in dem zwischen zwei davon zehn Gehminuten liegen, kostet es
+die Hälfte der Liste. Wer einen Tag in Orlando ohne Reihenfolge verbracht hat,
+kennt das Ergebnis: viel gelaufen, wenig gefahren, und abends ist die Hälfte
+nicht abgehakt. Nicht weil zu viel los war, sondern weil die Reihenfolge falsch
+war.
+
+Genau diese Lücke hatte park.fan bisher. „Wie lang steht es gerade an“
+beantworten wir seit dem ersten Tag. „Ist das viel für einen Dienstag“ seit
+[letztem Sommer](/blog/sind-70-minuten-viel). Die dritte Frage stand nirgends:
+Geht mein Tag so überhaupt auf?
 
 Seit dieser Woche steht sie da. Der [Tagesplaner](/tagesplaner) legt deine
 Bahnen auf eine Zeitleiste und rechnet den Tag durch, bevor du losfährst.
@@ -69,32 +75,42 @@ die Wartezeit, die für seine Stunde vorhergesagt ist. Ziehst du ihn in eine
 vollere Stunde, wächst er. Ziehst du ihn in eine ruhigere, schrumpft er. Der Tag
 wird dabei nicht länger oder kürzer, er verschiebt sich, und das sieht man.
 
-Zwischen zwei Blöcken steht der Umstieg: wie weit es ist und ob die Zeit
-reicht. Der Weg aus der Station und die Fahrt selbst stecken in diesem
-Zwischenraum und nicht im Block, weil sie zum Umsteigen gehören und nicht zum
-Anstehen.
+Zwischen zwei Blöcken steht der Umstieg: wie weit es ist und ob die Zeit reicht.
+Der Weg aus der Station und die Fahrt selbst stecken in diesem Zwischenraum und
+nicht im Block, weil sie zum Umsteigen gehören und nicht zum Anstehen.
 
 Klingt nach einer Kleinigkeit, ändert aber, wie man einen Parktag anguckt. Eine
 Liste mit acht Bahnen sagt nichts darüber, ob acht Bahnen an diesem Tag
-überhaupt drin sind. Acht Blöcke auf einer Zeitleiste, die um 19 Uhr endet,
+überhaupt drin sind. Acht Blöcke auf einer Zeitleiste, die um 23 Uhr endet,
 sagen es sofort.
 
-![Der Tagesplaner mit einem geplanten Phantasialand-Tag: sieben Blöcke auf einer Zeitachse von 9 bis 18 Uhr, dazwischen Umstiege mit Entfernung und Gehzeit. | Ein Samstag im Phantasialand, wie ihn der Planer zeigt. Die Höhe eines Blocks ist die Wartezeit, die für seine Stunde vorhergesagt ist.](/media/tagesplaner/planer-tag-de.webp)
+![Der Tagesplaner mit einem geplanten Tag im Magic Kingdom: zehn Blöcke auf einer Zeitachse ab 8 Uhr, dazwischen Umstiege mit Entfernung und Gehzeit. | Zehn Bahnen an einem Samstag im September, in dieser Reihenfolge vom Planer selbst sortiert.](/media/tagesplaner/planer-tag-de.webp)
 
-## Der Weg zählt mit, und im Phantasialand besonders
+Zehn Bahnen, vom Öffnen bis vier Uhr nachmittags, und unter dem Plan steht die
+Summe: fünf Stunden und eine Viertelstunde nur Anstehen. Das ist die Fassung,
+die der Sortierer für die beste gehalten hat. Ohne Reihenfolge stehst du genauso
+lange, fährst aber weniger.
 
-Ein Wartezeiten-Feed kann sagen, dass an Taron fünfzig Minuten stehen. Was er
-nicht sagen kann: dass du von Rookburgh aus nicht mehr rechtzeitig dort bist.
-Genau dafür ist der Umstieg da.
+## Zwischen zwei Bahnen liegt ein Weg
+
+Ein Wartezeiten-Feed kann sagen, dass an einer Bahn fünfzig Minuten stehen. Was
+er nicht sagen kann: dass du von dort, wo du gerade stehst, nicht mehr
+rechtzeitig hinkommst. Dafür ist der Umstieg da.
 
 Gerechnet wird mit der Entfernung zwischen den Koordinaten der beiden Bahnen,
 plus drei Minuten für den Weg aus der Station und drei fürs Einsteigen und
 Fahren, wo keine Fahrzeit hinterlegt ist. Die Entfernung ist Luftlinie, und der
 Planer nennt sie auch so. Sie ist eine Untergrenze und keine Gehzeit: Wege
-biegen um Wasser herum, um Warteschlangen und um Einbahnstraßen, und das
-[Phantasialand](ref:phantasialand?long) stapelt Rookburgh und Klugheim
-übereinander. Für die obere Grenze rechnet der Planer deshalb mit Parktempo
-statt mit Schrittgeschwindigkeit und legt zwei Drittel Umweg auf die Luftlinie.
+biegen um Wasser herum, um Warteschlangen und um Einbahnstraßen, manche Parks
+stapeln ihre Bereiche übereinander, und in einem großen kommt dazu, dass die
+Luftlinie quer über einen See führt, den es zu umrunden gilt. Für die obere
+Grenze rechnet der Planer deshalb mit Parktempo statt mit
+Schrittgeschwindigkeit und legt zwei Drittel Umweg auf die Luftlinie.
+
+In einem kompakten Park kostet ein ungeschickter Umstieg drei Minuten und fällt
+niemandem auf. In einem großen kostet er eine Viertelstunde. Wer den achtmal am
+Tag macht, hat zwei Stunden verlaufen, die in keiner Wartezeit-Statistik
+auftauchen.
 
 Steht am Umstieg „knapp“, heißt das nicht, dass es eng aussieht. Es heißt: Der
 Umstieg geht nicht mehr auf, wenn die Prognose so danebenliegt, wie sie selbst
@@ -103,23 +119,31 @@ aus der Streuung eine Ansage.
 
 ## „Früh kommen“ gilt nicht für jede Bahn
 
-Der Rat, den man überall liest, geht so: großer Coaster zuerst, direkt nach der
-Öffnung. Für viele Bahnen stimmt er. Für viele stimmt er auch nicht, und das
-sieht man erst, wenn man sich die Stunden einzeln ansieht.
+Der Rat, den man überall liest, geht so: die große Bahn zuerst, direkt nach der
+Öffnung. Manchmal stimmt er. Oft stimmt er nicht, und welches von beidem gilt,
+sieht man erst, wenn man sich die Stunden einzeln ansieht. Das
+[Magic Kingdom](ref:magic-kingdom-park) eignet sich dafür gut, weil sein Tag
+lang genug ist, dass die Kurven weit auseinanderlaufen.
 
-```hourly-profile-widget slug=phantasialand top=8
+```hourly-profile-widget slug=magic-kingdom-park top=8
 
 ```
 
-Tarons Tag ist bemerkenswert flach. Die Schlange steht morgens fast so lang wie
-abends, weil diese Bahn an einem normalen Tag schlicht keine ruhige Stunde hat.
-Chiapas dagegen füllt sich im Lauf des Tages spürbar auf, und Black Mamba
-läuft andersherum und wird zum Abend hin angenehm. Wer hier strikt nach „großes
-zuerst“ plant, steht bei Chiapas ausgerechnet dann an, wenn es sich gerade
-füllt, und gewinnt an Taron dafür fast nichts.
+Da stecken drei Muster drin, und jedes verlangt eine andere Antwort.
+[TRON](ref:magic-kingdom-park/tron-lightcycle-run) ist den ganzen Tag teuer und
+wird zum Abend hin noch teurer. Früh dranzugehen ist hier nie falsch, billiger
+wird es dadurch aber auch nicht: Es bleibt die längste Schlange, in der du an
+diesem Tag stehst.
+[Jungle Cruise](ref:magic-kingdom-park/jingle-cruise) läuft andersherum und
+sackt zum späten Abend hin weg, wer sich dort nachmittags anstellt, zahlt ein
+Vielfaches für dieselbe Fahrt. Und
+[Big Thunder](ref:magic-kingdom-park/big-thunder-mountain-railroad) ist über
+Stunden praktisch gleich teuer und taugt deshalb als Füllung für die Lücken, die
+die anderen beiden lassen.
 
-Im Planer steckt deshalb keine Rope-Drop-Regel. Der Code kennt den Begriff
-nicht einmal.
+Eine Faustregel kann diese drei Antworten nicht geben, weil sie alle drei Bahnen
+gleich behandelt. Im Planer steckt deshalb keine Rope-Drop-Regel, der Code kennt
+den Begriff nicht einmal.
 
 ```glossary-widget slug=rope-drop
 
@@ -127,18 +151,15 @@ nicht einmal.
 
 Was er kennt, ist die Stundenkurve jeder einzelnen Bahn. Liegt sie kurz nach der
 Öffnung am tiefsten, kommt „die große Bahn zuerst“ von allein heraus. Liegt sie
-flach, kommt etwas anderes heraus, und das ist dann auch richtig so. Eine feste
-Regel würde beiden Bahnen denselben Rat geben, obwohl ihre Tage nichts
-miteinander zu tun haben.
+flach, kommt etwas anderes heraus, und das ist dann auch richtig so.
 
 Eine zweite Sache, die man beim Planen im Kopf selten mitrechnet: Die erste
-Stunde gehört oft gar nicht dir. Das Phantasialand öffnet an vielen Tagen um
-neun, aber Taron, F.L.Y., beide Winja’s und Raik laufen erst ab zehn. Wer um
-neun am Drehkreuz steht und die erste Stunde mit Headlinern verplant hat, hat
-eine Stunde verplant, die es nicht gibt. Der Planer kennt die Öffnungszeit jeder
-einzelnen Bahn und lässt keinen Block davor rutschen. Ein Gegenstück dazu gibt
-es übrigens nicht: Wann eine einzelne Bahn abends dichtmacht, meldet kein Feed
-verlässlich, also steht dazu auch nichts da.
+Stunde gehört oft gar nicht dir. Viele Parks öffnen ihre Tore, bevor ein Teil
+der Bahnen läuft, und die Headliner sind gern unter denen, die später aufmachen.
+Wer die erste Stunde mit ihnen verplant, hat eine Stunde verplant, die es nicht
+gibt. Der Planer kennt die Öffnungszeit jeder einzelnen Bahn und lässt keinen
+Block davor rutschen. Ein Gegenstück dazu gibt es nicht: Wann eine einzelne Bahn
+abends dichtmacht, meldet kein Feed verlässlich, also steht dazu auch nichts da.
 
 ## Zwei Knöpfe sortieren den Tag
 
@@ -158,6 +179,11 @@ Entscheidung.
 2. **Die Summe der Wartezeiten.** Danach war ja gefragt.
 3. **Die Uhrzeit, zu der du dich das letzte Mal anstellst.** Wo zwei
    Reihenfolgen gleich viel kosten, gewinnt die, die früher fertig ist.
+
+In einem Park mit mehr Headlinern, als in einen Tag passen, ist Punkt eins das
+ganze Spiel. Deswegen verschwindet der Knopf auch nicht immer nach dem Drücken:
+Bleibt eine Bahn übrig, für die kein Platz mehr ist, steht darunter, wie viele
+es sind, und das Angebot bleibt stehen, falls du etwas anderes streichst.
 
 Einen Regler, der Anstehen gegen Herumstehen abwägt, gibt es bewusst nicht.
 Diese Zahl könnte niemand begründen, und die erste Person, die ihr widerspricht,
@@ -182,8 +208,8 @@ braucht.
 
 ## Was der Planer nicht weiß, sagt er dazu
 
-Am längsten haben wir nicht an den Zahlen gesessen, sondern an den vier
-Stellen, an denen der Planer bewusst weniger behauptet, als er könnte.
+Die längste Arbeit an so einem Ding sind die vier Stellen, an denen er bewusst
+weniger behauptet, als er könnte.
 
 **Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
 steht, wie weit die Vorhersagen für diese Bahn im Schnitt von dem entfernt
@@ -206,11 +232,11 @@ direkt aus der API und blendet die beiden Sortier-Knöpfe dort komplett aus. Wen
 jede Bahn dieselbe erfundene Zahl kostet, ist jede Reihenfolge gleich gut, und
 ein Knopf, der nichts ändert, wäre ein Versprechen.
 
-**Ein vergangener Tag bleibt.** Der Kalender lässt dich einen Tag wieder
-öffnen, an dem du etwas geplant hattest, und die automatischen Knöpfe sind dort
-weg. Alles von Hand geht weiter: verschieben, abhaken, löschen. Ein gelaufener
-Tag ist eine Aufzeichnung, und dass du Taron wirklich um eins gefahren bist, ist
-der Grund, warum er überhaupt aufbewahrt wird.
+**Ein vergangener Tag bleibt.** Der Kalender lässt dich einen Tag wieder öffnen,
+an dem du etwas geplant hattest, und die automatischen Knöpfe sind dort weg.
+Alles von Hand geht weiter: verschieben, abhaken, löschen. Ein gelaufener Tag
+ist eine Aufzeichnung, und dass du um eins wirklich in dieser Schlange standst,
+ist der Grund, warum er überhaupt aufbewahrt wird.
 
 ## Er liegt in deinem Browser
 
@@ -241,7 +267,7 @@ bekommst du ein Monatsraster, das mit der Auslastungsprognose dieses Parks
 eingefärbt ist. „Der übernächste Samstag“ ist damit eine Sache von einem Blick,
 und wie voll er vermutlich wird, steht unter dem Raster.
 
-![Schritt zwei des Planer-Assistenten: über dem Monatsraster ein Foto des Phantasialands, die Tage sind nach Auslastungsprognose eingefärbt, Samstag der 19. ist gewählt. | Statt sechzig Zeilen in einer Auswahlliste: ein Monat, eingefärbt danach, wie voll es voraussichtlich wird.](/media/tagesplaner/planer-wizard-de.webp)
+![Schritt zwei des Planer-Assistenten: über dem Monatsraster ein Foto des Europa-Park-Eingangs, die Tage sind nach Auslastungsprognose eingefärbt, Samstag der 19. ist gewählt. | Die erste Septemberwoche ist noch orange, ab dem 13. wird es grün. Das ist die Frage, die vor allen anderen kommt.](/media/tagesplaner/planer-wizard-de.webp)
 
 Die dritte Frage klingt nach Formular und ist wichtiger, als sie aussieht: Wie
 groß ist die kleinste Person, und wollt ihr trocken bleiben? Beides sind
@@ -255,8 +281,8 @@ Knopf, wenn Ziehen gerade unpraktisch ist.
 Wie ein einzelner Block zu seiner Höhe kommt, was „Aus Tagesprognose“ bedeutet
 und wie sich ein Umstieg berechnet, steht mit einer echten, eingefrorenen
 API-Antwort zum Ausprobieren auf der [Planer-Seite](/tagesplaner) selbst. Dort
-kannst du an einem fertigen Phantasialand-Samstag herumziehen, ohne dass an
-deinem eigenen Plan irgendetwas passiert.
+kannst du an einem fertigen Beispieltag herumziehen, ohne dass an deinem eigenen
+Plan irgendetwas passiert.
 
 Und wenn dir dabei etwas komisch vorkommt, eine Wegzeit, die nicht hinkommt,
 oder ein Umstieg, den es in echt nie gegeben hätte: Schreib mir, die
