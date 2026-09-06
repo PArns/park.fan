@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 13,
-    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 is now complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. ALL SIX STILL FAIL; track misses by 0.09. Mean 6.90 -> 7.70. camera, guests and shops are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 15,
+    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Mean 6.90 -> 7.70. Three more graded at round 1: guests 7.91, shops 8.23, camera 8.38. NINE MODULES GRADED, NONE HAS PASSED; the three closest miss by 0.09, 0.12 and 0.27. tools is built and ungated. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit. That is stated at the top of each critique.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -277,15 +277,22 @@
     },
     "shops": {
       "wave": 3,
-      "status": "built, ungated — 6,170 lines in 13 files. Sim: a queue per shop, a till per counter, stock, deliveries, takings, refusals, staffing demand, and find(need, x, z, cash) ranked by walk + wait in park minutes. Main: one parametric building generator (five massings), a 4x2 procedural PBR atlas, thin instances, a night-light pool. Measured: 12 shop types = 25 meshes / 19,094 triangles, and the draw calls are per TYPE not per shop — a park with eight burger stands costs what one costs. In the demo park 7 shops = 1.4 % of the 1,200 draw-call budget and 0.83 % of the frame. Sim tick 0.0007 ms. 51-check selftest, now wired as pnpm test:game-shops.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "status": "built, ungated — 6,170 lines in 13 files. Sim: a queue per shop, a till per counter, stock, deliveries, takings, refusals, staffing demand, and find(need, x, z, cash) ranked by walk + wait in park minutes. Main: one parametric building generator (five massings), a 4x2 procedural PBR atlas, thin instances, a night-light pool. Measured: 12 shop types = 25 meshes / 19,094 triangles, and the draw calls are per TYPE not per shop — a park with eight burger stands costs what one costs. In the demo park 7 shops = 1.4 % of the 1,200 draw-call budget and 0.83 % of the frame. Sim tick 0.0007 ms. 51-check selftest, now wired as pnpm test:game-shops. GRADED round 1: 8.23, FAIL — docs/game/critiques/shops-round1.md. Highest determinism and honesty on the branch. Role-not-id produced a visible result: neon-lagoon:smoothie stands on the demo park's main street because it answers `thirst` and nothing named it — one of only two places where pack content reaches a frame. Seven shops = 15 meshes / 10,436 triangles. The frame axis waits on a queue forming in it, which waits on guests arriving hungry.",
+      "round": 1,
+      "score": 8.23,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 6170,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 7.4,
+        "fidelity": 7.6,
+        "extensibility": 9.0,
+        "budget": 8.8,
+        "determinism": 9.2,
+        "reportHonesty": 9.0
+      },
+      "gradedAtCommit": "0405618",
+      "hardGates": "all pass"
     },
     "rides": {
       "wave": 3,
@@ -325,15 +332,22 @@
     },
     "guests": {
       "wave": 3,
-      "status": "built, ungated — ~4,700 lines in 13 files. The builder was killed by the account session limit with the sim and the crowd renderer written and NOTHING wired: no main.ts, a scaffold index.ts, and a module that had never been run. The integrator finished it and fixed four bugs that are what \"never been run\" looks like. Measured: 713 guests at 14 draw calls (1.2 % of the 1,200 budget) and 154,018 triangles; 676/386/148 triangles per guest by LOD; sim mean 0.80 ms/tick against a 6 ms whole-sim budget. Round 1.5: the needs column was widened to Float32 after the shops builder found it frozen (see openIssues). Round 2: buys through ShopsSimApi — the two models of buying are one.",
-      "round": 2,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "status": "built, ungated — ~4,700 lines in 13 files. The builder was killed by the account session limit with the sim and the crowd renderer written and NOTHING wired: no main.ts, a scaffold index.ts, and a module that had never been run. The integrator finished it and fixed four bugs that are what \"never been run\" looks like. Measured: 713 guests at 14 draw calls (1.2 % of the 1,200 budget) and 154,018 triangles; 676/386/148 triangles per guest by LOD; sim mean 0.80 ms/tick against a 6 ms whole-sim budget. Round 1.5: the needs column was widened to Float32 after the shops builder found it frozen (see openIssues). Round 2: buys through ShopsSimApi — the two models of buying are one. GRADED round 1: 7.91, FAIL — docs/game/critiques/guests-round1.md. 850 guests for 14 draw calls and 100,654 triangles is the cheapest thousand-object system in the project; the crowd reads well and the individual does not survive being stood next to (LOD 0 is 676 triangles and only eleven guests are drawn at it). The fidelity cap is the arrival state: the park takes NOTHING for the first four hours because every guest is admitted with its needs at zero.",
+      "round": 1,
+      "score": 7.91,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 4700,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 7.2,
+        "fidelity": 6.8,
+        "extensibility": 8.8,
+        "budget": 9.0,
+        "determinism": 8.5,
+        "reportHonesty": 8.5
+      },
+      "gradedAtCommit": "0405618",
+      "hardGates": "all pass"
     },
     "staff": {
       "wave": 3,
