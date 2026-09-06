@@ -17,9 +17,15 @@
  *  - **Momentum.** A guest that has decided does not re-decide for `decideIn` park minutes unless
  *    a need crosses its own `criticalAt`. Re-scoring every tick makes guests turn round in the
  *    middle of the path, which reads as a bug even when it is optimal.
- *  - **Nothing to do is a real answer.** With no shops and no rides — the state of the demo park
- *    today — the shortlist is benches, sights and somewhere to walk, and the guest takes it. It
- *    does not stand still, and it does not pretend a bench answers hunger.
+ *  - **Nothing to do is a real answer.** With no rides in the park — the state of the demo park
+ *    today — the shortlist is shops, benches, sights and somewhere to walk, and the guest takes
+ *    it. It does not stand still, and it does not pretend a bench answers hunger.
+ *
+ * The candidate list is not all one thing. Benches, sights and wander points are built from the
+ * entities by `sim.ts`; a shop is an OFFER from the `shops` module, carrying its own frontage point
+ * and the wait at its own counters, and it is appended per decision rather than indexed — see
+ * `shopCandidates`. Everything below scores the two the same way, which is the point of keeping
+ * `Venue` a plain record.
  *
  * Pure: no Babylon, no DOM, node-safe, and every random draw comes from the caller's `Rng`.
  */
@@ -46,6 +52,17 @@ export interface Venue {
   throughput: number;
   /** Guests currently heading here. Decays as they arrive. */
   incoming: number;
+  /**
+   * A wait somebody else has already measured, in park minutes.
+   *
+   * `incoming / throughput` is this module's own guess at a queue — how many people said they were
+   * coming, over how fast the thing serves — and it is the best a guest can do about a venue that
+   * simulates nothing. A shop does simulate it: `shops.find()` answers with the wait of a real line
+   * at a real counter, tills and all, and a guess standing next to a measurement is just a worse
+   * measurement. So when this is set it REPLACES the estimate rather than adding to it, and the
+   * arithmetic below is unchanged for every venue that leaves it undefined.
+   */
+  waitMinutes?: number;
 }
 
 export interface DecisionContext {
@@ -74,8 +91,17 @@ export interface Decision {
 }
 
 const SHORTLIST = 4;
-/** Below this a candidate is not worth walking to at all. */
-const FLOOR = 0.05;
+/**
+ * Below this a candidate is not worth walking to at all.
+ *
+ * Exported because `sim.ts` uses it as the gate on asking `shops.find()` at all. Every factor
+ * `scoreVenue` applies after the relief term is `≤ 1` — the price penalty, the wait penalty and the
+ * walk — so a need whose relief term alone is under the floor cannot produce a candidate that
+ * clears it, whatever shop answers. Skipping the query in that case is exact rather than a
+ * heuristic, and it is what keeps the query off the hot path: a guest asks about the one or two
+ * needs that are actually pressing, not about all seven, every time it re-plans.
+ */
+export const FLOOR = 0.05;
 
 /**
  * Urgency of one need, 0..1, rising sharply past the need's own `urgentAt`.
@@ -134,10 +160,12 @@ export function scoreVenue(ctx: DecisionContext, venue: Venue): number {
     value *= 0.35 + after * 0.65;
   }
 
-  // Queueing behind the people already on their way. `throughput` is per park minute, so this is
-  // literally the wait the reservation implies.
-  if (venue.throughput > 0 && venue.incoming > 0) {
-    const wait = venue.incoming / venue.throughput;
+  // Queueing behind the people already on their way. `throughput` is per park minute, so the
+  // fallback is literally the wait the reservation implies; `waitMinutes` is a real line, measured.
+  const wait =
+    venue.waitMinutes ??
+    (venue.throughput > 0 && venue.incoming > 0 ? venue.incoming / venue.throughput : 0);
+  if (wait > 0) {
     value *= 1 / (1 + wait / (6 + ctx.archetype.patience * 30));
   }
 

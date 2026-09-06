@@ -32,9 +32,32 @@
  * hour it landed on: the population the attendance curve asks for, placed on the network, with
  * needs aged by how long each guest would have been inside. It is deterministic (one seeded
  * stream, one pass in slot order) and it is the only place in this module that discards state.
+ *
+ * ── Buying is somebody else's model ────────────────────────────────────────────────────────
+ * This module used to run its own: a shop entity was a venue with a price and a `throughput`, a
+ * guest stood at it for a park minute, took the manifest's relief, credited `world.finance.cash`
+ * and emitted `shop:sale`. Meanwhile the `shops` module simulated a queue per shop, a till per
+ * counter, stock, deliveries and refusals, and had **no caller at all** — its own report said so:
+ * "No frame shows a queue at a counter, because nothing queues."
+ *
+ * So a shop is now asked rather than modelled. `shops.find(need, x, z, cash)` answers with the
+ * frontage point and a measured wait; `join` gives a ticket; `place` says where the holder should
+ * be standing THIS tick, which is what makes the line a place and not a marker on a building;
+ * `collect` hands over a receipt that moves real money against real stock; `leave` is a balk, and
+ * `lastRefusal` says why a counter turned somebody away instead of letting them wander off. Two
+ * halves of one contract: **`shops` banks the sale and this module debits the wallet**, so
+ * `serve()` — which does both — is now only reachable when no `shops` module answered.
+ *
+ * Which it may not: a showcase loads five modules. `ctx.module('shops')` returning `undefined` is a
+ * supported state everywhere below and puts the old venue model back, entity list and all. Rides
+ * keep it regardless, because that module does not exist yet and nothing else can answer for them.
  */
 
 import type { Command, Entity, EnvironmentState, SimContext, SimHandle } from '../core/types';
+// Type-only, so nothing of the shops module is linked into this one's graph: the API is reached
+// through `ctx.module('shops')` at run time and may answer `undefined`, which is the whole point of
+// the `shops == null` branches below. A showcase loads five modules, not twenty-four.
+import type { ShopOffer, ShopRefusal, ShopsSimApi } from '../shops/types';
 import { Rng } from '../core/rng';
 import { createStore, type StoreHandle } from './store';
 import {
@@ -52,7 +75,7 @@ import {
   signalIndex,
   type CompiledThought,
 } from './thoughts';
-import { decide, type Venue } from './decide';
+import { decide, FLOOR, urgency, type Venue } from './decide';
 import { encodeStyle, STYLE_VARIANTS } from './appearance';
 import {
   GuestState,
@@ -102,6 +125,45 @@ const CELL = 4;
 /** Guests in a cell at which a path stops flowing. */
 const JAM = 7;
 
+// ── Shopping ────────────────────────────────────────────────────────────────────────────────
+/**
+ * Destination kinds, as written into `destKind`.
+ *
+ * A byte in the store and therefore part of the save, so the numbers are appended to and never
+ * reordered. `KIND_QUEUE` is the one that is not a place the guest chose: it is where the shop
+ * said to stand, it moves every time the line shuffles forward, and it is deliberately walked to
+ * OFF the path graph — a queue slot is on the shop's own apron, and asking `paths.next()` for a
+ * route to it answers null, which this module reads as "lost".
+ */
+const KIND_SHOP = 2;
+const KIND_GATE = 6;
+const KIND_QUEUE = 7;
+/** Offers per need `shops.find()` is asked for. Four is the shortlist `decide` keeps anyway. */
+const SHOP_OFFERS = 3;
+/** Park minutes a guest with no patience at all will stand in a line; the rest is the archetype's. */
+const BALK_BASE = 4;
+/** Park minutes of line a guest with `patience: 1` will stand, on top of `BALK_BASE`. */
+const BALK_SPAN = 12;
+/** Close enough to the spot the shop named to count as standing in the line. */
+const STAND_RADIUS = 0.55;
+/** The ticket a served guest still carries while they stand at the counter with their food. */
+const SPENT_TICKET = -1;
+/**
+ * Fraction of the walking pace a guest covers the last metre of a line at.
+ *
+ * Only the last metre, and the distinction is what the first version of this got wrong. Joining is
+ * a WALK: the guest is standing up to `REACH_RADIUS` short of the frontage and the spot the shop
+ * names is another 0.7–4 m into its apron, so at 0.45 pace a guest took six park minutes to reach
+ * the front of an EMPTY queue — longer than the counter takes to serve them — and the line read as
+ * a trickle of people walking past a shop rather than as anybody standing at it. Past
+ * `SHUFFLE_STEP` they walk at their own pace; inside it, where the move is one place forward, they
+ * shuffle, because the crowd renderer interpolates between two frames and cannot tell a step from
+ * a teleport.
+ */
+const SHUFFLE_PACE = 0.45;
+/** Metres above which closing the gap to the named spot is a walk rather than a shuffle. */
+const SHUFFLE_STEP = 1.2;
+
 interface PathsLike {
   next(
     fromX: number,
@@ -148,6 +210,21 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   const rngChoice = ctx.rng.fork('choice');
   const rngWander = ctx.rng.fork('wander');
 
+  /**
+   * The counters, if anybody is running them.
+   *
+   * Resolved lazily and re-asked for until it answers, rather than captured once at construction:
+   * `ctx.module` reads the runtime's handle map, and which modules are in it is the integrator's
+   * list — a showcase loads five. Everything below has a `shops == null` branch that is exactly
+   * what this module did before the bridge existed, so an absent counter is a park with no shops in
+   * it and not a park with broken ones.
+   */
+  let shops: ShopsSimApi | undefined;
+  function shopsApi(): ShopsSimApi | undefined {
+    if (!shops) shops = ctx.module<ShopsSimApi>('shops');
+    return shops;
+  }
+
   let needs: NeedModel = readNeeds(ctx.registry as unknown as NeedRegistry);
   let archetypes: GuestArchetypeDef[] = guestArchetypes();
   let thoughts: CompiledThought[] = compile();
@@ -185,6 +262,49 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     return out;
   }
 
+  // ── Errands ───────────────────────────────────────────────────────────────────────────────
+  /**
+   * What a guest is doing at a shop, keyed by slot.
+   *
+   * Sparse on purpose — only the few dozen people mid-errand are in here, against a store that
+   * carries two thousand — and never iterated for anything the simulation depends on: every read is
+   * a `get` in the slot-ascending loop the tick already runs. `serialize` sorts it by slot so the
+   * bytes are stable, and that is the whole reason it can be a `Map` at all.
+   *
+   * `ticket` is the shop's own handle and `0` means "walking there, not in the line yet". Which of
+   * those two a guest is in is also readable off `destKind`, and the two must agree: `join` is the
+   * only place a ticket is issued and `endErrand` the only place one is dropped.
+   */
+  interface Errand {
+    shop: string;
+    ticket: number;
+    /** Absolute park minute they joined the line; 0 while still walking. */
+    joined: number;
+    /** Absolute park minute they give up. */
+    balkAt: number;
+  }
+  const errands = new Map<number, Errand>();
+
+  /**
+   * Give up a ticket and forget the errand.
+   *
+   * Called from every exit a guest has — served, balked, refused, gone home, re-seeded after a
+   * clock jump — because a ticket nobody hands back is a person standing in a shop's line who is
+   * not in the park any more, and the shop would hold their place for `BALK_AFTER` park minutes.
+   */
+  function endErrand(slot: number, giveUp: boolean): void {
+    const errand = errands.get(slot);
+    if (!errand) return;
+    errands.delete(slot);
+    if (giveUp && errand.ticket > 0) shopsApi()?.leave(errand.shop, errand.ticket);
+  }
+
+  /** Every outstanding ticket, handed back in slot order. A clock jump discards the whole park. */
+  function endAllErrands(): void {
+    const slots = [...errands.keys()].sort((a, b) => a - b);
+    for (const slot of slots) endErrand(slot, true);
+  }
+
   // ── World index ───────────────────────────────────────────────────────────────────────────
   let venues: Venue[] = [];
   let venuesDirty = true;
@@ -193,6 +313,25 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   let shopCount = 0;
   let sceneryPoints: Float32Array = new Float32Array(0);
   const venueById = new Map<string, Venue>();
+  /**
+   * The reservations a save carried, waiting for the index that will hold them.
+   *
+   * Same shape as the shops module's `pending`, and for the same reason: `rebuild()` runs before
+   * the first tick but `venues` is built lazily from the entity list, so the numbers have nowhere
+   * to land yet.
+   */
+  let pendingIncoming: Array<[string, number]> | null = null;
+  /** `venues` plus this guest's shop offers. Refilled per decision; see `rebuildVenues`. */
+  let candidates: Venue[] = [];
+  let staticVenues = 0;
+  /**
+   * One reusable `Venue` per offer slot.
+   *
+   * `decide` reads a candidate and hands one back; nothing keeps a reference past the call, so the
+   * objects are pooled. Without it a park of 1 400 people re-planning every few park minutes mints
+   * a few thousand short-lived objects a tick, which is a garbage collector inside the 6 ms budget.
+   */
+  const offerPool: Venue[] = [];
 
   const markDirty = (entity: Entity): void => {
     if (entity.kind === 'shop' || entity.kind === 'ride' || entity.kind === 'scenery') {
@@ -215,6 +354,13 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * and `needRelief`, a ride's `excitement`, and a scenery prop's `furniture === 'bench'`. So a
    * pack that ships a new bench is a place to sit with no code change, and this module never
    * learns the word `bench-wood`.
+   *
+   * **Shops are in here only when nothing better is.** With the `shops` module loaded, a shop
+   * venue built from the entity list would be a second, worse model of the same building: it would
+   * price it off the manifest rather than off the entity's own data bag, guess a wait from
+   * `incoming / throughput`, and know nothing about opening hours or an empty counter. So the
+   * entities are still COUNTED — `shopCount` feeds the park's appeal and the `shops` thought
+   * signal — and the candidates come from `shops.find()` per decision instead.
    */
   function rebuildVenues(): void {
     venuesDirty = false;
@@ -224,6 +370,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     rideCount = 0;
     shopCount = 0;
     const sights: number[] = [];
+    const ownShops = shopsApi() == null;
 
     for (const id of Object.keys(ctx.world.entities).sort()) {
       const entity = ctx.world.entities[id];
@@ -232,6 +379,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         const def = registry.find('shops', entity.pack, entity.item)?.def;
         if (!def) continue;
         shopCount++;
+        if (!ownShops) continue;
         const needId = typeof def.need === 'string' ? def.need : 'none';
         const column = needs.byId.get(needId)?.column ?? -1;
         const amount = typeof def.needRelief === 'number' ? def.needRelief : 160;
@@ -328,6 +476,21 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       }
     }
     for (const venue of venues) venueById.set(venue.id, venue);
+    // The soft reservations a save was written with, applied to the index that has just been built
+    // from the entities. Consumed once: a later rebuild (a bench added, the path graph re-cut) is
+    // not a load and must keep whatever the venues have accumulated since.
+    if (pendingIncoming) {
+      for (const [id, count] of pendingIncoming) {
+        const venue = venueById.get(id);
+        if (venue) venue.incoming = count;
+      }
+      pendingIncoming = null;
+    }
+    // The shortlist `chooseDestination` scores: these, plus whatever the shops answer with. The
+    // static half is copied once here rather than per decision, and the offers are truncated back
+    // to `staticVenues` each time, so a plan costs a `length =` and three pushes.
+    candidates = venues.slice();
+    staticVenues = candidates.length;
   }
 
   // ── Crowd grid ────────────────────────────────────────────────────────────────────────────
@@ -349,6 +512,19 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   let arrivedToday = 0;
   let leftToday = 0;
   let spentToday = 0;
+  let boughtToday = 0;
+  /**
+   * Errands that ended in nothing, by reason, reset with the day.
+   *
+   * The five shop refusals plus two this side owns: `balk`, the guest running out of patience, and
+   * `dropped`, a ticket that stopped being a place in a line without a receipt on it — sold out at
+   * the counter, or still standing there at closing. Declared with every key so the save is the
+   * same shape whatever happened, which is what keeps two serialisations comparable.
+   */
+  const REFUSAL_KEYS = ['closed', 'full', 'stock', 'price', 'unknown', 'balk', 'dropped'] as const;
+  const zeroRefusals = (): Record<string, number> =>
+    Object.fromEntries(REFUSAL_KEYS.map((k) => [k, 0]));
+  let refusedToday: Record<string, number> = zeroRefusals();
   let nextGroup = 1;
   let partyDebt = 0;
   let thoughtCursor = 0;
@@ -514,6 +690,11 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     d.happiness[slot] = 78 + rngBodies.range(-8, 8);
     d.decideIn[slot] = 0;
     d.thought[slot] = -1;
+    // The store hands out the LOWEST free slot, so this is the one the last person to walk out was
+    // in. Everything else about them was zeroed; the errand lives beside the store rather than in
+    // it, so it is cleared here — an inherited one would send a new arrival to somebody else's
+    // counter with somebody else's ticket.
+    errands.delete(slot);
 
     const base = slot * d.needCount;
     for (let c = 0; c < needs.count; c++) {
@@ -537,12 +718,18 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
 
   // ── Re-seeding after a clock jump ─────────────────────────────────────────────────────────
   function resettle(): void {
+    // Hand every ticket back before the people holding them stop existing. A shop keeps a place in
+    // its line for `BALK_AFTER` park minutes whatever happens to the guest, so a jump that skipped
+    // this would photograph a counter whose queue is full of nobody.
+    endAllErrands();
     store.clear();
     maxSlot = 0;
     nextGroup = 1;
     arrivedToday = 0;
     leftToday = 0;
     spentToday = 0;
+    boughtToday = 0;
+    refusedToday = zeroRefusals();
     if (venuesDirty || graphVersion !== (paths?.version() ?? 0)) rebuildVenues();
     const minute = ctx.world.clock.minute;
     const target = Math.round(peakPopulation() * attendance(minute));
@@ -584,12 +771,78 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     return scratchWeights.subarray(0, n);
   }
 
+  /**
+   * Ask the counters what they can do for this guest, and turn the answers into candidates.
+   *
+   * One `find()` per need that is actually pressing, and "pressing" is not a mood: it is the exact
+   * relief term `scoreVenue` would compute, tested against the same `FLOOR` the decision uses. Every
+   * factor applied after it — the price penalty, the wait penalty, the walk — is at most 1, so a
+   * need that cannot clear the floor on its own cannot produce a candidate that clears it either,
+   * and the query is skipped without changing a single decision. In the demo park that is one or
+   * two calls where the naive version made seven.
+   *
+   * The offer is trusted for everything it carries. `frontage` and not `at`, because those are two
+   * points the moment a build tool lets a player turn a kiosk round; `waitMinutes` rather than this
+   * module's `incoming / throughput` guess, because a real line has been counted at the other end.
+   */
+  function shopCandidates(slot: number, index: number): void {
+    const api = shopsApi();
+    candidates.length = staticVenues;
+    if (!api) return;
+    const base = slot * d.needCount;
+    const weights = needWeights;
+    let pooled = 0;
+    for (let c = 0; c < needs.count; c++) {
+      const need = needs.columns[c];
+      const level = d.needs[base + c];
+      if (level <= 0) continue;
+      const weight = weights[index * needs.count + c];
+      // The relief term, with the shop's own relief still unknown — 255 stands in for "all of it",
+      // which is the most generous reading and therefore the safe one for a gate that only skips.
+      const value =
+        urgency(level, need.urgentAt, need.criticalAt) * (level / 255) * need.moodWeight;
+      if (value * weight <= FLOOR) continue;
+      const offers = api.find(need.id, d.x[slot], d.z[slot], d.cash[slot], SHOP_OFFERS);
+      for (const offer of offers) {
+        candidates.push(fillOffer(pooled++, offer, c));
+      }
+    }
+  }
+
+  function fillOffer(index: number, offer: ShopOffer, column: number): Venue {
+    let venue = offerPool[index];
+    if (!venue) {
+      venue = {
+        id: '',
+        kind: 'shop',
+        x: 0,
+        z: 0,
+        relief: [{ column: 0, amount: 0 }],
+        price: 0,
+        excitement: 0,
+        throughput: 0,
+        incoming: 0,
+      };
+      offerPool[index] = venue;
+    }
+    venue.id = offer.id;
+    venue.x = offer.frontage[0];
+    venue.z = offer.frontage[1];
+    venue.relief[0].column = column;
+    venue.relief[0].amount = offer.relief;
+    venue.price = offer.price;
+    venue.waitMinutes = offer.waitMinutes;
+    return venue;
+  }
+
   function chooseDestination(slot: number): void {
     const index = d.archetype[slot];
     const archetype = archetypes[index];
     if (!archetype) return;
+    endErrand(slot, true);
+    shopCandidates(slot, index);
     const result = decide({
-      venues,
+      venues: candidates,
       needs,
       archetype,
       levels: d.needs,
@@ -618,14 +871,23 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       return;
     }
     setDestination(slot, venue.x, venue.z, kindCode(venue.kind));
-    venue.incoming += 1;
+    // Which shop, remembered now: `arriveAt` fires three park minutes from here on a REACH_RADIUS
+    // that catches whatever is nearest, and "the shop I chose" is not a thing a position can be
+    // asked afterwards once two kiosks share a plot.
+    if (venue.kind === 'shop' && shopsApi()) {
+      errands.set(slot, { shop: venue.id, ticket: 0, joined: 0, balkAt: 0 });
+    } else {
+      // A pooled offer is refilled on the next decision, so a reservation written into one is a
+      // number nobody will ever read; the real line is what `waitMinutes` already said.
+      venue.incoming += 1;
+    }
     d.decideIn[slot] = 4 + rngChoice.next() * 8;
   }
 
   function kindCode(kind: Venue['kind']): number {
     switch (kind) {
       case 'shop':
-        return 2;
+        return KIND_SHOP;
       case 'ride':
         return 3;
       case 'seat':
@@ -633,7 +895,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       case 'sight':
         return 5;
       case 'gate':
-        return 6;
+        return KIND_GATE;
       default:
         return 1;
     }
@@ -667,17 +929,31 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       d.leader[slot] = slot;
       return;
     }
+    // Somebody standing in a line is not available to be led anywhere; they have a ticket.
+    if (d.destKind[slot] === KIND_QUEUE) return;
     const leader = d.leader[slot];
     if (d.state[leader] === GuestState.LEAVING) {
       leaveNow(slot);
       return;
     }
-    if (d.destKind[leader] === 0) return;
+    // A leader already in a line is not a destination. The follower keeps whatever it was doing —
+    // usually walking to the same shop, where it will join and get a ticket of its own — because
+    // copying a queue slot would put two people on one square metre and give one of them a place in
+    // a line they never joined.
+    if (d.destKind[leader] === 0 || d.destKind[leader] === KIND_QUEUE) return;
     // A party walks abreast rather than in single file: the member's own lane offset is what
     // spreads them across the path, and it is already in `stepMove`.
     d.destX[slot] = d.destX[leader];
     d.destZ[slot] = d.destZ[leader];
     d.destKind[slot] = d.destKind[leader];
+    // Which shop, so the follower joins the one the leader chose rather than whatever building it
+    // happens to stop within 3.2 m of.
+    const errand = errands.get(leader);
+    if (d.destKind[leader] === KIND_SHOP && errand) {
+      errands.set(slot, { shop: errand.shop, ticket: 0, joined: 0, balkAt: 0 });
+    } else {
+      endErrand(slot, true);
+    }
     if (d.state[slot] !== GuestState.SITTING && d.state[slot] !== GuestState.BUYING) {
       d.state[slot] = GuestState.WALKING;
     }
@@ -686,19 +962,26 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   }
 
   function leaveNow(slot: number): void {
+    endErrand(slot, true);
     const gate = paths?.entrance() ?? { x: 0, z: parkSize * 0.33 };
-    setDestination(slot, gate.x, gate.z, 6);
+    setDestination(slot, gate.x, gate.z, KIND_GATE);
     d.state[slot] = GuestState.LEAVING;
   }
 
   // ── Arrival at a destination ──────────────────────────────────────────────────────────────
   function arriveAt(slot: number, now: number): void {
     const kind = d.destKind[slot];
-    const venue = venueById.get(nearestVenueId(slot));
-    if (venue && venue.incoming > 0) venue.incoming -= 1;
+    const errand = errands.get(slot);
+    // The soft reservation is a static venue's business. A shop's is a real queue, counted at the
+    // counter, so an errand skips this — and skips the 3 m position search that finds it.
+    if (!errand) {
+      const venue = venueById.get(nearestVenueId(slot));
+      if (venue && venue.incoming > 0) venue.incoming -= 1;
+    }
     switch (kind) {
-      case 6: {
+      case KIND_GATE: {
         // The gate. This is the only exit; a guest is never deleted mid-park.
+        endErrand(slot, true);
         leftToday++;
         ctx.events.emit('guest:left', {
           id: d.id[slot],
@@ -713,7 +996,14 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         d.busyUntil[slot] = now + 3 + rngChoice.next() * 9;
         break;
       }
-      case 2: {
+      case KIND_SHOP: {
+        // With a counter answering, arriving is joining a line — and being turned away from one is
+        // an outcome too. The old path below is what happens when no `shops` module is loaded: walk
+        // up, stand there for a park minute, take the manifest's relief.
+        if (errand) {
+          if (!joinQueue(slot, errand, now)) refuseErrand(slot, errand, now);
+          return;
+        }
         d.state[slot] = GuestState.BUYING;
         d.busyUntil[slot] = now + 0.6 + rngChoice.next() * 1.6;
         break;
@@ -750,6 +1040,169 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       }
     }
     return best;
+  }
+
+  // ── The counter ───────────────────────────────────────────────────────────────────────────
+  /**
+   * Join the line, and start walking to the spot the shop names.
+   *
+   * The guest is standing within `REACH_RADIUS` of the frontage at this point, which is up to 3.2 m
+   * short of it, and the spot is another 0.7–4 m into the shop's apron — so joining is not arriving.
+   * The walk to it goes through `KIND_QUEUE`, which is the one destination this module reaches
+   * WITHOUT the path graph: the apron is the shop's own paving and `paths.next()` has nothing to
+   * say about it, so asking would answer null and this module reads null as lost.
+   */
+  function joinQueue(slot: number, errand: Errand, now: number): boolean {
+    const api = shopsApi();
+    if (!api) return false;
+    const join = api.join(errand.shop, d.id[slot], d.cash[slot]);
+    if (!join) return false;
+    errand.ticket = join.ticket;
+    errand.joined = now;
+    const archetype = archetypes[d.archetype[slot]];
+    // How long they will stand there before it is not worth it — their own patience, not the
+    // shop's. The shop has a limit too and it is longer for most archetypes, so who gives up first
+    // is a fact about the person: a child at 0.2 lasts 6.4 park minutes, an enthusiast at 0.95
+    // lasts 15.4 and is thrown out by the shop's own 14 before that.
+    errand.balkAt = now + BALK_BASE + (archetype?.patience ?? 0.5) * BALK_SPAN;
+    setDestination(slot, join.stand[0], join.stand[1], KIND_QUEUE);
+    return true;
+  }
+
+  /**
+   * Turned away, with a reason.
+   *
+   * A guest who walked to a counter and got nothing used to be indistinguishable from one that
+   * wandered off, which is the criticism the shops module made of this bridge in its own report.
+   * The reason comes from the shop rather than from a guess here, it is counted, and the need that
+   * sent them keeps rising — so the next plan looks somewhere else, and `find()` will not offer
+   * this shop again while whatever was wrong with it is still wrong.
+   */
+  function refuseErrand(slot: number, errand: Errand, now: number): void {
+    const why: ShopRefusal = shopsApi()?.lastRefusal(errand.shop) ?? 'unknown';
+    refusedToday[why] = (refusedToday[why] ?? 0) + 1;
+    endErrand(slot, false);
+    d.destKind[slot] = 0;
+    d.state[slot] = GuestState.IDLE;
+    d.busyUntil[slot] = now + 0.4 + rngChoice.next() * 0.8;
+    d.decideIn[slot] = 0;
+    // Being turned away is a small unhappiness, and it is the only one this module charges for a
+    // shop: a queue that is merely slow is already paid for by the need that kept rising in it.
+    d.happiness[slot] = Math.max(0, d.happiness[slot] - 2);
+  }
+
+  /**
+   * One tick of standing in a line.
+   *
+   * Four questions in a fixed order, and the order is the contract. `collect` first, because the
+   * shops module ticks before this one and a sale completed in the same step is already sitting
+   * there as a receipt — asking `place` first would read null and call a served guest lost. Then
+   * `place`, which answers null for everything else that can end a ticket: sold out at the counter,
+   * thrown out at closing time, balked by the shop's own patience. Then this guest's own patience.
+   * Then the shuffle.
+   */
+  function stepQueue(slot: number, dt: number, now: number): void {
+    const api = shopsApi();
+    const errand = errands.get(slot);
+    if (!api || !errand || errand.ticket <= 0) {
+      // Nothing is holding this guest here. Never leave one standing: a queue with no counter
+      // behind it is exactly the "stuck guest" the soak fails on.
+      endErrand(slot, false);
+      d.destKind[slot] = 0;
+      d.state[slot] = GuestState.IDLE;
+      d.decideIn[slot] = 0;
+      return;
+    }
+    d.stuckFor[slot] = 0;
+
+    const sale = api.collect(errand.shop, errand.ticket);
+    if (sale) {
+      const base = slot * d.needCount;
+      const paid = Math.min(d.cash[slot], Math.max(0, sale.cents));
+      d.cash[slot] -= paid;
+      d.spent[slot] += paid;
+      spentToday += paid;
+      boughtToday += 1;
+      // `shops` banked it in `completeSale`. Crediting `finance.cash` here as well is the "two
+      // writers of one number" the determinism axis fails a module for, and it is why the old
+      // `serve()` path below is unreachable whenever a counter answered.
+      const column = needs.byId.get(sale.need)?.column;
+      if (column !== undefined) {
+        const at = base + column;
+        d.needs[at] = Math.max(0, d.needs[at] - sale.relief);
+      }
+      d.happiness[slot] = Math.min(100, d.happiness[slot] + 3);
+      // The errand stays in the map with a spent ticket for as long as the guest is at the counter
+      // taking their food, and that is what tells `stepBehaviour` not to run `serve()` over the top
+      // of a sale that has already been paid for. Dropped there, not here.
+      errand.ticket = SPENT_TICKET;
+      d.destKind[slot] = 0;
+      d.state[slot] = GuestState.BUYING;
+      d.busyUntil[slot] = now + 0.4 + rngChoice.next() * 1.1;
+      d.decideIn[slot] = 0;
+      return;
+    }
+
+    const stand = api.place(errand.shop, errand.ticket);
+    if (!stand) {
+      // The ticket is gone and there was no sale on it: sold out, closing time, or the shop's own
+      // balk. `lastRefusal` is per shop rather than per ticket, so this is counted under its own
+      // name instead of borrowing one that may belong to somebody else's join.
+      refusedToday.dropped += 1;
+      endErrand(slot, false);
+      d.destKind[slot] = 0;
+      d.state[slot] = GuestState.IDLE;
+      d.busyUntil[slot] = now + 0.3;
+      d.decideIn[slot] = 0;
+      return;
+    }
+
+    if (now >= errand.balkAt) {
+      api.leave(errand.shop, errand.ticket);
+      // `leave` only reaches the line, never a till: a guest already being served cannot be pulled
+      // back, and asking again is how this tells the two apart without a fifth API call.
+      if (api.place(errand.shop, errand.ticket) == null) {
+        refusedToday.balk += 1;
+        endErrand(slot, false);
+        d.destKind[slot] = 0;
+        d.state[slot] = GuestState.IDLE;
+        d.decideIn[slot] = 0;
+        d.happiness[slot] = Math.max(0, d.happiness[slot] - 4);
+        return;
+      }
+    }
+
+    // Shuffle. The spot moves every time somebody ahead is served, and a line that snaps to its new
+    // spot is a line the renderer draws teleporting — it interpolates between two frames and has no
+    // way to tell a step from a jump.
+    d.destX[slot] = stand[0];
+    d.destZ[slot] = stand[1];
+    const dx = stand[0] - d.x[slot];
+    const dz = stand[1] - d.z[slot];
+    const len = Math.sqrt(dx * dx + dz * dz);
+    if (len <= STAND_RADIUS) {
+      d.state[slot] = GuestState.QUEUING;
+      d.actual[slot] = 0;
+      // Face the counter, which is the direction the line runs, not wherever they last walked.
+      const stall = shopsApi()?.frontage(errand.shop);
+      if (stall) d.heading[slot] = turnToward(d.heading[slot], atan2To(stall, slot), 0.25);
+      return;
+    }
+    d.state[slot] = GuestState.WALKING;
+    const speed = d.speed[slot] * (len > SHUFFLE_STEP ? 1 : SHUFFLE_PACE);
+    const step = Math.min(speed * dt, len);
+    d.x[slot] += (dx / len) * step;
+    d.z[slot] += (dz / len) * step;
+    d.y[slot] = (terrain?.height(d.x[slot], d.z[slot]) ?? d.y[slot]) + 0.07;
+    d.actual[slot] = speed;
+    d.heading[slot] = turnToward(d.heading[slot], Math.atan2(dx, dz), Math.min(1, dt * 6));
+    d.phase[slot] = (d.phase[slot] + step * 3.7) % (Math.PI * 2);
+    d.lastX[slot] = d.x[slot];
+    d.lastZ[slot] = d.z[slot];
+  }
+
+  function atan2To(at: [number, number], slot: number): number {
+    return Math.atan2(at[0] - d.x[slot], at[1] - d.z[slot]);
   }
 
   /** Pay for what the venue sells and take the relief. */
@@ -876,6 +1329,13 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   function stepBehaviour(slot: number, dt: number, now: number, closing: boolean): void {
     d.decideIn[slot] -= dt;
 
+    // 0. Holding a ticket. Nothing else applies while a guest is in somebody's line — not the
+    //    leader's plan, not the closing sweep — and `stepQueue` is the only way out of it.
+    if (d.destKind[slot] === KIND_QUEUE) {
+      stepQueue(slot, dt, now);
+      return;
+    }
+
     // 1. Timed states: sitting on a bench, being served, standing in a line.
     const busy = d.state[slot];
     if (busy === GuestState.SITTING || busy === GuestState.BUYING || busy === GuestState.QUEUING) {
@@ -891,7 +1351,14 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         }
         return;
       }
-      if (busy === GuestState.BUYING) serve(slot);
+      // `serve` is the no-shops-module path: it moves the money AND takes the relief. A guest who
+      // came through a counter has been paid for once already, at `collect`, and calling this on
+      // them would credit `finance.cash` a second time for one sale. The spent ticket still in the
+      // map is what says which of the two this was.
+      if (busy === GuestState.BUYING) {
+        if (errands.has(slot)) errands.delete(slot);
+        else serve(slot);
+      }
       d.state[slot] = GuestState.IDLE;
       d.busyUntil[slot] = now;
       d.destKind[slot] = 0;
@@ -962,6 +1429,9 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * looks like an eight-metre avenue rather than a queue.
    */
   function stepMove(slot: number, dt: number): void {
+    // A queue slot is off the graph and `stepQueue` has already moved this guest to it. Routing to
+    // it would ask `paths.next()` for the apron of a shop, get null, and call the guest lost.
+    if (d.destKind[slot] === KIND_QUEUE) return;
     const state = d.state[slot];
     const moving =
       state === GuestState.WALKING ||
@@ -1120,8 +1590,16 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       signals[SIG.happiness] = d.happiness[slot];
       signals[SIG.mood] = d.mood[slot];
       signals[SIG.cash] = d.cash[slot];
+      // Park minutes ALREADY spent in the line, which is what the signal's own docstring promises
+      // and what a person complains about. The fallback is the ride placeholder's timer, where the
+      // only number available is how much of it is left.
+      const errand = errands.get(slot);
       signals[SIG.queueMinutes] =
-        d.state[slot] === GuestState.QUEUING ? Math.max(0, d.busyUntil[slot] - now) : 0;
+        errand && errand.joined > 0 && errand.ticket > 0
+          ? Math.max(0, now - errand.joined)
+          : d.state[slot] === GuestState.QUEUING
+            ? Math.max(0, d.busyUntil[slot] - now)
+            : 0;
       signals[SIG.crowding] = cell >= 0 ? Math.min(1, density[cell] / JAM) : 0;
       signals[SIG.rain] = env.precipitation === 'none' ? 0 : env.intensity;
       signals[SIG.hot] = Math.max(0, Math.min(1, (env.temperatureC - 19) / 12));
@@ -1205,10 +1683,23 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     const groups = new Set<number>();
     const answered = new Uint8Array(Math.max(1, needs.count));
     for (const venue of venues) for (const relief of venue.relief) answered[relief.column] = 1;
+    // With a shops module loaded, the shops are not in `venues` — so `unmet` would report every
+    // hungry guest as unanswered in a park full of burger vans. The counters say which needs they
+    // are open for; `unanswered` on their side is the same question asked the other way round.
+    const api = shopsApi();
+    if (api) {
+      for (const view of api.list()) {
+        if (!view.open || view.stock <= 0) continue;
+        const column = needs.byId.get(view.need)?.column;
+        if (column !== undefined) answered[column] = 1;
+      }
+    }
 
+    let queuing = 0;
     for (let slot = 0; slot <= maxSlot; slot++) {
       const state = d.state[slot];
       if (state === GuestState.GONE) continue;
+      if (d.destKind[slot] === KIND_QUEUE) queuing++;
       const name = GUEST_STATE_NAMES[state] ?? String(state);
       byState[name] = (byState[name] ?? 0) + 1;
       happiness += d.happiness[slot];
@@ -1245,6 +1736,9 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       lost,
       groups: groups.size,
       spentToday,
+      queuing,
+      boughtToday,
+      refusedToday: { ...refusedToday },
       tickMs: Number(lastTickMs.toFixed(3)),
     };
   }
@@ -1274,6 +1768,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       const levels: Record<string, number> = {};
       for (let c = 0; c < needs.count; c++) levels[needs.columns[c].id] = d.needs[base + c];
       const thoughtIndex = d.thought[slot];
+      const errand = errands.get(slot);
       return {
         slot,
         id: d.id[slot],
@@ -1288,6 +1783,13 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         arrivedAt: d.arrivedAt[slot],
         destination: d.destKind[slot] ? [d.destX[slot], d.destZ[slot]] : null,
         thought: thoughtIndex >= 0 ? (thoughts[thoughtIndex]?.def.text ?? null) : null,
+        errand: errand
+          ? {
+              shop: errand.shop,
+              ticket: errand.ticket,
+              waited: errand.joined > 0 ? Math.max(0, absMinute() - errand.joined) : 0,
+            }
+          : null,
       };
     },
   };
@@ -1296,6 +1798,8 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     arrivedToday = 0;
     leftToday = 0;
     spentToday = 0;
+    boughtToday = 0;
+    refusedToday = zeroRefusals();
     thoughtTally.clear();
   });
 
@@ -1309,6 +1813,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         return true;
       }
       if (cmd.type === 'guests:clear') {
+        endAllErrands();
         store.clear();
         maxSlot = 0;
         return true;
@@ -1353,6 +1858,54 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         arrivedToday,
         leftToday,
         spentToday,
+        boughtToday,
+        refusedToday: { ...refusedToday },
+        // Tickets, and they are state in exactly the way the three accumulators below are.
+        //
+        // A guest holding one is a person standing in a shop's line, and the shop has that ticket
+        // in its own save; drop this half and a resumed park has a queue of ghosts at the counter
+        // and a crowd of people who walked to a shop and forgot why. Written as an array sorted by
+        // slot rather than as the `Map`'s own order, because insertion order is the order people
+        // happened to join and a resumed run rebuilds it in slot order — two identical parks whose
+        // saves differ by nothing but the order of a list is the same failure as the unsigned rng
+        // words the shops module found.
+        errands: [...errands.keys()]
+          .sort((a, b) => a - b)
+          .map((slot) => {
+            const errand = errands.get(slot) as Errand;
+            return {
+              slot,
+              shop: errand.shop,
+              ticket: errand.ticket,
+              joined: errand.joined,
+              balkAt: errand.balkAt,
+            };
+          }),
+        /**
+         * The soft reservations on the venues, and they are the fourth unsaved accumulator.
+         *
+         * `incoming` is how many people said they were on their way somewhere; `scoreVenue`
+         * divides a candidate's worth by the wait it implies, so it is an input to every decision.
+         * Rebuilt from the entity list it starts at zero, which means the first plan made after a
+         * resume is scored against an empty park — and it showed up as exactly that: one tick after
+         * a save was reloaded, `rng.choice` had advanced a different number of draws and
+         * `decideIn`, `destX` and `destZ` differed, with every position, need and id identical.
+         * Same class as `partyDebt` and the thought cursor, found the same way.
+         *
+         * Sorted by id, and only the non-zero ones: two identical parks must serialise to the same
+         * bytes, and a `Map` in whatever order the venues happened to be indexed does not.
+         */
+        //
+        // Still pending means the index has not been built since the load, so nothing has changed
+        // them and the save is written back as it arrived: save → load → save is byte-identical
+        // even when nothing ever ticked, which is the shape `test-game-save-roundtrip`'s first case
+        // asks of the world and the same courtesy this owes it.
+        incoming:
+          pendingIncoming ??
+          venues
+            .filter((v) => v.incoming !== 0)
+            .map((v) => [v.id, v.incoming] as [string, number])
+            .sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0)),
         maxSlot,
         lastAbsMinute,
         // The thought scanner's cursor and its budget. Same class of bug as the gate's debt below,
@@ -1401,6 +1954,40 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       arrivedToday = Number(slot.arrivedToday ?? 0);
       leftToday = Number(slot.leftToday ?? 0);
       spentToday = Number(slot.spentToday ?? 0);
+      boughtToday = Number(slot.boughtToday ?? 0);
+      refusedToday = zeroRefusals();
+      const savedRefusals = slot.refusedToday as Record<string, unknown> | undefined;
+      if (savedRefusals) {
+        for (const key of REFUSAL_KEYS) {
+          const value = Number(savedRefusals[key]);
+          refusedToday[key] = Number.isFinite(value) ? value : 0;
+        }
+      }
+      pendingIncoming = Array.isArray(slot.incoming)
+        ? (slot.incoming as unknown[])
+            .filter(
+              (e): e is [string, number] =>
+                Array.isArray(e) && typeof e[0] === 'string' && Number.isFinite(Number(e[1]))
+            )
+            .map(([id, n]) => [id, Number(n)] as [string, number])
+        : null;
+      errands.clear();
+      const savedErrands = Array.isArray(slot.errands) ? slot.errands : [];
+      for (const raw of savedErrands as Array<Record<string, unknown>>) {
+        const at = Number(raw?.slot);
+        const shop = typeof raw?.shop === 'string' ? raw.shop : '';
+        // A slot with nobody in it cannot be on an errand. Written saves never contain one, since
+        // a ticket is handed back at the gate; a hand-edited or truncated one might, and it would
+        // sit in the map for the rest of the park's life being serialised back out.
+        if (!shop || !Number.isFinite(at) || at < 0 || at >= d.capacity) continue;
+        if (d.state[at] === GuestState.GONE) continue;
+        errands.set(at, {
+          shop,
+          ticket: Number.isFinite(Number(raw.ticket)) ? Number(raw.ticket) : 0,
+          joined: Number.isFinite(Number(raw.joined)) ? Number(raw.joined) : 0,
+          balkAt: Number.isFinite(Number(raw.balkAt)) ? Number(raw.balkAt) : 0,
+        });
+      }
       maxSlot = Math.min(d.capacity - 1, Math.max(0, Number(slot.maxSlot ?? 0)));
       lastAbsMinute = Number(slot.lastAbsMinute ?? lastAbsMinute);
       partyDebt = Number(slot.partyDebt ?? 0);
@@ -1417,6 +2004,11 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       }
     },
     dispose() {
+      // Not `endAllErrands()`: a dispose is a teardown of the whole runtime, the shops module is
+      // being disposed alongside this one, and calling into a module that is halfway through its
+      // own teardown is how a leak check ends up chasing a queue entry nobody owns.
+      errands.clear();
+      shops = undefined;
       detachContent();
       offPack();
       offAdd();

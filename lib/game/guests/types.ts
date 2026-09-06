@@ -171,6 +171,19 @@ export interface GuestStats {
   groups: number;
   /** Cents spent inside the park today. */
   spentToday: number;
+  /** Guests standing in a shop's line right now, holding a ticket. */
+  queuing: number;
+  /** Counters served today, counted on the guest's side of the till. */
+  boughtToday: number;
+  /**
+   * Shop visits that ended in nothing, by the reason the shop gave.
+   *
+   * Keyed by `ShopsSimApi.lastRefusal()`'s vocabulary plus `balk` for a guest who ran out of
+   * patience in the line. It is here rather than only in `shops.stats()` because the two count
+   * different things and the difference is the interesting number: a shop counts what happened at
+   * its counter, this counts what happened to the person who walked there.
+   */
+  refusedToday: Record<string, number>;
   /** Milliseconds the last tick cost this module, measured by the caller's own clock. */
   tickMs: number;
 }
@@ -205,4 +218,12 @@ export interface GuestRecord {
   arrivedAt: number;
   destination: [number, number] | null;
   thought: Localized | null;
+  /**
+   * The shop this guest is on an errand to, if any.
+   *
+   * `ticket` is 0 while they are still walking there and the shop's own handle once they have
+   * joined the line; `waited` is park minutes since they joined. Null when the guest is not going
+   * shopping, and always null when no `shops` module answered.
+   */
+  errand: { shop: string; ticket: number; waited: number } | null;
 }
