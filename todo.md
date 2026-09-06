@@ -1,3 +1,39 @@
+# TODO — Ride downtime: measure locally before it leaves draft (2026-09-06)
+
+The frontend half of the downtime work is built (PR #416; the API side is
+[v4.api.park.fan#228](https://github.com/PArns/v4.api.park.fan/pull/228)). Two
+things are unmeasured, and both need a park with a ride actually reported DOWN —
+which is roughly 0.7 % of rides at any instant, in a minority of parks, so it
+takes picking one rather than waiting for one.
+
+Find a candidate by fetching a few open parks and grepping for
+`"effectiveStatus":"DOWN"`; Lotte World Adventure, Universal Studios Japan and
+Universal Studios Singapore all had one during the analysis.
+
+- [ ] **`pnpm build && pnpm start`, then `pnpm measure:cls --late` on a park page
+      with a DOWN ride, and on that ride's own page.** Against `localhost`, never
+      `127.0.0.1`, and never `next dev` — both report a confident 0.0000 for
+      reasons that have nothing to do with the page.
+
+      What could move: `OutageNote` adds a `w-full` line inside the card's badge
+      wrap, and attraction cards share row heights through subgrid, so one card
+      growing a line grows the whole row. It arrives with the server render, so
+      there should be no shift at paint; what to check is the row geometry
+      against a park with no DOWN ride.
+
+- [ ] **`pnpm check:card-framing` on the same park.** The note sits in the card's
+      lower panel, and the framed photo layer's box has to stay wider than 1.5.
+
+- [ ] **The reliability chapter has never been seen with data in it.** Every gate
+      in the API's `DOWNTIME_GATES` is provisional and currently withholds
+      everywhere, so `AttractionDowntimeSection` has only ever rendered its
+      one-line refusal. Once the API's phase 0 has run and the gates are
+      re-derived, look at the `figures` branch in all six languages: three
+      metrics in a `PanelGrid`, and the German and French sentences under them
+      are the longest.
+
+---
+
 # TODO — Trip Planner
 
 A multi-day, multi-park trip planner: pick days, drag rides onto a timeline, get a

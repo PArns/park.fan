@@ -1258,6 +1258,26 @@
     },
     "planner": {
       "dragIn": "Arrastrar al plan"
+    },
+    "downtime": {
+      "title": "Averías notificadas",
+      "hint": "Lo que ha notificado la fuente de datos del parque, no lo que publica el operador.",
+      "reportedCaption": "En {days} días",
+      "reportedDetail": "{count} averías notificadas en {observedDays} días de operación observados.",
+      "medianCaption": "Mediana en minutos",
+      "medianDetail": "La mitad de las {usable} averías con final observado terminaron a los {minutes} minutos.",
+      "longestCaption": "La más larga en minutos",
+      "shareDetail": "Alrededor del {percent} % del tiempo en que la atracción estuvo funcionando.",
+      "withheld": {
+        "not_down_capable": "Para este parque ninguna fuente de datos notifica averías. Si {name} se avería, aquí no lo vemos.",
+        "artefact_regime": "Para este parque los avisos de avería nos llegan solo a fragmentos. De ahí no se puede leer una frecuencia.",
+        "no_schedule": "Este parque no publica horarios de apertura, por eso no mostramos cifras aquí.",
+        "thin_events": "En los últimos {days} días se notificaron {count} averías. Son demasiado pocas para dar una cifra.",
+        "thin_exposure": "Hemos visto funcionar {name} muy pocas veces en los últimos {days} días como para decir algo sobre averías.",
+        "inhomogeneous": "Las dos mitades de los últimos {days} días son demasiado distintas para que una cifra describa ambas.",
+        "recently_merged": "Esta ficha se fusionó hace poco con otra. Hasta que su historial vuelva a ser claro no mostramos cifras.",
+        "new_ride": "{name} no lleva funcionando el tiempo suficiente para poder decir algo sobre averías."
+      }
     }
   },
   "nearby": {

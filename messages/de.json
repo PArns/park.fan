@@ -1258,6 +1258,26 @@
     },
     "planner": {
       "dragIn": "In den Plan ziehen"
+    },
+    "downtime": {
+      "title": "Gemeldete Störungen",
+      "hint": "Was die Datenquelle des Parks gemeldet hat, nicht was der Betreiber veröffentlicht.",
+      "reportedCaption": "In {days} Tagen",
+      "reportedDetail": "{count} gemeldete Störungen an {observedDays} beobachteten Betriebstagen.",
+      "medianCaption": "Median in Minuten",
+      "medianDetail": "Die Hälfte der {usable} Störungen mit beobachtetem Ende war nach {minutes} Minuten vorbei.",
+      "longestCaption": "Längste in Minuten",
+      "shareDetail": "Rund {percent} % der Zeit, in der die Bahn lief.",
+      "withheld": {
+        "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
+        "artefact_regime": "Für diesen Park liegen uns Störungsmeldungen nur bruchstückhaft vor. Eine Häufigkeit lässt sich daraus nicht ablesen.",
+        "no_schedule": "Für diesen Park sind keine Öffnungszeiten veröffentlicht, deshalb zeigen wir hier keine Zahlen.",
+        "thin_events": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Für eine belastbare Zahl sind das zu wenige.",
+        "thin_exposure": "Wir haben {name} in den letzten {days} Tagen zu selten laufen sehen, um etwas über Störungen zu sagen.",
+        "inhomogeneous": "Die beiden Hälften der letzten {days} Tage sehen zu verschieden aus, als dass eine Zahl beide beschreiben könnte.",
+        "recently_merged": "Dieser Eintrag wurde kürzlich mit einem zweiten zusammengeführt. Bis die Historie wieder eindeutig ist, zeigen wir keine Zahlen.",
+        "new_ride": "{name} läuft noch nicht lange genug, als dass sich etwas über Störungen sagen ließe."
+      }
     }
   },
   "nearby": {

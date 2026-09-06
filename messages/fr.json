@@ -1258,6 +1258,26 @@
     },
     "planner": {
       "dragIn": "Glisser dans le plan"
+    },
+    "downtime": {
+      "title": "Pannes signalées",
+      "hint": "Ce que la source de données du parc a signalé, pas ce que l'exploitant publie.",
+      "reportedCaption": "En {days} jours",
+      "reportedDetail": "{count} pannes signalées sur {observedDays} jours d'exploitation observés.",
+      "medianCaption": "Médiane en minutes",
+      "medianDetail": "La moitié des {usable} pannes dont la fin a été observée étaient terminées après {minutes} minutes.",
+      "longestCaption": "La plus longue en minutes",
+      "shareDetail": "Environ {percent} % du temps où l'attraction fonctionnait.",
+      "withheld": {
+        "not_down_capable": "Aucune source de données ne signale de pannes pour ce parc. Si {name} tombe en panne, nous ne le voyons pas ici.",
+        "artefact_regime": "Les signalements de pannes ne nous parviennent que par fragments pour ce parc. Impossible d'en tirer une fréquence.",
+        "no_schedule": "Ce parc ne publie pas d'horaires d'ouverture, nous n'affichons donc aucun chiffre ici.",
+        "thin_events": "{count} pannes ont été signalées ces {days} derniers jours. C'est trop peu pour en tirer un chiffre.",
+        "thin_exposure": "Nous avons vu {name} fonctionner trop rarement ces {days} derniers jours pour dire quoi que ce soit sur les pannes.",
+        "inhomogeneous": "Les deux moitiés des {days} derniers jours sont trop différentes pour qu'un seul chiffre les décrive.",
+        "recently_merged": "Cette fiche a récemment été fusionnée avec une autre. Tant que son historique n'est pas clair, nous n'affichons aucun chiffre.",
+        "new_ride": "{name} ne fonctionne pas depuis assez longtemps pour que l'on puisse parler de pannes."
+      }
     }
   },
   "nearby": {

@@ -1258,6 +1258,26 @@
     },
     "planner": {
       "dragIn": "Drag into the plan"
+    },
+    "downtime": {
+      "title": "Reported outages",
+      "hint": "What the park's data source reported, not what the operator published.",
+      "reportedCaption": "In {days} days",
+      "reportedDetail": "{count} reported outages across {observedDays} observed operating days.",
+      "medianCaption": "Median in minutes",
+      "medianDetail": "Half of the {usable} outages with an observed end were over after {minutes} minutes.",
+      "longestCaption": "Longest in minutes",
+      "shareDetail": "About {percent} % of the time the ride was running.",
+      "withheld": {
+        "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
+        "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
+        "no_schedule": "This park publishes no opening hours, so we show no figures here.",
+        "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",
+        "thin_exposure": "We have seen {name} running too rarely in the last {days} days to say anything about outages.",
+        "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
+        "recently_merged": "This entry was recently merged with a second one. Until its history is unambiguous again we show no figures.",
+        "new_ride": "{name} has not been running long enough for anything to be said about outages."
+      }
     }
   },
   "nearby": {

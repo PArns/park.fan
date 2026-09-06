@@ -549,6 +549,49 @@ export interface AttractionOutage {
   startObserved: boolean;
 }
 
+/**
+ * What may be said about how often a ride is reported down, or why nothing is.
+ *
+ * A discriminated union on `kind` and never a bag of nullable numbers: the
+ * counts and thresholds that produced the verdict deliberately do not travel, so
+ * no client can re-derive it and arrive somewhere else.
+ *
+ * Three of the withheld reasons are statements about OUR data rather than about
+ * the ride, and the UI must keep them apart. `not_down_capable` in particular is
+ * not "this ride never breaks" — it is "no source in this park reports outages
+ * at all".
+ */
+export type DowntimeBlock =
+  | {
+      kind: 'figures';
+      windowDays: number;
+      /** Reported outages, works periods excluded. */
+      outages: number;
+      observedDays: number;
+      /** Empirical median over the outages with an observed end. */
+      medianMinutes: number;
+      /** How many outages that median is taken over. */
+      usableDurations: number;
+      longestMinutes: number;
+      /** Down over (down + operating) minutes. The only denominator shown. */
+      downShare: number;
+    }
+  | {
+      kind: 'withheld';
+      reason:
+        | 'not_down_capable'
+        | 'artefact_regime'
+        | 'no_schedule'
+        | 'thin_events'
+        | 'thin_exposure'
+        | 'inhomogeneous'
+        | 'recently_merged'
+        | 'new_ride';
+      /** 0 for the three reasons above that are about us, where it means "we cannot see". */
+      outages: number;
+      windowDays: number;
+    };
+
 export interface ParkAttraction {
   id: string;
   name: string;
@@ -578,6 +621,14 @@ export interface ParkAttraction {
    * there and nothing when it is not; never a "no outages" state.
    */
   outage?: AttractionOutage;
+  /**
+   * Reported-outage figures, or the reason there are none.
+   *
+   * Attached by the ATTRACTION DETAIL response only. It is deliberately absent
+   * from the park's attraction list and from the five-minute poll: the park page
+   * renders none of it, and a page that renders none of a thing must not ship it.
+   */
+  downtime?: DowntimeBlock;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
@@ -886,6 +937,13 @@ export interface AttractionResponse {
   typicalWaits?: TypicalWaits | null;
   /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
   rideProfile?: RideProfile | null;
+  /**
+   * How often this ride has been reported down, or the reason nothing is said.
+   *
+   * Absent while the reconstruction has never run. Present-and-withheld is a
+   * different state and carries the reason.
+   */
+  downtime?: DowntimeBlock;
 }
 
 /**
