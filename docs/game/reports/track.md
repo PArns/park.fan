@@ -229,9 +229,13 @@ the account session limit, which is recorded in `STATUS.json`.
 
 1. **The overview frame aliases the wooden structure into a smear.** At 340 m a timber member is
    0.26 m of real width against roughly 0.5 m per pixel, so the 556 columns and their bracing
-   sub-pixel-alias to a dark mass. Bracing alternate bays (done) halved the member count and it is
-   still visible in `1830-overview`. The real fix is a distance LOD that replaces the timber lattice
-   with a coarser silhouette, or MSAA the preset does not offer. Not attempted.
+   sub-pixel-alias to a dark mass, and **round 2 made this worse**: tiering the bracing added members
+   exactly where they are already too fine to resolve. (This paragraph used to say "bracing
+   alternate bays (done) halved the member count", which was the round-1 behaviour and was undone
+   four paragraphs above it — `track-round2.md` §4.4 caught the contradiction and it is corrected
+   here.) The real fix is a distance LOD that replaces the timber lattice with a coarser
+   silhouette, or MSAA the preset does not offer. Measured: the ties carry one LOD level, the rails
+   and the supports carry none. Not attempted.
 2. **Supports are vertical only.** A column meets the underside of the structure at whatever point
    is directly below it, and any stretch of track rolled past 78° is skipped entirely, because a
    vertical column would meet its underside edge-on. Real coasters cantilever off a neighbouring
