@@ -1,0 +1,14 @@
+{
+  "title": "Asistente, buscar el parque",
+  "tags": ["diagram"],
+  "alt": {
+    "es": "Primer paso del asistente: «Disneyland» escrito en el buscador y, debajo, cinco parques de cinco países."
+  },
+  "caption": {
+    "es": "Un nombre, cinco parques en tres continentes. Las rutas salen de la API, no de los nombres visibles."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}
