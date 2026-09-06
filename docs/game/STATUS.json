@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "4a39904",
+  "updatedAtCommit": "1a1e8c1",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -239,7 +239,7 @@
         "determinism": 9.4,
         "reportHonesty": 8.0
       },
-      "gradedAtCommit": "pending",
+      "gradedAtCommit": "1a1e8c1",
       "hardGates": "all pass",
       "verdict": "round 1 FAILED at 8.00 against 8.5 (docs/game/critiques/track-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
