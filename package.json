@@ -64,6 +64,7 @@
     "test:calendar-park-projection": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-park-projection.mjs",
     "test:live-park-counts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-park-counts.mjs",
     "test:live-park-daily-block": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-park-daily-block.mjs",
+    "test:live-outage": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-outage-clearing.mjs",
     "test:crop-box": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-crop-box.mjs",
     "test:media": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media.mjs",
     "test:photo-backlog": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-photo-backlog.mjs",

@@ -775,6 +775,17 @@
       "DOWN": "Storing",
       "UNKNOWN": "Onbekend"
     },
+    "outage": {
+      "since": "Storing gemeld sinds {when}",
+      "startUnknown": "Storing gemeld, begin onbekend",
+      "estimate": {
+        "range": "Storingen zoals deze duurden meestal nog {from} tot {to}.",
+        "rangeOpen": "Storingen zoals deze duurden meestal nog meer dan {from}.",
+        "compactProbability": "Ongeveer {percent}% was binnen een uur verholpen.",
+        "fullWithRange": "{range} Ongeveer {percent}% draaide binnen een uur weer.",
+        "fullProbability": "Van storingen die al zo lang duurden, draaide ongeveer {percent}% binnen een uur weer."
+      }
+    },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
       "reason": {
@@ -1254,6 +1265,28 @@
     },
     "planner": {
       "dragIn": "Naar het plan slepen"
+    },
+    "downtime": {
+      "title": "Gemelde storingen",
+      "hint": "Wat de databron van het park heeft gemeld, niet wat de exploitant publiceert.",
+      "reportedCaption": "In {days} dagen",
+      "reportedDetail": "{count} gemelde storingen op {observedDays} waargenomen bedrijfsdagen.",
+      "medianCaption": "Mediaan in minuten",
+      "medianDetail": "De helft van de {usable} storingen met een waargenomen einde was na {minutes} minuten voorbij.",
+      "longestCaption": "Langste storing",
+      "shareDetail": "Ongeveer {percent} % van de tijd dat de attractie draaide.",
+      "withheld": {
+        "not_down_capable": "Voor dit park meldt geen enkele databron storingen. Of {name} uitvalt zien we hier niet.",
+        "artefact_regime": "Storingsmeldingen bereiken ons voor dit park slechts fragmentarisch. Daar valt geen frequentie uit af te lezen.",
+        "no_schedule": "Voor dit park zijn geen openingstijden gepubliceerd, daarom tonen we hier geen cijfers.",
+        "thin_events": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Dat zijn er te weinig voor een betrouwbaar cijfer.",
+        "thin_exposure": "We hebben {name} de afgelopen {days} dagen te weinig zien draaien om iets over storingen te zeggen.",
+        "inhomogeneous": "De twee helften van de afgelopen {days} dagen verschillen te veel om met één cijfer te beschrijven.",
+        "recently_merged": "Dit item is onlangs samengevoegd met een tweede. Tot de geschiedenis weer eenduidig is tonen we geen cijfers.",
+        "new_ride": "{name} draait nog niet lang genoeg om iets over storingen te kunnen zeggen.",
+        "heavily_censored": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Van te veel daarvan hebben we het einde niet gezien, meestal omdat het park sloot terwijl de attractie nog stil stond. Dat is te weinig voor een tijdsduur."
+      },
+      "longestDetail": "Het maximum van de {count} gemelde storingen."
     }
   },
   "nearby": {

@@ -56,6 +56,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
+import { AttractionDowntimeSection } from '@/components/parks/attraction-downtime-section';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
@@ -720,6 +721,19 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
               />
             )}
+
+            {/* Chapter: how often it has been reported down — or one line saying why
+              we do not say. A ChapterPanel only where there are numbers: on the large
+              majority of ~7000 rides there is nothing to publish, and a heading
+              promising outages over a sentence taking it back would be six languages
+              of noise on the second-highest-cardinality route in the app. Three of the
+              refusals are about OUR data rather than the ride, and the copy keeps them
+              apart — "no source here reports outages" must never read as "this ride
+              never breaks". */}
+            <AttractionDowntimeSection
+              downtime={attraction.downtime}
+              attractionName={attraction.name}
+            />
 
             {/* Chapter: what this ride is and what it does — the curated link into
               the glossary. Static (hand-seeded) data, so it renders straight into

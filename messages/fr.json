@@ -775,6 +775,17 @@
       "DOWN": "Panne",
       "UNKNOWN": "Inconnu"
     },
+    "outage": {
+      "since": "Panne signalée depuis {when}",
+      "startUnknown": "Panne signalée, début inconnu",
+      "estimate": {
+        "range": "Les pannes de ce type duraient encore {from} à {to} en général.",
+        "rangeOpen": "Les pannes de ce type duraient encore plus de {from} en général.",
+        "compactProbability": "Environ {percent} % étaient résolues en une heure.",
+        "fullWithRange": "{range} Environ {percent} % étaient de nouveau signalées en service en une heure.",
+        "fullProbability": "Parmi les pannes durant déjà aussi longtemps, environ {percent} % étaient de nouveau signalées en service en une heure."
+      }
+    },
     "noLiveWaitTimes": {
       "title": "Pas de temps d’attente disponibles",
       "reason": {
@@ -1254,6 +1265,28 @@
     },
     "planner": {
       "dragIn": "Glisser dans le plan"
+    },
+    "downtime": {
+      "title": "Pannes signalées",
+      "hint": "Ce que la source de données du parc a signalé, pas ce que l'exploitant publie.",
+      "reportedCaption": "En {days} jours",
+      "reportedDetail": "{count} pannes signalées sur {observedDays} jours d'exploitation observés.",
+      "medianCaption": "Médiane en minutes",
+      "medianDetail": "La moitié des {usable} pannes dont la fin a été observée étaient terminées après {minutes} minutes.",
+      "longestCaption": "Panne la plus longue",
+      "shareDetail": "Environ {percent} % du temps où l'attraction fonctionnait.",
+      "withheld": {
+        "not_down_capable": "Aucune source de données ne signale de pannes pour ce parc. Si {name} tombe en panne, nous ne le voyons pas ici.",
+        "artefact_regime": "Les signalements de pannes ne nous parviennent que par fragments pour ce parc. Impossible d'en tirer une fréquence.",
+        "no_schedule": "Ce parc ne publie pas d'horaires d'ouverture, nous n'affichons donc aucun chiffre ici.",
+        "thin_events": "{count} pannes ont été signalées ces {days} derniers jours. C'est trop peu pour en tirer un chiffre.",
+        "thin_exposure": "Nous avons vu {name} fonctionner trop rarement ces {days} derniers jours pour dire quoi que ce soit sur les pannes.",
+        "inhomogeneous": "Les deux moitiés des {days} derniers jours sont trop différentes pour qu'un seul chiffre les décrive.",
+        "recently_merged": "Cette fiche a récemment été fusionnée avec une autre. Tant que son historique n'est pas clair, nous n'affichons aucun chiffre.",
+        "new_ride": "{name} ne fonctionne pas depuis assez longtemps pour que l'on puisse parler de pannes.",
+        "heavily_censored": "{count} pannes ont été signalées ces {days} derniers jours. Pour trop d'entre elles, nous n'avons pas vu la fin, le plus souvent parce que le parc a fermé alors que l'attraction était encore à l'arrêt. C'est trop peu pour en tirer une durée."
+      },
+      "longestDetail": "Le maximum sur les {count} pannes signalées."
     }
   },
   "nearby": {

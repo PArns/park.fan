@@ -775,6 +775,17 @@
       "DOWN": "Fermo",
       "UNKNOWN": "Sconosciuto"
     },
+    "outage": {
+      "since": "Guasto segnalato da {when}",
+      "startUnknown": "Guasto segnalato, inizio sconosciuto",
+      "estimate": {
+        "range": "I guasti come questo duravano di solito ancora da {from} a {to}.",
+        "rangeOpen": "I guasti come questo duravano di solito ancora più di {from}.",
+        "compactProbability": "Circa il {percent} % è stato risolto entro un'ora.",
+        "fullWithRange": "{range} Circa il {percent} % è tornato in funzione entro un'ora.",
+        "fullProbability": "Dei guasti che duravano già da così tanto, circa il {percent} % è tornato in funzione entro un'ora."
+      }
+    },
     "noLiveWaitTimes": {
       "title": "Nessun tempo di attesa disponibile",
       "reason": {
@@ -1254,6 +1265,28 @@
     },
     "planner": {
       "dragIn": "Trascina nel piano"
+    },
+    "downtime": {
+      "title": "Guasti segnalati",
+      "hint": "Quello che ha segnalato la fonte dati del parco, non quello che pubblica il gestore.",
+      "reportedCaption": "In {days} giorni",
+      "reportedDetail": "{count} guasti segnalati in {observedDays} giorni di esercizio osservati.",
+      "medianCaption": "Mediana in minuti",
+      "medianDetail": "Metà dei {usable} guasti con una fine osservata era finita dopo {minutes} minuti.",
+      "longestCaption": "Guasto più lungo",
+      "shareDetail": "Circa il {percent} % del tempo in cui l'attrazione era in funzione.",
+      "withheld": {
+        "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
+        "artefact_regime": "Per questo parco le segnalazioni di guasto ci arrivano solo a frammenti. Non se ne ricava una frequenza.",
+        "no_schedule": "Questo parco non pubblica gli orari di apertura, quindi qui non mostriamo cifre.",
+        "thin_events": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Sono troppo pochi per ricavarne una cifra.",
+        "thin_exposure": "Abbiamo visto {name} in funzione troppo di rado negli ultimi {days} giorni per dire qualcosa sui guasti.",
+        "inhomogeneous": "Le due metà degli ultimi {days} giorni sono troppo diverse perché una cifra le descriva entrambe.",
+        "recently_merged": "Questa scheda è stata unita di recente a un'altra. Finché la sua storia non è di nuovo chiara non mostriamo cifre.",
+        "new_ride": "{name} non è in funzione da abbastanza tempo per poter dire qualcosa sui guasti.",
+        "heavily_censored": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Di troppi non abbiamo visto la fine, di solito perché il parco ha chiuso mentre l'attrazione era ancora ferma. È troppo poco per indicare una durata."
+      },
+      "longestDetail": "Il massimo dei {count} guasti segnalati."
     }
   },
   "nearby": {

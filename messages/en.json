@@ -775,6 +775,17 @@
       "DOWN": "Down",
       "UNKNOWN": "Unknown"
     },
+    "outage": {
+      "since": "Outage reported since {when}",
+      "startUnknown": "Outage reported, start unknown",
+      "estimate": {
+        "range": "Outages like this one usually had {from} to {to} left.",
+        "rangeOpen": "Outages like this one usually had more than {from} left.",
+        "compactProbability": "About {percent}% were back within an hour.",
+        "fullWithRange": "{range} About {percent}% were reported running again within an hour.",
+        "fullProbability": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
+      }
+    },
     "noLiveWaitTimes": {
       "title": "No wait times available",
       "reason": {
@@ -1254,6 +1265,28 @@
     },
     "planner": {
       "dragIn": "Drag into the plan"
+    },
+    "downtime": {
+      "title": "Reported outages",
+      "hint": "What the park's data source reported, not what the operator published.",
+      "reportedCaption": "In {days} days",
+      "reportedDetail": "{count} reported outages across {observedDays} observed operating days.",
+      "medianCaption": "Median in minutes",
+      "medianDetail": "Half of the {usable} outages with an observed end were over after {minutes} minutes.",
+      "longestCaption": "Longest outage",
+      "shareDetail": "About {percent} % of the time the ride was running.",
+      "withheld": {
+        "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
+        "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
+        "no_schedule": "This park publishes no opening hours, so we show no figures here.",
+        "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",
+        "thin_exposure": "We have seen {name} running too rarely in the last {days} days to say anything about outages.",
+        "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
+        "recently_merged": "This entry was recently merged with a second one. Until its history is unambiguous again we show no figures.",
+        "new_ride": "{name} has not been running long enough for anything to be said about outages.",
+        "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration."
+      },
+      "longestDetail": "The maximum across the {count} reported outages."
     }
   },
   "nearby": {

@@ -528,6 +528,122 @@ export interface Land {
   name: string;
 }
 
+/**
+ * When a ride that is down right now was first reported down.
+ *
+ * Deliberately not a duration. `queue_data` is a change log whose hourly
+ * heartbeat copies the previous status forward, so minutes derived from it
+ * would be wrong upward exactly on the long outages. The UI renders a clock
+ * time and never an elapsed counter.
+ */
+export interface AttractionOutage {
+  /** ISO 8601 UTC. */
+  startedAt: string;
+  /**
+   * Whether the transition into DOWN was actually seen.
+   *
+   * False means the outage was already running at the edge of the seven-day
+   * window, so `startedAt` is the oldest reading and not the onset. The UI must
+   * name the day rather than a clock time in that case.
+   */
+  startObserved: boolean;
+  /**
+   * How long outages like this one usually still take from here.
+   *
+   * Absent whenever the measured curve cannot answer — under five operating
+   * minutes, too thin a sample, or a park publishing no opening hours so there
+   * is no operating clock. **Absence never means the outage is nearly over**,
+   * and there is no fallback copy that implies it.
+   */
+  estimate?: OutageEstimate;
+}
+
+/**
+ * The measured answer to "how much longer", never a prediction.
+ *
+ * The API's `docs/analytics/ride-downtime.md` §6 refuses to say when a ride will
+ * break next. This is the other question — it is broken now, and this is what
+ * happened to the outages that got this far. Conditioned on an observed event,
+ * measured over 5900-128 000 intervals per bucket, calibrated out-of-sample to
+ * 2.55 percentage points.
+ *
+ * ## Two rules for rendering it
+ *
+ * **`elapsedMinutes` is operating minutes, not wall time.** Do not compute it
+ * from `startedAt`: an outage that began at 18:00 in a park that shut at 20:00
+ * reads two hours the next morning, not sixteen, and the whole estimate is
+ * built on that clock.
+ *
+ * **Never show the median without the spread.** The distribution is
+ * heavy-tailed — at one hour elapsed the quartiles are 25 and 255 minutes
+ * around a median of 70 — so a lone median reads as a promise. `remaining` is
+ * absent past roughly two hours for exactly that reason, which means a
+ * component that renders only the median silently shows nothing on the long
+ * outages a visitor most wants to understand. Render the probability there.
+ */
+export interface OutageEstimate {
+  /** Operating minutes elapsed. NOT `now - startedAt`. */
+  elapsedMinutes: number;
+  /** P(reported running again within 30 more operating minutes), 0-1. */
+  recoveryWithin30: number;
+  /** P(reported running again within 60 more operating minutes), 0-1. */
+  recoveryWithin60: number;
+  /** Remaining operating minutes at the quartiles. Absent past ~2 hours. */
+  remaining?: { p25: number; median: number; p75: number | null };
+  /** Whether the park carried its own curve here. Diagnostic, not for display. */
+  basis: 'park' | 'pooled';
+}
+
+/**
+ * What may be said about how often a ride is reported down, or why nothing is.
+ *
+ * A discriminated union on `kind` and never a bag of nullable numbers: the
+ * counts and thresholds that produced the verdict deliberately do not travel, so
+ * no client can re-derive it and arrive somewhere else.
+ *
+ * Three of the withheld reasons are statements about OUR data rather than about
+ * the ride, and the UI must keep them apart. `not_down_capable` in particular is
+ * not "this ride never breaks" — it is "no source in this park reports outages
+ * at all".
+ */
+export type DowntimeBlock =
+  | {
+      kind: 'figures';
+      windowDays: number;
+      /** Reported outages, works periods excluded. */
+      outages: number;
+      observedDays: number;
+      /** Empirical median over the outages with an observed end. */
+      medianMinutes: number;
+      /** How many outages that median is taken over. */
+      usableDurations: number;
+      longestMinutes: number;
+      /** Down over (down + operating) minutes. The only denominator shown. */
+      downShare: number;
+    }
+  | {
+      kind: 'withheld';
+      reason:
+        | 'not_down_capable'
+        | 'artefact_regime'
+        | 'no_schedule'
+        | 'thin_events'
+        | 'thin_exposure'
+        | 'inhomogeneous'
+        | 'recently_merged'
+        | 'new_ride'
+        /**
+         * Plenty of outages, too few of them seen to END — the opposite claim
+         * to `thin_events`, so it gets its own sentence. Strongly seasonal on
+         * the API side (a run cut off by the park shutting for the winter),
+         * which is why this reason comes and goes without the ride changing.
+         */
+        | 'heavily_censored';
+      /** 0 for the three reasons above that are about us, where it means "we cannot see". */
+      outages: number;
+      windowDays: number;
+    };
+
 export interface ParkAttraction {
   id: string;
   name: string;
@@ -548,6 +664,23 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /**
+   * The running outage, present only while the ride reads DOWN.
+   *
+   * Absent is not "the ride is running": it is also every park whose sources
+   * cannot report an outage at all (only ThemeParks.wiki produces the status),
+   * and every ride inside a curated works period. Render the line when it is
+   * there and nothing when it is not; never a "no outages" state.
+   */
+  outage?: AttractionOutage;
+  /**
+   * Reported-outage figures, or the reason there are none.
+   *
+   * Attached by the ATTRACTION DETAIL response only. It is deliberately absent
+   * from the park's attraction list and from the five-minute poll: the park page
+   * renders none of it, and a page that renders none of a thing must not ship it.
+   */
+  downtime?: DowntimeBlock;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
@@ -856,6 +989,13 @@ export interface AttractionResponse {
   typicalWaits?: TypicalWaits | null;
   /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
   rideProfile?: RideProfile | null;
+  /**
+   * How often this ride has been reported down, or the reason nothing is said.
+   *
+   * Absent while the reconstruction has never run. Present-and-withheld is a
+   * different state and carries the reason.
+   */
+  downtime?: DowntimeBlock;
 }
 
 /**
