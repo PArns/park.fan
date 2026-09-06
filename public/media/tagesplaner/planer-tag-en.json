@@ -1,8 +1,6 @@
 {
   "title": "Trip planner, a planned day",
-  "tags": [
-    "diagram"
-  ],
+  "tags": ["diagram"],
   "alt": {
     "en": "The trip planner with a planned day at Magic Kingdom: ten blocks on a timeline from 8 in the morning, with transfers between them showing distance and walking time."
   },

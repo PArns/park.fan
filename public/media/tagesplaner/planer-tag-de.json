@@ -1,8 +1,6 @@
 {
   "title": "Tagesplaner, geplanter Tag",
-  "tags": [
-    "diagram"
-  ],
+  "tags": ["diagram"],
   "alt": {
     "de": "Der Tagesplaner mit einem geplanten Tag im Magic Kingdom: zehn Blöcke auf einer Zeitachse ab 8 Uhr, dazwischen Umstiege mit Entfernung und Gehzeit."
   },
