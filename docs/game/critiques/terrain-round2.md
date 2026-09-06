@@ -77,10 +77,21 @@ What holds it at 6.8 rather than 8:
 
 1. **No bundled pack uses it.** `grep -rn "groundLayers\|pathStyles\|trackElements\|cameraPresets"
    lib/game/content/packs/` returns **nothing** — neither `core-classic` nor `neon-lagoon` carries
-   a single entry for any of the four categories four modules now claim. So the mechanism is
-   unit-tested and has never been photographed, in this module or in any other. That is an
-   integrator finding as much as a terrain one, and it is the cheapest large improvement left in
-   the extensibility axis across the whole game.
+   a single entry for any of the four categories that were added to the packs by
+   `registerPackCategory` after the schema was written. Be precise about what that does and does
+   not say: the schema's **own** categories are used heavily and do reach the game (`neon-lagoon`
+   alone ships 5 scenery items, 4 shops, 5 rides, 4 track styles, and
+   `registry.unclaimedPackKeys()` is `[]`, which is how we know every key in both packs has an
+   owner). It is specifically the four passthrough extensions that no shipped content exercises, so
+   the mechanism four modules added to clear this axis is unit-tested and has never been
+   photographed — in this module or in any other. That is an integrator finding as much as a
+   terrain one, and it is the cheapest large improvement left in the extensibility axis across the
+   whole game. **Acted on while writing this:** `neon-lagoon` now carries a `cameraPresets` entry,
+   the running game reports 8 presets instead of 7 with `unclaimedPackKeys()` still `[]`, and
+   `--cam=lagoon` frames the demo park's lake (`.game-render/packpreset/1200-lagoon.png`) — the
+   first frame in this project taken through a pack's entry in a claimed category. It does not
+   move terrain's score, because `groundLayers` is the one of the four that a pack cannot exercise
+   without repainting every park: see the next point.
 2. **A retint is global, by index.** Indexing by paint byte is the right call for save
    compatibility and it means two themed packs cannot disagree about grass: `neon-lagoon` retinting
    `grass` would repaint the demo park too. A theme pack wants park- or theme-scoped layers, and

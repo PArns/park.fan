@@ -11,7 +11,7 @@
       "id": "cooling",
       "name": {
         "en": "Cooling off",
-        "de": "Abk\u00fchlung"
+        "de": "Abkühlung"
       },
       "decayPerHour": 18,
       "moodWeight": 0.9,
@@ -42,6 +42,17 @@
       },
       "materials": ["concrete-teal", "tile-aqua", "steel-black"],
       "ambience": "ambience-lagoon"
+    }
+  ],
+  "cameraPresets": [
+    {
+      "id": "lagoon",
+      "anchor": "park:water | park:centre",
+      "height": 4,
+      "bearing": 140,
+      "pitch": 9,
+      "frameRadius": "auto",
+      "fill": 0.62
     }
   ],
   "materials": [
@@ -157,7 +168,7 @@
       "id": "lamp-modern",
       "name": {
         "en": "Column light",
-        "de": "Lichts\u00e4ule"
+        "de": "Lichtsäule"
       },
       "category": "path-furniture",
       "footprint": [0.4, 0.4],
@@ -267,7 +278,7 @@
       "kind": "drink",
       "name": {
         "en": "Misting Station",
-        "de": "Spr\u00fchnebel-Station"
+        "de": "Sprühnebel-Station"
       },
       "need": "cooling",
       "needRelief": 220,
@@ -336,7 +347,7 @@
       "kind": "flume",
       "name": {
         "en": "Body slide",
-        "de": "K\u00f6rperrutsche"
+        "de": "Körperrutsche"
       },
       "flumeStyle": "body",
       "trackStyle": "fiberglass-open",
