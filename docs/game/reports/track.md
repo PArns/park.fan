@@ -67,7 +67,7 @@ the docblock.
   shape is pretty.** Stengel, 1976. `ops.ts`'s `loop` integrates κ(s) = a_c / v(s)² with v from
   energy, so the radius tracks v² — wide at the bottom where the train is fast, tight at the top
   where it has slowed. The teardrop is the consequence. Measured on `Nordwind`: a 3.4 g loop enters
-  on a 17.8 m radius and tops out on 6.3 m, and the rider's vertical g runs 4.20 at the bottom to
+  on a 23.7-29.5 m radius and tightens to 7.2 m at the crown, and the rider's vertical g runs 4.20 at the bottom to
   2.4 at the top instead of the 6-and-0 a circle would give.
 - **Banking follows the resultant acceleration vector, not the curve radius.** `build.ts` sets each
   auto-banked node's up-vector to `normalise(v²κ⃗ + g⃗)` at the speed the physics says the train
@@ -133,7 +133,7 @@ Through the registry, with the train each ride definition resolves to:
 | ------------------- | ------------ | ------ | --------- | ------ | ------------ | ------- | ------- | ----- | ------- |
 | **Nordwind**        | `steel-box`  | 979 m  | 104 km/h  | 46.0 m | −0.40 … 4.20 | 0.74    | 4.9 s   | 88 s  | 0.85 m  |
 | **Alte Mühle**      | `wood`       | 900 m  | 82 km/h   | 30.0 m | −0.66 … 3.02 | 0.44    | 12.0 s  | 104 s | 1.33 m  |
-| **Kleiner Kreisel** | `steel-tube` | 610 m  | 58 km/h   | 21 m   | 0.18 … 2.15  | 0.51    | 1.2 s   | 72 s  | 2.17 m  |
+| **Kleiner Kreisel** | `steel-tube` | 610 m  | 58 km/h   | 21 m   | 0.18 … 2.15  | 0.30    | 1.2 s   | 72 s  | 2.17 m  |
 
 All three complete with **zero issues** against their own pack limits (5.0/2.6/−1.8, 4.2/2.4/−1.5,
 3.5/2.0/−1.0) and arrive at their stations at 4.1, 4.0 and 2.3 m/s. Nordwind's 4.20 g is its loop;
@@ -173,6 +173,57 @@ Nine PNGs, all opened and looked at.
 - `2200-*` — night. The three coasters silhouette against a starfield and stay individually
   identifiable; nothing lights them, because ride light rigs belong to `effects`/`scenery` and the
   pack declares none on a coaster.
+
+## Round 2 — the critique, and what the numbers say now
+
+`docs/game/critiques/track-round1.md` failed this module at **8.00** against a pass mark of 8.5:
+frame 7.4 · fidelity 7.6 · extensibility 8.4 · budget 8.6 · determinism 9.4 · report honesty 7.0,
+with every hard gate passing. Two of its findings were structural and are fixed here; the numbers
+it disputed are corrected above rather than defended.
+
+**Elements-by-manifest did not work, and this report claimed it did.** The docstring on
+`registerTrackElementsFromPack` said a pack shipping the field "works already". The critic probed
+instead of reading and found two independent reasons it could not: `packManifestSchema` was a plain
+`z.object()`, which STRIPS unknown keys, so `'trackElements' in parsed === false` for every manifest
+and the `onPack` listener received the stripped copy too — and `registerTrackElementsFromPack` had
+**zero call sites**, so a surviving field would have reached nothing. That is the extensibility axis
+failing on the one thing it exists to protect.
+
+Both halves are fixed, and the fix is core's rather than this module's, because the problem was
+never about track: **no** module could own a content category. `packManifestSchema` passes unknown
+top-level keys through now, `Registry.registerPackCategory(category, owner)` lets a module claim
+one — the counterpart to `registerKind`, one level up — and `unclaimedPackKeys()` reports the keys
+nobody claimed, so a typo is a line naming the pack and the key instead of a silent empty array. It
+warns rather than throwing: a pack authored against a newer build, or against a module a showcase
+did not load, has to stay loadable.
+
+This module's half is `attachTrackElements(registry)`, called from both `createTrackSim` and
+`createTrackMain` and detached in both `dispose`s. It walks `registry.packs()` **and** subscribes
+to `onPack`, and both are needed: `onPack` fires on registration, and the bundled packs are
+registered before any module is built, so a listener alone would miss exactly the packs the game
+ships with. Proven end to end, and pinned by `pnpm test:game-registry`:
+
+    elements before attach: 21 → after: 22
+    probe-wave resolved: true  ["hill", { "height": "height", "length": "height * 4" }]
+    trackElements survived the schema: true
+    unclaimed keys reported: [{ "pack": "probe-pack", "key": "trackElments" }]
+
+**The wooden coaster was a row of bare poles, and the comment defending it was wrong.**
+`drawBracing` put one X per bay whatever its height, so a twenty-metre bay got a single diagonal
+across the whole of it; and timber skipped every second bay, under a comment claiming that "is also
+how a real wooden coaster is braced". It is not — a woodie's bents stand three to four metres apart
+and every bay between them is braced, tier by tier, and that lattice is the whole silhouette.
+Bracing is tiered now (a ledger roughly every 4.5 m of height, an X in each tier, capped at four
+tiers) and no bay is skipped. Measured at the `close` camera, like for like: **772,548 → 903,924
+triangles (+17 %) at an unchanged 90 draw calls**, and the structure reads as engineering rather
+than as posts.
+
+The tier cap is where the far-distance problem still sits: more members make the overview smear
+worse, and the honest answer to that is the silhouette LOD in weakness 1 below, which is still not
+built.
+
+**Round 2 was done by the integrator, not by a module builder** — the builder agent was killed by
+the account session limit, which is recorded in `STATUS.json`.
 
 ## What is weak or missing, ranked
 

@@ -26,7 +26,7 @@ import type { Material } from '@babylonjs/core/Materials/material';
 import type { Scene } from '@babylonjs/core/scene';
 import type { Entity, MainContext, MainHandle } from '../core/types';
 import { buildTrack, type BuiltTrack } from './build';
-import { trackElements, type TrackElementDef } from './elements';
+import { attachTrackElements, trackElements, type TrackElementDef } from './elements';
 import { createTrackMaterials, type TrackMaterials } from './materials';
 import { simulateTrack, type TrackPhysics } from './physics';
 import { buildTrackGeometry, type Geo, type TrackGroup } from './profile';
@@ -91,6 +91,9 @@ interface DrawnTrack {
 }
 
 export function createTrackMain(ctx: MainContext): MainHandle {
+  // Same claim as the sim half makes, because a showcase may load `main` without `sim`; the
+  // second registration of an element is a map write over the same key.
+  const detachElements = attachTrackElements(ctx.registry);
   const scene = ctx.scene as Scene;
   const materials: TrackMaterials = createTrackMaterials(
     scene,
@@ -288,6 +291,7 @@ export function createTrackMain(ctx: MainContext): MainHandle {
       if (data) create(data, change.entity.id);
     },
     dispose() {
+      detachElements();
       for (const track of tracks.values()) dispose(track);
       tracks.clear();
       materials.dispose();

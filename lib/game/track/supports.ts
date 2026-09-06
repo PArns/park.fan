@@ -266,12 +266,7 @@ export function buildSupports(
     // structure needs: two columns 12 m apart and 6 m tall are a portal frame, not two posts.
     if (span < 1.5 || span > 22) continue;
     if (Math.min(column.height, next.height) < 4) continue;
-    // Timber bents are 3.2 m apart and are already a lattice in themselves; bracing every bay as
-    // well doubles the member count for nothing a camera can resolve, and at the overview distance
-    // the extra hairlines alias the whole structure into a dark smear. Every other bay, which is
-    // also how a real wooden coaster is braced.
-    if (options.kind === 'timber' && i % 2 === 1) continue;
-    braces += drawBracing(member, column, next);
+    braces += drawBracing(member, column, next, options.kind);
   }
 
   return {
@@ -339,14 +334,47 @@ function drawBent(member: Geo, footing: Geo, column: Column, half: number): void
   }
 }
 
-/** An X-brace plus a ledger between two neighbouring columns. */
-function drawBracing(member: Geo, a: Column, b: Column): number {
+/**
+ * Ledgers and X-bracing between two neighbouring columns, in TIERS.
+ *
+ * The round-1 critique caught two things here and the second was a claim, not a bug. One X per bay
+ * whatever its height means a twenty-metre bay gets a single diagonal across the whole of it, and
+ * from sixty metres the wooden coaster read as a row of bare poles with the occasional thin cross
+ * — measured on `wood-hill.png`, with no aliasing involved. And the code skipped every second bay
+ * on timber, with a comment claiming that "is also how a real wooden coaster is braced". It is
+ * not. A woodie's bents stand three to four metres apart and EVERY bay between them is braced,
+ * tier by tier, which is the lattice the whole silhouette is made of.
+ *
+ * So: a horizontal ledger roughly every four and a half metres of height, an X in each tier
+ * between them, and no bay skipped. The tier count is capped at four because past that the members
+ * are thinner than a pixel at any distance the game is played from, and the far-distance problem
+ * they would make worse is a silhouette LOD nobody has built yet (see the module's report).
+ */
+function drawBracing(member: Geo, a: Column, b: Column, kind: 'steel' | 'timber' | 'none'): number {
   const lower = Math.min(a.height, b.height);
-  const mid = 0.55;
-  const aMid: V3 = [a.base[0], a.base[1] + lower * mid, a.base[2]];
-  const bMid: V3 = [b.base[0], b.base[1] + lower * mid, b.base[2]];
-  strut(member, aMid, bMid, BRACE_HALF);
-  strut(member, [a.base[0], a.base[1] + 0.4, a.base[2]], bMid, BRACE_HALF * 0.85);
-  strut(member, [b.base[0], b.base[1] + 0.4, b.base[2]], aMid, BRACE_HALF * 0.85);
-  return 3;
+  const tiers = Math.max(1, Math.min(4, Math.round(lower / 4.5)));
+  const ledgerHalf = kind === 'timber' ? BRACE_HALF * 1.15 : BRACE_HALF;
+  let count = 0;
+  // The lowest ledger sits clear of the footings; the top one under the track, not on it.
+  const first = 0.45;
+  const span = lower * 0.94 - first;
+  for (let t = 0; t < tiers; t++) {
+    const y0 = first + (span * t) / tiers;
+    const y1 = first + (span * (t + 1)) / tiers;
+    const a0: V3 = [a.base[0], a.base[1] + y0, a.base[2]];
+    const b0: V3 = [b.base[0], b.base[1] + y0, b.base[2]];
+    const a1: V3 = [a.base[0], a.base[1] + y1, a.base[2]];
+    const b1: V3 = [b.base[0], b.base[1] + y1, b.base[2]];
+    // One ledger per tier boundary, so the top of tier n is the bottom of tier n+1 and the bay
+    // does not get two members in the same place.
+    if (t === 0) {
+      strut(member, a0, b0, ledgerHalf);
+      count += 1;
+    }
+    strut(member, a1, b1, ledgerHalf);
+    strut(member, a0, b1, BRACE_HALF * 0.85);
+    strut(member, b0, a1, BRACE_HALF * 0.85);
+    count += 3;
+  }
+  return count;
 }

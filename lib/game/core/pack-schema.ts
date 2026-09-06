@@ -289,26 +289,82 @@ export const scenarioSchema = z.object({
   }),
 });
 
-export const packManifestSchema = z.object({
-  id: z.string().regex(/^[a-z0-9-]+$/),
-  version: z.number().int().positive(),
-  name: localized,
-  requires: z.array(z.string()).default([]),
-  needs: z.array(needSchema).default([]),
-  themes: z.array(themeSchema).default([]),
-  materials: z.array(materialSchema).default([]),
-  scenery: z.array(scenerySchema).default([]),
-  foliage: z.array(foliageSchema).default([]),
-  shops: z.array(shopSchema).default([]),
-  rides: z.array(rideSchema).default([]),
-  rigs: z.array(rigSchema).default([]),
-  trackStyles: z.array(trackStyleSchema).default([]),
-  trainStyles: z.array(trainStyleSchema).default([]),
-  buildings: z.array(buildingSchema).default([]),
-  audio: z.array(audioSchema).default([]),
-  icons: z.record(z.string(), z.string()).default({}),
-  scenarios: z.array(scenarioSchema).default([]),
-});
+/**
+ * The manifest keeps unknown top-level keys, and that `.passthrough()` at the bottom is the point.
+ *
+ * A plain `z.object()` STRIPS what it does not know, silently. So a module that wanted to own a
+ * content category of its own — the `track` module's `trackElements`, and every module after it —
+ * could declare it, ship a reader for it, document it, and get an empty array forever: the field
+ * was gone before any consumer saw the manifest. Measured on the running game before this changed:
+ * `'trackElements' in parsed === false`, and the `onPack` listener received the stripped copy too.
+ * That is the "extensibility is graded" rule failing on the one axis it exists to protect, because
+ * the category could not exist without a core edit — which is exactly what a manifest is for.
+ *
+ * `Registry` reports the extension keys no module has claimed rather than the schema refusing
+ * them: a pack authored against a newer build has to stay loadable, the same reasoning that makes
+ * an unknown season `null` rather than closed. What a module does inside its own key is its own
+ * business; core never reads in there.
+ */
+/**
+ * The manifest keeps unknown top-level keys, and the `.passthrough()` at the bottom is the point.
+ *
+ * A plain `z.object()` STRIPS what it does not know, silently. So a module that wanted to own a
+ * content category of its own — the `track` module's `trackElements`, and every module after it —
+ * could declare it, ship a reader for it, document it, and get an empty array forever: the field
+ * was gone before any consumer saw the manifest. Measured on the running game before this changed:
+ * `'trackElements' in parsed === false`, and the `onPack` listener received the stripped copy too.
+ * That is the "extensibility is graded" rule failing on the one axis it exists to protect, because
+ * the category could not exist without a core edit — which is exactly what a manifest is for.
+ *
+ * `Registry` reports the extension keys no module has claimed rather than the schema refusing
+ * them: a pack authored against a newer build has to stay loadable, the same reasoning that makes
+ * an unknown season `null` rather than closed. What a module does inside its own key is its own
+ * business; core never reads in there.
+ */
+export const packManifestSchema = z
+  .object({
+    id: z.string().regex(/^[a-z0-9-]+$/),
+    version: z.number().int().positive(),
+    name: localized,
+    requires: z.array(z.string()).default([]),
+    needs: z.array(needSchema).default([]),
+    themes: z.array(themeSchema).default([]),
+    materials: z.array(materialSchema).default([]),
+    scenery: z.array(scenerySchema).default([]),
+    foliage: z.array(foliageSchema).default([]),
+    shops: z.array(shopSchema).default([]),
+    rides: z.array(rideSchema).default([]),
+    rigs: z.array(rigSchema).default([]),
+    trackStyles: z.array(trackStyleSchema).default([]),
+    trainStyles: z.array(trainStyleSchema).default([]),
+    buildings: z.array(buildingSchema).default([]),
+    audio: z.array(audioSchema).default([]),
+    icons: z.record(z.string(), z.string()).default({}),
+    scenarios: z.array(scenarioSchema).default([]),
+  })
+  .passthrough();
+
+/** Every top-level key the schema itself knows; anything else is a module's extension category. */
+export const PACK_CORE_KEYS: readonly string[] = [
+  'id',
+  'version',
+  'name',
+  'requires',
+  'needs',
+  'themes',
+  'materials',
+  'scenery',
+  'foliage',
+  'shops',
+  'rides',
+  'rigs',
+  'trackStyles',
+  'trainStyles',
+  'buildings',
+  'audio',
+  'icons',
+  'scenarios',
+];
 
 export type PackManifest = z.infer<typeof packManifestSchema>;
 export type PackManifestInput = z.input<typeof packManifestSchema>;

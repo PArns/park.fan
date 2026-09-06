@@ -175,4 +175,55 @@ assert.throws(
   /answers need "shaed", which no registered pack declares/
 );
 
-console.log('✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs');
+// A module's OWN content category, added by a manifest and nothing else.
+//
+// `packManifestSchema` was a plain `z.object()`, which strips what it does not know. So the track
+// module's `trackElements` was deleted before any consumer saw it — measured on the running game:
+// `'trackElements' in parsed === false`, and the `onPack` listener got the stripped copy too. A
+// module could declare a category, ship a reader, document it, and get an empty array for ever.
+// The schema passes unknown keys through now and the registry reports the ones nobody claimed, so
+// a typo is a line naming the pack and the key instead of silence.
+{
+  const { attachTrackElements, trackElement, trackElements } =
+    await import('@/lib/game/track/elements.ts');
+  const r = new Registry();
+  r.registerPack(packs[0]);
+  const before = trackElements().length;
+  r.registerPack({
+    id: 'element-pack',
+    version: 1,
+    name: { en: 'Elements' },
+    requires: [packs[0].id],
+    trackElements: [
+      {
+        id: 'test-wave',
+        name: 'Test Wave',
+        category: 'special',
+        params: { height: { default: 6 } },
+        ops: [
+          ['hill', { height: 'height', length: 'height * 4' }],
+          ['straight', { length: 12 }],
+        ],
+      },
+    ],
+    // and a typo beside it, which must be reported rather than swallowed
+    trackElments: [{ id: 'never-read' }],
+  });
+  const detach = attachTrackElements(r);
+  assert.ok(
+    'trackElements' in (r.pack('element-pack') ?? {}),
+    'an unknown top-level manifest key must survive the schema'
+  );
+  assert.equal(trackElements().length, before + 1, 'a manifest alone must add a track element');
+  assert.equal(trackElement('test-wave')?.ops[0][0], 'hill', 'the element keeps its ops');
+  assert.deepEqual(
+    r.unclaimedPackKeys(),
+    [{ pack: 'element-pack', key: 'trackElments' }],
+    'a key no module claimed must be reported by name'
+  );
+  detach();
+}
+
+console.log(
+  '✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs, manifest-only track elements'
+);

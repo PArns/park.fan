@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "f4f3b61",
+  "updatedAtCommit": "0425afb",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 1,
-    "note": "One module graded. demo-park failed round 1 at 7.20; every other score below is null and that is the honest value."
+    "roundsRun": 2,
+    "note": "Two modules graded once each: demo-park 7.20 (FAIL), track 8.00 (FAIL). Both have had a round 2 shipped by the integrator and neither has been re-graded. Every other score below is null and that is the honest value."
   },
   "bundle": {
     "command": "pnpm build && pnpm game:bundle",
@@ -191,14 +191,22 @@
     "track": {
       "wave": 2,
       "status": "built, ungated — 5,495 lines in 21 files. C2 cubic spline through a tridiagonal solve (not Catmull-Rom: a C1 interpolant puts a curvature jump at every knot and curvature is what a rider feels), rotation-minimising roll gauge, the spline IS the heartline 1.1 m above the rails. Ten primitive ops are the only switch in the module and it switches on the instruction set; 19 elements are DATA on top of them, with op arguments as expressions parsed by a hand-written parser rather than Function(), because packs load from URLs. Physics is a fixed-delta-s energy march. selftest.mjs: 95 checks, now wired into pnpm test:game.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "round": 2,
+      "score": 8.0,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 5495,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 7.4,
+        "fidelity": 7.6,
+        "extensibility": 8.4,
+        "budget": 8.6,
+        "determinism": 9.4,
+        "reportHonesty": 7.0
+      },
+      "gradedAtCommit": "0425afb",
+      "hardGates": "all pass",
+      "verdict": "round 1 FAILED at 8.00 against 8.5 (docs/game/critiques/track-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "buildings": {
       "wave": 2,
@@ -371,6 +379,9 @@
     }
   },
   "openIssues": [
+    "CORE BUG, found by the track critic by probing rather than reading, fixed: `packManifestSchema` was a plain `z.object()`, which STRIPS unknown keys — so NO module could ever own a content category of its own. The track module's `trackElements` was deleted before any consumer saw it (`'trackElements' in parsed === false`, and the onPack listener got the stripped copy too), and `registerTrackElementsFromPack` had zero call sites on top of that. The manifest passes unknown keys through now; `registerPackCategory(category, owner)` lets a module claim one (the counterpart to registerKind, one level up) and `unclaimedPackKeys()` reports the rest, so a typo is a named line instead of a silent empty array. Proven end to end and pinned by pnpm test:game-registry: 21 -> 22 elements from a manifest with no TypeScript, and `trackElments` reported by name.",
+    "track round 2: bracing is tiered and no bay is skipped. It used to put ONE X per bay whatever its height, and skipped every second timber bay under a comment claiming that is how a real wooden coaster is braced — it is not; a woodie's bents stand 3-4 m apart and every bay between them is braced. Measured like for like at the `close` camera: 772,548 -> 903,924 triangles (+17 %) at an unchanged 90 draw calls.",
+    "STILL OPEN (track, its own #1 and the tier cap's reason): the wooden structure aliases into a dark smear at the `overview` camera, and more members make it worse. The honest fix is a distance LOD that swaps the lattice for a coarser silhouette. Not built.",
     "The account session limit has now killed a fan-out TWICE: 22 agents at xhigh (0 done, 22 errored) and then 3 agents (a demo-park round-2 builder and two critics, all three dead on the same 429). So the ceiling is TOKEN THROUGHPUT, not agent count, and the working assumption is at most one or two subagents at a time — or the integrator does the work in-session, which is how demo-park round 2 was done.",
     "demo-park round 2 (integrator, not a builder): planting now follows the circulation. Trees 893 -> 1,196; within 10 m of a path 6.9 % -> 16.2 %; the 80-120 m band 7.8 -> 46.6 trees/ha, so the bathtub profile the round-1 critic measured is gone. 34 % more trees cost 0 draw calls (145, unchanged) and 1.5 % more triangles, because scenery instances them. 16.2 % rather than 30 % is deliberate and argued in the report: the proxy can be gamed by pulling every setback under 10 m, which would close the canopy over three four-metre loops.",
     "STILL OPEN (track, its own #1): at 340 m a timber member is 0.26 m of real width against roughly 0.5 m per pixel, so 556 columns and their bracing sub-pixel-alias into a dark smear at the `overview` camera. Bracing alternate bays halved the member count and it is still visible. Needs a distance LOD that swaps the lattice for a coarser silhouette; the preset offers no MSAA. Confirmed by the integrator on `.game-render/track-verify/1200-overview.png` — the three layouts read as coaster shapes, the structure reads as speckle.",

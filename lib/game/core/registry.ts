@@ -3,7 +3,7 @@
  * and the renderer answer "what is core-classic:carousel" identically.
  */
 
-import { parsePack, type PackManifest } from './pack-schema';
+import { PACK_CORE_KEYS, parsePack, type PackManifest } from './pack-schema';
 
 export type ItemCategory =
   | 'needs'
@@ -38,6 +38,8 @@ export class Registry {
   private kinds = new Map<string, string>();
   private procedurals = new Map<string, ProceduralFactory>();
   private listeners = new Set<(pack: PackManifest) => void>();
+  /** Extension categories modules have claimed, by category name → owning module id. */
+  private packCategories = new Map<string, string>();
 
   private mapFor(category: ItemCategory): Map<string, RegisteredItem<ItemCategory>> {
     let map = this.index.get(category);
@@ -166,6 +168,42 @@ export class Registry {
   }
 
   /** Declare that `owner` (a module id) handles entities of `kind`. */
+  /**
+   * Claim a top-level manifest key for a module.
+   *
+   * The counterpart to `registerKind`, and the same idea one level up: core has no list of content
+   * categories and must not grow one. A module that owns `trackElements` says so here, reads the
+   * key off every manifest itself, and core's only job is to notice a key that NOBODY claimed —
+   * which is what turns a typo (`trackElments`) from a silent empty array into a line in the
+   * console naming the pack and the key.
+   *
+   * It is a warning and not a throw on purpose: a pack authored against a newer build, or against
+   * a module this session did not load (a showcase loads five modules, not twenty-four), has to
+   * stay loadable.
+   */
+  registerPackCategory(category: string, owner: string): void {
+    const existing = this.packCategories.get(category);
+    if (existing && existing !== owner) {
+      throw new Error(
+        `Pack category "${category}" is already claimed by "${existing}" (now "${owner}")`
+      );
+    }
+    this.packCategories.set(category, owner);
+  }
+
+  /** Manifest keys that are neither core's nor claimed by a module, per pack. */
+  unclaimedPackKeys(): Array<{ pack: string; key: string }> {
+    const out: Array<{ pack: string; key: string }> = [];
+    for (const pack of this.packList) {
+      for (const key of Object.keys(pack)) {
+        if (PACK_CORE_KEYS.includes(key)) continue;
+        if (this.packCategories.has(key)) continue;
+        out.push({ pack: pack.id, key });
+      }
+    }
+    return out;
+  }
+
   registerKind(kind: string, owner: string): void {
     const existing = this.kinds.get(kind);
     if (existing && existing !== owner) {

@@ -12,6 +12,7 @@
  */
 
 import type { Command, Entity, SimContext, SimHandle } from '../core/types';
+import { attachTrackElements } from './elements';
 import { buildTrack, type BuiltTrack } from './build';
 import type { TrackPhysics } from './physics';
 import { buildOptionsFor } from './resolve';
@@ -34,6 +35,10 @@ export interface TrackSimApi {
 }
 
 export function createTrackSim(ctx: SimContext): SimHandle {
+  // Claim `trackElements` and read it off every pack. Done on the SIM side because the element
+  // table is pure and both halves of the module read it; `main.ts` does the same, and the second
+  // call is a no-op on a map that already holds the entry.
+  const detachElements = attachTrackElements(ctx.registry);
   const tracks = new Map<string, BuiltTrack>();
 
   function dataOf(entity: Entity): TrackData | null {
@@ -105,6 +110,7 @@ export function createTrackSim(ctx: SimContext): SimHandle {
       offAdd();
       offUpdate();
       offRemove();
+      detachElements();
       tracks.clear();
     },
   };

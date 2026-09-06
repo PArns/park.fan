@@ -75,10 +75,14 @@ export function trackElements(category?: ElementCategory): TrackElementDef[] {
 /**
  * Register any `trackElements` a content pack carries.
  *
- * Nothing in `packManifestSchema` produces this field today, so on the two bundled packs it is a
- * no-op — which is the point: the seam is here and wired, so the day core adds the category the
- * only change is in core. A pack that ships one now (through `loadPackFromUrl`, whose JSON zod
- * simply passes unknown keys through) works already.
+ * This used to be a seam with nothing on either side of it. The docstring here said a pack
+ * shipping the field "works already"; it did not, on two counts the round-1 critic found by
+ * probing rather than reading. `packManifestSchema` was a plain `z.object()`, which STRIPS what it
+ * does not know, so `'trackElements' in parsed === false` for every manifest and the `onPack`
+ * listener got the stripped copy as well — and this function had **zero call sites**, so even a
+ * surviving field would never have reached it. Both halves are fixed: core's manifest passes
+ * unknown keys through and reports the ones no module claimed, and `attachTrackElements` below is
+ * called from the module's sim and main entry points.
  */
 export function registerTrackElementsFromPack(manifest: unknown): number {
   const list = (manifest as { trackElements?: unknown }).trackElements;
@@ -413,3 +417,29 @@ const CATALOGUE: TrackElementDef[] = [
 ];
 
 for (const def of CATALOGUE) registerTrackElement(def);
+
+/**
+ * Claim the `trackElements` category and read it off every pack, present and future.
+ *
+ * Both halves are needed and neither alone is enough: `registry.onPack` fires on REGISTRATION, and
+ * the bundled packs are registered before any module is built, so a listener alone would miss
+ * exactly the packs the game ships with. Walking `registry.packs()` first and subscribing second
+ * covers both, and re-registering an element is a map write, so the overlap is harmless.
+ */
+/**
+ * The slice of `Registry` this needs, so `elements.ts` stays free of a core import it would only
+ * use for a type — the same reason `index.ts` does not re-export `TrackMainApi`.
+ */
+export interface TrackElementRegistry {
+  registerPackCategory(category: string, owner: string): void;
+  packs(): readonly unknown[];
+  onPack(fn: (pack: unknown) => void): () => void;
+}
+
+export function attachTrackElements(registry: TrackElementRegistry): () => void {
+  registry.registerPackCategory('trackElements', 'track');
+  for (const pack of registry.packs()) registerTrackElementsFromPack(pack);
+  return registry.onPack((pack) => {
+    registerTrackElementsFromPack(pack);
+  });
+}
