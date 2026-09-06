@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 6,
-    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. All six have a round 2 shipped and none has been re-graded. `guests` and `shops` are built and ungated. ui and camera are scaffolds and their nulls are honest.",
+    "roundsRun": 7,
+    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Terrain has now been re-graded at round 2: 6.04 -> 7.09, still a fail but the hard gate is closed. The other five have a round 2 shipped and no re-grade. camera, guests and shops are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -98,22 +98,22 @@
     },
     "terrain": {
       "wave": 1,
-      "status": "built, ungated (builder killed by session limit mid-round)",
+      "status": "round 2 graded 7.09, FAIL (pass 8.5), no hard gate failed — docs/game/critiques/terrain-round2.md. Round 2 shipped exactly two things and the report says so: manifest.ts (the seven ground layers as data, groundLayers claimed, read at boot AND on onPack, bad recipe named and skipped) and the shadow proxy at stride 4. Measured: unclaimedPackKeys() is [] live; shadow proxy 32,768 -> 8,192 triangles, 98,304 -> 24,576 per frame across 3 cascades, 33.9 % -> 8.4 % of the demo park at overview. The saving was spent rather than banked: the park total at overview is 291,258 today against 290,262 in round 1, because the avenues, ~300 more trees and seven shops arrived in the same period. The remaining 1.4 points are all landform and all named in the module's own report: the hard land/sky step with no distance fade, one slope break with 17.4 % of the park drawn as lawn between 10 and 26 degrees, no talus, the outcrop still a cone, env-probe.ts dead.",
       "round": 2,
-      "score": 6.04,
+      "score": 7.09,
       "consoleErrors": 0,
       "gated": true,
       "lines": 2644,
       "axes": {
         "frame": 6.8,
         "fidelity": 6.2,
-        "extensibility": 4.0,
-        "budget": 6.0,
+        "extensibility": 6.8,
+        "budget": 7.4,
         "determinism": 9.3,
-        "reportHonesty": 2.5
+        "reportHonesty": 8.2
       },
-      "gradedAtCommit": "1311098",
-      "hardGates": "FAILED — extensibility 4.0 is under the 5.0 floor, the first hard-gate failure in this gauntlet. Every other gate passed.",
+      "gradedAtCommit": "4a39904",
+      "hardGates": "all pass — the round-1 extensibility failure (4.0, under the 5.0 floor) is closed at 6.8. Still no selftest.mjs; what covers the module now is test:game-registry's ground-layer case.",
       "verdict": "round 1 FAILED at 6.04 AND on a hard gate (docs/game/critiques/terrain-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "environment": {
@@ -415,6 +415,9 @@
     }
   },
   "openIssues": [
+    "OPEN (integrator, cheapest large win left in the extensibility axis): NO BUNDLED PACK USES ANY PACK CATEGORY. `grep -rn \"groundLayers|pathStyles|trackElements|cameraPresets\" lib/game/content/packs/` returns nothing — neither core-classic nor neon-lagoon carries one entry for the four categories that terrain, paths, track and camera now claim. So four modules' extensibility seams are unit-tested and have never been photographed. Putting a groundLayers retint and a pathStyles entry into neon-lagoon would exercise all of it in the shipped game.",
+    "OPEN (terrain): a ground-layer retint is global and by index. Indexing by paint byte is right for save compatibility, and it means two themed packs cannot disagree about grass — neon-lagoon retinting `grass` would repaint the demo park. A theme pack wants park- or theme-scoped layers and there is no scope in the design.",
+    "OPEN (terrain): the round-2 report claims the stride-4 shadow proxy leaves a frame 'indistinguishable from the one before it' and nothing backs it. There is no stride-2 build to compare against, and 1200-close.png carries a stepped diamond lattice along the shadow edge that round 1 also reported BEFORE the change, so the two cannot be separated. A/B it in one session or drop the claim.",
     "camera, found and fixed during verification: the module inherited the renderer's opening pose (93.7 m up, 33.75 degrees down, horizonRow -138), so /game opened on a park with the horizon off the top of the frame and no sky in it. Invisible in every screenshot taken so far because the harness always applies a preset. main() now applies `overview` when there is nothing remembered to restore: 105.8 m, 15.5 degrees down, horizonRow 153.3. A remembered view, a showcase's direct write and ?cam= each still win over it, verified after the change.",
     "OPEN (camera showcase, terrain's side): the `leash-out` preset — the camera at the target leash looking away from the park — shows the world ending on the SHOWCASE landscape: the terrain patch's edge stands as a cliff and the water slab is cut off in mid-air. The demo park passes the same test because its apron runs to 1,756 m and the far edge fades into haze before the dome. So it is the showcase generator's finite patch, not the leash, and it belongs to terrain.",
     "OPEN (terrain): `/game?showcase=camera` and `/game?showcase=terrain` both log the identical pair of `WebGL: INVALID_VALUE: bufferSubData: buffer overflow` warnings — the camera module does nothing in the second, so they come from `generateShowcaseLandscape` writing back into a vertex buffer sized for the previous mesh. Two warnings, no errors, nothing visibly wrong in the frames.",
