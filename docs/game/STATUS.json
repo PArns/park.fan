@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "0425afb",
+  "updatedAtCommit": "951b3e2",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 2,
-    "note": "Two modules graded once each: demo-park 7.20 (FAIL), track 8.00 (FAIL). Both have had a round 2 shipped by the integrator and neither has been re-graded. Every other score below is null and that is the honest value."
+    "roundsRun": 3,
+    "note": "Three modules graded once each, all three FAILED: demo-park 7.20, track 8.00, environment 7.50. All three have had a round 2 shipped by the integrator and none has been re-graded. Every other score below is null and that is the honest value."
   },
   "bundle": {
     "command": "pnpm build && pnpm game:bundle",
@@ -107,14 +107,22 @@
     "environment": {
       "wave": 1,
       "status": "built, ungated (builder killed mid-round; the integrator fixed fog, sky, exposure and the camera preset afterwards and measured every claim)",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "round": 2,
+      "score": 7.5,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 3262,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 7.4,
+        "fidelity": 7.5,
+        "extensibility": 6.8,
+        "budget": 7.8,
+        "determinism": 9.0,
+        "reportHonesty": 7.0
+      },
+      "gradedAtCommit": "951b3e2",
+      "hardGates": "all pass",
+      "verdict": "round 1 FAILED at 7.50 against 8.5 (docs/game/critiques/environment-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "ui": {
       "wave": 1,
@@ -379,6 +387,11 @@
     }
   },
   "openIssues": [
+    "CORE BUG, found by the environment critic by DIFFING PNGs rather than reading code, fixed: `?weather=rain` rendered a clear noon. `core/host.ts` wrote `{ weather, forced }` into `world.modules.environment` — a shape it invented — while both halves of the environment module read `slot.kind`, so the flag was accepted, stored and ignored. The rain frame differed from the clear one by 123 of 2,764,800 bytes at `close` and by ZERO at `ground`. The in-game path had always worked, because it goes through the module's command. Core now dispatches `environment:weather` instead of writing another module's state; verified from the URL afterwards at fogDensity 0.000845 and env-rain at 1,385 live particles. Every screenshot of rain, storm or snow taken by anybody on this branch before this was a screenshot of a clear day.",
+    "environment round 2: the weather fog was not held to the arithmetic the clear-day fog is. At the rain values it put half a surface's contrast into haze at 447 m — worse than the 660 m the module's own comment condemns as fog on a clear day. The rain term is scaled by `intensity` now, so a shower and a storm differ by more than their particles. Measured half-contrast: clear 1,525 m, overcast 771 m, rain 664 m, storm 605 m.",
+    "STILL OPEN (environment): auto exposure is pinned at EXPOSURE_MAX = 3.600 at 18:30 AND 22:00. At night that is by design; at dusk it means no metering at the hour a sky model is most worth metering. Across weather at noon it is not pinned (clear 1.954, rain 2.959, storm 3.342, overcast 3.496) — but an overcast noon still renders 1.79x a clear one, right for a camera and wrong for reading weather off a frame.",
+    "STILL OPEN (environment): twilight crosses through GREEN (132/144/130 at y=230, G above R and B) because Preetham has no ozone term — Chappuis-band absorption is exactly what keeps a real twilight blue instead of passing through green between a warm horizon and a cold zenith. That is a change to the scattering model, not to a constant. And the IBL's ground hemisphere is a knife-edge terminator on the showcase's own mirror ball.",
+    "Three claims in the environment report were measured FALSE by its critic and are corrected in place: '88 % at 340 m' is 96.9 % (88 % is at 689 m, the figure was read off the wrong distance); the shoulder's blue:red pair 2.81/3.70 reproduces as 3.19/4.23 because the sample azimuth was never stated; and 'the park is black, no light rigs exist' was wrong — two scenery-lamp-* lights run at 22:00 and are visibly lit.",
     "CORE BUG, found by the track critic by probing rather than reading, fixed: `packManifestSchema` was a plain `z.object()`, which STRIPS unknown keys — so NO module could ever own a content category of its own. The track module's `trackElements` was deleted before any consumer saw it (`'trackElements' in parsed === false`, and the onPack listener got the stripped copy too), and `registerTrackElementsFromPack` had zero call sites on top of that. The manifest passes unknown keys through now; `registerPackCategory(category, owner)` lets a module claim one (the counterpart to registerKind, one level up) and `unclaimedPackKeys()` reports the rest, so a typo is a named line instead of a silent empty array. Proven end to end and pinned by pnpm test:game-registry: 21 -> 22 elements from a manifest with no TypeScript, and `trackElments` reported by name.",
     "track round 2: bracing is tiered and no bay is skipped. It used to put ONE X per bay whatever its height, and skipped every second timber bay under a comment claiming that is how a real wooden coaster is braced — it is not; a woodie's bents stand 3-4 m apart and every bay between them is braced. Measured like for like at the `close` camera: 772,548 -> 903,924 triangles (+17 %) at an unchanged 90 draw calls.",
     "STILL OPEN (track, its own #1 and the tier cap's reason): the wooden structure aliases into a dark smear at the `overview` camera, and more members make it worse. The honest fix is a distance LOD that swaps the lattice for a coarser silhouette. Not built.",

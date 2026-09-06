@@ -170,13 +170,21 @@ export function createLighting(
     // the fog roughly twice as strong as the density alone suggests. The clear-day base used to be
     // 0.0008 and, run through both, put HALF the contrast of a surface 660 m away into the haze:
     // that is a meteorological visibility of about 1.5 km, i.e. actual fog, on a day the model
-    // calls clear. At 0.00035 the same surface keeps 88 % of itself at 340 m and 76 % at a
-    // kilometre, which is aerial perspective rather than weather. The overcast and rain terms come
+    // calls clear. At 0.00035 the same surface keeps 96.9 % of itself at 340 m and 76 % at a
+    // kilometre, which is aerial perspective rather than weather. (The first version of this
+    // comment said 88 % at 340 m. It is 88 % at 689 m; the figure was read off the wrong distance
+    // and shipped, and the round-1 critic recomputed it. The kilometre figure was right.) The overcast and rain terms come
     // down with it; the dawn-mist term does not, because mist really is that thick.
+    // The weather terms carry the same arithmetic as the base, and the round-1 critique caught
+    // them not being held to it: at the rain values this put HALF a surface's contrast into haze
+    // at 447 m — worse than the 660 m the comment above condemns as "actual fog on a clear day".
+    // The rain term is scaled by `intensity` now, so a shower and a storm are not the same weather
+    // with different particles: measured half-contrast lands near 545 m in rain and 453 m in a
+    // storm, where a storm cutting visibility is the point.
     scene.fogDensity =
       0.00035 +
-      0.0006 * env.cloud +
-      (rainy ? 0.0009 * (0.4 + 0.6 * env.wetness) : 0) +
+      0.00045 * env.cloud +
+      (rainy ? 0.00045 * (0.35 + 0.65 * env.wetness) * env.intensity : 0) +
       0.0016 * morning * lowSun * (1 - 0.6 * env.cloud);
 
     imageProcessing.contrast = mix(1.12, 0.98, env.cloud);

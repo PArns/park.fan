@@ -95,6 +95,47 @@ clean`), and the screenshot harness.
 PNGs opened with the Read tool and what they actually showed — see "What is weak" for the ones
 that are still wrong.
 
+## Round 2 — the critique, and one bug it found that nothing else would have
+
+`docs/game/critiques/environment-round1.md` failed this module at **7.50** against 8.5: frame 7.4 ·
+fidelity 7.5 · extensibility 6.8 · budget 7.8 · determinism 9.0 · report honesty 7.0, with every
+hard gate passing.
+
+**`?weather=rain` rendered a clear noon, and it took diffing PNGs to see it.** The critic measured
+the rain frame against the clear one at **123 differing bytes of 2,764,800 at the `close` camera and
+zero at `ground`**, with the live scene reporting the clear-day `fogDensity` and both particle
+systems `isStarted() === false`. The in-game path worked the whole time —
+`dispatch('environment:weather', …)` moves fog, exposure and starts `env-rain` — so nothing in this
+module was broken. `core/host.ts` was writing `{ weather, forced }` into
+`world.modules.environment`, a shape it invented, while both halves of this module read
+`slot.kind`. The flag was accepted, stored and ignored.
+
+Fixed in core, and fixed as a **command** rather than by teaching core the right field names: core
+has no business knowing a module's slot layout, and a mistyped command is a no-op the module can
+report instead of a silent half-write into somebody else's state. Verified from the URL afterwards:
+`fogDensity` 0.000845 (the rain value), `env-rain` started at 1,385 live particles, 0 console
+errors.
+
+That bug is the reason the whole weather system had never been seen. Every screenshot of rain,
+storm or snow taken by anybody on this branch was a screenshot of a clear day.
+
+**The weather fog was not held to the arithmetic the clear-day fog is held to.** At the rain values
+it put half a surface's contrast into haze at **447 m** — worse than the 660 m the module's own
+comment condemns as "actual fog on a clear day". The rain term is scaled by `intensity` now, so a
+shower and a storm are not the same weather with different particles. Measured half-contrast:
+clear 1,525 m, overcast 771 m, rain 664 m, storm 605 m.
+
+**Three claims in this report were wrong and are corrected in place, not deleted.** "The same
+surface keeps 88 % of itself at 340 m" — it keeps **96.9 %**; 88 % is at 689 m, the figure was read
+off the wrong distance. The blue:red pair quoted for the luminance shoulder (2.81 at dy 0.3, 3.70 at
+dy 0.6) reproduces as **3.19 / 4.23**, because the sample azimuth was never stated and the ratio
+depends on it. And "the park under it is black, no light rigs exist" was wrong: two
+`scenery-lamp-*` lights run at 22:00 and are visibly lit.
+
+**Round 2 was done by the integrator**, the builder having been killed by the account session
+limit. Four findings are left open and are in the ranked list below with the critic's numbers on
+them.
+
 ## What is weak or missing, ranked
 
 > The list below was measured by the integrator after the builder was killed by an account
@@ -102,25 +143,45 @@ that are still wrong.
 > what the numbers said is in `STATUS.json` and in the docblocks of the three files that changed.
 > Everything here is a number read off a frame or off the model, not an impression.
 
-1. **The sky's horizon is about 4.5× its zenith and a real clear sky is nearer 2:1.** This is
+1. **Auto exposure is pinned at `EXPOSURE_MAX` = 3.600 at both 18:30 and 22:00.** At night that is
+   by design — there is nothing to meter by — but at dusk it means the metering is not running at
+   the hour a sky model is most worth metering. Measured across weather at noon it is NOT pinned
+   (clear 1.954, rain 2.959, storm 3.342, overcast 3.496), so the clamp is doing the work only in
+   the dark half of the day. An overcast noon still renders 1.79× a clear one, which is the right
+   direction for a camera and the wrong direction for reading the weather off the frame.
+2. **Twilight crosses through green** — 132/144/130 at y=230, G above both R and B — because
+   Preetham has no ozone term, and ozone absorption in the Chappuis band is exactly what keeps a
+   real twilight blue rather than letting it pass through the green between the warm horizon and
+   the cold zenith. Adding one is a change to the scattering model, not to a constant.
+3. **The IBL's ground hemisphere shows as a knife-edge terminator** on the showcase's own
+   diagnostic mirror ball. The cube's lower half is the ground colour with no transition, which is
+   invisible on diffuse surfaces and obvious on a chrome one.
+4. **A leak across three dispose/reboot cycles has never been measured for this module.** The
+   check exists (`pnpm game:teardown`) and covers the engine; the critic said plainly that it does
+   not cover this module's own handles, and did not grade what it could not measure.
+5. **The sky's horizon is about 4.5× its zenith and a real clear sky is nearer 2:1.** This is
    Preetham's own horizon overshoot — the model integrates an infinite air path with no ground and
    no aerosol scale-height cutoff — and it is not the tone curve's fault: the shoulder now runs on
    luminance, and lowering `SKY_WHITE` far enough to fix the ratio caps the solar lobe at 1.16× the
    horizon, which flattens every sunset. The remedy is either attenuating the near-horizon
    in-scattering in the model or giving the solar lobe its own curve. Neither is attempted.
    `SKY_GAIN` stays at 0.09.
-2. **The world ends about a kilometre out and you can see it.** The fog that used to hide the
+6. **The world ends about a kilometre out and you can see it.** The fog that used to hide the
    terrain's far edge was hiding it by being fog — half the contrast of a surface 660 m away, i.e.
    a 1.5 km visibility on a clear day. At an honest 0.00035 the edge is a hard silhouette against
    the sky at the `overview` preset. That is the terrain module's geometry (world size, or a
    distant skirt); the haze under the horizon is already the right colour to receive one.
-3. **Night is readable and still unlit.** 22:00 now renders a deep blue sky with stars over a
-   terrain silhouette, which is what `ART_BIBLE.md` §2 asks for. The park under it is black,
-   because the light rigs belong to `effects` and `scenery` and neither module exists.
-4. **No critic ever graded it.** The gate at 8.5 has not run for this or any other module. The
+7. **Night is readable and only partly unlit.** 22:00 renders a deep blue sky with stars over a
+   terrain silhouette, which is what `ART_BIBLE.md` §2 asks for. An earlier version of this line
+   said "the park under it is black, because the light rigs belong to `effects` and `scenery` and
+   neither module exists": the round-1 critic measured two `scenery-lamp-*` lights running at 22:00
+   and visibly lit, so `scenery` does have a rig. What is missing is a rig on the RIDES, which is
+   `effects`', and the pool size — `POOL_BY_PRESET.medium = 2` means two active light sources for
+   the whole park.
+8. **No critic ever graded it.** The gate at 8.5 has not run for this or any other module. The
    numbers that do exist — 47-74 draw calls, 31k-140k triangles, 0 console errors, `pnpm test:game`
    green — are within budget and say nothing about whether the frame is good.
-5. **The showcase is unverified.** `/game?showcase=environment` exists and was screenshotted by the
+9. **The showcase is unverified.** `/game?showcase=environment` exists and was screenshotted by the
    builder, but not since any of these changes.
 
 ## What was fixed, and how it was measured

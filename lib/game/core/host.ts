@@ -126,10 +126,6 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
   }
   if (query.minute != null) world.clock.minute = query.minute;
   world.clock.speed = query.speed;
-  if (query.weather) {
-    const env = (world.modules.environment as Record<string, unknown> | undefined) ?? {};
-    world.modules.environment = { ...env, weather: query.weather, forced: true };
-  }
 
   // 4. engine — the one step that must not run twice on one canvas: a second WebGL context on the
   // same element is the first one, so an aborted boot must stop before this point.
@@ -438,6 +434,17 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
   function finishBoot(phase: 'ready' | 'reduced') {
     window.clearTimeout(readyTimeout);
     store.set({ phase, bootStep: 'done', progress: 1 });
+    // `?weather=` is a COMMAND, not a state write, and that distinction is the whole bug it
+    // replaces. Core used to reach into `world.modules.environment` and set `{ weather, forced }`
+    // — a shape it invented, while both halves of the environment module read `slot.kind`. So the
+    // flag was accepted, stored, and ignored: `?weather=rain` rendered a clear noon, with
+    // `fogDensity` at its clear-day value and both particle systems never started, and the rain
+    // frame differed from the clear one by 123 bytes of 2,764,800 at the `close` camera and by
+    // zero at `ground`. The in-game path had worked the whole time, because it goes through the
+    // command. Core has no business knowing a module's slot layout; it knows the command name the
+    // module published, and a mistyped one is a no-op the module can report rather than a silent
+    // half-write into somebody else's state.
+    if (query.weather) dispatch('environment:weather', { weather: query.weather });
     events.emit('world:ready', { tick: frames[1]?.tick ?? 0 });
     harness.ready = true;
   }
