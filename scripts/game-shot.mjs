@@ -35,6 +35,24 @@ const settleMs = Number(args.wait ?? 1200);
 const viewport = { width: Number(args.w ?? 1280), height: Number(args.h ?? 720) };
 const engine = args.engine ?? 'webgl2';
 const stepTicks = Number(args.step ?? 0);
+/**
+ * `--particles=<seconds per frame>` — how a particle effect gets photographed at all.
+ *
+ * SwiftShader renders this game at 0.3-2 fps, and Babylon ages particles by
+ * `updateSpeed * scene.getAnimationRatio()`, where the ratio is the real frame delta. So one frame
+ * advances the rain by one to three SECONDS while a raindrop lives 1.15-1.5 s: every drop is born
+ * and expires inside a single update, and the shot comes back with 1,375 live particles reported
+ * and not one of them on screen. Every "rain" frame anybody has taken on this branch is a picture
+ * of an overcast day.
+ *
+ * With this flag each rendered frame advances every particle system by a FIXED amount instead, so
+ * `--particles=0.1 --particle-frames=14` builds up about 1.4 s of rain over fourteen frames and
+ * photographs it. It costs those frames in wall clock (14 x ~3 s in the demo park) and it is off by
+ * default, because it changes what the picture means: the result is a particle field of a stated
+ * age, not a frame of the game running.
+ */
+const particleStep = args.particles ? Number(args.particles) : 0;
+const particleFrames = Number(args['particle-frames'] ?? 14);
 
 const query = new URLSearchParams({ harness: '1', speed: args.speed ?? '0', engine });
 if (showcase) query.set('showcase', showcase);
@@ -155,6 +173,22 @@ if (bootMs != null) {
         await page.waitForTimeout(400);
       }
       await waitFrames(2);
+      if (particleStep > 0) {
+        await page.evaluate((step) => {
+          const scene = globalThis.__parkfan_game.scene();
+          const w = globalThis;
+          w.__pfParticleSaved ??= new Map();
+          for (const ps of scene.particleSystems) {
+            if (!w.__pfParticleSaved.has(ps)) w.__pfParticleSaved.set(ps, ps.updateSpeed);
+          }
+          w.__pfParticleObs?.remove?.();
+          w.__pfParticleObs = scene.onBeforeRenderObservable.add(() => {
+            const ratio = scene.getAnimationRatio() || 1;
+            for (const ps of scene.particleSystems) ps.updateSpeed = step / ratio;
+          });
+        }, particleStep);
+        await waitFrames(particleFrames);
+      }
       const file = path.join(out, `${tod.replace(':', '')}-${cam}.png`);
       await page.screenshot({ path: file });
       const metrics = await page.evaluate(() => globalThis.__parkfan_game.metrics());

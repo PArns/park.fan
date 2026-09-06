@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 9,
-    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Three re-graded at round 2: terrain 6.04 -> 7.09 (hard gate closed), paths 6.26 -> 7.13, track 8.00 -> 8.41 (fails by 0.09, the closest anything has come). Three to go — scenery, demo-park, environment — plus camera, guests and shops which are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 10,
+    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Four re-graded at round 2: terrain 6.04 -> 7.09 (hard gate closed), paths 6.26 -> 7.13, environment 7.50 -> 7.72, track 8.00 -> 8.41 (fails by 0.09, the closest anything has come). Two to go — scenery and demo-park — plus camera, guests and shops which are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -118,21 +118,21 @@
     },
     "environment": {
       "wave": 1,
-      "status": "built, ungated (builder killed mid-round; the integrator fixed fog, sky, exposure and the camera preset afterwards and measured every claim)",
+      "status": "round 2 graded 7.72, FAIL (pass 8.5), no hard gate failed — docs/game/critiques/environment-round2.md. The round-2 fixes verify from the URL: ?weather=rain moves fogDensity 0.000368 -> 0.000845 and starts env-rain at 1,375 live particles; the weather fog is scaled by intensity (half-contrast 1,525 m clear, 771 overcast, 664 rain, 605 storm). THE FINDING OF THE ROUND IS THAT NOBODY COULD PHOTOGRAPH RAIN, and it was the harness: Babylon ages particles by the real frame delta, which is 1-3 s under SwiftShader against a 1.15-1.5 s drop lifetime, so every drop was born and expired inside one update. scripts/game-shot.mjs has --particles/--particle-frames now. The first frame of rain in this repo shows the module's real problem: 1,567 pixels differ by more than 6 of 255, i.e. 0.17 % of the frame, at steady state. It reads as drizzle. Two more from the same table: exposure pins at EXPOSURE_MAX 3.6 under rain and storm AT NOON (a clear noon is 1.954), and a storm differs from a shower by 10 % of fog and 34 % of emit rate and nothing else measurable. Extensibility unmoved at 6.8 and now the cap: 0 hits for registry/registerPackCategory/packs() across 14 files, while four other modules claimed a category in the same period.",
       "round": 2,
-      "score": 7.5,
+      "score": 7.72,
       "consoleErrors": 0,
       "gated": true,
       "lines": 3262,
       "axes": {
-        "frame": 7.4,
-        "fidelity": 7.5,
+        "frame": 7.6,
+        "fidelity": 7.9,
         "extensibility": 6.8,
         "budget": 7.8,
         "determinism": 9.0,
-        "reportHonesty": 7.0
+        "reportHonesty": 8.6
       },
-      "gradedAtCommit": "951b3e2",
+      "gradedAtCommit": "974911e",
       "hardGates": "all pass",
       "verdict": "round 1 FAILED at 7.50 against 8.5 (docs/game/critiques/environment-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
@@ -415,6 +415,11 @@
     }
   },
   "openIssues": [
+    "CLOSED (harness): a particle effect could not be photographed at all. Babylon ages particles by updateSpeed x scene.getAnimationRatio(), and that ratio is the real frame delta — 1-3 s under SwiftShader against a 1.15-1.5 s raindrop lifetime, so every drop was born and expired inside one update and every 'rain' frame on this branch was a picture of an overcast day. scripts/game-shot.mjs takes --particles=<seconds per frame> and --particle-frames=<n> now, off by default; 0.1 x 14 is one full lifetime, i.e. the steady state rather than a transient. This matters beyond environment: the whole `effects` module would have been unverifiable the same way.",
+    "OPEN (environment, now its largest item and photographable for the first time): the rain covers 0.17 % of the frame at steady state (1,567 pixels above 6 of 255 in the static showcase). Drops are 0.07-0.14 m billboards at alpha 0.42 in a 30x30 m box, under a thousand of them, drawn as dots rather than streaks. The fog, the exposure and the overcast light are all right and the precipitation itself is not there.",
+    "OPEN (environment): exposure pins at EXPOSURE_MAX 3.6 under rain AND storm at NOON — a clear noon sits at 1.954. The 18:30/22:00 pinning already recorded is the same curve hitting its ceiling as soon as anything dims the sky.",
+    "OPEN (environment): a storm differs from a shower by 10 % of fog density and 34 % of emit rate and by nothing else measurable.",
+    "OPEN (environment): the overcast cloud layer carries a vertical seam at x = 636-638 — mean column step 0.56-0.61 of 255 against ~0.2 either side, worst single pixel 3.1, i.e. ~1 % contrast, visible only because it is perfectly straight and hundreds of rows long. Absent from clear skies (same scan returns 0.03 with no preferred column).",
     "OPEN (environment or core, found while re-grading paths): at 22:00 every paving mesh's light list reads sun@0.000, sky@0.100, env-moon-light@0.000, scenery-lamp-0@63, scenery-lamp-1@63 — three of the six PBR light slots on the largest surface in the frame go to lights that contribute nothing at that hour, because mesh.lightSources sorts by renderPriority and not by intensity. At medium the lamp pool holds two so the avenue lights anyway; at ultra it holds six against three usable slots, so the disparity widens with the machine. The fix is a renderPriority on the sun and moon lights, or a rig that drops a light at zero intensity.",
     "PARTLY CLOSED (integrator): one of the four passthrough pack categories is now exercised by shipped content and photographed. `neon-lagoon` carries a `cameraPresets` entry (`lagoon`, anchored `park:water | park:centre`), the running game reports 8 presets instead of 7 with `unclaimedPackKeys()` still [], and `node scripts/game-shot.mjs --cam=lagoon` frames the demo park's lake low over the water at 222 draw calls / 0 errors (.game-render/packpreset/1200-lagoon.png, looked at). That is the FIRST frame in this project taken through a content pack's entry in a category a module claimed with registerPackCategory. STILL OPEN for the other three: a groundLayers retint is global by index, so neon-lagoon retinting `grass` would repaint the demo park — the design has no park- or theme-scope; and a pathStyle or a trackElement is only visible once something is built with it, which waits on `tools`. Note the precise claim: the pack SCHEMA's own categories (scenery, shops, rides, trackStyles, foliage, materials) are used heavily by both bundled packs — it is the four later extensions that had no shipped content.",
     "OPEN (terrain): a ground-layer retint is global and by index. Indexing by paint byte is right for save compatibility, and it means two themed packs cannot disagree about grass — neon-lagoon retinting `grass` would repaint the demo park. A theme pack wants park- or theme-scoped layers and there is no scope in the design.",
