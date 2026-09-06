@@ -30,6 +30,7 @@ import {
   LAKE_RING_COUNT,
   MARKET_SQUARE,
   PARK_HALF,
+  PATHS,
   RIM,
   WATER_LEVEL,
 } from './plan';
@@ -180,6 +181,95 @@ export function placeDemoProps(ctx: PropContext): Entity[] {
       const yaw = faceIn ? Math.atan2(-Math.cos(a), -Math.sin(a)) + Math.PI / 2 : 0;
       one(spec, x, z, faceIn ? yaw : 0);
     }
+  };
+
+  /**
+   * Trees along a path, at a setback, on one or both sides.
+   *
+   * This is the shape of the whole planting decision and not just a helper. Round 1 planted 893
+   * trees, of which 62 — **6.9 %** — stood within ten metres of a path, and the density by distance
+   * band came out as a bathtub: 61.6 trees per hectare in the boundary belt against **7.8/ha** in
+   * the 80–120 m band, which is exactly where a visitor spends the day. A real park is planted
+   * along its circulation and thins towards the fence; that was upside down.
+   *
+   * `placeLine` cannot be used for this even though it is the obvious call: it takes no `reject`,
+   * so it would drop trees into the paving and the lake. The walk is done here so every candidate
+   * goes through `rejectPlanting` and through a clearance test against everything already placed —
+   * a bench with a tree in it is worse than a gap in an avenue.
+   *
+   * The setback is half the path's width plus a margin, so the trunk stands clear of the kerb
+   * rather than over the walk. Spacing follows the hierarchy, and so does the species: an avenue
+   * is ONE species — that repetition is what makes a row of trees read as an avenue rather than as
+   * scattered planting — while the narrower branches mix.
+   */
+  const avenue = (
+    spec: PropSpec | null,
+    points: readonly number[],
+    closed: boolean,
+    setback: number,
+    spacing: number,
+    side: 'both' | 'outer',
+    jitter = 0
+  ): void => {
+    if (!spec) return;
+    const n = points.length / 2;
+    if (n < 2) return;
+    // For `outer`, "away from the park's centre" is the right side of a loop: a four-metre path
+    // with trees on both sides is a corridor, and these loops ring a reserved plot that something
+    // will be built on.
+    let cx = 0;
+    let cz = 0;
+    for (let i = 0; i < n; i++) {
+      cx += points[i * 2]!;
+      cz += points[i * 2 + 1]!;
+    }
+    cx /= n;
+    cz /= n;
+    const last = closed ? n : n - 1;
+    for (let i = 0; i < last; i++) {
+      const ax = points[i * 2]!;
+      const az = points[i * 2 + 1]!;
+      const bx = points[((i + 1) % n) * 2]!;
+      const bz = points[((i + 1) % n) * 2 + 1]!;
+      const dx = bx - ax;
+      const dz = bz - az;
+      const len = Math.hypot(dx, dz);
+      if (len < 1e-3) continue;
+      const ux = dx / len;
+      const uz = dz / len;
+      // Left normal in a right-handed +Y-up frame.
+      const nx = -uz;
+      const nz = ux;
+      const outward = ((ax + bx) / 2 - cx) * nx + ((az + bz) / 2 - cz) * nz;
+      const signs: number[] = side === 'both' ? [1, -1] : [outward > 0 ? 1 : -1];
+      const steps = Math.max(1, Math.round(len / spacing));
+      for (const sign of signs) {
+        for (let k = 0; k <= steps; k++) {
+          // The last point of a segment is the first of the next one; skip it or every corner
+          // gets a double tree.
+          if (k === steps && (closed || i < last - 1)) continue;
+          const t = (k / steps) * len;
+          const jx = jitter ? (next() * 2 - 1) * jitter : 0;
+          const jz = jitter ? (next() * 2 - 1) * jitter : 0;
+          const x = ax + ux * t + nx * sign * setback + jx;
+          const z = az + uz * t + nz * sign * setback + jz;
+          if (rejectPlanting(ctx.terrain, x, z)) continue;
+          if (occupied(x, z, 2.8)) continue;
+          one(spec, x, z);
+        }
+      }
+    }
+  };
+
+  /** Is something already standing within `radius` of this point? */
+  const occupied = (x: number, z: number, radius: number): boolean => {
+    const r2 = radius * radius;
+    for (const e of out) {
+      const dx = e.position[0] - x;
+      const dz = e.position[2] - z;
+      if (dx * dx + dz * dz < r2) return true;
+    }
+    return false;
   };
 
   const r = ctx.roles;
@@ -341,6 +431,81 @@ export function placeDemoProps(ctx: PropContext): Entity[] {
   copse(r.shrub, -66, -14, 12, 10);
   copse(r.flowers, -34, 92, 8, 12);
   copse(r.flowers, 36, 70, 8, 12);
+
+  // ── Avenues ───────────────────────────────────────────────────────────────────────────────
+  // The planting follows the circulation, which is the thing round 1 got backwards. Read the path
+  // plans rather than repeating their coordinates here: a path that moves takes its trees with it,
+  // and there is exactly one place a route is written down.
+  //
+  // The hierarchy is the whole design. The eight-metre spine gets a formal double avenue of ONE
+  // species at 13 m, which is a boulevard; the six-metre walks get a mixed, jittered planting at
+  // 17 m, which is a garden walk; the four-metre loops get one side only at 21 m, because a
+  // four-metre path with trees to left and right is a corridor and these loops ring the plots
+  // something will be built on. The service road behind the treeline gets nothing — it is a back
+  // way, and planting it would say otherwise.
+  const AVENUE_SKIP = new Set(['service-road', 'gate']);
+  for (const plan of PATHS) {
+    if (plan.form !== 'path' || AVENUE_SKIP.has(plan.id)) continue;
+    const width = plan.width ?? 4;
+    if (width >= 8) {
+      avenue(r.streetTree, plan.points, !!plan.closed, width / 2 + 4.0, 11, 'both');
+    } else if (width >= 6) {
+      avenue(r.canopyTree, plan.points, !!plan.closed, width / 2 + 4.4, 14, 'both', 1.6);
+    } else {
+      // Both sides, but stood further back. The corridor a narrow path with trees either side
+      // makes is a function of the SETBACK, not of the number of sides: at five metres off a
+      // four-metre walk the canopy closes over it, at eight it is a glade the path runs through.
+      avenue(r.canopyTree, plan.points, !!plan.closed, width / 2 + 6.0, 15, 'both', 2.0);
+    }
+  }
+  // Groves off the walks. An avenue alone is a street, not a park: the other half of how a park
+  // is planted is a stand of trees set back from the path, close enough to walk into and far
+  // enough to be a place rather than a verge. One every fifty-five metres of route, alternating
+  // sides, which is what puts trees in the 80-120 m band the round-1 critique measured at 7.8 per
+  // hectare — the band a visitor actually spends the day in.
+  {
+    let sideFlip = 0;
+    for (const plan of PATHS) {
+      if (plan.form !== 'path' || AVENUE_SKIP.has(plan.id)) continue;
+      const pts = plan.points;
+      const count = pts.length / 2;
+      const last = plan.closed ? count : count - 1;
+      let travelled = 0;
+      let nextAt = 26;
+      for (let i = 0; i < last; i++) {
+        const ax = pts[i * 2]!;
+        const az = pts[i * 2 + 1]!;
+        const bx = pts[((i + 1) % count) * 2]!;
+        const bz = pts[((i + 1) % count) * 2 + 1]!;
+        const len = Math.hypot(bx - ax, bz - az);
+        if (len < 1e-3) continue;
+        const ux = (bx - ax) / len;
+        const uz = (bz - az) / len;
+        while (nextAt <= travelled + len) {
+          const t = nextAt - travelled;
+          const sign = sideFlip++ % 2 === 0 ? 1 : -1;
+          const off = 13 + ctx.rng.next() * 6;
+          const cx2 = ax + ux * t - uz * sign * off;
+          const cz2 = az + uz * t + ux * sign * off;
+          copse(sideFlip % 3 === 0 ? r.conifer : r.canopyTree, cx2, cz2, 11, 7);
+          nextAt += 55;
+        }
+        travelled += len;
+      }
+    }
+  }
+
+  // The two plazas people stand still on get a ring of shade, outside the furniture that is
+  // already there. A square with no canopy is a square nobody sits on in July.
+  for (const sq of [MARKET_SQUARE, FOUNTAIN_SQUARE]) {
+    for (let i = 0; i < 10; i++) {
+      const a = (i / 10) * Math.PI * 2 + 0.31;
+      const x = sq.x + Math.cos(a) * (sq.radius + 5.5);
+      const z = sq.z + Math.sin(a) * (sq.radius + 5.5);
+      if (rejectPlanting(ctx.terrain, x, z) || occupied(x, z, 2.8)) continue;
+      one(r.canopyTree, x, z);
+    }
+  }
 
   // ── The treeline ──────────────────────────────────────────────────────────────────────────
   // A belt of copses walked twice round the rim, alternating species, each one offset in and out

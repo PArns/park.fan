@@ -22,6 +22,7 @@
 import type { Entity, TerrainData } from '../core/types';
 import { buildLayout, MESH_SPACING, pathMaterial } from '../paths';
 import {
+  fbm2,
   LAYER_CONCRETE,
   LAYER_DIRT,
   LAYER_GRASS,
@@ -29,10 +30,6 @@ import {
   LAYER_SAND,
   LAYER_WOOD,
 } from '../terrain';
-// `fbm2` is imported from the terrain module rather than copied into a fifth `noise.ts`: it is a
-// pure, DOM-free helper of the module whose heightfield this file writes into, and the brief's
-// instruction is to reuse rather than re-derive.
-import { fbm2 } from '../terrain/noise';
 import {
   CORE_RADIUS,
   chebyshev,

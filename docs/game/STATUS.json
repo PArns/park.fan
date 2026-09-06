@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "82feffb",
+  "updatedAtCommit": "f4f3b61",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -359,25 +359,20 @@
     "demo-park": {
       "wave": 5,
       "status": "built, ungated — 1,610 lines; draws nothing itself, everything through terrain/paths/scenery/environment. 1,295 entities + 14,000 ambient instances, path graph 1,511 nodes / 4,022 edges / 17 junctions in ONE component, save 673.5 KB.",
-      "round": 1,
-      "score": 7.2,
+      "round": 2,
+      "score": null,
       "consoleErrors": 0,
-      "gated": true,
-      "lines": 1610,
-      "axes": {
-        "frame": 6.6,
-        "fidelity": 6.4,
-        "extensibility": 7.6,
-        "budget": 7.0,
-        "determinism": 9.5,
-        "reportHonesty": 8.4
-      },
+      "gated": false,
+      "lines": 1780,
+      "axes": null,
       "gradedAtCommit": "5ac9c03",
       "hardGates": "all pass",
-      "verdict": "FAIL (7.20 against 8.5) — docs/game/critiques/demo-park-round1.md"
+      "verdict": "round 2 shipped, awaiting round-2 grade. Round 1 failed at 7.20 (docs/game/critiques/demo-park-round1.md)."
     }
   },
   "openIssues": [
+    "The account session limit has now killed a fan-out TWICE: 22 agents at xhigh (0 done, 22 errored) and then 3 agents (a demo-park round-2 builder and two critics, all three dead on the same 429). So the ceiling is TOKEN THROUGHPUT, not agent count, and the working assumption is at most one or two subagents at a time — or the integrator does the work in-session, which is how demo-park round 2 was done.",
+    "demo-park round 2 (integrator, not a builder): planting now follows the circulation. Trees 893 -> 1,196; within 10 m of a path 6.9 % -> 16.2 %; the 80-120 m band 7.8 -> 46.6 trees/ha, so the bathtub profile the round-1 critic measured is gone. 34 % more trees cost 0 draw calls (145, unchanged) and 1.5 % more triangles, because scenery instances them. 16.2 % rather than 30 % is deliberate and argued in the report: the proxy can be gamed by pulling every setback under 10 m, which would close the canopy over three four-metre loops.",
     "STILL OPEN (track, its own #1): at 340 m a timber member is 0.26 m of real width against roughly 0.5 m per pixel, so 556 columns and their bracing sub-pixel-alias into a dark smear at the `overview` camera. Bracing alternate bays halved the member count and it is still visible. Needs a distance LOD that swaps the lattice for a coarser silhouette; the preset offers no MSAA. Confirmed by the integrator on `.game-render/track-verify/1200-overview.png` — the three layouts read as coaster shapes, the structure reads as speckle.",
     "STILL OPEN (track): supports are vertical only, so any stretch rolled past 78 degrees gets none — a vertical column would meet the underside edge-on. On the three demo layouts this hits the corkscrew and the top of the loop, which are correctly unsupported in reality too, so nothing floats; a heavily overbanked layout would show gaps.",
     "STILL OPEN (track): a layout is tuned for its train and nothing warns you. The ops shape themselves from a running-speed estimate that reads the train's drag area and rolling resistance, so a car 5 cm narrower builds a different track — two of three layouts closed 5 m worse under a hand-written train spec. A build tool that lets a player swap the train on an existing layout needs a rebuild-and-recheck API that does not exist.",

@@ -41,3 +41,10 @@ export {
 } from './heightfield';
 export type { BrushShape, BrushStroke } from './heightfield';
 export { generateShowcaseLandscape } from './landscape';
+/**
+ * The noise helpers, re-exported so a module that shapes this heightfield does not have to reach
+ * into `./noise` past this surface — which `demo-park/landform.ts` was doing, while its own report
+ * claimed everything went through public APIs. They are pure and DOM-free, so they cost the worker
+ * bundle nothing; the alternative was a fifth copy of value noise in the repo.
+ */
+export { fbm2, hash2, ridgedFbm, tileableFbm, valueNoise } from './noise';

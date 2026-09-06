@@ -239,6 +239,32 @@ export const PADS: readonly Pad[] = [
     note: 'The water-park plaza, one step above the plot it fronts.',
   },
   {
+    id: 'entrance-hall',
+    owner: 'buildings',
+    x: -33,
+    z: 178,
+    halfX: 11,
+    halfZ: 19,
+    height: null,
+    blend: 10,
+    // The round-1 critique found the gap: the sixty-metre forecourt is the largest paved surface
+    // in the park and nothing was reserved on it, so if the next six builders follow `plots()` it
+    // stays a car park for good. A gate needs a ticket hall and a guest-services counter on it,
+    // and they belong on the flanks — the middle is the planted roundel the street runs round.
+    note: 'Ticket hall and guest services, west flank of the entrance forecourt. Faces the roundel.',
+  },
+  {
+    id: 'entrance-retail',
+    owner: 'shops',
+    x: 33,
+    z: 178,
+    halfX: 11,
+    halfZ: 19,
+    height: null,
+    blend: 10,
+    note: 'The shop every park puts where a visitor leaves, east flank of the entrance forecourt.',
+  },
+  {
     id: 'shops-west',
     owner: 'shops',
     x: -19,

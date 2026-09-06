@@ -169,11 +169,17 @@ hydration warnings**.
   treeline framing both sides. The plaza is still a lot of bare paving.
 - `12:00 close` — the fountain square: the fountain, eight benches facing it, two rings of lamps,
   four boxed hedge parterres with flowers inside and a lime standing behind each, and a ring of
-  limes just outside the kerb. The granite setts render close to white at noon.
+  limes just outside the kerb. (Round 1 said "the granite setts render close to white at noon";
+  the round-1 critic measured them at luminance 140/255, which is flat and blue-cast, not bright.
+  The claim was wrong and is corrected here rather than deleted.)
 - `12:00 overview` — the whole park: the axis, five plazas, three loops, the lakeside ring, the lake
   with its beach, the treeline, the reserved plots as flat green clearings.
-- `22:00 close` / `22:00 ground` / `22:00 entrance` — the park is alive at night: 74 lamp sites, the
-  arch's sign glowing blue, warm pools on the paving, the avenue receding into lit dots.
+- `22:00 close` / `22:00 ground` / `22:00 entrance` — 72 lamp sites (round 1 said 74 here and 72 in
+  its own table; the table was right), the arch's sign glowing blue, the avenue receding into lit
+  dots. Round 1 also claimed "warm pools on the paving": the critic ran a horizontal scan and got a
+  smooth 25 → 44 gradient with no maximum at any of the roughly twenty lit lamps. There are no
+  pools. That is `POOL_BY_PRESET.medium = 2` in `scenery` — two active light sources for the whole
+  park — and it is a request, not a claim this module gets to make.
 - `18:30 overview` — a warm sky over a park in shadow, and the clearest view of the world-edge
   problem below.
 
@@ -243,6 +249,70 @@ distinct catalogue keys — and cutting it would cost the park its furniture.
 | boot (SwiftShader)  | 5.9–12.0 s over nine harness runs, against the 8 s budget                                                                                      |
 | console errors      | **0**, warnings 0, hydration 0                                                                                                                 |
 
+## Round 2 — what the critique asked for, and what it measured to
+
+`docs/game/critiques/demo-park-round1.md` failed this module at **7.20** against a pass mark of
+8.5, with fidelity at 6.4 and the frame at 6.6, and it was right about where the fault was: the
+circulation was researched and the **planting was upside down**. Its two numbers reproduced
+exactly when re-derived from `buildWorld(1, …)` in node, which is why they are the ones used here.
+
+**Trees are now planted along the circulation.** Two mechanisms, both reading `PATHS` rather than
+repeating any coordinate: an `avenue()` walk that plants both sides of every path at a setback of
+half the width plus four to six metres, and a grove dropped every fifty-five metres of route,
+thirteen to nineteen metres off the centreline, alternating sides. The hierarchy is the design —
+the eight-metre spine gets a formal single-species avenue at 11 m, which is a boulevard; the
+six-metre walks a mixed jittered planting at 14 m; the four-metre loops the same but stood further
+back, because what makes a narrow path a corridor is the **setback**, not the number of sides. The
+service road behind the treeline gets nothing: it is a back way, and planting it would say
+otherwise.
+
+`placeLine` could not be used for the avenues even though it is the obvious call — it takes no
+`reject`, so it would put trees in the paving and in the lake. The walk is done in `props.ts` so
+every candidate goes through `rejectPlanting` and through a clearance test against everything
+already placed.
+
+|                        |        round 1 |          round 2 |
+| ---------------------- | -------------: | ---------------: |
+| trees                  |            893 |            1,196 |
+| within 10 m of a path  | 62 (**6.9 %**) | 194 (**16.2 %**) |
+| 0–40 m band            |       31.3 /ha |         40.6 /ha |
+| 40–80 m                |       18.8 /ha |         46.4 /ha |
+| **80–120 m**           |    **7.8 /ha** |     **46.6 /ha** |
+| 120–160 m              |       18.5 /ha |         37.7 /ha |
+| 160–200 m              |       17.4 /ha |         24.3 /ha |
+| 200–256 m (the belt)   |       61.6 /ha |         61.0 /ha |
+| draw calls, `overview` |            145 |              145 |
+| triangles, `overview`  |        295,224 |          299,646 |
+
+The bathtub is gone: the profile now falls from the developed core out to the boundary band and
+then rises into the woodland belt, which is the shape a park has. **34 % more trees cost 0 draw
+calls and 1.5 % more triangles**, because the scenery module instances them — the budget objection
+to planting the mid-ground turned out not to exist.
+
+**16.2 % is not 30 %, and that is deliberate.** The ≤10 m test is a proxy for "the planting follows
+the walks", and it can be gamed by pulling every setback under ten metres — which would close the
+canopy over the four-metre loops and make three of them corridors. The groves sit at 13–19 m and
+score nothing on that test while being the reason the 80–120 m band moved by a factor of six. The
+park was optimised, not the proxy, and both numbers are here so the next critic can disagree.
+
+**Two more things the critique found.**
+
+A plot is reserved on the entrance forecourt now — two, in fact: `entrance-hall` (`buildings`) on
+the west flank and `entrance-retail` (`shops`) on the east. The sixty-metre forecourt is the
+largest paved surface in the park and nothing was reserved on it, so if the next six builders had
+followed `plots()` it would have stayed a car park permanently. They sit on the flanks because the
+middle is the planted roundel the street runs round.
+
+And `landform.ts` no longer imports `fbm2` from `'../terrain/noise'`, reaching past the public
+surface every other terrain import in this module goes through — which was a real violation, and
+worse, this report had claimed there was none. The integrator re-exported the noise helpers from
+`lib/game/terrain/index.ts`, so the import is now the public one and the claim is now true.
+
+**Round 2 was done by the integrator, not by a module builder.** The builder agent was killed by
+the same account session limit that killed the first fan-out; that is recorded in `STATUS.json`.
+This section says so because a report that hides who wrote it is the failure mode the honesty axis
+exists to catch.
+
 ## What is weak or missing, ranked
 
 1. **The world's edge is still visible at `overview`, and the treeline cannot reach it.** Measured
@@ -267,8 +337,9 @@ distinct catalogue keys — and cutting it would cost the park its furniture.
    that with a bandstand, a kiosk, a signpost, a bridge — none of which `core-classic` has
    (`requests` §6). The roundel and the four parterres are what could be built out of a hedge, a
    planter and a flower bed.
-5. **The granite setts and the concrete render close to white at noon** (`12:00 close`), which
-   flattens the fountain square. That is the `granite-sett` recipe in the paths manifest against the
+5. ~~**The granite setts and the concrete render close to white at noon**~~ — MEASURED FALSE in
+   round 1's critique: luminance 140/255, flat and blue-cast rather than bright. The square is
+   still flat, but not for this reason. That is the `granite-sett` recipe in the paths manifest against the
    environment module's exposure, not a placement decision, but it is the demo park that shows it.
 6. **The coaster shelf's cut slope reads as a bald patch** from the `coaster` preset: 8 m of cut
    over a 26 m blend is 17°, too steep for the grass texture to sit convincingly and not steep
@@ -287,7 +358,7 @@ distinct catalogue keys — and cutting it would cost the park its furniture.
    lakeside boardwalk would have cost draw calls on the item that is already this module's second
    weakness. The `fence` role was removed rather than left resolved-and-unused. A railing between
    the boardwalk and the water is the first thing I would add back if items 2 and 3 were fixed.
-10. **At `overview` the night park is nearly dark** — `activeLights` is **2** against 74 light sites,
+10. **At `overview` the night park is nearly dark** — `activeLights` is **2** against 72 light sites,
     because the night rig activates only the lamps nearest the camera. Correct for the budget, and it
     means the 22:00 overview shot shows a black park with a lit fountain square. Whether an
     unlit-but-emissive far LOD is worth it is `scenery`'s call.
