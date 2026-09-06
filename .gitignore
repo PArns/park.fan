@@ -147,3 +147,10 @@ scripts/_tmp-measure-history.mjs
 # park.fan Coaster: fetched CC0 assets (scripts/fetch-game-assets.mjs) and harness output
 /public/game/assets/
 /.game-render/
+# Throwaway measurement probes. Every claim about a frame in this game came from one of
+# these — a short Playwright script written at the repo root so node resolves playwright and
+# sharp, run once, and thrown away. They must not reach a commit, and they cannot live in the
+# scratchpad because module resolution walks up from the SCRIPT, not from the cwd.
+/.*-probe.mjs
+/.*-probe.mts
+/.tune-*.mjs
