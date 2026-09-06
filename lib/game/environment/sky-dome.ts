@@ -203,14 +203,29 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
   const domeColors = new Float32Array(domeDirs.length * 4);
   for (let i = 3; i < domeColors.length; i += 4) domeColors[i] = 1;
 
-  /** Re-evaluate the sky at every dome vertex and push it as vertex colours. */
+  /**
+   * Re-evaluate the sky at every dome vertex and push it as vertex colours.
+   *
+   * The colours are written **gamma-encoded**, not linear, and that is measured rather than
+   * assumed. Painting known flat values and reading the frame back gives the chain's transfer
+   * curve:
+   *
+   *   painted 0.117 -> sRGB   9      painted 0.5 -> sRGB 102
+   *   painted 0.25  -> sRGB  32      painted 1.0 -> sRGB 217
+   *
+   * A linear vertex colour through exposure ~1.14 and ACES would put 0.5 near sRGB 187; it lands
+   * at 102, which is what an extra ~2.2 power looks like. So the pipeline treats this buffer as
+   * gamma space and linearises it, and handing it linear radiance squares the darkness — the sky
+   * model's 0.117 zenith arrived as sRGB 8, indistinguishable from black, which is exactly what
+   * the frame showed and what a screenshot read as "a dark gradient".
+   */
   function paintDome(state: SkyState): void {
     const c: Vec3 = [0, 0, 0];
     for (let v = 0; v < domeDirs.length; v++) {
       sampleSky(state, domeDirs[v]!, c);
-      domeColors[v * 4] = c[0];
-      domeColors[v * 4 + 1] = c[1];
-      domeColors[v * 4 + 2] = c[2];
+      domeColors[v * 4] = linearToGamma(c[0]);
+      domeColors[v * 4 + 1] = linearToGamma(c[1]);
+      domeColors[v * 4 + 2] = linearToGamma(c[2]);
     }
     dome.updateVerticesData(VertexBuffer.ColorKind, domeColors, false, false);
   }
@@ -547,6 +562,16 @@ interface DomeVertex {
   v: number;
   alpha: number;
   dir: Vec3;
+}
+
+/**
+ * sRGB transfer, for the vertex colours the dome is painted with. Not `pow(c, 1/2.2)`: the toe of
+ * the real curve is linear, and the sky's night values live down there where the two disagree by
+ * more than they do anywhere else.
+ */
+function linearToGamma(c: number): number {
+  const v = c < 0 ? 0 : c;
+  return v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
 }
 
 /**
