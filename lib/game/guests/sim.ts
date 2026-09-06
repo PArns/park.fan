@@ -102,6 +102,15 @@ export const PARK_CLOSE = 23 * 60;
 const BASE_PEAK = 1500;
 /** Hard ceiling. The renderer draws `quality.maxGuestsDrawn` of them; the sim keeps all of them. */
 const MAX_GUESTS = 2000;
+/**
+ * How long a party may have been away from its needs before it reached the gate, in park minutes.
+ *
+ * Four hours, drawn uniformly per party. It is not a claim about journeys; it is the width of the
+ * spread that keeps a park from getting hungry all at once, and it is the difference between a
+ * fourteen-hour day whose first four hours take no money and one that trades from the first hour.
+ */
+const PRE_VISIT_MAX_MINUTES = 240;
+
 /** Parties admitted per tick when the park is filling. A crowd should arrive, not appear. */
 const MAX_PARTIES_PER_TICK = 3;
 /** A clock move larger than this is a cut, not time passing. */
@@ -622,7 +631,25 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * `at` places them; `aged` is how many park minutes of need decay to give them on arrival, which
    * is 0 for a real arrival and a real number when the park is being re-seeded after a clock jump.
    */
-  function spawnParty(at: { x: number; y: number; z: number } | null, aged: number): number {
+  /**
+   * `aged` is time already spent INSIDE the park; `preVisit` is time spent getting to it.
+   *
+   * They are two different things and only the first one belongs in `arrivedAt`/`leaveAt`. The
+   * second exists because every guest used to walk in with its needs seeded at a flat 6-42 of 255,
+   * which made a whole park identical and about five hours away from wanting anything: measured
+   * from the 09:00 boot at speed 1, `takingsToday` was 0 at park minute 720 with 620 people inside
+   * and still 0 at 780, and the first sale landed somewhere before 1,020. Four hours of a fourteen
+   * hour operating day with no revenue in them, on a park full of visitors.
+   *
+   * Nobody arrives having just eaten. A coach party that left at six is not a family that drove in
+   * from twenty minutes away, so the pre-visit history is drawn PER PARTY and the needs are aged by
+   * it with the same arithmetic `resettle()` already uses for time inside.
+   */
+  function spawnParty(
+    at: { x: number; y: number; z: number } | null,
+    aged: number,
+    preVisit = 0
+  ): number {
     const party = pickWeighted(guestParties(), rngArrivals);
     if (!party) return 0;
     const group = nextGroup++;
@@ -637,7 +664,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         const slot = store.alloc();
         if (slot < 0) break;
         members.push(slot);
-        initGuest(slot, index, group, at, aged, now, members.length - 1);
+        initGuest(slot, index, group, at, aged, preVisit, now, members.length - 1);
       }
     }
     if (!members.length) return 0;
@@ -655,6 +682,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     group: number,
     at: { x: number; y: number; z: number } | null,
     aged: number,
+    preVisit: number,
     now: number,
     inGroup: number
   ): void {
@@ -701,9 +729,11 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       const need = needs.columns[c];
       const weight = needWeights[index * needs.count + c];
       // A guest arrives with a little of everything already on the clock; nobody walks through a
-      // gate having just eaten, slept and been to the toilet.
+      // gate having just eaten, slept and been to the toilet. The flat part is the jitter between
+      // people in one party; `preVisit` is the party's own history and is what stops a park
+      // opening with fourteen hundred identical visitors.
       const start = rngBodies.range(6, 42);
-      const grown = (need.decayPerHour * weight * aged) / 60;
+      const grown = (need.decayPerHour * weight * (aged + preVisit)) / 60;
       d.needs[base + c] = Math.max(0, Math.min(255, start + grown));
     }
     d.mood[slot] = moodFromNeeds(
@@ -745,7 +775,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       // Time already spent inside: somebody in the park at 18:30 has been there a while, and a
       // crowd whose needs are all at zero behaves like a crowd that has just walked in.
       const inside = Math.min(300, Math.max(0, minute - PARK_OPEN)) * rngWander.next();
-      spawnParty(at, inside);
+      spawnParty(at, inside, rngWander.range(0, PRE_VISIT_MAX_MINUTES));
     }
     // Everybody who was placed on the network gets a destination immediately, so the first frame
     // after a jump has people walking rather than a field of statues.
@@ -1289,7 +1319,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     if (partyDebt > MAX_PARTIES_PER_TICK) partyDebt = MAX_PARTIES_PER_TICK;
     while (partyDebt >= 1 && d.count < target) {
       partyDebt -= 1;
-      if (spawnParty(null, 0) === 0) break;
+      // 0 to 4 hours since this party last met its needs. Uniform on purpose: the point is the
+      // SPREAD, so that a park has somebody ready to buy in its first hour and somebody who will
+      // not want anything until the afternoon, rather than one crowd that all gets hungry at once.
+      if (spawnParty(null, 0, rngArrivals.range(0, PRE_VISIT_MAX_MINUTES)) === 0) break;
     }
   }
 
@@ -1759,7 +1792,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     spawn(n) {
       let made = 0;
       let guard = 0;
-      while (made < n && guard++ < n * 3 && d.count < MAX_GUESTS) made += spawnParty(null, 0);
+      while (made < n && guard++ < n * 3 && d.count < MAX_GUESTS)
+        // The debug spawner gets the same history as the admission path, or a park summoned from
+        // the console behaves differently from one that filled itself.
+        made += spawnParty(null, 0, rngArrivals.range(0, PRE_VISIT_MAX_MINUTES));
       return made;
     },
     inspect(slot): GuestRecord | null {
