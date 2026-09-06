@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 7,
-    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Terrain has now been re-graded at round 2: 6.04 -> 7.09, still a fail but the hard gate is closed. The other five have a round 2 shipped and no re-grade. camera, guests and shops are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 8,
+    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Two re-graded at round 2 so far: terrain 6.04 -> 7.09 (hard gate closed), paths 6.26 -> 7.13. Both still fail. Four to go, plus camera, guests and shops which are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -186,22 +186,22 @@
     },
     "paths": {
       "wave": 2,
-      "status": "built, ungated — 4,293 lines, now actually called: the demo park lays 20 paths through its own graph API.",
+      "status": "round 2 graded 7.13, FAIL (pass 8.5), no hard gate failed — docs/game/critiques/paths-round2.md. 6.26 -> 7.13, and two of the three worst measured defects are gone. Flagship paving tone range 2.9 % -> 15.7 % on the round-1 critic's own metric (albedo read back off the GPU), so it is no longer the flattest surface in the game; two lamps reach the paving instead of one and 2200-ground.png is a genuinely lit avenue, the best frame in the project. Unmoved and re-measured to the triangle: 48,144 triangles of which 24,243 (50.4 %) are kerb, no LOD, no spatial split, no camber or crossfall anywhere. That is where the remaining 1.4 points are.",
       "round": 2,
-      "score": 6.26,
+      "score": 7.13,
       "consoleErrors": 0,
       "gated": true,
       "lines": 4293,
       "axes": {
-        "frame": 6.5,
+        "frame": 7.6,
         "fidelity": 5.8,
-        "extensibility": 5.0,
+        "extensibility": 7.0,
         "budget": 6.0,
-        "determinism": 9.5,
-        "reportHonesty": 6.0
+        "determinism": 9.6,
+        "reportHonesty": 8.5
       },
-      "gradedAtCommit": "6ee3fd2",
-      "hardGates": "all pass (extensibility hit the 5.0 floor exactly, which is the pass line, not below it)",
+      "gradedAtCommit": "77b6025",
+      "hardGates": "all pass. The round-1 honesty failure is closed: the selftest is pnpm test:game-paths, in the chain, green at 0.276 µs per query.",
       "verdict": "round 1 FAILED at 6.26 against 8.5 — the lowest on the branch (docs/game/critiques/paths-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "pools": {
@@ -415,6 +415,7 @@
     }
   },
   "openIssues": [
+    "OPEN (environment or core, found while re-grading paths): at 22:00 every paving mesh's light list reads sun@0.000, sky@0.100, env-moon-light@0.000, scenery-lamp-0@63, scenery-lamp-1@63 — three of the six PBR light slots on the largest surface in the frame go to lights that contribute nothing at that hour, because mesh.lightSources sorts by renderPriority and not by intensity. At medium the lamp pool holds two so the avenue lights anyway; at ultra it holds six against three usable slots, so the disparity widens with the machine. The fix is a renderPriority on the sun and moon lights, or a rig that drops a light at zero intensity.",
     "PARTLY CLOSED (integrator): one of the four passthrough pack categories is now exercised by shipped content and photographed. `neon-lagoon` carries a `cameraPresets` entry (`lagoon`, anchored `park:water | park:centre`), the running game reports 8 presets instead of 7 with `unclaimedPackKeys()` still [], and `node scripts/game-shot.mjs --cam=lagoon` frames the demo park's lake low over the water at 222 draw calls / 0 errors (.game-render/packpreset/1200-lagoon.png, looked at). That is the FIRST frame in this project taken through a content pack's entry in a category a module claimed with registerPackCategory. STILL OPEN for the other three: a groundLayers retint is global by index, so neon-lagoon retinting `grass` would repaint the demo park — the design has no park- or theme-scope; and a pathStyle or a trackElement is only visible once something is built with it, which waits on `tools`. Note the precise claim: the pack SCHEMA's own categories (scenery, shops, rides, trackStyles, foliage, materials) are used heavily by both bundled packs — it is the four later extensions that had no shipped content.",
     "OPEN (terrain): a ground-layer retint is global and by index. Indexing by paint byte is right for save compatibility, and it means two themed packs cannot disagree about grass — neon-lagoon retinting `grass` would repaint the demo park. A theme pack wants park- or theme-scoped layers and there is no scope in the design.",
     "OPEN (terrain): the round-2 report claims the stride-4 shadow proxy leaves a frame 'indistinguishable from the one before it' and nothing backs it. There is no stride-2 build to compare against, and 1200-close.png carries a stepped diamond lattice along the shadow edge that round 1 also reported BEFORE the change, so the two cannot be separated. A/B it in one session or drop the claim.",
