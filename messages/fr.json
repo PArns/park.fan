@@ -775,6 +775,10 @@
       "DOWN": "Panne",
       "UNKNOWN": "Inconnu"
     },
+    "outage": {
+      "since": "Panne signalée depuis {when}",
+      "startUnknown": "Panne signalée, début inconnu"
+    },
     "noLiveWaitTimes": {
       "title": "Pas de temps d’attente disponibles",
       "reason": {

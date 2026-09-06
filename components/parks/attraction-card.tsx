@@ -27,6 +27,7 @@ import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
+import { OutageNote } from './outage-note';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -383,6 +384,15 @@ export function AttractionCard({
                     timezone={effectiveTimezone}
                   />
                 ))}
+            {/* `w-full` so it always takes its own line inside the wrap rather
+                than sometimes sitting beside a badge and sometimes below one:
+                a sentence whose position depends on how many badges happen to
+                be present is a sentence whose card height nobody can predict. */}
+            <OutageNote
+              outage={'outage' in attraction ? attraction.outage : undefined}
+              timezone={effectiveTimezone}
+              className="text-muted-foreground w-full text-[11px] leading-tight"
+            />
           </div>
         </div>
 

@@ -775,6 +775,10 @@
       "DOWN": "Down",
       "UNKNOWN": "Unknown"
     },
+    "outage": {
+      "since": "Outage reported since {when}",
+      "startUnknown": "Outage reported, start unknown"
+    },
     "noLiveWaitTimes": {
       "title": "No wait times available",
       "reason": {

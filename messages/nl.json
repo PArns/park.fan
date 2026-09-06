@@ -775,6 +775,10 @@
       "DOWN": "Storing",
       "UNKNOWN": "Onbekend"
     },
+    "outage": {
+      "since": "Storing gemeld sinds {when}",
+      "startUnknown": "Storing gemeld, begin onbekend"
+    },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
       "reason": {

@@ -77,6 +77,13 @@ export function formatFieldValue(field: CuratedField, value: unknown): string {
     case 'number':
     case 'decimal':
       return field.unit ? `${String(value)} ${field.unit}` : String(value);
+    case 'date':
+      // Reformatted for reading, not reparsed: the value is already the park's
+      // calendar day, and `new Date('2026-01-16')` would drag a UTC midnight
+      // into it and print the 15th for anybody west of Greenwich.
+      return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+        ? `${value.slice(8, 10)}.${value.slice(5, 7)}.${value.slice(0, 4)}`
+        : String(value);
     default:
       return String(value);
   }
@@ -272,6 +279,17 @@ function FieldControl({
             value: option,
             label: option,
           }))}
+        />
+      );
+
+    case 'date':
+      return (
+        <TextInput
+          id={id}
+          type="date"
+          disabled={disabled}
+          value={typeof value === 'string' ? value : ''}
+          onChange={(event) => onChange(event.target.value || null)}
         />
       );
 

@@ -528,6 +528,27 @@ export interface Land {
   name: string;
 }
 
+/**
+ * When a ride that is down right now was first reported down.
+ *
+ * Deliberately not a duration. `queue_data` is a change log whose hourly
+ * heartbeat copies the previous status forward, so minutes derived from it
+ * would be wrong upward exactly on the long outages. The UI renders a clock
+ * time and never an elapsed counter.
+ */
+export interface AttractionOutage {
+  /** ISO 8601 UTC. */
+  startedAt: string;
+  /**
+   * Whether the transition into DOWN was actually seen.
+   *
+   * False means the outage was already running at the edge of the seven-day
+   * window, so `startedAt` is the oldest reading and not the onset. The UI must
+   * name the day rather than a clock time in that case.
+   */
+  startObserved: boolean;
+}
+
 export interface ParkAttraction {
   id: string;
   name: string;
@@ -548,6 +569,15 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /**
+   * The running outage, present only while the ride reads DOWN.
+   *
+   * Absent is not "the ride is running": it is also every park whose sources
+   * cannot report an outage at all (only ThemeParks.wiki produces the status),
+   * and every ride inside a curated works period. Render the line when it is
+   * there and nothing when it is not; never a "no outages" state.
+   */
+  outage?: AttractionOutage;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */

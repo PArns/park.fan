@@ -558,6 +558,10 @@
       "DOWN": "Störung",
       "UNKNOWN": "Unbekannt"
     },
+    "outage": {
+      "since": "Störung gemeldet seit {when}",
+      "startUnknown": "Störung gemeldet, Beginn unbekannt"
+    },
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
       "reason": {

@@ -775,6 +775,10 @@
       "DOWN": "Fuera de servicio",
       "UNKNOWN": "Desconocido"
     },
+    "outage": {
+      "since": "Avería notificada desde {when}",
+      "startUnknown": "Avería notificada, inicio desconocido"
+    },
     "noLiveWaitTimes": {
       "title": "No hay tiempos de espera disponibles",
       "reason": {

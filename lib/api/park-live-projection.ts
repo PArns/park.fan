@@ -55,6 +55,17 @@ export interface LiveAttractionSnapshot {
   effectiveStatus?: ParkAttraction['status'];
   crowdLevel?: ParkAttraction['crowdLevel'];
   trend?: ParkAttraction['trend'];
+  /**
+   * Volatile, and it has to travel on EVERY poll rather than only when present.
+   *
+   * `mergeLiveParkSnapshot` spreads the snapshot over the static ride, so a key
+   * the projection omits keeps whatever the server render had. For a ride that
+   * has since recovered that means the line "Störung gemeldet seit 14:20 Uhr"
+   * would stand under an OPERATING badge until the page is rebuilt, and a tab
+   * left open all day would never heal. Sending the key with `undefined` is what
+   * clears it.
+   */
+  outage?: ParkAttraction['outage'];
   queues?: ParkAttraction['queues'];
   statistics?: ParkAttraction['statistics'];
   bestVisitTimes?: ParkAttraction['bestVisitTimes'];
@@ -147,6 +158,9 @@ export function leanParkForLivePoll(
       isCurrentlyInSeason: a.isCurrentlyInSeason,
       crowdLevel: a.crowdLevel,
       trend: a.trend,
+      // Always the key, never a conditional spread: an omitted key leaves the
+      // server render's outage in place forever. See LiveAttractionSnapshot.
+      outage: a.outage,
       queues: a.queues,
       statistics: a.statistics,
       bestVisitTimes: a.bestVisitTimes,

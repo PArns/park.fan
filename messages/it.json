@@ -775,6 +775,10 @@
       "DOWN": "Fermo",
       "UNKNOWN": "Sconosciuto"
     },
+    "outage": {
+      "since": "Guasto segnalato da {when}",
+      "startUnknown": "Guasto segnalato, inizio sconosciuto"
+    },
     "noLiveWaitTimes": {
       "title": "Nessun tempo di attesa disponibile",
       "reason": {
