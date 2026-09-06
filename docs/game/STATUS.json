@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "4bbcb9a",
+  "updatedAtCommit": "3147116",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -166,7 +166,7 @@
     },
     "paths": {
       "wave": 2,
-      "status": "built, ungated — and NOTHING CALLS IT: the demo park places no paths, so 4,293 lines have never appeared in a screenshot",
+      "status": "built, ungated — 4,293 lines, now actually called: the demo park lays 20 paths through its own graph API.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
@@ -214,7 +214,7 @@
     },
     "scenery": {
       "wave": 2,
-      "status": "built, ungated — and NOTHING CALLS IT: 6,010 lines, no dress() call anywhere, so the park is an empty hill",
+      "status": "built, ungated — 6,010 lines, now actually called: dress() runs on the demo park's first render frame.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
@@ -358,18 +358,22 @@
     },
     "demo-park": {
       "wave": 5,
-      "status": "in progress (builder agent) — placeholder until it lands",
+      "status": "built, ungated — 1,610 lines; draws nothing itself, everything through terrain/paths/scenery/environment. 1,295 entities + 14,000 ambient instances, path graph 1,511 nodes / 4,022 edges / 17 junctions in ONE component, save 673.5 KB.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
       "gated": false,
-      "lines": 55,
+      "lines": 1610,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
     }
   },
   "openIssues": [
+    "`nextEntityId` kept a process-global `let idCounter` folded in with the world's own `__ids` by a `Math.max`, so the SECOND world built in a process carried on from where the first stopped — the same seed minted `path-1…` once and `path-4…` the next time (measured). Found by the demo-park builder, which builds its park twice to prove it reproduces. Fixed in core: the sequence lives in the world and nowhere else, and `test-game-save-roundtrip` now builds two worlds and compares, which was verified to FAIL with the counter put back.",
+    "STILL OPEN, measured on the finished park: a treeline CANNOT hide the world's edge. True horizon at screen row 153, the sky-to-land step at rows 228-240, the park boundary at row 268, and a 20 m tree on it tops out at 245 — below the thing it was meant to cover. Occluding the apron's rim from a 99 m camera needs about 65 m of planting. It is geometry (more apron, or a distance fade into the sky colour), not planting, and it stays terrain's.",
+    "STILL OPEN, measured: every tree in the `overview` frame is a LOD 2 imposter and the mid-ground reads as a palm grove — `linden:l2v0` x179, `spruce:l2v0` x351, `oak:l2v0` x288, and no LOD 0 tree mesh has an instance at that camera. At 42 m the same trees are convincing oaks with bark and branching. The break is at the pack's `lod[0] x 0.85 = 34 m`. It is scenery's `gen-foliage.ts` to fix; the demo park is where it shows.",
+    "Draw calls: 145 at `overview`, peak 237 at `ground` — 19.8 % of the 1,200 whole-game budget with six modules unbuilt, and roughly 127 of the 237 are shadow-map passes.",
     "The sky, the fog and the exposure were all wrong in the same direction and are measured now. Three causes, each verified against a frame: (1) `scene.fogColor` was written as a LINEAR radiance, and Babylon runs `Color3.toLinearSpaceToRef` over it for every PBR material (`BindFogParameters`, `linearSpace` set), so the shader saw 0.034 where 0.295 was written — distant terrain got DARKER with distance instead of paler (sRGB 58/80/42 unfogged against 46/58/44 at 700 m). (2) The DOME painted `SkyState.ground` below the horizon, which is a term the IBL needs and the backdrop must not have: at the overview camera the terrain's far edge sits ~75 px under the true horizon and those 75 px were a dark olive band, sRGB 24/26/18 against the 75 the horizon ring rendered. That band is what several rounds of screenshots read as 'black above the horizon'. It is haze now — the azimuth's own horizon colour carried straight down, which is also the colour the fog takes the terrain to, so the edge dissolves instead of stepping. (3) The clear-day fog density was 0.0008, which with EXP2 plus Babylon's `toLinearSpace(fog)` put half the contrast of a surface 660 m away into the haze: a visibility of ~1.5 km on a day the model calls clear. 0.00035 now.",
     "Auto exposure was a stop under and is 1.85x: EXPOSURE_KEY 0.42 -> 0.78, MIN 0.55 -> 1.0, MAX 2.2 -> 3.6. Those numbers were set against a frame in which the dome rendered black and the fog was four times too dark, so the scene they were metered against was not this scene. Measured at the old values: exposure settled at 1.054 and sunlit grass came out at 0.069 scene-linear, sRGB 80, where a photograph puts it near 120. Pinning exposure by hand and looking: 2.6 washes the grass towards yellow, 2.0 reads as a clear day.",
     "The sky's shoulder ran per channel and therefore desaturated everything it touched — the horizon measured R:G:B 0.80 : 0.94 : 1.00 off the model and rendered grey. It runs on luminance now and scales all three channels by one factor. Measured on the model at noon, blue:red went 1.54 -> 2.81 at dy 0.3 and 2.05 -> 3.70 at dy 0.6, with the levels unchanged.",

@@ -4,7 +4,12 @@
  */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createWorld, serializeWorld, deserializeWorld } from '@/lib/game/core/world.ts';
+import {
+  createWorld,
+  serializeWorld,
+  deserializeWorld,
+  nextEntityId,
+} from '@/lib/game/core/world.ts';
 import { SimRuntime } from '@/lib/game/core/sim-runtime.ts';
 import { GAME_MODULES } from '@/lib/game/modules.ts';
 import { Rng } from '@/lib/game/core/rng.ts';
@@ -122,4 +127,44 @@ assert.notEqual(a, c, 'a different seed must produce a different world');
   assert.equal(end1, end2, 'resuming from a save must reproduce the uninterrupted run');
 }
 
-console.log('✓ game save round-trip, NaN guard, determinism, resume');
+// 5. entity ids are a property of the world, not of the process
+//
+// `nextEntityId` folded a module-level counter in with the world's own `__ids` and took the max,
+// so the SECOND world built in a process carried on from where the first stopped: the same seed
+// minted `path-1…` once and `path-721…` the next time. Nothing above catches it, because every
+// case above builds one world per assertion. This builds two and compares.
+{
+  const mk = (seed) => {
+    const w = createWorld({ seed, resolution: 8, packs: packs.map((p) => p.id) });
+    return [
+      nextEntityId(w, 'path'),
+      nextEntityId(w, 'scenery'),
+      nextEntityId(w, 'scenery'),
+      w.modules.__ids,
+    ].join(',');
+  };
+  const first = mk(3);
+  const second = mk(3);
+  assert.equal(second, first, 'a second world with the same seed must mint the same entity ids');
+  assert.equal(first, 'path-1,scenery-2,scenery-3,3', 'ids must start at 1 in a fresh world');
+
+  // and the sequence survives a save, so a loaded world does not re-issue an id it already used
+  const w = createWorld({ seed: 3, resolution: 8, packs: packs.map((p) => p.id) });
+  const id = nextEntityId(w, 'scenery');
+  w.entities[id] = {
+    id,
+    kind: 'scenery',
+    pack: 'core-classic',
+    item: 'bench-wood',
+    position: [0, 0, 0],
+    yaw: 0,
+  };
+  const reloaded = deserializeWorld(serializeWorld(w));
+  assert.equal(
+    nextEntityId(reloaded, 'scenery'),
+    'scenery-2',
+    'a loaded world resumes its sequence'
+  );
+}
+
+console.log('✓ game save round-trip, NaN guard, determinism, resume, entity-id reproducibility');

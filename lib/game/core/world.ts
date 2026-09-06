@@ -51,16 +51,28 @@ export function createWorld(opts: WorldOptions): World {
 }
 
 // ── Entities ────────────────────────────────────────────────────────────────────────────────
-let idCounter = 0;
-/** Ids are `<kind>-<seq>`; deterministic as long as creation order is (it is: tick order). */
+/**
+ * Ids are `<kind>-<seq>`, and the sequence lives in the WORLD (`world.modules.__ids`) and nowhere
+ * else.
+ *
+ * It used to live in a module-level `let idCounter` as well, folded in with a `Math.max`, and that
+ * made the counter shared by every world built in one process: the second `buildWorld(seed)` in a
+ * run carried on from wherever the first one had stopped, so the same seed produced `path-1…` once
+ * and `path-721…` the next time. The docblock on it said "deterministic as long as creation order
+ * is", which was true within a world and false across two — the case a "new park" button, a save
+ * load and every test that builds twice all hit. Found by the demo-park builder, which builds the
+ * same park twice to prove it is reproducible.
+ *
+ * The `do…while` stays: it is the guard for a world whose `__ids` is behind its entities, which a
+ * hand-edited save or a module that minted an id another way can produce.
+ */
 export function nextEntityId(world: World, kind: string): EntityId {
-  let n = Math.max(idCounter, (world.modules.__ids as number | undefined) ?? 0);
+  let n = (world.modules.__ids as number | undefined) ?? 0;
   let id: EntityId;
   do {
     n += 1;
     id = `${kind}-${n}`;
   } while (world.entities[id]);
-  idCounter = n;
   (world.modules as Record<string, unknown>).__ids = n;
   return id;
 }
