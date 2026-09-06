@@ -8,11 +8,15 @@
  * to (it is a request). What exercises every entry today is the showcase, which draws all six
  * styles in one frame, so a style that fails to build is a missing surface in a screenshot.
  *
- * It lives in this folder rather than in `pack.json` because the pack schema has no `pathStyles`
- * category and the schema is core's file — see `docs/game/requests/paths.md`. `registerPathStyle`
- * is the seam that makes that a one-line change for core when it lands: a pack loader validates
- * the entry through `parsePathStyle` and hands it over, and this module never learns where it
- * came from.
+ * The built-in styles live here rather than in `pack.json`, but a PACK can add one now, and that
+ * changed twice. This docblock used to say the schema had no `pathStyles` category and that the
+ * schema is core's file, so the seam was a one-line change for core "when it lands" — and a critic
+ * tested the consequence rather than reading it: a pack carrying `pathStyles` registered fine, was
+ * duly reported by `unclaimedPackKeys()`, and changed nothing, because `registerPathStyle` had no
+ * caller. That is the extensibility axis at its floor, and the floor alone fails a module.
+ *
+ * Core landed the other half in the meantime (`packManifestSchema` passes unknown top-level keys
+ * through and `Registry.registerPackCategory` claims one), so `attachPathStyles` below closes it.
  *
  * DOM-free: the sim reads `widths`, `defaultWidth` and the kerb width (the graph insets its nodes
  * from the kerb), so this file is reachable from the worker.
@@ -77,7 +81,15 @@ export const PATH_MATERIAL_MANIFEST: readonly PathMaterialRecipe[] = [
     roughness: [0.62, 0.88],
     metallic: 0,
     pattern: 'concrete',
-    tileMetres: 2,
+    // Four metres, not two. `SLAB_M` is 1 m, so a two-metre tile held FOUR slabs in the whole
+    // texture and repeated them every two metres — a critic read the albedo back off the GPU and
+    // measured the whole surface spanning 5.5 of 255, i.e. 2.9 %, on the largest thing a visitor
+    // looks at. `textures.ts` opens by saying the per-cell tint exists so a surface is "not one
+    // colour with a grid drawn on it"; at four cells it was exactly that. Sixteen slabs at four
+    // metres costs texel density (128 px/m at 512 against 256) and buys a walk that does not
+    // repeat under the camera; cobble, with 27.4 of 255 across 18×18 cells, is what this is aiming
+    // at.
+    tileMetres: 4,
     relief: 0.85,
     seed: 1301,
   },
@@ -353,4 +365,45 @@ export function resolveWidth(style: PathStyleDef, requested: number | undefined)
     }
   }
   return best;
+}
+
+/** The slice of `Registry` this needs, so `manifest.ts` stays worker-safe and core-import-free. */
+export interface PathStyleRegistry {
+  registerPackCategory(category: string, owner: string): void;
+  packs(): readonly unknown[];
+  onPack(fn: (pack: unknown) => void): () => void;
+}
+
+/**
+ * Claim `pathStyles` and `pathMaterials`, and read them off every pack, present and future.
+ *
+ * Both halves are needed and neither alone is enough: `onPack` fires on REGISTRATION, and the
+ * bundled packs are registered before any module is built, so a listener alone would miss exactly
+ * the packs the game ships with. Materials are read before styles because a style names a surface
+ * recipe by id.
+ */
+export function attachPathStyles(registry: PathStyleRegistry): () => void {
+  registry.registerPackCategory('pathStyles', 'paths');
+  registry.registerPackCategory('pathMaterials', 'paths');
+  const read = (pack: unknown): void => {
+    const manifest = pack as { id?: string; pathMaterials?: unknown; pathStyles?: unknown };
+    const recipes = manifest.pathMaterials;
+    if (Array.isArray(recipes)) {
+      for (const recipe of recipes) registerPathMaterial(recipe as PathMaterialRecipe);
+    }
+    const defs = manifest.pathStyles;
+    if (Array.isArray(defs)) {
+      for (const def of defs) {
+        try {
+          registerPathStyle(def);
+        } catch (error) {
+          // Named rather than swallowed, and not thrown: one bad style in a third-party pack must
+          // not take the other five down with it.
+          console.warn(`[game/paths] pack "${manifest.id}" has a bad path style`, error);
+        }
+      }
+    }
+  };
+  for (const pack of registry.packs()) read(pack);
+  return registry.onPack(read);
 }

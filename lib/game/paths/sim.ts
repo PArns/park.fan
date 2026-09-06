@@ -23,6 +23,7 @@ import {
   type Router,
 } from './graph';
 import type { GraphStats, QueueInfo, Waypoint } from './types';
+import { attachPathStyles } from './manifest';
 
 export interface PathsSimApi {
   /**
@@ -49,6 +50,9 @@ export interface PathsSimApi {
 }
 
 export function createPathsSim(ctx: SimContext): SimHandle {
+  // Same claim the main half makes: the sim reads `widths` and the kerb inset off a style, so a
+  // pack-supplied style has to reach the worker too.
+  const detachStyles = attachPathStyles(ctx.registry);
   interface TerrainLike {
     height(x: number, z: number): number;
   }
@@ -207,6 +211,7 @@ export function createPathsSim(ctx: SimContext): SimHandle {
       return { gate: gateOverride };
     },
     dispose() {
+      detachStyles();
       offAdd();
       offUpdate();
       offRemove();

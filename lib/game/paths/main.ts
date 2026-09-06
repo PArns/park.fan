@@ -37,6 +37,7 @@ import {
   resolveWidth,
   STANCHION_POST_MATERIAL,
   type PathStyleDef,
+  attachPathStyles,
 } from './manifest';
 import type { GraphStats, PathEntityData, Waypoint } from './types';
 
@@ -90,6 +91,10 @@ export interface PathsMainApi {
 }
 
 export function createPathsMain(ctx: MainContext): MainHandle {
+  // Claim `pathStyles`/`pathMaterials` and read them off every pack, at boot and afterwards. Both
+  // halves of the module do it: a showcase may load one without the other, and re-registering a
+  // style is a map write over the same id.
+  const detachStyles = attachPathStyles(ctx.registry);
   const scene = ctx.scene as Scene;
   interface TerrainLike {
     height(x: number, z: number): number;
@@ -336,6 +341,7 @@ export function createPathsMain(ctx: MainContext): MainHandle {
       }
     },
     dispose() {
+      detachStyles();
       offAdd();
       offUpdate();
       offRemove();

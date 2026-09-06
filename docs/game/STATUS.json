@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "5174035",
+  "updatedAtCommit": "6ee3fd2",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 4,
-    "note": "Four modules graded once each, all four FAILED: demo-park 7.20, track 8.00, environment 7.50, scenery 7.10. All four have had a round 2 shipped by the integrator and none has been re-graded. terrain, paths, ui and camera are ungraded and their scores below are null, which is the honest value.",
+    "roundsRun": 5,
+    "note": "Five modules graded once each, all five FAILED: paths 6.26, demo-park 7.20, scenery 7.10, environment 7.50, track 8.00. All five have had a round 2 shipped by the integrator and none has been re-graded. terrain, ui and camera are ungraded and their scores below are null, which is the honest value.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -182,14 +182,22 @@
     "paths": {
       "wave": 2,
       "status": "built, ungated — 4,293 lines, now actually called: the demo park lays 20 paths through its own graph API.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "round": 2,
+      "score": 6.26,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 4293,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 6.5,
+        "fidelity": 5.8,
+        "extensibility": 5.0,
+        "budget": 6.0,
+        "determinism": 9.5,
+        "reportHonesty": 6.0
+      },
+      "gradedAtCommit": "6ee3fd2",
+      "hardGates": "all pass (extensibility hit the 5.0 floor exactly, which is the pass line, not below it)",
+      "verdict": "round 1 FAILED at 6.26 against 8.5 — the lowest on the branch (docs/game/critiques/paths-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "pools": {
       "wave": 2,
@@ -402,6 +410,11 @@
     }
   },
   "openIssues": [
+    "The `paths` selftest was RED at HEAD in four runs of four while the module's report claimed '25 assertions, all passing'. Nothing ran it — it was not in pnpm test:game. It is `pnpm test:game-paths` now, and the assertion is the PER-QUERY time (0.313 us idle, threshold 2 us) rather than a total that depends on the query count. The old threshold also contradicted the comment above it, which says a loaded machine measures 2x an idle one and the bug it catches was 20x.",
+    "paths round 2: exactly ONE lamp reached the paving, at medium, high AND ultra, where the night rig's pool holds two, four and six — the disparity widened the more the machine could afford. mesh.lightSources sorts by renderPriority and a PBR material takes the first maxSimultaneousLights, so with four slots the list was [sun, sky, env-moon-light, lamp-0]: TWO of the four slots on the largest surface in the frame went to lights at intensity 0.000 at 22:00. Six now, matching scenery and track. Zero draw calls, zero triangles, and .game-render/pn/2200-ground.png is the first lit avenue in this project.",
+    "paths round 2: a pack carrying `pathStyles` registered, was reported by unclaimedPackKeys(), and changed nothing — registerPathStyle had no caller and the docblock above it said the seam was waiting for core. Core landed that; attachPathStyles closes it and claims both `pathStyles` and `pathMaterials`. Pinned by pnpm test:game-registry: 6 -> 7 styles from a manifest, surface recipe resolving with it, unclaimed keys [].",
+    "paths round 2: `path-concrete-slab` was one colour with a grid drawn on it — the exact thing textures.ts opens by saying the per-cell tint prevents. SLAB_M is 1 m and the recipe tiled at 2 m, so the texture held FOUR slabs and repeated every two metres; the albedo read back off the GPU spanned 5.5 of 255, 2.9 %. Four metres and a per-slab tint at 1.15 now. Cobble at 27.4 across 18x18 is the standard it aims at.",
+    "STILL OPEN (paths, all measured by its critic, none fixed): 50.4 % of the module's triangles are KERB (24,243 of 48,144, 5.05x the surface it edges); no LOD and no spatial split, so those 48,144 are identical across all six camera x time rows and 16.6 % of the overview frame; graph rebuild 11.2-12.9 ms against a 6 ms whole-sim budget; texture generation 3,784.8 ms at `high`; no camber, crossfall or drainage anywhere, two vertices across an eight-metre avenue; two orphan kerb fragments inside a junction cap.",
     "scenery round 2: the far foliage imposter drew a RECTANGLE for both species. An earlier critic had called it species-blind; it branches per species and always did — what both branches shared was `addCard`, which draws a quad, so a spruce was a rectangle and a broadleaf a disc of leaves above a bare stick, i.e. a palm. At `overview` 1,289 of the demo park's 1,290 trees are drawn this way, so those few vertices are what the whole mid-ground looks like. `addCard` takes a silhouette `profile` now. Costed by the critic before it was written: widening the LOD break to draw real trees there costs 263,000 triangles and doubles the frame; the profile cost 18,648 (+6.2 %) at unchanged draw calls.",
     "scenery round 2: the triangle allocation was upside down and neither earlier critic saw it. At `ground`, meadow-flowers took 154,848 triangles (35.9 %) of the module's 431,300 and hedge-box 73,364 — 62 % on ground cover against 16 % for all 1,344 trees. At `overview`, hedge-box alone was 29,184 of 79,490 (36.7 %) for 76 one-metre hedges at 340 m, more than every tree in frame. Both now collapse at LOD 2. Net at overview INCLUDING the tree fix: 299,646 -> 290,262 triangles (-9,384) at an unchanged 145 draw calls.",
     "scenery round 2: a pack registered after boot never reached the module — buildCatalog ran once, so registering a pack took registry.items('foliage') 7 -> 9 while the module's catalogue stayed at 26 with every new key null. Nothing subscribed to registry.onPack. A pack from loadPackFromUrl was invisible to the one module whose job is drawing content. Fixed; detaches in dispose.",

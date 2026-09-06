@@ -81,7 +81,10 @@ function sample(recipe: PathMaterialRecipe, u: number, v: number): Sample {
       const stain = fbm(u, v, { octaves: 4, period: 5, seed: seed + 41 });
       return {
         h,
-        tint: (hash2(cx, cy, seed) - 0.5) * 0.5 + (stain - 0.5) * 0.7,
+        // Per-slab tint at 1.15 rather than 0.5: a poured slab differs from the one beside it by
+        // more than the batch stain does, and with only four cells in the old tile the difference
+        // had nothing to be visible against anyway.
+        tint: (hash2(cx, cy, seed) - 0.5) * 1.15 + (stain - 0.5) * 0.7,
         joint: 1 - edge,
         wear: clamp01(stain * 0.8),
       };

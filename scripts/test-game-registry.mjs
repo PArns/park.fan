@@ -224,6 +224,58 @@ assert.throws(
   detach();
 }
 
+// The same question one module over: a pack that carries a PATH SURFACE.
+//
+// `registerPathStyle` and `parsePathStyle` existed and had no caller, and the module's own docblock
+// explained that the seam was waiting for core to add a `pathStyles` category. A critic registered
+// a pack carrying one and watched it change nothing — the extensibility axis at its floor, which
+// alone fails a module. Both halves are wired now, so this asserts the whole path: pack in, style
+// out, and the surface recipe it names resolving with it.
+{
+  const { attachPathStyles, pathStyle, pathStyles } = await import('@/lib/game/paths/manifest.ts');
+  const r = new Registry();
+  r.registerPack(packs[0]);
+  const before = pathStyles().length;
+  r.registerPack({
+    id: 'surface-pack',
+    version: 1,
+    name: { en: 'Surfaces' },
+    requires: [packs[0].id],
+    pathMaterials: [
+      {
+        id: 'redbrick',
+        base: [0.45, 0.12, 0.09],
+        accent: [0.55, 0.2, 0.14],
+        joint: [0.3, 0.28, 0.26],
+        roughness: [0.8, 0.95],
+        metallic: 0,
+        pattern: 'pavers',
+        tileMetres: 1.4,
+        relief: 0.9,
+        seed: 7,
+      },
+    ],
+    pathStyles: [
+      {
+        id: 'brick-walk',
+        name: 'Brick Walk',
+        surface: 'redbrick',
+        widths: [3, 4, 6],
+        defaultWidth: 4,
+      },
+    ],
+  });
+  const detach = attachPathStyles(r);
+  assert.equal(pathStyles().length, before + 1, 'a manifest alone must add a path style');
+  assert.equal(pathStyle('brick-walk').surface, 'redbrick', 'the style keeps its surface recipe');
+  assert.deepEqual(
+    r.unclaimedPackKeys(),
+    [],
+    'pathStyles and pathMaterials must both be claimed, so neither is reported as unclaimed'
+  );
+  detach();
+}
+
 console.log(
-  '✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs, manifest-only track elements'
+  '✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs, manifest-only track elements and path styles'
 );

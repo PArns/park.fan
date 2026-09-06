@@ -196,7 +196,66 @@ and removes its four event subscriptions.
    recipes stay linear (the only space in which "half as bright" means anything) and are encoded on
    the way into the texture.
 
+## Round 2 — the lowest grade on the branch, and a report that was not true
+
+`docs/game/critiques/paths-round1.md` failed this module at **6.26** against 8.5 — the lowest so
+far: frame 6.5 · fidelity 5.8 · **extensibility 5.0 (the floor)** · budget 6.0 · determinism 9.5 ·
+report honesty 6.0. No hard gate failed.
+
+**The selftest was RED at HEAD while this report claimed "25 assertions, all passing."** Four runs
+of four, `20k queries stay inside one tick budget` at 6.26–16.29 ms against its own `< 6`, exit 1.
+Nothing ran it — it was not in `pnpm test:game` — so nobody found out. That is the honesty axis
+earning its 5 % on its own.
+
+Both halves are fixed. The selftest is `pnpm test:game-paths` now, so red is visible; and the
+assertion is the PER-QUERY time rather than the total, because the total depends on `QUERIES` and
+the per-query figure is what regresses. The threshold also contradicted the comment above it, which
+says a loaded machine measures 2× an idle one and the bug this catches was 20×: at 0.313 µs per
+query idle, 2 µs clears a loaded machine threefold and still fails the moment a `Map` walk gets
+back into the hot path.
+
+**Exactly one lamp reached the paving, at every quality preset.** The scenery critic had said zero;
+the count is one, and the sharper version is worse: it is one at `medium`, `high` **and** `ultra`,
+where the night rig's pool holds two, four and six lamps — the disparity widens the more the
+machine can afford. `mesh.lightSources` sorts by `renderPriority`, a PBR material takes the first
+`maxSimultaneousLights`, and with four slots the list came out `[sun, sky, env-moon-light, lamp-0]`
+— **two of the four slots on the largest surface in the frame went to lights at `intensity 0.000`
+at 22:00.** Six now, matching what `scenery` and `track` already set. It costs no draw call and no
+triangle, and `.game-render/pn/2200-ground.png` is the first frame in this project with a lit
+avenue in it: a pool on the paving, the bench in it, the canopy above catching the throw.
+
+**A pack carrying `pathStyles` registered, was duly reported by `unclaimedPackKeys()`, and changed
+nothing.** `registerPathStyle` and `parsePathStyle` existed with no caller, and the docblock above
+them explained the seam was waiting for core to add the category. Core landed that in the meantime,
+so `attachPathStyles` closes it: it claims `pathStyles` and `pathMaterials`, walks
+`registry.packs()` and subscribes to `onPack` — both, because `onPack` fires on registration and
+the bundled packs are registered before any module is built. Proven end to end and pinned by
+`pnpm test:game-registry`:
+
+    styles before: 6 → after: 7
+    brick-walk resolved: true  { "surface": "redbrick", "widths": [3, 4, 6] }
+    unclaimed keys: []
+
+**`path-concrete-slab` was one colour with a grid drawn on it**, which is the exact thing
+`textures.ts` opens by saying the per-cell tint exists to prevent. `SLAB_M` is 1 m and the recipe
+tiled at 2 m, so the texture held **four slabs** and repeated them every two metres; the critic read
+the albedo back off the GPU and measured the whole surface spanning 5.5 of 255, **2.9 %**. Cobble,
+with 27.4 across 18×18 cells, is the best paving in the game and is what this is aiming at. Four
+metres now — sixteen slabs, and a per-slab tint at 1.15 instead of 0.5, which had nothing to vary
+over at four cells.
+
+**Round 2 was done by the integrator**, the builder having been killed by the account session
+limit. Five findings are left open and are in the ranked list below with the critic's numbers.
+
 ## What is weak, ranked
+
+> Five items the round-1 critique measured and this round did NOT fix, kept at the top because
+> they are the module's real cost: **50.4 % of its triangles are kerb** (24,243 of 48,144, 5.05×
+> the surface it edges); there is **no LOD and no spatial split**, so those 48,144 stay identical
+> across all six camera × time rows and are 16.6 % of the `overview` frame; the **graph rebuild is
+> 11.2–12.9 ms against a 6 ms whole-sim budget**; **texture generation is 3,784.8 ms at `high`**;
+> there is **no camber, crossfall or drainage anywhere**, with two vertices across an eight-metre
+> avenue; and two orphan kerb fragments lie inside a junction cap.
 
 1. **Texel density is 171–256 px/m against the art bible's 512 for a surface a camera can touch.**
    The generator is a per-pixel JavaScript loop and it is the most expensive thing this module does:
