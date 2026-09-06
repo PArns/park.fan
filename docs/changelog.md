@@ -4,6 +4,55 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: der Favoritenstern sitzt wieder in seinem Ring
+
+Auf dem Telefon hing der Stern aus dem Kreis, in den ihn die Karte gezeichnet hat — auf jeder
+Park-, Bahn-, Show- und Restaurantkarte der Seite. Ursache war die 44-px-Touch-Stufe aus der
+zweiten Mobile-Runde, die als `max-sm:min-h-11 max-sm:min-w-11` auf dem Knopf selbst saß.
+`ParkCard` und `AttractionCard` geben ihm einen eigenen 34-px-Kreis und `h-full w-full`; der
+44-px-Knopf behielt dessen linke obere Ecke, und der im Knopf zentrierte Stern landete 6 px weiter
+rechts und 6 px tiefer als der Ring um ihn herum. Bei 390 px gemessen: Sternmitte 23 px vom rechten
+Kartenrand und 35 px von oben, wo die Kreismitte bei 29/29 liegt, auf 12 von 12 Karten der
+Startseite und 19 von 19 einer Parkseite. Show-, Restaurant- und In-Park-Karten hängen ihren
+Wrapper stattdessen an dessen **rechter oberer** Ecke auf, dort gingen dieselben 28 px in die
+Gegenrichtung und schoben den Stern 14 px in die Karte hinein: 31/31 statt der 17/17, die die
+Position vorgibt.
+
+Die Trefferfläche wächst jetzt über ein Pseudo-Element, die Box bleibt, wie die Aufrufstelle sie
+gesetzt hat — dieselbe Trennung, die `BreadcrumbNav`, `PlannerBlock` und `PlannerFlyout` schon
+jeweils einzeln begründet haben und die im Design-System bisher nirgends stand. Nachgemessen:
+jeder Stern auf 0,0 px in seinem Ring (29/29 bzw. 17/17), und die Reichweite, die
+`elementFromPoint` findet, liegt bei 43 × 44 px im Kreis und 44 × 44 px auf einer
+Restaurantkarte gegen 37 × 44 vorher. Sie ist größer geworden, weil sie um den Stern zentriert ist
+statt an einer seiner Ecken zu hängen. Im Titelkopf der Parkseite schrumpft die Box von 44 auf
+24 px, was der `<h1>` daneben 20 px mehr gibt (248 → 268 px bei 390 px) und vertikal nichts bewegt.
+
+### Nachtrag: der Schließen-Knopf des Standort-Banners
+
+Zweiter Fall derselben Regel, und er zeigt ihre andere Hälfte: eine gewachsene Trefferfläche muss
+auch daraufhin geprüft werden, worüber sie jetzt liegt. Der Knopf hängt `absolute top-2 right-2` in
+einem Toast, die zusätzlichen 20 px gingen also nach innen — 53 px in eine Karte hinein, deren
+Textspalte 37 px vor dieser Kante endet. Er lag damit über den letzten 16 px der Überschrift, und
+`elementFromPoint` am rechten Rand der Spalte lieferte den Schließen-Knopf: ein Tipp ans Ende einer
+Überschriftszeile hat den Banner geschlossen. Das Glyph saß bei 31/31 statt 21/21. Der Kommentar
+darüber hat beides bestritten („the card's `pr-9` already keeps the text clear of it, and the glyph
+does not move"), was erklärt, warum es niemandem aufgefallen ist: das `pr-9` war für den 24-px-Knopf
+geschrieben und nie gegen den 44-px-Knopf nachgerechnet.
+
+Die Box zu reparieren ist dort nur die halbe Arbeit. Ein Pseudo-Element um einen 24-px-Knopf in
+einer 8-px-Ecke reicht 43 px hinein, also lag mit `pr-9` allein die _Fläche_ weiterhin über den
+letzten 6 px der Textspalte — derselbe Tipp, dasselbe Ergebnis, nur im Layout nicht mehr sichtbar.
+Das Padding der Karte muss die Fläche freihalten und nicht die Box: `max-sm:pr-11`. Gemessen über
+sechs Sprachen × 320/360/390 px wechseln alle 18 Fälle an diesem Punkt von `CLOSE-BTN` auf `H2`, die
+Box geht von 44 auf 24 px, das Glyph von 31/31 auf 21/21, die Reichweite bleibt 44 × 44 und der
+Hauptknopf ist in keinem Fall verdeckt. Die acht Pixel werden in Textbreite bezahlt und ergeben in
+3 dieser 18 Fälle eine Zeile mehr (es bei 320 und 360, en bei 390, je +16,5 px Karte); der Toast ist
+`fixed`, seine Höhe verschiebt auf der Seite also nichts.
+
+Siehe [Design System](design/design-system.md#the-target-grows-the-box-does-not).
+
+---
+
 ## Unreleased – feat: the ride page opens the way its park page does
 
 A ride page and its park page are one click apart over the same photograph, and they opened as two
