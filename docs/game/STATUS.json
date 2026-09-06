@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 11,
-    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Five re-graded at round 2: terrain 6.04 -> 7.09 (hard gate closed), paths 6.26 -> 7.13, environment 7.50 -> 7.72, scenery 7.10 -> 7.86, track 8.00 -> 8.41 (fails by 0.09, the closest anything has come). demo-park is the last one, plus camera, guests and shops which are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 12,
+    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 is now complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. ALL SIX STILL FAIL; track misses by 0.09. Mean 6.90 -> 7.70. camera, guests and shops are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -402,14 +402,21 @@
     },
     "demo-park": {
       "wave": 5,
-      "status": "built, ungated — 1,610 lines; draws nothing itself, everything through terrain/paths/scenery/environment. 1,295 entities + 14,000 ambient instances, path graph 1,511 nodes / 4,022 edges / 17 junctions in ONE component, save 673.5 KB.",
+      "status": "round 2 graded 7.99, FAIL (pass 8.5), no hard gate failed — docs/game/critiques/demo-park-round2.md. Independently re-measured by walking the built world and taking every path polyline as line segments: 893 -> 1,196 trees, 6.9 % -> 15.9 % within 10 m of a path (the report says 16.2 % on a slightly different species filter — four trees out of 1,196, i.e. agreement), 32.8 % within 20 m, missingRoles [], 7 shops placed. The frame needed TWO modules: this one's planting and scenery's imposter profile. The 80-120 m density band went 7.8 -> 46.6 trees/ha, so the bathtub in the profile is gone and the wide camera no longer reads as scrubland with a park in the middle. 34 % more trees cost 0 extra draw calls. Seven shops rather than eight: placeDemoShops skips a plot whose need no pack answers instead of inventing one, and no bundled pack ships an information point. Boot is still over the 8 s budget in 7 of 7 runs (9,936-14,950 ms against showcases at 4,470-6,919) BUT the dev server was being recompiled by the tools builder throughout, so it must be re-measured against pnpm build && pnpm start before anybody tunes it.",
       "round": 2,
-      "score": null,
+      "score": 7.99,
       "consoleErrors": 0,
-      "gated": false,
+      "gated": true,
       "lines": 1780,
-      "axes": null,
-      "gradedAtCommit": "5ac9c03",
+      "axes": {
+        "frame": 7.8,
+        "fidelity": 7.5,
+        "extensibility": 8.3,
+        "budget": 7.2,
+        "determinism": 9.5,
+        "reportHonesty": 9.2
+      },
+      "gradedAtCommit": "7dffc29",
       "hardGates": "all pass",
       "verdict": "round 2 shipped, awaiting round-2 grade. Round 1 failed at 7.20 (docs/game/critiques/demo-park-round1.md)."
     }
