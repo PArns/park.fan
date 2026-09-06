@@ -138,10 +138,23 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
    *   - `useEmissiveAsIllumination`, `linkEmissiveWithDiffuse` and turning `disableLighting` off
    *     each change which branch runs and none of them make the texture appear.
    *
-   * So it is the RawTexture's sampler rather than the material wiring, and the fix was to stop
+   * So it is the RawTexture's sampler rather than the material wiring, and the response was to stop
    * fighting it: the sky is written into **vertex colours** (see `paintDome`), which
-   * `default.fragment` multiplies into `baseColor` and which need no sampler at all. The dome now
-   * renders a real gradient at every hour.
+   * `default.fragment` multiplies into `baseColor` and which need no sampler at all.
+   *
+   * **That path is live and it is still not a sky.** The frame was read off a screenshot as "a
+   * real gradient, dark at the zenith and brighter toward the horizon", and then measured: the
+   * brightest sky row is sRGB **(8, 9, 8)** and every row below it is (0, 0, 0). Eight levels out
+   * of 255 is not a gradient, it is black with a rounding error, and the picture said otherwise
+   * only because a human eye stretches the bottom of a dark image. Anything claimed about this
+   * dome from here on gets a number beside it.
+   *
+   * The arithmetic that is left: the sky model hands `paintDome` a zenith of 0.117 linear, which
+   * through exposure ~1.14 and ACES should land near sRGB 95. It lands at 8. Roughly two stops of
+   * that is `SKY_GAIN`, which was calibrated against a frame in which the dome drew nothing at
+   * all; the rest is unaccounted for and is the next thing to measure, against a lit surface —
+   * sunlit grass in the same frame reads 0.063 linear, and a clear noon sky belongs 2-4x above it,
+   * not at zero.
    *
    * That took one more measurement to land. The first attempt painted the colours and changed
    * nothing, because `buildDome` created the colour buffer non-updatable and `updateVerticesData`
