@@ -9,23 +9,23 @@ Folder: `lib/game/track/` (19 files). Nothing outside it was touched except this
 
 ### Pure half (no Babylon, no DOM, no clock, no RNG — runs on the worker and in node)
 
-| File          | What it owns                                                                                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vec.ts`      | Vector maths and the frame convention: `right = cross(up, dir)`, so `(right, up, forward)` is a right-handed triple.                                                |
+| File          | What it owns                                                                                                                                                         |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `vec.ts`      | Vector maths and the frame convention: `right = cross(up, dir)`, so `(right, up, forward)` is a right-handed triple.                                                 |
 | `spline.ts`   | C² cubic through the control nodes, arc-length table, rotation-minimising frame, roll channel. `pointAt`, `tangentAt`, `curvatureAt`, `rollAt`, `frameAt`, `length`. |
-| `cursor.ts`   | The frame integrator every element is written against. Midpoint integration; emits nodes at a curvature-derived spacing.                                            |
-| `ops.ts`      | Ten primitives: `straight turn pitch bank roll crest loop spin hill ramp`. The only `switch` in the module, and it switches on the instruction set.                 |
+| `cursor.ts`   | The frame integrator every element is written against. Midpoint integration; emits nodes at a curvature-derived spacing.                                             |
+| `ops.ts`      | Ten primitives: `straight turn pitch bank roll crest loop spin hill ramp`. The only `switch` in the module, and it switches on the instruction set.                  |
 | `expr.ts`     | A 180-line recursive-descent evaluator so an element's op arguments can be expressions over its parameters. Not `Function()`.                                        |
 | `elements.ts` | The element table — 19 entries as data — plus `registerTrackElement` and `registerTrackElementsFromPack`.                                                            |
-| `build.ts`    | Pieces → nodes → circuit closure → spline → physics → resultant banking → spline. The two-pass design.                                                              |
-| `physics.ts`  | The energy model and the verdict. Fixed Δs march, five-point train, load-dependent friction.                                                                        |
-| `profile.ts`  | Rails, spine and crossties extruded along the spline into three vertex buffers.                                                                                     |
-| `supports.ts` | Load-adaptive columns, timber bents, footings, X-bracing, and the clearance test against the track's own geometry.                                                  |
-| `resolve.ts`  | Content pack → style, train, limits. Nothing else in the module names a pack.                                                                                       |
-| `layouts.ts`  | Three complete circuits as piece lists.                                                                                                                             |
-| `types.ts`    | `TrackData`, `TrackPiece`, `DriveSection`, `HEARTLINE_HEIGHT`.                                                                                                      |
-| `noise.ts`    | Tileable value noise for the materials.                                                                                                                             |
-| `sim.ts`      | The worker handle: builds from `coaster` entities, exposes the spline and the physics to `trains`.                                                                  |
+| `build.ts`    | Pieces → nodes → circuit closure → spline → physics → resultant banking → spline. The two-pass design.                                                               |
+| `physics.ts`  | The energy model and the verdict. Fixed Δs march, five-point train, load-dependent friction.                                                                         |
+| `profile.ts`  | Rails, spine and crossties extruded along the spline into three vertex buffers.                                                                                      |
+| `supports.ts` | Load-adaptive columns, timber bents, footings, X-bracing, and the clearance test against the track's own geometry.                                                   |
+| `resolve.ts`  | Content pack → style, train, limits. Nothing else in the module names a pack.                                                                                        |
+| `layouts.ts`  | Three complete circuits as piece lists.                                                                                                                              |
+| `types.ts`    | `TrackData`, `TrackPiece`, `DriveSection`, `HEARTLINE_HEIGHT`.                                                                                                       |
+| `noise.ts`    | Tileable value noise for the materials.                                                                                                                              |
+| `sim.ts`      | The worker handle: builds from `coaster` entities, exposes the spline and the physics to `trains`.                                                                   |
 
 ### Main half (Babylon)
 
@@ -50,7 +50,10 @@ validate(data): TrackPhysics          // without drawing
 meshes(), stats()
 ```
 
-Owned entity kind: `coaster`, with the layout in `entity.data` as `TrackData`. Nothing is stored in
+Owned entity kind: `coaster`, with the layout in `entity.data` as `TrackData`. The showcase places
+its three through `ctx.dispatch('entity:add', …)` rather than by calling `api.create()`, which is
+what a build tool would do and what puts the same coasters in front of the worker: `api.create()`
+would have drawn three rides the simulation never heard of, and `trains` reads the sim handle. Nothing is stored in
 `world.modules.track`: a layout is its piece list, so a saved coaster is a few hundred bytes and
 gets whatever the generators learn next time it is built. Event: `track:changed { rideId }` (already
 in core's `FORWARDED_PREFIXES`).
@@ -105,14 +108,14 @@ a clock.
 
 Commands run, and what they said.
 
-| Command                                                            | Result                                                                                          |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `npx tsc --noEmit`                                                  | clean                                                                                           |
-| `npx eslint lib/game/track`                                         | clean                                                                                           |
-| `npx prettier --write lib/game/track/**`                            | applied                                                                                         |
-| `pnpm test:game`                                                    | green (save round-trip, registry, i18n, soak, `game lint: 134 files clean`)                     |
-| `node … lib/game/track/selftest.mjs`                                | **95 checks clean**                                                                             |
-| `node scripts/game-shot.mjs --showcase=track --tod=… --cam=…`        | 9 shots, **0 console errors, 0 warnings, 0 hydration warnings** in every run                    |
+| Command                                                       | Result                                                                                                    |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `npx tsc --noEmit`                                            | clean                                                                                                     |
+| `npx eslint lib/game/track`                                   | clean                                                                                                     |
+| `npx prettier --write lib/game/track/**`                      | applied                                                                                                   |
+| `pnpm test:game`                                              | green (save round-trip, registry, i18n, soak, `game lint: 134 files clean`)                               |
+| `node … lib/game/track/selftest.mjs`                          | **95 checks clean**                                                                                       |
+| `node scripts/game-shot.mjs --showcase=track --tod=… --cam=…` | 9 shots × 3 times of day × 3 cameras, **0 console errors, 0 warnings, 0 hydration warnings** in every run |
 
 The selftest is not a smoke test. It asserts the curvature of a splined circle is 1/R to within
 1 %, that a frictionless 40 m drop arrives at √(2gh), that a fully banked circle has zero lateral g
@@ -126,11 +129,11 @@ reaches one, and that none of the three layouts floats a footing or breaks its o
 
 Through the registry, with the train each ride definition resolves to:
 
-| Layout             | Style        | Length | Top speed | Drop   | Vertical g     | Lateral | Airtime | Ride  | Closure |
-| ------------------ | ------------ | ------ | --------- | ------ | -------------- | ------- | ------- | ----- | ------- |
-| **Nordwind**       | `steel-box`  | 979 m  | 104 km/h  | 46.0 m | −0.40 … 4.20   | 0.74    | 4.9 s   | 88 s  | 0.85 m  |
-| **Alte Mühle**     | `wood`       | 900 m  | 82 km/h   | 30.0 m | −0.66 … 3.02   | 0.44    | 12.0 s  | 104 s | 1.33 m  |
-| **Kleiner Kreisel**| `steel-tube` | 610 m  | 58 km/h   | 21 m   | 0.18 … 2.15    | 0.51    | 1.2 s   | 72 s  | 2.17 m  |
+| Layout              | Style        | Length | Top speed | Drop   | Vertical g   | Lateral | Airtime | Ride  | Closure |
+| ------------------- | ------------ | ------ | --------- | ------ | ------------ | ------- | ------- | ----- | ------- |
+| **Nordwind**        | `steel-box`  | 979 m  | 104 km/h  | 46.0 m | −0.40 … 4.20 | 0.74    | 4.9 s   | 88 s  | 0.85 m  |
+| **Alte Mühle**      | `wood`       | 900 m  | 82 km/h   | 30.0 m | −0.66 … 3.02 | 0.44    | 12.0 s  | 104 s | 1.33 m  |
+| **Kleiner Kreisel** | `steel-tube` | 610 m  | 58 km/h   | 21 m   | 0.18 … 2.15  | 0.51    | 1.2 s   | 72 s  | 2.17 m  |
 
 All three complete with **zero issues** against their own pack limits (5.0/2.6/−1.8, 4.2/2.4/−1.5,
 3.5/2.0/−1.0) and arrive at their stations at 4.1, 4.0 and 2.3 m/s. Nordwind's 4.20 g is its loop;
@@ -138,28 +141,35 @@ Alte Mühle's twelve seconds of airtime are what an out-and-back is for.
 
 ### Budget
 
-Track only, read off `api.stats()` in the running scene: **14 meshes, 181,656 triangles, 223,700
-vertices** for 2,484 m of track, 556 columns and 1,392 braces. Build 490 ms, textures 725 ms at
-512². Whole scene with the terrain: **48–107 draw calls** and 140k–610k triangles depending on the
-camera, against a budget of 1,200 draw calls. The 1.0–1.6 fps is SwiftShader and means nothing.
+Track only, read off `api.stats()` in the running scene: **14 meshes, 177,196 triangles, 217,724
+vertices** for 2,489 m of track, 569 columns and 1,101 braces. Build 318 ms; the four texture sets
+727 ms at 512². Five meshes per coaster — rails, spine, ties, structure, footings — of which the
+ties and the footings carry an `addLODLevel(d, null)`.
+
+Whole scene with the terrain: **47–107 draw calls** and 135k–773k triangles depending on the
+camera, against a budget of 1,200 draw calls. The 1.6–2.2 fps is SwiftShader and means nothing.
 
 ### What the screenshots actually showed
 
 Nine PNGs, all opened and looked at.
 
-- `1200-close` — the family coaster from 40 m: twin rails, a round tube spine, the ladder of
-  crossties down to it, blue steel columns with an X-brace in every bay, concrete pads at their
-  feet, and the coaster's own shadow across the grass. Behind it the steel looper's loop and
-  airtime hill. This is the frame the module stands on.
-- `1200-ground` — a visitor's eye at 1.7 m: the wooden coaster on the right reads as a real timber
-  lattice in warm brown, the family coaster's helix in the middle as a clean spiral, the looper on
-  the left as a silhouette. The wood is the best thing in the set.
-- `1200-overview` — from 340 m all three are readable and all three are thin. The wooden structure's
-  members are under a pixel wide at that distance and alias into a dark smear (see "what is weak").
+- `1200-close` — the steel looper from 40 m: twin rails on a box spine, the ladder of crossties and
+  struts between them, red columns with an X-brace and a ledger in each bay, grey concrete pads at
+  their feet, the loop and the s-bend behind, and the whole structure's shadow laid across the
+  grass. This is the frame the module stands on.
+- `1200-ground` — a visitor's eye at 1.7 m under the family coaster's airtime hill: the round tube
+  spine with the rails riding half a metre above it, blue columns thick enough to read as steel,
+  and the looper's forest of red columns behind. Two rounds went into this frame — the first drew
+  0.32 m columns and left 6 cm between the rails and the spine, and the assembly read as one tube
+  with a dark stripe on it.
+- `1200-overview` — from 340 m all three fit the frame and all three are readable: the looper's
+  loop, the family coaster's helix, the wooden coaster's big hill and its nine hops. The timber
+  structure is a dark mass at that distance (see "what is weak"). Getting them to fit at all took
+  turning every layout broadside — see the docblock on `PLACEMENT`.
 - `1830-close` / `1830-ground` — sunset behind the structures; the footings read as light pads
-  against dark grass, and the paint goes warm without going orange.
-- `1830-overview` — the weakest frame in the set: the whole scene is dim and the coasters are dark
-  scribbles on dark grass.
+  against dark grass and the paint goes warm without going orange.
+- `1830-overview` — the weakest frame in the set: the scene is dim, and at that distance the
+  coasters are dark scribbles on dark grass.
 - `2200-*` — night. The three coasters silhouette against a starfield and stay individually
   identifiable; nothing lights them, because ride light rigs belong to `effects`/`scenery` and the
   pack declares none on a coaster.

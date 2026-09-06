@@ -21,7 +21,18 @@ The seam is in place and wired both ways:
 ```ts
 // core/pack-schema.ts
 const trackElementOp = z.object({
-  op: z.enum(['straight', 'turn', 'pitch', 'bank', 'roll', 'crest', 'loop', 'spin', 'hill', 'ramp']),
+  op: z.enum([
+    'straight',
+    'turn',
+    'pitch',
+    'bank',
+    'roll',
+    'crest',
+    'loop',
+    'spin',
+    'hill',
+    'ramp',
+  ]),
   // Values are numbers or expressions over the element's parameters: "$height", "max(1, $h/2)".
   args: z.record(z.string(), z.union([z.number(), z.string()])),
 });
@@ -29,11 +40,28 @@ const trackElementOp = z.object({
 export const trackElementSchema = z.object({
   id: z.string(),
   name: localized,
-  category: z.enum(['station','lift','drop','straight','turn','hill','inversion','brake','special']),
-  params: z.record(
-    z.string(),
-    z.object({ default: z.number(), min: z.number().optional(), max: z.number().optional(), unit: z.string().optional() })
-  ).default({}),
+  category: z.enum([
+    'station',
+    'lift',
+    'drop',
+    'straight',
+    'turn',
+    'hill',
+    'inversion',
+    'brake',
+    'special',
+  ]),
+  params: z
+    .record(
+      z.string(),
+      z.object({
+        default: z.number(),
+        min: z.number().optional(),
+        max: z.number().optional(),
+        unit: z.string().optional(),
+      })
+    )
+    .default({}),
   ops: z.array(trackElementOp).min(1),
   drive: z
     .object({
@@ -48,8 +76,8 @@ export const trackElementSchema = z.object({
 
 Two notes for whoever writes it. The op set is deliberately small — it is an instruction set, and
 the file that dispatches on it (`ops.ts`) is the only `switch` in the module. And the argument
-expressions are evaluated by `expr.ts`, a forty-line recursive-descent parser over
-`+ - * / % ( ) $param` and eight named functions — **not** `Function()`, because
+expressions are evaluated by `expr.ts`, a 180-line recursive-descent parser over
+`+ - * / % ( ) $param` and thirteen named functions — **not** `Function()`, because
 `registry.loadPackFromUrl` accepts a manifest from a URL and handing that to the JavaScript
 compiler turns a pack into an execution surface.
 
@@ -61,12 +89,12 @@ no logic in it, plus the two registration functions above.
 `resolveTrain()` needs a mass, a drag area, a rolling resistance and a heartline height, and
 `trainStyleSchema` carries none of them. They are derived here from what the pack does say:
 
-| Number             | Derived from today                                                             |
-| ------------------ | ------------------------------------------------------------------------------ |
-| `massPerCar`       | `300 kg × car.length` — 900 kg for a 3 m car                                    |
-| `dragArea` (C_d·A) | `0.9 × width × height + 0.05 × cars × width`                                    |
-| `rollingResistance`| `0.024` when the TRACK style's `supports` is `timber`, `0.019` otherwise        |
-| heartline height   | the constant `HEARTLINE_HEIGHT = 1.1` in `types.ts`                             |
+| Number              | Derived from today                                                       |
+| ------------------- | ------------------------------------------------------------------------ |
+| `massPerCar`        | `300 kg × car.length` — 900 kg for a 3 m car                             |
+| `dragArea` (C_d·A)  | `0.9 × width × height + 0.05 × cars × width`                             |
+| `rollingResistance` | `0.024` when the TRACK style's `supports` is `timber`, `0.019` otherwise |
+| heartline height    | the constant `HEARTLINE_HEIGHT = 1.1` in `types.ts`                      |
 
 The last one is the one that will bite. The heartline is the axis the track rolls around and the
 line the physics integrates, so an **inverted** coaster — riders hanging below the rails — is a

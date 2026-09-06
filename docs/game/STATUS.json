@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "3147116",
+  "updatedAtCommit": "82feffb",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -190,12 +190,12 @@
     },
     "track": {
       "wave": 2,
-      "status": "in progress (builder agent, wave 2)",
+      "status": "built, ungated — 5,495 lines in 21 files. C2 cubic spline through a tridiagonal solve (not Catmull-Rom: a C1 interpolant puts a curvature jump at every knot and curvature is what a rider feels), rotation-minimising roll gauge, the spline IS the heartline 1.1 m above the rails. Ten primitive ops are the only switch in the module and it switches on the instruction set; 19 elements are DATA on top of them, with op arguments as expressions parsed by a hand-written parser rather than Function(), because packs load from URLs. Physics is a fixed-delta-s energy march. selftest.mjs: 95 checks, now wired into pnpm test:game.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
       "gated": false,
-      "lines": null,
+      "lines": 5495,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
@@ -370,6 +370,9 @@
     }
   },
   "openIssues": [
+    "STILL OPEN (track, its own #1): at 340 m a timber member is 0.26 m of real width against roughly 0.5 m per pixel, so 556 columns and their bracing sub-pixel-alias into a dark smear at the `overview` camera. Bracing alternate bays halved the member count and it is still visible. Needs a distance LOD that swaps the lattice for a coarser silhouette; the preset offers no MSAA. Confirmed by the integrator on `.game-render/track-verify/1200-overview.png` — the three layouts read as coaster shapes, the structure reads as speckle.",
+    "STILL OPEN (track): supports are vertical only, so any stretch rolled past 78 degrees gets none — a vertical column would meet the underside edge-on. On the three demo layouts this hits the corkscrew and the top of the loop, which are correctly unsupported in reality too, so nothing floats; a heavily overbanked layout would show gaps.",
+    "STILL OPEN (track): a layout is tuned for its train and nothing warns you. The ops shape themselves from a running-speed estimate that reads the train's drag area and rolling resistance, so a car 5 cm narrower builds a different track — two of three layouts closed 5 m worse under a hand-written train spec. A build tool that lets a player swap the train on an existing layout needs a rebuild-and-recheck API that does not exist.",
     "`nextEntityId` kept a process-global `let idCounter` folded in with the world's own `__ids` by a `Math.max`, so the SECOND world built in a process carried on from where the first stopped — the same seed minted `path-1…` once and `path-4…` the next time (measured). Found by the demo-park builder, which builds its park twice to prove it reproduces. Fixed in core: the sequence lives in the world and nowhere else, and `test-game-save-roundtrip` now builds two worlds and compares, which was verified to FAIL with the counter put back.",
     "STILL OPEN, measured on the finished park: a treeline CANNOT hide the world's edge. True horizon at screen row 153, the sky-to-land step at rows 228-240, the park boundary at row 268, and a 20 m tree on it tops out at 245 — below the thing it was meant to cover. Occluding the apron's rim from a 99 m camera needs about 65 m of planting. It is geometry (more apron, or a distance fade into the sky colour), not planting, and it stays terrain's.",
     "STILL OPEN, measured: every tree in the `overview` frame is a LOD 2 imposter and the mid-ground reads as a palm grove — `linden:l2v0` x179, `spruce:l2v0` x351, `oak:l2v0` x288, and no LOD 0 tree mesh has an instance at that camera. At 42 m the same trees are convincing oaks with bark and branching. The break is at the pack's `lod[0] x 0.85 = 34 m`. It is scenery's `gen-foliage.ts` to fix; the demo park is where it shows.",

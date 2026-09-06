@@ -9,7 +9,7 @@
  * It is deliberately tiny and deliberately not `Function()`: a content pack is data that arrives
  * from a URL (`registry.loadPackFromUrl`), and handing that to the JavaScript compiler turns a
  * manifest into an execution surface. The grammar is numbers, `$param` references, `+ - * / %`,
- * unary minus, parentheses, and eight named functions. Anything else throws with the offending
+ * unary minus, parentheses, and thirteen named functions. Anything else throws with the offending
  * text, which is the same contract `parsePack` gives.
  */
 
