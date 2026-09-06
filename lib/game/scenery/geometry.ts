@@ -425,6 +425,22 @@ export interface CardOptions {
   uv?: [number, number, number, number];
   /** Normals are pushed towards the outward direction: a flat card lit flat looks like paper. */
   outward?: Rgb;
+  /**
+   * Half-width multipliers from the bottom edge to the top. `undefined` is the rectangle.
+   *
+   * This exists because of what a rectangle looks like from three hundred metres. The far foliage
+   * imposter was two or three of these cards crossed, and a critic counting instances in the demo
+   * park found 1,289 of 1,290 trees drawn as one: a spruce came out as a rectangle and a broadleaf
+   * as a disc of leaves on a bare stick, which reads as a palm grove across the whole mid-ground.
+   * The first diagnosis was that the imposter had no per-species branch; it has one, and both
+   * branches ended in the same quad. **The silhouette is the only thing left at that distance**,
+   * so it is the one thing the imposter has to get right, and a profile is what a quad is missing.
+   *
+   * Costed against the alternative before it was written: pushing the LOD break out far enough to
+   * draw real trees at the overview camera adds 263,000 triangles and doubles the frame; giving
+   * the imposter a profile adds about 20,600, i.e. 6.9 %.
+   */
+  profile?: readonly number[];
   /** Emit the back face as geometry. Only for a card on a back-face-culled material. */
   doubleSided?: boolean;
 }
@@ -460,34 +476,49 @@ export function addCard(
     plane[2] * (1 - blend) + outward[2] * blend,
   ];
   const ln = Math.hypot(n[0], n[1], n[2]) || 1;
-  const corners: Array<[number, number, number, number]> = [
-    [-1, -1, uv[0], uv[1]],
-    [1, -1, uv[2], uv[1]],
-    [1, 1, uv[2], uv[3]],
-    [-1, 1, uv[0], uv[3]],
-  ];
-  const idx = corners.map(([sx, sy, u, v]) => {
-    const dip = cup * (sx * sx + sy * sy) * 0.5;
-    return vertex(
-      s,
-      centre[0] + right[0] * sx * halfWidth + up[0] * sy * halfHeight - plane[0] * dip,
-      centre[1] + right[1] * sx * halfWidth + up[1] * sy * halfHeight - plane[1] * dip,
-      centre[2] + right[2] * sx * halfWidth + up[2] * sy * halfHeight - plane[2] * dip,
-      n[0] / ln,
-      n[1] / ln,
-      n[2] / ln,
-      u,
-      v,
-      opts.colour,
-      opts.sway
-    );
-  });
-  quad(s, idx[0], idx[1], idx[2], idx[3]);
+  const profile = opts.profile ?? [1, 1];
+  const rows = profile.length;
+  // One row of two vertices per profile entry, stitched into a strip. With the default `[1, 1]`
+  // that is the same four vertices and the same single quad the rectangle always was.
+  const left: number[] = [];
+  const rightIdx: number[] = [];
+  for (let r = 0; r < rows; r++) {
+    const t = rows === 1 ? 0 : r / (rows - 1);
+    const sy = t * 2 - 1;
+    const w = profile[r] ?? 1;
+    const v = uv[1] + (uv[3] - uv[1]) * t;
+    for (const sx of [-1, 1]) {
+      const dip = cup * (sx * sx * w * w + sy * sy) * 0.5;
+      const u = sx < 0 ? uv[0] : uv[2];
+      const id = vertex(
+        s,
+        centre[0] + right[0] * sx * w * halfWidth + up[0] * sy * halfHeight - plane[0] * dip,
+        centre[1] + right[1] * sx * w * halfWidth + up[1] * sy * halfHeight - plane[1] * dip,
+        centre[2] + right[2] * sx * w * halfWidth + up[2] * sy * halfHeight - plane[2] * dip,
+        n[0] / ln,
+        n[1] / ln,
+        n[2] / ln,
+        u,
+        v,
+        opts.colour,
+        opts.sway
+      );
+      if (sx < 0) left.push(id);
+      else rightIdx.push(id);
+    }
+  }
+  for (let r = 0; r < rows - 1; r++) {
+    quad(s, left[r]!, rightIdx[r]!, rightIdx[r + 1]!, left[r + 1]!);
+  }
   // A card is seen from both sides, and the cheap way to say so is `backFaceCulling = false` on
   // the material rather than a second copy of the quad: doubling the geometry doubles a canopy's
   // triangle count for a result the rasteriser already gives away. `doubleSided` exists for the
   // one case that cannot do it that way — a panel on a material shared with culled geometry.
-  if (opts.doubleSided) quad(s, idx[3], idx[2], idx[1], idx[0]);
+  if (opts.doubleSided) {
+    for (let r = rows - 1; r > 0; r--) {
+      quad(s, left[r]!, rightIdx[r]!, rightIdx[r - 1]!, left[r - 1]!);
+    }
+  }
 }
 
 /**

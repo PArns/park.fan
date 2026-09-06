@@ -121,6 +121,58 @@ textures 9 sets, `stats().textureMs` and `buildMs` are reported live.
 Headless Chromium is SwiftShader, so the 0.7–1.3 fps in `report.json` means nothing; draw calls and
 triangles are the budgeted numbers.
 
+## Round 2 — three fixes, and one correction to another critic
+
+`docs/game/critiques/scenery-round1.md` failed this module at **7.10** against 8.5: frame 6.8 ·
+fidelity 6.5 · extensibility 7.0 · budget 7.2 · determinism 9.5 · report honesty 6.5, every hard
+gate passing. It is the most useful critique written on this branch so far, partly because it
+**corrected an earlier one**.
+
+**The far imposter is not species-blind — both species end in a rectangle.** The demo-park critic
+had reported the LOD 2 form as species-blind and blamed a missing branch; `gen-foliage.ts` branches
+per species and always did. What both branches shared was `addCard`, which draws a quad, so a
+spruce's silhouette was a rectangle and a broadleaf's a disc of leaves above a bare stick — a palm.
+At the `overview` camera 1,289 of the demo park's 1,290 trees are drawn this way, so those few
+vertices are what the entire mid-ground of this game looks like.
+
+`addCard` takes a `profile` now — half-width multipliers from the bottom edge to the top — so a
+card is a strip rather than a quad, and the two imposters get `CONIFER_SPIRE` and
+`BROADLEAF_CROWN`. The broadleaf's crown also drops from 0.68 h to 0.66 h with the trunk running to
+0.46 h, so it sits _in_ the canopy instead of holding it up at arm's length. Costed against the
+alternative before it was written, and the critique did the costing: pushing the LOD break out far
+enough to draw real trees at that distance adds **263,000 triangles and doubles the frame**; giving
+the imposter a profile added **18,648, i.e. 6.2 %**, at unchanged draw calls.
+
+**The triangle allocation was upside down, and neither earlier critic saw it.** Measured by the
+scenery critic: at `ground`, `meadow-flowers` is 154,848 triangles (**35.9 %**) of this module's
+431,300 and `hedge-box` 73,364 — 62 % of the budget on ground cover against 16 % for all 1,344
+trees. At `overview`, `hedge-box` alone is 29,184 of 79,490 (**36.7 %**) for seventy-six one-metre
+hedges seen from 340 m, more than every tree in the frame. So: at LOD 2 a hedge is one blob at
+subdivision 1 across its whole footprint instead of four at subdivision 3, and a flower bed is
+three clumps at subdivision 1 instead of four at 3. The near and mid forms are untouched.
+
+Net at `overview`, including the +18,648 the tree silhouettes cost: **299,646 → 290,262 triangles,
+down 9,384, at an unchanged 145 draw calls.** Better trees for fewer triangles.
+
+**A pack registered after boot never reached this module.** `buildCatalog(ctx.registry)` ran once.
+The critic registered a pack afterwards and watched `registry.items('foliage')` go 7 → 9 while this
+module's catalogue stayed at 26 with every new key resolving to `null` — nothing subscribed to
+`registry.onPack`. A pack loaded from a URL, which `loadPackFromUrl` exists for, was invisible to
+the one module whose job is drawing content. It rebuilds on `onPack` now and detaches in `dispose`.
+
+**The two lamps: both earlier critics were right and they do not conflict**, which the scenery
+critic settled with its own numbers. 74 light sites, 72 lamp entities, `POOL_BY_PRESET.medium = 2`.
+Both pool lights run at 63.0 at 22:00 and visibly light bench, hedge and grass — the environment
+critic's finding. No lamp puts a pool on _paving_ in any night frame — the demo-park critic's
+finding. The mechanism is that all eight `path-*` materials and `terrain-ground` carry
+`maxSimultaneousLights = 4` while scenery's carry 6, the scene holds five lights, and the lamps are
+at `renderPriority = -1`: two of seventy-two sites hold a light, and what they reach is scenery,
+not path. Raising the pool is not the fix on its own; the path materials' light budget is the other
+half, and it belongs to `paths`.
+
+**Round 2 was done by the integrator**, the builder having been killed by the account session
+limit. What is left open, with the critic's numbers, is below.
+
 ## What is weak, ranked and honest
 
 1. **The sky is black at 09:00 and 12:00 in every one of my shots.** That is the environment

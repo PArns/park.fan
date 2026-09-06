@@ -140,7 +140,28 @@ export function createSceneryMain(ctx: MainContext): MainHandle {
   const webgl = (engine as { isWebGPU?: boolean }).isWebGPU !== true;
   const preset = ctx.quality.preset;
 
-  const catalog = buildCatalog(ctx.registry);
+  // The catalogue is rebuilt whenever a pack arrives, not only at boot.
+  //
+  // `buildCatalog` used to be called once, and a critic tested the obvious consequence rather than
+  // reading about it: registering a pack after boot took `registry.items('foliage')` from 7 to 9
+  // and left this module's catalogue at 26, with every new key resolving to `null`. Nothing
+  // subscribed. A content pack loaded from a URL — which `registry.loadPackFromUrl` exists to do —
+  // was therefore invisible to the one module whose whole job is drawing content.
+  //
+  // A Map is replaced rather than mutated so the `catalog()` API keeps handing out a consistent
+  // snapshot, and the new specs register their generators the same way the boot set does. Batches
+  // are built lazily per key, so nothing has to be torn down: a key that was never asked for has
+  // no batch, and a key that existed already keeps the one it has.
+  let catalog = buildCatalog(ctx.registry);
+  const registerProcedurals = (specs: Iterable<PropSpec>) => {
+    for (const spec of specs) {
+      ctx.registry.registerProcedural(spec.generator, () => generatorFor(spec.generator));
+    }
+  };
+  const offPack = ctx.registry.onPack(() => {
+    catalog = buildCatalog(ctx.registry);
+    registerProcedurals(catalog.values());
+  });
   const textures: SceneryTextures = createSceneryTextures(
     scene,
     ctx.rng.int(1, 1 << 28),
@@ -152,9 +173,7 @@ export function createSceneryMain(ctx: MainContext): MainHandle {
 
   // Registering with core's own seam means another module (or a tool) can ask whether a
   // `procedural` name is drawable without importing anything from this folder.
-  for (const spec of catalog.values()) {
-    ctx.registry.registerProcedural(spec.generator, () => generatorFor(spec.generator));
-  }
+  registerProcedurals(catalog.values());
 
   const batches = new Map<string, BatchHandle>();
   const entityOf = new Map<string, string>();
@@ -578,6 +597,7 @@ export function createSceneryMain(ctx: MainContext): MainHandle {
       batches.clear();
       entityOf.clear();
       ambientIds.length = 0;
+      offPack();
       contactMesh.dispose(false, false);
       materials.dispose();
       textures.dispose();

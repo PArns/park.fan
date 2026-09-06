@@ -297,6 +297,20 @@ function leafCard(
   });
 }
 
+/**
+ * Silhouette profiles for the far imposters, bottom edge to top.
+ *
+ * Five rows each, so a card is four quads instead of one — eight triangles against two. Measured
+ * on the demo park at the `overview` camera, where 1,289 of 1,290 trees are imposters, that is the
+ * cheap half of the two options a critic costed: pushing the LOD break out far enough to draw real
+ * trees there adds 263,000 triangles and doubles the frame.
+ *
+ * The broadleaf closes at the bottom as well as the top, because a crown that ends in a straight
+ * horizontal edge reads as a hedge on a pole from any angle below it.
+ */
+const BROADLEAF_CROWN: readonly number[] = [0.22, 0.78, 1, 0.88, 0.34];
+const CONIFER_SPIRE: readonly number[] = [1, 0.74, 0.48, 0.24, 0.04];
+
 // ── Broadleaf ──────────────────────────────────────────────────────────────────────────────
 
 export const treeBroadleaf: Generator = (ctx) => {
@@ -308,20 +322,32 @@ export const treeBroadleaf: Generator = (ctx) => {
   const leafTone = mixRgb(LEAF_DEEP, LEAF_LIGHT, 0.25 + rand() * 0.5);
 
   if (ctx.lod === 2) {
-    // Far imposter: a short trunk and four crossed cards. At 120 m a card is about nine pixels
-    // wide, and the only thing that still reads is the silhouette and the colour.
+    // Far imposter: a short trunk and three crossed cards with an EGG PROFILE.
+    //
+    // It was three flat rectangles and a fourth laid across the top, and a critic counting
+    // instances found that 1,289 of the demo park's 1,290 trees are drawn this way at the overview
+    // camera — so this handful of vertices is what the whole mid-ground of the game looks like. A
+    // rectangle of leaves floating above a bare stick is a palm, which is exactly what the frame
+    // read as. The profile below is wide at the shoulder and closed at both ends, and the crown
+    // now starts at 0.42 h instead of hanging at 0.68 h, so the trunk goes INTO the canopy rather
+    // than holding it up at arm's length.
     const rings: TubeRing[] = [
       { x: 0, y: 0, z: 0, radius: h * 0.022, sway: 0, colour: barkColour },
-      { x: 0, y: h * 0.4, z: 0, radius: h * 0.014, sway: 0.15, colour: barkColour },
+      { x: 0, y: h * 0.46, z: 0, radius: h * 0.014, sway: 0.15, colour: barkColour },
     ];
     addTube(bark.surface, rings, 4, { uvScale: 1 });
-    const cy = h * 0.68;
+    const cy = h * 0.66;
     const r = h * 0.34;
     for (let i = 0; i < 3; i++) {
       const a = (i / 3) * Math.PI;
-      leafCard(canopy.surface, [0, cy, 0], [Math.cos(a), 0.12, Math.sin(a)], r, 0, leafTone, 0.6);
+      const dir: Rgb = [Math.cos(a), 0, Math.sin(a)];
+      addCard(canopy.surface, [0, cy, 0], [-dir[2], 0, dir[0]], [0, 1, 0], r, h * 0.28, {
+        colour: leafTone,
+        sway: 0.6,
+        outward: dir,
+        profile: BROADLEAF_CROWN,
+      });
     }
-    leafCard(canopy.surface, [0, cy + r * 0.35, 0], [0, 1, 0], r * 0.85, 0, leafTone, 0.6);
     return { parts: [bark, canopy], contactRadius: h * 0.3, lightOffset: [0, h * 0.6, 0] };
   }
 
@@ -432,15 +458,17 @@ export const treeConifer: Generator = (ctx) => {
     for (let i = 0; i < 2; i++) {
       const a = (i / 2) * Math.PI;
       const dir: Rgb = [Math.cos(a), 0, Math.sin(a)];
-      // A single tall card per axis: the spire is the silhouette that has to survive.
+      // A single tall card per axis: the spire is the silhouette that has to survive — and until
+      // the profile below existed it did not, because the card was a rectangle. 435 spruces in one
+      // frame and not one conical outline among them.
       addCard(
         canopy.surface,
-        [0, h * 0.55, 0],
+        [0, h * 0.52, 0],
         [-dir[2], 0, dir[0]],
         [0, 1, 0],
-        h * 0.2,
-        h * 0.44,
-        { colour: needleTone, sway: 0.4, outward: dir }
+        h * 0.22,
+        h * 0.46,
+        { colour: needleTone, sway: 0.4, outward: dir, profile: CONIFER_SPIRE }
       );
     }
     return { parts: [bark, canopy], contactRadius: h * 0.2, lightOffset: [0, h * 0.5, 0] };
@@ -634,18 +662,27 @@ export const hedge: Generator = (ctx) => {
   const leaves = part('leaf');
   const tone = tintRgb(srgb(0x3f6b2c), 0.9 + rand() * 0.2);
   // A clipped hedge is a box with a soft top and slightly bowed sides — a hard box is the tell.
-  const cols = Math.max(2, Math.round(w / 0.5));
-  const rows = 2;
+  //
+  // At LOD 2 it is ONE blob across the whole footprint, and the reason is a measurement rather
+  // than a feeling: a critic weighing the demo park's triangles found `hedge-box` taking 29,184 of
+  // the 79,490 this module draws at the `overview` camera — **36.7 %, more than every tree in the
+  // frame** — for seventy-six one-metre hedges seen from 340 m, where a hedge is about two pixels
+  // tall. Four bowed blobs at subdivision 3 apiece is a beautiful hedge nobody can see. The near
+  // and mid forms are untouched.
+  const far = ctx.lod === 2;
+  const cols = far ? 1 : Math.max(2, Math.round(w / 0.5));
+  const rows = far ? 1 : 2;
   const step = w / cols;
   for (let i = 0; i < cols; i++) {
     for (let r = 0; r < rows; r++) {
       const x = -w / 2 + step * (i + 0.5);
       const z = (r - 0.5) * d * 0.34;
-      addBlob(body.surface, x, h * 0.52, z, Math.max(step, d) * 0.44, ctx.lod === 0 ? 4 : 3, {
+      const radius = far ? Math.max(w, d) * 0.5 : Math.max(step, d) * 0.44;
+      addBlob(body.surface, x, h * 0.52, z, radius, ctx.lod === 0 ? 4 : far ? 1 : 3, {
         colour: tintRgb(tone, 0.72 + rand() * 0.16),
         seed: ctx.seed + i * 17 + r * 5,
         lumps: 0.14,
-        squashY: (h * 0.55) / (Math.max(step, d) * 0.44),
+        squashY: (h * 0.55) / radius,
         floorY: -h * 0.5,
         sway: 0.16,
       });
@@ -678,7 +715,13 @@ export const flowers: Generator = (ctx) => {
   const foliage = part('foliageSolid');
   const blooms = part('paint');
   const spread = Math.max(0.35, ctx.spec.footprint[0] * 0.45);
-  const clumps = ctx.lod === 0 ? 9 : 4;
+  // `meadow-flowers` is the single largest triangle item this module draws — 154,848 of 431,300 at
+  // the `ground` camera, **35.9 %**, measured. Nine clumps of two subdivision-3 blobs each is the
+  // right flower bed at two metres and an extravagant one at forty, where the whole plant is a
+  // couple of pixels of colour. The bloom keeps its own blob at every level because the COLOUR is
+  // what a flower bed is for; what drops away is the subdivision under it.
+  const clumps = ctx.lod === 0 ? 9 : ctx.lod === 1 ? 4 : 3;
+  const detail = ctx.lod === 0 ? 3 : ctx.lod === 1 ? 2 : 1;
   for (let i = 0; i < clumps; i++) {
     const a = rand() * Math.PI * 2;
     const r = Math.sqrt(rand()) * spread;
@@ -686,7 +729,7 @@ export const flowers: Generator = (ctx) => {
     const z = Math.sin(a) * r;
     const height = h * (0.6 + rand() * 0.6);
     // Stem and leaves as a small solid clump, then the bloom on top.
-    addBlob(foliage.surface, x, height * 0.32, z, height * 0.3, 3, {
+    addBlob(foliage.surface, x, height * 0.32, z, height * 0.3, detail, {
       colour: tintRgb(GRASS_GREEN, 0.7 + rand() * 0.25),
       seed: ctx.seed + i * 13,
       lumps: 0.35,
@@ -695,7 +738,7 @@ export const flowers: Generator = (ctx) => {
       sway: 0.5,
     });
     const colour = FLOWER_COLOURS[Math.floor(rand() * FLOWER_COLOURS.length)];
-    addBlob(blooms.surface, x, height * 0.72, z, height * 0.19, 3, {
+    addBlob(blooms.surface, x, height * 0.72, z, height * 0.19, detail, {
       colour: tintRgb(colour, 0.9 + rand() * 0.25),
       seed: ctx.seed + i * 29,
       lumps: 0.4,

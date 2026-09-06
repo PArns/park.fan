@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "e28a5bb",
+  "updatedAtCommit": "5174035",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 3,
-    "note": "Three modules graded once each, all three FAILED: demo-park 7.20, track 8.00, environment 7.50. All three have had a round 2 shipped by the integrator and none has been re-graded. Every other score below is null and that is the honest value.",
+    "roundsRun": 4,
+    "note": "Four modules graded once each, all four FAILED: demo-park 7.20, track 8.00, environment 7.50, scenery 7.10. All four have had a round 2 shipped by the integrator and none has been re-graded. terrain, paths, ui and camera are ungraded and their scores below are null, which is the honest value.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -238,14 +238,22 @@
     "scenery": {
       "wave": 2,
       "status": "built, ungated — 6,010 lines, now actually called: dress() runs on the demo park's first render frame.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "round": 2,
+      "score": 7.1,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 6010,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 6.8,
+        "fidelity": 6.5,
+        "extensibility": 7.0,
+        "budget": 7.2,
+        "determinism": 9.5,
+        "reportHonesty": 6.5
+      },
+      "gradedAtCommit": "5174035",
+      "hardGates": "all pass",
+      "verdict": "round 1 FAILED at 7.10 against 8.5 (docs/game/critiques/scenery-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "shops": {
       "wave": 2,
@@ -394,6 +402,10 @@
     }
   },
   "openIssues": [
+    "scenery round 2: the far foliage imposter drew a RECTANGLE for both species. An earlier critic had called it species-blind; it branches per species and always did — what both branches shared was `addCard`, which draws a quad, so a spruce was a rectangle and a broadleaf a disc of leaves above a bare stick, i.e. a palm. At `overview` 1,289 of the demo park's 1,290 trees are drawn this way, so those few vertices are what the whole mid-ground looks like. `addCard` takes a silhouette `profile` now. Costed by the critic before it was written: widening the LOD break to draw real trees there costs 263,000 triangles and doubles the frame; the profile cost 18,648 (+6.2 %) at unchanged draw calls.",
+    "scenery round 2: the triangle allocation was upside down and neither earlier critic saw it. At `ground`, meadow-flowers took 154,848 triangles (35.9 %) of the module's 431,300 and hedge-box 73,364 — 62 % on ground cover against 16 % for all 1,344 trees. At `overview`, hedge-box alone was 29,184 of 79,490 (36.7 %) for 76 one-metre hedges at 340 m, more than every tree in frame. Both now collapse at LOD 2. Net at overview INCLUDING the tree fix: 299,646 -> 290,262 triangles (-9,384) at an unchanged 145 draw calls.",
+    "scenery round 2: a pack registered after boot never reached the module — buildCatalog ran once, so registering a pack took registry.items('foliage') 7 -> 9 while the module's catalogue stayed at 26 with every new key null. Nothing subscribed to registry.onPack. A pack from loadPackFromUrl was invisible to the one module whose job is drawing content. Fixed; detaches in dispose.",
+    "The two-lamps question is SETTLED and both earlier critics were right: 74 light sites, 72 lamp entities, POOL_BY_PRESET.medium = 2. Both pool lights run at 63.0 at 22:00 and light bench, hedge and grass; no lamp puts a pool on PAVING. Mechanism: all eight path-* materials and terrain-ground carry maxSimultaneousLights = 4 while scenery's carry 6, the scene holds five lights, and lamps sit at renderPriority = -1. Raising the pool is only half the fix; the path materials' light budget is the other half and belongs to `paths`.",
     "CORE BUG, found by the environment critic by DIFFING PNGs rather than reading code, fixed: `?weather=rain` rendered a clear noon. `core/host.ts` wrote `{ weather, forced }` into `world.modules.environment` — a shape it invented — while both halves of the environment module read `slot.kind`, so the flag was accepted, stored and ignored. The rain frame differed from the clear one by 123 of 2,764,800 bytes at `close` and by ZERO at `ground`. The in-game path had always worked, because it goes through the module's command. Core now dispatches `environment:weather` instead of writing another module's state; verified from the URL afterwards at fogDensity 0.000845 and env-rain at 1,385 live particles. Every screenshot of rain, storm or snow taken by anybody on this branch before this was a screenshot of a clear day.",
     "environment round 2: the weather fog was not held to the arithmetic the clear-day fog is. At the rain values it put half a surface's contrast into haze at 447 m — worse than the 660 m the module's own comment condemns as fog on a clear day. The rain term is scaled by `intensity` now, so a shower and a storm differ by more than their particles. Measured half-contrast: clear 1,525 m, overcast 771 m, rain 664 m, storm 605 m.",
     "STILL OPEN (environment): auto exposure is pinned at EXPOSURE_MAX = 3.600 at 18:30 AND 22:00. At night that is by design; at dusk it means no metering at the hour a sky model is most worth metering. Across weather at noon it is not pinned (clear 1.954, rain 2.959, storm 3.342, overcast 3.496) — but an overcast noon still renders 1.79x a clear one, right for a camera and wrong for reading weather off a frame.",
