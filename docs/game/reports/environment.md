@@ -97,29 +97,43 @@ that are still wrong.
 
 ## What is weak or missing, ranked
 
-> **This section was written by the integrator, not the builder.** The builder was killed by an
-> account session limit mid-sentence, exactly here — the two empty list items below are where its
-> own honest self-assessment stopped. What follows is measured from screenshots taken afterwards
-> and is deliberately not a guess at what it would have written.
+> The list below was measured by the integrator after the builder was killed by an account
+> session limit mid-sentence. Items 1-4 of the first version have been fixed; what they were and
+> what the numbers said is in `STATUS.json` and in the docblocks of the three files that changed.
+> Everything here is a number read off a frame or off the model, not an impression.
 
-1. **Noon has no sky in frame and the park is dim.** `.game-render/final1/1200-overview.png`: the
-   terrain fills the viewport edge to edge from the `overview` preset, and the grass reads as a
-   dull olive rather than as lit-at-noon green. Two rounds earlier the same preset showed a sky
-   strip and brighter ground, so exposure or the sun's intensity moved the wrong way while the
-   horizon left the frame.
-2. **22:00 is very nearly black.** `.game-render/final1/2200-overview.png`: a faint blue cast on
-   the lake and nothing else readable. `ART_BIBLE.md` §2 asks for the opposite — "the ambient drops
-   to a deep blue (not black), so silhouettes stay readable" — and there is a deep blue in there
-   now, just three or four stops under where a person could see the park by it. The night light
-   rigs that are supposed to carry that frame belong to `effects` and `scenery`, neither of which
-   ever started, so this is only half the module's fault and the whole build's problem.
-3. **No critic ever graded it.** The gate at 8.5 did not run for this or any other module, so
-   nothing here has passed anything. The numbers that do exist — 62 draw calls, 32,118 triangles,
-   0 console errors, `pnpm test:game` green — are within budget and say nothing about whether the
-   frame is good.
-4. **The showcase is unverified.** `/game?showcase=environment` exists and was screenshotted by the
-   builder, but the harness run that would confirm it after these last four file changes was never
-   taken.
+1. **The sky's horizon is about 4.5× its zenith and a real clear sky is nearer 2:1.** This is
+   Preetham's own horizon overshoot — the model integrates an infinite air path with no ground and
+   no aerosol scale-height cutoff — and it is not the tone curve's fault: the shoulder now runs on
+   luminance, and lowering `SKY_WHITE` far enough to fix the ratio caps the solar lobe at 1.16× the
+   horizon, which flattens every sunset. The remedy is either attenuating the near-horizon
+   in-scattering in the model or giving the solar lobe its own curve. Neither is attempted.
+   `SKY_GAIN` stays at 0.09.
+2. **The world ends about a kilometre out and you can see it.** The fog that used to hide the
+   terrain's far edge was hiding it by being fog — half the contrast of a surface 660 m away, i.e.
+   a 1.5 km visibility on a clear day. At an honest 0.00035 the edge is a hard silhouette against
+   the sky at the `overview` preset. That is the terrain module's geometry (world size, or a
+   distant skirt); the haze under the horizon is already the right colour to receive one.
+3. **Night is readable and still unlit.** 22:00 now renders a deep blue sky with stars over a
+   terrain silhouette, which is what `ART_BIBLE.md` §2 asks for. The park under it is black,
+   because the light rigs belong to `effects` and `scenery` and neither module exists.
+4. **No critic ever graded it.** The gate at 8.5 has not run for this or any other module. The
+   numbers that do exist — 47-74 draw calls, 31k-140k triangles, 0 console errors, `pnpm test:game`
+   green — are within budget and say nothing about whether the frame is good.
+5. **The showcase is unverified.** `/game?showcase=environment` exists and was screenshotted by the
+   builder, but not since any of these changes.
+
+## What was fixed, and how it was measured
+
+All four were found by reading numbers out of a rendered frame, never from the source.
+
+| Was                                              | Is                                                 | How it showed up                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scene.fogColor` written as linear radiance      | written gamma-encoded                              | Babylon runs `Color3.toLinearSpaceToRef` over it for every PBR material (`BindFogParameters` with its `linearSpace` flag), so the shader saw 0.034 where 0.295 was set. Distant terrain got **darker** with distance: sRGB 58/80/42 unfogged against 46/58/44 at 700 m.            |
+| dome painted `SkyState.ground` below the horizon | painted with the azimuth's horizon colour          | The IBL needs a ground hemisphere; the backdrop must not have one. At `overview` the terrain edge sits ~75 px under the true horizon and those px rendered sRGB 24/26/18 against the horizon ring's 75 — the dark band that read as "black above the horizon" for three rounds.    |
+| clear-day `fogDensity` 0.0008                    | 0.00035                                            | EXP2 plus Babylon's `toLinearSpace(fog)` put half a surface's contrast into haze at 660 m: a meteorological visibility of ~1.5 km.                                                                                                                                                 |
+| `EXPOSURE_KEY` 0.42 / min 0.55 / max 2.2         | 0.78 / 1.0 / 3.6                                   | Set against a frame where the dome was black and the fog four times too dark. At the old values noon settled at exposure 1.054 and sunlit grass measured 0.069 scene-linear, sRGB 80, where a photograph puts it near 120.                                                         |
+| shoulder applied per channel                     | applied to luminance, one scale for three channels | A per-channel tone curve compresses the largest channel hardest, and the sky's largest channel is the one carrying its colour: the horizon measured R:G:B 0.80 : 0.94 : 1.00 and rendered grey. After: blue:red 1.54 → 2.81 at dy 0.3 and 2.05 → 3.70 at dy 0.6, levels unchanged. |
 
 ## Requests for core
 

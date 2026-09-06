@@ -35,7 +35,7 @@ import type { Scene } from '@babylonjs/core/scene';
 import type { Camera } from '@babylonjs/core/Cameras/camera';
 import type { QualitySettings, Vec3 } from '../core/types';
 import type { Rng } from '../core/rng';
-import { evalSky, makeSkyRow, sampleSky, type SkyState } from './sky-model';
+import { evalSky, linearToGamma, makeSkyRow, sampleSky, type SkyState } from './sky-model';
 import { floatToHalf } from './half-float';
 import { clamp01, mix, smoothstep } from './noise';
 import { cloudSheet, moonFace, radialGlow, softDot, sunDisc } from './textures';
@@ -221,8 +221,24 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
    */
   function paintDome(state: SkyState): void {
     const c: Vec3 = [0, 0, 0];
+    const d: Vec3 = [0, 0, 0];
     for (let v = 0; v < domeDirs.length; v++) {
-      sampleSky(state, domeDirs[v]!, c);
+      const dir = domeDirs[v]!;
+      if (dir[1] < 0) {
+        // Below the horizon the dome is HAZE, not ground — the azimuth's own horizon colour,
+        // carried straight down. Aerial perspective is why: land seen at a grazing angle is
+        // looked at through so much air that it converges on the horizon sky, which is also the
+        // colour distance fog takes the terrain to, so the terrain's far edge dissolves into the
+        // dome instead of meeting it at a step. The IBL still gets a real ground hemisphere; it
+        // asks for it with `groundBlend` left at 1.
+        const h = Math.hypot(dir[0], dir[2]) || 1;
+        d[0] = dir[0] / h;
+        d[1] = 0;
+        d[2] = dir[2] / h;
+        sampleSky(state, d, c, 0);
+      } else {
+        sampleSky(state, dir, c, 0);
+      }
       domeColors[v * 4] = linearToGamma(c[0]);
       domeColors[v * 4 + 1] = linearToGamma(c[1]);
       domeColors[v * 4 + 2] = linearToGamma(c[2]);
@@ -562,16 +578,6 @@ interface DomeVertex {
   v: number;
   alpha: number;
   dir: Vec3;
-}
-
-/**
- * sRGB transfer, for the vertex colours the dome is painted with. Not `pow(c, 1/2.2)`: the toe of
- * the real curve is linear, and the sky's night values live down there where the two disagree by
- * more than they do anywhere else.
- */
-function linearToGamma(c: number): number {
-  const v = c < 0 ? 0 : c;
-  return v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
 }
 
 /**

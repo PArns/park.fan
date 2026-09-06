@@ -26,7 +26,7 @@ import type { CascadedShadowGenerator } from '@babylonjs/core/Lights/Shadows/cas
 import type { DefaultRenderingPipeline } from '@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/defaultRenderingPipeline';
 import type { Scene } from '@babylonjs/core/scene';
 import type { EnvironmentState, MainContext, QualitySettings, Vec3 } from '../core/types';
-import { sampleSky, type SkyState } from './sky-model';
+import { linearToGamma, sampleSky, type SkyState } from './sky-model';
 import { clamp01, mix, smoothstep } from './noise';
 
 /**
@@ -38,9 +38,23 @@ import { clamp01, mix, smoothstep } from './noise';
  * mean radiance into a rough irradiance, and `0.55` is the average cosine over surfaces that are
  * not all facing the sun. The `^0.7` is what stops a dusk sky from metering as if it were night.
  */
-const EXPOSURE_KEY = 0.42;
-const EXPOSURE_MIN = 0.55;
-const EXPOSURE_MAX = 2.2;
+const EXPOSURE_KEY = 0.78;
+const EXPOSURE_MIN = 1.0;
+const EXPOSURE_MAX = 3.6;
+/**
+ * The three numbers above were 0.42 / 0.55 / 2.2 and are 1.85× that, which is one stop and is not
+ * a taste change: they were set against a frame in which the sky dome rendered black and the fog
+ * was four times too dark (both fixed here and in `sky-dome.ts`), so the "scene estimate" the key
+ * was matched to was not this scene. Measured at noon on the demo park afterwards, at the old
+ * numbers: auto exposure settled at 1.054, sunlit grass came out at 0.069 scene-linear and read
+ * sRGB 80 — a green a photograph puts nearer 120. Pinning the exposure by hand and looking at the
+ * frames put the answer between 1.5 and 2.6: at 2.6 the grass washes towards yellow and the sky
+ * loses its blue, at 2.0 it reads as a clear day, so the key is set to land near 1.95 at noon.
+ *
+ * Exposure and not `sunIntensity`, because the sun lights the ground and not the sky: lifting the
+ * light source alone would move the park up and leave the dome where it is, which is the exact
+ * ratio the gain in `sky-model.ts` exists to hold. A camera moves both.
+ */
 /** Seconds to cross most of an exposure change. */
 const EXPOSURE_TAU = 0.55;
 
@@ -151,10 +165,18 @@ export function createLighting(
     // has a warm dry haze instead, which the sky model's own haze band already gives.
     const morning = env.minute > 240 && env.minute < 600 ? 1 : 0;
     const lowSun = smoothstep(0.22, -0.02, Math.sin(env.sunElevation));
+    // EXP2, so the fog factor is `exp(-(density * z)^2)` — and for every PBR material Babylon then
+    // raises that factor to 2.2 (`toLinearSpace(fog)` in its `fogFragment` include), which makes
+    // the fog roughly twice as strong as the density alone suggests. The clear-day base used to be
+    // 0.0008 and, run through both, put HALF the contrast of a surface 660 m away into the haze:
+    // that is a meteorological visibility of about 1.5 km, i.e. actual fog, on a day the model
+    // calls clear. At 0.00035 the same surface keeps 88 % of itself at 340 m and 76 % at a
+    // kilometre, which is aerial perspective rather than weather. The overcast and rain terms come
+    // down with it; the dawn-mist term does not, because mist really is that thick.
     scene.fogDensity =
-      0.0008 +
-      0.0013 * env.cloud +
-      (rainy ? 0.0016 * (0.4 + 0.6 * env.wetness) : 0) +
+      0.00035 +
+      0.0006 * env.cloud +
+      (rainy ? 0.0009 * (0.4 + 0.6 * env.wetness) : 0) +
       0.0016 * morning * lowSun * (1 - 0.6 * env.cloud);
 
     imageProcessing.contrast = mix(1.12, 0.98, env.cloud);
@@ -196,7 +218,21 @@ export function createLighting(
       const len = Math.hypot(forward.x, forward.z);
       if (len > 1e-4) {
         sampleSky(sky, [forward.x / len, 0.045, forward.z / len], fogSample);
-        scene.fogColor.set(fogSample[0] * 1.04, fogSample[1] * 1.04, fogSample[2] * 1.06);
+        // `fogColor` is written GAMMA-ENCODED and `clearColor` linear, and the asymmetry is
+        // Babylon's, not a preference. `BindFogParameters` passes its `linearSpace` flag for
+        // every PBR material, which runs `Color3.toLinearSpaceToRef` over `scene.fogColor` before
+        // it reaches the shader — so a linear radiance written here arrives squared. Measured at
+        // noon on the demo park with the linear value in place: the shader's fog colour came out
+        // at 0.034 against the 0.295 that was set, four times darker than the grass it was
+        // supposed to haze, so distant terrain got DARKER with distance instead of paler
+        // (sRGB 58/80/42 unfogged against 46/58/44 at 700 m). `clearColor` takes no such trip —
+        // it is cleared straight into the render target the tone mapper reads — so it stays in
+        // the linear units the sky model works in.
+        scene.fogColor.set(
+          linearToGamma(fogSample[0] * 1.04),
+          linearToGamma(fogSample[1] * 1.04),
+          linearToGamma(fogSample[2] * 1.06)
+        );
         scene.clearColor.set(fogSample[0], fogSample[1], fogSample[2], 1);
       }
     }

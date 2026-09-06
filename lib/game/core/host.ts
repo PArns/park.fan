@@ -610,21 +610,24 @@ export function orderModules(modules: readonly GameModule[], showcase: string | 
  * in the arithmetic rather than in the picture: a frame with no horizon in it cannot be evidence
  * about a sky.
  *
- * `overview` is 23.5 degrees down now, which leaves the horizon and a 2.2-degree strip of sky in
- * the top of the frame — enough to judge time of day and weather, still steep enough to read a
- * park layout. `night` follows it. The radius grows with the shallower angle because a flatter
- * camera sees less ground for the same distance.
+ * `overview` is 15.5 degrees down, which puts the horizon 154 px into a 720 px frame and gives the
+ * sky the top fifth of it. 23.5 degrees was the first correction and was still not enough to judge
+ * anything by: it left a 2.2-degree strip, 36 px, and every screenshot of the sky taken at that
+ * preset was really a screenshot of the haze band under the horizon. `night` follows it. The
+ * radius grows with the shallower angle because a flatter camera sees less ground for the same
+ * distance; at beta 1.30 the camera sits 99 m up, which is an overview height for a park a
+ * kilometre across.
  */
 const FALLBACK_PRESETS: Record<
   string,
   { alpha: number; beta: number; radius: number; target: [number, number, number] }
 > = {
-  overview: { alpha: -Math.PI / 3, beta: 1.16, radius: 340, target: [0, 8, 0] },
+  overview: { alpha: -Math.PI / 3, beta: 1.3, radius: 340, target: [0, 8, 0] },
   entrance: { alpha: Math.PI / 2, beta: Math.PI / 2.6, radius: 90, target: [0, 2, 170] },
   close: { alpha: -Math.PI / 4, beta: Math.PI / 2.4, radius: 40, target: [0, 2, 0] },
   coaster: { alpha: -Math.PI / 2.5, beta: Math.PI / 3, radius: 140, target: [-90, 10, -40] },
   pool: { alpha: Math.PI / 5, beta: Math.PI / 3, radius: 110, target: [110, 0, 60] },
-  night: { alpha: -Math.PI / 3, beta: 1.16, radius: 300, target: [0, 8, 0] },
+  night: { alpha: -Math.PI / 3, beta: 1.3, radius: 300, target: [0, 8, 0] },
   ground: { alpha: Math.PI / 2, beta: Math.PI / 2.05, radius: 12, target: [0, 1.7, 120] },
 };
 

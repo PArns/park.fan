@@ -254,7 +254,8 @@ export function evalSky(
   dx: number,
   dy: number,
   dz: number,
-  out: Vec3
+  out: Vec3,
+  groundBlend = 1
 ): void {
   const cosTheta = dx * state.sun[0] + dy * state.sun[1] + dz * state.sun[2];
   const t = cosTheta * 0.5 + 0.5;
@@ -279,15 +280,24 @@ export function evalSky(
     else if (i === 1) raw1 = value;
     else raw2 = value;
   }
-  // Shoulder, desaturation and gain, in that order. Everything added after this — night, haze,
+  // Desaturation, shoulder and gain, in that order. Everything added after this — night, haze,
   // ground — is already written in the compressed units, so it is not squashed twice.
+  //
+  // The shoulder runs on LUMINANCE and its result is applied to all three channels as one scale.
+  // Per channel it desaturated everything it touched, because it compresses large values harder
+  // than small ones and the sky's largest channel is the one carrying its colour: the horizon
+  // came out at R:G:B 0.80 : 0.94 : 1.00 — measured off the model at noon — and rendered as grey.
+  // A tone curve applied per channel always does this; it is why every renderer that can afford
+  // it tone-maps luminance and keeps the ratio.
   const rawLum = raw0 * 0.2126 + raw1 * 0.7152 + raw2 * 0.0722;
   const c0 = mix(raw0, rawLum, SKY_DESATURATE);
   const c1 = mix(raw1, rawLum, SKY_DESATURATE);
   const c2 = mix(raw2, rawLum, SKY_DESATURATE);
-  out[0] = (c0 / (1 + c0 / SKY_WHITE)) * state.gain;
-  out[1] = (c1 / (1 + c1 / SKY_WHITE)) * state.gain;
-  out[2] = (c2 / (1 + c2 / SKY_WHITE)) * state.gain;
+  const lum = c0 * 0.2126 + c1 * 0.7152 + c2 * 0.0722;
+  const shoulder = state.gain / (1 + lum / SKY_WHITE);
+  out[0] = c0 * shoulder;
+  out[1] = c1 * shoulder;
+  out[2] = c2 * shoulder;
 
   // Night. The scattering term is ~0 once the sun is under the horizon, and a park at 03:00 that
   // renders black is a bug report, not a night. Deep blue with a moon halo, faded in by `night`.
@@ -324,8 +334,17 @@ export function evalSky(
   }
 
   // Below the horizon: the ground, so the IBL has an up/down split.
-  if (dy < 0.03) {
-    const g = smoothstep(0.03, -0.06, dy);
+  //
+  // `groundBlend` is 0 for the visible dome and 1 for everything else, and the split is not a
+  // taste call. This term exists because the IBL cube needs a lower hemisphere that is not sky —
+  // a cube whose lower faces are blue lights the park from underneath. The DOME is a different
+  // question: it is the backdrop the camera sees, and at the `overview` preset the terrain's far
+  // edge sits ~75 px below the true horizon, so those 75 px were this value. Measured at noon:
+  // the horizon ring rendered sRGB 75 and the ring one step under it 20, a hard dark band lying
+  // on top of the terrain edge — the thing that read in screenshots as "black above the horizon".
+  // What belongs there is haze, which is what the dome paints now (see `paintDome`).
+  if (groundBlend > 0 && dy < 0.03) {
+    const g = smoothstep(0.03, -0.06, dy) * groundBlend;
     for (let i = 0; i < 3; i++) out[i] = mix(out[i], state.ground[i], g);
   }
 
@@ -335,8 +354,25 @@ export function evalSky(
 }
 
 /** One-off evaluation for callers that need a single direction (fog colour, ambient probes). */
-export function sampleSky(state: SkyState, dir: Vec3, out: Vec3): void {
-  evalSky(state, makeSkyRow(state, dir[1]), dir[0], dir[1], dir[2], out);
+export function sampleSky(state: SkyState, dir: Vec3, out: Vec3, groundBlend = 1): void {
+  evalSky(state, makeSkyRow(state, dir[1]), dir[0], dir[1], dir[2], out, groundBlend);
+}
+
+/**
+ * sRGB transfer for a linear radiance.
+ *
+ * Two places need it and both were found by measuring a frame, not by reading a doc. The dome
+ * writes its radiance into vertex colours, which this pipeline linearises before shading; and
+ * `scene.fogColor` reaches a PBR material through `BindFogParameters` with its `linearSpace`
+ * argument set, which runs `Color3.toLinearSpaceToRef` over it — so a linear value written there
+ * is squared before it ever reaches the shader's `mix(vFogColor, color.rgb, fog)`.
+ *
+ * Not `pow(c, 1/2.2)`: the toe of the real curve is linear, and the sky's night values live down
+ * there where the two disagree by more than they do anywhere else.
+ */
+export function linearToGamma(c: number): number {
+  const v = c < 0 ? 0 : c;
+  return v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
 }
 
 // ── Seasons ─────────────────────────────────────────────────────────────────────────────────
