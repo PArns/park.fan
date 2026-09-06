@@ -1283,7 +1283,8 @@
         "thin_exposure": "We hebben {name} de afgelopen {days} dagen te weinig zien draaien om iets over storingen te zeggen.",
         "inhomogeneous": "De twee helften van de afgelopen {days} dagen verschillen te veel om met één cijfer te beschrijven.",
         "recently_merged": "Dit item is onlangs samengevoegd met een tweede. Tot de geschiedenis weer eenduidig is tonen we geen cijfers.",
-        "new_ride": "{name} draait nog niet lang genoeg om iets over storingen te kunnen zeggen."
+        "new_ride": "{name} draait nog niet lang genoeg om iets over storingen te kunnen zeggen.",
+        "heavily_censored": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Van te veel daarvan hebben we het einde niet gezien, meestal omdat het park sloot terwijl de attractie nog stil stond. Dat is te weinig voor een tijdsduur."
       },
       "longestDetail": "Het maximum van de {count} gemelde storingen."
     }

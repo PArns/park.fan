@@ -631,7 +631,14 @@ export type DowntimeBlock =
         | 'thin_exposure'
         | 'inhomogeneous'
         | 'recently_merged'
-        | 'new_ride';
+        | 'new_ride'
+        /**
+         * Plenty of outages, too few of them seen to END — the opposite claim
+         * to `thin_events`, so it gets its own sentence. Strongly seasonal on
+         * the API side (a run cut off by the park shutting for the winter),
+         * which is why this reason comes and goes without the ride changing.
+         */
+        | 'heavily_censored';
       /** 0 for the three reasons above that are about us, where it means "we cannot see". */
       outages: number;
       windowDays: number;

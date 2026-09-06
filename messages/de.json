@@ -1283,7 +1283,8 @@
         "thin_exposure": "Wir haben {name} in den letzten {days} Tagen zu selten laufen sehen, um etwas über Störungen zu sagen.",
         "inhomogeneous": "Die beiden Hälften der letzten {days} Tage sehen zu verschieden aus, als dass eine Zahl beide beschreiben könnte.",
         "recently_merged": "Dieser Eintrag wurde kürzlich mit einem zweiten zusammengeführt. Bis die Historie wieder eindeutig ist, zeigen wir keine Zahlen.",
-        "new_ride": "{name} läuft noch nicht lange genug, als dass sich etwas über Störungen sagen ließe."
+        "new_ride": "{name} läuft noch nicht lange genug, als dass sich etwas über Störungen sagen ließe.",
+        "heavily_censored": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Zu viele davon haben wir nicht enden sehen, meist weil der Park zumachte, während die Bahn noch stand. Für eine Dauer reicht das nicht."
       },
       "longestDetail": "Das Maximum der {count} gemeldeten Störungen."
     }

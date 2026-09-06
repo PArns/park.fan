@@ -1283,7 +1283,8 @@
         "thin_exposure": "We have seen {name} running too rarely in the last {days} days to say anything about outages.",
         "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
         "recently_merged": "This entry was recently merged with a second one. Until its history is unambiguous again we show no figures.",
-        "new_ride": "{name} has not been running long enough for anything to be said about outages."
+        "new_ride": "{name} has not been running long enough for anything to be said about outages.",
+        "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration."
       },
       "longestDetail": "The maximum across the {count} reported outages."
     }

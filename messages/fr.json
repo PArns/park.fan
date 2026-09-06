@@ -1283,7 +1283,8 @@
         "thin_exposure": "Nous avons vu {name} fonctionner trop rarement ces {days} derniers jours pour dire quoi que ce soit sur les pannes.",
         "inhomogeneous": "Les deux moitiés des {days} derniers jours sont trop différentes pour qu'un seul chiffre les décrive.",
         "recently_merged": "Cette fiche a récemment été fusionnée avec une autre. Tant que son historique n'est pas clair, nous n'affichons aucun chiffre.",
-        "new_ride": "{name} ne fonctionne pas depuis assez longtemps pour que l'on puisse parler de pannes."
+        "new_ride": "{name} ne fonctionne pas depuis assez longtemps pour que l'on puisse parler de pannes.",
+        "heavily_censored": "{count} pannes ont été signalées ces {days} derniers jours. Pour trop d'entre elles, nous n'avons pas vu la fin, le plus souvent parce que le parc a fermé alors que l'attraction était encore à l'arrêt. C'est trop peu pour en tirer une durée."
       },
       "longestDetail": "Le maximum sur les {count} pannes signalées."
     }
