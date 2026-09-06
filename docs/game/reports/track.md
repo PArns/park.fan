@@ -225,6 +225,42 @@ built.
 **Round 2 was done by the integrator, not by a module builder** — the builder agent was killed by
 the account session limit, which is recorded in `STATUS.json`.
 
+## Round 3 — the silhouette LOD, and the module's own weakness 1
+
+`docs/game/critiques/track-round2.md` graded **8.41 against a pass mark of 8.5** and named the cause
+in one sentence: the overview still aliases the timber into a smear, and round 2 made it worse by
+adding members exactly where they cannot be resolved. Weakness 1 below has asked for a silhouette
+LOD since round 1 and nobody had built it.
+
+It is built. `buildSupports` returns a second geometry — the same bents with **one tier** of bracing
+instead of up to four — and `main.ts` hangs it off the master mesh with `addLODLevel`, so Babylon
+owns the swap and nothing runs per frame. Three decisions in it are deliberate:
+
+- **Timber only.** Steel is tubular, sparser, and reads as lines rather than as a mass at distance.
+  A distance LOD that changes a silhouette nobody complained about is a regression with a good
+  excuse.
+- **The bents go across unchanged.** A column is what carries the structural read at any distance;
+  it is the lattice between them that turns to mush.
+- **The coarse mesh casts no shadow.** The master already does, and a shadow map at that distance
+  cannot tell which of the two it is looking at.
+
+Measured on `/game?showcase=track` at noon, like for like:
+
+| camera     | before  | after   | draw calls |
+| ---------- | ------: | ------: | ---------: |
+| `overview` | 590,644 | 541,396 | 109 → 109  |
+| `close`    | 809,380 | 760,132 |   99 → 99  |
+| `ground`   | 792,648 | 792,648 |   73 → 73  |
+
+**−49,248 triangles at unchanged draw calls**, and `ground` is untouched, which is the point: the
+swap happens at 180 m on `medium` (110/260/340 on the other presets), so a coaster somebody is
+standing in front of keeps every member it had. Crops at 3× before and after
+(`.game-render/_probe/lod-before.png`, `lod-after.png`) show the far timber going from a dense
+speckled mass to distinguishable bents following the track.
+
+What this does **not** fix, and what the round-2 critique also named: the showcase is still three
+layouts on a bare green plain with nothing to give them scale, and 18:30 is still almost unlit.
+
 ## What is weak or missing, ranked
 
 1. **The overview frame aliases the wooden structure into a smear.** At 340 m a timber member is

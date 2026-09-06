@@ -39,6 +39,14 @@ import type { TrackStyleDef } from '../core/pack-schema';
 const TEXTURE_SIZE = { low: 256, medium: 512, high: 512, ultra: 768 } as const;
 /** Beyond this the crossties stop being individually visible; the rails and supports never do. */
 const TIE_LOD_DISTANCE = { low: 90, medium: 150, high: 220, ultra: 300 } as const;
+/**
+ * Where a timber structure swaps to its coarse silhouette.
+ *
+ * Further out than the ties, because a tie is a detail and the bracing is the shape: losing it too
+ * early would take the lattice off a coaster somebody is still standing in front of. 180 m at
+ * `medium` is about where a 0.26 m member stops covering a pixel at this field of view.
+ */
+const SUPPORT_FAR_DISTANCE = { low: 110, medium: 180, high: 260, ultra: 340 } as const;
 
 export interface TrackStats {
   tracks: number;
@@ -101,6 +109,7 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     TEXTURE_SIZE[ctx.quality.preset]
   );
   const tieDistance = TIE_LOD_DISTANCE[ctx.quality.preset];
+  const supportFarDistance = SUPPORT_FAR_DISTANCE[ctx.quality.preset];
   const tracks = new Map<string, DrawnTrack>();
   let buildMs = 0;
   let counter = 0;
@@ -176,6 +185,15 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     }
     const memberMesh = meshFrom(`track-${id}-support`, supports.member, structure);
     if (memberMesh) meshes.push(memberMesh);
+    // The timber silhouette LOD. Past `supportFarDistance` the lattice is finer than a pixel and
+    // aliases into a brown smear, so the master mesh swaps to one tier of bracing instead of up to
+    // four. Babylon owns the swap (`addLODLevel` sets `_masterMesh`, which makes the coarse mesh
+    // `isBlocked()` and therefore invisible to the normal render), so nothing runs per frame, and
+    // the coarse mesh is deliberately NOT a shadow caster: the master already is one, and a shadow
+    // map at this distance has no idea which of the two it is looking at.
+    const farMesh = supports.memberFar
+      ? meshFrom(`track-${id}-support-far`, supports.memberFar, structure)
+      : null;
     const footingMesh = meshFrom(`track-${id}-footing`, supports.footing, materials.concrete());
     if (footingMesh) {
       footingMesh.addLODLevel(tieDistance * 1.6, null);
@@ -184,6 +202,13 @@ export function createTrackMain(ctx: MainContext): MainHandle {
 
     const env = ctx.module<EnvironmentLike>('environment');
     for (const mesh of meshes) env?.addShadowCaster?.(mesh, false);
+    if (farMesh && memberMesh) {
+      memberMesh.addLODLevel(supportFarDistance, farMesh);
+      // Pushed after the shadow loop on purpose, so it is disposed with the track and casts nothing.
+      meshes.push(farMesh);
+    } else if (farMesh) {
+      farMesh.dispose(false, false);
+    }
 
     buildMs += performance.now() - t0;
     if (built.warnings.length) {

@@ -46,11 +46,26 @@ export interface SupportOptions {
 export interface SupportBuild {
   /** Steel or timber members. */
   member: Geo;
+  /**
+   * The same structure with one tier of bracing instead of up to four, for a distance LOD.
+   *
+   * Only built for timber, and only because timber is the one that fails at distance: a member is
+   * about 0.26 m wide against roughly 0.5 m per pixel at the `overview` camera, so the lattice
+   * sub-pixel-aliases into a brown smear. Round 2 made that worse by adding members exactly where
+   * they cannot be resolved. Steel is tubular, sparser and reads as lines rather than as a mass,
+   * so it keeps one geometry and no swap — a distance LOD that changes a silhouette nobody was
+   * complaining about is a regression with a good excuse.
+   *
+   * `null` when there is nothing to swap to.
+   */
+  memberFar: Geo | null;
   /** Concrete pads. */
   footing: Geo;
   columns: number;
   braces: number;
   triangles: number;
+  /** Triangles in `memberFar`, 0 when there is none. */
+  farTriangles: number;
 }
 
 interface Column {
@@ -214,8 +229,10 @@ export function buildSupports(
   const member = emptyGeo();
   const footing = emptyGeo();
   if (options.kind === 'none' || frames.length < 2) {
-    return { member, footing, columns: 0, braces: 0, triangles: 0 };
+    return { member, memberFar: null, footing, columns: 0, braces: 0, triangles: 0, farTriangles: 0 };
   }
+  // Timber only; see `SupportBuild.memberFar`.
+  const memberFar = options.kind === 'timber' ? emptyGeo() : null;
   const clearance = options.clearance ?? 2.2;
   const minHeight = options.minHeight ?? 1.1;
   const half = COLUMN_HALF[options.kind];
@@ -256,6 +273,9 @@ export function buildSupports(
     const column = columns[i];
     if (options.kind === 'timber') {
       drawBent(member, footing, column, half);
+      // The bents go into the far geometry unchanged: a column is what carries the structural read
+      // at any distance, and it is the bracing between them that turns to mush.
+      if (memberFar) drawBent(memberFar, emptyGeo(), column, half);
     } else {
       drawColumn(member, footing, column, half);
     }
@@ -267,14 +287,17 @@ export function buildSupports(
     if (span < 1.5 || span > 22) continue;
     if (Math.min(column.height, next.height) < 4) continue;
     braces += drawBracing(member, column, next, options.kind);
+    if (memberFar) drawBracing(memberFar, column, next, options.kind, 1);
   }
 
   return {
     member,
+    memberFar,
     footing,
     columns: columns.length,
     braces,
     triangles: member.indices.length / 3 + footing.indices.length / 3,
+    farTriangles: memberFar ? memberFar.indices.length / 3 : 0,
   };
 }
 
@@ -350,9 +373,15 @@ function drawBent(member: Geo, footing: Geo, column: Column, half: number): void
  * are thinner than a pixel at any distance the game is played from, and the far-distance problem
  * they would make worse is a silhouette LOD nobody has built yet (see the module's report).
  */
-function drawBracing(member: Geo, a: Column, b: Column, kind: 'steel' | 'timber' | 'none'): number {
+function drawBracing(
+  member: Geo,
+  a: Column,
+  b: Column,
+  kind: 'steel' | 'timber' | 'none',
+  tierCap = 4
+): number {
   const lower = Math.min(a.height, b.height);
-  const tiers = Math.max(1, Math.min(4, Math.round(lower / 4.5)));
+  const tiers = Math.max(1, Math.min(tierCap, Math.round(lower / 4.5)));
   const ledgerHalf = kind === 'timber' ? BRACE_HALF * 1.15 : BRACE_HALF;
   let count = 0;
   // The lowest ledger sits clear of the footings; the top one under the track, not on it.

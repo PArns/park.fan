@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 15,
-    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Mean 6.90 -> 7.70. Three more graded at round 1: guests 7.91, shops 8.23, camera 8.38. NINE MODULES GRADED, NONE HAS PASSED; the three closest miss by 0.09, 0.12 and 0.27. tools is built and ungated. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit. That is stated at the top of each critique.",
+    "roundsRun": 16,
+    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54 — THE FIRST PASS, by 0.04, self-graded, caveat in the critique. Also graded at round 1: guests 7.91, shops 8.23, camera 8.38. tools is built and ungated. Ten modules graded, one passes. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -225,21 +225,21 @@
     },
     "track": {
       "wave": 2,
-      "status": "round 2 graded 8.41, FAIL BY 0.09 (pass 8.5) — docs/game/critiques/track-round2.md. The closest anything has come. Both round-1 structural findings are fixed: elements-by-manifest genuinely works now (core's passthrough + registerPackCategory, this module's attachTrackElements; test:game-registry pins 21 -> 22 elements and a misspelled key reported by name), and the wooden coaster is a tiered braced lattice in every bay instead of a row of poles — 1200-ground.png reads as a structure that could hold a train. Cost: 181,656 -> 210,040 track triangles (+15.6 %) at 14 meshes. What fails it: the overview still aliases the timber into a smear and round 2 made that WORSE by adding members where they cannot be resolved (ties carry one LOD level, rails and supports none), plus one stale sentence in its own weakness list claiming the opposite of what round 2 shipped. With honesty at 9.0 it still scores 8.48, so the sentence is not the cause — the aliasing is.",
-      "round": 2,
-      "score": 8.41,
+      "status": "round 3 graded 8.54, PASS by 0.04 — docs/game/critiques/track-round3.md. THE FIRST MODULE TO CLEAR 8.5, and the caveat is written into the critique: 0.04 is inside the noise of my own axis judgement and the grader wrote the fix. Round 2 failed by 0.09 and named one cause; round 3 built the silhouette LOD the module's own weakness list had wanted since round 1. buildSupports returns a second geometry (the same bents, one tier of bracing instead of up to four) and main.ts hangs it off the master with addLODLevel, so Babylon owns the swap. Timber only — steel reads as lines at distance and changing it would be a regression with a good excuse. The coarse mesh casts no shadow. Measured on the showcase at noon: overview 590,644 -> 541,396 and close 809,380 -> 760,132, both -49,248 triangles at unchanged draw calls, and GROUND UNCHANGED at 792,648, which is the check that matters — the swap is at 180 m on medium so a coaster somebody stands in front of keeps every member. Three frame problems remain and are named: the showcase is three layouts on a bare green plain, 18:30 is almost unlit (environment's exposure curve), and supports are vertical only.",
+      "round": 3,
+      "score": 8.54,
       "consoleErrors": 0,
       "gated": true,
       "lines": 5495,
       "axes": {
-        "frame": 8.2,
+        "frame": 8.4,
         "fidelity": 8.2,
         "extensibility": 8.8,
-        "budget": 8.2,
+        "budget": 8.5,
         "determinism": 9.4,
-        "reportHonesty": 7.5
+        "reportHonesty": 8.0
       },
-      "gradedAtCommit": "4c97cb2",
+      "gradedAtCommit": "pending",
       "hardGates": "all pass",
       "verdict": "round 1 FAILED at 8.00 against 8.5 (docs/game/critiques/track-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
