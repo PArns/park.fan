@@ -61,3 +61,23 @@ back, reversibly. It is a multiply, not a shader, and it says so. The two `metad
 ARCHITECTURE §4 replace the name-matching fallback that would otherwise have decided a
 `treehouse-roof` is foliage. _Reversed by:_ somebody wanting per-pixel wet and willing to write and
 verify both shader languages against the render harness.
+
+**D-022 — The camera's pose is not world state, and `/game` opens on a framing rather than a leftover.**
+`ARCHITECTURE.md` §4 gave the camera module `modules.camera` ("last view"). It could not have
+worked: `world.modules` is serialised by `serializeWorld()` in the **worker**, from the worker's
+copy, and the camera exists only on the main thread — a pose written there would be read by nothing
+and saved by nothing, while looking exactly like a working feature. It also should not work: a pose
+changes on every mouse move, so routing it through a command to satisfy the one-writer rule would
+put dozens of entries a second into `world.log` for something no simulation reads, and a save is
+shared, so loading somebody else's park would teleport the reader to wherever that person's mouse
+was. The view lives in `localStorage`, keyed by world name and seed, and is skipped whenever
+`?harness=1`, `?showcase=` or `?cam=` is present so a restored pose can never make two harness runs
+disagree. `api.pose()`/`api.setPose()` stay public, so `persistence` can put a view in a save slot
+if it ever wants one. The table row is corrected.
+
+The second half is what that left behind: with nothing remembered, the module adopted whatever
+`core/renderer.ts` had set — 93.7 m up at 33.75° down, `horizonRow` −138, i.e. a park that opens
+with the horizon off the top of the frame and no sky in it. No screenshot in the project could show
+it, because the harness always applies a preset. `main()` now applies `overview` when there is
+nothing to restore. _Reversed by:_ a `persistence` slot that wants the view in the save file after
+all, which is an addition rather than a move.

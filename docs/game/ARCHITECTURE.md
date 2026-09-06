@@ -156,7 +156,7 @@ interface SimHandle {
 | management  | `finance`, `modules.management`               | pricing, loans, marketing, research, power, water, wages                   | `finance:day`, `power:outage`                            |
 | overlays    | nothing persistent                            | heatmap layers                                                             | —                                                        |
 | tools       | nothing persistent (command stack on main)    | `useTool(id)`, `undo/redo`, gizmos, ghost meshes                           | `tool:*`                                                 |
-| camera      | `modules.camera` (last view)                  | presets, modes (orbit/walk/ride/photo)                                     | `camera:mode`                                            |
+| camera      | nothing persistent (view in `localStorage`)   | presets, anchors, focus/follow, `screenToGround`                           | `camera:mode`                                            |
 | scenarios   | `modules.scenarios`                           | objectives, sandbox                                                        | `scenario:objective`                                     |
 | persistence | —                                             | `listSaves`, `save`, `load`, `exportJson`, `importJson`, sharing (flag)    | `save:done`                                              |
 | demo-park   | a `World` factory                             | `buildDemoPark(seed)`                                                      | —                                                        |

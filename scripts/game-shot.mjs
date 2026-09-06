@@ -78,6 +78,36 @@ try {
   console_.errors.push('timeout: world:ready never fired');
 }
 
+/**
+ * A frame counter in the page, for the same reason the step wait polls: a promise that lives in
+ * the page across a slow render can be garbage-collected under SwiftShader, and `nextFrame()` is
+ * exactly that promise. Measured over the camera module's runs, 4 of 14 first attempts died on it
+ * with "Resulting promise was garbage collected". The observable is registered once, and every
+ * wait below is a short evaluate that reads a number.
+ */
+if (bootMs != null) {
+  await page.evaluate(() => {
+    const w = globalThis;
+    if (w.__pfFrames !== undefined) return;
+    w.__pfFrames = 0;
+    w.__parkfan_game.scene().onAfterRenderObservable.add(() => {
+      w.__pfFrames += 1;
+    });
+  });
+}
+
+/** Wait for `n` rendered frames, or give up after 30 s and let the screenshot happen anyway. */
+async function waitFrames(n) {
+  const start = await page.evaluate(() => globalThis.__pfFrames ?? 0).catch(() => null);
+  if (start == null) return;
+  const deadline = Date.now() + 30000;
+  for (;;) {
+    const now = await page.evaluate(() => globalThis.__pfFrames ?? 0).catch(() => start);
+    if (now >= start + n || Date.now() > deadline) return;
+    await page.waitForTimeout(120);
+  }
+}
+
 const shots = [];
 if (bootMs != null) {
   for (const tod of tods) {
@@ -124,8 +154,7 @@ if (bootMs != null) {
         }
         await page.waitForTimeout(400);
       }
-      await page.evaluate(() => globalThis.__parkfan_game.nextFrame());
-      await page.evaluate(() => globalThis.__parkfan_game.nextFrame());
+      await waitFrames(2);
       const file = path.join(out, `${tod.replace(':', '')}-${cam}.png`);
       await page.screenshot({ path: file });
       const metrics = await page.evaluate(() => globalThis.__parkfan_game.metrics());

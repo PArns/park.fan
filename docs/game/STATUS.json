@@ -63,17 +63,18 @@
     "note": "`no stuck guests` and `no unreachable queues` used to print \"not measured — no guests module api yet\". They run for real now."
   },
   "harness": {
-    "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
-    "readFrom": ".game-render/skyfix/report.json",
-    "bootMs": 10276,
+    "command": "node scripts/game-shot.mjs --cam=overview,entrance,close,ground,coaster,pool,night --tod=12:00 --step=900",
+    "readFrom": ".game-render/cam-presets/report.json",
+    "bootMs": 11321,
     "consoleErrors": 0,
     "hydrationWarnings": 0,
-    "drawCalls": 70,
-    "triangles": 31862,
-    "activeMeshes": 1,
+    "drawCalls": 210,
+    "triangles": 422534,
+    "activeMeshes": 120,
+    "guests": 887,
     "engine": "webgl2",
     "preset": "medium",
-    "note": "Sky renders after the emissiveTexture fix; washed out. 70 draw calls, 0 console errors."
+    "note": "The seven camera presets over the demo park at park minute 764, 887 guests in it. Figures are the `overview` frame; the heaviest of the seven is `ground` at 339 draw calls / 1,373,581 triangles, still inside the 1,200 draw-call budget. fps is not reported because SwiftShader's is meaningless."
   },
   "budget": {
     "fps": 50,
@@ -149,12 +150,12 @@
     },
     "camera": {
       "wave": 1,
-      "status": "scaffolded (13 lines). The harness falls back to FALLBACK_PRESETS in core/host.ts.",
+      "status": "built, ungated — 2,497 lines in 10 files plus a 739-line, 114-check selftest (wired as pnpm test:game-camera). Owns no world state, no entity kind and no sim half: stats() reports 0 meshes and 0 materials, and world.modules has no camera key. Drives the renderer's ArcRotateCamera rather than making its own, so the DefaultRenderingPipeline and SSAO2 stay bound; it ADOPTS an outside write instead of snapping back, which is what a showcase's direct camera write tests. Presets are content (cameraPresets pack category, claimed — unclaimedPackKeys() is []), authored in bearing/pitch and derived into alpha/beta, and the module publishes horizonRow(pitch, fov, height) — the arithmetic that would have caught the two rounds core spent reading a sky out of a frame that could not contain one. All seven presets photographed at 12:00 plus night at 23:00 plus the three showcase presets, 0 console errors, 0 warnings, 0 hydration warnings. The pose lives in localStorage, never in a save, and is skipped under ?harness=1.",
       "round": 0,
       "score": null,
-      "consoleErrors": null,
+      "consoleErrors": 0,
       "gated": false,
-      "lines": 13,
+      "lines": 2497,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
@@ -414,6 +415,10 @@
     }
   },
   "openIssues": [
+    "camera, found and fixed during verification: the module inherited the renderer's opening pose (93.7 m up, 33.75 degrees down, horizonRow -138), so /game opened on a park with the horizon off the top of the frame and no sky in it. Invisible in every screenshot taken so far because the harness always applies a preset. main() now applies `overview` when there is nothing remembered to restore: 105.8 m, 15.5 degrees down, horizonRow 153.3. A remembered view, a showcase's direct write and ?cam= each still win over it, verified after the change.",
+    "OPEN (camera showcase, terrain's side): the `leash-out` preset — the camera at the target leash looking away from the park — shows the world ending on the SHOWCASE landscape: the terrain patch's edge stands as a cliff and the water slab is cut off in mid-air. The demo park passes the same test because its apron runs to 1,756 m and the far edge fades into haze before the dome. So it is the showcase generator's finite patch, not the leash, and it belongs to terrain.",
+    "OPEN (terrain): `/game?showcase=camera` and `/game?showcase=terrain` both log the identical pair of `WebGL: INVALID_VALUE: bufferSubData: buffer overflow` warnings — the camera module does nothing in the second, so they come from `generateShowcaseLandscape` writing back into a vertex buffer sized for the previous mesh. Two warnings, no errors, nothing visibly wrong in the frames.",
+    "OPEN (camera, stated by the module): nobody has driven this camera with a hand. Pan, orbit, zoom, momentum and edge scroll are covered by 900 frames of synthetic input in the selftest and by nothing else, because a headless harness has no mouse. Follow mode has never followed anything that moves either — `trains` does not exist and the `track:` stand-in was not photographed.",
     "CLOSED (guests round 2): the two models of buying are one. `guests` now calls `shops.find(need, x, z, cash)`, walks to the OFFER's frontage rather than the entity position, `join`s the queue, stands where `place()` says while it waits, `collect`s a receipt or `leave`s as a balk, and `lastRefusal` explains a refusal instead of the guest silently wandering off. Verified by the integrator over a full demo-park day at speed 5, and it agrees to the cent three ways: cash delta 273,550 = guests.spentToday 273,550 = shops.takingsToday 273,550. A/B on the same seed: 292 sales / EUR 2,165.50 / longest line 0 before, 534 / EUR 2,735.50 / longest line 9 after, plus 415 price refusals and 2 balks that used to be silent. The old venue model stays as the branch taken when no `shops` module answered — a showcase loads five modules, not twenty-four — and a 48-hour soak with `shops` dropped from the list is 0 stuck, 0 errors, and still trades.",
     "A FOURTH unsaved accumulator in `guests`, found in round 2 and fixed: `Venue.incoming`, the soft reservation `scoreVenue` divides by, was rebuilt to zero on every load, so the first plan after a resume was scored against an empty park. That makes four — the RNG streams, the gate's party debt, the thought cursor and now this — every one found by a field-by-field diff of two serialisations rather than by reading.",
     "STILL OPEN (guests round 2, its own weakest point, stated): 534 sales a day across seven shops is six per shop per hour, so lines run 0-9 park-wide. The cause is the distance term — `speed` is metres per PARK minute, so a shop 60 m away is a 43-minute walk and `scoreVenue` divides its worth by 5.8. That is the D-006 time-compression tension the file already documents, not the shops bridge.",
