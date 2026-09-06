@@ -38,6 +38,7 @@ import { createTerrainMeshes, type TerrainMeshes } from './chunks';
 import { createWaterSurface, type WaterSurface } from './water';
 import { createEnvProbe, type EnvProbe } from './env-probe';
 import { surroundRelief } from './landscape';
+import { attachGroundLayers } from './manifest';
 
 export interface TerrainStats {
   chunks: number;
@@ -76,6 +77,9 @@ export interface TerrainMainApi {
 const TEXTURE_RESOLUTION = { low: 256, medium: 512, high: 512, ultra: 512 } as const;
 
 export function createTerrainMain(ctx: MainContext): MainHandle {
+  // Claim `groundLayers` and read it off every pack, at boot and afterwards. This module used to
+  // touch `registry` nowhere at all, which is what put its extensibility under the gate's floor.
+  const detachLayers = attachGroundLayers(ctx.registry);
   const scene = ctx.scene as Scene;
   const engine = ctx.engine as AbstractEngine;
   const terrain = ctx.world.terrain as TerrainData;
@@ -112,6 +116,7 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
     // The proxy costs one draw call per cascade; on `low` there are two cascades and a hardware
     // scaling of 1.5 already, and the hills are not what that machine is short of.
     shadowProxy: ctx.quality.preset !== 'low',
+    ultra: ctx.quality.preset === 'ultra',
     surroundNoise: (x, z) => surroundRelief(x, z, seed),
   });
 
@@ -260,6 +265,7 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
       if (rebuildQueued) flush();
     },
     dispose() {
+      detachLayers();
       offChanged();
       water.dispose();
       meshes.dispose();

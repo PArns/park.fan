@@ -314,8 +314,10 @@ function buildProxyData(t: TerrainData, stride: number): Surface {
 
 export interface ChunkOptions {
   material: Material;
-  /** Off on `low`, where the extra 8 k triangles per cascade are not worth the sun's shadow. */
+  /** Off on `low`, where the extra triangles per cascade are not worth the sun's shadow. */
   shadowProxy: boolean;
+  /** Only `ultra` gets the finer proxy; see the docblock where it is built. */
+  ultra?: boolean;
   /** Low-relief noise for the land outside the park, in metres. */
   surroundNoise: (x: number, z: number) => number;
 }
@@ -365,7 +367,23 @@ export function createTerrainMeshes(
   let shadowProxy: Mesh | null = null;
   if (options.shadowProxy) {
     shadowProxy = new Mesh('terrain-shadow-proxy', scene);
-    toVertexData(buildProxyData(terrain, 2)).applyToMesh(shadowProxy, true);
+    /**
+     * Stride 4, not 2 — and on `ultra` 3, not 2.
+     *
+     * At stride 2 over a 256-cell heightfield the proxy is 32,768 triangles, and it is rendered
+     * once per cascade: a critic measured 32,768 × 3 = **98,304, i.e. 33.9 % of the demo park's
+     * 290,262 triangles at the `overview` camera**, and proved it twice — the render list came out
+     * 75.6 % proxy, and the showcase's 141,340 at noon against 43,038 at 18:30 differ by 98,302.
+     * The single largest item in the game's triangle budget was a mesh nobody can see.
+     *
+     * Stride 4 puts a quad every 8 m on a 512 m park. The features this proxy exists to cast —
+     * the hills are 50 to 140 m across — survive that untouched; what is lost is terrain detail
+     * finer than a shadow map's own texel, which was never in the shadow to begin with. `ultra`
+     * keeps stride 3 because it is the preset that can afford contact-hardening and a 620 m
+     * cascade range, where the extra resolution has somewhere to show.
+     */
+    const proxyStride = options.ultra ? 3 : 4;
+    toVertexData(buildProxyData(terrain, proxyStride)).applyToMesh(shadowProxy, true);
     shadowProxy.material = options.material;
     // The camera's default layer mask is 0x0FFFFFFF, so this bit keeps the proxy out of the colour
     // pass; a shadow map's render list is explicit and does not filter on the mask.

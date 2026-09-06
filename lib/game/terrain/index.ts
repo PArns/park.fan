@@ -48,3 +48,12 @@ export { generateShowcaseLandscape } from './landscape';
  * bundle nothing; the alternative was a fifth copy of value noise in the repo.
  */
 export { fbm2, hash2, ridgedFbm, tileableFbm, valueNoise } from './noise';
+export {
+  attachGroundLayers,
+  groundLayer,
+  groundLayers,
+  parseGroundLayer,
+  registerGroundLayer,
+  GROUND_LAYER_MANIFEST,
+} from './manifest';
+export type { GroundLayerRecipe, LayerRgb } from './manifest';

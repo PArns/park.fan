@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "6ee3fd2",
+  "updatedAtCommit": "1311098",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 5,
-    "note": "Five modules graded once each, all five FAILED: paths 6.26, demo-park 7.20, scenery 7.10, environment 7.50, track 8.00. All five have had a round 2 shipped by the integrator and none has been re-graded. terrain, ui and camera are ungraded and their scores below are null, which is the honest value.",
+    "roundsRun": 6,
+    "note": "Every built module is graded once and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. All six have had a round 2 shipped by the integrator and none has been re-graded. ui and camera are scaffolds and their nulls below are honest.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -102,14 +102,22 @@
     "terrain": {
       "wave": 1,
       "status": "built, ungated (builder killed by session limit mid-round)",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "round": 2,
+      "score": 6.04,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 2644,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 6.8,
+        "fidelity": 6.2,
+        "extensibility": 4.0,
+        "budget": 6.0,
+        "determinism": 9.3,
+        "reportHonesty": 2.5
+      },
+      "gradedAtCommit": "1311098",
+      "hardGates": "FAILED — extensibility 4.0 is under the 5.0 floor, the first hard-gate failure in this gauntlet. Every other gate passed.",
+      "verdict": "round 1 FAILED at 6.04 AND on a hard gate (docs/game/critiques/terrain-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "environment": {
       "wave": 1,
@@ -410,6 +418,11 @@
     }
   },
   "openIssues": [
+    "CORRECTION to something this file carried for three rounds: the world's edge fix recorded here as 'more apron, or a distance fade' was half WRONG. The terrain critic measured that the apron already runs to 1,756 m and projects to screen row 188, while the visible step is at row 231 and 900 m out — which is DOME_RADIUS in sky-dome.ts. More apron cannot help; 1,600 of the surround's 3,840 triangles are already permanently occluded by the dome. Planting needs 28-52 m, not the 65 m estimated earlier. The one lever that works is a distance fade in the fragment injection point terrain already owns; the fog alternative needs 2.9x the density and is environment's.",
+    "terrain round 2: extensibility was 4.0, UNDER the 5.0 floor — the first hard-gate failure in this gauntlet. The module touched registry/pack/manifest nowhere at all and its ground catalogue was a switch over indices with 21 colour constants beside it. Ground layers are a manifest now, split the way paths already splits: the PATTERN is an algorithm and stays in code, the colours and relief are data. A pack can retint a built-in in place (by id, so a save's paint indices keep meaning) or add one past the built-ins; a bad recipe is named and skipped. LAYER_COUNT stays 7 and that limit is written down. Pinned by pnpm test:game-registry.",
+    "terrain round 2: the shadow proxy was 33.9 % of the whole frame — stride 2 over a 256-cell heightfield is 32,768 triangles rendered once per cascade, 98,304 of the demo park's 290,262 at overview. The critic proved it twice (render list 75.6 % proxy; showcase 141,340 at noon against 43,038 at 18:30, a difference of 98,302). Stride 4 now (3 on ultra): 290,262 -> 216,534 triangles, -73,728, -25.4 %, at an unchanged 145 draw calls, and the frame is indistinguishable.",
+    "STILL OPEN (terrain): the slope rule has one break and it is in the wrong place — 1.22 % of the park is >=26 degrees and ever sees rock, while 17.39 % sits between 10 and 26 degrees drawn as flat lawn. This also corrects the demo-park critique, which blamed a 17-degree cut slope on a planting refusal: nothing refuses to plant at 17 degrees, scatter.ts fades from 38.7.",
+    "STILL OPEN (terrain): env-probe.ts is dead code in every scene that loads environment (probeAlive: false), and the two modules disagree twice on what the ground looks like — a 5.2-degree IBL ground ramp against terrain's own dropped 27, and a colour matching the showcase (0.850/1/0.574) but not the demo park (0.536/1/0.305). Terrain holds the paint histogram (72.2 % grass, 0 % rock) and publishes neither. Also: the rock outcrop is documented as broken up and is still a cone, and ground() is documented pickable but measures isPickable: false — and on `low` returns the apron, which has a 512x512 m hole where the park is.",
     "The `paths` selftest was RED at HEAD in four runs of four while the module's report claimed '25 assertions, all passing'. Nothing ran it — it was not in pnpm test:game. It is `pnpm test:game-paths` now, and the assertion is the PER-QUERY time (0.313 us idle, threshold 2 us) rather than a total that depends on the query count. The old threshold also contradicted the comment above it, which says a loaded machine measures 2x an idle one and the bug it catches was 20x.",
     "paths round 2: exactly ONE lamp reached the paving, at medium, high AND ultra, where the night rig's pool holds two, four and six — the disparity widened the more the machine could afford. mesh.lightSources sorts by renderPriority and a PBR material takes the first maxSimultaneousLights, so with four slots the list was [sun, sky, env-moon-light, lamp-0]: TWO of the four slots on the largest surface in the frame went to lights at intensity 0.000 at 22:00. Six now, matching scenery and track. Zero draw calls, zero triangles, and .game-render/pn/2200-ground.png is the first lit avenue in this project.",
     "paths round 2: a pack carrying `pathStyles` registered, was reported by unclaimedPackKeys(), and changed nothing — registerPathStyle had no caller and the docblock above it said the seam was waiting for core. Core landed that; attachPathStyles closes it and claims both `pathStyles` and `pathMaterials`. Pinned by pnpm test:game-registry: 6 -> 7 styles from a manifest, surface recipe resolving with it, unclaimed keys [].",
@@ -433,7 +446,6 @@
     "STILL OPEN (track): supports are vertical only, so any stretch rolled past 78 degrees gets none — a vertical column would meet the underside edge-on. On the three demo layouts this hits the corkscrew and the top of the loop, which are correctly unsupported in reality too, so nothing floats; a heavily overbanked layout would show gaps.",
     "STILL OPEN (track): a layout is tuned for its train and nothing warns you. The ops shape themselves from a running-speed estimate that reads the train's drag area and rolling resistance, so a car 5 cm narrower builds a different track — two of three layouts closed 5 m worse under a hand-written train spec. A build tool that lets a player swap the train on an existing layout needs a rebuild-and-recheck API that does not exist.",
     "`nextEntityId` kept a process-global `let idCounter` folded in with the world's own `__ids` by a `Math.max`, so the SECOND world built in a process carried on from where the first stopped — the same seed minted `path-1…` once and `path-4…` the next time (measured). Found by the demo-park builder, which builds its park twice to prove it reproduces. Fixed in core: the sequence lives in the world and nowhere else, and `test-game-save-roundtrip` now builds two worlds and compares, which was verified to FAIL with the counter put back.",
-    "STILL OPEN, measured on the finished park: a treeline CANNOT hide the world's edge. True horizon at screen row 153, the sky-to-land step at rows 228-240, the park boundary at row 268, and a 20 m tree on it tops out at 245 — below the thing it was meant to cover. Occluding the apron's rim from a 99 m camera needs about 65 m of planting. It is geometry (more apron, or a distance fade into the sky colour), not planting, and it stays terrain's.",
     "STILL OPEN, measured: every tree in the `overview` frame is a LOD 2 imposter and the mid-ground reads as a palm grove — `linden:l2v0` x179, `spruce:l2v0` x351, `oak:l2v0` x288, and no LOD 0 tree mesh has an instance at that camera. At 42 m the same trees are convincing oaks with bark and branching. The break is at the pack's `lod[0] x 0.85 = 34 m`. It is scenery's `gen-foliage.ts` to fix; the demo park is where it shows.",
     "Draw calls: 145 at `overview`, peak 237 at `ground` — 19.8 % of the 1,200 whole-game budget with six modules unbuilt, and roughly 127 of the 237 are shadow-map passes.",
     "The sky, the fog and the exposure were all wrong in the same direction and are measured now. Three causes, each verified against a frame: (1) `scene.fogColor` was written as a LINEAR radiance, and Babylon runs `Color3.toLinearSpaceToRef` over it for every PBR material (`BindFogParameters`, `linearSpace` set), so the shader saw 0.034 where 0.295 was written — distant terrain got DARKER with distance instead of paler (sRGB 58/80/42 unfogged against 46/58/44 at 700 m). (2) The DOME painted `SkyState.ground` below the horizon, which is a term the IBL needs and the backdrop must not have: at the overview camera the terrain's far edge sits ~75 px under the true horizon and those 75 px were a dark olive band, sRGB 24/26/18 against the 75 the horizon ring rendered. That band is what several rounds of screenshots read as 'black above the horizon'. It is haze now — the azimuth's own horizon colour carried straight down, which is also the colour the fog takes the terrain to, so the edge dissolves instead of stepping. (3) The clear-day fog density was 0.0008, which with EXP2 plus Babylon's `toLinearSpace(fog)` put half the contrast of a surface 660 m away into the haze: a visibility of ~1.5 km on a day the model calls clear. 0.00035 now.",

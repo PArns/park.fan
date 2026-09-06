@@ -276,6 +276,66 @@ assert.throws(
   detach();
 }
 
+// And a GROUND LAYER from a manifest — the third module found never reading packs at all.
+//
+// `terrain` was graded 4.0 on extensibility, UNDER the 5.0 floor that fails a module on that axis
+// alone: it touched `registry`, `pack` and `manifest` nowhere, and the whole ground catalogue was
+// a `switch (layer)` over indices with the palette as module constants beside it. The split now
+// is the one `paths` already uses — the pattern is an algorithm and stays in code, the colours and
+// the relief are numbers and come from a manifest.
+//
+// Three things are asserted at once: a pack can RETINT a built-in in place (by id, so the paint
+// array's indices keep meaning what a save says they mean), it can ADD one past the built-ins, and
+// a broken entry beside them is named and skipped rather than taking the other six down.
+{
+  const { attachGroundLayers, groundLayer, groundLayers } =
+    await import('@/lib/game/terrain/manifest.ts');
+  const r = new Registry();
+  r.registerPack(packs[0]);
+  const before = groundLayers().length;
+  const grassBefore = groundLayer(0).colours.dark.join(',');
+  const warnings = [];
+  const realWarn = console.warn;
+  console.warn = (...args) => warnings.push(args.map(String).join(' '));
+  r.registerPack({
+    id: 'desert-pack',
+    version: 1,
+    name: { en: 'Desert' },
+    requires: [packs[0].id],
+    groundLayers: [
+      {
+        id: 'grass',
+        pattern: 'grass',
+        colours: { dark: [0.42, 0.36, 0.16], light: [0.68, 0.6, 0.3], dry: [0.78, 0.7, 0.42] },
+        normalStrength: 2.4,
+      },
+      {
+        id: 'laterite',
+        pattern: 'dirt',
+        colours: {
+          dark: [0.34, 0.11, 0.06],
+          light: [0.62, 0.26, 0.15],
+          pebble: [0.55, 0.45, 0.38],
+        },
+        normalStrength: 2.8,
+      },
+      { id: 'broken', pattern: 'nope', colours: {} },
+    ],
+  });
+  const detach = attachGroundLayers(r);
+  console.warn = realWarn;
+  assert.notEqual(groundLayer(0).colours.dark.join(','), grassBefore, 'a pack can retint a layer');
+  assert.equal(groundLayer(0).colours.dark[0], 0.42, 'and it lands on the right index');
+  assert.equal(groundLayers().length, before + 1, 'a new id lands past the built-ins');
+  assert.equal(groundLayers()[before].id, 'laterite');
+  assert.ok(
+    warnings.some((w) => w.includes('unknown pattern "nope"')),
+    'a bad recipe is named and skipped, not thrown'
+  );
+  assert.deepEqual(r.unclaimedPackKeys(), [], 'groundLayers must be claimed');
+  detach();
+}
+
 console.log(
-  '✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs, manifest-only track elements and path styles'
+  '✓ game registry: bundled packs, validation, third pack, kinds, pack-declared needs, manifest-only track elements, path styles and ground layers'
 );
