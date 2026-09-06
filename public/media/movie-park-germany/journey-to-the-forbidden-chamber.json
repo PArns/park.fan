@@ -1,0 +1,21 @@
+{
+  "park": "movie-park-germany",
+  "ride": "journey-to-the-forbidden-chamber",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-06",
+  "gps": {
+    "lat": 51.621158,
+    "lon": 6.973353
+  },
+  "review": true
+}

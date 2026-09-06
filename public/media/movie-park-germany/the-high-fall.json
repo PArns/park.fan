@@ -1,0 +1,21 @@
+{
+  "park": "movie-park-germany",
+  "ride": "the-high-fall",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-06",
+  "gps": {
+    "lat": 51.622944,
+    "lon": 6.975839
+  },
+  "review": true
+}

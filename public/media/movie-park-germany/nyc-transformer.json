@@ -1,0 +1,21 @@
+{
+  "park": "movie-park-germany",
+  "ride": "nyc-transformer",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-06",
+  "gps": {
+    "lat": 51.622397,
+    "lon": 6.976072
+  },
+  "review": true
+}
