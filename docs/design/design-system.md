@@ -680,17 +680,62 @@ button is still the narrow one.
 requirement, with `max-sm:` at the call site and a comment naming the requirement.
 
 Two things the tier does not reach, both still open: controls that are not `<Button>` (the glossary
-filter pills, the blog tag cloud, `FavoriteStar`) and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
+filter pills, the blog tag cloud) and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
 apart). `Badge` is deliberately untouched — badges are overwhelmingly labels rather than targets, and
 growing every status chip on every card would move layout the placeholders reserve for.
+
+---
+
+## The target grows, the box does not
+
+A tap target that is not a `<Button>` reaches 44 px through a **pseudo-element**, never through
+`min-h-11`/`min-w-11` on the element itself. `min-h-11` is right where the element's own box is
+allowed to be 44 px — a link in the footer's stack, a full-width CTA in the planner. It is wrong
+everywhere the element is placed by something else, and that is most of them: the box is what a
+parent positions, so growing it moves whatever it holds.
+
+`FavoriteStar` is the case that proves it, because it is on every park, ride, show and restaurant
+card on the site. `ParkCard` and `AttractionCard` put it in their own 34 px circle and hand it
+`h-full w-full`; a `max-sm:min-h-11 max-sm:min-w-11` overrode that, the 44 px button kept the
+circle's **top-left** corner, and the star — centred in the button, not in the circle — came to
+rest 6 px right and 6 px down of the ring drawn around it. Measured at 390 px: the star's centre
+sat 23 px from the card's right edge and 35 px from its top where the circle's centre is at 29/29,
+on 12 of 12 cards on the homepage and 19 of 19 on a park page. The show, restaurant and in-park
+cards anchor an `absolute top-2 right-2` wrapper by **its** top-right instead, so the same 28 px
+went the other way and pushed the star 14 px down and to the left, into the card: 31/31 from the
+corner against the 17/17 the wrapper asks for. Both are the same bug, and both look like a
+carelessly placed star rather than a touch tier.
+
+A pseudo-element takes the finger and nothing moves:
+`max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:left-1/2 max-sm:after:h-11 max-sm:after:w-11
+max-sm:after:-translate-x-1/2 max-sm:after:-translate-y-1/2 max-sm:after:content-[""]` on a
+`relative` element. Measured after: every star centred to 0.0 px in its ring (29/29 and 17/17), and
+the reach `elementFromPoint` finds is 43 × 44 px in the circle and 44 × 44 px on a restaurant card,
+against 37 × 44 before — the tap area got **larger**, because it is centred on the star rather than
+hanging off one corner of it.
+
+Two things to know when using it. The reach is clipped by any `overflow-hidden` ancestor, so what
+a finger gets in a card's corner is the pseudo-element **minus** what reaches past the card —
+41 × 30 px in `BreadcrumbNav`'s case, which that comment records, and 31 × 44 on a show card whose
+neighbour clips it. That is a trade, not a failure: it is still several times the bare control.
+And where the element's box does shrink back, say so — `ParkFavoriteButton` on the park page's
+title row went 44 → 24 px wide, which gives the `<h1>` beside it 20 px more (248 → 268 px at
+390 px) and moves nothing vertically.
+
+The same split is written out at three other call sites for their own reasons:
+`components/common/breadcrumb-nav.tsx` (a `min-h-11` there grew the crumb row ~24 px after paint,
+for 0.0227 of layout shift), `components/planner/planner-block.tsx` (a block may legitimately be
+20 px tall and the box must not lie about the duration) and `components/planner/planner-flyout.tsx`.
 
 ---
 
 ## Interactive Utilities
 
 - `.interactive-card` – `hover:border-primary/50 transition-all hover:shadow-lg`
-- `.touch-target` – `min-h-[44px] min-w-[44px]` — for a tap target that is not a `<Button>`; the
-  button scale carries its own 44 px phone tier (above)
+- `.touch-target` – `min-h-[44px] min-w-[44px]` — for a tap target that is not a `<Button>` **and
+  is allowed to be 44 px in the layout**; where something else places the box, reach 44 px with the
+  pseudo-element instead ([the target grows, the box does not](#the-target-grows-the-box-does-not)).
+  The button scale carries its own 44 px phone tier (above)
 
 ---
 
