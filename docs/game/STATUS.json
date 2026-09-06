@@ -1,10 +1,28 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "e823ece",
+  "updatedAtCommit": "4bbcb9a",
   "gate": {
+    "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
     "maxRounds": 4,
-    "requires": ["score >= 8.5", "zero console errors", "budget met", "extensibility check passed"]
+    "axes": {
+      "frame": 0.3,
+      "fidelity": 0.2,
+      "extensibility": 0.2,
+      "budget": 0.15,
+      "determinism": 0.1,
+      "reportHonesty": 0.05
+    },
+    "hardGates": [
+      "zero console errors and zero hydration warnings in report.json",
+      "extensibility axis >= 5, whatever the total says",
+      "the diff touches only the module folder and its own report/request files",
+      "no barrel import from @babylonjs/core",
+      "nothing at module scope touching window/document/navigator",
+      "pnpm test:game green, tsc clean, eslint clean"
+    ],
+    "roundsRun": 0,
+    "note": "No module has been graded. Every score below is null and that is the honest value."
   },
   "bundle": {
     "command": "pnpm build && pnpm game:bundle",
@@ -63,49 +81,64 @@
   "modules": {
     "core": {
       "wave": 1,
-      "status": "built",
+      "status": "built, ungated",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
       "owner": "integrator",
-      "gated": false
+      "gated": false,
+      "lines": 3564,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "terrain": {
       "wave": 1,
-      "status": "partial (builder killed by session limit, ungated)",
+      "status": "built, ungated (builder killed by session limit mid-round)",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 2644,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "environment": {
       "wave": 1,
-      "status": "partial (builder killed by session limit, ungated)",
+      "status": "built, ungated (builder killed mid-round; the integrator fixed fog, sky, exposure and the camera preset afterwards and measured every claim)",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 3262,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "ui": {
       "wave": 1,
-      "status": "built",
+      "status": "a 119-line HUD (clock, speed, cash, guests, engine badge) and a 13-line module scaffold. Not a build UI.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 132,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "camera": {
       "wave": 1,
-      "status": "built",
+      "status": "scaffolded (13 lines). The harness falls back to FALLBACK_PRESETS in core/host.ts.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 13,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "audio": {
       "wave": 4,
@@ -113,8 +146,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "effects": {
       "wave": 4,
@@ -122,17 +158,23 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "paths": {
       "wave": 2,
-      "status": "scaffolded",
+      "status": "built, ungated — and NOTHING CALLS IT: the demo park places no paths, so 4,293 lines have never appeared in a screenshot",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 4293,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "pools": {
       "wave": 2,
@@ -140,17 +182,23 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "track": {
       "wave": 2,
-      "status": "scaffolded",
+      "status": "in progress (builder agent, wave 2)",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "buildings": {
       "wave": 2,
@@ -158,17 +206,23 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "scenery": {
       "wave": 2,
-      "status": "scaffolded",
+      "status": "built, ungated — and NOTHING CALLS IT: 6,010 lines, no dress() call anywhere, so the park is an empty hill",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 6010,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "shops": {
       "wave": 2,
@@ -176,8 +230,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "rides": {
       "wave": 3,
@@ -185,8 +242,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "flumes": {
       "wave": 3,
@@ -194,8 +254,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "trains": {
       "wave": 3,
@@ -203,8 +266,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "guests": {
       "wave": 3,
@@ -212,8 +278,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "staff": {
       "wave": 3,
@@ -221,8 +290,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "management": {
       "wave": 3,
@@ -230,8 +302,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "overlays": {
       "wave": 3,
@@ -239,8 +314,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "tools": {
       "wave": 4,
@@ -248,8 +326,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "scenarios": {
       "wave": 4,
@@ -257,8 +338,11 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "persistence": {
       "wave": 4,
@@ -266,17 +350,23 @@
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": null,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     },
     "demo-park": {
       "wave": 5,
-      "status": "placeholder",
+      "status": "in progress (builder agent) — placeholder until it lands",
       "round": 0,
       "score": null,
       "consoleErrors": null,
-      "extensibilityPass": null,
-      "gated": false
+      "gated": false,
+      "lines": 55,
+      "axes": null,
+      "gradedAtCommit": null,
+      "hardGates": null
     }
   },
   "openIssues": [
