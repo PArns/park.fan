@@ -42,7 +42,16 @@ aspirational: it is what the repo does today, verified by reading the files name
 - **Fonts**: Geist through `next/font/google`, same variable name.
 - **TypeScript**: strict, `@/` alias, no new tsconfig.
 - **Lint/format**: the existing ESLint + Prettier; `pnpm lint` and `pnpm format:check` must stay green.
-- **Tests**: `scripts/test-game-*.mjs` under `node --experimental-strip-types` with `pnpm test:game-*` scripts; browser harnesses `scripts/game-shot.mjs` and `scripts/game-soak.mjs` follow `measure-cls.mjs` (Playwright, container Chromium, `next build && next start` at `localhost`).
+- **Tests**: `scripts/test-game-*.mjs` under `node --experimental-strip-types` with `pnpm test:game-*` scripts; browser harnesses `scripts/game-shot.mjs`, `scripts/game-soak.mjs` and `scripts/game-warm-audit.mjs` follow `measure-cls.mjs` (Playwright, container Chromium, `next build && next start` at `localhost`).
+- **A screenshot of this game is taken with a stopped clock, and that hides working features.** The
+  shot harness runs at `speed=0` so a frame is repeatable, so anything that accumulates over park
+  minutes is at its zero: the park has **no guests**, `environment.wetness` is **0** (the paving
+  keeps its dry `albedoColor` 1 / `roughness` 1), and three of the seven shops have not opened. Use
+  `--step=<ticks>` for any of that, and `--particles=<seconds per frame>` for a particle effect —
+  Babylon ages a particle by the REAL frame delta, and SwiftShader's is longer than a raindrop
+  lives. `pnpm game:warm-audit` walks every module's `stats()` at tick 0 and again after 30 and 120
+  park minutes and prints what moved, which is how the next one gets found by a script rather than
+  by somebody wondering why the rain looks wrong.
 - **Feature flags**: `NEXT_PUBLIC_GAME_SHARING` and `NEXT_PUBLIC_GAME_LIVE_SEED` via `envFlag()` in `lib/config/features.ts` (additive entries).
 - **Persistence**: IndexedDB on the client, JSON export/import. The optional blueprint-sharing Route Handler sits under `app/api/game/**` and is gated by the flag.
 - **Assets**: `public/game/assets/**`, fetched by `scripts/fetch-game-assets.mjs`, gitignored, provenance in `docs/game/ASSETS.md`; long-cache headers as an additive `headers()` entry.

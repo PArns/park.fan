@@ -15,6 +15,25 @@
  * available in headless Chromium here, so the harness asks for WebGL2 unless --engine=webgpu.
  * Chromium ships with the container and PLAYWRIGHT_BROWSERS_PATH points at it; never run
  * `playwright install`.
+ *
+ * ## What a shot with no `--step` cannot show
+ *
+ * This harness runs at `speed=0` so a screenshot is repeatable, and that is right for everything
+ * the world builds at boot — but it means anything that accumulates over park minutes is at its
+ * zero. Twice in one session a feature was working and unphotographable for exactly that reason
+ * (the wet-surface pass, and the rain particles for the related reason that Babylon ages a particle
+ * by the real frame delta). `pnpm game:warm-audit` lists what moves; measured on the demo park in a
+ * storm, it is:
+ *
+ *   - **guests** — 0 at boot, 82 after 30 park minutes, 376 after 120. A shot with no `--step` is a
+ *     park with nobody in it.
+ *   - **`environment.wetness`** — 0 at boot, 0.963 after 30 minutes, which takes the paving's
+ *     `albedoColor` from 1 to 0.576 and its `roughness` from 1 to 0.403. Use `--step` for any
+ *     weather shot.
+ *   - **shops** — 4 of 7 open at 09:00 against 7 later, and `takingsToday` 0 until the early
+ *     afternoon.
+ *
+ * Terrain, paths, scenery, track, camera and tools do not move, so those are honest at tick 0.
  */
 import { chromium } from 'playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
