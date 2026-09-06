@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 0,
-    "note": "No module has been graded. Every score below is null and that is the honest value."
+    "roundsRun": 1,
+    "note": "One module graded. demo-park failed round 1 at 7.20; every other score below is null and that is the honest value."
   },
   "bundle": {
     "command": "pnpm build && pnpm game:bundle",
@@ -359,14 +359,22 @@
     "demo-park": {
       "wave": 5,
       "status": "built, ungated — 1,610 lines; draws nothing itself, everything through terrain/paths/scenery/environment. 1,295 entities + 14,000 ambient instances, path graph 1,511 nodes / 4,022 edges / 17 junctions in ONE component, save 673.5 KB.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "round": 1,
+      "score": 7.2,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 1610,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 6.6,
+        "fidelity": 6.4,
+        "extensibility": 7.6,
+        "budget": 7.0,
+        "determinism": 9.5,
+        "reportHonesty": 8.4
+      },
+      "gradedAtCommit": "5ac9c03",
+      "hardGates": "all pass",
+      "verdict": "FAIL (7.20 against 8.5) — docs/game/critiques/demo-park-round1.md"
     }
   },
   "openIssues": [
