@@ -27,6 +27,28 @@ Restaurantkarte gegen 37 × 44 vorher. Sie ist größer geworden, weil sie um de
 statt an einer seiner Ecken zu hängen. Im Titelkopf der Parkseite schrumpft die Box von 44 auf
 24 px, was der `<h1>` daneben 20 px mehr gibt (248 → 268 px bei 390 px) und vertikal nichts bewegt.
 
+### Nachtrag: der Schließen-Knopf des Standort-Banners
+
+Zweiter Fall derselben Regel, und er zeigt ihre andere Hälfte: eine gewachsene Trefferfläche muss
+auch daraufhin geprüft werden, worüber sie jetzt liegt. Der Knopf hängt `absolute top-2 right-2` in
+einem Toast, die zusätzlichen 20 px gingen also nach innen — 53 px in eine Karte hinein, deren
+Textspalte 37 px vor dieser Kante endet. Er lag damit über den letzten 16 px der Überschrift, und
+`elementFromPoint` am rechten Rand der Spalte lieferte den Schließen-Knopf: ein Tipp ans Ende einer
+Überschriftszeile hat den Banner geschlossen. Das Glyph saß bei 31/31 statt 21/21. Der Kommentar
+darüber hat beides bestritten („the card's `pr-9` already keeps the text clear of it, and the glyph
+does not move"), was erklärt, warum es niemandem aufgefallen ist: das `pr-9` war für den 24-px-Knopf
+geschrieben und nie gegen den 44-px-Knopf nachgerechnet.
+
+Die Box zu reparieren ist dort nur die halbe Arbeit. Ein Pseudo-Element um einen 24-px-Knopf in
+einer 8-px-Ecke reicht 43 px hinein, also lag mit `pr-9` allein die _Fläche_ weiterhin über den
+letzten 6 px der Textspalte — derselbe Tipp, dasselbe Ergebnis, nur im Layout nicht mehr sichtbar.
+Das Padding der Karte muss die Fläche freihalten und nicht die Box: `max-sm:pr-11`. Gemessen über
+sechs Sprachen × 320/360/390 px wechseln alle 18 Fälle an diesem Punkt von `CLOSE-BTN` auf `H2`, die
+Box geht von 44 auf 24 px, das Glyph von 31/31 auf 21/21, die Reichweite bleibt 44 × 44 und der
+Hauptknopf ist in keinem Fall verdeckt. Die acht Pixel werden in Textbreite bezahlt und ergeben in
+3 dieser 18 Fälle eine Zeile mehr (es bei 320 und 360, en bei 390, je +16,5 px Karte); der Toast ist
+`fixed`, seine Höhe verschiebt auf der Seite also nichts.
+
 Siehe [Design System](design/design-system.md#the-target-grows-the-box-does-not).
 
 ---

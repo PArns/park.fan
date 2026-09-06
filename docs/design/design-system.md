@@ -722,6 +722,24 @@ And where the element's box does shrink back, say so — `ParkFavoriteButton` on
 title row went 44 → 24 px wide, which gives the `<h1>` beside it 20 px more (248 → 268 px at
 390 px) and moves nothing vertically.
 
+**The reach is not free either — check what it now lies over.** `LocationBanner`'s close button is
+the second case and adds this half of the rule. It is `absolute top-2 right-2` in a toast, so the
+grown box went **inward**: 53 px into a card whose text column ended 37 px from that edge, over the
+last 16 px of the headline, and `elementFromPoint` at the column's right edge returned the close
+button — a tap at the end of a headline line dismissed the banner. The glyph sat at 31/31 from the
+card's corner instead of 21/21. Both were denied in the comment that stood there ("the card's
+`pr-9` already keeps the text clear of it, and the glyph does not move"), which is how it survived:
+the `pr-9` was written for the 24 px button and never re-checked against the 44 px one.
+
+Fixing the box is only the first half there. A pseudo-element centred on a 24 px button in an 8 px
+corner reaches 43 px in, so with `pr-9` alone the _target_ still covered the text column's last
+6 px — the same tap, the same outcome, now invisible in the layout. The card's padding has to clear
+the target, not the box: `max-sm:pr-11`. Measured across six locales × 320/360/390 px, all 18 went
+from `CLOSE-BTN` to `H2` at that point, the button's box from 44 → 24 px and the glyph from 31/31
+to 21/21, with the reach unchanged at 44 × 44 and the primary CTA never blocked. The eight pixels
+are paid in text width and in 3 of those 18 that is one more line (es at 320 and 360, en at 390,
++16.5 px of card); the toast is `fixed`, so its height moves nothing on the page.
+
 The same split is written out at three other call sites for their own reasons:
 `components/common/breadcrumb-nav.tsx` (a `min-h-11` there grew the crumb row ~24 px after paint,
 for 0.0227 of layout shift), `components/planner/planner-block.tsx` (a block may legitimately be
