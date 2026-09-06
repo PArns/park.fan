@@ -21,7 +21,7 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 12,
+    "roundsRun": 13,
     "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 is now complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. ALL SIX STILL FAIL; track misses by 0.09. Mean 6.90 -> 7.70. camera, guests and shops are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
@@ -150,15 +150,22 @@
     },
     "camera": {
       "wave": 1,
-      "status": "built, ungated — 2,497 lines in 10 files plus a 739-line, 114-check selftest (wired as pnpm test:game-camera). Owns no world state, no entity kind and no sim half: stats() reports 0 meshes and 0 materials, and world.modules has no camera key. Drives the renderer's ArcRotateCamera rather than making its own, so the DefaultRenderingPipeline and SSAO2 stay bound; it ADOPTS an outside write instead of snapping back, which is what a showcase's direct camera write tests. Presets are content (cameraPresets pack category, claimed — unclaimedPackKeys() is []), authored in bearing/pitch and derived into alpha/beta, and the module publishes horizonRow(pitch, fov, height) — the arithmetic that would have caught the two rounds core spent reading a sky out of a frame that could not contain one. All seven presets photographed at 12:00 plus night at 23:00 plus the three showcase presets, 0 console errors, 0 warnings, 0 hydration warnings. The pose lives in localStorage, never in a save, and is skipped under ?harness=1.",
-      "round": 0,
-      "score": null,
+      "status": "built, ungated — 2,497 lines in 10 files plus a 739-line, 114-check selftest (wired as pnpm test:game-camera). Owns no world state, no entity kind and no sim half: stats() reports 0 meshes and 0 materials, and world.modules has no camera key. Drives the renderer's ArcRotateCamera rather than making its own, so the DefaultRenderingPipeline and SSAO2 stay bound; it ADOPTS an outside write instead of snapping back, which is what a showcase's direct camera write tests. Presets are content (cameraPresets pack category, claimed — unclaimedPackKeys() is []), authored in bearing/pitch and derived into alpha/beta, and the module publishes horizonRow(pitch, fov, height) — the arithmetic that would have caught the two rounds core spent reading a sky out of a frame that could not contain one. All seven presets photographed at 12:00 plus night at 23:00 plus the three showcase presets, 0 console errors, 0 warnings, 0 hydration warnings. The pose lives in localStorage, never in a save, and is skipped under ?harness=1. GRADED round 1: 8.38, FAIL by 0.12 — docs/game/critiques/camera-round1.md. Highest extensibility on the branch (9.0: a pack-supplied preset is the only pack content in this game anybody has photographed) and the cheapest module in it (0 meshes, 0 materials, 0 draw calls, 0 runtime Babylon imports, no world state). The cap is fidelity: nobody has ever driven this camera with a hand, and follow mode has never followed anything that moves.",
+      "round": 1,
+      "score": 8.38,
       "consoleErrors": 0,
-      "gated": false,
+      "gated": true,
       "lines": 2497,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 8.2,
+        "fidelity": 7.5,
+        "extensibility": 9.0,
+        "budget": 8.8,
+        "determinism": 9.0,
+        "reportHonesty": 8.0
+      },
+      "gradedAtCommit": "c0f4c7e",
+      "hardGates": "all pass"
     },
     "audio": {
       "wave": 4,
