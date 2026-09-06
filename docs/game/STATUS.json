@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 10,
-    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Four re-graded at round 2: terrain 6.04 -> 7.09 (hard gate closed), paths 6.26 -> 7.13, environment 7.50 -> 7.72, track 8.00 -> 8.41 (fails by 0.09, the closest anything has come). Two to go — scenery and demo-park — plus camera, guests and shops which are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 11,
+    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Five re-graded at round 2: terrain 6.04 -> 7.09 (hard gate closed), paths 6.26 -> 7.13, environment 7.50 -> 7.72, scenery 7.10 -> 7.86, track 8.00 -> 8.41 (fails by 0.09, the closest anything has come). demo-park is the last one, plus camera, guests and shops which are built and ungated. Every grade so far was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -250,21 +250,21 @@
     },
     "scenery": {
       "wave": 2,
-      "status": "built, ungated — 6,010 lines, now actually called: dress() runs on the demo park's first render frame.",
+      "status": "round 2 graded 7.86, FAIL (pass 8.5), no hard gate failed — docs/game/critiques/scenery-round2.md. All three round-2 fixes verify. Far imposters: judged at 4x magnification, conifers read as tapering spires and broadleaves as rounded crowns, and the two are distinguishable at a glance — round 1's 'reads as a palm' is gone. Budget: hedge-box at overview 29,184 -> 3,360 triangles (-88.5 %), module total 79,490 -> 73,550, and ground cover at the ground camera fell from 62 % of the module to 49.5 %. meadow-flowers is still the single largest item at 23 %. Extensibility: a pack registered AFTER boot now reaches the module — catalogue 26 -> 27 and the new key resolves, where round 1 measured 26 and null. Pack `themes` and `materials` are still read by nothing. What is left is fidelity and it is short: the clipped hedge is a row of topiary balls (and its far form is now deliberately coarser), the fountain is dry in every frame, and the smallest tree instances are a stick with a dot.",
       "round": 2,
-      "score": 7.1,
+      "score": 7.86,
       "consoleErrors": 0,
       "gated": true,
       "lines": 6010,
       "axes": {
-        "frame": 6.8,
-        "fidelity": 6.5,
-        "extensibility": 7.0,
-        "budget": 7.2,
+        "frame": 7.7,
+        "fidelity": 6.9,
+        "extensibility": 8.0,
+        "budget": 8.0,
         "determinism": 9.5,
-        "reportHonesty": 6.5
+        "reportHonesty": 8.4
       },
-      "gradedAtCommit": "5174035",
+      "gradedAtCommit": "b6ef2bb",
       "hardGates": "all pass",
       "verdict": "round 1 FAILED at 7.10 against 8.5 (docs/game/critiques/scenery-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
