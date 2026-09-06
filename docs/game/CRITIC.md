@@ -67,7 +67,9 @@ score about a tree nobody can get back to.
 
 ## The final gate
 
-Once every module passes, four more run over the whole game and are graded the same way.
+Once every module passes, four more run over the whole game and are graded the same way. The
+executable version — the exact runs, what to look at and what counts as a finding — is
+[FINAL_GATE.md](FINAL_GATE.md); the four bullets below are the intent it was written from.
 
 - **Whole-game critic** — the demo park at four times of day from every camera. Does it read as
   one place built by one hand, or as twenty-four modules in a field?
