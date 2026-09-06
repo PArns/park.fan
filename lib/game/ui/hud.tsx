@@ -1,9 +1,12 @@
 'use client';
 
 /**
- * The HUD. PLACEHOLDER owned by the ui builder — a top bar with clock, cash, speed and the engine
- * badge, and the notice stack. The builder replaces this with the full shell (build bar, panels,
- * radial menu, tooltips) on the same props.
+ * The HUD: the top bar (clock, cash, speed, engine badge), the build bar and the notice stack.
+ *
+ * Still the `ui` module's placeholder shell in everything except the build bar — panels, the
+ * radial menu and the inspector are the ui builder's, on these same props. The `tools` builder was
+ * granted this file for one edit and made exactly that one: `<BuildBar />` in the bottom row, above
+ * the notices. Everything it draws lives in `lib/game/tools/`.
  */
 
 import Link from 'next/link';
@@ -14,6 +17,7 @@ import { cn } from '@/lib/utils';
 import type { GameStore } from '../core/store';
 import { useGameStore } from '../core/use-game-store';
 import type { GameHandle } from '../core/host';
+import { BuildBar } from '../tools/build-bar';
 import type { GameLocale, GameStringKey, Translate } from '../i18n';
 import type { Speed } from '../core/types';
 
@@ -97,6 +101,7 @@ export function GameHud({ store, t, locale, getHandle }: GameHudProps) {
         </div>
       </div>
       <div className="mt-auto flex flex-col items-center gap-2 p-3">
+        <BuildBar t={t} locale={locale} getHandle={getHandle} />
         {notices.map((n) => (
           <div
             key={n.id}

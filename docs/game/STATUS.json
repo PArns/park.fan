@@ -373,12 +373,12 @@
     },
     "tools": {
       "wave": 4,
-      "status": "scaffolded",
+      "status": "built, ungated — 2,677 lines in 11 files, 88-check selftest wired as pnpm test:game-tools. THE PLAYER CAN BUILD. Place, move, rotate and demolish with a ghost preview, a validity colour and a reason ('That is in the water.'), 0.25 m / 15 degrees snapping off by default, and undo/redo on the MAIN THREAD ONLY as two lists of core commands — nothing of it reaches the save. The palette is derived from the registry: 55 items in 6 groups from the two bundled packs, zero pack or item ids in the module's source, and registry.registerKind('building','buildings') flips ten items from refused to placeable with no code change (asserted in the selftest). Both halves of the onPack trap are covered. Measured: placement charges the manifest cost and undo refunds it to the cent (250,000,000 -> 249,996,500 -> 250,000,000); the worker's own save goes 1,605 -> 1,606 -> 1,605 bytes with the log tail entity:add, finance:adjust; the ghost costs exactly +3 draw calls; a tree's footprint is its trunk rather than its crown, which took buildable ground over the demo park from 35.0 % to 58.3 %. Not placeable: paths, coasters and flumes (routes, not points — listed and refused), and ride/building items are listed but unavailable because no module claims those kinds. The ghost is a footprint box, not a model; move is click-to-arm/click-to-drop rather than a drag; nobody has driven it with a hand. Outside its folder: lib/game/ui/hud.tsx +8/-3 and 40 tools.* keys in each i18n locale, both granted by the integrator because ui is an unowned placeholder.",
       "round": 0,
       "score": null,
-      "consoleErrors": null,
+      "consoleErrors": 0,
       "gated": false,
-      "lines": null,
+      "lines": 2677,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
