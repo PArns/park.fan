@@ -1,0 +1,14 @@
+{
+  "title": "Procedura guidata, ricerca del parco",
+  "tags": ["diagram"],
+  "alt": {
+    "it": "Primo passo della procedura guidata: «Disneyland» digitato nel campo di ricerca, sotto cinque parchi da cinque Paesi."
+  },
+  "caption": {
+    "it": "Un nome, cinque parchi su tre continenti. I percorsi vengono dall’API, non dai nomi visualizzati."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}

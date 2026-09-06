@@ -262,17 +262,33 @@ sähe das am Samstag aus“.
 Der Weg hinein führt über drei Fragen. In welchen Park geht’s, an welchem Tag,
 und wer kommt mit.
 
-Die zweite Frage ist die interessante: Statt einer Liste mit sechzig Zeilen
-bekommst du ein Monatsraster, das mit der Auslastungsprognose dieses Parks
-eingefärbt ist. „Der übernächste Samstag“ ist damit eine Sache von einem Blick,
-und wie voll er vermutlich wird, steht unter dem Raster.
+Die erste ist ein Suchfeld, und dahinter steckt eine Kleinigkeit, die schnell
+schiefgeht. Tipp „Disneyland“ ein, und du bekommst fünf Parks auf drei
+Kontinenten, die alle so heißen.
 
-![Schritt zwei des Planer-Assistenten: über dem Monatsraster ein Foto des Europa-Park-Eingangs, die Tage sind nach Auslastungsprognose eingefärbt, Samstag der 19. ist gewählt. | Die erste Septemberwoche ist noch orange, ab dem 13. wird es grün. Das ist die Frage, die vor allen anderen kommt.](/media/tagesplaner/planer-wizard-de.webp)
+![Schritt eins des Planer-Assistenten: ins Suchfeld ist „Disneyland“ getippt, darunter fünf Parks aus fünf Ländern. | Ein Name, fünf Parks. Deswegen merkt sich der Planer den Pfad aus der API und nicht den Namen.](/media/tagesplaner/planer-wizard-park-de.webp)
 
-Die dritte Frage klingt nach Formular und ist wichtiger, als sie aussieht: Wie
-groß ist die kleinste Person, und wollt ihr trocken bleiben? Beides sind
-Markierungen an der Bahnenliste und keine Filter. Ein Filter würde den Park
-heimlich kürzen, und ob Oma die Taschen hält, weißt nur du.
+Ein Plan wird unter dem Pfad abgelegt, den die API selbst liefert, nie unter
+einem, den wir aus dem angezeigten Namen zusammenbauen. „Niederlande“ heißt
+nicht in jeder Sprache gleich, und ein geratener Pfad ist ein Plan, der auf
+eine 404 zeigt.
+
+Die zweite Frage ist die interessante: Statt einer Auswahlliste mit sechzig
+Zeilen bekommst du einen ganzen Monat, und jeder Tag trägt die
+Auslastungsprognose dieses Parks. „Der übernächste Samstag“ ist damit eine
+Sache von einem Blick, und was wir sonst noch über ihn wissen, steht unter dem
+Raster.
+
+![Schritt zwei des Planer-Assistenten: über dem Monatsraster ein Foto des Disneyland Park in Anaheim, jeder Tag trägt die Auslastungsprognose, Samstag der 19. ist gewählt. | Ein September, der in Anaheim durchgehend ruhig vorhergesagt ist. In sechzig Zeilen einer Auswahlliste sieht man das nicht.](/media/tagesplaner/planer-wizard-tag-de.webp)
+
+Die dritte Frage klingt nach Formular und ist wichtiger, als sie aussieht:
+Mittagessen einplanen, sind Kinder dabei, wollt ihr trocken bleiben. Alle drei
+sind Markierungen an der Bahnenliste und keine Filter, und der Planer schreibt
+es auf die Karte: Bahnen mit höherer Mindestgröße werden markiert, nicht
+versteckt. Ein Filter würde den Park heimlich kürzen, und ob Oma die Taschen
+hält, weißt nur du.
+
+![Schritt drei des Planer-Assistenten: drei Karten für Mittagessen, Kinder und Wasserbahnen, darunter der Knopf „Plan öffnen“. | Drei Antworten, die den Park nicht kürzen. Die Mittagspause landet als Block um 12:30 im Tag und lässt sich verschieben.](/media/tagesplaner/planer-wizard-wer-de.webp)
 
 Danach landest du auf der Parkseite mit offenem Planer, und von dort ziehst du
 Bahnen auf die Zeitachse. Auf jeder Attraktionsseite gibt es dafür auch einen

@@ -1,0 +1,14 @@
+{
+  "title": "Planner wizard, finding the park",
+  "tags": ["diagram"],
+  "alt": {
+    "en": "Step one of the planner wizard: “Disneyland” typed into the search field, five parks from five countries listed below it."
+  },
+  "caption": {
+    "en": "One name, five parks on three continents. The paths come from the API, never from the display names."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}

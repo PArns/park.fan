@@ -1,0 +1,14 @@
+{
+  "title": "Planer-Assistent, Park suchen",
+  "tags": ["diagram"],
+  "alt": {
+    "de": "Schritt eins des Planer-Assistenten: ins Suchfeld ist „Disneyland“ getippt, darunter fünf Parks aus fünf Ländern."
+  },
+  "caption": {
+    "de": "Ein Name, fünf Parks auf drei Kontinenten. Die Pfade kommen aus der API, nicht aus den Anzeigenamen."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}
