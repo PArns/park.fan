@@ -59,6 +59,20 @@ if (showcase) query.set('showcase', showcase);
 if (args.seed) query.set('seed', args.seed);
 if (args.quality) query.set('quality', args.quality);
 if (args.park) query.set('park', args.park);
+/**
+ * `--weather=rain|storm|…` forces the weather, and **on its own it photographs a dry park in the
+ * rain.**
+ *
+ * The sky, the fog, the exposure and the particles all move the instant the command lands, but
+ * `wetness` is an accumulator over PARK MINUTES and the harness runs at `speed=0`, so it sits at
+ * exactly 0 for as long as the clock does. Measured: 53 seconds of wall clock in a storm leaves
+ * `environment.wetness()` at 0 and `path-concrete-slab` at its dry `albedoColor` 1 / `roughness` 1;
+ * 30 park minutes of `--step` takes wetness to 0.963 and the same material to 0.576 / 0.403, which
+ * is the wet-surface pass doing exactly what it says.
+ *
+ * So a weather shot wants `--step=600` or more. It is the same shape as the particle problem
+ * `--particles` solves: the feature was working and the verification loop could not see it.
+ */
 if (args.weather) query.set('weather', args.weather);
 const url = `${base}/game?${query.toString()}`;
 
