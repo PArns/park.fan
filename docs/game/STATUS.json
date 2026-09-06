@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "20a82db",
+  "updatedAtCommit": "4a39904",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
