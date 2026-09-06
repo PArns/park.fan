@@ -28,6 +28,7 @@ import { AttractionMetaBadges } from './attraction-meta-badges';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
 import { OutageNote } from './outage-note';
+import { OutageEstimateNote } from './outage-estimate-note';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -391,6 +392,15 @@ export function AttractionCard({
             <OutageNote
               outage={'outage' in attraction ? attraction.outage : undefined}
               timezone={effectiveTimezone}
+              className="text-muted-foreground w-full text-[11px] leading-tight"
+            />
+            {/* "how much longer" on the card too, in the compact form: the
+                range alone, because the probability sentence would wrap on a
+                phone and every card in the row shares its height through the
+                subgrid. Same numbers as the ride page, fewer words. */}
+            <OutageEstimateNote
+              estimate={'outage' in attraction ? attraction.outage?.estimate : undefined}
+              variant="compact"
               className="text-muted-foreground w-full text-[11px] leading-tight"
             />
           </div>

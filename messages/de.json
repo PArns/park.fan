@@ -560,7 +560,14 @@
     },
     "outage": {
       "since": "Störung gemeldet seit {when}",
-      "startUnknown": "Störung gemeldet, Beginn unbekannt"
+      "startUnknown": "Störung gemeldet, Beginn unbekannt",
+      "estimate": {
+        "range": "Störungen wie diese dauerten meist noch {from} bis {to}.",
+        "rangeOpen": "Störungen wie diese dauerten meist noch über {from}.",
+        "compactProbability": "Rund {percent} % waren binnen einer Stunde behoben.",
+        "fullWithRange": "{range} Rund {percent} % waren binnen einer Stunde wieder in Betrieb.",
+        "fullProbability": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
+      }
     },
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
@@ -1266,7 +1273,7 @@
       "reportedDetail": "{count} gemeldete Störungen an {observedDays} beobachteten Betriebstagen.",
       "medianCaption": "Median in Minuten",
       "medianDetail": "Die Hälfte der {usable} Störungen mit beobachtetem Ende war nach {minutes} Minuten vorbei.",
-      "longestCaption": "Längste in Minuten",
+      "longestCaption": "Längste Störung",
       "shareDetail": "Rund {percent} % der Zeit, in der die Bahn lief.",
       "withheld": {
         "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
@@ -1277,7 +1284,8 @@
         "inhomogeneous": "Die beiden Hälften der letzten {days} Tage sehen zu verschieden aus, als dass eine Zahl beide beschreiben könnte.",
         "recently_merged": "Dieser Eintrag wurde kürzlich mit einem zweiten zusammengeführt. Bis die Historie wieder eindeutig ist, zeigen wir keine Zahlen.",
         "new_ride": "{name} läuft noch nicht lange genug, als dass sich etwas über Störungen sagen ließe."
-      }
+      },
+      "longestDetail": "Das Maximum der {count} gemeldeten Störungen."
     }
   },
   "nearby": {

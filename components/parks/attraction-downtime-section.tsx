@@ -1,8 +1,9 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { ShieldAlert } from 'lucide-react';
 import { ChapterPanel } from '@/components/common/chapter-panel';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { formatShortDuration } from '@/lib/utils/duration';
 import type { DowntimeBlock } from '@/lib/api/types';
 
 /**
@@ -43,6 +44,7 @@ export async function AttractionDowntimeSection({
 }) {
   if (!downtime) return null;
   const t = await getTranslations('attractions.downtime');
+  const locale = await getLocale();
 
   if (downtime.kind === 'withheld') {
     return (
@@ -65,9 +67,7 @@ export async function AttractionDowntimeSection({
       <PanelGrid columnCount={3}>
         <div className={PANEL_CELL}>
           <PanelMetric caption={t('reportedCaption', { days: downtime.windowDays })}>
-            <span className="text-3xl leading-none font-bold tabular-nums">
-              {downtime.outages}
-            </span>
+            <span className="text-3xl leading-none font-bold tabular-nums">{downtime.outages}</span>
           </PanelMetric>
           <p className="text-muted-foreground mt-2 text-xs">
             <span data-nosnippet>
@@ -104,15 +104,31 @@ export async function AttractionDowntimeSection({
 
         <div className={PANEL_CELL}>
           <PanelMetric caption={t('longestCaption')}>
+            {/* Hours, not raw minutes. The longest outages measured in
+                production run to 1450, 1055 and 950 minutes, and "1450" under
+                a caption reading "in Minuten" is a number nobody converts in
+                their head. */}
             <span className="text-3xl leading-none font-bold tabular-nums">
-              {roundWaitTo5(downtime.longestMinutes)}
+              {formatShortDuration(roundWaitTo5(downtime.longestMinutes), locale)}
             </span>
           </PanelMetric>
           <p className="text-muted-foreground mt-2 text-xs">
-            <span data-nosnippet>{t('shareDetail', { percent: sharePercent })}</span>
+            {/* Describes the number ABOVE it. This used to carry `shareDetail`,
+                which talks about the share of time the ride ran — a true
+                sentence sitting under an unrelated figure. A maximum is the
+                most sampling-sensitive statistic there is, so what belongs here
+                is the set it was taken over. */}
+            <span data-nosnippet>{t('longestDetail', { count: downtime.outages })}</span>
           </p>
         </div>
       </PanelGrid>
+
+      {/* The one denominator on the card, and it describes the chapter rather
+          than any single tile, so it sits under the grid instead of borrowing a
+          cell that belongs to another figure. */}
+      <p className="text-muted-foreground mt-3 text-xs">
+        <span data-nosnippet>{t('shareDetail', { percent: sharePercent })}</span>
+      </p>
     </ChapterPanel>
   );
 }

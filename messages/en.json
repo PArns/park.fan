@@ -777,7 +777,14 @@
     },
     "outage": {
       "since": "Outage reported since {when}",
-      "startUnknown": "Outage reported, start unknown"
+      "startUnknown": "Outage reported, start unknown",
+      "estimate": {
+        "range": "Outages like this one usually had {from} to {to} left.",
+        "rangeOpen": "Outages like this one usually had more than {from} left.",
+        "compactProbability": "About {percent}% were back within an hour.",
+        "fullWithRange": "{range} About {percent}% were reported running again within an hour.",
+        "fullProbability": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
+      }
     },
     "noLiveWaitTimes": {
       "title": "No wait times available",
@@ -1266,7 +1273,7 @@
       "reportedDetail": "{count} reported outages across {observedDays} observed operating days.",
       "medianCaption": "Median in minutes",
       "medianDetail": "Half of the {usable} outages with an observed end were over after {minutes} minutes.",
-      "longestCaption": "Longest in minutes",
+      "longestCaption": "Longest outage",
       "shareDetail": "About {percent} % of the time the ride was running.",
       "withheld": {
         "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
@@ -1277,7 +1284,8 @@
         "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
         "recently_merged": "This entry was recently merged with a second one. Until its history is unambiguous again we show no figures.",
         "new_ride": "{name} has not been running long enough for anything to be said about outages."
-      }
+      },
+      "longestDetail": "The maximum across the {count} reported outages."
     }
   },
   "nearby": {

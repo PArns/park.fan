@@ -46,7 +46,12 @@ const SEED = {
 const RECOVERED = {
   ...SEED,
   attractions: [
-    { ...SEED.attractions[0], status: 'OPERATING', effectiveStatus: 'OPERATING', outage: undefined },
+    {
+      ...SEED.attractions[0],
+      status: 'OPERATING',
+      effectiveStatus: 'OPERATING',
+      outage: undefined,
+    },
     SEED.attractions[1],
   ],
 };
@@ -55,7 +60,12 @@ const RECOVERED = {
 const BROKE = {
   ...SEED,
   attractions: [
-    { ...SEED.attractions[0], status: 'OPERATING', effectiveStatus: 'OPERATING', outage: undefined },
+    {
+      ...SEED.attractions[0],
+      status: 'OPERATING',
+      effectiveStatus: 'OPERATING',
+      outage: undefined,
+    },
     { ...SEED.attractions[1], status: 'DOWN', effectiveStatus: 'DOWN', outage: OUTAGE },
   ],
 };
@@ -108,6 +118,44 @@ const testCases = [
         attractions: [{ ...SEED.attractions[0], outage: { ...OUTAGE, startObserved: false } }],
       }).attractions[0].outage.startObserved,
     expected: false,
+  },
+  {
+    name: 'the how-much-longer estimate travels with it',
+    // It rides inside `outage`, so it survives on the same rule the rest of the
+    // object does — but only for as long as nobody "flattens" the projection.
+    // The estimate is the field a visitor acts on ("wait, or come back later"),
+    // and a stale one is worse than none.
+    actual: () =>
+      leanParkForLivePoll({
+        ...SEED,
+        attractions: [
+          {
+            ...SEED.attractions[0],
+            outage: {
+              ...OUTAGE,
+              estimate: {
+                elapsedMinutes: 45,
+                recoveryWithin30: 0.317,
+                recoveryWithin60: 0.504,
+                remaining: { p25: 25, median: 60, p75: 192 },
+                basis: 'park',
+              },
+            },
+          },
+        ],
+      }).attractions[0].outage.estimate.remaining.median,
+    expected: 60,
+  },
+  {
+    name: 'a recovered ride loses the estimate along with the line',
+    // The whole `outage` key goes to undefined, so nothing can leave an
+    // estimate standing under an OPERATING badge.
+    actual: () =>
+      leanParkForLivePoll({
+        ...SEED,
+        attractions: [{ ...SEED.attractions[0], outage: undefined }],
+      }).attractions[0].outage?.estimate,
+    expected: undefined,
   },
 ];
 

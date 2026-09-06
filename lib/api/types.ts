@@ -547,6 +547,51 @@ export interface AttractionOutage {
    * name the day rather than a clock time in that case.
    */
   startObserved: boolean;
+  /**
+   * How long outages like this one usually still take from here.
+   *
+   * Absent whenever the measured curve cannot answer — under five operating
+   * minutes, too thin a sample, or a park publishing no opening hours so there
+   * is no operating clock. **Absence never means the outage is nearly over**,
+   * and there is no fallback copy that implies it.
+   */
+  estimate?: OutageEstimate;
+}
+
+/**
+ * The measured answer to "how much longer", never a prediction.
+ *
+ * The API's `docs/analytics/ride-downtime.md` §6 refuses to say when a ride will
+ * break next. This is the other question — it is broken now, and this is what
+ * happened to the outages that got this far. Conditioned on an observed event,
+ * measured over 5900-128 000 intervals per bucket, calibrated out-of-sample to
+ * 2.55 percentage points.
+ *
+ * ## Two rules for rendering it
+ *
+ * **`elapsedMinutes` is operating minutes, not wall time.** Do not compute it
+ * from `startedAt`: an outage that began at 18:00 in a park that shut at 20:00
+ * reads two hours the next morning, not sixteen, and the whole estimate is
+ * built on that clock.
+ *
+ * **Never show the median without the spread.** The distribution is
+ * heavy-tailed — at one hour elapsed the quartiles are 25 and 255 minutes
+ * around a median of 70 — so a lone median reads as a promise. `remaining` is
+ * absent past roughly two hours for exactly that reason, which means a
+ * component that renders only the median silently shows nothing on the long
+ * outages a visitor most wants to understand. Render the probability there.
+ */
+export interface OutageEstimate {
+  /** Operating minutes elapsed. NOT `now - startedAt`. */
+  elapsedMinutes: number;
+  /** P(reported running again within 30 more operating minutes), 0-1. */
+  recoveryWithin30: number;
+  /** P(reported running again within 60 more operating minutes), 0-1. */
+  recoveryWithin60: number;
+  /** Remaining operating minutes at the quartiles. Absent past ~2 hours. */
+  remaining?: { p25: number; median: number; p75: number | null };
+  /** Whether the park carried its own curve here. Diagnostic, not for display. */
+  basis: 'park' | 'pooled';
 }
 
 /**

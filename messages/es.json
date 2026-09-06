@@ -777,7 +777,14 @@
     },
     "outage": {
       "since": "Avería notificada desde {when}",
-      "startUnknown": "Avería notificada, inicio desconocido"
+      "startUnknown": "Avería notificada, inicio desconocido",
+      "estimate": {
+        "range": "Las averías como esta solían durar entre {from} y {to} más.",
+        "rangeOpen": "Las averías como esta solían durar más de {from} más.",
+        "compactProbability": "Alrededor del {percent} % se resolvió en una hora.",
+        "fullWithRange": "{range} Alrededor del {percent} % volvió a estar en servicio en una hora.",
+        "fullProbability": "De las averías que ya habían durado tanto, alrededor del {percent} % volvió a estar en servicio en una hora."
+      }
     },
     "noLiveWaitTimes": {
       "title": "No hay tiempos de espera disponibles",
@@ -1266,7 +1273,7 @@
       "reportedDetail": "{count} averías notificadas en {observedDays} días de operación observados.",
       "medianCaption": "Mediana en minutos",
       "medianDetail": "La mitad de las {usable} averías con final observado terminaron a los {minutes} minutos.",
-      "longestCaption": "La más larga en minutos",
+      "longestCaption": "Avería más larga",
       "shareDetail": "Alrededor del {percent} % del tiempo en que la atracción estuvo funcionando.",
       "withheld": {
         "not_down_capable": "Para este parque ninguna fuente de datos notifica averías. Si {name} se avería, aquí no lo vemos.",
@@ -1277,7 +1284,8 @@
         "inhomogeneous": "Las dos mitades de los últimos {days} días son demasiado distintas para que una cifra describa ambas.",
         "recently_merged": "Esta ficha se fusionó hace poco con otra. Hasta que su historial vuelva a ser claro no mostramos cifras.",
         "new_ride": "{name} no lleva funcionando el tiempo suficiente para poder decir algo sobre averías."
-      }
+      },
+      "longestDetail": "El máximo de las {count} averías notificadas."
     }
   },
   "nearby": {

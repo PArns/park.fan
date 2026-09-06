@@ -777,7 +777,14 @@
     },
     "outage": {
       "since": "Guasto segnalato da {when}",
-      "startUnknown": "Guasto segnalato, inizio sconosciuto"
+      "startUnknown": "Guasto segnalato, inizio sconosciuto",
+      "estimate": {
+        "range": "I guasti come questo duravano di solito ancora da {from} a {to}.",
+        "rangeOpen": "I guasti come questo duravano di solito ancora più di {from}.",
+        "compactProbability": "Circa il {percent} % è stato risolto entro un'ora.",
+        "fullWithRange": "{range} Circa il {percent} % è tornato in funzione entro un'ora.",
+        "fullProbability": "Dei guasti che duravano già da così tanto, circa il {percent} % è tornato in funzione entro un'ora."
+      }
     },
     "noLiveWaitTimes": {
       "title": "Nessun tempo di attesa disponibile",
@@ -1266,7 +1273,7 @@
       "reportedDetail": "{count} guasti segnalati in {observedDays} giorni di esercizio osservati.",
       "medianCaption": "Mediana in minuti",
       "medianDetail": "Metà dei {usable} guasti con una fine osservata era finita dopo {minutes} minuti.",
-      "longestCaption": "Il più lungo in minuti",
+      "longestCaption": "Guasto più lungo",
       "shareDetail": "Circa il {percent} % del tempo in cui l'attrazione era in funzione.",
       "withheld": {
         "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
@@ -1277,7 +1284,8 @@
         "inhomogeneous": "Le due metà degli ultimi {days} giorni sono troppo diverse perché una cifra le descriva entrambe.",
         "recently_merged": "Questa scheda è stata unita di recente a un'altra. Finché la sua storia non è di nuovo chiara non mostriamo cifre.",
         "new_ride": "{name} non è in funzione da abbastanza tempo per poter dire qualcosa sui guasti."
-      }
+      },
+      "longestDetail": "Il massimo dei {count} guasti segnalati."
     }
   },
   "nearby": {

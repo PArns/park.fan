@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { OutageNote } from '@/components/parks/outage-note';
+import { OutageEstimateNote } from '@/components/parks/outage-estimate-note';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { formatPeakDate } from '@/components/parks/attraction-typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -262,6 +263,14 @@ export function RideNowPanel({
               <OutageNote
                 outage={attraction.outage}
                 timezone={timezone}
+                className="text-muted-foreground text-xs"
+              />
+              {/* The full sentence here: the ride page has the width for the
+                  probability, and this is the page a visitor opens when they
+                  are standing in front of the ride wondering whether to wait. */}
+              <OutageEstimateNote
+                estimate={attraction.outage?.estimate}
+                variant="full"
                 className="text-muted-foreground text-xs"
               />
               {mainQueue?.lastUpdated && (
