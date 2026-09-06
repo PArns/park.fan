@@ -4,8 +4,20 @@
  *
  * The box follows the camera rather than covering the park because the park is 512 m across and a
  * volume that size needs two orders of magnitude more particles to reach the same density in
- * front of the lens. 30 m of box is wider than the camera's near field at any preset, and the
- * distance fog and the darkened sky carry the weather beyond it.
+ * front of the lens. The distance fog and the darkened sky carry the weather beyond it.
+ *
+ * **The box was in the wrong place and too big, and nobody could see that until the harness could
+ * photograph a particle at all** (`environment-round2.md` §4.1: Babylon ages particles by the real
+ * frame delta, which under SwiftShader is longer than a raindrop's life, so every "rain" frame on
+ * this branch was a picture of an overcast day). The first frame that did show rain measured it:
+ * **1,567 pixels above 6 of 255, 0.17 % of the frame** — a scatter of dots, not weather.
+ *
+ * Three things were wrong and all three are geometry rather than art. The box was 30 m across, so
+ * the drops that reached the near field were a small fraction of the ones being paid for; it
+ * started 26 m above the camera, so most of every drop's life was spent above a horizontal
+ * camera's field of view; and the life was long enough that a drop died 18 m below the ground it
+ * had already landed on. It is 18 m across and starts 12 m up now, the life is cut to about the
+ * fall time, and the rate is raised into the room that frees.
  *
  * Snow is not a sixth weather state — `WeatherKind` has five and this module does not own that
  * type. It is rain below 1.5 °C, decided in `weather-model.ts`, which is also how a real forecast
@@ -22,8 +34,12 @@ import type { QualitySettings } from '../core/types';
 import { rainStreak, softDot } from './textures';
 import { clamp01 } from './noise';
 
-const BOX_HALF = 15;
-const BOX_TOP = 26;
+/** Half-width of the emission box, metres. Narrow, because density in front of the lens is what
+ * reads as rain and a wider box spends its particle budget on drops nobody sees. */
+const BOX_HALF = 9;
+/** How far above the camera the drops start. A horizontal camera sees the band just above eye
+ * level and nothing at 26 m, which is where they used to be born. */
+const BOX_TOP = 12;
 
 export interface PrecipitationHandle {
   /** `kind` null stops everything; `intensity` is 0..1. */
@@ -37,18 +53,20 @@ export function createPrecipitation(scene: Scene, quality: QualitySettings): Pre
   const rainTexture = rainStreak(scene);
   const snowTexture = softDot(scene, 'env-snowflake', 32, 1.5);
 
-  const rain = new ParticleSystem('env-rain', Math.round(2600 * quality.particleScale), scene);
+  const rain = new ParticleSystem('env-rain', Math.round(10000 * quality.particleScale), scene);
   rain.particleTexture = rainTexture;
   rain.emitter = emitter;
   rain.minEmitBox = new Vector3(-BOX_HALF, BOX_TOP, -BOX_HALF);
   rain.maxEmitBox = new Vector3(BOX_HALF, BOX_TOP + 4, BOX_HALF);
-  rain.color1 = new Color4(0.62, 0.72, 0.88, 0.42);
-  rain.color2 = new Color4(0.78, 0.84, 0.95, 0.3);
+  rain.color1 = new Color4(0.62, 0.72, 0.88, 0.55);
+  rain.color2 = new Color4(0.78, 0.84, 0.95, 0.42);
   rain.colorDead = new Color4(0.62, 0.72, 0.88, 0);
-  rain.minSize = 0.07;
-  rain.maxSize = 0.14;
-  rain.minLifeTime = 1.15;
-  rain.maxLifeTime = 1.5;
+  rain.minSize = 0.08;
+  rain.maxSize = 0.16;
+  // About the fall time from BOX_TOP: a drop that outlives its own landing is drawn under the
+  // terrain, where it costs a particle and shows nothing.
+  rain.minLifeTime = 0.85;
+  rain.maxLifeTime = 1.05;
   rain.gravity = new Vector3(0, -30, 0);
   rain.direction1 = new Vector3(-0.6, -8, -0.6);
   rain.direction2 = new Vector3(0.6, -12, 0.6);
@@ -105,8 +123,8 @@ export function createPrecipitation(scene: Scene, quality: QualitySettings): Pre
       if (kind === 'snow') snow.start();
     }
     if (kind === 'rain') {
-      rain.emitRate = Math.round(1800 * quality.particleScale * (0.25 + 0.75 * i));
-      rain.maxSize = 0.1 + 0.08 * i;
+      rain.emitRate = Math.round(8400 * quality.particleScale * (0.25 + 0.75 * i));
+      rain.maxSize = 0.12 + 0.07 * i;
     } else if (kind === 'snow') {
       snow.emitRate = Math.round(160 * quality.particleScale * (0.3 + 0.7 * i));
     }

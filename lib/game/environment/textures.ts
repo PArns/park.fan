@@ -201,10 +201,16 @@ export function rainStreak(scene: Scene): RawTexture {
   for (let y = 0; y < h; y++) {
     const v = y / (h - 1);
     // Thicker and brighter at the bottom of the streak, where the drop actually is.
+    //
+    // The width used to run to 0.66 of the quad at the bottom, and with the drops sized to be
+    // visible that drew a CONE rather than a streak — measured on the first frame of rain this
+    // project ever produced, where each drop came out roughly 25 px tall and 10 px wide at the
+    // base. A falling drop is a line with a bead on the end of it; the ink is a quarter as wide
+    // now and the quad is unchanged, so the geometry and the particle count are untouched.
     const taper = Math.pow(v, 0.6);
     for (let x = 0; x < w; x++) {
       const dx = Math.abs((x + 0.5) / w - 0.5) * 2;
-      const across = clamp01(1 - dx / Math.max(0.18, 0.16 + 0.5 * taper));
+      const across = clamp01(1 - dx / Math.max(0.1, 0.09 + 0.16 * taper));
       const a = Math.pow(across, 1.6) * (0.12 + 0.88 * taper);
       const i = (y * w + x) * 4;
       data[i] = 226;
