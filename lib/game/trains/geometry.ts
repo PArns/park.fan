@@ -443,12 +443,14 @@ export interface CarMetrics {
   chassisY: number;
   /** Bottom edge of the painted shell — the valance that hides the running gear. */
   shellBottom: number;
-  /** Top of the shell's side wall. */
+  /** The rim: the top edge of the tub's side wall, which a rider's shoulders sit above. */
   shellTop: number;
   /** The seat pan. */
   seatY: number;
-  /** The footwell floor, which is between the rails and below the chassis. */
+  /** The floor of the tub, inside the shell. */
   floorY: number;
+  /** Thickness of the shell's wall, metres. */
+  wall: number;
   /** Top of the headrest. */
   headTop: number;
   /** Bogie centres at ±wheelbase/2. */
@@ -473,12 +475,18 @@ export function carMetrics(profile: TrainProfile, gauge: number, railRadius: num
     axleY,
     chassisY,
     shellBottom,
+    wall: 0.045,
+    // The rim sits just under the rider's shoulder: a coaster car's sides come up to about waist
+    // height on a seated adult, which is what lets a photograph of a train read as people rather
+    // than as a row of crates. Scaled by the manifest's `car.height`, so a low-slung launch train
+    // gets a low rim and a classic wooden one a high one.
     shellTop: shellBottom + profile.carHeight * 0.56,
     // The rider's chest is y = 0 by definition of the heartline, and a seated adult's chest is
-    // 0.6 m above the pan. That is what fixes the pan, and everything else follows from it.
-    seatY: -0.6,
-    floorY: RAIL + 0.16,
-    headTop: shellBottom + profile.carHeight,
+    // a little over half a metre above the pan. That is what fixes the pan; everything else
+    // follows from it.
+    seatY: -0.55,
+    floorY: shellBottom + 0.06,
+    headTop: shellBottom + profile.carHeight * 0.83,
     wheelbase: Math.max(1.1, profile.carLength - 1.25),
     rows,
     perRow: profile.seatsPerRow,
@@ -508,48 +516,121 @@ function shellSection(
 }
 
 /**
- * The painted shell: the body a visitor sees, plus the valance that skirts the running gear.
+ * The painted shell: an open tub with a wall, a floor and a rim.
  *
- * Tapered at both ends — a coaster car is not a box, and the taper is what makes a seven-car train
- * read as one object rather than as seven crates. The footwell is cut into the top by the interior
- * mesh sitting in it; the shell itself is closed, because an open-topped loft with no cap shows its
- * own back faces the first time the camera looks down at it from the lift hill.
+ * **It was a sealed box for one round and the seats were inside it.** `shellSection` returns a
+ * closed rounded rectangle and the first version lofted it with both ends capped, which is a
+ * lidded crate: the onboard camera at 7 m behind a train on the lift photographed six smooth
+ * yellow humps with nothing in them, and every seat, headrest and shoulder harness in the module
+ * was drawn inside a solid roof. A coaster car is open on top, and that is the whole reason a
+ * train reads as people rather than as freight.
+ *
+ * So the section is the WALL's own cross-section: the outer contour down one side, under the
+ * floor and up the other, then across the rim and back along the inner contour. That is a closed,
+ * non-convex polygon, which the loft handles fine — but a centroid fan cannot cap it, because the
+ * centroid is inside the cavity. The ends are closed by a ribbon between the two contours (the
+ * exposed edge of the wall) plus a solid bulkhead across the cavity, which is what a real car has
+ * at each end anyway.
  */
 export function buildShell(m: CarMetrics): Surface {
   const s = newSurface();
   const half = m.width / 2;
   const zEnd = m.length / 2;
-  const sections: Section[] = [];
-  const profileAt = (t: number) => {
-    // A gentle tuck at both ends, strongest at the very tip.
-    const taper = 1 - 0.13 * t * t * t;
-    return {
-      halfWidth: half * taper,
-      bottom: m.shellBottom + 0.02 * t,
-      top: m.shellTop - 0.03 * t * t,
-    };
-  };
   const zs = [-zEnd, -zEnd * 0.72, -zEnd * 0.3, zEnd * 0.3, zEnd * 0.72, zEnd];
-  for (const z of zs) {
+  const built = zs.map((z) => {
     const t = Math.abs(z) / zEnd;
-    const p = profileAt(t);
-    sections.push({
-      z,
-      points: shellSection(p.halfWidth, p.bottom, p.top, 0.16),
-      shade: 1 - 0.06 * t,
-    });
-  }
-  addLoft(s, sections, { cap: true });
+    // A gentle tuck at both ends: a coaster car is not a box, and the taper is what makes a
+    // seven-car train read as one object rather than as seven crates.
+    const taper = 1 - 0.13 * t * t * t;
+    const outer = tubContour(half * taper, m.shellBottom + 0.02 * t, m.shellTop, 0.15);
+    const inner = tubContour(
+      half * taper - m.wall,
+      m.shellBottom + 0.02 * t + m.wall,
+      m.shellTop,
+      0.11
+    );
+    return { z, outer, inner, shade: 1 - 0.06 * t };
+  });
+  const sections: Section[] = built.map((b) => ({
+    z: b.z,
+    points: [...b.outer, ...[...b.inner].reverse()],
+    shade: b.shade,
+  }));
+  addLoft(s, sections);
 
-  // The floor of the tub, sunk between the rails. Drawn as a box rather than as part of the loft
-  // because it has to be BELOW the chassis, which the shell's own section cannot reach.
+  // The exposed edge of the wall at each end, and the bulkhead behind it.
+  capTub(s, built[0], -1);
+  capTub(s, built[built.length - 1], 1);
+  for (const end of [-1, 1]) {
+    const innerHalf = half - m.wall * 2;
+    const at = end * (zEnd - m.wall * 2);
+    addBox(
+      s,
+      [-innerHalf, m.floorY - 0.02, Math.min(at, at + end * m.wall * 1.6)],
+      [innerHalf, m.shellTop - 0.01, Math.max(at, at + end * m.wall * 1.6)],
+      0.78
+    );
+  }
+
+  // The floor of the tub.
   addBox(
     s,
-    [-Math.min(half - 0.18, m.gauge / 2 - 0.08), m.floorY, -zEnd * 0.92],
-    [Math.min(half - 0.18, m.gauge / 2 - 0.08), m.floorY + 0.05, zEnd * 0.92],
-    0.62
+    [-half + m.wall, m.floorY - 0.03, -zEnd + m.wall],
+    [half - m.wall, m.floorY, zEnd - m.wall],
+    0.6
   );
   return s;
+}
+
+/**
+ * Half a rounded rectangle: down one side, under the floor and up the other, ending on the rim.
+ *
+ * Counter-clockwise in (x right, y up), which is the winding the closed sections in this file
+ * already use and which `addLoft` turns into outward normals.
+ */
+function tubContour(
+  halfWidth: number,
+  bottom: number,
+  top: number,
+  corner: number
+): Array<readonly [number, number]> {
+  const r = Math.min(corner, halfWidth * 0.7, (top - bottom) * 0.4);
+  const out: Array<readonly [number, number]> = [];
+  out.push([-halfWidth, top]);
+  for (let i = 0; i <= 3; i++) {
+    const a = Math.PI + ((Math.PI / 2) * i) / 3;
+    out.push([-halfWidth + r + Math.cos(a) * r, bottom + r + Math.sin(a) * r]);
+  }
+  for (let i = 0; i <= 3; i++) {
+    const a = -Math.PI / 2 + ((Math.PI / 2) * i) / 3;
+    out.push([halfWidth - r + Math.cos(a) * r, bottom + r + Math.sin(a) * r]);
+  }
+  out.push([halfWidth, top]);
+  return out;
+}
+
+/** The wall's exposed edge at one end of the tub: a ribbon between the outer and inner contours. */
+function capTub(
+  s: Surface,
+  built: {
+    z: number;
+    outer: Array<readonly [number, number]>;
+    inner: Array<readonly [number, number]>;
+    shade: number;
+  },
+  facing: number
+): void {
+  const n = built.outer.length;
+  const a: number[] = [];
+  const b: number[] = [];
+  for (let i = 0; i < n; i++) {
+    a.push(vertex(s, built.outer[i][0], built.outer[i][1], built.z, i / n, 0, built.shade * 0.9));
+    b.push(vertex(s, built.inner[i][0], built.inner[i][1], built.z, i / n, 1, built.shade * 0.9));
+  }
+  for (let i = 0; i + 1 < n; i++) {
+    if (facing > 0) quad(s, a[i], a[i + 1], b[i], b[i + 1]);
+    else quad(s, b[i], b[i + 1], a[i], a[i + 1]);
+  }
 }
 
 /**

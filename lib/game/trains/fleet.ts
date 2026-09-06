@@ -248,6 +248,9 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
     stats.meshes = [...styles.values()].reduce((n, s) => n + s.parts.length, 0);
     stats.perCar = [...styles.values()].reduce((n, s) => Math.max(n, s.perCarTriangles), 0);
     stats.buildMs = Math.round(buildMs);
+    // Set here rather than in `update`: the shadow list is a function of the roster and the
+    // generator is handed it once, so counting it per frame would report a number nothing reads.
+    stats.shadowCasters = styles.size * 3;
   }
 
   function hideAll(): void {
