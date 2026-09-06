@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "951b3e2",
+  "updatedAtCommit": "e28a5bb",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -22,7 +22,12 @@
       "pnpm test:game green, tsc clean, eslint clean"
     ],
     "roundsRun": 3,
-    "note": "Three modules graded once each, all three FAILED: demo-park 7.20, track 8.00, environment 7.50. All three have had a round 2 shipped by the integrator and none has been re-graded. Every other score below is null and that is the honest value."
+    "note": "Three modules graded once each, all three FAILED: demo-park 7.20, track 8.00, environment 7.50. All three have had a round 2 shipped by the integrator and none has been re-graded. Every other score below is null and that is the honest value.",
+    "buildGreen": {
+      "command": "pnpm build",
+      "result": "exit 0, /game present as .next/server/app/game/page.js",
+      "at": "e28a5bb"
+    }
   },
   "bundle": {
     "command": "pnpm build && pnpm game:bundle",
@@ -34,15 +39,17 @@
       "babylonChunks": 0
     },
     "after": {
-      "tree": "this branch",
+      "tree": "this branch, after track + demo-park + the two core fixes",
       "sharedChunks": 6,
       "sharedBytes": 442012,
-      "totalChunkBytes": 10773484,
-      "babylonChunks": 5,
-      "babylonBytes": 853503
+      "totalChunkBytes": 11848714,
+      "babylonChunks": 8,
+      "babylonBytes": 1107149,
+      "note": "Babylon has grown from 5 chunks / 853 KB to 8 / 1,107 KB as track and demo-park landed. The number that matters is unchanged: 442,012 bytes shared, and none of the eight is a shared chunk."
     },
     "claim": "the shared bundle is byte-identical; every route outside /game pays nothing",
-    "sharedDelta": 0
+    "sharedDelta": 0,
+    "reMeasuredAt": "e28a5bb"
   },
   "soak": {
     "command": "pnpm game:soak",
