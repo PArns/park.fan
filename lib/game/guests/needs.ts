@@ -114,7 +114,7 @@ export function weatherFactor(need: NeedColumn, env: EnvironmentState): number {
  * more important than hunger says so in the manifest.
  */
 export function moodFromNeeds(
-  levels: Uint8Array,
+  levels: Float32Array,
   base: number,
   model: NeedModel,
   multipliers?: Float32Array

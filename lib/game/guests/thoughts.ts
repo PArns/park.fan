@@ -142,7 +142,7 @@ export function compileThoughts(
 export function evaluateThought(
   thoughts: readonly CompiledThought[],
   signals: Float64Array,
-  needs: Uint8Array,
+  needs: Float32Array,
   needBase: number
 ): number {
   for (let t = 0; t < thoughts.length; t++) {

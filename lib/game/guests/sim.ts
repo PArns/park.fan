@@ -523,7 +523,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       // gate having just eaten, slept and been to the toilet.
       const start = rngBodies.range(6, 42);
       const grown = (need.decayPerHour * weight * aged) / 60;
-      d.needs[base + c] = Math.max(0, Math.min(255, Math.round(start + grown)));
+      d.needs[base + c] = Math.max(0, Math.min(255, start + grown));
     }
     d.mood[slot] = moodFromNeeds(
       d.needs,
@@ -857,8 +857,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       const need = needs.columns[c];
       const weight = needWeights[index * needs.count + c];
       const rise = need.decayPerHour * weight * weatherFactor(need, env) * hours;
+      // No `Math.round` here, and no clamp to an integer: the column is a Float32 precisely so a
+      // rise of 0.0217 per tick accumulates instead of vanishing.
       const level = d.needs[base + c] + rise;
-      d.needs[base + c] = level > 255 ? 255 : level < 0 ? 0 : Math.round(level);
+      d.needs[base + c] = level > 255 ? 255 : level < 0 ? 0 : level;
     }
     const weights = needWeights.subarray(index * needs.count, index * needs.count + needs.count);
     const mood = moodFromNeeds(d.needs, base, needs, weights);

@@ -1,6 +1,6 @@
 {
   "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
-  "updatedAtCommit": "dbba8de",
+  "updatedAtCommit": "1b21810",
   "gate": {
     "rubric": "docs/game/CRITIC.md",
     "pass": 8.5,
@@ -22,7 +22,7 @@
       "pnpm test:game green, tsc clean, eslint clean"
     ],
     "roundsRun": 6,
-    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. All six have a round 2 shipped by the integrator and none has been re-graded. `guests` is built and ungated. ui and camera are scaffolds and their nulls are honest.",
+    "note": "Six modules graded once each and ALL SIX FAILED: terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. All six have a round 2 shipped and none has been re-graded. `guests` and `shops` are built and ungated. ui and camera are scaffolds and their nulls are honest.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -268,13 +268,13 @@
       "verdict": "round 1 FAILED at 7.10 against 8.5 (docs/game/critiques/scenery-round1.md); round 2 shipped, awaiting a round-2 grade."
     },
     "shops": {
-      "wave": 2,
-      "status": "scaffolded",
+      "wave": 3,
+      "status": "built, ungated — 6,170 lines in 13 files. Sim: a queue per shop, a till per counter, stock, deliveries, takings, refusals, staffing demand, and find(need, x, z, cash) ranked by walk + wait in park minutes. Main: one parametric building generator (five massings), a 4x2 procedural PBR atlas, thin instances, a night-light pool. Measured: 12 shop types = 25 meshes / 19,094 triangles, and the draw calls are per TYPE not per shop — a park with eight burger stands costs what one costs. In the demo park 7 shops = 1.4 % of the 1,200 draw-call budget and 0.83 % of the frame. Sim tick 0.0007 ms. 51-check selftest, now wired as pnpm test:game-shops.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
       "gated": false,
-      "lines": null,
+      "lines": 6170,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
@@ -317,7 +317,7 @@
     },
     "guests": {
       "wave": 3,
-      "status": "built, ungated — ~4,700 lines in 13 files. The builder was killed by the account session limit with the sim and the crowd renderer written and NOTHING wired: no main.ts, a scaffold index.ts, and a module that had never been run. The integrator finished it and fixed four bugs that are what \"never been run\" looks like. Measured: 713 guests at 14 draw calls (1.2 % of the 1,200 budget) and 154,018 triangles; 676/386/148 triangles per guest by LOD; sim mean 0.80 ms/tick against a 6 ms whole-sim budget.",
+      "status": "built, ungated — ~4,700 lines in 13 files. The builder was killed by the account session limit with the sim and the crowd renderer written and NOTHING wired: no main.ts, a scaffold index.ts, and a module that had never been run. The integrator finished it and fixed four bugs that are what \"never been run\" looks like. Measured: 713 guests at 14 draw calls (1.2 % of the 1,200 budget) and 154,018 triangles; 676/386/148 triangles per guest by LOD; sim mean 0.80 ms/tick against a 6 ms whole-sim budget. Round 1.5: the needs column was widened to Float32 after the shops builder found it frozen (see openIssues).",
       "round": 0,
       "score": null,
       "consoleErrors": null,
@@ -414,6 +414,10 @@
     }
   },
   "openIssues": [
+    "GUESTS BUG, found by the shops builder because it had to explain why nobody was buying anything, and confirmed: needs did not rise at ANY speed a player can select. `d.needs` was a Uint8Array written through Math.round, and the per-tick rise is 0.0217 units at speed 1, 0.065 at 3, 0.108 at 5 and 0.217 at 10 — every one rounds to zero. It moves only at 100x, which is the speed the SOAK runs at, so the one test exercising this module ran at the single speed where the bug is invisible. Measured before: 934 of 944 guests idle with no destination after three park hours, mean hunger 24 against urgentAt 170. After widening the column to Float32: mean hunger 115.6 / 116.0 / 115.8 at speeds 1/3/5 after 300 park minutes, identical across speeds, which is what a time-based decay must be. A save written before the widening still loads (u8 read and widened).",
+    "ARCHITECTURE, open: there are TWO models of buying. `guests/sim.ts` reads shop ENTITIES out of the world, looks their definitions up in the registry and runs its own venue queue and price (that is where the demo park's takings come from — cash moved from 2,500,000 to 2,500,063 in one frame), while the `shops` module's queue, till, stock and refusal model has no caller at all. Its own report says so: 'no frame shows a queue at a counter, because nothing queues'. Rewiring `guests` onto `ShopsSimApi` is the next round for that module, not a patch: it is the difference between a number going up and a park where a person waits at a counter. Requested in docs/game/requests/shops.md section 3.",
+    "HARNESS: `game-shot.mjs --step=N` used to die with 'Resulting promise was garbage collected' under SwiftShader — reproducible four runs of four on `--cam=overview`, and adding the shops to the demo park made `ground` do it too. `waitForFunction` installs a long-lived promise in the page and a scene heavy enough to stall the render loop gets it collected. It polls from node in short evaluates now.",
+    "demo-park now places its shops: 7 of 8 planned plots filled, chosen by NEED against the registry rather than by pack id, at x = +/-11 because the street's lamps are at +/-6.2, its limes at +/-8 and the path graph's service radius is 14 m. The eighth plot (a second happiness shop at 26, 186) is empty because the bundled packs have only one — the code leaves a plot empty rather than inventing a shop for it.",
     "CORE BUG, found by the guests module being photographed: a step control that does nothing while paused. `SimRuntime.tick()` computes dt from clock.speed and skips its whole body at dt <= 0, so the worker's `step` message ran the scheduler over a world that stood still. The screenshot harness runs at speed=0 for repeatability, so every frame of the guests module photographed an empty avenue with 'Guests 0' in the HUD. `runtime.step()` forces one tick at speed 1 now — the only reading of 'one tick' that does not depend on a speed the caller deliberately set to zero — and game-shot.mjs takes --step=N.",
     "guests: `destKind` was declared on GuestStore and allocated nowhere. `allocate` builds the store with `as unknown as GuestStore`, so the compiler was told the column existed and never checked, and grow/zero/serialize/load each listed their byte columns by hand and each missed the same one. Every tick threw. Fixed with a BYTE_FIELDS list the five sites share, a GuestColumn union the type is checked against, and a runtime guard that names an unallocated column.",
     "guests: THREE unsaved accumulators broke save -> resume, and a field-by-field diff of two serialisations found them. The four xoshiro streams were the obvious one; the gate's fractional party debt and the thought scanner's cursor and budget were not. The debt made the first guest to arrive after a save come in at park minute 2006 in the uninterrupted run and 2006.25 in the resumed one — one tick — with the people, their ids and their slots identical. The diff is zero fields now.",

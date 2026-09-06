@@ -102,6 +102,20 @@ export function buildWorld(seed: number, registry: Registry): World {
   });
   for (const entity of props) world.entities[entity.id] = entity;
 
+  // 4b. Shops on the four plots this park reserved for them.
+  //
+  // Chosen by ROLE against the registry, never by pack id, the same way `props.ts` picks its
+  // benches: a pack that ships a different burger stand is still a food shop, and this park should
+  // open on it. The x of ±11 is not a taste call either — the main street's lamps run at ±6.2 and
+  // its limes at ±8, and the path graph's service radius is 14 m, so ±11 is the only band clear of
+  // both rows of trees and still reachable from the street's own nodes. The whole 26 m street
+  // corridor is already flat, so nothing here touches the landform.
+  //
+  // `entity.position` is where a GUEST STANDS, not the centre of the building: the shops module
+  // lays the structure out backwards from that point, so a shop at (−11, 128) with yaw π/2 has its
+  // counter on the street and its back to the plot.
+  for (const shop of placeDemoShops(registry, allocId)) world.entities[shop.id] = shop;
+
   // 5. what the main handle needs to finish the job
   const half = PARK_SIZE / 2 - DRESS_MARGIN;
   const woodland = [roles.canopyTree, roles.streetTree, roles.conifer]
@@ -172,6 +186,56 @@ function buildPathEntities(
       position,
       yaw: 0,
       data: data as unknown as Record<string, unknown>,
+    });
+  }
+  return out;
+}
+
+/**
+ * The eight shops the demo park opens with, one pair per reserved plot.
+ *
+ * Needs come from the packs, so the set is expressed as the NEEDS a visitor arrives with rather
+ * than as a shopping list: two places to eat, two to drink, a toilet, two souvenir counters and an
+ * information point. `pick` takes the first shop in registration order that answers a need and has
+ * not been used yet, which keeps the two food stands different from each other without naming
+ * either of them.
+ */
+function placeDemoShops(registry: Registry, allocId: (kind: string) => string): Entity[] {
+  const items = registry.items('shops');
+  const used = new Set<string>();
+  const pick = (need: string): { pack: string; item: string } | null => {
+    for (const entry of items) {
+      const def = entry.def as { id?: string; need?: string };
+      const key = `${entry.pack}:${def.id}`;
+      if (def.need !== need || used.has(key) || typeof def.id !== 'string') continue;
+      used.add(key);
+      return { pack: entry.pack, item: def.id };
+    }
+    return null;
+  };
+  const plan: Array<{ need: string; x: number; z: number; yaw: number }> = [
+    { need: 'hunger', x: -11, z: 128, yaw: Math.PI / 2 },
+    { need: 'thirst', x: -11, z: 108, yaw: Math.PI / 2 },
+    { need: 'hunger', x: 11, z: 128, yaw: -Math.PI / 2 },
+    { need: 'toilet', x: 11, z: 108, yaw: -Math.PI / 2 },
+    { need: 'thirst', x: 11, z: 52, yaw: -Math.PI / 2 },
+    { need: 'happiness', x: 11, z: 36, yaw: -Math.PI / 2 },
+    { need: 'happiness', x: 26, z: 186, yaw: -Math.PI / 2 },
+    { need: 'none', x: 26, z: 170, yaw: -Math.PI / 2 },
+  ];
+  const out: Entity[] = [];
+  for (const spot of plan) {
+    const found = pick(spot.need);
+    // A pack set without a shop for this need leaves the plot empty rather than inventing one.
+    if (!found) continue;
+    const id = allocId('shop');
+    out.push({
+      id,
+      kind: 'shop',
+      pack: found.pack,
+      item: found.item,
+      position: [spot.x, 0, spot.z],
+      yaw: spot.yaw,
     });
   }
   return out;

@@ -103,13 +103,25 @@ if (bootMs != null) {
       if (stepTicks > 0) {
         const before = await page.evaluate(() => globalThis.__parkfan_game.metrics().tick);
         await page.evaluate((n) => globalThis.__parkfan_game.step(n), stepTicks);
-        await page
-          .waitForFunction(
-            (t) => globalThis.__parkfan_game.metrics().tick >= t,
-            before + stepTicks,
-            { timeout: Number(args.timeout ?? 90000) }
-          )
-          .catch(() => console_.warnings.push(`step: only reached tick ${before}+`));
+        // Polled from node in short calls rather than one `waitForFunction`.
+        //
+        // `waitForFunction` installs a long-lived promise in the page, and under SwiftShader a
+        // scene heavy enough to stall the render loop gets it garbage-collected: the harness dies
+        // with "Resulting promise was garbage collected" instead of taking a screenshot. It was
+        // reproducible on `--cam=overview --step=…` in four runs of four, and adding the shops to
+        // the demo park made `ground` do it too. Each poll below is its own short evaluate, so
+        // there is never a promise sitting in the page long enough to be collected.
+        const deadline = Date.now() + Number(args.timeout ?? 90000);
+        let tick = before;
+        while (tick < before + stepTicks && Date.now() < deadline) {
+          await page.waitForTimeout(250);
+          tick = await page
+            .evaluate(() => globalThis.__parkfan_game.metrics().tick)
+            .catch(() => tick);
+        }
+        if (tick < before + stepTicks) {
+          console_.warnings.push(`step: reached tick ${tick} of ${before + stepTicks}`);
+        }
         await page.waitForTimeout(400);
       }
       await page.evaluate(() => globalThis.__parkfan_game.nextFrame());

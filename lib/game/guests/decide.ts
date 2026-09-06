@@ -53,7 +53,7 @@ export interface DecisionContext {
   needs: NeedModel;
   archetype: GuestArchetypeDef;
   /** Guest's need row, 0..255. */
-  levels: Uint8Array;
+  levels: Float32Array;
   /** Offset of the guest's row in `levels`. */
   base: number;
   x: number;

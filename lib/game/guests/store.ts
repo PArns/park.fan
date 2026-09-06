@@ -90,7 +90,19 @@ export interface GuestStore {
   thoughtAt: Float32Array;
 
   /** `capacity × needCount`, row-major by slot. */
-  needs: Uint8Array;
+  /**
+   * `capacity × needCount`, row-major by slot. **Float32, not Uint8**, and that is the whole
+   * point of the field.
+   *
+   * A need rises by `decayPerHour × weight × dt/60` per tick. At 20 Hz that is 0.0217 units at
+   * speed 1, 0.065 at 3, 0.108 at 5 and 0.217 at 10 — and every one of them rounds to zero in an
+   * integer array. Only at 100×, which is the speed the SOAK runs at, does it move at all, so the
+   * one test that exercised this module ran at the single speed where the bug is invisible. The
+   * symptom in the browser was 934 of 944 guests standing idle with no destination after three
+   * park hours, mean hunger 24 against an `urgentAt` of 170. Found by the `shops` builder, which
+   * had to explain why nobody was buying anything.
+   */
+  needs: Float32Array;
 }
 
 export interface StoreHandle {
@@ -169,7 +181,7 @@ export function createStore(capacity: number, needIds: string[]): StoreHandle {
       needCount,
       id: new Int32Array(cap),
       style: new Uint16Array(cap),
-      needs: new Uint8Array(cap * Math.max(1, needCount)),
+      needs: new Float32Array(cap * Math.max(1, needCount)),
     } as unknown as GuestStore;
     const raw = store as unknown as Record<string, unknown>;
     for (const f of BYTE_FIELDS) raw[f] = new Uint8Array(cap);
@@ -291,7 +303,7 @@ export function createStore(capacity: number, needIds: string[]): StoreHandle {
     },
     setNeedColumns(ids) {
       if (ids.length === columns.length && ids.every((id, i) => id === columns[i])) return;
-      const next = new Uint8Array(data.capacity * Math.max(1, ids.length));
+      const next = new Float32Array(data.capacity * Math.max(1, ids.length));
       // Copy by ID, not by position: a pack registered between two boots appends a column, and a
       // pack REMOVED between two boots shifts every column after it.
       for (let c = 0; c < ids.length; c++) {
@@ -316,17 +328,21 @@ export function createStore(capacity: number, needIds: string[]): StoreHandle {
         // Base64 rather than number arrays: 2 000 guests × 31 columns is 250 000 numbers, which is
         // about 1.6 MB of JSON against 330 KB of base64, and the terrain already sets the
         // precedent (`world.ts`). Byte-exact for floats, which a JSON number is not obliged to be.
-        u8: {
-          ...Object.fromEntries(BYTE_FIELDS.map((f) => [f, toBase64(data[f] as Uint8Array)])),
-          needs: toBase64(data.needs),
-        },
+        u8: Object.fromEntries(BYTE_FIELDS.map((f) => [f, toBase64(data[f] as Uint8Array)])),
         u16: { style: toBase64(bytesOf(data.style)) },
         i32: Object.fromEntries(
           INT_FIELDS.map((f) => [f, toBase64(bytesOf(data[f] as Int32Array))])
         ),
-        f32: Object.fromEntries(
-          FLOAT_FIELDS.map((f) => [f, toBase64(bytesOf(data[f] as Float32Array))])
-        ),
+        f32: {
+          ...Object.fromEntries(
+            FLOAT_FIELDS.map((f) => [f, toBase64(bytesOf(data[f] as Float32Array))])
+          ),
+          // Moved out of the `u8` block when the column widened. A save written before that still
+          // loads: `load` reads `u8.needs` when `f32.needs` is absent and widens it, which costs
+          // nothing and is the difference between an old park opening and an old park being an
+          // empty one.
+          needs: toBase64(bytesOf(data.needs)),
+        },
       };
     },
     load(state) {
@@ -345,7 +361,14 @@ export function createStore(capacity: number, needIds: string[]): StoreHandle {
       const savedIds = Array.isArray(raw.needIds) ? raw.needIds.slice() : columns.slice();
       const next = allocate(cap, savedIds.length);
       for (const f of BYTE_FIELDS) readInto(next[f] as Uint8Array, raw.u8[f]);
-      readInto(next.needs, raw.u8.needs);
+      if (raw.f32?.needs) {
+        readInto(new Uint8Array(next.needs.buffer), raw.f32.needs);
+      } else if (raw.u8.needs) {
+        // A pre-widening save: one byte per need, read straight across.
+        const legacy = new Uint8Array(next.needs.length);
+        readInto(legacy, raw.u8.needs);
+        for (let i = 0; i < next.needs.length; i++) next.needs[i] = legacy[i]!;
+      }
       readInto(new Uint8Array(next.style.buffer), raw.u16?.style);
       for (const f of INT_FIELDS)
         readInto(new Uint8Array((next[f] as Int32Array).buffer), raw.i32?.[f]);
