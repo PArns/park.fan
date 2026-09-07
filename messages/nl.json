@@ -1287,7 +1287,8 @@
         "inhomogeneous": "De twee helften van de afgelopen {days} dagen verschillen te veel om met één cijfer te beschrijven.",
         "recently_merged": "Dit item is onlangs samengevoegd met een tweede. Tot de geschiedenis weer eenduidig is tonen we geen cijfers.",
         "new_ride": "{name} draait nog niet lang genoeg om iets over storingen te kunnen zeggen.",
-        "heavily_censored": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Van te veel daarvan hebben we het einde niet gezien, meestal omdat het park sloot terwijl de attractie nog stil stond. Dat is te weinig voor een tijdsduur."
+        "heavily_censored": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Van te veel daarvan hebben we het einde niet gezien, meestal omdat het park sloot terwijl de attractie nog stil stond. Dat is te weinig voor een tijdsduur.",
+        "stale_data": "Deze cijfers zijn momenteel niet actueel, daarom tonen we ze niet."
       },
       "longestDetail": "Het maximum van de {count} gemelde storingen."
     }

@@ -1287,7 +1287,8 @@
         "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
         "recently_merged": "This entry was recently merged with a second one. Until its history is unambiguous again we show no figures.",
         "new_ride": "{name} has not been running long enough for anything to be said about outages.",
-        "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration."
+        "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration.",
+        "stale_data": "These figures are not current right now, so we are not showing them."
       },
       "longestDetail": "The maximum across the {count} reported outages."
     }

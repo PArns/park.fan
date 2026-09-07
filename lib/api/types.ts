@@ -658,6 +658,17 @@ export type DowntimeBlock =
         | 'recently_merged'
         | 'new_ride'
         /**
+         * The figures exist but are no longer current.
+         *
+         * Its own reason because the alternatives both lie. Reusing
+         * `thin_events` keeps the stored count and renders „34 Störungen
+         * gemeldet … für eine belastbare Zahl zu wenige", refuted by its own
+         * number; zeroing the count states "0 Störungen" about a ride that had
+         * 34. `outages` still carries the real value here — this reason's copy
+         * does not use it.
+         */
+        | 'stale_data'
+        /**
          * Plenty of outages, too few of them seen to END — the opposite claim
          * to `thin_events`, so it gets its own sentence. Strongly seasonal on
          * the API side (a run cut off by the park shutting for the winter),

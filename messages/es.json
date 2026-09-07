@@ -1287,7 +1287,8 @@
         "inhomogeneous": "Las dos mitades de los últimos {days} días son demasiado distintas para que una cifra describa ambas.",
         "recently_merged": "Esta ficha se fusionó hace poco con otra. Hasta que su historial vuelva a ser claro no mostramos cifras.",
         "new_ride": "{name} no lleva funcionando el tiempo suficiente para poder decir algo sobre averías.",
-        "heavily_censored": "En los últimos {days} días se notificaron {count} averías. De demasiadas no vimos el final, casi siempre porque el parque cerró mientras la atracción seguía parada. Es muy poco para dar una duración."
+        "heavily_censored": "En los últimos {days} días se notificaron {count} averías. De demasiadas no vimos el final, casi siempre porque el parque cerró mientras la atracción seguía parada. Es muy poco para dar una duración.",
+        "stale_data": "Estas cifras no están actualizadas en este momento, por eso no las mostramos."
       },
       "longestDetail": "El máximo de las {count} averías notificadas."
     }
