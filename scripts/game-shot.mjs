@@ -136,16 +136,38 @@ try {
  * with "Resulting promise was garbage collected". The observable is registered once, and every
  * wait below is a short evaluate that reads a number.
  */
-if (bootMs != null) {
-  await page.evaluate(() => {
-    const w = globalThis;
-    if (w.__pfFrames !== undefined) return;
-    w.__pfFrames = 0;
-    w.__parkfan_game.scene().onAfterRenderObservable.add(() => {
-      w.__pfFrames += 1;
-    });
-  });
+/**
+ * Wait for the harness handle, and re-arm the frame counter if it is a NEW one.
+ *
+ * A dev server recompiling under another agent tears `__parkfan_game` down and builds it again, and
+ * every `page.evaluate` in this file assumes it is there — three runs died on
+ * `Cannot read properties of undefined (reading 'metrics')` in one session, which reads like a
+ * broken harness and is a race with somebody else's save. `game-warm-audit.mjs` already re-waits
+ * for exactly this reason; this file did not, and a shot list is longer than an audit.
+ *
+ * The counter has to be re-armed rather than merely kept: it is registered on the SCENE's
+ * `onAfterRenderObservable`, so after a rebuild the observable hangs off a disposed scene, the
+ * number stops moving, and `waitFrames` spins to its 30 s deadline before every screenshot.
+ */
+async function readyHandle() {
+  await page
+    .waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, { timeout: 120000 })
+    .catch(() => null);
+  await page
+    .evaluate(() => {
+      const w = globalThis;
+      const scene = w.__parkfan_game?.scene?.();
+      if (!scene || w.__pfScene === scene) return;
+      w.__pfScene = scene;
+      w.__pfFrames = 0;
+      scene.onAfterRenderObservable.add(() => {
+        w.__pfFrames += 1;
+      });
+    })
+    .catch(() => null);
 }
+
+if (bootMs != null) await readyHandle();
 
 /** Wait for `n` rendered frames, or give up after 30 s and let the screenshot happen anyway. */
 async function waitFrames(n) {
@@ -163,6 +185,7 @@ const shots = [];
 if (bootMs != null) {
   for (const tod of tods) {
     for (const cam of cams) {
+      await readyHandle();
       await page.evaluate(
         ({ tod, cam }) => {
           const g = globalThis.__parkfan_game;
@@ -182,6 +205,7 @@ if (bootMs != null) {
       // yet. Stepping is still deterministic (a fixed number of fixed-length ticks from a seeded
       // world), so `--step=1200` is the same picture every run.
       if (stepTicks > 0) {
+        await readyHandle();
         const before = await page.evaluate(() => globalThis.__parkfan_game.metrics().tick);
         await page.evaluate((n) => globalThis.__parkfan_game.step(n), stepTicks);
         // Polled from node in short calls rather than one `waitForFunction`.
@@ -207,6 +231,7 @@ if (bootMs != null) {
       }
       await waitFrames(2);
       if (particleStep > 0) {
+        await readyHandle();
         await page.evaluate((step) => {
           const scene = globalThis.__parkfan_game.scene();
           const w = globalThis;
@@ -224,6 +249,7 @@ if (bootMs != null) {
       }
       const file = path.join(out, `${tod.replace(':', '')}-${cam}.png`);
       await page.screenshot({ path: file });
+      await readyHandle();
       const metrics = await page.evaluate(() => globalThis.__parkfan_game.metrics());
       shots.push({ tod, cam, file, metrics });
     }
@@ -243,7 +269,10 @@ const chunks = await page.evaluate(() =>
 const errors =
   bootMs == null
     ? console_.errors
-    : [...console_.errors, ...(await page.evaluate(() => globalThis.__parkfan_game.errors))];
+    : [
+        ...console_.errors,
+        ...(await page.evaluate(() => globalThis.__parkfan_game?.errors ?? []).catch(() => [])),
+      ];
 const report = {
   url,
   viewport,

@@ -21,6 +21,7 @@ export const guestsModule: GameModule = {
   kinds: ['guest'],
   sim: createGuestsSim,
   main: async (ctx) => (await import('./main')).createGuestsMain(ctx),
+  showcase: async (ctx) => (await import('./showcase')).stageGuestsShowcase(ctx),
 };
 
 export type { GuestsSimApi, GuestStats, GuestArchetypeDef } from './types';
