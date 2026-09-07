@@ -1,0 +1,342 @@
+/**
+ * The basin's plan and its floor, as pure arithmetic.
+ *
+ * Pure and node-runnable — `selftest.mjs` measures a pool's area, its volume and its depth at a
+ * point without a GPU, and the worker reads `depthAt` to answer "is this a place a slide can land
+ * in" without loading a mesh.
+ *
+ * ## The one structural decision
+ *
+ * A basin is drawn as a **polar grid from its own centroid**: `segments` rays out to the outline,
+ * `rings` steps along each ray. That gives the floor, the wall, the coping and the deck the same
+ * vertex columns, so the four meet exactly and no seam has to be stitched — and the water surface
+ * is the same grid again, which is why the waterline lands on a tile edge rather than a millimetre
+ * off it.
+ *
+ * The cost is that the outline must be **star-shaped about its centroid**: every ray may cross it
+ * once. Every generator here respects that — a `lobed` outline clamps its lobe depth to 0.45 of the
+ * radius, which is a bean and a lagoon but not a horseshoe — and an explicit `polygon` from a pack
+ * is checked and warned about rather than silently drawn inside out. A horseshoe pool would want a
+ * general triangulator, and this module does not have one; that limit is in the report.
+ *
+ * ## Depth
+ *
+ * `depthAt` is evaluated per vertex AND analytically differentiated for the floor normal, so the
+ * shading follows the real slope and not the triangulation. The five profiles are the ones a real
+ * pool is built to: a `flat` teaching pool, a `slope` from a shallow end to a deep end, a `dish`
+ * that falls to a middle drain, a `beach` with a zero-entry shelf, and a `channel` — a lazy river
+ * or a run-out lane, deepest along its centreline.
+ */
+
+import type { PoolDepthSpec, PoolShapeSpec } from './types';
+
+export const clamp01 = (x: number): number => (x < 0 ? 0 : x > 1 ? 1 : x);
+export const mix = (a: number, b: number, t: number): number => a + (b - a) * t;
+export const smoothstep = (a: number, b: number, x: number): number => {
+  if (a === b) return x < a ? 0 : 1;
+  const t = clamp01((x - a) / (b - a));
+  return t * t * (3 - 2 * t);
+};
+
+/** sRGB hex to linear RGB. Vertex colours multiply a PBR albedo, which is linear. */
+export function hexToLinear(hex: string): [number, number, number] {
+  const h = hex.replace('#', '');
+  const parts =
+    h.length === 3 ? h.split('').map((c) => c + c) : [h.slice(0, 2), h.slice(2, 4), h.slice(4, 6)];
+  const out = parts.map((pair) => {
+    const s = (parseInt(pair, 16) || 0) / 255;
+    return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  });
+  return [out[0] ?? 0, out[1] ?? 0, out[2] ?? 0];
+}
+
+/**
+ * A stable hash of two integers and a seed, 0..1.
+ *
+ * Furniture placement, per-tile tint and the niche spacing all read this rather than an `Rng`,
+ * because a stateful generator makes a rebuild depend on how many pools were rebuilt before it.
+ * A pure function of (entity, index) gives the same deck whatever order the world announces.
+ */
+export function hash2(ix: number, iy: number, seed: number): number {
+  let h = (Math.imul(ix | 0, 374761393) + Math.imul(iy | 0, 668265263) + Math.imul(seed | 0, 1274126177)) | 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  h ^= h >>> 16;
+  return (h >>> 0) / 4294967296;
+}
+
+/** A string to a 32-bit seed, so an entity id can seed its own deck. */
+export function hashString(text: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h | 0;
+}
+
+/**
+ * The outline in local metres, counter-clockwise seen from above, closed (last point ≠ first).
+ *
+ * `size` is the FULL extent, so a 20 × 12 lagoon spans −10..10 by −6..6.
+ */
+export function outlinePoints(shape: PoolShapeSpec, size: [number, number]): number[] {
+  const hx = size[0] / 2;
+  const hz = size[1] / 2;
+  const n = Math.max(12, Math.min(256, Math.round(shape.segments)));
+  const out: number[] = [];
+
+  if (shape.outline === 'polygon' && shape.points.length >= 6) {
+    for (let i = 0; i + 1 < shape.points.length; i += 2) {
+      out.push(shape.points[i] * hx, shape.points[i + 1] * hz);
+    }
+    return ensureCcw(out);
+  }
+
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2;
+    const c = Math.cos(a);
+    const s = Math.sin(a);
+    switch (shape.outline) {
+      case 'rect': {
+        // A rounded rectangle sampled by angle: the corner radius is honoured exactly by walking
+        // the four straight runs and four arcs in the parameter, which keeps the samples spread
+        // evenly along the perimeter instead of bunching at the corners.
+        const r = Math.max(0, Math.min(shape.corner, Math.min(hx, hz) * 0.98));
+        out.push(...roundedRectPoint(hx, hz, r, i / n));
+        break;
+      }
+      case 'stadium': {
+        const r = Math.min(hx, hz);
+        out.push(...roundedRectPoint(hx, hz, r, i / n));
+        break;
+      }
+      case 'lobed': {
+        // An ellipse with a few sinusoidal lobes: the free-form lagoon a park actually builds,
+        // and the reason the depth is clamped is that a deeper lobe stops being star-shaped.
+        const depth = Math.max(0, Math.min(0.45, shape.lobeDepth));
+        const k = 1 + depth * Math.sin(a * Math.max(1, Math.round(shape.lobes)) + shape.lobePhase);
+        out.push(c * hx * k, s * hz * k);
+        break;
+      }
+      case 'ellipse':
+      default:
+        out.push(c * hx, s * hz);
+        break;
+    }
+  }
+  return ensureCcw(out);
+}
+
+/** One point on a rounded rectangle at parameter `t` (0..1) of its perimeter. */
+function roundedRectPoint(hx: number, hz: number, r: number, t: number): [number, number] {
+  const sx = Math.max(0, hx - r);
+  const sz = Math.max(0, hz - r);
+  const straight = 2 * (2 * sx + 2 * sz);
+  const arcs = 2 * Math.PI * r;
+  const total = straight + arcs;
+  if (total <= 0) return [0, 0];
+  let d = t * total;
+  // Counter-clockwise from the middle of the +x side.
+  const legs: Array<[number, number]> = [
+    [sz, 0],
+    [r, 1],
+    [2 * sx, 2],
+    [r, 3],
+    [2 * sz, 4],
+    [r, 5],
+    [2 * sx, 6],
+    [r, 7],
+    [sz, 8],
+  ];
+  for (const [len, kind] of legs) {
+    const l = kind % 2 === 0 ? len : (Math.PI / 2) * r;
+    if (d > l) {
+      d -= l;
+      continue;
+    }
+    const u = l > 0 ? d / l : 0;
+    switch (kind) {
+      case 0:
+        return [hx, u * sz];
+      case 1:
+        return [sx + r * Math.cos(u * (Math.PI / 2)), sz + r * Math.sin(u * (Math.PI / 2))];
+      case 2:
+        return [sx - u * 2 * sx, hz];
+      case 3:
+        return [
+          -sx + r * Math.cos(Math.PI / 2 + u * (Math.PI / 2)),
+          sz + r * Math.sin(Math.PI / 2 + u * (Math.PI / 2)),
+        ];
+      case 4:
+        return [-hx, sz - u * 2 * sz];
+      case 5:
+        return [
+          -sx + r * Math.cos(Math.PI + u * (Math.PI / 2)),
+          -sz + r * Math.sin(Math.PI + u * (Math.PI / 2)),
+        ];
+      case 6:
+        return [-sx + u * 2 * sx, -hz];
+      case 7:
+        return [
+          sx + r * Math.cos((3 * Math.PI) / 2 + u * (Math.PI / 2)),
+          -sz + r * Math.sin((3 * Math.PI) / 2 + u * (Math.PI / 2)),
+        ];
+      default:
+        return [hx, -sz + u * sz];
+    }
+  }
+  return [hx, 0];
+}
+
+/** Reverse a polygon that was authored clockwise, so every consumer sees one winding. */
+export function ensureCcw(points: number[]): number[] {
+  if (signedArea(points) >= 0) return points;
+  const out: number[] = [];
+  for (let i = points.length - 2; i >= 0; i -= 2) out.push(points[i], points[i + 1]);
+  return out;
+}
+
+export function signedArea(points: number[]): number {
+  let a = 0;
+  const n = points.length / 2;
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    a += points[i * 2] * points[j * 2 + 1] - points[j * 2] * points[i * 2 + 1];
+  }
+  return a / 2;
+}
+
+export const polygonArea = (points: number[]): number => Math.abs(signedArea(points));
+
+/**
+ * Is every ray from the origin crossing this outline exactly once?
+ *
+ * The polar grid depends on it, and an explicit `polygon` from a pack is the one outline this
+ * module did not generate. Cheap test: the angle must advance monotonically around the loop.
+ */
+export function isStarShaped(points: number[]): boolean {
+  const n = points.length / 2;
+  if (n < 3) return false;
+  let total = 0;
+  let previous = Math.atan2(points[1], points[0]);
+  for (let i = 1; i <= n; i++) {
+    const k = (i % n) * 2;
+    const a = Math.atan2(points[k + 1], points[k]);
+    let d = a - previous;
+    while (d > Math.PI) d -= Math.PI * 2;
+    while (d < -Math.PI) d += Math.PI * 2;
+    if (d < -1e-9) return false;
+    total += d;
+    previous = a;
+  }
+  return Math.abs(Math.abs(total) - Math.PI * 2) < 1e-6;
+}
+
+/** Even-odd point-in-polygon, local metres. */
+export function insidePolygon(points: number[], x: number, z: number): boolean {
+  let inside = false;
+  const n = points.length / 2;
+  for (let i = 0, j = n - 1; i < n; j = i++) {
+    const xi = points[i * 2];
+    const zi = points[i * 2 + 1];
+    const xj = points[j * 2];
+    const zj = points[j * 2 + 1];
+    if (zi > z !== zj > z && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+/**
+ * Water depth in metres at a local point, before the wall is reached.
+ *
+ * `u` and `v` are the point in unit space (−1..1 over the pool's own extents), so the profile is
+ * independent of how big the pool is: a 30 m lap pool and a 12 m one both go from `min` at one end
+ * to `max` at the other.
+ */
+export function depthAtUnit(depth: PoolDepthSpec, u: number, v: number): number {
+  const along = depth.axis === 'x' ? u : v;
+  const across = depth.axis === 'x' ? v : u;
+  switch (depth.profile) {
+    case 'flat':
+      return depth.max;
+    case 'slope': {
+      // Real pools do not ramp linearly end to end: there is a shallow shelf, a transition slope
+      // and a deep well. Two smoothsteps give exactly that break, which is what you feel underfoot.
+      const t = smoothstep(-0.55, 0.62, along);
+      return mix(depth.min, depth.max, t);
+    }
+    case 'dish': {
+      const r = Math.min(1, Math.hypot(u, v));
+      return mix(depth.max, depth.min, smoothstep(0.25, 1, r));
+    }
+    case 'beach': {
+      // Zero-entry: the first `beach` of the length is a dry-to-ankle shelf at a gentle 1:12, then
+      // the floor falls to the deep end.
+      const shelf = clamp01(depth.beach);
+      const t = (along + 1) / 2;
+      if (t < shelf) return mix(0, depth.min, shelf > 0 ? t / shelf : 1);
+      return mix(depth.min, depth.max, smoothstep(shelf, 1, t));
+    }
+    case 'channel': {
+      // Deepest along the centreline, shelving up to the banks. A run-out lane and a lazy river.
+      const r = Math.min(1, Math.abs(across));
+      return mix(depth.max, depth.min, smoothstep(0.45, 1, r));
+    }
+    default:
+      return depth.max;
+  }
+}
+
+/** The deepest the profile ever gets, for the volume estimate and the camera's framing radius. */
+export const profileMaxDepth = (depth: PoolDepthSpec): number => Math.max(depth.min, depth.max);
+
+/**
+ * Water volume in m³, by integrating the depth over the plan on a 32 × 32 grid.
+ *
+ * Measured rather than assumed: `area × maxDepth / 2` is out by a fifth on a beach-entry lagoon,
+ * and this number is the water bill the management module charges for.
+ */
+export function poolVolume(shape: PoolShapeSpec, size: [number, number], maxDepth: number): number {
+  const outline = outlinePoints(shape, size);
+  const hx = size[0] / 2;
+  const hz = size[1] / 2;
+  const steps = 32;
+  const cell = ((2 * hx) / steps) * ((2 * hz) / steps);
+  const depth: PoolDepthSpec = { ...shape.depth, max: maxDepth };
+  let total = 0;
+  for (let j = 0; j < steps; j++) {
+    const z = -hz + ((j + 0.5) / steps) * 2 * hz;
+    for (let i = 0; i < steps; i++) {
+      const x = -hx + ((i + 0.5) / steps) * 2 * hx;
+      if (!insidePolygon(outline, x, z)) continue;
+      total += depthAtUnit(depth, x / hx, z / hz) * cell;
+    }
+  }
+  return total;
+}
+
+/** World point to the pool's local frame. */
+export function toLocal(
+  x: number,
+  z: number,
+  position: [number, number, number],
+  yaw: number
+): [number, number] {
+  const dx = x - position[0];
+  const dz = z - position[2];
+  const c = Math.cos(-yaw);
+  const s = Math.sin(-yaw);
+  return [dx * c - dz * s, dx * s + dz * c];
+}
+
+/** The pool's local frame back to world. */
+export function toWorld(
+  x: number,
+  z: number,
+  position: [number, number, number],
+  yaw: number
+): [number, number] {
+  const c = Math.cos(yaw);
+  const s = Math.sin(yaw);
+  return [position[0] + x * c - z * s, position[2] + x * s + z * c];
+}
