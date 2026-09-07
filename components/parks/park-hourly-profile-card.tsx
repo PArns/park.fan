@@ -151,6 +151,14 @@ export function ParkHourlyProfileCard({
                   key={h}
                   scope="col"
                   className="text-muted-foreground/70 px-1.5 py-1.5 text-right text-xs font-medium whitespace-nowrap"
+                  /* The two runtimes do not agree on this string, so the server's answer is kept
+                     rather than hydrated over. `hour: 'numeric'` for `it` pads to two digits in
+                     Chromium's CLDR and does not in Node's (measured on the same UTC input, same
+                     zone: node 22 / ICU 78.2 says "8", the browser says "08"); every other locale
+                     we ship matches. It only shows below 10, so it stayed invisible until a park
+                     that opens at 08:00 was asked for in Italian, where it threw a hydration
+                     error and had React regenerate the whole table on the client. */
+                  suppressHydrationWarning
                 >
                   <span className="sr-only">{labels.hour} </span>
                   {hourLabel(h)}
