@@ -32,6 +32,7 @@ import { pathStyle, resolveWidth, DEFAULT_WIDTH } from '../paths';
 import type { PathEntityData } from '../paths';
 import { buildCatalog } from '../scenery';
 import { sampleHeight } from '../terrain';
+import { attachPoolContent, makePoolEntity } from '../pools';
 import { paintDemoTerrain, sculptDemoTerrain } from './landform';
 import { missingRoles, placeDemoProps, resolveRoles } from './props';
 import { PADS, PATHS, PARK_SIZE } from './plan';
@@ -122,6 +123,19 @@ export function buildWorld(seed: number, registry: Registry): World {
   // STATUS.json — this one fits, and the positions and yaws come from `docs/game/requests/rides.md`
   // §6, written by the module that knows how big its own machines are.
   for (const ride of placeDemoRides(registry, allocId)) world.entities[ride.id] = ride;
+
+  // 4d. The water park, on the plot reserved at (112, 50), 44 x 32 m. The `camera` module's `pool`
+  // preset targets (110, 0, 60) and has framed empty ground since the day it was written.
+  //
+  // The three placements come from `docs/game/requests/pools.md` §4 with one change, and the change
+  // is the reason that request is worth reading: the module measured its own footprints against
+  // this pad and reported that the kids' pool as it proposed it hangs SEVEN METRES past the east
+  // edge — 19.4 m of basin and deck starting where the lagoon's own deck stops. So the layout here
+  // is not the requested one: the lagoon is shorter front-to-back and moved onto the pad's long
+  // axis, the kids' pool takes the north-east corner, and the whirlpool the north-west. Two edges
+  // are overhung by about two metres, which lands in the pad's own 20 m blend and is flat ground.
+  attachPoolContent(registry);
+  for (const pool of placeDemoPools(world, allocId)) world.entities[pool.id] = pool;
 
   // 5. what the main handle needs to finish the job
   const half = PARK_SIZE / 2 - DRESS_MARGIN;
@@ -273,6 +287,54 @@ function placeDemoRides(registry: Registry, allocId: (kind: string) => string): 
  * not been used yet, which keeps the two food stands different from each other without naming
  * either of them.
  */
+/**
+ * The lido, the children's pool and the whirlpool, on the `water-park` pad.
+ *
+ * Three shapes out of the pools module's own catalogue, placed by their FOOTPRINT against the pad
+ * rather than by eye, which is the rule `placeDemoRides` follows and the one the fairground was
+ * laid out with after a first attempt overlapped two machines by ten metres.
+ *
+ * `attachPoolContent` is idempotent and both halves of that module call it too; it is called here
+ * because this factory runs before either of them and `makePoolEntity` refuses to invent a shape it
+ * does not know.
+ *
+ * The Y is sampled rather than assumed. `makePoolEntity` writes it straight into the entity and the
+ * module reads the entity's Y in preference to the terrain's — the ground under a placed pool IS
+ * the pit it dug, so a pool that took its height from the terrain after excavation would sink by
+ * its own depth every time the world was rebuilt.
+ */
+function placeDemoPools(world: World, allocId: (kind: string) => string): Entity[] {
+  const y = (x: number, z: number) => sampleHeight(world.terrain, x, z);
+  return [
+    makePoolEntity({
+      id: allocId('pool'),
+      shape: 'lagoon',
+      x: 110,
+      z: 42,
+      y: y(110, 42),
+      yaw: 0.18,
+      size: [30, 14],
+    }),
+    makePoolEntity({
+      id: allocId('pool'),
+      shape: 'kids-pool',
+      x: 122,
+      z: 60,
+      y: y(122, 60),
+      yaw: -0.3,
+    }),
+    makePoolEntity({
+      id: allocId('pool'),
+      shape: 'whirlpool',
+      x: 96,
+      z: 60,
+      y: y(96, 60),
+      yaw: 0.6,
+      heated: true,
+    }),
+  ];
+}
+
 function placeDemoShops(registry: Registry, allocId: (kind: string) => string): Entity[] {
   const items = registry.items('shops');
   const used = new Set<string>();

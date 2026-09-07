@@ -213,15 +213,16 @@
     },
     "pools": {
       "wave": 2,
-      "status": "scaffolded",
+      "status": "built, ungated. 17 files, 5,565 lines, entity kind `pool`. Basin plan, depth profile, tile style and edge treatment are all four manifest entries; plus coping, a deck with furniture, steps, handrails, underwater niche lighting and a depth-tinted water surface with a caustic net on the tile beneath it. Measured by its builder: 11 basins in 6 tile styles = 32 meshes, 43,096 triangles, 32 of the frame's 117 draw calls (2.7 % of the 1,200 budget), sim tick 0.00 ms, own selftest 80/80. Four bugs it found by LOOKING rather than reading, all in its report: a deck whose 4,300 triangles all faced the ground (back-face culled, no error anywhere); a zero-entry beach that stops at depth zero and is therefore under water; lane lines drawn on the wall's arclength coming out as a dark band every 2.5 m; and a pooled point light 0.25 m under the surface blowing a white hole in the pool. Placed in the demo park by the integrator on the `water-park` pad — NOT as the request proposed, because the module measured its own kids' pool hanging seven metres past the pad's east edge and said so. Honest weaknesses in its own §5: uniform caustics that do not fall off from the lamps and also land on the dry wall, no refraction probe, no horseshoe plan, no LOD — and NOTHING SWIMS: `capacity`/`enter`/`leave` exist, are tested, and no guest has ever called them.",
       "round": 0,
       "score": null,
       "consoleErrors": null,
       "gated": false,
-      "lines": null,
+      "lines": 5565,
       "axes": null,
       "gradedAtCommit": null,
-      "hardGates": null
+      "hardGates": null,
+      "verdict": "awaiting a round-1 grade"
     },
     "track": {
       "wave": 2,
