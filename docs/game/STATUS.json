@@ -30,7 +30,8 @@
     }
   },
   "bundle": {
-    "command": "pnpm build && pnpm game:bundle",
+    "command": "pnpm build && node scripts/check-game-bundle.mjs",
+    "measuredAt": "2026-09-07, thirteen modules built",
     "before": {
       "tree": "main (clean, no game)",
       "sharedChunks": 6,
@@ -39,18 +40,16 @@
       "babylonChunks": 0
     },
     "after": {
-      "tree": "this branch, after track + demo-park + the two core fixes",
+      "tree": "this branch with core, terrain, environment, camera, paths, track, scenery, shops, guests, tools, trains, rides and demo-park all built",
       "sharedChunks": 6,
       "sharedBytes": 442012,
-      "totalChunkBytes": 11848714,
-      "babylonChunks": 8,
-      "babylonBytes": 1107149,
-      "note": "Babylon has grown from 5 chunks / 853 KB to 8 / 1,107 KB as track and demo-park landed. The number that matters is unchanged: 442,012 bytes shared, and none of the eight is a shared chunk."
+      "totalChunkBytes": 12395424,
+      "babylonChunks": 6,
+      "babylonBytes": 1022138,
+      "contaminated": []
     },
-    "claim": "the shared bundle is byte-identical; every route outside /game pays nothing",
-    "sharedDelta": 0,
-    "reMeasuredAt": "e28a5bb",
-    "stale": "STALE, and by a lot. The `after` side was measured when track and demo-park had just landed. Since then guests, shops, camera, tools and trains have all shipped, each with its own geometry and materials, so `babylonBytes` and `totalChunkBytes` are certainly higher and NOBODY HAS CHECKED whether `sharedBytes` moved. That last number is the one the frontend gate turns on — 442,012 B is the claim that no route outside /game regressed — and it is the only figure here worth re-running for. It wants `pnpm build && pnpm game:bundle` against a baseline build of main, on a tree nobody is editing, which is why it has not been done: a builder is working in this one."
+    "verdict": "THE SHARED BUNDLE HAS NOT MOVED BY ONE BYTE. 442,012 B across 6 chunks, byte-for-byte what it measured when only track and demo-park existed — six modules later, with a build tool, a crowd, a fairground and a fleet of trains in the tree. `contaminated` is empty: no chunk that every App Router page loads carries Babylon. That is the frontend gate's central claim and it is now measured rather than assumed.",
+    "note": "Babylon itself got SMALLER while five modules landed: 8 chunks / 1,107,149 B before, 6 / 1,022,138 after. Deep imports held and the chunking improved. Total chunk bytes 6,416,830 (main, no game) -> 12,395,424, and that growth is the game's own dynamically imported chunks, which is what it is supposed to be — asserting the total is not the check, and the script's docblock says so."
   },
   "soak": {
     "command": "pnpm game:soak",
