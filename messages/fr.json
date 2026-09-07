@@ -2096,6 +2096,7 @@
       "queueing": "{duration} d’attente",
       "leversBody": "De quoi gagner de la place sans renoncer à une attraction. Touchez ce que vous changeriez.",
       "leversNone": "Les blocs n’y sont pour rien, même sans eux c’est trop juste. À l’étape suivante, vous dites quelles attractions comptent le plus.",
+      "leversFits": "Le plan rentre comme ça. Rien à changer du côté des blocs.",
       "leverDrop": "Sans {label}",
       "leverShorten": "Réduire {label} à {minutes} min",
       "leverDropAll": "Sans les blocs libres",
@@ -2215,7 +2216,8 @@
         "hint": "Place les {count} grandes attractions dans la journée, selon leurs courbes horaires.",
         "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture.",
         "conflict": "{fits} sur {total} rentrent. Décochez ce dont vous pouvez vous passer, ou remontez ce que vous voulez absolument faire.",
-        "none": "Aucune attraction phare ne manque pour cette journée."
+        "none": "Aucune attraction phare ne manque pour cette journée.",
+        "resolved": "{count, plural, one {L’attraction rentre ainsi dans la journée} other {Les # attractions rentrent ainsi dans la journée}}. Vous pouvez encore modifier votre sélection."
       },
       "facts": {
         "title": "Ce que nous savons de cette journée",

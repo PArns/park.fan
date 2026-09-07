@@ -4,6 +4,31 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Planer: der Fit-Assistent nimmt sich nicht selbst vom Schirm
+
+Direkt nach dem Assistenten gemeldet: „wenn ich anfange, Bahnen abzuwählen, verschwindet die Liste
+komplett". Im Wizard stimmte das wörtlich — der ganze Block hing an `headlinerConflict`, also hat
+die Bahn, die den Tag passend gemacht hat, den Schirm mitgenommen, auf dem man ihn passend gemacht
+hat. Im Dialog war es leiser und dieselbe Sache: die „fällt weg"-Markierungen gingen aus, in der
+Kopfzeile änderte sich eine Zahl, und dass das Problem weg ist, stand nirgends.
+
+Beide tragen jetzt einen **Zustand**: Krone-Rot mit Warnzeichen, solange etwas wegfällt, und
+`status-operating`-Grün mit Haken plus „So passen alle 10 Bahnen in den Tag", sobald nichts mehr
+wegfällt. Der Block im Wizard erscheint, solange der Tag zu kurz ist, und **bleibt**, sobald
+irgendetwas beantwortet ist (`fitChoiceTouched`, abgeleitet statt gemerkt, damit ein Park- oder
+Tageswechsel ihn nicht stehen lässt). Und Schritt eins bekommt einen dritten Satz: „an den Blöcken
+liegt es nicht" ist richtig, solange der Tag zu kurz ist, und falsch in dem Moment, in dem jemand
+ihn passend gemacht hat — genau dann wird er gelesen.
+
+Neu in `pnpm check:planner`: abwählen bis es passt, und danach muss die Meldung grün sein und die
+Liste vollständig dastehen (10 von 10). Dazu eine Quellprüfung, dass der Block des Wizards nicht
+wieder allein am Konflikt hängt. Eine ältere Prüfung war nebenbei eine Prüfung über das Wetter:
+welche Stellschraube oben steht, hängt an der Prognose des Tages, also ist der Block je nach Tag
+gestrichen **oder** auf 30 Minuten gekürzt — beides ist die Stellschraube bei der Arbeit, gemessen
+wird jetzt die Dauer.
+
+---
+
 ## Unreleased – Planer: ein Tag, der nicht aufgeht, öffnet einen eigenen Assistenten
 
 Gemeldet mit Screenshot: „Alle Headliner einplanen" am Samstag im Phantasialand, Taron steht um

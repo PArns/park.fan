@@ -2096,6 +2096,7 @@
       "queueing": "{duration} wachten",
       "leversBody": "Dit maakt ruimte zonder dat je een attractie schrapt. Tik aan wat je zou veranderen.",
       "leversNone": "Aan de blokken ligt het niet, ook zonder blijft het te krap. In de volgende stap kies je welke attracties het belangrijkst zijn.",
+      "leversFits": "Zo past het plan. Aan de blokken hoef je niets meer te veranderen.",
       "leverDrop": "Zonder {label}",
       "leverShorten": "{label} inkorten tot {minutes} min.",
       "leverDropAll": "Zonder de vrije blokken",
@@ -2215,7 +2216,8 @@
         "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves.",
         "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}.",
         "conflict": "Er passen {fits} van {total}. Vink uit wat kan vervallen, of zet bovenaan wat je zeker wilt rijden.",
-        "none": "Voor deze dag ontbreekt geen grote attractie meer."
+        "none": "Voor deze dag ontbreekt geen grote attractie meer.",
+        "resolved": "{count, plural, one {Zo past de attractie in de dag} other {Zo passen alle # attracties in de dag}}. Je kunt je keuze verder aanpassen."
       },
       "facts": {
         "title": "Wat we over deze dag weten",

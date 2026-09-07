@@ -875,6 +875,23 @@ queueing, and what is being left out **by name** — because the press is about 
 take rides out of somebody's day and „zwei passen nicht" is the sentence this
 whole dialog exists to replace.
 
+**And solving it may not take the screen away.** Reported after the first
+version shipped: start unticking rides and the list disappears. In the wizard it
+literally did — the whole band hung on `headlinerConflict`, so the ride that made
+the day fit also removed the thing that had just been used to fit it, with no way
+back. In the dialog it was quieter and the same shape: the „fällt weg" marks went
+out, the count line changed a number, and nothing said the problem was over. So
+the band at the top of the dialog and the block in the wizard both carry a
+**state** now — the crowd tint with a warning mark while something is left out,
+`status-operating` with a check and „So passen alle 10 Bahnen in den Tag" once
+nothing is. The wizard's block appears while the day is short and stays for as
+long as anything has been answered (`fitChoiceTouched`, derived rather than
+latched, so a change of park or date cannot leave it standing); a day that holds
+everything and has been left alone still gets a toggle and no form. Step one gets
+a third sentence for the same reason: „an den Blöcken liegt es nicht" is true
+while the day is short and a lie the moment somebody has already made it fit, and
+coming back to that screen after unticking a ride is exactly when it was read.
+
 Two rules underneath it. **A ticked wish is re-planned rather than parked**: the
 assistant hands every ride it has a payload row for to the engine as something
 being ADDED, whatever it is today, which is what turns "which of them falls out"

@@ -2096,6 +2096,7 @@
       "queueing": "{duration} queuing",
       "leversBody": "These make room without dropping a ride. Tap what you would change.",
       "leversNone": "The blocks are not the problem, it stays too tight without them. The next step is where you say which rides matter most.",
+      "leversFits": "The plan fits like this. Nothing about the blocks needs changing.",
       "leverDrop": "Without {label}",
       "leverShorten": "Cut {label} to {minutes} min",
       "leverDropAll": "Without the free blocks",
@@ -2215,7 +2216,8 @@
         "hint": "Puts the {count} big rides into the day, ordered by their hourly curves.",
         "hintTight": "There is room for {fits} of {total} before the park closes.",
         "conflict": "{fits} of {total} fit. Untick what you can do without, or move up what you really want to ride.",
-        "none": "No big ride is missing from this day."
+        "none": "No big ride is missing from this day.",
+        "resolved": "{count, plural, one {The ride fits into the day like this} other {All # rides fit into the day like this}}. You can keep changing your selection."
       },
       "facts": {
         "title": "What we know about the day",

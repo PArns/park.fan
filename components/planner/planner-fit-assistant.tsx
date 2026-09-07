@@ -112,6 +112,15 @@ export function PlannerFitAssistant({
 
   const wanted = input.wishes.filter((wish) => !choice.dropped.has(wish.key)).length;
   const fits = outcome.fitted.length;
+  /**
+   * Everything still ticked has a slot before closing.
+   *
+   * Read in three places and named once, because it is the dialog's only real
+   * state: the band at the top, the first step's sentence and the mark beside
+   * it all have to agree, and a visitor who has just unticked their way out of
+   * the problem is the one who notices when they do not.
+   */
+  const solved = fits >= wanted;
   const missed = useMemo(() => new Set(outcome.missed), [outcome]);
   const pinned = useMemo(() => new Set(choice.priority), [choice]);
   const byKey = useMemo(() => new Map(input.wishes.map((wish) => [wish.key, wish])), [input]);
@@ -161,15 +170,26 @@ export function PlannerFitAssistant({
             something to experiment with rather than a form to fill in. */}
         <p
           data-planner-fit-count=""
+          data-planner-fit-solved={solved ? '' : undefined}
           className={cn(
             'border-border/60 flex shrink-0 flex-wrap items-baseline gap-x-3 gap-y-0.5 border-b px-5 py-2 text-xs sm:px-6',
-            fits >= wanted ? 'text-status-operating' : 'text-crowd-high'
+            solved ? 'bg-status-operating/10 text-status-operating' : 'text-crowd-high'
           )}
         >
-          <span className="font-medium">
-            {fits >= wanted
-              ? t('fit.allFit', { count: fits })
-              : t('fit.someFit', { fits, total: wanted })}
+          <span className="flex items-center gap-1.5 font-medium">
+            {/* The mark is what carries the state at a glance, and the reason
+                for it is the report this change came out of: a visitor who
+                unticks their way to a day that fits sees the „fällt weg" marks
+                disappear and nothing arrive in their place, so the screen looks
+                like it lost something rather than like the problem is solved.
+                Colour alone would not do it either — it is the same sentence
+                either way, in a hue somebody may not be able to tell apart. */}
+            {solved ? (
+              <Check className="size-3.5 shrink-0" aria-hidden="true" />
+            ) : (
+              <AlertTriangle className="size-3.5 shrink-0" aria-hidden="true" />
+            )}
+            {solved ? t('fit.allFit', { count: fits }) : t('fit.someFit', { fits, total: wanted })}
           </span>
           {fits > 0 && (
             <span className="text-muted-foreground">
@@ -185,8 +205,22 @@ export function PlannerFitAssistant({
           <div key={step} className={cn('motion-safe:animate-in', STEP_MOTION[String(forward)])}>
             {step === 'levers' && (
               <div className="flex flex-col gap-3">
-                <p className="text-muted-foreground text-xs leading-relaxed">
-                  {levers.length > 0 ? t('fit.leversBody') : t('fit.leversNone')}
+                {/* Three states, not two. The step used to say „an den Blöcken
+                    liegt es nicht" whenever no lever was on offer, which is
+                    true while the day is short and a lie the moment somebody
+                    has already made it fit — and coming back to this screen
+                    after unticking a ride is exactly when it was read. */}
+                <p
+                  className={cn(
+                    'text-xs leading-relaxed',
+                    solved ? 'text-status-operating' : 'text-muted-foreground'
+                  )}
+                >
+                  {solved
+                    ? t('fit.leversFits')
+                    : levers.length > 0
+                      ? t('fit.leversBody')
+                      : t('fit.leversNone')}
                 </p>
                 <PlannerFitLevers levers={levers} applied={applied} onToggle={pull} />
               </div>
