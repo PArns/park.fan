@@ -147,6 +147,22 @@ console.log(
     `(${last.rideRiders ?? 0} rides + ${last.bought} purchases over ${visits} arrivals)`
 );
 console.log(`refused: ${JSON.stringify(last.refused)}`);
+
+// Per machine, because "the park did 275 rides" and "one machine did 271 of them" are different
+// parks and the total cannot tell them apart.
+const rideViews = handle('rides')?.list?.() ?? [];
+if (rideViews.length) {
+  console.log('\nrides');
+  for (const v of rideViews) {
+    const e = Object.values(world.entities).find((x) => x.id === v.id);
+    const at = e ? `(${Math.round(e.position[0])}, ${Math.round(e.position[2])})` : '';
+    console.log(
+      `  ${String(v.key).padEnd(26)} ${String(v.ridersToday).padStart(5)} riders · ` +
+        `queue ${String(v.queueLength).padStart(3)} · util ${(v.utilisation * 100).toFixed(0).padStart(3)}% · ` +
+        `rated ${String(Math.round(v.ratedThroughput)).padStart(4)}/h ${at}`
+    );
+  }
+}
 console.log(`stuck ${last.stuck} · lost ${last.lost}`);
 if (events.length) console.log(`\nsim errors: ${JSON.stringify(events.slice(0, 5))}`);
 

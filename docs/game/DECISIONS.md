@@ -154,3 +154,38 @@ do is settle D-006: a guest still crosses the park in a park hour, ride queues s
 digits, and the 275 riders are an eighth of one machine's rated hour. _Reversed by:_ a decision to
 change the compression itself, which would make `WALK_TOLERANCE` a number to re-sweep rather than a
 number to delete.
+
+**D-026 — Boredom is not something a gift shop can fix, and the walk to the fairground is the whole visit.**
+Two findings from the same measurement as D-025, both about why a park with four machines rated for
+2,136 riders an hour delivers 291 a day.
+
+The small one is a modelling error and is fixed here. `souvenirs` answered the `happiness` need —
+the need whose own name is "Boredom" and whose pack-declared thought is "I want to ride something."
+So a bored guest thirty metres from a gift shop and a hundred and ninety from the nearest machine
+cured it by buying a keyring. It has its own `souvenir` need now, declared in `core-classic` beside
+the others, which is a pack edit and no code change. Worth being precise about what that bought:
+**275 → 291 rides**, six per cent. It is right and it is not the lever.
+
+The lever is the walk, and it is D-006 rather than anything in `guests`. The demo park's four flat
+rides stand at (83–108, −58…−33) and the crowd is on a main street running north from the gate at
+(0, 180): about **190 m**, which at 1.25 m per park minute is a **152-minute walk** against a median
+stay of 330 park minutes. One round trip to the fairground is the visit. Measured rather than
+argued — tripling the archetype pace (6.0 m per park minute, the same on-screen speed a ×3 slower
+clock would give) and changing nothing else:
+
+|                          | today  | pace ×3 |
+| ------------------------ | ------ | ------- |
+| interactions per visitor | 1.25   | 4.85    |
+| riders in a day          | 291    | 3,218   |
+| busiest machine          | 101    | 980     |
+| ride utilisation         | 5–14 % | 12–29 % |
+
+So the paired change is real and its size is now known: `MINUTES_PER_TICK_AT_SPEED_1` from 1/20 to
+1/60 with archetype speeds ×3, which leaves a guest at 2.0 m/s on screen exactly as today and makes
+a park day 42 real minutes at speed 1 instead of 14. It is **not** landed here, for the same reason
+D-023 is not: it moves every number written in park minutes — `--step` counts in the harness docs,
+`game-soak.mjs`'s hard-coded `speed / 20`, this script's own, ride cycle times, shop service — and
+three builders are screenshotting against the current constants as this is written. It wants its own
+change, with the harness arithmetic read off the constant instead of duplicating it, and the affected
+frames re-shot in the same commit. _Reversed by:_ a decision that the park should be smaller instead,
+which is the other honest answer and is a demo-park change rather than a clock one.
