@@ -79,7 +79,7 @@ export interface RigPartSpec {
   parent?: string;
   shape: ShapeName;
   /** Shape parameters. Every shape documents its own; unknown keys are ignored. */
-  params?: Record<string, number | string | boolean>;
+  params?: Record<string, number | string | boolean | undefined>;
   /** Local offset from the parent, metres. */
   offset?: [number, number, number];
   /** How many copies, spread around a ring of `radius`. */
@@ -247,12 +247,7 @@ export interface RideOffer {
 }
 
 export type RefusalReason =
-  | 'closed'
-  | 'broken'
-  | 'too-short'
-  | 'queue-full'
-  | 'no-money'
-  | 'unknown-ride';
+  'closed' | 'broken' | 'too-short' | 'queue-full' | 'no-money' | 'unknown-ride';
 
 export interface RideJoin {
   ticket: number;
@@ -317,6 +312,8 @@ export interface RidesStats {
   breakdownsToday: number;
   /** Riders this module took from the guest bridge rather than through `join()`. */
   walkUps: number;
+  /** Synthetic riders the `rides:demo` flag produced. Non-zero means a showcase, never a park. */
+  demoRiders: number;
   tickMs: number;
 }
 

@@ -68,7 +68,8 @@ export type ShapeParams = Record<string, number | string | boolean | undefined>;
 // ── sRGB → linear, because a vertex colour multiplies a PBR albedo in linear space ──────────
 export function hexToLinear(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
-  const n = h.length === 3 ? h.split('').map((c) => c + c) : [h.slice(0, 2), h.slice(2, 4), h.slice(4, 6)];
+  const n =
+    h.length === 3 ? h.split('').map((c) => c + c) : [h.slice(0, 2), h.slice(2, 4), h.slice(4, 6)];
   return n.map((pair) => {
     const s = parseInt(pair, 16) / 255;
     return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
@@ -173,7 +174,15 @@ function tri(b: Builder, finish: Finish, color: P3, a: P3, bb: P3, c: P3): void 
 }
 
 /** An axis-aligned box, `c` its centre. */
-function box(b: Builder, finish: Finish, color: P3, c: P3, sx: number, sy: number, sz: number): void {
+function box(
+  b: Builder,
+  finish: Finish,
+  color: P3,
+  c: P3,
+  sx: number,
+  sy: number,
+  sz: number
+): void {
   const [x, y, z] = c;
   const hx = sx / 2;
   const hy = sy / 2;
@@ -243,17 +252,35 @@ function prism(
     const p2: P3 = [cx + Math.cos(a1) * r1, y1, cz + Math.sin(a1) * r1];
     const p3: P3 = [cx + Math.cos(a0) * r1, y1, cz + Math.sin(a0) * r1];
     quad(b, finish, c, p0, p1, p2, p3);
+    /**
+     * The caps, wound so their normals point OUT of the solid.
+     *
+     * They were the other way round, and it was not subtle: `quad`/`tri` derive the normal from the
+     * winding, so a top cap wound `centre → a0 → a1` gives `(0, sin(a0 − a1), 0)`, i.e. a normal
+     * pointing DOWN out of an upward-facing face. Every drum in the module — every apron, every
+     * carousel platform, every teacup floor — faced away from the sun and rendered as a **black
+     * disc**, which is what `.game-render/rides-3/1200-close.png` shows under all six machines. It
+     * survived three rounds of looking because a black slab on the ground reads as a shadow.
+     */
     if (cap === 'both' || cap === 'top') {
-      tri(b, finish, color, [cx, y1, cz], p3, p2);
+      tri(b, finish, color, [cx, y1, cz], p2, p3);
     }
     if (cap === 'both') {
-      tri(b, finish, color, [cx, y0, cz], p1, p0);
+      tri(b, finish, color, [cx, y0, cz], p0, p1);
     }
   }
 }
 
 /** A ring of square section, radius `r`, tube `t`, in the XZ plane at height `y`. */
-function ring(b: Builder, finish: Finish, color: P3, r: number, t: number, y: number, segments: number): void {
+function ring(
+  b: Builder,
+  finish: Finish,
+  color: P3,
+  r: number,
+  t: number,
+  y: number,
+  segments: number
+): void {
   for (let i = 0; i < segments; i++) {
     const a0 = (i / segments) * Math.PI * 2;
     const a1 = ((i + 1) / segments) * Math.PI * 2;
@@ -312,7 +339,10 @@ function finishOf(p: ShapeParams, fallback: Finish): Finish {
  *
  * `radius`, `radiusTop`, `height`, `sides`, `panels` (alternate the colour face by face, which is
  * how a carousel's centre drum and a teacup are painted), `rim` (a lip proud of the top edge),
- * `skirt` (a fascia hanging below, over the running gear), `hollow` (no top cap, for a cup).
+ * `skirt` (a fascia hanging below, over the running gear), `hollow` (an open vessel: a floor, an
+ * outer wall and an INNER wall wound the other way, because a cup with no top cap and backface
+ * culling on is a cup you can see straight through — twelve of them came back invisible in the
+ * first teacup frame).
  */
 function drum(p: ShapeParams): ShapeMesh {
   const b = new Builder();
@@ -323,13 +353,54 @@ function drum(p: ShapeParams): ShapeMesh {
   const base = col(p, 'color', '#c8552b');
   const accent = col(p, 'accent', '#f2e2c0');
   const finish = finishOf(p, 'gloss');
-  prism(b, finish, base, 0, 0, 0, h, r, rTop, sides, flag(p, 'hollow', false) ? 'none' : 'both',
-    flag(p, 'panels', false) ? accent : undefined);
+  const hollow = flag(p, 'hollow', false);
+  prism(
+    b,
+    finish,
+    base,
+    0,
+    0,
+    0,
+    h,
+    r,
+    rTop,
+    sides,
+    hollow ? 'none' : 'both',
+    flag(p, 'panels', false) ? accent : undefined
+  );
+  if (hollow) {
+    /**
+     * An open vessel needs an inside.
+     *
+     * A drum with no top cap and backface culling on is a drum you see straight through: twelve
+     * teacups came back invisible in the first frame that had them in it. So a hollow drum gets an
+     * inner wall wound the other way, a floor to sit on, and a rim on the wall itself so the wall
+     * does not read as paper.
+     */
+    const wall = num(p, 'wall', 0.1);
+    const floor = num(p, 'floor', 0.16);
+    prism(b, finish, accent, 0, 0, h, floor, rTop - wall, r - wall, sides, 'none');
+    prism(b, finish, accent, 0, 0, floor, floor + 0.05, r - wall, 0, sides, 'top');
+    ring(b, finish, base, rTop - wall / 2, wall, h, sides);
+  }
   if (flag(p, 'rim', false)) {
     ring(b, 'metal', col(p, 'trim', '#c9a227'), rTop + 0.04, 0.09, h - 0.02, sides);
   }
   const skirt = num(p, 'skirt', 0);
-  if (skirt > 0) prism(b, 'matte', col(p, 'trim', '#3a4652'), 0, 0, -skirt, 0, r * 0.97, r * 0.97, sides, 'none');
+  if (skirt > 0)
+    prism(
+      b,
+      'matte',
+      col(p, 'trim', '#3a4652'),
+      0,
+      0,
+      -skirt,
+      0,
+      r * 0.97,
+      r * 0.97,
+      sides,
+      'none'
+    );
   return b.done();
 }
 
@@ -358,7 +429,8 @@ function mast(p: ShapeParams): ShapeMesh {
     const y = (i / (bands + 1)) * h;
     ring(b, 'metal', col(p, 'trim', '#c9a227'), r * 0.98, 0.11, y, sides);
   }
-  if (flag(p, 'finial', false)) ball(b, 'metal', col(p, 'trim', '#c9a227'), [0, h + rt * 0.9, 0], rt * 1.5);
+  if (flag(p, 'finial', false))
+    ball(b, 'metal', col(p, 'trim', '#c9a227'), [0, h + rt * 0.9, 0], rt * 1.5);
   return b.done();
 }
 
@@ -366,9 +438,9 @@ function mast(p: ShapeParams): ShapeMesh {
  * `frame` — the A-frame or portal that carries a hub.
  *
  * `span` (foot to foot), `height`, `depth` (thickness), `axis` ('x' or 'z': which way the A opens),
- * `braces` (cross members), `pad` (a concrete footing under each foot), `legs` (2 = an A, 4 = a
- * pyramid). A ferris wheel's two A-frames and a top spin's two towers are the same shape with
- * different numbers.
+ * `spanZ` (the splay across that axis, for a four-legged pyramid), `braces` (cross members), `pad`
+ * (a concrete footing under each foot), `legs` (2 = an A, 4 = a pyramid). A ferris wheel's tower
+ * and a top spin's two columns are the same shape with different numbers.
  */
 function frame(p: ShapeParams): ShapeMesh {
   const b = new Builder();
@@ -376,6 +448,8 @@ function frame(p: ShapeParams): ShapeMesh {
   const h = num(p, 'height', 12);
   const t = num(p, 'depth', 0.4);
   const along = p.axis === 'z' ? 2 : 0;
+  const across = along === 0 ? 2 : 0;
+  const spanAcross = num(p, 'spanZ', span / 2.6);
   const braces = Math.max(0, Math.round(num(p, 'braces', 3)));
   const c = col(p, 'color', '#b8443a');
   const legs = Math.max(2, Math.round(num(p, 'legs', 2)));
@@ -385,10 +459,11 @@ function frame(p: ShapeParams): ShapeMesh {
     const other = legs > 2 ? (i < 2 ? -1 : 1) : 0;
     const foot: P3 = [0, 0, 0];
     foot[along] = (s * span) / 2;
-    foot[along === 0 ? 2 : 0] = (other * span) / 2.6;
+    foot[across] = (other * spanAcross) / 2;
     feet.push(foot);
     beam(b, 'gloss', c, foot, [0, h, 0], t, t);
-    if (flag(p, 'pad', true)) box(b, 'matte', col(p, 'pad', '#9aa0a6'), [foot[0], 0.09, foot[2]], t * 3, 0.18, t * 3);
+    if (flag(p, 'pad', true))
+      box(b, 'matte', col(p, 'pad', '#9aa0a6'), [foot[0], 0.09, foot[2]], t * 3, 0.18, t * 3);
   }
   for (let i = 1; i <= braces; i++) {
     const f = i / (braces + 1);
@@ -433,19 +508,41 @@ function rimShape(p: ShapeParams): ShapeMesh {
     yz ? [off, Math.sin(a) * r, Math.cos(a) * r] : [Math.cos(a) * r, Math.sin(a) * r, off];
   for (const off of [-width / 2, width / 2]) {
     for (let i = 0; i < segments; i++) {
-      beam(b, 'gloss', c, at((i / segments) * Math.PI * 2, off), at(((i + 1) / segments) * Math.PI * 2, off), tube);
+      beam(
+        b,
+        'gloss',
+        c,
+        at((i / segments) * Math.PI * 2, off),
+        at(((i + 1) / segments) * Math.PI * 2, off),
+        tube
+      );
     }
   }
   const hub = num(p, 'hub', 0.9);
   for (let i = 0; i < spokes; i++) {
     const a = (i / spokes) * Math.PI * 2;
-    const inner: P3 = yz ? [0, Math.sin(a) * hub, Math.cos(a) * hub] : [Math.cos(a) * hub, Math.sin(a) * hub, 0];
-    for (const off of [-width / 2, width / 2]) beam(b, 'metal', spokeColor, inner, at(a, off), tube * 0.42);
+    const inner: P3 = yz
+      ? [0, Math.sin(a) * hub, Math.cos(a) * hub]
+      : [Math.cos(a) * hub, Math.sin(a) * hub, 0];
+    for (const off of [-width / 2, width / 2])
+      beam(b, 'metal', spokeColor, inner, at(a, off), tube * 0.42);
     // The cross bracing between the two rims: what stops a real wheel folding sideways.
     const a2 = ((i + 1) / spokes) * Math.PI * 2;
     beam(b, 'metal', spokeColor, at(a, -width / 2), at(a2, width / 2), tube * 0.3);
   }
-  prism(b, 'metal', spokeColor, 0, 0, -width * 0.6, width * 0.6, hub * 0.55, hub * 0.55, 12, 'both');
+  prism(
+    b,
+    'metal',
+    spokeColor,
+    0,
+    0,
+    -width * 0.6,
+    width * 0.6,
+    hub * 0.55,
+    hub * 0.55,
+    12,
+    'both'
+  );
   return b.done();
 }
 
@@ -475,24 +572,54 @@ function canopy(p: ShapeParams): ShapeMesh {
     quad(b, 'fabric', cc, outer0, outer1, inner1, inner0);
     quad(b, 'fabric', cc, inner0, inner1, outer1, outer0);
     if (flag(p, 'sweeps', true)) {
-      beam(b, 'metal', trim, [Math.cos(a0) * hubR, rise - 0.06, Math.sin(a0) * hubR], [Math.cos(a0) * r, -0.05, Math.sin(a0) * r], 0.075);
+      beam(
+        b,
+        'metal',
+        trim,
+        [Math.cos(a0) * hubR, rise - 0.06, Math.sin(a0) * hubR],
+        [Math.cos(a0) * r, -0.05, Math.sin(a0) * r],
+        0.075
+      );
     }
   }
   const valance = num(p, 'valance', 0.55);
   if (valance > 0) {
+    /**
+     * A scalloped valance, not a string of pennants.
+     *
+     * The first version drew one downward triangle per segment and the frame came back as bunting
+     * over a carousel, which is a different fairground object. A real valance is a continuous band
+     * whose lower edge is a row of rounded lobes, so each lobe is subdivided across and its bottom
+     * follows a half sine: deepest in the middle of the lobe, pinched to a third at the notch.
+     */
     const scallops = sides * 2;
+    const across = 4;
+    const drop = (t: number) => -valance * (0.3 + 0.7 * Math.sin(t * Math.PI));
     for (let i = 0; i < scallops; i++) {
-      const a0 = (i / scallops) * Math.PI * 2;
-      const a1 = ((i + 1) / scallops) * Math.PI * 2;
-      const am = (a0 + a1) / 2;
-      const top0: P3 = [Math.cos(a0) * r, 0, Math.sin(a0) * r];
-      const top1: P3 = [Math.cos(a1) * r, 0, Math.sin(a1) * r];
-      const low: P3 = [Math.cos(am) * r, -valance, Math.sin(am) * r];
       const cc = i % 2 === 0 ? c : accent;
-      tri(b, 'fabric', cc, top0, top1, low);
-      tri(b, 'fabric', cc, low, top1, top0);
-      // A bulb in every notch between two scallops — the rounding-board lights.
-      if (flag(p, 'bulbs', true)) ball(b, 'lamp', col(p, 'bulb', '#ffe6b0'), [Math.cos(a1) * (r + 0.06), -0.12, Math.sin(a1) * (r + 0.06)], 0.075, 4);
+      for (let k = 0; k < across; k++) {
+        const t0 = k / across;
+        const t1 = (k + 1) / across;
+        const a0 = ((i + t0) / scallops) * Math.PI * 2;
+        const a1 = ((i + t1) / scallops) * Math.PI * 2;
+        const top0: P3 = [Math.cos(a0) * r, 0, Math.sin(a0) * r];
+        const top1: P3 = [Math.cos(a1) * r, 0, Math.sin(a1) * r];
+        const low1: P3 = [Math.cos(a1) * r, drop(t1), Math.sin(a1) * r];
+        const low0: P3 = [Math.cos(a0) * r, drop(t0), Math.sin(a0) * r];
+        quad(b, 'fabric', cc, top0, top1, low1, low0);
+        quad(b, 'fabric', cc, low0, low1, top1, top0);
+      }
+      // A bulb in every notch between two lobes — the rounding-board lights.
+      const an = (i / scallops) * Math.PI * 2;
+      if (flag(p, 'bulbs', true))
+        ball(
+          b,
+          'lamp',
+          col(p, 'bulb', '#ffe6b0'),
+          [Math.cos(an) * (r + 0.05), -0.16, Math.sin(an) * (r + 0.05)],
+          0.08,
+          4
+        );
     }
   }
   ring(b, 'metal', trim, r, 0.1, 0.02, sides * 2);
@@ -506,35 +633,47 @@ function canopy(p: ShapeParams): ShapeMesh {
 /**
  * `horse` — a fairground horse on its pole. Origin at the platform, pole rising through the body.
  *
- * `scale`, `poleHeight`, `body`, `mane`, `saddle`, `pole` colours. Blocky by design at this size —
- * a carved carousel horse is a 3,000-triangle object and there are sixteen of them.
+ * `scale`, `poleHeight`, `color` (body), `accent` (mane and tail), `trim` (saddle), `pole` (brass).
+ * Blocky by design: a carved carousel horse is a 3,000-triangle object and there are sixteen of
+ * them on one machine. What it spends its budget on is the SILHOUETTE — an angled neck, a head
+ * reaching forward, a tail, and legs in two segments mid-stride — because the first version spent
+ * it on a level barrel with four straight posts under it, and sixteen of those read in the frame
+ * as sixteen white slabs.
  */
 function horse(p: ShapeParams): ShapeMesh {
   const b = new Builder();
   const s = num(p, 'scale', 1);
   const poleH = num(p, 'poleHeight', 3.1);
-  const body = col(p, 'color', '#f2ede1');
+  const body = col(p, 'color', '#f4efe3');
   const mane = col(p, 'accent', '#3a2b22');
   const saddle = col(p, 'trim', '#a8322c');
   const brass = col(p, 'pole', '#c9a227');
-  const y = 1.05 * s;
-  box(b, 'matte', body, [0, y, 0], 1.62 * s, 0.72 * s, 0.52 * s);
-  box(b, 'matte', body, [0.62 * s, y + 0.42 * s, 0], 0.42 * s, 0.62 * s, 0.4 * s);
-  box(b, 'matte', body, [0.95 * s, y + 0.72 * s, 0], 0.66 * s, 0.34 * s, 0.34 * s);
-  box(b, 'matte', mane, [0.5 * s, y + 0.72 * s, 0], 0.5 * s, 0.2 * s, 0.42 * s);
-  box(b, 'matte', mane, [-0.84 * s, y + 0.24 * s, 0], 0.2 * s, 0.66 * s, 0.22 * s);
-  for (const dx of [0.48, -0.48]) {
-    for (const dz of [0.19, -0.19]) {
-      const bent = dx > 0 ? 0.18 : -0.14;
-      beam(b, 'matte', body, [dx * s, y - 0.3 * s, dz * s], [(dx + bent) * s, 0.06 * s, dz * s], 0.19 * s);
-    }
+  const P = (x: number, y: number, z = 0): P3 => [x * s, y * s, z * s];
+
+  // Barrel and quarters as two boxes rather than one: a horse is deeper at the shoulder than at
+  // the hip, and a single box reads as a bench.
+  box(b, 'matte', body, P(0.06, 1.14), 1.18 * s, 0.66 * s, 0.5 * s);
+  box(b, 'matte', body, P(-0.62, 1.12), 0.5 * s, 0.6 * s, 0.46 * s);
+  // Neck and head, angled up and forward — the line that makes it a horse at fifteen metres.
+  beam(b, 'matte', body, P(0.5, 1.3), P(0.88, 1.86), 0.36 * s, 0.3 * s);
+  beam(b, 'matte', body, P(0.86, 1.9), P(1.2, 1.72), 0.26 * s, 0.28 * s);
+  box(b, 'matte', mane, P(1.19, 1.71), 0.12 * s, 0.2 * s, 0.2 * s);
+  beam(b, 'matte', mane, P(0.52, 1.42), P(0.92, 1.95), 0.14 * s, 0.22 * s);
+  beam(b, 'matte', mane, P(-0.82, 1.3), P(-1.06, 0.78), 0.2 * s, 0.16 * s);
+  // Legs in two segments each, front pair reaching and back pair driving: a jumper is carved
+  // mid-stride and four straight posts is what a rocking horse has.
+  for (const dz of [0.2, -0.2]) {
+    beam(b, 'matte', body, P(0.42, 0.94, dz), P(0.78, 0.5, dz), 0.17 * s);
+    beam(b, 'matte', body, P(0.76, 0.52, dz), P(0.82, 0.06, dz), 0.13 * s);
+    beam(b, 'matte', body, P(-0.5, 0.92, dz), P(-0.78, 0.52, dz), 0.18 * s);
+    beam(b, 'matte', body, P(-0.76, 0.54, dz), P(-0.62, 0.06, dz), 0.13 * s);
   }
-  box(b, 'gloss', saddle, [-0.04 * s, y + 0.4 * s, 0], 0.62 * s, 0.16 * s, 0.58 * s);
-  box(b, 'gloss', saddle, [-0.3 * s, y + 0.56 * s, 0], 0.12 * s, 0.24 * s, 0.5 * s);
+  box(b, 'gloss', brass, P(-0.04, 1.42), 0.72 * s, 0.06 * s, 0.62 * s);
+  box(b, 'gloss', saddle, P(-0.04, 1.5), 0.56 * s, 0.14 * s, 0.56 * s);
+  box(b, 'gloss', saddle, P(-0.3, 1.62), 0.12 * s, 0.24 * s, 0.5 * s);
   if (flag(p, 'pole', true)) {
-    prism(b, 'metal', brass, 0, 0, 0, poleH, 0.05 * s, 0.05 * s, 8, 'both');
-    // A spiral is four short bands on a fluted pole; at 0.05 m radius that is what reads.
-    for (let i = 1; i <= 4; i++) ring(b, 'metal', brass, 0.062 * s, 0.035, (i / 5) * poleH, 8);
+    prism(b, 'metal', brass, 0, 0, 0, poleH, 0.048 * s, 0.048 * s, 8, 'both');
+    for (let i = 1; i <= 2; i++) ring(b, 'metal', brass, 0.062 * s, 0.04, (i / 3) * poleH, 6);
   }
   return b.done();
 }
@@ -564,16 +703,38 @@ function gondola(p: ShapeParams): ShapeMesh {
   }
   box(b, 'gloss', shell, [-w / 2 + 0.06, y0 + wallH / 2, 0], 0.12, wallH, d);
   box(b, 'gloss', shell, [w / 2 - 0.06, y0 + wallH / 2, 0], 0.12, wallH, d);
-  if (!flag(p, 'openFront', false)) box(b, 'gloss', shell, [0, y0 + wallH / 2, d / 2 - 0.06], w, wallH, 0.12);
+  if (!flag(p, 'openFront', false))
+    box(b, 'gloss', shell, [0, y0 + wallH / 2, d / 2 - 0.06], w, wallH, 0.12);
   for (let i = 0; i < seats; i++) {
     const x = (i - (seats - 1) / 2) * (w / seats);
     box(b, 'matte', seat, [x, y0 + 0.46, 0], (w / seats) * 0.82, 0.14, d * 0.55);
     box(b, 'matte', seat, [x, y0 + 0.74, -d * 0.22], (w / seats) * 0.82, 0.56, 0.12);
     if (p.restraint === 'shoulder') {
-      beam(b, 'gloss', col(p, 'restraint', '#c8362f'), [x - 0.2, y0 + 1.05, -d * 0.16], [x - 0.16, y0 + 0.52, d * 0.12], 0.09);
-      beam(b, 'gloss', col(p, 'restraint', '#c8362f'), [x + 0.2, y0 + 1.05, -d * 0.16], [x + 0.16, y0 + 0.52, d * 0.12], 0.09);
+      beam(
+        b,
+        'gloss',
+        col(p, 'restraint', '#c8362f'),
+        [x - 0.2, y0 + 1.05, -d * 0.16],
+        [x - 0.16, y0 + 0.52, d * 0.12],
+        0.09
+      );
+      beam(
+        b,
+        'gloss',
+        col(p, 'restraint', '#c8362f'),
+        [x + 0.2, y0 + 1.05, -d * 0.16],
+        [x + 0.16, y0 + 0.52, d * 0.12],
+        0.09
+      );
     } else if (p.restraint === 'lap') {
-      beam(b, 'metal', trim, [x - (w / seats) * 0.4, y0 + 0.62, d * 0.16], [x + (w / seats) * 0.4, y0 + 0.62, d * 0.16], 0.07);
+      beam(
+        b,
+        'metal',
+        trim,
+        [x - (w / seats) * 0.4, y0 + 0.62, d * 0.16],
+        [x + (w / seats) * 0.4, y0 + 0.62, d * 0.16],
+        0.07
+      );
     }
   }
   if (flag(p, 'roof', false)) {
@@ -609,7 +770,8 @@ function chair(p: ShapeParams): ShapeMesh {
   box(b, 'gloss', seatC, [0, -L - 0.05, 0], w + 0.12, 0.1, 0.46);
   box(b, 'gloss', seatC, [0, -L + backH / 2 - 0.05, -0.2], w + 0.12, backH, 0.09);
   beam(b, 'metal', metal, [-w / 2 - 0.06, -L - 0.02, 0.26], [w / 2 + 0.06, -L - 0.02, 0.26], 0.05);
-  if (flag(p, 'foot', true)) beam(b, 'metal', metal, [-w / 2, -L - 0.42, 0.16], [w / 2, -L - 0.42, 0.16], 0.045);
+  if (flag(p, 'foot', true))
+    beam(b, 'metal', metal, [-w / 2, -L - 0.42, 0.16], [w / 2, -L - 0.42, 0.16], 0.045);
   return b.done();
 }
 
@@ -654,7 +816,14 @@ function lights(p: ShapeParams): ShapeMesh {
   const xy = p.plane === 'xy';
   for (let i = 0; i < count; i++) {
     const a = (i / count) * Math.PI * 2;
-    ball(b, 'lamp', c, xy ? [Math.cos(a) * r, Math.sin(a) * r, 0] : [Math.cos(a) * r, 0, Math.sin(a) * r], rad, 4);
+    ball(
+      b,
+      'lamp',
+      c,
+      xy ? [Math.cos(a) * r, Math.sin(a) * r, 0] : [Math.cos(a) * r, 0, Math.sin(a) * r],
+      rad,
+      4
+    );
   }
   return b.done();
 }
