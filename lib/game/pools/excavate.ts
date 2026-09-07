@@ -1,37 +1,74 @@
 /**
  * Digging the hole a pool sits in.
  *
- * A heightfield is a surface, not a solid, so a basin drawn under it is simply not visible: the
+ * A heightfield is a surface, not a solid, so a basin drawn under one is simply not visible: the
  * ground spans the pool's plan at grade and the camera sees turf where the water should be. The
- * basin therefore has to be excavated, and this is the whole of it.
+ * basin has to be excavated, and this is the whole of it.
+ *
+ * ## The measurement that shaped this
+ *
+ * The park's heightfield samples every **2 m** (512 m over 256 cells), and a bilinear surface
+ * between two samples 2 m apart is what the pool's own tile has to stay under. So a hard-edged pit
+ * does not work: a point just inside the wall is interpolated from samples up to 2 m away, and any
+ * one of those left at grade lifts the ground back through the tiled floor near the edge. Nor does
+ * a pit dug 3 m wider than the basin — the rim then lands outside the deck ring and the park gets
+ * a visible trench around every pool.
+ *
+ * What works is a **ramp measured against the deck**: full pit depth out to `RAMP_START` past the
+ * wall, then back to grade by the deck's outer edge, so the entire transition is under something
+ * opaque. With the default 3.2 m deck the worst interior sample sits about 0.7 m under the
+ * shallowest tile, which is the margin this is tuned to.
  *
  * Three properties make it safe to run from either thread:
  *
- *  1. **It is `min`, never `set`.** A sample is lowered to the pit floor or left alone, so running
- *     it twice, or running it on a save that already has the pit, changes nothing. That is what
- *     lets the renderer dig its own copy at boot and the same command dig the worker's afterwards
- *     without the two disagreeing.
- *  2. **The pit's rim is OUTSIDE the basin**, by `RIM_MARGIN` plus the coping, so the cliff the
- *     heightfield makes (2 m cells cannot be vertical) falls under the deck ring and is never
- *     drawn against the sky. A pool whose edge treatment has no deck at all shows it; that is in
- *     the report rather than hidden.
- *  3. **It is pure.** No Babylon, no DOM, no module state — the same function on the render copy
- *     and on the world in the worker, which is the only way the two can be guaranteed identical.
+ *  1. **It only ever lowers.** A sample takes the minimum of what it had and what the pit wants, so
+ *     running it twice, or on a save that already has the pit, changes nothing — which is what lets
+ *     the renderer dig its own copy at boot and the same command dig the worker's afterwards.
+ *  2. **It is pure**: no Babylon, no DOM, no module state. The same function on both copies of the
+ *     world is the only way the two can be guaranteed identical.
+ *  3. **It leaves the paint alone.** What the ground is made of is the terrain module's business;
+ *     the deck covers it anyway.
  *
  * The alternative was a run of circular `terrain.brush` strokes through the terrain module's public
  * API — forty commands for one lagoon, each triggering a chunk rebuild, and a rim made of the union
- * of forty circles. `docs/game/requests/pools.md` asks for a polygon excavation on that API instead;
- * this is the workaround until it lands.
+ * of forty circles. `docs/game/requests/pools.md` asks for a polygon excavation on that API; this is
+ * the workaround until it lands.
  */
 
 import type { TerrainData } from '../core/types';
-import { insidePolygon, outlinePoints, toLocal } from './geom';
+import { outlinePoints, smoothstep, toLocal } from './geom';
 import type { ResolvedPool } from './types';
 
-/** Metres the pit is dug beyond the basin wall, before the coping is added. */
-const RIM_MARGIN = 0.35;
-/** Metres of ground left under the deepest tile, so the pit floor never pokes through it. */
-const PIT_CLEARANCE = 0.55;
+/** Metres past the basin wall that stay at full pit depth. */
+const RAMP_START = 1.6;
+/** Metres of ground left under the deepest tile. */
+const PIT_CLEARANCE = 0.9;
+/** Metres the ramp stops short of the deck's outer edge, so it is certainly covered. */
+const DECK_INSET = 0.3;
+
+/** Signed distance from a closed polygon, negative inside. Local metres. */
+export function signedDistance(points: number[], x: number, z: number): number {
+  const n = points.length / 2;
+  let best = Infinity;
+  let inside = false;
+  for (let i = 0, j = n - 1; i < n; j = i++) {
+    const xi = points[i * 2];
+    const zi = points[i * 2 + 1];
+    const xj = points[j * 2];
+    const zj = points[j * 2 + 1];
+    if (zi > z !== zj > z && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) inside = !inside;
+    const ex = xj - xi;
+    const ez = zj - zi;
+    const len = ex * ex + ez * ez;
+    const t = len > 0 ? Math.max(0, Math.min(1, ((x - xi) * ex + (z - zi) * ez) / len)) : 0;
+    const dx = x - (xi + ex * t);
+    const dz = z - (zi + ez * t);
+    const d = dx * dx + dz * dz;
+    if (d < best) best = d;
+  }
+  const distance = Math.sqrt(best);
+  return inside ? -distance : distance;
+}
 
 /** Sample indices `[i0, j0, i1, j1]` of what changed, or null when nothing did. */
 export function excavatePool(
@@ -42,12 +79,13 @@ export function excavatePool(
   const w = n + 1;
   const cell = terrain.size / n;
   const half = terrain.size / 2;
-  const margin = RIM_MARGIN + (pool.edge.coping === 'none' ? 0 : pool.edge.copingWidth);
-  const grow: [number, number] = [pool.size[0] + margin * 2, pool.size[1] + margin * 2];
-  const outline = outlinePoints(pool.shape, grow);
+  const outline = outlinePoints(pool.shape, pool.size);
+  const copingOuter = pool.edge.coping === 'none' ? 0 : pool.edge.copingWidth;
+  const deckOuter = copingOuter + (pool.edge.deck === 'none' ? 0 : pool.edge.deckWidth);
+  const rampEnd = Math.max(RAMP_START + 0.4, deckOuter - DECK_INSET);
   const pitY = pool.position[1] - pool.maxDepth - PIT_CLEARANCE;
 
-  const reach = Math.max(grow[0], grow[1]) / 2 + cell;
+  const reach = Math.max(pool.size[0], pool.size[1]) / 2 + rampEnd + cell * 2;
   const i0 = Math.max(0, Math.floor((pool.position[0] - reach + half) / cell));
   const i1 = Math.min(n, Math.ceil((pool.position[0] + reach + half) / cell));
   const j0 = Math.max(0, Math.floor((pool.position[2] - reach + half) / cell));
@@ -59,10 +97,14 @@ export function excavatePool(
     for (let i = i0; i <= i1; i++) {
       const x = -half + i * cell;
       const [lx, lz] = toLocal(x, z, pool.position, pool.yaw);
-      if (!insidePolygon(outline, lx, lz)) continue;
+      const d = signedDistance(outline, lx, lz);
+      if (d > rampEnd) continue;
       const at = j * w + i;
-      if (terrain.heights[at] <= pitY) continue;
-      terrain.heights[at] = pitY;
+      const grade = terrain.heights[at];
+      const t = smoothstep(RAMP_START, rampEnd, d);
+      const target = pitY + (grade - pitY) * t;
+      if (target >= grade) continue;
+      terrain.heights[at] = target;
       touched = true;
     }
   }

@@ -44,6 +44,7 @@ import type {
 } from './types';
 import { SurfaceBuilder, WHITE } from './surfaces';
 import {
+  rimHeight,
   depthAtUnit,
   hash2,
   hexToLinear,
@@ -144,7 +145,12 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
   const hx = size[0] / 2;
   const hz = size[1] / 2;
   const depth: PoolDepthSpec = { ...shape.depth, max: maxDepth };
-  const rimY = edge.coping === 'deck-level' ? 0 : edge.copingRise;
+  // The deck falls away from the pool at 1.5 %, and it falls to GRADE rather than below it — the
+  // outer edge has to meet the untouched ground, or the terrain pokes through the paving there.
+  // So the pool's own rim stands a deck-fall above zero, which is what a real pool does too: the
+  // coping is the high point and everything drains away from it.
+  const deckFall = edge.deck === 'none' ? 0 : 0.015 * Math.max(0, edge.deckWidth);
+  const rimY = rimHeight(edge);
   const waterY = rimY - freeboard;
   const waterlineTint = hexToLinear(tile.waterline);
 
@@ -294,8 +300,8 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
         b.quad(coping, rows[r][i], rows[r][j], rows[r + 1][j], rows[r + 1][i]);
       }
     }
-    // The coping's outer face, down to the deck.
-    if (rimY > 0.005) {
+    // The coping's outer face, down to the deck's inner edge.
+    if (rimY - deckFall > 0.005) {
       const outerRing = offsetWith(outline, normals, w);
       const top: number[] = [];
       const bottom: number[] = [];
@@ -305,7 +311,7 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
         const nx = normals[i * 2];
         const nz = normals[i * 2 + 1];
         top.push(b.vertex(coping, [x, rimY - 0.02, z], [nx, 0, nz], [arc[i], 0], WHITE));
-        bottom.push(b.vertex(coping, [x, 0, z], [nx, 0, nz], [arc[i], rimY], [0.8, 0.8, 0.8]));
+        bottom.push(b.vertex(coping, [x, deckFall, z], [nx, 0, nz], [arc[i], rimY], [0.8, 0.8, 0.8]));
       }
       for (let i = 0; i < n; i++) {
         const j = (i + 1) % n;
@@ -325,7 +331,7 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
       const t = s / steps;
       const d = copingOuter + deckWidth * t;
       // 1.5 % away from the pool. Splash water leaves rather than returning.
-      const y = -0.015 * deckWidth * t;
+      const y = deckFall * (1 - t);
       const ring = offsetWith(outline, normals, d);
       const row: number[] = [];
       for (let i = 0; i < n; i++) {
@@ -346,14 +352,19 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
     const outerRing = offsetWith(outline, normals, copingOuter + deckWidth);
     const top: number[] = [];
     const bottom: number[] = [];
-    const skirtY = -0.015 * deckWidth;
+    // Deep enough to hide the excavation ramp under the deck whatever the terrain does there
+    // (see excavate.ts): the pit floor is `maxDepth + 0.9` down and the skirt clears it.
+    const skirtY = 0;
+    const skirtDrop = maxDepth + 1.6;
     for (let i = 0; i < n; i++) {
       const x = outerRing[i * 2];
       const z = outerRing[i * 2 + 1];
       const nx = normals[i * 2];
       const nz = normals[i * 2 + 1];
       top.push(b.vertex(deck, [x, skirtY, z], [nx, 0, nz], [arc[i], 0], WHITE));
-      bottom.push(b.vertex(deck, [x, skirtY - 0.4, z], [nx, 0, nz], [arc[i], 0.4], [0.5, 0.5, 0.5]));
+      bottom.push(
+        b.vertex(deck, [x, skirtY - skirtDrop, z], [nx, 0, nz], [arc[i], skirtDrop], [0.42, 0.42, 0.42])
+      );
     }
     for (let i = 0; i < n; i++) {
       const j = (i + 1) % n;
