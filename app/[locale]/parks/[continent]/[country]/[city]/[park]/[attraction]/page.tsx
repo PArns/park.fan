@@ -670,9 +670,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   ride's hero photo. Both render `bare` here because the `PANEL_CELL` around them
                   already is the box. */}
                 <PanelGrid
-                  columnCount={
-                    attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1
-                  }
+                  columnCount={attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1}
                 >
                   {attraction.ropeDrop && (
                     <div className={PANEL_CELL}>

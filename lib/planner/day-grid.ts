@@ -489,10 +489,7 @@ export function rideFloor(
     // and the clock is then allowed to raise it past that cap. At 17:58 in a
     // park shutting at 18:00 this is 18:00, which is no slot at all, which is
     // the true answer. See {@link nowFloor}.
-    softMin: Math.max(
-      Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE),
-      nowFloor(grid, clock)
-    ),
+    softMin: Math.max(Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE), nowFloor(grid, clock)),
     reason: raised > hardMin || knowsOpening ? 'ride' : 'park',
   };
 }
