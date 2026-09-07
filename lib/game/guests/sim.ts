@@ -1009,6 +1009,25 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     return d.group[leader] === d.group[slot];
   }
 
+  /**
+   * Whose wallet pays for what this guest is about to do.
+   *
+   * A party has one purse and it is the leader's. That is not a simplification of the money model,
+   * it is the money model the archetypes were written for — the `family` entry says so in its own
+   * comment ("a parent buys for the children too") and the `child` entry carries a wallet of
+   * 200-900 cents, which is pocket money and not a share of the family's day out. Every follower
+   * paid for itself until now, so a child sent to the burger van behind its parent arrived with
+   * 4.20 in hand against a 6.50 counter and was turned away: 5,824 price refusals against 1,652
+   * sales in a measured park day, and every one of them a person who walked somewhere for nothing.
+   *
+   * Only the leader ever plans, so the scorer and `shops.find()` were already reading this wallet
+   * when they decided the party was going. Paying from a different one at the counter is what made
+   * the two disagree.
+   */
+  function purseOf(slot: number): number {
+    return hasLeader(slot) ? d.leader[slot] : slot;
+  }
+
   function followLeader(slot: number): void {
     if (!hasLeader(slot)) {
       d.leader[slot] = slot;
@@ -1035,7 +1054,13 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     // happens to stop within 3.2 m of.
     const errand = errands.get(leader);
     if ((d.destKind[leader] === KIND_SHOP || d.destKind[leader] === 3) && errand) {
-      errands.set(slot, { kind: errand.kind, venue: errand.venue, ticket: 0, joined: 0, balkAt: 0 });
+      errands.set(slot, {
+        kind: errand.kind,
+        venue: errand.venue,
+        ticket: 0,
+        joined: 0,
+        balkAt: 0,
+      });
     } else {
       endErrand(slot, true);
     }
@@ -1157,7 +1182,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       const archetype = archetypes[d.archetype[slot]];
       const join = api.join(errand.venue, d.id[slot], {
         heightCm: Math.round((archetype?.height ?? 1.7) * 100),
-        cash: d.cash[slot],
+        cash: d.cash[purseOf(slot)],
       });
       if (!join) return false;
       ticket = join.ticket;
@@ -1165,7 +1190,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     } else {
       const api = shopsApi();
       if (!api) return false;
-      const join = api.join(errand.venue, d.id[slot], d.cash[slot]);
+      const join = api.join(errand.venue, d.id[slot], d.cash[purseOf(slot)]);
       if (!join) return false;
       ticket = join.ticket;
       stand = join.stand;
@@ -1252,9 +1277,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       // rider lost.
       const boarding = rides?.board(errand.venue, errand.ticket) ?? null;
       if (boarding) {
-        const paid = Math.min(d.cash[slot], Math.max(0, boarding.price));
-        d.cash[slot] -= paid;
-        d.spent[slot] += paid;
+        const purse = purseOf(slot);
+        const paid = Math.min(d.cash[purse], Math.max(0, boarding.price));
+        d.cash[purse] -= paid;
+        d.spent[purse] += paid;
         spentToday += paid;
         boughtToday += 1;
         // `rides` banked it. Crediting `finance.cash` here as well is the two-writers failure the
@@ -1281,9 +1307,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     const sale = api ? api.collect(errand.venue, errand.ticket) : null;
     if (sale) {
       const base = slot * d.needCount;
-      const paid = Math.min(d.cash[slot], Math.max(0, sale.cents));
-      d.cash[slot] -= paid;
-      d.spent[slot] += paid;
+      const purse = purseOf(slot);
+      const paid = Math.min(d.cash[purse], Math.max(0, sale.cents));
+      d.cash[purse] -= paid;
+      d.spent[purse] += paid;
       spentToday += paid;
       boughtToday += 1;
       // `shops` banked it in `completeSale`. Crediting `finance.cash` here as well is the "two
@@ -1373,9 +1400,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     const venue = venueById.get(nearestVenueId(slot));
     if (!venue) return;
     if (venue.price > 0) {
-      if (d.cash[slot] < venue.price) return;
-      d.cash[slot] -= venue.price;
-      d.spent[slot] += venue.price;
+      const purse = purseOf(slot);
+      if (d.cash[purse] < venue.price) return;
+      d.cash[purse] -= venue.price;
+      d.spent[purse] += venue.price;
       spentToday += venue.price;
       ctx.world.finance.cash += venue.price;
       ctx.events.emit('shop:sale', { shop: venue.id, cents: venue.price, guest: d.id[slot] });

@@ -91,6 +91,34 @@ export interface Decision {
 }
 
 const SHORTLIST = 4;
+
+/**
+ * Metres of walk that halve a venue's worth.
+ *
+ * Swept on the demo park over a whole park day, reading interactions per visitor and the refusals
+ * that a wasted walk produces:
+ *
+ *   30 m → 1.02   full 113    45 m → 1.15   full 202    60 m → 1.25   full 653
+ *   90 m → 1.34   full 928   140 m → 1.23   full 557
+ *
+ * The top is flat between 60 and 90 and falls away on both sides, so the number is not delicate.
+ * 60 is the near end of that plateau on purpose: 90 buys 7 % more interactions and 42 % more `full`
+ * refusals, and a `full` refusal is somebody who crossed the park to a counter that could not take
+ * them. Past 140 the walk stops being weighed at all and guests start out-walking their own day.
+ */
+const WALK_TOLERANCE = 60;
+
+/**
+ * A venue somebody goes to because there is nothing they would rather do.
+ *
+ * `wander` is a path node and `sight` is something to look at; neither answers a need, so neither
+ * can ever be OUTRANKED by one on the arithmetic below — their score is a flat constant while a
+ * need's is a product of terms that are each below 1. They are not competitors, they are what is
+ * left when nothing clears the floor, and `decide` treats them as a second tier for that reason.
+ */
+function isFallback(venue: Venue): boolean {
+  return venue.kind === 'wander' || venue.kind === 'sight';
+}
 /**
  * Below this a candidate is not worth walking to at all.
  *
@@ -125,9 +153,6 @@ export function scoreVenue(ctx: DecisionContext, venue: Venue): number {
   const dx = venue.x - ctx.x;
   const dz = venue.z - ctx.z;
   const distance = Math.sqrt(dx * dx + dz * dz);
-  // Walking cost in park minutes, which is what the guest is actually spending.
-  const minutes = distance / Math.max(0.2, ctx.speed);
-
   let value = 0;
   for (const relief of venue.relief) {
     const need = ctx.needs.columns[relief.column];
@@ -151,6 +176,13 @@ export function scoreVenue(ctx: DecisionContext, venue: Venue): number {
 
   if (venue.kind === 'wander') value += 0.11;
   if (venue.kind === 'sight') value += 0.16;
+  // Both numbers are why the tiers below exist rather than a scale to be tuned. They are a flat
+  // addition to a value that is otherwise a product of small factors, and a need's whole term is
+  // `urgency x got x moodWeight x weight`: at 200 of 255 hunger — past `urgentAt`, a guest who
+  // should be looking for nothing but food — a burger van 40 m off scores about 0.065 against a
+  // path node's 0.071. So the flat bonus does not nudge the wandering, it wins the argument, and
+  // over a whole park day it won 85 % of it: measured on the demo park, 85 % of the population was
+  // IDLE at 10:00 and the day delivered 0.45 interactions per visitor.
 
   if (venue.price > 0) {
     if (ctx.cash < venue.price) return 0;
@@ -171,8 +203,15 @@ export function scoreVenue(ctx: DecisionContext, venue: Venue): number {
 
   if (venue.id === ctx.lastVenue) value *= 0.35;
 
-  // The walk itself. A shop 30 s away and one 6 min away are not the same shop.
-  return value / (1 + minutes / 9);
+  // The walk itself, weighed in METRES rather than in the park minutes it takes.
+  //
+  // That is the one place D-006's compression leaks into a preference. `speed` is 1.0-1.5 m per
+  // PARK minute, so a kiosk forty metres off is a thirty-two-minute walk on the clock the scorer
+  // was dividing by, and against a tolerance written as nine minutes it lost by a factor of 4.6 —
+  // to a path node two metres away that answers no need at all. The distance is what a person
+  // actually weighs when they look across a plaza, and it does not change when the clock does.
+  // `WALK_TOLERANCE` is that look: sixty metres is worth about half.
+  return value / (1 + distance / WALK_TOLERANCE);
 }
 
 /**
@@ -184,27 +223,34 @@ export function scoreVenue(ctx: DecisionContext, venue: Venue): number {
  * place walk off in different directions.
  */
 export function decide(ctx: DecisionContext): Decision | null {
-  const best: Decision[] = [];
+  const wanted: Decision[] = [];
+  const otherwise: Decision[] = [];
   for (const venue of ctx.venues) {
     const score = scoreVenue(ctx, venue);
     if (score <= FLOOR) continue;
-    if (best.length < SHORTLIST) {
-      best.push({ venue, score });
-      best.sort((a, b) => b.score - a.score);
-      continue;
-    }
-    if (score > best[best.length - 1].score) {
-      best[best.length - 1] = { venue, score };
-      best.sort((a, b) => b.score - a.score);
-    }
+    keep(isFallback(venue) ? otherwise : wanted, { venue, score });
   }
-  if (!best.length) return null;
+  const list = wanted.length ? wanted : otherwise;
+  if (!list.length) return null;
   let total = 0;
-  for (const entry of best) total += entry.score;
+  for (const entry of list) total += entry.score;
   let roll = ctx.rng.next() * total;
-  for (const entry of best) {
+  for (const entry of list) {
     roll -= entry.score;
     if (roll <= 0) return entry;
   }
-  return best[0];
+  return list[0];
+}
+
+/** Keep the best `SHORTLIST` of one tier, highest first. */
+function keep(list: Decision[], entry: Decision): void {
+  if (list.length < SHORTLIST) {
+    list.push(entry);
+    list.sort((a, b) => b.score - a.score);
+    return;
+  }
+  if (entry.score > list[list.length - 1].score) {
+    list[list.length - 1] = entry;
+    list.sort((a, b) => b.score - a.score);
+  }
 }

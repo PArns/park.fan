@@ -261,6 +261,16 @@ before a pack was added still opens.
    60 m away is a 43-park-minute walk and `scoreVenue` divides its worth by 5.8. That is the D-006
    time-compression tension `sim.ts` already documents at the top of the file, and it is a decision
    about the compression rather than about shops.
+
+   > **Corrected by the integrator, D-025.** The diagnosis was right about the term and wrong about
+   > whose decision it was. Weighing the walk in park minutes is what imported the compression into
+   > a preference; weighing it in metres does not, and does not need the clock to change. With that
+   > and two other findings from the same measurement (a party pays from the leader's purse; wander
+   > and sight are a fallback tier rather than candidates), the same park day goes from 0.45 to 1.25
+   > interactions per visitor, 805 to 1,974 sales, and 85 % to 11 % of the population standing idle
+   > at 10:00. The instantaneous queue is still single digits, so the sentence this note replaces is
+   > half right: the lines are longer and they are not yet worth photographing.
+
 2. **A resumed demo park still walks a different first leg.** Ten position columns, cause identified
    and outside this module (`docs/game/requests/guests.md` §1). It is pre-existing and smaller than
    it was, and it is still a save that does not reproduce its own run.

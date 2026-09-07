@@ -98,6 +98,7 @@
     "game:exposure-curve": "node scripts/game-exposure-curve.mjs",
     "game:teardown": "node scripts/check-game-teardown.mjs",
     "test:game": "pnpm test:game-save-roundtrip && pnpm test:game-registry && pnpm test:game-lint && pnpm test:game-i18n && pnpm test:game-track && pnpm test:game-paths && pnpm test:game-shops && pnpm test:game-camera && pnpm test:game-tools && pnpm test:game-trains && pnpm test:game-rides && pnpm test:game-soak",
+    "game:day-budget": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-day-budget.mjs",
     "test:game-camera": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/camera/selftest.mjs",
     "test:game-tools": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/tools/selftest.mjs",
     "test:game-trains": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/trains/selftest.mjs",

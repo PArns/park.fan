@@ -114,3 +114,43 @@ single owner, it is just not its own agent. What does not change is who may edit
 needs a string still asks, and now it asks `ui`. _Reversed by:_ a second surface that renders text
 outside the HUD (a world-space sign, a tutorial overlay owned by `scenarios`), at which point the
 table wants an owner that is neither of them.
+
+**D-025 — A walk is weighed in metres, a party has one purse, and wandering is what is left rather than a competitor.**
+Two findings sat open against D-006, the time compression: 124 riders in a park day across machines
+rated for 2,136 an hour, and a shop counter whose queue read 0 at every sample. Both were filed as
+"there is nothing to be done until the park minute changes". Measured rather than reasoned about
+— `pnpm game:day-budget` runs the real `SimRuntime` for a park day and samples the guest state
+histogram every park hour — the park was delivering **0.45 interactions per visitor** and **85 % of
+the population was standing IDLE at 10:00**. Three things were wrong and none of them is the clock.
+
+**The walk penalty imported the compression into a preference.** `scoreVenue` divided a venue's
+worth by `1 + minutes/9`, where `minutes` is the distance over a pace of 1.0–1.5 m per PARK minute
+— so a kiosk forty metres away is a thirty-two-minute walk and loses by a factor of 4.6. Against
+what? A path node two metres off carrying a flat `+0.11` for being somewhere to wander to. At 200
+of 255 hunger, past its own `urgentAt`, a burger van forty metres away scored about 0.065 and the
+path node 0.071. The distance is what a person weighs when they look across a plaza and it does not
+change when the clock does, so the term is `1 + distance/WALK_TOLERANCE` now, swept and flat-topped
+between 60 and 90 m.
+
+**A party has one purse and it is the leader's.** Only a leader plans, so the scorer and
+`shops.find()` were already reading the leader's wallet when they decided the family was going for
+food — and then every follower paid for itself at the counter. A child carries 200–900 cents, which
+is pocket money; it arrived at a 650-cent burger van with 420 in hand and was turned away. That is
+5,824 price refusals against 1,652 sales in a measured day, each one a person who walked somewhere
+for nothing. `purseOf()` is four call sites and the archetype comments already assumed it: the
+`family` entry says "a parent buys for the children too" in as many words.
+
+**Wandering is a second tier, not a candidate.** A `wander` or a `sight` answers no need, so its
+score is a flat constant while a need's is a product of terms each below 1 — it cannot be outranked
+on that arithmetic, only floored out. `decide` now scores both tiers and takes the fallback one only
+when nothing real cleared `FLOOR`.
+
+Measured on the demo park, one day, seed 1, all three together: **0.45 → 1.25 interactions per
+visitor**, rides 66 → 275, purchases 805 → 1,974, idle at 10:00 **85 % → 11 %**, and the dominant
+refusal moves from `price` (906, then 5,824 once guests started trying) to `full` (653) and `balk`
+(237) — a park whose counters are too small for its crowd, which is a thing a player can fix.
+`test:game-save-roundtrip`, `test:game-soak` and `test:game-shops` stay green. What this does NOT
+do is settle D-006: a guest still crosses the park in a park hour, ride queues still peak at single
+digits, and the 275 riders are an eighth of one machine's rated hour. _Reversed by:_ a decision to
+change the compression itself, which would make `WALK_TOLERANCE` a number to re-sweep rather than a
+number to delete.
