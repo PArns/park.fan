@@ -42,7 +42,7 @@ aspirational: it is what the repo does today, verified by reading the files name
 - **Fonts**: Geist through `next/font/google`, same variable name.
 - **TypeScript**: strict, `@/` alias, no new tsconfig.
 - **Lint/format**: the existing ESLint + Prettier; `pnpm lint` and `pnpm format:check` must stay green.
-- **Tests**: `scripts/test-game-*.mjs` under `node --experimental-strip-types` with `pnpm test:game-*` scripts; browser harnesses `scripts/game-shot.mjs`, `scripts/game-soak.mjs` and `scripts/game-warm-audit.mjs` follow `measure-cls.mjs` (Playwright, container Chromium, `next build && next start` at `localhost`).
+- **Tests**: `scripts/test-game-*.mjs` under `node --experimental-strip-types` with `pnpm test:game-*` scripts; browser harnesses `scripts/game-shot.mjs`, `scripts/game-warm-audit.mjs` and `scripts/game-exposure-curve.mjs` follow `measure-cls.mjs` (Playwright, container Chromium, `next build && next start` at `localhost`); `scripts/game-soak.mjs` and `scripts/game-day-budget.mjs` need no browser at all — `SimRuntime` is import-safe under node, which is what lets a whole park day be measured without a canvas.
 - **A screenshot of this game is taken with a stopped clock, and that hides working features.** The
   shot harness runs at `speed=0` so a frame is repeatable, so anything that accumulates over park
   minutes is at its zero: the park has **no guests**, `environment.wetness` is **0** (the paving

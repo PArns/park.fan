@@ -219,6 +219,11 @@ lib/game/
 public/game/              assets/ (fetched, gitignored), packs/ (optional extra packs)
 scripts/game-shot.mjs     Playwright: screenshots + metrics JSON
 scripts/game-soak.mjs     headless soak (48 park-hours at 100×)
+scripts/game-warm-audit.mjs      what moves between tick 0 and +30/+120 park minutes
+scripts/game-day-budget.mjs      where a guest's park day goes: state histogram per park hour
+scripts/game-exposure-curve.mjs  the tone curve sampled across a whole day
+scripts/check-game-bundle.mjs    Babylon out of every shared chunk, against a baseline build
+scripts/check-game-teardown.mjs  dispose leaves no engine, no worker, no listeners
 scripts/test-game-*.mjs   unit tests (node --experimental-strip-types)
 docs/game/                this folder; STATUS.json is the persisted scoreboard
 ```

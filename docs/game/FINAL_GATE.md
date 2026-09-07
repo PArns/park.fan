@@ -5,7 +5,8 @@ to look at, and what counts as a finding. It exists because the four bullets are
 intent and somebody has to be able to pick them up and produce the same answer twice.
 
 **Status: not due.** The gate runs once every module passes its own gauntlet. At the time of
-writing ten modules are graded and one passes, so what follows is a runbook and not a result.
+writing thirteen modules are graded and two pass (`track` 8.54, `rides` 8.71), with `buildings`,
+`pools` and `ui` being built, so what follows is a runbook and not a result.
 
 ## Before any of it: the clock
 
@@ -19,6 +20,11 @@ would have repeated the mistake, so it is written into the procedure rather than
   a particle by the real frame delta; under SwiftShader that is longer than a raindrop lives.
 - **Run `pnpm game:warm-audit` first** and read what moves. If something new appears in that list,
   the gate's shot list is out of date before it starts.
+- **Run `pnpm game:day-budget` too, and read it before the frames.** It answers, without a browser,
+  what the twenty-eight pictures cannot: what fraction of the crowd is walking, queuing, riding,
+  buying or standing still at each hour, and how many things a visitor does in a day. A park can
+  photograph beautifully and be 85 % statues — it was, and no frame said so, because a still picture
+  of somebody standing and a still picture of somebody walking are the same picture.
 - **fps is meaningless** (SwiftShader). Draw calls, triangles and tick times are real.
 
 ## 1. Whole-game critic
