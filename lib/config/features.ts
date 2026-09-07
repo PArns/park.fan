@@ -21,3 +21,16 @@ function envFlag(value: string | undefined): boolean {
  * never imported (the scene component is only rendered behind this flag).
  */
 export const HERO_3D_ENABLED = envFlag(process.env.NEXT_PUBLIC_HERO_3D);
+
+/**
+ * park.fan Coaster: blueprint sharing through `app/api/game/**`. Default **OFF** — the game is
+ * fully playable client-side (IndexedDB + JSON export); with the flag off the route handlers
+ * answer 404 and the HUD hides the share button. Enable with `NEXT_PUBLIC_GAME_SHARING=on`.
+ */
+export const GAME_SHARING_ENABLED = envFlag(process.env.NEXT_PUBLIC_GAME_SHARING);
+
+/**
+ * park.fan Coaster: seed a park from live park.fan data (park layouts, ride names, wait times)
+ * through a mock-first adapter. Default **OFF**; never blocks boot. `NEXT_PUBLIC_GAME_LIVE_SEED=on`.
+ */
+export const GAME_LIVE_SEED_ENABLED = envFlag(process.env.NEXT_PUBLIC_GAME_LIVE_SEED);
