@@ -2069,6 +2069,11 @@
       "run": "Optimiser la journée",
       "running": "Tri en cours …",
       "hint": "Classe les attractions selon leurs courbes horaires, les trajets entre elles et leurs horaires d’ouverture. Les pauses et les attractions déjà faites ne bougent pas.",
+      "choiceTitle": "Toutes les attractions phares n’entrent pas dans la journée",
+      "choiceBody": "Il y a de la place pour {fits} sur {total} avant la fermeture. Décochez ce dont vous vous passeriez en premier.",
+      "choiceConfirm": "{count, plural, one {Planifier 1 attraction} other {Planifier # attractions}}",
+      "choiceDrops": "laissée de côté",
+      "choicePeak": "pointe {minutes} min",
       "saved": "{minutes} min d’attente en moins",
       "already": "L’ordre est déjà le bon",
       "fitted": "{count, plural, one {une attraction entre maintenant dans la journée} other {# attractions entrent maintenant dans la journée}}",
@@ -2171,6 +2176,11 @@
       "wet": {
         "label": "Rester sec si possible",
         "hint": "Les attractions aquatiques sont signalées dans la liste."
+      },
+      "headliners": {
+        "label": "Planifier les attractions phares",
+        "hint": "Place les {count} grandes attractions dans la journée, selon leurs courbes horaires.",
+        "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture. Vous choisirez lesquelles dans le planning."
       },
       "facts": {
         "title": "Ce que nous savons de cette journée",

@@ -13,6 +13,7 @@ import {
   optimizeDay,
   scoreCurrent,
 } from '@/lib/planner/optimize';
+import { PlannerHeadlinerChoice } from './planner-headliner-choice';
 import { trackPlanOptimized } from '@/lib/analytics/umami';
 import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import {
@@ -22,7 +23,7 @@ import {
   subscribeToNothing,
 } from '@/lib/planner/minute-tick';
 import type { DayGrid } from '@/lib/planner/day-grid';
-import type { PlanDay } from '@/lib/api/types';
+import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from '@/lib/planner/types';
 import { cn } from '@/lib/utils';
 
@@ -129,6 +130,22 @@ export function PlannerOptimizeActions({
     date: string;
     entries: readonly PlannerEntry[];
   } | null>(null);
+  /**
+   * The conflict, while somebody is deciding what to do about it.
+   *
+   * Keyed on (park, date) like the two above and for the same reason: the panel
+   * can be switched to another day underneath an open dialog, and a "plan these
+   * nine" pressed afterwards would file another park's slugs into it.
+   */
+  const [conflict, setConflict] = useState<{
+    parkSlug: string;
+    date: string;
+    /** Increments per press, so the dialog remounts with everything ticked. */
+    nonce: number;
+    rides: PlanDayRide[];
+    fits: number;
+    wouldDrop: Set<string>;
+  } | null>(null);
 
   const entries = state.parks[parkSlug]?.days[date]?.entries ?? [];
 
@@ -172,15 +189,53 @@ export function PlannerOptimizeActions({
 
   const shownResult = result?.parkSlug === parkSlug && result?.date === date ? result : null;
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
+  const shownConflict =
+    conflict?.parkSlug === parkSlug && conflict?.date === date ? conflict : null;
 
-  const run = (add: typeof missing) => {
+  /**
+   * "Plan every headliner", which on a full day is a question rather than a
+   * command.
+   *
+   * The plan is computed BEFORE anything is written, purely to find out whether
+   * the day holds them all. Where it does — the common case — this is the press
+   * it always was and nothing is asked. Where it does not, the visitor gets to
+   * say which ones they would rather give up, because the engine's own answer
+   * (least expected queue first) is a good default and is still a decision
+   * about somebody else's day.
+   *
+   * The probe costs a second search, 5–15 ms on the day this was reported. It
+   * is thrown away and the chosen set is planned from scratch, so what lands on
+   * the axis is always the plan for the set that was actually agreed.
+   */
+  const runHeadliners = () => {
+    const plan = optimizeDay({ day, grid, entries, add: missing, clock });
+    const wouldDrop = new Set(
+      missing
+        .filter((ride) => !plan?.stops.some((s) => s.attractionSlug === ride.attractionSlug))
+        .map((ride) => ride.attractionSlug)
+    );
+    if (plan && wouldDrop.size > 0) {
+      setConflict({
+        parkSlug,
+        date,
+        nonce: (conflict?.nonce ?? 0) + 1,
+        rides: missing,
+        fits: missing.length - wouldDrop.size,
+        wouldDrop,
+      });
+      return;
+    }
+    run(missing);
+  };
+
+  const run = (add: typeof missing, priority?: readonly string[]) => {
     // The clock goes to BOTH, and for two different reasons. `optimizeDay` uses
     // it as a floor and as a membership rule; `scoreCurrent` only as the second
     // — it scores the day where the blocks actually are, so a floor there would
     // be a claim about where they should be. Withholding it from the incumbent
     // is what made the before-figure cover a morning the plan never saw, so
     // "45 Min. weniger Warten" was a ride that had already been queued for.
-    const input = { day, grid, entries, add, clock };
+    const input = { day, grid, entries, add, priority, clock };
     const before = scoreCurrent({ day, grid, entries, clock });
     const plan = optimizeDay(input);
 
@@ -252,7 +307,7 @@ export function PlannerOptimizeActions({
         {missing.length > 0 && (
           <button
             type="button"
-            onClick={() => run(missing)}
+            onClick={runHeadliners}
             data-planner-optimize-headliners=""
             title={t('optimize.hint')}
             className={cn(
@@ -310,6 +365,33 @@ export function PlannerOptimizeActions({
             </button>
           )}
         </p>
+      )}
+
+      {/* Only ever mounted with a conflict in hand, so the day that holds every
+          headliner never pays for it — no dialog, no reset effect, no listener.
+          See `PlannerHeadlinerChoice`. */}
+      {shownConflict && (
+        <PlannerHeadlinerChoice
+          key={`${shownConflict.parkSlug}:${shownConflict.date}:${shownConflict.nonce}`}
+          open
+          onOpenChange={(next) => {
+            if (!next) setConflict(null);
+          }}
+          rides={shownConflict.rides}
+          fits={shownConflict.fits}
+          wouldDrop={shownConflict.wouldDrop}
+          onConfirm={(slugs) => {
+            const chosen = shownConflict.rides.filter((ride) =>
+              slugs.includes(ride.attractionSlug)
+            );
+            setConflict(null);
+            // The order they were listed in is the order they are given up in,
+            // which is what `priority` means to the engine: whatever the
+            // visitor ticked, if even that does not fit, the ones at the bottom
+            // of the list go first.
+            run(chosen, slugs);
+          }}
+        />
       )}
     </div>
   );

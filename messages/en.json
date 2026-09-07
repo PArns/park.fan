@@ -2069,6 +2069,11 @@
       "run": "Optimise the day",
       "running": "Sorting …",
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
+      "choiceTitle": "Not every headliner fits into the day",
+      "choiceBody": "There is room for {fits} of {total} before the park closes. Untick whatever you would give up first.",
+      "choiceConfirm": "{count, plural, one {Plan 1 ride} other {Plan # rides}}",
+      "choiceDrops": "drops out",
+      "choicePeak": "peak {minutes} min",
       "saved": "{minutes} min less queueing",
       "already": "Already in the right order",
       "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
@@ -2171,6 +2176,11 @@
       "wet": {
         "label": "Stay dry if possible",
         "hint": "Water rides get a mark in the list."
+      },
+      "headliners": {
+        "label": "Plan the headliners",
+        "hint": "Puts the {count} big rides into the day, ordered by their hourly curves.",
+        "hintTight": "There is room for {fits} of {total} before the park closes. You can change which ones in the planner."
       },
       "facts": {
         "title": "What we know about the day",

@@ -54,7 +54,19 @@ function check(name, ok, detail = '') {
 }
 
 const OPEN = 9;
-const CLOSE = 20;
+/**
+ * The fixture park's closing HOUR, and it moved with the meaning of the field.
+ *
+ * `closeHour` is the hour the park's closing time falls in, so `20` used to
+ * produce a `closeMin` of 21:00 — `buildDayGrid` added sixty minutes to it —
+ * and every figure in this file was computed against a twelve-hour day. The
+ * grid stopped adding that hour (it was an hour of park that does not exist,
+ * and the optimiser filled it), so this is 21 to keep the same twelve hours and
+ * leave every assertion below measuring what it was written to measure.
+ *
+ * §18 is where the new rule is pinned, against its own fixture.
+ */
+const CLOSE = 21;
 
 /**
  * A ride whose curve is given per hour, with coordinates so the transfer model
@@ -143,7 +155,16 @@ const grid = (payload) => buildDayGrid(payload.context.openHour, payload.context
 // disagree it is the search that is wrong, not the model.
 
 function costOf(plan) {
-  return [plan.overflow, plan.totalWaitMinutes + IDLE_WEIGHT * plan.idleMinutes, plan.endMinute];
+  // `overflowKey`, not the flat `overflow` count. The two agreed while overflow
+  // was one number and stopped agreeing the day it grew tiers: `better` ranks
+  // by which rides a plan gives up, this mirror ranked only by how many, so it
+  // would call a plan optimal that drops the park's flagship to keep a filler.
+  // `scoreOrder` hands the key out for exactly this reason.
+  return [
+    plan.overflowKey ?? plan.overflow,
+    plan.totalWaitMinutes + IDLE_WEIGHT * plan.idleMinutes,
+    plan.endMinute,
+  ];
 }
 
 function permutations(items) {
@@ -187,7 +208,10 @@ function bruteForce(input, slugs) {
  * calling a worse plan optimal.
  */
 function lex([overflow, cost, end]) {
-  return overflow * 1e8 + cost * 1e4 + end;
+  // The overflow key runs to ~2.6e7 with a full budget, so it needs the room:
+  // at 1e8 a plan that gives up one more ride could be outranked by one that
+  // queues four hours less, which is the opposite of what `better` does.
+  return overflow * 1e12 + cost * 1e4 + end;
 }
 
 /**
@@ -279,6 +303,48 @@ function idleOfPlan(payload, stops) {
     'die Morgenbahnen stehen vor den Nachmittagsbahnen',
     order.indexOf('a') < order.indexOf('b') && order.indexOf('d') < order.indexOf('e'),
     order.join(' → ')
+  );
+}
+
+// ── 1b. …including the question of WHICH rides are given up ────────────────
+//
+// §1 never passes `add`, so for as long as the overflow tiers have existed
+// nothing has enumerated a day that cannot hold what it is asked for — the one
+// case the tiers were built for. `costOf` reads `overflowKey` now, so the
+// mirror ranks by which rides a plan loses and not merely by how many, and the
+// plan comes back through `scoreOrder` in its own order with the rides it gave
+// up on the end: that is the order the search actually chose, scored by the
+// same scheduler the enumeration uses.
+{
+  const rides = [
+    ride('own1', flat(25, 9, 12), { lat: 50.8, lng: 6.87, land: 'A' }),
+    ride('own2', flat(25, 9, 12), { lat: 50.8004, lng: 6.87, land: 'A' }),
+    ride('draw', flat(70, 9, 12), { lat: 50.8008, lng: 6.87, land: 'A', headliner: true }),
+    ride('mid', flat(45, 9, 12), { lat: 50.8012, lng: 6.87, land: 'A', headliner: true }),
+    ride('filler', flat(15, 9, 12), { lat: 50.8016, lng: 6.87, land: 'A', headliner: true }),
+  ];
+  const payload = day(rides, { openHour: 9, closeHour: 12 });
+  const entries = [entry('own1-1', 'own1', 9 * 60), entry('own2-1', 'own2', 10 * 60)];
+  const add = [rides[2], rides[3], rides[4]];
+  const input = { day: payload, grid: grid(payload), entries, add };
+  const slugs = rides.map((r) => r.attractionSlug);
+
+  const found = optimizeDay(input);
+  const placed = [...found.stops].sort((a, b) => a.startMinute - b.startMinute).map((s) => s.attractionSlug);
+  const chosen = scoreOrder(input, [...placed, ...slugs.filter((s) => !placed.includes(s))]);
+  const best = bruteForce(input, slugs);
+
+  check(
+    'die Heuristik gibt dieselbe Bahn auf wie die Voll-Enumeration',
+    chosen !== null && best !== null && lex(costOf(chosen)) === lex(best),
+    `${placed.join(' → ')} | key ${chosen?.overflowKey} gegen ${best?.[0]}`
+  );
+  // And the ride nobody would give up is in it, stated separately so a
+  // regression says WHAT went wrong rather than only that a number moved.
+  check(
+    'und behält dabei den Headliner mit der längsten Schlange',
+    placed.includes('draw'),
+    placed.join(' → ')
   );
 }
 
@@ -1182,7 +1248,12 @@ function idleOfPlan(payload, stops) {
     ride('b', morningRide(60, 10), { land: 'X' }),
   ];
   const payload = day(rides);
-  const entries = [entry('a-1', 'a', 21 * 60 + 30), entry('b-1', 'b', 9 * 60 + 15)];
+  // Far enough out that `estimateFor` answers `outside-hours` and not merely
+  // that the grid would refuse to file there: the API emits an hour bucket AT
+  // `closeHour`, so a block inside that hour still carries a figure — which is
+  // deliberate (a park closing at 17:30 is half open in hour 17) and is exactly
+  // what this case must not be measuring.
+  const entries = [entry('a-1', 'a', 22 * 60 + 30), entry('b-1', 'b', 9 * 60 + 15)];
   const input = { day: payload, grid: grid(payload), entries };
   const before = scoreCurrent(input);
   const found = optimizeDay(input);
@@ -1402,6 +1473,170 @@ function benchInput(n) {
       steadyPlan.idleMinutes === 0 &&
       steadyPlan.idleMinutes === idleOfPlan(steady, steadyPlan.stops),
     `${steadyPlan?.idleMinutes} Min. Leerlauf: ${steadyPlan?.stops.map((s) => `${s.attractionSlug}@${s.startMinute}`).join(' → ')}`
+  );
+}
+
+// ── 18. A queue is JOINED before closing, and never after ──────────────────
+//
+// Two halves of one rule, reported together. `closeHour` is the hour the park's
+// closing time falls in, and `buildDayGrid` used to add sixty minutes to it —
+// so Phantasialand's Saturday, a nine-hour day ending at 18:00, was planned
+// against a day ending at 19:00 and came back with Winja's Fear queued at
+// 18:15. The other half is what keeps the fix from costing anything: a queue
+// may be joined right up to the last minute, and what happens after that is the
+// park emptying a line it has already let you into.
+{
+  const rides = [
+    ride('a', flat(30), { land: 'X', lat: 50.8 }),
+    ride('b', flat(30), { land: 'X', lat: 50.8005 }),
+    ride('c', flat(30), { land: 'X', lat: 50.801 }),
+    ride('d', flat(30), { land: 'X', lat: 50.8015 }),
+  ];
+  const payload = day(rides);
+  const g = grid(payload);
+  const entries = [entry('a-1', 'a', 9 * 60)];
+  const found = optimizeDay({ day: payload, grid: g, entries, add: [rides[1], rides[2], rides[3]] });
+
+  check(
+    'kein Stopp wird nach Parkschluss angestellt',
+    found !== null && found.stops.every((stop) => stop.startMinute < g.closeMin),
+    found?.stops.map((s) => `${s.attractionSlug}@${s.startMinute}`).join(' ')
+  );
+
+  // And the last quarter hour before closing is a slot, not a wall: a ninety
+  // minute queue joined there is a plan somebody makes on purpose, and the day
+  // it overruns into is not overflow.
+  const late = day([
+    ride('x', flat(20), { land: 'X', lat: 50.8 }),
+    ride('y', flat(90), { land: 'X', lat: 50.8003 }),
+  ]);
+  const lateGrid = grid(late);
+  const lateEntries = [entry('x-1', 'x', lateGrid.closeMin - 15)];
+  const lateScore = scoreCurrent({ day: late, grid: lateGrid, entries: lateEntries });
+  check(
+    'eine Bahn kurz vor Parkschluss ist kein Überlauf',
+    lateScore !== null && lateScore.overflow === 0 && lateScore.stops[0].fits === true,
+    `overflow ${lateScore?.overflow}, fits ${lateScore?.stops[0]?.fits}`
+  );
+}
+
+// ── 19. Which headliner is given up, when one has to be ────────────────────
+//
+// Reported from production: Phantasialand, Saturday 2026-09-12, a lunch break
+// and nothing else planned. Ten headliners, room for nine, and the button gave
+// up **F.L.Y. and Taron** — the two the park is known for — while keeping both
+// Winja's. The tie fell through to queued minutes, and the ride with the
+// longest queue is both the most expensive to keep AND the one most people are
+// there for, so minimising cost sacrificed the flagship by construction. The
+// margin was five minutes over a 315-minute day.
+{
+  // Three headliners, room for two. `big` has the longest queue and is
+  // therefore both the priciest to keep and the one somebody travelled for.
+  const rides = [
+    ride('hub', flat(10, 9, 11), { land: 'X', lat: 50.8 }),
+    ride('big', flat(60, 9, 11), { land: 'X', lat: 50.8006, headliner: true }),
+    ride('mid', flat(45, 9, 11), { land: 'X', lat: 50.8012, headliner: true }),
+    ride('small', flat(20, 9, 11), { land: 'X', lat: 50.8018, headliner: true }),
+  ];
+  const payload = day(rides, { openHour: 9, closeHour: 11 });
+  const g = grid(payload);
+  const entries = [entry('hub-1', 'hub', 9 * 60)];
+  const add = [rides[1], rides[2], rides[3]];
+  const found = optimizeDay({ day: payload, grid: g, entries, add });
+  const planned = found.stops.map((s) => s.attractionSlug);
+
+  check(
+    'der Headliner mit der längsten Schlange bleibt drin',
+    planned.includes('big'),
+    planned.join(' ')
+  );
+  check(
+    'und der kleinste fällt weg, nicht der teuerste',
+    !planned.includes('small'),
+    planned.join(' ')
+  );
+
+  // The visitor overrules it. `priority` is the order they put the rides in,
+  // most important first, and it is the only thing that beats the day's own
+  // figures — because no payload knows which coaster somebody drove four hours
+  // for.
+  const said = optimizeDay({
+    day: payload,
+    grid: g,
+    entries,
+    add,
+    priority: ['small', 'mid', 'big'],
+  }).stops.map((s) => s.attractionSlug);
+  check(
+    'die Reihenfolge des Besuchers schlägt die Tagesprognose',
+    said.includes('small') && !said.includes('big'),
+    said.join(' ')
+  );
+}
+
+// ── 20. A walk never outweighs a queue ─────────────────────────────────────
+//
+// "Wartezeit ist Laufwegen vorzuziehen": with one slot left and two rides for
+// it, the shorter queue wins however far away it is. It holds because a walk
+// costs `planCost` nothing and only moves the clock — but it did NOT hold while
+// the queue of a ride that never happens was still in the total: 10 + 60 + 45
+// is 10 + 45 + 60 whichever of the two actually gets ridden, so the totals tied
+// and the choice fell through to the clock, which prefers the short walk.
+// Measured before the fix, the near 60-minute ride beat the far 45-minute one
+// at every difference up to fifteen minutes; after it, the far ride wins down
+// to five.
+{
+  const chosen = [];
+  for (const farWait of [55, 50, 45, 40, 35]) {
+    const rides = [
+      ride('hub', flat(10, 9, 11), { land: 'A', lat: 50.8 }),
+      ride('near', flat(60, 9, 11), { land: 'A', lat: 50.80054 }),
+      ride('far', flat(farWait, 9, 11), { land: 'B', lat: 50.809 }),
+    ];
+    const payload = day(rides, { openHour: 9, closeHour: 11 });
+    const found = optimizeDay({
+      day: payload,
+      grid: grid(payload),
+      entries: [entry('hub-1', 'hub', 9 * 60)],
+      add: [rides[1], rides[2]],
+    });
+    const added = found.stops.filter((s) => s.entryId === null).map((s) => s.attractionSlug);
+    chosen.push(`Δ${60 - farWait}:${added.join('+') || '—'}`);
+  }
+  check(
+    'die kürzere Schlange gewinnt gegen den kürzeren Weg',
+    chosen.every((row) => row.includes('far')),
+    chosen.join(' ')
+  );
+
+  // The other half, stated on its own: a queue nobody joins costs nobody
+  // anything, so it may not appear in the total the bar prints as a saving —
+  // nor may the standing about in front of it, nor the minute it would have
+  // ended at.
+  const rides = [
+    ride('hub', flat(10, 9, 11), { land: 'A', lat: 50.8 }),
+    ride('near', flat(60, 9, 11), { land: 'A', lat: 50.80054 }),
+    ride('far', flat(45, 9, 11), { land: 'B', lat: 50.809 }),
+  ];
+  const payload = day(rides, { openHour: 9, closeHour: 11 });
+  const g = grid(payload);
+  const found = optimizeDay({
+    day: payload,
+    grid: g,
+    entries: [entry('hub-1', 'hub', 9 * 60)],
+    add: [rides[1], rides[2]],
+  });
+  const sumOfPlanned = found.stops.reduce((total, stop) => total + (stop.waitMinutes ?? 0), 0);
+  check(
+    'die Warteminuten sind die der geplanten Bahnen',
+    found.totalWaitMinutes === sumOfPlanned,
+    `${found.totalWaitMinutes} gegen ${sumOfPlanned} über ${found.stops.length} Stopps`
+  );
+  check(
+    'und der Feierabend ist der der geplanten Bahnen',
+    found.endMinute ===
+      Math.max(...found.stops.map((s) => s.startMinute + spanOf(payload, s.attractionSlug, s.startMinute))),
+    `Feierabend ${found.endMinute}`
   );
 }
 

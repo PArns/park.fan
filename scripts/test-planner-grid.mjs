@@ -22,6 +22,7 @@ import {
   clampStart,
   growGridForSpans,
   heightFor,
+  latestStart,
   minuteAt,
   nextFreeStart,
   packLanes,
@@ -89,8 +90,23 @@ test('only an opening hour', buildDayGrid(10, null), null);
 test('only a closing hour', buildDayGrid(null, 20), null);
 test('undefined behaves as null', buildDayGrid(undefined, undefined), null);
 
+// ── 5b. The closing minute, which is not the hour plus one ───────────────────
+// `closeHour` is the hour the park's closing time FALLS IN, so a park shutting
+// at 18:00 answers 18 and `closeMin` is 18:00 — this used to add sixty minutes
+// on the opposite reading and handed the optimiser an hour of park that does
+// not exist (Winja's Fear queued at 18:15 on a day that ends at 18:00). The
+// hour is exact on 3,046 of 3,540 measured operating park-days; the other 494
+// close at half past or quarter to, which is what `closeSlackMin` is.
+test('a park closing at 18:00 is open until 18:00', buildDayGrid(9, 18).closeMin, 18 * 60);
+test('…and might be open for an hour more', buildDayGrid(9, 18).closeSlackMin, 60);
+test('…but the canvas is unchanged', buildDayGrid(9, 18).gridEndMin, 18 * 60 + 60 + 30);
+// The visitor's own gesture keeps every minute it had: the person dragging
+// knows whether their park really shuts on the hour. What the APP files by
+// itself does not — see `nextFreeStart` and the optimiser.
+test('a drag may still reach into the slack', latestStart(buildDayGrid(9, 18)), 19 * 60 - 15);
+
 // ── 6. Degenerate: past-midnight close ───────────────────────────────────────
-test('a past-midnight day is unfolded, not negative', buildDayGrid(16, 0).closeMin, 1500);
+test('a past-midnight day is unfolded, not negative', buildDayGrid(16, 0).closeMin, 1440);
 
 // The unfolding is exported because `estimate.ts` needs the same answer, and
 // held the opposite one for as long as both files existed: a 16:00–01:00 park
@@ -116,8 +132,11 @@ test('a start before opening is lifted to the floor', clampStart(g, 3 * 60, g.op
 test(
   'a start past closing is pulled back inside',
   clampStart(g, g.closeMin + 500, g.openMin),
-  g.closeMin - SNAP_MIN_FINE
+  latestStart(g)
 );
+// …and "inside" for a DRAG includes the slack the API rounded away. The two
+// numbers differ by an hour and the difference is the whole point of the split.
+test('which for a drag is an hour past the band', latestStart(g) - g.closeMin, 45);
 
 // ── 9. Degenerate: no figure ─────────────────────────────────────────────────
 // The box floor must never leak into the measurement.
@@ -261,11 +280,27 @@ test(
     `${rideFloor(g, opening('11:00'), today(9 * 60 + 30)).softMin} ${rideFloor(g, opening('11:00'), today(14 * 60)).softMin}`,
     `660 840`
   );
-  // Capped like every other floor here, so a press after closing yields a
-  // minute rather than an impossible one.
+  // NOT capped at the end of the day, and the cap was the bug: it beat the very
+  // lower bound this floor exists to impose, so at 17:58 in a park shutting at
+  // 18:00 the answer was 17:45 and "plan every headliner" filed a forty-minute
+  // queue thirteen minutes before the press. Past the last slot the honest
+  // answer is a minute the day has no room for — `placementsFrom` then finds no
+  // option and leaves the ride out, which is what a full day should do.
   test(
-    'nach Feierabend wird der Boden gedeckelt',
+    'nach Feierabend liegt der Boden hinter dem Tor',
     rideFloor(g, undefined, today(23 * 60)).softMin,
+    23 * 60
+  );
+  test(
+    'und eine Minute vor Schluss wird nicht in die Vergangenheit gerundet',
+    rideFloor(g, undefined, today(17 * 60 + 58)).softMin,
+    18 * 60
+  );
+  // The RIDE's own reasons stay capped, though: a curve that starts after
+  // closing is a statement about measurement and may not push a block out.
+  test(
+    'die Gründe der Bahn bleiben gedeckelt',
+    rideFloor(g, opening('23:00'), undefined).softMin,
     g.closeMin - 15
   );
   test('und nowFloor sagt dasselbe ohne Bahn', nowFloor(g, today(14 * 60 + 1)), 14 * 60 + 15);

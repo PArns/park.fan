@@ -9,6 +9,7 @@ import {
   SNAP_MIN_FINE,
   clampStart,
   heightFor,
+  latestStart,
   minuteAt,
   packLanes,
   rideFloor,
@@ -779,7 +780,14 @@ export function PlannerDayGrid({
             cut off at the left — invisibly, because leftward overflow in an LTR
             scroller never reaches `scrollWidth` and nothing can report it. It
             belongs to the whole row rather than to the time column anyway, so it
-            is a caption on the canvas now, where a sentence has room to be one. */}
+            is a caption on the canvas now, where a sentence has room to be one.
+
+            The `~` earns its keep in the other direction now: `closeMin` is the
+            park's own closing minute wherever the day ends on the hour, and the
+            earliest it can close where it does not, so "bis ~18:00" reads over
+            an hour that may or may not still be open — the strip the ground
+            hatches underneath. It used to sit an hour lower and name a time
+            nothing had ever claimed. */}
         {grid.closeIsTruncated && (
           <span
             className="text-muted-foreground/70 pointer-events-none absolute left-0 z-10 translate-y-1 text-[10px] whitespace-nowrap"
@@ -941,7 +949,7 @@ export function PlannerDayGrid({
                 onDragStart={() => {}}
                 onMove={() => {}}
                 minMinute={grid.openMin}
-                maxMinute={grid.closeMin - SNAP_MIN_FINE}
+                maxMinute={latestStart(grid)}
                 snapStep={snapStep}
               />
             )}
@@ -985,7 +993,7 @@ export function PlannerDayGrid({
                   onResizeStart={row.entry.custom ? handleResizeStart(row.entry) : undefined}
                   onMove={(minute) => onMove(row.entry.id, minute)}
                   minMinute={floor.hardMin}
-                  maxMinute={grid.closeMin - SNAP_MIN_FINE}
+                  maxMinute={latestStart(grid)}
                   snapStep={snapStep}
                 />
               );

@@ -2069,6 +2069,11 @@
       "run": "Ottimizza la giornata",
       "running": "Riordino …",
       "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
+      "choiceTitle": "Non entrano tutte le attrazioni principali",
+      "choiceBody": "Prima della chiusura c’è posto per {fits} su {total}. Togli la spunta a ciò a cui rinunceresti per primo.",
+      "choiceConfirm": "{count, plural, one {Pianifica 1 attrazione} other {Pianifica # attrazioni}}",
+      "choiceDrops": "resta fuori",
+      "choicePeak": "picco {minutes} min",
       "saved": "{minutes} min di coda in meno",
       "already": "L’ordine va già bene",
       "fitted": "{count, plural, one {una attrazione ora entra nella giornata} other {# attrazioni ora entrano nella giornata}}",
@@ -2171,6 +2176,11 @@
       "wet": {
         "label": "Restare asciutti se possibile",
         "hint": "Le attrazioni ad acqua vengono segnalate nell’elenco."
+      },
+      "headliners": {
+        "label": "Pianifica le attrazioni principali",
+        "hint": "Mette le {count} attrazioni grandi nella giornata, secondo le curve orarie.",
+        "hintTight": "Prima della chiusura c’è posto per {fits} su {total}. Quali siano lo decidi nel pianificatore."
       },
       "facts": {
         "title": "Quello che sappiamo di questa giornata",

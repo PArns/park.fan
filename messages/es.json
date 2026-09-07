@@ -2069,6 +2069,11 @@
       "run": "Optimizar el día",
       "running": "Ordenando …",
       "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
+      "choiceTitle": "No caben todas las atracciones estrella",
+      "choiceBody": "Antes del cierre hay sitio para {fits} de {total}. Desmarca aquello de lo que prescindirías antes.",
+      "choiceConfirm": "{count, plural, one {Planificar 1 atracción} other {Planificar # atracciones}}",
+      "choiceDrops": "se queda fuera",
+      "choicePeak": "pico {minutes} min",
       "saved": "{minutes} min menos de cola",
       "already": "Ya está en el orden bueno",
       "fitted": "{count, plural, one {una atracción ya cabe en el día} other {# atracciones ya caben en el día}}",
@@ -2171,6 +2176,11 @@
       "wet": {
         "label": "Mojarse lo menos posible",
         "hint": "Las atracciones de agua se marcan en la lista."
+      },
+      "headliners": {
+        "label": "Planificar las atracciones estrella",
+        "hint": "Coloca las {count} atracciones grandes en el día, según sus curvas por hora.",
+        "hintTight": "Antes del cierre hay sitio para {fits} de {total}. Cuáles son lo decides en el planificador."
       },
       "facts": {
         "title": "Lo que sabemos de este día",
