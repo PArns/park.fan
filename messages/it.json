@@ -1277,6 +1277,7 @@
       "shareDetail": "Circa il {percent} % del tempo in cui l'attrazione era in funzione.",
       "withheld": {
         "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
+        "park_never_reports": "La fonte dati di questo parco non segnala guasti. Non possiamo vedere se {name} si guasta.",
         "artefact_regime": "Per questo parco le segnalazioni di guasto ci arrivano solo a frammenti. Non se ne ricava una frequenza.",
         "no_schedule": "Questo parco non pubblica gli orari di apertura, quindi qui non mostriamo cifre.",
         "thin_events": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Sono troppo pochi per ricavarne una cifra.",

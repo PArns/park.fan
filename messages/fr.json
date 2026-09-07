@@ -1277,6 +1277,7 @@
       "shareDetail": "Environ {percent} % du temps où l'attraction fonctionnait.",
       "withheld": {
         "not_down_capable": "Aucune source de données ne signale de pannes pour ce parc. Si {name} tombe en panne, nous ne le voyons pas ici.",
+        "park_never_reports": "La source de données de ce parc ne signale pas de pannes. Nous ne voyons pas si {name} tombe en panne.",
         "artefact_regime": "Les signalements de pannes ne nous parviennent que par fragments pour ce parc. Impossible d'en tirer une fréquence.",
         "no_schedule": "Ce parc ne publie pas d'horaires d'ouverture, nous n'affichons donc aucun chiffre ici.",
         "thin_events": "{count} pannes ont été signalées ces {days} derniers jours. C'est trop peu pour en tirer un chiffre.",

@@ -1277,6 +1277,7 @@
       "shareDetail": "Rund {percent} % der Zeit, in der die Bahn lief.",
       "withheld": {
         "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
+        "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
         "artefact_regime": "Für diesen Park liegen uns Störungsmeldungen nur bruchstückhaft vor. Eine Häufigkeit lässt sich daraus nicht ablesen.",
         "no_schedule": "Für diesen Park sind keine Öffnungszeiten veröffentlicht, deshalb zeigen wir hier keine Zahlen.",
         "thin_events": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Für eine belastbare Zahl sind das zu wenige.",

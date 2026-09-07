@@ -625,6 +625,17 @@ export type DowntimeBlock =
       kind: 'withheld';
       reason:
         | 'not_down_capable'
+        /**
+         * The park's feed is listed but has never once said DOWN.
+         *
+         * Distinct from `not_down_capable`: that is configuration, this is an
+         * observed silence past the point where silence is possible. 91 parks
+         * are in this state — Phantasialand, Energylandia, Alton Towers — and
+         * together the never-reporting parks have MORE observed operating time
+         * than the reporting ones. Both mean "we cannot see this ride's
+         * outages", and neither may be rendered as "no outages".
+         */
+        | 'park_never_reports'
         | 'artefact_regime'
         | 'no_schedule'
         | 'thin_events'

@@ -1277,6 +1277,7 @@
       "shareDetail": "Alrededor del {percent} % del tiempo en que la atracción estuvo funcionando.",
       "withheld": {
         "not_down_capable": "Para este parque ninguna fuente de datos notifica averías. Si {name} se avería, aquí no lo vemos.",
+        "park_never_reports": "La fuente de datos de este parque no notifica averías. No podemos ver si {name} se avería.",
         "artefact_regime": "Para este parque los avisos de avería nos llegan solo a fragmentos. De ahí no se puede leer una frecuencia.",
         "no_schedule": "Este parque no publica horarios de apertura, por eso no mostramos cifras aquí.",
         "thin_events": "En los últimos {days} días se notificaron {count} averías. Son demasiado pocas para dar una cifra.",

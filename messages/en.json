@@ -1277,6 +1277,7 @@
       "shareDetail": "About {percent} % of the time the ride was running.",
       "withheld": {
         "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
+        "park_never_reports": "The data source for this park does not report outages. We cannot see whether {name} breaks down.",
         "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
         "no_schedule": "This park publishes no opening hours, so we show no figures here.",
         "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",
