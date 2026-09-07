@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 16,
-    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54 — THE FIRST PASS, by 0.04, self-graded, caveat in the critique. Also graded at round 1: guests 7.91, shops 8.23, camera 8.38. tools is built and ungated. Ten modules graded, one passes. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 18,
+    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54, the first pass, by 0.04 and self-graded. Also graded at round 1: guests 7.91, shops 8.23, tools 8.29, trains 8.35, camera 8.38. TWELVE MODULES GRADED, ONE PASSES. The four closest miss by 0.04 (passed), 0.15, 0.21 and 0.27, and in every one of them the frame is the axis holding the total down while budget and determinism sit near 9. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -320,15 +320,22 @@
     },
     "trains": {
       "wave": 3,
-      "status": "built, ungated — 3,720 lines in 11 files plus an 86-check selftest wired as pnpm test:game-trains. THE COASTERS RUN. Worker half does dispatch, station dwell and the fleet state and publishes a transform buffer (7 trains / 43 cars / 1,204 bytes a frame); the main thread thin-instances the cars per style and interpolates between sim frames. Measured on the trains showcase: 7 trains, 49 cars, 3 styles, 15 meshes, 9 DRAW CALLS, 16,896 triangles, 2,396 per car at full detail — 0.75 % of the 1,200 draw-call budget for the whole fleet. Showcase frame 145 draw calls / 608,820 triangles, 0 console errors. The camera follows a moving train, which closes camera-round1.md's stated fidelity cap: armed on train:coaster-1:0, the camera target tracked the train to 0.00 m over 180 ticks as it ran x -117.5 -> -107.5. Chase-cam frame looked at. trainProfiles claimed as a pack category, read at boot AND on onPack, nothing switches on a pack or style id. The builder died on the account session limit — the fifth fan-out to do so — with no report and no requests file; the integrator finished its in-flight fix, ran the verification and wrote docs/game/reports/trains.md, and says so at the top of it. Weak: /game has no trains because the demo park cannot hold a coaster (open issue 0); two trains have never been photographed holding at a block; the cars are simple; there is no requests file, so any workaround in the module is unrecorded.",
-      "round": 0,
-      "score": null,
+      "status": "built, ungated — 3,720 lines in 11 files plus an 86-check selftest wired as pnpm test:game-trains. THE COASTERS RUN. Worker half does dispatch, station dwell and the fleet state and publishes a transform buffer (7 trains / 43 cars / 1,204 bytes a frame); the main thread thin-instances the cars per style and interpolates between sim frames. Measured on the trains showcase: 7 trains, 49 cars, 3 styles, 15 meshes, 9 DRAW CALLS, 16,896 triangles, 2,396 per car at full detail — 0.75 % of the 1,200 draw-call budget for the whole fleet. Showcase frame 145 draw calls / 608,820 triangles, 0 console errors. The camera follows a moving train, which closes camera-round1.md's stated fidelity cap: armed on train:coaster-1:0, the camera target tracked the train to 0.00 m over 180 ticks as it ran x -117.5 -> -107.5. Chase-cam frame looked at. trainProfiles claimed as a pack category, read at boot AND on onPack, nothing switches on a pack or style id. The builder died on the account session limit — the fifth fan-out to do so — with no report and no requests file; the integrator finished its in-flight fix, ran the verification and wrote docs/game/reports/trains.md, and says so at the top of it. Weak: /game has no trains because the demo park cannot hold a coaster (open issue 0); two trains have never been photographed holding at a block; the cars are simple; there is no requests file, so any workaround in the module is unrecorded. GRADED round 1: 8.35, FAIL by 0.15 — docs/game/critiques/trains-round1.md. Best budget in the game and not close: 49 cars for 9 draw calls, 16,896 triangles, 1,204 bytes a frame. The camera follows a moving train to 0.00 m over 180 ticks, which closes camera's stated fidelity cap. What holds it back: the block system has never been photographed doing its job (the single most valuable frame the module does not have), the cars are blocky at reading distance, /game still has no train because the demo park cannot hold a coaster, and there is no requests file.",
+      "round": 1,
+      "score": 8.35,
       "consoleErrors": 0,
-      "gated": false,
+      "gated": true,
       "lines": 3720,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 7.8,
+        "fidelity": 7.6,
+        "extensibility": 8.8,
+        "budget": 9.4,
+        "determinism": 9.2,
+        "reportHonesty": 8.0
+      },
+      "gradedAtCommit": "c12856c",
+      "hardGates": "all pass"
     },
     "guests": {
       "wave": 3,
@@ -387,15 +394,22 @@
     },
     "tools": {
       "wave": 4,
-      "status": "built, ungated — 2,677 lines in 11 files, 88-check selftest wired as pnpm test:game-tools. THE PLAYER CAN BUILD. Place, move, rotate and demolish with a ghost preview, a validity colour and a reason ('That is in the water.'), 0.25 m / 15 degrees snapping off by default, and undo/redo on the MAIN THREAD ONLY as two lists of core commands — nothing of it reaches the save. The palette is derived from the registry: 55 items in 6 groups from the two bundled packs, zero pack or item ids in the module's source, and registry.registerKind('building','buildings') flips ten items from refused to placeable with no code change (asserted in the selftest). Both halves of the onPack trap are covered. Measured: placement charges the manifest cost and undo refunds it to the cent (250,000,000 -> 249,996,500 -> 250,000,000); the worker's own save goes 1,605 -> 1,606 -> 1,605 bytes with the log tail entity:add, finance:adjust; the ghost costs exactly +3 draw calls; a tree's footprint is its trunk rather than its crown, which took buildable ground over the demo park from 35.0 % to 58.3 %. Not placeable: paths, coasters and flumes (routes, not points — listed and refused), and ride/building items are listed but unavailable because no module claims those kinds. The ghost is a footprint box, not a model; move is click-to-arm/click-to-drop rather than a drag; nobody has driven it with a hand. Outside its folder: lib/game/ui/hud.tsx +8/-3 and 40 tools.* keys in each i18n locale, both granted by the integrator because ui is an unowned placeholder.",
-      "round": 0,
-      "score": null,
+      "status": "built, ungated — 2,677 lines in 11 files, 88-check selftest wired as pnpm test:game-tools. THE PLAYER CAN BUILD. Place, move, rotate and demolish with a ghost preview, a validity colour and a reason ('That is in the water.'), 0.25 m / 15 degrees snapping off by default, and undo/redo on the MAIN THREAD ONLY as two lists of core commands — nothing of it reaches the save. The palette is derived from the registry: 55 items in 6 groups from the two bundled packs, zero pack or item ids in the module's source, and registry.registerKind('building','buildings') flips ten items from refused to placeable with no code change (asserted in the selftest). Both halves of the onPack trap are covered. Measured: placement charges the manifest cost and undo refunds it to the cent (250,000,000 -> 249,996,500 -> 250,000,000); the worker's own save goes 1,605 -> 1,606 -> 1,605 bytes with the log tail entity:add, finance:adjust; the ghost costs exactly +3 draw calls; a tree's footprint is its trunk rather than its crown, which took buildable ground over the demo park from 35.0 % to 58.3 %. Not placeable: paths, coasters and flumes (routes, not points — listed and refused), and ride/building items are listed but unavailable because no module claims those kinds. The ghost is a footprint box, not a model; move is click-to-arm/click-to-drop rather than a drag; nobody has driven it with a hand. Outside its folder: lib/game/ui/hud.tsx +8/-3 and 40 tools.* keys in each i18n locale, both granted by the integrator because ui is an unowned placeholder. GRADED round 1: 8.29, FAIL by 0.21 — docs/game/critiques/tools-round1.md. The first grade in this project taken against a report its own author wrote. Highest determinism and honesty pair on the branch: money to the cent through a place-and-undo, the worker's save measured in bytes either side, the ghost's cost isolated to +3 draw calls, and a rule changed AFTER measuring. What holds it back: the ghost is a footprint box rather than the object, move is click-arm-click rather than a drag, and 22 of 55 palette items are listed but unplaceable.",
+      "round": 1,
+      "score": 8.29,
       "consoleErrors": 0,
-      "gated": false,
+      "gated": true,
       "lines": 2677,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 7.6,
+        "fidelity": 7.4,
+        "extensibility": 9.0,
+        "budget": 9.0,
+        "determinism": 9.2,
+        "reportHonesty": 9.2
+      },
+      "gradedAtCommit": "c12856c",
+      "hardGates": "all pass"
     },
     "scenarios": {
       "wave": 4,
@@ -471,6 +485,7 @@
     "OPEN (harness, and now overdue): the 48-park-hour soak runs 576 ticks at 100x, which was written when there were no guests. There are now up to 928 of them and a shops till, and both were found to behave differently at different speeds — the frozen-needs bug was invisible at 100x and only bit at the speeds a player selects. The soak should run a second pass at a low speed for more integration steps per park-hour."
   ],
   "closedIssues": [
+    "CONFIRMED (harness): `pnpm game:warm-audit` shipped with the caveat that its own first clean run was pending — it had only ever been run as the probe it grew from, against a tree a builder was changing underneath it. It has now run clean end to end, exit 0, and reproduces the eleven values exactly: wetness 0 -> 0.963, guests 0 -> 82 -> 376, shops open 4 -> 7 and takingsToday 0 -> 3,950, plus the scene totals that follow from them. One thing the run says that the numbers do not: `trains` is absent from the list, because the demo park has no coaster and therefore no train — the audit only sees what the park contains, which is a limit of the tool and not of the module.",
     "camera, found and fixed during verification: the module inherited the renderer's opening pose (93.7 m up, 33.75 degrees down, horizonRow -138), so /game opened on a park with the horizon off the top of the frame and no sky in it. Invisible in every screenshot taken so far because the harness always applies a preset. main() now applies `overview` when there is nothing remembered to restore: 105.8 m, 15.5 degrees down, horizonRow 153.3. A remembered view, a showcase's direct write and ?cam= each still win over it, verified after the change.",
     "A FOURTH unsaved accumulator in `guests`, found in round 2 and fixed: `Venue.incoming`, the soft reservation `scoreVenue` divides by, was rebuilt to zero on every load, so the first plan after a resume was scored against an empty park. That makes four — the RNG streams, the gate's party debt, the thought cursor and now this — every one found by a field-by-field diff of two serialisations rather than by reading.",
     "GUESTS BUG, found by the shops builder because it had to explain why nobody was buying anything, and confirmed: needs did not rise at ANY speed a player can select. `d.needs` was a Uint8Array written through Math.round, and the per-tick rise is 0.0217 units at speed 1, 0.065 at 3, 0.108 at 5 and 0.217 at 10 — every one rounds to zero. It moves only at 100x, which is the speed the SOAK runs at, so the one test exercising this module ran at the single speed where the bug is invisible. Measured before: 934 of 944 guests idle with no destination after three park hours, mean hunger 24 against urgentAt 170. After widening the column to Float32: mean hunger 115.6 / 116.0 / 115.8 at speeds 1/3/5 after 300 park minutes, identical across speeds, which is what a time-based decay must be. A save written before the widening still loads (u8 read and widened).",
