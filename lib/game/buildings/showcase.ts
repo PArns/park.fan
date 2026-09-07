@@ -161,7 +161,10 @@ const SHOWCASE_PACK = {
     // — measured on the first round's `0900-overview.png`, where the whole set was a smudge a
     // hundred pixels wide. A showcase knows where its own street is.
     { id: 'overview', target: [0, 7, 4], bearing: 30, pitch: 21, distance: 132 },
-    { id: 'close', target: [0, 6, 12], bearing: 35, pitch: 12, distance: 58 },
+    // The clock tower from the plaza, and one building rather than a roofscape. Anchored on the
+    // centroid of the `building` entities the camera ends up over the terrace at 20 m, which is
+    // above their ridges: two rounds of `close` came back as a picture of slate.
+    { id: 'close', target: [-22, 7, -12], bearing: 125, pitch: 9, distance: 44 },
     // Two metres from a facade: the only frame in the set where a brick, a sash bar and a sill are
     // each more than a pixel, and therefore the only one that can answer whether they are there.
     { id: 'facade', target: [-16, 6, 46], bearing: 92, pitch: 5, distance: 17 },
