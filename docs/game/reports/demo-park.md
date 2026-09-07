@@ -70,16 +70,26 @@ Flattened, blended into the surrounding land, and each one served by a path. Coo
 centre; sizes are metres. `PADS` in `plan.ts` is the source, and `demo-park.plots()` answers with
 the same list at runtime.
 
-| plot           | for         | centre (x, z) | size    | height | how it is served                                                                    |
-| -------------- | ----------- | ------------- | ------- | ------ | ----------------------------------------------------------------------------------- |
-| `coaster`      | `track`     | (−96, −52)    | 58 × 48 | 8.0 m  | ringed by `coaster-loop`, ~10 m clearance; the `coaster` camera preset points at it |
-| `fairground`   | `rides`     | (96, −46)     | 48 × 42 | 2.6 m  | ringed by `fairground-loop`                                                         |
-| `water-park`   | `pools`     | (112, 50)     | 44 × 32 | 1.2 m  | `water-forecourt` plaza on its west side; the `pool` preset points at it            |
-| `flumes`       | `flumes`    | (168, 18)     | 36 × 30 | 2.2 m  | `lake-link` runs along its west edge, 4 m off                                       |
-| `pavilion`     | `buildings` | (−8, −162)    | 56 × 32 | 7.0 m  | `pavilion-plaza` forecourt at (−8, −130), on the north walk                         |
-| `shops-west`   | `shops`     | (−19, 120)    | 14 × 44 | street | main-street frontage, already flat                                                  |
-| `shops-east`   | `shops`     | (19, 120)     | 14 × 44 | street | main-street frontage                                                                |
-| `shops-market` | `shops`     | (19, 44)      | 14 × 32 | street | between the two squares, the busiest stretch of path in the park                    |
+> **Two of them are no longer empty, and one of them is a warning.** `fairground` carries four flat
+> rides and `water-park` a lido, a children's pool and a whirlpool; both were placed by the
+> integrator from the owning module's own request file, because a builder may not edit this folder.
+> The water park is worth reading about before the next plot is filled: the `pools` module measured
+> its own footprints against this pad and reported that the kids' pool in the layout **it had just
+> proposed** hangs seven metres past the east edge. So the placement here is not the requested one.
+> A request that measures itself against the pad is the difference between a plot that fills and a
+> plot that fills wrong — `rides` asked for one that overlapped two machines by ten metres, and the
+> only reason it did not ship is that somebody re-measured it here.
+
+| plot           | for         | centre (x, z) | size    | height | how it is served                                                                                      |
+| -------------- | ----------- | ------------- | ------- | ------ | ----------------------------------------------------------------------------------------------------- |
+| `coaster`      | `track`     | (−96, −52)    | 58 × 48 | 8.0 m  | ringed by `coaster-loop`, ~10 m clearance; the `coaster` camera preset points at it                   |
+| `fairground`   | `rides`     | (96, −46)     | 48 × 42 | 2.6 m  | ringed by `fairground-loop`                                                                           |
+| `water-park`   | `pools`     | (112, 50)     | 44 × 32 | 1.2 m  | **filled**: lido, kids' pool, whirlpool. `water-forecourt` plaza west; the `pool` preset points at it |
+| `flumes`       | `flumes`    | (168, 18)     | 36 × 30 | 2.2 m  | `lake-link` runs along its west edge, 4 m off                                                         |
+| `pavilion`     | `buildings` | (−8, −162)    | 56 × 32 | 7.0 m  | `pavilion-plaza` forecourt at (−8, −130), on the north walk                                           |
+| `shops-west`   | `shops`     | (−19, 120)    | 14 × 44 | street | main-street frontage, already flat                                                                    |
+| `shops-east`   | `shops`     | (19, 120)     | 14 × 44 | street | main-street frontage                                                                                  |
+| `shops-market` | `shops`     | (19, 44)      | 14 × 32 | street | between the two squares, the busiest stretch of path in the park                                      |
 
 The park gate — what `PathsMainApi.entrance()` answers with — is the first node of `gate`, at
 **(0, 228)**. Guests will arrive there.
