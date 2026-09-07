@@ -2045,7 +2045,9 @@
     },
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",
-      "downYesterday": "War gestern den ganzen Tag außer Betrieb."
+      "downYesterday": "War gestern den ganzen Tag außer Betrieb.",
+      "afterClose": "Liegt nach Parkschluss.",
+      "maybeAfterClose": "Kann schon nach Parkschluss liegen."
     },
     "custom": {
       "add": "Eigener Block",
@@ -2069,11 +2071,6 @@
       "run": "Tag optimieren",
       "running": "Sortiert …",
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
-      "choiceTitle": "Nicht alle Headliner passen in den Tag",
-      "choiceBody": "Vor Parkschluss ist Platz für {fits} von {total}. Nimm raus, worauf du am ehesten verzichtest.",
-      "choiceConfirm": "{count, plural, one {1 Bahn einplanen} other {# Bahnen einplanen}}",
-      "choiceDrops": "fällt weg",
-      "choicePeak": "Spitze {minutes} Min.",
       "saved": "{minutes} Min. weniger Warten",
       "already": "Passt schon so",
       "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
@@ -2084,6 +2081,41 @@
       "overflow": "{count, plural, one {eine passt nicht mehr in den Tag} other {# passen nicht mehr in den Tag}}",
       "capped": "{count, plural, one {eine Bahn blieb außen vor, der Planer sortiert höchstens {max} Stopps} other {# Bahnen blieben außen vor, der Planer sortiert höchstens {max} Stopps}}",
       "undo": "Rückgängig"
+    },
+    "fit": {
+      "title": "Nicht alles passt in den Tag",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Stellschrauben",
+        "rides": "Wichtigkeit",
+        "result": "Ergebnis"
+      },
+      "allFit": "{count, plural, one {Eine Bahn passt in den Tag} other {Alle # Bahnen passen in den Tag}}",
+      "someFit": "Platz für {fits} von {total} Bahnen",
+      "endsAt": "letzte Bahn bis {time}",
+      "queueing": "{duration} Warten",
+      "leversBody": "Das schafft Platz, ohne dass du eine Bahn streichst. Tipp an, was du ändern würdest.",
+      "leversNone": "An den Blöcken liegt es nicht, auch ohne sie bleibt es zu eng. Im nächsten Schritt legst du fest, welche Bahnen dir am wichtigsten sind.",
+      "leverDrop": "Ohne {label}",
+      "leverShorten": "{label} auf {minutes} Min. kürzen",
+      "leverDropAll": "Ohne die freien Blöcke",
+      "leverSolves": "Dann passt der ganze Plan",
+      "leverHelps": "Dann passen {fits} von {total}",
+      "ridesBody": "Ganz oben steht, was du auf keinen Fall verpassen willst. Gestrichen wird von unten. Nimm den Haken raus, worauf du verzichten kannst.",
+      "drops": "fällt weg",
+      "peak": "Spitze {minutes} Min.",
+      "headliner": "Headliner",
+      "pin": "Nach oben",
+      "pinHint": "Ganz nach oben, wird als Letztes gestrichen",
+      "resultRides": "Im Tag",
+      "resultEnd": "Letzte Bahn bis",
+      "resultWait": "Wartezeit zusammen",
+      "resultOut": "Bleibt draußen",
+      "resultHint": "Im Planer kannst du danach weiter schieben, löschen und neu sortieren.",
+      "apply": "Plan übernehmen",
+      "applied": "{count, plural, one {Eine Bahn eingeplant} other {# Bahnen eingeplant}}",
+      "leftOut": "{count, plural, one {eine bleibt draußen} other {# bleiben draußen}}",
+      "adjust": "Anpassen"
     },
     "sheet": {
       "handle": "Planer vergrößern oder schließen",
@@ -2159,7 +2191,8 @@
       "steps": {
         "park": "Park",
         "date": "Tag",
-        "setup": "Wer kommt mit"
+        "setup": "Wer kommt mit",
+        "headliners": "Große Bahnen"
       },
       "back": "Zurück",
       "next": "Weiter",
@@ -2180,7 +2213,9 @@
       "headliners": {
         "label": "Headliner einplanen",
         "hint": "Legt die {count} großen Bahnen in den Tag, sortiert nach ihren Stundenkurven.",
-        "hintTight": "Vor Parkschluss ist Platz für {fits} von {total}. Welche das sind, kannst du im Planer ändern."
+        "hintTight": "Vor Parkschluss ist Platz für {fits} von {total}.",
+        "conflict": "Es passen {fits} von {total}. Nimm den Haken raus, worauf du verzichtest, oder heb hoch, was du unbedingt fahren willst.",
+        "none": "Für diesen Tag fehlt keine große Bahn mehr."
       },
       "facts": {
         "title": "Was wir über den Tag wissen",

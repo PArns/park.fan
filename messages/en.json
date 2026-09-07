@@ -2045,7 +2045,9 @@
     },
     "warn": {
       "closedNow": "Reporting closed right now.",
-      "downYesterday": "Was out of service all day yesterday."
+      "downYesterday": "Was out of service all day yesterday.",
+      "afterClose": "Starts after the park closes.",
+      "maybeAfterClose": "May already be after closing time."
     },
     "custom": {
       "add": "Own block",
@@ -2069,11 +2071,6 @@
       "run": "Optimise the day",
       "running": "Sorting …",
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
-      "choiceTitle": "Not every headliner fits into the day",
-      "choiceBody": "There is room for {fits} of {total} before the park closes. Untick whatever you would give up first.",
-      "choiceConfirm": "{count, plural, one {Plan 1 ride} other {Plan # rides}}",
-      "choiceDrops": "drops out",
-      "choicePeak": "peak {minutes} min",
       "saved": "{minutes} min less queueing",
       "already": "Already in the right order",
       "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
@@ -2084,6 +2081,41 @@
       "overflow": "{count, plural, one {one no longer fits the day} other {# no longer fit the day}}",
       "capped": "{count, plural, one {one ride was left out, the planner sorts at most {max} stops} other {# rides were left out, the planner sorts at most {max} stops}}",
       "undo": "Undo"
+    },
+    "fit": {
+      "title": "Not everything fits into the day",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Adjustments",
+        "rides": "Priorities",
+        "result": "Result"
+      },
+      "allFit": "{count, plural, one {One ride fits into the day} other {All # rides fit into the day}}",
+      "someFit": "Room for {fits} of {total} rides",
+      "endsAt": "last ride by {time}",
+      "queueing": "{duration} queuing",
+      "leversBody": "These make room without dropping a ride. Tap what you would change.",
+      "leversNone": "The blocks are not the problem, it stays too tight without them. The next step is where you say which rides matter most.",
+      "leverDrop": "Without {label}",
+      "leverShorten": "Cut {label} to {minutes} min",
+      "leverDropAll": "Without the free blocks",
+      "leverSolves": "Then the whole plan fits",
+      "leverHelps": "Then {fits} of {total} fit",
+      "ridesBody": "What you must not miss goes to the top. Cuts come from the bottom. Untick whatever you can do without.",
+      "drops": "drops out",
+      "peak": "peak {minutes} min",
+      "headliner": "Headliner",
+      "pin": "Move to the top",
+      "pinHint": "Move to the top, dropped last",
+      "resultRides": "In the day",
+      "resultEnd": "Last ride by",
+      "resultWait": "Time queuing in total",
+      "resultOut": "Left out",
+      "resultHint": "You can still drag, delete and re-sort everything in the planner afterwards.",
+      "apply": "Apply plan",
+      "applied": "{count, plural, one {One ride planned} other {# rides planned}}",
+      "leftOut": "{count, plural, one {one is left out} other {# are left out}}",
+      "adjust": "Adjust"
     },
     "sheet": {
       "handle": "Resize or close the planner",
@@ -2159,7 +2191,8 @@
       "steps": {
         "park": "Park",
         "date": "Day",
-        "setup": "Who’s coming"
+        "setup": "Who’s coming",
+        "headliners": "Big rides"
       },
       "back": "Back",
       "next": "Next",
@@ -2180,7 +2213,9 @@
       "headliners": {
         "label": "Plan the headliners",
         "hint": "Puts the {count} big rides into the day, ordered by their hourly curves.",
-        "hintTight": "There is room for {fits} of {total} before the park closes. You can change which ones in the planner."
+        "hintTight": "There is room for {fits} of {total} before the park closes.",
+        "conflict": "{fits} of {total} fit. Untick what you can do without, or move up what you really want to ride.",
+        "none": "No big ride is missing from this day."
       },
       "facts": {
         "title": "What we know about the day",

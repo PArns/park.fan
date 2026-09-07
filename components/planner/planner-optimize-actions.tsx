@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useSyncExternalStore } from 'react';
-import { useTranslations } from 'next-intl';
-import { Crown, Undo2, Wand2 } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { AlertTriangle, Crown, SlidersHorizontal, Undo2, Wand2 } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import {
   MAX_STOPS,
@@ -13,9 +13,18 @@ import {
   optimizeDay,
   scoreCurrent,
 } from '@/lib/planner/optimize';
-import { PlannerHeadlinerChoice } from './planner-headliner-choice';
+import {
+  evaluateFit,
+  fitBlocks,
+  fitChoiceAll,
+  fitWishes,
+  needsFitHelp,
+  type FitChoice,
+  type FitInput,
+} from '@/lib/planner/fit';
+import { PlannerFitAssistant } from './planner-fit-assistant';
 import { trackPlanOptimized } from '@/lib/analytics/umami';
-import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
+import { dayClock, longDate, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import {
   getMinuteTick,
   getZero,
@@ -65,6 +74,16 @@ interface PlannerOptimizeActionsProps {
  * {@link MAX_STOPS} cut the search short, since the before-figure counts every
  * entry and the after-figure only the ones that made it in.
  *
+ * **A day that cannot hold what was asked for opens the assistant instead.**
+ * That is the change this file exists for now. Both presses probe first
+ * (`needsFitHelp`), and where something would be left out — a headliner the
+ * engine drops, or an entry it can only park past the gate — nothing is
+ * written and `PlannerFitAssistant` asks the question instead. What used to
+ * happen was a plan applied silently and a clause in an eleven-pixel grey line
+ * saying „eine passt nicht mehr in den Tag", beside a block drawn at 18:45 in a
+ * park that shuts at 18:00. The information was there; it did not read as
+ * something to act on, and there was nothing to act on it WITH.
+ *
  * Neither button appears where it could not mean anything. A park whose wait
  * times nobody can read (Hansa-Park) aggregates to the same assumed nothing for
  * every ride, so every order is as good as every other and `canOptimize` says
@@ -72,13 +91,6 @@ interface PlannerOptimizeActionsProps {
  * the headliner button is gone once they are all in, like the band above it. It
  * is NOT gone where exactly one headliner is missing, which the engine used to
  * refuse to plan — the button was there, and pressing it did nothing.
- *
- * **And it stays where a headliner simply does not fit**, which is not the same
- * fault. Phantasialand has ten of them and a nine-hour day, so the last one has
- * nowhere to go; the optimiser leaves it out rather than drawing it in the
- * closed hours, and `optimize.overflow` says so under the button every time it
- * is pressed. That is a standing offer rather than a dead control — delete a
- * ride and it goes in — and the sentence is what keeps it from reading as one.
  *
  * **Two more cases where nothing is drawn, and both are about the clock.** A day
  * that has been walked is a record: sorting yesterday would rewrite what
@@ -100,6 +112,7 @@ export function PlannerOptimizeActions({
   prefs,
 }: PlannerOptimizeActionsProps) {
   const t = useTranslations('planner');
+  const locale = useLocale();
   const { state, applyPlan, restoreDay } = usePlanner();
   /**
    * The day as it was before the last press, and the sentence about it.
@@ -124,6 +137,14 @@ export function PlannerOptimizeActions({
     parkSlug: string;
     date: string;
     text: string;
+    /**
+     * Something the visitor asked for is not in the day.
+     *
+     * It decides how the sentence is DRAWN, and that is the whole point: the
+     * same clause in the same grey line was what the report called too subtle.
+     * A day that lost nothing keeps the muted line it always had.
+     */
+    alert: boolean;
   } | null>(null);
   const [undoTo, setUndoTo] = useState<{
     parkSlug: string;
@@ -135,16 +156,16 @@ export function PlannerOptimizeActions({
    *
    * Keyed on (park, date) like the two above and for the same reason: the panel
    * can be switched to another day underneath an open dialog, and a "plan these
-   * nine" pressed afterwards would file another park's slugs into it.
+   * nine" pressed afterwards would file another park's slugs into it. The whole
+   * `FitInput` is held rather than rebuilt per render, so the dialog's own
+   * memos stay stable while somebody ticks their way through it.
    */
-  const [conflict, setConflict] = useState<{
+  const [fit, setFit] = useState<{
     parkSlug: string;
     date: string;
-    /** Increments per press, so the dialog remounts with everything ticked. */
+    /** Increments per press, so the dialog remounts with a fresh answer. */
     nonce: number;
-    rides: PlanDayRide[];
-    fits: number;
-    wouldDrop: Set<string>;
+    input: FitInput;
   } | null>(null);
 
   const entries = state.parks[parkSlug]?.days[date]?.entries ?? [];
@@ -189,46 +210,38 @@ export function PlannerOptimizeActions({
 
   const shownResult = result?.parkSlug === parkSlug && result?.date === date ? result : null;
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
-  const shownConflict =
-    conflict?.parkSlug === parkSlug && conflict?.date === date ? conflict : null;
+  const shownFit = fit?.parkSlug === parkSlug && fit?.date === date ? fit : null;
+
+  /** Everything the assistant reasons over, for one press. */
+  const fitInputFor = (add: readonly PlanDayRide[]): FitInput => ({
+    day,
+    grid,
+    entries,
+    wishes: fitWishes(day, entries, add, clock),
+    blocks: fitBlocks(entries),
+    clock,
+  });
 
   /**
-   * "Plan every headliner", which on a full day is a question rather than a
-   * command.
+   * Press, probe, and only then decide whether this is a question.
    *
-   * The plan is computed BEFORE anything is written, purely to find out whether
-   * the day holds them all. Where it does — the common case — this is the press
-   * it always was and nothing is asked. Where it does not, the visitor gets to
-   * say which ones they would rather give up, because the engine's own answer
-   * (least expected queue first) is a good default and is still a decision
-   * about somebody else's day.
-   *
-   * The probe costs a second search, 5–15 ms on the day this was reported. It
-   * is thrown away and the chosen set is planned from scratch, so what lands on
-   * the axis is always the plan for the set that was actually agreed.
+   * The probe is one search — 5–50 ms on the days this was reported — and it is
+   * thrown away: what lands on the axis is always planned from the set that was
+   * actually agreed. Where the day holds everything (the common case) nothing
+   * is asked and the press is the press it always was; a dialog on the way to a
+   * button that would have done the right thing is a dialog people learn to
+   * dismiss.
    */
-  const runHeadliners = () => {
-    const plan = optimizeDay({ day, grid, entries, add: missing, clock });
-    const wouldDrop = new Set(
-      missing
-        .filter((ride) => !plan?.stops.some((s) => s.attractionSlug === ride.attractionSlug))
-        .map((ride) => ride.attractionSlug)
-    );
-    if (plan && wouldDrop.size > 0) {
-      setConflict({
-        parkSlug,
-        date,
-        nonce: (conflict?.nonce ?? 0) + 1,
-        rides: missing,
-        fits: missing.length - wouldDrop.size,
-        wouldDrop,
-      });
+  const attempt = (add: readonly PlanDayRide[]) => {
+    const input = fitInputFor(add);
+    if (input.wishes.length > 0 && needsFitHelp(input, fitChoiceAll())) {
+      setFit({ parkSlug, date, nonce: (fit?.nonce ?? 0) + 1, input });
       return;
     }
-    run(missing);
+    run(add);
   };
 
-  const run = (add: typeof missing, priority?: readonly string[]) => {
+  const run = (add: readonly PlanDayRide[], priority?: readonly string[]) => {
     // The clock goes to BOTH, and for two different reasons. `optimizeDay` uses
     // it as a floor and as a membership rule; `scoreCurrent` only as the second
     // — it scores the day where the blocks actually are, so a floor there would
@@ -244,7 +257,7 @@ export function PlannerOptimizeActions({
       // then pressing "Tag optimieren" to check is one gesture a visitor
       // actually makes, and clearing the undo here took away the only way back
       // from the press before it — on the press that changed nothing.
-      setResult({ parkSlug, date, text: t('optimize.already') });
+      setResult({ parkSlug, date, text: t('optimize.already'), alert: false });
       return;
     }
 
@@ -295,7 +308,43 @@ export function PlannerOptimizeActions({
     if (plan.capped > 0) {
       parts.push(t('optimize.capped', { count: plan.capped, max: MAX_STOPS }));
     }
-    setResult({ parkSlug, date, text: parts.join(' · ') });
+    setResult({ parkSlug, date, text: parts.join(' · '), alert: plan.overflow > 0 });
+  };
+
+  /**
+   * The assistant's answer, written in two moves.
+   *
+   * `restoreDay` first, with the entries the choice leaves — that is what takes
+   * a ride the visitor unticked out of the day, and it is the one place in the
+   * app where a plan loses an entry it was not asked about ride by ride.
+   * `applyPlan` then lays the schedule over what is left. Two writes rather
+   * than one because they are two different statements about the day, and the
+   * undo snapshot is taken before both, so „Rückgängig" puts back the day that
+   * was on screen when the dialog opened.
+   */
+  const applyChoice = (input: FitInput, choice: FitChoice) => {
+    const outcome = evaluateFit(input, choice);
+    setUndoTo({ parkSlug, date, entries: entries.map((entry) => ({ ...entry })) });
+    restoreDay(parkSlug, date, outcome.entries);
+    applyPlan({
+      parkSlug,
+      parkName,
+      geo,
+      timezone,
+      date,
+      stops: outcome.stops.map((stop) => ({
+        entryId: stop.entryId,
+        attractionSlug: stop.attractionSlug,
+        attractionName: stop.attractionName,
+        startMinute: stop.startMinute,
+      })),
+    });
+    trackPlanOptimized(parkName);
+
+    const left = outcome.missed.length + choice.dropped.size;
+    const parts = [t('fit.applied', { count: outcome.fitted.length })];
+    if (left > 0) parts.push(t('fit.leftOut', { count: left }));
+    setResult({ parkSlug, date, text: parts.join(' · '), alert: left > 0 });
   };
 
   return (
@@ -307,7 +356,7 @@ export function PlannerOptimizeActions({
         {missing.length > 0 && (
           <button
             type="button"
-            onClick={runHeadliners}
+            onClick={() => attempt(missing)}
             data-planner-optimize-headliners=""
             title={t('optimize.hint')}
             className={cn(
@@ -322,7 +371,7 @@ export function PlannerOptimizeActions({
         {canSort && (
           <button
             type="button"
-            onClick={() => run([])}
+            onClick={() => attempt([])}
             data-planner-optimize-run=""
             title={t('optimize.hint')}
             className={cn(
@@ -338,14 +387,44 @@ export function PlannerOptimizeActions({
       {/* Polite rather than assertive: it reports something the reader asked for
           and can see on the axis above, so it does not interrupt them. The undo
           sits IN the sentence that says what happened, because that sentence is
-          the only place a reader is looking after the press. */}
+          the only place a reader is looking after the press.
+
+          A day that came out short is drawn differently, and that difference is
+          the report this work started from: the same clause in the same grey
+          line („eine passt nicht mehr in den Tag") sat under a block filed at
+          18:45 in a park that shuts at 18:00 and read as decoration. It gets the
+          crowd tint, the warning mark and — the part that matters — a way back
+          into the assistant, because a notice about a problem with no control
+          beside it is a notice nobody can answer. */}
       {shownResult && (
-        <p
+        <div
           role="status"
           data-planner-optimize-result=""
-          className="text-muted-foreground flex flex-wrap items-baseline gap-x-2 text-[11px] leading-snug"
+          data-planner-optimize-alert={shownResult.alert ? '' : undefined}
+          className={cn(
+            'flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[11px] leading-snug',
+            shownResult.alert
+              ? 'border-crowd-high/40 bg-crowd-high/10 text-crowd-high rounded-md border px-2 py-1.5'
+              : 'text-muted-foreground'
+          )}
         >
-          <span>{shownResult.text}</span>
+          {shownResult.alert && (
+            <AlertTriangle className="size-3.5 shrink-0 self-center" aria-hidden="true" />
+          )}
+          <span className={cn('min-w-0 flex-1', shownResult.alert && 'font-medium')}>
+            {shownResult.text}
+          </span>
+          {shownResult.alert && (
+            <button
+              type="button"
+              onClick={() => attempt([])}
+              data-planner-optimize-adjust=""
+              className="hover:bg-crowd-high/15 inline-flex items-center gap-1 rounded px-1 py-0.5 underline underline-offset-2 transition-colors"
+            >
+              <SlidersHorizontal className="size-3 shrink-0" aria-hidden="true" />
+              {t('fit.adjust')}
+            </button>
+          )}
           {shownUndo && (
             <button
               type="button"
@@ -358,38 +437,36 @@ export function PlannerOptimizeActions({
                 setResult(null);
               }}
               data-planner-optimize-undo=""
-              className="hover:text-foreground inline-flex items-center gap-1 underline underline-offset-2 transition-colors"
+              className={cn(
+                'inline-flex items-center gap-1 underline underline-offset-2 transition-colors',
+                shownResult.alert
+                  ? 'hover:bg-crowd-high/15 rounded px-1 py-0.5'
+                  : 'hover:text-foreground'
+              )}
             >
               <Undo2 className="size-3 shrink-0" aria-hidden="true" />
               {t('optimize.undo')}
             </button>
           )}
-        </p>
+        </div>
       )}
 
       {/* Only ever mounted with a conflict in hand, so the day that holds every
           headliner never pays for it — no dialog, no reset effect, no listener.
-          See `PlannerHeadlinerChoice`. */}
-      {shownConflict && (
-        <PlannerHeadlinerChoice
-          key={`${shownConflict.parkSlug}:${shownConflict.date}:${shownConflict.nonce}`}
+          See `PlannerFitAssistant`. */}
+      {shownFit && (
+        <PlannerFitAssistant
+          key={`${shownFit.parkSlug}:${shownFit.date}:${shownFit.nonce}`}
           open
           onOpenChange={(next) => {
-            if (!next) setConflict(null);
+            if (!next) setFit(null);
           }}
-          rides={shownConflict.rides}
-          fits={shownConflict.fits}
-          wouldDrop={shownConflict.wouldDrop}
-          onConfirm={(slugs) => {
-            const chosen = shownConflict.rides.filter((ride) =>
-              slugs.includes(ride.attractionSlug)
-            );
-            setConflict(null);
-            // The order they were listed in is the order they are given up in,
-            // which is what `priority` means to the engine: whatever the
-            // visitor ticked, if even that does not fit, the ones at the bottom
-            // of the list go first.
-            run(chosen, slugs);
+          parkName={parkName}
+          dateLabel={longDate(date, locale)}
+          input={shownFit.input}
+          onConfirm={(choice) => {
+            setFit(null);
+            applyChoice(shownFit.input, choice);
           }}
         />
       )}

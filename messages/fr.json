@@ -2045,7 +2045,9 @@
     },
     "warn": {
       "closedNow": "Signalée fermée en ce moment.",
-      "downYesterday": "Est restée hors service toute la journée d’hier."
+      "downYesterday": "Est restée hors service toute la journée d’hier.",
+      "afterClose": "Commence après la fermeture.",
+      "maybeAfterClose": "Peut déjà être après la fermeture."
     },
     "custom": {
       "add": "Bloc personnel",
@@ -2069,11 +2071,6 @@
       "run": "Optimiser la journée",
       "running": "Tri en cours …",
       "hint": "Classe les attractions selon leurs courbes horaires, les trajets entre elles et leurs horaires d’ouverture. Les pauses et les attractions déjà faites ne bougent pas.",
-      "choiceTitle": "Toutes les attractions phares n’entrent pas dans la journée",
-      "choiceBody": "Il y a de la place pour {fits} sur {total} avant la fermeture. Décochez ce dont vous vous passeriez en premier.",
-      "choiceConfirm": "{count, plural, one {Planifier 1 attraction} other {Planifier # attractions}}",
-      "choiceDrops": "laissée de côté",
-      "choicePeak": "pointe {minutes} min",
       "saved": "{minutes} min d’attente en moins",
       "already": "L’ordre est déjà le bon",
       "fitted": "{count, plural, one {une attraction entre maintenant dans la journée} other {# attractions entrent maintenant dans la journée}}",
@@ -2084,6 +2081,41 @@
       "overflow": "{count, plural, one {une n’entre plus dans la journée} other {# n’entrent plus dans la journée}}",
       "capped": "{count, plural, one {une attraction est restée de côté, le planificateur classe au plus {max} étapes} other {# attractions sont restées de côté, le planificateur classe au plus {max} étapes}}",
       "undo": "Annuler"
+    },
+    "fit": {
+      "title": "Tout ne rentre pas dans la journée",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Ajustements",
+        "rides": "Priorités",
+        "result": "Résultat"
+      },
+      "allFit": "{count, plural, one {Une attraction rentre dans la journée} other {Les # attractions rentrent dans la journée}}",
+      "someFit": "De la place pour {fits} attractions sur {total}",
+      "endsAt": "dernière attraction jusqu’à {time}",
+      "queueing": "{duration} d’attente",
+      "leversBody": "De quoi gagner de la place sans renoncer à une attraction. Touchez ce que vous changeriez.",
+      "leversNone": "Les blocs n’y sont pour rien, même sans eux c’est trop juste. À l’étape suivante, vous dites quelles attractions comptent le plus.",
+      "leverDrop": "Sans {label}",
+      "leverShorten": "Réduire {label} à {minutes} min",
+      "leverDropAll": "Sans les blocs libres",
+      "leverSolves": "Tout le plan rentre alors",
+      "leverHelps": "{fits} sur {total} rentrent alors",
+      "ridesBody": "En haut, ce que vous ne voulez surtout pas manquer. On coupe par le bas. Décochez ce dont vous pouvez vous passer.",
+      "drops": "saute",
+      "peak": "pic {minutes} min",
+      "headliner": "Attraction phare",
+      "pin": "Tout en haut",
+      "pinHint": "Tout en haut, sautera en dernier",
+      "resultRides": "Dans la journée",
+      "resultEnd": "Dernière attraction jusqu’à",
+      "resultWait": "Temps d’attente cumulé",
+      "resultOut": "Laissé de côté",
+      "resultHint": "Dans le planning, vous pourrez encore déplacer, supprimer et retrier.",
+      "apply": "Appliquer le plan",
+      "applied": "{count, plural, one {Une attraction planifiée} other {# attractions planifiées}}",
+      "leftOut": "{count, plural, one {une reste de côté} other {# restent de côté}}",
+      "adjust": "Ajuster"
     },
     "sheet": {
       "handle": "Agrandir ou fermer le planificateur",
@@ -2159,7 +2191,8 @@
       "steps": {
         "park": "Parc",
         "date": "Jour",
-        "setup": "Qui vient"
+        "setup": "Qui vient",
+        "headliners": "Attractions phares"
       },
       "back": "Retour",
       "next": "Suivant",
@@ -2180,7 +2213,9 @@
       "headliners": {
         "label": "Planifier les attractions phares",
         "hint": "Place les {count} grandes attractions dans la journée, selon leurs courbes horaires.",
-        "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture. Vous choisirez lesquelles dans le planning."
+        "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture.",
+        "conflict": "{fits} sur {total} rentrent. Décochez ce dont vous pouvez vous passer, ou remontez ce que vous voulez absolument faire.",
+        "none": "Aucune attraction phare ne manque pour cette journée."
       },
       "facts": {
         "title": "Ce que nous savons de cette journée",

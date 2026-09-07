@@ -2045,7 +2045,9 @@
     },
     "warn": {
       "closedNow": "Al momento risulta chiusa.",
-      "downYesterday": "Ieri è rimasta ferma tutto il giorno."
+      "downYesterday": "Ieri è rimasta ferma tutto il giorno.",
+      "afterClose": "Inizia dopo la chiusura.",
+      "maybeAfterClose": "Potrebbe essere già dopo la chiusura."
     },
     "custom": {
       "add": "Blocco personale",
@@ -2069,11 +2071,6 @@
       "run": "Ottimizza la giornata",
       "running": "Riordino …",
       "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
-      "choiceTitle": "Non entrano tutte le attrazioni principali",
-      "choiceBody": "Prima della chiusura c’è posto per {fits} su {total}. Togli la spunta a ciò a cui rinunceresti per primo.",
-      "choiceConfirm": "{count, plural, one {Pianifica 1 attrazione} other {Pianifica # attrazioni}}",
-      "choiceDrops": "resta fuori",
-      "choicePeak": "picco {minutes} min",
       "saved": "{minutes} min di coda in meno",
       "already": "L’ordine va già bene",
       "fitted": "{count, plural, one {una attrazione ora entra nella giornata} other {# attrazioni ora entrano nella giornata}}",
@@ -2084,6 +2081,41 @@
       "overflow": "{count, plural, one {una non entra più nella giornata} other {# non entrano più nella giornata}}",
       "capped": "{count, plural, one {una attrazione è rimasta fuori, il pianificatore ordina al massimo {max} tappe} other {# attrazioni sono rimaste fuori, il pianificatore ordina al massimo {max} tappe}}",
       "undo": "Annulla"
+    },
+    "fit": {
+      "title": "Non ci sta tutto nella giornata",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Modifiche",
+        "rides": "Priorità",
+        "result": "Risultato"
+      },
+      "allFit": "{count, plural, one {Una attrazione entra nella giornata} other {Tutte le # attrazioni entrano nella giornata}}",
+      "someFit": "Posto per {fits} attrazioni su {total}",
+      "endsAt": "ultima attrazione entro le {time}",
+      "queueing": "{duration} di attesa",
+      "leversBody": "Così si guadagna posto senza rinunciare a un’attrazione. Tocca quello che cambieresti.",
+      "leversNone": "Non sono i blocchi, anche senza resta troppo stretta. Nel passo successivo scegli quali attrazioni contano di più.",
+      "leverDrop": "Senza {label}",
+      "leverShorten": "Ridurre {label} a {minutes} min",
+      "leverDropAll": "Senza i blocchi liberi",
+      "leverSolves": "Allora ci sta tutto il piano",
+      "leverHelps": "Allora ne entrano {fits} su {total}",
+      "ridesBody": "In cima va quello che non vuoi perderti. Si taglia dal basso. Togli la spunta a ciò di cui puoi fare a meno.",
+      "drops": "salta",
+      "peak": "picco {minutes} min",
+      "headliner": "Attrazione principale",
+      "pin": "In cima",
+      "pinHint": "In cima, salta per ultima",
+      "resultRides": "Nella giornata",
+      "resultEnd": "Ultima attrazione entro le",
+      "resultWait": "Attesa complessiva",
+      "resultOut": "Resta fuori",
+      "resultHint": "Nel pianificatore puoi ancora spostare, eliminare e riordinare.",
+      "apply": "Applica il piano",
+      "applied": "{count, plural, one {Una attrazione pianificata} other {# attrazioni pianificate}}",
+      "leftOut": "{count, plural, one {una resta fuori} other {# restano fuori}}",
+      "adjust": "Modifica"
     },
     "sheet": {
       "handle": "Ingrandisci o chiudi il pianificatore",
@@ -2159,7 +2191,8 @@
       "steps": {
         "park": "Parco",
         "date": "Giorno",
-        "setup": "Chi viene"
+        "setup": "Chi viene",
+        "headliners": "Attrazioni principali"
       },
       "back": "Indietro",
       "next": "Avanti",
@@ -2180,7 +2213,9 @@
       "headliners": {
         "label": "Pianifica le attrazioni principali",
         "hint": "Mette le {count} attrazioni grandi nella giornata, secondo le curve orarie.",
-        "hintTight": "Prima della chiusura c’è posto per {fits} su {total}. Quali siano lo decidi nel pianificatore."
+        "hintTight": "Prima della chiusura c’è posto per {fits} su {total}.",
+        "conflict": "Ne entrano {fits} su {total}. Togli la spunta a ciò di cui puoi fare a meno, oppure porta in cima quello che vuoi assolutamente fare.",
+        "none": "Per questa giornata non manca nessuna attrazione principale."
       },
       "facts": {
         "title": "Quello che sappiamo di questa giornata",

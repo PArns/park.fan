@@ -567,7 +567,30 @@ export function headlinersSkipped(
 }
 
 /**
- * How much each headliner being added costs to lose, hardest first.
+ * Whether a ride being ADDED is one somebody is there for.
+ *
+ * The park's own curation, or the visitor's — and the second half is the newer
+ * half. `isHeadliner` is a fact about the park and is what the tiers were built
+ * on: between two rides competing for the last hour, the one the park is known
+ * for wins. It is silent about a ride nobody curates and somebody drove four
+ * hours for, which is exactly the ride the fit assistant exists to ask about,
+ * and a list the visitor has just put in order is the strongest statement about
+ * that this app will ever get.
+ *
+ * So a ride named in {@link OptimizeInput.priority} counts as one of them, in
+ * the tier AND in the ranking below — the two have to agree, or the tier drops
+ * a ride the ranking said was the most important one in the list.
+ *
+ * It changes nothing for the call sites that existed before it: the only thing
+ * that ever passed `priority` was the headliner conflict dialog, whose list is
+ * headliners to begin with, so every ride it names already answered true.
+ */
+function isWanted(ride: PlanDayRide, priority: readonly string[] | undefined): boolean {
+  return Boolean(ride.isHeadliner) || Boolean(priority?.includes(ride.attractionSlug));
+}
+
+/**
+ * How much each ride being added costs to lose, hardest first.
  *
  * Two sources, and the first one wins wherever it says anything.
  *
@@ -582,10 +605,10 @@ export function headlinersSkipped(
  * **What the day says**, where they said nothing: the ride's own expected
  * queue, longest first. That is the only figure in the payload that measures
  * how much of a draw a ride is, and reading it this way is not the same claim
- * as `dayPeak`-as-headliner — the set has already been narrowed to the rides
- * the park itself curates as headliners, and the question left is which of
- * THOSE the day has room for. Ties go to the slug, so two rides with the same
- * peak rank the same way on every run.
+ * as `dayPeak`-as-headliner — the set has already been narrowed by
+ * {@link isWanted} to the rides the park curates or the visitor named, and the
+ * question left is which of THOSE the day has room for. Ties go to the slug, so
+ * two rides with the same peak rank the same way on every run.
  *
  * Ranks rather than the minutes themselves. The gaps between the figures are
  * inside the model's own error (`accuracy.typicalError` was 14.3 minutes at
@@ -598,7 +621,7 @@ function rankHeadliners(
   add: readonly PlanDayRide[],
   priority: readonly string[] | undefined
 ): Map<string, number> {
-  const heads = add.filter((ride) => ride.isHeadliner);
+  const heads = add.filter((ride) => isWanted(ride, priority));
   const weights = new Map<string, number>();
   if (heads.length === 0) return weights;
 
@@ -1501,7 +1524,7 @@ function buildContext(input: OptimizeInput): Context | null {
       name: ride.attractionName,
       ride,
       floorMin: rideFloor(grid, ride, clock).softMin,
-      headliner: Boolean(ride.isHeadliner),
+      headliner: isWanted(ride, input.priority),
       dropWeight: weights.get(ride.attractionSlug) ?? 0,
       ...tabulate(day, ride.attractionSlug),
     })),

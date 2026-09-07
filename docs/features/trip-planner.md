@@ -712,7 +712,7 @@ between them is the design:
    first), so what the second decides is who gets the good slots among the rides
    being **added**, which is the question the button asks. Packed into one
    comparable number (`((entries × 32 + headliners) × 32 + total) × 1024 +
-   weight`, `MAX_STOPS` being 24) rather than added as Pareto axes, because a
+weight`, `MAX_STOPS` being 24) rather than added as Pareto axes, because a
    new axis is a bigger change to the search than to the ordering, and it was
    the ordering that was wrong.
 
@@ -749,6 +749,7 @@ between them is the design:
    left, then scores the result **in the original context** with the rides it
    set aside appended, so `better` compares the rounds on exactly the terms it
    compares everything else. On a day that holds everything it never runs.
+
 2. **Total minutes queued.** That is what the visitor asked for.
 3. **The clock at which the last queue is joined.** Between two plans that cost
    the same, the one that leaves the evening free wins.
@@ -824,30 +825,97 @@ the day: the cap beat the lower bound the function exists to impose, so at 17:58
 in a park shutting at 18:00 it answered **17:45** and "plan every headliner"
 filed a forty-minute queue thirteen minutes before the press.
 
-### Where it cannot choose for you, it asks
+### Where it cannot choose for you, it asks — and it asks properly
 
 Ten headliners and room for nine is a decision, and the app can rank a catalogue
-but it cannot know which ride somebody travelled for. So where the day does not
-hold them all, "Alle Headliner einplanen" opens `PlannerHeadlinerChoice` instead
-of guessing: the sentence says how many fit, every ride is listed with its
-expected peak, the ones that will not make it are marked, and **everything is
-ticked**. Pressing on without touching anything is the engine's own answer, which
-is what a default has to mean if the dialog is not to be a toll gate; unticking
-is how somebody says which they would rather give up, and the order they are
-listed in becomes `priority`. The probe that finds out costs one extra search —
-5 ms on the day this was reported, 15 with the park's other rides already
-planned — and is thrown away, so what lands on the axis is always a plan built
-for the set that was actually agreed. On a day that holds every headliner
-nothing is asked at all, which is the common case and the one a dialog would
-teach people to dismiss.
+but it cannot know which ride somebody travelled for. The first version of this
+was one dialog with ten ticked rows. What it could not do is the thing a visitor
+actually wants at that moment, which is to **try something**: the day was too
+short, the list was the only lever, and the hour of lunch sitting in the middle
+of it was not on the screen at all.
 
-The **wizard** asks the same question one step earlier. Its setup step now
-carries a fourth toggle beside lunch, riders and water rides — "Headliner
-einplanen" — whose hint changes shape rather than the control: where they all fit
-it says how many go in, and where they do not it says how many **do** and that
-the choice is made in the panel. It runs the same probe against the same day,
-lunch block included, because an hour out of the middle is what decides the last
-headliner.
+So it is `PlannerFitAssistant` now — its own dialog, its own three steps, opened
+by **both** buttons the moment a press would leave something out
+(`needsFitHelp`), and nothing is written until the last one.
+
+**1 · Stellschrauben.** What could change so the day holds everything, and every
+row is a measured difference between two plans rather than a piece of advice.
+`fitLevers` re-runs the whole optimiser once per free block with that block gone,
+and once with it cut to half an hour, and offers only what actually buys a ride:
+
+| Park          | Day        | With the break | Lever                   | After |
+| ------------- | ---------- | -------------- | ----------------------- | ----- |
+| Phantasialand | 2026-09-12 | 9 of 10        | ohne Mittagessen        | 10/10 |
+| Movie Park    | 2026-09-20 | 9 of 10        | Mittagessen auf 30 Min. | 10/10 |
+| Phantasialand | 2026-10-03 | 8 of 10        | ohne Mittagessen        | 9/10  |
+| Phantasialand | 2026-10-31 | 8 of 10        | Mittagessen auf 30 Min. | 9/10  |
+| Phantasialand | 2026-11-01 | 9 of 10        | —                       | —     |
+
+So „Ohne Mittagessen · Dann passt der ganze Plan" is printed on the two days
+where it is true and „Dann passen 9 von 10" on the two where it helps and is not
+enough, and on 2026-11-01 the step says the blocks are not the problem. Cutting
+short is offered **before** dropping, and where the short version already solves
+the day the longer answer is not offered at all — nobody skips lunch to buy what
+half an hour already bought. A lever is a toggle, not a command: pressing it
+again puts the break back, which is what makes the step something to experiment
+in. The step is skipped entirely on a day with no free block.
+
+**2 · Wichtigkeit.** The whole list, in `fitOrder` and never a sort of its own,
+so what is at the bottom of the screen is what the engine gives up first. Two
+answers per row: the **checkbox** says whether the ride is wanted at all, and the
+**pin** moves it to the top of the order — `OptimizeInput.priority`, which is
+what decides who falls out. Both recompute against the same optimiser that will
+run on the press, so pinning the flagship visibly moves the „fällt weg" mark onto
+another name. Measured on Phantasialand's 2026-10-03: by default Crazy Bats and
+River Quest go; pin those two and it is Winja's Fear and Colorado Adventure; put
+Taron last and Taron goes.
+
+**3 · Ergebnis.** How many rides, when the last queue is left, what it costs in
+queueing, and what is being left out **by name** — because the press is about to
+take rides out of somebody's day and „zwei passen nicht" is the sentence this
+whole dialog exists to replace.
+
+Two rules underneath it. **A ticked wish is re-planned rather than parked**: the
+assistant hands every ride it has a payload row for to the engine as something
+being ADDED, whatever it is today, which is what turns "which of them falls out"
+from a remainder into a decision. `optimizeDay` on its own may never delete an
+entry — it parks it past the gate instead, see `OVERFLOW_STRIDE` — and this is
+the one place that rule is relaxed, not behind anybody's back but in front of a
+list where the ride is named. And **the visitor's order beats the park's
+curation**: `isWanted` counts a ride named in `priority` as one of the rides
+somebody is there for, so a pinned filler is no longer dropped ahead of an
+unpinned headliner. That changes nothing for any call site that existed before
+it, since the only thing that ever passed `priority` was a list of headliners.
+
+The probe that decides whether to ask costs one extra search — 5–50 ms on the
+days this was reported — and is thrown away, so what lands on the axis is always
+a plan built for the set that was actually agreed. On a day that holds everything
+nothing is asked at all, which is the common case and the one a dialog would
+teach people to dismiss: over 35 park-days at six parks, five were tight.
+
+**The wizard carries the same question one step earlier, on a step of its own.**
+"Headliner einplanen" used to be a fourth toggle beside lunch, riders and water
+rides — three answers about the party and one that rebuilds the whole day, with a
+hint that had to admit in passing that not all of them would fit. It is step four
+now (`park → date → setup → headliners`), it runs the same probe against the same
+day with the lunch block where the wizard would put it, and where it is tight it
+renders the assistant's own two pieces inline: the measured levers and the
+ordered list. Pulling „Ohne Mittagessen" there is the wizard's lunch block being
+dropped — `finish` reads the block back out of `evaluateFit`'s answer rather than
+off a second piece of state, so the day that is filed is the day that was shown.
+
+**And the block on the axis says so too.** A ride filed at 18:45 in a park that
+shuts at 18:00 used to be drawn exactly like the nine above it, with the only
+mention of the problem a clause in a grey eleven-pixel line. It carries the crowd
+tint and a sentence now, in two shapes because the axis has two lines: past
+`closeMin + closeSlackMin` it is „Liegt nach Parkschluss", and inside the hatched
+hour — where the API's truncated closing HOUR means the park may well still be
+running — it is „Kann schon nach Parkschluss liegen". Free blocks get neither:
+telling somebody their dinner is after closing time is the app having an opinion
+about dinner. The result line under the buttons is the other half: where
+something was left out it is a bordered warning with the mark, and it carries an
+„Anpassen" button back into the assistant, because a notice about a problem with
+no control beside it is a notice nobody can answer.
 
 ### Why it is a heuristic, and what that cost
 
