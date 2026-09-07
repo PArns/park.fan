@@ -226,8 +226,25 @@ export class Registry {
     return this.procedurals.get(name);
   }
 
-  /** Localised name with `en` fallback. */
-  static name(names: Record<string, string>, locale: string): string {
+  /**
+   * Localised name with `en` fallback.
+   *
+   * Called `localized` and not `name`, which is what it was, because **every class in JavaScript
+   * already has a `.name`** and a static member of that name replaces it. React's dev-mode
+   * instrumentation reads the constructor's `.name` to label a `performance.measure` entry, got
+   * this function instead of the string `"Registry"`, and `measure()` refused to structured-clone
+   * it — so the page threw `could not be cloned` and then React's own `Should not already be
+   * working` unwinding from inside it.
+   *
+   * That is worth more than a rename's worth of comment because of how it failed: whether the
+   * instrumentation reached that path at all varied per load, so three of six harness runs on one
+   * unchanged tree came back with two console errors and three came back clean. Zero console
+   * errors is a hard gate for every module in the gauntlet, and it was passing or failing by luck
+   * for all of them — including modules that never touch this file. Verifiable without a browser:
+   * `node -e "import('@/lib/game/core/registry.ts').then(m => console.log(typeof m.Registry.name))"`
+   * printed `function`, and prints `string` now.
+   */
+  static localized(names: Record<string, string>, locale: string): string {
     return names[locale] ?? names.en ?? Object.values(names)[0] ?? '';
   }
 }

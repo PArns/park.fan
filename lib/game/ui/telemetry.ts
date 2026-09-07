@@ -526,7 +526,7 @@ export class TelemetryCollector {
   }
 }
 
-/** Localized name with an `en` fallback, matching `Registry.name`. */
+/** Localized name with an `en` fallback, matching `Registry.localized`. */
 export function localized(names: Record<string, string>, locale: string): string {
   return names[locale] ?? names.en ?? Object.values(names)[0] ?? '';
 }

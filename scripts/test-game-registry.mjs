@@ -20,12 +20,19 @@ assert.equal(
   registry.items('rides').length,
   packs.reduce((s, p) => s + p.rides.length, 0)
 );
+// A class's own `.name` must survive, and this is not pedantry: `Registry` used to declare
+// `static name(...)`, which replaced it. React's dev instrumentation labels a `performance.measure`
+// entry with the constructor's `.name`, got a function, and `measure()` refused to clone it — two
+// console errors that appeared in three of six harness runs on one unchanged tree and failed the
+// gauntlet's zero-console-errors gate for modules that never touch this file.
+assert.equal(Registry.name, 'Registry', `Registry.name is a ${typeof Registry.name}`);
+
 assert.equal(
-  Registry.name(registry.item('shops', 'core-classic:burger').def.name, 'de'),
+  Registry.localized(registry.item('shops', 'core-classic:burger').def.name, 'de'),
   'Burgerstand'
 );
 assert.equal(
-  Registry.name(registry.item('shops', 'core-classic:burger').def.name, 'it'),
+  Registry.localized(registry.item('shops', 'core-classic:burger').def.name, 'it'),
   'Burger stand',
   'falls back to en'
 );
