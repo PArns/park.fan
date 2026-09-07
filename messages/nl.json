@@ -2045,7 +2045,9 @@
     },
     "warn": {
       "closedNow": "Meldt nu gesloten.",
-      "downYesterday": "Was gisteren de hele dag buiten bedrijf."
+      "downYesterday": "Was gisteren de hele dag buiten bedrijf.",
+      "afterClose": "Ligt na sluitingstijd.",
+      "maybeAfterClose": "Kan al na sluitingstijd liggen."
     },
     "custom": {
       "add": "Eigen blok",
@@ -2069,11 +2071,6 @@
       "run": "Dag optimaliseren",
       "running": "Sorteren …",
       "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
-      "choiceTitle": "Niet alle headliners passen in de dag",
-      "choiceBody": "Voor sluitingstijd is er plek voor {fits} van {total}. Vink uit waar je het makkelijkst zonder kunt.",
-      "choiceConfirm": "{count, plural, one {1 attractie inplannen} other {# attracties inplannen}}",
-      "choiceDrops": "valt weg",
-      "choicePeak": "piek {minutes} min",
       "saved": "{minutes} min. minder wachten",
       "already": "Staat al goed",
       "fitted": "{count, plural, one {één attractie past nu in de dag} other {# attracties passen nu in de dag}}",
@@ -2084,6 +2081,41 @@
       "overflow": "{count, plural, one {één past niet meer in de dag} other {# passen niet meer in de dag}}",
       "capped": "{count, plural, one {één attractie bleef erbuiten, de planner sorteert hoogstens {max} stops} other {# attracties bleven erbuiten, de planner sorteert hoogstens {max} stops}}",
       "undo": "Ongedaan maken"
+    },
+    "fit": {
+      "title": "Niet alles past in de dag",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Aanpassingen",
+        "rides": "Prioriteit",
+        "result": "Resultaat"
+      },
+      "allFit": "{count, plural, one {Eén attractie past in de dag} other {Alle # attracties passen in de dag}}",
+      "someFit": "Plek voor {fits} van {total} attracties",
+      "endsAt": "laatste attractie tot {time}",
+      "queueing": "{duration} wachten",
+      "leversBody": "Dit maakt ruimte zonder dat je een attractie schrapt. Tik aan wat je zou veranderen.",
+      "leversNone": "Aan de blokken ligt het niet, ook zonder blijft het te krap. In de volgende stap kies je welke attracties het belangrijkst zijn.",
+      "leverDrop": "Zonder {label}",
+      "leverShorten": "{label} inkorten tot {minutes} min.",
+      "leverDropAll": "Zonder de vrije blokken",
+      "leverSolves": "Dan past het hele plan",
+      "leverHelps": "Dan passen er {fits} van {total}",
+      "ridesBody": "Bovenaan staat wat je zeker niet wilt missen. Er wordt van onderaf geschrapt. Vink uit wat je kunt missen.",
+      "drops": "valt weg",
+      "peak": "piek {minutes} min.",
+      "headliner": "Headliner",
+      "pin": "Naar boven",
+      "pinHint": "Helemaal naar boven, valt als laatste weg",
+      "resultRides": "In de dag",
+      "resultEnd": "Laatste attractie tot",
+      "resultWait": "Wachttijd bij elkaar",
+      "resultOut": "Blijft eruit",
+      "resultHint": "In de planner kun je daarna nog schuiven, verwijderen en opnieuw sorteren.",
+      "apply": "Plan overnemen",
+      "applied": "{count, plural, one {Eén attractie ingepland} other {# attracties ingepland}}",
+      "leftOut": "{count, plural, one {er blijft er één buiten} other {er blijven er # buiten}}",
+      "adjust": "Aanpassen"
     },
     "sheet": {
       "handle": "Planner vergroten of sluiten",
@@ -2159,7 +2191,8 @@
       "steps": {
         "park": "Park",
         "date": "Dag",
-        "setup": "Wie gaat mee"
+        "setup": "Wie gaat mee",
+        "headliners": "Grote attracties"
       },
       "back": "Terug",
       "next": "Verder",
@@ -2180,7 +2213,9 @@
       "headliners": {
         "label": "Headliners inplannen",
         "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves.",
-        "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}. Welke dat zijn, pas je aan in de planner."
+        "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}.",
+        "conflict": "Er passen {fits} van {total}. Vink uit wat kan vervallen, of zet bovenaan wat je zeker wilt rijden.",
+        "none": "Voor deze dag ontbreekt geen grote attractie meer."
       },
       "facts": {
         "title": "Wat we over deze dag weten",

@@ -4,18 +4,68 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Planer: ein Tag, der nicht aufgeht, öffnet einen eigenen Assistenten
+
+Gemeldet mit Screenshot: „Alle Headliner einplanen" am Samstag im Phantasialand, Taron steht um
+**18:45** in einem Park, der um 18:00 schließt. Die App hat das gesagt — als Nebensatz in einer
+grauen 11-px-Zeile unter den Knöpfen („eine passt nicht mehr in den Tag"), neben einem Block, der
+aussah wie die neun darüber. Zu leise, und vor allem ohne etwas, womit man darauf antworten könnte.
+
+**Jetzt öffnet sich ein Assistent** (`PlannerFitAssistant`), sobald ein Druck etwas weglassen
+würde — bei beiden Knöpfen, und geschrieben wird erst am Ende. Drei Schritte:
+
+- **Stellschrauben.** Was Platz schafft, ohne dass eine Bahn gestrichen wird. Jede Zeile ist ein
+  gemessener Unterschied zwischen zwei Plänen, kein Ratschlag: `fitLevers` lässt den Optimierer pro
+  freiem Block noch einmal laufen, einmal ohne ihn und einmal mit halber Pause, und bietet nur an,
+  was wirklich eine Bahn bringt. Am 12.09. passen mit Mittagspause 9 von 10 und ohne sie **10 von
+  10**, im Movie Park am 20.09. reichen dafür **30 statt 60 Minuten**; am 03.10. bringt es 9 statt
+  8, und das sagt die Zeile dann auch. Kürzen wird vor Streichen angeboten, und wo Kürzen reicht,
+  wird Streichen gar nicht erst vorgeschlagen.
+- **Wichtigkeit.** Die ganze Liste in genau der Reihenfolge, in der der Optimierer aufgibt.
+  Häkchen raus heißt „brauche ich nicht", Pin heißt „ganz nach oben" — und beides rechnet sofort
+  gegen dieselbe Suche, die auf den Knopfdruck läuft. Am 03.10. fallen von allein Crazy Bats und
+  River Quest weg; pinnt man die beiden, sind es Winja's Fear und Colorado Adventure.
+- **Ergebnis.** Wie viele Bahnen, bis wann, wie viel Warten — und was wegfällt, **mit Namen**.
+
+Zwei Regeln darunter. Eine angehakte Bahn wird **neu geplant statt hinter das Tor geparkt**, was
+„welche fällt weg" von einer Restgröße zu einer Entscheidung macht; `optimizeDay` allein darf
+niemandem einen Eintrag löschen, und das ist die eine Stelle, wo die Regel gelockert wird — nicht
+hinter dem Rücken, sondern vor einer Liste, in der die Bahn benannt ist. Und die Reihenfolge des
+Besuchers schlägt die Kuratierung des Parks: `isWanted` zählt eine in `priority` genannte Bahn als
+eine, für die man da ist, also fällt eine gepinnte Nebenbahn nicht mehr vor einem ungepinnten
+Headliner.
+
+**Der Wizard hat dafür einen eigenen vierten Schritt.** „Headliner einplanen" war ein vierter
+Schalter neben Mittagessen, Kindern und Wasserbahnen — drei Antworten über die Gruppe und eine, die
+den ganzen Tag baut, mit einem Hinweis, der nebenbei zugeben musste, dass nicht alle passen. Jetzt
+`park → date → setup → headliners`, mit derselben Konflikterkennung und denselben zwei Bausteinen
+des Assistenten direkt darin; „Ohne Mittagessen" dort ist der Mittagsblock des Wizards, und
+`finish` liest ihn aus der Antwort von `evaluateFit` zurück, statt ihn ein zweites Mal zu führen.
+
+**Und der Block sagt es selbst.** Über `closeMin + closeSlackMin` steht „Liegt nach Parkschluss",
+in der schraffierten Stunde davor „Kann schon nach Parkschluss liegen" — zwei Sätze, weil die API
+eine Schließ*stunde* liefert und ein Park um 17:30 zumachen kann. Freie Blöcke bekommen keinen von
+beiden. Die Ergebniszeile unter den Knöpfen ist die andere Hälfte: Wo etwas wegfällt, ist sie eine
+umrandete Warnung mit einem **„Anpassen"**-Knopf zurück in den Assistenten.
+
+Nachgemessen über 35 Park-Tage an sechs Parks: 5 Tage gehen nicht auf, 2 davon löst allein eine
+Stellschraube. Neu: `pnpm test:planner-fit` (41 Prüfungen) und ein Durchlauf des Assistenten in
+`pnpm check:planner`. Details:
+[trip planner](features/trip-planner.md#where-it-cannot-choose-for-you-it-asks--and-it-asks-properly).
+
+---
+
 ## Unreleased – Planer: der Tag endet, wenn der Park schließt, und der Headliner ist keine Restgröße
 
 Drei Fehler mit einer gemeinsamen Wurzel, gemeldet an einem Samstag im Phantasialand.
 
 **Der Tag war eine Stunde zu lang.** `PlanDayContext.closeHour` ist die Stunde, in die die
-Schließzeit fällt, nicht die letzte offene Stunde — der Park macht um 18:00 zu, die API antwortet
-18. `buildDayGrid` hat das andersherum gelesen und sechzig Minuten addiert, und der Optimierer hat
+Schließzeit fällt, nicht die letzte offene Stunde — der Park macht um 18:00 zu, die API antwortet 18. `buildDayGrid` hat das andersherum gelesen und sechzig Minuten addiert, und der Optimierer hat
 die geschenkte Stunde gefüllt: Winja's Fear um **18:15** angestellt, Feierabend 18:55. Über alle
 Kalender der 213 Parks nachgemessen schließen **3.046 von 3.540 Betriebstagen (86,0 %) genau zur
 vollen Stunde**, 486 um halb und 8 um dreiviertel. `DayGrid` trägt deshalb zwei Zahlen: `closeMin`
 ist das belegbare Ende, hinter das die App von sich aus nichts legt, und `closeSlackMin` die
-Stunde darüber, in der der Park offen sein *kann* — gezeichnet, per Drag erreichbar, nie verplant.
+Stunde darüber, in der der Park offen sein _kann_ — gezeichnet, per Drag erreichbar, nie verplant.
 Die Gegenrichtung gehört dazu: **anstellen darf man sich bis kurz vor Schluss**, also entscheidet
 der **Start** und nicht das Ende, ob ein Stopp stattfindet. Eine 40-Minuten-Schlange um 17:45 ist
 ein Slot, den man absichtlich nimmt.
@@ -35,7 +85,8 @@ geplant, Taron und F.L.Y. dabei, verzichtet wird auf Colorado Adventure.
 **Und wo die App nicht entscheiden kann, fragt sie.** `PlannerHeadlinerChoice` zeigt bei knappen
 Tagen alle Headliner mit Häkchen (alle an), markiert die, die nicht mehr reinpassen, und nennt ihre
 Spitzenwartezeit; wer nichts anfasst, bekommt die Antwort des Optimierers. Der Assistent fragt einen
-Schritt früher, mit demselben Hinweis im Untertitel des Schalters.
+Schritt früher, mit demselben Hinweis im Untertitel des Schalters. (Beides ist inzwischen durch
+`PlannerFitAssistant` ersetzt, siehe den Eintrag darüber.)
 
 Dazu vier Funde aus einem Review des Optimierers: der Überlauf-Zweig räumte feste Blöcke nicht aus
 dem Weg (eine Bahn lag quer über dem Abendessen, und der Knopf meldete deshalb bei **jedem** Druck

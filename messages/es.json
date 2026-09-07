@@ -2045,7 +2045,9 @@
     },
     "warn": {
       "closedNow": "Ahora mismo indica cerrada.",
-      "downYesterday": "Ayer estuvo fuera de servicio todo el día."
+      "downYesterday": "Ayer estuvo fuera de servicio todo el día.",
+      "afterClose": "Empieza después del cierre.",
+      "maybeAfterClose": "Puede que ya sea después del cierre."
     },
     "custom": {
       "add": "Bloque propio",
@@ -2069,11 +2071,6 @@
       "run": "Optimizar el día",
       "running": "Ordenando …",
       "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
-      "choiceTitle": "No caben todas las atracciones estrella",
-      "choiceBody": "Antes del cierre hay sitio para {fits} de {total}. Desmarca aquello de lo que prescindirías antes.",
-      "choiceConfirm": "{count, plural, one {Planificar 1 atracción} other {Planificar # atracciones}}",
-      "choiceDrops": "se queda fuera",
-      "choicePeak": "pico {minutes} min",
       "saved": "{minutes} min menos de cola",
       "already": "Ya está en el orden bueno",
       "fitted": "{count, plural, one {una atracción ya cabe en el día} other {# atracciones ya caben en el día}}",
@@ -2084,6 +2081,41 @@
       "overflow": "{count, plural, one {una ya no cabe en el día} other {# ya no caben en el día}}",
       "capped": "{count, plural, one {una atracción se quedó fuera, el planificador ordena como mucho {max} paradas} other {# atracciones se quedaron fuera, el planificador ordena como mucho {max} paradas}}",
       "undo": "Deshacer"
+    },
+    "fit": {
+      "title": "No cabe todo en el día",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Ajustes",
+        "rides": "Prioridad",
+        "result": "Resultado"
+      },
+      "allFit": "{count, plural, one {Una atracción cabe en el día} other {Las # atracciones caben en el día}}",
+      "someFit": "Sitio para {fits} de {total} atracciones",
+      "endsAt": "última atracción hasta las {time}",
+      "queueing": "{duration} de cola",
+      "leversBody": "Esto hace sitio sin quitar ninguna atracción. Toca lo que cambiarías.",
+      "leversNone": "No son los bloques, sin ellos sigue siendo demasiado justo. En el siguiente paso decides qué atracciones te importan más.",
+      "leverDrop": "Sin {label}",
+      "leverShorten": "Reducir {label} a {minutes} min",
+      "leverDropAll": "Sin los bloques libres",
+      "leverSolves": "Entonces cabe todo el plan",
+      "leverHelps": "Entonces caben {fits} de {total}",
+      "ridesBody": "Arriba va lo que no te quieres perder. Se recorta por abajo. Desmarca aquello de lo que puedes prescindir.",
+      "drops": "se cae",
+      "peak": "pico {minutes} min",
+      "headliner": "Atracción estrella",
+      "pin": "Arriba del todo",
+      "pinHint": "Arriba del todo, se quita la última",
+      "resultRides": "En el día",
+      "resultEnd": "Última atracción hasta las",
+      "resultWait": "Tiempo de cola en total",
+      "resultOut": "Se queda fuera",
+      "resultHint": "En el planificador puedes seguir moviendo, borrando y reordenando.",
+      "apply": "Aplicar el plan",
+      "applied": "{count, plural, one {Una atracción planificada} other {# atracciones planificadas}}",
+      "leftOut": "{count, plural, one {una se queda fuera} other {# se quedan fuera}}",
+      "adjust": "Ajustar"
     },
     "sheet": {
       "handle": "Ampliar o cerrar el planificador",
@@ -2159,7 +2191,8 @@
       "steps": {
         "park": "Parque",
         "date": "Día",
-        "setup": "Quién viene"
+        "setup": "Quién viene",
+        "headliners": "Atracciones estrella"
       },
       "back": "Atrás",
       "next": "Siguiente",
@@ -2180,7 +2213,9 @@
       "headliners": {
         "label": "Planificar las atracciones estrella",
         "hint": "Coloca las {count} atracciones grandes en el día, según sus curvas por hora.",
-        "hintTight": "Antes del cierre hay sitio para {fits} de {total}. Cuáles son lo decides en el planificador."
+        "hintTight": "Antes del cierre hay sitio para {fits} de {total}.",
+        "conflict": "Caben {fits} de {total}. Desmarca aquello de lo que puedes prescindir o sube lo que quieres montar sí o sí.",
+        "none": "Para este día no falta ninguna atracción estrella."
       },
       "facts": {
         "title": "Lo que sabemos de este día",
