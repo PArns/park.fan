@@ -44,6 +44,7 @@ import type {
 } from './types';
 import { SurfaceBuilder, WHITE } from './surfaces';
 import {
+  DECK_LIFT,
   rimHeight,
   depthAtUnit,
   hash2,
@@ -154,8 +155,7 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
   const waterY = rimY - freeboard;
   const waterlineTint = hexToLinear(tile.waterline);
 
-  const depthAt = (x: number, z: number): number =>
-    Math.max(0, depthAtUnit(depth, x / hx, z / hz));
+  const depthAt = (x: number, z: number): number => Math.max(0, depthAtUnit(depth, x / hx, z / hz));
 
   // ── the floor ─────────────────────────────────────────────────────────────────────────────
   //
@@ -166,13 +166,7 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
   const floor = b.surface('tile');
   const floorIndex: number[][] = [];
   const centreDepth = depthAt(0, 0);
-  const centre = b.vertex(
-    floor,
-    [0, -centreDepth, 0],
-    floorNormal(depthAt, 0, 0),
-    [0, 0],
-    WHITE
-  );
+  const centre = b.vertex(floor, [0, -centreDepth, 0], floorNormal(depthAt, 0, 0), [0, 0], WHITE);
   for (let r = 1; r <= rings; r++) {
     const t = r / rings;
     const row: number[] = [];
@@ -311,7 +305,9 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
         const nx = normals[i * 2];
         const nz = normals[i * 2 + 1];
         top.push(b.vertex(coping, [x, rimY - 0.02, z], [nx, 0, nz], [arc[i], 0], WHITE));
-        bottom.push(b.vertex(coping, [x, deckFall, z], [nx, 0, nz], [arc[i], rimY], [0.8, 0.8, 0.8]));
+        bottom.push(
+          b.vertex(coping, [x, deckFall, z], [nx, 0, nz], [arc[i], rimY], [0.8, 0.8, 0.8])
+        );
       }
       for (let i = 0; i < n; i++) {
         const j = (i + 1) % n;
@@ -330,13 +326,21 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
     for (let s = 0; s <= steps; s++) {
       const t = s / steps;
       const d = copingOuter + deckWidth * t;
-      // 1.5 % away from the pool. Splash water leaves rather than returning.
-      const y = deckFall * (1 - t);
+      // 1.5 % away from the pool, and the whole ring stands `DECK_LIFT` proud of the surrounding
+      // ground. Laid exactly ON grade the paving z-fights the turf along its entire outer edge —
+      // measured, and it reads as a ring of flickering grass rather than as a fault.
+      const y = DECK_LIFT + deckFall * (1 - t);
       const ring = offsetWith(outline, normals, d);
       const row: number[] = [];
       for (let i = 0; i < n; i++) {
         row.push(
-          b.vertex(deck, [ring[i * 2], y, ring[i * 2 + 1]], [0, 1, 0], [ring[i * 2], ring[i * 2 + 1]], WHITE)
+          b.vertex(
+            deck,
+            [ring[i * 2], y, ring[i * 2 + 1]],
+            [0, 1, 0],
+            [ring[i * 2], ring[i * 2 + 1]],
+            WHITE
+          )
         );
       }
       rows.push(row);
@@ -354,7 +358,7 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
     const bottom: number[] = [];
     // Deep enough to hide the excavation ramp under the deck whatever the terrain does there
     // (see excavate.ts): the pit floor is `maxDepth + 0.9` down and the skirt clears it.
-    const skirtY = 0;
+    const skirtY = DECK_LIFT;
     const skirtDrop = maxDepth + 1.6;
     for (let i = 0; i < n; i++) {
       const x = outerRing[i * 2];
@@ -363,7 +367,13 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
       const nz = normals[i * 2 + 1];
       top.push(b.vertex(deck, [x, skirtY, z], [nx, 0, nz], [arc[i], 0], WHITE));
       bottom.push(
-        b.vertex(deck, [x, skirtY - skirtDrop, z], [nx, 0, nz], [arc[i], skirtDrop], [0.42, 0.42, 0.42])
+        b.vertex(
+          deck,
+          [x, skirtY - skirtDrop, z],
+          [nx, 0, nz],
+          [arc[i], skirtDrop],
+          [0.42, 0.42, 0.42]
+        )
       );
     }
     for (let i = 0; i < n; i++) {
@@ -385,7 +395,10 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
       width: shape.entry === 'roman-steps' ? Math.min(3.2, size[0] * 0.55) : 2.6,
     });
   }
-  if (shape.entry === 'ladder' || (edge.rail && shape.entry !== 'beach' && shape.entry !== 'none')) {
+  if (
+    shape.entry === 'ladder' ||
+    (edge.rail && shape.entry !== 'beach' && shape.entry !== 'none')
+  ) {
     buildHandrails(b, {
       x: entryPoint[0],
       z: entryPoint[1],

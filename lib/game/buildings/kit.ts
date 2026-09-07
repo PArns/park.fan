@@ -26,6 +26,7 @@
 import {
   addBand,
   addFrameQuad,
+  addFrameQuadUv,
   addPanelWithHole,
   addQuad,
   addReveal,
@@ -37,6 +38,7 @@ import {
   tri,
   tileUv,
   vertex,
+  TILE_GLOW,
   type Frame,
   type P3,
   type Rgb,
@@ -70,7 +72,11 @@ export interface Skin {
 export interface KitCtx {
   kit: Surface;
   glass: Surface;
+  /** Emissive, in the style's `lit` colour: window panes, lanterns, a lantern's glazing. */
   lit: Surface;
+  /** Emissive, in the sign's own colour. Separate because a PBR emissive is one uniform colour and
+   * a teal sign over warm windows is two. */
+  sign: Surface;
   seed: number;
   /** 0..1 — how many windows have a light on after dark. */
   litFraction: number;
@@ -216,7 +222,15 @@ function addGlazingBars(
   }
 }
 
-/** The pane itself, into the glass surface or the lit one. */
+/**
+ * The pane itself: into the glass surface, or into the lit one with its own patch of the glow tile.
+ *
+ * The sub-rectangle is what makes a night elevation work. One emissive material draws every lit
+ * window in the park — Babylon multiplies the emissive by a texture and a uniform colour and never
+ * by the vertex stream — so without a per-pane uv window all forty of them are the same value, which
+ * is what a decal looks like. Half a tile per pane at a random offset gives each one its own
+ * brightness and its own soft gradient, and it costs nothing.
+ */
 function addPane(
   ctx: KitCtx,
   f: Frame,
@@ -232,17 +246,25 @@ function addPane(
   const isLit = litRoll < ctx.litFraction;
   ctx.windows += 1;
   if (isLit) ctx.litWindows += 1;
-  const target = isLit ? ctx.lit : ctx.glass;
-  const colour = isLit
-    ? mixRgb(skin.litColour, shade(skin.litColour, 0.72), rand2(key, 7, ctx.seed) * 0.6)
-    : skin.glassColour;
-  addFrameQuad(target, f, u0, v0, u1, v1, out, {
-    colour,
-    tile: skin.joineryTile,
-    repeatU: 1,
-    repeatV: 1,
-  });
-  return isLit;
+  if (!isLit) {
+    addFrameQuad(ctx.glass, f, u0, v0, u1, v1, out, {
+      colour: skin.glassColour,
+      tile: skin.joineryTile,
+      repeatU: 1,
+      repeatV: 1,
+    });
+    return false;
+  }
+  const w = 0.45;
+  const s0 = rand2(key, 13, ctx.seed + 71) * (1 - w);
+  const t0 = rand2(key, 29, ctx.seed + 71) * (1 - w);
+  addFrameQuadUv(ctx.lit, f, u0, v0, u1, v1, out, skin.litColour, TILE_GLOW, [
+    s0,
+    t0,
+    s0 + w,
+    t0 + w,
+  ]);
+  return true;
 }
 
 /** A window: hole, reveal, sill, pane, sash, bars, and a lintel over it. */
@@ -539,7 +561,17 @@ function door(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions, grand: boolean):
     const fanHole = { u0, u1, v0: openH + 0.06, v1: fanTop };
     addPanelWithHole(ctx.kit, f, fanHole, 0, { colour: skin.wallColour, tile: skin.wallTile });
     addReveal(ctx.kit, f, fanHole, 0, skin.reveal, shade(skin.wallColour, 0.88), skin.wallTile);
-    addPane(ctx, f, skin, u0 + 0.05, u1 - 0.05, openH + 0.11, fanTop - 0.05, -skin.reveal + 0.06, o.key + 977);
+    addPane(
+      ctx,
+      f,
+      skin,
+      u0 + 0.05,
+      u1 - 0.05,
+      openH + 0.11,
+      fanTop - 0.05,
+      -skin.reveal + 0.06,
+      o.key + 977
+    );
     addGlazingBars(
       ctx.kit,
       f,
@@ -616,21 +648,21 @@ function door(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions, grand: boolean):
 
 /** A wall lantern on a bracket: the small warm thing beside a door that makes a night frame work. */
 function lantern(ctx: KitCtx, f: Frame, skin: Skin, u: number, v: number): void {
-  addBand(ctx.kit, f, u - 0.04, u + 0.04, v - 0.02, v + 0.36, 0, 0.26, skin.metalColour, skin.metalTile);
-  const glassC = mixRgb(skin.litColour, [1, 1, 1], 0.25);
-  addBand(ctx.lit, f, u - 0.13, u + 0.13, v - 0.34, v, 0.1, 0.36, glassC, skin.joineryTile);
   addBand(
     ctx.kit,
     f,
-    u - 0.17,
-    u + 0.17,
-    v,
-    v + 0.09,
-    0.06,
-    0.4,
+    u - 0.04,
+    u + 0.04,
+    v - 0.02,
+    v + 0.36,
+    0,
+    0.26,
     skin.metalColour,
     skin.metalTile
   );
+  const glassC = mixRgb(skin.litColour, [1, 1, 1], 0.25);
+  addBand(ctx.lit, f, u - 0.13, u + 0.13, v - 0.34, v, 0.1, 0.36, glassC, skin.joineryTile);
+  addBand(ctx.kit, f, u - 0.17, u + 0.17, v, v + 0.09, 0.06, 0.4, skin.metalColour, skin.metalTile);
 }
 
 /** A glazed shopfront: stall riser, mullions, transom, and a deep head. */
@@ -678,7 +710,18 @@ function shopfront(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
   );
   // The stall riser under the glass — a real one is panelled timber and it is what keeps a barrow
   // from putting a wheel through the window.
-  addBand(ctx.kit, f, u0 - 0.06, u1 + 0.06, 0, v0, -0.02, 0.08, skin.joineryColour, skin.joineryTile);
+  addBand(
+    ctx.kit,
+    f,
+    u0 - 0.06,
+    u1 + 0.06,
+    0,
+    v0,
+    -0.02,
+    0.08,
+    skin.joineryColour,
+    skin.joineryTile
+  );
 }
 
 /** A louvred vent: plant room, tower belfry, the top of a clock stage. */
@@ -751,7 +794,18 @@ function oculus(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
   const cu = bw / 2;
   const cv = sh * 0.55;
   solid(ctx, f, skin);
-  addFrameCylinder(ctx.kit, f, cu, cv, r, 0.02, -0.22, 14, shade(skin.wallColour, 0.82), skin.wallTile);
+  addFrameCylinder(
+    ctx.kit,
+    f,
+    cu,
+    cv,
+    r,
+    0.02,
+    -0.22,
+    14,
+    shade(skin.wallColour, 0.82),
+    skin.wallTile
+  );
   addFrameDisc(ctx.lit, f, cu, cv, r - 0.05, -0.2, 14, skin.litColour, skin.joineryTile, true);
   ctx.windows += 1;
   ctx.litWindows += 1;
@@ -768,12 +822,19 @@ function oculus(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
       repeatU: 1,
       repeatV: 1,
     });
-    addQuad(ctx.kit, p(a0, r + 0.18, 0), p(a1, r + 0.18, 0), p(a1, r + 0.18, 0.07), p(a0, r + 0.18, 0.07), {
-      colour: shade(skin.trimColour, 0.8),
-      tile: skin.trimTile,
-      repeatU: 1,
-      repeatV: 1,
-    });
+    addQuad(
+      ctx.kit,
+      p(a0, r + 0.18, 0),
+      p(a1, r + 0.18, 0),
+      p(a1, r + 0.18, 0.07),
+      p(a0, r + 0.18, 0.07),
+      {
+        colour: shade(skin.trimColour, 0.8),
+        tile: skin.trimTile,
+        repeatU: 1,
+        repeatV: 1,
+      }
+    );
   }
 }
 
@@ -787,18 +848,7 @@ function pilaster(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
   const u1 = u0 + w;
   addBand(ctx.kit, f, u0, u1, 0, sh, 0, 0.11, shade(skin.wallColour, 1.04), skin.wallTile);
   addBand(ctx.kit, f, u0 - 0.07, u1 + 0.07, 0, 0.26, 0, 0.16, skin.trimColour, skin.trimTile);
-  addBand(
-    ctx.kit,
-    f,
-    u0 - 0.09,
-    u1 + 0.09,
-    sh - 0.28,
-    sh,
-    0,
-    0.18,
-    skin.trimColour,
-    skin.trimTile
-  );
+  addBand(ctx.kit, f, u0 - 0.09, u1 + 0.09, sh - 0.28, sh, 0, 0.18, skin.trimColour, skin.trimTile);
 }
 
 /** Wall, and nothing on it. */
@@ -810,13 +860,7 @@ function solid(ctx: KitCtx, f: Frame, skin: Skin): void {
 }
 
 /** The one place a bay code turns into geometry. */
-export function drawBay(
-  ctx: KitCtx,
-  f: Frame,
-  code: BayCode,
-  skin: Skin,
-  o: BayOptions
-): void {
+export function drawBay(ctx: KitCtx, f: Frame, code: BayCode, skin: Skin, o: BayOptions): void {
   switch (code) {
     case 'w':
       window_(ctx, f, skin, o, false);
@@ -831,10 +875,17 @@ export function drawBay(
       oculus(ctx, f, skin, o);
       return;
     case 'd':
-      door(ctx, f, skin, o, false);
+      // A door above the ground floor is a door into thin air, and the pattern language repeats its
+      // last storey upward by design — so `"w d w"` on a three-storey block asks for exactly that.
+      // The substitution is here, in the primitive, rather than in a blueprint that has to remember:
+      // upstairs a door is a full-height window, which is what a French casement onto no balcony
+      // actually is.
+      if (o.storey > 0) window_(ctx, f, skin, o, true);
+      else door(ctx, f, skin, o, false);
       return;
     case 'D':
-      door(ctx, f, skin, o, true);
+      if (o.storey > 0) window_(ctx, f, skin, o, true);
+      else door(ctx, f, skin, o, true);
       return;
     case 'g':
       shopfront(ctx, f, skin, o);
@@ -987,7 +1038,7 @@ export function signBand(
     shade(skin.trimColour, 0.42),
     skin.trimTile
   );
-  addFrameQuad(ctx.lit, f, u0 + 0.12, v0 + 0.1, u1 - 0.12, v0 + height - 0.1, 0.31, {
+  addFrameQuad(ctx.sign, f, u0 + 0.12, v0 + 0.1, u1 - 0.12, v0 + height - 0.1, 0.31, {
     colour,
     tile: skin.joineryTile,
     repeatU: 1,

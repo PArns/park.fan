@@ -27,7 +27,8 @@ export type PoolCoping = 'rolled' | 'square' | 'deck-level' | 'none';
 
 export type PoolDeckSurface = 'concrete' | 'timber' | 'stone' | 'sand' | 'none';
 
-export type PoolDeckShape = 'lounger' | 'parasol' | 'ring-post' | 'ladder' | 'towel-box' | 'planter';
+export type PoolDeckShape =
+  'lounger' | 'parasol' | 'ring-post' | 'ladder' | 'towel-box' | 'planter';
 
 /** What a pool is for. Drives the sim's temperature target and the default furniture density. */
 export type PoolRole = 'swim' | 'lap' | 'kids' | 'spa' | 'splashdown';
@@ -207,14 +208,7 @@ export interface PoolsStats {
 
 /** One vertex stream, grouped by the material it is drawn with. */
 export type PoolSurfaceName =
-  | 'tile'
-  | 'coping'
-  | 'deck'
-  | 'metal'
-  | 'fabric'
-  | 'timber'
-  | 'glow'
-  | 'water';
+  'tile' | 'coping' | 'deck' | 'metal' | 'fabric' | 'timber' | 'glow' | 'water';
 
 export interface PoolSurface {
   name: PoolSurfaceName;
@@ -242,6 +236,13 @@ export interface PoolBuild {
   outline: number[];
   lights: PoolLightSite[];
   /** Deck furniture, in local metres. */
-  props: Array<{ shape: PoolDeckShape; x: number; z: number; yaw: number; scale: number; item: PoolDeckItemSpec }>;
+  props: Array<{
+    shape: PoolDeckShape;
+    x: number;
+    z: number;
+    yaw: number;
+    scale: number;
+    item: PoolDeckItemSpec;
+  }>;
   triangles: number;
 }

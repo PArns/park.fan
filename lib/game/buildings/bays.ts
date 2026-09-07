@@ -79,7 +79,6 @@ export function patternForStorey(pattern: string, index: number): string {
 export function planBays(width: number, pattern: string, targetBay: number): BayPlan {
   const tokens = parsePattern(pattern);
   if (!tokens.length) return { bays: [], width };
-  const fixed = tokens.filter((t) => !t.flexible).length;
   const flex = tokens.filter((t) => t.flexible).length;
   const wanted = Math.max(1, Math.round(width / Math.max(0.5, targetBay)));
   const total = flex === 0 ? tokens.length : Math.max(tokens.length, wanted);

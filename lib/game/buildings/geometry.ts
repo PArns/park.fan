@@ -91,10 +91,24 @@ export const TILE: Record<SurfaceName, number> = {
   concrete: 9,
   paving: 10,
   metal: 11,
+  rubble: 13,
+  canvas: 14,
+  copper: 15,
 };
 
+/**
+ * Slot 12 is not a `SurfaceName` and no pack can ask for it.
+ *
+ * It is the **window glow**: a field of soft blotches from a third to a third again of mid grey,
+ * which the lit panes sample a random sub-rectangle of. That is what gives forty lit windows forty
+ * brightnesses out of one emissive material — Babylon's PBR multiplies the emissive by a texture and
+ * by a uniform colour and never by the vertex stream, so without it every lit window in the park is
+ * the same value and the night elevation reads as a decal.
+ */
+export const TILE_GLOW = 12;
+
 export const ATLAS_COLS = 4;
-export const ATLAS_ROWS = 3;
+export const ATLAS_ROWS = 4;
 
 /**
  * How many metres of real surface one tile covers — the texel density per material.
@@ -117,6 +131,10 @@ export const TILE_METRES: Record<number, number> = {
   [TILE.concrete]: 1.6,
   [TILE.paving]: 1.5,
   [TILE.metal]: 0.6,
+  [TILE_GLOW]: 1.0,
+  [TILE.rubble]: 1.3,
+  [TILE.canvas]: 1.4,
+  [TILE.copper]: 1.1,
 };
 
 /** Half a texel at the base resolution, so trilinear filtering does not walk into the neighbour. */
@@ -368,7 +386,8 @@ export function addPrism(
       repeatV,
     });
   }
-  if (opts.capTop && r1 > 0.001) addDisc(s, cx, y1, cz, r1, n, phase, opts.colour, opts.tile, false);
+  if (opts.capTop && r1 > 0.001)
+    addDisc(s, cx, y1, cz, r1, n, phase, opts.colour, opts.tile, false);
   if (opts.capBottom && r0 > 0.001)
     addDisc(s, cx, y0, cz, r0, n, phase, opts.colour, opts.tile, true);
 }
@@ -530,6 +549,41 @@ export function addFrameQuad(
     framePoint(f, u0, v1, out),
     opts
   );
+}
+
+/**
+ * A rectangle on a frame that samples a chosen SUB-RECTANGLE of its atlas tile.
+ *
+ * One quad, never subdivided, because the point is the uv window and not the repeat. This is how a
+ * lit window pane picks its own patch of the glow tile.
+ */
+export function addFrameQuadUv(
+  s: Surface,
+  f: Frame,
+  u0: number,
+  v0: number,
+  u1: number,
+  v1: number,
+  out: number,
+  colour: Rgb,
+  tile: number,
+  uv: [number, number, number, number]
+): void {
+  const n = f.normal;
+  const corners: Array<[number, number, number, number]> = [
+    [u0, v0, uv[0], uv[1]],
+    [u1, v0, uv[2], uv[1]],
+    [u1, v1, uv[2], uv[3]],
+    [u0, v1, uv[0], uv[3]],
+  ];
+  const idx: number[] = [];
+  for (const [uu, vv, ts, tt] of corners) {
+    const p = framePoint(f, uu, vv, out);
+    const [tu, tv] = tileUv(tile, ts, tt);
+    idx.push(vertex(s, p[0], p[1], p[2], n[0], n[1], n[2], tu, tv, colour));
+  }
+  tri(s, idx[0], idx[1], idx[3]);
+  tri(s, idx[1], idx[2], idx[3]);
 }
 
 /**

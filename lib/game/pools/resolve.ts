@@ -9,7 +9,7 @@
 
 import type { Entity } from '../core/types';
 import { poolEdge, poolShape, poolTile } from './manifest';
-import { outlinePoints, polygonArea, poolVolume } from './geom';
+import { outlinePoints, polygonArea, poolVolume, rimHeight } from './geom';
 import type { PoolEdgeSpec, PoolEntityData, ResolvedPool } from './types';
 
 /**
@@ -48,7 +48,7 @@ export function resolvePool(entity: Entity, groundY: number): ResolvedPool | nul
     : [shape.size[0], shape.size[1]];
   const maxDepth = Math.max(0.15, data.depth ?? shape.depth.max);
   const freeboard = data.freeboard ?? defaultFreeboard(edge);
-  const rimY = edge.coping === 'deck-level' ? 0 : edge.copingRise;
+  const rimY = rimHeight(edge);
   const y = entity.position[1] || groundY;
 
   const outline = outlinePoints(shape, size);

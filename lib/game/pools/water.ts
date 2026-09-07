@@ -109,7 +109,7 @@ export function buildWaterMesh(
       uvs[k * 2] = x / RIPPLE_TILE;
       uvs[k * 2 + 1] = z / RIPPLE_TILE;
       // Absorption over the depth, and the wall bounce in the last 300 mm.
-      const absorb = smoothstep(0.05, 2.1, d);
+      const absorb = smoothstep(0.05, 3.2, d);
       const bounce = smoothstep(0.34, 0, d) * 0.45;
       colors[k * 4] = clamp01(mix(0.62, tint[0], absorb) + bounce);
       colors[k * 4 + 1] = clamp01(mix(0.78, tint[1], absorb) + bounce);
@@ -117,7 +117,7 @@ export function buildWaterMesh(
       // A chlorinated pool is CLEAR. 0.62 at the deep end, not 0.9: past that the tile stops
       // showing through and the basin reads as poured resin, which is the note `terrain/water.ts`
       // wrote about its own first pass over the lake.
-      colors[k * 4 + 3] = clamp01(0.1 + 0.52 * absorb);
+      colors[k * 4 + 3] = clamp01(0.08 + 0.44 * absorb);
     }
   }
 
@@ -168,7 +168,11 @@ export interface PoolWaterMaterial {
   material: PBRMaterial;
   /** Scroll the two ripple layers. Real seconds, not park minutes. */
   animate(seconds: number): void;
-  applyEnvironment(env: EnvironmentState, night: number, lightColor: [number, number, number]): void;
+  applyEnvironment(
+    env: EnvironmentState,
+    night: number,
+    lightColor: [number, number, number]
+  ): void;
   dispose(): void;
 }
 
@@ -282,8 +286,11 @@ export function createSplashRings(scene: Scene, material: PBRMaterial): SplashRi
   template.isVisible = false;
   template.isPickable = false;
 
+  // Clones, not instances: Babylon's instances share the source mesh's `visibility`, so eight
+  // rings on one instance buffer would fade in lockstep — which is not what a splash does. A clone
+  // shares the geometry and the material and costs its own draw call only while it is enabled.
   for (let i = 0; i < RING_POOL; i++) {
-    const m = template.createInstance(`pool-splash-${i}`) as unknown as Mesh;
+    const m = template.clone(`pool-splash-${i}`);
     m.isPickable = false;
     m.setEnabled(false);
     meshes.push(m);
@@ -362,7 +369,6 @@ function ringMesh(scene: Scene, name: string, segments: number): Mesh {
   data.applyToMesh(mesh, false);
   mesh.hasVertexAlpha = true;
   mesh.alphaIndex = 30;
-  mesh.setBoundingInfo(mesh.getBoundingInfo());
   mesh.position = new Vector3(0, 0, 0);
   return mesh;
 }

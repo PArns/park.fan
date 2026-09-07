@@ -39,15 +39,7 @@ import type { PoolEdgeSpec, PoolTileSpec } from './types';
 import { hexToLinear } from './geom';
 
 export type SurfacePattern =
-  | 'mosaic'
-  | 'ceramic'
-  | 'slate'
-  | 'pebble'
-  | 'lanes'
-  | 'concrete'
-  | 'timber'
-  | 'stone'
-  | 'sand';
+  'mosaic' | 'ceramic' | 'slate' | 'pebble' | 'lanes' | 'concrete' | 'timber' | 'stone' | 'sand';
 
 export interface SurfaceRecipe {
   id: string;
@@ -113,7 +105,7 @@ function sample(r: SurfaceRecipe, u: number, v: number): Sample {
       return {
         h,
         cell: pick,
-        tint: (hash2(cx, cy, seed + 91) - 0.5) * 0.22,
+        tint: (hash2(cx, cy, seed + 91) - 0.5) * 0.14,
         joint: 1 - edge,
         accent: 0,
       };
@@ -362,7 +354,9 @@ export function createSurfaceTextures(
 
   const at = (x: number, y: number) => height[((y + size) % size) * size + ((x + size) % size)];
   const strength = recipe.relief * 6;
-  const palette = recipe.colors.length ? recipe.colors : [[0.5, 0.5, 0.5] as [number, number, number]];
+  const palette = recipe.colors.length
+    ? recipe.colors
+    : [[0.5, 0.5, 0.5] as [number, number, number]];
 
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
@@ -376,7 +370,12 @@ export function createSurfaceTextures(
       // Occlusion from the local height deficit: a pixel much lower than its neighbours is in a
       // joint and sees less sky. The floor is high on purpose — a 3 mm grout line is not a cave.
       const around =
-        (at(x + 2, y) + at(x - 2, y) + at(x, y + 2) + at(x, y - 2) + at(x + 2, y + 2) + at(x - 2, y - 2)) /
+        (at(x + 2, y) +
+          at(x - 2, y) +
+          at(x, y + 2) +
+          at(x, y - 2) +
+          at(x + 2, y + 2) +
+          at(x - 2, y - 2)) /
         6;
       const ao = clamp01(0.6 + 0.4 * clamp01(1 - (around - h) * 2.6));
 
@@ -397,7 +396,9 @@ export function createSurfaceTextures(
       normal[i + 2] = Math.round(255 * ((1 / len) * 0.5 + 0.5));
       normal[i + 3] = 255;
 
-      const rough = clamp01(mix(recipe.roughness[0], recipe.roughness[1], joint * 0.85 + (1 - h) * 0.3));
+      const rough = clamp01(
+        mix(recipe.roughness[0], recipe.roughness[1], joint * 0.85 + (1 - h) * 0.3)
+      );
       orm[i] = Math.round(255 * ao);
       orm[i + 1] = Math.round(255 * rough);
       orm[i + 2] = 0;

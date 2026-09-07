@@ -26,12 +26,7 @@
 
 import { z } from 'zod';
 import type { Registry } from '../core/registry';
-import type {
-  PoolDeckItemSpec,
-  PoolEdgeSpec,
-  PoolShapeSpec,
-  PoolTileSpec,
-} from './types';
+import type { PoolDeckItemSpec, PoolEdgeSpec, PoolShapeSpec, PoolTileSpec } from './types';
 import { hexToLinear, isStarShaped, outlinePoints } from './geom';
 
 /** The top-level manifest key this module owns. */
@@ -156,13 +151,13 @@ const BUILTIN: unknown = {
       name: { en: 'Aqua mosaic', de: 'Aqua-Mosaik' },
       pattern: 'mosaic',
       tileMetres: 0.6,
-      colors: ['#3fa9c9', '#2f8fb5', '#57bcd4', '#2a7ba3', '#69cad9'],
+      colors: ['#4bb2cc', '#41a7c4', '#55bcd3', '#3d9fbd', '#5cc0d6'],
       grout: '#e6e9e6',
       waterline: '#12496b',
       roughness: [0.1, 0.55],
       relief: 0.75,
       glaze: 0.95,
-      water: '#0d6f92',
+      water: '#2a93b5',
       night: '#71dcf2',
       nightIntensity: 7,
     },
@@ -177,7 +172,7 @@ const BUILTIN: unknown = {
       roughness: [0.12, 0.5],
       relief: 0.45,
       glaze: 0.9,
-      water: '#0a6f95',
+      water: '#2790b4',
       night: '#8fe4f5',
       nightIntensity: 6,
     },
@@ -194,7 +189,7 @@ const BUILTIN: unknown = {
       roughness: [0.13, 0.5],
       relief: 0.4,
       glaze: 0.88,
-      water: '#0a6b93',
+      water: '#2a8fb2',
       night: '#a8e8ff',
       nightIntensity: 5,
     },
@@ -209,7 +204,7 @@ const BUILTIN: unknown = {
       roughness: [0.24, 0.7],
       relief: 0.9,
       glaze: 0.45,
-      water: '#0d4d55',
+      water: '#1d6f74',
       night: '#ffb877',
       nightIntensity: 8,
     },
@@ -224,7 +219,7 @@ const BUILTIN: unknown = {
       roughness: [0.42, 0.78],
       relief: 1.1,
       glaze: 0.25,
-      water: '#177f8c',
+      water: '#35a3a8',
       night: '#7fe0d0',
       nightIntensity: 6,
     },
@@ -542,7 +537,9 @@ export function attachPoolContent(registry: Registry): () => void {
     if (block) registerPools(pack.id, block);
   };
   for (const pack of registry.packs()) read(pack as { id: string } & Record<string, unknown>);
-  return registry.onPack((pack) => read(pack as unknown as { id: string } & Record<string, unknown>));
+  return registry.onPack((pack) =>
+    read(pack as unknown as { id: string } & Record<string, unknown>)
+  );
 }
 
 /** Every registered basin, in registration order. A build bar reads this, not a literal. */
@@ -566,9 +563,11 @@ function lookup<T>(map: Map<string, T>, id: string | undefined, what: string): T
   return map.values().next().value;
 }
 
-export const poolShape = (id?: string): PoolShapeSpec | undefined => lookup(shapes, id, 'pool shape');
+export const poolShape = (id?: string): PoolShapeSpec | undefined =>
+  lookup(shapes, id, 'pool shape');
 export const poolTile = (id?: string): PoolTileSpec | undefined => lookup(tiles, id, 'tile style');
-export const poolEdge = (id?: string): PoolEdgeSpec | undefined => lookup(edges, id, 'edge treatment');
+export const poolEdge = (id?: string): PoolEdgeSpec | undefined =>
+  lookup(edges, id, 'edge treatment');
 
 /** Test seam: drop everything so a selftest can assert registration order from scratch. */
 export function resetPoolContent(): void {

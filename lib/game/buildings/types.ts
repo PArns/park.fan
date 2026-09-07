@@ -40,7 +40,10 @@ export type SurfaceName =
   | 'zinc'
   | 'shingle'
   | 'paving'
-  | 'metal';
+  | 'metal'
+  | 'rubble'
+  | 'canvas'
+  | 'copper';
 
 /**
  * One character of a facade pattern — what stands in one bay of one storey.
@@ -52,14 +55,7 @@ export type SurfaceName =
 export type BayCode = 's' | 'w' | 't' | 'a' | 'o' | 'd' | 'D' | 'g' | 'v' | 'n' | 'p';
 
 export type RoofForm =
-  | 'gable'
-  | 'hip'
-  | 'pyramid'
-  | 'flat'
-  | 'mansard'
-  | 'shed'
-  | 'cone'
-  | 'barrel';
+  'gable' | 'hip' | 'pyramid' | 'flat' | 'mansard' | 'shed' | 'cone' | 'barrel';
 
 export type FacadeSide = 'front' | 'right' | 'back' | 'left';
 

@@ -28,7 +28,9 @@ type Prop = PoolBuild['props'][number];
 /** Draw one deck item into the builder, already transformed into the pool's local frame. */
 export function buildProp(b: SurfaceBuilder, prop: Prop, seed: number, index: number): void {
   const colours = prop.item.colors.length ? prop.item.colors : ['#cccccc'];
-  const colour = hexToLinear(colours[Math.floor(hash2(index, 7, seed) * colours.length) % colours.length]);
+  const colour = hexToLinear(
+    colours[Math.floor(hash2(index, 7, seed) * colours.length) % colours.length]
+  );
   const accent = hexToLinear(prop.item.accent);
   const t = transform(prop);
   switch (prop.shape) {
@@ -104,12 +106,30 @@ function slab(
     return at(t, centre[0] + f, centre[1] + u, centre[2] + half[2] * sl);
   };
   const faces: Array<{ n: [number, number, number]; c: Array<[number, number, number]> }> = [
-    { n: dir(t, cos, sin, 0), c: [corner(1, -1, -1), corner(1, -1, 1), corner(1, 1, 1), corner(1, 1, -1)] },
-    { n: dir(t, -cos, -sin, 0), c: [corner(-1, 1, -1), corner(-1, 1, 1), corner(-1, -1, 1), corner(-1, -1, -1)] },
-    { n: dir(t, -sin, cos, 0), c: [corner(-1, 1, -1), corner(1, 1, -1), corner(1, 1, 1), corner(-1, 1, 1)] },
-    { n: dir(t, sin, -cos, 0), c: [corner(-1, -1, 1), corner(1, -1, 1), corner(1, -1, -1), corner(-1, -1, -1)] },
-    { n: dir(t, 0, 0, 1), c: [corner(-1, -1, 1), corner(-1, 1, 1), corner(1, 1, 1), corner(1, -1, 1)] },
-    { n: dir(t, 0, 0, -1), c: [corner(1, -1, -1), corner(1, 1, -1), corner(-1, 1, -1), corner(-1, -1, -1)] },
+    {
+      n: dir(t, cos, sin, 0),
+      c: [corner(1, -1, -1), corner(1, -1, 1), corner(1, 1, 1), corner(1, 1, -1)],
+    },
+    {
+      n: dir(t, -cos, -sin, 0),
+      c: [corner(-1, 1, -1), corner(-1, 1, 1), corner(-1, -1, 1), corner(-1, -1, -1)],
+    },
+    {
+      n: dir(t, -sin, cos, 0),
+      c: [corner(-1, 1, -1), corner(1, 1, -1), corner(1, 1, 1), corner(-1, 1, 1)],
+    },
+    {
+      n: dir(t, sin, -cos, 0),
+      c: [corner(-1, -1, 1), corner(1, -1, 1), corner(1, -1, -1), corner(-1, -1, -1)],
+    },
+    {
+      n: dir(t, 0, 0, 1),
+      c: [corner(-1, -1, 1), corner(-1, 1, 1), corner(1, 1, 1), corner(1, -1, 1)],
+    },
+    {
+      n: dir(t, 0, 0, -1),
+      c: [corner(1, -1, -1), corner(1, 1, -1), corner(-1, 1, -1), corner(-1, -1, -1)],
+    },
   ];
   for (const face of faces) {
     const ids = face.c.map((p, i) =>
@@ -148,7 +168,12 @@ function post(
   }
 }
 
-function lounger(b: SurfaceBuilder, t: Xf, colour: [number, number, number], accent: [number, number, number]): void {
+function lounger(
+  b: SurfaceBuilder,
+  t: Xf,
+  colour: [number, number, number],
+  accent: [number, number, number]
+): void {
   const frame = b.surface('metal');
   const fabric = b.surface('fabric');
   // Four feet, 1.95 × 0.62, seat at 0.38.
@@ -210,7 +235,12 @@ function parasol(
   }
 }
 
-function ringPost(b: SurfaceBuilder, t: Xf, colour: [number, number, number], accent: [number, number, number]): void {
+function ringPost(
+  b: SurfaceBuilder,
+  t: Xf,
+  colour: [number, number, number],
+  accent: [number, number, number]
+): void {
   const metal = b.surface('metal');
   post(b, t, metal, 0, 0, 0, 1.35, 0.028, accent, 8);
   post(b, t, metal, 0, 0, 0, 0.06, 0.16, accent, 10);
@@ -250,14 +280,24 @@ function ringPost(b: SurfaceBuilder, t: Xf, colour: [number, number, number], ac
   }
 }
 
-function towelBox(b: SurfaceBuilder, t: Xf, colour: [number, number, number], accent: [number, number, number]): void {
+function towelBox(
+  b: SurfaceBuilder,
+  t: Xf,
+  colour: [number, number, number],
+  accent: [number, number, number]
+): void {
   const timber = b.surface('timber');
   slab(b, t, timber, [0, 0.28, 0], [0.62, 0.28, 0.34], colour);
   // A lid with a lip, so it is a chest and not a crate.
   slab(b, t, timber, [0, 0.58, 0], [0.66, 0.03, 0.37], accent);
 }
 
-function planter(b: SurfaceBuilder, t: Xf, colour: [number, number, number], accent: [number, number, number]): void {
+function planter(
+  b: SurfaceBuilder,
+  t: Xf,
+  colour: [number, number, number],
+  accent: [number, number, number]
+): void {
   const timber = b.surface('timber');
   const fabric = b.surface('fabric');
   post(b, t, timber, 0, 0, 0, 0.52, 0.36, colour, 10);

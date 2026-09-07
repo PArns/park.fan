@@ -139,27 +139,21 @@ function eaveTrim(
   const a1 = p(to, at, y - depth);
   const a2 = p(to, at, y);
   const a3 = p(from, at, y);
-  if ((axis === 'x') === front) addQuad(ctx.kit, a0, a1, a2, a3, quad(skin.joineryColour, skin.joineryTile));
+  if ((axis === 'x') === front)
+    addQuad(ctx.kit, a0, a1, a2, a3, quad(skin.joineryColour, skin.joineryTile));
   else addQuad(ctx.kit, a1, a0, a3, a2, quad(skin.joineryColour, skin.joineryTile));
   // The soffit, closing the underside back to the wall. It is what makes the overhang a shadow.
   const b0 = p(from, at, y - depth);
   const b1 = p(to, at, y - depth);
   const b2 = p(to, wallAt, y - depth);
   const b3 = p(from, wallAt, y - depth);
-  if ((axis === 'x') === front) addQuad(ctx.kit, b1, b0, b3, b2, quad(shade(skin.joineryColour, 0.55), skin.joineryTile));
+  if ((axis === 'x') === front)
+    addQuad(ctx.kit, b1, b0, b3, b2, quad(shade(skin.joineryColour, 0.55), skin.joineryTile));
   else addQuad(ctx.kit, b0, b1, b2, b3, quad(shade(skin.joineryColour, 0.55), skin.joineryTile));
   if (gutter) {
     const gy = y - depth + 0.06;
     const go = at - facing * 0.07;
-    addTube(
-      ctx.kit,
-      p(from, go, gy),
-      p(to, go, gy),
-      0.075,
-      skin.metalColour,
-      skin.metalTile,
-      6
-    );
+    addTube(ctx.kit, p(from, go, gy), p(to, go, gy), 0.075, skin.metalColour, skin.metalTile, 6);
   }
 }
 
@@ -266,18 +260,7 @@ function hipRoof(
     const c = p(end * ridgeHalf, 0, ridgeY);
     if (end > 0) addTriangle(ctx.kit, b, a, c, r.colour, r.tile);
     else addTriangle(ctx.kit, a, b, c, r.colour, r.tile);
-    eaveTrim(
-      ctx,
-      m,
-      skin,
-      r.ridge === 'x' ? 'z' : 'x',
-      -S,
-      S,
-      end * A,
-      end * along,
-      edgeY,
-      true
-    );
+    eaveTrim(ctx, m, skin, r.ridge === 'x' ? 'z' : 'x', -S, S, end * A, end * along, edgeY, true);
     // The hip line itself, capped like a ridge.
     ridgeCap(ctx, r, p(end * A, S, edgeY), p(end * ridgeHalf, 0, ridgeY + 0.04));
     ridgeCap(ctx, r, p(end * A, -S, edgeY), p(end * ridgeHalf, 0, ridgeY + 0.04));
@@ -323,13 +306,7 @@ function pyramidRoof(
   return { top: Math.max(apexY, top) };
 }
 
-function shedRoof(
-  ctx: KitCtx,
-  m: Placed,
-  r: ResolvedRoof,
-  skin: Skin,
-  eaveY: number
-): RoofResult {
+function shedRoof(ctx: KitCtx, m: Placed, r: ResolvedRoof, skin: Skin, eaveY: number): RoofResult {
   const e = r.eaves;
   const span = r.ridge === 'x' ? m.hz : m.hx;
   const along = r.ridge === 'x' ? m.hx : m.hz;
@@ -357,13 +334,7 @@ function shedRoof(
   return { top: highY };
 }
 
-function flatRoof(
-  ctx: KitCtx,
-  m: Placed,
-  r: ResolvedRoof,
-  skin: Skin,
-  eaveY: number
-): RoofResult {
+function flatRoof(ctx: KitCtx, m: Placed, r: ResolvedRoof, skin: Skin, eaveY: number): RoofResult {
   const deckY = eaveY - 0.12;
   addQuad(
     ctx.kit,
@@ -408,11 +379,14 @@ function mansardRoof(
   const along = r.ridge === 'x' ? m.hx : m.hz;
   const span = r.ridge === 'x' ? m.hz : m.hx;
   const e = r.eaves;
-  // A mansard is two pitches: about 72° below the break and 28° above it, with the break two thirds
-  // of the way in. That double slope is the whole reason the form exists — an extra storey inside a
-  // roof — and drawing it as one pitch loses it.
-  const breakW = span * 0.42;
-  const lowRise = Math.tan((72 * Math.PI) / 180) * (span - breakW);
+  // A mansard is two pitches: about 70° below the break and 26° above it. What matters is the
+  // horizontal RUN of the steep part, not a fraction of the span — at 70° a run is nearly three
+  // times itself in height, so taking the break at 0.42 of the span put a 5 m half-span under an
+  // 8.9 m lower slope and made a three-storey terrace house 23 m tall. A metre of run is a 2.7 m
+  // lower slope, which is the storey inside the roof the form exists for.
+  const lowerRun = Math.min(span * 0.32, 1.0);
+  const breakW = Math.max(0.3, span - lowerRun);
+  const lowRise = Math.tan((70 * Math.PI) / 180) * lowerRun;
   const breakY = eaveY + lowRise;
   const topY = breakY + Math.tan((26 * Math.PI) / 180) * breakW;
   const edgeY = eaveY - 0.3;
@@ -766,7 +740,10 @@ function lanternOn(ctx: KitCtx, m: Placed, r: ResolvedRoof, skin: Skin, y: numbe
 
 // ── helpers ─────────────────────────────────────────────────────────────────────────────────
 
-function roofQuad(r: ResolvedRoof, slope: number): {
+function roofQuad(
+  r: ResolvedRoof,
+  slope: number
+): {
   colour: Rgb;
   colourTop: Rgb;
   tile: number;
@@ -784,14 +761,7 @@ function roofQuad(r: ResolvedRoof, slope: number): {
 }
 
 /** An axis-aligned box in the mass's local space, transformed into building space. */
-export function boxLocal(
-  s: Surface,
-  m: Placed,
-  min: P3,
-  max: P3,
-  colour: Rgb,
-  tile: number
-): void {
+export function boxLocal(s: Surface, m: Placed, min: P3, max: P3, colour: Rgb, tile: number): void {
   // Build it in local space and rotate each corner, which is what `addBox` cannot do on its own.
   const [x0, y0, z0] = min;
   const [x1, y1, z1] = max;

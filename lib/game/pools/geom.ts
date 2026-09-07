@@ -28,7 +28,7 @@
  * or a run-out lane, deepest along its centreline.
  */
 
-import type { PoolDepthSpec, PoolShapeSpec } from './types';
+import type { PoolDepthSpec, PoolEdgeSpec, PoolShapeSpec } from './types';
 
 export const clamp01 = (x: number): number => (x < 0 ? 0 : x > 1 ? 1 : x);
 export const mix = (a: number, b: number, t: number): number => a + (b - a) * t;
@@ -58,7 +58,11 @@ export function hexToLinear(hex: string): [number, number, number] {
  * A pure function of (entity, index) gives the same deck whatever order the world announces.
  */
 export function hash2(ix: number, iy: number, seed: number): number {
-  let h = (Math.imul(ix | 0, 374761393) + Math.imul(iy | 0, 668265263) + Math.imul(seed | 0, 1274126177)) | 0;
+  let h =
+    (Math.imul(ix | 0, 374761393) +
+      Math.imul(iy | 0, 668265263) +
+      Math.imul(seed | 0, 1274126177)) |
+    0;
   h = Math.imul(h ^ (h >>> 13), 1274126177);
   h ^= h >>> 16;
   return (h >>> 0) / 4294967296;
@@ -340,3 +344,19 @@ export function toWorld(
   const s = Math.sin(yaw);
   return [position[0] + x * c - z * s, position[2] + x * s + z * c];
 }
+
+/**
+ * The height of the pool's rim above the surrounding grade, in metres.
+ *
+ * One definition, because three files need it and a pool whose water level disagrees with its own
+ * coping by 48 mm is a waterline drawn in the wrong place. The deck falls 1.5 % away from the pool
+ * and has to arrive at grade, so the rim stands one deck-fall up before the coping's own rise.
+ */
+export function rimHeight(edge: PoolEdgeSpec): number {
+  const deckFall = edge.deck === 'none' ? 0 : 0.015 * Math.max(0, edge.deckWidth);
+  const lift = edge.deck === 'none' ? 0 : DECK_LIFT;
+  return lift + deckFall + (edge.coping === 'deck-level' ? 0 : edge.copingRise);
+}
+
+/** Metres the deck stands above the surrounding grade. See the note in `build.ts`. */
+export const DECK_LIFT = 0.05;

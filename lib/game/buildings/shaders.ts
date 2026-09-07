@@ -1,5 +1,5 @@
 /**
- * The twelve procedural surfaces the building atlas is made of, as pure functions.
+ * The sixteen procedural surfaces the building atlas is made of, as pure functions.
  *
  * Split out of `textures.ts` so they carry no Babylon import and can be run under node: the claim
  * these files make — that every material has real per-unit tone variation rather than "one colour
@@ -21,7 +21,7 @@
  */
 
 import { clamp01, mix, rand2, smoothstep, tileableFbm, tileableNoise } from './noise';
-import { TILE } from './geometry';
+import { TILE, TILE_GLOW } from './geometry';
 
 /** A surface sample: colour in sRGB 0..1, a height for the normal, and the material response. */
 export interface Sample {
@@ -320,8 +320,11 @@ function paintShader(salt: number): Shader {
     const lay = tileableNoise(u * 3, v * 90, 90, salt);
     const dust = tileableFbm(u * 60, v * 60, 60, salt + 13, 2);
     const run = smoothstep(0.965, 1.0, tileableFbm(u * 8, v * 26, 26, salt + 47, 2));
+    // Fade: paint on a south elevation is not the paint on a north one, and a door repainted last
+    // year is not the door beside it. Without this every painted surface in the park is one value.
+    const fade = tileableFbm(u * 2.2, v * 2.2, 2.2, salt + 5, 2);
     const height = clamp01(0.6 + (lay - 0.5) * 0.12 + (dust - 0.5) * 0.1 + run * 0.2);
-    const value = 0.96 + height * 0.1;
+    const value = 0.96 + height * 0.1 + (fade - 0.5) * 0.4;
     grey(out, value);
     out.height = height;
     out.roughness = 0.3 + (1 - height) * 0.14 + run * 0.12;
@@ -396,8 +399,9 @@ function metalShader(salt: number): Shader {
     const peel = tileableFbm(u * 50, v * 50, 50, salt, 2);
     const brush = tileableNoise(u * 150, v * 6, 150, salt + 19);
     const scuff = smoothstep(0.95, 1.0, tileableFbm(u * 18, v * 18, 18, salt + 67, 3));
+    const patch = tileableFbm(u * 2.6, v * 2.6, 2.6, salt + 5, 2);
     const height = clamp01(0.56 + (peel - 0.5) * 0.2 + (brush - 0.5) * 0.1 - scuff * 0.34);
-    const value = 0.93 + height * 0.16;
+    const value = 0.93 + height * 0.16 + (patch - 0.5) * 0.3;
     out.r = value;
     out.g = value;
     out.b = value * 1.01;
@@ -405,6 +409,126 @@ function metalShader(salt: number): Shader {
     out.roughness = mix(0.3, 0.6, scuff) + (1 - height) * 0.08;
     out.metallic = 0.2 + scuff * 0.4;
     out.ao = 0.82 + height * 0.18;
+  };
+}
+
+/**
+ * Rubble masonry: undressed field stone with wide mortar and no courses to speak of.
+ *
+ * Drawn as a jittered lattice rather than a grid — the whole character of a rubble wall is that no
+ * two stones are the same size, and a regular grid with noise on it still reads as a grid.
+ */
+function rubbleShader(salt: number): Shader {
+  const cols = 4;
+  const rows = 5;
+  return (u, v, out) => {
+    let best = 0;
+    let bestId = 0;
+    let second = 0;
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const cx = Math.floor(u * cols) + dx;
+        const cy = Math.floor(v * rows) + dy;
+        const jx = (rand2(cx, cy, salt) - 0.5) * 0.7;
+        const jy = (rand2(cx, cy, salt + 91) - 0.5) * 0.7;
+        const px = (cx + 0.5 + jx) / cols;
+        const py = (cy + 0.5 + jy) / rows;
+        const d = Math.hypot((u - px) * cols, (v - py) * rows);
+        const w = 1 - d;
+        if (w > best) {
+          second = best;
+          best = w;
+          bestId = ((cx & 255) << 8) | (cy & 255);
+        } else if (w > second) second = w;
+      }
+    }
+    const edge = smoothstep(0.16, 0.02, best - second);
+    const tone = (rand2(bestId, 3, salt) * 2 - 1) * 0.2;
+    const face = tileableFbm(u * 90, v * 90, 90, salt + bestId, 3);
+    const height = clamp01(0.72 + (face - 0.5) * 0.3 - edge * 0.8);
+    const value = 0.86 + height * 0.28 + tone;
+    out.r = value * 1.005;
+    out.g = value;
+    out.b = value * 0.97;
+    out.height = height;
+    out.roughness = 0.82 + (1 - height) * 0.1;
+    out.metallic = 0;
+    out.ao = 0.5 + height * 0.5 - edge * 0.28;
+  };
+}
+
+/** Awning and blind canvas: a plain weave with a slub, matt, faintly translucent-looking. */
+function canvasShader(salt: number): Shader {
+  return (u, v, out) => {
+    const warp = Math.abs(Math.sin(u * Math.PI * 120));
+    const weft = Math.abs(Math.sin(v * Math.PI * 120));
+    const weave = (warp * 0.5 + weft * 0.5) * 0.5 + 0.25;
+    const slub = tileableFbm(u * 36, v * 36, 36, salt, 2);
+    // The sag is what a canvas does between its ribs, and it is a shadow rather than a texture: the
+    // fabric is darker where it hangs and bright where it is stretched.
+    const sag = tileableFbm(u * 2.4, v * 2.4, 2.4, salt + 23, 2);
+    const height = clamp01(weave * 0.7 + (slub - 0.5) * 0.4);
+    const value = 0.9 + height * 0.18 + (sag - 0.5) * 0.2;
+    grey(out, value);
+    out.height = height;
+    out.roughness = 0.93;
+    out.metallic = 0;
+    out.ao = 0.8 + height * 0.2;
+  };
+}
+
+/**
+ * Verdigris copper: 600 mm bays with a standing seam, gone green in streaks that run DOWN the slope.
+ *
+ * A copper roof is the one metal in a European park that is not grey, and the patina is directional
+ * — it forms where the water runs and stays bright where it does not, which is why the streaks here
+ * are stretched 6:1 along v rather than isotropic blotches.
+ */
+function copperShader(salt: number): Shader {
+  const bays = 2;
+  return (u, v, out) => {
+    const c = u * bays;
+    const bay = Math.floor(c);
+    const f = c - bay;
+    const seam = smoothstep(0.05, 0.012, f) + smoothstep(0.95, 0.988, f);
+    const patina = tileableFbm(u * 7, v * 1.4, 7, salt + bay * 13, 4);
+    const streak = tileableFbm(u * 26, v * 4, 26, salt + 3, 3);
+    const green = clamp01(patina * 1.15 + streak * 0.45 - 0.25);
+    const height = clamp01(0.46 + seam * 0.5 + (streak - 0.5) * 0.12);
+    const value = 0.9 + height * 0.16 + (green - 0.5) * 0.16;
+    out.r = value * mix(1.06, 0.78, green);
+    out.g = value * mix(0.94, 1.06, green);
+    out.b = value * mix(0.82, 0.98, green);
+    out.height = height;
+    out.roughness = mix(0.34, 0.8, green) + (1 - height) * 0.08;
+    out.metallic = mix(0.75, 0.1, green);
+    out.ao = 0.8 + height * 0.2;
+  };
+}
+
+/**
+ * The window glow — not a material, and no pack can name it.
+ *
+ * Large soft blotches from about 0.35 to 1.3, warm in the middle and cooler at the edges. A lit pane
+ * samples a random sub-rectangle of this, which is the only way forty windows get forty brightnesses
+ * out of one emissive material: Babylon's PBR multiplies the emissive by a texture and a uniform
+ * colour and never by the vertex stream. Within one pane it also gives a gradient, which reads as a
+ * room lit from one side rather than as a light box.
+ */
+function glowShader(salt: number): Shader {
+  return (u, v, out) => {
+    const blob = tileableFbm(u * 3, v * 3, 3, salt, 3);
+    const fine = tileableFbm(u * 11, v * 11, 11, salt + 17, 2);
+    const value = clamp01(0.28 + blob * 1.1 + (fine - 0.5) * 0.3);
+    // Warmer where it is brighter: a bright room is a lamp, a dim one is daylight through a blind.
+    const warm = value;
+    out.r = value * mix(0.92, 1.12, warm);
+    out.g = value;
+    out.b = value * mix(1.06, 0.82, warm);
+    out.height = 0.5;
+    out.roughness = 0.6;
+    out.metallic = 0;
+    out.ao = 1;
   };
 }
 
@@ -421,4 +545,8 @@ export const SHADERS: Array<{ tile: number; name: string; make: (salt: number) =
   { tile: TILE.concrete, name: 'concrete', make: concreteShader },
   { tile: TILE.paving, name: 'paving', make: pavingShader },
   { tile: TILE.metal, name: 'metal', make: metalShader },
+  { tile: TILE_GLOW, name: 'glow', make: glowShader },
+  { tile: TILE.rubble, name: 'rubble', make: rubbleShader },
+  { tile: TILE.canvas, name: 'canvas', make: canvasShader },
+  { tile: TILE.copper, name: 'copper', make: copperShader },
 ];

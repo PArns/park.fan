@@ -39,7 +39,16 @@ import {
   type Rgb,
   type Surface,
 } from './geometry';
-import { clockFace, courseBand, downpipe, drawBay, quoins, signBand, type KitCtx, type Skin } from './kit';
+import {
+  clockFace,
+  courseBand,
+  downpipe,
+  drawBay,
+  quoins,
+  signBand,
+  type KitCtx,
+  type Skin,
+} from './kit';
 import { hashString, rand2 } from './noise';
 import { boxLocal, buildRoof, xf, type Placed, type ResolvedRoof } from './roofs';
 import type {
@@ -57,7 +66,13 @@ import type {
 export interface BuildingBuild {
   kit: Surface;
   glass: Surface;
+  /** Emissive in the style's warm `lit` colour. */
   lit: Surface;
+  /** Emissive in the sign's own colour. */
+  sign: Surface;
+  /** sRGB hex of each emissive surface, so `main.ts` can cache one material per colour. */
+  litColour: string;
+  signColour: string;
   bounds: BuildBounds;
   triangles: number;
   windows: number;
@@ -94,6 +109,7 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
     kit: newSurface(),
     glass: newSurface(),
     lit: newSurface(),
+    sign: newSurface(),
     seed: opts.seed,
     litFraction: opts.litFraction ?? bp.night?.litFraction ?? 0.55,
     windows: 0,
@@ -112,14 +128,21 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
 
   groundWorks(ctx, bp, style);
 
-  const bounds = boundsOf(ctx.kit, ctx.glass, ctx.lit);
+  const bounds = boundsOf(ctx.kit, ctx.glass, ctx.lit, ctx.sign);
   const entrance = ctx.entrance ?? defaultEntrance(bp);
   return {
     kit: ctx.kit,
     glass: ctx.glass,
     lit: ctx.lit,
+    sign: ctx.sign,
+    litColour: style.palette.lit,
+    signColour: bp.sign?.color ?? style.palette.sign,
     bounds: { min: bounds.min, max: bounds.max },
-    triangles: surfaceTriangles(ctx.kit) + surfaceTriangles(ctx.glass) + surfaceTriangles(ctx.lit),
+    triangles:
+      surfaceTriangles(ctx.kit) +
+      surfaceTriangles(ctx.glass) +
+      surfaceTriangles(ctx.lit) +
+      surfaceTriangles(ctx.sign),
     windows: ctx.windows,
     litWindows: ctx.litWindows,
     doors: ctx.doors,
@@ -255,20 +278,29 @@ function buildMass(
       );
     }
     if (mass.clock && mass.clock > 0) {
-      clockFace(
-        ctx,
-        front,
-        front.width / 2,
-        eaveY - m.base - plinth + mass.clock * 0.1,
-        mass.clock,
-        skin
-      );
+      // In the gable if the roof presents one to the front, otherwise high on the wall itself.
+      // Getting this backwards puts the dial through the roof plane, which is the sort of thing a
+      // screenshot shows and a green build does not.
+      const gabled =
+        (roofFormOf(mass) === 'gable' || roofFormOf(mass) === 'mansard') && roof.ridge === 'z';
+      const cv = gabled ? front.height + mass.clock * 0.62 : front.height - mass.clock * 0.72;
+      clockFace(ctx, front, front.width / 2, cv, mass.clock, skin);
     }
   } else if (mass.clock && mass.clock > 0) {
+    // A tower clock has four faces, not one per facet: on an octagon that is every other one.
     const frames = roundFrames(m, round, m.base + plinth, eaveY - m.base - plinth);
-    for (const entry of frames) {
-      clockFace(ctx, entry.frame, entry.frame.width / 2, entry.frame.height - mass.clock * 0.75, mass.clock, skin);
-    }
+    const every = Math.max(1, Math.round(round / 4));
+    frames.forEach((entry, i) => {
+      if (i % every !== 0) return;
+      clockFace(
+        ctx,
+        entry.frame,
+        entry.frame.width / 2,
+        entry.frame.height - mass.clock! * 0.72,
+        mass.clock!,
+        skin
+      );
+    });
   }
 
   if (mass.arcade) arcade(ctx, m, mass, skin, storeyHeight, plinth);
@@ -436,7 +468,10 @@ function arcade(
     [1, 0.0],
   ] as Array<[number, number]>) {
     const yy = m.base + i * step * 0.5;
-    const box0 = axis === 'x' ? [-along - 0.5 + inset, yy, outAt * (face - depth)] : [outAt * (face - depth), yy, -along - 0.5 + inset];
+    const box0 =
+      axis === 'x'
+        ? [-along - 0.5 + inset, yy, outAt * (face - depth)]
+        : [outAt * (face - depth), yy, -along - 0.5 + inset];
     const box1 =
       axis === 'x'
         ? [along + 0.5 - inset, yy + step * 0.5, outAt * (face + 0.5 - inset)]
@@ -467,13 +502,19 @@ function arcade(
     });
   }
   // The entablature over them, and a shallow lean-to roof back to the wall.
-  const eb0 = axis === 'x' ? [-along - 0.4, top, outAt * (face - depth)] : [outAt * (face - depth), top, -along - 0.4];
+  const eb0 =
+    axis === 'x'
+      ? [-along - 0.4, top, outAt * (face - depth)]
+      : [outAt * (face - depth), top, -along - 0.4];
   const eb1 =
     axis === 'x'
       ? [along + 0.4, top + 0.55, outAt * (face + 0.2)]
       : [outAt * (face + 0.2), top + 0.55, along + 0.4];
   boxLocal(ctx.kit, m, eb0 as P3, eb1 as P3, skin.trimColour, skin.trimTile);
-  const co0 = axis === 'x' ? [-along - 0.55, top + 0.55, outAt * (face - depth)] : [outAt * (face - depth), top + 0.55, -along - 0.55];
+  const co0 =
+    axis === 'x'
+      ? [-along - 0.55, top + 0.55, outAt * (face - depth)]
+      : [outAt * (face - depth), top + 0.55, -along - 0.55];
   const co1 =
     axis === 'x'
       ? [along + 0.55, top + 0.72, outAt * (face + 0.34)]
@@ -525,22 +566,31 @@ function arcade(
  * Every prop grounds (ART_BIBLE). A building set straight on grass reads as dropped rather than
  * built, and the apron is what a park actually has: a paved skirt wide enough to walk round.
  */
-function groundWorks(ctx: KitCtx, bp: BlueprintDef, style: BuildingStyleDef): void {
-  const g = bp.ground;
-  const apron = g?.apron ?? 2.2;
-  if (apron <= 0) return;
-  const paving = tileFor('paving');
-  const colour = srgb('#9ba1a6');
+/**
+ * The plan extent of a whole building, eaves and colonnade included.
+ *
+ * Used by the ground works and by the palette's declared `size`, and it has to count the things that
+ * stick out past the walls or the apron stops short of them: a ticket hall's arcade projects 3.2 m
+ * in front of its frontage, so paving the mass alone left seven columns standing on grass. Rotation
+ * is taken on the bounding box of the rotated rectangle, which is what a wing at 35° needs.
+ */
+export function planExtent(
+  bp: BlueprintDef
+): { minX: number; maxX: number; minZ: number; maxZ: number } | null {
   let minX = Infinity;
   let maxX = -Infinity;
   let minZ = Infinity;
   let maxZ = -Infinity;
   for (const mass of bp.masses) {
     const at = mass.at ?? [0, 0];
-    // The bounding box of a rotated mass, so a wing at an angle still gets paving under it.
     const yaw = (mass.yaw ?? 0) * DEG;
-    const hx = mass.size[0] / 2;
-    const hz = mass.size[1] / 2;
+    const over = mass.roof?.eaves ?? 0.55;
+    const a = mass.arcade;
+    // The colonnade only projects on the side it is on; everything else grows by the eaves.
+    const px = a && (a.side === 'right' || a.side === 'left') ? a.depth : over;
+    const pz = a && (a.side === 'front' || a.side === 'back') ? a.depth : over;
+    const hx = mass.size[0] / 2 + Math.max(over, px);
+    const hz = mass.size[1] / 2 + Math.max(over, pz);
     const ex = Math.abs(hx * Math.cos(yaw)) + Math.abs(hz * Math.sin(yaw));
     const ez = Math.abs(hx * Math.sin(yaw)) + Math.abs(hz * Math.cos(yaw));
     minX = Math.min(minX, at[0] - ex);
@@ -548,20 +598,28 @@ function groundWorks(ctx: KitCtx, bp: BlueprintDef, style: BuildingStyleDef): vo
     minZ = Math.min(minZ, at[1] - ez);
     maxZ = Math.max(maxZ, at[1] + ez);
   }
-  if (!Number.isFinite(minX)) return;
-  const x0 = minX - apron;
-  const x1 = maxX + apron;
-  const z0 = minZ - apron;
-  const z1 = maxZ + apron;
+  if (!Number.isFinite(minX)) return null;
+  return { minX, maxX, minZ, maxZ };
+}
+
+function groundWorks(ctx: KitCtx, bp: BlueprintDef, style: BuildingStyleDef): void {
+  const g = bp.ground;
+  const apron = g?.apron ?? 2.2;
+  if (apron <= 0) return;
+  const paving = tileFor('paving');
+  const colour = srgb('#9ba1a6');
+  const plan = planExtent(bp);
+  if (!plan) return;
+  const x0 = plan.minX - apron;
+  const x1 = plan.maxX + apron;
+  const z0 = plan.minZ - apron;
+  const z1 = plan.maxZ + apron;
   const y = 0.06;
-  addQuad(
-    ctx.kit,
-    [x0, y, z1],
-    [x1, y, z1],
-    [x1, y, z0],
-    [x0, y, z0],
-    { colour, tile: paving, maxCells: 14 }
-  );
+  addQuad(ctx.kit, [x0, y, z1], [x1, y, z1], [x1, y, z0], [x0, y, z0], {
+    colour,
+    tile: paving,
+    maxCells: 14,
+  });
   if (g?.kerb !== false) {
     const k = 0.16;
     const trimColour = srgb(style.palette.plinth);
@@ -644,6 +702,10 @@ export function skinFor(style: BuildingStyleDef, mass?: MassDef): Skin {
   };
 }
 
+function roofFormOf(mass: MassDef): string {
+  return mass.roof?.form ?? 'gable';
+}
+
 function resolveRoof(
   def: RoofDef | undefined,
   style: BuildingStyleDef,
@@ -677,25 +739,27 @@ function resolveRoof(
  * building through a `buildingBlueprints` entry instead. A name nothing here knows falls back to a
  * plain panel of the declared size and warns once — a piece nobody anticipated draws SOMETHING.
  */
-export const PIECES: Record<string, (ctx: KitCtx, size: P3, skin: Skin, style: BuildingStyleDef) => void> =
-  {
-    wall: (ctx, size, skin) => wallPiece(ctx, size, skin, 's'),
-    'wall-window': (ctx, size, skin) => wallPiece(ctx, size, skin, 'w'),
-    'wall-window-arched': (ctx, size, skin) => wallPiece(ctx, size, skin, 'a'),
-    'wall-window-wide': (ctx, size, skin) => wallPiece(ctx, size, skin, 'g'),
-    'wall-door': (ctx, size, skin) => wallPiece(ctx, size, skin, 'd'),
-    'wall-arch': (ctx, size, skin) => wallPiece(ctx, size, skin, 'a'),
-    'wall-oculus': (ctx, size, skin) => wallPiece(ctx, size, skin, 'o'),
-    'wall-louvre': (ctx, size, skin) => wallPiece(ctx, size, skin, 'v'),
-    'roof-gable': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'gable'),
-    'roof-hip': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'hip'),
-    'roof-flat': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'flat'),
-    'roof-pyramid': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'pyramid'),
-    floor: (ctx, size, skin) => floorPiece(ctx, size, skin),
-    column: (ctx, size, skin) => columnPiece(ctx, size, skin),
-    trim: (ctx, size, skin) => trimPiece(ctx, size, skin),
-    canopy: (ctx, size, skin) => canopyPiece(ctx, size, skin),
-  };
+export const PIECES: Record<
+  string,
+  (ctx: KitCtx, size: P3, skin: Skin, style: BuildingStyleDef) => void
+> = {
+  wall: (ctx, size, skin) => wallPiece(ctx, size, skin, 's'),
+  'wall-window': (ctx, size, skin) => wallPiece(ctx, size, skin, 'w'),
+  'wall-window-arched': (ctx, size, skin) => wallPiece(ctx, size, skin, 'a'),
+  'wall-window-wide': (ctx, size, skin) => wallPiece(ctx, size, skin, 'g'),
+  'wall-door': (ctx, size, skin) => wallPiece(ctx, size, skin, 'd'),
+  'wall-arch': (ctx, size, skin) => wallPiece(ctx, size, skin, 'a'),
+  'wall-oculus': (ctx, size, skin) => wallPiece(ctx, size, skin, 'o'),
+  'wall-louvre': (ctx, size, skin) => wallPiece(ctx, size, skin, 'v'),
+  'roof-gable': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'gable'),
+  'roof-hip': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'hip'),
+  'roof-flat': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'flat'),
+  'roof-pyramid': (ctx, size, skin, style) => roofPiece(ctx, size, skin, style, 'pyramid'),
+  floor: (ctx, size, skin) => floorPiece(ctx, size, skin),
+  column: (ctx, size, skin) => columnPiece(ctx, size, skin),
+  trim: (ctx, size, skin) => trimPiece(ctx, size, skin),
+  canopy: (ctx, size, skin) => canopyPiece(ctx, size, skin),
+};
 
 /** One kit piece, standing on its own, centred on the origin. */
 export function buildKitPiece(opts: {
@@ -709,6 +773,7 @@ export function buildKitPiece(opts: {
     kit: newSurface(),
     glass: newSurface(),
     lit: newSurface(),
+    sign: newSurface(),
     seed: opts.seed,
     litFraction: opts.litFraction ?? 0.6,
     windows: 0,
@@ -720,13 +785,20 @@ export function buildKitPiece(opts: {
   const skin = skinFor(opts.style);
   const gen = PIECES[opts.piece] ?? PIECES.wall;
   gen(ctx, opts.size, skin, opts.style);
-  const bounds = boundsOf(ctx.kit, ctx.glass, ctx.lit);
+  const bounds = boundsOf(ctx.kit, ctx.glass, ctx.lit, ctx.sign);
   return {
     kit: ctx.kit,
     glass: ctx.glass,
     lit: ctx.lit,
+    sign: ctx.sign,
+    litColour: opts.style.palette.lit,
+    signColour: opts.style.palette.sign,
     bounds: { min: bounds.min, max: bounds.max },
-    triangles: surfaceTriangles(ctx.kit) + surfaceTriangles(ctx.glass) + surfaceTriangles(ctx.lit),
+    triangles:
+      surfaceTriangles(ctx.kit) +
+      surfaceTriangles(ctx.glass) +
+      surfaceTriangles(ctx.lit) +
+      surfaceTriangles(ctx.sign),
     windows: ctx.windows,
     litWindows: ctx.litWindows,
     doors: ctx.doors,
@@ -760,8 +832,22 @@ function wallPiece(ctx: KitCtx, size: P3, skin: Skin, code: BayCode): void {
     [back.o[0], back.o[1] + h, back.o[2]],
     { colour: shade(skin.wallColour, 0.92), tile: skin.wallTile }
   );
-  boxLocal(ctx.kit, m, [-w / 2, 0, -d / 2], [-w / 2 + 0.02, h, d / 2], skin.wallColour, skin.wallTile);
-  boxLocal(ctx.kit, m, [w / 2 - 0.02, 0, -d / 2], [w / 2, h, d / 2], skin.wallColour, skin.wallTile);
+  boxLocal(
+    ctx.kit,
+    m,
+    [-w / 2, 0, -d / 2],
+    [-w / 2 + 0.02, h, d / 2],
+    skin.wallColour,
+    skin.wallTile
+  );
+  boxLocal(
+    ctx.kit,
+    m,
+    [w / 2 - 0.02, 0, -d / 2],
+    [w / 2, h, d / 2],
+    skin.wallColour,
+    skin.wallTile
+  );
   boxLocal(
     ctx.kit,
     m,
@@ -861,7 +947,14 @@ function columnPiece(ctx: KitCtx, size: P3, skin: Skin): void {
 function trimPiece(ctx: KitCtx, size: P3, skin: Skin): void {
   const [w, h, d] = size;
   const m: Placed = { cx: 0, cz: 0, cos: 1, sin: 0, hx: w / 2, hz: d / 2, base: 0 };
-  boxLocal(ctx.kit, m, [-w / 2, 0, -d / 2], [w / 2, h * 0.55, d / 2], skin.trimColour, skin.trimTile);
+  boxLocal(
+    ctx.kit,
+    m,
+    [-w / 2, 0, -d / 2],
+    [w / 2, h * 0.55, d / 2],
+    skin.trimColour,
+    skin.trimTile
+  );
   boxLocal(
     ctx.kit,
     m,
@@ -933,7 +1026,14 @@ function canopyPiece(ctx: KitCtx, size: P3, skin: Skin): void {
       4
     );
   }
-  boxLocal(ctx.kit, m, [-w / 2, y + d * 0.14, -d / 2 - 0.12], [w / 2, y + d * 0.14 + 1.7, -d / 2], skin.wallColour, skin.wallTile);
+  boxLocal(
+    ctx.kit,
+    m,
+    [-w / 2, y + d * 0.14, -d / 2 - 0.12],
+    [w / 2, y + d * 0.14 + 1.7, -d / 2],
+    skin.wallColour,
+    skin.wallTile
+  );
 }
 
 /** Deterministic tone jitter for a batch, so two identical buildings are not identical. */

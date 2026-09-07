@@ -24,7 +24,7 @@
 import { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import { RawTexture } from '@babylonjs/core/Materials/Textures/rawTexture';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
-import type { Material } from '@babylonjs/core/Materials/material';
+import { Material } from '@babylonjs/core/Materials/material';
 import type { Scene } from '@babylonjs/core/scene';
 import type { QualityPreset } from '../core/types';
 import type { PoolEdgeSpec, PoolTileSpec } from './types';
@@ -47,6 +47,8 @@ export interface PoolMaterials {
   /** The emissive niche lamp for one tile style — its colour is the style's `night`. */
   glow(style: PoolTileSpec): PBRMaterial;
   finish(name: PoolFinish): PBRMaterial;
+  /** White, alpha-blended, unlit-ish: the ring a splash leaves on the surface. */
+  foam(): PBRMaterial;
   /** The caustic map, so the water surface can scroll it in step with its own ripples. */
   caustics: RawTexture;
   /** `night` and `sunUp` are both 0..1; every tile style takes its own lamp colour from here. */
@@ -95,6 +97,7 @@ export function createPoolMaterials(
   const materials = new Map<string, PBRMaterial>();
   const finishes = new Map<PoolFinish, PBRMaterial>();
   const glows = new Map<string, PBRMaterial>();
+  let foamMaterial: PBRMaterial | null = null;
   const styles = new Map<string, PoolTileSpec>();
   const caustics = createCaustics(scene, CAUSTIC_SIZE[preset] ?? 192, seed + 4409);
   let generateMs = 0;
@@ -176,7 +179,7 @@ export function createPoolMaterials(
        */
       m.emissiveTexture = caustics;
       m.emissiveColor = new Color3(0, 0, 0);
-      const causticScale = 1 / 3.4;
+      const causticScale = 1 / 2.6;
       caustics.uScale = causticScale;
       caustics.vScale = causticScale;
       return m;
@@ -212,6 +215,22 @@ export function createPoolMaterials(
       glows.set(key, m);
       return m;
     },
+    foam() {
+      if (foamMaterial) return foamMaterial;
+      const m = new PBRMaterial('pool-foam', scene);
+      m.albedoColor = new Color3(0.86, 0.94, 0.97);
+      m.emissiveColor = new Color3(0.22, 0.3, 0.33);
+      m.metallic = 0;
+      m.roughness = 0.9;
+      m.alpha = 1;
+      m.transparencyMode = Material.MATERIAL_ALPHABLEND;
+      m.backFaceCulling = false;
+      m.disableLighting = false;
+      m.maxSimultaneousLights = 4;
+      m.metadata = { ...(m.metadata ?? {}), envExempt: true };
+      foamMaterial = m;
+      return m;
+    },
     finish(name) {
       const existing = finishes.get(name);
       if (existing) return existing;
@@ -234,8 +253,11 @@ export function createPoolMaterials(
         // By day the net is the sun's; at night it is whatever this pool's own lamps are. The
         // daylight term is deliberately modest — caustics are a contrast pattern, and pushed past
         // about 0.35 they stop reading as light on tile and start reading as paint.
-        const day = 0.34 * sunUp * (1 - night * 0.85);
-        const lamp = 0.3 * night;
+        // 0.2 rather than the 0.34 the first pass used. Measured on the `close` frame: at 0.34 the
+        // net stops reading as light on tile and reads as mottled camouflage painted into it, and
+        // it fights the mosaic's own per-chip colour for the same frequency band.
+        const day = 0.2 * sunUp * (1 - night * 0.85);
+        const lamp = 0.26 * night;
         const tint = style.nightTint;
         m.emissiveColor.set(
           day + tint[0] * lamp,
@@ -251,13 +273,20 @@ export function createPoolMaterials(
       caustics.uOffset = seconds * 0.0125;
       caustics.vOffset = seconds * 0.0085;
     },
-    all: () => [...materials.values(), ...finishes.values(), ...glows.values()],
+    all: () => [
+      ...materials.values(),
+      ...finishes.values(),
+      ...glows.values(),
+      ...(foamMaterial ? [foamMaterial] : []),
+    ],
     textureMs: () => generateMs,
     size,
     dispose() {
       for (const m of materials.values()) m.dispose();
       for (const m of finishes.values()) m.dispose();
       for (const m of glows.values()) m.dispose();
+      foamMaterial?.dispose();
+      foamMaterial = null;
       for (const s of sets.values()) s.dispose();
       materials.clear();
       finishes.clear();
