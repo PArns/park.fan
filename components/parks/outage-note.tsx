@@ -75,7 +75,16 @@ export function OutageNote({
   // our reading of a ride that shut inside opening hours and did not shut with
   // the rest of the park. Nobody reported the second one, so it may not say
   // „gemeldet" — see `AttractionOutage.signal`.
-  const inferred = outage.signal === 'closed_gap';
+  // Anything that is not exactly the reported signal is treated as inferred.
+  //
+  // The safe default has to be the WEAKER claim. `signal` is a compile-time
+  // union with no runtime validation on the fetch path, and these two repos
+  // deploy independently — so a third signal, or a version-skew window where
+  // the API ships a new value before this build does, would have fallen through
+  // to „Störung gemeldet seit …" and attributed a report to the operator's own
+  // feed. That is the one claim this whole two-signal discipline exists to
+  // prevent for anything nobody actually reported.
+  const inferred = outage.signal !== 'down';
   const label = outage.startObserved
     ? t(inferred ? 'sinceClosed' : 'since', {
         when: formatStart(started, timezone, locale),
