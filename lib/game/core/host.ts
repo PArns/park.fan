@@ -21,6 +21,7 @@ import {
   type Entity,
   type EntityChange,
   type EnvironmentState,
+  type Finance,
   type GameEvents,
   type GameModule,
   type MainContext,
@@ -303,6 +304,11 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
           };
           store.notify(n.level, n.text, n.key);
         } else if (msg.name === 'finance:changed') {
+          // `loan` and `history` are not in the frame stats and never will be — a day ledger is not
+          // a per-tick scalar — so this event is the only thing that carries them across. Assign
+          // onto the existing object rather than replacing it: a module that captured
+          // `ctx.world.finance` in its constructor holds that reference.
+          Object.assign(world.finance, msg.payload as Finance);
           store.set({ cash: (msg.payload as { cash: number }).cash });
         }
         events.emit(msg.name, msg.payload);
@@ -398,6 +404,16 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
       world.clock.minute = cur.clock.minute;
       world.clock.day = cur.clock.day;
       world.clock.speed = cur.clock.speed;
+      // The same mirror the clock gets, for the same reason. The main-thread `world` is a READ
+      // MODEL — the worker owns the authoritative copy and a save is a snapshot taken there — but a
+      // main-thread module that reads `ctx.world.finance.cash` gets whatever the boot world was
+      // handed unless something writes it back, and nothing did. Every sale credits the worker's
+      // copy directly without emitting `finance:changed` (that fires on a day rollover and on
+      // `finance:adjust`), so mirroring off the event alone drifts between them. `finance.cash` is
+      // in every frame's stats already; taking it from there costs one assignment and cannot be
+      // stale by more than a tick.
+      const cash = cur.stats['finance.cash'];
+      if (typeof cash === 'number') world.finance.cash = cash;
       applyEnv(cur.clock.minute, cur.clock.day);
       for (const h of handles.values()) {
         try {
