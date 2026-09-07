@@ -2096,6 +2096,7 @@
       "queueing": "{duration} Warten",
       "leversBody": "Das schafft Platz, ohne dass du eine Bahn streichst. Tipp an, was du ändern würdest.",
       "leversNone": "An den Blöcken liegt es nicht, auch ohne sie bleibt es zu eng. Im nächsten Schritt legst du fest, welche Bahnen dir am wichtigsten sind.",
+      "leversFits": "So passt der Plan. An den Blöcken musst du nichts mehr ändern.",
       "leverDrop": "Ohne {label}",
       "leverShorten": "{label} auf {minutes} Min. kürzen",
       "leverDropAll": "Ohne die freien Blöcke",
@@ -2215,7 +2216,8 @@
         "hint": "Legt die {count} großen Bahnen in den Tag, sortiert nach ihren Stundenkurven.",
         "hintTight": "Vor Parkschluss ist Platz für {fits} von {total}.",
         "conflict": "Es passen {fits} von {total}. Nimm den Haken raus, worauf du verzichtest, oder heb hoch, was du unbedingt fahren willst.",
-        "none": "Für diesen Tag fehlt keine große Bahn mehr."
+        "none": "Für diesen Tag fehlt keine große Bahn mehr.",
+        "resolved": "{count, plural, one {So passt die Bahn in den Tag} other {So passen alle # Bahnen in den Tag}}. Du kannst deine Auswahl weiter ändern."
       },
       "facts": {
         "title": "Was wir über den Tag wissen",

@@ -2096,6 +2096,7 @@
       "queueing": "{duration} di attesa",
       "leversBody": "Così si guadagna posto senza rinunciare a un’attrazione. Tocca quello che cambieresti.",
       "leversNone": "Non sono i blocchi, anche senza resta troppo stretta. Nel passo successivo scegli quali attrazioni contano di più.",
+      "leversFits": "Così il piano ci sta. Non serve cambiare nulla nei blocchi.",
       "leverDrop": "Senza {label}",
       "leverShorten": "Ridurre {label} a {minutes} min",
       "leverDropAll": "Senza i blocchi liberi",
@@ -2215,7 +2216,8 @@
         "hint": "Mette le {count} attrazioni grandi nella giornata, secondo le curve orarie.",
         "hintTight": "Prima della chiusura c’è posto per {fits} su {total}.",
         "conflict": "Ne entrano {fits} su {total}. Togli la spunta a ciò di cui puoi fare a meno, oppure porta in cima quello che vuoi assolutamente fare.",
-        "none": "Per questa giornata non manca nessuna attrazione principale."
+        "none": "Per questa giornata non manca nessuna attrazione principale.",
+        "resolved": "{count, plural, one {Così l’attrazione entra nella giornata} other {Così entrano tutte le # attrazioni nella giornata}}. Puoi continuare a cambiare la selezione."
       },
       "facts": {
         "title": "Quello che sappiamo di questa giornata",

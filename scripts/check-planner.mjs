@@ -312,6 +312,34 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
   );
 }
 
+// ── The wizard's fit block may not vanish while somebody is using it ─────────
+//
+// Reported: start unticking rides on the last step and the whole thing — levers,
+// list, marks — disappears. It hung on `headlinerConflict`, so the ride that
+// fixed the day also removed the screen that had just been used to fix it, with
+// no way back to it. Read off the source rather than driven, for the same reason
+// the undo check above is: reproducing it needs a park whose forecast happens to
+// be tight on the day the run happens, and a check that silently passes because
+// the day was quiet would be worse than no check.
+{
+  const source = readFileSync('components/planner/planner-wizard.tsx', 'utf8');
+  const gate = source.match(/\{planHeadliners && [^\n]*&&[^\n]*\(\n/);
+  check(
+    'der Fit-Block des Assistenten hängt nicht allein am Konflikt',
+    Boolean(gate) && /fitChoiceTouched/.test(gate[0]),
+    (gate?.[0] ?? 'keine Bedingung gefunden').trim()
+  );
+  // And when it resolves it says so, in the affirmative, rather than leaving a
+  // list whose marks have quietly gone out.
+  const resolved = /wizard\.headliners\.resolved/.test(source);
+  const green = /border-status-operating\/30 bg-status-operating\/10/.test(source);
+  check(
+    'und er hat einen grünen Zustand für den gelösten Tag',
+    resolved && green,
+    `Satz ${resolved ? 'da' : 'fehlt'}, Grün ${green ? 'da' : 'fehlt'}`
+  );
+}
+
 // ── Is the backend endpoint live? ────────────────────────────────────────────
 let planStatus;
 try {
@@ -4752,6 +4780,35 @@ if (reachable) {
       await rows.last().locator('input[type="checkbox"]').click();
       await opt.waitForTimeout(900);
 
+      /**
+       * Unticking your way out of the problem, which is the gesture that was
+       * reported broken: the list went quiet and, in the wizard, disappeared
+       * altogether under the finger that had just pressed a checkbox.
+       *
+       * Two things have to hold at the end of it. The list is still ALL of the
+       * rides, unticked ones included, because taking one out is a decision
+       * somebody may want back. And the band at the top has to SAY the problem
+       * is gone — the "fällt weg" marks vanishing is the same picture as a
+       * screen that stopped working.
+       */
+      for (let guard = 0; guard < heads.length; guard++) {
+        if (await opt.locator('[data-planner-fit-solved]').count()) break;
+        const marked = opt.locator('[data-planner-fit-row]:has([data-planner-fit-drops])');
+        if ((await marked.count()) === 0) break;
+        await marked.last().locator('input[type="checkbox"]').click();
+        await opt.waitForTimeout(700);
+      }
+      check(
+        'genug abwählen macht die Meldung grün statt sie verschwinden zu lassen',
+        (await opt.locator('[data-planner-fit-solved]').count()) === 1,
+        (await opt.locator('[data-planner-fit-count]').textContent()) ?? ''
+      );
+      check(
+        'und die Liste steht danach vollständig da',
+        (await opt.locator('[data-planner-fit-row]').count()) === heads.length,
+        `${await opt.locator('[data-planner-fit-row]').count()} von ${heads.length}`
+      );
+
       await opt.locator('[data-planner-fit-next]').click();
       await opt.waitForTimeout(600);
       check(
@@ -4762,10 +4819,31 @@ if (reachable) {
       await opt.waitForTimeout(1500);
 
       const applied = await readDay();
+      /**
+       * What the pulled lever did to the block, read as MINUTES rather than as
+       * its presence.
+       *
+       * Which lever comes first is a property of the day, not of the fixture:
+       * `fitLevers` puts a solving lever at the top, and on a busy forecast
+       * that is „ohne Lange Pause" while on a quieter one half an hour is
+       * already enough — so the block is gone on some days and 30 minutes long
+       * on others. Asserting it is absent was asserting tomorrow's crowd level.
+       * Both answers are the lever working; neither leaves the seeded five
+       * hours standing.
+       */
+      const blockMinutes = await opt.evaluate(
+        ([date]) => {
+          const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+          const day = plan.parks?.phantasialand?.days?.[date];
+          const block = (day?.entries ?? []).find((entry) => entry.custom?.label === 'Lange Pause');
+          return block ? block.custom.durationMinutes : null;
+        },
+        [DATE]
+      );
       check(
-        'die gezogene Stellschraube nimmt den Block aus dem Tag',
-        !applied.includes('Lange Pause'),
-        applied
+        'die gezogene Stellschraube greift den Block an',
+        blockMinutes === null || blockMinutes < 300,
+        `${blockMinutes === null ? 'gestrichen' : `${blockMinutes} Min.`} · ${applied}`
       );
       check(
         'und die abgewählte Bahn ist nicht mehr drin',
@@ -4782,8 +4860,8 @@ if (reachable) {
       );
       check(
         'und die Leiste sagt, was daraus geworden ist',
-        ((await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '')
-          .trim().length > 0
+        ((await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '').trim()
+          .length > 0
       );
     }
   }

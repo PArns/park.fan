@@ -337,6 +337,26 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     : 0;
   const headlinerFit = fitOutcome ? fitOutcome.fitted.length : null;
   const headlinerConflict = headlinerFit !== null && headlinerFit < wantedHeadliners;
+  /**
+   * Whether the visitor has answered anything about this day yet.
+   *
+   * It is what keeps the fit block ON SCREEN after they fix the problem. The
+   * block used to hang on `headlinerConflict` alone, so unticking the ride that
+   * did not fit took the conflict away and the whole thing — levers, list,
+   * marks — vanished under the finger that had just pressed a checkbox. The
+   * reported version of that: start removing rides and the list is simply gone,
+   * with no way back to it and no way to see what the removal bought.
+   *
+   * So the block appears while the day is short and stays for as long as
+   * anything has been chosen, which is derived rather than latched: a
+   * `useState` remembering "was tight once" would survive a change of park or
+   * date underneath it, and this cannot.
+   */
+  const fitChoiceTouched =
+    fitChoice.dropped.size > 0 ||
+    fitChoice.priority.length > 0 ||
+    fitChoice.droppedBlocks.size > 0 ||
+    fitChoice.shortBlocks.size > 0;
 
   const plannedSlugs = new Set(Object.keys(state.parks));
 
@@ -661,7 +681,6 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
                     setPrefs((current) => ({ ...current, avoidWet: next ? true : undefined }))
                   }
                 />
-
               </div>
             )}
 
@@ -699,21 +718,45 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
                         It is the same three pieces the panel's dialog uses —
                         the measured levers, the ordered list, the „fällt weg"
                         marks — and they recompute against the same engine that
-                        runs on „Plan öffnen". Only where it is tight: a day
-                        that holds all ten has nothing to decide, and a list of
-                        ten ticked rides above a finish button would be a form
-                        rather than a question. */}
-                    {planHeadliners && headlinerConflict && fitLevers && (
-                      <div className="border-crowd-high/30 bg-crowd-high/10 flex flex-col gap-2.5 rounded-md border px-2.5 py-2.5">
-                        <p className="text-crowd-high flex items-start gap-1.5 text-xs font-medium">
-                          <AlertTriangle
-                            className="mt-px size-3.5 shrink-0"
-                            aria-hidden="true"
-                          />
-                          {t('wizard.headliners.conflict', {
-                            fits: headlinerFit,
-                            total: wantedHeadliners,
-                          })}
+                        runs on „Plan öffnen".
+
+                        It opens where it is tight and STAYS once anything has
+                        been answered — see `fitChoiceTouched`. A day that holds
+                        all ten and has been left alone still gets nothing, so
+                        the common case is a toggle and not a form; what is not
+                        allowed is the block disappearing mid-edit, which is
+                        what hanging it on the conflict alone did. When the
+                        choice resolves, the band turns green and says so rather
+                        than leaving somebody looking at a list whose marks have
+                        just gone quiet. */}
+                    {planHeadliners && fitLevers && (headlinerConflict || fitChoiceTouched) && (
+                      <div
+                        data-planner-wizard-fit=""
+                        data-planner-wizard-fit-solved={headlinerConflict ? undefined : ''}
+                        className={cn(
+                          'flex flex-col gap-2.5 rounded-md border px-2.5 py-2.5',
+                          headlinerConflict
+                            ? 'border-crowd-high/30 bg-crowd-high/10'
+                            : 'border-status-operating/30 bg-status-operating/10'
+                        )}
+                      >
+                        <p
+                          className={cn(
+                            'flex items-start gap-1.5 text-xs font-medium',
+                            headlinerConflict ? 'text-crowd-high' : 'text-status-operating'
+                          )}
+                        >
+                          {headlinerConflict ? (
+                            <AlertTriangle className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+                          ) : (
+                            <Check className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+                          )}
+                          {headlinerConflict
+                            ? t('wizard.headliners.conflict', {
+                                fits: headlinerFit,
+                                total: wantedHeadliners,
+                              })
+                            : t('wizard.headliners.resolved', { count: headlinerFit })}
                         </p>
 
                         {fitLevers.levers.length > 0 && (

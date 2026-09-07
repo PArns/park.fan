@@ -96,7 +96,10 @@ export function PlannerFitList({
                   difference between a number and a decision somebody can act
                   on. */}
               {falls && (
-                <span className="bg-crowd-high/15 text-crowd-high shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium">
+                <span
+                  data-planner-fit-drops=""
+                  className="bg-crowd-high/15 text-crowd-high shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium"
+                >
                   {t('fit.drops')}
                 </span>
               )}

@@ -2096,6 +2096,7 @@
       "queueing": "{duration} de cola",
       "leversBody": "Esto hace sitio sin quitar ninguna atracción. Toca lo que cambiarías.",
       "leversNone": "No son los bloques, sin ellos sigue siendo demasiado justo. En el siguiente paso decides qué atracciones te importan más.",
+      "leversFits": "Así cabe el plan. No hace falta cambiar nada en los bloques.",
       "leverDrop": "Sin {label}",
       "leverShorten": "Reducir {label} a {minutes} min",
       "leverDropAll": "Sin los bloques libres",
@@ -2215,7 +2216,8 @@
         "hint": "Coloca las {count} atracciones grandes en el día, según sus curvas por hora.",
         "hintTight": "Antes del cierre hay sitio para {fits} de {total}.",
         "conflict": "Caben {fits} de {total}. Desmarca aquello de lo que puedes prescindir o sube lo que quieres montar sí o sí.",
-        "none": "Para este día no falta ninguna atracción estrella."
+        "none": "Para este día no falta ninguna atracción estrella.",
+        "resolved": "{count, plural, one {Así cabe la atracción en el día} other {Así caben las # atracciones en el día}}. Puedes seguir cambiando tu selección."
       },
       "facts": {
         "title": "Lo que sabemos de este día",
