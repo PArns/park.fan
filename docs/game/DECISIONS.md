@@ -101,3 +101,16 @@ landing it silently would make a dozen documents wrong at once. It wants its own
 affected frames re-shot in the same commit. _Reversed by:_ somebody doing exactly that, or by a
 decision that the park should close at dusk instead, which is the other honest answer and is a
 gameplay decision rather than a rendering one.
+
+**D-024 — The `ui` builder owns `lib/game/i18n/` as well, and it is the only module that owns two folders.**
+The builder brief's one-folder rule exists to keep two agents off one file, and it has held for
+thirteen modules. `i18n` is the case it does not fit: the string table has exactly one consumer that
+renders, the chrome, and every other module was told to petition for keys through
+`docs/game/requests/<module>.md`. That queue never moved — thirteen reports, no key requests, and a
+117-key table that has not grown since core wrote it — because a builder drawing 3D geometry has
+nothing to say to it. Handing it to whoever draws the interface removes the petition step for the
+one agent that actually needs keys, and leaves the rule intact everywhere else: `i18n` still has a
+single owner, it is just not its own agent. What does not change is who may edit it — a module that
+needs a string still asks, and now it asks `ui`. _Reversed by:_ a second surface that renders text
+outside the HUD (a world-space sign, a tutorial overlay owned by `scenarios`), at which point the
+table wants an owner that is neither of them.
