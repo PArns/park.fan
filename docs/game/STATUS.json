@@ -49,18 +49,19 @@
     },
     "claim": "the shared bundle is byte-identical; every route outside /game pays nothing",
     "sharedDelta": 0,
-    "reMeasuredAt": "e28a5bb"
+    "reMeasuredAt": "e28a5bb",
+    "stale": "STALE, and by a lot. The `after` side was measured when track and demo-park had just landed. Since then guests, shops, camera, tools and trains have all shipped, each with its own geometry and materials, so `babylonBytes` and `totalChunkBytes` are certainly higher and NOBODY HAS CHECKED whether `sharedBytes` moved. That last number is the one the frontend gate turns on — 442,012 B is the claim that no route outside /game regressed — and it is the only figure here worth re-running for. It wants `pnpm build && pnpm game:bundle` against a baseline build of main, on a tree nobody is editing, which is why it has not been done: a builder is working in this one."
   },
   "soak": {
     "command": "pnpm game:soak",
     "ticks": 576,
     "parkHours": 48,
     "speed": "100x",
-    "meanTickMs": 0.8,
-    "maxTickMs": 28.7,
+    "meanTickMs": 0.92,
+    "maxTickMs": 31.3,
     "assertions": "9/9",
     "notMeasured": [],
-    "note": "`no stuck guests` and `no unreachable queues` used to print \"not measured — no guests module api yet\". They run for real now."
+    "note": "`no stuck guests` and `no unreachable queues` used to print \"not measured — no guests module api yet\". They run for real now. Re-measured after guests, shops, trains and the guest arrival change: 576 ticks in 532 ms, mean 0.92 ms, max 31.30, 9/9 assertions, 0 stuck guests and 0 unreachable queues with a park that now actually trades."
   },
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview,entrance,close,ground,coaster,pool,night --tod=12:00 --step=900",
