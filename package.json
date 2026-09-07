@@ -110,7 +110,9 @@
     "test:game-registry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-registry.mjs",
     "test:game-lint": "node scripts/test-game-lint.mjs",
     "test:game-i18n": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-i18n.mjs",
-    "test:game-soak": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
+    "test:game-soak": "pnpm test:game-soak-long && pnpm test:game-soak-fine",
+    "test:game-soak-long": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
+    "test:game-soak-fine": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs --hours=6 --speed=2 --out=.game-render/soak-fine.json",
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {

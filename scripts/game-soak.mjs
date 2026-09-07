@@ -17,6 +17,29 @@
  *   node scripts/game-soak.mjs --hours=48 --speed=100 --seed=7 --out=.game-render/soak.json
  *
  * Exit code 1 on any failed assertion, so it can gate a build.
+ *
+ * ## Why `pnpm test:game-soak` runs this twice, at two speeds
+ *
+ * `speed` is not a fast-forward button over the same simulation — it is the size of the integration
+ * step. At 100× a tick advances the world by five park minutes, so a guest covers six metres in one
+ * step, every decision is re-taken at five-minute granularity, and a shop's queue moves in blocks.
+ * This file was written when the park had no guests in it and one pass was the whole story; there
+ * are now up to 1,500 of them, a till, four machines and three basins, and the frozen-needs bug
+ * that `shops` eventually found was **invisible at 100× and only bit at the speeds a player
+ * selects**. A coarse pass is the right tool for finding what a long run leaks — NaNs, orphans, a
+ * save that stops round-tripping — and the wrong one for finding what a fine step exposes.
+ *
+ * So the gate runs a **long coarse pass** (48 park-hours at 100×, 576 ticks, 12 per park-hour) and
+ * then a **short fine pass** (6 park-hours at 2×, 3,600 ticks, 600 per park-hour — fifty times the
+ * resolution, and the same step a player watching the park actually gets). Both apply every check.
+ * Neither replaces the other, and a failure in the second one is the more interesting of the two.
+ *
+ * One thing both passes measure and neither asserts on: the **maximum** tick. The budget in
+ * `ARCHITECTURE.md` is 6 ms per sim tick and only the mean is checked, so a 61.85 ms spike in the
+ * coarse pass and a 115.43 ms one in the fine pass both go through green. That is recorded rather
+ * than tightened, because a spike here is not yet known to be the same thing as a dropped frame in
+ * the browser: this runs the sim in node with nothing else on the thread, and the worker's own
+ * budget is what a player feels. It wants measuring on the worker before it becomes an assertion.
  */
 import { writeFile, mkdir } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
