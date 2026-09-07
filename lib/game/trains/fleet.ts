@@ -17,10 +17,15 @@
  * because a quaternion-to-basis is fifteen multiplies written out and this runs once per car per
  * rendered frame.
  *
- * **Only the shell, the trim and the nose survive distance.** `running` (twelve wheels a car) and
- * `interior` (the seats and the restraints) carry an `addLODLevel(d, null)`, which is Babylon's own
- * mechanism and costs nothing per frame — the same call `track/main.ts` puts on its crossties. At
- * 90 m an 8.5 cm guide wheel is a fifth of a pixel; the silhouette of a train is its shell.
+ * **The LOD is per car, in this loop, and `addLODLevel` is exactly the wrong tool here.** The
+ * first version hung Babylon's own `addLODLevel(d, null)` on the running gear and the interior, the
+ * way `track/main.ts` hangs one on its crossties — and it hid both meshes at every camera in the
+ * showcase. `Mesh.getLOD()` measures from the mesh's own bounding sphere centre, and a
+ * thin-instanced mesh has no transform of its own: its origin is the world origin, so the distance
+ * Babylon compared was camera-to-(0,0,0), which is 165 m in a park 512 m across. Every close-up in
+ * the first round of screenshots showed open cream tubs with no seats, no restraints and no wheels
+ * under them, and nothing in the console said so. The distance that matters is camera-to-CAR, and
+ * the only place that exists is here.
  */
 
 import '@babylonjs/core/Meshes/thinInstanceMesh';
@@ -56,6 +61,8 @@ export interface FleetStats {
   triangles: number;
   /** Triangles one car costs at full detail. */
   perCar: number;
+  /** Cars drawn with their running gear and seats this frame. */
+  detailed: number;
   shadowCasters: number;
   buildMs: number;
   textureMs: number;
@@ -68,7 +75,12 @@ export interface FleetRenderer {
   shadowMeshes(): Mesh[];
   /** Hand over the car list the worker publishes. Rebuilds the mesh sets when the styles change. */
   setRoster(cars: RosterCar[], profiles: TrainProfile[], metrics: (key: string) => CarMetrics): void;
-  update(frame: SimFrame, previous: SimFrame | null, alpha: number): void;
+  update(
+    frame: SimFrame,
+    previous: SimFrame | null,
+    alpha: number,
+    camera: readonly [number, number, number]
+  ): void;
   /** World position and heading of one train's leading car, interpolated. Null when unknown. */
   leadPose(rideId: string, train: number): { position: [number, number, number]; heading: number } | null;
   stats(): FleetStats;
@@ -117,6 +129,7 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
     drawCalls: 0,
     triangles: 0,
     perCar: 0,
+    detailed: 0,
     shadowCasters: 0,
     buildMs: 0,
     textureMs: materials.textureMs,
@@ -186,11 +199,6 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
       surfaceTriangles(noseSurface),
       trains
     );
-    running.mesh.addLODLevel(detailLod, null);
-    interior.mesh.addLODLevel(detailLod, null);
-    shell.mesh.addLODLevel(shellLod, null);
-    trim.mesh.addLODLevel(detailLod * 2.2, null);
-    nose.mesh.addLODLevel(shellLod, null);
     buildMs += (typeof performance !== 'undefined' ? performance.now() : 0) - t0;
     return {
       key: profile.key,
@@ -352,7 +360,12 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
     out[3] = nw / len;
   }
 
-  function update(frame: SimFrame, previous: SimFrame | null, alpha: number): void {
+  function update(
+    frame: SimFrame,
+    previous: SimFrame | null,
+    alpha: number,
+    camera: readonly [number, number, number]
+  ): void {
     const buffer = frame.buffers['trains.transform'];
     if (!buffer || roster.length === 0) {
       hideAll();
@@ -373,6 +386,7 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
 
     const n = Math.min(roster.length, Math.floor(cur.length / 7));
     let triangles = 0;
+    let detailed = 0;
     for (let i = 0; i < n; i++) {
       const car = roster[i];
       const set = styles.get(car.profile);
@@ -393,7 +407,19 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
         pose.q[2] = cur[at + 5];
         pose.q[3] = cur[at + 6];
       }
-      for (const p of set.perCar) {
+      const dx = pose.p[0] - camera[0];
+      const dy = pose.p[1] - camera[1];
+      const dz = pose.p[2] - camera[2];
+      const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (dist > shellLod) continue;
+      // Two levels and no third: the shell and the trim are the silhouette and are always drawn,
+      // the running gear and the seats are detail nobody can resolve past `detailLod`. At 80 m an
+      // 8.5 cm guide wheel is a fifth of a pixel and costs the same as one at two metres.
+      const detail = dist <= detailLod;
+      if (detail) detailed += 1;
+      for (let k = 0; k < set.perCar.length; k++) {
+        const p = set.perCar[k];
+        if (k >= 2 && !detail) continue;
         if (p.count >= p.capacity) continue;
         writeMatrix(p.matrices, p.count * 16, pose.p, pose.q);
         p.count += 1;
@@ -411,7 +437,9 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
         }
         writeMatrix(slot, 0, pose.p, pose.q);
       }
-      triangles += set.perCarTriangles + (car.car === 0 ? (set.nose?.triangles ?? 0) : 0);
+      triangles +=
+        (detail ? set.perCarTriangles : set.parts[0].triangles + set.parts[1].triangles) +
+        (car.car === 0 ? (set.nose?.triangles ?? 0) : 0);
     }
 
     let calls = 0;
@@ -429,6 +457,7 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
     stats.drawCalls = calls;
     stats.triangles = triangles;
     stats.cars = n;
+    stats.detailed = detailed;
   }
 
   return {

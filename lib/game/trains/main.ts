@@ -177,10 +177,21 @@ export function createTrainsMain(ctx: MainContext): MainHandle {
     },
   };
 
+  // Read off `scene.activeCamera` every frame rather than captured once, for the same reason
+  // `guests/main.ts` and `environment/lighting.ts` both give: a module that asked for the camera in
+  // its constructor would be wrong the moment the camera module swapped a preset.
+  const cameraAt: [number, number, number] = [0, 0, 0];
+
   return {
     api,
     onFrame(frame: SimFrame, previous: SimFrame | null, alpha: number) {
-      fleet.update(frame, previous, alpha);
+      const camera = scene.activeCamera;
+      if (camera) {
+        cameraAt[0] = camera.globalPosition.x;
+        cameraAt[1] = camera.globalPosition.y;
+        cameraAt[2] = camera.globalPosition.z;
+      }
+      fleet.update(frame, previous, alpha, cameraAt);
     },
     dispose() {
       offRoster();

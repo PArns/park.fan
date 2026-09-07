@@ -320,12 +320,12 @@
     },
     "trains": {
       "wave": 3,
-      "status": "scaffolded",
+      "status": "built, ungated — 3,720 lines in 11 files plus an 86-check selftest wired as pnpm test:game-trains. THE COASTERS RUN. Worker half does dispatch, station dwell and the fleet state and publishes a transform buffer (7 trains / 43 cars / 1,204 bytes a frame); the main thread thin-instances the cars per style and interpolates between sim frames. Measured on the trains showcase: 7 trains, 49 cars, 3 styles, 15 meshes, 9 DRAW CALLS, 16,896 triangles, 2,396 per car at full detail — 0.75 % of the 1,200 draw-call budget for the whole fleet. Showcase frame 145 draw calls / 608,820 triangles, 0 console errors. The camera follows a moving train, which closes camera-round1.md's stated fidelity cap: armed on train:coaster-1:0, the camera target tracked the train to 0.00 m over 180 ticks as it ran x -117.5 -> -107.5. Chase-cam frame looked at. trainProfiles claimed as a pack category, read at boot AND on onPack, nothing switches on a pack or style id. The builder died on the account session limit — the fifth fan-out to do so — with no report and no requests file; the integrator finished its in-flight fix, ran the verification and wrote docs/game/reports/trains.md, and says so at the top of it. Weak: /game has no trains because the demo park cannot hold a coaster (open issue 0); two trains have never been photographed holding at a block; the cars are simple; there is no requests file, so any workaround in the module is unrecorded.",
       "round": 0,
       "score": null,
-      "consoleErrors": null,
+      "consoleErrors": 0,
       "gated": false,
-      "lines": null,
+      "lines": 3720,
       "axes": null,
       "gradedAtCommit": null,
       "hardGates": null
@@ -443,6 +443,8 @@
     }
   },
   "openIssues": [
+    "OPEN (trains): two trains have never been photographed holding at a block. blocks.ts is real (planBlocks, blockAt, nextBlock, distanceAhead) and the 86-check selftest covers it, but every frame in the report shows trains running rather than a block system doing its job. It wants a showcase layout with two trains and a deliberate stack-up.",
+    "OPEN (trains): the module has NO requests file. Its builder died before writing one, so whatever it wanted from core or from `track` is unrecorded — if something in the module looks like a workaround, it probably is one and nobody wrote down why.",
     "OPEN (demo-park + track, an integration mismatch nobody had measured): THE DEFAULT PARK CANNOT HOLD ANY COASTER THE GAME SHIPS. demo-park reserves a 58 x 48 m plot for `track` (76 x 74 m inside its ring path), and the smallest of the three layouts in TRACK_LAYOUTS measures 53 x 213 m — measured by building each one in node and walking its spline every 2 m: nordwind 979 m / 62 x 392, alte-muehle 900 m / 49 x 397, kleiner-kreisel 610 m / 53 x 213. So /game has no coaster in it, camera's `coaster` preset falls through to plot:coaster and frames empty ground, and `trains` will have nothing to run on in the default park. I tried two compact junior layouts (station, short lift, drop, two turnarounds, a hop, a brake run) to fill the shelf: they measure 58 x 119 m and 39 x 112 m and NEITHER CLOSES — closure error 104.18 m and 51.61 m of position, yaw exact. That is the real cost and it is worth writing down: a circuit has to come back to its own station, and with two 180-degree turnarounds a paperclip ends laterally displaced by twice the radii. The shipped layouts fix that with a 1.5-turn helix and hand-tuned straights (16.8 m, s-bend offset 8.7), which is a tuning problem rather than a parameter choice. Three ways out, in increasing order of honesty: enlarge the plot and re-cut the ring path (demo-park), author a compact CLOSING layout (track, and it wants a solver rather than a person), or accept that the demo park's coaster arrives with `rides` and mark the plot as awaiting it.",
     "OPEN (core, found while measuring the above): `world.finance.cash` ON THE MAIN THREAD IS STALE. The worker's sim moves the money and the store is updated (the HUD is right), but the main thread's copy of the world sits at its boot value forever — measured 250,000,000 while store.get().cash read 250,146,150. Core mirrors entity commands to the main thread and does not mirror finance, so any main-thread module that reads ctx.world.finance.cash to decide something (can the player afford this?) is reading the balance the park opened with. `tools` happens to be safe because it dispatches finance:adjust and reads the store.",
     "OPEN (guests/shops, unchanged by the arrival fix): a queue still does not form. At minute 840 with 928 guests the park has taken 146,150 cents and shops.stats().sim.queue is 0 — about five customers an hour per shop, so an empty counter is the honest steady state rather than a bug. It is the D-006 time-compression tension: `speed` is metres per PARK minute, so a shop 60 m away is a 43-minute walk and scoreVenue divides its worth by 5.8. Until that is resolved, `shops`' frame axis cannot show the thing that makes a shop read as a shop. The module says the same thing about itself in its own weakness list: 534 sales a day across seven shops is six per shop per hour.",
@@ -544,7 +546,7 @@
     "agentsErrored": 22,
     "subagentTokens": 940352,
     "durationMs": 4183942,
-    "note": "Two agents (terrain, environment) ran for ~70 minutes and produced real, committed work before the limit stopped everything; the other 20 never started. No critic gate ran, so no module has a score. The environment builder was killed mid-sentence while writing its own 'what is weak' section — the integrator filled that section in from measurement and labelled it as such.",
+    "note": "Two agents (terrain, environment) ran for ~70 minutes and produced real, committed work before the limit stopped everything; the other 20 never started. No critic gate ran, so no module has a score. The environment builder was killed mid-sentence while writing its own 'what is weak' section — the integrator filled that section in from measurement and labelled it as such. FIFTH failure: the trains builder died the same way on 2026-09-07, mid-fix, after writing 3,720 lines — it had just diagnosed the addLODLevel-on-thin-instances bug correctly and its last message names the fix. The integrator applied it. Pattern across five: an agent gets 60-90 minutes of real work done and dies during verification or documentation, so the integrator inherits a module that works and has no report.",
     "lesson": "22 concurrent-capable agents at xhigh effort is more than the account budget allows in one run. A re-run has to be smaller and sequential, not the same fan-out again."
   }
 }
