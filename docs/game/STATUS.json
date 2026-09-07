@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 18,
-    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54, the first pass, by 0.04 and self-graded. Also graded at round 1: guests 7.91, shops 8.23, tools 8.29, trains 8.35, camera 8.38. TWELVE MODULES GRADED, ONE PASSES. The four closest miss by 0.04 (passed), 0.15, 0.21 and 0.27, and in every one of them the frame is the axis holding the total down while budget and determinism sit near 9. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 19,
+    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54, the first pass, by 0.04 and self-graded. Also graded at round 1: guests 7.91, shops 8.23, tools 8.29, trains 8.35, camera 8.38, rides 8.71 (PASS, and not marginal). THIRTEEN MODULES GRADED, TWO PASS. The pattern across the near misses holds: the frame is the axis holding the total down while budget and determinism sit near 9 — and `rides`, the one that cleared comfortably, is the one whose frame axis is 8.2. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
       "command": "pnpm build",
       "result": "exit 0, /game present as .next/server/app/game/page.js",
@@ -297,15 +297,22 @@
     },
     "rides": {
       "wave": 3,
-      "status": "built, ungated — 4,879 lines in 10 files plus a 702-line selftest of 267 CHECKS, the largest in the project, wired as pnpm test:game-rides. THE FAIRGROUND TURNS. The cycle runs in the worker at 20 Hz in PARK MINUTES, so capacity / cycleMinutes x 60 is exact at every speed including the soak's 100x — measured, the carousel ran 19 cycles and 456 riders in one park hour against a rated 480. Loading is rate-limited rather than timed, so a quiet ride dispatches early. Breakdowns, downtime, service, queue with a wait estimate, throughput over a rolling park hour, utilisation, satisfaction. Sim tick 0.0008 ms, 51 bytes a frame for three rides. The animation is solved rather than eyeballed: two clocks (the cycle in park minutes, the machine in ride seconds) joined by a drive envelope; a chair swing's chains fly out at an angle solved from tan(theta) = omega^2 (r + L sin theta)/g, taking the seat radius 8.00 m -> 10.53 m at speed; ferris gondolas stay level and lag a degree on the ramps. Content: claims rideRigs, walks packs() AND onPack, switches on no id. Eleven parametric primitives; the showcase registers a runtime pack whose teacups are three levels of nested rotation, and the selftest registers a paratrooper in a third pack and asserts it is not a re-skin. In frame: 6 batches, 74 draw calls, 134 instances, 49,356 triangles = 6.2 % of the 1,200 budget. 0 console errors, 0 hydration warnings. The builder finished — the second of seven to survive to its own report. Six bugs were found by looking or by a check rather than by reading; the one worth repeating is that EVERY PRISM'S TOP CAP HAD ITS NORMAL POINTING DOWN, so every apron, platform and teacup floor rendered pure black, and it survived three rounds because a black slab on the ground reads as a shadow. Weak: guests have no hook yet (every rider so far came from rides:demo or an inspect()-scanning bridge; the eleven-line guests/sim.ts patch is requests/rides.md §1), no LOD, night is the weak hour with 3 lights on 6 machines, and the demo park's fairground plot is still empty — coordinates and yaws for five machines are in requests §6.",
-      "round": 0,
-      "score": null,
+      "status": "built, ungated — 4,879 lines in 10 files plus a 702-line selftest of 267 CHECKS, the largest in the project, wired as pnpm test:game-rides. THE FAIRGROUND TURNS. The cycle runs in the worker at 20 Hz in PARK MINUTES, so capacity / cycleMinutes x 60 is exact at every speed including the soak's 100x — measured, the carousel ran 19 cycles and 456 riders in one park hour against a rated 480. Loading is rate-limited rather than timed, so a quiet ride dispatches early. Breakdowns, downtime, service, queue with a wait estimate, throughput over a rolling park hour, utilisation, satisfaction. Sim tick 0.0008 ms, 51 bytes a frame for three rides. The animation is solved rather than eyeballed: two clocks (the cycle in park minutes, the machine in ride seconds) joined by a drive envelope; a chair swing's chains fly out at an angle solved from tan(theta) = omega^2 (r + L sin theta)/g, taking the seat radius 8.00 m -> 10.53 m at speed; ferris gondolas stay level and lag a degree on the ramps. Content: claims rideRigs, walks packs() AND onPack, switches on no id. Eleven parametric primitives; the showcase registers a runtime pack whose teacups are three levels of nested rotation, and the selftest registers a paratrooper in a third pack and asserts it is not a re-skin. In frame: 6 batches, 74 draw calls, 134 instances, 49,356 triangles = 6.2 % of the 1,200 budget. 0 console errors, 0 hydration warnings. The builder finished — the second of seven to survive to its own report. Six bugs were found by looking or by a check rather than by reading; the one worth repeating is that EVERY PRISM'S TOP CAP HAD ITS NORMAL POINTING DOWN, so every apron, platform and teacup floor rendered pure black, and it survived three rounds because a black slab on the ground reads as a shadow. Weak: guests have no hook yet (every rider so far came from rides:demo or an inspect()-scanning bridge; the eleven-line guests/sim.ts patch is requests/rides.md §1), no LOD, night is the weak hour with 3 lights on 6 machines, and the demo park's fairground plot is still empty — coordinates and yaws for five machines are in requests §6. GRADED round 1: 8.71, PASS — docs/game/critiques/rides-round1.md. The second module over the bar and, unlike track's 8.54, not sitting on it: two axes above 9 and none below 8.2. Strongest fidelity work in the project (a solved angle equation rather than a tuned one, and a throughput that arrives at its own arithmetic: 19 cycles and 456 riders in a park hour against a rated 480) and the strongest extensibility evidence anyone has produced (a runtime pack in the showcase, a THIRD pack in the selftest asserting a paratrooper is not a re-skin). Round 2 wants: the other four machines lit, an LOD, and the footprint/rig disagreement reconciled — everything that places a machine reads the wrong number today.",
+      "round": 1,
+      "score": 8.71,
       "consoleErrors": 0,
-      "gated": false,
+      "gated": true,
       "lines": 4879,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "axes": {
+        "frame": 8.2,
+        "fidelity": 8.6,
+        "extensibility": 9.2,
+        "budget": 8.6,
+        "determinism": 9.3,
+        "reportHonesty": 9.3
+      },
+      "gradedAtCommit": "1d75cdd",
+      "hardGates": "all pass"
     },
     "flumes": {
       "wave": 3,
