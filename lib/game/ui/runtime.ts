@@ -311,16 +311,16 @@ export class UiRuntime implements UiMainApi {
    *
    * `useSyncExternalStore(runtime.subscribe, …)` hands React a bare function reference, so a
    * prototype method arrives with `this` undefined and throws `Cannot read properties of
-   * undefined (reading 'telemetryListeners')` from inside a passive effect. What that costs is out
-   * of all proportion to the mistake: React's dev build logs the failing effect to its component
-   * performance track, and the log's `detail` carries the component's props — which here reach a
-   * `Registry`, so `performance.measure` fails to structured-clone a class method and throws a
-   * SECOND error inside the commit phase, and React comes apart with `Should not already be
-   * working.` The visible symptom was a HUD frozen one render after mount with every figure at
-   * zero, on every harness run in the project including other modules' showcases.
+   * undefined (reading 'telemetryListeners')` from inside a passive effect. The HUD then froze one
+   * render after mount with every figure at zero — which is what it looked like from outside, and
+   * it took a probe that wrapped `performance.measure` to see the error itself, because React's
+   * dev build logs a failed effect to its component performance track and that log then hit a
+   * separate bug in `core/registry.ts` (a `static name` shadowing `Function.prototype.name`) and
+   * threw a SECOND time inside the commit phase. Core's half is fixed and asserted by
+   * `pnpm test:game-registry`; this half is fixed here.
    *
    * `core/store.ts` writes `subscribe` and `get` the same way for the same reason. Every other
-   * method here is only ever called on the object.
+   * method on this class is only ever called on the object.
    */
   subscribe = (fn: () => void): (() => void) => {
     this.telemetryListeners.add(fn);
