@@ -81,3 +81,23 @@ with the horizon off the top of the frame and no sky in it. No screenshot in the
 it, because the harness always applies a preset. `main()` now applies `overview` when there is
 nothing to restore. _Reversed by:_ a `persistence` slot that wants the view in the save file after
 all, which is an addition rather than a move.
+
+**D-023 — The clock is solar time, the park is open five hours after sunset, and the fix is deferred rather than dismissed.**
+`core/sun.ts` is astronomically correct for 50° N on day-of-year 91 (1 April): the elevation crosses
+zero between 18:00 (+3.30°) and 18:30 (−1.49°). What nobody wrote down is that it treats **solar
+time as clock time**. A real park at that latitude runs on CEST with solar noon near 13:20 local and
+sunset near 20:20; this one's sun sets at 18:20 while `guests` keeps the gates open until 23:00 with
+70 % of peak attendance still inside at 19:00. Five of fourteen operating hours are after dark, and
+that is the reason three separate module critiques describe the same flat, dark 18:30 frame — at
+18:30 the sun is already below the horizon. The exposure pinning measured across the day (ten of
+seventeen sampled hours at `EXPOSURE_MAX`, from 18:00 to 06:00) is downstream of it: between 17:30
+and 18:30 the sun runs 1.326 → 0.392 → 0.019 because it is setting, and no metering curve holds a
+real sunset under a ceiling.
+
+The fix is a timezone offset in `sunAngles` — +80 to +100 minutes puts sunset at 19:40–20:00 and
+leaves two or three dark hours instead of five. It is **not** done here, and the reason is blast
+radius rather than doubt: every report and critique under `docs/game/` quotes 18:30 numbers, and
+landing it silently would make a dozen documents wrong at once. It wants its own change, with the
+affected frames re-shot in the same commit. _Reversed by:_ somebody doing exactly that, or by a
+decision that the park should close at dusk instead, which is the other honest answer and is a
+gameplay decision rather than a rendering one.
