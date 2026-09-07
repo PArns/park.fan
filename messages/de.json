@@ -567,7 +567,9 @@
         "compactProbability": "Rund {percent} % waren binnen einer Stunde behoben.",
         "fullWithRange": "{range} Rund {percent} % waren binnen einer Stunde wieder in Betrieb.",
         "fullProbability": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
-      }
+      },
+      "sinceClosed": "Steht seit {when} still",
+      "startUnknownClosed": "Steht still, Beginn unbekannt"
     },
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
@@ -1277,7 +1279,7 @@
       "shareDetail": "Rund {percent} % der Zeit, in der die Bahn lief.",
       "withheld": {
         "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
-        "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
+        "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Wir erkennen sie an Schließungen während der Öffnungszeit, zeigen dazu aber keine Statistik.",
         "artefact_regime": "Für diesen Park liegen uns Störungsmeldungen nur bruchstückhaft vor. Eine Häufigkeit lässt sich daraus nicht ablesen.",
         "no_schedule": "Für diesen Park sind keine Öffnungszeiten veröffentlicht, deshalb zeigen wir hier keine Zahlen.",
         "thin_events": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Für eine belastbare Zahl sind das zu wenige.",

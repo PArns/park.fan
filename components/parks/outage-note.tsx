@@ -36,6 +36,14 @@ import type { AttractionOutage } from '@/lib/api/types';
  * from an observed one. Minutes derived from it would be wrong upward exactly on
  * the long outages, which are the ones anybody would quote.
  *
+ * ## Two signals, two sentences
+ *
+ * Where a park's feed emits DOWN, this says „Störung gemeldet seit …" and
+ * attributes the report. Where it never does — 102 of 182 scheduled parks,
+ * Phantasialand among them — the outage is inferred from a closure inside
+ * opening hours, and the sentence drops the attribution: „Steht seit … still."
+ * We noticed it; nobody told us.
+ *
  * ## data-nosnippet
  *
  * On a `<span>`, which is one of the three elements Google honours it on. A
@@ -62,9 +70,17 @@ export function OutageNote({
   const started = new Date(outage.startedAt);
   if (Number.isNaN(started.getTime())) return null;
 
+  // The two signals get different sentences, and the difference is not
+  // cosmetic. A `down` was reported by the park's own feed; a `closed_gap` is
+  // our reading of a ride that shut inside opening hours and did not shut with
+  // the rest of the park. Nobody reported the second one, so it may not say
+  // „gemeldet" — see `AttractionOutage.signal`.
+  const inferred = outage.signal === 'closed_gap';
   const label = outage.startObserved
-    ? t('since', { when: formatStart(started, timezone, locale) })
-    : t('startUnknown');
+    ? t(inferred ? 'sinceClosed' : 'since', {
+        when: formatStart(started, timezone, locale),
+      })
+    : t(inferred ? 'startUnknownClosed' : 'startUnknown');
 
   return (
     <span className={className} data-nosnippet>

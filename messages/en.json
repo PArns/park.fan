@@ -784,7 +784,9 @@
         "compactProbability": "About {percent}% were back within an hour.",
         "fullWithRange": "{range} About {percent}% were reported running again within an hour.",
         "fullProbability": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
-      }
+      },
+      "sinceClosed": "Not running since {when}",
+      "startUnknownClosed": "Not running, start unknown"
     },
     "noLiveWaitTimes": {
       "title": "No wait times available",
@@ -1277,7 +1279,7 @@
       "shareDetail": "About {percent} % of the time the ride was running.",
       "withheld": {
         "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
-        "park_never_reports": "The data source for this park does not report outages. We cannot see whether {name} breaks down.",
+        "park_never_reports": "The data source for this park does not report outages. We spot them from closures during opening hours, but publish no statistics on them.",
         "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
         "no_schedule": "This park publishes no opening hours, so we show no figures here.",
         "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",

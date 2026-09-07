@@ -12,7 +12,11 @@
 // breakdown that ended hours ago.
 import { leanParkForLivePoll, mergeLiveParkSnapshot } from '../lib/api/park-live-projection.ts';
 
-const OUTAGE = { startedAt: '2026-09-06T12:20:00.000Z', startObserved: true };
+const OUTAGE = {
+  signal: 'down',
+  startedAt: '2026-09-06T12:20:00.000Z',
+  startObserved: true,
+};
 
 /** The server render: Taron down, Black Mamba running. */
 const SEED = {
@@ -156,6 +160,18 @@ const testCases = [
         attractions: [{ ...SEED.attractions[0], outage: undefined }],
       }).attractions[0].outage?.estimate,
     expected: undefined,
+  },
+  {
+    name: 'the signal travels, so an inferred outage is not worded as a report',
+    // `closed_gap` renders „Steht seit … still" rather than „Störung gemeldet".
+    // If the projection dropped the field it would default to the reported
+    // wording and put words in an operator's mouth.
+    actual: () =>
+      leanParkForLivePoll({
+        ...SEED,
+        attractions: [{ ...SEED.attractions[0], outage: { ...OUTAGE, signal: 'closed_gap' } }],
+      }).attractions[0].outage.signal,
+    expected: 'closed_gap',
   },
 ];
 

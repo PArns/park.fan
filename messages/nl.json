@@ -784,7 +784,9 @@
         "compactProbability": "Ongeveer {percent}% was binnen een uur verholpen.",
         "fullWithRange": "{range} Ongeveer {percent}% draaide binnen een uur weer.",
         "fullProbability": "Van storingen die al zo lang duurden, draaide ongeveer {percent}% binnen een uur weer."
-      }
+      },
+      "sinceClosed": "Staat stil sinds {when}",
+      "startUnknownClosed": "Staat stil, begin onbekend"
     },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
@@ -1277,7 +1279,7 @@
       "shareDetail": "Ongeveer {percent} % van de tijd dat de attractie draaide.",
       "withheld": {
         "not_down_capable": "Voor dit park meldt geen enkele databron storingen. Of {name} uitvalt zien we hier niet.",
-        "park_never_reports": "De databron voor dit park meldt geen storingen. Of {name} uitvalt, zien wij hier niet.",
+        "park_never_reports": "De databron voor dit park meldt geen storingen. Wij herkennen ze aan sluitingen tijdens openingsuren, maar tonen daarover geen statistiek.",
         "artefact_regime": "Storingsmeldingen bereiken ons voor dit park slechts fragmentarisch. Daar valt geen frequentie uit af te lezen.",
         "no_schedule": "Voor dit park zijn geen openingstijden gepubliceerd, daarom tonen we hier geen cijfers.",
         "thin_events": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Dat zijn er te weinig voor een betrouwbaar cijfer.",

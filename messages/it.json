@@ -784,7 +784,9 @@
         "compactProbability": "Circa il {percent} % è stato risolto entro un'ora.",
         "fullWithRange": "{range} Circa il {percent} % è tornato in funzione entro un'ora.",
         "fullProbability": "Dei guasti che duravano già da così tanto, circa il {percent} % è tornato in funzione entro un'ora."
-      }
+      },
+      "sinceClosed": "Ferma da {when}",
+      "startUnknownClosed": "Ferma, inizio sconosciuto"
     },
     "noLiveWaitTimes": {
       "title": "Nessun tempo di attesa disponibile",
@@ -1277,7 +1279,7 @@
       "shareDetail": "Circa il {percent} % del tempo in cui l'attrazione era in funzione.",
       "withheld": {
         "not_down_capable": "Per questo parco nessuna fonte dati segnala guasti. Se {name} si ferma, qui non lo vediamo.",
-        "park_never_reports": "La fonte dati di questo parco non segnala guasti. Non possiamo vedere se {name} si guasta.",
+        "park_never_reports": "La fonte dati di questo parco non segnala guasti. Li riconosciamo dalle chiusure durante l'orario di apertura, ma non pubblichiamo statistiche.",
         "artefact_regime": "Per questo parco le segnalazioni di guasto ci arrivano solo a frammenti. Non se ne ricava una frequenza.",
         "no_schedule": "Questo parco non pubblica gli orari di apertura, quindi qui non mostriamo cifre.",
         "thin_events": "Negli ultimi {days} giorni sono stati segnalati {count} guasti. Sono troppo pochi per ricavarne una cifra.",

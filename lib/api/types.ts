@@ -548,6 +548,20 @@ export interface AttractionOutage {
    */
   startObserved: boolean;
   /**
+   * Which signal placed this outage, and it changes the wording.
+   *
+   * `down` is the operator's own feed saying the ride is not running —
+   * „Störung gemeldet seit …".
+   *
+   * `closed_gap` is INFERRED: the ride was open earlier the same day, shut
+   * inside opening hours, and did not shut together with the rest of the park.
+   * Nobody reported it, so the sentence may not say „gemeldet" —
+   * „Steht seit … still" is what we can defend. It appears only for the 102 of
+   * 182 parks whose feed never emits DOWN (Phantasialand, Energylandia, Alton
+   * Towers), where the alternative is not a stronger signal but silence.
+   */
+  signal: 'down' | 'closed_gap';
+  /**
    * How long outages like this one usually still take from here.
    *
    * Absent whenever the measured curve cannot answer — under five operating
