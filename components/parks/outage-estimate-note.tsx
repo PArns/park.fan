@@ -70,11 +70,6 @@ export function OutageEstimateNote({
   const percent = roundTo5(estimate.recoveryWithin60 * 100);
   const remaining = estimate.remaining;
 
-  // A rounded 0 % would read as "never", a claim the curve does not make: the
-  // thinnest measured bucket is still 8.5 %. If a future curve produced it,
-  // saying nothing beats saying never.
-  if (percent <= 0 && !remaining) return null;
-
   const range = remaining
     ? remaining.p75 === null
       ? t('rangeOpen', {
@@ -85,6 +80,23 @@ export function OutageEstimateNote({
           to: formatShortDuration(roundTo5(remaining.p75), locale),
         })
     : null;
+
+  // A rounded 0 % would read as "never", a claim the curve does not make: the
+  // thinnest measured bucket is still 8.5 %. If a future curve produced it,
+  // saying nothing beats saying never.
+  //
+  // The `&& !remaining` this used to carry defeated the guard exactly where it
+  // was needed: a long-elapsed bucket with a sub-2.5 % 60-minute share and a
+  // still-resolvable median would have rendered "0 %" beside a numeric time
+  // range, which reads as "never coming back" rather than "we cannot say".
+  // The range alone is honest; the zero is not.
+  if (percent <= 0) {
+    return remaining && range ? (
+      <span className={className} data-nosnippet>
+        {range}
+      </span>
+    ) : null;
+  }
 
   if (variant === 'compact') {
     // No range means the curve answered with a probability only. On a card
