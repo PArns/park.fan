@@ -76,7 +76,7 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
   const glass = new PBRMaterial('buildings-glass', scene);
   glass.albedoColor = new Color3(0.05, 0.07, 0.09);
   glass.metallic = 0;
-  glass.roughness = 0.07;
+  glass.roughness = 0.12;
   // 0.55 rather than 0.38, now that every opening has an opaque interior behind it: the pane is a
   // reflective surface over a dark room, not a filter over the landscape on the far side.
   glass.alpha = 0.55;

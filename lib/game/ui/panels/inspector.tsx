@@ -60,6 +60,10 @@ export function InspectorPanel(props: PanelBodyProps) {
   const Body = def?.Body ?? GenericInspector;
   return (
     <div className="flex flex-col gap-3">
+      {/* The two actions that apply to any selection sit in the header rather than under the body.
+          A footer here is a footer at the bottom of a panel whose body scrolls, so it was the
+          first thing to go off screen the moment a ride had more to say than the column was
+          tall. */}
       <header className="flex items-start gap-2">
         <div className="min-w-0 flex-1">
           <h3 className="truncate text-sm font-semibold text-white/95">
@@ -70,6 +74,13 @@ export function InspectorPanel(props: PanelBodyProps) {
           </p>
         </div>
         <HudIconButton
+          label={props.t('inspector.focus')}
+          dense
+          onClick={() => runtime.focus(entity.id)}
+        >
+          <Crosshair className="size-3.5" />
+        </HudIconButton>
+        <HudIconButton
           label={props.t('inspector.deselect')}
           dense
           onClick={() => runtime.select(null)}
@@ -78,12 +89,6 @@ export function InspectorPanel(props: PanelBodyProps) {
         </HudIconButton>
       </header>
       <Body {...props} entity={entity} />
-      <div className="flex gap-1 border-t border-white/10 pt-2">
-        <HudButton onClick={() => runtime.focus(entity.id)}>
-          <Crosshair className="size-3" />
-          {props.t('inspector.focus')}
-        </HudButton>
-      </div>
     </div>
   );
 }

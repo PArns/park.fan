@@ -257,7 +257,10 @@ function addPane(
      * against.
      */
     addFrameQuad(ctx.kit, f, u0, v0, u1, v1, out - 0.07, {
-      colour: shade(skin.wallColour, 0.3),
+      // A room, not a hole. At 0.3 of the wall's own colour a brick facade in shade came back with
+      // black rectangles punched in it (`.game-render/probe2/0900-facade.png`); a real interior is
+      // dark and WARM, and the pane in front of it is doing most of the work anyway.
+      colour: mixRgb(shade(skin.wallColour, 0.42), skin.litColour, 0.22),
       tile: skin.joineryTile,
       repeatU: 1,
       repeatV: 1,
@@ -536,7 +539,17 @@ function addFan(
    * through their heads (`.game-render/buildings-arcade/1200-arcade.png`), because the rectangular
    * part of the opening had a backing and the semicircle over it did not.
    */
-  fanTriangles(ctx.kit, f, skin, cu, cv, r, out - 0.07, n, shade(skin.wallColour, 0.3));
+  fanTriangles(
+    ctx.kit,
+    f,
+    skin,
+    cu,
+    cv,
+    r,
+    out - 0.07,
+    n,
+    mixRgb(shade(skin.wallColour, 0.42), skin.litColour, 0.22)
+  );
   fanTriangles(target, f, skin, cu, cv, r, out, n, colour);
 }
 
