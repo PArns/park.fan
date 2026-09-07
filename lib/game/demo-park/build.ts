@@ -116,6 +116,13 @@ export function buildWorld(seed: number, registry: Registry): World {
   // counter on the street and its back to the plot.
   for (const shop of placeDemoShops(registry, allocId)) world.entities[shop.id] = shop;
 
+  // 4c. The fairground, on the plot this park reserved for it at (96, -46), 48 x 42 m.
+  //
+  // Unlike the coaster plot — which is 58 x 48 and cannot hold any layout `track` ships, see
+  // STATUS.json — this one fits, and the positions and yaws come from `docs/game/requests/rides.md`
+  // §6, written by the module that knows how big its own machines are.
+  for (const ride of placeDemoRides(registry, allocId)) world.entities[ride.id] = ride;
+
   // 5. what the main handle needs to finish the job
   const half = PARK_SIZE / 2 - DRESS_MARGIN;
   const woodland = [roles.canopyTree, roles.streetTree, roles.conifer]
@@ -186,6 +193,72 @@ function buildPathEntities(
       position,
       yaw: 0,
       data: data as unknown as Record<string, unknown>,
+    });
+  }
+  return out;
+}
+
+/**
+ * The fairground: four flat rides on the `fairground` plot.
+ *
+ * Chosen by FOOTPRINT rather than by id, the same rule `placeDemoShops` follows with needs. Each
+ * slot below says how much room it has and which way its gate faces; the largest slot takes the
+ * largest unused flat ride that fits inside it, so a pack shipping a different wheel still opens
+ * this fairground and one shipping none leaves the plot empty rather than inventing a machine.
+ *
+ * Four and not the five `docs/game/requests/rides.md` §6 proposes, and the positions are not its
+ * positions, because that layout does not fit and the arithmetic says so twice. The wheel's real
+ * extent is 27.2 m in x against the 12 its manifest declares — the module reports that
+ * disagreement as its own §3 — so at the proposed coordinates the wheel and the top spin overlap
+ * by ten metres; and three of the five stood 16 to 22 m from the nearest path against a graph
+ * service radius of 14, which the soak fails as an unreachable queue. Four machines, laid out in
+ * two rows either side of a new `fairground-midway` path, measure clear on both counts: no pair
+ * overlaps, and every machine is within 13 m of a path.
+ *
+ * `rides:demo` is deliberately NOT dispatched: these machines fill from `guests` or they run empty,
+ * and a demo flag that puts riders on them would make every throughput figure in the park a
+ * fiction.
+ */
+function placeDemoRides(registry: Registry, allocId: (kind: string) => string): Entity[] {
+  /** Slots in fill order — largest first, so the wheel cannot be crowded out by a carousel. */
+  const plan: Array<{ x: number; z: number; yaw: number; maxX: number; maxZ: number }> = [
+    { x: 106, z: -58, yaw: 0, maxX: 30, maxZ: 14 },
+    { x: 108, z: -33, yaw: Math.PI / 2, maxX: 20, maxZ: 20 },
+    { x: 83, z: -58, yaw: Math.PI, maxX: 18, maxZ: 12 },
+    { x: 83, z: -33, yaw: Math.PI / 2, maxX: 16, maxZ: 16 },
+  ];
+  const items = registry.items('rides');
+  const used = new Set<string>();
+  const area = (f: readonly number[] | undefined): number =>
+    Array.isArray(f) && f.length >= 2 ? f[0] * f[1] : 0;
+  const out: Entity[] = [];
+  for (const spot of plan) {
+    let best: { pack: string; item: string; key: string; size: number } | null = null;
+    for (const entry of items) {
+      const def = entry.def as { id?: string; kind?: string; footprint?: number[] };
+      if (def.kind !== 'flat' || typeof def.id !== 'string') continue;
+      const key = `${entry.pack}:${def.id}`;
+      if (used.has(key)) continue;
+      const f = def.footprint;
+      if (!Array.isArray(f) || f.length < 2) continue;
+      // A footprint may be laid either way round on a square-ish slot, and the wheel is 12 x 30.
+      const fits =
+        (f[0] <= spot.maxX && f[1] <= spot.maxZ) || (f[1] <= spot.maxX && f[0] <= spot.maxZ);
+      if (!fits) continue;
+      const size = area(f);
+      if (!best || size > best.size) best = { pack: entry.pack, item: def.id, key, size };
+    }
+    // A pack set with nothing that fits leaves the slot empty rather than putting a machine
+    // through its neighbour.
+    if (!best) continue;
+    used.add(best.key);
+    out.push({
+      id: allocId('ride'),
+      kind: 'ride',
+      pack: best.pack,
+      item: best.item,
+      position: [spot.x, 0, spot.z],
+      yaw: spot.yaw,
     });
   }
   return out;

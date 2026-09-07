@@ -194,6 +194,16 @@ export interface RidesSimApi {
   runSeconds(id: string): number;
   /** Ids in the order the frame buffers are written. */
   roster(): string[];
+  /**
+   * Turn the walk-up bridge off, which `guests` does the moment it takes over the queue itself.
+   *
+   * Two modules putting the same person in the same line is the two-writers failure the
+   * determinism axis exists for, and here it is not theoretical: the bridge tracks who IT has
+   * inserted and cannot see a ticket somebody else issued, so with both running a guest would hold
+   * two places in one queue. An explicit switch rather than a heuristic, because "is this guest
+   * already in a line" is a question neither module can answer about the other.
+   */
+  setBridge(enabled: boolean): void;
 }
 
 export function createRidesSim(ctx: SimContext): SimHandle {
@@ -206,6 +216,8 @@ export function createRidesSim(ctx: SimContext): SimHandle {
   const walkUps = new Map<number, WalkUp>();
   let scanCursor = 0;
   let walkUpCount = 0;
+  /** See `RidesSimApi.setBridge`. On until `guests` says it is driving. */
+  let bridgeEnabled = true;
   let demoRiders = 0;
   let tickMs = 0;
   let lastMinute = -1;
@@ -616,7 +628,29 @@ export function createRidesSim(ctx: SimContext): SimHandle {
    * Cost is bounded: `SCAN_PER_TICK` slots per tick, round-robin, so a 2,000-guest park is swept
    * every 21 ticks (about one park second at speed 1). Measured in the report.
    */
+  /**
+   * Give back every ticket the bridge is holding, in guest order so the bytes are stable.
+   *
+   * Called when `guests` takes over. Without it those places sit in their queues doing nothing
+   * until `WALKUP_PATIENCE` expires, in front of people who really are standing there.
+   */
+  function dropAllWalkUps(): void {
+    const guests = [...walkUps.keys()].sort((a, b) => a - b);
+    for (const guest of guests) {
+      const held = walkUps.get(guest);
+      if (!held) continue;
+      const r = rides.get(held.ride);
+      if (r) {
+        const at = r.queue.findIndex((t) => t.ticket === held.ticket);
+        if (at >= 0) r.queue.splice(at, 1);
+      }
+      walkUps.delete(guest);
+    }
+    walkUpCount = 0;
+  }
+
   function bridge(): void {
+    if (!bridgeEnabled) return;
     const guests = ctx.module<GuestsLike>('guests');
     if (!guests || rides.size === 0) return;
     let capacity = 0;
@@ -898,6 +932,13 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       return r ? runSecondsOf(r) : 0;
     },
     roster: () => [...order],
+    setBridge(enabled: boolean) {
+      if (bridgeEnabled === enabled) return;
+      bridgeEnabled = enabled;
+      // Hand back everything the bridge is holding, or those tickets sit in their queues until
+      // WALKUP_PATIENCE runs out with nobody behind them.
+      if (!enabled) dropAllWalkUps();
+    },
   };
 
   // ── the handle ────────────────────────────────────────────────────────────────────────────

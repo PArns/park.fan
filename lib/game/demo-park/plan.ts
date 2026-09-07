@@ -484,6 +484,14 @@ export const PATHS: readonly PathPlan[] = [
     note: 'Fountain square to the fairground loop.',
   },
   {
+    id: 'fairground-midway',
+    form: 'path',
+    style: 'pavers',
+    width: 4,
+    points: [68, -50, 90, -46, 114, -46, 132, -38],
+    note: 'The walk between the two rows of machines. Both ends sit on a control point of the fairground loop, which is what makes the weld certain rather than lucky — and without it three of the four rides stood 16 to 22 m from the nearest path, which is past the graph SERVICE_RADIUS of 14 and is exactly what the soak means by an unreachable queue.',
+  },
+  {
     id: 'fairground-loop',
     form: 'path',
     style: 'pavers',

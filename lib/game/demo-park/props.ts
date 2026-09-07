@@ -24,6 +24,7 @@ import { LAYER_CONCRETE, LAYER_WOOD, sampleHeight, samplePaint } from '../terrai
 import {
   chebyshev,
   ENTRANCE_PLAZA,
+  PADS,
   FOUNTAIN_SQUARE,
   LAKE,
   lakeRing,
@@ -558,8 +559,30 @@ function outward(x: number, z: number): [number, number] {
  * paint layer before this runs, so "is this concrete" is the same question the ambient scatter
  * asks, answered from the same array.
  */
+/**
+ * Margin in metres around a reserved plot that stays clear of ambient planting.
+ *
+ * Two, not zero: a canopy leans, and a tree standing on the plot's own edge still hangs over the
+ * machine somebody builds there.
+ */
+const PLOT_CLEARANCE = 2;
+
 function rejectPlanting(terrain: TerrainData, x: number, z: number): boolean {
   if (chebyshev(x, z) > PARK_HALF - 8) return true;
+  // A reserved plot is somebody else's ground. Without this the scatter planted straight over
+  // them, and the first thing anybody built on one — the fairground's four machines — came out
+  // half hidden behind a wood that had been there since before the plot was reserved. Looked at
+  // rather than reasoned about: `.game-render/_probe/fairground-day.png` before, and the same
+  // frame after.
+  for (const pad of PADS) {
+    if (pad.owner === 'park') continue;
+    if (
+      Math.abs(x - pad.x) <= pad.halfX + PLOT_CLEARANCE &&
+      Math.abs(z - pad.z) <= pad.halfZ + PLOT_CLEARANCE
+    ) {
+      return true;
+    }
+  }
   if (sampleHeight(terrain, x, z) < WATER_LEVEL + 0.6) return true;
   const layer = samplePaint(terrain, x, z);
   if (layer === LAYER_CONCRETE || layer === LAYER_WOOD) return true;

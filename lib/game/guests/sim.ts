@@ -57,7 +57,8 @@ import type { Command, Entity, EnvironmentState, SimContext, SimHandle } from '.
 // Type-only, so nothing of the shops module is linked into this one's graph: the API is reached
 // through `ctx.module('shops')` at run time and may answer `undefined`, which is the whole point of
 // the `shops == null` branches below. A showcase loads five modules, not twenty-four.
-import type { ShopOffer, ShopRefusal, ShopsSimApi } from '../shops/types';
+import type { ShopOffer, ShopsSimApi } from '../shops/types';
+import type { RidesSimApi } from '../rides/sim';
 import { Rng } from '../core/rng';
 import { createStore, type StoreHandle } from './store';
 import {
@@ -229,6 +230,25 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * it and not a park with broken ones.
    */
   let shops: ShopsSimApi | undefined;
+  /**
+   * The rides module's sim half, resolved per call for the same reason `shopsApi` is: a showcase
+   * loads five modules and not twenty-four, and a park with no `rides` in it must still run.
+   */
+  let rides: RidesSimApi | undefined;
+  let ridesBridgeStoodDown = false;
+  function ridesApi(): RidesSimApi | undefined {
+    if (!rides) rides = ctx.module<RidesSimApi>('rides');
+    // Told once, the first time this module actually holds the handle: `rides` ships a walk-up
+    // bridge that scans the guest store and puts people in lines by proximity, and with this
+    // module joining for real the two would each give the same person a place. Its own docblock
+    // says it exists until this hook lands.
+    if (rides && !ridesBridgeStoodDown) {
+      ridesBridgeStoodDown = true;
+      rides.setBridge(false);
+    }
+    return rides;
+  }
+
   function shopsApi(): ShopsSimApi | undefined {
     if (!shops) shops = ctx.module<ShopsSimApi>('shops');
     return shops;
@@ -285,7 +305,15 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * only place a ticket is issued and `endErrand` the only place one is dropped.
    */
   interface Errand {
-    shop: string;
+    /**
+     * Which module holds the other half of this ticket.
+     *
+     * One map rather than two, because the serialisation is one sorted list and two would have to
+     * agree about the order of a slot that appears in both — which cannot happen, but proving that
+     * costs more than a discriminator. `venue` is the shop's or the ride's entity id.
+     */
+    kind: 'shop' | 'ride';
+    venue: string;
     ticket: number;
     /** Absolute park minute they joined the line; 0 while still walking. */
     joined: number;
@@ -305,7 +333,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     const errand = errands.get(slot);
     if (!errand) return;
     errands.delete(slot);
-    if (giveUp && errand.ticket > 0) shopsApi()?.leave(errand.shop, errand.ticket);
+    if (giveUp && errand.ticket > 0) {
+      if (errand.kind === 'ride') ridesApi()?.leave(errand.venue, errand.ticket);
+      else shopsApi()?.leave(errand.venue, errand.ticket);
+    }
   }
 
   /** Every outstanding ticket, handed back in slot order. A clock jump discards the whole park. */
@@ -530,7 +561,29 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * the counter, or still standing there at closing. Declared with every key so the save is the
    * same shape whatever happened, which is what keeps two serialisations comparable.
    */
-  const REFUSAL_KEYS = ['closed', 'full', 'stock', 'price', 'unknown', 'balk', 'dropped'] as const;
+  const REFUSAL_KEYS = [
+    'closed',
+    'full',
+    'stock',
+    'price',
+    'unknown',
+    'balk',
+    'dropped',
+    // A ride can refuse for two reasons a counter cannot, and they are counted under their own
+    // names rather than folded into `closed`: a broken machine is an operations problem and a
+    // height limit is a fact about the person, and a park manager wants to tell them apart.
+    'broken',
+    'height',
+  ] as const;
+  /** `rides`' own refusal vocabulary, mapped onto this module's counters. */
+  const RIDE_REFUSAL: Record<string, string> = {
+    closed: 'closed',
+    broken: 'broken',
+    'too-short': 'height',
+    'queue-full': 'full',
+    'no-money': 'price',
+    'unknown-ride': 'unknown',
+  };
   const zeroRefusals = (): Record<string, number> =>
     Object.fromEntries(REFUSAL_KEYS.map((k) => [k, 0]));
   let refusedToday: Record<string, number> = zeroRefusals();
@@ -905,7 +958,9 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     // that catches whatever is nearest, and "the shop I chose" is not a thing a position can be
     // asked afterwards once two kiosks share a plot.
     if (venue.kind === 'shop' && shopsApi()) {
-      errands.set(slot, { shop: venue.id, ticket: 0, joined: 0, balkAt: 0 });
+      errands.set(slot, { kind: 'shop', venue: venue.id, ticket: 0, joined: 0, balkAt: 0 });
+    } else if (venue.kind === 'ride' && ridesApi()) {
+      errands.set(slot, { kind: 'ride', venue: venue.id, ticket: 0, joined: 0, balkAt: 0 });
     } else {
       // A pooled offer is refilled on the next decision, so a reservation written into one is a
       // number nobody will ever read; the real line is what `waitMinutes` already said.
@@ -979,8 +1034,8 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     // Which shop, so the follower joins the one the leader chose rather than whatever building it
     // happens to stop within 3.2 m of.
     const errand = errands.get(leader);
-    if (d.destKind[leader] === KIND_SHOP && errand) {
-      errands.set(slot, { shop: errand.shop, ticket: 0, joined: 0, balkAt: 0 });
+    if ((d.destKind[leader] === KIND_SHOP || d.destKind[leader] === 3) && errand) {
+      errands.set(slot, { kind: errand.kind, venue: errand.venue, ticket: 0, joined: 0, balkAt: 0 });
     } else {
       endErrand(slot, true);
     }
@@ -1039,9 +1094,17 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         break;
       }
       case 3: {
-        // A ride exists as a venue but nothing boards yet: the `rides` and `trains` modules own
-        // that. Until they do, a guest reaching a ride waits at it and then moves on, which is
-        // what somebody does at a ride that is not running.
+        // A ride, and there is a line to join — the same two lines as a counter, because
+        // `RidesSimApi` is deliberately the same five verbs as `ShopsSimApi`.
+        //
+        // The fallback under it is what this branch used to be on its own: a guest reaching a ride
+        // with no `rides` module behind it waits and moves on, which is what somebody does at a
+        // machine that is not running. It is still the path a showcase takes.
+        const errand = errands.get(slot);
+        if (errand && errand.kind === 'ride') {
+          if (!joinQueue(slot, errand, now)) refuseErrand(slot, errand, now);
+          return;
+        }
         d.state[slot] = GuestState.QUEUING;
         d.busyUntil[slot] = now + 2 + rngChoice.next() * 4;
         break;
@@ -1083,11 +1146,31 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * say about it, so asking would answer null and this module reads null as lost.
    */
   function joinQueue(slot: number, errand: Errand, now: number): boolean {
-    const api = shopsApi();
-    if (!api) return false;
-    const join = api.join(errand.shop, d.id[slot], d.cash[slot]);
-    if (!join) return false;
-    errand.ticket = join.ticket;
+    let ticket = 0;
+    let stand: [number, number] | null = null;
+    if (errand.kind === 'ride') {
+      const api = ridesApi();
+      if (!api) return false;
+      // The height is the archetype's, in centimetres, because that is what a ride's own limit is
+      // written in — a child at 1.18 m is turned away from a machine that asks for 1.20 and the
+      // refusal is counted under its own name below.
+      const archetype = archetypes[d.archetype[slot]];
+      const join = api.join(errand.venue, d.id[slot], {
+        heightCm: Math.round((archetype?.height ?? 1.7) * 100),
+        cash: d.cash[slot],
+      });
+      if (!join) return false;
+      ticket = join.ticket;
+      stand = [join.x, join.z];
+    } else {
+      const api = shopsApi();
+      if (!api) return false;
+      const join = api.join(errand.venue, d.id[slot], d.cash[slot]);
+      if (!join) return false;
+      ticket = join.ticket;
+      stand = join.stand;
+    }
+    errand.ticket = ticket;
     errand.joined = now;
     const archetype = archetypes[d.archetype[slot]];
     // How long they will stand there before it is not worth it — their own patience, not the
@@ -1095,7 +1178,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     // is a fact about the person: a child at 0.2 lasts 6.4 park minutes, an enthusiast at 0.95
     // lasts 15.4 and is thrown out by the shop's own 14 before that.
     errand.balkAt = now + BALK_BASE + (archetype?.patience ?? 0.5) * BALK_SPAN;
-    setDestination(slot, join.stand[0], join.stand[1], KIND_QUEUE);
+    setDestination(slot, stand[0], stand[1], KIND_QUEUE);
     return true;
   }
 
@@ -1109,7 +1192,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * this shop again while whatever was wrong with it is still wrong.
    */
   function refuseErrand(slot: number, errand: Errand, now: number): void {
-    const why: ShopRefusal = shopsApi()?.lastRefusal(errand.shop) ?? 'unknown';
+    const why: string =
+      errand.kind === 'ride'
+        ? RIDE_REFUSAL[ridesApi()?.lastRefusal(errand.venue) ?? 'unknown-ride']
+        : (shopsApi()?.lastRefusal(errand.venue) ?? 'unknown');
     refusedToday[why] = (refusedToday[why] ?? 0) + 1;
     endErrand(slot, false);
     d.destKind[slot] = 0;
@@ -1132,9 +1218,22 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * Then the shuffle.
    */
   function stepQueue(slot: number, dt: number, now: number): void {
-    const api = shopsApi();
     const errand = errands.get(slot);
-    if (!api || !errand || errand.ticket <= 0) {
+    const api = errand?.kind === 'ride' ? undefined : shopsApi();
+    const rides = errand?.kind === 'ride' ? ridesApi() : undefined;
+    /** Where this ticket stands now, whichever module holds it. Null means the ticket is gone. */
+    const placeOf = (): [number, number] | null =>
+      errand
+        ? errand.kind === 'ride'
+          ? (rides?.place(errand.venue, errand.ticket) ?? null)
+          : (api?.place(errand.venue, errand.ticket) ?? null)
+        : null;
+    const leaveLine = (): void => {
+      if (!errand) return;
+      if (errand.kind === 'ride') rides?.leave(errand.venue, errand.ticket);
+      else api?.leave(errand.venue, errand.ticket);
+    };
+    if ((!api && !rides) || !errand || errand.ticket <= 0) {
       // Nothing is holding this guest here. Never leave one standing: a queue with no counter
       // behind it is exactly the "stuck guest" the soak fails on.
       endErrand(slot, false);
@@ -1145,7 +1244,41 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     }
     d.stuckFor[slot] = 0;
 
-    const sale = api.collect(errand.shop, errand.ticket);
+    if (errand.kind === 'ride') {
+      // `board` is the ride's `collect`: the receipt exists exactly once, on the tick the machine
+      // took them on. Everything below it is the same four questions in the same order, and the
+      // order is the same contract — `rides` ticks before this module, so a boarding completed in
+      // this step is already sitting there and asking `place` first would read null and call a
+      // rider lost.
+      const boarding = rides?.board(errand.venue, errand.ticket) ?? null;
+      if (boarding) {
+        const paid = Math.min(d.cash[slot], Math.max(0, boarding.price));
+        d.cash[slot] -= paid;
+        d.spent[slot] += paid;
+        spentToday += paid;
+        boughtToday += 1;
+        // `rides` banked it. Crediting `finance.cash` here as well is the two-writers failure the
+        // determinism axis exists for, and it is the same reason the shop path below does not.
+        const fun = needs.byId.get('fun') ?? needs.byId.get('happiness');
+        if (fun) {
+          const at = slot * d.needCount + fun.column;
+          d.needs[at] = Math.max(0, d.needs[at] - 70 - boarding.satisfaction * 0.3);
+        }
+        // What they thought of it, weighted by what they came for: `satisfaction` is the machine's
+        // opinion of the ride it just gave, and the archetype's thrill preference is the person's.
+        const archetype = archetypes[d.archetype[slot]];
+        const match = 1 - Math.abs((archetype?.thrill ?? 0.5) - boarding.satisfaction / 100);
+        d.happiness[slot] = Math.min(100, d.happiness[slot] + 2 + 8 * match);
+        errand.ticket = SPENT_TICKET;
+        d.destKind[slot] = 0;
+        d.state[slot] = GuestState.RIDING;
+        d.busyUntil[slot] = now + boarding.rideMinutes;
+        d.decideIn[slot] = 0;
+        return;
+      }
+    }
+
+    const sale = api ? api.collect(errand.venue, errand.ticket) : null;
     if (sale) {
       const base = slot * d.needCount;
       const paid = Math.min(d.cash[slot], Math.max(0, sale.cents));
@@ -1173,7 +1306,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       return;
     }
 
-    const stand = api.place(errand.shop, errand.ticket);
+    const stand = placeOf();
     if (!stand) {
       // The ticket is gone and there was no sale on it: sold out, closing time, or the shop's own
       // balk. `lastRefusal` is per shop rather than per ticket, so this is counted under its own
@@ -1188,10 +1321,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     }
 
     if (now >= errand.balkAt) {
-      api.leave(errand.shop, errand.ticket);
+      leaveLine();
       // `leave` only reaches the line, never a till: a guest already being served cannot be pulled
       // back, and asking again is how this tells the two apart without a fifth API call.
-      if (api.place(errand.shop, errand.ticket) == null) {
+      if (placeOf() == null) {
         refusedToday.balk += 1;
         endErrand(slot, false);
         d.destKind[slot] = 0;
@@ -1214,7 +1347,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       d.state[slot] = GuestState.QUEUING;
       d.actual[slot] = 0;
       // Face the counter, which is the direction the line runs, not wherever they last walked.
-      const stall = shopsApi()?.frontage(errand.shop);
+      const stall = shopsApi()?.frontage(errand.venue);
       if (stall) d.heading[slot] = turnToward(d.heading[slot], atan2To(stall, slot), 0.25);
       return;
     }
@@ -1371,7 +1504,12 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
 
     // 1. Timed states: sitting on a bench, being served, standing in a line.
     const busy = d.state[slot];
-    if (busy === GuestState.SITTING || busy === GuestState.BUYING || busy === GuestState.QUEUING) {
+    if (
+      busy === GuestState.SITTING ||
+      busy === GuestState.BUYING ||
+      busy === GuestState.QUEUING ||
+      busy === GuestState.RIDING
+    ) {
       if (now < d.busyUntil[slot]) {
         if (busy === GuestState.SITTING) {
           const energy = needs.byId.get('energy');
@@ -1391,6 +1529,16 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       if (busy === GuestState.BUYING) {
         if (errands.has(slot)) errands.delete(slot);
         else serve(slot);
+      }
+      // Off the machine. The ticket is spent by now, so `leave` is a courtesy the ride uses to
+      // free the seat rather than a way out of a line — and dropping the errand here is what stops
+      // a rider being counted as still aboard for the rest of the park's life.
+      if (busy === GuestState.RIDING) {
+        const errand = errands.get(slot);
+        if (errand) {
+          ridesApi()?.leave(errand.venue, errand.ticket);
+          errands.delete(slot);
+        }
       }
       d.state[slot] = GuestState.IDLE;
       d.busyUntil[slot] = now;
@@ -1821,7 +1969,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         thought: thoughtIndex >= 0 ? (thoughts[thoughtIndex]?.def.text ?? null) : null,
         errand: errand
           ? {
-              shop: errand.shop,
+              shop: errand.venue,
               ticket: errand.ticket,
               waited: errand.joined > 0 ? Math.max(0, absMinute() - errand.joined) : 0,
             }
@@ -1911,7 +2059,8 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
             const errand = errands.get(slot) as Errand;
             return {
               slot,
-              shop: errand.shop,
+              kind: errand.kind,
+              venue: errand.venue,
               ticket: errand.ticket,
               joined: errand.joined,
               balkAt: errand.balkAt,
@@ -2011,14 +2160,23 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       const savedErrands = Array.isArray(slot.errands) ? slot.errands : [];
       for (const raw of savedErrands as Array<Record<string, unknown>>) {
         const at = Number(raw?.slot);
-        const shop = typeof raw?.shop === 'string' ? raw.shop : '';
+        // `venue` since rides joined the same map; `shop` is what saves written before that
+        // carried, and they are all shop errands by construction.
+        const venue =
+          typeof raw?.venue === 'string'
+            ? raw.venue
+            : typeof raw?.shop === 'string'
+              ? raw.shop
+              : '';
+        const kind = raw?.kind === 'ride' ? 'ride' : 'shop';
         // A slot with nobody in it cannot be on an errand. Written saves never contain one, since
         // a ticket is handed back at the gate; a hand-edited or truncated one might, and it would
         // sit in the map for the rest of the park's life being serialised back out.
-        if (!shop || !Number.isFinite(at) || at < 0 || at >= d.capacity) continue;
+        if (!venue || !Number.isFinite(at) || at < 0 || at >= d.capacity) continue;
         if (d.state[at] === GuestState.GONE) continue;
         errands.set(at, {
-          shop,
+          kind,
+          venue,
           ticket: Number.isFinite(Number(raw.ticket)) ? Number(raw.ticket) : 0,
           joined: Number.isFinite(Number(raw.joined)) ? Number(raw.joined) : 0,
           balkAt: Number.isFinite(Number(raw.balkAt)) ? Number(raw.balkAt) : 0,
