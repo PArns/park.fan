@@ -455,7 +455,9 @@ function barrelRoof(
     const y0 = eaveY + Math.sin(a0) * rise;
     const w1 = -Math.cos(a1) * span;
     const y1 = eaveY + Math.sin(a1) * rise;
-    addQuad(ctx.kit, p(-A, w0, y0), p(A, w0, y0), p(A, w1, y1), p(-A, w1, y1), {
+    // Authored from +u to -u, for the same reason `addPrism` is: rising round the vault the other
+    // way puts the normal inside the building.
+    addQuad(ctx.kit, p(A, w0, y0), p(-A, w0, y0), p(-A, w1, y1), p(A, w1, y1), {
       colour: r.colour,
       tile: r.tile,
       repeatU: Math.max(1, Math.round((A * 2) / 1.2)),

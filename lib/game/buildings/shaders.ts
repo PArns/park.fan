@@ -131,11 +131,15 @@ function ashlarShader(salt: number): Shader {
         smoothstep(0.045, 0.0, fy) +
         smoothstep(0.955, 1.0, fy)
     );
-    const tone = (rand2(col, row, salt) * 2 - 1) * 0.16;
+    // 0.11 and not 0.16: at 16 % a coursed ashlar wall reads as a chequerboard of light and dark
+    // blocks rather than as stone — visible on the ticket hall's back elevation in
+    // `.game-render/buildings-detail/1200-gate.png`. Dressed stone out of one quarry is close in
+    // tone; it is rubble that is not.
+    const tone = (rand2(col, row, salt) * 2 - 1) * 0.11;
     const bed = tileableFbm(u * 26, v * 60, 60, salt + col * 13 + row * 5, 3);
     const weather = tileableFbm(u * 5, v * 9, 9, salt + 71, 3);
     const height = clamp01(0.72 + (bed - 0.5) * 0.16 - joint * 0.5);
-    const value = 0.9 + height * 0.24 + tone + (bed - 0.5) * 0.08;
+    const value = 0.9 + height * 0.24 + tone + (bed - 0.5) * 0.16;
     // Limestone goes grey-green where the rain runs and buff where it does not.
     const soiling = smoothstep(0.6, 0.95, weather) * 0.35;
     out.r = value * mix(1, 0.9, soiling);
@@ -273,8 +277,10 @@ function zincShader(salt: number): Shader {
     out.g = value;
     out.b = value * mix(1.02, 1.05, oil);
     out.height = height;
-    out.roughness = 0.42 + (1 - height) * 0.14 + (oil - 0.5) * 0.08;
-    out.metallic = 0.45;
+    out.roughness = 0.46 + (1 - height) * 0.14 + (oil - 0.5) * 0.08;
+    // 0.32 rather than 0.45: weathered zinc is a dull sheet, and at 0.45 under an IBL it takes so
+    // much of the sky that a hip roof reads as a slab of blue plastic.
+    out.metallic = 0.32;
     out.ao = 0.78 + height * 0.22;
   };
 }

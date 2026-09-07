@@ -232,8 +232,8 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     };
     add(build.kit, 'kit', materials.kit);
     add(build.glass, 'glass', materials.glass);
-    add(build.lit, 'lit', materials.emissive(build.litColour));
-    add(build.sign, 'sign', materials.emissive(build.signColour));
+    add(build.lit, 'lit', materials.emissive(build.litColour, 'window'));
+    add(build.sign, 'sign', materials.emissive(build.signColour, 'sign'));
     if (!meshes.length) return null;
     const batch: Batch = {
       key,

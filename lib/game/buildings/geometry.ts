@@ -378,7 +378,11 @@ export function addPrism(
     const p1: P3 = [cx + Math.cos(a1) * r0, y0, cz + Math.sin(a1) * r0];
     const p2: P3 = [cx + Math.cos(a1) * r1, y1, cz + Math.sin(a1) * r1];
     const p3: P3 = [cx + Math.cos(a0) * r1, y1, cz + Math.sin(a0) * r1];
-    addQuad(s, p0, p1, p2, p3, {
+    // `p1 → p0` and not `p0 → p1`: a facet authored in increasing angle has its normal pointing at
+    // the axis, so every prism in the module was inside out — a cone roof and an octagonal drum both
+    // measured 0 % of their area facing the sky in `selftest.mjs`, and what a back-face-culled roof
+    // shows is whatever was under it rather than an error.
+    addQuad(s, p1, p0, p3, p2, {
       colour: opts.colour,
       colourTop: opts.colourTop,
       tile: opts.tile,

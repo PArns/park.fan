@@ -59,6 +59,10 @@ export async function stagePoolsShowcase(ctx: MainContext): Promise<void> {
     { x: -32, z: -26, radius: 11 },
     { x: 34, z: -26, radius: 15 },
     { x: 0, z: 24, radius: 18 },
+    { x: -78, z: -58, radius: 27 },
+    { x: 76, z: -46, radius: 22 },
+    { x: 72, z: 26, radius: 13 },
+    { x: -72, z: 22, radius: 11 },
   ];
   sculpt(ctx.world.terrain as TerrainData, pads);
   ctx.events.emit('terrain:changed', { rect: null });
@@ -78,6 +82,40 @@ export async function stagePoolsShowcase(ctx: MainContext): Promise<void> {
 
   // And the pack's own basin, in the pack's own tile, with the pack's own edge.
   pools.create({ shape: 'infinity-terrace', x: 0, z: 24, yaw: 0 });
+
+  // Four more, spread wide. The `overview` preset is a fixed 400 m from the park centre, so a lido
+  // packed into seventy metres arrives as a smudge in it; these take the water park out to about
+  // two hundred and give that frame something to be a frame of. Each also re-uses a shape with a
+  // different tile and edge, which is the entity override doing its job.
+  pools.create({
+    shape: 'lagoon',
+    x: -78,
+    z: -58,
+    yaw: -0.5,
+    size: [36, 24],
+    tile: 'sand-pebble',
+    edge: 'beach-sand',
+  });
+  pools.create({
+    shape: 'runout-lane',
+    x: 76,
+    z: -46,
+    yaw: 0.2,
+    size: [12, 68],
+    depth: 1.2,
+    tile: 'aqua-mosaic',
+    edge: 'rolled-concrete',
+    deckDensity: 1,
+  });
+  pools.create({ shape: 'kids-pool', x: 72, z: 26, yaw: 0.8, tile: 'sand-pebble' });
+  pools.create({
+    shape: 'plunge',
+    x: -72,
+    z: 22,
+    yaw: -0.2,
+    tile: 'slate-dark',
+    edge: 'timber-surround',
+  });
 }
 
 /**

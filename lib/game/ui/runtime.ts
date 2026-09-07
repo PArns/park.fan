@@ -305,15 +305,32 @@ export class UiRuntime implements UiMainApi {
     return this.snapshot;
   }
 
-  subscribe(fn: () => void): () => void {
+  /**
+   * The two subscription entry points are arrow-function CLASS FIELDS, not methods, and that is
+   * load-bearing.
+   *
+   * `useSyncExternalStore(runtime.subscribe, …)` hands React a bare function reference, so a
+   * prototype method arrives with `this` undefined and throws `Cannot read properties of
+   * undefined (reading 'telemetryListeners')` from inside a passive effect. What that costs is out
+   * of all proportion to the mistake: React's dev build logs the failing effect to its component
+   * performance track, and the log's `detail` carries the component's props — which here reach a
+   * `Registry`, so `performance.measure` fails to structured-clone a class method and throws a
+   * SECOND error inside the commit phase, and React comes apart with `Should not already be
+   * working.` The visible symptom was a HUD frozen one render after mount with every figure at
+   * zero, on every harness run in the project including other modules' showcases.
+   *
+   * `core/store.ts` writes `subscribe` and `get` the same way for the same reason. Every other
+   * method here is only ever called on the object.
+   */
+  subscribe = (fn: () => void): (() => void) => {
     this.telemetryListeners.add(fn);
     return () => this.telemetryListeners.delete(fn);
-  }
+  };
 
-  subscribeChrome(fn: () => void): () => void {
+  subscribeChrome = (fn: () => void): (() => void) => {
     this.chromeListeners.add(fn);
     return () => this.chromeListeners.delete(fn);
-  }
+  };
 
   handle(): GameHandle | null {
     return this.getHandle();

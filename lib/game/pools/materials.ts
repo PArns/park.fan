@@ -42,6 +42,11 @@ export type PoolFinish = 'metal' | 'fabric' | 'timber';
 export interface PoolMaterials {
   /** The pool's tiled surfaces — floor, wall and steps — for one tile style. */
   tile(style: PoolTileSpec): PBRMaterial;
+  /**
+   * The pool's WALL and steps. Identical to `tile` for every pattern but `lanes`, where the lane
+   * markings are dropped: a lane line is painted on a floor and never up a wall.
+   */
+  tileWall(style: PoolTileSpec): PBRMaterial;
   coping(edge: PoolEdgeSpec): PBRMaterial;
   deck(edge: PoolEdgeSpec): PBRMaterial;
   /** The emissive niche lamp for one tile style — its colour is the style's `night`. */
@@ -61,16 +66,26 @@ export interface PoolMaterials {
   dispose(): void;
 }
 
+/**
+ * Texel budget per surface set, and it is a boot-time budget rather than a memory one.
+ *
+ * Every map is generated on the main thread before the first frame, so a showcase using six tile
+ * styles and five edge treatments pays seventeen sets up front — and at 320/240 that was enough to
+ * push the boot past the host's 8 s worker-ready timeout and raise the "the simulation did not
+ * start" notice, with the worker running perfectly well behind it. A park uses one or two looks and
+ * never sees it; the numbers are down anyway, because a pool tile at 288 px over 0.6 m is 480 px/m
+ * and the art bible asks for 512 on things a camera can touch.
+ */
 const TEXTURE_SIZE: Record<QualityPreset, number> = {
   low: 192,
-  medium: 320,
-  high: 512,
+  medium: 288,
+  high: 448,
   ultra: 512,
 };
 const CAUSTIC_SIZE: Record<QualityPreset, number> = {
   low: 128,
-  medium: 192,
-  high: 256,
+  medium: 160,
+  high: 224,
   ultra: 256,
 };
 
@@ -161,7 +176,9 @@ export function createPoolMaterials(
       const existing = materials.get(key);
       if (existing) return existing;
       styles.set(key, style);
-      const set = textures(key, () => createSurfaceTextures(scene, tileRecipe(style, seed), size));
+      const set = textures(key, () =>
+        createSurfaceTextures(scene, { ...tileRecipe(style, seed), id: key }, size)
+      );
       // Glazed ceramic is the glossiest thing in a park: a high specular intensity plus the clear
       // coat is what puts a hard highlight on a wet tile instead of a soft sheen.
       const m = textured(key, set, style.tileMetres, 0.7 + style.glaze * 0.9);
@@ -184,17 +201,34 @@ export function createPoolMaterials(
       caustics.vScale = causticScale;
       return m;
     },
+    tileWall(style) {
+      if (style.pattern !== 'lanes') return api.tile(style);
+      const key = `tile-${style.id}-wall`;
+      const existing = materials.get(key);
+      if (existing) return existing;
+      styles.set(key, style);
+      const set = textures(key, () =>
+        createSurfaceTextures(scene, { ...tileRecipe(style, seed), accentWidth: 0 }, size)
+      );
+      const m = textured(key, set, style.tileMetres, 0.7 + style.glaze * 0.9);
+      m.clearCoat.isEnabled = style.glaze > 0.35;
+      m.clearCoat.intensity = style.glaze * 0.55;
+      m.clearCoat.roughness = 0.08;
+      m.emissiveTexture = caustics;
+      m.emissiveColor = new Color3(0, 0, 0);
+      return m;
+    },
     coping(edge) {
       const key = `coping-${edge.id}`;
       const set = textures(key, () =>
-        createSurfaceTextures(scene, copingRecipe(edge, seed + 31), Math.round(size * 0.75))
+        createSurfaceTextures(scene, copingRecipe(edge, seed + 31), Math.round(size * 0.6))
       );
       return textured(key, set, 1.2, 0.45);
     },
     deck(edge) {
       const key = `deck-${edge.id}`;
       const set = textures(key, () =>
-        createSurfaceTextures(scene, deckRecipe(edge, seed + 67), Math.round(size * 0.75))
+        createSurfaceTextures(scene, deckRecipe(edge, seed + 67), Math.round(size * 0.7))
       );
       return textured(key, set, edge.deck === 'timber' ? 2.4 : edge.deck === 'sand' ? 3 : 2.4, 0.4);
     },

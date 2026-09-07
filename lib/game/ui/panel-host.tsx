@@ -26,13 +26,14 @@
 
 import { useCallback, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent } from 'react';
-import { ChevronDown, PanelRightClose, Pin, X } from 'lucide-react';
+import { ChevronDown, PanelRightClose, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { GameStore } from '../core/store';
 import type { GameLocale, Translate } from '../i18n';
 import type { PanelDef, UiMainApi } from './api';
 import { HUD_PANEL } from './surface';
 import { HudIconButton } from './parts';
+import { useCommitTally } from './hooks';
 
 /** Width of the dock column, and the band a dropped panel re-docks in. */
 const DOCK_WIDTH = 344;
@@ -91,7 +92,7 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
     <>
       {docked.length > 0 ? (
         <div
-          className="pointer-events-none absolute top-16 right-3 bottom-24 z-30 flex w-[344px] flex-col items-end gap-2 overflow-x-hidden overflow-y-auto pb-1"
+          className="pointer-events-none absolute top-28 right-3 bottom-24 z-30 flex w-[344px] flex-col items-end gap-2 overflow-x-hidden overflow-y-auto pb-1"
           data-panel-dock=""
         >
           {docked.map((def) => (
@@ -106,7 +107,7 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
               onCollapse={() => setCollapsed((c) => ({ ...c, [def.id]: !c[def.id] }))}
               onDrag={(position) => setPosition(def.id, position)}
               className="pointer-events-auto w-full shrink-0"
-              bodyClass="max-h-[46vh]"
+              bodyClass="max-h-[calc(100vh-15rem)]"
             />
           ))}
         </div>
@@ -180,6 +181,7 @@ function PanelFrame({
     moved: boolean;
   } | null>(null);
   const Icon = def.icon;
+  useCommitTally();
 
   const onPointerDown = (ev: ReactPointerEvent<HTMLDivElement>) => {
     if (!onDrag || ev.button !== 0) return;
@@ -232,6 +234,7 @@ function PanelFrame({
           onDrag && 'cursor-grab active:cursor-grabbing',
           'bg-gradient-to-b from-white/[0.07] to-transparent'
         )}
+        title={onDrag ? t('panel.drag') : undefined}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -245,15 +248,6 @@ function PanelFrame({
           <HudIconButton label={t('panel.dock')} dense onClick={onDock} className="size-7">
             <PanelRightClose className="size-3.5" />
           </HudIconButton>
-        ) : null}
-        {!floating && showDockToggle ? (
-          <span
-            className="hidden size-7 items-center justify-center text-white/25 sm:inline-flex"
-            title={t('panel.drag')}
-            aria-hidden
-          >
-            <Pin className="size-3" />
-          </span>
         ) : null}
         <HudIconButton
           label={collapsed ? t('panel.expand') : t('panel.collapse')}

@@ -31,8 +31,16 @@ import type { BuildingAtlas } from './textures';
 export interface BuildingMaterials {
   kit: PBRMaterial;
   glass: PBRMaterial;
-  /** Cached per sRGB hex: window light, sign faces, lantern glass. */
-  emissive(hex: string): PBRMaterial;
+  /**
+   * Cached per sRGB hex and per kind.
+   *
+   * The kind is what a surface looks like BY DAY, and the two answers are opposite. A window with a
+   * light on behind it is a dark window at noon — an amber pane at nine in the morning is a lantern
+   * bolted to a wall, which is what the first run of this module photographed on every elevation. A
+   * sign face is the other way round: at 0.16 it renders as a black bar across the frontage, which is
+   * the correction `shops/materials.ts` records, so it stays a painted panel until dusk lights it.
+   */
+  emissive(hex: string, kind: 'window' | 'sign'): PBRMaterial;
   /** 0..1 from `EnvironmentState.night`. */
   setNight(night: number): void;
   all(): Material[];
@@ -69,7 +77,9 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
   glass.albedoColor = new Color3(0.05, 0.07, 0.09);
   glass.metallic = 0;
   glass.roughness = 0.07;
-  glass.alpha = 0.38;
+  // 0.55 rather than 0.38, now that every opening has an opaque interior behind it: the pane is a
+  // reflective surface over a dark room, not a filter over the landscape on the far side.
+  glass.alpha = 0.55;
   glass.indexOfRefraction = 1.52;
   glass.transparencyMode = Material.MATERIAL_ALPHABLEND;
   glass.backFaceCulling = true;
@@ -79,11 +89,11 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
   const emissives = new Map<string, PBRMaterial>();
   let night = 0;
 
-  function emissive(hex: string): PBRMaterial {
-    const key = hex.toLowerCase();
+  function emissive(hex: string, kind: 'window' | 'sign' = 'window'): PBRMaterial {
+    const key = `${hex.toLowerCase()}|${kind}`;
     const found = emissives.get(key);
     if (found) return found;
-    const m = new PBRMaterial(`buildings-lit-${key.replace('#', '')}`, scene);
+    const m = new PBRMaterial(`buildings-lit-${kind}-${hex.replace('#', '')}`, scene);
     const c = Color3.FromHexString(hex);
     /**
      * The emissive TEXTURE is the atlas, and that is the whole point of the glow tile.
@@ -96,16 +106,14 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
     m.emissiveTexture = atlas.albedo;
     m.emissiveColor = c;
     m.emissiveIntensity = 0;
-    // By day it is a curtained window or an unlit sign face: a muted version of its own colour, not
-    // black. At 0.15 every window on every building read as a hole punched in the wall at noon.
-    m.albedoColor = c.scale(0.4);
+    m.albedoColor = c.scale(kind === 'window' ? 0.2 : 0.45);
     m.albedoTexture = atlas.albedo;
     m.metallic = 0;
-    m.roughness = 0.35;
+    m.roughness = kind === 'window' ? 0.18 : 0.4;
     m.transparencyMode = Material.MATERIAL_OPAQUE;
     m.maxSimultaneousLights = 4;
-    m.metadata = { envExempt: true };
-    m.emissiveIntensity = litIntensity(night);
+    m.metadata = { envExempt: true, buildingsLit: kind };
+    m.emissiveIntensity = litIntensity(night) * (kind === 'window' ? 1 : 0.82);
     emissives.set(key, m);
     return m;
   }
@@ -130,7 +138,10 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
     setNight(value: number) {
       night = value;
       const intensity = litIntensity(value);
-      for (const m of emissives.values()) m.emissiveIntensity = intensity;
+      for (const m of emissives.values()) {
+        const kind = (m.metadata as { buildingsLit?: string } | null)?.buildingsLit;
+        m.emissiveIntensity = intensity * (kind === 'sign' ? 0.82 : 1);
+      }
     },
     all() {
       return [kit, glass, ...emissives.values()];

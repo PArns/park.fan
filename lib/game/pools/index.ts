@@ -81,6 +81,8 @@ export {
   toWorld,
 } from './geom';
 export { buildPool } from './build';
+export { buildWaterMesh, RIPPLE_TILE } from './water-mesh';
+export type { WaterMeshData } from './water-mesh';
 export type { PoolBuildInput } from './build';
 export { excavatePool, signedDistance } from './excavate';
 export { defaultFreeboard, poolRadius, resolvePool } from './resolve';

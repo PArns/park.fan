@@ -247,6 +247,21 @@ function addPane(
   ctx.windows += 1;
   if (isLit) ctx.litWindows += 1;
   if (!isLit) {
+    /**
+     * An opaque backing behind the pane, and it is not a detail.
+     *
+     * A building here is a hollow box whose inner faces are back-face culled, so a 38 %-opaque pane
+     * over an opening shows 62 % of *the landscape on the other side of the building*. That is what
+     * made every window on the ticket hall's back elevation read as a hole punched through to the
+     * sky. Two triangles of dark interior behind each pane, and the glass has something to be glass
+     * against.
+     */
+    addFrameQuad(ctx.kit, f, u0, v0, u1, v1, out - 0.07, {
+      colour: shade(skin.wallColour, 0.3),
+      tile: skin.joineryTile,
+      repeatU: 1,
+      repeatV: 1,
+    });
     addFrameQuad(ctx.glass, f, u0, v0, u1, v1, out, {
       colour: skin.glassColour,
       tile: skin.joineryTile,
@@ -374,6 +389,25 @@ function archWindow(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
     skin.wallTile
   );
   archHead(ctx, f, u0, u1, springing, skin);
+  // Impost blocks where the arch springs. Two small projecting stones a side, and they are what puts
+  // a horizontal accent into an arcade that would otherwise be a row of holes.
+  for (const [a, b] of [
+    [u0 - 0.26, u0 + 0.06],
+    [u1 - 0.06, u1 + 0.26],
+  ]) {
+    addBand(
+      ctx.kit,
+      f,
+      a,
+      b,
+      springing - 0.14,
+      springing + 0.08,
+      -0.02,
+      0.11,
+      skin.trimColour,
+      skin.trimTile
+    );
+  }
   // Glass: the rectangle plus a fan for the head.
   addPane(ctx, f, skin, u0 + 0.06, u1 - 0.06, sill + 0.06, springing, back + 0.06, o.key);
   addFan(ctx, f, skin, (u0 + u1) / 2, springing, r - 0.06, back + 0.06, o.key);
@@ -386,6 +420,19 @@ function archWindow(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
     springing,
     back + 0.11,
     0.07,
+    skin.joineryColour,
+    skin.joineryTile
+  );
+  addGlazingBars(
+    ctx.kit,
+    f,
+    u0 + 0.07,
+    u1 - 0.07,
+    sill + 0.07,
+    springing - 0.07,
+    back + 0.12,
+    skin.mullions,
+    skin.transoms,
     skin.joineryColour,
     skin.joineryTile
   );
@@ -483,6 +530,28 @@ function addFan(
   const target = isLit ? ctx.lit : ctx.glass;
   const colour = isLit ? skin.litColour : skin.glassColour;
   const n = 8;
+  /**
+   * The fan gets an opaque backing of its own, and forgetting it was the most visible bug of the
+   * first round: the market hall's arched windows showed the grass and the sky BEHIND THE BUILDING
+   * through their heads (`.game-render/buildings-arcade/1200-arcade.png`), because the rectangular
+   * part of the opening had a backing and the semicircle over it did not.
+   */
+  fanTriangles(ctx.kit, f, skin, cu, cv, r, out - 0.07, n, shade(skin.wallColour, 0.3));
+  fanTriangles(target, f, skin, cu, cv, r, out, n, colour);
+}
+
+/** The half-disc of a fanlight, as a triangle fan on a frame. */
+function fanTriangles(
+  target: Surface,
+  f: Frame,
+  skin: Skin,
+  cu: number,
+  cv: number,
+  r: number,
+  out: number,
+  n: number,
+  colour: Rgb
+): void {
   const [cuu, cvv] = tileUv(skin.joineryTile, 0.5, 0.5);
   const c = framePoint(f, cu, cv, out);
   const centre = vertex(

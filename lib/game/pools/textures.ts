@@ -432,31 +432,38 @@ export function createSurfaceTextures(
  * cold on the other, which is what light through a wavy surface actually does.
  */
 export function createCaustics(scene: Scene, size: number, seed: number): RawTexture {
-  const data = new Uint8Array(size * size * 4);
   const cellsA = 6;
   const cellsB = 11;
-  const net = (u: number, v: number, offset: number): number => {
-    const a = worley((u + offset) * cellsA, (v + offset * 0.6) * cellsA, cellsA, seed);
-    const bo = worley((u - offset * 0.4) * cellsB, (v + offset) * cellsB, cellsB, seed + 77);
-    const lineA = smoothstep(0.3, 0.02, a.f2 - a.f1);
-    const lineB = smoothstep(0.24, 0.02, bo.f2 - bo.f1);
-    return clamp01(lineA * 0.75 + lineB * 0.45 + lineA * lineB * 0.5);
-  };
+  // One pass, not three. The first version evaluated the whole net once per CHANNEL at a small
+  // offset — six Worley lookups per texel, nine cells each — and a 192² map cost about 2 M of them
+  // at boot, on the main thread, where it is measured as boot time and shows up as the worker-ready
+  // notice. The fringe is a texel shift, so it costs an index and not a lookup.
+  const net = new Float32Array(size * size);
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
       const u = (x + 0.5) / size;
       const v = (y + 0.5) / size;
+      const a = worley(u * cellsA, v * cellsA, cellsA, seed);
+      const b = worley(u * cellsB, v * cellsB, cellsB, seed + 77);
+      const lineA = smoothstep(0.3, 0.02, a.f2 - a.f1);
+      const lineB = smoothstep(0.24, 0.02, b.f2 - b.f1);
+      net[y * size + x] = clamp01(lineA * 0.75 + lineB * 0.45 + lineA * lineB * 0.5);
+    }
+  }
+  const at = (x: number, y: number) => net[((y + size) % size) * size + ((x + size) % size)];
+  const data = new Uint8Array(size * size * 4);
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
       const i = (y * size + x) * 4;
-      // The channel offsets are the fringe. 1/size × 3 is about three texels at the caustic's own
-      // scale, which is a hint and not a rainbow.
-      data[i] = Math.round(255 * clamp01(net(u, v, 0.004)));
-      data[i + 1] = Math.round(255 * clamp01(net(u, v, 0)));
-      data[i + 2] = Math.round(255 * clamp01(net(u, v, -0.005)));
+      // Real caustics fringe — light through a wavy surface separates. One texel each way is a
+      // hint and not a rainbow.
+      data[i] = Math.round(255 * at(x + 1, y));
+      data[i + 1] = Math.round(255 * at(x, y));
+      data[i + 2] = Math.round(255 * at(x - 1, y + 1));
       data[i + 3] = 255;
     }
   }
-  const tex = raw(scene, 'pool-caustics', size, data);
-  return tex;
+  return raw(scene, 'pool-caustics', size, data);
 }
 
 /**

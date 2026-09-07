@@ -303,7 +303,7 @@ function buildMass(
     });
   }
 
-  if (mass.arcade) arcade(ctx, m, mass, skin, storeyHeight, plinth);
+  if (mass.arcade) arcade(ctx, m, mass, style, skin, storeyHeight, plinth);
 
   return Math.max(result.top, eaveY);
 }
@@ -442,6 +442,7 @@ function arcade(
   ctx: KitCtx,
   m: Placed,
   mass: MassDef,
+  style: BuildingStyleDef,
   skin: Skin,
   storeyHeight: number,
   plinth: number
@@ -520,6 +521,37 @@ function arcade(
       ? [along + 0.55, top + 0.72, outAt * (face + 0.34)]
       : [outAt * (face + 0.34), top + 0.72, along + 0.55];
   boxLocal(ctx.kit, m, co0 as P3, co1 as P3, shade(skin.trimColour, 1.05), skin.trimTile);
+
+  /**
+   * A lean-to roof back to the wall, in the roof's own material.
+   *
+   * The first version stopped at the entablature, so from anything above eye level a colonnade was a
+   * 35 × 3 m slab of pale stone lying against the building — measured on
+   * `.game-render/buildings-detail/1200-inn.png`, where the market hall's arcade filled a quarter of
+   * the frame as a paved platform. A loggia has a roof on it; it is where the rain goes.
+   */
+  const roofTile = tileFor(mass.roofSurface ?? style.roof, 'slate');
+  const roofColour = srgb(mass.roofColor ?? style.palette.roof);
+  const rise = depth * 0.3;
+  const outer = face + 0.34;
+  const inner = face - depth;
+  const rp = (u: number, o: number, y: number): P3 =>
+    axis === 'x' ? xf(m, u, y, outAt * o) : xf(m, outAt * o, y, u);
+  const flip = axis === 'x' ? outAt < 0 : outAt > 0;
+  addQuad(
+    ctx.kit,
+    rp(-along - 0.55, outer, top + 0.72),
+    rp(along + 0.55, outer, top + 0.72),
+    rp(along + 0.55, inner, top + 0.72 + rise),
+    rp(-along - 0.55, inner, top + 0.72 + rise),
+    {
+      colour: roofColour,
+      colourTop: shade(roofColour, 1.08),
+      tile: roofTile,
+      maxCells: 12,
+      back: flip,
+    }
+  );
 
   if (a.arch) {
     // Round heads between the columns, drawn as a ring of segments in the plane of the colonnade.
@@ -889,9 +921,18 @@ function roofPiece(
     colour: srgb(style.palette.roof),
     sides: 0,
   };
-  buildRoof(ctx, m, roof, skin, 0.35, ctx.seed);
-  // A course of wall under it so the piece is not floating.
-  boxLocal(ctx.kit, m, [-w / 2, 0, -d / 2], [w / 2, 0.35, d / 2], skin.wallColour, skin.wallTile);
+  // A metre of wall under it and a plinth under that, so a roof sample reads as a roof over
+  // something rather than as a dark wedge lying in the grass.
+  buildRoof(ctx, m, roof, skin, 1.1, ctx.seed);
+  boxLocal(ctx.kit, m, [-w / 2, 0.4, -d / 2], [w / 2, 1.1, d / 2], skin.wallColour, skin.wallTile);
+  boxLocal(
+    ctx.kit,
+    m,
+    [-w / 2 - 0.07, -0.4, -d / 2 - 0.07],
+    [w / 2 + 0.07, 0.4, d / 2 + 0.07],
+    skin.plinthColour,
+    skin.plinthTile
+  );
 }
 
 function floorPiece(ctx: KitCtx, size: P3, skin: Skin): void {

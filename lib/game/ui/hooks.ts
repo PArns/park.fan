@@ -22,12 +22,37 @@
  * `useGameStore` for exactly that traffic.
  */
 
-import { useCallback, useMemo, useRef, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import type { GameStore, GameState } from '../core/store';
 import type { UiRuntime } from './runtime';
 import type { ParkTelemetry } from './telemetry';
 
 export type Equal<T> = (a: T, b: T) => boolean;
+
+/**
+ * How many times the HUD's subscribing components have committed, and since when.
+ *
+ * Published on `window.__parkfan_hud` so the figure in the report is one anybody can reproduce
+ * rather than one this module asserts. It counts commits of the components that actually
+ * subscribe to something — the clock, each figure in the bar, each rail button, the notice stack
+ * and each open panel frame — which is the number that matters: a HUD over a 60 fps canvas is
+ * paid for by those and by nothing else.
+ *
+ * `<Profiler>` would have been the right tool and was tried first. In this React it throws:
+ * the dev build writes a `performance.measure` whose `detail` carries the rendered props, the
+ * props here reach a `Registry` and a `GameStore`, and a structured clone of a class with methods
+ * fails — which killed the commit phase outright (`Should not already be working.`) and froze the
+ * whole HUD one render in. An effect with no dependency array costs one function call per commit
+ * and cannot take the tree down with it.
+ */
+export const HUD_COMMITS = { count: 0, since: 0 };
+
+/** Count this component's commits. Call it in anything that subscribes. */
+export function useCommitTally(): void {
+  useEffect(() => {
+    HUD_COMMITS.count += 1;
+  });
+}
 
 /** Shallow array/object comparison, for a selector that has to return a list. */
 export function shallowEqual<T>(a: T, b: T): boolean {

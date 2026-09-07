@@ -30,7 +30,7 @@ import type {
 import { attachPoolContent } from './manifest';
 import { excavatePool } from './excavate';
 import { resolvePool } from './resolve';
-import { depthAtUnit, insidePolygon, outlinePoints, toLocal } from './geom';
+import { depthAtUnit, floorDepth, insidePolygon, outlinePoints, toLocal } from './geom';
 import type { PoolDepthSpec, PoolState, PoolsStats, ResolvedPool } from './types';
 
 /**
@@ -145,7 +145,7 @@ export function createPoolsSim(ctx: SimContext): SimHandle {
     const outline = outlines.get(pool.id);
     if (!outline || !insidePolygon(outline, lx, lz)) return 0;
     const depth: PoolDepthSpec = { ...pool.shape.depth, max: pool.maxDepth };
-    const floor = pool.position[1] - Math.max(0, depthAtUnit(depth, lx / hx, lz / hz));
+    const floor = pool.position[1] - floorDepth(depthAtUnit(depth, lx / hx, lz / hz));
     const level = pool.waterY + (state.get(pool.id)?.levelOffset ?? 0);
     return Math.max(0, level - floor);
   }

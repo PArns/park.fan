@@ -239,9 +239,6 @@ export class TelemetryCollector {
   private rev = 0;
   private lastNoticeId = 0;
   private live = false;
-  private day = 1;
-  private minute = 540;
-  private speed: Speed = 1;
   private cachedRides: RideRow[] = [];
   private cachedShops: ShopRow[] = [];
   private shopsDirty = true;
@@ -254,9 +251,6 @@ export class TelemetryCollector {
   onFrame(frame: SimFrame): void {
     this.live = true;
     this.stats = frame.stats;
-    this.day = frame.clock.day;
-    this.minute = frame.clock.minute;
-    this.speed = frame.clock.speed;
     const state = frame.buffers['rides.state'];
     const motion = frame.buffers['rides.motion'];
     const anim = frame.buffers['guests.anim'];
@@ -308,23 +302,24 @@ export class TelemetryCollector {
       guest,
       text,
       mood,
-      minute: this.minute,
-      day: this.day,
+      minute: this.sources.world.clock.minute,
+      day: this.sources.world.clock.day,
     });
     if (this.thoughts.length > THOUGHT_HISTORY) this.thoughts.length = THOUGHT_HISTORY;
   }
 
   addLog(kind: LogKind, text: string): void {
+    const { minute, day } = this.sources.world.clock;
     const last = this.log[0];
     // A ride that breaks twice in one minute is two lines; the same line twice in one minute is
     // one. Without this the queue-full notice from a shop repeats until somebody looks at it.
-    if (last && last.text === text && last.minute === Math.floor(this.minute)) return;
+    if (last && last.text === text && last.minute === Math.floor(minute)) return;
     this.log.unshift({
       seq: ++this.seq,
       kind,
       text,
-      minute: this.minute,
-      day: this.day,
+      minute,
+      day,
     });
     if (this.log.length > LOG_HISTORY) this.log.length = LOG_HISTORY;
   }
@@ -362,6 +357,16 @@ export class TelemetryCollector {
     this.rev += 1;
     const s = this.stats;
     const num = (k: string, fallback = 0) => (typeof s[k] === 'number' ? s[k] : fallback);
+    /**
+     * The clock is read from the world, not from the last frame.
+     *
+     * `host.ts` copies every frame's clock onto `world.clock` inside the render loop, so the two
+     * agree while the simulation is answering — and when it is NOT, the world is still the one
+     * that `setTimeOfDay()` and `setSpeed()` wrote to. Reading the frame meant that a park whose
+     * worker had not reported yet showed 09:00 at speed 1 while the harness had set 13:00 and
+     * paused it, which is a HUD contradicting the scene behind it.
+     */
+    const clock = this.sources.world.clock;
     const rides = this.buildRides();
     if (this.shopsDirty) {
       this.cachedShops = this.buildShops();
@@ -382,9 +387,9 @@ export class TelemetryCollector {
     }
     return {
       rev: this.rev,
-      day: this.day,
-      minute: this.minute,
-      speed: this.speed,
+      day: clock.day,
+      minute: clock.minute,
+      speed: clock.speed,
       season: env?.season ?? 'summer',
       weather: env?.weather ?? 'clear',
       temperatureC: env?.temperatureC ?? 0,

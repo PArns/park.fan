@@ -61,7 +61,7 @@ import {
 } from './water';
 import { excavatePool } from './excavate';
 import { poolRadius, resolvePool } from './resolve';
-import { depthAtUnit, hashString, outlinePoints, toLocal } from './geom';
+import { depthAtUnit, floorDepth, hashString, outlinePoints, toLocal } from './geom';
 import type {
   PoolDepthSpec,
   PoolEdgeSpec,
@@ -89,8 +89,13 @@ interface EnvironmentLike {
  * geometry is emissive on EVERY pool at every preset and the caustics on the floor are driven by
  * the same colour — the real lights are what puts a pool of glow on the surrounding deck, and two
  * of those is a lit pool.
+ *
+ * Measured before and after: at one light the whole deck of the showcase lido was black at 23:00
+ * and the pool read as a glowing hole cut in a lawn (`pools-r1/2300-ground.png`). The lamps also sat
+ * 620 mm under the surface, where they lit the basin and nothing else — they are held just under it
+ * now, at `waterY − 0.25`, which is where a real niche throws light up over the coping.
  */
-const LIGHT_POOL: Record<QualityPreset, number> = { low: 0, medium: 1, high: 2, ultra: 3 };
+const LIGHT_POOL: Record<QualityPreset, number> = { low: 0, medium: 2, high: 3, ultra: 4 };
 
 /** Floor rings and wall rows scale with the preset; the outline segments do not. */
 const DETAIL: Record<QualityPreset, number> = { low: 0.35, medium: 0.7, high: 1, ultra: 1.25 };
@@ -172,11 +177,14 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
   const excavated = new Set<string>();
   const meshes = new Map<string, Mesh>();
   const waterMaterials = new Map<string, PoolWaterMaterial>();
+  /** Tile style by id, so the per-frame environment pass is a lookup and not a scan of the park. */
+  const tileStyles = new Map<string, PoolTileSpec>();
   const lights: PointLight[] = [];
   const lightSites: Array<{
     x: number;
     y: number;
     z: number;
+    surfaceY: number;
     tint: [number, number, number];
     power: number;
   }> = [];
@@ -294,23 +302,33 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
         const key =
           surface.name === 'tile'
             ? `tile:${pool.tile.id}`
-            : surface.name === 'glow'
-              ? `glow:${pool.tile.id}`
-              : surface.name === 'coping'
-                ? `coping:${pool.edge.id}`
-                : surface.name === 'deck'
-                  ? `deck:${pool.edge.id}`
-                  : surface.name;
+            : surface.name === 'wall'
+              ? // The wall shares the floor's material for every pattern but `lanes` (see
+                // `materials.tileWall`), and where the material is the same the mesh may as well be
+                // too: keying it separately cost five extra draw calls in an eleven-pool showcase
+                // for nothing.
+                pool.tile.pattern === 'lanes'
+                ? `wall:${pool.tile.id}`
+                : `tile:${pool.tile.id}`
+              : surface.name === 'glow'
+                ? `glow:${pool.tile.id}`
+                : surface.name === 'coping'
+                  ? `coping:${pool.edge.id}`
+                  : surface.name === 'deck'
+                    ? `deck:${pool.edge.id}`
+                    : surface.name;
         const material =
           surface.name === 'tile'
             ? materials.tile(pool.tile)
-            : surface.name === 'glow'
-              ? materials.glow(pool.tile)
-              : surface.name === 'coping'
-                ? materials.coping(pool.edge)
-                : surface.name === 'deck'
-                  ? materials.deck(pool.edge)
-                  : materials.finish(surface.name === 'water' ? 'metal' : surface.name);
+            : surface.name === 'wall'
+              ? materials.tileWall(pool.tile)
+              : surface.name === 'glow'
+                ? materials.glow(pool.tile)
+                : surface.name === 'coping'
+                  ? materials.coping(pool.edge)
+                  : surface.name === 'deck'
+                    ? materials.deck(pool.edge)
+                    : materials.finish(surface.name === 'water' ? 'metal' : surface.name);
         // Furniture and metalwork cast; the basin is a hole in the ground and casting from it puts
         // a shadow of the pool floor on the pool floor.
         const casts =
@@ -337,6 +355,7 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
           x: px + site.x * cos - site.z * sin,
           y: py + site.y,
           z: pz + site.x * sin + site.z * cos,
+          surfaceY: pool.waterY,
           tint: pool.tile.nightTint,
           power: pool.tile.nightIntensity,
         });
@@ -406,6 +425,7 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
   }
 
   function waterMaterialFor(style: PoolTileSpec): PoolWaterMaterial {
+    tileStyles.set(style.id, style);
     let wm = waterMaterials.get(style.id);
     if (!wm) {
       wm = createWaterMaterial(scene, style, rippleA, rippleB);
@@ -480,7 +500,7 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
     while (lights.length < want) {
       const light = new PointLight(`pool-night-${lights.length}`, new Vector3(0, 0, 0), scene);
       light.intensity = 0;
-      light.range = 11;
+      light.range = 13;
       light.diffuse = new Color3(0.5, 0.85, 1);
       light.specular = new Color3(0.2, 0.34, 0.4);
       // Behind the sun and the sky term, exactly as `scenery`'s lamps are: what a material drops
@@ -499,10 +519,15 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
    *
    * `intensity` is the manifest's designer number times a scale, the same arrangement `scenery`
    * arrived at and for the same reason: Babylon's `PointLight.intensity` under ACES is roughly
-   * candela and a manifest's 6 is invisible on tile four metres away. 5x reads as a pool of light
-   * on the deck without blowing the surface out.
+   * candela and a manifest's 6 is invisible on tile four metres away.
+   *
+   * 2.2 and not the 5 the first pass used. Measured on `pools-r3/2300-ground.png`: at 5, with the
+   * lamp a quarter of a metre under the surface, the near end of the lap pool was a blown white
+   * hole and the grass in front of it carried a specular streak from a light that is supposed to be
+   * under water. The lamp is 1.3 m off the wall now and 0.55 m down, which is where a real niche
+   * throws from.
    */
-  const LUMEN_SCALE = 5;
+  const LUMEN_SCALE = 2.2;
 
   function updateLights(dt: number): void {
     if (!lights.length) return;
@@ -536,7 +561,10 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
           lights[i].setEnabled(false);
           continue;
         }
-        lights[i].position.set(site.x, site.y, site.z);
+        // Just under the surface rather than at the niche's own depth: the light has to reach the
+        // coping and the first metre of deck, which is what makes a lit pool light its surroundings
+        // instead of glowing in a black field.
+        lights[i].position.set(site.x, Math.min(site.y + 0.3, site.surfaceY - 0.55), site.z);
         lights[i].diffuse.set(site.tint[0], site.tint[1], site.tint[2]);
         lights[i].specular.set(site.tint[0] * 0.4, site.tint[1] * 0.4, site.tint[2] * 0.4);
         lights[i].intensity = site.power * LUMEN_SCALE * night;
@@ -559,7 +587,7 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
     // Cheap reject before the polygon test.
     if (Math.abs(lx) > hx * 1.5 || Math.abs(lz) > hz * 1.5) return 0;
     const depth: PoolDepthSpec = { ...pool.shape.depth, max: pool.maxDepth };
-    const floor = pool.position[1] - Math.max(0, depthAtUnit(depth, lx / hx, lz / hz));
+    const floor = pool.position[1] - floorDepth(depthAtUnit(depth, lx / hx, lz / hz));
     const column = pool.waterY - floor;
     if (column <= 0.01) return 0;
     // Inside the plan? `insidePolygon` on the outline, through the same generator the mesh used.
@@ -713,7 +741,7 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
       x: pool.position[0] + bx * cos - bz * sin,
       y: pool.waterY,
       z: pool.position[2] + bx * sin + bz * cos,
-      depth: Math.max(0, pool.waterY - (pool.position[1] - Math.max(0, bd))),
+      depth: Math.max(0, pool.waterY - (pool.position[1] - floorDepth(bd))),
     };
   }
 
@@ -776,11 +804,9 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
       night = env.night;
       const sunUp = Math.max(0, Math.min(1, Math.sin(Math.max(0, env.sunElevation)) * 2.4));
       materials.setEnvironment(night, sunUp);
-      const first = placements.values().next().value as ResolvedPool | undefined;
-      const tint = first?.tile.nightTint ?? [0.4, 0.8, 0.95];
       for (const [id, wm] of waterMaterials) {
-        const style = [...placements.values()].find((p) => p.tile.id === id)?.tile;
-        wm.applyEnvironment(env, night, style?.nightTint ?? tint);
+        const style = tileStyles.get(id);
+        wm.applyEnvironment(env, night, style?.nightTint ?? [0.4, 0.8, 0.95]);
       }
     },
     dispose() {
@@ -796,6 +822,7 @@ export function createPoolsMain(ctx: MainContext): MainHandle {
       meshes.clear();
       for (const wm of waterMaterials.values()) wm.dispose();
       waterMaterials.clear();
+      tileStyles.clear();
       materials.dispose();
       rippleA.dispose();
       rippleB.dispose();

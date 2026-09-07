@@ -100,10 +100,15 @@ export function excavatePool(
       const d = signedDistance(outline, lx, lz);
       if (d > rampEnd) continue;
       const at = j * w + i;
-      const grade = terrain.heights[at];
+      // The ramp is measured against the POOL's own grade, never against whatever the heightfield
+      // currently holds. Reading the current height made the cut depend on its own result: running
+      // it a second time treated the pit as the new grade and sank the ramp another metre, which
+      // the selftest caught as 42 samples moving on an identical second call. Now it is a `min`
+      // against a fixed target and is idempotent by construction.
+      const grade = pool.position[1];
       const t = smoothstep(RAMP_START, rampEnd, d);
       const target = pitY + (grade - pitY) * t;
-      if (target >= grade) continue;
+      if (target >= terrain.heights[at]) continue;
       terrain.heights[at] = target;
       touched = true;
     }

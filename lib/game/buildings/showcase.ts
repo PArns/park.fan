@@ -140,6 +140,36 @@ const SHOWCASE_PACK = {
     },
   ],
   icons: { 'old-inn': 'lucide:beer' },
+  /**
+   * The cameras this showcase is judged through, replaced in place.
+   *
+   * `cameraPresets` is the `camera` module's own pack category and "a pack naming a built-in id
+   * replaces it in place" is its documented contract, so this is a manifest edit rather than a reach
+   * into another module. It is in the SHOWCASE pack and not in `pack.ts` on purpose: the demo park's
+   * `overview` belongs to the whole park and this one has ten buildings in a hundred metres.
+   *
+   * The built-in `overview` is a fixed 400 m, which on this scene put the whole street in a 90-pixel
+   * smudge in the middle of the frame — measured on `.game-render/showcase-buildings/0900-overview.png`
+   * from the first round. `frameRadius: 'auto'` fits the content instead. `kit`, `hall` and `gate`
+   * are inspection cameras: a kit piece is 4 m and no preset in the game gets close enough to judge
+   * one.
+   */
+  cameraPresets: [
+    // Explicit targets rather than the built-in anchors, and that is the difference between framing
+    // a park and framing a street. `kinds:building` puts the anchor on the centroid of twenty-three
+    // entities, ten of which are 4 m kit samples, and `frameRadius: 'auto'` then fits a 110 m circle
+    // — measured on the first round's `0900-overview.png`, where the whole set was a smudge a
+    // hundred pixels wide. A showcase knows where its own street is.
+    { id: 'overview', target: [0, 7, 4], bearing: 30, pitch: 21, distance: 132 },
+    { id: 'close', target: [0, 5, 20], bearing: 22, pitch: 8, distance: 48 },
+    { id: 'kit', target: [0, 3, 6], bearing: 0, pitch: 9, distance: 27 },
+    { id: 'hall', target: [0, 8, -46], bearing: 8, pitch: 12, distance: 52 },
+    { id: 'gate', target: [-19, 5, 20], bearing: 96, pitch: 11, distance: 40 },
+    { id: 'inn', target: [15, 6, 34], bearing: 250, pitch: 12, distance: 32 },
+    { id: 'market', target: [26, 7, 18], bearing: 265, pitch: 14, distance: 48 },
+    { id: 'ticket', target: [-25, 7, 20], bearing: 85, pitch: 14, distance: 48 },
+    { id: 'rot', target: [24, 8, -18], bearing: 262, pitch: 12, distance: 38 },
+  ],
 } as const;
 
 /** Where each blueprint stands. `yaw` turns its `+z` front towards the street. */
@@ -231,7 +261,10 @@ export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
       pack: item.pack,
       item: (item.def as { id: string }).id,
       position: [side * 8.5, 0, 24 - step * 6],
-      yaw: side < 0 ? Math.PI / 2 : -Math.PI / 2,
+      // Square on to the street, not turned to face it. A kit piece is 4 m and 0.3 m thick, so
+      // edge-on it is a black slab — which is exactly how the first round photographed all ten of
+      // them. A visitor walking up the street meets their front.
+      yaw: 0,
     };
     ctx.dispatch('entity:add', entity);
   });

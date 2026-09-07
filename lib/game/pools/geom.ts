@@ -31,6 +31,19 @@
 import type { PoolDepthSpec, PoolEdgeSpec, PoolShapeSpec } from './types';
 
 export const clamp01 = (x: number): number => (x < 0 ? 0 : x > 1 ? 1 : x);
+
+/**
+ * Metres a zero-entry shelf stands above the pool's own grade where it meets the wall.
+ *
+ * Bounded above by the coping: a rolled edge's rim sits about 0.15 m over grade, so a shelf that
+ * rose further would stand proud of the coping and read as a step out of the pool rather than into
+ * it. 0.12 leaves the apron 30 mm under the coping and about 90 mm over the water line, which on
+ * the lagoon's 1:12 ramp is a couple of metres of dry tile — a beach somebody can stand on.
+ */
+export const BEACH_RISE = 0.12;
+
+/** A floor height, allowing a beach shelf to stand proud of the water and nothing else to. */
+export const floorDepth = (d: number): number => (d < -BEACH_RISE ? -BEACH_RISE : d);
 export const mix = (a: number, b: number, t: number): number => a + (b - a) * t;
 export const smoothstep = (a: number, b: number, x: number): number => {
   if (a === b) return x < a ? 0 : 1;
@@ -90,10 +103,11 @@ export function outlinePoints(shape: PoolShapeSpec, size: [number, number]): num
   const out: number[] = [];
 
   if (shape.outline === 'polygon' && shape.points.length >= 6) {
+    const corners: number[] = [];
     for (let i = 0; i + 1 < shape.points.length; i += 2) {
-      out.push(shape.points[i] * hx, shape.points[i + 1] * hz);
+      corners.push(shape.points[i] * hx, shape.points[i + 1] * hz);
     }
-    return ensureCcw(out);
+    return ensureCcw(resample(corners, n));
   }
 
   for (let i = 0; i < n; i++) {
@@ -129,6 +143,42 @@ export function outlinePoints(shape: PoolShapeSpec, size: [number, number]): num
     }
   }
   return ensureCcw(out);
+}
+
+/**
+ * Subdivide a polygon's edges up to about `target` points, keeping every corner it was authored
+ * with.
+ *
+ * A pack's explicit plan arrives as six or eight points, and six columns of a polar grid is a
+ * basin whose floor is interpolated across nine metres — the depth profile stops being a profile
+ * and the wall stops being able to hold a waterline. Splitting the long edges fixes both without
+ * rounding off a single corner, which is the whole reason a pack chose a polygon.
+ */
+function resample(points: number[], target: number): number[] {
+  const n = points.length / 2;
+  if (n >= target) return points;
+  let perimeter = 0;
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    perimeter += Math.hypot(points[j * 2] - points[i * 2], points[j * 2 + 1] - points[i * 2 + 1]);
+  }
+  if (perimeter <= 0) return points;
+  const step = perimeter / target;
+  const out: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    const x0 = points[i * 2];
+    const z0 = points[i * 2 + 1];
+    const x1 = points[j * 2];
+    const z1 = points[j * 2 + 1];
+    const length = Math.hypot(x1 - x0, z1 - z0);
+    const pieces = Math.max(1, Math.round(length / step));
+    for (let k = 0; k < pieces; k++) {
+      const t = k / pieces;
+      out.push(x0 + (x1 - x0) * t, z0 + (z1 - z0) * t);
+    }
+  }
+  return out;
 }
 
 /** One point on a rounded rectangle at parameter `t` (0..1) of its perimeter. */
@@ -274,11 +324,21 @@ export function depthAtUnit(depth: PoolDepthSpec, u: number, v: number): number 
       return mix(depth.max, depth.min, smoothstep(0.25, 1, r));
     }
     case 'beach': {
-      // Zero-entry: the first `beach` of the length is a dry-to-ankle shelf at a gentle 1:12, then
-      // the floor falls to the deep end.
+      // Zero-entry, and the "zero" has to be ABOVE the water or there is no beach — a shelf that
+      // stops exactly at nought is 30-100 mm under the surface, because the water sits a freeboard
+      // below a coping that itself stands a deck-fall above grade. Measured on the first build: 3 %
+      // of a lagoon's plan was dry where a quarter of it should have been. So the shelf starts
+      // `BEACH_RISE` PROUD of the pool's own grade and walks down through the water line, which is
+      // what a person actually walks down.
       const shelf = clamp01(depth.beach);
       const t = (along + 1) / 2;
-      if (t < shelf) return mix(0, depth.min, shelf > 0 ? t / shelf : 1);
+      // Three runs, not two: the dry apron, the shallow shelf under it, and then the fall to the
+      // deep end. Ramping straight from the apron to `min` over the whole shelf crosses the water
+      // line in the first 3 % of the pool and there is no beach to speak of — measured at 3 % of
+      // the lagoon's plan dry, against the 12 % it has now.
+      const cross = shelf * 0.45;
+      if (t < cross) return mix(-BEACH_RISE, 0, cross > 0 ? t / cross : 1);
+      if (t < shelf) return mix(0, depth.min, shelf > cross ? (t - cross) / (shelf - cross) : 1);
       return mix(depth.min, depth.max, smoothstep(shelf, 1, t));
     }
     case 'channel': {
@@ -313,7 +373,7 @@ export function poolVolume(shape: PoolShapeSpec, size: [number, number], maxDept
     for (let i = 0; i < steps; i++) {
       const x = -hx + ((i + 0.5) / steps) * 2 * hx;
       if (!insidePolygon(outline, x, z)) continue;
-      total += depthAtUnit(depth, x / hx, z / hz) * cell;
+      total += Math.max(0, depthAtUnit(depth, x / hx, z / hz)) * cell;
     }
   }
   return total;

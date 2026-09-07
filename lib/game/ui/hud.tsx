@@ -25,12 +25,13 @@
  * not before. Core's store is read the same way: the host writes `environment` on every quarter
  * park minute, which at speed 3 is twelve writes a second for a value the top bar does not draw.
  *
- * The React Profiler around the tree is deliberate and stays: it is how the commit rate in the
- * report was measured, it costs one function call per commit, and a HUD over a 60 fps canvas is
- * exactly the kind of thing that regresses silently.
+ * That is measured rather than asserted: every subscribing component calls `useCommitTally()` and
+ * the running total is on `window.__parkfan_hud`, so the figure in the report is one anybody can
+ * reproduce. `<Profiler>` was the first attempt and had to come out — see the docblock on
+ * {@link HUD_COMMITS}.
  */
 
-import { Profiler, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   AlertTriangle,
@@ -51,7 +52,15 @@ import { BuildBar } from '../tools/build-bar';
 import type { GameLocale, GameStringKey, Translate } from '../i18n';
 import type { PanelDef, StatDef } from './api';
 import { clockTime } from './format';
-import { shallowEqual, useChrome, useGame, useNarrow, useTelemetry } from './hooks';
+import {
+  HUD_COMMITS,
+  shallowEqual,
+  useChrome,
+  useCommitTally,
+  useGame,
+  useNarrow,
+  useTelemetry,
+} from './hooks';
 import { GameMenu } from './menu';
 import { PanelHost } from './panel-host';
 import { DayStrip } from './panels/park';
@@ -66,14 +75,6 @@ export interface GameHudProps {
   locale: GameLocale;
   getHandle: () => GameHandle | null;
 }
-
-/**
- * Commit counter, read by the measurement run in the report.
- *
- * A number nobody can reproduce is not a number, so it is published on `window.__parkfan_hud`
- * beside core's own harness object rather than logged.
- */
-const commits = { total: 0, actual: 0, since: 0 };
 
 const SPEEDS: { speed: Speed; key: GameStringKey; icon: typeof Play }[] = [
   { speed: 0, key: 'hud.speed.pause', icon: Pause },
@@ -91,43 +92,37 @@ export function GameHud({ store, t, locale, getHandle }: GameHudProps) {
   const narrow = useNarrow();
 
   useEffect(() => {
-    const w = window as unknown as { __parkfan_hud?: typeof commits & { reset(): void } };
-    w.__parkfan_hud = Object.assign(commits, {
+    const w = window as unknown as {
+      __parkfan_hud?: { count: number; since: number; reset(): void };
+    };
+    HUD_COMMITS.since = performance.now();
+    w.__parkfan_hud = Object.assign(HUD_COMMITS, {
       reset() {
-        commits.total = 0;
-        commits.actual = 0;
-        commits.since = performance.now();
+        HUD_COMMITS.count = 0;
+        HUD_COMMITS.since = performance.now();
       },
     });
-    commits.since = performance.now();
-  }, []);
-
-  const onRender = useCallback((_id: string, _phase: string, actual: number) => {
-    commits.total += 1;
-    commits.actual += actual;
   }, []);
 
   if (phase === 'booting' || phase === 'failed') return null;
 
   return (
-    <Profiler id="game-hud" onRender={onRender}>
-      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col" data-game-hud="">
-        <div className={SCRIM_TOP} aria-hidden />
-        <div className={SCRIM_BOTTOM} aria-hidden />
-        {runtime ? (
-          <HudBody
-            runtime={runtime}
-            store={store}
-            t={t}
-            locale={locale}
-            narrow={narrow}
-            getHandle={getHandle}
-          />
-        ) : (
-          <FallbackBar t={t} />
-        )}
-      </div>
-    </Profiler>
+    <div className="pointer-events-none absolute inset-0 z-10 flex flex-col" data-game-hud="">
+      <div className={SCRIM_TOP} aria-hidden />
+      <div className={SCRIM_BOTTOM} aria-hidden />
+      {runtime ? (
+        <HudBody
+          runtime={runtime}
+          store={store}
+          t={t}
+          locale={locale}
+          narrow={narrow}
+          getHandle={getHandle}
+        />
+      ) : (
+        <FallbackBar t={t} />
+      )}
+    </div>
   );
 }
 
@@ -173,6 +168,7 @@ function HudBody({
   );
 
   useHudKeys(runtime, narrow);
+  useCommitTally();
 
   return (
     <>
@@ -228,6 +224,7 @@ function ClockCluster({
   narrow: boolean;
 }) {
   const clock = useTelemetry(runtime, selectClock, clockEqual);
+  useCommitTally();
   return (
     <div className={cn(HUD_CHIP, 'pointer-events-auto px-3 py-1.5')}>
       <div className="flex items-center gap-2.5">
@@ -306,6 +303,7 @@ function StatCluster({
 function StatSlot({ runtime, def }: { runtime: UiRuntime; def: StatDef }) {
   const selector = useMemo(() => (s: ParkTelemetry) => def.value(s), [def]);
   const value = useTelemetry(runtime, selector, statEqual);
+  useCommitTally();
   if (!value) return null;
   const tone: Tone = value.tone ?? 'neutral';
   const Icon = def.icon;
@@ -397,6 +395,7 @@ function RailButton({
 }) {
   const selector = useMemo(() => (s: ParkTelemetry) => def.badge?.(s) ?? null, [def]);
   const badge = useTelemetry(runtime, selector);
+  useCommitTally();
   const Icon = def.icon;
   return (
     <div className="relative shrink-0">
@@ -441,6 +440,7 @@ function NoticeStack({
   narrow: boolean;
 }) {
   const notices = useGame(store, selectNotices);
+  useCommitTally();
   const timers = useRef(new Map<number, number>());
 
   useEffect(() => {

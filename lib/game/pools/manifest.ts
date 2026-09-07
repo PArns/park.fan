@@ -118,6 +118,34 @@ export const poolsCategorySchema = z.object({
   deck: z.array(deckItemSchema).default([]),
 });
 
+/**
+ * Parse a list of manifest entries ONE AT A TIME.
+ *
+ * `poolsCategorySchema.safeParse(block)` is the obvious thing and it is wrong for content: one
+ * unreadable entry — a pack authored against a newer build, a typo in an enum — would take the
+ * whole pack's pools with it, silently, and a park would come back with no basins rather than with
+ * one missing. Per entry, a bad one is named and skipped and everything beside it still lands. Same
+ * reasoning as `Registry.unclaimedPackKeys` warning rather than throwing.
+ */
+function parseEach<T>(packId: string, what: string, list: unknown, schema: z.ZodType<T>): T[] {
+  if (!Array.isArray(list)) return [];
+  const out: T[] = [];
+  list.forEach((entry, index) => {
+    const parsed = schema.safeParse(entry);
+    if (parsed.success) {
+      out.push(parsed.data);
+      return;
+    }
+    const id = (entry as { id?: string })?.id ?? `#${index}`;
+    warnOnce(
+      `entry:${packId}:${what}:${id}`,
+      `pack "${packId}": ${what} "${id}" could not be read and was skipped — ` +
+        parsed.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')
+    );
+  });
+  return out;
+}
+
 // ── the catalogue ───────────────────────────────────────────────────────────────────────────
 const shapes = new Map<string, PoolShapeSpec>();
 const tiles = new Map<string, PoolTileSpec>();
@@ -335,7 +363,7 @@ const BUILTIN: unknown = {
       lobeDepth: 0.15,
       lobePhase: 0.6,
       segments: 96,
-      depth: { profile: 'beach', min: 0.9, max: 1.7, axis: 'z', beach: 0.28 },
+      depth: { profile: 'beach', min: 0.9, max: 1.7, axis: 'z', beach: 0.36 },
       entry: 'beach',
       entryYaw: -1.5707963267948966,
       role: 'swim',
@@ -435,16 +463,19 @@ const BUILTIN: unknown = {
 
 /** Register one manifest fragment. Later entries with the same id win, by design. */
 export function registerPools(packId: string, input: unknown): number {
-  const parsed = poolsCategorySchema.safeParse(input);
-  if (!parsed.success) {
-    warnOnce(
-      `pack:${packId}`,
-      `pack "${packId}" has a "pools" key this build cannot read: ${parsed.error.issues
-        .map((i) => `${i.path.join('.')}: ${i.message}`)
-        .join('; ')}`
-    );
+  const block = (input ?? {}) as Record<string, unknown>;
+  if (typeof input !== 'object' || input === null || Array.isArray(input)) {
+    warnOnce(`pack:${packId}`, `pack "${packId}": the "pools" key must be an object`);
     return 0;
   }
+  const parsed = {
+    data: {
+      tiles: parseEach(packId, 'tile style', block.tiles, tileSchema),
+      edges: parseEach(packId, 'edge treatment', block.edges, edgeSchema),
+      deck: parseEach(packId, 'deck item', block.deck, deckItemSchema),
+      shapes: parseEach(packId, 'pool shape', block.shapes, shapeSchema),
+    },
+  };
   let count = 0;
   for (const def of parsed.data.tiles) {
     tiles.set(def.id, {

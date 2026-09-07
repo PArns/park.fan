@@ -208,7 +208,7 @@ export interface PoolsStats {
 
 /** One vertex stream, grouped by the material it is drawn with. */
 export type PoolSurfaceName =
-  'tile' | 'coping' | 'deck' | 'metal' | 'fabric' | 'timber' | 'glow' | 'water';
+  'tile' | 'wall' | 'coping' | 'deck' | 'metal' | 'fabric' | 'timber' | 'glow' | 'water';
 
 export interface PoolSurface {
   name: PoolSurfaceName;

@@ -45,6 +45,7 @@ import type {
 import { SurfaceBuilder, WHITE } from './surfaces';
 import {
   DECK_LIFT,
+  floorDepth,
   rimHeight,
   depthAtUnit,
   hash2,
@@ -155,7 +156,7 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
   const waterY = rimY - freeboard;
   const waterlineTint = hexToLinear(tile.waterline);
 
-  const depthAt = (x: number, z: number): number => Math.max(0, depthAtUnit(depth, x / hx, z / hz));
+  const depthAt = (x: number, z: number): number => floorDepth(depthAtUnit(depth, x / hx, z / hz));
 
   // ── the floor ─────────────────────────────────────────────────────────────────────────────
   //
@@ -198,7 +199,10 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
   // Rows at fixed heights so the waterline band has its own edge: rim, just above the water, the
   // water itself, the bottom of the band, and then down to the floor. Where the floor has risen to
   // meet the rim (a zero-entry beach) the rows collapse and the strip disappears on its own.
-  const wall = b.surface('tile');
+  // A surface of its own, not the floor's: see `materials.tileWall`. A competition pool's lane
+  // lines belong on the floor, and drawn on the wall's arclength they came out as a dark vertical
+  // band every 2.5 m all the way round the basin — visible in `1830-ground.png` of the first run.
+  const wall = b.surface('wall');
   const bandTop = waterY + 0.06;
   const bandBottom = waterY - 0.2;
   const wallRows = Math.max(2, Math.round(2 + input.detail * 2));
@@ -447,7 +451,10 @@ export function buildPool(input: PoolBuildInput): PoolBuild {
       b.vertex(glow, [px + tx * a, y + h, pz + tz * a], [nx, 0, nz], [a, h], WHITE)
     );
     b.quad(glow, ids[0], ids[1], ids[2], ids[3]);
-    lights.push({ x: px + nx * 0.4, y, z: pz + nz * 0.4, nx, nz });
+    // The real light sits well off the wall, not in the niche: a point light 300 mm from tile is
+    // an inverse-square blowout, and the 23:00 frame of the third run had a white hole in the pool
+    // where a lamp should have been a glow.
+    lights.push({ x: px + nx * 1.3, y, z: pz + nz * 1.3, nx, nz });
   }
 
   // ── the deck's furniture ──────────────────────────────────────────────────────────────────
@@ -508,7 +515,7 @@ interface StepsInput {
  * decreasing radius; `corner-steps` are the straight run of a municipal bath.
  */
 function buildSteps(b: SurfaceBuilder, s: StepsInput): void {
-  const surface = b.surface('tile');
+  const surface = b.surface('wall');
   const rise = 0.25;
   const tread = 0.36;
   const [ix, iz] = norm2(s.inward[0], s.inward[1]);
