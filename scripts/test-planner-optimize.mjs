@@ -330,7 +330,9 @@ function idleOfPlan(payload, stops) {
   const slugs = rides.map((r) => r.attractionSlug);
 
   const found = optimizeDay(input);
-  const placed = [...found.stops].sort((a, b) => a.startMinute - b.startMinute).map((s) => s.attractionSlug);
+  const placed = [...found.stops]
+    .sort((a, b) => a.startMinute - b.startMinute)
+    .map((s) => s.attractionSlug);
   const chosen = scoreOrder(input, [...placed, ...slugs.filter((s) => !placed.includes(s))]);
   const best = bruteForce(input, slugs);
 
@@ -1495,7 +1497,12 @@ function benchInput(n) {
   const payload = day(rides);
   const g = grid(payload);
   const entries = [entry('a-1', 'a', 9 * 60)];
-  const found = optimizeDay({ day: payload, grid: g, entries, add: [rides[1], rides[2], rides[3]] });
+  const found = optimizeDay({
+    day: payload,
+    grid: g,
+    entries,
+    add: [rides[1], rides[2], rides[3]],
+  });
 
   check(
     'kein Stopp wird nach Parkschluss angestellt',
@@ -1635,7 +1642,9 @@ function benchInput(n) {
   check(
     'und der Feierabend ist der der geplanten Bahnen',
     found.endMinute ===
-      Math.max(...found.stops.map((s) => s.startMinute + spanOf(payload, s.attractionSlug, s.startMinute))),
+      Math.max(
+        ...found.stops.map((s) => s.startMinute + spanOf(payload, s.attractionSlug, s.startMinute))
+      ),
     `Feierabend ${found.endMinute}`
   );
 }

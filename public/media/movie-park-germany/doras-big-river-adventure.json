@@ -1,11 +1,7 @@
 {
   "park": "movie-park-germany",
   "ride": "doras-big-river-adventure",
-  "tags": [
-    "day",
-    "photo",
-    "ride"
-  ],
+  "tags": ["day", "photo", "ride"],
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",

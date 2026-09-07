@@ -836,8 +836,7 @@ interface Placement {
  */
 function placementsFrom(ctx: Context, candidate: Candidate, first: number): Placement[] {
   const { grid } = ctx;
-  const spanAt = (minute: number) =>
-    candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
+  const spanAt = (minute: number) => candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
 
   const options: Placement[] = [];
   for (let delay = 0; delay <= MAX_DELAY_MIN; delay += SNAP_MIN_FINE) {
@@ -1613,7 +1612,10 @@ function peeled(input: OptimizeInput, ctx: Context): Scored {
     const asideRides = inPlay.slice(0, asideCount);
     const aside = new Set(asideRides.map((ride) => ride.attractionSlug));
 
-    const reduced = buildContext({ ...input, add: add.filter((r) => !aside.has(r.attractionSlug)) });
+    const reduced = buildContext({
+      ...input,
+      add: add.filter((r) => !aside.has(r.attractionSlug)),
+    });
     if (!reduced) break;
     const plan = scheduleOrder(reduced, improve(reduced, search(reduced, BEAM_WIDTH)));
 
