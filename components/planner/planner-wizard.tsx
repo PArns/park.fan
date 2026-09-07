@@ -1,10 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { ArrowRight, CalendarDays, Check, Clock, Droplets, Ruler, Utensils, X } from 'lucide-react';
+import {
+  ArrowRight,
+  CalendarDays,
+  Check,
+  Clock,
+  Crown,
+  Droplets,
+  Ruler,
+  Utensils,
+  X,
+} from 'lucide-react';
 import {
   Dialog,
   DialogClose,
@@ -26,6 +36,8 @@ import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { formatGridTime, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM } from '@/lib/planner/party';
+import { buildDayGrid } from '@/lib/planner/day-grid';
+import { headlinersToAdd, optimizeDay } from '@/lib/planner/optimize';
 import type { CalendarDay, PlanDay } from '@/lib/api/types';
 import type { PlannerDayPrefs } from '@/lib/planner/types';
 import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
@@ -133,7 +145,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const t = useTranslations('planner');
   const locale = useLocale();
   const router = useRouter();
-  const { state, openDay, setDayPrefs, addCustom } = usePlanner();
+  const { state, openDay, setDayPrefs, addCustom, applyPlan } = usePlanner();
 
   const [park, setPark] = useState<WizardPark | null>(initialPark);
   const [step, setStep] = useState<Step>(initialPark ? 'date' : 'park');
@@ -143,6 +155,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const [date, setDate] = useState<string | null>(null);
   const [prefs, setPrefs] = useState<PlannerDayPrefs>({});
   const [lunch, setLunch] = useState(false);
+  const [planHeadliners, setPlanHeadliners] = useState(false);
 
   const facts = usePlannerDayFacts(park, open && step !== 'park');
   /**
@@ -209,6 +222,58 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const today = todayInZone(facts.timezone ?? park?.timezone);
   const chosen = date ? facts.byDate.get(date) : undefined;
 
+  /**
+   * The park's headliners for this day, and how many of them the day holds.
+   *
+   * The wizard has the day payload already — it is what paints the hero — so
+   * asking the optimiser what fits costs one search and no request. It answers
+   * the question the visitor is standing in front of: "put the big rides in for
+   * me" is only a promise the app can keep where they all fit, and where they
+   * do not, saying so here is the difference between an offer and a surprise.
+   *
+   * The probe plans against the same day the finish will: with the lunch block
+   * where the wizard would put it, because an hour out of the middle is what
+   * decides the last headliner. Memoised on everything it reads, or the search
+   * would run on every keystroke of the step.
+   */
+  const dayPayload = planDay.data ?? null;
+  const wizardGrid = useMemo(
+    () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour),
+    [dayPayload]
+  );
+  const headliners = useMemo(
+    () => headlinersToAdd(dayPayload, [], prefs),
+    [dayPayload, prefs]
+  );
+  const lunchEntries = useMemo(
+    () =>
+      lunch
+        ? [
+            {
+              id: 'wizard-lunch',
+              custom: {
+                label: '',
+                icon: 'food' as const,
+                durationMinutes: LUNCH_MINUTES,
+              },
+              startMinute: LUNCH_START_MINUTE,
+            },
+          ]
+        : [],
+    [lunch]
+  );
+  const headlinerFit = useMemo(() => {
+    if (!dayPayload || !wizardGrid || headliners.length === 0) return null;
+    const plan = optimizeDay({
+      day: dayPayload,
+      grid: wizardGrid,
+      entries: lunchEntries,
+      add: headliners,
+    });
+    if (!plan) return null;
+    return plan.stops.filter((stop) => stop.entryId === null).length;
+  }, [dayPayload, wizardGrid, headliners, lunchEntries]);
+
   const plannedSlugs = new Set(Object.keys(state.parks));
 
   const steps: Step[] = initialPark ? ['date', 'setup'] : ['park', 'date', 'setup'];
@@ -240,6 +305,44 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
         startMinute: LUNCH_START_MINUTE,
         durationMinutes: LUNCH_MINUTES,
       });
+    }
+    /**
+     * The headliners, in the order the day is cheapest in.
+     *
+     * After the lunch block and against the same fixture the probe used, so
+     * what the hint promised is what lands on the axis. It is the engine's own
+     * answer including which ride it gives up on a day too short for them
+     * (`Candidate.dropWeight`); the panel's own "Alle Headliner einplanen" is
+     * where that can be argued with, ride by ride, and the sentence in the hint
+     * says so.
+     */
+    if (planHeadliners && dayPayload && wizardGrid && headliners.length > 0) {
+      const plan = optimizeDay({
+        day: dayPayload,
+        grid: wizardGrid,
+        entries: lunchEntries,
+        add: headliners,
+      });
+      if (plan) {
+        applyPlan({
+          parkSlug: park.slug,
+          parkName: park.name,
+          geo: park.geo,
+          timezone: withZone.timezone,
+          date,
+          // Only what is being ADDED: the lunch block is already in the store
+          // with an id this plan does not know, and re-filing it here would put
+          // a second one on the axis.
+          stops: plan.stops
+            .filter((stop) => stop.entryId === null)
+            .map((stop) => ({
+              entryId: null,
+              attractionSlug: stop.attractionSlug,
+              attractionName: stop.attractionName,
+              startMinute: stop.startMinute,
+            })),
+        });
+      }
     }
     plannerUi.requestOpen('wizard');
     onOpenChange(false);
@@ -479,6 +582,31 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
                     setPrefs((current) => ({ ...current, avoidWet: next ? true : undefined }))
                   }
                 />
+
+                {/* Only where there are headliners to plan and a day to plan
+                    them into. The hint changes shape rather than the control:
+                    where they all fit it says how many go in, and where they do
+                    not it says how many DO and where the choice is made. That
+                    second sentence is the whole reason this probe runs here —
+                    "put the big rides in for me" is a promise the app can only
+                    keep on a day long enough for them, and finding out
+                    afterwards is finding out too late. */}
+                {headliners.length > 0 && headlinerFit !== null && (
+                  <WizardToggle
+                    icon={Crown}
+                    label={t('wizard.headliners.label')}
+                    hint={
+                      headlinerFit < headliners.length
+                        ? t('wizard.headliners.hintTight', {
+                            fits: headlinerFit,
+                            total: headliners.length,
+                          })
+                        : t('wizard.headliners.hint', { count: headliners.length })
+                    }
+                    checked={planHeadliners}
+                    onChange={setPlanHeadliners}
+                  />
+                )}
 
                 {park && (
                   <p className="text-muted-foreground mt-1 flex items-start gap-1.5 text-xs leading-relaxed">

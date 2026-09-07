@@ -2069,6 +2069,11 @@
       "run": "Dag optimaliseren",
       "running": "Sorteren …",
       "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
+      "choiceTitle": "Niet alle headliners passen in de dag",
+      "choiceBody": "Voor sluitingstijd is er plek voor {fits} van {total}. Vink uit waar je het makkelijkst zonder kunt.",
+      "choiceConfirm": "{count, plural, one {1 attractie inplannen} other {# attracties inplannen}}",
+      "choiceDrops": "valt weg",
+      "choicePeak": "piek {minutes} min",
       "saved": "{minutes} min. minder wachten",
       "already": "Staat al goed",
       "fitted": "{count, plural, one {één attractie past nu in de dag} other {# attracties passen nu in de dag}}",
@@ -2171,6 +2176,11 @@
       "wet": {
         "label": "Zo droog mogelijk blijven",
         "hint": "Waterattracties krijgen een markering in de lijst."
+      },
+      "headliners": {
+        "label": "Headliners inplannen",
+        "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves.",
+        "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}. Welke dat zijn, pas je aan in de planner."
       },
       "facts": {
         "title": "Wat we over deze dag weten",

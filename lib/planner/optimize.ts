@@ -194,7 +194,7 @@ export const MAX_DELAY_MIN = 120;
 export const IDLE_WEIGHT = 0.5;
 
 /**
- * How a plan's overflow is ranked, in three tiers rather than as one count.
+ * How a plan's overflow is ranked, in tiers rather than as one count.
  *
  * Reported with a screenshot: pressing "plan every headliner" on a day that
  * already held two rides came back with **Black Mamba at 19:00 and Taron at
@@ -212,28 +212,65 @@ export const IDLE_WEIGHT = 0.5;
  *    the one somebody travelled for wins, which is the whole point of the
  *    button. Before this it was worth exactly one filler.
  * 3. **Anything else being added.**
+ * 4. **Which of them**, by {@link Candidate.dropWeight} — see below.
  *
- * The tiers are disjoint, so an existing headliner counts once, in the first.
- * What is left for the second to decide is who gets the good slots among the
- * rides being ADDED — which is the question the button asks.
+ * The first three tiers are disjoint counts, so an existing headliner counts
+ * once, in the first. What is left for the second to decide is who gets the
+ * good slots among the rides being ADDED — which is the question the button
+ * asks.
+ *
+ * ## Counting them was not enough, and the fourth tier is why
+ *
+ * The three counts say how MANY fall out and never WHICH, so among the plans
+ * that drop the same number the choice fell through to `planCost` — and cost
+ * minimisation drops the most expensive ride by construction. The most
+ * expensive ride at a park is the one with the longest queue, which is the one
+ * the most people are there for. Systematically, the button sacrificed the
+ * flagship.
+ *
+ * Measured on the day it was reported, Phantasialand on Saturday 2026-09-12
+ * (nine hours, ten headliners, a lunch break at 12:30, eight slots): asked for
+ * all ten, the plan dropped **F.L.Y. and Taron** — the park's two flagships —
+ * and kept both Winja's. Asked for nine, it dropped **Taron in nine of the ten
+ * ways** of leaving one out. And the margin it did that on was five minutes:
+ * the same eight rides with Taron in place of Winja's Force queue 280 minutes
+ * against 275. Five minutes of a 315-minute day, on a forecast whose own
+ * `accuracy.typicalError` for that lead time is 14.3, decided that the ride
+ * somebody drove to Brühl for was not in their plan.
+ *
+ * So which one falls out is decided BEFORE cost and AFTER the counts: a plan
+ * that fits nine rides still beats one that fits eight, whichever nine. What
+ * the weight settles is the tie the counts leave, and it settles it by the only
+ * figure in the payload that says how much of a draw a ride is — its own
+ * expected queue. The reasoning is not circular, it is the same fact read the
+ * other way round: the queue is what a ride costs the day AND what says how
+ * many people came for it, and until now only the first reading was in here.
+ *
+ * ## Packing
  *
  * Lexicographic rather than weighted, and packed into one number so the Pareto
  * front keeps the dimensions it had: another axis there is a bigger change to
  * the search than to the ordering, and it is the ordering that was wrong.
- * `MAX_STOPS` is 24, so the stride only has to clear that — 100 leaves room for
- * a budget four times the size before two tiers could ever collide.
+ * `MAX_STOPS` is 24, so {@link OVERFLOW_STRIDE} only has to clear that — 32 for
+ * the three counts, and {@link DROP_WEIGHT_STRIDE} for the weights, whose sum
+ * is bounded by 24 ranks × 24 stops = 576.
  */
-const OVERFLOW_STRIDE = 100;
+const OVERFLOW_STRIDE = 32;
 
-/** Overflow as one comparable number — entries first, then headliners. See {@link OVERFLOW_STRIDE}. */
+/** Clears the largest possible {@link OverflowCounts.dropWeight}, 24 × 24 = 576. */
+const DROP_WEIGHT_STRIDE = 1024;
+
+/** Overflow as one comparable number — entries, headliners, count, then which. */
 function overflowKey(counts: OverflowCounts): number {
   return (
-    (counts.overflowEntries * OVERFLOW_STRIDE + counts.overflowHeadliners) * OVERFLOW_STRIDE +
-    counts.overflow
+    ((counts.overflowEntries * OVERFLOW_STRIDE + counts.overflowHeadliners) * OVERFLOW_STRIDE +
+      counts.overflow) *
+      DROP_WEIGHT_STRIDE +
+    counts.dropWeight
   );
 }
 
-/** The three tiers of {@link OVERFLOW_STRIDE}, as every scored shape carries them. */
+/** The tiers of {@link OVERFLOW_STRIDE}, as every scored shape carries them. */
 interface OverflowCounts {
   /** Everything that did not fit, whatever it was. */
   overflow: number;
@@ -241,22 +278,42 @@ interface OverflowCounts {
   overflowEntries: number;
   /** Of those, the headliners being ADDED. Disjoint from `overflowEntries`. */
   overflowHeadliners: number;
+  /**
+   * The summed {@link Candidate.dropWeight} of everything that did not fit.
+   *
+   * Ranked last of the four, so it only ever chooses between plans that lose
+   * the same number of rides from the same tiers. See {@link OVERFLOW_STRIDE}.
+   */
+  dropWeight: number;
 }
+
+const NO_OVERFLOW: OverflowCounts = {
+  overflow: 0,
+  overflowEntries: 0,
+  overflowHeadliners: 0,
+  dropWeight: 0,
+};
 
 /**
  * Which tier a stop that did not fit falls into. Nothing where it fits.
  *
  * One function so the beam, the scheduler and {@link scoreCurrent} cannot drift
  * apart on it — the three used to count `overflow` in three places and this adds
- * two more numbers to each of them.
+ * three more numbers to each of them.
  */
 function overflowTier(
   fits: boolean,
-  candidate: { entryId: string | null; headliner: boolean }
+  candidate: { entryId: string | null; headliner: boolean; dropWeight: number }
 ): OverflowCounts {
-  if (fits) return { overflow: 0, overflowEntries: 0, overflowHeadliners: 0 };
-  if (candidate.entryId !== null) return { overflow: 1, overflowEntries: 1, overflowHeadliners: 0 };
-  return { overflow: 1, overflowEntries: 0, overflowHeadliners: candidate.headliner ? 1 : 0 };
+  if (fits) return NO_OVERFLOW;
+  if (candidate.entryId !== null)
+    return { overflow: 1, overflowEntries: 1, overflowHeadliners: 0, dropWeight: 0 };
+  return {
+    overflow: 1,
+    overflowEntries: 0,
+    overflowHeadliners: candidate.headliner ? 1 : 0,
+    dropWeight: candidate.dropWeight,
+  };
 }
 
 /**
@@ -361,10 +418,13 @@ const LABELS_PER_KEY = 4;
 /**
  * Stops past this are dropped. No park has this many headliners.
  *
- * Not raisable on its own: `search` keeps the visited set in a bitmask, so
- * `1 << index` runs out of signed 32-bit room at 31 candidates, while the
- * `placed * 64` in its map key stops being injective at 63. A larger cap needs
- * both of those changed in the same edit.
+ * Not raisable on its own, and there are now THREE things that go with it:
+ * `search` keeps the visited set in a bitmask, so `1 << index` runs out of
+ * signed 32-bit room at 31 candidates; the `placed * 64` in its map key stops
+ * being injective at 63; and {@link OVERFLOW_STRIDE} is 32, which leaves the
+ * tier counts seven of headroom. It was 100 while it packed only counts and
+ * dropped to 32 when {@link DROP_WEIGHT_STRIDE} took the room — so a cap raised
+ * past 31 needs all three changed in the same edit.
  */
 export const MAX_STOPS = 24;
 
@@ -418,6 +478,15 @@ export interface OptimizeInput {
   entries: readonly PlannerEntry[];
   /** Rides to add on top of what the day already holds. */
   add?: readonly PlanDayRide[];
+  /**
+   * The visitor's own order over {@link add}, most important first.
+   *
+   * Only consulted where something has to be left out — it decides WHICH, never
+   * the order of the day, which is the schedule's job. Slugs not named here
+   * fall in behind the ones that are, ranked by the day's own expected queues.
+   * See {@link rankHeadliners}.
+   */
+  priority?: readonly string[];
   /**
    * Where this day sits against the PARK's clock. Omitted means `future`, and
    * every rule keyed to it then reduces to the expression it had before the
@@ -497,6 +566,56 @@ export function headlinersSkipped(
   }).length;
 }
 
+/**
+ * How much each headliner being added costs to lose, hardest first.
+ *
+ * Two sources, and the first one wins wherever it says anything.
+ *
+ * **What the visitor said.** `priority` is the order they put the rides in
+ * themselves — the list the conflict dialog hands back when it says "not all
+ * ten fit, which of them matter". A ride named there is worth its position; the
+ * first is the hardest to lose. This is the whole reason the weight is a
+ * parameter rather than a rule: the app can rank a catalogue, and it cannot
+ * know that somebody drove four hours for the wooden coaster their father took
+ * them on.
+ *
+ * **What the day says**, where they said nothing: the ride's own expected
+ * queue, longest first. That is the only figure in the payload that measures
+ * how much of a draw a ride is, and reading it this way is not the same claim
+ * as `dayPeak`-as-headliner — the set has already been narrowed to the rides
+ * the park itself curates as headliners, and the question left is which of
+ * THOSE the day has room for. Ties go to the slug, so two rides with the same
+ * peak rank the same way on every run.
+ *
+ * Ranks rather than the minutes themselves. The gaps between the figures are
+ * inside the model's own error (`accuracy.typicalError` was 14.3 minutes at
+ * this lead time, against the 3-minute gap between fourth and fifth place), so
+ * the ORDER is the part worth keeping and the distances are not. It also bounds
+ * the weight at {@link MAX_STOPS}, which is what lets it pack into
+ * {@link overflowKey}.
+ */
+function rankHeadliners(
+  add: readonly PlanDayRide[],
+  priority: readonly string[] | undefined
+): Map<string, number> {
+  const heads = add.filter((ride) => ride.isHeadliner);
+  const weights = new Map<string, number>();
+  if (heads.length === 0) return weights;
+
+  const rank = (ride: PlanDayRide) => {
+    const said = priority?.indexOf(ride.attractionSlug) ?? -1;
+    return said >= 0 ? said : (priority?.length ?? 0) + heads.length;
+  };
+  const ordered = [...heads].sort(
+    (a, b) =>
+      rank(a) - rank(b) ||
+      (b.dayPeak ?? 0) - (a.dayPeak ?? 0) ||
+      a.attractionSlug.localeCompare(b.attractionSlug)
+  );
+  ordered.forEach((ride, index) => weights.set(ride.attractionSlug, ordered.length - index));
+  return weights;
+}
+
 // ── The model ───────────────────────────────────────────────────────────────
 
 /** A minute range the optimiser may not schedule over. */
@@ -514,6 +633,17 @@ interface Candidate {
   floorMin: number;
   /** A curated headliner — see {@link OVERFLOW_STRIDE} for what hangs on it. */
   headliner: boolean;
+  /**
+   * What it costs to leave this one out, when something has to go.
+   *
+   * Non-zero only on a headliner being ADDED, which is the one place the
+   * question arises: an entry the visitor already had is its own tier and is
+   * never dropped, and a filler that does not fit is a filler. `1` is the
+   * easiest of them to lose and `MAX_STOPS` the hardest; see
+   * {@link rankHeadliners} for where the order comes from and
+   * {@link OVERFLOW_STRIDE} for the day it was measured on.
+   */
+  dropWeight: number;
   /** Expected wait per park-local hour, `null` where the day has no figure. */
   waitByHour: (number | null)[];
   /** What the block occupies at that hour — wait plus the model's own spread. */
@@ -555,6 +685,26 @@ function snapUp(minute: number, step: number): number {
 }
 
 /**
+ * How far past midnight the tables below reach.
+ *
+ * The axis does not stop at 23:00. `unfoldedCloseHour` lifts a wrapping close
+ * past midnight — a park running 16:00–01:00 closes in hour 25 — and the
+ * overflow branch parks a stop that does not fit past the gate, which on a late
+ * park is later still. The catalogue's own extremes on 2026-09-06: Busch
+ * Gardens Tampa answers `closeHour: 1` for New Year's Eve (buckets to 25) and
+ * Dorney Park `closeHour: 10` (buckets to 34).
+ *
+ * 36 covers both with a day and a half of room. It costs 36 `estimateFor`
+ * probes per candidate instead of 24, once per press.
+ */
+const TABLE_HOURS = 36;
+
+/** The hour a minute falls in, as this file's tables are indexed. */
+function hourIndex(minute: number): number {
+  return Math.min(Math.max(Math.floor(minute / 60), 0), TABLE_HOURS - 1);
+}
+
+/**
  * Every hour's answer, once, before the search starts.
  *
  * The search asks "what does this ride cost at that hour" hundreds of thousands
@@ -562,11 +712,21 @@ function snapUp(minute: number, step: number): number {
  * call. Precomputed it is a table lookup, and the table is built by calling the
  * app's OWN estimator rather than a second copy of its rules, so the minutes the
  * optimiser reckons with are the minutes the block will draw.
+ *
+ * It runs to {@link TABLE_HOURS} and not to 24, which is the other half of a
+ * statement `estimate.ts` already made on its own. `estimateFor` normalises an
+ * hour past midnight (`hour - 24`) because `closeHour` reports the wall clock;
+ * this file clamped every lookup at 23 instead, so on a 16:00–01:00 park a stop
+ * at 00:15 — a minute the axis calls open — was priced with the 23:00 figure.
+ * Measured on a fixture: the optimiser reckoned 5 minutes where the block drew
+ * 200, and a four-stop day reported 680 queued minutes against the 630 its own
+ * blocks showed. Two halves of one rule, in two files, with nothing comparing
+ * them — the same shape `unfoldedCloseHour`'s docstring was written for.
  */
 function tabulate(day: PlanDay, slug: string): Pick<Candidate, 'waitByHour' | 'occupiedByHour'> {
   const waitByHour: (number | null)[] = [];
   const occupiedByHour: number[] = [];
-  for (let hour = 0; hour < 24; hour++) {
+  for (let hour = 0; hour < TABLE_HOURS; hour++) {
     const probe: PlannerEntry = { id: '', attractionSlug: slug, startMinute: hour * 60 };
     waitByHour.push(estimateFor(day, probe).wait);
     occupiedByHour.push(Math.max(occupiedMinutes(day, probe), SNAP_MIN_FINE));
@@ -614,6 +774,24 @@ interface Placement {
   startMinute: number;
   waitMinutes: number | null;
   freeAt: number;
+  /**
+   * Whether this stop happens at all — decided on the START and never on the
+   * end.
+   *
+   * A queue may be JOINED right up to closing time; what happens after that is
+   * the park emptying a line it already let you into, which is a normal way to
+   * end a day rather than a plan that overruns. This used to read
+   * `freeAt <= closeMin` and so refused a forty-minute queue at 17:45 in a park
+   * shutting at 18:00 — a slot a visitor takes on purpose, and one of the best
+   * on the day.
+   *
+   * The other half of that fix is at the other end: `grid.closeMin` is the
+   * park's own closing minute now rather than an hour past it, so "the start is
+   * inside the opening hours" is a real bound. Together they moved
+   * Phantasialand's Saturday from a plan that queued Winja's Fear at **18:15**,
+   * a quarter hour after the gates shut, to one whose last queue is joined at
+   * 17:45 at the latest.
+   */
   fits: boolean;
 }
 
@@ -636,7 +814,7 @@ interface Placement {
 function placementsFrom(ctx: Context, candidate: Candidate, first: number): Placement[] {
   const { grid } = ctx;
   const spanAt = (minute: number) =>
-    candidate.occupiedByHour[Math.min(Math.floor(minute / 60), 23)] ?? SNAP_MIN_FINE;
+    candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
 
   const options: Placement[] = [];
   for (let delay = 0; delay <= MAX_DELAY_MIN; delay += SNAP_MIN_FINE) {
@@ -649,27 +827,42 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
     // The push past a fixed block can land in another hour, and `clearFixed`
     // has already taken that into account; this reads the settled figures off
     // the minute it actually chose.
-    const hour = Math.min(Math.floor(start / 60), 23);
+    const hour = hourIndex(start);
     const freeAt = start + spanAt(start);
     options.push({
       startMinute: start,
       waitMinutes: candidate.waitByHour[hour] ?? null,
       freeAt,
-      fits: freeAt <= grid.closeMin,
+      // True by construction — both `break`s above are this same test — and
+      // written out rather than hard-coded, because it IS the rule and the next
+      // person to add a branch here has to meet it. See {@link Placement.fits}.
+      fits: start < grid.closeMin,
     });
   }
 
   if (options.length === 0) {
-    // Nothing fits before closing. The stop is still PLACED — the caller asked
-    // for these rides and a silently dropped one is worse than a visible
-    // overflow — and it is placed where the sequence would actually put it,
-    // PAST the gate, rather than all of them parked on the park's last minute.
+    // No minute before closing left to JOIN a queue at. The stop is still
+    // PLACED — the caller asked for these rides and a silently dropped one is
+    // worse than a visible overflow — and it is placed where the sequence would
+    // actually put it, PAST the gate, rather than all of them parked on the
+    // park's last minute.
     // `growGridForSpans` widens the canvas to hold them and the minutes out
     // there are hatched, so the plan reads as "and these two do not fit"
     // instead of as two blocks stacked in lanes at 18:45 for no reason a
     // visitor could see.
-    const start = Math.max(first, grid.closeMin);
-    const hour = Math.min(Math.floor(start / 60), 23);
+    //
+    // It clears the fixed blocks too, which it did not and which broke the one
+    // promise this file makes about them. The loop above runs `clearFixed` on
+    // every option; this branch skipped it, so a park shutting at 18:00 with a
+    // dinner written for 19:00–20:30 got the overflowing ride filed at 18:00
+    // for ninety minutes — thirty of them straight across the dinner. The plan
+    // was then not walkable, `isExecutable` said so, and the button answered
+    // "Der Tag ist umgestellt" on every press over a day it had not changed:
+    // measured at 13 of 300 random full days with a block at 18:00.
+    const spanOutside = (minute: number) =>
+      candidate.occupiedByHour[hourIndex(minute)] ?? SNAP_MIN_FINE;
+    const start = clearFixed(Math.max(first, grid.closeMin), spanOutside, ctx.fixed);
+    const hour = hourIndex(start);
     return [
       {
         startMinute: start,
@@ -682,8 +875,8 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
     ];
   }
 
-  // `fits` needs no dimension of its own: it is `freeAt <= closeMin`, so an
-  // option that beats another on the clock already fits at least as well.
+  // `fits` needs no dimension of its own: every option in here starts before
+  // closing, which is the whole of it.
   //
   // The cost a delay is judged on is the queue PLUS what the delay itself costs
   // at IDLE_WEIGHT. Measured from `first`, which is common to every option here
@@ -715,6 +908,29 @@ function placementsFrom(ctx: Context, candidate: Candidate, first: number): Plac
  */
 function waitCost(placement: Placement): number {
   return placement.waitMinutes ?? 0;
+}
+
+/**
+ * The same, for a stop that may not happen at all.
+ *
+ * A queue nobody joins costs nobody anything, and counting it was quietly
+ * fatal to the one comparison this file exists to make: with the wait of the
+ * dropped ride still in the total, two plans that give up DIFFERENT rides come
+ * out at the same number of queued minutes, so cost could not tell them apart
+ * and the choice fell through to the clock. Built as a probe — one slot left,
+ * a near ride queueing 60 minutes against a far one queueing 45 — the engine
+ * took the near one, because 10 + 60 + 45 is 10 + 45 + 60 whichever of them
+ * actually happens.
+ *
+ * The idle in front of such a stop goes the same way, and for the same reason:
+ * it is time spent waiting for a queue that is not joined.
+ *
+ * It shows up on real days because `grid.closeMin` is now the park's closing
+ * minute and the API emits an hour bucket AT that hour, so a stop parked on the
+ * gate reads a figure rather than the `null` it used to get out at closeHour+1.
+ */
+function waitOf(placement: Placement): number {
+  return placement.fits ? (placement.waitMinutes ?? 0) : 0;
 }
 
 /**
@@ -823,6 +1039,18 @@ interface PartialSchedule extends OverflowCounts {
   idleMinutes: number;
   /** When the visitor is free after the last stop. `null` before the first. */
   freeAt: number | null;
+  /**
+   * When the last queue that actually HAPPENS is left.
+   *
+   * Not `freeAt`, and the difference is a stop filed past the gate: those are
+   * parked wherever the sequence would have put them, which on a full day is
+   * hours into the night, and `optimizeDay` then drops them from the plan it
+   * returns. Reporting `freeAt` had the caller printing a day ending at 20:00
+   * after handing back a plan whose last queue is joined at 17:45 — and had
+   * {@link better} settling ties on a minute belonging to a ride nobody is
+   * going to. Zero before the first stop that fits.
+   */
+  endMinute: number;
 }
 
 function comparePartials(a: PartialSchedule, b: PartialSchedule): number {
@@ -911,10 +1139,9 @@ function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
       stops: [],
       totalWaitMinutes: 0,
       idleMinutes: 0,
-      overflow: 0,
-      overflowEntries: 0,
-      overflowHeadliners: 0,
+      ...NO_OVERFLOW,
       freeAt: null,
+      endMinute: 0,
     },
   ];
   let previous = -1;
@@ -938,13 +1165,18 @@ function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
               fits: placement.fits,
             },
           ],
-          totalWaitMinutes: state.totalWaitMinutes + (placement.waitMinutes ?? 0),
+          totalWaitMinutes: state.totalWaitMinutes + waitOf(placement),
           idleMinutes:
-            state.idleMinutes + idleFor(ctx, index, state.freeAt, transfer, placement.startMinute),
+            state.idleMinutes +
+            (placement.fits
+              ? idleFor(ctx, index, state.freeAt, transfer, placement.startMinute)
+              : 0),
           overflow: state.overflow + tier.overflow,
           overflowEntries: state.overflowEntries + tier.overflowEntries,
           overflowHeadliners: state.overflowHeadliners + tier.overflowHeadliners,
+          dropWeight: state.dropWeight + tier.dropWeight,
           freeAt: placement.freeAt,
+          endMinute: placement.fits ? Math.max(state.endMinute, placement.freeAt) : state.endMinute,
         });
       }
     }
@@ -969,19 +1201,18 @@ function scheduleOrder(ctx: Context, order: readonly number[]): Scored {
       totalWaitMinutes: 0,
       idleMinutes: 0,
       endMinute: ctx.grid.openMin,
-      overflow: 0,
-      overflowEntries: 0,
-      overflowHeadliners: 0,
+      ...NO_OVERFLOW,
     };
   }
   return {
     stops: best.stops,
     totalWaitMinutes: best.totalWaitMinutes,
     idleMinutes: best.idleMinutes,
-    endMinute: best.freeAt ?? ctx.grid.openMin,
+    endMinute: best.endMinute || ctx.grid.openMin,
     overflow: best.overflow,
     overflowEntries: best.overflowEntries,
     overflowHeadliners: best.overflowHeadliners,
+    dropWeight: best.dropWeight,
   };
 }
 
@@ -1040,9 +1271,7 @@ function search(ctx: Context, beamWidth: number): number[] {
       freeAt: 0,
       totalWait: 0,
       totalIdle: 0,
-      overflow: 0,
-      overflowEntries: 0,
-      overflowHeadliners: 0,
+      ...NO_OVERFLOW,
     },
   ];
 
@@ -1062,12 +1291,16 @@ function search(ctx: Context, beamWidth: number): number[] {
             last: index,
             order: [...label.order, index],
             freeAt: placement.freeAt,
-            totalWait: label.totalWait + (placement.waitMinutes ?? 0),
+            totalWait: label.totalWait + waitOf(placement),
             totalIdle:
-              label.totalIdle + idleFor(ctx, index, freeBefore, transfer, placement.startMinute),
+              label.totalIdle +
+              (placement.fits
+                ? idleFor(ctx, index, freeBefore, transfer, placement.startMinute)
+                : 0),
             overflow: label.overflow + tier.overflow,
             overflowEntries: label.overflowEntries + tier.overflowEntries,
             overflowHeadliners: label.overflowHeadliners + tier.overflowHeadliners,
+            dropWeight: label.dropWeight + tier.dropWeight,
           });
         }
       }
@@ -1098,7 +1331,16 @@ function search(ctx: Context, beamWidth: number): number[] {
 function compareLabels(a: Label, b: Label): number {
   // The same order `better` uses, and it has to be: a beam that prunes toward
   // one objective while the winner is picked by another throws the winner away.
-  if (a.overflow !== b.overflow) return a.overflow - b.overflow;
+  //
+  // Which it did. This read the bare `overflow` COUNT while `better`,
+  // `comparePartials` and `dominates` all read `overflowKey` — so the one place
+  // that decides which 192 prefixes survive was blind to the tiers, and the
+  // very ordering `OVERFLOW_STRIDE` exists to impose could be cut before it was
+  // ever applied. The three-tier version had the same hole from the day it was
+  // written; the fourth tier is what made it show.
+  const aOver = overflowKey(a);
+  const bOver = overflowKey(b);
+  if (aOver !== bOver) return aOver - bOver;
   const aCost = planCost(a.totalWait, a.totalIdle);
   const bCost = planCost(b.totalWait, b.totalIdle);
   if (aCost !== bCost) return aCost - bCost;
@@ -1111,12 +1353,23 @@ function compareLabels(a: Label, b: Label): number {
 }
 
 /**
- * Or-opt and 2-opt until nothing improves.
+ * Or-opt, exchange and 2-opt until nothing improves.
  *
  * The beam is good at prefixes and blind to a swap two thirds of the way along,
  * which is exactly what a local search fixes. It accepts only a STRICT
  * improvement under {@link better}, so it terminates, and it sweeps in a fixed
  * order, so it terminates at the same place every time.
+ *
+ * The exchange is the third neighbourhood and it was added for a case neither
+ * of the other two can reach. When more rides are asked for than fit, the tail
+ * of the order is what falls out — so "drop Colorado Adventure instead of Crazy
+ * Bats" means moving one of them to the end AND the other into the slot it
+ * vacated, and either half on its own leaves BOTH outside and scores worse.
+ * Or-opt moves one stop, 2-opt reverses a run; a two-element exchange is
+ * precisely the move between those two basins, and without it the fourth
+ * overflow tier could rank a plan the search then never proposed. Phantasialand
+ * on 2026-09-12: the beam settled on dropping Crazy Bats (weight 5) when
+ * dropping Colorado Adventure (weight 1) fits the same nine rides.
  */
 function improve(ctx: Context, order: readonly number[]): number[] {
   let best = [...order];
@@ -1132,6 +1385,22 @@ function improve(ctx: Context, order: readonly number[]): number[] {
         const next = [...best];
         const [stop] = next.splice(from, 1);
         next.splice(to, 0, stop);
+        const score = scheduleOrder(ctx, next);
+        if (better(score, bestScore)) {
+          best = next;
+          bestScore = score;
+          moved = true;
+        }
+      }
+    }
+
+    // Exchange: two stops trade places. See the docstring — this is the move
+    // that decides WHICH ride falls out of a day that cannot hold them all.
+    for (let i = 0; i < best.length - 1 && !moved; i++) {
+      for (let j = i + 1; j < best.length && !moved; j++) {
+        const next = [...best];
+        next[i] = best[j];
+        next[j] = best[i];
         const score = scheduleOrder(ctx, next);
         if (better(score, bestScore)) {
           best = next;
@@ -1207,6 +1476,8 @@ function buildContext(input: OptimizeInput): Context | null {
   const addKept = add.slice(0, MAX_STOPS - movableKept.length);
   const capped = movable.length - movableKept.length + (add.length - addKept.length);
 
+  const weights = rankHeadliners(addKept, input.priority);
+
   const candidates: Candidate[] = [
     ...movableKept.map((entry) => {
       const slug = entry.attractionSlug as string;
@@ -1218,6 +1489,9 @@ function buildContext(input: OptimizeInput): Context | null {
         ride,
         floorMin: rideFloor(grid, ride, clock).softMin,
         headliner: Boolean(ride?.isHeadliner),
+        // An entry the visitor already had is its own tier and is never
+        // dropped, so there is nothing here for a weight to decide.
+        dropWeight: 0,
         ...tabulate(day, slug),
       };
     }),
@@ -1228,6 +1502,7 @@ function buildContext(input: OptimizeInput): Context | null {
       ride,
       floorMin: rideFloor(grid, ride, clock).softMin,
       headliner: Boolean(ride.isHeadliner),
+      dropWeight: weights.get(ride.attractionSlug) ?? 0,
       ...tabulate(day, ride.attractionSlug),
     })),
   ];
@@ -1247,6 +1522,116 @@ function buildContext(input: OptimizeInput): Context | null {
 }
 
 /**
+ * How many rides the peel below may set aside before it gives up.
+ *
+ * Each round is a whole extra search, so this is a time budget as much as a
+ * rule: at the {@link MAX_STOPS} cap a search is ~48 ms, and four of them is
+ * still inside a click. The first round already sets aside everything the
+ * baseline said would not fit, so a round beyond it is only needed where
+ * removing one ride makes ANOTHER one homeless — Phantasialand does that with
+ * Raik and Colorado Adventure, which sit 155 m apart and share the same corner
+ * of the afternoon.
+ */
+const MAX_PEEL_ROUNDS = 4;
+
+/**
+ * The plan, with the rides that cannot fit chosen rather than left over.
+ *
+ * The beam cannot answer "which of these ten do I give up", and the reason is
+ * structural rather than a matter of width. Overflow only appears on the LAST
+ * stop of an order — the rides before it all fit — so every prefix scores
+ * `overflow: 0` and is ranked on cost alone, and cost keeps the cheap rides.
+ * By the time the tier that decides who falls out has anything to say, the
+ * prefix that would have kept the expensive ride was pruned an hour of park
+ * ago. Measured: on Phantasialand's 2026-09-12 the search settles on a plan
+ * with `overflowKey` 33797 (Crazy Bats given up, weight 5) while 33793 exists
+ * (Colorado Adventure, weight 1) — and no single or-opt, exchange or 2-opt move
+ * reaches it from where the beam lands, because the better plan is a different
+ * permutation from its first stop on.
+ *
+ * So the set is decided first and the order second. Each round sets aside the
+ * least important added headliners — {@link Candidate.dropWeight}, which is the
+ * visitor's own ranking where they gave one — and re-runs the search over what
+ * is left. What comes back is then scored in the ORIGINAL context, with the
+ * rides that were set aside appended to the order, so they still count as
+ * overflow with their weights and {@link better} decides between the rounds on
+ * exactly the terms it decides everything else. A round that does not actually
+ * improve the plan is discarded; the baseline stands.
+ *
+ * It peels only what the plan itself says will not fit, so on a day that holds
+ * everything this runs the search once and costs nothing.
+ */
+function peeled(input: OptimizeInput, ctx: Context): Scored {
+  let best = scheduleOrder(ctx, improve(ctx, search(ctx, BEAM_WIDTH)));
+  const add = input.add ?? [];
+  if (best.overflowHeadliners === 0) return best;
+
+  // Least important first, which is the order they are given up in.
+  const weights = rankHeadliners(add, input.priority);
+  const givable = add
+    .filter((ride) => weights.has(ride.attractionSlug))
+    .sort(
+      (a, b) =>
+        (weights.get(a.attractionSlug) ?? 0) - (weights.get(b.attractionSlug) ?? 0) ||
+        a.attractionSlug.localeCompare(b.attractionSlug)
+    );
+
+  // Only rides the full search actually holds: `MAX_STOPS` may have cut some
+  // of `add` before it ever reached the context, and setting one of THOSE
+  // aside would produce an order that does not cover the candidates.
+  const inPlay = givable.filter((ride) =>
+    ctx.candidates.some((c) => c.entryId === null && c.slug === ride.attractionSlug)
+  );
+
+  const from = Math.min(best.overflowHeadliners, inPlay.length);
+  for (let round = 0; round < MAX_PEEL_ROUNDS; round++) {
+    const asideCount = from + round;
+    if (asideCount >= inPlay.length) break;
+    const asideRides = inPlay.slice(0, asideCount);
+    const aside = new Set(asideRides.map((ride) => ride.attractionSlug));
+
+    const reduced = buildContext({ ...input, add: add.filter((r) => !aside.has(r.attractionSlug)) });
+    if (!reduced) break;
+    const plan = scheduleOrder(reduced, improve(reduced, search(reduced, BEAM_WIDTH)));
+
+    // Scored back in the FULL context, with the rides set aside on the end of
+    // the order: that is what makes two rounds comparable at all, since a plan
+    // judged in its own reduced context simply would not know it had given
+    // anything up.
+    const full = orderIn(ctx, [
+      ...plan.stops.map((stop) => stop.attractionSlug),
+      ...asideRides.map((ride) => ride.attractionSlug),
+    ]);
+    if (!full) break;
+    const candidate = scheduleOrder(ctx, full);
+    if (better(candidate, best)) best = candidate;
+    // Everything that was kept found a minute, so peeling further can only give
+    // up a ride the day had room for.
+    if (plan.overflowHeadliners === 0) break;
+  }
+
+  return best;
+}
+
+/**
+ * A list of slugs as candidate indices in `ctx`, or `null` where one is missing.
+ *
+ * Repeats matter — a ride may legitimately appear twice in one day — so each
+ * slug takes the first candidate index not already spoken for.
+ */
+function orderIn(ctx: Context, slugs: readonly string[]): number[] | null {
+  const used = new Set<number>();
+  const order: number[] = [];
+  for (const slug of slugs) {
+    const index = ctx.candidates.findIndex((c, i) => c.slug === slug && !used.has(i));
+    if (index < 0) return null;
+    used.add(index);
+    order.push(index);
+  }
+  return order.length === ctx.candidates.length ? order : null;
+}
+
+/**
  * The plan.
  *
  * Returns `null` where there is nothing to order — no day, no axis, no readable
@@ -1257,9 +1642,9 @@ export function optimizeDay(input: OptimizeInput): OptimizedPlan | null {
   const ctx = buildContext(input);
   if (!ctx) return null;
   const add = input.add ?? [];
+  const entries = input.entries;
 
-  const found = improve(ctx, search(ctx, BEAM_WIDTH));
-  const scored = scheduleOrder(ctx, found);
+  const scored = peeled(input, ctx);
 
   /**
    * What the new plan has to beat, and both obvious answers are wrong.
@@ -1292,7 +1677,20 @@ export function optimizeDay(input: OptimizeInput): OptimizedPlan | null {
    */
   let changed = true;
   if (add.length === 0 && isExecutable(input, ctx)) {
-    const current = scoreCurrent(input);
+    // Over the SAME rides, which is the third way this comparison can be wrong
+    // and the one that made the button never settle. `scoreCurrent` walks every
+    // movable entry; the search only ever saw the first `MAX_STOPS` of them. On
+    // a day with twenty-six of them the incumbent carried two extra rides —
+    // both of them, after the first press, sitting past closing under the new
+    // blocks — so it scored worse than any plan forever, and every press
+    // reshuffled the day and printed "Umgestellt, gleiche Wartezeit" over it.
+    // Measured: presses two, three and four all "improved" a day that was byte
+    // for byte the one before it.
+    const seen = new Set(ctx.candidates.map((candidate) => candidate.entryId));
+    const current = scoreCurrent({
+      ...input,
+      entries: entries.filter((entry) => !entry.attractionSlug || seen.has(entry.id)),
+    });
     if (current && !better(scored, current)) changed = false;
   }
 
@@ -1355,13 +1753,21 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
   const { day } = input;
   if (!day) return false;
 
-  // The same set the search works on, and that is load-bearing: walked with the
-  // bare filter, this reaches an entry that is ALSO in `ctx.fixed`, compares the
-  // block against itself, and the overlap test is true for every day — the
-  // guard never fires and `optimizeDay` can never answer "already sorted".
-  const stops = movableEntries(input.entries, input.clock).sort(
-    (a, b) => a.startMinute - b.startMinute
-  );
+  // The same set the search works on, and that is load-bearing twice over.
+  //
+  // Walked with the bare filter it reaches an entry that is ALSO in `ctx.fixed`,
+  // compares the block against itself, and the overlap test is true for every
+  // day — the guard never fires and `optimizeDay` can never answer "already
+  // sorted". And walked with the filter but WITHOUT the `MAX_STOPS` cut it
+  // reaches the entries the search never saw, which keep their old minute under
+  // the new blocks and therefore overlap by construction: on a day with
+  // twenty-six movable rides the guard then failed on every press, so the button
+  // reshuffled the day for ever and printed "Umgestellt, gleiche Wartezeit"
+  // over a plan identical to the one before it. `ctx.candidates` is the cut.
+  const seen = new Set(ctx.candidates.map((candidate) => candidate.entryId));
+  const stops = movableEntries(input.entries, input.clock)
+    .filter((entry) => seen.has(entry.id))
+    .sort((a, b) => a.startMinute - b.startMinute);
 
   for (let i = 0; i < stops.length; i++) {
     const entry = stops[i];
@@ -1398,7 +1804,13 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
 export function scoreOrder(
   input: OptimizeInput,
   slugs: readonly string[]
-): { totalWaitMinutes: number; idleMinutes: number; endMinute: number; overflow: number } | null {
+): {
+  totalWaitMinutes: number;
+  idleMinutes: number;
+  endMinute: number;
+  overflow: number;
+  overflowKey: number;
+} | null {
   const ctx = buildContext(input);
   if (!ctx) return null;
   const order: number[] = [];
@@ -1415,6 +1827,9 @@ export function scoreOrder(
     idleMinutes: scored.idleMinutes,
     endMinute: scored.endMinute,
     overflow: scored.overflow,
+    // The tier order as one comparable number, so a check can assert WHICH
+    // rides a plan gave up and not only how many. `better` reads exactly this.
+    overflowKey: overflowKey(scored),
   };
 }
 
@@ -1461,16 +1876,27 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
     const freeAt = entry.startMinute + span;
     const ride = day.rides.find((r) => r.attractionSlug === entry.attractionSlug) ?? null;
     const transfer = previous === null ? 0 : transferBetween(previous, ride).ceilingMinutes;
-    if (estimate.wait !== null) totalWaitMinutes += estimate.wait;
+    // The START, like everywhere else: a queue joined at 17:45 in a park
+    // shutting at 18:00 is a slot somebody takes on purpose, and the park then
+    // empties a line it has already let them into. See {@link Placement.fits}.
+    const fits = entry.startMinute < grid.closeMin;
+    if (!fits) overflow++;
+    // A queue nobody joins costs nobody anything, on this side of the
+    // comparison too. `waitOf` says the same thing for the search, and the two
+    // disagreeing is not a rounding difference: it is the incumbent and the
+    // plan measuring different days, so the button answers "Der Tag ist
+    // umgestellt" on a plan identical to the one already on the axis.
+    if (fits && estimate.wait !== null) totalWaitMinutes += estimate.wait;
     // {@link idleFor}'s rule, against a day nobody planned: the arrival snapped
     // up to the grid, and nothing at all before the first block — the visitor
     // put that one where they put it, and this file does not know what time
     // they came through the gates.
-    if (freeBefore !== null) {
+    if (fits && freeBefore !== null) {
       idleMinutes += Math.max(0, entry.startMinute - snapUp(freeBefore + transfer, SNAP_MIN_FINE));
     }
-    if (freeAt > grid.closeMin) overflow++;
-    endMinute = Math.max(endMinute, freeAt);
+    // The same rule the scheduler uses: a block the visitor dragged into the
+    // night is not when their day ends, it is the thing being fixed.
+    if (fits) endMinute = Math.max(endMinute, freeAt);
     freeBefore = freeAt;
     previous = ride;
     stops.push({
@@ -1479,14 +1905,16 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
       attractionName: entry.attractionName ?? (entry.attractionSlug as string),
       startMinute: entry.startMinute,
       waitMinutes: estimate.wait,
-      fits: freeAt <= grid.closeMin,
+      fits,
     });
   }
 
   // Every stop in here is an entry the visitor already has, so the whole count
   // falls into the first tier of {@link OVERFLOW_STRIDE} — which is also true of
   // the search it is compared against, since `scoreCurrent` is only ever the
-  // incumbent on a press that adds nothing.
+  // incumbent on a press that adds nothing. Nothing here is being ADDED either,
+  // so no weight applies: the fourth tier is a question about a ride the app
+  // proposes, and every stop in this function is one the visitor placed.
   return {
     stops,
     totalWaitMinutes,
@@ -1495,5 +1923,6 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
     overflow,
     overflowEntries: overflow,
     overflowHeadliners: 0,
+    dropWeight: 0,
   };
 }

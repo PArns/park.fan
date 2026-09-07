@@ -58,18 +58,24 @@ export function PlannerGridGround({
         style={{ top: bandTop, height: bandHeight }}
       />
 
-      {/* L2 — the truncation feather. The API formats hours as "HH", so a park
-          closing at 20:30 reports 20 — about one operating day in seven closes
-          off the hour. The last hour of the band is therefore drawn as uncertain
-          rather than asserted, which is the same grammar the bar's soft edge
-          already speaks. When the backend sends a real minute this height goes
-          to zero and the border hardens. */}
-      {grid.closeIsTruncated && !loading && (
+      {/* L2 — the truncation feather, and it sits BELOW the band rather than
+          inside its last hour. The API reports the hour the closing time falls
+          in, so `closeMin` is the park's own closing minute on the 86 % of
+          operating days that end on the hour (3,046 of 3,540 measured across
+          the catalogue) and the earliest it can close on the other 14 %, which
+          close at half past or quarter to. The uncertainty therefore points
+          DOWN — the park may still be open up to an hour past the band — where
+          the feather used to hatch the last hour of the band, an hour that is
+          certainly open. Nothing is planned in here (see `DayGrid.closeMin`); a
+          drag may still reach it, because the person dragging knows their park.
+          When the backend sends a real minute `closeSlackMin` goes to zero and
+          this disappears. */}
+      {grid.closeSlackMin > 0 && !loading && (
         <div
           className="absolute inset-x-0 opacity-25"
           style={{
-            top: yFor(grid, grid.closeMin - 60),
-            height: heightFor(grid, 60),
+            top: yFor(grid, grid.closeMin),
+            height: heightFor(grid, grid.closeSlackMin),
             backgroundImage:
               'repeating-linear-gradient(135deg, color-mix(in oklch, var(--muted-foreground) 22%, transparent) 0 2px, transparent 2px 7px)',
           }}

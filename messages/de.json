@@ -2069,6 +2069,11 @@
       "run": "Tag optimieren",
       "running": "Sortiert …",
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
+      "choiceTitle": "Nicht alle Headliner passen in den Tag",
+      "choiceBody": "Vor Parkschluss ist Platz für {fits} von {total}. Nimm raus, worauf du am ehesten verzichtest.",
+      "choiceConfirm": "{count, plural, one {1 Bahn einplanen} other {# Bahnen einplanen}}",
+      "choiceDrops": "fällt weg",
+      "choicePeak": "Spitze {minutes} Min.",
       "saved": "{minutes} Min. weniger Warten",
       "already": "Passt schon so",
       "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
@@ -2171,6 +2176,11 @@
       "wet": {
         "label": "Möglichst trocken bleiben",
         "hint": "Wasserbahnen bekommen ein Zeichen in der Liste."
+      },
+      "headliners": {
+        "label": "Headliner einplanen",
+        "hint": "Legt die {count} großen Bahnen in den Tag, sortiert nach ihren Stundenkurven.",
+        "hintTight": "Vor Parkschluss ist Platz für {fits} von {total}. Welche das sind, kannst du im Planer ändern."
       },
       "facts": {
         "title": "Was wir über den Tag wissen",

@@ -4461,10 +4461,13 @@ if (reachable) {
   )
     .then((response) => (response.ok ? response.json() : null))
     .catch(() => null);
-  // `buildDayGrid`'s own arithmetic: `closeHour` is INCLUSIVE, so the axis ends
-  // an hour past it. Everything from here on is the hatched part of the day.
+  // `buildDayGrid`'s own arithmetic: `closeHour` is the hour the closing time
+  // FALLS IN, so this IS the gate. It used to read `+ 1` on the opposite
+  // reading, which is what handed the optimiser an hour of park that does not
+  // exist — and what let this very assertion pass over a plan that queued
+  // Winja's Fear at 18:15 on a day ending at 18:00.
   const closeMinute =
-    typeof context?.context?.closeHour === 'number' ? (context.context.closeHour + 1) * 60 : null;
+    typeof context?.context?.closeHour === 'number' ? context.context.closeHour * 60 : null;
   check('die Öffnungszeiten des Parks sind bekannt', closeMinute !== null, `${closeMinute}`);
 
   /** Every ride block's start, as the store holds it. The lunch break is not one. */
@@ -4478,8 +4481,33 @@ if (reachable) {
   // past the gate.
   await seedOptimize();
   const rideCountBefore = (await readDay()).split(' | ').length;
-  await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
-  await opt.waitForTimeout(2000);
+
+  /**
+   * Press the crown, and answer the question if one is asked.
+   *
+   * Ten headliners do not fit in Phantasialand's nine hours, so which of them
+   * is given up is a decision — and the app asks rather than making it. Nothing
+   * is unticked here: the point of the default is that pressing on unchanged is
+   * the engine's own answer, and that is the path this whole block measures.
+   */
+  const pressHeadliners = async () => {
+    await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
+    await opt.waitForTimeout(900);
+    const asked = await opt.locator('[data-planner-headliner-choice]').count();
+    if (asked) {
+      await opt.locator('[role="dialog"] button:not([data-slot="dialog-close"])').last().click();
+      await opt.waitForTimeout(1200);
+    }
+    await opt.waitForTimeout(1200);
+    return asked > 0;
+  };
+
+  const askedFirst = await pressHeadliners();
+  check(
+    'wo nicht alle passen, fragt der Planer statt zu entscheiden',
+    askedFirst,
+    `Dialog: ${askedFirst}`
+  );
   const withHeadliners = await readDay();
   check(
     'alle Headliner einplanen füllt den Tag',
@@ -4515,8 +4543,7 @@ if (reachable) {
   // nothing, because there is nothing left it can add.
   const stillOffered = await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count();
   if (stillOffered) {
-    await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
-    await opt.waitForTimeout(1500);
+    await pressHeadliners();
   }
   const twiceHeadliners = await readDay();
   check(
