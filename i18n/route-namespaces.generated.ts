@@ -70,6 +70,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.rideBell',
     'pushAlerts.rideDialog',
     'pushAlerts.showBell',
+    'pushAlerts.showDialog',
   ],
   '/impressum': [],
   '/maintenance': [],
@@ -85,6 +86,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.rideBell',
     'pushAlerts.rideDialog',
     'pushAlerts.showBell',
+    'pushAlerts.showDialog',
     'seo.faq',
     'share',
   ],
@@ -101,6 +103,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parkCard',
     'parks',
     'pushAlerts.rideDialog',
+    'pushAlerts.showBell',
     'share',
   ],
   '/search': [],
@@ -113,6 +116,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.rideBell',
     'pushAlerts.rideDialog',
     'pushAlerts.showBell',
+    'pushAlerts.showDialog',
     'stats',
   ],
 } as const;
@@ -130,6 +134,7 @@ export const LAZY_CHUNK_NAMESPACES = [
   'pushAlerts.rideBell',
   'pushAlerts.rideDialog',
   'pushAlerts.showBell',
+  'pushAlerts.showDialog',
 ] as const;
 
 export type RouteMessageKey = keyof typeof ROUTE_MESSAGE_NAMESPACES;

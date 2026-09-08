@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { Bell, BellRing } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { trackShowFollowAdd, trackShowFollowRemove } from '@/lib/analytics/umami';
 import { followShow, unfollowShow } from '@/lib/push/push-follows';
 import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
@@ -12,6 +13,8 @@ interface ShowFollowBellProps {
   showId: string;
   showName?: string;
   className?: string;
+  /** Where this bell sits — the show's own card, or a row in the park overview. */
+  source: 'card' | 'panel';
 }
 
 /**
@@ -24,7 +27,7 @@ interface ShowFollowBellProps {
  * depends on it, so there is nothing to reserve and nothing to shift; an
  * unsupported browser simply finds the click does nothing.
  */
-export function ShowFollowBell({ showId, showName, className }: ShowFollowBellProps) {
+export function ShowFollowBell({ showId, showName, className, source }: ShowFollowBellProps) {
   const [following, setFollowing] = useLocalPushFollowsValue(
     false,
     () => isShowFollowedLocal(showId),
@@ -43,16 +46,20 @@ export function ShowFollowBell({ showId, showName, className }: ShowFollowBellPr
       if (following) {
         setFollowing(false);
         void unfollowShow(showId).finally(() => setPending(false));
+        trackShowFollowRemove();
         return;
       }
 
       void followShow(showId)
         .then((result) => {
-          if (result.ok) setFollowing(true);
+          if (result.ok) {
+            setFollowing(true);
+            trackShowFollowAdd(source);
+          }
         })
         .finally(() => setPending(false));
     },
-    [following, pending, showId, setFollowing]
+    [following, pending, showId, setFollowing, source]
   );
 
   return (

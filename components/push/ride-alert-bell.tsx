@@ -13,6 +13,9 @@ interface RideAlertBellProps {
   attractionName: string;
   parkName: string;
   className?: string;
+  /** The card's own photo, if it has one — carried into the dialog as its background. */
+  backgroundImage?: string | null;
+  objectPosition?: string;
 }
 
 /**
@@ -26,6 +29,8 @@ export function RideAlertBell({
   attractionName,
   parkName,
   className,
+  backgroundImage,
+  objectPosition,
 }: RideAlertBellProps) {
   const [open, setOpen] = useState(false);
   const [alerted, setAlerted] = useLocalPushFollowsValue(
@@ -78,6 +83,8 @@ export function RideAlertBell({
         attractionName={attractionName}
         parkName={parkName}
         onSaved={setAlerted}
+        backgroundImage={backgroundImage}
+        objectPosition={objectPosition}
       />
     </>
   );

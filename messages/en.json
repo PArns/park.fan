@@ -1599,6 +1599,14 @@
       "follow": "Get a reminder 30 minutes before {name}",
       "following": "Reminder for {name} is on – tap to turn off"
     },
+    "showDialog": {
+      "title": "Show reminder",
+      "explain": "We’ll notify you 25 to 35 minutes before {show}’s next showtime.",
+      "follow": "Turn on reminder",
+      "following": "Reminder is on",
+      "unfollow": "Turn off reminder",
+      "close": "Close"
+    },
     "rideBell": {
       "setAlert": "Set a wait-time alert for {name}",
       "alerted": "Wait-time alert for {name} is on – tap to edit"
@@ -1626,7 +1634,8 @@
       "save": "Save",
       "outOfSeason": "Winter only",
       "retired": "Retired",
-      "errorRateLimited": "Too many attempts. Try again in {seconds} seconds."
+      "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
+      "todayOnly": "Applies to today only – set it up again for another visit day."
     },
     "overview": {
       "title": "My alerts",

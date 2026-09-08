@@ -24,6 +24,7 @@ function DialogClose({ ...props }: React.ComponentProps<typeof DialogPrimitive.C
 
 function DialogOverlay({
   className,
+  onClick,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
   return (
@@ -33,6 +34,18 @@ function DialogOverlay({
         'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[70] touch-none bg-white/40 backdrop-blur-sm duration-300 data-[state=closed]:duration-200 dark:bg-black/40',
         className
       )}
+      // React bubbles a portal's events along the COMPONENT tree, not the DOM
+      // tree — a dialog opened from a bell inside a card's <Link> sits, as far
+      // as React's synthetic event system is concerned, INSIDE that <Link>,
+      // even though the overlay itself paints at the document root. Without
+      // this, the outside-click that closes the dialog bubbles straight
+      // through to the card and navigates it: measured, every mouse-driven
+      // close (this overlay, the X button, Save) fired the card's navigation,
+      // while Escape (no click event at all) never did.
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick?.(e);
+      }}
       {...props}
     />
   );
@@ -42,6 +55,7 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
+  onClick,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
@@ -55,6 +69,16 @@ function DialogContent({
           'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-[70] grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border p-6 shadow-lg duration-200 outline-none sm:max-w-lg',
           className
         )}
+        // Same reasoning as DialogOverlay above: a click anywhere in here
+        // (Save, Remove, the X button) bubbles through React's component
+        // tree — which runs through whatever opened this dialog — not the
+        // DOM tree the portal actually renders into. A dialog triggered from
+        // inside a card's <Link> would otherwise navigate that card on every
+        // click that lands inside the dialog, including a genuine Save.
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick?.(e);
+        }}
         {...props}
       >
         {children}

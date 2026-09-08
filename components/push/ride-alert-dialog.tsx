@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import {
   fetchRideAlertsRemote,
   removeRideAlert,
@@ -127,6 +128,7 @@ export function RideAlertDialog({
       result.value,
     ]);
     setThresholdRaw(String(DEFAULT_THRESHOLD_MIN));
+    trackRideAlertSet('central');
   };
 
   const handleRemove = async (attractionId: string) => {
@@ -136,6 +138,7 @@ export function RideAlertDialog({
       Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
     );
     setRemovingId(null);
+    trackRideAlertRemoved();
   };
 
   return (
@@ -210,28 +213,26 @@ export function RideAlertDialog({
                 )}
               >
                 <p className="text-xs font-medium">{t('addTitle')}</p>
-                <div className="flex flex-col gap-2 sm:flex-row">
-                  <select
-                    value={selectedId}
-                    onChange={(e) => setRawSelectedId(e.target.value)}
-                    aria-label={t('selectRide')}
-                    className="border-input h-9 min-w-0 flex-1 rounded-md border bg-transparent px-3 text-sm shadow-xs max-sm:h-11"
-                  >
-                    {available.map((a) => (
-                      <option key={a.id} value={a.id}>
-                        {a.name}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="flex items-center gap-2">
-                    <ThresholdMinutesInput
-                      value={thresholdRaw}
-                      onChange={setThresholdRaw}
-                      className="w-20 max-sm:h-11"
-                      ariaLabel={t('thresholdInput')}
-                    />
-                    <span className="text-muted-foreground shrink-0 text-xs">{t('minutes')}</span>
-                  </div>
+                <select
+                  value={selectedId}
+                  onChange={(e) => setRawSelectedId(e.target.value)}
+                  aria-label={t('selectRide')}
+                  className="border-input h-9 min-w-0 rounded-md border bg-transparent px-3 text-sm shadow-xs max-sm:h-11"
+                >
+                  {available.map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-muted-foreground text-xs">{t('thresholdInput')}</span>
+                  <ThresholdMinutesInput
+                    value={thresholdRaw}
+                    onChange={setThresholdRaw}
+                    ariaLabel={t('thresholdInput')}
+                    minutesLabel={t('minutes')}
+                  />
                 </div>
                 <Button
                   type="button"

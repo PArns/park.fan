@@ -44,6 +44,10 @@
  * - planner_opened: source
  * - plan_day_started: parkName
  * - plan_optimized: parkName
+ * - ride_alert_set: source
+ * - ride_alert_removed: (no properties)
+ * - show_follow_add: source
+ * - show_follow_remove: (no properties)
  * - web-vital-inp: value, target, phase, path (only for non-`good` samples, see WebVitalsReporter)
  */
 
@@ -114,6 +118,12 @@ export const UMAMI_EVENTS = {
   PLAN_DAY_STARTED: 'plan_day_started',
   // …and when the visitor lets the day sort itself. A click, not a load.
   PLAN_OPTIMIZED: 'plan_optimized',
+
+  // Push alerts — whether the feature is used at all, and through which entry point
+  RIDE_ALERT_SET: 'ride_alert_set',
+  RIDE_ALERT_REMOVED: 'ride_alert_removed',
+  SHOW_FOLLOW_ADD: 'show_follow_add',
+  SHOW_FOLLOW_REMOVE: 'show_follow_remove',
 } as const;
 
 // Event property types
@@ -374,4 +384,46 @@ export function trackGlossarySearched(props: GlossarySearchedProps): void {
 /** Footer "mark park.fan as a preferred source on Google" click (no properties). */
 export function trackPreferredSourceClicked(): void {
   trackEvent(UMAMI_EVENTS.PREFERRED_SOURCE_CLICKED);
+}
+
+/**
+ * A ride's wait-time alert was saved — the conversion this feature lives or
+ * dies on, not the dialog opening. Opening `RideAlertQuickDialog`/`RideAlertDialog`
+ * costs nothing to bill, so it stays untracked; a visitor who opens the
+ * dialog and backs out answers no question a report needs, the way looking
+ * at a favorite star and not pressing it does not get its own event either.
+ *
+ * ONE property: `source` tells the two entry points the plan asked for
+ * ("kombiniert": a bell per ride card, plus a central button in the park
+ * overview) apart, which is exactly the design decision a report on this
+ * event can revisit — worth the second billed row for the same reason
+ * `trackPlannerOpened`'s `source` is.
+ */
+export function trackRideAlertSet(source: 'card' | 'central'): void {
+  trackEvent(UMAMI_EVENTS.RIDE_ALERT_SET, { source });
+}
+
+/**
+ * An alert was removed — from the ride's own dialog, the central list, or
+ * the cross-park `/alerts` overview. No `source`: unlike setting one, all
+ * three removal surfaces show the same list of existing alerts, so which
+ * one somebody happened to have open answers nothing about the feature.
+ */
+export function trackRideAlertRemoved(): void {
+  trackEvent(UMAMI_EVENTS.RIDE_ALERT_REMOVED);
+}
+
+/**
+ * A show-start reminder was turned on. Same shape as `trackFavoriteAdd`
+ * (no dialog in front of this one — the bell IS the action), and the same
+ * `source` reasoning as `trackRideAlertSet`: a bell on the show's own card,
+ * or a bell on its row in the park overview's "next shows" list.
+ */
+export function trackShowFollowAdd(source: 'card' | 'panel'): void {
+  trackEvent(UMAMI_EVENTS.SHOW_FOLLOW_ADD, { source });
+}
+
+/** Turned back off. No `source`, matching `trackRideAlertRemoved`'s reasoning. */
+export function trackShowFollowRemove(): void {
+  trackEvent(UMAMI_EVENTS.SHOW_FOLLOW_REMOVE);
 }

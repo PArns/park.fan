@@ -1599,6 +1599,14 @@
       "follow": "Activar aviso 30 minutos antes de {name}",
       "following": "Aviso activo para {name} – toca para desactivarlo"
     },
+    "showDialog": {
+      "title": "Aviso de espectáculo",
+      "explain": "Te avisamos entre 25 y 35 minutos antes de la próxima función de {show}.",
+      "follow": "Activar aviso",
+      "following": "El aviso está activo",
+      "unfollow": "Desactivar aviso",
+      "close": "Cerrar"
+    },
     "rideBell": {
       "setAlert": "Configurar aviso de tiempo de espera para {name}",
       "alerted": "Aviso activo para {name} – toca para editarlo"
@@ -1626,7 +1634,8 @@
       "save": "Guardar",
       "outOfSeason": "Solo en invierno",
       "retired": "Retirada",
-      "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos."
+      "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
+      "todayOnly": "Solo es válido para hoy: para otro día de visita hay que configurarlo de nuevo."
     },
     "overview": {
       "title": "Mis avisos",

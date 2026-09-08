@@ -279,6 +279,8 @@ export function AttractionCard({
                   attractionName={stripNewPrefix(attraction.name)}
                   parkName={parkName}
                   className="h-full w-full"
+                  backgroundImage={backgroundImage}
+                  objectPosition={objectPosition}
                 />
               </GlassCircle>
             )}
