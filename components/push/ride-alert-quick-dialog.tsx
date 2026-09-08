@@ -155,31 +155,36 @@ export function RideAlertQuickDialog({
           </div>
         </div>
 
+        {/* The link is not one of the actions and never gives way to one: it
+            used to be the `alerted` branch's else, so the way to "meine
+            Alarme" disappeared for exactly the person who has some. Same
+            split as the show dialog — navigation on the left, this ride's
+            own actions on the right. */}
         <div className="border-border/60 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-t px-5 py-3 sm:px-6">
-          {alerted ? (
+          <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
+            {t('viewAll')}
+          </Link>
+          <div className="ml-auto flex shrink-0 items-center gap-2">
+            {alerted && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={handleRemove}
+                disabled={removing || saving}
+              >
+                {t('removeShort')}
+              </Button>
+            )}
             <Button
               type="button"
-              variant="ghost"
               size="sm"
-              onClick={handleRemove}
-              disabled={removing || saving}
+              onClick={handleSave}
+              disabled={saving || removing || threshold === null}
             >
-              {t('removeShort')}
+              {saving ? t('adding') : t('save')}
             </Button>
-          ) : (
-            <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
-              {t('viewAll')}
-            </Link>
-          )}
-          <Button
-            className="ml-auto shrink-0"
-            type="button"
-            size="sm"
-            onClick={handleSave}
-            disabled={saving || removing || threshold === null}
-          >
-            {saving ? t('adding') : t('save')}
-          </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
