@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { PlannerPanelPhoto } from '@/components/planner/planner-panel-photo';
+import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
@@ -58,6 +59,7 @@ export function RideAlertQuickDialog({
   currentWaitTime,
 }: RideAlertQuickDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
+  const pushErrorMessage = usePushErrorMessage();
   const [thresholdRaw, setThresholdRaw] = useState(() =>
     String(defaultThresholdFor(currentWaitTime))
   );
@@ -135,14 +137,9 @@ export function RideAlertQuickDialog({
               />
             </div>
             <p className="text-muted-foreground text-[11px] leading-snug">{t('todayOnly')}</p>
-            {error &&
-              (error.reason === 'rate-limited' ? (
-                <p className="text-destructive text-xs">
-                  {t('errorRateLimited', { seconds: error.retryAfterSeconds })}
-                </p>
-              ) : (
-                <p className="text-destructive text-xs">{t('error')}</p>
-              ))}
+            {error && (
+              <p className="text-destructive text-xs leading-snug">{pushErrorMessage(error)}</p>
+            )}
           </div>
         </div>
 

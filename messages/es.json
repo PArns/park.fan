@@ -1606,7 +1606,9 @@
       "follow": "Activar aviso",
       "following": "El aviso está activo",
       "unfollow": "Desactivar aviso",
-      "close": "Cerrar"
+      "close": "Cerrar",
+      "nextShowtime": "Próxima función",
+      "viewAll": "Ver todos tus avisos"
     },
     "rideBell": {
       "setAlert": "Configurar aviso de tiempo de espera para {name}",
@@ -1651,7 +1653,17 @@
       "retired": "Retirada",
       "loadError": "No se pudo cargar la lista. Recarga la página."
     },
-    "menu": { "link": "Mis avisos" }
+    "menu": {
+      "link": "Mis avisos"
+    },
+    "pushErrors": {
+      "generic": "No ha funcionado. Inténtalo de nuevo.",
+      "rateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
+      "blocked": "Las notificaciones están bloqueadas en tu navegador. Puedes volver a permitirlas en los ajustes del sitio.",
+      "dismissed": "Sin notificaciones no puede llegar ningún aviso. Elige «Permitir» la próxima vez que lo pregunte el navegador.",
+      "unsupported": "Este navegador no puede recibir notificaciones. En el iPhone solo funciona si la página está en la pantalla de inicio.",
+      "notConfigured": "Las notificaciones no están configuradas aquí por ahora."
+    }
   },
   "glossary": {
     "blogPosts": {

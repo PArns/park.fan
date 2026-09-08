@@ -53,7 +53,7 @@ export function ShowCard({
             `max-sm:gap-7` (28px) puts the two centres 44px apart, matching
             the zone width exactly, so they meet with no overlap left. */}
         <div className="absolute top-2 right-2 z-20 flex items-center gap-1 max-sm:gap-7">
-          <ShowFollowBell showId={id} showName={name} source="card" />
+          <ShowFollowBell showId={id} showName={name} source="card" showtimes={showtimes} />
           <FavoriteStar type="show" id={id} />
         </div>
         <CardContent className="p-4">

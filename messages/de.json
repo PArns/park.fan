@@ -1606,7 +1606,9 @@
       "follow": "Erinnerung aktivieren",
       "following": "Erinnerung ist aktiv",
       "unfollow": "Erinnerung deaktivieren",
-      "close": "Schließen"
+      "close": "Schließen",
+      "nextShowtime": "Nächste Vorstellung",
+      "viewAll": "Alle eigenen Alarme ansehen"
     },
     "rideBell": {
       "setAlert": "Wartezeit-Alarm für {name} einrichten",
@@ -1653,6 +1655,14 @@
     },
     "menu": {
       "link": "Meine Alarme"
+    },
+    "pushErrors": {
+      "generic": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
+      "rateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
+      "blocked": "Benachrichtigungen sind in deinem Browser blockiert. In den Website-Einstellungen kannst du sie wieder erlauben.",
+      "dismissed": "Ohne erlaubte Benachrichtigungen kann kein Alarm ankommen. Beim nächsten Mal bitte auf „Zulassen“ tippen.",
+      "unsupported": "Dieser Browser kann keine Benachrichtigungen empfangen. Auf dem iPhone geht es nur, wenn die Seite auf dem Home-Bildschirm liegt.",
+      "notConfigured": "Benachrichtigungen sind hier gerade nicht eingerichtet."
     }
   },
   "glossary": {

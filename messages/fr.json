@@ -1606,7 +1606,9 @@
       "follow": "Activer le rappel",
       "following": "Rappel activé",
       "unfollow": "Désactiver le rappel",
-      "close": "Fermer"
+      "close": "Fermer",
+      "nextShowtime": "Prochaine représentation",
+      "viewAll": "Voir toutes vos alertes"
     },
     "rideBell": {
       "setAlert": "Configurer une alerte de temps d’attente pour {name}",
@@ -1651,7 +1653,17 @@
       "retired": "Démonté",
       "loadError": "Impossible de charger la liste. Veuillez recharger la page."
     },
-    "menu": { "link": "Mes alertes" }
+    "menu": {
+      "link": "Mes alertes"
+    },
+    "pushErrors": {
+      "generic": "Ça n’a pas fonctionné. Merci de réessayer.",
+      "rateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
+      "blocked": "Les notifications sont bloquées dans votre navigateur. Vous pouvez les réautoriser dans les paramètres du site.",
+      "dismissed": "Sans notifications, aucune alerte ne peut arriver. Choisissez « Autoriser » la prochaine fois que le navigateur le demande.",
+      "unsupported": "Ce navigateur ne peut pas recevoir de notifications. Sur iPhone, cela ne fonctionne que si le site est sur l’écran d’accueil.",
+      "notConfigured": "Les notifications ne sont pas configurées ici pour le moment."
+    }
   },
   "glossary": {
     "blogPosts": {

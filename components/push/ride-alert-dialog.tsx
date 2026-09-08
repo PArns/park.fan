@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import {
   fetchRideAlertsRemote,
@@ -56,6 +57,7 @@ export function RideAlertDialog({
   attractions,
 }: RideAlertDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
+  const pushErrorMessage = usePushErrorMessage();
   // Three states, not two: a failed fetch must not render as "no alerts
   // for this park" — the add-form would then offer every ride again,
   // including ones this browser already watches.
@@ -259,14 +261,11 @@ export function RideAlertDialog({
                 >
                   {adding ? t('adding') : t('add')}
                 </Button>
-                {addError &&
-                  (addError.reason === 'rate-limited' ? (
-                    <p className="text-destructive text-xs">
-                      {t('errorRateLimited', { seconds: addError.retryAfterSeconds })}
-                    </p>
-                  ) : (
-                    <p className="text-destructive text-xs">{t('error')}</p>
-                  ))}
+                {addError && (
+                  <p className="text-destructive text-xs leading-snug">
+                    {pushErrorMessage(addError)}
+                  </p>
+                )}
               </div>
             )}
           </div>

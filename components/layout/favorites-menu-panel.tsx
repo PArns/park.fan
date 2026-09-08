@@ -13,7 +13,6 @@ import { useFavoriteCounts, type FavoriteCounts } from '@/lib/hooks/use-favorite
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
-import { useHasPushFollows } from '@/lib/push/use-has-push-follows';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -552,7 +551,6 @@ export function FavoritesMenuPanel({
   const tNav = useTranslations('navigation');
   const tPush = useTranslations('pushAlerts.menu');
   const counts = useFavoriteCounts();
-  const hasPushFollows = useHasPushFollows();
   // `poll: false` — the menu is on screen for seconds. The homepage band is the surface that
   // stays open long enough for a five-minute refresh to mean anything, and it keeps its own.
   const { data, isPending } = useFavorites({ enabled: open && counts.total > 0, poll: false });
@@ -640,7 +638,7 @@ export function FavoritesMenuPanel({
           <span className="flex items-center gap-3">
             {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
                 eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. */}
-            {hasPushFollows && <PushAlertsMenuLink label={tPush('link')} />}
+            <PushAlertsMenuLink label={tPush('link')} />
             <Link
               href="/parks"
               prefetch={false}
@@ -747,7 +745,7 @@ export function FavoritesMenuPanel({
           {t('title')}
         </span>
         <span className="flex items-center gap-3">
-          {hasPushFollows && <PushAlertsMenuLink label={tPush('link')} />}
+          <PushAlertsMenuLink label={tPush('link')} />
           {somethingHidden && (
             <Link
               href="/#favorites"

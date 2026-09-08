@@ -1,6 +1,11 @@
 'use client';
 
-import { ensurePushRegistered, getExistingPushIdentity } from './push-registration';
+import {
+  ensurePushRegistered,
+  getExistingPushIdentity,
+  type PushRegistration,
+  type PushUnavailableCause,
+} from './push-registration';
 import {
   removeRideAlertLocal,
   setRideAlertLocal,
@@ -53,8 +58,13 @@ export interface ShowFollowRemote {
  * things slightly differently, not to retry sooner.
  */
 export type PushWriteError =
-  /** No push identity at all — permission denied, unsupported browser, or this deploy has no VAPID key. */
-  | { reason: 'unavailable' }
+  /**
+   * No push identity at all. `cause` is what separates "blocked in your
+   * browser" (a setting only the visitor can change) from "this browser
+   * cannot" from "our end is down" — three different sentences, and the
+   * reason a single "please try again" was wrong in front of all of them.
+   */
+  | { reason: 'unavailable'; cause: PushUnavailableCause }
   | { reason: 'rate-limited'; retryAfterSeconds: number }
   /** 400 — a malformed request, or a rule the API enforces at write time (e.g. an unreadable park). */
   | { reason: 'invalid' }
@@ -68,8 +78,10 @@ export type PushWriteResult<T> = { ok: true; value: T } | { ok: false; error: Pu
 /** A fetch that failed must not look like a list that is genuinely empty — see the two fetchers below. */
 export type PushListResult<T> = { ok: true; items: T[] } | { ok: false };
 
-async function identityForWrite() {
-  return (await getExistingPushIdentity()) ?? (await ensurePushRegistered());
+async function identityForWrite(): Promise<PushRegistration> {
+  const existing = await getExistingPushIdentity();
+  if (existing) return { ok: true, identity: existing };
+  return ensurePushRegistered();
 }
 
 /**
@@ -117,9 +129,11 @@ async function postFollowShow(
 }
 
 export async function followShow(showId: string): Promise<PushWriteResult<void>> {
-  const identity = await identityForWrite();
-  if (!identity) return { ok: false, error: { reason: 'unavailable' } };
-  const result = await postFollowShow(identity, showId);
+  const registration = await identityForWrite();
+  if (!registration.ok) {
+    return { ok: false, error: { reason: 'unavailable', cause: registration.cause } };
+  }
+  const result = await postFollowShow(registration.identity, showId);
   if (result.ok || result.error.reason !== 'not-found') return result;
   // The browser already had a live PushManager subscription, so
   // `identityForWrite` never called `ensurePushRegistered` and never gave the
@@ -128,8 +142,8 @@ export async function followShow(showId: string): Promise<PushWriteResult<void>>
   // not that this particular show doesn't exist. Re-sync once and retry
   // before surfacing an error that looks permanent but usually isn't.
   const resynced = await ensurePushRegistered();
-  if (!resynced) return result;
-  return postFollowShow(resynced, showId);
+  if (!resynced.ok) return result;
+  return postFollowShow(resynced.identity, showId);
 }
 
 /**
@@ -183,17 +197,19 @@ export async function setRideAlert(
   attractionId: string,
   thresholdMinutes: number
 ): Promise<PushWriteResult<RideAlertRemote>> {
-  const identity = await identityForWrite();
-  if (!identity) return { ok: false, error: { reason: 'unavailable' } };
-  const result = await postRideAlert(identity, attractionId, thresholdMinutes);
+  const registration = await identityForWrite();
+  if (!registration.ok) {
+    return { ok: false, error: { reason: 'unavailable', cause: registration.cause } };
+  }
+  const result = await postRideAlert(registration.identity, attractionId, thresholdMinutes);
   if (result.ok || result.error.reason !== 'not-found') return result;
   // Same reasoning as `followShow` — a 404 here most likely means the
   // backend's copy of this browser's subscription is gone, not that the
   // ride itself is (it came from this park's own attraction list). Re-sync
   // the subscription once and retry before giving up.
   const resynced = await ensurePushRegistered();
-  if (!resynced) return result;
-  return postRideAlert(resynced, attractionId, thresholdMinutes);
+  if (!resynced.ok) return result;
+  return postRideAlert(resynced.identity, attractionId, thresholdMinutes);
 }
 
 export async function removeRideAlert(attractionId: string): Promise<void> {
