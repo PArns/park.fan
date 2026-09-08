@@ -29,6 +29,7 @@ import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
+import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -248,6 +249,7 @@ export function ParkTodayPanel({
         // `#map-show-<slug>` hash the tab router resolves. The row already carries the name and
         // the time, so the thing it cannot say is WHERE, and that is what the map answers.
         (s.showtimes ?? []).map((st) => ({
+          id: s.id,
           name: stripNewPrefix(s.name),
           slug: s.slug,
           startTime: st.startTime,
@@ -748,10 +750,14 @@ export function ParkTodayPanel({
                           // "Miji African D…" beside 150 px of countdown. On its own line the
                           // countdown costs nothing horizontally, the name gets ~200 px, and the box
                           // is the same two lines tall it always was.
-                          <li key={i}>
+                          // `relative` on the row, the bell a SIBLING of the `<a>` rather than a
+                          // child of it: the same nested-interactive-elements trap `AttractionCard`
+                          // hit (see `components/ui/dialog.tsx`'s fix) applies to any button inside
+                          // an anchor, dialog or not — a sibling laid on top avoids it entirely.
+                          <li key={i} className="relative">
                             <a
                               href={chapterHref(`map-show-${show.slug}`)}
-                              className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
+                              className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border py-2 pr-9 pl-2.5 transition-colors"
                             >
                               <span className="flex items-baseline gap-2">
                                 <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
@@ -767,24 +773,36 @@ export function ParkTodayPanel({
                                 </span>
                               )}
                             </a>
+                            <ShowFollowBell
+                              showId={show.id}
+                              showName={show.name}
+                              source="panel"
+                              className="absolute top-2 right-2"
+                            />
                           </li>
                         );
                       }
                       return (
-                        <li key={i} className="text-sm">
+                        <li key={i} className="relative text-sm">
                           {/* A plain `<a>` with a hash, not a next-intl `Link`: the tab router
                             listens for `hashchange`, and `pushState` navigation does not fire it.
                             Same reason the FAQ's calendar link used to be one — that link became a
                             real page, this one is still a jump within the park page. */}
                           <a
                             href={chapterHref(`map-show-${show.slug}`)}
-                            className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
+                            className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded py-0.5 pr-7 pl-1 transition-colors"
                           >
                             <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
                               <LocalTime time={show.startTime} timeZone={timezone} />
                             </span>
                             <span className="min-w-0 flex-1 truncate">{show.name}</span>
                           </a>
+                          <ShowFollowBell
+                            showId={show.id}
+                            showName={show.name}
+                            source="panel"
+                            className="absolute top-1/2 right-0 -translate-y-1/2"
+                          />
                         </li>
                       );
                     })}

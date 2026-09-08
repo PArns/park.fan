@@ -6,6 +6,7 @@ import { Bell, BellRing, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
 import {
   fetchRideAlertsRemote,
   fetchShowFollowsRemote,
@@ -62,6 +63,7 @@ export function AlertsOverview() {
       Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
     );
     setRemovingRide(null);
+    trackRideAlertRemoved();
   };
 
   const handleRemoveShow = async (showId: string) => {
@@ -71,6 +73,7 @@ export function AlertsOverview() {
       Array.isArray(current) ? current.filter((s) => s.showId !== showId) : current
     );
     setRemovingShow(null);
+    trackShowFollowRemove();
   };
 
   if (loading) {
