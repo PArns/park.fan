@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import { forgetTrip, getTripId, startTripAutoSync, stopTripAutoSync, syncTrip } from './trip-sync';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
+import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
 
 /**
  * Turning notifications on, and everything that has to be true for that to mean
@@ -226,12 +227,29 @@ export function usePushSubscription() {
         // Tell the server first, while the endpoint is still readable. The
         // other order leaves a row that only stops being sent to after eight
         // failed deliveries.
-        await fetch('/api/push/subscriptions', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ endpoint: subscription.endpoint }),
-        }).catch(() => {});
-        await subscription.unsubscribe().catch(() => {});
+        //
+        // Scoped to this trip: the same endpoint is one row shared with a
+        // ride alert or a followed show, and an unscoped delete cascades
+        // through the FK and takes those down too. Sending `tripId` tells
+        // the API to clear only the trip half of the row — and with no local
+        // tripId there is nothing of this feature's left on the server to
+        // clear, so the call is skipped rather than sent unscoped (which
+        // would read as "forget the browser entirely" and cascade anyway).
+        const tripId = getTripId();
+        if (tripId) {
+          await fetch('/api/push/subscriptions', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ endpoint: subscription.endpoint, tripId }),
+          }).catch(() => {});
+        }
+        // The browser has exactly ONE push subscription for the whole origin
+        // (`lib/push/push-registration.ts` reuses it for ride alerts and
+        // followed shows) — tearing it down here would silently stop those
+        // too. Only do it when nothing else on this browser still needs it.
+        if (!hasAnyPushFollowsLocal()) {
+          await subscription.unsubscribe().catch(() => {});
+        }
       }
       forgetTrip();
     } finally {
