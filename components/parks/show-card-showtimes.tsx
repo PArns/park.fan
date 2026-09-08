@@ -75,6 +75,8 @@ export function ShowCardShowtimes({ showtimes, timezone, showId, showName }: Sho
           onOpenChange={setDialogOpen}
           showId={showId}
           showName={showName}
+          showtimes={showtimes}
+          timezone={timezone}
         />
       </>
     );

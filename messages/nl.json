@@ -1606,7 +1606,9 @@
       "follow": "Herinnering inschakelen",
       "following": "Herinnering is actief",
       "unfollow": "Herinnering uitschakelen",
-      "close": "Sluiten"
+      "close": "Sluiten",
+      "nextShowtime": "Volgende voorstelling",
+      "viewAll": "Al je meldingen bekijken"
     },
     "rideBell": {
       "setAlert": "Wachttijdmelding voor {name} instellen",
@@ -1651,7 +1653,17 @@
       "retired": "Gesloopt",
       "loadError": "De lijst kon niet worden geladen. Herlaad de pagina."
     },
-    "menu": { "link": "Mijn meldingen" }
+    "menu": {
+      "link": "Mijn meldingen"
+    },
+    "pushErrors": {
+      "generic": "Dat is niet gelukt. Probeer het nogmaals.",
+      "rateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
+      "blocked": "Meldingen zijn geblokkeerd in je browser. Je kunt ze weer toestaan in de instellingen van deze site.",
+      "dismissed": "Zonder meldingen kan er geen alarm binnenkomen. Kies de volgende keer „Toestaan“ als je browser het vraagt.",
+      "unsupported": "Deze browser kan geen meldingen ontvangen. Op de iPhone werkt het alleen als de site op het beginscherm staat.",
+      "notConfigured": "Meldingen zijn hier op dit moment niet ingesteld."
+    }
   },
   "glossary": {
     "blogPosts": {

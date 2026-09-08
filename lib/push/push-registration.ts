@@ -28,13 +28,53 @@ export interface PushIdentity {
   auth: string;
 }
 
-let availabilityPromise: Promise<PushAvailability> | null = null;
+/**
+ * Why a browser cannot be registered. Each one has a different remedy, and
+ * telling them apart is the whole point: "that didn't work, please try again"
+ * is a lie in front of `denied` (trying again does nothing until the visitor
+ * changes a browser setting) and in front of `unsupported` (it will never
+ * work here), and those two are exactly the cases a visitor hits most.
+ */
+export type PushUnavailableCause =
+  /** No service worker / PushManager / Notification — an insecure origin, or a browser without them. */
+  | 'unsupported'
+  /** `GET /api/push` did not answer. Transient: worth retrying. */
+  | 'probe-failed'
+  /** The API answered, and this deploy has no VAPID key — nothing a visitor can do. */
+  | 'not-configured'
+  /** Notifications are blocked for this origin, or globally in the browser's settings. */
+  | 'denied'
+  /** The prompt was shown and closed without a decision. */
+  | 'dismissed'
+  /** Subscribing itself failed, or the API refused the subscription. */
+  | 'failed';
 
-/** `GET /api/push`, cached for the page's lifetime — every bell on a page asks this. */
-function fetchAvailability(): Promise<PushAvailability> {
+export type PushRegistration =
+  | { ok: true; identity: PushIdentity }
+  | { ok: false; cause: PushUnavailableCause };
+
+let availabilityPromise: Promise<PushAvailability | null> | null = null;
+
+/**
+ * `GET /api/push`, memoized for the page's lifetime — every bell on a page
+ * asks this.
+ *
+ * Only a SUCCESSFUL answer is memoized. Caching the failure too is what this
+ * used to do (`??=` over a promise that resolved `{available:false}` on any
+ * error), and it turned one unlucky request — a Cloudflare challenge on a
+ * `no-store` fetch, a dropped connection, a cold start — into a page where
+ * every bell was dead for as long as the tab stayed open: no further request,
+ * no permission prompt, no error, nothing in the console. A visitor clicking
+ * a second time got a silent no-op from a decision made once, invisibly.
+ */
+function fetchAvailability(): Promise<PushAvailability | null> {
   availabilityPromise ??= fetch('/api/push', { cache: 'no-store' })
-    .then((response) => (response.ok ? response.json() : { available: false }))
-    .catch(() => ({ available: false }));
+    .then((response) => (response.ok ? (response.json() as Promise<PushAvailability>) : null))
+    .catch(() => null)
+    .then((info) => {
+      if (!info) availabilityPromise = null;
+      return info;
+    });
   return availabilityPromise;
 }
 
@@ -69,21 +109,27 @@ export async function getExistingPushIdentity(): Promise<PushIdentity | null> {
 }
 
 /**
- * Subscribe this browser, or reuse its existing subscription. `null` means
- * the caller should not proceed — unsupported browser, this deploy has no
- * VAPID key, or the visitor said no. Never throws.
+ * Subscribe this browser, or reuse its existing subscription. Never throws —
+ * a failure is reported as a {@link PushUnavailableCause} rather than as a
+ * bare `null`, because the four ways this can fail need four different
+ * sentences in front of a visitor.
  */
-export async function ensurePushRegistered(): Promise<PushIdentity | null> {
-  if (!supportsPush()) return null;
+export async function ensurePushRegistered(): Promise<PushRegistration> {
+  if (!supportsPush()) return { ok: false, cause: 'unsupported' };
 
   const info = await fetchAvailability();
-  if (!info.available || !info.publicKey) return null;
-  if (Notification.permission === 'denied') return null;
+  if (!info) return { ok: false, cause: 'probe-failed' };
+  if (!info.available || !info.publicKey) return { ok: false, cause: 'not-configured' };
+  if (Notification.permission === 'denied') return { ok: false, cause: 'denied' };
 
   try {
     const permission =
       Notification.permission === 'granted' ? 'granted' : await Notification.requestPermission();
-    if (permission !== 'granted') return null;
+    // A browser set to "don't allow sites to ask" resolves this to `denied`
+    // WITHOUT ever showing a prompt, which is why that reads as blocked here
+    // and not as a dismissal: the visitor saw nothing to dismiss.
+    if (permission === 'denied') return { ok: false, cause: 'denied' };
+    if (permission !== 'granted') return { ok: false, cause: 'dismissed' };
 
     // Registered only now, not on every page load — same reasoning as the
     // trip planner's own registration: a worker installed for everybody
@@ -100,7 +146,7 @@ export async function ensurePushRegistered(): Promise<PushIdentity | null> {
       }));
 
     const json = subscription.toJSON();
-    if (!json.keys?.p256dh || !json.keys?.auth) return null;
+    if (!json.keys?.p256dh || !json.keys?.auth) return { ok: false, cause: 'failed' };
     const identity: PushIdentity = {
       endpoint: subscription.endpoint,
       p256dh: json.keys.p256dh,
@@ -126,11 +172,11 @@ export async function ensurePushRegistered(): Promise<PushIdentity | null> {
       // Subscribed to a push service that will send nothing — undo rather
       // than leave it dangling, or the next attempt finds it and reports "on".
       await subscription.unsubscribe().catch(() => {});
-      return null;
+      return { ok: false, cause: 'failed' };
     }
 
-    return identity;
+    return { ok: true, identity };
   } catch {
-    return null;
+    return { ok: false, cause: 'failed' };
   }
 }

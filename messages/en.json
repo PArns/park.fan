@@ -1606,7 +1606,9 @@
       "follow": "Turn on reminder",
       "following": "Reminder is on",
       "unfollow": "Turn off reminder",
-      "close": "Close"
+      "close": "Close",
+      "nextShowtime": "Next performance",
+      "viewAll": "View all your alerts"
     },
     "rideBell": {
       "setAlert": "Set a wait-time alert for {name}",
@@ -1653,6 +1655,14 @@
     },
     "menu": {
       "link": "My alerts"
+    },
+    "pushErrors": {
+      "generic": "That didn’t work. Please try again.",
+      "rateLimited": "Too many attempts. Try again in {seconds} seconds.",
+      "blocked": "Notifications are blocked in your browser. You can allow them again in this site’s settings.",
+      "dismissed": "An alert needs notifications to arrive in. Choose “Allow” the next time your browser asks.",
+      "unsupported": "This browser cannot receive notifications. On iPhone it works only once the site sits on the home screen.",
+      "notConfigured": "Notifications are not set up here at the moment."
     }
   },
   "glossary": {
