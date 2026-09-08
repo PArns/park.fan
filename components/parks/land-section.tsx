@@ -25,6 +25,13 @@ interface LandSectionProps {
   parkSlug?: string;
   parkStatus?: ParkStatus;
   timezone?: string;
+  /**
+   * The park's own name — these attractions never carry a nested `park`
+   * field (every card here is already known to belong to it), so it has to
+   * arrive as a prop for `AttractionCard`'s ride-alert bell to know which
+   * park it is setting an alert on.
+   */
+  parkName: string;
 }
 
 // Memoized: on the park page the parent `TabsWithHash` re-renders on every search keystroke
@@ -39,6 +46,7 @@ export const LandSection = memo(function LandSection({
   parkSlug: _parkSlug,
   parkStatus,
   timezone,
+  parkName,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter(
@@ -80,6 +88,7 @@ export const LandSection = memo(function LandSection({
                 parkPath={parkPath}
                 parkStatus={parkStatus}
                 timezone={timezone}
+                parkName={parkName}
               />
             </li>
           );

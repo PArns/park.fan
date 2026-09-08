@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { Clock, Star } from 'lucide-react';
+import { Bell, Clock, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -13,6 +13,7 @@ import { useFavoriteCounts, type FavoriteCounts } from '@/lib/hooks/use-favorite
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
+import { useHasPushFollows } from '@/lib/push/use-has-push-follows';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -549,7 +550,9 @@ export function FavoritesMenuPanel({
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
   const tNav = useTranslations('navigation');
+  const tPush = useTranslations('pushAlerts.menu');
   const counts = useFavoriteCounts();
+  const hasPushFollows = useHasPushFollows();
   // `poll: false` — the menu is on screen for seconds. The homepage band is the surface that
   // stays open long enough for a five-minute refresh to mean anything, and it keeps its own.
   const { data, isPending } = useFavorites({ enabled: open && counts.total > 0, poll: false });
@@ -624,13 +627,27 @@ export function FavoritesMenuPanel({
           </span>
           {/* Wo im gefüllten Zustand „Alle anzeigen" steht. Als Knopf unter der Anleitung nahm
               derselbe Link eine eigene Zeile im Band und stand wieder auf keiner Kante. */}
-          <Link
-            href="/parks"
-            prefetch={false}
-            className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
-          >
-            {tNav('explore')}
-          </Link>
+          <span className="flex items-center gap-3">
+            {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
+                eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. */}
+            {hasPushFollows && (
+              <Link
+                href="/alerts"
+                prefetch={false}
+                className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
+              >
+                <Bell className="size-3" aria-hidden="true" />
+                {tPush('link')}
+              </Link>
+            )}
+            <Link
+              href="/parks"
+              prefetch={false}
+              className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
+            >
+              {tNav('explore')}
+            </Link>
+          </span>
         </div>
 
         <div data-menu-stagger>
@@ -719,15 +736,27 @@ export function FavoritesMenuPanel({
           <Star className="h-4 w-4 fill-amber-400 text-amber-500" aria-hidden="true" />
           {t('title')}
         </span>
-        {somethingHidden && (
-          <Link
-            href="/#favorites"
-            prefetch={false}
-            className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
-          >
-            {tCommon('viewAll')}
-          </Link>
-        )}
+        <span className="flex items-center gap-3">
+          {hasPushFollows && (
+            <Link
+              href="/alerts"
+              prefetch={false}
+              className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
+            >
+              <Bell className="size-3" aria-hidden="true" />
+              {tPush('link')}
+            </Link>
+          )}
+          {somethingHidden && (
+            <Link
+              href="/#favorites"
+              prefetch={false}
+              className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
+            >
+              {tCommon('viewAll')}
+            </Link>
+          )}
+        </span>
       </div>
 
       {/* `plan.stacked` und nicht `lg:flex-row`: die Breite dieses Bandes ist die des Headers,

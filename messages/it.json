@@ -1594,6 +1594,49 @@
       "thenText": "Da quel momento compaiono in questo menu e in home page, con stato live e tempo di attesa."
     }
   },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Attiva promemoria 30 minuti prima di {name}",
+      "following": "Promemoria attivo per {name} – tocca per disattivarlo"
+    },
+    "rideBell": {
+      "setAlert": "Imposta un avviso sul tempo di attesa per {name}",
+      "alerted": "Avviso attivo per {name} – tocca per modificarlo"
+    },
+    "rideDialog": {
+      "title": "Avvisi sul tempo di attesa",
+      "subtitle": "Per {park} – ti avvisiamo appena l’attesa scende sotto la soglia scelta.",
+      "soloSubtitle": "{park} – ti avvisiamo appena l’attesa scende sotto la soglia scelta.",
+      "loading": "Caricamento…",
+      "empty": "Ancora nessun avviso per questo parco.",
+      "thresholdLabel": "sotto {minutes} min",
+      "remove": "Rimuovi {name}",
+      "addTitle": "Aggiungi un avviso",
+      "selectRide": "Scegli un’attrazione",
+      "thresholdInput": "Soglia in minuti",
+      "minutes": "min",
+      "add": "Aggiungi",
+      "adding": "Salvataggio…",
+      "error": "Non ha funzionato. Riprova.",
+      "viewAll": "Vedi tutti i tuoi avvisi",
+      "close": "Chiudi",
+      "entry": "Avvisi sul tempo di attesa",
+      "entryWithCount": "Avvisi sul tempo di attesa ({count})",
+      "removeShort": "Rimuovi",
+      "save": "Salva"
+    },
+    "overview": {
+      "title": "I miei avvisi",
+      "subtitle": "Avvisi sul tempo di attesa e promemoria degli show per questo dispositivo, in tutti i parchi.",
+      "loading": "Caricamento…",
+      "emptyBody": "Ancora niente impostato. Nella pagina di un parco, la campanella accanto a un’attrazione o a uno show attiva un promemoria.",
+      "rideAlertsTitle": "{count, plural, =1 {Un avviso sul tempo di attesa} other {# avvisi sul tempo di attesa}}",
+      "showFollowsTitle": "{count, plural, =1 {Un promemoria show} other {# promemoria show}}",
+      "thresholdLabel": "sotto {minutes} min",
+      "remove": "Rimuovi"
+    },
+    "menu": { "link": "I miei avvisi" }
+  },
   "glossary": {
     "blogPosts": {
       "title": "{term} sul blog"

@@ -1594,6 +1594,51 @@
       "thenText": "Ab dann stehen sie hier im Menü und auf der Startseite, mit Live-Status und Wartezeit."
     }
   },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Erinnerung 30 Minuten vor {name} aktivieren",
+      "following": "Erinnerung für {name} aktiv – zum Deaktivieren tippen"
+    },
+    "rideBell": {
+      "setAlert": "Wartezeit-Alarm für {name} einrichten",
+      "alerted": "Wartezeit-Alarm für {name} aktiv – zum Bearbeiten tippen"
+    },
+    "rideDialog": {
+      "title": "Wartezeit-Alarme",
+      "subtitle": "Für {park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
+      "soloSubtitle": "{park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
+      "loading": "Lädt …",
+      "empty": "Noch keine Alarme für diesen Park.",
+      "thresholdLabel": "unter {minutes} Min.",
+      "remove": "{name} entfernen",
+      "addTitle": "Neuen Alarm einrichten",
+      "selectRide": "Fahrgeschäft wählen",
+      "thresholdInput": "Schwelle in Minuten",
+      "minutes": "Min.",
+      "add": "Hinzufügen",
+      "adding": "Wird gespeichert …",
+      "error": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
+      "viewAll": "Alle eigenen Alarme ansehen",
+      "close": "Schließen",
+      "entry": "Wartezeit-Alarme",
+      "entryWithCount": "Wartezeit-Alarme ({count})",
+      "removeShort": "Entfernen",
+      "save": "Speichern"
+    },
+    "overview": {
+      "title": "Meine Alarme",
+      "subtitle": "Wartezeit-Alarme und Show-Erinnerungen für dieses Gerät, parkübergreifend.",
+      "loading": "Lädt …",
+      "emptyBody": "Noch nichts eingerichtet. Auf einer Parkseite lässt sich über die Glocke bei einem Fahrgeschäft oder einer Show eine Erinnerung einrichten.",
+      "rideAlertsTitle": "{count, plural, =1 {Ein Wartezeit-Alarm} other {# Wartezeit-Alarme}}",
+      "showFollowsTitle": "{count, plural, =1 {Eine Show-Erinnerung} other {# Show-Erinnerungen}}",
+      "thresholdLabel": "unter {minutes} Min.",
+      "remove": "Entfernen"
+    },
+    "menu": {
+      "link": "Meine Alarme"
+    }
+  },
   "glossary": {
     "blogPosts": {
       "title": "{term} im Blog"

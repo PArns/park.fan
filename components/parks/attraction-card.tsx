@@ -11,6 +11,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { RideAlertBell } from '@/components/push/ride-alert-bell';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -45,6 +46,15 @@ interface AttractionCardProps {
   distance?: number;
   showParkName?: boolean;
   timezone?: string;
+  /**
+   * The park's name, for the ride-alert bell's dialog — not for display (that
+   * is `showParkName`'s job). On the park's own page (`LandSection`) the
+   * attraction never carries a nested `park` object, since every card there
+   * is already known to belong to the one park the visitor is looking at; the
+   * cross-park listings (favorites, homepage) that DO attach one still work
+   * without this prop, via the fallback below.
+   */
+  parkName?: string;
 }
 
 // ---------- helpers ----------
@@ -101,6 +111,7 @@ export function AttractionCard({
   distance,
   showParkName = false,
   timezone,
+  parkName: parkNameProp,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
@@ -111,6 +122,11 @@ export function AttractionCard({
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
+  const parkName =
+    parkNameProp ??
+    ('park' in attraction && attraction.park?.name
+      ? stripNewPrefix(attraction.park.name)
+      : undefined);
   const crowdLevel = getCrowdLevel(attraction);
   const href = getHref(attraction, parkPath);
   const backgroundImage =
@@ -224,25 +240,46 @@ export function AttractionCard({
           }}
         />
 
-        {/* Favorite star */}
+        {/* Notification bell + favorite star — a row of two 34px glass circles.
+            Needs the top panel's right padding widened to match (below): one
+            circle reserved 52px from the edge, two need roughly 88px. */}
         {attraction.id && (
-          <div
-            className="absolute top-3 right-3 z-[4] h-[34px] w-[34px] rounded-full"
-            style={{
-              background: 'var(--pk-fav-bg)',
-              border: '1px solid var(--pk-fav-border)',
-              boxShadow: 'var(--pk-fav-shadow)',
-            }}
-          >
-            <FavoriteStar
-              type="attraction"
-              id={attraction.id}
-              name={stripNewPrefix(attraction.name)}
-              size="md"
-              noCircle
-              variant="glass"
-              className="h-full w-full"
-            />
+          <div className="absolute top-3 right-3 z-[4] flex items-center gap-2">
+            {parkName && (
+              <div
+                className="h-[34px] w-[34px] rounded-full"
+                style={{
+                  background: 'var(--pk-fav-bg)',
+                  border: '1px solid var(--pk-fav-border)',
+                  boxShadow: 'var(--pk-fav-shadow)',
+                }}
+              >
+                <RideAlertBell
+                  attractionId={attraction.id}
+                  attractionName={stripNewPrefix(attraction.name)}
+                  parkName={parkName}
+                  className="h-full w-full"
+                />
+              </div>
+            )}
+            <div
+              className="h-[34px] w-[34px] rounded-full"
+              style={{
+                background: 'var(--pk-fav-bg)',
+                border: '1px solid var(--pk-fav-border)',
+                boxShadow: 'var(--pk-fav-shadow)',
+              }}
+            >
+              <FavoriteStar
+                type="attraction"
+                id={attraction.id}
+                name={stripNewPrefix(attraction.name)}
+                size="md"
+                noCircle
+                variant="glass"
+                className="h-full w-full"
+              />
+            </div>
           </div>
         )}
 
@@ -250,7 +287,7 @@ export function AttractionCard({
         <div
           className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
           style={{
-            padding: '14px 52px 13px 16px',
+            padding: parkName ? '14px 88px 13px 16px' : '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',

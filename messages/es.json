@@ -1594,6 +1594,49 @@
       "thenText": "A partir de ahí aparecen en este menú y en la portada, con estado en vivo y tiempo de espera."
     }
   },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Activar aviso 30 minutos antes de {name}",
+      "following": "Aviso activo para {name} – toca para desactivarlo"
+    },
+    "rideBell": {
+      "setAlert": "Configurar aviso de tiempo de espera para {name}",
+      "alerted": "Aviso activo para {name} – toca para editarlo"
+    },
+    "rideDialog": {
+      "title": "Avisos de tiempo de espera",
+      "subtitle": "Para {park} – te avisamos en cuanto la espera baje del límite elegido.",
+      "soloSubtitle": "{park} – te avisamos en cuanto la espera baje del límite elegido.",
+      "loading": "Cargando…",
+      "empty": "Todavía no hay avisos para este parque.",
+      "thresholdLabel": "menos de {minutes} min",
+      "remove": "Quitar {name}",
+      "addTitle": "Añadir un aviso",
+      "selectRide": "Elegir una atracción",
+      "thresholdInput": "Límite en minutos",
+      "minutes": "min",
+      "add": "Añadir",
+      "adding": "Guardando…",
+      "error": "No ha funcionado. Inténtalo de nuevo.",
+      "viewAll": "Ver todos tus avisos",
+      "close": "Cerrar",
+      "entry": "Avisos de tiempo de espera",
+      "entryWithCount": "Avisos de tiempo de espera ({count})",
+      "removeShort": "Quitar",
+      "save": "Guardar"
+    },
+    "overview": {
+      "title": "Mis avisos",
+      "subtitle": "Avisos de tiempo de espera y recordatorios de espectáculos para este dispositivo, en todos los parques.",
+      "loading": "Cargando…",
+      "emptyBody": "Todavía no hay nada configurado. En la página de un parque, la campana junto a una atracción o un espectáculo activa un recordatorio.",
+      "rideAlertsTitle": "{count, plural, =1 {Un aviso de tiempo de espera} other {# avisos de tiempo de espera}}",
+      "showFollowsTitle": "{count, plural, =1 {Un recordatorio de espectáculo} other {# recordatorios de espectáculo}}",
+      "thresholdLabel": "menos de {minutes} min",
+      "remove": "Quitar"
+    },
+    "menu": { "link": "Mis avisos" }
+  },
   "glossary": {
     "blogPosts": {
       "title": "{term} en el blog"
