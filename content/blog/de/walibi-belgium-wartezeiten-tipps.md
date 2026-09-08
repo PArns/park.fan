@@ -262,14 +262,17 @@ in Folge bekommt, ist für eine Kette dieser Größe keine Selbstverständlichke
 
 ## Ibilaw: Halloween rückwärts gelesen
 
-![Ein beleuchtetes Torschild „Psycho Circus" mit Clownsgesicht in der Mitte, darunter Besucher zwischen Imbissbuden | Die Scare Zone Psycho Circus, eine von mehreren bei Ibilaw. | right](/media/halloween-2026/beispiel-psycho-circus.jpg)
+![Verfallenes Holzgebäude mit Schriftzug Aquarium, blau-grün beleuchtet bei Nacht | Das Spukhaus Aquarium, direkt in Dock World, dort wo tagsüber Mecalodon fährt. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
 Zu Halloween dreht der Park seinen eigenen Namen um: **„Ibilaw"** ist
 „Walibi" rückwärts, seit 2024 mit Maskottchen **Bill** und mehreren
-Spukhäusern und Scare Zones wie dem clownesken **Psycho Circus**,
-familienfreundlicher als die strikten Ab-16-Events anderer Parks. Der
-**Speedy Pass** ist hier die Fast-Lane, auch außerhalb der Saison. Die volle
-Einordnung im Vergleich zu Toverland, Movie Park und Co. steht in unserem
+Spukhäusern und Scare Zones wie dem clownesken **Psycho Circus** und
+**Arachnophobia**, familienfreundlicher als die strikten Ab-16-Events anderer
+Parks. Eines der Spukhäuser, **Aquarium**, steht im selben Dock-World-Areal,
+in dem tagsüber Mecalodon fährt, in einem angeblich seit den Neunzigern
+geschlossenen Schauaquarium. Der **Speedy Pass** ist hier die Fast-Lane, auch
+außerhalb der Saison. Die volle Einordnung im Vergleich zu Toverland,
+Movie Park und Co. steht in unserem
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026#walibi-belgium-ibilaw).
 
 ## Wann du hinfahren solltest
