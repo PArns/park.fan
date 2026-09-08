@@ -1594,6 +1594,55 @@
       "thenText": "Vanaf dan staan ze in dit menu en op de homepage, met live status en wachttijd."
     }
   },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Herinnering 30 minuten voor {name} inschakelen",
+      "following": "Herinnering voor {name} actief – tik om uit te schakelen"
+    },
+    "rideBell": {
+      "setAlert": "Wachttijdmelding voor {name} instellen",
+      "alerted": "Wachttijdmelding voor {name} actief – tik om te bewerken"
+    },
+    "rideDialog": {
+      "title": "Wachttijdmeldingen",
+      "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
+      "soloSubtitle": "{park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
+      "loading": "Laden…",
+      "empty": "Nog geen meldingen voor dit park.",
+      "thresholdLabel": "onder {minutes} min.",
+      "remove": "{name} verwijderen",
+      "addTitle": "Nieuwe melding instellen",
+      "selectRide": "Attractie kiezen",
+      "thresholdInput": "Grens in minuten",
+      "minutes": "min.",
+      "add": "Toevoegen",
+      "adding": "Bezig met opslaan…",
+      "error": "Dat is niet gelukt. Probeer het nogmaals.",
+      "viewAll": "Al je meldingen bekijken",
+      "close": "Sluiten",
+      "entry": "Wachttijdmeldingen",
+      "entryWithCount": "Wachttijdmeldingen ({count})",
+      "removeShort": "Verwijderen",
+      "save": "Opslaan",
+      "outOfSeason": "Alleen in de winter",
+      "retired": "Gesloopt",
+      "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw."
+    },
+    "overview": {
+      "title": "Mijn meldingen",
+      "subtitle": "Wachttijdmeldingen en show-herinneringen voor dit apparaat, voor alle parken.",
+      "loading": "Laden…",
+      "emptyBody": "Nog niets ingesteld. Op een parkpagina stel je via de bel bij een attractie of show een herinnering in.",
+      "rideAlertsTitle": "{count, plural, =1 {Eén wachttijdmelding} other {# wachttijdmeldingen}}",
+      "showFollowsTitle": "{count, plural, =1 {Eén show-herinnering} other {# show-herinneringen}}",
+      "thresholdLabel": "onder {minutes} min.",
+      "remove": "Verwijderen",
+      "outOfSeason": "Alleen in de winter",
+      "retired": "Gesloopt",
+      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina."
+    },
+    "menu": { "link": "Mijn meldingen" }
+  },
   "glossary": {
     "blogPosts": {
       "title": "{term} op het blog"

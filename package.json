@@ -56,6 +56,8 @@
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",
+    "test:is-uuid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-is-uuid.mjs",
+    "test:threshold-minutes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-threshold-minutes.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
     "test:content-changes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-content-changes.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",

@@ -14,6 +14,7 @@ export const LAYOUT_MESSAGE_NAMESPACES = [
   'navigation',
   'parks.crowdLevels',
   'parks.status',
+  'pushAlerts.menu',
   'search',
   'theme',
 ] as const;
@@ -23,10 +24,30 @@ export const LAYOUT_MESSAGE_NAMESPACES = [
  * An empty list means the chrome set already covers the route.
  */
 export const ROUTE_MESSAGE_NAMESPACES = {
-  '/': ['attractions', 'home', 'homeStory.bestTime', 'nearby', 'parkCard', 'parks', 'stats'],
+  '/': [
+    'attractions',
+    'home',
+    'homeStory.bestTime',
+    'nearby',
+    'parkCard',
+    'parks',
+    'pushAlerts.rideBell',
+    'pushAlerts.rideDialog',
+    'stats',
+  ],
+  '/alerts': ['pushAlerts.overview'],
   '/best-time-to-visit': ['nearby', 'parkCard'],
   '/blog': ['nearby', 'parkCard'],
-  '/blog/[slug]': ['attractions', 'blog', 'nearby', 'parkCard', 'parks', 'share'],
+  '/blog/[slug]': [
+    'attractions',
+    'blog',
+    'nearby',
+    'parkCard',
+    'parks',
+    'pushAlerts.rideBell',
+    'pushAlerts.rideDialog',
+    'share',
+  ],
   '/blog/authors/[author]': ['nearby', 'parkCard'],
   '/blog/category/[...path]': ['nearby', 'parkCard'],
   '/blog/tag/[tag]': ['nearby', 'parkCard'],
@@ -41,7 +62,15 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/fancast': ['home', 'nearby', 'parkCard'],
   '/glossary': ['glossary'],
   '/glossary/[term]': ['nearby', 'parkCard'],
-  '/how-park-fan-works': ['attractions', 'nearby', 'parkCard', 'parks'],
+  '/how-park-fan-works': [
+    'attractions',
+    'nearby',
+    'parkCard',
+    'parks',
+    'pushAlerts.rideBell',
+    'pushAlerts.rideDialog',
+    'pushAlerts.showBell',
+  ],
   '/impressum': [],
   '/maintenance': [],
   '/parks': ['explore', 'nearby'],
@@ -53,6 +82,9 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'nearby',
     'parkCard',
     'parks',
+    'pushAlerts.rideBell',
+    'pushAlerts.rideDialog',
+    'pushAlerts.showBell',
     'seo.faq',
     'share',
   ],
@@ -68,11 +100,21 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'nearby',
     'parkCard',
     'parks',
+    'pushAlerts.rideDialog',
     'share',
   ],
   '/search': [],
   '/trip-planner': ['parks.weather', 'planner'],
-  '/ui': ['attractions', 'nearby', 'parkCard', 'parks', 'stats'],
+  '/ui': [
+    'attractions',
+    'nearby',
+    'parkCard',
+    'parks',
+    'pushAlerts.rideBell',
+    'pushAlerts.rideDialog',
+    'pushAlerts.showBell',
+    'stats',
+  ],
 } as const;
 
 /**
@@ -80,6 +122,14 @@ export const ROUTE_MESSAGE_NAMESPACES = {
  * page payload (see `LAZY_MESSAGE_BOUNDARIES` in
  * `lib/i18n/route-namespaces.mjs`).
  */
-export const LAZY_CHUNK_NAMESPACES = ['attractions', 'parks', 'parks.weather', 'planner'] as const;
+export const LAZY_CHUNK_NAMESPACES = [
+  'attractions',
+  'parks',
+  'parks.weather',
+  'planner',
+  'pushAlerts.rideBell',
+  'pushAlerts.rideDialog',
+  'pushAlerts.showBell',
+] as const;
 
 export type RouteMessageKey = keyof typeof ROUTE_MESSAGE_NAMESPACES;

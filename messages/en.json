@@ -1594,6 +1594,57 @@
       "thenText": "From then on they show up in this menu and on the homepage, with live status and wait time."
     }
   },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Get a reminder 30 minutes before {name}",
+      "following": "Reminder for {name} is on – tap to turn off"
+    },
+    "rideBell": {
+      "setAlert": "Set a wait-time alert for {name}",
+      "alerted": "Wait-time alert for {name} is on – tap to edit"
+    },
+    "rideDialog": {
+      "title": "Wait-time alerts",
+      "subtitle": "For {park} – we’ll notify you once the wait drops below your threshold.",
+      "soloSubtitle": "{park} – we’ll notify you once the wait drops below your threshold.",
+      "loading": "Loading…",
+      "empty": "No alerts for this park yet.",
+      "thresholdLabel": "under {minutes} min",
+      "remove": "Remove {name}",
+      "addTitle": "Add a new alert",
+      "selectRide": "Choose a ride",
+      "thresholdInput": "Threshold in minutes",
+      "minutes": "min",
+      "add": "Add",
+      "adding": "Saving…",
+      "error": "That didn’t work. Please try again.",
+      "viewAll": "View all your alerts",
+      "close": "Close",
+      "entry": "Wait-time alerts",
+      "entryWithCount": "Wait-time alerts ({count})",
+      "removeShort": "Remove",
+      "save": "Save",
+      "outOfSeason": "Winter only",
+      "retired": "Retired",
+      "errorRateLimited": "Too many attempts. Try again in {seconds} seconds."
+    },
+    "overview": {
+      "title": "My alerts",
+      "subtitle": "Wait-time alerts and show reminders for this device, across every park.",
+      "loading": "Loading…",
+      "emptyBody": "Nothing set up yet. On a park page, the bell next to a ride or a show sets up a reminder.",
+      "rideAlertsTitle": "{count, plural, =1 {One wait-time alert} other {# wait-time alerts}}",
+      "showFollowsTitle": "{count, plural, =1 {One show reminder} other {# show reminders}}",
+      "thresholdLabel": "under {minutes} min",
+      "remove": "Remove",
+      "outOfSeason": "Winter only",
+      "retired": "Retired",
+      "loadError": "Couldn't load the list. Please reload the page."
+    },
+    "menu": {
+      "link": "My alerts"
+    }
+  },
   "glossary": {
     "blogPosts": {
       "title": "{term} on the blog"

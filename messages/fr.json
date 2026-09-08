@@ -1594,6 +1594,55 @@
       "thenText": "Ils apparaissent ensuite dans ce menu et sur la page d’accueil, avec leur statut en direct et leur temps d’attente."
     }
   },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Activer un rappel 30 minutes avant {name}",
+      "following": "Rappel actif pour {name} – toucher pour désactiver"
+    },
+    "rideBell": {
+      "setAlert": "Configurer une alerte de temps d’attente pour {name}",
+      "alerted": "Alerte active pour {name} – toucher pour modifier"
+    },
+    "rideDialog": {
+      "title": "Alertes de temps d’attente",
+      "subtitle": "Pour {park} – nous vous prévenons dès que l’attente passe sous le seuil choisi.",
+      "soloSubtitle": "{park} – nous vous prévenons dès que l’attente passe sous le seuil choisi.",
+      "loading": "Chargement…",
+      "empty": "Aucune alerte pour ce parc pour l’instant.",
+      "thresholdLabel": "sous {minutes} min",
+      "remove": "Supprimer {name}",
+      "addTitle": "Ajouter une alerte",
+      "selectRide": "Choisir une attraction",
+      "thresholdInput": "Seuil en minutes",
+      "minutes": "min",
+      "add": "Ajouter",
+      "adding": "Enregistrement…",
+      "error": "Ça n’a pas fonctionné. Merci de réessayer.",
+      "viewAll": "Voir toutes vos alertes",
+      "close": "Fermer",
+      "entry": "Alertes de temps d’attente",
+      "entryWithCount": "Alertes de temps d’attente ({count})",
+      "removeShort": "Supprimer",
+      "save": "Enregistrer",
+      "outOfSeason": "Hiver uniquement",
+      "retired": "Démonté",
+      "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes."
+    },
+    "overview": {
+      "title": "Mes alertes",
+      "subtitle": "Alertes de temps d’attente et rappels de spectacles pour cet appareil, tous parcs confondus.",
+      "loading": "Chargement…",
+      "emptyBody": "Rien configuré pour l’instant. Sur la page d’un parc, la cloche à côté d’une attraction ou d’un spectacle permet de créer un rappel.",
+      "rideAlertsTitle": "{count, plural, =1 {Une alerte de temps d’attente} other {# alertes de temps d’attente}}",
+      "showFollowsTitle": "{count, plural, =1 {Un rappel de spectacle} other {# rappels de spectacle}}",
+      "thresholdLabel": "sous {minutes} min",
+      "remove": "Supprimer",
+      "outOfSeason": "Hiver uniquement",
+      "retired": "Démonté",
+      "loadError": "Impossible de charger la liste. Veuillez recharger la page."
+    },
+    "menu": { "link": "Mes alertes" }
+  },
   "glossary": {
     "blogPosts": {
       "title": "{term} sur le blog"

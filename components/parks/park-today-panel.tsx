@@ -28,6 +28,7 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
+import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -204,6 +205,20 @@ export function ParkTodayPanel({
       })
       .slice(0, HEADLINER_ROWS);
   }, [park.attractions, park.status, waitsReadable]);
+
+  // Same reasoning as `headliners` above: a fresh `.map()` on every render of this panel (a tab
+  // switch, `detailDate` changing, anything unrelated to `park`) would hand `RideAlertsEntryButton`
+  // a new array + new objects each time, for a list that only actually changes when the poll
+  // replaces `park.attractions`.
+  const rideAlertAttractions = useMemo(
+    () =>
+      (park.attractions ?? []).map((a) => ({
+        id: a.id,
+        name: stripNewPrefix(a.name),
+        slug: a.slug,
+      })),
+    [park.attractions]
+  );
 
   // Reserved rows — the count comes from the same list the rows are drawn from, so it cannot
   // disagree with it, and it is stable across the poll because the attraction set is.
@@ -631,12 +646,17 @@ export function ParkTodayPanel({
               {/* A hash link, not a callback: `useTabHashRouting` already listens for
                   `hashchange` and switches + scrolls the tab panel below, so this needs no state
                   lifted across the page and it works before hydration. */}
-              <a
-                href={chapterHref('attractions')}
-                className="text-primary mt-auto text-left text-xs hover:underline"
-              >
-                {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
-              </a>
+              <div className="mt-auto flex items-center justify-between gap-2">
+                <a
+                  href={chapterHref('attractions')}
+                  className="text-primary text-left text-xs hover:underline"
+                >
+                  {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
+                </a>
+                {rideAlertAttractions.length > 0 && (
+                  <RideAlertsEntryButton parkName={park.name} attractions={rideAlertAttractions} />
+                )}
+              </div>
             </div>
           )}
 

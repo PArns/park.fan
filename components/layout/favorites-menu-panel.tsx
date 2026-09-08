@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { Clock, Star } from 'lucide-react';
+import { Bell, Clock, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -13,13 +13,14 @@ import { useFavoriteCounts, type FavoriteCounts } from '@/lib/hooks/use-favorite
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
+import { useHasPushFollows } from '@/lib/push/use-has-push-follows';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { stripNewPrefix } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import {
   buildRestaurantUrl,
@@ -549,7 +550,9 @@ export function FavoritesMenuPanel({
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
   const tNav = useTranslations('navigation');
+  const tPush = useTranslations('pushAlerts.menu');
   const counts = useFavoriteCounts();
+  const hasPushFollows = useHasPushFollows();
   // `poll: false` — the menu is on screen for seconds. The homepage band is the surface that
   // stays open long enough for a five-minute refresh to mean anything, and it keeps its own.
   const { data, isPending } = useFavorites({ enabled: open && counts.total > 0, poll: false });
@@ -615,7 +618,17 @@ export function FavoritesMenuPanel({
      */
     return (
       <div>
-        <div className="mb-4 flex items-center justify-between gap-4">
+        <div
+          className={cn(
+            'mb-4 flex gap-4',
+            // A 300px Sheet leaves ~252px of content — "★ Favoriten" on the
+            // left plus "🔔 Meine Alarme" and "Entdecken" both on the right,
+            // in one row, ran past that in German and French alike. Below
+            // `sm` the links wrap onto their own line under the title rather
+            // than overflowing the row.
+            isSheet ? 'flex-col items-start gap-2' : 'items-center justify-between'
+          )}
+        >
           {/* Grau, nicht gold: der Stern im Auslöser ist gefüllt, sobald etwas markiert ist, und
               diese Zeile sagt das Gegenteil. */}
           <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
@@ -624,13 +637,18 @@ export function FavoritesMenuPanel({
           </span>
           {/* Wo im gefüllten Zustand „Alle anzeigen" steht. Als Knopf unter der Anleitung nahm
               derselbe Link eine eigene Zeile im Band und stand wieder auf keiner Kante. */}
-          <Link
-            href="/parks"
-            prefetch={false}
-            className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
-          >
-            {tNav('explore')}
-          </Link>
+          <span className="flex items-center gap-3">
+            {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
+                eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. */}
+            {hasPushFollows && <PushAlertsMenuLink label={tPush('link')} />}
+            <Link
+              href="/parks"
+              prefetch={false}
+              className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
+            >
+              {tNav('explore')}
+            </Link>
+          </span>
         </div>
 
         <div data-menu-stagger>
@@ -712,22 +730,34 @@ export function FavoritesMenuPanel({
 
   return (
     <div ref={bandRef}>
-      <div className="mb-4 flex items-center justify-between gap-4">
+      <div
+        className={cn(
+          'mb-4 flex gap-4',
+          // Same overflow risk as the empty state's header above, and the
+          // same fix: on the 300px Sheet, "My alerts" and "view all" both
+          // sitting beside the title in one row can run past its ~252px of
+          // content, so they wrap onto their own line under it instead.
+          isSheet ? 'flex-col items-start gap-2' : 'items-center justify-between'
+        )}
+      >
         <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
           {/* Gold wie der Auslöser im Balken und wie jeder Stern auf einer Park- oder Bahnseite
               (`FavoriteStar`) — dieselbe Marke, dieselbe Farbe. */}
           <Star className="h-4 w-4 fill-amber-400 text-amber-500" aria-hidden="true" />
           {t('title')}
         </span>
-        {somethingHidden && (
-          <Link
-            href="/#favorites"
-            prefetch={false}
-            className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
-          >
-            {tCommon('viewAll')}
-          </Link>
-        )}
+        <span className="flex items-center gap-3">
+          {hasPushFollows && <PushAlertsMenuLink label={tPush('link')} />}
+          {somethingHidden && (
+            <Link
+              href="/#favorites"
+              prefetch={false}
+              className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
+            >
+              {tCommon('viewAll')}
+            </Link>
+          )}
+        </span>
       </div>
 
       {/* `plan.stacked` und nicht `lg:flex-row`: die Breite dieses Bandes ist die des Headers,
@@ -833,6 +863,26 @@ export function FavoritesMenuPanel({
         )}
       </div>
     </div>
+  );
+}
+
+/**
+ * The link to `/alerts`, shown beside the panel's own title whenever this
+ * browser has at least one ride alert or show follow — independent of
+ * favorites, since a visitor can have one without the other. Extracted after
+ * the empty and filled header states each carried a byte-for-byte identical
+ * copy of it.
+ */
+function PushAlertsMenuLink({ label }: { label: string }) {
+  return (
+    <Link
+      href="/alerts"
+      prefetch={false}
+      className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
+    >
+      <Bell className="size-3" aria-hidden="true" />
+      {label}
+    </Link>
   );
 }
 
