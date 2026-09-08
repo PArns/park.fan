@@ -15,6 +15,7 @@ import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import {
   ThresholdMinutesInput,
   defaultThresholdFor,
+  maxThresholdFor,
   parseThresholdMinutes,
 } from '@/components/push/threshold-minutes-input';
 
@@ -146,6 +147,7 @@ export function RideAlertQuickDialog({
                 onChange={setThresholdRaw}
                 ariaLabel={t('thresholdInput')}
                 minutesLabel={t('minutes')}
+                max={maxThresholdFor(currentWaitTime)}
               />
             </div>
             <p className="text-muted-foreground text-[11px] leading-snug">{t('todayOnly')}</p>

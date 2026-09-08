@@ -50,8 +50,7 @@ export type PushUnavailableCause =
   | 'failed';
 
 export type PushRegistration =
-  | { ok: true; identity: PushIdentity }
-  | { ok: false; cause: PushUnavailableCause };
+  { ok: true; identity: PushIdentity } | { ok: false; cause: PushUnavailableCause };
 
 let availabilityPromise: Promise<PushAvailability | null> | null = null;
 

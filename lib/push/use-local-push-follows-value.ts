@@ -1,6 +1,12 @@
 'use client';
 
-import { useEffect, useState, type DependencyList, type Dispatch, type SetStateAction } from 'react';
+import {
+  useEffect,
+  useState,
+  type DependencyList,
+  type Dispatch,
+  type SetStateAction,
+} from 'react';
 import { PUSH_FOLLOWS_CHANGED_EVENT } from './push-follows-store';
 
 /**

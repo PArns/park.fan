@@ -20,6 +20,7 @@ import {
 import {
   ThresholdMinutesInput,
   defaultThresholdFor,
+  maxThresholdFor,
   parseThresholdMinutes,
 } from '@/components/push/threshold-minutes-input';
 import { cn } from '@/lib/utils';
@@ -248,6 +249,12 @@ export function RideAlertDialog({
                     onChange={setThresholdRaw}
                     ariaLabel={t('thresholdInput')}
                     minutesLabel={t('minutes')}
+                    // The cap follows the picker: each ride in the list carries
+                    // its own reading, so switching from a 20-minute ride to a
+                    // 120-minute one re-opens the top of the track.
+                    max={maxThresholdFor(
+                      attractions.find((a) => a.id === selectedId)?.currentWaitTime
+                    )}
                   />
                 </div>
                 <Button

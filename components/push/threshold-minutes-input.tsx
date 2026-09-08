@@ -9,6 +9,8 @@ import {
   THRESHOLD_STEP_MIN,
   THRESHOLD_SLIDER_MIN,
   defaultThresholdFor,
+  hasUsableThresholdRange,
+  maxThresholdFor,
   parseThresholdMinutes,
 } from '@/lib/push/threshold-minutes';
 
@@ -19,6 +21,8 @@ export {
   THRESHOLD_STEP_MIN,
   THRESHOLD_SLIDER_MIN,
   defaultThresholdFor,
+  hasUsableThresholdRange,
+  maxThresholdFor,
   parseThresholdMinutes,
 };
 
@@ -29,6 +33,13 @@ interface ThresholdMinutesInputProps {
   ariaLabel: string;
   /** The unit word shown beside the big number — e.g. "min" / "Min.". */
   minutesLabel: string;
+  /**
+   * Top of the track, from {@link maxThresholdFor} — ten minutes under what
+   * the ride queues right now, because a threshold at or above the current
+   * reading fires the moment it is saved. Defaults to the API's own maximum
+   * for a ride with no reading to cap against.
+   */
+  max?: number;
 }
 
 /**
@@ -45,14 +56,15 @@ interface ThresholdMinutesInputProps {
  * {@link THRESHOLD_STEP_MIN} apart rather than an index into a curated list —
  * a 240-position drag is fiddly on a touchscreen, and nobody is asking for
  * "notify below 47 minutes" specifically. The native input's own `min` is
- * {@link THRESHOLD_SLIDER_MIN} (ten — a wait-time alert under that is not a
- * useful one), not {@link MIN_THRESHOLD_MIN}: a range input snaps EVERY
- * value — the initial one, a drag, an arrow key — to `min + k·step`, always,
+ * {@link THRESHOLD_SLIDER_MIN} (five), not {@link MIN_THRESHOLD_MIN}: a
+ * range input snaps EVERY value — the initial one, a drag, an arrow key — to `min + k·step`, always,
  * so anchoring the grid at `MIN_THRESHOLD_MIN` (1) would make the reachable
  * positions 1, 6, 11, 16, 21, ... — not one of which is a round number, and
  * none of which is what `defaultThresholdFor` actually returns (20, 30, 45,
- * ...). Anchored at ten with a step of five the grid is exactly
- * 10, 15, ..., 240. The drawn thumb/fill still use the true, unsnapped
+ * ...). Anchored at five with a step of five the grid is exactly
+ * 5, 10, 15, ..., up to whatever `max` is — and `max` lands on it rather than
+ * one step short, because `maxThresholdFor` subtracts ten from an already
+ * five-rounded reading. The drawn thumb/fill still use the true, unsnapped
  * `numericValue` for their position (clamped into `[0,1]` since an OLD
  * alert saved before this control had a floor at all can still carry 1–9),
  * so a legacy value like that draws at the track's left edge rather than
@@ -80,12 +92,15 @@ export function ThresholdMinutesInput({
   className,
   ariaLabel,
   minutesLabel,
+  max = MAX_THRESHOLD_MIN,
 }: ThresholdMinutesInputProps) {
   const numericValue = parseThresholdMinutes(value) ?? DEFAULT_THRESHOLD_MIN;
-  const fraction = Math.min(
-    1,
-    Math.max(0, (numericValue - THRESHOLD_SLIDER_MIN) / (MAX_THRESHOLD_MIN - THRESHOLD_SLIDER_MIN))
-  );
+  // A max equal to the floor is a legal one-stop track (a ride at 15 minutes
+  // can only be watched for "under 5"), and dividing by that span would be a
+  // division by zero — so the fraction is pinned rather than computed.
+  const span = max - THRESHOLD_SLIDER_MIN;
+  const fraction =
+    span <= 0 ? 1 : Math.min(1, Math.max(0, (numericValue - THRESHOLD_SLIDER_MIN) / span));
   // The native thumb's centre travels from half a thumb-width in to half a
   // thumb-width short of the end — see RiderHeightFilter's `offset`, same
   // formula, just against a linear value instead of a stop index.
@@ -116,7 +131,7 @@ export function ThresholdMinutesInput({
           type="range"
           inputMode="numeric"
           min={THRESHOLD_SLIDER_MIN}
-          max={MAX_THRESHOLD_MIN}
+          max={max}
           step={THRESHOLD_STEP_MIN}
           value={numericValue}
           onChange={(e) => onChange(e.target.value)}
@@ -129,7 +144,7 @@ export function ThresholdMinutesInput({
 
       <div className="text-muted-foreground flex justify-between text-[11px] tabular-nums">
         <span>{THRESHOLD_SLIDER_MIN}</span>
-        <span>{MAX_THRESHOLD_MIN}</span>
+        <span>{max}</span>
       </div>
     </div>
   );

@@ -103,7 +103,10 @@ async function classifyFailure(response: Response): Promise<PushWriteError> {
       .catch(() => NaN);
     // A body the limiter didn't shape as expected is still a rate limit —
     // 60s is a reasonable "try later" default, not a claim about the real window.
-    return { reason: 'rate-limited', retryAfterSeconds: Number.isFinite(retryAfterSeconds) ? retryAfterSeconds : 60 };
+    return {
+      reason: 'rate-limited',
+      retryAfterSeconds: Number.isFinite(retryAfterSeconds) ? retryAfterSeconds : 60,
+    };
   }
   if (response.status === 404) return { reason: 'not-found' };
   if (response.status >= 400 && response.status < 500) return { reason: 'invalid' };
