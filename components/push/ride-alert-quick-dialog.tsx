@@ -6,6 +6,8 @@ import { Bell } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { PlannerPanelPhoto } from '@/components/planner/planner-panel-photo';
+import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import {
@@ -22,6 +24,9 @@ interface RideAlertQuickDialogProps {
   parkName: string;
   /** Reported back once a save/remove succeeds, so the bell can update its own icon. */
   onSaved: (alerted: boolean) => void;
+  /** The card's own photo, if it has one — same picture, same crop, no second fetch. */
+  backgroundImage?: string | null;
+  objectPosition?: string;
 }
 
 /**
@@ -31,6 +36,13 @@ interface RideAlertQuickDialogProps {
  * overview's central entry point); `attraction-card.tsx` has no access to
  * its park's sibling rides to build that dropdown, and this is the simpler
  * dialog anyway when the ride is already fixed.
+ *
+ * Carries the same photo the card itself was drawn with — `PlannerPanelPhoto`
+ * is the trip planner's own "ride/park picture behind a reading surface"
+ * component, reused rather than redrawn (see that file for the contrast
+ * budget and why the wash is heaviest at the head and foot). A card with no
+ * photo of its own falls back to the same watermark ground the planner shows
+ * for the 95%+ of parks the media database has no picture for.
  */
 export function RideAlertQuickDialog({
   open,
@@ -39,6 +51,8 @@ export function RideAlertQuickDialog({
   attractionName,
   parkName,
   onSaved,
+  backgroundImage,
+  objectPosition,
 }: RideAlertQuickDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
   const [thresholdRaw, setThresholdRaw] = useState(String(DEFAULT_THRESHOLD_MIN));
@@ -73,6 +87,7 @@ export function RideAlertQuickDialog({
     setAlerted(true);
     onSaved(true);
     onOpenChange(false);
+    trackRideAlertSet('card');
   };
 
   const handleRemove = async () => {
@@ -82,11 +97,13 @@ export function RideAlertQuickDialog({
     setAlerted(false);
     onSaved(false);
     onOpenChange(false);
+    trackRideAlertRemoved();
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-sm">
+      <DialogContent className="relative flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-sm">
+        <PlannerPanelPhoto src={backgroundImage} position={objectPosition} />
         <div className="shrink-0 border-b px-5 py-3 sm:px-6">
           <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
             <Bell className="size-4 shrink-0" aria-hidden="true" />
@@ -98,20 +115,18 @@ export function RideAlertQuickDialog({
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
-          <div className="flex flex-col gap-3">
-            <label className="flex flex-col gap-1.5 text-xs font-medium">
-              {t('thresholdInput')}
-              <div className="flex items-center gap-2">
-                <ThresholdMinutesInput
-                  value={thresholdRaw}
-                  onChange={setThresholdRaw}
-                  className="w-20 max-sm:h-11"
-                  ariaLabel={t('thresholdInput')}
-                  autoFocus
-                />
-                <span className="text-muted-foreground font-normal">{t('minutes')}</span>
-              </div>
-            </label>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-medium">{t('thresholdInput')}</span>
+              <ThresholdMinutesInput
+                value={thresholdRaw}
+                onChange={setThresholdRaw}
+                ariaLabel={t('thresholdInput')}
+                minutesLabel={t('minutes')}
+                autoFocus
+              />
+            </div>
+            <p className="text-muted-foreground text-[11px] leading-snug">{t('todayOnly')}</p>
             {error &&
               (error.reason === 'rate-limited' ? (
                 <p className="text-destructive text-xs">
