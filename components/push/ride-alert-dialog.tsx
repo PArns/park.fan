@@ -6,7 +6,6 @@ import { Bell, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import {
   fetchRideAlertsRemote,
@@ -15,11 +14,12 @@ import {
   type PushWriteError,
   type RideAlertRemote,
 } from '@/lib/push/push-follows';
+import {
+  DEFAULT_THRESHOLD_MIN,
+  ThresholdMinutesInput,
+  parseThresholdMinutes,
+} from '@/components/push/threshold-minutes-input';
 import { cn } from '@/lib/utils';
-
-const DEFAULT_THRESHOLD_MIN = 20;
-const MIN_THRESHOLD_MIN = 1;
-const MAX_THRESHOLD_MIN = 240;
 
 export interface RideAlertDialogAttraction {
   id: string;
@@ -58,7 +58,8 @@ export function RideAlertDialog({
   // including ones this browser already watches.
   const [alerts, setAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
   const [rawSelectedId, setRawSelectedId] = useState('');
-  const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD_MIN);
+  const [thresholdRaw, setThresholdRaw] = useState(String(DEFAULT_THRESHOLD_MIN));
+  const threshold = parseThresholdMinutes(thresholdRaw);
   const [adding, setAdding] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [addError, setAddError] = useState<PushWriteError | null>(null);
@@ -105,7 +106,10 @@ export function RideAlertDialog({
 
   const handleAdd = async () => {
     const attraction = attractions.find((a) => a.id === selectedId);
-    if (!attraction) return;
+    // Defensive, not the real gate — the button below is already disabled
+    // while `threshold` is null, but a cleared field must never reach the
+    // API as the `Number('') === 0` it would otherwise silently become.
+    if (!attraction || threshold === null) return;
     setAdding(true);
     setAddError(null);
     const result = await setRideAlert(attraction.id, threshold);
@@ -122,7 +126,7 @@ export function RideAlertDialog({
       ),
       result.value,
     ]);
-    setThreshold(DEFAULT_THRESHOLD_MIN);
+    setThresholdRaw(String(DEFAULT_THRESHOLD_MIN));
   };
 
   const handleRemove = async (attractionId: string) => {
@@ -202,7 +206,7 @@ export function RideAlertDialog({
               <div
                 className={cn(
                   'flex flex-col gap-2',
-                  alerts !== null && 'border-border/60 border-t pt-4'
+                  alerts !== 'loading' && 'border-border/60 border-t pt-4'
                 )}
               >
                 <p className="text-xs font-medium">{t('addTitle')}</p>
@@ -220,15 +224,11 @@ export function RideAlertDialog({
                     ))}
                   </select>
                   <div className="flex items-center gap-2">
-                    <Input
-                      type="number"
-                      inputMode="numeric"
-                      min={MIN_THRESHOLD_MIN}
-                      max={MAX_THRESHOLD_MIN}
-                      value={threshold}
-                      onChange={(e) => setThreshold(Number(e.target.value))}
+                    <ThresholdMinutesInput
+                      value={thresholdRaw}
+                      onChange={setThresholdRaw}
                       className="w-20 max-sm:h-11"
-                      aria-label={t('thresholdInput')}
+                      ariaLabel={t('thresholdInput')}
                     />
                     <span className="text-muted-foreground shrink-0 text-xs">{t('minutes')}</span>
                   </div>
@@ -236,7 +236,7 @@ export function RideAlertDialog({
                 <Button
                   type="button"
                   onClick={handleAdd}
-                  disabled={!selectedId || adding}
+                  disabled={!selectedId || adding || threshold === null}
                   size="sm"
                   className="self-start"
                 >

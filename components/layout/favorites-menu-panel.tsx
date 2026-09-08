@@ -20,7 +20,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { stripNewPrefix } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import {
   buildRestaurantUrl,
@@ -618,7 +618,17 @@ export function FavoritesMenuPanel({
      */
     return (
       <div>
-        <div className="mb-4 flex items-center justify-between gap-4">
+        <div
+          className={cn(
+            'mb-4 flex gap-4',
+            // A 300px Sheet leaves ~252px of content — "★ Favoriten" on the
+            // left plus "🔔 Meine Alarme" and "Entdecken" both on the right,
+            // in one row, ran past that in German and French alike. Below
+            // `sm` the links wrap onto their own line under the title rather
+            // than overflowing the row.
+            isSheet ? 'flex-col items-start gap-2' : 'items-center justify-between'
+          )}
+        >
           {/* Grau, nicht gold: der Stern im Auslöser ist gefüllt, sobald etwas markiert ist, und
               diese Zeile sagt das Gegenteil. */}
           <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
@@ -630,16 +640,7 @@ export function FavoritesMenuPanel({
           <span className="flex items-center gap-3">
             {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
                 eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. */}
-            {hasPushFollows && (
-              <Link
-                href="/alerts"
-                prefetch={false}
-                className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
-              >
-                <Bell className="size-3" aria-hidden="true" />
-                {tPush('link')}
-              </Link>
-            )}
+            {hasPushFollows && <PushAlertsMenuLink label={tPush('link')} />}
             <Link
               href="/parks"
               prefetch={false}
@@ -729,7 +730,16 @@ export function FavoritesMenuPanel({
 
   return (
     <div ref={bandRef}>
-      <div className="mb-4 flex items-center justify-between gap-4">
+      <div
+        className={cn(
+          'mb-4 flex gap-4',
+          // Same overflow risk as the empty state's header above, and the
+          // same fix: on the 300px Sheet, "My alerts" and "view all" both
+          // sitting beside the title in one row can run past its ~252px of
+          // content, so they wrap onto their own line under it instead.
+          isSheet ? 'flex-col items-start gap-2' : 'items-center justify-between'
+        )}
+      >
         <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
           {/* Gold wie der Auslöser im Balken und wie jeder Stern auf einer Park- oder Bahnseite
               (`FavoriteStar`) — dieselbe Marke, dieselbe Farbe. */}
@@ -737,16 +747,7 @@ export function FavoritesMenuPanel({
           {t('title')}
         </span>
         <span className="flex items-center gap-3">
-          {hasPushFollows && (
-            <Link
-              href="/alerts"
-              prefetch={false}
-              className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
-            >
-              <Bell className="size-3" aria-hidden="true" />
-              {tPush('link')}
-            </Link>
-          )}
+          {hasPushFollows && <PushAlertsMenuLink label={tPush('link')} />}
           {somethingHidden && (
             <Link
               href="/#favorites"
@@ -862,6 +863,26 @@ export function FavoritesMenuPanel({
         )}
       </div>
     </div>
+  );
+}
+
+/**
+ * The link to `/alerts`, shown beside the panel's own title whenever this
+ * browser has at least one ride alert or show follow — independent of
+ * favorites, since a visitor can have one without the other. Extracted after
+ * the empty and filled header states each carried a byte-for-byte identical
+ * copy of it.
+ */
+function PushAlertsMenuLink({ label }: { label: string }) {
+  return (
+    <Link
+      href="/alerts"
+      prefetch={false}
+      className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
+    >
+      <Bell className="size-3" aria-hidden="true" />
+      {label}
+    </Link>
   );
 }
 

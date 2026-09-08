@@ -6,13 +6,13 @@ import { Bell } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
-
-const DEFAULT_THRESHOLD_MIN = 20;
-const MIN_THRESHOLD_MIN = 1;
-const MAX_THRESHOLD_MIN = 240;
+import {
+  DEFAULT_THRESHOLD_MIN,
+  ThresholdMinutesInput,
+  parseThresholdMinutes,
+} from '@/components/push/threshold-minutes-input';
 
 interface RideAlertQuickDialogProps {
   open: boolean;
@@ -41,7 +41,8 @@ export function RideAlertQuickDialog({
   onSaved,
 }: RideAlertQuickDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
-  const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD_MIN);
+  const [thresholdRaw, setThresholdRaw] = useState(String(DEFAULT_THRESHOLD_MIN));
+  const threshold = parseThresholdMinutes(thresholdRaw);
   const [alerted, setAlerted] = useState(false);
   const [saving, setSaving] = useState(false);
   const [removing, setRemoving] = useState(false);
@@ -52,11 +53,15 @@ export function RideAlertQuickDialog({
     const existing = getRideAlertLocal(attractionId);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAlerted(!!existing);
-    setThreshold(existing?.thresholdMinutes ?? DEFAULT_THRESHOLD_MIN);
+    setThresholdRaw(String(existing?.thresholdMinutes ?? DEFAULT_THRESHOLD_MIN));
     setError(null);
   }, [open, attractionId]);
 
   const handleSave = async () => {
+    // Defensive, not the real gate — the button below is already disabled
+    // while `threshold` is null, but a cleared field must never reach the
+    // API as the `Number('') === 0` it would otherwise silently become.
+    if (threshold === null) return;
     setSaving(true);
     setError(null);
     const result = await setRideAlert(attractionId, threshold);
@@ -97,14 +102,11 @@ export function RideAlertQuickDialog({
             <label className="flex flex-col gap-1.5 text-xs font-medium">
               {t('thresholdInput')}
               <div className="flex items-center gap-2">
-                <Input
-                  type="number"
-                  inputMode="numeric"
-                  min={MIN_THRESHOLD_MIN}
-                  max={MAX_THRESHOLD_MIN}
-                  value={threshold}
-                  onChange={(e) => setThreshold(Number(e.target.value))}
+                <ThresholdMinutesInput
+                  value={thresholdRaw}
+                  onChange={setThresholdRaw}
                   className="w-20 max-sm:h-11"
+                  ariaLabel={t('thresholdInput')}
                   autoFocus
                 />
                 <span className="text-muted-foreground font-normal">{t('minutes')}</span>
@@ -137,7 +139,12 @@ export function RideAlertQuickDialog({
               {t('viewAll')}
             </Link>
           )}
-          <Button type="button" size="sm" onClick={handleSave} disabled={saving || removing}>
+          <Button
+            type="button"
+            size="sm"
+            onClick={handleSave}
+            disabled={saving || removing || threshold === null}
+          >
             {saving ? t('adding') : t('save')}
           </Button>
         </div>

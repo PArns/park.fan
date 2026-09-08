@@ -242,9 +242,15 @@ export function AttractionCard({
 
         {/* Notification bell + favorite star — a row of two 34px glass circles.
             Needs the top panel's right padding widened to match (below): one
-            circle reserved 52px from the edge, two need roughly 88px. */}
+            circle reserved 52px from the edge, two need roughly 92px.
+            `gap-3`, not `gap-2`: each circle's `::after` touch target is 44px
+            (`FavoriteStar`/`RideAlertBell`, below `sm`) centred on its own
+            34px circle, so two adjacent circles' 44px zones reach past their
+            shared edge — measured, `gap-2` (8px) left a 2px sliver where a
+            tap could land on either icon's zone. `gap-3` (12px, 34+12=46 ≥
+            44) puts the zones edge-to-edge with room to spare. */}
         {attraction.id && (
-          <div className="absolute top-3 right-3 z-[4] flex items-center gap-2">
+          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3">
             {/* `attraction.id` on a blog fallback card (its live detail failed
                 to resolve at build time) is `attractionSlug`, not a UUID —
                 `POST /push/ride-alerts` 400s on that, so the bell needs a real
@@ -292,7 +298,7 @@ export function AttractionCard({
         <div
           className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
           style={{
-            padding: parkName ? '14px 88px 13px 16px' : '14px 52px 13px 16px',
+            padding: parkName ? '14px 92px 13px 16px' : '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
