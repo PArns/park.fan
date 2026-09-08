@@ -1599,6 +1599,14 @@
       "follow": "Attiva promemoria 30 minuti prima di {name}",
       "following": "Promemoria attivo per {name} – tocca per disattivarlo"
     },
+    "showDialog": {
+      "title": "Promemoria spettacolo",
+      "explain": "Ti avvisiamo da 25 a 35 minuti prima del prossimo spettacolo di {show}.",
+      "follow": "Attiva promemoria",
+      "following": "Promemoria attivo",
+      "unfollow": "Disattiva promemoria",
+      "close": "Chiudi"
+    },
     "rideBell": {
       "setAlert": "Imposta un avviso sul tempo di attesa per {name}",
       "alerted": "Avviso attivo per {name} – tocca per modificarlo"
@@ -1626,7 +1634,8 @@
       "save": "Salva",
       "outOfSeason": "Solo in inverno",
       "retired": "Dismessa",
-      "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi."
+      "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",
+      "todayOnly": "Vale solo per oggi: per un altro giorno di visita va impostato di nuovo."
     },
     "overview": {
       "title": "I miei avvisi",

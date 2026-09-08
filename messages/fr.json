@@ -1599,6 +1599,14 @@
       "follow": "Activer un rappel 30 minutes avant {name}",
       "following": "Rappel actif pour {name} – toucher pour désactiver"
     },
+    "showDialog": {
+      "title": "Rappel de spectacle",
+      "explain": "Nous vous prévenons 25 à 35 minutes avant la prochaine séance de {show}.",
+      "follow": "Activer le rappel",
+      "following": "Rappel activé",
+      "unfollow": "Désactiver le rappel",
+      "close": "Fermer"
+    },
     "rideBell": {
       "setAlert": "Configurer une alerte de temps d’attente pour {name}",
       "alerted": "Alerte active pour {name} – toucher pour modifier"
@@ -1626,7 +1634,8 @@
       "save": "Enregistrer",
       "outOfSeason": "Hiver uniquement",
       "retired": "Démonté",
-      "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes."
+      "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
+      "todayOnly": "Valable pour aujourd’hui seulement – à configurer de nouveau pour un autre jour de visite."
     },
     "overview": {
       "title": "Mes alertes",

@@ -1599,6 +1599,14 @@
       "follow": "Herinnering 30 minuten voor {name} inschakelen",
       "following": "Herinnering voor {name} actief – tik om uit te schakelen"
     },
+    "showDialog": {
+      "title": "Show-herinnering",
+      "explain": "We melden het 25 tot 35 minuten voor de eerstvolgende voorstelling van {show}.",
+      "follow": "Herinnering inschakelen",
+      "following": "Herinnering is actief",
+      "unfollow": "Herinnering uitschakelen",
+      "close": "Sluiten"
+    },
     "rideBell": {
       "setAlert": "Wachttijdmelding voor {name} instellen",
       "alerted": "Wachttijdmelding voor {name} actief – tik om te bewerken"
@@ -1626,7 +1634,8 @@
       "save": "Opslaan",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
-      "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw."
+      "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
+      "todayOnly": "Geldt alleen voor vandaag – voor een andere bezoekdag moet de melding opnieuw worden ingesteld."
     },
     "overview": {
       "title": "Mijn meldingen",

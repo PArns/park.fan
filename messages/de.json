@@ -1599,6 +1599,14 @@
       "follow": "Erinnerung 30 Minuten vor {name} aktivieren",
       "following": "Erinnerung für {name} aktiv – zum Deaktivieren tippen"
     },
+    "showDialog": {
+      "title": "Show-Erinnerung",
+      "explain": "Wir benachrichtigen dich 25 bis 35 Minuten vor der jeweils nächsten Vorstellung von {show}.",
+      "follow": "Erinnerung aktivieren",
+      "following": "Erinnerung ist aktiv",
+      "unfollow": "Erinnerung deaktivieren",
+      "close": "Schließen"
+    },
     "rideBell": {
       "setAlert": "Wartezeit-Alarm für {name} einrichten",
       "alerted": "Wartezeit-Alarm für {name} aktiv – zum Bearbeiten tippen"
@@ -1626,7 +1634,8 @@
       "save": "Speichern",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
-      "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen."
+      "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
+      "todayOnly": "Gilt nur für den heutigen Tag – für einen anderen Besuchstag muss der Alarm neu eingerichtet werden."
     },
     "overview": {
       "title": "Meine Alarme",
