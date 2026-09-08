@@ -54,7 +54,7 @@ export function PushDialogHero({ icon: Icon, title, description, children }: Pus
         aria-hidden="true"
       />
       <Icon
-        className="text-primary/20 pointer-events-none absolute -right-5 -bottom-10 size-36"
+        className="text-primary/20 pointer-events-none absolute -right-3 -bottom-5 size-20"
         aria-hidden="true"
       />
 
