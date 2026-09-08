@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { useRouter } from '@/i18n/navigation';
+import { useRouter, getPathname } from '@/i18n/navigation';
+import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import {
   addDays,
   format,
@@ -166,13 +167,23 @@ export function ParkCalendarGrid({
   // Flip a day forward/back from inside the detail dialog. Crossing a month boundary navigates to
   // that month's PAGE, because the month is a URL now — the dialog keeps showing the previous day
   // dimmed until the new month's data lands (see ParkCalendarDayDetail's lastDay retention).
+  //
+  // `{ scroll: false }` + `suppressScrollToTopFor`: the same pair `MonthStep`'s arrows use in
+  // `ParkCalendarPanel`, for the same reason — this dialog is the touch-friendly replacement for
+  // the old hover tooltips, so flipping day by day and crossing a month boundary here is the way a
+  // phone visitor hits this bug, not the arrows below it. Without it the router's default put the
+  // reader back at the park's title card every time a swipe through the days crossed into a new
+  // month.
   const handleDayNavigate = (direction: -1 | 1) => {
     if (!selectedDate) return;
     const target = format(addDays(parseISO(selectedDate), direction), 'yyyy-MM-dd');
     setSelectedDate(target);
     if (target.slice(0, 7) !== format(currentMonth, 'yyyy-MM')) {
       const href = monthHref(direction === 1 ? nextMonth : prevMonth);
-      if (href) router.push(href);
+      if (href) {
+        suppressScrollToTopFor(getPathname({ href, locale }));
+        router.push(href, { scroll: false });
+      }
     }
   };
 
