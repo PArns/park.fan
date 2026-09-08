@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell } from 'lucide-react';
 import { listRideAlertsLocal } from '@/lib/push/push-follows-store';
@@ -25,7 +25,10 @@ export function RideAlertsEntryButton({ parkName, attractions }: RideAlertsEntry
   // Keyed on the id list rather than `attractions` itself — a fresh array
   // reference every render would otherwise re-run the effect on every
   // render of the panel around it, not just when the ride set changes.
-  const idsKey = attractions.map((a) => a.id).join(',');
+  // Memoized too: `open` toggling (or any other local state here) re-renders
+  // this component on its own, and that must not re-join every id on a park
+  // with dozens of attractions just to arrive at the same string.
+  const idsKey = useMemo(() => attractions.map((a) => a.id).join(','), [attractions]);
   const [count] = useLocalPushFollowsValue(
     0,
     () => {

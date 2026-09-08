@@ -25,17 +25,6 @@ export interface RideAlertLocal {
   thresholdMinutes: number;
 }
 
-function readJson<T>(key: string, fallback: T): T {
-  if (typeof window === 'undefined') return fallback;
-  try {
-    const raw = window.localStorage.getItem(key);
-    if (raw === null) return fallback;
-    return JSON.parse(raw) as T;
-  } catch {
-    return fallback;
-  }
-}
-
 function writeJson(key: string, value: unknown): void {
   if (typeof window === 'undefined') return;
   try {
@@ -55,21 +44,59 @@ function dispatchChanged(): void {
   }
 }
 
+// Cached by the raw string each was parsed from — same shape as
+// `lib/utils/favorites.ts`'s `parseCache`. A park page mounts one
+// `RideAlertBell`/`ShowFollowBell` per card, and one `PUSH_FOLLOWS_CHANGED_EVENT`
+// makes every one of them re-read; without this, that was O(bells) JSON.parse
+// + re-validation of the whole list per toggle. The cached arrays are treated
+// as immutable — callers only ever read them or build a new array to write.
+let showFollowsCache: { raw: string; data: string[] } | null = null;
+let rideAlertsCache: { raw: string; data: RideAlertLocal[] } | null = null;
+
 function readShowFollows(): string[] {
-  const raw = readJson<unknown>(SHOW_FOLLOWS_KEY, []);
-  return Array.isArray(raw) ? raw.filter((id): id is string => typeof id === 'string') : [];
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = window.localStorage.getItem(SHOW_FOLLOWS_KEY);
+    if (raw === null) {
+      showFollowsCache = null;
+      return [];
+    }
+    if (showFollowsCache && showFollowsCache.raw === raw) return showFollowsCache.data;
+    const parsed: unknown = JSON.parse(raw);
+    const data = Array.isArray(parsed)
+      ? parsed.filter((id): id is string => typeof id === 'string')
+      : [];
+    showFollowsCache = { raw, data };
+    return data;
+  } catch {
+    return [];
+  }
 }
 
 function readRideAlerts(): RideAlertLocal[] {
-  const raw = readJson<unknown>(RIDE_ALERTS_KEY, []);
-  if (!Array.isArray(raw)) return [];
-  return raw.filter(
-    (entry): entry is RideAlertLocal =>
-      typeof entry === 'object' &&
-      entry !== null &&
-      typeof (entry as RideAlertLocal).attractionId === 'string' &&
-      typeof (entry as RideAlertLocal).thresholdMinutes === 'number'
-  );
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = window.localStorage.getItem(RIDE_ALERTS_KEY);
+    if (raw === null) {
+      rideAlertsCache = null;
+      return [];
+    }
+    if (rideAlertsCache && rideAlertsCache.raw === raw) return rideAlertsCache.data;
+    const parsed: unknown = JSON.parse(raw);
+    const data = Array.isArray(parsed)
+      ? parsed.filter(
+          (entry): entry is RideAlertLocal =>
+            typeof entry === 'object' &&
+            entry !== null &&
+            typeof (entry as RideAlertLocal).attractionId === 'string' &&
+            typeof (entry as RideAlertLocal).thresholdMinutes === 'number'
+        )
+      : [];
+    rideAlertsCache = { raw, data };
+    return data;
+  } catch {
+    return [];
+  }
 }
 
 export function isShowFollowedLocal(showId: string): boolean {

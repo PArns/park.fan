@@ -206,6 +206,20 @@ export function ParkTodayPanel({
       .slice(0, HEADLINER_ROWS);
   }, [park.attractions, park.status, waitsReadable]);
 
+  // Same reasoning as `headliners` above: a fresh `.map()` on every render of this panel (a tab
+  // switch, `detailDate` changing, anything unrelated to `park`) would hand `RideAlertsEntryButton`
+  // a new array + new objects each time, for a list that only actually changes when the poll
+  // replaces `park.attractions`.
+  const rideAlertAttractions = useMemo(
+    () =>
+      (park.attractions ?? []).map((a) => ({
+        id: a.id,
+        name: stripNewPrefix(a.name),
+        slug: a.slug,
+      })),
+    [park.attractions]
+  );
+
   // Reserved rows — the count comes from the same list the rows are drawn from, so it cannot
   // disagree with it, and it is stable across the poll because the attraction set is.
   const headlinerSlots = headliners.length;
@@ -639,15 +653,8 @@ export function ParkTodayPanel({
                 >
                   {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
                 </a>
-                {park.attractions && park.attractions.length > 0 && (
-                  <RideAlertsEntryButton
-                    parkName={park.name}
-                    attractions={park.attractions.map((a) => ({
-                      id: a.id,
-                      name: stripNewPrefix(a.name),
-                      slug: a.slug,
-                    }))}
-                  />
+                {rideAlertAttractions.length > 0 && (
+                  <RideAlertsEntryButton parkName={park.name} attractions={rideAlertAttractions} />
                 )}
               </div>
             </div>
