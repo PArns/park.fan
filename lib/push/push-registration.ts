@@ -1,5 +1,7 @@
 'use client';
 
+import { urlBase64ToUint8Array } from './vapid-key';
+
 /**
  * Subscribing a browser to push, without a trip — for a ride alert or a
  * followed show. `lib/planner/use-push-subscription.ts` does the same job
@@ -131,21 +133,4 @@ export async function ensurePushRegistered(): Promise<PushIdentity | null> {
   } catch {
     return null;
   }
-}
-
-/**
- * The VAPID public key as the bytes `pushManager.subscribe` wants.
- *
- * Duplicated from `lib/planner/use-push-subscription.ts` rather than
- * imported — seven lines, and importing it would couple this feature's
- * subscribe path to the planner's module for a pure base64 translation with
- * nothing planner-specific in it.
- */
-function urlBase64ToUint8Array(base64: string): Uint8Array<ArrayBuffer> {
-  const padding = '='.repeat((4 - (base64.length % 4)) % 4);
-  const normalized = (base64 + padding).replace(/-/g, '+').replace(/_/g, '/');
-  const raw = window.atob(normalized);
-  const output = new Uint8Array(new ArrayBuffer(raw.length));
-  for (let i = 0; i < raw.length; i++) output[i] = raw.charCodeAt(i);
-  return output;
 }
