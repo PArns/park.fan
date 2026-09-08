@@ -45,6 +45,10 @@ export interface ShowFollowRemote {
   parkName: string;
   parkSlug: string;
   path: string | null;
+  /** The chosen performance, or null for "whichever is next". Full ISO instant. */
+  startTime: string | null;
+  /** The park's zone, so the clock time reads as the park posts it. */
+  timezone: string | null;
   createdAt: string;
 }
 
@@ -103,7 +107,10 @@ async function classifyFailure(response: Response): Promise<PushWriteError> {
       .catch(() => NaN);
     // A body the limiter didn't shape as expected is still a rate limit —
     // 60s is a reasonable "try later" default, not a claim about the real window.
-    return { reason: 'rate-limited', retryAfterSeconds: Number.isFinite(retryAfterSeconds) ? retryAfterSeconds : 60 };
+    return {
+      reason: 'rate-limited',
+      retryAfterSeconds: Number.isFinite(retryAfterSeconds) ? retryAfterSeconds : 60,
+    };
   }
   if (response.status === 404) return { reason: 'not-found' };
   if (response.status >= 400 && response.status < 500) return { reason: 'invalid' };
@@ -112,13 +119,21 @@ async function classifyFailure(response: Response): Promise<PushWriteError> {
 
 async function postFollowShow(
   identity: { endpoint: string },
-  showId: string
+  showId: string,
+  startTime?: string | null
 ): Promise<PushWriteResult<void>> {
   try {
     const response = await fetch('/api/push/show-follows', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ endpoint: identity.endpoint, showId }),
+      // Omitted rather than sent as null when there is no chosen
+      // performance: the API reads an absent `startTime` as the open-ended
+      // follow, and its DTO validates the field only when it is there.
+      body: JSON.stringify({
+        endpoint: identity.endpoint,
+        showId,
+        ...(startTime ? { startTime } : {}),
+      }),
     });
     if (!response.ok) return { ok: false, error: await classifyFailure(response) };
     setShowFollowedLocal(showId, true);
@@ -128,12 +143,20 @@ async function postFollowShow(
   }
 }
 
-export async function followShow(showId: string): Promise<PushWriteResult<void>> {
+/**
+ * `startTime` is the performance the visitor picked, as a full ISO instant —
+ * omitted for the open-ended follow a show card's bell files, which is "tell
+ * me before whichever performance is next".
+ */
+export async function followShow(
+  showId: string,
+  startTime?: string | null
+): Promise<PushWriteResult<void>> {
   const registration = await identityForWrite();
   if (!registration.ok) {
     return { ok: false, error: { reason: 'unavailable', cause: registration.cause } };
   }
-  const result = await postFollowShow(registration.identity, showId);
+  const result = await postFollowShow(registration.identity, showId, startTime);
   if (result.ok || result.error.reason !== 'not-found') return result;
   // The browser already had a live PushManager subscription, so
   // `identityForWrite` never called `ensurePushRegistered` and never gave the
@@ -143,7 +166,7 @@ export async function followShow(showId: string): Promise<PushWriteResult<void>>
   // before surfacing an error that looks permanent but usually isn't.
   const resynced = await ensurePushRegistered();
   if (!resynced.ok) return result;
-  return postFollowShow(resynced.identity, showId);
+  return postFollowShow(resynced.identity, showId, startTime);
 }
 
 /**

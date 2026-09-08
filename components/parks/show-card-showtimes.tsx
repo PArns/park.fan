@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { LocalTime } from '@/components/ui/local-time';
 import { ShowFollowDialog } from '@/components/push/show-follow-dialog';
+import { SHOW_FOLLOW_MIN_LEAD_MIN } from '@/lib/push/show-lead';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
@@ -19,13 +20,25 @@ interface ShowCardShowtimesProps {
  * because "today / is past / is next" depend on the current time — under Cache Components
  * a server render can't read `new Date()`. Rendered only for OPERATING shows by the parent.
  *
- * Each badge opens `ShowFollowDialog` — a showtime used to be a plain read-out with
- * nothing to tap. `stopPropagation` keeps a click from also activating the card's own
+ * Each badge opens `ShowFollowDialog` for its own performance: `ShowFollow`
+ * on the API stores the chosen instant, so tapping 19:10 files a reminder for
+ * 19:10 rather than for whichever performance happens to be next. A badge
+ * already past, or one starting inside `SHOW_FOLLOW_MIN_LEAD_MIN`, is a
+ * read-out instead — there is no reminder left to give for either.
+ * `stopPropagation` keeps the click from also activating the card's own
  * `<Link>`, the same nested-interactive-element concern `RideAlertBell` has.
  */
-export function ShowCardShowtimes({ showtimes, timezone, showId, showName }: ShowCardShowtimesProps) {
+export function ShowCardShowtimes({
+  showtimes,
+  timezone,
+  showId,
+  showName,
+}: ShowCardShowtimesProps) {
   const tCommon = useTranslations('common');
   const [dialogOpen, setDialogOpen] = useState(false);
+  // Which performance the tapped badge was for — handed to the dialog, and
+  // from there to the API, so the reminder belongs to that one instant.
+  const [chosen, setChosen] = useState<string | null>(null);
 
   const today = new Date();
   const todayShowtimes =
@@ -44,29 +57,45 @@ export function ShowCardShowtimes({ showtimes, timezone, showId, showName }: Sho
             const isPast = showtimeDate < today;
             const isNext = nextShowtime && showtime.startTime === nextShowtime.startTime;
 
-            return (
+            // A badge opens the dialog for ITS OWN performance — the API
+            // stores the chosen instant, so tapping 19:10 files a reminder
+            // for 19:10 and not for whatever happens to be next. Two of them
+            // cannot: one already over, and one starting too soon for a
+            // reminder to beat it there.
+            const leadMin = (showtimeDate.getTime() - today.getTime()) / 60_000;
+            const canFollow = !isPast && leadMin >= SHOW_FOLLOW_MIN_LEAD_MIN;
+
+            const badge = (
+              <Badge
+                variant="outline"
+                className={cn(
+                  'text-xs transition-colors',
+                  isPast && 'line-through opacity-40',
+                  isNext &&
+                    'border-status-operating/40 bg-status-operating/15 text-status-operating',
+                  !isPast && !isNext && 'text-muted-foreground',
+                  canFollow && 'cursor-pointer hover:bg-white/10'
+                )}
+              >
+                <LocalTime time={showtime.startTime} timeZone={timezone} />
+              </Badge>
+            );
+
+            return canFollow ? (
               <button
                 key={i}
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
+                  setChosen(showtime.startTime);
                   setDialogOpen(true);
                 }}
               >
-                <Badge
-                  variant="outline"
-                  className={cn(
-                    'cursor-pointer text-xs transition-colors hover:bg-white/10',
-                    isPast && 'line-through opacity-40',
-                    isNext &&
-                      'border-status-operating/40 bg-status-operating/15 text-status-operating',
-                    !isPast && !isNext && 'text-muted-foreground'
-                  )}
-                >
-                  <LocalTime time={showtime.startTime} timeZone={timezone} />
-                </Badge>
+                {badge}
               </button>
+            ) : (
+              <span key={i}>{badge}</span>
             );
           })}
         </div>
@@ -77,6 +106,7 @@ export function ShowCardShowtimes({ showtimes, timezone, showId, showName }: Sho
           showName={showName}
           showtimes={showtimes}
           timezone={timezone}
+          startTime={chosen}
         />
       </>
     );

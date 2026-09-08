@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell, BellRing, Clock } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { LocalTime } from '@/components/ui/local-time';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
@@ -13,6 +13,8 @@ import { followShow, unfollowShow, type PushWriteError } from '@/lib/push/push-f
 import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
+import { PushDialogHero } from '@/components/push/push-dialog-hero';
+import { SHOW_LEAD_MIN } from '@/lib/push/show-lead';
 
 interface ShowFollowDialogProps {
   open: boolean;
@@ -23,6 +25,12 @@ interface ShowFollowDialogProps {
   showtimes?: Array<{ startTime: string }> | null;
   /** The park's zone, so the time reads as the park reads it, not as the visitor's phone does. */
   timezone?: string;
+  /**
+   * The performance the visitor tapped, as a full ISO instant. Omitted means
+   * the open-ended follow — whichever performance is next — which is what a
+   * card's corner bell files, since a bell names no time.
+   */
+  startTime?: string | null;
   /** Where this was opened from — the analytics property, see `trackShowFollowAdd`. */
   source?: 'card' | 'panel';
   /**
@@ -52,6 +60,7 @@ export function ShowFollowDialog({
   showName,
   showtimes,
   timezone,
+  startTime,
   source = 'card',
   initialError = null,
 }: ShowFollowDialogProps) {
@@ -68,6 +77,10 @@ export function ShowFollowDialog({
   // The bell's failure is shown until this dialog produces one of its own.
   const shownError = error ?? initialError;
 
+  // Both outcomes close the dialog, the way `RideAlertQuickDialog` has always
+  // closed on save: the press answered the only question this dialog asks, and
+  // a form that stays open after succeeding reads as one that did not. Only a
+  // FAILURE holds it open — that is when there is something left to read.
   const handleToggle = async () => {
     setPending(true);
     setError(null);
@@ -76,43 +89,62 @@ export function ShowFollowDialog({
       await unfollowShow(showId);
       setPending(false);
       trackShowFollowRemove();
+      onOpenChange(false);
       return;
     }
-    const result = await followShow(showId);
+    const result = await followShow(showId, startTime);
     setPending(false);
     if (result.ok) {
       setFollowing(true);
       trackShowFollowAdd(source);
+      onOpenChange(false);
       return;
     }
     setError(result.error);
   };
 
-  // The performance the reminder is actually for: the next one that has not
-  // started, off the browser's clock rather than the render's, since these
+  // The performance the reminder is actually for. A tapped showtime says so
+  // itself; a corner bell names none, so it is the next one that has not
+  // started — off the browser's clock rather than the render's, since these
   // pages are statically cached.
-  const nextStart = browserNow
-    ? (showtimes ?? [])
-        .map((s) => s.startTime)
-        .filter((iso) => new Date(iso).getTime() >= browserNow.getTime())
-        .sort()[0]
-    : undefined;
+  const nextStart =
+    startTime ??
+    (browserNow
+      ? (showtimes ?? [])
+          .map((s) => s.startTime)
+          .filter((iso) => new Date(iso).getTime() >= browserNow.getTime())
+          .sort()[0]
+      : undefined);
+
+  // Whether the reminder is still early enough for the usual window. Under
+  // 25 minutes it is not: the API catches a follow made this late in its
+  // second window instead, so the description has to say ten minutes rather
+  // than promise a half hour it can no longer deliver for this performance.
+  const late =
+    browserNow !== null &&
+    nextStart !== undefined &&
+    new Date(nextStart).getTime() - browserNow.getTime() < SHOW_LEAD_MIN * 60_000;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex flex-col gap-0 overflow-hidden p-0 sm:max-w-sm">
-        <div className="shrink-0 border-b px-5 py-3 sm:px-6">
-          <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
-            <Bell className="size-4 shrink-0" aria-hidden="true" />
-            {showName}
-          </DialogTitle>
-          <DialogDescription className="mt-1 text-xs leading-snug">
-            {t('explain', { show: showName })}
-          </DialogDescription>
+      <DialogContent
+        showCloseButton={false}
+        className="flex flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+      >
+        <PushDialogHero
+          icon={Bell}
+          title={showName}
+          description={startTime ? t('explainChosen') : t('explain', { show: showName })}
+        >
+          {late && (
+            <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('explainLate')}</p>
+          )}
           {nextStart && (
             <p className="mt-2 flex items-center gap-1.5 text-xs">
               <Clock className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
-              <span className="text-muted-foreground">{t('nextShowtime')}</span>
+              <span className="text-muted-foreground">
+                {startTime ? t('chosenShowtime') : t('nextShowtime')}
+              </span>
               <span className="font-semibold tabular-nums">
                 <LocalTime time={nextStart} timeZone={timezone} />
               </span>
@@ -123,13 +155,13 @@ export function ShowFollowDialog({
               {pushErrorMessage(shownError)}
             </p>
           )}
-        </div>
+        </PushDialogHero>
 
-        <div className="flex shrink-0 items-center justify-between gap-2 px-3 py-3 sm:px-6">
-          <Link href="/alerts" className="text-primary text-xs hover:underline">
+        <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 px-5 py-3 sm:px-6">
+          <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
             {t('viewAll')}
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="ml-auto flex shrink-0 items-center gap-2">
             <Button type="button" variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
               {t('close')}
             </Button>

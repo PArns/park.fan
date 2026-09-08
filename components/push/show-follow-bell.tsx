@@ -8,6 +8,7 @@ import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { ShowFollowDialog } from '@/components/push/show-follow-dialog';
+import { SHOW_FOLLOW_MIN_LEAD_MIN } from '@/lib/push/show-lead';
 
 interface ShowFollowBellProps {
   showId: string;
@@ -24,16 +25,15 @@ interface ShowFollowBellProps {
    * Omitted entirely, the bell behaves as it always did.
    */
   showtimes?: Array<{ startTime: string }> | null;
+  /**
+   * The PARK's zone, for the clock the dialog prints. Not optional in
+   * practice: without it `LocalTime` falls back to the visitor's own zone,
+   * and a Universal Epic Universe show at 16:40 was announced to a German
+   * reader as "Nächste Vorstellung 22:40" — six hours out, in the one line
+   * the dialog exists to state.
+   */
+  timezone?: string;
 }
-
-/**
- * Below this many minutes to the next performance a reminder is pointless:
- * the notification would land while the visitor is already reading it on the
- * schedule, or after the show has started. The API sends its reminder about
- * half an hour ahead and, for a show followed later than that, ten minutes
- * ahead — under ten there is no lead left to give.
- */
-export const SHOW_FOLLOW_MIN_LEAD_MIN = 10;
 
 /**
  * "Notify me 30 minutes before this show starts" — the same interaction
@@ -55,6 +55,7 @@ export function ShowFollowBell({
   className,
   source,
   showtimes,
+  timezone,
 }: ShowFollowBellProps) {
   // The clock has to come from the browser, not the render: these pages are
   // statically cached, so a server-side "minutes from now" would be the
@@ -127,6 +128,7 @@ export function ShowFollowBell({
         showId={showId}
         showName={showName ?? ''}
         showtimes={showtimes}
+        timezone={timezone}
         source={source}
       />
     </>

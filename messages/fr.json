@@ -1596,19 +1596,22 @@
   },
   "pushAlerts": {
     "showBell": {
-      "follow": "Activer un rappel 30 minutes avant {name}",
+      "follow": "Activer un rappel avant {name}",
       "following": "Rappel actif pour {name} – toucher pour désactiver",
       "error": "Ça n’a pas fonctionné. Merci de réessayer."
     },
     "showDialog": {
       "title": "Rappel de spectacle",
       "explain": "Nous vous prévenons 25 à 35 minutes avant la prochaine séance de {show}.",
+      "explainLate": "C’est déjà juste pour la prochaine séance : le message arrivera environ 10 minutes avant.",
+      "explainChosen": "Nous vous prévenons environ une demi-heure avant cette séance.",
       "follow": "Activer le rappel",
       "following": "Rappel activé",
       "unfollow": "Désactiver le rappel",
       "close": "Fermer",
       "nextShowtime": "Prochaine représentation",
-      "viewAll": "Voir toutes vos alertes"
+      "chosenShowtime": "Séance choisie",
+      "viewAll": "Mes alertes"
     },
     "rideBell": {
       "setAlert": "Configurer une alerte de temps d’attente pour {name}",
@@ -1629,7 +1632,7 @@
       "add": "Ajouter",
       "adding": "Enregistrement…",
       "error": "Ça n’a pas fonctionné. Merci de réessayer.",
-      "viewAll": "Voir toutes vos alertes",
+      "viewAll": "Mes alertes",
       "close": "Fermer",
       "entry": "Alertes de temps d’attente",
       "entryWithCount": "Alertes de temps d’attente ({count})",
@@ -1651,7 +1654,9 @@
       "remove": "Supprimer",
       "outOfSeason": "Hiver uniquement",
       "retired": "Démonté",
-      "loadError": "Impossible de charger la liste. Veuillez recharger la page."
+      "loadError": "Impossible de charger la liste. Veuillez recharger la page.",
+      "showAt": "à {time}",
+      "showNextAny": "prochaine séance"
     },
     "menu": {
       "link": "Mes alertes"

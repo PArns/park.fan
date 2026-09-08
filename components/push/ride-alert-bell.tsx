@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
+import { hasUsableThresholdRange } from '@/lib/push/threshold-minutes';
 import { RideAlertQuickDialog } from './ride-alert-quick-dialog';
 
 interface RideAlertBellProps {
@@ -48,6 +49,14 @@ export function RideAlertBell({
     e.stopPropagation();
     setOpen(true);
   }, []);
+
+  // A queue this short has no alert left to offer: the threshold may not go
+  // under ten minutes, nor within ten of what the ride reads right now, and
+  // below twenty there is no value between those two. Same shape as
+  // `ShowFollowBell` hiding when a performance is too close to warn about —
+  // and, like it, an alert already SET keeps its bell whatever the queue is
+  // doing, because that bell is the only way to take it off again.
+  if (!alerted && !hasUsableThresholdRange(currentWaitTime)) return null;
 
   return (
     <>

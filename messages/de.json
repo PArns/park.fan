@@ -1596,19 +1596,22 @@
   },
   "pushAlerts": {
     "showBell": {
-      "follow": "Erinnerung 30 Minuten vor {name} aktivieren",
+      "follow": "Erinnerung vor {name} aktivieren",
       "following": "Erinnerung für {name} aktiv – zum Deaktivieren tippen",
       "error": "Das hat nicht geklappt. Bitte noch einmal versuchen."
     },
     "showDialog": {
       "title": "Show-Erinnerung",
       "explain": "Wir benachrichtigen dich 25 bis 35 Minuten vor der jeweils nächsten Vorstellung von {show}.",
+      "explainLate": "Für die nächste Vorstellung ist das schon knapp – die Nachricht kommt dann rund 10 Minuten vorher.",
+      "explainChosen": "Wir benachrichtigen dich rund eine halbe Stunde vor dieser Vorstellung.",
       "follow": "Erinnerung aktivieren",
       "following": "Erinnerung ist aktiv",
       "unfollow": "Erinnerung deaktivieren",
       "close": "Schließen",
       "nextShowtime": "Nächste Vorstellung",
-      "viewAll": "Alle eigenen Alarme ansehen"
+      "chosenShowtime": "Gewählte Vorstellung",
+      "viewAll": "Meine Alarme"
     },
     "rideBell": {
       "setAlert": "Wartezeit-Alarm für {name} einrichten",
@@ -1629,7 +1632,7 @@
       "add": "Hinzufügen",
       "adding": "Wird gespeichert …",
       "error": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
-      "viewAll": "Alle eigenen Alarme ansehen",
+      "viewAll": "Meine Alarme",
       "close": "Schließen",
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
@@ -1651,7 +1654,9 @@
       "remove": "Entfernen",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
-      "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden."
+      "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden.",
+      "showAt": "um {time} Uhr",
+      "showNextAny": "jeweils nächste Vorstellung"
     },
     "menu": {
       "link": "Meine Alarme"

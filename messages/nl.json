@@ -1596,19 +1596,22 @@
   },
   "pushAlerts": {
     "showBell": {
-      "follow": "Herinnering 30 minuten voor {name} inschakelen",
+      "follow": "Herinnering voor {name} inschakelen",
       "following": "Herinnering voor {name} actief – tik om uit te schakelen",
       "error": "Dat is niet gelukt. Probeer het nogmaals."
     },
     "showDialog": {
       "title": "Show-herinnering",
       "explain": "We melden het 25 tot 35 minuten voor de eerstvolgende voorstelling van {show}.",
+      "explainLate": "Voor de eerstvolgende voorstelling is dat al krap: die melding komt ongeveer 10 minuten van tevoren.",
+      "explainChosen": "We melden het ongeveer een half uur voor deze voorstelling.",
       "follow": "Herinnering inschakelen",
       "following": "Herinnering is actief",
       "unfollow": "Herinnering uitschakelen",
       "close": "Sluiten",
       "nextShowtime": "Volgende voorstelling",
-      "viewAll": "Al je meldingen bekijken"
+      "chosenShowtime": "Gekozen voorstelling",
+      "viewAll": "Mijn meldingen"
     },
     "rideBell": {
       "setAlert": "Wachttijdmelding voor {name} instellen",
@@ -1629,7 +1632,7 @@
       "add": "Toevoegen",
       "adding": "Bezig met opslaan…",
       "error": "Dat is niet gelukt. Probeer het nogmaals.",
-      "viewAll": "Al je meldingen bekijken",
+      "viewAll": "Mijn meldingen",
       "close": "Sluiten",
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
@@ -1651,7 +1654,9 @@
       "remove": "Verwijderen",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
-      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina."
+      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina.",
+      "showAt": "om {time}",
+      "showNextAny": "eerstvolgende voorstelling"
     },
     "menu": {
       "link": "Mijn meldingen"

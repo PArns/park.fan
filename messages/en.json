@@ -1596,19 +1596,22 @@
   },
   "pushAlerts": {
     "showBell": {
-      "follow": "Get a reminder 30 minutes before {name}",
+      "follow": "Get a reminder before {name}",
       "following": "Reminder for {name} is on – tap to turn off",
       "error": "That didn’t work. Please try again."
     },
     "showDialog": {
       "title": "Show reminder",
       "explain": "We’ll notify you 25 to 35 minutes before {show}’s next showtime.",
+      "explainLate": "That is already tight for the next showtime, so this one gets its message about 10 minutes ahead.",
+      "explainChosen": "We’ll notify you about half an hour before this performance.",
       "follow": "Turn on reminder",
       "following": "Reminder is on",
       "unfollow": "Turn off reminder",
       "close": "Close",
       "nextShowtime": "Next performance",
-      "viewAll": "View all your alerts"
+      "chosenShowtime": "Chosen performance",
+      "viewAll": "My alerts"
     },
     "rideBell": {
       "setAlert": "Set a wait-time alert for {name}",
@@ -1629,7 +1632,7 @@
       "add": "Add",
       "adding": "Saving…",
       "error": "That didn’t work. Please try again.",
-      "viewAll": "View all your alerts",
+      "viewAll": "My alerts",
       "close": "Close",
       "entry": "Wait-time alerts",
       "entryWithCount": "Wait-time alerts ({count})",
@@ -1651,7 +1654,9 @@
       "remove": "Remove",
       "outOfSeason": "Winter only",
       "retired": "Retired",
-      "loadError": "Couldn't load the list. Please reload the page."
+      "loadError": "Couldn't load the list. Please reload the page.",
+      "showAt": "at {time}",
+      "showNextAny": "whichever performance is next"
     },
     "menu": {
       "link": "My alerts"

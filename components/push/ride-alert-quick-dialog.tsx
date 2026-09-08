@@ -4,16 +4,18 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { PlannerPanelPhoto } from '@/components/planner/planner-panel-photo';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
+import { PushDialogHero } from '@/components/push/push-dialog-hero';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import {
   ThresholdMinutesInput,
   defaultThresholdFor,
+  maxThresholdFor,
   parseThresholdMinutes,
 } from '@/components/push/threshold-minutes-input';
 
@@ -113,17 +115,28 @@ export function RideAlertQuickDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="relative flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-sm">
+      {/* `isolate`, never `relative`. What the photo below needs is a STACKING
+          CONTEXT — its layer is `-z-10`, and without one the negative index
+          keeps going and the picture disappears behind the dialog's own
+          `bg-background`, which is the trap `PlannerPanelPhoto` documents for
+          `SheetContent`. `relative` supplies one too, and costs the dialog its
+          position: the base `DialogContent` is `fixed top-1/2 left-1/2`, and
+          `cn()` merges the two as one conflict group, so the override won and
+          took `fixed` with it. The dialog then laid out in normal document
+          flow — measured at y=6907 on a park page, i.e. six screens below the
+          fold — while the overlay still covered the window. Pressing a ride's
+          bell blurred the page and showed nothing, with no error anywhere, and
+          a test that asserts the dialog EXISTS passes the whole time. */}
+      <DialogContent
+        showCloseButton={false}
+        className="isolate flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+      >
         <PlannerPanelPhoto src={backgroundImage} position={objectPosition} />
-        <div className="shrink-0 border-b px-5 py-3 sm:px-6">
-          <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
-            <Bell className="size-4 shrink-0" aria-hidden="true" />
-            {attractionName}
-          </DialogTitle>
-          <DialogDescription className="mt-1 text-xs leading-snug">
-            {t('soloSubtitle', { park: parkName })}
-          </DialogDescription>
-        </div>
+        <PushDialogHero
+          icon={Bell}
+          title={attractionName}
+          description={t('soloSubtitle', { park: parkName })}
+        />
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
           <div className="flex flex-col gap-4">
@@ -134,6 +147,7 @@ export function RideAlertQuickDialog({
                 onChange={setThresholdRaw}
                 ariaLabel={t('thresholdInput')}
                 minutesLabel={t('minutes')}
+                max={maxThresholdFor(currentWaitTime)}
               />
             </div>
             <p className="text-muted-foreground text-[11px] leading-snug">{t('todayOnly')}</p>
@@ -143,30 +157,36 @@ export function RideAlertQuickDialog({
           </div>
         </div>
 
-        <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
-          {alerted ? (
+        {/* The link is not one of the actions and never gives way to one: it
+            used to be the `alerted` branch's else, so the way to "meine
+            Alarme" disappeared for exactly the person who has some. Same
+            split as the show dialog — navigation on the left, this ride's
+            own actions on the right. */}
+        <div className="border-border/60 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-t px-5 py-3 sm:px-6">
+          <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
+            {t('viewAll')}
+          </Link>
+          <div className="ml-auto flex shrink-0 items-center gap-2">
+            {alerted && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={handleRemove}
+                disabled={removing || saving}
+              >
+                {t('removeShort')}
+              </Button>
+            )}
             <Button
               type="button"
-              variant="ghost"
               size="sm"
-              onClick={handleRemove}
-              disabled={removing || saving}
+              onClick={handleSave}
+              disabled={saving || removing || threshold === null}
             >
-              {t('removeShort')}
+              {saving ? t('adding') : t('save')}
             </Button>
-          ) : (
-            <Link href="/alerts" className="text-primary text-xs hover:underline">
-              {t('viewAll')}
-            </Link>
-          )}
-          <Button
-            type="button"
-            size="sm"
-            onClick={handleSave}
-            disabled={saving || removing || threshold === null}
-          >
-            {saving ? t('adding') : t('save')}
-          </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>

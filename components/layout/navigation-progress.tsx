@@ -116,10 +116,21 @@ export function NavigationProgress() {
       }
     });
 
-    document.addEventListener('click', onClick, true);
+    // BUBBLE, not capture. The `e.defaultPrevented` guard above is the whole
+    // point of this listener's politeness, and in the capture phase it can
+    // never be true: document-level capture runs BEFORE the component whose
+    // handler does the preventing. Every control that sits inside a link and
+    // handles its own click — the wait-time alert bell, the show bell, the
+    // favourite star — therefore started a navigation that never happened,
+    // and the bar then crept to 90 % and hung there until the 10 s safety
+    // timeout. Nothing is lost by waiting for the bubble: a handler that
+    // stops propagation on its way up is by definition one that is not
+    // navigating, and a programmatic `router.push` is caught by the
+    // pushState patch above rather than here.
+    document.addEventListener('click', onClick);
     return () => {
       unsubscribe();
-      document.removeEventListener('click', onClick, true);
+      document.removeEventListener('click', onClick);
     };
   }, [start]);
 

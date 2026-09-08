@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Bell, BellRing, Loader2 } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { Bell, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { formatTime } from '@/lib/utils/intl-format';
 import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
 import {
   fetchRideAlertsRemote,
@@ -26,13 +27,27 @@ import {
  */
 export function AlertsOverview() {
   const t = useTranslations('pushAlerts.overview');
+  // `formatTime` directly rather than the `LocalTime` component every other
+  // surface uses: the sentence wraps the clock time ("um 19:10 Uhr"), so it
+  // has to go through `t()` as a string. Same helper `LocalTime` itself
+  // calls, so the two render identically.
+  const locale = useLocale();
+  const showClock = (iso: string, timezone: string | null) => {
+    try {
+      return formatTime(new Date(iso), locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: timezone ?? undefined,
+      });
+    } catch {
+      return null;
+    }
+  };
   // 'loading'/'error' rather than folding a failure into `null`: this page's
   // whole point is showing the truth, so a fetch that failed must not render
   // as the same "nothing set up yet" empty state a browser with zero alerts
   // gets — that reads as "your alerts are gone" to someone who has five.
-  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>(
-    'loading'
-  );
+  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
   const [showFollows, setShowFollows] = useState<ShowFollowRemote[] | 'loading' | 'error'>(
     'loading'
   );
@@ -54,7 +69,11 @@ export function AlertsOverview() {
   const bothFailed = rideAlerts === 'error' && showFollows === 'error';
   const onlyOneFailed = !bothFailed && (rideAlerts === 'error' || showFollows === 'error');
   const empty =
-    !loading && !bothFailed && !onlyOneFailed && rideAlertList.length === 0 && showFollowList.length === 0;
+    !loading &&
+    !bothFailed &&
+    !onlyOneFailed &&
+    rideAlertList.length === 0 &&
+    showFollowList.length === 0;
 
   const handleRemoveRide = async (attractionId: string) => {
     setRemovingRide(attractionId);
@@ -167,8 +186,12 @@ export function AlertsOverview() {
 
       {showFollowList.length > 0 && (
         <section>
-          <h2 className="mb-3 flex items-center gap-1.5 text-sm font-semibold">
-            <BellRing className="size-4 shrink-0" aria-hidden="true" />
+          {/* No icon, matching the ride-alert heading above it. These two are
+              one pair of section labels and only one of them had a glyph, so
+              the page read as if the show list were a different KIND of thing
+              rather than the second half of the same list. The bell the page
+              needs is the one in its own header. */}
+          <h2 className="mb-3 text-sm font-semibold">
             {t('showFollowsTitle', { count: showFollowList.length })}
           </h2>
           <ul className="flex flex-col gap-2">
@@ -188,7 +211,22 @@ export function AlertsOverview() {
                   ) : (
                     <p className="truncate text-sm font-medium">{follow.showName}</p>
                   )}
-                  <p className="text-muted-foreground text-xs">{follow.parkName}</p>
+                  {/* Which performance, in the PARK's clock — the ride row
+                      beside this one says "unter 50 Min." and this one said
+                      nothing but the park, so a show reminder read as if it
+                      had no setting at all. A follow with no chosen
+                      performance says so rather than showing a time it does
+                      not have. */}
+                  <p className="text-muted-foreground text-xs">
+                    {follow.parkName} ·{' '}
+                    {follow.startTime ? (
+                      (t('showAt', {
+                        time: showClock(follow.startTime, follow.timezone) ?? '—',
+                      }) as string)
+                    ) : (
+                      <span>{t('showNextAny')}</span>
+                    )}
+                  </p>
                 </div>
                 <Button
                   type="button"
