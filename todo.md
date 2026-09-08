@@ -812,10 +812,19 @@ These are the ways this feature can lie, and it will lie by default unless each 
 handled.
 
 - [ ] A ride out of season is not one of the day's rides. Not a closed one — absent.
-      **Unconfirmed**: no `isCurrentlyInSeason`/season handling of any kind found under
-      `lib/planner/` or `components/planner/`. May already be enforced upstream by
-      `/plan/day` never listing an out-of-season ride at all (a backend question, out
-      of scope here per this ticket's Non-Goals) — or may be a real gap. Left open.
+      **Confirmed real gap, PF-27**: `/plan/day`'s `attractions()` query
+      (`plan-day.service.ts`, backend) selects `{ parkId, retiredAt: IsNull() }` and
+      nothing else — no season filter of any kind, so an out-of-season ride is not
+      excluded upstream. And `PlanDayRideDto`/`PlanDayRide` carries no
+      `isCurrentlyInSeason` field at all, so the frontend has no signal to check even
+      if it wanted its own `!== false` guard — there is nothing to read. This is not a
+      frontend fix: the API has to grow the field (and/or filter server-side) before
+      `lib/planner/estimate.ts` can apply the site-wide rule. Whether a season-affected
+      ride actually surfaces in practice depends on the ML side (a ride with no
+      in-season observations may simply have no measured/composed curve and drop out
+      of `rides` on its own, per `forecastRides`'s `if (!curve) continue`) — not
+      verified either way, and not something code reading answers. Follow-up ticket
+      filed for the backend repo.
 - [x] A park with no readable wait times (Hansa-Park) gets no bars and no forecast,
       it gets the sentence. Confirmed: `hasReadableWaitTimes()` is read in
       `lib/planner/estimate.ts`, `lib/planner/live.ts` and `lib/planner/optimize.ts`.
@@ -825,17 +834,38 @@ handled.
       past it, never an invented value), and `PlanDayTier` (`measured`/`composed`/
       `long_range`) is read and visibly styled in `planner-bar.tsx`, `planner-block.tsx`,
       `planner-context-band.tsx`, `planner-day-grid.tsx` and `planner-entry-row.tsx`.
-- [ ] A displayed wait is a multiple of five (`roundWaitTo5`); a _difference_ is not
-      (`roundWaitDeltaTo5`). **Unconfirmed, possible gap**: neither function appears
-      anywhere under `lib/planner/` or `components/planner/` in a repo-wide grep. Worth
-      a direct check of how `planner-bar.tsx`/`planner-block.tsx` format the wait
-      figures they read from `PlannerEstimate.wait` before this is trusted.
-- [ ] No copy describes the layout ("on the left you see…") — not independently
-      re-audited this pass; no violation spotted in the files read for this ticket.
-- [ ] No aphoristic closing sentence anywhere in the copy. No `ehrlich` in German. Spot
-      check: `messages/de.json`'s `planner` namespace contains no instance of
-      "ehrlich" — not a full re-read of every string against the aphoristic-closer
-      test, so left open rather than checked off.
+- [x] A displayed wait is a multiple of five (`roundWaitTo5`); a _difference_ is not
+      (`roundWaitDeltaTo5`). **Confirmed compliant, PF-27, neither function is missing
+      — it is unneeded**: `PlanDayHour.wait` is typed "already rounded to 5" and
+      `lib/planner/estimate.ts` reads it with an exact `hours.find((h) => h.hour ===
+      hour)` lookup, never an interpolation between two hours, so the value reaching
+      `PlannerEstimate.wait` is exactly what the API sent. `ASSUMED_WAIT_MIN` (the
+      no-history floor) is hardcoded to `5`. `actualWait` (the "done" figure) is a raw
+      live observation, not an aggregate, so it is already a multiple of five the way
+      every park-posted reading is. Sums and differences of multiples of five stay
+      multiples of five without re-rounding — `optimize.ts`'s `totalWaitMinutes` and
+      the "minutes saved" figure both add/subtract `estimate.wait` values directly, no
+      `roundWaitDeltaTo5` needed. The only planner figures NOT run through
+      `roundWaitTo5` are `uncertaintyMinutes`/`expectedError`/`accuracy.typicalError` —
+      model accuracy statistics, not wait times, and correctly `Math.round()`ed
+      instead (`planner-context-band.tsx`, `planner-grid-actions.tsx`) the same way the
+      rest of the site treats an error figure versus a wait figure.
+- [x] No copy describes the layout ("on the left you see…") — **confirmed, full
+      re-audit this pass**: no horizontal (left/right) positional copy anywhere in the
+      `planner` namespace, six locales. Two vertical references exist —
+      `empty.bodyGrid` ("such dir unten eine Bahn") and `fit.ridesBody`/`fit.pin` (top
+      = keep, bottom = cut first) — and both are genuinely true at every width the
+      copy renders at: `bodyGrid` is `sm:hidden`, paired with a separate `hidden
+      sm:block` line for the breakpoint where the ride search is no longer below the
+      grid, and the fit list's top/bottom is a `flex-col` document order that never
+      reflows horizontally. Matches "vertical order is usually safe" from the
+      site-wide rule.
+- [x] No aphoristic closing sentence anywhere in the copy. No `ehrlich` in German.
+      **Confirmed, full re-read this pass, all six locales** (not just the German spot
+      check): no instance of "ehrlich" in any form, and no closing-sentence maxim
+      anywhere in the `planner` namespace (`title`/`page`/`wizard`/`fit` prose read
+      end-to-end in `de`, `en`, `nl`, `fr`, `es`, `it` — all functional/factual, nothing
+      that reads as a restated moral).
 - [x] Umami: every event property is billed as an event. Do not instrument each drag.
       Confirmed: only three call sites found (`trackPlannerOpened`,
       `trackPlanOptimized`, `trackPlanDayStarted`); nothing fires per pointer move.
