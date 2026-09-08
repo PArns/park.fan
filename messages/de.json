@@ -1604,11 +1604,13 @@
       "title": "Show-Erinnerung",
       "explain": "Wir benachrichtigen dich 25 bis 35 Minuten vor der jeweils nächsten Vorstellung von {show}.",
       "explainLate": "Für die nächste Vorstellung ist das schon knapp – die Nachricht kommt dann rund 10 Minuten vorher.",
+      "explainChosen": "Wir benachrichtigen dich rund eine halbe Stunde vor dieser Vorstellung.",
       "follow": "Erinnerung aktivieren",
       "following": "Erinnerung ist aktiv",
       "unfollow": "Erinnerung deaktivieren",
       "close": "Schließen",
       "nextShowtime": "Nächste Vorstellung",
+      "chosenShowtime": "Gewählte Vorstellung",
       "viewAll": "Meine Alarme"
     },
     "rideBell": {
@@ -1652,7 +1654,9 @@
       "remove": "Entfernen",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
-      "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden."
+      "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden.",
+      "showAt": "um {time} Uhr",
+      "showNextAny": "jeweils nächste Vorstellung"
     },
     "menu": {
       "link": "Meine Alarme"

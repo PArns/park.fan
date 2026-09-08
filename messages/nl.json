@@ -1604,11 +1604,13 @@
       "title": "Show-herinnering",
       "explain": "We melden het 25 tot 35 minuten voor de eerstvolgende voorstelling van {show}.",
       "explainLate": "Voor de eerstvolgende voorstelling is dat al krap: die melding komt ongeveer 10 minuten van tevoren.",
+      "explainChosen": "We melden het ongeveer een half uur voor deze voorstelling.",
       "follow": "Herinnering inschakelen",
       "following": "Herinnering is actief",
       "unfollow": "Herinnering uitschakelen",
       "close": "Sluiten",
       "nextShowtime": "Volgende voorstelling",
+      "chosenShowtime": "Gekozen voorstelling",
       "viewAll": "Mijn meldingen"
     },
     "rideBell": {
@@ -1652,7 +1654,9 @@
       "remove": "Verwijderen",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
-      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina."
+      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina.",
+      "showAt": "om {time}",
+      "showNextAny": "eerstvolgende voorstelling"
     },
     "menu": {
       "link": "Mijn meldingen"

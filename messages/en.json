@@ -1604,11 +1604,13 @@
       "title": "Show reminder",
       "explain": "We’ll notify you 25 to 35 minutes before {show}’s next showtime.",
       "explainLate": "That is already tight for the next showtime, so this one gets its message about 10 minutes ahead.",
+      "explainChosen": "We’ll notify you about half an hour before this performance.",
       "follow": "Turn on reminder",
       "following": "Reminder is on",
       "unfollow": "Turn off reminder",
       "close": "Close",
       "nextShowtime": "Next performance",
+      "chosenShowtime": "Chosen performance",
       "viewAll": "My alerts"
     },
     "rideBell": {
@@ -1652,7 +1654,9 @@
       "remove": "Remove",
       "outOfSeason": "Winter only",
       "retired": "Retired",
-      "loadError": "Couldn't load the list. Please reload the page."
+      "loadError": "Couldn't load the list. Please reload the page.",
+      "showAt": "at {time}",
+      "showNextAny": "whichever performance is next"
     },
     "menu": {
       "link": "My alerts"

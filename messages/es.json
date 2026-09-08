@@ -1604,11 +1604,13 @@
       "title": "Aviso de espectáculo",
       "explain": "Te avisamos entre 25 y 35 minutos antes de la próxima función de {show}.",
       "explainLate": "Para la próxima función ya va justo: ese aviso llegará unos 10 minutos antes.",
+      "explainChosen": "Te avisamos alrededor de media hora antes de esta función.",
       "follow": "Activar aviso",
       "following": "El aviso está activo",
       "unfollow": "Desactivar aviso",
       "close": "Cerrar",
       "nextShowtime": "Próxima función",
+      "chosenShowtime": "Función elegida",
       "viewAll": "Mis avisos"
     },
     "rideBell": {
@@ -1652,7 +1654,9 @@
       "remove": "Quitar",
       "outOfSeason": "Solo en invierno",
       "retired": "Retirada",
-      "loadError": "No se pudo cargar la lista. Recarga la página."
+      "loadError": "No se pudo cargar la lista. Recarga la página.",
+      "showAt": "a las {time}",
+      "showNextAny": "próxima función"
     },
     "menu": {
       "link": "Mis avisos"

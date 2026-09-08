@@ -25,6 +25,12 @@ interface ShowFollowDialogProps {
   showtimes?: Array<{ startTime: string }> | null;
   /** The park's zone, so the time reads as the park reads it, not as the visitor's phone does. */
   timezone?: string;
+  /**
+   * The performance the visitor tapped, as a full ISO instant. Omitted means
+   * the open-ended follow — whichever performance is next — which is what a
+   * card's corner bell files, since a bell names no time.
+   */
+  startTime?: string | null;
   /** Where this was opened from — the analytics property, see `trackShowFollowAdd`. */
   source?: 'card' | 'panel';
   /**
@@ -54,6 +60,7 @@ export function ShowFollowDialog({
   showName,
   showtimes,
   timezone,
+  startTime,
   source = 'card',
   initialError = null,
 }: ShowFollowDialogProps) {
@@ -85,7 +92,7 @@ export function ShowFollowDialog({
       onOpenChange(false);
       return;
     }
-    const result = await followShow(showId);
+    const result = await followShow(showId, startTime);
     setPending(false);
     if (result.ok) {
       setFollowing(true);
@@ -96,15 +103,18 @@ export function ShowFollowDialog({
     setError(result.error);
   };
 
-  // The performance the reminder is actually for: the next one that has not
-  // started, off the browser's clock rather than the render's, since these
+  // The performance the reminder is actually for. A tapped showtime says so
+  // itself; a corner bell names none, so it is the next one that has not
+  // started — off the browser's clock rather than the render's, since these
   // pages are statically cached.
-  const nextStart = browserNow
-    ? (showtimes ?? [])
-        .map((s) => s.startTime)
-        .filter((iso) => new Date(iso).getTime() >= browserNow.getTime())
-        .sort()[0]
-    : undefined;
+  const nextStart =
+    startTime ??
+    (browserNow
+      ? (showtimes ?? [])
+          .map((s) => s.startTime)
+          .filter((iso) => new Date(iso).getTime() >= browserNow.getTime())
+          .sort()[0]
+      : undefined);
 
   // Whether the reminder is still early enough for the usual window. Under
   // 25 minutes it is not: the API catches a follow made this late in its
@@ -121,14 +131,20 @@ export function ShowFollowDialog({
         showCloseButton={false}
         className="flex flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
       >
-        <PushDialogHero icon={Bell} title={showName} description={t('explain', { show: showName })}>
+        <PushDialogHero
+          icon={Bell}
+          title={showName}
+          description={startTime ? t('explainChosen') : t('explain', { show: showName })}
+        >
           {late && (
             <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('explainLate')}</p>
           )}
           {nextStart && (
             <p className="mt-2 flex items-center gap-1.5 text-xs">
               <Clock className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
-              <span className="text-muted-foreground">{t('nextShowtime')}</span>
+              <span className="text-muted-foreground">
+                {startTime ? t('chosenShowtime') : t('nextShowtime')}
+              </span>
               <span className="font-semibold tabular-nums">
                 <LocalTime time={nextStart} timeZone={timezone} />
               </span>
