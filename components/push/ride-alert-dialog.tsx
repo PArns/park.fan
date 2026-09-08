@@ -4,10 +4,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
+import { PushDialogHero } from '@/components/push/push-dialog-hero';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import {
   fetchRideAlertsRemote,
@@ -138,9 +139,7 @@ export function RideAlertDialog({
     // The server's own row, not a guess built from what this dropdown knew —
     // `outOfSeason`/`retired`/`parkId`/`parkSlug` are the API's, not ours.
     setAlerts((current) => [
-      ...(Array.isArray(current) ? current : []).filter(
-        (a) => a.attractionId !== attraction.id
-      ),
+      ...(Array.isArray(current) ? current : []).filter((a) => a.attractionId !== attraction.id),
       result.value,
     ]);
     // No manual reset here — the just-added ride drops out of `available`,
@@ -161,16 +160,15 @@ export function RideAlertDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md">
-        <div className="shrink-0 border-b px-5 py-3 sm:px-6">
-          <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
-            <Bell className="size-4 shrink-0" aria-hidden="true" />
-            {t('title')}
-          </DialogTitle>
-          <DialogDescription className="mt-1 text-xs leading-snug">
-            {t('subtitle', { park: parkName })}
-          </DialogDescription>
-        </div>
+      <DialogContent
+        showCloseButton={false}
+        className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+      >
+        <PushDialogHero
+          icon={Bell}
+          title={t('title')}
+          description={t('subtitle', { park: parkName })}
+        />
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
           <div className="flex flex-col gap-4">
@@ -271,11 +269,17 @@ export function RideAlertDialog({
           </div>
         </div>
 
-        <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
-          <Link href="/alerts" className="text-primary text-xs hover:underline">
+        <div className="border-border/60 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-t px-5 py-3 sm:px-6">
+          <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
             {t('viewAll')}
           </Link>
-          <Button type="button" variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
+          <Button
+            className="ml-auto shrink-0"
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => onOpenChange(false)}
+          >
             {t('close')}
           </Button>
         </div>

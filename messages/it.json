@@ -1596,19 +1596,20 @@
   },
   "pushAlerts": {
     "showBell": {
-      "follow": "Attiva promemoria 30 minuti prima di {name}",
+      "follow": "Attiva promemoria prima di {name}",
       "following": "Promemoria attivo per {name} – tocca per disattivarlo",
       "error": "Non ha funzionato. Riprova."
     },
     "showDialog": {
       "title": "Promemoria spettacolo",
       "explain": "Ti avvisiamo da 25 a 35 minuti prima del prossimo spettacolo di {show}.",
+      "explainLate": "Per il prossimo spettacolo è già stretta: quel messaggio arriva circa 10 minuti prima.",
       "follow": "Attiva promemoria",
       "following": "Promemoria attivo",
       "unfollow": "Disattiva promemoria",
       "close": "Chiudi",
       "nextShowtime": "Prossimo spettacolo",
-      "viewAll": "Vedi tutti i tuoi avvisi"
+      "viewAll": "I miei avvisi"
     },
     "rideBell": {
       "setAlert": "Imposta un avviso sul tempo di attesa per {name}",
@@ -1629,7 +1630,7 @@
       "add": "Aggiungi",
       "adding": "Salvataggio…",
       "error": "Non ha funzionato. Riprova.",
-      "viewAll": "Vedi tutti i tuoi avvisi",
+      "viewAll": "I miei avvisi",
       "close": "Chiudi",
       "entry": "Avvisi sul tempo di attesa",
       "entryWithCount": "Avvisi sul tempo di attesa ({count})",

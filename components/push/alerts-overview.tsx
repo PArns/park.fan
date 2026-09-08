@@ -30,9 +30,7 @@ export function AlertsOverview() {
   // whole point is showing the truth, so a fetch that failed must not render
   // as the same "nothing set up yet" empty state a browser with zero alerts
   // gets — that reads as "your alerts are gone" to someone who has five.
-  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>(
-    'loading'
-  );
+  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
   const [showFollows, setShowFollows] = useState<ShowFollowRemote[] | 'loading' | 'error'>(
     'loading'
   );
@@ -54,7 +52,11 @@ export function AlertsOverview() {
   const bothFailed = rideAlerts === 'error' && showFollows === 'error';
   const onlyOneFailed = !bothFailed && (rideAlerts === 'error' || showFollows === 'error');
   const empty =
-    !loading && !bothFailed && !onlyOneFailed && rideAlertList.length === 0 && showFollowList.length === 0;
+    !loading &&
+    !bothFailed &&
+    !onlyOneFailed &&
+    rideAlertList.length === 0 &&
+    showFollowList.length === 0;
 
   const handleRemoveRide = async (attractionId: string) => {
     setRemovingRide(attractionId);

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell, BellRing, Clock } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { LocalTime } from '@/components/ui/local-time';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
@@ -13,6 +13,8 @@ import { followShow, unfollowShow, type PushWriteError } from '@/lib/push/push-f
 import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
+import { PushDialogHero } from '@/components/push/push-dialog-hero';
+import { SHOW_LEAD_MIN } from '@/lib/push/show-lead';
 
 interface ShowFollowDialogProps {
   open: boolean;
@@ -68,6 +70,10 @@ export function ShowFollowDialog({
   // The bell's failure is shown until this dialog produces one of its own.
   const shownError = error ?? initialError;
 
+  // Both outcomes close the dialog, the way `RideAlertQuickDialog` has always
+  // closed on save: the press answered the only question this dialog asks, and
+  // a form that stays open after succeeding reads as one that did not. Only a
+  // FAILURE holds it open — that is when there is something left to read.
   const handleToggle = async () => {
     setPending(true);
     setError(null);
@@ -76,6 +82,7 @@ export function ShowFollowDialog({
       await unfollowShow(showId);
       setPending(false);
       trackShowFollowRemove();
+      onOpenChange(false);
       return;
     }
     const result = await followShow(showId);
@@ -83,6 +90,7 @@ export function ShowFollowDialog({
     if (result.ok) {
       setFollowing(true);
       trackShowFollowAdd(source);
+      onOpenChange(false);
       return;
     }
     setError(result.error);
@@ -98,17 +106,25 @@ export function ShowFollowDialog({
         .sort()[0]
     : undefined;
 
+  // Whether the reminder is still early enough for the usual window. Under
+  // 25 minutes it is not: the API catches a follow made this late in its
+  // second window instead, so the description has to say ten minutes rather
+  // than promise a half hour it can no longer deliver for this performance.
+  const late =
+    browserNow !== null &&
+    nextStart !== undefined &&
+    new Date(nextStart).getTime() - browserNow.getTime() < SHOW_LEAD_MIN * 60_000;
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex flex-col gap-0 overflow-hidden p-0 sm:max-w-sm">
-        <div className="shrink-0 border-b px-5 py-3 sm:px-6">
-          <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
-            <Bell className="size-4 shrink-0" aria-hidden="true" />
-            {showName}
-          </DialogTitle>
-          <DialogDescription className="mt-1 text-xs leading-snug">
-            {t('explain', { show: showName })}
-          </DialogDescription>
+      <DialogContent
+        showCloseButton={false}
+        className="flex flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+      >
+        <PushDialogHero icon={Bell} title={showName} description={t('explain', { show: showName })}>
+          {late && (
+            <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('explainLate')}</p>
+          )}
           {nextStart && (
             <p className="mt-2 flex items-center gap-1.5 text-xs">
               <Clock className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
@@ -123,13 +139,13 @@ export function ShowFollowDialog({
               {pushErrorMessage(shownError)}
             </p>
           )}
-        </div>
+        </PushDialogHero>
 
-        <div className="flex shrink-0 items-center justify-between gap-2 px-3 py-3 sm:px-6">
-          <Link href="/alerts" className="text-primary text-xs hover:underline">
+        <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 px-5 py-3 sm:px-6">
+          <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
             {t('viewAll')}
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="ml-auto flex shrink-0 items-center gap-2">
             <Button type="button" variant="ghost" size="sm" onClick={() => onOpenChange(false)}>
               {t('close')}
             </Button>

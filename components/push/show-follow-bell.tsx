@@ -8,6 +8,7 @@ import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { ShowFollowDialog } from '@/components/push/show-follow-dialog';
+import { SHOW_FOLLOW_MIN_LEAD_MIN } from '@/lib/push/show-lead';
 
 interface ShowFollowBellProps {
   showId: string;
@@ -25,15 +26,6 @@ interface ShowFollowBellProps {
    */
   showtimes?: Array<{ startTime: string }> | null;
 }
-
-/**
- * Below this many minutes to the next performance a reminder is pointless:
- * the notification would land while the visitor is already reading it on the
- * schedule, or after the show has started. The API sends its reminder about
- * half an hour ahead and, for a show followed later than that, ten minutes
- * ahead — under ten there is no lead left to give.
- */
-export const SHOW_FOLLOW_MIN_LEAD_MIN = 10;
 
 /**
  * "Notify me 30 minutes before this show starts" — the same interaction

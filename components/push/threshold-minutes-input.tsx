@@ -84,10 +84,7 @@ export function ThresholdMinutesInput({
   const numericValue = parseThresholdMinutes(value) ?? DEFAULT_THRESHOLD_MIN;
   const fraction = Math.min(
     1,
-    Math.max(
-      0,
-      (numericValue - THRESHOLD_SLIDER_MIN) / (MAX_THRESHOLD_MIN - THRESHOLD_SLIDER_MIN)
-    )
+    Math.max(0, (numericValue - THRESHOLD_SLIDER_MIN) / (MAX_THRESHOLD_MIN - THRESHOLD_SLIDER_MIN))
   );
   // The native thumb's centre travels from half a thumb-width in to half a
   // thumb-width short of the end — see RiderHeightFilter's `offset`, same
@@ -95,7 +92,10 @@ export function ThresholdMinutesInput({
   const thumbOffset = `calc(var(--thumb) / 2 + (100% - var(--thumb)) * ${fraction.toFixed(4)})`;
 
   return (
-    <div className={cn('flex flex-col gap-2', className)} style={{ '--thumb': '1.25rem' } as CSSProperties}>
+    <div
+      className={cn('flex flex-col gap-2', className)}
+      style={{ '--thumb': '1.25rem' } as CSSProperties}
+    >
       <div className="flex items-baseline gap-1.5">
         <span className="text-primary text-2xl font-bold tabular-nums">{numericValue}</span>
         <span className="text-muted-foreground text-sm font-medium">{minutesLabel}</span>

@@ -1596,19 +1596,20 @@
   },
   "pushAlerts": {
     "showBell": {
-      "follow": "Activar aviso 30 minutos antes de {name}",
+      "follow": "Activar aviso antes de {name}",
       "following": "Aviso activo para {name} – toca para desactivarlo",
       "error": "No ha funcionado. Inténtalo de nuevo."
     },
     "showDialog": {
       "title": "Aviso de espectáculo",
       "explain": "Te avisamos entre 25 y 35 minutos antes de la próxima función de {show}.",
+      "explainLate": "Para la próxima función ya va justo: ese aviso llegará unos 10 minutos antes.",
       "follow": "Activar aviso",
       "following": "El aviso está activo",
       "unfollow": "Desactivar aviso",
       "close": "Cerrar",
       "nextShowtime": "Próxima función",
-      "viewAll": "Ver todos tus avisos"
+      "viewAll": "Mis avisos"
     },
     "rideBell": {
       "setAlert": "Configurar aviso de tiempo de espera para {name}",
@@ -1629,7 +1630,7 @@
       "add": "Añadir",
       "adding": "Guardando…",
       "error": "No ha funcionado. Inténtalo de nuevo.",
-      "viewAll": "Ver todos tus avisos",
+      "viewAll": "Mis avisos",
       "close": "Cerrar",
       "entry": "Avisos de tiempo de espera",
       "entryWithCount": "Avisos de tiempo de espera ({count})",

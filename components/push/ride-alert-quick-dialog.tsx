@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { PlannerPanelPhoto } from '@/components/planner/planner-panel-photo';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
+import { PushDialogHero } from '@/components/push/push-dialog-hero';
 import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami';
 import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
@@ -113,17 +114,16 @@ export function RideAlertQuickDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="relative flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-sm">
+      <DialogContent
+        showCloseButton={false}
+        className="relative flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+      >
         <PlannerPanelPhoto src={backgroundImage} position={objectPosition} />
-        <div className="shrink-0 border-b px-5 py-3 sm:px-6">
-          <DialogTitle className="flex items-center gap-2 text-sm font-semibold">
-            <Bell className="size-4 shrink-0" aria-hidden="true" />
-            {attractionName}
-          </DialogTitle>
-          <DialogDescription className="mt-1 text-xs leading-snug">
-            {t('soloSubtitle', { park: parkName })}
-          </DialogDescription>
-        </div>
+        <PushDialogHero
+          icon={Bell}
+          title={attractionName}
+          description={t('soloSubtitle', { park: parkName })}
+        />
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
           <div className="flex flex-col gap-4">
@@ -143,7 +143,7 @@ export function RideAlertQuickDialog({
           </div>
         </div>
 
-        <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
+        <div className="border-border/60 flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-t px-5 py-3 sm:px-6">
           {alerted ? (
             <Button
               type="button"
@@ -155,11 +155,12 @@ export function RideAlertQuickDialog({
               {t('removeShort')}
             </Button>
           ) : (
-            <Link href="/alerts" className="text-primary text-xs hover:underline">
+            <Link href="/alerts" className="text-primary text-xs whitespace-nowrap hover:underline">
               {t('viewAll')}
             </Link>
           )}
           <Button
+            className="ml-auto shrink-0"
             type="button"
             size="sm"
             onClick={handleSave}
