@@ -114,9 +114,21 @@ export function RideAlertQuickDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      {/* `isolate`, never `relative`. What the photo below needs is a STACKING
+          CONTEXT — its layer is `-z-10`, and without one the negative index
+          keeps going and the picture disappears behind the dialog's own
+          `bg-background`, which is the trap `PlannerPanelPhoto` documents for
+          `SheetContent`. `relative` supplies one too, and costs the dialog its
+          position: the base `DialogContent` is `fixed top-1/2 left-1/2`, and
+          `cn()` merges the two as one conflict group, so the override won and
+          took `fixed` with it. The dialog then laid out in normal document
+          flow — measured at y=6907 on a park page, i.e. six screens below the
+          fold — while the overlay still covered the window. Pressing a ride's
+          bell blurred the page and showed nothing, with no error anywhere, and
+          a test that asserts the dialog EXISTS passes the whole time. */}
       <DialogContent
         showCloseButton={false}
-        className="relative flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
+        className="isolate flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
       >
         <PlannerPanelPhoto src={backgroundImage} position={objectPosition} />
         <PushDialogHero

@@ -25,6 +25,14 @@ interface ShowFollowBellProps {
    * Omitted entirely, the bell behaves as it always did.
    */
   showtimes?: Array<{ startTime: string }> | null;
+  /**
+   * The PARK's zone, for the clock the dialog prints. Not optional in
+   * practice: without it `LocalTime` falls back to the visitor's own zone,
+   * and a Universal Epic Universe show at 16:40 was announced to a German
+   * reader as "Nächste Vorstellung 22:40" — six hours out, in the one line
+   * the dialog exists to state.
+   */
+  timezone?: string;
 }
 
 /**
@@ -47,6 +55,7 @@ export function ShowFollowBell({
   className,
   source,
   showtimes,
+  timezone,
 }: ShowFollowBellProps) {
   // The clock has to come from the browser, not the render: these pages are
   // statically cached, so a server-side "minutes from now" would be the
@@ -119,6 +128,7 @@ export function ShowFollowBell({
         showId={showId}
         showName={showName ?? ''}
         showtimes={showtimes}
+        timezone={timezone}
         source={source}
       />
     </>

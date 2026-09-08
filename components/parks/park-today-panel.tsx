@@ -789,6 +789,7 @@ export function ParkTodayPanel({
                               // One row IS one performance here, so the row's own start
                               // time is the whole list as far as this bell is concerned.
                               showtimes={[{ startTime: show.startTime }]}
+                              timezone={timezone}
                               className="absolute top-[9px] right-2 h-5"
                             />
                           </li>
@@ -814,6 +815,7 @@ export function ParkTodayPanel({
                             showName={show.name}
                             source="panel"
                             showtimes={[{ startTime: show.startTime }]}
+                            timezone={timezone}
                             className="absolute top-1/2 right-0 -translate-y-1/2"
                           />
                         </li>

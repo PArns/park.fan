@@ -41,8 +41,14 @@ export function PushDialogHero({ icon: Icon, title, description, children }: Pus
   // feature namespaces' own "close" labels. The chrome ships on every page.
   const tCommon = useTranslations('common');
 
+  // The band needs a ground of its OWN, not just the gradient: that one runs
+  // to `transparent` at the lower right, i.e. to exactly the dialog colour the
+  // footer sits on, so header and footer ran together into one block and the
+  // `/60` hairline between them was the only thing saying otherwise.
+  // `bg-muted/40` under the gradient gives the header a shade the body does
+  // not have, and the border goes to full strength as its edge.
   return (
-    <div className="border-border/60 relative shrink-0 overflow-hidden border-b px-5 py-4 sm:px-6">
+    <div className="bg-muted/40 relative shrink-0 overflow-hidden border-b px-5 py-4 sm:px-6">
       <div
         className="from-primary/25 via-primary/8 absolute inset-0 bg-gradient-to-br to-transparent"
         aria-hidden="true"
