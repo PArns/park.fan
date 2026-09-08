@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, type ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
@@ -96,6 +96,22 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
     return `${parkPath}/${attraction.slug}` as '/europe/germany/rust/europa-park/blue-fire';
   }
   return '#';
+}
+
+/** The 34px glass circle both the ride-alert bell and the favorite star sit inside. */
+function GlassCircle({ children }: { children: ReactNode }) {
+  return (
+    <div
+      className="h-[34px] w-[34px] rounded-full"
+      style={{
+        background: 'var(--pk-fav-bg)',
+        border: '1px solid var(--pk-fav-border)',
+        boxShadow: 'var(--pk-fav-shadow)',
+      }}
+    >
+      {children}
+    </div>
+  );
 }
 
 // ============================================================================
@@ -257,30 +273,16 @@ export function AttractionCard({
                 one to make any sense here. `FavoriteStar` below has no such
                 requirement (a purely local storage key), so it is unaffected. */}
             {parkName && isUuid(attraction.id) && (
-              <div
-                className="h-[34px] w-[34px] rounded-full"
-                style={{
-                  background: 'var(--pk-fav-bg)',
-                  border: '1px solid var(--pk-fav-border)',
-                  boxShadow: 'var(--pk-fav-shadow)',
-                }}
-              >
+              <GlassCircle>
                 <RideAlertBell
                   attractionId={attraction.id}
                   attractionName={stripNewPrefix(attraction.name)}
                   parkName={parkName}
                   className="h-full w-full"
                 />
-              </div>
+              </GlassCircle>
             )}
-            <div
-              className="h-[34px] w-[34px] rounded-full"
-              style={{
-                background: 'var(--pk-fav-bg)',
-                border: '1px solid var(--pk-fav-border)',
-                boxShadow: 'var(--pk-fav-shadow)',
-              }}
-            >
+            <GlassCircle>
               <FavoriteStar
                 type="attraction"
                 id={attraction.id}
@@ -290,7 +292,7 @@ export function AttractionCard({
                 variant="glass"
                 className="h-full w-full"
               />
-            </div>
+            </GlassCircle>
           </div>
         )}
 

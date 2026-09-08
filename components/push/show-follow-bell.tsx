@@ -1,11 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Bell, BellRing } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { followShow, unfollowShow } from '@/lib/push/push-follows';
-import { isShowFollowedLocal, PUSH_FOLLOWS_CHANGED_EVENT } from '@/lib/push/push-follows-store';
+import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
+import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 
 interface ShowFollowBellProps {
   showId: string;
@@ -24,20 +25,13 @@ interface ShowFollowBellProps {
  * unsupported browser simply finds the click does nothing.
  */
 export function ShowFollowBell({ showId, showName, className }: ShowFollowBellProps) {
-  const [following, setFollowing] = useState(false);
+  const [following, setFollowing] = useLocalPushFollowsValue(
+    false,
+    () => isShowFollowedLocal(showId),
+    [showId]
+  );
   const [pending, setPending] = useState(false);
   const t = useTranslations('pushAlerts.showBell');
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setFollowing(isShowFollowedLocal(showId));
-  }, [showId]);
-
-  useEffect(() => {
-    const handleChanged = () => setFollowing(isShowFollowedLocal(showId));
-    window.addEventListener(PUSH_FOLLOWS_CHANGED_EVENT, handleChanged);
-    return () => window.removeEventListener(PUSH_FOLLOWS_CHANGED_EVENT, handleChanged);
-  }, [showId]);
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
@@ -58,7 +52,7 @@ export function ShowFollowBell({ showId, showName, className }: ShowFollowBellPr
         })
         .finally(() => setPending(false));
     },
-    [following, pending, showId]
+    [following, pending, showId, setFollowing]
   );
 
   return (

@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell } from 'lucide-react';
-import { PUSH_FOLLOWS_CHANGED_EVENT, listRideAlertsLocal } from '@/lib/push/push-follows-store';
+import { listRideAlertsLocal } from '@/lib/push/push-follows-store';
+import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-dialog';
 
 interface RideAlertsEntryButtonProps {
@@ -19,18 +20,20 @@ interface RideAlertsEntryButtonProps {
  */
 export function RideAlertsEntryButton({ parkName, attractions }: RideAlertsEntryButtonProps) {
   const [open, setOpen] = useState(false);
-  const [count, setCount] = useState(0);
   const t = useTranslations('pushAlerts.rideDialog');
 
-  useEffect(() => {
-    const ids = new Set(attractions.map((a) => a.id));
-    const recompute = () =>
-      setCount(listRideAlertsLocal().filter((a) => ids.has(a.attractionId)).length);
-    recompute();
-    window.addEventListener(PUSH_FOLLOWS_CHANGED_EVENT, recompute);
-    return () => window.removeEventListener(PUSH_FOLLOWS_CHANGED_EVENT, recompute);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attractions.map((a) => a.id).join(',')]);
+  // Keyed on the id list rather than `attractions` itself — a fresh array
+  // reference every render would otherwise re-run the effect on every
+  // render of the panel around it, not just when the ride set changes.
+  const idsKey = attractions.map((a) => a.id).join(',');
+  const [count] = useLocalPushFollowsValue(
+    0,
+    () => {
+      const ids = new Set(attractions.map((a) => a.id));
+      return listRideAlertsLocal().filter((a) => ids.has(a.attractionId)).length;
+    },
+    [idsKey]
+  );
 
   return (
     <>

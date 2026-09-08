@@ -1,10 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Bell, BellRing } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { getRideAlertLocal, PUSH_FOLLOWS_CHANGED_EVENT } from '@/lib/push/push-follows-store';
+import { getRideAlertLocal } from '@/lib/push/push-follows-store';
+import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { RideAlertQuickDialog } from './ride-alert-quick-dialog';
 
 interface RideAlertBellProps {
@@ -27,19 +28,12 @@ export function RideAlertBell({
   className,
 }: RideAlertBellProps) {
   const [open, setOpen] = useState(false);
-  const [alerted, setAlerted] = useState(false);
+  const [alerted, setAlerted] = useLocalPushFollowsValue(
+    false,
+    () => !!getRideAlertLocal(attractionId),
+    [attractionId]
+  );
   const t = useTranslations('pushAlerts.rideBell');
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setAlerted(!!getRideAlertLocal(attractionId));
-  }, [attractionId]);
-
-  useEffect(() => {
-    const handleChanged = () => setAlerted(!!getRideAlertLocal(attractionId));
-    window.addEventListener(PUSH_FOLLOWS_CHANGED_EVENT, handleChanged);
-    return () => window.removeEventListener(PUSH_FOLLOWS_CHANGED_EVENT, handleChanged);
-  }, [attractionId]);
 
   const handleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
