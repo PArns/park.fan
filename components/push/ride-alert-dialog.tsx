@@ -16,8 +16,8 @@ import {
   type RideAlertRemote,
 } from '@/lib/push/push-follows';
 import {
-  DEFAULT_THRESHOLD_MIN,
   ThresholdMinutesInput,
+  defaultThresholdFor,
   parseThresholdMinutes,
 } from '@/components/push/threshold-minutes-input';
 import { cn } from '@/lib/utils';
@@ -26,6 +26,8 @@ export interface RideAlertDialogAttraction {
   id: string;
   name: string;
   slug: string;
+  /** Seeds the add-form's slider when this ride is selected — see `defaultThresholdFor`. */
+  currentWaitTime?: number | null;
 }
 
 interface RideAlertDialogProps {
@@ -59,7 +61,7 @@ export function RideAlertDialog({
   // including ones this browser already watches.
   const [alerts, setAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
   const [rawSelectedId, setRawSelectedId] = useState('');
-  const [thresholdRaw, setThresholdRaw] = useState(String(DEFAULT_THRESHOLD_MIN));
+  const [thresholdRaw, setThresholdRaw] = useState('');
   const threshold = parseThresholdMinutes(thresholdRaw);
   const [adding, setAdding] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
@@ -105,6 +107,18 @@ export function RideAlertDialog({
     return available[0]?.id ?? '';
   }, [available, rawSelectedId]);
 
+  // The slider itself CANNOT be derived the same way: it is also the
+  // visitor's own input, so re-deriving it on every render would overwrite a
+  // drag in progress. Reset it only when the selection actually changes —
+  // including the two changes on a fresh open (the naive first attraction,
+  // then the real one once `alerts` loads and narrows `available`).
+  useEffect(() => {
+    if (!selectedId) return;
+    const attraction = attractions.find((a) => a.id === selectedId);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setThresholdRaw(String(defaultThresholdFor(attraction?.currentWaitTime)));
+  }, [selectedId, attractions]);
+
   const handleAdd = async () => {
     const attraction = attractions.find((a) => a.id === selectedId);
     // Defensive, not the real gate — the button below is already disabled
@@ -127,7 +141,9 @@ export function RideAlertDialog({
       ),
       result.value,
     ]);
-    setThresholdRaw(String(DEFAULT_THRESHOLD_MIN));
+    // No manual reset here — the just-added ride drops out of `available`,
+    // `selectedId` moves to whatever is next, and the effect above reseeds
+    // the slider for it.
     trackRideAlertSet('central');
   };
 
