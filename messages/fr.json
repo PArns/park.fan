@@ -1597,7 +1597,8 @@
   "pushAlerts": {
     "showBell": {
       "follow": "Activer un rappel 30 minutes avant {name}",
-      "following": "Rappel actif pour {name} – toucher pour désactiver"
+      "following": "Rappel actif pour {name} – toucher pour désactiver",
+      "error": "Ça n’a pas fonctionné. Merci de réessayer."
     },
     "showDialog": {
       "title": "Rappel de spectacle",

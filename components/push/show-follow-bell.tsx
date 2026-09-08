@@ -34,6 +34,13 @@ export function ShowFollowBell({ showId, showName, className, source }: ShowFoll
     [showId]
   );
   const [pending, setPending] = useState(false);
+  // A failed FOLLOW used to be silent — no dialog opens from this bell to show
+  // `PushWriteError` in, unlike the ride-alert bells, so a genuine failure
+  // (rate-limited, permission revoked mid-session, an unreachable API) looked
+  // exactly like "nothing happened, why?". Unfollow stays silent on purpose,
+  // same as `RideAlertDialog`'s own remove: it is optimistic and self-heals
+  // the next time this list is fetched, per `unfollowShow`'s own comment.
+  const [justFailed, setJustFailed] = useState(false);
   const t = useTranslations('pushAlerts.showBell');
 
   const handleClick = useCallback(
@@ -42,6 +49,7 @@ export function ShowFollowBell({ showId, showName, className, source }: ShowFoll
       e.stopPropagation();
       if (pending) return;
 
+      setJustFailed(false);
       setPending(true);
       if (following) {
         setFollowing(false);
@@ -55,12 +63,21 @@ export function ShowFollowBell({ showId, showName, className, source }: ShowFoll
           if (result.ok) {
             setFollowing(true);
             trackShowFollowAdd(source);
+          } else {
+            setJustFailed(true);
+            setTimeout(() => setJustFailed(false), 2500);
           }
         })
         .finally(() => setPending(false));
     },
     [following, pending, showId, setFollowing, source]
   );
+
+  const label = justFailed
+    ? t('error')
+    : following
+      ? t('following', { name: showName ?? '' })
+      : t('follow', { name: showName ?? '' });
 
   return (
     <button
@@ -78,15 +95,13 @@ export function ShowFollowBell({ showId, showName, className, source }: ShowFoll
         'max-sm:after:content-[""]',
         className
       )}
-      aria-label={
-        following ? t('following', { name: showName ?? '' }) : t('follow', { name: showName ?? '' })
-      }
+      aria-label={label}
       aria-pressed={following}
-      title={
-        following ? t('following', { name: showName ?? '' }) : t('follow', { name: showName ?? '' })
-      }
+      title={label}
     >
-      {following ? (
+      {justFailed ? (
+        <Bell className="text-destructive h-4 w-4" />
+      ) : following ? (
         <BellRing className="h-4 w-4 fill-amber-400/30 text-amber-500" />
       ) : (
         <Bell className="text-muted-foreground h-4 w-4" />

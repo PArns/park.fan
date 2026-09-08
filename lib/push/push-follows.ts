@@ -98,9 +98,10 @@ async function classifyFailure(response: Response): Promise<PushWriteError> {
   return { reason: 'network' };
 }
 
-export async function followShow(showId: string): Promise<PushWriteResult<void>> {
-  const identity = await identityForWrite();
-  if (!identity) return { ok: false, error: { reason: 'unavailable' } };
+async function postFollowShow(
+  identity: { endpoint: string },
+  showId: string
+): Promise<PushWriteResult<void>> {
   try {
     const response = await fetch('/api/push/show-follows', {
       method: 'POST',
@@ -113,6 +114,22 @@ export async function followShow(showId: string): Promise<PushWriteResult<void>>
   } catch {
     return { ok: false, error: { reason: 'network' } };
   }
+}
+
+export async function followShow(showId: string): Promise<PushWriteResult<void>> {
+  const identity = await identityForWrite();
+  if (!identity) return { ok: false, error: { reason: 'unavailable' } };
+  const result = await postFollowShow(identity, showId);
+  if (result.ok || result.error.reason !== 'not-found') return result;
+  // The browser already had a live PushManager subscription, so
+  // `identityForWrite` never called `ensurePushRegistered` and never gave the
+  // API a chance to re-upsert its row — a 404 here most likely means the
+  // backend's own copy of it is gone (pruned, or never finished writing),
+  // not that this particular show doesn't exist. Re-sync once and retry
+  // before surfacing an error that looks permanent but usually isn't.
+  const resynced = await ensurePushRegistered();
+  if (!resynced) return result;
+  return postFollowShow(resynced, showId);
 }
 
 /**
@@ -142,12 +159,11 @@ export async function unfollowShow(showId: string): Promise<void> {
  * `outOfSeason`/`retired`/`parkId`/`parkSlug` the API resolved, not a guess
  * built from what the dropdown that triggered this call happened to know.
  */
-export async function setRideAlert(
+async function postRideAlert(
+  identity: { endpoint: string },
   attractionId: string,
   thresholdMinutes: number
 ): Promise<PushWriteResult<RideAlertRemote>> {
-  const identity = await identityForWrite();
-  if (!identity) return { ok: false, error: { reason: 'unavailable' } };
   try {
     const response = await fetch('/api/push/ride-alerts', {
       method: 'POST',
@@ -161,6 +177,23 @@ export async function setRideAlert(
   } catch {
     return { ok: false, error: { reason: 'network' } };
   }
+}
+
+export async function setRideAlert(
+  attractionId: string,
+  thresholdMinutes: number
+): Promise<PushWriteResult<RideAlertRemote>> {
+  const identity = await identityForWrite();
+  if (!identity) return { ok: false, error: { reason: 'unavailable' } };
+  const result = await postRideAlert(identity, attractionId, thresholdMinutes);
+  if (result.ok || result.error.reason !== 'not-found') return result;
+  // Same reasoning as `followShow` — a 404 here most likely means the
+  // backend's copy of this browser's subscription is gone, not that the
+  // ride itself is (it came from this park's own attraction list). Re-sync
+  // the subscription once and retry before giving up.
+  const resynced = await ensurePushRegistered();
+  if (!resynced) return result;
+  return postRideAlert(resynced, attractionId, thresholdMinutes);
 }
 
 export async function removeRideAlert(attractionId: string): Promise<void> {

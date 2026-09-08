@@ -1597,7 +1597,8 @@
   "pushAlerts": {
     "showBell": {
       "follow": "Activar aviso 30 minutos antes de {name}",
-      "following": "Aviso activo para {name} – toca para desactivarlo"
+      "following": "Aviso activo para {name} – toca para desactivarlo",
+      "error": "No ha funcionado. Inténtalo de nuevo."
     },
     "showDialog": {
       "title": "Aviso de espectáculo",

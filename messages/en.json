@@ -1597,7 +1597,8 @@
   "pushAlerts": {
     "showBell": {
       "follow": "Get a reminder 30 minutes before {name}",
-      "following": "Reminder for {name} is on – tap to turn off"
+      "following": "Reminder for {name} is on – tap to turn off",
+      "error": "That didn’t work. Please try again."
     },
     "showDialog": {
       "title": "Show reminder",

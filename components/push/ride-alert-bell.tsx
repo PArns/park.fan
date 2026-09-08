@@ -16,6 +16,8 @@ interface RideAlertBellProps {
   /** The card's own photo, if it has one — carried into the dialog as its background. */
   backgroundImage?: string | null;
   objectPosition?: string;
+  /** The card's own current reading, if any — seeds the dialog's slider. */
+  currentWaitTime?: number | null;
 }
 
 /**
@@ -31,6 +33,7 @@ export function RideAlertBell({
   className,
   backgroundImage,
   objectPosition,
+  currentWaitTime,
 }: RideAlertBellProps) {
   const [open, setOpen] = useState(false);
   const [alerted, setAlerted] = useLocalPushFollowsValue(
@@ -85,6 +88,7 @@ export function RideAlertBell({
         onSaved={setAlerted}
         backgroundImage={backgroundImage}
         objectPosition={objectPosition}
+        currentWaitTime={currentWaitTime}
       />
     </>
   );

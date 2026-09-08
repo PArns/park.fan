@@ -217,8 +217,10 @@ export function ParkTodayPanel({
         id: a.id,
         name: stripNewPrefix(a.name),
         slug: a.slug,
+        currentWaitTime:
+          getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
       })),
-    [park.attractions]
+    [park.attractions, park.status]
   );
 
   // Reserved rows — the count comes from the same list the rows are drawn from, so it cannot
@@ -773,11 +775,18 @@ export function ParkTodayPanel({
                                 </span>
                               )}
                             </a>
+                            {/* `top-2` used to just approximate the box's top corner, 3px off the
+                                time/title line's own center (measured) since the box is taller than
+                                that one line once the countdown row is showing. `top-[9px]` matches
+                                the `<a>`'s own offset to that line (1px border + `py-2`'s 8px) and
+                                `h-5` matches the line's own height (`text-sm`'s 20px line box), so the
+                                bell centers on the SAME band the line occupies rather than on the box
+                                as a whole — correct with or without the countdown row underneath. */}
                             <ShowFollowBell
                               showId={show.id}
                               showName={show.name}
                               source="panel"
-                              className="absolute top-2 right-2"
+                              className="absolute top-[9px] right-2 h-5"
                             />
                           </li>
                         );

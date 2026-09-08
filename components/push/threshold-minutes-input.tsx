@@ -6,10 +6,21 @@ import {
   DEFAULT_THRESHOLD_MIN,
   MIN_THRESHOLD_MIN,
   MAX_THRESHOLD_MIN,
+  THRESHOLD_STEP_MIN,
+  THRESHOLD_SLIDER_MIN,
+  defaultThresholdFor,
   parseThresholdMinutes,
 } from '@/lib/push/threshold-minutes';
 
-export { DEFAULT_THRESHOLD_MIN, MIN_THRESHOLD_MIN, MAX_THRESHOLD_MIN, parseThresholdMinutes };
+export {
+  DEFAULT_THRESHOLD_MIN,
+  MIN_THRESHOLD_MIN,
+  MAX_THRESHOLD_MIN,
+  THRESHOLD_STEP_MIN,
+  THRESHOLD_SLIDER_MIN,
+  defaultThresholdFor,
+  parseThresholdMinutes,
+};
 
 interface ThresholdMinutesInputProps {
   value: string;
@@ -18,7 +29,6 @@ interface ThresholdMinutesInputProps {
   ariaLabel: string;
   /** The unit word shown beside the big number — e.g. "min" / "Min.". */
   minutesLabel: string;
-  autoFocus?: boolean;
 }
 
 /**
@@ -31,15 +41,38 @@ interface ThresholdMinutesInputProps {
  * reasoning): a `<div>` track + thumb for the look, a transparent
  * `input[type=range]` on top for pointer/keyboard/screen-reader behaviour,
  * because a native range input's thumb and fill are not addressable from one
- * shared stylesheet. Unlike that filter this one has no stops to round to —
- * every whole minute from {@link MIN_THRESHOLD_MIN} to
- * {@link MAX_THRESHOLD_MIN} is a legitimate threshold — so the position is a
- * plain linear fraction rather than an index into a list.
+ * shared stylesheet. Unlike that filter this one's stops are a fixed
+ * {@link THRESHOLD_STEP_MIN} apart rather than an index into a curated list —
+ * a 240-position drag is fiddly on a touchscreen, and nobody is asking for
+ * "notify below 47 minutes" specifically. The native input's own `min` is
+ * {@link THRESHOLD_SLIDER_MIN} (ten — a wait-time alert under that is not a
+ * useful one), not {@link MIN_THRESHOLD_MIN}: a range input snaps EVERY
+ * value — the initial one, a drag, an arrow key — to `min + k·step`, always,
+ * so anchoring the grid at `MIN_THRESHOLD_MIN` (1) would make the reachable
+ * positions 1, 6, 11, 16, 21, ... — not one of which is a round number, and
+ * none of which is what `defaultThresholdFor` actually returns (20, 30, 45,
+ * ...). Anchored at ten with a step of five the grid is exactly
+ * 10, 15, ..., 240. The drawn thumb/fill still use the true, unsnapped
+ * `numericValue` for their position (clamped into `[0,1]` since an OLD
+ * alert saved before this control had a floor at all can still carry 1–9),
+ * so a legacy value like that draws at the track's left edge rather than
+ * off it, while the number above it keeps reading its real, exact value.
  *
  * Still hands the caller a raw string rather than parsing it here: a real
  * range input can never actually report an out-of-range or non-numeric
  * value, but `value` is typed as a string so a caller can still seed it with
  * `''` before the first render without a type error.
+ *
+ * No `autoFocus` prop: an `autoFocus`ed range input inside a freshly-opened
+ * Radix `Dialog` used to send the WHOLE PAGE scrolling to somewhere near its
+ * bottom the instant the dialog appeared, on both the phone and desktop
+ * viewport this was tested at — the native autofocus fires synchronously at
+ * mount, before the dialog's open transform/animation has settled, and the
+ * browser's implicit scroll-into-view reads that mid-transition layout.
+ * Radix's own `Dialog.Content` already moves focus to the first focusable
+ * descendant once the dialog has actually finished opening, deferred exactly
+ * to avoid this, which is what still lands focus on this input with no
+ * `autoFocus` here at all.
  */
 export function ThresholdMinutesInput({
   value,
@@ -47,10 +80,15 @@ export function ThresholdMinutesInput({
   className,
   ariaLabel,
   minutesLabel,
-  autoFocus,
 }: ThresholdMinutesInputProps) {
   const numericValue = parseThresholdMinutes(value) ?? DEFAULT_THRESHOLD_MIN;
-  const fraction = (numericValue - MIN_THRESHOLD_MIN) / (MAX_THRESHOLD_MIN - MIN_THRESHOLD_MIN);
+  const fraction = Math.min(
+    1,
+    Math.max(
+      0,
+      (numericValue - THRESHOLD_SLIDER_MIN) / (MAX_THRESHOLD_MIN - THRESHOLD_SLIDER_MIN)
+    )
+  );
   // The native thumb's centre travels from half a thumb-width in to half a
   // thumb-width short of the end — see RiderHeightFilter's `offset`, same
   // formula, just against a linear value instead of a stop index.
@@ -77,13 +115,12 @@ export function ThresholdMinutesInput({
         <input
           type="range"
           inputMode="numeric"
-          min={MIN_THRESHOLD_MIN}
+          min={THRESHOLD_SLIDER_MIN}
           max={MAX_THRESHOLD_MIN}
-          step={1}
+          step={THRESHOLD_STEP_MIN}
           value={numericValue}
           onChange={(e) => onChange(e.target.value)}
           aria-label={ariaLabel}
-          autoFocus={autoFocus}
           // Same construction as RiderHeightFilter: a 44px phone-tier band the
           // drawn track sits inside of, real input invisible but on top.
           className="absolute inset-x-0 top-1/2 h-11 w-full -translate-y-1/2 cursor-pointer touch-manipulation appearance-none bg-transparent opacity-0 [&::-webkit-slider-thumb]:size-5 [&::-webkit-slider-thumb]:appearance-none"
@@ -91,7 +128,7 @@ export function ThresholdMinutesInput({
       </div>
 
       <div className="text-muted-foreground flex justify-between text-[11px] tabular-nums">
-        <span>{MIN_THRESHOLD_MIN}</span>
+        <span>{THRESHOLD_SLIDER_MIN}</span>
         <span>{MAX_THRESHOLD_MIN}</span>
       </div>
     </div>

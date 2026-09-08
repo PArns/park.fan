@@ -11,8 +11,8 @@ import { trackRideAlertRemoved, trackRideAlertSet } from '@/lib/analytics/umami'
 import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import {
-  DEFAULT_THRESHOLD_MIN,
   ThresholdMinutesInput,
+  defaultThresholdFor,
   parseThresholdMinutes,
 } from '@/components/push/threshold-minutes-input';
 
@@ -27,6 +27,8 @@ interface RideAlertQuickDialogProps {
   /** The card's own photo, if it has one — same picture, same crop, no second fetch. */
   backgroundImage?: string | null;
   objectPosition?: string;
+  /** The card's own current reading, if any — seeds a new alert's slider ten minutes under it. */
+  currentWaitTime?: number | null;
 }
 
 /**
@@ -53,9 +55,12 @@ export function RideAlertQuickDialog({
   onSaved,
   backgroundImage,
   objectPosition,
+  currentWaitTime,
 }: RideAlertQuickDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
-  const [thresholdRaw, setThresholdRaw] = useState(String(DEFAULT_THRESHOLD_MIN));
+  const [thresholdRaw, setThresholdRaw] = useState(() =>
+    String(defaultThresholdFor(currentWaitTime))
+  );
   const threshold = parseThresholdMinutes(thresholdRaw);
   const [alerted, setAlerted] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -67,8 +72,12 @@ export function RideAlertQuickDialog({
     const existing = getRideAlertLocal(attractionId);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAlerted(!!existing);
-    setThresholdRaw(String(existing?.thresholdMinutes ?? DEFAULT_THRESHOLD_MIN));
+    setThresholdRaw(String(existing?.thresholdMinutes ?? defaultThresholdFor(currentWaitTime)));
     setError(null);
+    // `currentWaitTime` deliberately excluded — it re-renders every live poll while
+    // the dialog may already be open, and a slider jumping under someone's thumb
+    // because the queue just ticked is worse than seeding it once per open.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, attractionId]);
 
   const handleSave = async () => {
@@ -123,7 +132,6 @@ export function RideAlertQuickDialog({
                 onChange={setThresholdRaw}
                 ariaLabel={t('thresholdInput')}
                 minutesLabel={t('minutes')}
-                autoFocus
               />
             </div>
             <p className="text-muted-foreground text-[11px] leading-snug">{t('todayOnly')}</p>
