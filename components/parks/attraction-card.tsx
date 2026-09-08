@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, GripVertical, MapPin } from 'lucide-react';
-import { cn, stripNewPrefix } from '@/lib/utils';
+import { cn, isUuid, stripNewPrefix } from '@/lib/utils';
 import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -245,7 +245,12 @@ export function AttractionCard({
             circle reserved 52px from the edge, two need roughly 88px. */}
         {attraction.id && (
           <div className="absolute top-3 right-3 z-[4] flex items-center gap-2">
-            {parkName && (
+            {/* `attraction.id` on a blog fallback card (its live detail failed
+                to resolve at build time) is `attractionSlug`, not a UUID —
+                `POST /push/ride-alerts` 400s on that, so the bell needs a real
+                one to make any sense here. `FavoriteStar` below has no such
+                requirement (a purely local storage key), so it is unaffected. */}
+            {parkName && isUuid(attraction.id) && (
               <div
                 className="h-[34px] w-[34px] rounded-full"
                 style={{

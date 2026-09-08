@@ -53,8 +53,8 @@ export function ShowFollowBell({ showId, showName, className }: ShowFollowBellPr
       }
 
       void followShow(showId)
-        .then((ok) => {
-          if (ok) setFollowing(true);
+        .then((result) => {
+          if (result.ok) setFollowing(true);
         })
         .finally(() => setPending(false));
     },

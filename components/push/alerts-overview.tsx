@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Bell, BellRing, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import {
   fetchRideAlertsRemote,
   fetchShowFollowsRemote,
@@ -24,30 +25,51 @@ import {
  */
 export function AlertsOverview() {
   const t = useTranslations('pushAlerts.overview');
-  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | null>(null);
-  const [showFollows, setShowFollows] = useState<ShowFollowRemote[] | null>(null);
+  // 'loading'/'error' rather than folding a failure into `null`: this page's
+  // whole point is showing the truth, so a fetch that failed must not render
+  // as the same "nothing set up yet" empty state a browser with zero alerts
+  // gets — that reads as "your alerts are gone" to someone who has five.
+  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>(
+    'loading'
+  );
+  const [showFollows, setShowFollows] = useState<ShowFollowRemote[] | 'loading' | 'error'>(
+    'loading'
+  );
   const [removingRide, setRemovingRide] = useState<string | null>(null);
   const [removingShow, setRemovingShow] = useState<string | null>(null);
 
   useEffect(() => {
-    void fetchRideAlertsRemote().then(setRideAlerts);
-    void fetchShowFollowsRemote().then(setShowFollows);
+    void fetchRideAlertsRemote().then((result) =>
+      setRideAlerts(result.ok ? result.items : 'error')
+    );
+    void fetchShowFollowsRemote().then((result) =>
+      setShowFollows(result.ok ? result.items : 'error')
+    );
   }, []);
 
-  const loading = rideAlerts === null || showFollows === null;
-  const empty = !loading && rideAlerts.length === 0 && showFollows.length === 0;
+  const loading = rideAlerts === 'loading' || showFollows === 'loading';
+  const rideAlertList = Array.isArray(rideAlerts) ? rideAlerts : [];
+  const showFollowList = Array.isArray(showFollows) ? showFollows : [];
+  const bothFailed = rideAlerts === 'error' && showFollows === 'error';
+  const onlyOneFailed = !bothFailed && (rideAlerts === 'error' || showFollows === 'error');
+  const empty =
+    !loading && !bothFailed && !onlyOneFailed && rideAlertList.length === 0 && showFollowList.length === 0;
 
   const handleRemoveRide = async (attractionId: string) => {
     setRemovingRide(attractionId);
     await removeRideAlert(attractionId);
-    setRideAlerts((current) => (current ?? []).filter((a) => a.attractionId !== attractionId));
+    setRideAlerts((current) =>
+      Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
+    );
     setRemovingRide(null);
   };
 
   const handleRemoveShow = async (showId: string) => {
     setRemovingShow(showId);
     await unfollowShow(showId);
-    setShowFollows((current) => (current ?? []).filter((s) => s.showId !== showId));
+    setShowFollows((current) =>
+      Array.isArray(current) ? current.filter((s) => s.showId !== showId) : current
+    );
     setRemovingShow(null);
   };
 
@@ -56,6 +78,16 @@ export function AlertsOverview() {
       <div className="text-muted-foreground flex items-center gap-2 py-12 text-sm">
         <Loader2 className="size-4 animate-spin" aria-hidden="true" />
         {t('loading')}
+      </div>
+    );
+  }
+
+  if (bothFailed) {
+    return (
+      <div className="border-destructive/40 rounded-lg border border-dashed px-6 py-12 text-center">
+        <p className="text-destructive mx-auto max-w-sm text-sm leading-relaxed">
+          {t('loadError')}
+        </p>
       </div>
     );
   }
@@ -73,28 +105,44 @@ export function AlertsOverview() {
 
   return (
     <div className="flex flex-col gap-8">
-      {rideAlerts.length > 0 && (
+      {onlyOneFailed && <p className="text-destructive text-xs">{t('loadError')}</p>}
+      {rideAlertList.length > 0 && (
         <section>
           <h2 className="mb-3 text-sm font-semibold">
-            {t('rideAlertsTitle', { count: rideAlerts.length })}
+            {t('rideAlertsTitle', { count: rideAlertList.length })}
           </h2>
           <ul className="flex flex-col gap-2">
-            {rideAlerts.map((alert) => (
+            {rideAlertList.map((alert) => (
               <li
                 key={alert.attractionId}
                 className="border-border/60 flex items-center justify-between gap-3 rounded-md border px-4 py-3"
               >
                 <div className="min-w-0 flex-1">
-                  {alert.path ? (
-                    <Link
-                      href={alert.path}
-                      className="hover:text-primary truncate text-sm font-medium hover:underline"
-                    >
-                      {alert.attractionName}
-                    </Link>
-                  ) : (
-                    <p className="truncate text-sm font-medium">{alert.attractionName}</p>
-                  )}
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {alert.path ? (
+                      <Link
+                        href={alert.path}
+                        className="hover:text-primary truncate text-sm font-medium hover:underline"
+                      >
+                        {alert.attractionName}
+                      </Link>
+                    ) : (
+                      <p className="truncate text-sm font-medium">{alert.attractionName}</p>
+                    )}
+                    {/* Accepted at write time regardless (a visitor may alert on a
+                        winter ride ahead of a trip) — surfaced here so a dormant
+                        alert does not look identical to a live one. */}
+                    {alert.outOfSeason && (
+                      <Badge variant="secondary" className="shrink-0">
+                        {t('outOfSeason')}
+                      </Badge>
+                    )}
+                    {alert.retired && (
+                      <Badge variant="secondary" className="shrink-0">
+                        {t('retired')}
+                      </Badge>
+                    )}
+                  </div>
                   <p className="text-muted-foreground text-xs">
                     {alert.parkName} · {t('thresholdLabel', { minutes: alert.thresholdMinutes })}
                   </p>
@@ -114,14 +162,14 @@ export function AlertsOverview() {
         </section>
       )}
 
-      {showFollows.length > 0 && (
+      {showFollowList.length > 0 && (
         <section>
           <h2 className="mb-3 flex items-center gap-1.5 text-sm font-semibold">
             <BellRing className="size-4 shrink-0" aria-hidden="true" />
-            {t('showFollowsTitle', { count: showFollows.length })}
+            {t('showFollowsTitle', { count: showFollowList.length })}
           </h2>
           <ul className="flex flex-col gap-2">
-            {showFollows.map((follow) => (
+            {showFollowList.map((follow) => (
               <li
                 key={follow.showId}
                 className="border-border/60 flex items-center justify-between gap-3 rounded-md border px-4 py-3"

@@ -1623,7 +1623,10 @@
       "entry": "Wait-time alerts",
       "entryWithCount": "Wait-time alerts ({count})",
       "removeShort": "Remove",
-      "save": "Save"
+      "save": "Save",
+      "outOfSeason": "Winter only",
+      "retired": "Retired",
+      "errorRateLimited": "Too many attempts. Try again in {seconds} seconds."
     },
     "overview": {
       "title": "My alerts",
@@ -1633,7 +1636,10 @@
       "rideAlertsTitle": "{count, plural, =1 {One wait-time alert} other {# wait-time alerts}}",
       "showFollowsTitle": "{count, plural, =1 {One show reminder} other {# show reminders}}",
       "thresholdLabel": "under {minutes} min",
-      "remove": "Remove"
+      "remove": "Remove",
+      "outOfSeason": "Winter only",
+      "retired": "Retired",
+      "loadError": "Couldn't load the list. Please reload the page."
     },
     "menu": {
       "link": "My alerts"

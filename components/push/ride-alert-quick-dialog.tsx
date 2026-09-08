@@ -7,7 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { removeRideAlert, setRideAlert } from '@/lib/push/push-follows';
+import { removeRideAlert, setRideAlert, type PushWriteError } from '@/lib/push/push-follows';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 
 const DEFAULT_THRESHOLD_MIN = 20;
@@ -45,7 +45,7 @@ export function RideAlertQuickDialog({
   const [alerted, setAlerted] = useState(false);
   const [saving, setSaving] = useState(false);
   const [removing, setRemoving] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<PushWriteError | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -53,16 +53,16 @@ export function RideAlertQuickDialog({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAlerted(!!existing);
     setThreshold(existing?.thresholdMinutes ?? DEFAULT_THRESHOLD_MIN);
-    setError(false);
+    setError(null);
   }, [open, attractionId]);
 
   const handleSave = async () => {
     setSaving(true);
-    setError(false);
-    const ok = await setRideAlert(attractionId, threshold);
+    setError(null);
+    const result = await setRideAlert(attractionId, threshold);
     setSaving(false);
-    if (!ok) {
-      setError(true);
+    if (!result.ok) {
+      setError(result.error);
       return;
     }
     setAlerted(true);
@@ -110,7 +110,14 @@ export function RideAlertQuickDialog({
                 <span className="text-muted-foreground font-normal">{t('minutes')}</span>
               </div>
             </label>
-            {error && <p className="text-destructive text-xs">{t('error')}</p>}
+            {error &&
+              (error.reason === 'rate-limited' ? (
+                <p className="text-destructive text-xs">
+                  {t('errorRateLimited', { seconds: error.retryAfterSeconds })}
+                </p>
+              ) : (
+                <p className="text-destructive text-xs">{t('error')}</p>
+              ))}
           </div>
         </div>
 

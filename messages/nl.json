@@ -1623,7 +1623,10 @@
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
       "removeShort": "Verwijderen",
-      "save": "Opslaan"
+      "save": "Opslaan",
+      "outOfSeason": "Alleen in de winter",
+      "retired": "Gesloopt",
+      "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw."
     },
     "overview": {
       "title": "Mijn meldingen",
@@ -1633,7 +1636,10 @@
       "rideAlertsTitle": "{count, plural, =1 {Eén wachttijdmelding} other {# wachttijdmeldingen}}",
       "showFollowsTitle": "{count, plural, =1 {Eén show-herinnering} other {# show-herinneringen}}",
       "thresholdLabel": "onder {minutes} min.",
-      "remove": "Verwijderen"
+      "remove": "Verwijderen",
+      "outOfSeason": "Alleen in de winter",
+      "retired": "Gesloopt",
+      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina."
     },
     "menu": { "link": "Mijn meldingen" }
   },

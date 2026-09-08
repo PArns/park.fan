@@ -7,10 +7,12 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import {
   fetchRideAlertsRemote,
   removeRideAlert,
   setRideAlert,
+  type PushWriteError,
   type RideAlertRemote,
 } from '@/lib/push/push-follows';
 import { cn } from '@/lib/utils';
@@ -51,12 +53,15 @@ export function RideAlertDialog({
   attractions,
 }: RideAlertDialogProps) {
   const t = useTranslations('pushAlerts.rideDialog');
-  const [alerts, setAlerts] = useState<RideAlertRemote[] | null>(null);
+  // Three states, not two: a failed fetch must not render as "no alerts
+  // for this park" — the add-form would then offer every ride again,
+  // including ones this browser already watches.
+  const [alerts, setAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
   const [rawSelectedId, setRawSelectedId] = useState('');
   const [threshold, setThreshold] = useState(DEFAULT_THRESHOLD_MIN);
   const [adding, setAdding] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
-  const [addError, setAddError] = useState(false);
+  const [addError, setAddError] = useState<PushWriteError | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -65,12 +70,16 @@ export function RideAlertDialog({
     // see everything" surface, not a hot render path, so it always
     // reconciles rather than trusting the local mirror's snapshot.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setAlerts(null);
-    setAddError(false);
-    void fetchRideAlertsRemote().then((remote) => {
+    setAlerts('loading');
+    setAddError(null);
+    void fetchRideAlertsRemote().then((result) => {
       if (cancelled) return;
+      if (!result.ok) {
+        setAlerts('error');
+        return;
+      }
       const parkAttractionIds = new Set(attractions.map((a) => a.id));
-      setAlerts(remote.filter((alert) => parkAttractionIds.has(alert.attractionId)));
+      setAlerts(result.items.filter((alert) => parkAttractionIds.has(alert.attractionId)));
     });
     return () => {
       cancelled = true;
@@ -78,7 +87,10 @@ export function RideAlertDialog({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const alertedIds = useMemo(() => new Set((alerts ?? []).map((a) => a.attractionId)), [alerts]);
+  const alertedIds = useMemo(
+    () => new Set((Array.isArray(alerts) ? alerts : []).map((a) => a.attractionId)),
+    [alerts]
+  );
   const available = useMemo(
     () => attractions.filter((a) => !alertedIds.has(a.id)),
     [attractions, alertedIds]
@@ -95,27 +107,20 @@ export function RideAlertDialog({
     const attraction = attractions.find((a) => a.id === selectedId);
     if (!attraction) return;
     setAdding(true);
-    setAddError(false);
-    const ok = await setRideAlert(attraction.id, threshold);
+    setAddError(null);
+    const result = await setRideAlert(attraction.id, threshold);
     setAdding(false);
-    if (!ok) {
-      setAddError(true);
+    if (!result.ok) {
+      setAddError(result.error);
       return;
     }
+    // The server's own row, not a guess built from what this dropdown knew —
+    // `outOfSeason`/`retired`/`parkId`/`parkSlug` are the API's, not ours.
     setAlerts((current) => [
-      ...(current ?? []).filter((a) => a.attractionId !== attraction.id),
-      {
-        attractionId: attraction.id,
-        attractionName: attraction.name,
-        attractionSlug: attraction.slug,
-        parkId: '',
-        parkName,
-        parkSlug: '',
-        path: null,
-        thresholdMinutes: threshold,
-        armed: true,
-        createdAt: new Date().toISOString(),
-      },
+      ...(Array.isArray(current) ? current : []).filter(
+        (a) => a.attractionId !== attraction.id
+      ),
+      result.value,
     ]);
     setThreshold(DEFAULT_THRESHOLD_MIN);
   };
@@ -123,7 +128,9 @@ export function RideAlertDialog({
   const handleRemove = async (attractionId: string) => {
     setRemovingId(attractionId);
     await removeRideAlert(attractionId);
-    setAlerts((current) => (current ?? []).filter((a) => a.attractionId !== attractionId));
+    setAlerts((current) =>
+      Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
+    );
     setRemovingId(null);
   };
 
@@ -142,8 +149,10 @@ export function RideAlertDialog({
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-4 sm:px-6">
           <div className="flex flex-col gap-4">
-            {alerts === null ? (
+            {alerts === 'loading' ? (
               <p className="text-muted-foreground text-xs">{t('loading')}</p>
+            ) : alerts === 'error' ? (
+              <p className="text-destructive text-xs leading-relaxed">{t('loadError')}</p>
             ) : alerts.length === 0 ? (
               <p className="text-muted-foreground text-xs leading-relaxed">{t('empty')}</p>
             ) : (
@@ -154,7 +163,22 @@ export function RideAlertDialog({
                     className="border-border/60 flex items-center justify-between gap-2 rounded-md border px-3 py-2"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium">{alert.attractionName}</p>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <p className="truncate text-sm font-medium">{alert.attractionName}</p>
+                        {/* Accepted at write time regardless (a visitor may alert on a
+                            winter ride ahead of a trip) — surfaced here so a dormant
+                            alert does not look identical to a live one. */}
+                        {alert.outOfSeason && (
+                          <Badge variant="secondary" className="shrink-0">
+                            {t('outOfSeason')}
+                          </Badge>
+                        )}
+                        {alert.retired && (
+                          <Badge variant="secondary" className="shrink-0">
+                            {t('retired')}
+                          </Badge>
+                        )}
+                      </div>
                       <p className="text-muted-foreground text-xs">
                         {t('thresholdLabel', { minutes: alert.thresholdMinutes })}
                       </p>
@@ -218,7 +242,14 @@ export function RideAlertDialog({
                 >
                   {adding ? t('adding') : t('add')}
                 </Button>
-                {addError && <p className="text-destructive text-xs">{t('error')}</p>}
+                {addError &&
+                  (addError.reason === 'rate-limited' ? (
+                    <p className="text-destructive text-xs">
+                      {t('errorRateLimited', { seconds: addError.retryAfterSeconds })}
+                    </p>
+                  ) : (
+                    <p className="text-destructive text-xs">{t('error')}</p>
+                  ))}
               </div>
             )}
           </div>

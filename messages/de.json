@@ -1623,7 +1623,10 @@
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
       "removeShort": "Entfernen",
-      "save": "Speichern"
+      "save": "Speichern",
+      "outOfSeason": "Nur im Winter",
+      "retired": "Abgebaut",
+      "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen."
     },
     "overview": {
       "title": "Meine Alarme",
@@ -1633,7 +1636,10 @@
       "rideAlertsTitle": "{count, plural, =1 {Ein Wartezeit-Alarm} other {# Wartezeit-Alarme}}",
       "showFollowsTitle": "{count, plural, =1 {Eine Show-Erinnerung} other {# Show-Erinnerungen}}",
       "thresholdLabel": "unter {minutes} Min.",
-      "remove": "Entfernen"
+      "remove": "Entfernen",
+      "outOfSeason": "Nur im Winter",
+      "retired": "Abgebaut",
+      "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden."
     },
     "menu": {
       "link": "Meine Alarme"

@@ -1623,7 +1623,10 @@
       "entry": "Alertes de temps d’attente",
       "entryWithCount": "Alertes de temps d’attente ({count})",
       "removeShort": "Supprimer",
-      "save": "Enregistrer"
+      "save": "Enregistrer",
+      "outOfSeason": "Hiver uniquement",
+      "retired": "Démonté",
+      "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes."
     },
     "overview": {
       "title": "Mes alertes",
@@ -1633,7 +1636,10 @@
       "rideAlertsTitle": "{count, plural, =1 {Une alerte de temps d’attente} other {# alertes de temps d’attente}}",
       "showFollowsTitle": "{count, plural, =1 {Un rappel de spectacle} other {# rappels de spectacle}}",
       "thresholdLabel": "sous {minutes} min",
-      "remove": "Supprimer"
+      "remove": "Supprimer",
+      "outOfSeason": "Hiver uniquement",
+      "retired": "Démonté",
+      "loadError": "Impossible de charger la liste. Veuillez recharger la page."
     },
     "menu": { "link": "Mes alertes" }
   },

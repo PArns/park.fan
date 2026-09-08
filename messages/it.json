@@ -1623,7 +1623,10 @@
       "entry": "Avvisi sul tempo di attesa",
       "entryWithCount": "Avvisi sul tempo di attesa ({count})",
       "removeShort": "Rimuovi",
-      "save": "Salva"
+      "save": "Salva",
+      "outOfSeason": "Solo in inverno",
+      "retired": "Dismessa",
+      "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi."
     },
     "overview": {
       "title": "I miei avvisi",
@@ -1633,7 +1636,10 @@
       "rideAlertsTitle": "{count, plural, =1 {Un avviso sul tempo di attesa} other {# avvisi sul tempo di attesa}}",
       "showFollowsTitle": "{count, plural, =1 {Un promemoria show} other {# promemoria show}}",
       "thresholdLabel": "sotto {minutes} min",
-      "remove": "Rimuovi"
+      "remove": "Rimuovi",
+      "outOfSeason": "Solo in inverno",
+      "retired": "Dismessa",
+      "loadError": "Impossibile caricare l'elenco. Ricarica la pagina."
     },
     "menu": { "link": "I miei avvisi" }
   },
