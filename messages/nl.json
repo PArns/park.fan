@@ -1597,7 +1597,8 @@
   "pushAlerts": {
     "showBell": {
       "follow": "Herinnering 30 minuten voor {name} inschakelen",
-      "following": "Herinnering voor {name} actief – tik om uit te schakelen"
+      "following": "Herinnering voor {name} actief – tik om uit te schakelen",
+      "error": "Dat is niet gelukt. Probeer het nogmaals."
     },
     "showDialog": {
       "title": "Show-herinnering",

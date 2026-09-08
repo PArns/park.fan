@@ -1597,7 +1597,8 @@
   "pushAlerts": {
     "showBell": {
       "follow": "Erinnerung 30 Minuten vor {name} aktivieren",
-      "following": "Erinnerung für {name} aktiv – zum Deaktivieren tippen"
+      "following": "Erinnerung für {name} aktiv – zum Deaktivieren tippen",
+      "error": "Das hat nicht geklappt. Bitte noch einmal versuchen."
     },
     "showDialog": {
       "title": "Show-Erinnerung",

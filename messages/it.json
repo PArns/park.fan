@@ -1597,7 +1597,8 @@
   "pushAlerts": {
     "showBell": {
       "follow": "Attiva promemoria 30 minuti prima di {name}",
-      "following": "Promemoria attivo per {name} – tocca per disattivarlo"
+      "following": "Promemoria attivo per {name} – tocca per disattivarlo",
+      "error": "Non ha funzionato. Riprova."
     },
     "showDialog": {
       "title": "Promemoria spettacolo",
