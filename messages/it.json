@@ -778,6 +778,7 @@
     "outage": {
       "since": "Guasto segnalato da {when}",
       "startUnknown": "Guasto segnalato, inizio sconosciuto",
+      "elapsed": "{duration} a parco aperto",
       "estimate": {
         "range": "I guasti come questo duravano di solito ancora da {from} a {to}.",
         "rangeOpen": "I guasti come questo duravano di solito ancora più di {from}.",

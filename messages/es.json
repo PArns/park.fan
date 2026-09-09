@@ -778,6 +778,7 @@
     "outage": {
       "since": "Avería notificada desde {when}",
       "startUnknown": "Avería notificada, inicio desconocido",
+      "elapsed": "{duration} con el parque abierto",
       "estimate": {
         "range": "Las averías como esta solían durar entre {from} y {to} más.",
         "rangeOpen": "Las averías como esta solían durar más de {from} más.",

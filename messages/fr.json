@@ -778,6 +778,7 @@
     "outage": {
       "since": "Panne signalée depuis {when}",
       "startUnknown": "Panne signalée, début inconnu",
+      "elapsed": "{duration} d'ouverture du parc",
       "estimate": {
         "range": "Les pannes de ce type duraient encore {from} à {to} en général.",
         "rangeOpen": "Les pannes de ce type duraient encore plus de {from} en général.",

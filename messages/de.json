@@ -561,9 +561,10 @@
     "outage": {
       "since": "Störung gemeldet seit {when}",
       "startUnknown": "Störung gemeldet, Beginn unbekannt",
+      "elapsed": "{duration} bei offenem Park",
       "estimate": {
-        "range": "Störungen wie diese dauerten meist noch {from} bis {to}.",
-        "rangeOpen": "Störungen wie diese dauerten meist noch über {from}.",
+        "range": "Störungen wie diese dauerten meist noch {from} bis {to}",
+        "rangeOpen": "Störungen wie diese dauerten meist noch über {from}",
         "compactProbability": "Rund {percent} % waren binnen einer Stunde behoben.",
         "fullWithRange": "{range} Rund {percent} % waren binnen einer Stunde wieder in Betrieb.",
         "fullProbability": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
