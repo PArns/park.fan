@@ -27,7 +27,13 @@
       "at": "f03034e",
       "command": "pnpm build",
       "result": "exit 0, `Compiled successfully in 31.3s`, Next.js 16.3.4 (Turbopack); /game present in the route table as a dynamic route and on disk as .next/server/app/game/page.js",
-      "note": "The previous record stood at commit e28a5bb, 95 commits back, and predated the main merge and three modules."
+      "note": "The previous record stood at commit e28a5bb, 95 commits back, and predated the main merge and three modules.",
+      "vercel": {
+        "at": "aa8aa1e",
+        "where": "Vercel preview deployment for PR #412, project park.fan",
+        "result": "Ready — the deployment finished building, so a real `next build` compiled this branch including the GAME_ENABLED kill switch, the ICU plural in the game string table and the CPU-time paths assertion.",
+        "note": "Newer than the local record above and produced by a different pipeline, which is why it is kept beside it rather than replacing it. What it does NOT show: the runtime resolution of GAME_ENABLED. The preview is behind Vercel SSO Deployment Protection and answers 302 on EVERY path — /game, /de and / alike, redirecting to vercel.com/sso-api — so it cannot distinguish a route the flag turned off from a route the protection is hiding, in either direction. Reading it needs a person with access to that Vercel team."
+      }
     }
   },
   "bundle": {
