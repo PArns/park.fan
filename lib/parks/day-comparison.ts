@@ -267,6 +267,23 @@ function waitReason(waitA: number | null, waitB: number | null): DayComparisonRe
   return { ...entry, weight: Math.abs(withinA - withinB) };
 }
 
+/**
+ * The holiday row, or `null` where neither day is under any holiday pressure at all.
+ *
+ * „Feiertage und Ferien — keine / keine" is a row that reports nothing, and it appeared on the
+ * ordinary comparison, which is most of them. It also made the dialog's „no comparable figures"
+ * branch unreachable: something was always in the list, even for two closed days where every other
+ * row is legitimately dropped.
+ *
+ * Zero against zero is not a tie — it is two blanks. One against zero is a real finding and stays.
+ */
+function holidayRow(a: CalendarDay, b: CalendarDay): DayComparisonReason | null {
+  const pressureA = holidayPressureOf(a);
+  const pressureB = holidayPressureOf(b);
+  if (pressureA === 0 && pressureB === 0) return null;
+  return reason('holiday', 'days', pressureA, pressureB, 'lower');
+}
+
 /** A reason whose two sides are known, or `null` where either side has nothing to say. */
 function reason(
   key: DayComparisonReasonKey,
@@ -364,7 +381,7 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
     waitReason(waitA, waitB),
     reason('hours', 'minutes', openMinutesOf(a), openMinutesOf(b), 'higher'),
     reason('weather', 'mm', rainOf(a), rainOf(b), 'lower'),
-    reason('holiday', 'days', holidayPressureOf(a), holidayPressureOf(b), 'lower'),
+    holidayRow(a, b),
     // Only where BOTH days carry a price and both quote it in the same currency: "40 € against
     // 45 $" is not a comparison, and converting would be inventing an exchange rate.
     a.ticket?.price && b.ticket?.price && a.ticket.price.currency === b.ticket.price.currency

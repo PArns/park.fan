@@ -543,6 +543,34 @@ const oneOverCeiling = compareDays(
 );
 test('one side under the ceiling: the quieter day wins', () => oneOverCeiling.better, 'a');
 
+// „keine / keine" is not a comparison. It also kept the dialog's „no comparable figures" branch
+// from ever being reachable.
+test('holiday: no flags on either side means no row', () => reason(identical, 'holiday'), null);
+test(
+  'holiday: one flag against none is still a finding',
+  () => reason(holiday, 'holiday').better,
+  'b'
+);
+
+// Two closed days with nothing else recorded really do produce an empty list — the case the
+// dialog has a sentence for.
+const nothingToCompare = compareDays(
+  day('2026-09-20', {
+    status: 'CLOSED',
+    crowdLevel: 'closed',
+    headlinerForecast: undefined,
+    hours: undefined,
+  }),
+  day('2026-09-21', {
+    status: 'CLOSED',
+    crowdLevel: 'closed',
+    headlinerForecast: undefined,
+    hours: undefined,
+  }),
+  TODAY
+);
+test('no comparable figures at all', () => nothingToCompare.reasons.length, 0);
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');
