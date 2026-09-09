@@ -117,6 +117,39 @@ export function RowSkeletons({ count, max = MAX_ROWS }: { count: number; max?: n
 }
 
 /**
+ * A row group's box before its content exists: the heading it is going to have, and as many
+ * skeleton rows as it expects to fill.
+ *
+ * It is the `Suspense` fallback of the lazily imported alerts group, and it is a component rather
+ * than an inline `<div>` because a placeholder has to reserve the group's HEIGHT and not only its
+ * track in the band. An empty box held the 208 px slice and nothing else, so the chunk landing
+ * dropped a heading plus three rows — about 210 px — into an open panel, and a server answering
+ * "none" pulled it back out again.
+ */
+export function RowGroupSkeleton({
+  title,
+  count,
+  max,
+  className,
+  style,
+}: {
+  title: string;
+  count: number;
+  max?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div className={cn('min-w-0', className)} style={style}>
+      <GroupHeading title={title} count={count} />
+      <ul className="space-y-px">
+        <RowSkeletons count={count} max={max} />
+      </ul>
+    </div>
+  );
+}
+
+/**
  * „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is — the
  * homepage band for favorites, `/alerts` for the alerts group.
  */

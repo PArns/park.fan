@@ -1,7 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { Suspense, lazy, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Bell, Clock, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -14,6 +13,7 @@ import {
   MAX_ROWS,
   MoreLine,
   Row,
+  RowGroupSkeleton,
   RowSkeletons,
 } from '@/components/layout/favorites-menu-rows';
 import { countPushFollowsLocal } from '@/lib/push/push-follows-store';
@@ -74,21 +74,18 @@ import type { AttractionStatus, CrowdLevel, ParkStatus, ScheduleSummary } from '
  * `lib/push/push-follows` reaches `push-registration`, i.e. the service worker and the VAPID
  * key — none of which belongs in the chunk the header ships on ~35,000 pages for a feature most
  * visitors never use. Same split the planner makes: the way in is eager, the machinery is not.
+ *
+ * `lazy` rather than `next/dynamic`, for one reason: `dynamic`'s `loading` takes no props, and
+ * the placeholder has to know how many rows to reserve. A `Suspense` fallback is written at the
+ * call site, which is where that number already is. `Suspense` renders no element of its own
+ * either, so a group that resolves to `null` leaves nothing behind — see `FavoritesMenuAlerts`.
+ * There is no server render to worry about: the gate below is a `localStorage` count, which is
+ * 0 in every server and hydrating render.
  */
-const FavoritesMenuAlerts = dynamic(
-  () => import('@/components/layout/favorites-menu-alerts').then((m) => m.FavoritesMenuAlerts),
-  {
-    ssr: false,
-    // The plan has already cut this group its slice before the chunk arrives. Without a
-    // placeholder holding that box, the venue group's `flexGrow` spreads into it and snaps back
-    // when the import lands.
-    loading: () => (
-      <div
-        className="min-w-0"
-        style={{ flexGrow: 1, flexShrink: 1, flexBasis: `${VENUE_BASIS}px` }}
-      />
-    ),
-  }
+const FavoritesMenuAlerts = lazy(() =>
+  import('@/components/layout/favorites-menu-alerts').then((m) => ({
+    default: m.FavoritesMenuAlerts,
+  }))
 );
 
 /** Parks offered for one-tap starring while the list is still empty. */
@@ -504,7 +501,23 @@ export function FavoritesMenuPanel({
             und eine Anleitung zum Sternsetzen ist daneben das Nachrangige. Über die volle Breite,
             weil es hier keine zweite Gruppe gibt, neben der es sich eine Spur teilen müsste. */}
         {showAlerts && (
-          <FavoritesMenuAlerts open={open} cap={MAX_CARDS} expected={alertCount} className="mb-5" />
+          <Suspense
+            fallback={
+              <RowGroupSkeleton
+                title={tPush('title')}
+                count={alertCount}
+                max={MAX_CARDS}
+                className="mb-5"
+              />
+            }
+          >
+            <FavoritesMenuAlerts
+              open={open}
+              cap={MAX_CARDS}
+              expected={alertCount}
+              className="mb-5"
+            />
+          </Suspense>
         )}
 
         <div data-menu-stagger>
@@ -723,7 +736,23 @@ export function FavoritesMenuPanel({
             Zeilen, und zwei verschieden breite Zeilenspalten nebeneinander hätte kein Leser
             erklären können. */}
         {showAlerts && (
-          <FavoritesMenuAlerts open={open} cap={cap} expected={alertCount} style={rowGroupStyle} />
+          <Suspense
+            fallback={
+              <RowGroupSkeleton
+                title={tPush('title')}
+                count={alertCount}
+                max={cap}
+                style={rowGroupStyle}
+              />
+            }
+          >
+            <FavoritesMenuAlerts
+              open={open}
+              cap={cap}
+              expected={alertCount}
+              style={rowGroupStyle}
+            />
+          </Suspense>
         )}
       </div>
     </div>
