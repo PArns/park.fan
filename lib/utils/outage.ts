@@ -71,7 +71,11 @@ export function outageRemainingWindow(
   // construction, so an inversion means the payload is wrong — and an open range is at least
   // true, where „2:00 Std. bis 1:55 Std." reads as a typo.
   if (p75 < remaining.p25) return { from, to: null };
-  return { from, to: ceilOutageMinutes(p75) };
+  // At least one step wide, because a range whose two ends print the same number is not a range —
+  // „meist noch 5 Min. bis 5 Min." Outward rounding can only collapse them when the quartiles are
+  // effectively the same value (both inside one five-minute bucket and on its edges, or both
+  // under the one-step floor), so the extra step is never narrower than what was measured.
+  return { from, to: Math.max(ceilOutageMinutes(p75), from + STEP) };
 }
 
 /**

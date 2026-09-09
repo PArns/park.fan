@@ -958,11 +958,16 @@
    * inline `box-shadow` cannot be switched off by a class — so the class owns both halves of the
    * edge for this one case. The top shine is not part of the seam: it is the sheet catching the
    * light, and it stays at every width.
+   *
+   * `40rem` and never `640px`, the rule the `.container` tiers above state at length: Tailwind's
+   * breakpoints are rem, so the `hidden sm:block` on the photo moves with the reader's default
+   * font size and a px query does not. At 20px/700px the photo would still be hidden while this
+   * drew the border — the orphaned hairline back, for exactly the readers who raised the default.
    */
   .pk-panel-seam-sm {
     box-shadow: inset 0 1px 0 var(--pk-panel-shine);
   }
-  @media (min-width: 640px) {
+  @media (width >= 40rem) {
     .pk-panel-seam-sm {
       border-bottom: 1px solid var(--pk-panel-border);
       box-shadow:

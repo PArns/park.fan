@@ -94,6 +94,14 @@ const testCases = [
     expected: JSON.stringify({ from: 115, to: 120 }),
   },
   {
+    name: 'quartiles that land on the same number still print a range, not one number twice',
+    // Both ends clamp to the one-step floor here. „5 Min. bis 5 Min." is not a range; one step
+    // of width is, and it is never narrower than what was measured.
+    actual: () =>
+      JSON.stringify(outageRemainingWindow({ ...FRESH, remaining: { p25: 1, median: 3, p75: 4 } })),
+    expected: JSON.stringify({ from: 5, to: 10 }),
+  },
+  {
     name: 'an inverted pair opens the range, judged on the raw quartiles and not the rounded ones',
     // Cannot happen while the API orders them, and if it ever stops, „über 2:00 Std." is true
     // where „2:00 Std. bis 1:55 Std." is a typo on screen.
