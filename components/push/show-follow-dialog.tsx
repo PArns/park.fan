@@ -10,7 +10,11 @@ import { LocalTime } from '@/components/ui/local-time';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { trackShowFollowAdd, trackShowFollowRemove } from '@/lib/analytics/umami';
 import { followShow, unfollowShow, type PushWriteError } from '@/lib/push/push-follows';
-import { isShowFollowedLocal } from '@/lib/push/push-follows-store';
+import {
+  getShowFollowLocal,
+  isSameInstant,
+  showFollowMatchesLocal,
+} from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { PushDialogHero } from '@/components/push/push-dialog-hero';
@@ -48,10 +52,17 @@ interface ShowFollowDialogProps {
  * WHICH show did I just sign up for, and when is it? A dialog can name both;
  * a corner icon that quietly changes colour cannot.
  *
- * It names the next performance rather than the tapped one on purpose: the
- * reminder fires ahead of whichever showtime comes next, because `ShowFollow`
- * on the API has no per-showtime scope — a park's schedule shifts by the day
- * and the alert is "watch this show", not "watch this exact clock time".
+ * Which performance it names is the whole question, and there are three
+ * answers in this order: the one that was tapped (`startTime`), the one this
+ * browser has already pinned, and — only when neither exists — whichever
+ * comes next, which is the open-ended follow a card's corner bell files.
+ * Naming the next one over a pin was wrong in the one way that matters: the
+ * API sends the pinned performance and the dialog was announcing another.
+ *
+ * One reminder per show, because that is what `show_follows` holds: it is
+ * unique on (subscription, show) and its upsert overwrites `startTime`. So
+ * arming a second performance MOVES the reminder, and the dialog says so
+ * before the press rather than leaving it to be discovered.
  */
 export function ShowFollowDialog({
   open,
@@ -67,9 +78,20 @@ export function ShowFollowDialog({
   const t = useTranslations('pushAlerts.showDialog');
   const pushErrorMessage = usePushErrorMessage();
   const browserNow = useBrowserNow(30_000);
+  // "Is the reminder this dialog is about already armed" — for a chosen
+  // performance that is a question about that instant, not about the show.
   const [following, setFollowing] = useLocalPushFollowsValue(
     false,
-    () => isShowFollowedLocal(showId),
+    () => showFollowMatchesLocal(showId, startTime),
+    [showId, startTime]
+  );
+  // The performance this browser's reminder for the show is pinned to, if it
+  // named one at all. Read whatever this dialog was opened from: it is what
+  // makes a corner bell able to say "19:10" instead of naming the next
+  // performance, which is not the one that will be sent.
+  const [armedStart] = useLocalPushFollowsValue<string | null>(
+    null,
+    () => getShowFollowLocal(showId)?.startTime ?? null,
     [showId]
   );
   const [pending, setPending] = useState(false);
@@ -103,18 +125,38 @@ export function ShowFollowDialog({
     setError(result.error);
   };
 
-  // The performance the reminder is actually for. A tapped showtime says so
-  // itself; a corner bell names none, so it is the next one that has not
-  // started — off the browser's clock rather than the render's, since these
-  // pages are statically cached.
+  // Whether an instant is still ahead of the visitor's own clock. The mirror
+  // is never swept, so an entry can name a performance that finished
+  // yesterday — and `LocalTime` prints a clock time with no date, so an
+  // expired one would read as tonight's.
+  const isUpcoming = (iso: string) =>
+    browserNow !== null && new Date(iso).getTime() >= browserNow.getTime();
+
+  // The performance a reminder from THIS dialog would be about: the tapped
+  // showtime, else the one this browser already pinned, else the next
+  // performance that has not started — off the browser's clock rather than
+  // the render's, since these pages are statically cached.
+  const pinnedStart = armedStart && isUpcoming(armedStart) ? armedStart : null;
+  // A follow that is already armed open-ended is about no single performance,
+  // whichever bell was pressed to get here — so a bell beside 16:00 must not
+  // report "chosen performance 16:00" for a reminder that will also come
+  // before the 18:00 one. Only the press that ARMS one names one.
+  const armedOpenEnded = following && armedStart === null;
+  const chosenStart = armedOpenEnded ? null : (startTime ?? pinnedStart);
   const nextStart =
-    startTime ??
+    chosenStart ??
     (browserNow
       ? (showtimes ?? [])
           .map((s) => s.startTime)
-          .filter((iso) => new Date(iso).getTime() >= browserNow.getTime())
+          .filter(isUpcoming)
           .sort()[0]
       : undefined);
+
+  // What arming this dialog's performance would give up: a pin on a DIFFERENT
+  // performance. The API keeps one row per (subscription, show) and overwrites
+  // its `startTime`, so the visitor has to be told before pressing, not after.
+  const replacedStart =
+    startTime && pinnedStart && !isSameInstant(pinnedStart, startTime) ? pinnedStart : null;
 
   // Whether the reminder is still early enough for the usual window. Under
   // 25 minutes it is not: the API catches a follow made this late in its
@@ -134,7 +176,7 @@ export function ShowFollowDialog({
         <PushDialogHero
           icon={Bell}
           title={showName}
-          description={startTime ? t('explainChosen') : t('explain', { show: showName })}
+          description={chosenStart ? t('explainChosen') : t('explain', { show: showName })}
         >
           {late && (
             <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('explainLate')}</p>
@@ -143,10 +185,18 @@ export function ShowFollowDialog({
             <p className="mt-2 flex items-center gap-1.5 text-xs">
               <Clock className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
               <span className="text-muted-foreground">
-                {startTime ? t('chosenShowtime') : t('nextShowtime')}
+                {chosenStart ? t('chosenShowtime') : t('nextShowtime')}
               </span>
               <span className="font-semibold tabular-nums">
                 <LocalTime time={nextStart} timeZone={timezone} />
+              </span>
+            </p>
+          )}
+          {replacedStart && !following && (
+            <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-xs">
+              <span>{t('replacesShowtime')}</span>
+              <span className="font-semibold tabular-nums">
+                <LocalTime time={replacedStart} timeZone={timezone} />
               </span>
             </p>
           )}

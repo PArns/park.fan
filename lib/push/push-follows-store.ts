@@ -25,6 +25,22 @@ export interface RideAlertLocal {
   thresholdMinutes: number;
 }
 
+/**
+ * One followed show, and WHICH of its performances the reminder is for.
+ *
+ * `startTime` is `null` for the open-ended follow — "whichever performance is
+ * next", which is what a show card's bell files and what the API stores as a
+ * null column. Otherwise a full ISO instant, naming one performance on one
+ * day; it is compared as an instant (`isSameInstant`), never as text.
+ *
+ * The API allows exactly one row per (subscription, show) and its upsert
+ * overwrites `startTime`, so this list holds at most one entry per show too.
+ */
+export interface ShowFollowLocal {
+  showId: string;
+  startTime: string | null;
+}
+
 function writeJson(key: string, value: unknown): void {
   if (typeof window === 'undefined') return;
   try {
@@ -50,10 +66,26 @@ function dispatchChanged(): void {
 // makes every one of them re-read; without this, that was O(bells) JSON.parse
 // + re-validation of the whole list per toggle. The cached arrays are treated
 // as immutable — callers only ever read them or build a new array to write.
-let showFollowsCache: { raw: string; data: string[] } | null = null;
+let showFollowsCache: { raw: string; data: ShowFollowLocal[] } | null = null;
 let rideAlertsCache: { raw: string; data: RideAlertLocal[] } | null = null;
 
-function readShowFollows(): string[] {
+/**
+ * A stored entry, in either shape this key has ever held.
+ *
+ * Until the panel's bells learned which performance they are about, an entry
+ * was a bare show id. Those are still in every returning browser's storage and
+ * mean what they always meant — the open-ended follow — so they read as
+ * `startTime: null` rather than being thrown away. Anything else is skipped.
+ */
+export function parseShowFollowEntry(entry: unknown): ShowFollowLocal | null {
+  if (typeof entry === 'string') return { showId: entry, startTime: null };
+  if (typeof entry !== 'object' || entry === null) return null;
+  const { showId, startTime } = entry as { showId?: unknown; startTime?: unknown };
+  if (typeof showId !== 'string') return null;
+  return { showId, startTime: typeof startTime === 'string' ? startTime : null };
+}
+
+function readShowFollows(): ShowFollowLocal[] {
   if (typeof window === 'undefined') return [];
   try {
     const raw = window.localStorage.getItem(SHOW_FOLLOWS_KEY);
@@ -64,7 +96,7 @@ function readShowFollows(): string[] {
     if (showFollowsCache && showFollowsCache.raw === raw) return showFollowsCache.data;
     const parsed: unknown = JSON.parse(raw);
     const data = Array.isArray(parsed)
-      ? parsed.filter((id): id is string => typeof id === 'string')
+      ? parsed.map(parseShowFollowEntry).filter((entry): entry is ShowFollowLocal => entry !== null)
       : [];
     showFollowsCache = { raw, data };
     return data;
@@ -99,17 +131,76 @@ function readRideAlerts(): RideAlertLocal[] {
   }
 }
 
-export function isShowFollowedLocal(showId: string): boolean {
-  return readShowFollows().includes(showId);
+/**
+ * The follow this browser holds for a show, with the performance it is about.
+ *
+ * There is deliberately no `isShowFollowedLocal(showId)` beside this any more:
+ * that question — "is this show followed at all" — is the one that lit every
+ * row of an hourly show for a reminder about one of them, and a bare boolean
+ * is what made it easy to ask by accident. `showFollowMatchesLocal(showId)`
+ * still answers it for a caller that means the whole show.
+ */
+export function getShowFollowLocal(showId: string): ShowFollowLocal | null {
+  return readShowFollows().find((entry) => entry.showId === showId) ?? null;
 }
 
-export function setShowFollowedLocal(showId: string, followed: boolean): void {
+/**
+ * Whether the follow this browser holds is the one a given bell is about.
+ *
+ * `startTime` omitted asks the open-ended question a show card's bell asks —
+ * "is this show followed at all" — and is what every caller meant before the
+ * column existed. Passed, it asks about ONE performance: a park panel lists
+ * an hourly show once per showtime, and lighting all four of those bells for
+ * a reminder that can only be about one of them is the bug this answers.
+ *
+ * A follow that named no performance still answers yes to every one of them,
+ * because that is what it does: the API notifies before whichever comes next,
+ * so a bell beside 14:00 with an open-ended follow behind it really is armed.
+ * That also keeps every browser holding the old bare-string format rendering
+ * exactly as it did.
+ */
+export function showFollowMatchesLocal(showId: string, startTime?: string | null): boolean {
+  const entry = getShowFollowLocal(showId);
+  if (!entry) return false;
+  if (!startTime || entry.startTime === null) return true;
+  return isSameInstant(entry.startTime, startTime);
+}
+
+/**
+ * Whether two ISO strings name the same moment.
+ *
+ * Compared as instants and not as text, because one side has been sitting in
+ * `localStorage` since some earlier visit and the other was just rendered: a
+ * `+02:00` that comes back as `Z`, or a dropped `.000`, is the same
+ * performance, and string equality would quietly unlight every stored pin the
+ * day the API's serialization moves. An unparseable value matches nothing —
+ * that is the honest answer for a mirror entry we cannot read.
+ */
+export function isSameInstant(a: string, b: string): boolean {
+  const left = new Date(a).getTime();
+  const right = new Date(b).getTime();
+  return Number.isFinite(left) && left === right;
+}
+
+export function setShowFollowedLocal(
+  showId: string,
+  followed: boolean,
+  startTime: string | null = null
+): void {
   const current = readShowFollows();
-  const has = current.includes(showId);
-  if (followed === has) return;
+  const existing = current.find((entry) => entry.showId === showId) ?? null;
+  if (followed) {
+    if (existing && existing.startTime === startTime) return;
+    writeJson(SHOW_FOLLOWS_KEY, [
+      ...current.filter((entry) => entry.showId !== showId),
+      { showId, startTime },
+    ]);
+    return;
+  }
+  if (!existing) return;
   writeJson(
     SHOW_FOLLOWS_KEY,
-    followed ? [...current, showId] : current.filter((id) => id !== showId)
+    current.filter((entry) => entry.showId !== showId)
   );
 }
 

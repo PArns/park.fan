@@ -1612,6 +1612,7 @@
       "close": "Schließen",
       "nextShowtime": "Nächste Vorstellung",
       "chosenShowtime": "Gewählte Vorstellung",
+      "replacesShowtime": "Ersetzt deine Erinnerung um",
       "viewAll": "Meine Alarme"
     },
     "rideBell": {
