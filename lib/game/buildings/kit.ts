@@ -77,6 +77,16 @@ export interface KitCtx {
   /** Emissive, in the sign's own colour. Separate because a PBR emissive is one uniform colour and
    * a teal sign over warm windows is two. */
   sign: Surface;
+  /**
+   * The light a lit window throws on the wall around it — ADDITIVE, so it is invisible by day.
+   *
+   * The round-1 critic measured a lit pane at luma 209.7 and the brick 0.4 m beside it at 22.1,
+   * against 29.8 for brick nowhere near a window: the spill was not small, it was negative. Six real
+   * lights is the whole game's budget and this module already takes the smallest share of it, so the
+   * wall cannot have a light — but it can have the mark one would leave. Two triangles a window,
+   * drawn on the wall face, blended additively so black adds nothing at noon.
+   */
+  halo: Surface;
   seed: number;
   /** 0..1 — how many windows have a light on after dark. */
   litFraction: number;
@@ -282,7 +292,72 @@ function addPane(
     s0 + w,
     t0 + w,
   ]);
+  // The spill, on the wall face, sampling the SAME patch of the glow tile — so a bright room throws
+  // a bright patch and a dim one does not, out of one additive material.
+  addHalo(ctx.halo, f, u0, v0, u1, v1, skin.litColour, [s0, t0, s0 + w, t0 + w]);
   return true;
+}
+
+/**
+ * The spill on the wall round a lit window: eight quads in a ring, fading to nothing at the edge.
+ *
+ * One flat quad was the first version and it is what an additive decal looks like when you can see
+ * where it stops — a hard-edged rectangle four times the size of the window, which at 0.34 strength
+ * turned the whole terrace into a row of light boxes with no brick left between them. Light does not
+ * have a border. The ring carries the falloff in the vertex colour (1 on the opening's own edge, 0
+ * at the margin) and skips the middle cell, because the middle is the window and the window is
+ * already drawing itself.
+ */
+function addHalo(
+  s: Surface,
+  f: Frame,
+  u0: number,
+  v0: number,
+  u1: number,
+  v1: number,
+  colour: Rgb,
+  uv: [number, number, number, number]
+): void {
+  const m = 0.8;
+  const out = 0.012;
+  /**
+   * Clamped to the wall it is drawn on.
+   *
+   * A top-storey window is less than 0.8 m from the wall head, so an unclamped margin floated the
+   * spill over the eaves and out across the roof — a row of orange rectangles above the terrace's
+   * ridge line in the 09:00 frame, which is both wrong and the first thing the eye finds.
+   */
+  const clamp = (v: number, lo: number, hi: number): number => (v < lo ? lo : v > hi ? hi : v);
+  const us = [clamp(u0 - m, 0, f.width), u0, u1, clamp(u1 + m, 0, f.width)];
+  const vs = [clamp(v0 - m, 0, f.height), v0, v1, clamp(v1 + m, 0, f.height)];
+  const [cu, cv] = tileUv(TILE_GLOW, (uv[0] + uv[2]) / 2, (uv[1] + uv[3]) / 2);
+  for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < 3; i++) {
+      if (i === 1 && j === 1) continue;
+      const idx: number[] = [];
+      for (const [gi, gj] of [
+        [i, j],
+        [i + 1, j],
+        [i + 1, j + 1],
+        [i, j + 1],
+      ]) {
+        // 0.62 on the inner ring rather than 1, and 0 on the outer one. At full weight the inner
+        // edge is a hard bright line exactly on the window's surround, so every lit window wore a
+        // glowing frame — brighter than the pane inside it, which is the wrong way round.
+        const k = (gi === 0 || gi === 3 ? 0 : 0.62) * (gj === 0 || gj === 3 ? 0 : 0.62);
+        const p = framePoint(f, us[gi], vs[gj], out);
+        idx.push(
+          vertex(s, p[0], p[1], p[2], f.normal[0], f.normal[1], f.normal[2], cu, cv, [
+            colour[0] * k,
+            colour[1] * k,
+            colour[2] * k,
+          ])
+        );
+      }
+      tri(s, idx[0], idx[1], idx[3]);
+      tri(s, idx[1], idx[2], idx[3]);
+    }
+  }
 }
 
 /** A window: hole, reveal, sill, pane, sash, bars, and a lintel over it. */
@@ -588,7 +663,12 @@ function fanTriangles(
       vertex(target, p[0], p[1], p[2], f.normal[0], f.normal[1], f.normal[2], u, v, colour)
     );
   }
-  for (let i = 0; i < n; i++) tri(target, centre, ring[i], ring[i + 1]);
+  // `ring[i + 1]` before `ring[i]`: the ring is walked from the left springing over the crown to the
+  // right one, which is CLOCKWISE seen from the front, and `tri()`'s contract is counter-clockwise.
+  // Both fans — the opaque interior backing and the glass in front of it — came out as back faces,
+  // so eighty-three arch heads in the shipped packs were holes through the building and you could
+  // see the meadow through the rotunda's fanlight at 44 m.
+  for (let i = 0; i < n; i++) tri(target, centre, ring[i + 1], ring[i]);
 }
 
 /** A door: leaf, panels, threshold, and — where the blueprint asks — a lantern either side of it. */
@@ -715,36 +795,160 @@ function door(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions, grand: boolean):
       const lu = (u0 + u1) / 2 + side * (openW / 2 + 0.42);
       if (lu < 0.25 || lu > bw - 0.25) continue;
       lantern(ctx, f, skin, lu, 2.25);
-      const p = framePoint(f, lu, 2.35, 0.24);
+      /**
+       * The light sits where the lantern's flame would be and 0.9 m off the wall, not 0.24.
+       *
+       * The round-1 critic measured the brick 1 m from this lamp at luma **246.8** — clipped, with
+       * the mortar joints gone inside a three-metre pool and the lantern itself a dark blob in the
+       * middle of its own glare. A point light 24 cm from a wall is a light source pressed against
+       * it; 0.9 m out is a lantern.
+       *
+       * Moving it out was only half of it, and the half that measured worst: at 21 the same brick
+       * clipped to **254.1** over 2,880 pixels of the 23:00 street, because Babylon's default
+       * falloff is inverse-square and 0.9 m in front of a wall is 1/0.81 — the nearest brick gets
+       * MORE than the number written here. 7 is what leaves the courses and the mortar joints
+       * legible inside the pool. Measured, not guessed: clipped share 0.673 % → 0.000 %.
+       */
+      const p = framePoint(f, lu, 2.3, 0.9);
       ctx.lights.push({
         x: p[0],
         y: p[1],
         z: p[2],
         color: '#ffd9a0',
-        intensity: 34,
-        range: 11,
+        intensity: 7,
+        range: 10,
       });
     }
   }
 }
 
-/** A wall lantern on a bracket: the small warm thing beside a door that makes a night frame work. */
+/**
+ * A wall lantern on a bracket.
+ *
+ * The first version was two axis-aligned cuboids — a mustard box under a dark box — and the round-1
+ * critic put it at 4× beside brick that reads as brick and called it the one thing in the crop that
+ * looks like programmer art. A carriage lantern is a **bracket, a cage and a cap**: an arm that
+ * tapers out of the wall, four glazed panes between four corner posts, a pyramid cap with a finial,
+ * and a solid bottom, because the light goes down and sideways and not up. Twenty-two quads.
+ */
 function lantern(ctx: KitCtx, f: Frame, skin: Skin, u: number, v: number): void {
+  const out = 0.34;
+  const half = 0.115;
+  const top = v + 0.06;
+  const bottom = v - 0.4;
+  // The bracket: a wall plate, an arm that tapers, and a stay back to the wall under it.
   addBand(
     ctx.kit,
     f,
-    u - 0.04,
-    u + 0.04,
-    v - 0.02,
-    v + 0.36,
+    u - 0.07,
+    u + 0.07,
+    v + 0.1,
+    v + 0.34,
     0,
-    0.26,
+    0.05,
     skin.metalColour,
     skin.metalTile
   );
-  const glassC = mixRgb(skin.litColour, [1, 1, 1], 0.25);
-  addBand(ctx.lit, f, u - 0.13, u + 0.13, v - 0.34, v, 0.1, 0.36, glassC, skin.joineryTile);
-  addBand(ctx.kit, f, u - 0.17, u + 0.17, v, v + 0.09, 0.06, 0.4, skin.metalColour, skin.metalTile);
+  addBand(
+    ctx.kit,
+    f,
+    u - 0.03,
+    u + 0.03,
+    v + 0.2,
+    v + 0.28,
+    0.03,
+    out,
+    skin.metalColour,
+    skin.metalTile
+  );
+  addTube(
+    ctx.kit,
+    framePoint(f, u, v + 0.12, 0.04),
+    framePoint(f, u, v + 0.22, out - 0.03),
+    0.018,
+    skin.metalColour,
+    skin.metalTile,
+    4
+  );
+  // The cage: four posts and four glazed faces between them, tapering in towards the top.
+  const glassC = mixRgb(skin.litColour, [1, 1, 1], 0.2);
+  for (const [du, dOut] of [
+    [-half, 0],
+    [half, 0],
+    [0, -half],
+    [0, half],
+  ]) {
+    addBand(
+      ctx.kit,
+      f,
+      u + du - 0.014,
+      u + du + 0.014,
+      bottom,
+      top,
+      out + dOut - 0.014,
+      out + dOut + 0.014,
+      skin.metalColour,
+      skin.metalTile
+    );
+  }
+  addBand(
+    ctx.lit,
+    f,
+    u - half,
+    u + half,
+    bottom + 0.02,
+    top - 0.02,
+    out - half,
+    out + half,
+    glassC,
+    skin.joineryTile
+  );
+  // The cap and the base, both a little wider than the cage, and a finial on top.
+  addBand(
+    ctx.kit,
+    f,
+    u - half - 0.05,
+    u + half + 0.05,
+    top,
+    top + 0.06,
+    out - half - 0.05,
+    out + half + 0.05,
+    skin.metalColour,
+    skin.metalTile
+  );
+  addBand(
+    ctx.kit,
+    f,
+    u - half - 0.02,
+    u + half + 0.02,
+    top + 0.06,
+    top + 0.13,
+    out - half + 0.02,
+    out + half - 0.02,
+    skin.metalColour,
+    skin.metalTile
+  );
+  addTube(
+    ctx.kit,
+    framePoint(f, u, top + 0.13, out),
+    framePoint(f, u, top + 0.21, out),
+    0.016,
+    skin.metalColour,
+    skin.metalTile,
+    4
+  );
+  addBand(
+    ctx.kit,
+    f,
+    u - half - 0.04,
+    u + half + 0.04,
+    bottom - 0.05,
+    bottom,
+    out - half - 0.04,
+    out + half + 0.04,
+    skin.metalColour,
+    skin.metalTile
+  );
 }
 
 /** A glazed shopfront: stall riser, mullions, transom, and a deep head. */
@@ -1030,13 +1234,40 @@ export function quoins(
   }
 }
 
-/** A downpipe with its shoe, at one end of a facade. */
+/**
+ * A downpipe: hopper, pipe, brackets and a shoe.
+ *
+ * 80 mm, not 180. The round-1 critic measured the first version at radius 0.09 m — a 180 mm pipe,
+ * twice anything on a real building — in the same off-white as the string course, with nothing at
+ * either end. A rainwater pipe is 68–80 mm, it is darker than the wall it runs down, it starts at a
+ * hopper under the gutter and it ends in a shoe over the gully, and it is clipped to the wall every
+ * two metres.
+ */
 export function downpipe(ctx: KitCtx, f: Frame, u: number, top: number, skin: Skin): void {
-  const a = framePoint(f, u, 0.12, 0.09);
-  const b = framePoint(f, u, top, 0.09);
-  addTube(ctx.kit, a, b, 0.055, skin.metalColour, skin.metalTile, 6);
-  const shoe = framePoint(f, u, 0.12, 0.22);
-  addTube(ctx.kit, a, shoe, 0.06, skin.metalColour, skin.metalTile, 6);
+  const r = 0.04;
+  const out = 0.075;
+  const colour = shade(skin.metalColour, 0.82);
+  const a = framePoint(f, u, 0.16, out);
+  const b = framePoint(f, u, top - 0.22, out);
+  addTube(ctx.kit, a, b, r, colour, skin.metalTile, 6);
+  // The hopper the gutter empties into, splayed out at the top.
+  addBand(
+    ctx.kit,
+    f,
+    u - 0.1,
+    u + 0.1,
+    top - 0.22,
+    top,
+    out - 0.09,
+    out + 0.09,
+    colour,
+    skin.metalTile
+  );
+  // Two clips, and a shoe throwing the water clear of the plinth.
+  for (const v of [top * 0.62, top * 0.28]) {
+    addBand(ctx.kit, f, u - 0.07, u + 0.07, v, v + 0.05, 0, out + r, colour, skin.metalTile);
+  }
+  addTube(ctx.kit, a, framePoint(f, u, 0.1, out + 0.13), r * 1.05, colour, skin.metalTile, 6);
 }
 
 /**
@@ -1126,6 +1357,8 @@ export function signBand(
     repeatU: 1,
     repeatV: 1,
   });
+  // Same inverse-square arithmetic as the lantern above: 1.0 m out means the wall behind the sign
+  // gets the full number, so this is 9 rather than 26.
   const p = framePoint(f, (u0 + u1) / 2, v0 + height / 2, 1.0);
-  ctx.lights.push({ x: p[0], y: p[1], z: p[2], color: '#ffd9a0', intensity: 26, range: 9 });
+  ctx.lights.push({ x: p[0], y: p[1], z: p[2], color: '#ffd9a0', intensity: 9, range: 9 });
 }

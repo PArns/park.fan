@@ -54,6 +54,31 @@ export function xf(m: Placed, x: number, y: number, z: number): P3 {
   return [m.cx + x * m.cos + z * m.sin, y, m.cz - x * m.sin + z * m.cos];
 }
 
+/**
+ * A unit direction in the mass's own frame, mapped through the ridge axis and the mass's rotation.
+ *
+ * Every `addTriangle` in this file passes one, and that is the whole answer to the round-1 gable
+ * bug: `p(u, w, y)` addresses both ridge axes through one mapping and that mapping swaps handedness
+ * between them, so a literal vertex order that is right for `ridge: 'z'` is inside out for `'x'`. A
+ * call site knows which way a gable end looks; it should not also have to know which way the winding
+ * comes out.
+ */
+export function faceDir(m: Placed, ridge: 'x' | 'z', u: number, w: number, up = 0): P3 {
+  const o = xf(m, 0, 0, 0);
+  const p = ridge === 'x' ? xf(m, u, 0, w) : xf(m, w, 0, u);
+  const d: P3 = [p[0] - o[0], up, p[2] - o[2]];
+  const len = Math.hypot(d[0], d[1], d[2]) || 1;
+  return [d[0] / len, d[1] / len, d[2] / len];
+}
+
+/** The outward horizontal direction of a facet, from the mass's centre through its two base corners. */
+export function outwardFrom(m: Placed, a: P3, b: P3, up = 0): P3 {
+  const mx = (a[0] + b[0]) / 2 - m.cx;
+  const mz = (a[2] + b[2]) / 2 - m.cz;
+  const len = Math.hypot(mx, mz) || 1;
+  return [mx / len, up, mz / len];
+}
+
 export interface ResolvedRoof {
   form: RoofForm;
   /** Radians. */
@@ -202,8 +227,7 @@ function gableRoof(
     const a = p(end * along, -span, eaveY);
     const b = p(end * along, span, eaveY);
     const c = p(end * along, 0, ridgeY);
-    if (end > 0) addTriangle(ctx.kit, a, b, c, skin.wallColour, skin.wallTile);
-    else addTriangle(ctx.kit, b, a, c, skin.wallColour, skin.wallTile);
+    addTriangle(ctx.kit, a, b, c, skin.wallColour, skin.wallTile, faceDir(m, r.ridge, end, 0));
     // Barge boards along the verge, and a small return under them.
     for (const side of [1, -1]) {
       addTube(
@@ -258,8 +282,7 @@ function hipRoof(
     const a = p(end * A, -S, edgeY);
     const b = p(end * A, S, edgeY);
     const c = p(end * ridgeHalf, 0, ridgeY);
-    if (end > 0) addTriangle(ctx.kit, b, a, c, r.colour, r.tile);
-    else addTriangle(ctx.kit, a, b, c, r.colour, r.tile);
+    addTriangle(ctx.kit, a, b, c, r.colour, r.tile, faceDir(m, r.ridge, end, 0, 0.6));
     eaveTrim(ctx, m, skin, r.ridge === 'x' ? 'z' : 'x', -S, S, end * A, end * along, edgeY, true);
     // The hip line itself, capped like a ridge.
     ridgeCap(ctx, r, p(end * A, S, edgeY), p(end * ridgeHalf, 0, ridgeY + 0.04));
@@ -294,7 +317,15 @@ function pyramidRoof(
     xf(m, -X, edgeY, -Z),
   ];
   for (let i = 0; i < 4; i++) {
-    addTriangle(ctx.kit, corners[i], corners[(i + 1) % 4], apex, r.colour, r.tile);
+    addTriangle(
+      ctx.kit,
+      corners[i],
+      corners[(i + 1) % 4],
+      apex,
+      r.colour,
+      r.tile,
+      outwardFrom(m, corners[i], corners[(i + 1) % 4], 0.7)
+    );
     ridgeCap(ctx, r, corners[i], apex);
   }
   eaveTrim(ctx, m, skin, 'x', -X, X, Z, m.hz, edgeY, true);
@@ -416,15 +447,10 @@ function mansardRoof(
     const c = p(end * along, 0, topY);
     const d = p(end * along, breakW, breakY);
     const f = p(end * along, span + e, edgeY);
-    if (end > 0) {
-      addTriangle(ctx.kit, a, f, b, r.colour, r.tile);
-      addTriangle(ctx.kit, b, f, d, r.colour, r.tile);
-      addTriangle(ctx.kit, b, d, c, r.colour, r.tile);
-    } else {
-      addTriangle(ctx.kit, f, a, b, r.colour, r.tile);
-      addTriangle(ctx.kit, f, b, d, r.colour, r.tile);
-      addTriangle(ctx.kit, d, b, c, r.colour, r.tile);
-    }
+    const out = faceDir(m, r.ridge, end, 0);
+    addTriangle(ctx.kit, a, f, b, r.colour, r.tile, out);
+    addTriangle(ctx.kit, b, f, d, r.colour, r.tile, out);
+    addTriangle(ctx.kit, b, d, c, r.colour, r.tile, out);
   }
   ridgeCap(ctx, r, p(-A, 0, topY + 0.04), p(A, 0, topY + 0.04));
   dormers(ctx, m, r, skin, eaveY, breakY, along, span, seed);
@@ -473,8 +499,7 @@ function barrelRoof(
       const c = p(end * along, 0, eaveY);
       const q0 = p(end * along, -Math.cos(a0) * span, eaveY + Math.sin(a0) * rise);
       const q1 = p(end * along, -Math.cos(a1) * span, eaveY + Math.sin(a1) * rise);
-      if (end > 0) addTriangle(ctx.kit, c, q0, q1, skin.wallColour, skin.wallTile);
-      else addTriangle(ctx.kit, c, q1, q0, skin.wallColour, skin.wallTile);
+      addTriangle(ctx.kit, c, q0, q1, skin.wallColour, skin.wallTile, faceDir(m, r.ridge, end, 0));
     }
   }
   return { top: eaveY + rise };
@@ -597,7 +622,9 @@ function dormers(
           p(cu, cheekBack, sillY + h * 0.55),
           p(cu, face, sillY + h),
           r.colour,
-          r.tile
+          r.tile,
+          // A dormer cheek looks along the ridge, away from the dormer's own middle.
+          faceDir(m, r.ridge, cheek, 0)
         );
       }
       const apex = sillY + h + 0.34;

@@ -1,14 +1,19 @@
 # Requests — `buildings`
 
 What this module needs from core, the packs, `demo-park` and `tools`, with the exact change where I
-can write it. Everything here has a workaround in place and nothing is blocking.
+can write it. Everything here has a workaround in place and nothing is blocking. §8 is the one that
+cost a round: it turned `pnpm test:game` red for everybody, and the workaround was a whole file.
 
-## 1. `demo-park`: the two reserved plots
+## 1. `demo-park`: the two reserved plots — **done, both are in the world factory**
+
+The integrator placed both between round 1 and round 2, and `demo-park`'s entity census now reads
+`building: 2`. Nothing further is needed here. The rest of this section is kept because it is the
+measurement behind the two calls, and a later change to either blueprint has to be re-checked
+against these numbers.
 
 `PADS` in `lib/game/demo-park/plan.ts` holds `pavilion` (`-8, -162`, half-extents 28 × 16, levelled
 at 7 m) and `entrance-hall` (`-33, 178`, 11 × 19, at whatever the street corridor made it) for this
-module, and I may not edit that folder. These are the two calls, to be made in the world factory
-after the pads are flattened and the paths are laid:
+module, and I may not edit that folder. These were the two calls:
 
 ```ts
 const pavilion: Entity = {
@@ -88,7 +93,7 @@ and `&& pnpm test:game-buildings` appended to the `test:game` chain. It runs sta
 node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/buildings/selftest.mjs
 ```
 
-65,918 checks, ~1 s, no browser needed.
+66,000 checks, ~2 s, no browser needed.
 
 ## 3. Core: `Registry.name` shadowed the class's own `name` — fixed while this module was being built
 
@@ -136,10 +141,11 @@ Every run of every scene reports exactly:
 WebGL: INVALID_VALUE: bufferSubData: buffer overflow   ×2
 ```
 
-They appear identically in `.game-render/park/report.json` (the demo park, which contains **zero**
-`building` entities, so this module draws nothing there), in `.game-render/probe-rides/report.json`
-and in this module's own runs, so they are not thin-instance writes from here. Worth someone
-tracking down: two warnings that are always present are two warnings nobody will ever read.
+They were in `.game-render/park/report.json` back when the demo park still held **zero** `building`
+entities — this module drew nothing there and allocated no instance buffer, so they cannot be
+thin-instance writes from here — and they are equally in `.game-render/probe-rides/report.json`
+against a showcase this module does not appear in. Worth someone tracking down: two warnings that
+are always present are two warnings nobody will ever read.
 
 ## 6. `pack-schema.ts`: `buildings[].size` has no unit contract, and the palette reads it
 
@@ -158,3 +164,36 @@ renders them — twenty items, all localized, in `.game-render/probe-palette/bui
 only English string this module puts in front of a person that is not from a manifest is the console
 warning prefix. When a building inspector panel lands it will want keys for "storeys", "windows" and
 "style"; there is nothing to add before then.
+
+## 8. Core: a module with no `sim` cannot own an entity kind
+
+`SimRuntime.createModules` skips a module before it claims its kinds:
+
+```ts
+for (const id of ids) {
+  const def = byId.get(id);
+  if (!def?.sim) continue;                                    // ← here
+  …
+  for (const kind of def.kinds ?? []) this.registry.registerKind(kind, def.id);
+```
+
+`host.ts` does the same registration unconditionally, so the two registries disagree: on the main
+thread `building` is owned by `buildings`, and on the worker it is owned by nobody. Nothing renders
+differently, which is why it survived a whole round — the symptom is
+`pnpm test:game`'s soak check, `✗ no orphan entities — {"building":2}`, and it only appeared the day
+the demo park got its first two `building` entities. The check's own comment predicted it.
+
+The fix is to hoist the loop above the guard:
+
+```ts
+for (const id of ids) {
+  const def = byId.get(id);
+  if (!def) continue;
+  for (const kind of def.kinds ?? []) this.registry.registerKind(kind, def.id);
+  if (!def.sim) continue;
+  …
+```
+
+`kinds` is a declaration of ownership and `sim` is a capability; today the first is conditional on
+the second. This module now has a `sim` and no longer depends on the change, so nothing is blocked —
+but the next builder who writes a render-only module that owns a kind will spend the same round.

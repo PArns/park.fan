@@ -39,13 +39,20 @@ import type {
   MainContext,
   MainHandle,
 } from '../core/types';
-import { buildBuilding, buildKitPiece, seedForBuilding, type BuildingBuild } from './build';
+import {
+  buildBuilding,
+  buildKitPiece,
+  resetBuildWarnings,
+  seedForBuilding,
+  type BuildingBuild,
+} from './build';
 import { setAtlasResolution, type Surface } from './geometry';
 import {
   attachBuildingContent,
   buildingBlueprints,
   buildingItems,
   buildingStyles,
+  resetBuildingContent,
   resolveBuilding,
 } from './manifest';
 import { createBuildingMaterials, type BuildingMaterials } from './materials';
@@ -248,7 +255,17 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     const add = (surface: Surface, name: string, material: Material): void => {
       if (surface.indices.length === 0) return;
       const mesh = toMesh(scene, `buildings:${key}:${name}`, surface, material);
-      mesh.receiveShadows = true;
+      // A spill quad is light, not a surface: it receives nothing. Everything else takes the sun's
+      // shadow.
+      //
+      // It stays in rendering group 0 with everybody else. It was in group 1 for one round, to get
+      // it drawn after the wall it lies on — but Babylon clears the depth buffer before each group
+      // above 0 by default (`_autoClearDepthStencil[1].depth === true`), so the ring was drawn over
+      // whatever stood in front of it: a row of window-shaped outlines lying on the clock tower's
+      // slate, and the teal of a pavilion two buildings further back showing through the roof.
+      // Alpha-blended meshes already render after the opaque ones inside a group, which is the
+      // ordering this actually wanted, and `disableDepthWrite` keeps it from occluding anything.
+      mesh.receiveShadows = name !== 'halo';
       mesh.freezeWorldMatrix();
       meshes.push(mesh);
     };
@@ -256,6 +273,7 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     add(build.glass, 'glass', kitMaterials.glass);
     add(build.lit, 'lit', kitMaterials.emissive(build.litColour, 'window'));
     add(build.sign, 'sign', kitMaterials.emissive(build.signColour, 'sign'));
+    add(build.halo, 'halo', kitMaterials.halo(build.litColour));
     if (!meshes.length) return null;
     const batch: Batch = {
       key,
@@ -508,6 +526,17 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     dispose() {
       detachRefresh();
       detachContent();
+      /**
+       * The content registry is module scope, so it has to be emptied here or it outlives the game.
+       *
+       * Across a dispose and a reboot — a route change, or React's strict-mode double mount — a
+       * blueprint from a pack that is no longer registered stayed resolvable by bare id through the
+       * `blueprints.get(wanted)` fallback, and a malformed pack warned once per PROCESS rather than
+       * once per boot. The second is the one that bites: reloading to see whether you fixed your
+       * manifest is exactly when you need the warning to come back.
+       */
+      resetBuildingContent();
+      resetBuildWarnings();
       disposeBatches();
       placed.clear();
       sites.clear();

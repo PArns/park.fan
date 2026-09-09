@@ -23,7 +23,9 @@
  */
 
 import { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
+import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 import { Material } from '@babylonjs/core/Materials/material';
+import { Constants } from '@babylonjs/core/Engines/constants';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
 import type { Scene } from '@babylonjs/core/scene';
 import type { BuildingAtlas } from './textures';
@@ -41,6 +43,15 @@ export interface BuildingMaterials {
    * the correction `shops/materials.ts` records, so it stays a painted panel until dusk lights it.
    */
   emissive(hex: string, kind: 'window' | 'sign'): PBRMaterial;
+  /**
+   * The additive spill a lit window throws on the wall around it.
+   *
+   * `StandardMaterial` with `ALPHA_ADD` and lighting off, because additive is the whole trick: at
+   * noon `emissiveIntensity` is 0, the material contributes black, and black adds nothing — so the
+   * quad is invisible without a second draw path or an alpha test. After dark it adds warm light to
+   * the brick, which is the one thing six pooled point lights across the entire game cannot buy.
+   */
+  halo(hex: string): StandardMaterial;
   /** 0..1 from `EnvironmentState.night`. */
   setNight(night: number): void;
   all(): Material[];
@@ -87,7 +98,70 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
   glass.maxSimultaneousLights = 6;
 
   const emissives = new Map<string, PBRMaterial>();
+  const halos = new Map<string, StandardMaterial>();
   let night = 0;
+
+  function halo(hex: string): StandardMaterial {
+    const key = hex.toLowerCase();
+    const found = halos.get(key);
+    if (found) return found;
+    const m = new StandardMaterial(`buildings-halo-${key.replace('#', '')}`, scene);
+    m.diffuseColor = new Color3(0, 0, 0);
+    m.specularColor = new Color3(0, 0, 0);
+    m.emissiveColor = Color3.FromHexString(hex);
+    /**
+     * **No emissive texture here, and that is the fix for a spill that never faded.**
+     *
+     * `StandardMaterial` composes emissive as `vEmissiveColor` and then, if an emissive texture is
+     * bound, `emissiveColor += texture(uv) * level` — an ADD, not the multiply `PBRMaterial` does
+     * one screen down in `emissive()`. So with the atlas bound here the ring drew the glow tile at
+     * full strength whatever `emissiveColor` said, the dusk curve below moved nothing at all, and
+     * every window on the street wore an orange rectangle in the 09:00 frame. The shape does not
+     * need a texture in any case: the falloff is in the vertex colour (`addHalo`), which reaches
+     * the output through `baseColor.rgb`, so `emissiveColor` alone is both the fade and the tint.
+     */
+    m.disableLighting = true;
+    m.backFaceCulling = true;
+    m.alphaMode = Constants.ALPHA_ADD;
+    m.transparencyMode = Material.MATERIAL_ALPHABLEND;
+    /**
+     * `alpha` is a hair under 1 to make Babylon blend at all, and it is NOT the fade.
+     *
+     * `ALPHA_ADD` is `(ONE, ONE)` — the source is added whatever its alpha says — so dimming this
+     * with `alpha` would have done exactly nothing and the spill would have been full strength at
+     * noon. What fades is the emissive colour itself.
+     */
+    m.alpha = 0.999;
+    // It is a light, not a surface: no wetness, no season tint, no shadow.
+    m.metadata = { envExempt: true, buildingsHalo: hex };
+    m.disableDepthWrite = true;
+    applyHalo(m, night);
+    halos.set(key, m);
+    return m;
+  }
+
+  function applyHalo(m: StandardMaterial, n: number): void {
+    const hex = (m.metadata as { buildingsHalo?: string } | null)?.buildingsHalo ?? '#ffffff';
+    m.emissiveColor = Color3.FromHexString(hex).scale(haloAlpha(n));
+  }
+
+  /**
+   * How much of the spill is on.
+   *
+   * The same dusk curve the windows use: this is the light bouncing off a wall a metre from a
+   * curtained pane, not the pane. The vertex ring already carries the falloff and the lit colour,
+   * so this number multiplies a value that peaks at 0.62 on the opening's own edge — 0.72 here is
+   * the strength the glow tile used to supply through the emissive texture, now written down where
+   * the dusk curve can actually reach it.
+   */
+  function haloAlpha(n: number): number {
+    // From 0.34 rather than 0.16: the window itself may start glowing at dusk, but the mark it
+    // leaves on a sunlit wall may not — at 09:00 `night` is still about 0.2 and every window on the
+    // terrace wore a faint orange ring in broad daylight. Additive light on a lit wall is visible
+    // long before it is plausible.
+    const t = Math.max(0, Math.min(1, (n - 0.34) / 0.34));
+    return t * t * (3 - 2 * t) * 0.72;
+  }
 
   function emissive(hex: string, kind: 'window' | 'sign' = 'window'): PBRMaterial {
     const key = `${hex.toLowerCase()}|${kind}`;
@@ -139,6 +213,7 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
     kit,
     glass,
     emissive,
+    halo,
     setNight(value: number) {
       night = value;
       const intensity = litIntensity(value);
@@ -146,15 +221,18 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
         const kind = (m.metadata as { buildingsLit?: string } | null)?.buildingsLit;
         m.emissiveIntensity = intensity * (kind === 'sign' ? 0.82 : 1);
       }
+      for (const m of halos.values()) applyHalo(m, value);
     },
     all() {
-      return [kit, glass, ...emissives.values()];
+      return [kit, glass, ...emissives.values(), ...halos.values()];
     },
     dispose() {
       kit.dispose();
       glass.dispose();
       for (const m of emissives.values()) m.dispose();
       emissives.clear();
+      for (const m of halos.values()) m.dispose();
+      halos.clear();
     },
   };
 }

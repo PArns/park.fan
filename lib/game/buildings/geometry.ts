@@ -284,13 +284,46 @@ export function addQuad(s: Surface, a: P3, b: P3, c: P3, d: P3, opts: QuadOption
   }
 }
 
-/** A triangle with one tile stretched over it — a gable end, a hip. */
-export function addTriangle(s: Surface, a: P3, b: P3, c: P3, colour: Rgb, tile: number): void {
-  const e1: P3 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
-  const e2: P3 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+/**
+ * A triangle with one tile stretched over it — a gable end, a hip, a lunette.
+ *
+ * **`facing` is the direction the surface is meant to look, and passing it is what makes the call
+ * site right by construction.** The normal here is derived from the winding, so a triangle authored
+ * the wrong way round is perfectly self-consistent and perfectly invisible: the round-1 critic
+ * measured 233.6 m² of gable and mansard end wall pointing INTO the buildings, on three of seven
+ * blueprints, and the check written after the last winding bug read zero because it compared the
+ * normal against the winding rather than against the outside.
+ *
+ * The trap underneath it is that `roofs.ts` addresses both ridge axes through one `p(u, w, y)`
+ * mapping, and that mapping swaps handedness between them — so the same literal vertex order is
+ * correct for `ridge: 'z'` and inside out for `ridge: 'x'`. A call site cannot reason about that and
+ * should not have to; it knows which way the wall faces, so it says so and the winding follows.
+ */
+export function addTriangle(
+  s: Surface,
+  a: P3,
+  b: P3,
+  c: P3,
+  colour: Rgb,
+  tile: number,
+  facing?: P3
+): void {
+  let p1 = b;
+  let p2 = c;
+  let e1: P3 = [p1[0] - a[0], p1[1] - a[1], p1[2] - a[2]];
+  let e2: P3 = [p2[0] - a[0], p2[1] - a[1], p2[2] - a[2]];
   let nx = e1[1] * e2[2] - e1[2] * e2[1];
   let ny = e1[2] * e2[0] - e1[0] * e2[2];
   let nz = e1[0] * e2[1] - e1[1] * e2[0];
+  if (facing && nx * facing[0] + ny * facing[1] + nz * facing[2] < 0) {
+    p1 = c;
+    p2 = b;
+    e1 = [p1[0] - a[0], p1[1] - a[1], p1[2] - a[2]];
+    e2 = [p2[0] - a[0], p2[1] - a[1], p2[2] - a[2]];
+    nx = e1[1] * e2[2] - e1[2] * e2[1];
+    ny = e1[2] * e2[0] - e1[0] * e2[2];
+    nz = e1[0] * e2[1] - e1[1] * e2[0];
+  }
   const nl = Math.hypot(nx, ny, nz) || 1;
   nx /= nl;
   ny /= nl;
@@ -301,8 +334,8 @@ export function addTriangle(s: Surface, a: P3, b: P3, c: P3, colour: Rgb, tile: 
     tileUv(tile, 0.5, 1),
   ];
   const ia = vertex(s, a[0], a[1], a[2], nx, ny, nz, uv[0][0], uv[0][1], colour);
-  const ib = vertex(s, b[0], b[1], b[2], nx, ny, nz, uv[1][0], uv[1][1], colour);
-  const ic = vertex(s, c[0], c[1], c[2], nx, ny, nz, uv[2][0], uv[2][1], colour);
+  const ib = vertex(s, p1[0], p1[1], p1[2], nx, ny, nz, uv[1][0], uv[1][1], colour);
+  const ic = vertex(s, p2[0], p2[1], p2[2], nx, ny, nz, uv[2][0], uv[2][1], colour);
   tri(s, ia, ib, ic);
 }
 

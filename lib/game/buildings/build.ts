@@ -70,6 +70,8 @@ export interface BuildingBuild {
   lit: Surface;
   /** Emissive in the sign's own colour. */
   sign: Surface;
+  /** Additive spill on the wall around each lit window; invisible by day. */
+  halo: Surface;
   /** sRGB hex of each emissive surface, so `main.ts` can cache one material per colour. */
   litColour: string;
   signColour: string;
@@ -97,6 +99,20 @@ export interface BuildOptions {
 
 const DEG = Math.PI / 180;
 
+const warnedBuilds = new Set<string>();
+
+/** Once per process, and named, so a pack author can act on it. */
+function warnBuild(key: string, message: string): void {
+  if (warnedBuilds.has(key)) return;
+  warnedBuilds.add(key);
+  console.warn(`[game/buildings] ${message}`);
+}
+
+/** Test seam: the selftest asserts a warning fires, and one case must not silence the next. */
+export function resetBuildWarnings(): void {
+  warnedBuilds.clear();
+}
+
 /** A stable integer for a batch key, so two buildings that share a mesh share their variation. */
 export function seedForBuilding(key: string): number {
   return hashString(key) % 2147483647;
@@ -110,6 +126,7 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
     glass: newSurface(),
     lit: newSurface(),
     sign: newSurface(),
+    halo: newSurface(),
     seed: opts.seed,
     litFraction: opts.litFraction ?? bp.night?.litFraction ?? 0.55,
     windows: 0,
@@ -128,6 +145,33 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
 
   groundWorks(ctx, bp, style);
 
+  /**
+   * A sign that was asked for and not drawn says so.
+   *
+   * `signBand` hangs on a box mass's wall frame, so a blueprint whose FIRST mass is a drum gets a
+   * `sign` surface with zero triangles — which is what the round-1 critic's lighthouse got, in
+   * silence. Silence is the bug: the manifest offers the field, so a pack author has no way to tell
+   * the difference between "not supported here" and "I spelled it wrong".
+   */
+  if (bp.sign && bp.sign.band > 0 && ctx.sign.indices.length === 0) {
+    warnBuild(
+      `sign:${bp.id}`,
+      `blueprint "${bp.id}" declares a sign band, and its first mass is round — a sign hangs on a ` +
+        `flat elevation, so nothing was drawn. Put a box mass first, or drop the "sign" block.`
+    );
+  }
+
+  /**
+   * `night.spill` is how many real lights this building asks the pool for.
+   *
+   * Declared, typed, and read nowhere: the pool size was `LIGHT_POOL[preset]` and a blueprint that
+   * said `spill: 0` still offered every doorway and cupola it had. A lantern-lit inn wants two; a
+   * back-of-house block wants none, and saying so should cost nothing.
+   */
+  const spill = bp.night?.spill;
+  if (typeof spill === 'number')
+    ctx.lights.length = Math.min(ctx.lights.length, Math.max(0, spill));
+
   const bounds = boundsOf(ctx.kit, ctx.glass, ctx.lit, ctx.sign);
   const entrance = ctx.entrance ?? defaultEntrance(bp);
   return {
@@ -135,6 +179,7 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
     glass: ctx.glass,
     lit: ctx.lit,
     sign: ctx.sign,
+    halo: ctx.halo,
     litColour: style.palette.lit,
     signColour: bp.sign?.color ?? style.palette.sign,
     bounds: { min: bounds.min, max: bounds.max },
@@ -142,7 +187,8 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
       surfaceTriangles(ctx.kit) +
       surfaceTriangles(ctx.glass) +
       surfaceTriangles(ctx.lit) +
-      surfaceTriangles(ctx.sign),
+      surfaceTriangles(ctx.sign) +
+      surfaceTriangles(ctx.halo),
     windows: ctx.windows,
     litWindows: ctx.litWindows,
     doors: ctx.doors,
@@ -178,6 +224,16 @@ function buildMass(
   const storeyHeight = mass.storeyHeight ?? 4.0;
   const plinth = mass.plinth ?? 0.55;
   const skin = skinFor(style, mass);
+  /**
+   * The upper storeys, when the style says they are different.
+   *
+   * `style.wallUpper` (the surface) and `palette.wallUpper` (the colour) were both declared, typed
+   * and read nowhere — and rendered upper floors over a brick or stone ground floor is one of the
+   * commonest European elevations there is, so the schema was advertising a facade it could not
+   * build. A mass-level `wallSurface`/`wallColor` still wins over both, and a style that sets
+   * neither gets one skin exactly as before.
+   */
+  const skinUpper = skinFor(style, mass, true);
   const trim = { ...style.trim, ...(mass.trim ?? {}) };
   const wallTop = m.base + plinth + storeys * storeyHeight;
   const eaveY = wallTop;
@@ -218,9 +274,10 @@ function buildMass(
         (entry.side === 'left' ? facades.left : undefined) ??
         facades.all ??
         'w*';
+      const storeySkin = s === 0 ? skin : skinUpper;
       const pattern = patternForStorey(raw, s);
       const plan = planBays(entry.frame.width, pattern, bayTarget);
-      if (!plan.bays.length) continue_(ctx, entry.frame, skin);
+      if (!plan.bays.length) continue_(ctx, entry.frame, storeySkin);
       plan.bays.forEach((code, i) => {
         const bf = subFrame(entry.frame, i * plan.width, 0, plan.width, storeyHeight);
         const centre = [
@@ -228,7 +285,7 @@ function buildMass(
           bf.o[1] + storeyHeight * 0.5,
           bf.o[2] + bf.right[2] * plan.width * 0.5,
         ] as P3;
-        drawBay(ctx, bf, code as BayCode, skin, {
+        drawBay(ctx, bf, code as BayCode, storeySkin, {
           storey: s,
           storeyHeight,
           key: (index * 977 + fi * 131 + s * 17 + i) | 0,
@@ -260,15 +317,21 @@ function buildMass(
 
   // Downpipes at the corners of the front elevation, and a sign band and a clock where asked.
   if (!round) {
-    const front = boxFrames(m, m.base + plinth, eaveY - m.base - plinth)[0].frame;
+    const walls = boxFrames(m, m.base + plinth, eaveY - m.base - plinth);
+    const front = walls[0].frame;
     downpipe(ctx, front, 0.35, eaveY - m.base - plinth - trim.cornice, skin);
     downpipe(ctx, front, front.width - 0.35, eaveY - m.base - plinth - trim.cornice, skin);
     if (bp.sign && bp.sign.band > 0 && index === 0) {
-      const width = (bp.sign.width ?? 0.55) * front.width;
-      const u0 = (front.width - width) / 2;
+      // `sign.side` is honoured. It was declared, typed and read nowhere, so a pack asking for a
+      // sign on the `right` elevation silently got one on the front — which is worse than not
+      // offering the field, because the manifest says it works.
+      const side = bp.sign.side ?? 'front';
+      const wall = (walls.find((w) => w.side === side) ?? walls[0]).frame;
+      const width = (bp.sign.width ?? 0.55) * wall.width;
+      const u0 = (wall.width - width) / 2;
       signBand(
         ctx,
-        front,
+        wall,
         u0,
         u0 + width,
         storeyHeight - bp.sign.band - 0.45,
@@ -284,7 +347,19 @@ function buildMass(
       const gabled =
         (roofFormOf(mass) === 'gable' || roofFormOf(mass) === 'mansard') && roof.ridge === 'z';
       const cv = gabled ? front.height + mass.clock * 0.62 : front.height - mass.clock * 0.72;
-      clockFace(ctx, front, front.width / 2, cv, mass.clock, skin);
+      /**
+       * A dial on every elevation that is not longer than it is tall.
+       *
+       * The round-1 critic could not find the clock in any of the nine showcase frames, and the
+       * reason was that a box mass got exactly one — on the `front` — so three of a 5.6 × 5.6 m
+       * tower's four faces were blank and the face a visitor sees carried a louvre. A town-hall
+       * tower has a dial on every side it can be read from; a long block has one on its front, and
+       * the ratio is what tells the two apart without a new manifest field.
+       */
+      const tower = Math.max(m.hx, m.hz) / Math.min(m.hx, m.hz) < 1.6;
+      for (const entry of tower ? walls : [walls[0]]) {
+        clockFace(ctx, entry.frame, entry.frame.width / 2, cv, mass.clock, skin);
+      }
     }
   } else if (mass.clock && mass.clock > 0) {
     // A tower clock has four faces, not one per facet: on an octagon that is every other one.
@@ -711,12 +786,13 @@ function defaultEntrance(bp: BlueprintDef): [number, number] {
 
 // ── skins ───────────────────────────────────────────────────────────────────────────────────
 
-export function skinFor(style: BuildingStyleDef, mass?: MassDef): Skin {
+export function skinFor(style: BuildingStyleDef, mass?: MassDef, upper = false): Skin {
   const p = style.palette;
-  const wallName: SurfaceName = mass?.wallSurface ?? style.wall;
+  const wallName: SurfaceName =
+    mass?.wallSurface ?? (upper ? (style.wallUpper ?? style.wall) : style.wall);
   return {
     wallTile: tileFor(wallName),
-    wallColour: srgb(mass?.wallColor ?? p.wall),
+    wallColour: srgb(mass?.wallColor ?? (upper ? (p.wallUpper ?? p.wall) : p.wall)),
     plinthTile: tileFor(style.plinth, 'ashlar'),
     plinthColour: srgb(p.plinth),
     trimTile: tileFor(style.plinth === 'brick' ? 'ashlar' : style.plinth, 'ashlar'),
@@ -806,6 +882,7 @@ export function buildKitPiece(opts: {
     glass: newSurface(),
     lit: newSurface(),
     sign: newSurface(),
+    halo: newSurface(),
     seed: opts.seed,
     litFraction: opts.litFraction ?? 0.6,
     windows: 0,
@@ -823,6 +900,7 @@ export function buildKitPiece(opts: {
     glass: ctx.glass,
     lit: ctx.lit,
     sign: ctx.sign,
+    halo: ctx.halo,
     litColour: opts.style.palette.lit,
     signColour: opts.style.palette.sign,
     bounds: { min: bounds.min, max: bounds.max },
@@ -830,7 +908,8 @@ export function buildKitPiece(opts: {
       surfaceTriangles(ctx.kit) +
       surfaceTriangles(ctx.glass) +
       surfaceTriangles(ctx.lit) +
-      surfaceTriangles(ctx.sign),
+      surfaceTriangles(ctx.sign) +
+      surfaceTriangles(ctx.halo),
     windows: ctx.windows,
     litWindows: ctx.litWindows,
     doors: ctx.doors,

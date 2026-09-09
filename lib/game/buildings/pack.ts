@@ -46,7 +46,11 @@ export const ARCHITECTURE_PACK = {
       palette: {
         wall: '#9c4b3c',
         plinth: '#8d8578',
-        roof: '#454b54',
+        // #6f7783 and not #454b54. Sunlit slate measured luma 20.8 against 89.4 for the brick beside
+        // it — 0.23× where the albedos differ by 0.6× — because a steep plane at a low sun takes far
+        // less irradiance than a wall. The roofs are the largest surfaces in every overview frame and
+        // they carried the least information in it; a slate roof in sunshine is grey, not black.
+        roof: '#6f7783',
         trim: '#e8e0d0',
         joinery: '#2f4a3f',
         metal: '#4b5157',
@@ -100,7 +104,7 @@ export const ARCHITECTURE_PACK = {
       palette: {
         wall: '#cfc7b4',
         plinth: '#8f887a',
-        roof: '#7c858c',
+        roof: '#8d959b',
         trim: '#e6dfd0',
         joinery: '#6b2f28',
         metal: '#3f464c',
@@ -127,7 +131,7 @@ export const ARCHITECTURE_PACK = {
       palette: {
         wall: '#7a5236',
         plinth: '#8d8578',
-        roof: '#5c4634',
+        roof: '#7b6047',
         trim: '#e9dcc2',
         joinery: '#8c3b2c',
         metal: '#4b4137',
@@ -342,9 +346,13 @@ export const ARCHITECTURE_PACK = {
           id: 'house',
           size: [9, 10],
           storeys: 3,
-          storeyHeight: 3.4,
+          // 2.95 m, not 3.4. Three storeys at 3.4 plus a mansard put the ridge at 17.7 m where a
+          // European terrace runs 13–15, and the cornice at 0.4 × 0.3 read as a heavy white ledge
+          // that visibly widened the house — so the eaves band comes in with it.
+          storeyHeight: 2.95,
           plinth: 0.45,
           bay: 3.0,
+          trim: { cornice: 0.26, corniceOut: 0.18 },
           facades: { all: 'w*', front: 'w d w / w w w' },
           roof: { form: 'mansard', eaves: 0.35, ridge: 'x', dormers: 2, chimneys: 2 },
         },
@@ -428,7 +436,7 @@ export const ARCHITECTURE_PACK = {
       id: 'terrace-house',
       name: { en: 'Terrace house', de: 'Reihenhaus' },
       category: 'blueprint',
-      size: [9.7, 17.6, 11.8],
+      size: [9.7, 16.3, 11.8],
       cost: 2100000,
       procedural: 'terrace-house',
       theme: 'classic-brick',
