@@ -32,6 +32,7 @@ import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import { Matrix, Quaternion, Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { PointLight } from '@babylonjs/core/Lights/pointLight';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
+import { Constants } from '@babylonjs/core/Engines/constants';
 import type { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
 import type { Material } from '@babylonjs/core/Materials/material';
 import type { Scene } from '@babylonjs/core/scene';
@@ -99,6 +100,9 @@ const LIGHT_POOL: Record<string, number> = { low: 0, medium: 2, high: 4, ultra: 
  */
 const LOD_DISTANCE = 150;
 const LOD_MIN_TRIANGLES = 4000;
+
+/** `Constants.MATERIAL_AttributesDirtyFlag`, by name rather than as an 8. See `armInstanceColor`. */
+const ATTRIBUTES_DIRTY = Constants.MATERIAL_AttributesDirtyFlag;
 
 export interface FlumeMeshStats {
   flumes: number;
@@ -173,6 +177,9 @@ interface RigBatch {
   riderPalette: Array<[number, number, number]>;
   hullCount: number;
   riderCount: number;
+  /** Whether each mesh's `INSTANCESCOLOR` has been armed since it last stood empty. See `armInstanceColor`. */
+  hullColored: boolean;
+  riderColored: boolean;
 }
 
 export function createFlumesMain(ctx: MainContext): MainHandle {
@@ -268,6 +275,8 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
       riderPalette: style.rig.wear.map(hexToLinear),
       hullCount: 0,
       riderCount: 0,
+      hullColored: false,
+      riderColored: false,
     };
     for (const mesh of [batch.hull, batch.rider]) {
       if (!mesh) continue;
@@ -639,20 +648,62 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     buffer[o + 3] = 1;
   }
 
+  /**
+   * Switch the shader's instance-colour attribute on, the first time a rig has a vehicle in it.
+   *
+   * `thinInstanceSetBuffer('color', …)` hot-switches the kind to `instanceColor`, and the define
+   * that makes a shader declare that attribute is set in exactly one place, `PrepareDefinesForAttributes`:
+   *
+   *     if (mesh.isVerticesDataPresent('instanceColor') && (mesh.hasInstances || mesh.hasThinInstances))
+   *         defines['INSTANCESCOLOR'] = true;
+   *
+   * Two things about that line decide this. It only ever sets the define to TRUE, and the whole
+   * function early-returns while the attributes are clean. `rigFor` registers the buffer — which
+   * dirties the attributes — and then sets `thinInstanceCount = 0`, which IS
+   * `_thinInstanceDataStorage.instancesCount = 0`, which IS `hasThinInstances === false`. So the
+   * one compile that ever saw a dirty attribute list saw a rig with no vehicles in it, left the
+   * define off, and cleaned the flag; the riders arriving a minute later dirty nothing.
+   *
+   * Measured on the showcase before this: `instanceColor` present and `hasThinInstances: true` on
+   * all nine batches, `INSTANCESCOLOR` absent from all nine compiled effects — so the buffer was
+   * built, written, uploaded and dropped at the attribute boundary, and every hull and every
+   * rider drew with the vehicle material's white albedo. `family-bowl`'s five-entry `wear`
+   * palette rendered as five identical grey cylinders.
+   *
+   * Re-armed on every empty → occupied transition rather than once for good: the material is
+   * shared by every rig, so anything that dirties it while a rig is empty resets that rig's define
+   * to false, and the flag says "armed since this mesh last stood empty" for that reason.
+   */
+  function armInstanceColor(mesh: Mesh): void {
+    mesh.material?.markAsDirty(ATTRIBUTES_DIRTY);
+  }
+
   function commitRiders(): void {
     for (const batch of rigs.values()) {
       if (batch.hull) {
         batch.hull.thinInstanceCount = batch.hullCount;
         if (batch.hullCount > 0) {
+          if (!batch.hullColored) {
+            armInstanceColor(batch.hull);
+            batch.hullColored = true;
+          }
           batch.hull.thinInstanceBufferUpdated('matrix');
           batch.hull.thinInstanceBufferUpdated('color');
+        } else {
+          batch.hullColored = false;
         }
       }
       if (batch.rider) {
         batch.rider.thinInstanceCount = batch.riderCount;
         if (batch.riderCount > 0) {
+          if (!batch.riderColored) {
+            armInstanceColor(batch.rider);
+            batch.riderColored = true;
+          }
           batch.rider.thinInstanceBufferUpdated('matrix');
           batch.rider.thinInstanceBufferUpdated('color');
+        } else {
+          batch.riderColored = false;
         }
       }
     }

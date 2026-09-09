@@ -1,20 +1,19 @@
 # Requests from the `flumes` module
 
 Everything here is outside `lib/game/flumes/`. Each item says what it is, who owns it, and what the
-module does in the meantime — nothing below is blocking, and none of it is done in this round.
+module does in the meantime — nothing below is blocking. **§1 is done** (round 2); §3 to §7 were
+re-checked against the tree at the end of round 2 and are all still open, with the file and line
+each was measured at.
 
 ---
 
-## 1. `pnpm test:game` does not run this module's selftest
+## 1. ~~`pnpm test:game` does not run this module's selftest~~ — **DONE**
 
-**Owner:** `package.json` (integrator) · **Value:** 94 checks that a screenshot cannot take.
+**Owner:** `package.json` (integrator) · **Closed:** `test:game-flumes` is at `package.json:128`
+and in the `test:game` chain at `:105`; the run is green at **143** checks, ~3 s. Nothing is asked
+for here any more — the paragraph stays because the round-2 additions are what the tower bug cost.
 
-```jsonc
-"test:game-flumes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/flumes/selftest.mjs",
-"test:game": "… && pnpm test:game-flumes && …"
-```
-
-94 checks, exit 0, ~3 s. Five of them caught real bugs while this module was being written: the
+Five of the original checks caught real bugs while this module was being written: the
 run-out ending 4.45 m underground (§ tower height, below), the wall rule that never fired because
 the resting section was already taller than the rider needed, riders leaning to a side derived by
 comparing two wall extents (which is always zero on a closed pipe), a level start chute that stalls
@@ -121,12 +120,12 @@ that wants to hear about a slide being switched off.
 `plan.ts` reserves `flumes` at **(168, 18), halfX 18, halfZ 15** — a 36 × 30 m pad. Measured
 footprints of the four built-in descents, on flat ground (`selftest.mjs` prints this table):
 
-| Layout | Style | Trough | Drop | Tower | Footprint (x × z) | Top speed | Ride |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `plunge-drop` | body | 113 m | 13.7 m | 14.1 m | **38 × 76 m** | 10.9 m/s | 23 s |
-| `spiral-tower` | tube | 170 m | 15.9 m | 16.3 m | **60 × 42 m** | 10.1 m/s | 29 s |
-| `family-bowl` | raft | 144 m | 14.2 m | 14.6 m | **65 × 55 m** | 10.2 m/s | 27 s |
-| `mat-straight` | mat | 89 m | 11.4 m | 11.8 m | **7 × 84 m** | 11.5 m/s | 14 s |
+| Layout         | Style | Trough | Drop   | Tower  | Footprint (x × z) | Top speed | Ride |
+| -------------- | ----- | ------ | ------ | ------ | ----------------- | --------- | ---- |
+| `plunge-drop`  | body  | 113 m  | 13.7 m | 14.1 m | **38 × 76 m**     | 10.9 m/s  | 23 s |
+| `spiral-tower` | tube  | 170 m  | 15.9 m | 16.3 m | **60 × 42 m**     | 10.1 m/s  | 29 s |
+| `family-bowl`  | raft  | 144 m  | 14.2 m | 14.6 m | **65 × 55 m**     | 10.2 m/s  | 27 s |
+| `mat-straight` | mat   | 89 m   | 11.4 m | 11.8 m | **7 × 84 m**      | 11.5 m/s  | 14 s |
 
 None of them fits, and shrinking them is the wrong answer: these are the real dimensions. A
 ProSlide family raft turns on a 12 m radius because a six-seat raft cannot turn on less, and a
@@ -173,7 +172,7 @@ function placeDemoFlumes(world: World, allocId: (kind: string) => string): Entit
       x: 146,
       z: 40,
       y: y(146, 40),
-      yaw: 1.15,        // ≈ 66°, pointing east-north-east
+      yaw: 1.15, // ≈ 66°, pointing east-north-east
     }),
     // The body slide, on the east, running west so its run-out ends beside the spiral's.
     makeFlumeEntity({
@@ -184,7 +183,7 @@ function placeDemoFlumes(world: World, allocId: (kind: string) => string): Entit
       x: 196,
       z: 4,
       y: y(196, 4),
-      yaw: -1.9,        // ≈ −109°, pointing west-south-west
+      yaw: -1.9, // ≈ −109°, pointing west-south-west
     }),
   ];
 }

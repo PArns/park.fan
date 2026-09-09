@@ -5,17 +5,22 @@
  * two of them an empty field. All three are the ones every screenshot of this project is taken
  * through, and each is asked a different question:
  *
- *   `overview`  400 m out, aimed at the park centre, 15.5° down. From here a 1 m trough is two
- *               pixels wide and the TOWERS are the module — five silhouettes between 12 and 16 m,
- *               with the runs threading between them. What this frame can answer is whether a
- *               water park reads as a water park from the far side of it.
- *   `close`     40 m from the centroid of everything placed, 22° down. That centroid is
- *               deliberately (3.6, −62) — the middle of the body slide's run — so this frame is a
+ *   `overview`  400 m out, aimed at the PARK CENTRE (0, 8, 0), 15.5° down — the preset anchors on
+ *               `park:centre` and this showcase does not sit there, so the complex is off to one
+ *               side and small. Round 1's docblock promised "five silhouettes between 12 and 16 m"
+ *               here; the round-2 frames show ~10 px of dark speck per tower and it is the trough
+ *               COLOUR that reads. What the frame can answer is whether a water park reads as a
+ *               water park from the far side of it — by day barely, at 23:00 well, because the rim
+ *               strips draw the runs as glowing lines. Framing all five together needs a pose the
+ *               manifest does not have (report §5.9).
+ *   `close`     40 m from the centroid of everything placed, 22° down. Measured, that centroid is
+ *               (−3.98, 0.40, −61.93) — the middle of the body slide's run — so this frame is a
  *               trough at arm's length: the moulded lip, the seams, the sheet of water, and the
  *               wall growing through the hook.
- *   `ground`    (0, 1.75, −79) looking north along −Z, a person's eye. Two straight racing lanes
- *               run at the camera from 100 m out and end 20 m in front of it, so this is the one
- *               shot that shows a run-out from where a visitor stands, with the towers behind it.
+ *   `ground`    (0, 1.50, −79.06) looking along −Z, a person's eye — measured off the running
+ *               camera, not intended. Two straight racing lanes end at z = −101.8, seventeen
+ *               metres in front of it, with both towers at 111 m behind them, so this is the one
+ *               shot that shows a run-out from where a visitor stands with a tower over it.
  *
  * ## Two things this frame proves rather than asserts
  *
@@ -64,7 +69,12 @@ interface Placement {
  *
  * The positions are not arbitrary. Cluster A — tube, raft, body — surrounds the park centre so the
  * `close` preset's centroid lands in the middle of a run; the two racers to the south are on the
- * `ground` preset's own axis, 85 and 100 m out, ending 20 m in front of the camera.
+ * `ground` preset's own axis, ending in front of the camera.
+ *
+ * What that costs is the `overview` frame, and it is a real trade rather than an oversight: the
+ * five slides span z = +54 to −196, `overview` looks at (0, 8, 0) from 400 m, so the complex sits
+ * off-centre and small. Moving the racers north would fix that frame and ruin `ground`, which is
+ * the better of the two.
  */
 const PLACEMENTS: Placement[] = [
   // The northern row of towers, both running south into the middle of the park. The yaws are not
@@ -74,8 +84,9 @@ const PLACEMENTS: Placement[] = [
   { pack: 'neon-lagoon', item: 'tube-slide', layout: 'spiral-tower', x: -50, z: 22, yaw: -2.75, basin: 'runout-lane' }, // prettier-ignore
   { pack: 'neon-lagoon', item: 'raft-slide', layout: 'family-bowl', x: 24, z: 43, yaw: 2.57, basin: 'runout-lane' }, // prettier-ignore
   { pack: 'neon-lagoon', item: 'body-slide', layout: 'plunge-drop', x: 24, z: -14, yaw: -2.61, basin: 'runout-lane' }, // prettier-ignore
-  // The two racers, on the `ground` preset's own axis. Their towers are 85 and 70 m out and their
-  // run-outs land at z ≈ −94, sixteen metres in front of a camera standing at z = −79.
+  // The two racers, on the `ground` preset's own axis. Measured from the built meshes: their
+  // towers stand at z = −190.6 and −173.4, i.e. 111 and 94 m from a camera at z = −79.06, and
+  // their run-outs end at z = −101.8, seventeen metres in front of it.
   { pack: 'neon-lagoon', item: 'body-slide', layout: 'mat-straight', x: -10, z: -186, yaw: 0, basin: 'runout-lane' }, // prettier-ignore
   { pack: 'showcase-torrent', item: 'torrent-racer', layout: 'torrent-lane', x: 10, z: -168, yaw: 0, basin: 'runout-lane' }, // prettier-ignore
 ];
