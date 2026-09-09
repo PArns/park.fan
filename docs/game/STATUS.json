@@ -260,23 +260,23 @@
     },
     "buildings": {
       "wave": 2,
-      "status": "round 3 shipped 2026-09-09 (commits e4c27f9 + 123f3e5), AWAITING AN INDEPENDENT GRADE. Round 2 was 8.20, 0.30 short, and what held it there was that its headline claim — the new checks have no categories in them — was true of §5c and FALSE of §5d, which judged only upright triangles standing on a mass plan envelope and left 12,323 triangles over 2,650 m² judged by nothing. §5d NOW WALKS EVERY UPRIGHT TRIANGLE IN THE BUILD, residual 248 triangles over 132.4 m² (1.6 %) under a 2 % assertion. THE WIDENING IS PROVEN, NOT ASSERTED: the critic's own demonstration was reproduced — flip the dormer face quad so every dormer front points into its roof — and where round 2 answered 66000/66000 the suite now answers \"nothing standing on a solid faces into it — 32 triangles, 16.2 m²\", named per blueprint; scratch edit reverted, suite back to 66,020. THE FIND OF THE ROUND CAME OUT OF THAT CHECK: putting round 2 roundFrames ring order back gives \"rotunda: 475 triangles, 117.2 m²\" — EVERY ROUND MASS IN THE MODULE WAS BUILT INSIDE OUT, so the drum near facets were back-faces and one looked THROUGH them at the far side arches, its floor and the paving beyond. That answers the critic first frame finding by itself: he called the drum a featureless pale sheet at p95 luma 220 (reproduced to 0.2) — it was never featureless, it was see-through. Band mean 130.6 to 88.7, p95 220.2 to 186.3, while the sunlit paving beside it is byte-identical at 143.2 in both, which makes it a real control. Two self-corrections worth keeping: the obvious featureless metric (gradient energy) moves the WRONG way, 11.65 to 9.43; and two of the round own frame captions claimed a lamp pool that was a shopfront. Night was A/B tested rather than taken on trust: the two lamps are worth +3.8 luma of 35.3 on near paving and half a luma past ~15 m. Budget 128 draw calls and 375,388 triangles, 10.7 % (was 120 / 10.0 % over 23 buildings). Still open: the kit row is ten pieces standing in grass, and the Panorama window is a teal box.",
+      "status": "round 3 graded 8.30, FAIL (pass 8.5), by an INDEPENDENT critic — docs/game/critiques/buildings-round3.md. 0.20 short, every hard gate passing. EVERY PIXEL CLAIM IN THE REPORT REPRODUCED, most to the digit, from the critic own runs: both sabotages (dormer flip gives 32 triangles / 16.2 m² named per blueprint, round 2 ring order gives rotunda 475 / 117.2 m²); the drum band 130.6 to 88.7 mean and 220.2 to 186.3 p95, AND THE CONTROL IS REAL — the paving crop is byte-identical over 8,100 bytes by Buffer.equals and the whole-frame diff is 31,599 px confined to the rotunda plus 28 px of HUD clock; night settle 32 px all HUD, the two lamps 31.5 to 35.3 and 36.9 to 38.5; budget 128 draw calls / 375,388 triangles / 10.67 % with stats() matching on nine fields; and both volunteered self-corrections check out. A useful by-product: he verified D-023 is a pure clock relabel — the module 0900 frame and his 1032 differ in 941 px, ALL HUD clock, scene byte-identical, so the pre-change evidence frames are still gradeable. WHAT BROKE IT ARE TWO NEW FINDINGS. (1) A DIFFERENT SABOTAGE PASSES THE WHOLE SUITE: reversing addBand front face (geometry.ts:884) inverts every cornice, string course, sign fascia and stall riser — 4,014 triangles over 352.7 m², all upright, all inside §5d scope, 1.5x the area that failed round 1 — and the suite answers 66020/66020 with §5d residue unchanged. The cause is a DEPTH hole rather than a scope hole: selftest.mjs:855 probes 0.25 m along the normal while every band is 0.09-0.12 m deep, so the probe exits the back; at a 0.05 m step it is caught. Related, the round own dormer demonstration catches only 2 of the 4 blueprints it inverts, because facingNothing 1.6 m facing-back reach forgives the clock tower and the watermill. (2) sign.mass and mass.clockFaces, recorded as FIXED in the round own §0 row 9, are STRIPPED BY manifest.ts zod schemas — five-case pack A/B: geometry byte-identical, parsed.sign loses mass, clockFaces undefined, while a sign.side positive control does move the sign. That is round 1 dead-manifest-field finding, re-committed in the round that closed it. Two report figures also disagree with the module own test output (residue is 250 / 143.2 m², not 248 / 132.4; the sim worst door is 1.88 m on the pavilion, not 5.41 m on the rotunda), and §4.14 claim that a vertical brick wall barely gains is contradicted by the A/B printed beside it (wall +8.8 against roof +9.5).",
       "round": 3,
-      "score": 8.2,
+      "score": 8.3,
       "consoleErrors": 0,
       "gated": true,
       "lines": 7233,
       "axes": {
-        "frame": 7.8,
-        "fidelity": 8,
-        "extensibility": 8.6,
-        "budget": 8.5,
+        "frame": 8.4,
+        "fidelity": 8.4,
+        "extensibility": 7.4,
+        "budget": 8.8,
         "determinism": 9,
-        "reportHonesty": 7.8
+        "reportHonesty": 7
       },
-      "gradedAtCommit": "b39101a",
+      "gradedAtCommit": "2d1a7db",
       "hardGates": "all pass.",
-      "verdict": "round 1 FAILED at 7.50, round 2 FAILED at 8.20; round 3 shipped and awaits an independent grade."
+      "verdict": "rounds 1, 2 and 3 all FAILED — 7.50, 8.20, 8.30. Round 4 first: scale §5d outward probe to the solid it steps into, print how many triangles stand on a solid thinner than the probe, reproduce the addBand sabotage and fix it; in the same commit put sign.mass and mass.clockFaces into the schemas with a selftest case each."
     },
     "scenery": {
       "wave": 2,
