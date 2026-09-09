@@ -281,6 +281,36 @@ if (bootMs != null) {
   }
 }
 
+/**
+ * Name the cause when the server is serving a build that no longer exists on disk.
+ *
+ * Two independent critics nearly graded the wrong build on 2026-09-09, and the reason turned out to
+ * be structural rather than careless: `next start` and `next dev` were running from the SAME
+ * directory, so both owned `.next/`. The dev server rewrote the chunks the production server was
+ * still serving by name — first the production server answered with an old scene (a critic proved
+ * it by asking the page for its mesh count: 47 drawn meshes and zero `:halo` meshes against the dev
+ * server's 57 and ten), and later it answered with `text/plain` for every `.css` and `.js` it
+ * referenced, because the files behind those names were gone.
+ *
+ * A timestamp cannot detect this — the shared `.next/BUILD_ID` is rewritten by whichever server
+ * touched it last, so it looks fresh while the served build is not. What CAN be observed is the
+ * page itself refusing its own assets, so that is what this reads. It says the cause out loud,
+ * because the symptom on its own reads as a broken game.
+ */
+function diagnoseServer(errors) {
+  const asset = errors.filter((e) => /_next\/static/.test(e));
+  if (!asset.length) return;
+  console.warn(
+    `\n  ⚠  ${asset.length} of this page's own assets were refused or missing.\n` +
+      `     That is a SERVER problem, not a game problem, and the usual cause here is two Next\n` +
+      `     servers sharing one .next directory — a "next dev" rewrites the chunks a "next start"\n` +
+      `     is still serving by name. Point --url at the dev server, or give the production one its\n` +
+      `     own --distDir. Do not grade anything from this run.\n` +
+      `     first: ${asset[0].slice(0, 140)}\n`
+  );
+}
+diagnoseServer(console_.errors);
+
 const chunks = await page.evaluate(() =>
   performance
     .getEntriesByType('resource')
