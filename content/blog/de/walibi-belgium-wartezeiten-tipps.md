@@ -1,7 +1,7 @@
 ---
 title: 'Walibi Belgium: der andere Walibi, mit der höchsten Achterbahn der Beneluxstaaten'
 translationKey: walibi-belgium-guide
-date: '2026-09-08'
+date: '2026-09-11'
 author: patrick
 mode: published
 featured: false
@@ -110,7 +110,7 @@ einzigen Fahrt.
 
 ```
 
-Mit der Eröffnung übernahm Kondaa gleich zwei Rekorde auf einen Schlag: Sie
+Mit der Eröffnung übernahm Kondaa gleich zwei Rekorde auf einen Schlag. Sie
 wurde die höchste und die schnellste Achterbahn der Beneluxstaaten und
 verdrängte damit [Goliath](ref:walibi-holland/goliath) im eigenen
 Schwesterpark [Walibi Holland](ref:walibi-holland) von der Höhe und
@@ -121,10 +121,9 @@ Gäste pro Stunde durch die anderthalb Minuten Fahrzeit. Mitfahren darf, wer
 zwischen 130 und 195 cm groß ist.
 
 Ich fahre für einzelne Achterbahnen weite Strecken, und Kondaa gehört für mich
-in diese Kategorie: eine Bahn, die einen ganzen Tagesausflug allein
-rechtfertigt. Nicht wegen der Loopings, die es gar nicht gibt, sondern weil sie
-dich fünfzig Meter hoch bringt und danach anderthalb Minuten lang nicht mehr
-loslässt.
+in diese Kategorie. Sie hat keinen einzigen Überschlag und braucht auch keinen.
+Was sie stattdessen macht: dich fünfzig Meter hochziehen und danach anderthalb
+Minuten lang nicht mehr loslassen.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -142,12 +141,12 @@ Die ruhigsten Tage der kommenden Wochen, live berechnet:
 
 ## Der Rest des Parks
 
-Kondaa zieht die Schlagzeilen, aber Wavre hat eine der dichtesten
-Achterbahn-Sammlungen der Region, gerade weil hier über fünf Jahrzehnte kaum
-etwas abgerissen wurde.
+Kondaa zieht die Schlagzeilen, aber die älteste Achterbahn im Park ist Baujahr
+1982 und fährt noch. In fünf Jahrzehnten ist hier kaum etwas abgerissen worden,
+und das merkt man an der Bandbreite.
 
 **[Turbine](ref:walibi-belgium/turbine)** ist die älteste Bahn im Park, ein
-**Schwarzkopf Shuttle Loop** von 1982 und damit eine echte Rarität: Der Zug
+**Schwarzkopf Shuttle Loop** von 1982 und damit eine echte Rarität. Der Zug
 wird rückwärts auf eine Strecke mit einem einzigen Looping katapultiert, fährt
 den Looping vorwärts, dann rückwärts wieder zurück. Schwarzkopf baute davon
 weltweit nur eine Handvoll, die meisten sind längst verschrottet. Zwischen 2013
@@ -156,7 +155,7 @@ und 2024 lief sie unter einem anderen Namen und einer Horror-Themenwelt als
 Namen und mit neuer, hafentauglicher Optik wieder zurückbrachte.
 
 **Vampire** (1999) ist ein **Vekoma SLC** (Suspended Looping Coaster, Modell
-689) und war bei seiner Eröffnung die erste Bahn dieses Typs in Belgien: Der
+689) und war bei seiner Eröffnung die erste Bahn dieses Typs in Belgien. Der
 Zug hängt unter der Schiene statt darauf zu sitzen, sodass die Füße bei jeder
 Kurve frei durch die Luft schwingen, ohne dass darunter ein Boden zu sehen
 wäre. **[Calamity Mine](ref:walibi-belgium/calamity-mine)**
@@ -189,8 +188,8 @@ Familienbereich.
 
 Von den beiden Neuheiten hier ist Mecalodon die, die mich mehr überrascht hat.
 Ein Familiencoaster hat es schwer, neben einer 50-Meter-Bahn überhaupt
-wahrgenommen zu werden, und Dock World schafft es trotzdem: Der Hafen wirkt
-gebaut, nicht hingestellt, mit Details, an denen man auch ohne Fahrgeschäft
+wahrgenommen zu werden, und Dock World schafft es trotzdem. Der Hafen wirkt
+gebaut und nicht hingestellt, mit Details, an denen man auch ohne Fahrgeschäft
 lange stehen bleibt.
 
 Wer nach der Achterbahn-Runde noch Zeit hat: **Aqualibi**, das angeschlossene
@@ -228,9 +227,9 @@ Park zum ersten Mal einen anderen Namen trug.
 Walibi-Standorte. Seitdem gehören Wavre, Biddinghuizen und der
 [Parc Astérix](ref:parc-asterix) demselben Konzern.
 
-Das bislang härteste Jahr kam ohne Umbenennung: Am **15. Juli 2021** traf das
-Hochwasser, das weite Teile West- und Mitteleuropas verwüstete, auch das Tal
-der Dyle, an der der Park liegt. Die Schäden reichten für eine mehrmonatige
+Das bislang härteste Jahr kam dann ganz ohne Umbenennung. Am **15. Juli 2021**
+traf das Hochwasser, das weite Teile West- und Mitteleuropas verwüstete, auch
+das Tal der Dyle, an der der Park liegt. Die Schäden reichten für eine mehrmonatige
 Schließung mitten in der Hauptsaison, in dem Jahr, in dem Kondaa gerade zehn
 Wochen zuvor eröffnet hatte.
 
@@ -245,7 +244,7 @@ bei einem Umbau dieser Größe eher die Regel als die Ausnahme ist: **Kondaa**
 (2021) war die erste große Welt, **Dock World** mit Mecalodon (2025) die
 bislang letzte.
 
-Was mir daran auffällt, wenn ich mir andere europäische Ketten anschaue: Die
+Im Vergleich mit anderen europäischen Ketten fällt mir vor allem eines auf. Die
 **Compagnie des Alpes** zieht das hier tatsächlich durch, und nicht nur in
 Wavre. Im Schwesterpark [Walibi Holland](ref:walibi-holland) sind mit
 [Untamed](ref:walibi-holland/untamed) und der YOY-Doppelbahn im selben
@@ -254,11 +253,10 @@ leicht vorwerfen könnte, nur die bekanntesten Namen zu pflegen, steckt hier
 sichtbar Geld in genau die Standorte, die man eher übersieht. Ob 2026 oder
 2027 die nächste der acht Welten fertig wird, verrät der Park bislang nicht.
 
-Zum Vergleich: Ein börsennotierter Freizeitpark-Betreiber könnte diese acht
-Jahre auch anders verbringen, mit Kostensenkung statt Neubau, und würde damit
-kurzfristig bessere Zahlen schreiben. Dass hier stattdessen ein Park, der in
-Deutschland kaum jemand auf dem Zettel hat, seine zweite Achterbahn-Generation
-in Folge bekommt, ist für eine Kette dieser Größe keine Selbstverständlichkeit.
+Ein Konzern könnte diese acht Jahre auch anders verbringen, mit Kostensenkung
+statt Neubau, und hätte kurzfristig die besseren Zahlen. Hier bekommt
+stattdessen ein Park, den in Deutschland kaum jemand auf dem Zettel hat, binnen
+vier Jahren zwei neue Achterbahnen und ein komplett neues Areal.
 
 ## Ibilaw: Halloween rückwärts gelesen
 
@@ -287,9 +285,8 @@ deutschen Parks: Es gibt keinen ruhigen Januar, weil im Januar zu ist. Innerhalb
 der Saison entscheiden vor allem zwei Dinge, wie voll es wird: die belgischen
 und wallonischen Schulferien, die dieser Park stärker zu spüren bekommt als
 seine deutschen Nachbarn, und die Wochentage außerhalb der Sommerferien, an
-denen der Park ohnehin nicht täglich öffnet. Die ruhigsten der kommenden
-Öffnungstage zeigt der Kalender oben im Artikel live, tagesaktuell und ohne
-dass du selbst nachrechnen musst.
+denen der Park ohnehin nicht täglich öffnet. Welche der kommenden Öffnungstage
+die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell.
 
 ## Der perfekte Tag, kurz zusammengefasst
 
@@ -385,8 +382,9 @@ Wie voll es diese Woche tatsächlich ist, und wie das Wetter dafür aussieht:
 
 Der Park, der der ganzen Kette den Namen gegeben hat, steht seit fünfzig
 Jahren an der Dyle, zwischen Wavre, Limal und Bierges, und die meiste Zeit
-davon im Schatten seines niederländischen Namensvetters. Seit Mai 2021 hat er
-etwas, das der andere nicht hat.
+davon im Schatten seines niederländischen Namensvetters. Wer hinfährt, sollte
+Kondaa zweimal fahren: vorne, wo du den Drop kommen siehst, und in der letzten
+Reihe, wo er dich schon erwischt, bevor der Zug überhaupt ganz oben ist.
 
 — Patrick
 
