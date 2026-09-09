@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useCallback, useState, useMemo, useEffect, useSyncExternalStore } from 'react';
 import { useRouter, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import {
@@ -14,7 +14,7 @@ import {
   getDay,
 } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import { Info } from 'lucide-react';
+import { Info, Scale } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
@@ -23,6 +23,9 @@ import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
+import { FilterToggle } from '@/components/parks/filter-toggle';
+import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
+import { ParkCalendarComparison } from './park-calendar-comparison';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 
@@ -87,6 +90,37 @@ export function ParkCalendarGrid({
   // Selected day for the click-to-open detail panel (weather / forecast /
   // predictions). Touch-friendly replacement for the old hover-only tooltips.
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
+  /**
+   * The comparison's two picks, held OUTSIDE this component — see `day-comparison-store.ts`.
+   *
+   * They have to survive a change of month, and a change of month unmounts this grid: the month
+   * is a path segment, so October → November is a route navigation and not a `setState`. Comparing
+   * two days from two different months is the case the feature exists for, so the state cannot
+   * live here.
+   */
+  const selection = useSyncExternalStore(
+    dayComparisonStore.subscribe,
+    // Wrapped, because `useSyncExternalStore` calls the getter on every render and compares what
+    // comes back by identity: an inline arrow would be a new function each time, and the store
+    // itself returns one frozen `IDLE` for the miss so the comparison stays cheap.
+    useCallback(() => dayComparisonStore.getSnapshot(parkSlug), [parkSlug]),
+    dayComparisonStore.getServerSnapshot
+  );
+  const comparing = selection.active;
+  const pickedDates = useMemo(() => selection.days.map((d) => d.date), [selection.days]);
+
+  /**
+   * Which comparison the reader has already closed, as the pair that produced it.
+   *
+   * The dialog opens on the SECOND pick, which means "two days are selected" cannot also be what
+   * keeps it open — closing it would leave the condition true and the dialog would come straight
+   * back. Keyed by the pair rather than a bare boolean so that changing one of the two days opens
+   * the new comparison, which is the one thing a plain "dismissed" flag would get wrong.
+   */
+  const [dismissedPair, setDismissedPair] = useState<string | null>(null);
+  const pairKey = pickedDates.join('|');
+  const comparisonOpen = selection.days.length === 2 && dismissedPair !== pairKey;
 
   // The calendar has two structurally different layouts (a reversed 2-col list on mobile, a 7-col
   // week grid on desktop). They used to BOTH live in the DOM toggled by `lg:hidden` / `hidden
@@ -253,6 +287,29 @@ export function ParkCalendarGrid({
   }, [calendarData]);
 
   /**
+   * One handler for a press on a day tile, whichever of the two things it means.
+   *
+   * The tile is `memo`-ised and takes ONE `onSelect(date)`, so what a press does is decided here
+   * rather than by handing every cell its own closure — which is what the memo exists to avoid.
+   * In comparison mode it picks; otherwise it opens the detail dialog, exactly as before.
+   *
+   * The whole `CalendarDay` goes into the store, not just the date: once the reader steps to the
+   * next month, `calendarMap` no longer holds this day and the comparison would have nothing to
+   * read. See the store's own note.
+   */
+  const handleDayPress = useCallback(
+    (date: string) => {
+      if (!comparing) {
+        setSelectedDate(date);
+        return;
+      }
+      const day = calendarMap.get(date);
+      if (day) dayComparisonStore.toggle(parkSlug, day);
+    },
+    [comparing, calendarMap, parkSlug]
+  );
+
+  /**
    * How far below the month's median a day must rank before it is worth a star, in units of
    * `rankOf` — where 1.0 is one crowd bucket and the fractional part is the headliner wait scaled
    * over two hours.
@@ -327,6 +384,56 @@ export function ParkCalendarGrid({
        puts the server-rendered stepper in it, and drops this grid in underneath. */
     <>
       <div className="space-y-4">
+        {/* The comparison switch, above the grid and not inside it: it changes what a press on
+            every tile MEANS, and a control that does that belongs where the tiles start rather
+            than beside one of them. `FilterToggle` because it is the park page's established
+            two-state pill (`aria-pressed`, keyboard-reachable as a plain button) — a checkbox
+            would be a new control class for a switch, and this repo has no checkbox at all. */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <FilterToggle
+            icon={Scale}
+            label={t('dayComparison.compare')}
+            pressed={comparing}
+            size="md"
+            onToggle={() => {
+              dayComparisonStore.setActive(parkSlug, !comparing);
+              setDismissedPair(null);
+            }}
+          />
+          {comparing && (
+            <p className="text-muted-foreground text-xs">
+              {selection.days.length === 0
+                ? t('dayComparison.hintNone')
+                : selection.days.length === 1
+                  ? t('dayComparison.hintOne')
+                  : t('dayComparison.hintTwo')}
+            </p>
+          )}
+          {comparing && selection.days.length > 0 && (
+            <div className="ml-auto flex shrink-0 items-center gap-3">
+              {selection.days.length === 2 && !comparisonOpen && (
+                <button
+                  type="button"
+                  onClick={() => setDismissedPair(null)}
+                  className="text-primary text-xs font-medium hover:underline"
+                >
+                  {t('dayComparison.reopen')}
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  dayComparisonStore.clearDays(parkSlug);
+                  setDismissedPair(null);
+                }}
+                className="text-muted-foreground hover:text-foreground text-xs"
+              >
+                {t('dayComparison.reset')}
+              </button>
+            </div>
+          )}
+        </div>
+
         {/* Error Message */}
         {error && (
           <div className="rounded-lg border border-red-500 bg-red-50 p-3 dark:bg-red-950/20">
@@ -387,7 +494,9 @@ export function ParkCalendarGrid({
                         parkTimezone={parkTimezone}
                         isToday={isToday}
                         isBest={bestDayDates.has(dateStr)}
-                        onSelect={setSelectedDate}
+                        onSelect={handleDayPress}
+                        selectable={comparing}
+                        selectionIndex={selectionIndexOf(pickedDates, dateStr)}
                       />
                     );
                   })}
@@ -419,7 +528,9 @@ export function ParkCalendarGrid({
                             parkTimezone={parkTimezone}
                             isToday={isToday}
                             isBest={bestDayDates.has(dateStr)}
-                            onSelect={setSelectedDate}
+                            onSelect={handleDayPress}
+                            selectable={comparing}
+                            selectionIndex={selectionIndexOf(pickedDates, dateStr)}
                           />
                         );
                       })}
@@ -444,6 +555,32 @@ export function ParkCalendarGrid({
         onNavigate={handleDayNavigate}
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
       />
+
+      {/* Opens on the SECOND pick and closes to the grid with both days still lit, so the reader
+          can swap one of them and see the new answer without starting over. */}
+      <ParkCalendarComparison
+        a={selection.days[0] ?? null}
+        b={selection.days[1] ?? null}
+        parkTimezone={parkTimezone}
+        todayIso={todayStr}
+        open={comparisonOpen}
+        onOpenChange={(next) => {
+          if (!next) setDismissedPair(pairKey);
+        }}
+        planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
+      />
     </>
   );
+}
+
+/**
+ * `1` or `2` where a date is one of the two picked, `null` otherwise.
+ *
+ * A function rather than a `Set`, because the ORDER is what the tile draws: the first pick is the
+ * comparison's left column, and two identical rings would leave the reader guessing which of two
+ * cells they clicked first.
+ */
+function selectionIndexOf(picked: readonly string[], date: string): 1 | 2 | null {
+  const index = picked.indexOf(date);
+  return index === 0 ? 1 : index === 1 ? 2 : null;
 }

@@ -1060,7 +1060,38 @@
         "varWeather": "Weersverwachting"
       }
     },
-    "planDayCta": "Een dag in {park} plannen"
+    "planDayCta": "Een dag in {park} plannen",
+    "dayComparison": {
+      "compare": "Twee dagen vergelijken",
+      "hintNone": "Kies twee dagen uit de kalender — ook uit verschillende maanden.",
+      "hintOne": "Kies nog één dag.",
+      "hintTwo": "Twee dagen gekozen.",
+      "reopen": "Vergelijking openen",
+      "reset": "Selectie wissen",
+      "pickDay": "kiezen om te vergelijken",
+      "title": "Twee dagen vergeleken",
+      "resultClear": "{day} is duidelijk de betere dag.",
+      "resultSlight": "{day} ligt nipt voor.",
+      "resultTie": "Tussen deze twee dagen zit nauwelijks verschil.",
+      "better": "Betere dag",
+      "bothDays": "Beide dagen",
+      "noReasons": "Voor deze twee dagen zijn er geen vergelijkbare cijfers.",
+      "difference": "Verschil: {value}",
+      "reasonCrowd": "Drukte",
+      "reasonWait": "Wachttijd bij de topattracties",
+      "reasonHours": "Openingsduur",
+      "reasonWeather": "Neerslag",
+      "reasonHoliday": "Feestdagen en vakanties",
+      "reasonPrice": "Dagticket",
+      "unitMm": "{value} mm",
+      "unitFlags": "{value, plural, =0 {geen} one {# kenmerk} other {# kenmerken}}",
+      "unitSteps": "{value, plural, one {# niveau} other {# niveaus}}",
+      "unitHours": "{hours} uur",
+      "unitHoursMinutes": "{hours} uur {minutes} min",
+      "blockerClosed": "Het park is op deze dag gesloten.",
+      "blockerPast": "Deze dag ligt in het verleden.",
+      "blockerNoForecast": "Voor deze dag is er nog geen voorspelling."
+    }
   },
   "attractions": {
     "blogPosts": {
@@ -2333,6 +2364,7 @@
     },
     "plans": {
       "title": "Mijn plannen"
-    }
+    },
+    "planDayInWizard": "Dag plannen"
   }
 }

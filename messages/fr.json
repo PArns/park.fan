@@ -1060,7 +1060,38 @@
         "varWeather": "Prévisions météo"
       }
     },
-    "planDayCta": "Planifier une journée à {park}"
+    "planDayCta": "Planifier une journée à {park}",
+    "dayComparison": {
+      "compare": "Comparer deux jours",
+      "hintNone": "Choisissez deux jours dans le calendrier, même dans des mois différents.",
+      "hintOne": "Choisissez encore un jour.",
+      "hintTwo": "Deux jours sélectionnés.",
+      "reopen": "Ouvrir la comparaison",
+      "reset": "Effacer la sélection",
+      "pickDay": "sélectionner pour comparer",
+      "title": "Deux jours comparés",
+      "resultClear": "{day} est nettement le meilleur jour.",
+      "resultSlight": "{day} devance légèrement.",
+      "resultTie": "Ces deux jours se valent.",
+      "better": "Meilleur jour",
+      "bothDays": "Les deux jours",
+      "noReasons": "Aucune valeur comparable n'est disponible pour ces deux jours.",
+      "difference": "Écart : {value}",
+      "reasonCrowd": "Affluence",
+      "reasonWait": "Attente aux attractions phares",
+      "reasonHours": "Durée d'ouverture",
+      "reasonWeather": "Précipitations",
+      "reasonHoliday": "Jours fériés et vacances",
+      "reasonPrice": "Billet à la journée",
+      "unitMm": "{value} mm",
+      "unitFlags": "{value, plural, =0 {aucun} one {# critère} other {# critères}}",
+      "unitSteps": "{value, plural, one {# niveau} other {# niveaux}}",
+      "unitHours": "{hours} h",
+      "unitHoursMinutes": "{hours} h {minutes} min",
+      "blockerClosed": "Le parc est fermé ce jour-là.",
+      "blockerPast": "Ce jour est déjà passé.",
+      "blockerNoForecast": "Aucune prévision n'est encore disponible pour ce jour."
+    }
   },
   "attractions": {
     "blogPosts": {
@@ -2333,6 +2364,7 @@
     },
     "plans": {
       "title": "Mes plans"
-    }
+    },
+    "planDayInWizard": "Planifier ce jour"
   }
 }

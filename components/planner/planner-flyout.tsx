@@ -33,6 +33,7 @@ import {
 import { plannerPagePark } from '@/lib/planner/page-park';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { plannerPageDay } from '@/lib/planner/page-day';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -177,6 +178,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const [wizardOpen, setWizardOpen] = useState(false);
   /** A park to open it on, so the first step can be skipped. */
   const [wizardPark, setWizardPark] = useState<WizardPark | null>(null);
+  /**
+   * A day to open it on, so the second step can be skipped too.
+   *
+   * Only ever set by {@link startPageDay}, and cleared everywhere `wizardPark`
+   * is: a date left behind would seed the NEXT wizard — the one opened from
+   * „Tag hier planen", which means "some day, you pick" — with a date chosen
+   * on a page the reader has since left.
+   */
+  const [wizardDate, setWizardDate] = useState<string | null>(null);
 
   const {
     data: day,
@@ -288,8 +298,51 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const startPagePark = useCallback(() => {
     if (!unplannedPagePark) return;
     setWizardPark({ ...unplannedPagePark });
+    setWizardDate(null);
     setWizardOpen(true);
   }, [unplannedPagePark]);
+
+  /**
+   * Starts the wizard on „Wer kommt mit" — park and day both already answered.
+   *
+   * It reads `pagePark` rather than `unplannedPagePark`, and that difference is
+   * the whole reason it is a second function instead of an argument to the one
+   * above. `unplannedPagePark` asks "is there anything left to plan HERE", and
+   * goes `null` the moment this park has any day open in the panel — which is
+   * right for a button that offers the park in general and wrong for one that
+   * names a date: „plane den 20." is a different question from „plane hier",
+   * and a second day at a park that already has one is exactly what somebody
+   * comparing two dates is about to ask for.
+   *
+   * `plannerPageDay.take` clears as it reads and refuses a date filed under
+   * another park, so a stale hand-off degrades to the old behaviour rather
+   * than to the wrong day.
+   */
+  const startPageDay = useCallback(() => {
+    if (!pagePark) return false;
+    const date = plannerPageDay.take(pagePark.slug);
+    if (!date) return false;
+    setWizardPark({ ...pagePark });
+    setWizardDate(date);
+    setWizardOpen(true);
+    return true;
+  }, [pagePark]);
+
+  /**
+   * The whole answer to a wizard request, as ONE callback.
+   *
+   * The choice between the two starts lives here rather than in the effect below, and that is not
+   * a style preference: `react-hooks/set-state-in-effect` refuses an effect body that branches
+   * into a `setState`, and the effect has to stay what it has always been — a comparison against
+   * the last counter seen, then one call. Putting the branch in a callback keeps the rule
+   * satisfied and keeps the two starts readable side by side.
+   */
+  const startFromRequest = useCallback(() => {
+    // A request that left a day behind is answered by that day; anything else is the park-header
+    // press this path was written for.
+    if (startPageDay()) return;
+    startPagePark();
+  }, [startPageDay, startPagePark]);
 
   /**
    * Take the page behind the panel to a park's own page.
@@ -411,8 +464,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   useEffect(() => {
     if (wizardRequests === lastWizardRequest.current) return;
     lastWizardRequest.current = wizardRequests;
-    startPagePark();
-  }, [wizardRequests, startPagePark]);
+    startFromRequest();
+  }, [wizardRequests, startFromRequest]);
 
   /**
    * A block the visitor writes themselves — a lunch break, a show, a meeting
@@ -688,6 +741,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   type="button"
                   onClick={() => {
                     setWizardPark(pagePark ? { ...pagePark } : null);
+                    setWizardDate(null);
                     setWizardOpen(true);
                   }}
                   aria-label={t('wizard.open')}
@@ -839,12 +893,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 onPickDate={(date) => setActive(activeParkSlug, date)}
                 onNewPark={() => {
                   setWizardPark(pagePark ? { ...pagePark } : null);
+                  setWizardDate(null);
                   setWizardOpen(true);
                 }}
                 unplannedPagePark={unplannedPagePark}
                 onStartPagePark={startPagePark}
                 onOpenWizard={() => {
                   setWizardPark(null);
+                  setWizardDate(null);
                   setWizardOpen(true);
                 }}
               />
@@ -879,6 +935,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onPickDate={(date) => plannerSecondColumn.setDate(date)}
                   onNewPark={() => {
                     setWizardPark(null);
+                    setWizardDate(null);
                     setWizardOpen(true);
                   }}
                   onClose={() => plannerSecondColumn.close()}
@@ -990,11 +1047,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             // standing, and asking it again is the panel pretending not to know
             // what page it is on.
             initialPark={wizardPark}
+            initialDate={wizardDate}
             onOpenChange={(next) => {
               setWizardOpen(next);
               if (!next) {
                 setShowOverview(false);
                 setWizardPark(null);
+                setWizardDate(null);
               }
             }}
           />

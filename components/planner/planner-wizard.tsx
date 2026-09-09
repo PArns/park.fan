@@ -88,6 +88,19 @@ interface PlannerWizardProps {
    * park" passes, from the panel's own overview.
    */
   initialPark?: WizardPark | null;
+  /**
+   * A day to start on, which skips the second step as well.
+   *
+   * Only meaningful together with {@link initialPark} — a date without a park
+   * is a day at nowhere, and the step list below ignores it in that case
+   * rather than opening on a „Wer kommt mit" for a park nobody has named.
+   *
+   * What passes it is the calendar's day comparison: somebody who has just put
+   * two dates side by side and pressed „Diesen Tag planen" has answered both
+   * of the first two questions, and the wizard opening on the date step would
+   * be asking one of them for the second time.
+   */
+  initialDate?: string | null;
 }
 
 type Step = 'park' | 'date' | 'setup' | 'headliners';
@@ -169,18 +182,25 @@ const ENTER_BELONGS_TO =
  * it said the subject was a day out at a named park, though the search payload
  * had been carrying that park's own photograph the whole time.
  */
-export function PlannerWizard({ open, onOpenChange, initialPark = null }: PlannerWizardProps) {
+export function PlannerWizard({
+  open,
+  onOpenChange,
+  initialPark = null,
+  initialDate = null,
+}: PlannerWizardProps) {
+  /** A date only counts where a park came with it — see `initialDate`. */
+  const seededDate = initialPark ? initialDate : null;
   const t = useTranslations('planner');
   const locale = useLocale();
   const router = useRouter();
   const { state, openDay, setDayPrefs, addCustom, applyPlan } = usePlanner();
 
   const [park, setPark] = useState<WizardPark | null>(initialPark);
-  const [step, setStep] = useState<Step>(initialPark ? 'date' : 'park');
+  const [step, setStep] = useState<Step>(seededDate ? 'setup' : initialPark ? 'date' : 'park');
   // Which way the last move went, which is all the step transition needs to
   // know — see `STEP_MOTION`.
   const [forward, setForward] = useState(true);
-  const [date, setDate] = useState<string | null>(null);
+  const [date, setDate] = useState<string | null>(seededDate);
   const [prefs, setPrefs] = useState<PlannerDayPrefs>({});
   const [lunch, setLunch] = useState(false);
   const [planHeadliners, setPlanHeadliners] = useState(false);
@@ -360,9 +380,18 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
 
   const plannedSlugs = new Set(Object.keys(state.parks));
 
-  const steps: Step[] = initialPark
-    ? ['date', 'setup', 'headliners']
-    : ['park', 'date', 'setup', 'headliners'];
+  /**
+   * Which questions are left, which is the same list the rail draws and the
+   * footer walks. A step that is not in here cannot be reached forwards OR
+   * backwards — which is what keeps „Zurück" on a seeded day from landing on
+   * an empty date step: on `['setup','headliners']` the first step's index is
+   * 0, and the back button is already disabled there.
+   */
+  const steps: Step[] = seededDate
+    ? ['setup', 'headliners']
+    : initialPark
+      ? ['date', 'setup', 'headliners']
+      : ['park', 'date', 'setup', 'headliners'];
   const index = steps.indexOf(step);
 
   const goTo = (next: Step) => {
