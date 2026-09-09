@@ -285,12 +285,21 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
 // worse than no check.
 {
   const source = readFileSync('components/planner/planner-optimize-actions.tsx', 'utf8');
+  // Scoped to the JSX, which is where the undo button lives. The file has a
+  // SECOND `restoreDay` now — the fit assistant's apply writes the day the
+  // choice leaves before the plan is laid over it — and that one is right to
+  // use the props: it is writing the day currently on screen, in the same
+  // gesture the visitor is looking at. It sits above the return; the undo, the
+  // one that fires later and can outlive the day it was taken for, does not.
+  const jsx = source.slice(source.indexOf('\n  return ('));
   check(
     'das Rückgängig schreibt in den Tag, aus dem der Schnappschuss stammt',
     /restoreDay\(\s*shownUndo\.parkSlug,\s*shownUndo\.date,\s*shownUndo\.entries\s*\)/.test(
       source
-    ) && !/restoreDay\(\s*parkSlug\s*,\s*date\s*,/.test(source),
-    (source.match(/restoreDay\([^)]*\)/) ?? ['keiner'])[0]
+    ) &&
+      jsx.length > 0 &&
+      !/restoreDay\(\s*parkSlug\s*,\s*date\s*,/.test(jsx),
+    (jsx.match(/restoreDay\([^)]*\)/) ?? ['keiner'])[0]
   );
   // A press that returns no plan has nothing to take back — and clearing the
   // snapshot there took away the way back from the press BEFORE it: plan the
@@ -300,6 +309,34 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     'ein Druck ohne Plan fasst den Schnappschuss nicht an',
     noPlan.length > 0 && !/setUndoTo\(/.test(noPlan),
     noPlan.slice(0, 120).replace(/\s+/g, ' ')
+  );
+}
+
+// ── The wizard's fit block may not vanish while somebody is using it ─────────
+//
+// Reported: start unticking rides on the last step and the whole thing — levers,
+// list, marks — disappears. It hung on `headlinerConflict`, so the ride that
+// fixed the day also removed the screen that had just been used to fix it, with
+// no way back to it. Read off the source rather than driven, for the same reason
+// the undo check above is: reproducing it needs a park whose forecast happens to
+// be tight on the day the run happens, and a check that silently passes because
+// the day was quiet would be worse than no check.
+{
+  const source = readFileSync('components/planner/planner-wizard.tsx', 'utf8');
+  const gate = source.match(/\{planHeadliners && [^\n]*&&[^\n]*\(\n/);
+  check(
+    'der Fit-Block des Assistenten hängt nicht allein am Konflikt',
+    Boolean(gate) && /fitChoiceTouched/.test(gate[0]),
+    (gate?.[0] ?? 'keine Bedingung gefunden').trim()
+  );
+  // And when it resolves it says so, in the affirmative, rather than leaving a
+  // list whose marks have quietly gone out.
+  const resolved = /wizard\.headliners\.resolved/.test(source);
+  const green = /border-status-operating\/30 bg-status-operating\/10/.test(source);
+  check(
+    'und er hat einen grünen Zustand für den gelösten Tag',
+    resolved && green,
+    `Satz ${resolved ? 'da' : 'fehlt'}, Grün ${green ? 'da' : 'fehlt'}`
   );
 }
 
@@ -645,12 +682,14 @@ if (await reopen.count()) {
     await wizard.waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
     check('der Assistent öffnet', await wizard.isVisible());
 
-    // The rail is the step counter, and it must show three marks and no footer
+    // The rail is the step counter, and it must show four marks and no footer
     // on the first step: picking a park IS the advance there, so a `Weiter`
-    // button beside it is a control nobody ever presses.
+    // button beside it is a control nobody ever presses. Four since the big
+    // rides moved off the party step onto one of their own — where they all
+    // fit it is a toggle, and where they do not it is the fit assistant.
     check(
-      'der Assistent zeigt drei Schritte',
-      (await wizard.locator('ol[aria-label] li').count()) === 3,
+      'der Assistent zeigt vier Schritte',
+      (await wizard.locator('ol[aria-label] li').count()) === 4,
       `${await wizard.locator('ol[aria-label] li').count()}`
     );
     check(
@@ -743,6 +782,19 @@ if (await reopen.count()) {
           // Query's cache into the wizard's own state, and the finish reads that
           // state rather than the network.
           await page.waitForTimeout(300);
+          // On to the last step. Written as "press Weiter until it is gone"
+          // rather than as a count, so a step added or removed in front of the
+          // finish does not turn this block into a check that asserts a dialog
+          // is open.
+          for (let guard = 0; guard < 3; guard++) {
+            if ((await wizard.locator('[data-planner-wizard-next]').count()) === 0) break;
+            await wizard.locator('[data-planner-wizard-next]').click();
+            await page.waitForTimeout(400);
+          }
+          check(
+            'der letzte Schritt fragt nach den großen Bahnen',
+            (await wizard.locator('[data-planner-wizard-finish]').count()) === 1
+          );
           await wizard.locator('[data-planner-wizard-finish]').click();
           // Waited FOR rather than slept through: the wizard ends on the park's
           // own page, and under `next dev` that route is compiled on first
@@ -4461,10 +4513,13 @@ if (reachable) {
   )
     .then((response) => (response.ok ? response.json() : null))
     .catch(() => null);
-  // `buildDayGrid`'s own arithmetic: `closeHour` is INCLUSIVE, so the axis ends
-  // an hour past it. Everything from here on is the hatched part of the day.
+  // `buildDayGrid`'s own arithmetic: `closeHour` is the hour the closing time
+  // FALLS IN, so this IS the gate. It used to read `+ 1` on the opposite
+  // reading, which is what handed the optimiser an hour of park that does not
+  // exist — and what let this very assertion pass over a plan that queued
+  // Winja's Fear at 18:15 on a day ending at 18:00.
   const closeMinute =
-    typeof context?.context?.closeHour === 'number' ? (context.context.closeHour + 1) * 60 : null;
+    typeof context?.context?.closeHour === 'number' ? context.context.closeHour * 60 : null;
   check('die Öffnungszeiten des Parks sind bekannt', closeMinute !== null, `${closeMinute}`);
 
   /** Every ride block's start, as the store holds it. The lunch break is not one. */
@@ -4478,8 +4533,56 @@ if (reachable) {
   // past the gate.
   await seedOptimize();
   const rideCountBefore = (await readDay()).split(' | ').length;
-  await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
-  await opt.waitForTimeout(2000);
+
+  /**
+   * Press the crown, and walk the assistant if one opens.
+   *
+   * Ten headliners do not fit in Phantasialand's nine hours, so which of them
+   * is given up is a decision — and the app asks rather than making it. Nothing
+   * is unticked here: the point of the default is that pressing on unchanged is
+   * the engine's own answer, and that is the path this whole block measures.
+   *
+   * The walk is `Weiter` until the last step and then `Plan übernehmen`, which
+   * is also what checks the rail: a step that failed to advance leaves the
+   * apply button missing and every assertion after this one fails loudly rather
+   * than passing over an unwritten day.
+   */
+  const pressHeadliners = async () => {
+    await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
+    await opt.waitForTimeout(900);
+    const asked = await opt.locator('[data-planner-fit-count]').count();
+    if (asked) {
+      for (let guard = 0; guard < 4; guard++) {
+        if ((await opt.locator('[data-planner-fit-next]').count()) === 0) break;
+        await opt.locator('[data-planner-fit-next]').click();
+        await opt.waitForTimeout(400);
+      }
+      await opt.locator('[data-planner-fit-apply]').click();
+      await opt.waitForTimeout(1200);
+    }
+    await opt.waitForTimeout(1200);
+    return asked > 0;
+  };
+
+  const askedFirst = await pressHeadliners();
+  /**
+   * Whether a headliner is STILL missing after the press, which is the same
+   * question the assistant exists to answer, read off the button rather than
+   * off the calendar.
+   *
+   * The check used to be the bare `askedFirst`, and it was a check about the
+   * weather: Phantasialand holds all ten headliners on a quiet Tuesday and nine
+   * on a busy Saturday, so a run made the day before a `very_low` Tuesday
+   * demanded a dialog for a day with nothing to decide. What is actually
+   * asserted is the EQUIVALENCE — the assistant opens exactly when something is
+   * going to be left out — and that holds on both kinds of day.
+   */
+  const stillOffered = await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count();
+  check(
+    'der Assistent öffnet genau dann, wenn nicht alles passt',
+    askedFirst === Boolean(stillOffered),
+    `Dialog: ${askedFirst}, Knopf bleibt: ${Boolean(stillOffered)}`
+  );
   const withHeadliners = await readDay();
   check(
     'alle Headliner einplanen füllt den Tag',
@@ -4513,10 +4616,8 @@ if (reachable) {
   // goes in. What must be true either way is that nothing the day had room for
   // is still missing, and the press that proves it is the second one: it adds
   // nothing, because there is nothing left it can add.
-  const stillOffered = await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count();
   if (stillOffered) {
-    await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
-    await opt.waitForTimeout(1500);
+    await pressHeadliners();
   }
   const twiceHeadliners = await readDay();
   check(
@@ -4526,12 +4627,22 @@ if (reachable) {
   );
   // And it says so rather than claiming the day is finished: "Passt schon so" is
   // the answer to "there was nothing to do", and a headliner that cannot fit is
-  // not nothing.
+  // not nothing. The assistant's own wording after an apply, since that is the
+  // path a tight day takes.
   const leftOver =
     (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
   check(
     'und die Leiste nennt die, für die kein Platz ist',
-    !stillOffered || /nicht mehr in den Tag/i.test(leftOver),
+    !stillOffered || /bleib(t|en) draußen|nicht mehr in den Tag/i.test(leftOver),
+    leftOver.slice(0, 80)
+  );
+  // Drawn as a warning rather than as a grey clause, which is the report this
+  // assistant came out of: the information was there and read as decoration.
+  check(
+    'und zwar sichtbar, mit einem Weg zurück in den Assistenten',
+    !stillOffered ||
+      ((await opt.locator(`${SHEET} [data-planner-optimize-alert]`).count()) === 1 &&
+        (await opt.locator(`${SHEET} [data-planner-optimize-adjust]`).count()) === 1),
     leftOver.slice(0, 80)
   );
   check(
@@ -4553,6 +4664,208 @@ if (reachable) {
     (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1,
     (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? ''
   );
+  // ── The fit assistant, on a day that cannot possibly hold what is in it ────
+  //
+  // The block above only meets the assistant when the DATE happens to be busy:
+  // Phantasialand holds all ten headliners on a quiet Tuesday and nine on a
+  // busy Saturday, so a check that waits for a conflict is a check about the
+  // weather. This one makes the conflict — every headliner the payload names,
+  // plus a five-hour block through the middle of a nine-hour day, which no
+  // ordering can absorb — and then walks the three steps the way a visitor
+  // does: pull the lever, take a ride out, apply.
+  const heads = (context?.rides ?? []).filter((r) => r.isHeadliner);
+  check('der Tagesplan nennt Headliner zum Aussäen', heads.length >= 6, `${heads.length}`);
+  if (heads.length >= 6 && closeMinute !== null) {
+    await opt.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await opt.evaluate(
+      ([plan, date, rides, openHour]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              ...rides.map((ride, index) => ({
+                id: `seed-${index}`,
+                attractionSlug: ride.slug,
+                attractionName: ride.name,
+                startMinute: openHour * 60 + index * 30,
+              })),
+              {
+                id: 'lange-pause',
+                startMinute: 11 * 60,
+                custom: { label: 'Lange Pause', durationMinutes: 300, icon: 'break' },
+              },
+            ].sort((a, b) => a.startMinute - b.startMinute),
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        window.localStorage.setItem('parkfan_planner_width', '520');
+      },
+      [
+        PLAN,
+        DATE,
+        heads.map((ride) => ({ slug: ride.attractionSlug, name: ride.attractionName })),
+        context.context.openHour,
+      ]
+    );
+    await opt.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await opt.locator(LAUNCHER).click();
+    await opt.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await opt.waitForTimeout(3000);
+
+    await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+    await opt.waitForTimeout(1200);
+
+    const count = opt.locator('[data-planner-fit-count]');
+    check(
+      'ein Tag, der nicht aufgeht, öffnet den Assistenten statt still zu planen',
+      (await count.count()) === 1
+    );
+
+    if ((await count.count()) === 1) {
+      const opening = (await count.textContent()) ?? '';
+      check(
+        'und der Kopf sagt sofort, wie viel Platz da ist',
+        /\d+\s*(von|of|van|sur|de|su)\s*\d+/i.test(opening),
+        opening.trim()
+      );
+
+      // Step one: the measured levers. The five-hour block is the only thing in
+      // the day that can give, so one of them has to name it.
+      const lever = opt.locator('[data-planner-fit-lever]').first();
+      check('der erste Schritt bietet eine Stellschraube an', (await lever.count()) === 1);
+      const leverText = (await lever.textContent()) ?? '';
+      check(
+        'und sie nennt den Block, um den es geht',
+        /Lange Pause/.test(leverText),
+        leverText.trim().slice(0, 80)
+      );
+      // What it BUYS, under the label, and in one of the two shapes the model
+      // can produce: a count, or the sentence that the whole list fits. Never a
+      // piece of advice — every row here is a difference between two plans.
+      check(
+        'mit dem, was sie bringt, als Ergebnis statt als Rat',
+        /passt der ganze Plan|\d+\s*von\s*\d+/.test(leverText.replace(/Lange Pause/g, '')),
+        leverText.trim().slice(0, 80)
+      );
+
+      await lever.click();
+      await opt.waitForTimeout(900);
+      const pulled = (await count.textContent()) ?? '';
+      check(
+        'sie ziehen ändert die Zahl im Kopf',
+        pulled.trim() !== opening.trim(),
+        `${opening.trim()} → ${pulled.trim()}`
+      );
+
+      // Step two: the list, in the order things are given up in. Take the last
+      // one out by hand — that is the whole point of the screen.
+      await opt.locator('[data-planner-fit-next]').click();
+      await opt.waitForTimeout(600);
+      const rows = opt.locator('[data-planner-fit-row]');
+      const rowCount = await rows.count();
+      check('der zweite Schritt listet jede Bahn', rowCount === heads.length, `${rowCount}`);
+      // The row's own key, mapped back through the seed. A wish that stands for
+      // an entry is keyed `e:<entry id>` and `readDay` prints SLUGS, so
+      // asserting the key against that string would be an assertion that passes
+      // whatever happens.
+      const droppedKey = (await rows.last().getAttribute('data-planner-fit-row')) ?? '';
+      const seedIndex = Number(droppedKey.replace(/^e:seed-/, ''));
+      const droppedSlug = Number.isInteger(seedIndex) ? heads[seedIndex]?.attractionSlug : null;
+      await rows.last().locator('input[type="checkbox"]').click();
+      await opt.waitForTimeout(900);
+
+      /**
+       * Unticking your way out of the problem, which is the gesture that was
+       * reported broken: the list went quiet and, in the wizard, disappeared
+       * altogether under the finger that had just pressed a checkbox.
+       *
+       * Two things have to hold at the end of it. The list is still ALL of the
+       * rides, unticked ones included, because taking one out is a decision
+       * somebody may want back. And the band at the top has to SAY the problem
+       * is gone — the "fällt weg" marks vanishing is the same picture as a
+       * screen that stopped working.
+       */
+      for (let guard = 0; guard < heads.length; guard++) {
+        if (await opt.locator('[data-planner-fit-solved]').count()) break;
+        const marked = opt.locator('[data-planner-fit-row]:has([data-planner-fit-drops])');
+        if ((await marked.count()) === 0) break;
+        await marked.last().locator('input[type="checkbox"]').click();
+        await opt.waitForTimeout(700);
+      }
+      check(
+        'genug abwählen macht die Meldung grün statt sie verschwinden zu lassen',
+        (await opt.locator('[data-planner-fit-solved]').count()) === 1,
+        (await opt.locator('[data-planner-fit-count]').textContent()) ?? ''
+      );
+      check(
+        'und die Liste steht danach vollständig da',
+        (await opt.locator('[data-planner-fit-row]').count()) === heads.length,
+        `${await opt.locator('[data-planner-fit-row]').count()} von ${heads.length}`
+      );
+
+      await opt.locator('[data-planner-fit-next]').click();
+      await opt.waitForTimeout(600);
+      check(
+        'der dritte Schritt schließt mit dem Übernehmen ab',
+        (await opt.locator('[data-planner-fit-apply]').count()) === 1
+      );
+      await opt.locator('[data-planner-fit-apply]').click();
+      await opt.waitForTimeout(1500);
+
+      const applied = await readDay();
+      /**
+       * What the pulled lever did to the block, read as MINUTES rather than as
+       * its presence.
+       *
+       * Which lever comes first is a property of the day, not of the fixture:
+       * `fitLevers` puts a solving lever at the top, and on a busy forecast
+       * that is „ohne Lange Pause" while on a quieter one half an hour is
+       * already enough — so the block is gone on some days and 30 minutes long
+       * on others. Asserting it is absent was asserting tomorrow's crowd level.
+       * Both answers are the lever working; neither leaves the seeded five
+       * hours standing.
+       */
+      const blockMinutes = await opt.evaluate(
+        ([date]) => {
+          const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+          const day = plan.parks?.phantasialand?.days?.[date];
+          const block = (day?.entries ?? []).find((entry) => entry.custom?.label === 'Lange Pause');
+          return block ? block.custom.durationMinutes : null;
+        },
+        [DATE]
+      );
+      check(
+        'die gezogene Stellschraube greift den Block an',
+        blockMinutes === null || blockMinutes < 300,
+        `${blockMinutes === null ? 'gestrichen' : `${blockMinutes} Min.`} · ${applied}`
+      );
+      check(
+        'und die abgewählte Bahn ist nicht mehr drin',
+        Boolean(droppedSlug) && !applied.includes(`${droppedSlug}@`),
+        `${droppedKey} → ${droppedSlug} | ${applied}`
+      );
+      check(
+        'nichts liegt danach nach Parkschluss',
+        applied
+          .split(' | ')
+          .map((cell) => Number(cell.split('@')[1]))
+          .every((minute) => minute < closeMinute),
+        applied
+      );
+      check(
+        'und die Leiste sagt, was daraus geworden ist',
+        ((await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '').trim()
+          .length > 0
+      );
+    }
+  }
+
   // Nothing may be scheduled before the park lets anybody queue.
   const tooEarly = withHeadliners
     .split(' | ')

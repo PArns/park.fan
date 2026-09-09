@@ -1,0 +1,155 @@
+'use client';
+
+import { useLocale, useTranslations } from 'next-intl';
+import type { AttractionOutage } from '@/lib/api/types';
+import { formatSpanDuration } from '@/lib/utils/duration';
+import { outageElapsedMinutes } from '@/lib/utils/outage';
+
+/**
+ * "Störung gemeldet seit …" — the one sentence this site says about a ride that
+ * is down right now.
+ *
+ * It repeats in the present what the park's own feed is saying, which is what
+ * makes it the only downtime figure that needs no methodology page, no event
+ * floor and no exposure model. Everything historical is a claim about a company
+ * and waits for those.
+ *
+ * ## Why it names the weekday even when the outage started today
+ *
+ * Because the alternative is a text swap after hydration, and that is banned
+ * here. A shorter "seit 14:20 Uhr" form would have to be chosen by comparing the
+ * start against the park's current day, and "the park's current day" is not
+ * available identically on both sides of hydration: the shared clock
+ * (`useMinuteNow`) deliberately returns `null` during SSR and the hydration
+ * render so the markup matches, which means the short form could only appear
+ * after mount. The two strings are different widths in all six languages, they
+ * sit in a subgrid whose row heights are shared across a whole row of cards, and
+ * on a phone the longer one wraps. So the rule is now-independent: the weekday
+ * and the clock time both come from `startedAt` alone, and the sentence renders
+ * identically whenever it is rendered.
+ *
+ * Seven days is why a weekday is unambiguous — the query looks back no further,
+ * and anything older comes back with `startObserved: false`.
+ *
+ * ## The elapsed clause is measured, never counted
+ *
+ * „Seit Dienstag, 16:04" leaves the subtraction to the reader, and on a Thursday
+ * that is a sum nobody does standing in front of a ride. The duration beside it
+ * is the API's own `estimate.elapsedMinutes` and **not** `now - startedAt`:
+ * `queue_data` is a change log whose hourly heartbeat copies the previous row's
+ * status AND its `data_source` forward, so a carried DOWN is indistinguishable
+ * from an observed one, and wall minutes derived from it would be wrong upward
+ * exactly on the long outages — the ones anybody would quote.
+ *
+ * What the API sends instead is counted on the park's **operating** clock, which
+ * is why the clause names it („3:00 Std. bei offenem Park"): an outage that
+ * began at 18:00 in a park that shut at 20:00 is two hours old the next morning,
+ * not sixteen, and the recovery figures under it are conditioned on that same
+ * number. Both guards live in `outageElapsedMinutes` — no estimate means no
+ * opening clock to count on, and an unobserved start makes every duration a
+ * lower bound rather than a measurement.
+ *
+ * It is a measurement taken at the moment the payload was written, which is not
+ * the same as one taken now: `startedAt` is an instant and does not decay, this
+ * does. The park page's server render comes from a fetch cached for a day, so a
+ * first paint can carry a figure hours behind the clock — the same staleness
+ * the „gemeldet seit" line beside it has always had, and healed by the same
+ * first poll (`mergeLiveParkSnapshot` refreshes the whole `outage` key), or by
+ * the detail fetch on the ride page. It survives only for a reader with no
+ * JavaScript. What makes that tolerable is the direction: operating minutes are
+ * a subset of wall minutes, so a stale figure is always SHORT of the truth. The
+ * page can understate how long a ride has been broken; it cannot accuse an
+ * operator of a longer breakdown than was measured.
+ *
+ * ## Two signals, two sentences
+ *
+ * Where a park's feed emits DOWN, this says „Störung gemeldet seit …" and
+ * attributes the report. Where it never does — 102 of 182 scheduled parks,
+ * Phantasialand among them — the outage is inferred from a closure inside
+ * opening hours, and the sentence drops the attribution: „Steht seit … still."
+ * We noticed it; nobody told us.
+ *
+ * ## data-nosnippet
+ *
+ * On a `<span>`, which is one of the three elements Google honours it on. A
+ * result answering "Taron Wartezeit" with "Störung gemeldet seit Sonntag" is a
+ * result nobody clicks, and the sentence is true for as long as it is on the
+ * page and false the moment the ride restarts. Same reasoning as the
+ * no-wait-times notice.
+ */
+export function OutageNote({
+  outage,
+  timezone,
+  className,
+}: {
+  outage: AttractionOutage | undefined;
+  /** The park's IANA timezone. A start is stated in the park's own clock. */
+  timezone: string | undefined;
+  className?: string;
+}) {
+  const t = useTranslations('parks.outage');
+  const locale = useLocale();
+
+  if (!outage) return null;
+
+  const started = new Date(outage.startedAt);
+  if (Number.isNaN(started.getTime())) return null;
+
+  // The two signals get different sentences, and the difference is not
+  // cosmetic. A `down` was reported by the park's own feed; a `closed_gap` is
+  // our reading of a ride that shut inside opening hours and did not shut with
+  // the rest of the park. Nobody reported the second one, so it may not say
+  // „gemeldet" — see `AttractionOutage.signal`.
+  // Anything that is not exactly the reported signal is treated as inferred.
+  //
+  // The safe default has to be the WEAKER claim. `signal` is a compile-time
+  // union with no runtime validation on the fetch path, and these two repos
+  // deploy independently — so a third signal, or a version-skew window where
+  // the API ships a new value before this build does, would have fallen through
+  // to „Störung gemeldet seit …" and attributed a report to the operator's own
+  // feed. That is the one claim this whole two-signal discipline exists to
+  // prevent for anything nobody actually reported.
+  const inferred = outage.signal !== 'down';
+  const label = outage.startObserved
+    ? t(inferred ? 'sinceClosed' : 'since', {
+        when: formatStart(started, timezone, locale),
+      })
+    : t(inferred ? 'startUnknownClosed' : 'startUnknown');
+
+  const elapsed = outageElapsedMinutes(outage);
+
+  return (
+    <span className={className} data-nosnippet>
+      {label}
+      {elapsed !== null && (
+        <>
+          {' · '}
+          {t('elapsed', { duration: formatSpanDuration(elapsed, locale) })}
+        </>
+      )}
+    </span>
+  );
+}
+
+/**
+ * Weekday and clock time in the park's zone, in the reader's language.
+ *
+ * Falls back to the browser's zone rather than throwing: an unknown timezone
+ * costs the sentence its precision, not the card its render.
+ */
+function formatStart(started: Date, timezone: string | undefined, locale: string): string {
+  try {
+    return new Intl.DateTimeFormat(locale, {
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: timezone,
+    }).format(started);
+  } catch {
+    return new Intl.DateTimeFormat(locale, {
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).format(started);
+  }
+}

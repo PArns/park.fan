@@ -1,0 +1,14 @@
+{
+  "title": "Assistant, recherche du parc",
+  "tags": ["diagram"],
+  "alt": {
+    "fr": "Première étape de l’assistant : « Disneyland » saisi dans le champ de recherche, cinq parcs de cinq pays en dessous."
+  },
+  "caption": {
+    "fr": "Un nom, cinq parcs sur trois continents. Les chemins viennent de l’API, jamais des noms affichés."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}

@@ -11,6 +11,21 @@ export function stripNewPrefix(text: string): string {
 }
 
 /**
+ * Whether a string is shaped like a UUID — used to refuse an id before it
+ * reaches an endpoint that validates one with `@IsUUID()`.
+ *
+ * Some cards render with a slug standing in for the id: a blog post's
+ * attraction card falls back to `attraction.attractionSlug` when the ride's
+ * detail failed to resolve at build time (`lib/blog/attraction-payload.ts`),
+ * and a slug like "taron" reaching `POST /push/ride-alerts` would 400 rather
+ * than silently doing nothing — the id is fine for `FavoriteStar`'s purely
+ * local storage key, but not for a call that leaves this origin.
+ */
+export function isUuid(value: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+}
+
+/**
  * The German article a park name takes, curated first and guessed second.
  *
  * The curated value comes from the API as `nameArticleDe` and is set for every

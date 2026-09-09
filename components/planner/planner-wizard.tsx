@@ -1,10 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { ArrowRight, CalendarDays, Check, Clock, Droplets, Ruler, Utensils, X } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowRight,
+  CalendarDays,
+  Check,
+  Clock,
+  Crown,
+  Droplets,
+  Ruler,
+  Utensils,
+  X,
+} from 'lucide-react';
 import {
   Dialog,
   DialogClose,
@@ -24,12 +35,30 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { formatGridTime, todayInZone } from '@/lib/planner/park-time';
+import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM } from '@/lib/planner/party';
+import { buildDayGrid } from '@/lib/planner/day-grid';
+import { headlinersToAdd } from '@/lib/planner/optimize';
+import {
+  evaluateFit,
+  fitBlocks,
+  fitChoiceAll,
+  fitLeverView,
+  fitOrder,
+  fitWishes,
+  togglePin,
+  toggleLever,
+  toggleWish,
+  type FitChoice,
+  type FitInput,
+} from '@/lib/planner/fit';
 import type { CalendarDay, PlanDay } from '@/lib/api/types';
 import type { PlannerDayPrefs } from '@/lib/planner/types';
 import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
 import { PlannerMonthCalendar } from './planner-month-calendar';
+import { PlannerFitLevers } from './planner-fit-levers';
+import { PlannerFitList } from './planner-fit-list';
+import { PlannerStepRail } from './planner-step-rail';
 
 /**
  * A park as the wizard holds it.
@@ -61,7 +90,7 @@ interface PlannerWizardProps {
   initialPark?: WizardPark | null;
 }
 
-type Step = 'park' | 'date' | 'setup';
+type Step = 'park' | 'date' | 'setup' | 'headliners';
 
 /**
  * Park-local minutes the lunch block starts at.
@@ -75,6 +104,17 @@ type Step = 'park' | 'date' | 'setup';
  */
 const LUNCH_START_MINUTE = 12 * 60 + 30;
 const LUNCH_MINUTES = 60;
+
+/**
+ * The id the probe files its lunch block under.
+ *
+ * It never reaches the store — the block is created by `addCustom` at the end,
+ * with an id the store mints — but the fit step reads the block back out of
+ * `evaluateFit`'s answer to find out whether it survived, and by how much it
+ * was cut short. Named rather than repeated, because the two halves have to be
+ * the same string or the wizard files an hour the visitor gave up.
+ */
+const LUNCH_ENTRY_ID = 'wizard-lunch';
 
 /**
  * The elements an Enter already belongs to, as a selector.
@@ -133,7 +173,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const t = useTranslations('planner');
   const locale = useLocale();
   const router = useRouter();
-  const { state, openDay, setDayPrefs, addCustom } = usePlanner();
+  const { state, openDay, setDayPrefs, addCustom, applyPlan } = usePlanner();
 
   const [park, setPark] = useState<WizardPark | null>(initialPark);
   const [step, setStep] = useState<Step>(initialPark ? 'date' : 'park');
@@ -143,6 +183,16 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const [date, setDate] = useState<string | null>(null);
   const [prefs, setPrefs] = useState<PlannerDayPrefs>({});
   const [lunch, setLunch] = useState(false);
+  const [planHeadliners, setPlanHeadliners] = useState(false);
+  /**
+   * Which big rides, in which order of importance, and what to do about the
+   * break — the fit assistant's own answer, asked here one step earlier.
+   *
+   * It is held even while the toggle above is off, so switching the step back
+   * on does not throw away an order somebody already put the rides in. What it
+   * decides is only ever read where `planHeadliners` is true; see `finish`.
+   */
+  const [fitChoice, setFitChoice] = useState<FitChoice>(() => fitChoiceAll());
 
   const facts = usePlannerDayFacts(park, open && step !== 'park');
   /**
@@ -209,9 +259,110 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const today = todayInZone(facts.timezone ?? park?.timezone);
   const chosen = date ? facts.byDate.get(date) : undefined;
 
+  /**
+   * The park's headliners for this day, and how many of them the day holds.
+   *
+   * The wizard has the day payload already — it is what paints the hero — so
+   * asking the optimiser what fits costs one search and no request. It answers
+   * the question the visitor is standing in front of: "put the big rides in for
+   * me" is only a promise the app can keep where they all fit, and where they
+   * do not, saying so here is the difference between an offer and a surprise.
+   *
+   * The probe plans against the same day the finish will: with the lunch block
+   * where the wizard would put it, because an hour out of the middle is what
+   * decides the last headliner. Memoised on everything it reads, or the search
+   * would run on every keystroke of the step.
+   */
+  const dayPayload = planDay.data ?? null;
+  const wizardGrid = useMemo(
+    () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour),
+    [dayPayload]
+  );
+  const headliners = useMemo(() => headlinersToAdd(dayPayload, [], prefs), [dayPayload, prefs]);
+  const lunchLabel = t('wizard.blocks.lunch');
+  const lunchEntries = useMemo(
+    () =>
+      lunch
+        ? [
+            {
+              id: LUNCH_ENTRY_ID,
+              custom: {
+                label: lunchLabel,
+                icon: 'food' as const,
+                durationMinutes: LUNCH_MINUTES,
+              },
+              startMinute: LUNCH_START_MINUTE,
+            },
+          ]
+        : [],
+    [lunch, lunchLabel]
+  );
+
+  /**
+   * The last step's whole subject: which big rides, against which day.
+   *
+   * `null` where there is nothing to decide — no payload, no axis, or a park
+   * with no headliners the day is missing. Everything below reads it and does
+   * the same, so the step draws one sentence instead of a dead control.
+   */
+  const fitInput = useMemo<FitInput | null>(() => {
+    if (!dayPayload || !wizardGrid || headliners.length === 0) return null;
+    return {
+      day: dayPayload,
+      grid: wizardGrid,
+      entries: lunchEntries,
+      wishes: fitWishes(dayPayload, lunchEntries, headliners),
+      blocks: fitBlocks(lunchEntries),
+    };
+  }, [dayPayload, wizardGrid, headliners, lunchEntries]);
+
+  const fitOutcome = useMemo(
+    () => (fitInput ? evaluateFit(fitInput, fitChoice) : null),
+    [fitInput, fitChoice]
+  );
+  const fitLevers = useMemo(
+    () => (fitInput ? fitLeverView(fitInput, fitChoice) : null),
+    [fitInput, fitChoice]
+  );
+  const fitWishOrder = useMemo(
+    () => (fitInput ? fitOrder(fitInput, fitChoice) : []),
+    [fitInput, fitChoice]
+  );
+  const fitMissed = useMemo(() => new Set(fitOutcome?.missed ?? []), [fitOutcome]);
+  const fitPinned = useMemo(() => new Set(fitChoice.priority), [fitChoice]);
+
+  /** How many of the big rides are wanted, and how many the day holds. */
+  const wantedHeadliners = fitInput
+    ? fitInput.wishes.filter((wish) => !fitChoice.dropped.has(wish.key)).length
+    : 0;
+  const headlinerFit = fitOutcome ? fitOutcome.fitted.length : null;
+  const headlinerConflict = headlinerFit !== null && headlinerFit < wantedHeadliners;
+  /**
+   * Whether the visitor has answered anything about this day yet.
+   *
+   * It is what keeps the fit block ON SCREEN after they fix the problem. The
+   * block used to hang on `headlinerConflict` alone, so unticking the ride that
+   * did not fit took the conflict away and the whole thing — levers, list,
+   * marks — vanished under the finger that had just pressed a checkbox. The
+   * reported version of that: start removing rides and the list is simply gone,
+   * with no way back to it and no way to see what the removal bought.
+   *
+   * So the block appears while the day is short and stays for as long as
+   * anything has been chosen, which is derived rather than latched: a
+   * `useState` remembering "was tight once" would survive a change of park or
+   * date underneath it, and this cannot.
+   */
+  const fitChoiceTouched =
+    fitChoice.dropped.size > 0 ||
+    fitChoice.priority.length > 0 ||
+    fitChoice.droppedBlocks.size > 0 ||
+    fitChoice.shortBlocks.size > 0;
+
   const plannedSlugs = new Set(Object.keys(state.parks));
 
-  const steps: Step[] = initialPark ? ['date', 'setup'] : ['park', 'date', 'setup'];
+  const steps: Step[] = initialPark
+    ? ['date', 'setup', 'headliners']
+    : ['park', 'date', 'setup', 'headliners'];
   const index = steps.indexOf(step);
 
   const goTo = (next: Step) => {
@@ -228,17 +379,63 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     if (prefs.riderHeightCm !== undefined || prefs.avoidWet) {
       setDayPrefs(park.slug, date, prefs);
     }
-    if (lunch) {
+    /**
+     * The break, as the last step left it.
+     *
+     * „Ohne Mittagspause passt der Plan" is a lever on that step, so the block
+     * the wizard files is the one the fit answer KEPT — gone where the visitor
+     * pulled it, half as long where they cut it short, an hour otherwise.
+     * Reading it back out of `evaluateFit` rather than off a second piece of
+     * state is what makes the day that is filed the day that was shown: the
+     * probe planned around this exact block.
+     *
+     * Only where the headliners are actually being planned. A lever pulled and
+     * then abandoned by switching the toggle off is not an answer about lunch.
+     */
+    const plannedFit = planHeadliners ? fitOutcome : null;
+    const lunchBlock = plannedFit
+      ? (plannedFit.entries.find((entry) => entry.id === LUNCH_ENTRY_ID) ?? null)
+      : (lunchEntries[0] ?? null);
+    if (lunchBlock?.custom) {
       addCustom({
         parkSlug: park.slug,
         parkName: park.name,
         geo: park.geo,
         timezone: withZone.timezone,
         date,
-        label: t('wizard.blocks.lunch'),
+        label: lunchBlock.custom.label,
         icon: 'food',
-        startMinute: LUNCH_START_MINUTE,
-        durationMinutes: LUNCH_MINUTES,
+        startMinute: lunchBlock.startMinute,
+        durationMinutes: lunchBlock.custom.durationMinutes,
+      });
+    }
+    /**
+     * The big rides, in the order the day is cheapest in.
+     *
+     * The same `FitChoice` the last step was drawn from, so what the visitor
+     * saw marked „fällt weg" is what is missing from the axis — and the rides
+     * they pinned are the ones that survived. Where they touched nothing it is
+     * the engine's own answer (`Candidate.dropWeight`), which is what the
+     * default has to mean if the step is not to be a toll gate.
+     */
+    if (plannedFit) {
+      applyPlan({
+        parkSlug: park.slug,
+        parkName: park.name,
+        geo: park.geo,
+        timezone: withZone.timezone,
+        date,
+        // Only what is being ADDED: the lunch block is already in the store
+        // with an id this plan does not know, and re-filing it here would put
+        // a second one on the axis.
+        stops: plannedFit.stops
+          .filter((stop) => stop.entryId === null)
+          .map((stop) => ({
+            entryId: null,
+            attractionSlug: stop.attractionSlug,
+            attractionName: stop.attractionName,
+            startMinute: stop.startMinute,
+          })),
       });
     }
     plannerUi.requestOpen('wizard');
@@ -283,7 +480,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const primary: { run: () => void; enabled: boolean } | null =
     step === 'park'
       ? null
-      : step === 'setup'
+      : step === 'headliners'
         ? { run: finish, enabled: Boolean(park && date) }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
@@ -365,7 +562,12 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
           dayPhoto={heldPhoto?.src ?? null}
           dayPhotoPosition={heldPhoto?.position}
         />
-        <WizardRail steps={steps} current={index} onJump={(to) => goTo(steps[to])} />
+        <PlannerStepRail
+          steps={steps.map((key) => ({ key, label: t(`wizard.steps.${key}`) }))}
+          current={index}
+          label={t('wizard.progress')}
+          onJump={(to) => goTo(steps[to])}
+        />
 
         {/* The only row that scrolls, and the only one with no height of its
             own — `min-h-0` is what lets a flex child shrink below its content so
@@ -479,6 +681,109 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
                     setPrefs((current) => ({ ...current, avoidWet: next ? true : undefined }))
                   }
                 />
+              </div>
+            )}
+
+            {/* The big rides, on their own screen.
+                They were a fourth toggle among „Mittagessen", „Kinder sind
+                dabei" and „trocken bleiben" — three answers about the party and
+                one that rebuilds the whole day, with a hint that had to admit in
+                passing that not all of them would fit. The conflict is the
+                reason for the split: „Platz für 9 von 10" is not a footnote to
+                a checkbox, it is a decision, and this is where it is made. */}
+            {step === 'headliners' && (
+              <div className="flex flex-col gap-2.5">
+                {headliners.length === 0 || headlinerFit === null || !fitInput ? (
+                  <p className="text-muted-foreground text-xs leading-relaxed">
+                    {t('wizard.headliners.none')}
+                  </p>
+                ) : (
+                  <>
+                    <WizardToggle
+                      icon={Crown}
+                      label={t('wizard.headliners.label')}
+                      hint={
+                        headlinerConflict
+                          ? t('wizard.headliners.hintTight', {
+                              fits: headlinerFit,
+                              total: wantedHeadliners,
+                            })
+                          : t('wizard.headliners.hint', { count: headlinerFit })
+                      }
+                      checked={planHeadliners}
+                      onChange={setPlanHeadliners}
+                    />
+
+                    {/* The fit assistant, one step early and in place.
+                        It is the same three pieces the panel's dialog uses —
+                        the measured levers, the ordered list, the „fällt weg"
+                        marks — and they recompute against the same engine that
+                        runs on „Plan öffnen".
+
+                        It opens where it is tight and STAYS once anything has
+                        been answered — see `fitChoiceTouched`. A day that holds
+                        all ten and has been left alone still gets nothing, so
+                        the common case is a toggle and not a form; what is not
+                        allowed is the block disappearing mid-edit, which is
+                        what hanging it on the conflict alone did. When the
+                        choice resolves, the band turns green and says so rather
+                        than leaving somebody looking at a list whose marks have
+                        just gone quiet. */}
+                    {planHeadliners && fitLevers && (headlinerConflict || fitChoiceTouched) && (
+                      <div
+                        data-planner-wizard-fit=""
+                        data-planner-wizard-fit-solved={headlinerConflict ? undefined : ''}
+                        className={cn(
+                          'flex flex-col gap-2.5 rounded-md border px-2.5 py-2.5',
+                          headlinerConflict
+                            ? 'border-crowd-high/30 bg-crowd-high/10'
+                            : 'border-status-operating/30 bg-status-operating/10'
+                        )}
+                      >
+                        <p
+                          className={cn(
+                            'flex items-start gap-1.5 text-xs font-medium',
+                            headlinerConflict ? 'text-crowd-high' : 'text-status-operating'
+                          )}
+                        >
+                          {headlinerConflict ? (
+                            <AlertTriangle className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+                          ) : (
+                            <Check className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+                          )}
+                          {headlinerConflict
+                            ? t('wizard.headliners.conflict', {
+                                fits: headlinerFit,
+                                total: wantedHeadliners,
+                              })
+                            : t('wizard.headliners.resolved', { count: headlinerFit })}
+                        </p>
+
+                        {fitLevers.levers.length > 0 && (
+                          <PlannerFitLevers
+                            levers={fitLevers.levers}
+                            applied={fitLevers.applied}
+                            onToggle={(lever) =>
+                              setFitChoice((current) => toggleLever(fitInput, current, lever))
+                            }
+                          />
+                        )}
+
+                        <p className="text-muted-foreground text-[11px] leading-relaxed">
+                          {t('fit.ridesBody')}
+                        </p>
+                        <PlannerFitList
+                          wishes={fitWishOrder}
+                          dropped={fitChoice.dropped}
+                          missed={fitMissed}
+                          pinned={fitPinned}
+                          onToggle={(key) => setFitChoice((current) => toggleWish(current, key))}
+                          onPin={(key) => setFitChoice((current) => togglePin(current, key))}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
 
                 {park && (
                   <p className="text-muted-foreground mt-1 flex items-start gap-1.5 text-xs leading-relaxed">
@@ -526,7 +831,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
             >
               {t('wizard.back')}
             </Button>
-            {step === 'setup' ? (
+            {step === 'headliners' ? (
               <Button
                 onClick={primary.run}
                 disabled={!primary.enabled}
@@ -727,116 +1032,6 @@ function WizardHero({
     </div>
   );
 }
-
-/**
- * Three circles and the labels under them.
- *
- * A step counter in prose ("Schritt 2 von 3") is information a reader has to
- * assemble; three marks with two of them filled is the same fact at a glance,
- * and it is the only place in the dialog that shows where the end is.
- *
- * A **finished** step is a button, which is the point of drawing it: the
- * commonest correction in a three-question form is "wrong day", and reaching it
- * by pressing the day is shorter than pressing `Zurück`. Nothing leads forward —
- * that is the footer's job, and it is the half that knows whether the current
- * question has an answer yet.
- */
-function WizardRail({
-  steps,
-  current,
-  onJump,
-}: {
-  steps: readonly Step[];
-  current: number;
-  onJump: (index: number) => void;
-}) {
-  const t = useTranslations('planner');
-
-  const count = steps.length;
-
-  return (
-    <div className="border-border/60 shrink-0 border-b px-5 pt-3 pb-2.5 sm:px-6">
-      {/* EQUAL columns, and the connectors measured off them. The first version
-          was a flex row where each step's connector took the space its own
-          label did not, so three circles whose labels are "Park", "Tag" and
-          "Wer kommt mit" came out at 15 %, 72 % and 92 % of the row with one
-          connector eleven times the length of the other — a progress bar that
-          reported the width of its own captions. */}
-      <ol
-        className="relative grid"
-        style={{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }}
-        aria-label={t('wizard.progress')}
-      >
-        {/* One line per GAP rather than one track behind the circles: two of the
-            three circle states are a translucent tint, and a line under those
-            shows through the middle of the mark. `RAIL_DOT_CLEARANCE` is the
-            circle's radius plus a little air. */}
-        {steps.slice(0, -1).map((step, gap) => (
-          <span
-            key={`gap-${step}`}
-            aria-hidden="true"
-            className={cn(
-              'absolute top-[23px] h-px',
-              gap < current ? 'bg-primary/60' : 'bg-border'
-            )}
-            style={{
-              left: `calc(${(((gap + 0.5) / count) * 100).toFixed(4)}% + ${RAIL_DOT_CLEARANCE}px)`,
-              right: `calc(${((1 - (gap + 1.5) / count) * 100).toFixed(4)}% + ${RAIL_DOT_CLEARANCE}px)`,
-            }}
-          />
-        ))}
-
-        {steps.map((step, i) => {
-          const done = i < current;
-          const now = i === current;
-
-          return (
-            <li key={step} className="flex min-w-0 justify-center">
-              <button
-                type="button"
-                onClick={() => onJump(i)}
-                disabled={!done}
-                aria-current={now ? 'step' : undefined}
-                className={cn(
-                  'flex max-w-full min-w-0 flex-col items-center gap-1 rounded-lg px-1.5 py-0.5 transition-colors',
-                  done ? 'hover:bg-accent cursor-pointer' : 'cursor-default'
-                )}
-              >
-                <span
-                  className={cn(
-                    'flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-medium tabular-nums transition-colors',
-                    done && 'bg-primary/15 border-primary/40 text-primary',
-                    now && 'bg-primary text-primary-foreground border-primary',
-                    !done && !now && 'border-border text-muted-foreground/70'
-                  )}
-                >
-                  {done ? <Check className="size-3.5" aria-hidden="true" /> : i + 1}
-                </span>
-                <span
-                  className={cn(
-                    'max-w-full truncate text-[10px] leading-tight sm:text-[11px]',
-                    now ? 'text-foreground font-medium' : 'text-muted-foreground'
-                  )}
-                >
-                  {t(`wizard.steps.${step}`)}
-                </span>
-              </button>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
-/**
- * How far a connector stops short of a circle's centre, in pixels.
- *
- * The mark is `size-6`, so 12 is its radius and the rest is air. `top-[23px]`
- * on the lines is the same measurement vertically: 12 px of the row's own
- * padding plus that radius, less half the line.
- */
-const RAIL_DOT_CLEARANCE = 18;
 
 /**
  * What we know about the chosen day — and only that.
@@ -1068,13 +1263,4 @@ function plannedDatesFor(
   return Object.values(park.days)
     .filter((day) => day.entries.length > 0)
     .map((day) => day.date);
-}
-
-/** `Donnerstag, 17. September` — noon UTC, so the label names the day it is filed under. */
-function longDate(date: string, locale: string): string {
-  return new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  });
 }

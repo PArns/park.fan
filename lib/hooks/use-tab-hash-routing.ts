@@ -11,7 +11,7 @@ import {
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 import { scrollWhenSettled } from '@/lib/utils/scroll-when-settled';
-import { hasTileRowHandoff } from '@/lib/hooks/use-tile-row-anchor';
+import { hasTileRowHandoff, TILE_ROW_ATTR } from '@/lib/hooks/use-tile-row-anchor';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface UseTabHashRoutingOptions {
@@ -161,7 +161,16 @@ export function useTabHashRouting({
         if (deep || !arrival || !hasTileRowHandoff(parkSlug)) {
           cancelScroll.current?.();
           cancelScroll.current = scrollWhenSettled(
-            () => (deep ? document.getElementById(hash) : null) ?? tabsRef.current
+            () =>
+              (deep ? document.getElementById(hash) : null) ??
+              // The tile ROW, not `tabsRef.current` itself — that ref spans the whole header card,
+              // „Heute im Park" included, and landing on ITS top left the newly active tab (the
+              // map, a `#map-show-<slug>` link's whole reason to exist) still a full panel of live
+              // status below the fold. `TILE_ROW_ATTR` is `ParkTileGrid`'s own marker, already
+              // there for `useTileRowAnchor`, so this reads it rather than threading a second ref
+              // through `ParkHeaderCard` for the same element.
+              tabsRef.current?.querySelector<HTMLElement>(`[${TILE_ROW_ATTR}]`) ??
+              tabsRef.current
           );
         }
       }

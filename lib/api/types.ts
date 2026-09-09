@@ -528,6 +528,169 @@ export interface Land {
   name: string;
 }
 
+/**
+ * When a ride that is down right now was first reported down.
+ *
+ * `startedAt` is a clock time and stays one. `queue_data` is a change log whose
+ * hourly heartbeat copies the previous status forward, so wall minutes derived
+ * from it would be wrong upward exactly on the long outages — the UI never
+ * counts `now - startedAt`. The duration it does show beside the clock time is
+ * `estimate.elapsedMinutes`, which the API measured on the park's operating
+ * clock; `outageElapsedMinutes` in `lib/utils/outage.ts` is the only reader.
+ */
+export interface AttractionOutage {
+  /** ISO 8601 UTC. */
+  startedAt: string;
+  /**
+   * Whether the transition into DOWN was actually seen.
+   *
+   * False means the outage was already running at the edge of the seven-day
+   * window, so `startedAt` is the oldest reading and not the onset. The UI must
+   * name the day rather than a clock time in that case.
+   */
+  startObserved: boolean;
+  /**
+   * Which signal placed this outage, and it changes the wording.
+   *
+   * `down` is the operator's own feed saying the ride is not running —
+   * „Störung gemeldet seit …".
+   *
+   * `closed_gap` is INFERRED: the ride was open earlier the same day, shut
+   * inside opening hours, and did not shut together with the rest of the park.
+   * Nobody reported it, so the sentence may not say „gemeldet" —
+   * „Steht seit … still" is what we can defend. It appears only for the 102 of
+   * 182 parks whose feed never emits DOWN (Phantasialand, Energylandia, Alton
+   * Towers), where the alternative is not a stronger signal but silence.
+   */
+  signal: 'down' | 'closed_gap';
+  /**
+   * How long outages like this one usually still take from here.
+   *
+   * Absent whenever the measured curve cannot answer — under five operating
+   * minutes, too thin a sample, or a park publishing no opening hours so there
+   * is no operating clock. **Absence never means the outage is nearly over**,
+   * and there is no fallback copy that implies it.
+   */
+  estimate?: OutageEstimate;
+}
+
+/**
+ * The measured answer to "how much longer", never a prediction.
+ *
+ * The API's `docs/analytics/ride-downtime.md` §6 refuses to say when a ride will
+ * break next. This is the other question — it is broken now, and this is what
+ * happened to the outages that got this far. Conditioned on an observed event,
+ * measured over 5900-128 000 intervals per bucket, calibrated out-of-sample to
+ * 2.55 percentage points.
+ *
+ * ## Two rules for rendering it
+ *
+ * **`elapsedMinutes` is operating minutes, not wall time.** Do not compute it
+ * from `startedAt`: an outage that began at 18:00 in a park that shut at 20:00
+ * reads two hours the next morning, not sixteen, and the whole estimate is
+ * built on that clock.
+ *
+ * **Never show the median without the spread.** The distribution is
+ * heavy-tailed — at one hour elapsed the quartiles are 25 and 255 minutes
+ * around a median of 70 — so a lone median reads as a promise. `remaining` is
+ * absent past roughly two hours for exactly that reason, which means a
+ * component that renders only the median silently shows nothing on the long
+ * outages a visitor most wants to understand. Render the probability there.
+ */
+export interface OutageEstimate {
+  /** Operating minutes elapsed. NOT `now - startedAt`. */
+  elapsedMinutes: number;
+  /** P(reported running again within 30 more operating minutes), 0-1. */
+  recoveryWithin30: number;
+  /** P(reported running again within 60 more operating minutes), 0-1. */
+  recoveryWithin60: number;
+  /**
+   * Remaining operating minutes at the quartiles. Absent past ~2 hours.
+   *
+   * `p75` goes first: past roughly two hours elapsed the upper quartile stops
+   * resolving while the median still does, and the API drops the KEY rather
+   * than sending `null` (measured 2026-09-09 — `{"p25":117,"median":460}`).
+   * Optional here for that reason; read it through `outageRemainingWindow`,
+   * which treats both shapes as the same open range. A `=== null` test does
+   * not, and formatted the difference as „NaN:NaN Std.".
+   */
+  remaining?: { p25: number; median: number; p75?: number | null };
+  /** Whether the park carried its own curve here. Diagnostic, not for display. */
+  basis: 'park' | 'pooled';
+}
+
+/**
+ * What may be said about how often a ride is reported down, or why nothing is.
+ *
+ * A discriminated union on `kind` and never a bag of nullable numbers: the
+ * counts and thresholds that produced the verdict deliberately do not travel, so
+ * no client can re-derive it and arrive somewhere else.
+ *
+ * Three of the withheld reasons are statements about OUR data rather than about
+ * the ride, and the UI must keep them apart. `not_down_capable` in particular is
+ * not "this ride never breaks" — it is "no source in this park reports outages
+ * at all".
+ */
+export type DowntimeBlock =
+  | {
+      kind: 'figures';
+      windowDays: number;
+      /** Reported outages, works periods excluded. */
+      outages: number;
+      observedDays: number;
+      /** Empirical median over the outages with an observed end. */
+      medianMinutes: number;
+      /** How many outages that median is taken over. */
+      usableDurations: number;
+      longestMinutes: number;
+      /** Down over (down + operating) minutes. The only denominator shown. */
+      downShare: number;
+    }
+  | {
+      kind: 'withheld';
+      reason:
+        | 'not_down_capable'
+        /**
+         * The park's feed is listed but has never once said DOWN.
+         *
+         * Distinct from `not_down_capable`: that is configuration, this is an
+         * observed silence past the point where silence is possible. 91 parks
+         * are in this state — Phantasialand, Energylandia, Alton Towers — and
+         * together the never-reporting parks have MORE observed operating time
+         * than the reporting ones. Both mean "we cannot see this ride's
+         * outages", and neither may be rendered as "no outages".
+         */
+        | 'park_never_reports'
+        | 'artefact_regime'
+        | 'no_schedule'
+        | 'thin_events'
+        | 'thin_exposure'
+        | 'inhomogeneous'
+        | 'recently_merged'
+        | 'new_ride'
+        /**
+         * The figures exist but are no longer current.
+         *
+         * Its own reason because the alternatives both lie. Reusing
+         * `thin_events` keeps the stored count and renders „34 Störungen
+         * gemeldet … für eine belastbare Zahl zu wenige", refuted by its own
+         * number; zeroing the count states "0 Störungen" about a ride that had
+         * 34. `outages` still carries the real value here — this reason's copy
+         * does not use it.
+         */
+        | 'stale_data'
+        /**
+         * Plenty of outages, too few of them seen to END — the opposite claim
+         * to `thin_events`, so it gets its own sentence. Strongly seasonal on
+         * the API side (a run cut off by the park shutting for the winter),
+         * which is why this reason comes and goes without the ride changing.
+         */
+        | 'heavily_censored';
+      /** 0 for the three reasons above that are about us, where it means "we cannot see". */
+      outages: number;
+      windowDays: number;
+    };
+
 export interface ParkAttraction {
   id: string;
   name: string;
@@ -548,6 +711,23 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /**
+   * The running outage, present only while the ride reads DOWN.
+   *
+   * Absent is not "the ride is running": it is also every park whose sources
+   * cannot report an outage at all (only ThemeParks.wiki produces the status),
+   * and every ride inside a curated works period. Render the line when it is
+   * there and nothing when it is not; never a "no outages" state.
+   */
+  outage?: AttractionOutage;
+  /**
+   * Reported-outage figures, or the reason there are none.
+   *
+   * Attached by the ATTRACTION DETAIL response only. It is deliberately absent
+   * from the park's attraction list and from the five-minute poll: the park page
+   * renders none of it, and a page that renders none of a thing must not ship it.
+   */
+  downtime?: DowntimeBlock;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
@@ -856,6 +1036,25 @@ export interface AttractionResponse {
   typicalWaits?: TypicalWaits | null;
   /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
   rideProfile?: RideProfile | null;
+  /**
+   * How often this ride has been reported down, or the reason nothing is said.
+   *
+   * Absent while the reconstruction has never run. Present-and-withheld is a
+   * different state and carries the reason.
+   */
+  downtime?: DowntimeBlock;
+  /**
+   * The outage running RIGHT NOW — the history block's opposite number.
+   *
+   * On the endpoint since the field existed and undeclared here until PF-58,
+   * which is the whole of why the ride page said „Vorübergehend geschlossen"
+   * and nothing else while its own card on the park page carried both
+   * sentences. `useLiveAttractionData` overlays exactly the fields it names, so
+   * a field this type does not mention is a field the ride page reads off the
+   * day-cached shell — and an outage is the one thing on that payload that
+   * cannot survive a day.
+   */
+  outage?: AttractionOutage;
 }
 
 /**

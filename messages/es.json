@@ -776,6 +776,20 @@
       "DOWN": "Fuera de servicio",
       "UNKNOWN": "Desconocido"
     },
+    "outage": {
+      "since": "Avería notificada desde {when}",
+      "startUnknown": "Avería notificada, inicio desconocido",
+      "elapsed": "{duration} con el parque abierto",
+      "estimate": {
+        "range": "Las averías como esta solían durar entre {from} y {to} más.",
+        "rangeOpen": "Las averías como esta solían durar más de {from} más.",
+        "compactProbability": "Alrededor del {percent} % se resolvió en una hora.",
+        "fullWithRange": "{range} Alrededor del {percent} % volvió a estar en servicio en una hora.",
+        "fullProbability": "De las averías que ya habían durado tanto, alrededor del {percent} % volvió a estar en servicio en una hora."
+      },
+      "sinceClosed": "Parada desde {when}",
+      "startUnknownClosed": "Parada, inicio desconocido"
+    },
     "noLiveWaitTimes": {
       "title": "No hay tiempos de espera disponibles",
       "reason": {
@@ -1255,6 +1269,30 @@
     },
     "planner": {
       "dragIn": "Arrastrar al plan"
+    },
+    "downtime": {
+      "title": "Averías notificadas",
+      "hint": "Lo que ha notificado la fuente de datos del parque, no lo que publica el operador.",
+      "reportedCaption": "En {days} días",
+      "reportedDetail": "{count} averías notificadas en {observedDays} días de operación observados.",
+      "medianCaption": "Mediana en minutos",
+      "medianDetail": "La mitad de las {usable} averías con final observado terminaron a los {minutes} minutos.",
+      "longestCaption": "Avería más larga",
+      "shareDetail": "Alrededor del {percent} % del tiempo en que la atracción estuvo funcionando.",
+      "withheld": {
+        "not_down_capable": "Para este parque ninguna fuente de datos notifica averías. Si {name} se avería, aquí no lo vemos.",
+        "park_never_reports": "La fuente de datos de este parque no notifica averías. Las detectamos por cierres durante el horario de apertura, pero no publicamos estadísticas.",
+        "artefact_regime": "Para este parque los avisos de avería nos llegan solo a fragmentos. De ahí no se puede leer una frecuencia.",
+        "no_schedule": "Este parque no publica horarios de apertura, por eso no mostramos cifras aquí.",
+        "thin_events": "En los últimos {days} días se notificaron {count} averías. Son demasiado pocas para dar una cifra.",
+        "thin_exposure": "Hemos visto funcionar {name} muy pocas veces en los últimos {days} días como para decir algo sobre averías.",
+        "inhomogeneous": "Las dos mitades de los últimos {days} días son demasiado distintas para que una cifra describa ambas.",
+        "recently_merged": "Esta ficha se fusionó hace poco con otra. Hasta que su historial vuelva a ser claro no mostramos cifras.",
+        "new_ride": "{name} no lleva funcionando el tiempo suficiente para poder decir algo sobre averías.",
+        "heavily_censored": "En los últimos {days} días se notificaron {count} averías. De demasiadas no vimos el final, casi siempre porque el parque cerró mientras la atracción seguía parada. Es muy poco para dar una duración.",
+        "stale_data": "Estas cifras no están actualizadas en este momento, por eso no las mostramos."
+      },
+      "longestDetail": "El máximo de las {count} averías notificadas."
     }
   },
   "nearby": {
@@ -1556,6 +1594,82 @@
       "starText": "La lleva cada tarjeta de parque y de atracción, y también cada página.",
       "thenTitle": "Listo",
       "thenText": "A partir de ahí aparecen en este menú y en la portada, con estado en vivo y tiempo de espera."
+    }
+  },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Activar aviso antes de {name}",
+      "following": "Aviso activo para {name} – toca para desactivarlo",
+      "error": "No ha funcionado. Inténtalo de nuevo."
+    },
+    "showDialog": {
+      "title": "Aviso de espectáculo",
+      "explain": "Te avisamos entre 25 y 35 minutos antes de la próxima función de {show}.",
+      "explainLate": "Para la próxima función ya va justo: ese aviso llegará unos 10 minutos antes.",
+      "explainChosen": "Te avisamos alrededor de media hora antes de esta función.",
+      "follow": "Activar aviso",
+      "following": "El aviso está activo",
+      "unfollow": "Desactivar aviso",
+      "close": "Cerrar",
+      "nextShowtime": "Próxima función",
+      "chosenShowtime": "Función elegida",
+      "viewAll": "Mis avisos"
+    },
+    "rideBell": {
+      "setAlert": "Configurar aviso de tiempo de espera para {name}",
+      "alerted": "Aviso activo para {name} – toca para editarlo"
+    },
+    "rideDialog": {
+      "title": "Avisos de tiempo de espera",
+      "subtitle": "Para {park} – te avisamos en cuanto la espera baje del límite elegido.",
+      "soloSubtitle": "{park} – te avisamos en cuanto la espera baje del límite elegido.",
+      "loading": "Cargando…",
+      "empty": "Todavía no hay avisos para este parque.",
+      "thresholdLabel": "menos de {minutes} min",
+      "remove": "Quitar {name}",
+      "addTitle": "Añadir un aviso",
+      "selectRide": "Elegir una atracción",
+      "thresholdInput": "Límite en minutos",
+      "minutes": "min",
+      "add": "Añadir",
+      "adding": "Guardando…",
+      "error": "No ha funcionado. Inténtalo de nuevo.",
+      "viewAll": "Mis avisos",
+      "close": "Cerrar",
+      "entry": "Avisos de tiempo de espera",
+      "entryWithCount": "Avisos de tiempo de espera ({count})",
+      "removeShort": "Quitar",
+      "save": "Guardar",
+      "outOfSeason": "Solo en invierno",
+      "retired": "Retirada",
+      "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
+      "todayOnly": "Solo es válido para hoy: para otro día de visita hay que configurarlo de nuevo."
+    },
+    "overview": {
+      "title": "Mis avisos",
+      "subtitle": "Avisos de tiempo de espera y recordatorios de espectáculos para este dispositivo, en todos los parques.",
+      "loading": "Cargando…",
+      "emptyBody": "Todavía no hay nada configurado. En la página de un parque, la campana junto a una atracción o un espectáculo activa un recordatorio.",
+      "rideAlertsTitle": "{count, plural, =1 {Un aviso de tiempo de espera} other {# avisos de tiempo de espera}}",
+      "showFollowsTitle": "{count, plural, =1 {Un recordatorio de espectáculo} other {# recordatorios de espectáculo}}",
+      "thresholdLabel": "menos de {minutes} min",
+      "remove": "Quitar",
+      "outOfSeason": "Solo en invierno",
+      "retired": "Retirada",
+      "loadError": "No se pudo cargar la lista. Recarga la página.",
+      "showAt": "a las {time}",
+      "showNextAny": "próxima función"
+    },
+    "menu": {
+      "link": "Mis avisos"
+    },
+    "pushErrors": {
+      "generic": "No ha funcionado. Inténtalo de nuevo.",
+      "rateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
+      "blocked": "Las notificaciones están bloqueadas en tu navegador. Puedes volver a permitirlas en los ajustes del sitio.",
+      "dismissed": "Sin notificaciones no puede llegar ningún aviso. Elige «Permitir» la próxima vez que lo pregunte el navegador.",
+      "unsupported": "Este navegador no puede recibir notificaciones. En el iPhone solo funciona si la página está en la pantalla de inicio.",
+      "notConfigured": "Las notificaciones no están configuradas aquí por ahora."
     }
   },
   "glossary": {
@@ -2013,7 +2127,9 @@
     },
     "warn": {
       "closedNow": "Ahora mismo indica cerrada.",
-      "downYesterday": "Ayer estuvo fuera de servicio todo el día."
+      "downYesterday": "Ayer estuvo fuera de servicio todo el día.",
+      "afterClose": "Empieza después del cierre.",
+      "maybeAfterClose": "Puede que ya sea después del cierre."
     },
     "custom": {
       "add": "Bloque propio",
@@ -2047,6 +2163,42 @@
       "overflow": "{count, plural, one {una ya no cabe en el día} other {# ya no caben en el día}}",
       "capped": "{count, plural, one {una atracción se quedó fuera, el planificador ordena como mucho {max} paradas} other {# atracciones se quedaron fuera, el planificador ordena como mucho {max} paradas}}",
       "undo": "Deshacer"
+    },
+    "fit": {
+      "title": "No cabe todo en el día",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Ajustes",
+        "rides": "Prioridad",
+        "result": "Resultado"
+      },
+      "allFit": "{count, plural, one {Una atracción cabe en el día} other {Las # atracciones caben en el día}}",
+      "someFit": "Sitio para {fits} de {total} atracciones",
+      "endsAt": "última atracción hasta las {time}",
+      "queueing": "{duration} de cola",
+      "leversBody": "Esto hace sitio sin quitar ninguna atracción. Toca lo que cambiarías.",
+      "leversNone": "No son los bloques, sin ellos sigue siendo demasiado justo. En el siguiente paso decides qué atracciones te importan más.",
+      "leversFits": "Así cabe el plan. No hace falta cambiar nada en los bloques.",
+      "leverDrop": "Sin {label}",
+      "leverShorten": "Reducir {label} a {minutes} min",
+      "leverDropAll": "Sin los bloques libres",
+      "leverSolves": "Entonces cabe todo el plan",
+      "leverHelps": "Entonces caben {fits} de {total}",
+      "ridesBody": "Arriba va lo que no te quieres perder. Se recorta por abajo. Desmarca aquello de lo que puedes prescindir.",
+      "drops": "se cae",
+      "peak": "pico {minutes} min",
+      "headliner": "Atracción estrella",
+      "pin": "Arriba del todo",
+      "pinHint": "Arriba del todo, se quita la última",
+      "resultRides": "En el día",
+      "resultEnd": "Última atracción hasta las",
+      "resultWait": "Tiempo de cola en total",
+      "resultOut": "Se queda fuera",
+      "resultHint": "En el planificador puedes seguir moviendo, borrando y reordenando.",
+      "apply": "Aplicar el plan",
+      "applied": "{count, plural, one {Una atracción planificada} other {# atracciones planificadas}}",
+      "leftOut": "{count, plural, one {una se queda fuera} other {# se quedan fuera}}",
+      "adjust": "Ajustar"
     },
     "sheet": {
       "handle": "Ampliar o cerrar el planificador",
@@ -2122,7 +2274,8 @@
       "steps": {
         "park": "Parque",
         "date": "Día",
-        "setup": "Quién viene"
+        "setup": "Quién viene",
+        "headliners": "Atracciones estrella"
       },
       "back": "Atrás",
       "next": "Siguiente",
@@ -2139,6 +2292,14 @@
       "wet": {
         "label": "Mojarse lo menos posible",
         "hint": "Las atracciones de agua se marcan en la lista."
+      },
+      "headliners": {
+        "label": "Planificar las atracciones estrella",
+        "hint": "Coloca las {count} atracciones grandes en el día, según sus curvas por hora.",
+        "hintTight": "Antes del cierre hay sitio para {fits} de {total}.",
+        "conflict": "Caben {fits} de {total}. Desmarca aquello de lo que puedes prescindir o sube lo que quieres montar sí o sí.",
+        "none": "Para este día no falta ninguna atracción estrella.",
+        "resolved": "{count, plural, one {Así cabe la atracción en el día} other {Así caben las # atracciones en el día}}. Puedes seguir cambiando tu selección."
       },
       "facts": {
         "title": "Lo que sabemos de este día",

@@ -44,6 +44,38 @@ export const PRE_PAD_MIN = 30;
  */
 export const POST_PAD_MIN = 30;
 
+/**
+ * How much later than {@link DayGrid.closeMin} the park might really shut.
+ *
+ * The API reports `closeHour` as an HOUR — the hour its closing time falls in —
+ * and this axis used to read that as "the last hour the park is open" and add
+ * sixty minutes to it. On a park closing at 18:00 that made the planner believe
+ * in a day ending at 19:00, and the optimiser filled it: Phantasialand on
+ * Saturday 2026-09-12 came back with Winja's Fear queued at **18:15** and the
+ * day finishing at 18:55, an hour after the gates shut. The `+ 60` was not a
+ * rounding error but a whole extra hour of plan, on every park that closes on
+ * the hour.
+ *
+ * Which is most of them, and that is measured rather than assumed: over 3,540
+ * operating park-days from the catalogue's own calendars, **3,046 close exactly
+ * on the hour (86.0 %)**, 486 at half past and 8 at quarter to. So the hour is
+ * the closing time for six days in seven and the truncation is real for the
+ * seventh — and the two facts point opposite ways, which is why there are now
+ * two numbers instead of one.
+ *
+ * {@link DayGrid.closeMin} is the CERTIFIABLE end: the park is open until then,
+ * and nothing this app plans by itself may run past it. This is the slack above
+ * it, where the park may or may not still be open — drawn, draggable, never
+ * planned into. It is the same hard/soft split {@link rideFloor} makes at the
+ * other end of the day, and for the same reason: a fact decides what the app
+ * may assert, a guess decides only what it draws.
+ *
+ * Sixty because that is the width of the API's own rounding. It goes to zero
+ * the day the backend sends a real minute, and every rule keyed to it then
+ * reduces to "the park closes when it closes".
+ */
+export const CLOSE_SLACK_MIN = 60;
+
 /** Outlook's own drag granularity. 18 px here. */
 export const SNAP_MIN_FINE = 15;
 
@@ -107,16 +139,30 @@ export const SOFT_FLOOR_MIN_SAMPLE_DAYS = 30;
 export interface DayGrid {
   /** Park-local minutes since midnight. */
   openMin: number;
-  /** Exclusive end of the operating day. May exceed 1440 on a past-midnight close. */
+  /**
+   * The minute the park is known to be open until. May exceed 1440 on a
+   * past-midnight close.
+   *
+   * A CEILING and not merely an axis end: nothing this app files by itself —
+   * the optimiser, a click on a headliner pill, the ride search — may put a
+   * block that runs past it. What the park does in the hour above it is
+   * {@link closeSlackMin}.
+   */
   closeMin: number;
+  /**
+   * How much later the park might really shut. See {@link CLOSE_SLACK_MIN}.
+   *
+   * Drawn as uncertain and reachable by a drag; never planned into.
+   */
+  closeSlackMin: number;
   gridStartMin: number;
   gridEndMin: number;
   heightPx: number;
   pxPerMin: number;
   /**
-   * The API formats hours as `"HH"`, so a park closing at 23:30 reports 23. True
-   * until the backend sends a real minute; the band draws its last hour as
-   * uncertain while it holds.
+   * Whether {@link closeMin} is the hour the API rounded to rather than a real
+   * closing minute — i.e. whether {@link closeSlackMin} is anything at all.
+   * True until the backend sends minutes.
    */
   closeIsTruncated: boolean;
 }
@@ -137,9 +183,19 @@ export interface DayGrid {
  * planner's totals came out as zero minutes of queueing for a whole night. Two
  * halves of one statement, in two files, with nothing comparing them.
  *
- * Still INCLUSIVE, like the field it reads: the backend loops `h <= closeHour`
- * and emits a bucket at it. Callers that want an exclusive end add the hour
- * themselves, which is what `buildDayGrid`'s `+ 60` is.
+ * The hour the closing time FALLS IN, like the field it reads — not the last
+ * hour the park is open. Phantasialand shuts at 18:00 and the API answers
+ * `closeHour: 18`; Toverland shuts at 17:30 and answers 17. So the hour is the
+ * park's own closing minute for the 86 % of days that end on the hour, and up
+ * to 59 minutes early for the rest, which is what {@link CLOSE_SLACK_MIN} is
+ * for. `buildDayGrid` used to add sixty minutes here on the opposite reading
+ * and gave the planner an hour of park that does not exist.
+ *
+ * The bucket at `closeHour` that the backend emits is therefore an hour the
+ * park is mostly shut for. `estimateFor` still answers for it on purpose — a
+ * block a visitor drags there is worth a figure rather than an em dash, and on
+ * a park closing at 17:30 that hour is half real. Nothing this app files by
+ * itself goes there; see {@link DayGrid.closeMin}.
  */
 export function unfoldedCloseHour(openHour: number, closeHour: number): number {
   return closeHour < openHour ? closeHour + 24 : closeHour;
@@ -161,19 +217,22 @@ export function buildDayGrid(
   if (closeHour === null || closeHour === undefined) return null;
 
   const openMin = openHour * 60;
-  // `closeHour` is INCLUSIVE: the backend loops `h <= closeHour` and emits a
-  // bucket AT it, so the axis has to contain that hour rather than end on it.
-  // A close past midnight is unfolded rather than refused — the day is still a
-  // real span even where the API declines to answer for it. See
-  // {@link unfoldedCloseHour}.
-  const closeMin = unfoldedCloseHour(openHour, closeHour) * 60 + 60;
+  // `closeHour` is the hour the park's closing time falls in, so this IS the
+  // closing minute wherever the park closes on the hour — and the earliest it
+  // can close where it does not. A close past midnight is unfolded rather than
+  // refused: the day is still a real span even where the API declines to answer
+  // for it. See {@link unfoldedCloseHour} and {@link CLOSE_SLACK_MIN}.
+  const closeMin = unfoldedCloseHour(openHour, closeHour) * 60;
 
   const gridStartMin = openMin - PRE_PAD_MIN;
-  const gridEndMin = closeMin + POST_PAD_MIN;
+  // The canvas is unchanged: it holds the slack the park might still be open
+  // for AND the overrun of a queue joined at the end of it.
+  const gridEndMin = closeMin + CLOSE_SLACK_MIN + POST_PAD_MIN;
 
   return {
     openMin,
     closeMin,
+    closeSlackMin: CLOSE_SLACK_MIN,
     gridStartMin,
     gridEndMin,
     heightPx: (gridEndMin - gridStartMin) * pxPerMin,
@@ -271,15 +330,35 @@ export function snapTo(minute: number, step: number): number {
 }
 
 /**
- * Where a block may start.
+ * Where a block a VISITOR places may start.
  *
  * The lower bound is the caller's floor (see {@link rideFloor}); the upper bound
  * is on the START, not the end — a 90-minute queue joined at 19:30 in a park
  * closing at 20:00 is a real plan that overruns, and forbidding it would be the
  * grid refusing to draw something a visitor may genuinely intend.
+ *
+ * The ceiling includes {@link DayGrid.closeSlackMin}, which is what keeps this
+ * gesture exactly as far-reaching as it was before that field existed: the API
+ * rounds the closing time down to the hour, the park may still be open up there,
+ * and the person dragging knows which of those it is. `nextFreeStart` and the
+ * optimiser stop at {@link DayGrid.closeMin} instead — the same hard/soft split
+ * {@link rideFloor} makes at the other end of the day. What the app asserts by
+ * itself is bounded by the fact; what it lets somebody assert is not.
  */
 export function clampStart(grid: DayGrid, minute: number, floorMin: number): number {
-  return Math.min(Math.max(minute, floorMin), grid.closeMin - SNAP_MIN_FINE);
+  return Math.min(Math.max(minute, floorMin), latestStart(grid));
+}
+
+/**
+ * {@link clampStart}'s ceiling as a number, for the two call sites that hand a
+ * `maxMinute` to a block rather than clamping a value.
+ *
+ * Exported so the drag, the keyboard nudge and the clamp cannot drift: they
+ * were three copies of `closeMin - SNAP_MIN_FINE`, and the slack made that
+ * expression wrong in all three at once.
+ */
+export function latestStart(grid: DayGrid): number {
+  return grid.closeMin + grid.closeSlackMin - SNAP_MIN_FINE;
 }
 
 export interface RideFloor {
@@ -333,17 +412,24 @@ export const GATE_TO_FIRST_RIDE_MIN = 15;
  * It raises the SOFT floor and never the hard one (see {@link rideFloor}): a
  * drag into the recorded morning stays legal, because writing down when you
  * actually rode something is the reason a day is kept at all.
+ *
+ * **It is not capped at the end of the day, and that cap was the bug.** It used
+ * to be clamped to `closeMin - SNAP_MIN_FINE` on the theory that a press made
+ * after closing should still yield a usable minute — but the clamp beats the
+ * very lower bound this function exists to impose, so at 17:58 in a park
+ * shutting at 18:00 it answered **17:45**, and "plan every headliner" filed a
+ * forty-minute queue thirteen minutes before the press. Worse, `hasStarted`
+ * then read that block as already under way and froze it. Past the last slot
+ * the honest answer is a minute the day has no room for, which is exactly what
+ * every caller needs: `placementsFrom` finds no option and leaves the ride out,
+ * `nextFreeStart` files into the hatched hours where a reader can see it.
  */
 export function nowFloor(grid: DayGrid, clock?: DayClock): number {
   if (clock?.phase !== 'today') return grid.openMin;
   // Snapped UP, not to the nearest: every start in this app sits on a quarter
   // hour, and rounding 14:03 down to 14:00 would file a block three minutes
-  // into a past nobody can act on. Capped like the floors below it, so a press
-  // made after closing still yields a minute rather than an impossible one.
-  return Math.min(
-    Math.max(grid.openMin, Math.ceil(clock.nowMinute / SNAP_MIN_FINE) * SNAP_MIN_FINE),
-    grid.closeMin - SNAP_MIN_FINE
-  );
+  // into a past nobody can act on.
+  return Math.max(grid.openMin, Math.ceil(clock.nowMinute / SNAP_MIN_FINE) * SNAP_MIN_FINE);
 }
 
 /**
@@ -398,7 +484,12 @@ export function rideFloor(
 
   return {
     hardMin,
-    softMin: Math.min(Math.max(withEntry, nowFloor(grid, clock)), grid.closeMin - SNAP_MIN_FINE),
+    // The RIDE's own reasons are capped at the last slot of the day — a curve
+    // that starts after closing is a statement about measurement, not a plan —
+    // and the clock is then allowed to raise it past that cap. At 17:58 in a
+    // park shutting at 18:00 this is 18:00, which is no slot at all, which is
+    // the true answer. See {@link nowFloor}.
+    softMin: Math.max(Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE), nowFloor(grid, clock)),
     reason: raised > hardMin || knowsOpening ? 'ride' : 'park',
   };
 }
@@ -504,6 +595,10 @@ export function packLanes(blocks: readonly LaneInput[]): Map<string, LanePlaceme
  * filed at 09:00 with the park, which is the planner asserting a queue in an
  * hour nothing was ever measured in. Passing the park's opening for every ride
  * is what made "this ride is not even open yet" a thing the grid could say.
+ *
+ * The ceiling is {@link DayGrid.closeMin} and NOT the slack above it, unlike
+ * {@link clampStart}: this is the app choosing a minute, and it may not choose
+ * one in an hour the park has told us it is shut for.
  */
 export function nextFreeStart(
   existing: readonly { startMinute: number; spanMinutes: number }[],
@@ -515,7 +610,8 @@ export function nextFreeStart(
     .map((e) => ({ from: e.startMinute, to: e.startMinute + Math.max(e.spanMinutes, 15) }))
     .sort((a, b) => a.from - b.from);
 
-  let candidate = snapTo(Math.max(grid.openMin, floorMin ?? grid.openMin), SNAP_MIN_FINE);
+  const floor = snapTo(Math.max(grid.openMin, floorMin ?? grid.openMin), SNAP_MIN_FINE);
+  let candidate = floor;
   const last = grid.closeMin - SNAP_MIN_FINE;
 
   for (const slot of taken) {
@@ -523,7 +619,13 @@ export function nextFreeStart(
     if (candidate < slot.to) candidate = snapTo(slot.to + SNAP_MIN_FINE - 1, SNAP_MIN_FINE);
   }
 
-  return Math.min(candidate, last);
+  // The cap may not pull the answer BELOW the floor it was given. It used to,
+  // and on a day whose slots are gone that meant filing into the past: pressed
+  // at 17:58 in a park shutting at 18:00 the floor is 18:00 and the cap 17:45,
+  // so a ride added from the search landed thirteen minutes before the tap. A
+  // block in the hatched hours is a visible answer; a block behind the clock is
+  // not an answer at all.
+  return Math.max(floor, Math.min(candidate, last));
 }
 
 export interface ShowLinePosition {

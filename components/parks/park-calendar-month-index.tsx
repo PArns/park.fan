@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
-import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import { ParkCalendarMonthIndexChip } from '@/components/parks/park-calendar-month-index-chip';
 import {
   parkCalendarMonthsBack,
   parkCalendarMonthsForward,
@@ -113,27 +113,13 @@ export async function ParkCalendarMonthIndex({
                 isCurrent(m) ? undefined : m
               );
               return (
-                <Link
+                <ParkCalendarMonthIndexChip
                   key={`${m.year}-${m.month}`}
                   href={href}
-                  aria-current={active ? 'page' : undefined}
-                  // Every chip carries a surface, including the inactive ones. They used to be
-                  // bare text on `border-transparent`, which is legible on a card and was not
-                  // legible at all where this row used to live — directly on the park photo.
-                  // A month is a control here, and a control that looks like prose is not one.
-                  // `min-h-9` and not `.touch-target`: this is the fallback route to a month once
-                  // the stepper runs out of arrows, so the chips have to be hittable — but there
-                  // are 25 of them in one block and 44 px each would turn the index into a wall.
-                  // 36 px is the button scale's own default height.
-                  className={cn(
-                    'inline-flex min-h-9 items-center rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
-                    active
-                      ? 'border-primary/40 bg-primary/15 text-primary'
-                      : 'border-border/60 bg-muted/40 text-foreground/80 hover:border-border hover:bg-accent hover:text-accent-foreground'
-                  )}
+                  active={active}
                 >
                   {shortLabel(m)}
-                </Link>
+                </ParkCalendarMonthIndexChip>
               );
             })}
           </div>
