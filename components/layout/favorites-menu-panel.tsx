@@ -77,7 +77,18 @@ import type { AttractionStatus, CrowdLevel, ParkStatus, ScheduleSummary } from '
  */
 const FavoritesMenuAlerts = dynamic(
   () => import('@/components/layout/favorites-menu-alerts').then((m) => m.FavoritesMenuAlerts),
-  { ssr: false }
+  {
+    ssr: false,
+    // The plan has already cut this group its slice before the chunk arrives. Without a
+    // placeholder holding that box, the venue group's `flexGrow` spreads into it and snaps back
+    // when the import lands.
+    loading: () => (
+      <div
+        className="min-w-0"
+        style={{ flexGrow: 1, flexShrink: 1, flexBasis: `${VENUE_BASIS}px` }}
+      />
+    ),
+  }
 );
 
 /** Parks offered for one-tap starring while the list is still empty. */

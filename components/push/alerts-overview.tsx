@@ -43,7 +43,7 @@ export function AlertsOverview() {
   // gets — that reads as "your alerts are gone" to someone who has five.
   // `isError` is both endpoints refusing, `partial` is one of them.
   const queryClient = useQueryClient();
-  const { data, isPending: loading, isError } = usePushFollowsList({ enabled: true });
+  const { data, isFetching, isError } = usePushFollowsList({ enabled: true });
   const [removingRide, setRemovingRide] = useState<string | null>(null);
   const [removingShow, setRemovingShow] = useState<string | null>(null);
 
@@ -61,10 +61,16 @@ export function AlertsOverview() {
    * fall back ON, not whether `data` happens to be defined.
    */
   const anything = rideAlertList.length + showFollowList.length > 0;
-  const bothFailed = isError && !anything;
+  const partial = data?.partial ?? false;
+  // A request in flight outranks the verdict of the one before it. `isError` survives a failure
+  // until the NEXT read settles, and this query is shared with the header menu — so without
+  // this, arriving on /alerts after the menu's read failed shows the full-page error block
+  // while the page's own request is still on its way.
+  const loading = isFetching && !anything;
+  const bothFailed = !isFetching && isError && !anything;
   /** One endpoint refused, or the last read did while an older answer still stands. */
-  const incomplete = !bothFailed && ((data?.partial ?? false) || isError);
-  const empty = !loading && !isError && !incomplete && !anything;
+  const incomplete = !isFetching && !bothFailed && (partial || isError);
+  const empty = !isFetching && !isError && !partial && !anything;
 
   const patch = (next: (list: PushFollowsList) => PushFollowsList) =>
     queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>

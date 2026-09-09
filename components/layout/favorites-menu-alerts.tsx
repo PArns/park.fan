@@ -71,7 +71,7 @@ export function FavoritesMenuAlerts({
   const tFavorites = useTranslations('favorites');
   const locale = useLocale();
   const queryClient = useQueryClient();
-  const { data, isPending, isError } = usePushFollowsList({ enabled: open });
+  const { data, isFetching, isError } = usePushFollowsList({ enabled: open });
   /**
    * The rows currently being deleted — a set, not one key.
    *
@@ -167,9 +167,14 @@ export function FavoritesMenuAlerts({
    * null` below, which is reserved for a read that really did find nothing.
    */
   const anything = rows.length > 0;
-  const failed = isError && !anything;
-  const incomplete = !failed && ((data?.partial ?? false) || isError);
-  const complete = !isPending && !failed && !incomplete;
+  const partial = data?.partial ?? false;
+  // A request in flight outranks the verdict of the one before it — see the same three lines in
+  // `AlertsOverview`. Without it, reopening the band after one failed read shows the error line
+  // over an empty list for the whole of the next request.
+  const loading = isFetching && !anything;
+  const failed = !isFetching && isError && !anything;
+  const incomplete = !isFetching && !failed && (partial || isError);
+  const complete = !isFetching && !isError && !partial;
   const count = complete ? rows.length : expected;
   const shown = rows.slice(0, cap);
 
@@ -188,7 +193,7 @@ export function FavoritesMenuAlerts({
       <GroupHeading title={t('title')} count={count} />
       {(failed || incomplete) && <p className="text-destructive mb-2 text-xs">{t('loadError')}</p>}
       <ul className="space-y-px">
-        {isPending ? (
+        {loading ? (
           <RowSkeletons count={expected} max={cap} />
         ) : (
           <>
