@@ -197,3 +197,42 @@ for (const id of ids) {
 `kinds` is a declaration of ownership and `sim` is a capability; today the first is conditional on
 the second. This module now has a `sim` and no longer depends on the change, so nothing is blocked —
 but the next builder who writes a render-only module that owns a kind will spend the same round.
+
+---
+
+## 9. `paths`: a `plaza` does not clip a `path` that crosses it
+
+**Round 3, found by opening a frame.** `showcase.ts` laid one `plaza` (`style: 'pavers'`) from
+[-13.5, -9] to [13.5, 29] under the kit row, which the 10 m `promenade` path runs straight through.
+The two surfaces are coplanar and the frame came back with them torn into each other — interleaved
+patches of grey slab and clay paver down the middle of `1200-kit.png`, the signature of two co-planar
+meshes fighting for the depth buffer. Crop: `.game-render/_r3-crops/kit-yard-zfight.png`.
+
+Path against path clips correctly: the showcase's 6 m cross walk at z = 20 has run through that same
+promenade since round 2 with no seam. So the mechanism exists and this case misses it.
+
+`layout.ts` has `plazaClip(plaza, spline)`, which returns a clip region for the spline when at least
+one of the spline's **stations** falls inside the plaza ring, with the comment _"A plaza is never cut
+by the path that lands on it: the plaza is the surface, the path stops at its kerb line."_ That is
+the right rule and it is not what the frame shows, so one of three things is true and only `paths`
+can say which: the promenade has no station inside that ring (a sampling question), the clip is
+computed and not applied to a path that passes **through** rather than **lands on**, or a plaza whose
+ring contains a path end-to-end is a case the function does not reach.
+
+**Nothing is blocked.** The showcase uses two `path` aisles instead, which stays out of the depth
+fight rather than trying to win it, and it reads better anyway. This is filed because the next module
+that lays a plaza over a path will spend the same afternoon, and because a builder cannot tell from
+the API that `form: 'plaza'` and `form: 'path'` compose differently.
+
+## 10. Harness: the HUD panel covers the right quarter of every gauntlet frame
+
+Minor, and it is a framing tax rather than a bug. `game-shot.mjs` photographs the running page, so
+the Park panel and the build bar sit over roughly the right 25 % and the top 18 % of all nine frames.
+For a module whose showcase is a street with two sides, that is one side permanently behind an
+overlay — the round-2 critique's finding 6 was partly this, and this round's `overview` was re-aimed
+around the panel rather than around the content, which is the wrong way round.
+
+A `--hud=0` flag (or a query parameter the harness already sets, beside `harness=1`) that boots with
+the panels collapsed would give every module back a quarter of its frame. It should stay opt-in: the
+HUD in the frame is also how `ui` gets photographed at all, and two of this module's own findings
+were caught because the animated clock was there to prove the A/B was comparing two live frames.

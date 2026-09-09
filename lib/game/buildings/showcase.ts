@@ -176,7 +176,19 @@ const SHOWCASE_PACK = {
     // Two metres from a facade: the only frame in the set where a brick, a sash bar and a sill are
     // each more than a pixel, and therefore the only one that can answer whether they are there.
     { id: 'facade', target: [-16, 6, 46], bearing: 92, pitch: 5, distance: 17 },
-    { id: 'kit', target: [0, 3, 6], bearing: 0, pitch: 9, distance: 27 },
+    /**
+     * One aisle each, three quarters on, because `kit` down the middle photographs the street.
+     *
+     * The ten pieces stand in two rows of five at x = ±8.5, and a camera on the centreline looking
+     * north puts the 10 m promenade through the middle of the frame with a row receding along each
+     * edge: `1200-kit.png` has been a picture of paving with two samples in it for three rounds, and
+     * five of the ten are outside the frame entirely. These two look ALONG one aisle from 20° off
+     * its axis, so the near piece is three-quarters on and the four behind it step back in the same
+     * pose — the arrangement a merchant's yard has for the same reason, which is that you can see
+     * what is for sale.
+     */
+    { id: 'kit', target: [-8.5, 2.6, 12], bearing: 340, pitch: 14, distance: 34 },
+    { id: 'kit-east', target: [8.5, 2.6, 12], bearing: 20, pitch: 14, distance: 34 },
     { id: 'hall', target: [0, 8, -46], bearing: 8, pitch: 12, distance: 52 },
     { id: 'gate', target: [-19, 5, 20], bearing: 96, pitch: 11, distance: 40 },
     // The extensibility exhibit, square on to its front: the jettied first floor oversailing the
@@ -243,18 +255,32 @@ export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
       points: [-14, 20, -6, 20, 6, 20, 14, 20],
     });
     /**
-     * A yard under the kit row, so the ten pieces stand in a builder's merchant and not in grass.
+     * A paved aisle under each half of the kit row, so the ten pieces stand in a builder's merchant
+     * and not in grass.
      *
      * Each piece already brings its own apron, and ten aprons scattered on a lawn read as ten
      * dropped objects — which is what "kit pieces are ten slabs on a lawn" has meant for three
-     * rounds. One paved rectangle under all of them is what makes them a yard: the same trick the
-     * street itself uses, and content rather than code.
+     * rounds.
+     *
+     * **Two aisles rather than one rectangle, and the reason is a photograph.** The first attempt
+     * was a single `plaza` from [-13.5, -9] to [13.5, 29], which is the shape the eye wants and lays
+     * a second surface straight over the 10 m promenade running up the middle of it. A plaza cuts a
+     * path that crosses it (`paths/layout.ts` `plazaClip`) and this one did not: `1200-kit.png` came
+     * back with the promenade's grey slabs and the yard's clay pavers interleaved in torn patches
+     * down the centre of the frame, the two surfaces coplanar and fighting for the depth buffer.
+     * Path against path clips correctly — the 6 m cross walk above has run through the promenade
+     * since round 2 with no seam — so the yard is two `path` strips flanking it, each 6 m over a row
+     * of 4 m pieces standing on their centreline at x = ±8.5, with 0.5 m of grass either side of the
+     * promenade's kerb. Content, and it stays out of the depth fight rather than winning it.
      */
-    paths.create({
-      form: 'plaza',
-      style: 'pavers',
-      points: [-13.5, 29, 13.5, 29, 13.5, -9, -13.5, -9],
-    });
+    for (const side of [-1, 1]) {
+      paths.create({
+        form: 'path',
+        style: 'pavers',
+        width: 6,
+        points: [side * 8.5, -8, side * 8.5, 10, side * 8.5, 28],
+      });
+    }
   } else {
     console.warn('[game/buildings] showcase: no paths module — the street will be bare ground');
   }

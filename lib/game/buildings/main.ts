@@ -17,7 +17,9 @@
  * same ids. The bundled packs declare ten building entries and all ten are kit pieces; without this
  * the Buildings tab would offer a wall and a column and no building.
  *
- * **Night is lit windows plus a very small pool of real lights.** Two, at `high` and above. The
+ * **Night is lit windows plus a very small pool of real lights.** Two at `medium`, four at `ultra`;
+ * see `LIGHT_POOL`, which round 3 raised off one after a critic counted twenty-four sites against
+ * it. The
  * scenery module already pools up to six and shops up to four, and `PBRMaterial` takes the first N
  * lights in scene order rather than the nearest — so this module takes the smallest share that still
  * puts a pool of light on a doorstep, and its lights carry `renderPriority = -1` so that what gets
@@ -475,11 +477,16 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
   }
 
   function updatePool(dtSeconds: number): void {
-    // 0.10 at full dark, and the number is a measurement rather than a taste. On the 23:00
-    // overview the roof band goes 27.7 → 53.5 against grass that does not move at all (18.3 → 18.3,
-    // it is not this module's), while the wall band goes 26.1 → 40.8 and keeps its own range
-    // (sd 26.5 → 27.9). At 0.22 the roof reached 78.6, which is a moonlit slate roof reading
-    // brighter than the lit windows on the floor below it.
+    // 0.10 at full dark, and the number is a measurement rather than a taste. A/B'd in the running
+    // page at 23:00 `overview` by disabling this light alone
+    // (`.game-render/buildings-r3-night/2300-overview-sky-{on,off}.png`, dev server): a mansard
+    // slope at (560,440)-(680,500) goes mean 26.4 → 35.9 and p5 15.1 → 29.9, the terrace's brick
+    // wall at (600,520)-(700,580) goes 49.6 → 58.4 and p5 11.8 → 20.1 — the roof takes nearly twice
+    // what the wall takes, which is the whole reason this is a hemispheric light and not an
+    // emissive on the shared `kit` material. The lawn at (40,250)-(230,560) reads 19.8 both ways,
+    // to the decimal: `includedOnlyMeshes` holds, and the terrain keeps its own opinion of the
+    // night. At 0.22 the roof reached a moonlit slate reading brighter than the lit windows on the
+    // floor below it.
     const want = 0.1 * Math.max(0, Math.min(1, (night - 0.15) / 0.45));
     if (want !== sky.intensity) {
       sky.intensity = want;
