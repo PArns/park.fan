@@ -19,10 +19,7 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
 
 /** `GET <apiPath>?endpoint=…` — the "list this browser's own rows" shape `ride-alerts`/`show-follows` both use. */
-export async function relayPushGet(
-  request: NextRequest,
-  apiPath: string
-): Promise<NextResponse> {
+export async function relayPushGet(request: NextRequest, apiPath: string): Promise<NextResponse> {
   const endpoint = request.nextUrl.searchParams.get('endpoint');
   if (!endpoint) {
     return NextResponse.json({ error: 'Missing endpoint' }, { status: 400 });
