@@ -300,6 +300,20 @@ export function PlannerWizard({
    * would run on every keystroke of the step.
    */
   const dayPayload = planDay.data ?? null;
+  /**
+   * Is the DAY still on its way — the payload the headliner step is made of.
+   *
+   * Not `facts.pending`. `facts` is the best-days snapshot, keyed by park alone
+   * and already cached by four components on a park page; it answers instantly
+   * while `/plan/day` — keyed by park AND date, refetched on every arrow press —
+   * is still in flight. Waiting on the wrong one is the same as not waiting.
+   *
+   * `data === undefined` rather than `!data`, for the reason the same distinction
+   * exists in `use-day-facts`: a shut day answers 404 and the hook resolves that
+   * to `null`, which is an ANSWER. `!data` would hold the step open for ever on
+   * exactly the days that have nothing to offer.
+   */
+  const dayPending = Boolean(park && date) && planDay.data === undefined && !planDay.isError;
   const wizardGrid = useMemo(
     () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour),
     [dayPayload]
@@ -520,7 +534,7 @@ export function PlannerWizard({
           // hätte sonst nichts anzubieten und der Tag entstünde leer. `pending`
           // ist `!data && !isError`, hört also auch dann auf, wenn die Frage
           // scheitert — ein Tag ohne Prognose bleibt abschließbar.
-          { run: finish, enabled: Boolean(park && date) && !facts.pending }
+          { run: finish, enabled: Boolean(park && date) && !dayPending }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
   /**
@@ -741,9 +755,13 @@ export function PlannerWizard({
                     Satz „Für diesen Tag fehlt keine große Bahn mehr" behauptete
                     ein Ergebnis, das niemand ausgerechnet hat. Wer in diesem
                     Fenster abschließt, legt einen Tag ohne Bahnen an und hat
-                    dazu gelesen, dass keine fehlt. `WizardDayCard` bekommt
-                    `loading` aus demselben Grund. */}
-                {facts.pending ? (
+                    dazu gelesen, dass keine fehlt.
+
+                    Gewartet wird auf `/plan/day` und nicht auf `facts` — siehe
+                    `dayPending`: die Best-Days-Momentaufnahme ist auf einer
+                    Parkseite längst im Cache und antwortet sofort, während der
+                    Tag selbst noch unterwegs ist. */}
+                {dayPending ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {t('wizard.facts.loading')}
                   </p>
