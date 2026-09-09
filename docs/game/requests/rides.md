@@ -156,3 +156,47 @@ Two cautions. The wheel's own extent is 27.2 m in **x** (see §3), so it needs t
 plot; and every machine lays a hard standing of `max(halfShort, halfLong × 0.72) + 0.9` m radius,
 so the five above put about 1,050 m² of paving on a 2,016 m² plot — which is what a fairground
 looks like, but the path loop should not also pave under them.
+
+---
+
+## 4. A coaster has no queue and no boarding, and the scoreboard described it as a string mismatch
+
+**Owner:** cross-module — `rides` owns the machinery, `track`/`trains` own the coaster, `guests`
+is the consumer · **Value:** the game's headline object becomes playable. Today a coaster is
+scenery that moves.
+
+**Written up here because the open issue was wrong about the size of it.** `STATUS.json` recorded
+"NO GUEST IN THIS GAME CAN RIDE A COASTER" as a kind mismatch: `track` claims `kinds: ['coaster']`,
+`rides` claims `kinds: ['ride']`, and `guests/sim.ts` builds a ride venue from
+`entity.kind === 'ride'`. That is all true and it is not the problem. Adding `'coaster'` to that
+check would send guests walking to a coaster where they would stand for ever, which is worse than
+the honest nothing they do now. Measured on the tree:
+
+| Question | Answer | Where |
+| --- | --- | --- |
+| Does `rides` see a coaster at all? | No, it returns on the first line | `rides/sim.ts:263` — `if (entity.kind !== 'ride') return;` |
+| Does `trains` have a boarding API? | No. `ids`, `status`, `statuses`, `trains`, `profile`, `setFleetSize` and nothing else | `trains/sim.ts:54-66` |
+| Does `trains` know about a station? | Yes — `plan.station`, `dwellSeconds`, dispatch, block holding | `trains/sim.ts:214-356` |
+| Does anything queue for a coaster? | No. Grepping `coaster` across `guests/` and `rides/` returns an archetype name, two comments and one docstring | — |
+
+So a coaster's trains dispatch on a dwell timer with nobody in them, and the machinery that would
+put somebody in them — `join`, `place`, `board`, `leave`, balking, the refusal reasons, the height
+check — exists once, in `rides`, wired to flat rides only.
+
+**The shape this wants, and the reason it is not three lines.** `RidesSimApi`'s queue half is not
+about flat rides; it is about a line of people and a vehicle that takes some of them. What makes it
+flat-ride-specific is where the throughput comes from: `rig.ts` says as much in its own docstring —
+"a flat ride's throughput is a number a park manager plans with and a coaster's lap time is not".
+A coaster's capacity is the fleet's, and `trains` already computes it (`profile`, `cycleSeconds`,
+the block plan). So the split is: `rides` keeps the queue and the boarding contract, and a
+**dispatcher** behind it answers "how many may board, and when" — a constant for a flat ride, the
+station block's arrival for a coaster. `trains` would then need to say a train is standing at the
+platform with N seats and take a boarding count back.
+
+**And `flumes` walks into the identical wall.** A flume is `kind: 'flume'`, `rides/sim.ts:263`
+refuses it too, and its riders queue exactly like a coaster's. Whoever does this should do it as
+"a kind that can be queued for declares itself" rather than as a second string in the check —
+`registry.registerKind` already claims an open union, and this module's own rule is that core never
+switches on a kind. Three kinds in the switch is the point at which the switch is the bug.
+
+**Not done here** because it spans four modules and is a round of its own, not an integrator patch.
