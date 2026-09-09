@@ -687,7 +687,7 @@ export function FavoritesMenuPanel({
             />
             <ul className="space-y-px">
               {loading ? (
-                <RowSkeletons count={counts.shows + counts.restaurants} />
+                <RowSkeletons count={counts.shows + counts.restaurants} max={cap} />
               ) : (
                 <>
                   {venueRows(data.shows, data.restaurants)

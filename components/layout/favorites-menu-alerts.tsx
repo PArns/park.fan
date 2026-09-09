@@ -72,7 +72,14 @@ export function FavoritesMenuAlerts({
   const locale = useLocale();
   const queryClient = useQueryClient();
   const { data, isPending, isError } = usePushFollowsList({ enabled: open });
-  const [removing, setRemoving] = useState<string | null>(null);
+  /**
+   * The rows currently being deleted — a set, not one key.
+   *
+   * As a single key, pressing X on a second row re-enabled the first row's button while its
+   * DELETE was still in flight, and the first request coming back cleared the second row's
+   * spinner. Somebody clearing three alerts in a row does exactly that.
+   */
+  const [removing, setRemoving] = useState<readonly string[]>([]);
 
   // Same helper `LocalTime` calls, so a performance reads here exactly as it does on the show's
   // own card — and in the PARK's zone, which is the clock the park posts its times in.
@@ -99,12 +106,12 @@ export function FavoritesMenuAlerts({
     remove: () => Promise<void>,
     next: (l: PushFollowsList) => PushFollowsList
   ) => {
-    setRemoving(key);
+    setRemoving((current) => (current.includes(key) ? current : [...current, key]));
     await remove();
     queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>
       previous ? next(previous) : previous
     );
-    setRemoving(null);
+    setRemoving((current) => current.filter((k) => k !== key));
   };
 
   const rows: AlertRow[] = [
@@ -198,14 +205,14 @@ export function FavoritesMenuAlerts({
                   <button
                     type="button"
                     onClick={() => void row.remove()}
-                    disabled={removing === row.key}
+                    disabled={removing.includes(row.key)}
                     aria-label={t('remove', { name: row.title })}
                     // 32 px rather than the 44 px phone tier the button scale documents: this
                     // group is drawn in the band only, and the band needs a 1024 px header
                     // before its trigger is even in the row.
                     className="text-muted-foreground hover:text-destructive hover:bg-muted/60 flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors disabled:cursor-default disabled:opacity-50"
                   >
-                    {removing === row.key ? (
+                    {removing.includes(row.key) ? (
                       <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
                     ) : (
                       <X className="size-3.5" aria-hidden="true" />
