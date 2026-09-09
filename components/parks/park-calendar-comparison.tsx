@@ -107,11 +107,14 @@ export function ParkCalendarComparison({
    * the planner's own and is held back by `useLoadLast`, so asking here cannot compete with the
    * park page's live queries — and on this route the answer is already in the cache.
    *
-   * A `null` horizon (still loading, or the request failed) does not withdraw the button: that
-   * would take the offer away for the ordinary near-term day on a flaky connection, which is the
-   * common case, to guard against the rare one.
+   * Two different `null`s, and they are treated differently. **In flight** the button waits: the
+   * answer is a moment away and offering first would be offering before the check. **Settled at
+   * `null`** — the request failed its retries — the button stands, because that is precisely what
+   * the date step does in the same situation: `PlannerMonthCalendar` takes `maxDate={facts.lastDate
+   * ?? undefined}`, and an absent max means no max. Withdrawing the offer here would be stricter
+   * than the step this path replaces, on the ordinary near-term day, on a flaky connection.
    */
-  const { lastDate: plannerHorizon } = usePlannerDayFacts(
+  const { lastDate: plannerHorizon, loading: horizonLoading } = usePlannerDayFacts(
     { slug: planner.parkSlug, geo: planner.geo },
     open
   );
@@ -244,6 +247,29 @@ export function ParkCalendarComparison({
           maximumFractionDigits: 0,
         }).format(delta);
     }
+  };
+
+  /**
+   * The sides the comparison itself has ruled out, as a set.
+   *
+   * The plan button reads THIS rather than re-deriving „can this day be visited" from the day's
+   * fields, because the two answers drifting apart is a bug with no symptom: a `status: 'UNKNOWN'`
+   * day was named the better day with no blocker line, and then silently got no button — the
+   * dialog recommending a day and refusing to plan it, with nothing on screen saying why.
+   */
+  const blockedSides = new Set(
+    comparison.blockers.flatMap((blocker) =>
+      blocker.side === 'tie' ? (['a', 'b'] as const) : [blocker.side]
+    )
+  );
+
+  /** Whether this day may be handed to the planner at all. */
+  const plannable = (day: CalendarDay): boolean => {
+    const side = day === a ? 'a' : 'b';
+    if (blockedSides.has(side)) return false;
+    if (day.status !== 'OPERATING' || day.date < todayIso) return false;
+    if (horizonLoading) return false;
+    return plannerHorizon === null || day.date <= plannerHorizon;
   };
 
   const sideLabel = (side: DayComparisonSide) =>
@@ -400,9 +426,7 @@ export function ParkCalendarComparison({
               the remaining button stays under the day it belongs to. */}
           <div className="grid grid-cols-2 gap-2">
             {([a, b] as const).map((day) =>
-              day.status !== 'OPERATING' ||
-              day.date < todayIso ||
-              (plannerHorizon !== null && day.date > plannerHorizon) ? (
+              !plannable(day) ? (
                 <div key={day.date} aria-hidden="true" />
               ) : (
                 <PlanDayButtonLazy

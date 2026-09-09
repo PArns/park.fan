@@ -163,11 +163,21 @@ function waitOf(day: CalendarDay): number | null {
  * it has not. `rankOf` is not changed and not re-implemented — {@link waitWithinBucket} is the one
  * line of it this needs.
  */
-function rankWith(day: CalendarDay, bucket: number): number {
+function rankWith(day: CalendarDay, bucket: number, includeWait: boolean): number {
+  // `includeWait` is false where the OTHER day has no wait — see the call site. A wait counted on
+  // one side only is a missing figure read as „no queue": a day with no forecast at all beat a day
+  // forecast at 60 minutes, on the strength of the number it did not have. The wait tips the
+  // verdict exactly when the dialog can show both figures side by side, and never otherwise.
+  if (!includeWait) return bucket;
+  const wait = waitOf(day);
   const headliner = day.headlinerForecast?.avgWait;
-  if (typeof headliner === 'number' && Number.isFinite(headliner)) return rankOf(day, bucket);
-  const fallback = waitOf(day);
-  return fallback === null ? rankOf(day, bucket) : bucket + waitWithinBucket(fallback);
+  // Where `rankOf` has a wait of its own to read, it IS the ranking — the same function, called.
+  // The condition is `waitOf`'s and not `rankOf`'s, because `rankOf` scores an `avgWait` of 0
+  // while `waitOf` rejects it as no reading at all.
+  if (wait !== null && typeof headliner === 'number' && Number.isFinite(headliner) && headliner > 0)
+    return rankOf(day, bucket);
+  // Otherwise the documented `avgWaitTime` fallback, under `rankOf`'s own scaling.
+  return wait === null ? bucket : bucket + waitWithinBucket(wait);
 }
 
 /** Minutes the park is scheduled to be open, or `null` where the hours are missing or nonsense. */
@@ -177,9 +187,13 @@ function openMinutesOf(day: CalendarDay): number | null {
   const open = minutesOfClock(hours.openingTime);
   const close = minutesOfClock(hours.closingTime);
   if (open === null || close === null) return null;
-  // A closing time before the opening one is the day running past midnight, not a negative day.
+  // A closing time BEFORE the opening one is the day running past midnight, not a negative day.
+  // Equal is neither: `10:00–10:00` is as readable as a twenty-four-hour day as it is a zero-hour
+  // one, and the overnight branch made it the former — a park „open 24 h" beating a normal day by
+  // sixteen hours. Two readings and no way to choose means the row is dropped.
+  if (close === open) return null;
   const span = close > open ? close - open : close + 24 * 60 - open;
-  return span > 0 && span <= 24 * 60 ? span : null;
+  return span > 0 && span < 24 * 60 ? span : null;
 }
 
 /**
@@ -271,7 +285,11 @@ function blockersFor(day: CalendarDay, todayIso: string): DayComparisonBlockerKe
   //
   // Not reported for a closed day: a park that is shut has no forecast BY DEFINITION, and two
   // lines saying so is one fact told twice.
-  if (!closed && bucketOf(day) === null) keys.push('no-forecast');
+  // `UNKNOWN` counts too, and by exactly this name: the park has published no status for the day,
+  // which is what „no forecast" says. Without it a day whose status is unknown but whose crowd
+  // level survived could win outright — and then find no plan button under it, because the button
+  // asks for `OPERATING`. The two questions are answered here, once.
+  if (!closed && (day.status === 'UNKNOWN' || bucketOf(day) === null)) keys.push('no-forecast');
   return keys;
 }
 
@@ -304,8 +322,11 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
   const waitA = waitOf(a);
   const waitB = waitOf(b);
 
-  const rankA = bucketA === null ? null : rankWith(a, bucketA);
-  const rankB = bucketB === null ? null : rankWith(b, bucketB);
+  // The wait enters the ranking only when BOTH days have one — the same condition that decides
+  // whether the wait row is drawn, so the verdict can never rest on a figure the reader cannot see.
+  const comparableWaits = waitA !== null && waitB !== null;
+  const rankA = bucketA === null ? null : rankWith(a, bucketA, comparableWaits);
+  const rankB = bucketB === null ? null : rankWith(b, bucketB, comparableWaits);
 
   const reasons = [
     // The crowd bucket carries the whole bucket difference; the wait carries what `rankOf` scales

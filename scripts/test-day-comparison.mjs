@@ -425,6 +425,47 @@ test(
   'closed:a'
 );
 
+// A headliner forecast of exactly 0 is not a wait: `waitOf` rejects it, so the verdict must not
+// score it either. It used to, and the dialog then claimed a clear winner over four tied rows.
+const zeroWait = compareDays(
+  day('2026-09-20', { headlinerForecast: { avgWait: 0, rides: [] } }),
+  day('2026-09-21', { headlinerForecast: { avgWait: 60, rides: [] } }),
+  TODAY
+);
+test('a wait of 0 produces no row', () => reason(zeroWait, 'wait'), null);
+test('a wait of 0 does not decide the verdict either', () => zeroWait.better, 'tie');
+
+// A status the park has not published cannot be recommended, whatever crowd level survived on it.
+const unknownStatus = compareDays(
+  day('2026-09-20', { status: 'UNKNOWN', crowdLevel: 'very_low' }),
+  day('2026-09-21', { crowdLevel: 'high' }),
+  TODAY
+);
+test('unknown status: the day with a status wins', () => unknownStatus.better, 'b');
+test(
+  'unknown status: and it is on the record, so the missing plan button has a reason',
+  () =>
+    unknownStatus.blockers
+      .filter((x) => x.key === 'no-forecast')
+      .map((x) => x.side)
+      .join(','),
+  'a'
+);
+
+// „10:00-10:00" reads as a full day and as an empty one; neither may be asserted.
+const sameClock = compareDays(
+  day('2026-09-20', {
+    hours: { openingTime: '10:00', closingTime: '10:00', type: 'OPERATING', isInferred: false },
+  }),
+  day('2026-09-21'),
+  TODAY
+);
+test(
+  'hours: open and close at the same time is not a 24-hour day',
+  () => reason(sameClock, 'hours'),
+  null
+);
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');
