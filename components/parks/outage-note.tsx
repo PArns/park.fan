@@ -49,6 +49,18 @@ import { outageElapsedMinutes } from '@/lib/utils/outage';
  * opening clock to count on, and an unobserved start makes every duration a
  * lower bound rather than a measurement.
  *
+ * It is a measurement taken at the moment the payload was written, which is not
+ * the same as one taken now: `startedAt` is an instant and does not decay, this
+ * does. The park page's server render comes from a fetch cached for a day, so a
+ * first paint can carry a figure hours behind the clock — the same staleness
+ * the „gemeldet seit" line beside it has always had, and healed by the same
+ * first poll (`mergeLiveParkSnapshot` refreshes the whole `outage` key), or by
+ * the detail fetch on the ride page. It survives only for a reader with no
+ * JavaScript. What makes that tolerable is the direction: operating minutes are
+ * a subset of wall minutes, so a stale figure is always SHORT of the truth. The
+ * page can understate how long a ride has been broken; it cannot accuse an
+ * operator of a longer breakdown than was measured.
+ *
  * ## Two signals, two sentences
  *
  * Where a park's feed emits DOWN, this says „Störung gemeldet seit …" and
