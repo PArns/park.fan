@@ -49,12 +49,30 @@ compiles. Details: [homepage hero](../features/homepage-hero.md#the-map-data-is-
 
 | Script                          | Purpose                                                                         |
 | ------------------------------- | ------------------------------------------------------------------------------- |
-| `validate-translations.js`      | Checks message keys against `messages/*.json`                                   |
-| `crawl-translations.js`         | Translation crawler                                                             |
+| `validate-translations.cjs`     | Checks message keys against `messages/*.json`                                   |
+| `crawl-translations.cjs`        | Translation crawler                                                             |
 | `generate-route-namespaces.mjs` | Derives which namespaces each route ships (committed output)                    |
 | `generate-message-chunks.mjs`   | Per-locale chunks for namespaces a lazy boundary fetches (prebuild, gitignored) |
 | `check-client-messages.mjs`     | Fails on a stale map or a mis-wired route                                       |
 | `check-untranslated.mjs`        | Fails on German copied verbatim into another locale (prebuild)                  |
+
+### These two are `.cjs`, and the package is `"type": "module"`
+
+Both translation scripts are CommonJS (`require`), and they are the only two Node scripts in the
+repo that are — everything else is `.mjs` or `.ts`. They carry the extension that says so, because
+the root `package.json` declares `"type": "module"`.
+
+That declaration is not a preference. A `scripts/*.mjs` that imports a `.ts` module directly —
+`generate-media-manifest.mjs` does, for `getServerApiHeaders`, and about thirty `test-*.mjs` do for
+the module under test — leans on Node's type stripping, and Node cannot tell what a `.ts` file is
+without a `type` field: it parses it as CommonJS, fails, detects module syntax and **parses it a
+second time**, printing `[MODULE_TYPELESS_PACKAGE_JSON]` with a note about the overhead. That
+warning stood in every production build log. Declaring the type removes the second parse, not just
+the message.
+
+So: a new script is `.mjs`, and the only reason to write `.cjs` is code that genuinely needs
+`require`. Renaming these two back to `.js` puts the warning back in the build log **and** breaks
+`pnpm validate:translations`, which `release:check` runs.
 
 ### The route namespace map is generated, not written
 

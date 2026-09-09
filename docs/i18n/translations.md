@@ -241,9 +241,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: pnpm install
-      - run: node scripts/validate-translations.js
+      - run: node scripts/validate-translations.cjs
       - run: pnpm build
-      - run: node scripts/crawl-translations.js
+      - run: node scripts/crawl-translations.cjs
 ```
 
 This ensures:
@@ -279,10 +279,10 @@ This ensures:
 
 **Solution:**
 
-1. Run `node scripts/validate-translations.js`
+1. Run `node scripts/validate-translations.cjs`
 2. Add missing keys
 3. Build again
-4. Run `node scripts/crawl-translations.js` for validation
+4. Run `node scripts/crawl-translations.cjs` for validation
 
 ## Best Practices
 
