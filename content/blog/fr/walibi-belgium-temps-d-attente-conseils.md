@@ -156,8 +156,7 @@ le monde, et la plupart sont à la ferraille depuis longtemps. Elle s’est appe
 et le nom de **« Psyké Underground »**, et le chantier de Dock World lui a rendu
 celui de Turbine.
 
-**Vampire** (1999) est un **SLC de Vekoma** (Suspended Looping Coaster, modèle
-689) et, à son ouverture, le premier de ce type en Belgique. Le train est
+**Vampire** (1999) est un **SLC de Vekoma** (Suspended Looping Coaster, modèle 689) et, à son ouverture, le premier de ce type en Belgique. Le train est
 suspendu sous le rail au lieu de rouler dessus, si bien que les pieds battent
 l’air à chaque virage, sans le moindre plancher en dessous.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, baptisée
