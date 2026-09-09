@@ -240,11 +240,18 @@ function clampDuration(minutes: number): number {
  * there is no `closeMin` here to cap against, and a minute the day has no room
  * for is the honest answer to a press made after closing.
  *
- * `resolveTimeZone` is what makes this safe before the zone arrives: an unknown
- * zone reads the day in the READER's, which is the right answer for the
- * commonest case by far. Every call site that can reach here passes a real zone,
- * and the one that could not would have computed `date` from this same fallback,
- * so the two stay consistent either way.
+ * `resolveTimeZone` is the same fallback `todayInZone` already applies one
+ * decision earlier, and the pairing is the point: a park whose zone has not
+ * reached the plan (`PlannerPark.timezone` is optional, and the panels pass
+ * `day?.timezone ?? park.timezone`) has its DATE picked in the reader's zone
+ * too, so the floor is read against the clock the date came from. Where it did
+ * not — a date chosen in the wizard's picker for a zone-less park — the floor
+ * can be a few hours out inside the right day. That is a worse answer than the
+ * park's own clock and a better one than this had before, which was 10:00 for
+ * everybody, and it is bounded by the day either way. Refusing to raise
+ * anything without a zone is the alternative and is the wrong one: it restores
+ * the exact defect this exists to close for every park the payload happens not
+ * to date. The real repair is upstream, in making the zone reliably present.
  */
 function nowFloorMinute(date: string, timezone: string | undefined, now: number): number {
   const clock = dayClock(date, resolveTimeZone(timezone), now);
