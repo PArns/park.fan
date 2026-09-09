@@ -136,7 +136,11 @@ async function postFollowShow(
       }),
     });
     if (!response.ok) return { ok: false, error: await classifyFailure(response) };
-    setShowFollowedLocal(showId, true);
+    // The mirror records WHICH performance was armed, because the API keeps
+    // one row per (subscription, show) and its upsert overwrites `startTime`:
+    // a browser that follows the 19:10 performance does not follow the 17:30
+    // one, and a bell beside 17:30 must not claim it does.
+    setShowFollowedLocal(showId, true, startTime ?? null);
     return { ok: true, value: undefined };
   } catch {
     return { ok: false, error: { reason: 'network' } };

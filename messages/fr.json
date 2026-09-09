@@ -1612,6 +1612,7 @@
       "close": "Fermer",
       "nextShowtime": "Prochaine représentation",
       "chosenShowtime": "Séance choisie",
+      "replacesShowtime": "Remplace votre rappel de",
       "viewAll": "Mes alertes"
     },
     "rideBell": {

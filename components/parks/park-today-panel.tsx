@@ -255,6 +255,12 @@ export function ParkTodayPanel({
           name: stripNewPrefix(s.name),
           slug: s.slug,
           startTime: st.startTime,
+          // The show's WHOLE day rides along beside the row's own performance:
+          // a reminder that is armed open-ended is about whichever comes next,
+          // and a dialog handed one time can only call that one the next. The
+          // bell reads the row's `startTime` for its own lead check, so this
+          // list changes nothing about which rows draw a bell.
+          showtimes: s.showtimes ?? [],
         }))
       )
       .filter((e) => new Date(e.startTime).getTime() > nowMs)
@@ -711,7 +717,7 @@ export function ParkTodayPanel({
                         // the height.
                         if (i === 0) {
                           return (
-                            <li key={i} aria-hidden="true">
+                            <li key={`slot-${i}`} aria-hidden="true">
                               <span className="flex flex-col gap-0.5 rounded-lg border border-transparent px-2.5 py-2">
                                 <span className="invisible flex items-baseline gap-2">
                                   <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
@@ -726,7 +732,7 @@ export function ParkTodayPanel({
                           );
                         }
                         return (
-                          <li key={i} className="text-muted-foreground text-sm">
+                          <li key={`slot-${i}`} className="text-muted-foreground text-sm">
                             {/* The row is RESERVED, not drawn: it holds its height so the panel
                               does not shrink as the day's showtimes pass, but a column of em
                               dashes trailing the last real show is noise, not information. */}
@@ -736,6 +742,13 @@ export function ParkTodayPanel({
                           </li>
                         );
                       }
+                      // Keyed by the PERFORMANCE, never by the slot: this list is
+                      // re-derived every 30 seconds off `browserNow` and shifts up by one
+                      // as each performance starts. On a positional key React would keep
+                      // the row's bell mounted and hand it a different show and time
+                      // underneath an open dialog, and the press would then file a
+                      // reminder for a performance nobody tapped.
+                      const rowKey = `${show.id}-${show.startTime}`;
                       const startsIn = browserNow
                         ? new Date(show.startTime).getTime() - browserNow.getTime()
                         : 0;
@@ -756,7 +769,7 @@ export function ParkTodayPanel({
                           // child of it: the same nested-interactive-elements trap `AttractionCard`
                           // hit (see `components/ui/dialog.tsx`'s fix) applies to any button inside
                           // an anchor, dialog or not — a sibling laid on top avoids it entirely.
-                          <li key={i} className="relative">
+                          <li key={rowKey} className="relative">
                             <a
                               href={chapterHref(`map-show-${show.slug}`)}
                               className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border py-2 pr-9 pl-2.5 transition-colors"
@@ -786,9 +799,13 @@ export function ParkTodayPanel({
                               showId={show.id}
                               showName={show.name}
                               source="panel"
-                              // One row IS one performance here, so the row's own start
-                              // time is the whole list as far as this bell is concerned.
-                              showtimes={[{ startTime: show.startTime }]}
+                              // One row IS one performance, and that performance is what
+                              // the reminder is FOR. Left off, the follow is the
+                              // open-ended one and the API notifies before every
+                              // performance of a show whose 14:00 slot is what the row
+                              // named.
+                              startTime={show.startTime}
+                              showtimes={show.showtimes}
                               timezone={timezone}
                               className="absolute top-[9px] right-2 h-5"
                             />
@@ -796,7 +813,7 @@ export function ParkTodayPanel({
                         );
                       }
                       return (
-                        <li key={i} className="relative text-sm">
+                        <li key={rowKey} className="relative text-sm">
                           {/* A plain `<a>` with a hash, not a next-intl `Link`: the tab router
                             listens for `hashchange`, and `pushState` navigation does not fire it.
                             Same reason the FAQ's calendar link used to be one — that link became a
@@ -814,7 +831,8 @@ export function ParkTodayPanel({
                             showId={show.id}
                             showName={show.name}
                             source="panel"
-                            showtimes={[{ startTime: show.startTime }]}
+                            startTime={show.startTime}
+                            showtimes={show.showtimes}
                             timezone={timezone}
                             className="absolute top-1/2 right-0 -translate-y-1/2"
                           />

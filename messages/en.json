@@ -1612,6 +1612,7 @@
       "close": "Close",
       "nextShowtime": "Next performance",
       "chosenShowtime": "Chosen performance",
+      "replacesShowtime": "Replaces your reminder for",
       "viewAll": "My alerts"
     },
     "rideBell": {

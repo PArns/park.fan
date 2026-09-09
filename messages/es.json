@@ -1612,6 +1612,7 @@
       "close": "Cerrar",
       "nextShowtime": "Próxima función",
       "chosenShowtime": "Función elegida",
+      "replacesShowtime": "Sustituye tu recordatorio de las",
       "viewAll": "Mis avisos"
     },
     "rideBell": {
