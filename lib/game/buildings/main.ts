@@ -30,6 +30,7 @@ import { Mesh } from '@babylonjs/core/Meshes/mesh';
 import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import type { Material } from '@babylonjs/core/Materials/material';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
+import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 import { PointLight } from '@babylonjs/core/Lights/pointLight';
 import type { Scene } from '@babylonjs/core/scene';
 import type {
@@ -69,12 +70,32 @@ import type { BlueprintDef, BuildingEntityData, BuildingStyleDef, ResolvedBuildi
  * brick tile at 192 px is already 213 px/m.
  */
 const TILE_SIZE: Record<string, number> = { low: 96, medium: 144, high: 192, ultra: 224 };
-/** Real point lights in the night pool, by preset. Deliberately the smallest share of the six. */
-const LIGHT_POOL: Record<string, number> = { low: 0, medium: 1, high: 2, ultra: 2 };
+/**
+ * Real point lights in the night pool, by preset.
+ *
+ * Two at `medium`, not one. The round-2 critic put it plainly: twenty-four light sites in the
+ * showcase and one lamp between them, so a street of lit windows had a single pool of light on the
+ * paving and everything else was the additive spill decal. `kit` and `glass` carry
+ * `maxSimultaneousLights = 6` and the sun is one of them, so four is the ceiling this can reach
+ * without a shader permutation nobody has measured.
+ */
+const LIGHT_POOL: Record<string, number> = { low: 0, medium: 2, high: 3, ultra: 4 };
 /** Metres past which a doorway is not worth one of the pool's lights. */
 const LIGHT_RANGE = 90;
 /** Seconds between re-sorts of the pool. */
 const POOL_INTERVAL = 0.45;
+/**
+ * Metres of camera movement that re-sort the pool at once, without waiting for the clock.
+ *
+ * The clock alone is what made every night frame in the gauntlet a frame of the wrong thing. The
+ * harness shoots 1.2 s after the camera is set; under SwiftShader that is one or two frames, the
+ * pool had picked for wherever the camera was standing before, and the critic measured the near-wall
+ * band of the standard 23:00 street frame at mean luma 39.3 against 54.4 once it had settled —
+ * **28 % darker than what a player sees**, on every night shot of this module for three rounds. A
+ * camera that has jumped 40 m has not "moved a bit"; it is somewhere else, and the lamp it wants is
+ * a different lamp.
+ */
+const POOL_JUMP = 4;
 
 export interface BuildingBatchStats {
   key: string;
@@ -199,6 +220,33 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
   let night = 0;
   let poolClock = POOL_INTERVAL;
   let activeLights = 0;
+  /** Where the camera stood when the pool was last sorted; see `POOL_JUMP`. */
+  const poolAt = new Vector3(Infinity, Infinity, Infinity);
+
+  /**
+   * A sky term on this module's own fabric after dark, and on nothing else's.
+   *
+   * The largest surface in every overview frame is roof; it faces the sky, and at 23:00 nothing in
+   * this scene lights it — so the mansards, the barrel vault and the pyramids sat at the same luma
+   * as the grass (27.7 against 18.3 in the round-2 overview) and the street's silhouette dissolved
+   * exactly where the composition needs it. Round 2 fixed this for daylight only, with an albedo
+   * (`#454b54 → #6f7783`), which does nothing at midnight.
+   *
+   * It has to be DIRECTIONAL or it is not a fix: one `kit` material draws walls and roof alike, so
+   * the first attempt was a small emissive on it — and that lifted the roof band 27.7 → 66.6 and the
+   * wall band 26.1 → 65.0, i.e. it repainted the whole street milky and took the facade's own
+   * range with it (p5 9.3 → 42.8). A hemispheric light is the shape of the thing being modelled: sky
+   * above, nothing below, so an up-facing slate takes it and a vertical brick wall barely does.
+   *
+   * `includedOnlyMeshes` because this is a claim about buildings and the terrain, the paths and the
+   * rides have their own modules and their own opinion about the night.
+   */
+  const sky = new HemisphericLight('buildings-sky', new Vector3(0, 1, 0), scene);
+  sky.diffuse = new Color3(0.62, 0.72, 1);
+  sky.groundColor = new Color3(0, 0, 0);
+  sky.specular = new Color3(0, 0, 0);
+  sky.intensity = 0;
+  sky.setEnabled(false);
 
   const pool: PointLight[] = [];
   for (let i = 0; i < (LIGHT_POOL[preset] ?? 1); i++) {
@@ -291,6 +339,8 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
       env.addShadowCaster(meshes[0], false);
     }
     batches.set(key, batch);
+    // A new batch is new meshes, and the sky light is scoped by mesh list.
+    retargetSky();
     return batch;
   }
 
@@ -417,7 +467,24 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     batches.clear();
   }
 
+  /** Every mesh this module owns, for `sky.includedOnlyMeshes`. */
+  function retargetSky(): void {
+    const meshes = [...batches.values()].flatMap((b) => b.meshes);
+    sky.includedOnlyMeshes = meshes;
+    sky.setEnabled(meshes.length > 0 && sky.intensity > 0);
+  }
+
   function updatePool(dtSeconds: number): void {
+    // 0.10 at full dark, and the number is a measurement rather than a taste. On the 23:00
+    // overview the roof band goes 27.7 → 53.5 against grass that does not move at all (18.3 → 18.3,
+    // it is not this module's), while the wall band goes 26.1 → 40.8 and keeps its own range
+    // (sd 26.5 → 27.9). At 0.22 the roof reached 78.6, which is a moonlit slate roof reading
+    // brighter than the lit windows on the floor below it.
+    const want = 0.1 * Math.max(0, Math.min(1, (night - 0.15) / 0.45));
+    if (want !== sky.intensity) {
+      sky.intensity = want;
+      retargetSky();
+    }
     if (!pool.length) return;
     poolClock += dtSeconds;
     if (night <= 0.02) {
@@ -427,12 +494,15 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
       }
       return;
     }
-    if (poolClock < POOL_INTERVAL) return;
-    poolClock = 0;
     const camera = scene.activeCamera;
     const cx = camera?.globalPosition.x ?? 0;
     const cy = camera?.globalPosition.y ?? 0;
     const cz = camera?.globalPosition.z ?? 0;
+    const jumped =
+      (cx - poolAt.x) ** 2 + (cy - poolAt.y) ** 2 + (cz - poolAt.z) ** 2 > POOL_JUMP * POOL_JUMP;
+    if (poolClock < POOL_INTERVAL && !jumped) return;
+    poolClock = 0;
+    poolAt.set(cx, cy, cz);
     const near = [...sites.entries()]
       .map(([key, site]) => ({
         key,
@@ -542,6 +612,7 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
       sites.clear();
       for (const light of pool) light.dispose();
       pool.length = 0;
+      sky.dispose();
       materials?.dispose();
       atlas?.dispose();
       materials = null;

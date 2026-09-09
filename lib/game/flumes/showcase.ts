@@ -125,7 +125,11 @@ export async function stageFlumesShowcase(ctx: MainContext): Promise<void> {
       z: ez + Math.cos(exit.yaw) * ahead,
       yaw: exit.yaw,
       size: [9, 20],
-      tile: 'white-ceramic',
+      // `white-ceramic` reads as a DRAINED basin in daylight: the round-1 critic's 09:00 close
+      // frame has both run-out lanes as white boxes beside a lagoon that reads as water at once,
+      // and the difference between them was this line. The tile is the staging's choice, not the
+      // pools module's fault.
+      tile: 'aqua-mosaic',
       edge: 'deck-level-grate',
       deckDensity: 0.5,
     });

@@ -360,6 +360,45 @@ export const ARCHITECTURE_PACK = {
       ground: { apron: 1.6, steps: true, kerb: false },
       night: { litFraction: 0.45, lanterns: true },
     },
+    /**
+     * The same terrace with a shop in the bottom of it, which is what a park's main street is.
+     *
+     * `g` — a shopfront: one big two-light window between a stallriser and a transom, set back in a
+     * deep reveal — has been in the bay language since the first round and nothing used it, so every
+     * ground floor on the street was a domestic sash and the street was a row of houses somebody had
+     * hung a sign on. The round-2 critic put it as a fidelity finding and it is the cheapest one
+     * left: no TypeScript, one blueprint, and the pattern is the only difference from `terrace-house`
+     * apart from the fascia the sign hangs on.
+     *
+     * `w d w` above rather than another `g`: a shop is one storey tall and the flats over it have
+     * windows, which is the thing that stops a parade of shops reading as a shopping centre.
+     */
+    {
+      id: 'shop-terrace',
+      name: { en: 'Shop terrace', de: 'Ladenzeile' },
+      style: 'old-town-brick',
+      masses: [
+        {
+          id: 'house',
+          size: [9, 10],
+          storeys: 3,
+          storeyHeight: 2.95,
+          plinth: 0.45,
+          bay: 3.0,
+          trim: { cornice: 0.26, corniceOut: 0.18 },
+          // The ground floor is the shop on the street front only; the flank walls keep their
+          // windows, because a terrace shows one elevation to the street and the rest to its
+          // neighbours.
+          facades: { all: 'w*', front: 'g / w d w / w w w' },
+          roof: { form: 'mansard', eaves: 0.35, ridge: 'x', dormers: 2, chimneys: 2 },
+        },
+      ],
+      // The fascia over the window, which is where a shop's name goes and the reason the sign band
+      // exists at all.
+      sign: { band: 0.52, width: 0.78, side: 'front', color: '#2f5d4a' },
+      ground: { apron: 1.6, steps: false, kerb: true },
+      night: { litFraction: 0.6, lanterns: true, spill: 1 },
+    },
     {
       id: 'guest-services',
       name: { en: 'Guest services', de: 'Gästeservice' },
@@ -439,6 +478,17 @@ export const ARCHITECTURE_PACK = {
       size: [9.7, 16.3, 11.8],
       cost: 2100000,
       procedural: 'terrace-house',
+      theme: 'classic-brick',
+    },
+    {
+      id: 'shop-terrace',
+      name: { en: 'Shop terrace', de: 'Ladenzeile' },
+      category: 'blueprint',
+      // 10.7 and not the terrace house's 11.8: this one has a kerb and no steps, and the steps are
+      // what make the house 1.1 m deeper. Measured by the selftest, not copied from its neighbour.
+      size: [9.7, 16.3, 10.7],
+      cost: 2600000,
+      procedural: 'shop-terrace',
       theme: 'classic-brick',
     },
     {

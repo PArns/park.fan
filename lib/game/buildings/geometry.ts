@@ -42,13 +42,130 @@ export interface Surface {
   uvs: number[];
   colors: number[];
   indices: number[];
+  /**
+   * The solids laid down on this surface, when somebody asked for them (`newSurface(true)`).
+   *
+   * A triangle cannot say on its own which way is out; the SOLID it stands on can. Round 2's check
+   * took that reference from `blueprint.masses` and could therefore only judge the four walls of a
+   * box — a dormer cheek, a chimney, a lantern drum, an arcade column and every moulding standing
+   * proud of the wall were judged by nothing at all, 12,323 triangles over 2,650 m². The reference
+   * has to come from the code that BUILDS each solid, which is here: every primitive in this file
+   * that lays down a closed volume records it, so a kit piece nobody has written yet is covered by
+   * writing it out of these primitives and by nothing else.
+   *
+   * `undefined` in the game — nothing pays for this but the self-test, which asks for it.
+   */
+  solids?: Solid[];
+}
+
+/**
+ * A volume the kit laid down, as the one question a winding check has to ask of it.
+ *
+ * `depth` is positive inside, negative outside, in metres. Everything in this module is either a
+ * vertical extrusion of a convex plan (box, band, prism, drum, cone) or a capsule (a tube), and
+ * both answer that question in a dozen lines.
+ */
+export interface Solid {
+  depth: (x: number, y: number, z: number) => number;
+  /** Which primitive laid it down, so an offender can be named rather than located. */
+  by: string;
 }
 
 export type Rgb = [number, number, number];
 export type P3 = [number, number, number];
 
-export function newSurface(): Surface {
-  return { positions: [], normals: [], uvs: [], colors: [], indices: [] };
+export function newSurface(recordSolids = false): Surface {
+  return {
+    positions: [],
+    normals: [],
+    uvs: [],
+    colors: [],
+    indices: [],
+    solids: recordSolids ? [] : undefined,
+  };
+}
+
+/**
+ * A convex plan polygon extruded between two heights, with an optional taper about its own centre.
+ *
+ * The ring is normalised to one winding here so a caller cannot get it wrong — which matters, since
+ * this file has now shipped two bugs that were exactly a ring walked the other way (`addPrism`'s
+ * facets in round 1, `roundFrames`'s facades in round 3).
+ */
+export function prismSolid(
+  by: string,
+  plan: readonly (readonly [number, number])[],
+  y0: number,
+  y1: number,
+  taper?: { cx: number; cz: number; r0: number; r1: number }
+): Solid {
+  let area = 0;
+  for (let i = 0; i < plan.length; i++) {
+    const [ax, az] = plan[i];
+    const [bx, bz] = plan[(i + 1) % plan.length];
+    area += ax * bz - bx * az;
+  }
+  const ring = area < 0 ? [...plan].reverse() : [...plan];
+  const lo = Math.min(y0, y1);
+  const hi = Math.max(y0, y1);
+  return {
+    by,
+    depth: (x, y, z) => {
+      let px = x;
+      let pz = z;
+      if (taper && hi > lo) {
+        const t = Math.min(1, Math.max(0, (y - lo) / (hi - lo)));
+        const r = taper.r0 + (taper.r1 - taper.r0) * t;
+        const k = r > 1e-6 ? taper.r0 / r : 1;
+        px = taper.cx + (x - taper.cx) * k;
+        pz = taper.cz + (z - taper.cz) * k;
+      }
+      let plan2 = Infinity;
+      for (let i = 0; i < ring.length; i++) {
+        const [ax, az] = ring[i];
+        const [bx, bz] = ring[(i + 1) % ring.length];
+        const ex = bx - ax;
+        const ez = bz - az;
+        const len = Math.hypot(ex, ez) || 1;
+        const side = (ex * (pz - az) - ez * (px - ax)) / len;
+        if (side < plan2) plan2 = side;
+      }
+      return Math.min(plan2, hi - y, y - lo);
+    },
+  };
+}
+
+/** A capsule: everything within `r` of the segment `a`–`b`. Tubes, downpipes, barge boards. */
+export function capsuleSolid(by: string, a: P3, b: P3, r: number): Solid {
+  const dx = b[0] - a[0];
+  const dy = b[1] - a[1];
+  const dz = b[2] - a[2];
+  const len2 = dx * dx + dy * dy + dz * dz || 1;
+  return {
+    by,
+    depth: (x, y, z) => {
+      let t = ((x - a[0]) * dx + (y - a[1]) * dy + (z - a[2]) * dz) / len2;
+      t = Math.min(1, Math.max(0, t));
+      return r - Math.hypot(x - (a[0] + dx * t), y - (a[1] + dy * t), z - (a[2] + dz * t));
+    },
+  };
+}
+
+/** A regular polygon's plan ring, the same one `addPrism` and `roundFrames` walk. */
+export function ringPlan(
+  cx: number,
+  cz: number,
+  r: number,
+  sides: number,
+  phase: number
+): [number, number][] {
+  const n = Math.max(3, Math.round(sides));
+  const out: [number, number][] = [];
+  for (let i = 0; i < n; i++) {
+    const a = phase + (i / n) * Math.PI * 2;
+    out.push([cx + Math.cos(a) * r, cz + Math.sin(a) * r]);
+  }
+  return out;
 }
 
 export function surfaceTriangles(s: Surface): number {
@@ -362,6 +479,19 @@ export function addBox(s: Surface, min: P3, max: P3, opts: BoxOptions): void {
     colourTop: opts.colourTop,
     maxCells: opts.maxCells,
   });
+  s.solids?.push(
+    prismSolid(
+      'addBox',
+      [
+        [x0, z0],
+        [x1, z0],
+        [x1, z1],
+        [x0, z1],
+      ],
+      y0,
+      y1
+    )
+  );
   if (!skip[0]) addQuad(s, [x1, y0, z1], [x1, y0, z0], [x1, y1, z0], [x1, y1, z1], o(t[0]));
   if (!skip[1]) addQuad(s, [x0, y0, z0], [x0, y0, z1], [x0, y1, z1], [x0, y1, z0], o(t[1]));
   if (!skip[2]) addQuad(s, [x0, y1, z1], [x1, y1, z1], [x1, y1, z0], [x0, y1, z0], o(t[2]));
@@ -399,6 +529,11 @@ export function addPrism(
 ): void {
   const n = Math.max(3, Math.round(opts.sides));
   const phase = opts.phase ?? 0;
+  // `only` draws a slice of the ring and is not a solid; the whole prism still is.
+  if (!opts.only)
+    s.solids?.push(
+      prismSolid('addPrism', ringPlan(cx, cz, r0, n, phase), y0, y1, { cx, cz, r0, r1 })
+    );
   const metres = TILE_METRES[opts.tile] ?? 1;
   const face = (2 * Math.PI * Math.max(r0, r1)) / n;
   const repeatU = Math.max(1, Math.round(face / metres));
@@ -479,6 +614,7 @@ export function addTube(
   const dz = to[2] - from[2];
   const len = Math.hypot(dx, dy, dz);
   if (len < 1e-4) return;
+  s.solids?.push(capsuleSolid('addTube', from, to, radius));
   const w: P3 = [dx / len, dy / len, dz / len];
   const ref: P3 = Math.abs(w[1]) > 0.94 ? [1, 0, 0] : [0, 1, 0];
   const u: P3 = [
@@ -670,33 +806,47 @@ export function addReveal(
   const back = outFace - depth;
   const q = (a: P3, b: P3, c: P3, d: P3): void =>
     addQuad(s, a, b, c, d, { colour, tile, repeatU: 1, repeatV: 1 });
+  /**
+   * All four faces were wound the other way round, and every one of them said so in a comment.
+   *
+   * `addQuad`'s normal is `(b − a) × (d − a)`, and `frame.normal` is `right × up`, so a quad walked
+   * from the BACK of the reveal outwards and then up comes out as `n̂ × up = −right`: the left jamb
+   * faced away from its own opening, and with it the right jamb, the head and the sill of every
+   * window, door, shopfront, louvre and niche in the module. Measured on the terrace house's front
+   * window before the fix: opening from x = −0.66 to +0.66, jamb at −0.66 with normal −x and jamb
+   * at +0.66 with normal +x — both pointing out of the hole they line. What that costs is the thing
+   * the docstring below promises: at any angle off head-on the reveal is culled and the wall has no
+   * thickness there, which is the same class of bug as round 1's arch heads and survived three
+   * rounds because §5b measures roof planes, §5c only asks the winding to agree with the normal
+   * (it did — both wrong), and round 2's §5d judged nothing that was not on a mass's plan prism.
+   */
   // left jamb (faces +u)
   q(
-    framePoint(f, u0, v0, back),
     framePoint(f, u0, v0, outFace),
-    framePoint(f, u0, v1, outFace),
-    framePoint(f, u0, v1, back)
+    framePoint(f, u0, v0, back),
+    framePoint(f, u0, v1, back),
+    framePoint(f, u0, v1, outFace)
   );
   // right jamb (faces -u)
   q(
-    framePoint(f, u1, v0, outFace),
     framePoint(f, u1, v0, back),
-    framePoint(f, u1, v1, back),
-    framePoint(f, u1, v1, outFace)
+    framePoint(f, u1, v0, outFace),
+    framePoint(f, u1, v1, outFace),
+    framePoint(f, u1, v1, back)
   );
   // head (faces down)
   q(
-    framePoint(f, u0, v1, outFace),
-    framePoint(f, u1, v1, outFace),
+    framePoint(f, u0, v1, back),
     framePoint(f, u1, v1, back),
-    framePoint(f, u0, v1, back)
+    framePoint(f, u1, v1, outFace),
+    framePoint(f, u0, v1, outFace)
   );
   // sill (faces up)
   q(
-    framePoint(f, u0, v0, back),
-    framePoint(f, u1, v0, back),
+    framePoint(f, u0, v0, outFace),
     framePoint(f, u1, v0, outFace),
-    framePoint(f, u0, v0, outFace)
+    framePoint(f, u1, v0, back),
+    framePoint(f, u0, v0, back)
   );
 }
 
@@ -721,6 +871,17 @@ export function addBand(
 ): void {
   const p = (u: number, v: number, o: number): P3 => framePoint(f, u, v, o);
   const opt = { colour, tile, repeatU: undefined, repeatV: undefined, maxCells: 8 };
+  if (s.solids) {
+    const c = [p(u0, v0, out0), p(u1, v0, out0), p(u1, v0, out1), p(u0, v0, out1)];
+    s.solids.push(
+      prismSolid(
+        'addBand',
+        c.map((q) => [q[0], q[2]] as [number, number]),
+        p(u0, v0, out0)[1],
+        p(u0, v1, out0)[1]
+      )
+    );
+  }
   // front
   addQuad(s, p(u0, v0, out1), p(u1, v0, out1), p(u1, v1, out1), p(u0, v1, out1), opt);
   // top

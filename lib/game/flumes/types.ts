@@ -26,8 +26,15 @@ import type { Vec3 } from '../core/types';
  */
 export const SLIDE_SECONDS_PER_TICK = 0.05;
 
-/** Floats per rider slot in the `flumes.riders` frame buffer. See `sim.ts`. */
-export const RIDER_STRIDE = 10;
+/**
+ * Floats per rider slot in the `flumes.riders` frame buffer. See `sim.ts`.
+ *
+ * Eleven since round 2, and the eleventh is `tint`. It was on `FlumeRider` from the start, was
+ * computed on every dispatch, and never crossed the buffer — so `rig.colors` and `rig.wear`, which
+ * every style declares as a PALETTE, were read at `[0]` and the whole park's rafts were one yellow.
+ * The renderer turns it into a per-thin-instance colour, which costs no draw call.
+ */
+export const RIDER_STRIDE = 11;
 
 /**
  * How many riders may be in flight across the whole park at once.
@@ -92,6 +99,8 @@ export interface FlumeStyleSpec {
    * for a closed pipe — a tube slide's wall is already over the rider's head and cannot grow.
    */
   wallResponse: number;
+  /** Trough radius, metres, or 0 to take it from the ride's `trackStyle`. See `manifest.ts`. */
+  radius: number;
   /** Fraction of the section given to a FLAT floor: 0 is a half-pipe, 0.55 a raft trough. */
   floorFlat: number;
   /** Shell thickness, metres. */
@@ -211,7 +220,11 @@ export interface ResolvedFlume {
   pack: string;
   item: string;
   name: Record<string, string>;
-  /** The pack's `trackStyles` id the trough's radius and colour come from. */
+  /**
+   * The pack's `trackStyles` id the trough's colour and (unless the style declares its own
+   * `radius`) its section come from. Empty when the ride declares none: `track`'s own fallback
+   * answers that, and this module names no content id of its own.
+   */
   trackStyle: string;
   style: FlumeStyleSpec;
   layout: FlumeLayoutSpec;
@@ -251,7 +264,13 @@ export interface FlumeRider {
   v: number;
   /** How many people are on this vehicle. */
   seats: number;
-  /** The vehicle's own colour index, from the flume's seeded stream. */
+  /**
+   * Which entry of `rig.colors` / `rig.wear` this vehicle and its riders wear.
+   *
+   * A counter and not a random draw: `descents + list.length` at dispatch, so a slide cycles its
+   * palette in order and a save that restores `descents` restores the colours with it. Published
+   * in the frame buffer at `RIDER_STRIDE - 1`.
+   */
   tint: number;
 }
 

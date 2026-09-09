@@ -47,10 +47,18 @@ import { nextEntityId } from '../core/world';
 import { buildSupports, HEARTLINE_HEIGHT } from '../track';
 import { attachFlumeContent, flumeLayouts, flumeStyles, registerFlumes } from './manifest';
 import { makeFlumeEntity } from './entity';
-import { buildFlume, CRADLE_DEPTH, resolveFlume, ridersPerHour, type FlumeBuild } from './resolve';
+import {
+  buildFlume,
+  CRADLE_DEPTH,
+  resolveFlume,
+  ridersPerHour,
+  towerPlacement,
+  type FlumeBuild,
+} from './resolve';
 import { createFlumeMaterials, type FlumeMaterials } from './materials';
 import {
   buildRig,
+  buildRimLights,
   buildShell,
   buildTower,
   buildWaterSheet,
@@ -85,10 +93,19 @@ interface PoolsLike {
 /** Night lights per preset. The same shape and the same reason as `rides`: they are not free. */
 const LIGHT_POOL: Record<string, number> = { low: 0, medium: 2, high: 4, ultra: 6 };
 
+/**
+ * Metres beyond which a slide's trough is drawn coarse, and the size below which it is not worth a
+ * second mesh at all. `close` stands 90 m out and `overview` 340; the switch sits between them.
+ */
+const LOD_DISTANCE = 150;
+const LOD_MIN_TRIANGLES = 4000;
+
 export interface FlumeMeshStats {
   flumes: number;
   meshes: number;
   triangles: number;
+  /** What the module draws past `LOD_DISTANCE`, where every trough is its coarse copy. */
+  farTriangles: number;
   /** Metres of trough drawn. */
   trough: number;
   riders: number;
@@ -136,6 +153,8 @@ interface Drawn {
   build: FlumeBuild;
   meshes: Mesh[];
   triangles: number;
+  /** Signed: what the coarse shell saves once the LOD is in (0 where there is none). */
+  farTriangles: number;
   /** Where a rider ends up, for the splash. */
   exit: [number, number, number];
 }
@@ -143,9 +162,15 @@ interface Drawn {
 interface RigBatch {
   hull: Mesh | null;
   rider: Mesh | null;
-  seats: Array<[number, number]>;
+  /** One local matrix per seat, built once: the seat's offset and which way the person faces. */
+  seats: Matrix[];
   hullMatrices: Float32Array;
   riderMatrices: Float32Array;
+  /** RGBA per thin instance, from the style's own palettes. See `rigFor`. */
+  hullColors: Float32Array;
+  riderColors: Float32Array;
+  hullPalette: Array<[number, number, number]>;
+  riderPalette: Array<[number, number, number]>;
   hullCount: number;
   riderCount: number;
 }
@@ -182,6 +207,7 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     flumes: 0,
     meshes: 0,
     triangles: 0,
+    farTriangles: 0,
     trough: 0,
     riders: 0,
     lights: 0,
@@ -211,21 +237,35 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     return mesh;
   }
 
+  /**
+   * The meshes and buffers one slide STYLE draws its vehicles with.
+   *
+   * Two meshes and two draw calls per style however many people are in the air, and — since round
+   * 2 — two buffers each: the transform and the COLOUR. `rig.colors` and `rig.wear` are palettes a
+   * style declares and round 1 read `[0]` of both, so every raft in the park was the same yellow
+   * and every rider the same teal. The palettes are picked from per vehicle by `FlumeRider.tint`,
+   * which the sim had been computing and not publishing.
+   */
   function rigFor(style: FlumeStyleSpec): RigBatch {
     const cached = rigs.get(style.id);
     if (cached) return cached;
     const built: RigBuild = buildRig(style.rig);
-    const hullColor = style.rig.colors[0];
-    const wearColor = style.rig.wear[0];
+    const seats = Math.max(1, built.seats.length);
     const batch: RigBatch = {
       hull:
         style.rig.hull === 'none'
           ? null
-          : meshFrom(`flume-hull:${style.id}`, built.hull, materials.hull(hullColor)),
-      rider: meshFrom(`flume-rider:${style.id}`, built.rider, materials.hull(wearColor)),
-      seats: built.seats,
+          : meshFrom(`flume-hull:${style.id}`, built.hull, materials.vehicle()),
+      rider: meshFrom(`flume-rider:${style.id}`, built.rider, materials.vehicle()),
+      seats: built.seats.map((seat) =>
+        Matrix.RotationY(seat.yaw).multiply(Matrix.Translation(seat.across, 0, seat.along))
+      ),
       hullMatrices: new Float32Array(MAX_RIDERS * 16),
-      riderMatrices: new Float32Array(MAX_RIDERS * built.seats.length * 16),
+      riderMatrices: new Float32Array(MAX_RIDERS * seats * 16),
+      hullColors: new Float32Array(MAX_RIDERS * 4),
+      riderColors: new Float32Array(MAX_RIDERS * seats * 4),
+      hullPalette: style.rig.colors.map(hexToLinear),
+      riderPalette: style.rig.wear.map(hexToLinear),
       hullCount: 0,
       riderCount: 0,
     };
@@ -235,12 +275,12 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
       mesh.isPickable = false;
       mesh.receiveShadows = false;
       mesh.alwaysSelectAsActiveMesh = true;
-      mesh.thinInstanceSetBuffer(
-        'matrix',
-        mesh === batch.hull ? batch.hullMatrices : batch.riderMatrices,
-        16,
-        false
-      );
+      const isHull = mesh === batch.hull;
+      mesh.thinInstanceSetBuffer('matrix', isHull ? batch.hullMatrices : batch.riderMatrices, 16, false); // prettier-ignore
+      // Named `color`, which is the name Babylon binds to `VertexBuffer.ColorKind`; with the
+      // mesh's default `useVertexColors` that is the `VERTEXCOLOR` define and a multiply into the
+      // white albedo of the one shared vehicle material.
+      mesh.thinInstanceSetBuffer('color', isHull ? batch.hullColors : batch.riderColors, 4, false);
       mesh.thinInstanceCount = 0;
     }
     rigs.set(style.id, batch);
@@ -249,19 +289,24 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
 
   function draw(entity: Entity): void {
     const t0 = performance.now();
-    const flume = resolveFlume(
+    const request = resolveFlume(
       ctx.registry,
       entity,
       groundAt(entity.position[0], entity.position[2])
     );
-    if (!flume) return;
+    if (!request) return;
     let build: FlumeBuild;
     try {
-      build = buildFlume(flume);
+      build = buildFlume(request);
     } catch (error) {
       console.error(`[game/flumes] could not build ${entity.id}`, error);
       return;
     }
+    // `towerHeight` is 0 in every built-in layout — the sentinel for "derive it from the descent"
+    // — and `buildFlume` is what resolves it. So the pre-build resolve is called `request` and is
+    // never read again past this line: reading `request.towerHeight` here is what put all five
+    // towers 12–17 m under their own chutes in round 1.
+    const flume = build.flume;
     for (const w of build.warnings) console.warn(`[game/flumes] ${entity.id}: ${w}`);
 
     const meshes: Mesh[] = [];
@@ -269,14 +314,59 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
       if (m) meshes.push(m);
     };
 
+    const shellMaterial = materials.shell(flume.color);
     const shell = buildShell(build.stations, flume.style, flume.radius);
-    push(meshFrom(`flume-shell:${entity.id}`, shell, materials.shell(flume.color)));
+    const shellMesh = meshFrom(`flume-shell:${entity.id}`, shell, shellMaterial);
+    push(shellMesh);
+
+    /**
+     * The far shell.
+     *
+     * `flume-shell:flume-2` is 22,040 triangles — 27 % of everything this module draws — and the
+     * round-1 critic found it drawn whole from the `overview` camera at 340 m, where the trough is
+     * about two pixels wide. What survives at that size is the LINE the slide makes and not the
+     * moulding, so the coarse copy keeps every station (the centreline is the silhouette) and
+     * halves the cross-section, which is where the triangles are.
+     *
+     * `addLODLevel` sets `_masterMesh` on the coarse copy, and `Scene._evaluateActiveMeshes` skips
+     * anything whose `isBlocked` is true — so it is never drawn beside the fine one, and it is not
+     * offered as a shadow caster either: `refresh()` filters on the name.
+     */
+    let lodTriangles = 0;
+    if (shellMesh && triangleCount(shell) > LOD_MIN_TRIANGLES) {
+      const coarse = buildShell(
+        build.stations,
+        { ...flume.style, sectionSamples: Math.max(4, Math.round(flume.style.sectionSamples / 2)) },
+        flume.radius
+      );
+      const lod = meshFrom(`flume-shell-lod:${entity.id}`, coarse, shellMaterial);
+      if (lod) {
+        lod.isPickable = false;
+        shellMesh.addLODLevel(LOD_DISTANCE, lod);
+        meshes.push(lod);
+        lodTriangles = triangleCount(coarse);
+      }
+    }
+
+    // The lip strip. `materials.glow` ramps its own emissive with `night`, so this is a contrast
+    // rail by day and the slide's outline after dark — see `buildRimLights`.
+    const rim = buildRimLights(build.stations, flume.style, flume.radius);
+    const rimMesh = meshFrom(`flume-rim:${entity.id}`, rim, materials.glow(flume.style.trim));
+    if (rimMesh) {
+      rimMesh.isPickable = false;
+      rimMesh.receiveShadows = false;
+    }
+    push(rimMesh);
 
     const sheet: FlowGeo = buildWaterSheet(build.stations, flume.style, flume.radius);
     const water = meshFrom(`flume-water:${entity.id}`, sheet, materials.water(), sheet.colors);
     if (water) {
       water.isPickable = false;
       water.receiveShadows = false;
+      // `AbstractMesh.hasVertexAlpha` defaults to false, so without this the sheet's per-vertex
+      // alpha — the whole "calm water is see-through, aerated water is not" half of its look — is
+      // uploaded and discarded. It was, for the whole of round 1. See `materials.ts`.
+      water.hasVertexAlpha = true;
     }
     push(water);
 
@@ -303,21 +393,7 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     push(meshFrom(`flume-legs:${entity.id}`, support.member, materials.surface('steel', flume.tower.steel))); // prettier-ignore
     push(meshFrom(`flume-pads:${entity.id}`, support.footing, materials.surface('deck', '#a8a196'))); // prettier-ignore
 
-    const deckY = flume.position[1] + flume.towerHeight;
-    const tower = buildTower({
-      spec: flume.tower,
-      // The deck sits BEHIND the start of the chute, so the flume leaves it rather than starting
-      // in mid-air off its edge: back off along the layout's heading by half the footprint.
-      centre: [
-        flume.position[0] - Math.sin(flume.yaw) * (flume.tower.footprint[1] / 2 - 0.4),
-        deckY,
-        flume.position[2] - Math.cos(flume.yaw) * (flume.tower.footprint[1] / 2 - 0.4),
-      ],
-      yaw: flume.yaw,
-      ground: groundAt(flume.position[0], flume.position[2]),
-      deckY,
-      chuteWidth: flume.radius * 2 + flume.style.thickness * 2,
-    });
+    const tower = buildTower(towerPlacement(build, groundAt(flume.position[0], flume.position[2])));
     push(meshFrom(`flume-tower:${entity.id}`, tower.steel, materials.surface('steel', flume.tower.steel))); // prettier-ignore
     push(meshFrom(`flume-deck:${entity.id}`, tower.deck, materials.surface('deck', flume.tower.deck))); // prettier-ignore
     push(meshFrom(`flume-canopy:${entity.id}`, tower.canopy, materials.surface('shade', flume.tower.canopyColor))); // prettier-ignore
@@ -326,7 +402,14 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     drawn.set(entity.id, {
       build,
       meshes,
-      triangles: triangleCount(shell) + triangleCount(sheet) + support.triangles + tower.triangles,
+      triangles:
+        triangleCount(shell) +
+        triangleCount(sheet) +
+        triangleCount(rim) +
+        support.triangles +
+        tower.triangles,
+      // What the `overview` camera actually pays for the trough, as against `triangles`.
+      farTriangles: lodTriangles > 0 ? lodTriangles - triangleCount(shell) : 0,
       exit: [build.exit[0], build.exit[1], build.exit[2]],
     });
     stats.buildMs += performance.now() - t0;
@@ -367,16 +450,20 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     shadowed = [];
     let meshCount = 0;
     let triangles = 0;
+    let far = 0;
     let trough = 0;
     for (const d of drawn.values()) {
       meshCount += d.meshes.length;
       triangles += d.triangles;
+      far += d.triangles + d.farTriangles;
       trough += d.build.length;
       if (env?.addShadowCaster) {
-        // The tower and the trough cast; the sheet of water does not — a shadow map entry for a
-        // transparent surface buys a dark band down the flume and nothing else.
         for (const mesh of d.meshes) {
-          if (mesh.name.startsWith('flume-water')) continue;
+          // The water casts nothing (a shadow-map entry for a transparent surface buys a dark band
+          // down the flume), and the far shell is `isBlocked` — its master already casts.
+          if (mesh.name.startsWith('flume-water') || mesh.name.startsWith('flume-shell-lod')) {
+            continue;
+          }
           env.addShadowCaster(mesh, false);
           shadowed.push(mesh);
         }
@@ -385,6 +472,7 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     stats.flumes = drawn.size;
     stats.meshes = meshCount;
     stats.triangles = triangles;
+    stats.farTriangles = far;
     stats.trough = trough;
     rebuildLights();
   }
@@ -447,6 +535,7 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
 
   // ── riders ────────────────────────────────────────────────────────────────────────────────
   const scratchMatrix = Matrix.Identity();
+  const scratchSeat = Matrix.Identity();
   const scratchPos = new Vector3();
   const scratchQuat = new Quaternion();
   const scratchScale = new Vector3(1, 1, 1);
@@ -512,13 +601,21 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
         scratchQuat.set(now[o + 5], now[o + 6], now[o + 7], now[o + 8]);
       }
       Matrix.ComposeToRef(scratchScale, scratchQuat, scratchPos, scratchMatrix);
+      // The vehicle's palette entry, published by the sim as `FlumeRider.tint`.
+      const tint = Math.max(0, Math.round(now[o + 10]));
       if (batch.hull) {
         scratchMatrix.copyToArray(batch.hullMatrices, batch.hullCount * 16);
+        writeColor(batch.hullColors, batch.hullCount, batch.hullPalette, tint);
         batch.hullCount += 1;
       }
-      for (const [sx, sz] of batch.seats) {
-        const seat = Matrix.Translation(sx, 0, sz).multiply(scratchMatrix);
-        seat.copyToArray(batch.riderMatrices, batch.riderCount * 16);
+      // The seat matrices are built once in `rigFor`; this is a multiply into a scratch and not a
+      // `Matrix.Translation` per seat per frame.
+      for (let seatIndex = 0; seatIndex < batch.seats.length; seatIndex++) {
+        batch.seats[seatIndex].multiplyToRef(scratchMatrix, scratchSeat);
+        scratchSeat.copyToArray(batch.riderMatrices, batch.riderCount * 16);
+        // Everyone in one raft wearing the same colour is a uniform, not a family — so the seat
+        // index walks the `wear` palette too, and the vehicle's tint offsets where it starts.
+        writeColor(batch.riderColors, batch.riderCount, batch.riderPalette, tint + seatIndex);
         batch.riderCount += 1;
       }
     }
@@ -526,15 +623,37 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     commitRiders();
   }
 
+  /** One RGBA into a thin-instance colour buffer, picked out of a palette by index. */
+  function writeColor(
+    buffer: Float32Array,
+    slot: number,
+    palette: Array<[number, number, number]>,
+    index: number
+  ): void {
+    if (!palette.length) return;
+    const [r, g, b] = palette[index % palette.length];
+    const o = slot * 4;
+    buffer[o] = r;
+    buffer[o + 1] = g;
+    buffer[o + 2] = b;
+    buffer[o + 3] = 1;
+  }
+
   function commitRiders(): void {
     for (const batch of rigs.values()) {
       if (batch.hull) {
         batch.hull.thinInstanceCount = batch.hullCount;
-        if (batch.hullCount > 0) batch.hull.thinInstanceBufferUpdated('matrix');
+        if (batch.hullCount > 0) {
+          batch.hull.thinInstanceBufferUpdated('matrix');
+          batch.hull.thinInstanceBufferUpdated('color');
+        }
       }
       if (batch.rider) {
         batch.rider.thinInstanceCount = batch.riderCount;
-        if (batch.riderCount > 0) batch.rider.thinInstanceBufferUpdated('matrix');
+        if (batch.riderCount > 0) {
+          batch.rider.thinInstanceBufferUpdated('matrix');
+          batch.rider.thinInstanceBufferUpdated('color');
+        }
       }
     }
   }

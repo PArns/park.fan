@@ -40,7 +40,7 @@ import {
   type TrainSpec,
 } from '../track';
 import { defaultLayoutFor, flumeLayout, flumeStyle, flumeTower } from './manifest';
-import { G, wallExtents, type FlumeStation, type V3 } from './geom';
+import { G, wallExtents, type FlumeStation, type TowerPlacement, type V3 } from './geom';
 import type {
   FlumeEntityData,
   FlumeLayoutSpec,
@@ -124,7 +124,7 @@ export const EXIT_CLEARANCE = 0.4;
  */
 export function trackDataFor(flume: ResolvedFlume, towerHeight = flume.towerHeight): TrackData {
   return {
-    style: `${flume.pack}:${flume.trackStyle}`,
+    style: flume.trackStyle ? `${flume.pack}:${flume.trackStyle}` : '',
     ride: flume.key,
     origin: [flume.position[0], flume.position[1] + towerHeight, flume.position[2]],
     yaw: flume.yaw,
@@ -178,8 +178,10 @@ export function resolveFlume(
   const tower = flumeTower(layout.tower);
   if (!style || !tower) return null;
 
-  const trackStyleId = def.trackStyle ?? 'fiberglass-open';
-  const shape = resolveStyle(registry, `${entity.pack}:${trackStyleId}`);
+  // No content id from a bundled pack in this file: `resolveStyle` answers an absent key with
+  // `track`'s own `FALLBACK_STYLE`, and a slide style may declare its own `radius` instead.
+  const trackStyleId = def.trackStyle ?? '';
+  const shape = resolveStyle(registry, trackStyleId ? `${entity.pack}:${trackStyleId}` : undefined);
   const night = def.night?.light
     ? {
         color: def.night.light.color,
@@ -201,7 +203,7 @@ export function resolveFlume(
     style,
     layout,
     tower,
-    radius: shape.rail.radius,
+    radius: style.radius > 0 ? style.radius : shape.rail.radius,
     color: data.color ?? shape.color ?? style.shell,
     position: [entity.position[0], entity.position[1] || ground, entity.position[2]],
     yaw: entity.yaw,
@@ -313,6 +315,40 @@ export function buildFlume(input: ResolvedFlume): FlumeBuild {
     rideSeconds: physics.rideTimeSeconds,
     exit: [end.p[0], end.p[1], end.p[2]],
     warnings: built.warnings,
+  };
+}
+
+/**
+ * Where the tower stands, from the BUILT slide.
+ *
+ * This exists because of the one line that failed round 1. `towerHeight` on the pre-build resolve
+ * is the manifest's value, and every built-in layout leaves it **0** — the sentinel for "derive it
+ * from the descent". `buildFlume` resolves it and writes the answer onto `build.flume`; `main.ts`
+ * read the pre-build object instead, so `buildTower` was handed `deckY = ground` and `height = 1`,
+ * and all five towers were 2 m tall and lay in the grass 12–17 m under their own chutes. The
+ * selftest then built its tower with the same wrong argument and printed the derived height beside
+ * the triangle count of the wrong one, so 94/94 passed over a park nobody could have shipped.
+ *
+ * A shared function is the fix rather than a corrected line, because two call sites computing the
+ * same placement from the same fields is the bug, not the arithmetic. Everything here reads
+ * `build.flume`; there is nowhere left to read the request from.
+ */
+export function towerPlacement(build: FlumeBuild, ground: number): TowerPlacement {
+  const flume = build.flume;
+  const deckY = flume.position[1] + flume.towerHeight;
+  return {
+    spec: flume.tower,
+    // The deck sits BEHIND the start of the chute, so the flume leaves it rather than starting in
+    // mid-air off its edge: back off along the layout's heading by half the footprint.
+    centre: [
+      flume.position[0] - Math.sin(flume.yaw) * (flume.tower.footprint[1] / 2 - 0.4),
+      deckY,
+      flume.position[2] - Math.cos(flume.yaw) * (flume.tower.footprint[1] / 2 - 0.4),
+    ],
+    yaw: flume.yaw,
+    ground,
+    deckY,
+    chuteWidth: flume.radius * 2 + flume.style.thickness * 2,
   };
 }
 

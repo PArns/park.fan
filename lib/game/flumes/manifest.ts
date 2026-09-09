@@ -73,6 +73,17 @@ const styleSchema = z.object({
   wrapDeg: z.number().min(20).max(178).default(104),
   maxWrapDeg: z.number().min(20).max(178).default(160),
   wallResponse: z.number().min(0).max(1).default(1),
+  /**
+   * Trough radius in metres, or **0 to take it from the ride's `trackStyle`**, which is the
+   * default and what every built-in does.
+   *
+   * It exists so that a style is not obliged to borrow a `track` style to say how wide it is. The
+   * round-1 critic's third extensibility deduction was `def.trackStyle ?? 'fiberglass-open'` —
+   * one content id from a bundled pack written into TypeScript — and this is what let it go: an
+   * absent `trackStyle` now resolves through `track`'s own `FALLBACK_STYLE` instead of through a
+   * name this module has no business knowing.
+   */
+  radius: z.number().min(0).max(4).default(0),
   floorFlat: z.number().min(0).max(0.85).default(0),
   thickness: z.number().min(0.01).max(0.4).default(0.055),
   sectionSamples: z.number().int().min(4).max(40).default(9),
@@ -194,8 +205,13 @@ function warnOnce(key: string, message: string): void {
  *    hydroplanes on the sheet at an effective µ of about 0.11-0.13 and tops out at 10-14 m/s.
  *  - A closed tube slide is a **1.2 m pipe** (`fiberglass-closed`, r = 0.6) with a slot along the
  *    crown for light — 170° per side leaves 20° of it — and the section never changes, because a
- *    pipe's wall is already over the rider's head. Hence `wallResponse: 0`, which is the one entry
- *    in the table that switches the wall rule off, by DATA rather than by a branch.
+ *    pipe's wall is already over the rider's head. It says so twice, and only one of the two is
+ *    doing the work: `wallResponse: 0` is the declaration, and the **170° resting wrap** is what
+ *    actually holds it, since the rule can never ask a 0.6 m pipe for more than 122.7° (40 m/s in
+ *    a 9 m hook). Round 1 credited the coefficient and the round-1 critic disproved it. The
+ *    coefficient decides the section of the other four styles — 3.3° and 4.3° of wall on
+ *    `family-bowl` and `mat-straight` against a hard-coded 1 — and it would hold a pack's
+ *    narrow-wrapped pipe. See `wallExtents` in `geom.ts` for the measurements.
  *  - A family raft trough is **2.4 m wide with a flat floor** (`fiberglass-wide`, r = 1.2): a
  *    six-seat raft is 2.6 m across and rides on the flat, not in a groove, which is what
  *    `floorFlat: 0.55` says.
@@ -326,7 +342,9 @@ const BUILTIN: unknown = {
         hullTube: 0.34,
         seats: 5,
         riderRadius: 0.24,
-        seatSpread: 0.66,
+        // The rim's centreline (1.3 − 0.34), because that is where people sit on a family raft.
+        // 0.66 put all five inside the clear floor, which ends at 0.62 — see `buildRig`.
+        seatSpread: 0.96,
         colors: ['#ffd23f'],
         wear: ['#16e0c8', '#7c4dff', '#ff6b35', '#f4f6f7', '#2ec4b6'],
       },
@@ -427,6 +445,34 @@ const BUILTIN: unknown = {
 };
 
 /** Register one manifest fragment. Later entries with the same id win, by design. */
+/**
+ * An id claimed by one pack and re-used by another is a silent overwrite; say so.
+ *
+ * The map is keyed by BARE id on purpose — that is what makes "a pack that redefines `body`
+ * overwrites it" work, and overriding a built-in is a feature packs are expected to use. What is
+ * not a feature is two unrelated packs both shipping a `body` and the second winning with nobody
+ * told, which the round-1 critic listed as one of three limits behind the extensibility score.
+ * `key` already carries `pack:id`, so the collision is detectable at the point it happens: an
+ * override of the built-in pack is silent, an override of somebody else's is a warning naming both.
+ */
+function claim<T extends { key: string }>(
+  map: Map<string, T>,
+  packId: string,
+  what: string,
+  id: string,
+  value: T
+): void {
+  const held = map.get(id);
+  const owner = held?.key.slice(0, held.key.indexOf(':'));
+  if (held && owner && owner !== packId && owner !== BUILTIN_PACK) {
+    warnOnce(
+      `collide:${what}:${id}`,
+      `pack "${packId}": ${what} "${id}" was already registered by pack "${owner}" and is being replaced` // prettier-ignore
+    );
+  }
+  map.set(id, value);
+}
+
 export function registerFlumes(packId: string, input: unknown): number {
   if (typeof input !== 'object' || input === null || Array.isArray(input)) {
     warnOnce(`pack:${packId}`, `pack "${packId}": the "flumes" key must be an object`);
@@ -435,18 +481,23 @@ export function registerFlumes(packId: string, input: unknown): number {
   const block = input as Record<string, unknown>;
   let count = 0;
   for (const def of parseEach(packId, 'tower', block.towers, towerSchema)) {
-    towers.set(def.id, { key: `${packId}:${def.id}`, ...def, name: def.name ?? { en: def.id } });
+    claim(towers, packId, 'tower', def.id, {
+      key: `${packId}:${def.id}`,
+      ...def,
+      name: def.name ?? { en: def.id },
+    });
     count++;
   }
   for (const def of parseEach(packId, 'slide style', block.styles, styleSchema)) {
     const wrap = deg(def.wrapDeg);
-    styles.set(def.id, {
+    claim(styles, packId, 'slide style', def.id, {
       key: `${packId}:${def.id}`,
       id: def.id,
       name: def.name ?? { en: def.id },
       wrap,
       maxWrap: Math.max(wrap, deg(def.maxWrapDeg)),
       wallResponse: def.wallResponse,
+      radius: def.radius,
       floorFlat: def.floorFlat,
       thickness: def.thickness,
       sectionSamples: def.sectionSamples,
@@ -466,7 +517,11 @@ export function registerFlumes(packId: string, input: unknown): number {
     count++;
   }
   for (const def of parseEach(packId, 'layout', block.layouts, layoutSchema)) {
-    layouts.set(def.id, { key: `${packId}:${def.id}`, ...def, name: def.name ?? { en: def.id } });
+    claim(layouts, packId, 'layout', def.id, {
+      key: `${packId}:${def.id}`,
+      ...def,
+      name: def.name ?? { en: def.id },
+    });
     count++;
   }
   return count;

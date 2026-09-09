@@ -62,10 +62,11 @@ export {
   BUILTIN_PACK,
   FLUME_CATEGORY,
 } from './manifest';
-export { buildFlume, resolveFlume, riderSpec, ridersPerHour, trackDataFor, CRADLE_DEPTH } from './resolve'; // prettier-ignore
+export { buildFlume, resolveFlume, riderSpec, ridersPerHour, towerPlacement, trackDataFor, CRADLE_DEPTH } from './resolve'; // prettier-ignore
 export type { FlumeBuild } from './resolve';
 export {
   buildRig,
+  buildRimLights,
   buildShell,
   buildTower,
   buildWaterSheet,
@@ -77,6 +78,13 @@ export {
   triangleCount,
   wallExtents,
 } from './geom';
-export type { FlumeStation, FlowGeo, RigBuild, TowerBuild } from './geom';
+export type {
+  FlumeSeat,
+  FlumeStation,
+  FlowGeo,
+  RigBuild,
+  TowerBuild,
+  TowerPlacement,
+} from './geom';
 export { makeFlumeEntity } from './entity';
 export type { FlumePlacement } from './entity';

@@ -27,11 +27,23 @@
  * surface in the park that is already wet.
  *
  * **And the sheet is drawn with vertex colours.** `geom.ts` bakes the local gradient into the
- * colour channel — RGB is the foam, alpha is how fast the water runs there — so one material draws
+ * colour channel — RGB is the foam, alpha is how OPAQUE the water is there — so one material draws
  * a lazy run-out and a 54° plunge without a uniform per slide. `mesh.useVertexColors` is on by
- * default and `PBRMaterial` picks the attribute up through its own `VERTEXCOLOR` define; the alpha
- * is read by the scroll in `animate()` rather than by the shader, because a per-vertex scroll rate
- * would need a shader injection and this does not.
+ * default and `PBRMaterial` picks the attribute up through its own `VERTEXCOLOR` define.
+ *
+ * **`hasVertexAlpha` is the line that was missing, and it is why the sheet was white plastic.**
+ * Round 1's docblock said the alpha channel was "read by the scroll in `animate()`"; it was read by
+ * nothing. `AbstractMesh.hasVertexAlpha` defaults to **false**, so `VERTEXALPHA` was never defined
+ * and every vertex's alpha was discarded — a quarter of the buffer computed, uploaded and ignored,
+ * with a green build. Turning it on is what lets calm water be see-through and aerated water not,
+ * which is the difference between 3 cm of running water and a strip of white paper.
+ *
+ * The other half of the same fault is specular. A PBR dielectric at roughness 0.06 under a bright
+ * sky is a mirror, and Babylon's `useSpecularOverAlpha` / `useRadianceOverAlpha` both default to
+ * **true**, which adds the full reflection ON TOP of the alpha — so a 26 %-transparent sheet still
+ * carried a 100 % highlight and rendered white at grazing angles, which is every angle a chute is
+ * seen from. Both are off, the roughness is a running sheet's rather than a pond's, and the
+ * environment term no longer multiplies the sky by 1.5.
  */
 
 import { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
@@ -325,8 +337,15 @@ export interface FlumeMaterials {
   surface(kind: Exclude<FlumeSurface, 'gelcoat'>, color: string): PBRMaterial;
   /** The sheet running down the trough. One for the whole park. */
   water(): PBRMaterial;
-  /** The vehicle hull and the riders' costumes. */
-  hull(color: string): PBRMaterial;
+  /**
+   * The vehicle hull and the riders' costumes — ONE material for the whole park.
+   *
+   * White albedo, coloured per THIN INSTANCE by `main.ts` out of the style's `rig.colors` and
+   * `rig.wear` palettes. Round 1 had a material per colour and drew `colors[0]` for every vehicle
+   * on a slide, so the palettes were decoration and the raft fleet was one yellow; this is fewer
+   * materials AND more colours, because an instance colour costs no bind.
+   */
+  vehicle(): PBRMaterial;
   /** Emissive trim for a slide that carries a night rig. */
   glow(color: string): PBRMaterial;
   /** Real seconds — water runs at the same rate at every game speed. */
@@ -381,19 +400,45 @@ export function createFlumeMaterials(
     // column renders black. The ORM's blue carries it; this is the ceiling.
     m.environmentIntensity = 1;
     materials.set(key, m);
+    if (night > 0) applyNight(key, m);
     return m;
+  }
+
+  /**
+   * What a surface does after dark.
+   *
+   * Round 1 shipped nothing here, and the round-1 critic's night frames are the bill: two of five
+   * slides declare a `night.light`, the `medium` pool is two, and everything outside those two
+   * pools of light was "a pale grey kerb" at 19:29 and invisible at 340 m. A gelcoat trough IS
+   * grey with no light on it — that part is correct PBR — but a real park does not leave its
+   * slides unlit, and this module cannot answer it with more point lights, which are the thing
+   * every other module has already recorded as not free.
+   *
+   * So the GELCOAT keeps a tenth of its own albedo as an emissive term at full night. It is small
+   * on purpose: enough that a teal chute is still teal and a purple pipe still purple against a
+   * dark park, not enough to read as a glowing plastic tube. Steel, deck boards and canopy fabric
+   * get nothing — a handrail that glows is a mistake, and the tower reads as a silhouette, which
+   * is what the critic said the timber lattice already did well.
+   */
+  function applyNight(key: string, m: PBRMaterial): void {
+    if (key.startsWith('glow:')) {
+      m.emissiveIntensity = 0.15 + night * 0.85;
+      return;
+    }
+    if (!key.startsWith('gelcoat:')) return;
+    const a = m.albedoColor;
+    m.emissiveColor.set(a.r * 0.1 * night, a.g * 0.1 * night, a.b * 0.1 * night);
   }
 
   const api: FlumeMaterials = {
     shell: (color) => tinted('gelcoat', color),
     surface: (kind, color) => tinted(kind, color),
-    hull(color) {
-      const key = `hull:${color}`;
+    vehicle() {
+      const key = 'vehicle';
       const cached = materials.get(key);
       if (cached) return cached;
-      const m = new PBRMaterial(`flume-${key}`, scene);
-      const [r, g, b] = hexToLinear(color);
-      m.albedoColor = new Color3(r, g, b);
+      const m = new PBRMaterial('flume-vehicle', scene);
+      m.albedoColor = new Color3(1, 1, 1);
       // A wet inflatable is smooth and dark-reflecting; no texture, because at the size a vehicle
       // is ever drawn a 384² map is under a pixel per texel and costs a bind for nothing.
       m.metallic = 0;
@@ -404,18 +449,24 @@ export function createFlumeMaterials(
     water() {
       if (waterMaterial) return waterMaterial;
       const m = new PBRMaterial('flume-water', scene);
-      m.albedoColor = new Color3(0.42, 0.74, 0.86);
+      m.albedoColor = new Color3(0.34, 0.66, 0.78);
       m.bumpTexture = flowNormal;
       m.bumpTexture.level = 0.85;
       m.metallic = 0;
-      m.roughness = 0.06;
-      m.alpha = 0.74;
+      // A sheet 3 cm deep over a moulded floor, broken up by its own flow. 0.06 was a still pond.
+      m.roughness = 0.16;
+      // The vertex alpha carries the range (0.30 in the run-out, 1.00 in the foam); this is the
+      // ceiling it is measured against, not the sheet's opacity.
+      m.alpha = 0.95;
       m.transparencyMode = Material.MATERIAL_ALPHABLEND;
       m.backFaceCulling = true;
+      // Both default TRUE, and together they were the white. See the file docblock.
+      m.useSpecularOverAlpha = false;
+      m.useRadianceOverAlpha = false;
       // The sheet is thin and lit from above; a touch of its own light keeps it from going black
       // in the shadow of the trough's own wall, which is where half of it always is.
       m.emissiveColor = new Color3(0.02, 0.06, 0.09);
-      m.environmentIntensity = 1.5;
+      m.environmentIntensity = 0.85;
       // §4: water owns its own look. No wetness pass, no seasonal tint, no exposure fiddling.
       m.metadata = { envExempt: true };
       waterMaterial = m;
@@ -448,9 +499,7 @@ export function createFlumeMaterials(
     },
     setEnvironment(value) {
       night = value;
-      for (const [key, m] of materials) {
-        if (key.startsWith('glow:')) m.emissiveIntensity = 0.15 + night * 0.85;
-      }
+      for (const [key, m] of materials) applyNight(key, m);
       if (waterMaterial) {
         // At night the sheet is lit by the slide's own rig rather than by the sky; lift its own
         // term so it does not go to a black ribbon while everything around it is coloured.

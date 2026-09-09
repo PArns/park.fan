@@ -173,6 +173,15 @@ export interface MassDef {
   roofSurface?: SurfaceName;
   /** A clock face on the front gable or drum. Diameter in metres; 0 = none. */
   clock?: number;
+  /**
+   * How many elevations get a dial. Absent: one on a long block, one per side on a square tower.
+   *
+   * The default is `max(hx, hz) / min(hx, hz) < 1.6`, which is a good rule and fixed a real
+   * round-1 finding — but it is a rule the manifest cannot argue with, and a pack that wants one
+   * dial on a square tower or four on an oblong one had no way to say so. On a drum it is the
+   * number of facets that get one, spread evenly round the ring.
+   */
+  clockFaces?: number;
 }
 
 export interface FacadeMap {
@@ -247,6 +256,16 @@ export interface SignDef {
   /** Fraction of the facade the band spans. */
   width?: number;
   color?: Hex;
+  /**
+   * Which mass carries the band, by `MassDef.id`. Defaults to the first mass that is not round.
+   *
+   * This is what `mass.id` is FOR. It was declared and typed from the first round and read by
+   * nothing, and the sign band was nailed to `masses[0]` — so a blueprint whose main block came
+   * second got its name over the porch, and one whose first mass was a drum got a warning and no
+   * sign at all. Naming the mass is one word of JSON and the alternative is reordering the masses,
+   * which moves the whole building.
+   */
+  mass?: string;
 }
 
 // ── Entity ──────────────────────────────────────────────────────────────────────────────────

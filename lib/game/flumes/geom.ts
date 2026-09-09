@@ -158,8 +158,24 @@ export function sectionNormal(u: number, phiL: number, phiR: number, floorFlat: 
  * The answer is a pair of angular extents in radians, never below the style's resting `wrap` and
  * never above its `maxWrap`, plus the SIGNED climb: positive throws the rider up the right-hand
  * wall, and `riderPose` reads that sign rather than comparing the two extents. It has to, because
- * a closed pipe declares `wallResponse: 0` — its section never changes and its rider still rides
- * up the side.
+ * a section that does not grow still has a rider riding up its side — which the bundled closed
+ * pipe is, at every speed.
+ *
+ * ## Which of the two floors is doing the work, corrected after round 1
+ *
+ * Round 1 claimed `wallResponse: 0` was what kept the closed pipe's section. It is not. The clamp
+ * has **two** lower bounds and the binding one on that style is the resting `wrap`: the pipe rests
+ * at 170°, and the largest extent this rule can ask of a 0.6 m pipe is 122.7° (40 m/s in a 9 m
+ * hook) — 85.6° over the descent that actually ships. `needed − wrap` is negative there whatever
+ * the coefficient is, so the pipe would keep its section at `wallResponse: 1`.
+ *
+ * The coefficient is load-bearing everywhere the resting wrap is low enough to be asked for, which
+ * is the other four styles. Measured over each layout's own stations, degrees of wall above the
+ * resting wrap, as shipped against a hard-coded 1: `family-bowl` **18.45° vs 21.71°**,
+ * `mat-straight` **17.20° vs 21.50°**, `plunge-drop` 11.93° either way (it declares 1), and 0.00°
+ * at response 0 on all three. A narrow-wrapped pipe — 90° at 14 m/s — gets 90.0 / 95.8 / 101.6° at
+ * response 0 / 0.5 / 1, which is the case a pack would ship and the case the selftest pins.
+ * Deleting the term from this line fails ten checks in `selftest.mjs`.
  *
  * The vehicle's own width is added as an ARC (`halfWidth / radius`) rather than as an `asin`. On a
  * body slide the two agree to a degree or so; on a family raft the hull is wider than the trough's
@@ -357,15 +373,81 @@ export function buildShell(
 }
 
 /**
+ * The LED strip along both lips of the trough.
+ *
+ * The reason it exists is a frame and not a feature: at 19:29 and 23:59 the round-1 critic found
+ * five slides reduced to "a pale grey kerb", "grey ribbons", and nothing at all at 340 m — because
+ * only two of the five declare a `night.light` and gelcoat with no light on it is grey. A water
+ * park's slides are outlined at night, and outlining them is also the cheapest thing that reads
+ * from the `overview` camera: a 2 cm strip is a line, and a line survives being two pixels wide
+ * where a 1 m trough does not.
+ *
+ * It is drawn in the style's `trim` colour through `materials.glow`, which already ramps its
+ * emissive with the environment's `night` (0.15 by day, 1.0 at midnight) — so by day it is the
+ * contrasting rail every manufacturer bolts along a flume and by night it is the slide's outline.
+ * One strip mesh per slide, `stations.length × 8` triangles: 776 on `plunge-drop` against the
+ * shell's 8,588.
+ *
+ * Sits a centimetre proud of the shell's OUTER face, which is `sectionPoint ± thickness` along
+ * `sectionNormal` — the same two functions the shell is swept from, so it follows the wall rule up
+ * and down with the trough rather than needing a second idea of where the lip is.
+ */
+export function buildRimLights(
+  stations: readonly FlumeStation[],
+  style: FlumeStyleSpec,
+  radius: number
+): Geo {
+  const geo = emptyGeo();
+  if (stations.length < 2) return geo;
+  const halfWidth = 0.035;
+  const stand = style.thickness + 0.012;
+  let previousBase = -1;
+  for (const station of stations) {
+    const base = geo.positions.length / 3;
+    const f = station.frame;
+    for (const side of [-1, 1]) {
+      const p = sectionPoint(side, radius, station.phiL, station.phiR, style.floorFlat);
+      const n = sectionNormal(side, station.phiL, station.phiR, style.floorFlat);
+      // In-plane tangent to the section, so the strip lies flat ON the lip rather than across it.
+      const tx = -n.y;
+      const ty = n.x;
+      for (const k of [-1, 1]) {
+        const x = p.x + n.x * stand + tx * halfWidth * k;
+        const y = p.y + n.y * stand + ty * halfWidth * k;
+        geo.positions.push(
+          f.p[0] + f.right[0] * x + f.up[0] * y,
+          f.p[1] + f.right[1] * x + f.up[1] * y,
+          f.p[2] + f.right[2] * x + f.up[2] * y
+        );
+        geo.normals.push(
+          n.x * f.right[0] + n.y * f.up[0],
+          n.x * f.right[1] + n.y * f.up[1],
+          n.x * f.right[2] + n.y * f.up[2]
+        );
+        geo.uvs.push((k + 1) / 2, station.s);
+      }
+    }
+    if (previousBase >= 0) {
+      // Two quads, one per lip. The vertex order within a lip is (inner, outer) on both stations.
+      for (const lip of [0, 2]) {
+        quad(geo, previousBase + lip, base + lip, base + lip + 1, previousBase + lip + 1);
+      }
+    }
+    previousBase = base;
+  }
+  return geo;
+}
+
+/**
  * The sheet of water running down the floor.
  *
  * A separate surface a few centimetres above the shell's inner face rather than a shader on the
  * shell, for two reasons: it stops well short of the lip (water runs in the bottom of the trough,
- * it does not climb the wall with the rider), and it carries its own vertex channel. The alpha of
- * that channel is how fast the sheet runs at that point — `sin(slope)` plus a term from the rider's
- * own speed — and `main.ts` scrolls the normal map by it, so the water visibly accelerates into a
- * plunge and slows on the run-out. The RGB is the foam: white where it is steep, clear where it is
- * flat.
+ * it does not climb the wall with the rider), and it carries its own vertex channel. RGB is the
+ * foam — white where it is steep, clear where it is flat — and ALPHA is how much of the trough the
+ * sheet hides, which is read by the shader through `mesh.hasVertexAlpha`. Round 1's docblock said
+ * the alpha was "scrolled by `main.ts`"; nothing scrolled it and nothing read it (see
+ * `materials.ts`). The normal map's scroll is one global rate for the whole park.
  */
 export function buildWaterSheet(
   stations: readonly FlumeStation[],
@@ -383,7 +465,16 @@ export function buildWaterSheet(
   for (const station of stations) {
     const base = geo.positions.length / 3;
     const foam = clamp(station.fall * 1.6 + (station.v / peak) * 0.3, 0, 1);
-    const flow = clamp(0.25 + station.fall * 2.2 + (station.v / peak) * 0.5, 0.15, 1.6);
+    /**
+     * Alpha: how much of the trough the sheet hides.
+     *
+     * Calm water over a moulded floor is nearly clear and you read the gelcoat through it; water
+     * being thrown down a 48° plunge is aerated and hides what it runs on. Round 1 wrote this into
+     * the buffer with a ceiling of 1.6 — a third of the range past anything a shader can use — and
+     * then never turned `hasVertexAlpha` on, so none of it was read at all. The range is 0.30 to
+     * 1.00 now, against the material's own 0.95, i.e. 28 % to 95 % opaque along one slide.
+     */
+    const flow = clamp(0.3 + station.fall * 1.1 + (station.v / peak) * 0.28, 0.3, 1);
     for (let j = 0; j < m; j++) {
       const u = ((j / (m - 1)) * 2 - 1) * span;
       const p = sectionPoint(u, radius, station.phiL, station.phiR, style.floorFlat);
@@ -533,7 +624,7 @@ export interface TowerBuild {
  * 0.28 m going they are two pixels at `overview` and a real step at `ground`, which is the range
  * this has to work over.
  */
-export function buildTower(options: {
+export interface TowerPlacement {
   spec: FlumeTowerSpec;
   /** Deck centre, world metres. */
   centre: V3;
@@ -544,7 +635,9 @@ export function buildTower(options: {
   deckY: number;
   /** How wide the chute leaving the deck is, so the deck is cut around it. */
   chuteWidth: number;
-}): TowerBuild {
+}
+
+export function buildTower(options: TowerPlacement): TowerBuild {
   const { spec, centre, yaw, ground, deckY, chuteWidth } = options;
   const steel = emptyGeo();
   const deck = emptyGeo();
@@ -689,11 +782,17 @@ export function buildTower(options: {
 
 // ── the vehicles ────────────────────────────────────────────────────────────────────────────
 
+/** One seat in the vehicle's own frame. `yaw` is which way the person is turned, radians. */
+export interface FlumeSeat {
+  across: number;
+  along: number;
+  yaw: number;
+}
+
 export interface RigBuild {
   hull: Geo;
   rider: Geo;
-  /** Seat offsets in the vehicle's own frame: across, along. */
-  seats: Array<[number, number]>;
+  seats: FlumeSeat[];
 }
 
 /**
@@ -797,12 +896,43 @@ export function buildRig(rig: FlumeRig): RigBuild {
   addTube(rider, [-rr * 0.95, seatY + rr * 0.5, rr * 0.1], [-rr * 1.15, seatY - rr * 0.2, -rr * 0.9], rr * 0.3, 6); // prettier-ignore
   addTube(rider, [rr * 0.95, seatY + rr * 0.5, rr * 0.1], [rr * 1.15, seatY - rr * 0.2, -rr * 0.9], rr * 0.3, 6); // prettier-ignore
 
-  const seats: Array<[number, number]> = [];
-  if (rig.seats <= 1) seats.push([0, 0]);
-  else {
+  /**
+   * Where the people sit, which is a fidelity question and was answered wrongly.
+   *
+   * Round 1 laid EVERY multi-seat rig on a circle of radius `seatSpread`, all facing the vehicle's
+   * forward, and the round-1 critic photographed the result: "five teal capsule-clusters heaped in
+   * it, two of them over the rim … they read as a pile of cylinders". Two separate faults, and the
+   * arithmetic says so. The raft's rim torus is centred at `hullRadius − hullTube` = 0.96 m with a
+   * tube radius of 0.34, so the CLEAR FLOOR ends at 0.62 m — and `seatSpread` was 0.66. Every one
+   * of the five was sitting on the inside of the rim already, and the 0.24 m rider took them to
+   * 0.90 m, which is over it.
+   *
+   * A family raft seats people ON the rim with their backs to the tube, facing the middle. So a
+   * hull with a rim gets the rim's own centreline as its ring radius — `seatSpread` is honoured as
+   * a declared radius but clamped into the hull, so no content value can hang somebody in the air
+   * — and each rider is turned to face the centre, which is what makes five capsules read as five
+   * people round a raft rather than as a heap.
+   *
+   * A hull with no rim (a mat, or a body slide's bare rider) is not a ring at all: those riders go
+   * ABREAST, across the vehicle, all facing the way it is going. Round 1 put a four-abreast racer's
+   * seats on a circle too.
+   */
+  const seats: FlumeSeat[] = [];
+  const ringHull = rig.hull === 'raft' || rig.hull === 'ring';
+  if (rig.seats <= 1) seats.push({ across: 0, along: 0, yaw: 0 });
+  else if (ringHull) {
+    // The rim's centreline, and never past the inside of the tube.
+    const rim = Math.max(0, r - rig.hullTube);
+    const ring = clamp(rig.seatSpread > 0 ? rig.seatSpread : rim, 0, rim);
     for (let i = 0; i < rig.seats; i++) {
       const a = (i / rig.seats) * Math.PI * 2;
-      seats.push([Math.sin(a) * rig.seatSpread, Math.cos(a) * rig.seatSpread]);
+      // `RotationY(yaw)` sends the rider's +z to (sin yaw, cos yaw); a + π points it at the centre.
+      seats.push({ across: Math.sin(a) * ring, along: Math.cos(a) * ring, yaw: a + Math.PI });
+    }
+  } else {
+    const pitch = rig.seatSpread > 0 ? rig.seatSpread : rr * 2.4;
+    for (let i = 0; i < rig.seats; i++) {
+      seats.push({ across: (i - (rig.seats - 1) / 2) * pitch, along: 0, yaw: 0 });
     }
   }
   return { hull, rider, seats };

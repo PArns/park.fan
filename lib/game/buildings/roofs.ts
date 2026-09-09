@@ -28,6 +28,7 @@ import {
   addQuad,
   addTriangle,
   addTube,
+  prismSolid,
   shade,
   type P3,
   type Rgb,
@@ -562,6 +563,31 @@ function roundRoof(
  * real reason: it is the only way a room in a roof gets light, and it is what turns a 45° plane into
  * a building somebody lives in.
  */
+/**
+ * A solid the kit built out of raw quads rather than out of `addBox`, in a mass's own local frame.
+ *
+ * A dormer is four quads and a pitched cap, so nothing in `geometry.ts` sees a volume — and its
+ * cheeks and its face then stand INSIDE the mass's prism, where "out" means "towards the plan
+ * boundary" and a cheek looking along the ridge is neither in nor out. That is the hole round 2's
+ * §5d had: the critic turned every dormer front in the catalogue inward and the suite stayed green.
+ * The box is declared here, next to the quads, because this is the only place that knows it.
+ */
+function solidLocal(ctx: KitCtx, m: Placed, min: P3, max: P3, by: string): void {
+  if (!ctx.kit.solids) return;
+  const ring = (
+    [
+      [min[0], min[2]],
+      [max[0], min[2]],
+      [max[0], max[2]],
+      [min[0], max[2]],
+    ] as [number, number][]
+  ).map(([x, z]) => {
+    const w = xf(m, x, 0, z);
+    return [w[0], w[2]] as [number, number];
+  });
+  ctx.kit.solids.push(prismSolid(by, ring, min[1], max[1]));
+}
+
 function dormers(
   ctx: KitCtx,
   m: Placed,
@@ -588,6 +614,17 @@ function dormers(
       const u = -along + ((i + 0.5) * (along * 2)) / n;
       const cheekBack = side * (faceW - 1.1);
       const face = side * faceW;
+      const apexY = sillY + h + 0.34;
+      const wide = (w + 0.3) / 2;
+      const w0 = Math.min(cheekBack, face + side * 0.16);
+      const w1 = Math.max(cheekBack, face + side * 0.16);
+      solidLocal(
+        ctx,
+        m,
+        r.ridge === 'x' ? [u - wide, sillY - 0.5, w0] : [w0, sillY - 0.5, u - wide],
+        r.ridge === 'x' ? [u + wide, apexY, w1] : [w1, apexY, u + wide],
+        'dormer'
+      );
       // The face, with a window in it.
       addQuad(
         ctx.kit,
@@ -627,7 +664,7 @@ function dormers(
           faceDir(m, r.ridge, cheek, 0)
         );
       }
-      const apex = sillY + h + 0.34;
+      const apex = apexY;
       for (const cheek of [-1, 1]) {
         addQuad(
           ctx.kit,
@@ -796,6 +833,20 @@ export function boxLocal(s: Surface, m: Placed, min: P3, max: P3, colour: Rgb, t
   const [x1, y1, z1] = max;
   const c = (x: number, y: number, z: number): P3 => xf(m, x, y, z);
   const o = { colour, tile, maxCells: 8 };
+  if (s.solids) {
+    const ring = (
+      [
+        [x0, z0],
+        [x1, z0],
+        [x1, z1],
+        [x0, z1],
+      ] as [number, number][]
+    ).map(([x, z]) => {
+      const w = c(x, y0, z);
+      return [w[0], w[2]] as [number, number];
+    });
+    s.solids.push(prismSolid('boxLocal', ring, y0, y1));
+  }
   addQuad(s, c(x1, y0, z1), c(x1, y0, z0), c(x1, y1, z0), c(x1, y1, z1), o);
   addQuad(s, c(x0, y0, z0), c(x0, y0, z1), c(x0, y1, z1), c(x0, y1, z0), o);
   addQuad(s, c(x0, y1, z1), c(x1, y1, z1), c(x1, y1, z0), c(x0, y1, z0), o);

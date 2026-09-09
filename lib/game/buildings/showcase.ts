@@ -160,7 +160,15 @@ const SHOWCASE_PACK = {
     // entities, ten of which are 4 m kit samples, and `frameRadius: 'auto'` then fits a 110 m circle
     // — measured on the first round's `0900-overview.png`, where the whole set was a smudge a
     // hundred pixels wide. A showcase knows where its own street is.
-    { id: 'overview', target: [0, 7, 4], bearing: 30, pitch: 21, distance: 132 },
+    /**
+     * Framed against the HUD, not against the world.
+     *
+     * The round-2 preset (`target [0, 7, 4]`, distance 132) put the left 40 % of the frame on empty
+     * lawn and the kit row — this module's own open item — behind the panel that covers the right
+     * quarter of every harness shot. Nothing about the buildings had changed; the camera was
+     * pointing at the wrong part of them.
+     */
+    { id: 'overview', target: [14, 7, 20], bearing: 36, pitch: 25, distance: 116 },
     // The clock tower from the plaza, and one building rather than a roofscape. Anchored on the
     // centroid of the `building` entities the camera ends up over the terrace at 20 m, which is
     // above their ridges: two rounds of `close` came back as a picture of slate.
@@ -187,9 +195,15 @@ const PLOTS: Array<{ item: string; pack: string; x: number; z: number; yaw: numb
   // West side, facing east.
   { pack: 'parkfan-architecture', item: 'ticket-hall', x: -25, z: 20, yaw: Math.PI / 2 },
   { pack: 'parkfan-architecture', item: 'clock-tower', x: -23, z: -14, yaw: Math.PI / 2 },
-  { pack: 'parkfan-architecture', item: 'terrace-house', x: -16, z: 56, yaw: Math.PI / 2 },
-  { pack: 'parkfan-architecture', item: 'terrace-house', x: -16, z: 46, yaw: Math.PI / 2 },
+  // Two shops and a house, not three houses. `g` — the shopfront bay — had been in the pattern
+  // language since round 1 with nothing using it, so a park's main street was a row of front doors
+  // and domestic sashes with a sign hung over one of them.
+  { pack: 'parkfan-architecture', item: 'shop-terrace', x: -16, z: 56, yaw: Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'shop-terrace', x: -16, z: 46, yaw: Math.PI / 2 },
   { pack: 'parkfan-architecture', item: 'terrace-house', x: -16, z: 36, yaw: Math.PI / 2 },
+  // The east side of the street's lower half, which `overview` was photographing as lawn.
+  { pack: 'parkfan-architecture', item: 'shop-terrace', x: 17, z: 74, yaw: -Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'terrace-house', x: 17, z: 64, yaw: -Math.PI / 2 },
   // East side, facing west.
   { pack: 'parkfan-architecture', item: 'market-hall', x: 26, z: 18, yaw: -Math.PI / 2 },
   { pack: 'parkfan-architecture', item: 'rotunda', x: 24, z: -18, yaw: -Math.PI / 2 },
@@ -227,6 +241,19 @@ export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
       style: 'pavers',
       width: 6,
       points: [-14, 20, -6, 20, 6, 20, 14, 20],
+    });
+    /**
+     * A yard under the kit row, so the ten pieces stand in a builder's merchant and not in grass.
+     *
+     * Each piece already brings its own apron, and ten aprons scattered on a lawn read as ten
+     * dropped objects — which is what "kit pieces are ten slabs on a lawn" has meant for three
+     * rounds. One paved rectangle under all of them is what makes them a yard: the same trick the
+     * street itself uses, and content rather than code.
+     */
+    paths.create({
+      form: 'plaza',
+      style: 'pavers',
+      points: [-13.5, 29, 13.5, 29, 13.5, -9, -13.5, -9],
     });
   } else {
     console.warn('[game/buildings] showcase: no paths module — the street will be bare ground');

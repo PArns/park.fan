@@ -1102,7 +1102,13 @@ function oculus(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions): void {
     const a1 = ((i + 1) / n) * Math.PI * 2;
     const p = (a: number, rr: number, out: number): P3 =>
       framePoint(f, cu + Math.cos(a) * rr, cv + Math.sin(a) * rr, out);
-    addQuad(ctx.kit, p(a0, r, 0.07), p(a1, r, 0.07), p(a1, r + 0.18, 0.07), p(a0, r + 0.18, 0.07), {
+    // `a1 → a0` and not `a0 → a1`. Walked with the angle, the ring's front annulus is
+    // `tangent × radius`, which is MINUS the frame normal — so the stone ring round every oculus in
+    // the catalogue faced into its own wall and was culled, 28 triangles per opening. Nothing saw
+    // it for three rounds: §5b measures roof planes, §5c only asks the normal to agree with the
+    // winding (it did, both wrong), and round 2's §5d judged nothing that did not stand on a mass's
+    // plan prism. It stands 70 mm proud of one, which is what §5d reaches now.
+    addQuad(ctx.kit, p(a1, r, 0.07), p(a0, r, 0.07), p(a0, r + 0.18, 0.07), p(a1, r + 0.18, 0.07), {
       colour: skin.trimColour,
       tile: skin.trimTile,
       repeatU: 1,

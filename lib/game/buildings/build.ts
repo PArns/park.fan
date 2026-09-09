@@ -29,6 +29,8 @@ import {
   boundsOf,
   mixRgb,
   newSurface,
+  prismSolid,
+  ringPlan,
   shade,
   srgb,
   subFrame,
@@ -37,6 +39,7 @@ import {
   type Frame,
   type P3,
   type Rgb,
+  type Solid,
   type Surface,
 } from './geometry';
 import {
@@ -86,6 +89,8 @@ export interface BuildingBuild {
   lights: LightSite[];
   /** Height of the tallest thing drawn. */
   height: number;
+  /** Only when `recordSolids` was asked for; see `Solid`. */
+  solids?: Solid[];
 }
 
 export interface BuildOptions {
@@ -95,6 +100,15 @@ export interface BuildOptions {
   seed: number;
   /** Overrides the blueprint's own night fraction; the showcase uses it to photograph both. */
   litFraction?: number;
+  /**
+   * Record every solid the kit lays down, for `selftest.mjs` §5d.
+   *
+   * Off in the game. The winding check has to know which way is OUT for every triangle; the only
+   * thing that knows is the solid the triangle stands on, and the only place that knows the solid
+   * is the code that built it. Round 2 took that reference from `blueprint.masses` instead and
+   * could therefore judge the four walls of a box and nothing else.
+   */
+  recordSolids?: boolean;
 }
 
 const DEG = Math.PI / 180;
@@ -121,12 +135,13 @@ export function seedForBuilding(key: string): number {
 export function buildBuilding(opts: BuildOptions): BuildingBuild {
   const bp = opts.blueprint;
   const style = opts.style;
+  const rec = opts.recordSolids === true;
   const ctx: KitCtx = {
-    kit: newSurface(),
-    glass: newSurface(),
-    lit: newSurface(),
-    sign: newSurface(),
-    halo: newSurface(),
+    kit: newSurface(rec),
+    glass: newSurface(rec),
+    lit: newSurface(rec),
+    sign: newSurface(rec),
+    halo: newSurface(rec),
     seed: opts.seed,
     litFraction: opts.litFraction ?? bp.night?.litFraction ?? 0.55,
     windows: 0,
@@ -195,6 +210,7 @@ export function buildBuilding(opts: BuildOptions): BuildingBuild {
     entrance,
     lights: ctx.lights,
     height: top,
+    solids: ctx.kit.solids,
   };
 }
 
@@ -321,7 +337,16 @@ function buildMass(
     const front = walls[0].frame;
     downpipe(ctx, front, 0.35, eaveY - m.base - plinth - trim.cornice, skin);
     downpipe(ctx, front, front.width - 0.35, eaveY - m.base - plinth - trim.cornice, skin);
-    if (bp.sign && bp.sign.band > 0 && index === 0) {
+    /**
+     * The sign hangs on the mass the blueprint NAMES, and on `masses[0]` only by default.
+     *
+     * `mass.id` was declared, typed and read by nothing for two rounds — the round-2 critic's last
+     * standing deduction. `sign.mass` is what it is for: a blueprint whose main block is its second
+     * mass got its name over the porch, and one whose first mass is a drum got a warning and no
+     * sign, with reordering the masses as the only way out — which moves the building.
+     */
+    const signMass = bp.sign?.mass ? bp.masses.findIndex((entry) => entry.id === bp.sign?.mass) : 0;
+    if (bp.sign && bp.sign.band > 0 && index === (signMass < 0 ? 0 : signMass)) {
       // `sign.side` is honoured. It was declared, typed and read nowhere, so a pack asking for a
       // sign on the `right` elevation silently got one on the front — which is worse than not
       // offering the field, because the manifest says it works.
@@ -357,14 +382,18 @@ function buildMass(
        * the ratio is what tells the two apart without a new manifest field.
        */
       const tower = Math.max(m.hx, m.hz) / Math.min(m.hx, m.hz) < 1.6;
-      for (const entry of tower ? walls : [walls[0]]) {
+      // `clockFaces` overrides the ratio where a pack disagrees with it: one dial on a square tower,
+      // four on an oblong one. Absent, the rule below decides, which is what it did before.
+      const faces = mass.clockFaces ?? (tower ? 4 : 1);
+      for (const entry of walls.slice(0, Math.max(1, Math.min(4, Math.round(faces))))) {
         clockFace(ctx, entry.frame, entry.frame.width / 2, cv, mass.clock, skin);
       }
     }
   } else if (mass.clock && mass.clock > 0) {
     // A tower clock has four faces, not one per facet: on an octagon that is every other one.
     const frames = roundFrames(m, round, m.base + plinth, eaveY - m.base - plinth);
-    const every = Math.max(1, Math.round(round / 4));
+    const wanted = Math.max(1, Math.min(round, Math.round(mass.clockFaces ?? 4)));
+    const every = Math.max(1, Math.round(round / wanted));
     frames.forEach((entry, i) => {
       if (i % every !== 0) return;
       clockFace(
@@ -379,6 +408,37 @@ function buildMass(
   }
 
   if (mass.arcade) arcade(ctx, m, mass, style, skin, storeyHeight, plinth);
+
+  /**
+   * The mass itself, as a solid, for the winding check.
+   *
+   * Recorded here and not derived from `mass` in the test, and recorded as the POLYGON a drum
+   * actually is rather than the cylinder its `size` describes: an octagon's facet stands 0.61 m
+   * inside its own circumradius at the midpoint, which is how eight inside-out drum facets sat
+   * 0.1 m outside round 2's envelope band and were judged by nothing for two rounds. It runs from
+   * the buried skirt to above the ridge, because a gable end and a mansard end are wall standing on
+   * the mass's plan and the check has to reach them.
+   */
+  ctx.kit.solids?.push(
+    prismSolid(
+      `mass:${mass.id ?? index}`,
+      round
+        ? ringPlan(m.cx, m.cz, m.hx, round, roundPhase(round))
+        : (
+            [
+              [-m.hx, -m.hz],
+              [m.hx, -m.hz],
+              [m.hx, m.hz],
+              [-m.hx, m.hz],
+            ] as [number, number][]
+          ).map(([x, z]) => {
+            const w = xf(m, x, 0, z);
+            return [w[0], w[2]] as [number, number];
+          }),
+      m.base - 0.7,
+      Math.max(result.top, eaveY) + 0.05
+    )
+  );
 
   return Math.max(result.top, eaveY);
 }
@@ -478,14 +538,27 @@ function roundPhase(sides: number): number {
  * Facet 0 faces the front; every other facet takes the `all` pattern. A tower with a door on one
  * side and windows on the rest is therefore two lines of JSON, and a rotunda with the same opening
  * all the way round is one.
+ *
+ * **Each facet is walked from its left-hand end to its right-hand end SEEN FROM OUTSIDE**, i.e. by
+ * decreasing angle, which is the same handedness `boxFrames` gives its `front` (corner `[-hx, hz]`,
+ * `right` `[1, 0]`, normal `[0, 1]`). Walking the ring the other way — by increasing angle, which
+ * is what this did for two rounds — makes `right` run the other way and `right × up` therefore
+ * point at the middle of the drum, so every wall panel, every reveal, every arch and every bay of
+ * every round mass was built inside out and `framePoint`'s `out` recessed instead of projecting.
+ * What that looks like is not a hole: the drum's own far side, lit from within and with all its
+ * modelling on the other face, i.e. **a featureless pale sheet with a roof on it**, which is what
+ * the round-2 critic photographed and measured at p95 luma 220 against sunlit paving's 155. It
+ * survived two rounds of checks because §5d judged a round mass against a CYLINDER of radius `hx`,
+ * and an octagon's facet stands 0.61 m inside that at its midpoint — outside the 0.1 m band, judged
+ * by nothing. §5d judges every upright triangle now, and this is the first thing it found.
  */
 export function roundFrames(m: Placed, sides: number, y: number, height: number): FacadeEntry[] {
   const out: FacadeEntry[] = [];
   const r = m.hx;
   const phase = roundPhase(sides);
   for (let i = 0; i < sides; i++) {
-    const a0 = phase + (i / sides) * Math.PI * 2;
-    const a1 = phase + ((i + 1) / sides) * Math.PI * 2;
+    const a0 = phase + ((i + 1) / sides) * Math.PI * 2;
+    const a1 = phase + (i / sides) * Math.PI * 2;
     const p0: P3 = [m.cx + Math.cos(a0) * r, y, m.cz + Math.sin(a0) * r];
     const p1: P3 = [m.cx + Math.cos(a1) * r, y, m.cz + Math.sin(a1) * r];
     const dx = p1[0] - p0[0];
@@ -876,13 +949,15 @@ export function buildKitPiece(opts: {
   style: BuildingStyleDef;
   seed: number;
   litFraction?: number;
+  recordSolids?: boolean;
 }): BuildingBuild {
+  const rec = opts.recordSolids === true;
   const ctx: KitCtx = {
-    kit: newSurface(),
-    glass: newSurface(),
-    lit: newSurface(),
-    sign: newSurface(),
-    halo: newSurface(),
+    kit: newSurface(rec),
+    glass: newSurface(rec),
+    lit: newSurface(rec),
+    sign: newSurface(rec),
+    halo: newSurface(rec),
     seed: opts.seed,
     litFraction: opts.litFraction ?? 0.6,
     windows: 0,
@@ -892,6 +967,25 @@ export function buildKitPiece(opts: {
     entrance: null,
   };
   const skin = skinFor(opts.style);
+  /**
+   * The sample's own block, so §5d has a reference for a kit piece too.
+   *
+   * A piece has no `blueprint.masses` and round 2's check therefore skipped all ten of them — the
+   * ten objects the showcase puts on a plinth at eye level and photographs.
+   */
+  ctx.kit.solids?.push(
+    prismSolid(
+      `piece:${opts.piece}`,
+      [
+        [-opts.size[0] / 2, -opts.size[2] / 2],
+        [opts.size[0] / 2, -opts.size[2] / 2],
+        [opts.size[0] / 2, opts.size[2] / 2],
+        [-opts.size[0] / 2, opts.size[2] / 2],
+      ],
+      0,
+      opts.size[1]
+    )
+  );
   const gen = PIECES[opts.piece] ?? PIECES.wall;
   gen(ctx, opts.size, skin, opts.style);
   const bounds = boundsOf(ctx.kit, ctx.glass, ctx.lit, ctx.sign);
@@ -916,6 +1010,7 @@ export function buildKitPiece(opts: {
     entrance: [0, opts.size[2] / 2 + 1.5],
     lights: ctx.lights,
     height: bounds.max[1],
+    solids: ctx.kit.solids,
   };
 }
 

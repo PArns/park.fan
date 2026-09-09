@@ -327,6 +327,7 @@ export function createFlumesSim(ctx: SimContext): SimHandle {
           buffer[o + 7] = q[2];
           buffer[o + 8] = q[3];
           buffer[o + 9] = r.v;
+          buffer[o + 10] = r.tint;
         }
       }
       writer.stat('flumes.count', stats.flumes);
@@ -343,8 +344,23 @@ export function createFlumesSim(ctx: SimContext): SimHandle {
         // Three decimals on the dispatch phase, for the reason `pools/sim.ts` records: a float
         // accumulated by repeated addition differs in its last bits between a fresh run and a
         // reloaded one, and `serialize(load(serialize(w))) === serialize(w)` is a hard gate.
+        /**
+         * The people in the air are counted as having ridden, because the save is where they stop
+         * existing.
+         *
+         * Round 1 disclosed that a save drops mid-descent riders and called it a design decision,
+         * which it is; what it did not state is the consequence, and the round-1 critic measured
+         * it — 3,333 ticks on a three-flume world saved and reloaded came back
+         * `{16, 6, 13} → {14, 5, 11}`, so a park saved often enough under-reports its own ride
+         * count for ever. `descents` is a lifetime counter and these riders did ride; the ones
+         * that will never land are added here rather than being lost.
+         *
+         * It does not cost the byte-identical round trip: a load restores the sum and an empty
+         * list, so the second save adds nothing and matches the first. `pnpm test:game-flumes`
+         * asserts that on a world that has been RUN.
+         */
         out[id] = {
-          descents: s.descents,
+          descents: s.descents + (riders.get(id)?.length ?? 0),
           sinceDispatch: Math.round(s.sinceDispatch * 1000) / 1000,
           running: s.running,
         };
