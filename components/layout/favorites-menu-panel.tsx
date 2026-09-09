@@ -493,9 +493,7 @@ export function FavoritesMenuPanel({
             und eine Anleitung zum Sternsetzen ist daneben das Nachrangige. Über die volle Breite,
             weil es hier keine zweite Gruppe gibt, neben der es sich eine Spur teilen müsste. */}
         {showAlerts && (
-          <div className="mb-5">
-            <FavoritesMenuAlerts open={open} cap={MAX_CARDS} expected={alertCount} />
-          </div>
+          <FavoritesMenuAlerts open={open} cap={MAX_CARDS} expected={alertCount} className="mb-5" />
         )}
 
         <div data-menu-stagger>
@@ -714,9 +712,7 @@ export function FavoritesMenuPanel({
             Zeilen, und zwei verschieden breite Zeilenspalten nebeneinander hätte kein Leser
             erklären können. */}
         {showAlerts && (
-          <div className="min-w-0" style={rowGroupStyle}>
-            <FavoritesMenuAlerts open={open} cap={cap} expected={alertCount} />
-          </div>
+          <FavoritesMenuAlerts open={open} cap={cap} expected={alertCount} style={rowGroupStyle} />
         )}
       </div>
     </div>

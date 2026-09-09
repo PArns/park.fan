@@ -96,10 +96,14 @@ export function GroupHeading({ title, count }: { title: string; count: number })
   );
 }
 
-export function RowSkeletons({ count }: { count: number }) {
+/**
+ * `max` is the caller's own cap, not the sheet's: a group that slices its rows at `MAX_CARDS`
+ * would otherwise reserve five and grow by three when the request lands.
+ */
+export function RowSkeletons({ count, max = MAX_ROWS }: { count: number; max?: number }) {
   return (
     <>
-      {Array.from({ length: Math.min(count, MAX_ROWS) }).map((_, i) => (
+      {Array.from({ length: Math.min(count, max) }).map((_, i) => (
         <li key={i} className="flex items-center gap-3 px-2 py-1.5">
           <Skeleton className="h-10 w-10 shrink-0 rounded-lg" />
           <span className="min-w-0 flex-1">

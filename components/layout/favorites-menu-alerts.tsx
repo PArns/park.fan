@@ -13,6 +13,7 @@ import {
 } from '@/lib/push/use-push-follows-list';
 import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
 import { formatTime } from '@/lib/utils/intl-format';
+import { cn } from '@/lib/utils';
 
 /**
  * The wait-time alerts and show reminders this browser has, as a group in the favorites band —
@@ -50,12 +51,21 @@ export function FavoritesMenuAlerts({
   open,
   cap,
   expected,
+  className,
+  style,
 }: {
   open: boolean;
   /** Rows before the rest goes behind the "+N" line. */
   cap: number;
   /** How many rows to reserve while loading, from the local mirror — see `countPushFollowsLocal`. */
   expected: number;
+  /**
+   * The group's own box. It belongs to this component and not to a wrapper around it, because
+   * this component is allowed to render NOTHING — see the empty case below — and a wrapper the
+   * panel drew would then be an empty flex item holding a slice of the band open.
+   */
+  className?: string;
+  style?: React.CSSProperties;
 }) {
   const t = useTranslations('pushAlerts.menu');
   const tFavorites = useTranslations('favorites');
@@ -144,20 +154,37 @@ export function FavoritesMenuAlerts({
     })),
   ];
 
-  // While loading, the count the mirror knows; afterwards the count the server answered. The
-  // heading is the one number in this group that must not wait for the request.
-  const count = isPending ? expected : rows.length;
+  /**
+   * A number over an incomplete list is a claim the list cannot back.
+   *
+   * Only a read that answered both endpoints may put the server's count in the heading. While it
+   * is on its way, or when one of the two refused, the number is what this browser believes it
+   * has — over an error line saying the rest could not be read. Anything else tells somebody with
+   * seven alerts that they have two, or none.
+   */
+  const complete = !isPending && !isError && !data?.partial;
+  const count = complete ? rows.length : expected;
   const shown = rows.slice(0, cap);
 
+  /*
+   * A complete read that found nothing means the local mirror is stale — the backend prunes a
+   * subscription after repeated delivery failures and `localStorage` never hears about it. There
+   * is nothing to show and nothing to say: a titled, empty "Alarme 0" column would be a claim
+   * about a browser that has none. The band is then a slice wider than its groups, which is a
+   * blank strip on the right rather than a wrong statement, and the panel's own "Meine Alarme"
+   * link still leads to the page that can say it properly.
+   */
+  if (complete && rows.length === 0) return null;
+
   return (
-    <div data-menu-stagger className="min-w-0">
+    <div data-menu-stagger className={cn('min-w-0', className)} style={style}>
       <GroupHeading title={t('title')} count={count} />
       {(isError || data?.partial) && (
         <p className="text-destructive mb-2 text-xs">{t('loadError')}</p>
       )}
       <ul className="space-y-px">
         {isPending ? (
-          <RowSkeletons count={expected} />
+          <RowSkeletons count={expected} max={cap} />
         ) : (
           <>
             {shown.map((row) => (
