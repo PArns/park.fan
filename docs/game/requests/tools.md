@@ -109,3 +109,54 @@ changed:
 
 When the `ui` builder arrives, `BuildBar` is a plain component with three props (`t`, `locale`,
 `getHandle`) and no opinion about where it sits.
+
+---
+
+## A pools tab in the build bar, and why the recorded plan for it would have shipped an empty one
+
+**Owner:** `tools` (the palette) + `core` (a contribution point) + `pools` (the items) ·
+**Value:** a park builder in which a pool can be built. `pools` ships eleven basin shapes, four
+tile styles and the edge treatments, and none of them can be placed.
+
+`STATUS.json` recorded the fix as "widen `ItemCategory`, let `PALETTE_CATEGORIES` derive from what
+the registry actually holds rather than from a literal, then register the shapes." All three steps
+are wrong or insufficient, measured on the tree:
+
+**1. `ItemCategory` is not in this path at all.** `buildPalette` reads the raw manifest object:
+
+```ts
+// tools/palette.ts:148-151
+for (const category of PALETTE_CATEGORIES) {
+  const entries = (pack as unknown as Record<string, AnyDef[]>)[category] ?? [];
+```
+
+Never `Registry.index`, never `ItemCategory`. Widening that union changes nothing here.
+
+**2. The closed thing that blocks is `PaletteCategory`** (`tools/types.ts:43`, five literals) —
+and behind it a shape mismatch the union cannot fix. The palette's model is *one manifest key is
+one flat array of placeable defs*. The `pools` key is an **object of four arrays** (`shapes`,
+`tiles`, `edges`, `deck`), of which only `shapes` is placeable: a tile style and an edge treatment
+are properties of a basin already in the world, and `deck` is its furniture. Handed to that loop,
+`pack['pools']` is not iterable and `?? []` does not catch an object.
+
+**3. And then it would find nothing anyway.** `buildPalette` walks `registry.packs()`. Neither
+shipped pack carries a `pools` key — checked both — and `pools/manifest.ts:564` registers its
+built-in catalogue with `registerPools(BUILTIN_PACK, BUILTIN)`, into the **module's own store**,
+which is the whole point of `registerPackCategory`: core has no schema for a basin and must not
+grow one. So every basin the game has is invisible to the loop that builds the bar. The recorded
+plan, carried out exactly, produces an empty tab.
+
+**The shape this wants.** Not a sixth string in a union, and not pools' content moved into core's
+pack schema, which would undo `registerPackCategory`. A module that owns a pack category and has
+something placeable should be able to **contribute palette items** — it already knows how to parse
+its own content and is the only thing that can. Roughly: a provider registered against a kind, read
+by `buildPalette` alongside the pack walk, returning ready `PaletteItem`s. `pools` then hands over
+its `shapes` and keeps `tiles`/`edges`/`deck` for the inspector, where they belong.
+
+`flumes` needs the same door, and `track` already has the problem in a different shape (a coaster
+is a route, not a footprint). Three modules is past the point where the palette should be asking
+each of them by name.
+
+**Belongs in this module's round 2**, which it needs anyway on the frame axis. Not done by the
+integrator because it is a new cross-module contract, and a half-specified one is worse than a
+written-down one.
