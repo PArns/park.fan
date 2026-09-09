@@ -337,15 +337,23 @@
     },
     "flumes": {
       "wave": 3,
-      "status": "scaffolded",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
-      "lines": null,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null
+      "status": "round 1 graded 7.30, FAIL (pass 8.5), by an INDEPENDENT critic — docs/game/critiques/flumes-round1.md. THE FINDING THAT DECIDES IT: main.ts:306 reads flume.towerHeight from the PRE-BUILD resolve, where 0 is the sentinel meaning \"derive it\" (resolve.ts:209). So buildTower gets deckY = ground and height = max(1,0) = 1, and ALL FIVE TOWERS ARE 2 m TALL AND LIE ON THE GRASS 12-17 m UNDER THE CHUTE THEY ARE MEANT TO CARRY. Measured world bounding boxes: every flume-tower:* is -0.25 to 2.00 m, every deck -0.18 to 1.00, every canopy 1.98 to 2.43, against derived heights of 11.8-16.3 m. The same file gets it right at :416, :422 and :650. selftest.mjs:314-321 REPEATS THE MISTAKE and then prints the derived 14.1 m in the same row, which is why 94/94 is green — a test that reproduces the bug it should catch. And what the module's report calls \"the tower's cross bracing\" in four frame descriptions is track's support lattice. THE BIG CLAIM HOLDS: the critic recomputed the wall rule independently and got 27.2 cm at 6 m/s, 57.9 at 12, and 100/64 at -18.9 deg / 7.6 m/s on the raft hook, matching to the centimetre and visible in the frame. But wallResponse: 0 is NOT what keeps a closed pipe's section — the clamp's wrap floor is, at 170.0 deg in all 12 cases run at 6-40 m/s across response 0/0.5/1, and DELETING THE COEFFICIENT FROM THE FORMULA LEAVES ALL 94 CHECKS GREEN. Budget reproduced exactly (233/175/161 draw calls, 349,702 triangles, 44 meshes, 82,836 flume triangles, 18 materials). Extensibility proven rather than read: the critic registered an 8-seat, 0.85-flat-floor, 20-deg-wrap style with a new tower spec and a 324 m helix layout from a third pack — built clean, wall rule live, no NaN. Determinism verified independently: save-load-save byte-identical over two runs.",
+      "round": 1,
+      "score": 7.3,
+      "consoleErrors": 0,
+      "owner": "builder",
+      "gated": true,
+      "axes": {
+        "frame": 6,
+        "fidelity": 7,
+        "extensibility": 8.5,
+        "budget": 8,
+        "determinism": 9,
+        "reportHonesty": 5.5
+      },
+      "gradedAtCommit": "5250d38",
+      "hardGates": "all pass except one recorded and waived: the commit touches package.json, the two lines wiring its own selftest into test:game, which the integrator added on the module's request and which is content-free.",
+      "verdict": "round 1 FAILED at 7.30; round 2 should fix main.ts:306 first, re-shoot every frame, then fix the selftest so it measures the tower the scene actually draws."
     },
     "trains": {
       "wave": 3,
