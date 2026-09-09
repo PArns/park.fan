@@ -25,6 +25,20 @@
 import { useCallback, useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import type { GameStore, GameState } from '../core/store';
 import type { UiRuntime } from './runtime';
+
+/**
+ * What these hooks actually need, which is two methods and not a class.
+ *
+ * They took `UiRuntime` — the concrete implementation — so every one of the ten built-in panels
+ * cast to it, and a panel contributed from ANOTHER module could not use them at all without
+ * importing this module's internals. That quietly made the cached-selector performance the module
+ * measures a privilege of its own panels, in a module whose whole claim is that there is no
+ * privileged path. `UiMainApi` already declares both members; naming the shape is the fix.
+ */
+export interface TelemetrySource {
+  telemetry(): ParkTelemetry;
+  subscribe(fn: () => void): () => void;
+}
 import { HUD_METRICS, type ParkTelemetry } from './telemetry';
 
 export type Equal<T> = (a: T, b: T) => boolean;
@@ -79,7 +93,7 @@ function useCachedSnapshot<S, T>(
  * arrow re-subscribes on every render and defeats the cache.
  */
 export function useTelemetry<T>(
-  runtime: UiRuntime,
+  runtime: TelemetrySource,
   selector: (t: ParkTelemetry) => T,
   equal: Equal<T> = Object.is
 ): T {
@@ -96,7 +110,7 @@ export function useTelemetry<T>(
  * open panels out would flatter the HUD by exactly the amount that matters. The narrow
  * `useTelemetry` selectors are counted where they are called instead.
  */
-export function useTelemetrySnapshot(runtime: UiRuntime): ParkTelemetry {
+export function useTelemetrySnapshot(runtime: TelemetrySource): ParkTelemetry {
   const read = useCallback(() => runtime.telemetry(), [runtime]);
   useCommitTally();
   return useSyncExternalStore(runtime.subscribe, read, read);

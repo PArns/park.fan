@@ -62,7 +62,10 @@ export interface RideRow {
   /** `pack:item`. */
   key: string;
   name: string;
-  /** One of `RIDE_STATE_NAMES`: closed, loading, dispatching, running, unloading, broken, maintenance. */
+  /**
+   * One of `RIDE_STATE_NAMES` — closed, loading, dispatching, running, unloading, broken,
+   * maintenance — or `unknown` when the frame carries no state byte for this ride.
+   */
   state: string;
   riders: number;
   capacity: number;
@@ -454,7 +457,10 @@ export class TelemetryCollector {
         id: entry.id,
         key: entry.key,
         name: profile ? localized(profile.name, locale) : entry.id,
-        state: state && i < state.length ? (RIDE_STATE_NAMES[state[i]] ?? 'closed') : 'closed',
+        // A ride the frame carries no state byte for is UNKNOWN, not closed. Saying 'closed' is
+        // answering a question nobody could answer — and it is the wrong answer for the one case
+        // it happens in, a roster that has grown since the last frame was written.
+        state: state && i < state.length ? (RIDE_STATE_NAMES[state[i]] ?? 'unknown') : 'unknown',
         riders: motion ? Math.round(motion[i * MOTION_STRIDE + 2] ?? 0) : 0,
         capacity: profile?.capacity ?? 0,
         queue: motion ? Math.round(motion[i * MOTION_STRIDE + 3] ?? 0) : 0,
