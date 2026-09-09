@@ -23,11 +23,34 @@ export type EntityKind = string;
 
 export type Speed = 0 | 1 | 2 | 3 | 5 | 100;
 export const SPEEDS: readonly Speed[] = [0, 1, 2, 3, 5, 100];
-/** Fixed simulation step. */
+/** Fixed simulation step. Unchanged by D-006 and not negotiable: the sim is 20 Hz. */
 export const TICK_HZ = 20;
 export const TICK_MS = 1000 / TICK_HZ;
-/** At speed 1, one real second is one park minute. */
-export const MINUTES_PER_TICK_AT_SPEED_1 = 1 / TICK_HZ;
+
+/**
+ * Park minutes one tick advances the clock at speed 1 (D-006).
+ *
+ * **Deliberately no longer `1 / TICK_HZ`.** The tick rate and the pace of the park day were one
+ * number, so the only way to give a visitor time to cross the park was to change how often the
+ * world thinks — which is an architectural constant. They are two questions and are now two
+ * constants: 20 Hz is how smooth the simulation is, this is how fast the day goes.
+ *
+ * It was `1 / 20`, i.e. one park minute per real second and a park day in 14 real minutes. Measured
+ * on the demo park at that rate, the four flat rides stand about **190 m** from the main street the
+ * crowd walks, which at the old pace was a **152-minute walk against a median stay of 330 park
+ * minutes** — one round trip to the fairground was the whole visit. The park delivered 291 rides a
+ * day across machines rated for 2,136 an hour, at 5–14 % utilisation.
+ *
+ * `1 / 60` makes a park day 42 real minutes at speed 1. The archetype speeds in
+ * `guests/manifest.ts` are tripled to match, so a guest still covers **2.0 m per real second on
+ * screen** — the change is in how much park day fits around the walk, not in how fast anybody
+ * moves. Nothing about the frame changes.
+ *
+ * **Anything converting between ticks and park minutes must read this constant** rather than
+ * dividing by 20. Two harness scripts did exactly that (`game-soak.mjs`, `game-day-budget.mjs`) and
+ * would have reported a day three times too long while the sim ran a third as far.
+ */
+export const MINUTES_PER_TICK_AT_SPEED_1 = 1 / 60;
 
 // ── World model ─────────────────────────────────────────────────────────────────────────────
 export interface WorldMeta {

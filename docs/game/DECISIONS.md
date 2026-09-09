@@ -205,6 +205,37 @@ D-023 is not: it moves every number written in park minutes — `--step` counts 
 `game-soak.mjs`'s hard-coded `speed / 20`, this script's own, ride cycle times, shop service — and
 three builders are screenshotting against the current constants as this is written. It wants its own
 change, with the harness arithmetic read off the constant instead of duplicating it, and the affected
+
+**LANDED 2026-09-09.** `MINUTES_PER_TICK_AT_SPEED_1` is `1 / 60` and is **no longer derived from
+`TICK_HZ`**, which stays 20. Those were one number answering two questions — how smooth the
+simulation is, and how fast the day goes — and only the second was meant to move. The six archetype
+speeds are tripled to match, so a guest still covers 2.0 m per real second on screen; the change is
+in how much park day fits around a walk, not in how fast anybody moves.
+
+Measured on the demo park, one day, seed 1, before → after:
+
+|                          | before |       after | D-026 predicted |
+| ------------------------ | -----: | ----------: | --------------: |
+| interactions per visitor |  1.286 |   **6.586** |            4.85 |
+| riders in a day          |    291 |   **4,930** |           3,218 |
+| purchases                |  1,941 |       9,988 |               — |
+| arrivals                 |  1,735 |       2,265 |               — |
+| ride utilisation         | 7–14 % | **23–41 %** |         12–29 % |
+
+**It overshoots the prediction and the reason matters.** D-026 measured pace ×3 with the clock left
+alone, which isolates the walk. Landing it through the clock also triples the number of ticks in a
+park minute, so a guest re-plans three times as often within the same park day — the extra is
+decision frequency, not movement. Anyone quoting the D-026 table should quote this one instead.
+
+The blast radius named above was real and it bit twice, both the same bug: a tick count written by
+hand instead of read off the constant. `shops/selftest.mjs` ran 3,000 ticks under a comment saying
+"3,000 ticks at speed 5 is 750 park minutes" — it became 250, the clock stopped near 13:10 and the
+test failed on shops that were correctly still open. `rides/selftest.mjs` stepped 1,200 ticks for
+"one park hour" and got twenty minutes, so the carousel showed 6 cycles against an expected 15 and
+144 riders against its rated load: two red assertions about a machine behaving perfectly. Both now
+derive their counts, as do `game-soak.mjs` and `game-day-budget.mjs`. `pnpm test:game` is green at
+126 checks, and the soak runs 1,728 ticks for the 48 park-hours that used to take 576.
+_Superseded by:_ the same paragraph as before, and the affected
 frames re-shot in the same commit. _Reversed by:_ a decision that the park should be smaller instead,
 which is the other honest answer and is a demo-park change rather than a clock one.
 

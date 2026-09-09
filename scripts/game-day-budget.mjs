@@ -30,6 +30,7 @@ import { SimRuntime } from '@/lib/game/core/sim-runtime.ts';
 import { GAME_MODULES } from '@/lib/game/modules.ts';
 import { buildWorld } from '@/lib/game/demo-park/index.ts';
 import { Registry } from '@/lib/game/core/registry.ts';
+import { MINUTES_PER_TICK_AT_SPEED_1 } from '@/lib/game/core/types.ts';
 
 const args = Object.fromEntries(
   process.argv.slice(2).map((a) => {
@@ -59,7 +60,10 @@ runtime.init({ type: 'init', world, packs, modules: GAME_MODULES.map((m) => m.id
 runtime.setSpeed(speed);
 
 const handle = (id) => runtime.handles?.get(id)?.api ?? null;
-const minutesPerTick = speed / 20;
+// Read off the constant, never re-derived. `MINUTES_PER_TICK_AT_SPEED_1` stopped being
+// `1 / TICK_HZ` with D-006, and a hard-coded `speed / 20` here would have reported a park day
+// three times longer than the one the simulation actually ran.
+const minutesPerTick = speed * MINUTES_PER_TICK_AT_SPEED_1;
 const ticksPerHour = Math.max(1, Math.round(60 / minutesPerTick));
 
 const STATES = [

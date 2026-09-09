@@ -70,6 +70,13 @@ const BOTTOM = ['#39434f', '#2f3238', '#5a5145', '#7a7267', '#404a3a', '#8a8378'
  * `speed` is metres per PARK minute and is the number the whole module's pacing hangs off; the
  * reasoning, and why it is not 1.35, is in `sim.ts` above `WALK_SPEED_SCALE`.
  *
+ * **These six tripled with D-006 and nobody walks any faster.** A park minute is three real seconds
+ * now instead of one (`MINUTES_PER_TICK_AT_SPEED_1`), so 6.0 m per park minute is the same 2.0 m
+ * per real second on screen that 2.0 was before. What changed is how much park day fits around a
+ * walk: the demo park's fairground is ~190 m from the main street, which used to be a 152-minute
+ * walk against a 330-minute median stay, i.e. one round trip was the whole visit. A pack authored
+ * against the old scale reads three times too slow — the clamp below moved with the unit.
+ *
  * `height` is the standing height including the head, and the renderer scales the whole figure to
  * it. A child is not an adult at 0.72: `appearance.ts` gives it a larger head fraction, because a
  * uniformly scaled adult reads as a very small adult and it is the first thing anybody notices
@@ -82,7 +89,7 @@ export const GUEST_ARCHETYPE_MANIFEST: readonly GuestArchetypeDef[] = [
     weight: 34,
     age: 'adult',
     height: 1.74,
-    speed: 2.0,
+    speed: 6.0,
     wallet: [3500, 9000],
     needs: {},
     patience: 0.55,
@@ -97,7 +104,7 @@ export const GUEST_ARCHETYPE_MANIFEST: readonly GuestArchetypeDef[] = [
     weight: 16,
     age: 'adult',
     height: 1.76,
-    speed: 1.8,
+    speed: 5.4,
     wallet: [6000, 16000],
     // A parent buys for the children too, so hunger and thirst arrive sooner than the wallet does.
     needs: { cash: 1.4, energy: 1.15 },
@@ -113,7 +120,7 @@ export const GUEST_ARCHETYPE_MANIFEST: readonly GuestArchetypeDef[] = [
     weight: 22,
     age: 'child',
     height: 1.24,
-    speed: 2.2,
+    speed: 6.6,
     wallet: [200, 900],
     needs: { hunger: 1.35, thirst: 1.4, happiness: 1.5, energy: 1.3 },
     patience: 0.2,
@@ -128,7 +135,7 @@ export const GUEST_ARCHETYPE_MANIFEST: readonly GuestArchetypeDef[] = [
     weight: 12,
     age: 'adult',
     height: 1.68,
-    speed: 2.3,
+    speed: 6.9,
     wallet: [1500, 4500],
     needs: { hunger: 1.2, happiness: 1.3 },
     patience: 0.3,
@@ -143,7 +150,7 @@ export const GUEST_ARCHETYPE_MANIFEST: readonly GuestArchetypeDef[] = [
     weight: 8,
     age: 'senior',
     height: 1.66,
-    speed: 1.45,
+    speed: 4.35,
     wallet: [4000, 11000],
     needs: { energy: 1.6, toilet: 1.25, happiness: 0.7 },
     patience: 0.85,
@@ -163,7 +170,7 @@ export const GUEST_ARCHETYPE_MANIFEST: readonly GuestArchetypeDef[] = [
     weight: 8,
     age: 'adult',
     height: 1.8,
-    speed: 2.15,
+    speed: 6.45,
     wallet: [5000, 14000],
     needs: { happiness: 1.6, energy: 0.8 },
     patience: 0.95,
@@ -380,7 +387,7 @@ export function parseArchetype(input: unknown): GuestArchetypeDef {
     weight: num(raw.weight, 1, 0, 1000),
     age,
     height: num(raw.height, age === 'child' ? 1.24 : 1.74, 0.6, 2.4),
-    speed: num(raw.speed, 2, 0.2, 12),
+    speed: num(raw.speed, 6, 0.6, 36),
     wallet: range(raw.wallet, [2000, 8000]),
     needs,
     patience: num(raw.patience, 0.5, 0, 1),
