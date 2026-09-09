@@ -516,7 +516,11 @@ export function PlannerWizard({
     step === 'park'
       ? null
       : step === 'headliners'
-        ? { run: finish, enabled: Boolean(park && date) }
+        ? // Nicht abschließen, solange die Prognose unterwegs ist: der Schritt
+          // hätte sonst nichts anzubieten und der Tag entstünde leer. `pending`
+          // ist `!data && !isError`, hört also auch dann auf, wenn die Frage
+          // scheitert — ein Tag ohne Prognose bleibt abschließbar.
+          { run: finish, enabled: Boolean(park && date) && !facts.pending }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
   /**
@@ -728,7 +732,22 @@ export function PlannerWizard({
                 a checkbox, it is a decision, and this is where it is made. */}
             {step === 'headliners' && (
               <div className="flex flex-col gap-2.5">
-                {headliners.length === 0 || headlinerFit === null || !fitInput ? (
+                {/* „Noch nicht gefragt" und „nichts gefunden" sehen von hier aus
+                    gleich aus, und der Unterschied ist der ganze Schritt.
+
+                    Ein Wizard mit gesetztem Datum öffnet auf `setup`, also ist
+                    dieser Schritt einen Klick vom Mount entfernt: `/plan/day`
+                    ist dann oft noch unterwegs, `headliners` ist `[]`, und der
+                    Satz „Für diesen Tag fehlt keine große Bahn mehr" behauptete
+                    ein Ergebnis, das niemand ausgerechnet hat. Wer in diesem
+                    Fenster abschließt, legt einen Tag ohne Bahnen an und hat
+                    dazu gelesen, dass keine fehlt. `WizardDayCard` bekommt
+                    `loading` aus demselben Grund. */}
+                {facts.pending ? (
+                  <p className="text-muted-foreground text-xs leading-relaxed">
+                    {t('wizard.facts.loading')}
+                  </p>
+                ) : headliners.length === 0 || headlinerFit === null || !fitInput ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {t('wizard.headliners.none')}
                   </p>
