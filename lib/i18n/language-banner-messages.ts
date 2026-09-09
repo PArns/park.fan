@@ -11,7 +11,7 @@ import type { Locale } from '@/i18n/config';
  * the visitors the banner targets, and it happens on the first render after mount).
  *
  * These ~120 bytes per locale are inlined instead. `messages/<locale>.json → languageBanner`
- * stays the source of truth for translators; `scripts/validate-translations.js` fails the
+ * stays the source of truth for translators; `scripts/validate-translations.cjs` fails the
  * release check if the two ever drift apart.
  */
 export interface LanguageBannerMessages {
