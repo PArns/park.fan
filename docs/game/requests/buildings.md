@@ -37,16 +37,33 @@ const ticketHall: Entity = {
 };
 ```
 
-**Both fit their pads, measured rather than asserted** (`lib/game/buildings/selftest.mjs`, section
-"demo-park plots", which builds the geometry and takes its bounds):
+**Both fit, and I did not take my own word for it.** The two calls above were run against the real
+demo park through `__parkfan_game.dispatch` and the resulting meshes' **world** bounding boxes were
+read back out of the scene:
 
-| item             | pad     | built extent incl. apron and kerb |
-| ---------------- | ------- | --------------------------------- |
-| `grand-pavilion` | 56 × 32 | **54.4 × 25.0 m**                 |
-| `ticket-hall`    | 22 × 38 | **19.1 × 31.5 m** (after the yaw) |
+| item             | pad rectangle               | built extent (world, apron and kerb in) | clearance to the pad edge   |
+| ---------------- | --------------------------- | --------------------------------------- | --------------------------- |
+| `grand-pavilion` | x [−36, 20], z [−178, −146] | x [−35.21, 19.21], z [−174.31, −149.32] | 0.79 / 0.79 / 3.69 / 3.32 m |
+| `ticket-hall`    | x [−44, −22], z [159, 197]  | x [−42.56, −23.44], z [162.24, 193.76]  | 1.44 / 1.44 / 3.24 / 3.24 m |
 
-That check is in the selftest so it stays true: change a blueprint and it says whether the building
-still fits the plot the park is holding for it.
+**Overhang: 0.00 m on all eight edges.** Spans are 54.42 × 24.99 m in a 56 × 32 pad and
+19.12 × 31.52 m in a 22 × 38 pad; the pavilion's ridge reaches y = 28.54 with the pad at 7 m, so it
+stands 21.5 m over its own ground. Two buildings cost **7 draw calls and 22,830 triangles**, and the
+run logged **zero console errors**.
+
+Photographed as well as measured, because a number does not say whether a building belongs where it
+is put:
+
+- `.game-render/buildings-pads/pavilion.png` — the hall on the pavilion pad with its forecourt plaza
+  below it and the park's own trees round it, arcaded, wings hipped, lantern lit from inside.
+- `.game-render/buildings-pads/entrance-hall.png` — the ticket hall on the west flank of the
+  entrance forecourt, its seven-bay arcade square on to the planted roundel, in the park's own brick
+  rather than the blueprint's station stone (that is what the `data.style` line above buys).
+- `.game-render/buildings-pads/entrance-preset.png` — the same from the built-in `entrance` camera,
+  which is the frame the whole-game critic will actually take.
+
+The pad-fit check is also in `selftest.mjs` ("demo-park plots") so it stays true without a browser:
+change a blueprint and it says whether the building still fits the plot the park is holding.
 
 Two smaller items for whoever picks the demo park up next, neither of them needed for the above:
 
