@@ -47,6 +47,15 @@ export const HERO_3D_ENABLED = envFlag(process.env.NEXT_PUBLIC_HERO_3D);
  * the switch fails open on the one deploy that matters. Naming the environments that may have it
  * fails closed instead.
  *
+ * That variable is documented — Vercel defines it for Next.js projects as `production`, `preview`
+ * or `development` (vercel.com/docs/environment-variables/framework-environment-variables) — but
+ * it arrives only while the project has "Automatically expose System Environment Variables" on,
+ * and this session could not read the preview to confirm it (Deployment Protection answers 302,
+ * and the Vercel MCP 403). So the practical note, because the failure is silent and looks like a
+ * missing feature: **if a preview deploy comes up with no Coaster link and `/game` at 404, that
+ * setting is off** — set `NEXT_PUBLIC_GAME=on` for the Preview environment in project settings and
+ * it is fixed without a code change. Failing that way round is the design working, not breaking.
+ *
  * With it off, `app/game/page.tsx` answers 404 and `components/layout/header.tsx` renders no link
  * in either the desktop nav or the burger. Both branches are build-time constants, so the game's
  * entry point is not merely hidden — nothing references it and the link is not in the HTML.
