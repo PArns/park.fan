@@ -297,7 +297,7 @@ export const en = {
   'notice.ride.breakdown': '{name} has broken down.',
   'log.ride.breakdown': '{name} has broken down.',
   'log.ride.fixed': '{name} is running again.',
-  'log.shop.restock': '{name} took {units} units of stock.',
+  'log.shop.restock': '{name} took {units, plural, one {# unit} other {# units}} of stock.',
 
   // ── Menu and controls ──────────────────────────────────────────────────────────────────
   'menu.title': 'Menu',

@@ -300,7 +300,8 @@ export const de: Record<GameStringKey, string> = {
   'notice.ride.breakdown': '{name} ist ausgefallen.',
   'log.ride.breakdown': '{name} ist stehen geblieben.',
   'log.ride.fixed': '{name} läuft wieder.',
-  'log.shop.restock': '{name} hat {units} Einheiten nachgefüllt.',
+  'log.shop.restock':
+    '{name} hat {units, plural, one {# Einheit} other {# Einheiten}} nachgefüllt.',
 
   // ── Menü und Steuerung ─────────────────────────────────────────────────────────────────
   'menu.title': 'Menü',
