@@ -495,6 +495,11 @@ export function createRidesSim(ctx: SimContext): SimHandle {
           r.sinceService = 0;
           enter(r, RideState.LOADING, 0);
           ctx.events.emit('ride:fixed', { ride: r.id, key: r.profile.key });
+          // The breakdown notice described a condition, and the condition is over. Nobody else
+          // knows that: the HUD would have to learn which event ends which notice, and this module
+          // already holds both halves. Without it the warning outlived the repair by an hour and a
+          // half of park time in `de-panels.png`, beside a panel reading 4 of 4 running.
+          ctx.events.emit('notice:withdraw', { key: `ride:breakdown:${r.id}` });
         }
         break;
       }

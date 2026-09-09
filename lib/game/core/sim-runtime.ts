@@ -30,6 +30,9 @@ export type Post = (msg: WorkerToMain, transfer?: ArrayBuffer[]) => void;
 const FORWARDED_PREFIXES = [
   'entity:',
   'notify',
+  // Its counterpart. A notice raised from the worker can only be withdrawn from the worker, so the
+  // withdrawal has to cross the same boundary the notice did.
+  'notice:withdraw',
   'clock:day',
   'finance:',
   'ride:',

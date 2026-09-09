@@ -328,6 +328,17 @@ export interface GameEvents {
     params?: Record<string, string | number>;
     key?: string;
   };
+  /**
+   * Withdraw a notice by its dedup key, from wherever the condition it described has ended.
+   *
+   * The general rule this exists for: **a notice that describes a CONDITION names the event that
+   * ends it, and the module that raised it is the one that knows.** Without this, `rides` could
+   * announce a breakdown and had no way to say it was over — so "Top spin has broken down" stood on
+   * screen for an hour and a half of park time after the machine was running again, next to a panel
+   * reading 4 of 4. The HUD cannot fix that on its own: it would have to know which event ends which
+   * notice, which is exactly the knowledge that belongs in the module.
+   */
+  'notice:withdraw': { key: string };
   'sim:error': { where: string; message: string };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [custom: string]: any;
