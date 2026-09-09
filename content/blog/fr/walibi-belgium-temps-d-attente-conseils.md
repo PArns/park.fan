@@ -8,11 +8,11 @@ featured: false
 excerpt: >-
   Quand on dit « Walibi » en Allemagne, on pense aux Pays-Bas et à Untamed. Or
   le plus ancien des deux parcs se trouve à Wavre, à une demi-heure de route de
-  Bruxelles, porte ce nom depuis 1975 et abrite depuis 2021, avec Kondaa, le
-  coaster le plus haut et le plus rapide du Benelux. Temps d’attente,
-  technique, un fondateur qui voulait seulement creuser un étang de ski
-  nautique, et les cent millions d’euros que la Compagnie des Alpes met en ce
-  moment dans huit nouveaux mondes thématiques.
+  Bruxelles, porte ce nom depuis 1975 à trois années de Six Flags Belgium près,
+  et abrite depuis 2021, avec Kondaa, le coaster le plus haut et le plus rapide
+  du Benelux. Temps d’attente, technique, un fondateur qui voulait seulement
+  creuser un étang de ski nautique, et les cent millions d’euros que la
+  Compagnie des Alpes met en ce moment dans huit nouveaux mondes thématiques.
 tags:
   - walibi-belgium
   - kondaa
@@ -111,8 +111,8 @@ sur le côté et, selon le parc, quinze moments d’airtime en un seul tour.
 
 ```
 
-À son ouverture, Kondaa a raflé deux records d’un coup. Coaster le plus haut
-et le plus rapide du Benelux, ce qui a délogé
+À son ouverture, Kondaa a raflé deux records d’un coup. Devenue le coaster le
+plus haut et le plus rapide du Benelux, elle a délogé
 [Goliath](ref:walibi-holland/goliath) dans son propre parc frère
 [Walibi Holland](ref:walibi-holland) sur la hauteur et
 [Fury](ref:bobbejaanland/fury) au [Bobbejaanland](ref:bobbejaanland) belge sur
@@ -121,9 +121,9 @@ voitures à quatre places font passer environ 1 080 personnes par heure sur une
 minute et demie de parcours. Il faut mesurer entre 130 et 195 cm pour monter.
 
 Je fais de longues routes pour un seul coaster, et Kondaa entre dans cette
-catégorie. Elle n’a pas une seule inversion et n’en a pas besoin. Ce qu’elle fait
-place : te hisser à cinquante mètres, puis ne plus te lâcher pendant une minute
-et demie.
+catégorie. Elle n’a pas une seule inversion et n’en a pas besoin. Ce qu’elle
+fait à la place : te hisser à cinquante mètres, puis ne plus te lâcher pendant
+une minute et demie.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -142,20 +142,21 @@ Les journées les plus calmes des prochaines semaines, calculées en direct :
 ## Le reste du parc
 
 Kondaa prend les titres, mais le plus vieux coaster du parc date de 1982 et
-roule toujours. En cinq décennies, presque rien n’a été démoli ici, et ça se
-voit à l’éventail proposé.
+roule toujours. Tout l’intérêt de Wavre est là : un classique de Schwarzkopf et
+une machine d’Intamin sortie en 2021 tiennent le même terrain.
 
 **[Turbine](ref:walibi-belgium/turbine)** est la doyenne du parc, un
 **Schwarzkopf Shuttle Loop** de 1982, et donc une vraie rareté. Le train est
-catapulté en marche arrière sur un tracé à un seul looping, franchit le looping
-en avant, puis refait tout en marche arrière. Schwarzkopf n’en a construit
-qu’une poignée dans le monde, et la plupart sont à la ferraille depuis
-longtemps. Entre 2013 et 2024, elle a tourné sous un autre nom et un habillage
-horrifique, **« Psyké Underground »**, avant que le chantier de Dock World ne la
-rende à son nom d’origine, avec une allure portuaire toute neuve.
+catapulté vers l’avant hors de la gare à 85,3 km/h, prend l’unique looping de
+l’installation, grimpe la tour qui suit, puis redescend le même tracé en marche
+arrière, retraverse le looping et monte la seconde tour, derrière la gare. Ce
+n’est qu’après qu’il freine. Schwarzkopf n’en a construit qu’une poignée dans
+le monde, et la plupart sont à la ferraille depuis longtemps. Elle s’est appelée
+**Sirocco** jusqu’en 1998, a tourné de 2013 à 2024 sous un habillage horrifique
+et le nom de **« Psyké Underground »**, et le chantier de Dock World lui a rendu
+celui de Turbine.
 
-**Vampire** (1999) est un **SLC de Vekoma** (Suspended Looping Coaster, modèle
-689) et, à son ouverture, le premier de ce type en Belgique. Le train est
+**Vampire** (1999) est un **SLC de Vekoma** (Suspended Looping Coaster, modèle 689) et, à son ouverture, le premier de ce type en Belgique. Le train est
 suspendu sous le rail au lieu de rouler dessus, si bien que les pieds battent
 l’air à chaque virage, sans le moindre plancher en dessous.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, baptisée
@@ -187,7 +188,7 @@ lieu de les laisser où elles étaient : la bûche
 ajoute **Kondaala**, version réduite et enfantine du nom de Kondaa, dans la zone
 familiale.
 
-Des deux nouveautés d’ici, c’est Mecalodon qui m’a le plus surpris. Un coaster
+Des deux nouveautés du parc, c’est Mecalodon qui m’a le plus surpris. Un coaster
 familial a du mal à seulement exister à côté d’une machine de 50 mètres, et Dock
 World y arrive quand même. Ce port a l’air construit plutôt que posé là, avec
 des détails devant lesquels on reste un moment même sans attraction à prendre.
@@ -269,7 +270,7 @@ se trouve dans cette même zone Dock World où Mecalodon roule en journée, dans
 aquarium public censé être fermé depuis les années quatre-vingt-dix. Le
 **Speedy Pass** est le coupe-file de la maison, saison ou pas. Le classement
 complet face à Toverland, au Movie Park et aux autres est dans notre
-[guide Halloween 2026](/blog/halloween-parcs-attractions-2026#walibi-belgium-ibilaw).
+[guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
 
 ## Quand y aller
 
@@ -278,19 +279,21 @@ complet face à Toverland, au Movie Park et aux autres est dans notre
 ```
 
 Parc saisonnier sans exploitation hivernale en dehors des vacances de Noël, il
-répond à cette question autrement que les parcs allemands ouverts toute l’année :
-il n’y a pas de janvier tranquille, parce qu’en janvier c’est fermé. Dans la
-saison, deux choses décident surtout de l’affluence : les vacances scolaires
-belges et wallonnes, que ce parc encaisse bien plus fort que ses voisins
-allemands, et les jours de semaine hors vacances d’été, quand le parc n’ouvre de
-toute façon pas tous les jours. Lesquels des prochains jours d’ouverture sont
-les plus calmes, le calendrier plus haut le dit, au jour le jour.
+répond à cette question autrement que les parcs allemands ouverts toute l’année.
+Qui cherche un mardi désert en février cherche pour rien : à cette période, le
+parc n’ouvre pas du tout. Dans la saison, deux choses décident surtout de
+l’affluence : les vacances scolaires belges et wallonnes, que ce parc encaisse
+bien plus fort que ses voisins allemands, et les jours de semaine hors vacances
+d’été, quand le parc n’ouvre de toute façon pas tous les jours. Lesquels des
+prochains jours d’ouverture sont les plus calmes, le calendrier plus haut le
+dit, au jour le jour.
 
 ## La journée parfaite, en résumé
 
-À l’ouverture, direction **Kondaa** en premier, parce que c’est là que la file
-grossit le plus au fil de la journée. Enchaîne avec **Mecalodon** à Dock World
-tant que la nouvelle zone garde sa prime de nouveauté. Les classiques
+À l’ouverture, direction **Kondaa** en premier, parce que c’est pour elle que la
+plupart des gens sont venus et parce que la première heure offre la file la plus
+courte de la journée. Enchaîne avec **Mecalodon** à Dock World tant que la
+nouvelle zone garde sa prime de nouveauté. Les classiques
 **Vampire**, **Calamity Mine** et **Turbine** se calent bien sur le milieu de
 journée, quand tu passes de toute façon d’une zone à l’autre ; **Cobra** et
 **Loup-Garou** font de bons bouche-trous entre deux grosses attractions. Les
@@ -349,8 +352,8 @@ rapide du Benelux. Les temps d’attente du moment sont sur la
 
 Pour les amateurs de coasters, oui, surtout combiné avec Bruxelles ou avec une
 tournée de plusieurs parcs belges. Depuis la Rhénanie, le trajet fait moins de
-trois heures, et Kondaa est une machine dont l’Allemagne n’a aucun équivalent
-dans cette construction.
+trois heures, et Kondaa est un type de machine qu’on ne trouve nulle part en
+Allemagne.
 
 ### Qu’est-ce qu’Ibilaw à Walibi Belgium ?
 

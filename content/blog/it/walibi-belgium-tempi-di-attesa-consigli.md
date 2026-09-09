@@ -7,11 +7,11 @@ mode: published
 featured: false
 excerpt: >-
   Chi sente «Walibi» pensa all’Olanda e a Untamed. Eppure il più vecchio dei due
-  parchi sta a Wavre, mezz’ora d’auto oltre Bruxelles, si chiama così dal 1975 e
-  dal 2021 ha in Kondaa il coaster più alto e più veloce del Benelux. Tempi di
-  attesa, tecnica, un fondatore che voleva soltanto un laghetto per lo sci
-  nautico e cento milioni di euro che Compagnie des Alpes sta mettendo in otto
-  nuove aree a tema.
+  parchi sta a Wavre, mezz’ora d’auto oltre Bruxelles, si chiama così dal 1975,
+  tolti tre anni da Six Flags Belgium, e dal 2021 ha in Kondaa il coaster più
+  alto e più veloce del Benelux. Tempi di attesa, tecnica, un fondatore che
+  voleva soltanto un laghetto per lo sci nautico e cento milioni di euro che
+  Compagnie des Alpes sta mettendo in otto nuove aree a tema.
 tags:
   - walibi-belgium
   - kondaa
@@ -140,17 +140,19 @@ I giorni più tranquilli delle prossime settimane, calcolati in diretta:
 ## Il resto del parco
 
 Kondaa si prende i titoli, ma il coaster più vecchio del parco è del 1982 e gira
-ancora. In cinque decenni qui non è stato demolito quasi niente, e dalla varietà
-si vede.
+ancora. Il bello di Wavre sta proprio qui: un classico Schwarzkopf e un impianto
+Intamin del 2021 stanno sullo stesso terreno.
 
 **[Turbine](ref:walibi-belgium/turbine)** è l’attrazione più anziana della casa,
 uno **Schwarzkopf Shuttle Loop** del 1982 e quindi una vera rarità. Il treno
-viene catapultato all’indietro su un tracciato con un unico looping, fa il
-looping in avanti e poi rifà tutto a marcia indietro. Schwarzkopf ne ha
-costruiti in tutto il mondo una manciata, e i più sono finiti da tempo in
-rottamazione. Fra il 2013 e il 2024 ha girato sotto un altro nome e dentro un
-tema horror, **«Psyké Underground»**, prima che la trasformazione in Dock World
-la riportasse con il nome storico e con un aspetto da porto.
+viene sparato fuori dalla stazione in avanti a 85,3 km/h, prende l’unico looping
+dell’impianto, sale sulla torre che sta dietro e poi ripercorre la stessa pista
+a marcia indietro, di nuovo attraverso il looping e su per la seconda torre,
+oltre la stazione. Solo a quel punto frena. Schwarzkopf ne ha costruiti in tutto
+il mondo una manciata, e i più sono finiti da tempo in rottamazione. Fino al
+1998 si chiamava **Sirocco**, dal 2013 al 2024 ha girato dentro un tema horror
+come **«Psyké Underground»**, e la trasformazione in Dock World le ha restituito
+il nome Turbine.
 
 **Vampire** (1999) è un **Vekoma SLC** (Suspended Looping Coaster, modello 689)
 e all’apertura era il primo impianto del genere in Belgio. Il treno pende sotto
@@ -183,9 +185,10 @@ invece di lasciarle semplicemente dov’erano: la flume
 Nell’area famiglie si aggiunge **Kondaala**, che del nome di Kondaa è la
 versione ridotta e a misura di bambino.
 
-Delle due novità di qui, Mecalodon è quella che mi ha sorpreso di più. Un family
-coaster fa fatica a farsi notare accanto a un’attrazione da cinquanta metri, e
-Dock World ci riesce lo stesso. Il porto sembra costruito e non appoggiato, con
+Delle due novità nel parco, Mecalodon è quella che mi ha sorpreso di più. Un
+family coaster fa fatica a farsi notare accanto a un’attrazione da cinquanta
+metri, e Dock World ci riesce lo stesso. Il porto sembra costruito e non
+appoggiato, con
 dettagli davanti ai quali resti a lungo anche senza salire su niente.
 
 Chi dopo il giro dei coaster ha ancora tempo: **Aqualibi**, il centro acquatico
@@ -207,8 +210,7 @@ accanto all’ingresso fin dall’inizio e ancora oggi sta per caso benissimo co
 nome: «Walibi» suona quasi come «wallaby», anche se l’origine vera è un’altra.
 
 Il parco crebbe in fretta oltre Wavre. Da quell’unica sede nacque una piccola
-catena europea con propaggini in Francia (fra le altre **Walibi Rhône-Alpes**,
-1981) e nei Paesi Bassi. Nel 1998 entrò nella catena il gruppo statunitense
+catena europea con propaggini in Francia (fra le altre **Walibi Rhône-Alpes**, 1981) e nei Paesi Bassi. Nel 1998 entrò nella catena il gruppo statunitense
 **Premier Parks**, che poco dopo si sarebbe ribattezzato **Six Flags**, e dal
 2001 al 2004 la sede di Wavre si chiamò **Six Flags Belgium**, nella stessa
 ondata di acquisizioni in cui a Six Flags finì anche l’attuale
@@ -266,7 +268,7 @@ cui di giorno gira Mecalodon, dentro un acquario espositivo chiuso, a quanto si
 racconta, dagli anni Novanta. Lo **Speedy Pass** qui è la fast lane, anche fuori
 stagione. L’inquadramento completo rispetto a Toverland, Movie Park e compagnia
 sta nella nostra
-[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026#walibi-belgium-ibilaw).
+[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
 
 ## Quando andarci
 
@@ -276,9 +278,10 @@ sta nella nostra
 
 Trattandosi di un parco stagionale senza esercizio invernale al di fuori delle
 vacanze di Natale, qui la risposta parte diversa rispetto ai parchi tedeschi
-aperti tutto l’anno: un gennaio tranquillo non esiste, perché a gennaio è
-chiuso. Dentro la stagione a decidere quanta gente ci sarà sono soprattutto due
-cose: le vacanze scolastiche belghe e vallone, che questo parco sente più dei
+aperti tutto l’anno: chi cerca un martedì vuoto a febbraio lo cerca invano,
+perché in quel periodo non si apre proprio. Dentro la stagione a decidere quanta
+gente ci sarà sono soprattutto due cose: le vacanze scolastiche belghe e
+vallone, che questo parco sente più dei
 suoi vicini tedeschi, e i giorni della settimana fuori dalle vacanze estive,
 quando comunque il parco non apre tutti i giorni. Quali dei prossimi giorni di
 apertura siano i più tranquilli sta nel calendario più in alto, aggiornato ogni
@@ -286,9 +289,10 @@ giorno.
 
 ## La giornata perfetta, in breve
 
-All’apertura prima di tutto a **Kondaa**, perché è lì che nel corso della
-giornata la coda cresce di più. Subito dopo **Mecalodon** a Dock World, finché
-l’area nuova ha ancora il bonus della novità. I classici **Vampire**,
+All’apertura prima di tutto a **Kondaa**, perché è il motivo per cui i più
+vengono fin qui, e perché la prima ora ha la coda più corta della giornata.
+Subito dopo **Mecalodon** a Dock World, finché l’area nuova ha ancora il bonus
+della novità. I classici **Vampire**,
 **Calamity Mine** e **Turbine** si sistemano bene intorno a mezzogiorno, quando
 comunque passi da una zona all’altra, mentre **Cobra** e **Loup-Garou**
 funzionano da riempitivo fra due attrazioni più grosse. Le attrazioni acquatiche

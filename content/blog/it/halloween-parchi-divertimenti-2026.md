@@ -427,7 +427,9 @@ di Ibilaw** (dall'11 ottobre al 2 novembre), e in una decina di esse il parco
 restò aperto fino alle 22. La novità di allora era la casa degli orrori
 **Aquarium** nell’area portuale Dock World, più le scare zone Innocence,
 Basement e Arachnophobia. Sarebbe una sorpresa se qualcosa di tutto ciò sparisse
-nel 2026.
+nel 2026. Il resto dell’anno, con Kondaa, la storia del parco e il confronto con
+il più noto Walibi Holland, sta nella nostra
+[guida a Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli).
 
 Area compatta, percorsi brevi tra uno spavento e l’altro, attori che cercano la
 vicinanza. E per giunta pratico: [Bobbejaanland](ref:bobbejaanland) dista

@@ -6,9 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Wer in Deutschland „Walibi" hört, denkt an Holland und an Untamed. Dabei
+  Wer in Deutschland „Walibi“ hört, denkt an Holland und an Untamed. Dabei
   liegt der ältere der beiden Parks in Wavre, eine halbe Autostunde hinter
-  Brüssel, heißt seit 1975 so und hat seit 2021 mit Kondaa die höchste und
+  Brüssel, heißt seit 1975 so, abgesehen von drei Jahren als Six Flags
+  Belgium, und hat seit 2021 mit Kondaa die höchste und
   schnellste Achterbahn der Beneluxstaaten stehen. Wartezeiten, Technik,
   ein Gründer, der eigentlich nur einen Wasserski-Teich bauen wollte, und
   hundert Millionen Euro, die Compagnie des Alpes gerade in acht neue
@@ -63,7 +64,7 @@ Zug fährt, ohne sich dabei einmal auf den Kopf zu stellen. Der Sitz bleibt
 oben. Der Magen nicht.
 
 Das ist [Kondaa](ref:walibi-belgium/kondaa), und wenn du in Deutschland
-„Walibi" sagst, denkt so gut wie niemand zuerst an diese Bahn. Die meisten
+„Walibi“ sagst, denkt so gut wie niemand zuerst an diese Bahn. Die meisten
 denken an [Walibi Holland](ref:walibi-holland) und an
 [Untamed](ref:walibi-holland/untamed). Dabei ist der Park, um den es hier geht,
 der ältere von beiden, der Namensgeber der ganzen Kette, und er hat seit Mai
@@ -142,24 +143,26 @@ Die ruhigsten Tage der kommenden Wochen, live berechnet:
 ## Der Rest des Parks
 
 Kondaa zieht die Schlagzeilen, aber die älteste Achterbahn im Park ist Baujahr
-1982 und fährt noch. In fünf Jahrzehnten ist hier kaum etwas abgerissen worden,
-und das merkt man an der Bandbreite.
+1982 und fährt noch. Genau darin liegt der Reiz von Wavre: ein
+Schwarzkopf-Klassiker und ein Intamin-Neubau von 2021 stehen hier auf demselben
+Gelände.
 
 **[Turbine](ref:walibi-belgium/turbine)** ist die älteste Bahn im Park, ein
 **Schwarzkopf Shuttle Loop** von 1982 und damit eine echte Rarität. Der Zug
-wird rückwärts auf eine Strecke mit einem einzigen Looping katapultiert, fährt
-den Looping vorwärts, dann rückwärts wieder zurück. Schwarzkopf baute davon
-weltweit nur eine Handvoll, die meisten sind längst verschrottet. Zwischen 2013
-und 2024 lief sie unter einem anderen Namen und einer Horror-Themenwelt als
-**„Psyké Underground"**, bevor der Umbau zu Dock World sie unter ihrem alten
-Namen und mit neuer, hafentauglicher Optik wieder zurückbrachte.
+wird mit 85,3 km/h vorwärts aus der Station geschossen, nimmt den einzigen
+Looping der Anlage, steigt den Turm dahinter hinauf und rollt dieselbe Strecke
+rückwärts wieder zurück, durch den Looping hindurch und hinter der Station den
+zweiten Turm hoch. Erst danach bremst er ein. Schwarzkopf baute davon weltweit
+nur eine Handvoll, die meisten sind längst verschrottet. Sie hieß bis 1998
+**Sirocco**, lief von 2013 bis 2024 unter einer Horror-Themenwelt als
+**„Psyké Underground“**, und der Umbau zu Dock World hat ihr den Namen Turbine
+zurückgegeben.
 
-**Vampire** (1999) ist ein **Vekoma SLC** (Suspended Looping Coaster, Modell
-689) und war bei seiner Eröffnung die erste Bahn dieses Typs in Belgien. Der
+**Vampire** (1999) ist ein **Vekoma SLC** (Suspended Looping Coaster, Modell 689) und war bei seiner Eröffnung die erste Bahn dieses Typs in Belgien. Der
 Zug hängt unter der Schiene statt darauf zu sitzen, sodass die Füße bei jeder
 Kurve frei durch die Luft schwingen, ohne dass darunter ein Boden zu sehen
 wäre. **[Calamity Mine](ref:walibi-belgium/calamity-mine)**
-(1992, ursprünglich „Colorado" getauft) ist die klassische Minenachterbahn auf
+(1992, ursprünglich „Colorado“ getauft) ist die klassische Minenachterbahn auf
 785 Metern Strecke, gemütliches Tempo, enge Kurven, ideal zum Reinkommen.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) ist ein **Boomerang**: Der Zug
 wird rückwärts einen Lifthill hochgezogen, durchfährt vorwärts einen
@@ -174,7 +177,7 @@ Launched-Wasserachterbahn), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
 (2018, Gerstlauer Bobsled Coaster) und **[Fun Pilot](ref:walibi-belgium/fun-pilot)**
 (2019, Zierer, für die kleineren Gäste).
 
-![Ein Leuchtturm mit der Aufschrift „Port Wavre" an einem Hafenbecken, davor Boote und Stelzenhäuser | Port Wavre, der fiktive Hafenort im neuen Areal Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
+![Ein Leuchtturm mit der Aufschrift „Port Wavre“ an einem Hafenbecken, davor Boote und Stelzenhäuser | Port Wavre, der fiktive Hafenort im neuen Areal Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
 
 Die jüngste Neuheit ist **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
 Gerstlauer), ein Launch Coaster im komplett neu gebauten Areal **Dock World**.
@@ -186,7 +189,7 @@ eingebaut hat, statt sie einfach stehen zu lassen: die Wildwasserbahn
 **Kondaala** eine kleinere, kindertaugliche Ausgabe von Kondaas Namen im
 Familienbereich.
 
-Von den beiden Neuheiten hier ist Mecalodon die, die mich mehr überrascht hat.
+Von den beiden Neuheiten im Park ist Mecalodon die, die mich mehr überrascht hat.
 Ein Familiencoaster hat es schwer, neben einer 50-Meter-Bahn überhaupt
 wahrgenommen zu werden, und Dock World schafft es trotzdem. Der Hafen wirkt
 gebaut und nicht hingestellt, mit Details, an denen man auch ohne Fahrgeschäft
@@ -208,7 +211,7 @@ Wasserski vorzuführen. Aus der Vorführfläche wurde in wenigen Jahren ein
 richtiger Park, und am **26. Juli 1975** öffnete Walibi seine Tore, mit rund
 **47.000 Besuchern** in der ersten Saison. Das Maskottchen, ein Känguru,
 stand von Anfang an neben dem Eingang und passt bis heute zufällig gut zum
-Namen: „Walibi" klingt fast wie „wallaby", auch wenn die eigentliche Herkunft
+Namen: „Walibi“ klingt fast wie „wallaby“, auch wenn die eigentliche Herkunft
 eine andere ist.
 
 Der Park wuchs schnell über Wavre hinaus. Aus dem einen Standort wurde eine
@@ -236,7 +239,7 @@ Wochen zuvor eröffnet hatte.
 ## Worlds of Walibi: hundert Millionen Euro für acht neue Themenwelten
 
 Am **22. Juni 2017** stellte der Park einen Investitionsplan vor, der bis
-dahin nichts Vergleichbares in seiner Geschichte hatte: **„Worlds of Walibi"**,
+dahin nichts Vergleichbares in seiner Geschichte hatte: **„Worlds of Walibi“**,
 rund **100 Millionen Euro**, mit denen 75 % der Fläche in acht neue
 Themenwelten verwandelt werden sollten, dazu zehn neue Attraktionen. Der
 ursprüngliche Zielhorizont war 2023. Bis dahin war erst ein Teil fertig, was
@@ -262,8 +265,8 @@ vier Jahren zwei neue Achterbahnen und ein komplett neues Areal.
 
 ![Verfallenes Holzgebäude mit Schriftzug Aquarium, blau-grün beleuchtet bei Nacht | Das Spukhaus Aquarium, direkt in Dock World, dort wo tagsüber Mecalodon fährt. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-Zu Halloween dreht der Park seinen eigenen Namen um: **„Ibilaw"** ist
-„Walibi" rückwärts, seit 2024 mit Maskottchen **Bill** und mehreren
+Zu Halloween dreht der Park seinen eigenen Namen um: **„Ibilaw“** ist
+„Walibi“ rückwärts, seit 2024 mit Maskottchen **Bill** und mehreren
 Spukhäusern und Scare Zones wie dem clownesken **Psycho Circus** und
 **Arachnophobia**, familienfreundlicher als die strikten Ab-16-Events anderer
 Parks. Eines der Spukhäuser, **Aquarium**, steht im selben Dock-World-Areal,
@@ -271,7 +274,7 @@ in dem tagsüber Mecalodon fährt, in einem angeblich seit den Neunzigern
 geschlossenen Schauaquarium. Der **Speedy Pass** ist hier die Fast-Lane, auch
 außerhalb der Saison. Die volle Einordnung im Vergleich zu Toverland,
 Movie Park und Co. steht in unserem
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026#walibi-belgium-ibilaw).
+[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
 ## Wann du hinfahren solltest
 
@@ -281,7 +284,8 @@ Movie Park und Co. steht in unserem
 
 Als saisonaler Park ohne Winterbetrieb außerhalb der Weihnachtsferien fällt
 die Antwort hier grundsätzlich anders aus als bei den ganzjährig geöffneten
-deutschen Parks: Es gibt keinen ruhigen Januar, weil im Januar zu ist. Innerhalb
+deutschen Parks. Wer im Februar einen leeren Dienstag sucht, sucht vergeblich,
+weil dann gar nicht geöffnet ist. Innerhalb
 der Saison entscheiden vor allem zwei Dinge, wie voll es wird: die belgischen
 und wallonischen Schulferien, die dieser Park stärker zu spüren bekommt als
 seine deutschen Nachbarn, und die Wochentage außerhalb der Sommerferien, an
@@ -290,9 +294,10 @@ die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell.
 
 ## Der perfekte Tag, kurz zusammengefasst
 
-Bei Öffnung zuerst zu **Kondaa**, weil die Schlange dort im Tagesverlauf am
-stärksten wächst. Direkt danach **Mecalodon** in Dock World, solange der neue
-Bereich noch seinen Neuheitenbonus hat. Die Klassiker **Vampire**,
+Bei Öffnung zuerst zu **Kondaa**, weil sie der Grund ist, aus dem die meisten
+überhaupt herkommen, und weil die erste Stunde die kürzeste Schlange des Tages
+hat. Direkt danach **Mecalodon** in Dock World, solange der neue Bereich noch
+seinen Neuheitenbonus hat. Die Klassiker **Vampire**,
 **Calamity Mine** und **Turbine** lassen sich gut über den Mittag legen, wenn
 du sowieso zwischen den Zonen wechselst, **Cobra** und **Loup-Garou** eignen
 sich als Lückenfüller zwischen zwei größeren Bahnen. Wasserfahrten wie
@@ -354,7 +359,7 @@ Bauart nicht gibt.
 
 ### Was ist Ibilaw bei Walibi Belgium?
 
-Das Halloween-Event des Parks, benannt nach „Walibi" rückwärts gelesen, mit
+Das Halloween-Event des Parks, benannt nach „Walibi“ rückwärts gelesen, mit
 Spukhäusern, Scare Zones und dem Maskottchen Bill. Details im
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
@@ -365,7 +370,7 @@ Wasserski-Vorführungen kaufte. Daraus wurde der Park, der am 26. Juli 1975
 mit rund 47.000 Besuchern in der ersten Saison eröffnete. Meeùs starb 2001,
 im selben Jahr, in dem sein Park kurzzeitig zu Six Flags Belgium wurde.
 
-### Was ist „Worlds of Walibi"?
+### Was ist „Worlds of Walibi“?
 
 Der 2017 angekündigte Investitionsplan des Parks: rund 100 Millionen Euro für
 acht neue Themenwelten und zehn neue Attraktionen. [Kondaa](ref:walibi-belgium/kondaa)

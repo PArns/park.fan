@@ -435,6 +435,9 @@ Ibilaw** (du 11 octobre au 2 novembre), le parc restant ouvert jusqu’à 22 h u
 dizaine de fois. La nouveauté d’alors était la maison hantée **Aquarium** dans
 la zone portuaire Dock World, avec les scare zones Innocence, Basement et
 Arachnophobia. Il serait surprenant qu’une de ces nouveautés disparaisse en 2026.
+Le reste de l’année, avec Kondaa, l’histoire du parc et la comparaison avec le
+plus connu Walibi Holland, se trouve dans notre
+[guide Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils).
 
 Terrain compact, courts trajets entre les frayeurs, acteurs qui cherchent la
 proximité. Et pratique en plus : [Bobbejaanland](ref:bobbejaanland) se trouve à

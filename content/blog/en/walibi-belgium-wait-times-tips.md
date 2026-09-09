@@ -8,10 +8,11 @@ featured: false
 excerpt: >-
   Say "Walibi" and most people think of Holland and Untamed. The older of the
   two parks sits in Wavre, half an hour’s drive beyond Brussels, has carried
-  the name since 1975 and has had, since 2021, the tallest and fastest coaster
-  in the Benelux in Kondaa. Wait times, engineering, a founder who only meant
-  to build a water-ski pond, and the hundred million euros Compagnie des Alpes
-  is currently putting into eight new themed worlds.
+  the name since 1975 bar three years as Six Flags Belgium, and has had, since
+  2021, the tallest and fastest coaster in the Benelux in Kondaa. Wait times,
+  engineering, a founder who only meant to build a water-ski pond, and the
+  hundred million euros Compagnie des Alpes is currently putting into eight
+  new themed worlds.
 tags:
   - walibi-belgium
   - kondaa
@@ -137,17 +138,18 @@ The quietest days over the coming weeks, calculated live:
 ## The rest of the park
 
 Kondaa takes the headlines, but the oldest coaster here was built in 1982 and
-still runs. Across five decades almost nothing has been torn down, and the
-range shows it.
+still runs. That is exactly the appeal of Wavre: a Schwarzkopf classic and an
+Intamin build from 2021 stand on the same patch of ground.
 
 **[Turbine](ref:walibi-belgium/turbine)** is the oldest ride in the park, a
-**Schwarzkopf Shuttle Loop** from 1982 and a genuine rarity. The train is
-launched backwards onto a track with one single loop, takes the loop forwards,
-then comes back through it in reverse. Schwarzkopf built only a handful
-worldwide and most were scrapped long ago. Between 2013 and 2024 it ran under a
-different name and a horror theme as **"Psyké Underground"**, until the Dock
-World rebuild brought it back under its old name with a new, harbour-ready
-look.
+**Schwarzkopf Shuttle Loop** from 1982 and a genuine rarity. The train is fired
+forwards out of the station at 85.3 km/h, takes the one loop the installation
+has, climbs the tower behind it and then rolls the same track back in reverse,
+through the loop again and up a second tower behind the station. Only after
+that does it brake. Schwarzkopf built a handful of these worldwide and most
+were scrapped long ago. It was called **Sirocco** until 1998, ran from 2013 to
+2024 under a horror theme as **"Psyké Underground"**, and the Dock World
+rebuild gave it the Turbine name back.
 
 **Vampire** (1999) is a **Vekoma SLC** (Suspended Looping Coaster, model 689)
 and was the first ride of its type in Belgium when it opened. The train hangs
@@ -180,10 +182,10 @@ where they were: the log flume
 them, in the family area, sits **Kondaala**, a smaller and rather more
 child-sized take on Kondaa’s name.
 
-Of the two recent builds here, Mecalodon is the one that surprised me more. A
-family coaster struggles to register at all beside a 50-metre ride, and Dock
-World pulls it off anyway. The harbour was built and not set down, with details
-you stand in front of for a while even where there is no ride attached.
+Of the two recent builds in the park, Mecalodon is the one that surprised me
+more. A family coaster struggles to register at all beside a 50-metre ride, and
+Dock World pulls it off anyway. The harbour was built and not set down, with
+details you stand in front of for a while even where there is no ride attached.
 
 If you still have time after the coaster round: **Aqualibi**, the water park
 attached to the site, with a wave pool and slides, has charged separate
@@ -261,7 +263,7 @@ same Dock World area Mecalodon runs through by day, inside a public aquarium
 supposedly shut since the nineties. The **Speedy Pass** is the fast lane here,
 out of season too. Where all this lands against Toverland, Movie Park and the
 rest is in our
-[Halloween guide 2026](/blog/halloween-theme-parks-2026#walibi-belgium-ibilaw).
+[Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
 ## When to go
 
@@ -270,19 +272,20 @@ rest is in our
 ```
 
 As a seasonal park with no winter operation outside the Christmas holidays, the
-answer comes out differently here than at the German parks that open all year:
-there is no quiet January, because in January it is shut. Within the season,
-two things mostly decide how busy it gets: the Belgian and Walloon school
-holidays, which this park feels far more sharply than its German neighbours,
-and the weekdays outside the summer holidays, when it does not open every day
-anyway. Which of the coming operating days are the quietest is in the calendar
-further up, updated daily.
+answer comes out differently here than at the German parks that open all year.
+Go looking for an empty Tuesday in February and you will not find one, because
+nothing is open then. Within the season, two things mostly decide how busy it
+gets: the Belgian and Walloon school holidays, which this park feels far more
+sharply than its German neighbours, and the weekdays outside the summer
+holidays, when it does not open every day anyway. Which of the coming operating
+days are the quietest is in the calendar further up, updated daily.
 
 ## The perfect day, the short version
 
-At opening, go to **Kondaa** first, because its queue grows harder over the day
-than any other in the park. Straight after that **Mecalodon** in Dock World,
-while the new area still has its novelty pull. The classics **Vampire**,
+At opening, go to **Kondaa** first, because it is the reason most people came
+at all, and because the first hour brings the shortest queue of the day.
+Straight after that **Mecalodon** in Dock World, while the new area still has
+its novelty pull. The classics **Vampire**,
 **Calamity Mine** and **Turbine** sit well over the middle of the day, when you
 are moving between zones anyway, and **Cobra** and **Loup-Garou** work as
 fillers between two bigger rides. Save the water rides, **Pulsar** and

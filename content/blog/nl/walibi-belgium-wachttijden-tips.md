@@ -8,10 +8,11 @@ featured: false
 excerpt: >-
   Wie "Walibi" hoort, denkt aan Biddinghuizen en aan Untamed. Terwijl de oudste
   van de twee parken in Waver ligt, een half uur rijden voorbij Brussel, sinds
-  1975 zo heet en sinds 2021 met Kondaa de hoogste en snelste achtbaan van de
-  Benelux heeft staan. Wachttijden, techniek, een oprichter die eigenlijk alleen
-  een waterskivijver wilde, en honderd miljoen euro die Compagnie des Alpes op
-  dit moment in acht nieuwe themagebieden steekt.
+  1975 zo heet, op drie jaar als Six Flags Belgium na, en sinds 2021 met Kondaa
+  de hoogste en snelste achtbaan van de Benelux heeft staan. Wachttijden,
+  techniek, een oprichter die eigenlijk alleen een waterskivijver wilde, en
+  honderd miljoen euro die Compagnie des Alpes op dit moment in acht nieuwe
+  themagebieden steekt.
 tags:
   - walibi-belgium
   - kondaa
@@ -140,17 +141,18 @@ De rustigste dagen van de komende weken, live berekend:
 ## De rest van het park
 
 Kondaa haalt de koppen, maar de oudste achtbaan van het park is bouwjaar 1982 en
-rijdt nog. In vijf decennia is hier bijna niets gesloopt, en dat merk je aan de
-bandbreedte.
+rijdt nog. Daar zit precies de charme van Waver: een klassieker van Schwarzkopf
+en een nieuwe Intamin uit 2021 staan hier op hetzelfde terrein.
 
 **[Turbine](ref:walibi-belgium/turbine)** is de oudste baan, een
 **Schwarzkopf Shuttle Loop** uit 1982 en daarmee een echte zeldzaamheid. De
-trein wordt achteruit een traject met één enkele looping in gekatapulteerd,
-rijdt die looping vooruit en daarna achteruit weer terug. Schwarzkopf bouwde er
-wereldwijd maar een handvol van, de meeste zijn allang gesloopt. Tussen 2013 en
-2024 reed ze onder een andere naam en in een horrorthema als
-**"Psyké Underground"**, tot de verbouwing tot Dock World haar onder haar oude
-naam en met een nieuw, havenwaardig uiterlijk terugbracht.
+trein wordt met 85,3 km/u vooruit het station uit geschoten, neemt de enige
+looping van de installatie, klimt de toren daarachter op en rolt hetzelfde
+traject achteruit weer terug, door die looping heen en achter het station de
+tweede toren op. Pas daarna remt hij in. Schwarzkopf bouwde er wereldwijd maar
+een handvol van, de meeste zijn allang gesloopt. Tot 1998 heette ze **Sirocco**,
+van 2013 tot 2024 reed ze in een horrorthema als **"Psyké Underground"**, en de
+verbouwing tot Dock World heeft haar de naam Turbine teruggegeven.
 
 **Vampire** (1999) is een **Vekoma SLC** (Suspended Looping Coaster, model 689)
 en was bij de opening de eerste baan van dit type in België. De trein hangt
@@ -183,7 +185,7 @@ banen heeft ingebouwd in plaats van ze gewoon te laten staan: de wildwaterbaan
 familiegebied staat daarnaast **Kondaala**, een kleinere, kindvriendelijke
 afgeleide van de naam Kondaa.
 
-Van de twee nieuwigheden hier heeft Mecalodon me het meest verrast. Een
+Van de twee nieuwigheden in het park heeft Mecalodon me het meest verrast. Een
 familiecoaster wordt naast een baan van vijftig meter al gauw over het hoofd
 gezien, en toch lukt het Dock World. De haven oogt gebouwd en niet
 neergezet, met details waar je ook zonder attractie lang naar blijft staan
@@ -208,8 +210,7 @@ ingang en past tot vandaag toevallig goed bij de naam: "Walibi" klinkt bijna als
 "wallaby", ook al ligt de werkelijke herkomst elders.
 
 Het park groeide snel over Waver heen. Uit die ene vestiging ontstond een kleine
-Europese keten met filialen in Frankrijk (onder meer **Walibi Rhône-Alpes**,
-1981) en Nederland. In 1998 kocht de Amerikaanse groep **Premier Parks**, die
+Europese keten met filialen in Frankrijk (onder meer **Walibi Rhône-Alpes**, 1981) en Nederland. In 1998 kocht de Amerikaanse groep **Premier Parks**, die
 zich kort daarna omdoopte tot **Six Flags**, zich in de keten in, en van 2001
 tot 2004 heette de vestiging in Waver **Six Flags Belgium**, in dezelfde
 overnamegolf waarin Six Flags ook het huidige
@@ -234,8 +235,7 @@ eerder was opengegaan.
 Op **22 juni 2017** presenteerde het park een investeringsplan waar in zijn
 geschiedenis niets aan voorafging: **"Worlds of Walibi"**, zo’n
 **100 miljoen euro**, waarmee 75 % van het terrein in acht nieuwe themagebieden
-moest veranderen, plus tien nieuwe attracties. De oorspronkelijke horizon was
-2023. Toen was er pas een deel klaar, wat bij een verbouwing van deze omvang
+moest veranderen, plus tien nieuwe attracties. De oorspronkelijke horizon was 2023. Toen was er pas een deel klaar, wat bij een verbouwing van deze omvang
 eerder regel dan uitzondering is: **Kondaa** (2021) was het eerste grote gebied,
 **Dock World** met Mecalodon (2025) tot nu toe het laatste.
 
@@ -266,7 +266,7 @@ spookhuizen, **Aquarium**, staat in datzelfde Dock World waar overdag Mecalodon
 rijdt, in een zogenaamd sinds de jaren negentig gesloten publieksaquarium. De
 **Speedy Pass** is hier de fast lane, ook buiten het seizoen. De volledige
 vergelijking met Toverland, Movie Park en de rest staat in onze
-[halloweengids 2026](/blog/halloween-pretparken-2026#walibi-belgium-ibilaw).
+[halloweengids 2026](/blog/halloween-pretparken-2026).
 
 ## Wanneer je moet gaan
 
@@ -276,7 +276,8 @@ vergelijking met Toverland, Movie Park en de rest staat in onze
 
 Als seizoenspark zonder winterbedrijf buiten de kerstvakantie valt het antwoord
 hier heel anders uit dan bij de Duitse parken die het hele jaar door open zijn:
-een rustige januari bestaat niet, want in januari is het dicht. Binnen het
+wie in februari een lege dinsdag zoekt, zoekt tevergeefs, want dan is er
+helemaal niet open. Binnen het
 seizoen bepalen vooral twee dingen hoe druk het wordt: de Belgische
 schoolvakanties, de Waalse voorop, die dit park harder voelt dan zijn Duitse
 buren, en de weekdagen buiten de zomervakantie, waarop het park toch al niet
@@ -285,8 +286,9 @@ hierboven in de kalender, dag voor dag bijgewerkt.
 
 ## De perfecte dag, kort samengevat
 
-Bij opening meteen naar **Kondaa**, omdat de rij daar in de loop van de dag het
-hardst groeit. Direct daarna **Mecalodon** in Dock World, zolang het nieuwe
+Bij opening meteen naar **Kondaa**, omdat zij de reden is dat de meesten hier
+komen, en omdat het eerste uur de kortste rij van de dag heeft. Direct daarna
+**Mecalodon** in Dock World, zolang het nieuwe
 gebied nog zijn nieuwigheidsbonus heeft. De klassiekers **Vampire**,
 **Calamity Mine** en **Turbine** leg je goed rond het middaguur, als je toch
 tussen de zones heen en weer loopt, en **Cobra** en **Loup-Garou** vullen prima

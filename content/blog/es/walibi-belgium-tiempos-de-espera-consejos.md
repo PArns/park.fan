@@ -8,11 +8,11 @@ featured: false
 excerpt: >-
   Quien oye «Walibi» piensa en Holanda y en Untamed. Y resulta que el más
   antiguo de los dos parques está en Wavre, a media hora de coche de Bruselas,
-  se llama así desde 1975 y tiene desde 2021 en Kondaa la montaña rusa más alta
-  y más rápida del Benelux. Tiempos de espera, técnica, un fundador que en
-  realidad solo quería un estanque para hacer esquí acuático y cien millones de
-  euros que Compagnie des Alpes está metiendo ahora mismo en ocho mundos
-  temáticos nuevos.
+  se llama así desde 1975, salvo por tres años como Six Flags Belgium, y tiene
+  desde 2021 en Kondaa la montaña rusa más alta y más rápida del Benelux.
+  Tiempos de espera, técnica, un fundador que en realidad solo quería un
+  estanque para hacer esquí acuático y cien millones de euros que Compagnie des
+  Alpes está metiendo ahora mismo en ocho mundos temáticos nuevos.
 tags:
   - walibi-belgium
   - kondaa
@@ -145,20 +145,21 @@ Los días más tranquilos de las próximas semanas, calculados en vivo:
 ## El resto del parque
 
 Kondaa se lleva los titulares, pero la montaña rusa más antigua del parque es
-de 1982 y sigue funcionando. En cinco décadas aquí no se ha derribado casi
-nada, y eso se nota en la variedad.
+de 1982 y sigue funcionando. Ahí está justamente la gracia de Wavre: un clásico
+de Schwarzkopf y una obra nueva de Intamin de 2021 conviven en el mismo recinto.
 
 **[Turbine](ref:walibi-belgium/turbine)** es la atracción más antigua del
 parque, un **Schwarzkopf Shuttle Loop** de 1982 y con ello una rareza de
-verdad: el tren sale catapultado marcha atrás hacia un recorrido con un único
-looping, lo atraviesa hacia delante y luego lo vuelve a atravesar marcha atrás.
-Schwarzkopf construyó apenas un puñado en todo el mundo y la mayoría acabó hace
-tiempo en el desguace. Entre 2013 y 2024 funcionó con otro nombre y una
-temática de terror como **«Psyké Underground»**, hasta que la reforma para Dock
-World la devolvió con su nombre antiguo y una estética nueva, de puerto.
+verdad. Al tren lo disparan hacia delante desde la estación a 85,3 km/h, se
+mete en el único looping de la instalación, sube la torre que hay detrás y
+vuelve a recorrer lo mismo marcha atrás, otra vez por el looping y, ya pasada
+la estación, torre arriba por el otro lado. Solo entonces frena. Schwarzkopf
+construyó apenas un puñado en todo el mundo y la mayoría acabó hace tiempo en
+el desguace. Hasta 1998 se llamó **Sirocco**, de 2013 a 2024 funcionó con una
+temática de terror como **«Psyké Underground»**, y la reforma para Dock World
+le ha devuelto el nombre de Turbine.
 
-**Vampire** (1999) es un **SLC de Vekoma** (Suspended Looping Coaster, modelo
-689) y en su día fue la primera atracción de este tipo en Bélgica: el tren
+**Vampire** (1999) es un **SLC de Vekoma** (Suspended Looping Coaster, modelo 689) y en su día fue la primera atracción de este tipo en Bélgica: el tren
 cuelga bajo el raíl en lugar de ir encima, así que los pies vuelan libres en
 cada curva sin que debajo se vea ningún suelo.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, bautizada al
@@ -190,7 +191,7 @@ antiguas en vez de dejarlas donde estaban: la atracción de troncos
 A eso se suma **Kondaala**, una versión pequeña y apta para niños del nombre de
 Kondaa, en la zona familiar.
 
-De las dos novedades de aquí, Mecalodon es la que más me sorprendió. Una
+De las dos novedades del parque, Mecalodon es la que más me sorprendió. Una
 montaña rusa familiar lo tiene difícil para que alguien se fije en ella al lado
 de una atracción de 50 metros, y Dock World lo consigue igualmente: el puerto
 parece construido y no colocado, con detalles delante de los que te quedas
@@ -274,7 +275,7 @@ Una de las casas, **Aquarium**, está en la misma zona de Dock World por la que
 de día circula Mecalodon, en un supuesto acuario cerrado desde los noventa. El
 **Speedy Pass** es aquí la fast lane, también fuera de temporada. La
 comparación completa con Toverland, Movie Park y compañía está en nuestra
-[guía de Halloween 2026](/blog/halloween-parques-atracciones-2026#walibi-belgium-ibilaw).
+[guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
 
 ## Cuándo ir
 
@@ -283,20 +284,22 @@ comparación completa con Toverland, Movie Park y compañía está en nuestra
 ```
 
 Este es un parque de temporada que en invierno solo abre en Navidad, así que la
-respuesta aquí es muy distinta de la de los parques que funcionan todo el año:
-no hay un enero tranquilo, porque en enero está cerrado. Dentro de la
-temporada, hay sobre todo dos cosas que deciden lo lleno que estará: las
-vacaciones escolares belgas y valonas, que este parque nota bastante más que
-sus vecinos, y los días entre semana fuera del verano, cuando el parque no abre
+respuesta aquí es muy distinta de la de los parques que funcionan todo el año.
+Quien busque un martes vacío de febrero lo va a buscar en vano, porque en
+febrero no hay nada abierto. Dentro de la temporada hay sobre todo dos cosas
+que deciden lo lleno que estará: las vacaciones escolares belgas y valonas, que
+este parque nota bastante más que sus vecinos, y los días entre semana fuera
+del verano, cuando el parque no abre
 a diario de todos modos. Cuáles de los próximos días de apertura son los más
 tranquilos está en el calendario de más arriba, actualizado a diario.
 
 ## El día perfecto, en resumen
 
-Al abrir, directo a **Kondaa**, porque su cola es la que más crece a lo largo
-del día. Justo después **Mecalodon** en Dock World, mientras la zona nueva
-conserve el tirón de la novedad. Los clásicos **Vampire**, **Calamity Mine** y
-**Turbine** encajan bien a mediodía, cuando de todas formas vas cambiando de
+Al abrir, directo a **Kondaa**, porque es el motivo por el que la mayoría viene
+hasta aquí y porque la primera hora tiene la cola más corta del día. Justo
+después **Mecalodon** en Dock World, mientras la zona nueva conserve el tirón
+de la novedad. Los clásicos **Vampire**, **Calamity Mine** y **Turbine**
+encajan bien a mediodía, cuando de todas formas vas cambiando de
 zona, y **Cobra** y **Loup-Garou** sirven para rellenar huecos entre dos
 atracciones grandes. Las acuáticas, **Pulsar** y **Flash Back**, te las guardas
 para la hora de más calor, y quien tenga tiempo y una segunda entrada le añade
