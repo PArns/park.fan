@@ -436,19 +436,74 @@ export function createSceneryMain(ctx: MainContext): MainHandle {
   /** Placed props keep the dressing off their footprint; the grid keeps that query cheap. */
   const propGrid = new Map<number, Array<{ x: number; z: number; r: number }>>();
   const GRID = 12;
+  function occupy(x: number, z: number, r: number): void {
+    const cell = (Math.floor(x / GRID) + 4096) * 8192 + (Math.floor(z / GRID) + 4096);
+    const bucket = propGrid.get(cell);
+    if (bucket) bucket.push({ x, z, r });
+    else propGrid.set(cell, [{ x, z, r }]);
+  }
+
+  /**
+   * Ground the ambient scatter must leave alone.
+   *
+   * Two sources, and the second one was missing for as long as this module has existed. The first
+   * is this module's own placed props, which is what the grid was built for. The second is
+   * **everything somebody else put down** — and until a critic photographed trees standing on a
+   * swimming pool's deck and over its water, nothing here knew that other modules place things at
+   * all. A scatterer that only avoids its own output will plant a lime tree in a lido.
+   *
+   * The radius is DERIVED, never looked up by kind. Core's rule is that no module switches on an
+   * entity kind, and a table of "a pool is nine metres, a building is fourteen" here would be that
+   * table with extra steps — it would also be wrong the first time a pack ships a bigger one. So:
+   * the manifest's own footprint where the registry has the item (`footprint` on a ride, `size` on
+   * a building, both schema fields that exist precisely to say how much ground a thing takes), the
+   * entity's own `data.size` where it carries one (a pool overriding its shape's extents), and a
+   * conservative default otherwise. Half the diagonal plus `FOREIGN_MARGIN`, because a footprint is
+   * the structure and what a scatter has to clear is the structure plus the paving round it.
+   *
+   * An entity whose footprint is genuinely unknown gets `FOREIGN_FALLBACK`, which is deliberately
+   * generous: a bare patch next to a building reads as a garden, and a tree growing through one
+   * reads as a bug.
+   */
+  /** Registry categories whose schema carries a ground footprint. Schema, never an id. */
+  const FOREIGN_CATEGORIES = ['rides', 'buildings', 'shops', 'scenery'] as const;
+  const FOREIGN_MARGIN = 2.5;
+  const FOREIGN_FALLBACK = 9;
+  function foreignRadius(entity: Entity): number {
+    const data = (entity.data ?? {}) as { size?: unknown; footprint?: unknown };
+    const pair = (v: unknown): [number, number] | null => {
+      if (!Array.isArray(v) || v.length < 2) return null;
+      const a = Number(v[0]);
+      const b = Number(v[v.length === 3 ? 2 : 1]);
+      return Number.isFinite(a) && Number.isFinite(b) && a > 0 && b > 0 ? [a, b] : null;
+    };
+    let box = pair(data.footprint) ?? pair(data.size);
+    if (!box) {
+      for (const category of FOREIGN_CATEGORIES) {
+        const def = ctx.registry.find(category, entity.pack, entity.item)?.def as
+          Record<string, unknown> | undefined;
+        if (!def) continue;
+        box = pair(def.footprint) ?? pair(def.size);
+        if (box) break;
+      }
+    }
+    if (!box) return FOREIGN_FALLBACK;
+    return Math.hypot(box[0], box[1]) / 2 + FOREIGN_MARGIN;
+  }
+
   function rebuildPropGrid(): void {
     propGrid.clear();
     for (const [id, key] of entityOf) {
       const spec = catalog.get(key);
       const entity = ctx.world.entities[id];
       if (!spec || !entity) continue;
-      const x = entity.position[0];
-      const z = entity.position[2];
-      const r = spec.clearance * (entity.scale ?? 1);
-      const cell = (Math.floor(x / GRID) + 4096) * 8192 + (Math.floor(z / GRID) + 4096);
-      const bucket = propGrid.get(cell);
-      if (bucket) bucket.push({ x, z, r });
-      else propGrid.set(cell, [{ x, z, r }]);
+      occupy(entity.position[0], entity.position[2], spec.clearance * (entity.scale ?? 1));
+    }
+    for (const id in ctx.world.entities) {
+      if (entityOf.has(id)) continue;
+      const entity = ctx.world.entities[id];
+      if (!entity || entity.kind === 'scenery' || entity.kind === 'path') continue;
+      occupy(entity.position[0], entity.position[2], foreignRadius(entity));
     }
   }
   function nearPlacedProp(x: number, z: number, radius: number): boolean {
