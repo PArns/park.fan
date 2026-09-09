@@ -16,7 +16,7 @@ import {
   type DayComparisonSide,
 } from '@/lib/parks/day-comparison';
 import { CROWD_TEXT_CLASS, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
-import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 import {
   Dialog,
@@ -107,10 +107,46 @@ export function ParkCalendarComparison({
         ? t('dayComparison.resultClear', { day: dayLabel(winner) })
         : t('dayComparison.resultSlight', { day: dayLabel(winner) });
 
+  /**
+   * The number a cell actually shows, rounded the way that unit is rounded.
+   *
+   * Both the cell and the difference read from this, and that is the point: waits of 30 and 32.4
+   * both print „30 Min", and a difference taken from the RAW values then printed „Unterschied:
+   * 0 Min" beside a ticked cell — a row contradicting itself in three words. A row says one thing
+   * or it says nothing, so the comparison the reader can SEE is the one that decides both.
+   */
+  const displayNumber = (reason: DayComparisonReason, value: number): number => {
+    switch (reason.unit) {
+      case 'minutes':
+        return reason.key === 'hours' ? Math.round(value) : roundWaitTo5(value);
+      case 'mm':
+        return Math.round(value * 10) / 10;
+      case 'currency':
+        return Math.round(value);
+      default:
+        return value;
+    }
+  };
+
+  /** The difference between the two cells AS SHOWN. Zero means the row has nothing to report. */
+  const shownDelta = (reason: DayComparisonReason): number =>
+    Math.abs(displayNumber(reason, reason.a) - displayNumber(reason, reason.b));
+
+  /**
+   * Whether this row marks a winner at all.
+   *
+   * A row whose two cells print the same thing does not, however the underlying floats compare —
+   * a tick with no visible difference beside it reads as a bug, and at this precision the two days
+   * really are the same. The crowd row is exempt: its cells are level NAMES, and `better` there is
+   * already a comparison of whole buckets.
+   */
+  const rowDecides = (reason: DayComparisonReason): boolean =>
+    reason.better !== 'tie' && (reason.unit === 'bucket' || shownDelta(reason) > 0);
+
   /** A measurement in its row's own unit, as text. Keyed by SIDE, never by the value: two days
    *  with the same number would otherwise both be formatted as day A's. */
   const formatValue = (reason: DayComparisonReason, side: 'a' | 'b'): string => {
-    const value = side === 'a' ? reason.a : reason.b;
+    const value = displayNumber(reason, side === 'a' ? reason.a : reason.b);
     switch (reason.unit) {
       case 'bucket': {
         // The bucket INDEX is `rankOf`'s input, not something to print: what the reader knows is
@@ -123,11 +159,9 @@ export function ParkCalendarComparison({
           : t('crowdLevels.unknown');
       }
       case 'minutes':
-        return reason.key === 'hours'
-          ? formatDuration(value)
-          : `${roundWaitTo5(value)} ${tCommon('min')}`;
+        return reason.key === 'hours' ? formatDuration(value) : `${value} ${tCommon('min')}`;
       case 'mm':
-        return t('dayComparison.unitMm', { value: Math.round(value * 10) / 10 });
+        return t('dayComparison.unitMm', { value });
       case 'days':
         return t('dayComparison.unitFlags', { value });
       case 'currency':
@@ -142,33 +176,37 @@ export function ParkCalendarComparison({
   const formatDuration = (minutes: number): string => {
     const h = Math.floor(minutes / 60);
     const m = Math.round(minutes % 60);
+    // Under an hour there is no hour to name: a half-hour difference between two opening spans
+    // read „0 Std. 30 Min." before this branch existed.
+    if (h === 0) return `${m} ${tCommon('min')}`;
     return m === 0
       ? t('dayComparison.unitHours', { hours: h })
       : t('dayComparison.unitHoursMinutes', { hours: h, minutes: m });
   };
 
-  /** The difference, in the row's unit — never a level name, which has no arithmetic. */
+  /**
+   * The difference, in the row's unit — never a level name, which has no arithmetic.
+   *
+   * Computed from {@link shownDelta}, i.e. from the two numbers the cells print, so „Unterschied"
+   * is always the subtraction the reader can do themselves on the two figures beside it.
+   */
   const formatDelta = (reason: DayComparisonReason): string => {
+    const delta = shownDelta(reason);
     switch (reason.unit) {
       case 'bucket':
         return t('dayComparison.unitSteps', { value: reason.delta });
       case 'minutes':
-        return reason.key === 'hours'
-          ? formatDuration(reason.delta)
-          : // `roundWaitDeltaTo5`, never `roundWaitTo5` — see `lib/utils/wait-time.ts`: the latter
-            // floors everything under 2.5 to zero, and „Unterschied: 0 Min" beside a ticked cell is
-            // the line contradicting itself.
-            `${roundWaitDeltaTo5(reason.delta)} ${tCommon('min')}`;
+        return reason.key === 'hours' ? formatDuration(delta) : `${delta} ${tCommon('min')}`;
       case 'mm':
-        return t('dayComparison.unitMm', { value: Math.round(reason.delta * 10) / 10 });
+        return t('dayComparison.unitMm', { value: Math.round(delta * 10) / 10 });
       case 'days':
-        return t('dayComparison.unitFlags', { value: reason.delta });
+        return t('dayComparison.unitFlags', { value: delta });
       case 'currency':
         return new Intl.NumberFormat(locale, {
           style: 'currency',
           currency: comparison.currency ?? 'EUR',
           maximumFractionDigits: 0,
-        }).format(reason.delta);
+        }).format(delta);
     }
   };
 
@@ -283,7 +321,7 @@ export function ParkCalendarComparison({
                         <Icon className="size-3.5 shrink-0" aria-hidden="true" />
                         {t(`dayComparison.reason${capitalize(reason.key)}`)}
                       </span>
-                      {reason.better !== 'tie' && (
+                      {rowDecides(reason) && (
                         <span className="text-muted-foreground shrink-0 text-[11px] tabular-nums">
                           {t('dayComparison.difference', { value: formatDelta(reason) })}
                         </span>
@@ -295,12 +333,12 @@ export function ParkCalendarComparison({
                           key={side}
                           className={cn(
                             'flex items-center gap-1 rounded-md border px-2.5 py-1.5 text-sm tabular-nums',
-                            reason.better === side
+                            rowDecides(reason) && reason.better === side
                               ? 'border-primary/40 bg-primary/5 text-foreground font-semibold'
                               : 'border-border/50 text-muted-foreground'
                           )}
                         >
-                          {reason.better === side && (
+                          {rowDecides(reason) && reason.better === side && (
                             <Check className="text-primary size-3.5 shrink-0" aria-hidden="true" />
                           )}
                           <span className="truncate">{formatValue(reason, side)}</span>
@@ -315,24 +353,36 @@ export function ParkCalendarComparison({
 
           {/* One button per column, in the same grid as everything above it, so „links planen"
               plans the day whose figures are on the left. `mode="wizard"`: both questions the
-              first two steps ask have just been answered on this screen. */}
+              first two steps ask have just been answered on this screen.
+
+              Only for a day that can actually be planned, and here that guard carries more weight
+              than it does in the day dialog it is copied from (`park-calendar-day-detail.tsx`):
+              `mode="wizard"` skips the date step, and the date step is the ONLY place a date is
+              validated — `PlannerMonthCalendar` refuses a past or closed day. Without this, a
+              button sitting directly under „Der Park ist an diesem Tag geschlossen" would file
+              that day into the persisted plan. The column is held open rather than collapsed, so
+              the remaining button stays under the day it belongs to. */}
           <div className="grid grid-cols-2 gap-2">
-            {([a, b] as const).map((day) => (
-              <PlanDayButtonLazy
-                key={day.date}
-                parkSlug={planner.parkSlug}
-                parkName={planner.parkName}
-                geo={planner.geo}
-                date={day.date}
-                timezone={parkTimezone}
-                mode="wizard"
-                // Tighter than the day dialog's full-width instance: two of these share a row
-                // 390 px wide, where the default padding and gap pushed the label onto a third
-                // line.
-                className="gap-1.5 px-2 text-xs max-sm:min-h-11 sm:text-sm"
-                onPlanned={() => onOpenChange(false)}
-              />
-            ))}
+            {([a, b] as const).map((day) =>
+              day.status !== 'OPERATING' || day.date < todayIso ? (
+                <div key={day.date} aria-hidden="true" />
+              ) : (
+                <PlanDayButtonLazy
+                  key={day.date}
+                  parkSlug={planner.parkSlug}
+                  parkName={planner.parkName}
+                  geo={planner.geo}
+                  date={day.date}
+                  timezone={parkTimezone}
+                  mode="wizard"
+                  // Tighter than the day dialog's full-width instance: two of these share a row
+                  // 390 px wide, where the default padding and gap pushed the label onto a third
+                  // line.
+                  className="gap-1.5 px-2 text-xs max-sm:min-h-11 sm:text-sm"
+                  onPlanned={() => onOpenChange(false)}
+                />
+              )
+            )}
           </div>
         </div>
       </DialogContent>
