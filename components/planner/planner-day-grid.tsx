@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
-  MIN_BLOCK_PX,
+  MIN_BLOCK_MIN,
   SNAP_MIN_COARSE,
   SNAP_MIN_FINE,
   clampStart,
@@ -77,6 +77,31 @@ const RESIZE_STEP_MIN = 5;
 
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
+
+/**
+ * Claim the pointer, and say where the gesture's events will arrive.
+ *
+ * `setPointerCapture` throws `NotFoundError` for a pointer id that is not
+ * currently active, and the release side of both gestures has been wrapped
+ * against exactly that since it was written. The claim side was not, so the
+ * throw landed uncaught in a React event handler and took the whole gesture
+ * with it before `dragState` had been set — a drag that silently does nothing.
+ *
+ * The return value is the point: capture is what RETARGETS `pointermove` and
+ * `pointerup` to the handle, so without it a handle-bound `pointerup` never
+ * fires and the gesture has no end — the rAF loop runs on, `--pl-drag-dy` stays
+ * on the block and the listeners leak. So a failed claim moves the listeners to
+ * the document, where the events pass on their way up regardless.
+ */
+function capture(handle: Element, pointerId: number): EventTarget {
+  try {
+    handle.setPointerCapture(pointerId);
+    return handle;
+  } catch {
+    // No such active pointer — a synthesized event, or one already released.
+    return document;
+  }
+}
 
 /**
  * The day grid: the axis, the ground, the blocks and the legs between them.
@@ -201,7 +226,7 @@ export function PlannerDayGrid({
           : effective.wait;
       const spanMinutes = Math.max(
         (wait ?? 0) + (entry.done ? 0 : (effective.uncertaintyMinutes ?? 0)),
-        MIN_BLOCK_PX / grid.pxPerMin
+        MIN_BLOCK_MIN
       );
 
       // "Meldet gerade geschlossen" is a statement about NOW, so it belongs to a
@@ -267,7 +292,11 @@ export function PlannerDayGrid({
     }
 
     return { rows, lanes, legs, broken };
-  }, [entries, day, ridesBySlug, liveWaits, nowMinute, grid.pxPerMin]);
+    // No `grid` and no `pxPerMin`: everything computed here is in MINUTES, which
+    // is what {@link MIN_BLOCK_MIN} bought — the floor under a span used to be
+    // written as `MIN_BLOCK_PX / grid.pxPerMin`, so a layout that has nothing to
+    // do with the scale was recomputed whenever the scale changed.
+  }, [entries, day, ridesBySlug, liveWaits, nowMinute]);
 
   /**
    * Where the park is, to about a kilometre.
@@ -484,7 +513,9 @@ export function PlannerDayGrid({
       event.stopPropagation();
 
       const handle = event.currentTarget;
-      handle.setPointerCapture(event.pointerId);
+      // Where this gesture's events will arrive — the handle when the capture
+      // took, the document when it did not. See {@link capture}.
+      const bus = capture(handle, event.pointerId);
       const startY = event.clientY;
       const startMinutes = entry.custom.durationMinutes;
       onSelect(entry.id);
@@ -495,18 +526,18 @@ export function PlannerDayGrid({
         onResize(entry.id, next);
       };
       const detach = () => {
-        handle.removeEventListener('pointermove', onPointerMove);
-        handle.removeEventListener('pointerup', detach);
-        handle.removeEventListener('pointercancel', detach);
+        bus.removeEventListener('pointermove', onPointerMove as EventListener);
+        bus.removeEventListener('pointerup', detach);
+        bus.removeEventListener('pointercancel', detach);
         try {
           handle.releasePointerCapture(event.pointerId);
         } catch {
           // Already released — a cancelled gesture, or the element unmounted.
         }
       };
-      handle.addEventListener('pointermove', onPointerMove);
-      handle.addEventListener('pointerup', detach);
-      handle.addEventListener('pointercancel', detach);
+      bus.addEventListener('pointermove', onPointerMove as EventListener);
+      bus.addEventListener('pointerup', detach);
+      bus.addEventListener('pointercancel', detach);
     },
     [grid.pxPerMin, onResize, onSelect]
   );
@@ -520,7 +551,9 @@ export function PlannerDayGrid({
       if (!block) return;
 
       const handle = event.currentTarget;
-      handle.setPointerCapture(event.pointerId);
+      // Where this gesture's events will arrive — the handle when the capture
+      // took, the document when it did not. See {@link capture}.
+      const bus = capture(handle, event.pointerId);
       // `preventDefault` above eats the focus a mouse drag would take, so a
       // keyboard user cannot resume where the pointer just was.
       handle.focus({ preventScroll: true });
@@ -550,9 +583,9 @@ export function PlannerDayGrid({
         endDrag(false);
       };
       const detach = () => {
-        handle.removeEventListener('pointermove', onPointerMove);
-        handle.removeEventListener('pointerup', onUp);
-        handle.removeEventListener('pointercancel', onCancel);
+        bus.removeEventListener('pointermove', onPointerMove as EventListener);
+        bus.removeEventListener('pointerup', onUp);
+        bus.removeEventListener('pointercancel', onCancel);
         try {
           handle.releasePointerCapture(event.pointerId);
         } catch {
@@ -561,9 +594,9 @@ export function PlannerDayGrid({
         }
       };
 
-      handle.addEventListener('pointermove', onPointerMove);
-      handle.addEventListener('pointerup', onUp);
-      handle.addEventListener('pointercancel', onCancel);
+      bus.addEventListener('pointermove', onPointerMove as EventListener);
+      bus.addEventListener('pointerup', onUp);
+      bus.addEventListener('pointercancel', onCancel);
 
       // The loop lives in the gesture rather than in a `useCallback`: it is
       // per-gesture state, and a self-recursive rAF callback hoisted to a hook
@@ -582,12 +615,22 @@ export function PlannerDayGrid({
           // The SCROLLER's rect, not the viewport's: on a phone the bottom
           // sixth of the screen is the page behind the sheet.
           const box = scroller.getBoundingClientRect();
-          const depthTop = box.top + EDGE_PX - state.lastClientY;
-          const depthBottom = state.lastClientY - (box.bottom - EDGE_PX);
+          // The edge is a FRACTION of the box, capped at {@link EDGE_PX} — never
+          // the constant alone. On a phone this scroller had a 140 px floor
+          // (`planner-day-column.tsx`, 200 px since), and 48 px at each end of
+          // 140 leaves a neutral band of 44: two thirds of the axis
+          // auto-scrolled, so the day ran out from under a finger that was
+          // holding still, and `minuteUnderPointer` re-reads the rect every
+          // frame — so the target minute ran with it. A quarter each end keeps
+          // half the box neutral at every height, and from 192 px up the
+          // constant takes over unchanged.
+          const edge = Math.min(EDGE_PX, box.height / 4);
+          const depthTop = box.top + edge - state.lastClientY;
+          const depthBottom = state.lastClientY - (box.bottom - edge);
           if (depthTop > 0) {
-            scroller.scrollTop -= MAX_SCROLL_SPEED * Math.min(1, depthTop / EDGE_PX);
+            scroller.scrollTop -= MAX_SCROLL_SPEED * Math.min(1, depthTop / edge);
           } else if (depthBottom > 0) {
-            scroller.scrollTop += MAX_SCROLL_SPEED * Math.min(1, depthBottom / EDGE_PX);
+            scroller.scrollTop += MAX_SCROLL_SPEED * Math.min(1, depthBottom / edge);
           }
         }
 

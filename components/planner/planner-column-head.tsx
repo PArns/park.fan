@@ -68,7 +68,7 @@ export function PlannerColumnHead({
   return (
     <div
       data-planner-column-head=""
-      className="border-border/60 flex min-w-0 shrink-0 items-center gap-1 border-b px-2 py-1.5"
+      className="border-border/60 flex min-w-0 shrink-0 items-center gap-1 border-b px-2 py-1.5 max-sm:py-0.5"
     >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -143,7 +143,7 @@ export function PlannerColumnHead({
           data-planner-column-close=""
           aria-label={t('column.close')}
           title={t('column.close')}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors"
+          className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
         >
           <X className="size-4" aria-hidden="true" />
         </button>

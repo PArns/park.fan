@@ -975,6 +975,140 @@ if (await phoneLauncher.count()) {
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check('Griff ist auf dem Handy treffbar', reachable === 'erreichbar', reachable);
+
+      // The grip's HEIGHT, and it is the half no earlier version of this block
+      // measured. The width is a class and a bounding box; the height is a 44 px
+      // `after:` pseudo-element that deliberately reaches PAST a block that can
+      // legitimately be 20 px tall — so a bounding box cannot see it and the
+      // only instrument is `elementFromPoint`, sampled at the two ends of the
+      // 44 px the target claims.
+      //
+      // It failed for one word for as long as it existed: the block's own box
+      // carried `overflow-hidden`, which clips a pseudo-element for hit-testing
+      // as much as for paint, so the target was 44 × the block's height.
+      const gripReach = await grip.evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        const x = Math.round(box.left + box.width / 2);
+        const midY = Math.round(box.top + box.height / 2);
+        const at = (y) => {
+          const hit = document.elementFromPoint(x, y);
+          return hit === el || Boolean(hit && el.contains(hit));
+        };
+        // 21 rather than 22: half of 44 minus a pixel, so the sample sits inside
+        // the target rather than exactly on its edge.
+        return { height: Math.round(box.height), top: at(midY - 21), bottom: at(midY + 21) };
+      });
+      check(
+        'die Trefferfläche des Griffs ist 44 px hoch',
+        gripReach.top && gripReach.bottom,
+        `Blockhöhe ${gripReach.height} px · oben ${gripReach.top ? 'ja' : 'nein'} · unten ${
+          gripReach.bottom ? 'ja' : 'nein'
+        }`
+      );
+
+      // And the gesture itself, with a TOUCH pointer. Every drag assertion in
+      // this file before this one ran on `pointerType: 'mouse'`, which is the
+      // reason a phone-only failure could sit in the panel through a green run:
+      // the block's body gates itself on `(pointer: fine)` and the grip does
+      // not, so a mouse pass exercises a path a finger never takes.
+      // BY ID, never by position: the store keeps a day's entries sorted by
+      // start minute, so a drag that moves a block past its neighbour also moves
+      // it in the array and `entries[0]` would then be a different block.
+      const entryId = await phoneBlocks.first().getAttribute('data-planner-entry');
+      const startOf = (id) =>
+        phone.evaluate((wanted) => {
+          const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+          const days = plan?.parks?.phantasialand?.days ?? {};
+          for (const day of Object.values(days)) {
+            const hit = (day?.entries ?? []).find((e) => e.id === wanted);
+            if (hit) return hit.startMinute;
+          }
+          return null;
+        }, id);
+      const startBefore = await startOf(entryId);
+      await grip.evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        const x = box.left + box.width / 2;
+        const y = box.top + box.height / 2;
+        const opts = {
+          bubbles: true,
+          button: 0,
+          pointerId: 7,
+          pointerType: 'touch',
+          isPrimary: true,
+        };
+        el.dispatchEvent(new PointerEvent('pointerdown', { ...opts, clientX: x, clientY: y }));
+        // Two moves and 90 px, which is more than one coarse snap step at either
+        // scale — a gesture shorter than half a step commits nothing, correctly,
+        // and would make this assertion measure the step rather than the drag.
+        for (const dy of [45, 90]) {
+          el.dispatchEvent(
+            new PointerEvent('pointermove', { ...opts, clientX: x, clientY: y + dy })
+          );
+        }
+        el.dispatchEvent(new PointerEvent('pointerup', { ...opts, clientX: x, clientY: y + 90 }));
+      });
+      // Two animation frames plus the store's write: the drag reads its target
+      // in a rAF loop, so the value is not there on the next tick.
+      await phone.waitForTimeout(600);
+      const startAfter = await startOf(entryId);
+      check(
+        'ein Finger verschiebt den Block',
+        startBefore !== null && startAfter !== null && startAfter !== startBefore,
+        `${startBefore} -> ${startAfter}`
+      );
+
+      // The gesture-free way. It exists because the one above depends on a
+      // gesture landing on a 44 px strip of a box whose height is a queue, and a
+      // plan may not depend on that. Selecting is a plain tap on the block, which
+      // is what docks the action row.
+      await phone.locator(`li[data-planner-entry="${entryId}"]`).first().click();
+      await phone.waitForTimeout(300);
+      const nudge = phone.locator(`${SHEET} button[aria-label="15 Min. später"]`);
+      check('die Aktionsleiste bietet einen Verschieben-Knopf', (await nudge.count()) > 0);
+      if ((await nudge.count()) > 0) {
+        const box = await nudge.first().boundingBox();
+        check(
+          'der Verschieben-Knopf hält die Touch-Höhe',
+          Math.round(box?.height ?? 0) >= 44,
+          `${Math.round(box?.height ?? 0)} px`
+        );
+        const before = await startOf(entryId);
+        await nudge.first().click();
+        await phone.waitForTimeout(400);
+        const after = await startOf(entryId);
+        check(
+          'und verschiebt um eine Viertelstunde',
+          before !== null && after === before + 15,
+          `${before} -> ${after}`
+        );
+      }
+    }
+
+    // What is left for the day after the chrome has taken its share. The
+    // report this work started from read "von der Achse bleibt etwa eine
+    // Stunde übrig", and the arithmetic behind it is in
+    // `planner-day-column.tsx`: 467 px of a 716 px sheet were chrome.
+    const room = await phone.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      const grid = sheet?.querySelector('[data-planner-grid]');
+      const scroller = grid?.closest('.overflow-y-auto');
+      if (!sheet || !scroller) return null;
+      return {
+        sheet: Math.round(sheet.getBoundingClientRect().height),
+        axis: Math.round(scroller.getBoundingClientRect().height),
+      };
+    }, SHEET);
+    if (room) {
+      check(
+        'die Achse bekommt ihren Boden',
+        room.axis >= 200,
+        `Achse ${room.axis} px in einem ${room.sheet} px hohen Sheet · Chrome ${
+          room.sheet - room.axis
+        } px`
+      );
+    } else {
+      check('die Achse bekommt ihren Boden', false, 'keine Achse gefunden');
     }
   } else {
     // No opening hours (which is what a 404 leaves), so the grid cannot draw and

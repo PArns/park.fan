@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { Precip, Temp } from '@/components/common/unit-display';
@@ -42,6 +42,15 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
   const t = useTranslations('parks.weather');
   const locale = useLocale();
   const [hovered, setHovered] = useState<number | null>(null);
+  /**
+   * Which kind of pointer opened the gesture that is ending in a click.
+   *
+   * `pointerdown` is the last event before `click` that still carries
+   * `pointerType`, and it is the only place this can be read: React's `onClick`
+   * gives a `MouseEvent`, whose `nativeEvent` is a `PointerEvent` in current
+   * browsers and is not guaranteed to be one.
+   */
+  const pressType = useRef<string>('mouse');
 
   if (segments.length === 0) return null;
 
@@ -75,11 +84,25 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
           the gutter's full width: the hour numbers sit to the right of this and
           a hint that opens when the pointer is merely near a number is a hint
           nobody asked for. */}
-      <div className="absolute inset-y-0 left-0 w-6" onPointerLeave={() => setHovered(null)}>
+      <div
+        className="absolute inset-y-0 left-0 w-6"
+        /* A finger's `pointerleave` arrives the moment it LIFTS, so on a phone
+           the hint was gone before the hand was out of the way — the whole rail
+           was a hover affordance on a device that has no hover. A coarse pointer
+           keeps what it opened and closes it with a second tap (below); a fine
+           one keeps the behaviour it had. */
+        onPointerLeave={(event) => {
+          if (event.pointerType !== 'touch') setHovered(null);
+        }}
+      >
         {segments.map((segment) => (
           <button
             key={`hit-${segment.hour}`}
             type="button"
+            /* Out of the tab order on purpose, and the information is not: the
+               `sr-only` list below carries the whole band as prose, one entry per
+               hour the weather turns. Fifteen tab stops through a decorative
+               strip would be the worse of the two answers. */
             tabIndex={-1}
             aria-label={labelTitle(
               t(getWeatherConfig(segment.code ?? 0, true).label),
@@ -88,8 +111,31 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
             )}
             className="absolute inset-x-0 cursor-help"
             style={{ top: segment.y, height: segment.height }}
-            onPointerEnter={() => setHovered(segment.hour)}
-            onFocus={() => setHovered(segment.hour)}
+            onPointerDown={(event) => {
+              pressType.current = event.pointerType;
+            }}
+            /* Fine pointers only. For touch the browser fires `pointerenter`
+               BEFORE `pointerdown`, so an enter that also opened the hint would
+               make the click below close what it just opened — the rail would
+               show nothing at all on the one device this is for. */
+            onPointerEnter={(event) => {
+              if (event.pointerType !== 'touch') setHovered(segment.hour);
+            }}
+            /* NO `onFocus`. It cannot fire for a keyboard — the button is
+               `tabIndex={-1}` and nothing focuses it programmatically — and it
+               DOES fire on a tap, because a browser focuses a `tabindex="-1"`
+               button on click. So its only effect was to open the hint one
+               event before the toggle below closed it again: the first tap
+               showed nothing. The keyboard's path is the `sr-only` list. */
+            /* The tap state, and only a tap's. A finger opens the hint here and
+               closes it by pressing the same hour again; pressing a different
+               hour moves it. A mouse is left alone — hover already answers it,
+               and a click that closed the hint under the pointer would be a
+               control that fights the gesture that opened it. */
+            onClick={() => {
+              if (pressType.current !== 'touch') return;
+              setHovered((current) => (current === segment.hour ? null : segment.hour));
+            }}
           />
         ))}
       </div>

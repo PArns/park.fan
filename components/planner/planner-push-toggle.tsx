@@ -94,7 +94,7 @@ export function PlannerPushToggle() {
                 <label
                   key={topic}
                   className={cn(
-                    'flex items-center gap-2 rounded-md px-1 py-1 text-xs max-sm:min-h-9',
+                    'flex items-center gap-2 rounded-md px-1 py-1 text-xs max-sm:min-h-11',
                     last ? 'opacity-60' : 'hover:bg-accent/50 cursor-pointer'
                   )}
                 >

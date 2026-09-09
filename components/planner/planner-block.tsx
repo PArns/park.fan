@@ -12,9 +12,9 @@ import {
 import { formatGridTime } from '@/lib/planner/park-time';
 import {
   MIN_BAND_PX,
-  MIN_BLOCK_PX,
   blockBoxFor,
   heightFor,
+  minBlockPxFor,
   yFor,
   type DayGrid,
 } from '@/lib/planner/day-grid';
@@ -181,7 +181,7 @@ export function PlannerBlock({
       ? heightFor(grid, wait)
       : 0;
   const boxPx = custom
-    ? Math.max(MIN_BLOCK_PX, fillPx)
+    ? Math.max(minBlockPxFor(grid), fillPx)
     : hasFigure
       ? blockBoxFor(grid, wait)
       : NO_FIGURE_PX;
@@ -350,9 +350,23 @@ export function PlannerBlock({
         />
       )}
 
+      {/* NO `overflow-hidden`, and that word is the whole of the first half of
+          this bug. The grip and the resize edge grow their 44 px touch target
+          with an `after:` pseudo-element that deliberately reaches PAST the
+          block — a 20 px box cannot contain a 44 px target and must not grow to
+          fit one, because its height is the queue. Clipping the box clipped the
+          pseudo-element with it, for hit-testing as much as for paint, so the
+          target was 44 × the block's own height: 44 × 20 on the shortest block
+          in the day, and 44 × 24 on the 20-minute block in the report.
+
+          What the clip was FOR is the ink — a photo at `inset-0` and a tint that
+          would otherwise square off the rounded corners — so the ink is what
+          gets clipped now, in its own layer below. The controls are siblings of
+          that layer and reach out of the box, which is what they were written to
+          do. */}
       <div
         className={cn(
-          'relative flex h-full flex-col overflow-hidden rounded-md border',
+          'relative flex h-full flex-col rounded-md border',
           done && 'bg-foreground/10 border-foreground/30',
           !done && hasFigure && tone && CROWD_TILE_CLASS[tone],
           // A free block: solid and neutral. Its height IS a claim — the one the
@@ -376,43 +390,49 @@ export function PlannerBlock({
           lane.column > 0 && 'ring-background ring-1'
         )}
       >
-        {/* The ride's photo, behind everything, on every block that has one.
-            `background-image` and not `next/image`, because a block is 130–400
-            px wide, its size changes with the plan, and the crop is already the
-            right one. No height floor — see {@link PHOTO_OPACITY}. */}
-        {photo && (
-          <div
-            className={cn('absolute inset-0', PHOTO_OPACITY)}
-            style={{
-              backgroundImage: `url(${photo.src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: photo.position,
-            }}
-            aria-hidden="true"
-          />
-        )}
-
-        {/* The fill, masked by the tier. Separate from the box so the box can be
-            taller without the ink claiming the extra pixels. */}
-        {hasFigure && tone && !done && (
-          <div
-            className={cn('absolute inset-x-0 top-0', CROWD_DOT_CLASS[tone], 'opacity-[0.18]')}
-            style={{
-              height: fillPx,
-              ...(mask ? { maskImage: mask, WebkitMaskImage: mask } : {}),
-            }}
-            aria-hidden="true"
-          />
-        )}
-
-        {/* Outlook's category bar. */}
+        {/* The ink, and the only thing the block clips. `rounded-[inherit]` so
+            the corner is the box's own and stays that way if it ever changes;
+            `pointer-events-none` because everything in here is decoration and
+            the controls below it are not. */}
         <div
-          className={cn(
-            'absolute inset-y-0 left-0 w-[3px] rounded-l',
-            done ? 'bg-foreground/40' : tone ? CROWD_DOT_CLASS[tone] : 'bg-muted-foreground/40'
-          )}
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
           aria-hidden="true"
-        />
+        >
+          {/* The ride's photo, behind everything, on every block that has one.
+              `background-image` and not `next/image`, because a block is 130–400
+              px wide, its size changes with the plan, and the crop is already the
+              right one. No height floor — see {@link PHOTO_OPACITY}. */}
+          {photo && (
+            <div
+              className={cn('absolute inset-0', PHOTO_OPACITY)}
+              style={{
+                backgroundImage: `url(${photo.src})`,
+                backgroundSize: 'cover',
+                backgroundPosition: photo.position,
+              }}
+            />
+          )}
+
+          {/* The fill, masked by the tier. Separate from the box so the box can be
+              taller without the ink claiming the extra pixels. */}
+          {hasFigure && tone && !done && (
+            <div
+              className={cn('absolute inset-x-0 top-0', CROWD_DOT_CLASS[tone], 'opacity-[0.18]')}
+              style={{
+                height: fillPx,
+                ...(mask ? { maskImage: mask, WebkitMaskImage: mask } : {}),
+              }}
+            />
+          )}
+
+          {/* Outlook's category bar. */}
+          <div
+            className={cn(
+              'absolute inset-y-0 left-0 w-[3px] rounded-l',
+              done ? 'bg-foreground/40' : tone ? CROWD_DOT_CLASS[tone] : 'bg-muted-foreground/40'
+            )}
+          />
+        </div>
 
         {/* The grip. A rail on a coarse pointer, the whole body on a fine one —
             `touch-none` never goes on the block, which covers most of the grid's
@@ -423,9 +443,11 @@ export function PlannerBlock({
           onClick={onSelect}
           aria-label={t('entry.dragHandle')}
           className={cn(
-            'absolute inset-y-0 left-0 z-10 w-6 cursor-grab touch-none active:cursor-grabbing max-sm:w-11',
+            'absolute inset-y-0 left-0 z-30 w-6 cursor-grab touch-none active:cursor-grabbing max-sm:w-11',
             // The target grows and the box does not: on a 20 px block a 44 px
             // pseudo-element reaches past the edges without moving anything.
+            // Which only works because the box no longer clips — see the note on
+            // the bordered div above.
             'max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:h-11 max-sm:after:w-11 max-sm:after:-translate-y-1/2 max-sm:after:content-[""]'
           )}
         />
@@ -442,8 +464,14 @@ export function PlannerBlock({
             onClick={(event) => event.stopPropagation()}
             aria-label={t('entry.resizeHandle')}
             className={cn(
-              'group/resize absolute inset-x-0 bottom-0 z-20 flex h-2 cursor-ns-resize touch-none items-end justify-center',
-              'max-sm:after:absolute max-sm:after:bottom-0 max-sm:after:h-11 max-sm:after:w-full max-sm:after:content-[""]'
+              'group/resize absolute inset-x-0 bottom-0 z-40 flex h-2 cursor-ns-resize touch-none items-end justify-center',
+              // From the grip's column to the right edge, NOT `w-full`. Once the
+              // box stopped clipping, a full-width 44 px target sat on top of
+              // the grip's 44 px target on every block shorter than 44 px — so
+              // the shortest free block, the one this whole fix is about, could
+              // be resized and not moved. The two targets now tile the block
+              // instead of stacking on it.
+              'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-11 max-sm:after:content-[""]'
             )}
           >
             <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />
@@ -491,7 +519,12 @@ export function PlannerBlock({
             pays nothing for it — which is now the same condition the picture
             itself is drawn under, at every height. */}
         <div
-          className="pointer-events-none relative min-w-0 flex-1 px-1.5 py-0.5 pl-2.5"
+          /* Its own `overflow-hidden`, which the doc comment on
+             {@link WARN_SENTENCE_PX} has always claimed it had: it used to
+             borrow the box's, and the box's is gone so the grip can reach out
+             of it. This is the one child that can genuinely overflow — a
+             sentence in a box measured for two lines. */
+          className="pointer-events-none relative min-w-0 flex-1 overflow-hidden px-1.5 py-0.5 pl-2.5"
           style={photo ? { filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.65))' } : undefined}
         >
           {boxPx < 30 ? (

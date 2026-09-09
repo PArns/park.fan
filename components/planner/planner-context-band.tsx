@@ -245,8 +245,14 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
             {t('context.schoolVacation')}
           </Badge>
         )}
+        {/* Not on a phone. The column head two rows above prints the weekday
+            itself ("So. 06.09."), so this chip says nothing new there — and it
+            is a chip on a row that WRAPS, so on the reported day (Phantasialand,
+            Sunday) it was the one that pushed the row onto a second line and
+            cost the axis 26 px. It stays above `sm`, where the row has the width
+            to carry it on one line and the panel is not fighting for pixels. */}
         {context.isWeekend && (
-          <Badge variant="outline" className="text-[11px]">
+          <Badge variant="outline" className="text-[11px] max-sm:hidden">
             {t('context.weekend')}
           </Badge>
         )}

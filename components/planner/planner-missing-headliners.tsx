@@ -7,6 +7,7 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
+import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { startRideDrag } from '@/lib/planner/ride-drag';
@@ -53,6 +54,8 @@ export function PlannerMissingHeadliners({
   prefs,
 }: PlannerMissingHeadlinersProps) {
   const t = useTranslations('planner');
+  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  const pxPerMin = usePlannerPxPerMin();
   const { state, addRide } = usePlanner();
 
   const activeEntries = useMemo(
@@ -77,7 +80,7 @@ export function PlannerMissingHeadliners({
     );
   }, [day, planned, prefs]);
 
-  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
+  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin);
   // Read on every render rather than once: this band is open for as long as the
   // panel is, and a pill pressed at 14:00 may not file into the morning because
   // the clock was read when the sheet opened. No subscription — nothing here

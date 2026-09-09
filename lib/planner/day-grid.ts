@@ -27,13 +27,36 @@ import type { DayClock } from './park-time';
  * Chosen from content rather than from a viewport: a 40-minute queue — the
  * common headliner figure — is 48 px, which is two lines of `text-sm` plus a
  * `text-[10px]` meta line and 6 px of padding; a 15-minute drag step is 18 px,
- * comfortably above touch tolerance. It is identical at every breakpoint on
- * purpose. Squeezing the phone would make it the one place a ten-minute gap is
- * invisible, which is the opposite of what this view is for — and deriving it
- * from a container's height would be a measurement arriving after paint, i.e. a
- * resize of the whole grid on every open.
+ * comfortably above touch tolerance. Deriving it from a container's height would
+ * be a measurement arriving after paint, i.e. a resize of the whole grid on
+ * every open, so it is a constant per pointer class and not a function of the
+ * box.
  */
 export const PX_PER_MIN = 1.2;
+
+/**
+ * The same axis on a phone. 108 px per hour.
+ *
+ * It is NOT a preference and not a squeeze in the other direction — the value
+ * follows from what is left of the sheet. At 390×844 the sheet is 716 px, of
+ * which the handle, the header and the push toggle take 122, the day's foot 182
+ * and the column's own chrome 163: about 250 px for the axis and the ride search
+ * together (the arithmetic is `planner-day-column.tsx`'s own, measured by its
+ * author). At 1.2 px per minute a floor of 140 px is two hours of a nine-hour
+ * day; at 1.8 the same floor is one hour twenty, which is worse — so this number
+ * only pays off together with the chrome Etappe 2 gives back, and both land in
+ * the same change.
+ *
+ * What it buys is the block, not the axis: a 20-minute queue is 24 px at 1.2 and
+ * **36 px** at 1.8, i.e. the difference between a bar and something with a name
+ * on it, and a coarse snap step goes from 36 px to 54 — far enough that a drag
+ * of a thumb's width lands on the step it looks like it lands on.
+ *
+ * Every derived figure reads `grid.pxPerMin` and never this constant, so the
+ * axis, the blocks and the inverse of `yFor` cannot disagree. The one place it
+ * is read is {@link usePlannerPxPerMin}.
+ */
+export const PX_PER_MIN_COARSE = 1.8;
 
 /** Arrival and rope drop happen before opening, so the axis starts before it. */
 export const PRE_PAD_MIN = 30;
@@ -90,8 +113,24 @@ export const SNAP_MIN_COARSE = 30;
  * to the true height, so the box grows and the ink does not lie. `heightFor`
  * never consults this: `blockBoxFor` is the layout-only twin, and the two being
  * separate functions is what keeps the floor out of the measurement.
+ *
+ * Stated at {@link PX_PER_MIN} and scaled by the axis in {@link minBlockPxFor},
+ * so the floor stays the same number of MINUTES at every scale. Left as a flat
+ * 20 px it would be 11.1 minutes at {@link PX_PER_MIN_COARSE} — a floor that
+ * quietly does less the moment the axis it is a floor on gets taller.
  */
 export const MIN_BLOCK_PX = 20;
+
+/**
+ * The same floor as {@link MIN_BLOCK_PX}, in minutes — 16.7 of them.
+ *
+ * This is the scale-free statement of it, and it is what a caller wants whenever
+ * it needs the floor as a DURATION rather than as a height: the span a block
+ * occupies for lane packing, say. Reading `MIN_BLOCK_PX / grid.pxPerMin` gave
+ * the same number and made the caller depend on the axis for a value that does
+ * not vary with it.
+ */
+export const MIN_BLOCK_MIN = MIN_BLOCK_PX / PX_PER_MIN;
 
 /**
  * Below this the uncertainty band is not drawn.
@@ -320,9 +359,25 @@ export function heightFor(grid: DayGrid, minutes: number): number {
   return minutes * grid.pxPerMin;
 }
 
-/** The drawn box: never below {@link MIN_BLOCK_PX}. The fill inside stays exact. */
+/**
+ * The floor under a block's box, on THIS axis.
+ *
+ * {@link MIN_BLOCK_PX} is 20 px at {@link PX_PER_MIN}, which is 16.7 minutes.
+ * Scaling it by the axis keeps those minutes rather than those pixels, so a
+ * phone's taller axis raises the floor with everything else instead of leaving
+ * a 20 px box that now stands for eleven minutes.
+ */
+export function minBlockPxFor(grid: DayGrid): number {
+  // `(MIN_BLOCK_PX * pxPerMin) / PX_PER_MIN`, in that order, and not the
+  // `MIN_BLOCK_MIN * pxPerMin` the constant below reads as: the same value in
+  // binary floating point comes out 30.000000000000004 one way round and 30 the
+  // other, and this number is a pixel height a test compares exactly.
+  return (MIN_BLOCK_PX * grid.pxPerMin) / PX_PER_MIN;
+}
+
+/** The drawn box: never below {@link minBlockPxFor}. The fill inside stays exact. */
 export function blockBoxFor(grid: DayGrid, minutes: number): number {
-  return Math.max(heightFor(grid, minutes), MIN_BLOCK_PX);
+  return Math.max(heightFor(grid, minutes), minBlockPxFor(grid));
 }
 
 export function snapTo(minute: number, step: number): number {

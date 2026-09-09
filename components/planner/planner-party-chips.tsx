@@ -78,7 +78,7 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
             onClick={() => onChange({ riderHeightCm: undefined })}
             aria-pressed={prefs?.riderHeightCm === undefined}
             className={cn(
-              'rounded-full border px-2 py-1 text-[11px] transition-colors max-sm:min-h-9',
+              'rounded-full border px-2 py-1 text-[11px] transition-colors max-sm:min-h-11',
               prefs?.riderHeightCm === undefined
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'hover:bg-accent border-border'
@@ -93,7 +93,7 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
               onClick={() => onChange({ riderHeightCm: cm })}
               aria-pressed={prefs?.riderHeightCm === cm}
               className={cn(
-                'rounded-full border px-2 py-1 text-[11px] transition-colors max-sm:min-h-9',
+                'rounded-full border px-2 py-1 text-[11px] transition-colors max-sm:min-h-11',
                 prefs?.riderHeightCm === cm
                   ? 'bg-primary text-primary-foreground border-primary'
                   : 'hover:bg-accent border-border'
