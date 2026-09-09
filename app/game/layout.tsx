@@ -26,10 +26,12 @@ export const metadata: Metadata = {
    * and run your own theme park" against that is a result nobody clicks twice, and this site's own
    * rules elsewhere are explicit that the strongest page must not carry a sentence it cannot keep.
    *
-   * The header link stays: this is reachable and meant to be tried. What it must not do yet is
-   * invite a stranger through a search engine. Flip both flags together — this line and
-   * `app/sitemap.ts`, which does not list `/game` either — when the final gate in
-   * `docs/game/FINAL_GATE.md` has actually been run.
+   * Three things now say the same "not yet" and they are flipped together when the final gate in
+   * `docs/game/FINAL_GATE.md` has actually been run: this line, `app/sitemap.ts` (which does not
+   * list `/game` either), and `GAME_ENABLED` in `lib/config/features.ts` — the last being the one
+   * that decides whether the route and the header link exist at all outside dev and preview. This
+   * one is the weakest of the three on its own: `noindex` asks a crawler not to list a page it can
+   * still fetch, and asks nothing of anybody who has the URL.
    */
   robots: { index: false, follow: true },
 };

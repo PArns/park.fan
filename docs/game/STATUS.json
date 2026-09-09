@@ -121,7 +121,7 @@
         "fidelity": 7.9,
         "extensibility": 6.8,
         "budget": 7.8,
-        "determinism": 9.0,
+        "determinism": 9,
         "reportHonesty": 8.6
       },
       "gradedAtCommit": "974911e",
@@ -137,7 +137,7 @@
       "gated": true,
       "lines": 4629,
       "axes": {
-        "frame": 8.0,
+        "frame": 8,
         "fidelity": 7.2,
         "extensibility": 8.2,
         "budget": 8.3,
@@ -159,10 +159,10 @@
       "axes": {
         "frame": 8.2,
         "fidelity": 7.5,
-        "extensibility": 9.0,
+        "extensibility": 9,
         "budget": 8.8,
-        "determinism": 9.0,
-        "reportHonesty": 8.0
+        "determinism": 9,
+        "reportHonesty": 8
       },
       "gradedAtCommit": "c0f4c7e",
       "hardGates": "all pass"
@@ -202,8 +202,8 @@
       "axes": {
         "frame": 7.6,
         "fidelity": 5.8,
-        "extensibility": 7.0,
-        "budget": 6.0,
+        "extensibility": 7,
+        "budget": 6,
         "determinism": 9.6,
         "reportHonesty": 8.5
       },
@@ -245,7 +245,7 @@
         "extensibility": 8.8,
         "budget": 8.5,
         "determinism": 9.4,
-        "reportHonesty": 8.0
+        "reportHonesty": 8
       },
       "gradedAtCommit": "1a1e8c1",
       "hardGates": "all pass",
@@ -262,7 +262,7 @@
       "axes": {
         "frame": 6.5,
         "fidelity": 7.2,
-        "extensibility": 8.0,
+        "extensibility": 8,
         "budget": 8.4,
         "determinism": 8.6,
         "reportHonesty": 6.8
@@ -282,8 +282,8 @@
       "axes": {
         "frame": 7.7,
         "fidelity": 6.9,
-        "extensibility": 8.0,
-        "budget": 8.0,
+        "extensibility": 8,
+        "budget": 8,
         "determinism": 9.5,
         "reportHonesty": 8.4
       },
@@ -302,10 +302,10 @@
       "axes": {
         "frame": 7.4,
         "fidelity": 7.6,
-        "extensibility": 9.0,
+        "extensibility": 9,
         "budget": 8.8,
         "determinism": 9.2,
-        "reportHonesty": 9.0
+        "reportHonesty": 9
       },
       "gradedAtCommit": "0405618",
       "hardGates": "all pass"
@@ -355,7 +355,7 @@
         "extensibility": 8.8,
         "budget": 9.4,
         "determinism": 9.2,
-        "reportHonesty": 8.0
+        "reportHonesty": 8
       },
       "gradedAtCommit": "c12856c",
       "hardGates": "all pass"
@@ -372,7 +372,7 @@
         "frame": 7.2,
         "fidelity": 6.8,
         "extensibility": 8.8,
-        "budget": 9.0,
+        "budget": 9,
         "determinism": 8.5,
         "reportHonesty": 8.5
       },
@@ -426,8 +426,8 @@
       "axes": {
         "frame": 7.6,
         "fidelity": 7.4,
-        "extensibility": 9.0,
-        "budget": 9.0,
+        "extensibility": 9,
+        "budget": 9,
         "determinism": 9.2,
         "reportHonesty": 9.2
       },
@@ -508,11 +508,12 @@
     "OPEN (harness, found while adding the fine soak pass): the MAXIMUM tick is measured and never asserted on. The budget is 6 ms per sim tick and only the mean is checked, so a 61.85 ms spike in the coarse pass and a 115.43 ms one in the fine pass both go through green. Not tightened yet on purpose: this runs the sim in node with nothing else on the thread, and a spike there is not yet known to be the same thing as a dropped frame in the browser, where the worker owns its own thread. It wants measuring on the worker first — and the likely cause is worth naming so the measurement is aimed: the guest re-seed and the venue rebuild are both whole-population passes that run on a single tick.",
     "OPEN (core + tools, and my first write-up of this blamed the wrong module — corrected by the pools critic): THERE IS NO POOLS TAB IN THE BUILD BAR, and `pools` could not produce one even if it wanted to. I recorded this as 'the cheap fix is on the pools side: register each shape as a registry item'. That is not possible. `core/registry.ts:8` declares `ItemCategory` as a CLOSED union of thirteen literals with no `pools` among them, and `tools/palette.ts:34` is a hard-coded array of five categories, not a derivation from the registry — so the module can claim the pack category (it does) and still has nowhere to put items. The order is therefore core first, then tools, then pools: widen `ItemCategory`, let `PALETTE_CATEGORIES` derive from what the registry actually holds rather than from a literal, then register the shapes. Recorded because the correction matters more than the fix: the earlier entry would have sent a builder to spend a round in the one folder where the change is impossible, and `flumes` walks into the same wall.",
     "OPEN (core/renderer, D-027, and it was shipping to every Chrome and Edge visitor): THE WEBGPU PATH RENDERS A BLACK CANVAS. `game-shot.mjs` forces `?engine=webgl2` because headless Chromium has no WebGPU, so every frame in this project — every module grade, every critique, the whole gauntlet — was taken through the fallback, and nobody had looked at what a browser with `navigator.gpu` gets. It gets a black canvas with a working HUD over it: scene mounts, worker ticks, guests arrive, panels fill, 3D never drawn. Cause: the deep-import rule meets Babylon's shader store — `Materials/PBR/pbrMaterial` pulls `Shaders/pbr.vertex` (GLSL) and nothing pulls `ShadersWGSL/pbr.vertex`, so the engine has no shader for anything the game draws and the effect reads `shaderLanguage` off `undefined`: seven page errors before the first frame, `terrain` failing to start, repeated device loss. MITIGATED, NOT FIXED: WebGPU is opt-in now (`?engine=webgpu`) and the default is WebGL2, which demonstrably draws the park. The real fix is importing the WGSL twin of every shader the game uses (469 modules under `ShadersWGSL/`, PBR alone drags a long include list) and it is not done blind, because this container's WebGPU is SwiftShader and refuses the terrain's 7 MB vertex buffer whatever the shaders say — it needs somebody with a real GPU. `pnpm game:engine-probe` is the check: two Chromium launches, no engine query, mean luminance of the DRAWING BUFFER (not the screenshot — the HUD is opaque and would call a black park lit). Black is luma < 4; 13:00 measures 111, 23:00 measures in the twenties.",
-    "OPEN (integration, found by the PR-consolidation gap critic, and it is the most serious thing on the list): THE ROUTE HAS NO KILL SWITCH AND THE HEADER LINKS IT FROM EVERY PAGE IN SIX LOCALES. `components/layout/header.tsx` renders an unconditional `<NextLink href=\"/game\">` in both the desktop nav and the burger, and the only two game flags — `GAME_SHARING_ENABLED` and `GAME_LIVE_SEED_ENABLED` in `lib/config/features.ts` — have NO consumers anywhere: a grep returns the two declarations and nothing else, while the docstring promises route handlers under `app/api/game/**` that do not exist. Half-mitigated: `app/game/layout.tsx` is `robots: { index: false }` now, because the game's own scoreboard says no guest can ride a coaster and two of twenty-four modules pass their gate, and a search result promising 'build and run your own theme park' against that is a result nobody clicks twice. `/game` is in no sitemap either, so discovery is link-only. What is still open is the flag itself: decide flag-or-ship before merge, and if it ships, `app/sitemap.ts` plus an `openGraph` block and a canonical.",
     "OPEN (CI, found by the PR-consolidation gap critic): NOTHING IN CI RUNS ANY OF THIS. `.github/workflows/` holds two files — `impeccable.yml`, which is `continue-on-error: true` and therefore non-blocking (and whose `.impeccable/config.json` ignores scripts/, content/ and docs/ but NOT lib/game, i.e. 249 new files), and `vercel-comment-sync.yml`, which is `repository_dispatch` only. No workflow runs `pnpm build`, `pnpm test:game`, eslint or prettier on a pull request, so the 24 scripts this branch adds — including the twelve-step `test:game` chain — are manual-only. Deliberately NOT fixed here: a workflow that runs on every PR in this repository affects everybody's pull requests and is the repository owner's call, not the integrator's. Worth pairing with the observation that `gate.buildGreen.at` is 95 commits behind HEAD.",
     "OPEN (route, re-measured 2026-09-09 and now worse than recorded): THE ROUTE MISSES ITS OWN BOOT BUDGET BY 63 %. Three runs against `pnpm build && pnpm start` at 1280x720 — the way CLAUDE.md demands, not `next dev` — gave 14,430 / 13,423 / 11,310 ms, mean 13,054, against `budget.coldRouteToInteractiveSeconds` = 8. The earlier 9,936-14,950 ms range was blamed on a dev server being recompiled underneath it; the production server reproduces it, so that excuse is gone. The number bounds the WORST case rather than the expected one — this container renders through SwiftShader and boot is dominated by software shader compilation — so the honest next step is not a fix but a measurement on a machine with a graphics card, before anybody optimises against a figure that may not exist there.",
     "OPEN (ui/i18n, found while verifying the log fix): the restock line does not pluralise — the probe returned 'Limonade hat 1 Einheiten nachgefüllt.' next to 'Eisdiele hat 7 Einheiten nachgefüllt.' The repo has a documented pluralisation convention for the site (docs/i18n/pluralization.md) and the game's own flat string table has no plural mechanism at all, so this is not one bad string but a missing capability: every count in the HUD has the same bug waiting. Cheap to see, not cheap to fix properly, and it belongs in ui's round 2 with a decision about whether the game table gains ICU plurals or a helper.",
-    "OPEN (paths selftest, found when the suite went red while a critic was rendering): A WALL-CLOCK ASSERTION IN THE TEST SUITE FAILS UNDER CONCURRENT LOAD. `a path query stays inside its share of the tick` measures 0.363-1.166 us per query on a quiet machine and measured 2.340 against a 2 us threshold while a critic agent was driving SwiftShader — a 6.4x spread on identical code, and the commit that set the constant reasoned from 'a loaded machine measures 2x an idle one', a premise that no longer holds now that loaded means four headless browsers. NOT fixed by raising the number: the same comment says 2 us is tuned to still fail the moment a Map walk gets back into the hot path, so a threshold loose enough for a busy machine stops catching the 20x regression it exists for. The fix is to stop measuring wall time — take a baseline of a trivial operation in the same run and assert the RATIO, which is load-normalised — and it belongs to whoever next opens that file. Until then a red run here is checked by re-running it alone before anybody believes it."
+    "OPEN (paths selftest, found when the suite went red while a critic was rendering): A WALL-CLOCK ASSERTION IN THE TEST SUITE FAILS UNDER CONCURRENT LOAD. `a path query stays inside its share of the tick` measures 0.363-1.166 us per query on a quiet machine and measured 2.340 against a 2 us threshold while a critic agent was driving SwiftShader — a 6.4x spread on identical code, and the commit that set the constant reasoned from 'a loaded machine measures 2x an idle one', a premise that no longer holds now that loaded means four headless browsers. NOT fixed by raising the number: the same comment says 2 us is tuned to still fail the moment a Map walk gets back into the hot path, so a threshold loose enough for a busy machine stops catching the 20x regression it exists for. The fix is to stop measuring wall time — take a baseline of a trivial operation in the same run and assert the RATIO, which is load-normalised — and it belongs to whoever next opens that file. Until then a red run here is checked by re-running it alone before anybody believes it.",
+    "OPEN (integration, the half of the old kill-switch issue that is NOT closed): THE PRODUCTION RESOLUTION OF `GAME_ENABLED` HAS NEVER BEEN OBSERVED IN A REAL BUILD. Both states were verified against the running `next dev` — 404/0 links off, 200/1 on — which exercises the same expression and the same two call sites, but NOT the build-time inlining Next does for `NEXT_PUBLIC_*` and `NODE_ENV` in a client bundle, and the header is a Client Component. Not run yet because `next build` clears `.next/` underneath the dev server two builder agents are working against. It goes with the next `pnpm build`, together with re-measuring `gate.buildGreen`, and the check is two greps on the built output: `href=\"/game\"` absent from the emitted HTML, and `/game` answering 404 from `pnpm start`. Also still open from the same issue: if the game ever ships, `app/sitemap.ts`, an `openGraph` block and a canonical are the other half.",
+    "OPEN (dev harness, found while verifying D-028 and worth its own line because it cost 90 polls of a 404): `next dev` RELOADS ON AN ENV FILE CHANGING AND NOT ON IT BEING DELETED. `rm .env.local` after a test left the server on the deleted file value — `/game` stayed 404 through ninety consecutive curls — and it took writing the file back with an explicit value to recover. Anybody testing a flag by writing `.env.local` must restore it by WRITING the opposite value, never by removing the file. This container now keeps `NEXT_PUBLIC_GAME=on` there permanently (gitignored) so the route survives whatever `NODE_ENV` a later `pnpm start` runs under."
   ],
   "closedIssues": [
     "CLOSED (guests + rides): GUESTS RIDE. `requests/rides.md` §1 asked for the hook and this is it — the `Errand` map guests already used for shops carries a `kind` now ('shop' | 'ride'), and join, place, board, leave and the refusal all route by it, because `RidesSimApi` is deliberately the same five verbs as `ShopsSimApi`. A boarding sets GuestState.RIDING for the ride's own `rideMinutes`, takes the fun relief, and moves happiness by how well the machine's satisfaction matched that archetype's thrill. Measured on the sim side over a full park day at speed 5: 124 riders across four machines (top-spin 82, wave-swinger 17, carousel 22, wheel 3) and 29 HEIGHT REFUSALS — children turned away from the top spin, counted under their own name because a height limit is a fact about the person and a broken machine is an operations problem. Save compatibility kept: an errand written before this reads as a shop errand.",
@@ -573,7 +574,8 @@
     "CLOSED (core + rides + ui, 2026-09-09, two of the four findings that sank ui's round 1): A GERMAN HUD SHOWED AN ENGLISH SENTENCE, AND THE MESSAGE LOG'S FIRST LINE WAS THE BARE WORD `cores`. Two causes with one shape. (1) `rides/sim.ts` emitted `${name} has broken down` as a notify — a sentence composed on the WORKER, which has no locale to write one in — so a de-DE HUD showed it in English one line above its own German translation of the very same event, logged from `ride:breakdown`. The notify carries a KEY and params now (`ride.breakdown`, `{name}`), `notify` and `Notice` grew an optional `params`, and the sentence lives in the string table where a sentence belongs. (2) The toast resolved `notice.<text>` and the log copied `text` straight through, so core's internal notice keys reached a panel full of prose. One `noticeText()` in `ui/format.ts` now serves both, with the key-renders-as-itself fallback that lets a one-off diagnostic still say something. Verified with a de-DE probe after 150 park minutes: seven log lines, all German, `cores` gone.",
     "CLOSED (core + rides, 2026-09-09, the third of the four findings that sank ui's round 1): A WARNING OUTLIVED THE THING IT WARNED ABOUT BY AN HOUR AND A HALF OF PARK TIME. 'Top spin has broken down' stood in three of the critic's frames while the park panel read RUNNING 4/4, carried no out-of-action row and the rail button had no badge; in `de-panels.png` the log dated the breakdown 1 h 42 ago and the repair 1 h 30 ago. The HUD could not fix it — a warning is only dismissed on a click, and knowing WHICH event ends WHICH notice is exactly the knowledge that belongs in the module that raised it. So the general mechanism, not a special case: a `notice:withdraw { key }` event, forwarded across the worker boundary like `notify` itself, and `rides` emits it beside `ride:fixed` for its own `ride:breakdown:<id>` key. The rule it encodes is worth more than the fix: a notice that describes a CONDITION names the event that ends it. Verified with a probe that walked the sim until a breakdown AND a repair had happened: broken 0, running 4, the toast gone, and both entries still in the message log — withdrawn, not hidden.",
     "CLOSED (ui, 2026-09-09, the last two cheap findings from its round 1): (a) `useTelemetry` and `useTelemetrySnapshot` took `UiRuntime`, the concrete class — so all ten built-in panels cast to it and a panel contributed from another module could not use the cached-selector hooks at all without importing this module's internals. That made the performance the module measures a privilege of its own panels, in a module whose whole claim is that there is no privileged path. They take a named `TelemetrySource` shape now, which `UiMainApi` already satisfied. (b) A ride the frame carries no state byte for was reported as `closed`. It is `unknown` now — and the interesting part is that nothing else needed changing: `rides.state.unknown` was already in both string tables as 'Kein Messwert' and `rideTone` already mapped `unknown` to neutral. The whole path was built and one line made it unreachable, which is exactly what the critic said.",
-    "CLOSED (demo-park, 2026-09-09, an integrator's error found by the buildings critic by counting): THE DEMO PARK HAD ZERO BUILDING ENTITIES. `buildWorld` answered `{path:21, scenery:1516, shop:6, ride:4, pool:3}` — no pavilion, no ticket hall — for days after I had written in a commit message and in this file that the module 'EXECUTED its demo-park placement rather than proposing it'. What it executed was a verification: it dispatched both entities into a RUNNING park and read the meshes' world bounding boxes back, 0.00 m overhang on all eight edges, which is the strongest placement evidence anyone has produced here. I then applied pools' request to `demo-park/build.ts` and never applied buildings'. Verifying a call in a session is not making it in the world factory. Placed now, `building: 2`, photographed on the entrance forecourt. It also explains the critic's second finding against me — the ticket hall standing in conifers when IT dispatched them: the ambient scatter runs once at boot, so a building handed to an already-dressed park cannot remove a tree, and no exclusion radius could have helped."
+    "CLOSED (demo-park, 2026-09-09, an integrator's error found by the buildings critic by counting): THE DEMO PARK HAD ZERO BUILDING ENTITIES. `buildWorld` answered `{path:21, scenery:1516, shop:6, ride:4, pool:3}` — no pavilion, no ticket hall — for days after I had written in a commit message and in this file that the module 'EXECUTED its demo-park placement rather than proposing it'. What it executed was a verification: it dispatched both entities into a RUNNING park and read the meshes' world bounding boxes back, 0.00 m overhang on all eight edges, which is the strongest placement evidence anyone has produced here. I then applied pools' request to `demo-park/build.ts` and never applied buildings'. Verifying a call in a session is not making it in the world factory. Placed now, `building: 2`, photographed on the entrance forecourt. It also explains the critic's second finding against me — the ticket hall standing in conifers when IT dispatched them: the ambient scatter runs once at boot, so a building handed to an already-dressed park cannot remove a tree, and no exclusion radius could have helped.",
+    "CLOSED (integration, 2026-09-09, D-028): THE ROUTE HAS NO KILL SWITCH AND THE HEADER LINKS IT FROM EVERY PAGE IN SIX LOCALES. `GAME_ENABLED` in `lib/config/features.ts` now gates both halves — the two `<NextLink href=\"/game\">` in `components/layout/header.tsx` (desktop nav and burger) and `app/game/page.tsx`, which calls `notFound()`. Both are build-time constants, so with it off the link is ABSENT FROM THE HTML rather than hidden and the engine never mounts; gating the link alone would not have been a switch, because the URL is guessable and a preview deploy address outlives its pull request. Unset it resolves ON under `next dev` (NODE_ENV, which Next inlines itself, so the harness and every builder keep the route) and ON for a positively identified Vercel preview, OFF everywhere else — written as an allowlist rather than `!== \"production\"` so an absent `NEXT_PUBLIC_VERCEL_ENV` fails CLOSED instead of open on the one deploy that matters. Measured on the running dev server both ways rather than reasoned about: with `NEXT_PUBLIC_GAME=off`, `/game` -> 404 and `curl /de | grep -c href=\"/game\"` -> 0; restored, 200 and 1. The two dead flags beside it (`GAME_SHARING_ENABLED`, `GAME_LIVE_SEED_ENABLED`) are still consumer-less and now say so in their own docstrings."
   ],
   "history": [
     {

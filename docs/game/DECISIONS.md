@@ -221,3 +221,43 @@ called a black park lit. Black is `luma < 4`; the park at 23:00 measures in the 
 13:00 it measures 111. Run against the fix: both passes `webgl2`, luma 111.4 and 111.2. Run with
 `--engine=webgpu`: `luma 0 · CANVAS IS BLACK · 43 page errors`, exit 1.
 _Reversed by:_ somebody running the WGSL import list on a real GPU and getting a park out of it.
+
+**D-028 — `/game` is behind a kill switch that fails closed, because a link is a suggestion and a route is a fact.**
+The branch shipped an unconditional `<NextLink href="/game">` in both the desktop nav and the burger
+of `components/layout/header.tsx`, i.e. on roughly 35,000 pages in six languages, pointing at a game
+whose own scoreboard records two of twenty-four modules past their gate, no guest able to ride a
+coaster, and a cold route that misses its 8 s boot budget by 63 %. The only two game flags that
+existed — `GAME_SHARING_ENABLED` and `GAME_LIVE_SEED_ENABLED` — had no consumers anywhere; a grep
+returned the two declarations and nothing else.
+
+`GAME_ENABLED` in `lib/config/features.ts` now gates the header link **and** `app/game/page.tsx`,
+which calls `notFound()`. Both are build-time constants, so with it off the link is absent from the
+HTML rather than hidden, and the engine is never mounted. Gating the link alone would not have been
+a switch: the URL is guessable, it lands in browser histories, and a preview deployment's address
+outlives the pull request that made it.
+
+The resolution is deliberately not a single default, which is the one place this flag departs from
+the file's own convention. Set, `NEXT_PUBLIC_GAME` wins either way. Unset, it is **on** under
+`next dev` — `NODE_ENV` is inlined into the client bundle by Next itself, so that branch needs
+nothing configured, and it has to be on or every builder agent, every `game-shot.mjs` frame and the
+whole verification harness go dark together — and **on** for a positively identified Vercel preview,
+so each pull request can be clicked through. Everything else is off. Written as an allowlist
+(`NEXT_PUBLIC_VERCEL_ENV === 'preview'`) rather than as `!== 'production'` for one reason: if that
+variable is ever absent on a production build, the negative test is `true` and the switch fails open
+on the single deploy where it matters.
+
+Verified on the running dev server rather than reasoned about, both ways: with
+`NEXT_PUBLIC_GAME=off` in `.env.local`, `/game` answers **404** and `curl /de | grep -c 'href="/game"'`
+returns **0**; restored, **200** and **1**. What that measurement also turned up is a trap worth
+writing down for the next person who tests a flag this way: `next dev` reloads on an env file's
+**change** and did not notice its **deletion** — after `rm .env.local` the route stayed 404 for
+ninety consecutive polls, and it took writing the file back with `on` to recover it. This
+container's `.env.local` now carries that line permanently (it is gitignored) so the dev server and
+`pnpm build && pnpm start` both keep the route up here whatever `NODE_ENV` says.
+
+Still unverified and recorded as such: the **production** resolution has not been observed in a real
+`next build`, because building would clear `.next/` underneath the dev server two builder agents are
+currently using. The dev-server test exercises the same expression and the same two call sites, but
+not the inlining Next does at build time.
+_Reversed by:_ `docs/game/FINAL_GATE.md` actually being run — at which point this flag, the
+`robots: { index: false }` in `app/game/layout.tsx` and `app/sitemap.ts` are flipped together.
