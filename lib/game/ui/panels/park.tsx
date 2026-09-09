@@ -20,7 +20,7 @@ import type { PanelBodyProps } from '../api';
 import { count, decimal, money, moneyWhole, percent, clockTime } from '../format';
 import { useTelemetry, useTelemetrySnapshot } from '../hooks';
 import { DataRow, EmptyNote, Figure, FigureTile, Meter, Section, StackBar } from '../parts';
-import { HUD_WELL } from '../surface';
+import { HUD_ROW, HUD_WELL } from '../surface';
 import type { GameStringKey, Translate } from '../../i18n';
 import type { UiRuntime } from '../runtime';
 import type { ParkTelemetry } from '../telemetry';
@@ -32,8 +32,8 @@ const CROWD_COLOURS: Record<string, string> = {
   idle: 'bg-white/35',
   sitting: 'bg-white/25',
   queuing: 'bg-(--game-warning)',
-  riding: 'bg-[oklch(0.82_0.15_155)]',
-  buying: 'bg-[oklch(0.82_0.16_190)]',
+  riding: 'bg-(--game-good)',
+  buying: 'bg-(--game-accent-2)',
   leaving: 'bg-white/20',
   lost: 'bg-(--game-danger)',
 };
@@ -58,7 +58,7 @@ export function ParkPanel({ t, locale, ui }: PanelBodyProps) {
   const totals = s.totals;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <div className="grid grid-cols-2 gap-1.5">
         <FigureTile label={t('hud.guests')} value={count(totals.guests, locale)} />
         <FigureTile
@@ -87,10 +87,13 @@ export function ParkPanel({ t, locale, ui }: PanelBodyProps) {
               {s.crowd.slice(0, 5).map((c) => (
                 <span key={c.state} className="inline-flex items-center gap-1.5 text-[11px]">
                   <span
-                    className={cn('size-2 rounded-[3px]', CROWD_COLOURS[c.state] ?? 'bg-white/30')}
+                    className={cn(
+                      'size-[9px] rounded-[2.5px] shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_0_1px_rgb(0_0_0/0.45)]',
+                      CROWD_COLOURS[c.state] ?? 'bg-white/30'
+                    )}
                   />
-                  <span className="text-white/55">{crowdLabel(t, c.state)}</span>
-                  <span className="font-medium text-white/85 tabular-nums">{c.count}</span>
+                  <span className="text-white/72">{crowdLabel(t, c.state)}</span>
+                  <span className="font-semibold text-white tabular-nums">{c.count}</span>
                 </span>
               ))}
             </div>
@@ -155,7 +158,7 @@ export function GuestsPanel({ t, locale, ui }: PanelBodyProps) {
   const totals = s.totals;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <div className={cn(HUD_WELL, 'flex items-center gap-3 px-3 py-2.5')}>
         <Users className="size-5 shrink-0 text-white/45" />
         <Figure label={t('park.inThePark')} value={count(totals.guests, locale)} />
@@ -177,9 +180,12 @@ export function GuestsPanel({ t, locale, ui }: PanelBodyProps) {
             {s.crowd.map((c) => (
               <div key={c.state} className="flex items-center gap-2">
                 <span
-                  className={cn('size-2 rounded-[3px]', CROWD_COLOURS[c.state] ?? 'bg-white/30')}
+                  className={cn(
+                    'size-[9px] rounded-[2.5px] shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_0_0_1px_rgb(0_0_0/0.45)]',
+                    CROWD_COLOURS[c.state] ?? 'bg-white/30'
+                  )}
                 />
-                <span className="min-w-0 flex-1 truncate text-xs text-white/70">
+                <span className="min-w-0 flex-1 truncate text-xs text-white/72">
                   {crowdLabel(t, c.state)}
                 </span>
                 <span className="text-xs font-medium text-white/90 tabular-nums">{c.count}</span>
@@ -198,14 +204,11 @@ export function GuestsPanel({ t, locale, ui }: PanelBodyProps) {
         ) : (
           <ul className="flex flex-col gap-1">
             {s.thoughts.map((th) => (
-              <li
-                key={th.seq}
-                className="flex items-start gap-2 rounded-lg bg-white/[0.03] px-2 py-1.5"
-              >
+              <li key={th.seq} className={cn(HUD_ROW, 'flex items-start gap-2 px-2 py-1.5')}>
                 <span
                   className={cn(
                     'mt-1 size-1.5 shrink-0 rounded-full',
-                    th.mood < 0 ? 'bg-(--game-danger)' : 'bg-[oklch(0.82_0.15_155)]'
+                    th.mood < 0 ? 'bg-(--game-danger)' : 'bg-(--game-good)'
                   )}
                 />
                 <span className="min-w-0 flex-1 text-[11px] leading-snug text-white/75">
@@ -243,7 +246,7 @@ export function WeatherPanel({ t, locale, ui }: PanelBodyProps) {
   const handle = runtime.handle();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <div className="flex items-center gap-2">
         <span className={cn(HUD_WELL, 'px-2 py-1 text-xs font-medium text-white/85')}>
           {t(`season.${w.season}` as GameStringKey)}
@@ -288,7 +291,7 @@ export function WeatherPanel({ t, locale, ui }: PanelBodyProps) {
             value={w.minute}
             aria-label={t('weather.timeOfDay')}
             onChange={(ev) => handle?.setTimeOfDay(Number(ev.target.value))}
-            className="h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full bg-white/15 accent-[var(--game-accent)]"
+            className="h-1.5 min-w-0 flex-1 cursor-pointer appearance-none rounded-full bg-black/40 accent-[var(--game-accent)] shadow-[inset_0_1px_3px_rgb(0_0_0/0.6),0_1px_0_rgb(255_255_255/0.08)]"
           />
         </div>
         <p className="mt-1 text-[11px] leading-relaxed text-white/45">{t('weather.scrubNote')}</p>
@@ -340,10 +343,18 @@ function IconRow({
 export function DayStrip({ minute, className }: { minute: number; className?: string }) {
   const position = (((minute % 1440) + 1440) % 1440) / 1440;
   return (
-    <div className={cn('relative h-1.5 w-full overflow-hidden rounded-full', className)}>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.22_0.05_265)_0%,oklch(0.22_0.05_265)_21%,oklch(0.55_0.12_60)_33%,oklch(0.75_0.09_230)_45%,oklch(0.78_0.08_230)_66%,oklch(0.6_0.14_45)_80%,oklch(0.22_0.05_265)_92%,oklch(0.22_0.05_265)_100%)]" />
+    <div
+      className={cn(
+        // A groove with the day in it, not a bar drawn on the surface: the inset line at the top
+        // and the light one under it are what put it INTO the plastic, which is what every other
+        // readout on this skin does.
+        'relative h-1.5 w-full rounded-full shadow-[inset_0_1px_3px_rgb(0_0_0/0.6),0_1px_0_rgb(255_255_255/0.08)]',
+        className
+      )}
+    >
+      <div className="absolute inset-0 overflow-hidden rounded-full bg-[linear-gradient(90deg,oklch(0.22_0.05_265)_0%,oklch(0.22_0.05_265)_21%,oklch(0.55_0.12_60)_33%,oklch(0.75_0.09_230)_45%,oklch(0.78_0.08_230)_66%,oklch(0.6_0.14_45)_80%,oklch(0.22_0.05_265)_92%,oklch(0.22_0.05_265)_100%)]" />
       <span
-        className="absolute top-0 h-full w-[3px] -translate-x-1/2 rounded-full bg-white shadow-[0_0_6px_rgb(255_255_255/0.8)]"
+        className="absolute -top-0.5 -bottom-0.5 w-[2px] -translate-x-1/2 rounded-full bg-white shadow-[0_0_5px_rgb(255_255_255/0.8)]"
         style={{ left: `${position * 100}%` }}
       />
     </div>

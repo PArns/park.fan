@@ -253,3 +253,26 @@ reader of that `slice(-6)` will otherwise go looking for where the history went.
 `ui` owns `lib/game/i18n` (DECISIONS #24). The table is at 289 keys across `en` and `de`. Ask here
 for a key rather than shipping English into a German HUD; a panel title passed to `registerPanel`
 is a plain string, so a module can ship before its key lands and swap to `t(key)` after.
+
+---
+
+## 11. The corner lockup is drawn twice now, and it is above the whole HUD
+
+`core/game-brand.tsx` puts the park.fan lockup at `right-3 bottom-3` on **`z-20`**, and the HUD's
+own root is `z-10` — so it is not merely on top of the panel column, it is unreachable from
+inside it: a child cannot climb out of its stacking context, so no `z-` in `ui` can put a panel
+over it.
+
+It never showed while the dock stopped 96 px above the floor. It does now: the bottom cluster
+centres in what the dock leaves (`pr-[368px]`), so the column reaches `bottom-3` and gains 84 px,
+and the last 123 × 38 px of it sits under the watermark — measured at 1280 × 720, on top of the
+park panel's "Path nodes" row. The bottom docked panel reserves 46 px for it in the meantime,
+which is 46 px of column spent on a logo.
+
+Two things have changed since that watermark was written. The toolbelt now carries
+**"park.fan Coaster"** at its right end, so the mark is on screen twice, eight pixels apart at
+1280. And the HUD is no longer transparent chrome over a park — the bottom cluster is a tray, and
+the corner is where its neighbour ends.
+
+Ask: drop the corner copy (the toolbelt has it), or move it to the bottom **left** under the
+notice stack, or raise the HUD root above it. Any of the three lets `ui` drop the 46 px reserve.

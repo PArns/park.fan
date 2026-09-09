@@ -16,6 +16,7 @@
  * other panel starts shut.
  */
 
+import { Coins, Hourglass, Smile, Users } from 'lucide-react';
 import type { MainContext, MainHandle, SimFrame } from '../core/types';
 import { createTranslator, resolveGameLocale } from '../i18n';
 import { moneyWhole, count } from './format';
@@ -66,6 +67,7 @@ function registerBuiltinStats(
     runtime.registerStat({
       id: 'cash',
       label: t('hud.cash'),
+      icon: Coins,
       order: 10,
       size: 'lg',
       value: (s) => ({ text: moneyWhole(s.totals.cash, locale) }),
@@ -81,6 +83,7 @@ function registerBuiltinStats(
     runtime.registerStat({
       id: 'guests',
       label: t('hud.guests'),
+      icon: Users,
       order: 20,
       phone: false,
       value: (s) => ({ text: count(s.totals.guests, locale) }),
@@ -88,6 +91,7 @@ function registerBuiltinStats(
     runtime.registerStat({
       id: 'happiness',
       label: t('park.happiness'),
+      icon: Smile,
       order: 30,
       phone: false,
       value: (s) =>
@@ -102,6 +106,7 @@ function registerBuiltinStats(
     runtime.registerStat({
       id: 'queue',
       label: t('park.queueing'),
+      icon: Hourglass,
       order: 40,
       phone: false,
       value: (s) =>

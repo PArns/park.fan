@@ -133,8 +133,8 @@ for (const category of PALETTE_CATEGORIES) {
 Never `Registry.index`, never `ItemCategory`. Widening that union changes nothing here.
 
 **2. The closed thing that blocks is `PaletteCategory`** (`tools/types.ts:43`, five literals) —
-and behind it a shape mismatch the union cannot fix. The palette's model is *one manifest key is
-one flat array of placeable defs*. The `pools` key is an **object of four arrays** (`shapes`,
+and behind it a shape mismatch the union cannot fix. The palette's model is _one manifest key is
+one flat array of placeable defs_. The `pools` key is an **object of four arrays** (`shapes`,
 `tiles`, `edges`, `deck`), of which only `shapes` is placeable: a tile style and an edge treatment
 are properties of a basin already in the world, and `deck` is its furniture. Handed to that loop,
 `pack['pools']` is not iterable and `?? []` does not catch an object.
@@ -160,3 +160,48 @@ each of them by name.
 **Belongs in this module's round 2**, which it needs anyway on the frame axis. Not done by the
 integrator because it is a new cross-module contract, and a half-specified one is worse than a
 written-down one.
+
+---
+
+## 7. A module that draws a kind should be able to hand over a PREVIEW of one
+
+The build bar now renders every palette tile's picture from the game's own geometry
+(`tools/thumbs.ts` + `tools/thumb-sources.ts`): a second `Scene` on the existing engine, three fixed
+lights, an orthographic three-quarter camera, one render per item, cached by `pack:item@packVersion`.
+That part is settled and needs nothing from anybody.
+
+What it needs is a way to ASK for the geometry. The clean seam already half exists in two places and
+neither reaches far enough:
+
+- `registry.registerProcedural(name, factory)` is core's own door and its docblock says so —
+  "the core-owned seam other modules and the tools use to ask whether a `procedural` name is
+  drawable". **Only `scenery` registers into it**, and what it registers is a `scenery`-shaped
+  `Generator`, so a caller has to know that module's types to use the answer.
+- `scenery`'s main api has `preview(key): TransformNode | null`, written for the build ghost. It
+  builds into the SCENE THE MODULE HOLDS, so a studio with its own scene and its own lighting cannot
+  use it — a node in the park's scene does not render in another scene's render target.
+
+So `thumb-sources.ts` imports the pure builders directly — `rides/manifest` + `rides/materials` +
+`rides/geometry`, `shops/manifest` + `shops/build` + `shops/materials` + `shops/textures`,
+`scenery/catalog` + `scenery/generators` + `scenery/geometry` + `scenery/materials`. Every one is
+lazy, guarded and keyed by ENTITY KIND rather than by item, so a pack that adds a fortieth ride
+still needs no code change here. But it is three modules' internals read from a fourth folder, and
+the moment one of them renames an export a kind loses its pictures.
+
+The shape that fixes it, and it is one method:
+
+```ts
+/** Build this item into the caller's scene. The caller owns the result and disposes it. */
+preview?(scene: unknown, key: string): { meshes: unknown[]; dispose(): void } | null;
+```
+
+on the main api of every module that claims a kind — `rides`, `shops`, `buildings`, `scenery`,
+later `pools`. `thumb-sources.ts` would then be a `ctx.module(registry.ownerOfKind(kind))` and a
+duck-typed call, with no neighbour's file named anywhere and a new kind working the day its module
+ships. It is the same argument request 6 makes about palette items: three modules is past the point
+where this folder should be asking each of them by name.
+
+**Not done in this round** because it is four other folders, two of which had a builder in them at
+the time. What shipped instead is the direct import, with `buildings` deliberately left out (its
+folder was mid-round) — so a wall, a roof and a column still show the kind icon rather than a
+picture, and that is the first thing this seam would fix.

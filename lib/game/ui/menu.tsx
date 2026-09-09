@@ -23,7 +23,7 @@ import { cn } from '@/lib/utils';
 import type { Speed } from '../core/types';
 import type { GameLocale, Translate } from '../i18n';
 import { clockTime } from './format';
-import { HUD_PANEL } from './surface';
+import { HUD_PANEL, raise } from './surface';
 import type { UiRuntime } from './runtime';
 
 export interface GameMenuProps {
@@ -85,7 +85,7 @@ export function GameMenu({ runtime, t, parkName, day, minute, speed }: GameMenuP
           <BrandLockup forceLight />
         </div>
         <h2 className="text-base font-semibold tracking-tight text-white/95">{parkName}</h2>
-        <p className="mt-0.5 text-xs text-white/50 tabular-nums">
+        <p className="mt-0.5 text-xs text-white/60 tabular-nums">
           {t('hud.day', { day })} · {clockTime(minute)}
         </p>
 
@@ -93,7 +93,8 @@ export function GameMenu({ runtime, t, parkName, day, minute, speed }: GameMenuP
           <Button
             type="button"
             size="default"
-            className="w-full justify-start gap-2"
+            variant="ghost"
+            className={cn(raise({ on: true }), 'w-full justify-start gap-2 px-3 font-semibold')}
             onClick={close}
           >
             <Play className="size-4" />
@@ -127,7 +128,7 @@ export function GameMenu({ runtime, t, parkName, day, minute, speed }: GameMenuP
             asChild
             variant="ghost"
             size="default"
-            className="w-full justify-start gap-2 text-white/70"
+            className={cn(raise(), 'w-full justify-start gap-2 px-3 font-semibold')}
           >
             <Link href="/">
               <ArrowLeft className="size-4" />
@@ -136,7 +137,7 @@ export function GameMenu({ runtime, t, parkName, day, minute, speed }: GameMenuP
           </Button>
         </div>
 
-        <p className="mt-4 text-[11px] leading-relaxed text-white/40">{t('menu.note')}</p>
+        <p className="mt-4 text-[11px] leading-relaxed text-white/55">{t('menu.note')}</p>
       </div>
     </div>
   );
@@ -156,7 +157,7 @@ function MenuRow({
       type="button"
       variant="ghost"
       size="default"
-      className="w-full justify-start gap-2 text-white/80 hover:text-white"
+      className={cn(raise(), 'w-full justify-start gap-2 px-3 font-semibold')}
       onClick={onClick}
     >
       {icon}

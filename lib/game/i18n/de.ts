@@ -114,6 +114,10 @@ export const de: Record<GameStringKey, string> = {
   'tools.action.undo': 'Rückgängig gemacht',
   'tools.action.redo': 'Wiederhergestellt',
   'tools.action.refused': 'Hier nicht',
+  'tools.palette.count': '{n} in deinen geladenen Paketen',
+  'tools.item.route': 'wird als Strecke gebaut',
+  'tools.cost.label': 'Kosten',
+  'tools.cost.idle': '–',
   // ── Rahmen des HUD ─────────────────────────────────────────────────────────────────────
   'hud.paused': 'Pausiert',
   'hud.figures': 'Zahlen zum Park',

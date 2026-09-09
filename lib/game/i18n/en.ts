@@ -112,6 +112,10 @@ export const en = {
   'tools.action.undo': 'Undone',
   'tools.action.redo': 'Redone',
   'tools.action.refused': 'Not here',
+  'tools.palette.count': '{n} in the packs you have loaded',
+  'tools.item.route': 'draws track',
+  'tools.cost.label': 'Cost',
+  'tools.cost.idle': '–',
   // ── The HUD's chrome ───────────────────────────────────────────────────────────────────
   'hud.paused': 'Paused',
   'hud.figures': 'Park figures',

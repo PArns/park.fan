@@ -31,7 +31,7 @@ import type { PanelBodyProps } from '../api';
 import { clockTime, count, logAge, minutesSince } from '../format';
 import { useGame, useTelemetrySnapshot } from '../hooks';
 import { DataRow, EmptyNote, HudButton, Section, StatusDot } from '../parts';
-import { HUD_LABEL, HUD_WELL } from '../surface';
+import { HUD_LABEL, HUD_ROW, HUD_WELL, RAISE } from '../surface';
 import type { GameStringKey } from '../../i18n';
 import type { UiRuntime } from '../runtime';
 
@@ -78,7 +78,7 @@ export function SettingsPanel({ t, locale, store }: PanelBodyProps) {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <Section label={t('settings.renderer')}>
         <DataRow
           label={t('settings.engine')}
@@ -105,7 +105,7 @@ export function SettingsPanel({ t, locale, store }: PanelBodyProps) {
           {PRESETS.map((option) => (
             <HudButton
               key={option}
-              variant={option === preset ? 'default' : 'ghost'}
+              variant={option === preset ? 'primary' : 'secondary'}
               onClick={() => applyPreset(option)}
             >
               {t(`settings.preset.${option}` as GameStringKey)}
@@ -228,7 +228,7 @@ export function SavesPanel({ t, ui }: PanelBodyProps) {
   }, [load, t]);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <Section label={t('saves.slot')}>
         <div className={cn(HUD_WELL, 'flex items-center gap-2 px-2.5 py-2')}>
           <StatusDot tone={slotAt ? 'good' : 'neutral'} />
@@ -237,12 +237,12 @@ export function SavesPanel({ t, ui }: PanelBodyProps) {
           </span>
         </div>
         <div className="flex flex-wrap gap-1">
-          <HudButton onClick={quickSave}>
-            <Save className="size-3" />
+          <HudButton variant="primary" onClick={quickSave}>
+            <Save className="size-3.5" />
             {t('saves.quickSave')}
           </HudButton>
           <HudButton onClick={quickLoad} disabled={!slotAt}>
-            <RotateCcw className="size-3" />
+            <RotateCcw className="size-3.5" />
             {t('saves.quickLoad')}
           </HudButton>
         </div>
@@ -251,15 +251,15 @@ export function SavesPanel({ t, ui }: PanelBodyProps) {
       <Section label={t('saves.file')}>
         <div className="flex flex-wrap gap-1">
           <HudButton onClick={download}>
-            <Download className="size-3" />
+            <Download className="size-3.5" />
             {t('hud.export')}
           </HudButton>
           <HudButton onClick={copy}>
-            <ClipboardCopy className="size-3" />
+            <ClipboardCopy className="size-3.5" />
             {t('saves.copy')}
           </HudButton>
           <HudButton onClick={() => fileInput.current?.click()}>
-            <FolderOpen className="size-3" />
+            <FolderOpen className="size-3.5" />
             {t('hud.import')}
           </HudButton>
         </div>
@@ -301,10 +301,7 @@ export function LogPanel({ t, ui }: PanelBodyProps) {
   return (
     <ul className="flex flex-col gap-1">
       {s.log.map((entry) => (
-        <li
-          key={entry.seq}
-          className="flex items-start gap-2 rounded-lg bg-white/[0.03] px-2 py-1.5"
-        >
+        <li key={entry.seq} className={cn(HUD_ROW, 'flex items-start gap-2 px-2 py-1.5')}>
           <StatusDot
             className="mt-1"
             tone={
@@ -354,10 +351,18 @@ export function HelpPanel({ t }: PanelBodyProps) {
       <ul className="flex flex-col gap-0.5">
         {KEY_ROWS.map((row) => (
           <li key={row.keys} className="flex items-center gap-2 py-0.5">
-            <kbd className="min-w-[4.5rem] rounded border border-white/15 bg-white/[0.06] px-1.5 py-0.5 text-center text-[10px] font-medium tracking-wide text-white/80">
+            <kbd
+              className={cn(
+                RAISE,
+                // A key on the sheet that lists the keys, drawn as the same moulding as the keys
+                // in the chrome. It is not a control, and it is the one exception the spine
+                // allows: it is a picture OF a control.
+                'inline-flex min-w-[4.75rem] justify-center px-2 py-1 text-center text-[10.5px] font-semibold tracking-wide'
+              )}
+            >
               {row.keys}
             </kbd>
-            <span className="min-w-0 flex-1 text-xs text-white/65">{t(row.key)}</span>
+            <span className="min-w-0 flex-1 text-xs text-white/72">{t(row.key)}</span>
           </li>
         ))}
       </ul>

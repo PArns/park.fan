@@ -6,8 +6,15 @@
  * Four clusters and nothing loose. Top left is **when** — the day, the clock, the day strip and
  * the speed control. Top right is **how it is going** — the figures, drawn from the stat registry
  * rather than from a list in this file, and the rail that opens panels. Bottom centre is the build
- * bar, which belongs to `tools`. Bottom left is the notice stack, above the camera module's
- * compass and clear of the build bar.
+ * bar, which belongs to `tools`; the notice stack hangs off its top left edge.
+ *
+ * ## Every cluster is a tray, and what is in it is either raised or sunk
+ *
+ * A tray says its contents belong together; inside it a key is raised because you can press it and
+ * a readout is sunk because it is telling you something. So the clock is a groove with the four
+ * speed keys beside it, the four figures are four grooves in one tray, and the rail is a row of
+ * keys — and a reader can tell which of the three does something before reading any of them. The
+ * skin before this one drew the stat row and the tool row in the same flat material.
  *
  * ## The two scrims are load-bearing, not decoration
  *
@@ -56,10 +63,20 @@ import { shallowEqual, useChrome, useCommitTally, useGame, useNarrow, useTelemet
 import { GameMenu } from './menu';
 import { PanelHost } from './panel-host';
 import { DayStrip } from './panels/park';
-import { HudIconButton, StatusDot } from './parts';
+import { FigureTile, HudIconButton, StatusDot } from './parts';
 import type { UiRuntime } from './runtime';
 import { HUD_METRICS, type ParkTelemetry } from './telemetry';
-import { HUD_CHIP, HUD_LABEL, SCRIM_BOTTOM, SCRIM_TOP, TONE_TEXT, type Tone } from './surface';
+import {
+  BELT_RULE,
+  HUD_LABEL,
+  HUD_VALUE,
+  SCRIM_BOTTOM,
+  SCRIM_TOP,
+  SINK,
+  TONE_TEXT,
+  TRAY,
+  type Tone,
+} from './surface';
 
 export interface GameHudProps {
   store: GameStore;
@@ -163,23 +180,42 @@ function HudBody({
   useHudKeys(runtime, narrow);
   useCommitTally();
 
+  // Whether the dock column is occupied, which is what the bottom cluster's right padding is
+  // for. It is the panel host's own answer rather than `openPanels.length > 0`, because a panel
+  // dragged out of the column frees the column and the cluster should have it back.
+  const [dockOccupied, setDockOccupied] = useState(false);
+
   return (
     <>
-      {/* Below `sm` the top row becomes two rows: the clock and the money on one, the rail on its
-          own full-width scroller under it. Measured at 390 px, the desktop arrangement needs
-          415 px of chrome in 390 and lays the rail across the clock. */}
-      <div className={cn('flex gap-2 p-3', narrow ? 'flex-col' : 'items-start justify-between')}>
+      {/* Below `sm` the top row becomes three: the clock, the figures, the rail. The desktop
+          arrangement needs 415 px of chrome in the 366 a 390 px phone leaves and lays the rail
+          across the clock. */}
+      <div
+        className={cn(
+          // `shrink-0`, because the clock is the one thing that may never be pushed off screen.
+          // On a phone the bottom stack holds a panel sheet AND the build cluster, and a build
+          // tray with five item rows in it is 512 px on its own: without this the column
+          // overflowed upward and took the clock, the figures and the whole rail with it,
+          // measured at 390 x 844 with the rail's top edge at -115 px.
+          'flex shrink-0 gap-2 p-3',
+          narrow ? 'flex-col' : 'items-start justify-between'
+        )}
+      >
         <div className={cn('flex min-w-0 items-start gap-2', narrow && 'w-full')}>
           <MenuButton runtime={runtime} t={t} />
           <ClockCluster runtime={runtime} t={t} narrow={narrow} />
-          {narrow ? (
-            <div className="ml-auto">
-              <StatCluster runtime={runtime} t={t} narrow />
-            </div>
-          ) : null}
         </div>
         {narrow ? (
-          <Rail runtime={runtime} panels={allPanels} openIds={openIds} narrow />
+          // Three rows on a phone, and the figures get one of their own. They used to ride at the
+          // end of the clock's row, which fitted while the clock was a line of `text-sm` and 32 px
+          // keys; a 44 px key and a sunk clock well put that row at 478 px in the 366 a 390 px
+          // phone leaves, and what hung off the right edge was the money.
+          <>
+            <div className="flex w-full items-start">
+              <StatCluster runtime={runtime} t={t} narrow />
+            </div>
+            <Rail runtime={runtime} panels={allPanels} openIds={openIds} narrow />
+          </>
         ) : (
           <div className="flex min-w-0 flex-col items-end gap-2">
             <StatCluster runtime={runtime} t={t} narrow={false} />
@@ -196,17 +232,33 @@ function HudBody({
           locale={locale}
           panels={openPanels}
           narrow={false}
+          onDockedChange={setDockOccupied}
         />
       )}
 
-      <NoticeStack store={store} runtime={runtime} t={t} narrow={narrow} />
+      {narrow ? <NoticeStack store={store} runtime={runtime} t={t} narrow /> : null}
 
-      {/* On a phone the panel sheet sits IN the bottom stack rather than over it, so the build bar
-          keeps its place instead of being covered by whatever was opened last. */}
-      <div className="mt-auto flex flex-col items-center gap-2 p-3">
+      {/*
+        The bottom cluster centres in what the dock leaves, not in the window.
+        Centred in the full width it lies across an open panel — the build tray is up to 1024 px
+        wide and the dock is 344 at the right edge, so at 1440 the two overlapped by 344 px of
+        palette. The padding is the dock's width plus both gaps (344 + 12 + 12); it is 0 with no
+        panel docked and 0 below `sm`, where there is no column at all.
+
+        On a phone the panel sheet sits IN this stack rather than over it, so the build bar keeps
+        its place instead of being covered by whatever was opened last.
+      */}
+      <div
+        className={cn(
+          'relative mt-auto flex min-h-0 flex-col items-center gap-2 p-3',
+          !narrow && dockOccupied && 'pr-[368px]'
+        )}
+      >
         {narrow ? (
           <PanelHost ui={runtime} store={store} t={t} locale={locale} panels={openPanels} narrow />
-        ) : null}
+        ) : (
+          <NoticeStack store={store} runtime={runtime} t={t} narrow={false} />
+        )}
         <BuildBar t={t} locale={locale} getHandle={getHandle} />
       </div>
 
@@ -238,49 +290,52 @@ function ClockCluster({
   const clock = useTelemetry(runtime, selectClock, clockEqual);
   useCommitTally();
   return (
-    <div className={cn(HUD_CHIP, 'pointer-events-auto px-3 py-1.5')}>
-      <div className="flex items-center gap-2.5">
-        <div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm font-semibold text-white/95 tabular-nums">
-              {clockTime(clock.minute)}
+    <div className={cn(TRAY, 'pointer-events-auto flex items-center gap-2.5 p-[7px]')}>
+      {/* The clock is a readout, so it is sunk, and the four speeds are keys, so they are raised.
+          Told apart at a glance and before either is read: that is the whole point of the two
+          materials, and the pair sits in one tray to say they belong to each other. */}
+      <div className={cn(SINK, 'min-w-0 px-3 pt-1.5 pb-2', narrow ? 'w-[7.5rem]' : 'w-[10.75rem]')}>
+        <div className={cn(HUD_VALUE, 'text-2xl leading-none tracking-[0.01em]')}>
+          {clockTime(clock.minute)}
+        </div>
+        <div className="mt-[3px] flex items-baseline gap-1.5 text-[11.5px] text-white/62">
+          <span className="truncate tabular-nums">{t('hud.day', { day: clock.day })}</span>
+          {clock.speed === 0 ? (
+            <span className="ml-auto inline-flex items-center gap-1 text-(--game-warning)">
+              <span className="size-1.5 animate-pulse rounded-full bg-(--game-warning)" />
+              <span className={cn(HUD_LABEL, 'text-(--game-warning)')}>{t('hud.paused')}</span>
             </span>
-            {narrow ? null : (
-              <span className="text-[11px] text-white/55 tabular-nums">
-                {t('hud.day', { day: clock.day })}
-              </span>
-            )}
-          </div>
-          {narrow ? null : <DayStrip minute={clock.minute} className="mt-1 w-[5.5rem]" />}
+          ) : null}
         </div>
-        <div className="flex items-center gap-0.5 border-l border-white/10 pl-2">
-          {SPEEDS.filter((s) => !narrow || s.speed !== 5).map(({ speed, key, icon: Icon }) => (
-            <HudIconButton
-              key={speed}
-              label={t(key)}
-              dense
-              active={clock.speed === speed}
-              onClick={() => runtime.setSpeed(speed)}
-            >
-              <Icon className="size-3.5" />
-            </HudIconButton>
-          ))}
-        </div>
+        <DayStrip minute={clock.minute} className="mt-[7px]" />
       </div>
-      {clock.speed === 0 ? (
-        <div className="mt-1 flex items-center gap-1.5 border-t border-white/10 pt-1">
-          <span className="size-1.5 animate-pulse rounded-full bg-(--game-warning)" />
-          <span className={cn(HUD_LABEL, 'text-(--game-warning)')}>{t('hud.paused')}</span>
-        </div>
-      ) : null}
+      <div className="flex items-center gap-[5px]">
+        {SPEEDS.filter((s) => !narrow || s.speed !== 5).map(({ speed, key, icon: Icon }) => (
+          <HudIconButton
+            key={speed}
+            label={t(key)}
+            density="chrome"
+            active={clock.speed === speed}
+            onClick={() => runtime.setSpeed(speed)}
+          >
+            <Icon className="size-4" />
+          </HudIconButton>
+        ))}
+      </div>
     </div>
   );
 }
 
+/**
+ * The menu key, and it is a key on its own rather than a key in a tray.
+ *
+ * A one-button tray is a frame around nothing: the tray's job is to say that the things in it
+ * belong together, and this one has nothing to belong to.
+ */
 function MenuButton({ runtime, t }: { runtime: UiRuntime; t: Translate }) {
   return (
-    <div className={cn(HUD_CHIP, 'pointer-events-auto p-1')}>
-      <HudIconButton label={t('hud.menu')} dense onClick={() => runtime.setMenu(true)}>
+    <div className="pointer-events-auto">
+      <HudIconButton label={t('hud.menu')} density="chrome" onClick={() => runtime.setMenu(true)}>
         <MenuIcon className="size-4" />
       </HudIconButton>
     </div>
@@ -304,8 +359,10 @@ function StatCluster({
   );
   const visible = narrow ? stats.filter((s) => s.phone !== false) : stats;
   if (visible.length === 0) return null;
+  // Four figures in ONE tray, so the cluster reads as an instrument panel and the rail of keys
+  // under it as a row of controls. Four separate chips read as four more buttons.
   return (
-    <div className={cn(HUD_CHIP, 'pointer-events-auto flex items-center gap-3 px-3 py-1.5')}>
+    <div className={cn(TRAY, 'pointer-events-auto flex items-stretch gap-1.5 p-[7px]')}>
       {visible.map((def) => (
         <StatSlot key={def.id} runtime={runtime} def={def} />
       ))}
@@ -322,21 +379,14 @@ function StatSlot({ runtime, def }: { runtime: UiRuntime; def: StatDef }) {
   const tone: Tone = value.tone ?? 'neutral';
   const Icon = def.icon;
   return (
-    <div className="flex min-w-0 items-center gap-1.5" title={value.hint ?? def.label}>
-      {Icon ? <Icon className="size-3.5 shrink-0 text-white/35" /> : null}
-      <div className="min-w-0">
-        <div
-          className={cn(
-            'truncate tabular-nums',
-            def.size === 'lg' ? 'text-sm font-semibold' : 'text-xs font-medium',
-            TONE_TEXT[tone]
-          )}
-        >
-          {value.text}
-        </div>
-        <div className={cn(HUD_LABEL, 'truncate')}>{def.label}</div>
-      </div>
-    </div>
+    <FigureTile
+      className="min-w-[118px]"
+      label={def.label}
+      value={value.text}
+      tone={tone}
+      hint={value.hint ?? def.label}
+      icon={Icon ? <Icon className="size-3.5" /> : undefined}
+    />
   );
 }
 
@@ -368,8 +418,8 @@ function Rail({
   return (
     <div
       className={cn(
-        HUD_CHIP,
-        'pointer-events-auto flex items-center gap-0.5 p-1',
+        TRAY,
+        'pointer-events-auto flex items-center gap-[5px] p-1.5',
         // On a phone the rail WRAPS rather than scrolls: a horizontal scroller hides half the
         // panels behind a gesture nobody is told about, and two rows of buttons hide nothing.
         narrow && 'max-w-full flex-wrap'
@@ -380,16 +430,10 @@ function Rail({
         const members = railed.filter((p) => (p.group ?? 'park') === group);
         if (members.length === 0) return null;
         return (
-          <div key={group ?? index} className="flex items-center gap-0.5">
-            {index > 0 ? <span className="mx-1 h-5 w-px shrink-0 bg-white/10" /> : null}
+          <div key={group ?? index} className="flex items-center gap-[5px]">
+            {index > 0 ? <span className={cn(BELT_RULE, 'mx-1 h-6')} /> : null}
             {members.map((def) => (
-              <RailButton
-                key={def.id}
-                runtime={runtime}
-                def={def}
-                active={open.has(def.id)}
-                narrow={narrow}
-              />
+              <RailButton key={def.id} runtime={runtime} def={def} active={open.has(def.id)} />
             ))}
           </div>
         );
@@ -402,12 +446,10 @@ function RailButton({
   runtime,
   def,
   active,
-  narrow,
 }: {
   runtime: UiRuntime;
   def: PanelDef;
   active: boolean;
-  narrow: boolean;
 }) {
   const selector = useMemo(() => (s: ParkTelemetry) => def.badge?.(s) ?? null, [def]);
   const badge = useTelemetry(runtime, selector);
@@ -417,15 +459,17 @@ function RailButton({
     <div className="relative shrink-0">
       <HudIconButton
         label={def.title}
-        dense={!narrow}
+        density="chrome"
         active={active}
         onClick={() => runtime.toggle(def.id)}
-        className={narrow ? 'size-10' : undefined}
       >
         {Icon ? <Icon className="size-4" /> : <span className="text-[10px]">{def.title[0]}</span>}
       </HudIconButton>
+      {/* The badge is a moulded cap on the key's corner, not a flat dot: it carries the same
+          contour and the same top rim as everything else, so it reads as part of the object
+          rather than as something drawn over it. */}
       {badge != null ? (
-        <span className="pointer-events-none absolute -top-0.5 -right-0.5 flex min-w-4 items-center justify-center rounded-full bg-(--game-warning) px-1 text-[9px] font-bold text-black tabular-nums">
+        <span className="pointer-events-none absolute -top-1 -right-1 flex h-[17px] min-w-[17px] items-center justify-center rounded-[9px] bg-[image:linear-gradient(180deg,var(--game-warning),var(--game-warning-deep))] px-1 text-[10.5px] font-bold text-[oklch(0.2_0.04_60)] tabular-nums shadow-[0_0_0_1.5px_var(--game-contour),0_1px_2px_rgb(0_0_0/0.5),inset_0_1px_0_rgb(255_255_255/0.35)]">
           {badge}
         </span>
       ) : null}
@@ -512,10 +556,17 @@ function NoticeStack({
     <div
       className={cn(
         'pointer-events-none absolute z-20 flex flex-col-reverse gap-1.5',
-        // Bottom left on a desktop, above the camera module's compass and clear of the build bar.
+        // Bottom left on a desktop, and anchored to the TOP EDGE OF THE BUILD CLUSTER rather
+        // than to the window: the cluster is a tray plus a toolbelt and its height changes when a
+        // category opens, so a notice measured off the bottom of the screen ends up under the
+        // palette on the frame it is most worth reading. `bottom-full` inside the cluster's own
+        // box also means a notice never pushes the bar down, which a flow item would.
+        //
         // On a phone the bottom belongs to the build bar and to whatever panel is open, so a
         // notice goes to the top instead, under the rail.
-        narrow ? 'inset-x-3 top-[6.75rem]' : 'bottom-16 left-3 w-[19rem] max-w-[calc(100vw-1.5rem)]'
+        narrow
+          ? 'inset-x-3 top-[6.75rem]'
+          : 'bottom-full left-3 mb-2 w-[19rem] max-w-[calc(100vw-1.5rem)]'
       )}
       data-hud-notices=""
     >
@@ -546,24 +597,24 @@ function NoticeLine({
   return (
     <div
       className={cn(
-        HUD_CHIP,
-        'pointer-events-auto flex items-start gap-2 px-2.5 py-2 text-[11px] leading-snug'
+        TRAY,
+        'pointer-events-auto flex items-start gap-2.5 px-3 py-2.5 text-xs leading-[1.42]'
       )}
       role="status"
     >
       {notice.level === 'info' ? (
-        <Info className="mt-px size-3.5 shrink-0 text-white/40" />
+        <Info className="mt-px size-4 shrink-0 text-white/45" />
       ) : (
-        <AlertTriangle className={cn('mt-px size-3.5 shrink-0', TONE_TEXT[tone])} />
+        <AlertTriangle className={cn('mt-px size-4 shrink-0', TONE_TEXT[tone])} />
       )}
       <span className="min-w-0 flex-1 text-white/80">{text}</span>
       <button
         type="button"
         aria-label={t('panel.close')}
         onClick={onDismiss}
-        className="-m-1 shrink-0 rounded p-1 text-white/35 transition-colors hover:text-white/80"
+        className="-m-1 shrink-0 rounded p-1 text-white/45 transition-colors hover:text-white/90"
       >
-        <X className="size-3" />
+        <X className="size-3.5" />
       </button>
     </div>
   );
@@ -611,7 +662,7 @@ function MenuLayer({
 function FallbackBar({ t }: { t: Translate }) {
   return (
     <div className="flex items-start gap-2 p-3">
-      <div className={cn(HUD_CHIP, 'pointer-events-auto flex items-center gap-2 px-3 py-2')}>
+      <div className={cn(TRAY, 'pointer-events-auto flex items-center gap-2 px-3 py-2')}>
         <Link
           href="/"
           className="text-white/55 transition-colors hover:text-white"

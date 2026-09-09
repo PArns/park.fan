@@ -1,16 +1,119 @@
 /*
  * Game-only tokens, imported by app/game/layout.tsx after globals.css. Plain custom properties
  * (not a second @theme) so the existing Tailwind build stays the one build; use them as
- * `bg-(--game-hud)` / `text-(--game-accent)` arbitrary values.
+ * `bg-(--game-hud)` / `shadow-(--game-lift-key)` arbitrary values. The recipes that combine them
+ * into a material live in `lib/game/ui/surface.ts`, which is the only place allowed to decide
+ * what a raised control or a recessed readout is made of.
+ *
+ * ## Moulded
+ *
+ * The HUD's material is early-2000s sim/OS plastic: a body light enough for a specular to sit on,
+ * a bevel that is three lines rather than one border, a gloss that stops hard at the specular
+ * break, saturated accents, and generous drop shadows. None of it is anybody's artwork — every
+ * value here is a colour or a gradient written from scratch, and there is no image file in the
+ * skin at all.
+ *
+ * The old block was seven properties and a flat translucent dark surface at oklch(0.13 0.02 241),
+ * which is the one thing a gloss cannot be built on: a specular highlight needs a body to reflect
+ * off, and on a body that dark the highlight is the only thing a reader sees.
+ *
+ * Four values are higher than they look like they should be, and each was raised after contrast
+ * was measured off rendered pixels rather than off the token: `--game-danger` went 0.65 → 0.72 L
+ * because it measured 4.06:1 as 12.5 px body text, and the two 9.5 px uppercase labels and the
+ * tile's second line moved to white/.58 and white/.55 for the same reason (4.12:1 and 3.35:1).
+ * Those last three are text colours and sit at their call sites.
  */
 :root {
-  --game-hud: oklch(0.13 0.02 241 / 0.72);
-  --game-hud-strong: oklch(0.12 0.02 241 / 0.86);
+  /* ── bodies. A gloss needs a body light enough to reflect off. ──────────────────────────── */
+  --game-hud: oklch(0.25 0.036 246 / 0.8); /* tray + chip fill */
+  --game-hud-strong: oklch(0.21 0.038 247 / 0.92); /* panel body */
+  --game-hud-well: oklch(0.11 0.03 247 / 0.55); /* recessed readout */
+  --game-key-top: oklch(0.345 0.046 245); /* raised control, top */
+  --game-key-bottom: oklch(0.235 0.04 247); /* raised control, bottom */
+  --game-key-top-hover: oklch(0.4 0.052 245);
+  --game-key-bottom-hover: oklch(0.28 0.046 247);
+
+  /* ── meaning. Two accents, and they never mean the same thing:
+        --game-accent   = ON    (a state that persists)
+        --game-accent-2 = ARMED (what your next click on the park does) ─────────────────────── */
   --game-accent: oklch(0.628 0.137 241.275);
+  --game-accent-lit: oklch(0.735 0.145 242);
+  --game-accent-deep: oklch(0.46 0.135 246);
   --game-accent-2: oklch(0.82 0.16 190);
+  --game-accent-2-deep: oklch(0.55 0.12 195);
   --game-warning: oklch(0.8 0.16 80);
-  --game-danger: oklch(0.65 0.2 25);
-  --game-hud-radius: 0.875rem;
+  --game-warning-deep: oklch(0.56 0.13 70); /* the destructive key's lower body */
+  --game-danger: oklch(0.72 0.18 25);
+  --game-good: oklch(0.82 0.15 155);
+
+  /* ── edges. A bevel is three lines, never one border. ───────────────────────────────────── */
+  --game-rim-light: rgb(255 255 255 / 0.42);
+  --game-rim-dark: rgb(0 0 0 / 0.55);
+  --game-rim-side: rgb(255 255 255 / 0.08);
+  --game-contour: rgb(3 9 15 / 0.8); /* outer 1 px: the ground the light rim needs */
+
+  /* ── gloss. A RADIAL, and a BACKGROUND LAYER rather than a ::before — the two look identical
+        on a plain key and are not identical over a picture, where an overlay milks the top of the
+        well. The hard stop at 46/47 % is the specular break; the domed lower edge is what makes
+        it a moulded lens rather than a white band. ────────────────────────────────────────── */
+  --game-gloss: radial-gradient(
+    125% 105% at 50% -18%,
+    rgb(255 255 255 / 0.32) 0%,
+    rgb(255 255 255 / 0.14) 46%,
+    rgb(255 255 255 / 0.02) 47%,
+    rgb(255 255 255 / 0.06) 100%
+  );
+  --game-gloss-lit: radial-gradient(
+    125% 105% at 50% -18%,
+    rgb(255 255 255 / 0.46) 0%,
+    rgb(255 255 255 / 0.22) 46%,
+    rgb(255 255 255 / 0.03) 47%,
+    rgb(255 255 255 / 0.09) 100%
+  );
+  /* A tray gets a sheen BAND. A 52 % highlight on a 1000 px surface reads as a rendering
+     mistake, not as plastic. */
+  --game-sheen: radial-gradient(
+    150% 42px at 50% 0,
+    rgb(255 255 255 / 0.17) 0%,
+    rgb(255 255 255 / 0.05) 62%,
+    rgb(255 255 255 / 0) 100%
+  );
+
+  /* ── the stage: the ground a PICTURE stands on. Sky over grass with the horizon at 53 %,
+        which is where a contact-shadow ellipse sits. Never used for anything but a picture
+        well: a thumbnail rendered from an unlit mesh is frequently dark, and a dark hole eats
+        it. ───────────────────────────────────────────────────────────────────────────────── */
+  --game-stage: linear-gradient(
+    180deg,
+    oklch(0.88 0.042 233) 0%,
+    oklch(0.82 0.052 229) 53%,
+    oklch(0.66 0.075 148) 53%,
+    oklch(0.735 0.068 145) 100%
+  );
+
+  /* ── depth ─────────────────────────────────────────────────────────────────────────────── */
+  --game-lift-key:
+    0 1px 1px rgb(0 0 0 / 0.4), 0 3px 6px -1px rgb(0 0 0 / 0.45), 0 8px 14px -6px rgb(0 0 0 / 0.5);
+  --game-lift-tray:
+    0 2px 0 rgb(0 0 0 / 0.28), 0 16px 30px -10px rgb(0 0 0 / 0.7),
+    0 44px 64px -34px rgb(0 0 0 / 0.75);
+  --game-lift-panel:
+    0 2px 0 rgb(0 0 0 / 0.3), 0 22px 44px -14px rgb(0 0 0 / 0.8), 0 50px 70px -40px rgb(0 0 0 / 0.7);
+  --game-sink:
+    inset 0 2px 4px rgb(0 0 0 / 0.55), inset 0 0 0 1px rgb(0 0 0 / 0.3),
+    0 1px 0 rgb(255 255 255 / 0.1);
+  --game-glow-accent: 0 0 16px -3px oklch(0.7 0.15 242 / 0.75);
+  --game-glow-armed: 0 0 16px -3px oklch(0.82 0.16 190 / 0.7);
+
+  /* ── geometry ──────────────────────────────────────────────────────────────────────────── */
+  --game-hud-radius: 1rem; /* trays and panels */
+  --game-radius-key: 0.625rem; /* every control */
+  --game-radius-well: 0.5rem; /* recessed readouts and picture wells */
+  --game-tab-lip: 8px; /* how far the active tab stands proud of its trough */
+
+  /* ── type: a label sits IN the plastic, a value sits ON it ──────────────────────────────── */
+  --game-engrave: 0 1px 0 rgb(0 0 0 / 0.55);
+  --game-emboss: 0 1px 1px rgb(0 0 0 / 0.7);
 }
 
 html[data-game] {

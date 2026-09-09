@@ -24,14 +24,14 @@
  * drops its photo — a phone gets a different object, not a squeezed one.
  */
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent } from 'react';
 import { ChevronDown, PanelRightClose, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { GameStore } from '../core/store';
 import type { GameLocale, Translate } from '../i18n';
 import type { PanelDef, UiMainApi } from './api';
-import { HUD_PANEL } from './surface';
+import { PANEL, PANEL_HEAD } from './surface';
 import { HudIconButton } from './parts';
 import { useCommitTally } from './hooks';
 
@@ -52,9 +52,25 @@ export interface PanelHostProps {
   locale: GameLocale;
   panels: PanelDef[];
   narrow: boolean;
+  /**
+   * Whether the dock column is occupied.
+   *
+   * The bottom cluster pads itself by the column's width so the two do not overlap, and only this
+   * component knows the answer: a panel dragged out of the column is open and not docked, and the
+   * cluster should have the width back.
+   */
+  onDockedChange?(docked: boolean): void;
 }
 
-export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostProps) {
+export function PanelHost({
+  ui,
+  store,
+  t,
+  locale,
+  panels,
+  narrow,
+  onDockedChange,
+}: PanelHostProps) {
   const [floating, setFloating] = useState<Record<string, Position | undefined>>({});
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
 
@@ -62,12 +78,21 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
     setFloating((prev) => ({ ...prev, [id]: position }));
   }, []);
 
+  const dockedCount = narrow ? 0 : panels.filter((p) => !floating[p.id]).length;
+  useEffect(() => {
+    onDockedChange?.(dockedCount > 0);
+  }, [dockedCount, onDockedChange]);
+
   if (panels.length === 0) return null;
 
   if (narrow) {
     const top = panels[panels.length - 1];
     return (
-      <div className="flex w-full flex-col justify-end">
+      // The sheet takes what the build cluster leaves, up to 46svh. A fixed cap was the version
+      // before it and it is a cap on the wrong element: the cluster below is a palette whose
+      // height is somebody else's decision (512 px at 390 px wide with five item rows open), so a
+      // sheet that insists on 46svh pushes the top bar off the screen rather than giving way.
+      <div className="flex min-h-0 w-full flex-1 flex-col justify-end">
         <PanelFrame
           key={top.id}
           def={top}
@@ -77,8 +102,8 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
           locale={locale}
           collapsed={false}
           onCollapse={() => {}}
-          bodyClass="max-h-[46svh]"
-          className="pointer-events-auto w-full"
+          bodyClass="min-h-0 flex-1"
+          className="pointer-events-auto max-h-[46svh] min-h-0 w-full flex-1"
           showDockToggle={false}
         />
       </div>
@@ -91,19 +116,33 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
   return (
     <>
       {docked.length > 0 ? (
-        // The column does not scroll; its panels SHARE it.
+        // The column does not scroll; its panels SHARE it, in EQUAL shares that a panel with
+        // less to say hands back.
         //
-        // Each docked panel is a flex item that may shrink and whose body scrolls, so one panel
-        // takes its natural height, two split the column in proportion to how much they have to
-        // say, and none of them is ever below the fold. A capped body plus a scrolling column was
-        // the first attempt and it fails on the case it was written for: at 1280x720 the ride
-        // list took 380 px of a 512 px column and the inspector under it was a header and a
-        // sliver, which reads as a panel that did not open.
+        // `flex-1 basis-0` gives every panel the same share of the column and
+        // `max-h-max` (max-height: max-content) caps it at what it actually needs — and flexbox
+        // resolves a max-height violation by freezing that item and dividing the freed space
+        // among the rest, which is the two-pass behaviour this wants and the reason it is worth
+        // spelling out. Proportional shrink was the version before it (`shrink` on an `auto`
+        // basis) and it is backwards: shrink is proportional to content height, so the panel with
+        // the most rows keeps the most pixels. Measured at 1440x900 with the park, the rides and
+        // the messages open, that gave the ride list 220 px with two of four rides visible while
+        // the message log — an endless list by nature — took a share it had no use for. Now the
+        // log is frozen at its own 87 px, the rides list gets its full 326 and shows all four,
+        // and the park panel takes everything left.
+        //
+        // The column reaches to `bottom-3` rather than stopping above the build cluster, because
+        // the cluster no longer lies under it: it pads itself by the column's width. That is 84
+        // px given back, and it is exactly the 73 px by which the park panel was clipped at 1280.
+        // `top-[136px]` is measured, not chosen: the top-right cluster is a 59 px stat tray, an
+        // 8 px gap and a 48 px rail under 12 px of padding, so it ends at 127 — and a panel at
+        // `z-30` over a rail at `z-auto` cuts the rail's bottom bevel off rather than tucking
+        // under it. Nine pixels of daylight between the two.
         <div
-          className="pointer-events-none absolute top-28 right-3 bottom-24 z-30 flex w-[344px] flex-col items-end gap-2 overflow-hidden"
+          className="pointer-events-none absolute top-[136px] right-3 bottom-3 z-30 flex w-[344px] flex-col items-end gap-2 overflow-hidden"
           data-panel-dock=""
         >
-          {docked.map((def) => (
+          {docked.map((def, index) => (
             <PanelFrame
               key={def.id}
               def={def}
@@ -114,8 +153,15 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
               collapsed={!!collapsed[def.id]}
               onCollapse={() => setCollapsed((c) => ({ ...c, [def.id]: !c[def.id] }))}
               onDrag={(position) => setPosition(def.id, position)}
-              className="pointer-events-auto min-h-0 w-full shrink"
-              bodyClass="min-h-0 flex-1"
+              className="pointer-events-auto max-h-max min-h-0 w-full flex-1 basis-0"
+              // The bottom panel keeps 46 px clear of core's corner lockup, which is a 123 x 38
+              // watermark at `right-3 bottom-3` on `z-20` — above this whole HUD, because the
+              // HUD's own root is `z-10` and a child cannot climb out of its stacking context.
+              // It never came up while the column stopped 96 px above the floor. The lockup is
+              // now drawn twice on this screen (the toolbelt carries one), so the request in
+              // `docs/game/requests/ui.md` asks core to drop the corner copy; until it does,
+              // this keeps a figure from being read through a logo.
+              bodyClass={cn('min-h-0 flex-1', index === docked.length - 1 && 'pb-[46px]')}
             />
           ))}
         </div>
@@ -232,15 +278,18 @@ function PanelFrame({
   return (
     <div
       ref={root}
-      className={cn(HUD_PANEL, 'flex min-h-0 min-w-0 flex-col overflow-hidden', className)}
+      className={cn(PANEL, 'flex min-h-0 min-w-0 flex-col overflow-hidden', className)}
       style={style}
       data-panel={def.id}
     >
+      {/* The header is its own raised strip rather than a tinted band: it is the part of the panel
+          you grab, and on this skin the thing you can grab is the thing that stands proud. The
+          hard 1 px shadow under it is what makes the body look recessed behind it. */}
       <div
         className={cn(
-          'flex h-9 shrink-0 items-center gap-2 border-b border-white/10 pr-1 pl-2.5',
-          onDrag && 'cursor-grab active:cursor-grabbing',
-          'bg-gradient-to-b from-white/[0.07] to-transparent'
+          PANEL_HEAD,
+          'flex h-10 shrink-0 items-center gap-2 pr-1.5 pl-3',
+          onDrag && 'cursor-grab active:cursor-grabbing'
         )}
         title={onDrag ? t('panel.drag') : undefined}
         onPointerDown={onPointerDown}
@@ -248,34 +297,27 @@ function PanelFrame({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        {Icon ? <Icon className="size-3.5 shrink-0 text-white/55" /> : null}
-        <h2 className="min-w-0 flex-1 truncate text-xs font-semibold tracking-tight text-white/90">
+        {Icon ? <Icon className="size-[15px] shrink-0 text-white/70" /> : null}
+        <h2 className="min-w-0 flex-1 truncate text-[12.5px] font-bold tracking-[0.005em] text-white/95 [text-shadow:var(--game-engrave)]">
           {def.title}
         </h2>
         {floating && onDock && showDockToggle ? (
-          <HudIconButton label={t('panel.dock')} dense onClick={onDock} className="size-7">
+          <HudIconButton label={t('panel.dock')} onClick={onDock}>
             <PanelRightClose className="size-3.5" />
           </HudIconButton>
         ) : null}
         <HudIconButton
           label={collapsed ? t('panel.expand') : t('panel.collapse')}
-          dense
           onClick={onCollapse}
-          className="size-7"
         >
           <ChevronDown className={cn('size-3.5 transition-transform', collapsed && '-rotate-90')} />
         </HudIconButton>
-        <HudIconButton
-          label={t('panel.close')}
-          dense
-          onClick={() => ui.close(def.id)}
-          className="size-7"
-        >
+        <HudIconButton label={t('panel.close')} onClick={() => ui.close(def.id)}>
           <X className="size-3.5" />
         </HudIconButton>
       </div>
       {collapsed ? null : (
-        <div className={cn('min-h-0 overflow-x-hidden overflow-y-auto p-2.5', bodyClass)}>
+        <div className={cn('min-h-0 overflow-x-hidden overflow-y-auto p-[11px]', bodyClass)}>
           <def.Body t={t} locale={locale} ui={ui} store={store} close={() => ui.close(def.id)} />
         </div>
       )}

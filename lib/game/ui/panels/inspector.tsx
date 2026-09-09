@@ -59,7 +59,7 @@ export function InspectorPanel(props: PanelBodyProps) {
   const def = runtime.inspectorFor(entity.kind);
   const Body = def?.Body ?? GenericInspector;
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       {/* The two actions that apply to any selection sit in the header rather than under the body.
           A footer here is a footer at the bottom of a panel whose body scrolls, so it was the
           first thing to go off screen the moment a ride had more to say than the column was
@@ -75,14 +75,14 @@ export function InspectorPanel(props: PanelBodyProps) {
         </div>
         <HudIconButton
           label={props.t('inspector.focus')}
-          dense
+          density="panel"
           onClick={() => runtime.focus(entity.id)}
         >
           <Crosshair className="size-3.5" />
         </HudIconButton>
         <HudIconButton
           label={props.t('inspector.deselect')}
-          dense
+          density="panel"
           onClick={() => runtime.select(null)}
         >
           <X className="size-3.5" />
@@ -126,7 +126,7 @@ export function RideInspector({ t, locale, ui, entity }: InspectorBodyProps) {
   }
   const tone = rideTone(ride.state);
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <div className={cn(HUD_WELL, 'flex items-center gap-2 px-2.5 py-2')}>
         <StatusDot tone={tone} />
         <span className="text-xs font-medium text-white/90">
@@ -150,7 +150,7 @@ export function RideInspector({ t, locale, ui, entity }: InspectorBodyProps) {
 
       <div className="flex flex-wrap gap-1">
         <HudButton
-          variant={ride.shut ? 'default' : 'ghost'}
+          variant={ride.shut ? 'primary' : 'secondary'}
           onClick={() => runtime.setRideShut(ride.id, !ride.shut)}
         >
           <Power className="size-3" />
@@ -197,7 +197,7 @@ export function ShopInspector({ t, locale, ui, entity }: InspectorBodyProps) {
   if (!shop) return <EmptyNote>{t('shops.notRunning')}</EmptyNote>;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-[11px]">
       <div className={cn(HUD_WELL, 'flex items-center gap-2 px-2.5 py-2')}>
         <StatusDot tone={shop.closed ? 'neutral' : 'good'} />
         <span className="text-xs font-medium text-white/90">
@@ -222,7 +222,7 @@ export function ShopInspector({ t, locale, ui, entity }: InspectorBodyProps) {
         </HudButton>
         <HudButton onClick={() => runtime.setShopPrice(shop.id, shop.price + 10)}>+10 ct</HudButton>
         <HudButton
-          variant={shop.closed ? 'default' : 'ghost'}
+          variant={shop.closed ? 'primary' : 'secondary'}
           onClick={() => runtime.setShopClosed(shop.id, !shop.closed)}
         >
           <Power className="size-3" />

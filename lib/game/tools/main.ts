@@ -36,6 +36,7 @@ import {
   type Obstacle,
 } from './placement';
 import { rectsOverlap, snapAngle, snapPoint, wrapAngle, type Rect } from './snap';
+import { createThumbnailStudio, type ThumbnailStats, type ThumbnailStudio } from './thumbs';
 import {
   DEFAULT_SNAP,
   type GhostState,
@@ -76,9 +77,32 @@ export interface ToolsMainApi {
   clearHover(): void;
   /** Put the armed item down, or drop the moved one. Returns the entity id, or null if refused. */
   commit(): string | null;
+  /**
+   * The rendered picture of a palette item as a data URL, or null.
+   *
+   * Synchronous and cheap: the build bar calls it on every render of every tile. A miss is not a
+   * failure — it means nobody has asked for that item yet, or its render is still queued.
+   */
+  thumbnail(key: string): string | null;
+  /**
+   * Queue an item's picture. Resolves with the data URL, or null when it cannot be drawn — a
+   * coaster has no point geometry, a kind nothing claims has no builder, and a builder that throws
+   * is caught. A null answer is the build bar's cue to keep the Lucide kind icon it already has.
+   */
+  requestThumbnail(key: string): Promise<string | null>;
+  /**
+   * Say which items are on screen, in the order they are drawn.
+   *
+   * The palette opens on the first category the registry offered, so that tab's tiles are queued
+   * before anybody presses anything; without this, pressing a tab puts its five pictures behind
+   * twenty-one nobody is looking at.
+   */
+  focusThumbnails(keys: readonly string[]): void;
   undo(): boolean;
   redo(): boolean;
   stats(): ToolsStats;
+  /** What the thumbnail studio has cost so far. Read by the report and by the harness. */
+  thumbnailStats(): ThumbnailStats;
 }
 
 interface TerrainLike {
@@ -100,6 +124,14 @@ export function createToolsMain(ctx: MainContext): MainHandle {
   };
 
   const rig: GhostRig = createGhostRig(scene);
+  /**
+   * The palette's pictures.
+   *
+   * Created here and never used until a tile asks: the studio builds no scene, no material and no
+   * texture until the first `requestThumbnail`, so a park that never opens the build bar pays
+   * nothing for it.
+   */
+  const thumbs: ThumbnailStudio = createThumbnailStudio(ctx);
   const history: History = createHistory((type, payload) => ctx.dispatch(type, payload));
 
   // ── State ─────────────────────────────────────────────────────────────────────────────────
@@ -634,6 +666,16 @@ export function createToolsMain(ctx: MainContext): MainHandle {
       if (tool === 'move') return moveSelection();
       return null;
     },
+    thumbnail(key) {
+      const item = byKey.get(key);
+      return item ? thumbs.get(item) : null;
+    },
+    requestThumbnail(key) {
+      const item = byKey.get(key);
+      return item ? thumbs.request(item) : Promise.resolve(null);
+    },
+    focusThumbnails: (keys) => thumbs.focus(keys),
+    thumbnailStats: () => thumbs.stats(),
     undo() {
       const entry = history.undo();
       if (!entry) return false;
@@ -704,6 +746,7 @@ export function createToolsMain(ctx: MainContext): MainHandle {
       detachPalette();
       subscribers.clear();
       history.clear();
+      thumbs.dispose();
       rig.dispose();
     },
   };

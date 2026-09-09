@@ -61,14 +61,14 @@ export function RidesPanel({ t, locale, ui }: PanelBodyProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-[11px]">
       <div className="flex items-center gap-1">
         <span className={HUD_LABEL}>{t('rides.sortBy')}</span>
         <div className="ml-auto flex gap-0.5">
           {(['queue', 'name', 'state'] as RideSort[]).map((option) => (
             <HudButton
               key={option}
-              variant={sort === option ? 'default' : 'ghost'}
+              variant={sort === option ? 'primary' : 'secondary'}
               onClick={() => setSort(option)}
             >
               {t(`rides.sort.${option}` as GameStringKey)}
@@ -169,12 +169,16 @@ function RideActions({
       <span className="mr-auto text-[10px] text-white/45 tabular-nums">
         {t('rides.rated')} {count(ride.ratedThroughput, locale)}
       </span>
-      <HudIconButton label={t('rides.focus')} dense onClick={() => runtime.focus(ride.id)}>
+      <HudIconButton
+        label={t('rides.focus')}
+        density="panel"
+        onClick={() => runtime.focus(ride.id)}
+      >
         <Crosshair className="size-3.5" />
       </HudIconButton>
       <HudIconButton
         label={ride.shut ? t('rides.reopen') : t('rides.shut')}
-        dense
+        density="panel"
         active={ride.shut}
         onClick={() => runtime.setRideShut(ride.id, !ride.shut)}
       >
@@ -182,7 +186,7 @@ function RideActions({
       </HudIconButton>
       <HudIconButton
         label={ride.state === 'broken' ? t('rides.repair') : t('rides.service')}
-        dense
+        density="panel"
         onClick={() =>
           runtime.dispatch(ride.state === 'broken' ? 'rides:repair' : 'rides:service', {
             id: ride.id,
@@ -227,7 +231,7 @@ export function ShopsPanel({ t, locale, ui }: PanelBodyProps) {
             <span className={cn(HUD_LABEL, 'mr-auto')}>{t('shops.price')}</span>
             <HudIconButton
               label={t('shops.priceDown')}
-              dense
+              density="panel"
               disabled={shop.price <= 0}
               onClick={() => runtime.setShopPrice(shop.id, Math.max(0, shop.price - 10))}
             >
@@ -238,14 +242,14 @@ export function ShopsPanel({ t, locale, ui }: PanelBodyProps) {
             </span>
             <HudIconButton
               label={t('shops.priceUp')}
-              dense
+              density="panel"
               onClick={() => runtime.setShopPrice(shop.id, shop.price + 10)}
             >
               <Plus className="size-3" />
             </HudIconButton>
             <HudIconButton
               label={shop.closed ? t('shops.reopen') : t('shops.shut')}
-              dense
+              density="panel"
               active={shop.closed}
               onClick={() => runtime.setShopClosed(shop.id, !shop.closed)}
             >
