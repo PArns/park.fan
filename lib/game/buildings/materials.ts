@@ -122,13 +122,17 @@ export function createBuildingMaterials(scene: Scene, atlas: BuildingAtlas): Bui
    * How hard a lit window burns.
    *
    * Flat until `night` passes about 0.2 and then rising fast, which is what a building does: the
-   * lights go on at dusk, not gradually from noon. Peak 1.15 against the pipeline's 0.9 bloom
-   * threshold — a window is *meant* to bloom a little, where a whole sign fascia at that value is a
-   * white bar, which is the correction `shops/materials.ts` records. A pane is small.
+   * lights go on at dusk, not gradually from noon.
+   *
+   * Peak 0.95, down from 1.15. A window is meant to bloom a little against the pipeline's 0.9
+   * threshold, and at 1.15 it did more than a little: the 23:00 close frame came back with every
+   * pane a white rectangle inside its own halo, glazing bars and all detail gone. The glow tile
+   * still takes individual panes above and below that, which is the variation that makes a night
+   * elevation read; blowing all of them out is what removes it.
    */
   function litIntensity(n: number): number {
     const t = Math.max(0, Math.min(1, (n - 0.16) / 0.4));
-    return t * t * (3 - 2 * t) * 1.15;
+    return t * t * (3 - 2 * t) * 0.95;
   }
 
   return {

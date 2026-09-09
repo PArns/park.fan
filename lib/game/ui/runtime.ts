@@ -25,7 +25,13 @@ import type { Entity, GameEvents, MainContext, Speed, World } from '../core/type
 import type { GameLocale, Translate } from '../i18n';
 import type { InspectorDef, PanelDef, StatDef, UiMainApi } from './api';
 import { UiRegistry } from './api';
-import { PUBLISH_MS, TelemetryCollector, entityLabel, type ParkTelemetry } from './telemetry';
+import {
+  HUD_METRICS,
+  PUBLISH_MS,
+  TelemetryCollector,
+  entityLabel,
+  type ParkTelemetry,
+} from './telemetry';
 import type { FlatRideProfile } from '../rides/types';
 
 interface RidesLike {
@@ -175,6 +181,7 @@ export class UiRuntime implements UiMainApi {
   }
 
   publish(): void {
+    HUD_METRICS.publishes += 1;
     this.snapshot = this.collector.snapshot();
     for (const fn of this.telemetryListeners) fn();
   }

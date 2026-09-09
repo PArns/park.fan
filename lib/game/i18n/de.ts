@@ -163,7 +163,7 @@ export const de: Record<GameStringKey, string> = {
   'crowd.queuing': 'Stehen an',
   'crowd.riding': 'Fahren',
   'crowd.buying': 'Kaufen ein',
-  'crowd.leaving': 'Gehen',
+  'crowd.leaving': 'Auf dem Heimweg',
   'crowd.lost': 'Verlaufen',
   'guests.thoughts': 'Was die Leute sagen',
   'guests.noThoughts': 'Bisher hat niemand etwas gesagt.',

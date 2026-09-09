@@ -158,11 +158,32 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
   const scene = ctx.scene as Scene;
   const preset = ctx.quality.preset;
   const tileSize = TILE_SIZE[preset] ?? 144;
-  setAtlasResolution(tileSize);
-  const atlas: BuildingAtlas = createBuildingAtlas(scene, ctx.rng.int(1, 1 << 28), tileSize);
-  const materials: BuildingMaterials = createBuildingMaterials(scene, atlas);
+  // Drawn here and not where it is used: the module's rng stream must advance the same way whether
+  // or not the park happens to contain a building.
+  const atlasSeed = ctx.rng.int(1, 1 << 28);
   const terrain = ctx.module<TerrainLike>('terrain');
   const env = ctx.module<EnvironmentApi>('environment');
+
+  /**
+   * The atlas is built on the first building and not at boot.
+   *
+   * Sixteen procedural tiles is **801 ms** of per-pixel JavaScript at the `medium` preset and about
+   * 5.3 MB of texture with its mip chain, and a park with no buildings in it was paying both:
+   * measured on the demo park, which reserves two plots for this module and has nothing standing on
+   * them yet, so the whole cost bought nothing. A sandbox starts empty too. The first `entity:add`
+   * of a `building` pays it, once, and every building after that is free.
+   */
+  let atlas: BuildingAtlas | null = null;
+  let materials: BuildingMaterials | null = null;
+  function ensureMaterials(): BuildingMaterials {
+    if (!materials) {
+      setAtlasResolution(tileSize);
+      atlas = createBuildingAtlas(scene, atlasSeed, tileSize);
+      materials = createBuildingMaterials(scene, atlas);
+      materials.setNight(night);
+    }
+    return materials;
+  }
 
   const batches = new Map<string, Batch>();
   const placed = new Map<string, { key: string; entrance: [number, number] }>();
@@ -222,6 +243,7 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     }
     buildMs += performance.now() - t0;
 
+    const kitMaterials = ensureMaterials();
     const meshes: Mesh[] = [];
     const add = (surface: Surface, name: string, material: Material): void => {
       if (surface.indices.length === 0) return;
@@ -230,10 +252,10 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
       mesh.freezeWorldMatrix();
       meshes.push(mesh);
     };
-    add(build.kit, 'kit', materials.kit);
-    add(build.glass, 'glass', materials.glass);
-    add(build.lit, 'lit', materials.emissive(build.litColour, 'window'));
-    add(build.sign, 'sign', materials.emissive(build.signColour, 'sign'));
+    add(build.kit, 'kit', kitMaterials.kit);
+    add(build.glass, 'glass', kitMaterials.glass);
+    add(build.lit, 'lit', kitMaterials.emissive(build.litColour, 'window'));
+    add(build.sign, 'sign', kitMaterials.emissive(build.signColour, 'sign'));
     if (!meshes.length) return null;
     const batch: Batch = {
       key,
@@ -430,7 +452,7 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
     },
     onEnvironment(state: EnvironmentState) {
       night = state.night;
-      materials.setNight(night);
+      materials?.setNight(night);
     },
     onRender(dtSeconds: number) {
       updatePool(dtSeconds);
@@ -476,9 +498,9 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
           litWindows,
           lightSites: sites.size,
           activeLights,
-          atlasMs: atlas.generateMs,
+          atlasMs: atlas?.generateMs ?? 0,
           buildMs,
-          atlasSpread: atlas.spread,
+          atlasSpread: atlas?.spread ?? [],
           batchList,
         };
       },
@@ -491,8 +513,10 @@ export function createBuildingsMain(ctx: MainContext): MainHandle {
       sites.clear();
       for (const light of pool) light.dispose();
       pool.length = 0;
-      materials.dispose();
-      atlas.dispose();
+      materials?.dispose();
+      atlas?.dispose();
+      materials = null;
+      atlas = null;
     },
   };
   return handle;

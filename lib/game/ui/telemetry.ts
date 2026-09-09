@@ -40,6 +40,18 @@ import { GUEST_STATE_NAMES } from '../guests/types';
 
 /** How often the snapshot is rebuilt, in real milliseconds. */
 export const PUBLISH_MS = 250;
+
+/**
+ * The HUD's own cost, counted rather than asserted, and published on `window.__parkfan_hud`.
+ *
+ * `publishes` is how often the telemetry snapshot was rebuilt; `commits` is how many React
+ * commits that caused across the components that subscribe. The ratio is the whole argument for
+ * the selector hooks: a HUD that re-rendered everything on every publish would sit at roughly one
+ * commit per subscribing component per publish, and the gap between the two numbers is what the
+ * caching in `hooks.ts` buys. It lives here rather than in `hooks.ts` because both halves need
+ * it and this file imports no React.
+ */
+export const HUD_METRICS = { commits: 0, publishes: 0, since: 0 };
 /** Guest thoughts kept for the crowd panel. */
 export const THOUGHT_HISTORY = 24;
 /** Entries kept for the notification history. */

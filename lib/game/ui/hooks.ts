@@ -25,32 +25,22 @@
 import { useCallback, useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import type { GameStore, GameState } from '../core/store';
 import type { UiRuntime } from './runtime';
-import type { ParkTelemetry } from './telemetry';
+import { HUD_METRICS, type ParkTelemetry } from './telemetry';
 
 export type Equal<T> = (a: T, b: T) => boolean;
 
 /**
- * How many times the HUD's subscribing components have committed, and since when.
+ * Count this component's commits into {@link HUD_METRICS}. Call it in anything that subscribes.
  *
- * Published on `window.__parkfan_hud` so the figure in the report is one anybody can reproduce
- * rather than one this module asserts. It counts commits of the components that actually
- * subscribe to something — the clock, each figure in the bar, each rail button, the notice stack
- * and each open panel frame — which is the number that matters: a HUD over a 60 fps canvas is
- * paid for by those and by nothing else.
- *
- * `<Profiler>` would have been the right tool and was tried first. In this React it throws:
- * the dev build writes a `performance.measure` whose `detail` carries the rendered props, the
- * props here reach a `Registry` and a `GameStore`, and a structured clone of a class with methods
- * fails — which killed the commit phase outright (`Should not already be working.`) and froze the
- * whole HUD one render in. An effect with no dependency array costs one function call per commit
- * and cannot take the tree down with it.
+ * `<Profiler>` would have been the right tool and was tried first; in this React it takes the
+ * whole tree down. Its dev build writes a `performance.measure` whose detail carries the rendered
+ * props, and a class with methods among them cannot be structured-cloned — which throws inside
+ * the commit phase and unwinds React with `Should not already be working.` An effect with no
+ * dependency array costs one function call per commit and cannot do that.
  */
-export const HUD_COMMITS = { count: 0, since: 0 };
-
-/** Count this component's commits. Call it in anything that subscribes. */
 export function useCommitTally(): void {
   useEffect(() => {
-    HUD_COMMITS.count += 1;
+    HUD_METRICS.commits += 1;
   });
 }
 
@@ -98,9 +88,17 @@ export function useTelemetry<T>(
   return useSyncExternalStore(runtime.subscribe, get, get);
 }
 
-/** The whole snapshot, for a panel that draws most of it anyway. Re-renders at the publish rate. */
+/**
+ * The whole snapshot, for a panel that draws most of it anyway. Re-renders at the publish rate.
+ *
+ * It carries its own {@link useCommitTally}, because this is the expensive subscription — a
+ * component using it commits on every publish by definition — and a budget figure that left the
+ * open panels out would flatter the HUD by exactly the amount that matters. The narrow
+ * `useTelemetry` selectors are counted where they are called instead.
+ */
 export function useTelemetrySnapshot(runtime: UiRuntime): ParkTelemetry {
   const read = useCallback(() => runtime.telemetry(), [runtime]);
+  useCommitTally();
   return useSyncExternalStore(runtime.subscribe, read, read);
 }
 

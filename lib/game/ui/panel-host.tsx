@@ -67,7 +67,7 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
   if (narrow) {
     const top = panels[panels.length - 1];
     return (
-      <div className="pointer-events-none absolute inset-x-2 bottom-2 z-30 flex max-h-[72svh] flex-col justify-end">
+      <div className="flex w-full flex-col justify-end">
         <PanelFrame
           key={top.id}
           def={top}
@@ -77,7 +77,7 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
           locale={locale}
           collapsed={false}
           onCollapse={() => {}}
-          bodyClass="max-h-[52svh]"
+          bodyClass="max-h-[46svh]"
           className="pointer-events-auto w-full"
           showDockToggle={false}
         />
@@ -87,22 +87,20 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
 
   const docked = panels.filter((p) => !floating[p.id]);
   const loose = panels.filter((p) => floating[p.id]);
-  /**
-   * How tall a docked panel may be, and it depends on how many are open.
-   *
-   * One panel gets the column: the crowd breakdown and the park overview are both about 550 px of
-   * real content and capping them at a third of the screen makes a reader scroll for no reason.
-   * Two or more and each is capped instead, because the alternative — measured with `guests` and
-   * its two dozen thoughts open — is one panel eating the whole column and pushing the other two
-   * below the fold, which reads as though they had not opened at all.
-   */
-  const bodyClass = docked.length > 1 ? 'max-h-[22rem]' : 'max-h-[min(34rem,calc(100vh-16rem))]';
 
   return (
     <>
       {docked.length > 0 ? (
+        // The column does not scroll; its panels SHARE it.
+        //
+        // Each docked panel is a flex item that may shrink and whose body scrolls, so one panel
+        // takes its natural height, two split the column in proportion to how much they have to
+        // say, and none of them is ever below the fold. A capped body plus a scrolling column was
+        // the first attempt and it fails on the case it was written for: at 1280x720 the ride
+        // list took 380 px of a 512 px column and the inspector under it was a header and a
+        // sliver, which reads as a panel that did not open.
         <div
-          className="pointer-events-none absolute top-28 right-3 bottom-24 z-30 flex w-[344px] flex-col items-end gap-2 overflow-x-hidden overflow-y-auto pb-1"
+          className="pointer-events-none absolute top-28 right-3 bottom-24 z-30 flex w-[344px] flex-col items-end gap-2 overflow-hidden"
           data-panel-dock=""
         >
           {docked.map((def) => (
@@ -116,8 +114,8 @@ export function PanelHost({ ui, store, t, locale, panels, narrow }: PanelHostPro
               collapsed={!!collapsed[def.id]}
               onCollapse={() => setCollapsed((c) => ({ ...c, [def.id]: !c[def.id] }))}
               onDrag={(position) => setPosition(def.id, position)}
-              className="pointer-events-auto w-full shrink-0"
-              bodyClass={bodyClass}
+              className="pointer-events-auto min-h-0 w-full shrink"
+              bodyClass="min-h-0 flex-1"
             />
           ))}
         </div>
@@ -234,7 +232,7 @@ function PanelFrame({
   return (
     <div
       ref={root}
-      className={cn(HUD_PANEL, 'flex min-w-0 flex-col overflow-hidden', className)}
+      className={cn(HUD_PANEL, 'flex min-h-0 min-w-0 flex-col overflow-hidden', className)}
       style={style}
       data-panel={def.id}
     >

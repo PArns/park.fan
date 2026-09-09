@@ -28,7 +28,7 @@
  * That is measured rather than asserted: every subscribing component calls `useCommitTally()` and
  * the running total is on `window.__parkfan_hud`, so the figure in the report is one anybody can
  * reproduce. `<Profiler>` was the first attempt and had to come out — see the docblock on
- * {@link HUD_COMMITS}.
+ * {@link HUD_METRICS}.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -52,21 +52,13 @@ import { BuildBar } from '../tools/build-bar';
 import type { GameLocale, GameStringKey, Translate } from '../i18n';
 import type { PanelDef, StatDef } from './api';
 import { clockTime } from './format';
-import {
-  HUD_COMMITS,
-  shallowEqual,
-  useChrome,
-  useCommitTally,
-  useGame,
-  useNarrow,
-  useTelemetry,
-} from './hooks';
+import { shallowEqual, useChrome, useCommitTally, useGame, useNarrow, useTelemetry } from './hooks';
 import { GameMenu } from './menu';
 import { PanelHost } from './panel-host';
 import { DayStrip } from './panels/park';
 import { HudIconButton, StatusDot } from './parts';
 import type { UiRuntime } from './runtime';
-import type { ParkTelemetry } from './telemetry';
+import { HUD_METRICS, type ParkTelemetry } from './telemetry';
 import { HUD_CHIP, HUD_LABEL, SCRIM_BOTTOM, SCRIM_TOP, TONE_TEXT, type Tone } from './surface';
 
 export interface GameHudProps {
@@ -93,13 +85,14 @@ export function GameHud({ store, t, locale, getHandle }: GameHudProps) {
 
   useEffect(() => {
     const w = window as unknown as {
-      __parkfan_hud?: { count: number; since: number; reset(): void };
+      __parkfan_hud?: { commits: number; publishes: number; since: number; reset(): void };
     };
-    HUD_COMMITS.since = performance.now();
-    w.__parkfan_hud = Object.assign(HUD_COMMITS, {
+    HUD_METRICS.since = performance.now();
+    w.__parkfan_hud = Object.assign(HUD_METRICS, {
       reset() {
-        HUD_COMMITS.count = 0;
-        HUD_COMMITS.since = performance.now();
+        HUD_METRICS.commits = 0;
+        HUD_METRICS.publishes = 0;
+        HUD_METRICS.since = performance.now();
       },
     });
   }, []);
@@ -172,29 +165,48 @@ function HudBody({
 
   return (
     <>
-      <div className="flex items-start justify-between gap-2 p-3">
-        <div className="flex min-w-0 items-start gap-2">
+      {/* Below `sm` the top row becomes two rows: the clock and the money on one, the rail on its
+          own full-width scroller under it. Measured at 390 px, the desktop arrangement needs
+          415 px of chrome in 390 and lays the rail across the clock. */}
+      <div className={cn('flex gap-2 p-3', narrow ? 'flex-col' : 'items-start justify-between')}>
+        <div className={cn('flex min-w-0 items-start gap-2', narrow && 'w-full')}>
           <MenuButton runtime={runtime} t={t} />
           <ClockCluster runtime={runtime} t={t} narrow={narrow} />
+          {narrow ? (
+            <div className="ml-auto">
+              <StatCluster runtime={runtime} t={t} narrow />
+            </div>
+          ) : null}
         </div>
-        <div className="flex min-w-0 flex-col items-end gap-2">
-          <StatCluster runtime={runtime} t={t} narrow={narrow} />
-          <Rail runtime={runtime} panels={allPanels} openIds={openIds} narrow={narrow} />
-        </div>
+        {narrow ? (
+          <Rail runtime={runtime} panels={allPanels} openIds={openIds} narrow />
+        ) : (
+          <div className="flex min-w-0 flex-col items-end gap-2">
+            <StatCluster runtime={runtime} t={t} narrow={false} />
+            <Rail runtime={runtime} panels={allPanels} openIds={openIds} narrow={false} />
+          </div>
+        )}
       </div>
 
-      <PanelHost
-        ui={runtime}
-        store={store}
-        t={t}
-        locale={locale}
-        panels={openPanels}
-        narrow={narrow}
-      />
+      {narrow ? null : (
+        <PanelHost
+          ui={runtime}
+          store={store}
+          t={t}
+          locale={locale}
+          panels={openPanels}
+          narrow={false}
+        />
+      )}
 
       <NoticeStack store={store} runtime={runtime} t={t} narrow={narrow} />
 
+      {/* On a phone the panel sheet sits IN the bottom stack rather than over it, so the build bar
+          keeps its place instead of being covered by whatever was opened last. */}
       <div className="mt-auto flex flex-col items-center gap-2 p-3">
+        {narrow ? (
+          <PanelHost ui={runtime} store={store} t={t} locale={locale} panels={openPanels} narrow />
+        ) : null}
         <BuildBar t={t} locale={locale} getHandle={getHandle} />
       </div>
 
@@ -233,11 +245,13 @@ function ClockCluster({
             <span className="text-sm font-semibold text-white/95 tabular-nums">
               {clockTime(clock.minute)}
             </span>
-            <span className="text-[11px] text-white/55 tabular-nums">
-              {t('hud.day', { day: clock.day })}
-            </span>
+            {narrow ? null : (
+              <span className="text-[11px] text-white/55 tabular-nums">
+                {t('hud.day', { day: clock.day })}
+              </span>
+            )}
           </div>
-          <DayStrip minute={clock.minute} className="mt-1 w-[5.5rem]" />
+          {narrow ? null : <DayStrip minute={clock.minute} className="mt-1 w-[5.5rem]" />}
         </div>
         <div className="flex items-center gap-0.5 border-l border-white/10 pl-2">
           {SPEEDS.filter((s) => !narrow || s.speed !== 5).map(({ speed, key, icon: Icon }) => (
@@ -356,7 +370,9 @@ function Rail({
       className={cn(
         HUD_CHIP,
         'pointer-events-auto flex items-center gap-0.5 p-1',
-        narrow && 'max-w-[calc(100vw-1.5rem)] overflow-x-auto'
+        // On a phone the rail WRAPS rather than scrolls: a horizontal scroller hides half the
+        // panels behind a gesture nobody is told about, and two rows of buttons hide nothing.
+        narrow && 'max-w-full flex-wrap'
       )}
       data-hud-rail=""
     >
@@ -467,8 +483,11 @@ function NoticeStack({
   return (
     <div
       className={cn(
-        'pointer-events-none absolute bottom-16 left-3 z-20 flex w-[19rem] max-w-[calc(100vw-1.5rem)] flex-col-reverse gap-1.5',
-        narrow && 'bottom-28'
+        'pointer-events-none absolute z-20 flex flex-col-reverse gap-1.5',
+        // Bottom left on a desktop, above the camera module's compass and clear of the build bar.
+        // On a phone the bottom belongs to the build bar and to whatever panel is open, so a
+        // notice goes to the top instead, under the rail.
+        narrow ? 'inset-x-3 top-[6.75rem]' : 'bottom-16 left-3 w-[19rem] max-w-[calc(100vw-1.5rem)]'
       )}
       data-hud-notices=""
     >

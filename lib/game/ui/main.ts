@@ -70,10 +70,19 @@ function registerBuiltinStats(
       size: 'lg',
       value: (s) => ({ text: moneyWhole(s.totals.cash, locale) }),
     }),
+    /**
+     * Off the bar below `sm`, with the mood and the queue.
+     *
+     * Measured at 390 px: the menu button, the clock with its three speeds and a two-figure stat
+     * chip come to 396 px of chrome in 378 px of usable width, and the guest count was the figure
+     * hanging off the right edge. The money is the headline on a phone and the crowd is one tap
+     * away in the park panel, which draws it four ways.
+     */
     runtime.registerStat({
       id: 'guests',
       label: t('hud.guests'),
       order: 20,
+      phone: false,
       value: (s) => ({ text: count(s.totals.guests, locale) }),
     }),
     runtime.registerStat({

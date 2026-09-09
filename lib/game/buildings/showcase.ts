@@ -171,7 +171,9 @@ const SHOWCASE_PACK = {
     { id: 'kit', target: [0, 3, 6], bearing: 0, pitch: 9, distance: 27 },
     { id: 'hall', target: [0, 8, -46], bearing: 8, pitch: 12, distance: 52 },
     { id: 'gate', target: [-19, 5, 20], bearing: 96, pitch: 11, distance: 40 },
-    { id: 'inn', target: [15, 6, 34], bearing: 250, pitch: 12, distance: 32 },
+    // The extensibility exhibit, square on to its front: the jettied first floor oversailing the
+    // ground floor, and the wing swung 35° off the block, both of them nothing but JSON.
+    { id: 'inn', target: [32, 8, 68], bearing: 300, pitch: 13, distance: 44 },
     { id: 'market', target: [26, 7, 18], bearing: 265, pitch: 14, distance: 48 },
     { id: 'ticket', target: [-25, 7, 20], bearing: 85, pitch: 14, distance: 48 },
     { id: 'rot', target: [24, 8, -18], bearing: 262, pitch: 12, distance: 38 },
@@ -192,7 +194,10 @@ const PLOTS: Array<{ item: string; pack: string; x: number; z: number; yaw: numb
   { pack: 'parkfan-architecture', item: 'market-hall', x: 26, z: 18, yaw: -Math.PI / 2 },
   { pack: 'parkfan-architecture', item: 'rotunda', x: 24, z: -18, yaw: -Math.PI / 2 },
   { pack: 'parkfan-architecture', item: 'guest-services', x: 17, z: 52, yaw: -Math.PI / 2 },
-  { pack: 'buildings-showcase', item: 'old-inn', x: 19, z: 34, yaw: -Math.PI / 2 },
+  // Off the street on its own plot at the north-east corner, because it is the exhibit and the
+  // street is 34 m wide: from the west every east-side building is behind the terrace, and three
+  // attempts at a three-quarter view of this one came back with a brick wall in the near third.
+  { pack: 'buildings-showcase', item: 'old-inn', x: 34, z: 68, yaw: -Math.PI / 2 },
 ];
 
 export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
