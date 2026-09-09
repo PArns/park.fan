@@ -189,3 +189,35 @@ three builders are screenshotting against the current constants as this is writt
 change, with the harness arithmetic read off the constant instead of duplicating it, and the affected
 frames re-shot in the same commit. _Reversed by:_ a decision that the park should be smaller instead,
 which is the other honest answer and is a demo-park change rather than a clock one.
+
+**D-027 — WebGPU is opt-in until somebody can look at it on real hardware, because the default was a black screen.**
+`ARCHITECTURE.md` says "WebGPU first, WebGL2 fallback" and that is still the intent. What nobody
+had done is run it. `game-shot.mjs` forces `?engine=webgl2`, because headless Chromium has no
+WebGPU by default, so every frame in this project — every module grade, every critique, the whole
+gauntlet — was taken through the fallback path. The first person to open `/game` in an ordinary
+Chrome got the other one, and what it renders is **a black canvas with a working HUD on top of it**:
+the scene mounts, the worker ticks, guests arrive, the panels fill with real numbers, and the 3D is
+never drawn.
+
+The cause is this project's own deep-import rule meeting Babylon's shader store. `Materials/PBR/
+pbrMaterial` imported deep pulls `Shaders/pbr.vertex`, which is GLSL; nothing pulls
+`ShadersWGSL/pbr.vertex`. A WebGPU engine therefore has no shader for anything the game draws, and
+the effect that would compile one reads `shaderLanguage` off `undefined` — seven identical page
+errors before the first frame, `terrain` failing to start outright, repeated device loss, and a
+canvas that stays at `clearColor`.
+
+So the default is WebGL2 and `?engine=webgpu` still selects the other. That is a retreat and it is
+recorded as one: the fix is to import the WGSL twin of every shader the game uses, 469 modules live
+under `ShadersWGSL/`, and PBR alone drags a long list of includes. It is not done blind because it
+**cannot be verified here** — this container's WebGPU is SwiftShader, which refuses the terrain's
+7 MB vertex buffer whatever the shaders say. Between an unverified WebGPU path that is black today
+and WebGL2 that demonstrably draws the park, the park wins.
+
+What comes with it is the check that would have caught this on day one: `pnpm game:engine-probe`
+launches Chromium twice, once as it comes and once with a software WebGPU adapter forced on, loads
+`/game` with **no engine query at all** so it exercises the game's own choice, and measures the mean
+luminance of the drawing buffer — not of the screenshot, because the HUD is opaque and would have
+called a black park lit. Black is `luma < 4`; the park at 23:00 measures in the twenties and at
+13:00 it measures 111. Run against the fix: both passes `webgl2`, luma 111.4 and 111.2. Run with
+`--engine=webgpu`: `luma 0 · CANVAS IS BLACK · 43 page errors`, exit 1.
+_Reversed by:_ somebody running the WGSL import list on a real GPU and getting a park out of it.

@@ -2,6 +2,8 @@
  * Capability detection and quality presets. Degrade, never crash: a device with no WebGPU gets
  * WebGL2; a phone gets `low` and a one-line notice; a WebGL1-only device is refused with a
  * readable message rather than a white screen.
+ *
+ * Read the note on `webgpu` below before changing which engine is chosen. It is not a preference.
  */
 
 import type { Capabilities, QualityPreset, QualitySettings } from './types';
@@ -83,8 +85,33 @@ export async function detectCapabilities(
   const reducedMotion =
     typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /**
+   * WebGPU is **opt-in**, and it is opt-in because it is broken here rather than because it is new.
+   *
+   * ARCHITECTURE.md says "WebGPU first, WebGL2 fallback", and that is still the intent — but the
+   * path had never been run. Every screenshot in this project was taken through `?engine=webgl2`,
+   * which is what the harness forces, so nobody had looked at what a browser with `navigator.gpu`
+   * actually gets. It gets a **black canvas with a working HUD on top of it**: the scene mounts,
+   * the simulation runs, the panels fill with real numbers, and the 3D is not drawn at all.
+   *
+   * The cause is this project's own deep-import rule meeting Babylon's shader store. A material
+   * imported deep — `Materials/PBR/pbrMaterial` — pulls in `Shaders/pbr.vertex`, which is GLSL, and
+   * nothing pulls `ShadersWGSL/pbr.vertex`. So on a WebGPU engine the store has no WGSL entry for
+   * anything the game draws and the effect that would compile it reads `shaderLanguage` off
+   * `undefined`: seven identical page errors before the first frame, `terrain` failing to start
+   * outright, and then a canvas that stays at `clearColor`.
+   *
+   * Fixing it means importing the WGSL twin of every shader the game uses — 469 modules live under
+   * `ShadersWGSL/` and PBR alone drags a long list of includes. That is real work and it is not
+   * done blind: this container's WebGPU is SwiftShader, which also refuses the terrain's 7 MB
+   * vertex buffer outright, so a fix cannot be verified here even if it is correct. Until somebody
+   * can run it on real hardware, defaulting to WebGPU means handing every Chrome and Edge visitor a
+   * black screen, and WebGL2 means handing them the park.
+   *
+   * `?engine=webgpu` still selects it, so the path stays reachable for exactly that verification.
+   */
   let webgpu = false;
-  if (engine !== 'webgl2' && nav && 'gpu' in nav) {
+  if (engine === 'webgpu' && nav && 'gpu' in nav) {
     try {
       const { WebGPUEngine } = await import('@babylonjs/core/Engines/webgpuEngine');
       webgpu = await WebGPUEngine.IsSupportedAsync;
