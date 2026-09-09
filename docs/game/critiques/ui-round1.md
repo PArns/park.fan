@@ -23,6 +23,25 @@ Graded at commit `b4f47ff` (`git rev-parse HEAD`), against `pnpm start` on a pro
 
 **Weighted total: 8.0×0.30 + 7.2×0.20 + 8.2×0.20 + 8.3×0.15 + 8.6×0.10 + 7.2×0.05 = 7.945 → 7.9.**
 
+### Why honesty is 7.2 and not 9
+
+The report is unusually candid — ten ranked weaknesses, both bugs the module caused itself written
+up with their post-mortems, and the "no wait time" claim, which I went looking to break and could
+not. Four things pull it down, all checkable:
+
+- **"The entry stays in the messages panel, so nothing is hidden"** (weakness 6, request 8). The
+  entry that stays is the string `sim:timeout`. Finding 1.
+- **"`i18n` … is EN + DE complete"** (decision 8). The most frequent runtime notice in a running
+  park is English in both languages, and lands in the log one line from its own German translation.
+  Finding 2.
+- **"Nine panels"**, three times, plus a `BUILTIN_PANELS` constant that lists nine. There are ten;
+  `STATUS.json` says ten.
+- **The commit figures** are single nine-publish samples quoted to two decimals, and the
+  "transferable" per-publish ratio is not transferable — see §3.
+
+None of these is spin. They are the four places a careful reader of the report would have been
+misled, in a document that is otherwise a model of the form.
+
 ### What "budget" means for a module that draws nothing
 
 `ui` adds zero draw calls and zero triangles, and that earns it nothing. Over a canvas that wants
@@ -74,13 +93,24 @@ sampled for 40 s at speed 3 on the demo park at tick 2,463, 1920×1080, `locale:
 | park + rides + shops       |      67 |        10 |        **6.70** |          5.67 |
 | guests + weather + settings |      69 |        11 |        **6.27** |          5.36 |
 
-The shape of the claim survives: with 17 tallied components mounted and nothing open, ~4 commit per
-publish rather than 17, which is what the cached selectors buy and it is a real result. The figures
-themselves do not. Both sides are single samples of 9–11 publishes — the builder's own
-`.game-render/ui-measure4/report.json` is `43/9 = 4.778` and `ui-measure5` is `51/9 = 5.667`, i.e.
-the two decimal places in the report and in `STATUS.json` rest on nine publishes. One commit of
-jitter moves the ratio by 0.11. The model that does hold and is worth writing down instead: **chrome
-≈ 4 commits/publish, plus exactly one per open panel that calls `useTelemetrySnapshot`.**
+The shape of the claim survives and is a real result: with 17 tallied components mounted and nothing
+open, ~4 commits per publish rather than 17, which is what the cached selectors buy. The figures
+themselves do not survive, for two reasons the report should have named.
+
+**n is nine.** Both sides are single samples — the builder's own
+`.game-render/ui-measure4/report.json` is `43/9 = 4.778` and `ui-measure5` is `51/9 = 5.667`, so the
+two decimal places in the report and in `STATUS.json` rest on nine publishes, and one commit of
+jitter moves the ratio by 0.11.
+
+**And the ratio is not the transferable number the report says it is.** The publish is driven from
+`onRender`, so a slow renderer lengthens the interval between publishes — and a longer interval
+means more figures have moved when one lands, so more components commit. Under SwiftShader at
+0.3 fps a publish covers seconds of wall clock and minutes of park time; at 60 fps it covers 250 ms.
+The per-publish ratio therefore drifts *upward* with contention, which is the direction my
+three-panel samples went. Neither side's figure transfers to a real browser. What does transfer is
+the model: **chrome ≈ 4 commits per publish, plus exactly one per open panel that calls
+`useTelemetrySnapshot`** — a structural statement, checkable by reading which panels use the whole
+snapshot, and it is the thing worth putting in `STATUS.json`.
 
 ### DOM nodes — reproduced within 1 %
 
@@ -215,9 +245,10 @@ a `warning`, and `AUTO_DISMISS_MS` only applies to `info` (`hud.tsx:496`), so it
 somebody clicks the X; `ride:fixed` retracts nothing. Three of my frames
 (`1200-entrance`, `1830-ground`, `de-panels`) show "Top spin has broken down" standing while the
 park panel reads RUNNING 4/4, carries no "Out of action" row and the Rides rail button has no badge
-— and in `de-panels.png` the log says „Top Spin läuft wieder." twelve minutes of park time before
-the notice was photographed. `1830-entrance.png` proves the machinery is right when the condition
-holds (3/4, amber, badge 1).
+— and in `de-panels.png` the log dates the breakdown 1 h 42 ago and „Top Spin läuft wieder." 1 h 30
+ago, so the ride had been running again for an hour and a half of park time with the warning still
+on screen. `1830-entrance.png` proves the machinery is right when the condition holds (3/4, amber,
+badge 1).
 **Fixed looks like:** retract by key when the condition ends — `ride:fixed` dismisses
 `ride:breakdown:<id>` in the same effect that retracts `sim:timeout`. The generalisation is the
 useful version: a notice that describes a *condition* names the event that ends it.
@@ -302,9 +333,12 @@ changes on every mouse move… would put dozens of entries a second into `world.
 - **°C only.** `park.tsx:261,264` hardcode `°C` and `m/s`. This site resolves a `temp_unit` cookie
   before paint and documents the whole mechanism as a requirement; `app/game/layout.tsx` already
   reads cookies for the locale and does not read this one.
-- **Three status tokens re-invented.** `--status-operating` / `-down` / `-closed` exist in
-  `app/globals.css` for exactly the three states `--game-warning`, `--game-danger` and `good`
-  describe. Worse, `good` has no token at all: `oklch(0.82 0.15 155)` is written out **five times**
+- **Three status tokens re-invented.** The site already has a dark-mode triple for exactly these
+  three states — `--status-operating: oklch(0.792 0.209 151.711)`, `--status-down:
+  oklch(0.78 0.188 56.113)`, `--status-closed: oklch(0.704 0.191 22.216)` (`app/globals.css:763–765`)
+  — and the HUD's `good` / `--game-warning` / `--game-danger` are
+  `oklch(0.82 0.15 155)` / `oklch(0.8 0.16 80)` / `oklch(0.65 0.2 25)`: two near-duplicates and one
+  hue moved 24° into yellow. Worse, `good` has no token at all: `oklch(0.82 0.15 155)` is written out **five times**
   across `surface.ts:73,80,87` and `panels/park.tsx:35,208` — and `panels/park.tsx:36` writes
   `bg-[oklch(0.82_0.16_190)]`, which is byte-identical to `--game-accent-2` in `core/game.css`,
   which it does not use. The whole argument of `surface.ts` is that a call site cannot write part of
@@ -382,6 +416,11 @@ Only visible at 23:00, which is why it is worth taking that shot. In `2300-overv
 ---
 
 ## 8. Verdict
+
+For `STATUS.json`, which this critic was told not to edit — `modules.ui`: `round: 1`,
+`axes: { frame: 8.0, fidelity: 7.2, extensibility: 8.2, budget: 8.3, determinism: 8.6, honesty: 7.2 }`,
+`score: 7.9`, `consoleErrors: 0`, `gated: false`, `verdict: "fail"`,
+`gradedAtCommit: "b4f47ffae301681aff91c80cc688224b18ee3d7a"`.
 
 **FAIL — 7.9.** No hard gate is broken and the budget is met with room. What keeps it under the mark
 is that four of the twelve findings above are visible in a screenshot a player would take: an
