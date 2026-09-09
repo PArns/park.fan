@@ -242,7 +242,9 @@ function clampDuration(minutes: number): number {
  *
  * `resolveTimeZone` is what makes this safe before the zone arrives: an unknown
  * zone reads the day in the READER's, which is the right answer for the
- * commonest case by far and never worse than the constant it replaces.
+ * commonest case by far. Every call site that can reach here passes a real zone,
+ * and the one that could not would have computed `date` from this same fallback,
+ * so the two stay consistent either way.
  */
 function nowFloorMinute(date: string, timezone: string | undefined, now: number): number {
   const clock = dayClock(date, resolveTimeZone(timezone), now);
@@ -253,6 +255,15 @@ function nowFloorMinute(date: string, timezone: string | undefined, now: number)
 /**
  * An hour after the last entry, so several adds in a row spread across the day —
  * and never before `floorMinute`, which only ever raises the answer.
+ *
+ * The spread runs into `clampMinute`'s 25:00 ceiling, and on today it reaches it
+ * sooner because it starts from the clock: five presses after 20:00 exhaust the
+ * day and further ones land on the ceiling together. They draw side by side —
+ * see `byStart`, which keeps insertion order within a minute exactly so the grid
+ * can lay them out as columns — and that reads as "these do not fit today",
+ * which is true. It is the same judgement `nowFloor` makes at the other end, and
+ * the alternative is the behaviour this replaces: eight rides filed 10:00–17:00
+ * at twenty past eight in the evening, indistinguishable from a morning plan.
  */
 function nextFallbackStart(existing: readonly PlannerEntry[], floorMinute = 0): number {
   const spread =
