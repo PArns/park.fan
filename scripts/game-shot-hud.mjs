@@ -7,8 +7,12 @@
  * been a discussion about a figure only one side could take. This is that figure, and the four
  * others the same critique named, in one run per viewport.
  *
- *   node lib/game/ui/shot-hud.mjs --url=http://localhost:3001 --w=1280 --h=720 \
+ *   node scripts/game-shot-hud.mjs --url=http://localhost:3001 --w=1280 --h=720 \
  *        --panels=park --tod=13:00 --out=.game-render/ui-r2 --tag=after
+ *
+ * It lives here rather than in `lib/game/ui/` for the reason `scripts/game-shot-bar.mjs` does: a
+ * module folder is the module, and a harness that boots a browser is neither shipped nor imported
+ * by it.
  *
  * ## Three coverage numbers, because "the HUD covers X" is three different claims
  *

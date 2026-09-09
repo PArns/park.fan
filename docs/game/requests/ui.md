@@ -263,16 +263,112 @@ own root is `z-10` — so it is not merely on top of the panel column, it is unr
 inside it: a child cannot climb out of its stacking context, so no `z-` in `ui` can put a panel
 over it.
 
-It never showed while the dock stopped 96 px above the floor. It does now: the bottom cluster
-centres in what the dock leaves (`pr-[368px]`), so the column reaches `bottom-3` and gains 84 px,
-and the last 123 × 38 px of it sits under the watermark — measured at 1280 × 720, on top of the
-park panel's "Path nodes" row. The bottom docked panel reserves 46 px for it in the meantime,
-which is 46 px of column spent on a logo.
+It never showed while the dock stopped 96 px above the floor. It did the moment the column
+reached `bottom-3`: the last 123 × 38 px of the bottom panel sat under the watermark, measured at
+1280 × 720 on top of the park panel's "Path nodes" row, and the round-1 critique named it.
 
 Two things have changed since that watermark was written. The toolbelt now carries
-**"park.fan Coaster"** at its right end, so the mark is on screen twice, eight pixels apart at
-1280. And the HUD is no longer transparent chrome over a park — the bottom cluster is a tray, and
+**"park.fan Coaster"** at its right end, so the mark is on screen twice, eight pixels apart at 1280. And the HUD is no longer transparent chrome over a park — the bottom cluster is a tray, and
 the corner is where its neighbour ends.
 
-Ask: drop the corner copy (the toolbelt has it), or move it to the bottom **left** under the
-notice stack, or raise the HUD root above it. Any of the three lets `ui` drop the 46 px reserve.
+**Round 2, what `ui` did about it.** The column stops at `bottom-[52px]` now, so nothing is drawn
+under the logo at any viewport (`.game-render/ui-r2/r2-1280x720-park.png`: the panel's lower edge
+is at y = 585, the lockup's box starts at 670). The version before it reserved the same space as
+`pb-[46px]` INSIDE the bottom panel's body, and that was wrong twice over: padding in a scroller
+moves with the content, so the logo ends up over whatever scrolled under it, and a panel that
+scrolls is what round 2 also had to build. Either way it is 52 px of column spent on a mark that
+is already on screen.
+
+Ask, unchanged: drop the corner copy (the toolbelt has it), or move it to the bottom **left**
+under the notice stack, or raise the HUD root above it. Any of the three gives `ui` the 52 px
+back. `hidden sm:block` on it means the phone is already unaffected.
+
+---
+
+## 12. The 768 px paint break: the layout is right and the raster is not
+
+Shared finding with `tools`, and neither of us can close it alone. `docs/game/requests/tools.md`
+§8 has their half.
+
+**What is observed.** At 1024 × 768 the build tray shows a horizontal band of park through its own
+body — measured at x = 350, the pixels from y = 574 to y = 624 are the park (74, 107, 56), inside
+a tray whose box runs 339 → 696. `tools` measured the same band in the critic's frame and found it
+**blurred but not darkened** (variance 117 inside against 134 outside), i.e. the tray's
+`backdrop-filter` painted there and its `background-color` did not.
+
+**What is not the cause.** The DOM is correct in the same run the pixels are wrong. Measured with
+`scripts/game-shot-hud.mjs` in the run that produced the broken frame: the section is
+`overflow: hidden`, box 339 → 696; the grid inside it is `overflow-y: auto` with
+`max-height: 291.84px`, box 368 → 660; every tile below 660 is clipped in layout. Nothing is
+mislaid out, so nothing in either module's flex boxes can be blamed for it.
+
+**What made it reproducible.** A repaint of the tray, i.e. a change of its width. `ui` was the
+cause of that: the bottom cluster padded itself by the dock's width **only while a panel was
+docked**, and the tray is `w-[min(64rem,100%)]` of that box, so opening or closing a panel relaid
+the whole palette out. It reproduced at 1024, 1152 and 1366 — every width where that `min()`
+resolves to the box rather than to 64rem — and not at 1440 or 1920, where the tray is 1024 px in
+both states and the toggle only moves it. That is the correlation the critique read as "every
+768 px-tall window"; the heights in its test matrix and the widths are confounded.
+
+**Where it stands.** The cluster's box now has one width per viewport and the dock's state changes
+a margin instead (`hud.tsx`, the comment above `data-hud-bottom`'s build wrapper). The band has
+not appeared since: **0 of 6** frames at 768 px height after the change
+(`.game-render/ui-r2/final-1024x768-park.png`, `r2-1024x768-park.png`,
+`.game-render/ui-r2-frames/1024x768/1300-overview.png` and `2300-overview.png`, plus two runs of
+the measurement harness), against **4 of 4** before it — twice on the dev server, once on the
+production build the critic graded, and five consecutive screenshots 25 s apart in one session,
+so it is not a transient that a repaint clears.
+
+**What is still open, and it is the part that points at `ui`.** A relayout is a trigger, not a
+cause: a Chromium compositor that drops an element's background paint while keeping its backdrop
+filter will find another trigger — a window resize, a category opening, a scroll. The surface
+stack that makes it possible is this module's: `TRAY` in `lib/game/ui/surface.ts` is a translucent
+`background-color` + a `background-image` sheen + `backdrop-blur-[24px] backdrop-saturate-[1.25]`,
+over a WebGL canvas, and the build tray wears it. It cannot be A/B'd from here any more, because
+the trigger is gone and mid-session style mutations repaint the layer and hide the artefact — all
+seven mutations tried (backdrop-filter off, radius off, `contain: paint`, `translateZ(0)`,
+`isolation: isolate`, an integer max-height, `overflow: hidden` on the grid) "fixed" it equally,
+which proves only that a repaint fixes it.
+
+**Ask, of whoever sees it next:** capture it with `scripts/game-shot-hud.mjs` (it writes the DOM
+boxes beside the PNG, which is what separates a layout bug from a raster one) and say which
+viewport, which server and what was done to the tray beforehand. If it returns with the width
+constant, the next thing to try is `ui`'s material rather than either module's boxes.
+
+---
+
+## 13. The build cluster is 41 % of a 720p frame, and `ui` cannot fix that from here
+
+Not a bug, and not a complaint about the palette's design — a measurement `tools` should have,
+because the round-2 critique of `ui` was decided by a number that is mostly this.
+
+Measured with `scripts/game-shot-hud.mjs`, `document.elementFromPoint` over a 240 × 240 grid
+(57,600 points), demo park, park panel open, after this round's changes:
+
+| viewport    | whole HUD | `ui` | `[data-build-bar]` |
+| ----------- | --------: | ---: | -----------------: |
+| 1280 × 720  |    63.6 % | 22.4 |           **41.2** |
+| 1024 × 768  |    63.5 % | 26.6 |           **36.8** |
+| 1440 × 900  |    51.1 % | 16.0 |           **35.1** |
+| 1920 × 1080 |    32.0 % | 10.0 |           **22.0** |
+
+Two things in it are worth a look.
+
+**The 38vh palette.** `max-h-[min(38vh,320px)]` on the item grid is 274 px at 720 and 320 px above
+900, and the tray around it adds a 28 px header and a 36 px tab strip. At 1280 × 720 the cluster
+is 956 × 399 px, of which the grid is 274 — more than the whole of `ui`. Two rows and a peek is
+what the comment says it wants; two rows is 244 px at the current tile height.
+
+**`w-full` on the root, with `pointer-events-auto` on it.** Before this round the cluster's root
+box was 1540 px wide at 1920 × 1080 while the tray inside it was 1024, so a
+**516 × 446 px band of transparent element** sat over the park and swallowed every click in it.
+`ui` was handing it that width (`w-full` of a full-width row), and the fix is on this side —
+the wrapper is `w-[min(64rem,calc(100%-300px))]` now, which is why the build share at 1920 reads
+22.0 % against 33.2 % before. Worth knowing on your side anyway: a `pointer-events-auto` element
+is a hit wherever its box is, painted or not.
+
+The cost of that wrapper, stated plainly: the cluster is handed 300 px less width than the window
+has, at every viewport, whether or not a panel is docked — 956 px at 1280 where an undocked HUD
+used to give 1024. That is what buys a palette that never relays out under the pointer (§12). If
+`tools` would rather have the width back, the alternative is a `max-w` of your own plus a promise
+that the tray's own width never changes with it, and we can wire the dock's state through.

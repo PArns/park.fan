@@ -244,6 +244,7 @@ function PanelFrame({
   showDockToggle = true,
 }: PanelFrameProps) {
   const root = useRef<HTMLDivElement>(null);
+  const body = useRef<HTMLDivElement>(null);
   const drag = useRef<{
     id: number;
     startX: number;
@@ -296,7 +297,7 @@ function PanelFrame({
   return (
     <div
       ref={root}
-      className={cn(PANEL, 'flex min-h-0 min-w-0 flex-col overflow-hidden', className)}
+      className={cn(PANEL, 'relative flex min-h-0 min-w-0 flex-col overflow-hidden', className)}
       style={style}
       data-panel={def.id}
     >
@@ -334,25 +335,63 @@ function PanelFrame({
           <X className="size-3.5" />
         </HudIconButton>
       </div>
-      {/* The body scrolls inside the header, and it SAYS SO. It always did the first half —
-          `overflow-y: auto` under a `shrink-0` header — and the second half was missing:
-          Chromium's overlay scrollbar over a dark translucent body is invisible until something is
-          dragged, so a park panel with 46 px below the fold read as a panel with its last row cut
-          off. A thin permanent gutter is cheaper than the alternative, which is a module deciding
-          for a player which of its rows they may not have. */}
+      {/* The body scrolls inside the header, and {@link ScrollEdge} is what says so. */}
       {collapsed ? null : (
         <div
-          className={cn(
-            'min-h-0 overflow-x-hidden overflow-y-auto p-[11px]',
-            '[scrollbar-width:thin] [scrollbar-color:rgb(255_255_255/0.22)_rgb(0_0_0/0.25)]',
-            bodyClass
-          )}
+          ref={body}
+          className={cn('min-h-0 overflow-x-hidden overflow-y-auto p-[11px]', bodyClass)}
           data-panel-body=""
         >
           <def.Body t={t} locale={locale} ui={ui} store={store} close={() => ui.close(def.id)} />
         </div>
       )}
+      {collapsed ? null : <ScrollEdge target={body} />}
     </div>
+  );
+}
+
+/**
+ * The mark that says a panel has more below, and it is a shadow rather than a scrollbar.
+ *
+ * The body always scrolled; nothing said so. Chromium's scrollbar in this app is an OVERLAY —
+ * measured on all three open panels at 1280 x 720, `offsetWidth - clientWidth` = 0 — so it is
+ * invisible until something is dragged, and a panel with rows below the fold reads as a panel
+ * whose last row was cut off. Neither CSS route reaches it: `scrollbar-width: thin` leaves the
+ * gutter at 0, and `::-webkit-scrollbar` is ignored outright because `globals.css` sets
+ * `scrollbar-color` on `.dark`, which inherits into every element in the game. That is also the
+ * reason not to chase it — on macOS an overlay scrollbar is the platform default and a real
+ * player would never see one either.
+ *
+ * So: a 24 px shadow across the bottom edge of the panel, drawn only while there is something
+ * under it and gone at the end of the scroll. It is the same gradient the well uses, so it reads
+ * as depth in the moulding rather than as a widget.
+ */
+function ScrollEdge({ target }: { target: React.RefObject<HTMLDivElement | null> }) {
+  const [more, setMore] = useState(false);
+  useEffect(() => {
+    const el = target.current;
+    if (!el) return;
+    const read = () => {
+      const slack = el.scrollHeight - el.clientHeight - el.scrollTop;
+      setMore(el.scrollHeight - el.clientHeight > 4 && slack > 4);
+    };
+    read();
+    const observer = new ResizeObserver(read);
+    observer.observe(el);
+    for (const child of el.children) observer.observe(child);
+    el.addEventListener('scroll', read, { passive: true });
+    return () => {
+      observer.disconnect();
+      el.removeEventListener('scroll', read);
+    };
+  }, [target]);
+  if (!more) return null;
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 bottom-0 h-6 rounded-b-(--game-hud-radius) bg-[image:linear-gradient(0deg,rgb(0_0_0/0.45),rgb(0_0_0/0.14)_55%,transparent)]"
+      data-panel-more=""
+    />
   );
 }
 

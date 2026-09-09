@@ -8,12 +8,21 @@
  * does it — `lib/game/modules.ts` is loaded on the worker, and this file pulls in React and nine
  * panels. The worker never runs the import; the bundler keeps them in their own chunk.
  *
- * ## The park panel opens on boot, and the reason is not the screenshot
+ * ## The park panel opens on boot on a desktop, and does not on a phone
  *
  * A HUD whose panels are all shut is a HUD a first-time player has no reason to believe has
- * anything in it. The overview is the one panel that is right for every park at every minute, it
- * is 344 px of a 1920 px frame, and closing it is one click that sticks for the session. Every
- * other panel starts shut.
+ * anything in it. The overview is the one panel that is right for every park at every minute, and
+ * closing it is one click that sticks for the session. At 1920 x 1080 it costs 5.6 % of the frame
+ * and the park still has two thirds of it.
+ *
+ * Below `sm` there is no column: the panel is a SHEET, 58svh of an 844 px phone, and opening it on
+ * boot means the first thing a player sees on a phone is a wall of figures over the park they came
+ * for. Measured at 390 x 844: 82.5 % of the frame with the sheet up against 68.4 % without it, and
+ * the missing 14 points are the park. So the phone starts with the rail — nine lit keys with the
+ * park's own among them — and the park.
+ *
+ * `matchMedia` here is a main-thread call inside `main()`, not module scope: `module.ts` reaches
+ * this file through a dynamic import that only ever runs on the main thread.
  */
 
 import { Coins, Hourglass, Smile, Users } from 'lucide-react';
@@ -29,7 +38,7 @@ export function createUiMain(ctx: MainContext): MainHandle {
   const runtime = new UiRuntime(ctx, t);
   const offPanels = registerBuiltinPanels(runtime, t);
   const offStats = registerBuiltinStats(runtime, t, locale);
-  runtime.open('park');
+  if (!matchesPhone()) runtime.open('park');
 
   return {
     api: runtime,
@@ -48,6 +57,12 @@ export function createUiMain(ctx: MainContext): MainHandle {
       runtime.dispose();
     },
   };
+}
+
+/** The same breakpoint `useNarrow()` watches, asked once, at boot. */
+function matchesPhone(): boolean {
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
+  return window.matchMedia('(max-width: 639.98px)').matches;
 }
 
 /**
