@@ -2,6 +2,8 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import type { AttractionOutage } from '@/lib/api/types';
+import { formatShortDuration } from '@/lib/utils/duration';
+import { outageElapsedMinutes } from '@/lib/utils/outage';
 
 /**
  * "Störung gemeldet seit …" — the one sentence this site says about a ride that
@@ -29,12 +31,23 @@ import type { AttractionOutage } from '@/lib/api/types';
  * Seven days is why a weekday is unambiguous — the query looks back no further,
  * and anything older comes back with `startObserved: false`.
  *
- * ## Why there is no elapsed counter
+ * ## The elapsed clause is measured, never counted
  *
+ * „Seit Dienstag, 16:04" leaves the subtraction to the reader, and on a Thursday
+ * that is a sum nobody does standing in front of a ride. The duration beside it
+ * is the API's own `estimate.elapsedMinutes` and **not** `now - startedAt`:
  * `queue_data` is a change log whose hourly heartbeat copies the previous row's
  * status AND its `data_source` forward, so a carried DOWN is indistinguishable
- * from an observed one. Minutes derived from it would be wrong upward exactly on
- * the long outages, which are the ones anybody would quote.
+ * from an observed one, and wall minutes derived from it would be wrong upward
+ * exactly on the long outages — the ones anybody would quote.
+ *
+ * What the API sends instead is counted on the park's **operating** clock, which
+ * is why the clause names it („3:00 Std. bei offenem Park"): an outage that
+ * began at 18:00 in a park that shut at 20:00 is two hours old the next morning,
+ * not sixteen, and the recovery figures under it are conditioned on that same
+ * number. Both guards live in `outageElapsedMinutes` — no estimate means no
+ * opening clock to count on, and an unobserved start makes every duration a
+ * lower bound rather than a measurement.
  *
  * ## Two signals, two sentences
  *
@@ -91,9 +104,17 @@ export function OutageNote({
       })
     : t(inferred ? 'startUnknownClosed' : 'startUnknown');
 
+  const elapsed = outageElapsedMinutes(outage);
+
   return (
     <span className={className} data-nosnippet>
       {label}
+      {elapsed !== null && (
+        <>
+          {' · '}
+          {t('elapsed', { duration: formatShortDuration(elapsed, locale) })}
+        </>
+      )}
     </span>
   );
 }

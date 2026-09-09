@@ -778,6 +778,7 @@
     "outage": {
       "since": "Storing gemeld sinds {when}",
       "startUnknown": "Storing gemeld, begin onbekend",
+      "elapsed": "{duration} met het park open",
       "estimate": {
         "range": "Storingen zoals deze duurden meestal nog {from} tot {to}.",
         "rangeOpen": "Storingen zoals deze duurden meestal nog meer dan {from}.",

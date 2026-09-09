@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import type { OutageEstimate } from '@/lib/api/types';
 import { formatShortDuration } from '@/lib/utils/duration';
+import { outageRecoveryPercent, outageRemainingWindow } from '@/lib/utils/outage';
 
 /**
  * "Wie lange dauert das noch?" — the one thing a visitor standing at a stopped
@@ -36,15 +37,19 @@ import { formatShortDuration } from '@/lib/utils/duration';
  * and 255 minutes around a median of 70. A single number would read as a
  * promise, so the compact form renders the quartile range and lets its width
  * carry the uncertainty. Past roughly two hours the upper quartile stops
- * resolving and the API sends `p75: null`; that renders as „ab 50 Min.", which
- * is the honest shape of a long outage — still measurable, no longer bounded.
+ * resolving; that renders as „über 1:55 Std.", which is the honest shape of a
+ * long outage — still measurable, no longer bounded. Which shape the payload
+ * uses to say so is `outageRemainingWindow`'s problem, not this component's: it
+ * arrives as an absent key at least as often as the documented `null`, and the
+ * `=== null` test that used to sit here formatted the difference as
+ * „NaN:NaN Std." on exactly the long outages this branch exists for.
  *
  * ## Rounding
  *
  * Percentages in steps of five, because the calibration error is 2.55 points and
  * "47 %" claims a precision the estimate does not have. Minutes in steps of five
  * too, which is the site's convention everywhere and the real resolution of the
- * feed.
+ * feed. Both live in `lib/utils/outage.ts`.
  *
  * `data-nosnippet` for the same reason as `OutageNote`: it is true while it is
  * on the page and false the moment the ride restarts.
@@ -67,30 +72,31 @@ export function OutageEstimateNote({
 
   if (!estimate) return null;
 
-  const percent = roundTo5(estimate.recoveryWithin60 * 100);
-  const remaining = estimate.remaining;
+  const percent = outageRecoveryPercent(estimate);
+  const remaining = outageRemainingWindow(estimate);
 
   const range = remaining
-    ? remaining.p75 === null
+    ? remaining.to === null
       ? t('rangeOpen', {
-          from: formatShortDuration(roundTo5(remaining.p25), locale),
+          from: formatShortDuration(remaining.from, locale),
         })
       : t('range', {
-          from: formatShortDuration(roundTo5(remaining.p25), locale),
-          to: formatShortDuration(roundTo5(remaining.p75), locale),
+          from: formatShortDuration(remaining.from, locale),
+          to: formatShortDuration(remaining.to, locale),
         })
     : null;
 
   // A rounded 0 % would read as "never", a claim the curve does not make: the
   // thinnest measured bucket is still 8.5 %. If a future curve produced it,
-  // saying nothing beats saying never.
+  // saying nothing beats saying never. `outageRecoveryPercent` answers `null`
+  // there, and the range alone carries the line.
   //
   // The `&& !remaining` this used to carry defeated the guard exactly where it
   // was needed: a long-elapsed bucket with a sub-2.5 % 60-minute share and a
   // still-resolvable median would have rendered "0 %" beside a numeric time
   // range, which reads as "never coming back" rather than "we cannot say".
   // The range alone is honest; the zero is not.
-  if (percent <= 0) {
+  if (percent === null) {
     return remaining && range ? (
       <span className={className} data-nosnippet>
         {range}
@@ -114,9 +120,4 @@ export function OutageEstimateNote({
       {range ? t('fullWithRange', { percent, range }) : t('fullProbability', { percent })}
     </span>
   );
-}
-
-/** Five-point steps, the precision the calibration supports. */
-function roundTo5(value: number): number {
-  return Math.round(value / 5) * 5;
 }

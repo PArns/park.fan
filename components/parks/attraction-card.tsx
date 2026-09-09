@@ -177,6 +177,16 @@ export function AttractionCard({
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const hasBottomPanel = isOperatingOrUnknown && waitTime !== null;
 
+  // The rule under the top panel is that panel's lower EDGE — it exists to seat
+  // the glass on the photo or on the wait-time panel below it. A ride that is
+  // DOWN and has no photo has neither: `hasBottomPanel` is false and the layer
+  // underneath is the flat `from-muted to-card` placeholder, so the border and
+  // its inset shadow drew a hairline across the card with nothing but empty
+  // gradient under it. That is the line in PF-58's screenshot, and it is the
+  // only state that produces it — with a photo the edge is doing its job, and
+  // with a wait time there is a second panel to seat.
+  const hasPanelSeat = hasBottomPanel || Boolean(backgroundImage);
+
   return (
     <Link
       href={href as '/europe/germany/rust/europa-park'}
@@ -307,8 +317,13 @@ export function AttractionCard({
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            borderBottom: '1px solid var(--pk-panel-border)',
-            boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)',
+            // Both halves of the edge go together — see `hasPanelSeat`. The top
+            // shine stays either way: it is the sheet catching the light, not a
+            // seam against something below it.
+            borderBottom: hasPanelSeat ? '1px solid var(--pk-panel-border)' : undefined,
+            boxShadow: hasPanelSeat
+              ? 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)'
+              : 'inset 0 1px 0 var(--pk-panel-shine)',
           }}
         >
           <div

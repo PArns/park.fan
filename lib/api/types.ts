@@ -602,8 +602,17 @@ export interface OutageEstimate {
   recoveryWithin30: number;
   /** P(reported running again within 60 more operating minutes), 0-1. */
   recoveryWithin60: number;
-  /** Remaining operating minutes at the quartiles. Absent past ~2 hours. */
-  remaining?: { p25: number; median: number; p75: number | null };
+  /**
+   * Remaining operating minutes at the quartiles. Absent past ~2 hours.
+   *
+   * `p75` goes first: past roughly two hours elapsed the upper quartile stops
+   * resolving while the median still does, and the API drops the KEY rather
+   * than sending `null` (measured 2026-09-09 — `{"p25":117,"median":460}`).
+   * Optional here for that reason; read it through `outageRemainingWindow`,
+   * which treats both shapes as the same open range. A `=== null` test does
+   * not, and formatted the difference as „NaN:NaN Std.".
+   */
+  remaining?: { p25: number; median: number; p75?: number | null };
   /** Whether the park carried its own curve here. Diagnostic, not for display. */
   basis: 'park' | 'pooled';
 }
@@ -1032,6 +1041,18 @@ export interface AttractionResponse {
    * different state and carries the reason.
    */
   downtime?: DowntimeBlock;
+  /**
+   * The outage running RIGHT NOW — the history block's opposite number.
+   *
+   * On the endpoint since the field existed and undeclared here until PF-58,
+   * which is the whole of why the ride page said „Vorübergehend geschlossen"
+   * and nothing else while its own card on the park page carried both
+   * sentences. `useLiveAttractionData` overlays exactly the fields it names, so
+   * a field this type does not mention is a field the ride page reads off the
+   * day-cached shell — and an outage is the one thing on that payload that
+   * cannot survive a day.
+   */
+  outage?: AttractionOutage;
 }
 
 /**

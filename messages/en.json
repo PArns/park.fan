@@ -778,6 +778,7 @@
     "outage": {
       "since": "Outage reported since {when}",
       "startUnknown": "Outage reported, start unknown",
+      "elapsed": "{duration} with the park open",
       "estimate": {
         "range": "Outages like this one usually had {from} to {to} left.",
         "rangeOpen": "Outages like this one usually had more than {from} left.",
