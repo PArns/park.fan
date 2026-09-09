@@ -123,7 +123,8 @@
     "test:game-soak": "pnpm test:game-soak-long && pnpm test:game-soak-fine",
     "test:game-soak-long": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
     "test:game-soak-fine": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs --hours=6 --speed=2 --out=.game-render/soak-fine.json",
-    "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
+    "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs",
+    "game:tick-spikes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-tick-spikes.mjs"
   },
   "dependencies": {
     "@babylonjs/core": "9.25.0",
