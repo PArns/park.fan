@@ -102,7 +102,7 @@
     "game:warm-audit": "node scripts/game-warm-audit.mjs",
     "game:exposure-curve": "node scripts/game-exposure-curve.mjs",
     "game:teardown": "node scripts/check-game-teardown.mjs",
-    "test:game": "pnpm test:game-save-roundtrip && pnpm test:game-registry && pnpm test:game-lint && pnpm test:game-i18n && pnpm test:game-track && pnpm test:game-paths && pnpm test:game-shops && pnpm test:game-camera && pnpm test:game-tools && pnpm test:game-trains && pnpm test:game-rides && pnpm test:game-scenery && pnpm test:game-buildings && pnpm test:game-pools && pnpm test:game-ui && pnpm test:game-soak",
+    "test:game": "pnpm test:game-save-roundtrip && pnpm test:game-registry && pnpm test:game-lint && pnpm test:game-i18n && pnpm test:game-track && pnpm test:game-paths && pnpm test:game-shops && pnpm test:game-camera && pnpm test:game-tools && pnpm test:game-trains && pnpm test:game-rides && pnpm test:game-scenery && pnpm test:game-buildings && pnpm test:game-pools && pnpm test:game-flumes && pnpm test:game-ui && pnpm test:game-soak",
     "game:engine-probe": "node scripts/game-engine-probe.mjs",
     "game:day-budget": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-day-budget.mjs",
     "test:game-buildings": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/buildings/selftest.mjs",
@@ -124,7 +124,8 @@
     "test:game-soak-long": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
     "test:game-soak-fine": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs --hours=6 --speed=2 --out=.game-render/soak-fine.json",
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs",
-    "game:tick-spikes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-tick-spikes.mjs"
+    "game:tick-spikes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-tick-spikes.mjs",
+    "test:game-flumes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/flumes/selftest.mjs"
   },
   "dependencies": {
     "@babylonjs/core": "9.25.0",
