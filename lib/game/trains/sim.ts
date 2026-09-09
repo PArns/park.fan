@@ -270,7 +270,7 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
     const out: TrainState[] = [];
     const n = plan.blocks.length;
     for (let i = 0; i < count; i++) {
-      const index = ((plan.station - i) % n + n) % n;
+      const index = (((plan.station - i) % n) + n) % n;
       const block = plan.blocks[index];
       out.push({
         s: block.stop,

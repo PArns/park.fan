@@ -13,14 +13,14 @@ independently.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | R2  | R3      | Why it moved, or did not                                                                                                       |
-| --- | --------------------- | -----: | --: | ------: | --------------------------------------------------------------------------------------------------------------------------------- |
+| #   | Axis                  | Weight |  R2 |      R3 | Why it moved, or did not                                                                                                                                                                                                                                                                                   |
+| --- | --------------------- | -----: | --: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | The frame             |   30 % | 8.2 | **8.4** | One of the three things holding this axis down is fixed. At 3× the far timber goes from a dense speckled mass to distinguishable bents following the track. The showcase is **still** three layouts on a bare green plain, and 18:30 is **still** almost unlit — which is why this moved 0.2 and not more. |
-| 2   | Fidelity              |   20 % | 8.2 | **8.2** | Untouched. Supports are still vertical only and anything rolled past 78° is still skipped.                                     |
-| 3   | Extensibility         |   20 % | 8.8 | **8.8** | Untouched. Still nothing in a shipped pack.                                                                                    |
-| 4   | Budget and behaviour  |   15 % | 8.2 | **8.5** | **−49,248 triangles at unchanged draw calls** and `ground` untouched. The round-2 finding was "ties carry one LOD level, rails and supports carry none"; supports carry one now. |
-| 5   | Determinism and state |   10 % | 9.4 | **9.4** | Untouched.                                                                                                                     |
-| 6   | Honesty of the report |    5 % | 7.5 | **8.0** | The self-contradicting sentence is gone and the paragraph now describes what actually shipped, with the before/after table and with what the change does **not** fix. |
+| 2   | Fidelity              |   20 % | 8.2 | **8.2** | Untouched. Supports are still vertical only and anything rolled past 78° is still skipped.                                                                                                                                                                                                                 |
+| 3   | Extensibility         |   20 % | 8.8 | **8.8** | Untouched. Still nothing in a shipped pack.                                                                                                                                                                                                                                                                |
+| 4   | Budget and behaviour  |   15 % | 8.2 | **8.5** | **−49,248 triangles at unchanged draw calls** and `ground` untouched. The round-2 finding was "ties carry one LOD level, rails and supports carry none"; supports carry one now.                                                                                                                           |
+| 5   | Determinism and state |   10 % | 9.4 | **9.4** | Untouched.                                                                                                                                                                                                                                                                                                 |
+| 6   | Honesty of the report |    5 % | 7.5 | **8.0** | The self-contradicting sentence is gone and the paragraph now describes what actually shipped, with the before/after table and with what the change does **not** fix.                                                                                                                                      |
 
 **8.4 × 0.30 + 8.2 × 0.20 + 8.8 × 0.20 + 8.5 × 0.15 + 9.4 × 0.10 + 8.0 × 0.05 = 8.535 → 8.54.**
 
@@ -35,11 +35,11 @@ Extensibility 8.8, well clear of the floor. The diff touches `lib/game/track/sup
 
 `/game?showcase=track`, noon, `.game-render/track-lod/` against `.game-render/critic-track-r2/`:
 
-| camera     | triangles before | after   | Δ        | draw calls |
-| ---------- | ---------------: | ------: | -------: | ---------: |
-| `overview` |          590,644 | 541,396 | −49,248  | 109 → 109  |
-| `close`    |          809,380 | 760,132 | −49,248  |   99 → 99  |
-| `ground`   |          792,648 | 792,648 |        0 |   73 → 73  |
+| camera     | triangles before |   after |       Δ | draw calls |
+| ---------- | ---------------: | ------: | ------: | ---------: |
+| `overview` |          590,644 | 541,396 | −49,248 |  109 → 109 |
+| `close`    |          809,380 | 760,132 | −49,248 |    99 → 99 |
+| `ground`   |          792,648 | 792,648 |       0 |    73 → 73 |
 
 `ground` being unchanged is the check that matters: the swap is at 180 m on `medium`, so the
 coaster a player is standing in front of keeps every member. And the identical delta at `overview`

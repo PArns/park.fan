@@ -24,37 +24,37 @@ commands in §2. Every frame in §3 was opened and looked at.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | R1  | R2      | One sentence                                                                                                                                                                                                        |
-| --- | --------------------- | -----: | --: | ------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The frame             |   30 % | 6.5 | **7.6** | The flagship paving's tone range went **2.9 % → 15.7 %** on the round-1 critic's own metric, two lamps reach the paving instead of one, and `2200-ground.png` is the best frame in the project.                     |
-| 2   | Fidelity              |   20 % | 5.8 | **5.8** | Untouched. Still no camber, no crossfall, no gutter, no drainage; an 8 m avenue still has two vertices across its width; the 8/6/4 hierarchy is still a width number.                                               |
-| 3   | Extensibility         |   20 % | 5.0 | **7.0** | `attachPathStyles` claims both categories, walks `registry.packs()` **and** subscribes to `onPack`, and `test:game-registry` proves a pack style resolves (6 → 7). No shipped pack carries one, so it is unphotographed. |
-| 4   | Budget and behaviour  |   15 % | 6.0 | **6.0** | Unmoved and re-measured: **48,144 triangles, of which 24,243 (50.4 %) are kerb**, byte for byte the round-1 figures, and still no LOD and no spatial split.                                                          |
-| 5   | Determinism and state |   10 % | 9.5 | **9.6** | Same guarantees, now actually run: `pnpm test:game-paths` is in the chain and green, 0.276 µs per query against a 2 µs assertion that no longer depends on `QUERIES`.                                               |
+| #   | Axis                  | Weight |  R1 |      R2 | One sentence                                                                                                                                                                                                                 |
+| --- | --------------------- | -----: | --: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The frame             |   30 % | 6.5 | **7.6** | The flagship paving's tone range went **2.9 % → 15.7 %** on the round-1 critic's own metric, two lamps reach the paving instead of one, and `2200-ground.png` is the best frame in the project.                              |
+| 2   | Fidelity              |   20 % | 5.8 | **5.8** | Untouched. Still no camber, no crossfall, no gutter, no drainage; an 8 m avenue still has two vertices across its width; the 8/6/4 hierarchy is still a width number.                                                        |
+| 3   | Extensibility         |   20 % | 5.0 | **7.0** | `attachPathStyles` claims both categories, walks `registry.packs()` **and** subscribes to `onPack`, and `test:game-registry` proves a pack style resolves (6 → 7). No shipped pack carries one, so it is unphotographed.     |
+| 4   | Budget and behaviour  |   15 % | 6.0 | **6.0** | Unmoved and re-measured: **48,144 triangles, of which 24,243 (50.4 %) are kerb**, byte for byte the round-1 figures, and still no LOD and no spatial split.                                                                  |
+| 5   | Determinism and state |   10 % | 9.5 | **9.6** | Same guarantees, now actually run: `pnpm test:game-paths` is in the chain and green, 0.276 µs per query against a 2 µs assertion that no longer depends on `QUERIES`.                                                        |
 | 6   | Honesty of the report |    5 % | 6.0 | **8.5** | The round-2 section opens "the lowest grade on the branch, and a report that was not true", states the red selftest, sharpens the lamp finding **against itself**, and keeps five unfixed items at the top of the weak list. |
 
 **7.6 × 0.30 + 5.8 × 0.20 + 7.0 × 0.20 + 6.0 × 0.15 + 9.6 × 0.10 + 8.5 × 0.05 = 7.13.**
 
 ## 2. Hard gates
 
-| Gate                                | Command                                                                              | Result                                                                                                          |
-| ----------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| Console errors / hydration warnings | `node scripts/game-shot.mjs --cam=ground,close --tod=12:00,22:00 --step=600` + probe | **PASS** — `errors 0 · warnings 0 · hydration 0`, 4 shots; the probe logged `errors: []`                        |
-| Extensibility ≥ 5                   | §4.2                                                                                 | **PASS — 7.0** (round 1 sat exactly on the floor)                                                               |
-| `pnpm test:game`                    | as written                                                                           | **PASS** — exit 0, and it now contains this module's own selftest, which is the round-1 honesty failure closed  |
-| `pnpm test:game-paths`              | as written                                                                           | **PASS** — green, `0.276 µs each, 5.52 ms for 20000`. Red at HEAD in four runs of four in round 1.              |
-| `npx tsc --noEmit` / `eslint`       | as written                                                                           | **PASS** — exit 0 both                                                                                          |
+| Gate                                | Command                                                                              | Result                                                                                                         |
+| ----------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| Console errors / hydration warnings | `node scripts/game-shot.mjs --cam=ground,close --tod=12:00,22:00 --step=600` + probe | **PASS** — `errors 0 · warnings 0 · hydration 0`, 4 shots; the probe logged `errors: []`                       |
+| Extensibility ≥ 5                   | §4.2                                                                                 | **PASS — 7.0** (round 1 sat exactly on the floor)                                                              |
+| `pnpm test:game`                    | as written                                                                           | **PASS** — exit 0, and it now contains this module's own selftest, which is the round-1 honesty failure closed |
+| `pnpm test:game-paths`              | as written                                                                           | **PASS** — green, `0.276 µs each, 5.52 ms for 20000`. Red at HEAD in four runs of four in round 1.             |
+| `npx tsc --noEmit` / `eslint`       | as written                                                                           | **PASS** — exit 0 both                                                                                         |
 
 ## 3. The frames I looked at
 
 `.game-render/critic-paths-r2/`, demo park, `--step=600`, one process, `errors 0`.
 
-| File                | What is actually in it                                                                                                                                                                                                                                                                                    |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `2200-ground.png`   | A **lit avenue**: lamp pools falling on the paving and running up the kerb, the receding lamp line down the street, two lit shopfronts, guests silhouetted against them, 254 people still in the park. The slab joints and the per-slab tone are readable in the foreground. The best frame in this project. |
-| `1200-close.png`    | The clay-paver plaza under dappled tree shadow with the concrete walk in front of it. The slab grid reads; the tint variation is present but subtle at this distance.                                                                                                                                     |
-| `1200-ground.png`   | Noon down the promenade: kerbs, verges and the joint pattern all legible, and the surface no longer reads as one flat tone. Compare round 1's "every walking surface is a flat tone with a grid on it".                                                                                                   |
-| `2200-close.png`    | The plaza at night from above; the lamp throw is legible on the pavers and the junction caps hold up under it.                                                                                                                                                                                            |
+| File              | What is actually in it                                                                                                                                                                                                                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `2200-ground.png` | A **lit avenue**: lamp pools falling on the paving and running up the kerb, the receding lamp line down the street, two lit shopfronts, guests silhouetted against them, 254 people still in the park. The slab joints and the per-slab tone are readable in the foreground. The best frame in this project. |
+| `1200-close.png`  | The clay-paver plaza under dappled tree shadow with the concrete walk in front of it. The slab grid reads; the tint variation is present but subtle at this distance.                                                                                                                                        |
+| `1200-ground.png` | Noon down the promenade: kerbs, verges and the joint pattern all legible, and the surface no longer reads as one flat tone. Compare round 1's "every walking surface is a flat tone with a grid on it".                                                                                                      |
+| `2200-close.png`  | The plaza at night from above; the lamp throw is legible on the pavers and the junction caps hold up under it.                                                                                                                                                                                               |
 
 ## 4. Findings
 
@@ -88,7 +88,7 @@ subscribes to `onPack` — both halves, which is the trap this project has now h
 resolving (`styles before: 6 → after: 7`, `brick-walk resolved: true`).
 
 What holds it at 7.0: **no bundled pack carries a `pathStyles` entry**, so nothing in the shipped
-game exercises it and no frame has ever contained a pack-supplied path. Unlike a camera preset — 
+game exercises it and no frame has ever contained a pack-supplied path. Unlike a camera preset —
 which `neon-lagoon` now carries and which `--cam=lagoon` photographs — a path style is only visible
 once something is **built** with it, so proving this one end to end waits on `tools`. That is a fair
 reason for the delay and not a reason to score it as proven.

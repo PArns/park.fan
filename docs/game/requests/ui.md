@@ -12,11 +12,11 @@ the HUD does instead in the meantime. Ordered by what it costs the player, not b
 Every sim module publishes a rich per-entity API and every one of them is unreachable from the
 interface:
 
-| Module   | API                                        | What it holds that the HUD cannot draw                                                                     |
-| -------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `rides`  | `RidesSimApi.list(): RideView[]`           | wait minutes, measured throughput, utilisation, satisfaction, riders and cycles today, downtime, `open`      |
-| `shops`  | `ShopsSimApi.list(): ShopView[]`, `stats()` | stock, stock capacity, queue and wait per shop, served today, takings today, `refusedToday`, `unanswered`     |
-| `guests` | `GuestsSimApi.inspect(slot): GuestRecord`  | one guest's needs, mood, cash, group, destination, errand — the record whose own docstring says "for the inspector panel" |
+| Module   | API                                         | What it holds that the HUD cannot draw                                                                                    |
+| -------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `rides`  | `RidesSimApi.list(): RideView[]`            | wait minutes, measured throughput, utilisation, satisfaction, riders and cycles today, downtime, `open`                   |
+| `shops`  | `ShopsSimApi.list(): ShopView[]`, `stats()` | stock, stock capacity, queue and wait per shop, served today, takings today, `refusedToday`, `unanswered`                 |
+| `guests` | `GuestsSimApi.inspect(slot): GuestRecord`   | one guest's needs, mood, cash, group, destination, errand — the record whose own docstring says "for the inspector panel" |
 
 The protocol carries `command` one way and `event`/`frame`/`snapshot` the other. A command cannot
 answer, and an event is a broadcast a module has to decide to send. So the HUD reads the frame
@@ -156,7 +156,7 @@ three lines from `management`'s own `main()`:
 ```ts
 ctx.module<UiMainApi>('ui')?.registerStat({
   id: 'rating',
-  label: t('hud.rating'),          // the key already exists
+  label: t('hud.rating'), // the key already exists
   order: 25,
   value: (s) => ({ text: String(ratingNow()), tone: ratingNow() >= 700 ? 'good' : 'warn' }),
 });
@@ -243,7 +243,7 @@ undefined, so the screenshot harness dies with `Cannot read properties of undefi
 
 **`GameStore.notify` keeps the last six notices and nothing keeps the rest.** The HUD mirrors them
 into its own history (`UiRuntime.ingestNotices`) so the messages panel has something to show, which
-makes the store's list a *live stack* rather than a log. Worth a line in `store.ts`, since the next
+makes the store's list a _live stack_ rather than a log. Worth a line in `store.ts`, since the next
 reader of that `slice(-6)` will otherwise go looking for where the history went.
 
 ---

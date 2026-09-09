@@ -17,19 +17,19 @@ and — measured by grep and confirmed in the running scene — zero runtime Bab
 
 ## What exists
 
-| File            | Lines | What it owns                                                                                                                                        |
-| --------------- | ----: | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pose.ts`       |   403 | The maths. Babylon's spherical formula re-derived from source, the leash, `clampPose`, screen rays, rigid rotate/scale about a pivot, damping.        |
-| `controller.ts` |   368 | The drive loop: goal pose + displayed pose, grab-the-world pan, orbit and zoom about the cursor, momentum, the terrain-follow channel.                |
-| `input.ts`      |   293 | Pointer / wheel / keyboard / touch → intents. One Pointer Events path for mouse, trackpad, pen and phone. Edge scroll.                                |
-| `main.ts`       |   513 | The Babylon glue: drives the scene's `ArcRotateCamera`, adopts outside writes, the public API, follow sources, view persistence.                      |
-| `manifest.ts`   |   298 | Presets as content: the seven built-ins, the parser, the `cameraPresets` pack category, `poseFromPreset`.                                             |
-| `anchors.ts`    |   202 | What a preset points at: `park:*`, `plot:`, `entity:`, `kinds:`, `xz:`, plus a table modules can add to. Chains with `\|`.                            |
-| `types.ts`      |   172 | The vocabulary, and the two authoring conventions (`bearing`, `pitch`) that exist so nobody writes `beta = PI/3.4` again.                             |
-| `view-state.ts` |   102 | Where the pose is remembered, and the argument for why that is not `world.modules`.                                                                   |
-| `showcase.ts`   |    71 | `/game?showcase=camera`: terrain with relief, plus three presets that make the leash and the ground floor photographable.                             |
-| `index.ts`      |    75 | The `GameModule` and the pure re-exports. No `sim` half.                                                                                              |
-| `selftest.mjs`  |   739 | 114 checks over the pure half. Wired into `pnpm test:game` as `test:game-camera` by the integrator after this was written.                            |
+| File            | Lines | What it owns                                                                                                                                   |
+| --------------- | ----: | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pose.ts`       |   403 | The maths. Babylon's spherical formula re-derived from source, the leash, `clampPose`, screen rays, rigid rotate/scale about a pivot, damping. |
+| `controller.ts` |   368 | The drive loop: goal pose + displayed pose, grab-the-world pan, orbit and zoom about the cursor, momentum, the terrain-follow channel.         |
+| `input.ts`      |   293 | Pointer / wheel / keyboard / touch → intents. One Pointer Events path for mouse, trackpad, pen and phone. Edge scroll.                         |
+| `main.ts`       |   513 | The Babylon glue: drives the scene's `ArcRotateCamera`, adopts outside writes, the public API, follow sources, view persistence.               |
+| `manifest.ts`   |   298 | Presets as content: the seven built-ins, the parser, the `cameraPresets` pack category, `poseFromPreset`.                                      |
+| `anchors.ts`    |   202 | What a preset points at: `park:*`, `plot:`, `entity:`, `kinds:`, `xz:`, plus a table modules can add to. Chains with `\|`.                     |
+| `types.ts`      |   172 | The vocabulary, and the two authoring conventions (`bearing`, `pitch`) that exist so nobody writes `beta = PI/3.4` again.                      |
+| `view-state.ts` |   102 | Where the pose is remembered, and the argument for why that is not `world.modules`.                                                            |
+| `showcase.ts`   |    71 | `/game?showcase=camera`: terrain with relief, plus three presets that make the leash and the ground floor photographable.                      |
+| `index.ts`      |    75 | The `GameModule` and the pure re-exports. No `sim` half.                                                                                       |
+| `selftest.mjs`  |   739 | 114 checks over the pure half. Wired into `pnpm test:game` as `test:game-camera` by the integrator after this was written.                     |
 
 ### Public API
 
@@ -64,8 +64,15 @@ The seven the harness names — `overview`, `entrance`, `close`, `ground`, `coas
 dropping objects under a `cameraPresets` key:
 
 ```jsonc
-{ "id": "lookout", "anchor": "kinds:coaster | plot:coaster | park:centre",
-  "height": 10, "bearing": 200, "pitch": 20, "frameRadius": "auto", "fill": 0.5 }
+{
+  "id": "lookout",
+  "anchor": "kinds:coaster | plot:coaster | park:centre",
+  "height": 10,
+  "bearing": 200,
+  "pitch": 20,
+  "frameRadius": "auto",
+  "fill": 0.5,
+}
 ```
 
 `registry.registerPackCategory('cameraPresets', 'camera')` claims the key so
@@ -159,39 +166,39 @@ mattered.
 
 ### Commands
 
-| command                                             | result                                    |
-| --------------------------------------------------- | ----------------------------------------- |
-| `pnpm test:game-camera` (the selftest)               | `✓ camera selftest: 114 checks clean`     |
-| `pnpm test:game`                                     | 92 green checks, exit 0                   |
-| `npx tsc --noEmit`                                   | clean                                     |
-| `npx eslint lib/game/camera`                         | clean                                     |
-| `grep -rn '^import .*@babylonjs' lib/game/camera/`   | 5 lines, 0 of them a runtime import       |
+| command                                            | result                                |
+| -------------------------------------------------- | ------------------------------------- |
+| `pnpm test:game-camera` (the selftest)             | `✓ camera selftest: 114 checks clean` |
+| `pnpm test:game`                                   | 92 green checks, exit 0               |
+| `npx tsc --noEmit`                                 | clean                                 |
+| `npx eslint lib/game/camera`                       | clean                                 |
+| `grep -rn '^import .*@babylonjs' lib/game/camera/` | 5 lines, 0 of them a runtime import   |
 
 ### The running game, asked rather than read
 
 `.game-render/_probe/cam-probe.mjs` against `/game?harness=1&speed=0&engine=webgl2`, which is the
 only way to check the four claims a screenshot cannot show:
 
-| claim                                     | measured                                                                  |
-| ----------------------------------------- | ------------------------------------------------------------------------- |
-| the module builds                         | `failedModules: []`                                                       |
-| it owns no world state                    | `Object.keys(world.modules)` = `['demo-park', '__ids']`                    |
-| it claims its pack category               | `registry.unclaimedPackKeys()` = `[]`                                      |
-| the seven presets are live                | `presets()` = overview, entrance, close, ground, coaster, pool, night      |
-| the fallback seam works                   | `preset('does-not-exist')` → `false`, `preset('overview')` → `true`        |
-| it drives the pipeline's camera           | `ArcRotateCamera`, post-processes `highlights … imageProcessing, fxaa`     |
-| it creates nothing                        | `stats().meshes` = 0, `stats().materials` = 0                              |
-| the harness never restores a pose         | `Object.keys(localStorage)` = `[]` under `?harness=1`                      |
-| the build tools' hook answers             | `screenToGround(640, 400)` = `(−21.89, 0.30, 37.92)`                       |
-| console                                   | 0 errors                                                                  |
+| claim                             | measured                                                               |
+| --------------------------------- | ---------------------------------------------------------------------- |
+| the module builds                 | `failedModules: []`                                                    |
+| it owns no world state            | `Object.keys(world.modules)` = `['demo-park', '__ids']`                |
+| it claims its pack category       | `registry.unclaimedPackKeys()` = `[]`                                  |
+| the seven presets are live        | `presets()` = overview, entrance, close, ground, coaster, pool, night  |
+| the fallback seam works           | `preset('does-not-exist')` → `false`, `preset('overview')` → `true`    |
+| it drives the pipeline's camera   | `ArcRotateCamera`, post-processes `highlights … imageProcessing, fxaa` |
+| it creates nothing                | `stats().meshes` = 0, `stats().materials` = 0                          |
+| the harness never restores a pose | `Object.keys(localStorage)` = `[]` under `?harness=1`                  |
+| the build tools' hook answers     | `screenToGround(640, 400)` = `(−21.89, 0.30, 37.92)`                   |
+| console                           | 0 errors                                                               |
 
 ### The seven presets, photographed
 
 Demo park, 1280×720, WebGL2 under SwiftShader, `--step=900` (park minute 764), `--tod=12:00`,
 `.game-render/cam-presets/`. **0 console errors, 0 warnings, 0 hydration warnings** over the run.
 
-| preset     | draw calls | triangles | what the frame shows                                                             |
-| ---------- | ---------: | --------: | -------------------------------------------------------------------------------- |
+| preset     | draw calls | triangles | what the frame shows                                                              |
+| ---------- | ---------: | --------: | --------------------------------------------------------------------------------- |
 | `overview` |        210 |   422,534 | the whole park with the lake right of centre, horizon and sky in the top third    |
 | `entrance` |        260 |   794,886 | the gate at the bottom edge, the forecourt, the main street receding to the north |
 | `close`    |        323 | 1,290,243 | a plaza at reading distance, guests and benches legible, canopies over the frame  |

@@ -48,7 +48,10 @@ export interface TrainsMainApi {
    */
   followId(rideId: string, train?: number): string;
   /** World position and heading of a train's leading car, interpolated to this frame. */
-  leadPose(rideId: string, train?: number): { position: [number, number, number]; heading: number } | null;
+  leadPose(
+    rideId: string,
+    train?: number
+  ): { position: [number, number, number]; heading: number } | null;
   profile(rideId: string): TrainProfile | undefined;
 }
 
@@ -141,19 +144,17 @@ export function createTrainsMain(ctx: MainContext): MainHandle {
    * and it is namespaced by the module rather than by the entity so a source registered later
    * cannot shadow a plain entity id by accident.
    */
-  const detachFollow = ctx
-    .module<CameraMainApi>('camera')
-    ?.registerFollowSource((id: string) => {
-      if (!id.startsWith('train:')) return null;
-      const rest = id.slice(6);
-      const colon = rest.lastIndexOf(':');
-      const rideId = colon > 0 ? rest.slice(0, colon) : rest;
-      const index = colon > 0 ? Number(rest.slice(colon + 1)) : 0;
-      if (!Number.isFinite(index)) return null;
-      const pose = fleet.leadPose(rideId, index);
-      if (!pose) return null;
-      return { position: pose.position, heading: pose.heading };
-    });
+  const detachFollow = ctx.module<CameraMainApi>('camera')?.registerFollowSource((id: string) => {
+    if (!id.startsWith('train:')) return null;
+    const rest = id.slice(6);
+    const colon = rest.lastIndexOf(':');
+    const rideId = colon > 0 ? rest.slice(0, colon) : rest;
+    const index = colon > 0 ? Number(rest.slice(colon + 1)) : 0;
+    if (!Number.isFinite(index)) return null;
+    const pose = fleet.leadPose(rideId, index);
+    if (!pose) return null;
+    return { position: pose.position, heading: pose.heading };
+  });
 
   const api: TrainsMainApi = {
     stats: () => fleet.stats(),

@@ -246,11 +246,11 @@ owns the swap and nothing runs per frame. Three decisions in it are deliberate:
 
 Measured on `/game?showcase=track` at noon, like for like:
 
-| camera     | before  | after   | draw calls |
+| camera     |  before |   after | draw calls |
 | ---------- | ------: | ------: | ---------: |
-| `overview` | 590,644 | 541,396 | 109 → 109  |
-| `close`    | 809,380 | 760,132 |   99 → 99  |
-| `ground`   | 792,648 | 792,648 |   73 → 73  |
+| `overview` | 590,644 | 541,396 |  109 → 109 |
+| `close`    | 809,380 | 760,132 |    99 → 99 |
+| `ground`   | 792,648 | 792,648 |    73 → 73 |
 
 **−49,248 triangles at unchanged draw calls**, and `ground` is untouched, which is the point: the
 swap happens at 180 m on `medium` (110/260/340 on the other presets), so a coaster somebody is

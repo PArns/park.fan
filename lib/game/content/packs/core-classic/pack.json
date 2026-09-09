@@ -158,12 +158,7 @@
         "trim": "#2f3a44",
         "accent": "#d9a441"
       },
-      "materials": [
-        "brick-red",
-        "plaster-cream",
-        "slate-grey",
-        "timber-dark"
-      ],
+      "materials": ["brick-red", "plaster-cream", "slate-grey", "timber-dark"],
       "ambience": "ambience-day"
     },
     {
@@ -178,11 +173,7 @@
         "trim": "#5a4634",
         "accent": "#e2b23c"
       },
-      "materials": [
-        "plaster-cream",
-        "timber-dark",
-        "cobble-grey"
-      ]
+      "materials": ["plaster-cream", "timber-dark", "cobble-grey"]
     }
   ],
   "materials": [
@@ -275,10 +266,7 @@
         "de": "Gaslaterne"
       },
       "category": "path-furniture",
-      "footprint": [
-        0.4,
-        0.4
-      ],
+      "footprint": [0.4, 0.4],
       "height": 3.2,
       "cost": 12000,
       "procedural": "lamp-victorian",
@@ -300,10 +288,7 @@
         "de": "Parkbank"
       },
       "category": "path-furniture",
-      "footprint": [
-        1.8,
-        0.6
-      ],
+      "footprint": [1.8, 0.6],
       "height": 0.9,
       "cost": 3500,
       "mesh": "kenney/bench.glb",
@@ -317,10 +302,7 @@
         "de": "Mülleimer"
       },
       "category": "path-furniture",
-      "footprint": [
-        0.5,
-        0.5
-      ],
+      "footprint": [0.5, 0.5],
       "height": 1.0,
       "cost": 1500,
       "procedural": "bin",
@@ -333,10 +315,7 @@
         "de": "Rundes Pflanzbeet"
       },
       "category": "garden",
-      "footprint": [
-        2.4,
-        2.4
-      ],
+      "footprint": [2.4, 2.4],
       "height": 0.6,
       "cost": 6000,
       "procedural": "planter-round"
@@ -348,10 +327,7 @@
         "de": "Etagenbrunnen"
       },
       "category": "garden",
-      "footprint": [
-        6,
-        6
-      ],
+      "footprint": [6, 6],
       "height": 4.2,
       "cost": 48000,
       "procedural": "fountain-tier",
@@ -372,10 +348,7 @@
         "de": "Eingangsbogen"
       },
       "category": "signage",
-      "footprint": [
-        12,
-        2
-      ],
+      "footprint": [12, 2],
       "height": 7.5,
       "cost": 120000,
       "procedural": "entrance-arch",
@@ -396,10 +369,7 @@
         "de": "park.fan-Fahne"
       },
       "category": "signage",
-      "footprint": [
-        0.3,
-        0.3
-      ],
+      "footprint": [0.3, 0.3],
       "height": 6,
       "cost": 2500,
       "procedural": "flag"
@@ -411,10 +381,7 @@
         "de": "Eisenzaun"
       },
       "category": "fence",
-      "footprint": [
-        2,
-        0.1
-      ],
+      "footprint": [2, 0.1],
       "height": 1.2,
       "cost": 900,
       "procedural": "fence-iron"
@@ -426,10 +393,7 @@
         "de": "Buchsbaumhecke"
       },
       "category": "garden",
-      "footprint": [
-        2,
-        0.8
-      ],
+      "footprint": [2, 0.8],
       "height": 1.0,
       "cost": 1800,
       "procedural": "hedge"
@@ -445,11 +409,7 @@
       "kind": "broadleaf",
       "procedural": "tree-broadleaf",
       "mesh": "quaternius/trees/oak.glb",
-      "lod": [
-        40,
-        120,
-        300
-      ],
+      "lod": [40, 120, 300],
       "height": 14,
       "cost": 4000
     },
@@ -461,11 +421,7 @@
       },
       "kind": "broadleaf",
       "procedural": "tree-broadleaf",
-      "lod": [
-        40,
-        120,
-        300
-      ],
+      "lod": [40, 120, 300],
       "height": 11,
       "cost": 3500
     },
@@ -478,11 +434,7 @@
       "kind": "conifer",
       "procedural": "tree-conifer",
       "mesh": "quaternius/trees/pine.glb",
-      "lod": [
-        40,
-        120,
-        300
-      ],
+      "lod": [40, 120, 300],
       "height": 16,
       "cost": 3800
     },
@@ -494,11 +446,7 @@
       },
       "kind": "shrub",
       "procedural": "shrub",
-      "lod": [
-        25,
-        70,
-        160
-      ],
+      "lod": [25, 70, 160],
       "height": 1.6,
       "cost": 600
     },
@@ -510,11 +458,7 @@
       },
       "kind": "flower",
       "procedural": "flowers",
-      "lod": [
-        20,
-        50,
-        100
-      ],
+      "lod": [20, 50, 100],
       "height": 0.4,
       "cost": 400
     }
@@ -531,10 +475,7 @@
       "price": 650,
       "cost": 40000,
       "upkeep": 300,
-      "footprint": [
-        4,
-        4
-      ],
+      "footprint": [4, 4],
       "throughput": 4,
       "power": 6,
       "procedural": "kiosk-a",
@@ -553,10 +494,7 @@
       "price": 350,
       "cost": 30000,
       "upkeep": 220,
-      "footprint": [
-        3,
-        3
-      ],
+      "footprint": [3, 3],
       "throughput": 6,
       "power": 4,
       "procedural": "kiosk-round",
@@ -575,10 +513,7 @@
       "price": 300,
       "cost": 22000,
       "upkeep": 150,
-      "footprint": [
-        3,
-        3
-      ],
+      "footprint": [3, 3],
       "throughput": 8,
       "power": 3,
       "procedural": "kiosk-round",
@@ -597,10 +532,7 @@
       "price": 50,
       "cost": 35000,
       "upkeep": 200,
-      "footprint": [
-        6,
-        4
-      ],
+      "footprint": [6, 4],
       "throughput": 10,
       "power": 2,
       "water": 2,
@@ -617,10 +549,7 @@
       "price": 0,
       "cost": 28000,
       "upkeep": 400,
-      "footprint": [
-        4,
-        4
-      ],
+      "footprint": [4, 4],
       "throughput": 2,
       "power": 2,
       "procedural": "kiosk-a"
@@ -636,10 +565,7 @@
       "price": 0,
       "cost": 15000,
       "upkeep": 50,
-      "footprint": [
-        1,
-        1
-      ],
+      "footprint": [1, 1],
       "throughput": 3,
       "power": 1,
       "procedural": "atm"
@@ -655,10 +581,7 @@
       "price": 1500,
       "cost": 60000,
       "upkeep": 350,
-      "footprint": [
-        6,
-        5
-      ],
+      "footprint": [6, 5],
       "throughput": 3,
       "power": 5,
       "procedural": "shop-b",
@@ -677,10 +600,7 @@
       "price": 0,
       "cost": 12000,
       "upkeep": 100,
-      "footprint": [
-        3,
-        3
-      ],
+      "footprint": [3, 3],
       "throughput": 4,
       "power": 1,
       "procedural": "kiosk-round"
@@ -702,10 +622,7 @@
       "nausea": 0.6,
       "cost": 18000000,
       "upkeep": 800,
-      "footprint": [
-        14,
-        14
-      ],
+      "footprint": [14, 14],
       "power": 40,
       "procedural": "carousel",
       "night": {
@@ -715,11 +632,7 @@
           "height": 5,
           "range": 18,
           "mode": "chase",
-          "colors": [
-            "#ffe1a8",
-            "#ff9e7a",
-            "#ffd166"
-          ]
+          "colors": ["#ffe1a8", "#ff9e7a", "#ffd166"]
         }
       }
     },
@@ -738,10 +651,7 @@
       "nausea": 0.4,
       "cost": 65000000,
       "upkeep": 2200,
-      "footprint": [
-        12,
-        30
-      ],
+      "footprint": [12, 30],
       "power": 90,
       "procedural": "ferris-wheel",
       "night": {
@@ -751,12 +661,7 @@
           "height": 20,
           "range": 40,
           "mode": "cycle",
-          "colors": [
-            "#4fb3ff",
-            "#ff5fa2",
-            "#ffd166",
-            "#6bf0a8"
-          ]
+          "colors": ["#4fb3ff", "#ff5fa2", "#ffd166", "#6bf0a8"]
         }
       }
     },
@@ -775,10 +680,7 @@
       "nausea": 2.2,
       "cost": 32000000,
       "upkeep": 1400,
-      "footprint": [
-        22,
-        22
-      ],
+      "footprint": [22, 22],
       "power": 70,
       "minHeightCm": 120,
       "procedural": "swing-ride"
@@ -798,10 +700,7 @@
       "nausea": 6.5,
       "cost": 48000000,
       "upkeep": 2600,
-      "footprint": [
-        16,
-        12
-      ],
+      "footprint": [16, 12],
       "power": 160,
       "minHeightCm": 140,
       "procedural": "top-spin"
@@ -898,10 +797,7 @@
             "yaw": {
               "curve": "ease-in-out",
               "revolutions": 8,
-              "window": [
-                0.05,
-                0.95
-              ]
+              "window": [0.05, 0.95]
             }
           }
         },
@@ -937,21 +833,14 @@
         {
           "id": "wheel",
           "parent": "frame",
-          "offset": [
-            0,
-            14,
-            0
-          ],
+          "offset": [0, 14, 0],
           "procedural": "ferris-wheel-rim",
           "animate": {
             "roll": {
               "curve": "ease-in-out",
               "revolutions": 3,
               "axis": "z",
-              "window": [
-                0.05,
-                0.95
-              ]
+              "window": [0.05, 0.95]
             }
           }
         },
@@ -975,29 +864,19 @@
         {
           "id": "crown",
           "parent": "tower",
-          "offset": [
-            0,
-            9,
-            0
-          ],
+          "offset": [0, 9, 0],
           "procedural": "swing-crown",
           "animate": {
             "yaw": {
               "curve": "ease-in-out",
               "revolutions": 12,
-              "window": [
-                0.05,
-                0.95
-              ]
+              "window": [0.05, 0.95]
             },
             "tilt": {
               "curve": "sine",
               "amplitude": 0.18,
               "revolutions": 1,
-              "window": [
-                0.2,
-                0.8
-              ]
+              "window": [0.2, 0.8]
             }
           }
         },
@@ -1021,32 +900,21 @@
         {
           "id": "arms",
           "parent": "columns",
-          "offset": [
-            0,
-            8,
-            0
-          ],
+          "offset": [0, 8, 0],
           "procedural": "topspin-arms",
           "animate": {
             "roll": {
               "curve": "sine",
               "revolutions": 3,
               "axis": "x",
-              "window": [
-                0.1,
-                0.9
-              ]
+              "window": [0.1, 0.9]
             }
           }
         },
         {
           "id": "gondola",
           "parent": "arms",
-          "offset": [
-            0,
-            -5.5,
-            0
-          ],
+          "offset": [0, -5.5, 0],
           "procedural": "topspin-gondola",
           "seats": 20,
           "animate": {
@@ -1054,10 +922,7 @@
               "curve": "sine",
               "revolutions": 5,
               "axis": "x",
-              "window": [
-                0.3,
-                0.85
-              ]
+              "window": [0.3, 0.85]
             }
           }
         }
@@ -1160,11 +1025,7 @@
         "de": "Ziegelwand"
       },
       "category": "wall",
-      "size": [
-        4,
-        4,
-        0.3
-      ],
+      "size": [4, 4, 0.3],
       "cost": 2400,
       "material": "brick-red",
       "procedural": "wall"
@@ -1176,11 +1037,7 @@
         "de": "Putzwand"
       },
       "category": "wall",
-      "size": [
-        4,
-        4,
-        0.3
-      ],
+      "size": [4, 4, 0.3],
       "cost": 2000,
       "material": "plaster-cream",
       "procedural": "wall"
@@ -1192,11 +1049,7 @@
         "de": "Rundbogenfenster"
       },
       "category": "window",
-      "size": [
-        4,
-        4,
-        0.3
-      ],
+      "size": [4, 4, 0.3],
       "cost": 3200,
       "material": "plaster-cream",
       "procedural": "wall-window-arched"
@@ -1208,11 +1061,7 @@
         "de": "Doppeltür"
       },
       "category": "door",
-      "size": [
-        4,
-        4,
-        0.3
-      ],
+      "size": [4, 4, 0.3],
       "cost": 3600,
       "material": "timber-dark",
       "procedural": "wall-door"
@@ -1224,11 +1073,7 @@
         "de": "Schieferdach"
       },
       "category": "roof",
-      "size": [
-        4,
-        2,
-        4
-      ],
+      "size": [4, 2, 4],
       "cost": 3000,
       "material": "slate-grey",
       "procedural": "roof-gable"
@@ -1240,11 +1085,7 @@
         "de": "Holzboden"
       },
       "category": "floor",
-      "size": [
-        4,
-        0.2,
-        4
-      ],
+      "size": [4, 0.2, 4],
       "cost": 1200,
       "material": "timber-dark",
       "procedural": "floor"
@@ -1256,11 +1097,7 @@
         "de": "Steinsäule"
       },
       "category": "column",
-      "size": [
-        0.6,
-        4,
-        0.6
-      ],
+      "size": [0.6, 4, 0.6],
       "cost": 1500,
       "material": "plaster-cream",
       "procedural": "column"

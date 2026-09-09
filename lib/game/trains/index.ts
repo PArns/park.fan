@@ -48,14 +48,7 @@ export {
   trainMassKg,
   trainProfileOverrides,
 } from './manifest';
-export {
-  blockAt,
-  blocksCovered,
-  distanceAhead,
-  nextBlock,
-  planBlocks,
-  wrapS,
-} from './blocks';
+export { blockAt, blocksCovered, distanceAhead, nextBlock, planBlocks, wrapS } from './blocks';
 export type { BlockPlan, BlockSection } from './blocks';
 export { samplerFor, stepTrain, TRAIN_SAMPLES } from './motion';
 export type { HoldOrder, MotionContext, SplineLike, TrackSampler } from './motion';

@@ -140,7 +140,12 @@ export function nextBlock(plan: BlockPlan, index: number): number {
  * in the middle. The walk is bounded by the block count, so it terminates whatever the arithmetic
  * does.
  */
-export function blocksCovered(plan: BlockPlan, s: number, trainLength: number, out: number[]): void {
+export function blocksCovered(
+  plan: BlockPlan,
+  s: number,
+  trainLength: number,
+  out: number[]
+): void {
   out.length = 0;
   if (plan.blocks.length === 0) return;
   const front = blockAt(plan, s);

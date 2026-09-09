@@ -10,14 +10,14 @@ independent grade; none exists on this branch. Frames in `.game-render/critic-gs
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | Score   | One sentence                                                                                                                                     |
-| --- | --------------------- | -----: | ------: | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | The frame             |   30 % | **7.2** | A crowd of 850 on a promenade reads genuinely well; the individual does not survive being stood next to.                                        |
+| #   | Axis                  | Weight |   Score | One sentence                                                                                                                                                                                          |
+| --- | --------------------- | -----: | ------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The frame             |   30 % | **7.2** | A crowd of 850 on a promenade reads genuinely well; the individual does not survive being stood next to.                                                                                              |
 | 2   | Fidelity              |   20 % | **6.8** | Archetypes, parties, thoughts, needs, queueing, balking and price refusals are all real — and **the park takes nothing for the first four hours** because every guest arrives with its needs at zero. |
-| 3   | Extensibility         |   20 % | **8.8** | Three pack categories claimed, both halves of the `onPack` read, needs appended so a save written before `neon-lagoon` keeps its columns, and no branch on a pack id anywhere. |
-| 4   | Budget and behaviour  |   15 % | **9.0** | **850 guests for 14 draw calls and 100,654 triangles**, LOD 11/12/597 at 676/386/148 triangles each, 11 shadow casters. The largest object count in the game costs 1.2 % of the draw budget. |
-| 5   | Determinism and state |   10 % | **8.5** | Four unsaved accumulators found by a field-by-field diff of two serialisations and fixed — and ten position columns still diverge after a save.  |
-| 6   | Honesty of the report |    5 % | **8.5** | The weaknesses section names the time-compression tension that produces its own thinnest queues, with the arithmetic.                            |
+| 3   | Extensibility         |   20 % | **8.8** | Three pack categories claimed, both halves of the `onPack` read, needs appended so a save written before `neon-lagoon` keeps its columns, and no branch on a pack id anywhere.                        |
+| 4   | Budget and behaviour  |   15 % | **9.0** | **850 guests for 14 draw calls and 100,654 triangles**, LOD 11/12/597 at 676/386/148 triangles each, 11 shadow casters. The largest object count in the game costs 1.2 % of the draw budget.          |
+| 5   | Determinism and state |   10 % | **8.5** | Four unsaved accumulators found by a field-by-field diff of two serialisations and fixed — and ten position columns still diverge after a save.                                                       |
+| 6   | Honesty of the report |    5 % | **8.5** | The weaknesses section names the time-compression tension that produces its own thinnest queues, with the arithmetic.                                                                                 |
 
 **7.2 × 0.30 + 6.8 × 0.20 + 8.8 × 0.20 + 9.0 × 0.15 + 8.5 × 0.10 + 8.5 × 0.05 = 7.91.**
 

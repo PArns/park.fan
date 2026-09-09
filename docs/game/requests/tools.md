@@ -7,7 +7,7 @@ and what shipped instead.
 
 ## 1. Wire the selftest into `pnpm test:game` (`package.json`) — **done**
 
-*Integrator:* wired as `test:game-tools`, in the chain between `test:game-camera` and
+_Integrator:_ wired as `test:game-tools`, in the chain between `test:game-camera` and
 `test:game-soak`. Whole chain green, exit 0.
 
 ### Original request

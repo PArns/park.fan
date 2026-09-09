@@ -15,7 +15,23 @@ export const metadata: Metadata = {
   title: 'park.fan Coaster',
   description:
     'Build and run your own theme park in the browser — coasters, pools, slides, and thousands of guests.',
-  robots: { index: true, follow: true },
+  /**
+   * Not indexed while the game is a draft, and the reason is what the game's own scoreboard says
+   * about it rather than caution in general.
+   *
+   * `docs/game/STATUS.json` records, at the time of writing, that no guest can ride a coaster
+   * (`track` claims the `coaster` kind, `guests` builds ride venues only from `ride`), that the
+   * demo park's reserved coaster plot is 58 x 48 m against a smallest bundled layout of 212.6 m,
+   * and that two of twenty-four modules have passed their gate. A search result promising "build
+   * and run your own theme park" against that is a result nobody clicks twice, and this site's own
+   * rules elsewhere are explicit that the strongest page must not carry a sentence it cannot keep.
+   *
+   * The header link stays: this is reachable and meant to be tried. What it must not do yet is
+   * invite a stranger through a search engine. Flip both flags together — this line and
+   * `app/sitemap.ts`, which does not list `/game` either — when the final gate in
+   * `docs/game/FINAL_GATE.md` has actually been run.
+   */
+  robots: { index: false, follow: true },
 };
 
 export const viewport: Viewport = {

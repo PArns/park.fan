@@ -74,7 +74,11 @@ export interface FleetRenderer {
   meshes(): Mesh[];
   shadowMeshes(): Mesh[];
   /** Hand over the car list the worker publishes. Rebuilds the mesh sets when the styles change. */
-  setRoster(cars: RosterCar[], profiles: TrainProfile[], metrics: (key: string) => CarMetrics): void;
+  setRoster(
+    cars: RosterCar[],
+    profiles: TrainProfile[],
+    metrics: (key: string) => CarMetrics
+  ): void;
   update(
     frame: SimFrame,
     previous: SimFrame | null,
@@ -82,7 +86,10 @@ export interface FleetRenderer {
     camera: readonly [number, number, number]
   ): void;
   /** World position and heading of one train's leading car, interpolated. Null when unknown. */
-  leadPose(rideId: string, train: number): { position: [number, number, number]; heading: number } | null;
+  leadPose(
+    rideId: string,
+    train: number
+  ): { position: [number, number, number]; heading: number } | null;
   stats(): FleetStats;
   dispose(): void;
 }
@@ -151,7 +158,12 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
     for (const p of set.parts) p.mesh.dispose(false, false);
   }
 
-  function buildStyle(profile: TrainProfile, m: CarMetrics, cars: number, trains: number): StyleSet {
+  function buildStyle(
+    profile: TrainProfile,
+    m: CarMetrics,
+    cars: number,
+    trains: number
+  ): StyleSet {
     const t0 = typeof performance !== 'undefined' ? performance.now() : 0;
     const shellSurface = buildShell(m);
     const trimSurface = buildTrim(m);
@@ -161,13 +173,23 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
 
     const shell = part(
       'shell',
-      toMesh(scene, `trains:${profile.key}:shell`, shellSurface, materials.paint(profile.livery.body)),
+      toMesh(
+        scene,
+        `trains:${profile.key}:shell`,
+        shellSurface,
+        materials.paint(profile.livery.body)
+      ),
       surfaceTriangles(shellSurface),
       cars
     );
     const trim = part(
       'trim',
-      toMesh(scene, `trains:${profile.key}:trim`, trimSurface, materials.metal(profile.livery.trim)),
+      toMesh(
+        scene,
+        `trains:${profile.key}:trim`,
+        trimSurface,
+        materials.metal(profile.livery.trim)
+      ),
       surfaceTriangles(trimSurface),
       cars
     );
@@ -195,7 +217,12 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
     );
     const nose = part(
       'nose',
-      toMesh(scene, `trains:${profile.key}:nose`, noseSurface, materials.paint(profile.livery.body)),
+      toMesh(
+        scene,
+        `trains:${profile.key}:nose`,
+        noseSurface,
+        materials.paint(profile.livery.body)
+      ),
       surfaceTriangles(noseSurface),
       trains
     );
@@ -205,8 +232,7 @@ export function createFleetRenderer(options: FleetOptions): FleetRenderer {
       parts: [shell, trim, running, interior, nose],
       perCar: [shell, trim, running, interior],
       nose,
-      perCarTriangles:
-        shell.triangles + trim.triangles + running.triangles + interior.triangles,
+      perCarTriangles: shell.triangles + trim.triangles + running.triangles + interior.triangles,
     };
   }
 

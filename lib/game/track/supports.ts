@@ -229,7 +229,15 @@ export function buildSupports(
   const member = emptyGeo();
   const footing = emptyGeo();
   if (options.kind === 'none' || frames.length < 2) {
-    return { member, memberFar: null, footing, columns: 0, braces: 0, triangles: 0, farTriangles: 0 };
+    return {
+      member,
+      memberFar: null,
+      footing,
+      columns: 0,
+      braces: 0,
+      triangles: 0,
+      farTriangles: 0,
+    };
   }
   // Timber only; see `SupportBuild.memberFar`.
   const memberFar = options.kind === 'timber' ? emptyGeo() : null;

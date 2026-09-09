@@ -44,7 +44,9 @@ page.on('pageerror', (e) => errors.push(String(e.message).slice(0, 160)));
 const query = new URLSearchParams({ harness: '1', speed: '0', engine: 'webgl2' });
 if (weather) query.set('weather', weather);
 await page.goto(`${base}/game?${query}`, { waitUntil: 'domcontentloaded', timeout: 120000 });
-await page.waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, { timeout: 120000 });
+await page.waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, {
+  timeout: 120000,
+});
 
 /** Wait for the harness handle, again — a dev server recompiling under a builder tears it down and
  *  re-creates it, and a snapshot taken across that gap reads `undefined`. */
@@ -103,7 +105,11 @@ await step(late);
 const atLate = flatten(await snapshot());
 
 const moved = [];
-for (const key of new Set([...Object.keys(atBoot), ...Object.keys(atEarly), ...Object.keys(atLate)])) {
+for (const key of new Set([
+  ...Object.keys(atBoot),
+  ...Object.keys(atEarly),
+  ...Object.keys(atLate),
+])) {
   if (atBoot[key] === atEarly[key] && atEarly[key] === atLate[key]) continue;
   moved.push({ key, boot: atBoot[key], early: atEarly[key], late: atLate[key] });
 }

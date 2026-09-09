@@ -20,34 +20,34 @@ named in §3 was opened and looked at.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | R1  | R2      | One sentence                                                                                                                                                                                            |
-| --- | --------------------- | -----: | --: | ------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| #   | Axis                  | Weight |  R1 |      R2 | One sentence                                                                                                                                                                                                                                          |
+| --- | --------------------- | -----: | --: | ------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | The frame             |   30 % | 7.4 | **8.2** | The timber half went from bare poles to a braced lattice that reads as engineering, and the steel close-up is still the best structural frame in the game — but the overview still aliases the timber into a smear and the 18:30 frame is barely lit. |
-| 2   | Fidelity              |   20 % | 7.6 | **8.2** | Tiered bracing every bay is what a woodie's bents actually look like. The loop's supports are unchanged: vertical only, and anything rolled past 78° is skipped.                                        |
-| 3   | Extensibility         |   20 % | 8.4 | **8.8** | A new element is a manifest entry and now genuinely arrives: 21 → 22 through a pack, `probe-wave` resolved, a typo reported by name. Still nothing in a shipped pack.                                   |
-| 4   | Budget and behaviour  |   15 % | 8.6 | **8.2** | 14 meshes for three coasters, **181,656 → 210,040 triangles (+15.6 %)** spent on the bracing, and the aliasing that money makes worse is unaddressed. Ties carry one LOD level; rails and supports carry none. |
-| 5   | Determinism and state |   10 % | 9.4 | **9.4** | Unchanged and still the strongest axis in the module.                                                                                                                                                  |
-| 6   | Honesty of the report |    5 % | 7.0 | **7.5** | Round 2 corrects the five disputed numbers and says plainly that its own manifest claim was false and its own bracing comment wrong — then leaves a sentence in the weakness list claiming the opposite of what it just shipped. |
+| 2   | Fidelity              |   20 % | 7.6 | **8.2** | Tiered bracing every bay is what a woodie's bents actually look like. The loop's supports are unchanged: vertical only, and anything rolled past 78° is skipped.                                                                                      |
+| 3   | Extensibility         |   20 % | 8.4 | **8.8** | A new element is a manifest entry and now genuinely arrives: 21 → 22 through a pack, `probe-wave` resolved, a typo reported by name. Still nothing in a shipped pack.                                                                                 |
+| 4   | Budget and behaviour  |   15 % | 8.6 | **8.2** | 14 meshes for three coasters, **181,656 → 210,040 triangles (+15.6 %)** spent on the bracing, and the aliasing that money makes worse is unaddressed. Ties carry one LOD level; rails and supports carry none.                                        |
+| 5   | Determinism and state |   10 % | 9.4 | **9.4** | Unchanged and still the strongest axis in the module.                                                                                                                                                                                                 |
+| 6   | Honesty of the report |    5 % | 7.0 | **7.5** | Round 2 corrects the five disputed numbers and says plainly that its own manifest claim was false and its own bracing comment wrong — then leaves a sentence in the weakness list claiming the opposite of what it just shipped.                      |
 
 **8.2 × 0.30 + 8.2 × 0.20 + 8.8 × 0.20 + 8.2 × 0.15 + 9.4 × 0.10 + 7.5 × 0.05 = 8.405 → 8.41.**
 
 ## 2. Hard gates
 
-| Gate                                | Command                                                                     | Result                                                                                                       |
-| ----------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Console errors / hydration warnings | `node scripts/game-shot.mjs --showcase=track --cam=… --tod=12:00` and `18:30` | **PASS** — `errors 0 · hydration 0` in both reports. Two `bufferSubData` warnings, which are terrain's showcase landscape and are filed there. |
-| Extensibility ≥ 5                   | §4.2                                                                          | **PASS — 8.8**                                                                                               |
-| `pnpm test:game` / `test:game-track`| as written                                                                    | **PASS** — exit 0                                                                                            |
-| `npx tsc --noEmit` / `eslint`       | as written                                                                    | **PASS** — exit 0 both                                                                                       |
+| Gate                                 | Command                                                                       | Result                                                                                                                                         |
+| ------------------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Console errors / hydration warnings  | `node scripts/game-shot.mjs --showcase=track --cam=… --tod=12:00` and `18:30` | **PASS** — `errors 0 · hydration 0` in both reports. Two `bufferSubData` warnings, which are terrain's showcase landscape and are filed there. |
+| Extensibility ≥ 5                    | §4.2                                                                          | **PASS — 8.8**                                                                                                                                 |
+| `pnpm test:game` / `test:game-track` | as written                                                                    | **PASS** — exit 0                                                                                                                              |
+| `npx tsc --noEmit` / `eslint`        | as written                                                                    | **PASS** — exit 0 both                                                                                                                         |
 
 ## 3. The frames I looked at
 
-| File                             | What is actually in it                                                                                                                                                                                                                        |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `critic-track-r2/1200-ground.png` | The finding of this round. The wooden coaster from the ground: **tiered X-bracing in every bay**, ledgers between tiers, bents on concrete footings, the track with its crossties running over the hill. It reads as a structure that could hold a train. Round 1 called this "a row of bare poles" and was right then. |
-| `critic-track-r2/1200-close.png`  | Red steel: X-braced bents, footings, rails with ties, the timber lattice legible behind it. Still the best structural frame in the game.                                                                                                       |
-| `critic-track-r2/1200-overview.png` | Three layouts on a bare green plain. The timber structure is a **brown speckled smear**, exactly as weakness 1 predicts, and the steel reads as thin lines. Nothing in the frame gives the layouts scale — no terrain relief, no scenery, no buildings. |
-| `critic-track-r2b/1830-coaster.png` | Sunset: the coasters are faint outlines on a dark plain. The scene has almost no light on it at this hour, which is `environment`'s, but it is this module's weakest frame.                                                                   |
+| File                                | What is actually in it                                                                                                                                                                                                                                                                                                  |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `critic-track-r2/1200-ground.png`   | The finding of this round. The wooden coaster from the ground: **tiered X-bracing in every bay**, ledgers between tiers, bents on concrete footings, the track with its crossties running over the hill. It reads as a structure that could hold a train. Round 1 called this "a row of bare poles" and was right then. |
+| `critic-track-r2/1200-close.png`    | Red steel: X-braced bents, footings, rails with ties, the timber lattice legible behind it. Still the best structural frame in the game.                                                                                                                                                                                |
+| `critic-track-r2/1200-overview.png` | Three layouts on a bare green plain. The timber structure is a **brown speckled smear**, exactly as weakness 1 predicts, and the steel reads as thin lines. Nothing in the frame gives the layouts scale — no terrain relief, no scenery, no buildings.                                                                 |
+| `critic-track-r2b/1830-coaster.png` | Sunset: the coasters are faint outlines on a dark plain. The scene has almost no light on it at this hour, which is `environment`'s, but it is this module's weakest frame.                                                                                                                                             |
 
 ## 4. Findings
 
@@ -106,8 +106,8 @@ the module 0.09 of a point, which is the whole margin: with the honesty axis at 
 scores 8.48, so the sentence is not what fails it — but it is the difference between "8.41, and here
 is why" and a report I could trust without re-checking it against the scene.
 
-*(Corrected by the integrator in the same commit as this critique, with a note. The score above is
-for the state I graded.)*
+_(Corrected by the integrator in the same commit as this critique, with a note. The score above is
+for the state I graded.)_
 
 ## 5. What round 3 should do, in order
 

@@ -8,13 +8,13 @@ independent grade.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | Score   | One sentence                                                                                                                             |
-| --- | --------------------- | -----: | ------: | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | The frame             |   30 % | **7.4** | Kiosks and shop blocks read as built structures — hipped roofs, striped awnings, signage, their own paving — and they are small, simple and repeat. |
-| 2   | Fidelity              |   20 % | **7.6** | A queue, a till per counter, stock, deliveries, upkeep, staffing demand, balking, and refusals separated into stock and price.           |
-| 3   | Extensibility         |   20 % | **9.0** | Two categories claimed with both halves of the read, a menu selector that takes `core-classic:burger`, `burger`, `kind:food` or `*`, and generators declared by packs. |
-| 4   | Budget and behaviour  |   15 % | **8.8** | **Seven shops = 15 meshes, 10,436 triangles**, batched by type key so a park of eight burger stands costs what one costs. Sim tick 0.0007 ms. |
-| 5   | Determinism and state |   10 % | **9.2** | A 51-check selftest that includes save → resume **field by field**, which is how it found a real bug in another module.                  |
+| #   | Axis                  | Weight |   Score | One sentence                                                                                                                                                                       |
+| --- | --------------------- | -----: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The frame             |   30 % | **7.4** | Kiosks and shop blocks read as built structures — hipped roofs, striped awnings, signage, their own paving — and they are small, simple and repeat.                                |
+| 2   | Fidelity              |   20 % | **7.6** | A queue, a till per counter, stock, deliveries, upkeep, staffing demand, balking, and refusals separated into stock and price.                                                     |
+| 3   | Extensibility         |   20 % | **9.0** | Two categories claimed with both halves of the read, a menu selector that takes `core-classic:burger`, `burger`, `kind:food` or `*`, and generators declared by packs.             |
+| 4   | Budget and behaviour  |   15 % | **8.8** | **Seven shops = 15 meshes, 10,436 triangles**, batched by type key so a park of eight burger stands costs what one costs. Sim tick 0.0007 ms.                                      |
+| 5   | Determinism and state |   10 % | **9.2** | A 51-check selftest that includes save → resume **field by field**, which is how it found a real bug in another module.                                                            |
 | 6   | Honesty of the report |    5 % | **9.0** | Its requests file is the best document on this branch: it diagnosed `guests`' frozen needs with a per-speed table and the measured consequence, for a bug in somebody else's file. |
 
 **7.4 × 0.30 + 7.6 × 0.20 + 9.0 × 0.20 + 8.8 × 0.15 + 9.2 × 0.10 + 9.0 × 0.05 = 8.23.**

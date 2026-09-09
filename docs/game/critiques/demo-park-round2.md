@@ -17,40 +17,40 @@ Who graded this: the integrator, for the reason in `terrain-round2.md`.
 
 ## 1. Scores
 
-| #   | Axis                       | Weight | R1  | R2      | One sentence                                                                                                                                          |
-| --- | -------------------------- | -----: | --: | ------: | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The frame                  |   30 % | 6.6 | **7.8** | `overview` reads as parkland now — a planted mid-ground and a woodland belt — and it took **two** modules: this one's trees and `scenery`'s imposter profile. |
+| #   | Axis                       | Weight |  R1 |      R2 | One sentence                                                                                                                                                                                                             |
+| --- | -------------------------- | -----: | --: | ------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | The frame                  |   30 % | 6.6 | **7.8** | `overview` reads as parkland now — a planted mid-ground and a woodland belt — and it took **two** modules: this one's trees and `scenery`'s imposter profile.                                                            |
 | 2   | Fidelity to the real thing |   20 % | 6.4 | **7.5** | Planting follows the walks with a real hierarchy (11 m formal avenue on the spine, 14 m mixed on the walks, groves at 13–19 m), and 6 of the 10 reserved plots are still bare ground because their modules do not exist. |
-| 3   | Extensibility              |   20 % | 7.6 | **8.3** | Roles resolve against the registry with no content id anywhere, `missingRoles` is `[]` live, shops are chosen by **need**, and the one deep import past a sibling's public API is gone. |
-| 4   | Budget and behaviour       |   15 % | 7.0 | **7.2** | 34 % more trees for **0 extra draw calls**, which is the objection to planting the mid-ground turning out not to exist — and boot is still over the 8 s budget in 7 of 7 runs. |
-| 5   | Determinism and state      |   10 % | 9.5 | **9.5** | Unchanged; the regression test for the core id-counter bug this module found is still green.                                                          |
-| 6   | Honesty of the report      |    5 % | 8.4 | **9.2** | It states the limits of its own proxy metric, names who wrote it, and **retracts a claim from its own earlier version** rather than quietly fixing it. |
+| 3   | Extensibility              |   20 % | 7.6 | **8.3** | Roles resolve against the registry with no content id anywhere, `missingRoles` is `[]` live, shops are chosen by **need**, and the one deep import past a sibling's public API is gone.                                  |
+| 4   | Budget and behaviour       |   15 % | 7.0 | **7.2** | 34 % more trees for **0 extra draw calls**, which is the objection to planting the mid-ground turning out not to exist — and boot is still over the 8 s budget in 7 of 7 runs.                                           |
+| 5   | Determinism and state      |   10 % | 9.5 | **9.5** | Unchanged; the regression test for the core id-counter bug this module found is still green.                                                                                                                             |
+| 6   | Honesty of the report      |    5 % | 8.4 | **9.2** | It states the limits of its own proxy metric, names who wrote it, and **retracts a claim from its own earlier version** rather than quietly fixing it.                                                                   |
 
 **7.8 × 0.30 + 7.5 × 0.20 + 8.3 × 0.20 + 7.2 × 0.15 + 9.5 × 0.10 + 9.2 × 0.05 = 7.99.**
 
 ## 2. Hard gates
 
-| Gate                                | Command                                        | Result                                                     |
-| ----------------------------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| Console errors / hydration warnings | `.game-render/_probe/demopark-r2.mjs` + harness | **PASS** — `errors: []`, `failedModules: []`                |
-| Extensibility ≥ 5                   | §4.2                                             | **PASS — 8.3**                                              |
-| Coupling                            | `grep -rn "from '\.\./" lib/game/demo-park/*.ts` | **PASS** — every sibling import is that module's index now  |
-| `pnpm test:game` / `tsc` / `eslint` | as written                                       | **PASS** — exit 0                                           |
+| Gate                                | Command                                          | Result                                                     |
+| ----------------------------------- | ------------------------------------------------ | ---------------------------------------------------------- |
+| Console errors / hydration warnings | `.game-render/_probe/demopark-r2.mjs` + harness  | **PASS** — `errors: []`, `failedModules: []`               |
+| Extensibility ≥ 5                   | §4.2                                             | **PASS — 8.3**                                             |
+| Coupling                            | `grep -rn "from '\.\./" lib/game/demo-park/*.ts` | **PASS** — every sibling import is that module's index now |
+| `pnpm test:game` / `tsc` / `eslint` | as written                                       | **PASS** — exit 0                                          |
 
 ## 3. What I measured, independently
 
 `.game-render/_probe/demopark-r2.mjs` walks the built world, takes every path entity's polyline as
 line segments and measures each tree's distance to the nearest one:
 
-| quantity                       | round 1 | round 2 report | **my measurement** |
-| ------------------------------ | ------: | -------------: | -----------------: |
-| trees                          |     893 |          1,196 |          **1,196** |
-| within 10 m of a path          |  6.9 %  |         16.2 % |          **15.9 %** |
-| within 20 m of a path          |       — |              — |          **32.8 %** |
-| path entities / segments       |      20 |             20 |     **20 / 136**   |
-| shops placed                   |       0 |              8 |          **7**     |
-| `missingRoles`                 |       — |             [] |          **[]**    |
-| draw calls at `overview`       |     145 |            145 |          **207**   |
+| quantity                 | round 1 | round 2 report | **my measurement** |
+| ------------------------ | ------: | -------------: | -----------------: |
+| trees                    |     893 |          1,196 |          **1,196** |
+| within 10 m of a path    |   6.9 % |         16.2 % |         **15.9 %** |
+| within 20 m of a path    |       — |              — |         **32.8 %** |
+| path entities / segments |      20 |             20 |       **20 / 136** |
+| shops placed             |       0 |              8 |              **7** |
+| `missingRoles`           |       — |             [] |             **[]** |
+| draw calls at `overview` |     145 |            145 |            **207** |
 
 Two of those need saying out loud.
 

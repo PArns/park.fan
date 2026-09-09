@@ -135,9 +135,7 @@ function sample(kind: TrainSurface, u: number, v: number, seed: number): Sample 
   }
   // Vinyl: a weave at two scales with a soft sheen.
   const weave =
-    0.5 +
-    0.5 * Math.sin(u * Math.PI * 2 * 58) * 0.5 +
-    0.5 * Math.sin(v * Math.PI * 2 * 58) * 0.5;
+    0.5 + 0.5 * Math.sin(u * Math.PI * 2 * 58) * 0.5 + 0.5 * Math.sin(v * Math.PI * 2 * 58) * 0.5;
   const grain = fbm(u, v, 34, 3, seed + 91);
   const wear = fbm(u, v, 9, 2, seed + 5);
   return {

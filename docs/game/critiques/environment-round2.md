@@ -20,24 +20,24 @@ bottom of the demo-park shots. It overlays nothing this critique measures.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | R1  | R2      | One sentence                                                                                                                                                                     |
+| #   | Axis                  | Weight |  R1 |      R2 | One sentence                                                                                                                                                                       |
 | --- | --------------------- | -----: | --: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The frame             |   30 % | 7.4 | **7.6** | Overcast and rain are reachable at last and the light under them is right — and now that the rain can be photographed, it covers **0.17 %** of the frame and reads as drizzle.  |
-| 2   | Fidelity              |   20 % | 7.5 | **7.9** | The weather fog is held to the same arithmetic as the clear-day fog now: half-contrast at 1,525 m clear, 771 overcast, 664 rain, 605 storm. Still no ozone term.                |
-| 3   | Extensibility         |   20 % | 6.8 | **6.8** | Untouched and re-measured: `grep -rn "registry\|registerPackCategory\|packs()" lib/game/environment/*.ts` returns **0 hits** across 14 files.                                    |
-| 4   | Budget and behaviour  |   15 % | 7.8 | **7.8** | Unchanged; still no leak measurement. Rain costs particles the frame can afford (1,560 capacity, 716–959/s).                                                                    |
-| 5   | Determinism and state |   10 % | 9.0 | **9.0** | Unchanged.                                                                                                                                                                      |
+| 1   | The frame             |   30 % | 7.4 | **7.6** | Overcast and rain are reachable at last and the light under them is right — and now that the rain can be photographed, it covers **0.17 %** of the frame and reads as drizzle.     |
+| 2   | Fidelity              |   20 % | 7.5 | **7.9** | The weather fog is held to the same arithmetic as the clear-day fog now: half-contrast at 1,525 m clear, 771 overcast, 664 rain, 605 storm. Still no ozone term.                   |
+| 3   | Extensibility         |   20 % | 6.8 | **6.8** | Untouched and re-measured: `grep -rn "registry\|registerPackCategory\|packs()" lib/game/environment/*.ts` returns **0 hits** across 14 files.                                      |
+| 4   | Budget and behaviour  |   15 % | 7.8 | **7.8** | Unchanged; still no leak measurement. Rain costs particles the frame can afford (1,560 capacity, 716–959/s).                                                                       |
+| 5   | Determinism and state |   10 % | 9.0 | **9.0** | Unchanged.                                                                                                                                                                         |
 | 6   | Honesty of the report |    5 % | 7.0 | **8.6** | Three of its own numbers corrected **in place rather than deleted**, with the wrong reading named; the core bug described precisely enough that I could re-verify it from the URL. |
 
 **7.6 × 0.30 + 7.9 × 0.20 + 6.8 × 0.20 + 7.8 × 0.15 + 9.0 × 0.10 + 8.6 × 0.05 = 7.72.**
 
 ## 2. Hard gates
 
-| Gate                                | Command                                                                     | Result                                                                       |
-| ----------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Console errors / hydration warnings | six harness runs (clear / rain / storm × demo park and showcase)             | **PASS** — `errors 0 · warnings 0 · hydration 0` in every report; probes `errors: []` |
-| Extensibility ≥ 5                   | §4.3                                                                          | **PASS — 6.8**, unmoved                                                       |
-| `pnpm test:game` / `tsc` / `eslint` | as written                                                                    | **PASS** — exit 0                                                             |
+| Gate                                | Command                                                          | Result                                                                                |
+| ----------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Console errors / hydration warnings | six harness runs (clear / rain / storm × demo park and showcase) | **PASS** — `errors 0 · warnings 0 · hydration 0` in every report; probes `errors: []` |
+| Extensibility ≥ 5                   | §4.3                                                             | **PASS — 6.8**, unmoved                                                               |
+| `pnpm test:game` / `tsc` / `eslint` | as written                                                       | **PASS** — exit 0                                                                     |
 
 ## 3. What the weather actually does now, measured from the URL
 

@@ -19,40 +19,40 @@ every frame named in §3 was opened and looked at.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | R1  | R2      | One sentence                                                                                                                                                                                            |
-| --- | --------------------- | -----: | --: | ------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The frame             |   30 % | 6.8 | **6.8** | Unchanged, and honestly so: neither round-2 change is meant to move a pixel. The eye-level grass is the best surface in the game; the escarpment is still a smooth ramp with a straight crest and the world still ends in a hard line. |
-| 2   | Fidelity              |   20 % | 6.2 | **6.2** | Nothing in round 2 touched the landform. One slope break at 26°, 17.4 % of the park drawn as lawn between 10° and 26°, no talus, no erosion, no wet band at the waterline — all still true in my frames. |
+| #   | Axis                  | Weight |  R1 |      R2 | One sentence                                                                                                                                                                                                                                                                                                     |
+| --- | --------------------- | -----: | --: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The frame             |   30 % | 6.8 | **6.8** | Unchanged, and honestly so: neither round-2 change is meant to move a pixel. The eye-level grass is the best surface in the game; the escarpment is still a smooth ramp with a straight crest and the world still ends in a hard line.                                                                           |
+| 2   | Fidelity              |   20 % | 6.2 | **6.2** | Nothing in round 2 touched the landform. One slope break at 26°, 17.4 % of the park drawn as lawn between 10° and 26°, no talus, no erosion, no wet band at the waterline — all still true in my frames.                                                                                                         |
 | 3   | Extensibility         |   20 % | 4.0 | **6.8** | The category is claimed (`unclaimedPackKeys()` is `[]` live), the manifest is read at boot **and** on `onPack`, a bad recipe is named and skipped. But an added layer is never drawn, the pattern set is closed, the splat rule is still two module constants, and **no bundled pack uses the category at all**. |
-| 4   | Budget and behaviour  |   15 % | 6.0 | **7.4** | The shadow proxy went 32,768 → **8,192** triangles, i.e. 98,304 → 24,576 per frame across 3 cascades, 33.9 % → **8.4 %** of the demo park at `overview`. The saving was real and has already been spent by other modules. |
-| 5   | Determinism and state |   10 % | 9.3 | **9.3** | Unchanged. `pnpm test:game` green, save round-trips, no `Math.random`, no wall clock.                                                                                                                    |
-| 6   | Honesty of the report |    5 % | 2.5 | **8.2** | The report exists now, opens by naming its own hard-gate failure, corrects two fixes previously recorded against this module that were **wrong**, and ends with "no critic has re-graded any of this". Two claims in it are still unbacked. |
+| 4   | Budget and behaviour  |   15 % | 6.0 | **7.4** | The shadow proxy went 32,768 → **8,192** triangles, i.e. 98,304 → 24,576 per frame across 3 cascades, 33.9 % → **8.4 %** of the demo park at `overview`. The saving was real and has already been spent by other modules.                                                                                        |
+| 5   | Determinism and state |   10 % | 9.3 | **9.3** | Unchanged. `pnpm test:game` green, save round-trips, no `Math.random`, no wall clock.                                                                                                                                                                                                                            |
+| 6   | Honesty of the report |    5 % | 2.5 | **8.2** | The report exists now, opens by naming its own hard-gate failure, corrects two fixes previously recorded against this module that were **wrong**, and ends with "no critic has re-graded any of this". Two claims in it are still unbacked.                                                                      |
 
 **6.8 × 0.30 + 6.2 × 0.20 + 6.8 × 0.20 + 7.4 × 0.15 + 9.3 × 0.10 + 8.2 × 0.05 = 7.09.**
 
 ## 2. Hard gates
 
-| Gate                                                | Command                                                                    | Result                                                                                          |
-| --------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Console errors / hydration warnings                 | `node scripts/game-shot.mjs --showcase=terrain --cam=overview,close,ground --tod=12:00` and the park probe | **PASS** — `errors 0 · hydration 0`. Two warnings, `bufferSubData: buffer overflow`, in the showcase only; see §4.4. |
-| Extensibility ≥ 5                                   | §4.1                                                                       | **PASS — 6.8.** This is the gate round 1 failed.                                                |
-| Barrel import                                       | `grep -rn "from '@babylonjs/core'" lib/game/terrain/`                      | **PASS** — 0 hits                                                                               |
-| `window` / `document` / `navigator`                 | `grep -rn "window\.\|document\.\|navigator\." lib/game/terrain/*.ts`       | **PASS** — 0 hits anywhere, not merely at module scope                                          |
-| Coupling                                            | `grep -rn "from '\.\./" lib/game/terrain/*.ts` minus `core/types`          | **PASS** — nothing imports a sibling module                                                     |
-| `npx tsc --noEmit`                                  | as written                                                                 | **PASS** — exit 0                                                                               |
-| `npx eslint lib/game/terrain`                       | as written                                                                 | **PASS** — exit 0                                                                               |
-| `npx prettier --check lib/game/terrain`             | as written                                                                 | **PASS**                                                                                        |
-| `pnpm test:game`                                    | as written                                                                 | **PASS** — exit 0, 92 checks. Terrain still ships **no `selftest.mjs`**; what covers it now is `test:game-registry`'s ground-layer case, which is new in round 2. |
+| Gate                                    | Command                                                                                                    | Result                                                                                                                                                            |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Console errors / hydration warnings     | `node scripts/game-shot.mjs --showcase=terrain --cam=overview,close,ground --tod=12:00` and the park probe | **PASS** — `errors 0 · hydration 0`. Two warnings, `bufferSubData: buffer overflow`, in the showcase only; see §4.4.                                              |
+| Extensibility ≥ 5                       | §4.1                                                                                                       | **PASS — 6.8.** This is the gate round 1 failed.                                                                                                                  |
+| Barrel import                           | `grep -rn "from '@babylonjs/core'" lib/game/terrain/`                                                      | **PASS** — 0 hits                                                                                                                                                 |
+| `window` / `document` / `navigator`     | `grep -rn "window\.\|document\.\|navigator\." lib/game/terrain/*.ts`                                       | **PASS** — 0 hits anywhere, not merely at module scope                                                                                                            |
+| Coupling                                | `grep -rn "from '\.\./" lib/game/terrain/*.ts` minus `core/types`                                          | **PASS** — nothing imports a sibling module                                                                                                                       |
+| `npx tsc --noEmit`                      | as written                                                                                                 | **PASS** — exit 0                                                                                                                                                 |
+| `npx eslint lib/game/terrain`           | as written                                                                                                 | **PASS** — exit 0                                                                                                                                                 |
+| `npx prettier --check lib/game/terrain` | as written                                                                                                 | **PASS**                                                                                                                                                          |
+| `pnpm test:game`                        | as written                                                                                                 | **PASS** — exit 0, 92 checks. Terrain still ships **no `selftest.mjs`**; what covers it now is `test:game-registry`'s ground-layer case, which is new in round 2. |
 
 ## 3. The frames I looked at
 
 `.game-render/critic-terrain-r2/`, showcase, 12:00, one process, `errors 0`.
 
-| File                | What is actually in it                                                                                                                                                                                                                                                             |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| File                | What is actually in it                                                                                                                                                                                                                                                       |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `1200-overview.png` | The plateau reads as **long straight parallel bands** of pale sand and two greens running diagonally across it, the near hill as a smooth plane, the lake as flat navy with a hard straight far edge, and the land ends against sky in a hard line with no atmospheric fade. |
-| `1200-close.png`    | A big smooth green slope with one dark shadow band across it, the escarpment top-left a grey wedge under a nearly straight crest with a 6–10 px green rim. The shaded band carries a visible **stepped diamond lattice**.                                                     |
-| `1200-ground.png`   | The module's best frame and the best surface in the game: eye-level grass with real clumping and tonal variation, sand plain beyond it, escarpment at left. The crest is still a straight line and the far land still ends in a hard sky boundary.                             |
+| `1200-close.png`    | A big smooth green slope with one dark shadow band across it, the escarpment top-left a grey wedge under a nearly straight crest with a 6–10 px green rim. The shaded band carries a visible **stepped diamond lattice**.                                                    |
+| `1200-ground.png`   | The module's best frame and the best surface in the game: eye-level grass with real clumping and tonal variation, sand plain beyond it, escarpment at left. The crest is still a straight line and the far land still ends in a hard sky boundary.                           |
 
 Demo park, from the camera re-grade run (`.game-render/cam-presets/`, park minute 764):
 `1200-ground.png` shows the promenade verges reading much better than round 1's "flat bright green
@@ -76,7 +76,7 @@ What works, measured live in `.game-render/_probe/terrain-r2-park.json`:
 What holds it at 6.8 rather than 8:
 
 1. **No bundled pack uses it.** `grep -rn "groundLayers\|pathStyles\|trackElements\|cameraPresets"
-   lib/game/content/packs/` returns **nothing** — neither `core-classic` nor `neon-lagoon` carries
+lib/game/content/packs/` returns **nothing** — neither `core-classic` nor `neon-lagoon` carries
    a single entry for any of the four categories that were added to the packs by
    `registerPackCategory` after the schema was written. Be precise about what that does and does
    not say: the schema's **own** categories are used heavily and do reach the game (`neon-lagoon`
@@ -106,12 +106,12 @@ What holds it at 6.8 rather than 8:
 
 Census at `overview`, demo park, boot (0 guests), `terrain-r2-park.json`:
 
-| item                                | round 1 | round 2 |
-| ----------------------------------- | ------: | ------: |
-| `terrain-shadow-proxy`, one mesh    |  32,768 |   8,192 |
-| × 3 cascades, per frame             |  98,304 |  24,576 |
-| share of the demo park at overview  |  33.9 % |   8.4 % |
-| demo park total at overview         | 290,262 | 291,258 |
+| item                               | round 1 | round 2 |
+| ---------------------------------- | ------: | ------: |
+| `terrain-shadow-proxy`, one mesh   |  32,768 |   8,192 |
+| × 3 cascades, per frame            |  98,304 |  24,576 |
+| share of the demo park at overview |  33.9 % |   8.4 % |
+| demo park total at overview        | 290,262 | 291,258 |
 
 The proxy cut is exactly the 73,728 the report claims. The last row is the part the report does not
 say: the park grew by 74,724 triangles in the same period (the path-side avenues, ~300 more trees,

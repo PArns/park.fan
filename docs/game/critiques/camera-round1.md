@@ -15,27 +15,27 @@ the same way. Read the numbers, not the score.
 
 ## 1. Scores
 
-| #   | Axis                  | Weight | Score   | One sentence                                                                                                                                                             |
-| --- | --------------------- | -----: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | The frame             |   30 % | **8.2** | It draws nothing, so it is graded on what its framings make: `ground` is the most park-like image in the project and `overview` finally has a horizon in it — and two of the seven presets frame bare ground. |
-| 2   | Fidelity              |   20 % | **7.5** | Grab-the-world pan, orbit and zoom about the cursor, momentum, terrain follow and an eye leash are all implemented against the right reference — and **nobody has ever driven this with a hand**. |
+| #   | Axis                  | Weight |   Score | One sentence                                                                                                                                                                                                                         |
+| --- | --------------------- | -----: | ------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | The frame             |   30 % | **8.2** | It draws nothing, so it is graded on what its framings make: `ground` is the most park-like image in the project and `overview` finally has a horizon in it — and two of the seven presets frame bare ground.                        |
+| 2   | Fidelity              |   20 % | **7.5** | Grab-the-world pan, orbit and zoom about the cursor, momentum, terrain follow and an eye leash are all implemented against the right reference — and **nobody has ever driven this with a hand**.                                    |
 | 3   | Extensibility         |   20 % | **9.0** | Presets are content, the category is claimed and read at boot **and** on `onPack`, anchors and follow sources are both open registries, and a pack-supplied preset is the only pack content in this game that has been photographed. |
-| 4   | Budget and behaviour  |   15 % | **8.8** | **0 meshes, 0 materials, 0 draw calls, 0 triangles, 0 runtime Babylon imports** and no sim half. No dispose/reboot leak measurement.                                     |
-| 5   | Determinism and state |   10 % | **9.0** | No owned world state at all — `world.modules` has no `camera` key — the pose lives in `localStorage` and is skipped under `?harness=1`, so it cannot make two runs disagree. |
-| 6   | Honesty of the report |    5 % | **8.0** | An unusually complete "what is not verified" section, and two decisions argued against themselves — against three numbers that were simply wrong on arrival. |
+| 4   | Budget and behaviour  |   15 % | **8.8** | **0 meshes, 0 materials, 0 draw calls, 0 triangles, 0 runtime Babylon imports** and no sim half. No dispose/reboot leak measurement.                                                                                                 |
+| 5   | Determinism and state |   10 % | **9.0** | No owned world state at all — `world.modules` has no `camera` key — the pose lives in `localStorage` and is skipped under `?harness=1`, so it cannot make two runs disagree.                                                         |
+| 6   | Honesty of the report |    5 % | **8.0** | An unusually complete "what is not verified" section, and two decisions argued against themselves — against three numbers that were simply wrong on arrival.                                                                         |
 
 **8.2 × 0.30 + 7.5 × 0.20 + 9.0 × 0.20 + 8.8 × 0.15 + 9.0 × 0.10 + 8.0 × 0.05 = 8.38.**
 
 ## 2. Hard gates
 
-| Gate                                    | Command                                                | Result                                                                           |
-| --------------------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Console errors / hydration warnings     | 4 harness runs, 13 shots, plus 4 probes                   | **PASS** — `errors 0 · hydration 0` everywhere; the two showcase warnings are terrain's |
-| Extensibility ≥ 5                       | §4.2                                                      | **PASS — 9.0**                                                                    |
-| Barrel import                           | `grep -rn "^import .*@babylonjs" lib/game/camera/`        | **PASS** — 5 lines, **0 of them a runtime import**                                |
-| `window`/`document`/`navigator` at module scope | reviewed; DOM is reached only inside `main`/`input` | **PASS**                                                                          |
-| `pnpm test:game` / `test:game-camera`   | as written                                                | **PASS** — 92 checks green; the selftest is 114 checks                            |
-| `npx tsc --noEmit` / `eslint`           | as written                                                | **PASS** — exit 0 both                                                            |
+| Gate                                            | Command                                             | Result                                                                                  |
+| ----------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Console errors / hydration warnings             | 4 harness runs, 13 shots, plus 4 probes             | **PASS** — `errors 0 · hydration 0` everywhere; the two showcase warnings are terrain's |
+| Extensibility ≥ 5                               | §4.2                                                | **PASS — 9.0**                                                                          |
+| Barrel import                                   | `grep -rn "^import .*@babylonjs" lib/game/camera/`  | **PASS** — 5 lines, **0 of them a runtime import**                                      |
+| `window`/`document`/`navigator` at module scope | reviewed; DOM is reached only inside `main`/`input` | **PASS**                                                                                |
+| `pnpm test:game` / `test:game-camera`           | as written                                          | **PASS** — 92 checks green; the selftest is 114 checks                                  |
+| `npx tsc --noEmit` / `eslint`                   | as written                                          | **PASS** — exit 0 both                                                                  |
 
 ## 3. The frames I looked at
 
@@ -43,15 +43,15 @@ All seven presets at 12:00 with `--step=900` (`.game-render/cam-presets/`), `nig
 the three showcase presets, and the boot pose before and after §4.1. Thirteen frames, every one
 opened.
 
-| preset     | draw calls | triangles | what it frames                                                                       |
-| ---------- | ---------: | --------: | -------------------------------------------------------------------------------------- |
-| `overview` |        210 |   422,534 | the whole park, lake right of centre, horizon and sky in the top third                |
+| preset     | draw calls | triangles | what it frames                                                                          |
+| ---------- | ---------: | --------: | --------------------------------------------------------------------------------------- |
+| `overview` |        210 |   422,534 | the whole park, lake right of centre, horizon and sky in the top third                  |
 | `entrance` |        260 |   794,886 | the gate at the bottom edge and the street receding — the best composition of the seven |
-| `close`    |        323 | 1,290,243 | a plaza at reading distance, guests and benches legible                                |
-| `ground`   |        339 | 1,373,581 | eye level down the main street: kerbs, lamps, benches, shops both sides               |
-| `coaster`  |        214 |   809,955 | **woodland and empty ground** — there is no coaster in the demo park                  |
-| `pool`     |        239 |   591,462 | the lake, filling about a third of the frame                                          |
-| `night`    |        252 |   797,690 | the forecourt from above; at 23:00 it is lamp pools, one lit shop and stars            |
+| `close`    |        323 | 1,290,243 | a plaza at reading distance, guests and benches legible                                 |
+| `ground`   |        339 | 1,373,581 | eye level down the main street: kerbs, lamps, benches, shops both sides                 |
+| `coaster`  |        214 |   809,955 | **woodland and empty ground** — there is no coaster in the demo park                    |
+| `pool`     |        239 |   591,462 | the lake, filling about a third of the frame                                            |
+| `night`    |        252 |   797,690 | the forecourt from above; at 23:00 it is lamp pools, one lit shop and stars             |
 
 ## 4. Findings
 

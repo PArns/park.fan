@@ -5,7 +5,7 @@ around in a way the report names, and each workaround is worse than the fix.
 
 ## 1. Wire the selftest into `pnpm test:game` — **done**
 
-*Integrator, after the builder stopped:* wired as `test:game-camera` and added to the `test:game`
+_Integrator, after the builder stopped:_ wired as `test:game-camera` and added to the `test:game`
 chain between `test:game-shops` and `test:game-soak`. The whole chain is 92 green checks, exit 0.
 
 ### Original request
@@ -37,8 +37,8 @@ enforces". This module has exactly that problem twice over and cannot fix it fro
 folder:
 
 ```ts
-const camera = scene.activeCamera as ArcRotateCamera | null;   // main.ts
-const canvas = engine.getRenderingCanvas();                    // main.ts
+const camera = scene.activeCamera as ArcRotateCamera | null; // main.ts
+const canvas = engine.getRenderingCanvas(); // main.ts
 ```
 
 `scene.activeCamera` is better than a name lookup and still not a contract: if any module ever sets
@@ -50,7 +50,7 @@ and no error.
 **Ask:** add `camera` and `canvas` to `MainContext` beside `lights`, typed as `unknown` for the
 same reason the others are (this file is imported on the worker and must stay Babylon-free).
 
-*Meanwhile:* the module checks `camera.getClassName() === 'ArcRotateCamera'` and, when that fails,
+_Meanwhile:_ the module checks `camera.getClassName() === 'ArcRotateCamera'` and, when that fails,
 returns a handle whose `preset()` answers `false` — which hands the harness back to
 `applyFallbackCameraPreset` rather than half-working. `input.ts` is simply not attached when there
 is no canvas.
@@ -73,13 +73,12 @@ owner set them.
 
 ## 4. `game-shot.mjs` dies on `nextFrame()` under SwiftShader — **done**
 
-*Integrator:* both `nextFrame()` awaits are gone. The script registers one
+_Integrator:_ both `nextFrame()` awaits are gone. The script registers one
 `onAfterRenderObservable` counter in the page after boot and `waitFrames(2)` polls it in short
 evaluates, the same shape as the step wait, with a 30 s ceiling so a stalled render loop still
 takes its screenshot. Verified on `--cam=overview,ground --step=900`: 2 shots, 0 errors.
 
 ### Original request
-
 
 The script already documents this failure for the step wait and fixed it there by polling in short
 `evaluate` calls. The same long-lived promise remains at lines 127–128:
@@ -95,7 +94,7 @@ shots of the demo park. Retrying the process succeeds (2 of 2 retries here).
 **Ask:** replace the two `nextFrame()` awaits with a short poll on a frame counter, the way the
 step wait already does it — or expose `__parkfan_game.frameCount` for the harness to poll.
 
-*Meanwhile:* every shot in the report was taken by a wrapper that runs one `(tod, cam)` per
+_Meanwhile:_ every shot in the report was taken by a wrapper that runs one `(tod, cam)` per
 process and retries up to three times. The failures are reported rather than hidden.
 
 ## 5. `trains` should register a follow source

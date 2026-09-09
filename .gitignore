@@ -155,4 +155,8 @@ scripts/_tmp-measure-history.mjs
 /.*-probe.mts
 /.*-probe.png
 /.tune-*.mjs
+# ...and the ones the rule above did not catch: the pattern was `-probe`, so `.probe-critic.mjs`
+# and `.pix2.mjs` sat tracked in the repo root for days. Match the whole family, not one spelling.
+/.p*-critic.mjs
+/.pix*.mjs
 /.crop-*.png
