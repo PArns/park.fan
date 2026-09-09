@@ -138,13 +138,38 @@ export function ParkCalendarComparison({
   const weekdayLabel = (day: CalendarDay) => fmt.weekday.format(asDate(day));
   const dateLabel = (day: CalendarDay) => fmt.date.format(asDate(day));
 
+  /**
+   * The sides the comparison itself has ruled out, as a set.
+   *
+   * The plan button reads THIS rather than re-deriving „can this day be visited" from the day's
+   * fields, because the two answers drifting apart is a bug with no symptom: a `status: 'UNKNOWN'`
+   * day was named the better day with no blocker line, and then silently got no button — the
+   * dialog recommending a day and refusing to plan it, with nothing on screen saying why.
+   */
+  const blockedSides = new Set(
+    comparison.blockers.flatMap((blocker) =>
+      blocker.side === 'tie' ? (['a', 'b'] as const) : [blocker.side]
+    )
+  );
+
   const winner = comparison.better === 'a' ? a : comparison.better === 'b' ? b : null;
+  /**
+   * The headline.
+   *
+   * „Unentschieden" and „keiner von beiden" are two different sentences and the module reports
+   * both as `better: 'tie'` — rightly, since neither names a winner. Which one it is depends on
+   * whether anything was comparable in the first place: two past days, or two closed ones, are not
+   * equally good days, and „die beiden Tage nehmen sich nichts" over a five-bucket gap is the
+   * dialog saying something it can see is false.
+   */
   const verdict =
-    comparison.confidence === 'tie' || !winner
-      ? t('dayComparison.resultTie')
-      : comparison.confidence === 'clear'
-        ? t('dayComparison.resultClear', { day: dayLabel(winner) })
-        : t('dayComparison.resultSlight', { day: dayLabel(winner) });
+    blockedSides.size === 2
+      ? t('dayComparison.resultUnavailable')
+      : comparison.confidence === 'tie' || !winner
+        ? t('dayComparison.resultTie')
+        : comparison.confidence === 'clear'
+          ? t('dayComparison.resultClear', { day: dayLabel(winner) })
+          : t('dayComparison.resultSlight', { day: dayLabel(winner) });
 
   /**
    * The number a cell actually shows, rounded the way that unit is rounded.
@@ -248,20 +273,6 @@ export function ParkCalendarComparison({
         }).format(delta);
     }
   };
-
-  /**
-   * The sides the comparison itself has ruled out, as a set.
-   *
-   * The plan button reads THIS rather than re-deriving „can this day be visited" from the day's
-   * fields, because the two answers drifting apart is a bug with no symptom: a `status: 'UNKNOWN'`
-   * day was named the better day with no blocker line, and then silently got no button — the
-   * dialog recommending a day and refusing to plan it, with nothing on screen saying why.
-   */
-  const blockedSides = new Set(
-    comparison.blockers.flatMap((blocker) =>
-      blocker.side === 'tie' ? (['a', 'b'] as const) : [blocker.side]
-    )
-  );
 
   /** Whether this day may be handed to the planner at all. */
   const plannable = (day: CalendarDay): boolean => {

@@ -66,7 +66,14 @@ export const plannerPageDay = {
       pending = null;
       return null;
     }
-    if (pending.parkSlug !== parkSlug) return null;
+    // Cleared on a mismatch too, and that is the „read once" guarantee doing its job rather than a
+    // tidy-up: a hand-off left lying after the wrong park asked for it is still collectable by the
+    // RIGHT park's next gesture — „Tag hier planen", which means „some day, you pick" — inside the
+    // window above.
+    if (pending.parkSlug !== parkSlug) {
+      pending = null;
+      return null;
+    }
     const { date } = pending;
     pending = null;
     return date;

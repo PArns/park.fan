@@ -1090,7 +1090,8 @@
       "unitHoursMinutes": "{hours} h {minutes} min",
       "blockerClosed": "El parque está cerrado ese día.",
       "blockerPast": "Ese día ya ha pasado.",
-      "blockerNoForecast": "Todavía no hay pronóstico para ese día."
+      "blockerNoForecast": "Todavía no hay pronóstico para ese día.",
+      "resultUnavailable": "Ninguno de estos dos días se puede comparar."
     }
   },
   "attractions": {

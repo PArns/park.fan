@@ -1090,7 +1090,8 @@
       "unitHoursMinutes": "{hours} uur {minutes} min",
       "blockerClosed": "Het park is op deze dag gesloten.",
       "blockerPast": "Deze dag ligt in het verleden.",
-      "blockerNoForecast": "Voor deze dag is er nog geen voorspelling."
+      "blockerNoForecast": "Voor deze dag is er nog geen voorspelling.",
+      "resultUnavailable": "Geen van deze twee dagen is te vergelijken."
     }
   },
   "attractions": {

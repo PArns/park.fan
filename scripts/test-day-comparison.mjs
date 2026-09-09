@@ -466,6 +466,57 @@ test(
   null
 );
 
+// A blocked day must not win a ROW either: the headline named the other day while three ticks
+// sat on the day the blocker line calls unavailable.
+const pastButQuieter = compareDays(
+  day('2026-09-01', {
+    crowdLevel: 'very_low',
+    headlinerForecast: { avgWait: 10, rides: [] },
+    weather: { condition: 'clear', icon: 2, tempMin: 14, tempMax: 24, rainChance: 0 },
+    ticket: { price: { amount: 39, currency: 'EUR' } },
+  }),
+  day('2026-12-01', {
+    crowdLevel: 'very_high',
+    headlinerForecast: { avgWait: 95, rides: [] },
+    weather: { condition: 'rain', icon: 1, tempMin: 2, tempMax: 6, rainChance: 12 },
+    ticket: { price: { amount: 59, currency: 'EUR' } },
+  }),
+  TODAY
+);
+test('blocked day: the verdict names the available one', () => pastButQuieter.better, 'b');
+test(
+  'blocked day: not one row ticks it, however good its figures',
+  () => pastButQuieter.reasons.filter((r) => r.better === 'a').length,
+  0
+);
+test(
+  'blocked day: the rows are still there, with both figures',
+  () => `${reason(pastButQuieter, 'wait').a}/${reason(pastButQuieter, 'wait').b}`,
+  '10/95'
+);
+test(
+  'blocked day: and they carry no weight',
+  () => pastButQuieter.reasons.every((r) => r.weight === 0),
+  true
+);
+
+// Two blocked days are not "equal" — the caller has to be able to tell the two apart.
+const bothPast = compareDays(
+  day('2026-09-01', { crowdLevel: 'very_low', headlinerForecast: { avgWait: 10, rides: [] } }),
+  day('2026-09-02', { crowdLevel: 'extreme', headlinerForecast: { avgWait: 110, rides: [] } }),
+  TODAY
+);
+test('two blocked days: no winner', () => bothPast.better, 'tie');
+test(
+  'two blocked days: both sides on the record, so the caller can say "neither"',
+  () =>
+    bothPast.blockers
+      .filter((x) => x.key === 'past')
+      .map((x) => x.side)
+      .join(','),
+  'tie'
+);
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');

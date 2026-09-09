@@ -361,15 +361,35 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
       : null,
   ].filter((entry): entry is DayComparisonReason => entry !== null);
 
+  // A blocked day never WINS a row either, not just the verdict.
+  //
+  // Without this the dialog contradicted itself in the most visible way it could: „1. Dezember ist
+  // der deutlich bessere Tag" as the headline, and three ticks on the 1. September underneath it,
+  // beside the line saying that day is in the past. The crowd and hours rows were already safe by
+  // accident (`bucketOf` and `hours.type` both refuse a shut day); wait, weather, holiday and
+  // price were not — a closed day keeps a stale `headlinerForecast` and a `ticket.price`.
+  //
+  // The row is kept and its two figures still shown, because they are still true and a reader
+  // comparing „what would this day have been like" is entitled to them. What goes is the claim
+  // that the blocked day is the better one.
+  const aBlocked = blockedA.length > 0;
+  const bBlocked = blockedB.length > 0;
+  for (const entry of reasons) {
+    if ((entry.better === 'a' && aBlocked) || (entry.better === 'b' && bBlocked)) {
+      entry.better = 'tie';
+      entry.weight = 0;
+    }
+  }
+
   reasons.sort((x, y) => y.weight - x.weight);
 
   const currency = reasons.some((r) => r.key === 'price') ? a.ticket?.price?.currency : undefined;
 
   // A blocked day never wins. Where exactly one side is blocked the other takes it by default —
   // "the park is open on the 14th and shut on the 15th" is a clear answer and does not need a
-  // rank. Where both are blocked there is nothing to choose between.
-  const aBlocked = blockedA.length > 0;
-  const bBlocked = blockedB.length > 0;
+  // rank. Where both are blocked there is nothing to choose FROM, which is not the same as
+  // nothing to choose BETWEEN: `better: 'tie'` with every side blocked is the caller's cue to say
+  // "neither of these can be compared" rather than "they are equally good" — see the dialog.
   if (aBlocked || bBlocked) {
     const better: DayComparisonSide = aBlocked && bBlocked ? 'tie' : aBlocked ? 'b' : 'a';
     return {
