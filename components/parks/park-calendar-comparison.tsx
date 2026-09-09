@@ -232,11 +232,19 @@ export function ParkCalendarComparison({
       case 'days':
         return t('dayComparison.unitFlags', { value });
       case 'currency':
-        return new Intl.NumberFormat(locale, {
-          style: 'currency',
-          currency: comparison.currency ?? 'EUR',
-          maximumFractionDigits: 0,
-        }).format(value);
+        // `Intl.NumberFormat` throws a `RangeError` on a currency it does not know, and this runs
+        // inside render — an unrecognised code would take the whole dialog down rather than one
+        // row. `compareDays` already refuses anything that is not three letters; this is the
+        // second half of the same guard, because a `RangeError` here costs more than a fallback.
+        try {
+          return new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency: comparison.currency ?? 'EUR',
+            maximumFractionDigits: 0,
+          }).format(value);
+        } catch {
+          return `${Math.round(value)} ${comparison.currency ?? 'EUR'}`;
+        }
     }
   };
 

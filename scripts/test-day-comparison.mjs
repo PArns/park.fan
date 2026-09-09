@@ -571,6 +571,76 @@ const nothingToCompare = compareDays(
 );
 test('no comparable figures at all', () => nothingToCompare.reasons.length, 0);
 
+// ------------------------------------------------ an unrated day is not a clear loss
+
+// `UNKNOWN` earns a `no-forecast` blocker even when the crowd level survived, so the rated day
+// takes the verdict — that part is the ticket's own rule and stays. What may not happen is the
+// dialog announcing „der 21. ist der DEUTLICH bessere Tag" directly above a crowd row reading
+// `very_low` against `extreme` and pointing the other way. The claim drops to what is behind it.
+const unrated = compareDays(
+  day('2026-09-20', { status: 'UNKNOWN', crowdLevel: 'very_low' }),
+  day('2026-09-21', { crowdLevel: 'extreme' }),
+  TODAY
+);
+test('unrated day: the rated one still wins', () => unrated.better, 'b');
+test('unrated day: but not clearly', () => unrated.confidence, 'slight');
+test('unrated day: the crowd row names no winner', () => reason(unrated, 'crowd')?.better, 'tie');
+test(
+  'unrated day: and keeps both figures',
+  () => {
+    const r = reason(unrated, 'crowd');
+    return `${r.a}/${r.b}`;
+  },
+  '0/5'
+);
+
+// A day the park has SHUT is a different kind of answer: there is nothing to weigh, so the
+// survivor takes it clearly. This is the case the branch above must not have swallowed.
+const shut = compareDays(
+  day('2026-09-20', { status: 'CLOSED', crowdLevel: 'closed' }),
+  day('2026-09-21', { crowdLevel: 'extreme' }),
+  TODAY
+);
+test('a shut day still loses clearly', () => shut.confidence, 'clear');
+test(
+  'a past day still loses clearly',
+  () => {
+    const past = compareDays(day('2026-09-01'), day('2026-09-21'), TODAY);
+    return past.confidence;
+  },
+  'clear'
+);
+
+// ------------------------------------------------------ a price that is not a number
+
+// `TicketInfo.price.amount` is typed `number`, which is a claim about the wire and not a promise
+// it keeps. An absent one subtracted to `NaN`; `NaN` is neither `<` nor `>`, so the row fell
+// through to a winner and rendered its difference as „NaN €".
+const brokenPrice = compareDays(
+  day('2026-09-20', { ticket: { price: { currency: 'EUR' } } }),
+  day('2026-09-21', { ticket: { price: { amount: 45, currency: 'EUR' } } }),
+  TODAY
+);
+test('a price without an amount drops the row', () => reason(brokenPrice, 'price'), null);
+test('and takes the currency with it', () => brokenPrice.currency ?? 'none', 'none');
+
+const bothPriced = compareDays(
+  day('2026-09-20', { ticket: { price: { amount: 40, currency: 'EUR' } } }),
+  day('2026-09-21', { ticket: { price: { amount: 45, currency: 'EUR' } } }),
+  TODAY
+);
+test('two real prices still compare', () => reason(bothPriced, 'price')?.better, 'a');
+test('and the currency comes along', () => bothPriced.currency, 'EUR');
+
+// A currency `Intl.NumberFormat` would throw on never reaches the dialog.
+const oddCurrency = compareDays(
+  day('2026-09-20', { ticket: { price: { amount: 40, currency: 'Bitcoin' } } }),
+  day('2026-09-21', { ticket: { price: { amount: 45, currency: 'Bitcoin' } } }),
+  TODAY
+);
+test('a non-ISO currency is dropped', () => oddCurrency.currency ?? 'none', 'none');
+test('while the price row survives', () => reason(oddCurrency, 'price')?.better, 'a');
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');

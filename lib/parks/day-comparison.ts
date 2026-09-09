@@ -288,15 +288,23 @@ function holidayRow(a: CalendarDay, b: CalendarDay): DayComparisonReason | null 
 function reason(
   key: DayComparisonReasonKey,
   unit: DayComparisonReason['unit'],
-  a: number | null,
-  b: number | null,
+  a: number | null | undefined,
+  b: number | null | undefined,
   /** `'lower'` = the smaller number is the better day. */
   direction: 'lower' | 'higher',
   weight = 0
 ): DayComparisonReason | null {
   // Missing on either side means the row is dropped, not guessed at. Half a comparison — "day A
   // has 30 minutes, day B has nothing recorded" — reads as if B were the quieter one.
-  if (a === null || b === null) return null;
+  //
+  // Checked by VALUE and not against `null`, because not every caller hands this a number that
+  // has been through a helper. The measurements do — `bucketOf`, `waitOf`, `openMinutesOf`,
+  // `rainOf` all return `number | null` — but the ticket price is read straight off the payload,
+  // where `amount` is a promise the wire makes and not one it keeps. An absent one subtracted to
+  // `NaN`, and `NaN` is neither `<` nor `>`, so the row named a winner by falling through to the
+  // `else` and then rendered its difference as „NaN €".
+  if (typeof a !== 'number' || typeof b !== 'number' || !Number.isFinite(a) || !Number.isFinite(b))
+    return null;
   const delta = Math.abs(a - b);
   const better: DayComparisonSide =
     a === b ? 'tie' : direction === 'lower' ? (a < b ? 'a' : 'b') : a > b ? 'a' : 'b';
@@ -411,7 +419,15 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
 
   reasons.sort((x, y) => y.weight - x.weight);
 
-  const currency = reasons.some((r) => r.key === 'price') ? a.ticket?.price?.currency : undefined;
+  // Only a code that `Intl.NumberFormat` will actually accept. It takes ISO 4217 — three letters,
+  // nothing else — and THROWS a `RangeError` on anything it does not recognise, in the middle of
+  // the dialog's render. Filtering here keeps the malformed value out of the type instead of
+  // making every reader of `currency` defend against it; the price row itself is unaffected, its
+  // two figures are numbers.
+  const rawCurrency = reasons.some((r) => r.key === 'price')
+    ? a.ticket?.price?.currency
+    : undefined;
+  const currency = rawCurrency && /^[A-Za-z]{3}$/.test(rawCurrency) ? rawCurrency : undefined;
 
   // A blocked day never wins. Where exactly one side is blocked the other takes it by default —
   // "the park is open on the 14th and shut on the 15th" is a clear answer and does not need a
@@ -420,9 +436,24 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
   // "neither of these can be compared" rather than "they are equally good" — see the dialog.
   if (aBlocked || bBlocked) {
     const better: DayComparisonSide = aBlocked && bBlocked ? 'tie' : aBlocked ? 'b' : 'a';
+    // Not every blocker is the same kind of answer, and stating them all as CLEAR made the dialog
+    // contradict its own table.
+    //
+    // `closed` and `past` are facts about the day: the park is shut, or the day is gone. There is
+    // nothing on the other side of the scale, so the survivor takes it clearly and the reader has
+    // no reason to argue. `no-forecast` is a fact about US — the day may well be the better one,
+    // we simply cannot rank it. A day whose status is `UNKNOWN` keeps a usable `crowdLevel`, so
+    // "der 15. ist der deutlich bessere Tag" appeared directly above a crowd row reading
+    // `sehr niedrig` against `extrem`, pointing the other way, with the tick removed by the loop
+    // above and the two figures left standing.
+    //
+    // The verdict itself does not move: an unrated day never wins, which is what the ticket asks
+    // for. What moves is the claim about how sure we are, down to what the evidence carries.
+    const losing = aBlocked ? blockedA : blockedB;
+    const unratedOnly = losing.every((key) => key === 'no-forecast');
     return {
       better,
-      confidence: better === 'tie' ? 'tie' : 'clear',
+      confidence: better === 'tie' ? 'tie' : unratedOnly ? 'slight' : 'clear',
       reasons,
       blockers,
       ...(currency ? { currency } : {}),
