@@ -160,9 +160,16 @@ export function FavoritesMenuAlerts({
    * is on its way, or when one of the two refused, the number is what this browser believes it
    * has — over an error line saying the rest could not be read. Anything else tells somebody with
    * seven alerts that they have two, or none.
+   *
+   * `isError` is not "nothing in hand": a failed REFETCH leaves the last good `data` in place, so
+   * what decides the error line is whether there is anything to fall back ON. A retained EMPTY
+   * list under a failed read is the case both of these guard — it must not reach the `return
+   * null` below, which is reserved for a read that really did find nothing.
    */
-  const failed = isError && !data;
-  const complete = !!data && !data.partial;
+  const anything = rows.length > 0;
+  const failed = isError && !anything;
+  const incomplete = !failed && ((data?.partial ?? false) || isError);
+  const complete = !isPending && !failed && !incomplete;
   const count = complete ? rows.length : expected;
   const shown = rows.slice(0, cap);
 
@@ -179,9 +186,7 @@ export function FavoritesMenuAlerts({
   return (
     <div data-menu-stagger className={cn('min-w-0', className)} style={style}>
       <GroupHeading title={t('title')} count={count} />
-      {(failed || data?.partial) && (
-        <p className="text-destructive mb-2 text-xs">{t('loadError')}</p>
-      )}
+      {(failed || incomplete) && <p className="text-destructive mb-2 text-xs">{t('loadError')}</p>}
       <ul className="space-y-px">
         {isPending ? (
           <RowSkeletons count={expected} max={cap} />

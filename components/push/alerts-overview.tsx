@@ -47,19 +47,24 @@ export function AlertsOverview() {
   const [removingRide, setRemovingRide] = useState<string | null>(null);
   const [removingShow, setRemovingShow] = useState<string | null>(null);
 
-  // `isError` alone is not "nothing to show": TanStack Query keeps the last good `data` when a
-  // REFETCH fails, and replacing a correct list of five alerts with a full-page "couldn't load"
-  // block because a background refresh hiccupped is worse than showing the list one read old.
-  const bothFailed = isError && !data;
   const rideAlertList = data?.rideAlerts ?? [];
   const showFollowList = data?.showFollows ?? [];
-  const onlyOneFailed = !bothFailed && (data?.partial ?? false);
-  const empty =
-    !loading &&
-    !bothFailed &&
-    !onlyOneFailed &&
-    rideAlertList.length === 0 &&
-    showFollowList.length === 0;
+  /*
+   * Three states, and the middle one is the whole reason this is not two booleans.
+   *
+   * TanStack Query keeps the last good `data` when a REFETCH fails, so `isError` does not mean
+   * "nothing in hand": replacing a correct list of five alerts with the full-page "couldn't load"
+   * block because a background refresh hiccupped is worse than showing that list one read old.
+   * But a retained EMPTY list is not an answer either — a failed read over it would otherwise
+   * render "nothing set up yet" to a browser with five alerts, which is the exact sentence this
+   * page must never produce. So what decides the error block is whether there is anything to
+   * fall back ON, not whether `data` happens to be defined.
+   */
+  const anything = rideAlertList.length + showFollowList.length > 0;
+  const bothFailed = isError && !anything;
+  /** One endpoint refused, or the last read did while an older answer still stands. */
+  const incomplete = !bothFailed && ((data?.partial ?? false) || isError);
+  const empty = !loading && !isError && !incomplete && !anything;
 
   const patch = (next: (list: PushFollowsList) => PushFollowsList) =>
     queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>
@@ -120,7 +125,7 @@ export function AlertsOverview() {
 
   return (
     <div className="flex flex-col gap-8">
-      {onlyOneFailed && <p className="text-destructive text-xs">{t('loadError')}</p>}
+      {incomplete && <p className="text-destructive text-xs">{t('loadError')}</p>}
       {rideAlertList.length > 0 && (
         <section>
           <h2 className="mb-3 text-sm font-semibold">
