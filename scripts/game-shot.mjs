@@ -48,6 +48,19 @@ const args = Object.fromEntries(
 const base = args.url ?? 'http://localhost:3000';
 const showcase = args.showcase ?? null;
 const cams = (args.cam ?? 'overview,close,ground').split(',').filter(Boolean);
+/**
+ * `--radius=340,600,900` — photograph a preset from further away than it was written for.
+ *
+ * Every camera preset in `core/host.ts` is a fixed pose, and the furthest of the seven is
+ * `overview` at 340 m. `renderer.ts` lets a PLAYER pull the camera to `upperRadiusLimit = 900`,
+ * so two thirds of the range a person can actually use had never been photographed once — which
+ * is how a park with no trees and a flat grey ground reached a human before it reached this
+ * harness. The override keeps the preset's alpha, beta and target and moves only the distance,
+ * so a shot at 900 is the same framing as the one at 340 and the two can be diffed.
+ *
+ * Empty means "the preset's own radius", i.e. every existing invocation is unchanged.
+ */
+const radii = (args.radius ?? '').split(',').filter(Boolean).map(Number);
 const tods = (args.tod ?? '09:00,18:30,23:00').split(',').filter(Boolean);
 const out = args.out ?? path.join('.game-render', showcase ? `showcase-${showcase}` : 'park');
 const settleMs = Number(args.wait ?? 1200);
@@ -185,73 +198,85 @@ const shots = [];
 if (bootMs != null) {
   for (const tod of tods) {
     for (const cam of cams) {
-      await readyHandle();
-      await page.evaluate(
-        ({ tod, cam }) => {
-          const g = globalThis.__parkfan_game;
-          const m = /^(\d{1,2}):(\d{2})$/.exec(tod);
-          g.setTimeOfDay(m ? Number(m[1]) * 60 + Number(m[2]) : Number(tod));
-          g.setCamera(cam);
-        },
-        { tod, cam }
-      );
-      await page.waitForTimeout(settleMs);
-      // `--step=N` advances the simulation N ticks and waits for them to land.
-      //
-      // The harness runs at `speed=0` so a screenshot is repeatable, and that is right for
-      // everything the world builds at boot — but it means a module whose output only exists once
-      // the sim has run photographs as an empty park. The first frames of the guests module were
-      // exactly that: "Guests 0" and an avenue with nobody on it, because nobody had been admitted
-      // yet. Stepping is still deterministic (a fixed number of fixed-length ticks from a seeded
-      // world), so `--step=1200` is the same picture every run.
-      if (stepTicks > 0) {
+      for (const radius of radii.length ? radii : [null]) {
         await readyHandle();
-        const before = await page.evaluate(() => globalThis.__parkfan_game.metrics().tick);
-        await page.evaluate((n) => globalThis.__parkfan_game.step(n), stepTicks);
-        // Polled from node in short calls rather than one `waitForFunction`.
+        await page.evaluate(
+          ({ tod, cam, radius }) => {
+            const g = globalThis.__parkfan_game;
+            const m = /^(\d{1,2}):(\d{2})$/.exec(tod);
+            g.setTimeOfDay(m ? Number(m[1]) * 60 + Number(m[2]) : Number(tod));
+            g.setCamera(cam);
+            if (radius != null) {
+              const camera = g.scene().activeCamera;
+              // Past `upperRadiusLimit` Babylon clamps on the next frame, so the limit is raised
+              // with it: the point is to photograph what the limit ALLOWS, not to argue with it.
+              if (camera.upperRadiusLimit != null && radius > camera.upperRadiusLimit) {
+                camera.upperRadiusLimit = radius;
+              }
+              camera.radius = radius;
+            }
+          },
+          { tod, cam, radius }
+        );
+        await page.waitForTimeout(settleMs);
+        // `--step=N` advances the simulation N ticks and waits for them to land.
         //
-        // `waitForFunction` installs a long-lived promise in the page, and under SwiftShader a
-        // scene heavy enough to stall the render loop gets it garbage-collected: the harness dies
-        // with "Resulting promise was garbage collected" instead of taking a screenshot. It was
-        // reproducible on `--cam=overview --step=…` in four runs of four, and adding the shops to
-        // the demo park made `ground` do it too. Each poll below is its own short evaluate, so
-        // there is never a promise sitting in the page long enough to be collected.
-        const deadline = Date.now() + Number(args.timeout ?? 90000);
-        let tick = before;
-        while (tick < before + stepTicks && Date.now() < deadline) {
-          await page.waitForTimeout(250);
-          tick = await page
-            .evaluate(() => globalThis.__parkfan_game.metrics().tick)
-            .catch(() => tick);
-        }
-        if (tick < before + stepTicks) {
-          console_.warnings.push(`step: reached tick ${tick} of ${before + stepTicks}`);
-        }
-        await page.waitForTimeout(400);
-      }
-      await waitFrames(2);
-      if (particleStep > 0) {
-        await readyHandle();
-        await page.evaluate((step) => {
-          const scene = globalThis.__parkfan_game.scene();
-          const w = globalThis;
-          w.__pfParticleSaved ??= new Map();
-          for (const ps of scene.particleSystems) {
-            if (!w.__pfParticleSaved.has(ps)) w.__pfParticleSaved.set(ps, ps.updateSpeed);
+        // The harness runs at `speed=0` so a screenshot is repeatable, and that is right for
+        // everything the world builds at boot — but it means a module whose output only exists once
+        // the sim has run photographs as an empty park. The first frames of the guests module were
+        // exactly that: "Guests 0" and an avenue with nobody on it, because nobody had been admitted
+        // yet. Stepping is still deterministic (a fixed number of fixed-length ticks from a seeded
+        // world), so `--step=1200` is the same picture every run.
+        if (stepTicks > 0) {
+          await readyHandle();
+          const before = await page.evaluate(() => globalThis.__parkfan_game.metrics().tick);
+          await page.evaluate((n) => globalThis.__parkfan_game.step(n), stepTicks);
+          // Polled from node in short calls rather than one `waitForFunction`.
+          //
+          // `waitForFunction` installs a long-lived promise in the page, and under SwiftShader a
+          // scene heavy enough to stall the render loop gets it garbage-collected: the harness dies
+          // with "Resulting promise was garbage collected" instead of taking a screenshot. It was
+          // reproducible on `--cam=overview --step=…` in four runs of four, and adding the shops to
+          // the demo park made `ground` do it too. Each poll below is its own short evaluate, so
+          // there is never a promise sitting in the page long enough to be collected.
+          const deadline = Date.now() + Number(args.timeout ?? 90000);
+          let tick = before;
+          while (tick < before + stepTicks && Date.now() < deadline) {
+            await page.waitForTimeout(250);
+            tick = await page
+              .evaluate(() => globalThis.__parkfan_game.metrics().tick)
+              .catch(() => tick);
           }
-          w.__pfParticleObs?.remove?.();
-          w.__pfParticleObs = scene.onBeforeRenderObservable.add(() => {
-            const ratio = scene.getAnimationRatio() || 1;
-            for (const ps of scene.particleSystems) ps.updateSpeed = step / ratio;
-          });
-        }, particleStep);
-        await waitFrames(particleFrames);
+          if (tick < before + stepTicks) {
+            console_.warnings.push(`step: reached tick ${tick} of ${before + stepTicks}`);
+          }
+          await page.waitForTimeout(400);
+        }
+        await waitFrames(2);
+        if (particleStep > 0) {
+          await readyHandle();
+          await page.evaluate((step) => {
+            const scene = globalThis.__parkfan_game.scene();
+            const w = globalThis;
+            w.__pfParticleSaved ??= new Map();
+            for (const ps of scene.particleSystems) {
+              if (!w.__pfParticleSaved.has(ps)) w.__pfParticleSaved.set(ps, ps.updateSpeed);
+            }
+            w.__pfParticleObs?.remove?.();
+            w.__pfParticleObs = scene.onBeforeRenderObservable.add(() => {
+              const ratio = scene.getAnimationRatio() || 1;
+              for (const ps of scene.particleSystems) ps.updateSpeed = step / ratio;
+            });
+          }, particleStep);
+          await waitFrames(particleFrames);
+        }
+        const suffix = radius == null ? '' : `-r${radius}`;
+        const file = path.join(out, `${tod.replace(':', '')}-${cam}${suffix}.png`);
+        await page.screenshot({ path: file });
+        await readyHandle();
+        const metrics = await page.evaluate(() => globalThis.__parkfan_game.metrics());
+        shots.push({ tod, cam, radius, file, metrics });
       }
-      const file = path.join(out, `${tod.replace(':', '')}-${cam}.png`);
-      await page.screenshot({ path: file });
-      await readyHandle();
-      const metrics = await page.evaluate(() => globalThis.__parkfan_game.metrics());
-      shots.push({ tod, cam, file, metrics });
     }
   }
 }
