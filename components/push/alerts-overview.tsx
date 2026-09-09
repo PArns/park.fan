@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import { Bell, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -8,22 +9,26 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { formatTime } from '@/lib/utils/intl-format';
 import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
+import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
 import {
-  fetchRideAlertsRemote,
-  fetchShowFollowsRemote,
-  removeRideAlert,
-  unfollowShow,
-  type RideAlertRemote,
-  type ShowFollowRemote,
-} from '@/lib/push/push-follows';
+  PUSH_FOLLOWS_QUERY_KEY,
+  usePushFollowsList,
+  type PushFollowsList,
+} from '@/lib/push/use-push-follows-list';
 
 /**
  * Every ride alert and followed show this browser has, across every park —
  * the parkübergreifend counterpart to the per-park `RideAlertDialog`. Reads
- * straight from the server on mount, same "let me see everything" reasoning
- * as that dialog: this is not a hot render path, and the local mirror is a
- * cache for bells, not a source of truth for a page whose whole point is
- * showing the truth.
+ * straight from the server, same "let me see everything" reasoning as that
+ * dialog: this is not a hot render path, and the local mirror is a cache for
+ * bells, not a source of truth for a page whose whole point is showing the
+ * truth.
+ *
+ * The read and the removal go through the same query the header's favorites
+ * band uses (`usePushFollowsList`). They used to be two implementations of
+ * one list, which showed: removing an alert in the header menu while standing
+ * on this page left the row sitting here until a reload, because this page
+ * held its answer in a `useState` nothing else could reach.
  */
 export function AlertsOverview() {
   const t = useTranslations('pushAlerts.overview');
@@ -43,31 +48,19 @@ export function AlertsOverview() {
       return null;
     }
   };
-  // 'loading'/'error' rather than folding a failure into `null`: this page's
+  // A failure is its own state rather than folding into `null`: this page's
   // whole point is showing the truth, so a fetch that failed must not render
   // as the same "nothing set up yet" empty state a browser with zero alerts
   // gets — that reads as "your alerts are gone" to someone who has five.
-  const [rideAlerts, setRideAlerts] = useState<RideAlertRemote[] | 'loading' | 'error'>('loading');
-  const [showFollows, setShowFollows] = useState<ShowFollowRemote[] | 'loading' | 'error'>(
-    'loading'
-  );
+  // `isError` is both endpoints refusing, `partial` is one of them.
+  const queryClient = useQueryClient();
+  const { data, isPending: loading, isError: bothFailed } = usePushFollowsList({ enabled: true });
   const [removingRide, setRemovingRide] = useState<string | null>(null);
   const [removingShow, setRemovingShow] = useState<string | null>(null);
 
-  useEffect(() => {
-    void fetchRideAlertsRemote().then((result) =>
-      setRideAlerts(result.ok ? result.items : 'error')
-    );
-    void fetchShowFollowsRemote().then((result) =>
-      setShowFollows(result.ok ? result.items : 'error')
-    );
-  }, []);
-
-  const loading = rideAlerts === 'loading' || showFollows === 'loading';
-  const rideAlertList = Array.isArray(rideAlerts) ? rideAlerts : [];
-  const showFollowList = Array.isArray(showFollows) ? showFollows : [];
-  const bothFailed = rideAlerts === 'error' && showFollows === 'error';
-  const onlyOneFailed = !bothFailed && (rideAlerts === 'error' || showFollows === 'error');
+  const rideAlertList = data?.rideAlerts ?? [];
+  const showFollowList = data?.showFollows ?? [];
+  const onlyOneFailed = !bothFailed && (data?.partial ?? false);
   const empty =
     !loading &&
     !bothFailed &&
@@ -75,12 +68,18 @@ export function AlertsOverview() {
     rideAlertList.length === 0 &&
     showFollowList.length === 0;
 
+  const patch = (next: (list: PushFollowsList) => PushFollowsList) =>
+    queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>
+      previous ? next(previous) : previous
+    );
+
   const handleRemoveRide = async (attractionId: string) => {
     setRemovingRide(attractionId);
     await removeRideAlert(attractionId);
-    setRideAlerts((current) =>
-      Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
-    );
+    patch((list) => ({
+      ...list,
+      rideAlerts: list.rideAlerts.filter((a) => a.attractionId !== attractionId),
+    }));
     setRemovingRide(null);
     trackRideAlertRemoved();
   };
@@ -88,9 +87,10 @@ export function AlertsOverview() {
   const handleRemoveShow = async (showId: string) => {
     setRemovingShow(showId);
     await unfollowShow(showId);
-    setShowFollows((current) =>
-      Array.isArray(current) ? current.filter((s) => s.showId !== showId) : current
-    );
+    patch((list) => ({
+      ...list,
+      showFollows: list.showFollows.filter((s) => s.showId !== showId),
+    }));
     setRemovingShow(null);
     trackShowFollowRemove();
   };

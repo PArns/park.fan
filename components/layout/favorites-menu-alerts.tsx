@@ -100,6 +100,12 @@ export function FavoritesMenuAlerts({
    * racing a refetch: `removeRideAlert` writes the local mirror first and only then calls the
    * API, so anything keyed on that mirror would ask the server for the row again while the
    * deletion was still in flight.
+   *
+   * `remove()` resolving is not the same as the alert being gone — neither `removeRideAlert` nor
+   * `unfollowShow` reads `response.ok`, so a 500 drops the row here and leaves it armed. That is
+   * the contract both of them have had since `/alerts` was written, and PF-76 is where it gets
+   * fixed for both surfaces at once; the same ticket covers the last row's group unmounting out
+   * from under its own spinner, which is the mirror-first write again.
    */
   const drop = async (
     key: string,
