@@ -380,6 +380,24 @@ frontend would invent against a field that does not exist. Not verified against 
 backend repo itself (out of scope here, see PF-23's Non-Goals), but strong enough to
 check off both boxes below; a stale claim two paragraphs old is not.
 
+**Confirmed against the backend repo and production (2026-09-09, PF-32) — what
+PF-23 could only infer:** `PlanDayService.buildShows` wires `ShowsService` into
+`/plan/day` for real, and `https://api.park.fan` answers accordingly. Europa-Park
+on 2026-09-09 returns 33 entries, 32 `scheduled` and 1 `projected`; 2026-09-12 and
+2026-10-17 return 35, all `projected`. Both future dates are Saturdays and both
+carry `observedOn: "2026-09-05"` with `sampleDays: 8` — the same-weekday rule
+holds five weeks out, not just next week. So the projection is not a horizon that
+quietly runs out: the two guards are `MIN_PATTERN_DAYS` and `MAX_PATTERN_AGE_DAYS`,
+both measured against **today** rather than the target date, which is why a
+question about October is answered at all.
+
+The horizon question itself is settled upstream and written down in the API repo
+(`docs/frontend/plan-day-endpoint.md` §8): **no feed publishes showtimes ahead of
+the current day.** ThemeParks.wiki answers for today and then a tail of entries it
+never cleared, some from 2022; across every tracked park not one holds a park-local
+showtime for a future day. `scheduled` therefore exists for today only, by
+construction and not by accident.
+
 <details><summary>Original problem statement (resolved — kept for history)</summary>
 
 **Now known: the calendar DTO has no showtimes field at all.**
@@ -397,14 +415,36 @@ reports every show as closed.
 
 </details>
 
-- [x] `/plan/day` returns the day's showtimes with coordinates. Shows are fixed time
-      anchors — they are what the rest of the plan gets arranged around.
+- [x] `/plan/day` returns the day's showtimes. Shows are fixed time anchors — they
+      are what the rest of the plan gets arranged around. **Without coordinates,
+      though**, and the original wording of this line claimed otherwise: measured
+      2026-09-09, a `PlanDayShow` carries `showSlug`, `showName`, `times`, `source`
+      and — on a projection — `observedOn` and `sampleDays`. No `latitude`, no
+      `longitude`, in the DTO or in the production response. Nothing consumes them
+      either: `lib/api/types.ts`'s `PlanDayShow` does not declare them, and
+      `lib/planner/leg.ts` builds walking transfers from `PlanDayRide` only, so
+      shows are anchors in TIME and never in space. The box stays checked because
+      the deliverable — the day's showtimes, wired through `ShowsService` — is
+      shipped; the coordinate half was never built and is not currently needed.
+      See §2.5a before assuming it is there.
 - [x] Establish how far ahead showtimes are actually known. If it is only today,
       say so in the response rather than returning an empty array that reads as
       "no shows". Answered: per-date, via `PlanDayShowSource` — `scheduled` (the
       operator's own listing) or `projected` (the last matching weekday carried
       forward, itself never clipped to a projected day's shorter hours where the
       listing says otherwise).
+
+### 2.5a Coordinates on show entries `[P3]`
+
+Split out of §2.5 (PF-32), where it sat inside a checked box that read as if it
+were done. The `shows` table has `latitude`/`longitude` — the API's own search
+endpoint returns them for a show — but `PlanDayShowDto` does not carry them
+through, so `/plan/day` cannot place a show on the map or cost the walk to it.
+
+- [ ] Only worth doing behind a consumer. Today `lib/planner/leg.ts` computes
+      transfers between rides alone; a show in the plan gets a time slot and no
+      walking leg. If shows ever join that computation, this is the prerequisite
+      and it is a backend change first (`PlanDayShowDto` + `buildShows`).
 
 ### 2.6 Extend the horizon `[P1]`
 
