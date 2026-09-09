@@ -24,32 +24,23 @@
     "roundsRun": 19,
     "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54, the first pass, by 0.04 and self-graded. Also graded at round 1: guests 7.91, shops 8.23, tools 8.29, trains 8.35, camera 8.38, rides 8.71 (PASS, and not marginal). THIRTEEN MODULES GRADED, TWO PASS. The pattern across the near misses holds: the frame is the axis holding the total down while budget and determinism sit near 9 — and `rides`, the one that cleared comfortably, is the one whose frame axis is 8.2. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
     "buildGreen": {
+      "at": "f03034e",
       "command": "pnpm build",
-      "result": "exit 0, /game present as .next/server/app/game/page.js",
-      "at": "e28a5bb"
+      "result": "exit 0, `Compiled successfully in 31.3s`, Next.js 16.3.4 (Turbopack); /game present in the route table as a dynamic route and on disk as .next/server/app/game/page.js",
+      "note": "The previous record stood at commit e28a5bb, 95 commits back, and predated the main merge and three modules."
     }
   },
   "bundle": {
-    "command": "pnpm build && node scripts/check-game-bundle.mjs",
-    "measuredAt": "2026-09-07, thirteen modules built",
-    "before": {
-      "tree": "main (clean, no game)",
-      "sharedChunks": 6,
-      "sharedBytes": 442012,
-      "totalChunkBytes": 6416830,
-      "babylonChunks": 0
-    },
-    "after": {
-      "tree": "this branch with core, terrain, environment, camera, paths, track, scenery, shops, guests, tools, trains, rides and demo-park all built",
-      "sharedChunks": 6,
-      "sharedBytes": 442012,
-      "totalChunkBytes": 12395424,
-      "babylonChunks": 6,
-      "babylonBytes": 1022138,
-      "contaminated": []
-    },
-    "verdict": "THE SHARED BUNDLE HAS NOT MOVED BY ONE BYTE. 442,012 B across 6 chunks, byte-for-byte what it measured when only track and demo-park existed — six modules later, with a build tool, a crowd, a fairground and a fleet of trains in the tree. `contaminated` is empty: no chunk that every App Router page loads carries Babylon. That is the frontend gate's central claim and it is now measured rather than assumed.",
-    "note": "Babylon itself got SMALLER while five modules landed: 8 chunks / 1,107,149 B before, 6 / 1,022,138 after. Deep imports held and the chunking improved. Total chunk bytes 6,416,830 (main, no game) -> 12,395,424, and that growth is the game's own dynamically imported chunks, which is what it is supposed to be — asserting the total is not the check, and the script's docblock says so."
+    "command": "pnpm build && node scripts/check-game-bundle.mjs --baseline=442012",
+    "measuredAt": "2026-09-09, sixteen modules built (ui, buildings and pools included), on the tree that also carries the 22-commit main merge",
+    "sharedChunks": 6,
+    "sharedBytes": 442053,
+    "totalChunkBytes": 13117595,
+    "babylonChunks": 6,
+    "babylonBytes": 1022570,
+    "contaminated": [],
+    "verdict": "NOT ONE OF THE SIX SHARED CHUNKS CONTAINS A SINGLE GAME MARKER. Grepped their bytes for babylonjs, lib/game, __parkfan_game, GAME_MODULES, registerPanel, createGuestsSim, poolShape and TrackSpline: zero hits in all six (8,733 / 32,562 / 156,041 / 204,606 / 28,933 / 11,178 B). That is the frontend gate's central claim and it now survives `ui`, which is the one module that imports site components (@/components/ui/button, @/components/layout/brand-lockup) and therefore the one that could have pulled game code the wrong way.",
+    "note": "The shared total reads 442,053 B against the old baseline's 442,012 — plus 41 bytes, and the previous entry's claim of 'not moved by one byte' is therefore no longer true as written. It is also not attributable to this branch: the baseline was taken against a main that has since moved 22 commits (push alerts, the planner wizard, the outage display), and the marker grep proves no game code is in those chunks at all. Settling the 41 bytes properly would need a same-day baseline build of main; the grep answers the question the baseline was there to answer, so it was not spent."
   },
   "soak": {
     "command": "pnpm game:soak",
@@ -65,7 +56,7 @@
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview,entrance,close,ground,coaster,pool,night --tod=12:00 --step=900",
     "readFrom": ".game-render/cam-presets/report.json",
-    "bootMs": 11321,
+    "bootMs": 13054,
     "consoleErrors": 0,
     "hydrationWarnings": 0,
     "drawCalls": 210,
@@ -74,7 +65,8 @@
     "guests": 887,
     "engine": "webgl2",
     "preset": "medium",
-    "note": "The seven camera presets over the demo park at park minute 764, 887 guests in it. Figures are the `overview` frame; the heaviest of the seven is `ground` at 339 draw calls / 1,373,581 triangles, still inside the 1,200 draw-call budget. fps is not reported because SwiftShader's is meaningless."
+    "note": "The seven camera presets over the demo park at park minute 764, 887 guests in it. Figures are the `overview` frame; the heaviest of the seven is `ground` at 339 draw calls / 1,373,581 triangles, still inside the 1,200 draw-call budget. fps is not reported because SwiftShader's is meaningless.",
+    "bootNote": "Re-measured 2026-09-09 the way CLAUDE.md demands — `pnpm build && pnpm start`, not `next dev` — over three runs at 1280x720: 14,430 / 13,423 / 11,310 ms, mean 13,054. That MISSES the 8 s budget in `budget.coldRouteToInteractiveSeconds` by 63 %. The number bounds the worst case rather than the expected one and the reason is worth stating: this container renders through SwiftShader, so boot is dominated by software shader compilation and scene construction, and the budget was written for a machine with a graphics card. What the measurement does settle is that the earlier 9,936-14,950 ms range was not an artefact of a dev server being recompiled underneath it — the production server reproduces it."
   },
   "budget": {
     "fps": 50,
@@ -497,7 +489,7 @@
     "OPEN (core/renderer, D-027, and it was shipping to every Chrome and Edge visitor): THE WEBGPU PATH RENDERS A BLACK CANVAS. `game-shot.mjs` forces `?engine=webgl2` because headless Chromium has no WebGPU, so every frame in this project — every module grade, every critique, the whole gauntlet — was taken through the fallback, and nobody had looked at what a browser with `navigator.gpu` gets. It gets a black canvas with a working HUD over it: scene mounts, worker ticks, guests arrive, panels fill, 3D never drawn. Cause: the deep-import rule meets Babylon's shader store — `Materials/PBR/pbrMaterial` pulls `Shaders/pbr.vertex` (GLSL) and nothing pulls `ShadersWGSL/pbr.vertex`, so the engine has no shader for anything the game draws and the effect reads `shaderLanguage` off `undefined`: seven page errors before the first frame, `terrain` failing to start, repeated device loss. MITIGATED, NOT FIXED: WebGPU is opt-in now (`?engine=webgpu`) and the default is WebGL2, which demonstrably draws the park. The real fix is importing the WGSL twin of every shader the game uses (469 modules under `ShadersWGSL/`, PBR alone drags a long include list) and it is not done blind, because this container's WebGPU is SwiftShader and refuses the terrain's 7 MB vertex buffer whatever the shaders say — it needs somebody with a real GPU. `pnpm game:engine-probe` is the check: two Chromium launches, no engine query, mean luminance of the DRAWING BUFFER (not the screenshot — the HUD is opaque and would call a black park lit). Black is luma < 4; 13:00 measures 111, 23:00 measures in the twenties.",
     "OPEN (integration, found by the PR-consolidation gap critic, and it is the most serious thing on the list): THE ROUTE HAS NO KILL SWITCH AND THE HEADER LINKS IT FROM EVERY PAGE IN SIX LOCALES. `components/layout/header.tsx` renders an unconditional `<NextLink href=\"/game\">` in both the desktop nav and the burger, and the only two game flags — `GAME_SHARING_ENABLED` and `GAME_LIVE_SEED_ENABLED` in `lib/config/features.ts` — have NO consumers anywhere: a grep returns the two declarations and nothing else, while the docstring promises route handlers under `app/api/game/**` that do not exist. Half-mitigated: `app/game/layout.tsx` is `robots: { index: false }` now, because the game's own scoreboard says no guest can ride a coaster and two of twenty-four modules pass their gate, and a search result promising 'build and run your own theme park' against that is a result nobody clicks twice. `/game` is in no sitemap either, so discovery is link-only. What is still open is the flag itself: decide flag-or-ship before merge, and if it ships, `app/sitemap.ts` plus an `openGraph` block and a canonical.",
     "OPEN (CI, found by the PR-consolidation gap critic): NOTHING IN CI RUNS ANY OF THIS. `.github/workflows/` holds two files — `impeccable.yml`, which is `continue-on-error: true` and therefore non-blocking (and whose `.impeccable/config.json` ignores scripts/, content/ and docs/ but NOT lib/game, i.e. 249 new files), and `vercel-comment-sync.yml`, which is `repository_dispatch` only. No workflow runs `pnpm build`, `pnpm test:game`, eslint or prettier on a pull request, so the 24 scripts this branch adds — including the twelve-step `test:game` chain — are manual-only. Deliberately NOT fixed here: a workflow that runs on every PR in this repository affects everybody's pull requests and is the repository owner's call, not the integrator's. Worth pairing with the observation that `gate.buildGreen.at` is 95 commits behind HEAD.",
-    "OPEN (harness/docs, found by the PR-consolidation gap critic): TWO RECORDS DISAGREE ABOUT THE PHONE AND NOBODY RE-RAN THE COMMAND. `STATUS.json.mobile` says 390x844 'boots and renders ... but the HUD does not fit the width yet'; `modules.ui.status`, written the same day, says the opposite and claims it was verified at 390x844 — the desktop arrangement needing 396 px of chrome in 378 px, so the rows split and the rail wraps. One of the two is stale. `docs/game/FINAL_GATE.md` makes 'the chrome is honest at 390 px' a gate item, so this has to be settled before the gate runs: `node scripts/game-shot.mjs --w=390 --h=844 --cam=overview --tod=12:00 --step=2400`."
+    "OPEN (route, re-measured 2026-09-09 and now worse than recorded): THE ROUTE MISSES ITS OWN BOOT BUDGET BY 63 %. Three runs against `pnpm build && pnpm start` at 1280x720 — the way CLAUDE.md demands, not `next dev` — gave 14,430 / 13,423 / 11,310 ms, mean 13,054, against `budget.coldRouteToInteractiveSeconds` = 8. The earlier 9,936-14,950 ms range was blamed on a dev server being recompiled underneath it; the production server reproduces it, so that excuse is gone. The number bounds the WORST case rather than the expected one — this container renders through SwiftShader and boot is dominated by software shader compilation — so the honest next step is not a fix but a measurement on a machine with a graphics card, before anybody optimises against a figure that may not exist there."
   ],
   "closedIssues": [
     "CLOSED (guests + rides): GUESTS RIDE. `requests/rides.md` §1 asked for the hook and this is it — the `Errand` map guests already used for shops carries a `kind` now ('shop' | 'ride'), and join, place, board, leave and the refusal all route by it, because `RidesSimApi` is deliberately the same five verbs as `ShopsSimApi`. A boarding sets GuestState.RIDING for the ride's own `rideMinutes`, takes the fun relief, and moves happiness by how well the machine's satisfaction matched that archetype's thrill. Measured on the sim side over a full park day at speed 5: 124 riders across four machines (top-spin 82, wave-swinger 17, carousel 22, wheel 3) and 29 HEIGHT REFUSALS — children turned away from the top spin, counted under their own name because a height limit is a fact about the person and a broken machine is an operations problem. Save compatibility kept: an errand written before this reads as a shop errand.",
@@ -552,7 +544,8 @@
     "CLOSED (content, 2026-09-07, D-026): `souvenirs` answered the `happiness` need — the one whose name is 'Boredom' and whose pack-declared thought is 'I want to ride something.' A bored guest thirty metres from the gift shop and a hundred and ninety from the nearest machine cured it by buying a keyring. It has its own `souvenir` need now, declared in core-classic beside the others: a pack edit, no code change. Measured effect, and it is small enough to state plainly: 275 -> 291 rides, six per cent.",
     "CLOSED (trains, 2026-09-07): the module had no requests file — its builder died before writing one, which left `manifest.ts` pointing at a '§1 has the patch' that did not exist. Written now by the INTEGRATOR from the module's own source and marked as such at the top, because archaeology is not a record of what an author wanted. Five items: the `trainStyleSchema` patch the code asks for (nine profile fields are inferred because a train style is four numbers and a colour); a coaster being invisible to guests; nothing consuming the analytic throughput; the unphotographed block system; and the per-profile rail metrics the module names as a limitation in its own docblock.",
     "CLOSED (core, 2026-09-07, found by the pools builder with a control run): `Registry` declared `static name(names, locale)`, which REPLACED the class's own `.name`. React's dev-mode instrumentation labels a `performance.measure` entry with the constructor's `.name`, got a function instead of the string 'Registry', and `measure()` refused to structured-clone it — two page errors, the second being React unwinding out of the first. Whether the instrumentation reached that path varied per load, so three of six harness runs on ONE unchanged tree came back with the errors and three came back clean. Zero console errors is a hard gate for every module in the gauntlet, and it was passing or failing by luck for all of them, including modules that never import this file — proved by an identical byte-for-byte pair from `--showcase=terrain`. Renamed to `Registry.localized`; `pnpm test:game-registry` now asserts `Registry.name === 'Registry'` so it cannot come back. Worth recording how it was found: not by reading the stack, which points at React, but by noticing the thrown value in the message WAS the source of the method and grepping for it.",
-    "CLOSED (harness, 2026-09-07): the soak ran one pass at 100x, written when the park had no guests in it. `speed` is not a fast-forward over the same simulation, it is the size of the integration step — at 100x a tick advances the world five park minutes, a guest covers six metres in one step, and the frozen-needs bug `shops` eventually found was invisible there and only bit at the speeds a player selects. `pnpm test:game-soak` runs both now: the long coarse pass (48 park-hours at 100x, 576 ticks, 12 per park-hour) for what a long run LEAKS — NaNs, orphans, a save that stops round-tripping — and a short fine pass (6 park-hours at 2x, 3,600 ticks, 600 per park-hour, fifty times the resolution) for what a fine step EXPOSES. Both apply every check; both green; 10.7 s for the pair."
+    "CLOSED (harness, 2026-09-07): the soak ran one pass at 100x, written when the park had no guests in it. `speed` is not a fast-forward over the same simulation, it is the size of the integration step — at 100x a tick advances the world five park minutes, a guest covers six metres in one step, and the frozen-needs bug `shops` eventually found was invisible there and only bit at the speeds a player selects. `pnpm test:game-soak` runs both now: the long coarse pass (48 park-hours at 100x, 576 ticks, 12 per park-hour) for what a long run LEAKS — NaNs, orphans, a save that stops round-tripping — and a short fine pass (6 park-hours at 2x, 3,600 ticks, 600 per park-hour, fifty times the resolution) for what a fine step EXPOSES. Both apply every check; both green; 10.7 s for the pair.",
+    "CLOSED (harness/docs, 2026-09-09): the two records that disagreed about the phone are settled by running the command neither of them had run. `STATUS.json.mobile` said 'the HUD does not fit the width yet'; `modules.ui.status` said the opposite. Measured at 390x844 against `pnpm start`: the chrome FITS — rows split, the icon rail and the build bar each wrap onto two lines instead of scrolling, the panel sheet sits above the build bar, nothing overflows 390 px. The ui module was right and the mobile entry was stale. Replaced with the measurement, plus the thing the frame actually shows: with a panel open the chrome covers about 85 % of the height, which is a UX finding and not a layout bug."
   ],
   "history": [
     {
@@ -560,14 +553,7 @@
       "what": "merged PR #409's foundation, added the simulation core, soak, bundle proof, pack-declared guest needs, brand mark"
     }
   ],
-  "mobile": {
-    "command": "node scripts/game-shot.mjs --w=390 --h=844 --cam=overview --tod=12:00",
-    "readFrom": ".game-render/mobile/report.json",
-    "viewport": "390x844",
-    "preset": "medium",
-    "consoleErrors": 0,
-    "verdict": "boots and renders — no white screen, honest preset notice present — but the HUD does not fit the width yet"
-  },
+  "mobile": "390x844 against `pnpm start`, 2026-09-09: THE CHROME FITS. The rows split, the icon rail wraps onto two lines instead of scrolling, the build bar wraps onto two, and the panel sheet sits above the build bar rather than over it — nothing overflows 390 px. This replaces the earlier entry, which said 'the HUD does not fit the width yet' and was written before the ui module landed; the two records contradicted each other for a day and the command nobody re-ran was `node scripts/game-shot.mjs --w=390 --h=844 --cam=overview --tod=12:00 --step=2400`. What the frame does show is a different problem, and it is a UX finding rather than a layout bug: with the park panel open the chrome covers roughly 85 % of the 844 px, leaving a strip of park between the rail and the panel. A builder on a phone is looking at panels, not at a park.",
   "teardown": {
     "command": "pnpm game:teardown",
     "readFrom": ".game-render/teardown.json",
