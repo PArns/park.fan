@@ -776,6 +776,20 @@
       "DOWN": "Storing",
       "UNKNOWN": "Onbekend"
     },
+    "outage": {
+      "since": "Storing gemeld sinds {when}",
+      "startUnknown": "Storing gemeld, begin onbekend",
+      "elapsed": "{duration} met het park open",
+      "estimate": {
+        "range": "Storingen zoals deze duurden meestal nog {from} tot {to}.",
+        "rangeOpen": "Storingen zoals deze duurden meestal nog meer dan {from}.",
+        "compactProbability": "Ongeveer {percent}% was binnen een uur verholpen.",
+        "fullWithRange": "{range} Ongeveer {percent}% draaide binnen een uur weer.",
+        "fullProbability": "Van storingen die al zo lang duurden, draaide ongeveer {percent}% binnen een uur weer."
+      },
+      "sinceClosed": "Staat stil sinds {when}",
+      "startUnknownClosed": "Staat stil, begin onbekend"
+    },
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
       "reason": {
@@ -1255,6 +1269,30 @@
     },
     "planner": {
       "dragIn": "Naar het plan slepen"
+    },
+    "downtime": {
+      "title": "Gemelde storingen",
+      "hint": "Wat de databron van het park heeft gemeld, niet wat de exploitant publiceert.",
+      "reportedCaption": "In {days} dagen",
+      "reportedDetail": "{count} gemelde storingen op {observedDays} waargenomen bedrijfsdagen.",
+      "medianCaption": "Mediaan in minuten",
+      "medianDetail": "De helft van de {usable} storingen met een waargenomen einde was na {minutes} minuten voorbij.",
+      "longestCaption": "Langste storing",
+      "shareDetail": "Ongeveer {percent} % van de tijd dat de attractie draaide.",
+      "withheld": {
+        "not_down_capable": "Voor dit park meldt geen enkele databron storingen. Of {name} uitvalt zien we hier niet.",
+        "park_never_reports": "De databron voor dit park meldt geen storingen. Wij herkennen ze aan sluitingen tijdens openingsuren, maar tonen daarover geen statistiek.",
+        "artefact_regime": "Storingsmeldingen bereiken ons voor dit park slechts fragmentarisch. Daar valt geen frequentie uit af te lezen.",
+        "no_schedule": "Voor dit park zijn geen openingstijden gepubliceerd, daarom tonen we hier geen cijfers.",
+        "thin_events": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Dat zijn er te weinig voor een betrouwbaar cijfer.",
+        "thin_exposure": "We hebben {name} de afgelopen {days} dagen te weinig zien draaien om iets over storingen te zeggen.",
+        "inhomogeneous": "De twee helften van de afgelopen {days} dagen verschillen te veel om met één cijfer te beschrijven.",
+        "recently_merged": "Dit item is onlangs samengevoegd met een tweede. Tot de geschiedenis weer eenduidig is tonen we geen cijfers.",
+        "new_ride": "{name} draait nog niet lang genoeg om iets over storingen te kunnen zeggen.",
+        "heavily_censored": "In de afgelopen {days} dagen zijn {count} storingen gemeld. Van te veel daarvan hebben we het einde niet gezien, meestal omdat het park sloot terwijl de attractie nog stil stond. Dat is te weinig voor een tijdsduur.",
+        "stale_data": "Deze cijfers zijn momenteel niet actueel, daarom tonen we ze niet."
+      },
+      "longestDetail": "Het maximum van de {count} gemelde storingen."
     }
   },
   "nearby": {
@@ -1556,6 +1594,82 @@
       "starText": "Elke park- en attractiekaart heeft er een, en elke park- en attractiepagina ook.",
       "thenTitle": "Klaar",
       "thenText": "Vanaf dan staan ze in dit menu en op de homepage, met live status en wachttijd."
+    }
+  },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Herinnering voor {name} inschakelen",
+      "following": "Herinnering voor {name} actief – tik om uit te schakelen",
+      "error": "Dat is niet gelukt. Probeer het nogmaals."
+    },
+    "showDialog": {
+      "title": "Show-herinnering",
+      "explain": "We melden het 25 tot 35 minuten voor de eerstvolgende voorstelling van {show}.",
+      "explainLate": "Voor de eerstvolgende voorstelling is dat al krap: die melding komt ongeveer 10 minuten van tevoren.",
+      "explainChosen": "We melden het ongeveer een half uur voor deze voorstelling.",
+      "follow": "Herinnering inschakelen",
+      "following": "Herinnering is actief",
+      "unfollow": "Herinnering uitschakelen",
+      "close": "Sluiten",
+      "nextShowtime": "Volgende voorstelling",
+      "chosenShowtime": "Gekozen voorstelling",
+      "viewAll": "Mijn meldingen"
+    },
+    "rideBell": {
+      "setAlert": "Wachttijdmelding voor {name} instellen",
+      "alerted": "Wachttijdmelding voor {name} actief – tik om te bewerken"
+    },
+    "rideDialog": {
+      "title": "Wachttijdmeldingen",
+      "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
+      "soloSubtitle": "{park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
+      "loading": "Laden…",
+      "empty": "Nog geen meldingen voor dit park.",
+      "thresholdLabel": "onder {minutes} min.",
+      "remove": "{name} verwijderen",
+      "addTitle": "Nieuwe melding instellen",
+      "selectRide": "Attractie kiezen",
+      "thresholdInput": "Grens in minuten",
+      "minutes": "min.",
+      "add": "Toevoegen",
+      "adding": "Bezig met opslaan…",
+      "error": "Dat is niet gelukt. Probeer het nogmaals.",
+      "viewAll": "Mijn meldingen",
+      "close": "Sluiten",
+      "entry": "Wachttijdmeldingen",
+      "entryWithCount": "Wachttijdmeldingen ({count})",
+      "removeShort": "Verwijderen",
+      "save": "Opslaan",
+      "outOfSeason": "Alleen in de winter",
+      "retired": "Gesloopt",
+      "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
+      "todayOnly": "Geldt alleen voor vandaag – voor een andere bezoekdag moet de melding opnieuw worden ingesteld."
+    },
+    "overview": {
+      "title": "Mijn meldingen",
+      "subtitle": "Wachttijdmeldingen en show-herinneringen voor dit apparaat, voor alle parken.",
+      "loading": "Laden…",
+      "emptyBody": "Nog niets ingesteld. Op een parkpagina stel je via de bel bij een attractie of show een herinnering in.",
+      "rideAlertsTitle": "{count, plural, =1 {Eén wachttijdmelding} other {# wachttijdmeldingen}}",
+      "showFollowsTitle": "{count, plural, =1 {Eén show-herinnering} other {# show-herinneringen}}",
+      "thresholdLabel": "onder {minutes} min.",
+      "remove": "Verwijderen",
+      "outOfSeason": "Alleen in de winter",
+      "retired": "Gesloopt",
+      "loadError": "De lijst kon niet worden geladen. Herlaad de pagina.",
+      "showAt": "om {time}",
+      "showNextAny": "eerstvolgende voorstelling"
+    },
+    "menu": {
+      "link": "Mijn meldingen"
+    },
+    "pushErrors": {
+      "generic": "Dat is niet gelukt. Probeer het nogmaals.",
+      "rateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
+      "blocked": "Meldingen zijn geblokkeerd in je browser. Je kunt ze weer toestaan in de instellingen van deze site.",
+      "dismissed": "Zonder meldingen kan er geen alarm binnenkomen. Kies de volgende keer „Toestaan“ als je browser het vraagt.",
+      "unsupported": "Deze browser kan geen meldingen ontvangen. Op de iPhone werkt het alleen als de site op het beginscherm staat.",
+      "notConfigured": "Meldingen zijn hier op dit moment niet ingesteld."
     }
   },
   "glossary": {
@@ -2013,7 +2127,9 @@
     },
     "warn": {
       "closedNow": "Meldt nu gesloten.",
-      "downYesterday": "Was gisteren de hele dag buiten bedrijf."
+      "downYesterday": "Was gisteren de hele dag buiten bedrijf.",
+      "afterClose": "Ligt na sluitingstijd.",
+      "maybeAfterClose": "Kan al na sluitingstijd liggen."
     },
     "custom": {
       "add": "Eigen blok",
@@ -2047,6 +2163,42 @@
       "overflow": "{count, plural, one {één past niet meer in de dag} other {# passen niet meer in de dag}}",
       "capped": "{count, plural, one {één attractie bleef erbuiten, de planner sorteert hoogstens {max} stops} other {# attracties bleven erbuiten, de planner sorteert hoogstens {max} stops}}",
       "undo": "Ongedaan maken"
+    },
+    "fit": {
+      "title": "Niet alles past in de dag",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Aanpassingen",
+        "rides": "Prioriteit",
+        "result": "Resultaat"
+      },
+      "allFit": "{count, plural, one {Eén attractie past in de dag} other {Alle # attracties passen in de dag}}",
+      "someFit": "Plek voor {fits} van {total} attracties",
+      "endsAt": "laatste attractie tot {time}",
+      "queueing": "{duration} wachten",
+      "leversBody": "Dit maakt ruimte zonder dat je een attractie schrapt. Tik aan wat je zou veranderen.",
+      "leversNone": "Aan de blokken ligt het niet, ook zonder blijft het te krap. In de volgende stap kies je welke attracties het belangrijkst zijn.",
+      "leversFits": "Zo past het plan. Aan de blokken hoef je niets meer te veranderen.",
+      "leverDrop": "Zonder {label}",
+      "leverShorten": "{label} inkorten tot {minutes} min.",
+      "leverDropAll": "Zonder de vrije blokken",
+      "leverSolves": "Dan past het hele plan",
+      "leverHelps": "Dan passen er {fits} van {total}",
+      "ridesBody": "Bovenaan staat wat je zeker niet wilt missen. Er wordt van onderaf geschrapt. Vink uit wat je kunt missen.",
+      "drops": "valt weg",
+      "peak": "piek {minutes} min.",
+      "headliner": "Headliner",
+      "pin": "Naar boven",
+      "pinHint": "Helemaal naar boven, valt als laatste weg",
+      "resultRides": "In de dag",
+      "resultEnd": "Laatste attractie tot",
+      "resultWait": "Wachttijd bij elkaar",
+      "resultOut": "Blijft eruit",
+      "resultHint": "In de planner kun je daarna nog schuiven, verwijderen en opnieuw sorteren.",
+      "apply": "Plan overnemen",
+      "applied": "{count, plural, one {Eén attractie ingepland} other {# attracties ingepland}}",
+      "leftOut": "{count, plural, one {er blijft er één buiten} other {er blijven er # buiten}}",
+      "adjust": "Aanpassen"
     },
     "sheet": {
       "handle": "Planner vergroten of sluiten",
@@ -2122,7 +2274,8 @@
       "steps": {
         "park": "Park",
         "date": "Dag",
-        "setup": "Wie gaat mee"
+        "setup": "Wie gaat mee",
+        "headliners": "Grote attracties"
       },
       "back": "Terug",
       "next": "Verder",
@@ -2139,6 +2292,14 @@
       "wet": {
         "label": "Zo droog mogelijk blijven",
         "hint": "Waterattracties krijgen een markering in de lijst."
+      },
+      "headliners": {
+        "label": "Headliners inplannen",
+        "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves.",
+        "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}.",
+        "conflict": "Er passen {fits} van {total}. Vink uit wat kan vervallen, of zet bovenaan wat je zeker wilt rijden.",
+        "none": "Voor deze dag ontbreekt geen grote attractie meer.",
+        "resolved": "{count, plural, one {Zo past de attractie in de dag} other {Zo passen alle # attracties in de dag}}. Je kunt je keuze verder aanpassen."
       },
       "facts": {
         "title": "Wat we over deze dag weten",

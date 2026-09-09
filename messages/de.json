@@ -559,6 +559,20 @@
       "DOWN": "Störung",
       "UNKNOWN": "Unbekannt"
     },
+    "outage": {
+      "since": "Störung gemeldet seit {when}",
+      "startUnknown": "Störung gemeldet, Beginn unbekannt",
+      "elapsed": "{duration} bei offenem Park",
+      "estimate": {
+        "range": "Störungen wie diese dauerten meist noch {from} bis {to}",
+        "rangeOpen": "Störungen wie diese dauerten meist noch über {from}",
+        "compactProbability": "Rund {percent} % waren binnen einer Stunde behoben.",
+        "fullWithRange": "{range} Rund {percent} % waren binnen einer Stunde wieder in Betrieb.",
+        "fullProbability": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
+      },
+      "sinceClosed": "Steht seit {when} still",
+      "startUnknownClosed": "Steht still, Beginn unbekannt"
+    },
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
       "reason": {
@@ -1255,6 +1269,30 @@
     },
     "planner": {
       "dragIn": "In den Plan ziehen"
+    },
+    "downtime": {
+      "title": "Gemeldete Störungen",
+      "hint": "Was die Datenquelle des Parks gemeldet hat, nicht was der Betreiber veröffentlicht.",
+      "reportedCaption": "In {days} Tagen",
+      "reportedDetail": "{count} gemeldete Störungen an {observedDays} beobachteten Betriebstagen.",
+      "medianCaption": "Median in Minuten",
+      "medianDetail": "Die Hälfte der {usable} Störungen mit beobachtetem Ende war nach {minutes} Minuten vorbei.",
+      "longestCaption": "Längste Störung",
+      "shareDetail": "Rund {percent} % der Zeit, in der die Bahn lief.",
+      "withheld": {
+        "not_down_capable": "Für diesen Park meldet keine Datenquelle Störungen. Ob {name} ausfällt, sehen wir hier nicht.",
+        "park_never_reports": "Für diesen Park meldet die Datenquelle keine Störungen. Wir erkennen sie an Schließungen während der Öffnungszeit, zeigen dazu aber keine Statistik.",
+        "artefact_regime": "Für diesen Park liegen uns Störungsmeldungen nur bruchstückhaft vor. Eine Häufigkeit lässt sich daraus nicht ablesen.",
+        "no_schedule": "Für diesen Park sind keine Öffnungszeiten veröffentlicht, deshalb zeigen wir hier keine Zahlen.",
+        "thin_events": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Für eine belastbare Zahl sind das zu wenige.",
+        "thin_exposure": "Wir haben {name} in den letzten {days} Tagen zu selten laufen sehen, um etwas über Störungen zu sagen.",
+        "inhomogeneous": "Die beiden Hälften der letzten {days} Tage sehen zu verschieden aus, als dass eine Zahl beide beschreiben könnte.",
+        "recently_merged": "Dieser Eintrag wurde kürzlich mit einem zweiten zusammengeführt. Bis die Historie wieder eindeutig ist, zeigen wir keine Zahlen.",
+        "new_ride": "{name} läuft noch nicht lange genug, als dass sich etwas über Störungen sagen ließe.",
+        "heavily_censored": "In den letzten {days} Tagen wurden {count} Störungen gemeldet. Zu viele davon haben wir nicht enden sehen, meist weil der Park zumachte, während die Bahn noch stand. Für eine Dauer reicht das nicht.",
+        "stale_data": "Diese Zahlen sind gerade nicht aktuell, deshalb zeigen wir sie nicht."
+      },
+      "longestDetail": "Das Maximum der {count} gemeldeten Störungen."
     }
   },
   "nearby": {
@@ -1556,6 +1594,82 @@
       "starText": "Jede Park- und Attraktionskarte hat einen, und jede Park- und Attraktionsseite auch.",
       "thenTitle": "Fertig",
       "thenText": "Ab dann stehen sie hier im Menü und auf der Startseite, mit Live-Status und Wartezeit."
+    }
+  },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Erinnerung vor {name} aktivieren",
+      "following": "Erinnerung für {name} aktiv – zum Deaktivieren tippen",
+      "error": "Das hat nicht geklappt. Bitte noch einmal versuchen."
+    },
+    "showDialog": {
+      "title": "Show-Erinnerung",
+      "explain": "Wir benachrichtigen dich 25 bis 35 Minuten vor der jeweils nächsten Vorstellung von {show}.",
+      "explainLate": "Für die nächste Vorstellung ist das schon knapp – die Nachricht kommt dann rund 10 Minuten vorher.",
+      "explainChosen": "Wir benachrichtigen dich rund eine halbe Stunde vor dieser Vorstellung.",
+      "follow": "Erinnerung aktivieren",
+      "following": "Erinnerung ist aktiv",
+      "unfollow": "Erinnerung deaktivieren",
+      "close": "Schließen",
+      "nextShowtime": "Nächste Vorstellung",
+      "chosenShowtime": "Gewählte Vorstellung",
+      "viewAll": "Meine Alarme"
+    },
+    "rideBell": {
+      "setAlert": "Wartezeit-Alarm für {name} einrichten",
+      "alerted": "Wartezeit-Alarm für {name} aktiv – zum Bearbeiten tippen"
+    },
+    "rideDialog": {
+      "title": "Wartezeit-Alarme",
+      "subtitle": "Für {park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
+      "soloSubtitle": "{park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
+      "loading": "Lädt …",
+      "empty": "Noch keine Alarme für diesen Park.",
+      "thresholdLabel": "unter {minutes} Min.",
+      "remove": "{name} entfernen",
+      "addTitle": "Neuen Alarm einrichten",
+      "selectRide": "Fahrgeschäft wählen",
+      "thresholdInput": "Schwelle in Minuten",
+      "minutes": "Min.",
+      "add": "Hinzufügen",
+      "adding": "Wird gespeichert …",
+      "error": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
+      "viewAll": "Meine Alarme",
+      "close": "Schließen",
+      "entry": "Wartezeit-Alarme",
+      "entryWithCount": "Wartezeit-Alarme ({count})",
+      "removeShort": "Entfernen",
+      "save": "Speichern",
+      "outOfSeason": "Nur im Winter",
+      "retired": "Abgebaut",
+      "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
+      "todayOnly": "Gilt nur für den heutigen Tag – für einen anderen Besuchstag muss der Alarm neu eingerichtet werden."
+    },
+    "overview": {
+      "title": "Meine Alarme",
+      "subtitle": "Wartezeit-Alarme und Show-Erinnerungen für dieses Gerät, parkübergreifend.",
+      "loading": "Lädt …",
+      "emptyBody": "Noch nichts eingerichtet. Auf einer Parkseite lässt sich über die Glocke bei einem Fahrgeschäft oder einer Show eine Erinnerung einrichten.",
+      "rideAlertsTitle": "{count, plural, =1 {Ein Wartezeit-Alarm} other {# Wartezeit-Alarme}}",
+      "showFollowsTitle": "{count, plural, =1 {Eine Show-Erinnerung} other {# Show-Erinnerungen}}",
+      "thresholdLabel": "unter {minutes} Min.",
+      "remove": "Entfernen",
+      "outOfSeason": "Nur im Winter",
+      "retired": "Abgebaut",
+      "loadError": "Die Liste konnte nicht geladen werden. Bitte die Seite neu laden.",
+      "showAt": "um {time} Uhr",
+      "showNextAny": "jeweils nächste Vorstellung"
+    },
+    "menu": {
+      "link": "Meine Alarme"
+    },
+    "pushErrors": {
+      "generic": "Das hat nicht geklappt. Bitte noch einmal versuchen.",
+      "rateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
+      "blocked": "Benachrichtigungen sind in deinem Browser blockiert. In den Website-Einstellungen kannst du sie wieder erlauben.",
+      "dismissed": "Ohne erlaubte Benachrichtigungen kann kein Alarm ankommen. Beim nächsten Mal bitte auf „Zulassen“ tippen.",
+      "unsupported": "Dieser Browser kann keine Benachrichtigungen empfangen. Auf dem iPhone geht es nur, wenn die Seite auf dem Home-Bildschirm liegt.",
+      "notConfigured": "Benachrichtigungen sind hier gerade nicht eingerichtet."
     }
   },
   "glossary": {
@@ -2013,7 +2127,9 @@
     },
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",
-      "downYesterday": "War gestern den ganzen Tag außer Betrieb."
+      "downYesterday": "War gestern den ganzen Tag außer Betrieb.",
+      "afterClose": "Liegt nach Parkschluss.",
+      "maybeAfterClose": "Kann schon nach Parkschluss liegen."
     },
     "custom": {
       "add": "Eigener Block",
@@ -2047,6 +2163,42 @@
       "overflow": "{count, plural, one {eine passt nicht mehr in den Tag} other {# passen nicht mehr in den Tag}}",
       "capped": "{count, plural, one {eine Bahn blieb außen vor, der Planer sortiert höchstens {max} Stopps} other {# Bahnen blieben außen vor, der Planer sortiert höchstens {max} Stopps}}",
       "undo": "Rückgängig"
+    },
+    "fit": {
+      "title": "Nicht alles passt in den Tag",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Stellschrauben",
+        "rides": "Wichtigkeit",
+        "result": "Ergebnis"
+      },
+      "allFit": "{count, plural, one {Eine Bahn passt in den Tag} other {Alle # Bahnen passen in den Tag}}",
+      "someFit": "Platz für {fits} von {total} Bahnen",
+      "endsAt": "letzte Bahn bis {time}",
+      "queueing": "{duration} Warten",
+      "leversBody": "Das schafft Platz, ohne dass du eine Bahn streichst. Tipp an, was du ändern würdest.",
+      "leversNone": "An den Blöcken liegt es nicht, auch ohne sie bleibt es zu eng. Im nächsten Schritt legst du fest, welche Bahnen dir am wichtigsten sind.",
+      "leversFits": "So passt der Plan. An den Blöcken musst du nichts mehr ändern.",
+      "leverDrop": "Ohne {label}",
+      "leverShorten": "{label} auf {minutes} Min. kürzen",
+      "leverDropAll": "Ohne die freien Blöcke",
+      "leverSolves": "Dann passt der ganze Plan",
+      "leverHelps": "Dann passen {fits} von {total}",
+      "ridesBody": "Ganz oben steht, was du auf keinen Fall verpassen willst. Gestrichen wird von unten. Nimm den Haken raus, worauf du verzichten kannst.",
+      "drops": "fällt weg",
+      "peak": "Spitze {minutes} Min.",
+      "headliner": "Headliner",
+      "pin": "Nach oben",
+      "pinHint": "Ganz nach oben, wird als Letztes gestrichen",
+      "resultRides": "Im Tag",
+      "resultEnd": "Letzte Bahn bis",
+      "resultWait": "Wartezeit zusammen",
+      "resultOut": "Bleibt draußen",
+      "resultHint": "Im Planer kannst du danach weiter schieben, löschen und neu sortieren.",
+      "apply": "Plan übernehmen",
+      "applied": "{count, plural, one {Eine Bahn eingeplant} other {# Bahnen eingeplant}}",
+      "leftOut": "{count, plural, one {eine bleibt draußen} other {# bleiben draußen}}",
+      "adjust": "Anpassen"
     },
     "sheet": {
       "handle": "Planer vergrößern oder schließen",
@@ -2122,7 +2274,8 @@
       "steps": {
         "park": "Park",
         "date": "Tag",
-        "setup": "Wer kommt mit"
+        "setup": "Wer kommt mit",
+        "headliners": "Große Bahnen"
       },
       "back": "Zurück",
       "next": "Weiter",
@@ -2139,6 +2292,14 @@
       "wet": {
         "label": "Möglichst trocken bleiben",
         "hint": "Wasserbahnen bekommen ein Zeichen in der Liste."
+      },
+      "headliners": {
+        "label": "Headliner einplanen",
+        "hint": "Legt die {count} großen Bahnen in den Tag, sortiert nach ihren Stundenkurven.",
+        "hintTight": "Vor Parkschluss ist Platz für {fits} von {total}.",
+        "conflict": "Es passen {fits} von {total}. Nimm den Haken raus, worauf du verzichtest, oder heb hoch, was du unbedingt fahren willst.",
+        "none": "Für diesen Tag fehlt keine große Bahn mehr.",
+        "resolved": "{count, plural, one {So passt die Bahn in den Tag} other {So passen alle # Bahnen in den Tag}}. Du kannst deine Auswahl weiter ändern."
       },
       "facts": {
         "title": "Was wir über den Tag wissen",

@@ -53,6 +53,24 @@ export interface ConfirmDialogProps {
   onConfirm: () => void;
   tone?: ConfirmTone;
   /**
+   * Greys out the way on, for a question whose answer can be empty.
+   *
+   * The way OUT is never disabled: a dialog somebody cannot leave is worse than
+   * one they can leave without deciding.
+   */
+  confirmDisabled?: boolean;
+  /**
+   * What the reader has to look at before they can answer — a list to tick, a
+   * choice to make. Rendered between the description and the footer, in its own
+   * scroll region, so a question about ten rides does not push the buttons off
+   * a phone.
+   *
+   * Optional, and most callers have none: this stays a confirmation with a body
+   * rather than becoming a form component. The body's own state belongs to the
+   * caller, which is what keeps this file free of the thing it is asking about.
+   */
+  children?: React.ReactNode;
+  /**
    * A Lucide component, drawn in a tinted tile beside the title.
    *
    * Same tile as the planner wizard's answer cards (`size-8 rounded-lg` around
@@ -92,6 +110,13 @@ export interface ConfirmDialogProps {
  * deliberately left alone: a confirmation nobody can back out of by reflex is a
  * confirmation people learn to click through.
  *
+ * It takes a **body** as `children`, which is what keeps a question with a list
+ * in it from becoming a second dialog component. The planner's headliner
+ * conflict is one: the same title, description and footer, with ten rides to
+ * tick in between. The body scrolls on its own so the footer never leaves the
+ * screen, and its state stays with the caller — this file still knows nothing
+ * about what is being asked.
+ *
  * It carries **no translation keys**. A primitive under `components/ui/` that
  * calls `useTranslations('planner')` is a primitive only the planner can use,
  * and the second caller would have to move the strings or copy the file. Every
@@ -112,6 +137,8 @@ export function ConfirmDialog({
   cancelLabel,
   onConfirm,
   tone = 'default',
+  confirmDisabled = false,
+  children,
   icon: Icon,
 }: ConfirmDialogProps) {
   const cancelRef = React.useRef<HTMLButtonElement>(null);
@@ -160,6 +187,16 @@ export function ConfirmDialog({
           </div>
         </div>
 
+        {/* Its own scroll region rather than the whole content scrolling: the
+            footer has to stay reachable, and on a phone a list of ten rides is
+            taller than the dialog. `overscroll-contain` so a flick that reaches
+            the end of the list does not carry on into the page behind it. */}
+        {children && (
+          <div className="max-h-[45vh] overflow-y-auto overscroll-contain px-5 pb-4 sm:px-6">
+            {children}
+          </div>
+        )}
+
         {/* `px-3` below `sm` rather than the body's `px-5`, for the wizard's own
             reason: this row is the one place a label decides the width, and the
             longest pair of labels in six locales has to fit at 320 px without
@@ -178,6 +215,7 @@ export function ConfirmDialog({
           <Button
             variant={destructive ? 'destructive' : 'default'}
             className="max-sm:min-h-11"
+            disabled={confirmDisabled}
             onClick={() => {
               onConfirm();
               onOpenChange(false);

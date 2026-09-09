@@ -81,6 +81,15 @@ export function useLiveAttractionData({
                   .effectiveStatus,
               }
             : {}),
+          // Always the key, never `detail.outage ?? shellAttraction.outage` — the same rule
+          // `leanParkForLivePoll` writes down for the park poll, and it matters more here.
+          // `shellAttraction` comes out of a fetch cached for a day: written overnight it holds
+          // no outage at all, which is why this panel showed „Vorübergehend geschlossen" and
+          // nothing else while the ride's own card on the park page carried both sentences
+          // (PF-58). A `??` would fix that half and break the other one — a ride that recovered
+          // would keep accusing its operator of a breakdown until the shell is rebuilt, for as
+          // long as the tab is open.
+          outage: detail.outage,
           queues: detail.queues ?? shellAttraction.queues,
           statistics: detail.statistics ?? shellAttraction.statistics,
           trend: detail.trend ?? shellAttraction.trend,

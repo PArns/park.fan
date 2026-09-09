@@ -28,6 +28,8 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
+import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
+import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -205,6 +207,22 @@ export function ParkTodayPanel({
       .slice(0, HEADLINER_ROWS);
   }, [park.attractions, park.status, waitsReadable]);
 
+  // Same reasoning as `headliners` above: a fresh `.map()` on every render of this panel (a tab
+  // switch, `detailDate` changing, anything unrelated to `park`) would hand `RideAlertsEntryButton`
+  // a new array + new objects each time, for a list that only actually changes when the poll
+  // replaces `park.attractions`.
+  const rideAlertAttractions = useMemo(
+    () =>
+      (park.attractions ?? []).map((a) => ({
+        id: a.id,
+        name: stripNewPrefix(a.name),
+        slug: a.slug,
+        currentWaitTime:
+          getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
+      })),
+    [park.attractions, park.status]
+  );
+
   // Reserved rows — the count comes from the same list the rows are drawn from, so it cannot
   // disagree with it, and it is stable across the poll because the attraction set is.
   const headlinerSlots = headliners.length;
@@ -233,6 +251,7 @@ export function ParkTodayPanel({
         // `#map-show-<slug>` hash the tab router resolves. The row already carries the name and
         // the time, so the thing it cannot say is WHERE, and that is what the map answers.
         (s.showtimes ?? []).map((st) => ({
+          id: s.id,
           name: stripNewPrefix(s.name),
           slug: s.slug,
           startTime: st.startTime,
@@ -631,12 +650,17 @@ export function ParkTodayPanel({
               {/* A hash link, not a callback: `useTabHashRouting` already listens for
                   `hashchange` and switches + scrolls the tab panel below, so this needs no state
                   lifted across the page and it works before hydration. */}
-              <a
-                href={chapterHref('attractions')}
-                className="text-primary mt-auto text-left text-xs hover:underline"
-              >
-                {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
-              </a>
+              <div className="mt-auto flex items-center justify-between gap-2">
+                <a
+                  href={chapterHref('attractions')}
+                  className="text-primary text-left text-xs hover:underline"
+                >
+                  {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
+                </a>
+                {rideAlertAttractions.length > 0 && (
+                  <RideAlertsEntryButton parkName={park.name} attractions={rideAlertAttractions} />
+                )}
+              </div>
             </div>
           )}
 
@@ -728,10 +752,14 @@ export function ParkTodayPanel({
                           // "Miji African D…" beside 150 px of countdown. On its own line the
                           // countdown costs nothing horizontally, the name gets ~200 px, and the box
                           // is the same two lines tall it always was.
-                          <li key={i}>
+                          // `relative` on the row, the bell a SIBLING of the `<a>` rather than a
+                          // child of it: the same nested-interactive-elements trap `AttractionCard`
+                          // hit (see `components/ui/dialog.tsx`'s fix) applies to any button inside
+                          // an anchor, dialog or not — a sibling laid on top avoids it entirely.
+                          <li key={i} className="relative">
                             <a
                               href={chapterHref(`map-show-${show.slug}`)}
-                              className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
+                              className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border py-2 pr-9 pl-2.5 transition-colors"
                             >
                               <span className="flex items-baseline gap-2">
                                 <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
@@ -747,24 +775,49 @@ export function ParkTodayPanel({
                                 </span>
                               )}
                             </a>
+                            {/* `top-2` used to just approximate the box's top corner, 3px off the
+                                time/title line's own center (measured) since the box is taller than
+                                that one line once the countdown row is showing. `top-[9px]` matches
+                                the `<a>`'s own offset to that line (1px border + `py-2`'s 8px) and
+                                `h-5` matches the line's own height (`text-sm`'s 20px line box), so the
+                                bell centers on the SAME band the line occupies rather than on the box
+                                as a whole — correct with or without the countdown row underneath. */}
+                            <ShowFollowBell
+                              showId={show.id}
+                              showName={show.name}
+                              source="panel"
+                              // One row IS one performance here, so the row's own start
+                              // time is the whole list as far as this bell is concerned.
+                              showtimes={[{ startTime: show.startTime }]}
+                              timezone={timezone}
+                              className="absolute top-[9px] right-2 h-5"
+                            />
                           </li>
                         );
                       }
                       return (
-                        <li key={i} className="text-sm">
+                        <li key={i} className="relative text-sm">
                           {/* A plain `<a>` with a hash, not a next-intl `Link`: the tab router
                             listens for `hashchange`, and `pushState` navigation does not fire it.
                             Same reason the FAQ's calendar link used to be one — that link became a
                             real page, this one is still a jump within the park page. */}
                           <a
                             href={chapterHref(`map-show-${show.slug}`)}
-                            className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
+                            className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded py-0.5 pr-7 pl-1 transition-colors"
                           >
                             <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
                               <LocalTime time={show.startTime} timeZone={timezone} />
                             </span>
                             <span className="min-w-0 flex-1 truncate">{show.name}</span>
                           </a>
+                          <ShowFollowBell
+                            showId={show.id}
+                            showName={show.name}
+                            source="panel"
+                            showtimes={[{ startTime: show.startTime }]}
+                            timezone={timezone}
+                            className="absolute top-1/2 right-0 -translate-y-1/2"
+                          />
                         </li>
                       );
                     })}

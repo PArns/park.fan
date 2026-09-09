@@ -1,9 +1,9 @@
-import { Suspense } from 'react';
+import { Suspense, type ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, GripVertical, MapPin } from 'lucide-react';
-import { cn, stripNewPrefix } from '@/lib/utils';
+import { cn, isUuid, stripNewPrefix } from '@/lib/utils';
 import { roundWaitTo5, shortTermWaitTrend } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -11,6 +11,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { RideAlertBell } from '@/components/push/ride-alert-bell';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -27,6 +28,8 @@ import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
+import { OutageNote } from './outage-note';
+import { OutageEstimateNote } from './outage-estimate-note';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -43,6 +46,15 @@ interface AttractionCardProps {
   distance?: number;
   showParkName?: boolean;
   timezone?: string;
+  /**
+   * The park's name, for the ride-alert bell's dialog — not for display (that
+   * is `showParkName`'s job). On the park's own page (`LandSection`) the
+   * attraction never carries a nested `park` object, since every card there
+   * is already known to belong to the one park the visitor is looking at; the
+   * cross-park listings (favorites, homepage) that DO attach one still work
+   * without this prop, via the fallback below.
+   */
+  parkName?: string;
 }
 
 // ---------- helpers ----------
@@ -86,6 +98,25 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
   return '#';
 }
 
+/** The upper sheet catching the light. Not part of the seam below it — see `panelSeat`. */
+const PANEL_SHINE = 'inset 0 1px 0 var(--pk-panel-shine)';
+
+/** The 34px glass circle both the ride-alert bell and the favorite star sit inside. */
+function GlassCircle({ children }: { children: ReactNode }) {
+  return (
+    <div
+      className="h-[34px] w-[34px] rounded-full"
+      style={{
+        background: 'var(--pk-fav-bg)',
+        border: '1px solid var(--pk-fav-border)',
+        boxShadow: 'var(--pk-fav-shadow)',
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 // ============================================================================
 // Component
 // ============================================================================
@@ -99,6 +130,7 @@ export function AttractionCard({
   distance,
   showParkName = false,
   timezone,
+  parkName: parkNameProp,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
@@ -109,6 +141,11 @@ export function AttractionCard({
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
+  const parkName =
+    parkNameProp ??
+    ('park' in attraction && attraction.park?.name
+      ? stripNewPrefix(attraction.park.name)
+      : undefined);
   const crowdLevel = getCrowdLevel(attraction);
   const href = getHref(attraction, parkPath);
   const backgroundImage =
@@ -142,6 +179,32 @@ export function AttractionCard({
   // the visitor sees runs all the way down — and the framed photo layer has to
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const hasBottomPanel = isOperatingOrUnknown && waitTime !== null;
+
+  // What the top panel's lower edge is seated on, which is the whole reason that
+  // edge exists: the border and its inset shadow are the seam where the upper
+  // sheet of glass meets what is under it. A ride that is DOWN renders no bottom
+  // panel, and if it also has no photo there is nothing under the seam but the
+  // flat `from-muted to-card` placeholder — so the card drew a hairline across
+  // itself with empty gradient below it, which is the line in PF-58's shot.
+  //
+  // `photo` is its own case rather than a second `true` because the picture is
+  // `hidden sm:block`: on a phone a card collapses onto its panels, so the seam
+  // has nothing to sit on there either. That one is a breakpoint and lives in
+  // `.pk-panel-seam-sm` — an inline box-shadow cannot be switched off by a class.
+  const panelSeat: 'panel' | 'photo' | 'none' = hasBottomPanel
+    ? 'panel'
+    : backgroundImage
+      ? 'photo'
+      : 'none';
+  const seamStyle =
+    panelSeat === 'panel'
+      ? {
+          borderBottom: '1px solid var(--pk-panel-border)',
+          boxShadow: `${PANEL_SHINE}, inset 0 -1px 0 rgba(0,0,0,0.06)`,
+        }
+      : panelSeat === 'photo'
+        ? {} // `.pk-panel-seam-sm` owns both halves here
+        : { boxShadow: PANEL_SHINE };
 
   return (
     <Link
@@ -222,38 +285,61 @@ export function AttractionCard({
           }}
         />
 
-        {/* Favorite star */}
+        {/* Notification bell + favorite star — a row of two 34px glass circles.
+            Needs the top panel's right padding widened to match (below): one
+            circle reserved 52px from the edge, two need roughly 92px.
+            `gap-3`, not `gap-2`: each circle's `::after` touch target is 44px
+            (`FavoriteStar`/`RideAlertBell`, below `sm`) centred on its own
+            34px circle, so two adjacent circles' 44px zones reach past their
+            shared edge — measured, `gap-2` (8px) left a 2px sliver where a
+            tap could land on either icon's zone. `gap-3` (12px, 34+12=46 ≥
+            44) puts the zones edge-to-edge with room to spare. */}
         {attraction.id && (
-          <div
-            className="absolute top-3 right-3 z-[4] h-[34px] w-[34px] rounded-full"
-            style={{
-              background: 'var(--pk-fav-bg)',
-              border: '1px solid var(--pk-fav-border)',
-              boxShadow: 'var(--pk-fav-shadow)',
-            }}
-          >
-            <FavoriteStar
-              type="attraction"
-              id={attraction.id}
-              name={stripNewPrefix(attraction.name)}
-              size="md"
-              noCircle
-              variant="glass"
-              className="h-full w-full"
-            />
+          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3">
+            {/* `attraction.id` on a blog fallback card (its live detail failed
+                to resolve at build time) is `attractionSlug`, not a UUID —
+                `POST /push/ride-alerts` 400s on that, so the bell needs a real
+                one to make any sense here. `FavoriteStar` below has no such
+                requirement (a purely local storage key), so it is unaffected. */}
+            {parkName && isUuid(attraction.id) && (
+              <GlassCircle>
+                <RideAlertBell
+                  attractionId={attraction.id}
+                  attractionName={stripNewPrefix(attraction.name)}
+                  parkName={parkName}
+                  className="h-full w-full"
+                  backgroundImage={backgroundImage}
+                  objectPosition={objectPosition}
+                  currentWaitTime={waitTime}
+                />
+              </GlassCircle>
+            )}
+            <GlassCircle>
+              <FavoriteStar
+                type="attraction"
+                id={attraction.id}
+                name={stripNewPrefix(attraction.name)}
+                size="md"
+                noCircle
+                variant="glass"
+                className="h-full w-full"
+              />
+            </GlassCircle>
           </div>
         )}
 
         {/* Top glass panel */}
         <div
-          className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
+          className={cn(
+            'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
+            panelSeat === 'photo' && 'pk-panel-seam-sm'
+          )}
           style={{
-            padding: '14px 52px 13px 16px',
+            padding: parkName ? '14px 92px 13px 16px' : '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            borderBottom: '1px solid var(--pk-panel-border)',
-            boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)',
+            ...seamStyle,
           }}
         >
           <div
@@ -383,6 +469,24 @@ export function AttractionCard({
                     timezone={effectiveTimezone}
                   />
                 ))}
+            {/* `w-full` so it always takes its own line inside the wrap rather
+                than sometimes sitting beside a badge and sometimes below one:
+                a sentence whose position depends on how many badges happen to
+                be present is a sentence whose card height nobody can predict. */}
+            <OutageNote
+              outage={'outage' in attraction ? attraction.outage : undefined}
+              timezone={effectiveTimezone}
+              className="text-muted-foreground w-full text-[11px] leading-tight"
+            />
+            {/* "how much longer" on the card too, in the compact form: the
+                range alone, because the probability sentence would wrap on a
+                phone and every card in the row shares its height through the
+                subgrid. Same numbers as the ride page, fewer words. */}
+            <OutageEstimateNote
+              estimate={'outage' in attraction ? attraction.outage?.estimate : undefined}
+              variant="compact"
+              className="text-muted-foreground w-full text-[11px] leading-tight"
+            />
           </div>
         </div>
 

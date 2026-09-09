@@ -776,6 +776,20 @@
       "DOWN": "Down",
       "UNKNOWN": "Unknown"
     },
+    "outage": {
+      "since": "Outage reported since {when}",
+      "startUnknown": "Outage reported, start unknown",
+      "elapsed": "{duration} with the park open",
+      "estimate": {
+        "range": "Outages like this one usually had {from} to {to} left.",
+        "rangeOpen": "Outages like this one usually had more than {from} left.",
+        "compactProbability": "About {percent}% were back within an hour.",
+        "fullWithRange": "{range} About {percent}% were reported running again within an hour.",
+        "fullProbability": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
+      },
+      "sinceClosed": "Not running since {when}",
+      "startUnknownClosed": "Not running, start unknown"
+    },
     "noLiveWaitTimes": {
       "title": "No wait times available",
       "reason": {
@@ -1255,6 +1269,30 @@
     },
     "planner": {
       "dragIn": "Drag into the plan"
+    },
+    "downtime": {
+      "title": "Reported outages",
+      "hint": "What the park's data source reported, not what the operator published.",
+      "reportedCaption": "In {days} days",
+      "reportedDetail": "{count} reported outages across {observedDays} observed operating days.",
+      "medianCaption": "Median in minutes",
+      "medianDetail": "Half of the {usable} outages with an observed end were over after {minutes} minutes.",
+      "longestCaption": "Longest outage",
+      "shareDetail": "About {percent} % of the time the ride was running.",
+      "withheld": {
+        "not_down_capable": "No data source reports outages for this park. Whether {name} breaks down is something we cannot see here.",
+        "park_never_reports": "The data source for this park does not report outages. We spot them from closures during opening hours, but publish no statistics on them.",
+        "artefact_regime": "Outage reports reach us only in fragments for this park. A frequency cannot be read out of them.",
+        "no_schedule": "This park publishes no opening hours, so we show no figures here.",
+        "thin_events": "{count} outages were reported in the last {days} days. That is too few to build a figure on.",
+        "thin_exposure": "We have seen {name} running too rarely in the last {days} days to say anything about outages.",
+        "inhomogeneous": "The two halves of the last {days} days look too different for one figure to describe both.",
+        "recently_merged": "This entry was recently merged with a second one. Until its history is unambiguous again we show no figures.",
+        "new_ride": "{name} has not been running long enough for anything to be said about outages.",
+        "heavily_censored": "{count} outages were reported in the last {days} days. For too many of them we never saw the end, usually because the park closed while the ride was still down. That is not enough for a duration.",
+        "stale_data": "These figures are not current right now, so we are not showing them."
+      },
+      "longestDetail": "The maximum across the {count} reported outages."
     }
   },
   "nearby": {
@@ -1556,6 +1594,82 @@
       "starText": "Every park and ride card carries one, and so does every park and ride page.",
       "thenTitle": "That’s it",
       "thenText": "From then on they show up in this menu and on the homepage, with live status and wait time."
+    }
+  },
+  "pushAlerts": {
+    "showBell": {
+      "follow": "Get a reminder before {name}",
+      "following": "Reminder for {name} is on – tap to turn off",
+      "error": "That didn’t work. Please try again."
+    },
+    "showDialog": {
+      "title": "Show reminder",
+      "explain": "We’ll notify you 25 to 35 minutes before {show}’s next showtime.",
+      "explainLate": "That is already tight for the next showtime, so this one gets its message about 10 minutes ahead.",
+      "explainChosen": "We’ll notify you about half an hour before this performance.",
+      "follow": "Turn on reminder",
+      "following": "Reminder is on",
+      "unfollow": "Turn off reminder",
+      "close": "Close",
+      "nextShowtime": "Next performance",
+      "chosenShowtime": "Chosen performance",
+      "viewAll": "My alerts"
+    },
+    "rideBell": {
+      "setAlert": "Set a wait-time alert for {name}",
+      "alerted": "Wait-time alert for {name} is on – tap to edit"
+    },
+    "rideDialog": {
+      "title": "Wait-time alerts",
+      "subtitle": "For {park} – we’ll notify you once the wait drops below your threshold.",
+      "soloSubtitle": "{park} – we’ll notify you once the wait drops below your threshold.",
+      "loading": "Loading…",
+      "empty": "No alerts for this park yet.",
+      "thresholdLabel": "under {minutes} min",
+      "remove": "Remove {name}",
+      "addTitle": "Add a new alert",
+      "selectRide": "Choose a ride",
+      "thresholdInput": "Threshold in minutes",
+      "minutes": "min",
+      "add": "Add",
+      "adding": "Saving…",
+      "error": "That didn’t work. Please try again.",
+      "viewAll": "My alerts",
+      "close": "Close",
+      "entry": "Wait-time alerts",
+      "entryWithCount": "Wait-time alerts ({count})",
+      "removeShort": "Remove",
+      "save": "Save",
+      "outOfSeason": "Winter only",
+      "retired": "Retired",
+      "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
+      "todayOnly": "Applies to today only – set it up again for another visit day."
+    },
+    "overview": {
+      "title": "My alerts",
+      "subtitle": "Wait-time alerts and show reminders for this device, across every park.",
+      "loading": "Loading…",
+      "emptyBody": "Nothing set up yet. On a park page, the bell next to a ride or a show sets up a reminder.",
+      "rideAlertsTitle": "{count, plural, =1 {One wait-time alert} other {# wait-time alerts}}",
+      "showFollowsTitle": "{count, plural, =1 {One show reminder} other {# show reminders}}",
+      "thresholdLabel": "under {minutes} min",
+      "remove": "Remove",
+      "outOfSeason": "Winter only",
+      "retired": "Retired",
+      "loadError": "Couldn't load the list. Please reload the page.",
+      "showAt": "at {time}",
+      "showNextAny": "whichever performance is next"
+    },
+    "menu": {
+      "link": "My alerts"
+    },
+    "pushErrors": {
+      "generic": "That didn’t work. Please try again.",
+      "rateLimited": "Too many attempts. Try again in {seconds} seconds.",
+      "blocked": "Notifications are blocked in your browser. You can allow them again in this site’s settings.",
+      "dismissed": "An alert needs notifications to arrive in. Choose “Allow” the next time your browser asks.",
+      "unsupported": "This browser cannot receive notifications. On iPhone it works only once the site sits on the home screen.",
+      "notConfigured": "Notifications are not set up here at the moment."
     }
   },
   "glossary": {
@@ -2013,7 +2127,9 @@
     },
     "warn": {
       "closedNow": "Reporting closed right now.",
-      "downYesterday": "Was out of service all day yesterday."
+      "downYesterday": "Was out of service all day yesterday.",
+      "afterClose": "Starts after the park closes.",
+      "maybeAfterClose": "May already be after closing time."
     },
     "custom": {
       "add": "Own block",
@@ -2047,6 +2163,42 @@
       "overflow": "{count, plural, one {one no longer fits the day} other {# no longer fit the day}}",
       "capped": "{count, plural, one {one ride was left out, the planner sorts at most {max} stops} other {# rides were left out, the planner sorts at most {max} stops}}",
       "undo": "Undo"
+    },
+    "fit": {
+      "title": "Not everything fits into the day",
+      "subtitle": "{park}, {date}",
+      "steps": {
+        "levers": "Adjustments",
+        "rides": "Priorities",
+        "result": "Result"
+      },
+      "allFit": "{count, plural, one {One ride fits into the day} other {All # rides fit into the day}}",
+      "someFit": "Room for {fits} of {total} rides",
+      "endsAt": "last ride by {time}",
+      "queueing": "{duration} queuing",
+      "leversBody": "These make room without dropping a ride. Tap what you would change.",
+      "leversNone": "The blocks are not the problem, it stays too tight without them. The next step is where you say which rides matter most.",
+      "leversFits": "The plan fits like this. Nothing about the blocks needs changing.",
+      "leverDrop": "Without {label}",
+      "leverShorten": "Cut {label} to {minutes} min",
+      "leverDropAll": "Without the free blocks",
+      "leverSolves": "Then the whole plan fits",
+      "leverHelps": "Then {fits} of {total} fit",
+      "ridesBody": "What you must not miss goes to the top. Cuts come from the bottom. Untick whatever you can do without.",
+      "drops": "drops out",
+      "peak": "peak {minutes} min",
+      "headliner": "Headliner",
+      "pin": "Move to the top",
+      "pinHint": "Move to the top, dropped last",
+      "resultRides": "In the day",
+      "resultEnd": "Last ride by",
+      "resultWait": "Time queuing in total",
+      "resultOut": "Left out",
+      "resultHint": "You can still drag, delete and re-sort everything in the planner afterwards.",
+      "apply": "Apply plan",
+      "applied": "{count, plural, one {One ride planned} other {# rides planned}}",
+      "leftOut": "{count, plural, one {one is left out} other {# are left out}}",
+      "adjust": "Adjust"
     },
     "sheet": {
       "handle": "Resize or close the planner",
@@ -2122,7 +2274,8 @@
       "steps": {
         "park": "Park",
         "date": "Day",
-        "setup": "Who’s coming"
+        "setup": "Who’s coming",
+        "headliners": "Big rides"
       },
       "back": "Back",
       "next": "Next",
@@ -2139,6 +2292,14 @@
       "wet": {
         "label": "Stay dry if possible",
         "hint": "Water rides get a mark in the list."
+      },
+      "headliners": {
+        "label": "Plan the headliners",
+        "hint": "Puts the {count} big rides into the day, ordered by their hourly curves.",
+        "hintTight": "There is room for {fits} of {total} before the park closes.",
+        "conflict": "{fits} of {total} fit. Untick what you can do without, or move up what you really want to ride.",
+        "none": "No big ride is missing from this day.",
+        "resolved": "{count, plural, one {The ride fits into the day like this} other {All # rides fit into the day like this}}. You can keep changing your selection."
       },
       "facts": {
         "title": "What we know about the day",

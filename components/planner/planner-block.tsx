@@ -213,6 +213,57 @@ export function PlannerBlock({
   const endMinute = entry.startMinute + (custom ? custom.durationMinutes : (wait ?? 0));
   const range = `${formatGridTime(entry.startMinute)}–${formatGridTime(endMinute)}`;
 
+  /**
+   * Whether this block starts after the park shuts, and how sure we are.
+   *
+   * Two answers rather than one, because the axis itself has two lines.
+   * `grid.closeMin` is the last minute the park is CERTIFIABLY open and
+   * `closeSlackMin` is the hatched hour above it that it might still be running
+   * — the API reports a closing HOUR, so a park shutting at 17:30 answers 17,
+   * and 86 % of days end on the hour while the rest do not. A block at 17:15 on
+   * such a day is not a mistake and may not be told it is one. A block past the
+   * feather is out of the day whatever the truncation was.
+   *
+   * Nothing this app files by itself goes above `closeMin`, so a block out
+   * there is either a drag somebody made on purpose — and the person dragging
+   * knows their park — or an entry the optimiser could not fit and parked
+   * rather than delete. Both want the same note, and neither is an error: the
+   * crowd tint, not the destructive one, because the ride is real and the queue
+   * figure is real and what is wrong is the hour.
+   *
+   * It is the report this whole assistant came out of. Taron sat at 18:45 in a
+   * park that shuts at 18:00, drawn exactly like the nine blocks above it, with
+   * the only mention of the problem a clause in a grey line under the buttons.
+   *
+   * Rides only. A free block is a decision the visitor made about their own
+   * evening, and telling them their dinner is after closing time is the app
+   * having an opinion about dinner.
+   */
+  const closeState =
+    custom || done || entry.startMinute < grid.closeMin
+      ? null
+      : entry.startMinute >= grid.closeMin + grid.closeSlackMin
+        ? 'past'
+        : 'maybe';
+
+  /**
+   * The one thing worth warning about on this block, worst first.
+   *
+   * Three conditions competing for one icon and one sentence: a ride reporting
+   * closed right now beats one that was down all of yesterday, and both beat an
+   * hour problem — a ride that is shut is shut whatever time the block says.
+   */
+  const warnLabel = closedNow
+    ? t('warn.closedNow')
+    : downYesterday
+      ? t('warn.downYesterday')
+      : closeState === 'past'
+        ? t('warn.afterClose')
+        : closeState === 'maybe'
+          ? t('warn.maybeAfterClose')
+          : null;
+  const warnTone = closedNow ? 'text-destructive' : 'text-crowd-high';
+
   const missingLabel =
     custom || estimate.missing === 'custom'
       ? null
@@ -488,13 +539,10 @@ export function PlannerBlock({
                   {CustomIcon && <CustomIcon className="size-3.5 shrink-0" />}
                   <span className="truncate">{custom ? custom.label : entry.attractionName}</span>
                 </span>
-                {(closedNow || downYesterday) && (
+                {warnLabel && (
                   <AlertTriangle
-                    className={cn(
-                      'size-3 shrink-0',
-                      closedNow ? 'text-destructive' : 'text-crowd-high'
-                    )}
-                    aria-label={closedNow ? t('warn.closedNow') : t('warn.downYesterday')}
+                    className={cn('size-3 shrink-0', warnTone)}
+                    aria-label={warnLabel}
                   />
                 )}
                 {hasFigure && (
@@ -557,17 +605,9 @@ export function PlannerBlock({
 
           {/* The reason, spelled out where there is room. The icon above carries
               it on a short block; this is the same statement at full length. */}
-          {(closedNow || downYesterday) &&
-            boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (
-              <p
-                className={cn(
-                  'truncate text-[10px]',
-                  closedNow ? 'text-destructive' : 'text-crowd-high'
-                )}
-              >
-                {closedNow ? t('warn.closedNow') : t('warn.downYesterday')}
-              </p>
-            )}
+          {warnLabel && boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (
+            <p className={cn('truncate text-[10px]', warnTone)}>{warnLabel}</p>
+          )}
         </div>
 
         {/* Blocks past the lane budget, said out loud.

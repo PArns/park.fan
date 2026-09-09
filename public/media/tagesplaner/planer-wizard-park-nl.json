@@ -1,0 +1,14 @@
+{
+  "title": "Planner-wizard, park zoeken",
+  "tags": ["diagram"],
+  "alt": {
+    "nl": "Stap één van de planner-wizard: „Disneyland“ in het zoekveld, daaronder vijf parken uit vijf landen."
+  },
+  "caption": {
+    "nl": "Eén naam, vijf parken op drie continenten. De paden komen uit de API, niet uit de weergavenamen."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}

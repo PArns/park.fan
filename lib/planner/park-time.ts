@@ -107,6 +107,29 @@ export function formatGridTime(minute: number): string {
   return `${String(hour).padStart(2, '0')}:${String(rest).padStart(2, '0')}`;
 }
 
+/**
+ * `Donnerstag, 17. September` — the day a plan is filed under, in the reader's
+ * language.
+ *
+ * Noon UTC, which is the whole trick: a plan's date is a park-local calendar
+ * day and this only ever has to NAME it, so a midpoint no offset on earth can
+ * push across a date boundary keeps the label on the day the entries are stored
+ * under. Parsing `${date}T00:00:00Z` and formatting it in a negative offset
+ * names the day before.
+ *
+ * It lives here rather than beside either of its two callers because that is
+ * how the second one arrived: the wizard's hero and the fit assistant's
+ * subtitle name the same day in the same dialog stack, and two copies of a date
+ * format are two chances to disagree about which day is being planned.
+ */
+export function longDate(date: string, locale: string): string {
+  return getDateTimeFormat(locale, {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  }).format(new Date(`${date}T12:00:00Z`));
+}
+
 /** `YYYY-MM-DD` plus `days`, calendar-safe. Dates here are park-local strings. */
 export function addDays(isoDate: string, days: number): string {
   const d = new Date(`${isoDate}T12:00:00Z`);

@@ -1863,6 +1863,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   parkPath="/parks/europe/germany/bruhl/phantasialand"
                   parkSlug="phantasialand"
                   parkStatus="OPERATING"
+                  parkName="Phantasialand"
                 />
               </Sub>
             </Section>

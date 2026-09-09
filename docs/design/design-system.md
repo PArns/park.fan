@@ -680,17 +680,80 @@ button is still the narrow one.
 requirement, with `max-sm:` at the call site and a comment naming the requirement.
 
 Two things the tier does not reach, both still open: controls that are not `<Button>` (the glossary
-filter pills, the blog tag cloud, `FavoriteStar`) and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
+filter pills, the blog tag cloud) and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
 apart). `Badge` is deliberately untouched — badges are overwhelmingly labels rather than targets, and
 growing every status chip on every card would move layout the placeholders reserve for.
+
+---
+
+## The target grows, the box does not
+
+A tap target that is not a `<Button>` reaches 44 px through a **pseudo-element**, never through
+`min-h-11`/`min-w-11` on the element itself. `min-h-11` is right where the element's own box is
+allowed to be 44 px — a link in the footer's stack, a full-width CTA in the planner. It is wrong
+everywhere the element is placed by something else, and that is most of them: the box is what a
+parent positions, so growing it moves whatever it holds.
+
+`FavoriteStar` is the case that proves it, because it is on every park, ride, show and restaurant
+card on the site. `ParkCard` and `AttractionCard` put it in their own 34 px circle and hand it
+`h-full w-full`; a `max-sm:min-h-11 max-sm:min-w-11` overrode that, the 44 px button kept the
+circle's **top-left** corner, and the star — centred in the button, not in the circle — came to
+rest 6 px right and 6 px down of the ring drawn around it. Measured at 390 px: the star's centre
+sat 23 px from the card's right edge and 35 px from its top where the circle's centre is at 29/29,
+on 12 of 12 cards on the homepage and 19 of 19 on a park page. The show, restaurant and in-park
+cards anchor an `absolute top-2 right-2` wrapper by **its** top-right instead, so the same 28 px
+went the other way and pushed the star 14 px down and to the left, into the card: 31/31 from the
+corner against the 17/17 the wrapper asks for. Both are the same bug, and both look like a
+carelessly placed star rather than a touch tier.
+
+A pseudo-element takes the finger and nothing moves:
+`max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:left-1/2 max-sm:after:h-11 max-sm:after:w-11
+max-sm:after:-translate-x-1/2 max-sm:after:-translate-y-1/2 max-sm:after:content-[""]` on a
+`relative` element. Measured after: every star centred to 0.0 px in its ring (29/29 and 17/17), and
+the reach `elementFromPoint` finds is 43 × 44 px in the circle and 44 × 44 px on a restaurant card,
+against 37 × 44 before — the tap area got **larger**, because it is centred on the star rather than
+hanging off one corner of it.
+
+Two things to know when using it. The reach is clipped by any `overflow-hidden` ancestor, so what
+a finger gets in a card's corner is the pseudo-element **minus** what reaches past the card —
+41 × 30 px in `BreadcrumbNav`'s case, which that comment records, and 31 × 44 on a show card whose
+neighbour clips it. That is a trade, not a failure: it is still several times the bare control.
+And where the element's box does shrink back, say so — `ParkFavoriteButton` on the park page's
+title row went 44 → 24 px wide, which gives the `<h1>` beside it 20 px more (248 → 268 px at
+390 px) and moves nothing vertically.
+
+**The reach is not free either — check what it now lies over.** `LocationBanner`'s close button is
+the second case and adds this half of the rule. It is `absolute top-2 right-2` in a toast, so the
+grown box went **inward**: 53 px into a card whose text column ended 37 px from that edge, over the
+last 16 px of the headline, and `elementFromPoint` at the column's right edge returned the close
+button — a tap at the end of a headline line dismissed the banner. The glyph sat at 31/31 from the
+card's corner instead of 21/21. Both were denied in the comment that stood there ("the card's
+`pr-9` already keeps the text clear of it, and the glyph does not move"), which is how it survived:
+the `pr-9` was written for the 24 px button and never re-checked against the 44 px one.
+
+Fixing the box is only the first half there. A pseudo-element centred on a 24 px button in an 8 px
+corner reaches 43 px in, so with `pr-9` alone the _target_ still covered the text column's last
+6 px — the same tap, the same outcome, now invisible in the layout. The card's padding has to clear
+the target, not the box: `max-sm:pr-11`. Measured across six locales × 320/360/390 px, all 18 went
+from `CLOSE-BTN` to `H2` at that point, the button's box from 44 → 24 px and the glyph from 31/31
+to 21/21, with the reach unchanged at 44 × 44 and the primary CTA never blocked. The eight pixels
+are paid in text width and in 3 of those 18 that is one more line (es at 320 and 360, en at 390,
++16.5 px of card); the toast is `fixed`, so its height moves nothing on the page.
+
+The same split is written out at three other call sites for their own reasons:
+`components/common/breadcrumb-nav.tsx` (a `min-h-11` there grew the crumb row ~24 px after paint,
+for 0.0227 of layout shift), `components/planner/planner-block.tsx` (a block may legitimately be
+20 px tall and the box must not lie about the duration) and `components/planner/planner-flyout.tsx`.
 
 ---
 
 ## Interactive Utilities
 
 - `.interactive-card` – `hover:border-primary/50 transition-all hover:shadow-lg`
-- `.touch-target` – `min-h-[44px] min-w-[44px]` — for a tap target that is not a `<Button>`; the
-  button scale carries its own 44 px phone tier (above)
+- `.touch-target` – `min-h-[44px] min-w-[44px]` — for a tap target that is not a `<Button>` **and
+  is allowed to be 44 px in the layout**; where something else places the box, reach 44 px with the
+  pseudo-element instead ([the target grows, the box does not](#the-target-grows-the-box-does-not)).
+  The button scale carries its own 44 px phone tier (above)
 
 ---
 

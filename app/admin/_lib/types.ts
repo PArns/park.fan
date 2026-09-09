@@ -30,6 +30,10 @@ export type CuratedFieldType =
   | 'boolean'
   | 'enum'
   | 'months'
+  // A park-local calendar day, `YYYY-MM-DD`. Never a Date: a works period is a
+  // statement in the park's calendar, and parsing it here would move the
+  // boundary by a day for every park west of Greenwich.
+  | 'date'
   | 'url'
   // A frontend glossary term id. Rendered as a text input — the editor's
   // `default` case — and checked against the glossary when it is saved.

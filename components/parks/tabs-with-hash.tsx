@@ -311,6 +311,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                     parkSlug={parkSlug}
                     parkStatus={park.status}
                     timezone={park.timezone}
+                    parkName={park.name}
                   />
                 )}
 
@@ -337,6 +338,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                           parkSlug={parkSlug}
                           parkStatus={park.status}
                           timezone={park.timezone}
+                          parkName={park.name}
                         />
                       </LazyMount>
                     );

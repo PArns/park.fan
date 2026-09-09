@@ -1,3 +1,39 @@
+# TODO — Ride downtime: measure locally before it leaves draft (2026-09-06)
+
+The frontend half of the downtime work is built (PR #416; the API side is
+[v4.api.park.fan#228](https://github.com/PArns/v4.api.park.fan/pull/228)). Two
+things are unmeasured, and both need a park with a ride actually reported DOWN —
+which is roughly 0.7 % of rides at any instant, in a minority of parks, so it
+takes picking one rather than waiting for one.
+
+Find a candidate by fetching a few open parks and grepping for
+`"effectiveStatus":"DOWN"`; Lotte World Adventure, Universal Studios Japan and
+Universal Studios Singapore all had one during the analysis.
+
+- [ ] **`pnpm build && pnpm start`, then `pnpm measure:cls --late` on a park page
+      with a DOWN ride, and on that ride's own page.** Against `localhost`, never
+      `127.0.0.1`, and never `next dev` — both report a confident 0.0000 for
+      reasons that have nothing to do with the page.
+
+      What could move: `OutageNote` adds a `w-full` line inside the card's badge
+      wrap, and attraction cards share row heights through subgrid, so one card
+      growing a line grows the whole row. It arrives with the server render, so
+      there should be no shift at paint; what to check is the row geometry
+      against a park with no DOWN ride.
+
+- [ ] **`pnpm check:card-framing` on the same park.** The note sits in the card's
+      lower panel, and the framed photo layer's box has to stay wider than 1.5.
+
+- [ ] **The reliability chapter has never been seen with data in it.** Every gate
+      in the API's `DOWNTIME_GATES` is provisional and currently withholds
+      everywhere, so `AttractionDowntimeSection` has only ever rendered its
+      one-line refusal. Once the API's phase 0 has run and the gates are
+      re-derived, look at the `figures` branch in all six languages: three
+      metrics in a `PanelGrid`, and the German and French sentences under them
+      are the longest.
+
+---
+
 # TODO — Trip Planner
 
 A multi-day, multi-park trip planner: pick days, drag rides onto a timeline, get a
@@ -13,7 +49,10 @@ Scope decisions taken 2026-09-02, all four confirmed by the owner:
 - A trip is **multi-day and multi-park**. Not one plan per park.
 - Storage is **cookie (trip id) + localStorage (full data) + backend share link**.
   A cookie alone cannot hold a multi-day trip and cannot be shared with the people
-  travelling with you.
+  travelling with you. **As built (see §3.2): the trip id lives in localStorage too**
+  (`lib/planner/trip-sync.ts`'s `parkfan_trip_id`), not a cookie — the `planner=1`
+  cookie this decision anticipated was built, found to have no reader anywhere and no
+  box to reserve, and was removed.
 - **Full web push**: service worker, VAPID, subscription table, cron. None of it
   exists today.
 - **Backend first.**
@@ -328,7 +367,20 @@ statistic, not any single day.
       out of season is not one of the day's rides at all, and `isCurrentlyInSeason`
       has three values where `null` must behave exactly as before.
 
-### 2.5 Showtimes into the day payload `[P1]`
+### 2.5 Showtimes into the day payload `[P1]` — shipped since this section was written
+
+**Frontend-observed status (2026-09-08, PF-23 reconciliation) — supersedes the two
+paragraphs below, which describe the state BEFORE this shipped:** `lib/planner/shows.ts`
+now consumes real `PlanDayShow`/`PlanDayShowSource` data from `/plan/day` — not a stub,
+not an empty array. Its own docstring names a concrete example (Phantasialand,
+2026-09-03: "22 of the 48 showtimes the API returned for that date" sat past a closing
+time derived from a projected day) and the type carries `hoursSource: "observed"` for a
+listing that narrows the park's own derived hours — detail that is not something a
+frontend would invent against a field that does not exist. Not verified against the
+backend repo itself (out of scope here, see PF-23's Non-Goals), but strong enough to
+check off both boxes below; a stale claim two paragraphs old is not.
+
+<details><summary>Original problem statement (resolved — kept for history)</summary>
 
 **Now known: the calendar DTO has no showtimes field at all.**
 `IntegratedCalendarDayDto` never declared one, which is why every response reads
@@ -343,11 +395,16 @@ them (4 shows at Phantasialand with 5 slots each), but the park fetch is cached 
 a day and the frontend `CLAUDE.md` already documents that an overnight cache entry
 reports every show as closed.
 
-- [ ] `/plan/day` returns the day's showtimes with coordinates. Shows are fixed time
+</details>
+
+- [x] `/plan/day` returns the day's showtimes with coordinates. Shows are fixed time
       anchors — they are what the rest of the plan gets arranged around.
-- [ ] Establish how far ahead showtimes are actually known. If it is only today,
+- [x] Establish how far ahead showtimes are actually known. If it is only today,
       say so in the response rather than returning an empty array that reads as
-      "no shows".
+      "no shows". Answered: per-date, via `PlanDayShowSource` — `scheduled` (the
+      operator's own listing) or `projected` (the last matching weekday carried
+      forward, itself never clipped to a projected day's shorter hours where the
+      listing says otherwise).
 
 ### 2.6 Extend the horizon `[P1]`
 
@@ -366,7 +423,16 @@ reports every show as closed.
 - [ ] Weather climate normals past day 14, flagged, and firewalled from the wait
       model's features.
 
-### 2.7 Trip storage and share links `[P1]`
+### 2.7 Trip storage and share links `[P1]` — frontend integration already built
+
+**Frontend-observed status (2026-09-08, PF-23 reconciliation):** `app/api/trips/route.ts`
+and `app/api/trips/[id]/route.ts` already relay `POST`/`GET`/`PUT` to
+`${API_BASE}/v1/trips[/…]`, and `lib/planner/trip-sync.ts` drives them end-to-end
+(create, debounced auto-sync, drop-the-link-not-the-row on disable). **This is not proof
+the backend has the table yet** — every relay is written to degrade quietly on a
+non-OK response ("Trip service unreachable", a 404 on `PUT` silently starts a new trip) —
+so treat this as the frontend half being done and waiting, not as confirmation of the
+checkboxes below. See the batch's separate backend-side ticket for this section.
 
 - [ ] Table: trip id (short, URL-safe, unguessable), payload, created/updated,
       expiry. No account system exists for visitors and none is being built — the
@@ -376,7 +442,16 @@ reports every show as closed.
       check how `THROTTLE_BYPASS_KEYS` and the existing throttler apply.
 - [ ] Size cap, and reject payloads that are not a trip.
 
-### 2.8 Push `[P2]`
+### 2.8 Push `[P2]` — frontend integration already built, ahead of this section's checkboxes
+
+**Frontend-observed status (2026-09-08, PF-23 reconciliation):** `app/api/push/route.ts`,
+`app/api/push/subscriptions/route.ts`, `public/sw.js` and `lib/planner/use-push-subscription.ts`
+implement the full subscribe/unsubscribe/topic-change flow against `/v1/push` and
+`/v1/push/subscriptions`, plus a hand-written service worker with `push` and
+`notificationclick` listeners. Same caveat as §2.7: every one of these is written to
+answer `unavailable`/`off` on a non-OK or unreachable backend by design, so this
+confirms the frontend is ready, not that `push_subscriptions` exists yet. See the
+batch's separate backend-side ticket for this section.
 
 Nothing exists: `grep -rniE "web-push|webpush|vapid|push_subscription|notification|firebase|fcm|apns" src/` returns zero. There is no outbound notification of any kind in this backend — no push, no email, no user-facing webhook. The only outbound call is the revalidation hook to the frontend (`src/common/revalidation/revalidation.service.ts:45-60`). "Alert" in this codebase always means an internal ML or weather record, never something sent.
 
@@ -441,7 +516,7 @@ feature.
 | 3   | Opening hours marked in the background    | done — five layers, truncation feather, rush strip                                                  |
 | 4   | "ein park Outlook"                        | done                                                                                                |
 | 5   | Always park timezone                      | done — `lib/planner/park-time.ts`, all three `todayLocal()` copies gone                             |
-| 6   | Shows as lines with their time            | done for today; structurally impossible for any other date until the backend has a forward schedule |
+| 6   | Shows as lines with their time            | done — `lib/planner/shows.ts` renders every date now, via `/plan/day`'s `PlanDayShowSource` marking a projected (carried-forward weekday) line apart from the operator's own listing; this row predates that, see §2.5 |
 | 7   | Luftlinie between consecutive rides       | done — on the leg and on the lower block                                                            |
 | 8   | Transfer knapp / gut / großzügig          | done — floor/ceiling asymmetry, boundary at the model's own spread                                  |
 | 9   | Live re-correction + now line             | done — 45-minute window, no ratio-scaling of the later curve                                        |
@@ -455,11 +530,22 @@ median is 117 seconds — 2.3 px at 1.2 px/min. It lives in the leg's arithmetic
 
 ### 3.1 Data model
 
-- [ ] `Trip`: id, name, date range, days. `TripDay`: date, park (or rest day),
+- [~] ~~`Trip`: id, name, date range, days. `TripDay`: date, park (or rest day),
       entries. `TripEntry`: kind (ride / show / meal / custom), ref, planned start,
-      done flag, actual wait when ticked off.
-- [ ] Travel party: names and heights. Feeds `canRideAtHeight` / `riderHeightStops`
-      (`lib/utils/rider-height.ts`), which already exist.
+      done flag, actual wait when ticked off.~~ — built, but shaped differently:
+      `PlannerState` (`lib/planner/types.ts`) is keyed by park slug, each park keyed
+      by date, no `Trip` wrapper with its own id/name/date-range. A "trip" only gets
+      an id when push turns it into a shared row (`lib/planner/trip-sync.ts`'s
+      `parkfan_trip_id`) — the id is a sync artefact, not part of the plan's own
+      shape. `PlannerEntry`'s kind is implicit (an `attractionSlug` or a `custom`
+      block with one of seven icons) rather than an explicit `ride/show/meal/custom`
+      enum. `startMinute`, `done` and `actualWait` are exactly as described.
+- [~] ~~Travel party: names and heights.~~ — built, but as two DAY-level flags rather
+      than a named roster: `PlannerDayPrefs.riderHeightCm` (the shortest rider) and
+      `avoidWet`, applied in `lib/planner/party.ts`'s `partyFlags` through the
+      existing `canRideAtHeight`. Documented as a deliberate choice in
+      `docs/features/trip-planner.md` (wizard step 3, "Who is coming" — a flag on
+      the ride list, never a filter, and never named individuals).
 
 ### 3.2 Persistence
 
@@ -467,15 +553,27 @@ Cookies in this repo are written with `cookies-next`, `maxAge` 365 d, `path:'/'`
 `sameSite:'lax'`; `lib/utils/favorites.ts` is the reference implementation, including
 its parse cache and its `secureJsonParse` guard against prototype pollution.
 
-- [x] Cookie holds a flag only (`planner=1`), not the plan. Server-readable, and the
-      plan itself never leaves localStorage.
+- [~] ~~Cookie holds a flag only (`planner=1`), not the plan. Server-readable, and the
+      plan itself never leaves localStorage.~~ — built, then **removed**: it had no
+      caller anywhere (`plannerCookieSaysHasPlan()` did not appear in the production
+      chunks) and nothing to reserve a box for, since the edge tab is drawn
+      unconditionally and takes no layout space either way. It rode along on every
+      request for a year for a reader that did not exist. See `lib/planner/store.ts`'s
+      own docstring. localStorage only, now.
 - [x] localStorage holds the plan (`parkfan_planner`), read through `secureJsonParse`.
-- [ ] Backend sync for sharing (§2.7).
-- [ ] `proxy.ts:39` strips `set-cookie` from every non-redirect response. Cookie
-      writes happen client-side, like `rememberLocale()` does.
-- [ ] Pre-mount state must reserve its own height. `FavoritesSection` is the cautionary
-      tale in `CLAUDE.md`: it rendered `null` until it could read the cookie and then
-      dropped a 232 px band onto the page.
+- [x] Backend sync for sharing (§2.7) — `lib/planner/trip-sync.ts` (`syncTrip`,
+      `startTripAutoSync`, `forgetTrip`) against `app/api/trips/*`. See §2.7's status
+      note: this is the frontend half, and it degrades quietly if the backend table
+      does not exist yet.
+- [~] ~~`proxy.ts:39` strips `set-cookie` from every non-redirect response. Cookie
+      writes happen client-side, like `rememberLocale()` does.~~ — moot: the planner
+      cookie was removed (see above), so there is nothing here for `proxy.ts` to strip.
+- [~] ~~Pre-mount state must reserve its own height.~~ — resolved structurally rather
+      than with a reserved box: the way in is a `fixed` edge tab (`planner-launcher.tsx`)
+      drawn on every page load whether or not anything is planned, and it takes no
+      space in the document flow, so there is no swap for a visitor to see. Confirmed
+      in `store.ts`'s docstring, which cites this as the second reason the old cookie
+      turned out to do nothing.
 
 ### 3.3 The flyout
 
@@ -533,30 +631,50 @@ included. `dialog.tsx` was already at `z-[70]`; the sheet is now too.
       with `setPointerCapture` and a fixed row height for the index maths. No FLIP yet.
 - [ ] Follow the motion split `use-menu-reveal.ts` established: CSS owns visibility,
       GSAP animates transforms, `prefers-reduced-motion` skips the import entirely.
-- [ ] Keyboard equivalent for reordering. Drag alone is not an interface. **Still open.**
-- [ ] **`AttractionCard` is a hostile drag surface.** Its root is a `<Link>`
-      (`components/parks/attraction-card.tsx:168-172`) with a `hover:-translate-y-1`,
-      and it carries `data-card-fx`, which a delegated `document`-level
-      `pointerover`/`pointermove` listener picks up and drives with a GSAP
-      `quickSetter` (`components/parks/card-pointer-fx.tsx:124-159`). A drag started on
-      the card body fights link navigation, the hover transform and that listener at
-      once. Use an explicit drag handle, and check what the delegated listener does
-      while a drag is in flight.
-- [ ] The natural drag surface already exists: `AttractionWaitOverview`
-      (`components/parks/attraction-wait-overview.tsx:127-157`) is a `<ul class="divide-y">`
-      of plain `<li>` rows with no link root and no photo. Same for
-      `RopeDropHeadliners` (`rope-drop-headliners.tsx:29-56`).
-- [ ] The card's top glass panel already reserves `padding: '14px 52px 13px 16px'` for
-      the favourite star at `top-3 right-3` (`attraction-card.tsx:207-233`). A second
-      control there needs more right padding, not a second absolute child.
+      **Still open** — no GSAP usage found in `lib/planner/drag-coach.ts` or
+      `components/planner/planner-drag-coach.tsx`, which is a static hint box with no
+      motion of its own.
+- [x] ~~Keyboard equivalent for reordering. Drag alone is not an interface.~~ — done:
+      `PlannerBlock` (`components/planner/planner-block.tsx`) renders an invisible
+      `<input type="range">` over the drag grip, `pointer-events: none` so it does not
+      steal pointer hits but stays in the tab order, `min`/`max` the same opening
+      clamp the drag obeys, committing through the same `onMove` path a drag does.
+- [~] ~~**`AttractionCard` is a hostile drag surface.** ... Use an explicit drag
+      handle ...~~ — solved differently: no drag handle was added. Instead
+      `lib/planner/use-ride-drag-source.ts` attaches ONE capture-phase `dragstart`
+      listener on `document` that overwrites the `DataTransfer` of whichever native
+      drag the browser already started (the link, or its photo) with the planner's own
+      payload — chosen specifically because `AttractionCard` is a Server Component
+      used in eight places and a wrapper for a handle would break its
+      `row-span-3`/subgrid layout. See that file's own docstring.
+- [~] ~~The natural drag surface already exists: `AttractionWaitOverview` ... Same for
+      `RopeDropHeadliners`~~ — not adopted. The fix above kept `AttractionCard` itself
+      as the drag source, so switching to these alternate surfaces was not needed.
+- [~] ~~The card's top glass panel already reserves `padding: '14px 52px 13px 16px'`
+      for the favourite star ... A second control there needs more right padding~~ —
+      moot: no second control was ever added to the card. `AddToPlannerButton`
+      (`components/planner/add-to-planner-button.tsx`) lives on the ride's own page
+      instead (see the intro table, "the ride page's add control"), not on the card.
 
 ### 3.5 Composition and correction
 
-- [ ] Ticking a ride off records the real wait at that moment and re-estimates
-      everything after it.
-- [ ] Re-fetch when the model version changes or live times move.
-- [ ] The best-travel-time data must still load last (`useLoadLast`) — that
-      requirement does not bend for this feature.
+- [~] ~~Ticking a ride off records the real wait at that moment and re-estimates
+      everything after it.~~ — half done: `setEntryDone` (`lib/planner/actions.ts`)
+      stores `actualWait` per entry and `PlannerBlock` reads it in place of the
+      estimate once `done` — that half is confirmed. **"Re-estimates everything after
+      it" is not found**: no cascading recompute of later entries triggered by the
+      tick-off itself — later entries keep drawing from the ordinary `/plan/day` +
+      live-correction pipeline (requirement 9 in the table above), not from a
+      dedicated reaction to this one action. Left open, tracked as its own thing
+      rather than checked off with the rest.
+- [ ] Re-fetch when the model version changes or live times move. **Still open** — no
+      model-version check found in `lib/planner/use-planner.ts` or `live.ts`.
+- [x] The best-travel-time data must still load last (`useLoadLast`) — that
+      requirement does not bend for this feature. Confirmed: `usePlannerDayFacts`
+      (`lib/planner/use-day-facts.ts`) reuses the park page's own
+      `useParkBestDaysCalendar` query key, so opening the planner on a park page is a
+      cache hit against the already-`useLoadLast`-gated fetch rather than a second,
+      ungated one.
 
 ### 3.6 i18n
 
@@ -570,7 +688,12 @@ are generated into `i18n/route-namespaces.generated.ts` by
       Its namespace is in `LAZY_MESSAGE_BOUNDARIES` and is fetched as a per-locale chunk,
       the way `FavoritesSection` handles `parks`+`attractions`. Two boundaries now: the
       launcher, and the calendar's "plan this day".
-- [ ] The eager skeleton must reserve the same box so the swap costs no layout shift.
+- [~] ~~The eager skeleton must reserve the same box so the swap costs no layout
+      shift.~~ — not applicable in the form assumed: the launcher's eager part is a
+      `fixed` edge tab that takes no space in the document flow (`planner-launcher.tsx`:
+      "the tab is always drawn"), and the panel it opens is an overlay `Sheet`, not
+      page content — so there is nothing in the page's own layout for the lazy
+      `planner` namespace chunk to shift when it lands.
 - [x] `pnpm check:client-messages` has to stay green at every step. A missing
       namespace does not throw — next-intl logs MISSING_MESSAGE and renders the raw
       key.
@@ -583,13 +706,22 @@ are generated into `i18n/route-namespaces.generated.ts` by
 
 ### 3.7 Service worker
 
-- [ ] `public/sw.js`, hand-written. No PWA plugin is installed; `next-pwa` is dead
-      and `@serwist/next` is not a dependency.
-- [ ] Exempt `/sw.js` from the locale redirects in `next.config.ts` or it becomes
-      `/de/sw.js`.
-- [ ] Offline: the active trip has to be readable without a network. Park wifi is
-      bad, and that is exactly when someone opens their plan.
-- [ ] Push handler, notification click routing into the trip.
+- [x] `public/sw.js`, hand-written. No PWA plugin is installed; `next-pwa` is dead
+      and `@serwist/next` is not a dependency. Confirmed — 82 lines, `install`/
+      `activate`/`push`/`notificationclick` only.
+- [x] ~~Exempt `/sw.js` from the locale redirects in `next.config.ts`~~ — never needed
+      a dedicated exemption: `proxy.ts`'s own matcher already excludes any path with a
+      dot (`.*\\..*`), which `/sw.js` is.
+- [~] ~~Offline: the active trip has to be readable without a network.~~ — decided
+      against, explicitly: `public/sw.js`'s own docstring calls this "deliberately NOT
+      a caching worker" — the site is already statically prerendered behind a CDN, and
+      a worker that starts answering navigations from its own store "becomes the
+      hardest kind of stale — one that survives a deploy, ignores a purge, and needs
+      the visitor to clear site data." This bullet is superseded by that decision, not
+      satisfied by it.
+- [x] Push handler, notification click routing into the trip. Both listeners exist in
+      `public/sw.js` (`showNotification` with a dedupe `tag`; `notificationclick`
+      focuses an already-open tab or opens the notification's `url`).
 
 ### 3.8 Trip overview
 
@@ -607,40 +739,70 @@ be the interesting thing to look at — the channel narrows and widens across th
 and it widens as the trip moves further out. That single idea carries both the look
 and the horizon problem in §1.
 
-- [ ] **Timeline axis is piecewise linear, like the weather day chart.** Open hours
-      are drawn wider than closed ones. That geometry already exists in
-      `lib/utils/weather-chart-axis.ts` (`buildDayScale`) with unit tests, and its
-      rule holds here too: a change of slope must land exactly on the dashed border
-      of the opening-hours band, or it reads as data.
-- [ ] **The error channel is a filled band, not two lines.** Lines suggest bounds;
-      a band suggests a distribution, which is what it is. Its opacity carries the
-      tier: crisp for tier A, softer and wider for C and D. `RideDayCurve` already
-      draws exactly this band (`ride-day-curve.tsx:277-286`, `buildBandPath`) — extend
-      that geometry rather than writing a second one.
-- [ ] Bars sit on the day's crowd colour scale — `lib/utils/crowd-level-styles.ts`
-      exists and must be reused rather than re-picked.
-- [ ] Walking segments between entries as thin connectors with their minutes on them.
-      Distance from `calculateDistance` (`lib/utils/distance-utils.ts`), coordinates
-      present for all 40 rides.
-- [ ] Weather as a layer behind the timeline: the rain window tinted, temperature as
-      a faint curve. The nowcast is 15-minute resolution.
+- [~] ~~**Timeline axis is piecewise linear, like the weather day chart.**~~ — decided
+      against, explicitly: `lib/planner/day-grid.ts`'s own docstring calls this "a
+      decision against the precedent next door" — a plan already refuses times
+      outside the park's hours (`PlanDayRide` carries one entry per open hour and
+      nothing else), so warping the axis would buy nothing a linear one over just the
+      operating day does not already give (~92% of the canvas), and it would cost the
+      one invariant the view needs: on a piecewise axis a fixed-duration queue draws
+      at a different height depending on when it starts, invisibly. `heightFor` takes
+      a duration and no start position specifically to make that unrepresentable.
+- [ ] **The error channel is a filled band, not two lines.** ... `RideDayCurve` already
+      draws exactly this band ... extend that geometry rather than writing a second
+      one. **Still open** — no `buildBandPath` or `ride-day-curve` reference found
+      anywhere under `lib/planner/` or `components/planner/`; `lib/planner/estimate.ts`
+      computes `uncertaintyMinutes`/`expectedError` per entry, but nothing was found
+      drawing them as a band.
+- [x] Bars sit on the day's crowd colour scale — confirmed reused, not re-picked:
+      `planner-bar.tsx`, `planner-block.tsx` and `planner-month-calendar.tsx` all
+      import from `lib/utils/crowd-level-styles.ts`.
+- [x] Walking segments between entries as thin connectors with their minutes on them.
+      Confirmed: `lib/planner/leg.ts` computes floor/ceiling minutes via
+      `calculateDistance`, and `planner-leg.tsx` renders them (`transfer.gap`,
+      `transfer.minWalk`).
+- [x] Weather as a layer behind the timeline: the rain window tinted, temperature as
+      a faint curve. Confirmed: `lib/planner/weather-rail.ts` carries `temperatureC`
+      per segment and `planner-weather-rail.tsx` renders it alongside the
+      precipitation tint.
 - [ ] Ticking a ride off resolves the bar from estimate to fact — the channel
       collapses to a single measured value, with the delta against the estimate shown.
-      That moment is worth animating properly.
+      **Partially built and already its own ticket**: `PlannerBlock` already swaps in
+      `entry.actualWait` once `done` (a value swap, no animation, no delta, no channel
+      collapse) — the rest of this bullet (the collapse animation and the rounded
+      delta) is PF-22, "Tick-off collapses the estimate band to a measured fact with a
+      rounded delta", already filed and queued. Left open here rather than duplicated.
 - [ ] The day's totals as one large figure: waiting time, walking time, ride count.
-      And the comparison against the optimised order, which is the number that makes
-      the planner worth opening.
+      And the comparison against the optimised order. **Partially built**:
+      `totalsFor` (`lib/planner/estimate.ts`), rendered by `PlannerDayFoot`, totals
+      waiting minutes and ride counts (queued / done / custom) — no walking-time total
+      and no figure comparing against the optimised order were found. Left open on
+      those two.
 - [ ] Glass surfaces follow the header band: `bg-popover/95` + `backdrop-blur-xl` +
-      the popover ring. Never put a transform or an opacity on the blurred surface
-      itself or on an ancestor — it becomes a backdrop root and the blur goes flat.
-      Animate descendants.
-- [ ] Chapter headings inside the planner use `ChapterHeading`
-      (`components/common/chapter-heading.tsx`). There are not going to be a sixth
-      and seventh heading style.
+      the popover ring. **Unconfirmed either way**: the flyout's own sheet uses
+      `bg-background/80` + `backdrop-blur-2xl` (`planner-flyout.tsx:572`), a different
+      recipe than prescribed here — may be a deliberate choice for a full sheet rather
+      than a hovering menu, not established either way from this pass. Left open
+      rather than asserted as a bug.
+- [x] Chapter headings inside the planner use `ChapterHeading`
+      (`components/common/chapter-heading.tsx`). Confirmed:
+      `app/[locale]/trip-planner/_chrome.tsx` calls it directly, same as the rest of
+      the site — no separate heading style was added.
 - [ ] Reuse `ParkCard`, `AttractionCard`, `ParkStatusBadge`, `CrowdLevelBadge`,
-      `Badge`. Nothing gets re-implemented inline.
-- [ ] Every streamed section reserves its height. This feature adds a panel to every
-      page in the app; a CLS regression here is a CLS regression everywhere.
+      `Badge`. **Partially confirmed, corrected after an earlier pass of this review
+      mis-read the grep**: `CrowdLevelBadge` and `Badge` are genuinely imported
+      (`planner-context-band.tsx`, `planner-wizard.tsx`). `ParkCard`, `AttractionCard`
+      and `ParkStatusBadge` are not imported anywhere under `components/planner/` or
+      `lib/planner/` — the only two hits for `AttractionCard` in the whole tree are
+      prose comments in `use-ride-drag-source.ts`/`ride-drag.ts` about dragging FROM
+      the park page's existing card, not about reusing it inside the planner's own UI.
+      Left open on those three.
+- [ ] Every streamed section reserves its height. **Not established either way**: no
+      `Suspense` boundary was found in `app/[locale]/trip-planner/page.tsx` itself: the
+      page's own content is a static article (`content/<locale>.tsx`), and the
+      planner's live day data is fetched client-side through query hooks rather than
+      streamed via RSC `Suspense` — so this bullet may already not apply in the form
+      it was written for. Left open rather than guessed at.
 
 ---
 
@@ -650,17 +812,63 @@ These are the ways this feature can lie, and it will lie by default unless each 
 handled.
 
 - [ ] A ride out of season is not one of the day's rides. Not a closed one — absent.
-- [ ] A park with no readable wait times (Hansa-Park) gets no bars and no forecast,
-      it gets the sentence. `hasReadableWaitTimes()` / `noLiveWaitTimesReason()` in
-      `lib/utils/live-wait-times.ts`.
-- [ ] Past day 14 there is no weather. Past the model's reach there is no forecast.
-      Say which tier the number came from.
-- [ ] A displayed wait is a multiple of five (`roundWaitTo5`); a _difference_ is not
-      (`roundWaitDeltaTo5`). Pointing the wrong one at a delta deleted the entire
-      falling half of the scale last time.
-- [ ] No copy describes the layout ("on the left you see…") — it stacks on phones.
-- [ ] No aphoristic closing sentence anywhere in the copy. No `ehrlich` in German.
-- [ ] Umami: every event property is billed as an event. Do not instrument each drag.
+      **Confirmed real gap, PF-27**: `/plan/day`'s `attractions()` query
+      (`plan-day.service.ts`, backend) selects `{ parkId, retiredAt: IsNull() }` and
+      nothing else — no season filter of any kind, so an out-of-season ride is not
+      excluded upstream. And `PlanDayRideDto`/`PlanDayRide` carries no
+      `isCurrentlyInSeason` field at all, so the frontend has no signal to check even
+      if it wanted its own `!== false` guard — there is nothing to read. This is not a
+      frontend fix: the API has to grow the field (and/or filter server-side) before
+      `lib/planner/estimate.ts` can apply the site-wide rule. Whether a season-affected
+      ride actually surfaces in practice depends on the ML side (a ride with no
+      in-season observations may simply have no measured/composed curve and drop out
+      of `rides` on its own, per `forecastRides`'s `if (!curve) continue`) — not
+      verified either way, and not something code reading answers. Follow-up ticket
+      filed for the backend repo.
+- [x] A park with no readable wait times (Hansa-Park) gets no bars and no forecast,
+      it gets the sentence. Confirmed: `hasReadableWaitTimes()` is read in
+      `lib/planner/estimate.ts`, `lib/planner/live.ts` and `lib/planner/optimize.ts`.
+- [x] Past day 14 there is no weather. Past the model's reach there is no forecast.
+      Say which tier the number came from. Confirmed on both halves:
+      `WEATHER_RAIL_MAX_LEAD_DAYS = 14` in `lib/planner/weather-rail.ts` (empty array
+      past it, never an invented value), and `PlanDayTier` (`measured`/`composed`/
+      `long_range`) is read and visibly styled in `planner-bar.tsx`, `planner-block.tsx`,
+      `planner-context-band.tsx`, `planner-day-grid.tsx` and `planner-entry-row.tsx`.
+- [x] A displayed wait is a multiple of five (`roundWaitTo5`); a _difference_ is not
+      (`roundWaitDeltaTo5`). **Confirmed compliant, PF-27, neither function is missing
+      — it is unneeded**: `PlanDayHour.wait` is typed "already rounded to 5" and
+      `lib/planner/estimate.ts` reads it with an exact `hours.find((h) => h.hour ===
+      hour)` lookup, never an interpolation between two hours, so the value reaching
+      `PlannerEstimate.wait` is exactly what the API sent. `ASSUMED_WAIT_MIN` (the
+      no-history floor) is hardcoded to `5`. `actualWait` (the "done" figure) is a raw
+      live observation, not an aggregate, so it is already a multiple of five the way
+      every park-posted reading is. Sums and differences of multiples of five stay
+      multiples of five without re-rounding — `optimize.ts`'s `totalWaitMinutes` and
+      the "minutes saved" figure both add/subtract `estimate.wait` values directly, no
+      `roundWaitDeltaTo5` needed. The only planner figures NOT run through
+      `roundWaitTo5` are `uncertaintyMinutes`/`expectedError`/`accuracy.typicalError` —
+      model accuracy statistics, not wait times, and correctly `Math.round()`ed
+      instead (`planner-context-band.tsx`, `planner-grid-actions.tsx`) the same way the
+      rest of the site treats an error figure versus a wait figure.
+- [x] No copy describes the layout ("on the left you see…") — **confirmed, full
+      re-audit this pass**: no horizontal (left/right) positional copy anywhere in the
+      `planner` namespace, six locales. Two vertical references exist —
+      `empty.bodyGrid` ("such dir unten eine Bahn") and `fit.ridesBody`/`fit.pin` (top
+      = keep, bottom = cut first) — and both are genuinely true at every width the
+      copy renders at: `bodyGrid` is `sm:hidden`, paired with a separate `hidden
+      sm:block` line for the breakpoint where the ride search is no longer below the
+      grid, and the fit list's top/bottom is a `flex-col` document order that never
+      reflows horizontally. Matches "vertical order is usually safe" from the
+      site-wide rule.
+- [x] No aphoristic closing sentence anywhere in the copy. No `ehrlich` in German.
+      **Confirmed, full re-read this pass, all six locales** (not just the German spot
+      check): no instance of "ehrlich" in any form, and no closing-sentence maxim
+      anywhere in the `planner` namespace (`title`/`page`/`wizard`/`fit` prose read
+      end-to-end in `de`, `en`, `nl`, `fr`, `es`, `it` — all functional/factual, nothing
+      that reads as a restated moral).
+- [x] Umami: every event property is billed as an event. Do not instrument each drag.
+      Confirmed: only three call sites found (`trackPlannerOpened`,
+      `trackPlanOptimized`, `trackPlanDayStarted`); nothing fires per pointer move.
 
 ---
 
@@ -669,8 +877,11 @@ handled.
 - [ ] Ride duration does not exist in the data. Without it a plan cannot say when you
       are back out of the queue. Estimate per ride type from the glossary profile,
       curate the headliners by hand, or leave it out and plan queue-to-queue?
-- [ ] How far ahead are showtimes genuinely known? Determines whether shows can be
-      planned or only viewed on the day.
+- [x] ~~How far ahead are showtimes genuinely known?~~ — answered by §2.5's frontend
+      evidence: `/plan/day` marks each show line with a `source` (the operator's own
+      listing vs. a projected "last matching weekday carried forward"), so the answer
+      is per-date rather than one global horizon, and `lib/planner/shows.ts` already
+      renders that distinction rather than treating every date the same.
 - [ ] Optimiser scope: greedy over rope-drop and hour profiles is a day's work and
       gets most of the value. Anything better is a routing problem and a project of
       its own.
