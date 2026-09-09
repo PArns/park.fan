@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import type { AttractionOutage } from '@/lib/api/types';
-import { formatShortDuration } from '@/lib/utils/duration';
+import { formatSpanDuration } from '@/lib/utils/duration';
 import { outageElapsedMinutes } from '@/lib/utils/outage';
 
 /**
@@ -112,7 +112,7 @@ export function OutageNote({
       {elapsed !== null && (
         <>
           {' · '}
-          {t('elapsed', { duration: formatShortDuration(elapsed, locale) })}
+          {t('elapsed', { duration: formatSpanDuration(elapsed, locale) })}
         </>
       )}
     </span>

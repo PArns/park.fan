@@ -531,10 +531,12 @@ export interface Land {
 /**
  * When a ride that is down right now was first reported down.
  *
- * Deliberately not a duration. `queue_data` is a change log whose hourly
- * heartbeat copies the previous status forward, so minutes derived from it
- * would be wrong upward exactly on the long outages. The UI renders a clock
- * time and never an elapsed counter.
+ * `startedAt` is a clock time and stays one. `queue_data` is a change log whose
+ * hourly heartbeat copies the previous status forward, so wall minutes derived
+ * from it would be wrong upward exactly on the long outages — the UI never
+ * counts `now - startedAt`. The duration it does show beside the clock time is
+ * `estimate.elapsedMinutes`, which the API measured on the park's operating
+ * clock; `outageElapsedMinutes` in `lib/utils/outage.ts` is the only reader.
  */
 export interface AttractionOutage {
   /** ISO 8601 UTC. */

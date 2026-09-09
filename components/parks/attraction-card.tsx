@@ -98,6 +98,9 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
   return '#';
 }
 
+/** The upper sheet catching the light. Not part of the seam below it — see `panelSeat`. */
+const PANEL_SHINE = 'inset 0 1px 0 var(--pk-panel-shine)';
+
 /** The 34px glass circle both the ride-alert bell and the favorite star sit inside. */
 function GlassCircle({ children }: { children: ReactNode }) {
   return (
@@ -177,15 +180,31 @@ export function AttractionCard({
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const hasBottomPanel = isOperatingOrUnknown && waitTime !== null;
 
-  // The rule under the top panel is that panel's lower EDGE — it exists to seat
-  // the glass on the photo or on the wait-time panel below it. A ride that is
-  // DOWN and has no photo has neither: `hasBottomPanel` is false and the layer
-  // underneath is the flat `from-muted to-card` placeholder, so the border and
-  // its inset shadow drew a hairline across the card with nothing but empty
-  // gradient under it. That is the line in PF-58's screenshot, and it is the
-  // only state that produces it — with a photo the edge is doing its job, and
-  // with a wait time there is a second panel to seat.
-  const hasPanelSeat = hasBottomPanel || Boolean(backgroundImage);
+  // What the top panel's lower edge is seated on, which is the whole reason that
+  // edge exists: the border and its inset shadow are the seam where the upper
+  // sheet of glass meets what is under it. A ride that is DOWN renders no bottom
+  // panel, and if it also has no photo there is nothing under the seam but the
+  // flat `from-muted to-card` placeholder — so the card drew a hairline across
+  // itself with empty gradient below it, which is the line in PF-58's shot.
+  //
+  // `photo` is its own case rather than a second `true` because the picture is
+  // `hidden sm:block`: on a phone a card collapses onto its panels, so the seam
+  // has nothing to sit on there either. That one is a breakpoint and lives in
+  // `.pk-panel-seam-sm` — an inline box-shadow cannot be switched off by a class.
+  const panelSeat: 'panel' | 'photo' | 'none' = hasBottomPanel
+    ? 'panel'
+    : backgroundImage
+      ? 'photo'
+      : 'none';
+  const seamStyle =
+    panelSeat === 'panel'
+      ? {
+          borderBottom: '1px solid var(--pk-panel-border)',
+          boxShadow: `${PANEL_SHINE}, inset 0 -1px 0 rgba(0,0,0,0.06)`,
+        }
+      : panelSeat === 'photo'
+        ? {} // `.pk-panel-seam-sm` owns both halves here
+        : { boxShadow: PANEL_SHINE };
 
   return (
     <Link
@@ -311,19 +330,16 @@ export function AttractionCard({
 
         {/* Top glass panel */}
         <div
-          className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
+          className={cn(
+            'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
+            panelSeat === 'photo' && 'pk-panel-seam-sm'
+          )}
           style={{
             padding: parkName ? '14px 92px 13px 16px' : '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            // Both halves of the edge go together — see `hasPanelSeat`. The top
-            // shine stays either way: it is the sheet catching the light, not a
-            // seam against something below it.
-            borderBottom: hasPanelSeat ? '1px solid var(--pk-panel-border)' : undefined,
-            boxShadow: hasPanelSeat
-              ? 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)'
-              : 'inset 0 1px 0 var(--pk-panel-shine)',
+            ...seamStyle,
           }}
         >
           <div

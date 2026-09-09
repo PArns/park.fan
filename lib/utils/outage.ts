@@ -24,6 +24,22 @@ export function roundOutageMinutes(minutes: number): number {
   return Math.max(STEP, Math.round(minutes / STEP) * STEP);
 }
 
+/**
+ * The same steps, but outward — down for the lower end of a range, up for the upper.
+ *
+ * A quartile pair is an uncertainty window, so the displayed one has to CONTAIN the measured one:
+ * rounding both ends to nearest can narrow it, and on a narrow enough pair it can collapse the two
+ * ends onto the same number, at which point there is no range left to print. Widening cannot do
+ * either, and it never claims less spread than was measured.
+ */
+function floorOutageMinutes(minutes: number): number {
+  return Math.max(STEP, Math.floor(minutes / STEP) * STEP);
+}
+
+function ceilOutageMinutes(minutes: number): number {
+  return Math.max(STEP, Math.ceil(minutes / STEP) * STEP);
+}
+
 /** The remaining-time window, already rounded. `to: null` is an open range, not a missing one. */
 export interface OutageRemainingWindow {
   from: number;
@@ -47,13 +63,15 @@ export function outageRemainingWindow(
 ): OutageRemainingWindow | null {
   const remaining = estimate?.remaining;
   if (!remaining || !Number.isFinite(remaining.p25)) return null;
-  const from = roundOutageMinutes(remaining.p25);
+  const from = floorOutageMinutes(remaining.p25);
   const p75 = remaining.p75;
   if (typeof p75 !== 'number' || !Number.isFinite(p75)) return { from, to: null };
-  const to = roundOutageMinutes(p75);
-  // Quartiles are ordered by construction, so this only fires if the payload is wrong. An
-  // inverted range would read as a typo; an open one is at least true.
-  return to > from ? { from, to } : { from, to: null };
+  // Ordered on the RAW quartiles, never on the rounded ones: rounding decides how a window is
+  // printed and may not decide whether it has a top at all. Quartiles are ordered by
+  // construction, so an inversion means the payload is wrong — and an open range is at least
+  // true, where „2:00 Std. bis 1:55 Std." reads as a typo.
+  if (p75 < remaining.p25) return { from, to: null };
+  return { from, to: ceilOutageMinutes(p75) };
 }
 
 /**

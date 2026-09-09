@@ -944,6 +944,33 @@
     }
   }
 
+  /*
+   * The top glass panel's lower edge, on a card whose only seat for it is the photo.
+   *
+   * A card is two frosted sheets over a picture, and the panel's border-bottom plus its inset
+   * shadow are the seam where the upper sheet meets whatever is under it. A ride that is DOWN
+   * renders no bottom panel, so the picture is all there is — and the picture is `hidden sm:block`
+   * (cards collapse onto their panels on phones). Below `sm` the seam would therefore rule a
+   * hairline across the card with nothing but the gradient placeholder beneath it, which is the
+   * line PF-58 reported one breakpoint up, where the ride also had no photo.
+   *
+   * It lives here rather than in the component's inline style because it is a breakpoint, and an
+   * inline `box-shadow` cannot be switched off by a class — so the class owns both halves of the
+   * edge for this one case. The top shine is not part of the seam: it is the sheet catching the
+   * light, and it stays at every width.
+   */
+  .pk-panel-seam-sm {
+    box-shadow: inset 0 1px 0 var(--pk-panel-shine);
+  }
+  @media (min-width: 640px) {
+    .pk-panel-seam-sm {
+      border-bottom: 1px solid var(--pk-panel-border);
+      box-shadow:
+        inset 0 1px 0 var(--pk-panel-shine),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    }
+  }
+
   /* Park card v2 — photo zoom on card hover */
   .pk-photo-zoom {
     transition:

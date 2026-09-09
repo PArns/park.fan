@@ -18,6 +18,7 @@ import {
   outageRemainingWindow,
   roundOutageMinutes,
 } from '../lib/utils/outage.ts';
+import { formatSpanDuration } from '../lib/utils/duration.ts';
 
 /** The shape production actually sends for a long outage — no `p75` key at all. */
 const LONG = {
@@ -81,7 +82,19 @@ const testCases = [
     expected: null,
   },
   {
-    name: 'quartiles that collapse into each other open the range instead of inverting it',
+    name: 'a narrow pair keeps both ends instead of collapsing onto one number',
+    // Rounding to nearest put 118 and 119 both on 120, and the „ends are equal" guard that
+    // followed then printed „über 2:00 Std." — unbounded, about a window whose top is 119, and
+    // with a floor above it. The ends round OUTWARD, so a window can only ever be printed wider
+    // than it was measured.
+    actual: () =>
+      JSON.stringify(
+        outageRemainingWindow({ ...FRESH, remaining: { p25: 118, median: 118.5, p75: 119 } })
+      ),
+    expected: JSON.stringify({ from: 115, to: 120 }),
+  },
+  {
+    name: 'an inverted pair opens the range, judged on the raw quartiles and not the rounded ones',
     // Cannot happen while the API orders them, and if it ever stops, „über 2:00 Std." is true
     // where „2:00 Std. bis 1:55 Std." is a typo on screen.
     actual: () =>
@@ -103,6 +116,16 @@ const testCases = [
     // for an outage that is still running.
     actual: () => roundOutageMinutes(2),
     expected: 5,
+  },
+  {
+    name: 'a span past a day is whole hours, because h:mm reads as a clock time up there',
+    actual: () => formatSpanDuration(2650, 'de'),
+    expected: '44 Std.',
+  },
+  {
+    name: 'a span under a day keeps the h:mm form it has everywhere else',
+    actual: () => formatSpanDuration(150, 'de'),
+    expected: '2:30 Std.',
   },
 
   // ── the probability ──
