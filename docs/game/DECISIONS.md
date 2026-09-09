@@ -98,7 +98,25 @@ The fix is a timezone offset in `sunAngles` — +80 to +100 minutes puts sunset 
 leaves two or three dark hours instead of five. It is **not** done here, and the reason is blast
 radius rather than doubt: every report and critique under `docs/game/` quotes 18:30 numbers, and
 landing it silently would make a dozen documents wrong at once. It wants its own change, with the
-affected frames re-shot in the same commit. _Reversed by:_ somebody doing exactly that, or by a
+affected frames re-shot in the same commit.
+
+**LANDED 2026-09-09.** `CLOCK_AHEAD_OF_SOLAR_MINUTES = 92` in `core/sun.ts`. Not a round number
+picked to taste: a park at 50° N in the Rhineland — the location that file's own docstring names —
+keeps CEST, which is UTC+2 against a local meridian near 7° E, so `(15 − 7) / 15 × 60 + 60 ≈ 92`
+minutes separate solar noon from the clock on the wall. Measured against the model afterwards and
+verified against the shipped function rather than the arithmetic: day 1 sunrise 05:40 → **07:12**,
+sunset 18:21 → **19:53**, and 18:30 goes from **−1.49° to +13.23°**. Dark hours before the 23:00
+close fall 4.7 → 3.1, and in high summer (day 120) 3.4 → 1.9. `pnpm test:game` stays at 126 checks.
+
+The blast radius named above is real and is handled by saying so rather than by re-shooting a
+dozen modules: **every 18:30 figure written down before this commit describes a different sun.**
+Those reports are not wrong about what they saw; they are no longer comparable across this line.
+One frame is re-shot here as the proof — and taking it caught a trap worth recording: the harness's
+`--step` advances the clock AFTER `--tod` sets it, so a first attempt at `--tod=18:30 --step=2400`
+came back reading **20:29**, which is genuinely after the new sunset and would have been an honest
+picture filed under a false label. A time-accurate frame takes no step, and pays for it with an
+empty park.
+_Superseded by:_ somebody doing exactly that, or by a
 decision that the park should close at dusk instead, which is the other honest answer and is a
 gameplay decision rather than a rendering one.
 

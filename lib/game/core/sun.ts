@@ -12,6 +12,31 @@ import type { EnvironmentState, Season, Vec3, WeatherKind } from './types';
 const LATITUDE = (50.0 * Math.PI) / 180;
 const DAY_OF_YEAR_OFFSET = 91; // 1 April
 
+/**
+ * Minutes by which the park's clock runs ahead of its own solar time (D-023).
+ *
+ * This model was astronomically correct and socially wrong: it treated solar time AS clock time, so
+ * solar noon fell at 12:00 and the sun set at **18:21** while `guests` keeps the gates open until
+ * 23:00 with 70 % of peak attendance still inside at 19:00. Five of fourteen operating hours were
+ * after dark. That is the reason three separate module critiques describe the same flat, dark 18:30
+ * frame — at 18:30 the sun was already 1.49° BELOW the horizon, and the exposure pinning measured
+ * across the day (ten of seventeen sampled hours at `EXPOSURE_MAX`) is downstream of it: no metering
+ * curve holds a real sunset under a ceiling.
+ *
+ * 92 is not a round number chosen to taste. A park at 50° N in the Rhineland — the location this
+ * file's own docstring names — keeps **CEST**, which is UTC+2 while the local meridian sits near
+ * 7° E: `(15° − 7°) / 15 × 60 + 60 ≈ 92` minutes between solar noon and what the clock on the wall
+ * says. Measured against this model afterwards, day 1: sunrise 05:40 → 07:12, sunset 18:21 → 19:53,
+ * and 18:30 goes from −1.49° to **+13.2°**, i.e. an evening rather than a night. Dark hours before
+ * closing fall from 4.7 to 3.1; in high summer (day 120) from 3.4 to 1.9.
+ *
+ * **Every 18:30 figure written down before this commit describes a different sun.** The reports and
+ * critiques under `docs/game/` are not wrong about what they saw; they are simply no longer
+ * comparable across this line, and nothing that quotes them should be re-measured against a frame
+ * taken after it without saying so.
+ */
+const CLOCK_AHEAD_OF_SOLAR_MINUTES = 92;
+
 export function seasonForDay(day: number): Season {
   const doy = ((day + DAY_OF_YEAR_OFFSET - 1) % 365) + 1;
   if (doy < 80 || doy >= 355) return 'winter';
@@ -24,7 +49,8 @@ export function seasonForDay(day: number): Season {
 export function sunAngles(minute: number, day: number): { elevation: number; azimuth: number } {
   const doy = ((day + DAY_OF_YEAR_OFFSET - 1) % 365) + 1;
   const declination = ((-23.44 * Math.PI) / 180) * Math.cos(((2 * Math.PI) / 365) * (doy + 10));
-  const hourAngle = ((minute / 60 - 12) * 15 * Math.PI) / 180;
+  const solarMinute = minute - CLOCK_AHEAD_OF_SOLAR_MINUTES;
+  const hourAngle = ((solarMinute / 60 - 12) * 15 * Math.PI) / 180;
   const sinEl =
     Math.sin(LATITUDE) * Math.sin(declination) +
     Math.cos(LATITUDE) * Math.cos(declination) * Math.cos(hourAngle);
