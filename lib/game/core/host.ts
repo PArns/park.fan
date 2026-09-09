@@ -272,6 +272,28 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
         if (!readyResolved) {
           readyResolved = true;
           finishBoot('ready');
+        } else if (store.get().phase === 'reduced') {
+          /**
+           * The worker was LATE, not dead — so withdraw the warning instead of leaving it standing.
+           *
+           * The deadline below is eight seconds and a cold boot on this container takes twenty to
+           * thirty, so the timeout fires on almost every run here and then this branch did not
+           * exist: the `ready` that arrived afterwards fell through the `break` and changed
+           * nothing. `phase` stayed `reduced` and the notice stayed on screen for the rest of the
+           * session, which is how `ui-bright/1200-close.png` came to show "The simulation did not
+           * start. The park is shown, but guests and rides are paused." eight hundred pixels from a
+           * panel reporting 1,441 guests, 4 of 4 rides running and 356 rides taken today.
+           *
+           * A notice that lies is worse than no notice, and this one lies about the one thing a
+           * player would check first. Found and diagnosed by the `ui` builder, which shipped a HUD-
+           * side retraction as well (`RETRACTED_WHEN_LIVE`) because it could not reach `phase` —
+           * that stays, as the belt to this braces: it dismisses on the first frame, this fires on
+           * the late `ready`, and whichever arrives first is right.
+           */
+          store.set({ phase: 'ready' });
+          for (const notice of store.get().notices) {
+            if (notice.key === 'sim') store.dismiss(notice.id);
+          }
         }
         break;
       }
