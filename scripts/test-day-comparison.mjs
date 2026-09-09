@@ -410,6 +410,21 @@ const mixedSources = compareDays(
 );
 test('mixed wait sources: still a verdict', () => mixedSources.better, 'a');
 
+// A day whose `status` and `crowdLevel` disagree: the park has closed since the forecast was
+// made. Reading only the level built a crowd row and ticked the shut day.
+const staleLevel = compareDays(
+  day('2026-09-20', { status: 'CLOSED', crowdLevel: 'very_low' }),
+  day('2026-09-21', { crowdLevel: 'high' }),
+  TODAY
+);
+test('stale level on a closed day: no crowd row at all', () => reason(staleLevel, 'crowd'), null);
+test('stale level on a closed day: the open day wins', () => staleLevel.better, 'b');
+test(
+  'stale level on a closed day: still exactly one blocker',
+  () => staleLevel.blockers.map((x) => `${x.key}:${x.side}`).join(','),
+  'closed:a'
+);
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');

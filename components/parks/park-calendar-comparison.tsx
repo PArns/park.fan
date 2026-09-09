@@ -1,14 +1,13 @@
 'use client';
 
 import { useMemo } from 'react';
-import { format, parseISO } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { Ban, CalendarClock, CalendarX2, Check, CloudRain, Coins, Info, Users } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import type { CalendarDay } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { PlanDayButtonLazy } from '@/components/planner/plan-day-button-lazy';
+import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import {
   compareDays,
   type DayComparison,
@@ -25,8 +24,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-
-const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
 /** One icon per reason row, so the rows are scannable before they are read. */
 const REASON_ICON = {
@@ -78,7 +75,46 @@ export function ParkCalendarComparison({
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
-  const dateLocale = DATE_LOCALES[locale as keyof typeof DATE_LOCALES] ?? enUS;
+
+  /**
+   * The dates, in the reader's own language rather than in German word order.
+   *
+   * `date-fns` patterns like `'EEEE, d. MMMM'` are a GERMAN sentence with a localised vocabulary:
+   * they gave „Tuesday, 10. November" on `/en`, and this dialog puts that string in its headline.
+   * `Intl.DateTimeFormat` puts the parts in the order the locale actually uses, and needs no
+   * pattern to be kept right in six languages.
+   */
+  const fmt = useMemo(
+    () => ({
+      full: new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' }),
+      weekday: new Intl.DateTimeFormat(locale, { weekday: 'long' }),
+      date: new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long' }),
+      short: new Intl.DateTimeFormat(locale, {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'numeric',
+      }),
+    }),
+    [locale]
+  );
+
+  /**
+   * How far ahead the planner can actually plan — the best-days snapshot's rolling 90 days.
+   *
+   * The calendar steps twelve months forward, the planner does not follow: past the snapshot
+   * there is no forecast for a day and the wizard's own date step renders it disabled. That step
+   * is SKIPPED on the way in from here, so the check has to happen before the offer. The hook is
+   * the planner's own and is held back by `useLoadLast`, so asking here cannot compete with the
+   * park page's live queries — and on this route the answer is already in the cache.
+   *
+   * A `null` horizon (still loading, or the request failed) does not withdraw the button: that
+   * would take the offer away for the ordinary near-term day on a flaky connection, which is the
+   * common case, to guard against the rare one.
+   */
+  const { lastDate: plannerHorizon } = usePlannerDayFacts(
+    { slug: planner.parkSlug, geo: planner.geo },
+    open
+  );
 
   const comparison: DayComparison | null = useMemo(
     () => (a && b ? compareDays(a, b, todayIso) : null),
@@ -87,17 +123,17 @@ export function ParkCalendarComparison({
 
   if (!a || !b || !comparison) return null;
 
+  // `T12:00` and not `parseISO(day.date)`: a bare `YYYY-MM-DD` parses as UTC midnight, which is
+  // the previous day in every zone west of Greenwich — the date would shift for exactly the
+  // readers a park in Orlando is being compared for. Midday is far from either boundary.
+  const asDate = (day: CalendarDay) => new Date(`${day.date}T12:00:00`);
   /** „Dienstag, 10. November" — for the verdict sentence, which is prose. */
-  const dayLabel = (day: CalendarDay) =>
-    format(parseISO(day.date), 'EEEE, d. MMMM', { locale: dateLocale });
+  const dayLabel = (day: CalendarDay) => fmt.full.format(asDate(day));
   /** „Di., 10.11." — for a blocker line, where the sentence does the naming. */
-  const shortLabel = (day: CalendarDay) =>
-    format(parseISO(day.date), 'EE, d.M.', { locale: dateLocale });
+  const shortLabel = (day: CalendarDay) => fmt.short.format(asDate(day));
   /** The two halves of the column head, kept apart so neither has to be truncated. */
-  const weekdayLabel = (day: CalendarDay) =>
-    format(parseISO(day.date), 'EEEE', { locale: dateLocale });
-  const dateLabel = (day: CalendarDay) =>
-    format(parseISO(day.date), 'd. MMMM', { locale: dateLocale });
+  const weekdayLabel = (day: CalendarDay) => fmt.weekday.format(asDate(day));
+  const dateLabel = (day: CalendarDay) => fmt.date.format(asDate(day));
 
   const winner = comparison.better === 'a' ? a : comparison.better === 'b' ? b : null;
   const verdict =
@@ -364,7 +400,9 @@ export function ParkCalendarComparison({
               the remaining button stays under the day it belongs to. */}
           <div className="grid grid-cols-2 gap-2">
             {([a, b] as const).map((day) =>
-              day.status !== 'OPERATING' || day.date < todayIso ? (
+              day.status !== 'OPERATING' ||
+              day.date < todayIso ||
+              (plannerHorizon !== null && day.date > plannerHorizon) ? (
                 <div key={day.date} aria-hidden="true" />
               ) : (
                 <PlanDayButtonLazy

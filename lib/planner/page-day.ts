@@ -21,9 +21,9 @@
  * never picked. {@link plannerPageDay.take} therefore only returns a date whose park is the one
  * being asked about.
  *
- * **Read once.** `take` clears as it reads, because this is a hand-off and not a state: a date
- * left lying here would arm the NEXT press of „Tag hier planen" — the one that means "some day,
- * you pick" — with a date the reader chose ten minutes ago on another page.
+ * **Read once, and not for long.** `take` clears as it reads, and refuses anything older than
+ * {@link MAX_AGE_MS} — because this is a hand-off and not a state, and the failure mode of a
+ * hand-off nobody collected is that somebody else collects it.
  */
 export interface PlannerPageDay {
   /** The park the date belongs to. */
@@ -32,12 +32,27 @@ export interface PlannerPageDay {
   date: string;
 }
 
-let pending: PlannerPageDay | null = null;
+/**
+ * How long a hand-off stays valid.
+ *
+ * The panel consumes this within a frame or two of the press — it is a store write followed by a
+ * `requestOpen` the flyout answers in the same commit. Anything still here seconds later was
+ * never picked up (the planner's lazy chunk failed, the double-`requestAnimationFrame` never
+ * fired), and the danger is not that it is lost but that it is found: the NEXT wizard request for
+ * this park — „Tag im Phantasialand planen", which means „some day, you pick" — would consume it
+ * and skip the date step with a date chosen minutes ago on another screen.
+ *
+ * Ten seconds is generous for something that normally takes two frames, and short enough that no
+ * second gesture can reach it.
+ */
+const MAX_AGE_MS = 10_000;
+
+let pending: (PlannerPageDay & { at: number }) | null = null;
 
 export const plannerPageDay = {
   /** Leave the day the visitor just chose, for the panel to pick up. */
   set(day: PlannerPageDay): void {
-    pending = day;
+    pending = { ...day, at: Date.now() };
   },
   /**
    * The pending date for this park, consumed.
@@ -46,7 +61,12 @@ export const plannerPageDay = {
    * cases the caller falls back to asking, which is the behaviour that existed before this file.
    */
   take(parkSlug: string): string | null {
-    if (!pending || pending.parkSlug !== parkSlug) return null;
+    if (!pending) return null;
+    if (Date.now() - pending.at > MAX_AGE_MS) {
+      pending = null;
+      return null;
+    }
+    if (pending.parkSlug !== parkSlug) return null;
     const { date } = pending;
     pending = null;
     return date;

@@ -122,8 +122,16 @@ function waitWithinBucket(wait: number): number {
   return Math.min(0.99, Math.max(0, wait) / 120);
 }
 
-/** The bucket index `rankOf` wants, or `null` for a level that is not on the scale. */
+/**
+ * The bucket index `rankOf` wants, or `null` where the day has none.
+ *
+ * `status` is read as well as `crowdLevel`, because the two can disagree: a day the park has
+ * since closed can still carry the crowd level it was forecast at. Reading only the level built a
+ * crowd row for it and ticked it — „Geschlossen" printed as the winning value beside
+ * „Unterschied: 3 Stufen", under a verdict naming the other day. A shut day is not quiet.
+ */
 function bucketOf(day: CalendarDay): number | null {
+  if (day.status === 'CLOSED' || day.crowdLevel === 'closed') return null;
   const index = CROWD_LEVEL_ORDER.indexOf(day.crowdLevel as ColoredCrowdLevel);
   return index >= 0 ? index : null;
 }
