@@ -21,8 +21,8 @@
       "nothing at module scope touching window/document/navigator",
       "pnpm test:game green, tsc clean, eslint clean"
     ],
-    "roundsRun": 19,
-    "note": "Round 1: six modules graded, ALL SIX FAILED — terrain 6.04 (plus a hard gate), paths 6.26, scenery 7.10, demo-park 7.20, environment 7.50, track 8.00. Round 2 complete for all six: terrain 7.09 (hard gate closed), paths 7.13, environment 7.72, scenery 7.86, demo-park 7.99, track 8.41. Round 3: track 8.54, the first pass, by 0.04 and self-graded. Also graded at round 1: guests 7.91, shops 8.23, tools 8.29, trains 8.35, camera 8.38, rides 8.71 (PASS, and not marginal). THIRTEEN MODULES GRADED, TWO PASS. The pattern across the near misses holds: the frame is the axis holding the total down while budget and determinism sit near 9 — and `rides`, the one that cleared comfortably, is the one whose frame axis is 8.2. Every grade was taken by the integrator, not by an independent critic agent, because every critic fan-out died on the account session limit.",
+    "roundsRun": 21,
+    "note": "Nineteen of the twenty-one rounds were graded by the integrator, because every critic fan-out before 2026-09-09 died on the account session limit. The last two — pools round 1 and ui round 1 — are the FIRST independent grades in this project: separate agents, read-only, told to refute the module's own report rather than summarise it, and both did. pools' critic caught three claims the module makes about its own frames that those frames contradict, and re-measured its draw calls as 31 against a self-reported 32; ui's caught an English sentence in a German HUD and a warning outliving the thing it warns about. That is what independence buys, and it is worth saying plainly that the other nineteen do not have it.",
     "buildGreen": {
       "at": "f03034e",
       "command": "pnpm build",
@@ -130,16 +130,23 @@
     },
     "ui": {
       "wave": 1,
-      "status": "built, ungated. 4,629 lines across `lib/game/ui/` plus `lib/game/i18n/` (289 keys x en/de, up from 117), 22 selftest checks. THE MODULE IS A REGISTRY, NOT A SET OF HARD-WIRED PANELS: `registerPanel`, `registerInspector` (per entity kind) and `registerStat` (a figure in the top bar), each returning its own unregister, and the TEN built-in panels (park, rides, shops, guests, weather, inspector, log, saves, settings, help) plus two inspectors are registered through those exact calls — there is no privileged path, which is the only way the extensibility axis is actually tested. `Body` is a component rather than a render function so a foreign panel's hooks are its own. No wait time is displayed anywhere, because the sim computes one and does not publish it and a queue divided by a rated throughput is a different quantity wearing the same name; the ride inspector says so in both languages. Measured: 4.78 React commits per publish with nothing open, 5.67 with three panels, at a 4 Hz publish cadence; 220 DOM nodes as chrome alone, 538 with three panels; zero draw calls and zero triangles, because it is DOM over the canvas. Verified at 1920x1080, 1280x720 in German and 390x844 across five times of day; the phone layout was measured rather than guessed — the desktop arrangement needs 396 px of chrome in 378 px, so the rows split, the rail wraps instead of scrolling and the panel sheet sits above the build bar. It also caught the `sim:timeout` notice lying: 'The simulation did not start' stood 800 px from a panel reporting 1,441 guests and 4/4 rides running, and it now retracts itself when a frame arrives while the entry stays in the messages panel. Weakest: no worker query channel, which is eight of its ten listed weaknesses seen from different panels.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "status": "built, ungated. 4,629 lines across `lib/game/ui/` plus `lib/game/i18n/` (289 keys x en/de, up from 117), 22 selftest checks. THE MODULE IS A REGISTRY, NOT A SET OF HARD-WIRED PANELS: `registerPanel`, `registerInspector` (per entity kind) and `registerStat` (a figure in the top bar), each returning its own unregister, and the TEN built-in panels (park, rides, shops, guests, weather, inspector, log, saves, settings, help) plus two inspectors are registered through those exact calls — there is no privileged path, which is the only way the extensibility axis is actually tested. `Body` is a component rather than a render function so a foreign panel's hooks are its own. No wait time is displayed anywhere, because the sim computes one and does not publish it and a queue divided by a rated throughput is a different quantity wearing the same name; the ride inspector says so in both languages. Measured: 4.78 React commits per publish with nothing open, 5.67 with three panels, at a 4 Hz publish cadence; 220 DOM nodes as chrome alone, 538 with three panels; zero draw calls and zero triangles, because it is DOM over the canvas. Verified at 1920x1080, 1280x720 in German and 390x844 across five times of day; the phone layout was measured rather than guessed — the desktop arrangement needs 396 px of chrome in 378 px, so the rows split, the rail wraps instead of scrolling and the panel sheet sits above the build bar. It also caught the `sim:timeout` notice lying: 'The simulation did not start' stood 800 px from a panel reporting 1,441 guests and 4/4 rides running, and it now retracts itself when a frame arrives while the entry stays in the messages panel. Weakest: no worker query channel, which is eight of its ten listed weaknesses seen from different panels. GRADED 7.9, FAIL. No hard gate broken and the budget met with room; what holds it under the bar is that four of the twelve findings are visible in a screenshot a player would take: an English sentence standing in a German HUD, the same event logged twice in two languages, a warning about a ride that was repaired an hour ago, and a ride list showing one ride of four because the notification log beside it gets 442 px and the list gets 135. Also raw keys reaching the surface — a bare `thirst` and a bare `cores` — and temperatures in °C only. The critic notes five of the eight are between four lines and a two-word type change each, so round 2 is cheap.",
+      "round": 1,
+      "score": 7.9,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 4629,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null,
-      "verdict": "awaiting a round-1 grade"
+      "axes": {
+        "frame": 8.0,
+        "fidelity": 7.2,
+        "extensibility": 8.2,
+        "budget": 8.3,
+        "determinism": 8.6,
+        "reportHonesty": 7.2
+      },
+      "gradedAtCommit": "b4f47ff",
+      "hardGates": "all pass — zero console errors, zero hydration warnings, extensibility 8.2 proven by registering a panel, a stat and an inspector FROM OUTSIDE the module and watching all three appear, sort and unregister cleanly.",
+      "verdict": "round 1 graded 7.9, FAIL (pass 8.5) — docs/game/critiques/ui-round1.md"
     },
     "camera": {
       "wave": 1,
@@ -206,16 +213,23 @@
     },
     "pools": {
       "wave": 2,
-      "status": "built, ungated. 17 files, 5,565 lines, entity kind `pool`. Basin plan, depth profile, tile style and edge treatment are all four manifest entries; plus coping, a deck with furniture, steps, handrails, underwater niche lighting and a depth-tinted water surface with a caustic net on the tile beneath it. Measured by its builder: 11 basins in 6 tile styles = 32 meshes, 43,096 triangles, 32 of the frame's 117 draw calls (2.7 % of the 1,200 budget), sim tick 0.00 ms, own selftest 80/80. Four bugs it found by LOOKING rather than reading, all in its report: a deck whose 4,300 triangles all faced the ground (back-face culled, no error anywhere); a zero-entry beach that stops at depth zero and is therefore under water; lane lines drawn on the wall's arclength coming out as a dark band every 2.5 m; and a pooled point light 0.25 m under the surface blowing a white hole in the pool. Placed in the demo park by the integrator on the `water-park` pad — NOT as the request proposed, because the module measured its own kids' pool hanging seven metres past the pad's east edge and said so. Honest weaknesses in its own §5: uniform caustics that do not fall off from the lamps and also land on the dry wall, no refraction probe, no horseshoe plan, no LOD — and NOTHING SWIMS: `capacity`/`enter`/`leave` exist, are tested, and no guest has ever called them.",
-      "round": 0,
-      "score": null,
-      "consoleErrors": null,
-      "gated": false,
+      "status": "built, ungated. 17 files, 5,565 lines, entity kind `pool`. Basin plan, depth profile, tile style and edge treatment are all four manifest entries; plus coping, a deck with furniture, steps, handrails, underwater niche lighting and a depth-tinted water surface with a caustic net on the tile beneath it. Measured by its builder: 11 basins in 6 tile styles = 32 meshes, 43,096 triangles, 32 of the frame's 117 draw calls (2.7 % of the 1,200 budget), sim tick 0.00 ms, own selftest 80/80. Four bugs it found by LOOKING rather than reading, all in its report: a deck whose 4,300 triangles all faced the ground (back-face culled, no error anywhere); a zero-entry beach that stops at depth zero and is therefore under water; lane lines drawn on the wall's arclength coming out as a dark band every 2.5 m; and a pooled point light 0.25 m under the surface blowing a white hole in the pool. Placed in the demo park by the integrator on the `water-park` pad — NOT as the request proposed, because the module measured its own kids' pool hanging seven metres past the pad's east edge and said so. Honest weaknesses in its own §5: uniform caustics that do not fall off from the lamps and also land on the dry wall, no refraction probe, no horseshoe plan, no LOD — and NOTHING SWIMS: `capacity`/`enter`/`leave` exist, are tested, and no guest has ever called them. GRADED 7.6, FAIL. What the critic measured rather than described: the water reflects nothing at any angle in thirteen frames (the one specular is a soft rgb(238,239,239) wash); the depth cue INVERTS at night — shallow shelf 147.4 -> 66.4 luma, deep zone 95.7 -> 87.5, so the deep end reads 32 % brighter; the deck 'spill' the report claims is 42.6 luma at the coping against 33.8 one metre back, i.e. none; and at 5.5x the caustic net is one coarse depth-independent cellular texture that reads as crazy paving and is brightest on the vertical wall, in the frame the report calls its best. Verified in its favour: all four self-found bugs are actually fixed in the frames, the star-shape warning fires by name, selftest 80/80, and the scene probe reproduces 43,096 triangles / 51 textures / 10.95 MB to the digit — draw calls are 31, not the 32 it reported. Three of its own claims about its own frames are contradicted by those frames, which is what holds honesty at 7.6.",
+      "round": 1,
+      "score": 7.6,
+      "consoleErrors": 0,
+      "gated": true,
       "lines": 5565,
-      "axes": null,
-      "gradedAtCommit": null,
-      "hardGates": null,
-      "verdict": "awaiting a round-1 grade"
+      "axes": {
+        "frame": 6.8,
+        "fidelity": 6.5,
+        "extensibility": 8.5,
+        "budget": 8.2,
+        "determinism": 9.2,
+        "reportHonesty": 7.6
+      },
+      "gradedAtCommit": "b4f47ff",
+      "hardGates": "all pass — zero console errors (the two bufferSubData warnings are byte-identical in a --showcase=terrain control, so not this module's), extensibility 8.5 well clear of the 5.0 floor, no barrel import, no module-scope DOM, no Math.random, tsc/eslint/test:game clean. It fails on the weighted total alone.",
+      "verdict": "round 1 graded 7.6, FAIL (pass 8.5) — docs/game/critiques/pools-round1.md"
     },
     "track": {
       "wave": 2,
