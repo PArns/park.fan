@@ -83,6 +83,21 @@ export function triangleCount(geo: Geo): number {
   return geo.indices.length / 3;
 }
 
+/**
+ * Weld `source` onto the end of `target`, indices offset.
+ *
+ * One mesh drawn twice is two draw calls; one mesh with two things in it is one. The tower's rope
+ * light and the trough's rim strip are the same material in the same world frame, so they travel
+ * in the same buffer — see `TowerBuild.lights`.
+ */
+export function appendGeo(target: Geo, source: Geo): void {
+  const base = target.positions.length / 3;
+  target.positions.push(...source.positions);
+  target.normals.push(...source.normals);
+  target.uvs.push(...source.uvs);
+  for (const i of source.indices) target.indices.push(base + i);
+}
+
 // ── small vector helpers ────────────────────────────────────────────────────────────────────
 // Deliberately local rather than imported from `track/vec.ts`: that file is not part of the track
 // module's public surface (`track/index.ts` exports the spline, the builder and the physics and
@@ -175,7 +190,8 @@ export function sectionNormal(u: number, phiL: number, phiR: number, floorFlat: 
  * `mat-straight` **17.20° vs 21.50°**, `plunge-drop` 11.93° either way (it declares 1), and 0.00°
  * at response 0 on all three. A narrow-wrapped pipe — 90° at 14 m/s — gets 90.0 / 95.8 / 101.6° at
  * response 0 / 0.5 / 1, which is the case a pack would ship and the case the selftest pins.
- * Deleting the term from this line fails ten checks in `selftest.mjs`.
+ * Hard-coding the coefficient to 1 on the line below fails **nine** checks in `selftest.mjs`; the
+ * docblock said ten for two rounds and the round-2 critic counted them. Nine.
  *
  * The vehicle's own width is added as an ARC (`halfWidth / radius`) rather than as an `asin`. On a
  * body slide the two agree to a degree or so; on a family raft the hull is wider than the trough's
@@ -439,15 +455,90 @@ export function buildRimLights(
 }
 
 /**
+ * How much air is in the water, station by station — the model that decides how white it is.
+ *
+ * Round 2 had `foam = 1.6·sin θ + 0.3·(v/vmax)`, and both terms were wrong in a way a still frame
+ * of one slide could not show. **Speed is not aeration.** A thin sheet running fast and straight
+ * down a mat racer is GLASSIER than the same water dawdling round a bowl, because what puts air in
+ * water is turbulence, not velocity — and that term alone added a flat 0.27 of white to every
+ * vertex of every slide including the run-out, which is most of why the calmest vertex in the park
+ * measured 0.243 of red and the mean measured 0.499–0.631. **And aeration is carried.** It is a
+ * quantity of air in a body of water, not a property of the ground under it, so it cannot appear
+ * the instant the trough tips over and vanish the instant it levels: the real white on a slide is
+ * BELOW the drop, in the run-out, where the flow piles into itself.
+ *
+ * So this marches instead of evaluating. Three terms, all of them things that happen to water:
+ *
+ *  - **An equilibrium**, from the self-aerated chute-flow literature: the mean air concentration a
+ *    long chute settles at is about `0.9·sin θ` (Wood's fit, as Chanson gives it), i.e. 0.40 at
+ *    30° and 0.67 at 48°. Capped at `ceiling`, because no chute is three quarters air.
+ *  - **A development length.** The flow does not arrive aerated; the boundary layer has to reach
+ *    the surface first. It grows toward the equilibrium over `growth` metres — short, because a
+ *    moulded trough has a butt seam every 2.4 m and every one of them trips the flow — and, the
+ *    asymmetry being the point, gives the air back over `decay`, three times longer, because
+ *    bubbles rise out of water slowly.
+ *  - **A hydraulic jump.** Where the gradient breaks, the flow piles up and entrains hard: the
+ *    impulse is proportional to the sin θ LOST between two stations, so a 48° plunge running out
+ *    onto the flat is the whitest water on the slide and a constant-gradient lane never sees it.
+ *
+ * Plus what the rider throws up the wall in a hook, which is the one place `climb` belongs.
+ *
+ * Exported and pinned by `selftest.mjs` rather than left inside the mesh builder, because every
+ * claim about how white a slide is is a claim about this function and a screenshot argues badly.
+ */
+export const AERATION = {
+  /** Mean air concentration a long chute settles at, per unit of `sin θ`. */
+  equilibrium: 0.9,
+  /** …and the most air the running sheet is ever assumed to hold. */
+  ceiling: 0.72,
+  /** Metres of trough over which the flow reaches that equilibrium. */
+  growth: 4,
+  /** Metres over which the bubbles rise back out. Aeration outlives the drop that made it. */
+  decay: 14,
+  /** What a rider climbing the wall throws up, per radian of climb. */
+  wall: 0.2,
+  /** The jump at a gradient break, per unit of `sin θ` given up between two stations. */
+  jump: 0.5,
+};
+
+/** `AERATION`, marched down one run. Index-for-index with `stations`. */
+export function aerationProfile(stations: readonly FlumeStation[]): number[] {
+  const out: number[] = [];
+  let air = 0;
+  for (let i = 0; i < stations.length; i++) {
+    const station = stations[i];
+    const previous = i > 0 ? stations[i - 1] : null;
+    const ds = previous ? Math.max(0, station.s - previous.s) : 0;
+    const target = clamp(
+      AERATION.equilibrium * station.fall + AERATION.wall * Math.abs(station.climb),
+      0,
+      AERATION.ceiling
+    );
+    const scale = air < target ? AERATION.growth : AERATION.decay;
+    air += (target - air) * (1 - Math.exp(-ds / scale));
+    // The gradient break. Only ever a gain: water does not un-aerate by tipping downhill.
+    if (previous) air += Math.max(0, previous.fall - station.fall) * AERATION.jump;
+    air = clamp(air, 0, 1);
+    out.push(air);
+  }
+  return out;
+}
+
+/**
  * The sheet of water running down the floor.
  *
  * A separate surface a few centimetres above the shell's inner face rather than a shader on the
  * shell, for two reasons: it stops well short of the lip (water runs in the bottom of the trough,
  * it does not climb the wall with the rider), and it carries its own vertex channel. RGB is the
- * foam — white where it is steep, clear where it is flat — and ALPHA is how much of the trough the
- * sheet hides, which is read by the shader through `mesh.hasVertexAlpha`. Round 1's docblock said
- * the alpha was "scrolled by `main.ts`"; nothing scrolled it and nothing read it (see
- * `materials.ts`). The normal map's scroll is one global rate for the whole park.
+ * foam — white where the water is full of air, the trough's own blue-green where it is not — and
+ * ALPHA is how much of the trough the sheet hides, which is read by the shader through
+ * `mesh.hasVertexAlpha`. Round 1's docblock said the alpha was "scrolled by `main.ts`"; nothing
+ * scrolled it and nothing read it (see `materials.ts`). The normal map's scroll is one global rate
+ * for the whole park.
+ *
+ * Both channels are read off `aerationProfile` and nothing else, which is round 3's change: they
+ * used to be two different hand-tuned ramps over `fall` and `v`, so the sheet could be opaque
+ * where it was clear-coloured and the two never had to agree about anything.
  */
 export function buildWaterSheet(
   stations: readonly FlumeStation[],
@@ -460,21 +551,23 @@ export function buildWaterSheet(
   const m = samples * 2 + 1;
   const span = clamp(style.waterWrap, 0.05, 1);
   let previousBase = -1;
-  let peak = 0.1;
-  for (const st of stations) peak = Math.max(peak, st.v);
-  for (const station of stations) {
+  const air = aerationProfile(stations);
+  for (let index = 0; index < stations.length; index++) {
+    const station = stations[index];
     const base = geo.positions.length / 3;
-    const foam = clamp(station.fall * 1.6 + (station.v / peak) * 0.3, 0, 1);
+    const foam = air[index];
     /**
      * Alpha: how much of the trough the sheet hides.
      *
      * Calm water over a moulded floor is nearly clear and you read the gelcoat through it; water
      * being thrown down a 48° plunge is aerated and hides what it runs on. Round 1 wrote this into
      * the buffer with a ceiling of 1.6 — a third of the range past anything a shader can use — and
-     * then never turned `hasVertexAlpha` on, so none of it was read at all. The range is 0.30 to
-     * 1.00 now, against the material's own 0.95, i.e. 28 % to 95 % opaque along one slide.
+     * then never turned `hasVertexAlpha` on, so none of it was read at all. Round 2 turned it on
+     * and left it on a ramp of its own that sat at 0.57–0.67 on average, so a slide's own colour
+     * was two thirds hidden under pale water for its whole length. It is the AIR that hides a
+     * trough: 0.26 where the sheet is clear against 0.92 where it is white.
      */
-    const flow = clamp(0.3 + station.fall * 1.1 + (station.v / peak) * 0.28, 0.3, 1);
+    const flow = clamp(0.26 + 0.66 * foam, 0.26, 0.92);
     for (let j = 0; j < m; j++) {
       const u = ((j / (m - 1)) * 2 - 1) * span;
       const p = sectionPoint(u, radius, station.phiL, station.phiR, style.floorFlat);
@@ -499,8 +592,12 @@ export function buildWaterSheet(
        * detail shots read as a chute full of snow. Calm water is a green-blue with the tile under
        * it showing through, and white is what the gradient BUYS, so the floor is a third of the
        * way there and foam takes it the rest.
+       *
+       * The edge term is now proportional to the air as well as to the distance from the middle,
+       * for the reason the whole ramp is: a flat 0.22 applied to every outer vertex of every slide
+       * whitened the run-outs from the side in, and clear water breaking on a wall is still clear.
        */
-      const edge = 0.22 * Math.abs(u) ** 2;
+      const edge = 0.16 * Math.abs(u) ** 2 * (0.3 + 0.7 * foam);
       const white = clamp(foam + edge, 0, 1);
       geo.colors.push(0.22 + 0.78 * white, 0.52 + 0.48 * white, 0.7 + 0.3 * white, flow);
     }
@@ -606,6 +703,13 @@ export interface TowerBuild {
   steel: Geo;
   deck: Geo;
   canopy: Geo;
+  /**
+   * The rope light: the deck fascia, the top handrail, the canopy edge and the stair rail.
+   *
+   * Drawn in the trim colour through `materials.glow`, and `main.ts` appends it to the trough's rim
+   * strip rather than giving it a mesh — same material, same buffer, no extra draw call.
+   */
+  lights: Geo;
   /** Where the stair starts on the ground, for the report and for a path request. */
   entry: V3;
   triangles: number;
@@ -642,6 +746,7 @@ export function buildTower(options: TowerPlacement): TowerBuild {
   const steel = emptyGeo();
   const deck = emptyGeo();
   const canopy = emptyGeo();
+  const lights = emptyGeo();
   const [fx, fz] = [Math.sin(yaw), Math.cos(yaw)];
   const [rx, rz] = [Math.cos(yaw), -Math.sin(yaw)];
   const hx = spec.footprint[0] / 2;
@@ -704,8 +809,32 @@ export function buildTower(options: TowerPlacement): TowerBuild {
   for (const [a0, b0, a1, b1] of railRun) {
     addTube(steel, at(a0, b0, railY), at(a1, b1, railY), 0.035, 6);
     addTube(steel, at(a0, b0, railY - spec.rail * 0.45), at(a1, b1, railY - spec.rail * 0.45), 0.026, 6); // prettier-ignore
+    // The rope light, coaxial with the top rail and a centimetre fatter, so it is a LIT RAIL and
+    // not a second tube fighting the first one for the same pixels.
+    addTube(lights, at(a0, b0, railY), at(a1, b1, railY), 0.045, 6);
   }
   for (const [a, b] of posts) addTube(steel, at(a, b, deckY), at(a, b, railY), 0.04, 6);
+
+  /**
+   * The deck fascia — the band that makes a tower a shape after dark.
+   *
+   * Round 2's night rig was two `PointLight`s at two deck heights, and the critic's own frame of
+   * an 18 m tower under one of them is a black lattice: a point light inside an open steel frame
+   * has almost no surface to fall on, and raising the quality preset adds more of the same. What
+   * draws a slide at night in that frame is the trough's rim strip — a MATERIAL — so the tower gets
+   * the same treatment. This band runs the deck's whole perimeter including the side the chute
+   * leaves through, because the outline is the point.
+   */
+  const fasciaY = deckY - deckThickness - 0.07;
+  const fasciaRun: Array<[number, number, number, number]> = [
+    [-hx - 0.03, -hz - 0.03, hx + 0.03, -hz - 0.03],
+    [hx + 0.03, -hz - 0.03, hx + 0.03, hz + 0.03],
+    [hx + 0.03, hz + 0.03, -hx - 0.03, hz + 0.03],
+    [-hx - 0.03, hz + 0.03, -hx - 0.03, -hz - 0.03],
+  ];
+  for (const [a0, b0, a1, b1] of fasciaRun) {
+    addTube(lights, at(a0, b0, fasciaY), at(a1, b1, fasciaY), 0.055, 6);
+  }
 
   /**
    * The switchback stair, in its own shaft behind the tower.
@@ -718,6 +847,21 @@ export function buildTower(options: TowerPlacement): TowerBuild {
    * `stairB` is negative, so every other flight was thrown out to the FAR side of the tower: the
    * screenshot showed a lattice wall, a landing floating in mid-air with nothing under it, and no
    * stair at all. Reversing along the band is the fix; mirroring is not the same operation.
+   *
+   * ## Two stringers, balusters and a newel — round 3
+   *
+   * A flight used to get ONE stringer and ONE handrail, both on the open side, and the round-2
+   * critic photographed the result: treads cantilevering off nothing on the inner side, and a bare
+   * 32 mm tube stopping in mid-air at each flight's head. It is not that the detail was too fine to
+   * bother with; it is that nothing had ever been in frame to bother about, because until the tower
+   * fix the whole stair lay in the grass under a chute hanging in mid-air.
+   *
+   * So: a stringer under BOTH edges of every flight (the inner ones of two neighbouring flights sit
+   * on the shaft's centreline, which is where a real switchback puts its shared stringer), an
+   * upright every third tread, and — the thing that was actually missing rather than merely thin —
+   * the handrail is CONTINUOUS. At each landing it turns the corner, runs the landing's outer edge
+   * and comes back to meet the next flight's rail at the same height, so the run from the ground to
+   * the deck is one unbroken line. A handrail that stops is a handrail nobody may lean on.
    */
   const flights = Math.max(1, Math.round(height / spec.flightRise));
   const rise = height / flights;
@@ -726,6 +870,8 @@ export function buildTower(options: TowerPlacement): TowerBuild {
   const bHi = -hz - 0.4;
   const bLo = bHi - run;
   const half = spec.stairWidth / 2;
+  /** The stair's handrail height, the deck's own, so the two meet at the top landing. */
+  const grip = spec.rail;
   for (let f = 0; f < flights; f++) {
     // Even flights climb towards the tower, odd ones away from it, on the other half of the shaft.
     const towards = f % 2 === 0;
@@ -737,15 +883,44 @@ export function buildTower(options: TowerPlacement): TowerBuild {
       const y = y0 + rise * ((i + 1) / steps);
       addBox(deck, at(a0, b, y - spec.riser / 2), [half, spec.riser / 2, spec.going / 2], 1.6);
     }
-    // Stringer and handrail along the open side of the flight.
     const bStart = towards ? bLo : bHi;
     const bEnd = towards ? bHi : bLo;
     const outer = a0 + (towards ? -half : half);
-    addTube(steel, at(outer, bStart, y0 - 0.12), at(outer, bEnd, y0 + rise - 0.12), 0.055, 6);
-    addTube(steel, at(outer, bStart, y0 + 0.98), at(outer, bEnd, y0 + rise + 0.98), 0.032, 6);
+    const inner = a0 + (towards ? half : -half);
+    // A stringer under each edge. The treads had one side carrying them and one side over air.
+    for (const side of [outer, inner]) {
+      addTube(steel, at(side, bStart, y0 - 0.12), at(side, bEnd, y0 + rise - 0.12), 0.055, 6);
+    }
+    addTube(steel, at(outer, bStart, y0 + grip), at(outer, bEnd, y0 + rise + grip), 0.032, 6);
+    const uprights = Math.max(2, Math.round(steps / 3));
+    for (let i = 0; i <= uprights; i++) {
+      const t = i / uprights;
+      const b = bStart + (bEnd - bStart) * t;
+      const y = y0 + rise * t;
+      addTube(steel, at(outer, b, y - 0.1), at(outer, b, y + grip), 0.021, 5);
+    }
     // The landing at the head of the flight, spanning both halves of the shaft.
     const landY = y0 + rise;
-    addBox(deck, at(0, bEnd + (towards ? 0.45 : -0.45), landY - 0.09), [spec.stairWidth, 0.09, 0.5], 1.4); // prettier-ignore
+    const landB = bEnd + (towards ? 0.45 : -0.45);
+    addBox(deck, at(0, landB, landY - 0.09), [spec.stairWidth, 0.09, 0.5], 1.4);
+    /**
+     * The handrail round the landing, which is where it used to stop.
+     *
+     * Three segments: out to the landing's far edge, across it, and back to the head of the next
+     * flight — whose rail starts at `-outer` and at this same height, so the two are one line.
+     */
+    const nextOuter = -outer;
+    addTube(steel, at(outer, bEnd, landY + grip), at(outer, landB, landY + grip), 0.032, 6);
+    addTube(steel, at(outer, landB, landY + grip), at(nextOuter, landB, landY + grip), 0.032, 6);
+    addTube(steel, at(nextOuter, landB, landY + grip), at(nextOuter, bEnd, landY + grip), 0.032, 6);
+    for (const [a, b] of [
+      [outer, landB],
+      [nextOuter, landB],
+    ] as Array<[number, number]>) {
+      addTube(steel, at(a, b, landY - 0.1), at(a, b, landY + grip), 0.026, 5);
+    }
+    // The rope light, on the flight the tower shows a visitor from the ground. See `lights`.
+    addTube(lights, at(outer, bStart, y0 + grip), at(outer, bEnd, y0 + rise + grip), 0.042, 6);
   }
   // The shaft's own four posts, so the stair stands on something.
   for (const [a, b] of [
@@ -769,14 +944,27 @@ export function buildTower(options: TowerPlacement): TowerBuild {
     }
     addBox(canopy, at(0, 0, postY + 0.12), [hx + 0.55, 0.09, hz + 0.55], 0.9);
     addBox(canopy, at(0, 0, postY + 0.34), [hx * 0.6, 0.14, hz * 0.6], 0.9);
+    // A lit edge under the roof: the highest thing on the tower and the first to read at 400 m.
+    const eaveY = postY + 0.03;
+    const eave: Array<[number, number, number, number]> = [
+      [-hx - 0.5, -hz - 0.5, hx + 0.5, -hz - 0.5],
+      [hx + 0.5, -hz - 0.5, hx + 0.5, hz + 0.5],
+      [hx + 0.5, hz + 0.5, -hx - 0.5, hz + 0.5],
+      [-hx - 0.5, hz + 0.5, -hx - 0.5, -hz - 0.5],
+    ];
+    for (const [a0, b0, a1, b1] of eave) {
+      addTube(lights, at(a0, b0, eaveY), at(a1, b1, eaveY), 0.05, 6);
+    }
   }
 
   return {
     steel,
     deck,
     canopy,
+    lights,
     entry: at(0, bLo - 0.9, ground),
-    triangles: triangleCount(steel) + triangleCount(deck) + triangleCount(canopy),
+    triangles:
+      triangleCount(steel) + triangleCount(deck) + triangleCount(canopy) + triangleCount(lights),
   };
 }
 
@@ -881,20 +1069,50 @@ export function buildRig(rig: FlumeRig): RigBuild {
     addBox(hull, [0, rig.hullTube / 2, 0], [r * 0.42, rig.hullTube / 2, r]);
   }
 
-  // The rider: a torso, a head and two arms. Deliberately blunt — this is a person seen from ten
-  // metres through moving water, and the `guests` module owns what a person looks like up close.
+  /**
+   * The rider. Deliberately blunt — this is a person seen from ten metres through moving water, and
+   * the `guests` module owns what a person looks like up close. Blunt is not the same as loose.
+   *
+   * Round 2's version was a torso, a head and two arms, and the round-2 critic's detail crop of a
+   * family raft is the whole finding: "five detached blocks on a ring, three of them past the hull
+   * edge, heads separated from torsos by a visible gap". Two faults, both arithmetic.
+   *
+   * **The parts did not touch.** The torso ran from `(0, seat, −1.5rr)` to `(0, +0.9rr, +0.5rr)` —
+   * a body reclining at 24° — while the head sat almost vertically above its far end, so the two
+   * cylinders met end-cap to end-cap at a corner and any lean opened a gap between them. Every
+   * joint here now OVERLAPS the part it grows out of by at least a tenth of a rider radius, so
+   * there is no angle the pair can be seen from that shows daylight between them.
+   *
+   * **And it faced the wrong way for the vehicle it was in.** One shape was drawn for every hull.
+   * A body slider and a mat racer really do lie back feet-first; somebody in a family raft SITS UP
+   * with their back to the tube and their legs toward the middle, and drawing them reclined threw
+   * the torso 1.5rr backwards out over the rim. So the pose follows the seating, which is already
+   * derived below rather than switched on an id: a rim to sit on means sitting up.
+   *
+   * The seat ring itself is the other half of the overhang and is clamped in `seats` below.
+   */
   const rr = rig.riderRadius;
   const seatY = rig.hull === 'none' ? rr * 0.75 : rig.hullTube * 0.9 + rr * 0.5;
-  addTube(rider, [0, seatY, -rr * 1.5], [0, seatY + rr * 0.9, rr * 0.5], rr, 8);
-  addTube(
-    rider,
-    [0, seatY + rr * 0.85, rr * 0.35],
-    [0, seatY + rr * 1.75, rr * 0.55],
-    rr * 0.62,
-    8
-  );
-  addTube(rider, [-rr * 0.95, seatY + rr * 0.5, rr * 0.1], [-rr * 1.15, seatY - rr * 0.2, -rr * 0.9], rr * 0.3, 6); // prettier-ignore
-  addTube(rider, [rr * 0.95, seatY + rr * 0.5, rr * 0.1], [rr * 1.15, seatY - rr * 0.2, -rr * 0.9], rr * 0.3, 6); // prettier-ignore
+  /** How far behind their seat a sitting rider's shoulders reach, in rider radii. See `seats`. */
+  const RIDER_BACK = 0.84;
+  const onRim = rig.hull === 'raft' || rig.hull === 'ring';
+  if (onRim) {
+    // Sitting up, back to the tube, legs into the middle. +z is the way the seat faces.
+    addTube(rider, [0, seatY + rr * 0.1, -rr * 0.12], [0, seatY + rr * 1.15, rr * 0.16], rr * 0.72, 8); // prettier-ignore
+    addTube(rider, [0, seatY + rr * 1.02, rr * 0.16], [0, seatY + rr * 1.72, rr * 0.24], rr * 0.5, 8); // prettier-ignore
+    for (const side of [-1, 1]) {
+      // Shoulder to a hand on the rim beside them, and hip to feet toward the middle.
+      addTube(rider, [side * rr * 0.5, seatY + rr * 0.95, rr * 0.05], [side * rr * 1.0, seatY + rr * 0.3, rr * 0.4], rr * 0.24, 6); // prettier-ignore
+      addTube(rider, [side * rr * 0.34, seatY + rr * 0.12, rr * 0.1], [side * rr * 0.3, seatY - rr * 0.1, rr * 1.05], rr * 0.3, 6); // prettier-ignore
+    }
+  } else {
+    // Lying back, feet first: a body slider, a tube rider and a mat racer all ride this way.
+    addTube(rider, [0, seatY, -rr * 1.4], [0, seatY + rr * 0.82, rr * 0.42], rr * 0.95, 8);
+    addTube(rider, [0, seatY + rr * 0.62, rr * 0.2], [0, seatY + rr * 1.62, rr * 0.5], rr * 0.55, 8); // prettier-ignore
+    for (const side of [-1, 1]) {
+      addTube(rider, [side * rr * 0.72, seatY + rr * 0.45, rr * 0.05], [side * rr * 1.05, seatY - rr * 0.15, -rr * 0.85], rr * 0.28, 6); // prettier-ignore
+    }
+  }
 
   /**
    * Where the people sit, which is a fidelity question and was answered wrongly.
@@ -918,12 +1136,22 @@ export function buildRig(rig: FlumeRig): RigBuild {
    * seats on a circle too.
    */
   const seats: FlumeSeat[] = [];
-  const ringHull = rig.hull === 'raft' || rig.hull === 'ring';
+  const ringHull = onRim;
   if (rig.seats <= 1) seats.push({ across: 0, along: 0, yaw: 0 });
   else if (ringHull) {
-    // The rim's centreline, and never past the inside of the tube.
+    /**
+     * The rim's centreline, never past the inside of the tube — and never far enough out that the
+     * BODY hangs over the hull either, which is the constraint round 2 was missing.
+     *
+     * The seat point was inside the raft and three of the five riders were still over its edge,
+     * because a seat is a point and a person is 21 cm of shoulder behind it (`RIDER_BACK · rr`,
+     * measured off the torso drawn above). The clamp now takes the tighter of "on the rim" and
+     * "inside the hull with a person on it", so no `seatSpread` a pack can declare puts a shoulder
+     * out over the water.
+     */
     const rim = Math.max(0, r - rig.hullTube);
-    const ring = clamp(rig.seatSpread > 0 ? rig.seatSpread : rim, 0, rim);
+    const clear = Math.max(0, Math.min(rim, r - RIDER_BACK * rr));
+    const ring = clamp(rig.seatSpread > 0 ? rig.seatSpread : rim, 0, clear);
     for (let i = 0; i < rig.seats; i++) {
       const a = (i / rig.seats) * Math.PI * 2;
       // `RotationY(yaw)` sends the rider's +z to (sin yaw, cos yaw); a + π points it at the centre.

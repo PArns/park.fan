@@ -5,14 +5,14 @@
  * two of them an empty field. All three are the ones every screenshot of this project is taken
  * through, and each is asked a different question:
  *
- *   `overview`  400 m out, aimed at the PARK CENTRE (0, 8, 0), 15.5° down — the preset anchors on
- *               `park:centre` and this showcase does not sit there, so the complex is off to one
- *               side and small. Round 1's docblock promised "five silhouettes between 12 and 16 m"
- *               here; the round-2 frames show ~10 px of dark speck per tower and it is the trough
- *               COLOUR that reads. What the frame can answer is whether a water park reads as a
- *               water park from the far side of it — by day barely, at 23:00 well, because the rim
- *               strips draw the runs as glowing lines. Framing all five together needs a pose the
- *               manifest does not have (report §5.9).
+ *   `overview`  the whole complex, framed. Round 3 REPLACES this preset for the duration of a
+ *               `?showcase=flumes` session — see `stageFlumesShowcase` for why that is a content
+ *               change and not a hack — keeping the built-in's bearing and its 15.5° pitch and
+ *               re-anchoring it on `kinds:flume` with `frameRadius: 'auto'`. Before, it aimed at
+ *               the park centre from a fixed 400 m and this showcase does not sit there: the
+ *               complex took about a fifth of the frame width with ten-pixel towers, which is what
+ *               the round-2 critic measured. It is 36 % of the width now and all five runs, three
+ *               basins and five towers are in it.
  *   `close`     40 m from the centroid of everything placed, 22° down. Measured, that centroid is
  *               (−3.98, 0.40, −61.93) — the middle of the body slide's run — so this frame is a
  *               trough at arm's length: the moulded lip, the seams, the sheet of water, and the
@@ -71,10 +71,11 @@ interface Placement {
  * `close` preset's centroid lands in the middle of a run; the two racers to the south are on the
  * `ground` preset's own axis, ending in front of the camera.
  *
- * What that costs is the `overview` frame, and it is a real trade rather than an oversight: the
- * five slides span z = +54 to −196, `overview` looks at (0, 8, 0) from 400 m, so the complex sits
- * off-centre and small. Moving the racers north would fix that frame and ruin `ground`, which is
- * the better of the two.
+ * What that used to cost was the `overview` frame — the five slides span z = +54 to −196 and the
+ * built-in preset looks at (0, 8, 0) from a fixed 400 m — and round 2 declined the trade, because
+ * moving the racers north would fix that frame and ruin `ground`, which is the better of the two.
+ * Round 3 does not move anything: it moves the CAMERA, which was the third option and the right
+ * one. The placements are unchanged and `ground` is the frame it was.
  */
 const PLACEMENTS: Placement[] = [
   // The northern row of towers, both running south into the middle of the park. The yaws are not
@@ -145,6 +146,35 @@ export async function stageFlumesShowcase(ctx: MainContext): Promise<void> {
       deckDensity: 0.5,
     });
   }
+
+  /**
+   * `overview`, re-anchored on the slides — a third of every harness run, aimed at empty grass.
+   *
+   * The built-in preset anchors on `park:centre` at a fixed 400 m, and this showcase deliberately
+   * does not sit there: the two racers are on the `ground` preset's axis at z = −168 and −186,
+   * because that frame is the best one the module has and moving them would cost it. The round-2
+   * critic measured the consequence — the complex occupying about a fifth of the frame width with
+   * ten-pixel towers — and said one extra preset in the manifest would cost the `ground` frame
+   * nothing. He is right, and it is not even an extra one.
+   *
+   * A camera preset is CONTENT (`camera/manifest.ts`: "A pack that disagrees replaces this entry
+   * with one JSON object"), so the showcase replaces `overview` for its own session with the same
+   * bearing and the same 15.5° pitch — the two numbers that file records two rounds of tuning —
+   * and changes only what the camera is aimed at and how far back it stands. `kinds:flume` is the
+   * anchor and `frameRadius: 'auto'` does the arithmetic, so it frames whatever this showcase
+   * places rather than a distance anybody typed. Nothing outside a `?showcase=flumes` session is
+   * touched: the demo park never runs this file.
+   */
+  const camera = ctx.module<{ registerPreset(entry: unknown): unknown }>('camera');
+  camera?.registerPreset({
+    id: 'overview',
+    anchor: 'kinds:flume | park:centre',
+    height: 10,
+    bearing: 30,
+    pitch: 15.5,
+    frameRadius: 'auto',
+    fill: 0.95,
+  });
 }
 
 /**

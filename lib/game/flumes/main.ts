@@ -58,6 +58,7 @@ import {
 } from './resolve';
 import { createFlumeMaterials, type FlumeMaterials } from './materials';
 import {
+  appendGeo,
   buildRig,
   buildRimLights,
   buildShell,
@@ -357,9 +358,20 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
       }
     }
 
-    // The lip strip. `materials.glow` ramps its own emissive with `night`, so this is a contrast
-    // rail by day and the slide's outline after dark — see `buildRimLights`.
+    const tower = buildTower(towerPlacement(build, groundAt(flume.position[0], flume.position[2])));
+
+    /**
+     * The lip strip and the tower's rope light, in ONE mesh.
+     *
+     * `materials.glow` ramps its own emissive with `night`, so this is a contrast rail by day and
+     * the slide's outline after dark — see `buildRimLights`. Round 3 welds the tower's deck fascia,
+     * top rail, canopy eave and stair rail into the same buffer (`TowerBuild.lights`): same
+     * material, same world frame, so the tower gains a night silhouette for **zero** extra meshes
+     * and zero extra draw calls. Two point lights on an open steel lattice lit nothing, which is
+     * the finding this answers; a material is what already carried the night frames.
+     */
     const rim = buildRimLights(build.stations, flume.style, flume.radius);
+    appendGeo(rim, tower.lights);
     const rimMesh = meshFrom(`flume-rim:${entity.id}`, rim, materials.glow(flume.style.trim));
     if (rimMesh) {
       rimMesh.isPickable = false;
@@ -402,7 +414,6 @@ export function createFlumesMain(ctx: MainContext): MainHandle {
     push(meshFrom(`flume-legs:${entity.id}`, support.member, materials.surface('steel', flume.tower.steel))); // prettier-ignore
     push(meshFrom(`flume-pads:${entity.id}`, support.footing, materials.surface('deck', '#a8a196'))); // prettier-ignore
 
-    const tower = buildTower(towerPlacement(build, groundAt(flume.position[0], flume.position[2])));
     push(meshFrom(`flume-tower:${entity.id}`, tower.steel, materials.surface('steel', flume.tower.steel))); // prettier-ignore
     push(meshFrom(`flume-deck:${entity.id}`, tower.deck, materials.surface('deck', flume.tower.deck))); // prettier-ignore
     push(meshFrom(`flume-canopy:${entity.id}`, tower.canopy, materials.surface('shade', flume.tower.canopyColor))); // prettier-ignore

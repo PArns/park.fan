@@ -463,9 +463,20 @@ export function createFlumeMaterials(
       // Both default TRUE, and together they were the white. See the file docblock.
       m.useSpecularOverAlpha = false;
       m.useRadianceOverAlpha = false;
-      // The sheet is thin and lit from above; a touch of its own light keeps it from going black
-      // in the shadow of the trough's own wall, which is where half of it always is.
-      m.emissiveColor = new Color3(0.02, 0.06, 0.09);
+      /**
+       * **Water does not glow, and this material was the last place in the module that said it did.**
+       *
+       * Round 2 gave the sheet an emissive term "so it does not go black in the shadow of the
+       * trough's own wall" and then RAMPED IT WITH `night`, up to (0.09, 0.18, 0.24). Measured at
+       * 23:00 on the module's own `ground` frame, the sheet came out at value 0.58 on average and
+       * 0.80 at its ninetieth percentile against a night grass reading 0.13 — the brightest thing
+       * in a night frame was the one surface with no light on it. A shadowed sheet is meant to be
+       * dark; what fills it in is the sky it reflects, which is `environmentIntensity`, and what
+       * fills it in after dark is the slide's own rig — which is why round 3 gave the tower a lit
+       * edge (`TowerBuild.lights`, welded into the trough's rim strip) instead of giving the water
+       * a torch.
+       */
+      m.emissiveColor = new Color3(0, 0, 0);
       m.environmentIntensity = 0.85;
       // §4: water owns its own look. No wetness pass, no seasonal tint, no exposure fiddling.
       m.metadata = { envExempt: true };
@@ -501,13 +512,14 @@ export function createFlumeMaterials(
       night = value;
       for (const [key, m] of materials) applyNight(key, m);
       if (waterMaterial) {
-        // At night the sheet is lit by the slide's own rig rather than by the sky; lift its own
-        // term so it does not go to a black ribbon while everything around it is coloured.
-        waterMaterial.emissiveColor = new Color3(
-          0.02 + night * 0.07,
-          0.06 + night * 0.12,
-          0.09 + night * 0.15
-        );
+        /**
+         * The sheet gets no term of its own after dark — see `water()`. What it gets instead is
+         * the environment it reflects: a wet, nearly specular surface picks up more of a dark sky
+         * than a diffuse one does, so the reflection is turned UP at night rather than an emission
+         * being turned on. It is still a reflection: with nothing lit nearby the sheet is dark,
+         * which is what an unlit slide at midnight looks like.
+         */
+        waterMaterial.environmentIntensity = 0.85 + night * 0.35;
       }
     },
     all: () => [...materials.values(), ...(waterMaterial ? [waterMaterial] : [])],

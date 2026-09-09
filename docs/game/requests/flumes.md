@@ -3,14 +3,15 @@
 Everything here is outside `lib/game/flumes/`. Each item says what it is, who owns it, and what the
 module does in the meantime — nothing below is blocking. **§1 is done** (round 2); §3 to §7 were
 re-checked against the tree at the end of round 2 and are all still open, with the file and line
-each was measured at.
+each was measured at. **§9 is new in round 3** and is the only one that is not merely a convenience:
+it is a rubric line nobody could measure.
 
 ---
 
 ## 1. ~~`pnpm test:game` does not run this module's selftest~~ — **DONE**
 
 **Owner:** `package.json` (integrator) · **Closed:** `test:game-flumes` is at `package.json:128`
-and in the `test:game` chain at `:105`; the run is green at **143** checks, ~3 s. Nothing is asked
+and in the `test:game` chain at `:105`; the run is green at **190** checks. Nothing is asked
 for here any more — the paragraph stays because the round-2 additions are what the tower bug cost.
 
 Five of the original checks caught real bugs while this module was being written: the
@@ -214,3 +215,58 @@ steel one, 6.2 × 5.4 m for the timber one), and that neither run-out lands in t
 a string to a human yet — there is no HUD panel for a slide — so no keys are requested. When one
 lands it will want, per slide: name, style, length, drop, top speed, ride time, riders per hour and
 a running/stopped toggle. The English words are in `FlumeView`.
+
+---
+
+## 9. Nothing outside this module can measure whether it leaks — two small asks
+
+**Owner:** `scripts/game-soak.mjs` and `scripts/game-shot.mjs` (integrator) · **Value:** the budget
+rubric's "no leak across three dispose/reboot cycles" becomes measurable for every module, not just
+this one.
+
+The round-2 critic went looking for this and found nothing to hold on to: `grep -n flume
+scripts/game-soak.mjs` returns nothing, and from outside the module the renderer's teardown is
+unreachable — `__parkfan_game.dispatch('flumes:rebuild', {})` three times rebuilds the **sim** and
+leaves every main-thread mesh where it was (`flume-shell:flume-2` keeps its `uniqueId`), with scene
+meshes / materials / textures / geometries unchanged. So: no evidence of a leak, and no measurement
+of one either.
+
+**What this module did in the meantime, so the ask is small rather than blocking.**
+`lib/game/flumes/selftest.mjs` section 10 builds the real `createFlumesMain` against a Babylon
+`NullEngine`, places three slides, disposes, and counts scene resources — three cycles, in
+`pnpm test:game`, with no browser:
+
+```
+built:          32 meshes / 15 materials / 13 textures / 32 geometries / 1 lights
+after dispose:   0 meshes /  0 materials /  0 textures /  0 geometries / 0 lights
+```
+
+(`EnvironmentBRDFTexture0` is excluded by name: Babylon builds one BRDF lookup per SCENE on the
+first PBR material and it is the scene's, not the module's.) It needs one node-only helper,
+`lib/game/flumes/babylon-resolve.mjs`, because `main.ts` imports Babylon deep and extensionless and
+bare node ESM refuses that; `scripts/path-alias-hooks.mjs` already probes extensions for relative
+and `@/` specifiers and does not for a package subpath. **If that hook grew four lines for package
+subpaths, every module could do this and this file could go.** That is ask one, and it is optional.
+
+**Ask two is the half a `NullEngine` cannot answer.** It has no GL behind it, so a leaked texture
+handle, vertex buffer or shader program is invisible to the count above — what is measured is the
+module's own bookkeeping, not the driver's. Two things would close it:
+
+1. **A flume in the soak world.** `game-soak.mjs` runs the demo park, which contains no flume
+   (§6/§7 above are the same gap from the other side), so nothing about this module is soaked at
+   all. One `makeFlumeEntity` in the soak's world would cover the sim side today.
+2. **GPU resource counts in the harness.** `game-shot.mjs`'s metrics block reports draw calls,
+   triangles and active meshes. Babylon can also report what is allocated:
+
+   ```ts
+   const engine = scene.getEngine();
+   metrics.gpu = {
+     textures: engine._internalTexturesCache.length,
+     effects: Object.keys(engine._compiledEffects).length,
+     buffers: scene.geometries.length,
+   };
+   ```
+
+   With that in the JSON, a "reboot the showcase three times and diff" run is four lines of harness
+   and answers the rubric for every module at once. The underscore-prefixed fields are Babylon
+   internals and the reason to put this in the harness rather than in nine modules' selftests.
