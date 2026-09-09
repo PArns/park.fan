@@ -12,7 +12,7 @@ import {
   type PushFollowsList,
 } from '@/lib/push/use-push-follows-list';
 import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
-import { formatTime } from '@/lib/utils/intl-format';
+import { formatShowClock } from '@/lib/push/show-clock';
 import { cn } from '@/lib/utils';
 
 /**
@@ -81,20 +81,6 @@ export function FavoritesMenuAlerts({
    */
   const [removing, setRemoving] = useState<readonly string[]>([]);
 
-  // Same helper `LocalTime` calls, so a performance reads here exactly as it does on the show's
-  // own card — and in the PARK's zone, which is the clock the park posts its times in.
-  const showClock = (iso: string, timezone: string | null) => {
-    try {
-      return formatTime(new Date(iso), locale, {
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: timezone ?? undefined,
-      });
-    } catch {
-      return null;
-    }
-  };
-
   /**
    * The cache is the list. Editing it after the DELETE has resolved is what keeps a removal from
    * racing a refetch: `removeRideAlert` writes the local mirror first and only then calls the
@@ -148,7 +134,7 @@ export function FavoritesMenuAlerts({
       title: follow.showName,
       detail: `${follow.parkName} · ${
         follow.startTime
-          ? t('showAt', { time: showClock(follow.startTime, follow.timezone) ?? '—' })
+          ? t('showAt', { time: formatShowClock(follow.startTime, follow.timezone, locale) ?? '—' })
           : t('showNextAny')
       }`,
       icon: <CalendarClock className="text-muted-foreground size-4" aria-hidden="true" />,
@@ -175,7 +161,8 @@ export function FavoritesMenuAlerts({
    * has — over an error line saying the rest could not be read. Anything else tells somebody with
    * seven alerts that they have two, or none.
    */
-  const complete = !isPending && !isError && !data?.partial;
+  const failed = isError && !data;
+  const complete = !!data && !data.partial;
   const count = complete ? rows.length : expected;
   const shown = rows.slice(0, cap);
 
@@ -192,7 +179,7 @@ export function FavoritesMenuAlerts({
   return (
     <div data-menu-stagger className={cn('min-w-0', className)} style={style}>
       <GroupHeading title={t('title')} count={count} />
-      {(isError || data?.partial) && (
+      {(failed || data?.partial) && (
         <p className="text-destructive mb-2 text-xs">{t('loadError')}</p>
       )}
       <ul className="space-y-px">

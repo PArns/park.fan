@@ -7,7 +7,7 @@ import { Bell, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { formatTime } from '@/lib/utils/intl-format';
+import { formatShowClock } from '@/lib/push/show-clock';
 import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
 import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
 import {
@@ -32,32 +32,25 @@ import {
  */
 export function AlertsOverview() {
   const t = useTranslations('pushAlerts.overview');
-  // `formatTime` directly rather than the `LocalTime` component every other
+  // `formatShowClock` rather than the `LocalTime` component every other
   // surface uses: the sentence wraps the clock time ("um 19:10 Uhr"), so it
-  // has to go through `t()` as a string. Same helper `LocalTime` itself
-  // calls, so the two render identically.
+  // has to go through `t()` as a string. Same `formatTime` underneath, so the
+  // two render identically.
   const locale = useLocale();
-  const showClock = (iso: string, timezone: string | null) => {
-    try {
-      return formatTime(new Date(iso), locale, {
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: timezone ?? undefined,
-      });
-    } catch {
-      return null;
-    }
-  };
   // A failure is its own state rather than folding into `null`: this page's
   // whole point is showing the truth, so a fetch that failed must not render
   // as the same "nothing set up yet" empty state a browser with zero alerts
   // gets — that reads as "your alerts are gone" to someone who has five.
   // `isError` is both endpoints refusing, `partial` is one of them.
   const queryClient = useQueryClient();
-  const { data, isPending: loading, isError: bothFailed } = usePushFollowsList({ enabled: true });
+  const { data, isPending: loading, isError } = usePushFollowsList({ enabled: true });
   const [removingRide, setRemovingRide] = useState<string | null>(null);
   const [removingShow, setRemovingShow] = useState<string | null>(null);
 
+  // `isError` alone is not "nothing to show": TanStack Query keeps the last good `data` when a
+  // REFETCH fails, and replacing a correct list of five alerts with a full-page "couldn't load"
+  // block because a background refresh hiccupped is worse than showing the list one read old.
+  const bothFailed = isError && !data;
   const rideAlertList = data?.rideAlerts ?? [];
   const showFollowList = data?.showFollows ?? [];
   const onlyOneFailed = !bothFailed && (data?.partial ?? false);
@@ -221,7 +214,7 @@ export function AlertsOverview() {
                     {follow.parkName} ·{' '}
                     {follow.startTime ? (
                       (t('showAt', {
-                        time: showClock(follow.startTime, follow.timezone) ?? '—',
+                        time: formatShowClock(follow.startTime, follow.timezone, locale) ?? '—',
                       }) as string)
                     ) : (
                       <span>{t('showNextAny')}</span>
