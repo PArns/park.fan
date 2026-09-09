@@ -26,6 +26,16 @@ export interface PlannerDayFacts {
    */
   hasOperatingSchedule: boolean | null;
   loading: boolean;
+  /**
+   * True only while the FIRST answer is outstanding — nothing has arrived yet.
+   *
+   * `loading` is `isFetching`, which is also true for a background refetch of a snapshot already
+   * in hand (the query's `staleTime` is 30 minutes, so that happens). A caller asking „may I trust
+   * `lastDate` yet" needs the other question, and answering it with `isFetching` gets it wrong in
+   * both directions: false during React Query's defer window, when nothing has been asked yet,
+   * and true again later over an answer that is already here.
+   */
+  pending: boolean;
 }
 
 const EMPTY: ReadonlyMap<string, CalendarDay> = new Map();
@@ -69,6 +79,9 @@ export function usePlannerDayFacts(
         timezone,
         hasOperatingSchedule,
         loading: isFetching,
+        // `!data`, not `true`: this branch is also taken for a snapshot that ARRIVED and was
+        // empty, and that is an answer — „no days" — not an outstanding question.
+        pending: !data,
       };
     }
     const byDate = new Map<string, CalendarDay>();
@@ -82,6 +95,7 @@ export function usePlannerDayFacts(
       timezone,
       hasOperatingSchedule,
       loading: isFetching,
+      pending: false,
     };
   }, [data, isFetching]);
 }

@@ -1091,7 +1091,8 @@
       "blockerClosed": "Der Park ist an diesem Tag geschlossen.",
       "blockerPast": "Dieser Tag liegt in der Vergangenheit.",
       "blockerNoForecast": "Für diesen Tag gibt es noch keine Prognose.",
-      "resultUnavailable": "Keiner der beiden Tage lässt sich vergleichen."
+      "resultUnavailable": "Keiner der beiden Tage lässt sich vergleichen.",
+      "beyondPlanner": "Der Tagesplaner reicht noch nicht bis zu diesem Tag."
     }
   },
   "attractions": {

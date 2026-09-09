@@ -107,14 +107,17 @@ export function ParkCalendarComparison({
    * the planner's own and is held back by `useLoadLast`, so asking here cannot compete with the
    * park page's live queries — and on this route the answer is already in the cache.
    *
-   * Two different `null`s, and they are treated differently. **In flight** the button waits: the
-   * answer is a moment away and offering first would be offering before the check. **Settled at
-   * `null`** — the request failed its retries — the button stands, because that is precisely what
-   * the date step does in the same situation: `PlannerMonthCalendar` takes `maxDate={facts.lastDate
-   * ?? undefined}`, and an absent max means no max. Withdrawing the offer here would be stricter
-   * than the step this path replaces, on the ordinary near-term day, on a flaky connection.
+   * Two different `null`s, and they are treated differently. **Nothing has arrived yet** and the
+   * button waits — `pending`, not `loading`: the latter is `isFetching`, which is false during
+   * React Query's defer window (nothing asked yet) and true again for a background refetch of a
+   * snapshot already in hand, so it answers this question wrongly in both directions. **Settled at
+   * `null`** — the request failed its retries — and the button stands, because that is precisely
+   * what the date step does in the same situation: `PlannerMonthCalendar` takes
+   * `maxDate={facts.lastDate ?? undefined}`, and an absent max means no max. Withdrawing the offer
+   * here would be stricter than the step this path replaces, on the ordinary near-term day, on a
+   * flaky connection.
    */
-  const { lastDate: plannerHorizon, loading: horizonLoading } = usePlannerDayFacts(
+  const { lastDate: plannerHorizon, pending: horizonPending } = usePlannerDayFacts(
     { slug: planner.parkSlug, geo: planner.geo },
     open
   );
@@ -274,13 +277,25 @@ export function ParkCalendarComparison({
     }
   };
 
+  /**
+   * Past the planner's reach, which is a different refusal from a blocked day.
+   *
+   * The calendar steps twelve months forward and the planner's snapshot covers ninety days, so
+   * this is the ordinary case for anyone weighing dates next spring — not an edge. It gets a
+   * sentence rather than an empty cell: „recommends a day and then silently will not plan it" is
+   * the symptom `blockedSides` exists to prevent, and it would have walked straight back in here.
+   */
+  const beyondPlanner = (day: CalendarDay): boolean =>
+    !horizonPending && plannerHorizon !== null && day.date > plannerHorizon;
+
   /** Whether this day may be handed to the planner at all. */
   const plannable = (day: CalendarDay): boolean => {
     const side = day === a ? 'a' : 'b';
     if (blockedSides.has(side)) return false;
     if (day.status !== 'OPERATING' || day.date < todayIso) return false;
-    if (horizonLoading) return false;
-    return plannerHorizon === null || day.date <= plannerHorizon;
+    // Nothing has come back yet: offering now would be offering before the check.
+    if (horizonPending) return false;
+    return !beyondPlanner(day);
   };
 
   const sideLabel = (side: DayComparisonSide) =>
@@ -438,7 +453,18 @@ export function ParkCalendarComparison({
           <div className="grid grid-cols-2 gap-2">
             {([a, b] as const).map((day) =>
               !plannable(day) ? (
-                <div key={day.date} aria-hidden="true" />
+                beyondPlanner(day) ? (
+                  <p
+                    key={day.date}
+                    className="text-muted-foreground self-center text-[11px] leading-snug"
+                  >
+                    {t('dayComparison.beyondPlanner')}
+                  </p>
+                ) : (
+                  // Blocked, and the blocker list above already says why — a second copy of
+                  // „geschlossen" under the first would be the same sentence twice.
+                  <div key={day.date} aria-hidden="true" />
+                )
               ) : (
                 <PlanDayButtonLazy
                   key={day.date}
