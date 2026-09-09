@@ -255,11 +255,20 @@ export const HUD_MUTED = 'text-white/72';
 export const HUD_VALUE =
   'font-semibold text-white/95 tabular-nums [text-shadow:var(--game-emboss)]';
 
+/**
+ * The two veils, and they are shorter than they were: 144 -> 112 px at the top, 240 -> 176 at the
+ * bottom, each about a fifth lighter.
+ *
+ * They exist for the gap BETWEEN two surfaces, which is where a backdrop blur does nothing — and
+ * the moulded trays carry far more of their own contrast than the flat chrome they replaced, so
+ * the veil under them was doing a job twice. At 1280 x 720 the pair covered 14.6 % of the frame
+ * on their own; a quarter of a park's sky was being dimmed for a row of chips.
+ */
 export const SCRIM_TOP =
-  'pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/30 via-black/9 to-transparent';
+  'pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/26 via-black/8 to-transparent';
 
 export const SCRIM_BOTTOM =
-  'pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-gradient-to-t from-black/40 via-black/11 to-transparent';
+  'pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/34 via-black/10 to-transparent';
 
 /**
  * Tone → colour, for a status dot, a meter fill and a figure that has gone wrong.

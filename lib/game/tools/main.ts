@@ -36,7 +36,12 @@ import {
   type Obstacle,
 } from './placement';
 import { rectsOverlap, snapAngle, snapPoint, wrapAngle, type Rect } from './snap';
-import { createThumbnailStudio, type ThumbnailStats, type ThumbnailStudio } from './thumbs';
+import {
+  createThumbnailStudio,
+  type ThumbnailPicture,
+  type ThumbnailStats,
+  type ThumbnailStudio,
+} from './thumbs';
 import {
   DEFAULT_SNAP,
   type GhostState,
@@ -78,18 +83,20 @@ export interface ToolsMainApi {
   /** Put the armed item down, or drop the moved one. Returns the entity id, or null if refused. */
   commit(): string | null;
   /**
-   * The rendered picture of a palette item as a data URL, or null.
+   * The rendered picture of a palette item, or null.
    *
    * Synchronous and cheap: the build bar calls it on every render of every tile. A miss is not a
-   * failure — it means nobody has asked for that item yet, or its render is still queued.
+   * failure — it means nobody has asked for that item yet, or its render is still queued. It
+   * carries the data URL and the projected size of the model's ground rectangle, which is what the
+   * tile draws its contact shadow from.
    */
-  thumbnail(key: string): string | null;
+  thumbnail(key: string): ThumbnailPicture | null;
   /**
-   * Queue an item's picture. Resolves with the data URL, or null when it cannot be drawn — a
-   * coaster has no point geometry, a kind nothing claims has no builder, and a builder that throws
-   * is caught. A null answer is the build bar's cue to keep the Lucide kind icon it already has.
+   * Queue an item's picture. Resolves with it, or null when it cannot be drawn — a coaster has no
+   * point geometry, a kind nothing claims has no builder, and a builder that throws is caught. A
+   * null answer is the build bar's cue to keep the item's own icon.
    */
-  requestThumbnail(key: string): Promise<string | null>;
+  requestThumbnail(key: string): Promise<ThumbnailPicture | null>;
   /**
    * Say which items are on screen, in the order they are drawn.
    *

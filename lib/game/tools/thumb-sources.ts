@@ -37,6 +37,31 @@ import type { PaletteItem } from './types';
 /** One item's geometry, alive in the studio scene until it is disposed. */
 export interface PreviewBuild {
   meshes: AbstractMesh[];
+  /**
+   * The ground rectangle the picture should be FRAMED on, when the source knows one.
+   *
+   * A shop's geometry is mostly its plot — `shops/build.ts` draws the apron, its kerb, its queue
+   * rail and its planters into the same surface as the kiosk — so a frame fitted to the bounding
+   * box spent two thirds of the tile on concrete, which is what made five shops sharing the
+   * `kiosk-round` generator read as one picture: the things separating them (sign colour, glyph,
+   * menu board) were the smallest things in the frame.
+   *
+   * The first fix was a heuristic — drop everything below hip height and take the X/Z extent of
+   * what is left — and it was wrong on both ends: a queue rail is 1.05 m tall and runs the whole
+   * length of the apron, so the frame did not move, while a fountain's upper tiers are narrower
+   * than its basin, so the basin would have been cropped. There is no height that means "ground
+   * furniture" for every model.
+   *
+   * So the SOURCE says it, because the source is the only one that knows. `shops` is handed the
+   * building's own footprint and reports where it put the front face; `buildings` declares its
+   * built extent in the manifest, apron excluded. `scenery` and `rides` leave it out: a tree and a
+   * carousel have no plot, and their bounding box is the model.
+   *
+   * The vertical extent always comes from the whole geometry, so nothing is ever cropped in
+   * height — this box only decides how wide the picture is, and the ground outside it runs off
+   * the frame's edges, which is what ground does.
+   */
+  focus?: { minX: number; maxX: number; minZ: number; maxZ: number };
   dispose(): void;
 }
 
@@ -62,6 +87,14 @@ type SourceFactory = () => Source;
  * visible hitch. Measured figures are in the report.
  */
 const STUDIO_TEXTURE_PX = 96;
+/**
+ * How far a shop's awning, bracket sign and condiment shelf hang off its front wall.
+ *
+ * One number rather than a second bounding-box pass: everything that overhangs a kiosk's face
+ * does so by well under a metre, and the frame's own 7 % padding covers the rest. Too small and
+ * an awning is clipped at the frame's edge; too large and the apron is back.
+ */
+const AWNING_M = 0.9;
 /** Fixed, because a thumbnail may not differ between two players or between two runs. */
 const STUDIO_SEED = 20260909;
 
@@ -273,7 +306,20 @@ function shopSource(): Source {
       add(build.glass, 'glass', kit.materials.glass);
       add(build.sign, 'sign', kit.materials.emissive(build.signColour));
       if (!meshes.length) return null;
-      return { meshes, dispose: () => meshes.forEach((m) => m.dispose(false, false)) };
+      // The building stands with its front face at `-setback` and runs back by its own depth;
+      // `AWNING_M` is the awning, the bracket sign and the condiment shelf, which hang off that
+      // face and are part of the shop rather than part of its plot.
+      const half = footprint[0] / 2 + AWNING_M;
+      return {
+        meshes,
+        focus: {
+          minX: -half,
+          maxX: half,
+          minZ: -build.setback - footprint[1],
+          maxZ: -build.setback + AWNING_M,
+        },
+        dispose: () => meshes.forEach((m) => m.dispose(false, false)),
+      };
     },
     dispose: () => kit_.dispose(),
   };
@@ -332,8 +378,118 @@ function rideSource(): Source {
   };
 }
 
+// ── buildings ────────────────────────────────────────────────────────────────────────────────
+
+interface BuildingKit {
+  resolveBuilding: typeof import('../buildings/manifest').resolveBuilding;
+  buildBuilding: typeof import('../buildings/build').buildBuilding;
+  buildKitPiece: typeof import('../buildings/build').buildKitPiece;
+  seedForBuilding: typeof import('../buildings/build').seedForBuilding;
+  materials: import('../buildings/materials').BuildingMaterials;
+  toMesh: typeof import('./thumb-mesh').surfaceToMesh;
+  dispose(): void;
+}
+
 /**
- * Kind → source. A kind that is not here has no picture and gets the Lucide icon on the stage,
+ * The twenty tiles that had no picture at all.
+ *
+ * `building` is the palette's largest kind — 20 of 65 items across the two bundled packs and the
+ * architecture pack — and every one of them drew the same grey Lucide `Home`: "Brick wall",
+ * "Arched window", "Slate roof" and "Timber floor" were four names over one glyph, which is the
+ * complaint this whole studio exists to answer. Round 1 left it out because that folder had a
+ * builder in it at the time; it has been graded since, and the seam it needed was already exported:
+ * `buildKitPiece` for a wall, a roof, a floor or a column, and `buildBuilding` for a blueprint.
+ *
+ * Which of the two is not a decision this file makes — `resolveBuilding` answers it, from the
+ * item's own `category`, which is schema. A pack that adds a twenty-first piece gets a picture.
+ *
+ * **`setAtlasResolution` is deliberately not called here.** It writes a MODULE-GLOBAL half-texel
+ * inset that `buildings/geometry.ts` bakes into every UV it emits, so a studio setting it to its
+ * own 96 px would change the UVs of the next building the PARK builds. The studio takes whatever
+ * inset the park has set instead, and pays for it in a fraction of a texel of atlas bleed on a
+ * 91 px tile. A thumbnail may not reach into the scene it is a thumbnail of.
+ */
+function buildingSource(): Source {
+  async function boot(studio: StudioScene, alive: () => boolean): Promise<BuildingKit | null> {
+    const [manifest, build, materialsMod, textures, mesh] = await Promise.all([
+      import('../buildings/manifest'),
+      import('../buildings/build'),
+      import('../buildings/materials'),
+      import('../buildings/textures'),
+      import('./thumb-mesh'),
+    ]);
+    if (!alive()) return null;
+    const atlas = textures.createBuildingAtlas(studio.scene, STUDIO_SEED, STUDIO_TEXTURE_PX);
+    const materials = materialsMod.createBuildingMaterials(studio.scene, atlas);
+    // Daylight: a window with a light behind it is a dark pane at noon, and a sign band is a
+    // painted panel until dusk. Both are what `buildings/materials.ts` says night 0 means.
+    materials.setNight(0);
+    return {
+      resolveBuilding: manifest.resolveBuilding,
+      buildBuilding: build.buildBuilding,
+      buildKitPiece: build.buildKitPiece,
+      seedForBuilding: build.seedForBuilding,
+      materials,
+      toMesh: mesh.surfaceToMesh,
+      dispose() {
+        materials.dispose();
+        atlas.dispose();
+      },
+    };
+  }
+
+  const kit_ = lazyKit(boot);
+  return {
+    async build(studio, item) {
+      const kit = await kit_.get(studio);
+      if (!kit || !kit_.alive()) return null;
+      const resolved = kit.resolveBuilding(studio.registry, item.pack, item.item);
+      if (!resolved) return null;
+      const seed = kit.seedForBuilding(resolved.key);
+      const built = resolved.blueprint
+        ? kit.buildBuilding({ blueprint: resolved.blueprint, style: resolved.style, seed })
+        : kit.buildKitPiece({
+            piece: resolved.piece ?? 'wall',
+            size: resolved.size,
+            style: resolved.style,
+            seed,
+          });
+      const meshes: AbstractMesh[] = [];
+      const add = (
+        surface: import('./thumb-mesh').PlainSurface,
+        name: string,
+        material: import('@babylonjs/core/Materials/material').Material
+      ) => {
+        if (!surface.indices.length) return;
+        meshes.push(kit.toMesh(studio.scene, `thumb:${item.key}:${name}`, surface, material));
+      };
+      add(built.kit, 'kit', kit.materials.kit);
+      add(built.glass, 'glass', kit.materials.glass);
+      add(built.lit, 'lit', kit.materials.emissive(built.litColour, 'window'));
+      add(built.sign, 'sign', kit.materials.emissive(built.signColour, 'sign'));
+      // `halo` is the additive spill a lit window throws after dark. At night 0 it contributes
+      // black, so it is a draw call that renders nothing; the studio has no clock and never will.
+      if (!meshes.length) return null;
+      // `size` is the pack's own built extent WITHOUT the apron — the manifest says so, and the
+      // buildings selftest measures the geometry against it — so it is exactly the box a picture
+      // of the building wants. `groundWorks` paves around it and runs off the frame.
+      return {
+        meshes,
+        focus: {
+          minX: -resolved.size[0] / 2,
+          maxX: resolved.size[0] / 2,
+          minZ: -resolved.size[2] / 2,
+          maxZ: resolved.size[2] / 2,
+        },
+        dispose: () => meshes.forEach((m) => m.dispose(false, false)),
+      };
+    },
+    dispose: () => kit_.dispose(),
+  };
+}
+
+/**
+ * Kind → source. A kind that is not here has no picture and gets the item's own icon on the stage,
  * which is the documented fallback and is what coasters and flumes get today: both are `route`
  * items with no `procedural` in the manifest, so there is nothing to render until the track tool
  * can hand a layout over.
@@ -342,6 +498,7 @@ const SOURCES: Record<string, SourceFactory> = {
   scenery: scenerySource,
   shop: shopSource,
   ride: rideSource,
+  building: buildingSource,
 };
 
 export interface SourceSet {

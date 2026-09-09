@@ -35,8 +35,17 @@ import { PANEL, PANEL_HEAD } from './surface';
 import { HudIconButton } from './parts';
 import { useCommitTally } from './hooks';
 
-/** Width of the dock column, and the band a dropped panel re-docks in. */
-const DOCK_WIDTH = 344;
+/**
+ * Width of the dock column, and the band a dropped panel re-docks in.
+ *
+ * 288, down from 344. The column is the single largest thing this module puts on the park — at
+ * 1280 x 720 it was 344 x 572, a fifth of the frame on its own — and the panels inside it are
+ * rows of small type that were never using the width: the widest row in any of the ten is the
+ * ride list's, and it fits in 266 px of content box with the meter still 120 px long. Measured
+ * cost of the change: 21.4 % of the frame to 17.9 % before the panels were trimmed, and it is the
+ * reason the build cluster's reserve in `hud.tsx` is 300 (288 + the 12 px gap) rather than 368.
+ */
+const DOCK_WIDTH = 288;
 const DOCK_BAND = 400;
 const DRAG_THRESHOLD = 4;
 
@@ -55,9 +64,9 @@ export interface PanelHostProps {
   /**
    * Whether the dock column is occupied.
    *
-   * The bottom cluster pads itself by the column's width so the two do not overlap, and only this
+   * The build cluster shifts left by the column's width so the two do not overlap, and only this
    * component knows the answer: a panel dragged out of the column is open and not docked, and the
-   * cluster should have the width back.
+   * cluster should have the middle of the screen back.
    */
   onDockedChange?(docked: boolean): void;
 }
@@ -88,11 +97,20 @@ export function PanelHost({
   if (narrow) {
     const top = panels[panels.length - 1];
     return (
-      // The sheet takes what the build cluster leaves, up to 46svh. A fixed cap was the version
-      // before it and it is a cap on the wrong element: the cluster below is a palette whose
-      // height is somebody else's decision (512 px at 390 px wide with five item rows open), so a
-      // sheet that insists on 46svh pushes the top bar off the screen rather than giving way.
-      <div className="flex min-h-0 w-full flex-1 flex-col justify-end">
+      // ## On a phone the sheet lies OVER the build cluster, and that is a reversal
+      //
+      // It used to sit above the cluster in the same flow column, so the build bar kept its place
+      // — and the bill for that arrived at 390 x 844, where the cluster is a palette whose height
+      // is somebody else's decision (512 px with five item rows open): the sheet was handed what
+      // was left, which measured **16.0 px**, the clipped top of its own 40 px header with two
+      // half-cut buttons in it. A panel that cannot show one row is not a panel, and a flow item
+      // that can be crushed to nothing will be.
+      //
+      // So the sheet leaves the flow. It is anchored to the bottom of the screen, takes 58svh or
+      // its content, whichever is smaller, and the build cluster is behind it until it is closed —
+      // one tap on a 44 px key. What it may never do is reach the top row: 58svh of an 844 px
+      // phone is 490, which leaves 346 px above it against the 180 the clock and the rail need.
+      <div className="pointer-events-none absolute inset-x-2 bottom-2 z-40 flex justify-center">
         <PanelFrame
           key={top.id}
           def={top}
@@ -102,8 +120,8 @@ export function PanelHost({
           locale={locale}
           collapsed={false}
           onCollapse={() => {}}
-          bodyClass="min-h-0 flex-1"
-          className="pointer-events-auto max-h-[46svh] min-h-0 w-full flex-1"
+          bodyClass="min-h-0"
+          className="pointer-events-auto max-h-[58svh] min-h-0 w-full"
           showDockToggle={false}
         />
       </div>
@@ -131,18 +149,25 @@ export function PanelHost({
         // log is frozen at its own 87 px, the rides list gets its full 326 and shows all four,
         // and the park panel takes everything left.
         //
-        // The column reaches to `bottom-3` rather than stopping above the build cluster, because
-        // the cluster no longer lies under it: it pads itself by the column's width. That is 84
-        // px given back, and it is exactly the 73 px by which the park panel was clipped at 1280.
-        // `top-[136px]` is measured, not chosen: the top-right cluster is a 59 px stat tray, an
-        // 8 px gap and a 48 px rail under 12 px of padding, so it ends at 127 — and a panel at
-        // `z-30` over a rail at `z-auto` cuts the rail's bottom bevel off rather than tucking
-        // under it. Nine pixels of daylight between the two.
+        // Where the column starts and stops, and both numbers are measured rather than chosen.
+        //
+        // `top-[124px]`: the top-right cluster is a 52 px figure tray, an 8 px gap and a 44 px
+        // rail under 12 px of padding, so it ends at 116 — and a panel at `z-30` over a rail at
+        // `z-auto` would cut the rail's bottom bevel off rather than tuck under it.
+        //
+        // `bottom-[52px]`: the last 52 px of the right edge belong to core's corner lockup, a
+        // 123 x 38 watermark at `right-3 bottom-3` on `z-20` — above this whole HUD, since the
+        // HUD's own root is `z-10` and a child cannot climb out of its stacking context. The
+        // version before this reserved the space as 46 px of padding INSIDE the bottom panel's
+        // body, which was wrong the moment the body scrolled: padding in a scroller moves with
+        // the content, so the logo ends up over whatever scrolled under it. Shortening the column
+        // costs the same 46 px and cannot come apart. `docs/game/requests/ui.md` asks core to drop
+        // the corner copy — the toolbelt already carries the mark eight pixels away.
         <div
-          className="pointer-events-none absolute top-[136px] right-3 bottom-3 z-30 flex w-[344px] flex-col items-end gap-2 overflow-hidden"
+          className="pointer-events-none absolute top-[124px] right-3 bottom-[52px] z-30 flex w-[288px] flex-col items-end gap-2 overflow-hidden"
           data-panel-dock=""
         >
-          {docked.map((def, index) => (
+          {docked.map((def) => (
             <PanelFrame
               key={def.id}
               def={def}
@@ -154,14 +179,7 @@ export function PanelHost({
               onCollapse={() => setCollapsed((c) => ({ ...c, [def.id]: !c[def.id] }))}
               onDrag={(position) => setPosition(def.id, position)}
               className="pointer-events-auto max-h-max min-h-0 w-full flex-1 basis-0"
-              // The bottom panel keeps 46 px clear of core's corner lockup, which is a 123 x 38
-              // watermark at `right-3 bottom-3` on `z-20` — above this whole HUD, because the
-              // HUD's own root is `z-10` and a child cannot climb out of its stacking context.
-              // It never came up while the column stopped 96 px above the floor. The lockup is
-              // now drawn twice on this screen (the toolbelt carries one), so the request in
-              // `docs/game/requests/ui.md` asks core to drop the corner copy; until it does,
-              // this keeps a figure from being read through a logo.
-              bodyClass={cn('min-h-0 flex-1', index === docked.length - 1 && 'pb-[46px]')}
+              bodyClass="min-h-0 flex-1"
             />
           ))}
         </div>
@@ -316,8 +334,21 @@ function PanelFrame({
           <X className="size-3.5" />
         </HudIconButton>
       </div>
+      {/* The body scrolls inside the header, and it SAYS SO. It always did the first half —
+          `overflow-y: auto` under a `shrink-0` header — and the second half was missing:
+          Chromium's overlay scrollbar over a dark translucent body is invisible until something is
+          dragged, so a park panel with 46 px below the fold read as a panel with its last row cut
+          off. A thin permanent gutter is cheaper than the alternative, which is a module deciding
+          for a player which of its rows they may not have. */}
       {collapsed ? null : (
-        <div className={cn('min-h-0 overflow-x-hidden overflow-y-auto p-[11px]', bodyClass)}>
+        <div
+          className={cn(
+            'min-h-0 overflow-x-hidden overflow-y-auto p-[11px]',
+            '[scrollbar-width:thin] [scrollbar-color:rgb(255_255_255/0.22)_rgb(0_0_0/0.25)]',
+            bodyClass
+          )}
+          data-panel-body=""
+        >
           <def.Body t={t} locale={locale} ui={ui} store={store} close={() => ui.close(def.id)} />
         </div>
       )}

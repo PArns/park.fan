@@ -118,8 +118,8 @@ export function GameHud({ store, t, locale, getHandle }: GameHudProps) {
 
   return (
     <div className="pointer-events-none absolute inset-0 z-10 flex flex-col" data-game-hud="">
-      <div className={SCRIM_TOP} aria-hidden />
-      <div className={SCRIM_BOTTOM} aria-hidden />
+      <div className={SCRIM_TOP} data-hud-scrim="" aria-hidden />
+      <div className={SCRIM_BOTTOM} data-hud-scrim="" aria-hidden />
       {runtime ? (
         <HudBody
           runtime={runtime}
@@ -200,6 +200,7 @@ function HudBody({
           'flex shrink-0 gap-2 p-3',
           narrow ? 'flex-col' : 'items-start justify-between'
         )}
+        data-hud-top=""
       >
         <div className={cn('flex min-w-0 items-start gap-2', narrow && 'w-full')}>
           <MenuButton runtime={runtime} t={t} />
@@ -238,28 +239,47 @@ function HudBody({
 
       {narrow ? <NoticeStack store={store} runtime={runtime} t={t} narrow /> : null}
 
-      {/*
-        The bottom cluster centres in what the dock leaves, not in the window.
-        Centred in the full width it lies across an open panel — the build tray is up to 1024 px
-        wide and the dock is 344 at the right edge, so at 1440 the two overlapped by 344 px of
-        palette. The padding is the dock's width plus both gaps (344 + 12 + 12); it is 0 with no
-        panel docked and 0 below `sm`, where there is no column at all.
-
-        On a phone the panel sheet sits IN this stack rather than over it, so the build bar keeps
-        its place instead of being covered by whatever was opened last.
-      */}
       <div
-        className={cn(
-          'relative mt-auto flex min-h-0 flex-col items-center gap-2 p-3',
-          !narrow && dockOccupied && 'pr-[368px]'
-        )}
+        className="relative mt-auto flex min-h-0 flex-col items-center gap-2 p-3"
+        data-hud-bottom=""
       >
         {narrow ? (
           <PanelHost ui={runtime} store={store} t={t} locale={locale} panels={openPanels} narrow />
         ) : (
           <NoticeStack store={store} runtime={runtime} t={t} narrow={false} />
         )}
-        <BuildBar t={t} locale={locale} getHandle={getHandle} />
+        {/*
+          ## The build cluster MOVES out of the dock's way. It may not be RESIZED out of it.
+
+          The cluster is `tools`' and its two objects are `w-[min(64rem,100%)]` — a percentage of
+          whatever box this line hands them. The version before this padded the box by the dock's
+          width only while a panel was docked, so every panel a player opened or closed changed
+          the palette's width, at every viewport under 64rem + the dock: 1024 px of tray became
+          644 and five columns of tiles relaid out under the pointer.
+
+          That is also the likeliest cause of the round-1 paint break, and the evidence is in the
+          widths rather than in the heights the critique named: it reproduced at 1024, 1152 and
+          1366 — every width where the tray's own `min()` resolves to the box rather than to
+          64rem, i.e. exactly where the toggle resizes it — and not at 1440 or 1920, where the
+          tray is 1024 in both states and the toggle only moves it. The DOM was right in the same
+          run the pixels were wrong (`overflow: hidden`, box 339..696, every tile below 660
+          clipped in layout), so nothing was mislaid out; a strip of the composited HUD layer over
+          the WebGL canvas was simply never repainted after the resize.
+
+          So the box has ONE width per viewport — `min(64rem, the row minus the dock)` — and the
+          only thing the dock's state changes is a margin, which translates the cluster instead of
+          reflowing it. `DOCK_RESERVE` is 300: the 288 px column plus the 12 px gap, measured
+          inside this row's own padding.
+        */}
+        <div
+          className={cn(
+            'flex flex-col items-center',
+            narrow ? 'w-full' : 'w-[min(64rem,calc(100%_-_300px))]',
+            !narrow && dockOccupied && 'mr-[300px]'
+          )}
+        >
+          <BuildBar t={t} locale={locale} getHandle={getHandle} />
+        </div>
       </div>
 
       {menuOpen ? <MenuLayer runtime={runtime} t={t} locale={locale} /> : null}
@@ -290,15 +310,15 @@ function ClockCluster({
   const clock = useTelemetry(runtime, selectClock, clockEqual);
   useCommitTally();
   return (
-    <div className={cn(TRAY, 'pointer-events-auto flex items-center gap-2.5 p-[7px]')}>
+    <div className={cn(TRAY, 'pointer-events-auto flex items-center gap-2 p-1.5')}>
       {/* The clock is a readout, so it is sunk, and the four speeds are keys, so they are raised.
           Told apart at a glance and before either is read: that is the whole point of the two
           materials, and the pair sits in one tray to say they belong to each other. */}
-      <div className={cn(SINK, 'min-w-0 px-3 pt-1.5 pb-2', narrow ? 'w-[7.5rem]' : 'w-[10.75rem]')}>
-        <div className={cn(HUD_VALUE, 'text-2xl leading-none tracking-[0.01em]')}>
+      <div className={cn(SINK, 'min-w-0 px-2.5 pt-1.5 pb-1.5', narrow ? 'w-[7rem]' : 'w-[9.5rem]')}>
+        <div className={cn(HUD_VALUE, 'text-[21px] leading-none tracking-[0.01em]')}>
           {clockTime(clock.minute)}
         </div>
-        <div className="mt-[3px] flex items-baseline gap-1.5 text-[11.5px] text-white/62">
+        <div className="mt-[3px] flex items-baseline gap-1.5 text-[11px] text-white/62">
           <span className="truncate tabular-nums">{t('hud.day', { day: clock.day })}</span>
           {clock.speed === 0 ? (
             <span className="ml-auto inline-flex items-center gap-1 text-(--game-warning)">
@@ -307,9 +327,9 @@ function ClockCluster({
             </span>
           ) : null}
         </div>
-        <DayStrip minute={clock.minute} className="mt-[7px]" />
+        <DayStrip minute={clock.minute} className="mt-[6px]" />
       </div>
-      <div className="flex items-center gap-[5px]">
+      <div className="flex items-center gap-1">
         {SPEEDS.filter((s) => !narrow || s.speed !== 5).map(({ speed, key, icon: Icon }) => (
           <HudIconButton
             key={speed}
@@ -362,7 +382,7 @@ function StatCluster({
   // Four figures in ONE tray, so the cluster reads as an instrument panel and the rail of keys
   // under it as a row of controls. Four separate chips read as four more buttons.
   return (
-    <div className={cn(TRAY, 'pointer-events-auto flex items-stretch gap-1.5 p-[7px]')}>
+    <div className={cn(TRAY, 'pointer-events-auto flex items-stretch gap-1 p-1.5')}>
       {visible.map((def) => (
         <StatSlot key={def.id} runtime={runtime} def={def} />
       ))}
@@ -380,7 +400,7 @@ function StatSlot({ runtime, def }: { runtime: UiRuntime; def: StatDef }) {
   const Icon = def.icon;
   return (
     <FigureTile
-      className="min-w-[118px]"
+      className="min-w-[104px]"
       label={def.label}
       value={value.text}
       tone={tone}
@@ -419,7 +439,7 @@ function Rail({
     <div
       className={cn(
         TRAY,
-        'pointer-events-auto flex items-center gap-[5px] p-1.5',
+        'pointer-events-auto flex items-center gap-1 p-1.5',
         // On a phone the rail WRAPS rather than scrolls: a horizontal scroller hides half the
         // panels behind a gesture nobody is told about, and two rows of buttons hide nothing.
         narrow && 'max-w-full flex-wrap'
@@ -430,7 +450,7 @@ function Rail({
         const members = railed.filter((p) => (p.group ?? 'park') === group);
         if (members.length === 0) return null;
         return (
-          <div key={group ?? index} className="flex items-center gap-[5px]">
+          <div key={group ?? index} className="flex items-center gap-1">
             {index > 0 ? <span className={cn(BELT_RULE, 'mx-1 h-6')} /> : null}
             {members.map((def) => (
               <RailButton key={def.id} runtime={runtime} def={def} active={open.has(def.id)} />
@@ -555,7 +575,7 @@ function NoticeStack({
   return (
     <div
       className={cn(
-        'pointer-events-none absolute z-20 flex flex-col-reverse gap-1.5',
+        'pointer-events-none flex flex-col-reverse gap-1.5',
         // Bottom left on a desktop, and anchored to the TOP EDGE OF THE BUILD CLUSTER rather
         // than to the window: the cluster is a tray plus a toolbelt and its height changes when a
         // category opens, so a notice measured off the bottom of the screen ends up under the
@@ -563,10 +583,14 @@ function NoticeStack({
         // box also means a notice never pushes the bar down, which a flow item would.
         //
         // On a phone the bottom belongs to the build bar and to whatever panel is open, so a
-        // notice goes to the top instead, under the rail.
+        // notice goes under the rail instead — and it goes there IN FLOW. It was `top-[6.75rem]`,
+        // a number measured off the old chrome, and when the clock tray lost 10 px in this round
+        // the notice landed on the figures. A measured offset into somebody else's stack is a
+        // number that has to be re-measured every time that stack changes, and this is the second
+        // time it was not.
         narrow
-          ? 'inset-x-3 top-[6.75rem]'
-          : 'bottom-full left-3 mb-2 w-[19rem] max-w-[calc(100vw-1.5rem)]'
+          ? 'mx-3 shrink-0'
+          : 'absolute bottom-full left-3 z-20 mb-2 w-[19rem] max-w-[calc(100vw-1.5rem)]'
       )}
       data-hud-notices=""
     >

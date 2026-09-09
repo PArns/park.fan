@@ -42,21 +42,42 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import {
+  Bath,
   Box,
+  BrickWall,
+  BriefcaseMedical,
+  Circle,
+  CircleDot,
+  Clock,
+  ConciergeBell,
+  CreditCard,
   CupSoda,
   FerrisWheel,
+  Flame,
   Grid3x3,
   Home,
+  IceCreamCone,
+  Info,
+  Landmark,
   MousePointer2,
   Move,
+  PanelTop,
   Redo2,
+  RollerCoaster,
   RotateCcw,
   RotateCw,
+  Shirt,
+  ShoppingBag,
+  Store,
+  Ticket,
   TrainFront,
   Trash2,
   TreePine,
   Undo2,
+  Utensils,
   Waves,
+  Wind,
+  Zap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -74,6 +95,7 @@ import {
   raise,
 } from '../ui/surface';
 import type { ToolsMainApi } from './main';
+import type { ThumbnailPicture } from './thumbs';
 import type { PaletteGroup, PaletteItem, PlacementReason, ToolId, ToolsState } from './types';
 
 export interface BuildBarProps {
@@ -99,6 +121,52 @@ const KIND_ICONS: Record<string, typeof Box> = {
   flume: Waves,
   building: Home,
 };
+
+/**
+ * The Lucide names a pack may ask for, and the last thing between an item and its kind's glyph.
+ *
+ * Every pack in this repo carries an `icons` map — `{"ice-cream": "lucide:ice-cream-cone"}` — and
+ * until now nothing read it: a tile with no render fell straight through to the KIND icon, which
+ * is how four coasters and three flumes ended up as one train and one wave. This is a table of
+ * *Lucide* names, not of content: no pack id and no item id appears in it, a pack naming an icon
+ * that is not here falls back to its kind's, and adding an entry is adding a name from an icon
+ * library rather than knowledge of anybody's catalogue.
+ *
+ * It is not the answer to a missing picture — a render of the thing is — and where the packs give
+ * two items the same name they still share a glyph. It is the floor under one.
+ */
+const PACK_ICONS: Record<string, typeof Box> = {
+  bath: Bath,
+  'brick-wall': BrickWall,
+  'briefcase-medical': BriefcaseMedical,
+  circle: Circle,
+  'circle-dot': CircleDot,
+  clock: Clock,
+  'concierge-bell': ConciergeBell,
+  'credit-card': CreditCard,
+  'cup-soda': CupSoda,
+  'ferris-wheel': FerrisWheel,
+  flame: Flame,
+  house: Home,
+  'ice-cream-cone': IceCreamCone,
+  info: Info,
+  landmark: Landmark,
+  'panel-top': PanelTop,
+  'roller-coaster': RollerCoaster,
+  shirt: Shirt,
+  'shopping-bag': ShoppingBag,
+  store: Store,
+  ticket: Ticket,
+  utensils: Utensils,
+  waves: Waves,
+  wind: Wind,
+  zap: Zap,
+};
+
+/** `lucide:cup-soda` → `cup-soda`. Anything else, including a null, is not a Lucide name. */
+function lucideName(icon: string | null): string {
+  return icon?.startsWith('lucide:') ? icon.slice(7) : '';
+}
 
 const TOOL_ICONS: Record<ToolId, typeof Box> = {
   select: MousePointer2,
@@ -199,8 +267,15 @@ function BuildTray({
       </div>
 
       {/* Capped and scrolling: at 720 px tall that is two rows and a peek, which is what keeps the
-          cluster off the screen's throat. */}
-      <div className="grid max-h-[min(38vh,320px)] grid-cols-1 gap-2 overflow-y-auto pb-[10px] sm:grid-cols-5">
+          cluster off the screen's throat. The phone gets its own, lower cap — 38 vh of 844 is
+          321 px of tiles under a 44 px tab strip and over a toolbelt, and the whole bar came to
+          511.5 px of an 844 px phone, three fifths of the screen for the furniture. */}
+      <div
+        className={cn(
+          'grid max-h-[min(38vh,320px)] grid-cols-1 gap-2 overflow-y-auto pb-[10px] sm:grid-cols-5',
+          'max-sm:max-h-[min(30vh,232px)] max-sm:gap-1.5'
+        )}
+      >
         {group.items.map((item) => (
           <ItemTile
             key={item.key}
@@ -332,8 +407,10 @@ function ItemTile({
   selected: boolean;
   placing: boolean;
 }) {
-  const thumb = useThumbnail(api, item);
-  const Icon = KIND_ICONS[item.kind] ?? Box;
+  const picture = useThumbnail(api, item);
+  // Three lookups and no call, because a component created BY a function during render is a new
+  // type on every render as far as React is concerned (`react-hooks/static-components`).
+  const Icon = PACK_ICONS[lucideName(item.icon)] ?? KIND_ICONS[item.kind] ?? Box;
   const meta =
     item.placement === 'route'
       ? t('tools.item.route')
@@ -346,7 +423,7 @@ function ItemTile({
       type="button"
       disabled={!item.available}
       data-item={item.key}
-      data-thumb={thumb ? 'render' : 'icon'}
+      data-thumb={picture ? 'render' : 'icon'}
       onClick={() => api.useTool('place', item.key)}
       className={cn(
         raise({ on: selected, armed: selected && placing }),
@@ -354,35 +431,50 @@ function ItemTile({
         'max-sm:flex-row max-sm:items-center max-sm:gap-2.5 max-sm:p-2'
       )}
     >
+      {/* The well IS the picture: `aspect-[2/1]` is `THUMB_ASPECT`, so the render fills it in both
+          directions and `object-contain` has nothing left to letterbox. Round 1 drew a square
+          render into a 2.76:1 well and fitted it by the height, which left the image box at
+          66 × 66 in 182.4 × 66 and a wide model using a third of that. */}
       <span
+        data-well=""
         className={cn(
           SINK_STAGE,
-          'relative block h-[66px] w-full shrink-0 overflow-hidden',
-          'max-sm:h-14 max-sm:w-[88px]'
+          'relative block aspect-[2/1] w-full shrink-0 overflow-hidden',
+          'max-sm:w-[104px]'
         )}
       >
-        {/* The contact shadow every item grounds on, so a tall ride and a bench stand on the same
-            floor rather than each floating at its own height. */}
-        <span
-          aria-hidden="true"
-          className="absolute bottom-[7px] left-1/2 h-[6px] w-[46%] -translate-x-1/2 rounded-[50%] bg-black/20 blur-[2.5px]"
-        />
-        {thumb ? (
-          // eslint-disable-next-line @next/next/no-img-element -- a data URL rendered this frame; there is no file for `next/image` to optimise.
-          <img
-            src={thumb}
-            alt=""
-            draggable={false}
-            // The height is a HEIGHT and the inset is padding, because an `<img>` is a replaced
-            // element: with `height: auto` its used height is its intrinsic one, so `top` and
-            // `bottom` together do not size it the way they size a `div`. Written that way it took
-            // its width from the well, made itself square, and the well's `overflow-hidden` cut
-            // the ferris wheel off at the axle — every tile a picture of the top third of
-            // something. `object-bottom` then stands the model on the contact shadow.
-            className="absolute inset-0 size-full object-contain object-bottom pt-0.5 pb-1.5"
-          />
+        {picture ? (
+          <>
+            {/* The contact shadow is the model's own ground rectangle, projected by the studio and
+                handed over as three fractions of the picture. It was a flat `w-[46%]` of the well
+                — 83.9 px at 1440 under a carousel drawn 38 px wide, and 8.8× the width of a small
+                prop — i.e. a shadow that contradicted the thing standing on it. */}
+            <span
+              aria-hidden="true"
+              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/22 blur-[2.5px]"
+              style={{
+                left: `${picture.shadowLeft * 100}%`,
+                top: `${(1 - picture.shadowBottom) * 100}%`,
+                width: `${picture.shadowWidth * 100}%`,
+                height: `${picture.shadowHeight * 100}%`,
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element -- a data URL rendered this frame; there is no file for `next/image` to optimise. */}
+            <img
+              src={picture.url}
+              alt=""
+              draggable={false}
+              // `size-full` and not an inset: an `<img>` is a replaced element, so `top` and
+              // `bottom` together do not size it the way they size a `div` — written that way it
+              // took its width from the well, made itself square, and the well's `overflow-hidden`
+              // cut every ferris wheel off at the axle.
+              className="absolute inset-0 size-full object-contain"
+            />
+          </>
         ) : (
-          <Icon className="absolute top-[46%] left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 text-black/40" />
+          // No shadow under an icon. A pictogram is a label, not a thing standing on the stage,
+          // and the round-1 tile gave twenty building glyphs a contact shadow apiece.
+          <Icon className="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 text-black/40" />
         )}
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
@@ -431,18 +523,31 @@ function Toolbelt({
         TRAY,
         BAR_WIDTH,
         'flex h-[52px] items-center gap-2 px-2',
-        'max-sm:h-auto max-sm:flex-wrap max-sm:gap-1.5 max-sm:py-2'
+        'max-sm:h-auto max-sm:flex-wrap max-sm:gap-1 max-sm:py-2'
       )}
       data-build-belt=""
     >
-      <div className={cn(SINK, 'flex h-9 shrink-0 flex-col justify-center px-2.5 max-sm:h-11')}>
-        <span className={cn(MICRO_LABEL, 'leading-none')}>{t('tools.cost.label')}</span>
+      {/* Six 44 px keys, a cost and two rules is 394 px of content in the 376 a 390 px phone
+          leaves, so the belt wrapped and left ONE key on a second row: 110 px tall against 52.
+          The three things that gave the 18 px back are all readouts rather than controls — the
+          rules, the word "Kosten" over a figure that is already the only figure on the belt, and
+          4 px of gap. Nothing was shed and no key got smaller than its 44 px phone tier. */}
+      <div
+        className={cn(
+          SINK,
+          'flex h-9 shrink-0 flex-col justify-center px-2.5',
+          'max-sm:h-11 max-sm:justify-center max-sm:px-2'
+        )}
+      >
+        <span className={cn(MICRO_LABEL, 'leading-none max-sm:hidden')}>
+          {t('tools.cost.label')}
+        </span>
         <span className="text-[14px] leading-tight font-bold text-(--game-accent-2) tabular-nums">
           {armedCost == null ? t('tools.cost.idle') : money(armedCost, locale, t)}
         </span>
       </div>
 
-      <span className={cn(BELT_RULE, 'h-6')} aria-hidden="true" />
+      <span className={cn(BELT_RULE, 'h-6 max-sm:hidden')} aria-hidden="true" />
 
       {(['select', 'move', 'delete'] as ToolId[]).map((tool) => {
         const Icon = TOOL_ICONS[tool];
@@ -501,7 +606,7 @@ function Toolbelt({
         </span>
       </BeltKey>
 
-      <span className={cn(BELT_RULE, 'h-6')} aria-hidden="true" />
+      <span className={cn(BELT_RULE, 'h-6 max-sm:hidden')} aria-hidden="true" />
 
       <BeltKey
         label={t('tools.undo')}
@@ -685,22 +790,22 @@ function groupLabel(kind: string, t: Translate): string {
  * unmounts while its render is queued does not write into a dead component — the queue still
  * finishes the render, because the next time that tab is opened the answer is already there.
  */
-function useThumbnail(api: ToolsMainApi, item: PaletteItem): string | null {
+function useThumbnail(api: ToolsMainApi, item: PaletteItem): ThumbnailPicture | null {
   // Seeded from the cache during the first render rather than written by the effect: a tab
   // re-opened is a synchronous cache read, and a picture that is already there may not cost a
   // second render pass to appear.
-  const [url, setUrl] = useState<string | null>(() => api.thumbnail(item.key));
+  const [picture, setPicture] = useState<ThumbnailPicture | null>(() => api.thumbnail(item.key));
   useEffect(() => {
-    if (url) return;
+    if (picture) return;
     let live = true;
     void api.requestThumbnail(item.key).then((next) => {
-      if (live && next) setUrl(next);
+      if (live && next) setPicture(next);
     });
     return () => {
       live = false;
     };
-  }, [api, item.key, url]);
-  return url;
+  }, [api, item.key, picture]);
+  return picture;
 }
 
 /**

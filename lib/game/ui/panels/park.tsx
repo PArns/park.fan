@@ -58,8 +58,19 @@ export function ParkPanel({ t, locale, ui }: PanelBodyProps) {
   const totals = s.totals;
 
   return (
-    <div className="flex flex-col gap-[11px]">
-      <div className="grid grid-cols-2 gap-1.5">
+    <div className="flex flex-col gap-2.5">
+      {/*
+        The four tiles are drawn BELOW `sm` only, and it is not a responsive nicety — it is the
+        panel refusing to repeat the bar. Above `sm` the top bar already carries cash, guests and
+        mood as three grooves of its own, so this grid was the same three figures a second time,
+        98 px down a column that was 94 px too long for the window it stands in. Below `sm` the
+        bar drops all three (`phone: false` in `main.ts`, measured: the desktop row needs 415 px
+        of chrome in the 366 a 390 px phone leaves), and this is where they went.
+
+        The fourth, the takings, is in neither bar, so it moved into the shops section — which is
+        where it comes from.
+      */}
+      <div className="grid grid-cols-2 gap-1.5 sm:hidden">
         <FigureTile label={t('hud.guests')} value={count(totals.guests, locale)} />
         <FigureTile
           label={t('park.happiness')}
@@ -84,7 +95,7 @@ export function ParkPanel({ t, locale, ui }: PanelBodyProps) {
               }))}
             />
             <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
-              {s.crowd.slice(0, 5).map((c) => (
+              {s.crowd.slice(0, 4).map((c) => (
                 <span key={c.state} className="inline-flex items-center gap-1.5 text-[11px]">
                   <span
                     className={cn(
@@ -131,20 +142,34 @@ export function ParkPanel({ t, locale, ui }: PanelBodyProps) {
           label={t('park.shopsOpen')}
         />
         <DataRow label={t('park.atTheCounter')} value={count(totals.shopQueue, locale)} />
+        <DataRow label={t('park.takings')} value={money(totals.takingsToday, locale)} />
       </Section>
 
-      <Section label={t('park.network')}>
-        <DataRow label={t('park.pathNodes')} value={count(totals.pathNodes, locale)} />
-        <DataRow
-          label={t('park.pathIslands')}
-          value={totals.pathIslands}
-          tone={totals.pathIslands > 1 ? 'warn' : 'neutral'}
-          hint={totals.pathIslands > 1 ? t('park.pathIslands.hint') : undefined}
-        />
-        {totals.trains > 0 ? (
-          <DataRow label={t('park.trains')} value={`${totals.trains} · ${totals.trainCars}`} />
-        ) : null}
-      </Section>
+      {/*
+        The network section is drawn only when it has something to SAY, which is the second half
+        of the same content decision the tiles above are the first half of.
+
+        `Path nodes: 1,534` is a diagnostic — nobody builds anything differently for it — and it
+        was two of the four rows that put this panel 94 px past the bottom of its own column at
+        1280 x 720. What is left is a warning and a fact: a second path network means guests are
+        stranded on it, and a train count exists only in a park that has one. In the demo park
+        the whole section is now absent, which is what a healthy path network should look like.
+      */}
+      {totals.pathIslands > 1 || totals.trains > 0 ? (
+        <Section label={t('park.network')}>
+          {totals.pathIslands > 1 ? (
+            <DataRow
+              label={t('park.pathIslands')}
+              value={totals.pathIslands}
+              tone="warn"
+              hint={t('park.pathIslands.hint')}
+            />
+          ) : null}
+          {totals.trains > 0 ? (
+            <DataRow label={t('park.trains')} value={`${totals.trains} · ${totals.trainCars}`} />
+          ) : null}
+        </Section>
+      ) : null}
 
       {!s.live ? <EmptyNote>{t('park.noSim')}</EmptyNote> : null}
     </div>
@@ -158,7 +183,7 @@ export function GuestsPanel({ t, locale, ui }: PanelBodyProps) {
   const totals = s.totals;
 
   return (
-    <div className="flex flex-col gap-[11px]">
+    <div className="flex flex-col gap-2.5">
       <div className={cn(HUD_WELL, 'flex items-center gap-3 px-3 py-2.5')}>
         <Users className="size-5 shrink-0 text-white/45" />
         <Figure label={t('park.inThePark')} value={count(totals.guests, locale)} />
@@ -246,7 +271,7 @@ export function WeatherPanel({ t, locale, ui }: PanelBodyProps) {
   const handle = runtime.handle();
 
   return (
-    <div className="flex flex-col gap-[11px]">
+    <div className="flex flex-col gap-2.5">
       <div className="flex items-center gap-2">
         <span className={cn(HUD_WELL, 'px-2 py-1 text-xs font-medium text-white/85')}>
           {t(`season.${w.season}` as GameStringKey)}

@@ -205,3 +205,110 @@ where this folder should be asking each of them by name.
 the time. What shipped instead is the direct import, with `buildings` deliberately left out (its
 folder was mid-round) — so a wall, a roof and a column still show the kind icon rather than a
 picture, and that is the first thing this seam would fix.
+
+---
+
+## 8. The build tray shows a band of bare park through its own body at 768 px-tall windows — **for `ui`**
+
+Round 2's critic found it and it is not in this folder, so it is written here rather than fixed
+there: at **1024 × 768, 1152 × 768 and 1366 × 768** the tray paints a horizontal band of
+unblurred, full-contrast park through its own body at **y ≈ 575–615** — about 40 px — with two
+rows of tiles drawn over it. It does not appear at 900 px of height.
+
+**What the band actually is, measured in the critic's own frame**
+(`.game-render/critic-moulded/clip-d-1152x768.png`, sampled across the tray's full width):
+
+| rows                                 | mean RGB inside the tray | luma variance |
+| ------------------------------------ | ------------------------ | ------------: |
+| y 545–560 — a tile row, tray painted | (115.0, 152.2, 120.4)    |       1,227.9 |
+| **y 578–612 — the band**             | **(72.1, 107.2, 50.4)**  |     **116.6** |
+| the park OUTSIDE the tray, same rows | (55.7, 83.1, 42.2)       |         134.4 |
+
+So inside the band the park is **blurred** (variance 117 against 134 for the same rows outside, and
+the sheen and the tile edges that give the row above its 1,228 are absent) and it is **not
+darkened**: `TRAY`'s `backdrop-blur-[24px]` is painting there and its
+`bg-(--game-hud)` — `oklch(0.25 0.036 246 / 0.8)` — is not. That is a fill that failed to paint over
+part of an element whose backdrop filter did, which is a compositing question rather than a layout
+one, and it is why the row of tiles and the tab strip below the band are drawn straight onto the
+park with no body behind them.
+
+**It does not reproduce here**, in five configurations, which is worth as much as the measurement:
+
+| build                            | viewport   | tab     | band |
+| -------------------------------- | ---------- | ------- | ---- |
+| shipped `8ae6990` (prod `:3100`) | 1152 × 768 | shops   | none |
+| shipped `8ae6990` (prod `:3100`) | 1152 × 768 | scenery | none |
+| this round (dev `:3001`)         | 1024 × 768 | scenery | none |
+| this round (dev `:3001`)         | 1024 × 768 | rides   | none |
+| this round (dev `:3001`)         | 1152 × 768 | shops   | none |
+
+The second row is your own tab at your own width on your own build. The tray's measured height at
+768 px is **357.3 px in both builds** — the grid's `max-h-[min(38vh,320px)]` caps it — so this
+round's taller tiles did not move it and cannot be what hid the band.
+
+The critic's frame has two things none of mine had: the **park panel docked** on the right (so the
+bar's box is 780 px rather than 1088) and a **toast** over the park on the left. If it is
+compositing, the number of stacked `backdrop-filter` surfaces is exactly the kind of thing that
+decides it.
+
+What this module owns and has checked:
+
+- The tray is one `<section>` carrying `TRAY` (`bg-(--game-hud)` at `oklch(… / 0.8)` plus
+  `backdrop-blur-[24px]`) with `overflow-hidden` and the tab strip as its last child. There is no
+  element in `build-bar.tsx` with a transparent background at that offset, and nothing in it is
+  positioned, transformed or `will-change`d.
+- The only height that is a function of the viewport is the tile grid's
+  `max-h-[min(38vh,320px)]`, which at 768 px is **291.84 px — a fractional used height on a
+  scroll container**, and the band is roughly at its lower edge. That is the one thing on this
+  side worth suspecting, and it is why the number is in this request rather than only in the
+  screenshot.
+
+`TRAY`, `--game-hud`, `--game-sheen` and the HUD's own stacking live in `lib/game/ui/surface.ts`
+and `lib/game/core/game.css`, both of which are `ui`'s. Two questions this module cannot answer
+from here: whether a `backdrop-filter` element in that cluster is being split by an ancestor that
+becomes a backdrop root at some heights and not others, and whether the bottom cluster's own
+container clips the tray. If the answer turns out to be the fractional max-height, say so and this
+module will round it — that is a one-line change on this side and it should not be guessed at from
+here.
+
+---
+
+## 9. A misting station is drawn as a round kiosk with a green canopy — **content, not code**
+
+`neon-lagoon`'s `misting-station` declares `"procedural": "kiosk-round"`, which is the same
+generator `ice-cream`, `lemonade`, `information` and `smoothie` use. The tile now renders what the
+game will actually build, so the picture is **accurate and still wrong**: what gets built is a
+kiosk, and a misting station is an arch you walk through.
+
+Round 2's critic put it exactly right — "a picture that shows the wrong thing is worse than an
+icon, because a reader believes it" — and the sentence is now about the pack rather than about the
+studio: the thumbnail cannot be more honest than the geometry it photographs. Two ways to close it,
+both outside this folder:
+
+1. `shops/` grows a `misting` form beside `round`, `block`, `unit`, `machine` and `kiosk`, and the
+   pack names it. One `case` in `shops/build.ts` and one string in `pack.json`.
+2. Failing that, the pack points it at `machine` (the ATM's form), which is at least not a food
+   counter with an awning.
+
+Five shops sharing one building is a separate and much smaller thing: they are five kiosks in a
+real park too, and with the frame now on the building rather than on its plot their sign colours
+(`#ff9ecb`, `#fff176`, white, `#16e0c8`) and their glyphs are what tells them apart. The measured
+distinctness is in the report.
+
+---
+
+## 10. Coasters and flumes: a preview needs a stub of track, not a point
+
+Seven of 65 palette items still have no picture — four coasters and three flumes — and they are the
+only ones left. They are `route` items: there is no geometry until somebody draws a layout, so
+there is nothing for the studio to photograph, and the tile falls back to the icon the PACK asks
+for (`build-bar.tsx`'s `PACK_ICONS`, new this round) rather than to one glyph for the whole tab.
+
+The honest picture for a route item is **a few metres of its own track**: `track/` already exports
+`resolveStyle`, `buildTrack`, `buildTrackGeometry` and `TRACK_LAYOUTS`, so a straight-plus-curve
+stub in the item's own style, gauge and colour would separate a wooden classic from a steel hyper
+from an inverted family coaster, and would be true — that is what the rails will look like. What it
+needs from `track` is one exported function that turns a `rides` item key into a short `TrackData`,
+because inventing a layout inside `lib/game/tools/` would be putting content in a tool.
+
+Same shape for `flumes`. Both are the request in §7 with a different noun.

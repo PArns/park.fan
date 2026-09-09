@@ -87,20 +87,20 @@ export function FigureTile({
 }) {
   return (
     <div
-      className={cn(SINK, 'flex min-w-0 flex-col overflow-hidden px-2.5 pt-1', className)}
+      className={cn(SINK, 'flex min-w-0 flex-col overflow-hidden px-2 pt-1', className)}
       title={hint}
     >
       <div
         className={cn(
           HUD_VALUE,
-          'flex items-center gap-1.5 pb-0.5 text-[15px] leading-tight',
+          'flex items-center gap-1.5 pb-0.5 text-[14px] leading-tight',
           TONE_TEXT[tone]
         )}
       >
         {icon ? <span className="shrink-0 text-white/32">{icon}</span> : null}
         <span className="truncate">{value}</span>
       </div>
-      <div className={cn(LABEL_BAND, '-mx-2.5 truncate px-2.5 pt-[3px] pb-[3px]')}>{label}</div>
+      <div className={cn(LABEL_BAND, '-mx-2 truncate px-2 pt-[3px] pb-[3px]')}>{label}</div>
     </div>
   );
 }
@@ -210,7 +210,7 @@ export function DataRow({
 }) {
   return (
     <div
-      className="flex items-baseline justify-between gap-3 border-t border-white/[0.055] py-1 first:border-t-0"
+      className="flex items-baseline justify-between gap-3 border-t border-white/[0.055] py-[3px] first:border-t-0"
       title={hint}
     >
       <span className="min-w-0 truncate text-xs text-white/62">{label}</span>

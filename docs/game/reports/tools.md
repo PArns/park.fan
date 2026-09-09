@@ -564,3 +564,437 @@ above is an upper bound and the draw-call and triangle counts are the only numbe
 - Four i18n keys were appended to `lib/game/i18n/en.ts` and `de.ts`: `tools.palette.count`,
   `tools.item.route`, `tools.cost.label`, `tools.cost.idle`. `tools.cost.idle` is an EN DASH and not
   the em dash the spec wrote, because `scripts/test-game-i18n.mjs` fails on any `—` in a game string.
+
+---
+
+# Round 3 — the twenty tiles with no picture, and the picture that was a tenth of its well
+
+Round 2 shipped at `8ae6990` and an independent critic graded it **7.5 against a bar of 8.5**. What
+he confirmed is unchanged and re-measured here: the pictures are real renders, they are different,
+and they are deterministic — he harvested every tile's `<img>`, hashed it, and got 18 rendered, 18
+distinct SHA-256s, zero byte-identical pairs, **21/21 byte-identical across two separate page
+loads**, and the same bytes again with the clock set to 23:00 before anything rendered.
+
+**One correction to round 2's own report before anything else.** It claimed `2300-ride-bar.png` was
+"byte-for-byte the same five pictures as 13:00" and offered that as the proof the studio has no
+clock. The `report.json` beside those shots shows the 23:00 pass did not carry the clock the report
+thought it did. The conclusion is true — the critic proved it properly, and it is proved again
+below with the clock set before the first render — but the evidence offered did not support it, and
+a report that is wrong about its own screenshots is a finding about the module. It is recorded
+rather than quietly fixed.
+
+Everything below was measured with `scripts/game-shot-bar.mjs`, which now harvests every tile —
+the SHA-256 of its `<img>` source, the well's box, the picture's intrinsic size, and the bounding
+box of its non-transparent pixels — and with `--dump=1` writes each picture to
+`<out>/tiles/<tab>/<key>.png` so two runs can be diffed pixel by pixel rather than compared by eye.
+That is the critic's own method, and it belongs in the builder's harness.
+
+## The six findings, and what happened to each
+
+| #   | the finding                                                           | what happened                                                                                           | §    |
+| --- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ---- |
+| 1   | 27 of 65 items have no picture; **0 of 20 buildings** have one        | **fixed** — 20/20 drawn, 20/20 distinct hashes; 7 route items left, on the pack's own icon              | 1, 6 |
+| 2   | eight of twelve shops are two clusters of one picture, one is a lie   | **not fixed, and measured**: 0.11–2.07 % of pixels differ; it is the pack's geometry, filed             | 5    |
+| 3   | the picture is drawn at ~a tenth of its well; the ortho box is square | **fixed** — render, box and well are one 2:1 aspect; ink 13.3 → 23.9 % (scenery), 22.9 → 55.0 % (shops) | 2, 3 |
+| 4   | the contact shadow is a fixed 46 % and knows nothing about the model  | **fixed** — the studio projects the ground rectangle and reports it as four fractions                   | 4    |
+| 5   | the tray punches a band of bare park at 768 px of height              | **measured and handed to `ui`**; not reproduced in five configurations, two of them the critic's own    | 11   |
+| 6   | the phone bar is 511.5 of 844 px and the belt wraps to an orphan key  | **fixed** — 373.5 px, belt 110 → 60, one row of seven keys, document still 390 px                       | 8    |
+
+## Which server every number came from
+
+| where                                                            | what                                                                                                                        |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **production `:3100`**, built 16:02 — the graded `8ae6990` build | every BEFORE figure: `.game-render/tools-r2-before/`, `-before-tiles/`, `-phone-before/`, `-band-before/`, `-band-scenery/` |
+| **dev `:3001`**                                                  | every AFTER figure: `.game-render/tools-r2-after/`, `-phone2/`, `-night/`, `-768/`, `-band-after/`                          |
+
+There is no production build of this round and I did not make one: `pnpm build` rewrites the `.next`
+that `:3001` and `:3100` are both serving out of, and two other agents are working against them.
+The cost is named in "what is weak": a dev server flushes different chunks and rebuilds under
+whoever saves a file, and one complete four-tab run was lost to exactly that mid-run.
+
+## 1. Buildings: 0 of 20 → 20 of 20, and 20 distinct pictures
+
+The largest tab in the palette drew twenty identical grey Lucide `Home` glyphs — "Brick wall",
+"Arched window", "Slate roof" and "Timber floor" were four names over one picture, which is the
+complaint this whole studio exists to answer.
+
+**Why it produced nothing:** round 2 left `building` out of `SOURCES` on purpose and said so — that
+folder had a builder in it at the time. It has been graded since (round 2, 8.2, `209a78b`), and the
+seam it needed was already exported: `buildKitPiece` for a wall, a roof, a floor, a column or a
+canopy, `buildBuilding` for a blueprint, and `resolveBuilding` to say which of the two an item is —
+from the item's own `category`, which is schema. No pack id and no item id entered this folder.
+
+```
+BEFORE  (prod :3100)  building: 0/20 tiles drawn,  0/0  distinct pictures
+AFTER   (dev  :3001)  building: 20/20 tiles drawn, 20/20 distinct pictures
+```
+
+Two things in that source are deliberate and both are about not reaching into the module being
+photographed. `buildings/geometry.ts` keeps the atlas's half-texel inset in a **module-level
+variable** that `setAtlasResolution` writes, and every UV the builder emits bakes it in — so a studio setting it to its own 96 px would change the UVs of the
+next building the PARK builds. The studio does not call it; it takes whatever inset the park has
+set and pays a fraction of a texel of bleed on a 91 px tile. And `halo` — the additive spill a lit
+window throws after dark — is not drawn at all: at the studio's fixed daylight it contributes
+black, which is a draw call that renders nothing.
+
+## 2. The frame was square, the well was 2.76:1, and the picture fitted by the wrong axis
+
+`thumbs.ts` sized the orthographic box square and rendered it into a 256² target, while the tile's
+well was 182.4 × 66 CSS px. `object-contain` fits by the tight axis, so the image box collapsed to
+**66 × 66 inside a 182.4 × 66 well** — 24 % of it — and a model that is wider than it is tall then
+used a third of that square.
+
+Both halves are fixed. The render target, the orthographic box and the well are now **one aspect
+ratio, 2:1** (320 × 160 px, which is 1.75× the desktop well's width and 51,200 pixels against the
+old square's 65,536 — the readback got cheaper as the picture got bigger). `halfY` is whichever of
+the two constraints binds and `halfX` is `halfY × THUMB_ASPECT`, so a wide model fills the width, a
+tall one fills the height, and neither is ever cropped.
+
+Measured over every tile in the palette, as the ink box's area over the well's area (the ink box is
+the bounding box of the picture's non-transparent pixels, walked in the browser; `--game-stage`
+behind it is not part of the picture):
+
+| tab           | before, mean | after, mean | worst before        | worst after         |
+| ------------- | -----------: | ----------: | ------------------- | ------------------- |
+| **scenery**   |       13.3 % |  **23.9 %** | lamp-modern 4.7 %   | lamp-modern 6.3 %   |
+| **shops**     |       22.9 % |  **55.0 %** | atm 20.6 %          | atm 50.0 %          |
+| **rides**     |       14.0 % |  **22.9 %** | ferris-wheel 12.4 % | ferris-wheel 17.2 % |
+| **buildings** |   no picture |  **40.4 %** | —                   | column-stone 14.2 % |
+
+In linear terms the drawn model is 1.4–2.7× bigger: the carousel goes 43.3 → 70.7 CSS px wide and
+35.3 → 57.6 tall, a park bench 60.6 → 89.5, an ice-cream kiosk 60.8 → 113.4, the neon light strip
+61.9 → 168.7, and even the worst case — a lamp post that is 1:5 — goes 10.8 → 14.8.
+
+**What is still bounded, and by what.** Coverage is now limited by each model's own aspect against
+a 2:1 well, not by the frame's shape: a Victorian lamp post is about 1:5, so in ANY frame that
+fits it vertically it can only ever be ~7 % of a 2:1 well. A squarer well would fix that and costs
+a row — at 5 columns in a 1024 px tray, going to 3:2 makes the tile 160 px and two rows 328 px
+against the tray's own 320 px cap. I chose the rows. It is a trade and it is the reason the
+palette's overall mean is **35.9 %** (58 tiles, weighted) rather than 50.
+
+## 3. The apron is not the shop, and the source is the only one that knows
+
+Framing the bounding box meant framing the PLOT: `shops/build.ts` draws the apron, its kerb, its
+queue rail and its planters into the same surface as the kiosk, so two thirds of the tile was
+concrete. The first fix was a heuristic — drop everything below hip height, take what is left — and
+it was wrong at both ends: a queue rail is 1.05 m tall and runs the whole length of the apron, so
+the frame did not move, while a fountain's upper tiers are narrower than its basin, so the basin
+would have been cropped. **There is no height that means "ground furniture" for every model.**
+
+So `PreviewBuild` grew an optional `focus` box and the source fills it, because the source is the
+only one that knows. `shops` is handed the building's own footprint and `buildShop` reports where it
+put the front face, so the box is the building plus 0.9 m for the awning and the bracket sign.
+`buildings` declares its built extent in the manifest, apron excluded — the pack says so in a
+comment and the buildings selftest measures the geometry against it. `scenery` and `rides` leave it
+out: a tree and a carousel have no plot. The vertical extent is always the whole model, so nothing
+is ever cropped in height; the ground runs off the sides, which is what ground does.
+
+## 4. The contact shadow now knows how big the thing on it is
+
+It was `w-[46%]` of the well — 83.9 px at 1440, 72.5 at 1280, 40.5 at 390 — under a carousel whose
+ink was 43.3 px wide, a litter bin's 23.7 and a Victorian lamp post's **10.8**, so the shadow was
+1.9× the carousel and 7.8× the lamp, and identical under both. The studio already projects the model's ground rectangle in
+order to frame it, so it reports it: `ThumbnailPicture` carries `shadowWidth`, `shadowHeight`,
+`shadowBottom` and `shadowLeft`, four fractions of the picture's own box, and the tile styles the
+ellipse from them. `shadowLeft` is not 0.5 and that is the point — the frame is centred on the whole
+model, and a tall thing seen from 34° puts its base off to one side of its own silhouette.
+
+An icon gets **no** shadow now. A pictogram is a label, not a thing standing on the stage, and the
+round-2 tile gave twenty building glyphs a contact shadow apiece.
+
+## 5. Eight of twelve shops are still two clusters of the same picture, and I did not fix it
+
+This is the one finding of the six I am not claiming. The frame is fixed — the plaza no longer owns
+the tile — and the pictures are still, for a reader, the same picture. Measured on the dumped
+renders, 320 × 160 = 51,200 pixels each, counting pixels whose channels differ by more than 8:
+
+| pair                         | pixels differing |         |
+| ---------------------------- | ---------------: | ------- |
+| lemonade vs smoothie bar     |               56 | 0.11 %  |
+| ice cream vs lemonade        |               77 | 0.15 %  |
+| ice cream vs smoothie bar    |               91 | 0.18 %  |
+| burger stand vs first aid    |              705 | 1.38 %  |
+| ice cream vs information     |            1,060 | 2.07 %  |
+| ice cream vs misting station |            8,313 | 16.24 % |
+| burger stand vs beach grill  |           12,444 | 24.30 % |
+
+**The before numbers on this metric were bigger and meant less**, which is worth writing down: the
+same pairs measured on the shipped build differ in 16.3 % (ice cream vs information) and 20.3 %
+(burger vs first aid) of their pixels. That is not distinguishability, it is FRAMING — the old
+frame was fitted to each item's whole plot, so two identical kiosks with different aprons were
+drawn at different scales and in different places, and a difference in scale is a large pixel
+difference that a reader sees as nothing at all. With the framing normalised the metric says what
+it means, and what it says is 2.07 % and 1.38 %.
+
+`kiosk-round` is declared by five items and `kiosk-a` by three. What separates them inside the
+geometry is the signage colour (`#ff9ecb`, `#fff176`, none, `#16e0c8`), the fascia glyph and the
+menu board — and the signage really is applied, the studio lights it to full for exactly this
+reason. It is **about fifty pixels of a fifty-thousand-pixel picture**. No framing fixes that; the
+two clusters that differ visibly (misting station, beach grill) differ because their footprints
+differ, not because anything about them is drawn differently.
+
+And the critic's harder sentence stands: **misting station is a lie.** It renders a food kiosk with
+an awning because that is what the game will build, so the picture is accurate and still wrong. The
+studio cannot be more honest than the geometry it photographs. Both halves are content — a `misting`
+form in `shops/build.ts` and one string in `neon-lagoon/pack.json` — and are filed as
+[requests §9](../requests/tools.md). What the palette has in the meantime is what round 2 built the
+three-row tile for: the name, the cost and the footprint, which do separate them.
+
+## 6. Route items: seven with no picture, and the pack's own icon instead of one glyph per tab
+
+Four coasters and three flumes are `route` items — there is no geometry until somebody draws a
+layout — and they are the only tiles left without a render. Every pack in this repo carries an
+`icons` map (`"ice-cream": "lucide:ice-cream-cone"`) and **nothing read it**: the tile fell straight
+through to the KIND icon, so four coasters were one train and three flumes were one wave.
+`PACK_ICONS` in `build-bar.tsx` is a table of _Lucide_ names — not of content, no pack id and no
+item id in it — and a name that is not in it still falls back to the kind's glyph. It takes the
+seven from 2 glyphs to 3, because `core-classic` genuinely asks for `lucide:roller-coaster` three
+times. It is a floor under a missing picture, not an answer to one; the answer is a stub of the
+item's own track, filed as [requests §10](../requests/tools.md).
+
+## 7. What changed in the folder
+
+| File               | Lines |                                                                                                            |
+| ------------------ | ----: | ---------------------------------------------------------------------------------------------------------- |
+| `thumbs.ts`        |   720 | 2:1 render target and orthographic box, the `focus` frame, the projected contact shadow, the picture type. |
+| `thumb-sources.ts` |   530 | **`buildingSource`** — 20 tiles that had none — and the `focus` box on shops and buildings.                |
+| `build-bar.tsx`    |   872 | The well is the picture's own aspect, the shadow comes from the studio, `PACK_ICONS`, the phone belt.      |
+| `main.ts`          |   760 | `thumbnail()` / `requestThumbnail()` answer a `ThumbnailPicture` rather than a string.                     |
+
+Outside it: `docs/game/requests/tools.md` (+3 sections) and this report. **No i18n key was added or
+changed** — nothing in this round needed a new string, and `lib/game/i18n/{en,de}.ts` are untouched.
+
+`lib/game/tools/shot-bar.mjs` → **`scripts/game-shot-bar.mjs`**, which the round-2 critic asked
+about. It is moved, not justified: every other harness in this repo is in `scripts/`
+(`game-shot.mjs`, `check-game-teardown.mjs`), and a module folder is the thing being measured
+rather than the place the tape measure is kept. `selftest.mjs` stays where it is — that one really
+is the module's own, and `pnpm test:game-tools` runs it from there.
+
+### The API change
+
+```ts
+-thumbnail(key: string): string | null
+-requestThumbnail(key: string): Promise<string | null>
++thumbnail(key: string): ThumbnailPicture | null          // { url, shadowWidth, shadowHeight, shadowBottom, shadowLeft }
++requestThumbnail(key: string): Promise<ThumbnailPicture | null>
+```
+
+`build-bar.tsx` is the only consumer in the repo. The four fractions are the one thing the tile
+cannot work out for itself, and were a hard-coded 46 % before.
+
+## 8. On a phone the bar was three fifths of the screen
+
+| 390 × 844           | before (`:3100`) | after (`:3001`) |
+| ------------------- | ---------------: | --------------: |
+| whole build bar     |     **511.5 px** |    **373.5 px** |
+| share of the screen |           60.6 % |      **44.3 %** |
+| the build tray      |         393.5 px |    **305.5 px** |
+| the toolbelt        |           110 px |       **60 px** |
+| the picture well    |          88 × 56 |    **104 × 52** |
+| document width      |           390 px |          390 px |
+
+Both halves measured myself, on both servers — the critic's 511.5 is reproduced to the tenth.
+
+The belt was 110 px because it **wrapped and left one key alone on a second row**: six 44 px keys,
+a cost readout and two separators is 394 px of content in the 376 a 390 px phone leaves. The 18 px
+came back from three things that are all readouts rather than controls — the two `BELT_RULE`
+separators, the word "Kosten" over a figure that is already the only figure on the belt, and 4 px
+of gap. **Nothing was shed and no key got smaller than its 44 px phone tier**, which is the number
+`components/ui/button.tsx` gives `icon` below `sm`.
+
+The other 88 px is the tray, whose tile grid takes its own cap below `sm`
+(`max-sm:max-h-[min(30vh,232px)]` against `min(38vh,320px)`): 38 vh of an 844 px phone is 321 px of
+tiles under a 44 px tab strip and over a toolbelt. Three rows are visible and it scrolls, as before.
+
+## 9. Determinism, and this time the evidence matches the claim
+
+The pictures are keyed `pack:item@packVersion` and nothing in the studio reads a clock. Proved by
+harvesting the SHA-256 of every tile's `<img>` source across three independent page loads and
+comparing them by key:
+
+| run                                                                       |                                  shop tab |
+| ------------------------------------------------------------------------- | ----------------------------------------: |
+| desktop 1440 × 900, 13:00                                                 |                  12 pictures, 12 distinct |
+| desktop 1440 × 900, **clock set to 23:00 before the first tile rendered** | **12/12 byte-identical to the 13:00 run** |
+| phone 390 × 844, 13:00 — a different viewport and a different page load   |          **12/12 byte-identical to both** |
+
+All three agree on all twelve, so the same twelve hashes survive a reload, a viewport and the
+clock. That is the claim round 2 made and did not support; this is `--tod=23:00` as the FIRST and
+only time of day in the run, so the clock is set before `[data-build-bar]` has drawn a tile.
+
+`2300-shop-bar.png` beside `1300-shop-bar.png` shows it to the eye as well: the same twelve
+pictures against a night park.
+
+## 10. What it costs the park: nothing, same as before
+
+From `.game-render/tools-r2-after/report.json`, the demo park at 1440 × 900 with all four tabs
+opened and 58 pictures rendered:
+
+|                                        |                                                            |
+| -------------------------------------- | ---------------------------------------------------------- |
+| Items drawn                            | **58 of 65** — 12 shops, 20 buildings, 5 rides, 21 scenery |
+| Items refused                          | **0**                                                      |
+| Draw calls, before the palette / after | **415 / 415**                                              |
+| Triangles, before / after              | **506,014 / 506,014**                                      |
+| Console errors                         | **0**                                                      |
+| Work per item, mean                    | 2.86 s (SwiftShader, three agents on the box)              |
+| Waiting for shaders, total             | 224 ms over 58 items                                       |
+
+The studio adds nothing to the park's frame — it is a second `Scene` whose render target is asked
+to draw and whose `scene.render()` is never called — and the render target got 22 % cheaper this
+round: 320 × 160 = 51,200 pixels against the old square's 65,536.
+
+Two `WebGL: INVALID_VALUE: bufferSubData: buffer overflow` warnings appear in the console. They are
+in the **shipped `8ae6990` build too**, identically, twice, with the palette never opened — the
+same two lines in `.game-render/tools-r2-before/report.json`. Not this round's, and not the
+studio's; recorded because a warning nobody has claimed is a warning that will be claimed by the
+next person to read a console.
+
+## 11. The band of bare park at 768 px of height: measured, not reproduced, handed over
+
+The critic found the build tray punching a ~40 px band of bare park through its own body at
+1024 × 768, 1152 × 768 and 1366 × 768, at y ≈ 575–615, with two rows of tiles painted over it. The
+cause is very probably not in this folder — `TRAY`, `--game-hud` and the HUD's stacking are `ui`'s
+— so it went into `docs/game/requests/tools.md` §8 rather than into somebody else's file. What this
+round contributes is a measurement and five negative results.
+
+**What his frame shows.** Sampling `.game-render/critic-moulded/clip-d-1152x768.png` across the
+tray's full width:
+
+| rows                                 | mean RGB inside the tray | luma variance |
+| ------------------------------------ | ------------------------ | ------------: |
+| y 545–560 — a tile row, tray painted | (115.0, 152.2, 120.4)    |       1,227.9 |
+| **y 578–612 — the band**             | **(72.1, 107.2, 50.4)**  |     **116.6** |
+| the park OUTSIDE the tray, same rows | (55.7, 83.1, 42.2)       |         134.4 |
+
+Inside the band the park is **blurred** — variance 117 against 134 for the same rows outside the
+tray — and it is **not darkened**. So `TRAY`'s `backdrop-blur-[24px]` is painting there and its
+`bg-(--game-hud)` at `oklch(0.25 0.036 246 / 0.8)` is not: a fill that failed to paint over part of
+an element whose backdrop filter did. That is a compositing question rather than a layout one, and
+it is why the tiles and the tab strip below the band sit straight on the park with nothing behind
+them.
+
+**It did not reproduce, in five tries**, and that is worth as much as the measurement:
+
+| build                            | viewport   | tab     | band |
+| -------------------------------- | ---------- | ------- | ---- |
+| shipped `8ae6990` (prod `:3100`) | 1152 × 768 | shops   | none |
+| shipped `8ae6990` (prod `:3100`) | 1152 × 768 | scenery | none |
+| this round (dev `:3001`)         | 1024 × 768 | rides   | none |
+| this round (dev `:3001`)         | 1024 × 768 | scenery | none |
+| this round (dev `:3001`)         | 1152 × 768 | shops   | none |
+
+The last three rows are this round's build and the first two are the graded one at the critic's own
+width, with his own tab. The tray's measured height at 768 is **357.3 px in both builds** — the
+grid's `max-h-[min(38vh,320px)]` caps it, so this round's taller tiles did not move it and cannot
+be what hid the band.
+
+Two things his frame had that none of mine did: the **park panel docked** on the right (so the
+bar's box is 780 px rather than 1088) and a **toast** over the park on the left. If it is
+compositing, the number of stacked `backdrop-filter` surfaces is exactly the kind of thing that
+decides it — and that is the experiment `ui` should run, with the panel open.
+
+## 12. What is weak, ranked
+
+**1. Eight of twelve shops are still two clusters of one picture, measured at 0.11 % of the frame.**
+§5 has the table. I did not fix it and I could not fix it from this folder: the difference between
+ice cream, lemonade and a smoothie bar is about fifty pixels of signage in a 51,200-pixel render,
+and no framing makes fifty pixels into a distinction. The misting station is worse — it is a
+picture of the wrong thing, drawn faithfully. Both are content, both are
+[filed](../requests/tools.md#9-a-misting-station-is-drawn-as-a-round-kiosk-with-a-green-canopy--content-not-code),
+and neither is closed.
+
+**2. Coverage is bounded by each model's aspect against a 2:1 well, and the mean is 25 %.** A lamp
+post is 1:5 and can never be more than 7 % of a 2:1 well however it is framed. The well is 2:1
+because a squarer one costs a row: at five columns in a 1024 px tray, 3:2 makes the tile 160 px and
+two rows 328 px against the tray's own 320 px cap. I chose rows over inches and the number is in
+§2 either way.
+
+**3. Everything after this round is measured on a dev server.** There is no production build of it:
+`pnpm build` rewrites the `.next` that `:3001` and `:3100` are both serving out of, and two other
+agents are working against them. A `next dev` flushes different chunks, and it rebuilds when
+anybody saves a file — which tore the game down mid-run twice, once losing a completed four-tab
+run's `report.json` (the harness survives that now) and once leaving a night pass with one picture
+in it. The draw-call and triangle figures are the same on both servers and the pictures are
+byte-identical across three loads, so what is actually at risk here is the timing, and the timing
+on SwiftShader was never worth quoting.
+
+**4. The tile grew 25 px on a single-row category.** The rides tab is 5 items in one row, so its
+tray is content-height: **252.9 → 278.1 px** at 1440 × 900. Every other category overflows the
+tray's cap and is unchanged at 445.5. It is the cost of a 91 px well instead of a 66 px one and it
+is only paid where there is one row.
+
+**5. `AWNING_M = 0.9` is a number, not a measurement.** The shop `focus` box is the building's
+footprint plus 0.9 m for the awning, the bracket sign and the condiment shelf, because those hang
+off the front wall and are part of the shop. It was chosen to be comfortably larger than any
+overhang in the two bundled packs and it is not derived from anything. A pack with a 2 m canopy
+gets it clipped at the frame's edge. The right shape is `buildShop` reporting the box it drew,
+which is one more line in a folder that is not mine.
+
+**6. The studio still knows four modules by name.** `thumb-sources.ts` imports `scenery`, `shops`,
+`rides` and now `buildings` directly — four folders' internals read from a fifth — because there is
+no `preview(scene, key)` on a module's main API. It is keyed by entity KIND, so a pack that adds a
+fortieth ride still needs no code here, but a rename in any of those four costs one kind its
+pictures. Filed as [requests §7](../requests/tools.md) since round 2 and still open.
+
+**7. Nothing here is measured on real hardware.** SwiftShader renders this park at 0.4 fps, so every
+wall-clock figure is an upper bound. Draw calls, triangles, pixel counts and box geometry are real.
+
+## 13. The frames, by name
+
+Every one of these was opened and looked at.
+
+**`.game-render/tools-r2-before/`** — the graded `8ae6990` build, production `:3100`, 1440 × 900.
+
+- `1300-building-bar.png` — twenty tiles, twenty identical grey `Home` glyphs. The finding, as a
+  picture.
+- `1300-shop-bar.png` — twelve shops as small models on large concrete plots; ice cream, lemonade,
+  information and smoothie bar are the same kiosk on the same plaza.
+- `1300-scenery-bar.png` — 21 props, each a small object in a wide empty well, each with the same
+  84 px contact shadow under it whether it is a bench or a litter bin.
+- `1300-ride-bar.png` — five rides, correct and small.
+
+**`.game-render/tools-r2-after/`** — this round, dev `:3001`, 1440 × 900, `report.json` and
+`tiles/<tab>/<key>.png` beside them.
+
+- `1300-building-bar.png` — twenty buildings: a brick wall that is brick, a plaster wall that is
+  plaster, an arched window with an arch in it, a double door, a gabled slate roof, a timber floor
+  slab, a stone column, a teal concrete wall, a flat roof, a panorama window, and the blueprints
+  below them.
+- `1300-shop-bar.png` — the buildings now own the tile; the aprons run off the sides.
+- `1300-scenery-bar.png` — the props are half again as big and each contact shadow is its own size:
+  long under the bench, a dot under the lamp post, crown-wide under the oak.
+- `1300-ride-bar.png` — carousel, ferris wheel, chair swing, top spin, wave swinger, each on a
+  shadow the shape of its own base.
+- `tiles/building/parkfan_architecture_*.png` — the ticket hall, the grand pavilion, the clock
+  tower and the rotunda at 320 × 160, which is how the framing was judged before it went into a
+  tile.
+
+**`.game-render/tools-r2-night/2300-shop-bar.png`** — the same twelve pictures with the clock at
+23:00 **before the first render**, and the hashes to say so.
+
+**`.game-render/tools-r2-phone2/1300-shop.png`** — 390 × 844, panels closed: three rows of tiles,
+the tab strip, and a toolbelt that is **one row of seven keys** rather than two.
+**`.game-render/tools-r2-phone-before/1300-shop.png`** is the same phone on the shipped build, with
+the belt on two rows and one key alone on the second.
+
+**`.game-render/tools-r2-768/1300-scenery.png`** and
+**`.game-render/tools-r2-band-after/1300-shop.png`** — 1024 × 768 and 1152 × 768 with the tray full
+and scrolling, and **`-band-before/1300-shop.png`** / **`-band-scenery/1300-scenery.png`** the same
+two on the shipped build. No band of park through the tray in any of them; §11.
+
+## 14. For the integrator
+
+- **`lib/game/tools/shot-bar.mjs` is now `scripts/game-shot-bar.mjs`.** It is the only way to
+  photograph an OPEN palette, it now harvests and hashes every tile and can dump each picture to
+  disk (`--dump=1`), and it is worth a `pnpm` script. It also closes any open HUD panel before
+  shooting, because on a 390 px phone the park panel covers the entire build bar.
+- **No i18n key was added.** `lib/game/i18n/{en,de}.ts` are untouched by this round.
+- Three new sections in `docs/game/requests/tools.md`: §8 the tray's band of bare park at 768 px of
+  height (for `ui`), §9 the misting station drawn as a kiosk (content), §10 a track stub so a
+  coaster can have a picture (for `track` and `flumes`).
+- **Do not edit a file while a run is in flight against `:3001`.** `next dev` rebuilds on any save
+  and the rebuild tears `__parkfan_game` down mid-run. It cost this round two runs, one of them a
+  completed four-tab pass whose `report.json` was lost in the closing census. The harness survives
+  that now — the census is in a `try` and the shots are written before it — but the renders are not
+  free.
