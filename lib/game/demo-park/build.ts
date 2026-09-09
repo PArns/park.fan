@@ -137,6 +137,19 @@ export function buildWorld(seed: number, registry: Registry): World {
   attachPoolContent(registry);
   for (const pool of placeDemoPools(world, allocId)) world.entities[pool.id] = pool;
 
+  // 4e. The two plots this park has reserved for `buildings` since the day the pads were written:
+  // the pavilion at the north end, above its own forecourt plaza, and the ticket hall on the west
+  // flank of the entrance forecourt facing the roundel.
+  //
+  // These went in late and the reason is worth recording, because it was an integrator's mistake
+  // and not a builder's. The module verified its placement the strongest way anyone has in this
+  // project — it dispatched both entities into a RUNNING park and read the built meshes' world
+  // bounding boxes back out of the scene, 0.00 m overhang on all eight edges — and I wrote that up
+  // as though the placement had landed. It had not: verifying a call in a session is not the same
+  // as making it in the world factory, and `buildWorld` answered `{path:21, scenery:1516, shop:6,
+  // ride:4, pool:3}` for days. Its own critic found it, by counting.
+  for (const b of placeDemoBuildings(allocId)) world.entities[b.id] = b;
+
   // 5. what the main handle needs to finish the job
   const half = PARK_SIZE / 2 - DRESS_MARGIN;
   const woodland = [roles.canopyTree, roles.streetTree, roles.conifer]
@@ -303,6 +316,41 @@ function placeDemoRides(registry: Registry, allocId: (kind: string) => string): 
  * the pit it dug, so a pool that took its height from the terrain after excavation would sink by
  * its own depth every time the world was rebuilt.
  */
+/**
+ * The pavilion and the ticket hall, from `docs/game/requests/buildings.md` §1.
+ *
+ * Taken as written, which is unusual here and is earned: the module measured its own footprints
+ * against these pads in the running scene rather than proposing coordinates and hoping — 54.42 x
+ * 24.99 m in a 56 x 32 pad, 19.12 x 31.52 m in a 22 x 38 pad, clearances 0.79 to 3.69 m — and the
+ * pad-fit check is in its own selftest, so a blueprint edit that outgrows a pad fails there rather
+ * than here.
+ *
+ * `y = 0` on purpose: the renderer samples the terrain, which is what these pads are flattened for.
+ */
+function placeDemoBuildings(allocId: (kind: string) => string): Entity[] {
+  return [
+    {
+      id: allocId('building'),
+      kind: 'building',
+      pack: 'parkfan-architecture',
+      item: 'grand-pavilion',
+      // The front is +z, and +z from this pad is the forecourt plaza at z = -130.
+      position: [-8, 0, -162],
+      yaw: 0,
+    },
+    {
+      id: allocId('building'),
+      kind: 'building',
+      pack: 'parkfan-architecture',
+      item: 'ticket-hall',
+      // A quarter turn puts the +z front on +x, towards the planted roundel the street runs round.
+      position: [-33, 0, 178],
+      yaw: Math.PI / 2,
+      data: { style: 'old-town-brick' },
+    },
+  ];
+}
+
 function placeDemoPools(world: World, allocId: (kind: string) => string): Entity[] {
   const y = (x: number, z: number) => sampleHeight(world.terrain, x, z);
   return [
