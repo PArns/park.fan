@@ -1059,6 +1059,39 @@ a headliner pill, a ride-search row and the free-block button. They share one
 answer — `rideFloor(grid, ride, clock).softMin`, or `nowFloor(grid, clock)` where
 there is no ride.
 
+**Those four all hold a `DayGrid`, and that is what made the fifth invisible.**
+`nowFloor` takes a grid, so a surface without one cannot ask it — and three
+surfaces reach `addEntry`/`addCustomEntry` with no `startMinute` at all, whereupon
+`nextFallbackStart` in `lib/planner/actions.ts` answered `10 * 60` on an empty
+day whatever the clock said. The ride page's "In den Plan" / "Nochmal" button is
+the one a visitor meets first (`AddToPlannerButton` never loads `/plan/day`, so
+there is no grid to hold), and pressed at 15:20 it filed a queue five hours into
+a morning that has gone. The other two are the same panels as above on a day
+whose payload has not arrived: `addFreeBlock` passes
+`grid ? nextFreeStart(…, nowFloor(…)) : undefined`, so the break lands at 10:00
+directly under the comment promising it never would, and the flat drop target in
+`planner-day-column` has no grid by definition.
+
+So the fallback carries the floor itself: `nowFloorMinute(date, timezone, now)`
+reads `dayClock` through `resolveTimeZone` and, on today, snaps the current
+minute **up** to `SNAP_MIN_FINE`. It is a `Math.max` against the spread, so it
+only ever raises — an afternoon plan added to in the morning keeps "last entry +
+60" — and `past`/`future` return `0`, which reduces the expression to the one
+that was there before. An explicit `startMinute` still wins, so a drag into the
+recorded morning stays legal, for the reason the soft/hard split exists at all.
+`addEntry` and `addCustomEntry` take a defaulted `now`, the same shape
+`parkToday`, `parkMinuteNow` and `dayClock` use, which is what lets
+`pnpm test:planner-actions` put the day at 15:20 rather than read the wall clock.
+
+One consequence is worth naming rather than discovering: the floor is **not**
+capped at the end of the day, for `nowFloor`'s own reason — past the last slot,
+a minute the day has no room for is the true answer. So the hourly spread runs
+into `clampMinute`'s 25:00 ceiling sooner on today than on a future date, and
+enough presses late in the evening put several blocks on that ceiling. They draw
+side by side (`byStart`'s tie-break), which reads as "these do not fit today",
+and that is the honest reading — where the previous behaviour filed all of them
+into a morning that had gone and looked like an ordinary plan.
+
 And **one filter, not four copies of it.** `movableEntries` is exported because
 the same three-clause predicate was written out in `buildContext`, in
 `isExecutable`, in `scoreCurrent` and in the bar that draws the buttons, and

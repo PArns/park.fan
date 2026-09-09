@@ -9,6 +9,8 @@ import type {
 } from './types';
 import { MAX_PLANNED_MINUTE } from './types';
 import { clampRiderHeight } from './party';
+import { SNAP_MIN_FINE } from './day-grid';
+import { dayClock, resolveTimeZone } from './park-time';
 
 /**
  * Every change the planner can make to a plan, as pure functions on the state.
@@ -139,14 +141,25 @@ function clampMinute(minute: number, ceiling: number = MAX_DRAGGED_MINUTE): numb
  * visitor dragged it, which is why `durationMinutes` lives on the entry and not
  * in a forecast.
  */
-export function addCustomEntry(state: PlannerState, params: AddCustomParams): PlannerState {
+export function addCustomEntry(
+  state: PlannerState,
+  params: AddCustomParams,
+  now: number = Date.now()
+): PlannerState {
   const { parkSlug, parkName, geo, timezone, date, label, icon, durationMinutes, startMinute } =
     params;
   const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
 
   const entry: PlannerEntry = withHourMirror({
     id: makeId('block', existing),
-    startMinute: clampMinute(startMinute ?? nextFallbackStart(existing)),
+    // The floor is the same one a ride gets, because both call sites that reach
+    // it say so already: the panels' `addFreeBlock` passes `nowFloor` through
+    // `nextFreeStart` under "a break filed into a morning that has gone is the
+    // same fault as a queue filed there" — and hands over `undefined` the moment
+    // there is no grid to compute it from.
+    startMinute: clampMinute(
+      startMinute ?? nextFallbackStart(existing, nowFloorMinute(date, timezone, now))
+    ),
     custom: {
       label,
       icon,
@@ -207,21 +220,83 @@ function clampDuration(minutes: number): number {
   return Math.max(MIN_CUSTOM_MINUTES, Math.min(MAX_CUSTOM_MINUTES, Math.round(minutes)));
 }
 
-/** An hour after the last entry, so several adds in a row spread across the day. */
-function nextFallbackStart(existing: readonly PlannerEntry[]): number {
-  return existing.length > 0 ? Math.max(...existing.map((e) => e.startMinute)) + 60 : 10 * 60;
+/**
+ * The earliest minute a block filed WITHOUT a chosen time may take, and `0` on
+ * every date that is not today where the park is.
+ *
+ * The grid's callers already have this rule — `nowFloor` in `day-grid.ts`, which
+ * `planner-day-column` and `planner-flyout` pass into `nextFreeStart` under the
+ * comment "never before now". They can, because they hold a `DayGrid`. The two
+ * surfaces that reach {@link nextFallbackStart} instead hold nothing but the
+ * park's zone: the ride page's "In den Plan" / "Nochmal" button, and the same
+ * two panels on a day whose payload has not arrived, where `grid` is `null` and
+ * the explicit minute they compute becomes `undefined`. All of them filed at
+ * 10:00 whatever the clock said, so pressing "In den Plan" on a ride page at
+ * 15:20 wrote a queue five hours into a morning that has gone.
+ *
+ * Snapped UP for the same reason `nowFloor` is: every start in this app sits on
+ * a quarter hour, and rounding 15:23 down to 15:15 files a block eight minutes
+ * into a past nobody can act on. It is not capped at the end of the day either —
+ * there is no `closeMin` here to cap against, and a minute the day has no room
+ * for is the honest answer to a press made after closing.
+ *
+ * `resolveTimeZone` is the same fallback `todayInZone` already applies one
+ * decision earlier, and the pairing is the point: a park whose zone has not
+ * reached the plan (`PlannerPark.timezone` is optional, and the panels pass
+ * `day?.timezone ?? park.timezone`) has its DATE picked in the reader's zone
+ * too, so the floor is read against the clock the date came from. Where it did
+ * not — a date chosen in the wizard's picker for a zone-less park — the floor
+ * can be a few hours out inside the right day. That is a worse answer than the
+ * park's own clock and a better one than this had before, which was 10:00 for
+ * everybody, and it is bounded by the day either way. Refusing to raise
+ * anything without a zone is the alternative and is the wrong one: it restores
+ * the exact defect this exists to close for every park the payload happens not
+ * to date. The real repair is upstream, in making the zone reliably present.
+ */
+function nowFloorMinute(date: string, timezone: string | undefined, now: number): number {
+  const clock = dayClock(date, resolveTimeZone(timezone), now);
+  if (clock.phase !== 'today') return 0;
+  return Math.ceil(clock.nowMinute / SNAP_MIN_FINE) * SNAP_MIN_FINE;
 }
 
-export function addEntry(state: PlannerState, params: AddParams): PlannerState {
+/**
+ * An hour after the last entry, so several adds in a row spread across the day —
+ * and never before `floorMinute`, which only ever raises the answer.
+ *
+ * The spread runs into `clampMinute`'s 25:00 ceiling, and on today it reaches it
+ * sooner because it starts from the clock: five presses after 20:00 exhaust the
+ * day and further ones land on the ceiling together. They draw side by side —
+ * see `byStart`, which keeps insertion order within a minute exactly so the grid
+ * can lay them out as columns — and that reads as "these do not fit today",
+ * which is true. It is the same judgement `nowFloor` makes at the other end, and
+ * the alternative is the behaviour this replaces: eight rides filed 10:00–17:00
+ * at twenty past eight in the evening, indistinguishable from a morning plan.
+ */
+function nextFallbackStart(existing: readonly PlannerEntry[], floorMinute = 0): number {
+  const spread =
+    existing.length > 0 ? Math.max(...existing.map((e) => e.startMinute)) + 60 : 10 * 60;
+  return Math.max(spread, floorMinute);
+}
+
+/**
+ * @param now Park-clock instant, defaulted so only a test ever passes one — the
+ *   same shape `parkToday`, `parkMinuteNow` and `dayClock` already use.
+ */
+export function addEntry(
+  state: PlannerState,
+  params: AddParams,
+  now: number = Date.now()
+): PlannerState {
   const { parkSlug, parkName, geo, timezone, date, attractionSlug, attractionName, startMinute } =
     params;
   const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
 
   // No time given: an hour after the last entry, so adding several rides in a
-  // row spreads them across the day instead of stacking them on one minute. The
-  // caller passes a real minute when it knows the day's shape — see
-  // `nextFreeStart`, which is what the grid uses.
-  const fallback = nextFallbackStart(existing);
+  // row spreads them across the day instead of stacking them on one minute, and
+  // never before now — see `nowFloorMinute`. The caller passes a real minute
+  // when it knows the day's shape — see `nextFreeStart`, which is what the grid
+  // uses.
+  const fallback = nextFallbackStart(existing, nowFloorMinute(date, timezone, now));
 
   const entry: PlannerEntry = withHourMirror({
     id: makeId(attractionSlug, existing),

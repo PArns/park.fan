@@ -96,9 +96,16 @@ export function usePlanner() {
     plannerStore.getServerSnapshot
   );
 
-  const addRide = useCallback((params: AddRideParams) => {
+  /**
+   * @param now The instant this add reckons from, for a caller that derives
+   *   `params.date` from the clock too. Both have to come from ONE read or they
+   *   can disagree across park-local midnight — see `AddToPlannerButton`, whose
+   *   date is computed at render. Defaulted, so every other call site is
+   *   unchanged.
+   */
+  const addRide = useCallback((params: AddRideParams, now?: number) => {
     countFirstBlock(params.parkSlug, params.parkName, params.date);
-    plannerStore.update((s) => addEntry(s, params));
+    plannerStore.update((s) => addEntry(s, params, now ?? Date.now()));
   }, []);
 
   const addCustom = useCallback((params: AddCustomRideParams) => {
