@@ -444,6 +444,26 @@ function RailButton({
  */
 const AUTO_DISMISS_MS = 12000;
 
+/**
+ * Notices that describe a condition rather than an event, and are retracted when it ends.
+ *
+ * `sim:timeout` is core's: the host gives the worker eight seconds to answer `ready` and warns
+ * when it has not. On this project's own screenshot harness a boot takes twenty to thirty seconds
+ * under SwiftShader, so the deadline passes on a park whose simulation is perfectly alive — and
+ * the result is a notice reading "The simulation did not start. The park is shown, but guests and
+ * rides are paused." sitting eight hundred pixels from a panel reporting 1,441 guests, 4/4 rides
+ * running and 356 rides taken today. That frame is in the report.
+ *
+ * The HUD is the one place that can see both halves, so it retracts the notice the moment a frame
+ * arrives. It is a repair, not the fix: core still leaves `phase` at `reduced` for the rest of the
+ * session, and `docs/game/requests/ui.md` asks for the deadline to be re-armed and the notice
+ * withdrawn where it was raised. The entry stays in the messages panel either way, so nothing is
+ * hidden — it just stops claiming to be true.
+ */
+const RETRACTED_WHEN_LIVE = new Set(['sim:timeout']);
+
+const selectLive = (s: ParkTelemetry) => s.live;
+
 function NoticeStack({
   store,
   runtime,
@@ -456,12 +476,20 @@ function NoticeStack({
   narrow: boolean;
 }) {
   const notices = useGame(store, selectNotices);
+  const live = useTelemetry(runtime, selectLive);
   useCommitTally();
   const timers = useRef(new Map<number, number>());
 
   useEffect(() => {
     runtime.ingestNotices(notices);
   }, [notices, runtime]);
+
+  useEffect(() => {
+    if (!live) return;
+    for (const notice of notices) {
+      if (RETRACTED_WHEN_LIVE.has(notice.text)) store.dismiss(notice.id);
+    }
+  }, [live, notices, store]);
 
   useEffect(() => {
     for (const notice of notices) {
@@ -472,10 +500,10 @@ function NoticeStack({
       }, AUTO_DISMISS_MS);
       timers.current.set(notice.id, id);
     }
-    const live = timers.current;
+    const pending = timers.current;
     return () => {
-      for (const handle of live.values()) window.clearTimeout(handle);
-      live.clear();
+      for (const handle of pending.values()) window.clearTimeout(handle);
+      pending.clear();
     };
   }, [notices, store]);
 

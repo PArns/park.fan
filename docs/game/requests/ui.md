@@ -184,24 +184,71 @@ Run it directly meanwhile:
 
 ---
 
-## 8. Two small things in `core`
+## 8. `notice.sim:timeout` fires on a slow boot, not on a dead simulation (core)
 
-**`applyEnvironment` can throw on a pipeline whose image processing did not build.**
-`renderer.ts:226` guards `if (pipeline)` but then writes `pipeline.imageProcessing.exposure`, and
-`imageProcessing` is null when the post-process failed to construct. Seen once during this run
-while two other modules were mid-compile: `TypeError: Cannot set properties of null (setting
-'exposure')` inside `boot`, which takes the whole boot down and leaves `harness` in its temporal
-dead zone (`Cannot access 'harness' before initialization`, because `finishBoot` names it). A
-`?.` on both would turn a hard boot failure into a frame with no tone mapping.
+The host gives the worker eight seconds to answer `ready`, warns when it has not, and then
+**ignores the answer when it arrives late**:
 
-**`GameStore.notify` keeps the last six notices and nothing keeps the rest.** The HUD now mirrors
-them into its own history (`UiRuntime.ingestNotices`) so the messages panel can show them, which
-means the store's list is a *live stack* rather than a log — worth saying in `store.ts`, since the
-next reader of that `slice(-6)` will otherwise wonder where the history went.
+```ts
+case 'ready': {
+  if (!readyResolved) { readyResolved = true; finishBoot('ready'); }
+  break;                                    // ← a late ready falls through and does nothing
+}
+```
+
+So a boot slower than its own deadline leaves the park running behind "The simulation did not
+start. The park is shown, but guests and rides are paused." for the rest of the session, and
+`phase` stuck at `reduced`. It is not hypothetical or harness-only: on this container a cold boot
+is 20–30 s against an 8 s deadline, and `.game-render/ui-bright/1200-close.png` has that sentence
+eight hundred pixels from a panel reporting 1,441 guests, 4 of 4 rides running and 356 rides taken
+today. A notice that lies is worse than no notice.
+
+**Ask, `core/host.ts`:**
+
+```diff
+       case 'ready': {
+         if (msg.failed.length) { … }
+         if (!readyResolved) {
+           readyResolved = true;
+           finishBoot('ready');
++        } else if (store.get().phase === 'reduced') {
++          // The worker was late, not dead. Withdraw the warning and promote the phase, or the
++          // park runs for the rest of the session behind a notice saying it is not running.
++          store.set({ phase: 'ready' });
++          for (const n of store.get().notices) if (n.key === 'sim') store.dismiss(n.id);
+         }
+         break;
+       }
+```
+
+**Meanwhile:** the HUD retracts it. `RETRACTED_WHEN_LIVE` in `hud.tsx` dismisses any notice whose
+text is `sim:timeout` the moment the telemetry reports a frame has arrived. The entry stays in the
+messages panel, so nothing is hidden — it just stops claiming to be true. It cannot fix `phase`,
+because that is core's field and writing another module's state from the HUD is the thing this
+whole file exists to avoid.
 
 ---
 
-## 9. Strings other modules may now ask for
+## 9. Two smaller things in `core`
+
+**`applyEnvironment` can throw on a pipeline whose image processing did not build.**
+`renderer.ts:226` guards `if (pipeline)` and then writes `pipeline.imageProcessing.exposure`;
+`imageProcessing` is null when the post-process failed to construct. Seen during this run:
+`TypeError: Cannot set properties of null (setting 'exposure')` inside `boot`, which takes the
+whole boot down — and then, because `finishBoot` names the `harness` const declared below it,
+turns into `Cannot access 'harness' before initialization` and leaves `window.__parkfan_game`
+undefined, so the screenshot harness dies with `Cannot read properties of undefined (reading
+'metrics')` rather than reporting anything. `?.` on both, and a `try/catch` around the first
+`applyEnv`, would turn a hard boot failure into a frame with no tone mapping.
+
+**`GameStore.notify` keeps the last six notices and nothing keeps the rest.** The HUD mirrors them
+into its own history (`UiRuntime.ingestNotices`) so the messages panel has something to show, which
+makes the store's list a *live stack* rather than a log. Worth a line in `store.ts`, since the next
+reader of that `slice(-6)` will otherwise go looking for where the history went.
+
+---
+
+## 10. Strings other modules may now ask for
 
 `ui` owns `lib/game/i18n` (DECISIONS #24). The table is at 289 keys across `en` and `de`. Ask here
 for a key rather than shipping English into a German HUD; a panel title passed to `registerPanel`
