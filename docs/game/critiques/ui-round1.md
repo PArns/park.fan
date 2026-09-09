@@ -67,7 +67,7 @@ misled, in a document that is otherwise a model of the form.
 | Zero console errors                           | ✅ PASS | `console.errors: []` in `.game-render/critic-ui/report.json`, `critic-ui-1280/report.json`, `critic-ui-phone/report.json` and `critic-ui-probe/probe.json` (a ~7 min session with panel churn, registration, viewport changes and a menu cycle) |
 | Zero hydration warnings                       | ✅ PASS | `console.hydration: []` in all four                                                                                       |
 | Extensibility ≥ 5                             | ✅ PASS | 8.2 — proven by registering from outside, see §4                                                                          |
-| Touched only its own                          | ⚠️ n/a  | `git status` is clean and `git show --name-only 9d3b42f` is `ui/hud.tsx` + its own two docs; earlier commits are integrator batches carrying several builders at once, so git cannot answer this cleanly for this module |
+| Touched only its own                          | ⚠️ n/a  | Nothing of `ui`'s is dirty in the tree, and the one commit that is only about this module (`git show --name-only 9d3b42f`) is `lib/game/ui/hud.tsx` plus its own report and requests. Everything earlier is an integrator batch carrying several builders at once, so `git diff --name-only` cannot answer this question for `ui` at all. Read as "no evidence against". |
 | No `from '@babylonjs/core'`                   | ✅ PASS | `grep -rn "from '@babylonjs/core'" lib/game/` → no hits; `lib/game/ui` references babylon nowhere at all                   |
 | No `window`/`document`/`navigator` at module scope | ✅ PASS | `pnpm test:game-lint` → `✓ game lint: 249 files clean`                                                                    |
 | `pnpm test:game` green                        | ✅ PASS | all 12 steps green, incl. `✓ game i18n: 289 keys × en/de` and `✓ no runtime errors` in both soaks                          |
@@ -191,6 +191,7 @@ only because `uiModule` happens to sit 5th in `GAME_MODULES` and `management` 19
 | `.game-render/critic-ui/2300-entrance.png`       | The same shut park at the entrance, Day 3. The clock chip's day strip has its marker at the far left in the night band. Same two flaws.                                                                                                                                            |
 | `.game-render/critic-ui/2300-ground.png`         | Day 4, 00:59, ground camera: a handful of guests walking out under the lamps. MOOD 45 in the amber tone. The HUD is the most legible it is anywhere — the panel over near-black is the case `HUD_PANEL`'s 0.86 fill was written for.                                              |
 | `.game-render/critic-ui-1280/1200-overview.png`  | 1280×720. The default park panel is **cut mid-label**: the "PARK / Path nodes / Path networks" section is below the fold of a 512 px column.                                                                                                                                       |
+| `.game-render/critic-ui-ground/1200-ground.png`  | 1280×720, noon, standing on the sunlit main avenue in a crowd — the brightest surface in the game, directly under the panel and the build bar, and both hold. The same 1280 clip: the PARK section is sliced at the column's lower edge.                                          |
 | `.game-render/critic-ui-phone/1200-overview.png` | 390×844. Nothing overflows: menu + clock + cash on one row, the rail wrapped to two, the sheet above the build bar. And 89 % of the screen is chrome, with an 79 px band of park visible.                                                                                          |
 | `.game-render/critic-ui-probe/foreign-panel.png` | de-DE, four panels open. The foreign **Critic probe** panel is in the dock with a header and **nothing else** — the column had no room left. Wetter is clipped mid-row. `RATING 742` and a `live` badge prove the registry from outside.                                          |
 | `.game-render/critic-ui-probe/de-panels.png`     | de-DE, three panels. **The message log contains „Top Spin läuft wieder." (1 h 30), „Top spin has broken down" (1 h 42) and „Top Spin ist stehen geblieben." (1 h 42)** — the same event twice, one line apart, in two languages. The log takes 442 px; the ride list gets 135 px and shows **1 of 4 rides**. |
@@ -199,7 +200,8 @@ only because `uiModule` happens to sit 5th in `GAME_MODULES` and `management` 19
 
 The 12:00 `ground` frame could not be taken at 1920×1080: Playwright's 30 s screenshot deadline
 expired twice on that camera under SwiftShader with two other harnesses on the box
-(`page.screenshot: Timeout 30000ms exceeded`). `1830-ground.png` covers the camera.
+(`page.screenshot: Timeout 30000ms exceeded`, `shots.log`). It was taken at 1280×720 instead, which
+is the harder legibility test anyway — the same noon paving in a shorter column.
 
 ---
 
@@ -255,11 +257,13 @@ useful version: a notice that describes a *condition* names the event that ends 
 
 ### 4. Three panels open, and the notification log eats the column
 
-Docked panels are flex items with content-sized bases and equal shrink
-(`panel-host.tsx:94–120`), so each keeps **the same fraction of the column that its content is of
-the total content** — the panel with the most to say wins the most room. Measured off
-`de-panels.png` at 1920×1080 (872 px column): Meldungen **442 px**, Park 253 px, Fahrgeschäfte
-**135 px showing 1 of 4 rides**, with nothing on screen saying there are three more. With four open
+Docked panels are flex items with content-sized bases (`flex-basis: auto`), `min-h-0` and equal
+shrink (`panel-host.tsx:94–120`), so the room a panel gets follows **how much it has to say**, not
+how much of it a reader needs to see — and the one panel whose content is unbounded wins. Measured
+off `de-panels.png` at 1920×1080 (872 px column): Meldungen **≈442 px**, Park ≈253 px,
+Fahrgeschäfte **≈135 px, showing 1 of 4 rides**, with nothing on screen saying there are three more.
+A scrolling notification history took two thirds more room than the list of the park's machines.
+With four open
 (`de-selection.png`, `foreign-panel.png`) the last panel is a header and a section label. This is
 the exact failure the module's own decision note says the shared column was chosen to fix ("the
 inspector under it was a header and a sliver, which reads as a panel that did not open") — the fix
