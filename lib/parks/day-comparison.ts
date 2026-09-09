@@ -247,6 +247,26 @@ function holidayPressureOf(day: CalendarDay): number {
   return count;
 }
 
+/**
+ * The wait row, in the terms the VERDICT reads it in.
+ *
+ * `rankOf` scales a wait over two hours and clamps there, so past 120 minutes every wait is the
+ * same 0.99 of a bucket and two days at 130 and 210 minutes are, to the verdict, identical. The
+ * row said otherwise: it ticked the shorter one under a headline reading „die beiden Tage nehmen
+ * sich nichts". The ceiling is `rankOf`'s and is not moved — it decides the grid's own star — so
+ * the ROW speaks in its terms instead: where the two waits scale to the same contribution, it
+ * names no winner. Both figures stay on screen and the difference is still printed; what goes is
+ * the claim that one of them is the better day.
+ */
+function waitReason(waitA: number | null, waitB: number | null): DayComparisonReason | null {
+  const entry = reason('wait', 'minutes', waitA, waitB, 'lower');
+  if (!entry || waitA === null || waitB === null) return entry;
+  const withinA = waitWithinBucket(waitA);
+  const withinB = waitWithinBucket(waitB);
+  if (withinA === withinB) return { ...entry, better: 'tie', weight: 0 };
+  return { ...entry, weight: Math.abs(withinA - withinB) };
+}
+
 /** A reason whose two sides are known, or `null` where either side has nothing to say. */
 function reason(
   key: DayComparisonReasonKey,
@@ -341,16 +361,7 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
       'lower',
       bucketA !== null && bucketB !== null ? Math.abs(bucketA - bucketB) : 0
     ),
-    reason(
-      'wait',
-      'minutes',
-      waitA,
-      waitB,
-      'lower',
-      waitA !== null && waitB !== null
-        ? Math.abs(waitWithinBucket(waitA) - waitWithinBucket(waitB))
-        : 0
-    ),
+    waitReason(waitA, waitB),
     reason('hours', 'minutes', openMinutesOf(a), openMinutesOf(b), 'higher'),
     reason('weather', 'mm', rainOf(a), rainOf(b), 'lower'),
     reason('holiday', 'days', holidayPressureOf(a), holidayPressureOf(b), 'lower'),

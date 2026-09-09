@@ -58,7 +58,7 @@ export function usePlannerDayFacts(
   park: { slug: string; geo: PlannerGeo } | null,
   enabled: boolean
 ): PlannerDayFacts {
-  const { data, isFetching } = useParkBestDaysCalendar({
+  const { data, isFetching, isError } = useParkBestDaysCalendar({
     continent: park?.geo.continent ?? '',
     country: park?.geo.country ?? '',
     city: park?.geo.city ?? '',
@@ -79,9 +79,11 @@ export function usePlannerDayFacts(
         timezone,
         hasOperatingSchedule,
         loading: isFetching,
-        // `!data`, not `true`: this branch is also taken for a snapshot that ARRIVED and was
-        // empty, and that is an answer — „no days" — not an outstanding question.
-        pending: !data,
+        // `!data && !isError`, not `true`: this branch is also taken for a snapshot that ARRIVED
+        // and was empty, and for one whose request has finished failing. Both are answers — „no
+        // days" and „we could not ask" — and a caller waiting on `pending` would wait for ever on
+        // the second, which is how „no answer yet" turns into „no button, no reason, ever".
+        pending: !data && !isError,
       };
     }
     const byDate = new Map<string, CalendarDay>();
@@ -97,5 +99,5 @@ export function usePlannerDayFacts(
       loading: isFetching,
       pending: false,
     };
-  }, [data, isFetching]);
+  }, [data, isFetching, isError]);
 }

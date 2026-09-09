@@ -409,7 +409,11 @@ export function ParkCalendarComparison({
                         <Icon className="size-3.5 shrink-0" aria-hidden="true" />
                         {t(`dayComparison.reason${capitalize(reason.key)}`)}
                       </span>
-                      {rowDecides(reason) && (
+                      {/* The difference is a FACT and shows wherever the two cells differ — even
+                          on a row that names no winner (a blocked day, or two waits both past the
+                          ranking's two-hour ceiling). What the tick below adds is the claim; this
+                          only adds the subtraction. */}
+                      {shownDelta(reason) > 0 && (
                         <span className="text-muted-foreground shrink-0 text-[11px] tabular-nums">
                           {t('dayComparison.difference', { value: formatDelta(reason) })}
                         </span>

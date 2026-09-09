@@ -517,6 +517,32 @@ test(
   'tie'
 );
 
+// Past two hours `rankOf` clamps, so the verdict cannot tell 130 from 210 minutes. The row used
+// to tick anyway, under a headline calling the days equal.
+const bothOverCeiling = compareDays(
+  day('2026-09-20', { crowdLevel: 'extreme', headlinerForecast: { avgWait: 130, rides: [] } }),
+  day('2026-09-21', { crowdLevel: 'extreme', headlinerForecast: { avgWait: 210, rides: [] } }),
+  TODAY
+);
+test('above the ranking ceiling: no verdict', () => bothOverCeiling.better, 'tie');
+test(
+  'above the ranking ceiling: and the row claims no winner either',
+  () => reason(bothOverCeiling, 'wait').better,
+  'tie'
+);
+test(
+  'above the ranking ceiling: both figures are still reported',
+  () => `${reason(bothOverCeiling, 'wait').a}/${reason(bothOverCeiling, 'wait').b}`,
+  '130/210'
+);
+// One side under the ceiling and one over is still a real difference to the verdict.
+const oneOverCeiling = compareDays(
+  day('2026-09-20', { crowdLevel: 'extreme', headlinerForecast: { avgWait: 30, rides: [] } }),
+  day('2026-09-21', { crowdLevel: 'extreme', headlinerForecast: { avgWait: 210, rides: [] } }),
+  TODAY
+);
+test('one side under the ceiling: the quieter day wins', () => oneOverCeiling.better, 'a');
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');
