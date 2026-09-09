@@ -50,13 +50,40 @@ const PARK = {
   date: '2026-10-17',
 };
 
+/**
+ * The instant every test here reckons from.
+ *
+ * Pinned rather than left to `Date.now()` because the fallback start now asks
+ * what time it is where the park is: with a real clock these cases would read
+ * one way until 2026-10-17 and another on it, i.e. a suite that goes red for one
+ * day and then quietly green again. Well before `PARK.date`, so every case that
+ * predates the floor is planning a FUTURE day and reads exactly as it always
+ * did — which is the assertion, not a convenience.
+ */
+const NOW = Date.parse('2026-09-09T12:00:00Z');
+
 const add = (state, attractionSlug, hour) =>
-  addEntry(state, {
-    ...PARK,
-    attractionSlug,
-    attractionName: attractionSlug,
-    ...(hour !== undefined ? { startMinute: hour * 60 } : {}),
-  });
+  addEntry(
+    state,
+    {
+      ...PARK,
+      attractionSlug,
+      attractionName: attractionSlug,
+      ...(hour !== undefined ? { startMinute: hour * 60 } : {}),
+    },
+    NOW
+  );
+
+/** The same park, planned for the day somebody is standing in it. Berlin, CEST. */
+const TODAY = { ...PARK, timezone: 'Europe/Berlin', date: '2026-10-17' };
+/** 15:20 in Berlin on `TODAY.date` — the shape of the report, mid-afternoon. */
+const AT_1520 = Date.parse('2026-10-17T13:20:00Z');
+
+const addToday = (state, attractionSlug, now = AT_1520) =>
+  addEntry(state, { ...TODAY, attractionSlug, attractionName: attractionSlug }, now);
+
+const startsOf = (state, date = TODAY.date) =>
+  entriesFor(state, PARK.parkSlug, date).map((e) => e.startMinute);
 
 /** A day with three rides at 10, 12 and 14. */
 function threeRides() {
@@ -98,6 +125,105 @@ test(
     return listOf(s).map(([, hour]) => hour);
   })(),
   [10, 11, 12]
+);
+
+// ---------------------------------------------------------------------------
+// Never into a past nobody can act on
+//
+// Reported against the ride page's "In den Plan" / "Nochmal" button: pressed at
+// 15:20 it filed the ride at 10:00, five hours into a morning that has gone.
+// The grid's own callers had the rule already (`nowFloor` → `nextFreeStart`);
+// the two surfaces that fall through to the fallback did not, and the same hole
+// swallows a free block whenever the day payload has not arrived and
+// `addFreeBlock` hands over `undefined`.
+//
+// The floor only ever RAISES: every case above this line plans 2026-10-17 from
+// 2026-09-09 and is unchanged, which is the point of pinning `NOW`.
+// ---------------------------------------------------------------------------
+test(
+  'addEntry: on today, the fallback is now snapped up to the quarter, not 10:00',
+  startsOf(addToday(EMPTY_PLANNER_STATE, 'taron')),
+  [15 * 60 + 30]
+);
+
+test(
+  'addEntry: the snap goes UP, so 15:01 does not file a block into 15:00',
+  startsOf(addToday(EMPTY_PLANNER_STATE, 'taron', Date.parse('2026-10-17T13:01:00Z'))),
+  [15 * 60 + 15]
+);
+
+test(
+  'addEntry: above the floor the spread still decides, so two adds do not stack',
+  (() => {
+    let s = addToday(EMPTY_PLANNER_STATE, 'taron');
+    s = addToday(s, 'fly');
+    return startsOf(s);
+  })(),
+  [15 * 60 + 30, 16 * 60 + 30]
+);
+
+test(
+  'addEntry: the floor never LOWERS a start — an afternoon plan added to at 09:00',
+  (() => {
+    const morning = Date.parse('2026-10-17T07:00:00Z');
+    let s = addEntry(
+      EMPTY_PLANNER_STATE,
+      { ...TODAY, attractionSlug: 'taron', attractionName: 'taron', startMinute: 14 * 60 },
+      morning
+    );
+    s = addToday(s, 'fly', morning);
+    return startsOf(s);
+  })(),
+  [14 * 60, 15 * 60]
+);
+
+test(
+  'addEntry: a day that has not come is planned from 10:00 as it always was',
+  startsOf(
+    addEntry(
+      EMPTY_PLANNER_STATE,
+      { ...TODAY, date: '2026-10-18', attractionSlug: 'taron', attractionName: 'taron' },
+      AT_1520
+    ),
+    '2026-10-18'
+  ),
+  [10 * 60]
+);
+
+// Writing down a day already walked is the reason a plan is kept at all, so a
+// past date keeps the old fallback rather than being pushed to the reader's
+// clock on a date that clock says nothing about.
+test(
+  'addEntry: a day already gone is planned from 10:00 too',
+  startsOf(
+    addEntry(
+      EMPTY_PLANNER_STATE,
+      { ...TODAY, date: '2026-10-16', attractionSlug: 'taron', attractionName: 'taron' },
+      AT_1520
+    ),
+    '2026-10-16'
+  ),
+  [10 * 60]
+);
+
+test(
+  'addCustomEntry: a free block with no minute gets the same floor as a ride',
+  startsOf(
+    addCustomEntry(EMPTY_PLANNER_STATE, { ...TODAY, label: 'Pause', icon: 'break' }, AT_1520)
+  ),
+  [15 * 60 + 30]
+);
+
+test(
+  'addEntry: an explicit minute is still obeyed, floor or no floor',
+  startsOf(
+    addEntry(
+      EMPTY_PLANNER_STATE,
+      { ...TODAY, attractionSlug: 'taron', attractionName: 'taron', startMinute: 9 * 60 },
+      AT_1520
+    )
+  ),
+  [9 * 60]
 );
 
 test(
