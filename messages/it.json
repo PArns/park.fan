@@ -1660,7 +1660,13 @@
       "showNextAny": "prossimo spettacolo"
     },
     "menu": {
-      "link": "I miei avvisi"
+      "link": "I miei avvisi",
+      "title": "Avvisi",
+      "threshold": "sotto {minutes} min",
+      "showAt": "alle {time}",
+      "showNextAny": "prossimo spettacolo",
+      "remove": "{name}: rimuovi avviso",
+      "loadError": "Impossibile caricare i tuoi avvisi."
     },
     "pushErrors": {
       "generic": "Non ha funzionato. Riprova.",

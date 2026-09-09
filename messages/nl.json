@@ -1660,7 +1660,13 @@
       "showNextAny": "eerstvolgende voorstelling"
     },
     "menu": {
-      "link": "Mijn meldingen"
+      "link": "Mijn meldingen",
+      "title": "Meldingen",
+      "threshold": "onder {minutes} min.",
+      "showAt": "om {time}",
+      "showNextAny": "eerstvolgende voorstelling",
+      "remove": "{name}: melding verwijderen",
+      "loadError": "De meldingen konden niet worden geladen."
     },
     "pushErrors": {
       "generic": "Dat is niet gelukt. Probeer het nogmaals.",

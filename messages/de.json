@@ -1660,7 +1660,13 @@
       "showNextAny": "jeweils nächste Vorstellung"
     },
     "menu": {
-      "link": "Meine Alarme"
+      "link": "Meine Alarme",
+      "title": "Alarme",
+      "threshold": "unter {minutes} Min.",
+      "showAt": "um {time} Uhr",
+      "showNextAny": "jeweils nächste Vorstellung",
+      "remove": "{name}: Alarm entfernen",
+      "loadError": "Die Alarme konnten nicht geladen werden."
     },
     "pushErrors": {
       "generic": "Das hat nicht geklappt. Bitte noch einmal versuchen.",

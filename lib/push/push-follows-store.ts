@@ -137,7 +137,18 @@ export function removeRideAlertLocal(attractionId: string): void {
   );
 }
 
+/**
+ * How many local alerts and follows this browser has.
+ *
+ * A size hint, not an inventory: the favorites menu uses it to decide whether asking the server
+ * is worth two requests, and to reserve that many skeleton rows while the answer is on its way.
+ * What is actually SET is what the server says — see `usePushFollowsList`.
+ */
+export function countPushFollowsLocal(): number {
+  return readShowFollows().length + readRideAlerts().length;
+}
+
 /** Whether this browser has any local alert or follow at all — gates the "view all" link. */
 export function hasAnyPushFollowsLocal(): boolean {
-  return readShowFollows().length > 0 || readRideAlerts().length > 0;
+  return countPushFollowsLocal() > 0;
 }

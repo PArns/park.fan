@@ -1660,7 +1660,13 @@
       "showNextAny": "próxima función"
     },
     "menu": {
-      "link": "Mis avisos"
+      "link": "Mis avisos",
+      "title": "Avisos",
+      "threshold": "menos de {minutes} min",
+      "showAt": "a las {time}",
+      "showNextAny": "próxima función",
+      "remove": "{name}: quitar aviso",
+      "loadError": "No se pudieron cargar tus avisos."
     },
     "pushErrors": {
       "generic": "No ha funcionado. Inténtalo de nuevo.",
