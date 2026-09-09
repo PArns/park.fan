@@ -107,7 +107,23 @@ export class SimRuntime {
     const byId = new Map(this.moduleDefs.map((m) => [m.id, m]));
     for (const id of ids) {
       const def = byId.get(id);
-      if (!def?.sim) continue;
+      if (!def) continue;
+      /**
+       * Claim the kinds BEFORE the `sim` guard: `kinds` declares ownership, `sim` is a capability,
+       * and until this line moved the first was conditional on the second.
+       *
+       * `host.ts` registers kinds unconditionally, so the two registries disagreed — on the main
+       * thread `building` was owned by `buildings`, on the worker by nobody. Nothing rendered
+       * differently, which is why it survived a whole round of a module that draws twenty-three
+       * buildings. The symptom was the soak's `no orphan entities`, and it only fired the day the
+       * demo park got its first two `building` entities, which is also the day `pnpm test:game`
+       * went red for everybody and nobody noticed, because no CI runs it.
+       *
+       * Found by the `buildings` builder, whose round-2 workaround was to write a `sim.ts` with an
+       * empty tick purely so the module would be allowed to own its own kind.
+       */
+      for (const kind of def.kinds ?? []) this.registry.registerKind(kind, def.id);
+      if (!def.sim) continue;
       const ctx: SimContext = {
         world: this.world,
         events: this.events,
@@ -117,7 +133,6 @@ export class SimRuntime {
         environment: () => this.environment(),
       };
       try {
-        for (const kind of def.kinds ?? []) this.registry.registerKind(kind, def.id);
         this.handles.set(id, def.sim(ctx));
       } catch (error) {
         this.failed.push(id);
