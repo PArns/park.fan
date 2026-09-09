@@ -322,9 +322,10 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
           const n = msg.payload as {
             level: 'info' | 'warning' | 'error';
             text: string;
+            params?: Record<string, string | number>;
             key?: string;
           };
-          store.notify(n.level, n.text, n.key);
+          store.notify(n.level, n.text, n.key, n.params);
         } else if (msg.name === 'finance:changed') {
           // `loan` and `history` are not in the frame stats and never will be — a day ledger is not
           // a per-tick scalar — so this event is the only thing that carries them across. Assign

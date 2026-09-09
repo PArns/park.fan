@@ -297,6 +297,7 @@ export const de: Record<GameStringKey, string> = {
 
   // ── Meldungen ──────────────────────────────────────────────────────────────────────────
   'log.empty': 'Bisher ist nichts passiert.',
+  'notice.ride.breakdown': '{name} ist ausgefallen.',
   'log.ride.breakdown': '{name} ist stehen geblieben.',
   'log.ride.fixed': '{name} läuft wieder.',
   'log.shop.restock': '{name} hat {units} Einheiten nachgefüllt.',

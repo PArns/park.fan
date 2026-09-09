@@ -294,6 +294,7 @@ export const en = {
 
   // ── Messages ───────────────────────────────────────────────────────────────────────────
   'log.empty': 'Nothing has happened yet.',
+  'notice.ride.breakdown': '{name} has broken down.',
   'log.ride.breakdown': '{name} has broken down.',
   'log.ride.fixed': '{name} is running again.',
   'log.shop.restock': '{name} took {units} units of stock.',

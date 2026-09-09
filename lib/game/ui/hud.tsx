@@ -51,7 +51,7 @@ import type { Speed } from '../core/types';
 import { BuildBar } from '../tools/build-bar';
 import type { GameLocale, GameStringKey, Translate } from '../i18n';
 import type { PanelDef, StatDef } from './api';
-import { clockTime } from './format';
+import { clockTime, noticeText } from './format';
 import { shallowEqual, useChrome, useCommitTally, useGame, useNarrow, useTelemetry } from './hooks';
 import { GameMenu } from './menu';
 import { PanelHost } from './panel-host';
@@ -540,9 +540,7 @@ function NoticeLine({
   t: Translate;
   onDismiss: () => void;
 }) {
-  const key = `notice.${notice.text}` as GameStringKey;
-  const translated = t(key);
-  const text = translated === key ? notice.text : translated;
+  const text = noticeText(t, notice);
   const tone: Tone =
     notice.level === 'error' ? 'bad' : notice.level === 'warning' ? 'warn' : 'neutral';
   return (

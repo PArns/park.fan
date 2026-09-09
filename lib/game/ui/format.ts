@@ -13,6 +13,8 @@
  * shifts its neighbours every time a guest buys a drink is the thing this avoids.
  */
 
+import type { GameStringKey, Translate } from '../i18n';
+
 /** `540` → `09:00`. Park minutes since midnight; the fractional part is dropped, never rounded. */
 export function clockTime(minute: number): string {
   const total = ((Math.floor(minute) % 1440) + 1440) % 1440;
@@ -116,4 +118,25 @@ export function logAge(minutes: number): string {
   if (m < 60) return `${m} min`;
   const h = Math.floor(m / 60);
   return `${h} h ${String(m % 60).padStart(2, '0')}`;
+}
+
+/**
+ * What a notice actually says, from its key and its substitutions.
+ *
+ * One implementation for both places a notice is read — the toast stack and the message log — and
+ * that is the whole point of it existing. They resolved it differently for as long as both have
+ * existed: the toast translated `notice.<text>`, the log copied `text` straight through, and so the
+ * log's first line was the bare word `cores` while the toast beside it said the German sentence
+ * that key stands for. A reader saw core's internal notice key in the same panel as prose.
+ *
+ * The fallback is deliberate and is why `text` may be a sentence at all: a key with no entry
+ * renders as itself, so a one-off diagnostic still says something rather than nothing.
+ */
+export function noticeText(
+  t: Translate,
+  notice: { text: string; params?: Record<string, string | number> }
+): string {
+  const key = `notice.${notice.text}` as GameStringKey;
+  const translated = t(key, notice.params);
+  return translated === key ? notice.text : translated;
 }

@@ -25,6 +25,7 @@ import type { Entity, GameEvents, MainContext, Speed, World } from '../core/type
 import type { GameLocale, Translate } from '../i18n';
 import type { InspectorDef, PanelDef, StatDef, UiMainApi } from './api';
 import { UiRegistry } from './api';
+import { noticeText } from './format';
 import {
   HUD_METRICS,
   PUBLISH_MS,
@@ -400,13 +401,27 @@ export class UiRuntime implements UiMainApi {
 
   // ── things only the HUD calls ───────────────────────────────────────────────────────────
   /** Core's store owns the live notice stack; the runtime keeps the history behind it. */
-  ingestNotices(notices: readonly { id: number; level: string; text: string }[]): void {
+  /**
+   * Core's notice stack, into the message log.
+   *
+   * Through `noticeText`, which is the same resolution the toast uses — they used to differ, and a
+   * reader got core's internal keys in a panel full of prose: the log's first line was the bare
+   * word `cores` while the toast beside it said what that key stands for.
+   */
+  ingestNotices(
+    notices: readonly {
+      id: number;
+      level: string;
+      text: string;
+      params?: Record<string, string | number>;
+    }[]
+  ): void {
     this.collector.ingestNotices(
       notices.map((n) => ({
         id: n.id,
         level: (n.level === 'warning' || n.level === 'error' ? n.level : 'info') as
           'info' | 'warning' | 'error',
-        text: n.text,
+        text: noticeText(this.t, n),
       }))
     );
   }

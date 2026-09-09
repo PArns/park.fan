@@ -9,7 +9,18 @@ import type { Capabilities, Clock, EnvironmentState, QualityPreset, Speed } from
 export interface Notice {
   id: number;
   level: 'info' | 'warning' | 'error';
+  /**
+   * A TRANSLATION KEY, resolved by the HUD as `notice.<text>`, falling back to itself when no such
+   * key exists — which is what lets a one-off diagnostic still say something.
+   *
+   * It is called `text` for history and the name is a trap: the simulation used to put an English
+   * sentence here, and a sentence written on the worker has no locale to be written in. So a German
+   * HUD showed "Top spin has broken down" one line above its own German translation of the same
+   * event, and the message log's first line was the bare word `cores`.
+   */
   text: string;
+  /** Substitutions for the key above, so a message can name a ride without composing a sentence. */
+  params?: Record<string, string | number>;
   /** Deduplication key; a notice with the same key replaces the older one. */
   key?: string;
   at: number;
@@ -92,8 +103,13 @@ export class GameStore {
     this.set((s) => ({ ui: { ...s.ui, [moduleId]: value } }));
   }
 
-  notify(level: Notice['level'], text: string, key?: string): void {
-    const notice: Notice = { id: ++this.noticeSeq, level, text, key, at: Date.now() };
+  notify(
+    level: Notice['level'],
+    text: string,
+    key?: string,
+    params?: Record<string, string | number>
+  ): void {
+    const notice: Notice = { id: ++this.noticeSeq, level, text, params, key, at: Date.now() };
     this.set((s) => ({
       notices: [...s.notices.filter((n) => !key || n.key !== key), notice].slice(-6),
     }));

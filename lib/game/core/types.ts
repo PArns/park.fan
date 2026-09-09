@@ -321,7 +321,13 @@ export interface GameEvents {
   'entity:remove': Entity;
   'env:changed': EnvironmentState;
   'finance:changed': Finance;
-  notify: { level: 'info' | 'warning' | 'error'; text: string; key?: string };
+  notify: {
+    level: 'info' | 'warning' | 'error';
+    /** A translation key (`notice.<text>`), not a sentence — the sim has no locale. */
+    text: string;
+    params?: Record<string, string | number>;
+    key?: string;
+  };
   'sim:error': { where: string; message: string };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [custom: string]: any;

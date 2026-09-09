@@ -536,7 +536,11 @@ export function createRidesSim(ctx: SimContext): SimHandle {
     ctx.events.emit('notify', {
       level: 'warning',
       key: `ride:breakdown:${r.id}`,
-      text: `${r.profile.name.en ?? r.id} has broken down`,
+      // A key and a name, never a sentence: this runs on the worker, which has no locale to write
+      // one in. It used to emit `${name} has broken down` and a German HUD duly showed that in
+      // English, one line above its own German translation of the very same event.
+      text: 'ride.breakdown',
+      params: { name: r.profile.name.en ?? r.id },
     });
     return true;
   }
