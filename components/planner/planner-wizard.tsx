@@ -232,7 +232,13 @@ export function PlannerWizard({
     city: park?.geo.city ?? '',
     parkSlug: park?.slug ?? '',
     date: date ?? undefined,
-    enabled: open && step === 'date' && Boolean(park && date),
+    // `step !== 'park'` rather than `step === 'date'`: a wizard seeded with a date never VISITS
+    // the date step, so the gate that used to be satisfied on the way past it is never satisfied
+    // at all — `planDay.data` stays undefined, the last step finds no headliners, and „Große
+    // Bahnen" reports that the day has none. On the ordinary path this changes nothing that shows:
+    // `date` is null until the date step answers it, and afterwards the query is already cached
+    // under the same key.
+    enabled: open && step !== 'park' && Boolean(park && date),
   });
   /**
    * The park's photograph, held for as long as the park is the park.

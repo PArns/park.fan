@@ -355,6 +355,61 @@ test(
   1
 );
 
+// ------------------------------------------- regressions caught by /code-review
+
+// A day whose crowd level is not on the scale cannot be RANKED, even when a wait time did arrive.
+// This came back as "the two days are equal" printed above a wait row with a 70-minute gap.
+const noBucketButWait = compareDays(
+  day('2026-09-20', { crowdLevel: 'unknown', headlinerForecast: { avgWait: 20, rides: [] } }),
+  day('2026-09-21', { crowdLevel: 'high', headlinerForecast: { avgWait: 90, rides: [] } }),
+  TODAY
+);
+test('unrated crowd level: the rated day wins', () => noBucketButWait.better, 'b');
+test(
+  'unrated crowd level: and it is reported rather than shrugged off',
+  () =>
+    noBucketButWait.blockers
+      .filter((x) => x.key === 'no-forecast')
+      .map((x) => x.side)
+      .join(','),
+  'a'
+);
+test(
+  'unrated crowd level: the wait row still shows both numbers',
+  () => `${reason(noBucketButWait, 'wait').a}/${reason(noBucketButWait, 'wait').b}`,
+  '20/90'
+);
+
+// A closed day has no forecast by definition — one line, not two.
+test(
+  'closed: no second blocker for the forecast it cannot have',
+  () => closed.blockers.map((x) => x.key).join(','),
+  'closed'
+);
+
+// `rankOf` reads only `headlinerForecast.avgWait`; this module also reports `avgWaitTime`. A
+// verdict computed without the fallback contradicted the row above it.
+const legacyGap = compareDays(
+  day('2026-09-20', { headlinerForecast: undefined, avgWaitTime: 15 }),
+  day('2026-09-21', { headlinerForecast: undefined, avgWaitTime: 90 }),
+  TODAY
+);
+test('legacy wait: the verdict follows the row', () => legacyGap.better, 'a');
+test('legacy wait: and calls a 75-minute gap clear', () => legacyGap.confidence, 'clear');
+test(
+  'legacy wait: the row and the verdict agree on the side',
+  () => reason(legacyGap, 'wait').better,
+  'a'
+);
+
+// Mixed sources still rank on one scale: A on the headliner field, B on the legacy one.
+const mixedSources = compareDays(
+  day('2026-09-20', { headlinerForecast: { avgWait: 15, rides: [] } }),
+  day('2026-09-21', { headlinerForecast: undefined, avgWaitTime: 90 }),
+  TODAY
+);
+test('mixed wait sources: still a verdict', () => mixedSources.better, 'a');
+
 // ---------------------------------------------------------------------------
 
 console.log('\nCalendar day comparison — verdict, rows and refusals\n' + '='.repeat(80) + '\n');

@@ -49,6 +49,18 @@ export interface DayComparisonSelection {
   active: boolean;
   /** The picked days, in pick order, at most two. The first is the comparison's left column. */
   days: readonly CalendarDay[];
+  /**
+   * The pair whose comparison the reader has already closed, as `date|date`, or `null`.
+   *
+   * It lives HERE and not in the grid, for the same reason the picks do: the grid unmounts on a
+   * month change, so a dismissed dialog held in component state came back on the next month step
+   * — with two days still picked, the condition that opens it was true again. That is precisely
+   * the cross-month flow this feature is for.
+   *
+   * Cleared by every write that changes the picks, so swapping one of the two days opens the new
+   * comparison rather than staying shut on the strength of the old one.
+   */
+  dismissed: string | null;
 }
 
 /** The answer for a park with nothing going on. One frozen object, so identity is stable. */
@@ -56,6 +68,7 @@ const IDLE: DayComparisonSelection = Object.freeze({
   parkSlug: '',
   active: false,
   days: Object.freeze([]) as readonly CalendarDay[],
+  dismissed: null,
 });
 
 let current: DayComparisonSelection = IDLE;
@@ -88,7 +101,7 @@ export const dayComparisonStore = {
   /** Turn comparison mode on or off. Switching it OFF drops the picks: leaving them would light
    *  two cells the next time the mode is entered, for a comparison nobody is in the middle of. */
   setActive(parkSlug: string, active: boolean): void {
-    commit(active ? { parkSlug, active: true, days: [] } : IDLE);
+    commit(active ? { parkSlug, active: true, days: [], dismissed: null } : IDLE);
   },
   /**
    * Pick a day, or take it back.
@@ -103,16 +116,31 @@ export const dayComparisonStore = {
     const base =
       current.parkSlug === parkSlug && current.active
         ? current
-        : { parkSlug, active: true, days: [] as readonly CalendarDay[] };
+        : { parkSlug, active: true, days: [] as readonly CalendarDay[], dismissed: null };
     if (base.days.some((d) => d.date === day.date)) {
-      commit({ parkSlug, active: true, days: base.days.filter((d) => d.date !== day.date) });
+      commit({
+        parkSlug,
+        active: true,
+        days: base.days.filter((d) => d.date !== day.date),
+        dismissed: null,
+      });
       return;
     }
     const kept = base.days.length >= 2 ? base.days.slice(1) : base.days;
-    commit({ parkSlug, active: true, days: [...kept, day] });
+    commit({ parkSlug, active: true, days: [...kept, day], dismissed: null });
   },
   /** Drop the picks and stay in comparison mode — what „Auswahl aufheben" does. */
   clearDays(parkSlug: string): void {
-    commit({ parkSlug, active: true, days: [] });
+    commit({ parkSlug, active: true, days: [], dismissed: null });
+  },
+  /**
+   * Remember that this pair's comparison was closed, or forget it again with `null`.
+   *
+   * A no-op for another park's selection: a dialog closed on Phantasialand's calendar says nothing
+   * about Europa-Park's.
+   */
+  dismiss(parkSlug: string, pair: string | null): void {
+    if (current.parkSlug !== parkSlug || current.dismissed === pair) return;
+    commit({ ...current, dismissed: pair });
   },
 };

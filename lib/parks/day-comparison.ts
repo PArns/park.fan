@@ -111,6 +111,17 @@ export const CLEAR_MARGIN = 0.5;
  */
 export const TIE_MARGIN = 0.1;
 
+/**
+ * How much of a crowd bucket a wait time is worth — `rankOf`'s own scaling, spelled out.
+ *
+ * Duplicated from `calendar-month-summary.ts` rather than exported from it, because what is
+ * needed here is the SCALING and not the whole ranking: {@link rankWith} applies it to the
+ * fallback wait `rankOf` does not read. Two hours is the ceiling there and here.
+ */
+function waitWithinBucket(wait: number): number {
+  return Math.min(0.99, Math.max(0, wait) / 120);
+}
+
 /** The bucket index `rankOf` wants, or `null` for a level that is not on the scale. */
 function bucketOf(day: CalendarDay): number | null {
   const index = CROWD_LEVEL_ORDER.indexOf(day.crowdLevel as ColoredCrowdLevel);
@@ -129,6 +140,26 @@ function bucketOf(day: CalendarDay): number | null {
 function waitOf(day: CalendarDay): number | null {
   const raw = day.headlinerForecast?.avgWait ?? day.avgWaitTime;
   return typeof raw === 'number' && Number.isFinite(raw) && raw > 0 ? raw : null;
+}
+
+/**
+ * The calendar's own rank for a day, over the SAME wait this module reports.
+ *
+ * `rankOf` reads `headlinerForecast.avgWait` and nothing else, which is right for the grid: that
+ * is the field the API actually sends. This module also reports `avgWaitTime` where a payload
+ * carries one — the fallback the tile itself uses — and a verdict computed without it contradicts
+ * the row directly above it: two days 75 minutes apart on the legacy field came back as a tie,
+ * with the wait row ticked for one of them.
+ *
+ * So: `rankOf` wherever it has something to read, and its own arithmetic over the fallback where
+ * it has not. `rankOf` is not changed and not re-implemented — {@link waitWithinBucket} is the one
+ * line of it this needs.
+ */
+function rankWith(day: CalendarDay, bucket: number): number {
+  const headliner = day.headlinerForecast?.avgWait;
+  if (typeof headliner === 'number' && Number.isFinite(headliner)) return rankOf(day, bucket);
+  const fallback = waitOf(day);
+  return fallback === null ? rankOf(day, bucket) : bucket + waitWithinBucket(fallback);
 }
 
 /** Minutes the park is scheduled to be open, or `null` where the hours are missing or nonsense. */
@@ -223,9 +254,16 @@ function reason(
  */
 function blockersFor(day: CalendarDay, todayIso: string): DayComparisonBlockerKey[] {
   const keys: DayComparisonBlockerKey[] = [];
-  if (day.status === 'CLOSED' || day.crowdLevel === 'closed') keys.push('closed');
+  const closed = day.status === 'CLOSED' || day.crowdLevel === 'closed';
+  if (closed) keys.push('closed');
   if (day.date < todayIso) keys.push('past');
-  if (bucketOf(day) === null && waitOf(day) === null) keys.push('no-forecast');
+  // The CROWD BUCKET is what the verdict is computed from, so a day without one cannot be ranked
+  // — even when a wait time did arrive. That case used to fall through to „the two days are
+  // equal" printed above a wait row showing a seventy-minute gap with one side ticked.
+  //
+  // Not reported for a closed day: a park that is shut has no forecast BY DEFINITION, and two
+  // lines saying so is one fact told twice.
+  if (!closed && bucketOf(day) === null) keys.push('no-forecast');
   return keys;
 }
 
@@ -258,8 +296,8 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
   const waitA = waitOf(a);
   const waitB = waitOf(b);
 
-  const rankA = bucketA === null ? null : rankOf(a, bucketA);
-  const rankB = bucketB === null ? null : rankOf(b, bucketB);
+  const rankA = bucketA === null ? null : rankWith(a, bucketA);
+  const rankB = bucketB === null ? null : rankWith(b, bucketB);
 
   const reasons = [
     // The crowd bucket carries the whole bucket difference; the wait carries what `rankOf` scales
@@ -281,7 +319,7 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
       waitB,
       'lower',
       waitA !== null && waitB !== null
-        ? Math.abs(Math.min(0.99, waitA / 120) - Math.min(0.99, waitB / 120))
+        ? Math.abs(waitWithinBucket(waitA) - waitWithinBucket(waitB))
         : 0
     ),
     reason('hours', 'minutes', openMinutesOf(a), openMinutesOf(b), 'higher'),
@@ -314,8 +352,9 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
     };
   }
 
-  // Both days are candidates but neither carries a rank: nothing on `rankOf`'s scale arrived, so
-  // there is no verdict to give. `blockersFor` has already said why.
+  // Unreachable while `blockersFor` reports a missing bucket — which it does — and kept as the
+  // structural guarantee that a verdict is never computed from a `null`. If the two ever drift
+  // apart, this is a tie and not a crash.
   if (rankA === null || rankB === null) {
     return {
       better: 'tie',

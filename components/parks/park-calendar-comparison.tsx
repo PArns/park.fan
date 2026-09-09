@@ -16,7 +16,7 @@ import {
   type DayComparisonSide,
 } from '@/lib/parks/day-comparison';
 import { CROWD_TEXT_CLASS, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 import {
   Dialog,
@@ -115,8 +115,10 @@ export function ParkCalendarComparison({
       case 'bucket': {
         // The bucket INDEX is `rankOf`'s input, not something to print: what the reader knows is
         // the level's name, which is the same word the tile they clicked wears.
-        const level = (side === 'a' ? a : b).crowdLevel;
-        return level && level !== 'closed' && level !== 'unknown'
+        const day = side === 'a' ? a : b;
+        if (day.status === 'CLOSED' || day.crowdLevel === 'closed') return tCommon('closed');
+        const level = day.crowdLevel;
+        return level && level !== 'unknown'
           ? t(`crowdLevels.${level as ColoredCrowdLevel}`)
           : t('crowdLevels.unknown');
       }
@@ -153,7 +155,10 @@ export function ParkCalendarComparison({
       case 'minutes':
         return reason.key === 'hours'
           ? formatDuration(reason.delta)
-          : `${roundWaitTo5(reason.delta)} ${tCommon('min')}`;
+          : // `roundWaitDeltaTo5`, never `roundWaitTo5` — see `lib/utils/wait-time.ts`: the latter
+            // floors everything under 2.5 to zero, and „Unterschied: 0 Min" beside a ticked cell is
+            // the line contradicting itself.
+            `${roundWaitDeltaTo5(reason.delta)} ${tCommon('min')}`;
       case 'mm':
         return t('dayComparison.unitMm', { value: Math.round(reason.delta * 10) / 10 });
       case 'days':
@@ -172,9 +177,16 @@ export function ParkCalendarComparison({
 
   const columnHead = (day: CalendarDay, side: 'a' | 'b') => {
     const wins = comparison.better === side && comparison.confidence !== 'tie';
+    // The same three-way read `park-calendar-day.tsx` does, and for the same reason: `status` and
+    // `crowdLevel` are two fields that can disagree. Collapsing them into „open or closed" labelled
+    // an OPEN day with no forecast as „Geschlossen" — while the tile it was picked from said
+    // „Keine Prognose" — and would have dressed a shut day in a stale crowd tier.
+    const isClosed = day.status === 'CLOSED' || day.crowdLevel === 'closed';
     const level = day.crowdLevel;
     const colored: ColoredCrowdLevel | null =
-      level && level !== 'closed' && level !== 'unknown' ? (level as ColoredCrowdLevel) : null;
+      !isClosed && level && level !== 'closed' && level !== 'unknown'
+        ? (level as ColoredCrowdLevel)
+        : null;
     return (
       <div
         className={cn(
@@ -196,7 +208,11 @@ export function ParkCalendarComparison({
             colored ? CROWD_TEXT_CLASS[colored] : 'text-muted-foreground'
           )}
         >
-          {colored ? t(`crowdLevels.${colored}`) : tCommon('closed')}
+          {isClosed
+            ? tCommon('closed')
+            : colored
+              ? t(`crowdLevels.${colored}`)
+              : t('crowdLevels.unknown')}
         </span>
         {wins && (
           <span className="text-primary mt-1 flex items-center gap-1 text-[11px] font-semibold">

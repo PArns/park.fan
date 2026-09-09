@@ -111,16 +111,17 @@ export function ParkCalendarGrid({
   const pickedDates = useMemo(() => selection.days.map((d) => d.date), [selection.days]);
 
   /**
-   * Which comparison the reader has already closed, as the pair that produced it.
+   * Whether the comparison is on screen.
    *
    * The dialog opens on the SECOND pick, which means "two days are selected" cannot also be what
    * keeps it open — closing it would leave the condition true and the dialog would come straight
-   * back. Keyed by the pair rather than a bare boolean so that changing one of the two days opens
-   * the new comparison, which is the one thing a plain "dismissed" flag would get wrong.
+   * back. What was closed is therefore remembered as the PAIR that produced it, so changing one of
+   * the two days opens the new comparison; and it is remembered in the store rather than here,
+   * because this component unmounts on a month change and a dismissed dialog would otherwise
+   * reopen on the next month step.
    */
-  const [dismissedPair, setDismissedPair] = useState<string | null>(null);
   const pairKey = pickedDates.join('|');
-  const comparisonOpen = selection.days.length === 2 && dismissedPair !== pairKey;
+  const comparisonOpen = selection.days.length === 2 && selection.dismissed !== pairKey;
 
   // The calendar has two structurally different layouts (a reversed 2-col list on mobile, a 7-col
   // week grid on desktop). They used to BOTH live in the DOM toggled by `lg:hidden` / `hidden
@@ -395,10 +396,7 @@ export function ParkCalendarGrid({
             label={t('dayComparison.compare')}
             pressed={comparing}
             size="md"
-            onToggle={() => {
-              dayComparisonStore.setActive(parkSlug, !comparing);
-              setDismissedPair(null);
-            }}
+            onToggle={() => dayComparisonStore.setActive(parkSlug, !comparing)}
           />
           {comparing && (
             <p className="text-muted-foreground text-xs">
@@ -414,7 +412,7 @@ export function ParkCalendarGrid({
               {selection.days.length === 2 && !comparisonOpen && (
                 <button
                   type="button"
-                  onClick={() => setDismissedPair(null)}
+                  onClick={() => dayComparisonStore.dismiss(parkSlug, null)}
                   className="text-primary text-xs font-medium hover:underline"
                 >
                   {t('dayComparison.reopen')}
@@ -422,10 +420,7 @@ export function ParkCalendarGrid({
               )}
               <button
                 type="button"
-                onClick={() => {
-                  dayComparisonStore.clearDays(parkSlug);
-                  setDismissedPair(null);
-                }}
+                onClick={() => dayComparisonStore.clearDays(parkSlug)}
                 className="text-muted-foreground hover:text-foreground text-xs"
               >
                 {t('dayComparison.reset')}
@@ -565,7 +560,7 @@ export function ParkCalendarGrid({
         todayIso={todayStr}
         open={comparisonOpen}
         onOpenChange={(next) => {
-          if (!next) setDismissedPair(pairKey);
+          if (!next) dayComparisonStore.dismiss(parkSlug, pairKey);
         }}
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
       />
