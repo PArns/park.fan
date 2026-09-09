@@ -1660,7 +1660,13 @@
       "showNextAny": "prochaine séance"
     },
     "menu": {
-      "link": "Mes alertes"
+      "link": "Mes alertes",
+      "title": "Alertes",
+      "threshold": "sous {minutes} min",
+      "showAt": "à {time}",
+      "showNextAny": "prochaine séance",
+      "remove": "{name} : supprimer l’alerte",
+      "loadError": "Impossible de charger vos alertes."
     },
     "pushErrors": {
       "generic": "Ça n’a pas fonctionné. Merci de réessayer.",

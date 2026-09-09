@@ -1660,7 +1660,13 @@
       "showNextAny": "whichever performance is next"
     },
     "menu": {
-      "link": "My alerts"
+      "link": "My alerts",
+      "title": "Alerts",
+      "threshold": "under {minutes} min",
+      "showAt": "at {time}",
+      "showNextAny": "whichever performance is next",
+      "remove": "{name}: remove alert",
+      "loadError": "Couldn't load your alerts."
     },
     "pushErrors": {
       "generic": "That didn’t work. Please try again.",

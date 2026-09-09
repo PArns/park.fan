@@ -332,7 +332,7 @@ und der leere Favoritenzustand — der Zustand, den fast jeder Besucher sieht �
 Schritte als drei lange Zeilen über den rechten Rand. Die Glasfläche setzt jetzt `whitespace-normal`
 zurück: ein Panel ist eine Seite, keine Zeile in der Leiste.
 
-**Jede Karte im Band ist gleich breit** (`planBand` in `components/layout/favorites-menu-panel.tsx`).
+**Jede Karte im Band ist gleich breit** (`planBand` in `lib/utils/favorites-band-plan.ts`).
 Vorher bekam jede Gruppe `flexGrow: <ihre Kartenzahl>` und füllte das mit
 `repeat(auto-fill, minmax(10.5rem, 1fr))`: die Breite folgte der Anzahl, die Spaltenzahl der
 Breite, und die Quantisierung dazwischen zerlegte genau das Verhältnis, auf dem das aufbaute. Drei
@@ -355,6 +355,48 @@ Zwei Nebenwirkungen sind Absicht. Die Gruppen stehen nebeneinander oder unterein
 Zeilengruppe (Shows/Restaurants) wächst weiter nicht mit ihrer Anzahl: eine Zeile wird von mehr
 Breite nur länger, nicht besser, also bekommt sie 13 rem und den Rest nur, wenn ihn keine
 Kartengruppe braucht.
+
+Die Geometrie liegt seit dem Alarm-Panel **außerhalb** der Komponente, in
+`lib/utils/favorites-band-plan.ts` — dieselbe Trennung wie bei `weather-chart-axis`, und aus
+demselben Grund: sie ist einmal auf eine Art gebrochen, die ein grüner Build nicht zeigt, und
+`pnpm test:favorites-band` rechnet sie nach. Der Test hält zwei Aussagen fest: dass jede Karte in
+jeder Bandbreite dieselbe Breite bekommt und die Gruppen zusammen ins Band passen, und dass jede
+Zusammenstellung, die es vor der Alarmgruppe gab, exakt so geplant wird wie vorher (die alte
+Formel steht als Vergleichsimplementierung im Test).
+
+## Alarme im Favoritenmenü
+
+Das Menü trug einen Textlink „Meine Alarme" auf `/alerts` und sonst nichts über Alarme. Wer wissen
+wollte, was scharf ist — oder einen davon loswerden —, musste die Seite verlassen, auf der er
+gerade stand. Im Band steht jetzt eine vierte Gruppe (`components/layout/favorites-menu-alerts.tsx`):
+alle Wartezeit-Alarme und Show-Erinnerungen dieses Browsers, parkübergreifend, jede Zeile mit einem
+Knopf zum Entfernen daneben.
+
+Vier Entscheidungen dahinter:
+
+- **Das Gatter ist der lokale Spiegel, die Liste ist der Server.** `countPushFollowsLocal()` ist ein
+  `localStorage`-Zugriff und entscheidet, ob überhaupt gefragt wird; wer nie eine Glocke gedrückt
+  hat, lädt weder den Chunk noch stellt er eine Anfrage. Was wirklich gesetzt ist, sagt danach die
+  API (`usePushFollowsList`) — der Spiegel ist ein Cache für Glocken, keine Wahrheit für eine
+  Fläche, von der gelöscht wird. Die eine Lücke daraus: ist der Spiegel gelöscht worden, während
+  die Push-Anmeldung überlebt hat, bleibt die Gruppe aus. Deshalb steht der Link „Meine Alarme"
+  weiterhin bedingungslos in der Kopfzeile des Panels.
+- **Nachgeladen, nicht mitgeliefert.** `lib/push/push-follows` reicht bis zum Service Worker und
+  zum VAPID-Key; im Chunk, den der Header auf ~35 000 Seiten ausliefert, hat das nichts zu suchen.
+  Also `next/dynamic` hinter dem Gatter — dieselbe Teilung, die der Tagesplaner zwischen seinem
+  Tab und seinem Panel macht.
+- **Auf dem Handy bleibt es beim Link.** Das 300-px-Sheet ist die ganze Navigation; eine Reihe
+  Zeilen mit je einem unwiderruflichen Tipp darin gehört nicht hinein, und `/alerts` sagt dasselbe
+  mit Platz.
+- **Die Übersetzungen bleiben in `pushAlerts.menu`.** Das ist Layout-Chrome und wird auf jeder
+  Seite × sechs Sprachen serialisiert. `pushAlerts.overview` hätte zwölf Schlüssel Fließtext
+  mitgebracht; die sechs kurzen Schlüssel hier kosten +1198 B roh über alle sechs Sprachen, rund
+  +81 B komprimiert pro Seite.
+
+Die Löschung schreibt in den React-Query-Cache, **nachdem** das DELETE zurück ist. Andersherum
+ginge es nicht: `removeRideAlert` schreibt zuerst den lokalen Spiegel und ruft erst dann die API,
+also würde alles, was auf diesen Spiegel hört, die Zeile beim Server nachfragen, während sie noch
+gelöscht wird.
 
 ## Das Menü schließt sich beim Seitenwechsel
 
