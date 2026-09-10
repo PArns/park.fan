@@ -132,7 +132,7 @@ export function ContentDE() {
       >
         <P>
           Hier die Note, live und ungeschönt. Diese Zahlen zieht Fancast in diesem Moment aus dem
-          eigenen Dashboard; sie ändern sich, sobald das Modell heute Nacht wieder trainiert hat.
+          eigenen Dashboard; sie ändern sich mit dem nächsten Trainingslauf morgen früh.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />

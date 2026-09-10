@@ -225,9 +225,8 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
           <A href="/parks/europe/germany/sierksdorf/hansa-park">Hansa-Park</A> ne montre les siens
           que dans son application, sur le wifi du parc : aucun chiffre ne nous parviendra jamais
           pour lui, et le planificateur n&apos;en invente pas. Pour les dates lointaines, pas de
-          météo non plus : la prévision porte à une quinzaine de jours, et au-delà il est écrit
-          qu&apos;elle ne va pas plus loin, plutôt qu&apos;un vide qui se lirait «&nbsp;il fera
-          sec&nbsp;».
+          météo non plus : la prévision porte à une quinzaine de jours, et au-delà le planificateur
+          le dit, au lieu de laisser un vide qui se lirait «&nbsp;il fera sec&nbsp;».
         </P>
         <P>
           Et ce qu&apos;un plan coûte vraiment, c&apos;est la journée qui le décide. Une attraction

@@ -40,7 +40,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein kostenpflichtiges oder inklusive Ticket-Upgrade, das Zugang zu einer kürzeren Prioritätswarteschlange gewährt.',
     definition:
-      'Ein Express Pass (der genaue Name variiert je nach Park – Universal Express, Disney Lightning Lane usw.) ist ein Ticket-Upgrade, das Inhabern erlaubt, einen dedizierten Prioritätseingang mit deutlich kürzeren Wartezeiten zu nutzen. Einige Parks bieten Express-Zugang in Premium-Hotelpaketen an; andere verkaufen ihn separat. Nutze den Besucherkalender von park.fan, um deinen Besuch zu planen und zu entscheiden, ob ein Express Pass den Preis wert ist.',
+      'Ein Express Pass (der genaue Name variiert je nach Park – Universal Express, Disney Lightning Lane usw.) ist ein Ticket-Upgrade, das Inhabern erlaubt, einen dedizierten Prioritätseingang mit deutlich kürzeren Wartezeiten zu nutzen. Einige Parks bieten Express-Zugang in Premium-Hotelpaketen an; andere verkaufen ihn separat.',
     alternateNames: ['Flash Pass'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
@@ -82,7 +82,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Tag mit maximalen Besucherzahlen, typischerweise während Feiertagen oder Sonderveranstaltungen.',
     definition:
-      'Ein Spitzentag ist jeder Tag, an dem die Besucherzahlen auf oder nahe der maximalen Kapazität eines Parks sind. Häufige Spitzentage sind große gesetzliche Feiertage (Weihnachten, Ostern, Sommerferien), Sonderveranstaltungstage (Halloween-Nächte, Feuerwerke) und Schulferienwochen. park.fan hebt Spitzentage im Besucherkalender hervor, damit du sie gezielt einplanst oder meidest.',
+      'Ein Spitzentag ist jeder Tag, an dem die Besucherzahlen auf oder nahe der maximalen Kapazität eines Parks sind. Häufige Spitzentage sind große gesetzliche Feiertage (Weihnachten, Ostern, Sommerferien), Sonderveranstaltungstage (Halloween-Nächte, Feuerwerke) und Schulferienwochen. Im Besucherkalender von park.fan sind die Spitzentage markiert.',
     aliases: ['Spitzentage'],
     alternateNames: ['Stoßzeiten', 'Hochbetrieb'],
 
@@ -206,7 +206,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die normale Warteschlange einer Attraktion, ohne Reservierung oder besonderes Ticket.',
     definition:
-      'Die Standby-Warteschlange ist die reguläre physische Warteschlange, die alle Besucher ohne zusätzliches Ticket oder Upgrade nutzen können. Wer in der Standby-Schlange steht, wartet in der Reihenfolge des Eintreffens – die angezeigte Wartezeit spiegelt direkt die aktuelle Auslastung der Attraktion wider. An vollen Tagen können Standby-Zeiten bei Hauptattraktionen 90 Minuten und mehr erreichen. park.fan verfolgt Standby-Wartezeiten in Echtzeit, damit du jederzeit die kürzeste Schlange findest.',
+      'Die Standby-Warteschlange ist die reguläre physische Warteschlange, die alle Besucher ohne zusätzliches Ticket oder Upgrade nutzen können. Wer in der Standby-Schlange steht, wartet in der Reihenfolge des Eintreffens – die angezeigte Wartezeit spiegelt direkt die aktuelle Auslastung der Attraktion wider. An vollen Tagen können Standby-Zeiten bei Hauptattraktionen 90 Minuten und mehr erreichen. park.fan zeigt die Standby-Wartezeit jeder Attraktion neben den übrigen Warteschlangen-Arten.',
     alternateNames: ['Normale Warteschlange', 'Reguläre Warteschlange', 'Standby-Warteschlange'],
 
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
@@ -218,7 +218,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disneys kostenpflichtiges Vorrangwarteschlangen-System als Nachfolger des früheren FastPass+-Programms.',
     definition:
-      'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Es gibt zwei Varianten: Individual Lightning Lane (ILL) für die gefragtesten Attraktionen, die separat erworben werden muss, und Lightning Lane Multi Pass (LLMP), ein tägliches Abo, das Rückkehrzeitfenster für eine Auswahl an Attraktionen ermöglicht. Da Lightning Lane ein vormals kostenloses Angebot in ein kostenpflichtiges umgewandelt hat, wird es in der Community kontrovers diskutiert. Der Besucherkalender von park.fan hilft dir einzuschätzen, an welchen Tagen Lightning Lane den Preis wert ist.',
+      'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Es gibt zwei Varianten: Individual Lightning Lane (ILL) für die gefragtesten Attraktionen, die separat erworben werden muss, und Lightning Lane Multi Pass (LLMP), ein tägliches Abo, das Rückkehrzeitfenster für eine Auswahl an Attraktionen ermöglicht. Da Lightning Lane ein vormals kostenloses Angebot in ein kostenpflichtiges umgewandelt hat, wird es in der Community kontrovers diskutiert. Der Besucherkalender von park.fan zeigt, an welchen Tagen mit langen Standby-Schlangen zu rechnen ist.',
     alternateNames: [
       'Lightning Lane Multi Pass',
       'Individual Lightning Lane',
@@ -236,7 +236,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disneys ehemaliges tägliches Zusatzabo für Lightning-Lane-Zugang zu den meisten Attraktionen.',
     definition:
-      'Genie+ (heute umbenannt in Lightning Lane Multi Pass) war Disneys kostenpflichtiges Tages-Add-on, das FastPass+ ersetzte. Für eine personenbezogene Tagesgebühr konnten Gäste jeweils ein Lightning-Lane-Rückkehrzeitfenster für eine breite Auswahl an Attraktionen buchen. Die begehrtesten Highlights wurden als Individual Lightning Lane separat verkauft. Der Preis von Genie+ war dynamisch und stieg an den besucherstärksten Tagen. park.fan zeigt dir die aktuellen Besucherdichten, damit du entscheiden kannst, ob sich das Zusatzabo lohnt.',
+      'Genie+ (heute umbenannt in Lightning Lane Multi Pass) war Disneys kostenpflichtiges Tages-Add-on, das FastPass+ ersetzte. Für eine personenbezogene Tagesgebühr konnten Gäste jeweils ein Lightning-Lane-Rückkehrzeitfenster für eine breite Auswahl an Attraktionen buchen. Die begehrtesten Highlights wurden als Individual Lightning Lane separat verkauft. Der Preis von Genie+ war dynamisch und stieg an den besucherstärksten Tagen. park.fan zeigt die aktuelle Besucherdichte jedes Parks.',
     aliases: ['Genie Plus'],
     alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
@@ -324,7 +324,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Kalendertag, an dem bestimmte Jahrespass-Stufen nicht für den Parkeintritt gültig sind – meist an Spitzentagen.',
     definition:
-      'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Hochwertige Pässe haben wenige oder keine Sperrtage; günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Vor dem Besuch unbedingt den Sperrtagkalender prüfen. Der Besucherkalender von park.fan hebt typische Spitzentage hervor, damit du deine Jahrespass-Stufe entsprechend planen kannst.',
+      'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Hochwertige Pässe haben wenige oder keine Sperrtage; günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Vor dem Besuch unbedingt den Sperrtagkalender prüfen. Der Besucherkalender von Der Besucherkalender von park.fan markiert die typischen Spitzentage.',
     aliases: ['Sperrtage'],
     alternateNames: ['Blackout-Tage', 'Blackout-Datum', 'Blockout Date'],
 
@@ -1077,7 +1077,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'realtime-wait-time',
     name: 'Echtzeit-Wartezeit',
     shortDefinition:
-      'Minütlich aktualisierte Live-Wartezeit direkt aus den Systemen eines Freizeitparks.',
+      'Live-Wartezeit direkt aus den Systemen eines Freizeitparks, alle fünf Minuten neu.',
     definition:
       'Eine Echtzeit-Wartezeit ist die aktuelle, live aus den Erfassungssystemen eines Freizeitparks abgerufene Wartezeit – kein historischer Durchschnitt, sondern der Stand von heute, so wie er gerade ist. park.fan ruft die Wartezeiten aus öffentlichen Quellen ab und aktualisiert sie alle fünf Minuten. So siehst du immer, welche Attraktion gerade leer ist und wo du wirklich 60 Minuten warten müsstest.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
