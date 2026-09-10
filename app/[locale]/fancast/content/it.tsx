@@ -370,7 +370,7 @@ export function ContentIT() {
               title: 'Nessuna previsione',
               body: (
                 <>
-                  Invece di tirare a indovinare: i parchi con troppo pochi dati ricevono{' '}
+                  invece di tirare a indovinare: i parchi con troppo pochi dati ricevono{' '}
                   <CrowdLevelBadge level="unknown" /> invece di un numero inventato.
                 </>
               ),

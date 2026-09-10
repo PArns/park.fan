@@ -90,10 +90,10 @@ export function ContentFR() {
           temps d’attente.
         </Lead>
         <P>
-          C’est exactement ce que nous avons fait : dépouiller les temps d’attente relevés dans
-          plus de 200 parcs. Ici se trouvent les jours de semaine et les mois les plus calmes, les
-          heures les plus tranquilles de la journée et les dates à esquiver. Le calendrier
-          d’affluence vous sort ensuite le bon jour pour le parc de votre choix.
+          C’est exactement ce que nous avons fait : dépouiller les temps d’attente relevés dans plus
+          de 200 parcs. Ici se trouvent les jours de semaine et les mois les plus calmes, les heures
+          les plus tranquilles de la journée et les dates à esquiver. Le calendrier d’affluence vous
+          sort ensuite le bon jour pour le parc de votre choix.
         </P>
         <Highlight>
           Version courte : du mardi au jeudi hors vacances scolaires, arriver à l’ouverture et
@@ -112,8 +112,8 @@ export function ContentFR() {
       >
         <PG>
           L’affluence n’a rien d’un hasard : le moment où ça se remplit suit des tendances claires
-          de jour de semaine, de vacances, de météo et de saison. Voici les deux plus marquantes,
-          en moyenne sur tous les parcs, à partir des temps d’attente relevés :
+          de jour de semaine, de vacances, de météo et de saison. Voici les deux plus marquantes, en
+          moyenne sur tous les parcs, à partir des temps d’attente relevés :
         </PG>
         <BestTimesData locale="fr" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="fr" />
