@@ -333,8 +333,12 @@ for (const [locale, list] of captions) {
  */
 function proseFromSource(src) {
   const out = [];
+  // Comments first: they are English code documentation, where an em dash is correct
+  // and none of these rules apply. Leaving them in reported the one JSDoc dash on the
+  // guide page as a prose error on a page whose prose is clean.
+  const code = src.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/^[ \t]*\/\/.*$/gm, ' ');
   // Quoted literals that read as prose: a space, and not a path/class/import specifier.
-  for (const m of src.matchAll(/(['"`])((?:\\.|(?!\1)[^\\]){25,})\1/g)) {
+  for (const m of code.matchAll(/(['"`])((?:\\.|(?!\1)[^\\]){25,})\1/g)) {
     const text = m[2];
     if (!/\s/.test(text)) continue;
     if (/^[\w@./-]+$/.test(text)) continue; // module specifier or path
@@ -342,14 +346,30 @@ function proseFromSource(src) {
     out.push(text.replace(/\\n/g, '\n').replace(/\\'/g, "'"));
   }
   // JSX text nodes: what sits between tags, with expressions stripped.
-  for (const m of src.matchAll(/>([^<>{}]{25,})</g)) out.push(m[1]);
+  for (const m of code.matchAll(/>([^<>{}]{25,})</g)) out.push(m[1]);
   return out.join('\n');
 }
 
+/*
+ * Every per-locale content directory in the app, plus the glossary and the season
+ * banner. The list is spelled out rather than globbed so that adding a page is a
+ * deliberate line here — a `content/<locale>.tsx` that nobody added stays unchecked,
+ * which is how the glossary went 274 terms without anyone reading them.
+ */
+const CONTENT_ROUTES = [
+  'how-park-fan-works',
+  'fancast',
+  'best-time-to-visit',
+  'trip-planner',
+  'datenschutz',
+  'impressum',
+];
+
 const CONTENT_PAGES = [
   ...LOCALES.map((l) => [`content/glossary/${l}.ts`, l]),
-  ...LOCALES.map((l) => [`app/[locale]/how-park-fan-works/content/${l}.tsx`, l]),
-  ...LOCALES.map((l) => [`app/[locale]/fancast/content/${l}.tsx`, l]),
+  ...CONTENT_ROUTES.flatMap((route) =>
+    LOCALES.map((l) => [`app/[locale]/${route}/content/${l}.tsx`, l])
+  ),
   ...LOCALES.map((l) => [`content/home/announce.${l}.md`, l]),
 ];
 

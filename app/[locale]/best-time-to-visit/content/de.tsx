@@ -74,7 +74,7 @@ const FAQ = [
   {
     question: 'Woher stammen diese Daten?',
     answer:
-      'Aus den tatsächlich gemessenen Wartezeiten von über 200 Parks aus den letzten zwei Jahren. Damit die Rangfolge fair bleibt und nicht einfach von den größten Parks bestimmt wird, rechnen wir jeden Park zuerst auf seinen eigenen Schnitt um und mitteln erst dann.',
+      'Aus den Wartezeiten, die wir an über 200 Parks selbst mitgeschrieben haben. Damit die Rangfolge nicht von den größten Parks bestimmt wird, rechnen wir jeden Park zuerst auf seinen eigenen Schnitt um und mitteln erst dann.',
   },
 ] as const;
 
@@ -90,10 +90,10 @@ export function ContentDE() {
           ziemlich genau nachrechnen.
         </Lead>
         <P>
-          Genau das haben wir gemacht: zwei Jahre Wartezeiten aus über 200 Parks ausgewertet. Auf
-          dieser Seite findest du die ruhigsten Wochentage und Monate, die besten Uhrzeiten, die
-          Tage, an denen du besser zu Hause bleibst, und zum Schluss den Crowd-Kalender, der dir für
-          deinen Wunschpark den passenden Tag raussucht.
+          Genau das haben wir gemacht: die mitgeschriebenen Wartezeiten aus über 200 Parks
+          ausgewertet. Hier stehen die ruhigsten Wochentage und Monate, die besten Uhrzeiten und die
+          Tage, an denen du besser zu Hause bleibst. Der Crowd-Kalender sucht dir danach für deinen
+          Wunschpark den passenden Tag raus.
         </P>
         <Highlight>
           Keine Lust auf den ganzen Text? Geh unter der Woche, am besten Dienstag bis Donnerstag und
@@ -128,8 +128,8 @@ export function ContentDE() {
         icon={Clock}
       >
         <P>
-          Der Tag ist die halbe Miete, die Uhrzeit die andere. Drei Zeitfenster sind fast überall am
-          entspanntesten:
+          Der Tag ist die halbe Miete, die Uhrzeit die andere. Diese vier Zeitfenster sind fast
+          überall am entspanntesten:
         </P>
         <TouchpointGrid
           items={[
@@ -159,11 +159,12 @@ export function ContentDE() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba rast durch den Dschungel im Phantasialand"
           kicker="Zur Öffnung"
-          title="Früh da sein schlägt fast jeden Trick"
+          title="Früh da sein hilft – aber nicht bei jeder Bahn"
         >
-          Klingt unbequem, lohnt sich aber wie kaum etwas anderes. Die erste Stunde nach dem Einlass
-          bringt dir oft mehr Fahrten als zwei am Nachmittag. Du brauchst dafür keinen teuren
-          Express-Pass, nur einen etwas früheren Wecker.
+          Bei den großen Headlinern bringt die erste Stunde nach dem Einlass oft mehr Fahrten als
+          zwei am Nachmittag. Es gilt aber nicht überall: manche Bahnen laufen den ganzen Tag gleich
+          voll, andere ziehen erst nach dem Mittag an. Auf der Seite jeder Attraktion steht ihre
+          eigene Tageskurve, und dort steht auch, ob sich der frühere Wecker für sie lohnt.
         </SplitFigure>
       </SectionShell>
 
@@ -241,7 +242,7 @@ export function ContentDE() {
             {
               icon: Sunrise,
               title: 'Früh da sein',
-              body: 'Pünktlich zur Öffnung da zu sein schlägt fast jeden anderen Trick. Die erste Stunde bringt oft mehr als zwei am Nachmittag.',
+              body: 'Bei den großen Bahnen bringt die erste Stunde oft mehr als zwei am Nachmittag. Ob es sich für eine bestimmte Bahn lohnt, steht auf ihrer eigenen Seite.',
             },
             {
               icon: Ticket,

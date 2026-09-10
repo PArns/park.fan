@@ -123,7 +123,7 @@
     },
     "ai": {
       "title": "Wie genau unsere Vorhersagen sind",
-      "subtitle": "park.fan rechnet mit einem eigenen Modell, trainiert auf den gemessenen Warteschlangen aus über 200 Parks. Es rechnet Wetterprognose, Schulferien und Sonderveranstaltungen mit und wird jede Nacht um 06:00 UTC mit den Wartezeiten des Vortags neu trainiert.",
+      "subtitle": "park.fan rechnet mit einem eigenen Modell, trainiert auf den gemessenen Warteschlangen aus über 200 Parks. Es rechnet Wetterprognose, Schulferien und Sonderveranstaltungen mit und wird täglich um 06:00 UTC mit den Wartezeiten des Vortags neu trainiert.",
       "avgErrorDesc": "MAE – um wie viele Minuten unsere Vorhersagen im Schnitt daneben liegen",
       "rmseDesc": "RMSE – wie stark einzelne Ausreißer ins Gewicht fallen",
       "mapeDesc": "MAPE – prozentualer Fehler gemessen an der echten Wartezeit",
@@ -1539,7 +1539,7 @@
     "homepage": {
       "faq": {
         "whatIsQ": "Was ist park.fan?",
-        "whatIsA": "park.fan sammelt Live-Wartezeiten aus über 200 Freizeitparks in Europa, Asien, Nord- und Südamerika und Australien. Auf jeder Parkseite stehen die aktuellen Wartezeiten aller Fahrgeschäfte, die Spielzeiten der Shows, die Öffnungszeiten und ein Kalender, der den Andrang der kommenden Monate bewertet.",
+        "whatIsA": "park.fan sammelt Live-Wartezeiten aus über 200 Freizeitparks in 23 Ländern. Auf jeder Parkseite stehen die aktuellen Wartezeiten aller Fahrgeschäfte, die Spielzeiten der Shows, die Öffnungszeiten und ein Kalender, der den Andrang der kommenden Monate bewertet.",
         "whichParksQ": "Welche Freizeitparks werden von park.fan unterstützt?",
         "whichParksA": "park.fan deckt über 200 Freizeitparks weltweit ab, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland und Bobbejaanland. Die vollständige Liste mit Live-Wartezeiten steht auf der Parks-Übersichtsseite.",
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
