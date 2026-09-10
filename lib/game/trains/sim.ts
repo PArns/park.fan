@@ -653,6 +653,38 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
     api,
     tick() {
       if (dirty) sync();
+      /**
+       * The train still runs on its own clock, and I tried to change that and could not afford it.
+       *
+       * The defect is real and measured: over a park day at speed 20 the coaster's line boarded
+       * **1,507 riders while the train dispatched twice**, because the queue drains at the
+       * analytic rate the dock reports while the train advances a constant 0.05 ride-seconds a
+       * tick whatever the clock says. At speed 1 the same park gave 33 riders on 5 dispatches,
+       * which looked coherent only because demand was the binding constraint and hid it.
+       *
+       * Putting `dt` on the park clock FIXES it — 2 dispatches became **229** over the same day,
+       * and `broken` refusals fell 52 to 2 because the machine actually cycles. The block system
+       * survived it too: `MAX_SUBSTEP_METRES` (kept, below) bounds a sub-step by distance rather
+       * than by a fixed count, which is what stops a bigger `dt` stepping over a stop line, and
+       * that is a strict improvement whatever `dt` turns out to be.
+       *
+       * What it cannot survive is the bill. Mean tick time against a 6 ms budget:
+       *
+       *     speed    1 →   0.43 ms      speed  20 →   9.47 ms
+       *     speed    5 →   1.16 ms      speed  50 →  25.06 ms
+       *                                 speed 100 → 192.99 ms
+       *
+       * It breaks between 5 and 20, and 20 is a fast-forward the game offers. The cost is
+       * structural: at speed 100 a tick is 100 ride-seconds, so a 40 m/s train covers four
+       * kilometres and a half-metre bound turns that into eight thousand sub-steps, per train.
+       *
+       * The answer is the one `types.ts` gestured at and nobody has built: above some speed the
+       * train stops being integrated and starts being SCHEDULED — advanced along the spline at
+       * the cycle rate the physics already computed, with the block system consulted at block
+       * boundaries instead of every half metre. That is a design change with its own correctness
+       * argument, not a constant to flip, so it is filed with these numbers rather than guessed
+       * at. See STATUS.
+       */
       const dt = RIDE_SECONDS_PER_TICK;
       for (const fleet of fleets.values()) advance(fleet, dt);
     },

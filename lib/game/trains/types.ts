@@ -29,8 +29,20 @@ import type { Vec3 } from '../core/types';
 /** Ride seconds one fixed tick advances. See the docblock. */
 export const RIDE_SECONDS_PER_TICK = 0.05;
 
-/** Sub-steps per tick for the integrator. Four keeps a 40 m/s train inside 0.5 m per sub-step. */
+/** Sub-steps per tick for the integrator, as a floor. See `MAX_SUBSTEP_METRES` for the real rule. */
 export const MOTION_SUBSTEPS = 4;
+
+/**
+ * Metres a single integration sub-step may cover.
+ *
+ * This is what actually keeps the block system safe, and it is a distance because the thing it
+ * protects is a distance: a block's stop line is a position on the spline, and a train that jumps
+ * over it in one step has left the block system's opinion behind. Half a metre is what four fixed
+ * sub-steps happened to give a 40 m/s train at the old constant tick, so nothing about today's
+ * behaviour changes — it is the same number, stated as the rule it always was rather than as a
+ * count that only worked while `dt` never moved.
+ */
+export const MAX_SUBSTEP_METRES = 0.5;
 
 /** Standard gravity, m/s². The same number `track/vec.ts` uses; a physical constant, not an import. */
 export const G = 9.80665;

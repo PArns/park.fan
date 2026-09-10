@@ -35,6 +35,7 @@ import type { DriveSection } from '../track';
 import {
   G,
   MAX_DRIVE_ACCEL,
+  MAX_SUBSTEP_METRES,
   MOTION_SUBSTEPS,
   RHO,
   STALL_SPEED,
@@ -158,14 +159,30 @@ export function stepTrain(
   dt: number,
   scratch: DriveSection[]
 ): StepResult {
-  const sub = dt / MOTION_SUBSTEPS;
+  /**
+   * Sub-steps bounded by DISTANCE, not by a fixed count.
+   *
+   * Four was right while `dt` was a constant 0.05 ride-seconds: a 40 m/s train covers 2 m a tick,
+   * so each sub-step was half a metre and the block system — which decides where a train may be
+   * by comparing `s` against a stop line — could not be stepped over. The moment `dt` follows the
+   * park clock that stops holding: at speed 20 a tick is a whole ride-second and four sub-steps
+   * are 10 m each, which walks straight through a 24 m block brake's stop line and past the train
+   * already parked in it.
+   *
+   * `trains/types.ts` used that as the reason NOT to let the train follow the clock at all. It is
+   * a reason to bound the sub-step instead. Cost is arithmetic and nothing else: 80 sub-steps for
+   * a 40 m/s train at speed 20, per train, against a 6 ms tick budget the whole game shares.
+   */
+  const span = Math.abs(state.v * dt) + 0.5 * Math.abs(dt) * Math.abs(dt) * 12;
+  const steps = Math.max(MOTION_SUBSTEPS, Math.ceil(span / MAX_SUBSTEP_METRES));
+  const sub = dt / steps;
   const dragK = (0.5 * RHO * ctx.dragArea) / ctx.massKg;
   const start = state.s;
   let parked = false;
   let stalled = false;
   let remaining = hold ? hold.distance : Infinity;
 
-  for (let step = 0; step < MOTION_SUBSTEPS; step++) {
+  for (let step = 0; step < steps; step++) {
     const s = state.s;
     drivesAt(ctx, s, scratch);
     const kappa = ctx.sampler.curvatureAt(s);
