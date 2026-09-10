@@ -269,7 +269,7 @@ hem één keer en snapt het.
 minuten door veertien taferelen uit Duizend-en-één-nacht, zonder één afdaling,
 ontworpen door Ton van de Ven. 1.800 gasten per uur, wat verklaart waarom ze
 ondanks haar populariteit zelden in de wachttijdtabel opduikt. Er gebeurt praktisch
-niets, en toch wordt ze steevast tot de beste darkrides van Europa gerekend.
+niets, en toch staat ze in vrijwel elke lijst van beste Europese darkrides.
 
 ![Het Stoomcarrousel met vergulde paarden onder een oranje tentdak | Het Gavioli-orgel is even oud als de molen zelf. De stoommachine ging er in 1944 uit, de naam bleef. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -369,8 +369,8 @@ resort, Efteling 5,78 mln, Toverland 1,14 mln.
 
 ```
 
-Phantasialand publiceert zijn bezoekcijfer niet, brancheschattingen liggen rond de
-twee miljoen. Het heeft daarmee een fractie van het Efteling-publiek en toch de
+Phantasialand publiceert zijn bezoekcijfer niet, de TEA-index noteert voor 2024
+2,1 miljoen. Het heeft daarmee een fractie van het Efteling-publiek en toch de
 langste rijen van de tabel. De reden is dezelfde deling die ik in
 [De kunst van het wachten](/blog/de-kunst-van-het-wachten) heb uitgerekend:
 wachttijd is vraag gedeeld door capaciteit, en in de Efteling staat de teller wel
@@ -412,8 +412,8 @@ De omwonenden gingen verder naar de **Raad van State**. Op **15 mei 2024**
 verloren zij, maar op een grond die de zaak openlaat: de Raad achtte hen geen
 belanghebbenden, omdat hun huizen 1,5 tot 1,8 kilometer van het beschermde gebied
 liggen met de provinciale weg N261 ertussen. Of de Efteling de voorwaarde
-daadwerkelijk heeft overschreden, heeft de Raad van State niet beoordeeld. Beantwoord
-is de vraag dus niet. Ze wordt alleen niet meer gesteld.
+daadwerkelijk heeft overschreden, heeft de Raad van State niet beoordeeld. Een
+nieuwe procedure heeft sindsdien niemand aangespannen.
 
 Sinds september 2021 ligt er bovendien een aanvraag voor een nieuwe vergunning voor
 **zes miljoen** bij de provincie. Verleend is die tot op vandaag niet.
@@ -470,10 +470,8 @@ weer op het podium staat. De Nederlandse parkwereld is kleiner dan hij lijkt.
 > [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) het platform voor eigen
 > acties.
 
-Een stichting die niets mag uitkeren heeft hier vier miljoen en een stuk grond
-gestoken in iets dat nooit een euro terugbrengt. Een concern had de grond verkocht
-en de opbrengst uitgekeerd. Gedraaid wordt het huis sindsdien door vrijwilligers en
-op giften, week na week, vijfentwintig jaar lang.
+Gedraaid wordt het huis door vrijwilligers en op giften, week na week,
+vijfentwintig jaar lang.
 
 ## Wanneer je moet gaan
 
@@ -788,22 +786,15 @@ volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 
 ## Een prullenbak die dank u wel zegt
 
-De Efteling is niet het beste achtbaanpark van Europa, en dat wil het ook niet zijn.
 Drie van de tien meest gevraagde attracties zijn darkrides, twee zijn stations van
 dezelfde stoomtrein, en het deel waar bijna elke gast één keer doorheen loopt is een
 stuk bos zonder één attractie.
-
-Wat het wel is: een groot park dat noch van een concern noch van een familie is,
-maar van een stichting die niets mag uitkeren. Een park dat drie jaar vóór
-Disneyland openging en zijn allereerste idee, een bos vol sprookjes, tot vandaag in
-bedrijf heeft. En een park waarvan de eigenaar er een vakantiehuis voor ernstig
-zieke kinderen naast heeft gezet en dat vijfentwintig jaar heeft volgehouden.
 
 De zin over de Disney van Nederland klopt dus, als je hem bedoelt als compliment
 voor afwerking, detail en vertellust. Als herkomstbeschrijving klopt hij niet. Dit
 park heeft niemand gekopieerd. Het was er eerder.
 
-Hoe het er in Kaatsheuvel nu bij staat:
+Of het in Kaatsheuvel regent, bepaalt de helft van je dag:
 
 ```weather-widget slug=efteling
 

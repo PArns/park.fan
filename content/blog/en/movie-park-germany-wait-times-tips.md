@@ -65,10 +65,10 @@ different name since 2005, has belonged to a Spanish group since 2010, and is
 celebrating its thirtieth birthday with a ride from Paramount of all studios.
 
 There is also a number here that does not fit this park’s reputation at all.
-Across **135 measured operating days**, the typical wait at
-[Movie Park](ref:movie-park-germany) sits at twenty minutes. At
-[Phantasialand](ref:phantasialand), barely an hour’s drive further south, it is
-thirty.
+Across **135 measured operating days**, you queue at
+[Movie Park](ref:movie-park-germany) for a good half as long as at
+[Phantasialand](ref:phantasialand), barely an hour’s drive further south. There
+it is thirty.
 
 And the emptiest weekday is the one no tip sheet online will tell you about.
 
@@ -633,7 +633,7 @@ the prices are the most frequently named criticism in visitor reviews. The park
 has announced improvements for 2026. I have not noticed any so far, and I eat
 here as quickly as possible.
 
-What it looks like in Bottrop right now:
+Whether it is raining in Bottrop decides half the park:
 
 ```weather-widget slug=movie-park-germany
 
@@ -702,7 +702,7 @@ different operation with the Halloween Horror Festival. If what you are after is
 big coasters above all, you are better off at
 [Phantasialand](ref:phantasialand) or [Heide-Park](ref:heide-park).
 
-## In closing
+## What I would take with you for Bottrop
 
 I did not do this park justice for a long time. Coming from the Rhineland you
 drive past Phantasialand to get to Bottrop, and anyone doing that wants a

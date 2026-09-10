@@ -62,15 +62,12 @@ salida un tipo con una motosierra en marcha. Para los grandes parques,
 en una temporada propia, con entradas propias, límites de edad propios y un
 público que se desplaza precisamente para ese infarto controlado.
 
-Al terror le importan deliciosamente poco las fronteras, así que merece la pena
-mirar más allá del propio patio: desde Renania del Norte-Westfalia, unas cuatro
-horas de coche te llevan al mayor evento de Halloween del continente y a la que
-quizá sea la innovación del susto más taimada de Europa. Solo que están, casualmente, en dos países
-distintos. Aquí está lo que ofrece la temporada **2026**: las grandes noches de
-terror, las versiones familiares con red de seguridad, los dos parques top que
-_no_ participan de forma ostensible en todo el circo y la pregunta que park.fan
-responde mejor que cualquier nota de prensa: ¿cuándo hay más gente y cuándo se
-sale uno mejor parado?
+Al terror le importan poco las fronteras. Desde Renania del Norte-Westfalia, a
+unas cuatro horas de coche, están el mayor evento de Halloween del continente y
+las experiences por las que se viaja a Biddinghuizen desde media Europa, solo
+que en dos países distintos. Y la pregunta que casi nunca se responde es la de
+la fecha: en qué noches entras en esas máquinas de niebla sin pasarte cuarenta
+minutos delante.
 
 > **Un apunte sobre las fechas:** los parques siguen ajustando sus programas de
 > Halloween durante el verano. En cada parque enlazamos la página oficial del
@@ -126,12 +123,11 @@ sesiones del DJ Max Bering.
 Ahora que se conoce el programa, también puede responderse la pregunta obvia: «el
 mayor» no es automáticamente «el mejor». El HHF es el Volkswagen de los eventos
 de Halloween: enorme, sólido, algo para cada cual, pero en las noches llenas
-también producción en cadena con atasco delante del maze. La evolución
-realmente interesante del terror europeo está ocurriendo ahora mismo en otro
-sitio, en dosis mucho más pequeñas y mucho más personales, dos buenas horas al
-norte, en Biddinghuizen (paciencia, llegamos enseguida). Quien busque volumen y
-romanticismo de motosierra, en Bottrop acierta de pleno. Quien quiera pasar
-_verdadero_ miedo, que siga leyendo.
+también producción en cadena con atasco delante del maze. Los formatos más
+pequeños y más personales están dos buenas horas al norte, en Biddinghuizen, y
+quien se haya dejado atar allí una vez a una camilla encuentra mansos después
+nueve mazes de paso continuo. Quien busque volumen y romanticismo de motosierra,
+en Bottrop acierta de pleno.
 
 Se juega en **22 noches seleccionadas, del 26 de septiembre al 8 de noviembre
 de 2026**, sobre todo de viernes a domingo; de día el parque abre con
@@ -262,7 +258,7 @@ pasa.
 
 ![Actor con máscara de soldador y delantal de cuero ante la puerta de un contenedor | El carnicero ya espera. Y no, ese no es un comité de bienvenida. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
-La estrella secreta de la colección es **Slaughterhouse**, una planta de
+De lo que más se habla al salir es de **Slaughterhouse**, una planta de
 procesado de carne en la que asumes el papel de materia prima. Primero te
 «inspeccionan» en una sala de espera tipo vagón de ganado, después te atan a un
 asiento colgado de un raíl del techo. La idea es el gancho de carnicero, el
@@ -309,8 +305,9 @@ mostraba en 2025 a una mujer aterrorizada subastada como «objeto 666» y luego
 dejada caer en una trituradora. Con **889 quejas** se convirtió en el anuncio
 neerlandés más denunciado del año; la Reclame Code Commissie vio vulnerada la
 dignidad humana y Walibi lo retiró el 21 de agosto de 2025. Un año después el
-mismo payaso reparte algodón de azúcar y duerme mal. Se puede llamar prudencia o
-astucia. Probablemente sea lo uno y lo otro.
+mismo payaso reparte algodón de azúcar y duerme mal. Como anuncio funciona
+mejor: del spot de 2025 se habló por sus imágenes, de este se habla por su
+remate.
 
 Cómo se siente Biddinghuizen sin máquinas de niebla, y lo que cuesta Untamed en
 cola un día normal, está en la [guía de
@@ -482,9 +479,8 @@ también un jabalí.
 
 ## Los que se niegan: dos parques top que se saltan Halloween
 
-Y ahora la categoría más simpática de todas: los parques que sencillamente no
-participan en todo el circo de niebla y motosierras. No por descuido, sino por
-principio.
+Dos de los parques más fuertes de esta lista no participan en absoluto en el
+circo de niebla y motosierras, y los dos lo dicen de antemano con claridad.
 
 ### Phantasialand: nada. Absolutamente nada. Y a propósito.
 
@@ -595,28 +591,15 @@ aporta la estadística de inmediato:
 
 ```
 
-## Conclusión: seis semanas de terror, algo para cada temple
+## Cuándo ir
 
-La temporada de Halloween 2026 tiene algo para cada umbral del dolor: el
-volumen puro del [Movie Park](ref:movie-park-germany) con nueve mazes, la gran
-puesta en escena de [Traumatica](ref:europa-park), el cine transitable de
-[Bobbejaanland](ref:bobbejaanland), el maizal recién estrenado de
-[Toverland](ref:attractiepark-toverland) y, para los muy valientes, las
-[Walibi-Experiences](ref:walibi-holland) en las que uno paga voluntariamente
-por acabar sellado, inundado y abierto en canal. Como contrapunto, el otoño
-silencioso y distinguido del [Efteling](ref:efteling) y un
-[Phantasialand](ref:phantasialand) que se salta Halloween encogiéndose de
-hombros y prefiere poner directamente la nieve.
+Por qué temple te decidas es cosa tuya. Los fines de semana de octubre son los
+días más llenos del otoño, y en una cola no te salta _nadie_ encima,
+garantizado, lo que a estos precios fastidia. Qué día está más vacío te lo dicen
+los tiempos de espera en vivo y el calendario de afluencia en park.fan, durante
+todo el otoño.
 
-Por qué temple te decidas es cosa tuya. Solo una cosa vale para todos: la mejor
-noche de Halloween es aquella en la que no pasas media velada en la cola. Ahí no
-te salta _nadie_ encima, garantizado, y a estos precios eso es casi un
-descaro. Qué día está más vacío te lo dicen los tiempos de espera en vivo y el
-calendario de afluencia en park.fan, durante todo el otoño.
-
-Mantente seco (palabra clave Below), mantente en movimiento (palabra clave
-maíz), y si algo te salta encima en la niebla: solo es parte del espectáculo.
-Casi seguro.
+Quien reserve Below, que meta calcetines de recambio. Yo una vez no lo hice.
 
 — Patrick
 

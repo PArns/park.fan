@@ -903,7 +903,7 @@ are even a shade above August. For November, by contrast, our forecast rates all
 19 days it covers as “low”; measured wait times from that month we do not have
 yet.
 
-## In closing
+## Why I am going back once more for Euro-Mir
 
 The sentence written above this park more often than any other is “best theme
 park in the world”, and it is true insofar as an international industry vote has
@@ -916,7 +916,7 @@ let nobody past the line.
 People drive to Rust for Voltron and Silver Star. That the queue for both is so
 short is down to the eighty other things standing next to them.
 
-How Rust looks right now:
+Whether it is raining in Rust decides Eurosat:
 
 ```weather-widget slug=europa-park
 

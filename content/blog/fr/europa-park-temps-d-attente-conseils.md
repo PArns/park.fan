@@ -953,7 +953,7 @@ Pour novembre, en revanche, notre prévision classe en « faible » les 19 jours
 qu’elle couvre ; des temps d’attente mesurés sur ce mois, nous n’en avons pas
 encore.
 
-## Pour finir
+## Pourquoi j’y retourne encore une fois pour l’Euro-Mir
 
 La phrase qui revient le plus souvent au-dessus de ce parc est « meilleur parc
 d’attractions du monde », et elle est vraie dans la mesure où un vote
@@ -967,7 +967,8 @@ jours par an et qu’on ne laisse personne doubler.
 On va à Rust pour Voltron et Silver Star. Que l’on attende si peu devant les deux
 tient aux quatre-vingts autres choses posées à côté.
 
-À quoi ressemble Rust en ce moment :
+Qu’il pleuve ou non à Rust en ce moment, c’est ce qui décide de la file
+d’Eurosat :
 
 ```weather-widget slug=europa-park
 

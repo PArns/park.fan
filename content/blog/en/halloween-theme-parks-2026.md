@@ -62,15 +62,12 @@ decoration and became a season of its own, with its own tickets, its own age
 limits and an audience that turns up for precisely this controlled heart
 attack.
 
-Horror cares delightfully little about national borders, so it pays to look
-beyond your own backyard: from NRW, some four hours' drive gets you to the
-continent’s biggest Halloween event and perhaps the most cunning scare
-innovation in Europe. They just happen to sit in two different countries. This
-is what the **2026** season has to offer: the big horror nights, the
-family-friendly versions with a safety net, the two top parks that pointedly
-_don’t_ join the whole circus, and the question park.fan answers better than
-any press release: when is it busiest, and when do you get through with the
-least hassle?
+Horror cares little about national borders. From NRW, some four hours’ drive
+covers both the continent’s biggest Halloween event and the experiences people
+travel across Europe to Biddinghuizen for, they just happen to sit in two
+different countries. And the question that gets answered least often is the one
+about the date: which evenings you can walk into those fog machines without
+standing in front of them for forty minutes.
 
 > **A quick word on dates:** Parks keep fine-tuning their Halloween programmes
 > over the summer. For each park we link the official event page with
@@ -124,12 +121,11 @@ sets from Max Bering.
 Now that the line-up is out, the obvious question can be answered too:
 “biggest” isn’t automatically “best.” The HHF is the Volkswagen of Halloween
 events: huge, solid, something for everyone, but on packed evenings also
-assembly-line fare with a traffic jam in front of the maze. The genuinely
-exciting development in European horror is happening elsewhere right now, in
-much smaller, much more personal doses, a good two hours north in Biddinghuizen
-(patience, we’ll get there in a moment). If you’re after sheer volume and
-chainsaw romance, Bottrop is exactly right. If you want to be _truly_ scared,
-read on.
+assembly-line fare with a traffic jam in front of the maze. The smaller, more
+personal formats sit a good two hours north in Biddinghuizen, and anybody who
+has been strapped to a gurney there once will find nine mazes on a conveyor belt
+tame afterwards. If you’re after sheer volume and chainsaw romance, Bottrop is
+exactly right.
 
 It runs on **22 selected evenings from 26 September to 8 November 2026**, mostly
 Friday to Sunday; by day the park is open as usual from 10 a.m., and the horror

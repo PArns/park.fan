@@ -6,9 +6,9 @@ author: patrick
 mode: published
 excerpt: >-
   60 minuti di attesa e il tempo vola lo stesso? Dietro ogni buona coda si
-  nascondono psicologia, storytelling e spietata matematica della capacità. Un
-  deep dive dal pre-show alla legge di Little, e proprio nel mezzo il motivo per
-  cui park.fan esiste.
+  nascondono psicologia, storytelling e spietata matematica della capacità. Dal
+  pre-show alla legge di Little, e proprio nel mezzo il motivo per cui park.fan
+  esiste.
 tags:
   - tempi-di-attesa
   - code
@@ -64,7 +64,7 @@ completa è qui](/blog/un-passeggino-una-gondola-e-park-fan)). Cosa mi stesse
 succedendo davvero quel pomeriggio, volevo poi saperlo con precisione. Entrano
 in gioco due formule, e stanno insieme sul retro di un sottobicchiere.
 
-## La psicologia del tempo: perché i minuti si allungano
+## Perché i minuti si allungano
 
 Il problema di fondo lo sezionò l’economista di Harvard **David Maister** già
 nel 1985 nel suo classico
@@ -74,8 +74,7 @@ del tempo occupato. Chi fissa soltanto la schiena di quello davanti vede
 l’orologio strisciare. Chi ha qualcosa da vedere, sentire o fare lo vede
 scorrere quasi normalmente.
 
-A questo si aggiungono altre tre regole di Maister che ogni progettista di
-parchi conosce a memoria:
+Maister ne ha messe per iscritto otto. Queste tre si vedono in ogni coda:
 
 - **Un’attesa incerta sembra più lunga di un’attesa spiegata.** Per questo la
   coda è punteggiata ogni pochi metri da cartelli con il tempo residuo, e
@@ -114,7 +113,7 @@ La decorazione non è solo decorazione, tiene occupato il contatore.
 
 ```
 
-### Pre-show: l’esperienza comincia prima di salire
+### Pre-show
 
 A risolverlo più a fondo è il **pre-show**, che dichiara l’attesa parte
 dell’attrazione. L’esempio da manuale sta ai
@@ -174,8 +173,8 @@ dell’attrazione, cioè esattamente la fase che secondo la regola picco-fine
 viene ricordata con più forza. E sono al tempo stesso la spina dorsale della
 capacità: si vola in **link chamber** tipo sala teatrale con 16 posti per
 livello, tre livelli sovrapposti, quattro sale in parallelo. Quasi 200 ospiti
-alla volta, circa 1.400 all’ora. Anche dopo 120 minuti di attesa, la maggior
-parte poi non racconta la coda, ma l’avatar che respira nella vasca.
+alla volta, circa 1.400 all’ora. Chi lì fa 120 minuti di coda, dopo racconta
+dell’avatar che respira nella vasca.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -225,8 +224,7 @@ single rider**. Chi va da solo e si lascia sistemare sul posto spaiato che un
 gruppo di quattro accorcia drasticamente la propria attesa e intanto aiuta il
 parco a riempire ogni vettura fino all’orlo. Ogni sedile
 altrimenti vuoto è capacità buttata via, e chi va da solo lo riempie senza che
-nessuno perda il proprio posto. Raramente è così netto. Un caso in cui interesse personale e portata tirano
-esattamente nella stessa direzione.
+nessuno perda il proprio posto.
 
 ```glossary-widget slug=single-rider
 
@@ -253,7 +251,7 @@ aggiorniamo i tempi di attesa ogni minuto.
 
 ![Migliaia di spettatori nell’anfiteatro notturno di Fantasmic! ai Disney’s Hollywood Studios | Fantasmic! agli Hollywood Studios: quasi 10.000 persone a rappresentazione, un’intera ondata di visitatori che per questa mezz’ora di sicuro non sta in nessuna coda di un coaster. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Capacità e portata: il segreto matematico
+## Quante persone smaltisce un’attrazione in un’ora
 
 **Portata** vuol dire semplicemente quante persone un’attrazione trasporta
 davvero all’ora. È quel numero a decidere quanto è lunga la coda per davvero.
@@ -327,7 +325,7 @@ costruttore Mack Rides lì circolano **sette treni** insieme, con un obiettivo d
 contenga solo 16 persone, più di quanto riesca l’Hulk con i suoi 32 posti per
 partenza.
 
-### La sosta è il nemico: rolling launch e rolling station
+### Treni che non si fermano mai
 
 L’ultimo grado di escalation di questo ragionamento: treni che non si fermano
 affatto. Voltron usa i **rolling launch**, in cui i treni non vengono fermati
@@ -407,7 +405,7 @@ sul tabellone in praticamente ogni parco Disney del mondo, da
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) fino a
 Orlando?
 
-I motivi sono tre, e tutti e tre sono conti:
+Con l’attrazione c’entra poco, con l’aritmetica molto:
 
 1. **I galeoni non sono trasporto di massa.**
    [Peter Pan’s Flight a Parigi](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -474,7 +472,7 @@ su cui distribuire la domanda sono poche.
 
 I numeri sono quasi comici. Il Taron smaltisce circa **1.200 ospiti l’ora**,
 cioè quasi esattamente quanti ne fa Peter Pan’s Flight a Parigi. La differenza
-non sta nell’attrazione, ma in ciò su cui la domanda circostante può
+sta nel denominatore: in ciò su cui la domanda circostante può
 distribuirsi. A Parigi Peter Pan sta in mezzo a decine di alternative. A Brühl,
 in un sabato di vacanza, una parte considerevole del parco ha in testa la
 stessa singola attrazione nello stesso momento. E Voltron all’Europa-Park, con
@@ -604,7 +602,7 @@ veicolo in movimento, e l’attrazione inghiotte così oltre 3.000 ospiti l’or
 più di parecchi mega coaster, con una catena di veicoli che dagli anni Sessanta
 gira senza lamentarsi e non chiede mai una pausa.
 
-## Conclusione: il tabellone racconta solo metà della storia
+## Che cosa di tutto questo sta su park.fan
 
 La prossima coda da 60 minuti non si accorcerà per questo. Ma si legge in modo
 diverso. Restano tre domande, e park.fan ha una risposta per ognuna:
@@ -626,10 +624,9 @@ diverso. Restano tre domande, e park.fan ha una risposta per ognuna:
 
 Solo contro la psicologia non possiamo farci nulla. Se l’ora sembri un’ora o un
 primo atto lo decidono i pre-show, la tematizzazione e l’effetto picco-fine, e
-i parchi che padroneggiano questo mestiere. Quindi la prossima volta che sarai
-in una coda tematizzata con amore e il tempo passerà stranamente in fretta: non
-è un caso, è progetto. Goditelo, fai parte di un’illusione piuttosto
-magnifica. E se ne valga la pena te lo dicono prima i dati.
+i parchi che padroneggiano questo mestiere. Due minuti prima di partire il
+numero sta sulla pagina del parco. Dopo, quanto lunga sembri quell’ora conta
+comunque poco.
 
 — Patrick
 
