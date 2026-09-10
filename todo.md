@@ -596,9 +596,11 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
 - [x] localStorage holds the plan (`parkfan_planner`), read through `secureJsonParse`.
 - [x] Backend sync for sharing (§2.7) — `lib/planner/trip-sync.ts` (`syncTrip`,
       `startTripAutoSync`, `forgetTrip`) against `app/api/trips/*`. The table it writes
-      to exists and is live (see §2.7); what the relays still degrade quietly on is an
-      unreachable backend, which is the ordinary case they were written for. The sync is
-      this box. The sharing it syncs for is §2.7's last box, and is not built.
+      to exists and is live (see §2.7); an unreachable backend is what the relays still
+      degrade quietly on, and one they were not written for — `put()` returns
+      `response.ok`, so a 429 or a 400 orphans the row and starts a new trip exactly as
+      an expiry does, which is **PF-104**. The sync is this box. The sharing it syncs
+      for is §2.7's last box, and is not built.
 - [~] ~~`proxy.ts:39` strips `set-cookie` from every non-redirect response. Cookie
   writes happen client-side, like `rememberLocale()` does.~~ — moot: the planner
   cookie was removed (see above), so there is nothing here for `proxy.ts` to strip.
