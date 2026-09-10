@@ -7,7 +7,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il tempo stimato che un ospite deve trascorrere in fila prima di accedere a un’attrazione.',
     definition:
-      'Il tempo di attesa è la durata stimata che un ospite trascorre in coda prima di poter salire su un’attrazione. I parchi mostrano i tempi di attesa agli ingressi delle attrazioni e nelle loro app. park.fan traccia i tempi di attesa in diretta aggiornati ogni minuto.',
+      'Il tempo di attesa è la durata stimata che un ospite trascorre in coda prima di poter salire su un’attrazione. I parchi mostrano i tempi di attesa agli ingressi delle attrazioni e nelle loro app. park.fan rilegge i tempi di attesa ogni cinque minuti, per ogni attrazione di un parco.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Tempi di attesa', 'tempo di attesa'],
     alternateNames: ['Fila', 'Tempo in coda', 'Tempo di coda'],
@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una corsia separata per gli ospiti disposti a viaggiare da soli per riempire i posti vuoti.',
     definition:
-      'La corsia Single Rider permette agli ospiti disposti a viaggiare da soli di occupare i posti vuoti nei veicoli delle attrazioni. Poiché i Single Rider si inseriscono negli spazi liberi, la coda avanza molto più velocemente della fila standard — spesso con tempi di attesa del 50–70% inferiori. Non tutte le attrazioni offrono questa opzione; verificate prima di mettervi in fila.',
+      'La corsia Single Rider è per chi accetta di salire separato dal proprio gruppo e riempie i posti singoli rimasti liberi sui treni. Poiché questi passeggeri vengono infilati nei buchi, lì si avanza più in fretta che nella fila normale, spesso con tempi di attesa inferiori del 50–70 %. Non tutte le attrazioni hanno una corsia Single Rider.',
     alternateNames: ['Single Rider Lane', 'Fila individuale'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un sistema di coda digitale in cui gli ospiti prenotano un orario invece di attendere fisicamente.',
     definition:
-      'Una coda virtuale permette agli ospiti di registrarsi per un’attrazione tramite un’app o un chiosco e ricevere una notifica quando si avvicina il loro turno. Invece di fare la coda fisicamente, gli ospiti possono godersi altre aree del parco e tornare quando chiamati.',
+      'Una coda virtuale permette agli ospiti di registrarsi per un’attrazione tramite un’app o un chiosco e ricevere una notifica quando si avvicina il loro turno. Invece di stare in fila, in quel tempo si può girare altrove nel parco e tornare quando il proprio gruppo viene chiamato.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Code virtuali'],
   },
@@ -52,7 +52,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il tempo di attesa ufficiale mostrato dal parco all’ingresso di un’attrazione.',
     definition:
-      'Il tempo segnalato è la stima ufficiale visualizzata sui cartelli all’ingresso fisico di un’attrazione e/o nell’app ufficiale del parco. park.fan aggrega i tempi di attesa segnalati da fonti ufficiali ogni minuto.',
+      'Il tempo segnalato è la stima ufficiale che sta all’ingresso di un’attrazione e nell’app del parco. I parchi la calcolano dalla lunghezza misurata della fila, dalla portata dell’attrazione fin lì e dal ritmo con cui in quel momento si carica. park.fan unisce i tempi segnalati da più fonti pubbliche ogni cinque minuti.',
     relatedTermIds: ['crowd-level', 'wait-time'],
     aliases: ['tempo segnalato', 'tempi segnalati'],
   },
@@ -72,7 +72,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una previsione giorno per giorno dei livelli di affluenza previsti per pianificare la visita.',
     definition:
-      'Un calendario dell’affluenza è un calendario mensile o annuale che mostra i livelli di affluenza previsti per ogni giorno. park.fan genera calendari dell’affluenza utilizzando modelli IA addestrati su anni di dati storici sui tempi di attesa, combinati con i calendari scolastici, gli eventi imminenti e i trend stagionali.',
+      'Un calendario dell’affluenza è un calendario mensile o annuale che mostra i livelli di affluenza previsti per ogni giorno. park.fan genera calendari dell’affluenza con modelli IA addestrati sui tempi di attesa registrati, sui calendari scolastici combinati, sugli eventi in arrivo e sugli andamenti stagionali.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
   },
   {
@@ -253,7 +253,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Periodi di minore affluenza che offrono code più brevi, prezzi più bassi e un’esperienza più rilassata.',
     definition:
-      'Il periodo fuori stagione corrisponde ai momenti più tranquilli del calendario, quando le scuole sono aperte e non cadono grandi festività — tipicamente da gennaio a inizio febbraio, da metà settembre a ottobre (esclusi gli eventi Halloween) e le prime settimane di novembre. In questi periodi, i tempi di attesa per le attrazioni popolari possono essere notevolmente più brevi, i prezzi dei biglietti spesso ai minimi e i parchi molto meno affollati. Per i visitatori con orari flessibili, scegliere il fuori stagione è una delle strategie più efficaci. Il calendario dell’affluenza di park.fan evidenzia queste finestre per aiutarvi a pianificare.',
+      'Il periodo fuori stagione corrisponde ai momenti più tranquilli del calendario, quando le scuole sono aperte e non cadono grandi festività — tipicamente da gennaio a inizio febbraio, da metà settembre a ottobre (esclusi gli eventi Halloween) e le prime settimane di novembre. In questi periodi, i tempi di attesa per le attrazioni popolari possono essere notevolmente più brevi, i prezzi dei biglietti spesso ai minimi e i parchi molto meno affollati. Per i visitatori con orari flessibili, scegliere il fuori stagione è una delle strategie più efficaci. Il calendario dell’affluenza di park.fan segna le finestre di bassa stagione di un parco.',
     alternateNames: ['Bassa Stagione', 'Fuori Stagione', 'Periodo Tranquillo'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -972,7 +972,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il modello di spinning coaster ad alta intensità di Gerstlauer — più veloce, più alto e con una rotazione più pronunciata rispetto ai modelli standard.',
     definition:
-      'L’Xtreme Spinning Coaster (XSC) è il modello di punta di Gerstlauer nella categoria spinning coaster, progettato per spingere il formato ai suoi limiti. Dove uno spinning coaster standard punta a un’intensità familiare, lo XSC offre una struttura più alta, cadute più ripide, velocità massime più elevate e un meccanismo di rotazione calibrato per giri più marcati — i vagoni ruotano con più forza e frequenza in ogni elemento del percorso.\n\nL’imprevedibilità della rotazione è amplificata dal ritmo più sostenuto: l’orientamento del vagone cambia più rapidamente, rendendo ogni corsa unica. Il modello XSC posiziona Gerstlauer tra gli spinner familiari e i coaster ad alta intensità, offrendo emozione autentica pur mantenendo il carattere rejugabile che rende gli spinning coaster così apprezzati.',
+      'L’Xtreme Spinning Coaster (XSC) è il modello di punta di Gerstlauer nella categoria spinning coaster, progettato per spingere il formato ai suoi limiti. Dove uno spinning coaster standard punta a un’intensità familiare, lo XSC offre una struttura più alta, cadute più ripide, velocità di punta più alte e un meccanismo di rotazione calibrato per giri più marcati — i vagoni ruotano con più forza e frequenza in ogni elemento del percorso.\n\nL’imprevedibilità della rotazione è amplificata dal ritmo più sostenuto: l’orientamento del vagone cambia più rapidamente, rendendo ogni corsa unica. Il modello XSC posiziona Gerstlauer tra gli spinner familiari e i coaster ad alta intensità, offrendo emozione autentica pur mantenendo il carattere ripetibile che rende gli spinning coaster così apprezzati.',
     alternateNames: ['XSC'],
     relatedTermIds: ['credit', 'gerstlauer', 'spinning-coaster'],
   },
@@ -1043,9 +1043,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'Previsione IA',
     shortDefinition:
-      'Previsioni basate sul machine learning per i livelli di affluenza e i tempi di attesa — fino a 30+ giorni in anticipo.',
+      'Previsioni basate sul machine learning per i livelli di affluenza e i tempi di attesa, fino a 365 giorni in anticipo.',
     definition:
-      'Una previsione IA utilizza modelli di machine learning addestrati su dati storici di affluenza, dati meteo, calendari scolastici e dati in tempo reale per prevedere quanto sarà affollato un parco o una singola attrazione in un determinato giorno o ora. park.fan genera previsioni IA per affluenza e tempi di attesa previsti fino a 30+ giorni in anticipo.\n\nLe previsioni vengono aggiornate continuamente man mano che arrivano nuovi dati. Le previsioni a breve termine (1–7 giorni) sono generalmente molto precise poiché integrano dati meteo attuali, annunci di eventi e segnali di prenotazione. Le previsioni a lungo termine sono naturalmente meno precise, ma rimangono utili per identificare in anticipo periodi tranquilli o affollati.',
+      'Una previsione IA utilizza modelli di machine learning addestrati su dati storici di affluenza, dati meteo, calendari scolastici e dati in tempo reale per prevedere quanto sarà affollato un parco o una singola attrazione in un determinato giorno o ora. park.fan genera previsioni IA per affluenza e tempi di attesa previsti fino a 365 giorni in anticipo.\n\nLe previsioni vengono ricalcolate a ogni ciclo di addestramento, ogni giorno alle 06:00 UTC. Le previsioni a breve termine (1–7 giorni) sono generalmente molto precise poiché integrano dati meteo attuali, annunci di eventi e segnali di prenotazione. Le previsioni a lungo termine sono naturalmente meno precise, ma rimangono utili per identificare in anticipo periodi tranquilli o affollati.',
     aliases: ['AI Forecast', 'AI Forecasts'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -1089,7 +1089,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Intelligenza Artificiale — i modelli di machine learning che calcolano le previsioni di affluenza e i tempi di attesa.',
     definition:
-      'L’IA (Intelligenza Artificiale) si riferisce agli algoritmi di machine learning che riconoscono pattern in grandi dataset e generano previsioni. park.fan utilizza modelli IA addestrati su anni di dati storici sui tempi di attesa, calendari scolastici, dati meteorologici e annunci di eventi per produrre previsioni giornaliere di affluenza e tempi di attesa — fino a 30+ giorni in anticipo.',
+      'L’IA (Intelligenza Artificiale) si riferisce agli algoritmi di machine learning che riconoscono pattern in grandi dataset e generano previsioni. park.fan utilizza modelli IA addestrati sui tempi di attesa registrati, sui calendari scolastici, sui dati meteorologici e sugli annunci di eventi per produrre previsioni giornaliere di affluenza e tempi di attesa, fino a 365 giorni in anticipo.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
     aliases: ['Intelligenza Artificiale'],
   },
@@ -1099,7 +1099,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Dati sui tempi di attesa aggiornati in tempo reale direttamente dai sistemi del parco.',
     definition:
-      'Un tempo di attesa in tempo reale è il dato attuale estratto direttamente dai sistemi del parco — non una media storica, ma il dato reale al minuto. park.fan recupera i tempi di attesa in tempo reale dalle API ufficiali dei parchi e da fonti terze, aggiornando ogni minuto.',
+      'Un tempo di attesa in tempo reale è il dato attuale estratto direttamente dai sistemi del parco: non una media storica, ma quanto si aspetta in questo momento. park.fan recupera i tempi di attesa da fonti pubbliche e li aggiorna ogni cinque minuti.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     aliases: ['Tempi di attesa in tempo reale', 'Attesa live', 'tempo di attesa in tempo reale'],
   },
@@ -1119,7 +1119,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’unità di accelerazione sperimentata dai passeggeri, misurata come multipli dell’accelerazione gravitazionale terrestre (9,81 m/s²).',
     definition:
-      'La forza G (equivalente gravitazionale) misura l’accelerazione che un passeggero sperimenta rispetto alla gravità normale della Terra. Le forze G positive (sopra 1G) schiacciano i passeggeri nel sedile durante passaggi in avvallamenti o curve strette. Le forze G negative (sotto 0G) sollevano i passeggeri dal sedile, creando airtime. Le forze G laterali agiscono orizzontalmente, spingendo i passeggeri di lato nelle curve e nelle transizioni.\n\nLe montagne russe sono progettate per sequenziare queste forze deliberatamente. Un avvallamento che genera 4–5G è il marchio di un primo drop potente. Un breve momento a −0,5G su una collina di airtime produce la caratteristica sensazione di galleggiamento. La maggior parte delle attrazioni mira a 0–5G di forze positive sostenute, con brevi picchi per effetti drammatici. Un’esposizione prolungata a forze G elevate può causare disagio o greyout; le montagne russe ben progettate bilanciano picchi di intensità con sezioni di recupero.',
+      'La forza G (equivalente gravitazionale) misura l’accelerazione che un passeggero sperimenta rispetto alla gravità normale della Terra. Le forze G positive (sopra 1G) schiacciano i passeggeri nel sedile durante passaggi in avvallamenti o curve strette. Le forze G negative (sotto 0G) sollevano i passeggeri dal sedile, creando airtime. Le forze G laterali agiscono orizzontalmente, spingendo i passeggeri di lato nelle curve e nelle transizioni.\n\nLe montagne russe sono progettate per sequenziare queste forze deliberatamente. Un avvallamento che genera 4–5G è il marchio di un primo drop potente. Un breve momento a −0,5G su una collina di airtime produce la caratteristica sensazione di galleggiamento. La maggior parte delle attrazioni mira a 0–5G di forze positive sostenute, con brevi picchi per effetti drammatici. Un’esposizione prolungata a forze G alte può causare disagio o greyout; le montagne russe ben progettate bilanciano picchi di intensità con sezioni di recupero.',
     relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs', 'smoothness'],
     aliases: ['Forze G', 'G-Forces'],
   },
@@ -2039,7 +2039,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'R al quadrato — misura quanto bene il modello IA spiega i pattern nei tempi di attesa reali (0–1, più alto è meglio).',
     definition:
-      'L’R² (R al quadrato, o coefficiente di determinazione) misura quanta parte della variazione nei tempi di attesa reali il modello riesce a spiegare. Un valore di 1,0 significherebbe previsioni perfette; 0,0 significa che il modello non spiega nulla oltre una semplice media. In pratica, valori superiori a 0,7 indicano un buon modello; superiori a 0,9, eccellente.\n\nPer le previsioni dei tempi di attesa, raggiungere un R² elevato è difficile perché le code sono influenzate da fattori imprevedibili. Il punteggio R² di park.fan riflette le prestazioni reali su tutte le previsioni tracciate e viene aggiornato quotidianamente.',
+      'L’R² (R al quadrato, o coefficiente di determinazione) misura quanta parte della variazione nei tempi di attesa reali il modello riesce a spiegare. Un valore di 1,0 significherebbe previsioni perfette; 0,0 significa che il modello non spiega nulla oltre una semplice media. In pratica, valori superiori a 0,7 indicano un buon modello; superiori a 0,9, eccellente.\n\nPer le previsioni dei tempi di attesa, raggiungere un R² elevato è difficile perché le code sono influenzate da fattori imprevedibili. Il valore R² su park.fan esce dal confronto di tutte le previsioni ricontrollate e si ricalcola ogni giorno.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'rmse'],
     aliases: ['R-squared', 'coefficiente di determinazione'],
   },

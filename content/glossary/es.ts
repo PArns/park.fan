@@ -7,7 +7,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'El tiempo estimado que un visitante debe estar en fila antes de acceder a una atracción.',
     definition:
-      'El tiempo de espera es la duración estimada que un visitante pasa en la cola antes de poder subir a una atracción. Los parques muestran los tiempos de espera en las entradas de las atracciones y en sus aplicaciones. park.fan realiza un seguimiento de los tiempos de espera en vivo que se actualizan cada minuto.',
+      'El tiempo de espera es la duración estimada que un visitante pasa en la cola antes de poder subir a una atracción. Los parques muestran los tiempos de espera en la entrada de las atracciones y en sus aplicaciones. park.fan vuelve a leer los tiempos de espera cada cinco minutos, para cada atracción de un parque.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Tiempos de espera', 'tiempo de espera'],
     alternateNames: ['Cola', 'Tiempo en cola'],
@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un carril separado para visitantes dispuestos a viajar solos para llenar asientos vacíos.',
     definition:
-      'La cola Single Rider permite a los visitantes dispuestos a viajar solos llenar los asientos vacíos en los vehículos de las atracciones. Como los Single Riders encajan en los espacios libres, la cola avanza mucho más rápido que la fila estándar — a menudo con tiempos de espera un 50–70% más cortos. No todas las atracciones ofrecen esta opción; compruébalo antes de unirte a la cola.',
+      'El carril single rider es para quien está dispuesto a montar separado de su grupo, y va rellenando los asientos sueltos que quedan libres en los trenes. Como esos pasajeros se encajan en los huecos, la cola avanza mucho más rápido que la normal: a menudo con esperas un 50–70 % más cortas. No todas las atracciones ofrecen acceso single rider.',
     alternateNames: ['Single Rider Lane', 'Fila individual'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un sistema de cola digital donde los visitantes reservan un horario en lugar de esperar físicamente.',
     definition:
-      'Una cola virtual permite a los visitantes registrarse para una atracción a través de una app o quiosco y recibir una notificación cuando se acerca su turno. En lugar de hacer cola físicamente, los visitantes pueden disfrutar de otras áreas del parque y regresar cuando sean llamados.',
+      'Una cola virtual permite a los visitantes apuntarse a una atracción desde una app o un quiosco y recibir un aviso cuando se acerca su turno. En vez de estar en la cola, durante ese rato se puede andar por otra parte del parque y volver cuando llaman al grupo.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Colas virtuales'],
   },
@@ -52,7 +52,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'El tiempo de espera oficial mostrado por el parque en la entrada de una atracción.',
     definition:
-      'El tiempo publicado es la estimación oficial mostrada en los letreros en la entrada física de una atracción y/o en la aplicación oficial del parque. park.fan agrega los tiempos de espera publicados de fuentes oficiales cada minuto.',
+      'El tiempo publicado es la estimación oficial que aparece en la entrada de una atracción y en la app del parque. Los parques la calculan a partir de la longitud medida de la cola, del rendimiento que la atracción ha tenido hasta ese momento y del ritmo al que se está embarcando en ese instante. park.fan reúne los tiempos publicados de varias fuentes públicas cada cinco minutos.',
     relatedTermIds: ['crowd-level', 'wait-time'],
     aliases: ['tiempo publicado', 'tiempos publicados'],
   },
@@ -72,7 +72,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una previsión día a día de los niveles de afluencia previstos para ayudar a planificar la visita.',
     definition:
-      'Un calendario de afluencia es un calendario mensual o anual que muestra los niveles de afluencia previstos para cada día. park.fan genera calendarios de afluencia usando modelos de IA entrenados en años de datos históricos de tiempos de espera, combinados con calendarios de vacaciones escolares, eventos próximos y tendencias estacionales.',
+      'Un calendario de afluencia es un calendario mensual o anual que muestra los niveles de afluencia previstos para cada día. park.fan genera calendarios de afluencia con modelos de IA entrenados con los tiempos de espera registrados, los calendarios de vacaciones escolares combinados, los eventos próximos y las tendencias estacionales.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
     aliases: ['Calendarios de afluencia'],
   },
@@ -249,7 +249,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Períodos de menor afluencia que ofrecen colas más cortas, precios más bajos y una experiencia más tranquila.',
     definition:
-      'La temporada baja corresponde a los períodos más tranquilos del calendario, cuando los colegios están en clase y no caen grandes festivos — típicamente de enero a principios de febrero, de mediados de septiembre a octubre (fuera de los eventos de Halloween) y las primeras semanas de noviembre. En temporada baja, los tiempos de espera en las atracciones populares pueden ser notablemente más cortos, los precios de las entradas suelen estar en sus mínimos y los parques se sienten mucho menos saturados. Para los visitantes con horarios flexibles, elegir la temporada baja es una de las estrategias más efectivas. El calendario de afluencia de park.fan resalta estas ventanas para que puedas planificar al máximo.',
+      'La temporada baja corresponde a los períodos más tranquilos del calendario, cuando los colegios están en clase y no caen grandes festivos — típicamente de enero a principios de febrero, de mediados de septiembre a octubre (fuera de los eventos de Halloween) y las primeras semanas de noviembre. En temporada baja, los tiempos de espera en las atracciones populares pueden ser notablemente más cortos, los precios de las entradas suelen estar en sus mínimos y los parques se sienten mucho menos saturados. Para los visitantes con horarios flexibles, elegir la temporada baja es una de las estrategias más efectivas. El calendario de afluencia de park.fan marca las ventanas de temporada baja de cada parque.',
     alternateNames: ['Temporada Baja', 'Temporada Tranquila', 'Fuera de Temporada'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -1046,9 +1046,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'Predicción IA',
     shortDefinition:
-      'Predicciones basadas en machine learning para niveles de afluencia y tiempos de espera — hasta 30+ días de antelación.',
+      'Predicciones basadas en machine learning para los niveles de afluencia y los tiempos de espera, hasta 365 días de antelación.',
     definition:
-      'Una predicción IA utiliza modelos de machine learning entrenados con datos históricos de afluencia, datos meteorológicos, calendarios escolares y datos en tiempo real para predecir cuán concurrido estará un parque o atracción en un día u hora concretos. park.fan genera predicciones IA para afluencia y tiempos de espera previstos hasta 30+ días de antelación.\n\nLas predicciones se actualizan continuamente a medida que llegan nuevos datos. Las predicciones a corto plazo (1–7 días) suelen ser muy precisas al incorporar datos meteorológicos actuales, anuncios de eventos y señales de reserva. Las predicciones a largo plazo son naturalmente menos precisas, pero siguen siendo valiosas para identificar períodos tranquilos o concurridos con bastante antelación.',
+      'Una predicción IA utiliza modelos de machine learning entrenados con datos históricos de afluencia, datos meteorológicos, calendarios escolares y datos en tiempo real para predecir cuán concurrido estará un parque o atracción en un día u hora concretos. park.fan genera predicciones IA para la afluencia y los tiempos de espera previstos hasta 365 días de antelación.\n\nLas predicciones se recalculan en cada entrenamiento, todos los días a las 06:00 UTC. Las predicciones a corto plazo (1–7 días) suelen ser muy precisas al incorporar datos meteorológicos actuales, anuncios de eventos y señales de reserva. Las predicciones a largo plazo son naturalmente menos precisas, pero siguen siendo valiosas para identificar períodos tranquilos o concurridos con bastante antelación.',
     aliases: ['AI Forecast', 'AI Forecasts', 'Predicciones IA'],
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
   },
@@ -1089,7 +1089,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Inteligencia Artificial — los modelos de machine learning que calculan las previsiones de afluencia y los tiempos de espera.',
     definition:
-      'La IA (Inteligencia Artificial) se refiere a los algoritmos de machine learning que reconocen patrones en grandes conjuntos de datos y generan predicciones. park.fan utiliza modelos de IA entrenados con años de datos históricos de tiempos de espera, calendarios escolares, datos meteorológicos y anuncios de eventos para producir previsiones diarias de afluencia y tiempos de espera — hasta 30+ días de antelación.',
+      'La IA (Inteligencia Artificial) se refiere a los algoritmos de machine learning que reconocen patrones en grandes conjuntos de datos y generan predicciones. park.fan utiliza modelos de IA entrenados con los tiempos de espera registrados, los calendarios escolares, los datos meteorológicos y los anuncios de eventos. Esos modelos calculan cada día nuevas previsiones de afluencia y de tiempos de espera: para cada parque, cada día, hasta 365 días de antelación.',
     alternateNames: ['Inteligencia Artificial'],
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
   },
@@ -1099,7 +1099,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Datos de tiempo de espera actualizados en tiempo real directamente desde los sistemas del parque.',
     definition:
-      'Un tiempo de espera en vivo es el dato actual en tiempo real extraído directamente de los sistemas del parque — no un promedio histórico, sino el dato real al minuto. park.fan obtiene tiempos de espera en vivo de las APIs oficiales de los parques y fuentes de terceros, actualizando cada minuto.',
+      'Un tiempo de espera en vivo es el dato actual, extraído directamente de los sistemas de registro de un parque: no un promedio histórico, sino cómo está la cola hoy, ahora mismo. park.fan toma los tiempos de espera de fuentes públicas y los actualiza cada cinco minutos. Así se ve en todo momento qué atracción está vacía y dónde habría que esperar de verdad 60 minutos.',
     aliases: ['Espera en tiempo real'],
     alternateNames: ['Tiempos de espera en vivo'],
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
@@ -2065,7 +2065,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'R cuadrado — mide qué tan bien el modelo IA explica los patrones en los tiempos de espera reales (0–1, mayor es mejor).',
     definition:
-      'El R² (R cuadrado, o coeficiente de determinación) mide qué proporción de la variación en los tiempos de espera reales logra explicar el modelo. Un valor de 1,0 significaría predicciones perfectas; 0,0 significa que el modelo no explica nada más allá de un promedio simple. En la práctica, valores superiores a 0,7 indican un buen modelo; superiores a 0,9, excelente.\n\nPara las predicciones de tiempos de espera, lograr un R² alto es difícil porque las colas están influenciadas por factores impredecibles. El valor R² de park.fan refleja el rendimiento real sobre todas las predicciones seguidas y se actualiza diariamente.',
+      'El R² (R cuadrado, o coeficiente de determinación) mide qué proporción de la variación en los tiempos de espera reales logra explicar el modelo. Un valor de 1,0 significaría predicciones perfectas; 0,0 significa que el modelo no explica nada más allá de un promedio simple. En la práctica, valores superiores a 0,7 indican un buen modelo; superiores a 0,9, excelente.\n\nPara las predicciones de tiempos de espera, lograr un R² alto es difícil porque las colas están influenciadas por factores impredecibles. El R² de park.fan sale de comparar todas las predicciones ya comprobadas y se recalcula cada día.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'rmse'],
     aliases: ['R-squared', 'coeficiente de determinación'],
   },
