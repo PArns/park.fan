@@ -680,8 +680,8 @@ export function ContentDE() {
           </P>
           <PG>
             Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell, das
-            jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher an der
-            Realität nachmessen lässt.
+            täglich um 06:00 UTC mit den Wartezeiten des Vortags neu trainiert wird und sich
+            hinterher an der Realität nachmessen lässt.
           </PG>
           <P>
             Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
@@ -812,7 +812,7 @@ export function ContentDE() {
           <NightShift
             locale="de"
             jobs={NIGHT_JOBS}
-            caption="Uhrzeiten in UTC, also mitten in der Nacht. Die Reihenfolge erklärt die Zeiten: „Lohnt früh aufstehen“ um 05:15 braucht die Viertelstunden von gestern, und die entstehen erst um 04:30."
+            caption="Uhrzeiten in UTC, also zwischen Mitternacht und dem frühen Morgen. Die Reihenfolge erklärt die Zeiten: „Lohnt früh aufstehen“ um 05:15 braucht die Viertelstunden von gestern, und die entstehen erst um 04:30."
           />
         </SectionShell>
       </Ambience>

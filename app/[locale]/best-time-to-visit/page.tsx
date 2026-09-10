@@ -66,8 +66,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     heroAlt: 'Freizeitpark-Landschaft im Abendlicht',
     stats: [
       { value: '200+', label: 'Parks analysiert' },
-      { value: '2 Jahre', label: 'echte Daten' },
-      { value: '365', label: 'Tage im Voraus' },
+      { value: 'seit Dez. 2025', label: 'eigene Messungen' },
+      { value: 'täglich', label: 'neu gerechnet' },
     ],
   },
   en: {
@@ -81,8 +81,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     heroAlt: 'A theme-park landscape in the evening light',
     stats: [
       { value: '200+', label: 'parks analysed' },
-      { value: '2 yrs', label: 'of real data' },
-      { value: '365', label: 'days ahead' },
+      { value: 'since Dec 2025', label: 'of our own readings' },
+      { value: 'daily', label: 'recalculated' },
     ],
   },
   es: {
@@ -96,8 +96,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     heroAlt: 'Paisaje de un parque temático a la luz del atardecer',
     stats: [
       { value: '200+', label: 'parques analizados' },
-      { value: '2 años', label: 'de datos reales' },
-      { value: '365', label: 'días de previsión' },
+      { value: 'desde dic. 2025', label: 'de mediciones propias' },
+      { value: 'a diario', label: 'recalculado' },
     ],
   },
   fr: {
@@ -111,8 +111,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     heroAlt: "Paysage d'un parc d'attractions dans la lumière du soir",
     stats: [
       { value: '200+', label: 'parcs analysés' },
-      { value: '2 ans', label: 'de données réelles' },
-      { value: '365', label: "jours à l'avance" },
+      { value: 'depuis déc. 2025', label: 'de relevés propres' },
+      { value: 'chaque jour', label: 'recalculé' },
     ],
   },
   it: {
@@ -126,8 +126,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     heroAlt: 'Paesaggio di un parco divertimenti nella luce della sera',
     stats: [
       { value: '200+', label: 'parchi analizzati' },
-      { value: '2 anni', label: 'di dati reali' },
-      { value: '365', label: 'giorni in anticipo' },
+      { value: 'da dic. 2025', label: 'di rilevazioni proprie' },
+      { value: 'ogni giorno', label: 'ricalcolato' },
     ],
   },
   nl: {
@@ -141,8 +141,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     heroAlt: 'Pretparklandschap in het avondlicht',
     stats: [
       { value: '200+', label: 'parken geanalyseerd' },
-      { value: '2 jaar', label: 'echte data' },
-      { value: '365', label: 'dagen vooruit' },
+      { value: 'sinds dec. 2025', label: 'eigen metingen' },
+      { value: 'dagelijks', label: 'herberekend' },
     ],
   },
 };
