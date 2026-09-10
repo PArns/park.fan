@@ -36,14 +36,14 @@ trips one item here. A single sign is noise; a text is only in trouble when seve
 **Over-correction is its own failure mode.** These are ineffective indicators — do not mangle a
 text to dodge them:
 
-| Not a tell                        | Why                                                                                                                                                                                                        |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Perfect grammar                   | Plenty of people write clean prose. Do not add errors to look human.                                                                                                                                       |
-| Formal or "academic" register     | The correlation is with _specific words_, not with formality as such.                                                                                                                                      |
-| A transition word                 | `Außerdem` / `Additionally` once is normal writing. It is the mechanical repetition that reads generated.                                                                                                  |
-| One em dash in an English text    | A July 2026 study found only Claude uses them more than professional writers; ChatGPT uses them less. (We still ban them, for the reason in §4.1 — that is a house style decision, not a detection claim.) |
-| A three-part list                 | One per section is rhetoric. Three per section is a tic.                                                                                                                                                   |
-| Mixed casual and formal registers | That is how a lot of people write, especially in a technical field.                                                                                                                                        |
+| Not a tell                        | Why                                                                                                                                                                                            |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Perfect grammar                   | Plenty of people write clean prose. Do not add errors to look human.                                                                                                                           |
+| Formal or "academic" register     | The correlation is with _specific words_, not with formality as such.                                                                                                                          |
+| A transition word                 | `Außerdem` / `Additionally` once is normal writing. It is the mechanical repetition that reads generated.                                                                                      |
+| One em dash in an English text    | Measured: humans average 3.23 per 1,000 words, GPT-5.4 answers with 1.43. It is the weakest tell on this page. (We still ban it, for the reason in §4.1 — house style, not a detection claim.) |
+| A three-part list                 | One per section is rhetoric. Three per section is a tic.                                                                                                                                       |
+| Mixed casual and formal registers | That is how a lot of people write, especially in a technical field.                                                                                                                            |
 
 The rule of thumb underneath everything else: **generated prose is confident, even, and empty.**
 Human prose has uneven paragraph lengths, an opinion, a number it had to go and look up, and at
@@ -110,6 +110,55 @@ a fact or on the signature.
 `Trotz dieser Erfolge steht der Park vor mehreren Herausforderungen …` followed by vague
 optimism. If there is a real problem, name it with a date and a number; otherwise there is no
 paragraph here.
+
+### 1.7 The sentence that claims nothing
+
+This is the heart of it, and the reason the vocabulary lists in §3 are the least important part
+of this document. Generated prose is **fluent and empty**: every sentence is well-formed, the
+paragraph flows, and afterwards the reader cannot name one thing they now know. Word-level
+editing cannot fix that, because there is no wrong word — there is a missing fact.
+
+Two tests, both mechanical, both faster than arguing about style:
+
+- **The deletion test.** Cut the sentence. Did the paragraph lose information? If not, it was
+  filler — and a text where more than a third of the sentences survive deletion is not a text.
+- **The transplant test.** Would the sentence sit unchanged in an article about a different park,
+  a different product, a different industry? Then it says nothing about this one. `Ein Besuch
+will gut geplant sein.` fits every park, every museum and every airport in Europe.
+
+The five shapes it comes in:
+
+| Shape                   | Looks like                                                                                | What to do                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| **Pseudo-wisdom**       | `Am Ende des Tages kommt es auf die richtige Balance an.` · `The key is finding balance.` | Delete. There is no shorter version.                 |
+| **Empty contrast**      | `Es geht nicht um die Wartezeit, es geht um das Erlebnis.` where "Erlebnis" is undefined  | Delete the first half, then define the second or cut |
+| **Vague intensifier**   | `spielt eine maßgebliche Rolle` · `has a significant impact` · `sehr wichtig`             | Put the number there, or drop the sentence           |
+| **Manufactured stakes** | `Das Thema gewinnt zunehmend an Bedeutung.` · `Something real is happening here.`         | Say what changed, when, by how much                  |
+| **Tautology**           | `Wie voll es ist, hängt vom Andrang ab.` · `Wait times vary by day.`                      | Only worth writing with the next clause attached     |
+
+Twenty German openers of this kind are catalogued by WortLiga, and every one of them fits: `Seit
+jeher …`, `In der heutigen Zeit …`, `Es ist allgemein bekannt, dass …`, `Studien zeigen, dass …`,
+`Mehr denn je ist es entscheidend, dass …`, `Die Zahlen sprechen für sich`, `Ein nicht
+unerheblicher Teil …`, `Die Tendenz ist steigend`. What they share is that the sentence after
+them would have been fine on its own.
+
+**Hedges are the same failure in a smaller package.** `in gewisser Weise`, `im Grunde`,
+`letztlich`, `tendenziell`, `durchaus`, `in many ways`, `arguably`, `it could be argued`. Written
+by a person, a hedge marks real uncertainty and belongs in the sentence. Written by a model, it
+is an apology for a claim it did not check. Ours name what is uncertain instead: not `die Zahl
+ist tendenziell höher` but `die Zahl steht auf 13 gemessenen Tagen`.
+
+**Business verbs promise motion and deliver none.** `optimieren`, `ermöglichen`, `begleiten`,
+`abholen`, `revolutionieren`, `transformieren`, `skalieren`, and in English `leverage`, `unlock`,
+`empower`, `streamline`, `navigate`, `elevate`, `utilize`. Each has a plain twin that says more:
+`utilize` → `use`, `ermöglicht dir, X zu tun` → `du kannst X tun`, `optimiert deinen Parktag` →
+`spart dir vierzig Minuten Anstehen`.
+
+**And so do abstract nouns used as subjects.** `Effizienz`, `Komplexität`, `Innovation`,
+`Qualität`, `Vielfalt`, `das Erlebnis`, plus the spatial family this industry loves — `die Welt
+der Freizeitparks`, `Landschaft`, `Reise`, `Ökosystem`, `landscape`, `journey`, `space`,
+`ecosystem`, `tapestry`. A ride, a queue, a park and a visitor can all be the subject of a
+sentence; `die Vielfalt` cannot do anything.
 
 ---
 
@@ -201,6 +250,35 @@ Real examples that shipped and had to be pulled:
 decoration. Three endings that work: the concrete next action with its specifics; a fact not yet
 stated (a caveat, a number, a date); or nothing at all — a section is allowed to just stop.
 
+### 2.9 What still separates the two, now that the obvious tells are gone
+
+The Economist ran its own journalism through ChatGPT, Claude, Gemini and Grok and compared 1.2
+million words across 55,940 sentences against its writers, CNN, the NYT, the Washington Post and
+novels from 1950 to 2022. The em dash came out even. What did not:
+
+- **Latinate and scientific vocabulary** where a plain word exists: `signifikant`, `Parameter`,
+  `Methodik`, `Interdependenz`, `Reindustrialisierung`. German has the same split — `nutzen` over
+  `zur Anwendung bringen`, `Wartezeit` over `Wartezeit-Parameter`.
+- **Nominalisation and long words**, which §2.4 already bans. This is the second finding pointing
+  at it, from a different corpus.
+- **Sparse punctuation**, and this one is counter-intuitive: model prose uses **fewer** commas,
+  fewer semicolons and almost no parentheses. The correction is not "add commas" but "write the
+  aside you would have written" — the parenthesis is missing because the thought is missing.
+- **Long sentences inside dense paragraphs**, with `und`/`and` doing the joining where a full
+  stop belongs.
+- **`nicht X, sondern Y`** — the same construction as §2.1, found independently.
+
+Two of those are countable, and worth counting on a finished text:
+
+| Metric                                    | How                              | Signal            | Our German posts     | Our English posts    |
+| ----------------------------------------- | -------------------------------- | ----------------- | -------------------- | -------------------- |
+| **Sentence-length variance** (burstiness) | `stdev(sentence lengths) / mean` | under 0.4 is flat | **0.71** (0.50–1.19) | **1.01** (0.47–2.20) |
+| **Commas per 100 words**                  | `count(',') / words × 100`       | thin under ~4     | **8.7**              | **6.1**              |
+
+Both are supporting signals, never verdicts: a short reference text can be flat for good reasons.
+But a long post under 0.4 is a post where every sentence came out the same length, and that is
+worth a read-aloud pass before it ships. `pnpm check:prose` prints both (§7).
+
 ---
 
 ## 3. Vocabulary
@@ -212,17 +290,21 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 
 ### 3.1 German
 
-| Category               | Watch for                                                                                                                                                                                                                                                                           |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Significance inflation | `spielt eine wichtige/entscheidende Rolle`, `unterstreicht die Bedeutung`, `steht als Zeugnis`, `Wendepunkt`, `Schlüsselmoment`, `tief verwurzelt`, `prägt maßgeblich`, `hinterlässt bleibenden Eindruck`                                                                           |
-| Ad copy                | `atemberaubend`, `beeindruckend`, `unbedingt sehen`, `echtes Highlight`, `reiche Geschichte`, `reiches kulturelles Erbe`, `eingebettet`, `im Herzen von`, `vielfältig`, `nahtlos`, `maßgeschneidert`, `essenziell`, `umfassend`, `ganzheitlich`, `Gamechanger`, `das nächste Level` |
-| Editorial commentary   | `es ist wichtig zu beachten/betonen`, `es ist entscheidend`, `bemerkenswert ist`, `an dieser Stelle sei erwähnt`, `denken Sie daran`                                                                                                                                                |
-| Time-filler openings   | `in der heutigen Zeit`, `im digitalen Zeitalter`, `in der heutigen schnelllebigen Welt`, `mehr denn je`, `immer mehr Menschen`                                                                                                                                                      |
-| Summary formulas       | `zusammenfassend lässt sich sagen`, `abschließend`, `insgesamt`, `Fazit`                                                                                                                                                                                                            |
-| Mechanical connectives | `darüber hinaus`, `zusätzlich`, `ferner`, `andererseits` (as a paragraph habit)                                                                                                                                                                                                     |
-| Vague authority        | `Branchenberichte`, `Experten sind sich einig`, `viele Beobachter`, `Studien zeigen` (unsourced)                                                                                                                                                                                    |
-| Model verbs            | `eintauchen` / `Lassen Sie uns eintauchen`, `beleuchten`, `aufzeigen`, `hervorheben`, `gewährleisten`                                                                                                                                                                               |
-| Hedging into mush      | `kann` used to soften every claim — count them, models over-use it badly                                                                                                                                                                                                            |
+| Category                         | Watch for                                                                                                                                                                                                                                                                           |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Significance inflation           | `spielt eine wichtige/entscheidende Rolle`, `unterstreicht die Bedeutung`, `steht als Zeugnis`, `Wendepunkt`, `Schlüsselmoment`, `tief verwurzelt`, `prägt maßgeblich`, `hinterlässt bleibenden Eindruck`                                                                           |
+| Ad copy                          | `atemberaubend`, `beeindruckend`, `unbedingt sehen`, `echtes Highlight`, `reiche Geschichte`, `reiches kulturelles Erbe`, `eingebettet`, `im Herzen von`, `vielfältig`, `nahtlos`, `maßgeschneidert`, `essenziell`, `umfassend`, `ganzheitlich`, `Gamechanger`, `das nächste Level` |
+| Editorial commentary             | `es ist wichtig zu beachten/betonen`, `es ist entscheidend`, `bemerkenswert ist`, `an dieser Stelle sei erwähnt`, `denken Sie daran`                                                                                                                                                |
+| Time-filler openings             | `in der heutigen Zeit`, `im digitalen Zeitalter`, `in der heutigen schnelllebigen Welt`, `mehr denn je`, `immer mehr Menschen`                                                                                                                                                      |
+| Summary formulas                 | `zusammenfassend lässt sich sagen`, `abschließend`, `insgesamt`, `Fazit`                                                                                                                                                                                                            |
+| Mechanical connectives           | `darüber hinaus`, `zusätzlich`, `ferner`, `andererseits` (as a paragraph habit)                                                                                                                                                                                                     |
+| Vague authority                  | `Branchenberichte`, `Experten sind sich einig`, `viele Beobachter`, `Studien zeigen` (unsourced)                                                                                                                                                                                    |
+| Model verbs                      | `eintauchen` / `Lassen Sie uns eintauchen`, `beleuchten`, `aufzeigen`, `hervorheben`, `gewährleisten`                                                                                                                                                                               |
+| Hedging into mush                | `kann` used to soften every claim — count them, models over-use it badly                                                                                                                                                                                                            |
+| Business verbs                   | `optimieren`, `ermöglichen`, `begleiten`, `abholen`, `revolutionieren`, `transformieren`, `skalieren` — see §1.7, each has a plain twin                                                                                                                                             |
+| Gesture nouns                    | `die Welt der …`, `Landschaft`, `Reise`, `Ökosystem`, `Raum`, plus abstract subjects: `Effizienz`, `Komplexität`, `Innovation`, `Vielfalt`, `das Erlebnis`                                                                                                                          |
+| Pseudo-wisdom                    | `am Ende des Tages`, `der Schlüssel liegt in`, `es kommt auf die richtige Balance an`, `die Zahlen sprechen für sich`, `die Tendenz ist steigend`, `ein nicht unerheblicher Teil`                                                                                                   |
+| Latinate where German has a word | `signifikant` → `deutlich`, `Parameter` → `Wert`, `Methodik` → `Verfahren`, `partizipieren` → `mitmachen` (Economist 2026: still the strongest single marker)                                                                                                                       |
 
 ### 3.2 English
 
@@ -235,6 +317,11 @@ permanent, and never rely on vocabulary alone — §1 and §2 do the real work.
 | Summary formulas       | `in conclusion`, `overall`, `in summary`, `key takeaways`                                                                                                                                                                                                                                                                                                            |
 | Vague authority        | `industry reports`, `experts argue`, `observers have noted`, `some critics argue`, `several sources`                                                                                                                                                                                                                                                                 |
 | Outline conclusions    | `despite its … faces several challenges`, `future outlook`, `challenges and legacy`                                                                                                                                                                                                                                                                                  |
+| Business verbs         | `leverage`, `unlock`, `empower`, `streamline`, `navigate`, `elevate`, `utilize`, `facilitate`, `foster`, `ignite`, `unleash`                                                                                                                                                                                                                                         |
+| Gesture nouns          | `landscape`, `journey`, `space`, `realm`, `ecosystem`, `tapestry`, `beacon`, `roadmap`, `the world of …`                                                                                                                                                                                                                                                             |
+| Pseudo-wisdom          | `at the end of the day`, `the key is`, `when the dust settles`, `something real is happening`, `the stakes couldn't be higher`                                                                                                                                                                                                                                       |
+| Hedges                 | `in many ways`, `at some level`, `arguably`, `it could be argued`, `while it is true`                                                                                                                                                                                                                                                                                |
+| Recyclable framing     | `a useful way to think about it is`, `the key idea is`, `picture this`, `let's dive in`, `here's the kicker`                                                                                                                                                                                                                                                         |
 
 ### 3.3 Ours, and non-negotiable
 
@@ -277,6 +364,20 @@ compounds that take an unspaced en dash (`90–140 cm`, `Venlo–Eindhoven`, `20
 This applies to UI strings too, where `MAE — um wie viele Minuten …` should be
 `MAE: um wie viele Minuten …`. See the open backlog in §7.
 
+**Be honest about why.** As a detector this one is spent. Measured over eight published essays,
+human writers average **3.23 em dashes per 1,000 words** (range 0.33–17.12); GPT-4.1 answers with
+10.62 and Claude Opus 4.6 with 9.09, but GPT-5.4 with **1.43**, i.e. well under the humans
+(Freeburg 2026). The Economist rewrote 1.2 million words of its own journalism through four
+models and reached the same conclusion: only one of them still out-dashes its writers. So a text
+full of em dashes is a text with a habit, not proof of anything, and a text with none proves less
+still. We keep the ban because German typography settles it anyway and because a banned character
+is the one rule in this document a grep can decide.
+
+**And a rule in a prompt is not a rule in the output.** The same paper asked the models to stop:
+told explicitly not to use em dashes, GPT-4.1 still produced 3.86 per 1,000 words and DeepSeek V3
+1.57 — the structural impulse outlives the instruction. Which is why this is checked at the file
+and not requested at the keyboard.
+
 ### 4.2 Bold
 
 Bold marks proper nouns, numbers and the one sentence a reader must not miss. It does not mark
@@ -286,8 +387,11 @@ needs more than a dozen bold runs is a post that has not decided what matters.
 
 ### 4.3 Headings
 
-- A heading is not a summary of the paragraph under it, and it never contains a colon-plus-hook
-  (`Terrasse herbstfit machen: So schaffen Sie eine Wohlfühlatmosphäre`).
+- A heading is not a summary of the paragraph under it, and it never contains a colon-plus-hook.
+  The shapes to refuse, all of them SEO-template furniture that models reproduce by default:
+  `<Thema>: So gelingt <Ergebnis>`, `Alles, was du über X wissen musst`, `X: Der ultimative
+Guide`, `<Zahl> Tipps, die du kennen solltest`, `Von X zu Y – wie man Z wählt`. A heading names
+  what is under it: `Wann Taron am kürzesten ist`.
 - Do not fragment a text into a heading every three sentences. A section with two sentences under
   it should be a paragraph.
 - No title case in German. Sentence case, always.
@@ -332,9 +436,29 @@ Roughly 1,850 keys per locale, on every page, read a hundred times more often th
 - **The number goes in the string, the adjective does not.** `Ø 34 Min.` beats `relativ kurz`.
 - German UI copy uses **du**, consistently, and the same term for the same thing everywhere —
   `Wartezeit` is never `Anstehzeit` two screens later.
+- **No chat register.** `Gerne!`, `Selbstverständlich!`, `Großartige Frage!`, `Of course!` — a
+  product does not perform enthusiasm at somebody reading a wait time. An exclamation mark in a
+  UI string is nearly always this, and `pnpm check:prose` counts them.
 - New keys are added and validated per [translations](i18n/translations.md); `pnpm
 validate:translations` keeps the six catalogs in sync, but it says nothing about whether the
   German sentence is any good.
+
+**The FAQ answers are the worst of it, and they are the most public prose we have.** The
+park-level ones are exemplary — `seo.faq.waitTimesA` is four placeholders and a pointer, and
+`seo.homepage.faq.liveDataA` names its three sources and says how the numbers are reconciled.
+The rest of `seo.homepage.faq` is the register this document exists to keep out, and it ships as
+`FAQPage` JSON-LD and as the visible FAQ band on the homepage in six languages:
+
+| Shipped                                                                       | What is wrong                                                               |
+| ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `Ja! park.fan bietet einen detaillierten Crowd-Kalender …`                    | Chat warmth, and "detailliert" is not a fact                                |
+| `Absolut! park.fan ist vollständig responsive und funktioniert perfekt auf …` | Two unbacked superlatives and an implementation word a visitor does not use |
+| `Unser Ziel ist es, jedem … den bestmöglichen Service zu bieten.`             | Survives the deletion test (§1.7) with nothing lost                         |
+| `deine zentrale Plattform für …`                                              | Positioning, not an answer                                                  |
+| `… und viele mehr`                                                            | Vague expansion; give the count and link the list                           |
+
+Rewrite them the way the park-level ones are written: the number, the source, the link. This is
+open work, not something the check can do.
 
 ### 5.2 `alt` and `caption` (media sidecars)
 
@@ -415,7 +539,35 @@ often lands squarely on it (`stellt dar` → `serves as`).
 ## 7. The check before you publish
 
 Read the finished text out loud. Anywhere the rhythm turns metronomic, break it: a short
-sentence, a dropped connective, an aside. Then run the greps.
+sentence, a dropped connective, an aside. Then run the check:
+
+```bash
+pnpm check:prose              # no network, no running site
+pnpm check:prose --strict     # warnings count as failures
+pnpm check:prose --verbose    # every hit, not the first forty
+```
+
+`scripts/check-prose.mjs` is the executable half of this document and holds the same lists, the
+way `attractionIsOutOfSeason()` is the SQL twin of the season rule: change one half and you
+change both. It walks the posts, the six message catalogs and every media sidecar, and it splits
+its output the way a regex can actually be trusted to:
+
+- **Errors** are rules with no legitimate exception — a `—` in a post body, a growing em-dash
+  count in a catalog, an honesty claim or chat register in a string that can only be about us.
+- **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
+  about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
+
+The catalogs get a **ratchet** rather than a verdict, because they predate the rule: the
+per-locale em-dash counts in §7.1 are written into the script as a baseline that may fall and
+never rise. That is what keeps a green check honest instead of hiding the debt.
+
+It found something on its first run. `blog.intro` — the tagline under the hero on `/blog`, in
+all six languages — opened with `Ehrliche Reiseberichte` / `Honest trip reports` / `Resoconti
+onesti`, against a ban that had been in `CLAUDE.md` the whole time and had never been applied to
+anything but posts. The word is gone; the sentence after it, which _shows_ the same thing
+("Geschrieben von Menschen, die anstehen, damit du es nicht musst"), was already doing the work.
+
+The greps below are what the script runs, spelled out for a one-off look at a single file:
 
 ```bash
 # 1. Em dashes in reader-facing prose (expect: only the "— Patrick" signature)
@@ -445,26 +597,30 @@ grep -rniE "\b(delve|boasts|vibrant|nestled|pivotal|showcase|testament|underscor
 
 ### 7.1 Measured state, 2026-09-10
 
-Every rule here is checkable, so here is where the repository actually stood when this file was
-written. Numbers, not impressions:
+Where the repository actually stood when this file was written — the output of `pnpm check:prose`
+on that day, not impressions:
 
-| Surface                       | Measured                                                                                            |
-| ----------------------------- | --------------------------------------------------------------------------------------------------- |
-| Blog posts                    | 12 per locale × 6. German posts: exactly one `—` each, the signature. Clean.                        |
-| `sondern` per German post     | 0–6 over 1,280–7,775 words. Highest density: `die-kunst-des-wartens.md` (6 / 4,709). Within budget. |
-| Media sidecars                | 144 files, 112 German + 112 English captions, avg 8.9 / 9.7 words, zero em dashes.                  |
-| English captions              | 26 of 112 open with `The` (23 %) — mild set-level repetition, worth varying on the next pass.       |
-| Editorial commentary          | one hit: `The ticket structure is worth noting:` in `en/winter-theme-parks-2026.md`.                |
-| **UI strings (`messages/*`)** | **25 German and 55 English strings contain `—`**, one of them unspaced (`weltweit—u. a.`).          |
+| Surface                       | Measured                                                                                                                    |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Blog posts, all six locales   | 12 each, 72 in total. Non-signature em dashes: **0**.                                                                       |
+| Sentence-length variance      | de **0.71** (0.50–1.19), en 1.01, nl 1.00, fr 0.95, es 1.05, it 1.04. Nothing under 0.4.                                    |
+| Commas per 100 words          | de **8.7**, en 6.1, nl 6.3, fr 7.0, es 6.0, it 6.2. Nothing thin.                                                           |
+| `sondern` per German post     | 0–6 over 1,280–7,775 words. One post over budget: `willkommen-im-park-fan-blog.md` at 1.8/1k.                               |
+| Media sidecars                | 144 files, 112 German + 112 English captions, avg 8.9 / 9.7 words, zero em dashes.                                          |
+| English captions              | 26 of 112 open with `The` (23 %) — set-level repetition, worth varying on the next pass.                                    |
+| Vocabulary in posts           | four hits total: `seamless` ×2, `meticulously`, `worth noting`, all English, all judgement calls.                           |
+| **Honesty claim**             | **`blog.intro` in all six locales** — found by the check, fixed in the same change.                                         |
+| **UI strings (`messages/*`)** | **217 strings across six locales contain `—`** (de 25, en 55, nl 39, fr 38, es 30, it 30), one unspaced (`weltweit—u. a.`). |
+| **Exclamation marks**         | 36 strings across six locales, most of them in the homepage FAQ answers (§5.1).                                             |
 
-That last row is real debt: §4.1 applies to UI copy and the catalogs predate the rule. It is not
-fixed. Fixing it touches all six locales at once and belongs in its own change, not in a
-documentation commit — but nothing here should be read as "the catalogs are compliant".
+The last two rows are real debt. §4.1 applies to UI copy and the catalogs predate the rule; the
+em-dash count is ratcheted so it cannot grow, and lowering it touches all six locales at once,
+which belongs in its own change. Nothing here should be read as "the catalogs are compliant".
 
-Two notes on reading the grep output. `content/blog/README.md` matches most of the banned-word
-patterns because it documents them; exclude it. And the Spanish Walibi post's `cartel «Speed
-Zone»` is a sign with a name written on it, inside an image caption, which is the thing itself
-and not the prop §3.3 bans. A grep produces candidates, not verdicts.
+Two notes on reading the output. `content/blog/README.md` matches most of the banned-word
+patterns because it documents them, which is why the script skips READMEs. And the Spanish Walibi
+post's `cartel «Speed Zone»` is a sign with a name painted on it, inside an image caption, which
+is the thing itself and not the prop §3.3 bans. A check produces candidates, not verdicts.
 
 ---
 
@@ -476,17 +632,25 @@ Field guides:
   WikiProject AI Cleanup field guide, and the backbone of §1–§4.
 - Wikipedia, [Anzeichen für KI-generierte Inhalte](https://de.wikipedia.org/wiki/Wikipedia:Anzeichen_f%C3%BCr_KI-generierte_Inhalte) — the
   German counterpart, with the German-specific notes on Partizip I, Trikolon and connectives.
-- The Economist, [How to spot AI writing](https://www.economist.com/culture/2026/07/30/how-to-spot-ai-writing) (July 2026).
+- The Economist, [How to spot AI writing](https://www.economist.com/culture/2026/07/30/how-to-spot-ai-writing)
+  (July 2026) — 1.2 M words, 55,940 sentences, its own journalism rewritten by four models. The
+  source for §2.9.
 - The New York Times Magazine, [Why Does A.I. Write Like … That?](https://www.nytimes.com/2025/12/03/magazine/chatbot-writing-style.html) (Dec 2025).
+- a16z crypto, [The habits of AI writing — and what to do about them](https://a16zcrypto.com/posts/article/ai-writing-hallmarks-for-founders/) —
+  an editor's taxonomy: pseudo-profundity, empty contrasts, gesture words, the transplant test
+  behind §1.7.
 
 Linguistics:
 
 - Reinhart et al., [Do LLMs write like humans? Variation in grammatical and rhetorical styles](https://www.pnas.org/doi/10.1073/pnas.2422455122),
-  PNAS 122(8), 2025 — participial clauses at 2–5×, nominalisations at 1.5–2×, `that`-clause
-  subjects at 2.6× the human rate.
+  PNAS 122(8), 2025 ([free preprint](https://arxiv.org/abs/2410.16107)) — participial clauses at
+  2–5×, nominalisations at 1.5–2×, `that`-clause subjects at 2.6× the human rate.
 - Kobak et al., [Delving into LLM-assisted writing in biomedical publications through excess vocabulary](https://www.science.org/doi/10.1126/sciadv.adt3813),
-  Science Advances 11(27), 2025 — 15M abstracts; the 2023–2024 excess words are style verbs and
-  adjectives, not content nouns.
+  Science Advances 11(27), 2025 ([free full text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12219543/)) —
+  15M abstracts; the 2023–2024 excess words are style verbs and adjectives, not content nouns.
+- Freeburg, [The Last Fingerprint: How Markdown Training Shapes LLM Prose](https://arxiv.org/abs/2603.27006),
+  2026 — the em dash numbers in §0 and §4.1, including the finding that an explicit instruction
+  not to use them only halves the rate.
 - Juzek & Ward, [Why Does ChatGPT "Delve" So Much?](https://arxiv.org/abs/2412.11385), ACL 2025 —
   where the lexical over-representation comes from.
 - Russell, Karpinska & Iyyer, [People who frequently use ChatGPT for writing tasks are accurate and robust detectors of AI-generated text](https://aclanthology.org/2025.acl-long.267/),
@@ -497,7 +661,9 @@ German practice:
 - [ContentConsultants: KI-Texte erkennen](https://www.contentconsultants.de/ki-texte-erkennen-warum-man-texte-besser-selbst-schreibt/),
   [mindtwo: Typische ChatGPT-Phrasen](https://marketing.mindtwo.de/blog/typische-chatgpt-phrasen-ki-content-entlarven-und-optimieren),
   [eology: Merkmale von ChatGPT-typischen Texten](https://www.eology.de/news/merkmale-von-chatgpt-typischen-texten-beim-ai-roundtable),
-  [shribe: KI-Floskeln](https://shribe.de/ki-floskeln/).
+  [shribe: KI-Floskeln](https://shribe.de/ki-floskeln/),
+  [WortLiga: 20 Top-KI-Floskeln](https://wortliga.de/20-top-ki-floskeln-im-januar-2025/) (the
+  German opener list in §1.7).
 
 Adjacent standards:
 
