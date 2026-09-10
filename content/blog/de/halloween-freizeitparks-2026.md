@@ -428,7 +428,9 @@ Wavre lässt sich also Zeit. Zur Orientierung: 2025 waren es **18 Ibilaw-Abende*
 (11. Oktober bis 2. November), an rund zehn davon lief der Park bis 22 Uhr. Neu
 war damals das Spukhaus **Aquarium** im Hafenareal Dock World, dazu die Scare
 Zones Innocence, Basement und Arachnophobia. Dass davon 2026 etwas wieder
-verschwindet, wäre eine Überraschung.
+verschwindet, wäre eine Überraschung. Der Rest des Jahres, mit Kondaa, der
+Parkgeschichte und dem Vergleich zum bekannteren Walibi Holland, steht in
+unserem [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
 
 Kompaktes Gelände, kurze Wege zwischen den Schrecken, Darsteller, die die Nähe
 suchen. Und praktisch obendrein: [Bobbejaanland](ref:bobbejaanland) liegt gut

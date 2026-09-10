@@ -419,7 +419,9 @@ Waver neemt dus de tijd. Ter oriëntatie: in 2025 waren het **18 Ibilaw-avonden*
 (11 oktober tot 2 november), op zo’n tien daarvan liep het park tot 22 uur.
 Nieuw was toen het spookhuis **Aquarium** in het havengebied Dock World, plus de
 scare zones Innocence, Basement en Arachnophobia. Het zou een verrassing zijn
-als daarvan in 2026 iets verdwijnt.
+als daarvan in 2026 iets verdwijnt. De rest van het jaar, met Kondaa, de
+geschiedenis van het park en de vergelijking met het bekendere Walibi Holland,
+staat in onze [Walibi Belgium-gids](/blog/walibi-belgium-wachttijden-tips).
 
 Compact terrein, korte loopafstanden tussen de schrik, acteurs die de nabijheid
 zoeken. En praktisch bovendien: [Bobbejaanland](ref:bobbejaanland) ligt ruim een

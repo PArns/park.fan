@@ -413,7 +413,9 @@ is taking its time. For orientation, 2025 saw **18 Ibilaw evenings** (11 October
 to 2 November), with the park open until 10 p.m. on around ten of them. New back
 then was the spook house **Aquarium** in the Dock World harbour area, plus the
 scare zones Innocence, Basement and Arachnophobia. It would be a surprise if any
-of that disappeared in 2026.
+of that disappeared in 2026. The rest of the year, with Kondaa, the park's
+history and how it compares with the better-known Walibi Holland, is in our
+[Walibi Belgium guide](/blog/walibi-belgium-wait-times-tips).
 
 Compact grounds, short walks between the frights, performers who seek proximity.
 And practical on top: [Bobbejaanland](ref:bobbejaanland) is a good hour’s drive
