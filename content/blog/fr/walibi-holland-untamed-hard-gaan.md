@@ -736,10 +736,9 @@ La saison court d’**avril à début novembre**, après quoi c’est fermé. Au
 printemps et à l’automne le parc ouvre les mercredis, les week-ends et pendant
 les vacances, en juillet et août tous les jours.
 
-**Par mois** l’image est calme : mai et juillet sont avec 18 minutes typiques
-les mois les plus détendus, juin est à 19, août à 20. C’est en **avril** que
-c’est le plus chargé avec 22 minutes, quand Pâques, le Jour du Roi et les
-vacances de mai néerlandaises tombent dans la même période. Qui vient
+**Par mois** l’image est calme : sur toute la saison, les mois se distinguent à
+peine. Là où ça monte, Pâques, le Jour du Roi et les vacances de mai
+néerlandaises tombent dans la même période. Qui vient
 d’Allemagne doit en outre savoir que les **vacances scolaires néerlandaises**
 pèsent ici bien plus lourd que les siennes.
 
@@ -750,8 +749,9 @@ samedi :
 
 ```
 
-Trois minutes séparent le jour le plus calme du plus chargé. Le week-end n’est
-donc tout simplement pas un cas particulier ici, et la raison est banale : hors
+Entre les jours de la semaine, aucune différence n’est mesurable : les sept sont
+sur la même valeur. Le week-end n’est donc tout simplement pas un cas particulier
+ici, et la raison est banale : hors
 vacances d’été, le parc n’ouvre de toute façon presque que le mercredi et le
 week-end, si bien que les rares jours de semaine sont plus souvent que la
 moyenne des jours de vacances. Qui a le choix prend un jeudi en mai ou en

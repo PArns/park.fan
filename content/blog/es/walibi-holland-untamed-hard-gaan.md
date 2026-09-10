@@ -720,9 +720,8 @@ La temporada va de **abril a principios de noviembre**, después cierra. En
 primavera y otoño el parque abre los miércoles, los fines de semana y en
 vacaciones; en julio y agosto, a diario.
 
-**Por meses** el panorama es tranquilo: mayo y julio son con 18 minutos típicos
-los meses más relajados, junio está en 19 y agosto en 20. El mes más cargado es
-**abril** con 22 minutos, cuando la Semana Santa, el Día del Rey y las
+**Por meses** el panorama es tranquilo: a lo largo de la temporada los meses
+apenas se diferencian. Donde algo sube, la Semana Santa, el Día del Rey y las
 vacaciones neerlandesas de mayo caen en el mismo periodo. Quien venga de
 Alemania debe saber además que las **vacaciones escolares neerlandesas** pesan
 aquí mucho más que las propias.
@@ -734,8 +733,8 @@ sábado:
 
 ```
 
-Entre el día más vacío y el más lleno hay tres minutos. Aquí, pues, el fin de
-semana sencillamente no es un caso especial, y la razón es banal: fuera de las
+Entre los días de la semana no se mide ninguna diferencia: los siete están en el
+mismo valor. Aquí, pues, el fin de semana sencillamente no es un caso especial, y la razón es banal: fuera de las
 vacaciones de verano el parque abre de todos modos casi solo los miércoles y los
 fines de semana, de modo que los pocos días laborables son con más frecuencia de
 lo normal días de vacaciones. Quien pueda elegir, que coja un jueves de mayo o

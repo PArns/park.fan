@@ -11,7 +11,7 @@ excerpt: >-
   niets mag uitkeren en die naast de deur een vakantiehuis voor ernstig zieke
   kinderen heeft neergezet. En omdat een natuurvergunning de grens bij vijf
   miljoen bezoekers legt, wacht je hier ondanks 5,78 miljoen bezoeken
-  doorgaans 25 minuten.
+  doorgaans niet langer dan een ruim kwartier.
 tags:
   - efteling
   - wachttijden
@@ -335,7 +335,7 @@ oost naar west, die elkaar op het Herautenplein kruisen, met rood bestrate
 zijpaden naar de afzonderlijke taferelen. De gele sluiproutes verdwijnen. Daarna
 kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
-## 25 minuten, gemeten over 150 bedrijfsdagen
+## Een ruim kwartier, gemeten over 150 bedrijfsdagen
 
 “Een park voor het hele gezin” staat in elke folder. Aantonen kun je dat alleen
 met rijen.
@@ -675,9 +675,8 @@ die sinds 2024 op led werkt in plaats van op propaan. De waterattracties blijven
 draaien zolang het weer het toelaat, wat in Kaatsheuvel vaker het geval is dan in
 een Duits park in de heuvels.
 
-En dan de keerzijde: **december is in onze data de drukste maand van het jaar**, met
-34 minuten mediaan en 48 op het 90e percentiel. In december wacht je dus overal in
-het park ongeveer even lang als anders alleen bij Joris en de Draak. Daar komt de
+En dan de keerzijde: **december is in onze data de drukste maand van het jaar**.
+In december wacht je overal in het park ongeveer even lang als anders alleen bij Joris en de Draak. Daar komt de
 gestopte ticketverkoop bij zodra een vakantiedag de vergunningsgrens in zicht
 brengt. Wie het winterseizoen rustig wil zien, pakt een doordeweekse dag in november
 of in de tweede helft van januari, niet de week tussen kerst en nieuwjaar.
@@ -730,23 +729,22 @@ Ja, en voor een breder publiek dan de meeste grote parken. Wie achtbanen wil, kr
 met [Baron 1898](ref:efteling/baron-1898) en
 [Joris en de Draak](ref:efteling/joris-en-de-draak) twee heel goede, maar geen
 wereldtop. Wie darkrides, afwerking en sfeer wil, vindt in Europa nauwelijks iets
-beters. Bij typische wachttijden van 25 minuten parkbreed doe je op één dag meer dan
+beters. Bij de typische wachttijden parkbreed doe je op één dag meer dan
 je op grond van het bezoekcijfer zou verwachten.
 
 ### Hoe lang zijn de wachttijden in de Efteling?
 
-Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op **25
-minuten** (mediaan), het 90e percentiel op 36. Het langst sta je bij [Joris en
-de Draak](ref:efteling/joris-en-de-draak) met een klein half uur, gevolgd door
+Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op **een
+ruim kwartier** (mediaan). Het langst sta je bij [Joris en
+de Draak](ref:efteling/joris-en-de-draak), gevolgd door
 [Danse Macabre](ref:efteling/danse-macabre). Actuele cijfers staan op de
 [Efteling-parkpagina](ref:efteling).
 
 ### Wanneer is het het rustigst in de Efteling?
 
-Per maand zijn **april en mei** de rustigste seizoensmaanden (22 respectievelijk
-23 minuten), het drukst is **december** met 34. De weekdag speelt nauwelijks een rol,
-tussen donderdag (23 minuten) en maandag (27) zitten vier minuten. Doorslaggevend
-zijn de Nederlandse schoolvakanties. Voor een concrete datum helpt de
+Per maand is **april** de rustigste seizoensmaand, het drukst is **december**.
+De weekdag speelt nauwelijks een rol: tussen de beste en de slechtste zit één
+stap. Doorslaggevend zijn de Nederlandse schoolvakanties. Voor een concrete datum helpt de
 [kalender met de beste bezoekdagen](ref:efteling?calendar) meer dan welke vuistregel ook.
 
 ### Is er een fast pass in de Efteling?
@@ -774,7 +772,7 @@ Afhankelijk van de dag **40 tot 56 €**, kinderen tot drie jaar gratis, parkere
 
 ### Doe je de Efteling op één dag?
 
-De attracties wel, het park niet. 37 attracties bij 25 minuten typische wachttijd
+De attracties wel, het park niet. 37 attracties bij de typische wachttijden
 passen in een lange dag. Het Sprookjesbos, de shows, Aquanura en het lopen passen er
 niet meer bij. Twee dagen is hier het normale geval, geen advies voor liefhebbers.
 

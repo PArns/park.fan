@@ -11,7 +11,8 @@ excerpt: >-
   fondation qui n’a pas le droit de reverser quoi que ce soit et qui a construit
   à côté un village de vacances pour enfants gravement malades. Et comme un
   permis environnemental fixe la limite à cinq millions de visiteurs, on y
-  attend en général 25 minutes malgré 5,78 millions de visites.
+  attend en général à peine plus d’un quart d’heure malgré 5,78 millions de
+  visites.
 tags:
   - efteling
   - temps-d-attente
@@ -352,7 +353,7 @@ chemins secondaires pavés de rouge vers les scènes. Les raccourcis jaunes
 disparaissent. Ensuite, on pourra voir la forêt en deux portions sur deux jours
 sans se perdre.
 
-## 25 minutes, mesurées sur 150 jours d’exploitation
+## Un bon quart d’heure, mesuré sur 150 jours d’exploitation
 
 « Un parc pour toute la famille » figure dans chaque brochure. La seule façon de
 le prouver, ce sont les files.
@@ -715,8 +716,7 @@ entre et une version d’Aquanura qui fonctionne aux LED plutôt qu’au propane
 Kaatsheuvel arrive plus souvent que dans un parc allemand de moyenne montagne.
 
 Et puis le revers : **décembre est le mois le plus chargé de l’année dans nos
-données**, à 34 minutes de médiane et 48 au 90e centile. En décembre, vous attendez
-donc partout dans le parc à peu près aussi longtemps que sinon uniquement à Joris en
+données**. En décembre, vous attendez partout dans le parc à peu près aussi longtemps que sinon uniquement à Joris en
 de Draak. S’y ajoute l’arrêt de la vente de billets dès qu’un jour de vacances
 approche la limite du permis. Pour voir la saison d’hiver au calme, prenez un jour
 de semaine en novembre ou dans la seconde moitié de janvier, pas la semaine entre
@@ -775,23 +775,23 @@ Oui, et pour un public plus large que la plupart des grands parcs. Pour les
 montagnes russes, [Baron 1898](ref:efteling/baron-1898) et
 [Joris en de Draak](ref:efteling/joris-en-de-draak) sont deux très bonnes machines,
 mais pas de niveau mondial. Pour les dark rides, la finition et l’ambiance, on ne
-trouve guère mieux en Europe. Avec des attentes typiques de 25 minutes à l’échelle
+trouve guère mieux en Europe. Avec les attentes typiques à l’échelle
 du parc, on fait en une journée plus que la fréquentation ne le laisserait penser.
 
 ### Quels sont les temps d’attente à Efteling ?
 
 Sur tous les jours d’ouverture mesurés, l’attente typique à l’échelle du parc
-est de **25 minutes** (médiane), le 90e centile de 36. C’est à [Joris en de
-Draak](ref:efteling/joris-en-de-draak) qu’on attend le plus, une bonne
-demi-heure, suivie de [Danse Macabre](ref:efteling/danse-macabre). Les chiffres
+est d’**un bon quart d’heure** (médiane). C’est à [Joris en de
+Draak](ref:efteling/joris-en-de-draak) qu’on attend le plus, suivie de
+[Danse Macabre](ref:efteling/danse-macabre). Les chiffres
 actuels sont sur la [page du parc Efteling](ref:efteling).
 
 ### Quand y a-t-il le moins de monde à Efteling ?
 
-Par mois, **avril et mai** sont les mois de saison les plus calmes (22 et 23
-minutes), et **décembre** le plus chargé avec 34. Le jour de la semaine ne joue
-presque aucun rôle : quatre minutes séparent le jeudi (23 minutes) du lundi (27).
-Ce qui décide, ce sont les vacances scolaires néerlandaises. Pour une date précise,
+Par mois, **avril** est le mois de saison le plus calme, et **décembre** le plus
+chargé. Le jour de la semaine ne joue presque aucun rôle : entre le meilleur et
+le pire, il n’y a qu’un cran. Ce qui décide, ce sont les vacances scolaires
+néerlandaises. Pour une date précise,
 le [calendrier des meilleurs jours](ref:efteling?calendar) aide plus que n’importe quelle
 règle empirique.
 
@@ -822,7 +822,7 @@ et 400 € (Premium), à partir de 21 € par mois.
 
 ### Peut-on faire Efteling en une journée ?
 
-Les attractions oui, le parc non. 37 attractions à 25 minutes d’attente typique
+Les attractions oui, le parc non. 37 attractions aux attentes typiques
 tiennent dans une longue journée. La forêt des contes, les spectacles, Aquanura et
 la marche ne tiennent plus en plus. Deux jours, c’est ici le cas normal, pas une
 recommandation pour passionnés.

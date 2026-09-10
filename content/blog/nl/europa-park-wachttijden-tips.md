@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Rust sta je gemiddeld 23 minuten in de rij, korter dan in het Phantasialand
-  met een derde van dat publiek. Een jaar meetdata, waarom uitgerekend de zondag
-  de rustigste dag is, welke novemberweken onze kalender helemaal op “laag”
-  zet, en waarom je de Euro-Mir nu moet rijden of nooit meer.
+  In Rust sta je korter in de rij dan in het Phantasialand, dat een derde van
+  dat publiek trekt. Waarom uitgerekend de zondag de rustigste dag is, welke
+  novemberweken onze kalender helemaal op “laag” zet, en waarom je de Euro-Mir
+  nu moet rijden of nooit meer.
 tags:
   - europa-park
   - voltron
@@ -37,8 +37,8 @@ coverImage:
 seo:
   title: 'Europa-Park wachttijden & beste reistijd'
   description: >-
-    Europa-Park wachttijden uit een jaar meetdata: typisch 23 minuten, zondag het
-    rustigst, november het leegst. Beste reistijd, prijzen 2026, route.
+    Europa-Park wachttijden uit onze eigen metingen: zondag het rustigst,
+    november het leegst. Beste reistijd, prijzen 2026, route.
   keywords:
     - Europa-Park wachttijden
     - Europa-Park wachttijden nu
@@ -64,8 +64,8 @@ seo:
 
 Geen park in Duitsland verkoopt meer tickets dan het
 [Europa-Park](ref:europa-park?long), ruim zes miljoen per jaar. Toch sta je in
-Rust gemiddeld **23 minuten** in de rij. In het Phantasialand, dat een derde van
-dat publiek trekt, is het 32.
+Rust korter in de rij dan in het Phantasialand, dat maar een derde van dat
+publiek trekt.
 
 Daar is niets aan geschat. We leggen de wachttijden in Rust al twaalf maanden
 vast, baan voor baan, en wat er op dit moment bij de rijen staat, laat de
@@ -83,7 +83,7 @@ Na het winterseizoen wordt de baan afgebroken. Het park heeft voor
 
 ![De hoofdingang van het Europa-Park, aan de gevel hangen landsvlaggen | De hoofdingang in Rust. Daarachter liggen 95 hectare en 18 Europese landen. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park wachttijden: een krap half uur gemiddeld
+## Europa-Park wachttijden: een ruim kwartier gemiddeld
 
 Onze wachttijdhistorie voor het Europa-Park begint in december 2025 en is sinds
 april compleet. Over alle weekdagen gerekend ligt de typische wachttijd
@@ -693,7 +693,7 @@ Een dagindeling die daaruit volgt:
    het uur voor sluiting onder het openingsuur. Alleen de twee waterbanen zijn
    ’s ochtends leger.
 
-Eén kanttekening daarbij: deze curves zijn gemiddelden over een heel jaar
+Eén kanttekening daarbij: deze curves zijn gemiddelden over alle gemeten
 bedrijfsdagen, hoogzomer en winterseizoen samen. Op een korte
 novemberdag van elf tot negentien uur liggen de getallen lager en valt de piek
 eerder.
@@ -919,7 +919,7 @@ De zin die het vaakst boven dit park staat, luidt “beste pretpark ter wereld�
 en hij klopt in zoverre dat een internationale stemming in de branche hem tien
 keer zo heeft opgeschreven. Mij overtuigt een ander getal meer.
 
-Ruim zes miljoen mensen per jaar, en je staat gemiddeld 23 minuten in de rij.
+Ruim zes miljoen mensen per jaar, en toch sta je korter in de rij dan elders.
 Geen kunststuk, als je 96 attracties over 95 hectare verdeelt, 286 dagen per
 jaar opengaat en niemand langs de rij laat.
 
@@ -969,4 +969,4 @@ draait.
 - Route via de A5, parkeertarieven, Rulantica, de Michelinster voor Eatrenalin in 2026: [Route naar het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (officieel)](https://www.europapark.de/de) · [Eatrenalin op en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Samenstelling van het publiek naar herkomstland en het Zwitserse aandeel: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie over een rollend jaar, uurprofiel over een rollend jaar, druktevoorspelling over 90 dagen, [Europa-Park op park.fan](ref:europa-park)
+- Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie sinds december 2025, druktevoorspelling over 90 dagen, [Europa-Park op park.fan](ref:europa-park)

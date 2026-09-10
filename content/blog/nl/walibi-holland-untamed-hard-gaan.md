@@ -712,10 +712,9 @@ Het seizoen loopt van **april tot begin november**, daarna is het dicht. In het
 voorjaar en het najaar opent het park op woensdagen, in het weekend en in de
 vakanties, in juli en augustus dagelijks.
 
-**Per maand** is het beeld rustig: mei en juli zijn met doorgaans 18 minuten de
-meest ontspannen maanden, juni ligt op 19, augustus op 20. Het drukst wordt het
-in **april** met 22 minuten, als Pasen, Koningsdag en de Nederlandse meivakantie
-in dezelfde periode vallen. Wie uit Duitsland komt, moet bovendien weten dat de
+**Per maand** is het beeld rustig: over het seizoen verschillen de maanden
+nauwelijks. Waar het überhaupt aantrekt, vallen Pasen, Koningsdag en de
+Nederlandse meivakantie in dezelfde periode. Wie uit Duitsland komt, moet bovendien weten dat de
 **Nederlandse schoolvakanties** hier veel harder doorwerken dan de eigen.
 
 **Per weekdag** wordt het curieus. De drukke dag is niet de zaterdag:
@@ -724,8 +723,8 @@ in dezelfde periode vallen. Wie uit Duitsland komt, moet bovendien weten dat de
 
 ```
 
-Tussen de rustigste en de drukste weekdag zitten drie minuten. Het weekend is
-hier dus gewoon geen uitzondering, en de reden is banaal: buiten de
+Tussen de weekdagen is helemaal geen verschil te meten: alle zeven liggen op
+dezelfde waarde. Het weekend is hier dus gewoon geen uitzondering, en de reden is banaal: buiten de
 zomervakantie opent het park toch al bijna alleen op woensdag en in het weekend,
 waardoor de weinige doordeweekse dagen bovengemiddeld vaak vakantiedagen zijn.
 Wie de keuze heeft, neemt een donderdag in mei of juli.

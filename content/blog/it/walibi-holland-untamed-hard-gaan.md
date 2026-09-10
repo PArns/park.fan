@@ -723,10 +723,9 @@ La stagione va da **aprile a inizio novembre**, dopodiché chiude. In primavera 
 in autunno il parco apre il mercoledì, nei fine settimana e durante le vacanze;
 a luglio e agosto tutti i giorni.
 
-**Per mese** il quadro è tranquillo: maggio e luglio, con 18 minuti tipici, sono
-i mesi più rilassati; giugno sta a 19, agosto a 20. Il più affollato è **aprile**
-con 22 minuti, quando Pasqua, il Giorno del Re e le vacanze olandesi di maggio
-cadono nello stesso periodo. Chi arriva dalla Germania deve inoltre sapere che
+**Per mese** il quadro è tranquillo: lungo la stagione i mesi si distinguono a
+malapena. Dove qualcosa si muove, Pasqua, il Giorno del Re e le vacanze olandesi
+di maggio cadono nello stesso periodo. Chi arriva dalla Germania deve inoltre sapere che
 le **vacanze scolastiche olandesi** pesano qui molto più delle proprie.
 
 **Per giorno della settimana** la cosa si fa curiosa. Il giorno pieno non è il
@@ -736,8 +735,9 @@ sabato:
 
 ```
 
-Tra il giorno più vuoto e quello più pieno ci sono tre minuti. Qui, quindi, il
-fine settimana semplicemente non è un caso speciale, e il motivo è banale: fuori
+Tra i giorni della settimana non si misura nessuna differenza: tutti e sette
+stanno sullo stesso valore. Qui, quindi, il fine settimana semplicemente non è un
+caso speciale, e il motivo è banale: fuori
 dalle vacanze estive il parco apre comunque quasi solo il mercoledì e nei fine
 settimana, per cui i pochi giorni feriali sono più spesso della media giorni di
 vacanza. Chi può scegliere prende un giovedì di maggio o luglio.

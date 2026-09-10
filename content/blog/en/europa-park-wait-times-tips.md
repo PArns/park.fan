@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The average queue in Rust runs 23 minutes, shorter than at Phantasialand with
-  a third of the crowd. A year of measurements, why Sunday of all days is the
-  quietest, which weeks in November our calendar rates “low” across the board,
-  and why you should ride Euro-Mir now or never.
+  The queue in Rust is shorter than at Phantasialand, which has a third of the
+  crowd. Why Sunday of all days is the quietest, which weeks in November our
+  calendar rates “low” across the board, and why you should ride Euro-Mir now
+  or never.
 tags:
   - europa-park
   - voltron
@@ -37,8 +37,8 @@ coverImage:
 seo:
   title: 'Europa-Park Wait Times & Best Time to Go'
   description: >-
-    Europa-Park wait times from a year of data: 23 minutes typical, Sundays
-    quietest, November emptiest. Best time to visit, 2026 prices, getting there.
+    Europa-Park wait times from our own measurements: Sundays quietest, November
+    emptiest. Best time to visit, 2026 prices, getting there.
   keywords:
     - Europa-Park wait times
     - Europa-Park wait times today
@@ -63,9 +63,9 @@ seo:
 ---
 
 No park in Germany sells more tickets than
-[Europa-Park](ref:europa-park?long), a good six million a year. And still the
-average queue in Rust runs to **23 minutes**. At Phantasialand, which draws a
-third of that crowd, it is 32.
+[Europa-Park](ref:europa-park?long), a good six million a year. And still you
+queue less in Rust than at Phantasialand, which draws only a third of that
+crowd.
 
 None of that is guesswork. We have been recording wait times in Rust for twelve
 months, ride by ride, and whatever the boards are showing right now sits on the
@@ -83,7 +83,7 @@ event for **9 January 2027**.
 
 ![The main entrance of Europa-Park, with national flags hanging on the facade | The main gate in Rust. Behind it lie 95 hectares and 18 European countries. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park wait times: just under half an hour on average
+## Europa-Park wait times: a good quarter of an hour on average
 
 Our wait-time history for Europa-Park starts in December 2025 and has been
 gapless since April. Across all days of the week the typical park-wide wait is
@@ -686,8 +686,8 @@ A plan for the day that follows from that:
    hour before closing sits below the opening hour. Only the two water rides are
    quieter in the morning.
 
-One caveat. These curves are averages across a full year of operating days, high
-summer and the winter season together. On a short November day from eleven
+One caveat. These curves are averages across every operating day we have
+measured, high summer and the winter season together. On a short November day from eleven
 to seven the numbers are lower and the peak comes earlier.
 
 ```map-widget slug=europa-park
@@ -909,8 +909,8 @@ The sentence written above this park more often than any other is “best theme
 park in the world”, and it is true insofar as an international industry vote has
 put it that way ten times. A different number convinces me more.
 
-Over six million people a year, and your average queue is 23 minutes. No great
-trick, if you spread 96 attractions over 95 hectares, open 286 days a year and
+Over six million people a year, and you still queue less than you would
+elsewhere. No great trick, if you spread 96 attractions over 95 hectares, open 286 days a year and
 let nobody past the line.
 
 People drive to Rust for Voltron and Silver Star. That the queue for both is so
@@ -958,4 +958,4 @@ real Mir training module any more on their way into a car that spins.
 - Getting there via the A5, parking fees, Rulantica, the Eatrenalin’s Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (official)](https://www.europapark.de/de) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Visitor mix by country of origin and the Swiss share: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wait-time, rope-drop and crowd data: our own wait-time history across a rolling year, the hourly profile across a rolling year, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)
+- Wait-time, rope-drop and crowd data: our own wait-time history since December 2025, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)

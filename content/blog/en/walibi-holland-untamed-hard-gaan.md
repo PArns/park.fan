@@ -699,10 +699,9 @@ The season runs from **April to early November**, after which it closes. In
 spring and autumn the park opens on Wednesdays, at weekends and during holidays,
 and daily in July and August.
 
-**By month** the picture is calm: May and July are the most relaxed at a typical
-18 minutes, June sits at 19, August at 20. It gets busiest in **April** at 22
-minutes, when Easter, King’s Day and the Dutch May holidays fall into the same
-window. Anyone coming from Germany should also know that the **Dutch school
+**By month** the picture is calm: across the season the months barely differ.
+Where it does pick up, Easter, King’s Day and the Dutch May holidays fall into
+the same window. Anyone coming from Germany should also know that the **Dutch school
 holidays** hit far harder here than the German ones.
 
 **By weekday** it gets curious. The busy day is not Saturday:
@@ -711,8 +710,8 @@ holidays** hit far harder here than the German ones.
 
 ```
 
-Three minutes separate the quietest weekday from the busiest. So the weekend
-simply is not a special case here, and the reason is mundane: outside the summer
+No difference between the weekdays is measurable at all: all seven sit on the
+same value. So the weekend simply is not a special case here, and the reason is mundane: outside the summer
 holidays the park mostly opens on Wednesdays and at weekends anyway, so the few
 weekdays are disproportionately often holiday days. Given the choice, take a
 Thursday in May or July.

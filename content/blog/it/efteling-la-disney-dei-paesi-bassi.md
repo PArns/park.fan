@@ -10,8 +10,8 @@ excerpt: >-
   di Disneyland. Non appartiene a nessun gruppo, bensì a una fondazione che non
   può distribuire nulla e che accanto al parco ha costruito una casa vacanze per
   bambini gravemente malati. E poiché un permesso ambientale fissa il limite a
-  cinque milioni di visitatori, qui si aspettano di norma 25 minuti nonostante
-  5,78 milioni di visite.
+  cinque milioni di visitatori, qui si aspetta di norma poco più di un quarto
+  d’ora nonostante i 5,78 milioni di visite.
 tags:
   - efteling
   - tempi-di-attesa
@@ -344,7 +344,7 @@ sentieri secondari pavimentati in rosso verso le singole scene. Le scorciatoie
 gialle spariscono. Dopo potrai vedere il bosco in due porzioni in due giorni senza
 perderti.
 
-## 25 minuti, misurati su 150 giorni di apertura
+## Un quarto d’ora abbondante, misurato su 150 giorni di apertura
 
 «Un parco per tutta la famiglia» sta su ogni depliant. Dimostrarlo si può solo con
 le file.
@@ -695,9 +695,8 @@ Aquanura che dal 2024 funziona a led invece che a propano. Le attrazioni acquati
 continuano finché il tempo lo consente, cosa che a Kaatsheuvel succede più spesso
 che in un parco tedesco di media montagna.
 
-E poi il rovescio: **dicembre è nei nostri dati il mese più pieno dell’anno**, con
-34 minuti di mediana e 48 al 90° percentile. A dicembre aspetti quindi ovunque nel
-parco all’incirca quanto altrimenti aspetti solo a Joris en de Draak. A questo si
+E poi il rovescio: **dicembre è nei nostri dati il mese più pieno dell’anno**.
+A dicembre aspetti ovunque nel parco all’incirca quanto altrimenti aspetti solo a Joris en de Draak. A questo si
 aggiunge la vendita di biglietti fermata non appena un giorno di vacanza porta il
 limite del permesso a portata. Chi vuole vedere la stagione invernale con calma
 prende un giorno feriale di novembre o della seconda metà di gennaio, non la
@@ -755,24 +754,23 @@ Sì, e per un pubblico più ampio della maggior parte dei grandi parchi. Chi vuo
 ottovolanti trova in [Baron 1898](ref:efteling/baron-1898) e
 [Joris en de Draak](ref:efteling/joris-en-de-draak) due macchine molto buone, ma
 non di livello mondiale. Chi vuole dark ride, finiture e atmosfera in Europa non
-trova quasi niente di meglio. Con attese tipiche di 25 minuti nella media del
+trova quasi niente di meglio. Con le attese tipiche nella media del
 parco, in una giornata fai più di quanto il numero di visitatori lascerebbe
 pensare.
 
 ### Quanto si aspetta a Efteling?
 
 Su tutti i giorni di apertura misurati l’attesa tipica nella media del parco è
-di **25 minuti** (mediana), il 90° percentile 36. Si aspetta di più a [Joris en
-de Draak](ref:efteling/joris-en-de-draak), una buona mezz’ora, seguita da [Danse
+di **un quarto d’ora abbondante** (mediana). Si aspetta di più a [Joris en
+de Draak](ref:efteling/joris-en-de-draak), seguita da [Danse
 Macabre](ref:efteling/danse-macabre). I numeri attuali sono sulla [pagina del
 parco Efteling](ref:efteling).
 
 ### Quando c’è meno gente a Efteling?
 
-Per mese, **aprile e maggio** sono i mesi di stagione più tranquilli (22 e
-23 minuti), il più pieno è **dicembre** con 34. Il giorno della settimana incide
-poco: tra giovedì (23 minuti) e lunedì (27) ci sono quattro minuti. A decidere sono
-le vacanze scolastiche olandesi. Per una data concreta il
+Per mese, **aprile** è il mese di stagione più tranquillo, il più pieno è
+**dicembre**. Il giorno della settimana incide poco: tra il migliore e il
+peggiore c’è un solo gradino. A decidere sono le vacanze scolastiche olandesi. Per una data concreta il
 [calendario dei giorni migliori](ref:efteling?calendar) aiuta più di qualsiasi regola
 empirica.
 
@@ -801,7 +799,7 @@ A seconda del giorno **da 40 a 56 €**, bambini fino a tre anni gratis, parcheg
 
 ### Si fa Efteling in un giorno?
 
-Le attrazioni sì, il parco no. 37 attrazioni con 25 minuti di attesa tipica stanno
+Le attrazioni sì, il parco no. 37 attrazioni con le attese tipiche stanno
 in una giornata lunga. Il bosco delle fiabe, gli spettacoli, Aquanura e il
 camminare non ci stanno più sopra. Due giorni qui sono la norma, non un consiglio
 per appassionati.

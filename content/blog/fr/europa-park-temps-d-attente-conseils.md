@@ -7,11 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  À Rust, tu patientes 23 minutes en moyenne, moins qu’au Phantasialand, qui
-  attire un tiers de ce public. Un an de mesures, pourquoi le dimanche est
-  justement le jour le plus calme, quelles semaines de novembre notre
-  calendrier classe entièrement en « faible », et pourquoi il faut monter dans
-  l’Euro-Mir maintenant ou plus jamais.
+  À Rust, tu patientes moins qu’au Phantasialand, qui attire un tiers de ce
+  public. Pourquoi le dimanche est justement le jour le plus calme, quelles
+  semaines de novembre notre calendrier classe entièrement en « faible », et
+  pourquoi il faut monter dans l’Euro-Mir maintenant ou plus jamais.
 tags:
   - europa-park
   - voltron
@@ -38,8 +37,8 @@ coverImage:
 seo:
   title: 'Europa-Park : temps d’attente & conseils'
   description: >-
-    Temps d’attente à l’Europa-Park, un an de mesures : 23 minutes en général,
-    dimanche le plus calme, novembre le plus vide. Meilleure période, prix 2026.
+    Temps d’attente à l’Europa-Park, d’après nos propres mesures : dimanche le
+    plus calme, novembre le plus vide. Meilleure période, prix 2026.
   keywords:
     - Temps d’attente Europa-Park
     - Temps d’attente Europa-Park aujourd’hui
@@ -64,8 +63,8 @@ seo:
 ---
 
 Aucun parc d’Allemagne ne vend plus de billets que l’[Europa-Park](ref:europa-park?long),
-six bons millions par an. Et pourtant, à Rust, tu patientes en moyenne
-**23 minutes**. Au Phantasialand, qui attire un tiers de ce public, c’est 32.
+six bons millions par an. Et pourtant, à Rust, tu patientes moins qu’au
+Phantasialand, qui n’attire qu’un tiers de ce public.
 
 Rien là-dedans n’est estimé. Nous relevons les temps d’attente à Rust depuis
 douze mois, attraction par attraction, et ce qui est affiché en ce moment à
@@ -85,7 +84,7 @@ Après la saison d’hiver, l’attraction sera démontée. Le parc a annoncé u
 
 ![L’entrée principale de l’Europa-Park, des drapeaux nationaux accrochés à la façade | L’entrée principale à Rust. Derrière, 95 hectares et 18 pays européens. | wide](/media/europa-park/background-16x9.jpg)
 
-## Temps d’attente à l’Europa-Park : une petite demi-heure en moyenne
+## Temps d’attente à l’Europa-Park : un bon quart d’heure en moyenne
 
 Notre historique des temps d’attente pour l’Europa-Park commence en décembre
 2025 et ne connaît plus de trou depuis avril. Tous jours de la semaine
@@ -720,8 +719,8 @@ Un déroulé de journée qui en découle :
    coasters, l’heure avant la fermeture passe sous celle de l’ouverture. Seules
    les deux attractions aquatiques sont plus vides le matin.
 
-Une réserve là-dessus : ces courbes sont des moyennes sur une année entière de
-jours d’exploitation, plein été et saison d’hiver confondus. Par une
+Une réserve là-dessus : ces courbes sont des moyennes sur tous les jours
+d’exploitation mesurés, plein été et saison d’hiver confondus. Par une
 courte journée de novembre, de onze à dix-neuf heures, les chiffres sont plus bas
 et la pointe arrive plus tôt.
 
@@ -961,8 +960,8 @@ d’attractions du monde », et elle est vraie dans la mesure où un vote
 professionnel international l’a écrite ainsi dix fois. Un autre chiffre me
 convainc davantage.
 
-Plus de six millions de personnes par an, et tu patientes en moyenne 23 minutes.
-Rien de sorcier quand on répartit 96 attractions sur 95 hectares, qu’on ouvre 286
+Plus de six millions de personnes par an, et tu patientes quand même moins
+qu’ailleurs. Rien de sorcier quand on répartit 96 attractions sur 95 hectares, qu’on ouvre 286
 jours par an et qu’on ne laisse personne doubler.
 
 On va à Rust pour Voltron et Silver Star. Que l’on attende si peu devant les deux
@@ -1013,4 +1012,4 @@ la Mir pour monter dans un wagon qui tourne sur lui-même.
 - Accès par l’A5, tarifs de stationnement, Rulantica, l’Eatrenalin et son étoile Michelin 2026 : [Accès à l’Europa-Park (officiel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (officiel)](https://www.europapark.de/de) · [Eatrenalin sur en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composition du public par pays d’origine et part suisse : [« 50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort » (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [« 874'000 Schweizer Besucher stellen den grössten Anteil » (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Jour de pont : niveaux d’affluence et météo des jours autour de l’Ascension et de la Fête-Dieu 2026, tirés de notre propre calendrier (mesurés, non prévus), plus la série de vidéos [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la même série en 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Données de temps d’attente, de rope drop et d’affluence : notre historique de temps d’attente sur une année glissante, profil horaire sur une année glissante, prévision d’affluence sur 90 jours, [Europa-Park sur park.fan](ref:europa-park)
+- Données de temps d’attente, de rope drop et d’affluence : notre historique de temps d’attente depuis décembre 2025, prévision d’affluence sur 90 jours, [Europa-Park sur park.fan](ref:europa-park)

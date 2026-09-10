@@ -10,8 +10,8 @@ excerpt: >-
   before Disneyland. It belongs to no corporation, only to a foundation that
   isn’t allowed to pay anyone out and that built a holiday village for
   seriously ill children next door. And because a nature permit draws the line
-  at five million guests, you still typically wait 25 minutes here despite
-  5.78 million visits.
+  at five million guests, you still typically wait only a good quarter of an
+  hour here despite 5.78 million visits.
 tags:
   - efteling
   - wait-times
@@ -336,7 +336,7 @@ north-south and east-west that cross at the Herautenplein, with red-paved side
 paths to the individual scenes. The yellow shortcuts are going. After that you can
 take the forest in two portions on two days without getting lost.
 
-## 25 minutes, measured across 150 operating days
+## A good quarter of an hour, measured across 150 operating days
 
 "A park for the whole family" is in every brochure. The only way to back it up is
 with queues.
@@ -679,9 +679,8 @@ run on LEDs rather than propane since 2024. The water rides keep going as long a
 the weather allows, which in Kaatsheuvel is more often than at a German park up in
 the hills.
 
-And then the downside: **December is the busiest month of the year in our data**,
-at 34 minutes median and 48 at the 90th percentile. In December you are waiting
-about as long everywhere in the park as you otherwise only wait at Joris en de
+And then the downside: **December is the busiest month of the year in our data**.
+In December you are waiting about as long everywhere in the park as you otherwise only wait at Joris en de
 Draak. On top of that comes the halted ticket sale as soon as a holiday day brings
 the permit limit within reach. If you want to see the winter season in peace, take
 a weekday in November or the second half of January, not the week between
@@ -736,23 +735,22 @@ Yes, and for a broader audience than most big parks. If you want coasters,
 [Baron 1898](ref:efteling/baron-1898) and
 [Joris en de Draak](ref:efteling/joris-en-de-draak) are two very good ones, but not
 world class. If you want dark rides, craftsmanship and atmosphere, there is hardly
-anything better in Europe. At typical waits of 25 minutes park-wide you get through
+anything better in Europe. At the typical park-wide waits you get through
 more in a day than the attendance figure would suggest.
 
 ### How long are the wait times at Efteling?
 
 Across every operating day we have measured the typical park-wide wait is
-**25 minutes** (median), with the 90th percentile at 36. The longest queue is
-[Joris en de Draak](ref:efteling/joris-en-de-draak) at a good half hour, followed
+**a good quarter of an hour** (median). The longest queue is
+[Joris en de Draak](ref:efteling/joris-en-de-draak), followed
 by [Danse Macabre](ref:efteling/danse-macabre). Current numbers are on the
 [Efteling park page](ref:efteling).
 
 ### When is Efteling least busy?
 
-By month, **April and May** are the most relaxed season months (22 and 23 minutes),
-and **December** is the busiest at 34. The day of the week barely matters: four
-minutes separate Thursday (23 minutes) from Monday (27). What decides it is the
-Dutch school holidays. For a specific date the
+By month, **April** is the most relaxed season month and **December** the
+busiest. The day of the week barely matters: the best and the worst are one step
+apart. What decides it is the Dutch school holidays. For a specific date the
 [best days to visit calendar](ref:efteling?calendar) helps more than any rule of thumb.
 
 ### Is there a fast pass at Efteling?
@@ -780,7 +778,7 @@ Depending on the day, **40 to 56 €**, children up to three go free, parking 15
 
 ### Can you do Efteling in one day?
 
-The attractions yes, the park no. 37 attractions at 25 minutes typical wait fit
+The attractions yes, the park no. 37 attractions at the typical waits fit
 into a long day. The Fairytale Forest, the shows, Aquanura and the walking do not
 fit on top of that. Two days is the normal case here, not a recommendation for
 enthusiasts.
