@@ -515,6 +515,11 @@ https://www.instagram.com/reel/CxYz123/
 
 ## 8. Writing style (REQUIREMENT)
 
+> The base rulebook for **every** text on the site — where the tells come from, what they look
+> like in German and in English, and the greps that find them — is
+> [`docs/blog.md`](../../docs/blog.md). Read that first. This section is what is specific to a
+> blog post on top of it.
+
 Posts must not read like they were generated. That is a hard requirement, not a
 preference — a reader who smells a language model stops trusting the numbers
 too. Write the way a person who actually stood in the queue would write.

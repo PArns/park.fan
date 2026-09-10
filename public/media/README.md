@@ -205,8 +205,8 @@ sky`, `nestled`
 
 Write the six locales as six sentences, not as one sentence translated five times:
 where a language wants a different word order, let it have one. Rules for prose in
-general are in the [blog authoring guide](../../content/blog/README.md#8-writing-style-requirement)
-and apply here too, including **no em dash in German running text**.
+general are in [`docs/blog.md`](../../docs/blog.md) (§5.2 covers this pair) and apply here too,
+including **no em dash in running text**.
 
 ### `credit` — never invent one
 

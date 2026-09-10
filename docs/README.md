@@ -15,6 +15,7 @@
 | [API & Backend](api/backend-integration.md)          | Backend connection, endpoints, types               |
 | [SEO](seo/analysis.md)                               | SEO analysis and recommendations                   |
 | [Troubleshooting](troubleshooting/common-issues.md)  | Common issues and solutions                        |
+| [Writing rules](blog.md)                             | How every text on the site is written              |
 
 ---
 
@@ -29,6 +30,14 @@
 | [Caching Strategy](architecture/caching-strategy.md) | ISR revalidate times, API cache, headers                     |
 | [API Integration](architecture/api-integration.md)   | High-level API usage and rules                               |
 | [API budget per page](architecture/api-budget.md)    | Requests each route makes, what every payload is read for    |
+
+### Content & writing
+
+| Doc                                         | Description                                                                                                  |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [Writing rules](blog.md)                    | The base rulebook for every reader-facing text: what makes prose read as AI-generated, in German and English |
+| [Blog authoring](../content/blog/README.md) | Frontmatter, `ref:` links, live widget fences, the post-specific rules                                       |
+| [Image text](../public/media/README.md)     | Sidecar `alt` and `caption`: the two jobs, and the tells that only show across a set                         |
 
 ### Development
 
