@@ -243,10 +243,72 @@ const compactTwister5 = {
   ],
 };
 
+/**
+ * Sixth attempt: v5's topology with the two things v5 measured.
+ *
+ * **The free pair spans the plane now.** Both of v5's straights moved the end point along z, so
+ * the solve left 97 m in x with one of them pinned at its floor. The curved drop is a HALF turn,
+ * which displaces the track by twice its radius sideways — so its radius is a free parameter that
+ * moves x, and the out-leg still moves z. That is the property a two-parameter solve needs and
+ * neither v3 nor v5 had.
+ *
+ * **And the airtime hill moved.** In v5 it sat straight after a 14 m curve the train now takes
+ * far faster than v4's did, and produced -19.7 g. `airtime-hill` sizes its crest from the speed
+ * at that crest, so the same numbers behave completely differently a hundred metres earlier or
+ * later; it is on the straight out of the second helix here, where the train is still fast but
+ * not yet cornering, and gentler.
+ *
+ * ## This one works, and it still does not fit
+ *
+ * **345.2 m · 55.7 km/h · 19 m drop · 2.69 g peak · 45.4 s · `complete: true`**, solved to 0.089 m
+ * of residual in four iterations with a closure of 3.99 m, and one warning (15.5 g/s of jerk at
+ * 147 m against a limit of 12). It is the first of the six that a train gets round at all. Two
+ * numbers made it work and neither is a length: the drop helix's `hand` was **inverted**, so its
+ * sideways displacement opposes the return path's instead of adding to it — v6 with `hand: -1`
+ * left 63 m of residual with both parameters pinned — and the two closing curves went from
+ * radius 14 to 9, which is what took the solved drop radius from 24.9 m to 15.5 and the box from
+ * 75 x 130 to **56 x 112 m**.
+ *
+ * 56 m of width fits the reserved 58 m shelf. **112 m of depth does not fit its 48 m**, and the
+ * remaining attempt says why it will not: folding the descent further (a 0.75-turn drop helix)
+ * destroys the solve's conditioning outright — both parameters pin, 64 m of residual, 14.9 g.
+ * The depth is spent before the first turn, by the 12 m station plus 8 m of transport plus a 15 m
+ * lift at 34 degrees, which is 42 m of straight +z, and a curve cannot go in front of it because
+ * a curve carries no drive (v2, v3).
+ *
+ * So the honest reading of six attempts is that **the plot is the wrong shape, not the layout**.
+ * A coaster in this element set wants a corridor: 58 x 120 m would hold this one as it stands.
+ * That is a `demo-park` decision about the `coaster` pad and a far smaller one than the 70 x 400 m
+ * corridor STATUS.json contemplated for the bundled out-and-backs.
+ */
+const compactTwister6 = {
+  ride: 'core-classic:family-invert',
+  style: 'core-classic:steel-tube',
+  train: 'core-classic:steel-open-5',
+  free: ['dropRadius', 'outLeg'],
+  start: { dropRadius: 10, outLeg: 14 },
+  bounds: { dropRadius: [7, 30], outLeg: [2, 70] },
+  pieces: (v) => [
+    { element: 'station', params: { length: 12 } },
+    { element: 'transport', params: { length: 8, speed: 2 } },
+    { element: 'lift-hill', params: { height: 15, angle: 34, radius: 12, speed: 2.5 } },
+    { element: 'helix', params: { turns: 0.5, radius: v.dropRadius, drop: 11, hand: 1 } },
+    { element: 'airtime-hill', params: { height: 2.5, g: 0.2, gLoad: 1.8 } },
+    { element: 'helix', params: { turns: 1, radius: 12, drop: 4, hand: -1 } },
+    { element: 'straight', params: { length: v.outLeg } },
+    { element: 'curve', params: { angle: 90, radius: 9 } },
+    { element: 'straight', params: { length: 5 } },
+    { element: 'curve', params: { angle: 90, radius: 9 } },
+    { element: 'brake-run', params: { length: 14, speed: 4 } },
+    { element: 'level', params: { length: 6 } },
+  ],
+};
+
 export const DESIGNS = {
   'compact-twister': compactTwister,
   'compact-twister-2': compactTwister2,
   'compact-twister-3': compactTwister3,
   'compact-twister-4': compactTwister4,
   'compact-twister-5': compactTwister5,
+  'compact-twister-6': compactTwister6,
 };
