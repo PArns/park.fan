@@ -29,6 +29,7 @@ import { lineSource, type PlannerShowLine } from '@/lib/planner/shows';
 import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
 import { PLANNER_RIDE_MIME, parseRideDrag, rideFromUrl } from '@/lib/planner/ride-drag';
+import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { PlannerGridGround } from './planner-grid-ground';
 import { PlannerWeatherRail } from './planner-weather-rail';
@@ -77,31 +78,6 @@ const RESIZE_STEP_MIN = 5;
 
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
-
-/**
- * Claim the pointer, and say where the gesture's events will arrive.
- *
- * `setPointerCapture` throws `NotFoundError` for a pointer id that is not
- * currently active, and the release side of both gestures has been wrapped
- * against exactly that since it was written. The claim side was not, so the
- * throw landed uncaught in a React event handler and took the whole gesture
- * with it before `dragState` had been set — a drag that silently does nothing.
- *
- * The return value is the point: capture is what RETARGETS `pointermove` and
- * `pointerup` to the handle, so without it a handle-bound `pointerup` never
- * fires and the gesture has no end — the rAF loop runs on, `--pl-drag-dy` stays
- * on the block and the listeners leak. So a failed claim moves the listeners to
- * the document, where the events pass on their way up regardless.
- */
-function capture(handle: Element, pointerId: number): EventTarget {
-  try {
-    handle.setPointerCapture(pointerId);
-    return handle;
-  } catch {
-    // No such active pointer — a synthesized event, or one already released.
-    return document;
-  }
-}
 
 /**
  * The day grid: the axis, the ground, the blocks and the legs between them.
@@ -376,6 +352,25 @@ export function PlannerDayGrid({
   } | null>(null);
 
   /**
+   * How to tear down whichever gesture is currently running, from outside it.
+   *
+   * Both gestures below attach their listeners to a bus that may be the
+   * `document` — {@link capturePointer} falls back to it when the capture cannot
+   * be claimed — and a document listener outlives the component that added it.
+   * Unmounting mid-drag (the panel closes, the day switches, the plan is
+   * cleared) therefore left a live `pointermove` holding a closure over a block
+   * that is no longer in the tree, and a `pointerup` that would still try to
+   * commit through it.
+   *
+   * One slot rather than a set: the two gestures are mutually exclusive by
+   * construction (the resize edge stops propagation, and both start from a
+   * primary button press), so a second claim means the first never got its end
+   * event and is stale — hence the `?.()` before every new one.
+   */
+  const liveGesture = useRef<(() => void) | null>(null);
+  useEffect(() => () => liveGesture.current?.(), []);
+
+  /**
    * The minute under a pointer, for a drop rather than a drag.
    *
    * Separate from `targetMinute` on purpose: that one reads `dragState` and
@@ -514,30 +509,41 @@ export function PlannerDayGrid({
 
       const handle = event.currentTarget;
       // Where this gesture's events will arrive — the handle when the capture
-      // took, the document when it did not. See {@link capture}.
-      const bus = capture(handle, event.pointerId);
+      // took, the document when it did not. See {@link capturePointer}.
+      const bus = capturePointer(handle, event.pointerId);
+      const pointerId = event.pointerId;
       const startY = event.clientY;
       const startMinutes = entry.custom.durationMinutes;
       onSelect(entry.id);
 
       const onPointerMove = (moveEvent: PointerEvent) => {
+        // Only this gesture's own finger. On the document fallback every
+        // pointer on the screen passes through here, so a second one put down
+        // anywhere would resize a block it never touched.
+        if (!isSamePointer(moveEvent, pointerId)) return;
         const deltaMinutes = (moveEvent.clientY - startY) / grid.pxPerMin;
         const next = Math.round((startMinutes + deltaMinutes) / RESIZE_STEP_MIN) * RESIZE_STEP_MIN;
         onResize(entry.id, next);
       };
+      const onEnd = (endEvent: PointerEvent) => {
+        if (!isSamePointer(endEvent, pointerId)) return;
+        detach();
+      };
       const detach = () => {
         bus.removeEventListener('pointermove', onPointerMove as EventListener);
-        bus.removeEventListener('pointerup', detach);
-        bus.removeEventListener('pointercancel', detach);
-        try {
-          handle.releasePointerCapture(event.pointerId);
-        } catch {
-          // Already released — a cancelled gesture, or the element unmounted.
-        }
+        bus.removeEventListener('pointerup', onEnd as EventListener);
+        bus.removeEventListener('pointercancel', onEnd as EventListener);
+        releasePointer(handle, pointerId);
+        if (liveGesture.current === detach) liveGesture.current = null;
       };
+      // Held so an unmount mid-gesture can still tear it down: with the
+      // document fallback the listeners outlive the component that added them,
+      // and their closure holds the block.
+      liveGesture.current?.();
+      liveGesture.current = detach;
       bus.addEventListener('pointermove', onPointerMove as EventListener);
-      bus.addEventListener('pointerup', detach);
-      bus.addEventListener('pointercancel', detach);
+      bus.addEventListener('pointerup', onEnd as EventListener);
+      bus.addEventListener('pointercancel', onEnd as EventListener);
     },
     [grid.pxPerMin, onResize, onSelect]
   );
@@ -552,8 +558,9 @@ export function PlannerDayGrid({
 
       const handle = event.currentTarget;
       // Where this gesture's events will arrive — the handle when the capture
-      // took, the document when it did not. See {@link capture}.
-      const bus = capture(handle, event.pointerId);
+      // took, the document when it did not. See {@link capturePointer}.
+      const bus = capturePointer(handle, event.pointerId);
+      const pointerId = event.pointerId;
       // `preventDefault` above eats the focus a mouse drag would take, so a
       // keyboard user cannot resume where the pointer just was.
       handle.focus({ preventScroll: true });
@@ -572,31 +579,36 @@ export function PlannerDayGrid({
       onSelect(entry.id);
 
       const onPointerMove = (moveEvent: PointerEvent) => {
+        // This gesture's finger and no other. With the document fallback the
+        // listeners hear every pointer on the page, so a second finger put down
+        // while the first holds a block would drive it — and its `pointerup`
+        // would COMMIT the drop at wherever that second finger happened to be.
+        if (!isSamePointer(moveEvent, pointerId)) return;
         if (dragState.current) dragState.current.lastClientY = moveEvent.clientY;
       };
-      const onUp = () => {
+      const onUp = (upEvent: PointerEvent) => {
+        if (!isSamePointer(upEvent, pointerId)) return;
         detach();
         endDrag(true);
       };
-      const onCancel = () => {
+      const onCancel = (cancelEvent: PointerEvent) => {
+        if (!isSamePointer(cancelEvent, pointerId)) return;
         detach();
         endDrag(false);
       };
       const detach = () => {
         bus.removeEventListener('pointermove', onPointerMove as EventListener);
-        bus.removeEventListener('pointerup', onUp);
-        bus.removeEventListener('pointercancel', onCancel);
-        try {
-          handle.releasePointerCapture(event.pointerId);
-        } catch {
-          // Already released — a cancelled gesture, or the element unmounted
-          // mid-drag. Nothing to release and nothing to report.
-        }
+        bus.removeEventListener('pointerup', onUp as EventListener);
+        bus.removeEventListener('pointercancel', onCancel as EventListener);
+        releasePointer(handle, pointerId);
+        if (liveGesture.current === detach) liveGesture.current = null;
       };
 
+      liveGesture.current?.();
+      liveGesture.current = detach;
       bus.addEventListener('pointermove', onPointerMove as EventListener);
-      bus.addEventListener('pointerup', onUp);
-      bus.addEventListener('pointercancel', onCancel);
+      bus.addEventListener('pointerup', onUp as EventListener);
+      bus.addEventListener('pointercancel', onCancel as EventListener);
 
       // The loop lives in the gesture rather than in a `useCallback`: it is
       // per-gesture state, and a self-recursive rAF callback hoisted to a hook

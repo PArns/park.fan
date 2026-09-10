@@ -21,6 +21,7 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
 import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
+import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 import { addDays, dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
@@ -95,6 +96,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const [expanded, setExpanded] = useState(false);
   /** Whether the gesture that just ended was a drag, so the tap can stand down. */
   const draggedSheet = useRef(false);
+  /**
+   * Tear-down for a sheet drag that is still running, reachable from outside it.
+   * See the grid's `liveGesture` — same fallback, same leak, and here the
+   * closure holds `handleOpenChange`.
+   */
+  const sheetGesture = useRef<(() => void) | null>(null);
+  useEffect(() => () => sheetGesture.current?.(), []);
   const handleOpenChange = (next: boolean) => {
     if (!next) {
       setShowOverview(false);
@@ -547,7 +555,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const handleSheetGrab = (event: React.PointerEvent<HTMLElement>) => {
     if (event.button !== 0) return;
     const handle = event.currentTarget;
-    handle.setPointerCapture(event.pointerId);
+    const pointerId = event.pointerId;
+    // Through the shared claim, like the grid's two gestures. A bare
+    // `setPointerCapture` throws `NotFoundError` for a pointer id that is not
+    // active, and an uncaught throw in a React event handler takes the whole
+    // gesture with it — here, before `draggedSheet` has even been reset, which
+    // leaves the NEXT tap on the handle reading as the end of this drag. The
+    // return value is the second half: without a capture a handle-bound
+    // `pointerup` never fires, so the listeners go to the document instead of
+    // waiting for an event that is not coming.
+    const bus = capturePointer(handle, pointerId);
     const startY = event.clientY;
     // A pointer drag ALWAYS ends in a click, so without this the tap handler
     // undid the drag one event later: pulling up set the sheet tall and the
@@ -556,6 +573,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     draggedSheet.current = false;
 
     const finish = (upEvent: PointerEvent) => {
+      // The gesture's own finger. On the document fallback a second pointer's
+      // `pointerup` would otherwise decide this sheet's height from a `dy`
+      // measured against a `startY` it never had.
+      if (!isSamePointer(upEvent, pointerId)) return;
       const dy = upEvent.clientY - startY;
       if (Math.abs(dy) > SHEET_TAP_SLOP_PX) draggedSheet.current = true;
       if (dy > SHEET_DISMISS_PX) handleOpenChange(false);
@@ -563,17 +584,22 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       else if (dy > SHEET_EXPAND_PX) setExpanded(false);
       detach();
     };
-    const detach = () => {
-      handle.removeEventListener('pointerup', finish);
-      handle.removeEventListener('pointercancel', detach);
-      try {
-        handle.releasePointerCapture(event.pointerId);
-      } catch {
-        // Already released — a cancelled gesture, or the element unmounted.
-      }
+    const cancel = (cancelEvent: PointerEvent) => {
+      if (!isSamePointer(cancelEvent, pointerId)) return;
+      detach();
     };
-    handle.addEventListener('pointerup', finish);
-    handle.addEventListener('pointercancel', detach);
+    const detach = () => {
+      bus.removeEventListener('pointerup', finish as EventListener);
+      bus.removeEventListener('pointercancel', cancel as EventListener);
+      releasePointer(handle, pointerId);
+      if (sheetGesture.current === detach) sheetGesture.current = null;
+    };
+    // Same reason as the grid's `liveGesture`: on the document fallback these
+    // listeners outlive the panel, and this one closes over `handleOpenChange`.
+    sheetGesture.current?.();
+    sheetGesture.current = detach;
+    bus.addEventListener('pointerup', finish as EventListener);
+    bus.addEventListener('pointercancel', cancel as EventListener);
   };
 
   // `null` only while the day payload is on its way. `/plan/day` answers with

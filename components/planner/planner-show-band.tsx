@@ -96,7 +96,21 @@ export function PlannerShowBand({
   return (
     <div
       data-planner-show-band=""
-      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm"
+      // `max-sm:min-h-11`, and it is the strip that grows rather than only the
+      // switch inside it. A 44 px pseudo-element hanging out of a 22 px strip
+      // was tried and is wrong here: this strip is `sticky top-0` INSIDE the
+      // grid's scroller, so the overhang follows the scroll across the blocks —
+      // and a block is selected by a plain `onClick` on its own `<li>` with no
+      // pointer-type gate (`planner-block.tsx`), so the top-right corner of
+      // whatever block passed underneath would toggle the shows instead of
+      // opening its action row.
+      //
+      // Growing costs the axis nothing, which is the part worth writing down:
+      // the strip is scrolled CONTENT, not part of the scroller's box, so
+      // `check:planner`'s axis measurement is unmoved. What it does cost is
+      // coverage — stuck at the top it hides 44 px of grid instead of 22 — and
+      // that is recoverable by scrolling, where a stolen tap is not.
+      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm max-sm:min-h-11"
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
       title={observedOn ? t('shows.projectedFrom', { date: observedOn }) : undefined}
@@ -143,21 +157,10 @@ export function PlannerShowBand({
           data-planner-shows-toggle={visible ? 'on' : 'off'}
           aria-pressed={visible}
           title={visible ? t('shows.hide') : t('shows.show')}
-          // 16 px measured, which is the smallest target in the panel — and the
-          // only one that may not be fixed by growing. This strip is
-          // `min-h-[22px]` AND `sticky top-0` over the axis, so a 44 px control
-          // would take 22 px of the day twice: once from the column, and again
-          // from whatever it covers while the grid scrolls under it.
-          //
-          // So the box stays 16 px and a pseudo-element carries the target
-          // DOWNWARD from the strip's own top edge — never upward, which at
-          // `scrollTop = 0` would reach past the start of the scrolled content
-          // and be unreachable. What the extension lands on is 44 px of the
-          // grid's top-right corner, and that is inert on a phone in two
-          // separate ways: the grip and the resize edge are on a block's LEFT
-          // side, and the block body is gated behind `(pointer: fine)` — see
-          // `planner-block.tsx`. Nothing there loses a hit area.
-          className='hover:text-foreground relative -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:after:absolute max-sm:after:top-[-3px] max-sm:after:right-[-8px] max-sm:after:size-11 max-sm:after:content-[""]'
+          // 16 px measured, and the smallest target in the panel. It grows
+          // inside a strip that grew with it — see the strip's own note for why
+          // this is the one place a pseudo-element was the wrong instrument.
+          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11"
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />

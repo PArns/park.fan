@@ -1169,69 +1169,87 @@ if (await phoneLauncher.count()) {
     // failed: it is scrolled out of its container or covered, which is a
     // different defect and gets its own named check (see "einen Tag planen"
     // below, which is the one this sweep would otherwise have swallowed).
-    const small = await phone.evaluate((sel) => {
-      const sheet = document.querySelector(sel);
-      if (!sheet) return null;
-      const FLOOR = 44;
-      const REACH = 30; // Half of 44 is 22; 30 leaves room to see an oversized one.
-      const hits = (el, x, y) => {
-        const hit = document.elementFromPoint(x, y);
-        if (!hit) return false;
-        return hit === el || el.contains(hit) || hit.closest('button, label, a[href]') === el;
-      };
-      const rows = [];
-      const nodes = sheet.querySelectorAll(
-        'button, [role="button"], a[href], summary, label, select, input[type="checkbox"], input[type="radio"]'
-      );
-      for (const el of nodes) {
-        if (el.matches('input, select') && el.closest('label')) continue;
-        if (el.matches('label') && !el.querySelector('input, select, textarea') && !el.htmlFor) {
-          continue;
+    const sweepSmallTargets = (sel) =>
+      phone.evaluate((sheetSelector) => {
+        // Radix portals every popover and dialog to `<body>`, so a sweep of the
+        // sheet's own subtree is blind to the park list and to the day picker's
+        // calendar — the two lists the sheet's biggest buttons OPEN, and a door
+        // at 44 px onto 28 px rows is half a fix. Whatever popper is up at the
+        // time is swept along with the sheet.
+        // `null` sweeps the poppers ALONE — used where a popover has just been
+        // opened and the sheet behind it was already measured on its own pass.
+        const sheet = sheetSelector ? document.querySelector(sheetSelector) : null;
+        const roots = [
+          ...(sheet ? [sheet] : []),
+          ...document.querySelectorAll('[data-radix-popper-content-wrapper]'),
+        ];
+        if (roots.length === 0) return null;
+        const FLOOR = 44;
+        const REACH = 30; // Half of 44 is 22; 30 leaves room to see an oversized one.
+        const hits = (el, x, y) => {
+          const hit = document.elementFromPoint(x, y);
+          if (!hit) return false;
+          return hit === el || el.contains(hit) || hit.closest('button, label, a[href]') === el;
+        };
+        const rows = [];
+        const nodes = roots.flatMap((root) => [
+          ...root.querySelectorAll(
+            'button, [role="button"], a[href], summary, label, select, input[type="checkbox"], input[type="radio"]'
+          ),
+        ]);
+        for (const el of nodes) {
+          if (el.matches('input, select') && el.closest('label')) continue;
+          if (el.matches('label') && !el.querySelector('input, select, textarea') && !el.htmlFor) {
+            continue;
+          }
+          if (el.hasAttribute('aria-hidden') || el.closest('[aria-hidden="true"]')) continue;
+          const box = el.getBoundingClientRect();
+          if (box.width < 1 || box.height < 1) continue;
+          const x = Math.round(box.left + box.width / 2);
+          if (!hits(el, x, Math.round(box.top + box.height / 2))) continue;
+          // Walked from the BOX EDGES outward and added to the box's own
+          // height, never counted outward from a rounded centre: a control
+          // whose top lands on .5 would otherwise measure 43 and fail for
+          // arithmetic.
+          const top = Math.ceil(box.top);
+          const bottom = Math.floor(box.bottom) - 1;
+          let up = 0;
+          while (up < REACH && hits(el, x, top - up - 1)) up += 1;
+          let down = 0;
+          while (down < REACH && hits(el, x, bottom + down + 1)) down += 1;
+          const reach = Math.round(box.height) + up + down;
+          if (reach < FLOOR) {
+            rows.push({
+              reach,
+              box: `${Math.round(box.width)}x${Math.round(box.height)}`,
+              name: (
+                el.getAttribute('aria-label') ||
+                el.getAttribute('title') ||
+                el.textContent ||
+                el.tagName
+              )
+                .trim()
+                .replace(/\s+/g, ' ')
+                .slice(0, 40),
+            });
+          }
         }
-        if (el.hasAttribute('aria-hidden') || el.closest('[aria-hidden="true"]')) continue;
-        const box = el.getBoundingClientRect();
-        if (box.width < 1 || box.height < 1) continue;
-        const x = Math.round(box.left + box.width / 2);
-        if (!hits(el, x, Math.round(box.top + box.height / 2))) continue;
-        // Walked from the BOX EDGES outward and added to the box's own height,
-        // never counted outward from a rounded centre: a control whose top
-        // lands on .5 would otherwise measure 43 and fail for arithmetic.
-        const top = Math.ceil(box.top);
-        const bottom = Math.floor(box.bottom) - 1;
-        let up = 0;
-        while (up < REACH && hits(el, x, top - up - 1)) up += 1;
-        let down = 0;
-        while (down < REACH && hits(el, x, bottom + down + 1)) down += 1;
-        const reach = Math.round(box.height) + up + down;
-        if (reach < FLOOR) {
-          rows.push({
-            reach,
-            box: `${Math.round(box.width)}x${Math.round(box.height)}`,
-            name: (
-              el.getAttribute('aria-label') ||
-              el.getAttribute('title') ||
-              el.textContent ||
-              el.tagName
-            )
-              .trim()
-              .replace(/\s+/g, ' ')
-              .slice(0, 40),
-          });
-        }
+        return rows;
+      }, sel);
+    const reportSweep = (label, rows) => {
+      if (rows === null) {
+        check(label, false, 'nichts zu messen');
+        return;
       }
-      return rows;
-    }, SHEET);
-    if (small === null) {
-      check('jedes Ziel im Sheet ist 44 px hoch', false, 'kein Sheet');
-    } else {
       check(
-        'jedes Ziel im Sheet ist 44 px hoch',
-        small.length === 0,
-        small.length === 0
+        label,
+        rows.length === 0,
+        rows.length === 0
           ? 'alle geprüften Ziele ≥ 44 px'
-          : small.map((row) => `${row.reach} px „${row.name}" (Box ${row.box})`).join(' · ')
+          : rows.map((row) => `${row.reach} px „${row.name}" (Box ${row.box})`).join(' · ')
       );
-    }
+    };
+    reportSweep('jedes Ziel im Sheet ist 44 px hoch', await sweepSmallTargets(SHEET));
 
     // The one the sweep cannot see, and it is a real bug rather than a
     // measurement: `SheetContent` draws its close button `max-sm:size-11` at
@@ -1252,6 +1270,33 @@ if (await phoneLauncher.count()) {
         free === 'erreichbar',
         free
       );
+    }
+
+    // And the two lists the head's own buttons open, each swept while it is
+    // actually up — a popover that is shut is a popover with no DOM, so the
+    // sweep above passes over the park list and the month calendar without
+    // seeing either. LAST in this pass and closed again with Escape, so a
+    // popper left standing cannot intercept anything measured before it.
+    for (const [label, opener] of [
+      ['die Parkliste ist antippbar', '[data-planner-column-park]'],
+      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]'],
+    ]) {
+      const trigger = phone.locator(`${SHEET} ${opener}`).first();
+      if (!(await trigger.count())) continue;
+      const opened = await trigger
+        .click({ timeout: 5_000 })
+        .then(() => true)
+        .catch(() => false);
+      if (!opened) {
+        check(label, false, 'ließ sich nicht öffnen');
+        continue;
+      }
+      await phone.waitForTimeout(400);
+      // Only what the popper itself carries: the sheet behind it was measured
+      // on its own pass, and reporting it twice would say a fixed thing twice.
+      reportSweep(label, await sweepSmallTargets(null));
+      await phone.keyboard.press('Escape');
+      await phone.waitForTimeout(300);
     }
   } else {
     // No opening hours (which is what a 404 leaves), so the grid cannot draw and

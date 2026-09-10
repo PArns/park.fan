@@ -100,7 +100,11 @@ export function PlannerColumnHead({
                     setOpen(false);
                   }}
                   className={cn(
-                    'hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
+                    // A list a 44 px button opens is not allowed to be a list
+                    // of 28 px rows: the door and the destination are one
+                    // gesture, and this one is a scrolling list of parks where
+                    // the wrong pick is a whole panel's worth of undo.
+                    'hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11',
                     entry.slug === parkSlug && 'bg-accent/60'
                   )}
                 >
@@ -122,7 +126,7 @@ export function PlannerColumnHead({
               onNewPark();
               setOpen(false);
             }}
-            className="hover:bg-accent border-border/60 mt-1 flex w-full items-center gap-2 rounded-md border-t px-2 py-1.5 text-left text-xs transition-colors"
+            className="hover:bg-accent border-border/60 mt-1 flex w-full items-center gap-2 rounded-md border-t px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
           >
             <Plus className="size-3.5 shrink-0" aria-hidden="true" />
             <span className="truncate">{t('column.addPark')}</span>
