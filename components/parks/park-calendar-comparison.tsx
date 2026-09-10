@@ -1,7 +1,17 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Ban, CalendarClock, CalendarX2, Check, CloudRain, Coins, Info, Users } from 'lucide-react';
+import {
+  Ban,
+  CalendarClock,
+  CalendarX2,
+  Check,
+  CloudRain,
+  Coins,
+  Info,
+  Scale,
+  Users,
+} from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import type { CalendarDay } from '@/lib/api/types';
@@ -17,13 +27,8 @@ import {
 import { CROWD_TEXT_CLASS, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { DialogHero } from '@/components/common/dialog-hero';
 
 /** One icon per reason row, so the rows are scannable before they are read. */
 const REASON_ICON = {
@@ -360,18 +365,28 @@ export function ParkCalendarComparison({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] gap-0 overflow-y-auto p-0 sm:max-w-lg">
-        <DialogHeader className="border-border/60 border-b p-5 pb-4 text-left">
-          <DialogTitle className="text-base sm:text-lg">{t('dayComparison.title')}</DialogTitle>
-          {/* The verdict IS the description, not a line under one: it is the single sentence the
-              whole dialog exists to produce, and burying it under a generic subtitle would put
-              the answer third. */}
-          <DialogDescription className="text-foreground text-sm font-medium">
-            {verdict}
-          </DialogDescription>
-        </DialogHeader>
+      {/* The planner wizard's anatomy, and deliberately so: this dialog is one press away from
+          that one, and a plain header here against a photo band there read as two products. Three
+          rows — band, body, buttons — of which only the middle one scrolls, so the verdict at the
+          top and the two „Tag planen" at the bottom hold still on a phone. `svh` rather than `vh`,
+          or the row of buttons sits under a mobile browser's own toolbar. */}
+      <DialogContent
+        showCloseButton={false}
+        className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
+      >
+        {/* The verdict IS the description, not a line under one: it is the single sentence the
+            whole dialog exists to produce, and burying it under a generic subtitle would put the
+            answer third. `whitespace-normal`, because the band's default is one truncating line
+            and this sentence names a weekday and a date and runs to two at 360 px. */}
+        <DialogHero
+          icon={Scale}
+          title={t('dayComparison.title')}
+          description={verdict}
+          describesDialog
+          descriptionClassName="text-foreground/90 font-medium whitespace-normal"
+        />
 
-        <div className="space-y-4 p-5">
+        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-5">
           <div className="grid grid-cols-2 gap-2">
             {columnHead(a, 'a')}
             {columnHead(b, 'b')}
@@ -450,65 +465,71 @@ export function ParkCalendarComparison({
               })}
             </ul>
           )}
+        </div>
 
-          {/* One button per column, in the same grid as everything above it, so „links planen"
-              plans the day whose figures are on the left. `mode="wizard"`: both questions the
-              first two steps ask have just been answered on this screen.
+        {/* One button per column, in the same grid and with the same horizontal padding as
+            everything above it, so „links planen" plans the day whose figures are on the left —
+            a footer that indented differently would break that alignment at the one row where it
+            decides which day gets filed. `mode="wizard"`: both questions the first two steps ask
+            have just been answered on this screen.
 
-              Only for a day that can actually be planned, and here that guard carries more weight
-              than it does in the day dialog it is copied from (`park-calendar-day-detail.tsx`):
-              `mode="wizard"` skips the date step, and the date step is the ONLY place a date is
-              validated — `PlannerMonthCalendar` refuses a past or closed day. Without this, a
-              button sitting directly under „Der Park ist an diesem Tag geschlossen" would file
-              that day into the persisted plan. The column is held open rather than collapsed, so
-              the remaining button stays under the day it belongs to. */}
-          <div className="grid grid-cols-2 gap-2">
-            {([a, b] as const).map((day) =>
-              !plannable(day) ? (
-                // Noch nicht gefragt ist nicht dasselbe wie „geht nicht".
-                //
-                // Solange die Momentaufnahme unterwegs ist, sind `plannable` und `beyondPlanner`
-                // BEIDE falsch, und die Zelle fiel in den letzten Zweig: der Dialog empfahl einen
-                // Tag, bot keinen Knopf und nannte keinen Grund, und schob die Knöpfe einen
-                // Wimpernschlag später nach. Genau das Symptom, gegen das `blockedSides` in
-                // dieser Datei eingeführt wurde — nur eine Sekunde lang.
-                horizonPending ? (
-                  <p
-                    key={day.date}
-                    className="text-muted-foreground self-center text-[11px] leading-snug"
-                  >
-                    {tCommon('loading')}
-                  </p>
-                ) : beyondPlanner(day) ? (
-                  <p
-                    key={day.date}
-                    className="text-muted-foreground self-center text-[11px] leading-snug"
-                  >
-                    {t('dayComparison.beyondPlanner')}
-                  </p>
-                ) : (
-                  // Blocked, and the blocker list above already says why — a second copy of
-                  // „geschlossen" under the first would be the same sentence twice.
-                  <div key={day.date} aria-hidden="true" />
-                )
-              ) : (
-                <PlanDayButtonLazy
+            Pinned rather than scrolled, like the wizard's own row: at 390 px the body is taller
+            than the window and these two used to sit below six reason rows, so the day somebody
+            had just decided on was a scroll away from being planned.
+
+            Only for a day that can actually be planned, and here that guard carries more weight
+            than it does in the day dialog it is copied from (`park-calendar-day-detail.tsx`):
+            `mode="wizard"` skips the date step, and the date step is the ONLY place a date is
+            validated — `PlannerMonthCalendar` refuses a past or closed day. Without this, a
+            button sitting directly under „Der Park ist an diesem Tag geschlossen" would file that
+            day into the persisted plan. The column is held open rather than collapsed, so the
+            remaining button stays under the day it belongs to. */}
+        <div className="border-border/60 grid shrink-0 grid-cols-2 gap-2 border-t px-5 py-4">
+          {([a, b] as const).map((day) =>
+            !plannable(day) ? (
+              // Noch nicht gefragt ist nicht dasselbe wie „geht nicht".
+              //
+              // Solange die Momentaufnahme unterwegs ist, sind `plannable` und `beyondPlanner`
+              // BEIDE falsch, und die Zelle fiel in den letzten Zweig: der Dialog empfahl einen
+              // Tag, bot keinen Knopf und nannte keinen Grund, und schob die Knöpfe einen
+              // Wimpernschlag später nach. Genau das Symptom, gegen das `blockedSides` in
+              // dieser Datei eingeführt wurde — nur eine Sekunde lang.
+              horizonPending ? (
+                <p
                   key={day.date}
-                  parkSlug={planner.parkSlug}
-                  parkName={planner.parkName}
-                  geo={planner.geo}
-                  date={day.date}
-                  timezone={parkTimezone}
-                  mode="wizard"
-                  // Tighter than the day dialog's full-width instance: two of these share a row
-                  // 390 px wide, where the default padding and gap pushed the label onto a third
-                  // line.
-                  className="gap-1.5 px-2 text-xs max-sm:min-h-11 sm:text-sm"
-                  onPlanned={() => onOpenChange(false)}
-                />
+                  className="text-muted-foreground self-center text-[11px] leading-snug"
+                >
+                  {tCommon('loading')}
+                </p>
+              ) : beyondPlanner(day) ? (
+                <p
+                  key={day.date}
+                  className="text-muted-foreground self-center text-[11px] leading-snug"
+                >
+                  {t('dayComparison.beyondPlanner')}
+                </p>
+              ) : (
+                // Blocked, and the blocker list above already says why — a second copy of
+                // „geschlossen" under the first would be the same sentence twice.
+                <div key={day.date} aria-hidden="true" />
               )
-            )}
-          </div>
+            ) : (
+              <PlanDayButtonLazy
+                key={day.date}
+                parkSlug={planner.parkSlug}
+                parkName={planner.parkName}
+                geo={planner.geo}
+                date={day.date}
+                timezone={parkTimezone}
+                mode="wizard"
+                // Tighter than the day dialog's full-width instance: two of these share a row
+                // 390 px wide, where the default padding and gap pushed the label onto a third
+                // line.
+                className="gap-1.5 px-2 text-xs max-sm:min-h-11 sm:text-sm"
+                onPlanned={() => onOpenChange(false)}
+              />
+            )
+          )}
         </div>
       </DialogContent>
     </Dialog>

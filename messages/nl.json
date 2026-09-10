@@ -1063,6 +1063,7 @@
     "planDayCta": "Een dag in {park} plannen",
     "dayComparison": {
       "compare": "Twee dagen vergelijken",
+      "compareStop": "Vergelijking stoppen",
       "hintNone": "Kies twee dagen uit de kalender — ook uit verschillende maanden.",
       "hintOne": "Kies nog één dag.",
       "hintTwo": "Twee dagen gekozen.",

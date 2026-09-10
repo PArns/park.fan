@@ -33,13 +33,8 @@ import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { DialogHero } from '@/components/common/dialog-hero';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { Temp } from '@/components/common/unit-display';
@@ -284,8 +279,15 @@ export function ParkCalendarDayDetail({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      {/* Three rows — the day's signal bars and its band, the body, the one button — of which
+          only the middle scrolls, so the date at the top and „Bahnen für diesen Tag einplanen" at
+          the bottom hold still while the reader walks a long day. That button used to sit under
+          the ride list, the weather and the holiday block: on a phone it was two screens below
+          the forecast somebody had just read, which is the moment it is asking about. `svh`
+          rather than `vh`, or the last row sits under a mobile browser's own toolbar. */}
       <DialogContent
-        className="max-h-[85vh] gap-0 overflow-y-auto p-0"
+        showCloseButton={false}
+        className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0"
         // Flip through days with ←/→ (desktop convenience; the dialog holds focus, and it
         // contains no text inputs the arrows could conflict with).
         onKeyDown={
@@ -307,55 +309,71 @@ export function ParkCalendarDayDetail({
           </div>
         )}
 
-        <DialogHeader className="border-border/60 border-b p-5 pb-4">
-          <div className="flex items-center gap-3 pr-6">
-            {onNavigate && (
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0"
-                onClick={() => onNavigate(-1)}
-                aria-label={t('dayDetail.prevDay')}
-                title={t('dayDetail.prevDay')}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-            )}
-            <div className="min-w-0 flex-1">
-              <DialogTitle className="text-base capitalize sm:text-lg">{title}</DialogTitle>
-              <DialogDescription className="flex items-center gap-2">
-                {isClosed ? (
-                  <Ban className="h-3.5 w-3.5 text-red-500" />
-                ) : day.status === 'UNKNOWN' ? (
-                  <HelpCircle className="h-3.5 w-3.5 text-gray-400" />
-                ) : (
-                  <Clock className="h-3.5 w-3.5 text-emerald-500" />
-                )}
-                <span>{statusLabel}</span>
-                {day.isToday && (
-                  <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase">
-                    {tCommon('today')}
-                  </span>
-                )}
-              </DialogDescription>
-            </div>
-            {onNavigate && (
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0"
-                onClick={() => onNavigate(1)}
-                aria-label={t('dayDetail.nextDay')}
-                title={t('dayDetail.nextDay')}
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            )}
-          </div>
-        </DialogHeader>
+        {/* The same band the planner wizard and the day comparison open with — this dialog is one
+            press from both of them, and a plain header here read as a different product. The day
+            stepper moves into it: the arrows used to flank the title, which put „previous day" a
+            few pixels from the close button in the one corner every dialog on this site uses for
+            discarding. */}
+        <DialogHero
+          icon={CalendarDays}
+          title={title}
+          titleLines={2}
+          titleClassName="capitalize"
+          describesDialog
+          descriptionClassName="flex items-center gap-2"
+          description={
+            <>
+              {isClosed ? (
+                <Ban className="h-3.5 w-3.5 shrink-0 text-red-500" />
+              ) : day.status === 'UNKNOWN' ? (
+                <HelpCircle className="h-3.5 w-3.5 shrink-0 text-gray-400" />
+              ) : (
+                <Clock className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+              )}
+              <span>{statusLabel}</span>
+              {day.isToday && (
+                <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase">
+                  {tCommon('today')}
+                </span>
+              )}
+            </>
+          }
+          actions={
+            onNavigate ? (
+              <>
+                {/* `secondary` and not the row's usual `outline`: an outline button is
+                    `dark:bg-input/30`, i.e. translucent, and it sits over the band's watermark —
+                    the arrows came out drawn on top of a calendar glyph. */}
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="shrink-0"
+                  onClick={() => onNavigate(-1)}
+                  aria-label={t('dayDetail.prevDay')}
+                  title={t('dayDetail.prevDay')}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  className="shrink-0"
+                  onClick={() => onNavigate(1)}
+                  aria-label={t('dayDetail.nextDay')}
+                  title={t('dayDetail.nextDay')}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </>
+            ) : undefined
+          }
+        />
 
         <div
-          className={cn('flex flex-col gap-5 p-5 transition-opacity', navigating && 'opacity-50')}
+          className={cn(
+            'flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto p-5 transition-opacity',
+            navigating && 'opacity-50'
+          )}
           aria-busy={navigating}
         >
           {/* Opening hours — park-local time; hover shows the viewer's local time (ParkTime). */}
@@ -652,36 +670,34 @@ export function ParkCalendarDayDetail({
               )}
             </section>
           )}
-          {/* Into the planner from here, and LAST in the column on purpose: the
-              decision this control acts on is made by reading the crowd
-              forecast, the headliner waits and the weather above it. Placed
-              under the opening hours it asked for a commitment before the
-              dialog had said anything.
-
-              The calendar is where a visitor decides WHICH day, and until now
-              that decision had nowhere to go — the planner's own day picker is
-              inside a panel they had no reason to have opened yet. Only on a day
-              the park is actually open: planning a closed day is planning
-              nothing. */}
-          {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
-            <div>
-              <PlanDayButtonLazy
-                parkSlug={planner.parkSlug}
-                parkName={planner.parkName}
-                geo={planner.geo}
-                date={day.date}
-                timezone={parkTimezone}
-                // The dialog closes on the way out, and the visitor lands on the
-                // park's ride overview. Without it the planner opened BEHIND
-                // this dialog — which is a modal, so the panel it just opened
-                // was unreachable — and the reader was left on the calendar,
-                // which is the one page in the park with no ride cards to drag
-                // from. Both halves of the button's promise were missing.
-                onPlanned={() => onOpenChange(false)}
-              />
-            </div>
-          )}
         </div>
+
+        {/* Into the planner from here, and LAST on purpose: the decision this control acts on is
+            made by reading the crowd forecast, the headliner waits and the weather above it.
+            Placed under the opening hours it asked for a commitment before the dialog had said
+            anything.
+
+            The calendar is where a visitor decides WHICH day, and until now that decision had
+            nowhere to go — the planner's own day picker is inside a panel they had no reason to
+            have opened yet. Only on a day the park is actually open: planning a closed day is
+            planning nothing. */}
+        {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
+          <div className="border-border/60 shrink-0 border-t p-5">
+            <PlanDayButtonLazy
+              parkSlug={planner.parkSlug}
+              parkName={planner.parkName}
+              geo={planner.geo}
+              date={day.date}
+              timezone={parkTimezone}
+              // The dialog closes on the way out, and the visitor lands on the park's ride
+              // overview. Without it the planner opened BEHIND this dialog — which is a modal, so
+              // the panel it just opened was unreachable — and the reader was left on the
+              // calendar, which is the one page in the park with no ride cards to drag from. Both
+              // halves of the button's promise were missing.
+              onPlanned={() => onOpenChange(false)}
+            />
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

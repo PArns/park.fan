@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import {
@@ -14,15 +13,9 @@ import {
   Droplets,
   Ruler,
   Utensils,
-  X,
 } from 'lucide-react';
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription } from '@/components/ui/dialog';
+import { DialogHero } from '@/components/common/dialog-hero';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -955,7 +948,12 @@ const STEP_MOTION: Record<string, string> = {
  * **No photo is a designed state, not a grey box.** The first step has no park
  * yet, so it gets a tinted field and the oversized translucent glyph the site's
  * chapter headings use, at the same height, so nothing moves when the picture
- * lands.
+ * lands. That band — both its fillings, the close button and the text block at
+ * its lower edge — is {@link DialogHero} now, because the day comparison opens
+ * from the same calendar and leads straight into this dialog: drawn as a plain
+ * `DialogHeader` there and as this band here, the two read as two products. What
+ * stayed behind is what only this dialog knows, which is where its picture comes
+ * from.
  *
  * The OTHER gap is closed now. Three of the four ways into this dialog skip the
  * search — „+ Weiterer Tag" in the plan list, the „+" in the panel's header, the
@@ -997,117 +995,43 @@ function WizardHero({
   plannedDays: number;
 }) {
   const t = useTranslations('planner');
-  // `common`, because `planner.close` is the day grid's "clear selection" and
-  // this is a dialog's close button. The chrome namespace ships on every page.
-  const tCommon = useTranslations('common');
   const photo = park?.imageUrl ?? dayPhoto ?? undefined;
   const photoPosition = park?.imageUrl ? park.imagePosition : dayPhotoPosition;
   const place = park ? [park.city, countryLabel(park, locale)].filter(Boolean).join(', ') : '';
 
   return (
-    <div className="relative h-28 shrink-0 overflow-hidden sm:h-32">
-      {photo ? (
-        <>
-          <Image
-            key={photo}
-            src={photo}
-            alt=""
-            fill
-            sizes="(max-width: 640px) 100vw, 512px"
-            className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500"
-            style={{ objectFit: 'cover', objectPosition: photoPosition }}
-          />
-          {/* Dark at the bottom because that is where the text is, and only
-              there: a scrim over the whole frame turns a photograph into a
-              texture.
-
-              The three stops are MEASURED, not chosen. The first pair
-              (`from-black/85 via-black/45 to-black/5`) looked right on
-              Phantasialand's night shot and was not: rendering six parks, hiding
-              the text and walking the luminance of the exact box it had
-              occupied put the second line — `text-xs`, so it owes 4.5:1 — at
-              **4.20:1 on Disneyland at the 95th percentile**, with the brightest
-              pixel under the title down at 2.73:1 against the 3:1 a 20 px
-              semibold headline owes. At `/95 · /70 · transparent` the same
-              twelve cases (six parks × two viewports) read 8.73–14.09:1 at p95
-              and 5.42–7.39:1 at the single worst pixel, so the small line clears
-              AA everywhere with headroom and the castle's stonework is still
-              legible. */}
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"
-            aria-hidden="true"
-          />
-        </>
-      ) : (
-        <>
-          <div
-            className="from-primary/25 via-primary/8 absolute inset-0 bg-gradient-to-br to-transparent"
-            aria-hidden="true"
-          />
-          <CalendarDays
-            className="text-primary/20 absolute -right-4 -bottom-8 size-40"
-            aria-hidden="true"
-          />
-        </>
-      )}
-
-      <DialogClose
-        aria-label={tCommon('close')}
-        className={cn(
-          'absolute top-2.5 right-2.5 z-10 rounded-full p-1.5 transition-colors focus-visible:ring-2 focus-visible:outline-none',
-          // Over a photograph the button has to carry its own ground: the
-          // dialog's default close is `text-muted-foreground`, which lands
-          // somewhere between invisible and illegible depending on what the
-          // picture happens to do in that corner.
-          photo
-            ? 'bg-black/35 text-white/90 ring-white/40 hover:bg-black/55 hover:text-white'
-            : 'text-muted-foreground hover:bg-accent hover:text-foreground ring-ring'
-        )}
-      >
-        <X className="size-4" aria-hidden="true" />
-      </DialogClose>
-
-      <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-        <DialogTitle
-          className={cn(
-            'truncate text-xl font-semibold sm:text-2xl',
-            photo && 'text-white drop-shadow-sm'
-          )}
-        >
-          {park ? park.name : t('wizard.title')}
-        </DialogTitle>
-        {/* The DATE is what may not clip. At 360 px "Brühl, Deutschland ·
-            Samstag, 19. September" is wider than the band, and a single
-            `truncate` over the pair cuts the half the reader is here to check —
-            so the place gives way and the date keeps its width. */}
-        <p
-          className={cn(
-            'mt-0.5 flex items-baseline gap-1 text-xs sm:text-sm',
-            photo ? 'text-white/85' : 'text-muted-foreground'
-          )}
-        >
-          {park ? (
-            <>
-              {place && <span className="truncate">{place}</span>}
-              {date ? (
-                <span className="shrink-0">
-                  {place && '· '}
-                  {longDate(date, locale)}
+    <DialogHero
+      icon={CalendarDays}
+      photo={photo}
+      photoPosition={photoPosition}
+      title={park ? park.name : t('wizard.title')}
+      /* The DATE is what may not clip. At 360 px "Brühl, Deutschland ·
+         Samstag, 19. September" is wider than the band, and a single
+         `truncate` over the pair cuts the half the reader is here to check —
+         so the place gives way and the date keeps its width. */
+      descriptionClassName="flex items-baseline gap-1"
+      description={
+        park ? (
+          <>
+            {place && <span className="truncate">{place}</span>}
+            {date ? (
+              <span className="shrink-0">
+                {place && '· '}
+                {longDate(date, locale)}
+              </span>
+            ) : (
+              !place && (
+                <span className="truncate">
+                  {t('wizard.hero.plannedDays', { count: plannedDays })}
                 </span>
-              ) : (
-                !place && (
-                  <span className="truncate">
-                    {t('wizard.hero.plannedDays', { count: plannedDays })}
-                  </span>
-                )
-              )}
-            </>
-          ) : (
-            <span className="truncate">{t('wizard.hero.question')}</span>
-          )}
-        </p>
-      </div>
-    </div>
+              )
+            )}
+          </>
+        ) : (
+          <span className="truncate">{t('wizard.hero.question')}</span>
+        )
+      }
+    />
   );
 }
 

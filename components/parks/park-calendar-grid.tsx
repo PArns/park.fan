@@ -14,7 +14,7 @@ import {
   getDay,
 } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import { Info, Scale } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
@@ -23,7 +23,6 @@ import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
-import { FilterToggle } from '@/components/parks/filter-toggle';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
 import { ParkCalendarComparison } from './park-calendar-comparison';
 import { ParkCalendarDay } from './park-calendar-day';
@@ -385,20 +384,16 @@ export function ParkCalendarGrid({
        puts the server-rendered stepper in it, and drops this grid in underneath. */
     <>
       <div className="space-y-4">
-        {/* The comparison switch, above the grid and not inside it: it changes what a press on
-            every tile MEANS, and a control that does that belongs where the tiles start rather
-            than beside one of them. `FilterToggle` because it is the park page's established
-            two-state pill (`aria-pressed`, keyboard-reachable as a plain button) — a checkbox
-            would be a new control class for a switch, and this repo has no checkbox at all. */}
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <FilterToggle
-            icon={Scale}
-            label={t('dayComparison.compare')}
-            pressed={comparing}
-            size="md"
-            onToggle={() => dayComparisonStore.setActive(parkSlug, !comparing)}
-          />
-          {comparing && (
+        {/* What the comparison mode is DOING, right above the tiles it is doing it to — the
+            switch itself is in the card's heading band, next to the month stepper, because it is
+            server-rendered there and this component is not (see `ParkCalendarPanel`).
+
+            Rendered only while the mode is on, and that is what keeps the two loading states
+            honest: at the first paint nothing is picked, so the box this grid promises through
+            `--cal-grid-h*` is the box it draws. The row appearing on a press is a row appearing
+            where the reader just pressed. */}
+        {comparing && (
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className="text-muted-foreground text-xs">
               {selection.days.length === 0
                 ? t('dayComparison.hintNone')
@@ -406,28 +401,28 @@ export function ParkCalendarGrid({
                   ? t('dayComparison.hintOne')
                   : t('dayComparison.hintTwo')}
             </p>
-          )}
-          {comparing && selection.days.length > 0 && (
-            <div className="ml-auto flex shrink-0 items-center gap-3">
-              {selection.days.length === 2 && !comparisonOpen && (
+            {selection.days.length > 0 && (
+              <div className="ml-auto flex shrink-0 items-center gap-3">
+                {selection.days.length === 2 && !comparisonOpen && (
+                  <button
+                    type="button"
+                    onClick={() => dayComparisonStore.dismiss(parkSlug, null)}
+                    className="text-primary text-xs font-medium hover:underline max-sm:min-h-11"
+                  >
+                    {t('dayComparison.reopen')}
+                  </button>
+                )}
                 <button
                   type="button"
-                  onClick={() => dayComparisonStore.dismiss(parkSlug, null)}
-                  className="text-primary text-xs font-medium hover:underline"
+                  onClick={() => dayComparisonStore.clearDays(parkSlug)}
+                  className="text-muted-foreground hover:text-foreground text-xs max-sm:min-h-11"
                 >
-                  {t('dayComparison.reopen')}
+                  {t('dayComparison.reset')}
                 </button>
-              )}
-              <button
-                type="button"
-                onClick={() => dayComparisonStore.clearDays(parkSlug)}
-                className="text-muted-foreground hover:text-foreground text-xs"
-              >
-                {t('dayComparison.reset')}
-              </button>
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Error Message */}
         {error && (

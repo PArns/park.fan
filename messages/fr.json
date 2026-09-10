@@ -1063,6 +1063,7 @@
     "planDayCta": "Planifier une journée à {park}",
     "dayComparison": {
       "compare": "Comparer deux jours",
+      "compareStop": "Terminer la comparaison",
       "hintNone": "Choisissez deux jours dans le calendrier, même dans des mois différents.",
       "hintOne": "Choisissez encore un jour.",
       "hintTwo": "Deux jours sélectionnés.",
