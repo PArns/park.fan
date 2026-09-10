@@ -87,8 +87,8 @@ function supportsPush(): boolean {
 }
 
 /**
- * "There is no subscription" and "we could not find out" — a distinction only
- * one caller needs, and it needs it badly.
+ * "There is no subscription" and "we could not find out" — a distinction the
+ * write path can do without and everything else needs badly.
  *
  * A removal reads this to decide whether the server can be holding anything
  * for this browser: no subscription means the local mirror entry is stale and
@@ -96,6 +96,10 @@ function supportsPush(): boolean {
  * access refused, a partitioned context), and folding that into the same
  * `null` would report a removal as confirmed over an alert that is still
  * armed — the exact failure the delete path was rebuilt to stop reporting.
+ *
+ * The list fetchers read it for the mirror image of that: `null` there means
+ * "this browser has no alerts", and a lookup that threw would render as an
+ * empty state in front of somebody whose alerts are all still armed.
  */
 export type PushIdentityLookup = { ok: true; identity: PushIdentity | null } | { ok: false };
 
@@ -122,8 +126,9 @@ export async function lookupExistingPushIdentity(): Promise<PushIdentityLookup> 
  * `null` covers "never subscribed", "browser cannot", "permission denied" and
  * "the lookup itself failed" alike — none of them are worth telling apart for
  * a WRITE, whose only use is deciding whether the action needs
- * `ensurePushRegistered` first or can call the API directly. A removal has no
- * such fallback and reads {@link lookupExistingPushIdentity} instead.
+ * `ensurePushRegistered` first or can call the API directly. Nothing else has
+ * that fallback: the removals and the list fetchers all read
+ * {@link lookupExistingPushIdentity} instead.
  */
 export async function getExistingPushIdentity(): Promise<PushIdentity | null> {
   const lookup = await lookupExistingPushIdentity();

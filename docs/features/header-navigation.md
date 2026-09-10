@@ -422,6 +422,23 @@ Gruppe mit `AlertsOverview` teilt, damit eine Zeile auf beiden Flächen unter de
 verschwindet. `pnpm test:push-follow-delete` hält die Reihenfolge und die Fehlerklassen fest; ein
 grüner Build zeigt von beidem nichts.
 
+### Der Lesepfad hatte dieselbe Blindheit eine Ebene tiefer
+
+`fetchRideAlertsRemote` und `fetchShowFollowsRemote` fragten `getExistingPushIdentity()`. Das
+antwortet `null` für „nie angemeldet" **und** für ein `getRegistration()`, das geworfen hat
+(verweigerter Speicherzugriff, partitionierter Kontext) — beides wurde zu `{ ok: true, items: [] }`,
+also zu „dieser Browser hat keine Alarme". `AlertsOverview` rendert daraufhin den Leerzustand
+„Noch nichts eingerichtet", und die Alarm-Gruppe im Favoritenband gibt `null` zurück und ist weg.
+Genau den Unterschied hält `PushListResult` mit seinem `{ ok: false }` offen, und beide Flächen
+haben ihren Weg dafür (`bothFailed` / `failed`) längst; er war nur unerreichbar.
+
+Beide Fetcher lesen jetzt `lookupExistingPushIdentity()`, dasselbe Werkzeug wie die Entfernungen
+darüber, und geben einen gescheiterten Lookup als `{ ok: false }` weiter. `getExistingPushIdentity()`
+bleibt unverändert und behält genau einen Aufrufer: `identityForWrite`, wo die drei Fälle
+zusammenfallen dürfen, weil auf ein `null` ohnehin `ensurePushRegistered()` folgt.
+`pnpm test:push-follow-read` hält es fest, mit demselben `LOOKUP_BROKEN`-Navigator, den der
+Löschpfad schon benutzt.
+
 ## Das Menü schließt sich beim Seitenwechsel
 
 Radix schließt einen Dialog, wenn etwas darin `SheetClose` ruft — ein `<Link>` tut das nicht, der
