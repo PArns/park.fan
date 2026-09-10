@@ -742,3 +742,175 @@ Stunde statt der 48 h.
 **Offen, erst nach dem Deploy prüfbar:** ob Vercel die neuen Header genauso durchreicht wie
 den des Kalenders. `curl -sI` auf eine Ride-URL. **Die Cloudflare-Regel darf nicht umgestellt
 werden, bevor das bestätigt ist.**
+
+---
+
+## 2026-09-10 — ACCEPTED: the build's own profile, and the 124 s nobody had timed
+
+**Lever:** Build CPU Minutes. **Files:** `scripts/generate-image-crops.mjs`,
+`scripts/vercel-ignore-build.sh`, `vercel.json`.
+
+`README.md` says of this line item: „Wer an dieser Zeile sparen will, deployt seltener — nicht
+anders." That was never measured. Timed per step on a 4-core box, a production build is:
+
+| phase                              |  cold | warm (`.next/cache` restored) |
+| ---------------------------------- | ----: | ----------------------------: |
+| `prebuild` — image crops           | 124 s |                        0.16 s |
+| `prebuild` — the other seven steps | 8.6 s |                         8.6 s |
+| Turbopack compile                  |  46 s |                         1.5 s |
+| `tsc` type-check                   |  52 s |                         7.6 s |
+| collect page data                  | 2.2 s |                         2.2 s |
+| prerender 3,151 pages              | 154 s |                         154 s |
+| finalize                           | 0.9 s |                         0.9 s |
+
+Vercel restores `.next/cache` for a Next project with no configuration, and Next puts both the
+Turbopack build cache and its own `.tsbuildinfo` in there, so the compile and the type-check are
+already warm in production and needed nothing. The crops were the exception, and for a reason
+that is invisible locally: freshness was an **mtime** comparison, a git checkout stamps every
+file with the checkout time, and the crops are gitignored, so a Vercel builder could only ever
+take the cold path. 124 s of every build, or ~40 % of it, cutting 426 files that were
+byte-identical to the ones the previous build cut.
+
+**Two changes to that step, and both are needed.** Freshness is now a content hash (source
+bytes + the sidecar's focal point + geometry + the sharp/libvips version) against a copy kept
+in `.next/cache/image-crops`; and the loop, which was `for (…) await cropOne(…)` with three
+cores idle, runs at `cpus().length`. Measured end to end:
+
+| path                                            |  before |  after |
+| ----------------------------------------------- | ------: | -----: |
+| cache hit (what a Vercel build now does)        |   126 s | 0.93 s |
+| cache miss, e.g. a new photo or a cleared cache |   126 s |   44 s |
+| one retargeted focal point                      |   126 s |  1.2 s |
+| whole `prebuild`                                | 132.4 s | 9.85 s |
+
+The cache costs 106 MB inside a `.next/cache` that was already 312 MB, and it is pruned to the
+current source set on every run so it cannot grow with the repo's history.
+
+**Not a KV store, and not Blob.** Both would work and both are the wrong shape: 426 objects
+over the network per build, plus a token, to avoid a second of local file copying, for data
+that is a pure function of files already in the checkout. Next's own docs settle it — „The
+build cache lives in `.next/cache`. Builds only get faster when that directory is restored
+before each build." Vercel restores exactly that directory.
+
+**The prerender phase is 92 % of a warm build and stays.** 3,151 pages, of which the glossary
+is 1,644 (52 %) and the geo hubs 1,038 (33 %). Phase 0 called the glossary „a rounding error on
+the build line", which is wrong by an order of magnitude, but its conclusion survives for a
+better reason: the phase is CPU-bound, not IO-bound. `staticGenerationMaxConcurrency: 24`
+against the default 8 made it **worse**, 2.9 min against 2.5 min, because the fetch cache is
+warm and the pages are not waiting on anything. What is left is fewer pages or more builder
+cores, and fewer pages means the ISR writes June 2026 spent a release removing.
+
+**Also measured and rejected:** `mozjpeg: false` cuts the miss path from 44 s to ~11 s and adds
+21 % to 100 MB of image bytes, against a bill whose largest single item was images. A double
+`prebuild` (pnpm's implicit pre-hook plus the explicit `pnpm prebuild &&` inside `build`) was
+checked with a throwaway package and does not happen: pnpm 11 has pre/post scripts off by
+default, so the chain runs once. Narrowing `tsconfig` for the build buys nothing either — all
+995 checked files are `app/`, `components/` and `lib/`, and `scripts/*.mjs` was never in it.
+
+**Deploy cadence is a real lever, and it is now automatic for the free case.** 3 of the last 40
+commits touched only `docs/`, `todo.md`, `CLAUDE.md` or `.github/`, and each built and shipped
+an identical site. `ignoreCommand` runs `scripts/vercel-ignore-build.sh`, which diffs against
+`VERCEL_GIT_PREVIOUS_SHA` and skips only when every changed path is on a short anchored
+allowlist. It builds whenever it cannot be sure: no previous SHA, a SHA missing from a shallow
+clone, a failed diff, an empty diff. `content/blog/**`, `public/media/**` and `messages/**` are
+deliberately absent from the list, because each is the input to a generator and a README inside
+one of them is not worth a glob that could skip an article's deploy.
+
+**The asymmetry is the whole design, so it is pinned rather than argued.** A needless build
+costs minutes of Build CPU. A skipped build that should have run is silent: the deploy reports
+success, Vercel keeps the previous deployment aliased, and a published article stays invisible
+until somebody happens to push again. `pnpm test:ignore-build` (28 cases, part of
+`release:check`) drives the real script against a throwaway git repository and asserts the
+answer for every input a build step reads — a post in each of the six locales, an author, the
+categories, an agent `SKILL.md` whose served bytes carry a build-time SHA-256, homepage content,
+a photo, a sidecar, a translation file, the lockfile, `.nvmrc` — plus the two shapes a careless
+allowlist gets wrong: a commit touching documentation AND a post (08764e8 is a real one, six
+posts alongside `CLAUDE.md`), and `content/blog/README.md`, which an unanchored `README.md`
+pattern would swallow. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,
+`todo.md` or the root `README.md`; the only grep hit is `generate-media-manifest.mjs`
+explicitly EXCLUDING `README.md` when it collects posts.
+
+**Cost-shift check:** the crop change shifts nothing — no fetches, no ISR writes, identical
+output bytes, verified by hashing all 426 crops before and after (`IDENTICAL`). `ignoreCommand`
+shifts nothing either; a skipped build leaves the previous deployment aliased, which is what a
+tree with no output-relevant change should serve.
+
+**Verification:** `pnpm build` green with the crop cache warm, and `next build` confirmed to
+leave `.next/cache/image-crops` intact (426 entries before, 426 after) — the whole mechanism
+fails silently if it does not. Crop determinism checked directly: the same source re-encoded
+three times gives one hash. Invalidation checked both ways: a retargeted focal point re-cuts 3
+crops, reverting it returns the original bytes. The ignore script was run against a real
+docs-only commit (exit 0), a real code commit (exit 1, 13 files), a missing SHA and an unknown
+SHA (exit 1 both).
+
+**The end-to-end number is measured, not added up.** Three full `pnpm build` runs on the same
+box, each starting from exactly what a Vercel builder has — crops absent from the clone,
+Turbopack and fetch caches restored — and the middle arm exists to show that neither half of the
+change carries it alone:
+
+| arm                                       | full `pnpm build` | crop step |
+| ----------------------------------------- | ----------------: | --------: |
+| before, as it shipped (mtime, sequential) |       **284.3 s** |    ~124 s |
+| parallel loop only, no crop cache         |           196.9 s |    34.6 s |
+| after, crop cache restored                |       **165.6 s** |     0.8 s |
+
+**284.3 s → 165.6 s, −118.7 s, −41.8 %.** The parallel loop is −87.4 s of that and the cache
+−31.3 s on top, which is why both stay: a build that changes a photo falls back to the middle
+row rather than to the first.
+
+**Open:** confirm it on Vercel by comparing Build CPU on the next production deploy against the
+~5 min the same build takes today, and read `✂️  Generating aspect-ratio image crops` in the
+build log — it prints its own wall-clock and whether each crop was cut, restored or already on
+disk.
+
+---
+
+## 2026-09-10 — ACCEPTED: the build prerendered 618 pages whose whole output is a redirect
+
+**Lever:** Build CPU Minutes. **Files:**
+`app/[locale]/parks/[continent]/[country]/[city]/page.tsx`.
+
+A city with exactly one park redirects to that park (308, so Google consolidates the signals
+on the page that has content). `app/sitemap.ts:238` has carried the predicate for that all
+along — `if (city.parks.length > 1)` — and so the sitemap never listed those cities. The
+route's own `generateStaticParams` did not carry it, and nothing connected the two.
+
+Counted against the live geo structure: **145 cities, 103 of them with a single park.** At six
+locales that is **618 of 870 prerendered city pages, 71 %**, each one fetched, rendered and
+written at build time to emit a `Location` header. They are in no sitemap, and nothing links
+them — the country page links straight to `/…/<city>/<park>` — so the only visitor is somebody
+holding an old URL.
+
+Adding the same predicate to `generateStaticParams` does not remove the redirect:
+`dynamicParams` defaults to true, so such a URL renders on demand and still 308s. Measured:
+
+|        | routes prerendered | city routes | full `pnpm build` |
+| ------ | -----------------: | ----------: | ----------------: |
+| before |              3,151 |         870 |           165.6 s |
+| after  |          **2,533** |     **252** |       **150.9 s** |
+
+**−618 routes, −14.7 s.** With the crop fix that is 284.3 s → 150.9 s, **−47 %**.
+
+It is now the same rule in two places, so they move together: change the sitemap's predicate
+and change this one, or the build starts prerendering redirects again. The docstring says so at
+both ends.
+
+**Verification** against `pnpm build && next start`: Rust (Europa-Park + Rulantica, still
+prerendered) answers 200; Brühl (Phantasialand only, no longer prerendered) answers 308 to
+`/de/parks/europe/germany/bruehl/phantasialand`; the legacy shape `/de/parks/europe/germany/
+phantasialand`, which the second redirect branch exists for, still answers 308 to the same
+place; a nonsense slug still 404s. `tsc --noEmit`, eslint and prettier clean.
+
+**Two findings from the same audit, checked and REJECTED:**
+
+- **"The crop cache pushes `.next/cache` past Vercel's 1 GB cap"** — it does not.
+  Measured 461.9 MB total (turbopack 340.1, image-crops 108.5, fetch-cache 12.4,
+  `.tsbuildinfo` 1.0), i.e. 0.43 GiB. The claim was out by 2.4×. Worth re-measuring if the
+  Turbopack cache grows, since that is the half that moves on its own.
+- **"197 of 426 crops have no consumer"** — they do. `getParkImageSet` /
+  `getAttractionImageSet` reach `versionedImageSet`, and `buildStructuredImage`
+  (`components/seo/structured-data.tsx:187`) returns the WHOLE array whenever it holds more
+  than one entry, so all three ratios land in the JSON-LD `image` of park and ride pages, which
+  is what Google asks for. Cutting two of three would trade an SEO signal for ~20 s on the
+  cache-MISS path, which now costs 0.8 s on a hit. `variantFor()` in `lib/media/focus.ts` is
+  genuinely dead code, but it is a function, not a crop.

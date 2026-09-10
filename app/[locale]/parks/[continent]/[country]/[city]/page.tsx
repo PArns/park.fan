@@ -71,18 +71,36 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   };
 }
 
+/**
+ * Only the cities that HAVE a page — i.e. the ones with more than one park.
+ *
+ * A single-park city redirects to its park a few lines below (308, so Google
+ * consolidates the signals), and `app/sitemap.ts` has carried the very same
+ * `city.parks.length > 1` predicate all along. This list did not, so the build
+ * prerendered **618 of 870** city pages (71 %, 103 cities × 6 locales) whose
+ * entire output is a redirect — not in the sitemap, not linked from anywhere
+ * (the country page links straight to `/…/<city>/<park>`), and reachable only
+ * by someone holding an old URL.
+ *
+ * Dropping them from the list does not drop the redirect: `dynamicParams`
+ * defaults to true, so such a URL still renders on demand and still 308s. It is
+ * the same rule as the sitemap's, so the two move together — change one and
+ * change the other, or the build starts prerendering redirects again.
+ */
 export async function generateStaticParams() {
   const geoData = await getGeoStructure().catch(() => null);
   if (!geoData) return [];
   return locales.flatMap((locale) =>
     geoData.continents.flatMap((continent) =>
       continent.countries.flatMap((country) =>
-        country.cities.map((city) => ({
-          locale,
-          continent: continent.slug,
-          country: country.slug,
-          city: city.slug,
-        }))
+        country.cities
+          .filter((city) => city.parks.length > 1)
+          .map((city) => ({
+            locale,
+            continent: continent.slug,
+            country: country.slug,
+            city: city.slug,
+          }))
       )
     )
   );
