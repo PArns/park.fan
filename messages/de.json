@@ -1284,9 +1284,9 @@
     "enable": "Standort aktivieren",
     "loadingLocation": "Standort wird ermittelt...",
     "permissionDenied": "Standort für beste Erfahrung benötigt",
-    "permissionDeniedDescription": "park.fan funktioniert am besten, wenn du uns deinen Standort freigibst. Wir verwenden diesen, um dir Freizeitparks in deiner Nähe anzuzeigen sowie dir im Park Navigation zu ermöglichen.",
+    "permissionDeniedDescription": "Ohne Standort können wir dir keine Parks in deiner Nähe zeigen und im Park nicht sagen, was gerade neben dir liegt. Freigeben lässt sich das in den Browser-Einstellungen.",
     "locationUnavailable": "Standort konnte nicht ermittelt werden",
-    "locationUnavailableDescription": "Dein Standort konnte nicht ermittelt werden. Du kannst den Standortzugriff aktivieren für genauere Ergebnisse oder es später erneut versuchen.",
+    "locationUnavailableDescription": "Dein Standort ließ sich nicht ermitteln. Aktiviere den Standortzugriff oder versuch es später noch einmal.",
     "loadError": "Parks in der Nähe konnten nicht geladen werden",
     "loadErrorDescription": "Beim Laden der Parks in der Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
     "locationHint": "Parks in der Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
@@ -1779,7 +1779,7 @@
     "heroTitle": "Geschichten, Daten und News aus den Parks",
     "badge": "park.fan Blog",
     "description": "Reiseberichte, Daten-Deep-Dives und Park-News vom park.fan-Team.",
-    "intro": "Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von Menschen, die anstehen, damit du es nicht musst.",
+    "intro": "Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von jemandem, der selbst ansteht.",
     "blog": "Blog",
     "empty": "Noch keine Beiträge. Schau bald wieder vorbei.",
     "readMore": "Artikel lesen",
@@ -1798,7 +1798,7 @@
     },
     "home": {
       "heading": "Aus dem Blog",
-      "intro": "Reiseberichte, Daten-Analysen und Park-News – die neuesten Beiträge erscheinen hier zuerst.",
+      "intro": "Reiseberichte, Daten-Analysen und Park-News – die neuesten Beiträge stehen oben.",
       "viewAll": "Alle Beiträge lesen"
     },
     "gallery": {
@@ -1890,7 +1890,7 @@
     },
     "hero": {
       "title": "Teile deine Park- & Ride-Fotos",
-      "subtitle": "Du hast tolle Aufnahmen von einem Coaster, einer Parade oder einem Park im Sonnenuntergang? Lad sie hier hoch, sag uns welchen Ride oder Park sie zeigen – nach kurzer Prüfung landen sie in der Galerie."
+      "subtitle": "Du hast Fotos von einem Coaster, einer Parade oder einem Park im Sonnenuntergang? Lad sie hier hoch, sag uns welchen Ride oder Park sie zeigen – nach kurzer Prüfung landen sie in der Galerie."
     },
     "banner": {
       "eyebrow": "Community-Galerie",

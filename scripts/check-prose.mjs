@@ -317,6 +317,63 @@ for (const [locale, list] of captions) {
     );
 }
 
+/* ------------------------------------------------- content pages outside the blog */
+
+/*
+ * The glossary, the guide page, the Fancast page and the season banner are prose a
+ * reader meets, and until this section existed none of them was checked: 287 KB of
+ * German glossary carried machine-translation artefacts and three claims the rest of
+ * the site contradicts, and the Fancast page used `ehrlich` three times — the one word
+ * docs/blog.md bans outright. A green build showed none of it.
+ *
+ * These are source files, so the prose has to be lifted out of the code first: string
+ * literals long enough to be a sentence, plus JSX text nodes. Identifiers and class
+ * names never reach `scan`, which is what keeps `robust` in a prop from reading as the
+ * AI vocabulary it is in a paragraph.
+ */
+function proseFromSource(src) {
+  const out = [];
+  // Quoted literals that read as prose: a space, and not a path/class/import specifier.
+  for (const m of src.matchAll(/(['"`])((?:\\.|(?!\1)[^\\]){25,})\1/g)) {
+    const text = m[2];
+    if (!/\s/.test(text)) continue;
+    if (/^[\w@./-]+$/.test(text)) continue; // module specifier or path
+    if (/^[a-z-]+(\s+[a-z0-9:[\]#/.%-]+)+$/i.test(text) && !/[.,;!?]/.test(text)) continue; // class list
+    out.push(text.replace(/\\n/g, '\n').replace(/\\'/g, "'"));
+  }
+  // JSX text nodes: what sits between tags, with expressions stripped.
+  for (const m of src.matchAll(/>([^<>{}]{25,})</g)) out.push(m[1]);
+  return out.join('\n');
+}
+
+const CONTENT_PAGES = [
+  ...LOCALES.map((l) => [`content/glossary/${l}.ts`, l]),
+  ...LOCALES.map((l) => [`app/[locale]/how-park-fan-works/content/${l}.tsx`, l]),
+  ...LOCALES.map((l) => [`app/[locale]/fancast/content/${l}.tsx`, l]),
+  ...LOCALES.map((l) => [`content/home/announce.${l}.md`, l]),
+];
+
+for (const [file, locale] of CONTENT_PAGES) {
+  let raw;
+  try {
+    raw = readFileSync(file, 'utf8');
+  } catch {
+    continue; // not every locale publishes every page
+  }
+  const text = file.endsWith('.md') ? postBody(raw) : proseFromSource(raw);
+  if (!text.trim()) continue;
+
+  // German and Dutch take the en dash for a parenthetical; the em dash is the wrong
+  // character before it is a tell (§4.1, §6).
+  const dashes = (text.match(/—/g) ?? []).length;
+  if (dashes && (locale === 'de' || locale === 'nl'))
+    fail(file, `${dashes} em dash(es) in prose (§4.1) — ${locale} takes "–"`);
+  else if (dashes) warn(file, `${dashes} em dash(es) in prose (§4.1)`);
+
+  // A page is us talking about ourselves, same as a catalog string.
+  scan(file, text, { subject: 'us' });
+}
+
 /* ------------------------------------------------------------------ report */
 
 const show = (list, label) => {
