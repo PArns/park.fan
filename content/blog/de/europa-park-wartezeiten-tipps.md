@@ -139,8 +139,8 @@ Rust die _längste_ Schlange des Parks hat.
 
 ## Warum der größte Park die kürzesten Schlangen hat
 
-Wartezeit ist keine Frage der Beliebtheit. Sie ist eine Division, Nachfrage
-geteilt durch Kapazität. In der [Kunst des Wartens](/blog/die-kunst-des-wartens)
+Wartezeit ist Nachfrage geteilt durch Kapazität, und die Beliebtheit einer Bahn
+steht dabei nur im Zähler. In der [Kunst des Wartens](/blog/die-kunst-des-wartens)
 habe ich das ausführlich durchgerechnet. Der Europa-Park ist der beste Beleg
 dafür, den ich in Europa kenne, weil bei ihm beide Seiten des Bruchs extrem sind.
 

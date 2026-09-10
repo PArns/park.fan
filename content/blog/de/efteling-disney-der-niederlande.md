@@ -334,8 +334,8 @@ wieder offen.
 
 Der praktische Wert dieses Waldstücks ist nebenbei enorm. Es gibt keine
 Warteschlange, keine Kapazitätsgrenze und keine Fahrzeit. Mehrere tausend Gäste
-können hier gleichzeitig unterwegs sein, ohne dass irgendwo eine Zahl auf ein
-Schild geschrieben werden müsste. Genau das ist ein Grund, warum dieser Park mit
+können hier gleichzeitig unterwegs sein, ohne dass am Eingang je eine Wartezeit
+ausgehängt werden müsste. Genau das ist ein Grund, warum dieser Park mit
 fast sechs Millionen Besuchen erträgliche Wartezeiten hat.
 
 Seit Mai 2026 baut der Park die Wegeführung um, weil dreißig Märchen auf einer

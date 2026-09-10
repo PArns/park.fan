@@ -507,7 +507,7 @@ Eine Einschränkung dazu, bevor jemand die Zahlen zu ernst nimmt: Unsere Histori
 für diesen Park beginnt im August 2024, und Walibi öffnet nur von April bis
 Oktober. Hinter den Monatswerten für April bis August stehen jeweils 11 bis 30
 Messtage, das trägt. Für September bis März haben wir kaum Daten, deshalb steht
-dort auch keine Zahl. Die Richtung ist eindeutig, die Nachkommastelle nicht.
+dort auch keine Zahl. Ein Monat mit elf Messtagen sagt dir, ob du in die richtige Jahreszeit fährst, und nicht, ob du fünf Minuten sparst.
 
 ## Halloween: das härteste Programm der Benelux-Länder
 

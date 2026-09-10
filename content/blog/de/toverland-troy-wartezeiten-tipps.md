@@ -88,7 +88,7 @@ der besseren Bahn.
 Hier soll es um den Park drumherum gehen: das [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, das dieses Jahr 25 wird, das ich für einen der schönsten kleinen Parks
 Europas halte, und in dem ich einmal selbst im Kostüm auf der anderen Seite
-gestanden habe. Dazu später.
+gestanden habe.
 
 ## Was Troy so gut macht
 
