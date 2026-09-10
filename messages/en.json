@@ -1060,7 +1060,40 @@
         "varWeather": "Weather forecast"
       }
     },
-    "planDayCta": "Plan a day at {park}"
+    "planDayCta": "Plan a day at {park}",
+    "dayComparison": {
+      "compare": "Compare two days",
+      "hintNone": "Pick two days from the calendar — they can be in different months.",
+      "hintOne": "Pick one more day.",
+      "hintTwo": "Two days picked.",
+      "reopen": "Open comparison",
+      "reset": "Clear selection",
+      "pickDay": "pick for comparison",
+      "title": "Two days compared",
+      "resultClear": "{day} is the clearly better day.",
+      "resultSlight": "{day} is slightly ahead.",
+      "resultTie": "There is nothing to choose between these two days.",
+      "better": "Better day",
+      "bothDays": "Both days",
+      "noReasons": "There are no comparable figures for these two days.",
+      "difference": "Difference: {value}",
+      "reasonCrowd": "Crowds",
+      "reasonWait": "Headliner wait",
+      "reasonHours": "Opening hours",
+      "reasonWeather": "Rainfall",
+      "reasonHoliday": "Holidays and school breaks",
+      "reasonPrice": "Day ticket",
+      "unitMm": "{value} mm",
+      "unitFlags": "{value, plural, =0 {none} one {# marker} other {# markers}}",
+      "unitSteps": "{value, plural, one {# level} other {# levels}}",
+      "unitHours": "{hours} h",
+      "unitHoursMinutes": "{hours} h {minutes} min",
+      "blockerClosed": "The park is closed on this day.",
+      "blockerPast": "This day is in the past.",
+      "blockerNoForecast": "There is no forecast for this day yet.",
+      "resultUnavailable": "Neither of these two days can be compared.",
+      "beyondPlanner": "The trip planner does not reach this day yet."
+    }
   },
   "attractions": {
     "blogPosts": {
@@ -2333,6 +2366,7 @@
     },
     "plans": {
       "title": "My plans"
-    }
+    },
+    "planDayInWizard": "Plan this day"
   }
 }

@@ -88,6 +88,19 @@ interface PlannerWizardProps {
    * park" passes, from the panel's own overview.
    */
   initialPark?: WizardPark | null;
+  /**
+   * A day to start on, which skips the second step as well.
+   *
+   * Only meaningful together with {@link initialPark} — a date without a park
+   * is a day at nowhere, and the step list below ignores it in that case
+   * rather than opening on a „Wer kommt mit" for a park nobody has named.
+   *
+   * What passes it is the calendar's day comparison: somebody who has just put
+   * two dates side by side and pressed „Diesen Tag planen" has answered both
+   * of the first two questions, and the wizard opening on the date step would
+   * be asking one of them for the second time.
+   */
+  initialDate?: string | null;
 }
 
 type Step = 'park' | 'date' | 'setup' | 'headliners';
@@ -169,18 +182,25 @@ const ENTER_BELONGS_TO =
  * it said the subject was a day out at a named park, though the search payload
  * had been carrying that park's own photograph the whole time.
  */
-export function PlannerWizard({ open, onOpenChange, initialPark = null }: PlannerWizardProps) {
+export function PlannerWizard({
+  open,
+  onOpenChange,
+  initialPark = null,
+  initialDate = null,
+}: PlannerWizardProps) {
+  /** A date only counts where a park came with it — see `initialDate`. */
+  const seededDate = initialPark ? initialDate : null;
   const t = useTranslations('planner');
   const locale = useLocale();
   const router = useRouter();
   const { state, openDay, setDayPrefs, addCustom, applyPlan } = usePlanner();
 
   const [park, setPark] = useState<WizardPark | null>(initialPark);
-  const [step, setStep] = useState<Step>(initialPark ? 'date' : 'park');
+  const [step, setStep] = useState<Step>(seededDate ? 'setup' : initialPark ? 'date' : 'park');
   // Which way the last move went, which is all the step transition needs to
   // know — see `STEP_MOTION`.
   const [forward, setForward] = useState(true);
-  const [date, setDate] = useState<string | null>(null);
+  const [date, setDate] = useState<string | null>(seededDate);
   const [prefs, setPrefs] = useState<PlannerDayPrefs>({});
   const [lunch, setLunch] = useState(false);
   const [planHeadliners, setPlanHeadliners] = useState(false);
@@ -212,7 +232,13 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     city: park?.geo.city ?? '',
     parkSlug: park?.slug ?? '',
     date: date ?? undefined,
-    enabled: open && step === 'date' && Boolean(park && date),
+    // `step !== 'park'` rather than `step === 'date'`: a wizard seeded with a date never VISITS
+    // the date step, so the gate that used to be satisfied on the way past it is never satisfied
+    // at all — `planDay.data` stays undefined, the last step finds no headliners, and „Große
+    // Bahnen" reports that the day has none. On the ordinary path this changes nothing that shows:
+    // `date` is null until the date step answers it, and afterwards the query is already cached
+    // under the same key.
+    enabled: open && step !== 'park' && Boolean(park && date),
   });
   /**
    * The park's photograph, held for as long as the park is the park.
@@ -274,6 +300,20 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
    * would run on every keystroke of the step.
    */
   const dayPayload = planDay.data ?? null;
+  /**
+   * Is the DAY still on its way — the payload the headliner step is made of.
+   *
+   * Not `facts.pending`. `facts` is the best-days snapshot, keyed by park alone
+   * and already cached by four components on a park page; it answers instantly
+   * while `/plan/day` — keyed by park AND date, refetched on every arrow press —
+   * is still in flight. Waiting on the wrong one is the same as not waiting.
+   *
+   * `data === undefined` rather than `!data`, for the reason the same distinction
+   * exists in `use-day-facts`: a shut day answers 404 and the hook resolves that
+   * to `null`, which is an ANSWER. `!data` would hold the step open for ever on
+   * exactly the days that have nothing to offer.
+   */
+  const dayPending = Boolean(park && date) && planDay.data === undefined && !planDay.isError;
   const wizardGrid = useMemo(
     () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour),
     [dayPayload]
@@ -360,9 +400,18 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
 
   const plannedSlugs = new Set(Object.keys(state.parks));
 
-  const steps: Step[] = initialPark
-    ? ['date', 'setup', 'headliners']
-    : ['park', 'date', 'setup', 'headliners'];
+  /**
+   * Which questions are left, which is the same list the rail draws and the
+   * footer walks. A step that is not in here cannot be reached forwards OR
+   * backwards — which is what keeps „Zurück" on a seeded day from landing on
+   * an empty date step: on `['setup','headliners']` the first step's index is
+   * 0, and the back button is already disabled there.
+   */
+  const steps: Step[] = seededDate
+    ? ['setup', 'headliners']
+    : initialPark
+      ? ['date', 'setup', 'headliners']
+      : ['park', 'date', 'setup', 'headliners'];
   const index = steps.indexOf(step);
 
   const goTo = (next: Step) => {
@@ -481,7 +530,14 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     step === 'park'
       ? null
       : step === 'headliners'
-        ? { run: finish, enabled: Boolean(park && date) }
+        ? // Bewusst NICHT an `dayPending` gehängt. Der Schritt sagt oben, dass er
+          // noch lädt, und das ist das, was er schuldet; den Knopf zusätzlich zu
+          // sperren macht den Wizard unabschließbar, sobald `/plan/day` hängt
+          // statt zu scheitern — ein `fetch` ohne Zeitgrenze setzt nie `isError`,
+          // und dann ist auch Enter tot. Eine Oberfläche, aus der es keinen
+          // Ausgang gibt, ist schlimmer als ein Tag ohne Headliner, den man
+          // im Panel in zwei Griffen füllt.
+          { run: finish, enabled: Boolean(park && date) }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
   /**
@@ -693,7 +749,26 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
                 a checkbox, it is a decision, and this is where it is made. */}
             {step === 'headliners' && (
               <div className="flex flex-col gap-2.5">
-                {headliners.length === 0 || headlinerFit === null || !fitInput ? (
+                {/* „Noch nicht gefragt" und „nichts gefunden" sehen von hier aus
+                    gleich aus, und der Unterschied ist der ganze Schritt.
+
+                    Ein Wizard mit gesetztem Datum öffnet auf `setup`, also ist
+                    dieser Schritt einen Klick vom Mount entfernt: `/plan/day`
+                    ist dann oft noch unterwegs, `headliners` ist `[]`, und der
+                    Satz „Für diesen Tag fehlt keine große Bahn mehr" behauptete
+                    ein Ergebnis, das niemand ausgerechnet hat. Wer in diesem
+                    Fenster abschließt, legt einen Tag ohne Bahnen an und hat
+                    dazu gelesen, dass keine fehlt.
+
+                    Gewartet wird auf `/plan/day` und nicht auf `facts` — siehe
+                    `dayPending`: die Best-Days-Momentaufnahme ist auf einer
+                    Parkseite längst im Cache und antwortet sofort, während der
+                    Tag selbst noch unterwegs ist. */}
+                {dayPending ? (
+                  <p className="text-muted-foreground text-xs leading-relaxed">
+                    {t('wizard.facts.loading')}
+                  </p>
+                ) : headliners.length === 0 || headlinerFit === null || !fitInput ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {t('wizard.headliners.none')}
                   </p>

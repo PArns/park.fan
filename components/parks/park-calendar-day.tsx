@@ -29,6 +29,23 @@ export interface ParkCalendarDayProps {
    *  date so callers can pass ONE stable handler instead of a per-day arrow (which
    *  would defeat this component's `memo`). */
   onSelect?: (date: string) => void;
+  /**
+   * Whether the grid is in comparison mode, where a press PICKS the day instead of opening it.
+   *
+   * The cell keeps one click handler either way — which of the two things it means is the grid's
+   * decision, and duplicating it here would be the same rule written twice. What this changes is
+   * what the cell SAYS: `aria-pressed` is only honest about a control that stays down, and in
+   * comparison mode this one does.
+   */
+  selectable?: boolean;
+  /**
+   * `1` or `2` where this day is one of the two being compared, `null` otherwise.
+   *
+   * A number rather than a boolean because the two picks are not interchangeable: the left column
+   * of the comparison is the first one chosen, and a reader who has picked two days out of a month
+   * grid has no other way of telling which is which.
+   */
+  selectionIndex?: 1 | 2 | null;
 }
 
 /**
@@ -81,6 +98,8 @@ function ParkCalendarDayComponent({
   isToday,
   isBest,
   onSelect,
+  selectable = false,
+  selectionIndex = null,
 }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
@@ -158,6 +177,11 @@ function ParkCalendarDayComponent({
         'relative flex h-full min-h-[92px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] lg:min-h-[150px] lg:p-3',
         colored ? CROWD_TILE_CLASS[colored] : 'bg-muted/25 border-border/60',
         isToday && 'border-primary border-2',
+        // The picked state is a RING rather than a border colour, because the border is already
+        // spoken for twice over — the crowd tile owns it, and „heute" overrides that. A ring sits
+        // outside the box, so a picked day still reads as busy or quiet at a glance, which is the
+        // whole reason somebody is picking it.
+        selectionIndex !== null && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-2',
         clickable &&
           'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none'
       )}
@@ -165,9 +189,10 @@ function ParkCalendarDayComponent({
         ? {
             role: 'button' as const,
             tabIndex: 0,
+            ...(selectable ? { 'aria-pressed': selectionIndex !== null } : {}),
             'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month} — ${statusLabel}${
               signalHint ? ` · ${signalHint}` : ''
-            }`,
+            }${selectable ? ` · ${t('dayComparison.pickDay')}` : ''}`,
             onClick: () => onSelect?.(day.date),
             onKeyDown: (e: React.KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -178,6 +203,15 @@ function ParkCalendarDayComponent({
           }
         : {})}
     >
+      {/* Which of the two picks this is, in the corner the crowd figure does not use. Numbered
+        rather than ticked: the comparison's left column is the first day chosen, and without the
+        number the reader has no way to know which cell that was. */}
+      {selectionIndex !== null && (
+        <span className="bg-primary text-primary-foreground absolute right-1 bottom-1 flex size-5 items-center justify-center rounded-full text-[10px] font-bold tabular-nums">
+          {selectionIndex}
+        </span>
+      )}
+
       {/* The signal bar. Sits on the cell's own top edge, inside its rounding, so it reads as part
         of the tile rather than as a chip laid on it. */}
       {signals.length > 0 && (

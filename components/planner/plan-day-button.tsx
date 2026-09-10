@@ -8,6 +8,7 @@ import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { plannerPageDay } from '@/lib/planner/page-day';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 export interface PlanDayButtonProps {
@@ -32,6 +33,26 @@ export interface PlanDayButtonProps {
    * because the dialog owns its own open state.
    */
   onPlanned?: () => void;
+  /**
+   * What pressing this leads to.
+   *
+   * `'panel'` is the original and the default: register the day, open the
+   * panel, and take the reader to the park's own page where the ride cards
+   * are. Every existing call site means this and reads exactly as before.
+   *
+   * `'wizard'` starts the trip planner's own dialog with the park AND the day
+   * already answered, so it opens on „Wer kommt mit" with two steps left
+   * instead of four. It is what the day comparison needs: somebody who has
+   * just weighed two dates against each other has answered both questions the
+   * first two steps ask, and being asked them again is the app pretending not
+   * to have been there.
+   *
+   * The two modes differ in one more thing than the dialog: `'wizard'` does
+   * NOT navigate. The wizard's own `finish` goes to the park page (with
+   * `#attractions`), and a push from here would pull the page out from under
+   * a dialog that is still asking questions.
+   */
+  mode?: 'panel' | 'wizard';
 }
 
 /**
@@ -54,6 +75,7 @@ export function PlanDayButton({
   timezone,
   className,
   onPlanned,
+  mode = 'panel',
 }: PlanDayButtonProps) {
   const t = useTranslations('planner');
   const router = useRouter();
@@ -81,6 +103,16 @@ export function PlanDayButton({
         // `router.push` works the same one frame later.
         if (onPlanned) flushSync(onPlanned);
         const rest = () => {
+          if (mode === 'wizard') {
+            // The date, left where the panel picks it up — the park is already
+            // on `plannerPagePark`, published by the beacon this route mounts.
+            // Nothing is registered in the plan here: the wizard files the day
+            // itself at its last step, and writing one now would put a day in
+            // somebody's plan that they may still cancel out of.
+            plannerPageDay.set({ parkSlug, date });
+            plannerUi.requestOpen('calendar-day', 'page-park-wizard');
+            return;
+          }
           openDay({ slug: parkSlug, name: parkName, geo, timezone }, date);
           plannerUi.requestOpen('calendar-day');
           // The park's own page, where the ride cards are. The calendar is the
@@ -106,7 +138,11 @@ export function PlanDayButton({
       )}
     >
       <CalendarPlus className="size-4 shrink-0" />
-      <span>{t('planThisDay')}</span>
+      {/* Two labels, because the two modes promise different things: `panel` puts the reader in
+          front of the ride cards („Bahnen für diesen Tag einplanen"), `wizard` opens the three
+          questions about the day itself. One label over both would over- or under-promise
+          depending on which one ran. */}
+      <span>{t(mode === 'wizard' ? 'planDayInWizard' : 'planThisDay')}</span>
       <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
     </button>
   );

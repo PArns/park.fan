@@ -1060,7 +1060,40 @@
         "varWeather": "Previsioni meteo"
       }
     },
-    "planDayCta": "Pianifica una giornata a {park}"
+    "planDayCta": "Pianifica una giornata a {park}",
+    "dayComparison": {
+      "compare": "Confronta due giorni",
+      "hintNone": "Scegli due giorni dal calendario, anche di mesi diversi.",
+      "hintOne": "Scegli ancora un giorno.",
+      "hintTwo": "Due giorni scelti.",
+      "reopen": "Apri il confronto",
+      "reset": "Annulla la selezione",
+      "pickDay": "seleziona per il confronto",
+      "title": "Due giorni a confronto",
+      "resultClear": "{day} è nettamente il giorno migliore.",
+      "resultSlight": "{day} è leggermente avanti.",
+      "resultTie": "Tra questi due giorni non c'è differenza.",
+      "better": "Giorno migliore",
+      "bothDays": "Entrambi i giorni",
+      "noReasons": "Per questi due giorni non ci sono valori confrontabili.",
+      "difference": "Differenza: {value}",
+      "reasonCrowd": "Affluenza",
+      "reasonWait": "Attesa alle attrazioni principali",
+      "reasonHours": "Durata di apertura",
+      "reasonWeather": "Precipitazioni",
+      "reasonHoliday": "Festivi e vacanze",
+      "reasonPrice": "Biglietto giornaliero",
+      "unitMm": "{value} mm",
+      "unitFlags": "{value, plural, =0 {nessuno} one {# indicatore} other {# indicatori}}",
+      "unitSteps": "{value, plural, one {# livello} other {# livelli}}",
+      "unitHours": "{hours} h",
+      "unitHoursMinutes": "{hours} h {minutes} min",
+      "blockerClosed": "Il parco è chiuso in questo giorno.",
+      "blockerPast": "Questo giorno è già passato.",
+      "blockerNoForecast": "Per questo giorno non c'è ancora una previsione.",
+      "resultUnavailable": "Nessuno di questi due giorni può essere confrontato.",
+      "beyondPlanner": "Il pianificatore non arriva ancora a questo giorno."
+    }
   },
   "attractions": {
     "blogPosts": {
@@ -2333,6 +2366,7 @@
     },
     "plans": {
       "title": "I miei piani"
-    }
+    },
+    "planDayInWizard": "Pianifica il giorno"
   }
 }
