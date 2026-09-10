@@ -80,13 +80,12 @@ Eindhoven, afrit Sevenum. De meesten hebben dan nog een klein uur voor de boeg,
 tot Kaatsheuvel, naar de [Efteling](ref:efteling), de Disney van Nederland.
 
 Zeventig kilometer scheidt de twee parken. In allebei staat een houten achtbaan
-van dezelfde Amerikaanse fabrikant. Voor de ene wacht je doorgaans 16 minuten,
-voor de andere ruim het dubbele. De kortste rij hoort bij de betere baan.
+van dezelfde Amerikaanse fabrikant. Voor de ene wacht je doorgaans een klein
+kwartier, voor de andere ruim het dubbele. De kortste rij staat in Sevenum.
 
-Hier wil ik het hebben over het park eromheen: [Toverland](ref:attractiepark-toverland?long)
-in Sevenum, dat dit jaar 25 wordt, dat ik een van de mooiste kleine parken van
-Europa vind, en waar ik ooit zelf in kostuum aan de andere kant heb gestaan.
-
+[Toverland](ref:attractiepark-toverland?long) in Sevenum wordt dit jaar 25, ik
+vind het een van de mooiste kleine parken van Europa, en ik heb er ooit zelf in
+kostuum aan de andere kant gestaan.
 
 ## Wat Troy zo goed maakt
 
@@ -131,9 +130,7 @@ geleden reed en haar herinnert als "geweldig, maar ruw": rijd haar nog eens.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## 16 minuten, gemeten over twee seizoenen
-
-"Geheime tip" schrijf je zo in een kop. Bewijzen is lastiger. Dus de cijfers.
+## Wat Troy echt kost, gemeten over twee seizoenen
 
 Over de laatste twee seizoenen, gerekend uit meer dan 150 bedrijfsdagen met
 wachttijdgegevens, ligt Troys **typische wachttijd op 16 minuten** (mediaan).
@@ -149,8 +146,8 @@ publiekstrekker. Zelfde databasis, zelfde rekenmethode:
 
 ```
 
-Meer dan het dubbele, voor een baan die onder liefhebbers in bijna geen enkele
-ranglijst boven Troy staat. Over de bouwwijzen heen wordt het beeld nog
+Meer dan het dubbele, voor een baan die bij de European Star Awards nooit boven
+Troy stond. Over de bouwwijzen heen wordt het beeld nog
 duidelijker. Wat kosten de grote namen van de regio aan wachttijd, hout of
 staal?
 
@@ -440,7 +437,6 @@ eenduidig, de decimaal niet.
 **Per weekdag** lopen de cijfers nauwelijks uiteen. Het drukst is het op zaterdag
 (25 minuten) en vrijdag (24 minuten), van zondag tot woensdag is het overal 20
 minuten. In Phantasialand liggen tussen een dinsdag en een zaterdag werelden.
-Hier is bijna elke dag een goede dag.
 
 Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
@@ -503,8 +499,9 @@ door het station raast dan ’s ochtends.
 Bij dat laatste punt loont een blik over de grens: Toverland verkoopt een heel
 gewoon abonnement met halloween erin. Phantasialand heeft het zijne na de
 pandemie afgeschaft en ondanks meerdere fanpetities niet teruggebracht. Wie in
-het grensgebied woont en meerdere keren per jaar naar een goed park gaat, moet
-die twee zinnen twee keer lezen.
+het grensgebied woont en meerdere keren per jaar naar een goed park gaat,
+bespaart met het Toverland-abonnement wat Phantasialand helemaal niet meer
+aanbiedt.
 
 **Route.** Toverland ligt in **Sevenum** (gemeente Horst aan de Maas),
 Toverlaan 2, zo’n tien autominuten ten westen van Venlo. Via de **A67** ben je

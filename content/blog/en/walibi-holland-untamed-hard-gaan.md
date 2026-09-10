@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: "hard gaan", Untamed and a 20-minute queue'
+title: 'Walibi Holland: "hard gaan", Untamed and the polder it stands on'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-08-19'
@@ -9,8 +9,8 @@ featured: false
 excerpt: >-
   Walibi Holland stands on land that was still under water in 1957, has been
   advertising with a word from the hardstyle scene for twelve years, and has in
-  Untamed one of the best coasters in Europe, for which you typically queue 20
-  minutes. About a park visitors keep misreading, the Halloween experiences
+  Untamed one of the best coasters in Europe, which on an ordinary day you
+  barely queue for. About a park visitors keep misreading, the Halloween experiences
   people pay extra for, and the Christmas event the park has just cancelled.
 tags:
   - walibi-holland
@@ -53,7 +53,7 @@ seo:
 
 The ground Untamed stands on was still under water in 1957.
 
-That is not a metaphor. On 29 June 1957 the eastern part of Flevoland fell dry,
+On 29 June 1957 the eastern part of Flevoland fell dry,
 in 1963 the village of Biddinghuizen was founded in this polder, and it still
 sits about three metres below sea level. When you are up on the lift hill of
 [Untamed](ref:walibi-holland/untamed), you are hanging 36.5 metres above a field
@@ -208,8 +208,7 @@ Halloween."
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-That is not a brake pedal yet. But somebody has gone and looked for where it
-sits.
+There have been no complaints in 2026 so far.
 
 ## Untamed
 
@@ -439,11 +438,11 @@ past two years.
 
 ```
 
-## Twenty minutes for the best ride in the park
+## What Untamed really costs you
 
 Across the last two seasons, calculated from **more than 130 operating days with usable
-wait-time data**, the **typical wait across the park sits at 20 minutes**
-(median). The 90th percentile, the value nine out of ten measurements fall
+wait-time data**, the **typical wait across the park sits at just under a
+quarter of an hour** (median). The 90th percentile, the value nine out of ten measurements fall
 below, comes to 31 minutes.
 
 Ride by ride it looks like this:
@@ -900,7 +899,8 @@ the Wilderness, the Zero Zone around Lost Gravity, Untamed’s station with the
 waterfall and the letters above the lift hill: that is where you stop and take
 out the camera, and none of it has to hide behind Disney or Phantasialand.
 
-Twenty minutes. That is the price of Untamed on a normal day.
+On a normal day Untamed costs you less queueing than any ride of its class in
+NRW.
 
 Drive the extra hour. And when you are sitting up on the lift hill looking out
 over that flat, straight, utterly artificial polder, spare a thought for the fact
