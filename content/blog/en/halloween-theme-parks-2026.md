@@ -251,7 +251,7 @@ to you that evening.
 
 ![Performer in a welding mask and leather apron in front of a container door | The butcher is already waiting. And no, that’s not a welcoming committee. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
-The secret star of the collection is **Slaughterhouse**, a meat
+The one people talk about longest afterwards is **Slaughterhouse**, a meat
 processing plant in which you take the role of the raw material. First you’re
 “inspected” in a cattle-wagon-style waiting room, then strapped into a seat
 hanging from a ceiling rail. The idea is the meat hook, the effect is total
@@ -295,8 +295,9 @@ a terrified woman auctioned off as “object 666” and then dropped into a
 shredder. With **889 complaints** it became the most-complained-about Dutch ad
 of the year; the Reclame Code Commissie found it incompatible with human
 dignity, and Walibi took it offline on 21 August 2025. A year later the same
-clown is handing out candy floss and sleeping badly. You can call that cautious
-or clever. Probably both.
+clown is handing out candy floss and sleeping badly. As advertising it works
+better: the 2025 spot got talked about for its images, this one for its
+punchline.
 
 What Biddinghuizen feels like without the fog machines, and what Untamed costs
 you in queue time on an ordinary day, is in the [Walibi
@@ -461,8 +462,8 @@ between two menhirs a wild boar is guaranteed to be lying in wait.
 
 ## The refuseniks: two top parks that sit Halloween out
 
-The most charming category of all is the parks that simply don’t join in with
-the whole fog-and-chainsaw circus. Not by accident, but on principle.
+Two of the strongest parks in this round-up don’t join the whole
+fog-and-chainsaw circus at all, and both say so in advance.
 
 ### Phantasialand: nothing. Nothing at all. And deliberately.
 
@@ -568,26 +569,14 @@ from real measured data of recent seasons, the statistics supply as well:
 
 ```
 
-## Conclusion: six weeks of frights, something for every nerve
+## When to go
 
-The 2026 Halloween season has something for every pain threshold: the sheer
-volume at [Movie Park](ref:movie-park-germany) with nine mazes, the grand
-production of [Traumatica](ref:europa-park),
-[Bobbejaanland’s](ref:bobbejaanland) walk-in cinema, the fresh maize field at
-[Toverland](ref:attractiepark-toverland), and, for the truly brave, the
-[Walibi experiences](ref:walibi-holland) where people voluntarily pay to be
-stamped, flooded and cut open. As a counterpoint, the quiet, refined autumn
-[Efteling](ref:efteling) and a [Phantasialand](ref:phantasialand) that skips
-Halloween with a shrug and would rather get straight to the snow.
+Which nerve level you choose is your business. The October weekends are the
+busiest days of the autumn, and in a queue nobody jumps out at you, guaranteed,
+which at these prices is annoying. Which day is emptiest is something the live
+wait times and the crowd calendar on park.fan will tell you, all autumn long.
 
-Which nerve level you choose is your business. Only one thing applies to
-everyone: the best Halloween evening is the one where you don’t spend half your
-time in a queue. Nobody jumps out at you there, guaranteed, and at these prices
-that’s almost cheeky. Which day is emptiest is something the live wait times and
-the crowd calendar on park.fan will tell you, all autumn long.
-
-Stay dry (see Below), keep moving (see maize), and if something jumps at you in
-the fog: it’s only part of the show. Almost certainly.
+If you book Below, pack spare socks. I once didn’t.
 
 — Patrick
 

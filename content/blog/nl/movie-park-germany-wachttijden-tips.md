@@ -65,10 +65,10 @@ heet sinds 2005 anders, is sinds 2010 van een Spaans concern en viert zijn
 dertigste verjaardag uitgerekend met een attractie van Paramount.
 
 Daar komt een getal bij dat helemaal niet past bij de reputatie van dit park.
-Over **135 gemeten openingsdagen** ligt de typische wachttijd in het
-[Movie Park](ref:movie-park-germany) op twintig minuten. In het
-[Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker, is dat
-dertig.
+Over **135 gemeten openingsdagen** sta je in het
+[Movie Park](ref:movie-park-germany) ruim half zo lang aan als in het
+[Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker. Daar is
+het dertig.
 
 En de leegste weekdag is de dag die geen enkele tipsite je noemt.
 
@@ -631,7 +631,7 @@ prijzen zijn het meest genoemde kritiekpunt in bezoekersrecensies. Voor 2026
 heeft het park verbeteringen aangekondigd. Daar heb ik tot nu toe niets van
 gemerkt, en ik eet hier zo snel mogelijk.
 
-Hoe het er in Bottrop nu bij staat:
+Of het in Bottrop regent, bepaalt de helft van het park:
 
 ```weather-widget slug=movie-park-germany
 
@@ -700,7 +700,7 @@ het Halloween Horror Festival een ander bedrijf. Wie vooral grote achtbanen zoek
 zit in het [Phantasialand](ref:phantasialand) of het
 [Heide-Park](ref:heide-park) beter.
 
-## Tot slot
+## Wat ik je voor Bottrop meegeef
 
 Ik heb dit park lang tekortgedaan. Vanuit het Rijnland rijd je het Phantasialand
 voorbij om in Bottrop te komen, en wie dat doet wil een reden. Twintig minuten
