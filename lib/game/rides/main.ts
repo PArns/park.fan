@@ -16,7 +16,6 @@
  */
 
 import type { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
-import type { Mesh } from '@babylonjs/core/Meshes/mesh';
 import { PointLight } from '@babylonjs/core/Lights/pointLight';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
@@ -31,6 +30,10 @@ import type {
 } from '../core/types';
 import { attachRideContent, resolveFlatRide } from './manifest';
 import { createRideMaterials, type RideMaterials } from './materials';
+import { buildQueue } from './queue-mesh';
+import { queueSlots } from './queue';
+import { Mesh } from '@babylonjs/core/Meshes/mesh';
+import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import { createRideRenderer, type RideMeshStats, type RidePlacement } from './geometry';
 import { hexToLinear } from './shapes';
 import type { FlatRideProfile } from './types';
@@ -49,6 +52,12 @@ interface RosterEntry {
   pack: string;
   item: string;
   runSeconds: number;
+  /** The queue anchor, absent on a roster published before `queueAnchor` existed. */
+  queueX?: number;
+  queueZ?: number;
+  queueDirX?: number;
+  queueDirZ?: number;
+  capacity?: number;
 }
 
 /** Night lights per preset. Same shape and the same reason as `shops`: they are not free. */
@@ -176,15 +185,71 @@ export function createRidesMain(ctx: MainContext): MainHandle {
     }
   }
 
-  const offRoster = ctx.events.on('ride:roster', (payload: { rides: RosterEntry[] }) => {
-    roster = payload.rides ?? [];
-  });
+  /**
+   * The switchbacks, one merged mesh per machine that has a line.
+   *
+   * Rebuilt from the ROSTER and not per frame: an anchor moves when a machine is built, moved or
+   * demolished, and that is exactly what the roster announces. A 160-place queue is 2,912
+   * triangles in two surfaces, so the whole park's lines are a handful of draw calls.
+   *
+   * Both keys of the roster feed it. `rides` is what this module DRAWS and `docked` is what it
+   * runs a line for without drawing — a coaster's queue is this module's to build for the same
+   * reason its tickets are, and the alternative is every machine module growing its own copy of
+   * `queue.ts`.
+   */
+  const queueMeshes: Mesh[] = [];
+  let lastRoster: RosterEntry[] = [];
+  function rebuildQueues(entries: readonly RosterEntry[]): void {
+    for (const mesh of queueMeshes) mesh.dispose();
+    queueMeshes.length = 0;
+    for (const entry of entries) {
+      if (entry.queueX == null || entry.queueZ == null) continue;
+      const dirX = entry.queueDirX ?? 0;
+      const dirZ = entry.queueDirZ ?? 1;
+      const len = Math.hypot(dirX, dirZ) || 1;
+      const build = buildQueue(
+        [entry.queueX, entry.queueZ],
+        [dirX / len, dirZ / len],
+        queueSlots(entry.capacity ?? 8),
+        (x, z) => terrain?.height(x, z) ?? 0
+      );
+      for (const surface of build.surfaces) {
+        if (surface.indices.length === 0) continue;
+        const mesh = new Mesh(`ride-queue-${entry.id}-${surface.finish}`, scene);
+        const data = new VertexData();
+        data.positions = surface.positions;
+        data.normals = surface.normals;
+        data.uvs = surface.uvs;
+        data.colors = surface.colors;
+        data.indices = surface.indices;
+        data.applyToMesh(mesh, false);
+        mesh.material = materials.surface(surface.finish === 'lamp' ? 'matte' : surface.finish);
+        mesh.useVertexColors = true;
+        mesh.receiveShadows = true;
+        mesh.isPickable = false;
+        mesh.freezeWorldMatrix();
+        queueMeshes.push(mesh);
+      }
+    }
+  }
+
+  const offRoster = ctx.events.on(
+    'ride:roster',
+    (payload: { rides: RosterEntry[]; docked?: RosterEntry[] }) => {
+      roster = payload.rides ?? [];
+      lastRoster = [...(payload.rides ?? []), ...(payload.docked ?? [])];
+      rebuildQueues(lastRoster);
+    }
+  );
   const offTerrain = ctx.events.on('terrain:changed', () => {
     for (const id of placements.keys()) {
       const entity = ctx.world.entities[id];
       if (entity) place(entity);
     }
     renderer.setPlacements([...placements.values()], profileFor);
+    // The rails follow the ground the same way the machines do, and for the same reason: a
+    // handrail left at the old height is a handrail through a hillside.
+    rebuildQueues(lastRoster);
   });
 
   for (const id of Object.keys(ctx.world.entities).sort()) place(ctx.world.entities[id]);

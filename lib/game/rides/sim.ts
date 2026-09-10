@@ -1120,6 +1120,33 @@ export function createRidesSim(ctx: SimContext): SimHandle {
     },
   };
 
+  /**
+   * Where this machine's line starts and which way it runs, for whoever draws it.
+   *
+   * On the roster and not in the frame, for the reason the docblock at the top of `main.ts`
+   * gives: it changes when somebody builds, moves or demolishes something, and a 20 Hz frame is
+   * no place for a constant. `capacity` rides along because the rail is built for the line the
+   * machine may ever have and not for today's, and the load it drains in is what sets that.
+   *
+   * Additive: a reader built before this still gets every field it knew, and `main.ts` skips a
+   * queue whose anchor is absent rather than drawing one at the origin.
+   */
+  function queueAnchor(r: RideRuntime): {
+    queueX: number;
+    queueZ: number;
+    queueDirX: number;
+    queueDirZ: number;
+    capacity: number;
+  } {
+    return {
+      queueX: r.entrance[0],
+      queueZ: r.entrance[1],
+      queueDirX: r.queueDir[0],
+      queueDirZ: r.queueDir[1],
+      capacity: r.profile.capacity,
+    };
+  }
+
   // ── the handle ────────────────────────────────────────────────────────────────────────────
   function publishRoster(): void {
     order = [...rides.keys()].sort();
@@ -1135,6 +1162,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
           pack: r.entity.pack,
           item: r.entity.item,
           runSeconds: runSecondsOf(r),
+          ...queueAnchor(r),
         };
       }),
       /**
@@ -1158,8 +1186,8 @@ export function createRidesSim(ctx: SimContext): SimHandle {
           item: r.entity.item,
           name: r.profile.name,
           dispatchedBy: r.dispatcher,
-          capacity: r.profile.capacity,
           runSeconds: runSecondsOf(r),
+          ...queueAnchor(r),
         };
       }),
     });
