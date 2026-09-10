@@ -246,6 +246,21 @@ time for this date outranks an opening hour we derived, which the API says out
 loud for `hoursSource: "observed"`, where its window is narrower than the park's
 real one.
 
+**And the window that clip is given has to be unfolded.** A park whose day
+crosses midnight publishes `closeHour < openHour` — La Ronde is `11 → 1` — so
+the two hours multiplied by 60 make a window that runs backwards, `660 → 60`.
+Every showtime of the day falls outside that, and because the clip only touches
+projections it took the whole projected programme out of the column with no
+error anywhere. `showDayHours()` builds the pair through the same
+`unfoldedCloseHour` the axis uses, and both call sites go through it rather than
+multiplying at the call site — the two rules have to be one rule, or a show
+lands beside an axis with no room for it. The times themselves are **not**
+unfolded and must not be: the API buckets a performance by its own park-local
+calendar date, so a 00:45 show belongs to the following day's `shows` rather
+than to this one's past-midnight tail, and every entry in a day's array is an
+ordinary 0–1439. `pnpm test:planner-shows` pins the window, the clip and the
+listing's exemption from it.
+
 Before this, showtimes were read off the live park payload, which only ever knew
 today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty

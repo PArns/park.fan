@@ -1,4 +1,5 @@
 import type { PlanDayShow, PlanDayShowSource } from '@/lib/api/types';
+import { unfoldedCloseHour } from './day-grid';
 
 /**
  * Showtimes, as lines on the day.
@@ -17,10 +18,43 @@ import type { PlanDayShow, PlanDayShowSource } from '@/lib/api/types';
  * `context.closeHour`, not the axis. The axis pads both ends by half an hour and
  * carries a whole extra hour at the close (the backend emits a bucket AT
  * `closeHour`), and neither of those is a claim that anything happens there.
+ *
+ * Build it with {@link showDayHours} rather than multiplying the two hours by
+ * 60 at the call site: on a day that crosses midnight `closeHour < openHour`,
+ * and the raw pair puts the close BEFORE the open.
  */
 export interface ShowDayHours {
   openMin: number;
   closeMin: number;
+}
+
+/**
+ * The clip window for one day, or `null` where the park's hours are unknown.
+ *
+ * `closeHour` is unfolded the way {@link unfoldedCloseHour} unfolds the axis,
+ * because a park whose day crosses midnight publishes `closeHour < openHour` —
+ * La Ronde is `11 → 1`. Multiplied straight, that window is `660 → 60`, which
+ * every showtime of the day falls outside of, so the clip below dropped ALL of
+ * them: a projected 19:00 line is `1140 > 60`. Scheduled times are never
+ * clipped, which is why it failed in silence on exactly the parks the window
+ * was never meant to touch.
+ *
+ * Showtimes themselves are NOT unfolded, and must not be: the API buckets a
+ * performance by its own park-local calendar date, so a `00:45` show belongs to
+ * the following day's `shows` rather than to this one's past-midnight tail.
+ * Every time in this day's array is therefore an ordinary 0–1439, and the
+ * unfolded close is what lets the evening ones through.
+ */
+export function showDayHours(
+  openHour: number | null | undefined,
+  closeHour: number | null | undefined
+): ShowDayHours | null {
+  if (openHour === null || openHour === undefined) return null;
+  if (closeHour === null || closeHour === undefined) return null;
+  return {
+    openMin: openHour * 60,
+    closeMin: unfoldedCloseHour(openHour, closeHour) * 60,
+  };
 }
 
 export interface PlannerShowLine {
