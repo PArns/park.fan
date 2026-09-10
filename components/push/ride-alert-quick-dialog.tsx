@@ -105,8 +105,16 @@ export function RideAlertQuickDialog({
 
   const handleRemove = async () => {
     setRemoving(true);
-    await removeRideAlert(attractionId);
+    setError(null);
+    const result = await removeRideAlert(attractionId);
     setRemoving(false);
+    // Same split as `handleSave` above, and for the same reason: only a FAILURE holds the dialog
+    // open. Closing on a refused DELETE would put the card's bell back to "not set" over an
+    // alert that is still armed, with the one surface that could have said so gone from screen.
+    if (!result.ok) {
+      setError(result.error);
+      return;
+    }
     setAlerted(false);
     onSaved(false);
     onOpenChange(false);

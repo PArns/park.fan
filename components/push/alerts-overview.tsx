@@ -1,20 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import { Bell, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { formatShowClock } from '@/lib/push/show-clock';
-import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
-import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
-import {
-  PUSH_FOLLOWS_QUERY_KEY,
-  usePushFollowsList,
-  type PushFollowsList,
-} from '@/lib/push/use-push-follows-list';
+import { usePushErrorMessage } from '@/components/push/use-push-error-message';
+import { usePushFollowsList } from '@/lib/push/use-push-follows-list';
+import { rideRowKey, showRowKey, usePushFollowRemoval } from '@/lib/push/use-push-follow-removal';
 
 /**
  * Every ride alert and followed show this browser has, across every park —
@@ -42,10 +36,15 @@ export function AlertsOverview() {
   // as the same "nothing set up yet" empty state a browser with zero alerts
   // gets — that reads as "your alerts are gone" to someone who has five.
   // `isError` is both endpoints refusing, `partial` is one of them.
-  const queryClient = useQueryClient();
   const { data, isFetching, isError } = usePushFollowsList({ enabled: true });
-  const [removingRide, setRemovingRide] = useState<string | null>(null);
-  const [removingShow, setRemovingShow] = useState<string | null>(null);
+  /**
+   * Shared with the header band's alerts group — same rows, same query cache, so one rule
+   * decides what it takes for a row to leave. A removal that the API refused leaves the row
+   * where it is and says so under it, which is the whole reason this page can be trusted: an
+   * alert that disappears here has really been switched off.
+   */
+  const removal = usePushFollowRemoval();
+  const pushErrorMessage = usePushErrorMessage();
 
   const rideAlertList = data?.rideAlerts ?? [];
   const showFollowList = data?.showFollows ?? [];
@@ -72,31 +71,21 @@ export function AlertsOverview() {
   const incomplete = !isFetching && !bothFailed && (partial || isError);
   const empty = !isFetching && !isError && !partial && !anything;
 
-  const patch = (next: (list: PushFollowsList) => PushFollowsList) =>
-    queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>
-      previous ? next(previous) : previous
+  /**
+   * Why one row's removal did not go through, beside that row.
+   *
+   * At the top of the page it would be a sentence about a list; here it names the alert that is
+   * still armed. `role="alert"` because it appears in response to a press and nothing moves the
+   * focus to it.
+   */
+  const removalError = (key: string) => {
+    const error = removal.errorFor(key);
+    if (!error) return null;
+    return (
+      <p role="alert" className="text-destructive mt-1 text-xs leading-snug">
+        {pushErrorMessage(error)}
+      </p>
     );
-
-  const handleRemoveRide = async (attractionId: string) => {
-    setRemovingRide(attractionId);
-    await removeRideAlert(attractionId);
-    patch((list) => ({
-      ...list,
-      rideAlerts: list.rideAlerts.filter((a) => a.attractionId !== attractionId),
-    }));
-    setRemovingRide(null);
-    trackRideAlertRemoved();
-  };
-
-  const handleRemoveShow = async (showId: string) => {
-    setRemovingShow(showId);
-    await unfollowShow(showId);
-    patch((list) => ({
-      ...list,
-      showFollows: list.showFollows.filter((s) => s.showId !== showId),
-    }));
-    setRemovingShow(null);
-    trackShowFollowRemove();
   };
 
   if (loading) {
@@ -172,13 +161,14 @@ export function AlertsOverview() {
                   <p className="text-muted-foreground text-xs">
                     {alert.parkName} · {t('thresholdLabel', { minutes: alert.thresholdMinutes })}
                   </p>
+                  {removalError(rideRowKey(alert.attractionId))}
                 </div>
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  onClick={() => handleRemoveRide(alert.attractionId)}
-                  disabled={removingRide === alert.attractionId}
+                  onClick={() => void removal.removeRide(alert.attractionId)}
+                  disabled={removal.isRemoving(rideRowKey(alert.attractionId))}
                 >
                   {t('remove')}
                 </Button>
@@ -231,13 +221,14 @@ export function AlertsOverview() {
                       <span>{t('showNextAny')}</span>
                     )}
                   </p>
+                  {removalError(showRowKey(follow.showId))}
                 </div>
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
-                  onClick={() => handleRemoveShow(follow.showId)}
-                  disabled={removingShow === follow.showId}
+                  onClick={() => void removal.removeShow(follow.showId)}
+                  disabled={removal.isRemoving(showRowKey(follow.showId))}
                 >
                   {t('remove')}
                 </Button>

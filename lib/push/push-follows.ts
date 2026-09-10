@@ -174,24 +174,66 @@ export async function followShow(
 }
 
 /**
- * Optimistic, like `FavoriteStar`'s toggle: the local mirror clears
- * immediately, and the server call best-effort follows. A browser with no
- * subscription at all (never granted permission) has nothing to tell the
- * server in the first place.
+ * The DELETE both removals send, and the one place that decides what counts as
+ * gone.
+ *
+ * **404 is a success.** The row this call names is one the visitor asked to be
+ * rid of, and a server that no longer has it has given them exactly that —
+ * pruning after repeated delivery failures, or a second tab that got there
+ * first. Reporting "das hat nicht geklappt" over a row that is provably not
+ * there would leave it on screen for ever, since every retry answers 404 too.
+ * The write path reads the same status the other way round (`setRideAlert`
+ * re-syncs and retries, because there a 404 means this browser's subscription
+ * is missing and the write really did not happen) — the asymmetry is the point,
+ * not an oversight.
+ *
+ * Everything else goes through `classifyFailure` like a write, so a caller has
+ * the same classes to render either way.
  */
-export async function unfollowShow(showId: string): Promise<void> {
-  setShowFollowedLocal(showId, false);
-  const identity = await getExistingPushIdentity();
-  if (!identity) return;
+async function deletePushFollow(url: string, body: unknown): Promise<PushWriteResult<void>> {
   try {
-    await fetch('/api/push/show-follows', {
+    const response = await fetch(url, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ endpoint: identity.endpoint, showId }),
+      body: JSON.stringify(body),
     });
+    if (!response.ok && response.status !== 404) {
+      return { ok: false, error: await classifyFailure(response) };
+    }
+    return { ok: true, value: undefined };
   } catch {
-    // Local state already reflects the choice; a retry happens next open.
+    return { ok: false, error: { reason: 'network' } };
   }
+}
+
+/**
+ * Stop reminding for a show — server first, mirror second.
+ *
+ * It used to be the other way round, optimistically like `FavoriteStar`'s
+ * toggle, and returned `Promise<void>` without ever reading `response.ok`. A
+ * 500 then took the row off the screen and left the reminder armed: it came
+ * back at the next open with nothing having said so, and the favorites band's
+ * whole alerts group — gated on the mirror — vanished in the same commit as the
+ * click, taking its own spinner and any error it might have shown with it. A
+ * star nobody else can see is a fair thing to move optimistically; a
+ * notification that will arrive on a phone is not.
+ *
+ * A browser with no push identity at all has nothing the server could be
+ * holding for it, so clearing the stale mirror entry IS the removal, and it
+ * succeeds.
+ */
+export async function unfollowShow(showId: string): Promise<PushWriteResult<void>> {
+  const identity = await getExistingPushIdentity();
+  if (!identity) {
+    setShowFollowedLocal(showId, false);
+    return { ok: true, value: undefined };
+  }
+  const result = await deletePushFollow('/api/push/show-follows', {
+    endpoint: identity.endpoint,
+    showId,
+  });
+  if (result.ok) setShowFollowedLocal(showId, false);
+  return result;
 }
 
 /**
@@ -239,19 +281,19 @@ export async function setRideAlert(
   return postRideAlert(resynced.identity, attractionId, thresholdMinutes);
 }
 
-export async function removeRideAlert(attractionId: string): Promise<void> {
-  removeRideAlertLocal(attractionId);
+/** Same contract as `unfollowShow` — see there for why the mirror moves last. */
+export async function removeRideAlert(attractionId: string): Promise<PushWriteResult<void>> {
   const identity = await getExistingPushIdentity();
-  if (!identity) return;
-  try {
-    await fetch('/api/push/ride-alerts', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ endpoint: identity.endpoint, attractionId }),
-    });
-  } catch {
-    // Same as unfollowShow — local state already moved.
+  if (!identity) {
+    removeRideAlertLocal(attractionId);
+    return { ok: true, value: undefined };
   }
+  const result = await deletePushFollow('/api/push/ride-alerts', {
+    endpoint: identity.endpoint,
+    attractionId,
+  });
+  if (result.ok) removeRideAlertLocal(attractionId);
+  return result;
 }
 
 /**

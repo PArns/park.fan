@@ -1650,6 +1650,7 @@
       "showAt": "um {time} Uhr",
       "showNextAny": "jeweils nächste Vorstellung",
       "remove": "{name}: Alarm entfernen",
+      "removeError": "Der Alarm ließ sich nicht entfernen und ist weiter scharf. Bitte noch einmal versuchen.",
       "loadError": "Die Alarme konnten nicht geladen werden."
     },
     "pushErrors": {

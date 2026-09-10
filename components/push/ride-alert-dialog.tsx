@@ -70,6 +70,14 @@ export function RideAlertDialog({
   const [adding, setAdding] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [addError, setAddError] = useState<PushWriteError | null>(null);
+  /**
+   * Its own state beside `addError`, and keyed by the ride: the two are about different parts of
+   * this dialog, and a removal that the API refused has to name the alert it left armed.
+   */
+  const [removeError, setRemoveError] = useState<{
+    attractionId: string;
+    error: PushWriteError;
+  } | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -80,6 +88,7 @@ export function RideAlertDialog({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAlerts('loading');
     setAddError(null);
+    setRemoveError(null);
     void fetchRideAlertsRemote().then((result) => {
       if (cancelled) return;
       if (!result.ok) {
@@ -151,11 +160,19 @@ export function RideAlertDialog({
 
   const handleRemove = async (attractionId: string) => {
     setRemovingId(attractionId);
-    await removeRideAlert(attractionId);
+    setRemoveError(null);
+    const result = await removeRideAlert(attractionId);
+    setRemovingId(null);
+    // The row leaves this list only where the server said it left the database. Dropping it on
+    // a 500 would put the ride back in the add-form's dropdown while its alert is still armed,
+    // so the next press would try to set an alert this browser already has.
+    if (!result.ok) {
+      setRemoveError({ attractionId, error: result.error });
+      return;
+    }
     setAlerts((current) =>
       Array.isArray(current) ? current.filter((a) => a.attractionId !== attractionId) : current
     );
-    setRemovingId(null);
     trackRideAlertRemoved();
   };
 
@@ -206,6 +223,15 @@ export function RideAlertDialog({
                       <p className="text-muted-foreground text-xs">
                         {t('thresholdLabel', { minutes: alert.thresholdMinutes })}
                       </p>
+                      {/* Beside the alert it is about — this list can be a dozen rides long, and
+                          a sentence under the whole list would name none of them. `role="alert"`
+                          because it appears in response to a press and nothing moves the focus
+                          to it. */}
+                      {removeError?.attractionId === alert.attractionId && (
+                        <p role="alert" className="text-destructive mt-1 text-xs leading-snug">
+                          {pushErrorMessage(removeError.error)}
+                        </p>
+                      )}
                     </div>
                     <Button
                       type="button"

@@ -391,12 +391,32 @@ Vier Entscheidungen dahinter:
 - **Die Übersetzungen bleiben in `pushAlerts.menu`.** Das ist Layout-Chrome und wird auf jeder
   Seite × sechs Sprachen serialisiert. `pushAlerts.overview` hätte zwölf Schlüssel Fließtext
   mitgebracht; die sechs kurzen Schlüssel hier kosten +1198 B roh über alle sechs Sprachen, rund
-  +81 B komprimiert pro Seite.
+  +81 B komprimiert pro Seite. Der siebte, `removeError`, kam aus demselben Grund dazu: die Zeile
+  braucht einen Satz für ein abgelehntes DELETE, und `usePushErrorMessage` mitzunehmen hätte
+  `pushAlerts.pushErrors` in die Chrome jeder Seite gezogen. `/alerts` benutzt den Helfer, weil
+  es dort eine Route zahlt und nicht das Layout.
 
-Die Löschung schreibt in den React-Query-Cache, **nachdem** das DELETE zurück ist. Andersherum
-ginge es nicht: `removeRideAlert` schreibt zuerst den lokalen Spiegel und ruft erst dann die API,
-also würde alles, was auf diesen Spiegel hört, die Zeile beim Server nachfragen, während sie noch
-gelöscht wird.
+### Eine Zeile geht erst, wenn der Server sie gehen lässt
+
+`removeRideAlert` und `unfollowShow` schrieben den lokalen Spiegel **zuerst** und schickten das
+DELETE danach, ohne `response.ok` je zu lesen. Eine 500 nahm die Zeile vom Bildschirm und ließ den
+Alarm scharf: er war beim nächsten Öffnen wieder da, ohne dass irgendwo etwas gestanden hätte. Und
+weil diese Gruppe am Spiegel hängt, verschwand beim Entfernen des letzten Alarms die ganze Gruppe
+im selben Commit wie der Klick — mitsamt ihrem eigenen Spinner und jeder Meldung, die dort hätte
+stehen können.
+
+Beide liefern jetzt ein `PushWriteResult` mit denselben Fehlerklassen wie das Schreiben, und die
+Reihenfolge ist umgedreht: erst die API, den Spiegel nur bei Erfolg. Eine **404 zählt als Erfolg** —
+eine Zeile, die der Server nicht mehr hat, ist genau das, was der Besucher wollte, und ein Fehler
+darüber bliebe für immer stehen, weil jeder weitere Versuch wieder 404 antwortet. Der Schreibpfad
+liest denselben Status andersherum (`setRideAlert` synchronisiert die Anmeldung neu und probiert
+es noch einmal); die Asymmetrie ist Absicht.
+
+Der React-Query-Cache wird davon unberührt **nach** dem DELETE geschrieben und nur bei Erfolg —
+beides steckt in `usePushFollowRemoval` (`lib/push/use-push-follow-removal.ts`), das sich diese
+Gruppe mit `AlertsOverview` teilt, damit eine Zeile auf beiden Flächen unter derselben Bedingung
+verschwindet. `pnpm test:push-follow-delete` hält die Reihenfolge und die Fehlerklassen fest; ein
+grüner Build zeigt von beidem nichts.
 
 ## Das Menü schließt sich beim Seitenwechsel
 

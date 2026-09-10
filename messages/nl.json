@@ -1650,6 +1650,7 @@
       "showAt": "om {time}",
       "showNextAny": "eerstvolgende voorstelling",
       "remove": "{name}: melding verwijderen",
+      "removeError": "De melding kon niet worden verwijderd en staat nog aan. Probeer het nogmaals.",
       "loadError": "De meldingen konden niet worden geladen."
     },
     "pushErrors": {
