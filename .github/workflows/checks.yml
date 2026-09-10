@@ -34,11 +34,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: checks-${{ github.ref }}
   # Superseding a run is right on a pull request, where only the head commit is
-  # being judged, and wrong on main: two merges in quick succession would cancel
-  # the first one's run, and a main that went red at that commit would never be
-  # reported — which is the state this workflow exists to catch.
+  # being judged. On main every commit needs its own verdict, so each push gets a
+  # group of its own — `cancel-in-progress: false` would not be enough, because a
+  # group holds one pending run and a third push cancels the one waiting in the
+  # middle, which is exactly the commit whose red main would go unreported.
+  group: checks-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
@@ -62,8 +63,10 @@ jobs:
         run: pnpm lint
 
       # Kept last and separate so the log says which of the two failed without
-      # anyone opening the step. `pnpm format` is the fix — except on Markdown,
-      # where it is sometimes the cause: section 16 of
-      # docs/development/conventions.md names the two cases.
+      # anyone opening the step — which needs `!cancelled()`, or a failing lint
+      # skips this one and a PR wrong in both ways costs two round-trips.
+      # `pnpm format` is the fix, except on Markdown, where it is sometimes the
+      # cause: section 16 of docs/development/conventions.md names the two cases.
       - name: pnpm format:check
+        if: ${{ !cancelled() }}
         run: pnpm format:check

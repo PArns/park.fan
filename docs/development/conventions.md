@@ -264,7 +264,13 @@ to correct in the content.
 `- [ ] ` puts its content column at 2 by CommonMark, but Prettier aligns list content with the
 **checkbox**, at column 6. A paragraph sitting four or more columns below the content column is
 therefore already an indented code block — Prettier reads it as code, prints it four columns
-deeper, reads the result as code again, and never converges:
+deeper, reads the result as code again, and never converges.
+
+It takes a specific shape to see this, which is worth knowing before trying to reproduce it: the
+item's **first** paragraph has to wrap, so its continuation lines sit at column 6, and the block
+that diverges is a **second** paragraph aligned with them. A one-paragraph item converges in a
+single pass, whatever its indent. In other words the trigger is exactly what an editor does when it
+lines a paragraph up with the rest of the item:
 
 ```
 pass 0:  6 columns
