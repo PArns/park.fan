@@ -936,7 +936,7 @@ espera de diciembre, con 28 minutos típicos, están incluso un pelín por encim
 los de agosto. Para noviembre, en cambio, nuestra previsión clasifica como «bajo»
 los 19 días que cubre; tiempos de espera medidos de ese mes todavía no tenemos.
 
-## Para terminar
+## Por qué voy a volver por el Euro-Mir
 
 La frase que más veces se escribe sobre este parque es «el mejor parque de
 atracciones del mundo», y es cierta en la medida en que una votación internacional
@@ -949,7 +949,7 @@ año y no dejas que nadie se cuele.
 A Rust se va por Voltron y por Silver Star. Que delante de las dos se espere tan
 poco se debe a las otras ochenta cosas que hay al lado.
 
-Cómo está ahora mismo la cosa en Rust:
+Que llueva o no en Rust decide lo que pasa con el Eurosat:
 
 ```weather-widget slug=europa-park
 

@@ -237,9 +237,8 @@ crowd.** Since the annual passes went and the tickets got priced so
 aggressively, something has noticeably shifted in the park, and I don’t mean
 that only romantically. In the last year or two I’ve noticed distinctly more
 **vandalism** than in all the years before, in a place where you simply never
-used to see such things. Whether it’s directly connected I can’t say for sure.
-but I dearly wish my home park would push back here. It deserves better, and so
-do we guests.
+used to see such things. Whether it’s directly connected I can’t say for sure,
+and I have no numbers on it either. It stands out to me anyway.
 
 ## Phantasialand wait times: when they’re shortest
 
@@ -261,9 +260,9 @@ A few rules of thumb that almost always hold:
 
 Gut feeling is a poor advisor here, the moment holiday calendars, weather and
 opening hours all overlap. That’s exactly what park.fan is built for. The
-best-days-to-visit calendar condenses all of that, plus the park’s complete
-wait-time history, into a single, wonderfully simple color, green, yellow, red.
-Here are the quietest upcoming days for Phantasialand:
+best-days-to-visit calendar works all of that together with the park’s
+wait-time history into one color per day, green, yellow or red. Here are the
+quietest upcoming days for Phantasialand:
 
 ```best-days-widget slug=phantasialand
 
@@ -277,10 +276,10 @@ last two seasons will show you:
 
 ```
 
-The right answer to “when should I go?” is never “Sundays are busy,” but always:
-**this** Sunday, in **this** month, in **this** weather. Open the calendar, look
-at the color, book the ticket for the green day, that’s half the magic and saves
-you more of your life than any trick inside the park.
+“Sundays are busy” gets you nowhere. 12 October at Phantasialand in the rain
+does. That’s why the calendar carries a value per day and not a rule per
+weekday, and why you’re best off booking the ticket only after you’ve looked at
+it.
 
 ## Quick Pass: the new concept, Single Ride & Ultimate
 
@@ -385,9 +384,8 @@ available all year round, the perfect companion for the walk to the next ride.
 
 And the most important food tip is the same as for queuing: **counter-cyclically.**
 Eat around 11:30 a.m. or after 2:30 p.m., that way you ride the short lines during peak
-hours and sit in peace in the restaurant during ride time. Two birds, one stone,
-one satisfied stomach. (And if you come in winter, a treat all its own is waiting
-for you in the Wintertraum.)
+hours and sit in the restaurant while everybody else queues. (And if you come in
+winter, a treat all its own is waiting for you in the Wintertraum.)
 
 ## The small things I keep coming back for
 
@@ -479,7 +477,6 @@ atmospheric.
 And then there’s the **food you only get in winter.** Every year Wintertraum
 rolls out specialties, my secret number one is the **flat croissants**: crisply
 pressed, gloriously buttery and genuinely only available in the winter season.
-Add a cup of mulled wine, and the coldest park day becomes the coziest.
 
 And my very favorite Wintertraum tip of all: **Taron in the dark.** In winter it
 gets dark early, and racing through the illuminated Klugheim then, when the
