@@ -441,7 +441,7 @@ minuten.
 
 **Het [Europa-Park](ref:europa-park?bare) is het tegenmodel.** Duitslands
 grootste park, na Disneyland Paris het drukstbezochte van Europa, verdeelt zijn
-ruim zes miljoen gasten per jaar over **dertien achtbanen** plus tientallen
+ruim zes miljoen gasten per jaar over **vijftien achtbanen** plus tientallen
 themaritten. Die pure hoeveelheid parallelle capaciteit werkt als een
 overdrukventiel: de vraag spreidt zich, en nauwelijks een rij loopt permanent
 in verzadiging. Daarom voelen zelfs volle dagen in Rust zelden als Orlando, en

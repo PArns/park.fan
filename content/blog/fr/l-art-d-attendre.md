@@ -466,7 +466,7 @@ massive.
 
 **L’[Europa-Park](ref:europa-park?bare) est le contre-modèle.** Le plus grand
 parc d’Allemagne, deuxième d’Europe derrière Disneyland Paris en fréquentation,
-répartit ses quelque six millions de visiteurs annuels sur **treize montagnes
+répartit ses quelque six millions de visiteurs annuels sur **quinze montagnes
 russes** et des dizaines d’attractions thématisées. Cette masse de capacité
 parallèle agit comme une soupape de surpression : la demande se disperse et
 presque aucune file ne tourne durablement à saturation. C’est pourquoi même les

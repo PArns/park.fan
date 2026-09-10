@@ -454,7 +454,7 @@ enorme.
 
 **L’[Europa-Park](ref:europa-park?bare) è il controesempio.** Il parco più
 grande della Germania, dopo Disneyland Paris il più visitato d’Europa,
-distribuisce i suoi circa sei milioni di ospiti annui su **tredici montagne
+distribuisce i suoi circa sei milioni di ospiti annui su **quindici montagne
 russe** più decine di attrazioni tematizzate. Quella pura quantità di capacità
 parallela funziona come una valvola di sfogo: la domanda si distribuisce e
 quasi nessuna coda va in saturazione permanente. Per questo anche le giornate

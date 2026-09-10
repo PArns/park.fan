@@ -437,7 +437,7 @@ therefore regularly sit at 60 to 120 minutes despite massive hourly capacity.
 
 **[Europa-Park](ref:europa-park?bare) is the counter-model.** Germany’s largest
 park, and after Disneyland Paris the busiest in Europe, spreads its roughly six
-million guests a year across **thirteen roller coasters** plus dozens of themed
+million guests a year across **fifteen roller coasters** plus dozens of themed
 rides. That sheer volume of parallel capacity works like a pressure relief
 valve: demand disperses, and hardly any queue runs into permanent saturation.
 Which is why even busy days in Rust rarely feel like Orlando, and only new

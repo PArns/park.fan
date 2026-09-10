@@ -101,7 +101,7 @@ heb ik voorgerekend waarom [Taron](ref:phantasialand/taron) op een vakantiezater
 net zo snel in de verzadiging loopt als Peter Pan’s Flight in Parijs: een klein
 publiek beschermt je niet tegen lange rijen als er maar weinig attracties zijn
 waarover de drukte zich kan verdelen. De wiskunde is in het Phantasialand
-meedogenlozer dan in het weidse [Europa-Park](ref:europa-park) met zijn dertien
+meedogenlozer dan in het weidse [Europa-Park](ref:europa-park) met zijn vijftien
 achtbanen. Daarbij beprijst het park zijn tickets zo agressief dat het zelfs veel
 weekenden goed vult, de legendarische “lege zaterdag” is zeldzaam geworden.
 

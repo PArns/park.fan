@@ -103,7 +103,7 @@ dell’attesa](/blog/l-arte-dell-attesa) ho spiegato coi conti alla mano perché
 tanto in fretta quanto Peter Pan’s Flight a Parigi: un pubblico ridotto non ti
 mette al riparo dalle code lunghe se ci sono poche attrazioni su cui la calca
 possa distribuirsi. Al Phantasialand la matematica è più inesorabile che
-nell’esteso [Europa-Park](ref:europa-park) con i suoi tredici ottovolanti. In più
+nell’esteso [Europa-Park](ref:europa-park) con i suoi quindici ottovolanti. In più
 il parco prezza i suoi biglietti in modo così aggressivo da riempire bene anche
 molti weekend, il leggendario “sabato vuoto” è diventato raro.
 

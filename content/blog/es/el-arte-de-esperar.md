@@ -449,7 +449,7 @@ horaria enorme.
 
 **El [Europa-Park](ref:europa-park?bare) es el contramodelo.** El parque más
 grande de Alemania, tras Disneyland Paris el más visitado de Europa, reparte
-sus unos seis millones de visitantes anuales entre **trece montañas rusas** más
+sus unos seis millones de visitantes anuales entre **quince montañas rusas** más
 docenas de atracciones tematizadas. Esa pura cantidad de capacidad paralela
 actúa como una válvula de escape: la demanda se reparte y casi ninguna cola
 entra en saturación permanente. Por eso incluso los días llenos en Rust rara

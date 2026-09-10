@@ -452,7 +452,7 @@ Minuten.
 
 **Der [Europa-Park](ref:europa-park?bare) ist das Gegenmodell.** Deutschlands
 größter Park, nach Disneyland Paris der meistbesuchte Europas, verteilt seine
-rund sechs Millionen Gäste pro Jahr auf **dreizehn Achterbahnen** plus Dutzende
+rund sechs Millionen Gäste pro Jahr auf **fünfzehn Achterbahnen** plus Dutzende
 Themenfahrten. Diese schiere Menge an paralleler Kapazität wirkt wie ein
 Überdruckventil: Die Nachfrage verteilt sich, kaum eine Schlange läuft
 dauerhaft in die Sättigung. Deshalb fühlen sich selbst volle Tage in Rust
