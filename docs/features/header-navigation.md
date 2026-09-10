@@ -444,10 +444,17 @@ niemand, weil sie mit dem Band verschwand.
 Die Regel liegt jetzt als `focusLeftMenu` in `lib/utils/menu-focus.ts` (`pnpm test:menu-focus`,
 außerhalb des Hooks, weil `use-menu-trigger.ts` über next-intl an `next/navigation` reicht und
 damit außerhalb von Next nicht lädt) und verlangt ein benanntes Ziel: ein Fokus, der wirklich geht,
-sagt wohin. Die beiden Arten zu gehen, die nichts benennen, hängen ohnehin an den anderen zwei
-Wegen — ein Klick daneben schließt über `pointerdown`, Escape über `keydown`. Es betrifft nicht nur
-die Alarmgruppe: jeder Knopf in einem Band, der sich selbst deaktiviert, während er den Fokus hält,
-hätte dasselbe ausgelöst.
+sagt wohin. Was das Band in diesem Zustand schließt, ist das, was es vor jeder Fokusbewegung
+schloss: der Zeiger, der es verlässt (`onPointerLeave`, gemessen 180 ms), und ein `pointerdown`
+daneben. Es betrifft nicht nur die Alarmgruppe: jeder Knopf in einem Band, der sich selbst
+deaktiviert, während er den Fokus hält, hätte dasselbe ausgelöst.
+
+**Escape ist der dritte Weg und funktioniert nicht** — an keinem der drei Bänder, gemessen an
+„Parks entdecken" ebenso wie an den Favoriten, mit und ohne diese Änderung. `onKey` setzt
+`setOpenedOn(null)` und fokussiert direkt danach `rootRef.current.querySelector('a, button')`, also
+ein Element **innerhalb** des Wrappers, dessen `onFocus` im selben Commit `setRequested(true)`
+ruft. Das ist älter als diese Regel und hat ein eigenes Ticket; es steht hier, damit niemand aus
+den zwei Zeilen oben ein funktionierendes Escape herausliest.
 
 ## Bewegung im Sheet
 

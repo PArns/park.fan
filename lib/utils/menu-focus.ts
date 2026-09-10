@@ -9,10 +9,14 @@
  * under the click that had just been made: one alert per opening, and the confirmation that the
  * removal worked (the row disappearing, the rest moving up) went out of view with it.
  *
- * Focus that genuinely leaves says where it went. The two ways of leaving that name nothing are
- * both already handled in `useMenuTrigger`: a click landing outside closes on `pointerdown`, and
- * Escape closes on `keydown`. Losing the focus to a disabled button, to a node that was just
- * removed, or to another window is none of those, and closing on them is what this rules out.
+ * Focus that genuinely leaves says where it went. Losing it to a disabled button, to a node that
+ * was just removed, or to another window says nothing, and none of those is somebody leaving. What
+ * closes the band in that state is what closed it before the focus ever moved: the pointer leaving
+ * it (`onPointerLeave`, measured at 180 ms) and a `pointerdown` landing outside it. Escape is
+ * supposed to be the third and is not — it closes none of the three bands today, this one
+ * included, because the handler focuses back into the wrapper and the wrapper's own `onFocus`
+ * reopens it in the same commit. That is older than this rule and has its own ticket; it is named
+ * here so nobody reads a working Escape into the two lines below.
  *
  * Kept apart from the hook so it can be tested: `use-menu-trigger.ts` reaches `next/navigation`
  * through next-intl and does not load outside Next.

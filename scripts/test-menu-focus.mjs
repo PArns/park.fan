@@ -8,7 +8,9 @@
  * that the removal had worked.
  *
  * A DOM node here is any object with `contains` — that is the whole surface the rule touches, and
- * the alternative is a browser to assert one boolean in.
+ * the alternative is a browser to assert one boolean in. What the rule does NOT decide is what
+ * closes the band instead; that is `onPointerLeave` and the outside `pointerdown`, both in
+ * `useMenuTrigger`, and both measured in a real browser rather than here.
  *
  * Run: pnpm test:menu-focus
  */
