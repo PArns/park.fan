@@ -639,7 +639,9 @@ const oddCurrency = compareDays(
   TODAY
 );
 test('a non-ISO currency is dropped', () => oddCurrency.currency ?? 'none', 'none');
-test('while the price row survives', () => reason(oddCurrency, 'price')?.better, 'a');
+// And the ROW goes with it. Keeping it would leave the dialog a number it cannot label, and
+// every label it could fall back to states a different price — „US$ 189" as „189 €".
+test('and the price row goes with it', () => reason(oddCurrency, 'price'), null);
 
 // ---------------------------------------------------------------------------
 

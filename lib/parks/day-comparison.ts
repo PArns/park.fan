@@ -373,6 +373,22 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
   const rankA = bucketA === null ? null : rankWith(a, bucketA, comparableWaits);
   const rankB = bucketB === null ? null : rankWith(b, bucketB, comparableWaits);
 
+  /**
+   * The currency both tickets are quoted in — and only if a formatter will accept it.
+   *
+   * ISO 4217 is three letters, and `Intl.NumberFormat` THROWS a `RangeError` on anything else,
+   * inside the dialog's render. Validating here rather than at the call site keeps the malformed
+   * value out of the type, and — the part that matters more — lets the price ROW go with it. A
+   * row the caller cannot label is a number without a unit, and every fallback label it could
+   * pick states a different price.
+   */
+  const sharedCurrency =
+    a.ticket?.price && b.ticket?.price && a.ticket.price.currency === b.ticket.price.currency
+      ? a.ticket.price.currency
+      : undefined;
+  const priceCurrency =
+    sharedCurrency && /^[A-Za-z]{3}$/.test(sharedCurrency) ? sharedCurrency : undefined;
+
   const reasons = [
     // The crowd bucket carries the whole bucket difference; the wait carries what `rankOf` scales
     // it to (a two-hour queue is worth 0.99 of a bucket, no more). Together they are exactly the
@@ -392,8 +408,14 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
     holidayRow(a, b),
     // Only where BOTH days carry a price and both quote it in the same currency: "40 € against
     // 45 $" is not a comparison, and converting would be inventing an exchange rate.
-    a.ticket?.price && b.ticket?.price && a.ticket.price.currency === b.ticket.price.currency
-      ? reason('price', 'currency', a.ticket.price.amount, b.ticket.price.amount, 'lower')
+    //
+    // And only where that currency is one a formatter will NAME — see `priceCurrency`. A row
+    // whose code cannot be rendered is worse than no row: the dialog has to fall back to
+    // something, and „US$ 189" printed as „189 €" is not a formatting slip but a wrong price.
+    // The house rule elsewhere (`fast-pass-badge.tsx`, `park-calendar-day-detail.tsx`) is to
+    // withhold the price rather than assume a currency for it.
+    priceCurrency
+      ? reason('price', 'currency', a.ticket?.price?.amount, b.ticket?.price?.amount, 'lower')
       : null,
   ].filter((entry): entry is DayComparisonReason => entry !== null);
 
@@ -423,11 +445,7 @@ export function compareDays(a: CalendarDay, b: CalendarDay, todayIso: string): D
   // nothing else — and THROWS a `RangeError` on anything it does not recognise, in the middle of
   // the dialog's render. Filtering here keeps the malformed value out of the type instead of
   // making every reader of `currency` defend against it; the price row itself is unaffected, its
-  // two figures are numbers.
-  const rawCurrency = reasons.some((r) => r.key === 'price')
-    ? a.ticket?.price?.currency
-    : undefined;
-  const currency = rawCurrency && /^[A-Za-z]{3}$/.test(rawCurrency) ? rawCurrency : undefined;
+  const currency = reasons.some((r) => r.key === 'price') ? priceCurrency : undefined;
 
   // A blocked day never wins. Where exactly one side is blocked the other takes it by default —
   // "the park is open on the 14th and shut on the 15th" is a clear answer and does not need a
