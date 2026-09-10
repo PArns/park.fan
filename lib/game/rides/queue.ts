@@ -84,14 +84,29 @@ export function queuePath(
 }
 
 /**
- * How many places a machine's line is BUILT for, from the load it drains in.
+ * How many tickets a machine will issue before it turns people away, as a multiple of one load.
  *
- * A fixed structure, not a rubber band: a real park pours the switchback once and it is the same
- * length whether four people or two hundred are in it. `sim.ts` uses the same multiple as the cap
- * on how many tickets it will issue, so the rail is exactly as long as the line may become.
+ * This is a SIMULATION cap and not a building specification. The difference cost a round: the
+ * first version of the rail was built to this number, and on a high-capacity machine that is
+ * 8 x 40 = 320 places, i.e. **thirty-two legs and a 74 x 11.5 m structure** measured in the
+ * running park (`ride-1503`, 7,098 triangles) sprawling across the fairground it was meant to
+ * serve.
  */
 export const QUEUE_CYCLES = 8;
 
+/**
+ * Legs the switchback is BUILT with, whatever the ticket cap says.
+ *
+ * Six legs is 60 places in 11.4 x 8.2 m, which is a structure a park actually pours and a shape
+ * that fits beside a machine rather than across its neighbour. Where more people hold a ticket
+ * than the rail has room for, the tail stands past the end of it — which is what a queue that has
+ * "gone out of the gate" looks like in a real park, and is more honest than a handrail that grows
+ * when the ride gets popular.
+ */
+export const QUEUE_MAX_ROWS = 6;
+
+/** Places the rail is built for. Bounded, so geometry cannot follow a manifest's capacity. */
 export function queueSlots(capacity: number): number {
-  return Math.max(QUEUE_ROW, Math.round(Math.max(1, capacity) * QUEUE_CYCLES));
+  const wanted = Math.round(Math.max(1, capacity) * QUEUE_CYCLES);
+  return Math.max(QUEUE_ROW, Math.min(wanted, QUEUE_MAX_ROWS * QUEUE_ROW));
 }
