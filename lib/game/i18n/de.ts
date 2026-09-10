@@ -115,6 +115,8 @@ export const de: Record<GameStringKey, string> = {
   'tools.action.redo': 'Wiederhergestellt',
   'tools.action.refused': 'Hier nicht',
   'tools.palette.count': '{n} in deinen geladenen Paketen',
+  'tools.palette.collapse': 'Bauleiste einklappen',
+  'tools.palette.expand': 'Bauleiste ausklappen',
   'tools.item.route': 'wird als Strecke gebaut',
   'tools.cost.label': 'Kosten',
   'tools.cost.idle': '–',

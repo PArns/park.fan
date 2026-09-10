@@ -113,6 +113,8 @@ export const en = {
   'tools.action.redo': 'Redone',
   'tools.action.refused': 'Not here',
   'tools.palette.count': '{n} in the packs you have loaded',
+  'tools.palette.collapse': 'Collapse the build tray',
+  'tools.palette.expand': 'Open the build tray',
   'tools.item.route': 'draws track',
   'tools.cost.label': 'Cost',
   'tools.cost.idle': '–',

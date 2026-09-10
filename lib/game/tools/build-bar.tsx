@@ -46,6 +46,7 @@ import {
   Box,
   BrickWall,
   BriefcaseMedical,
+  ChevronDown,
   Circle,
   CircleDot,
   Clock,
@@ -193,6 +194,21 @@ export function BuildBar({ t, locale, getHandle }: BuildBarProps) {
   const api = useToolsApi(getHandle);
   const state = useToolsState(api);
   const [openKind, setOpenKind] = useState<string | null>(null);
+  /**
+   * Whether the tray of tiles is shown at all.
+   *
+   * The round-2 critic measured this bar at **400 px of a 720 px viewport — 55.6 %** — with the
+   * tray open, and pointed out what that costs rather than what it looks like: the bar covers the
+   * NEAR ground, which is the ground a pointer places things on, so at 1280x720 the whole park
+   * was a 300 px strip above a catalogue. It called a collapse control "the single most valuable
+   * thing left" and priced it at one chevron. This is the chevron.
+   *
+   * Collapsed hides the TILES and keeps the tab strip and the toolbelt, because those two are how
+   * you get back — a bar that collapses to nothing is a bar you cannot reopen without knowing a
+   * shortcut. Arming an item from the palette opens it again on its own: choosing a thing to
+   * build is the one moment you certainly want to see what you chose.
+   */
+  const [trayOpen, setTrayOpen] = useState(true);
 
   if (!api || !state) return null;
   const groups = api.palette();
@@ -219,7 +235,14 @@ export function BuildBar({ t, locale, getHandle }: BuildBarProps) {
         t={t}
         locale={locale}
         state={state}
-        onOpen={setOpenKind}
+        open={trayOpen}
+        onToggle={() => setTrayOpen((v) => !v)}
+        onOpen={(kind) => {
+          setOpenKind(kind);
+          // Reaching for a category is asking to see it. A tab press that changed nothing on a
+          // collapsed tray would read as a dead control.
+          setTrayOpen(true);
+        }}
       />
       <Toolbelt api={api} state={state} t={t} locale={locale} item={activeItem} />
     </div>
@@ -235,6 +258,8 @@ function BuildTray({
   t,
   locale,
   state,
+  open,
+  onToggle,
   onOpen,
 }: {
   api: ToolsMainApi;
@@ -243,6 +268,8 @@ function BuildTray({
   t: Translate;
   locale: GameLocale;
   state: ToolsState;
+  open: boolean;
+  onToggle: () => void;
   onOpen: (kind: string) => void;
 }) {
   const total = groups.reduce((n, g) => n + g.items.length, 0);
@@ -274,9 +301,33 @@ function BuildTray({
         <h2 className="text-[13px] font-bold text-white/95 [text-shadow:var(--game-engrave)]">
           {groupLabel(group.kind, t)}
         </h2>
-        <span className={cn(MICRO_LABEL, 'truncate text-white/70')}>
-          {t('tools.palette.count', { n: total })}
-        </span>
+        <div className="flex min-w-0 items-center gap-2">
+          <span className={cn(MICRO_LABEL, 'truncate text-white/70')}>
+            {t('tools.palette.count', { n: total })}
+          </span>
+          {/* On the title bar and not on the belt: the strip is the tray's own edge, so the
+              control that folds the tray sits on the thing it folds. 24 px inside a 32 px bar,
+              which is the one place in this skin a control may be under the 44 px phone floor —
+              same exception the header's own switches take, for the same reason. */}
+          <button
+            type="button"
+            data-build-tray-toggle=""
+            onClick={onToggle}
+            aria-expanded={open}
+            title={t(open ? 'tools.palette.collapse' : 'tools.palette.expand')}
+            className={cn(
+              'grid size-6 shrink-0 place-items-center rounded-(--game-radius-key)',
+              'text-white/80 ring-1 ring-white/25 ring-inset transition-colors',
+              'hover:bg-white/15 hover:text-white'
+            )}
+          >
+            <ChevronDown
+              className={cn('size-4 transition-transform', open ? '' : '-rotate-180')}
+              aria-hidden
+            />
+            <span className="sr-only">{t(open ? 'tools.palette.collapse' : 'tools.palette.expand')}</span>
+          </button>
+        </div>
       </div>
 
       {/* Capped and scrolling: at 720 px tall that is two rows and a peek, which is what keeps the
@@ -284,6 +335,7 @@ function BuildTray({
           321 px of tiles under a 44 px tab strip and over a toolbelt, and the whole bar came to
           511.5 px of an 844 px phone, three fifths of the screen for the furniture. */}
       <div
+        hidden={!open}
         className={cn(
           'grid max-h-[min(38vh,320px)] grid-cols-1 gap-2 overflow-y-auto pb-[10px] sm:grid-cols-5',
           'max-sm:max-h-[min(30vh,232px)] max-sm:gap-1.5'
