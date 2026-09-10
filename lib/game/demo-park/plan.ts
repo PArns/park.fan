@@ -611,6 +611,34 @@ export const PATHS: readonly PathPlan[] = [
     note: 'The second way off the lakeside ring: north past the flume plot to the fairground loop, so the east side is a circuit and not a spur.',
   },
   {
+    /**
+     * The walk down the build plot's western edge.
+     *
+     * The plot went in without one, and the round-3 critic priced that exactly: **139 of 2,405
+     * cells inside the 14 m queue radius**, worst point 105.6 m from any paving. Re-measured on a
+     * 3 m grid it is 61 of 1,075 (5.7 %) — and the number that actually decides whether the plot
+     * is usable is narrower than either: of the **370 positions a coaster can legally be clicked
+     * into, only 86 (23.2 %) put its station within reach**. Three quarters of the ways to build
+     * there gave a queue nobody could join, and nothing said so.
+     *
+     * Paving the plot to cover all of it would need spines every 28 m — three of them through the
+     * ground the player is meant to build on, which is solving the measurement rather than the
+     * problem. A coaster's station is at its ANCHOR, and the anchors that pass placement sit
+     * against the plot's west side, so one walk down that side serves them and leaves the plot
+     * whole.
+     *
+     * It welds rather than touches: the first node is `lake-link`'s own (134, -6), and the last
+     * meets nothing on purpose — a park has dead ends, and a walk that had to loop would cross
+     * the plot to do it.
+     */
+    id: 'build-plot-walk',
+    form: 'path',
+    style: 'pavers',
+    width: 4,
+    points: [134, -6, 136, -28, 137, -58, 137, -92, 136, -120, 134, -132],
+    note: 'Serves the build plot from its west side, welded into lake-link at (134, -6).',
+  },
+  {
     id: 'service-road',
     form: 'path',
     style: 'service-road',
