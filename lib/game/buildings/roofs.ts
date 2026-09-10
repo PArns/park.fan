@@ -650,6 +650,34 @@ function dormers(
           ? { colour: lit ? skin.litColour : skin.glassColour, tile: skin.joineryTile }
           : { colour: lit ? skin.litColour : skin.glassColour, tile: skin.joineryTile, back: true }
       );
+      /**
+       * A sill, two bargeboards and a cheek half a stop lighter than the pitch.
+       *
+       * Round 3's critic put it plainly: at 44 m each of the clock tower's three dormers is a dark
+       * rectangle. Everything was there — cheeks, a face, a pitched cap, a window — and none of it
+       * separated, because the face sits in shade and the cheeks and cap were `r.colour`, i.e. the
+       * same slate as the plane they stand on. `overview` and `close` are both roofscape frames,
+       * so this is what is IN them.
+       *
+       * Nothing here is invented: a real dormer has a stone or timber sill that throws water clear
+       * of the face, and a bargeboard closing the rake of its little gable. Both are light against
+       * a dark roof and both are horizontal-then-diagonal, which is what a roofscape is short of.
+       * 36 triangles a dormer, all of them in the one direction a distant frame can use.
+       */
+      const halfSill = w / 2 + 0.12;
+      const sillOut = face + side * 0.11;
+      boxLocal(
+        ctx.kit,
+        m,
+        r.ridge === 'x'
+          ? [u - halfSill, sillY - 0.1, Math.min(face - side * 0.05, sillOut)]
+          : [Math.min(face - side * 0.05, sillOut), sillY - 0.1, u - halfSill],
+        r.ridge === 'x'
+          ? [u + halfSill, sillY, Math.max(face - side * 0.05, sillOut)]
+          : [Math.max(face - side * 0.05, sillOut), sillY, u + halfSill],
+        skin.trimColour,
+        skin.trimTile
+      );
       // Cheeks and a little gable roof over it.
       for (const cheek of [-1, 1]) {
         const cu = u + (cheek * w) / 2;
@@ -658,7 +686,9 @@ function dormers(
           p(cu, face, sillY),
           p(cu, cheekBack, sillY + h * 0.55),
           p(cu, face, sillY + h),
-          r.colour,
+          // Lead over slate: the same family, a stop lighter, so the box reads as a box and not as
+          // a patch of the pitch. `1.0` was three rounds of dark rectangles.
+          shade(r.colour, 1.22),
           r.tile,
           // A dormer cheek looks along the ridge, away from the dormer's own middle.
           faceDir(m, r.ridge, cheek, 0)
@@ -673,6 +703,16 @@ function dormers(
           p(u, cheekBack, apex - 0.1),
           p(u + (cheek * (w + 0.3)) / 2, cheekBack, sillY + h - 0.1),
           { colour: r.colour, tile: r.tile, repeatU: 2, repeatV: 2, back: cheek * side < 0 }
+        );
+        // The bargeboard down that rake. A square section, because a bargeboard is a board.
+        addTube(
+          ctx.kit,
+          p(u + (cheek * (w + 0.36)) / 2, face + side * 0.2, sillY + h - 0.06),
+          p(u, face + side * 0.2, apex + 0.03),
+          0.055,
+          skin.trimColour,
+          skin.trimTile,
+          4
         );
       }
     }

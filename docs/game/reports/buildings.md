@@ -1,12 +1,19 @@
 # buildings — builder report
 
 `lib/game/buildings/` · showcase `/game?showcase=buildings` · 16 TypeScript files, plus a self-test
-of 66,020 checks. Entity kind `building`. Nothing outside the folder was touched except this file and
+of 66,024 checks. Entity kind `building`. Nothing outside the folder was touched except this file and
 `docs/game/requests/buildings.md`.
 
-**Round 1: 7.5, FAIL** (`docs/game/critiques/buildings-round1.md`). **Round 2: 8.2, FAIL**
-(`docs/game/critiques/buildings-round2.md`), short of the 8.5 gate by 0.28, with no hard gate
-failed. The round-2 critic's closing instruction is what round 3 started from, verbatim: _"Round 3
+**Round 1: 7.5, FAIL** · **Round 2: 8.2, FAIL** · **Round 3: 8.3, FAIL**
+(`docs/game/critiques/buildings-round{1,2,3}.md`), the last of them short of the 8.5 gate by 0.20
+with every hard gate passing. Round 4 started from its critic's closing instruction, verbatim:
+_"make §5d's outward probe scale to the solid it is stepping into and print how many triangles stand
+on a solid thinner than the probe — reproduce the `addBand` sabotage first, then fix it, then re-run
+both of round 3's demonstrations to prove nothing was lost — and in the same commit put `clockFaces`
+and `sign.mass` into `massSchema` and the sign schema with a selftest case per field."_ All of that
+is §4.16 and §4.17. What it turned up on the way is §4.20, and that is the round's real find.
+
+The round-2 instruction round 3 worked from is kept below because §0b answers it: _"Round 3
 should start by making §5d judge every upright triangle rather than only those standing on a mass's
 plan envelope … until that check has no hole in it nothing else about this module's geometry can be
 trusted to stay fixed."_
@@ -20,26 +27,68 @@ featureless pale sheet. Two rounds of checks had read green over it.
 
 This report has been corrected against both critiques rather than defended. Round 1's corrections
 (§4.1, §4.2 and a draw-call share measured at night and spent in daylight) are marked in place.
-Round 2's are §0 below: the claim that its two winding checks had "no categories in them at all" was
-true of one of them and false of the other, and that sentence is struck wherever it appeared.
+Round 2's are §0c below: the claim that its two winding checks had "no categories in them at all"
+was true of one of them and false of the other, and that sentence is struck wherever it appeared.
+Round 3's are §0 rows 1 and 4 and the strike-throughs in §3 and §4.14.
 
 ---
 
-## 0. Round 3 — what changed and what it is worth
+## 0. Round 4 — what changed and what it is worth
 
-| #   | Finding (round-2 critique unless marked)                                                | State | Evidence                                                                                                                                                                                                    |
-| --- | --------------------------------------------------------------------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | §5d could not see 2,650 m² of upright surface, and the report said it had no categories | fixed | it judges **every** upright triangle in the build against the solids the KIT recorded; 38,237 judged over 8,897 m², **248 / 132.4 m² (1.6 %) on no solid at all — counted, printed and asserted under 2 %** |
-| 2   | The rotunda's drum reads as a featureless pale sheet                                    | fixed | **found by finding 1**: `roundFrames` walked its ring by increasing angle, so every round mass in the module was built inside out. Put back, §5d answers `rotunda: 475 triangles, 117.2 m²` (§4.12)         |
-| 3   | One point light for 24 sites, and the harness never photographs it                      | fixed | `LIGHT_POOL.medium` 1 → 2 and the pool re-sorts on a camera **jump** as well as on its clock; the standard 23:00 frame and a `--wait=20000` control differ in **0 scene pixels** (§4.13)                    |
-| 4   | The night roofscape is black, the largest surface in every overview                     | fixed | a hemispheric sky term on this module's meshes only: a mansard slope 26.4 → 35.9 mean luma, the lawn **19.8 → 19.8** to the decimal (§4.14)                                                                 |
-| 5   | A park's main street with no shopfront on it                                            | fixed | `shop-terrace` — one blueprint, no TypeScript — on three of the eleven showcase plots; the glazed shopfront and its fascia are legible in `0900-ground.png` and lit in `1830-ground.png`                    |
-| 6   | `overview` frames empty lawn and hides the kit row behind the HUD                       | part  | reframed and two plots moved to the east side: lawn **71.8 % → 60.8 %** of the judged frame. Three fifths is still lawn (§5.3)                                                                              |
-| 7   | Two kit samples still read as slabs                                                     | open  | §5.1 — the Panorama window and the Double door, both visible in `1200-kit-east.png`                                                                                                                         |
-| 9   | `mass.id` dead, clock count hard-coded where the manifest has a field                   | fixed | `sign.mass` names the mass a sign hangs on; `mass.clockFaces` overrides the 1.6 : 1 ratio                                                                                                                   |
-| 10  | Two pixel claims that do not say what they measured                                     | fixed | every pixel figure in §3 now names its file, its crop and its threshold                                                                                                                                     |
-| 11  | **Round 3's own:** the kit yard laid a plaza over the promenade                         | fixed | a `plaza` does not clip a path that crosses it; `1200-kit.png` came back with the two surfaces torn into each other. Two `path` aisles instead (§4.15)                                                      |
-| 12  | **Round 3's own:** a code comment quoting numbers from a frame that no longer exists    | fixed | `main.ts`'s sky-light comment cited a roof band measured before `overview` was re-aimed; re-A/B'd and re-written with the file and the crop in it                                                           |
+| #   | Finding (round-3 critique unless marked)                                                      | State | Evidence                                                                                                                                                                                                                                                                     |
+| --- | --------------------------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | A reversed `addBand` front face — 4,014 triangles / 352.7 m² — passed 66,020 of 66,020 checks | fixed | the probe is **two-sided and scaled to the solid** now: same sabotage → **✗ 350 triangles / 25.4 m² across 10 items** (§4.16). The thin-solid count is printed beside the check and asserted non-zero                                                                        |
+| 2   | The dormer demonstration caught 2 of the 4 blueprints it inverts                              | fixed | `facingNothing`'s facing-back branch wanted `dot ≤ −0.78`, not an absolute value over 0.5 — a 46° pitch is not the surface a dormer front points at. Same sabotage → **all four**: clock-tower 24 / 9.1 m², watermill 4 / 4.1 m² (§4.16)                                     |
+| 3   | `sign.mass` and `mass.clockFaces` recorded as fixed, stripped by the module's own zod schemas | fixed | both in `massSchema` / the sign schema, and **the two selftest cases now go through `registerPack` + `resolveBuilding`** rather than handing `buildBuilding` an object written in the test file (§4.17). Removing them again fails 4 checks                                  |
+| 4   | Three report figures contradict the module's own test output                                  | fixed | the residue is whatever the shipped test prints and it is quoted from it (**250 / 127.9 m²**), the sim's worst door is **1.88 m on the grand pavilion** (rotunda 0.61), and §4.14's "a vertical brick wall barely does" is struck against its own A/B (wall +8.8, roof +9.5) |
+| 5   | The dormers are flat dark quads, and they are the roofscape                                   | fixed | a stone sill, two bargeboards and a cheek a stop lighter than the pitch: on the same `0900-close` band, p95 **34.8 → 52.5** and gradient energy **4.61 → 5.73** (§4.18)                                                                                                      |
+| 6   | The aprons are hard-edged paving mats                                                         | fixed | paving, kerb, then a gravel verge whose outer edge wanders **1.2 m** over each side. `_r4/inn-verge-{before,after}.png` (§4.19)                                                                                                                                              |
+| 7   | Two kit samples are still boxes, three rounds open                                            | fixed | and **the Double door was a wall**: `door()` cut its opening twice and the fanlight's panel laid the elevation back over the door. Every door on a storey of 3.05 m or more has been invisible since round 1 (§4.20)                                                         |
+| 8   | `kit-east` is a picture of the promenade                                                      | part  | the pieces turn 19.5° towards the only place a camera can stand, and the dull ones go to the back of the rank. `kit` is a rank of samples now; `kit-east` still spends its lower-left third on paving (§4.21)                                                                |
+| 9   | `overview` is still three fifths lawn                                                         | open  | §5.3, unchanged and correctly diagnosed there: it wants content on the west side, not another camera                                                                                                                                                                         |
+| 10  | Twenty-five light sites still share two lamps                                                 | open  | §5.5, unchanged. `maxSimultaneousLights = 6` minus the sun is the ceiling                                                                                                                                                                                                    |
+| 11  | **Round 4's own:** the strengthened check found an undeclared solid on the clean tree         | fixed | the opaque interior behind an unlit pane is the far wall of a room and stood on nothing; declared with `frameSlabSolid`, which is also what `addBand` uses now (§4.16)                                                                                                       |
+
+**Round 4 is one instruction and one accident.** The instruction was the critic's: _"make §5d's
+outward probe scale to the solid it is stepping into and print how many triangles stand on a solid
+thinner than the probe"_. That was done, and then the same discipline that found the rotunda in
+round 3 found the next thing — on the **clean** tree, before any sabotage, the strengthened check
+named `neon-lagoon:window-panorama`, 2 triangles over 6.2 m², which turned out to be the one
+deliberately inward face in the module standing on a volume nobody had declared.
+
+The accident is worth more than the instruction. Chasing round 3's finding 8 — _"the Double door is
+a flat brown leaf on a white frame"_ — I painted the door leaf bright magenta and re-shot the frame.
+**Zero pixels changed.** Painting the architrave's hood changed 1,244. `door()` called
+`addPanelWithHole` twice, once for the door and once for the fanlight above it, and the second
+call's "below" rectangle is a sheet of wall from the ground to the fanlight's sill — laid straight
+back over the door. A door only gets a fanlight when its storey is about **3.05 m or taller**, so
+**every door in this module above that height has been a picture of the wall behind it since round
+1** — the grand pavilion, the ticket hall, the market hall, the inn and the kit sample; the 2.95 m
+terrace types are under the threshold and kept theirs. That is round 3's finding 8 and round 2's
+_"no front door reads on the principal elevation of the grand pavilion"_, both of them the same line
+of code, and neither of us found it by looking at the frame for three rounds. The grand pavilion has
+a door now (`_r4/hall-door-4x.png`).
+
+**What is still open is named in §5 and not dressed up here**: `overview` is three fifths lawn,
+`kit-east` is still a third paving, and twenty-five light sites still share two lamps.
+
+---
+
+## 0b. Round 3 — what changed and what it is worth
+
+| #   | Finding (round-2 critique unless marked)                                                | State | Evidence                                                                                                                                                                                                                                                                                     |
+| --- | --------------------------------------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | §5d could not see 2,650 m² of upright surface, and the report said it had no categories | fixed | it judges every upright triangle against the solids the KIT recorded; 38,237 judged over 8,897 m². ~~248 / 132.4 m²~~ its own test printed **250 / 143.2**, and ~~"judges every upright triangle"~~ was more than a 0.25 m probe could conclude — both corrected in round 4, §0 rows 1 and 4 |
+| 2   | The rotunda's drum reads as a featureless pale sheet                                    | fixed | **found by finding 1**: `roundFrames` walked its ring by increasing angle, so every round mass in the module was built inside out. Put back, §5d answers `rotunda: 475 triangles, 117.2 m²` (§4.12)                                                                                          |
+| 3   | One point light for 24 sites, and the harness never photographs it                      | fixed | `LIGHT_POOL.medium` 1 → 2 and the pool re-sorts on a camera **jump** as well as on its clock; the standard 23:00 frame and a `--wait=20000` control differ in **0 scene pixels** (§4.13)                                                                                                     |
+| 4   | The night roofscape is black, the largest surface in every overview                     | fixed | a hemispheric sky term on this module's meshes only: a mansard slope 26.4 → 35.9 mean luma, the lawn **19.8 → 19.8** to the decimal (§4.14)                                                                                                                                                  |
+| 5   | A park's main street with no shopfront on it                                            | fixed | `shop-terrace` — one blueprint, no TypeScript — on three of the eleven showcase plots; the glazed shopfront and its fascia are legible in `0900-ground.png` and lit in `1830-ground.png`                                                                                                     |
+| 6   | `overview` frames empty lawn and hides the kit row behind the HUD                       | part  | reframed and two plots moved to the east side: lawn **71.8 % → 60.8 %** of the judged frame. Three fifths is still lawn (§5.3)                                                                                                                                                               |
+| 7   | Two kit samples still read as slabs                                                     | open  | §5.1 — the Panorama window and the Double door, both visible in `1200-kit-east.png`                                                                                                                                                                                                          |
+| 9   | `mass.id` dead, clock count hard-coded where the manifest has a field                   | fixed | `sign.mass` names the mass a sign hangs on; `mass.clockFaces` overrides the 1.6 : 1 ratio                                                                                                                                                                                                    |
+| 10  | Two pixel claims that do not say what they measured                                     | fixed | every pixel figure in §3 now names its file, its crop and its threshold                                                                                                                                                                                                                      |
+| 11  | **Round 3's own:** the kit yard laid a plaza over the promenade                         | fixed | a `plaza` does not clip a path that crosses it; `1200-kit.png` came back with the two surfaces torn into each other. Two `path` aisles instead (§4.15)                                                                                                                                       |
+| 12  | **Round 3's own:** a code comment quoting numbers from a frame that no longer exists    | fixed | `main.ts`'s sky-light comment cited a roof band measured before `overview` was re-aimed; re-A/B'd and re-written with the file and the crop in it                                                                                                                                            |
 
 **The round's whole result is row 1 finding row 2, and that is worth saying plainly.** The critic
 demonstrated the hole by turning every dormer front in the catalogue inward and watching the suite
@@ -57,7 +106,7 @@ rounds, and it is named first in §5 rather than dressed up here.
 
 ---
 
-## 0b. Round 2 — what changed and what it is worth
+## 0c. Round 2 — what changed and what it is worth
 
 | #   | Finding                                                                               | State | Evidence                                                                                                                                                                                                         |
 | --- | ------------------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,7 +186,7 @@ building any other pack declares.
 | `main.ts`      | The renderer: lazy atlas, batches, thin instances, the night pool, the public API.              |
 | `showcase.ts`  | A street of ten buildings, the ten loose kit pieces, and a runtime-registered content pack.     |
 | `sim.ts`       | Footprints and doors on the worker, derived from the blueprint. Empty tick — §4.11.             |
-| `selftest.mjs` | 66,020 checks in ~2 s, no browser.                                                              |
+| `selftest.mjs` | 66,024 checks in ~2 s, no browser.                                                              |
 
 ### The content vocabulary
 
@@ -239,7 +288,7 @@ still lie.
 
 ```
 node scripts/game-shot.mjs --url=http://localhost:3001 --showcase=buildings \
-  --cam=overview,close,ground --tod=09:00,18:30,23:00 --out=.game-render/buildings-r3-final
+  --cam=overview,close,ground --tod=09:00,18:30,23:00 --out=.game-render/buildings-r4
 ```
 
 1280 × 720, WebGL2 through SwiftShader, `medium` preset, **`localhost:3001`, the dev server** —
@@ -252,8 +301,12 @@ live servers, the bug in one and the fix in the other, with nothing but the buil
 
 | directory                                 | what is in it                                                                                                                                                                                                                          |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.game-render/buildings-r3-final/`        | the nine gauntlet frames, taken after the last code change in this round                                                                                                                                                               |
-| `.game-render/buildings-r3-insp/`         | the same cameras BEFORE §4.15's fix — kept for the torn kit yard in its `1200-kit.png`                                                                                                                                                 |
+| `.game-render/buildings-r4/`              | **round 4's nine gauntlet frames**, taken after the last code change of this round                                                                                                                                                     |
+| `.game-render/buildings-r4-insp/`         | **round 4's six inspection cameras at noon**: `inn`, `hall`, `rot`, `facade`, `kit`, `kit-east`                                                                                                                                        |
+| `.game-render/buildings-r4-insp4/`        | one frame kept on purpose — the `kit-east` camera moved east of its own row, standing inside the ticket hall's colonnade (§4.21)                                                                                                       |
+| `.game-render/_r4/`                       | round 4's crops and A/B tooling: `crop.mjs`, `diff.mjs`, `stats.mjs`, `edge.mjs`, `findmag.mjs`, and every crop cited below, cut nearest-neighbour so no resampling invents detail                                                     |
+| `.game-render/buildings-r3-final/`        | the nine gauntlet frames of round 3, kept as the before for §4.18                                                                                                                                                                      |
+| `.game-render/buildings-r3-insp/`         | round 3's inspection cameras — kept for the torn kit yard in its `1200-kit.png` and as the before for §4.19's apron                                                                                                                    |
 | `.game-render/buildings-r3-kit/`          | five inspection cameras at noon, taken after the last change of this round: the two kit aisles, `rot`, `facade`, `inn`                                                                                                                 |
 | `.game-render/buildings-r3-settled/`      | the 23:00 `ground` control at `--wait=20000` (§4.13)                                                                                                                                                                                   |
 | `.game-render/buildings-r3-night/`        | two A/Bs at 23:00 — the sky term (§4.14) and the two pooled point lights                                                                                                                                                               |
@@ -273,6 +326,35 @@ the animated HUD clock, and in 0 pixels of the scene** (§4.13). The nine frames
 this module.
 
 ### The frames
+
+Round 4's sets, all from the **dev server at `localhost:3001`** and all opened with the Read tool:
+
+| File                                         | What is actually in it                                                                                                                                                                                                                                                                                 |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `buildings-r4/0900-overview.png`             | The street at the gauntlet's 09:00, which D-023 has made a raking dawn: terraces under blue-grey mansards down both sides, the clock tower, the ticket hall, the rotunda's cone, the market hall's vault, the grand pavilion closing the vista. Left third and bottom-left are lawn — §5.3, unchanged. |
+| `buildings-r4/0900-close.png`                | The clock-tower block at 44 m, and the frame §4.18 is about: **the three dormers now read as boxes on the slope** — a pale sill under each window, a bargeboard down each rake, a cheek a stop lighter than the pitch. The rotunda's drum at the left edge, arches in it.                              |
+| `buildings-r4/0900-ground.png`               | Eye level at dawn: shopfronts on the near-left terrace, brick courses, sashes with bars, sills, string courses, quoins, and a sky reflection in the upper corner of most panes (§4.20's third change).                                                                                                 |
+| `buildings-r4/1830-overview.png`             | Broad afternoon under D-023. The roofs, the aprons and their gravel verges are all legible from 116 m.                                                                                                                                                                                                 |
+| `buildings-r4/1830-close.png`                | The clock tower in afternoon sun. The three dormers each carry a white sill line and a bargeboard V — the clearest daylight view of §4.18.                                                                                                                                                             |
+| `buildings-r4/1830-ground.png`               | The street in afternoon. Under D-023 this is no longer a dusk frame; the module's best light is now outside the gauntlet's three times, which is the harness's problem and not this module's.                                                                                                          |
+| `buildings-r4/2300-overview.png`             | Night, and the roofs read as slate against dark grass. The market hall's shopfront is the teal band on the right; the terraces are warm windows.                                                                                                                                                       |
+| `buildings-r4/2300-close.png`                | Night on the clock tower: three lit dormers, each now with its sill and barge catching the window's own glow, the lit clock dial, the lantern, the rotunda's drum lit at the left edge.                                                                                                                |
+| `buildings-r4/2300-ground.png`               | The receding street of lit windows in the standard frame at the harness's own wait.                                                                                                                                                                                                                    |
+| `buildings-r4-insp/1200-hall.png`            | The grand pavilion. **It has a front door on its principal elevation for the first time** (§4.20) — two leaves, a fanlight, an architrave, steps up to it. Round 2's finding, open for two rounds.                                                                                                     |
+| `buildings-r4-insp/1200-inn.png`             | The extensibility exhibit, all JSON: jettied first floor, wing at 35°, pantiles, chimneys, two dormers with their new sills. The apron's edge against the lawn is a gravel verge now, not a ruled line.                                                                                                |
+| `buildings-r4-insp/1200-rot.png`             | The rotunda, unchanged from round 3 and still correct: voussoirs, keystone, glazing bars, plinth, cornice, cone, lantern.                                                                                                                                                                              |
+| `buildings-r4-insp/1200-facade.png`          | Two metres from a terrace flank. §5.4's frame: at 160 px/m the mortar joints are soft.                                                                                                                                                                                                                 |
+| `buildings-r4-insp/1200-kit.png`             | The west rank, re-ordered and turned (§4.21): an arched window three-quarters on with glazing bars and a sky reflection, a slate roof behind it, a column, a lit shopfront. A rank of samples rather than a blank wall filling the frame.                                                              |
+| `buildings-r4-insp/1200-kit-east.png`        | The east rank, near piece the Double door. **Partly fixed**: the door reads, the lower left third is still promenade.                                                                                                                                                                                  |
+| `buildings-r4-insp4/1200-kit-east.png`       | **Kept as evidence for §4.21's constraint**: the same camera moved east of the east row, which puts it inside the ticket hall's colonnade. Eight columns and no kit at all.                                                                                                                            |
+| `_r4/dormer-before-4x.png` / `-after-4x.png` | The same 300 × 90 band of `0900-close.png` at 4×, round 3 against round 4. Three dark quads against three boxes with a lit sill line and a barge over each. p95 34.8 → 52.5, gradient 4.61 → 5.73.                                                                                                     |
+| `_r4/inn-verge-before.png` / `-after.png`    | The inn's apron at 2.6×, round 3's `buildings-r3-insp/1200-inn.png` against round 4's. A ruled straight line against grass, and a gravel band whose edge wanders.                                                                                                                                      |
+| `_r4/door-3x.png` / `door-fixed-3x.png`      | The Double door sample at 3.4×, before and after §4.20. A brown rectangle in a white architrave; then a panelled leaf with stiles, rails, a transom bar and a glazed fanlight over it.                                                                                                                 |
+| `_r4/hall-door-4x.png`                       | The grand pavilion's centre bay at 4×: the double door, the fanlight, the arched windows either side with their sky reflections.                                                                                                                                                                       |
+| `_r4/hall-apron-3x.png`                      | The pavilion's own apron meeting the lawn at 3×, with the verge on it — **and the pink octagon beside it, which is the showcase's `paths` plaza and not this module's apron** (§4.19).                                                                                                                 |
+| `_r4/pano-5x.png`                            | The Panorama window at 5×: mullions, a transom, a lit interior. Not a teal box.                                                                                                                                                                                                                        |
+
+Round 3's sets are kept and still accurate for everything they are cited for below.
 
 | File                                                                                         | What is actually in it                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -305,18 +387,23 @@ From a throwaway Playwright probe that reads `window.__parkfan_game.scene()` and
 out of it.
 
 - **The budget figure is 128 draw calls at 09:00 `overview`, and it is what an A/B says.** Disabling
-  `api.meshes()` in the running page takes the whole scene from **179 draw calls / 442,534
-  triangles** to **51 / 67,146**, so this module is **128 draw calls and 375,388 triangles**, i.e.
-  **10.7 % of the 1,200-call budget**. It was 120 / 330,958 / 10.0 % in round 2 over 23 buildings;
+  `api.meshes()` in the running page takes the whole scene from **179 draw calls / 452,984
+  triangles** to **51 / 68,148**, so this module is **128 draw calls and 384,836 triangles**, i.e.
+  **10.67 % of the 1,200-call budget**. Round 4 added the dormer trim, the door's stiles and rails,
+  the gravel verge and a sky reflection in every unlit pane and **the draw-call figure did not
+  move**: 9,448 more triangles (+2.5 %) in the same 128 calls, which is what batching is for. Over
+  the 22-item selftest catalogue it is 72,822 → **74,517 triangles**, attributed by ablating each
+  addition in turn: verge 728, dormer sill and bargeboards 448, pane reflections 109, and the door
+  410 as the remainder. It was 120 / 330,958 / 10.0 % in round 2 over 23 buildings;
   the round added two street plots and one blueprint, and the eight calls are what those cost. The
   cascades are core's mechanism; the geometry going through them three more times is this module's,
   so it counts here. At 23:00 `ground` the same A/B reads **100 → 43, i.e. 57 calls** — night is
   cheaper because the shadow generator has no sun to run.
   _(dev server, probe reading `window.__parkfan_game.metrics()` either side of the toggle.)_
-- **25 buildings → 22 batches → 62 drawn meshes**, in nineteen distinct types. Per type it is **1 to
+- **25 buildings → 22 batches → 62 drawn meshes**, in twenty distinct blueprint values (round 3 said nineteen and its critic counted the list). Per type it is **1 to
   5**: kit (always), glass, lit windows, sign, spill ring. The five terrace-and-shop plots are two
   batches and five matrices, so a street of twenty would still be two.
-- **98,092 triangles drawn, 80,360 unique.** The gap is what instancing buys: the same geometry drawn
+- **100,454 triangles drawn, 82,314 unique.** The gap is what instancing buys: the same geometry drawn
   more than once.
 - **441 windows, of which 254 are lit** after dark, out of one emissive material per colour, plus
   **25 light sites that a pool of two point lights draws from** at `medium` (`LIGHT_POOL` was 1 for
@@ -355,8 +442,10 @@ out of it.
   were back-faces and culled, so the band was full of the far side's arches, its floor and the paving
   beyond, all of it high-frequency. "Featureless pale sheet" is what that looks like at 1× from 30 m,
   and `_r3-crops/drum-before-3x.png` is what it is.
-- **Atlas: 386 ms**, sixteen tiles at 144² × three maps, on the main thread, **and only when the
-  first building is placed** (§4.7). Build cost for all 25 buildings: **148 ms**.
+- **Atlas: 388 ms**, sixteen tiles at 144² × three maps, on the main thread, **and only when the
+  first building is placed** (§4.7). Build cost for all 25 buildings: **153 ms**. Both vary by
+  ±10 % run to run and are quoted from one probe; round 3 quoted them as flat facts and its critic
+  measured 404 / 178 on the same build.
 - **Texture: 576 × 576 × 3 maps = 3.98 MB, about 5.3 MB with mipmaps** at `medium`; 768² and ~9.4 MB
   at `high`. One atlas for every building of every style in the park.
 - **`overview` is 60.8 % lawn, down from 71.8 %.** Fraction of the frame outside the HUD panel, the
@@ -367,7 +456,7 @@ out of it.
 - **Sim tick 0.00 ms** on all nine shots; the soak harness's mean over 3,600 ticks with every module
   in it is 1.22 ms against a 6 ms budget, max 42.0.
 - **Zero console errors, zero hydration warnings**, `ok: true`, nine shots, in
-  `.game-render/buildings-r3-final/report.json`. The only two warnings are the `bufferSubData` pair
+  `.game-render/buildings-r4/report.json`, and the same in `buildings-r4-insp/report.json`. The only two warnings are the `bufferSubData` pair
   that every scene in this game reports (`requests/buildings.md` §5).
 
 ### The two demo-park plots, placed and measured
@@ -403,11 +492,17 @@ that under me and every run since is clean. `requests/buildings.md` §3 keeps th
 ### The self-test
 
 `node --experimental-strip-types --import ./scripts/register-path-alias.mjs lib/game/buildings/selftest.mjs`
-→ **66,020/66,020 checks, ~2 s.** What it proves that a frame cannot:
+→ **66,024/66,024 checks, ~2 s.** What it proves that a frame cannot:
 
 - **The pattern language does what it says.** `"w d w"` on a 26 m wall is three bays of 8.67 m;
   `"w* D w*"` is eight bays of 3.25 m with the door at index 4 of 8; a wall too narrow for its fixed
   bays keeps them anyway.
+- **Two manifest fields are live THROUGH `readPack`, not around it.** A pack declaring
+  `sign.mass: "block"` and `mass.clockFaces: 4` is registered, resolved and built, and the test
+  asserts both survive the zod schema and that the geometry moves — the sign band from z 11.81 to
+  5.31, the dial count from one elevation to four. Round 3 tested the same two fields by handing
+  `buildBuilding` an object written in this file, which skips the parser that was deleting them
+  (§4.17).
 - **A blueprint from a pack nothing anticipated draws.** A synthetic third pack ships a **watermill**
   — two masses, one swung 22° and standing on a lower `base`, a shed roof, a rubble plinth, louvres
   in the back gable — and it resolves `source: 'pack'`, builds 4,888 triangles and exactly one door.
@@ -419,33 +514,45 @@ that under me and every run since is clean. `requests/buildings.md` §3 keeps th
   gable 94 %, hip 95 %, pyramid 95 %, mansard 95 %, shed 100 %, barrel 100 %, cone 100 %, flat 62 %
   (a parapet is a closed box and has an underside), and the highest face of every form points up.
 - **Nothing in the catalogue is inside out — and what the check cannot reach is counted rather than
-  claimed.** "winding" walks all **70,387** triangles of every blueprint, every kit piece and the
+  claimed.** "winding" walks all **72,082** triangles of every blueprint, every kit piece and the
   synthetic pack and asserts each one against the vertex normal it was authored with: **0 inverted**.
   "outward faces" (§5d) takes **every upright triangle in the build** — `|ny| ≤ 0.35`, whatever it
-  stands on — and asserts it looks out of a solid it stands on: **38,237 triangles over 8,897 m²
-  judged, 0 m² facing in**. The reference for "which way is out" comes from the code that lays each
+  stands on — and asserts it looks out of a solid it stands on: **39,000 triangles over 8,827 m²
+  judged, 0 m² facing in**. What it can CONCLUDE about one of them is a separate question and round
+  4 is the round that stopped over-claiming it: the probe is two-sided and scaled to the solid's own
+  thickness now (§4.16), **21,258 of the judged triangles stand on a solid thinner than the probe's
+  cap and that number is printed and asserted**, and a face buried inside a volume rather than on a
+  skin is still something this check has no opinion about (§5.1). The reference for "which way is out" comes from the code that lays each
   solid down (`Surface.solids`, filled by `addBox`, `addPrism`, `addBand`, `addTube`, `boxLocal` and
   the mass itself), not from `blueprint.masses`, which is what round 2 got wrong.
-  **The residue is a check of its own**: **248 triangles over 132.4 m² stand on no recorded solid at
-  all — 1.6 % of the upright area — and a second assertion caps that at 2 %.** They are the pieces
+  **The residue is a check of its own**: **250 triangles over 127.9 m² stand on no recorded solid at
+  all — 1.4 % of the upright area — and a second assertion caps that at 2 %.**
+  _(~~Round 3's report said 248 / 132.4 while its own test printed 250 / 143.2~~ — its critic caught
+  the 8 % gap, and it was two figures written from an earlier run and never read back. Every number
+  in this paragraph is copied out of the shipped test's output, which is the only version of this
+  claim worth anything.)_ They are the pieces
   built from raw quads that stand clear of every volume: the fanned soffit inside an arch head, the
   slats in a louvre, the treads of a flight of steps. A kit piece that invents a solid out of
   `addQuad` makes that number rise and fails this line, instead of quietly widening the blind spot.
   Round 2's uncovered figure was **12,323 triangles over 2,650 m²** and nothing in the suite said so;
   the number came from the critic.
-  **Verified by breaking it on purpose, twice, in scratch edits that were reverted** (§4.12): the
-  critic's own demonstration (`roofs.ts`, dormer face quad's `back:` flag flipped, every dormer front
-  in the catalogue pointing into its own roof) now answers **✗ 32 triangles, 16.2 m², named as
-  `terrace-house` and `shop-terrace`** where round 2 answered `66000/66000 checks passed`; and
-  round 2's own drum winding put back answers **✗ `rotunda: 475 triangles, 117.2 m²`**.
+  **Verified by breaking it on purpose, three times, in scratch edits that were reverted**
+  (§4.16): `addBand`'s front quad reversed — 4,014 triangles over 352.7 m², which round 3 passed
+  `66020/66020` — now answers **✗ 350 triangles / 25.4 m² across ten items**; the round-2 critic's
+  dormer demonstration answers **✗ 52 / 25.3 m² on all four blueprints it inverts**, where round 3
+  named two of the four; and round 2's own drum winding put back answers
+  **✗ `rotunda: 598 triangles, 162.6 m²`**.
 - **The declared `size` matches the geometry** for all eight blueprints within 8 %, apron and kerb
   excluded — the promise `palette.ts` makes to a build tool's ghost.
 - **The sim's plan agrees with the geometry it stands in for.** Eight fixtures including the
   synthetic pack's watermill, each placed at a yaw: the sim's plan box is inside the built bounds
   and more than half of them (the difference is the apron, the kerb and the roof overhang), the
   entrance is outside the building, on the front elevation after yaw, and within **6 m** of the door
-  `build.ts` actually drew — 0.00 m on three of the eight and 5.41 m at worst on the rotunda, whose
-  front elevation is one facet of an octagon. `at()` finds each building under its own plan and not
+  `build.ts` actually drew — 0.00 m on three of the eight and **1.88 m at worst, on the grand
+  pavilion**. _(~~Round 3 said 5.41 m on the rotunda, with a paragraph about an octagon's facet
+  midpoint~~. Its own `roundFrames` fix moved that door: the rotunda measures **0.61 m** and the
+  explanation outlived the number it explained. Caught by the round-3 critic, re-read here off the
+  shipped test's own output.)_ `at()` finds each building under its own plan and not
   half a kilometre away; `rebuild()` against an emptied world empties the index.
 - **And the sim reads the packs in its own realm.** A ninth fixture builds one against a `Registry`
   nobody has attached the content to, and asserts the catalogue fills and the pavilion resolves
@@ -464,9 +571,11 @@ that under me and every run since is clean. `requests/buildings.md` §3 keeps th
   metal 3.8 %, panel 1.9 % against a 1.5 % bar for the ones that really are nearly one colour; the
   window glow 17.3 %. None is roughness-1.0.
 
-`pnpm test:game` is green end to end. `npx tsc --noEmit` and `npx eslint lib/game/buildings` are
-clean. `pnpm game:teardown` passes every context check and fails on a core boot error that is not
-this module's (`requests/buildings.md` §4).
+`pnpm test:game` is green end to end (exit 0; `game lint: 264 files clean`, buildings
+`66024/66024`, soak 10,800 ticks at mean 0.90 ms against a budget of 6, save round-trips after the
+run). `npx tsc --noEmit` and `npx eslint lib/game/buildings` are clean.
+`node scripts/check-game-teardown.mjs --url=http://localhost:3001` passes all five checks over three
+dispose/reboot cycles with no console errors — the core boot error round 3 saw here is gone.
 
 ---
 
@@ -772,8 +881,14 @@ session before the container restart, on the `overview` framing this round then 
 figures are not reproducible against anything in `.game-render/` today and are deliberately not
 quoted here; what survives is the reason, and the reason is structural.) The fix has to be
 **directional**, because the thing being modelled is the sky: a `HemisphericLight` pointing up,
-`groundColor` black, so an up-facing slate takes it and a vertical brick wall barely does — which is
-what the A/B below measures on the shipped build.
+`groundColor` black, so an up-facing slate takes more of it than a vertical brick wall — which is
+what the A/B below measures on the shipped build, **and the separation is far smaller than round 3
+claimed**. ~~"a vertical brick wall barely does"~~: the A/B two lines down, which round 3 printed
+itself and its critic reproduced exactly, gives the mansard **+9.5** and the wall **+8.8**, so the
+wall takes 93 % of what the roof takes. On the fifth percentile it is better — roof +14.8 against
+wall +8.3, a factor of 1.8 — and that is the honest version. The frame is genuinely better for the
+term (with it off every roof in `2300-overview.png` is black and the street's silhouette goes with
+them) and the sentence describing it was still stronger than its own numbers.
 
 `includedOnlyMeshes` scopes it to this module's meshes, because the terrain, the paths and the rides
 have their own modules and their own opinion about the night — and that is measured, not asserted:
@@ -808,25 +923,246 @@ person the same four: `bearing` puts the camera at `target + d·(−sin b, ·, c
 the opposite of the one you assume, and getting it wrong once parked the camera inside a kit piece
 and once inside the market hall.
 
+### 4.16 A quarter-metre probe cannot say anything about a hundred-millimetre band
+
+Round 3 widened §5d from "triangles on a mass's plan envelope" to "every upright triangle in the
+build", proved it with the round-2 critic's dormer sabotage, and its critic then reversed one
+different quad — `addBand`'s front face, `geometry.ts:884` — and walked straight through.
+`66020/66020`, not one number moved. Measured over exactly the catalogue §5d walks, that reversal
+turns **4,014 triangles over 352.7 m² inside out**, every one of them upright and inside the check's
+own scope, **1.5× the area that failed round 1** — and `materials.ts:74` sets
+`kit.backFaceCulling = true`, so on screen every one of them is a hole. (Reproduced here first, on a
+scratch copy, before anything was changed: `66020/66020`. The 4,014 / 352.7 is the module's own
+instrumentation of `addBand`, counted inside the §5d walk and matching the critic's figure to the
+digit.)
+
+The hole was not the scope. It was the **probe**, and it was wrong twice.
+
+**It was one-sided.** §5d asked "did stepping 0.25 m along the normal leave the solid" — and leaving
+by the front and leaving by the back are the same answer to that question. Every band in this module
+is **0.09–0.12 m** deep (`build.ts`, `kit.ts`), so the probe went in the front and out the back
+whichever way the face was turned. What it should ask is which boundary is **nearer**, and that is a
+pair: sample the solid's own depth field at `c + n·probe` and at `c − n·probe` and compare. A clean
+signed distance answers −2·probe looking out and +2·probe looking in, so the line sits at **+probe**,
+half of maximal inward — and a face lying tangentially across a skin (the jamb of an opening, a
+band's return, the side of a quoin) reads **0**, which is the honest answer for a face the solid
+cannot see the outside of, and falls through to `facingNothing` where it belongs. That last part is
+not a detail: round 3's 0.12 m slack was what had been exempting those, and without the tangential
+case the first version of this rewrite produced **172 false positives over 46.4 m²**.
+
+**It was a constant.** The step is `probeInto` now: half the solid's own thickness along ±n,
+**measured** by bisecting its depth field, capped at the 0.25 m it always was and floored at 4 mm so
+it cannot read a rounding error as material. A wall saturates the cap and behaves exactly as it did
+in round 3. And the count the critic asked for is printed beside the check and asserted non-zero:
+
+```
+outward faces
+    39000 upright triangles stand on a recorded solid (8827 m²), 250 stand on none (127.9 m²)
+    21258 of them (3320.3 m²) were judged against a solid thinner than the 0.25 m cap — thinnest 0.008 m
+```
+
+**More than half the judged area is in that class.** An edit that quietly puts the constant back
+reads 0 on that line and fails there, rather than waiting for the next critic's sabotage.
+
+`facingNothing` was the other half, and it is the critic's finding 2. It forgives an inward face
+whenever something within 1.6 m in front of it faces back, at `|dot| ≥ 0.5` — and a dormer front
+turned into its own roof has that 46° pitch about 1.1 m behind it at `dot = −0.72`. A surface that
+**answers** an inward face has to be parallel to it, not merely leaning towards it: the far jamb of a
+reveal is −1.00 and so is the wall a bracket is bolted to; a pitch is not. The facing-back branch
+wants `dot ≤ −0.78` now. The covering branch is untouched.
+
+Three sabotages, each applied to a copy of the file and then restored, each re-run against the
+shipped suite:
+
+| Sabotage                                              | Round 3                    | Round 4                                                                                                                                    |
+| ----------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `addBand` front quad reversed (4,014 tris / 352.7 m²) | **`66020/66020`**          | **✗ 350 triangles / 25.4 m²**, ticket-hall 53, clock-tower 88, shop-terrace 64, terrace-house 39, guest-services 36, watermill 31, +4 more |
+| dormer fronts reversed (16 faces, 4 blueprints)       | ✗ 32 / 16.2 m², **2 of 4** | **✗ 52 / 25.3 m², all four**: clock-tower 24 / 9.1, terrace-house 12 / 6.1, shop-terrace 12 / 6.1, watermill 4 / 4.1                       |
+| `roundFrames` ring order (round 3's own find)         | ✗ 475 / 117.2 m²           | **✗ 598 / 162.6 m²**                                                                                                                       |
+
+The watermill lands on the critic's own instrumented estimate of what `facingNothing` was
+forgiving (4 triangles / ~4.0 m²). The clock tower does not, and the reason is §4.18 rather than
+this check: its dormers have a sill and two bargeboards now, which are surfaces in front of the
+dormer face, so four of the 32 the critic counted are legitimately covered. Measured on round 4's
+tree before the dormer trim went in, the same sabotage read **68 / 32.4 m²** with clock-tower at
+32 / 12.2 — the critic's figure to the digit.
+
+**And the strengthened check found something on the clean tree, before any sabotage**:
+`neon-lagoon:window-panorama`, 2 triangles over 6.2 m². It is the opaque backing `addPane` draws
+behind an unlit sheet of glass — the module's one deliberate inward face, documented as such, and it
+was passing because a mass's envelope happened to be 0.19 m in front of it. On a 0.30 m kit piece it
+is 0.07 m from the BACK of the piece, so the same reasoning says it looks in, and the check was right
+to say so. It is the far wall of a room seen through glass; a room is a volume; the code that draws
+its front face is the only code that knows where it is. `frameSlabSolid` declares it — the same
+helper `addBand` now uses for its own slab — and the residue drops by those two triangles.
+
+_(A note for whoever writes the next probe: three earlier formulations were shot down by the clean
+tree, and each was shot down by a different real case. A "there must be solid behind this face" gate
+alone flags every moulding that stands proud of the mass it decorates — 1,870 triangles. Half-span as
+the probe with a scaled tolerance flags a recessed reveal panel. A strict `ahead < back` with no
+margin flags every jamb of an opening wider than `facingNothing`'s reach. The version that ships is
+the one that survived all three, and the run that produced each of those numbers took about a
+minute; guessing took longer.)_
+
+### 4.17 A manifest field is not live until a test builds it through `readPack`
+
+Round 3 added `sign.mass` and `mass.clockFaces` to close round 2's last extensibility finding, read
+them in `build.ts`, documented them in `types.ts`, **and tested them here** — by handing
+`buildBuilding` a blueprint object written in `selftest.mjs`. That path never touches `readPack`,
+`readPack` runs a pack's JSON through `blueprintSchema` and then uses `parsed.data`, and zod strips
+unknown keys. Neither field was in the schema. So both were live for the test and dead for every
+pack in the world, and §0b row 9 recorded them as fixed — round 1's dead-manifest-field finding,
+re-committed in the round that closed the last of it.
+
+Two schema lines fix the fields. What fixes the **class** is the seam: both cases now register a real
+pack, resolve it through `resolveBuilding`, and assert on `resolved.blueprint` as well as on the
+geometry, which is the path a pack author actually takes. Verified by putting the bug back — deleting
+the two schema lines fails four checks, and the failure text is the critic's own measurement:
+
+```
+✗ `sign.mass` survives `blueprintSchema` instead of being stripped — {"band":0.6,"width":0.5}
+✗ `sign.mass` from a pack moves it to the mass it names — 11.81
+✗ `clockFaces` survives `massSchema` instead of being stripped — undefined
+✗ `clockFaces` from a pack puts a dial on more elevations — 6452 → 6452 triangles
+```
+
+### 4.18 A dormer with no sill and no bargeboard is a dark rectangle at 44 m
+
+Round 3's critic: _"at 44 m each of the clock tower's three dormers is a dark rectangle. They have
+cheeks, a face, a pitched cap and a window and none of it separates."_ All of it was there and none
+of it read, because the face sits in shade and the cheeks and the cap were `r.colour` — the same
+slate as the plane they stand on. `overview` and `close` are both roofscape frames, so this is what
+is in them.
+
+Nothing added here is invented: a real dormer has a sill that throws water clear of its face and a
+bargeboard closing the rake of its little gable, and both are light against a dark roof. The cheek
+goes to `shade(r.colour, 1.22)` — lead over slate, the same family a stop lighter. 36 triangles a
+dormer, 448 over the catalogue.
+
+Measured on the same band of the same frame (`0900-close.png`, x[500,800] y[220,310], round 3's
+final against round 4's):
+
+|         | mean |   p5 |      p95 | gradient energy |
+| ------- | ---: | ---: | -------: | --------------: |
+| round 3 | 29.0 | 17.8 |     34.8 |            4.61 |
+| round 4 | 29.2 | 19.0 | **52.5** |        **5.73** |
+
+The mean barely moves, which is right — nothing was brightened. What moves is the top of the range
+and the edge energy: +24 % gradient, and a p95 that says there is now something light in the band.
+`_r4/dormer-{before,after}-4x.png` are the two crops at 4×.
+
+### 4.19 Paving does not end on a ruled line
+
+_"A pink octagon meeting the lawn on a straight line", "a grey rectangle", and from 44 m "a coloured
+shadow under the building"_ — round 2's finding 8, round 3's finding 9. The apron itself is right;
+every prop grounds, and a park does pave round a building. What is wrong is the meeting.
+
+The sequence a park has is paving, kerb, then something loose. So the paving keeps its rectangle
+minus a band, the kerb moves in with it, and a gravel verge fills the band with an outer edge that
+wanders between 0.2 and 1.0 of it — up to **1.2 m** of movement per side, sampled every 2 m and
+keyed on the point so the two runs that meet at a corner agree there.
+
+**It wanders inwards only**, and that cost the first attempt eleven checks. The declared footprint is
+what a build tool ghosts and what §3's `declared size matches the geometry` measures on eleven
+blueprints; a verge that grew the rectangle by 1.15 m of decoration failed all eleven, and one that
+ate 0.3 m off every side failed the sim's plan-inside-bounds check. The band is pinned to the full
+width at the four corners and free in between. 728 triangles over the catalogue, all up-facing, so
+§5b and §5d are untouched.
+
+One correction to the critic's list while I am here: **the pink octagon in `1200-hall.png` is not
+this module's**. It is the showcase's `plaza` of clay pavers, drawn by `paths`. The grand pavilion's
+own apron is the grey strip at its base, and that one now has the verge on it
+(`_r4/hall-apron-3x.png`). The critic was reading the biggest hard edge in the frame and it belongs
+to somebody else; the two grey rectangles named in the same finding were mine and are fixed.
+`_r4/inn-verge-{before,after}.png` is the pair to open.
+
+### 4.20 Every door tall enough for a fanlight has been a picture of the wall behind it
+
+Round 3's finding 8 says the Double door sample is _"a flat brown leaf on a white frame"_. Round 2
+says _"no front door reads on the principal elevation of the grand pavilion"_. Both are one line of
+code, and I found it by accident while trying to make the leaf's panelling read.
+
+`addPanelWithHole` draws a wall as four rectangles around an opening — below, above, left, right.
+`door()` called it **twice**: once for the door, and once further down for the fanlight over it. The
+second call's "below" rectangle is the full width of the bay from the ground to the fanlight's sill,
+i.e. **a sheet of elevation laid straight back over the door**. The leaf, its panels, its handle and
+its reveal were all built, 0.27 m behind a wall. The fanlight only appears on a storey of about
+3.05 m or more (`fanTop - openH > 0.4`), which is why the two 2.95 m terrace types escaped and
+everything taller did not.
+
+The measurement that found it is worth keeping, because reading the source had not: painting the door
+leaf bright magenta and re-shooting `1200-kit-east.png` changed **0 pixels**; painting the
+architrave's hood in the same function changed **1,244**, at x[427,804] y[237,263]. So the function
+was running, on the piece in the frame, and its leaf was not on screen.
+
+The opening is cut once now, from the ground to the head of the fanlight, and the 60 mm between the
+door head and the fanlight sill is the transom bar it should always have been. Two other things went
+in while the door was open:
+
+- **The leaf is stiles and rails over sunk panels**, which is the way round a door is built. Round 3
+  had two panels standing 35 mm _proud_ of the leaf in a colour 18 % darker, so a dark rectangle
+  carried two slightly darker rectangles. What a person sees across a courtyard is the light on the
+  frame, and `addBand` has a top face for exactly that.
+- **A door has to read against its own wall.** `core-classic`'s `door-double` sample is a timber wall
+  with a timber door in it — `joinery` and `wall` are 0.0017 apart in luminance — so no amount of
+  moulding was going to separate them. Where a pack leaves them within 0.045 the leaf takes a stop
+  away from the wall; a pack that has already chosen a contrasting joinery colour keeps it exactly.
+
+`_r4/door-{3x,fixed-3x}.png` is the before and after on the kit sample, and `_r4/hall-door-4x.png` is
+the grand pavilion's principal elevation with a door on it for the first time.
+
+### 4.21 The kit row cannot be photographed from anywhere except the promenade
+
+Round 3's §4.15 says the two kit presets _"look ALONG one aisle from 20° off its axis"_. They do not:
+`bearingToAlpha` puts the camera at `target − r·sinβ·(sin b, −cos b)`, so `bearing: 20` at
+`distance: 34` put the east camera at **x ≈ −2.8**, west of the promenade centreline, looking back
+across 10 m of paving at the row it was named after. Its own frame shows that and its own note claims
+the opposite. That sentence is struck.
+
+Five arrangements were shot this round before the real constraint became clear: **there is nowhere
+else to stand.** The ticket hall reaches x = −9.3 between z = 10 and z = 30 and the market hall
+reaches x = 13.9 between z = −2 and z = 38, so each aisle has a building hard against its far side. A
+camera east of the east row stands inside the ticket hall's colonnade
+(`buildings-r4-insp4/1200-kit-east.png` is eight columns and no kit at all) and one west of the west
+row stands inside a terrace. Every camera is on the 10 m promenade.
+
+So two things moved that are not the camera:
+
+- **The pieces turn.** 19.5° is `atan2(8.5, 24)`, the angle from the middle of a rank to a camera on
+  the centreline 24 m south of it, so the near piece is 15° off square and the far one 6°.
+- **The running order changed.** Registration order put `wall-brick` and `wall-plaster` first, which
+  parked a featureless 4 × 4 slab twelve metres in front of each camera with the other four behind
+  it. A blank wall is a perfectly good sample and it is the one sample that says nothing, so the
+  three plain walls go to the back of the rank where they are a backdrop.
+
+`1200-kit.png` is a rank of samples now — an arched window three-quarters on with its glazing bars
+and its sky reflection, a slate roof, a column, a lit shopfront behind them.
+**`kit-east` is only partly fixed**: the near piece is the Double door, three-quarters on and
+readable, but the lower left third of the frame is still promenade, because that is where the camera
+has to be. It is listed as `part` in §0 for that reason.
+
 ## 5. What is weak, ranked
 
-Round 3. Of the round-2 critique's ten findings, seven are closed and photographed (§0), one is
+Round 4. Of the round-3 critique's ten findings, seven are closed and photographed (§0), one is
 partly closed and two are open below. Four of the entries here are this module's own and are in no
 critique.
 
-1. **The kit row is still a display row, and that is round 1's finding 11 open for three rounds.**
-   It stands on a paved aisle now instead of grass and it has two cameras of its own instead of a
-   frame of the promenade (§4.15), so the pieces can at last be judged — and judged, two of them
-   fail: in `buildings-r3-kit/1200-kit-east.png` the **Panorama window is a dark teal box** and the
-   **Double door a flat brown leaf on a white frame**. The round-2 critic called them the last place
-   in the set that reads as programmer art and put it at half an hour of `showcase.ts`. It is not
-   half an hour — a door leaf wants panels, a stile and a rail, and a panorama window wants mullions
-   and something behind the glass — but it is `kit.ts` content and no new architecture.
-2. **The dormers read as flat dark rectangles on the slope.** `buildings-r3-final/0900-close.png`, at
-   44 m: three dormers on the clock tower's roof and each is a dark quad. They have cheeks, a face, a
-   pitched cap and a window, and none of it separates at that distance because the face is in shade
-   and nothing outlines it. A dormer wants a cheek in a lighter tone, or a bargeboard, or a sill that
-   catches the sun. The geometry is there; the reading is not.
+1. **§5d still cannot judge a face buried inside a solid, and now it says so.** The probe compares
+   the solid's depth on both sides of a face (§4.16), which is exact for a face on a skin and
+   silent for one deep inside a volume: a pane's interior backing 0.07 m from the back of a 0.30 m
+   kit piece is nearer the back than the front, and the only honest answer is the one the geometry
+   gives by declaring the volume it stands on. That worked here, and it means the check's coverage
+   now depends on kit code declaring its slabs — `frameSlabSolid` and `solidLocal` are the two
+   places that do it, and neither is enforced. **A kit piece that draws a slab out of raw quads and
+   declares nothing lands in the residue**, which is counted and capped at 2 %, so the failure mode
+   is a rising number rather than silence — but it is still a category, and the third one this
+   check has had.
+2. **`kit-east` spends its lower left third on the promenade, and no camera can fix it.** §4.21: the
+   two aisles have buildings hard against their far sides, so every camera stands between them. The
+   pieces turn towards it and the dull ones went to the back of the rank, which is most of the way
+   there for `kit` and part of the way for `kit-east`. What would finish it is moving the kit yard
+   off the street onto the west lawn — which is also §5.3's answer, and it is a showcase layout
+   change with a whole gauntlet to re-shoot behind it.
 3. **`overview` is 60.8 % lawn.** Reframing and moving two plots to the east side bought eleven
    points (71.8 % in round 2), and the frame is still three fifths grass with the buildings in a band
    across the middle. The street is 34 m wide and 110 m long and the preset has to see all of it;
@@ -855,7 +1191,7 @@ critique.
    real one is a cylinder and a hemisphere. The eight roof forms have no dome, no gambrel, no
    sawtooth, no bell-cast mansard. Each is a `roofs.ts` function and a schema line, but a pack cannot
    add one.
-9. **§5d's residue is 132.4 m² and its limitation is coincident envelopes.** 248 upright triangles
+9. **§5d's residue is 127.9 m² and its limitations are coincident envelopes and buried faces.** 250 upright triangles
    stand on no recorded solid — arch soffits, louvre slats, stair treads, all built from raw quads —
    and they are counted, printed and capped at 2 % rather than skipped in silence. Separately, where
    two masses' plan boundaries land on the same plane a correct outward face of one is on the
@@ -868,7 +1204,7 @@ critique.
     footprints and doors and that is all: no upkeep, no power draw, no capacity, nothing a guest can
     enter. Nothing calls it yet either — `guests` and `paths` do not know it is there.
 12. **Nothing checks a frame, and three rounds of findings have been frame-only.** `selftest.mjs`
-    walks 70,387 triangles and could not see a material ignoring its own fade, a mesh in the wrong
+    walks 72,082 triangles and could not see a material ignoring its own fade, a mesh in the wrong
     rendering group, a light pool that had not settled, or two coplanar paved surfaces tearing into
     each other. Every one of those was found by opening a PNG. A cheap version exists — shoot two
     frames and assert what does and does not move between them — but it needs a browser, so it

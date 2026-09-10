@@ -30,9 +30,11 @@ import {
   addPanelWithHole,
   addQuad,
   addReveal,
+  addTriangle,
   addStroke,
   addTube,
   framePoint,
+  frameSlabSolid,
   mixRgb,
   shade,
   tri,
@@ -266,6 +268,19 @@ function addPane(
      * sky. Two triangles of dark interior behind each pane, and the glass has something to be glass
      * against.
      */
+    /**
+     * And the room it stands for is DECLARED, not just drawn.
+     *
+     * This quad is the far wall of a room seen through the glass, so its normal points into the
+     * building on purpose — the one deliberate inward face in the module. §5d judges a face by the
+     * solid it stands on, and on a blueprint's thick mass this one passed because the mass's own
+     * envelope happened to be 0.19 m in front of it. On a 0.30 m kit piece it is 0.07 m from the
+     * BACK of the piece, so the same reasoning says it faces in — which round 4's probe duly
+     * reported (`neon-lagoon:window-panorama`, 2 triangles, 6.2 m²), correctly and for the first
+     * time. The honest answer is not to widen the check: it is that the room behind a window is a
+     * volume, and the code that draws its front face is the only code that knows where it is.
+     */
+    frameSlabSolid(ctx.kit, f, 'pane-interior', u0, u1, v0, v1, out - 0.15, out - 0.07);
     addFrameQuad(ctx.kit, f, u0, v0, u1, v1, out - 0.07, {
       // A room, not a hole. At 0.3 of the wall's own colour a brick facade in shade came back with
       // black rectangles punched in it (`.game-render/probe2/0900-facade.png`); a real interior is
@@ -281,6 +296,34 @@ function addPane(
       repeatU: 1,
       repeatV: 1,
     });
+    /**
+     * A corner of sky in the glass, and it is the difference between a window and a hole.
+     *
+     * An unlit pane was one flat colour over one flat backing, which is why the 4 m panorama sample
+     * has been called "a dark teal box" for three rounds: 6 m² of a single value, on a piece whose
+     * whole job is to show what a pane looks like. Real glazing is never one value — it is dark
+     * where you see the room and pale where the sky lands on it, and the line between the two is
+     * hard and diagonal because it is the edge of a reflected roof.
+     *
+     * Two triangles per pane, in `kit` and not in `glass`: a reflection is light coming back off
+     * the surface, so it is opaque and it belongs in front of the sheet rather than blended into
+     * it — and `kit` is the batch the glazing bars are already in, so it costs no draw call.
+     * Seeded off the same key that decides whether the window is lit, so neighbours catch the sky
+     * by different amounts and a facade does not read as one stamped tile. 441 windows, ~880
+     * triangles, and it lands on every frame in the set rather than only on the kit row.
+     */
+    const skyCut = 0.34 + rand2(key, 47, ctx.seed + 613) * 0.42;
+    const sw = (u1 - u0) * skyCut;
+    const svv = (v1 - v0) * skyCut;
+    addTriangle(
+      ctx.kit,
+      framePoint(f, u0, v1, out + 0.004),
+      framePoint(f, u0 + sw, v1, out + 0.004),
+      framePoint(f, u0, v1 - svv, out + 0.004),
+      mixRgb(skin.glassColour, [0.62, 0.72, 0.86], 0.6),
+      skin.joineryTile,
+      f.normal
+    );
     return false;
   }
   const w = 0.45;
@@ -682,26 +725,96 @@ function door(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions, grand: boolean):
   const u0 = (bw - openW) / 2;
   const u1 = u0 + openW;
   const hole = { u0, u1, v0: 0, v1: openH };
-  addPanelWithHole(ctx.kit, f, hole, 0, { colour: skin.wallColour, tile: skin.wallTile });
+  /**
+   * One panel with ONE hole in it, and this is why no door in this module has ever been visible.
+   *
+   * `addPanelWithHole` draws the wall as four rectangles around the opening — below, above, left,
+   * right. This function called it twice: once for the door and once, further down, for the
+   * fanlight over it. The second call's "below" rectangle is the full width of the bay from the
+   * ground to the fanlight's sill, i.e. **a sheet of wall laid straight back over the door**. Every
+   * door in the catalogue was a brick or timber panel inside an architrave, and both of the things
+   * that have been said about doors in three rounds of critique are that one bug: round 2's "no
+   * front door reads on the principal elevation of the grand pavilion" and round 3's "the Double
+   * door is a flat brown leaf on a white frame". The leaf was there the whole time, 0.27 m behind a
+   * wall. A magenta test found it: painting the leaf bright magenta changed **0 pixels** of
+   * `1200-kit-east.png`, and painting the architrave's hood changed 1,244.
+   *
+   * So the opening is cut once, from the ground to the head of the fanlight, and the 60 mm between
+   * the door head and the fanlight sill becomes the transom bar it should always have been.
+   */
+  const fanTop = Math.min(sh - 0.5, openH + 0.9);
+  const hasFan = fanTop - openH > 0.4;
+  addPanelWithHole(ctx.kit, f, { u0, u1, v0: 0, v1: hasFan ? fanTop : openH }, 0, {
+    colour: skin.wallColour,
+    tile: skin.wallTile,
+  });
   addReveal(ctx.kit, f, hole, 0, skin.reveal + 0.08, shade(skin.wallColour, 0.84), skin.wallTile);
   const back = -skin.reveal - 0.08;
+  /**
+   * A door has to read against its own wall, and one palette in the bundled packs says otherwise.
+   *
+   * `core-classic`'s `door-double` sample is a timber wall with a timber door in it — `joinery` and
+   * `wall` within 0.01 of each other in luminance — so the piece photographed as a brown rectangle
+   * inside a white architrave, which is round 1's finding 11 and round 3's finding 8, both times
+   * read as "the door is flat". It is not flat; it is the same colour as what it is set into, and
+   * no amount of moulding fixes that. Where a pack leaves them that close the leaf takes a stop
+   * away from the wall — lighter on a dark wall, darker on a light one — which is what paint is
+   * for. A pack that has already chosen a contrasting joinery colour keeps it exactly.
+   */
+  const lum = (c: Rgb): number => c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722;
+  const wallLum = lum(skin.wallColour);
+  const leafColour =
+    Math.abs(lum(skin.joineryColour) - wallLum) > 0.045
+      ? skin.joineryColour
+      : shade(skin.joineryColour, wallLum > 0.16 ? 0.5 : 2.0);
   // The leaf (or two), with the sunk panels every joinery door has.
   const leaves = grand ? 2 : 1;
   for (let i = 0; i < leaves; i++) {
     const lu0 = u0 + 0.04 + ((openW - 0.08) / leaves) * i;
     const lu1 = lu0 + (openW - 0.08) / leaves - (leaves > 1 ? 0.04 : 0);
     addFrameQuad(ctx.kit, f, lu0, 0, lu1, openH - 0.04, back + 0.02, {
-      colour: skin.joineryColour,
+      colour: leafColour,
       tile: skin.joineryTile,
     });
+    /**
+     * Stiles and rails standing PROUD of sunk panels, which is the way round a door is built.
+     *
+     * Round 1 and round 3 both called this "a flat brown leaf". It was not flat — it had two sunk
+     * panels — but they were drawn 35 mm proud of the leaf in a colour 18 % darker, so at four
+     * metres a dark rectangle carried two slightly darker rectangles and nothing separated. A
+     * panelled door is the other way about: the frame is the structure and the panel is thinner
+     * and set back, and what you see across a courtyard is the LIGHT on the stiles and rails.
+     * `addBand` has a top face for exactly that, and it is what draws the line.
+     */
     const inset = 0.14;
     for (let p = 0; p < 2; p++) {
       const pv0 = 0.2 + p * (openH * 0.45);
       const pv1 = pv0 + openH * 0.34;
-      addFrameQuad(ctx.kit, f, lu0 + inset, pv0, lu1 - inset, pv1, back + 0.055, {
-        colour: shade(skin.joineryColour, 0.82),
+      addFrameQuad(ctx.kit, f, lu0 + inset, pv0, lu1 - inset, pv1, back - 0.02, {
+        colour: shade(leafColour, 0.7),
         tile: skin.joineryTile,
       });
+    }
+    // Two stiles and three rails, 45 mm proud. The middle rail lands between the two panels.
+    for (const [su0, sv0, su1, sv1] of [
+      [lu0, 0, lu0 + inset, openH - 0.04],
+      [lu1 - inset, 0, lu1, openH - 0.04],
+      [lu0, 0, lu1, 0.2],
+      [lu0, 0.2 + openH * 0.34, lu1, 0.2 + openH * 0.45],
+      [lu0, 0.2 + openH * 0.79, lu1, openH - 0.04],
+    ]) {
+      addBand(
+        ctx.kit,
+        f,
+        su0,
+        su1,
+        sv0,
+        sv1,
+        back + 0.015,
+        back + 0.07,
+        shade(leafColour, 1.3),
+        skin.joineryTile
+      );
     }
     // The handle, at 1.05 m, because that is where a handle is.
     addBand(
@@ -718,10 +831,10 @@ function door(ctx: KitCtx, f: Frame, skin: Skin, o: BayOptions, grand: boolean):
     );
   }
   // A fanlight over the door if the storey leaves room for one.
-  const fanTop = Math.min(sh - 0.5, openH + 0.9);
-  if (fanTop - openH > 0.4) {
+  if (hasFan) {
     const fanHole = { u0, u1, v0: openH + 0.06, v1: fanTop };
-    addPanelWithHole(ctx.kit, f, fanHole, 0, { colour: skin.wallColour, tile: skin.wallTile });
+    // The transom bar between the two, which is what the wall used to be doing here.
+    addBand(ctx.kit, f, u0, u1, openH, openH + 0.06, -0.03, 0.06, skin.trimColour, skin.trimTile);
     addReveal(ctx.kit, f, fanHole, 0, skin.reveal, shade(skin.wallColour, 0.88), skin.wallTile);
     addPane(
       ctx,

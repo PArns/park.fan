@@ -145,6 +145,19 @@ const massSchema = z.object({
   wallSurface: z.string().optional(),
   roofSurface: z.string().optional(),
   clock: z.number().nonnegative().optional(),
+  /**
+   * Both of these are here because a field the parser deletes is worse than a field that does not
+   * exist, and this module has now shipped that bug twice.
+   *
+   * `clockFaces` and `sign.mass` were added in round 3 to close round 2's dead-`mass.id` finding.
+   * They were typed in `types.ts`, read in `build.ts`, documented in both — and left out of the
+   * schema every pack's JSON is parsed through, and `readPack` uses `parsed.data`, so zod stripped
+   * them and a pack setting either got byte-identical geometry. Round 3's own summary recorded
+   * them as fixed. The lesson is not "remember the schema": it is that **a manifest field is not
+   * live until a test builds a pack blueprint with it and measures the geometry move**, which
+   * §2 now does for both, next to the `sign.side` control that was already live.
+   */
+  clockFaces: z.number().int().positive().optional(),
 });
 
 const blueprintSchema = z.object({
@@ -172,6 +185,8 @@ const blueprintSchema = z.object({
       side: z.enum(['front', 'right', 'back', 'left']).optional(),
       width: z.number().positive().optional(),
       color: hex.optional(),
+      /** Which mass carries the band, by `MassDef.id` — see the note on `clockFaces` above. */
+      mass: z.string().optional(),
     })
     .optional(),
   size: vec3.optional(),

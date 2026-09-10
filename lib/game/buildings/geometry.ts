@@ -851,6 +851,43 @@ export function addReveal(
 }
 
 /**
+ * The volume a rectangle of a facade occupies between two offsets, recorded for the self-test.
+ *
+ * `addBand` builds this shape and so does anything else that lays a slab against an elevation —
+ * a moulding, the interior behind a pane. §5d judges a face by the solid it stands on, so a slab
+ * that draws only one of its six faces still has to SAY it is a slab; the alternative is the blind
+ * spot the dormer box (`roofs.ts`'s `solidLocal`) was invented to close. Free when nothing asked
+ * for solids, which is the game.
+ */
+export function frameSlabSolid(
+  s: Surface,
+  f: Frame,
+  by: string,
+  u0: number,
+  u1: number,
+  v0: number,
+  v1: number,
+  out0: number,
+  out1: number
+): void {
+  if (!s.solids) return;
+  const c = [
+    framePoint(f, u0, v0, out0),
+    framePoint(f, u1, v0, out0),
+    framePoint(f, u1, v0, out1),
+    framePoint(f, u0, v0, out1),
+  ];
+  s.solids.push(
+    prismSolid(
+      by,
+      c.map((q) => [q[0], q[2]] as [number, number]),
+      framePoint(f, u0, v0, out0)[1],
+      framePoint(f, u0, v1, out0)[1]
+    )
+  );
+}
+
+/**
  * A band running along a frame that projects from the wall — a cornice, a string course, a sill, a
  * sign fascia, a plinth cap. Five faces: front, top, bottom and two returns.
  *
@@ -871,17 +908,7 @@ export function addBand(
 ): void {
   const p = (u: number, v: number, o: number): P3 => framePoint(f, u, v, o);
   const opt = { colour, tile, repeatU: undefined, repeatV: undefined, maxCells: 8 };
-  if (s.solids) {
-    const c = [p(u0, v0, out0), p(u1, v0, out0), p(u1, v0, out1), p(u0, v0, out1)];
-    s.solids.push(
-      prismSolid(
-        'addBand',
-        c.map((q) => [q[0], q[2]] as [number, number]),
-        p(u0, v0, out0)[1],
-        p(u0, v1, out0)[1]
-      )
-    );
-  }
+  frameSlabSolid(s, f, 'addBand', u0, u1, v0, v1, out0, out1);
   // front
   addQuad(s, p(u0, v0, out1), p(u1, v0, out1), p(u1, v1, out1), p(u0, v1, out1), opt);
   // top

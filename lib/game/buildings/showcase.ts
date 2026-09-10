@@ -182,13 +182,23 @@ const SHOWCASE_PACK = {
      * The ten pieces stand in two rows of five at x = ±8.5, and a camera on the centreline looking
      * north puts the 10 m promenade through the middle of the frame with a row receding along each
      * edge: `1200-kit.png` has been a picture of paving with two samples in it for three rounds, and
-     * five of the ten are outside the frame entirely. These two look ALONG one aisle from 20° off
+     * five of the ten are outside the frame entirely. These two look ALONG one aisle from 15° off
      * its axis, so the near piece is three-quarters on and the four behind it step back in the same
      * pose — the arrangement a merchant's yard has for the same reason, which is that you can see
      * what is for sale.
+     *
+     * **The same bearing for both, and it is not a typo.** A preset is a compass bearing, and
+     * `bearingToAlpha` puts the camera at `target − r·sinβ·(sin b, −cos b)`: at `bearing: 20` and
+     * `distance: 34` round 3's east camera sat at x ≈ −2.8, west of the promenade centreline,
+     * looking back across 10 m of paving at the row it was named after — its own frame shows that
+     * and its own note claims the opposite. Both take 345 now, which stands each camera 9.6 m east
+     * of its own target and 36 m south of it, 22° up: the row runs away from the near corner and
+     * all five pieces are in frame between 26 and 49 m, a size ratio of 1.9. Two other arrangements
+     * were shot and are worse — mirrored bearings put the WEST camera at x ≈ −19, which is inside a
+     * terrace, and a 26 m stand-off fills two thirds of the frame with the nearest piece's back.
      */
-    { id: 'kit', target: [-8.5, 2.6, 12], bearing: 340, pitch: 14, distance: 34 },
-    { id: 'kit-east', target: [8.5, 2.6, 12], bearing: 20, pitch: 14, distance: 34 },
+    { id: 'kit', target: [-8.5, 2.4, 12], bearing: 340, pitch: 10, distance: 26 },
+    { id: 'kit-east', target: [8.5, 2.4, 15], bearing: 14, pitch: 7, distance: 23 },
     { id: 'hall', target: [0, 8, -46], bearing: 8, pitch: 12, distance: 52 },
     { id: 'gate', target: [-19, 5, 20], bearing: 96, pitch: 11, distance: 40 },
     // The extensibility exhibit, square on to its front: the jettied first floor oversailing the
@@ -316,6 +326,27 @@ export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
   const kit = ctx.registry
     .items('buildings')
     .filter((item) => (item.def as { category: string }).category !== 'blueprint');
+  /**
+   * The pieces with something IN them stand at the near end, and this is why the row never
+   * photographed.
+   *
+   * Registration order put `wall-brick` and `wall-plaster` first, which parked a featureless 4 × 4
+   * slab twelve metres in front of each camera with the other four behind it. Five arrangements of
+   * the camera were shot before the obvious reading: the framing was never the whole problem, the
+   * running order was. A blank wall is a perfectly good sample and it is also the one sample that
+   * says nothing from behind, so it goes to the back where it is a backdrop for the rest.
+   */
+  const dull = (id: string): number =>
+    id === 'wall' || /wall-(brick|plaster|concrete)/.test(id) ? 1 : 0;
+  kit.sort(
+    (a, b) =>
+      dull(
+        (a.def as { procedural?: string; id: string }).procedural ?? (a.def as { id: string }).id
+      ) -
+      dull(
+        (b.def as { procedural?: string; id: string }).procedural ?? (b.def as { id: string }).id
+      )
+  );
   kit.forEach((item, i) => {
     const side = i % 2 === 0 ? -1 : 1;
     const step = Math.floor(i / 2);
@@ -325,10 +356,25 @@ export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
       pack: item.pack,
       item: (item.def as { id: string }).id,
       position: [side * 8.5, 0, 24 - step * 6],
-      // Square on to the street, not turned to face it. A kit piece is 4 m and 0.3 m thick, so
-      // edge-on it is a black slab — which is exactly how the first round photographed all ten of
-      // them. A visitor walking up the street meets their front.
-      yaw: 0,
+      /**
+       * Turned 34° in towards the promenade, because the promenade is the only place a camera can
+       * stand.
+       *
+       * Round 3 left them square to the street and moved the CAMERA off each aisle's axis. Round 4
+       * shot five arrangements before accepting why none of them can work: **there is nowhere else
+       * to stand.** The ticket hall reaches x = −9.3 between z = 10 and z = 30 and the market hall
+       * reaches x = 13.9 between z = −2 and z = 38, so each aisle has a building hard against its
+       * far side; a camera east of the east row stands inside the ticket hall's colonnade
+       * (`.game-render/buildings-r4-insp4/1200-kit-east.png` is eight columns and no kit at all)
+       * and one west of the west row stands inside a terrace. Every camera is on the 10 m
+       * promenade, and from there a rank of 4 m slabs set square to it is five edges in a line.
+       *
+       * So the pieces turn and the camera stays put. 19.5° is `atan2(8.5, 24)`, the angle from the
+       * middle of a rank to a camera on the centreline 24 m south of it, so the near piece is 15°
+       * off square and the far one 6°: three-quarters on down the whole rank, and a visitor walking
+       * up the street still meets their fronts.
+       */
+      yaw: side * -0.34,
     };
     ctx.dispatch('entity:add', entity);
   });

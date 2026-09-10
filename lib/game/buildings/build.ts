@@ -795,20 +795,78 @@ function groundWorks(ctx: KitCtx, bp: BlueprintDef, style: BuildingStyleDef): vo
   const z0 = plan.minZ - apron;
   const z1 = plan.maxZ + apron;
   const y = 0.06;
-  addQuad(ctx.kit, [x0, y, z1], [x1, y, z1], [x1, y, z0], [x0, y, z0], {
+  /**
+   * A gravel verge inside the apron's own edge, because paving does not end on a ruled line.
+   *
+   * Three rounds have called this out in the same words — "a pink octagon meeting the lawn on a
+   * straight line", "a grey rectangle", and from 44 m "a coloured shadow under the building". The
+   * apron itself is right: every prop grounds, and a park does pave round a building. What is wrong
+   * is the MEETING. Paving that stops on a straight line where it meets grass is a decal, and
+   * nothing else in the frame has an edge like that.
+   *
+   * So the sequence a park actually has: paving, kerb, then a band of gravel whose outer edge
+   * wanders. It wanders **inwards only** — the declared footprint is what a build tool ghosts and
+   * what §3's `declared size matches the geometry` measures, so growing it by 1.15 m of decoration
+   * failed eleven of those checks on the first attempt. The band eats the outermost 1.1 m of the
+   * apron instead, and grass shows through wherever the wobble pulls it back, which is the whole
+   * point. Up-facing, so it costs §5d and §5b nothing; ~2 m segments, so a whole street is under
+   * 2,000 triangles.
+   */
+  const band = Math.min(1.5, apron * 0.62);
+  const px0 = x0 + band;
+  const px1 = x1 - band;
+  const pz0 = z0 + band;
+  const pz1 = z1 - band;
+  addQuad(ctx.kit, [px0, y, pz1], [px1, y, pz1], [px1, y, pz0], [px0, y, pz0], {
     colour,
     tile: paving,
     maxCells: 14,
   });
+  const vergeColour = mixRgb(colour, srgb('#7b6f52'), 0.8);
+  const vergeTile = tileFor('rubble');
+  // How far out of the `band` this point reaches, as a fraction: never 0 (a quad that folds back
+  // through its own inner edge is an inverted triangle, and §5c counted nine of them on the first
+  // attempt) and never past 1 (the outer edge IS the declared footprint).
+  const reach = (i: number, j: number): number => 0.2 + rand2(i, j, ctx.seed + 9137) * 0.8;
+  for (const [ax, az, bx, bz, ox, oz] of [
+    [px0, pz0, px1, pz0, 0, -1],
+    [px1, pz1, px0, pz1, 0, 1],
+    [px0, pz1, px0, pz0, -1, 0],
+    [px1, pz0, px1, pz1, 1, 0],
+  ]) {
+    const len = Math.hypot(bx - ax, bz - az);
+    const n = Math.max(2, Math.round(len / 2));
+    for (let i = 0; i < n; i++) {
+      const t0 = i / n;
+      const t1 = (i + 1) / n;
+      const p0x = ax + (bx - ax) * t0;
+      const p0z = az + (bz - az) * t0;
+      const p1x = ax + (bx - ax) * t1;
+      const p1z = az + (bz - az) * t1;
+      // Pinned to the full band at the corners, wandering in between. The pin is what keeps the
+      // measured footprint equal to the declared one — §3 checks eleven blueprints for exactly
+      // that, and a verge that ate 0.3 m off every side failed all eleven.
+      const w0 = band * (i === 0 ? 1 : reach(Math.round(p0x * 4), Math.round(p0z * 4)));
+      const w1 = band * (i === n - 1 ? 1 : reach(Math.round(p1x * 4), Math.round(p1z * 4)));
+      addQuad(
+        ctx.kit,
+        [p0x, y - 0.015, p0z],
+        [p1x, y - 0.015, p1z],
+        [p1x + ox * w1, y - 0.02, p1z + oz * w1],
+        [p0x + ox * w0, y - 0.02, p0z + oz * w0],
+        { colour: vergeColour, tile: vergeTile, repeatU: 1, repeatV: 1 }
+      );
+    }
+  }
   if (g?.kerb !== false) {
     const k = 0.16;
     const trimColour = srgb(style.palette.plinth);
     const trimTile = tileFor(style.plinth);
     for (const [a0, b0, a1, b1] of [
-      [x0 - k, z0 - k, x1 + k, z0],
-      [x0 - k, z1, x1 + k, z1 + k],
-      [x0 - k, z0, x0, z1],
-      [x1, z0, x1 + k, z1],
+      [px0 - k, pz0 - k, px1 + k, pz0],
+      [px0 - k, pz1, px1 + k, pz1 + k],
+      [px0 - k, pz0, px0, pz1],
+      [px1, pz0, px1 + k, pz1],
     ]) {
       addQuad(
         ctx.kit,

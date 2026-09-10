@@ -120,7 +120,7 @@ error comes from. Reproduced on `--showcase=rides` (a module I have not touched)
 `.game-render/probe-rides/report.json` before it was fixed, and gone from every run after
 `Registry.localized` landed. Nothing in this module depended on either name.
 
-## 4. Core: `pnpm game:teardown` fails on a boot error that is not a leak
+## 4. Core: `pnpm game:teardown` fails on a boot error that is not a leak — **fixed, closed**
 
 ```
 ✗ no console errors across the walk — ["[game] boot failed TypeError: Cannot set properties of null
@@ -132,6 +132,11 @@ context back", "dispose() releases the engine context" — so this is `applyEnvi
 `exposure` on a null pipeline during a reboot, in core/environment, not a leak and not this module
 (nothing here touches the pipeline or the image processing). Recorded so the next builder does not
 spend a round on it.
+
+**Round 4: gone.** `node scripts/check-game-teardown.mjs --url=http://localhost:3001` passes all
+five checks over three dispose/reboot cycles with no console errors at all. Nothing in this module
+changed that; somebody fixed `applyEnvironment`. Left here as a closed entry rather than deleted,
+because the next builder to hit a teardown error should know this one already happened once.
 
 ## 5. Harness: two WebGL warnings that belong to nobody in particular
 
@@ -236,3 +241,21 @@ A `--hud=0` flag (or a query parameter the harness already sets, beside `harness
 the panels collapsed would give every module back a quarter of its frame. It should stay opt-in: the
 HUD in the frame is also how `ui` gets photographed at all, and two of this module's own findings
 were caught because the animated clock was there to prove the A/B was comparing two live frames.
+
+## 11. Harness: after D-023 the standard gauntlet has no dusk frame in it
+
+The three-time gauntlet is `09:00,18:30,23:00`, and D-023 moved the park clock 92 minutes ahead of
+solar time. So `09:00` is now the old 07:28 — a raking dawn — and `18:30` is the old 16:58, broad
+afternoon. Sunset moved from 18:21 to 19:53. The standard set therefore gives every module **two
+daylight frames and one night frame, and no dusk**.
+
+That is not a complaint about D-023, which is a good change and which the round-3 critic verified is
+a pure relabel for this showcase (941 pixels differ between a 09:00 and a 10:32 frame, all of them
+inside the HUD clock, the scene byte-identical). It is a note that the gauntlet's three times were
+chosen against the old clock and have not moved with it. For this module dusk is the light the
+street is best in — the shopfronts are lit sheets of amber at eye level and the sky still has red in
+it — and it is now outside the set every module is graded on.
+
+`19:30` or `20:00` in place of `18:30` would restore it for everybody, and it is one string in
+whatever the harness's default is. This module keeps shooting `18:30` because the gauntlet is the
+gauntlet.
