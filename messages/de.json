@@ -7,18 +7,18 @@
     "title": "Teilen",
     "on": "Teilen auf {platform}",
     "copy": "Link kopieren",
-    "copied": "Kopiert!"
+    "copied": "Kopiert"
   },
   "common": {
     "scroll": "Scrollen",
-    "loading": "Laden...",
+    "loading": "Laden…",
     "trend": "Trend",
     "in": "in",
     "vsTypical": "vs Typisch",
-    "much_higher": "Viel Höher",
+    "much_higher": "Viel höher",
     "higher": "Höher",
     "lower": "Niedriger",
-    "much_lower": "Viel Niedriger",
+    "much_lower": "Viel niedriger",
     "typical": "Typisch",
     "up": "Steigend",
     "down": "Fallend",
@@ -26,13 +26,13 @@
     "decreasing": "Fallend",
     "stable": "Stabil",
     "crowd": {
-      "very_low": "Sehr Niedrig",
+      "very_low": "Sehr niedrig",
       "low": "Niedrig",
       "normal": "Normal",
       "moderate": "Normal",
       "higher": "Erhöht",
       "high": "Hoch",
-      "very_high": "Sehr Hoch",
+      "very_high": "Sehr hoch",
       "extreme": "Extrem",
       "full": "Voll",
       "closed": "Geschlossen"
@@ -41,7 +41,7 @@
     "retry": "Erneut versuchen",
     "search": "Suchen",
     "searchPlaceholderShort": "Suchen",
-    "searchPlaceholderLong": "Parks, Attraktionen, Shows & Restaurants suchen...",
+    "searchPlaceholderLong": "Parks, Attraktionen, Shows & Restaurants suchen…",
     "noResults": "Keine Ergebnisse gefunden",
     "viewAll": "Alle anzeigen",
     "moreInfo": "Mehr Infos",
@@ -61,7 +61,7 @@
     "timeSuffix": " Uhr",
     "seeMore": "Mehr sehen",
     "showMore": "Mehr anzeigen",
-    "searchPlaceholder": "Suchen...",
+    "searchPlaceholder": "Suchen…",
     "at": "in {park}",
     "avgWait": "Ø",
     "min": "Min",
@@ -91,12 +91,12 @@
     "liveData": "Live-Daten",
     "failedToLoadLiveData": "Live-Daten konnten nicht geladen werden",
     "showingLastKnownState": "Zeige letzten bekannten Stand",
-    "failedToLoadCalendar": "Kalenderdaten konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
-    "updating": "Aktualisiere...",
+    "failedToLoadCalendar": "Kalenderdaten konnten nicht geladen werden. Bitte versuche es später erneut.",
+    "updating": "Aktualisiere…",
     "errorPageTitle": "Etwas ist schiefgelaufen",
     "errorPageDescription": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
     "goHome": "Zur Startseite",
-    "maintenanceTitle": "Wir sind bald wieder da!",
+    "maintenanceTitle": "Wir sind bald wieder da",
     "maintenanceDescription": "park.fan ist wegen Wartungsarbeiten vorübergehend nicht erreichbar. Bitte versuche es in ein paar Minuten erneut."
   },
   "notFound": {
@@ -109,7 +109,7 @@
     "intro": "park.fan zeigt Echtzeit-Wartezeiten und Besucherandrang für über 200 Freizeitparks und mehr als 7.000 Attraktionen weltweit, unter anderem Disney, Universal Studios, Europa-Park und Phantasialand. Plane deinen Besuch mit Live-Wartezeiten, Öffnungszeiten und KI-gestützten Prognosen.",
     "hero": {
       "cta": "Parks entdecken",
-      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
+      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
       "title": "Wo lohnt sich heute das Anstehen?",
       "intro": "park.fan hat <strong>{parks, number} Freizeitparks</strong> und <strong>{attractions, number} Attraktionen</strong> live im Blick, von Europa-Park und Phantasialand bis zum Magic Kingdom. Such deinen Park, oder klick dich über die Karte durch die Welt.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
@@ -815,7 +815,7 @@
     "planYourVisit": "Besuch planen",
     "bestDaysToVisit": "Beste Besuchstage",
     "daysToAvoid": "Tage zum Vermeiden",
-    "searchAttractions": "Attraktionen filtern...",
+    "searchAttractions": "Attraktionen filtern…",
     "noAttractionsFound": "Keine Attraktionen gefunden",
     "clearSearch": "Suche zurücksetzen",
     "seasonal": "Saisonal",
@@ -1105,7 +1105,7 @@
     "cardBestTimeIn": "Beste Zeit: <time></time> (in {hours} Std. {minutes} Min.)",
     "cardBestTimeInHoursOnly": "Beste Zeit: <time></time> (in {hours} Std.)",
     "cardBestTimeInMinutesOnly": "Beste Zeit: <time></time> (in {minutes} Min.)",
-    "return": "Rückkehr: {start} - {end}",
+    "return": "Rückkehr: {start}–{end}",
     "crowdLevels": {
       "very_low": "Sehr niedrig",
       "low": "Niedrig",
@@ -1154,7 +1154,7 @@
         "boardingGroupsAvailable": "Gruppen verfügbar",
         "boardingGroupsDistributed": "Gruppen verteilt",
         "boardingGroupsPaused": "Gruppen pausiert",
-        "return": "Virtuelle Warteschlange: {start} - {end}",
+        "return": "Virtuelle Warteschlange: {start}–{end}",
         "returnNoEnd": "Virtuelle Warteschlange: {start}"
       }
     },
@@ -1282,8 +1282,8 @@
     "title": "Parks in deiner Nähe",
     "enableDescription": "Aktiviere den Standortzugriff, um Parks und Attraktionen in deiner Nähe zu finden.",
     "enable": "Standort aktivieren",
-    "loadingLocation": "Standort wird ermittelt...",
-    "permissionDenied": "Standort für beste Erfahrung benötigt",
+    "loadingLocation": "Standort wird ermittelt…",
+    "permissionDenied": "Ohne Standortfreigabe keine Parks in deiner Nähe",
     "permissionDeniedDescription": "Ohne Standort können wir dir keine Parks in deiner Nähe zeigen und im Park nicht sagen, was gerade neben dir liegt. Freigeben lässt sich das in den Browser-Einstellungen.",
     "locationUnavailable": "Standort konnte nicht ermittelt werden",
     "locationUnavailableDescription": "Dein Standort ließ sich nicht ermitteln. Aktiviere den Standortzugriff oder versuch es später noch einmal.",
@@ -1372,7 +1372,7 @@
     "platformStats": "Plattform-Statistiken",
     "platformStatsDescription": "Was park.fan gerade misst, über alle Parks zusammen.",
     "totalWaitTime": "Gesamte Wartezeit",
-    "dataPoints": "Datenpunkte",
+    "dataPoints": "Messwerte",
     "dataPointsTooltipSuffix": "Punkte aktuell",
     "queueDataRecords": "Warteschlangen-Datensätze",
     "alsoTracking": "Außerdem erfasst"
@@ -1381,7 +1381,7 @@
     "hero": {
       "badge": "KI-gestützte Vorhersagen",
       "exploreParks": "Parks entdecken",
-      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants durchsuchen..."
+      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants durchsuchen…"
     },
     "features": {
       "title": "Plane deinen Freizeitpark-Besuch",
@@ -1400,9 +1400,9 @@
     }
   },
   "search": {
-    "typeToSearch": "Mindestens 3 Zeichen eingeben...",
-    "viewAllResults": "Alle Ergebnisse für \"{query}\" anzeigen",
-    "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
+    "typeToSearch": "Mindestens 3 Zeichen eingeben…",
+    "viewAllResults": "Alle Ergebnisse für „{query}“ anzeigen",
+    "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
     "at": "in {park}",
     "types": {
       "park": "Park",
@@ -1438,13 +1438,13 @@
   },
   "seo": {
     "global": {
-      "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
+      "title": "park.fan – Freizeitpark Wartezeiten & Prognosen",
       "description": "Live-Wartezeiten und KI-Prognosen für 200+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
       "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit"
     },
     "home": {
       "title": "Live Freizeitpark Wartezeiten & Crowd-Prognosen",
-      "description": "Dein Begleiter für Freizeitparks: Live-Wartezeiten, KI-Prognosen und präzise In-Park Navigation. Für Disney, Universal, Europa-Park und mehr."
+      "description": "Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu, dazu Crowd-Kalender, KI-Prognosen und In-Park-Navigation."
     },
     "parks": {
       "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",
@@ -1495,8 +1495,8 @@
       "attraction": "Attraktion nicht gefunden"
     },
     "imageAlt": {
-      "park": "{park} - Freizeitpark Wartezeiten",
-      "attraction": "{attraction} {inPark} - Wartezeiten"
+      "park": "{park} – Freizeitpark Wartezeiten",
+      "attraction": "{attraction} {inPark} – Wartezeiten"
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
@@ -1572,7 +1572,7 @@
     "opensOn": "Öffnet am",
     "howTo": {
       "findTitle": "Park oder Attraktion suchen",
-      "findText": "Über die Suche oder über „Parks entdecken\".",
+      "findText": "Über die Suche oder über „Parks entdecken“.",
       "starTitle": "Auf den Stern tippen",
       "starText": "Jede Park- und Attraktionskarte hat einen, und jede Park- und Attraktionsseite auch.",
       "thenTitle": "Fertig",
@@ -1754,11 +1754,11 @@
     "description": "70 Minuten bei Taron: viel oder normal? Wie du eine Wartezeit einordnest, wann eine Bahn am ruhigsten ist und woher die Zahlen kommen."
   },
   "impressum": {
-    "title": "Impressum - park.fan",
+    "title": "Impressum – park.fan",
     "description": "Rechtliche Informationen und Impressum für park.fan"
   },
   "datenschutz": {
-    "title": "Datenschutzerklärung - park.fan",
+    "title": "Datenschutzerklärung – park.fan",
     "description": "Datenschutzerklärung und Datenschutzinformationen für park.fan",
     "analyticsOptOut": {
       "description": "Sie können Ihre eigenen Besuche von unseren Statistiken ausschließen, damit sie nicht in unseren Auswertungen erscheinen.",
@@ -1778,7 +1778,7 @@
     "title": "Blog",
     "heroTitle": "Geschichten, Daten und News aus den Parks",
     "badge": "park.fan Blog",
-    "description": "Reiseberichte, Daten-Deep-Dives und Park-News vom park.fan-Team.",
+    "description": "Reiseberichte, Wartezeit-Analysen und Park-News. Geschrieben von jemandem, der selbst ansteht.",
     "intro": "Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von jemandem, der selbst ansteht.",
     "blog": "Blog",
     "empty": "Noch keine Beiträge. Schau bald wieder vorbei.",
@@ -1835,9 +1835,9 @@
       "attractionNotFound": "Attraktion „{slug}“ wurde nicht gefunden.",
       "parkMap": "Parkplan",
       "weather": "Wetter",
-      "glossary": "Glossar",
+      "glossary": "Wörterbuch",
       "glossaryMore": "Vollständige Definition",
-      "termNotFound": "Glossarbegriff \"{slug}\" wurde nicht gefunden."
+      "termNotFound": "Der Begriff „{slug}“ steht nicht im Wörterbuch."
     },
     "toc": {
       "title": "Inhalt",
@@ -1946,7 +1946,7 @@
       "withdraw": "Meinung geändert? Melde dich jederzeit, und wir entfernen dein Foto."
     },
     "success": {
-      "title": "Vielen Dank!",
+      "title": "Vielen Dank",
       "message": "{count, plural, one {Dein Foto wurde} other {Deine # Fotos wurden}} übermittelt und erscheint nach kurzer Prüfung in der Galerie.",
       "again": "Weitere Fotos hochladen",
       "home": "Zur Startseite"
@@ -1981,7 +1981,7 @@
       "length": "Länge",
       "duration": "Fahrzeit",
       "statsSource": "Messwerte: {source}",
-      "openGlossary": "Im Glossar nachlesen",
+      "openGlossary": "Im Wörterbuch nachlesen",
       "viewerTitle": "3-D-Ansicht: {name}",
       "figureCount": "{count, plural, one {# Fahrfigur} other {# Fahrfiguren}}"
     }

@@ -126,7 +126,7 @@ export function ContentEN() {
         icon={Clock}
       >
         <P>
-          It is not only the day that matters, but the hour too. Three windows are quietest almost
+          After the weekday, the hour decides the most. These four windows are quietest almost
           everywhere:
         </P>
         <TouchpointGrid

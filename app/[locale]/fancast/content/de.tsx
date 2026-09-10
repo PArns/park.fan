@@ -44,7 +44,7 @@ const LIVE_LABELS: FancastLiveLabels = {
   edition: 'Aktuelle Edition',
   trained: 'Trainiert',
   basis: 'Trainingsbasis',
-  datapoints: '{n} Datenpunkte',
+  datapoints: '{n} Messwerte',
   days: 'über {d} Tage',
   vsPrevious: 'Gegenüber {v}',
   moreAccurate: 'genauer',
@@ -114,11 +114,11 @@ export function ContentDE() {
         <P>
           Und weil wir Zahlen nur trauen, wenn sie sich beweisen müssen, benotet Fancast sich
           selbst. Jede Vorhersage wird später gegen die tatsächlich gemessene Wartezeit gehalten –
-          öffentlich, auf dieser Seite. Schummeln zwecklos.
+          öffentlich, auf dieser Seite.
         </P>
         <Highlight>
-          Fancast ist kein Wahrsager mit Glaskugel, sondern ein notorischer Statistiker, der jeden
-          Morgen noch einmal nachsitzen muss.
+          Jede Prognose wird am Tag darauf gegen die gemessene Wartezeit gelegt. Was dabei
+          herauskommt, steht oben auf dieser Seite als MAE, RMSE und MAPE, gut oder schlecht.
         </Highlight>
       </div>
 

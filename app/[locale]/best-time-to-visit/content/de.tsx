@@ -96,9 +96,8 @@ export function ContentDE() {
           Wunschpark den passenden Tag raus.
         </P>
         <Highlight>
-          Keine Lust auf den ganzen Text? Geh unter der Woche, am besten Dienstag bis Donnerstag und
-          außerhalb der Ferien, sei pünktlich zur Öffnung da und freu dich, wenn das Wetter mal
-          mittelmäßig ist. Der Rest sind nur Details.
+          Kurzfassung: Dienstag bis Donnerstag außerhalb der Ferien, pünktlich zur Öffnung da sein,
+          und eine durchwachsene Wettervorhersage ist ein Vorteil, kein Problem.
         </Highlight>
       </div>
 
@@ -111,9 +110,8 @@ export function ContentDE() {
         icon={CalendarRange}
       >
         <PG>
-          Fangen wir mit den beiden größten Hebeln an: dem Wochentag und dem Monat. Beides haben wir
-          über alle Parks gemittelt, jeweils aus den tatsächlich gemessenen Wartezeiten. So sieht
-          das aus:
+          Der Wochentag und der Monat bewegen am meisten. Beides haben wir über alle Parks
+          gemittelt, jeweils aus den tatsächlich gemessenen Wartezeiten. So sieht das aus:
         </PG>
         <BestTimesData locale="de" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="de" />
@@ -128,7 +126,7 @@ export function ContentDE() {
         icon={Clock}
       >
         <P>
-          Der Tag ist die halbe Miete, die Uhrzeit die andere. Diese vier Zeitfenster sind fast
+          Nach dem Wochentag entscheidet die Uhrzeit am meisten. Diese vier Zeitfenster sind fast
           überall am entspanntesten:
         </P>
         <TouchpointGrid
@@ -145,7 +143,7 @@ export function ContentDE() {
             },
             {
               icon: Sun,
-              title: 'Die letzten 90 Minuten',
+              title: 'Die letzte Stunde',
               body: 'Viele Familien gehen vor dem Ende nach Hause. In der letzten Stunde vor Schließung werden die Wartezeiten oft noch mal spürbar kürzer.',
             },
             {
@@ -208,7 +206,7 @@ export function ContentDE() {
             {
               icon: Sun,
               title: 'Brückentage & Ferien-Samstage im Hochsommer',
-              body: 'Die gefährlichste Mischung: Sonne, freier Tag, Hochsaison. Falls es sich einrichten lässt, weich auf den Dienstag danach aus.',
+              body: 'Sonne, freier Tag und Hochsaison fallen hier zusammen. Von allen Konstellationen im Kalender ist das die vollste.',
             },
             {
               icon: Sparkles,
@@ -238,11 +236,6 @@ export function ContentDE() {
               icon: CloudRain,
               title: 'Wetter clever nutzen',
               body: 'Eine durchwachsene Vorhersage hält viele zu Hause. Wenn dir etwas Nieselregen nichts ausmacht, stehst du deutlich kürzer an. Regenjacke schlägt Regenschirm.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Früh da sein',
-              body: 'Bei den großen Bahnen bringt die erste Stunde oft mehr als zwei am Nachmittag. Ob es sich für eine bestimmte Bahn lohnt, steht auf ihrer eigenen Seite.',
             },
             {
               icon: Ticket,

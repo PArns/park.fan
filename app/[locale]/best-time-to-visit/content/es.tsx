@@ -127,8 +127,8 @@ export function ContentES() {
         icon={Clock}
       >
         <P>
-          No solo cuenta el día, sino también la hora. Tres franjas son las más tranquilas casi en
-          todas partes:
+          Después del día de la semana, la hora es lo que más pesa. Estas cuatro franjas son las más
+          tranquilas casi en todas partes:
         </P>
         <TouchpointGrid
           items={[

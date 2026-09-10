@@ -128,8 +128,8 @@ export function ContentFR() {
         icon={Clock}
       >
         <P>
-          Ce n’est pas que le jour qui compte, mais aussi l’heure. Trois créneaux sont presque
-          partout les plus calmes :
+          Après le jour de la semaine, c’est l’heure qui pèse le plus. Ces quatre créneaux sont
+          presque partout les plus calmes :
         </P>
         <TouchpointGrid
           items={[

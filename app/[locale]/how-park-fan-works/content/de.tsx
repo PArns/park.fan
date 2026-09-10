@@ -771,7 +771,7 @@ export function ContentDE() {
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Wartezeiten" delay={0}>
               ThemeParks.wiki, Wartezeiten.app und Queue-Times.com, im Fünf-Minuten-Takt. Die
-              Rohwährung von allem anderen auf dieser Seite.
+              Grundlage von allem anderen auf dieser Seite.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Ferien & Feiertage" delay={60}>
               Nager.Date für gesetzliche Feiertage und Brückentage, OpenHolidays für Schulferien.
@@ -966,7 +966,7 @@ export function ContentDE() {
             question="„Was heißt Single Rider, und in welcher Reihenfolge machen wir das?“"
             steps={[
               <>
-                Begriffe stehen im <A href={glossary}>Glossar</A>, in sechs Sprachen. Auf den
+                Begriffe stehen im <A href={glossary}>Wörterbuch</A>, in sechs Sprachen. Auf den
                 Attraktionsseiten sind sie im Text direkt verlinkt.
               </>,
               <>
@@ -1042,7 +1042,7 @@ export function ContentDE() {
             },
             {
               icon: HelpCircle,
-              title: 'Glossar',
+              title: 'Wörterbuch',
               body: (
                 <>
                   <A href={glossary}>Alle Fachbegriffe</A> mit Definition, Beispielbahnen und
