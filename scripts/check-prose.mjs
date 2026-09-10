@@ -41,7 +41,7 @@ const VERBOSE = process.argv.includes('--verbose');
  * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/blog.md §7.1).
  * Lower a number when you fix strings; never raise one.
  */
-const UI_EM_DASH_BASELINE = { de: 0, en: 42, es: 1, fr: 0, it: 0, nl: 0 };
+const UI_EM_DASH_BASELINE = { de: 0, en: 42, es: 0, fr: 0, it: 0, nl: 0 };
 
 /** Sentence-length variance under this reads as one flat rhythm. Supporting signal, not a verdict. */
 const MIN_BURSTINESS = 0.4;

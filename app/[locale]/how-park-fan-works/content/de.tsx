@@ -139,9 +139,9 @@ const SCALE_LEGEND = [
  * Zahlen aus `TARON_TYPICAL_WAITS`, also aus der API und nicht aus der Erzählung.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Montag', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Montag', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Samstag', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Unter der Woche', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Unter der Woche', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -199,7 +199,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attraktionen',
     body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, durchsuchbar und nach Bereichen gruppiert. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
     example:
-      'Taron in Klugheim, ab 140 Zentimeter – die Karte aus Kapitel 01. Darüber die Rope-Drop-Liste, angeführt von Chiapas mit 75 gesparten Minuten.',
+      'Taron in Klugheim, ab 140 Zentimeter – die Karte aus Kapitel 01. Darüber die Rope-Drop-Liste, angeführt von Taron mit 60 gesparten Minuten.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -316,7 +316,7 @@ const FAQ = [
   {
     question: 'Sind 70 Minuten Wartezeit viel?',
     answer:
-      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten und bleibt an neun von zehn Montagen unter 65; dort sind 70 Minuten also ein ungewöhnlich voller Tag. Samstags liegt der Median derselben Bahn bei genau 70 Minuten, dann ist dieselbe Anzeige völlig durchschnittlich. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn, damit man sie nicht raten muss.',
+      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten, und an neun von zehn Montagen bleibt die Spitze bei 70 oder darunter. Samstags liegt der Median derselben Bahn bei genau diesen 70 Minuten. Dieselbe Anzeige ist montags also ein ausgesprochen voller Tag und samstags ein völlig durchschnittlicher. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn, damit man sie nicht raten muss.',
   },
   {
     question: 'Woher kommen die Wartezeiten?',

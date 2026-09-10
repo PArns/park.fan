@@ -137,9 +137,9 @@ const SCALE_LEGEND = [
  * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Lunedì', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Lunedì', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Sabato', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Nei giorni feriali', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Nei giorni feriali', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attrazioni',
     body: 'La prima scheda, con il numero di attrazioni nel titolo. Card come quelle del capitolo 01, con ricerca e raggruppate per area. In cima il riepilogo rope drop del parco, ordinato per minuti risparmiati.',
     example:
-      'Taron a Klugheim, da 140 centimetri – la card del capitolo 01. Sopra la lista rope drop, guidata da Chiapas con 75 minuti risparmiati.',
+      'Taron a Klugheim, da 140 centimetri – la card del capitolo 01. Sopra la lista rope drop, guidata da Taron con 60 minuti risparmiati.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -314,7 +314,7 @@ const FAQ = [
   {
     question: 'Settanta minuti di attesa sono tanti?',
     answer:
-      'Dipende dall’attrazione e dal giorno della settimana. Taron, al Phantasialand, di lunedì arriva tipicamente a 55 minuti e in nove lunedì su dieci resta sotto i 65; lì 70 minuti sono una giornata insolitamente piena. Di sabato la mediana della stessa attrazione è esattamente 70 minuti, e allora lo stesso numero è del tutto nella media. Entrambi i valori di confronto stanno su park.fan, sulla pagina dell’attrazione, così non serve indovinarli.',
+      'Dipende dall’attrazione e dal giorno della settimana. Taron, al Phantasialand, di lunedì arriva tipicamente a 55 minuti e in nove lunedì su dieci resta a 70 o sotto. Di sabato la mediana della stessa attrazione è proprio quei 70 minuti, quindi lo stesso numero è un lunedì decisamente pieno. Di sabato la mediana della stessa attrazione è esattamente 70 minuti, e allora lo stesso numero è del tutto nella media. Entrambi i valori di confronto stanno su park.fan, sulla pagina dell’attrazione, così non serve indovinarli.',
   },
   {
     question: 'Da dove arrivano i tempi di attesa?',

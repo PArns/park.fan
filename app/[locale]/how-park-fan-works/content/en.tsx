@@ -137,9 +137,9 @@ const SCALE_LEGEND = [
  * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Monday', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Monday', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Saturday', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Weekdays', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Weekdays', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -195,7 +195,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attractions',
     body: 'The first tab, with the ride count in its title. Cards like the ones in chapter 01, searchable and grouped by land. The park’s rope-drop overview sits on top, sorted by minutes saved.',
     example:
-      'Taron in Klugheim, from 140 centimetres — the card from chapter 01. Above it the rope-drop list, led by Chiapas at 75 minutes saved.',
+      'Taron in Klugheim, from 140 centimetres — the card from chapter 01. Above it the rope-drop list, led by Taron at 60 minutes saved.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -312,7 +312,7 @@ const FAQ = [
   {
     question: 'Is a 70-minute wait a lot?',
     answer:
-      'It depends on the ride and on the weekday. Taron at Phantasialand typically peaks at 55 minutes on a Monday and stays under 65 on nine Mondays out of ten, so 70 minutes there is an unusually busy day. On Saturdays the median for the same ride is exactly 70 minutes, and the same reading is then completely average. Both reference values are on the ride’s own page on park.fan, so nobody has to guess them.',
+      'It depends on the ride and on the weekday. Taron at Phantasialand typically peaks at 55 minutes on a Monday, and on nine Mondays out of ten the peak stays at 70 or below. On Saturdays the median for the same ride is exactly those 70 minutes, and the same reading is then completely average. Both reference values are on the ride’s own page on park.fan, so nobody has to guess them.',
   },
   {
     question: 'Where do the wait times come from?',

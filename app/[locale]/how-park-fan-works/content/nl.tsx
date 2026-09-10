@@ -137,9 +137,9 @@ const SCALE_LEGEND = [
  * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Maandag', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Maandag', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Zaterdag', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Doordeweeks', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Doordeweeks', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attracties',
     body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, doorzoekbaar en gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
     example:
-      'Taron in Klugheim, vanaf 140 centimeter – de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Chiapas met 75 bespaarde minuten.',
+      'Taron in Klugheim, vanaf 140 centimeter – de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Taron met 60 bespaarde minuten.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -313,7 +313,7 @@ const FAQ = [
   {
     question: 'Is 70 minuten wachten veel?',
     answer:
-      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten en blijft op negen van de tien maandagen onder de 65; daar zijn 70 minuten dus een ongewoon drukke dag. Op zaterdag ligt de mediaan van dezelfde attractie op precies 70 minuten, en dan is dezelfde weergave volstrekt gemiddeld. Beide vergelijkingswaarden staan op park.fan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
+      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten en blijft op negen van de tien maandagen op 70 of daaronder. Op zaterdag is de mediaan van dezelfde baan precies die 70 minuten, dus dezelfde stand is op maandag een uitgesproken drukke dag en op zaterdag volstrekt gemiddeld. Op zaterdag ligt de mediaan van dezelfde attractie op precies 70 minuten, en dan is dezelfde weergave volstrekt gemiddeld. Beide vergelijkingswaarden staan op park.fan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
   },
   {
     question: 'Waar komen de wachttijden vandaan?',

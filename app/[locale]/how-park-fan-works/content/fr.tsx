@@ -137,9 +137,9 @@ const SCALE_LEGEND = [
  * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Lundi', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Lundi', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Samedi', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'En semaine', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'En semaine', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attractions',
     body: 'Le premier onglet, avec le nombre d’attractions dans son titre. Des cartes comme au chapitre 01, avec recherche, groupées par zone. En haut, l’aperçu rope drop du parc, trié par minutes gagnées.',
     example:
-      'Taron à Klugheim, à partir de 140 centimètres – la carte du chapitre 01. Au-dessus, la liste rope drop, menée par Chiapas avec 75 minutes gagnées.',
+      'Taron à Klugheim, à partir de 140 centimètres – la carte du chapitre 01. Au-dessus, la liste rope drop, menée par Taron avec 60 minutes gagnées.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -314,7 +314,7 @@ const FAQ = [
   {
     question: 'Est-ce que 70 minutes d’attente, c’est beaucoup ?',
     answer:
-      'Cela dépend de l’attraction et du jour de la semaine. Taron, à Phantasialand, plafonne habituellement à 55 minutes le lundi et reste sous 65 neuf lundis sur dix ; 70 minutes y correspondent donc à une journée exceptionnellement chargée. Le samedi, la médiane de la même attraction est exactement de 70 minutes, et le même affichage est alors parfaitement moyen. Les deux valeurs de comparaison figurent sur park.fan, sur la page de l’attraction, pour ne pas avoir à les deviner.',
+      'Cela dépend de l’attraction et du jour de la semaine. Taron, à Phantasialand, plafonne habituellement à 55 minutes le lundi et reste à 70 ou en dessous neuf lundis sur dix ; le samedi, la médiane de la même attraction est justement de 70 minutes, si bien que le même affichage correspond à un lundi nettement chargée. Le samedi, la médiane de la même attraction est exactement de 70 minutes, et le même affichage est alors parfaitement moyen. Les deux valeurs de comparaison figurent sur park.fan, sur la page de l’attraction, pour ne pas avoir à les deviner.',
   },
   {
     question: 'D’où viennent les temps d’attente ?',

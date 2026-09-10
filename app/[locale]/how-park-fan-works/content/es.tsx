@@ -137,9 +137,9 @@ const SCALE_LEGEND = [
  * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Lunes', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Lunes', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Sábado', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Entre semana', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Entre semana', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Atracciones',
     body: 'La primera pestaña, con el número de atracciones en el título. Tarjetas como las del capítulo 01, con buscador y agrupadas por zonas. Arriba, el resumen de rope drop del parque, ordenado por minutos ahorrados.',
     example:
-      'Taron en Klugheim, desde 140 centímetros – la tarjeta del capítulo 01. Encima la lista de rope drop, encabezada por Chiapas con 75 minutos ahorrados.',
+      'Taron en Klugheim, desde 140 centímetros – la tarjeta del capítulo 01. Encima la lista de rope drop, encabezada por Taron con 60 minutos ahorrados.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -315,7 +315,7 @@ const FAQ = [
   {
     question: '¿Son muchos 70 minutos de espera?',
     answer:
-      'Depende de la atracción y del día de la semana. Taron, en Phantasialand, llega los lunes a 55 minutos de forma típica y se queda por debajo de 65 en nueve de cada diez lunes; ahí 70 minutos son un día inusualmente lleno. Los sábados la mediana de la misma atracción es exactamente 70 minutos, y entonces la misma cifra es completamente normal. Ambos valores de comparación están en park.fan, en la página de la atracción, para no tener que adivinarlos.',
+      'Depende de la atracción y del día de la semana. Taron, en Phantasialand, llega los lunes a 55 minutos de forma típica y se queda en 70 o por debajo en nueve de cada diez lunes. Los sábados la mediana de la misma atracción es justo esos 70 minutos, así que la misma cifra es un lunes marcadamente lleno. Los sábados la mediana de la misma atracción es exactamente 70 minutos, y entonces la misma cifra es completamente normal. Ambos valores de comparación están en park.fan, en la página de la atracción, para no tener que adivinarlos.',
   },
   {
     question: '¿De dónde salen los tiempos de espera?',
