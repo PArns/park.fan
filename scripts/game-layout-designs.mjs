@@ -157,12 +157,11 @@ const compactTwister3 = {
  *   attempt that put the turn inside the descent broke the heading closure instead (-135 degrees,
  *   5.63 g, 188 s) and is not kept.
  *
- * Constraint (1) — a lift in line with the station eats 69 m of a 48 m plot — and this one are
- * very nearly contradictory in the element table as it stands, and that is the real result of
- * these four attempts: **there is no curved drop.** `drop` descends straight and `helix` turns at
- * a constant gradient off a level entry; nothing spends the crest's height and its heading at the
- * same time. A `curved-drop` element (a drop whose pullout carries an arc) is what a compact
- * layout is missing, and it is an entry in `elements.ts` rather than a layout.
+ * Constraint (1) — a lift in line with the station eats 69 m of a 48 m plot — and this one look
+ * contradictory, and the note here used to conclude that the element table has no curved drop and
+ * needs a new entry in `elements.ts`. **That was wrong, and v5 below disproves it.** `helix` takes
+ * `turns` down to 0.25, so a fractional helix with a large `drop` already IS a curved drop. The
+ * conclusion was drawn from the element NAMES; reading their ops answers it.
  */
 const compactTwister4 = {
   ride: 'core-classic:family-invert',
@@ -189,9 +188,65 @@ const compactTwister4 = {
   ],
 };
 
+/**
+ * Fifth attempt, and it exists because v4's conclusion was WRONG.
+ *
+ * v4's note says the element table has no curved drop and that a compact layout therefore needs a
+ * new entry in `elements.ts`. It does not. `helix` takes `turns` down to **0.25**, and a quarter
+ * or a half turn with a large `drop` is exactly a curved drop: its own ops pitch the nose over
+ * first (`-atan(drop / (2*pi*radius*turns))`), turn while pitched, and level out. A half turn at
+ * radius 10 dropping 11 m is a 19.3-degree descent over 31 m of arc that turns 180 degrees —
+ * which is the manoeuvre v4 said was missing, spelled with a parameter rather than with code.
+ *
+ * Reading the ops rather than the element names is what found it.
+ *
+ * **Measured, and it solves constraint (4):** with the curved drop off the crest there is no
+ * stall at the lift at all — v4 stalled at 19 m and, with gentler lift numbers, at 59 m; v5 gets
+ * the train round to 291 m before anything complains. That was the blocker, and it is gone.
+ *
+ * It still does not ship, and the two reasons are different from every previous attempt's:
+ *
+ * - The solve leaves **97 m of residual in x** with `returnLeg` pinned at its floor. In this
+ *   topology both free straights move the end point mostly along z, so the pair does not span
+ *   the plane — the same conditioning failure v3 had, in the other axis. The fix is a different
+ *   pair of free parameters, not different values: one of them wants to be a curve's radius or
+ *   the transport, which move x.
+ * - `-19.7 g at 291 m` and 7.8 g sideways: the airtime hill sits straight after a 14 m curve
+ *   that the train now takes far faster than v4's did. An airtime hill is sized from the speed
+ *   at its own crest, so it has to be re-parameterised for the speed this layout actually
+ *   carries there, or moved.
+ *
+ * Both are ordinary work with the solver rather than research. What is no longer in the way is
+ * the thing four attempts spent themselves on.
+ */
+const compactTwister5 = {
+  ride: 'core-classic:family-invert',
+  style: 'core-classic:steel-tube',
+  train: 'core-classic:steel-open-5',
+  free: ['outLeg', 'returnLeg'],
+  start: { outLeg: 10, returnLeg: 12 },
+  bounds: { outLeg: [2, 70], returnLeg: [2, 70] },
+  pieces: (v) => [
+    { element: 'station', params: { length: 12 } },
+    { element: 'transport', params: { length: 8, speed: 2 } },
+    { element: 'lift-hill', params: { height: 15, angle: 34, radius: 12, speed: 2.5 } },
+    // The curved drop: off the crest, no flat to coast, 180 degrees while it falls.
+    { element: 'helix', params: { turns: 0.5, radius: 10, drop: 11, hand: -1 } },
+    { element: 'helix', params: { turns: 1, radius: 12, drop: 4, hand: -1 } },
+    { element: 'straight', params: { length: v.outLeg } },
+    { element: 'curve', params: { angle: 90, radius: 14 } },
+    { element: 'airtime-hill', params: { height: 3, g: 0.1, gLoad: 1.4 } },
+    { element: 'straight', params: { length: v.returnLeg } },
+    { element: 'curve', params: { angle: 90, radius: 14 } },
+    { element: 'brake-run', params: { length: 14, speed: 4 } },
+    { element: 'level', params: { length: 6 } },
+  ],
+};
+
 export const DESIGNS = {
   'compact-twister': compactTwister,
   'compact-twister-2': compactTwister2,
   'compact-twister-3': compactTwister3,
   'compact-twister-4': compactTwister4,
+  'compact-twister-5': compactTwister5,
 };
