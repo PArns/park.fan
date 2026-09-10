@@ -304,10 +304,12 @@ function CalendarCompareToggle({ parkSlug }: { parkSlug: string }) {
     <Button
       variant={active ? 'secondary' : 'default'}
       size="sm"
-      // `h-9` to stand in the stepper's row of controls, and full width below `sm`, where it sits
-      // under a stepper that already spans the card and a button hugging its label would read as
-      // an afterthought pinned to the right edge.
-      className="h-9 max-sm:w-full"
+      // `h-9` to stand in the stepper's row of controls, and NOT full width below `sm`: at 390 px
+      // it took 234 px of the card in the primary colour, under a title and over a legend, and
+      // read as the loudest thing on a page whose subject is the month. It hugs its label, keeps
+      // the 44 px phone height the button scale imposes, and the `sm` size's own `px-2.5` beside
+      // an icon — the height is a touch floor, the width was never anything but a decision.
+      className="h-9"
       aria-pressed={active}
       onClick={() => dayComparisonStore.setActive(parkSlug, !active)}
     >
