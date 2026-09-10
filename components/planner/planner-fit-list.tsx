@@ -121,7 +121,7 @@ export function PlannerFitList({
                 data-planner-fit-pin={wish.key}
                 title={t('fit.pinHint')}
                 className={cn(
-                  'flex size-7 shrink-0 items-center justify-center rounded-md border transition-colors max-sm:size-9',
+                  'flex size-7 shrink-0 items-center justify-center rounded-md border transition-colors max-sm:size-11',
                   isPinned
                     ? 'border-primary/50 bg-primary/15 text-primary'
                     : 'border-border/60 text-muted-foreground hover:bg-accent',

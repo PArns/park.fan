@@ -18,7 +18,15 @@ import { entriesFor, type PlannerEntry } from '@/lib/planner/types';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
+import {
+  buildDayGrid,
+  clampStart,
+  growGridForSpans,
+  nextFreeStart,
+  nowFloor,
+  rideFloor,
+} from '@/lib/planner/day-grid';
+import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
@@ -141,6 +149,8 @@ export function PlannerDayColumn({
   className,
 }: PlannerDayColumnProps) {
   const t = useTranslations('planner');
+  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  const pxPerMin = usePlannerPxPerMin();
   const {
     state,
     addRide,
@@ -213,7 +223,10 @@ export function PlannerDayColumn({
    * untouched by the growth, so the opening-hours band still marks the park's
    * real day and every placement rule still speaks for the park.
    */
-  const grid = growGridForSpans(buildDayGrid(day?.context.openHour, day?.context.closeHour), spans);
+  const grid = growGridForSpans(
+    buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin),
+    spans
+  );
 
   const dayFacts = usePlannerDayFacts(park, open);
   const prefs = date ? park?.days[date]?.prefs : undefined;
@@ -451,8 +464,23 @@ export function PlannerDayColumn({
             band, showtime strip) 163 — leaving about 250 for the axis and the
             ride search together. A floor above ~150 spends all of that here and
             leaves the search a text field with nothing under it. At 1.2 px per
-            minute this is still two hours of day, and it scrolls. */}
-        <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[140px]">
+            minute this is still two hours of day, and it scrolls.
+
+            **200 now, and the number is chosen so the floor keeps its DAY.**
+            140 px was two hours at 1.2 px per minute (116.7 minutes, to be
+            exact). The phone's axis is `PX_PER_MIN_COARSE` = 1.8, where the same
+            140 px would be one hour eighteen — the floor doing a third less work
+            on a taller axis, silently, because it is written in pixels and the
+            thing it bounds is minutes. 200 px at 1.8 is **one hour fifty-one**,
+            i.e. the same day to within six minutes, with every block on it half
+            again as tall.
+
+            The 60 px it costs come from three places, all in this change: the
+            sheet goes from 85svh to 92svh (+59 px at 844), the ride search's own
+            cap comes down from 46svh to 32, and the chrome above gives back the
+            handle row, the header's padding, this column's head and the weekend
+            chip. */}
+        <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}
             className={cn(
@@ -594,6 +622,25 @@ export function PlannerDayColumn({
               onClose={() => setSelectedId(null)}
               onEditCustom={(entryId, patch) => {
                 if (parkSlug && date) editCustom(parkSlug, date, entryId, patch);
+              }}
+              /* The gesture-free way to move a block, clamped HERE because the
+                 clamp is the axis's: `clampStart` against the same
+                 `rideFloor().hardMin` the drag is bound by, so a block cannot be
+                 nudged anywhere a drag could not put it — into the hour before
+                 the ride opens, or past the last minute a queue may be joined. */
+              onNudge={(entryId, deltaMinutes) => {
+                if (!parkSlug || !date || !grid) return;
+                const entry = entries.find((e: PlannerEntry) => e.id === entryId);
+                if (!entry) return;
+                const ride = entry.attractionSlug
+                  ? day?.rides.find((r) => r.attractionSlug === entry.attractionSlug)
+                  : undefined;
+                const next = clampStart(
+                  grid,
+                  entry.startMinute + deltaMinutes,
+                  rideFloor(grid, ride).hardMin
+                );
+                if (next !== entry.startMinute) moveRide(parkSlug, date, entryId, next);
               }}
             />
           )}

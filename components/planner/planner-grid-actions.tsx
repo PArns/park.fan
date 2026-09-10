@@ -1,9 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Check, Minus, Plus, X } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, Minus, Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatGridTime } from '@/lib/planner/park-time';
+import { SNAP_MIN_FINE } from '@/lib/planner/day-grid';
 import {
   PLANNER_BLOCK_ICONS,
   type PlannerCustomBlock,
@@ -22,7 +23,29 @@ interface PlannerGridActionsProps {
   onClose: () => void;
   /** Free blocks only: rename, re-icon, or set the duration without dragging. */
   onEditCustom?: (entryId: string, patch: Partial<PlannerCustomBlock>) => void;
+  /**
+   * Move the block by a signed number of minutes, clamped by the caller.
+   *
+   * The second way to move a block, and the only one that is not a gesture. The
+   * caller clamps because the caller has the axis: {@link PlannerDayColumn} runs
+   * the same `clampStart` against the same `rideFloor` the drag does, so the two
+   * paths cannot disagree about where a block may go.
+   */
+  onNudge?: (entryId: string, deltaMinutes: number) => void;
 }
+
+/**
+ * What one press of the move buttons is worth.
+ *
+ * {@link SNAP_MIN_FINE}, and deliberately NOT the step the drag uses on the
+ * device this control exists for: a coarse pointer commits on
+ * `SNAP_MIN_COARSE`, half an hour, because fifteen minutes under a finger
+ * that is sliding reads as jitter rather than as a choice. A press is not
+ * sliding. It lands on the minute it names, so it takes the granularity every
+ * other start in this app sits on, and the two are different for a reason rather
+ * than by omission.
+ */
+const NUDGE_MIN = SNAP_MIN_FINE;
 
 /**
  * Tick-off and remove for the selected block.
@@ -44,6 +67,7 @@ export function PlannerGridActions({
   onRemove,
   onClose,
   onEditCustom,
+  onNudge,
 }: PlannerGridActionsProps) {
   const t = useTranslations('planner');
   if (!entry) return null;
@@ -57,8 +81,13 @@ export function PlannerGridActions({
   const actual = done ? (entry.actualWait ?? null) : null;
 
   return (
-    <div className="border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t px-3 py-1.5 backdrop-blur-sm">
-      <div className="min-w-0 flex-1">
+    /* `max-sm:flex-wrap` and nothing above `sm`: the row gained a second pair of
+       44 px buttons, and on a free block that is four icons, two durations, two
+       moves and a delete beside a label — over 400 px in a 390 px screen. It
+       wraps on a phone, where the label takes the first line, and lays out
+       exactly as it did on every wider box. */
+    <div className="border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t px-3 py-1.5 backdrop-blur-sm max-sm:flex-wrap">
+      <div className="min-w-0 flex-1 max-sm:basis-full">
         {custom && onEditCustom ? (
           <input
             value={custom.label}
@@ -110,6 +139,36 @@ export function PlannerGridActions({
         </p>
       </div>
 
+      {/* Move, and it is for EVERY entry rather than for free blocks only.
+          Dragging is one gesture on one 44 px strip of a box whose height is a
+          queue, and on a phone that strip is the only pointer path there is —
+          so the day depended on a gesture landing. These two buttons are the
+          same write (`moveEntry`, through the caller's clamp), reachable with a
+          thumb, and they say what they do: up is earlier, down is later, which
+          is the axis's own direction and not a description of this row. */}
+      {onNudge && (
+        <div className="flex shrink-0 items-center">
+          <button
+            type="button"
+            onClick={() => onNudge(entry.id, -NUDGE_MIN)}
+            aria-label={t('entry.earlier', { minutes: NUDGE_MIN })}
+            title={t('entry.earlier', { minutes: NUDGE_MIN })}
+            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-9 items-center justify-center rounded-md transition-colors max-sm:size-11"
+          >
+            <ChevronUp className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => onNudge(entry.id, NUDGE_MIN)}
+            aria-label={t('entry.later', { minutes: NUDGE_MIN })}
+            title={t('entry.later', { minutes: NUDGE_MIN })}
+            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-9 items-center justify-center rounded-md transition-colors max-sm:size-11"
+          >
+            <ChevronDown className="size-4" />
+          </button>
+        </div>
+      )}
+
       {/* Icon and duration, for a free block only. The pointer path is the
           bottom edge of the block; these are the touch and keyboard path, and
           the only way to change the icon at all. */}
@@ -127,7 +186,7 @@ export function PlannerGridActions({
                   aria-label={t(`custom.icon.${key}`)}
                   aria-pressed={active}
                   className={cn(
-                    'flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-9',
+                    'flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11',
                     active
                       ? 'bg-accent text-foreground'
                       : 'text-muted-foreground/50 hover:bg-accent/60 hover:text-foreground'
@@ -145,7 +204,7 @@ export function PlannerGridActions({
                 onEditCustom(entry.id, { durationMinutes: custom.durationMinutes - 15 })
               }
               aria-label={t('custom.shorter')}
-              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-9"
+              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11"
             >
               <Minus className="size-3.5" />
             </button>
@@ -155,7 +214,7 @@ export function PlannerGridActions({
                 onEditCustom(entry.id, { durationMinutes: custom.durationMinutes + 15 })
               }
               aria-label={t('custom.longer')}
-              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-9"
+              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11"
             >
               <Plus className="size-3.5" />
             </button>

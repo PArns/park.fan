@@ -2075,7 +2075,9 @@
       "laneOverflow": "{count, plural, =1 {Ein weiterer Block liegt hier darunter.} other {# weitere Blöcke liegen hier darunter.}}",
       "dragHandle": "Verschieben",
       "range": "{from} bis {to}",
-      "resizeHandle": "Dauer ziehen"
+      "resizeHandle": "Dauer ziehen",
+      "earlier": "{minutes} Min. früher",
+      "later": "{minutes} Min. später"
     },
     "column": {
       "pickPark": "Park wählen",
@@ -2115,7 +2117,7 @@
     "search": {
       "placeholder": "Bahn suchen",
       "noResults": "Keine Bahn gefunden.",
-      "tapHint": "Tippe eine Bahn an – sie landet auf der nächsten freien Uhrzeit und lässt sich dort verschieben.",
+      "tapHint": "Tippe eine Bahn an – sie landet auf der nächsten freien Uhrzeit. Tippst du den Block danach an, kannst du ihn in Viertelstunden verschieben.",
       "opensAt": "ab {time}"
     },
     "clearDay": "Tag leeren",

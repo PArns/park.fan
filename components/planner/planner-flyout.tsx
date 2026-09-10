@@ -20,6 +20,7 @@ import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
+import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { addDays, dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
@@ -64,6 +65,8 @@ const SHEET_DISMISS_PX = 90;
 
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
+  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  const pxPerMin = usePlannerPxPerMin();
   // Only what the PANEL itself still uses. Everything that edits a day — the
   // moves, the ticks, the removals, the party prefs — moved into
   // `PlannerDayColumn` with the grid it acts on, because with two columns open
@@ -100,7 +103,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     onOpenChange(next);
   };
 
-  const isPhone = useMediaQuery('(max-width: 639px)');
+  const isPhone = useMediaQuery(PLANNER_PHONE_QUERY);
   const router = useRouter();
   /**
    * Whether the page behind the panel is the planner's own.
@@ -236,7 +239,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * grows is the canvas, and the room it gains is outside opening hours by
    * construction, so it is hatched like every other minute out there.
    */
-  const grid = growGridForSpans(buildDayGrid(day?.context.openHour, day?.context.closeHour), spans);
+  const grid = growGridForSpans(
+    buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin),
+    spans
+  );
 
   /**
    * The park the page BEHIND the panel is about, which is a different question
@@ -639,7 +645,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // The handle's whole job. `svh` for the same reason the cap already
           // used it: on iOS `vh` counts the address bar and the summary row
           // would sit under it.
-          expanded ? 'max-sm:max-h-[96svh]' : 'max-sm:max-h-[85svh]'
+          //
+          // 92 rather than the 85 it opened at, which Patrick asked for in as
+          // many words ("der Flyout könnte auch höher sein"). 85svh is 717 px at
+          // 844 — the very 716 the column's arithmetic is written against — and
+          // the 15 % it left showed the page's tab bar under the sheet. 92svh is
+          // 776, so the axis gains 59 px before anything else in this change has
+          // been counted, and 68 px of the page behind it stays visible, which
+          // is what keeps the sheet reading as a sheet. The handle's own 96svh
+          // is unchanged: pulling up still does something.
+          expanded ? 'max-sm:max-h-[96svh]' : 'max-sm:max-h-[92svh]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
         // a bottom sheet spanning the viewport, and an inline pixel width would
@@ -672,7 +687,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             toggles, because a tap is what most people try first. The 8 px rail
             is what is drawn; the 44 px target is a pseudo-element, so the rail
             can stay a hairline without the touch area shrinking with it. */}
-        <div className="flex shrink-0 justify-center pt-2 pb-1 sm:hidden">
+        <div className="flex shrink-0 justify-center pt-1 pb-0.5 sm:hidden">
           <button
             type="button"
             onPointerDown={handleSheetGrab}
@@ -698,7 +713,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             close button at `absolute top-4 right-4`, which is now INSIDE this
             row, and without the clearance the picker's forward chevron sits
             under it and one of the two becomes untappable. */}
-        <SheetHeader className="border-border/60 shrink-0 gap-0 border-b px-3 py-2">
+        <SheetHeader className="border-border/60 shrink-0 gap-0 border-b px-3 py-2 max-sm:py-1">
           <div className="flex items-center gap-2 pr-7">
             <SheetTitle className="flex shrink-0 items-center gap-2 text-sm">
               <CalendarPlus className="size-4" />
@@ -959,8 +974,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                  has to give way when the sheet runs out of room, or the floor
                  above it just moves the overflow onto the summary row. It keeps
                  a cap so it cannot take the sheet on a tall phone either, and
-                 scrolls inside itself past that. */
-              <div className="min-h-0 shrink overflow-y-auto overscroll-y-contain max-sm:max-h-[46svh] sm:hidden">
+                 scrolls inside itself past that.
+
+                 32svh, down from 46. The field report read "die Ride-Suche ist
+                 höher als die Achse", and it was: 46svh is 388 px at 844, which
+                 is more than the axis's whole box. The cap is now a little over
+                 the axis's own 200 px floor (270 px at 844), so on a tall phone
+                 the two are the same order of size and on a short one this is
+                 still the element that gives way first. */
+              <div className="min-h-0 shrink overflow-y-auto overscroll-y-contain max-sm:max-h-[32svh] sm:hidden">
                 <PlannerRideSearch
                   parkSlug={park.slug}
                   parkName={park.name}

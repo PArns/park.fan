@@ -2075,7 +2075,9 @@
       "laneOverflow": "{count, plural, =1 {Hier ligt nog één blok onder.} other {Hier liggen nog # blokken onder.}}",
       "dragHandle": "Verplaatsen",
       "range": "{from} tot {to}",
-      "resizeHandle": "Duur slepen"
+      "resizeHandle": "Duur slepen",
+      "earlier": "{minutes} min. eerder",
+      "later": "{minutes} min. later"
     },
     "column": {
       "pickPark": "Park kiezen",
@@ -2115,7 +2117,7 @@
     "search": {
       "placeholder": "Attractie zoeken",
       "noResults": "Geen attractie gevonden.",
-      "tapHint": "Tik op een attractie en die landt op het eerstvolgende vrije tijdstip, waar je hem kunt verschuiven.",
+      "tapHint": "Tik op een attractie en die belandt op het eerstvolgende vrije tijdstip. Tik daarna op het blok om het per kwartier te verschuiven.",
       "opensAt": "vanaf {time}"
     },
     "clearDay": "Dag leegmaken",

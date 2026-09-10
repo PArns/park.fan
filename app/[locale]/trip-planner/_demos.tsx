@@ -6,7 +6,8 @@ import { PlannerDayGrid } from '@/components/planner/planner-day-grid';
 import { PlannerShowBand } from '@/components/planner/planner-show-band';
 import { PlannerGridActions } from '@/components/planner/planner-grid-actions';
 import { PlannerContextBand } from '@/components/planner/planner-context-band';
-import { buildDayGrid } from '@/lib/planner/day-grid';
+import { buildDayGrid, clampStart, rideFloor } from '@/lib/planner/day-grid';
+import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { showLinesFor } from '@/lib/planner/shows';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerCustomBlock, PlannerEntry } from '@/lib/planner/types';
@@ -90,8 +91,10 @@ export function PlannerDayDemo({
   const state = useDemoState(initial);
   const [selectedId, setSelectedId] = useState<string | null>(selected);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  const pxPerMin = usePlannerPxPerMin();
 
-  const grid = buildDayGrid(day.context.openHour, day.context.closeHour);
+  const grid = buildDayGrid(day.context.openHour, day.context.closeHour, pxPerMin);
   const showLines = useMemo(
     () =>
       showLinesFor(day.shows, {
@@ -137,6 +140,20 @@ export function PlannerDayDemo({
               }}
               onClose={() => setSelectedId(null)}
               onEditCustom={state.editCustom}
+              /* The demo clamps the same way the panel does, off the same grid —
+                 an exhibit whose buttons walk a block out of the day would be
+                 teaching the wrong thing about the control it is showing. */
+              onNudge={(entryId, deltaMinutes) => {
+                const entry = state.entries.find((e) => e.id === entryId);
+                if (!entry) return;
+                const ride = entry.attractionSlug
+                  ? day.rides.find((r) => r.attractionSlug === entry.attractionSlug)
+                  : undefined;
+                state.move(
+                  entryId,
+                  clampStart(grid, entry.startMinute + deltaMinutes, rideFloor(grid, ride).hardMin)
+                );
+              }}
             />
           )}
         </div>

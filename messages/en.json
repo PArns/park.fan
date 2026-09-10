@@ -2075,7 +2075,9 @@
       "laneOverflow": "{count, plural, =1 {One more block sits underneath this one.} other {# more blocks sit underneath this one.}}",
       "dragHandle": "Move",
       "range": "{from} to {to}",
-      "resizeHandle": "Drag duration"
+      "resizeHandle": "Drag duration",
+      "earlier": "{minutes} min earlier",
+      "later": "{minutes} min later"
     },
     "column": {
       "pickPark": "Choose park",
@@ -2115,7 +2117,7 @@
     "search": {
       "placeholder": "Search rides",
       "noResults": "No ride found.",
-      "tapHint": "Tap a ride and it lands on the next free hour, where you can move it.",
+      "tapHint": "Tap a ride and it lands on the next free time. Tap the block afterwards to move it in quarter hours.",
       "opensAt": "from {time}"
     },
     "clearDay": "Clear the day",

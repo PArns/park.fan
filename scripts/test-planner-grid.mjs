@@ -14,8 +14,10 @@
 
 import {
   GATE_TO_FIRST_RIDE_MIN,
+  MIN_BLOCK_MIN,
   MIN_BLOCK_PX,
   PX_PER_MIN,
+  PX_PER_MIN_COARSE,
   SNAP_MIN_FINE,
   blockBoxFor,
   buildDayGrid,
@@ -23,6 +25,7 @@ import {
   growGridForSpans,
   heightFor,
   latestStart,
+  minBlockPxFor,
   minuteAt,
   nextFreeStart,
   packLanes,
@@ -452,6 +455,77 @@ test(
   growGridForSpans(g, [{ startMinute: Number.NaN, spanMinutes: 60 }]).gridEndMin,
   g.gridEndMin
 );
+
+// ── 15. The phone's axis ─────────────────────────────────────────────────────
+// A second scale, and the reason it needs its own section rather than a spot
+// check: every formula in this file reads `grid.pxPerMin` and none of them reads
+// the constant, so a scale the callers can choose is only safe while the two
+// invariants at the top of this file hold at BOTH of them. A drag on a phone
+// commits through `minuteAt` exactly as one on a desktop does, and a block whose
+// height disagreed with the axis by a factor of 1.5 would land 90 minutes out.
+{
+  const m = buildDayGrid(9, 18, PX_PER_MIN_COARSE);
+
+  test('the phone axis is 1.8 px per minute', m.pxPerMin, PX_PER_MIN_COARSE);
+  test('40 minutes is 72 px there', heightFor(m, 40), 72);
+  test(
+    'and a duration is still a duration wherever it sits',
+    heightFor(m, 40) === heightFor(m, 40) && yFor(m, 600) !== yFor(m, 900),
+    true
+  );
+
+  // The inverse. Round-tripped through both directions at three points of the
+  // day, because this is the half a reader cannot see going wrong.
+  for (const minute of [9 * 60, 13 * 60 + 25, 18 * 60]) {
+    test(
+      `minuteAt inverts yFor at ${minute} on the phone axis`,
+      minuteAt(m, yFor(m, minute)),
+      minute
+    );
+  }
+
+  // The canvas is the same DAY at a different scale — the park's hours are a
+  // fact about the park and may not move with the viewport.
+  test(
+    'the phone axis spans the same minutes',
+    m.gridEndMin - m.gridStartMin,
+    g.gridEndMin - g.gridStartMin
+  );
+  test('…and is 1.5x as tall', m.heightPx, g.heightPx * (PX_PER_MIN_COARSE / PX_PER_MIN));
+  test('…with the same opening minute', m.openMin, g.openMin);
+  test('…and the same closing minute', m.closeMin, g.closeMin);
+
+  // Everything that decides WHERE a block may go is in minutes and must not
+  // notice the scale at all.
+  test('the last start is the same minute', latestStart(m), latestStart(g));
+  test(
+    'the clamp is the same minute',
+    clampStart(m, 3 * 60, m.openMin),
+    clampStart(g, 3 * 60, g.openMin)
+  );
+  test(
+    'the floor under a ride is the same minute',
+    rideFloor(m, null).hardMin,
+    rideFloor(g, null).hardMin
+  );
+
+  // The box floor is stated in MINUTES and scaled by the axis, so a short block
+  // does not quietly shrink from 16.7 minutes to 11.1 on the taller one.
+  test('the box floor is 20 px on the desktop axis', minBlockPxFor(g), MIN_BLOCK_PX);
+  test('and 30 px on the phone axis', minBlockPxFor(m), 30);
+  test('which is the same number of minutes', minBlockPxFor(m) / m.pxPerMin, MIN_BLOCK_MIN);
+  test('a zero-minute block still gets a box there', blockBoxFor(m, 0), 30);
+  test('…and its height is still zero', heightFor(m, 0), 0);
+
+  // A grown canvas keeps the scale it was built with. `growGridForSpans`
+  // recomputes `heightPx` and would silently fall back to the default if it
+  // reached for the constant instead of the grid.
+  test(
+    'growing the canvas keeps the phone scale',
+    growGridForSpans(m, [{ startMinute: 1110, spanMinutes: 60 }]).heightPx,
+    (20 * 60 - m.gridStartMin) * PX_PER_MIN_COARSE
+  );
+}
 
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;

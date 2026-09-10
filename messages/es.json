@@ -2075,7 +2075,9 @@
       "laneOverflow": "{count, plural, =1 {Debajo hay otro bloque.} other {Debajo hay # bloques más.}}",
       "dragHandle": "Mover",
       "range": "{from} a {to}",
-      "resizeHandle": "Arrastrar duración"
+      "resizeHandle": "Arrastrar duración",
+      "earlier": "{minutes} min antes",
+      "later": "{minutes} min después"
     },
     "column": {
       "pickPark": "Elegir parque",
@@ -2115,7 +2117,7 @@
     "search": {
       "placeholder": "Buscar atracción",
       "noResults": "No se encontró ninguna atracción.",
-      "tapHint": "Toca una atracción y se coloca en la siguiente hora libre, donde puedes moverla.",
+      "tapHint": "Toca una atracción y se coloca en el siguiente hueco libre. Después toca el bloque para moverlo en cuartos de hora.",
       "opensAt": "desde {time}"
     },
     "clearDay": "Vaciar el día",

@@ -1247,6 +1247,96 @@ One thing it deliberately does not carry: `FAQPage` structured data. Google
 retired FAQ rich results for every site on 2026-05-07, so there is none to win,
 and a new page does not get the markup in order to try.
 
+## The phone is a second scale, and the grip was being clipped
+
+A block's height is a queue and a queue can be twenty pixels, so the panel has
+always had one control that must not be measured by the block: the drag grip.
+It grows its touch target with an `after:` pseudo-element that deliberately
+reaches PAST the block — `max-sm:after:h-11`, 44 px around the middle of a box
+that may be shorter than that.
+
+It never worked, for one word. The block's bordered box carried
+`overflow-hidden`, and a clip applies to a pseudo-element for **hit-testing** as
+much as for paint — so the effective target was 44 px wide by the block's own
+height, which on the shortest block in a day is 20. The clip is there for the
+ink (a photo at `inset-0`, a tint that would otherwise square off the rounded
+corners), so the ink is what gets clipped now: one `absolute inset-0
+overflow-hidden rounded-[inherit]` layer holding the photo, the fill and the
+category bar, and the controls as its siblings. The resize edge's target had to
+stop being `w-full` at the same time — once both could escape their box, a
+full-width 44 px strip sat on top of the grip's 44 px strip on every block
+shorter than 44, so the shortest free block could be resized and not moved. They
+tile now: the grip's column, then everything right of it.
+
+Two more things were wrong in the same gesture and neither is a hit area.
+
+**The auto-scroll edge was bigger than the axis.** `EDGE_PX` is 48 at each end
+and the phone's scroller had a 140 px floor, so 96 of 140 px triggered
+auto-scroll and the neutral band was 44 — a finger holding still anywhere near
+either end pulled the day out from under itself, and `minuteUnderPointer`
+re-reads the canvas rect every frame, so the target minute went with it. The
+edge is `Math.min(EDGE_PX, box.height / 4)` now: half the box stays neutral at
+every height, and from 192 px up the constant takes over unchanged.
+
+**`setPointerCapture` could throw and take the gesture with it.** It raises
+`NotFoundError` for a pointer id that is not currently active; the release side
+had been wrapped against that since it was written and the claim side had not,
+so the throw landed uncaught in a React handler before `dragState` was set. It
+is wrapped now — and the wrapper RETURNS where the listeners go, because capture
+is what retargets `pointermove`/`pointerup` to the handle: without it a
+handle-bound `pointerup` never fires, the rAF loop runs on and `--pl-drag-dy`
+stays on the block. A failed claim binds to the document instead.
+
+### The axis has a phone scale, and it comes from one place
+
+`buildDayGrid(openHour, closeHour, pxPerMin)` has taken the third parameter
+since it was written and none of its six callers used it. They all do now,
+through `usePlannerPxPerMin()` — **one** hook, because the six axes are read as
+the same day and two of them at different scales would put 09:00 at two heights
+in one panel. `PX_PER_MIN_COARSE` is 1.8 against the desktop's 1.2: a
+20-minute queue goes from 24 px to 36, which is the difference between a bar and
+something with a name on it, and a coarse snap step goes from 36 px to 54.
+
+Everything derived reads `grid.pxPerMin` and never the constant, which is what
+makes a second scale safe — `pnpm test:planner-grid` now asserts both invariants
+at 1.8 as well: a duration is a height, and `minuteAt` is exactly `yFor`
+inverted. Two things had to move with it. `MIN_BLOCK_PX` is stated at 1.2 and
+scaled by the axis in `minBlockPxFor`, or the box floor would quietly drop from
+16.7 minutes to 11.1 on the taller axis; and `MIN_BLOCK_MIN` exists so the lane
+packer can state the same floor in minutes and stop depending on the scale at
+all.
+
+The scale switch is `(width < 40rem)` and **never** `(max-width: 639px)` —
+Tailwind's breakpoints are rem, so `max-sm:` moves with the reader's default
+font size and a px query does not. At 20 px / 700 px the panel would lay itself
+out as a phone and get handed the desktop axis.
+
+A taller axis shows fewer hours unless something pays for it, so three things
+did, in the same change: the sheet opens at `92svh` instead of `85` (+59 px at
+844), the ride search's cap comes down from `46svh` to `32` (it was taller than
+the axis — the field report said so), and the chrome above gives back the handle
+row, the header's padding, the column head and the weekend chip, which duplicates
+the date picker two rows above it. The axis floor is 200 px, chosen so the floor
+keeps its DAY: 140 px was 116.7 minutes at 1.2 and would be 77.8 at 1.8, while
+200 at 1.8 is 111 — the same day to within six minutes.
+
+### A plan may not depend on a gesture landing
+
+The grip is one 44 px strip and it is the only pointer path a phone has: the
+block's body gates itself on `(pointer: fine)` deliberately, because `touch-none`
+on a box that covers most of the grid would stop the plan scrolling exactly where
+it is read. So the action row a selected block docks into carries **±15 minutes**
+for every entry, not only for free blocks. It is the same write (`moveEntry`) and
+the caller clamps it — `clampStart` against the same `rideFloor().hardMin` the
+drag obeys, so a press cannot put a block anywhere a drag could not.
+
+15 and not the drag's 30: `SNAP_MIN_COARSE` is half an hour because fifteen
+minutes under a sliding finger reads as jitter, and a press is not sliding.
+
+The row wraps below `sm` (`max-sm:flex-wrap`, label on its own line) because a
+free block now carries four icons, two durations, two moves and a delete beside a
+label — over 400 px in a 390 px screen.
+
 ## Checking it
 
 ```bash
@@ -1260,6 +1350,13 @@ pnpm test:planner-ride-drag    # the drag payload and its two fallbacks
 pnpm test:planner-month-grid   # the month matrix
 pnpm check:planner             # drives it in a browser — needs a running site
 ```
+
+It also carries a **390×844 pass**: that the grip's touch target really is 44 px
+tall (`elementFromPoint` at both ends of it, because a bounding box cannot see a
+pseudo-element), that a drag with `pointerType: 'touch'` moves the block — every
+earlier drag assertion in that file ran on a mouse, which is a path a finger
+never takes — that the ±15 button is 44 px and moves a quarter hour, and that the
+axis gets its 200 px floor.
 
 `check:planner` is the one that catches what the others cannot: whether the store
 rehydrates, whether the launcher appears, whether the sheet opens on the right

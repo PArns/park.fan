@@ -38,6 +38,7 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM } from '@/lib/planner/party';
 import { buildDayGrid } from '@/lib/planner/day-grid';
+import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { headlinersToAdd } from '@/lib/planner/optimize';
 import {
   evaluateFit,
@@ -191,6 +192,8 @@ export function PlannerWizard({
   /** A date only counts where a park came with it — see `initialDate`. */
   const seededDate = initialPark ? initialDate : null;
   const t = useTranslations('planner');
+  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  const pxPerMin = usePlannerPxPerMin();
   const locale = useLocale();
   const router = useRouter();
   const { state, openDay, setDayPrefs, addCustom, applyPlan } = usePlanner();
@@ -315,8 +318,8 @@ export function PlannerWizard({
    */
   const dayPending = Boolean(park && date) && planDay.data === undefined && !planDay.isError;
   const wizardGrid = useMemo(
-    () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour),
-    [dayPayload]
+    () => buildDayGrid(dayPayload?.context.openHour, dayPayload?.context.closeHour, pxPerMin),
+    [dayPayload, pxPerMin]
   );
   const headliners = useMemo(() => headlinersToAdd(dayPayload, [], prefs), [dayPayload, prefs]);
   const lunchLabel = t('wizard.blocks.lunch');
