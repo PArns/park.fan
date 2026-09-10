@@ -135,8 +135,8 @@ _longest_ queue reaches.
 
 ## Why the biggest park has the shortest queues
 
-Wait time is not a question of popularity. It is a division, demand over
-capacity. I worked through it at length in
+Wait time is demand divided by capacity, and a ride’s popularity only sits in
+the numerator. I worked through it at length in
 [the art of waiting](/blog/the-art-of-waiting). Europa-Park is the best evidence
 for it I know in Europe, because both halves of the fraction are extreme.
 

@@ -491,8 +491,8 @@ Eén kanttekening voordat iemand de cijfers te serieus neemt: onze historie voor
 dit park begint in augustus 2024, en Walibi is alleen van april tot oktober
 open. Achter de maandwaarden voor april tot augustus zitten telkens 11 tot 30
 meetdagen, dat houdt stand. Voor september tot maart hebben we nauwelijks data,
-daarom staat daar ook geen getal. De richting is duidelijk, het cijfer achter de
-komma niet.
+daarom staat daar ook geen getal. Een maand met elf meetdagen vertelt je of je in het juiste seizoen gaat, niet
+of je vijf minuten bespaart.
 
 ## Halloween: het hardste programma van de Benelux
 

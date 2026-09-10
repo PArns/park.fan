@@ -139,8 +139,8 @@ en Rust alcanza la cola _más larga_.
 
 ## Por qué el parque más grande tiene las colas más cortas
 
-El tiempo de espera no es una cuestión de popularidad. Es una división, la
-demanda partida por la capacidad. En [el arte de esperar](/blog/el-arte-de-esperar)
+El tiempo de espera es la demanda partida por la capacidad, y lo popular que
+sea una atracción solo entra en el numerador. En [el arte de esperar](/blog/el-arte-de-esperar)
 lo calculé con detalle. El Europa-Park es la mejor prueba de ello que conozco en
 Europa, porque en él las dos mitades de la fracción son extremas.
 

@@ -94,8 +94,9 @@ heart:
 Just how badly we judge unoccupied waiting can be measured. In the field
 experiments of marketing researcher **Jacob Hornik**, people waiting
 overestimated the time that had actually elapsed by **around 36 percent** on
-average. Ten measured minutes become almost fourteen in your head. Your inner
-clockmaker is a virtuoso of rounding up, and it always rounds against you. And
+average. Ten measured minutes become almost fourteen in your head, and the error always
+runs the same way: nobody comes out of a queue and guesses it was shorter than
+it was. And
 back in 1991, the MIT queueing researcher **Richard Larson** and colleagues
 showed, under the lovely title
 ["Entertain, Enlighten, and Engage"](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
@@ -106,8 +107,8 @@ The mechanism behind it: our brain can only count time meticulously when it has
 nothing else to do. Once attention turns to music, theming details or a show,
 the internal counter simply runs out of resources, and the overestimation melts
 away. That’s exactly what everything you see in a good queue is designed to
-exploit: soundtracks, animatronics, interactive elements, hidden details. What
-looks like decoration is in fact applied cognitive psychology.
+exploit: soundtracks, animatronics, interactive elements, hidden details. The
+decoration is not only decoration, it keeps the counter busy.
 
 ```glossary-widget slug=pre-show
 
@@ -115,8 +116,8 @@ looks like decoration is in fact applied cognitive psychology.
 
 ### Pre-shows: the experience starts before you board
 
-The most elegant weapon against dead time is the **pre-show**, which simply
-redefines the wait as part of the attraction. The textbook example sits in
+The most thorough answer is the **pre-show**, which redefines the wait as part
+of the attraction. The textbook example sits in
 [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). At the
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 you don’t shuffle down a corridor; you move through the dusty lobby of the
@@ -215,13 +216,12 @@ seconds.
 
 ```
 
-And then there’s what may be the most elegant capacity trick of all: the
+And there is a capacity trick here that helps both sides: the
 **single rider line**. If you ride alone and let yourself be slotted into the
 odd seat a group of four leaves behind, you cut your own wait drastically and
 help the park fill every car to the brim along the way. Every otherwise
-empty seat is wasted capacity; the single rider line is the elegant way of
-plugging those gaps. A rare case where self-interest and throughput pull in
-exactly the same direction.
+empty seat is wasted capacity, and a solo rider fills it without anybody losing
+their place. That is rarely this clear-cut.
 
 ```glossary-widget slug=single-rider
 
@@ -231,8 +231,8 @@ exactly the same direction.
 
 ### Shows: the quiet capacity helpers
 
-And then there’s a trick that doesn’t happen at the attraction at all:
-**entertainment as a crowd sponge.** A parade, a firework or a stunt show ties
+And then there’s a trick that doesn’t happen at the attraction at all. A parade,
+a firework or a stunt show ties
 up thousands of guests in one go, people who aren’t standing in a single ride
 queue during that hour. The amphitheatre for **Fantasmic!** at Hollywood
 Studios holds close to 10,000 people per show including standing room. So a
@@ -313,7 +313,8 @@ How seriously modern rides take this is shown by
 [Europa-Park](ref:europa-park?bare). According to the Mack Rides manufacturer
 factsheet, **seven trains** run there at once, with a target dispatch of **one
 every 36 seconds**. That makes 1,600 guests an hour, even though a single train
-seats only 16. Frequency beats size.
+seats only 16, which is more than the Hulk manages with its 32 places per
+dispatch.
 
 ### Standing still is the enemy: rolling launches and rolling stations
 

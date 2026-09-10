@@ -482,7 +482,8 @@ One caveat before anyone takes the numbers too seriously: our history for this
 park starts in August 2024, and Walibi only opens from April to October. Behind
 the monthly values for April to August sit 11 to 30 measured days each, which
 holds up. For September to March we have barely any data, which is why no number
-appears there. The direction is clear, the decimal place is not.
+appears there. A month with eleven measured days tells you whether you are travelling in the
+right season, not whether you are saving five minutes.
 
 ## Halloween: the hardest programme in the Benelux
 

@@ -93,9 +93,9 @@ parchi conosce a memoria:
 Quanto male valutiamo l’attesa non occupata si può misurare. Negli esperimenti
 sul campo del ricercatore di marketing **Jacob Hornik**, chi era in attesa
 sovrastimava il tempo realmente trascorso in media di **circa il 36 per
-cento**. Dieci minuti misurati diventano nella testa quasi quattordici. Il tuo
-orologiaio interiore è un virtuoso dell’arrotondamento per eccesso, e
-arrotonda sempre a tuo sfavore. E già nel 1991 il ricercatore di code del MIT
+cento**. Dieci minuti misurati diventano nella testa quasi quattordici, e l’errore va
+sempre nella stessa direzione: nessuno esce da una coda e la stima più corta di
+quanto è stata. E già nel 1991 il ricercatore di code del MIT
 **Richard Larson** dimostrò con i colleghi, sotto il bel titolo
 [“Entertain, Enlighten, and Engage”](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 che già una semplice distrazione migliora nettamente la qualità percepita
@@ -108,7 +108,7 @@ rivolge alla musica, ai dettagli della tematizzazione o a uno spettacolo, al
 contatore interno mancano semplicemente le risorse, e la sovrastima si
 scioglie. È esattamente su questo che punta tutto ciò che vedi in una buona
 coda: colonne sonore, animatronica, elementi interattivi, dettagli nascosti.
-Quello che sembra decorazione è in realtà psicologia cognitiva applicata.
+La decorazione non è solo decorazione, tiene occupato il contatore.
 
 ```glossary-widget slug=pre-show
 
@@ -116,8 +116,8 @@ Quello che sembra decorazione è in realtà psicologia cognitiva applicata.
 
 ### Pre-show: l’esperienza comincia prima di salire
 
-L’arma più elegante contro il tempo morto è il **pre-show**, che dichiara
-semplicemente l’attesa parte dell’attrazione. L’esempio da manuale sta ai
+A risolverlo più a fondo è il **pre-show**, che dichiara l’attesa parte
+dell’attrazione. L’esempio da manuale sta ai
 [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). Alla
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 non ti trascini lungo un corridoio: attraversi la hall impolverata
@@ -220,12 +220,12 @@ secondi.
 
 ```
 
-E poi qui c’è forse il trucco di capacità più elegante di tutti: la **fila
+E poi qui c’è un trucco di capacità che aiuta entrambe le parti: la **fila
 single rider**. Chi va da solo e si lascia sistemare sul posto spaiato che un
 gruppo di quattro accorcia drasticamente la propria attesa e intanto aiuta il
 parco a riempire ogni vettura fino all’orlo. Ogni sedile
-altrimenti vuoto è capacità buttata via; la fila single rider è il modo elegante
-di tappare quei buchi. Un caso raro in cui interesse personale e portata tirano
+altrimenti vuoto è capacità buttata via, e chi va da solo lo riempie senza che
+nessuno perda il proprio posto. Raramente è così netto. Un caso in cui interesse personale e portata tirano
 esattamente nella stessa direzione.
 
 ```glossary-widget slug=single-rider
@@ -237,7 +237,7 @@ esattamente nella stessa direzione.
 ### Spettacoli: gli aiutanti silenziosi della capacità
 
 E poi c’è un trucco che non avviene affatto sull’attrazione:
-**l’intrattenimento come spugna per la folla.** Una parata, dei fuochi
+Una parata, dei fuochi
 d’artificio o uno spettacolo di stunt legano di colpo migliaia di ospiti,
 persone che in quell’ora non sono in nessuna coda. L’anfiteatro di
 **Fantasmic!** agli Hollywood Studios ospita, tra posti in piedi e a sedere,
@@ -324,7 +324,8 @@ Quanto sul serio lo prendano le attrazioni moderne lo mostra
 all’[Europa-Park](ref:europa-park?bare). Secondo la scheda tecnica del
 costruttore Mack Rides lì circolano **sette treni** insieme, con un obiettivo di
 **una partenza ogni 36 secondi**. Fanno 1.600 ospiti l’ora, benché un treno
-contenga solo 16 persone. La frequenza batte la dimensione.
+contenga solo 16 persone, più di quanto riesca l’Hulk con i suoi 32 posti per
+partenza.
 
 ### La sosta è il nemico: rolling launch e rolling station
 
@@ -333,7 +334,8 @@ affatto. Voltron usa i **rolling launch**, in cui i treni non vengono fermati
 prima del lancio e poi sparati, ma accelerati mentre passano, “in volo” come in
 una staffetta. Perché i motori LSM reggano quel ritmo di 36 secondi, Mack ha
 dato loro senza troppi giri quattro file di statori invece di due. Ogni sosta
-evitata significa: il blocco si libera prima, la cadenza tiene, la coda scorre.
+Un treno che non si ferma libera prima il suo blocco, e così la cadenza di 36
+secondi tiene.
 
 E [Walibi Holland](ref:walibi-holland?bare) ha trasferito lo stesso principio
 alla stazione nel 2025. Su **YOY**, il primo duelling coaster monorotaia
@@ -387,8 +389,7 @@ picco-fine, ce lo ricordiamo: l’esperienza finisce meglio del previsto, ed è
 esattamente così che viene archiviata. Il tabellone mente davvero, quindi, ma
 mente a tuo favore.
 
-Lasciatemi parlare un attimo dalla sala macchine, perché è esattamente qui che
-vive park.fan. I nostri tempi di attesa live ti mostrano
+È esattamente a questa formula che è appeso park.fan. I nostri tempi di attesa live ti mostrano
 ogni minuto cosa stanno facendo davvero L e λ, e quando il nostro modello di IA
 prevede i tempi di attesa fino a 365 giorni in anticipo, in fondo non modella
 altro che quelle due grandezze: la **domanda** (quante persone vogliono salire

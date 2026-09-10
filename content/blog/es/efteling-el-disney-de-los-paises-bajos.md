@@ -333,8 +333,8 @@ de ventas y está abierto de nuevo desde el 26 de abril de 2019.
 
 El valor práctico de este trozo de bosque es enorme, dicho sea de paso. No hay
 cola, ni límite de capacidad, ni duración de recorrido. Aquí pueden circular
-varios miles de visitantes a la vez sin que haya que escribir una cifra en ningún
-cartel. Precisamente esa es una de las razones por las que un parque con casi seis
+varios miles de visitantes a la vez sin que haya que anunciar nunca un tiempo de
+espera en la entrada. Precisamente esa es una de las razones por las que un parque con casi seis
 millones de visitas tiene esperas soportables.
 
 Desde mayo de 2026 el parque reforma el recorrido, porque treinta cuentos en una

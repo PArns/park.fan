@@ -340,8 +340,8 @@ fermé en 2002 faute de chiffre d’affaires et a rouvert le 26 avril 2019.
 
 La valeur pratique de ce morceau de forêt est énorme, au passage. Il n’y a pas de
 file, pas de limite de capacité et pas de durée de parcours. Plusieurs milliers de
-visiteurs peuvent y circuler en même temps sans qu’un chiffre doive être inscrit
-sur un panneau quelque part. C’est précisément l’une des raisons pour lesquelles
+visiteurs peuvent y circuler en même temps sans qu’un temps d’attente doive
+jamais être affiché à l’entrée. C’est précisément l’une des raisons pour lesquelles
 un parc à près de six millions de visites a des attentes supportables.
 
 Depuis mai 2026, le parc refait le cheminement, parce que trente contes sur un

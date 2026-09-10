@@ -136,8 +136,8 @@ _langste_ rij van het park heeft.
 
 ## Waarom het grootste park de kortste rijen heeft
 
-Wachttijd is geen kwestie van populariteit. Het is een deling, vraag gedeeld
-door capaciteit. In [De kunst van het wachten](/blog/de-kunst-van-het-wachten)
+Wachttijd is vraag gedeeld door capaciteit, en de populariteit van een baan
+staat daarbij alleen in de teller. In [De kunst van het wachten](/blog/de-kunst-van-het-wachten)
 heb ik dat uitvoerig doorgerekend. Het Europa-Park is het beste bewijs daarvoor
 dat ik in Europa ken, omdat bij dit park allebei de kanten van de breuk extreem
 zijn.

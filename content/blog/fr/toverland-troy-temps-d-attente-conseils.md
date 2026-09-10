@@ -88,7 +88,7 @@ appartient à la meilleure attraction.
 Ici, je veux parler du parc autour : le [Toverland](ref:attractiepark-toverland?long) de
 Sevenum, qui fête ses 25 ans cette année, que je considère comme l’un des plus
 beaux petits parcs d’Europe, et où je me suis retrouvé une fois en costume, de
-l’autre côté. J’y reviens plus loin.
+l’autre côté.
 
 ## Ce qui fait la force de Troy
 

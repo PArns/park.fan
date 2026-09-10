@@ -507,8 +507,8 @@ Une réserve avant que quiconque prenne ces chiffres trop au sérieux : notre
 historique pour ce parc commence en août 2024, et Walibi n’ouvre que d’avril à
 octobre. Derrière les valeurs mensuelles d’avril à août se trouvent à chaque
 fois 11 à 30 jours mesurés, ce qui tient. Pour septembre à mars nous n’avons
-presque pas de données, c’est pourquoi aucun chiffre n’y figure. La tendance est
-claire, la décimale ne l’est pas.
+presque pas de données, c’est pourquoi aucun chiffre n’y figure. Un mois avec onze jours mesurés vous dit si vous partez à la bonne saison, pas
+si vous gagnez cinq minutes.
 
 ## Halloween : le programme le plus dur du Benelux
 

@@ -141,8 +141,8 @@ qu’atteint à Rust la file la _plus longue_ du parc.
 
 ## Pourquoi le plus grand parc a les files les plus courtes
 
-Le temps d’attente n’est pas une affaire de popularité. C’est une division, la
-demande divisée par la capacité. Dans [l’art d’attendre](/blog/l-art-d-attendre),
+Le temps d’attente, c’est la demande divisée par la capacité, et la popularité
+d’une attraction n’intervient qu’au numérateur. Dans [l’art d’attendre](/blog/l-art-d-attendre),
 j’ai fait le calcul en détail. L’Europa-Park en est la meilleure démonstration
 que je connaisse en Europe, parce que chez lui les deux termes de la fraction
 sont extrêmes.

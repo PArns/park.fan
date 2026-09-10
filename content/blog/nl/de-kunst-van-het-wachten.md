@@ -90,8 +90,8 @@ kent:
 Hoe slecht we onbezet wachten inschatten, is meetbaar. In de veldexperimenten
 van marketingonderzoeker **Jacob Hornik** overschatten wachtenden de werkelijk
 verstreken tijd gemiddeld met **ruim 36 procent**. Uit gemeten tien minuten
-worden in je hoofd bijna veertien. Je innerlijke klokkenmaker is een notoire
-naar-boven-afronder, en hij rondt altijd in jouw nadeel af. En de
+worden in je hoofd bijna veertien, en de fout gaat altijd dezelfde kant op:
+niemand komt uit een rij en schat hem korter in dan hij was. En de
 MIT-wachtrijonderzoeker **Richard Larson** liet met collega’s al in 1991 onder
 de mooie titel
 [“Entertain, Enlighten, and Engage”](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage)
@@ -103,8 +103,7 @@ verder niets te doen heeft. Richt de aandacht zich op muziek, details in de
 theming of een show, dan ontbreken de innerlijke teller simpelweg de middelen,
 en smelt de overschatting weg. Daar speelt alles op in wat je in een goede
 wachtrij ziet: soundtracks, animatronics, interactieve elementen, verborgen
-details. Wat op decor lijkt, is in werkelijkheid toegepaste cognitieve
-psychologie.
+details. Het decor is niet alleen decor, het houdt de teller bezig.
 
 ```glossary-widget slug=pre-show
 
@@ -112,8 +111,8 @@ psychologie.
 
 ### Pre-shows: de beleving begint voor het instappen
 
-Het elegantste wapen tegen dode tijd is de **pre-show**, die het wachten
-simpelweg tot onderdeel van de attractie verklaart. Het schoolvoorbeeld staat
+Het grondigst lost de **pre-show** dat op, die het wachten tot onderdeel van de
+attractie verklaart. Het schoolvoorbeeld staat
 in [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). Bij de
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 schuif je niet door een gang, maar door de stoffige lobby van het Hollywood
@@ -215,12 +214,12 @@ de tien seconden op zijn telefoon.
 
 ```
 
-En dan is er hier nog misschien wel de elegantste capaciteitstruc van
-allemaal: de **single rider-rij**. Wie alleen rijdt en zich op de losse stoel
+En dan is er hier nog een capaciteitstruc die beide kanten helpt: de
+**single rider-rij**. Wie alleen rijdt en zich op de losse stoel
 laat zetten die een groepje van vier overlaat, bekort de eigen wachttijd
 drastisch en helpt het park en passant elke wagen tot de rand te vullen. Elke
-anders lege stoel is weggegooide capaciteit; de single rider-rij is de elegante
-manier om die gaten te dichten. Een zeldzaam geval waarin eigenbelang en
+anders lege stoel is weggegooide capaciteit, en een solorijder vult hem zonder
+dat iemand zijn plek kwijtraakt. Zo eenduidig is het zelden. Een geval waarin eigenbelang en
 doorstroom precies dezelfde kant op trekken.
 
 ```glossary-widget slug=single-rider
@@ -232,7 +231,7 @@ doorstroom precies dezelfde kant op trekken.
 ### Shows: de stille capaciteitshelpers
 
 En dan is er nog een truc die helemaal niet bij de attractie zelf plaatsvindt:
-**entertainment als massaspons.** Een parade, een vuurwerk of een stuntshow
+Een parade, een vuurwerk of een stuntshow
 bindt in één klap duizenden gasten, mensen die dat uur in geen enkele
 ritwachtrij staan. Het amfitheater van **Fantasmic!** in de Hollywood Studios
 biedt met sta- en zitplaatsen ruimte aan bijna 10.000 mensen per voorstelling.
@@ -315,7 +314,8 @@ Hoe serieus moderne banen dat nemen, laat
 [Europa-Park](ref:europa-park?bare) zien. Volgens het fabrikantenfactsheet van
 Mack Rides rijden daar **zeven treinen** tegelijk, met een streefafhandeling
 van **één vertrek elke 36 seconden**. Dat levert 1.600 gasten per uur op,
-terwijl er in één trein maar 16 personen passen. Frequentie verslaat omvang.
+terwijl er in één trein maar 16 personen passen, meer dus dan de Hulk met zijn
+32 plaatsen per vertrek haalt.
 
 ### Stilstand is de vijand: rolling launches en rolling stations
 
@@ -324,8 +324,8 @@ Voltron gebruikt **rolling launches**, waarbij de treinen niet vóór de launch
 worden stilgezet en dan weggeschoten, maar in het voorbijrijden versneld,
 “vliegend” als bij een estafette. Om de LSM-motoren dat in een ritme van 36
 seconden te laten volhouden, gaf Mack ze zonder omhaal vier in plaats van twee
-statorrijen. Elke vermeden stop betekent: het blok komt sneller vrij, het ritme
-houdt stand, de rij rolt door.
+statorrijen. Een trein die niet stopt, geeft zijn blok eerder vrij, en daarmee houdt de
+cadans van 36 seconden stand.
 
 En [Walibi Holland](ref:walibi-holland?bare) heeft datzelfde principe in 2025
 naar het station gebracht. Bij **YOY**, Europa’s eerste single rail duelling
@@ -378,7 +378,7 @@ verlaat het station als winnaar. Peak-end-regel, we herinneren het ons: de
 beleving eindigt beter dan verwacht, en precies zo wordt ze opgeslagen. De
 aanduiding liegt dus echt, maar ze liegt in jouw voordeel.
 
-Even uit de machinekamer, want hier leeft park.fan. Onze live wachttijden laten je elke minuut zien wat L en λ werkelijk doen, en
+Precies aan deze formule hangt park.fan. Onze live wachttijden laten je elke minuut zien wat L en λ werkelijk doen, en
 wanneer ons AI-model wachttijden tot 365 dagen vooruit voorspelt, modelleert het
 in de kern niets anders dan die twee grootheden: **vraag** (hoeveel mensen
 willen vandaag naar deze baan?) en **doorstroom** (hoeveel werkt hij er weg?).

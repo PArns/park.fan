@@ -495,8 +495,8 @@ Una salvedad antes de que alguien se tome las cifras demasiado en serio: nuestro
 histórico de este parque empieza en agosto de 2024, y Walibi solo abre de abril
 a octubre. Detrás de los valores mensuales de abril a agosto hay entre 11 y 30
 días medidos cada uno, y eso aguanta. De septiembre a marzo apenas tenemos
-datos, por eso ahí no aparece ninguna cifra. La dirección está clara, el decimal
-no.
+datos, por eso ahí no aparece ninguna cifra. Un mes con once días medidos te dice si viajas en la estación correcta, no si
+te ahorras cinco minutos.
 
 ## Halloween: el programa más duro del Benelux
 

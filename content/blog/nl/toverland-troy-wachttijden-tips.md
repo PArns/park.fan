@@ -86,7 +86,7 @@ voor de andere ruim het dubbele. De kortste rij hoort bij de betere baan.
 Hier wil ik het hebben over het park eromheen: [Toverland](ref:attractiepark-toverland?long)
 in Sevenum, dat dit jaar 25 wordt, dat ik een van de mooiste kleine parken van
 Europa vind, en waar ik ooit zelf in kostuum aan de andere kant heb gestaan.
-Daarover later meer.
+
 
 ## Wat Troy zo goed maakt
 

@@ -85,8 +85,7 @@ the other more than twice that. The shorter queue belongs to the better ride.
 
 This is meant to be about the park around it: [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, turning 25 this year, which I consider one of the loveliest small parks
-in Europe, and where I once stood on the other side of it all, in costume. More
-on that later.
+in Europe, and where I once stood on the other side of it all, in costume.
 
 ## What Troy gets right
 

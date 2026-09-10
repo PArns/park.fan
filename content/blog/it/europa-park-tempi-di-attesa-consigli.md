@@ -139,8 +139,8 @@ la coda _più lunga_ di tutte.
 
 ## Perché il parco più grande ha le code più corte
 
-Il tempo di attesa non è una questione di popolarità. È una divisione, domanda
-diviso capacità. Nell’[arte dell’attesa](/blog/l-arte-dell-attesa) ho fatto i
+Il tempo di attesa è domanda diviso capacità, e quanto una giostra sia amata
+entra solo al numeratore. Nell’[arte dell’attesa](/blog/l-arte-dell-attesa) ho fatto i
 conti per esteso. L’Europa-Park è la prova migliore che conosca in Europa, perché
 da lui entrambi i lati della frazione sono estremi.
 

@@ -325,7 +325,7 @@ gebrek aan omzet dicht en is sinds 26 april 2019 weer open.
 
 De praktische waarde van dit stuk bos is en passant enorm. Er is geen wachtrij,
 geen capaciteitsgrens en geen ritduur. Er kunnen hier duizenden gasten tegelijk
-rondlopen zonder dat er ergens een getal op een bord hoeft. Precies dat is een
+rondlopen zonder dat er bij de ingang ooit een wachttijd hoeft te hangen. Precies dat is een
 reden dat een park met bijna zes miljoen bezoeken draaglijke wachttijden heeft.
 
 Sinds mei 2026 verbouwt het park de routing, omdat dertig sprookjes op één vaste

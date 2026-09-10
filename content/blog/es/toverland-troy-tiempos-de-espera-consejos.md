@@ -88,7 +88,7 @@ atracción.
 Aquí quiero hablar del parque que la rodea: el [Toverland](ref:attractiepark-toverland?long)
 de Sevenum, que este año cumple 25, que considero uno de los parques pequeños
 más bonitos de Europa, y en el que una vez estuve yo mismo disfrazado, al otro
-lado. De eso, más adelante.
+lado.
 
 ## Qué hace tan buena a Troy
 

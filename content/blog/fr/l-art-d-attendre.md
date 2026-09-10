@@ -97,8 +97,8 @@ par cœur :
 expériences de terrain du chercheur en marketing **Jacob Hornik**, les personnes
 qui attendaient surestimaient le temps réellement écoulé de **près de 36 pour
 cent** en moyenne. Dix minutes mesurées en deviennent presque quatorze dans la
-tête. Votre horloger intérieur est un virtuose de l’arrondi vers le haut, et il
-arrondit systématiquement à votre désavantage. Et dès 1991, le chercheur du MIT
+tête, et l’erreur va toujours dans le même sens : personne ne sort d’une file
+en l’estimant plus courte qu’elle ne l’était. Et dès 1991, le chercheur du MIT
 **Richard Larson** a montré avec ses collègues, sous le beau titre
 [« Entertain, Enlighten, and Engage »](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 qu’une simple distraction améliore nettement la qualité perçue de l’attente.
@@ -109,9 +109,8 @@ que lorsqu’il n’a rien d’autre à faire. Dès que l’attention se porte s
 musique, sur des détails de thématisation ou sur un spectacle, le compteur
 interne manque tout simplement de ressources, et la surestimation fond. C’est
 exactement là-dessus que mise tout ce que vous voyez dans une bonne file :
-bandes-son, animatroniques, éléments interactifs, détails cachés. Ce qui
-ressemble à de la décoration est en réalité de la psychologie cognitive
-appliquée.
+bandes-son, animatroniques, éléments interactifs, détails cachés. Le décor
+n’est pas seulement du décor, il occupe le compteur.
 
 ```glossary-widget slug=pre-show
 
@@ -119,8 +118,8 @@ appliquée.
 
 ### Les pre-shows : l’expérience commence avant l’embarquement
 
-L’arme la plus élégante contre le temps mort est le **pre-show**, qui déclare
-simplement l’attente partie intégrante de l’attraction. L’exemple d’école se
+C’est le **pre-show** qui règle cela le plus complètement, en déclarant
+l’attente partie intégrante de l’attraction. L’exemple d’école se
 trouve aux [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). À
 la [Tour de la Terreur](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror),
 on ne se traîne pas dans un couloir : on traverse le hall poussiéreux du
@@ -226,14 +225,14 @@ ne regarde pas son téléphone toutes les dix secondes.
 
 ```
 
-Et puis il y a ici ce qui est peut-être l’astuce de capacité la plus élégante
-de toutes : la **file single rider**. Quand on roule seul et qu’on se laisse
+Et puis il y a ici une astuce de capacité qui arrange les deux côtés : la
+**file single rider**. Quand on roule seul et qu’on se laisse
 placer sur le siège isolé qu’un groupe de quatre laisse libre, on raccourcit
 drastiquement sa propre attente et on aide au passage le parc à remplir chaque
 wagon à ras bord. Chaque siège autrement vide est de la capacité
-gaspillée ; la file single rider est la manière élégante de boucher ces trous.
-Un cas rare où l’intérêt personnel et le débit tirent exactement dans le même
-sens.
+gaspillée, et un visiteur seul la remplit sans que personne ne perde sa place.
+C’est rarement aussi net. Un cas où l’intérêt personnel et le débit tirent
+exactement dans le même sens.
 
 ```glossary-widget slug=single-rider
 
@@ -244,7 +243,7 @@ sens.
 ### Les spectacles : les auxiliaires discrets de la capacité
 
 Et il existe encore une astuce qui ne se joue pas du tout au niveau de
-l’attraction : **le divertissement comme éponge à foule.** Une parade, un feu
+l’attraction. Une parade, un feu
 d’artifice ou un spectacle de cascades mobilise d’un coup des milliers de
 visiteurs, des gens qui, pendant cette heure-là, ne sont dans aucune file. Avec
 ses places assises et debout, l’amphithéâtre de **Fantasmic!** aux Hollywood
@@ -335,7 +334,8 @@ sur
 l’[Europa-Park](ref:europa-park?bare). Selon la fiche technique du constructeur
 Mack Rides, **sept trains** y circulent simultanément, avec un objectif
 d’**un départ toutes les 36 secondes**. Cela donne 1 600 visiteurs par heure,
-alors qu’un train ne compte que 16 places. La fréquence bat la taille.
+alors qu’un train ne compte que 16 places, soit plus que le Hulk avec ses 32
+places par départ.
 
 ### L’arrêt est l’ennemi : rolling launches et rolling stations
 
@@ -344,8 +344,8 @@ plus du tout. Voltron utilise des **rolling launches**, où les trains ne sont
 pas immobilisés avant le lancement puis propulsés, mais accélérés au passage,
 « en vol », comme lors d’un relais. Pour que les moteurs LSM tiennent ce rythme
 de 36 secondes, Mack leur a tout bonnement donné quatre rangées de stators au
-lieu de deux. Chaque arrêt évité signifie : le bloc se libère plus vite, la
-cadence tient, la file avance.
+lieu de deux. Un train qui ne s’arrête pas libère son bloc plus tôt, et la cadence de 36
+secondes tient.
 
 Et [Walibi Holland](ref:walibi-holland?bare) a transposé le même principe à la
 gare en 2025. Sur **YOY**, premier duelling coaster monorail d’Europe, où l’on
@@ -401,7 +401,7 @@ pic-fin, souvenez-vous : l’expérience se termine mieux que prévu, et c’es
 exactement ainsi qu’elle est archivée. L’affichage ment donc bel et bien, mais
 il ment en votre faveur.
 
-Un mot depuis la salle des machines, car c’est exactement là que vit park.fan. Nos temps d’attente en direct vous montrent à la minute ce
+C’est exactement à cette formule que tient park.fan. Nos temps d’attente en direct vous montrent à la minute ce
 que font réellement L et λ, et quand notre modèle d’IA prévoit les temps
 d’attente jusqu’à 365 jours à l’avance, il ne modélise au fond rien d’autre que
 ces deux grandeurs : la **demande** (combien de personnes veulent monter dans

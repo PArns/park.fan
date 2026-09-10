@@ -93,8 +93,8 @@ Lo mal que juzgamos la espera desocupada se puede medir. En los experimentos de
 campo del investigador de marketing **Jacob Hornik**, quienes esperaban
 sobrestimaban el tiempo realmente transcurrido en **alrededor de un 36 por
 ciento** de media. Diez minutos medidos se convierten en casi catorce en la
-cabeza. Tu relojero interior es un virtuoso del redondeo hacia arriba, y
-redondea siempre en tu contra. Y ya en 1991 el investigador de colas del MIT
+cabeza, y el error va siempre en la misma dirección: nadie sale de una cola y
+la calcula más corta de lo que fue. Y ya en 1991 el investigador de colas del MIT
 **Richard Larson** demostró con sus colegas, bajo el bonito título
 [«Entertain, Enlighten, and Engage»](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 que incluso una distracción sencilla mejora notablemente la calidad percibida
@@ -106,8 +106,8 @@ meticulosidad cuando no tiene nada más que hacer. En cuanto la atención se
 dirige a la música, a los detalles de la tematización o a un espectáculo, al
 contador interno le faltan sencillamente recursos, y la sobrestimación se
 derrite. A eso apunta todo lo que ves en una buena cola: bandas sonoras,
-animatrónicos, elementos interactivos, detalles escondidos. Lo que parece
-decoración es en realidad psicología cognitiva aplicada.
+animatrónicos, elementos interactivos, detalles escondidos. La decoración no
+es solo decoración, mantiene ocupado al contador.
 
 ```glossary-widget slug=pre-show
 
@@ -115,8 +115,8 @@ decoración es en realidad psicología cognitiva aplicada.
 
 ### Pre-shows: la experiencia empieza antes de subir
 
-El arma más elegante contra el tiempo muerto es el **pre-show**, que
-sencillamente declara la espera parte de la atracción. El ejemplo de manual
+Lo que mejor lo resuelve es el **pre-show**, que declara la espera parte de la
+atracción. El ejemplo de manual
 está en [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). En la
 [Torre del Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 no te arrastras por un pasillo: atraviesas el polvoriento vestíbulo del
@@ -219,13 +219,12 @@ verdad la cabeza no mira el móvil cada diez segundos.
 
 ```
 
-Y aquí está además quizá el truco de capacidad más elegante de todos: la **fila
+Y aquí hay además un truco de capacidad que ayuda a las dos partes: la **fila
 de single rider**. Quien va solo y deja que lo coloquen en el asiento suelto
 que deja libre un grupo de cuatro acorta drásticamente su propia espera y de
 paso ayuda al parque a llenar cada vagón hasta el borde. Cada
 asiento que si no iría vacío es capacidad desperdiciada; la fila de single
-rider es la manera elegante de tapar esos huecos. Un caso raro en el que el
-interés propio y el rendimiento tiran exactamente en la misma dirección.
+rider lo llena sin que nadie pierda su sitio. Pocas veces está tan claro.
 
 ```glossary-widget slug=single-rider
 
@@ -236,7 +235,7 @@ interés propio y el rendimiento tiran exactamente en la misma dirección.
 ### Espectáculos: los ayudantes silenciosos de la capacidad
 
 Y luego hay un truco que ni siquiera ocurre en la atracción: **el
-entretenimiento como esponja de multitudes.** Un desfile, unos fuegos
+Un desfile, unos fuegos
 artificiales o un espectáculo de acrobacias fijan de golpe a miles de
 visitantes, gente que durante esa hora no está en ninguna cola. El anfiteatro
 de **Fantasmic!** en los Hollywood Studios acoge, entre plazas de pie y
@@ -321,7 +320,8 @@ Lo en serio que se lo toman las atracciones modernas lo enseña
 [Europa-Park](ref:europa-park?bare). Según la ficha técnica del fabricante Mack
 Rides, allí circulan **siete trenes** a la vez, con un despacho objetivo de
 **una salida cada 36 segundos**. Eso da 1.600 visitantes por hora, aunque un
-tren solo lleve a 16 personas. La frecuencia gana a la talla.
+tren solo lleve a 16 personas, más de lo que consigue el Hulk con sus 32 plazas
+por salida.
 
 ### La parada es el enemigo: rolling launches y rolling stations
 
@@ -330,7 +330,7 @@ Voltron usa **rolling launches**, en los que los trenes no se detienen antes
 del lanzamiento para luego dispararse, sino que se aceleran al pasar, «en
 vuelo», como en una carrera de relevos. Para que los motores LSM aguanten ese
 ritmo de 36 segundos, Mack les puso sin más cuatro filas de estatores en lugar
-de dos. Cada parada evitada significa: el bloque queda libre antes, el ritmo se
+de dos. Un tren que no se detiene libera su bloque antes, y así el ritmo se
 mantiene, la cola avanza.
 
 Y [Walibi Holland](ref:walibi-holland?bare) trasladó ese mismo principio a la
@@ -384,8 +384,7 @@ ganador. Regla del pico-final, recordemos: la experiencia termina mejor de lo
 esperado, y exactamente así queda archivada. O sea que el panel miente de
 verdad, pero miente a tu favor.
 
-Permíteme hablar un momento desde la sala de máquinas, porque es justo aquí
-donde vive park.fan. Nuestros tiempos de espera en vivo te enseñan
+De esta fórmula depende park.fan. Nuestros tiempos de espera en vivo te enseñan
 cada minuto qué están haciendo realmente L y λ, y cuando nuestro modelo de IA
 predice tiempos de espera hasta 365 días por adelantado, en el fondo no modela
 otra cosa que esas dos magnitudes: la **demanda** (¿cuánta gente quiere subir

@@ -333,7 +333,7 @@ chiuso nel 2002 per mancanza di incassi ed è di nuovo aperto dal 26 aprile 2019
 Il valore pratico di questo pezzo di bosco è enorme, per inciso. Non c’è fila, non
 c’è limite di capienza e non c’è durata della corsa. Qui possono girare
 contemporaneamente diverse migliaia di ospiti senza che da nessuna parte debba
-essere scritto un numero su un cartello. È proprio uno dei motivi per cui un parco
+essere esposto un tempo di attesa all’ingresso. È proprio uno dei motivi per cui un parco
 con quasi sei milioni di visite ha attese sopportabili.
 
 Da maggio 2026 il parco sta rifacendo i percorsi, perché trenta fiabe su un

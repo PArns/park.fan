@@ -88,7 +88,7 @@ l’altro più del doppio. La fila più corta appartiene all’attrazione miglio
 Qui voglio parlare del parco che ci sta intorno: il
 [Toverland](ref:attractiepark-toverland?long) di Sevenum, che quest’anno compie 25 anni, che
 considero uno dei parchi piccoli più belli d’Europa, e in cui una volta mi sono
-ritrovato in costume dall’altra parte. Ne parlo più avanti.
+ritrovato in costume dall’altra parte.
 
 ## Cosa rende Troy così buono
 

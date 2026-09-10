@@ -325,7 +325,7 @@ again since 26 April 2019.
 
 The practical value of this patch of woodland is enormous, incidentally. There is
 no queue, no capacity limit and no ride time. Several thousand guests can be in
-here at once without a number having to be written on a sign anywhere. That is one
+here at once without a wait time ever having to go up at the entrance. That is one
 reason a park with almost six million visits has bearable wait times.
 
 Since May 2026 the park has been rebuilding the routing, because thirty fairy
