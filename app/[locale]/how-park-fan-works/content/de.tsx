@@ -139,9 +139,9 @@ const SCALE_LEGEND = [
  * Zahlen aus `TARON_TYPICAL_WAITS`, also aus der API und nicht aus der Erzählung.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Montag', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Montag', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Samstag', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Unter der Woche', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Unter der Woche', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -152,7 +152,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Kopfbereich',
-    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet".',
+    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet“.',
     example: 'Phantasialand, Brühl. Heute 09:00–19:00, 36 von 40 Bahnen offen.',
     demo: <AnatomyHeaderDemo />,
   },
@@ -199,7 +199,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attraktionen',
     body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, durchsuchbar und nach Bereichen gruppiert. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
     example:
-      'Taron in Klugheim, ab 140 Zentimeter – die Karte aus Kapitel 01. Darüber die Rope-Drop-Liste, angeführt von Chiapas mit 75 gesparten Minuten.',
+      'Taron in Klugheim, ab 140 Zentimeter – die Karte aus Kapitel 01. Darüber die Rope-Drop-Liste, angeführt von Taron mit 60 gesparten Minuten.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -316,7 +316,7 @@ const FAQ = [
   {
     question: 'Sind 70 Minuten Wartezeit viel?',
     answer:
-      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten und bleibt an neun von zehn Montagen unter 65; dort sind 70 Minuten also ein ungewöhnlich voller Tag. Samstags liegt der Median derselben Bahn bei genau 70 Minuten, dann ist dieselbe Anzeige völlig durchschnittlich. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn, damit man sie nicht raten muss.',
+      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten, und an neun von zehn Montagen bleibt die Spitze bei 70 oder darunter. Samstags liegt der Median derselben Bahn bei genau diesen 70 Minuten. Dieselbe Anzeige ist montags also ein ausgesprochen voller Tag und samstags ein völlig durchschnittlicher. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn, damit man sie nicht raten muss.',
   },
   {
     question: 'Woher kommen die Wartezeiten?',
@@ -680,8 +680,8 @@ export function ContentDE() {
           </P>
           <PG>
             Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell, das
-            jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher an der
-            Realität nachmessen lässt.
+            täglich um 06:00 UTC mit den Wartezeiten des Vortags neu trainiert wird und sich
+            hinterher an der Realität nachmessen lässt.
           </PG>
           <P>
             Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
@@ -771,7 +771,7 @@ export function ContentDE() {
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Wartezeiten" delay={0}>
               ThemeParks.wiki, Wartezeiten.app und Queue-Times.com, im Fünf-Minuten-Takt. Die
-              Rohwährung von allem anderen auf dieser Seite.
+              Grundlage von allem anderen auf dieser Seite.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Ferien & Feiertage" delay={60}>
               Nager.Date für gesetzliche Feiertage und Brückentage, OpenHolidays für Schulferien.
@@ -812,7 +812,7 @@ export function ContentDE() {
           <NightShift
             locale="de"
             jobs={NIGHT_JOBS}
-            caption="Uhrzeiten in UTC, also mitten in der Nacht. Die Reihenfolge erklärt die Zeiten: „Lohnt früh aufstehen“ um 05:15 braucht die Viertelstunden von gestern, und die entstehen erst um 04:30."
+            caption="Uhrzeiten in UTC, also zwischen Mitternacht und dem frühen Morgen. Die Reihenfolge erklärt die Zeiten: „Lohnt früh aufstehen“ um 05:15 braucht die Viertelstunden von gestern, und die entstehen erst um 04:30."
           />
         </SectionShell>
       </Ambience>
@@ -966,7 +966,7 @@ export function ContentDE() {
             question="„Was heißt Single Rider, und in welcher Reihenfolge machen wir das?“"
             steps={[
               <>
-                Begriffe stehen im <A href={glossary}>Glossar</A>, in sechs Sprachen. Auf den
+                Begriffe stehen im <A href={glossary}>Wörterbuch</A>, in sechs Sprachen. Auf den
                 Attraktionsseiten sind sie im Text direkt verlinkt.
               </>,
               <>
@@ -1042,7 +1042,7 @@ export function ContentDE() {
             },
             {
               icon: HelpCircle,
-              title: 'Glossar',
+              title: 'Wörterbuch',
               body: (
                 <>
                   <A href={glossary}>Alle Fachbegriffe</A> mit Definition, Beispielbahnen und

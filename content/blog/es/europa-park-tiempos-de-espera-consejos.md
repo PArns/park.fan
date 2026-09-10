@@ -7,11 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En Rust haces de media 23 minutos de cola, menos que en el Phantasialand, que
-  tiene un tercio de ese público. Un año de mediciones, por qué el día más
-  tranquilo es justamente el domingo, qué semanas de noviembre pone enteras en
-  «bajo» nuestro calendario, y por qué deberías montar en la Euro-Mir ahora o no
-  montarte nunca.
+  En Rust haces menos cola que en el Phantasialand, que tiene un tercio de ese
+  público. Por qué el día más tranquilo es justamente el domingo, qué semanas de
+  noviembre pone enteras en «bajo» nuestro calendario, y por qué deberías montar
+  en la Euro-Mir ahora o no montarte nunca.
 tags:
   - europa-park
   - voltron
@@ -38,8 +37,8 @@ coverImage:
 seo:
   title: 'Europa-Park: espera y mejor época'
   description: >-
-    Tiempos de espera del Europa-Park con un año de datos: 23 minutos típicos,
-    domingos más tranquilos, noviembre más vacío. Mejor época y precios 2026.
+    Tiempos de espera del Europa-Park con nuestras propias mediciones: domingos
+    más tranquilos, noviembre más vacío. Mejor época y precios 2026.
   keywords:
     - tiempos de espera Europa-Park
     - tiempos de espera Europa-Park hoy
@@ -65,8 +64,8 @@ seo:
 
 Ningún parque de Alemania vende más entradas que el
 [Europa-Park](ref:europa-park?long), seis millones largos al año. Y aun así, en
-Rust haces de media **23 minutos** de cola. En el Phantasialand, que tiene un
-tercio de ese público, son 32.
+Rust haces menos cola que en el Phantasialand, que solo tiene un tercio de ese
+público.
 
 Nada de esto es una estimación. Llevamos doce meses registrando los tiempos de
 espera en Rust, atracción por atracción, y lo que hay ahora mismo en las colas lo
@@ -85,11 +84,13 @@ evento de despedida para el **9 de enero de 2027**.
 
 ![La entrada principal del Europa-Park, con banderas de países colgadas de la fachada | La puerta grande de Rust. Detrás hay 95 hectáreas y 18 países europeos. | wide](/media/europa-park/background-16x9.jpg)
 
-## Tiempos de espera en el Europa-Park: 23 minutos, medidos a lo largo de un año
+## Tiempos de espera en el Europa-Park: un cuarto de hora largo de media
 
-Nuestro historial de tiempos de espera del Europa-Park llega doce meses atrás.
-Contando todos los días de la semana, **el tiempo de espera típico en el conjunto
-del parque es de 23 minutos** (mediana), y el percentil 90 está en 36.
+Nuestro historial de tiempos de espera del Europa-Park empieza en diciembre de
+2025 y desde abril no tiene huecos. Contando todos los días de la semana, el
+tiempo de espera típico en el conjunto del parque es de **un cuarto de hora
+largo** (mediana); ese día de cada diez en el que de verdad hay movimiento,
+queda bastante por encima.
 
 Las diez atracciones en las que más cola haces, con el valor de hoy al lado:
 
@@ -101,15 +102,15 @@ Las diez atracciones en las que más cola haces, con el valor de hoy al lado:
 el diez por ciento de días más llenos. Ninguno de los dos dice nada sobre cómo se
 mueve una cola a lo largo del día.
 
-El Voletarium se sale de la serie. Su mediana de 14 minutos es la más baja de las
-diez más largas, y su pico de 27 llega exactamente igual de alto que el de
+El Voletarium se sale de la serie. Su mediana es la más baja de las
+diez más largas, y su pico llega exactamente igual de alto que el de
 Poseidon. Un teatro volador carga en tandas grandes. Entre dos pases no hay casi
 nadie esperando; una mañana llena, la cola sale hasta la explanada de delante.
 Promediado sobre el día entero no queda nada de eso.
 
-Por lo demás, la lista se lee sin sobresaltos. **34 minutos para la atracción que
-sumó 3,25 millones de vueltas en su primer año** son, medidos contra más de seis
-millones de visitantes, muy poco. La comparación, con la misma base de datos y el
+Por lo demás, la lista se lee sin sobresaltos. **La cola más larga del parque, para la atracción que
+sumó 3,25 millones de vueltas en su primer año**, es, medida contra más de seis
+millones de visitantes, muy poca cosa. La comparación, con la misma base de datos y el
 mismo método de cálculo:
 
 ```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -124,7 +125,7 @@ millones; en el Efteling, 5,6; en París, alrededor de diez. El Toverland no
 aparece ahí, y sus 1,17 millones son el dato que da el propio parque. A la derecha
 está siempre la atracción con la mediana más alta de la que tenemos al menos cien
 días de medición. En el Toverland, por encima quedaría en realidad Maximus' Blitz
-Bahn con 34 minutos, aunque sobre solo 61 días, y una montaña rusa infantil con
+Bahn, aunque sobre solo 61 días de medición, y una montaña rusa infantil con
 una base de medición tan fina no sirve como indicador de un parque entero.
 
 Con alrededor de un tercio de ese público, el Phantasialand tiene colas nueve
@@ -134,8 +135,8 @@ terreno, no de las atracciones; la cuenta está hecha en la
 [Efteling](/blog/efteling-el-disney-de-los-paises-bajos) y el
 [Toverland](/blog/toverland-troy-tiempos-de-espera-consejos) planteamos la misma
 operación. Y en París, por donde pasa alrededor de una vez y media esa cantidad
-de gente, la media del parque está en 34 minutos. Ese es exactamente el valor que
-en Rust alcanza la cola _más larga_.
+de gente, la media del parque queda más o menos donde en Rust queda la cola _más
+larga_.
 
 ## Por qué el parque más grande tiene las colas más cortas
 
@@ -369,8 +370,8 @@ En Rust vuelve a estar en pie, y encima iluminada. El patrocinador Rimac fabrica
 unos cientos de kilómetros más al sur hiperdeportivos eléctricos, y «nevera» es en
 croata la tormenta repentina que se levanta en verano sobre el Adriático.
 
-3,25 millones de vueltas en el primer año, y el tiempo de espera típico está en 34
-minutos. Once por encima de la media del parque, para la atracción por la que
+3,25 millones de vueltas en el primer año, y la espera típica más larga del
+parque. Bastante por encima de la media del parque, para la atracción por la que
 media Alemania del sur condujo hasta Rust en 2024.
 
 **[Silver Star](ref:europa-park/silver-star)** es la gran dama de los récords.
@@ -407,7 +408,7 @@ como si te dieran la vuelta a cámara lenta.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** funciona
 desde 1989 entera por dentro de una bola plateada. En 2018 la atracción pasó del
 tema espacial a uno parisino, con una fachada de Moulin Rouge delante. 198
-segundos a oscuras. Que con 28 minutos de espera típica ocupe el cuarto puesto
+segundos a oscuras. Que con su espera típica ocupe el cuarto puesto
 tiene una explicación de lo más banal. Es una de las pocas atracciones que
 funcionan de forma fiable cuando llueve.
 
@@ -427,7 +428,7 @@ media jornada: el **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** de
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** de 1984, el
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** en Irlanda, y
 **[Arthur](ref:europa-park/arthur)**, un recorrido suspendido y motorizado por el
-Reino de los Minimoys que con 31 minutos tiene la segunda cola más larga del
+Reino de los Minimoys que tiene la segunda cola más larga del
 parque. La decimoquinta es el
 **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, el
 mismo recorrido que el Enzian, solo que con gafas de realidad virtual y
@@ -650,8 +651,8 @@ digna de ese nombre, ve un domingo de noviembre. El 15 sería uno de esos días.
 
 Suena a error. Nuestro análisis de rope drop compara, para cada atracción, el
 tiempo de espera justo en la apertura con el pico diario más alto que se ha medido
-allí en un día lleno. En el Voletarium son 23 minutos contra 80, o sea, **57
-minutos de ahorro**. Con diferencia, el valor más alto de todo el parque.
+allí en un día lleno. En el Voletarium son unos veinte minutos largos contra
+ochenta, con diferencia el mayor ahorro de todo el parque.
 
 ```glossary-widget slug=rope-drop
 
@@ -662,8 +663,8 @@ Todo correcto, pero nada por lo que uno se levante a las ocho. Las montañas rus
 se pueden repartir a lo largo del día, el teatro volador no.
 
 Hasta qué punto se reparte todo esto por el día solo se ve en el perfil horario:
-la espera típica de cada hora, promediada sobre un año de días de operación. En
-negrita, la hora más cargada de cada atracción.
+la espera típica de cada hora, promediada sobre todos los días de operación
+medidos. En negrita, la hora más cargada de cada atracción.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -707,8 +708,8 @@ Un plan de día que sale de ahí:
    la hora antes del cierre queda por debajo de la de apertura. Solo las dos
    acuáticas están más vacías por la mañana.
 
-Una salvedad al respecto. Estas curvas son medias de un año entero de días de
-operación, pleno verano y temporada de invierno juntos. En un día corto de
+Una salvedad al respecto. Estas curvas son medias de todos los días de
+operación medidos, pleno verano y temporada de invierno juntos. En un día corto de
 noviembre, de once a siete, las cifras son más bajas y el pico llega antes.
 
 ```map-widget slug=europa-park
@@ -730,7 +731,7 @@ este parque las vacaciones francesas y las suizas; el calendario de vacaciones d
 un solo estado federado no lo hace.
 
 **Tomar el martes por un día laborable tranquilo.** De lunes a viernes es el más
-lleno, con 25 minutos de espera típica frente a los 22 del lunes, el jueves y el
+lleno, por delante del lunes, el jueves y el
 viernes. Si de todas formas solo te encaja un día entre semana, coge uno de esos
 tres, que van todos empatados.
 
@@ -748,7 +749,7 @@ mal su día.
 A partir del **28 de noviembre** es invierno. Mercados navideños, una pista de
 hielo, espectáculos sobre hielo y zonas que solo existen en estas semanas, como la
 Winter World of Wonder y el trineo Snowflake. El tiempo de espera típico de
-diciembre nos salió en 28 minutos, un pelín por encima de agosto, aunque sobre solo
+diciembre nos salió un pelín por encima de agosto, aunque sobre solo
 seis días de medición. El **24 y el 25 de diciembre** está cerrado; los clientes
 del hotel pueden quedarse hasta el 10 de enero.
 
@@ -864,17 +865,17 @@ también en el domo de blue fire.
 
 ### ¿Cuánto duran los tiempos de espera en el Europa-Park?
 
-En los últimos doce meses, el tiempo de espera típico en el conjunto del parque
-está en **23 minutos** (mediana), y el percentil 90 en 36. La cola más larga la
-tiene Voltron Nevera, con 34 minutos típicos, seguida de Arthur con 31 y de Wodan
-y Eurosat con 28 cada una. Lo que hay hoy en las colas lo ves en los
-[tiempos de espera actuales del Europa-Park](ref:europa-park?bare), actualizados
-cada cinco minutos y con previsión para los próximos días.
+A lo largo de todos los días de apertura medidos, el tiempo de espera típico en
+el conjunto del parque es de un cuarto de hora largo (mediana). La cola más
+larga la tiene Voltron Nevera, seguida de Arthur, Wodan y Eurosat. Lo que hay
+hoy en las colas lo ves en los [tiempos de espera actuales del
+Europa-Park](ref:europa-park?bare), actualizados cada cinco minutos y con
+previsión para los próximos días.
 
 ### ¿Cuándo hay menos gente en el Europa-Park?
 
-El **domingo** es el día de la semana más tranquilo (18 minutos típicos frente a
-28 el sábado), y mayo y junio son los meses de verano más tranquilos. Lo más vacío
+El **domingo** es el día de la semana más tranquilo, el sábado el más lleno, y
+mayo y junio son los meses de verano más tranquilos. Lo más vacío
 de todo es la temporada HALLOWinter, a principios de noviembre. [En nuestra
 previsión para los próximos tres meses](ref:europa-park?calendar), los 19 días de noviembre están todos en
 «bajo».
@@ -932,7 +933,7 @@ menos del doble que una de un día.
 Sí, con una salvedad. La decoración de invierno, la pista de hielo y los mercados
 navideños solo existen entonces, pero anochece antes, el parque cierra ya a las 19
 h y las atracciones acuáticas no funcionan de forma continua. Los tiempos de
-espera de diciembre, con 28 minutos típicos, están incluso un pelín por encima de
+espera de diciembre están incluso un pelín por encima de
 los de agosto. Para noviembre, en cambio, nuestra previsión clasifica como «bajo»
 los 19 días que cubre; tiempos de espera medidos de ese mes todavía no tenemos.
 
@@ -942,8 +943,8 @@ La frase que más veces se escribe sobre este parque es «el mejor parque de
 atracciones del mundo», y es cierta en la medida en que una votación internacional
 del sector lo ha puesto así diez veces. A mí me convence más otra cifra.
 
-Más de seis millones de personas al año, y haces de media 23 minutos de cola. No
-tiene mucho mérito si repartes 96 atracciones por 95 hectáreas, abres 286 días al
+Más de seis millones de personas al año, y aun así haces menos cola que en otros
+sitios. No tiene mucho mérito si repartes 96 atracciones por 95 hectáreas, abres 286 días al
 año y no dejas que nadie se cuele.
 
 A Rust se va por Voltron y por Silver Star. Que delante de las dos se espere tan
@@ -992,4 +993,4 @@ vagoneta que gira.
 - Llegada por la A5, tarifas de aparcamiento, Rulantica, el Eatrenalin y su estrella Michelin de 2026: [Cómo llegar al Europa-Park (oficial)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (oficial)](https://www.europapark.de/de) · [Eatrenalin en en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composición del público por país de origen y la parte suiza: [«50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort» (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [«874'000 Schweizer Besucher stellen den grössten Anteil» (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Viernes puente: niveles de afluencia y meteorología de los días alrededor de la Ascensión y del Corpus Christi de 2026, sacados de nuestro propio calendario (medidos, no previstos), más la serie de vídeos [«BRÜCKENTAG im EUROPA-PARK 2025» (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la misma serie en 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera sobre un año móvil, perfil horario sobre un año móvil, previsión de afluencia a 90 días, [Europa-Park en park.fan](ref:europa-park)
+- Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera desde diciembre de 2025, previsión de afluencia a 90 días, [Europa-Park en park.fan](ref:europa-park)

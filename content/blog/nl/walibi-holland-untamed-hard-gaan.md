@@ -450,10 +450,10 @@ spanning loopt door alles wat het park de afgelopen twee jaar heeft besloten.
 
 ## Wat Untamed echt kost
 
-Over de laatste twee seizoenen, berekend uit **meer dan 130 openingsdagen met bruikbare
-wachttijddata**, ligt de **typische wachttijd in het parkgemiddelde op een klein
-kwartier** (mediaan). Het 90e percentiel, de waarde waar negen van de tien
-metingen onder blijven, komt op 31 minuten.
+Berekend uit **meer dan 130 openingsdagen met bruikbare wachttijddata**, ligt de
+**typische wachttijd in het parkgemiddelde op een klein kwartier** (mediaan). Op
+die ene dag van de tien waarop het het drukst is, is het ruim anderhalf keer zo
+veel.
 
 Per baan ziet het er zo uit:
 
@@ -468,7 +468,7 @@ altijd. Maar het betekent wel: loop je ’s ochtends meteen de Wilderness in, da
 heb je Untamed drie keer gereden voordat de YOY-rij één keer rond is.
 
 Interessanter wordt het in vergelijking met de buurt. Zelfde databasis, zelfde
-rekenmethode, laatste twee seizoenen:
+rekenmethode, alle gemeten openingsdagen:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -489,7 +489,7 @@ wachttijd, na te lezen in [de kunst van het
 wachten](/blog/de-kunst-van-het-wachten).
 
 Eén kanttekening voordat iemand de cijfers te serieus neemt: onze historie voor
-dit park begint in augustus 2024, en Walibi is alleen van april tot oktober
+dit park begint in december 2025, en Walibi is alleen van april tot oktober
 open. Achter de maandwaarden voor april tot augustus zitten telkens 11 tot 30
 meetdagen, dat houdt stand. Voor september tot maart hebben we nauwelijks data,
 daarom staat daar ook geen getal. Een maand met elf meetdagen vertelt je of je in het juiste seizoen gaat, niet
@@ -712,10 +712,9 @@ Het seizoen loopt van **april tot begin november**, daarna is het dicht. In het
 voorjaar en het najaar opent het park op woensdagen, in het weekend en in de
 vakanties, in juli en augustus dagelijks.
 
-**Per maand** is het beeld rustig: mei en juli zijn met doorgaans 18 minuten de
-meest ontspannen maanden, juni ligt op 19, augustus op 20. Het drukst wordt het
-in **april** met 22 minuten, als Pasen, Koningsdag en de Nederlandse meivakantie
-in dezelfde periode vallen. Wie uit Duitsland komt, moet bovendien weten dat de
+**Per maand** is het beeld rustig: over het seizoen verschillen de maanden
+nauwelijks. Waar het überhaupt aantrekt, vallen Pasen, Koningsdag en de
+Nederlandse meivakantie in dezelfde periode. Wie uit Duitsland komt, moet bovendien weten dat de
 **Nederlandse schoolvakanties** hier veel harder doorwerken dan de eigen.
 
 **Per weekdag** wordt het curieus. De drukke dag is niet de zaterdag:
@@ -724,8 +723,8 @@ in dezelfde periode vallen. Wie uit Duitsland komt, moet bovendien weten dat de
 
 ```
 
-Tussen de rustigste en de drukste weekdag zitten drie minuten. Het weekend is
-hier dus gewoon geen uitzondering, en de reden is banaal: buiten de
+Tussen de weekdagen is helemaal geen verschil te meten: alle zeven liggen op
+dezelfde waarde. Het weekend is hier dus gewoon geen uitzondering, en de reden is banaal: buiten de
 zomervakantie opent het park toch al bijna alleen op woensdag en in het weekend,
 waardoor de weinige doordeweekse dagen bovengemiddeld vaak vakantiedagen zijn.
 Wie de keuze heeft, neemt een donderdag in mei of juli.
@@ -737,8 +736,8 @@ drukte-kalender:
 
 ```
 
-En zo ziet de drukte er over de maanden uit, berekend uit de laatste twee
-seizoenen:
+En zo ziet de drukte er over de maanden uit, berekend uit alle gemeten
+openingsdagen:
 
 ```stats-widget slug=walibi-holland show=months
 
@@ -832,7 +831,7 @@ Voor achtbaanfans wel. Het park heeft met [Untamed](ref:walibi-holland/untamed)
 de eerste hybride achtbaan van Europa, met [YOY](ref:walibi-holland/yoy-thrill)
 de eerste duelinstallatie op enkele rail ter wereld en met
 [Goliath](ref:walibi-holland/goliath) een Intamin Mega Coaster uit 2002, en dat
-alles bij een typische wachttijd van 20 minuten. Wie darkrides, een sluitend
+alles bij een typische wachttijd van ruim een kwartier. Wie darkrides, een sluitend
 decor en weerbestendigheid zoekt, zit in de [Efteling](ref:efteling) of
 [Phantasialand](ref:phantasialand) beter.
 
@@ -846,18 +845,17 @@ Defqon.1 plaats, het grootste hardstylefestival ter wereld.
 
 ### Hoe lang zijn de wachttijden in Walibi Holland?
 
-Over de laatste twee seizoenen ligt de typische wachttijd in het parkgemiddelde
-op **20 minuten** (mediaan), het 90e percentiel op 31 minuten. Untamed en
-Goliath liggen daar net onder, en de nieuwe YOY THRILL heeft met afstand de
-hoogste waarde in het park. Actuele cijfers staan op de
-[parkpagina van Walibi Holland](ref:walibi-holland).
+Over alle gemeten openingsdagen ligt de typische wachttijd in het parkgemiddelde
+op een klein kwartier (mediaan). Untamed en Goliath liggen daar net onder, en de
+nieuwe YOY THRILL heeft met afstand de hoogste waarde in het park. Actuele
+cijfers staan op de [parkpagina van Walibi Holland](ref:walibi-holland).
 
 ### Wanneer is het in Walibi Holland het rustigst?
 
-Mei en juli zijn in onze data de meest ontspannen maanden (doorgaans 18
-minuten), april de drukste (22 minuten). Per weekdag is het verschil klein, de
-donderdag staat met 18 minuten net voorop. Vermijd de Nederlandse mei- en
-zomervakantie en de Halloween-weekenden. Voor een concrete datum helpt de [wachttijden-kalender](ref:walibi-holland?calendar).
+Over het seizoen heen verschillen de maanden nauwelijks, en per weekdag is
+helemaal geen verschil meetbaar: alle zeven liggen op dezelfde waarde. Vermijd
+de Nederlandse mei- en zomervakantie en de Halloween-weekenden. Voor een
+concrete datum helpt de [wachttijden-kalender](ref:walibi-holland?calendar).
 
 ### Wat kost de entree van Walibi Holland?
 
@@ -887,8 +885,8 @@ december een Walibi-park wil, rijdt naar Waver voor
 
 ### Heb je een Fast Lane-pas nodig?
 
-Op een normale dag niet. Bij een mediaan van 20 minuten betaal je voor bespaarde
-minuten die je helemaal niet hebt. In weekenden in de zomervakantie, bij de
+Op een normale dag niet. Bij de mediaan die dit park draait, betaal je voor
+bespaarde minuten die je helemaal niet hebt. In weekenden in de zomervakantie, bij de
 avondevenementen en voor YOY kan het lonen.
 
 ## Rijd dat extra uur
@@ -949,4 +947,4 @@ helemaal nergens meer aan.
 - #Lekkergaan en Zomerse Zaterdagen 2026: ["Walibi Holland viert de zomer met langere openingstijden en twee zomerevents" (persbericht)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · ["Nieuw zomerfestival in Walibi Holland heet #Lekkergaan" (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
 - Tickets, parkeren en de drie pass-niveaus 2026 inclusief Halloween-contingent: [Tickets (officieel)](https://www.walibi.nl/en/tickets) · [Passes (officieel)](https://www.walibi.nl/en/tickets/passes) · [Parkeren 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren)
 - Wat een complete Halloween-avond kost (minimaal € 116,50 bovenop de entree, stand 2025): ["In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken" (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Wachttijd- en druktedata: eigen historie uit twee seizoenen, [Walibi Holland op park.fan](ref:walibi-holland)
+- Wachttijd- en druktedata: eigen historie sinds december 2025, [Walibi Holland op park.fan](ref:walibi-holland)

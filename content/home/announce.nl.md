@@ -4,9 +4,9 @@ endAt: 2026-03-28T09:00:00+01:00
 countdownTo: 2026-03-28T09:00:00+01:00
 background: '/media/phantasialand/taron.jpg'
 title: Pretpark Seizoenstart 2026
-subtitle: Het aftellen is begonnen!
+subtitle: Nog even geduld
 ---
 
-De voorpret stijgt! We tellen de dagen af naar de grote **Seizoenstart 2026**. Beleef met **park.fan** de perfecte start van het nieuwe pretparkseizoen.
+Op **28 maart 2026** draaien de eerste parken van het seizoen weer. Tot die tijd loopt hier het aftellen.
 
-Ontdek actuele **wachttijden**, gedetailleerde **drukte-kalenders** en spannende nieuwigheden van pretparken wereldwijd.
+Vanaf de eerste openingsdag staan de **wachttijden** weer live op elke parkpagina, met daarbij de **druktekalender** voor de dagen erna.

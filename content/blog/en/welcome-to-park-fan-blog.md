@@ -214,7 +214,7 @@ reminds me what all the effort is actually for. Somewhere out there a real train
 is running right now, and somebody out there wants to know whether the queue in
 front of it is worth joining.
 
-Behind it today are live wait times from over **200 parks** and **7,000 attractions**, updated by the minute.
+Behind it today are live wait times from over **200 parks** and **7,000 attractions**, refreshed every five minutes.
 Forecasts that estimate crowds up to **365 days** ahead. And because I only ever
 trust numbers that have to prove themselves, the model grades itself: every
 prediction is later held against the wait time actually measured, and whatever
@@ -244,7 +244,7 @@ in front of you is the exception or the rule.
 ## What park.fan does differently
 
 There are good sites that show you how long the queue is right now. We do that
-too, by the minute, worldwide. But park.fan was built for the question that
+too, every five minutes, worldwide. But park.fan was built for the question that
 comes before: _is it even worth going?_
 
 So we go a few steps further:
@@ -328,7 +328,7 @@ really:
 Thank you for reading this far. This place, the platform, the blog, all of it,
 is my thank-you to a park by a fairy-tale lake, to parents who took a small boy
 there again and again, to a father in a gondola, and to every single person who
-loves theme parks as much as I do. 
+loves theme parks as much as I do.
 
 — Patrick
 

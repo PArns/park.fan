@@ -352,8 +352,8 @@ fêté son anniversaire, avec ce jour-là un programme jusqu’à 23 heures.
 
 ## Vingt minutes, et une file qui ne raccourcit jamais
 
-Notre historique de temps d’attente pour Bottrop remonte au **26 août 2025** et
-couvre **135 jours d’ouverture exploitables**. Tous jours de la semaine
+Notre historique de temps d’attente pour Bottrop commence en **décembre 2025**
+et couvre **135 jours d’ouverture exploitables**. Tous jours de la semaine
 confondus, l’attente typique en moyenne du parc est de vingt minutes (médiane).
 
 Les dix attractions où l’on attend le plus longtemps :
@@ -364,9 +364,9 @@ Les dix attractions où l’on attend le plus longtemps :
 
 Tout en haut, ce n’est pas une montagne russe à 90 km/h, mais un parcours en
 intérieur à 36. Van Helsing’s Factory a la médiane la plus élevée du parc, et
-juste derrière vient la bûche de l’espace enfants. Star Trek se situe dans le
-ventre du classement, alors que la plupart des visiteurs viennent justement pour
-cette attraction.
+derrière elle plusieurs attractions sont à égalité, dont la bûche de l’espace
+enfants. Star Trek se situe dans le ventre du classement, alors que la plupart
+des visiteurs viennent justement pour cette attraction.
 
 Cela tient peu à la popularité et beaucoup au débit. Van Helsing traite 848
 personnes par heure, et comme le parcours est à l’intérieur, c’est aussi là que
@@ -405,7 +405,7 @@ d’attractions.
 
 > [!NOTE]
 > Une limite qui compte particulièrement pour ce parc. Notre historique commence
-> fin août 2025, et il ne contient **pas un seul jour exploitable pour septembre,
+> en décembre 2025, et il ne contient **pas un seul jour exploitable pour septembre,
 > octobre et novembre**. Les semaines du Halloween Horror Festival, justement, ne
 > sont donc pas mesurées chez nous. Ce que le calendrier plus bas montre pour
 > l’automne est une prévision, pas une mesure.
@@ -667,11 +667,11 @@ S’il pleut en ce moment à Bottrop, cela décide de la moitié du parc :
 
 ### Quels sont les temps d’attente au Movie Park ?
 
-Sur 135 jours d’ouverture mesurés depuis août 2025, l’attente typique en moyenne
-du parc est de **vingt minutes** (médiane). La valeur la plus élevée du parc
-revient à [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), et
-non à la grande montagne russe. Les chiffres actuels sont sur la
-[page du Movie Park](ref:movie-park-germany?bare).
+Sur 135 jours d’ouverture mesurés, l’attente typique en moyenne du parc est de
+**vingt minutes** (médiane). La valeur la plus élevée du parc revient à [Van
+Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), et non à la
+grande montagne russe. Les chiffres actuels sont sur la [page du Movie
+Park](ref:movie-park-germany?bare).
 
 ### Quand y a-t-il le moins de monde au Movie Park ?
 
@@ -792,4 +792,4 @@ lune.
 - Accès, gare de Feldhausen, SB16 : [Accès & stationnement (officiel)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Excursion en train (DB Regio NRW, en allemand)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Vacances d’automne en RNW 2026 (du 17 au 31 octobre) : [Calendrier scolaire de Rhénanie-du-Nord-Westphalie (Bildungsportal NRW, en allemand)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - Bilan de la saison 2024 et 30 millions de visiteurs depuis 1996 : [Bilan de saison et événement MPHC 2024 (officiel, en allemand)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany accueille son 30 millionième visiteur (EuroAmusement Professional, en allemand)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Données de temps d’attente et d’affluence : notre propre historique depuis août 2025, [Movie Park Germany sur park.fan](ref:movie-park-germany)
+- Données de temps d’attente et d’affluence : notre propre historique depuis décembre 2025, [Movie Park Germany sur park.fan](ref:movie-park-germany)

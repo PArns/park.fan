@@ -234,13 +234,13 @@ chaque session de débogage nocturne elle me rappelle à quoi sert tout cet effo
 Quelque part là-dehors, un vrai train roule en ce moment même, et quelqu’un
 là-dehors veut savoir si la file devant en vaut la peine.
 
-Derrière, il y a aujourd’hui des temps d’attente en direct dans plus de
-**200 parcs** et
-**7000 attractions**, à la minute. Des prévisions qui estiment l’affluence
-jusqu’à **365 jours** à l’avance. Et comme je ne fais par principe confiance aux
-chiffres que lorsqu’ils doivent faire leurs preuves, le modèle se note lui-même :
-chaque prévision est ensuite confrontée au temps d’attente réellement mesuré, et
-ce qui en ressort figure sur la [page Fancast](/fancast).
+Derrière, il y a aujourd’hui des temps d’attente en direct dans plus de **200
+parcs** et **7000 attractions**, actualisés toutes les cinq minutes. Des
+prévisions qui estiment l’affluence jusqu’à **365 jours** à l’avance. Et comme
+je ne fais par principe confiance aux chiffres que lorsqu’ils doivent faire
+leurs preuves, le modèle se note lui-même : chaque prévision est ensuite
+confrontée au temps d’attente réellement mesuré, et ce qui en ressort figure sur
+la [page Fancast](/fancast).
 
 ## Quel est le meilleur jour ? Un dimanche, ça vaut le coup ?
 
@@ -267,9 +267,9 @@ l’exception ou la règle.
 ## Ce que park.fan fait autrement
 
 Il existe de bons sites qui vous montrent la longueur de la file en ce moment
-même. Nous savons faire ça aussi, à la minute, dans le monde entier. Mais
-park.fan a été bâti pour la question d’avant : _est-ce que ça vaut seulement le
-déplacement ?_
+même. Nous savons faire ça aussi, toutes les cinq minutes, dans le monde entier.
+Mais park.fan a été bâti pour la question d’avant : _est-ce que ça vaut
+seulement le déplacement ?_
 
 C’est pourquoi nous allons quelques pas plus loin :
 
@@ -359,7 +359,7 @@ park.fan**. Oui, sérieusement :
 Merci d’avoir lu jusqu’ici. Cet endroit, la plateforme, le blog, tout ça, c’est
 mon merci à un parc au bord d’un lac aux contes, à des parents qui y ont emmené
 encore et encore un petit garçon, à un père dans une nacelle, et à chaque
-personne qui aime les parcs d’attractions autant que moi. 
+personne qui aime les parcs d’attractions autant que moi.
 
 — Patrick
 

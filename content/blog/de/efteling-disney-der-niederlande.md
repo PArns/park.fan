@@ -10,8 +10,8 @@ excerpt: >-
   Disneyland auf. Es gehört keinem Konzern, sondern einer Stiftung, die nichts
   ausschütten darf und nebenan ein Feriendorf für schwer kranke Kinder gebaut
   hat. Und weil eine Naturgenehmigung bei fünf Millionen Gästen die Grenze
-  zieht, wartest du hier trotz 5,78 Millionen Besuchen typischerweise
-  25 Minuten.
+  zieht, wartest du hier trotz 5,78 Millionen Besuchen typischerweise nur
+  gut eine Viertelstunde.
 tags:
   - efteling
   - wartezeiten
@@ -34,7 +34,7 @@ coverImage:
 seo:
   title: 'Efteling: Wartezeiten, Tipps & beste Reisezeit'
   description: >-
-    Das Efteling mit echten Wartezeit-Daten aus zwei Saisons: beste Reisezeit,
+    Das Efteling mit echten Wartezeit-Daten aus über 150 Betriebstagen: beste Reisezeit,
     Tickets, Winter Efteling und warum nur fünf Millionen Gäste im Jahr
     hineindürfen.
   keywords:
@@ -264,7 +264,7 @@ gehen auf dieses Modell zurück.
 **[Droomvlucht](ref:efteling/droomvlucht)** von 1993 ist die Elfenfahrt, bei der
 niederländische Erwachsene weich werden. Man schwebt in Gondeln durch Wälder,
 Feenschlösser und ein Nachtstück, in dem die Bahn kurz absackt. Wer wissen will,
-warum ein Dark Ride ohne einen einzigen Schreckmoment 22 Minuten typische
+warum ein Dark Ride ohne einen einzigen Schreckmoment so viel typische
 Wartezeit produziert, fährt sie einmal und versteht es.
 
 ![Das Minarett von Fata Morgana in der blauen Stunde, dahinter die Kuppeln des Basars | Von außen sieht man nichts von der Attraktion. Sie liegt komplett hinter dieser Fassade. | left](/media/efteling/fata-morgana-4x3.jpg)
@@ -346,15 +346,16 @@ gepflasterten Stichwegen zu den einzelnen Szenen. Die gelben Abkürzungen
 verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen,
 ohne dich zu verlaufen.
 
-## 25 Minuten, über zwei Saisons gemessen
+## Gut eine Viertelstunde, über 150 Betriebstage gemessen
 
 „Ein Park für die ganze Familie“ steht in jedem Prospekt. Belegen lässt sich das
 nur mit Schlangen.
 
 Unsere Historie für das Efteling umfasst **über 150 Betriebstage** mit
-Wartezeit-Daten, aufgenommen zwischen August 2024 und August 2026. Über alle
-Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei
-25 Minuten** (Median), das 90. Perzentil bei 36.
+Wartezeit-Daten, aufgenommen seit Dezember 2025. Über alle
+Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt bei **gut einer
+Viertelstunde**; an dem einen Tag von zehn, an dem richtig etwas los ist, ist es
+gut das Anderthalbfache.
 
 Die gefragtesten zehn Attraktionen:
 
@@ -500,15 +501,15 @@ Das Efteling hat an 365 Tagen im Jahr geöffnet, und das verschiebt die übliche
 Regeln.
 
 **Nach Monat** ist der April in unseren Daten der entspannteste der großen
-Saisonmonate (typisch 22 Minuten), gefolgt von Mai mit 23 und Juli mit 25. Der
-Juni liegt bei 26, der August bei 29. Am anstrengendsten ist der **Dezember mit
-34 Minuten** im Median, also die Winter-Efteling-Saison, gefolgt vom März mit 28.
+Saisonmonate. Mai, Juni und Juli liegen eng beieinander, der August zieht
+spürbar an, und am anstrengendsten ist der **Dezember**, also die
+Winter-Efteling-Saison.
 
 Dazu gehört eine Einschränkung, sonst liest sich das genauer, als es ist: Hinter
-April, Mai, Juni und Juli stehen jeweils rund 30 Messtage, hinter dem Dezember
-sieben, hinter dem Januar fünf und hinter dem März drei. Für Februar, September,
-Oktober und November haben wir in diesem Zeitfenster noch gar keine
-auswertbaren Tage. Die Richtung stimmt, die Rangfolge im Nachkommabereich nicht.
+April bis August steht jeweils ein voller Monat an Messtagen, hinter Dezember,
+Januar und März nur eine Handvoll, und für Februar, Oktober und November haben
+wir bislang gar keine auswertbaren Tage. Die Richtung stimmt, die Rangfolge im
+Detail nicht.
 
 **Nach Wochentag** wird es interessant, weil sich der übliche Rat hier auflöst:
 
@@ -516,7 +517,7 @@ auswertbaren Tage. Die Richtung stimmt, die Rangfolge im Nachkommabereich nicht.
 
 ```
 
-Zwischen dem besten und dem schlechtesten Wochentag liegen vier Minuten. Im
+Zwischen dem besten und dem schlechtesten Wochentag liegt eine einzige Stufe. Im
 Phantasialand sind es zwischen Dienstag und Samstag Welten, hier ist der
 Wochentag fast egal. Der **Montag** ist in unseren Daten sogar der vollste Tag,
 was zunächst absurd klingt und sich auflöst, sobald man die niederländischen
@@ -533,7 +534,7 @@ zuerst, der deutsche danach. Die ruhigsten kommenden Tage:
 
 ```
 
-Und der Andrang über die Monate, gerechnet aus den letzten beiden Saisons:
+Und der Andrang über die Monate, gerechnet aus allen gemessenen Öffnungstagen:
 
 ```stats-widget slug=efteling show=months
 
@@ -708,8 +709,8 @@ Wasserattraktionen laufen weiter, solange es das Wetter zulässt, was in
 Kaatsheuvel häufiger der Fall ist als in einem deutschen Mittelgebirgspark.
 
 Und dann die Kehrseite: **Der Dezember ist in unseren Daten der vollste Monat des
-Jahres**, mit 34 Minuten im Median und 48 im 90. Perzentil. Im Dezember wartest
-du also überall im Park ungefähr so lange wie sonst nur bei Joris en de Draak.
+Jahres**. Im Dezember wartest du überall im Park ungefähr so lange wie sonst nur
+bei Joris en de Draak.
 Dazu kommt der gestoppte Ticketverkauf, sobald ein Ferientag die
 Genehmigungsgrenze in Reichweite bringt. Wer die Wintersaison in Ruhe sehen will,
 nimmt einen Werktag im November oder in der zweiten Januarhälfte, nicht die Woche
@@ -768,22 +769,21 @@ Ja, und zwar für eine breitere Zielgruppe als die meisten großen Parks. Wer
 Achterbahnen will, bekommt mit [Baron 1898](ref:efteling/baron-1898) und
 [Joris en de Draak](ref:efteling/joris-en-de-draak) zwei sehr gute, aber keine
 Weltspitze. Wer Dark Rides, Ausstattung und Atmosphäre will, findet in Europa
-kaum etwas Besseres. Bei typischen Wartezeiten von 25 Minuten im Parkschnitt
-schaffst du an einem Tag mehr, als der Besucherzahl nach zu erwarten wäre.
+kaum etwas Besseres. Bei den typischen Wartezeiten im Parkschnitt schaffst du an einem Tag mehr, als
+der Besucherzahl nach zu erwarten wäre.
 
 ### Wie lang sind die Wartezeiten im Efteling?
 
-Über zwei Saisons liegt die typische Wartezeit im
-Parkschnitt bei **25 Minuten** (Median), das 90. Perzentil bei 36. Am längsten
-steht man bei [Joris en de Draak](ref:efteling/joris-en-de-draak) mit gut einer
-halben Stunde, gefolgt von [Danse Macabre](ref:efteling/danse-macabre). Aktuelle Zahlen
+Über alle gemessenen Öffnungstage liegt die typische Wartezeit im
+Parkschnitt bei **gut einer Viertelstunde** (Median). Am längsten steht man bei
+[Joris en de Draak](ref:efteling/joris-en-de-draak), gefolgt von [Danse Macabre](ref:efteling/danse-macabre). Aktuelle Zahlen
 stehen auf der [Efteling-Parkseite](ref:efteling).
 
 ### Wann ist im Efteling am wenigsten los?
 
-Nach Monat sind **April und Mai** die entspanntesten Saisonmonate (22 bzw.
-23 Minuten), am vollsten ist der **Dezember** mit 34. Der Wochentag spielt kaum
-eine Rolle, zwischen Donnerstag (23 Minuten) und Montag (27) liegen vier Minuten.
+Nach Monat ist der **April** der entspannteste Saisonmonat, am vollsten ist der
+**Dezember**. Der Wochentag spielt kaum eine Rolle: Zwischen dem besten und dem
+schlechtesten liegt eine einzige Stufe.
 Entscheidend sind die niederländischen Schulferien. Für einen konkreten Termin
 hilft der [Kalender der besten Besuchstage](ref:efteling?calendar) mehr als jede
 Faustregel.
@@ -814,8 +814,8 @@ Parkschein gilt danach ein Jahr lang weiter). Jahreskarten kosten 240 €
 
 ### Schafft man das Efteling an einem Tag?
 
-Die Attraktionen ja, den Park nicht. 37 Attraktionen bei 25 Minuten typischer
-Wartezeit passen in einen langen Tag. Der Märchenwald, die Shows, Aquanura und
+Die Attraktionen ja, den Park nicht. 37 Attraktionen bei den typischen
+Wartezeiten passen in einen langen Tag. Der Märchenwald, die Shows, Aquanura und
 das Herumlaufen passen nicht mehr dazu. Zwei Tage sind hier der Normalfall, keine
 Empfehlung für Enthusiasten.
 
@@ -879,4 +879,4 @@ mit dem offenen Mund. Er bedankt sich, seit 1959, bei jedem Einzelnen.
 - Kein Halloween: [„Geen Halloween in de Efteling“ (offiziell)](https://www.efteling.com/nl/park/events/halloween) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Preise, Parken und Jahreskarten 2026: [Ticket-Übersicht (offiziell)](https://www.efteling.com/en/park/information/ticket-overview) · [Preise & Öffnungszeiten (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jahreskarten-Vergleich (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (Gründung, Kapazität, Ehrenamt, Finanzierung): [Wie wij zijn (offiziell)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes auf Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes auf nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Spenden](https://www.villapardoes.nl/doneren)
-- Wartezeit- und Crowd-Daten: eigene Historie aus über 150 Betriebstagen (August 2024 bis August 2026), [Efteling auf park.fan](ref:efteling)
+- Wartezeit- und Crowd-Daten: eigene Historie aus über 150 Betriebstagen seit Dezember 2025, [Efteling auf park.fan](ref:efteling)

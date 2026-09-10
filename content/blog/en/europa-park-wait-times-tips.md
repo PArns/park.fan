@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The average queue in Rust runs 23 minutes, shorter than at Phantasialand with
-  a third of the crowd. A year of measurements, why Sunday of all days is the
-  quietest, which weeks in November our calendar rates “low” across the board,
-  and why you should ride Euro-Mir now or never.
+  The queue in Rust is shorter than at Phantasialand, which has a third of the
+  crowd. Why Sunday of all days is the quietest, which weeks in November our
+  calendar rates “low” across the board, and why you should ride Euro-Mir now
+  or never.
 tags:
   - europa-park
   - voltron
@@ -37,8 +37,8 @@ coverImage:
 seo:
   title: 'Europa-Park Wait Times & Best Time to Go'
   description: >-
-    Europa-Park wait times from a year of data: 23 minutes typical, Sundays
-    quietest, November emptiest. Best time to visit, 2026 prices, getting there.
+    Europa-Park wait times from our own measurements: Sundays quietest, November
+    emptiest. Best time to visit, 2026 prices, getting there.
   keywords:
     - Europa-Park wait times
     - Europa-Park wait times today
@@ -63,9 +63,9 @@ seo:
 ---
 
 No park in Germany sells more tickets than
-[Europa-Park](ref:europa-park?long), a good six million a year. And still the
-average queue in Rust runs to **23 minutes**. At Phantasialand, which draws a
-third of that crowd, it is 32.
+[Europa-Park](ref:europa-park?long), a good six million a year. And still you
+queue less in Rust than at Phantasialand, which draws only a third of that
+crowd.
 
 None of that is guesswork. We have been recording wait times in Rust for twelve
 months, ride by ride, and whatever the boards are showing right now sits on the
@@ -83,11 +83,12 @@ event for **9 January 2027**.
 
 ![The main entrance of Europa-Park, with national flags hanging on the facade | The main gate in Rust. Behind it lie 95 hectares and 18 European countries. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park wait times: 23 minutes, measured across a year
+## Europa-Park wait times: a good quarter of an hour on average
 
-Our wait-time history for Europa-Park goes back twelve months. Across all days
-of the week the **typical wait park-wide is 23 minutes** (median), with the 90th
-percentile at 36.
+Our wait-time history for Europa-Park starts in December 2025 and has been
+gapless since April. Across all days of the week the typical park-wide wait is
+**a good quarter of an hour** (median); on the one day in ten when there really
+is something going on, it sits well above that.
 
 The ten attractions you queue longest for, with today’s number beside them:
 
@@ -99,14 +100,14 @@ The ten attractions you queue longest for, with today’s number beside them:
 across the busiest ten per cent of days. Neither says anything about how a queue
 moves over the course of a day.
 
-The Voletarium is the odd one out. Its median of 14 minutes is the lowest of the
-ten longest, while its peak of 27 matches Poseidon’s exactly. A flying theatre
+The Voletarium is the odd one out. Its median is the lowest of the
+ten longest, while its peak matches Poseidon’s exactly. A flying theatre
 loads in big batches. Between two showings hardly anyone is waiting, and on a
 busy morning the queue reaches out into the square. Average that over a day and
 nothing of it is left.
 
-Otherwise the list reads unspectacularly. **34 minutes for the ride that
-accounted for 3.25 million rides in its first year** is, measured against over
+Otherwise the list reads unspectacularly. **The park’s longest queue, for the ride that
+accounted for 3.25 million rides in its first year**, is, measured against over
 six million guests, very little. The comparison, same data basis, same method:
 
 ```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -121,7 +122,7 @@ Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland does not
 appear there at all, and the 1.17 million is the park’s own figure. On the right
 of each row stands the attraction with the highest median for which we have at
 least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
-sits above that at 34 minutes, but on only 61 days, and a children’s coaster
+sits above that, but on only 61 days of measurement, and a children’s coaster
 with a thin measurement base is no yardstick for a whole park.
 
 With roughly a third of the crowd, Phantasialand has queues nine minutes longer
@@ -130,8 +131,7 @@ arithmetic is in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 For the [Efteling](/blog/efteling-disney-of-the-netherlands) and
 [Toverland](/blog/toverland-troy-wait-times-tips) we ran the same calculation.
 And in Paris, where about one and a half times as many guests come through, the
-park-wide figure stands at 34 minutes. That is exactly the number Rust’s
-_longest_ queue reaches.
+park-wide figure sits roughly where Rust’s _longest_ queue does.
 
 ## Why the biggest park has the shortest queues
 
@@ -357,8 +357,8 @@ Sponsor Rimac builds electric hypercars a few hundred kilometres to the south,
 and “nevera” is Croatian for the sudden storm that blows up over the Adriatic in
 summer.
 
-3.25 million rides in the first year, and the typical wait comes to 34 minutes.
-Eleven above the park average, for the ride half of southern Germany drove to
+3.25 million rides in the first year, and the longest typical wait in the park.
+Well above the park average, for the ride half of southern Germany drove to
 Rust for in 2024.
 
 **[Silver Star](ref:europa-park/silver-star)** is the grande dame with the
@@ -395,7 +395,7 @@ feels like being turned over in slow motion.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** has been
 running entirely inside a silver sphere since 1989. In 2018 the ride was
 rethemed from space to Paris, with a Moulin Rouge façade in front of it. 198
-seconds in the dark. Its fourth place at 28 minutes typical wait has a mundane
+seconds in the dark. That it comes fourth on typical wait has a mundane
 explanation. It is one of the few rides that keeps running reliably in the rain.
 
 ![The silver Eurosat sphere above the Moulin Rouge façade | The whole ride happens inside the sphere. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
@@ -414,7 +414,7 @@ a wild mouse with spinning cars, the
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** from 1984, the
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Ireland, and
 **[Arthur](ref:europa-park/arthur)**, a suspended powered coaster through the
-Kingdom of the Minimoys, which at 31 minutes has the second-longest queue in the
+Kingdom of the Minimoys, which has the second-longest queue in the
 park. The fifteenth is the **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, the same track as the
 Enzian, only with a VR headset and listed as a ride of its own.
 
@@ -629,8 +629,8 @@ be one of those days.
 
 That sounds like a mistake. Our rope-drop analysis compares, for every
 attraction, the wait right at opening with the highest daily peak measured there
-on a busy day. At the Voletarium that is 23 minutes against 80, a saving of
-**57 minutes**. Easily the highest figure anywhere in the park.
+on a busy day. At the Voletarium that is a good twenty minutes against eighty, by far the
+biggest saving anywhere in the park.
 
 ```glossary-widget slug=rope-drop
 
@@ -641,8 +641,8 @@ All respectable, none of it worth getting up at eight for. The roller coasters
 can be spread across the day, the flying theatre cannot.
 
 How far it all spreads across the day only becomes visible hour by hour: the
-typical wait in each hour, averaged over a year of operating days. Each ride’s
-busiest hour is in bold.
+typical wait in each hour, averaged over every operating day we have measured.
+Each ride’s busiest hour is in bold.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -685,8 +685,8 @@ A plan for the day that follows from that:
    hour before closing sits below the opening hour. Only the two water rides are
    quieter in the morning.
 
-One caveat. These curves are averages across a full year of operating days, high
-summer and the winter season together. On a short November day from eleven
+One caveat. These curves are averages across every operating day we have
+measured, high summer and the winter season together. On a short November day from eleven
 to seven the numbers are lower and the peak comes earlier.
 
 ```map-widget slug=europa-park
@@ -708,8 +708,8 @@ Basel-Stadt on its autumn holidays. Our calendar counts the French and Swiss
 holidays for this park; the holiday calendar of a single German state does not.
 
 **Taking Tuesday for a quiet weekday.** From Monday to Friday it is the busiest,
-at 25 minutes typical wait against 22 on Monday, Thursday and Friday. If only a
-weekday will do, take one of those three, all of which sit level.
+ahead of Monday, Thursday and Friday. If only a weekday will do, take one of
+those three, all of which sit level.
 
 ## Halloween, HALLOWinter, winter
 
@@ -723,7 +723,7 @@ add-on has planned their day wrong.
 
 From **28 November** it is winter. Christmas markets, an ice rink, ice shows and
 areas that exist only in these weeks, among them the Winter World of Wonder and
-the Snowflake sledge ride. Our typical wait in December came to 28 minutes, a
+the Snowflake sledge ride. Our typical wait in December came out a
 shade above August, though on only six days of measurements. The park is closed
 on **24 and 25 December**, and hotel guests may stay until 10 January.
 
@@ -835,17 +835,16 @@ since 2026.
 
 ### How long are the wait times at Europa-Park?
 
-Across the last twelve months the typical wait park-wide comes to **23 minutes**
-(median), with the 90th percentile at 36. The longest queue belongs to Voltron
-Nevera at a typical 34 minutes, followed by Arthur at 31 and Wodan and Eurosat
-at 28 each. What the boards say today is on the
+Across every operating day we have measured the typical wait park-wide comes to
+a good quarter of an hour (median). The longest queue belongs to Voltron Nevera,
+followed by Arthur, Wodan and Eurosat. What the boards say today is on the
 [live Europa-Park wait times](ref:europa-park?bare), updated every five minutes
 and with a forecast for the days ahead.
 
 ### When is Europa-Park least busy?
 
-**Sunday** is the quietest day of the week (18 minutes typical against 28 on
-Saturday), and May and June are the quietest summer months. Emptiest of all is
+**Sunday** is the quietest day of the week, Saturday the busiest, and May and
+June are the quietest summer months. Emptiest of all is
 the HALLOWinter season in early November. [In our forecast for the coming three
 months](ref:europa-park?calendar) all 19 November days are rated “low”.
 
@@ -898,8 +897,7 @@ ticket.
 
 Yes, with one caveat. The winter decoration, the ice rink and the Christmas
 markets exist only then, but it gets dark earlier, the park closes at 7 p.m. and
-the water rides do not all run. December wait times, at a typical 28 minutes,
-are even a shade above August. For November, by contrast, our forecast rates all
+the water rides do not all run. December wait times are even a shade above August. For November, by contrast, our forecast rates all
 19 days it covers as “low”; measured wait times from that month we do not have
 yet.
 
@@ -909,8 +907,8 @@ The sentence written above this park more often than any other is “best theme
 park in the world”, and it is true insofar as an international industry vote has
 put it that way ten times. A different number convinces me more.
 
-Over six million people a year, and your average queue is 23 minutes. No great
-trick, if you spread 96 attractions over 95 hectares, open 286 days a year and
+Over six million people a year, and you still queue less than you would
+elsewhere. No great trick, if you spread 96 attractions over 95 hectares, open 286 days a year and
 let nobody past the line.
 
 People drive to Rust for Voltron and Silver Star. That the queue for both is so
@@ -958,4 +956,4 @@ real Mir training module any more on their way into a car that spins.
 - Getting there via the A5, parking fees, Rulantica, the Eatrenalin’s Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (official)](https://www.europapark.de/de) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Visitor mix by country of origin and the Swiss share: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wait-time, rope-drop and crowd data: our own wait-time history across a rolling year, the hourly profile across a rolling year, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)
+- Wait-time, rope-drop and crowd data: our own wait-time history since December 2025, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)

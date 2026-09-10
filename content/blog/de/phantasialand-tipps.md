@@ -102,7 +102,7 @@ dieselben zwei, drei Bahnen. In der [Kunst des Wartens](/blog/die-kunst-des-wart
 Sättigung läuft wie Peter Pan’s Flight in Paris: Ein kleines Publikum schützt dich
 nicht vor langen Schlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
 Andrang verteilen kann. Die Mathematik ist im Phantasialand unerbittlicher als im
-weitläufigen [Europa-Park](ref:europa-park) mit seinen dreizehn Achterbahnen.
+weitläufigen [Europa-Park](ref:europa-park) mit seinen fünfzehn Achterbahnen.
 Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenenden
 gut füllt, der sagenumwobene „leere Samstag“ ist selten geworden.
 
@@ -273,7 +273,7 @@ ruhigsten kommenden Tage fürs Phantasialand:
 
 Und wenn du den **Andrang nach Wochentag und Monat** sehen willst, welche Tage
 übers Jahr typischerweise entspannt sind und welche du meiden solltest, dann
-zeigt es dir dieser Blick auf die letzten beiden Saisons:
+zeigt es dir dieser Blick auf die gemessenen Öffnungstage:
 
 ```stats-widget slug=phantasialand
 

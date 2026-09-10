@@ -346,9 +346,9 @@ compleanno, quel giorno con programma fino alle 23.
 
 ## Venti minuti, e una fila che non si accorcia mai
 
-Il nostro storico dei tempi di attesa per Bottrop risale al **26 agosto 2025** e
-copre **135 giorni di apertura utilizzabili**. Su tutti i giorni della settimana,
-l’attesa tipica nella media del parco è di venti minuti (mediana).
+Il nostro storico dei tempi di attesa per Bottrop comincia a **dicembre 2025** e
+copre **135 giorni di apertura utilizzabili**. Su tutti i giorni della
+settimana, l’attesa tipica nella media del parco è di venti minuti (mediana).
 
 Le dieci attrazioni per cui si aspetta di più:
 
@@ -356,10 +356,11 @@ Le dieci attrazioni per cui si aspetta di più:
 
 ```
 
-In cima non c’è una montagna russa da 90 km/h, ma un percorso al chiuso da 36. Van
-Helsing’s Factory ha la mediana più alta del parco, e subito dietro arriva il
-tronco dell’area bambini. Star Trek sta a metà classifica, anche se la maggior
-parte delle persone viene qui proprio per quell’attrazione.
+In cima non c’è una montagna russa da 90 km/h, ma un percorso al chiuso da 36.
+Van Helsing’s Factory ha la mediana più alta del parco, e dietro ci sono più
+attrazioni appaiate, tra cui il tronco dell’area bambini. Star Trek sta a metà
+classifica, anche se la maggior parte delle persone viene qui proprio per
+quell’attrazione.
 
 Questo ha poco a che fare con la popolarità e molto con la portata. Van Helsing
 smaltisce 848 persone all’ora, e siccome il percorso è al chiuso è anche il posto
@@ -396,7 +397,7 @@ non ce le ha, ma in una giornata normale ci si sale su più cose.
 
 > [!NOTE]
 > Un limite che per questo parco pesa in modo particolare. Il nostro storico
-> comincia a fine agosto 2025, e per **settembre, ottobre e novembre non contiene
+> comincia a dicembre 2025, e per **settembre, ottobre e novembre non contiene
 > nemmeno un giorno utilizzabile**. Proprio le settimane dell’Halloween Horror
 > Festival non sono misurate da noi. Quello che il calendario più sotto mostra
 > per l’autunno è una previsione, non una misura.
@@ -649,11 +650,11 @@ Se a Bottrop sta piovendo o no decide di mezzo parco:
 
 ### Quanto si aspetta al Movie Park?
 
-Su 135 giorni di apertura misurati da agosto 2025, l’attesa tipica nella media
-del parco è di **venti minuti** (mediana). Il valore più alto del parco ce l’ha
-[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), non le
-grandi montagne russe. I numeri aggiornati sono sulla
-[pagina del Movie Park](ref:movie-park-germany?bare).
+Su 135 giorni di apertura misurati, l’attesa tipica nella media del parco è di
+**venti minuti** (mediana). Il valore più alto del parco ce l’ha [Van Helsing’s
+Factory](ref:movie-park-germany/van-helsings-factory), non le grandi montagne
+russe. I numeri aggiornati sono sulla [pagina del Movie
+Park](ref:movie-park-germany?bare).
 
 ### Quando c’è meno gente al Movie Park?
 
@@ -771,4 +772,4 @@ vogliono demolire sta lì, illuminata di viola, davanti alla luna.
 - Come arrivare, stazione di Feldhausen, SB16: [Accesso e parcheggio (ufficiale)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Gita in treno (DB Regio NRW, in tedesco)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Vacanze autunnali nella RNV 2026 (dal 17 al 31 ottobre): [Calendario scolastico della Renania Settentrionale-Vestfalia (Bildungsportal NRW, in tedesco)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - Bilancio della stagione 2024 e 30 milioni di visitatori dal 1996: [Bilancio di stagione ed evento MPHC 2024 (ufficiale, in tedesco)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany accoglie il suo 30-milionesimo visitatore (EuroAmusement Professional, in tedesco)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Dati su tempi di attesa e affluenza: storico proprio da agosto 2025, [Movie Park Germany su park.fan](ref:movie-park-germany)
+- Dati su tempi di attesa e affluenza: storico proprio da dicembre 2025, [Movie Park Germany su park.fan](ref:movie-park-germany)

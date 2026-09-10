@@ -217,11 +217,11 @@ qué es todo este esfuerzo. Ahí fuera hay ahora mismo un tren real circulando y
 ahí fuera, alguien quiere saber si la cola que tiene delante merece la pena.
 
 Detrás hay hoy tiempos de espera en directo de más de **200 parques** y **7000
-atracciones**, minuto a minuto. Previsiones que estiman la afluencia hasta
-**365 días** por adelantado. Y como por principio solo me fío de las cifras que
-tienen que demostrarse, el modelo se pone nota a sí mismo: cada previsión se
-contrasta después con el tiempo de espera realmente medido, y lo que sale de ahí
-está en la [página de Fancast](/fancast).
+atracciones**, actualizados cada cinco minutos. Previsiones que estiman la
+afluencia hasta **365 días** por adelantado. Y como por principio solo me fío de
+las cifras que tienen que demostrarse, el modelo se pone nota a sí mismo: cada
+previsión se contrasta después con el tiempo de espera realmente medido, y lo
+que sale de ahí está en la [página de Fancast](/fancast).
 
 ## ¿Cuál es el mejor día? ¿Merece la pena un domingo?
 
@@ -248,7 +248,7 @@ directo te enseñan si la cola que tienes delante es la excepción o la regla.
 ## Qué hace park.fan de otra manera
 
 Hay buenas webs que te enseñan cuánta cola hay ahora mismo. Eso también sabemos
-hacerlo, minuto a minuto, en todo el mundo. Pero park.fan se construyó para la
+hacerlo, cada cinco minutos, en todo el mundo. Pero park.fan se construyó para la
 pregunta anterior: _¿merece siquiera la pena ir?_
 
 Por eso un modelo propio mira hasta **365 días** hacia delante en lugar de al

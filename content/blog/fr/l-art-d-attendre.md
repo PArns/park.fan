@@ -251,8 +251,8 @@ plus visiblement. Sur les graphiques en direct de park.fan, vous pouvez suivre
 cet effet en temps réel : pendant le grand spectacle du soir, les temps
 d’attente des têtes d’affiche fléchissent de façon mesurable, et qui connaît
 déjà le spectacle roule au meilleur rapport de la journée pendant cette heure.
-C’est exactement pour ces moments-là que nous actualisons les temps d’attente à
-la minute.
+C’est exactement pour ces moments-là que nous relisons les temps d’attente
+toutes les cinq minutes.
 
 ![Des milliers de spectateurs dans l’amphithéâtre nocturne de Fantasmic! à Disney’s Hollywood Studios | Fantasmic! aux Hollywood Studios : près de 10 000 personnes par représentation, toute une vague de visiteurs qui, le temps de cette demi-heure, ne se trouvera dans aucune file de coaster. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -398,13 +398,13 @@ exactement ainsi qu’elle est archivée. L’affichage ment donc bel et bien, m
 il ment en votre faveur.
 
 C’est exactement à cette formule que tient park.fan. Les temps d’attente en
-direct vous montrent à la minute ce que font réellement L et λ, et quand notre
-modèle prévoit les temps d’attente jusqu’à 365 jours à l’avance, il ne modélise au fond rien d’autre que
-ces deux grandeurs : la **demande** (combien de personnes veulent monter dans
-cette attraction aujourd’hui ?) et le **débit** (combien peut-elle en évacuer
-?). Little serait sans doute étonné de tous les usages qu’on fait aujourd’hui
-de sa formule. La fréquence à laquelle nos prévisions collent à la réalité
-figure sur la [page Fancast](/fancast).
+direct vous montrent toutes les cinq minutes ce que font réellement L et λ, et
+quand notre modèle prévoit les temps d’attente jusqu’à 365 jours à l’avance, il
+ne modélise au fond rien d’autre que ces deux grandeurs : la **demande**
+(combien de personnes veulent monter dans cette attraction aujourd’hui ?) et le
+**débit** (combien peut-elle en évacuer ?). Little serait sans doute étonné de
+tous les usages qu’on fait aujourd’hui de sa formule. La fréquence à laquelle
+nos prévisions collent à la réalité figure sur la [page Fancast](/fancast).
 
 ## Pourquoi Peter Pan’s Flight « déraille » toujours
 
@@ -466,7 +466,7 @@ massive.
 
 **L’[Europa-Park](ref:europa-park?bare) est le contre-modèle.** Le plus grand
 parc d’Allemagne, deuxième d’Europe derrière Disneyland Paris en fréquentation,
-répartit ses quelque six millions de visiteurs annuels sur **treize montagnes
+répartit ses quelque six millions de visiteurs annuels sur **quinze montagnes
 russes** et des dizaines d’attractions thématisées. Cette masse de capacité
 parallèle agit comme une soupape de surpression : la demande se disperse et
 presque aucune file ne tourne durablement à saturation. C’est pourquoi même les
@@ -498,7 +498,7 @@ park.fan affiche, à côté des temps d’attente en direct, les statistiques de
 longue durée. Car « chargé » est relatif : 45 minutes, c’est une mauvaise
 journée à Brühl et un cadeau au Magic Kingdom. Regardez le même jeu de données
 pour les deux parcs, les temps d’attente typiques par mois et par jour de la
-semaine, sur les deux dernières saisons.
+semaine, sur tous les jours d’ouverture que nous avons mesurés.
 
 **D’abord le [Phantasialand](ref:phantasialand?bare) à Brühl**, le cas extrême
 compact : quand un chiffre grimpe ici, il grimpe fort, parce que tout se
@@ -627,7 +627,8 @@ autrement. Trois questions demeurent, et park.fan a une réponse pour chacune :
 
 - **Quelle est la longueur _réelle_ de la file, à cet instant ?** C’est à cela
   que servent nos **temps d’attente en direct** : plus de 200 parcs, 7 000
-  attractions, à la minute. La loi de Little en temps réel, sans que vous ayez
+  attractions, actualisés toutes les cinq minutes. La loi de Little en temps
+  réel, sans que vous ayez
   à compter vous-même les 640 personnes devant vous.
 - **Est-ce beaucoup ou normal ?** Ce sont les **statistiques de longue durée**
   de chaque attraction qui le disent, car 45 minutes sont

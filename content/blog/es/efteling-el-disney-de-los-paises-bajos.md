@@ -10,8 +10,8 @@ excerpt: >-
   antes que Disneyland. No pertenece a ningún grupo empresarial, sino a una
   fundación que no puede repartir nada y que levantó al lado una casa de
   vacaciones para niños gravemente enfermos. Y como un permiso ambiental pone el
-  límite en cinco millones de visitantes, aquí esperas por lo general 25 minutos
-  pese a los 5,78 millones de visitas.
+  límite en cinco millones de visitantes, aquí esperas por lo general poco más
+  de un cuarto de hora pese a los 5,78 millones de visitas.
 tags:
   - efteling
   - tiempos-de-espera
@@ -34,7 +34,7 @@ coverImage:
 seo:
   title: 'Efteling: tiempos de espera, consejos y mejor época'
   description: >-
-    Efteling con datos reales de espera de dos temporadas: mejor época, entradas
+    Efteling con datos reales de espera de más de 150 días de operación: mejor época, entradas
     y por qué el parque solo puede recibir cinco millones de visitantes al año.
   keywords:
     - Efteling
@@ -265,7 +265,7 @@ de este modelo.
 **[Droomvlucht](ref:efteling/droomvlucht)**, de 1993, es el vuelo de los elfos que
 ablanda a los adultos neerlandeses. Flotas en góndolas por bosques, castillos de
 hadas y una secuencia nocturna en la que la vía se hunde un instante. Quien quiera
-saber por qué un dark ride sin un solo susto produce 22 minutos de espera típica,
+saber por qué un dark ride sin un solo susto produce tanta espera típica,
 que lo monte una vez y lo entenderá.
 
 ![El minarete de Fata Morgana en la hora azul, con las cúpulas del bazar detrás | Desde fuera no se ve nada de la atracción. Está entera detrás de esta fachada. | left](/media/efteling/fata-morgana-4x3.jpg)
@@ -345,15 +345,16 @@ secundarios empedrados en rojo hacia cada escena. Los atajos amarillos
 desaparecen. Después podrás ver el bosque en dos porciones en dos días sin
 perderte.
 
-## 25 minutos, medidos a lo largo de dos temporadas
+## Un cuarto de hora largo, medido a lo largo de 150 días de operación
 
 «Un parque para toda la familia» aparece en todos los folletos. Demostrarlo solo
 se puede con colas.
 
-Nuestro historial de Efteling abarca **más de 150 días de operación** con datos de
-espera, registrados entre agosto de 2024 y agosto de 2026. Sumando todos los días
-de la semana, la **espera típica en el conjunto del parque es de 25 minutos**
-(mediana), con el percentil 90 en 36.
+Nuestro historial de Efteling abarca **más de 150 días de operación** con datos
+de espera, registrados desde diciembre de 2025. Sumando todos los días de la
+semana, la espera típica en el conjunto del parque es de **un cuarto de hora
+largo** (mediana); ese día de cada diez en el que de verdad hay movimiento, es
+vez y media eso.
 
 Las diez atracciones más demandadas:
 
@@ -494,16 +495,16 @@ veinticinco años.
 
 Efteling abre 365 días al año, y eso desplaza las reglas habituales.
 
-**Por meses**, abril es en nuestros datos el más tranquilo de los grandes meses de
-temporada (típicamente 22 minutos), seguido de mayo con 23 y julio con 25. Junio
-está en 26 y agosto en 29. El más duro es **diciembre con 34 minutos** de mediana,
-es decir, la temporada Winter Efteling, seguido de marzo con 28.
+**Por meses**, abril es en nuestros datos el más tranquilo de los grandes meses
+de temporada. Mayo, junio y julio están muy juntos, agosto sube de forma
+perceptible, y el más duro es **diciembre**, es decir, la temporada Winter
+Efteling.
 
-Va con una salvedad, si no se lee más preciso de lo que es: detrás de abril, mayo,
-junio y julio hay unos 30 días medidos en cada caso, detrás de diciembre siete,
-detrás de enero cinco y detrás de marzo tres. Para febrero, septiembre, octubre y
-noviembre no tenemos todavía ningún día aprovechable en esta ventana. La dirección
-es correcta, el orden en los decimales no.
+Va con una salvedad, si no se lee más preciso de lo que es: detrás de abril a
+agosto hay un mes entero de días medidos en cada caso, detrás de diciembre,
+enero y marzo solo un puñado, y para febrero, octubre y noviembre no tenemos
+hasta ahora ningún día aprovechable. La dirección es correcta, el orden en
+detalle no.
 
 **Por día de la semana** la cosa se pone interesante, porque el consejo habitual
 aquí se disuelve:
@@ -512,7 +513,7 @@ aquí se disuelve:
 
 ```
 
-Entre el mejor y el peor día de la semana hay cuatro minutos. En Phantasialand
+Entre el mejor y el peor día de la semana hay un solo escalón. En Phantasialand
 entre un martes y un sábado hay un mundo; aquí el día da casi igual. El **lunes**
 es incluso el día más lleno en nuestros datos, lo que suena absurdo hasta que
 colocas al lado las semanas de vacaciones neerlandesas: quien reserva una semana
@@ -528,7 +529,7 @@ después el alemán. Los días más tranquilos que vienen:
 
 ```
 
-Y la afluencia por meses, calculada con las dos últimas temporadas:
+Y la afluencia por meses, calculada con todos los días de apertura medidos:
 
 ```stats-widget slug=efteling show=months
 
@@ -698,9 +699,8 @@ una versión de Aquanura que desde 2024 funciona con led en vez de con propano. 
 atracciones acuáticas siguen funcionando mientras el tiempo lo permita, lo que en
 Kaatsheuvel ocurre más a menudo que en un parque alemán de montaña media.
 
-Y luego la otra cara: **diciembre es en nuestros datos el mes más lleno del año**,
-con 34 minutos de mediana y 48 en el percentil 90. En diciembre esperas por tanto
-en todo el parque más o menos lo que si no solo esperas en Joris en de Draak. A eso
+Y luego la otra cara: **diciembre es en nuestros datos el mes más lleno del año**.
+En diciembre esperas en todo el parque más o menos lo que si no solo esperas en Joris en de Draak. A eso
 se suma la venta de entradas detenida en cuanto un día de vacaciones acerca el
 límite del permiso. Quien quiera ver la temporada de invierno con calma coge un día
 laborable de noviembre o de la segunda mitad de enero, no la semana entre Navidad y
@@ -757,23 +757,22 @@ Sí, y para un público más amplio que la mayoría de los grandes parques. Quie
 quiera montañas rusas encuentra en [Baron 1898](ref:efteling/baron-1898) y
 [Joris en de Draak](ref:efteling/joris-en-de-draak) dos muy buenas, pero no de
 primer nivel mundial. Quien quiera dark rides, acabado y ambiente no encuentra en
-Europa casi nada mejor. Con esperas típicas de 25 minutos en el conjunto del parque
+Europa casi nada mejor. Con las esperas típicas del conjunto del parque
 haces en un día más de lo que la cifra de visitantes haría esperar.
 
 ### ¿Cuánto se espera en Efteling?
 
-A lo largo de más de 150 días de operación de dos temporadas, la espera típica en el
-conjunto del parque es de **25 minutos** (mediana), con el percentil 90 en 36.
-Donde más se espera es en [Joris en de Draak](ref:efteling/joris-en-de-draak), con
-media hora larga, seguida de [Danse Macabre](ref:efteling/danse-macabre). Las
-cifras actuales están en la [página del parque Efteling](ref:efteling).
+A lo largo de todos los días de apertura medidos, la espera típica en el
+conjunto del parque es de **un cuarto de hora largo** (mediana).
+Donde más se espera es en [Joris en de Draak](ref:efteling/joris-en-de-draak),
+seguida de [Danse Macabre](ref:efteling/danse-macabre).
+Las cifras actuales están en la [página del parque Efteling](ref:efteling).
 
 ### ¿Cuándo hay menos gente en Efteling?
 
-Por meses, **abril y mayo** son los meses de temporada más tranquilos (22 y 23
-minutos), y el más lleno es **diciembre** con 34. El día de la semana apenas
-influye: entre el jueves (23 minutos) y el lunes (27) hay cuatro minutos. Lo
-decisivo son las vacaciones escolares neerlandesas. Para una fecha concreta ayuda
+Por meses, **abril** es el mes de temporada más tranquilo, y el más lleno es
+**diciembre**. El día de la semana apenas influye: entre el mejor y el peor hay
+un solo escalón. Lo decisivo son las vacaciones escolares neerlandesas. Para una fecha concreta ayuda
 más el [calendario de los mejores días](ref:efteling?calendar) que cualquier regla general.
 
 ### ¿Hay fast pass en Efteling?
@@ -801,7 +800,7 @@ tique sigue valiendo un año). Los pases anuales cuestan 240 € (Classic), 310 
 
 ### ¿Se hace Efteling en un día?
 
-Las atracciones sí, el parque no. 37 atracciones con 25 minutos de espera típica
+Las atracciones sí, el parque no. 37 atracciones con las esperas típicas
 caben en un día largo. El bosque de los cuentos, los espectáculos, Aquanura y el
 caminar ya no caben encima. Dos días es aquí lo normal, no una recomendación para
 aficionados.
@@ -868,4 +867,4 @@ las gracias, desde 1959, a cada uno.
 - Sin Halloween: [«Geen Halloween in de Efteling» (oficial)](https://www.efteling.com/nl/park/events/halloween) · [nuestra guía de Halloween](/blog/halloween-parques-atracciones-2026)
 - Precios, aparcamiento y pases anuales 2026: [Resumen de entradas (oficial)](https://www.efteling.com/en/park/information/ticket-overview) · [Precios y horarios (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Comparativa de pases anuales (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (fundación, capacidad, voluntariado, financiación): [Wie wij zijn (oficial)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes en Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes en nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Donar](https://www.villapardoes.nl/doneren)
-- Datos de espera y afluencia: historial propio de más de 150 días de operación (agosto de 2024 a agosto de 2026), [Efteling en park.fan](ref:efteling)
+- Datos de espera y afluencia: historial propio de más de 150 días de operación desde diciembre de 2025, [Efteling en park.fan](ref:efteling)

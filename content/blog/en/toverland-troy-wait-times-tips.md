@@ -130,11 +130,11 @@ remember it as "brilliant, but rough": ride it again.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## What Troy really costs you, measured across two seasons
+## What Troy really costs you, measured across 150 operating days
 
-Across the last two seasons, calculated from more than 150 operating days with wait-time
-data, Troy’s **typical wait is 16 minutes** (median). Even the 90th percentile,
-the value nine out of ten measurements fall below, only reaches **21 minutes**.
+Calculated from more than 150 operating days with wait-time data, Troy’s typical
+wait is **just under a quarter of an hour** (median). Even on the one day in ten
+with the most going on, it stays under half an hour.
 That is not some dead Tuesday in March, that is the average across every
 operating day.
 
@@ -186,15 +186,15 @@ Europe. Wing coaster means you sit out to the left and right of the rail, with
 no track above or below you, and because your seat swings wider through a curve
 than the vehicle does, every turn feels bigger than it is. Along the way a
 phoenix sprays mist over you, which has nothing to do with physics and improves
-the whole thing anyway. Wait: the same 16 minutes as Troy.
+the whole thing anyway. Wait: the same order of magnitude as Troy.
 
 ![The Fēnix station with blue track, a wing coaster train and fire bowls hanging on chains under wooden beams | The Fēnix station: fire bowls on chains, heavy beams, and the train with its seats beside the rail. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** is the oddball, and my second
 favourite here. In 2004, Vekoma built the world’s prototype motorbike coaster in
 Sevenum: you don’t sit, you lie on a motorbike, hands on the bars, knees tucked
-in, and then get launched. An uncomfortable, absurd, wonderful ride. With a
-median of 21 minutes it has, of all things, the longest typical wait of any
+in, and then get launched. An uncomfortable, absurd, wonderful ride. With its
+median it has, of all things, the longest typical wait of any
 coaster in the park, which comes down to boarding one at a time, lying down,
 which takes as long as it takes.
 
@@ -380,9 +380,9 @@ small enough that it can happen, and evidently important enough that it does.
 If you haven’t been for a while, one attraction will be missing. On
 **17 May 2026**, **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in
 the Wunderwald opened for the last time, the 2007 Mack bobsled where a brake
-lever let you decide how fast you went downhill. For years our history had it as
-the attraction with the longest wait in the entire park, a median of 34 minutes,
-and on busy days it hit 60 or 90.
+lever let you decide how fast you went downhill. For as long as we measured it, it was
+the attraction with the longest wait in the entire park, and on busy days it hit
+60 or 90 minutes.
 
 That came down to arithmetic that could never work out: one car held one, maybe
 two people. And because the current record was posted at the exit with a photo,
@@ -417,27 +417,24 @@ After Halloween the park closes briefly and opens from **28 November 2026 to
 17 January 2027** as **Winter Feelings**: lights, Christmas market atmosphere,
 ice skating and curling, Wednesdays and weekends plus daily through the
 Christmas holidays. The water rides pause then, and the world premiere joins the
-line-up. Beautiful, just no longer a secret once the lights are on: December and
-January are the toughest months of the year in our data.
+line-up. Beautiful, just no longer a secret once the lights are on: December is
+one of the fullest months of the year in our data.
 
 ## When to go
 
 The answer is a relaxed one: almost always.
 
-**By month**, June is the sweet spot (typically 18 minutes park-wide), followed
-by May and July at 20 and 22 minutes. The hardest work is **April** at 25
-minutes, when Easter, King’s Day and the Dutch May holidays land together, then
-the winter weeks in **December and January** at 31 and 26 minutes. That
-surprises a lot of people: the busiest period is not summer, it is the short,
-heavily booked winter season, when only part of the attractions run and the park
-only opens on Wednesdays and weekends. One caveat: winter and early season have
-so few operating days that these monthly values rest on far fewer measurement
-days than the summer months. The direction is clear, the decimal place is not.
+**By month**, March through July sit close together, and what stands out above
+them is **August** and the winter weeks in **December**. That surprises a lot of
+people: the busiest period is not only summer, it is also the short, heavily
+booked winter season, when only part of the attractions run and the park only
+opens on Wednesdays and weekends. One caveat: winter and early season have so
+few operating days that these monthly values rest on far fewer measurement days
+than the summer months. The direction is clear, the decimal place is not.
 
-**By weekday** the numbers barely spread out. Saturday is the busiest (25
-minutes) and Friday next (24 minutes), and from Sunday to Wednesday it is 20
-minutes throughout. At Phantasialand there are worlds between a Tuesday and a
-Saturday.
+**By weekday** the numbers barely spread out. Friday and Saturday are the
+busiest, and even there the gap to the rest of the week is small. At
+Phantasialand there are worlds between a Tuesday and a Saturday.
 
 You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
@@ -448,7 +445,7 @@ constantly. Here are the quietest days coming up:
 ```
 
 And this is how the crowds break down by month and weekday, calculated from the
-last two seasons:
+operating days we have measured:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -535,29 +532,29 @@ Yes, especially for coaster fans who have had enough of queues. With around a
 million guests a year the park is small compared with the Efteling or
 Europa-Park, but it has one of Europe’s best wooden coasters in
 [Troy](ref:attractiepark-toverland/troy) and the continent’s longest wing coaster in
-[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of 16 minutes.
+[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of a good quarter of an hour.
 
 ### How long are the wait times at Toverland?
 
-Across the last two seasons the typical park-wide wait is **20 minutes**, with
-Troy and Fēnix at **16 minutes** each in the median. The values are highest in
-December and January, and in April. Current figures are on the
+Across every operating day we have measured the typical park-wide wait is just
+under a quarter of an hour, and Troy and Fēnix sit in the same range. Current
+figures are on the
 [Toverland park page](ref:attractiepark-toverland).
 
 ### When is Toverland least busy?
 
-**June** is the calmest month in our data (typically 18 minutes), followed by
-May and July. Weekdays are a little emptier than weekends, but the difference is
-small (20 against 25 minutes on a Saturday). Avoid April, the Dutch May and
-autumn holidays, and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
+March to July sit close together in our data and make up the calmest part of
+the year. Weekdays are a little emptier than weekends, but the difference is
+small. What stands out from that range are the Dutch May and
+autumn holidays and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
 
 ### Do you need a fast pass at Toverland?
 
 There isn’t one. Toverland sells no fast pass at all; the only exception is the
 **Fear Pass** for the haunted experiences during the Halloween Nights
 (62.50 €). A free single rider line exists only at the Dragonwatch drop tower.
-With 16-minute medians on the headliners you don’t need a shortcut on a normal
-day anyway.
+With the medians the headliners are showing you don’t need a shortcut on a
+normal day anyway.
 
 ### Is Troy the best wooden coaster in Europe?
 
@@ -645,4 +642,4 @@ Europe you can forget it.
 - Halloween Days & Nights, scare zones and Fear Pass: [Scare zones & experiences (official)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [our Halloween guide](/blog/halloween-theme-parks-2026)
 - Getting there, bus & parking: [Address and route (official)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in the Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wait-time and crowd data: our own history across two seasons, [Toverland on park.fan](ref:attractiepark-toverland)
+- Wait-time and crowd data: our own history since December 2025, [Toverland on park.fan](ref:attractiepark-toverland)

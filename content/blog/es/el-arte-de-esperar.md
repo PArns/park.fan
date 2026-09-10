@@ -245,7 +245,7 @@ de forma perceptible. En los gráficos en vivo de park.fan puedes ver ese efecto
 en tiempo real: durante el gran espectáculo nocturno los tiempos de espera de
 los cabezas de cartel se hunden de forma medible, y quien ya conoce el
 espectáculo monta en la mejor relación del día en esa hora. Para momentos así
-actualizamos los tiempos de espera cada minuto.
+releemos los tiempos de espera cada cinco minutos.
 
 ![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney’s Hollywood Studios | Fantasmic! en los Hollywood Studios: casi 10.000 personas por función, toda una ola de visitantes que durante esa media hora seguro que no está en ninguna cola de montaña rusa. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -382,14 +382,14 @@ ganador. Regla del pico-final, recordemos: la experiencia termina mejor de lo
 esperado, y exactamente así queda archivada. O sea que el panel miente de
 verdad, pero miente a tu favor.
 
-De esta fórmula depende park.fan. Los tiempos de espera en vivo enseñan
-cada minuto qué están haciendo realmente L y λ, y cuando nuestro modelo
+De esta fórmula depende park.fan. Los tiempos de espera en vivo enseñan cada
+cinco minutos qué están haciendo realmente L y λ, y cuando nuestro modelo
 predice tiempos de espera hasta 365 días por adelantado, en el fondo no modela
 otra cosa que esas dos magnitudes: la **demanda** (¿cuánta gente quiere subir
 hoy a esta atracción?) y el **rendimiento** (¿a cuántos despacha?). Little
-probablemente se asombraría de para cuántas cosas se usa hoy su fórmula. Con
-qué frecuencia aciertan nuestras predicciones está en la
-[página de Fancast](/fancast).
+probablemente se asombraría de para cuántas cosas se usa hoy su fórmula. Con qué
+frecuencia aciertan nuestras predicciones está en la [página de
+Fancast](/fancast).
 
 ## Por qué Peter Pan’s Flight siempre «se desmadra»
 
@@ -449,7 +449,7 @@ horaria enorme.
 
 **El [Europa-Park](ref:europa-park?bare) es el contramodelo.** El parque más
 grande de Alemania, tras Disneyland Paris el más visitado de Europa, reparte
-sus unos seis millones de visitantes anuales entre **trece montañas rusas** más
+sus unos seis millones de visitantes anuales entre **quince montañas rusas** más
 docenas de atracciones tematizadas. Esa pura cantidad de capacidad paralela
 actúa como una válvula de escape: la demanda se reparte y casi ninguna cola
 entra en saturación permanente. Por eso incluso los días llenos en Rust rara
@@ -480,8 +480,8 @@ Justamente esos perfiles son la razón por la que cada página de parque en
 park.fan muestra, junto a los tiempos de espera en vivo, las estadísticas de
 largo plazo. Porque «lleno» es relativo: 45 minutos son un mal día en Brühl y
 un regalo en el Magic Kingdom. Mira el mismo conjunto de datos para ambos
-parques, tiempos de espera típicos por mes y día de la semana, de las dos
-últimas temporadas.
+parques, tiempos de espera típicos por mes y día de la semana, de todos los
+días de apertura medidos.
 
 **Primero el [Phantasialand](ref:phantasialand?bare) en Brühl**, el caso
 extremo compacto: cuando aquí sube una cifra, sube empinada, porque todo se
@@ -602,9 +602,9 @@ La próxima cola de 60 minutos no se acortará por ello. Pero se lee de otra
 manera. Quedan tres preguntas, y park.fan tiene respuesta para cada una:
 
 - **¿Cuánto mide _realmente_ la cola, justo ahora?** Para eso están nuestros
-  **tiempos de espera en vivo**: más de 200 parques, 7.000 atracciones, cada
-  minuto. La ley de Little en tiempo real, sin que tengas que contar tú mismo a
-  las 640 personas de delante.
+  **tiempos de espera en vivo**: más de 200 parques, 7.000 atracciones,
+  actualizadas cada cinco minutos. La ley de Little en tiempo real, sin que
+  tengas que contar tú mismo a las 640 personas de delante.
 - **¿Eso es mucho o normal?** Lo revelan las **estadísticas de largo plazo** de
   cada atracción, porque 45 minutos son, según el parque, una molestia o un
   premio de lotería.

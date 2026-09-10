@@ -72,7 +72,7 @@ export const TARON_WAIT_NOW = 70;
 
 /**
  * Taron's per-weekday level — **the values the API actually returned** on
- * 2026-08-24 (`GET /v1/parks/europe/germany/bruehl/phantasialand/attractions/taron`,
+ * 2026-09-10 (`GET /v1/parks/europe/germany/bruehl/phantasialand/attractions/taron`,
  * field `typicalWaits`), not a shape invented to make the lesson land.
  *
  * `typical` is the median of the day's peak waits, `busy` the 90th percentile of
@@ -81,33 +81,33 @@ export const TARON_WAIT_NOW = 70;
  *
  * They are frozen here rather than fetched because a lesson that changes shape
  * overnight is not a lesson: the three steps in chapter 02 are written around
- * 70 minutes landing above Monday's busy line and exactly on Saturday's median.
+ * 70 minutes landing exactly on Monday's busy line and exactly on Saturday's median.
  * Re-check them against the ride's own page when this page is next edited; the
  * page links there from the same block so a reader can do it too.
  */
 export const TARON_TYPICAL_WAITS: TypicalWaits = {
-  weekday: { typical: 60, busy: 80, sampleDays: 97 },
-  weekend: { typical: 70, busy: 80, sampleDays: 38 },
+  weekday: { typical: 60, busy: 75, sampleDays: 107 },
+  weekend: { typical: 65, busy: 80, sampleDays: 39 },
   byDayOfWeek: [
-    { dayOfWeek: 0, isWeekend: true, typical: 60, busy: 75, sampleDays: 18 },
-    { dayOfWeek: 1, isWeekend: false, typical: 55, busy: 65, sampleDays: 19 },
-    { dayOfWeek: 2, isWeekend: false, typical: 55, busy: 80, sampleDays: 19 },
-    { dayOfWeek: 3, isWeekend: false, typical: 60, busy: 80, sampleDays: 20 },
-    { dayOfWeek: 4, isWeekend: false, typical: 60, busy: 80, sampleDays: 18 },
-    { dayOfWeek: 5, isWeekend: false, typical: 60, busy: 80, sampleDays: 21 },
+    { dayOfWeek: 0, isWeekend: true, typical: 60, busy: 75, sampleDays: 19 },
+    { dayOfWeek: 1, isWeekend: false, typical: 55, busy: 70, sampleDays: 21 },
+    { dayOfWeek: 2, isWeekend: false, typical: 55, busy: 75, sampleDays: 22 },
+    { dayOfWeek: 3, isWeekend: false, typical: 60, busy: 75, sampleDays: 22 },
+    { dayOfWeek: 4, isWeekend: false, typical: 60, busy: 75, sampleDays: 19 },
+    { dayOfWeek: 5, isWeekend: false, typical: 60, busy: 80, sampleDays: 23 },
     { dayOfWeek: 6, isWeekend: true, typical: 70, busy: 85, sampleDays: 20 },
   ],
   peak: { value: 135, date: '2026-07-16' },
   windowDays: 365,
-  dataFrom: '2025-08-24',
-  dataTo: '2026-08-23',
+  dataFrom: '2025-09-09',
+  dataTo: '2026-09-08',
   displayable: true,
-  generatedAt: '2026-08-24T09:37:01.091Z',
+  generatedAt: '2026-09-09T10:26:34.917Z',
 };
 
 /**
  * The median Taron's live crowd level is measured against (`baseline` on the
- * attraction payload, 45 minutes on 2026-08-24). 70 ÷ 45 is about 156 %, and the
+ * attraction payload, 45 minutes on 2026-09-10). 70 ÷ 45 is about 156 %, and the
  * tier boundaries are 60 / 89 / 110 / 150 / 200 — which is why the demo card
  * reads "sehr hoch" and not "hoch".
  */

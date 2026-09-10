@@ -105,7 +105,7 @@ ya expliqué con números por qué
 igual de rápido que Peter Pan’s Flight en París: un público pequeño no te protege
 de las colas largas cuando hay pocas atracciones entre las que repartir la
 afluencia. La matemática es más implacable en el Phantasialand que en el extenso
-[Europa-Park](ref:europa-park) con sus trece montañas rusas. A eso se suma que el
+[Europa-Park](ref:europa-park) con sus quince montañas rusas. A eso se suma que el
 parque fija el precio de sus entradas de forma tan agresiva que llena bien incluso
 muchos fines de semana, el legendario «sábado vacío» se ha vuelto raro.
 
@@ -281,7 +281,7 @@ Phantasialand:
 
 Y si quieres ver la **afluencia por día de la semana y por mes**, qué días a lo
 largo del año son típicamente tranquilos y cuáles deberías evitar, te lo muestra
-esta mirada a las dos últimas temporadas:
+esta mirada a los días de apertura medidos:
 
 ```stats-widget slug=phantasialand
 

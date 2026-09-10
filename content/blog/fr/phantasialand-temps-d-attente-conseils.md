@@ -105,7 +105,7 @@ même moment les deux ou trois mêmes attractions. Dans
 saturation aussi vite que Peter Pan’s Flight à Paris : un petit public ne te
 protège pas des longues files quand il n’y a que peu d’attractions sur lesquelles
 répartir l’affluence. Les mathématiques sont plus impitoyables au Phantasialand
-que dans le vaste [Europa-Park](ref:europa-park) et ses treize montagnes russes.
+que dans le vaste [Europa-Park](ref:europa-park) et ses quinze montagnes russes.
 À cela s’ajoute que le parc fixe le prix de ses billets de façon si agressive
 qu’il se remplit bien même de nombreux week-ends, le légendaire « samedi vide » est
 devenu rare.
@@ -286,7 +286,7 @@ calmes pour le Phantasialand :
 
 Et si tu veux voir l’**affluence par jour de la semaine et par mois**, quels
 jours de l’année sont typiquement détendus et lesquels tu devrais éviter, ce
-coup d’œil sur les deux dernières saisons te le montre :
+coup d’œil sur les jours d’ouverture mesurés te le montre :
 
 ```stats-widget slug=phantasialand
 

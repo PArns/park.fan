@@ -247,8 +247,8 @@ woanders sitzen als vor deinem Lieblingscoaster. Die Wartezeiten im Rest des
 Parks atmen entsprechend spürbar durch. In den Live-Charts auf park.fan kannst
 du diesem Effekt in Echtzeit zusehen: Während der großen Abendshow knicken die
 Wartezeiten der Headliner messbar ein, und wer die Show schon kennt, fährt in
-dieser Stunde am günstigsten. Genau für solche Momente aktualisieren wir die
-Wartezeiten im Minutentakt.
+dieser Stunde am günstigsten. Genau für solche Momente lesen wir die
+Wartezeiten alle fünf Minuten neu ein.
 
 ![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung, eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -387,8 +387,8 @@ Station als Gewinner. Peak-End-Regel, wir erinnern uns:
 Das Erlebnis endet besser als erwartet, und genau so wird es abgespeichert. Die
 Anzeige lügt also tatsächlich, aber sie lügt für dich.
 
-Genau an dieser Formel hängt park.fan. Die Live-Wartezeiten zeigen im
-Minutentakt, was L und λ gerade wirklich tun, und wenn unser Modell Wartezeiten bis zu 365 Tage im
+Genau an dieser Formel hängt park.fan. Die Live-Wartezeiten zeigen alle fünf
+Minuten, was L und λ gerade wirklich tun, und wenn unser Modell Wartezeiten bis zu 365 Tage im
 Voraus prognostiziert, modelliert es im Kern nichts anderes als diese beiden
 Größen: **Nachfrage** (wie viele Menschen wollen heute zu dieser Bahn?) und
 **Durchsatz** (wie viele schafft sie weg?). Little wäre vermutlich erstaunt,
@@ -452,7 +452,7 @@ Minuten.
 
 **Der [Europa-Park](ref:europa-park?bare) ist das Gegenmodell.** Deutschlands
 größter Park, nach Disneyland Paris der meistbesuchte Europas, verteilt seine
-rund sechs Millionen Gäste pro Jahr auf **dreizehn Achterbahnen** plus Dutzende
+rund sechs Millionen Gäste pro Jahr auf **fünfzehn Achterbahnen** plus Dutzende
 Themenfahrten. Diese schiere Menge an paralleler Kapazität wirkt wie ein
 Überdruckventil: Die Nachfrage verteilt sich, kaum eine Schlange läuft
 dauerhaft in die Sättigung. Deshalb fühlen sich selbst volle Tage in Rust
@@ -484,7 +484,7 @@ Genau diese Profile sind der Grund, warum jede Parkseite auf park.fan neben den
 Live-Wartezeiten auch die Langzeit-Statistiken zeigt. Denn „voll“ ist relativ:
 45 Minuten sind in Brühl ein schlechter Tag und im Magic Kingdom ein Geschenk.
 Schau dir denselben Datensatz für beide Parks an, typische Wartezeiten nach
-Monat und Wochentag, aus den letzten zwei Saisons.
+Monat und Wochentag, aus allen gemessenen Öffnungstagen.
 
 **Zuerst das [Phantasialand](ref:phantasialand?bare) in Brühl**, der kompakte
 Extremfall: Wenn hier eine Zahl hochgeht, dann steil, weil sich alles auf
@@ -604,7 +604,7 @@ Kürzer wird die nächste 60-Minuten-Schlange dadurch nicht. Aber sie liest sich
 anders. Drei Fragen bleiben, und für jede gibt es auf park.fan eine Antwort:
 
 - **Wie lang ist die Schlange _wirklich_, genau jetzt?** Dafür gibt es unsere
-  **Live-Wartezeiten**: über 200 Parks, 7.000 Attraktionen, im Minutentakt.
+  **Live-Wartezeiten**: über 200 Parks, 7.000 Attraktionen, alle fünf Minuten neu.
   Little’s Law in Echtzeit, ohne dass du die 640 Leute vor dir selbst zählen
   musst.
 - **Ist das gerade viel oder normal?** Das verraten die **Langzeit-Statistiken**

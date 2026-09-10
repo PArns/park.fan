@@ -7,7 +7,7 @@
     "title": "Share",
     "on": "Share on {platform}",
     "copy": "Copy link",
-    "copied": "Copied!"
+    "copied": "Copied"
   },
   "common": {
     "scroll": "Scroll",
@@ -96,7 +96,7 @@
     "errorPageTitle": "Something went wrong",
     "errorPageDescription": "An unexpected error occurred. Please try again.",
     "goHome": "Go to homepage",
-    "maintenanceTitle": "We’ll be back soon!",
+    "maintenanceTitle": "We’ll be back soon",
     "maintenanceDescription": "park.fan is temporarily unavailable while we perform maintenance. Please try again in a few minutes."
   },
   "notFound": {
@@ -106,17 +106,8 @@
     "browseParks": "Browse all parks"
   },
   "home": {
-    "hottestParks": {
-      "badge": "Heat wave",
-      "title": "The hottest parks in Germany, France, Italy, the Netherlands and Belgium",
-      "subtitle": "Heat wave at the parks — today’s three hottest destinations",
-      "description": "When park temperatures climb past 35 °C, timing matters: arrive early, plan for shade and water rides, and stay hydrated. These are today’s hottest destinations.",
-      "hottestLabel": "Hottest park",
-      "viewPark": "View park"
-    },
-    "intro": "park.fan shows real-time wait times and crowd levels for over 200 theme parks and 7,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
+    "intro": "park.fan shows real-time wait times and crowd levels for over 200 theme parks and more than 7,000 attractions worldwide, among them Disney, Universal Studios, Europa-Park and Phantasialand. Plan your visit with live queue times, opening hours and AI-powered forecasts.",
     "hero": {
-      "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
@@ -125,32 +116,14 @@
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
-      "explore": "Explore by Region",
-      "plan": "Plan Your Perfect Visit",
       "liveNow": "Parks Open Worldwide",
       "liveNowIntro": "Live count of open theme parks per continent.",
-      "featuresIntro": "Use real-time wait times, crowd predictions, and park calendars to choose the best day and navigate queues at Disney, Universal, Europa-Park, and more.",
       "featuredParks": "Popular Parks",
-      "featuredParksIntro": "The most-visited theme parks in your region — with real-time wait times and crowd predictions."
-    },
-    "features": {
-      "realtime": {
-        "title": "Real-Time Wait Times",
-        "description": "Live wait times updated every minute from parks worldwide."
-      },
-      "ml": {
-        "title": "AI Predictions",
-        "description": "Smart predictions for crowd levels and wait times using advanced artificial intelligence."
-      },
-      "calendar": {
-        "title": "Planning & In-Park Navigation",
-        "description": "Find the best days with our crowd calendar and navigate the park live."
-      }
+      "featuredParksIntro": "The six parks searched for most often in your language, with live wait times and a crowd forecast."
     },
     "ai": {
-      "title": "AI-Powered Predictions — How Accurate Are We?",
-      "subtitle": "park.fan uses its own AI model trained on millions of real queue records to forecast crowd levels and wait times at theme parks worldwide. The model factors in weather forecasts, school holiday calendars, and known events — and retrains automatically as fresh data arrives.",
-      "avgError": "Average Error",
+      "title": "How accurate our forecasts are",
+      "subtitle": "park.fan runs a model of its own, trained on the queues measured at more than 200 parks. It factors in the weather forecast, school holidays and special events, and retrains daily at 06:00 UTC on the previous day’s wait times.",
       "avgErrorDesc": "MAE — how many minutes off our predictions are on average",
       "rmseDesc": "RMSE — how bad the worst misses are, outliers weighted more",
       "mapeDesc": "MAPE — percentage error relative to actual wait time",
@@ -161,46 +134,23 @@
       "parksCoverage": "Coverage",
       "r2Score": "Model Fit",
       "r2ScoreDesc": "R² — how well the model explains wait time variance",
-      "modelAge": "Model trained {days} days ago · automatically retrained on new data",
-      "modelAgeHours": "Model trained {time} hours ago · automatically retrained on new data",
       "nextRetraining": "Automatic Retraining",
       "modelAgeTile": "Model Age",
-      "modelAgeShort": "{days}d {hours}h old",
-      "modelAgeShortHours": "{hours}h {minutes}m old",
       "nextTrainingIn": "Next Training In",
       "dailySchedule": "Daily · 06:00 UTC",
       "dailyScheduleLocal": "Daily · 06:00 UTC · {time} local",
       "howTitle": "How Predictions Are Made",
-      "howText": "Every wait time forecast is built from three layers of data: historical queue records collected from parks over years, external signals like weather forecasts and school holiday calendars, and contextual factors such as special events and seasonal patterns. The model generates both hourly wait time forecasts for individual rides and daily crowd level ratings for full park visits — available up to 365 days ahead.",
+      "howText": "Every forecast stands on three layers: the park’s own measured wait-time history, signals from outside such as the weather forecast, school holidays and public holidays, and whatever is on at the park that day, meaning special events and the season. From those the model works out the expected wait per ride and per hour, then condenses them into the day’s crowd level, up to 365 days ahead.",
       "fancastLink": "How Fancast, our forecasting model, works",
-      "improvingTitle": "Actively Developed — Improving Every Day",
-      "improvingText": "park.fan is a living platform, still in active development. Every day the system automatically compares its earlier predictions against the wait times actually recorded at the parks, feeding those comparisons back into the next training cycle. The accuracy metrics above reflect this real-world performance — not synthetic benchmarks. New parks and attractions are added regularly, and the model becomes more accurate as it accumulates more verified data for each destination.",
+      "improvingTitle": "Every forecast is checked the day after",
+      "improvingText": "The day after a forecast, the system lays it against the wait time actually measured and writes the difference into the next training run. The figures above come out of exactly that comparison, not out of a test set we picked for ourselves.",
       "badge": {
         "excellent": "Excellent Accuracy",
         "good": "Good Accuracy",
         "fair": "Fair Accuracy",
         "poor": "Below Target",
         "insufficient_data": "Collecting Data"
-      },
-      "badgeDesc": {
-        "excellent": "Predictions are highly accurate",
-        "good": "Predictions are reliable",
-        "fair": "Predictions are reasonable",
-        "poor": "Model accuracy is below target",
-        "insufficient_data": "Gathering comparison data"
       }
-    },
-    "about": {
-      "title": "What Is park.fan?",
-      "p1": "park.fan was born from a frustration every theme park fan knows: standing in a 90-minute queue and wondering whether smarter planning could have avoided it. What started as a side project—\"let me just track some wait times\"—grew into a full platform now covering 212 parks, 7,101 attractions, and millions of queue data records processed every day. The goal has always been the same: take the guesswork out of planning a theme park visit.",
-      "p2": "The AI behind park.fan analyzes historical crowd data, weather forecasts, school holiday calendars, and special events to predict crowd levels and wait times days or even weeks ahead. Instead of guessing, you can check whether next Saturday at Europa-Park Resort or Phantasialand is going to be a green day—short queues, relaxed atmosphere—or a red day where every popular ride has a 60-minute wait. The model is continuously trained on new data, so its predictions get sharper over time.",
-      "coverageTitle": "Which Parks Are Covered?",
-      "p3": "park.fan currently tracks 212 theme parks and 7,101 individual attractions worldwide—from Walt Disney World, Disneyland Resort, Universal Orlando, and Universal Studios Japan to European parks like Europa-Park, Phantasialand, Efteling, Heide Park, and Toverland, plus parks across Asia, Australia, and South America. New parks are added regularly as the platform continues to grow.",
-      "howTitle": "How To Use park.fan",
-      "p4": "Search for your destination park using the search bar, or browse by continent, country, and city. On the park page you will find live wait times for every ride, restaurant, and show—updated every minute—alongside AI crowd predictions and a day-by-day crowd calendar. Green days signal short queues and smaller crowds; orange or red days mean higher attendance and longer waits.",
-      "p5": "park.fan is a living project, constantly evolving with new features and parks. Save your favourite parks for quick access, use in-park navigation to plan the most efficient route through the park, and always check the crowd calendar before booking to make sure your visit lands on the best possible day.",
-      "fancastLink": "Discover Fancast",
-      "howtoLink": "How park.fan works"
     },
     "worldPanel": {
       "title": "Parks in {continent}",
@@ -214,7 +164,7 @@
   "homeStory": {
     "steps": {
       "kicker": "How it works",
-      "title": "Three steps to a well-planned park day",
+      "title": "Three steps to your park day",
       "lead": "Pick a park, check the day, plan the route. park.fan brings measurements from more than 200 parks to each of the three.",
       "one": {
         "title": "Pick a park",
@@ -287,7 +237,7 @@
       },
       "p2": {
         "title": "Collect",
-        "text": "Every reading is archived with its timestamp, ride and park. Years of them give each ride a profile of its own: the course of a day, the rhythm of a week, the season.",
+        "text": "Every reading is archived with its timestamp, ride and park. Out of those readings each ride gets a profile of its own: the course of a day, the rhythm of a week, the season.",
         "label": "Records"
       },
       "p3": {
@@ -400,7 +350,7 @@
       },
       "r5": {
         "title": "200+ parks, 23 countries, 6 languages",
-        "text": "From Phantasialand to Tokyo DisneySea. If there are queues there, we track them."
+        "text": "From Phantasialand to Tokyo DisneySea. Where a park publishes its wait times, they are here; where it does not, the park page says so."
       },
       "r6": {
         "title": "Data that explains something",
@@ -426,9 +376,9 @@
     "blog": {
       "kicker": "Blog & guides",
       "title": "Analyses of single parks, with today’s numbers",
-      "lead": "Park guides, wait-time analyses and seasonal tips, written by people who queue themselves. Every park page carries the articles that belong to it.",
+      "lead": "Park guides, wait-time analyses and seasonal tips, written by someone who stands in the queues too. Every park page carries the articles that belong to it.",
       "bestTimeTitle": "Best time to visit a theme park",
-      "bestTimeText": "When parks are emptiest: the quietest weekdays and months, from two years of real wait times across 200+ parks.",
+      "bestTimeText": "When parks are emptiest: the quietest weekdays and months, out of the measured wait times of more than 200 parks.",
       "glossaryCta": "Dictionary: single rider, rope drop, Lightning Lane",
       "glossaryText": "Every term explained in one sentence, and track elements come with the 3-D player."
     },
@@ -446,7 +396,7 @@
     }
   },
   "footer": {
-    "description": "Live wait times and AI-powered crowd predictions for 200+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
+    "description": "Live wait times and AI-powered crowd predictions for 200+ theme parks worldwide. Plan your park visit with real-time data and in-park navigation.",
     "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {
       "explore": "Parks Worldwide",
@@ -758,14 +708,14 @@
       }
     },
     "recommendations": {
-      "lowCrowds": "Low crowds expected - excellent day to visit",
-      "highCrowds": "High crowds expected - arrive early",
+      "lowCrowds": "Low crowds expected – a good day to visit",
+      "highCrowds": "High crowds expected – arrive early",
       "visitWeekday": "Consider visiting on a weekday instead",
       "moderateCrowds": "Normal crowds expected",
-      "goodCrowds": "Good crowd levels for most attractions",
-      "rainLikely": "Rain likely - indoor attractions recommended",
-      "hotDay": "Hot day - stay hydrated",
-      "coldDay": "Cold weather - dress warmly",
+      "goodCrowds": "Wait times in the normal range",
+      "rainLikely": "Rain likely – indoor attractions recommended",
+      "hotDay": "Hot day – stay hydrated",
+      "coldDay": "Cold weather – dress warmly",
       "goodDay": "Good day for a park visit"
     },
     "status": {
@@ -849,7 +799,6 @@
       "feelsLike": "Feels like",
       "dataBy": "Weather data by",
       "liveLabel": "Live",
-      "liveValueHint": "Live value – updated every 15 min.",
       "precipLabel": "Precip",
       "windLabel": "Wind",
       "compass": {
@@ -916,7 +865,7 @@
       "precipProbability": "rain probability"
     },
     "h1Suffix": "Live Wait Times",
-    "intro": "Live wait times {inPark} in {city} — updated by the minute. See how busy it is today, which attractions are open right now and when your visit is most worth it — with an AI crowd forecast and the best days to go.",
+    "intro": "Live wait times {inPark} in {city}, refreshed every five minutes. See how busy it is today, which attractions are open right now and when your visit is most worth it, with an AI crowd forecast and the best days to go.",
     "now": "Now",
     "forecastToday": "Forecast today",
     "statusLabel": "Status",
@@ -986,7 +935,7 @@
     },
     "headlinerForecastTitle": "Expected waits (highlights)",
     "crowdMeaning": {
-      "very_low": "Barely any crowds – short waits, ideal for a relaxed visit.",
+      "very_low": "Barely any crowds – short waits, even on the big coasters.",
       "low": "Quiet day – waits below average.",
       "moderate": "A typical day – normal waits for this park.",
       "high": "Busier than usual – expect noticeably longer waits.",
@@ -1209,7 +1158,7 @@
       }
     },
     "h1Suffix": "Live Wait Time",
-    "intro": "Current wait time for {attraction} {inPark} – live, updated every minute. Follow the live status, today’s history and typical peak hours to avoid long queues.",
+    "intro": "Current wait time for {attraction} {inPark} – live, refreshed every five minutes. Follow the live status, today’s history and typical peak hours to avoid long queues.",
     "headliner": {
       "title": "Headliner",
       "description": "Must-see attraction at this park"
@@ -1334,13 +1283,13 @@
     "enable": "Enable location",
     "loadingLocation": "Locating...",
     "permissionDenied": "Location needed for the best experience",
-    "permissionDeniedDescription": "park.fan works best when you share your location. We use this to show you theme parks nearby and to enable in-park navigation.",
+    "permissionDeniedDescription": "Without your location we cannot show you the parks around you, and inside a park we cannot say what is next to you right now. You can grant access in your browser settings.",
     "locationUnavailable": "Location could not be determined",
-    "locationUnavailableDescription": "We could not determine your location. You can enable location access for more accurate results, or try again later.",
+    "locationUnavailableDescription": "Your location could not be determined. Enable location access, or try again later.",
     "loadError": "Couldn’t load nearby parks",
     "loadErrorDescription": "Something went wrong while loading nearby parks. Please try again.",
     "locationHint": "Nearby parks are more accurate when you enable location.",
-    "bannerHeadline": "park.fan works better when you share your location!",
+    "bannerHeadline": "Parks near you need your location",
     "bannerBody": "park.fan uses your exact position only to show you parks near you and to show you attractions and wait times around you when you’re in a park.",
     "bannerPrivacy": "We don’t store this data.",
     "youAreIn": "You are here",
@@ -1420,7 +1369,7 @@
     "longestWait": "Longest Wait",
     "shortestWait": "Shortest Wait",
     "platformStats": "Platform Statistics",
-    "platformStatsDescription": "Real-time data insights across the platform",
+    "platformStatsDescription": "What park.fan is measuring right now, across every park.",
     "totalWaitTime": "Total Wait Time",
     "dataPoints": "Data Points",
     "dataPointsTooltipSuffix": "data points currently",
@@ -1434,10 +1383,10 @@
       "searchPlaceholder": "Search parks, attractions, shows & restaurants..."
     },
     "features": {
-      "title": "Plan Your Perfect Theme Park Visit",
+      "title": "Plan Your Theme Park Visit",
       "realtime": {
         "title": "Real-Time Wait Times",
-        "description": "Live wait times updated every minute from parks worldwide."
+        "description": "Live wait times refreshed every five minutes from parks worldwide."
       },
       "predictions": {
         "title": "ML Predictions",
@@ -1489,7 +1438,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Theme Park Wait Times & Predictions",
-      "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 200+ theme parks worldwide.",
+      "description": "Live wait times and AI crowd forecasts for 200+ theme parks worldwide. Plan your visit with real-time data and in-park navigation.",
       "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit"
     },
     "home": {
@@ -1527,7 +1476,7 @@
     },
     "country": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & best days to visit. Compare parks and plan your perfect visit.",
+      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd forecasts and opening hours. Plan the best days to visit.",
       "titleTemplateShort": "Theme Parks in {location}: Wait Times"
     },
     "city": {
@@ -1568,7 +1517,7 @@
       "diningQ": "What dining options are available at {park}?",
       "diningA": "{park} offers {count} restaurants and snack stands:",
       "crowdCalendarQ": "Does {park} have a crowd calendar?",
-      "crowdCalendarA": "Yes! park.fan provides a detailed crowd calendar for {park} showing predicted crowd levels for the next 30 days, helping you choose the best days to visit with shorter wait times.",
+      "crowdCalendarA": "Yes. The crowd calendar {forPark} rates every single day, and for parks that open year-round it reaches up to a year ahead. Green days mean short queues, red ones long.",
       "leastCrowdedQ": "When is {park} least crowded?",
       "leastCrowdedA": "{park} is typically quietest on {days}. Check the <calendar>crowd calendar</calendar> above for upcoming low-crowd days and plan your visit accordingly.",
       "leastCrowdedNoDataA": "Check the <calendar>crowd calendar</calendar> on this page for upcoming quiet days. Green days signal short queues and smaller crowds.",
@@ -1589,19 +1538,19 @@
     "homepage": {
       "faq": {
         "whatIsQ": "What is park.fan?",
-        "whatIsA": "park.fan is your central platform for live wait times and current information from over 200 theme parks in Europe, Asia, and North America. We show you in real-time how long the wait times are at your favorite attractions, which shows are currently running, and when the parks are open.",
+        "whatIsA": "park.fan collects live wait times from more than 200 theme parks in 23 countries. Every park page carries the current wait time for every ride, the show times, the opening hours and a calendar that rates the crowds for the months ahead.",
         "whichParksQ": "Which theme parks are supported by park.fan?",
-        "whichParksA": "park.fan supports over 200 theme parks worldwide, including Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland, and many more. You can find the complete list of all parks with live wait times on our parks overview page. We are continuously expanding our offering with additional theme parks.",
+        "whichParksA": "park.fan covers over 200 theme parks worldwide, among them Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland and Bobbejaanland. The full list with live wait times is on the parks overview page.",
         "liveDataQ": "Are the wait times on park.fan live and in real-time?",
         "liveDataA": "Yes. Every park is polled every five minutes from three public sources at once – ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. Where two sources disagree, the majority decides, then the median, then the mean. The result is rounded to five minutes, because that is how the parks post them.",
         "freeQ": "Is using park.fan free?",
-        "freeA": "Yes, park.fan is completely free to use. You can view all live wait times, opening hours, shows, and restaurants without registration or payment. Our goal is to provide the best possible service to every theme park visitor.",
+        "freeA": "Yes. Live wait times, opening hours, shows, restaurants and the crowd calendar are all there without an account and without a paywall. There is no subscription tier with more data behind it.",
         "favoritesQ": "Can I save my favorite parks and attractions on park.fan?",
-        "favoritesA": "Yes! With park.fan’s favorites feature, you can mark your favorite parks and favorite attractions. These will then be displayed on your personalized homepage, so you can immediately see the current wait times for your favorites.",
+        "favoritesA": "Yes. One tap on the star saves a park, a ride, a show or a restaurant. Your favorites then sit at the top of the homepage with their live wait time and opening status. That works without an account, stored in your browser.",
         "featuresQ": "What information does park.fan offer besides live wait times?",
-        "featuresA": "In addition to live wait times for attractions, park.fan also provides park opening hours, show times, restaurant information, weather forecasts, historical wait time statistics, and crowd forecasts. This way, you can optimally plan your theme park visit and find the best times for your favorite attractions.",
+        "featuresA": "Besides the live wait times, every park page carries the opening hours, the show times, the restaurants with their cuisine and whether a table has to be booked, the day’s weather forecast, the measured wait-time history and the crowd calendar. Each ride’s own page adds the typical course of its day.",
         "mobileQ": "Does park.fan work on smartphones?",
-        "mobileA": "Absolutely! park.fan is fully responsive and works perfectly on smartphones and tablets. You can check live wait times directly in the theme park to spontaneously decide which attraction to visit next. The mobile version offers all features of the desktop version."
+        "mobileA": "Yes. park.fan is a website, not an app, and it runs in the browser on a phone, a tablet and a desktop. In the park you can use it to see where the queue is short right now; when the site can tell you are inside a park, the nearest rides move to the top."
       }
     }
   },
@@ -1829,7 +1778,7 @@
     "heroTitle": "Stories, data and news from the parks",
     "badge": "park.fan Blog",
     "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
-    "intro": "Trip reports, wait-time data dives, and concise news from the parks we cover. Written by humans who stand in lines so you don’t have to.",
+    "intro": "Trip reports, wait-time analyses and short news from the parks we cover. Written by someone who stands in the queues too.",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read article",
@@ -1848,7 +1797,7 @@
     },
     "home": {
       "heading": "From the blog",
-      "intro": "Trip reports, data deep-dives and theme park news — the latest posts land here first.",
+      "intro": "Trip reports, data pieces and theme park news — the newest posts are at the top.",
       "viewAll": "Read all posts"
     },
     "gallery": {
@@ -1940,7 +1889,7 @@
     },
     "hero": {
       "title": "Share your park & ride photos",
-      "subtitle": "Got great shots of a coaster, a parade or a park at sunset? Drop them here, tell us which ride or park they show, and we add them to the gallery after a quick review."
+      "subtitle": "Got photos of a coaster, a parade or a park at sunset? Drop them here, tell us which ride or park they show, and they go into the gallery after a quick review."
     },
     "banner": {
       "eyebrow": "Community gallery",
@@ -1996,7 +1945,7 @@
       "withdraw": "Changed your mind? Contact us any time and we will remove your photo."
     },
     "success": {
-      "title": "Thank you!",
+      "title": "Thank you",
       "message": "{count, plural, one {Your photo has} other {Your # photos have}} been submitted and will appear in the gallery after a quick review.",
       "again": "Upload more photos",
       "home": "Back to home"

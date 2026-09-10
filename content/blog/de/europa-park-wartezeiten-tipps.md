@@ -7,8 +7,8 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Rust stehst du im Schnitt 23 Minuten an, kürzer als im Phantasialand mit
-  einem Drittel des Publikums. Ein Jahr Messwerte, warum ausgerechnet der
+  In Rust stehst du kürzer an als im Phantasialand, das ein Drittel des
+  Publikums hat. Warum ausgerechnet der
   Sonntag der ruhigste Tag ist, welche Novemberwochen unser Kalender
   komplett auf „niedrig“ stellt, und warum du die Euro-Mir jetzt fahren
   solltest oder nie mehr.
@@ -38,8 +38,8 @@ coverImage:
 seo:
   title: 'Europa-Park Wartezeiten & beste Reisezeit'
   description: >-
-    Europa-Park Wartezeiten aus einem Jahr Messwerten: typisch 23 Minuten, sonntags
-    am wenigsten los, November am leersten. Beste Reisezeit, Preise 2026, Anreise.
+    Europa-Park Wartezeiten aus den eigenen Messungen: sonntags am wenigsten los,
+    November am leersten. Beste Reisezeit, Preise 2026, Anreise.
   keywords:
     - Europa-Park Wartezeiten
     - Europa-Park Wartezeiten aktuell
@@ -65,8 +65,8 @@ seo:
 
 Kein Park in Deutschland verkauft mehr Tickets als der
 [Europa-Park](ref:europa-park?long), gut sechs Millionen im Jahr. Trotzdem
-stehst du in Rust im Schnitt **23 Minuten** an. Im Phantasialand, das ein
-Drittel dieses Publikums hat, sind es 32.
+stehst du in Rust kürzer an als im Phantasialand, das nur ein Drittel dieses
+Publikums hat.
 
 Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit zwölf
 Monaten, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
@@ -85,11 +85,12 @@ Nach der Wintersaison wird die Bahn abgebaut. Der Park hat für den
 
 ![Der Haupteingang des Europa-Parks, an der Fassade hängen Länderflaggen | Der Haupteingang in Rust. Dahinter liegen 95 Hektar und 18 europäische Länder. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park Wartezeiten: 23 Minuten, gemessen über ein Jahr
+## Europa-Park Wartezeiten: gut eine Viertelstunde im Schnitt
 
-Unsere Wartezeit-Historie für den Europa-Park reicht zwölf Monate zurück. Über
-alle Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei 23
-Minuten** (Median), das 90. Perzentil bei 36.
+Unsere Wartezeit-Historie für den Europa-Park beginnt im Dezember 2025 und ist seit April lückenlos. Über
+alle Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt bei **gut
+einer Viertelstunde** (Median); an dem einen Tag von zehn, an dem richtig etwas
+los ist, liegt sie deutlich darüber.
 
 Die zehn Attraktionen, an denen du am längsten stehst, mit dem Wert von heute
 daneben:
@@ -102,14 +103,14 @@ daneben:
 derselbe Wert an den zehn Prozent vollsten Tagen. Beides sagt nichts darüber,
 wie sich eine Schlange über den Tag bewegt.
 
-Das Voletarium fällt aus der Reihe. Sein Median von 14 Minuten ist der
-niedrigste der zehn längsten, die Spitze mit 27 genauso hoch wie die von Poseidon. Ein
+Das Voletarium fällt aus der Reihe. Sein Median ist der niedrigste der zehn
+längsten, seine Spitze genauso hoch wie die von Poseidon. Ein
 Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
 jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
 
-Ansonsten liest sich die Liste unspektakulär. **34 Minuten für die Bahn, auf die im
-ersten Jahr 3,25 Millionen Fahrten entfielen**, sind, gemessen an über sechs
+Ansonsten liest sich die Liste unspektakulär. **Die längste Schlange des Parks für die Bahn, auf die im
+ersten Jahr 3,25 Millionen Fahrten entfielen**, ist, gemessen an über sechs
 Millionen Gästen, sehr wenig. Der Vergleich, gleiche Datenbasis, gleiche Rechenmethode:
 
 ```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -124,7 +125,7 @@ Resorts, im Phantasialand 2,1 Millionen, im Efteling 5,6, in Paris rund zehn.
 Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des
 Parks. Rechts steht jeweils die Attraktion mit dem höchsten Median, für die wir
 mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
-noch Maximus' Blitz Bahn mit 34 Minuten, allerdings auf nur 61 Tagen, und eine
+noch Maximus' Blitz Bahn, allerdings auf nur 61 Messtagen, und eine
 Kinderachterbahn mit dünner Messbasis taugt nicht als Kennzahl für einen ganzen
 Park.
 
@@ -134,8 +135,8 @@ Bahnen; nachgerechnet im [Phantasialand-Guide](/blog/phantasialand-tipps). Für
 das [Efteling](/blog/efteling-disney-der-niederlande) und das
 [Toverland](/blog/toverland-troy-wartezeiten-tipps) haben wir dieselbe Rechnung
 aufgemacht. Und in Paris, wo etwa anderthalbmal so viele Gäste
-durchgehen, steht der Parkschnitt bei 34 Minuten. Das ist exakt der Wert, den in
-Rust die _längste_ Schlange des Parks hat.
+durchgehen, liegt der Parkschnitt ungefähr dort, wo in Rust die _längste_
+Schlange des Parks steht.
 
 ## Warum der größte Park die kürzesten Schlangen hat
 
@@ -366,8 +367,8 @@ beleuchtet. Der Sponsor Rimac baut ein paar hundert Kilometer weiter
 südlich elektrische Hypersportwagen, und „Nevera“ heißt auf Kroatisch das
 plötzliche Gewitter, das im Sommer über der Adria aufzieht.
 
-3,25 Millionen Fahrten im ersten Jahr, und die typische Wartezeit liegt bei 34
-Minuten. Elf über dem Parkschnitt, für die Bahn, wegen der halb Süddeutschland
+3,25 Millionen Fahrten im ersten Jahr, und die längste typische Wartezeit im
+Park, deutlich über dem Parkschnitt, für die Bahn, wegen der halb Süddeutschland
 2024 nach Rust gefahren ist.
 
 **[Silver Star](ref:europa-park/silver-star)** ist die alte Dame mit den
@@ -404,7 +405,7 @@ anfühlt, als würde man in Zeitlupe umgedreht.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** läuft seit
 1989 komplett im Inneren einer silbernen Kugel. 2018 wurde die Bahn vom
 Weltraum- auf ein Pariser Thema umgebaut, mit einer Moulin-Rouge-Fassade davor.
-198 Sekunden im Dunkeln. Dass sie mit 28 Minuten typischer Wartezeit auf Platz
+198 Sekunden im Dunkeln. Dass sie mit ihrer typischen Wartezeit auf Platz
 vier steht, hat einen banalen Grund. Sie ist eine der wenigen Bahnen, die bei
 Regen zuverlässig fahren.
 
@@ -423,7 +424,7 @@ von 1985, **[Pegasus](ref:europa-park/pegasus)** von 2006, der
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** von 1984, der
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Irland, sowie
 **[Arthur](ref:europa-park/arthur)**, eine hängende Antriebsbahn durch das
-Minimoys-Königreich, die mit 31 Minuten die zweitlängste Schlange des Parks hat.
+Minimoys-Königreich, die die zweitlängste Schlange des Parks hat.
 Die fünfzehnte ist der
 **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dieselbe Strecke wie der
 Enzian, nur mit VR-Brille und als eigene Bahn geführt.
@@ -642,8 +643,8 @@ Sonntag im November. Der 15. wäre so ein Tag.
 Das klingt nach einem Fehler. Unsere Rope-Drop-Auswertung
 vergleicht für jede Attraktion die Wartezeit direkt zur Öffnung mit der
 höchsten Tagesspitze, die dort an einem vollen Tag gemessen wurde. Beim Voletarium
-stehen 23 Minuten gegen 80, macht **57 Minuten Ersparnis**. Das ist der mit
-Abstand höchste Wert im ganzen Park.
+stehen gut zwanzig Minuten gegen achtzig, und das ist mit Abstand die größte
+Ersparnis im ganzen Park.
 
 ```glossary-widget slug=rope-drop
 
@@ -653,7 +654,7 @@ Bei Voltron liegt derselbe Wert bei 20 Minuten, bei Arthur und Silver Star bei 2
 Achterbahnen lassen sich über den Tag verteilen, das Flugtheater nicht.
 
 Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil: die
-typische Wartezeit jeder Stunde, über ein Jahr Betriebstage gemittelt. Fett steht
+typische Wartezeit jeder Stunde, über alle gemessenen Betriebstage gemittelt. Fett steht
 jeweils die stärkste Stunde einer Bahn.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -698,7 +699,7 @@ Ein Tagesablauf, der daraus folgt:
    liegt die Stunde vor Schluss unter der Öffnungsstunde. Nur die beiden
    Wasserbahnen sind morgens leerer.
 
-Eine Einschränkung dazu: Diese Kurven sind Mittelwerte über ein ganzes Jahr
+Eine Einschränkung dazu: Diese Kurven sind Mittelwerte über alle gemessenen
 Betriebstage, Hochsommer und Wintersaison zusammen. An einem kurzen Novembertag
 von elf bis neunzehn Uhr sind die Zahlen niedriger und die Spitze liegt früher.
 
@@ -722,9 +723,8 @@ rechnet die französischen und die Schweizer Ferien für diesen Park mit, der
 Ferienkalender eines einzelnen Bundeslandes tut das nicht.
 
 **Den Dienstag für einen ruhigen Werktag halten.** Von Montag bis Freitag ist er
-der vollste, mit 25 Minuten typischer Wartezeit gegenüber 22 am Montag,
-Donnerstag und Freitag. Kommt ohnehin nur ein Wochentag infrage, nimm einen von
-diesen dreien, die liegen alle gleichauf.
+der vollste, vor Montag, Donnerstag und Freitag. Kommt ohnehin nur ein Wochentag
+infrage, nimm einen von diesen dreien, die liegen alle gleichauf.
 
 ## Halloween, HALLOWinter, Winter
 
@@ -738,9 +738,8 @@ seinen Tag.
 
 Ab **28. November** ist Winter. Weihnachtsmärkte, eine Eisbahn, Eisshows und
 Bereiche, die es nur in diesen Wochen gibt, etwa die Winter World of Wonder und
-die Schlittenfahrt Snowflake. Die typische Wartezeit im Dezember lag bei uns bei
-28 Minuten und damit einen Tick über dem August, allerdings auf nur sechs
-Messtagen. Am **24. und 25. Dezember** ist zu, Hotelgäste dürfen bis zum 10.
+die Schlittenfahrt Snowflake. Die typische Wartezeit im Dezember lag bei uns einen
+Tick über dem August, allerdings auf nur sechs Messtagen. Am **24. und 25. Dezember** ist zu, Hotelgäste dürfen bis zum 10.
 Januar bleiben.
 
 ## Traumatica, der Park im Park
@@ -850,17 +849,16 @@ in der Variante GO seit 2026 auch im blue-fire-Dome.
 
 ### Wie lang sind die Wartezeiten im Europa-Park?
 
-Über die letzten zwölf Monate liegt die typische Wartezeit im Parkschnitt bei
-**23 Minuten** (Median), das 90. Perzentil bei 36. Die längste Schlange hat
-Voltron Nevera mit typisch 34 Minuten, gefolgt von Arthur mit 31 sowie Wodan und
-Eurosat mit je 28. Was heute an der Schlange steht, siehst du bei den
+Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
+gut einer Viertelstunde (Median). Die längste Schlange hat Voltron Nevera,
+gefolgt von Arthur, Wodan und Eurosat. Was heute an der Schlange steht, siehst du bei den
 [aktuellen Europa-Park-Wartezeiten](ref:europa-park?bare), alle fünf Minuten
 aktualisiert und mit Prognose für die nächsten Tage.
 
 ### Wann ist im Europa-Park am wenigsten los?
 
-Der **Sonntag** ist der ruhigste Wochentag (18 Minuten typisch gegenüber 28 am
-Samstag), Mai und Juni sind die ruhigsten Sommermonate. Am leersten ist es in der
+Der **Sonntag** ist der ruhigste Wochentag, der Samstag der vollste, und Mai und
+Juni sind die ruhigsten Sommermonate. Am leersten ist es in der
 HALLOWinter-Saison Anfang November. [In unserer Prognose für die kommenden drei
 Monate](ref:europa-park?calendar) stehen alle 19 Novembertage auf „niedrig“.
 
@@ -916,8 +914,7 @@ Doppelte einer Tageskarte.
 Ja, mit einer Einschränkung. Die Winterdekoration, die Eisbahn und die
 Weihnachtsmärkte gibt es nur dann, dafür ist es früher dunkel, der Park macht
 schon um 19 Uhr zu, und die Wasserbahnen laufen nicht durchgehend. Die
-Wartezeiten sind im Dezember mit typisch 28 Minuten sogar einen Tick höher als im
-August. Für den November stuft unsere Prognose dagegen alle 19 Tage, die sie abdeckt, auf
+Wartezeiten sind im Dezember sogar einen Tick höher als im August. Für den November stuft unsere Prognose dagegen alle 19 Tage, die sie abdeckt, auf
 „niedrig“ ein; gemessene Wartezeiten haben wir aus diesem Monat noch nicht.
 
 ## Warum ich für die Euro-Mir noch einmal hinfahre
@@ -926,7 +923,7 @@ Der Satz, der über diesem Park am häufigsten steht, lautet „bester Freizeitp
 der Welt“, und er stimmt insofern, als eine internationale Branchenabstimmung ihn
 zehnmal so aufgeschrieben hat. Mich überzeugt eine andere Zahl mehr.
 
-Über sechs Millionen Menschen im Jahr, und du stehst im Schnitt 23 Minuten an.
+Über sechs Millionen Menschen im Jahr, und du stehst trotzdem kürzer an als anderswo.
 Kein Kunststück, wenn man 96 Attraktionen auf 95 Hektar verteilt, 286 Tage im
 Jahr aufmacht und niemanden an der Schlange vorbeilässt.
 
@@ -976,4 +973,4 @@ dreht.
 - Anreise über die A5, Parkgebühren, Rulantica, Eatrenalin mit Michelin-Stern 2026: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (offiziell)](https://www.europapark.de/de) · [Eatrenalin auf en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Gästestruktur nach Herkunftsland und der Schweizer Anteil: [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [„874'000 Schweizer Besucher stellen den grössten Anteil“ (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie über ein rollendes Jahr, Stundenprofil über ein rollendes Jahr, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)
+- Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie seit Dezember 2025, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)

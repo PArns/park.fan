@@ -76,8 +76,7 @@ export function ImpressumDE() {
         </p>
         <p className="mb-4">
           Eine Haftung für die Richtigkeit, Vollständigkeit und Aktualität der Veröffentlichungen
-          kann trotz sorgfältiger Prüfung durch die Redaktion vom Herausgeber nicht übernommen
-          werden.
+          kann trotz sorgfältiger Prüfung vom Herausgeber nicht übernommen werden.
         </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Externe Links</h2>

@@ -289,10 +289,7 @@ function StatsContent({
     >
       <ParkStatsHeader
         hidden={hideHeading}
-        subtitle={t('subtitle', {
-          days: stats.meta.totalSampleDays,
-          years: Math.max(stats.meta.windowYears, 1),
-        })}
+        subtitle={t('subtitle', { days: stats.meta.totalSampleDays })}
         className={hideHeading ? undefined : 'mb-0 rounded-b-none'}
       />
 

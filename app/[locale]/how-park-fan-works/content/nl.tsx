@@ -79,7 +79,7 @@ import {
 
 /**
  * Feeds both the chapter list at the top and the rail down the right edge, and
- * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
+ * must match the `<SectionShell id=… index=…>` calls below exactly – the rail
  * looks its sections up by id, so an entry that drifts silently stops
  * highlighting.
  */
@@ -137,9 +137,9 @@ const SCALE_LEGEND = [
  * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
  */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'monday', label: 'Maandag', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'monday', label: 'Maandag', typical: 55, busy: 70, sampleDays: 21 },
   { id: 'saturday', label: 'Zaterdag', typical: 70, busy: 85, sampleDays: 20 },
-  { id: 'weekday', label: 'Doordeweeks', typical: 60, busy: 80, sampleDays: 97 },
+  { id: 'weekday', label: 'Doordeweeks', typical: 60, busy: 75, sampleDays: 107 },
 ];
 
 /**
@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attracties',
     body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, doorzoekbaar en gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
     example:
-      'Taron in Klugheim, vanaf 140 centimeter — de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Chiapas met 75 bespaarde minuten.',
+      'Taron in Klugheim, vanaf 140 centimeter – de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Taron met 60 bespaarde minuten.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -217,7 +217,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Beste dagen',
     body: 'De rustigste data van de komende drie maanden, plus de rustigste weekdag van het park.',
     example:
-      'De rustigste weekdag van het park en de eerstvolgende rustige data — dezelfde berekening als hoofdstuk 04, drie maanden vooruit.',
+      'De rustigste weekdag van het park en de eerstvolgende rustige data – dezelfde berekening als hoofdstuk 04, drie maanden vooruit.',
     demo: <AnatomyBestDaysDemo locale="nl" />,
     onlyWhen: 'het park een openingskalender publiceert.',
   },
@@ -313,7 +313,7 @@ const FAQ = [
   {
     question: 'Is 70 minuten wachten veel?',
     answer:
-      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten en blijft op negen van de tien maandagen onder de 65; daar zijn 70 minuten dus een ongewoon drukke dag. Op zaterdag ligt de mediaan van dezelfde attractie op precies 70 minuten, en dan is dezelfde weergave volstrekt gemiddeld. Beide vergelijkingswaarden staan op park.fan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
+      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten, en op negen van de tien maandagen blijft de piek op 70 of daaronder. Op zaterdag ligt de mediaan van dezelfde baan precies op die 70 minuten. Dezelfde stand is op maandag dus een uitgesproken drukke dag en op zaterdag volstrekt gemiddeld. Beide vergelijkingswaarden staan op park.fan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
   },
   {
     question: 'Waar komen de wachttijden vandaan?',
@@ -672,9 +672,9 @@ export function ContentNL() {
             kilometer tellen daarom mee en krijgen in de kalender een eigen markering.
           </P>
           <PG>
-            De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat elke
-            nacht opnieuw wordt getraind met de wachttijden van de vorige dag en zich achteraf aan
-            de werkelijkheid laat narekenen.
+            De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat
+            dagelijks om 06:00 UTC opnieuw wordt getraind met de wachttijden van de vorige dag en
+            zich achteraf aan de werkelijkheid laat narekenen.
           </PG>
           <P>
             Hoe ver de kalender reikt, hangt van het park af. Een park dat het hele jaar open is,
@@ -763,8 +763,8 @@ export function ContentNL() {
 
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Wachttijden" delay={0}>
-              ThemeParks.wiki, Wartezeiten.app en Queue-Times.com, elke vijf minuten. De ruwe valuta
-              van al het andere op deze pagina.
+              ThemeParks.wiki, Wartezeiten.app en Queue-Times.com, elke vijf minuten. De ruwe
+              grondstof voor al het andere op deze pagina.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Vakanties & feestdagen" delay={60}>
               Nager.Date voor wettelijke feestdagen en brugdagen, OpenHolidays voor schoolvakanties.
@@ -805,7 +805,7 @@ export function ContentNL() {
           <NightShift
             locale="nl"
             jobs={NIGHT_JOBS}
-            caption="Tijden in UTC, dus midden in de nacht. De volgorde verklaart de tijden: “loont vroeg opstaan” van 05:15 heeft gisteren in kwartieren nodig, en die ontstaan pas om 04:30."
+            caption="Tijden in UTC, dus tussen middernacht en de vroege ochtend. De volgorde verklaart de tijden: “loont vroeg opstaan” van 05:15 heeft gisteren in kwartieren nodig, en die ontstaan pas om 04:30."
           />
         </SectionShell>
       </Ambience>
@@ -845,7 +845,7 @@ export function ContentNL() {
             <BadgeRowDemo
               crowdLabel="Drukte: hoe vol is het nu"
               comparisonLabel="Vergelijking: voller dan normaal?"
-              caption="Twee schalen, één voorbeeld: bij 70 minuten staat Taron op “Zeer hoog” — dat is de drukte. Vergeleken met zijn eigen normale 45 minuten is het “Veel hoger” — dat is de vergelijking met zichzelf. Een klein park kan “Zeer hoog” zijn en toch “Normaal”: daar zijn 25 minuten gewoon."
+              caption="Twee schalen, één voorbeeld: bij 70 minuten staat Taron op “Zeer hoog” – dat is de drukte. Vergeleken met zijn eigen normale 45 minuten is het “Veel hoger” – dat is de vergelijking met zichzelf. Een klein park kan “Zeer hoog” zijn en toch “Normaal”: daar zijn 25 minuten gewoon."
             />
           </DemoFrame>
         </div>

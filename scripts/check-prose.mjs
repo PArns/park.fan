@@ -41,7 +41,7 @@ const VERBOSE = process.argv.includes('--verbose');
  * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/blog.md §7.1).
  * Lower a number when you fix strings; never raise one.
  */
-const UI_EM_DASH_BASELINE = { de: 25, en: 55, es: 30, fr: 38, it: 30, nl: 39 };
+const UI_EM_DASH_BASELINE = { de: 0, en: 42, es: 0, fr: 0, it: 0, nl: 0 };
 
 /** Sentence-length variance under this reads as one flat rhythm. Supporting signal, not a verdict. */
 const MIN_BURSTINESS = 0.4;
@@ -315,6 +315,83 @@ for (const [locale, list] of captions) {
       `public/media (${locale})`,
       `${count} of ${list.length} captions (${share.toFixed(0)} %) open with "${word}" (§5.2)`
     );
+}
+
+/* ------------------------------------------------- content pages outside the blog */
+
+/*
+ * The glossary, the guide page, the Fancast page and the season banner are prose a
+ * reader meets, and until this section existed none of them was checked: 287 KB of
+ * German glossary carried machine-translation artefacts and three claims the rest of
+ * the site contradicts, and the Fancast page used `ehrlich` three times — the one word
+ * docs/blog.md bans outright. A green build showed none of it.
+ *
+ * These are source files, so the prose has to be lifted out of the code first: string
+ * literals long enough to be a sentence, plus JSX text nodes. Identifiers and class
+ * names never reach `scan`, which is what keeps `robust` in a prop from reading as the
+ * AI vocabulary it is in a paragraph.
+ */
+function proseFromSource(src) {
+  const out = [];
+  // Comments first: they are English code documentation, where an em dash is correct
+  // and none of these rules apply. Leaving them in reported the one JSDoc dash on the
+  // guide page as a prose error on a page whose prose is clean.
+  const code = src.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/^[ \t]*\/\/.*$/gm, ' ');
+  // Quoted literals that read as prose: a space, and not a path/class/import specifier.
+  for (const m of code.matchAll(/(['"`])((?:\\.|(?!\1)[^\\]){25,})\1/g)) {
+    const text = m[2];
+    if (!/\s/.test(text)) continue;
+    if (/^[\w@./-]+$/.test(text)) continue; // module specifier or path
+    if (/^[a-z-]+(\s+[a-z0-9:[\]#/.%-]+)+$/i.test(text) && !/[.,;!?]/.test(text)) continue; // class list
+    out.push(text.replace(/\\n/g, '\n').replace(/\\'/g, "'"));
+  }
+  // JSX text nodes: what sits between tags, with expressions stripped.
+  for (const m of code.matchAll(/>([^<>{}]{25,})</g)) out.push(m[1]);
+  return out.join('\n');
+}
+
+/*
+ * Every per-locale content directory in the app, plus the glossary and the season
+ * banner. The list is spelled out rather than globbed so that adding a page is a
+ * deliberate line here — a `content/<locale>.tsx` that nobody added stays unchecked,
+ * which is how the glossary went 274 terms without anyone reading them.
+ */
+const CONTENT_ROUTES = [
+  'how-park-fan-works',
+  'fancast',
+  'best-time-to-visit',
+  'trip-planner',
+  'datenschutz',
+  'impressum',
+];
+
+const CONTENT_PAGES = [
+  ...LOCALES.map((l) => [`content/glossary/${l}.ts`, l]),
+  ...CONTENT_ROUTES.flatMap((route) =>
+    LOCALES.map((l) => [`app/[locale]/${route}/content/${l}.tsx`, l])
+  ),
+  ...LOCALES.map((l) => [`content/home/announce.${l}.md`, l]),
+];
+
+for (const [file, locale] of CONTENT_PAGES) {
+  let raw;
+  try {
+    raw = readFileSync(file, 'utf8');
+  } catch {
+    continue; // not every locale publishes every page
+  }
+  const text = file.endsWith('.md') ? postBody(raw) : proseFromSource(raw);
+  if (!text.trim()) continue;
+
+  // German and Dutch take the en dash for a parenthetical; the em dash is the wrong
+  // character before it is a tell (§4.1, §6).
+  const dashes = (text.match(/—/g) ?? []).length;
+  if (dashes && (locale === 'de' || locale === 'nl'))
+    fail(file, `${dashes} em dash(es) in prose (§4.1) — ${locale} takes "–"`);
+  else if (dashes) warn(file, `${dashes} em dash(es) in prose (§4.1)`);
+
+  // A page is us talking about ourselves, same as a catalog string.
+  scan(file, text, { subject: 'us' });
 }
 
 /* ------------------------------------------------------------------ report */

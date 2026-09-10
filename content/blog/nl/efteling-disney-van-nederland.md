@@ -11,7 +11,7 @@ excerpt: >-
   niets mag uitkeren en die naast de deur een vakantiehuis voor ernstig zieke
   kinderen heeft neergezet. En omdat een natuurvergunning de grens bij vijf
   miljoen bezoekers legt, wacht je hier ondanks 5,78 miljoen bezoeken
-  doorgaans 25 minuten.
+  doorgaans niet langer dan een ruim kwartier.
 tags:
   - efteling
   - wachttijden
@@ -34,7 +34,7 @@ coverImage:
 seo:
   title: 'Efteling: wachttijden, tips & beste reistijd'
   description: >-
-    De Efteling met echte wachttijddata uit twee seizoenen: beste reistijd,
+    De Efteling met echte wachttijddata uit meer dan 150 bedrijfsdagen: beste reistijd,
     tickets en waarom er maar vijf miljoen bezoekers per jaar naar binnen mogen.
   keywords:
     - Efteling
@@ -260,7 +260,7 @@ terug.
 **[Droomvlucht](ref:efteling/droomvlucht)** uit 1993 is de elfenrit waar
 Nederlandse volwassenen week van worden. Je zweeft in gondels door bossen,
 elfenkastelen en een nachtstuk waarin de baan even wegzakt. Wie wil weten waarom
-een darkride zonder één schrikmoment 22 minuten typische wachttijd oplevert, rijdt
+een darkride zonder één schrikmoment zoveel typische wachttijd oplevert, rijdt
 hem één keer en snapt het.
 
 ![De minaret van Fata Morgana in het blauwe uur, met de koepels van de bazaar erachter | Van buiten zie je niets van de attractie. Ze ligt volledig achter deze gevel. | left](/media/efteling/fata-morgana-4x3.jpg)
@@ -335,14 +335,15 @@ oost naar west, die elkaar op het Herautenplein kruisen, met rood bestrate
 zijpaden naar de afzonderlijke taferelen. De gele sluiproutes verdwijnen. Daarna
 kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
-## 25 minuten, gemeten over twee seizoenen
+## Een ruim kwartier, gemeten over 150 bedrijfsdagen
 
 “Een park voor het hele gezin” staat in elke folder. Aantonen kun je dat alleen
 met rijen.
 
-Onze historie voor de Efteling omvat **meer dan 150 bedrijfsdagen** met wachttijddata,
-opgenomen tussen augustus 2024 en augustus 2026. Over alle weekdagen gerekend ligt
-de **typische wachttijd parkbreed op 25 minuten** (mediaan), het 90e percentiel op 36.
+Onze historie voor de Efteling omvat **meer dan 150 bedrijfsdagen** met
+wachttijddata, opgenomen sinds december 2025. Over alle weekdagen gerekend ligt
+de typische wachttijd parkbreed op **een ruim kwartier** (mediaan); op die ene
+dag van de tien waarop het echt druk is, is het ruim anderhalf keer zo veel.
 
 De tien meest gevraagde attracties:
 
@@ -477,16 +478,15 @@ vijfentwintig jaar lang.
 
 De Efteling is 365 dagen per jaar open, en dat verschuift de gebruikelijke regels.
 
-**Per maand** is april in onze data de rustigste van de grote seizoensmaanden
-(typisch 22 minuten), gevolgd door mei met 23 en juli met 25. Juni zit op 26,
-augustus op 29. Het zwaarst is **december met 34 minuten** mediaan, oftewel het
-Winter Efteling-seizoen, gevolgd door maart met 28.
+**Per maand** is april in onze data de rustigste van de grote seizoensmaanden.
+Mei, juni en juli liggen dicht bij elkaar, augustus trekt merkbaar aan, en het
+zwaarst is **december**, oftewel het Winter Efteling-seizoen.
 
-Daar hoort een beperking bij, anders leest het preciezer dan het is: achter april,
-mei, juni en juli staan elk ongeveer 30 meetdagen, achter december zeven, achter
-januari vijf en achter maart drie. Voor februari, september, oktober en november
-hebben we in dit venster nog helemaal geen bruikbare dagen. De richting klopt, de
-rangorde achter de komma niet.
+Daar hoort een beperking bij, anders leest het preciezer dan het is: achter
+april tot en met augustus staat elk een volle maand aan meetdagen, achter
+december, januari en maart maar een handvol, en voor februari, oktober en
+november hebben we tot nu toe helemaal geen bruikbare dagen. De richting klopt,
+de rangorde in detail niet.
 
 **Per weekdag** wordt het interessant, omdat het gebruikelijke advies hier oplost:
 
@@ -494,7 +494,7 @@ rangorde achter de komma niet.
 
 ```
 
-Tussen de beste en de slechtste weekdag zitten vier minuten. In Phantasialand
+Tussen de beste en de slechtste weekdag zit één enkele stap. In Phantasialand
 liggen tussen een dinsdag en een zaterdag werelden, hier maakt de dag nauwelijks
 uit. **Maandag** is in onze data zelfs de drukste dag, wat eerst absurd klinkt en
 oplost zodra je de Nederlandse vakantieweken ernaast legt: wie een week in een
@@ -510,7 +510,7 @@ De rustigste dagen die eraan komen:
 
 ```
 
-En de drukte over de maanden, gerekend over de laatste twee seizoenen:
+En de drukte over de maanden, gerekend over alle gemeten openingsdagen:
 
 ```stats-widget slug=efteling show=months
 
@@ -675,9 +675,8 @@ die sinds 2024 op led werkt in plaats van op propaan. De waterattracties blijven
 draaien zolang het weer het toelaat, wat in Kaatsheuvel vaker het geval is dan in
 een Duits park in de heuvels.
 
-En dan de keerzijde: **december is in onze data de drukste maand van het jaar**, met
-34 minuten mediaan en 48 op het 90e percentiel. In december wacht je dus overal in
-het park ongeveer even lang als anders alleen bij Joris en de Draak. Daar komt de
+En dan de keerzijde: **december is in onze data de drukste maand van het jaar**.
+In december wacht je overal in het park ongeveer even lang als anders alleen bij Joris en de Draak. Daar komt de
 gestopte ticketverkoop bij zodra een vakantiedag de vergunningsgrens in zicht
 brengt. Wie het winterseizoen rustig wil zien, pakt een doordeweekse dag in november
 of in de tweede helft van januari, niet de week tussen kerst en nieuwjaar.
@@ -730,23 +729,22 @@ Ja, en voor een breder publiek dan de meeste grote parken. Wie achtbanen wil, kr
 met [Baron 1898](ref:efteling/baron-1898) en
 [Joris en de Draak](ref:efteling/joris-en-de-draak) twee heel goede, maar geen
 wereldtop. Wie darkrides, afwerking en sfeer wil, vindt in Europa nauwelijks iets
-beters. Bij typische wachttijden van 25 minuten parkbreed doe je op één dag meer dan
+beters. Bij de typische wachttijden parkbreed doe je op één dag meer dan
 je op grond van het bezoekcijfer zou verwachten.
 
 ### Hoe lang zijn de wachttijden in de Efteling?
 
-Over meer dan 150 bedrijfsdagen uit twee seizoenen ligt de typische wachttijd parkbreed op
-**25 minuten** (mediaan), het 90e percentiel op 36. Het langst sta je bij
-[Joris en de Draak](ref:efteling/joris-en-de-draak) met een klein half uur,
-gevolgd door [Danse Macabre](ref:efteling/danse-macabre). Actuele cijfers staan op de
+Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op **een
+ruim kwartier** (mediaan). Het langst sta je bij [Joris en
+de Draak](ref:efteling/joris-en-de-draak), gevolgd door
+[Danse Macabre](ref:efteling/danse-macabre). Actuele cijfers staan op de
 [Efteling-parkpagina](ref:efteling).
 
 ### Wanneer is het het rustigst in de Efteling?
 
-Per maand zijn **april en mei** de rustigste seizoensmaanden (22 respectievelijk
-23 minuten), het drukst is **december** met 34. De weekdag speelt nauwelijks een rol,
-tussen donderdag (23 minuten) en maandag (27) zitten vier minuten. Doorslaggevend
-zijn de Nederlandse schoolvakanties. Voor een concrete datum helpt de
+Per maand is **april** de rustigste seizoensmaand, het drukst is **december**.
+De weekdag speelt nauwelijks een rol: tussen de beste en de slechtste zit één
+stap. Doorslaggevend zijn de Nederlandse schoolvakanties. Voor een concrete datum helpt de
 [kalender met de beste bezoekdagen](ref:efteling?calendar) meer dan welke vuistregel ook.
 
 ### Is er een fast pass in de Efteling?
@@ -774,7 +772,7 @@ Afhankelijk van de dag **40 tot 56 €**, kinderen tot drie jaar gratis, parkere
 
 ### Doe je de Efteling op één dag?
 
-De attracties wel, het park niet. 37 attracties bij 25 minuten typische wachttijd
+De attracties wel, het park niet. 37 attracties bij de typische wachttijden
 passen in een lange dag. Het Sprookjesbos, de shows, Aquanura en het lopen passen er
 niet meer bij. Twee dagen is hier het normale geval, geen advies voor liefhebbers.
 
@@ -839,4 +837,4 @@ bedankt sinds 1959 iedereen persoonlijk.
 - Geen Halloween: [“Geen Halloween in de Efteling” (officieel)](https://www.efteling.com/nl/park/events/halloween) · [onze Halloween-gids](/blog/halloween-pretparken-2026)
 - Prijzen, parkeren en jaarkaarten 2026: [Ticketoverzicht (officieel)](https://www.efteling.com/en/park/information/ticket-overview) · [Prijzen & openingstijden (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jaarkaartvergelijking (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (oprichting, capaciteit, vrijwilligers, financiering): [Wie wij zijn (officieel)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes op Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes op nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Doneren](https://www.villapardoes.nl/doneren)
-- Wachttijd- en drukte-data: eigen historie uit meer dan 150 bedrijfsdagen (augustus 2024 tot augustus 2026), [Efteling op park.fan](ref:efteling)
+- Wachttijd- en drukte-data: eigen historie uit meer dan 150 bedrijfsdagen sinds december 2025, [Efteling op park.fan](ref:efteling)

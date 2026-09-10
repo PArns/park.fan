@@ -75,7 +75,7 @@ const FAQ = [
   {
     question: 'How often is the model updated?',
     answer:
-      'Every day. Fancast automatically retrains once a day at 06:00 UTC on the freshest data — including yesterday’s wait times. So it literally gets a little better every morning.',
+      'Every day. Fancast retrains automatically once a day at 06:00 UTC, on yesterday’s wait times.',
   },
   {
     question: 'Can I use Fancast for a specific park and day?',
@@ -90,7 +90,7 @@ const FAQ = [
   {
     question: 'Why does a park show “No forecast”?',
     answer:
-      'Fancast only rates a park once there is enough operating data — at least around 30 operating days. Brand-new or rarely-open parks do not have that basis yet, so we would rather honestly show “No forecast” than a guessed number.',
+      'Fancast only rates a park once there is enough operating data — at least around 30 operating days. Brand-new or rarely-open parks do not have that basis yet, so the badge reads “No forecast” instead of a guessed number.',
   },
   {
     question: 'Does Fancast cost anything?',
@@ -111,14 +111,13 @@ export function ContentEN() {
           report for queues, basically.
         </Lead>
         <P>
-          And because we only trust numbers that have to prove themselves, Fancast does something
-          most models quietly avoid: it grades itself. Every prediction is later checked against the
-          wait time that actually happened — in the open, on this page. Cheating pointless.
+          And because we only trust numbers that have to prove themselves, Fancast grades itself.
+          Every prediction is later held against the wait time that was actually measured, in the
+          open, on this page.
         </P>
         <Highlight>
-          In short: Fancast is not a fortune teller with a crystal ball. It is a stubborn
-          statistician that gets tutoring every night and has to re-sit the exam every morning. A
-          weather frog that fact-checks its own weather.
+          Every forecast is set against the measured wait time the day after. What comes out of that
+          stands at the top of this page as MAE, RMSE and MAPE, good or bad.
         </Highlight>
       </div>
 
@@ -131,8 +130,8 @@ export function ContentEN() {
         icon={Gauge}
       >
         <P>
-          Enough preamble — here is the grade, live and unvarnished. Fancast pulls these numbers
-          from its own dashboard right now; they shift the moment the model retrains tonight.
+          Here is the grade, live and unvarnished. Fancast pulls these numbers from its own
+          dashboard right now; they shift with the next training run tomorrow morning.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -155,8 +154,8 @@ export function ContentEN() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live wait times" delay={0}>
-            Millions of real readings from 200+ parks, updated by the minute. The raw currency of
-            every forecast.
+            One reading per queue every five minutes, from more than 200 parks. Everything else
+            stands on that.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendars & holidays" delay={60}>
             Weekends, public holidays and school breaks — including neighbouring regions, because
@@ -171,8 +170,8 @@ export function ContentEN() {
             suspects for a packed day.
           </IngredientCard>
           <IngredientCard icon={History} title="History" delay={60}>
-            Years of wait-time history per park. Patterns you only see if you stare at them long
-            enough.
+            Every operating day a park has been recorded on, without a gap since April. That is
+            where the weekly and seasonal rhythm come from.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Hours & capacity" delay={120}>
             When the park opens, for how long, at what capacity — the frame everything else fits
@@ -194,8 +193,8 @@ export function ContentEN() {
         icon={Compass}
       >
         <P>
-          All theory is grey — Fancast only gets tangible at an actual park. Three examples of how
-          the same ingredients turn into three completely different forecasts:
+          It gets more tangible at a real park. Three examples of how the same ingredients turn into
+          three completely different forecasts:
         </P>
         <SplitFigure
           src="/media/europa-park/silver-star.jpg"
@@ -246,9 +245,8 @@ export function ContentEN() {
       >
         <P>
           The most important trick is an unglamorous one: Fancast retrains{' '}
-          <strong>every night</strong>, every day at 06:00 UTC. Whatever happened yesterday, the
-          model knows today. A coaster fan gets older and more tired over the years — Fancast gets a
-          little smarter every morning.
+          <strong>once a day</strong>, at 06:00 UTC. Whatever happened in the park yesterday is in
+          the forecast from the next morning on.
         </P>
         <P>
           And it is only ever tested on days it has <strong>never seen</strong> — on the future, not
@@ -258,8 +256,7 @@ export function ContentEN() {
         <P>
           On top of that, Fancast watches whether it is <strong>drifting</strong> — whether reality
           is slowly running away from it. And a new model version only goes live if it genuinely
-          beats the old one in a fair head-to-head. Democracy among algorithms: if you are not
-          better, you stay on the bench.
+          beats the old one in a fair head-to-head.
         </P>
       </SectionShell>
 
@@ -314,8 +311,8 @@ export function ContentEN() {
         icon={Ticket}
       >
         <P>
-          Enough theory. Fancast runs on every park page — here are a few popular ones to try it on
-          directly. Click in, open the crowd calendar, and see which colour your chosen day gets:
+          Fancast runs on every park page; here are a few popular ones to try it on directly. Click
+          in, open the crowd calendar, and see which colour your chosen day gets:
         </P>
         <PopularParksGrid />
       </SectionShell>
@@ -367,14 +364,14 @@ export function ContentEN() {
             {
               icon: Sunrise,
               title: 'Rope-drop recommendation',
-              body: 'the honest answer to “is it worth arriving early?” — including the expected troughs.',
+              body: 'the answer to “is it worth arriving early?”, with the expected troughs.',
             },
             {
               icon: HelpCircle,
               title: 'No forecast',
               body: (
                 <>
-                  honest over guessed: parks with too little data get{' '}
+                  Rather than guess: parks with too little data get{' '}
                   <CrowdLevelBadge level="unknown" /> instead of an invented number.
                 </>
               ),

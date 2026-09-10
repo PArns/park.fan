@@ -65,7 +65,7 @@ const FAQ = [
   {
     question: 'Con quanto anticipo può prevedere Fancast?',
     answer:
-      'Fancast fornisce livelli di affluenza giornalieri per un parco fino a 365 giorni in anticipo. Per le singole attrazioni produce inoltre previsioni orarie dei tempi di attesa. Più il giorno si avvicina, più pesano i segnali a breve termine come le previsioni del tempo.',
+      'Fancast fornisce livelli di affluenza giornalieri per ogni giorno che un parco ha già pubblicato. Per le singole attrazioni produce inoltre previsioni orarie dei tempi di attesa. Più il giorno si avvicina, più pesano i segnali a breve termine come le previsioni del tempo.',
   },
   {
     question: 'Come fa Fancast a sapere che un sabato di vacanza sarà affollato?',
@@ -75,12 +75,12 @@ const FAQ = [
   {
     question: 'Quanto spesso viene aggiornato il modello?',
     answer:
-      'Ogni giorno. Fancast si riaddestra automaticamente una volta al giorno alle 06:00 UTC con i dati più freschi, compresi i tempi di attesa di ieri. Così, letteralmente, ogni mattina diventa un pochino migliore.',
+      'Ogni giorno. Fancast si riaddestra automaticamente una volta al giorno alle 06:00 UTC, con i tempi di attesa di ieri.',
   },
   {
     question: 'Posso usare Fancast per un parco e un giorno precisi?',
     answer:
-      'Sì. Ogni pagina di parco su park.fan ha un calendario di affluenza che ti mostra, per ogni singolo giorno fino a un anno in anticipo, una previsione verde, gialla o rossa: da Europa-Park a Phantasialand, passando per Efteling e Walt Disney World. Ricevi inoltre previsioni orarie dei tempi di attesa per le singole attrazioni.',
+      'Sì. Ogni pagina di parco su park.fan ha un calendario di affluenza che ti mostra, per ogni giorno pubblicato, una previsione verde, gialla o rossa: da Europa-Park a Phantasialand, passando per Efteling e Walt Disney World. Ricevi inoltre previsioni orarie dei tempi di attesa per le singole attrazioni.',
   },
   {
     question: 'Quali dati usa Fancast?',
@@ -90,7 +90,7 @@ const FAQ = [
   {
     question: 'Perché un parco mostra «Nessuna previsione»?',
     answer:
-      'Fancast valuta un parco solo quando ci sono abbastanza dati operativi: almeno una trentina di giorni di apertura. I parchi nuovissimi o aperti di rado non hanno ancora questa base. Allora preferiamo mostrare onestamente «Nessuna previsione» piuttosto che un numero tirato a indovinare.',
+      'Fancast valuta un parco solo quando ci sono abbastanza dati operativi: almeno una trentina di giorni di apertura. I parchi nuovissimi o aperti di rado non hanno ancora questa base. Allora lì compare «Nessuna previsione» invece di un numero tirato a indovinare.',
   },
   {
     question: 'Fancast ha un costo?',
@@ -111,19 +111,17 @@ export function ContentIT() {
           un bollettino meteo per le code.
         </Lead>
         <P>
-          E poiché ci fidiamo solo dei numeri costretti a dimostrare quanto valgono, Fancast fa una
-          cosa che la maggior parte dei modelli evita in sordina: si dà un voto da sé. Ogni
-          previsione viene poi messa a confronto con il tempo di attesa realmente accaduto, alla
-          luce del sole, su questa pagina. Barare, inutile.
+          E poiché ci fidiamo dei numeri solo quando sono costretti a dimostrare quanto valgono,
+          Fancast si dà un voto da sé. Ogni previsione viene poi messa a confronto con il tempo di
+          attesa davvero misurato, alla luce del sole, su questa pagina.
         </P>
         <Highlight>
-          In breve: Fancast non è un indovino con la sfera di cristallo. È uno statistico testardo
-          che ogni sera prende ripetizioni e ogni mattina deve rifare l’esame. Una rana meteo che
-          verifica il proprio meteo.
+          Ogni previsione viene confrontata il giorno dopo con il tempo di attesa misurato. Il
+          risultato sta in cima a questa pagina come MAE, RMSE e MAPE, nel bene o nel male.
         </Highlight>
       </div>
 
-      {/* 01 — Scorecard (live) */}
+      {/* 01 – Scorecard (live) */}
       <SectionShell
         id="note"
         index="01"
@@ -132,9 +130,9 @@ export function ContentIT() {
         icon={Gauge}
       >
         <P>
-          Basta con i preamboli: ecco il voto, in diretta e senza ritocchi. Fancast estrae questi
-          numeri dalla propria dashboard proprio in questo momento; cambieranno non appena il
-          modello si riaddestrerà stanotte.
+          Ecco il voto, in diretta e senza ritocchi. Fancast estrae questi numeri dalla propria
+          dashboard proprio in questo momento; cambieranno con il prossimo riaddestramento,
+          domattina.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -142,7 +140,7 @@ export function ContentIT() {
         <FancastLive labels={LIVE_LABELS} />
       </SectionShell>
 
-      {/* 02 — What it reads */}
+      {/* 02 – What it reads */}
       <SectionShell
         id="ingredients"
         index="02"
@@ -157,8 +155,8 @@ export function ContentIT() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Tempi di attesa in diretta" delay={0}>
-            Milioni di rilevazioni reali da oltre 200 parchi, aggiornate al minuto. La valuta grezza
-            di ogni previsione.
+            Una misura per ogni coda ogni cinque minuti, da oltre 200 parchi. Su questo poggia tutto
+            il resto.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendari e vacanze" delay={60}>
             Fine settimana, giorni festivi e vacanze scolastiche, anche quelle delle regioni vicine,
@@ -173,8 +171,8 @@ export function ContentIT() {
             una giornata affollata.
           </IngredientCard>
           <IngredientCard icon={History} title="Cronologia" delay={60}>
-            Anni di cronologia dei tempi di attesa per parco. Schemi che si vedono solo se li fissi
-            abbastanza a lungo.
+            Ogni giorno di apertura registrato di un parco, senza buchi da aprile. Da lì escono il
+            ritmo della settimana e quello della stagione.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Orari e capacità" delay={120}>
             Quando apre il parco, per quanto, con quale capacità: la cornice in cui tutto il resto
@@ -188,7 +186,7 @@ export function ContentIT() {
         </P>
       </SectionShell>
 
-      {/* 03 — Concrete park examples */}
+      {/* 03 – Concrete park examples */}
       <SectionShell
         id="examples"
         index="03"
@@ -197,8 +195,8 @@ export function ContentIT() {
         icon={Compass}
       >
         <P>
-          Grigia è ogni teoria: Fancast diventa concreto solo nel parco reale. Tre esempi di come
-          gli stessi ingredienti si trasformino in tre previsioni completamente diverse:
+          Nel parco reale la cosa si fa più concreta. Tre esempi di come gli stessi ingredienti si
+          trasformino in tre previsioni completamente diverse:
         </P>
         <SplitFigure
           src="/media/europa-park/silver-star.jpg"
@@ -240,7 +238,7 @@ export function ContentIT() {
         </SplitFigure>
       </SectionShell>
 
-      {/* 04 — How it learns */}
+      {/* 04 – How it learns */}
       <SectionShell
         id="training"
         index="04"
@@ -250,9 +248,8 @@ export function ContentIT() {
       >
         <P>
           Il trucco più importante è dei più dimessi: Fancast si riaddestra{' '}
-          <strong>ogni notte</strong>, tutti i giorni alle 06:00 UTC. Ciò che è successo ieri, il
-          modello lo sa oggi. Un fan delle montagne russe con gli anni invecchia e si stanca;
-          Fancast diventa un po’ più sveglio ogni mattina.
+          <strong>una volta al giorno</strong>, alle 06:00 UTC. Quello che ieri è successo nel
+          parco, dal mattino dopo sta dentro la previsione.
         </P>
         <P>
           Ed è messo alla prova soltanto su giorni che non ha <strong>mai visto</strong>: sul
@@ -263,12 +260,11 @@ export function ContentIT() {
         <P>
           In più, Fancast tiene d’occhio se sta <strong>andando alla deriva</strong>, se la realtà
           gli sta lentamente sfuggendo. E una nuova versione del modello va in produzione solo se
-          batte davvero la vecchia in un confronto leale. Democrazia tra algoritmi: chi non è
-          migliore resta in panchina.
+          batte davvero la vecchia in un confronto leale.
         </P>
       </SectionShell>
 
-      {/* 05 — Crowd levels */}
+      {/* 05 – Crowd levels */}
       <SectionShell
         id="levels"
         index="05"
@@ -310,17 +306,16 @@ export function ContentIT() {
         />
       </SectionShell>
 
-      {/* 06 — Try a real park */}
+      {/* 06 – Try a real park */}
       <SectionShell id="parks" index="06" kicker="Provaci tu" title="Scegli un parco" icon={Ticket}>
         <P>
-          Basta teoria. Fancast gira su ogni pagina di parco: eccone alcuni popolari per provarlo
-          direttamente. Entra, apri il calendario di affluenza e guarda quale colore tocca al giorno
-          che scegli:
+          Fancast gira su ogni pagina di parco: eccone alcuni popolari per provarlo direttamente.
+          Entra, apri il calendario di affluenza e guarda quale colore tocca al giorno che scegli:
         </P>
         <PopularParksGrid />
       </SectionShell>
 
-      {/* 07 — Where you meet it */}
+      {/* 07 – Where you meet it */}
       <SectionShell
         id="where"
         index="07"
@@ -345,7 +340,7 @@ export function ContentIT() {
               body: (
                 <>
                   il <Link href="/parks">calendario dei giorni migliori per la visita</Link> su ogni
-                  pagina di parco: verde, giallo, rosso, fino a un anno in anticipo.
+                  pagina di parco: verde, giallo, rosso, fin dove arriva il calendario.
                 </>
               ),
             },
@@ -368,14 +363,14 @@ export function ContentIT() {
             {
               icon: Sunrise,
               title: 'Consiglio sul rope-drop',
-              body: 'la risposta onesta a «vale la pena arrivare presto?», minimi attesi compresi.',
+              body: 'la risposta a «vale la pena arrivare presto?», con i minimi attesi.',
             },
             {
               icon: HelpCircle,
               title: 'Nessuna previsione',
               body: (
                 <>
-                  onesto invece che indovinato: i parchi con troppo pochi dati ricevono{' '}
+                  invece di tirare a indovinare: i parchi con troppo pochi dati ricevono{' '}
                   <CrowdLevelBadge level="unknown" /> invece di un numero inventato.
                 </>
               ),
@@ -389,7 +384,7 @@ export function ContentIT() {
         </P>
       </SectionShell>
 
-      {/* 08 — FAQ */}
+      {/* 08 – FAQ */}
       <SectionShell
         id="faq"
         index="08"

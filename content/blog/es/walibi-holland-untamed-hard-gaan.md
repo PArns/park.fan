@@ -452,10 +452,10 @@ decidido en los dos últimos años.
 
 ## Lo que Untamed cuesta de verdad
 
-A lo largo de las dos últimas temporadas, calculado a partir de **más de 130 días de
-apertura con datos de espera utilizables**, la **espera típica en el promedio
-del parque es de un cuarto de hora escaso** (mediana). El percentil 90, el valor por debajo
-del cual quedan nueve de cada diez mediciones, llega a 31 minutos.
+Calculado a partir de **más de 130 días de apertura con datos de espera
+utilizables**, la **espera típica en el promedio del parque es de un cuarto de
+hora escaso** (mediana). Ese día de cada diez en el que más movimiento hay, es
+vez y media eso.
 
 Atracción por atracción queda así:
 
@@ -470,7 +470,7 @@ vas directo a la Wilderness, habrás montado Untamed tres veces antes de que la
 cola de YOY haya dado una vuelta.
 
 Se pone más interesante en comparación con la vecindad. Misma base de datos,
-mismo método de cálculo, dos últimas temporadas:
+mismo método de cálculo, todos los días de apertura medidos:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -491,7 +491,7 @@ la que fija la espera, como expliqué en [el arte de
 esperar](/blog/el-arte-de-esperar).
 
 Una salvedad antes de que alguien se tome las cifras demasiado en serio: nuestro
-histórico de este parque empieza en agosto de 2024, y Walibi solo abre de abril
+histórico de este parque empieza en diciembre de 2025, y Walibi solo abre de abril
 a octubre. Detrás de los valores mensuales de abril a agosto hay entre 11 y 30
 días medidos cada uno, y eso aguanta. De septiembre a marzo apenas tenemos
 datos, por eso ahí no aparece ninguna cifra. Un mes con once días medidos te dice si viajas en la estación correcta, no si
@@ -720,9 +720,8 @@ La temporada va de **abril a principios de noviembre**, después cierra. En
 primavera y otoño el parque abre los miércoles, los fines de semana y en
 vacaciones; en julio y agosto, a diario.
 
-**Por meses** el panorama es tranquilo: mayo y julio son con 18 minutos típicos
-los meses más relajados, junio está en 19 y agosto en 20. El mes más cargado es
-**abril** con 22 minutos, cuando la Semana Santa, el Día del Rey y las
+**Por meses** el panorama es tranquilo: a lo largo de la temporada los meses
+apenas se diferencian. Donde algo sube, la Semana Santa, el Día del Rey y las
 vacaciones neerlandesas de mayo caen en el mismo periodo. Quien venga de
 Alemania debe saber además que las **vacaciones escolares neerlandesas** pesan
 aquí mucho más que las propias.
@@ -734,8 +733,8 @@ sábado:
 
 ```
 
-Entre el día más vacío y el más lleno hay tres minutos. Aquí, pues, el fin de
-semana sencillamente no es un caso especial, y la razón es banal: fuera de las
+Entre los días de la semana no se mide ninguna diferencia: los siete están en el
+mismo valor. Aquí, pues, el fin de semana sencillamente no es un caso especial, y la razón es banal: fuera de las
 vacaciones de verano el parque abre de todos modos casi solo los miércoles y los
 fines de semana, de modo que los pocos días laborables son con más frecuencia de
 lo normal días de vacaciones. Quien pueda elegir, que coja un jueves de mayo o
@@ -748,8 +747,8 @@ calendario de afluencia:
 
 ```
 
-Y así se reparte la afluencia por meses, calculada a partir de las dos últimas
-temporadas:
+Y así se reparte la afluencia por meses, calculada a partir de todos los días de
+apertura medidos:
 
 ```stats-widget slug=walibi-holland show=months
 
@@ -843,7 +842,7 @@ Para los aficionados a las montañas rusas, sí. El parque tiene en
 [Untamed](ref:walibi-holland/untamed) la primera montaña rusa híbrida de Europa,
 en [YOY](ref:walibi-holland/yoy-thrill) la primera instalación en duelo sobre
 raíl único del mundo y en [Goliath](ref:walibi-holland/goliath) un Mega Coaster
-de Intamin de 2002, y todo ello con una espera típica de 20 minutos. Quien busque
+de Intamin de 2002, y todo ello con una espera típica de un cuarto de hora largo. Quien busque
 dark rides, una ambientación sin costuras e independencia del tiempo estará mejor en el
 [Efteling](ref:efteling) o en [Phantasialand](ref:phantasialand).
 
@@ -857,19 +856,19 @@ celebra desde 2011 el Defqon.1, el mayor festival de hardstyle del mundo.
 
 ### ¿Cuánto se espera en Walibi Holland?
 
-En las dos últimas temporadas la espera típica en el promedio del parque es de
-**20 minutos** (mediana), con el percentil 90 en 31 minutos. Untamed y Goliath
-se quedan justo por debajo, y la novedad YOY THRILL tiene con diferencia el valor
-más alto del parque. Las cifras actuales están en la
-[página del parque Walibi Holland](ref:walibi-holland).
+A lo largo de todos los días de apertura medidos, la espera típica en el
+promedio del parque es de un cuarto de hora escaso (mediana). Untamed y Goliath
+se quedan justo por debajo, y la novedad YOY THRILL tiene con diferencia el
+valor más alto del parque. Las cifras actuales están en la [página del parque
+Walibi Holland](ref:walibi-holland).
 
 ### ¿Cuándo hay menos gente en Walibi Holland?
 
-Mayo y julio son en nuestros datos los meses más relajados (típicamente 18
-minutos), y abril el más cargado (22 minutos). Por día de la semana la
-diferencia es pequeña, con el jueves ligeramente por delante con 18 minutos.
+A lo largo de la temporada los meses apenas se distinguen, y por día de la
+semana no hay ninguna diferencia medible: los siete están en el mismo valor.
 Evita las vacaciones neerlandesas de mayo y de verano, así como los fines de
-semana de Halloween. Para una fecha concreta ayuda el [calendario de tiempos de espera](ref:walibi-holland?calendar).
+semana de Halloween. Para una fecha concreta ayuda el [calendario de tiempos de
+espera](ref:walibi-holland?calendar).
 
 ### ¿Cuánto cuesta la entrada a Walibi Holland?
 
@@ -900,8 +899,8 @@ quiera un parque Walibi en diciembre, que vaya a Wavre, a
 
 ### ¿Hace falta un pase Fast Lane?
 
-Un día normal, no. Con una mediana de 20 minutos pagas por minutos ahorrados que
-no tienes. Los fines de semana de las vacaciones de verano, en los eventos
+Un día normal, no. Con la mediana que tiene este parque pagas por minutos
+ahorrados que no tienes. Los fines de semana de las vacaciones de verano, en los eventos
 nocturnos y para YOY puede compensar.
 
 ## Haz la hora de más
@@ -961,4 +960,4 @@ piensas en nada.
 - #Lekkergaan y Zomerse Zaterdagen 2026: [«Walibi Holland viert de zomer met langere openingstijden en twee zomerevents» (nota de prensa)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · [«Nieuw zomerfestival in Walibi Holland heet #Lekkergaan» (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
 - Entradas, aparcamiento y los tres niveles de pass de 2026 con el cupo de Halloween: [Tickets (oficial)](https://www.walibi.nl/en/tickets) · [Passes (oficial)](https://www.walibi.nl/en/tickets/passes) · [Aparcamiento 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren)
 - Lo que cuesta una noche completa de Halloween (al menos 116,50 € además de la entrada, a fecha de 2025): [«In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken» (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Datos de espera y afluencia: histórico propio de dos temporadas, [Walibi Holland en park.fan](ref:walibi-holland)
+- Datos de espera y afluencia: histórico propio desde diciembre de 2025, [Walibi Holland en park.fan](ref:walibi-holland)

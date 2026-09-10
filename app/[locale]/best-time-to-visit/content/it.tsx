@@ -33,14 +33,14 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'I giorni feriali più tranquilli',
   weekdaysBody:
-    'Media su tutti i parchi — ogni parco prima normalizzato sulla propria media, così i parchi grandi non mettono in ombra i piccoli. Ecco quanto è affollato un tipico giorno feriale rispetto alla media. Dal martedì al giovedì vincono quasi sempre.',
+    'Qui ogni parco pesa uguale, che sia Disneyland o un piccolo parco di famiglia: prima lo riportiamo alla sua media, poi facciamo la media fra tutti. La barra dice quanto è affollato un tipico giorno feriale rispetto alla media. Il sabato spicca; gli altri sei giorni stanno più vicini di quanto quasi tutti si aspettino.',
   monthsTitle: 'I mesi più tranquilli',
   monthsBody:
-    'Lo stesso calcolo sull’anno: i mesi di bassa stagione sono nettamente più vuoti dei picchi dell’estate e delle vacanze.',
+    'Lo stesso calcolo, stavolta distribuito sull’anno. Dicembre esce dagli schemi, perché ci finiscono dentro solo i parchi che d’inverno aprono, e quelli fanno programma natalizio.',
   quieter: 'più tranquillo',
   busier: 'più affollato',
   typical: 'intorno alla media',
-  footnote: 'Basato su {days} giorni-parco di {parks} parchi, ultimi {months} mesi.',
+  footnote: 'Basato su {days} giorni-parco misurati di {parks} parchi.',
   pending:
     'La classifica dal vivo sta ancora raccogliendo i tempi di attesa. I giorni più tranquilli compariranno qui non appena ci saranno abbastanza dati.',
 };
@@ -49,32 +49,32 @@ const FAQ = [
   {
     question: 'Qual è il periodo migliore per visitare un parco divertimenti?',
     answer:
-      'È più tranquillo nei giorni feriali fuori dalle vacanze scolastiche — dal martedì al giovedì in bassa stagione sono quasi sempre le giornate più rilassate. Gli schemi precisi per giorno della settimana e mese li vedi qui sopra, in diretta dai dati reali sui tempi di attesa di tutti i parchi.',
+      'È più tranquillo nei giorni feriali fuori dalle vacanze scolastiche, e fra questi il martedì, il mercoledì e il giovedì. Gli schemi precisi per giorno della settimana e mese li vedi qui sopra, presi dai tempi di attesa misurati in tutti i parchi.',
   },
   {
     question: 'Quale giorno della settimana è meno affollato?',
     answer:
-      'In media su tutti i parchi, il martedì, il mercoledì e il giovedì sono i più tranquilli, mentre il sabato e la domenica sono nettamente i più affollati. I singoli parchi possono variare — ogni pagina di parco ha un calendario dell’affluenza che lo mostra giorno per giorno.',
+      'In media su tutti i parchi, il martedì, il mercoledì e il giovedì sono i più tranquilli. A spiccare per affollamento è solo il sabato; la domenica sta più vicina al martedì che al sabato. I singoli parchi possono variare: ogni pagina di parco ha un calendario dell’affluenza che lo mostra giorno per giorno.',
   },
   {
     question: 'In quali mesi i parchi divertimenti sono meno affollati?',
     answer:
-      'I mesi di bassa stagione, lontani dai picchi dell’estate e dei giorni festivi, sono i più vuoti. Il riepilogo mensile qui sopra mostra l’affluenza relativa nell’arco dell’anno, in media su tutti i parchi.',
+      'Dipende dal parco più di quanto lasci intendere la regola generale: in media su tutti i parchi i mesi estivi non sono i più affollati, e dicembre spicca verso l’alto, perché d’inverno restano aperti solo i parchi con programma natalizio. Il riepilogo mensile qui sopra lo mostra mese per mese. Per un parco preciso conta il suo calendario.',
   },
   {
     question: 'Vale la pena visitare con la pioggia?',
     answer:
-      'Spesso sì: il maltempo scoraggia molti visitatori e le code si accorciano — soprattutto per le montagne russe, che funzionano comunque. Ma il trucco da esperti funziona solo finché non hanno tutti la stessa idea; per questo il nostro modello di previsione mette in conto il meteo direttamente.',
+      'Spesso sì: il maltempo scoraggia molti visitatori e le code si accorciano, soprattutto davanti alle montagne russe, che con la pioggia continuano a girare. Ma il trucco da esperti funziona solo finché non hanno tutti la stessa idea; per questo il nostro modello di previsione mette in conto il meteo direttamente.',
   },
   {
     question: 'Come trovo il giorno migliore per un parco specifico?',
     answer:
-      'Questa pagina mostra gli schemi globali come punto di partenza. Per un parco preciso, apri il suo calendario dell’affluenza: mostra per ogni singola giornata, fino a un anno in anticipo, una previsione verde, gialla o rossa — comprese le vacanze scolastiche e i giorni festivi di quella regione.',
+      'Questa pagina mostra gli schemi globali come punto di partenza. Per un parco preciso, apri il suo calendario dell’affluenza: mostra per ogni giornata pubblicata una previsione verde, gialla o rossa, comprese le vacanze scolastiche e i giorni festivi di quella regione.',
   },
   {
     question: 'Da dove arrivano questi dati?',
     answer:
-      'Dai tempi di attesa effettivamente registrati di oltre 200 parchi negli ultimi due anni. Ogni parco viene normalizzato sulla propria media e poi mediato su tutti i parchi, così la classifica è equa e non viene dominata dai parchi più grandi.',
+      'Dai tempi di attesa che abbiamo registrato noi stessi in oltre 200 parchi. Perché la classifica non finisca in mano ai parchi più grandi, ogni parco viene prima riportato alla propria media e solo dopo si fa la media fra tutti.',
   },
 ] as const;
 
@@ -84,21 +84,21 @@ export function ContentIT() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Il periodo migliore per visitare un parco divertimenti non è un segreto — è uno schema.
-          Quando un parco si riempie dipende dal giorno della settimana, dal calendario delle
-          vacanze scolastiche, dal meteo e dalla stagione; tutti e quattro lasciano tracce nei tempi
-          di attesa.
+          Quando un parco divertimenti si riempie è sorprendentemente prevedibile. Giorno della
+          settimana, vacanze scolastiche, meteo e stagione decidono in buona parte se davanti alle
+          montagne russe aspetti dieci minuti o un’ora e mezza. E siccome ogni visita lascia dietro
+          di sé dei tempi di attesa, il conto si può rifare con una certa precisione.
         </Lead>
         <P>
-          Queste tracce le abbiamo misurate su oltre 200 parchi negli ultimi due anni. Più sotto: i
-          giorni feriali e i mesi più tranquilli, le ore più tranquille della giornata, le date da
-          schivare — e il calendario dell’affluenza che trasforma tutto questo nel singolo giorno
-          migliore per il tuo parco.
+          È quello che abbiamo fatto: analizzare i tempi di attesa registrati in oltre 200 parchi.
+          Qui trovi i giorni feriali e i mesi più tranquilli, le ore migliori della giornata e le
+          date da schivare. Poi il calendario dell’affluenza ti cerca il giorno giusto per il parco
+          che hai in mente.
         </P>
         <Highlight>
-          In breve: dal martedì al giovedì fuori dalle vacanze scolastiche, arrivare all’apertura e
-          lasciare che una previsione meteo incerta faccia per te la selezione della folla. Tutto
-          ciò che segue sono le clausole in piccolo.
+          Non hai voglia di leggere tutto? Vai in settimana, meglio dal martedì al giovedì e fuori
+          dalle vacanze scolastiche, arriva puntuale all’apertura e rallegrati quando il meteo è
+          mediocre. Il resto sono dettagli.
         </Highlight>
       </div>
 
@@ -111,9 +111,9 @@ export function ContentIT() {
         icon={CalendarRange}
       >
         <PG>
-          L’affluenza non è casuale: quando si riempie segue schemi chiari di giorno della
-          settimana, vacanze, meteo e stagione. Qui i due più grandi — in media su tutti i parchi,
-          dai dati reali sui tempi di attesa:
+          Partiamo dalle due leve più grandi, il giorno della settimana e il mese. Entrambi li
+          abbiamo mediati su tutti i parchi, ogni volta dai tempi di attesa davvero misurati. Ecco
+          come viene:
         </PG>
         <BestTimesData locale="it" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="it" />
@@ -128,8 +128,8 @@ export function ContentIT() {
         icon={Clock}
       >
         <P>
-          Non conta solo il giorno, ma anche l’ora. Tre finestre sono quasi ovunque le più
-          tranquille:
+          Non conta solo il giorno, ma anche l’ora. Queste quattro finestre sono quasi ovunque le
+          più tranquille:
         </P>
         <TouchpointGrid
           items={[
@@ -141,7 +141,7 @@ export function ContentIT() {
             {
               icon: Users,
               title: 'Intorno all’ora di pranzo',
-              body: 'Quando la folla mangia, le code si svuotano — un buon momento per le attrazioni più gettonate (e per mangiare più tardi).',
+              body: 'Quando la folla mangia, le code si svuotano: prenditi quel tempo per le attrazioni più gettonate e mangia più tardi.',
             },
             {
               icon: Sun,
@@ -151,7 +151,7 @@ export function ContentIT() {
             {
               icon: Ticket,
               title: 'Durante il grande spettacolo serale',
-              body: 'Una parata o dei fuochi d’artificio impegnano migliaia di ospiti in una volta — i tempi di attesa delle montagne russe crollano in modo misurabile.',
+              body: 'Una parata o dei fuochi d’artificio impegnano migliaia di ospiti in una volta, e alle montagne russe si liberano posti.',
             },
           ]}
         />
@@ -159,11 +159,12 @@ export function ContentIT() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba che sfreccia nella giungla a Phantasialand"
           kicker="Rope drop"
-          title="La prima ora è d’oro"
+          title="Arrivare presto aiuta, ma non su ogni attrazione"
         >
-          Chi è dentro all’apertura sale sulle attrazioni di punta spesso con una frazione
-          dell’attesa successiva. La prima ora sostituisce regolarmente due ore del pomeriggio —
-          niente fast-pass, solo una sveglia mattutina.
+          Sulle attrazioni di punta la prima ora dopo l’apertura rende spesso più giri di due nel
+          pomeriggio. Non vale però ovunque: certe attrazioni restano piene uguali per tutta la
+          giornata, altre si animano solo dopo pranzo. La pagina di ogni attrazione riporta la sua
+          curva della giornata, e lì si legge anche se per quella la sveglia prima conviene.
         </SplitFigure>
       </SectionShell>
 
@@ -171,7 +172,7 @@ export function ContentIT() {
       <SectionShell id="avoid" index="03" kicker="Giorni rossi" title="Date da evitare" icon={Ban}>
         <PG>
           Tanto importanti quanto i giorni tranquilli sono quelli affollati. In queste date
-          aspettati la ressa — mettile in conto, oppure pianifica per aggirarle:
+          aspettati la ressa. Mettile in conto, oppure pianifica per aggirarle:
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -181,21 +182,21 @@ export function ContentIT() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          La classica combinazione di punta — un sabato di vacanza in piena estate — mette insieme
+          La classica combinazione di punta (un sabato di vacanza in piena estate) mette insieme
           quasi tutti i fattori di affluenza in una volta. Se puoi, prendi piuttosto il martedì
-          successivo: stesso parco, metà coda.
+          successivo. Lo stesso parco sembra tutt’altro posto.
         </SplitFigure>
         <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
               title: 'Weekend e giorni festivi',
-              body: 'Il sabato e la domenica sono i più affollati su tutti i parchi; i giorni festivi e i lunghi weekend rincarano la dose.',
+              body: 'Il sabato è il giorno più affollato su tutti i parchi, con un distacco netto dal resto della settimana. I giorni festivi e i lunghi weekend rincarano la dose.',
             },
             {
               icon: CalendarRange,
               title: 'Vacanze scolastiche',
-              body: 'Durante le vacanze della tua regione e di quelle vicine l’affluenza sale nettamente — soprattutto le vacanze estive.',
+              body: 'Durante le vacanze della tua regione e di quelle vicine l’affluenza sale nettamente, e le vacanze estive sono l’alta stagione assoluta.',
             },
             {
               icon: Sun,
@@ -205,7 +206,7 @@ export function ContentIT() {
             {
               icon: Sparkles,
               title: 'Le novità nella loro prima estate',
-              body: 'Una montagna russa nuova di zecca attira folle nella sua stagione d’apertura — aspettati lunghe code alle anteprime.',
+              body: 'Una montagna russa nuova di zecca attira folle nella sua stagione d’apertura: alle anteprime aspettati code lunghe.',
             },
           ]}
         />
@@ -224,22 +225,17 @@ export function ContentIT() {
             {
               icon: CalendarDays,
               title: 'Giorno feriale invece del weekend',
-              body: 'La leva più grande di tutte: un martedì invece di un sabato può dimezzare i tempi di attesa.',
+              body: 'La leva più grande del calendario. In media su tutti i parchi il sabato è il giorno che si allontana di più dalla media verso l’alto, il martedì quello che se ne allontana di più verso il basso.',
             },
             {
               icon: CloudRain,
               title: 'Sfrutta il meteo con astuzia',
-              body: 'Una previsione incerta scoraggia in molti. Chi è attrezzato contro la pioggia fa meno coda — una giacca impermeabile batte l’ombrello.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Arriva presto',
-              body: 'Il rope drop batte quasi ogni altra tattica. La prima ora spesso sostituisce due ore del pomeriggio.',
+              body: 'Una previsione incerta tiene molti a casa. Se una pioggerella non ti spaventa, aspetti nettamente meno. La giacca impermeabile batte l’ombrello.',
             },
             {
               icon: Ticket,
               title: 'Single rider e code virtuali',
-              body: 'Sali da solo o mettiti in coda in versione digitale mentre mangi o fai shopping — tempo regalato nei giorni affollati.',
+              body: 'Sali da solo o mettiti in coda in versione digitale mentre mangi o fai shopping: nei giorni affollati è tempo regalato.',
             },
           ]}
         />
@@ -259,14 +255,14 @@ export function ContentIT() {
       >
         <P>
           Gli schemi qui sopra sono il punto di partenza. Il giorno migliore esatto te lo svela il
-          calendario dell’affluenza di ogni pagina di parco — verde, giallo, rosso, fino a un anno
-          in anticipo, con le vacanze e i giorni festivi della regione interessata.
+          calendario dell’affluenza di ogni pagina di parco: verde, giallo, rosso, per ogni giornata
+          pubblicata, con le vacanze e i giorni festivi della regione interessata.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="L’attrazione del palazzo Symbolica a Efteling"
           kicker="Verde, giallo, rosso"
-          title="Un colore al giorno, un anno in anticipo"
+          title="Un colore al giorno, fin dove arriva il calendario"
           badge={<CrowdLevelBadge level="low" />}
         >
           Ogni pagina di parco porta una previsione giorno per giorno che tiene conto delle vacanze
@@ -280,7 +276,7 @@ export function ContentIT() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Alimentato da Fancast"
-        body="Il nostro modello di previsione — anticipa l’affluenza fino a 365 giorni in anticipo e si dà un voto in modo trasparente."
+        body="Il nostro modello di previsione stima l’affluenza per ogni giornata pubblicata e nel farlo si dà un voto da sé."
       />
 
       {/* 06 — FAQ */}

@@ -134,12 +134,12 @@ nochmal.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Was Troy wirklich kostet, über zwei Saisons gemessen
+## Was Troy wirklich kostet, über 150 Betriebstage gemessen
 
-Über die letzten beiden Saisons, gerechnet aus über 150 Betriebstagen mit
-Wartezeit-Daten, liegt Troys **typische Wartezeit bei 16 Minuten** (Median).
-Selbst das 90. Perzentil, also der Wert, unter dem neun von zehn Messungen
-liegen, kommt nur auf **21 Minuten**. Das ist nicht der tote Dienstag im März,
+Gerechnet aus über 150 Betriebstagen mit
+Wartezeit-Daten, liegt Troys typische Wartezeit bei **einer knappen
+Viertelstunde** (Median). Selbst an dem einen Tag von zehn, an dem am meisten los
+ist, bleibt sie unter einer halben Stunde. Das ist nicht der tote Dienstag im März,
 das ist der Schnitt über alle Öffnungstage.
 
 Siebzig Kilometer weiter nordwestlich steht im [Efteling](ref:efteling)
@@ -193,7 +193,7 @@ Wing Coaster heißt: Du sitzt links und rechts neben der Schiene, ohne Bahn übe
 oder unter dir, und weil dein Sitz die Kurven weiter außen mitgeht als das
 Fahrzeug, fühlt sich jede Drehung größer an, als sie ist. Unterwegs sprüht ein
 Phönix Nebel über dich, was mit Physik nichts zu tun hat und die Sache trotzdem
-besser macht. Wartezeit: dieselben 16 Minuten wie bei Troy.
+besser macht. Wartezeit: dieselbe Größenordnung wie bei Troy.
 
 ![Die Station von Fēnix mit blauer Schiene, Wing-Coaster-Zug und Feuerschalen an Ketten unter Holzbalken | Die Station von Fēnix: Feuerschalen an Ketten, schwere Balken, und der Zug mit den Sitzen neben der Schiene. | wide](/media/toverland/background-16x9.jpg)
 
@@ -201,7 +201,7 @@ besser macht. Wartezeit: dieselben 16 Minuten wie bei Troy.
 zweiter Liebling hier. Vekoma baute 2004 in Sevenum den weltweiten Prototyp der
 Motorrad-Achterbahn: Du sitzt nicht, du liegst auf einem Motorrad, Hände am
 Lenker, Knie angezogen, und wirst dann als Launch Coaster losgeschossen. Eine
-unbequeme, absurde, wunderbare Bahn. Mit einem Median von 21 Minuten hat
+unbequeme, absurde, wunderbare Bahn. Mit ihrem Median hat
 ausgerechnet sie die längste typische Wartezeit aller Coaster im Park, was daran
 liegt, dass man einzeln und liegend einsteigt und das eben dauert.
 
@@ -391,10 +391,9 @@ genug, dass so etwas geht, und offenbar wichtig genug, dass es gemacht wird.
 Wer länger nicht da war, wird eine Attraktion vermissen. Am **17. Mai 2026**
 hatte **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** im Wunderwald
 zum letzten Mal geöffnet, die Mack-Bobbahn von 2007, auf der man mit einem
-Bremshebel selbst bestimmte, wie schnell es bergab ging. In unserer Historie war
-sie über Jahre die Attraktion mit der längsten Wartezeit des ganzen Parks, im
-Median 34 Minuten, und an vollen Tagen standen dort auch mal 60 oder 90 Minuten
-an.
+Bremshebel selbst bestimmte, wie schnell es bergab ging. Solange wir sie gemessen haben, war
+sie die Attraktion mit der längsten Wartezeit des ganzen Parks, und an vollen
+Tagen standen dort auch mal 60 oder 90 Minuten an.
 
 Das lag an einer Rechnung, die nie aufgehen konnte: In einen Wagen passten eine,
 höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushing,
@@ -430,27 +429,23 @@ Nach Halloween macht der Park kurz zu und öffnet vom **28. November 2026 bis 17
 Schlittschuh- und Curlingbahn, mittwochs und an Wochenenden plus durchgehend über
 die Weihnachtsferien. Die Wasserattraktionen pausieren dann, dafür kommt die
 Weltpremiere dazu. Wunderschön, nur eben kein Geheimtipp mehr, sobald die Lichter
-an sind: Dezember und Januar sind in unseren Daten die anstrengendsten Monate des
-Jahres.
+an sind: Der Dezember gehört in unseren Daten zu den vollsten Monaten des Jahres.
 
 ## Wann du hinfahren solltest
 
 Die Antwort fällt entspannt aus: fast immer.
 
-**Nach Monat** ist der Juni das Optimum (typisch 18 Minuten im Parkschnitt),
-gefolgt von Mai und Juli mit 20 bzw. 22 Minuten. Am anstrengendsten ist der
-**April** mit 25 Minuten, wenn Ostern, Königstag und die niederländischen
-Maiferien zusammenfallen, danach die Winterwochen im **Dezember und Januar** mit
-31 bzw. 26 Minuten. Das überrascht viele: Der vollste Zeitraum ist nicht der
-Sommer, sondern die kurze, stark gefragte Wintersaison, in der nur ein Teil der
+**Nach Monat** liegen März bis Juli eng beieinander, und darüber heraus ragen
+der **August** und die Winterwochen im **Dezember**. Das überrascht viele: Der
+vollste Zeitraum ist nicht nur der Sommer, sondern auch die kurze, stark
+gefragte Wintersaison, in der nur ein Teil der
 Attraktionen läuft und der Park nur mittwochs und an Wochenenden öffnet. Eine
 Einschränkung dazu: Winter und Vorsaison haben so wenige Öffnungstage, dass
 hinter diesen Monatswerten deutlich weniger Messtage stehen als hinter den
 Sommermonaten. Die Richtung ist eindeutig, die Nachkommastelle nicht.
 
-**Nach Wochentag** gehen die Zahlen kaum auseinander. Am vollsten ist es samstags
-(25 Minuten) und freitags (24 Minuten), von Sonntag bis Mittwoch sind es überall
-20 Minuten. Im Phantasialand liegen zwischen einem Dienstag und einem Samstag
+**Nach Wochentag** gehen die Zahlen kaum auseinander. Am vollsten ist es freitags und
+samstags, und auch dort ist der Abstand zum Rest der Woche klein. Im Phantasialand liegen zwischen einem Dienstag und einem Samstag
 Welten.
 
 Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
@@ -462,7 +457,7 @@ Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limbu
 ```
 
 Und so sieht der Andrang über Monate und Wochentage aus, gerechnet aus den
-letzten beiden Saisons:
+gemessenen Öffnungstagen:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -551,29 +546,28 @@ Ja, besonders für Achterbahnfans, die genug von Schlangen haben. Der Park ist m
 rund einer Million Gästen pro Jahr klein im Vergleich zum Efteling oder zum
 Europa-Park, hat aber mit [Troy](ref:attractiepark-toverland/troy) eine der besten
 Holzachterbahnen Europas und mit [Fēnix](ref:attractiepark-toverland/fenix) den längsten Wing
-Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten.
+Coaster des Kontinents, bei typischen Wartezeiten von gut einer Viertelstunde.
 
 ### Wie lang sind die Wartezeiten im Toverland?
 
-Über die letzten beiden Saisons liegt die typische Wartezeit im Parkschnitt bei
-**20 Minuten**, Troy und Fēnix bei je **16 Minuten** im Median. Am höchsten sind
-die Werte im Dezember und Januar sowie im April. Aktuelle Zahlen findest du auf
+Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
+einer knappen Viertelstunde, und Troy und Fēnix liegen im selben Bereich. Aktuelle Zahlen findest du auf
 der [Toverland-Parkseite](ref:attractiepark-toverland).
 
 ### Wann ist im Toverland am wenigsten los?
 
-**Juni** ist in unseren Daten der entspannteste Monat (typisch 18 Minuten),
-gefolgt von Mai und Juli. Wochentags ist es etwas leerer als am Wochenende, aber
-der Unterschied ist klein (20 gegenüber 25 Minuten am Samstag). Meide den April,
-die niederländischen Mai- und Herbstferien und die kurze Wintersaison. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
+März bis Juli liegen in unseren Daten eng beieinander und bilden den ruhigsten
+Teil des Jahres. Wochentags ist es etwas leerer als am Wochenende, aber der
+Unterschied ist klein. Aus dieser Spanne heraus stechen die niederländischen
+Mai- und Herbstferien und die kurze Wintersaison. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
 
 ### Braucht man im Toverland einen Fast Pass?
 
 Es gibt keinen. Das Toverland verkauft überhaupt keinen Fast Pass; die einzige
 Ausnahme ist der **Fear Pass** für die Haunted Experiences während der
 Halloween Nights (62,50 €). Eine kostenlose Single-Rider-Spur gibt es nur am
-Fallturm Dragonwatch. Bei 16-Minuten-Medianen an den Headlinern brauchst du an
-einem normalen Tag ohnehin keine Abkürzung.
+Fallturm Dragonwatch. Bei den Medianen, die an den Headlinern stehen, brauchst du an einem normalen
+Tag ohnehin keine Abkürzung.
 
 ### Ist Troy die beste Holzachterbahn Europas?
 
@@ -662,4 +656,4 @@ anderen Parks Europas kannst du es vergessen.
 - Halloween Days & Nights, Scare Zones und Fear Pass: [Scare Zones & Experiences (offiziell)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Anreise, Bus & Parken: [Adresse und Route (offiziell)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in der Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wartezeit- und Crowd-Daten: eigene Historie aus zwei Saisons, [Toverland auf park.fan](ref:attractiepark-toverland)
+- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Toverland auf park.fan](ref:attractiepark-toverland)

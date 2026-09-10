@@ -238,8 +238,8 @@ komende halfuur gegarandeerd ergens anders zitten dan voor jouw favoriete
 coaster. De wachttijden in de rest van het park halen navenant merkbaar adem.
 In de live grafieken op park.fan kun je dat effect in realtime zien: tijdens de
 grote avondshow zakken de wachttijden van de headliners meetbaar in, en wie de
-show al kent rijdt dat uur het voordeligst. Voor precies zulke momenten
-verversen we de wachttijden elke minuut.
+show al kent rijdt dat uur het voordeligst. Voor precies zulke momenten lezen
+we de wachttijden elke vijf minuten opnieuw in.
 
 ![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling, een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -376,13 +376,13 @@ verlaat het station als winnaar. Peak-end-regel, we herinneren het ons: de
 beleving eindigt beter dan verwacht, en precies zo wordt ze opgeslagen. De
 aanduiding liegt dus echt, maar ze liegt in jouw voordeel.
 
-Precies aan deze formule hangt park.fan. Onze live wachttijden laten je elke minuut zien wat L en λ werkelijk doen, en
-wanneer ons model wachttijden tot 365 dagen vooruit voorspelt, modelleert het
-in de kern niets anders dan die twee grootheden: **vraag** (hoeveel mensen
-willen vandaag naar deze baan?) en **doorstroom** (hoeveel werkt hij er weg?).
-Little zou vermoedelijk verbaasd zijn waar zijn formule tegenwoordig allemaal
-voor gebruikt wordt. Hoe vaak onze voorspellingen de realiteit raken, staat op
-de [Fancast-pagina](/fancast).
+Precies aan deze formule hangt park.fan. Onze live wachttijden laten je elke
+vijf minuten zien wat L en λ werkelijk doen, en wanneer ons model wachttijden
+tot 365 dagen vooruit voorspelt, modelleert het in de kern niets anders dan die
+twee grootheden: **vraag** (hoeveel mensen willen vandaag naar deze baan?) en
+**doorstroom** (hoeveel werkt hij er weg?). Little zou vermoedelijk verbaasd
+zijn waar zijn formule tegenwoordig allemaal voor gebruikt wordt. Hoe vaak onze
+voorspellingen de realiteit raken, staat op de [Fancast-pagina](/fancast).
 
 ## Waarom Peter Pan’s Flight altijd “escaleert”
 
@@ -441,7 +441,7 @@ minuten.
 
 **Het [Europa-Park](ref:europa-park?bare) is het tegenmodel.** Duitslands
 grootste park, na Disneyland Paris het drukstbezochte van Europa, verdeelt zijn
-ruim zes miljoen gasten per jaar over **dertien achtbanen** plus tientallen
+ruim zes miljoen gasten per jaar over **vijftien achtbanen** plus tientallen
 themaritten. Die pure hoeveelheid parallelle capaciteit werkt als een
 overdrukventiel: de vraag spreidt zich, en nauwelijks een rij loopt permanent
 in verzadiging. Daarom voelen zelfs volle dagen in Rust zelden als Orlando, en
@@ -470,7 +470,7 @@ Precies die profielen zijn de reden waarom elke parkpagina op park.fan naast de
 live wachttijden ook de langetermijnstatistieken toont. Want “druk” is
 relatief: 45 minuten is in Brühl een slechte dag en in het Magic Kingdom een
 cadeau. Bekijk dezelfde dataset voor beide parken, typische wachttijden per
-maand en weekdag, uit de laatste twee seizoenen.
+maand en weekdag, uit alle gemeten openingsdagen.
 
 **Eerst het [Phantasialand](ref:phantasialand?bare) in Brühl**, het compacte
 uiterste geval: gaat hier een getal omhoog, dan steil, omdat alles zich op
@@ -589,8 +589,9 @@ Korter wordt de volgende rij van 60 minuten er niet van. Maar hij leest anders.
 Drie vragen blijven over, en voor elk heeft park.fan een antwoord:
 
 - **Hoe lang is de rij _echt_, precies nu?** Daarvoor zijn onze **live
-  wachttijden**: ruim 200 parken, 7.000 attracties, elke minuut. Little’s Law
-  in realtime, zonder dat je de 640 mensen voor je zelf hoeft te tellen.
+  wachttijden**: ruim 200 parken, 7.000 attracties, elke vijf minuten opnieuw.
+  Little’s Law in realtime, zonder dat je de 640 mensen voor je zelf hoeft te
+  tellen.
 - **Is dat nu veel of normaal?** Dat verraden de
   **langetermijnstatistieken** van elke attractie, want 45 minuten is, zoals we
   gezien hebben, afhankelijk van het park een ergernis of een lot uit de

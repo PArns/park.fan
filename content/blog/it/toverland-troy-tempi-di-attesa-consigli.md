@@ -132,13 +132,12 @@ anni fa e la ricorda come «fantastica, ma ruvida»: rifalla.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Quanto costa davvero Troy, misurato su due stagioni
+## Quanto costa davvero Troy, misurato su 150 giorni di apertura
 
-Nelle ultime due stagioni, calcolato su più di 150 giorni di apertura con dati di
-attesa, il **tempo di attesa tipico di Troy è di 16 minuti** (mediana). Persino
-il 90° percentile, il valore sotto cui cadono nove misurazioni su dieci, arriva
-solo a **21 minuti**. Non è il martedì morto di marzo, è la media su tutti i
-giorni di apertura.
+Calcolato su più di 150 giorni di apertura con dati di attesa, il tempo di
+attesa tipico di Troy è di **un quarto d’ora scarso** (mediana). Persino in quel
+giorno su dieci in cui c’è più movimento resta sotto la mezz’ora. Non è il
+martedì morto di marzo, è la media su tutti i giorni di apertura.
 
 Settanta chilometri più a nord-ovest, all’[Efteling](ref:efteling) c’è
 **Joris en de Draak**, anch’esso di GCI, più giovane di tre anni, e con il suo
@@ -192,7 +191,7 @@ rotaia, senza tracciato sopra o sotto di te, e siccome il tuo sedile prende le
 curve più all’esterno rispetto al veicolo, ogni rotazione sembra più ampia di
 quanto sia. Lungo il percorso una fenice ti spruzza addosso della nebbia, cosa
 che con la fisica non c’entra nulla e che comunque migliora la faccenda. Attesa:
-gli stessi 16 minuti di Troy.
+lo stesso ordine di grandezza di Troy.
 
 ![La stazione di Fēnix con rotaia azzurra, treno del wing coaster e bracieri appesi a catene sotto travi di legno | La stazione di Fēnix: bracieri su catene, travi massicce e il treno con i sedili accanto alla rotaia. | wide](/media/toverland/background-16x9.jpg)
 
@@ -200,7 +199,7 @@ gli stessi 16 minuti di Troy.
 mio secondo preferito qui. Nel 2004 Vekoma ha costruito a Sevenum il prototipo
 mondiale del coaster in moto: non sei seduto, sei sdraiato su una moto, mani sul
 manubrio, ginocchia raccolte, e poi vieni lanciato. Un’attrazione scomoda,
-assurda, splendida. Con una mediana di 21 minuti è proprio lei ad avere l’attesa
+assurda, splendida. Con la sua mediana è proprio lei ad avere l’attesa
 tipica più lunga di tutti i coaster del parco, e il motivo è che si sale uno
 alla volta e da sdraiati, e questo richiede tempo.
 
@@ -395,9 +394,10 @@ sia possibile, ed evidentemente abbastanza importante perché venga fatta.
 Chi non ci va da un po' sentirà la mancanza di un’attrazione. Il **17 maggio
 2026** la **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** nel
 Wunderwald ha aperto per l’ultima volta, la pista da bob Mack del 2007, su cui
-con una leva del freno decidevi tu quanto correre in discesa. Nel nostro storico
-è stata per anni l’attrazione con l’attesa più lunga di tutto il parco, mediana
-34 minuti, e nei giorni pieni ci sono stati anche 60 o 90 minuti di fila.
+con una leva del freno decidevi tu quanto correre in discesa. Per tutto il tempo
+in cui l’abbiamo misurata è stata l’attrazione con l’attesa più lunga di tutto il
+parco,
+e nei giorni pieni ci sono stati anche 60 o 90 minuti di fila.
 
 Il motivo era un conto che non poteva tornare: in una vettura entravano una, al
 massimo due persone. E siccome all’uscita era appeso il record in corso con
@@ -435,28 +435,26 @@ Dopo Halloween il parco chiude brevemente e riapre dal **28 novembre 2026 al
 Natale, pista di pattinaggio e di curling, il mercoledì e nei fine settimana più
 in continuo durante le vacanze di Natale. Le attrazioni acquatiche si fermano, e
 in compenso si aggiunge la prima mondiale. Bellissimo, solo che non è più un
-segreto una volta accese le luci: dicembre e gennaio sono, nei nostri dati, i
-mesi più impegnativi dell’anno.
+segreto una volta accese le luci: dicembre è, nei nostri dati, tra i mesi più
+pieni dell’anno.
 
 ## Quando andarci
 
 La risposta è molto rilassata: quasi sempre.
 
-**Per mese** giugno è l’ottimo (tipicamente 18 minuti di media nel parco),
-seguito da maggio e luglio con 20 e 22 minuti. Il più impegnativo è **aprile**
-con 25 minuti, quando Pasqua, il Giorno del Re e le vacanze olandesi di maggio
-coincidono, poi le settimane invernali di **dicembre e gennaio** con 31 e
-26 minuti. Questo sorprende molti: il periodo più pieno non è l’estate, ma la
-breve stagione invernale, molto richiesta, in cui funziona solo una parte delle
-attrazioni e il parco apre soltanto il mercoledì e nei fine settimana. Una
-precisazione: inverno e prestagione hanno così pochi giorni di apertura che
-dietro quei valori mensili ci sono molti meno giorni di misurazione che dietro i
-mesi estivi. La direzione è chiara, il decimale no.
+**Per mese** da marzo a luglio i valori stanno vicini, e sopra spiccano
+**agosto** e le settimane invernali di **dicembre**. Questo sorprende molti: il
+periodo più pieno non è solo l’estate, ma anche la breve stagione invernale,
+molto richiesta, in cui funziona solo una parte delle attrazioni e il parco apre
+soltanto il mercoledì e nei fine settimana. Una precisazione: inverno e
+prestagione hanno così pochi giorni di apertura che dietro quei valori mensili
+ci sono molti meno giorni di misurazione che dietro i mesi estivi. La direzione
+è chiara, il decimale no.
 
-**Per giorno della settimana** i numeri si distanziano appena. Il giorno più
-pieno è il sabato (25 minuti), poi il venerdì (24 minuti); da domenica a
-mercoledì sono 20 minuti dappertutto. A Phantasialand tra un martedì e un sabato
-ci sono mondi di differenza.
+**Per giorno della settimana** i numeri si distanziano appena. I giorni più
+pieni sono il venerdì e il sabato, e anche lì la distanza dal resto della
+settimana è piccola. A Phantasialand tra un martedì e un sabato ci sono mondi di
+differenza.
 
 Su questo non ci si può fidare non appena calendari scolastici olandesi e
 tedeschi, meteo e orari di apertura si sovrappongono, e nella zona di confine del
@@ -467,7 +465,7 @@ Limburgo si sovrappongono di continuo. Ecco i prossimi giorni più tranquilli:
 ```
 
 E così si distribuisce l’affluenza per mesi e giorni della settimana, calcolata
-sulle ultime due stagioni:
+sui giorni di apertura misurati:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -558,29 +556,29 @@ Sì, soprattutto per gli appassionati di coaster stufi delle file. Con circa un
 milione di ospiti l’anno il parco è piccolo rispetto all’Efteling o a
 Europa-Park, ma ha in [Troy](ref:attractiepark-toverland/troy) uno dei migliori coaster in
 legno d’Europa e in [Fēnix](ref:attractiepark-toverland/fenix) il wing coaster più lungo del
-continente, con attese tipiche di 16 minuti.
+continente, con attese tipiche di un quarto d’ora abbondante.
 
 ### Quanto si aspetta a Toverland?
 
-Nelle ultime due stagioni l’attesa tipica sul complesso del parco è di
-**20 minuti**, con Troy e Fēnix a **16 minuti** di mediana ciascuno. I valori
-più alti sono quelli di dicembre e gennaio e di aprile. I numeri aggiornati si
-trovano sulla [pagina del parco Toverland](ref:attractiepark-toverland).
+Su tutti i giorni di apertura misurati l’attesa tipica sul complesso del parco è
+di un quarto d’ora scarso, e Troy e Fēnix stanno nello stesso ordine. I numeri
+aggiornati si trovano sulla [pagina del parco
+Toverland](ref:attractiepark-toverland).
 
 ### Quando c’è meno gente a Toverland?
 
-**Giugno** è il mese più rilassato secondo i nostri dati (tipicamente 18
-minuti), seguito da maggio e luglio. Nei giorni feriali è un po' più vuoto che
-nel fine settimana, ma la differenza è piccola (20 contro 25 minuti il sabato).
-Evita aprile, le vacanze olandesi di maggio e d’autunno e la breve stagione
-invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:attractiepark-toverland?calendar).
+Da marzo a luglio i valori nei nostri dati stanno vicini e formano la parte più
+tranquilla dell’anno. Nei giorni feriali è un po' più vuoto che nel fine
+settimana, ma la differenza è piccola.
+Da quella fascia spiccano le vacanze olandesi di maggio e d’autunno e la breve
+stagione invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:attractiepark-toverland?calendar).
 
 ### Serve un pass salta-fila a Toverland?
 
 Non esiste. Toverland non vende alcun pass salta-fila; l’unica eccezione è il
 **Fear Pass** per le haunted experience durante le Halloween Nights (62,50 €).
 Una fila single rider gratuita c’è solo alla torre di caduta Dragonwatch. Con
-mediane di 16 minuti sui pezzi forti, in una giornata normale non serve
+le mediane dei pezzi forti, in una giornata normale non serve
 comunque nessuna scorciatoia.
 
 ### Troy è il miglior coaster in legno d’Europa?
@@ -669,4 +667,4 @@ maggior parte degli altri parchi d’Europa puoi scordartelo.
 - Halloween Days & Nights, scare zone e Fear Pass: [Scare zone & experience (ufficiale)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [la nostra guida ad Halloween](/blog/halloween-parchi-divertimenti-2026)
 - Come arrivare, bus e parcheggio: [Indirizzo e percorso (ufficiale)](https://www.toverland.com/en/contact/adress-route)
 - Dietro le quinte nella Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Dati su attese e affluenza: storico proprio di due stagioni, [Toverland su park.fan](ref:attractiepark-toverland)
+- Dati su attese e affluenza: storico proprio da dicembre 2025, [Toverland su park.fan](ref:attractiepark-toverland)

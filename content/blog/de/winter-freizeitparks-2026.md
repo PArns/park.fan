@@ -234,8 +234,7 @@ Termine: [walibi.be → Walibi Winter](https://www.walibi.be/walibi-winter/en).
 Geschichte im Winter aufgemacht und wiederholt das 2026/27. Sechs Themenzonen,
 darunter Santa City, Snow Valley, Lake of Frost mit Eisbahn und Land of Fire &
 Ice, dazu Winterparade, Feuer-und-Licht-Show und die Weihnachtsbaum-Illumination.
-Geöffnet ist an 18 Tagen in diesem Fenster, von 11 bis 19 Uhr, am 24. und
-31. Dezember bis 18 Uhr; am 25. Dezember und 1. Januar bleibt der Park zu.
+Geöffnet ist an 18 Tagen in diesem Fenster, von 11 bis 19 Uhr, am 24. und 31. Dezember bis 18 Uhr; am 25. Dezember und 1. Januar bleibt der Park zu.
 
 In Kasterlee ist **alles im Tagesticket drin**, vom Eislaufen bis zum Eispalast. Zusatzbuchungen gibt es keine.
 

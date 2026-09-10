@@ -343,8 +343,8 @@ Geburtstag, an dem Tag mit Programm bis 23 Uhr.
 
 ## Zwanzig Minuten, und eine Schlange, die nie kürzer wird
 
-Unsere Wartezeit-Historie für Bottrop reicht bis zum **26. August 2025** zurück
-und umfasst **135 auswertbare Öffnungstage**. Über alle Wochentage gerechnet
+Unsere Wartezeit-Historie für Bottrop beginnt im **Dezember 2025** und umfasst
+**135 auswertbare Öffnungstage**. Über alle Wochentage gerechnet
 liegt die typische Wartezeit im Parkschnitt bei zwanzig Minuten (Median).
 
 Die zehn Attraktionen, an denen du am längsten stehst:
@@ -354,8 +354,8 @@ Die zehn Attraktionen, an denen du am längsten stehst:
 ```
 
 Ganz oben steht keine Achterbahn mit 90 km/h, sondern eine Hallenfahrt mit 36.
-Van Helsing’s Factory hat den längsten Median im Park, direkt dahinter kommt die
-Wildwasserbahn aus dem Kinderbereich. Star Trek liegt im Mittelfeld, obwohl die
+Van Helsing’s Factory hat den längsten Median im Park, und dahinter liegen
+mehrere Bahnen gleichauf, darunter die Wildwasserbahn aus dem Kinderbereich. Star Trek liegt im Mittelfeld, obwohl die
 meisten wegen dieser Bahn überhaupt anreisen.
 
 Das hat wenig mit Beliebtheit zu tun und viel mit Durchsatz. Van Helsing schafft
@@ -393,7 +393,7 @@ der Movie Park nicht, dafür fährst du an einem normalen Tag mehr.
 
 > [!NOTE]
 > Eine Einschränkung, die für diesen Park besonders wichtig ist. Unsere Historie
-> beginnt Ende August 2025, und für **September, Oktober und November steht
+> beginnt im Dezember 2025, und für **September, Oktober und November steht
 > darin kein einziger auswertbarer Tag**. Ausgerechnet die Wochen des Halloween
 > Horror Festivals sind bei uns also nicht gemessen. Was der Kalender weiter
 > unten für den Herbst zeigt, ist eine Prognose, keine Messung.
@@ -647,7 +647,7 @@ Ob in Bottrop gerade Regen fällt, entscheidet über den halben Park:
 
 ### Wie lang sind die Wartezeiten im Movie Park?
 
-Über 135 gemessene Öffnungstage seit August 2025 liegt die typische Wartezeit im
+Über 135 gemessene Öffnungstage liegt die typische Wartezeit im
 Parkschnitt bei **zwanzig Minuten** (Median). Den höchsten Wert im Park hat
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), nicht die
 große Achterbahn. Die aktuellen Zahlen stehen auf der
@@ -770,4 +770,4 @@ Mond.
 - Anreise, Bahnhof Feldhausen, SB16: [Anfahrt & Parken (offiziell)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Ausflugstipp mit der Bahn (DB Regio NRW)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Herbstferien NRW 2026 (17. bis 31. Oktober): [Ferienordnung für Nordrhein-Westfalen (Bildungsportal NRW)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - Saisonbilanz 2024 und 30 Millionen Besucher seit 1996: [Saisonbilanz und MPHC Event 2024 (offiziell)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany begrüßt seinen 30-millionsten Besucher (EuroAmusement Professional)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Wartezeit- und Crowd-Daten: eigene Historie seit August 2025, [Movie Park Germany auf park.fan](ref:movie-park-germany)
+- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Movie Park Germany auf park.fan](ref:movie-park-germany)

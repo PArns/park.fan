@@ -130,13 +130,12 @@ geleden reed en haar herinnert als "geweldig, maar ruw": rijd haar nog eens.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Wat Troy echt kost, gemeten over twee seizoenen
+## Wat Troy echt kost, gemeten over 150 bedrijfsdagen
 
-Over de laatste twee seizoenen, gerekend uit meer dan 150 bedrijfsdagen met
-wachttijdgegevens, ligt Troys **typische wachttijd op 16 minuten** (mediaan).
-Zelfs het 90e percentiel, de waarde waaronder negen van de tien metingen
-liggen, komt maar op **21 minuten**. Dat is niet de dode dinsdag in maart, dat
-is het gemiddelde over alle openingsdagen.
+Gerekend uit meer dan 150 bedrijfsdagen met wachttijdgegevens ligt Troys
+typische wachttijd op **een klein kwartier** (mediaan). Zelfs op die ene dag van
+de tien waarop het het drukst is, blijft hij onder het half uur. Dat is niet de
+dode dinsdag in maart, dat is het gemiddelde over alle openingsdagen.
 
 Zeventig kilometer noordwestelijker staat in de [Efteling](ref:efteling)
 **Joris en de Draak**, ook van GCI, drie jaar jonger, als racende dubbelbaan een
@@ -186,7 +185,7 @@ langste van Europa. Wing coaster betekent: je zit links en rechts naast de rail,
 zonder baan boven of onder je, en omdat je stoel de bochten verder naar buiten
 meemaakt dan het voertuig, voelt elke draai groter dan hij is. Onderweg sproeit
 een feniks nevel over je heen, wat niets met natuurkunde te maken heeft en de
-zaak toch beter maakt. Wachttijd: dezelfde 16 minuten als bij Troy.
+zaak toch beter maakt. Wachttijd: dezelfde orde van grootte als bij Troy.
 
 ![Het station van Fēnix met blauwe rail, wingcoastertrein en vuurschalen aan kettingen onder houten balken | Het station van Fēnix: vuurschalen aan kettingen, zware balken, en de trein met de stoelen naast de rail. | wide](/media/toverland/background-16x9.jpg)
 
@@ -194,7 +193,7 @@ zaak toch beter maakt. Wachttijd: dezelfde 16 minuten als bij Troy.
 tweede favoriet hier. Vekoma bouwde in 2004 in Sevenum het wereldwijde prototype
 van de motorachtbaan: je zit niet, je ligt op een motor, handen aan het stuur,
 knieën opgetrokken, en wordt dan als launch coaster weggeschoten. Een
-ongemakkelijke, absurde, prachtige baan. Met een mediaan van 21 minuten heeft
+ongemakkelijke, absurde, prachtige baan. Met haar mediaan heeft
 uitgerekend zij de langste typische wachttijd van alle coasters in het park, wat
 komt doordat je één voor één en liggend instapt, en dat duurt nu eenmaal.
 
@@ -378,9 +377,9 @@ belangrijk genoeg dat het gebeurt.
 Wie er langer niet geweest is, zal een attractie missen. Op **17 mei 2026** was
 **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in het Wunderwald
 voor het laatst open, de Mack-bobbaan uit 2007, waarop je met een remhendel zelf
-bepaalde hoe snel het bergaf ging. In onze historie was ze jarenlang de
-attractie met de langste wachttijd van het hele park, mediaan 34 minuten, en op
-volle dagen stond er ook wel eens 60 of 90 minuten.
+bepaalde hoe snel het bergaf ging. Zolang we haar gemeten hebben, was ze de
+attractie met de langste wachttijd van het hele park, en op volle dagen stond er
+ook wel eens 60 of 90 minuten.
 
 Dat lag aan een rekensom die nooit kon uitkomen: in een wagen pasten één,
 hooguit twee personen. En omdat bij de uitgang het actuele record met foto hing,
@@ -417,26 +416,24 @@ Na halloween gaat het park kort dicht en opent het van **28 november 2026 tot
 en curlingbaan, woensdags en in de weekends plus doorlopend tijdens de
 kerstvakantie. De waterattracties pauzeren dan, daarvoor komt de wereldprimeur
 erbij. Prachtig, alleen geen geheime tip meer zodra de lichtjes aan zijn:
-december en januari zijn in onze data de zwaarste maanden van het jaar.
+december hoort in onze data bij de drukste maanden van het jaar.
 
 ## Wanneer je moet gaan
 
 Het antwoord valt ontspannen uit: bijna altijd.
 
-**Per maand** is juni het optimum (typisch 18 minuten parkgemiddeld), gevolgd
-door mei en juli met 20 respectievelijk 22 minuten. Het zwaarst is **april** met
-25 minuten, als Pasen, Koningsdag en de Nederlandse meivakantie samenvallen,
-daarna de winterweken in **december en januari** met 31 en 26 minuten. Dat
-verrast velen: de drukste periode is niet de zomer, maar het korte, sterk
-gevraagde winterseizoen, waarin maar een deel van de attracties draait en het
-park alleen op woensdag en in het weekend opent. Eén beperking daarbij: winter
+**Per maand** liggen maart tot en met juli dicht bij elkaar, en daarboven steken
+**augustus** en de winterweken in **december** uit. Dat verrast velen: de
+drukste periode is niet alleen de zomer, maar ook het korte, sterk gevraagde
+winterseizoen, waarin maar een deel van de attracties draait en het park alleen
+op woensdag en in het weekend opent. Eén beperking daarbij: winter
 en voorseizoen hebben zo weinig openingsdagen dat achter die maandwaarden
 duidelijk minder meetdagen staan dan achter de zomermaanden. De richting is
 eenduidig, de decimaal niet.
 
-**Per weekdag** lopen de cijfers nauwelijks uiteen. Het drukst is het op zaterdag
-(25 minuten) en vrijdag (24 minuten), van zondag tot woensdag is het overal 20
-minuten. In Phantasialand liggen tussen een dinsdag en een zaterdag werelden.
+**Per weekdag** lopen de cijfers nauwelijks uiteen. Het drukst is het op vrijdag
+en zaterdag, en ook daar is het verschil met de rest van de week klein. In
+Phantasialand liggen tussen een dinsdag en een zaterdag werelden.
 
 Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
@@ -446,8 +443,8 @@ schuiven ze voortdurend. Dit zijn de rustigste komende dagen:
 
 ```
 
-En zo ziet de drukte er over maanden en weekdagen uit, gerekend uit de laatste
-twee seizoenen:
+En zo ziet de drukte er over maanden en weekdagen uit, gerekend uit de gemeten
+openingsdagen:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -539,20 +536,19 @@ Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met zo’n
 een miljoen gasten per jaar klein vergeleken met de Efteling of Europa-Park,
 maar heeft met [Troy](ref:attractiepark-toverland/troy) een van de beste houten achtbanen van
 Europa en met [Fēnix](ref:attractiepark-toverland/fenix) de langste wing coaster van het
-continent, bij typische wachttijden van 16 minuten.
+continent, bij typische wachttijden van een ruim kwartier.
 
 ### Hoe lang zijn de wachttijden in Toverland?
 
-Over de laatste twee seizoenen ligt de typische wachttijd parkbreed op
-**20 minuten**, Troy en Fēnix elk op **16 minuten** mediaan. Het hoogst zijn de
-waarden in december en januari en in april. Actuele cijfers vind je op de
-[Toverland-parkpagina](ref:attractiepark-toverland).
+Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op een
+klein kwartier, en Troy en Fēnix liggen in dezelfde orde van grootte. Actuele cijfers
+vind je op de [Toverland-parkpagina](ref:attractiepark-toverland).
 
 ### Wanneer is het in Toverland het rustigst?
 
-**Juni** is in onze data de meest ontspannen maand (typisch 18 minuten), gevolgd
-door mei en juli. Doordeweeks is het iets leger dan in het weekend, maar het
-verschil is klein (20 tegenover 25 minuten op zaterdag). Vermijd april, de
+Maart tot en met juli liggen in onze data dicht bij elkaar en vormen het
+rustigste deel van het jaar. Doordeweeks is het iets leger dan in het weekend,
+maar het verschil is klein. Wat daaruit opvalt, zijn de
 Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat de [wachttijden-kalender](ref:attractiepark-toverland?calendar) dat zien.
 
 ### Heb je in Toverland een fastpass nodig?
@@ -560,7 +556,7 @@ Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat
 Die is er niet. Toverland verkoopt helemaal geen fastpass; de enige
 uitzondering is de **Fear Pass** voor de haunted experiences tijdens de
 Halloween Nights (62,50 €). Een gratis single rider-rij bestaat alleen bij de
-valtoren Dragonwatch. Bij medianen van 16 minuten op de headliners heb je op
+valtoren Dragonwatch. Bij de medianen die op de headliners staan heb je op
 een normale dag sowieso geen kortere weg nodig.
 
 ### Is Troy de beste houten achtbaan van Europa?
@@ -650,4 +646,4 @@ meeste andere parken van Europa kun je het vergeten.
 - Halloween Days & Nights, scare zones en Fear Pass: [Scare zones & experiences (officieel)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [onze halloweengids](/blog/halloween-pretparken-2026)
 - Route, bus & parkeren: [Adres en route (officieel)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in de Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wachttijd- en drukte-data: eigen historie uit twee seizoenen, [Toverland op park.fan](ref:attractiepark-toverland)
+- Wachttijd- en drukte-data: eigen historie sinds december 2025, [Toverland op park.fan](ref:attractiepark-toverland)

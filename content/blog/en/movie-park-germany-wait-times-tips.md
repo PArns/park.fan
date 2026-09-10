@@ -341,7 +341,7 @@ birthday on **4 July 2026**, with a programme running until 11 pm that day.
 
 ## Twenty minutes, and a queue that never gets shorter
 
-Our wait-time history for Bottrop goes back to **26 August 2025** and covers
+Our wait-time history for Bottrop starts in **December 2025** and covers
 **135 usable operating days**. Averaged across all weekdays, the typical wait
 across the park sits at twenty minutes (median).
 
@@ -352,9 +352,10 @@ The ten attractions you stand in longest:
 ```
 
 Top of that list is not a coaster doing 90 km/h but an indoor ride doing 36. Van
-Helsing’s Factory has the longest median in the park, with the log flume from
-the children’s area right behind it. Star Trek sits mid-table, even though most
-people travel here for that ride in the first place.
+Helsing’s Factory has the longest median in the park, and behind it several
+rides sit level with one another, the log flume from the children’s area among
+them. Star Trek sits mid-table, even though most people travel here for that
+ride in the first place.
 
 That has little to do with popularity and a lot to do with throughput. Van
 Helsing manages 848 people per hour, and because the ride is indoors it is also
@@ -390,8 +391,8 @@ same day trippers, Bottrop wins clearly. Movie Park does not have the best
 coaster in the region, but on a normal day you ride more.
 
 > [!NOTE]
-> One limitation that matters particularly for this park. Our history starts at
-> the end of August 2025, and it contains **not a single usable day for
+> One limitation that matters particularly for this park. Our history starts in
+> December 2025, and it contains **not a single usable day for
 > September, October or November**. So the weeks of the Halloween Horror
 > Festival, of all things, are unmeasured for us. What the calendar further down
 > shows for autumn is a forecast, not a measurement.
@@ -643,9 +644,9 @@ Whether it is raining in Bottrop decides half the park:
 
 ### How long are the wait times at Movie Park?
 
-Across 135 measured operating days since August 2025, the typical wait across
-the park sits at **twenty minutes** (median). The highest value in the park
-belongs to [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory),
+Across 135 measured operating days the typical wait across the park sits at
+**twenty minutes** (median). The highest value in the park belongs to
+[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory),
 not to the big coaster. The current numbers are on the
 [Movie Park page](ref:movie-park-germany?bare).
 
@@ -764,4 +765,4 @@ wants torn down stands there lit purple against the moon.
 - Getting there, Feldhausen station, SB16: [Directions & parking (official)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Day trip by train (DB Regio NRW, German)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - NRW autumn holidays 2026 (17 to 31 October): [School holiday schedule for North Rhine-Westphalia (Bildungsportal NRW, German)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - 2024 season figures and 30 million visitors since 1996: [Season review and MPHC event 2024 (official, German)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany welcomes its 30 millionth visitor (EuroAmusement Professional, German)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Wait-time and crowd data: our own history since August 2025, [Movie Park Germany on park.fan](ref:movie-park-germany)
+- Wait-time and crowd data: our own history since December 2025, [Movie Park Germany on park.fan](ref:movie-park-germany)

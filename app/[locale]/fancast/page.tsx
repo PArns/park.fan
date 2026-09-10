@@ -33,7 +33,6 @@ interface PageHeader {
   statLabels: {
     avgError: string;
     parks: string;
-    horizon: string;
     dailyValue: string;
     dailyLabel: string;
   };
@@ -45,12 +44,11 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
     kicker: 'park.fan · Prognosemodell',
     tagline:
-      'Es liest Millionen Live-Wartezeiten und sagt bis zu 365 Tage im Voraus, wie voll ein Park wird — und benotet sich dabei öffentlich selbst.',
+      'Es liest Millionen Live-Wartezeiten und sagt für jeden veröffentlichten Tag vorher, wie voll ein Park wird – und benotet sich dabei öffentlich selbst.',
     scrollLabel: 'Scrollen',
     statLabels: {
       avgError: 'Min. Ø-Fehler',
       parks: 'Parks',
-      horizon: 'Tage Vorausschau',
       dailyValue: 'Täglich',
       dailyLabel: 'neu trainiert',
     },
@@ -58,12 +56,11 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   en: {
     kicker: 'park.fan · forecasting model',
     tagline:
-      'It reads millions of live wait times to predict how busy a park will be up to 365 days ahead — and grades itself, in the open.',
+      'It reads millions of live wait times to predict how busy a park will be on every day it has published — and grades itself, in the open.',
     scrollLabel: 'Scroll',
     statLabels: {
       avgError: 'min avg error',
       parks: 'parks',
-      horizon: 'days ahead',
       dailyValue: 'Daily',
       dailyLabel: 'retrained',
     },
@@ -71,12 +68,11 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   es: {
     kicker: 'park.fan · modelo de predicción',
     tagline:
-      'Lee millones de tiempos de espera en directo para predecir la afluencia de un parque con hasta 365 días de antelación, y se autoevalúa en abierto.',
+      'Lee millones de tiempos de espera en directo para predecir la afluencia de un parque en cada día que ya ha publicado, y se autoevalúa en abierto.',
     scrollLabel: 'Desliza',
     statLabels: {
       avgError: 'min error medio',
       parks: 'parques',
-      horizon: 'días de previsión',
       dailyValue: 'A diario',
       dailyLabel: 'reentrenado',
     },
@@ -84,12 +80,11 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   fr: {
     kicker: 'park.fan · modèle de prévision',
     tagline:
-      "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc jusqu'à 365 jours à l'avance, et se note lui-même en public.",
+      "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc pour chaque jour déjà publié, et se note lui-même en public.",
     scrollLabel: 'Défiler',
     statLabels: {
       avgError: "min d'erreur moy.",
       parks: 'parcs',
-      horizon: "jours à l'avance",
       dailyValue: 'Chaque jour',
       dailyLabel: 'réentraîné',
     },
@@ -97,12 +92,11 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   it: {
     kicker: 'park.fan · modello di previsione',
     tagline:
-      "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco fino a 365 giorni in anticipo, e si autovaluta in modo trasparente.",
+      "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco per ogni giorno già pubblicato, e si autovaluta in modo trasparente.",
     scrollLabel: 'Scorri',
     statLabels: {
       avgError: 'min errore medio',
       parks: 'parchi',
-      horizon: 'giorni in anticipo',
       dailyValue: 'Ogni giorno',
       dailyLabel: 'riaddestrato',
     },
@@ -110,12 +104,11 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   nl: {
     kicker: 'park.fan · voorspelmodel',
     tagline:
-      'Het leest miljoenen live wachttijden om tot 365 dagen vooruit te voorspellen hoe druk een park wordt — en beoordeelt zichzelf, in het openbaar.',
+      'Het leest miljoenen live wachttijden om voor elke gepubliceerde dag te voorspellen hoe druk een park wordt – en beoordeelt zichzelf, in het openbaar.',
     scrollLabel: 'Scroll',
     statLabels: {
       avgError: 'min gem. fout',
       parks: 'parken',
-      horizon: 'dagen vooruit',
       dailyValue: 'Dagelijks',
       dailyLabel: 'hertraind',
     },
@@ -271,7 +264,6 @@ export default async function FancastPage({ params }: FancastPageProps) {
   if (live?.uniqueParks) {
     stats.push({ value: `${live.uniqueParks}+`, label: header.statLabels.parks });
   }
-  stats.push({ value: '365', label: header.statLabels.horizon });
   stats.push({ value: header.statLabels.dailyValue, label: header.statLabels.dailyLabel });
 
   return (

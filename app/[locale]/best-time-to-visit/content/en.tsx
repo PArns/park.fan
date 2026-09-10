@@ -74,7 +74,7 @@ const FAQ = [
   {
     question: 'Where does this data come from?',
     answer:
-      'From the actually recorded wait times of 200+ parks over the last two years. Each park is normalised to its own average and then averaged across all parks, so the ranking is fair and not dominated by the biggest parks.',
+      'From the wait times we have recorded ourselves at more than 200 parks. So that the ranking is not decided by the biggest parks, each park is normalised to its own average first and only then averaged across all of them.',
   },
 ] as const;
 
@@ -84,14 +84,15 @@ export function ContentEN() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          The best time to visit a theme park is not a secret — it is a pattern. When a park fills
-          up follows the weekday, the school-holiday calendar, the weather and the season, and all
-          four leave fingerprints in the wait times.
+          When a theme park fills up is surprisingly predictable. Weekday, school holidays, weather
+          and season largely decide whether you wait ten minutes at the coaster or an hour and a
+          half. And because every visit leaves wait times behind, that can be worked out fairly
+          precisely.
         </Lead>
         <P>
-          We measured those fingerprints across 200+ parks over the last two years. Below: the
-          quietest weekdays and months, the calmest hours of the day, the dates worth dodging — and
-          the crowd calendar that turns all of it into the single best day for your park.
+          That is what we did: worked through the wait times recorded at more than 200 parks. Below
+          are the quietest weekdays and months, the calmest hours of the day and the dates worth
+          dodging. The crowd calendar then picks the right day for the park you have in mind.
         </P>
         <Highlight>
           Short version: go Tuesday to Thursday outside the school holidays, arrive at opening, and
@@ -126,7 +127,7 @@ export function ContentEN() {
         icon={Clock}
       >
         <P>
-          It is not only the day that matters, but the hour too. Three windows are quietest almost
+          After the weekday, the hour decides the most. These four windows are quietest almost
           everywhere:
         </P>
         <TouchpointGrid
@@ -157,11 +158,12 @@ export function ContentEN() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba racing through the jungle at Phantasialand"
           kicker="Rope drop"
-          title="The first hour is golden"
+          title="Arriving early helps, but not at every ride"
         >
-          Arrive for opening and you often ride the headliners at a fraction of the later wait. The
-          first hour routinely replaces two in the afternoon — no fast-pass required, just an early
-          alarm.
+          At the big headliners the first hour after opening often buys more rides than two in the
+          afternoon. It does not hold everywhere: some rides stay equally busy all day, others only
+          pick up after lunch. Each ride’s own page carries its day curve, and says whether the
+          earlier alarm pays off for it.
         </SplitFigure>
       </SectionShell>
 
@@ -227,11 +229,6 @@ export function ContentEN() {
               icon: CloudRain,
               title: 'Use the weather cleverly',
               body: 'A mixed forecast puts many people off. If you are weatherproof, you queue less — a rain jacket beats an umbrella.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Arrive early',
-              body: 'Rope drop beats almost every other tactic. The first hour often replaces two in the afternoon.',
             },
             {
               icon: Ticket,

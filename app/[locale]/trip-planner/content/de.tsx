@@ -57,10 +57,11 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
       >
         <P>
           Für jede Bahn liefert die API eine Kurve über den Tag, Stunde für Stunde. Taron steht an
-          diesem Samstag bei 45 Minuten um zehn, 50 um elf, 40 um eins und wieder 50 am Abend. Das
-          ist der eigentliche Grund, Taron früh zu fahren: Nicht weil morgens immer weniger los ist,
-          sondern weil dieser Tag für diese Bahn keine ruhige Stunde hat. Black Mamba dagegen fällt
-          von 35 Minuten mittags auf 20 um sechs, und Chiapas läuft andersherum, von 20 auf 35.
+          diesem Samstag bei 45 Minuten um zehn, 50 um elf, 40 um eins und wieder 50 am Abend: über
+          den ganzen Tag liegen zehn Minuten dazwischen. Für so eine Bahn gibt es kein gutes
+          Fenster, also setzt der Planer sie dorthin, wo der Rest des Tages es zulässt. Black Mamba
+          dagegen fällt von 35 Minuten mittags auf 20 um sechs, und Chiapas läuft andersherum, von
+          20 auf 35.
         </P>
         <P>
           Dazu kommt, wie weit die Zahl typischerweise danebenliegt, und das hängt am Niveau: Je
@@ -147,12 +148,13 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           und geht die Reihenfolge besser.
         </P>
         <P>
-          Sortiert wird nach drei Dingen, und ihre Rangfolge ist die eigentliche Entscheidung.
-          Zuerst zählt, dass alles vor Parkschluss noch drankommt: Ein Plan mit einer Bahn weniger,
-          die wirklich stattfindet, schlägt einen mit einer Bahn mehr, die es nicht mehr wird.
-          Danach zählt die Summe der Wartezeiten, also das, wonach gefragt war. Und wo zwei
-          Reihenfolgen gleich viel kosten, gewinnt die, die früher fertig ist. Einen Regler, der
-          Anstehen gegen Herumstehen abwägt, gibt es nicht: Diese Zahl könnte niemand begründen.
+          Sortiert wird nach vier Dingen, und ihre Rangfolge ist die eigentliche Entscheidung. Ganz
+          oben steht deine eigene: Was du nach vorn ziehst, fällt als Letztes raus. Danach zählt,
+          dass alles vor Parkschluss noch drankommt: Ein Plan mit einer Bahn weniger, die wirklich
+          stattfindet, schlägt einen mit einer Bahn mehr, die es nicht mehr wird. Dann zählt die
+          Summe der Wartezeiten, also das, wonach gefragt war. Und wo zwei Reihenfolgen gleich viel
+          kosten, gewinnt die, die früher fertig ist. Einen Regler, der Anstehen gegen Herumstehen
+          abwägt, gibt es nicht: Diese Zahl könnte niemand begründen.
         </P>
         <P>
           Eine Regel über den frühen Morgen steckt darin nicht. Der Planer kennt nur die
@@ -232,10 +234,11 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           gefahrene Bahnen ab, und der Planer schreibt die Wartezeit dazu, die wirklich anstand.
         </P>
         <P>
-          Alles davon liegt in deinem Browser. Kein Konto, kein Server, keine Synchronisierung: Der
-          Plan ist eine Datei in deinem eigenen Speicher, und wer ihn ohne Plan öffnet, bekommt den
-          Assistenten mit den drei Fragen, die zuerst geklärt sein müssen. Park, Tag, wer mitkommt.
-          Den passenden Tag findest du im{' '}
+          Alles davon liegt in deinem Browser, ohne Konto: Der Plan ist eine Datei in deinem eigenen
+          Speicher. Erst wenn du Benachrichtigungen einschaltest, wird eine Kopie auf den Server
+          gelegt, und der Planer sagt das an dieser Stelle. Wer ihn ohne Plan öffnet, bekommt den
+          Assistenten mit den vier Fragen, die zuerst geklärt sein müssen: Park, Tag, wer mitkommt,
+          und welche großen Bahnen in den Tag sollen. Den passenden Tag findest du im{' '}
           <A href={`${PARK}/wartezeiten-kalender`}>Wartezeiten-Kalender</A> jedes Parks.
         </P>
       </Chapter>

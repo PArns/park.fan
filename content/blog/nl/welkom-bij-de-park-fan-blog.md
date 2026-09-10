@@ -212,12 +212,12 @@ met pensioen mocht, en het herinnert me bij elke nachtelijke debugsessie waar al
 die moeite eigenlijk voor is. Ergens daarbuiten rijdt op dit moment een echte
 baan, en ergens daarbuiten wil iemand weten of de rij ervoor de moeite waard is.
 
-Daarachter zitten inmiddels live wachttijden uit ruim **200 parken** en **7.000 attracties**, elke minuut
-ververst. Voorspellingen die de drukte tot **365 dagen** vooruit inschatten. En
-omdat ik cijfers principieel alleen vertrouw als ze zich moeten bewijzen, geeft
-het model zichzelf een cijfer: elke voorspelling wordt later naast de werkelijk
-gemeten wachttijd gelegd, en wat daaruit komt staat op de
-[Fancast-pagina](/fancast).
+Daarachter zitten inmiddels live wachttijden uit ruim **200 parken** en **7.000
+attracties**, elke vijf minuten ververst. Voorspellingen die de drukte tot **365
+dagen** vooruit inschatten. En omdat ik cijfers principieel alleen vertrouw als
+ze zich moeten bewijzen, geeft het model zichzelf een cijfer: elke voorspelling
+wordt later naast de werkelijk gemeten wachttijd gelegd, en wat daaruit komt
+staat op de [Fancast-pagina](/fancast).
 
 ## De beste dag is zelden de dag die je vermoedt
 
@@ -243,7 +243,7 @@ je de uitzondering is of de regel.
 ## Wat park.fan anders doet
 
 Er zijn goede sites die je laten zien hoe lang de rij op dit moment is. Dat
-kunnen wij ook, elke minuut, wereldwijd. Maar park.fan is gebouwd voor de vraag
+kunnen wij ook, elke vijf minuten, wereldwijd. Maar park.fan is gebouwd voor de vraag
 die daaraan voorafgaat: _is het überhaupt de moeite om te gaan?_
 
 Een eigen model kijkt daarom tot **365 dagen** vooruit in plaats van alleen naar

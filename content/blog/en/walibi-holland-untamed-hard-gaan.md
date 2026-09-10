@@ -159,7 +159,7 @@ as a recording studio. There are summer evenings with DJs and the park
 running until 22:00. And there is a Halloween event that goes further than any
 other in the Benelux.
 
-The Efteling tells you a fairy tale, Phantasialand builds you a seamless set.
+The Efteling tells you a fairy tale, Phantasialand builds you a set.
 Walibi Holland can do sets too, and at its best it does them very well, only
 here everything aims at something else: it wants you to scream. Six coasters with inversions, hardly a building to
 shelter in when it rains, music on every path and a volume level nobody set by
@@ -440,10 +440,10 @@ past two years.
 
 ## What Untamed really costs you
 
-Across the last two seasons, calculated from **more than 130 operating days with usable
+Calculated from **more than 130 operating days with usable
 wait-time data**, the **typical wait across the park sits at just under a
-quarter of an hour** (median). The 90th percentile, the value nine out of ten measurements fall
-below, comes to 31 minutes.
+quarter of an hour** (median). On the one day in ten with the most going on, it
+is about half as long again.
 
 Ride by ride it looks like this:
 
@@ -458,7 +458,7 @@ this: walk straight into the Wilderness in the morning and you will have ridden
 Untamed three times before the YOY queue has cycled through once.
 
 It gets more interesting compared with the neighbourhood. Same data basis, same
-method, last two seasons:
+method, every operating day we have measured:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -478,7 +478,7 @@ hour. Plenty of capacity, manageable demand, and that ratio is what sets the
 wait, as set out in [the art of waiting](/blog/the-art-of-waiting).
 
 One caveat before anyone takes the numbers too seriously: our history for this
-park starts in August 2024, and Walibi only opens from April to October. Behind
+park starts in December 2025, and Walibi only opens from April to October. Behind
 the monthly values for April to August sit 11 to 30 measured days each, which
 holds up. For September to March we have barely any data, which is why no number
 appears there. A month with eleven measured days tells you whether you are travelling in the
@@ -699,10 +699,9 @@ The season runs from **April to early November**, after which it closes. In
 spring and autumn the park opens on Wednesdays, at weekends and during holidays,
 and daily in July and August.
 
-**By month** the picture is calm: May and July are the most relaxed at a typical
-18 minutes, June sits at 19, August at 20. It gets busiest in **April** at 22
-minutes, when Easter, King’s Day and the Dutch May holidays fall into the same
-window. Anyone coming from Germany should also know that the **Dutch school
+**By month** the picture is calm: across the season the months barely differ.
+Where it does pick up, Easter, King’s Day and the Dutch May holidays fall into
+the same window. Anyone coming from Germany should also know that the **Dutch school
 holidays** hit far harder here than the German ones.
 
 **By weekday** it gets curious. The busy day is not Saturday:
@@ -711,8 +710,8 @@ holidays** hit far harder here than the German ones.
 
 ```
 
-Three minutes separate the quietest weekday from the busiest. So the weekend
-simply is not a special case here, and the reason is mundane: outside the summer
+No difference between the weekdays is measurable at all: all seven sit on the
+same value. So the weekend simply is not a special case here, and the reason is mundane: outside the summer
 holidays the park mostly opens on Wednesdays and at weekends anyway, so the few
 weekdays are disproportionately often holiday days. Given the choice, take a
 Thursday in May or July.
@@ -724,8 +723,8 @@ calendar:
 
 ```
 
-And here is how the crowds spread across the months, calculated from the last
-two seasons:
+And here is how the crowds spread across the months, calculated from every
+operating day we have measured:
 
 ```stats-widget slug=walibi-holland show=months
 
@@ -815,8 +814,8 @@ Current conditions at the park:
 For coaster fans, yes. The park has the first hybrid coaster in Europe in
 [Untamed](ref:walibi-holland/untamed), the world’s first duelling single-rail
 installation in [YOY](ref:walibi-holland/yoy-thrill) and an Intamin Mega Coaster
-from 2002 in [Goliath](ref:walibi-holland/goliath), all at a typical wait of 20
-minutes. If you are after dark rides, a seamless world and weather-proofing, the
+from 2002 in [Goliath](ref:walibi-holland/goliath), all at a typical wait of a
+good quarter of an hour. If you are after dark rides, a world that holds together and weather-proofing, the
 [Efteling](ref:efteling) or [Phantasialand](ref:phantasialand) will serve you
 better.
 
@@ -830,19 +829,18 @@ world, has been held on the park’s event site since 2011.
 
 ### How long are the wait times at Walibi Holland?
 
-Across the last two seasons the typical wait across the park is **20 minutes**
-(median), with the 90th percentile at 31 minutes. Untamed and Goliath sit just
-below that, and the new YOY THRILL holds the highest value in the park by a
-clear margin.
+Across every operating day we have measured the typical wait across the park is
+just under a quarter of an hour (median). Untamed and Goliath sit just below
+that, and the new YOY THRILL holds the highest value in the park by a clear
+margin.
 Current numbers are on the
 [Walibi Holland park page](ref:walibi-holland).
 
 ### When is Walibi Holland least busy?
 
-May and July are the most relaxed months in our data (typically 18 minutes),
-April the busiest (22 minutes). By weekday the difference is small, with Thursday
-just ahead at 18 minutes. Avoid the Dutch May and summer holidays as well as the
-Halloween weekends. For a specific date, try the [wait-time calendar](ref:walibi-holland?calendar).
+Across the season the months barely differ, and by weekday no difference is
+measurable at all: all seven sit on the same value. Avoid the Dutch May and
+summer holidays as well as the Halloween weekends. For a specific date, try the [wait-time calendar](ref:walibi-holland?calendar).
 
 ### How much does admission to Walibi Holland cost?
 
@@ -872,8 +870,8 @@ Walibi park in December, drive to Wavre for
 
 ### Do you need a Fast Lane pass?
 
-Not on a normal day. At a median of 20 minutes you are paying for saved minutes
-you do not have. On weekends in the summer holidays, at the evening events and
+Not on a normal day. At the median this park runs at, you are paying for saved
+minutes you do not have. On weekends in the summer holidays, at the evening events and
 for YOY it can be worth it.
 
 ## Drive the extra hour
@@ -933,4 +931,4 @@ and you stop thinking about anything at all.
 - #Lekkergaan and Zomerse Zaterdagen 2026: ["Walibi Holland viert de zomer met langere openingstijden en twee zomerevents" (press release)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · ["Nieuw zomerfestival in Walibi Holland heet #Lekkergaan" (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
 - Tickets, parking and the three 2026 pass tiers including the Halloween allowance: [Tickets (official)](https://www.walibi.nl/en/tickets) · [Passes (official)](https://www.walibi.nl/en/tickets/passes) · [Parking 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren)
 - What a complete Halloween evening costs (at least €116.50 on top of admission, as of 2025): ["In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken" (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Wait-time and crowd data: our own history across two seasons, [Walibi Holland on park.fan](ref:walibi-holland)
+- Wait-time and crowd data: our own history since December 2025, [Walibi Holland on park.fan](ref:walibi-holland)

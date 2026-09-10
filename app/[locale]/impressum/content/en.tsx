@@ -73,8 +73,8 @@ export function ImpressumEN() {
           company names used are the property of their respective owners.
         </p>
         <p className="mb-4">
-          Despite careful review by the editorial team, the publisher cannot assume liability for
-          the accuracy, completeness and timeliness of publications.
+          Despite careful review, the publisher cannot assume liability for the accuracy,
+          completeness and timeliness of publications.
         </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">

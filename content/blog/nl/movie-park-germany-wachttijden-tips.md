@@ -339,7 +339,7 @@ uur.
 
 ## Twintig minuten, en een rij die nooit korter wordt
 
-Onze wachttijdhistorie voor Bottrop gaat terug tot **26 augustus 2025** en beslaat
+Onze wachttijdhistorie voor Bottrop begint in **december 2025** en beslaat
 **135 bruikbare openingsdagen**. Over alle weekdagen gerekend ligt de typische
 wachttijd in het parkgemiddelde op twintig minuten (mediaan).
 
@@ -350,9 +350,9 @@ De tien attracties waar je het langst staat:
 ```
 
 Bovenaan staat geen achtbaan met 90 km/u, maar een binnenrit met 36. Van
-Helsing’s Factory heeft de hoogste mediaan van het park, en direct daarachter
-komt de wildwaterbaan uit het kinderdeel. Star Trek staat in de middenmoot,
-terwijl de meesten juist voor die baan komen.
+Helsing’s Factory heeft de hoogste mediaan van het park, en daarachter liggen
+meerdere attracties gelijk, waaronder de wildwaterbaan uit het kinderdeel. Star
+Trek staat in de middenmoot, terwijl de meesten juist voor die baan komen.
 
 Dat heeft weinig met populariteit te maken en veel met capaciteit. Van Helsing
 haalt 848 personen per uur, en omdat de rit binnen ligt is het bovendien waar het
@@ -388,7 +388,7 @@ wint Bottrop duidelijk. De beste coaster van de regio heeft Movie Park niet,
 maar op een gewone dag rij je er meer.
 
 > [!NOTE]
-> Eén beperking die voor dit park extra telt. Onze historie begint eind augustus
+> Eén beperking die voor dit park extra telt. Onze historie begint in december
 > 2025, en voor **september, oktober en november staat er geen enkele bruikbare
 > dag in**. Uitgerekend de weken van het Halloween Horror Festival zijn bij ons
 > dus niet gemeten. Wat de kalender verderop voor het najaar laat zien is een
@@ -641,12 +641,11 @@ Of het in Bottrop regent, bepaalt de helft van het park:
 
 ### Hoe lang zijn de wachttijden in Movie Park?
 
-Over 135 gemeten openingsdagen sinds augustus 2025 ligt de typische wachttijd in
-het parkgemiddelde op **twintig minuten** (mediaan). De hoogste waarde van het
-park heeft
-[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), niet de
-grote achtbaan. De actuele cijfers staan op de
-[Movie Park-parkpagina](ref:movie-park-germany?bare).
+Over 135 gemeten openingsdagen ligt de typische wachttijd in het parkgemiddelde
+op **twintig minuten** (mediaan). De hoogste waarde van het park heeft [Van
+Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), niet de grote
+achtbaan. De actuele cijfers staan op de [Movie
+Park-parkpagina](ref:movie-park-germany?bare).
 
 ### Wanneer is het in Movie Park het rustigst?
 
@@ -761,4 +760,4 @@ wil slopen staat dan paars uitgelicht voor de maan.
 - Route, station Feldhausen, SB16: [Route & parkeren (officieel)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Uitstapje met de trein (DB Regio NRW, Duits)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Herfstvakantie NRW 2026 (17 tot en met 31 oktober): [Vakantieregeling Noordrijn-Westfalen (Bildungsportal NRW, Duits)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - Seizoensbalans 2024 en 30 miljoen bezoekers sinds 1996: [Seizoensbalans en MPHC-event 2024 (officieel, Duits)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany verwelkomt zijn 30-miljoenste bezoeker (EuroAmusement Professional, Duits)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Wachttijd- en druktedata: eigen historie sinds augustus 2025, [Movie Park Germany op park.fan](ref:movie-park-germany)
+- Wachttijd- en druktedata: eigen historie sinds december 2025, [Movie Park Germany op park.fan](ref:movie-park-germany)

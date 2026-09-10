@@ -100,7 +100,7 @@ worked out why [Taron](ref:phantasialand/taron) runs into saturation on a
 holiday Saturday just as fast as Peter Pan’s Flight in Paris: a small crowd
 doesn’t protect you from long lines when there are only a few attractions for
 the demand to spread across. The math is more merciless at Phantasialand than at
-the sprawling [Europa-Park](ref:europa-park) with its thirteen roller coasters.
+the sprawling [Europa-Park](ref:europa-park) with its fifteen roller coasters.
 On top of that, the park prices its tickets so aggressively that it fills plenty
 of weekends nicely on its own, the fabled “empty Saturday” has become rare.
 
@@ -269,8 +269,8 @@ quietest upcoming days for Phantasialand:
 ```
 
 And if you want to see the **crowds by weekday and month**, which days across
-the year are typically relaxed and which you should avoid, this look back at the
-last two seasons will show you:
+the year are typically relaxed and which you should avoid, this look at the
+operating days we have measured will show you:
 
 ```stats-widget slug=phantasialand
 
