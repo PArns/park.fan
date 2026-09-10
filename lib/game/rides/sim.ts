@@ -45,6 +45,7 @@ import type {
   SimHandle,
 } from '../core/types';
 import { attachRideContent, resolveDockedRide, resolveFlatRide } from './manifest';
+import { QUEUE_CYCLES, queueSlot } from './queue';
 import {
   DOCKED_MOTION_STRIDE,
   MOTION_STRIDE,
@@ -89,7 +90,6 @@ export const PARK_CLOSE = 23 * 60;
 const SPIN_UP_SECONDS = 7;
 const SPIN_DOWN_SECONDS = 9;
 /** A queue longer than this many cycles' worth is full. */
-const QUEUE_CYCLES = 8;
 /** Park minutes an operator waits with an empty queue before dispatching what it has. */
 const MIN_DWELL = 0.8;
 /** How far from an entrance a walk-up guest is treated as being in the line, metres. */
@@ -942,25 +942,12 @@ export function createRidesSim(ctx: SimContext): SimHandle {
   /**
    * Where a ticket stands, as a serpentine back from the entrance.
    *
-   * 0.85 m of pitch, and the line turns back on itself every `ROW` places into a 1.9 m channel —
-   * the same switchback shape `shops` draws, at a flat ride's own scale.
+   * The arithmetic moved to `queue.ts` the day the rail became a thing that gets drawn: two
+   * readers, one formula. A rail built from a second copy of these constants would be near the
+   * people rather than round them, and nothing would notice.
    */
-  const ROW = 10;
-  const PITCH = 0.85;
-  const CHANNEL = 1.9;
   function placeOf(r: RideRuntime, index: number): [number, number] {
-    const row = Math.floor(index / ROW);
-    const along = index % ROW;
-    const back = row % 2 === 0 ? along : ROW - 1 - along;
-    const dx = r.queueDir[0];
-    const dz = r.queueDir[1];
-    // Right-hand normal of the queue direction.
-    const nx = dz;
-    const nz = -dx;
-    return [
-      r.entrance[0] + dx * (0.6 + back * PITCH) + nx * row * CHANNEL,
-      r.entrance[1] + dz * (0.6 + back * PITCH) + nz * row * CHANNEL,
-    ];
+    return queueSlot(r.entrance, r.queueDir, index);
   }
 
   // ── the public API ────────────────────────────────────────────────────────────────────────
