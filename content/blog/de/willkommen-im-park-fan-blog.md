@@ -255,19 +255,16 @@ Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
 Das können wir auch, im Minutentakt, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
-Deshalb gehen wir ein paar Schritte weiter:
+Ein eigenes Modell schaut deshalb bis zu **365 Tage** nach vorn statt nur auf die
+Anzeigetafel, und der Kalender der besten Tage verdichtet Ferien, Wetter,
+Schedules und jeden mitgeschriebenen Öffnungstag zu einer Antwort: hin oder
+lieber nicht. Jede dieser Prognosen wird später gegen die tatsächlich gemessene
+Wartezeit gehalten, und wer wissen will, wie gut das Modell ist, muss mir nicht
+glauben: die Zahlen stehen auf der [Fancast-Seite](/fancast).
 
-- **Prognosen statt nur Ist-Zustand.** Ein eigenes KI-Modell schaut bis zu 365
-  Tage nach vorn, nicht nur auf die aktuelle Anzeigetafel.
-- **Der Kalender der besten Tage.** Ferien, Wetter, Schedules und jeder
-  mitgeschriebene Öffnungstag, verdichtet zu einer Antwort: hin oder lieber nicht.
-- **Trefferquoten öffentlich.** Jede Prognose wird später gegen die tatsächlich
-  gemessene Wartezeit gehalten. Wer wissen will, wie gut das Modell ist, muss
-  mir nicht glauben. Die Zahlen stehen auf der [Fancast-Seite](/fancast).
-- **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am Parkeingang,
-  Öffnungszeiten und Attraktions-Historien, in sechs Sprachen.
-- **Kostenlos und ohne Werbung.** Kein Konzern, keine Paywall, gebaut von
-  jemandem, der selbst ansteht.
+Dazu Wartezeiten, Crowd-Level, Wetter am Parkeingang, Öffnungszeiten und
+Attraktions-Historien in sechs Sprachen. Kein Konzern, keine Paywall, keine
+Werbung, gebaut von jemandem, der selbst ansteht.
 
 ## Was dieser Blog werden soll
 
@@ -326,8 +323,7 @@ Datenmensch aus Berufung. Mehr Tech- und Side-Project-Kram auf
 
 ## Was hier nicht passieren wird
 
-park.fan kostet nichts, zeigt keine Werbung und gehört niemandem außer der
-Neugier. Wird ein Park mies gemanagt, steht das hier. Ist eine App schlechter
+park.fan kostet nichts, zeigt keine Werbung und gehört niemandem. Wird ein Park mies gemanagt, steht das hier. Ist eine App schlechter
 als die offizielle, steht das auch hier. Du hast ein Thema, das dich juckt?
 Schreib mir, die E-Mail steht im [Impressum](/impressum).
 
