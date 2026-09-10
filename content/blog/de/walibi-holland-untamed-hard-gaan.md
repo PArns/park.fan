@@ -731,10 +731,9 @@ Die Saison läuft von **April bis Anfang November**, danach ist zu. Im Frühjahr
 und im Herbst öffnet der Park mittwochs, an Wochenenden und in den Ferien, im
 Juli und August täglich.
 
-**Nach Monat** ist das Bild ruhig: Mai und Juli sind mit typisch 18 Minuten die
-entspanntesten Monate, Juni liegt bei 19, August bei 20. Am vollsten wird es im
-**April** mit 22 Minuten, wenn Ostern, Königstag und die niederländischen
-Maiferien in denselben Zeitraum fallen. Wer aus Deutschland kommt, sollte
+**Nach Monat** ist das Bild ruhig: Über die Saison hinweg unterscheiden sich die
+Monate kaum. Wo es überhaupt anzieht, fallen Ostern, Königstag und die
+niederländischen Maiferien in denselben Zeitraum. Wer aus Deutschland kommt, sollte
 zusätzlich wissen, dass die **niederländischen Schulferien** hier deutlich
 stärker durchschlagen als die eigenen.
 
@@ -744,8 +743,8 @@ stärker durchschlagen als die eigenen.
 
 ```
 
-Zwischen dem leersten und dem vollsten Wochentag liegen drei Minuten. Das
-Wochenende ist hier also kein Sonderfall, und der Grund ist banal: Außerhalb der
+Zwischen den Wochentagen ist gar kein Unterschied messbar: Alle sieben liegen auf
+demselben Wert. Das Wochenende ist hier also kein Sonderfall, und der Grund ist banal: Außerhalb der
 Sommerferien öffnet der Park ohnehin fast nur mittwochs und am Wochenende,
 sodass die wenigen Werktage überdurchschnittlich oft Ferientage sind. Wer die
 Wahl hat, nimmt einen Donnerstag im Mai oder Juli.

@@ -10,8 +10,8 @@ excerpt: >-
   Disneyland auf. Es gehört keinem Konzern, sondern einer Stiftung, die nichts
   ausschütten darf und nebenan ein Feriendorf für schwer kranke Kinder gebaut
   hat. Und weil eine Naturgenehmigung bei fünf Millionen Gästen die Grenze
-  zieht, wartest du hier trotz 5,78 Millionen Besuchen typischerweise
-  25 Minuten.
+  zieht, wartest du hier trotz 5,78 Millionen Besuchen typischerweise nur
+  gut eine Viertelstunde.
 tags:
   - efteling
   - wartezeiten
@@ -346,7 +346,7 @@ gepflasterten Stichwegen zu den einzelnen Szenen. Die gelben Abkürzungen
 verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen,
 ohne dich zu verlaufen.
 
-## 25 Minuten, über 150 Betriebstage gemessen
+## Gut eine Viertelstunde, über 150 Betriebstage gemessen
 
 „Ein Park für die ganze Familie“ steht in jedem Prospekt. Belegen lässt sich das
 nur mit Schlangen.
@@ -709,8 +709,8 @@ Wasserattraktionen laufen weiter, solange es das Wetter zulässt, was in
 Kaatsheuvel häufiger der Fall ist als in einem deutschen Mittelgebirgspark.
 
 Und dann die Kehrseite: **Der Dezember ist in unseren Daten der vollste Monat des
-Jahres**, mit 34 Minuten im Median und 48 im 90. Perzentil. Im Dezember wartest
-du also überall im Park ungefähr so lange wie sonst nur bei Joris en de Draak.
+Jahres**. Im Dezember wartest du überall im Park ungefähr so lange wie sonst nur
+bei Joris en de Draak.
 Dazu kommt der gestoppte Ticketverkauf, sobald ein Ferientag die
 Genehmigungsgrenze in Reichweite bringt. Wer die Wintersaison in Ruhe sehen will,
 nimmt einen Werktag im November oder in der zweiten Januarhälfte, nicht die Woche
@@ -769,22 +769,21 @@ Ja, und zwar für eine breitere Zielgruppe als die meisten großen Parks. Wer
 Achterbahnen will, bekommt mit [Baron 1898](ref:efteling/baron-1898) und
 [Joris en de Draak](ref:efteling/joris-en-de-draak) zwei sehr gute, aber keine
 Weltspitze. Wer Dark Rides, Ausstattung und Atmosphäre will, findet in Europa
-kaum etwas Besseres. Bei typischen Wartezeiten von 25 Minuten im Parkschnitt
-schaffst du an einem Tag mehr, als der Besucherzahl nach zu erwarten wäre.
+kaum etwas Besseres. Bei den typischen Wartezeiten im Parkschnitt schaffst du an einem Tag mehr, als
+der Besucherzahl nach zu erwarten wäre.
 
 ### Wie lang sind die Wartezeiten im Efteling?
 
 Über alle gemessenen Öffnungstage liegt die typische Wartezeit im
-Parkschnitt bei **25 Minuten** (Median), das 90. Perzentil bei 36. Am längsten
-steht man bei [Joris en de Draak](ref:efteling/joris-en-de-draak) mit gut einer
-halben Stunde, gefolgt von [Danse Macabre](ref:efteling/danse-macabre). Aktuelle Zahlen
+Parkschnitt bei **gut einer Viertelstunde** (Median). Am längsten steht man bei
+[Joris en de Draak](ref:efteling/joris-en-de-draak), gefolgt von [Danse Macabre](ref:efteling/danse-macabre). Aktuelle Zahlen
 stehen auf der [Efteling-Parkseite](ref:efteling).
 
 ### Wann ist im Efteling am wenigsten los?
 
-Nach Monat sind **April und Mai** die entspanntesten Saisonmonate (22 bzw.
-23 Minuten), am vollsten ist der **Dezember** mit 34. Der Wochentag spielt kaum
-eine Rolle, zwischen Donnerstag (23 Minuten) und Montag (27) liegen vier Minuten.
+Nach Monat ist der **April** der entspannteste Saisonmonat, am vollsten ist der
+**Dezember**. Der Wochentag spielt kaum eine Rolle: Zwischen dem besten und dem
+schlechtesten liegt eine einzige Stufe.
 Entscheidend sind die niederländischen Schulferien. Für einen konkreten Termin
 hilft der [Kalender der besten Besuchstage](ref:efteling?calendar) mehr als jede
 Faustregel.
@@ -815,8 +814,8 @@ Parkschein gilt danach ein Jahr lang weiter). Jahreskarten kosten 240 €
 
 ### Schafft man das Efteling an einem Tag?
 
-Die Attraktionen ja, den Park nicht. 37 Attraktionen bei 25 Minuten typischer
-Wartezeit passen in einen langen Tag. Der Märchenwald, die Shows, Aquanura und
+Die Attraktionen ja, den Park nicht. 37 Attraktionen bei den typischen
+Wartezeiten passen in einen langen Tag. Der Märchenwald, die Shows, Aquanura und
 das Herumlaufen passen nicht mehr dazu. Zwei Tage sind hier der Normalfall, keine
 Empfehlung für Enthusiasten.
 

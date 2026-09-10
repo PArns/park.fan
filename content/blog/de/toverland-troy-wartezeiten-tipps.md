@@ -445,9 +445,8 @@ Einschränkung dazu: Winter und Vorsaison haben so wenige Öffnungstage, dass
 hinter diesen Monatswerten deutlich weniger Messtage stehen als hinter den
 Sommermonaten. Die Richtung ist eindeutig, die Nachkommastelle nicht.
 
-**Nach Wochentag** gehen die Zahlen kaum auseinander. Am vollsten ist es samstags
-(25 Minuten) und freitags (24 Minuten), von Sonntag bis Mittwoch sind es überall
-20 Minuten. Im Phantasialand liegen zwischen einem Dienstag und einem Samstag
+**Nach Wochentag** gehen die Zahlen kaum auseinander. Am vollsten ist es freitags und
+samstags, und auch dort ist der Abstand zum Rest der Woche klein. Im Phantasialand liegen zwischen einem Dienstag und einem Samstag
 Welten.
 
 Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
@@ -459,7 +458,7 @@ Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limbu
 ```
 
 Und so sieht der Andrang über Monate und Wochentage aus, gerechnet aus den
-gemessenen Öffnungstage:
+gemessenen Öffnungstagen:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -548,7 +547,7 @@ Ja, besonders für Achterbahnfans, die genug von Schlangen haben. Der Park ist m
 rund einer Million Gästen pro Jahr klein im Vergleich zum Efteling oder zum
 Europa-Park, hat aber mit [Troy](ref:attractiepark-toverland/troy) eine der besten
 Holzachterbahnen Europas und mit [Fēnix](ref:attractiepark-toverland/fenix) den längsten Wing
-Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten.
+Coaster des Kontinents, bei typischen Wartezeiten von gut einer Viertelstunde.
 
 ### Wie lang sind die Wartezeiten im Toverland?
 
@@ -558,9 +557,9 @@ der [Toverland-Parkseite](ref:attractiepark-toverland).
 
 ### Wann ist im Toverland am wenigsten los?
 
-**Juni** ist in unseren Daten der entspannteste Monat (typisch 18 Minuten),
-gefolgt von Mai und Juli. Wochentags ist es etwas leerer als am Wochenende, aber
-der Unterschied ist klein (20 gegenüber 25 Minuten am Samstag). Meide den April,
+März bis Juli liegen in unseren Daten eng beieinander und bilden den ruhigsten
+Teil des Jahres. Wochentags ist es etwas leerer als am Wochenende, aber der
+Unterschied ist klein. Meide den April,
 die niederländischen Mai- und Herbstferien und die kurze Wintersaison. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
 
 ### Braucht man im Toverland einen Fast Pass?
@@ -568,8 +567,8 @@ die niederländischen Mai- und Herbstferien und die kurze Wintersaison. Tag für
 Es gibt keinen. Das Toverland verkauft überhaupt keinen Fast Pass; die einzige
 Ausnahme ist der **Fear Pass** für die Haunted Experiences während der
 Halloween Nights (62,50 €). Eine kostenlose Single-Rider-Spur gibt es nur am
-Fallturm Dragonwatch. Bei 16-Minuten-Medianen an den Headlinern brauchst du an
-einem normalen Tag ohnehin keine Abkürzung.
+Fallturm Dragonwatch. Bei den Medianen, die an den Headlinern stehen, brauchst du an einem normalen
+Tag ohnehin keine Abkürzung.
 
 ### Ist Troy die beste Holzachterbahn Europas?
 

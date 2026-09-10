@@ -7,8 +7,8 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Rust stehst du im Schnitt 23 Minuten an, kürzer als im Phantasialand mit
-  einem Drittel des Publikums. Ein Jahr Messwerte, warum ausgerechnet der
+  In Rust stehst du kürzer an als im Phantasialand, das ein Drittel des
+  Publikums hat. Warum ausgerechnet der
   Sonntag der ruhigste Tag ist, welche Novemberwochen unser Kalender
   komplett auf „niedrig“ stellt, und warum du die Euro-Mir jetzt fahren
   solltest oder nie mehr.
@@ -38,8 +38,8 @@ coverImage:
 seo:
   title: 'Europa-Park Wartezeiten & beste Reisezeit'
   description: >-
-    Europa-Park Wartezeiten aus einem Jahr Messwerten: typisch 23 Minuten, sonntags
-    am wenigsten los, November am leersten. Beste Reisezeit, Preise 2026, Anreise.
+    Europa-Park Wartezeiten aus den eigenen Messungen: sonntags am wenigsten los,
+    November am leersten. Beste Reisezeit, Preise 2026, Anreise.
   keywords:
     - Europa-Park Wartezeiten
     - Europa-Park Wartezeiten aktuell
@@ -65,8 +65,8 @@ seo:
 
 Kein Park in Deutschland verkauft mehr Tickets als der
 [Europa-Park](ref:europa-park?long), gut sechs Millionen im Jahr. Trotzdem
-stehst du in Rust im Schnitt **23 Minuten** an. Im Phantasialand, das ein
-Drittel dieses Publikums hat, sind es 32.
+stehst du in Rust kürzer an als im Phantasialand, das nur ein Drittel dieses
+Publikums hat.
 
 Geschätzt ist daran nichts. Wir erfassen die Wartezeiten in Rust seit zwölf
 Monaten, Bahn für Bahn, und was gerade an den Schlangen steht, zeigt die
@@ -85,7 +85,7 @@ Nach der Wintersaison wird die Bahn abgebaut. Der Park hat für den
 
 ![Der Haupteingang des Europa-Parks, an der Fassade hängen Länderflaggen | Der Haupteingang in Rust. Dahinter liegen 95 Hektar und 18 europäische Länder. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park Wartezeiten: eine knappe halbe Stunde im Schnitt
+## Europa-Park Wartezeiten: gut eine Viertelstunde im Schnitt
 
 Unsere Wartezeit-Historie für den Europa-Park beginnt im Dezember 2025 und ist seit April lückenlos. Über
 alle Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt bei **gut
@@ -699,7 +699,7 @@ Ein Tagesablauf, der daraus folgt:
    liegt die Stunde vor Schluss unter der Öffnungsstunde. Nur die beiden
    Wasserbahnen sind morgens leerer.
 
-Eine Einschränkung dazu: Diese Kurven sind Mittelwerte über ein ganzes Jahr
+Eine Einschränkung dazu: Diese Kurven sind Mittelwerte über alle gemessenen
 Betriebstage, Hochsommer und Wintersaison zusammen. An einem kurzen Novembertag
 von elf bis neunzehn Uhr sind die Zahlen niedriger und die Spitze liegt früher.
 
@@ -926,7 +926,7 @@ Der Satz, der über diesem Park am häufigsten steht, lautet „bester Freizeitp
 der Welt“, und er stimmt insofern, als eine internationale Branchenabstimmung ihn
 zehnmal so aufgeschrieben hat. Mich überzeugt eine andere Zahl mehr.
 
-Über sechs Millionen Menschen im Jahr, und du stehst im Schnitt 23 Minuten an.
+Über sechs Millionen Menschen im Jahr, und du stehst trotzdem kürzer an als anderswo.
 Kein Kunststück, wenn man 96 Attraktionen auf 95 Hektar verteilt, 286 Tage im
 Jahr aufmacht und niemanden an der Schlange vorbeilässt.
 
@@ -976,4 +976,4 @@ dreht.
 - Anreise über die A5, Parkgebühren, Rulantica, Eatrenalin mit Michelin-Stern 2026: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (offiziell)](https://www.europapark.de/de) · [Eatrenalin auf en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Gästestruktur nach Herkunftsland und der Schweizer Anteil: [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [„874'000 Schweizer Besucher stellen den grössten Anteil“ (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie über ein rollendes Jahr, Stundenprofil über ein rollendes Jahr, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)
+- Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie seit Dezember 2025, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)
