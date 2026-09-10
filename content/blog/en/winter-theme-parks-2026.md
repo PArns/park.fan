@@ -388,7 +388,7 @@ the middle of them. Wintertraum adds a further twist: it is a destination in its
 own right. People drive to Brühl for the shows, not in spite of the season.
 
 And because "which of them is the busiest" gets asked on every car journey,
-here are the parks from this article side by side, each with its quietest
+here are the parks from this overview side by side, each with its quietest
 weekday:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand

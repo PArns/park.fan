@@ -182,8 +182,9 @@ l’open source, des adaptateurs domotiques et plus de projets annexes que de
 raison ; tout le fatras qui s’empile sur [arns.dev](https://arns.dev) et
 [GitHub](https://github.com/PArns).
 
-Deux passions qui ont couru côte à côte pendant des décennies sans jamais se
-rencontrer.
+Les deux n’ont eu aucun rapport pendant des décennies. Au bureau, il était
+question de débit et de latence, au parc de files d’attente, et que ce soit la
+même question ne m’est apparu que très tard.
 
 ## Le moment dans la file de Taron
 
@@ -216,9 +217,9 @@ de débogage plus longues que certaines journées de parc. Et ce moment de
 sidération très particulier quand un modèle prédit correctement, pour la
 première fois, un samedi bondé, des jours avant qu’il n’arrive.
 
-Car c’était là le vrai souhait : pas un tableau de bord de plus qui affiche des
-chiffres, mais un système qui _comprend_ les journées de parc. Un modèle d’IA
-maison qui devait apprendre qu’un pont pluvieux en octobre est quelque chose de
+Car c’était là le vrai souhait : Il n’a jamais été question d’afficher le chiffre du moment. Le parc
+l’affiche lui-même. Cela devient intéressant un cran avant : un modèle maison
+devait apprendre qu’un pont pluvieux en octobre est quelque chose de
 totalement différent d’un samedi ensoleillé de vacances en juillet. Que les
 calendriers scolaires, la météo, les horaires d’ouverture et des années
 d’historique des files forment ensemble un motif qu’on peut lire, à condition de
@@ -233,8 +234,8 @@ chaque session de débogage nocturne elle me rappelle à quoi sert tout cet effo
 Quelque part là-dehors, un vrai train roule en ce moment même, et quelqu’un
 là-dehors veut savoir si la file devant en vaut la peine.
 
-Ce qui en est sorti, c’est un système nerveux en temps réel pour les parcs
-d’attractions. Des temps d’attente en direct dans plus de **200 parcs** et
+Derrière, il y a aujourd’hui des temps d’attente en direct dans plus de
+**200 parcs** et
 **7000 attractions**, à la minute. Des prévisions qui estiment l’affluence
 jusqu’à **365 jours** à l’avance. Et comme je ne fais par principe confiance aux
 chiffres que lorsqu’ils doivent faire leurs preuves, le modèle se note lui-même :
@@ -257,10 +258,10 @@ Rhénanie-du-Nord-Westphalie. Un jour de pont n’est presque jamais une bonne
 idée. Et le « tuyau d’initié » consistant à y aller sous la pluie fonctionne
 exactement jusqu’à ce que tous les autres aient lu le même tuyau d’initié.
 
-La réponse n’est donc pas « les dimanches sont chargés », mais : _ce_
-dimanche-là, dans _ce_ parc-là, à _cette_ saison-là. Vert, jaune ou rouge.
-Ouvrir le calendrier, regarder la couleur, décider. Et si vous êtes déjà dans le
-parc, les données en direct vous montrent si la file devant vous est
+« Les dimanches sont chargés » n’est donc pas une réponse utilisable. Un
+dimanche de fin novembre au Phantasialand est une autre question qu’un dimanche
+de début août à l’Europa-Park, et le calendrier répond à la seconde. Et si vous
+êtes déjà dans le parc, les données en direct vous montrent si la file devant vous est
 l’exception ou la règle.
 
 ## Ce que park.fan fait autrement
@@ -283,12 +284,12 @@ C’est pourquoi nous allons quelques pas plus loin :
 - **Tout au même endroit.** Temps d’attente, niveaux d’affluence, météo à
   l’entrée du parc, horaires et historiques des attractions, en six langues.
 - **Gratuit et sans publicité.** Pas de groupe, pas de paywall. Un site de fans
-  au meilleur sens du terme, construit par quelqu’un qui fait la queue
+  construit par quelqu’un qui fait la queue
   lui-même.
 
 ## Ce que ce blog doit devenir
 
-Un temps d’attente sans contexte n’est qu’une rumeur avec une décimale.
+Un temps d’attente seul ne dit presque rien.
 « 50 minutes » : trois fois le même chiffre, trois histoires complètement
 différentes.
 
@@ -359,8 +360,7 @@ park.fan**. Oui, sérieusement :
 Merci d’avoir lu jusqu’ici. Cet endroit, la plateforme, le blog, tout ça, c’est
 mon merci à un parc au bord d’un lac aux contes, à des parents qui y ont emmené
 encore et encore un petit garçon, à un père dans une nacelle, et à chaque
-personne qui aime les parcs d’attractions autant que moi. Et maintenant : allez
-faire la queue. Mais seulement si les données disent que ça en vaut la peine.
+personne qui aime les parcs d’attractions autant que moi. 
 
 — Patrick
 

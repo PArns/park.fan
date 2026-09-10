@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Een volgepakt openluchttheater van achteren gezien, het publiek wacht in het donker'
-  caption: 'Iedereen op hetzelfde moment op dezelfde plek. Dat is het normale geval, niet de uitzondering.'
+  caption: 'Fantasmic in de Hollywood Studios, vlak voor aanvang. Tienduizend mensen die dat halfuur nergens in de rij staan.'
   credit: 'Patrick Arns'
 seo:
   title: 'Dagplanner voor pretparken: wachttijden vooraf inrekenen'
@@ -245,7 +245,7 @@ dat betekent: wie de link heeft, kan hem lezen en wijzigen. Er staat geen
 wachtwoord voor. Wie dat niet wil, zet de meldingen niet aan en verliest verder
 niets.
 
-Nog twee dingen die je makkelijk over het hoofd ziet. Aan de rechterrand van het
+Nog twee dingen die je makkelijk over het hoofd ziet. Aan de rand van het
 scherm hangt op elke pagina een tab die de planner opent, ook als er nog niets
 gepland is. En op een computer kun je een tweede kolom openen, dan staan er twee
 dagen naast elkaar. Voor precies één zin heb ik dat gebouwd: “en hoe zou dat er

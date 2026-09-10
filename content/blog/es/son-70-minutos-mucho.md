@@ -137,8 +137,8 @@ el modelo de previsión se reentrena con los tiempos de espera del día anterior
 
 A eso se suma la otra mitad: no tiramos nada. Los periodos antiguos se
 comprimen, pero cada análisis sigue corriendo sobre todas las mediciones que han
-llegado alguna vez. Un archivo que quieres crear a posteriori es justo lo único
-que no se puede crear a posteriori.
+llegado alguna vez. Quien empieza a guardar en el tercer año tiene en el tercer año un año de
+historial, y los dos anteriores se han perdido para siempre.
 
 ## Y los sitios donde no decimos nada
 

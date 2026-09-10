@@ -138,8 +138,8 @@ il modello di previsione si riaddestra con i tempi di attesa del giorno prima.
 
 Poi c’è l’altra metà: non buttiamo via niente. I periodi più vecchi vengono
 compressi, ma ogni analisi continua a girare su tutte le rilevazioni mai
-arrivate. Un archivio che si vorrebbe creare a posteriori è esattamente l’unica
-cosa che a posteriori non si può creare.
+arrivate. Chi comincia a salvare al terzo anno, al terzo anno ha un anno di storico, e i
+due precedenti sono persi per sempre.
 
 ## E i punti in cui non diciamo nulla
 

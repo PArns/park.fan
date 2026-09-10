@@ -175,8 +175,9 @@ poi open source, adattatori per la domotica e più progetti collaterali di quant
 mi facciano bene; tutta la roba che si accumula su [arns.dev](https://arns.dev)
 e [GitHub](https://github.com/PArns).
 
-Due passioni che per decenni sono corse una accanto all’altra senza mai
-incontrarsi.
+Le due cose per decenni non hanno avuto niente a che fare l’una con l’altra. In
+ufficio si parlava di portata e latenza, al parco di code, e che siano la stessa
+domanda me ne sono accorto molto tardi.
 
 ## Il momento nella coda del Taron
 
@@ -208,9 +209,9 @@ altri. Sessioni di debug più lunghe di certe giornate al parco. E quel momento
 di stupore tutto particolare in cui un modello prevede correttamente per la
 prima volta un sabato strapieno, giorni prima che accada.
 
-Perché il desiderio vero era questo: non l’ennesima dashboard che mostra numeri,
-ma un sistema che _capisca_ le giornate nei parchi. Un modello di IA nostro che
-ha dovuto imparare che un ponte piovoso di ottobre è qualcosa di completamente
+Perché il desiderio vero era questo: Non è mai stato il punto mostrare il numero del momento. Quello lo espone il
+parco stesso. Interessante diventa un passo prima: un modello nostro ha dovuto
+imparare che un ponte piovoso di ottobre è qualcosa di completamente
 diverso da un sabato di vacanza assolato di luglio. Che calendari scolastici,
 meteo, orari di apertura e anni di storico delle code formano insieme uno schema
 leggibile, a patto di guardarlo con abbastanza ostinazione.
@@ -224,8 +225,7 @@ debug notturna mi ricorda a cosa serva davvero tutta questa fatica. Là fuori, i
 questo momento, sta girando un treno vero, e là fuori qualcuno vuole sapere se
 la coda davanti valga la pena.
 
-Quello che ne è venuto fuori è un sistema nervoso in tempo reale per i parchi
-divertimento. Tempi di attesa live da oltre **200 parchi** e **7000 attrazioni**,
+Dietro ci sono oggi tempi di attesa live da oltre **200 parchi** e **7000 attrazioni**,
 minuto per minuto. Previsioni che stimano l’affluenza fino a **365 giorni** in
 anticipo. E siccome per principio mi fido dei numeri solo se devono dimostrare
 qualcosa, il modello si dà un voto da sé: ogni previsione viene poi confrontata
@@ -248,9 +248,10 @@ della Renania Settentrionale-Vestfalia. Un ponte non è quasi mai una buona idea
 E la “dritta segreta” di andarci con la pioggia funziona esattamente finché
 tutti gli altri non hanno letto la stessa dritta segreta.
 
-La risposta non è quindi “le domeniche sono piene”, ma: _questa_ domenica, in
-_questo_ parco, in _questa_ stagione. Verde, giallo o rosso. Aprire il
-calendario, guardare il colore, decidere. E se sei già nel parco, i dati live ti
+“Le domeniche sono piene” non è quindi una risposta utilizzabile. Una domenica
+di fine novembre al Phantasialand è un’altra domanda rispetto a una domenica di
+inizio agosto all’Europa-Park, e il calendario risponde alla seconda. E se sei
+già nel parco, i dati live ti
 mostrano se la coda davanti a te è l’eccezione o la regola.
 
 ## Cosa fa park.fan di diverso
@@ -271,14 +272,13 @@ Per questo andiamo qualche passo più in là:
 - **Tutto in un posto solo.** Tempi di attesa, livelli di affluenza, meteo
   all’ingresso del parco, orari e storici delle attrazioni, in sei lingue.
 - **Gratuito e senza pubblicità.** Nessun gruppo, nessun paywall. Un sito di fan
-  nel senso migliore del termine, costruito da uno che in coda ci sta di
+  costruito da uno che in coda ci sta di
   persona.
 
 ## Cosa vuole diventare questo blog
 
-Un tempo di attesa senza contesto non è che una voce di corridoio con i
-decimali. “50 minuti”: tre volte la stessa cifra, tre storie completamente
-diverse.
+Un tempo di attesa da solo non dice quasi niente. Lo stesso numero significa
+qualcosa di completamente diverso a seconda della giostra e del giorno.
 
 - **50 minuti** per un flat ride? Puro spreco di tempo. In quella finestra ci
   sarebbero stati tre coaster veri.
@@ -348,7 +348,7 @@ Grazie di aver letto fin qui. Questo posto, la piattaforma, il blog, tutto
 quanto, è il mio grazie a un parco in riva a un lago delle fiabe, a dei genitori
 che ci hanno portato un bambino piccolo ancora e ancora, a un padre in una
 gondola e a ogni singola persona che ama i parchi divertimento quanto li amo io.
-E adesso: vai a metterti in coda. Ma solo se i dati dicono che ne vale la pena.
+
 
 — Patrick
 

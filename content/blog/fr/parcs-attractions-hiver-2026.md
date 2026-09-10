@@ -303,7 +303,7 @@ compris. Le 5 janvier 2027, la **Cabalgata de los Reyes Magos** traverse la zone
 Mediterrània, le défilé des Rois mages, le soir où les enfants espagnols
 reçoivent leurs cadeaux.
 
-Un avertissement issu de nos propres mesures : de tous les parcs de cet article,
+Un avertissement issu de nos propres mesures : de tous les parcs de cette sélection,
 c’est à PortAventura que l’on attend le plus longtemps, et cela vaut sur toute
 l’année, pas seulement à Noël. Le tableau plus bas les met côte à côte. Attendre
 une saison vide parce que c’est l’hiver chez soi, c’est planifier pour le
@@ -401,7 +401,7 @@ de Noël au milieu. Pour le Wintertraum s’ajoute qu’il est une destination e
 soi. On roule vers Brühl pour les spectacles, pas malgré la saison.
 
 Et parce que la question « lequel est le plus chargé » revient à chaque trajet en
-voiture, voici les parcs de cet article côte à côte, chacun avec son jour de
+voiture, voici les parcs de cette sélection côte à côte, chacun avec son jour de
 semaine le plus calme :
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand

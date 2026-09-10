@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Un teatro al aire libre abarrotado visto desde atrás, con el público esperando a oscuras'
-  caption: 'Todos en el mismo sitio a la misma hora. Ese es el caso normal, no la excepción.'
+  caption: 'Fantasmic en los Hollywood Studios, justo antes de empezar. Diez mil personas que durante esa media hora no hacen cola en ningún sitio.'
   credit: 'Patrick Arns'
 seo:
   title: 'Un planificador para parques: cuenta las colas antes de ir'
@@ -241,7 +241,7 @@ significa eso: quien tenga el enlace puede leerlo y cambiarlo. No hay ninguna
 contraseña delante. Quien no lo quiera, deja las notificaciones apagadas y no
 pierde nada más.
 
-Dos cosas más que se pasan por alto fácilmente. En el borde derecho de la
+Dos cosas más que se pasan por alto fácilmente. En el borde de la
 pantalla cuelga en cada página una pestaña que abre el planificador, incluso sin
 nada planificado. Y en el ordenador puedes abrir una segunda columna, y entonces
 hay dos días a la vez. Lo construí por una sola frase: «y el sábado, ¿cómo

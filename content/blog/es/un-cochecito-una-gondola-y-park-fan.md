@@ -175,7 +175,9 @@ eso se suman open source, adaptadores de domótica y más proyectos paralelos de
 los que me convienen; todo el material que se apila en
 [arns.dev](https://arns.dev) y [GitHub](https://github.com/PArns).
 
-Dos pasiones que corrieron décadas en paralelo sin encontrarse nunca.
+Las dos no tuvieron nada que ver durante décadas. En el trabajo se trataba de
+rendimiento y latencia, en el parque de hacer cola, y que sean la misma
+pregunta se me ocurrió muy tarde.
 
 ## El momento en la cola de Taron
 
@@ -207,9 +209,8 @@ de depuración más largas que más de un día de parque. Y ese momento de
 admiración tan particular en el que un modelo predice correctamente por primera
 vez un sábado abarrotado, días antes de que ocurra.
 
-Porque ese era el deseo real: no un panel más que muestre cifras, sino un
-sistema que _entienda_ los días de parque. Un modelo de IA propio que tuvo que
-aprender que un puente lluvioso de octubre es algo completamente distinto de un
+Nunca se trató de mostrar la cifra del momento. Esa la cuelga el parque mismo.
+Interesante se pone un paso antes: un modelo propio tuvo que aprender que un puente lluvioso de octubre es algo completamente distinto de un
 sábado soleado de vacaciones en julio. Que los calendarios escolares, el tiempo,
 los horarios y años de histórico de colas forman juntos un patrón que se puede
 leer, si uno lo mira con la suficiente terquedad.
@@ -222,8 +223,7 @@ jubilarse en mi casa y, en cada sesión nocturna de depuración, me recuerda par
 qué es todo este esfuerzo. Ahí fuera hay ahora mismo un tren real circulando y,
 ahí fuera, alguien quiere saber si la cola que tiene delante merece la pena.
 
-Lo que ha salido de ahí es un sistema nervioso en tiempo real para parques de
-atracciones. Tiempos de espera en directo de más de **200 parques** y **7000
+Detrás hay hoy tiempos de espera en directo de más de **200 parques** y **7000
 atracciones**, minuto a minuto. Previsiones que estiman la afluencia hasta
 **365 días** por adelantado. Y como por principio solo me fío de las cifras que
 tienen que demostrarse, el modelo se pone nota a sí mismo: cada previsión se
@@ -246,9 +246,10 @@ Renania del Norte-Westfalia. Un puente casi nunca es buena idea. Y el «truco de
 iniciados» de ir con lluvia funciona exactamente hasta que todos los demás han
 leído el mismo truco de iniciados.
 
-La respuesta no es «los domingos hay mucha gente», sino: _este_ domingo, en
-_este_ parque, en _esta_ época del año. Verde, amarillo o rojo. Abrir el
-calendario, mirar el color, decidir. Y si ya estás en el parque, los datos en
+«Los domingos hay mucha gente» no es, por tanto, una respuesta útil. Un domingo
+de finales de noviembre en el Phantasialand es otra pregunta que un domingo de
+principios de agosto en el Europa-Park, y el calendario responde la segunda. Y
+si ya estás en el parque, los datos en
 directo te enseñan si la cola que tienes delante es la excepción o la regla.
 
 ## Qué hace park.fan de otra manera
@@ -269,11 +270,11 @@ Por eso damos unos pasos más:
 - **Todo en un sitio.** Tiempos de espera, niveles de afluencia, tiempo en la
   entrada del parque, horarios e históricos de atracciones, en seis idiomas.
 - **Gratis y sin publicidad.** Ni corporación ni muro de pago. Una web de fans
-  en el mejor sentido de la palabra, hecha por alguien que también hace cola.
+  hecha por alguien que también hace cola.
 
 ## Qué quiere ser este blog
 
-Un tiempo de espera sin contexto no es más que un rumor con decimales. «50
+Un tiempo de espera por sí solo no dice casi nada. «50
 minutos»: tres veces la misma cifra, tres historias completamente distintas.
 
 - ¿**50 minutos** para un flat ride? Pura pérdida de tiempo. En ese hueco
@@ -344,8 +345,7 @@ Gracias por haber leído hasta aquí. Este lugar, la plataforma, el blog, todo
 esto, es mi manera de dar las gracias a un parque junto a un lago de cuentos, a
 unos padres que llevaron allí una y otra vez a un niño pequeño, a un padre en
 una góndola y a cada una de las personas que quieren a los parques de
-atracciones tanto como yo. Y ahora: ve a hacer cola. Pero solo si los datos
-dicen que merece la pena.
+atracciones tanto como yo. 
 
 — Patrick
 

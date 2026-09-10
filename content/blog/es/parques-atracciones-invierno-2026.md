@@ -398,7 +398,7 @@ sí mismo. La gente conduce hasta Brühl por los espectáculos, no a pesar de la
 estación.
 
 Y como la pregunta «¿cuál de ellos es el más lleno?» sale en cada viaje en
-coche, aquí están los parques de este artículo uno al lado del otro, cada uno
+coche, aquí están los parques de esta selección uno al lado del otro, cada uno
 con su día de la semana más tranquilo:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand

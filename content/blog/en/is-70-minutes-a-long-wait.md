@@ -137,8 +137,8 @@ retrains itself on the previous day’s wait times.
 
 Then there is the other half: we throw nothing away. Older periods get
 compressed, but every analysis still runs over every reading that ever arrived.
-An archive you want to create in hindsight is the one thing you cannot create in
-hindsight.
+Start storing in your third year and you have one year of history in your third
+year, and the two before it are gone for good.
 
 ## And the places where we say nothing
 

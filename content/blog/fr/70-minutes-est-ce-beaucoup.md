@@ -142,8 +142,8 @@ d’attente de la veille.
 
 À cela s’ajoute l’autre moitié : nous ne jetons rien. Les périodes anciennes
 sont compressées, mais chaque analyse continue de porter sur tous les relevés
-jamais arrivés. Une archive que l’on voudrait constituer après coup est
-justement la seule chose qui ne se constitue pas après coup.
+jamais arrivés. Commencer à enregistrer la troisième année, c’est avoir un an d’historique la
+troisième année, et les deux précédentes sont perdues pour de bon.
 
 ## Et les endroits où nous ne disons rien
 

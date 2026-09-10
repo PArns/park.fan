@@ -173,8 +173,9 @@ Daarnaast open source, smarthome-adapters en meer zijprojecten dan goed voor me
 is; alle spullen die zich opstapelen op [arns.dev](https://arns.dev) en
 [GitHub](https://github.com/PArns).
 
-Twee passies die decennialang naast elkaar liepen zonder elkaar ooit tegen te
-komen.
+De twee hadden decennialang niets met elkaar te maken. Op kantoor ging het om
+doorstroom en latency, in het park om wachten, en dat dat dezelfde vraag is,
+viel me pas heel laat op.
 
 ## Het moment in de rij bij Taron
 
@@ -203,8 +204,8 @@ alle andere. Debugsessies die langer duurden dan menige parkdag. En dat heel
 eigen moment van ontzag wanneer een model voor het eerst een overvolle zaterdag
 correct voorspelt, dagen voordat die plaatsvindt.
 
-Want dat was de eigenlijke wens: geen zoveelste dashboard dat cijfers toont,
-maar een systeem dat parkdagen _begrijpt_. Een eigen AI-model dat moest leren
+Want dat was de eigenlijke wens: Het ging nooit om het tonen van het actuele getal. Dat hangt het park zelf op.
+Interessant wordt het een stap eerder: een eigen model moest leren
 dat een regenachtige brugdag in oktober iets totaal anders is dan een zonnige
 vakantiezaterdag in juli. Dat vakantiekalenders, weer, openingstijden en jaren
 aan wachttijdhistorie samen een patroon vormen dat je kunt lezen, als je maar
@@ -218,8 +219,7 @@ met pensioen mocht, en het herinnert me bij elke nachtelijke debugsessie waar al
 die moeite eigenlijk voor is. Ergens daarbuiten rijdt op dit moment een echte
 baan, en ergens daarbuiten wil iemand weten of de rij ervoor de moeite waard is.
 
-Wat daaruit gegroeid is, is een realtime zenuwstelsel voor pretparken. Live
-wachttijden uit ruim **200 parken** en **7.000 attracties**, elke minuut
+Daarachter zitten inmiddels live wachttijden uit ruim **200 parken** en **7.000 attracties**, elke minuut
 ververst. Voorspellingen die de drukte tot **365 dagen** vooruit inschatten. En
 omdat ik cijfers principieel alleen vertrouw als ze zich moeten bewijzen, geeft
 het model zichzelf een cijfer: elke voorspelling wordt later naast de werkelijk
@@ -241,9 +241,10 @@ zomervakantie van Noordrijn-Westfalen. Een brugdag is bijna nooit een goed idee.
 En de “geheime tip” om bij regen te gaan werkt precies zolang tot alle anderen
 diezelfde geheime tip gelezen hebben.
 
-Het antwoord luidt dus niet “zondagen zijn druk”, maar: _deze_ zondag, in _dit_
-park, in _dit_ seizoen. Groen, geel of rood. Kalender openen, kleur bekijken,
-beslissen. En als je al in het park staat, laat de live data zien of de rij voor
+“Zondagen zijn druk” is daarom geen bruikbaar antwoord. Een zondag eind november
+in het Phantasialand is een andere vraag dan een zondag begin augustus in het
+Europa-Park, en de kalender beantwoordt de tweede. En als je al in het park
+staat, laat de live data zien of de rij voor
 je de uitzondering is of de regel.
 
 ## Wat park.fan anders doet
@@ -268,8 +269,8 @@ Daarom gaan we een paar stappen verder:
 
 ## Wat deze blog moet worden
 
-Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
-“50 minuten”, drie keer hetzelfde getal, drie keer een totaal ander verhaal:
+Een wachttijd op zichzelf zegt bijna niets. Hetzelfde getal betekent iets
+totaal anders, afhankelijk van de baan en de dag:
 
 - **50 minuten** voor een flat ride? Regelrechte tijdverspilling. In die marge
   hadden drie echte coasters gepast.
@@ -336,8 +337,7 @@ Dank je wel dat je tot hier gelezen hebt. Deze plek, het platform, de blog, dat
 alles, is mijn dankjewel aan een park aan een sprookjesmeer, aan ouders die een
 klein jongetje er telkens weer mee naartoe namen, aan een vader in een gondel,
 en aan elke afzonderlijke persoon die net zoveel van pretparken houdt als ik. En
-nu: ga in de rij staan. Maar alleen als de data zeggen dat het de moeite waard
-is.
+
 
 — Patrick
 

@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'A packed open-air theatre seen from the back, the audience waiting in the dark'
-  caption: 'Everybody in the same place at the same time. That is the normal case, not the exception.'
+  caption: 'Fantasmic at Hollywood Studios, just before it starts. Ten thousand people who are not queueing anywhere for that half hour.'
   credit: 'Patrick Arns'
 seo:
   title: 'A trip planner for theme parks: count the queues before you go'
@@ -242,7 +242,7 @@ means: whoever has the link can read it and change it. No password stands in
 front of it. If you do not want that, leave the notifications off and you lose
 nothing else.
 
-Two more things that are easy to miss. A tab hangs at the right edge of the
+Two more things that are easy to miss. A tab hangs at the edge of the
 screen on every page and opens the planner, even with nothing planned yet. And
 on a desktop you can open a second column, which puts two days side by side. I
 built it for exactly one sentence: “and what would that look like on Saturday”.

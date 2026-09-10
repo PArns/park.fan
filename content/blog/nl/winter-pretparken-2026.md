@@ -391,7 +391,7 @@ Bij de Wintertraum komt daar nog bij dat het een doel op zich is. Mensen rijden
 naar Brühl vanwege de shows, niet ondanks het jaargetijde.
 
 En omdat de vraag „welke van die parken is het drukst“ op elke autorit
-langskomt, hier de parken uit dit artikel naast elkaar, elk met zijn rustigste
+langskomt, hier de parken uit dit overzicht naast elkaar, elk met zijn rustigste
 weekdag:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand

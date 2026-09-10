@@ -137,8 +137,8 @@ opnieuw met de wachttijden van de dag ervoor.
 
 Daar komt de andere helft bij: we gooien niets weg. Oudere perioden worden
 gecomprimeerd, maar elke analyse loopt nog altijd over alle metingen die ooit
-zijn binnengekomen. Een archief dat je achteraf wilt aanleggen, is precies het
-enige wat je niet achteraf kunt aanleggen.
+zijn binnengekomen. Wie in het derde jaar begint met opslaan, heeft in het derde jaar één jaar
+historie, en de twee daarvoor zijn voorgoed weg.
 
 ## En de plekken waar we niets zeggen
 

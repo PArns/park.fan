@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Un teatro all’aperto gremito visto da dietro, il pubblico aspetta al buio'
-  caption: 'Tutti nello stesso posto alla stessa ora. È il caso normale, non l’eccezione.'
+  caption: 'Fantasmic agli Hollywood Studios, poco prima dell’inizio. Diecimila persone che per quella mezz’ora non sono in coda da nessuna parte.'
   credit: 'Patrick Arns'
 seo:
   title: 'Un pianificatore per i parchi: contare le file prima di partire'
@@ -247,7 +247,7 @@ cosa significa: chi ha il link può leggerlo e modificarlo. Davanti non c’è
 nessuna password. Chi non lo vuole lascia spente le notifiche e non perde
 nient’altro.
 
-Ancora due cose che sfuggono facilmente. Sul bordo destro dello schermo, su ogni
+Ancora due cose che sfuggono facilmente. Sul bordo dello schermo, su ogni
 pagina, c’è una linguetta che apre il pianificatore, anche quando non è ancora
 pianificato nulla. E al computer puoi aprire una seconda colonna, e allora ci
 sono due giornate una accanto all’altra. L’ho costruito per una frase sola: «e

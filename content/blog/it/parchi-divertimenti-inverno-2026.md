@@ -394,7 +394,7 @@ vacanze di Natale. Per il Wintertraum si aggiunge che è una meta in sé. Si gui
 fino a Brühl per gli spettacoli, non nonostante la stagione.
 
 E siccome la domanda “quale di questi è il più pieno” salta fuori a ogni
-viaggio in auto, ecco i parchi di questo articolo uno accanto all’altro,
+viaggio in auto, ecco i parchi di questa panoramica uno accanto all’altro,
 ciascuno con il suo giorno feriale più tranquillo:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
