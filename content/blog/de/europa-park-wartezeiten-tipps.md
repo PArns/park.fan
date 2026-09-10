@@ -109,8 +109,8 @@ Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
 jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
 
-Ansonsten liest sich die Liste unspektakulär. **34 Minuten für die Bahn, auf die im
-ersten Jahr 3,25 Millionen Fahrten entfielen**, sind, gemessen an über sechs
+Ansonsten liest sich die Liste unspektakulär. **Die längste Schlange des Parks für die Bahn, auf die im
+ersten Jahr 3,25 Millionen Fahrten entfielen**, ist, gemessen an über sechs
 Millionen Gästen, sehr wenig. Der Vergleich, gleiche Datenbasis, gleiche Rechenmethode:
 
 ```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
@@ -125,7 +125,7 @@ Resorts, im Phantasialand 2,1 Millionen, im Efteling 5,6, in Paris rund zehn.
 Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des
 Parks. Rechts steht jeweils die Attraktion mit dem höchsten Median, für die wir
 mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
-noch Maximus' Blitz Bahn mit 34 Minuten, allerdings auf nur 61 Tagen, und eine
+noch Maximus' Blitz Bahn, allerdings auf nur 61 Messtagen, und eine
 Kinderachterbahn mit dünner Messbasis taugt nicht als Kennzahl für einen ganzen
 Park.
 
@@ -135,8 +135,8 @@ Bahnen; nachgerechnet im [Phantasialand-Guide](/blog/phantasialand-tipps). Für
 das [Efteling](/blog/efteling-disney-der-niederlande) und das
 [Toverland](/blog/toverland-troy-wartezeiten-tipps) haben wir dieselbe Rechnung
 aufgemacht. Und in Paris, wo etwa anderthalbmal so viele Gäste
-durchgehen, steht der Parkschnitt bei 34 Minuten. Das ist exakt der Wert, den in
-Rust die _längste_ Schlange des Parks hat.
+durchgehen, liegt der Parkschnitt ungefähr dort, wo in Rust die _längste_
+Schlange des Parks steht.
 
 ## Warum der größte Park die kürzesten Schlangen hat
 
@@ -405,7 +405,7 @@ anfühlt, als würde man in Zeitlupe umgedreht.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** läuft seit
 1989 komplett im Inneren einer silbernen Kugel. 2018 wurde die Bahn vom
 Weltraum- auf ein Pariser Thema umgebaut, mit einer Moulin-Rouge-Fassade davor.
-198 Sekunden im Dunkeln. Dass sie mit 28 Minuten typischer Wartezeit auf Platz
+198 Sekunden im Dunkeln. Dass sie mit ihrer typischen Wartezeit auf Platz
 vier steht, hat einen banalen Grund. Sie ist eine der wenigen Bahnen, die bei
 Regen zuverlässig fahren.
 
@@ -424,7 +424,7 @@ von 1985, **[Pegasus](ref:europa-park/pegasus)** von 2006, der
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** von 1984, der
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Irland, sowie
 **[Arthur](ref:europa-park/arthur)**, eine hängende Antriebsbahn durch das
-Minimoys-Königreich, die mit 31 Minuten die zweitlängste Schlange des Parks hat.
+Minimoys-Königreich, die die zweitlängste Schlange des Parks hat.
 Die fünfzehnte ist der
 **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dieselbe Strecke wie der
 Enzian, nur mit VR-Brille und als eigene Bahn geführt.
@@ -643,8 +643,8 @@ Sonntag im November. Der 15. wäre so ein Tag.
 Das klingt nach einem Fehler. Unsere Rope-Drop-Auswertung
 vergleicht für jede Attraktion die Wartezeit direkt zur Öffnung mit der
 höchsten Tagesspitze, die dort an einem vollen Tag gemessen wurde. Beim Voletarium
-stehen 23 Minuten gegen 80, macht **57 Minuten Ersparnis**. Das ist der mit
-Abstand höchste Wert im ganzen Park.
+stehen gut zwanzig Minuten gegen achtzig, und das ist mit Abstand die größte
+Ersparnis im ganzen Park.
 
 ```glossary-widget slug=rope-drop
 
@@ -739,9 +739,8 @@ seinen Tag.
 
 Ab **28. November** ist Winter. Weihnachtsmärkte, eine Eisbahn, Eisshows und
 Bereiche, die es nur in diesen Wochen gibt, etwa die Winter World of Wonder und
-die Schlittenfahrt Snowflake. Die typische Wartezeit im Dezember lag bei uns bei
-28 Minuten und damit einen Tick über dem August, allerdings auf nur sechs
-Messtagen. Am **24. und 25. Dezember** ist zu, Hotelgäste dürfen bis zum 10.
+die Schlittenfahrt Snowflake. Die typische Wartezeit im Dezember lag bei uns einen
+Tick über dem August, allerdings auf nur sechs Messtagen. Am **24. und 25. Dezember** ist zu, Hotelgäste dürfen bis zum 10.
 Januar bleiben.
 
 ## Traumatica, der Park im Park
@@ -859,8 +858,8 @@ aktualisiert und mit Prognose für die nächsten Tage.
 
 ### Wann ist im Europa-Park am wenigsten los?
 
-Der **Sonntag** ist der ruhigste Wochentag (18 Minuten typisch gegenüber 28 am
-Samstag), Mai und Juni sind die ruhigsten Sommermonate. Am leersten ist es in der
+Der **Sonntag** ist der ruhigste Wochentag, der Samstag der vollste, und Mai und
+Juni sind die ruhigsten Sommermonate. Am leersten ist es in der
 HALLOWinter-Saison Anfang November. [In unserer Prognose für die kommenden drei
 Monate](ref:europa-park?calendar) stehen alle 19 Novembertage auf „niedrig“.
 
@@ -916,8 +915,7 @@ Doppelte einer Tageskarte.
 Ja, mit einer Einschränkung. Die Winterdekoration, die Eisbahn und die
 Weihnachtsmärkte gibt es nur dann, dafür ist es früher dunkel, der Park macht
 schon um 19 Uhr zu, und die Wasserbahnen laufen nicht durchgehend. Die
-Wartezeiten sind im Dezember mit typisch 28 Minuten sogar einen Tick höher als im
-August. Für den November stuft unsere Prognose dagegen alle 19 Tage, die sie abdeckt, auf
+Wartezeiten sind im Dezember sogar einen Tick höher als im August. Für den November stuft unsere Prognose dagegen alle 19 Tage, die sie abdeckt, auf
 „niedrig“ ein; gemessene Wartezeiten haben wir aus diesem Monat noch nicht.
 
 ## Warum ich für die Euro-Mir noch einmal hinfahre

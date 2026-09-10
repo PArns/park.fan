@@ -193,7 +193,7 @@ Wing Coaster heißt: Du sitzt links und rechts neben der Schiene, ohne Bahn übe
 oder unter dir, und weil dein Sitz die Kurven weiter außen mitgeht als das
 Fahrzeug, fühlt sich jede Drehung größer an, als sie ist. Unterwegs sprüht ein
 Phönix Nebel über dich, was mit Physik nichts zu tun hat und die Sache trotzdem
-besser macht. Wartezeit: dieselben 16 Minuten wie bei Troy.
+besser macht. Wartezeit: dieselbe Größenordnung wie bei Troy.
 
 ![Die Station von Fēnix mit blauer Schiene, Wing-Coaster-Zug und Feuerschalen an Ketten unter Holzbalken | Die Station von Fēnix: Feuerschalen an Ketten, schwere Balken, und der Zug mit den Sitzen neben der Schiene. | wide](/media/toverland/background-16x9.jpg)
 
@@ -201,7 +201,7 @@ besser macht. Wartezeit: dieselben 16 Minuten wie bei Troy.
 zweiter Liebling hier. Vekoma baute 2004 in Sevenum den weltweiten Prototyp der
 Motorrad-Achterbahn: Du sitzt nicht, du liegst auf einem Motorrad, Hände am
 Lenker, Knie angezogen, und wirst dann als Launch Coaster losgeschossen. Eine
-unbequeme, absurde, wunderbare Bahn. Mit einem Median von 21 Minuten hat
+unbequeme, absurde, wunderbare Bahn. Mit ihrem Median hat
 ausgerechnet sie die längste typische Wartezeit aller Coaster im Park, was daran
 liegt, dass man einzeln und liegend einsteigt und das eben dauert.
 
@@ -391,10 +391,9 @@ genug, dass so etwas geht, und offenbar wichtig genug, dass es gemacht wird.
 Wer länger nicht da war, wird eine Attraktion vermissen. Am **17. Mai 2026**
 hatte **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** im Wunderwald
 zum letzten Mal geöffnet, die Mack-Bobbahn von 2007, auf der man mit einem
-Bremshebel selbst bestimmte, wie schnell es bergab ging. In unserer Historie war
-sie über Jahre die Attraktion mit der längsten Wartezeit des ganzen Parks, im
-Median 34 Minuten, und an vollen Tagen standen dort auch mal 60 oder 90 Minuten
-an.
+Bremshebel selbst bestimmte, wie schnell es bergab ging. Solange wir sie gemessen haben, war
+sie die Attraktion mit der längsten Wartezeit des ganzen Parks, und an vollen
+Tagen standen dort auch mal 60 oder 90 Minuten an.
 
 Das lag an einer Rechnung, die nie aufgehen konnte: In einen Wagen passten eine,
 höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushing,

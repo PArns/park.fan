@@ -432,10 +432,9 @@ opens on Wednesdays and weekends. One caveat: winter and early season have so
 few operating days that these monthly values rest on far fewer measurement days
 than the summer months. The direction is clear, the decimal place is not.
 
-**By weekday** the numbers barely spread out. Saturday is the busiest (25
-minutes) and Friday next (24 minutes), and from Sunday to Wednesday it is 20
-minutes throughout. At Phantasialand there are worlds between a Tuesday and a
-Saturday.
+**By weekday** the numbers barely spread out. Friday and Saturday are the
+busiest, and even there the gap to the rest of the week is small. At
+Phantasialand there are worlds between a Tuesday and a Saturday.
 
 You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
@@ -533,7 +532,7 @@ Yes, especially for coaster fans who have had enough of queues. With around a
 million guests a year the park is small compared with the Efteling or
 Europa-Park, but it has one of Europe’s best wooden coasters in
 [Troy](ref:attractiepark-toverland/troy) and the continent’s longest wing coaster in
-[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of 16 minutes.
+[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of a good quarter of an hour.
 
 ### How long are the wait times at Toverland?
 
@@ -544,9 +543,9 @@ figures are on the
 
 ### When is Toverland least busy?
 
-**June** is the calmest month in our data (typically 18 minutes), followed by
-May and July. Weekdays are a little emptier than weekends, but the difference is
-small (20 against 25 minutes on a Saturday). Avoid April, the Dutch May and
+March to July sit close together in our data and make up the calmest part of
+the year. Weekdays are a little emptier than weekends, but the difference is
+small. Avoid April, the Dutch May and
 autumn holidays, and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
 
 ### Do you need a fast pass at Toverland?
@@ -554,8 +553,8 @@ autumn holidays, and the short winter season. Day by day, the [wait-time calenda
 There isn’t one. Toverland sells no fast pass at all; the only exception is the
 **Fear Pass** for the haunted experiences during the Halloween Nights
 (62.50 €). A free single rider line exists only at the Dragonwatch drop tower.
-With 16-minute medians on the headliners you don’t need a shortcut on a normal
-day anyway.
+With the medians the headliners are showing you don’t need a shortcut on a
+normal day anyway.
 
 ### Is Troy the best wooden coaster in Europe?
 

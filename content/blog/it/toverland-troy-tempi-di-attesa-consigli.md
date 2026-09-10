@@ -450,10 +450,10 @@ prestagione hanno così pochi giorni di apertura che dietro quei valori mensili
 ci sono molti meno giorni di misurazione che dietro i mesi estivi. La direzione
 è chiara, il decimale no.
 
-**Per giorno della settimana** i numeri si distanziano appena. Il giorno più
-pieno è il sabato (25 minuti), poi il venerdì (24 minuti); da domenica a
-mercoledì sono 20 minuti dappertutto. A Phantasialand tra un martedì e un sabato
-ci sono mondi di differenza.
+**Per giorno della settimana** i numeri si distanziano appena. I giorni più
+pieni sono il venerdì e il sabato, e anche lì la distanza dal resto della
+settimana è piccola. A Phantasialand tra un martedì e un sabato ci sono mondi di
+differenza.
 
 Su questo non ci si può fidare non appena calendari scolastici olandesi e
 tedeschi, meteo e orari di apertura si sovrappongono, e nella zona di confine del
@@ -555,7 +555,7 @@ Sì, soprattutto per gli appassionati di coaster stufi delle file. Con circa un
 milione di ospiti l’anno il parco è piccolo rispetto all’Efteling o a
 Europa-Park, ma ha in [Troy](ref:attractiepark-toverland/troy) uno dei migliori coaster in
 legno d’Europa e in [Fēnix](ref:attractiepark-toverland/fenix) il wing coaster più lungo del
-continente, con attese tipiche di 16 minuti.
+continente, con attese tipiche di un quarto d’ora abbondante.
 
 ### Quanto si aspetta a Toverland?
 
@@ -566,9 +566,9 @@ Toverland](ref:attractiepark-toverland).
 
 ### Quando c’è meno gente a Toverland?
 
-**Giugno** è il mese più rilassato secondo i nostri dati (tipicamente 18
-minuti), seguito da maggio e luglio. Nei giorni feriali è un po' più vuoto che
-nel fine settimana, ma la differenza è piccola (20 contro 25 minuti il sabato).
+Da marzo a luglio i valori nei nostri dati stanno vicini e formano la parte più
+tranquilla dell’anno. Nei giorni feriali è un po' più vuoto che nel fine
+settimana, ma la differenza è piccola.
 Evita aprile, le vacanze olandesi di maggio e d’autunno e la breve stagione
 invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:attractiepark-toverland?calendar).
 
@@ -577,7 +577,7 @@ invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:a
 Non esiste. Toverland non vende alcun pass salta-fila; l’unica eccezione è il
 **Fear Pass** per le haunted experience durante le Halloween Nights (62,50 €).
 Una fila single rider gratuita c’è solo alla torre di caduta Dragonwatch. Con
-mediane di 16 minuti sui pezzi forti, in una giornata normale non serve
+le mediane dei pezzi forti, in una giornata normale non serve
 comunque nessuna scorciatoia.
 
 ### Troy è il miglior coaster in legno d’Europa?

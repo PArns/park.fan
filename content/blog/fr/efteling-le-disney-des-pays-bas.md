@@ -824,7 +824,7 @@ et 400 € (Premium), à partir de 21 € par mois.
 
 Les attractions oui, le parc non. 37 attractions aux attentes typiques
 tiennent dans une longue journée. La forêt des contes, les spectacles, Aquanura et
-la marche ne tiennent plus en plus. Deux jours, c’est ici le cas normal, pas une
+la marche n’y tiennent plus. Deux jours, c’est ici le cas normal, pas une
 recommandation pour passionnés.
 
 ### Quelles nouveautés à Efteling en 2026 ?

@@ -431,9 +431,9 @@ en voorseizoen hebben zo weinig openingsdagen dat achter die maandwaarden
 duidelijk minder meetdagen staan dan achter de zomermaanden. De richting is
 eenduidig, de decimaal niet.
 
-**Per weekdag** lopen de cijfers nauwelijks uiteen. Het drukst is het op zaterdag
-(25 minuten) en vrijdag (24 minuten), van zondag tot woensdag is het overal 20
-minuten. In Phantasialand liggen tussen een dinsdag en een zaterdag werelden.
+**Per weekdag** lopen de cijfers nauwelijks uiteen. Het drukst is het op vrijdag
+en zaterdag, en ook daar is het verschil met de rest van de week klein. In
+Phantasialand liggen tussen een dinsdag en een zaterdag werelden.
 
 Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
@@ -536,7 +536,7 @@ Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met zo’n
 een miljoen gasten per jaar klein vergeleken met de Efteling of Europa-Park,
 maar heeft met [Troy](ref:attractiepark-toverland/troy) een van de beste houten achtbanen van
 Europa en met [Fēnix](ref:attractiepark-toverland/fenix) de langste wing coaster van het
-continent, bij typische wachttijden van 16 minuten.
+continent, bij typische wachttijden van een ruim kwartier.
 
 ### Hoe lang zijn de wachttijden in Toverland?
 
@@ -546,9 +546,9 @@ vind je op de [Toverland-parkpagina](ref:attractiepark-toverland).
 
 ### Wanneer is het in Toverland het rustigst?
 
-**Juni** is in onze data de meest ontspannen maand (typisch 18 minuten), gevolgd
-door mei en juli. Doordeweeks is het iets leger dan in het weekend, maar het
-verschil is klein (20 tegenover 25 minuten op zaterdag). Vermijd april, de
+Maart tot en met juli liggen in onze data dicht bij elkaar en vormen het
+rustigste deel van het jaar. Doordeweeks is het iets leger dan in het weekend,
+maar het verschil is klein. Vermijd april, de
 Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat de [wachttijden-kalender](ref:attractiepark-toverland?calendar) dat zien.
 
 ### Heb je in Toverland een fastpass nodig?
@@ -556,7 +556,7 @@ Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat
 Die is er niet. Toverland verkoopt helemaal geen fastpass; de enige
 uitzondering is de **Fear Pass** voor de haunted experiences tijdens de
 Halloween Nights (62,50 €). Een gratis single rider-rij bestaat alleen bij de
-valtoren Dragonwatch. Bij medianen van 16 minuten op de headliners heb je op
+valtoren Dragonwatch. Bij de medianen die op de headliners staan heb je op
 een normale dag sowieso geen kortere weg nodig.
 
 ### Is Troy de beste houten achtbaan van Europa?

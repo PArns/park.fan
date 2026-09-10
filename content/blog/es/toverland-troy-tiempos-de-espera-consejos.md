@@ -458,10 +458,9 @@ salvedad: el invierno y la pretemporada tienen tan pocos días de apertura que
 detrás de esos valores mensuales hay bastantes menos días de medición que detrás
 de los meses de verano. La dirección es clara, el decimal no.
 
-**Por días de la semana** las cifras apenas se separan. El día más lleno es el
-sábado (25 minutos) y después el viernes (24 minutos); de domingo a miércoles
-son 20 minutos en todos los casos. En Phantasialand hay un mundo entre un martes
-y un sábado.
+**Por días de la semana** las cifras apenas se separan. Los días más llenos son
+el viernes y el sábado, y hasta ahí la diferencia con el resto de la semana es
+pequeña. En Phantasialand hay un mundo entre un martes y un sábado.
 
 No te puedes fiar de eso en cuanto se superponen los calendarios de vacaciones
 neerlandeses y alemanes, el tiempo y los horarios de apertura, y en la zona
@@ -568,7 +567,7 @@ colas. Con alrededor de un millón de visitantes al año el parque es pequeño
 comparado con el Efteling o Europa-Park, pero tiene en [Troy](ref:attractiepark-toverland/troy)
 una de las mejores montañas rusas de madera de Europa y en
 [Fēnix](ref:attractiepark-toverland/fenix) el wing coaster más largo del continente, con
-esperas típicas de 16 minutos.
+esperas típicas de un cuarto de hora largo.
 
 ### ¿Cuánto se espera en Toverland?
 
@@ -579,9 +578,9 @@ Toverland](ref:attractiepark-toverland).
 
 ### ¿Cuándo hay menos gente en Toverland?
 
-**Junio** es el mes más tranquilo según nuestros datos (típicamente 18 minutos),
-seguido de mayo y julio. Entre semana está algo más vacío que el fin de semana,
-pero la diferencia es pequeña (20 frente a 25 minutos el sábado). Evita abril,
+De marzo a julio los valores están muy juntos en nuestros datos y forman la
+parte más tranquila del año. Entre semana está algo más vacío que el fin de
+semana, pero la diferencia es pequeña. Evita abril,
 las vacaciones neerlandesas de mayo y otoño y la corta temporada de invierno. Día a día lo muestra el [calendario de tiempos de espera](ref:attractiepark-toverland?calendar).
 
 ### ¿Hace falta un pase rápido en Toverland?
@@ -589,7 +588,7 @@ las vacaciones neerlandesas de mayo y otoño y la corta temporada de invierno. D
 No existe. Toverland no vende ningún pase rápido; la única excepción es el
 **Fear Pass** para las haunted experiences durante las Halloween Nights
 (62,50 €). Una fila gratuita de single rider solo existe en la torre de caída
-Dragonwatch. Con medianas de 16 minutos en las atracciones principales tampoco
+Dragonwatch. Con las medianas que marcan las atracciones principales tampoco
 necesitas ningún atajo en un día normal.
 
 ### ¿Es Troy la mejor montaña rusa de madera de Europa?

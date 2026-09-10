@@ -464,10 +464,9 @@ l’hiver et l’avant-saison ont si peu de jours d’ouverture que ces valeurs
 mensuelles reposent sur nettement moins de jours de mesure que les mois d’été.
 La tendance est nette, la décimale non.
 
-**Par jour de la semaine**, les chiffres s’écartent à peine. C’est le samedi que
-c’est le plus chargé (25 minutes), puis le vendredi (24 minutes) ; du dimanche
-au mercredi, c’est 20 minutes partout. À Phantasialand, il y a un monde entre un
-mardi et un samedi.
+**Par jour de la semaine**, les chiffres s’écartent à peine. C’est le vendredi et
+le samedi que c’est le plus chargé, et même là l’écart avec le reste de la semaine
+est faible. À Phantasialand, il y a un monde entre un mardi et un samedi.
 
 On ne peut pas s’y fier dès que calendriers de vacances néerlandais et allemands,
 météo et horaires d’ouverture se superposent, et dans la région frontalière du
@@ -573,7 +572,7 @@ Oui, surtout pour les amateurs de coasters qui en ont assez des files. Avec
 environ un million de visiteurs par an, le parc est petit face à l’Efteling ou à
 Europa-Park, mais il a avec [Troy](ref:attractiepark-toverland/troy) l’un des meilleurs
 coasters en bois d’Europe et avec [Fēnix](ref:attractiepark-toverland/fenix) le plus long wing
-coaster du continent, pour des temps d’attente typiques de 16 minutes.
+coaster du continent, pour des temps d’attente typiques d’un bon quart d’heure.
 
 ### Quels sont les temps d’attente à Toverland ?
 
@@ -584,9 +583,9 @@ Toverland](ref:attractiepark-toverland).
 
 ### Quand y a-t-il le moins de monde à Toverland ?
 
-**Juin** est le mois le plus détendu dans nos données (typiquement 18 minutes),
-suivi de mai et juillet. En semaine c’est un peu plus vide que le week-end, mais
-l’écart est faible (20 contre 25 minutes le samedi). Évite avril, les vacances
+De mars à juillet, les valeurs sont très proches dans nos données et forment la
+partie la plus calme de l’année. En semaine c’est un peu plus vide que le
+week-end, mais l’écart est faible. Évite avril, les vacances
 néerlandaises de mai et d’automne et la courte saison d’hiver. Jour après jour, le [calendrier des temps d’attente](ref:attractiepark-toverland?calendar) le montre.
 
 ### A-t-on besoin d’un coupe-file à Toverland ?
@@ -594,8 +593,8 @@ néerlandaises de mai et d’automne et la courte saison d’hiver. Jour après 
 Il n’y en a pas. Toverland ne vend aucun coupe-file ; la seule exception est le
 **Fear Pass** pour les haunted experiences pendant les Halloween Nights
 (62,50 €). Une file single rider gratuite n’existe qu’à la tour de chute
-Dragonwatch. Avec des médianes de 16 minutes sur les têtes d’affiche, tu n’as
-de toute façon besoin d’aucun raccourci un jour normal.
+Dragonwatch. Avec les médianes des têtes d’affiche, tu n’as de toute façon
+besoin d’aucun raccourci un jour normal.
 
 ### Troy est-il le meilleur coaster en bois d’Europe ?
 

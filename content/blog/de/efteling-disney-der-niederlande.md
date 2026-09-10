@@ -264,7 +264,7 @@ gehen auf dieses Modell zurück.
 **[Droomvlucht](ref:efteling/droomvlucht)** von 1993 ist die Elfenfahrt, bei der
 niederländische Erwachsene weich werden. Man schwebt in Gondeln durch Wälder,
 Feenschlösser und ein Nachtstück, in dem die Bahn kurz absackt. Wer wissen will,
-warum ein Dark Ride ohne einen einzigen Schreckmoment 22 Minuten typische
+warum ein Dark Ride ohne einen einzigen Schreckmoment so viel typische
 Wartezeit produziert, fährt sie einmal und versteht es.
 
 ![Das Minarett von Fata Morgana in der blauen Stunde, dahinter die Kuppeln des Basars | Von außen sieht man nichts von der Attraktion. Sie liegt komplett hinter dieser Fassade. | left](/media/efteling/fata-morgana-4x3.jpg)
