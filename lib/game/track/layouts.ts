@@ -149,10 +149,26 @@ const KLEINER_KREISEL: LayoutPreset = {
  * shelf could hold none of them. This one is 345 m in **56 x 112 m**: the width fits the shelf
  * and the depth still overhangs it, onto open ground the fit check clears.
  *
- * `scripts/game-solve-layout.mjs` drove the closure to **0.089 m of residual in four
- * iterations**, against the 0.85, 1.33 and 2.17 m the three above were hand-solved to. Six
- * designs went through it and the five that failed are kept in `scripts/game-layout-designs.mjs`
- * with what each one measured, because the reasons are the interesting part. Three of them are
+ * `scripts/game-solve-layout.mjs` drove the **ground-plane** residual to 0.089 m in four
+ * iterations. **That is not the closure and the two must never again be quoted against each
+ * other.** The solver's `residual()` is a 2-vector and says so in its own docstring -- "Y is not
+ * in it" -- while `ClosureReport.position` is the 3-D distance from the last node to the first.
+ * Measured: this layout closes to **3.991 m**, which is the WORST of the four, against 0.845 for
+ * `nordwind`, 1.329 for `alte-muehle` and 2.168 for `kleiner-kreisel`. The sentence that stood
+ * here claimed 0.089 "against the 0.85, 1.33 and 2.17 the three above were hand-solved to", which
+ * compared a plan residual with three 3-D ones and flattered the layout it was written about by
+ * 45x. Found by the round-4 critic, verified independently.
+ *
+ * What the 3.991 m IS: the circuit ends 3.99 m BELOW where it started and the spline's closing
+ * blend swallows it, which is also why the lowest point of the track sits at s/L = 0.748, exactly
+ * where that blend begins. `footprintDip` in the pack manifest is 3.99 for this layout and 2.18
+ * for `kleiner-kreisel` -- the same numbers -- so for these two the "dip below the station" that
+ * `tools` lifts the anchor by is this defect and not a design feature. `nordwind` is the honest
+ * case: 6.00 m of dip against 0.845 m of closure, i.e. a real drop below station level.
+ *
+ * Six designs went through the solver and the five that failed are kept in
+ * `scripts/game-layout-designs.mjs` with what each one measured, because the reasons are the
+ * interesting part. Three of them are
  * rules about this element table that nothing else writes down:
  *
  * - **A curve carries no drive.** Turning the lift off the station to save depth stalls the

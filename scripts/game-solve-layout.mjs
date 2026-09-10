@@ -88,6 +88,14 @@ function build(values, closed = false) {
  * `ClosureReport.position` is a scalar distance and cannot say WHICH way the end missed, so the
  * Newton step needs the vector: the last node minus the first, x and z. Y is not in it — a
  * circuit's height closes through its own drops and the blend absorbs centimetres.
+ *
+ * **So what this function drives to zero is NOT the closure, and a number out of here may never
+ * be quoted against `ClosureReport.position`.** It happened: `kleiner-wirbel` shipped documented
+ * as "0.089 m of residual against the 0.85, 1.33 and 2.17 m the hand-solved three" — a plan
+ * residual set beside three 3-D ones — when its actual closure is **3.991 m, the worst of the
+ * four**, all of it vertical. "The blend absorbs centimetres" is true of centimetres and this was
+ * four metres. If the solver is ever asked to close a circuit for real, the residual has to grow
+ * a third component and a free parameter that can move height.
  */
 function residual(built) {
   const s = built.spline;
