@@ -421,6 +421,43 @@ einen Render später und ist genau das `setState`-im-Effekt, das der Linter zu R
 `pathname` kommt aus `@/i18n/navigation`, ist also locale-bereinigt — richtig hier, weil ein
 Sprachwechsel dieselbe Route neu rendert und das Menü nicht mitten in der Geste zuschlagen soll.
 
+## Ein Fokus, der nirgendwohin geht, hat das Menü nicht verlassen
+
+`useMenuTrigger` schließt auf drei Wegen: Escape, ein `pointerdown` außerhalb, und ein `blur`,
+dessen Fokus das Band verlässt. Der dritte stand als `!e.currentTarget.contains(e.relatedTarget)`
+da, und `contains(null)` ist `false` — ein Fokus, der **nirgendwohin** geht, las sich damit wie
+einer, der nach draußen geht.
+
+Nirgendwohin geht er, sobald das fokussierte Element aufhört fokussierbar zu sein, während es den
+Fokus noch hält. Genau das tun die Entfernen-Knöpfe der Alarmgruppe: sie setzen `disabled` für die
+Dauer ihres eigenen DELETE. Gemessen mit echtem Zeiger bei 1440 px:
+
+```plain text
+focusin   BUTTON[Black Mamba: Alarm entfernen]
+focusout  BUTTON[Black Mamba: Alarm entfernen] disabled=true  related=null
+```
+
+Das Band ging unter dem Klick zu, der gerade gemacht worden war. Pro Öffnen ließ sich damit genau
+ein Alarm entfernen, und die Bestätigung — die Zeile verschwindet, die übrigen rücken nach — sah
+niemand, weil sie mit dem Band verschwand.
+
+Die Regel liegt jetzt als `focusLeftMenu` in `lib/utils/menu-focus.ts` (`pnpm test:menu-focus`,
+außerhalb des Hooks, weil `use-menu-trigger.ts` über next-intl an `next/navigation` reicht und
+damit außerhalb von Next nicht lädt) und verlangt ein benanntes Ziel: ein Fokus, der wirklich geht,
+sagt wohin. Es betrifft nicht nur die Alarmgruppe: jeder Knopf in einem Band, der sich selbst
+deaktiviert, während er den Fokus hält, hätte dasselbe ausgelöst.
+
+**Und Escape musste dafür erst repariert werden.** Die Regel oben lässt das Band offen stehen, und
+nach einer Löschung sitzt der Fokus auf `<body>` — wer keinen Zeiger benutzt, hätte danach ein Band
+vor sich gehabt, das er nicht mehr loswird. Escape schloss nämlich keines der drei Bänder, gemessen
+an „Parks entdecken" wie an den Favoriten, auf beiden Wegen (per Hover geöffnet und per Fokus):
+`onKey` setzt `setOpenedOn(null)` und fokussiert direkt danach
+`rootRef.current.querySelector('a, button')` — ein Element **innerhalb** des Wrappers, dessen
+`onFocus` im selben Commit `setRequested(true)` ruft und den Schluss überschreibt. Der Fokus gehört
+dahin zurück, also bleibt er dort und `closingRef` unterdrückt für die Dauer dieses einen
+synchronen `focus()` das Wiederöffnen. Gemessen danach: alle drei Bänder schließen auf Escape, auf
+beiden Wegen, und der Fokus steht anschließend auf dem Auslöser.
+
 ## Bewegung im Sheet
 
 Das Burger-Menü war die einzige Menüfläche ohne Bewegung. `useSheetReveal`
