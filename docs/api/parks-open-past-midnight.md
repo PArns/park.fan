@@ -37,6 +37,18 @@ assertion the regression tests exist for: with the fix reverted, ten of the new
 assertions in `scripts/test-planner-estimate.mjs` go red and every regression
 line stays green.
 
+### A third site, found later
+
+The showtime clip built its own window the same forbidden way —
+`{ openMin: openHour * 60, closeMin: closeHour * 60 }` in
+`planner-day-column.tsx`, which for `11 → 1` is `660 → 60` and excludes every
+minute of the clock. It only touches **projected** times, so a wrap park simply
+lost its projected programme and said nothing about it. The window is
+`showDayHours()` in `lib/planner/shows.ts` now, unfolding through the same
+export. Grep for `closeHour \* 60` and for `> closeHour` before adding a fourth:
+what makes this class of bug survive review is that the wrong expression reads
+exactly like the right one, and the parks it is wrong for are three of 212.
+
 ## The API half (open)
 
 **`/plan/day` returns no ride curves at all for a wrap day.** Swept across all

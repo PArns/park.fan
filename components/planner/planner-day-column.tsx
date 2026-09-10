@@ -30,7 +30,7 @@ import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
-import { showLinesFor } from '@/lib/planner/shows';
+import { showDayHours, showLinesFor } from '@/lib/planner/shows';
 import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { cn } from '@/lib/utils';
@@ -250,12 +250,7 @@ export function PlannerDayColumn({
     plannerShowsVisible.getServerSnapshot
   );
   const showLines = day
-    ? showLinesFor(
-        day.shows,
-        day.context.openHour !== null && day.context.closeHour !== null
-          ? { openMin: day.context.openHour * 60, closeMin: day.context.closeHour * 60 }
-          : null
-      )
+    ? showLinesFor(day.shows, showDayHours(day.context.openHour, day.context.closeHour))
     : null;
 
   const plannedDates = park

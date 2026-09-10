@@ -8,7 +8,7 @@ import { PlannerGridActions } from '@/components/planner/planner-grid-actions';
 import { PlannerContextBand } from '@/components/planner/planner-context-band';
 import { buildDayGrid, clampStart, rideFloor } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
-import { showLinesFor } from '@/lib/planner/shows';
+import { showDayHours, showLinesFor } from '@/lib/planner/shows';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerCustomBlock, PlannerEntry } from '@/lib/planner/types';
 
@@ -96,11 +96,7 @@ export function PlannerDayDemo({
 
   const grid = buildDayGrid(day.context.openHour, day.context.closeHour, pxPerMin);
   const showLines = useMemo(
-    () =>
-      showLinesFor(day.shows, {
-        openMin: (day.context.openHour ?? 0) * 60,
-        closeMin: (day.context.closeHour ?? 24) * 60,
-      }),
+    () => showLinesFor(day.shows, showDayHours(day.context.openHour, day.context.closeHour)),
     [day]
   );
 
