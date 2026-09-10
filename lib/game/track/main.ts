@@ -20,6 +20,9 @@
  */
 
 import { Mesh } from '@babylonjs/core/Meshes/mesh';
+import { PointLight } from '@babylonjs/core/Lights/pointLight';
+import { Color3 } from '@babylonjs/core/Maths/math.color';
+import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import type { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
 import type { Material } from '@babylonjs/core/Materials/material';
@@ -32,7 +35,7 @@ import { simulateTrack, type TrackPhysics } from './physics';
 import { buildTrackGeometry, type Geo, type TrackGroup } from './profile';
 import { buildOptionsFor, resolveColor, resolveStyle, trackStyles } from './resolve';
 import { buildSupports } from './supports';
-import { buildStation } from './station';
+import { buildStation, type StationBuild } from './station';
 import type { TrackSpline, TrackFrame } from './spline';
 import type { DriveSection, TrackData } from './types';
 import type { TrackStyleDef } from '../core/pack-schema';
@@ -48,6 +51,33 @@ const TIE_LOD_DISTANCE = { low: 90, medium: 150, high: 220, ultra: 300 } as cons
  * `medium` is about where a 0.26 m member stops covering a pixel at this field of view.
  */
 const SUPPORT_FAR_DISTANCE = { low: 110, medium: 180, high: 260, ultra: 340 } as const;
+
+/**
+ * How many station lights this module may hang, per quality tier.
+ *
+ * A pool rather than one per coaster, which is the rule `flumes`, `rides`, `shops` and `scenery`
+ * all arrived at independently: a real-time light is not free, and this park already carries
+ * sixteen. The tiers are lower than `flumes`' because a park has more slides than coasters and a
+ * coaster is a bigger object — one lit station reads from `overview`, four do not read four times
+ * as well.
+ *
+ * The reason there is a light here at all is a single night frame: photographed at 21:30 the
+ * station this module had just gained was a flat silhouette, and a boarding platform is the one
+ * structure in a park that is always lit, because nobody gets into a train in the dark.
+ */
+const STATION_LIGHT_POOL = { low: 0, medium: 1, high: 2, ultra: 3 } as const;
+/** Warm white, the colour a station's own strip lighting actually is. */
+const STATION_LIGHT_COLOR: [number, number, number] = [1, 0.86, 0.68];
+/**
+ * 5.0, and the number came from a before/after rather than from taste.
+ *
+ * At 2.4 spread over a 16 m range the platform measured luma 29.2 against 26.9 for the grass
+ * beside it — a light that is present and not a station that is lit. `flumes` runs its tower rig
+ * at 5 over a 6 m range for the same reason: a night light in this scene has to be concentrated
+ * to read at all, so this one is brighter and its range is tied to the platform rather than to
+ * the ride.
+ */
+const STATION_LIGHT_INTENSITY = 5;
 
 export interface TrackStats {
   tracks: number;
@@ -97,6 +127,7 @@ interface DrawnTrack {
   meshes: Mesh[];
   columns: number;
   braces: number;
+  station: StationBuild;
 }
 
 export function createTrackMain(ctx: MainContext): MainHandle {
@@ -112,8 +143,11 @@ export function createTrackMain(ctx: MainContext): MainHandle {
   const tieDistance = TIE_LOD_DISTANCE[ctx.quality.preset];
   const supportFarDistance = SUPPORT_FAR_DISTANCE[ctx.quality.preset];
   const tracks = new Map<string, DrawnTrack>();
+  const lights: PointLight[] = [];
   let buildMs = 0;
   let counter = 0;
+  /** 0 by day, 1 at night. Written by `onEnvironment`, read by the lights and nothing else. */
+  let night = 0;
 
   interface TerrainLike {
     height(x: number, z: number): number;
@@ -229,7 +263,7 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     if (built.warnings.length) {
       for (const warning of built.warnings) console.warn(`[game/track] ${id}: ${warning}`);
     }
-    return { id, built, meshes, columns: supports.columns, braces: supports.braces };
+    return { id, built, meshes, columns: supports.columns, braces: supports.braces, station };
   }
 
   function dispose(track: DrawnTrack): void {
@@ -240,11 +274,51 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     }
   }
 
+  /**
+   * Hang the station lights, longest platform first.
+   *
+   * Rebuilt wholesale on any change rather than patched, for the reason the rest of this module
+   * rebuilds a track wholesale: a coaster is not edited a hundred times a second, and a pool that
+   * is repaired incrementally is a pool that drifts out of step with what is drawn.
+   *
+   * "Longest platform" is the tie-break because it is the only measure of a station this module
+   * has that is not the layout's own length: a 24 m platform is a two-train ride and the busiest
+   * thing in that corner of the park.
+   */
+  function rebuildLights(): void {
+    for (const light of lights) light.dispose();
+    lights.length = 0;
+    const budget = STATION_LIGHT_POOL[ctx.quality.preset] ?? 1;
+    if (budget <= 0) return;
+    const wanted = [...tracks.values()]
+      .filter((t) => t.station.lightAt != null)
+      .sort((a, b) => b.station.length - a.station.length)
+      .slice(0, budget);
+    for (const track of wanted) {
+      const at = track.station.lightAt!;
+      const light = new PointLight(
+        `track-station:${track.id}`,
+        new Vector3(at[0], at[1], at[2]),
+        scene
+      );
+      const [r, g, b] = STATION_LIGHT_COLOR;
+      light.diffuse = new Color3(r, g, b);
+      light.specular = new Color3(r * 0.3, g * 0.3, b * 0.3);
+      // The platform plus a few metres of apron either side; a light that reaches the whole
+      // circuit would wash the track out and cost every mesh in range a lighting pass.
+      light.range = Math.max(12, track.station.length * 0.75);
+      light.intensity = STATION_LIGHT_INTENSITY * night;
+      light.shadowEnabled = false;
+      lights.push(light);
+    }
+  }
+
   function create(data: TrackData, id?: string): string {
     const key = id ?? `track-${++counter}`;
     const existing = tracks.get(key);
     if (existing) dispose(existing);
     tracks.set(key, draw(key, data));
+    rebuildLights();
     ctx.events.emit('track:changed', { rideId: key });
     return key;
   }
@@ -254,6 +328,7 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     if (!track) return;
     dispose(track);
     tracks.delete(id);
+    rebuildLights();
     ctx.events.emit('track:changed', { rideId: id });
   }
 
@@ -321,6 +396,10 @@ export function createTrackMain(ctx: MainContext): MainHandle {
 
   return {
     api,
+    onEnvironment(env) {
+      night = env.night;
+      for (const light of lights) light.intensity = STATION_LIGHT_INTENSITY * night;
+    },
     onEntity(change) {
       if (change.type === 'remove') {
         if (change.entity.kind === 'coaster') remove(change.entity.id);
@@ -332,6 +411,8 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     },
     dispose() {
       detachElements();
+      for (const light of lights) light.dispose();
+      lights.length = 0;
       for (const track of tracks.values()) dispose(track);
       tracks.clear();
       materials.dispose();

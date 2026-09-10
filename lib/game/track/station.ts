@@ -57,6 +57,14 @@ export interface StationBuild {
   length: number;
   /** World centre of the platform, for a camera or a label. */
   centre: [number, number, number] | null;
+  /**
+   * Where a night light hangs: the middle of the platform, just under the canopy.
+   *
+   * Returned rather than recomputed by the caller, because it is the one point in this build that
+   * depends on both the deck height and the canopy height, and those are two constants a caller
+   * has no business knowing.
+   */
+  lightAt: [number, number, number] | null;
 }
 
 /**
@@ -200,6 +208,7 @@ export function buildStation(
     rail: emptyGeo(),
     length: 0,
     centre: null,
+    lightAt: null,
   };
   const section = drives.find((d) => d.kind === 'station');
   if (!section) return build;
@@ -348,5 +357,8 @@ export function buildStation(
   const mid = rings[Math.floor(rings.length / 2)];
   build.length = length;
   build.centre = [mid.p[0], deckY(mid.p), mid.p[2]];
+  // 40 cm under the soffit, which is where a station's strip lights actually hang and is far
+  // enough down that the canopy does not eat the whole cone.
+  build.lightAt = [mid.p[0], canopyY(mid.p) - 0.4, mid.p[2]];
   return build;
 }
