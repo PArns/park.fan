@@ -119,7 +119,7 @@
       "liveNow": "Parks weltweit im Überblick",
       "liveNowIntro": "Anzahl geöffneter Freizeitparks pro Kontinent in Echtzeit.",
       "featuredParks": "Beliebte Parks",
-      "featuredParksIntro": "Sechs Parks, nach denen in deiner Sprache am häufigsten gesucht wird – mit Live-Wartezeiten und Crowd-Prognose."
+      "featuredParksIntro": "Sechs bekannte Parks für den Einstieg – mit Live-Wartezeiten und Crowd-Prognose."
     },
     "ai": {
       "title": "Wie genau unsere Vorhersagen sind",
@@ -140,7 +140,7 @@
       "dailySchedule": "Täglich · 06:00 UTC",
       "dailyScheduleLocal": "Täglich · 06:00 UTC · {time} lokal",
       "howTitle": "Wie Vorhersagen entstehen",
-      "howText": "Jede Vorhersage steht auf drei Schichten: der gemessenen Wartezeit-Historie des Parks, Signalen von außen wie Wetterprognose, Schulferien und Feiertagen, und dem, was an diesem Tag im Park ansteht, also Sonderveranstaltungen und Saison. Das Modell rechnet daraus die erwartete Wartezeit je Attraktion und Stunde und verdichtet sie zum Crowd-Level des Tages, bis zu 365 Tage im Voraus.",
+      "howText": "Jede Vorhersage steht auf drei Schichten: der gemessenen Wartezeit-Historie des Parks, Signalen von außen wie Wetterprognose, Schulferien und Feiertagen, und dem, was an diesem Tag im Park ansteht, also Sonderveranstaltungen und Saison. Das Modell rechnet daraus die erwartete Wartezeit je Attraktion und Stunde und verdichtet sie zum Crowd-Level des Tages, so weit der Park seinen Zeitplan veröffentlicht hat.",
       "fancastLink": "So funktioniert Fancast, unser Prognosemodell",
       "improvingTitle": "Jede Prognose wird am Tag darauf nachgerechnet",
       "improvingText": "Am Tag nach jeder Prognose legt das System sie gegen die tatsächlich gemessene Wartezeit und schreibt die Differenz in den nächsten Trainingslauf. Die Werte oben stammen aus genau diesem Abgleich und nicht aus einem Testdatensatz, den wir uns selbst zurechtgelegt haben.",
@@ -175,7 +175,7 @@
       },
       "two": {
         "title": "Tag prüfen",
-        "text": "Der Crowd-Kalender bewertet jeden Tag bis zu 365 Tage im Voraus: grün heißt kurze Warteschlangen, rot heißt volle Gänge und lange Wege.",
+        "text": "Der Crowd-Kalender bewertet jeden Tag, so weit der Park seinen Zeitplan veröffentlicht hat: grün heißt kurze Warteschlangen, rot heißt volle Gänge und lange Wege.",
         "tip": "Zwei Tage nebeneinander sind oft zwei verschiedene Parks. Wenn der Termin frei wählbar ist, lohnt der Blick auf die Woche davor und danach, bevor du buchst.",
         "legendLow": "wenig Betrieb",
         "caption": "Ein Monat im Kalender: jede Kachel ein Tag, die Farbe der erwartete Andrang."
@@ -227,7 +227,7 @@
     "calendar": {
       "kicker": "Crowd-Kalender",
       "title": "Grüner Tag oder roter Tag?",
-      "lead": "Bevor du das Hotel buchst: der Kalender bewertet jeden einzelnen Tag, bis zu 365 Tage im Voraus. Woher die Farbe eines Tages kommt, steht darunter.",
+      "lead": "Bevor du das Hotel buchst: der Kalender bewertet jeden einzelnen Tag, so weit der Park seinen Zeitplan veröffentlicht hat. Woher die Farbe eines Tages kommt, steht darunter.",
       "pipelineTitle": "Von der Messung zur Tagesfarbe",
       "pipelineLead": "Vier Schritte, jede Nacht neu. Was am Ende als grüner oder roter Tag im Kalender steht, hat diesen Weg genommen.",
       "p1": {
@@ -258,7 +258,7 @@
     "ai": {
       "kicker": "Unsere KI",
       "title": "Eine eigene Prognose, und die Abweichung steht dabei",
-      "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, jede Nacht neu trainiert, bis zu 365 Tage voraus.",
+      "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, jede Nacht neu trainiert.",
       "compareTitle": "Wie andere Wartezeit-Seiten vorhersagen",
       "compareLead": "Drei Ansätze sind verbreitet, und alle drei haben denselben blinden Fleck: niemand sagt dir, wie weit die Prognose danebenlag.",
       "c1": {
@@ -783,7 +783,7 @@
     "holidaysLabel": "Ferien & Feiertage",
     "tileAttractions": "<b>{open}</b> offen · Ø <b>{avg} min</b>",
     "tileAttractionsHeadliner": "Headliner ab <b>{min} min</b>",
-    "tileCalendar": "Beste Besuchstage bis ein Jahr im Voraus",
+    "tileCalendar": "Beste Besuchstage, so weit der Zeitplan reicht",
     "tileCalendarQuietDay": "Ruhigster Tag: <b>{day}</b> ({days, plural, =0 {heute} =1 {morgen} other {in # Tagen}})",
     "tileMap": "Wartezeiten auf dem Plan · <b>{lands}</b> Themenbereiche",
     "tileMapPlain": "Wartezeiten auf dem Plan",
@@ -881,7 +881,7 @@
     "influencingHolidaysShort": "Nachbarregionen",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
-      "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · {years, plural, =1 {letztes Jahr} other {letzte # Jahre}}",
+      "subtitle": "Basierend auf {days} gemessenen Öffnungstagen",
       "byMonthTitle": "Durchschnittlicher Besucherandrang nach Monat",
       "byDowTitle": "Durchschnittlicher Besucherandrang nach Wochentag",
       "topAttractionsTitle": "Attraktionen mit längsten Wartezeiten",
@@ -1518,7 +1518,7 @@
       "diningQ": "Welche gastronomischen Angebote gibt es {inPark}?",
       "diningA": "{park} bietet {count} Restaurants und Imbissstände:",
       "crowdCalendarQ": "Hat {park} einen Crowd-Kalender?",
-      "crowdCalendarA": "Ja. Der Crowd-Kalender {forPark} bewertet jeden einzelnen Tag, bei ganzjährig geöffneten Parks bis zu ein Jahr im Voraus. Grüne Tage stehen für kurze Warteschlangen, rote für lange.",
+      "crowdCalendarA": "Ja. Der Crowd-Kalender {forPark} bewertet jeden einzelnen Tag, so weit der Park seinen Zeitplan veröffentlicht hat. Grüne Tage stehen für kurze Warteschlangen, rote für lange.",
       "leastCrowdedQ": "Wann ist {parkLoc} am wenigsten los?",
       "leastCrowdedA": "{park} ist typischerweise am ruhigsten am {days}. Schau oben in den <calendar>Crowd-Kalender</calendar> für die nächsten ruhigen Tage und plane deinen Besuch entsprechend.",
       "leastCrowdedNoDataA": "Schau in den <calendar>Crowd-Kalender</calendar> auf dieser Seite für ruhige Tage. Grüne Tage stehen für kurze Wartezeiten und weniger Besucher.",
@@ -1543,7 +1543,7 @@
         "whichParksQ": "Welche Freizeitparks werden von park.fan unterstützt?",
         "whichParksA": "park.fan deckt über 200 Freizeitparks weltweit ab, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland und Bobbejaanland. Die vollständige Liste mit Live-Wartezeiten steht auf der Parks-Übersichtsseite.",
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
-        "liveDataA": "Ja. Jeder Park wird alle fünf Minuten abgefragt, aus drei öffentlichen Quellen gleichzeitig – ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Melden zwei Quellen unterschiedliche Zahlen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
+        "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten ab, aus drei öffentlichen Quellen gleichzeitig – ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Melden zwei Quellen unterschiedliche Zahlen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
         "freeQ": "Ist die Nutzung von park.fan kostenlos?",
         "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Crowd-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen.",
         "favoritesQ": "Kann ich meine Lieblingsparks und Attraktionen bei park.fan speichern?",
@@ -1738,7 +1738,7 @@
   },
   "fancast": {
     "title": "Fancast – unser Wartezeiten-Prognosemodell",
-    "description": "Fancast ist das KI-Prognosemodell von park.fan: Es sagt Andrang und Wartezeiten bis zu 365 Tage im Voraus vorher – und benotet seine Genauigkeit öffentlich."
+    "description": "Fancast ist das KI-Prognosemodell von park.fan: Es sagt Andrang und Wartezeiten für jeden Tag vorher, den ein Park schon veröffentlicht hat – und benotet seine Genauigkeit öffentlich."
   },
   "bestTime": {
     "title": "Beste Reisezeit für Freizeitparks",

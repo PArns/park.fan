@@ -75,7 +75,7 @@ const FAQ = [
   {
     question: 'How often is the model updated?',
     answer:
-      'Every day. Fancast retrains automatically once a day at 06:00 UTC on the freshest data. Tonight’s training run already knows yesterday’s wait times.',
+      'Every day. Fancast retrains automatically once a day at 06:00 UTC, on yesterday’s wait times.',
   },
   {
     question: 'Can I use Fancast for a specific park and day?',
@@ -113,11 +113,11 @@ export function ContentEN() {
         <P>
           And because we only trust numbers that have to prove themselves, Fancast grades itself.
           Every prediction is later held against the wait time that was actually measured, in the
-          open, on this page. Cheating pointless.
+          open, on this page.
         </P>
         <Highlight>
-          Fancast is not a fortune teller with a crystal ball. It is a stubborn statistician that
-          gets tutoring every night and has to re-sit the exam every morning.
+          Every forecast is set against the measured wait time the day after. What comes out of
+          that stands at the top of this page as MAE, RMSE and MAPE, good or bad.
         </Highlight>
       </div>
 
@@ -131,7 +131,7 @@ export function ContentEN() {
       >
         <P>
           Here is the grade, live and unvarnished. Fancast pulls these numbers from its own
-          dashboard right now; they shift the moment the model retrains tonight.
+          dashboard right now; they shift with the next training run tomorrow morning.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -245,8 +245,8 @@ export function ContentEN() {
       >
         <P>
           The most important trick is an unglamorous one: Fancast retrains{' '}
-          <strong>every night</strong>, every day at 06:00 UTC. Whatever happened in the park
-          yesterday is in the forecast from the next morning on.
+          <strong>once a day</strong>, at 06:00 UTC. Whatever happened in the park yesterday is in
+          the forecast from the next morning on.
         </P>
         <P>
           And it is only ever tested on days it has <strong>never seen</strong> — on the future, not

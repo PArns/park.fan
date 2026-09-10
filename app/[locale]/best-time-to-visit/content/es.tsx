@@ -158,11 +158,12 @@ export function ContentES() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba surcando la jungla en Phantasialand"
           kicker="Rope drop"
-          title="La primera hora es de oro"
+          title="Llegar pronto ayuda, pero no en todas las atracciones"
         >
-          Quien está dentro a la apertura sube a las atracciones estrella a menudo por una fracción
-          de la espera posterior. La primera hora sustituye habitualmente a dos de la tarde, y no
-          hace falta un pase caro para eso, solo un despertador algo más temprano.
+          En las atracciones estrella, la primera hora tras la apertura suele dar más vueltas que
+          dos de la tarde. Pero no vale en todas partes: algunas van igual de llenas todo el día y
+          otras solo se animan después de comer. La página de cada atracción trae su propia curva
+          del día, y ahí se ve si a esa le compensa el despertador más temprano.
         </SplitFigure>
       </SectionShell>
 
@@ -235,11 +236,6 @@ export function ContentES() {
               icon: CloudRain,
               title: 'Aprovecha el tiempo con astucia',
               body: 'Una previsión dudosa echa para atrás a mucha gente. Si no te importa un poco de llovizna, harás bastante menos cola. El chubasquero gana al paraguas.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Llega temprano',
-              body: 'El rope drop supera casi cualquier otra táctica. La primera hora sustituye a menudo a dos de la tarde.',
             },
             {
               icon: Ticket,

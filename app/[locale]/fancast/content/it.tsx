@@ -75,7 +75,7 @@ const FAQ = [
   {
     question: 'Quanto spesso viene aggiornato il modello?',
     answer:
-      'Ogni giorno. Fancast si riaddestra automaticamente una volta al giorno alle 06:00 UTC con i dati più freschi: il ciclo di stanotte conosce già i tempi di attesa di ieri.',
+      'Ogni giorno. Fancast si riaddestra automaticamente una volta al giorno alle 06:00 UTC, con i tempi di attesa di ieri.',
   },
   {
     question: 'Posso usare Fancast per un parco e un giorno precisi?',
@@ -113,11 +113,11 @@ export function ContentIT() {
         <P>
           E poiché ci fidiamo dei numeri solo quando sono costretti a dimostrare quanto valgono,
           Fancast si dà un voto da sé. Ogni previsione viene poi messa a confronto con il tempo di
-          attesa davvero misurato, alla luce del sole, su questa pagina. Barare, inutile.
+          attesa davvero misurato, alla luce del sole, su questa pagina.
         </P>
         <Highlight>
-          Fancast non è un indovino con la sfera di cristallo. È uno statistico testardo che ogni
-          sera prende ripetizioni e ogni mattina deve rifare l’esame.
+          Ogni previsione viene confrontata il giorno dopo con il tempo di attesa misurato. Il
+          risultato sta in cima a questa pagina come MAE, RMSE e MAPE, nel bene o nel male.
         </Highlight>
       </div>
 
@@ -131,8 +131,8 @@ export function ContentIT() {
       >
         <P>
           Ecco il voto, in diretta e senza ritocchi. Fancast estrae questi numeri dalla propria
-          dashboard proprio in questo momento; cambieranno non appena il modello si riaddestrerà
-          stanotte.
+          dashboard proprio in questo momento; cambieranno con il prossimo riaddestramento,
+          domattina.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -248,7 +248,7 @@ export function ContentIT() {
       >
         <P>
           Il trucco più importante è dei più dimessi: Fancast si riaddestra{' '}
-          <strong>ogni notte</strong>, tutti i giorni alle 06:00 UTC. Quello che ieri è successo nel
+          <strong>una volta al giorno</strong>, alle 06:00 UTC. Quello che ieri è successo nel
           parco, dal mattino dopo sta dentro la previsione.
         </P>
         <P>

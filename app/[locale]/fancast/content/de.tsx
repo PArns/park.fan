@@ -66,7 +66,7 @@ const FAQ = [
   {
     question: 'Wie weit im Voraus kann Fancast vorhersagen?',
     answer:
-      'Tagesgenaue Crowd-Level für einen Park liefert Fancast bis zu 365 Tage im Voraus. Für einzelne Attraktionen gibt es zusätzlich stündliche Wartezeit-Prognosen. Je näher der Tag rückt, desto stärker fließen kurzfristige Signale wie die Wetterprognose mit ein.',
+      'Tagesgenaue Crowd-Level liefert Fancast für jeden Tag, den ein Park schon veröffentlicht hat. Für einzelne Attraktionen gibt es zusätzlich stündliche Wartezeit-Prognosen. Je näher der Tag rückt, desto stärker fließen kurzfristige Signale wie die Wetterprognose mit ein.',
   },
   {
     question: 'Woher weiß Fancast, dass ein Ferien-Samstag voll wird?',
@@ -81,7 +81,7 @@ const FAQ = [
   {
     question: 'Kann ich Fancast für einen bestimmten Park und Tag nutzen?',
     answer:
-      'Ja. Jede Parkseite auf park.fan hat einen Crowd-Kalender, der dir für jeden einzelnen Tag bis zu ein Jahr im Voraus eine grüne, gelbe oder rote Prognose zeigt – vom Europa-Park über Phantasialand und Efteling bis zu Walt Disney World. Zusätzlich bekommst du stündliche Wartezeit-Prognosen für die einzelnen Attraktionen.',
+      'Ja. Jede Parkseite auf park.fan hat einen Crowd-Kalender, der dir für jeden veröffentlichten Tag eine grüne, gelbe oder rote Prognose zeigt – vom Europa-Park über Phantasialand und Efteling bis zu Walt Disney World. Zusätzlich bekommst du stündliche Wartezeit-Prognosen für die einzelnen Attraktionen.',
   },
   {
     question: 'Welche Daten nutzt Fancast?',
@@ -345,7 +345,7 @@ export function ContentDE() {
               body: (
                 <>
                   der <Link href="/parks">Kalender der besten Besuchstage</Link> auf jeder Parkseite
-                  – grün, gelb, rot, bis zu ein Jahr im Voraus.
+                  – grün, gelb, rot, so weit der Zeitplan reicht.
                 </>
               ),
             },

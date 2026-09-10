@@ -763,7 +763,7 @@ export function ContentEN() {
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Wait times" delay={0}>
               ThemeParks.wiki, Wartezeiten.app and Queue-Times.com, every five minutes. The raw
-              currency of everything else on this page.
+              material for everything else on this page.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Holidays" delay={60}>
               Nager.Date for public holidays and bridge days, OpenHolidays for school holidays. Four

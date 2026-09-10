@@ -40,7 +40,7 @@ const DATA_LABELS: BestTimesLabels = {
   quieter: 'ruhiger',
   busier: 'voller',
   typical: 'wie der Schnitt',
-  footnote: 'Basis: {days} Park-Tage aus {parks} Parks, letzte {months} Monate.',
+  footnote: 'Basis: {days} gemessene Park-Tage aus {parks} Parks.',
   pending:
     'Die Live-Auswertung sammelt gerade Wartezeiten. Die ruhigsten Tage erscheinen hier, sobald genug Daten zusammengekommen sind.',
 };
@@ -69,7 +69,7 @@ const FAQ = [
   {
     question: 'Wie finde ich den besten Tag für einen bestimmten Park?',
     answer:
-      'Diese Seite gibt dir die groben Muster. Für einen konkreten Park öffnest du seinen Crowd-Kalender: Der zeigt für jeden einzelnen Tag bis zu ein Jahr im Voraus grün, gelb oder rot, inklusive der Ferien und Feiertage der Region.',
+      'Diese Seite gibt dir die groben Muster. Für einen konkreten Park öffnest du seinen Crowd-Kalender: Der zeigt für jeden veröffentlichten Tag grün, gelb oder rot, inklusive der Ferien und Feiertage der Region.',
   },
   {
     question: 'Woher stammen diese Daten?',
@@ -268,7 +268,7 @@ export function ContentDE() {
           src="/media/efteling/symbolica.jpg"
           alt="Die Palastfahrt Symbolica in der Efteling"
           kicker="Grün, gelb, rot"
-          title="Eine Farbe pro Tag, ein Jahr im Voraus"
+          title="Eine Farbe pro Tag, so weit der Zeitplan reicht"
           badge={<CrowdLevelBadge level="low" />}
         >
           Jede Parkseite hat eine tagesgenaue Prognose, die die Ferien und Feiertage genau der
@@ -282,7 +282,7 @@ export function ContentDE() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Angetrieben von Fancast"
-        body="Unser eigenes Prognosemodell schätzt den Andrang bis zu 365 Tage im Voraus und benotet sich dabei selbst."
+        body="Unser eigenes Prognosemodell schätzt den Andrang für jeden veröffentlichten Tag und benotet sich dabei selbst."
       />
 
       {/* 06 — FAQ */}

@@ -75,7 +75,7 @@ const FAQ = [
   {
     question: '¿Con qué frecuencia se actualiza el modelo?',
     answer:
-      'Cada día. Fancast se reentrena automáticamente una vez al día, a las 06:00 UTC: ese entrenamiento ya conoce los tiempos de espera de la jornada anterior.',
+      'Cada día. Fancast se reentrena automáticamente una vez al día, a las 06:00 UTC, con los tiempos de espera de ayer.',
   },
   {
     question: '¿Puedo usar Fancast para un parque y un día concretos?',
@@ -113,11 +113,11 @@ export function ContentES() {
         <P>
           Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast se pone
           nota a sí mismo. Cada predicción se contrasta después con el tiempo de espera que de
-          verdad ocurrió, a la vista de todos, en esta página. Hacer trampas, inútil.
+          verdad ocurrió, a la vista de todos, en esta página.
         </P>
         <Highlight>
-          Fancast no es un adivino con bola de cristal. Es un estadístico tozudo que recibe clases
-          de refuerzo cada noche y tiene que volver a examinarse cada mañana.
+          Cada predicción se compara al día siguiente con el tiempo de espera medido. El resultado
+          está arriba en esta página, como MAE, RMSE y MAPE, salga bien o mal.
         </Highlight>
       </div>
 
@@ -131,7 +131,8 @@ export function ContentES() {
       >
         <P>
           Aquí está la nota, en directo y sin maquillar. Fancast saca estas cifras de su propio
-          panel en este preciso momento, y cambiarán en cuanto el modelo se vuelva a entrenar.
+          panel en este preciso momento, y cambiarán con el próximo reentrenamiento, mañana por la
+          mañana.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />

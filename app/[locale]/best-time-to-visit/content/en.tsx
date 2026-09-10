@@ -84,9 +84,10 @@ export function ContentEN() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          The best time to visit a theme park is not a secret — it is a pattern. When a park fills
-          up follows the weekday, the school-holiday calendar, the weather and the season, and all
-          four leave fingerprints in the wait times.
+          When a theme park fills up is surprisingly predictable. Weekday, school holidays, weather
+          and season largely decide whether you wait ten minutes at the coaster or an hour and a
+          half. And because every visit leaves wait times behind, that can be worked out fairly
+          precisely.
         </Lead>
         <P>
           That is what we did: worked through the wait times recorded at more than 200 parks. Below
@@ -157,11 +158,12 @@ export function ContentEN() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba racing through the jungle at Phantasialand"
           kicker="Rope drop"
-          title="The first hour is golden"
+          title="Arriving early helps, but not at every ride"
         >
-          Arrive for opening and you often ride the headliners at a fraction of the later wait. The
-          first hour routinely replaces two in the afternoon — no fast-pass required, just an early
-          alarm.
+          At the big headliners the first hour after opening often buys more rides than two in the
+          afternoon. It does not hold everywhere: some rides stay equally busy all day, others only
+          pick up after lunch. Each ride’s own page carries its day curve, and says whether
+          the earlier alarm pays off for it.
         </SplitFigure>
       </SectionShell>
 
@@ -227,11 +229,6 @@ export function ContentEN() {
               icon: CloudRain,
               title: 'Use the weather cleverly',
               body: 'A mixed forecast puts many people off. If you are weatherproof, you queue less — a rain jacket beats an umbrella.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Arrive early',
-              body: 'Rope drop beats almost every other tactic. The first hour often replaces two in the afternoon.',
             },
             {
               icon: Ticket,

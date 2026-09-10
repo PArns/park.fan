@@ -159,11 +159,12 @@ export function ContentIT() {
           src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba che sfreccia nella giungla a Phantasialand"
           kicker="Rope drop"
-          title="La prima ora è d’oro"
+          title="Arrivare presto aiuta, ma non su ogni attrazione"
         >
-          Chi è dentro all’apertura sale sulle attrazioni di punta spesso con una frazione
-          dell’attesa successiva. La prima ora sostituisce regolarmente due ore del pomeriggio:
-          niente fast-pass, solo una sveglia mattutina.
+          Sulle attrazioni di punta la prima ora dopo l’apertura rende spesso più giri di due nel
+          pomeriggio. Non vale però ovunque: certe attrazioni restano piene uguali per tutta la
+          giornata, altre si animano solo dopo pranzo. La pagina di ogni attrazione riporta la sua
+          curva della giornata, e lì si legge anche se per quella la sveglia prima conviene.
         </SplitFigure>
       </SectionShell>
 
@@ -230,11 +231,6 @@ export function ContentIT() {
               icon: CloudRain,
               title: 'Sfrutta il meteo con astuzia',
               body: 'Una previsione incerta tiene molti a casa. Se una pioggerella non ti spaventa, aspetti nettamente meno. La giacca impermeabile batte l’ombrello.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Arriva presto',
-              body: 'Il rope drop batte quasi ogni altra tattica. La prima ora spesso sostituisce due ore del pomeriggio.',
             },
             {
               icon: Ticket,
