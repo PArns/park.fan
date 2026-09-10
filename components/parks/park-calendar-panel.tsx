@@ -1,9 +1,18 @@
 'use client';
 
+import { useCallback, useSyncExternalStore } from 'react';
 import dynamic from 'next/dynamic';
 import { useLocale, useTranslations } from 'next-intl';
 import { useLinkStatus } from 'next/link';
-import { CalendarCheck, CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import {
+  CalendarCheck,
+  CalendarDays,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  Scale,
+  X,
+} from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { TILE_GLASS } from '@/components/common/glass-card';
 import { Button } from '@/components/ui/button';
@@ -14,6 +23,7 @@ import { cn } from '@/lib/utils';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
+import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
@@ -188,7 +198,26 @@ export function ParkCalendarPanel({
           month: label(month ?? currentMonth),
           ...parkArgs(locale as Locale, park.name, park.nameArticleDe),
         })}
-        action={monthStepper}
+        /* The stepper and, under it, the switch that decides what a press on a day tile MEANS.
+
+           It used to sit inside the grid, above the tiles, and that was wrong twice. The grid is
+           a `dynamic(..., { ssr: false })` import, so the switch was absent from the served HTML
+           and arrived with the chunk — a control nobody could see on the first paint, and 52 px
+           (60 on a phone) of row that the `--cal-grid-h*` reservation did not cover, so
+           everything under the calendar was pushed down the moment the chunk mounted. Up here it
+           is server-rendered like the stepper and the legend, and the reservation is honest
+           again. The `dayComparisonStore` is a module store keyed by park slug, so the switch and
+           the grid share the state across that boundary without a prop. */
+        action={
+          <div className="flex w-full min-w-0 flex-col items-end gap-2">
+            <div className="flex w-full min-w-0 items-center justify-end gap-2">{monthStepper}</div>
+            <CalendarCompareToggle parkSlug={parkSlug} />
+          </div>
+        }
+        /* Beside the heading, not inside its title row: this action is two storeys, and in the
+           row it made the row 80 px tall and pushed „Jeder Tag im September 2026 mit…" that far
+           down, away from the title it describes. */
+        actionAside
         frosted
         className="mb-0 rounded-b-none"
       />
@@ -249,6 +278,54 @@ export function ParkCalendarPanel({
         {monthIndex ? <div className="border-t pt-4">{monthIndex}</div> : null}
       </div>
     </section>
+  );
+}
+
+/**
+ * „Zwei Tage vergleichen" — the switch that turns a press on a day tile from „open this day" into
+ * „pick this day".
+ *
+ * A `Button` in the default (primary) variant rather than the park page's `FilterToggle` pill: it
+ * is the one thing on this card somebody can DO with the month they are looking at, and a filter
+ * pill in a row of glass reads as a refinement of what is already on screen. Its pressed state
+ * says what a second press does — a switch whose label never changes leaves „how do I get out of
+ * this" to be guessed — and it keeps `aria-pressed`, because it is a button that stays down.
+ *
+ * It subscribes on its own rather than letting the panel read the store: a pick is a write on
+ * every press, and a panel that re-rendered for it would re-render the grid under it too.
+ */
+function CalendarCompareToggle({ parkSlug }: { parkSlug: string }) {
+  const t = useTranslations('parks.dayComparison');
+  const active = useSyncExternalStore(
+    dayComparisonStore.subscribe,
+    useCallback(() => dayComparisonStore.getSnapshot(parkSlug).active, [parkSlug]),
+    // Nothing is selected in the first HTML, and the server cannot know otherwise — same answer
+    // the store's own `getServerSnapshot` gives.
+    () => false
+  );
+
+  return (
+    <Button
+      variant={active ? 'secondary' : 'default'}
+      size="sm"
+      // The `sm` size as it comes: 32 px at the desk, and NOT the 36 the stepper's controls take —
+      // it stands under that row rather than in it, so it owes it no height, and a filled button
+      // in the primary colour carries further than an outline one at the same size. Not full
+      // width below `sm` either: at 390 px that was 234 of the card's 358, under a title and over
+      // a legend, i.e. the loudest thing on a page whose subject is the month. What does NOT move
+      // is the phone height — `max-sm:h-11` is the touch floor the button scale imposes, and 44
+      // px is a target rather than a look. The horizontal padding is the size's own `px-2.5`
+      // beside an icon.
+      aria-pressed={active}
+      onClick={() => dayComparisonStore.setActive(parkSlug, !active)}
+    >
+      {active ? (
+        <X className="h-4 w-4" aria-hidden="true" />
+      ) : (
+        <Scale className="h-4 w-4" aria-hidden="true" />
+      )}
+      {active ? t('compareStop') : t('compare')}
+    </Button>
   );
 }
 
