@@ -23,6 +23,14 @@
 # When in doubt this script BUILDS. A needless build costs minutes; a skipped
 # build that should have run serves stale content until the next commit, and
 # nothing reports it.
+#
+# `pnpm test:ignore-build` drives this script against a throwaway git repository
+# and asserts the answer for every input a build step reads — a post in each of
+# the six locales, an author, the categories, an agent SKILL.md, homepage
+# content, a photo, a sidecar, a translation file, the lockfile — plus the two
+# shapes a careless allowlist gets wrong: a commit touching documentation AND a
+# post (a real one did, 08764e8), and `content/blog/README.md`, which an
+# unanchored `README.md` pattern would swallow. It is part of `release:check`.
 set -uo pipefail
 
 # What the previous SUCCESSFUL deployment built. Vercel only exposes this once

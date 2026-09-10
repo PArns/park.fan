@@ -816,6 +816,20 @@ clone, a failed diff, an empty diff. `content/blog/**`, `public/media/**` and `m
 deliberately absent from the list, because each is the input to a generator and a README inside
 one of them is not worth a glob that could skip an article's deploy.
 
+**The asymmetry is the whole design, so it is pinned rather than argued.** A needless build
+costs minutes of Build CPU. A skipped build that should have run is silent: the deploy reports
+success, Vercel keeps the previous deployment aliased, and a published article stays invisible
+until somebody happens to push again. `pnpm test:ignore-build` (28 cases, part of
+`release:check`) drives the real script against a throwaway git repository and asserts the
+answer for every input a build step reads — a post in each of the six locales, an author, the
+categories, an agent `SKILL.md` whose served bytes carry a build-time SHA-256, homepage content,
+a photo, a sidecar, a translation file, the lockfile, `.nvmrc` — plus the two shapes a careless
+allowlist gets wrong: a commit touching documentation AND a post (08764e8 is a real one, six
+posts alongside `CLAUDE.md`), and `content/blog/README.md`, which an unanchored `README.md`
+pattern would swallow. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,
+`todo.md` or the root `README.md`; the only grep hit is `generate-media-manifest.mjs`
+explicitly EXCLUDING `README.md` when it collects posts.
+
 **Cost-shift check:** the crop change shifts nothing — no fetches, no ISR writes, identical
 output bytes, verified by hashing all 426 crops before and after (`IDENTICAL`). `ignoreCommand`
 shifts nothing either; a skipped build leaves the previous deployment aliased, which is what a
