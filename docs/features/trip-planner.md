@@ -1320,6 +1320,64 @@ the date picker two rows above it. The axis floor is 200 px, chosen so the floor
 keeps its DAY: 140 px was 116.7 minutes at 1.2 and would be 77.8 at 1.8, while
 200 at 1.8 is 111 — the same day to within six minutes.
 
+**Raising the resting height took the handle's job away, and the check said so.**
+`check:planner` asserts that pulling the sheet up raises its ceiling by more than
+40 px, which was true while the sheet rested at 85svh and the handle pulled to
+96: 93 px of travel at 844. At 92svh the same handle moved it 34 px — under half
+a 15-minute block on the phone axis — and the assertion went red on the branch
+while staying green on `main`. That is the check being right rather than brittle,
+so the fix raises the pulled-up value to **`100svh`** instead of putting the
+resting height back: the resting height is where the 59 px came from, and it is
+what Patrick asked for in as many words.
+
+What 100svh costs is the modal overlay. Pulled up there is no shield left beside
+the sheet, so tapping outside is no longer a way out and the two that remain have
+to be real ones — the × on `SheetContent` is `max-sm:size-11`, and the handle
+brings the sheet back down by drag **or** tap, which is why the tap toggles
+rather than only dismissing. At rest the shield is back.
+
+### Every target in the sheet is 44 px, and three of them are not what they measure
+
+The seven controls the first pass raised were the seven somebody had looked at.
+A sight check with a real coarse pointer then found seventeen more in the same
+sheet — so the floor is a **sweep** now (`jedes Ziel im Sheet ist 44 px hoch` in
+`check:planner`), walking every `button`, `label`, `a[href]` and `select` in the
+open sheet. A list only ever knows about the controls somebody thought of.
+
+Two rules decide what the sweep counts, and a hand count got both wrong on 3 of
+those 17:
+
+- **A checkbox inside a `<label>` is not a target — the label is.** Nineteen
+  16×16 boxes were reported in the fit assistant, whose rows are 64 px tall and
+  clickable end to end. The sweep skips an input that has a label ancestor and
+  measures the label instead.
+- **A bounding box is not a target either.** The grip, the resize edge, the sheet
+  handle and the party chip keep a small box on purpose and carry the 44 px in an
+  `after:` pseudo-element, which `getBoundingClientRect` cannot see. The sweep
+  walks outward from the box edges with `elementFromPoint`, like the grip probe
+  beside it.
+
+Where the target is grown, it is grown **honestly** — the control gets the
+height, and the row's phone padding comes off, since padding that was giving a
+28 px button air is axis spent on nothing once the button is 44. The column head
+goes 32 → 44 px and the sheet header 36 → 44, which is 20 px for the panel's
+primary navigation: the park, the day, the plan list. The pseudo-element is kept
+for the two places where growing would cost the day twice — the party chip rides
+in `PlannerContextBand`'s reserved `min-h-[60px]` box (a 44 px pill among 20 px
+badges, and +16 px), and the show strip is `min-h-[22px]` **and** `sticky top-0`
+over the axis, so a taller strip takes its height from the column and again from
+whatever it covers while the grid scrolls. Both extensions reach **downward**:
+upward from a strip at `scrollTop: 0` would land past the start of the scrolled
+content, where nothing can be pressed.
+
+One entry in that list was not a size at all. `SheetContent` draws its close
+button `max-sm:size-11` at `right-2`, covering the rightmost 52 px of the header
+row, while the row reserved `pr-7` plus the header's `px-3` — 40 px. "Einen Tag
+planen" sat 12 of its 28 px under the ×. A sweep skips a control that is covered
+at its own centre (that is a different defect), so this one has a named check of
+its own, asked as `click({ trial: true })` because "receives events" is the
+question and Playwright names the intercepting element when the answer is no.
+
 ### A plan may not depend on a gesture landing
 
 The grip is one 44 px strip and it is the only pointer path a phone has: the
@@ -1357,6 +1415,22 @@ pseudo-element), that a drag with `pointerType: 'touch'` moves the block — eve
 earlier drag assertion in that file ran on a mouse, which is a path a finger
 never takes — that the ±15 button is 44 px and moves a quarter hour, and that the
 axis gets its 200 px floor.
+
+**That pass opens the page with `hasTouch`, and nothing it asserts means anything
+without it.** A 390×844 viewport on its own is a mouse in a narrow window:
+measured, `{coarse: false, fine: true, hover: true, maxTouch: 0}`. Everything in
+the planner that decides by pointer type — the snap step, the block body's
+`(pointer: fine)` gate, every `hover:` style — therefore answered the desktop way,
+and the assertions were written against a phone that did not exist. Not
+hypothetically: `Griff ist auf dem Handy treffbar` was green on `main` while a
+real coarse pointer missed the same grip by 22 px, and the touch drag moved a
+block zero minutes there and passed. **A dispatched touch pointer is not the same
+thing as being a touch device** — the event says touch, `matchMedia` and CSS
+still say mouse. `isMobile` is deliberately left off beside it: it adds the mobile
+viewport meta and text autosizing, which move the very numbers this pass measures,
+and the planner's phone layout is `max-sm:` against the window rather than
+viewport scaling. The first assertion in the pass asks the browser what it is
+(`die Handy-Seite ist ein Grobzeiger`) rather than trusting the option.
 
 `check:planner` is the one that catches what the others cannot: whether the store
 rehydrates, whether the launcher appears, whether the sheet opens on the right

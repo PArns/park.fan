@@ -143,7 +143,21 @@ export function PlannerShowBand({
           data-planner-shows-toggle={visible ? 'on' : 'off'}
           aria-pressed={visible}
           title={visible ? t('shows.hide') : t('shows.show')}
-          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors"
+          // 16 px measured, which is the smallest target in the panel — and the
+          // only one that may not be fixed by growing. This strip is
+          // `min-h-[22px]` AND `sticky top-0` over the axis, so a 44 px control
+          // would take 22 px of the day twice: once from the column, and again
+          // from whatever it covers while the grid scrolls under it.
+          //
+          // So the box stays 16 px and a pseudo-element carries the target
+          // DOWNWARD from the strip's own top edge — never upward, which at
+          // `scrollTop = 0` would reach past the start of the scrolled content
+          // and be unreachable. What the extension lands on is 44 px of the
+          // grid's top-right corner, and that is inert on a phone in two
+          // separate ways: the grip and the resize edge are on a block's LEFT
+          // side, and the block body is gated behind `(pointer: fine)` — see
+          // `planner-block.tsx`. Nothing there loses a hit area.
+          className='hover:text-foreground relative -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:after:absolute max-sm:after:top-[-3px] max-sm:after:right-[-8px] max-sm:after:size-11 max-sm:after:content-[""]'
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />

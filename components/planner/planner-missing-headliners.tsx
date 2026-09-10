@@ -122,8 +122,16 @@ export function PlannerMissingHeadliners({
           ways to add the same ride and 716 px of sheet has to carry both: a park
           with ten missing headliners drew three rows of pills, 127 px, and took
           them off the axis. Every pill stays reachable — the box scrolls — and
-          above `sm` there is nothing to ration. */}
-      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5 max-sm:max-h-[5.5rem] max-sm:overflow-y-auto max-sm:overscroll-y-contain">
+          above `sm` there is nothing to ration.
+
+          7rem rather than the 5.5 it was, and the number follows the pills:
+          they are 44 px tall now instead of 23, so 88 px held the heading and
+          ONE row with the second cut off mid-pill — a scroll container whose
+          first screen shows no reason to scroll. 112 px is 20 (heading + its
+          `mt-1`) + 44 + 4 + 44, i.e. the heading and two whole rows, which is
+          what 5.5rem used to show. Only on a park that is actually missing a
+          headliner: this whole band renders nothing otherwise. */}
+      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5 max-sm:max-h-[7rem] max-sm:overflow-y-auto max-sm:overscroll-y-contain">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
           {t('headliners.missing', { count: missing.length })}
@@ -166,7 +174,7 @@ export function PlannerMissingHeadliners({
                   }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors sm:cursor-grab sm:active:cursor-grabbing"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors max-sm:min-h-11 sm:cursor-grab sm:active:cursor-grabbing"
             >
               {/* The ride's picture, at 16 px. A pill was a word in a rounded
                   box, which is what a filter chip looks like — and these are

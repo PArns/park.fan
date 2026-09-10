@@ -652,9 +652,26 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // the 15 % it left showed the page's tab bar under the sheet. 92svh is
           // 776, so the axis gains 59 px before anything else in this change has
           // been counted, and 68 px of the page behind it stays visible, which
-          // is what keeps the sheet reading as a sheet. The handle's own 96svh
-          // is unchanged: pulling up still does something.
-          expanded ? 'max-sm:max-h-[96svh]' : 'max-sm:max-h-[92svh]'
+          // is what keeps the sheet reading as a sheet.
+          //
+          // And 100 rather than the 96 the handle used to pull to, because
+          // raising the resting height took the handle's job away: 96 − 92 is
+          // 4svh, measured 776 → 810 px at 390×844, i.e. 34 px of travel where
+          // it used to have 93. That is under half a 15-minute block on the
+          // phone axis, and `check:planner` says so out loud — its
+          // `after > before + 40` was green at 85svh and went red here. The
+          // check is right and the sheet was wrong: a control that moves the
+          // thing it grips by 34 px is a control nobody will pull twice.
+          //
+          // The 68 px it costs is the overlay, and that is the whole trade.
+          // Pulled up, the modal shield is behind the sheet and tapping beside
+          // it is no longer a way out — so the two that remain have to be real,
+          // and both are: the × is `max-sm:size-11` on `SheetContent` itself,
+          // and this handle takes it back down (a drag, or a tap, which is why
+          // the tap toggles rather than only dismissing). Resting at 92 the
+          // shield is back. Only the pulled-up state gives it up, and only for
+          // as long as somebody holds it there.
+          expanded ? 'max-sm:max-h-[100svh]' : 'max-sm:max-h-[92svh]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
         // a bottom sheet spanning the viewport, and an inline pixel width would
@@ -713,8 +730,20 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             close button at `absolute top-4 right-4`, which is now INSIDE this
             row, and without the clearance the picker's forward chevron sits
             under it and one of the two becomes untappable. */}
-        <SheetHeader className="border-border/60 shrink-0 gap-0 border-b px-3 py-2 max-sm:py-1">
-          <div className="flex items-center gap-2 pr-7">
+        {/* `max-sm:py-0` rather than the `max-sm:py-1` it had: the two controls
+            in this row are 44 px tall on a phone now, so the padding that used
+            to give a 28 px button air is 8 px this panel spends on nothing. The
+            row is 44 px either way. */}
+        <SheetHeader className="border-border/60 shrink-0 gap-0 border-b px-3 py-2 max-sm:py-0">
+          {/* `max-sm:pr-14` and not the desktop's `pr-7`, because the close
+              button this clears is a DIFFERENT size on a phone: `SheetContent`
+              draws it `max-sm:top-2 max-sm:right-2 max-sm:size-11`, so it
+              covers the rightmost 52 px, while `pr-7` reserves 28 and `px-3`
+              adds 12 — 12 px short. The last control in this row is "einen Tag
+              planen", and 12 of its 28 px sat under the ×. 56 px of clearance
+              puts its edge 8 px clear of the close button at every phone width.
+          */}
+          <div className="flex items-center gap-2 pr-7 max-sm:pr-14">
             <SheetTitle className="flex shrink-0 items-center gap-2 text-sm">
               <CalendarPlus className="size-4" />
               {t('title')}
@@ -729,7 +758,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onClick={() => setShowOverview((value) => !value)}
                   aria-expanded={showOverview}
                   data-planner-overview-toggle=""
-                  className="text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
+                  className="text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors max-sm:min-h-11"
                 >
                   {/* "Meine Pläne", never the active park's name. This control
                       opens the list of ALL plans, and labelling it with one of
@@ -762,7 +791,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   aria-label={t('wizard.open')}
                   title={t('wizard.open')}
                   data-planner-new-plan=""
-                  className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors"
+                  className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
                 >
                   <Plus className="size-4" aria-hidden="true" />
                 </button>

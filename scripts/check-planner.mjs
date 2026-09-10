@@ -842,7 +842,25 @@ if (await reopen.count()) {
 }
 
 // ── Phone ────────────────────────────────────────────────────────────────────
-const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
+// `hasTouch`, and it is the single most load-bearing option in this file.
+//
+// A viewport of 390×844 on its own is a MOUSE in a narrow window: measured,
+// `{coarse:false, fine:true, hover:true, maxTouch:0}`. Everything in the planner
+// that decides by pointer type therefore answered the desktop way here — the
+// snap step, the block body's `(pointer: fine)` gate, every `hover:` style — and
+// the assertions below were written against a phone that did not exist. That is
+// not a hypothetical: "der Griff ist auf dem Handy treffbar" was green on `main`
+// while a real coarse pointer missed the same grip by 22 px, and a drag with
+// `pointerType: 'touch'` moved a block zero minutes on `main` and passed. A
+// dispatched touch pointer is not the same thing as being a touch device: the
+// event says touch, `matchMedia` and CSS still say mouse.
+//
+// `isMobile` is deliberately NOT set alongside it. It adds the mobile viewport
+// meta and text autosizing, which change layout metrics — and this app's phone
+// layout is Tailwind's `max-sm:` against the window, not viewport scaling, so it
+// would move the numbers below without making the pointer any coarser. Coarse is
+// what `hasTouch` alone already gives: `{coarse:true, fine:false, hover:false}`.
+const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
 noteErrors(phone);
 await seed(phone);
 
@@ -857,6 +875,22 @@ if (await phoneLauncher.count()) {
   await phoneLauncher.click();
   await phone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await phone.waitForTimeout(2500);
+
+  // The instrument, before anything it measures. Every assertion in this pass
+  // is about a phone, and a page that answers `(pointer: fine)` is not one —
+  // so this asks the browser what it is rather than trusting the option above.
+  // Without it the pass certifies the desktop path under a phone's name, which
+  // is how the grip failure survived a green run: see the note on `hasTouch`.
+  const pointer = await phone.evaluate(() => ({
+    coarse: matchMedia('(pointer: coarse)').matches,
+    fine: matchMedia('(pointer: fine)').matches,
+    hover: matchMedia('(hover: hover)').matches,
+  }));
+  check(
+    'die Handy-Seite ist ein Grobzeiger',
+    pointer.coarse && !pointer.fine && !pointer.hover,
+    `coarse ${pointer.coarse} · fine ${pointer.fine} · hover ${pointer.hover}`
+  );
   // A bottom sheet spans the full width and sits on the bottom edge. Both are
   // measured against a REFERENCE element positioned the same way rather than
   // against the viewport: the scroll lock a modal installs changes what a fixed
@@ -1109,6 +1143,115 @@ if (await phoneLauncher.count()) {
       );
     } else {
       check('die Achse bekommt ihren Boden', false, 'keine Achse gefunden');
+    }
+
+    // ── The 44 px floor, swept rather than listed ────────────────────────────
+    //
+    // Etappe 4 of PF-86 named seven controls and raised all seven; the sight
+    // check then found SEVENTEEN more in the same sheet, which is the argument
+    // for a sweep and against a list. A list only ever knows about the controls
+    // somebody thought of.
+    //
+    // Two rules decide what counts, and both were mis-read by the hand count
+    // that produced those seventeen:
+    //
+    //  * A CHECKBOX INSIDE A LABEL IS NOT A TARGET. The label is — that is what
+    //    a label is for — so the input is skipped and the label measured in its
+    //    place. Nineteen 16×16 boxes were reported in the fit assistant whose
+    //    rows are 64 px tall and entirely clickable.
+    //  * A BOUNDING BOX IS NOT A TARGET EITHER. The grip, the resize edge, the
+    //    sheet handle and the party chip all keep a small box on purpose and
+    //    carry a 44 px `after:` pseudo-element, which `getBoundingClientRect`
+    //    cannot see. So the height is walked with `elementFromPoint` outward
+    //    from the control's own centre, exactly like the grip probe above.
+    //
+    // A control that is not hittable at its own centre is skipped rather than
+    // failed: it is scrolled out of its container or covered, which is a
+    // different defect and gets its own named check (see "einen Tag planen"
+    // below, which is the one this sweep would otherwise have swallowed).
+    const small = await phone.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      if (!sheet) return null;
+      const FLOOR = 44;
+      const REACH = 30; // Half of 44 is 22; 30 leaves room to see an oversized one.
+      const hits = (el, x, y) => {
+        const hit = document.elementFromPoint(x, y);
+        if (!hit) return false;
+        return hit === el || el.contains(hit) || hit.closest('button, label, a[href]') === el;
+      };
+      const rows = [];
+      const nodes = sheet.querySelectorAll(
+        'button, [role="button"], a[href], summary, label, select, input[type="checkbox"], input[type="radio"]'
+      );
+      for (const el of nodes) {
+        if (el.matches('input, select') && el.closest('label')) continue;
+        if (el.matches('label') && !el.querySelector('input, select, textarea') && !el.htmlFor) {
+          continue;
+        }
+        if (el.hasAttribute('aria-hidden') || el.closest('[aria-hidden="true"]')) continue;
+        const box = el.getBoundingClientRect();
+        if (box.width < 1 || box.height < 1) continue;
+        const x = Math.round(box.left + box.width / 2);
+        if (!hits(el, x, Math.round(box.top + box.height / 2))) continue;
+        // Walked from the BOX EDGES outward and added to the box's own height,
+        // never counted outward from a rounded centre: a control whose top
+        // lands on .5 would otherwise measure 43 and fail for arithmetic.
+        const top = Math.ceil(box.top);
+        const bottom = Math.floor(box.bottom) - 1;
+        let up = 0;
+        while (up < REACH && hits(el, x, top - up - 1)) up += 1;
+        let down = 0;
+        while (down < REACH && hits(el, x, bottom + down + 1)) down += 1;
+        const reach = Math.round(box.height) + up + down;
+        if (reach < FLOOR) {
+          rows.push({
+            reach,
+            box: `${Math.round(box.width)}x${Math.round(box.height)}`,
+            name: (
+              el.getAttribute('aria-label') ||
+              el.getAttribute('title') ||
+              el.textContent ||
+              el.tagName
+            )
+              .trim()
+              .replace(/\s+/g, ' ')
+              .slice(0, 40),
+          });
+        }
+      }
+      return rows;
+    }, SHEET);
+    if (small === null) {
+      check('jedes Ziel im Sheet ist 44 px hoch', false, 'kein Sheet');
+    } else {
+      check(
+        'jedes Ziel im Sheet ist 44 px hoch',
+        small.length === 0,
+        small.length === 0
+          ? 'alle geprüften Ziele ≥ 44 px'
+          : small.map((row) => `${row.reach} px „${row.name}" (Box ${row.box})`).join(' · ')
+      );
+    }
+
+    // The one the sweep cannot see, and it is a real bug rather than a
+    // measurement: `SheetContent` draws its close button `max-sm:size-11` at
+    // `right-2`, so it covers the rightmost 52 px of the header — and the
+    // header's own content stopped 40 px from that edge. "Einen Tag planen" sat
+    // 12 px under the ×, which reads from the outside as a button that opens
+    // the wrong thing. Asked of Playwright, because "receives events" is the
+    // question and `click({ trial: true })` names the intercepting element when
+    // the answer is no.
+    const newPlan = phone.locator(`${SHEET} [data-planner-new-plan]`).first();
+    if (await newPlan.count()) {
+      const free = await newPlan
+        .click({ trial: true, timeout: 5_000 })
+        .then(() => 'erreichbar')
+        .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
+      check(
+        '„einen Tag planen" liegt nicht unter dem Schließen-Knopf',
+        free === 'erreichbar',
+        free
+      );
     }
   } else {
     // No opening hours (which is what a 404 leaves), so the grid cannot draw and
