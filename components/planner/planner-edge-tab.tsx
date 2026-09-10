@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarPlus, GripVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PANEL_WIDTH_DEFAULT, clampPanelWidth, plannerPanelWidth } from '@/lib/planner/panel-width';
+import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 
 /**
  * The planner's tab, on the right edge of the window.
@@ -52,6 +53,14 @@ export function PlannerEdgeTab({
 }) {
   const t = useTranslations('navigation');
   const [dragging, setDragging] = useState(false);
+  /**
+   * Tear-down for a resize that is still running, reachable from outside it.
+   * The same slot the grid keeps, for the same reason: {@link capturePointer}
+   * may put the listeners on the `document`, where they outlive this component
+   * and keep `--planner-inset-ms` pinned at `0ms` for the rest of the session.
+   */
+  const liveResize = useRef<(() => void) | null>(null);
+  useEffect(() => () => liveResize.current?.(), []);
 
   /**
    * Dragging the tab sideways resizes the panel.
@@ -65,7 +74,14 @@ export function PlannerEdgeTab({
   const startResize = (event: React.PointerEvent<HTMLElement>) => {
     if (!open || event.button !== 0) return;
     const handle = event.currentTarget;
-    handle.setPointerCapture(event.pointerId);
+    const pointerId = event.pointerId;
+    // The third planner gesture, and it had the same bare claim the other two
+    // were fixed for: `setPointerCapture` throws `NotFoundError` for a pointer
+    // id that is not active, and an uncaught throw in a React handler takes the
+    // gesture with it — here before `setDragging(true)` and before a single
+    // listener is attached, so the panel simply does not resize. See
+    // {@link capturePointer} for the fallback bus.
+    const bus = capturePointer(handle, pointerId);
     const startX = event.clientX;
     const startWidth = panelWidth;
     let moved = false;
@@ -73,10 +89,15 @@ export function PlannerEdgeTab({
     const widthAt = (clientX: number) => clampPanelWidth(startWidth + (startX - clientX));
 
     const onMove = (moveEvent: PointerEvent) => {
+      // This gesture's own pointer. On the document fallback every pointer on
+      // the page arrives here, and a second one would resize the panel from an
+      // `startX` it never had.
+      if (!isSamePointer(moveEvent, pointerId)) return;
       if (Math.abs(moveEvent.clientX - startX) > TAP_SLOP_PX) moved = true;
       if (moved) plannerPanelWidth.preview(widthAt(moveEvent.clientX));
     };
     const onUp = (upEvent: PointerEvent) => {
+      if (!isSamePointer(upEvent, pointerId)) return;
       if (moved) {
         plannerPanelWidth.commit(widthAt(upEvent.clientX));
         // Swallow the click this drag is about to produce.
@@ -84,25 +105,28 @@ export function PlannerEdgeTab({
       }
       detach();
     };
+    const onCancel = (cancelEvent: PointerEvent) => {
+      if (!isSamePointer(cancelEvent, pointerId)) return;
+      detach();
+    };
     const detach = () => {
-      handle.removeEventListener('pointermove', onMove);
-      handle.removeEventListener('pointerup', onUp);
-      handle.removeEventListener('pointercancel', detach);
-      try {
-        handle.releasePointerCapture(event.pointerId);
-      } catch {
-        // Already released — a cancelled gesture, or the element unmounted.
-      }
+      bus.removeEventListener('pointermove', onMove as EventListener);
+      bus.removeEventListener('pointerup', onUp as EventListener);
+      bus.removeEventListener('pointercancel', onCancel as EventListener);
+      releasePointer(handle, pointerId);
       document.documentElement.style.removeProperty('--planner-inset-ms');
       setDragging(false);
+      if (liveResize.current === detach) liveResize.current = null;
     };
+    liveResize.current?.();
+    liveResize.current = detach;
     setDragging(true);
     // The page beside the panel animates its inset over 300 ms, which is right
     // for an open and wrong under a pointer. Zero for the length of the drag.
     document.documentElement.style.setProperty('--planner-inset-ms', '0ms');
-    handle.addEventListener('pointermove', onMove);
-    handle.addEventListener('pointerup', onUp);
-    handle.addEventListener('pointercancel', detach);
+    bus.addEventListener('pointermove', onMove as EventListener);
+    bus.addEventListener('pointerup', onUp as EventListener);
+    bus.addEventListener('pointercancel', onCancel as EventListener);
   };
 
   return (

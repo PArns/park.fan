@@ -362,10 +362,12 @@ export function PlannerDayGrid({
    * that is no longer in the tree, and a `pointerup` that would still try to
    * commit through it.
    *
-   * One slot rather than a set: the two gestures are mutually exclusive by
-   * construction (the resize edge stops propagation, and both start from a
-   * primary button press), so a second claim means the first never got its end
-   * event and is stale — hence the `?.()` before every new one.
+   * One slot rather than a set, and what it holds is an ABORT rather than a
+   * detach: a second pointer CAN start the other gesture while the first is
+   * still held — one finger on a grip and another on a resize edge is two live
+   * gestures, not one — so the displaced one has to be ended and not merely
+   * unsubscribed. Unsubscribing a move-drag leaves `dragState` set, and the rAF
+   * loop reads that and nothing else.
    */
   const liveGesture = useRef<(() => void) | null>(null);
   useEffect(() => () => liveGesture.current?.(), []);
@@ -601,11 +603,21 @@ export function PlannerDayGrid({
         bus.removeEventListener('pointerup', onUp as EventListener);
         bus.removeEventListener('pointercancel', onCancel as EventListener);
         releasePointer(handle, pointerId);
-        if (liveGesture.current === detach) liveGesture.current = null;
+        if (liveGesture.current === abort) liveGesture.current = null;
+      };
+      // What an interruption from OUTSIDE this gesture has to do, and it is not
+      // `detach`: taking the listeners away leaves `dragState` set, and the rAF
+      // loop below reads exactly that — so the block would keep following a
+      // finger that is no longer being listened to, for ever. Ending the drag
+      // is the point; `false` because an interrupted drag is a cancelled one
+      // and may not write a minute.
+      const abort = () => {
+        detach();
+        endDrag(false);
       };
 
       liveGesture.current?.();
-      liveGesture.current = detach;
+      liveGesture.current = abort;
       bus.addEventListener('pointermove', onPointerMove as EventListener);
       bus.addEventListener('pointerup', onUp as EventListener);
       bus.addEventListener('pointercancel', onCancel as EventListener);

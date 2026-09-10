@@ -1361,14 +1361,23 @@ Where the target is grown, it is grown **honestly** — the control gets the
 height, and the row's phone padding comes off, since padding that was giving a
 28 px button air is axis spent on nothing once the button is 44. The column head
 goes 32 → 44 px and the sheet header 36 → 44, which is 20 px for the panel's
-primary navigation: the park, the day, the plan list. The pseudo-element is kept
-for the two places where growing would cost the day twice — the party chip rides
-in `PlannerContextBand`'s reserved `min-h-[60px]` box (a 44 px pill among 20 px
-badges, and +16 px), and the show strip is `min-h-[22px]` **and** `sticky top-0`
-over the axis, so a taller strip takes its height from the column and again from
-whatever it covers while the grid scrolls. Both extensions reach **downward**:
-upward from a strip at `scrollTop: 0` would land past the start of the scrolled
-content, where nothing can be pressed.
+primary navigation: the park, the day, the plan list. A door at 44 px onto a list
+of 28 px rows is half a fix, so the park list and the month calendar behind those
+two buttons are raised with them.
+
+**Exactly one control keeps a pseudo-element, and the one that nearly got a
+second is the instructive half.** The party chip rides in
+`PlannerContextBand`'s reserved `min-h-[60px]` box, where growing it costs 16 px
+and draws a 44 px pill among 20 px badges — so the target reaches down into the
+band's own prose row, which carries text and no target. The show strip looked
+like the same case (`min-h-[22px]`, and taller means covering more of the axis)
+and is not: it is `sticky top-0` **inside the grid's scroller**, so an overhang
+travels with the scroll across the blocks — and a block is selected by a plain
+`onClick` on its `<li>` with no pointer-type gate, so the corner of whatever
+block passed underneath would have toggled the shows instead of opening its
+action row. The strip grows instead, which costs the axis nothing (it is scrolled
+content, not part of the scroller's box) and costs coverage, which scrolling
+recovers where a stolen tap does not.
 
 One entry in that list was not a size at all. `SheetContent` draws its close
 button `max-sm:size-11` at `right-2`, covering the rightmost 52 px of the header
