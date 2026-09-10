@@ -1197,7 +1197,13 @@
       "eveningBestOffsetHours": "Normalmente la espera más corta ~{hours} h después de la apertura",
       "eveningWait": "Por la noche",
       "confidenceLow": "Basado en pocos datos: tómalo como una orientación aproximada",
-      "notWorth": "Aquí no hace falta correr a la apertura: las esperas se mantienen razonables todo el día (~{openWait} min a la apertura)."
+      "notWorth": "Aquí no hace falta correr a la apertura: las esperas se mantienen razonables todo el día (~{openWait} min a la apertura).",
+      "bestTimeTitle": "Cuándo hay menos cola aquí",
+      "bestTimeText": "En la apertura la espera aquí es de ~{openWait} min y en el pico del día de ~{busyPeak} min.",
+      "spread": "Diferencia",
+      "quietDay": "Más tranquilo el {day}: normalmente ~{wait} min.",
+      "quietDays": "Más tranquilo el {first} y el {second}: normalmente ~{wait} min.",
+      "quietDayNone": "Ningún día destaca, las esperas están muy igualadas."
     },
     "todayChart": {
       "title": "Tiempos de espera hoy",

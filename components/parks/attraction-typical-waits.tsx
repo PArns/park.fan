@@ -22,6 +22,26 @@ interface AttractionTypicalWaitsProps {
 /** Mon→Sun display order, mapped to API dayOfWeek (0=Sun…6=Sat). */
 const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
 
+/*
+ * One colour rank, in all three places this card states a number.
+ *
+ * „Normal" (P50) is the accent and „Voll" (P90) is the recessive tone — everywhere. The two
+ * halves used to say the opposite of each other: in the summary tiles the BLUE number was Voll
+ * and Normal was plain white, while in the bars and the legend blue was Normal and Voll a wash
+ * of the same blue. The same colour meant two things on one card, a quarter of an inch apart.
+ *
+ * The wash is also why the bar looked like it ended at the Normal value while the number above it
+ * was the Voll one. `bg-primary/25` over the `bg-muted/40` track computes to a contrast of
+ * **1.32:1 in light and 1.40:1 in dark** — the segment was very nearly not drawn. And it cannot
+ * be fixed by opacity: the track is rgb(251,251,251) in light mode and `bg-primary` itself only
+ * reaches 3.36:1 against it, so there is no third tone that clears 3:1 from BOTH the track and
+ * the solid segment. The boundary has to be a line rather than a fill difference, so the Voll
+ * segment carries a solid `bg-primary` top rule — 3.36:1 light, 5.24:1 dark, over the track —
+ * and the fill is raised to /40 to read as a body rather than to carry the contrast alone.
+ */
+const BUSY_FILL = 'bg-primary/40';
+const BUSY_EDGE = 'bg-primary';
+
 /** Locale-aware short weekday name for an API dayOfWeek (0=Sun…6=Sat). */
 function dayLabel(dayOfWeek: number, locale: string): string {
   // 2024-01-07 is a Sunday; + dayOfWeek lands on the right weekday.
@@ -137,16 +157,30 @@ export function AttractionTypicalWaits({
               : dayLabel(dow, locale);
           return (
             <div key={dow} className="flex flex-1 flex-col items-center gap-1" title={title}>
+              {/* The Voll value, in the Voll tone — the rank above is what says which of the two
+                readings it is, and the `title` gives the pair. Printing „typical–busy" here
+                instead was measured and rejected: 217 of the catalogue's 5,942 ride-days round
+                to seven characters („100–145"), which is ~40 px of tabular 10 px text in a column
+                that is ~36 px wide at a 360 px viewport, and the seven columns are `flex-1`, so
+                the overflow would push the row past the card rather than wrap. */}
               <span className="text-muted-foreground text-[10px] leading-none tabular-nums">
                 {busy != null ? busy : ''}
               </span>
               <div className="bg-muted/40 relative w-full flex-1 overflow-hidden rounded-t">
-                {/* Busy (P90) — light extension */}
-                <div
-                  className="bg-primary/25 absolute inset-x-0 bottom-0 rounded-t"
-                  style={{ height: `${busyPct}%` }}
-                />
-                {/* Typical (P50) — solid */}
+                {/* Busy (P90) — the recessive fill, and a solid top rule that is what actually
+                  carries the „the bar reaches here" reading (see BUSY_FILL/BUSY_EDGE above). */}
+                {busy != null && (
+                  <div
+                    className={cn(BUSY_FILL, 'absolute inset-x-0 bottom-0 rounded-t')}
+                    style={{ height: `${busyPct}%` }}
+                  >
+                    <span
+                      className={cn(BUSY_EDGE, 'absolute inset-x-0 top-0 h-px')}
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
+                {/* Typical (P50) — solid accent */}
                 <div
                   className="bg-primary absolute inset-x-0 bottom-0 rounded-t"
                   style={{ height: `${typicalPct}%` }}
@@ -171,8 +205,14 @@ export function AttractionTypicalWaits({
           <span className="bg-primary h-2 w-2 rounded-sm" aria-hidden="true" />
           {t('typical')}
         </span>
+        {/* The Voll swatch is the bar's Voll segment at 8 px: recessive fill, solid outline. The
+          outline is the part that has to be seen — a `/25` square on the page background computed
+          to 1.33:1 in light and 1.36:1 in dark, i.e. a legend entry with no visible key. */}
         <span className="flex items-center gap-1.5">
-          <span className="bg-primary/25 h-2 w-2 rounded-sm" aria-hidden="true" />
+          <span
+            className={cn(BUSY_FILL, 'ring-primary h-2 w-2 rounded-sm ring-1')}
+            aria-hidden="true"
+          />
           {t('busy')}
         </span>
         {peak ? (
@@ -201,16 +241,18 @@ function SummaryCard({
   return (
     <div className="rounded-lg border p-3">
       <p className="text-muted-foreground text-xs">{label}</p>
+      {/* Normal is the accent, Voll the recessive tone — the same rank the bars and the legend
+        draw. These two were the wrong way round: blue was Voll here and Normal there. */}
       <div className="mt-1.5 flex items-end gap-4">
         <div>
-          <p className="text-foreground text-lg leading-none font-semibold">
+          <p className="text-primary text-lg leading-none font-semibold">
             {bucket.typical ?? '–'}
             <span className="text-muted-foreground ml-0.5 text-xs font-normal">{unit}</span>
           </p>
           <p className="text-muted-foreground mt-0.5 text-[10px]">{typicalLabel}</p>
         </div>
         <div>
-          <p className="text-primary text-lg leading-none font-semibold">
+          <p className="text-muted-foreground text-lg leading-none font-semibold">
             {bucket.busy ?? '–'}
             <span className="text-muted-foreground ml-0.5 text-xs font-normal">{unit}</span>
           </p>

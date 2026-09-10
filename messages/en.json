@@ -1197,7 +1197,13 @@
       "eveningBestOffsetHours": "Typically shortest ~{hours} h after opening",
       "eveningWait": "Evening",
       "confidenceLow": "Based on limited data — treat as a rough guide",
-      "notWorth": "No need to rush here at opening — waits stay manageable throughout the day (~{openWait} min at opening)."
+      "notWorth": "No need to rush here at opening — waits stay manageable throughout the day (~{openWait} min at opening).",
+      "bestTimeTitle": "When it’s quieter here",
+      "bestTimeText": "At opening the line here runs ~{openWait} min, at the day’s peak ~{busyPeak} min.",
+      "spread": "Difference",
+      "quietDay": "Quietest on {day}: usually ~{wait} min.",
+      "quietDays": "Quietest on {first} and {second}: usually ~{wait} min.",
+      "quietDayNone": "No weekday stands out, the waits sit close together."
     },
     "todayChart": {
       "title": "Today’s Wait Times",

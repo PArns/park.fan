@@ -352,6 +352,66 @@ It is the same card now, built from the same parts:
   optional cards, so one `hasPlanChapter` gates the tile and the chapter together — the same rule
   the ride-profile and FAQ tiles already followed. A ride with neither card used to open that
   chapter under a heading and close it again.
+- **A cell is gated on its content, never on the data behind it — so the content may not decline
+  to render.** The same chapter's grid decides its column count from `attraction.ropeDrop &&
+typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answered `null` for
+  its fourth case: not worth a rope drop, not an evening ride, and no neighbour in the park
+  carrying a recommendation either, so the muted „no need to rush" note had nothing to contrast
+  against. The cell, its hairline and a second grid column were drawn around nothing. Measured
+  over all 213 parks: **183 ride pages showed a visibly empty half** and 159 more an empty box
+  under the chapter heading — 60 parks have no rope-drop recommendation at all, and every ride at
+  the Efteling carrying a recommendation is one of them, which is how it was reported. The fix is
+  not a third condition at the call site (a second copy of the card's own logic, free to drift
+  from it) but making the component **total**: `ropeDropCardVariant()` resolves every
+  recommendation to one of four panels, and `RopeDropCard` returns `React.ReactElement`, so the
+  next `return null` is a compiler error rather than another empty half-card. Where a component
+  genuinely may render nothing, the gate has to be the predicate it uses itself, exported and
+  shared — the count and the cell must ask the same question.
+- **A panel standing in for a missing recommendation says what the data supports, and its shape is
+  a measurement.** „Beste Besuchszeit planen" promises an answer, so the fourth panel gives the
+  ride's own readings rather than an apology. Which readings was decided over the 183 rides it is
+  drawn for, not at the whiteboard: the quietest **hour** is only defensible on **15** of them
+  (146 carry a trough wait equal to the wait at opening, 89 place the trough at opening itself),
+  the quietest **weekday** on **122** (`quietestWeekdays`, which drops a thinly measured day
+  rather than refusing, and names both days of a tie), and the day's own spread — `busyPeak −
+openWait`, median 25 minutes — on all 183. It carries no sentence explaining why the
+  recommendation is missing: that threshold lives in the backend, this repo cannot cite it, and a
+  reason invented here would read as measured to the next person who finds it.
+- **The three readings are one component** (`StatTiles`), because the stand-in panel's whole claim
+  is that it carries the weight of the recommendation it replaces, and a fourth hand-written copy
+  of those classes cannot keep that promise.
+
+### One colour rank per card, and a wash is not a boundary
+
+`AttractionTypicalWaits` states the same two readings three times — summary tiles, seven bars, a
+legend — and the tiles used to say the opposite of the other two. „Voll" (P90) was the blue number
+in the tiles while blue was „Normal" (P50) in the bars and the legend: one colour meaning two
+things a quarter of an inch apart. The rank is **Normal = accent, Voll = recessive**, in all three,
+and it is what tells a reader which of the two the number above each bar is.
+
+The wash under it was the other half of the same fault, and it is arithmetic rather than taste.
+Computed from `--primary`/`--muted` (oklch → sRGB → WCAG), the Voll segment at `bg-primary/25` over
+the `bg-muted/40` track:
+
+|                                      | light        | dark         |
+| ------------------------------------ | ------------ | ------------ |
+| Voll fill vs the track               | **1.32 : 1** | **1.40 : 1** |
+| Voll fill vs the Normal segment      | 2.54 : 1     | 3.74 : 1     |
+| legend swatch on the page background | 1.33 : 1     | 1.36 : 1     |
+
+So the bar appeared to end at the Normal value while the number above it was the Voll one — the
+segment was very nearly not drawn. **And opacity alone cannot fix it:** the track computes to
+rgb(251,251,251) in light mode and `bg-primary` itself only reaches 3.36 : 1 against it, so there
+is no third tone that clears 3 : 1 from both the track and the solid segment. A boundary that has
+to be seen is drawn as a **line**, not as a difference between two fills: the Voll segment carries
+a solid `bg-primary` top rule (3.36 : 1 light, 5.24 : 1 dark over the track) and the legend swatch
+the same colour as a ring. The fill rises to `/40` to read as a body, not to carry the contrast.
+
+Printing „typical–busy" above each bar instead was measured and rejected: **217 of the catalogue's
+5,942 ride-days** round to seven characters („100–145"), about 40 px of 10 px tabular text in a
+column that is ~36 px wide at a 360 px viewport — and the seven columns are `flex-1`, so the row
+would run past the card rather than wrap. The number keeps the Voll tone, the bar now visibly
+reaches it, and the `title` carries the pair.
 
 ### The ride's calendar cell is `ParkCalendarDay` plus a sparkline
 
