@@ -1,0 +1,57 @@
+name: lint and format
+
+# Blocking gate for the two checks that need no build, no database and no browser:
+# ESLint and Prettier. It runs on every pull request and on pushes to main, so a
+# red main is visible where it happened rather than as somebody else's bycatch.
+#
+# Why it exists: `pnpm format:check` went red on main twice within a month, both
+# times from a merged PR that had not run `pnpm format` (PF-68: 8 files, PF-101:
+# 5 files). A pre-commit hook was considered and rejected — it only fires where
+# somebody installed it, and it misses an agent run and an edit made through the
+# GitHub web UI, which are the two ways those files got in.
+#
+# `pnpm build` deliberately stays out: its prebuild generates image crops and the
+# media manifest, which is minutes of work that the Vercel deployment already does
+# on every pull request.
+#
+# Before adding a step here, check it does not need Docker, Postgres, Redis or a
+# real browser — those belong to the local runner, not to this workflow.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # corepack rather than pnpm/action-setup: `packageManager` in package.json
+      # already pins the version, and this is the same pair of commands the setup
+      # docs give a contributor.
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm lint
+        run: pnpm lint
+
+      # Kept last and separate so the log says which of the two failed without
+      # anyone opening the step. `pnpm format` is the fix; on a Markdown file read
+      # the diff first — see docs/development/conventions.md#16.
+      - name: pnpm format:check
+        run: pnpm format:check
