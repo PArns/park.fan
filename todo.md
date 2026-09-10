@@ -423,24 +423,57 @@ reports every show as closed.
 - [ ] Weather climate normals past day 14, flagged, and firewalled from the wait
       model's features.
 
-### 2.7 Trip storage and share links `[P1]` — frontend integration already built
+### 2.7 Trip storage and share links `[P1]` — storage shipped, sharing not started
 
-**Frontend-observed status (2026-09-08, PF-23 reconciliation):** `app/api/trips/route.ts`
-and `app/api/trips/[id]/route.ts` already relay `POST`/`GET`/`PUT` to
-`${API_BASE}/v1/trips[/…]`, and `lib/planner/trip-sync.ts` drives them end-to-end
-(create, debounced auto-sync, drop-the-link-not-the-row on disable). **This is not proof
-the backend has the table yet** — every relay is written to degrade quietly on a
-non-OK response ("Trip service unreachable", a 404 on `PUT` silently starts a new trip) —
-so treat this as the frontend half being done and waiting, not as confirmation of the
-checkboxes below. See the batch's separate backend-side ticket for this section.
+**Backend-confirmed status (2026-09-10, PF-34) — replaces the frontend-observed caveat
+that stood here, which said the backend table was unproven and was already out of date
+when it was written:** the four boxes it left open were checked against the backend repo,
+the live API and this repo, and all four are done — five ticks below, because the first
+of them held a table and a sentence and those turned out to be separate errands. `510a6c3`
+([v4.api.park.fan#216](https://github.com/PArns/v4.api.park.fan/pull/216), 2026-09-03)
+brought `src/trips/` with the entity, the three endpoints, the write limiter and the
+payload guard; `https://api.park.fan/api-json` lists all three verbs. On this side
+`app/api/trips/route.ts` and `app/api/trips/[id]/route.ts` relay all three and
+`lib/planner/trip-sync.ts` drives them, so a plan does reach the server. What is missing
+is the other word in this section's title: nothing shares it. That was never one of the
+four boxes, so it gets one of its own below rather than staying a sentence someone has
+to notice.
 
-- [ ] Table: trip id (short, URL-safe, unguessable), payload, created/updated,
-      expiry. No account system exists for visitors and none is being built — the
-      link is the credential. Say that plainly in the UI.
-- [ ] `POST /v1/trips` → id, `GET /v1/trips/{id}`, `PUT /v1/trips/{id}`.
-- [ ] Rate-limit writes. This is the first unauthenticated write endpoint in the API;
-      check how `THROTTLE_BYPASS_KEYS` and the existing throttler apply.
-- [ ] Size cap, and reject payloads that are not a trip.
+- [x] Table: trip id (short, URL-safe, unguessable), payload, created/updated,
+      expiry. `trip.entity.ts` — `varchar(32)` primary key, `jsonb` payload,
+      `CreateDateColumn`/`UpdateDateColumn`, `expiresAt timestamptz` behind
+      `idx_trips_expires_at`; `TripsService` pushes a 400-day TTL forward on every
+      write and `queues/processors/trips-maintenance.processor.ts` sweeps what expires.
+- [x] Say in the UI that the link is the credential — no account system exists for
+      visitors and none is being built, so this sentence is the whole security model.
+      `components/planner/planner-push-toggle.tsx` renders `push.storedHint` ("Whoever
+      has its link can read and change it — there is no account and no password") in all
+      six catalogs, on the switch that uploads the plan, which is the right place for it.
+      Two things about it are not right and neither is this box. It is gated on `on`,
+      and `enable()` calls `syncTrip()` before that flips (deliberately —
+      `use-push-subscription.ts:22`), so the first upload has happened by the time
+      anybody reads the sentence; and `forgetTrip()` drops the local id without deleting
+      the row, so the plan outlives both the toggle and the sentence by up to the 400-day
+      TTL. Both are **PF-103**. A share entry point will owe the sentence a third time,
+      next to the action that hands the link over: **PF-94**.
+- [x] `POST /v1/trips` → id, `GET /v1/trips/{id}`, `PUT /v1/trips/{id}`.
+      `trips.controller.ts`, all three live.
+- [x] Rate-limit writes. `trip-write-rate-limit.service.ts` — a Redis limiter of its own
+      rather than `@Throttle`, because `CfThrottlerGuard` skips exactly the calls that
+      come from this frontend; two buckets, 20 creates and 600 updates per hour per IP.
+- [x] Size cap, and reject payloads that are not a trip. `trip-payload.util.ts` — 256 KB,
+      plus a skeleton check (version, parks, days, entries) with its own per-level caps.
+- [ ] The share link itself, which this section is half named after, which was never
+      one of the four boxes above, and which nothing builds. `lib/planner/trip-sync.ts`
+      has one caller (`use-push-subscription.ts`), `getTripId()` no reader outside it, and
+      `components/planner/` neither `navigator.share` nor a clipboard write. Reading a
+      shared plan is the half that does work: `app/api/trips/[id]`'s `GET` is public and
+      checks nothing but the id's shape, on purpose, so an id already fetches its plan
+      as JSON today. What is missing at both ends is the part a person can use — no way
+      to obtain the link, and no page that opens one. Where the entry point sits, what
+      pressing it does while push is off (today the id is created by turning push on),
+      and whether taking over a shared plan writes into the sender's row or copies it,
+      are product questions: **PF-94**.
 
 ### 2.8 Push `[P2]` — frontend integration already built, ahead of this section's checkboxes
 
@@ -562,9 +595,12 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
   own docstring. localStorage only, now.
 - [x] localStorage holds the plan (`parkfan_planner`), read through `secureJsonParse`.
 - [x] Backend sync for sharing (§2.7) — `lib/planner/trip-sync.ts` (`syncTrip`,
-      `startTripAutoSync`, `forgetTrip`) against `app/api/trips/*`. See §2.7's status
-      note: this is the frontend half, and it degrades quietly if the backend table
-      does not exist yet.
+      `startTripAutoSync`, `forgetTrip`) against `app/api/trips/*`. The table it writes
+      to exists and is live (see §2.7); an unreachable backend is what the relays still
+      degrade quietly on, and one they were not written for — `put()` returns
+      `response.ok`, so a 429 or a 400 orphans the row and starts a new trip exactly as
+      an expiry does, which is **PF-104**. The sync is this box. The sharing it syncs
+      for is §2.7's last box, and is not built.
 - [~] ~~`proxy.ts:39` strips `set-cookie` from every non-redirect response. Cookie
   writes happen client-side, like `rememberLocale()` does.~~ — moot: the planner
   cookie was removed (see above), so there is nothing here for `proxy.ts` to strip.
