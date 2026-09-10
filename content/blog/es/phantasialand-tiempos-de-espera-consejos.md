@@ -67,15 +67,14 @@ Toda la sensiblera historia previa está en
 [nuestra historia de origen](/blog/un-cochecito-una-gondola-y-park-fan); aquí
 quiero hablar de lo que a lo largo de los años ha ido quedando como saber
 práctico. Porque, por mucho que quiera a este parque, tengo que salir en su
-defensa y a la vez exigirle desde el primer momento: es compacto, está
-increíblemente solicitado y, en los días equivocados, es un ejercicio de
-paciencia. Presentarse sin más, de forma espontánea, y dar con el día perfecto.
-eso aquí sale bien menos a menudo que en otros sitios. Pero con un poco de
-preparación se convierte en lo que para mí es desde hace más de treinta años: el
-día más bonito que un parque de atracciones de Europa puede regalarte. Esta guía
-te enseña las dos caras: los milagros por los que uno viene, y, en lo práctico,
-cómo mantienes a raya los **tiempos de espera en Phantasialand** y das con el
-mejor día.
+defensa y a la vez exigirle desde el primer momento: tiene seis headliners de
+verdad para un público que daría para veinte. Presentarse sin más, de forma
+espontánea, y dar con el día perfecto: eso aquí sale bien menos a menudo que en
+otros sitios. Pero con un poco de preparación se convierte en lo que para mí es
+desde hace más de treinta años: el día más bonito que un parque de atracciones
+de Europa puede regalarte. Las dos caras, entonces: los milagros por los que uno
+viene, y los **tiempos de espera en Phantasialand**, que se pueden mantener a
+raya si eliges bien el día.
 
 ![El Phantasialand de Brühl a vista de pájaro | Mi parque de siempre en Brühl: nueve áreas temáticas en 28 hectáreas. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -83,14 +82,11 @@ mejor día.
 
 ![Taron en el pueblo de basalto de Klugheim | Taron atraviesa a toda velocidad el pueblo de basalto de Klugheim, un pueblo entero, no una simple montaña rusa. | right](/media/phantasialand/taron-4x3.jpg)
 
-El Phantasialand se autodenomina «Europe’s Most Immersive Theme Park». Quien haya estado allí entiende en qué se
-apoya esa pretensión. En ningún otro lugar
-de Europa se desvanecen de forma tan absoluta las fronteras entre cola, atracción
-y decorado. No estás _delante_ de [Taron](ref:phantasialand/taron), estás
-_dentro_ de Klugheim, un pueblo de basalto completo, con tejados torcidos y
-muros desgastados, construido de forma tan convincente que por un momento te
-olvidas de la montaña rusa. No vas hacia una atracción, viajas a través de
-mundos.
+El Phantasialand se autodenomina «Europe’s Most Immersive Theme Park». En qué
+se apoya eso: la cola de [Taron](ref:phantasialand/taron) es Klugheim, un pueblo
+de basalto con tejados torcidos y muros desgastados, y entre hacer cola y
+decorado no hay allí ninguna frontera visible. La atracción en sí no la ves
+desde el pueblo hasta bastante tarde.
 
 Nueve áreas caben en 28 hectáreas, y ninguna se derrama sobre la siguiente: el
 Berlin de 1900 en la entrada, el China Town con sus templos, Deep in Africa con
@@ -103,23 +99,20 @@ abrumado.
 
 Pero justo esa compacidad es la otra cara. El parque tiene apenas un puñado de
 auténticos headliners, y en un día lleno todos quieren subirse a la vez a las
-mismas dos o tres atracciones. En nuestra inmersión a fondo sobre
-[el arte de esperar](/blog/el-arte-de-esperar) ya expliqué con números por qué
+mismas dos o tres atracciones. En [el arte de esperar](/blog/el-arte-de-esperar)
+ya expliqué con números por qué
 [Taron](ref:phantasialand/taron), un sábado de vacaciones, entra en saturación
 igual de rápido que Peter Pan’s Flight en París: un público pequeño no te protege
 de las colas largas cuando hay pocas atracciones entre las que repartir la
 afluencia. La matemática es más implacable en el Phantasialand que en el extenso
 [Europa-Park](ref:europa-park) con sus trece montañas rusas. A eso se suma que el
 parque fija el precio de sus entradas de forma tan agresiva que llena bien incluso
-muchos fines de semana, el legendario «sábado vacío» se ha vuelto raro. Razón de
-más para aprovechar todo lo que viene ahora.
+muchos fines de semana, el legendario «sábado vacío» se ha vuelto raro.
 
-## Del Märchenwald al parque más inmersivo de Europa: una breve historia
+## De la mina de lignito al pueblo de basalto
 
-Antes de meternos con las atracciones, las entradas y las mejores fechas, una
-breve mirada atrás, porque solo se entiende que el Phantasialand se sienta como se
-siente cuando sabes de dónde viene. Y eso es más o menos justo lo contrario de
-un parque de emociones fuertes.
+Que el Phantasialand se sienta como se siente tiene que ver con su origen, y ese
+origen es más o menos justo lo contrario de un parque de emociones fuertes.
 
 Todo empezó en 1967, en un pozo de lignito ya agotado a las afueras de Brühl. Dos
 hombres que se habían conocido en Berlín después de la guerra metieron aquí su
@@ -133,9 +126,9 @@ verde. El 30 de abril de 1967 se abrieron las puertas. ¿Montañas rusas? Ningun
 
 ![F.L.Y. en Rookburgh | Rookburgh con F.L.Y. (2020), la primera montaña rusa voladora con lanzamiento del mundo y punto culminante provisional de una larga transformación. | left](/media/phantasialand/fly-4x3.jpg)
 
-Que de ahí saliera, a lo largo de las décadas, el parque más salvaje y más
-densamente ambientado del continente es una historia de crecimiento lento, y de
-un final por los pelos. El parque se hizo más grande, más atrevido, más técnico;
+Que de ahí saliera, a lo largo de las décadas, un parque al que viajan
+entusiastas de toda Europa es una historia de crecimiento lento y de un final
+por los pelos. El parque se hizo más grande, más atrevido, más técnico;
 en 1996 Michael Jackson inauguró en persona el tren minero
 [Colorado Adventure](ref:phantasialand/colorado-adventure). Y entonces, el **1 de
 mayo de 2001**, ardió. Un fallo técnico en la atracción del Gran Cañón prendió
@@ -153,26 +146,24 @@ entonces bien, entonces ambientado hasta el último tornillo.
 Lo en serio que iba el parque con esto se vio en 2006. Con Deep in Africa y el
 inverted coaster [Black Mamba](ref:phantasialand/black-mamba), el Phantasialand
 creó todo un mundo africano, chozas de barro, cursos de agua, la vía colocada muy
-abajo entre las rocas en lugar de atornillada al cielo. A partir de 2006 llegaban los
-el simpático destino de excursión se convirtió en un lugar de peregrinación para
-fans de los parques de toda Europa. En 2016 llegó el pueblo de basalto de
+abajo entre las rocas en lugar de atornillada al cielo. A partir de 2006, los
+entusiastas de Bélgica y de los Países Bajos venían por eso. En 2016 llegó el
+pueblo de basalto de
 Klugheim con [Taron](ref:phantasialand/taron), en 2020 la victoriana ciudad de
 aviadores Rookburgh con la primera montaña rusa voladora con lanzamiento del
-mundo, [F.L.Y.](ref:phantasialand/fly), las dos están consideradas de clase
-mundial entre los entusiastas, y las dos no son simples atracciones, sino
-escenografías completas y sin fisuras.
+mundo, [F.L.Y.](ref:phantasialand/fly). En las dos, el área temática está
+primero y la atracción se construye dentro, no al revés.
 
 Lo más bonito de todo: el Phantasialand ha seguido hasta hoy en **manos de la
 familia**. En 1998 Gottlieb Löffelhardt le pasó el negocio a su hijo Robert; un
 grupo internacional o accionistas que miran el trimestre, el parque nunca los ha
-tenido por encima. Se nota en cada detalle que ningún controller habría aprobado
-jamás, y ese es exactamente el motivo por el que uno vuelve.
+tenido por encima. Se ve en detalles que un controller habría tachado: en el
+taller de aviación delante de F.L.Y., por el que se pasa sin que despache nada.
 
 ## Los headliners, y lo que te hacen
 
-Empecemos por el motivo por el que, en realidad, viene la mayoría, las
-atracciones. Te pongo los tiempos de espera en vivo directamente junto al nombre,
-para que ya mientras lees veas lo que hay ahora mismo:
+Los tiempos de espera en vivo van directamente junto al nombre, así que ya
+mientras lees ves lo que hay ahora mismo:
 
 - **[Taron](ref:phantasialand/taron)**, el corazón del parque, y para mí la mejor
   montaña rusa de lanzamiento de Alemania (se puede discutir; yo no lo hago). Dos
@@ -254,9 +245,8 @@ el público.** Desde que los abonos anuales desaparecieron y las entradas se
 tarifan de forma tan agresiva, en el parque se ha desplazado algo perceptible, y
 no lo digo solo en clave romántica. En el último par de años he notado bastante
 más **vandalismo** que en todos los años anteriores, en un lugar donde antes eso
-sencillamente no se conocía. Si hay una relación directa, no lo sé con seguridad.
-pero deseo con muchas ganas que mi parque de siempre ponga remedio. Se lo merece
-mejor, y nosotros los visitantes también.
+sencillamente no se conocía. Si hay una relación directa, no lo sé con
+seguridad, y cifras tampoco tengo. Me llama la atención igualmente.
 
 ## Tiempos de espera en Phantasialand: cuándo son más cortos
 
@@ -280,10 +270,10 @@ Un par de reglas de oro que casi siempre se cumplen:
 
 La intuición es aquí un mal consejero en cuanto se solapan el calendario de
 vacaciones, el tiempo y los horarios de apertura. Justo para eso está hecho
-park.fan. El calendario de los mejores días de visita condensa todo eso más el
-historial completo de tiempos de espera del parque en un único color,
-maravillosamente simple, verde, amarillo, rojo. Aquí están los próximos días más
-tranquilos para el Phantasialand:
+park.fan. El calendario de los mejores días de visita convierte todo eso, junto
+con el historial de tiempos de espera del parque, en un color por día: verde,
+amarillo o rojo. Aquí están los próximos días más tranquilos para el
+Phantasialand:
 
 ```best-days-widget slug=phantasialand
 
@@ -297,11 +287,10 @@ esta mirada a las dos últimas temporadas:
 
 ```
 
-La respuesta correcta a «¿cuándo voy?» nunca es «los domingos están llenos», sino
-siempre: **este** domingo, en **este** mes, con **este** tiempo. Abrir el
-calendario, mirar el color, reservar la entrada para el día verde, ahí está la
-mitad de la magia, y te ahorra más tiempo de vida que cualquier truco dentro del
-parque.
+«Los domingos están llenos» no te sirve de nada. El 12 de octubre en el
+Phantasialand con lluvia, sí. Por eso el calendario da un valor por día y no una
+regla por día de la semana, y por eso conviene reservar la entrada después de
+haber mirado ahí.
 
 ## Quick Pass: el nuevo concepto, Single Ride y Ultimate
 
@@ -385,16 +374,15 @@ En ningún otro parque destacaría esto así: el Phantasialand merece
 el viaje también por la **comida**. Mientras que en muchos parques «comer» es
 sinónimo de patatas fritas tibias a precio de oro, aquí la gastronomía forma parte
 firme de la experiencia, con un esmero que por lo demás solo se conoce de
-restaurantes de verdad. Un par de direcciones son auténticos tesoros escondidos por
-los que ya vale la pena la visita:
+restaurantes de verdad. Tres direcciones, las que le doy a todo el que me
+pregunta:
 
-- **Rutmor’s Taverne** (Klugheim) es mi favorito, y no conozco a nadie que lo contradiga después de comer ahí. El mejor
-  restaurante que se haya construido jamás en un parque de atracciones. A la carta,
-  rústico hasta en los bancos de madera tallada, con cocina contundente, Spätzle,
-  Schnitzel, patatas salteadas, además de sopas y tablas para compartir y un
-  Kaiserschmarrn que te hace olvidar por un momento que fuera te espera una montaña
-  rusa. Servicio amable. Si en un día de parque
-  quieres sentarte y comer de verdad una vez: aquí.
+- **Rutmor’s Taverne** (Klugheim) es mi favorito, y no conozco a nadie que lo
+  contradiga después de haber comido ahí. A la carta, rústico hasta en los bancos
+  de madera tallada, con cocina contundente, Spätzle, Schnitzel, patatas
+  salteadas, además de sopas y tablas para compartir y un Kaiserschmarrn que te
+  hace olvidar por un momento que fuera te espera una montaña rusa. Si en un día
+  de parque quieres sentarte y comer de verdad una vez: aquí.
 - **Restaurant Uhrwerk** (Rookburgh) es el hermano steampunk del anterior.
   hamburguesas, patatas fritas caseras, pasta y bowls, en un decorado de engranajes
   y latón, con vistas a [F.L.Y.](ref:phantasialand/fly). Pequeño secreto: por la
@@ -411,8 +399,8 @@ atracción.
 
 Y el consejo de comida más importante es el mismo que para las colas: **a
 contracorriente.** Come hacia las 11:30 o después de las 14:30, así montas en las
-colas cortas durante la hora punta y te sientas tranquilo en el restaurante cuando
-toca montar. Dos pájaros de un tiro, y una barriga contenta. (Y si vienes en
+colas cortas durante la hora punta y te sientas en el restaurante mientras los
+demás hacen cola. (Y si vienes en
 invierno, en el Wintertraum te espera aún una delicia muy
 propia.)
 
@@ -504,8 +492,7 @@ favorita de despedir un año de parque, hay pocas cosas con más ambiente.
 Y luego está la **comida que solo existe en invierno.** El Wintertraum saca cada
 año especialidades, mi número uno secreto son los **flat croissants**: prensados y
 crujientes, maravillosamente mantecosos y, en efecto, disponibles solo en la
-temporada de invierno. Con un vaso de vino caliente al lado, el día de parque más
-frío se vuelve el más acogedor.
+temporada de invierno.
 
 Y mi consejo Wintertraum favorito de todos: **Taron en la oscuridad.** En invierno
 oscurece pronto, y lanzarte entonces por el Klugheim iluminado, cuando las

@@ -63,7 +63,7 @@ mediaan van de dagpieken: op de helft van alle gemeten dagen was de langste rij
 korter dan die waarde, op de andere helft langer. **Druk** is het 90e percentiel
 van dezelfde reeks, ongeveer die ene dag op tien waarop het echt vol was.
 
-Allebei zijn het percentielen en geen gemiddelden, en dat is geen detail. Een
+Allebei zijn het percentielen en geen gemiddelden. Een
 gemiddelde laat zich door één uitzonderlijke dag verschuiven: een middag met een
 storing en 150 minuten opstopping trekt het gemiddelde van een hele maand
 omhoog, terwijl er op 29 dagen niets van te merken was. De mediaan verroert zich
@@ -107,7 +107,7 @@ pagina van elke attractie, met een concrete tijd in parktijd.
 
 ## Het meeste beslis je voor vertrek
 
-Het tijdstip levert je een half uur op. De datum levert je de dag op. Tussen
+Het tijdstip levert je een half uur op, de datum tot een heel uur. Tussen
 twee dagen van dezelfde vakantieweek kan een half uur gemiddelde wachttijd
 zitten, en aan een gewone kalender zie je dat niet. Wat het verschil maakt:
 welke regio’s vrij hebben, of er een brugdag aan vastzit, of het regent, en of
@@ -142,10 +142,6 @@ historie, en de twee daarvoor zijn voorgoed weg.
 
 ## En de plekken waar we niets zeggen
 
-Een pagina vol ingevulde velden is makkelijk te bouwen. Ze wordt pas interessant
-als je de ingevulde velden kunt vertrouwen, en daarvoor moeten een paar velden
-leeg mogen blijven.
-
 [Hansa-Park](ref:hansa-park) bijvoorbeeld geeft zijn wachttijden alleen in de eigen app, en alleen
 voor apparaten op de wifi van het park. Er is geen openbare interface. In de
 ruwe data ziet dit park eruit als elk ander park om drie uur ’s nachts: geen
@@ -172,7 +168,6 @@ we bewust niets beweren. Vier concrete bezoeksituaties zitten er ook bij, van
 het gezin in de herfstvakantie tot de jaarkaarthouder om zeven uur ’s avonds.
 
 En als je de volgende keer bij de ingang staat en naar dat getal staart: kijk na
-wat bij deze attractie op een dinsdag normaal is. Dan weet je binnen tien
-seconden of je je moet ergeren of dat het gewoon dinsdag is.
+wat bij deze attractie op een dinsdag normaal is.
 
 — Patrick

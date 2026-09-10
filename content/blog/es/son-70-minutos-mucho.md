@@ -64,7 +64,7 @@ larga fue más corta que ese valor, en la otra mitad más larga. **Lleno** es el
 percentil 90 de la misma serie, aproximadamente ese día de cada diez en que
 había de verdad gente.
 
-Los dos son percentiles y no promedios, y eso no es un detalle. Una media se
+Los dos son percentiles y no promedios. Una media se
 deja mover por un único día excepcional: una tarde con avería y 150 minutos de
 atasco tira hacia arriba del promedio de un mes entero, aunque durante 29 días
 no se notara nada. La mediana no se inmuta ante un día así. Por eso el récord
@@ -107,7 +107,7 @@ están en la página de cada atracción, con una hora concreta en hora del parqu
 
 ## Lo más importante se decide antes de salir
 
-La hora te salva media hora. La fecha te salva el día. Entre dos días de la
+La hora te ahorra media hora, la fecha hasta una entera. Entre dos días de la
 misma semana de vacaciones puede haber media hora de espera media de diferencia,
 y en un calendario corriente no se ve. Lo que marca la diferencia: qué regiones
 están de vacaciones, si hay un puente pegado, si llueve y si al otro lado de la
@@ -142,10 +142,6 @@ historial, y los dos anteriores se han perdido para siempre.
 
 ## Y los sitios donde no decimos nada
 
-Una página con todos los campos rellenos es fácil de construir. Solo se vuelve
-interesante cuando se puede confiar en los campos rellenos, y para eso unos
-cuantos campos tienen que poder quedarse vacíos.
-
 [Hansa-Park](ref:hansa-park), por ejemplo, publica sus tiempos de espera solo en su propia
 aplicación y únicamente para dispositivos conectados a la wifi del parque. No
 hay ninguna interfaz pública. En los datos en bruto este parque se ve como
@@ -173,7 +169,6 @@ concretas, desde la familia en las vacaciones de otoño hasta el del pase anual 
 las siete de la tarde.
 
 Y la próxima vez que estés en la entrada mirando el panel: consulta qué es
-normal en esa atracción un martes. En diez segundos sabrás si toca enfadarse o
-si hoy simplemente es martes.
+normal en esa atracción un martes.
 
 — Patrick

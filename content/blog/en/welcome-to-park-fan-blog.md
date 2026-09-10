@@ -258,8 +258,8 @@ So we go a few steps further:
   to take my word for it, you can look it up on the [Fancast page](/fancast).
 - **Everything in one place.** Wait times, crowd levels, weather at the park
   entrance, opening hours and attraction histories, in six languages.
-- **Free and without ads.** No corporation, no paywall. A fan site in the best
-  sense of the word, built by somebody who queues up himself.
+- **Free and without ads.** No corporation, no paywall, built by somebody who
+  queues up himself.
 
 ## What this blog is meant to be
 

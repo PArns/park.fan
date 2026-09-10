@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: "hard gaan", Untamed en 20 minuten wachten'
+title: 'Walibi Holland: "hard gaan", Untamed en de polder waar hij op staat'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-08-19'
@@ -9,7 +9,8 @@ featured: false
 excerpt: >-
   Walibi Holland staat op land dat in 1957 nog onder water lag, adverteert al
   twaalf jaar met een woord uit de hardstylescene en heeft met Untamed een van
-  de beste achtbanen van Europa, waarvoor je doorgaans 20 minuten wacht. Over
+  de beste achtbanen van Europa, waarvoor je op een normale dag nauwelijks
+  wacht. Over
   een park dat bezoekers stelselmatig verkeerd inschatten, over de
   Halloween-experiences waar mensen vrijwillig voor betalen, en over het
   kerstevenement dat het park zojuist heeft geschrapt.
@@ -54,7 +55,7 @@ seo:
 
 De grond waar Untamed op staat, lag in 1957 nog onder water.
 
-Dat is geen metafoor. Op 29 juni 1957 viel Oostelijk Flevoland droog, in 1963
+Op 29 juni 1957 viel Oostelijk Flevoland droog, in 1963
 werd in deze polder het dorp Biddinghuizen gesticht, en het ligt tot op vandaag
 zo’n drie meter onder zeeniveau. Als je boven op de lifthill van
 [Untamed](ref:walibi-holland/untamed) zit, hang je 36,5 meter boven een akker
@@ -210,7 +211,7 @@ het is bijna Halloween."
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Een rempedaal is dat nog niet. Maar iemand is gaan kijken waar het zit.
+Klachten waren er in 2026 tot nu toe niet.
 
 ## Untamed
 
@@ -447,11 +448,11 @@ spanning loopt door alles wat het park de afgelopen twee jaar heeft besloten.
 
 ```
 
-## Twintig minuten voor de beste baan van het park
+## Wat Untamed echt kost
 
 Over de laatste twee seizoenen, berekend uit **meer dan 130 openingsdagen met bruikbare
-wachttijddata**, ligt de **typische wachttijd in het parkgemiddelde op 20
-minuten** (mediaan). Het 90e percentiel, de waarde waar negen van de tien
+wachttijddata**, ligt de **typische wachttijd in het parkgemiddelde op een klein
+kwartier** (mediaan). Het 90e percentiel, de waarde waar negen van de tien
 metingen onder blijven, komt op 31 minuten.
 
 Per baan ziet het er zo uit:
@@ -914,7 +915,8 @@ station van Untamed met de waterval en de letters boven de lifthill: daar blijf
 je staan en haal je de camera tevoorschijn, en dat hoeft zich noch voor Disney
 noch voor Phantasialand te verstoppen.
 
-Twintig minuten. Dat is de prijs voor Untamed op een normale dag.
+Untamed kost je op een normale dag minder aanschuiven dan welke baan in zijn
+klasse in NRW ook.
 
 Rijd dat extra uur. En als je boven op de lifthill zit en over die vlakke,
 rechte, volstrekt kunstmatige polder kijkt, denk dan even aan het feit dat hier

@@ -47,9 +47,8 @@ seo:
 
 Het plan in je hoofd houdt het tot een uur of twee ’s middags. Tegen die tijd
 heb je drie van de acht attracties gedaan, sta je in de verkeerde rij en weet je
-dat het niet meer gaat lukken. Het getal boven de ingang klopt al die tijd. Het
-klopt bijna altijd. Het zegt alleen niets over de vraag of de rest van je
-lijstje vandaag nog gebeurt.
+dat het niet meer gaat lukken. Het getal boven de ingang klopt al die tijd. Over
+de rest van je lijstje staat er niets.
 
 In een compact park kost je dat één attractie, en die doe je de volgende keer.
 In een park dat om acht uur ’s ochtends opengaat en pas om elf uur ’s avonds
@@ -61,7 +60,7 @@ afgevinkt. Niet omdat het te druk was, maar omdat de volgorde verkeerd was.
 
 Precies dat gat had park.fan. “Hoe lang is de rij nu” beantwoorden we sinds dag
 één. “Is dat veel voor een dinsdag” sinds
-[vorige zomer](/blog/is-70-minuten-veel). De derde vraag stond nergens: komt
+[twee weken](/blog/is-70-minuten-veel). De derde vraag stond nergens: komt
 mijn dag zo eigenlijk wel uit?
 
 Sinds deze week staat hij er. De [dagplanner](/dagplanner) legt je attracties op
@@ -78,10 +77,9 @@ Tussen twee blokken staat de overstap: hoe ver het is en of de tijd toereikend
 is. De weg uit het station en de rit zelf zitten in die tussenruimte en niet in
 het blok, omdat ze bij het overstappen horen en niet bij het wachten.
 
-Klinkt als een detail, en het verandert hoe je naar een parkdag kijkt. Een
-lijstje met acht attracties zegt niets over de vraag of er die dag acht in
-passen. Acht blokken op een tijdlijn die om elf uur ’s avonds eindigt, zeggen
-het meteen.
+Klinkt als een detail, en het verandert hoe je naar een parkdag kijkt. Acht
+attracties op een lijstje zijn een voornemen. Acht blokken op een tijdlijn die
+om elf uur ’s avonds eindigt, zijn een rekensom.
 
 ![De dagplanner met een geplande dag in Magic Kingdom: tien blokken op een tijdlijn vanaf 8 uur, met daartussen de overstap met afstand en looptijd. | Tien attracties op een zaterdag in september, in deze volgorde door de planner zelf gezet.](/media/tagesplaner/planer-tag-nl.webp)
 
@@ -198,7 +196,7 @@ middag” en “ga alsjeblieft weer achteraan in de rij staan”. Wie om twee uu
 de knop drukt, staat om twee uur in een of andere rij, en die verschuift
 niemand meer.
 
-En omdat zo’n druk op de knop van drie blokken elf kan maken, staat er naast de
+En omdat zo’n druk op de knop van drie blokken elf kan maken, hoort er bij de
 uitkomst een ongedaan maken. Eén keer, niet onbeperkt, maar die ene keer die je
 nodig hebt.
 
@@ -209,15 +207,15 @@ beweert dan hij zou kunnen.
 
 **De voorspelling zit ernaast, en meetbaar ook.** Bij elk geselecteerd blok
 staat hoe ver de voorspellingen voor die attractie gemiddeld af lagen van wat de
-dag werkelijk bracht. “Typisch” betekent daarbij letterlijk wat het zegt: de
-helft van de dagen ligt er verder naast. Daarom staat het getal er als typische
+dag werkelijk bracht. “Typisch” betekent hier: de helft van de dagen ligt er
+verder naast. Daarom staat het getal er als typische
 fout en nooit als marge waarin het juiste antwoord al zou zitten.
 
 **Speeltijden zijn twee dingen.** Wat het park voor vandaag heeft gepubliceerd,
 is een mededeling. Wat wij van de laatste passende weekdag hebben doorgetrokken,
 is een vermoeden, en dat tekent de planner zachter: met een tilde voor de tijd,
-een stippellijn en de datum waar de tijden vandaan komen. Niemand ter wereld
-kent speeltijden voor de zaterdag over twee weken.
+een stippellijn en de datum waar de tijden vandaan komen. Speeltijden voor de
+zaterdag over twee weken kent niemand, wij ook niet.
 
 **Sommige parken kunnen we helemaal niet meten.** [Hansa-Park](ref:hansa-park)
 geeft zijn wachttijden alleen in de eigen app op de wifi van het park. Bij ons
@@ -235,7 +233,7 @@ registratie, en dat je om één uur echt in die rij stond, is de reden dat hij
 
 ## Hij ligt in je browser
 
-Er is geen account, geen registratie en geen login. Je plan ligt in je browser,
+Je meldt je nergens aan. Je plan ligt in je browser,
 en dat is de standaard, niet de uitgeklede versie. Ruim je je browsergegevens
 op, dan is hij weg. Open je park.fan op je telefoon, dan is het een ander plan.
 

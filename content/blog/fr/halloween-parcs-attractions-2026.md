@@ -602,29 +602,16 @@ statistique le fournit dans la foulée :
 
 ```
 
-## Conclusion : six semaines de frissons, pour tous les niveaux de nerfs
+## Quand y aller
 
-La saison Halloween 2026 a de quoi satisfaire tous les seuils de douleur : le
-volume pur au [Movie Park](ref:movie-park-germany) avec neuf mazes, la grande
-mise en scène de [Traumatica](ref:europa-park), le cinéma à parcourir de
-[Bobbejaanland](ref:bobbejaanland), le champ de maïs tout neuf de
-[Toverland](ref:attractiepark-toverland), et, pour les plus courageux, les
-[Walibi-Experiences](ref:walibi-holland) où l’on paie volontairement pour se
-faire tamponner, inonder et ouvrir. En contrepoint, l’automne silencieux et
-distingué de l’[Efteling](ref:efteling) et un
-[Phantasialand](ref:phantasialand) qui saute Halloween d’un haussement d’épaules
-et préfère enclencher directement la neige.
+Le niveau de nerfs que vous choisissez ne regarde que vous. Les week-ends
+d’octobre sont les jours les plus chargés de l’automne, et dans une file,
+personne ne vous saute dessus, c’est garanti, ce qui à ces prix-là est agaçant.
+Quel jour est le plus vide, les temps d’attente en direct et le calendrier
+d’affluence sur park.fan vous le disent, tout l’automne.
 
-Le niveau de nerfs que vous choisissez ne regarde que vous. Une seule chose vaut
-pour tous : la meilleure soirée d’Halloween est celle où vous ne passez pas la
-moitié du temps dans la file. Là, personne ne vous saute dessus, c’est garanti,
-et à ces prix-là c’est presque un affront. Quel jour est le plus vide, les temps
-d’attente en direct et le calendrier d’affluence sur park.fan vous le disent,
-tout l’automne.
-
-Restez au sec (mot-clé Below), restez en mouvement (mot-clé maïs), et si quelque
-chose vous saute dessus dans la brume : ce n’est qu’un élément du spectacle.
-Presque sûrement.
+Qui réserve Below emporte des chaussettes de rechange. Une fois, je ne l’ai pas
+fait.
 
 — Patrick
 

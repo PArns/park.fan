@@ -296,7 +296,7 @@ the Mediterrània area, the Three Kings parade, the night Spanish children get
 their presents.
 
 A warning that comes from our own measurements: of all the parks in this
-article, PortAventura has the longest queues, and that holds across the whole
+overview, PortAventura has the longest queues, and that holds across the whole
 year rather than just at Christmas. The table further down puts them side by
 side. Expecting an empty season because it is winter where you live means
 planning for the wrong country.
