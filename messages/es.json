@@ -355,7 +355,9 @@
       "r6": {
         "title": "Datos que explican algo",
         "text": "Diccionario, guías de parques y análisis en el blog. Por qué un parque está vacío en noviembre y lleno en octubre está explicado en un artículo."
-      }
+      },
+      "howtoLink": "Cómo funciona park.fan",
+      "fancastLink": "Fancast, nuestro modelo de predicción"
     },
     "founder": {
       "kicker": "La persona detrás",
@@ -1626,7 +1628,8 @@
       "outOfSeason": "Solo en invierno",
       "retired": "Retirada",
       "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
-      "todayOnly": "Solo es válido para hoy: para otro día de visita hay que configurarlo de nuevo."
+      "todayOnly": "Solo es válido para hoy: para otro día de visita hay que configurarlo de nuevo.",
+      "loadError": "No se pudieron cargar tus avisos."
     },
     "overview": {
       "title": "Mis avisos",

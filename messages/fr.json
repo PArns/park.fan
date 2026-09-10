@@ -355,7 +355,9 @@
       "r6": {
         "title": "Des données qui expliquent",
         "text": "Dictionnaire, guides de parcs et analyses de données sur le blog. Pourquoi un parc est vide en novembre et plein en octobre, c’est un article."
-      }
+      },
+      "howtoLink": "Comment fonctionne park.fan",
+      "fancastLink": "Fancast, notre modèle de prévision"
     },
     "founder": {
       "kicker": "L’humain derrière",
@@ -1626,7 +1628,8 @@
       "outOfSeason": "Hiver uniquement",
       "retired": "Démonté",
       "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
-      "todayOnly": "Valable pour aujourd’hui seulement – à configurer de nouveau pour un autre jour de visite."
+      "todayOnly": "Valable pour aujourd’hui seulement – à configurer de nouveau pour un autre jour de visite.",
+      "loadError": "Impossible de charger vos alertes."
     },
     "overview": {
       "title": "Mes alertes",

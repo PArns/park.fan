@@ -355,7 +355,9 @@
       "r6": {
         "title": "Daten, die etwas erklären",
         "text": "Wörterbuch, Park-Guides und Datenanalysen im Blog. Warum ein Park im November leer ist und im Oktober voll, steht als Artikel da."
-      }
+      },
+      "howtoLink": "So funktioniert park.fan",
+      "fancastLink": "Fancast, unser Prognosemodell"
     },
     "founder": {
       "kicker": "Der Mensch dahinter",
@@ -1626,7 +1628,8 @@
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
-      "todayOnly": "Gilt nur für den heutigen Tag – für einen anderen Besuchstag muss der Alarm neu eingerichtet werden."
+      "todayOnly": "Gilt nur für den heutigen Tag – für einen anderen Besuchstag muss der Alarm neu eingerichtet werden.",
+      "loadError": "Die Alarme konnten nicht geladen werden."
     },
     "overview": {
       "title": "Meine Alarme",

@@ -355,7 +355,9 @@
       "r6": {
         "title": "Data die iets verklaart",
         "text": "Woordenboek, parkgidsen en data-analyses op de blog. Waarom een park in november leeg is en in oktober vol, staat als artikel uitgeschreven."
-      }
+      },
+      "howtoLink": "Zo werkt park.fan",
+      "fancastLink": "Fancast, ons voorspelmodel"
     },
     "founder": {
       "kicker": "De mens erachter",
@@ -1626,7 +1628,8 @@
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
-      "todayOnly": "Geldt alleen voor vandaag – voor een andere bezoekdag moet de melding opnieuw worden ingesteld."
+      "todayOnly": "Geldt alleen voor vandaag – voor een andere bezoekdag moet de melding opnieuw worden ingesteld.",
+      "loadError": "De meldingen konden niet worden geladen."
     },
     "overview": {
       "title": "Mijn meldingen",
