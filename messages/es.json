@@ -119,7 +119,7 @@
       "liveNow": "Parques abiertos en el mundo",
       "liveNowIntro": "Número de parques temáticos abiertos por continente en tiempo real.",
       "featuredParks": "Parques populares",
-      "featuredParksIntro": "Los seis parques más buscados en tu idioma, con tiempos de espera en vivo y previsión de afluencia."
+      "featuredParksIntro": "Seis parques conocidos para empezar, con tiempos de espera en vivo y previsión de afluencia."
     },
     "ai": {
       "title": "Qué precisión tienen nuestras predicciones",
@@ -140,7 +140,7 @@
       "dailySchedule": "Diariamente · 06:00 UTC",
       "dailyScheduleLocal": "Diariamente · 06:00 UTC · {time} hora local",
       "howTitle": "Cómo se generan las predicciones",
-      "howText": "Cada predicción se apoya en tres capas: el historial de tiempos de espera medidos en el parque; las señales externas, como la previsión meteorológica, las vacaciones escolares y los festivos; y lo que ese día haya en el parque, es decir, eventos especiales y temporada. Con eso el modelo calcula el tiempo de espera previsto de cada atracción hora por hora y lo resume en el nivel de afluencia del día, hasta 365 días por delante.",
+      "howText": "Cada predicción se apoya en tres capas: el historial de tiempos de espera medidos en el parque; las señales externas, como la previsión meteorológica, las vacaciones escolares y los festivos; y lo que ese día haya en el parque, es decir, eventos especiales y temporada. Con eso el modelo calcula el tiempo de espera previsto de cada atracción hora por hora y lo resume en el nivel de afluencia del día, hasta donde el parque tenga publicado su horario.",
       "fancastLink": "Cómo funciona Fancast, nuestro modelo de predicción",
       "improvingTitle": "Cada predicción se comprueba al día siguiente",
       "improvingText": "Al día siguiente de cada predicción, el sistema la compara con el tiempo de espera realmente medido y pasa la diferencia al siguiente entrenamiento. Las cifras de arriba salen de esa comparación, no de un conjunto de prueba preparado por nosotros.",
@@ -175,7 +175,7 @@
       },
       "two": {
         "title": "Comprueba el día",
-        "text": "El calendario de afluencia puntúa cada día hasta 365 días por delante: verde son colas cortas, rojo son pasillos llenos y rodeos largos.",
+        "text": "El calendario de afluencia puntúa cada día que el parque ya tiene publicado: verde son colas cortas, rojo son pasillos llenos y rodeos largos.",
         "tip": "Dos días seguidos suelen ser dos parques distintos. Si puedes elegir la fecha, mira la semana anterior y la siguiente antes de reservar.",
         "legendLow": "poca gente",
         "caption": "Un mes del calendario: una casilla por día, el color es la afluencia prevista."
@@ -227,7 +227,7 @@
     "calendar": {
       "kicker": "Calendario de afluencia",
       "title": "¿Día verde o día rojo?",
-      "lead": "Antes de reservar el hotel: el calendario puntúa cada día, hasta 365 días por delante. De dónde sale el color de un día está explicado más abajo.",
+      "lead": "Antes de reservar el hotel: el calendario puntúa cada día que el parque ya tiene publicado. De dónde sale el color de un día está explicado más abajo.",
       "pipelineTitle": "De la medición al color del día",
       "pipelineLead": "Cuatro pasos, rehechos cada noche. Lo que acaba en el calendario como día verde o rojo ha recorrido este camino.",
       "p1": {
@@ -258,7 +258,7 @@
     "ai": {
       "kicker": "Nuestra IA",
       "title": "Una previsión propia, con la desviación al lado",
-      "lead": "Predecir tiempos de espera es la parte difícil, y la mayoría de los sitios la esquiva. park.fan la aborda con Fancast, un modelo propio, reentrenado cada noche, hasta 365 días por delante.",
+      "lead": "Predecir tiempos de espera es la parte difícil, y la mayoría de los sitios la esquiva. park.fan la aborda con Fancast, un modelo propio, reentrenado cada noche.",
       "compareTitle": "Cómo predicen otras webs de esperas",
       "compareLead": "Hay tres enfoques habituales, y los tres comparten el mismo punto ciego: nadie dice cuánto se equivocó la previsión.",
       "c1": {
@@ -536,7 +536,7 @@
     "holidaysLabel": "Vacaciones y festivos",
     "tileAttractions": "<b>{open}</b> abiertas · <b>{avg} min</b> de media",
     "tileAttractionsHeadliner": "Estrella desde <b>{min} min</b>",
-    "tileCalendar": "Mejores días, hasta un año antes",
+    "tileCalendar": "Mejores días, hasta donde llega el horario",
     "tileCalendarQuietDay": "Día más tranquilo: <b>{day}</b> ({days, plural, =0 {hoy} =1 {mañana} other {en # días}})",
     "tileMap": "Tiempos de espera en el plano · <b>{lands}</b> áreas temáticas",
     "tileMapPlain": "Tiempos de espera en el plano",
@@ -881,7 +881,7 @@
     "influencingHolidaysShort": "Regiones cercanas",
     "stats": {
       "title": "Estadísticas históricas de tiempos de espera",
-      "subtitle": "Basado en {days} días de datos registrados · Últimos {years} años",
+      "subtitle": "Basado en {days} días de apertura medidos",
       "byMonthTitle": "Afluencia media por mes",
       "byDowTitle": "Afluencia media por día de la semana",
       "topAttractionsTitle": "Atracciones con colas más largas de media",
@@ -1518,7 +1518,7 @@
       "diningQ": "¿Qué opciones gastronómicas hay en {park}?",
       "diningA": "{park} ofrece {count} restaurantes y puestos de comida:",
       "crowdCalendarQ": "¿Tiene {park} un calendario de afluencia?",
-      "crowdCalendarA": "Sí. El calendario de afluencia de {park} valora cada día por separado y, en los parques abiertos todo el año, llega hasta un año por delante. Los días verdes son de colas cortas; los rojos, de colas largas.",
+      "crowdCalendarA": "Sí. El calendario de afluencia de {park} valora cada día por separado, hasta donde el parque tenga publicado su horario. Los días verdes son de colas cortas; los rojos, de colas largas.",
       "leastCrowdedQ": "¿Cuándo hay menos afluencia en {park}?",
       "leastCrowdedA": "{park} suele estar más tranquilo los {days}. Consulta el <calendar>calendario de afluencia</calendar> arriba para los próximos días tranquilos y planifica tu visita en consecuencia.",
       "leastCrowdedNoDataA": "Consulta el <calendar>calendario de afluencia</calendar> en esta página para los próximos días tranquilos. Los días verdes indican colas cortas y menos visitantes.",
@@ -1543,7 +1543,7 @@
         "whichParksQ": "¿Qué parques temáticos son compatibles con park.fan?",
         "whichParksA": "park.fan cubre más de 200 parques temáticos en todo el mundo, entre ellos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland y Bobbejaanland. La lista completa con tiempos de espera en vivo está en la página general de parques.",
         "liveDataQ": "¿Los tiempos de espera en park.fan son en vivo y en tiempo real?",
-        "liveDataA": "Sí. Cada parque se consulta cada cinco minutos desde tres fuentes públicas a la vez: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Si dos fuentes discrepan, decide la mayoría, después la mediana y después la media. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
+        "liveDataA": "Sí. Donde un parque publica sus tiempos de espera, los consultamos cada cinco minutos desde tres fuentes públicas a la vez: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Si dos fuentes discrepan, decide la mayoría, después la mediana y después la media. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
         "freeQ": "¿Es gratis usar park.fan?",
         "freeA": "Sí. Los tiempos de espera en vivo, los horarios de apertura, los espectáculos, los restaurantes y el calendario de afluencia se ven sin cuenta y sin muro de pago. No hay ninguna suscripción que dé acceso a más datos.",
         "favoritesQ": "¿Puedo guardar mis parques y atracciones favoritas en park.fan?",
@@ -1738,7 +1738,7 @@
   },
   "fancast": {
     "title": "Fancast – nuestro modelo de predicción de tiempos de espera",
-    "description": "Fancast es el modelo de IA de park.fan: predice la afluencia y los tiempos de espera con hasta 365 días de antelación y evalúa su precisión en abierto."
+    "description": "Fancast es el modelo de IA de park.fan: predice la afluencia y los tiempos de espera para cada día que un parque ya ha publicado, y evalúa su precisión en abierto."
   },
   "bestTime": {
     "title": "Mejor época para visitar parques temáticos",

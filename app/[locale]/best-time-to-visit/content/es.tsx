@@ -33,14 +33,14 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Los días laborables más tranquilos',
   weekdaysBody:
-    'Aquí cada parque cuenta lo mismo, sea Disneyland o un parque familiar pequeño: primero lo convertimos a su propia media y solo después promediamos. La barra indica lo lleno que está un día laborable típico frente a esa media. De martes a jueves ganan casi siempre.',
+    'Aquí cada parque cuenta lo mismo, sea Disneyland o un parque familiar pequeño: primero lo convertimos a su propia media y solo después promediamos. La barra indica lo lleno que está un día laborable típico frente a esa media. El sábado destaca; los otros seis días están más juntos de lo que casi nadie espera.',
   monthsTitle: 'Los meses más tranquilos',
   monthsBody:
-    'El mismo cálculo a lo largo del año: los meses de temporada baja están notablemente más vacíos que los picos del verano y las vacaciones.',
+    'El mismo cálculo, esta vez repartido por el año. Diciembre se sale del cuadro, porque ahí solo entran los parques que abren en invierno, y esos van con programa navideño.',
   quieter: 'más tranquilo',
   busier: 'más lleno',
   typical: 'cerca de la media',
-  footnote: 'Basado en {days} días-parque de {parks} parques, últimos {months} meses.',
+  footnote: 'Basado en {days} días-parque medidos de {parks} parques.',
   pending:
     'La clasificación en vivo aún está recopilando tiempos de espera. Los días más tranquilos aparecerán aquí en cuanto haya datos suficientes.',
 };
@@ -49,17 +49,17 @@ const FAQ = [
   {
     question: '¿Cuál es la mejor época para visitar un parque de atracciones?',
     answer:
-      'Lo más tranquilo son los días laborables fuera de las vacaciones escolares, y de ellos el martes, el miércoles y el jueves en temporada baja. Los patrones exactos por día de la semana y por mes están arriba, sacados de los tiempos de espera reales de todos los parques.',
+      'Lo más tranquilo son los días laborables fuera de las vacaciones escolares, y de ellos el martes, el miércoles y el jueves. Los patrones exactos por día de la semana y por mes están arriba, sacados de los tiempos de espera medidos en todos los parques.',
   },
   {
     question: '¿Qué día de la semana está menos concurrido?',
     answer:
-      'Promediado entre todos los parques, el martes, el miércoles y el jueves son los más tranquilos, mientras que el sábado y el domingo son claramente los más concurridos. En un parque concreto puede ser otro: el calendario de afluencia de su página lo muestra día a día.',
+      'Promediado entre todos los parques, el martes, el miércoles y el jueves son los más tranquilos. Sobresale un solo día lleno, el sábado; el domingo queda más cerca del martes que del sábado. En un parque concreto puede ser otro: el calendario de afluencia de su página lo muestra día a día.',
   },
   {
     question: '¿En qué meses están menos concurridos los parques de atracciones?',
     answer:
-      'Los meses de temporada baja, lejos de los picos del verano y los festivos, son los más vacíos. El resumen mensual de arriba muestra la afluencia relativa a lo largo del año, promediada entre todos los parques.',
+      'Depende del parque más de lo que sugiere la regla general: promediados todos los parques, los meses de verano no son los más llenos, y diciembre sobresale por arriba, porque en invierno solo abren los parques con programa navideño. El resumen mensual de arriba lo muestra mes a mes. Para un parque concreto cuenta su propio calendario.',
   },
   {
     question: '¿Merece la pena visitar con lluvia?',
@@ -69,7 +69,7 @@ const FAQ = [
   {
     question: '¿Cómo encuentro el mejor día para un parque concreto?',
     answer:
-      'Esta página muestra los patrones generales como punto de partida. Para un parque concreto, abre su calendario de afluencia: da para cada día, hasta un año por delante, una previsión verde, amarilla o roja, con las vacaciones escolares y los festivos de esa región incluidos.',
+      'Esta página muestra los patrones generales como punto de partida. Para un parque concreto, abre su calendario de afluencia: da para cada día publicado una previsión verde, amarilla o roja, con las vacaciones escolares y los festivos de esa región incluidos.',
   },
   {
     question: '¿De dónde salen estos datos?',
@@ -188,15 +188,15 @@ export function ContentES() {
           badge={<CrowdLevelBadge level="very_high" />}
         >
           La combinación punta clásica, un sábado de vacaciones en pleno verano, reúne casi todos
-          los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente: el mismo
-          parque, la mitad de cola.
+          los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente. El mismo parque
+          se siente completamente distinto.
         </SplitFigure>
         <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
               title: 'Fines de semana y festivos',
-              body: 'El sábado y el domingo son los más concurridos en todos los parques; los festivos y los puentes largos aprietan aún más.',
+              body: 'El sábado es el día más lleno en todos los parques, con distancia clara sobre el resto de la semana. Los festivos y los puentes largos aprietan aún más.',
             },
             {
               icon: CalendarRange,
@@ -230,7 +230,7 @@ export function ContentES() {
             {
               icon: CalendarDays,
               title: 'Entre semana antes que fin de semana',
-              body: 'La mayor palanca de todas: un martes en lugar de un sábado puede reducir a la mitad los tiempos de espera.',
+              body: 'La mayor palanca del calendario. Promediados todos los parques, el sábado es el día que más se aleja de la media por arriba y el martes el que más por abajo.',
             },
             {
               icon: CloudRain,
@@ -260,14 +260,14 @@ export function ContentES() {
       >
         <P>
           Los patrones de arriba son el punto de partida. El mejor día exacto está en el calendario
-          de afluencia de cada página de parque: verde, amarillo o rojo para cada día, hasta un año
-          por delante y con las vacaciones y los festivos de la región que toca.
+          de afluencia de cada página de parque: verde, amarillo o rojo para cada día publicado, con
+          las vacaciones y los festivos de la región que toca.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="La atracción del palacio Symbolica en Efteling"
           kicker="Verde, amarillo, rojo"
-          title="Un color por día, un año por delante"
+          title="Un color por día, hasta donde llega el horario"
           badge={<CrowdLevelBadge level="low" />}
         >
           Cada página de parque lleva una previsión día a día que incorpora las vacaciones escolares
@@ -281,7 +281,7 @@ export function ContentES() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Impulsado por Fancast"
-        body="Nuestro propio modelo de predicción estima la afluencia hasta 365 días por delante y se pone nota a sí mismo."
+        body="Nuestro propio modelo de predicción estima la afluencia para cada día publicado y se pone nota a sí mismo."
       />
 
       {/* 06 — FAQ */}

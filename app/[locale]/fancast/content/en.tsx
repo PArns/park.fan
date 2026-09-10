@@ -116,8 +116,8 @@ export function ContentEN() {
           open, on this page.
         </P>
         <Highlight>
-          Every forecast is set against the measured wait time the day after. What comes out of
-          that stands at the top of this page as MAE, RMSE and MAPE, good or bad.
+          Every forecast is set against the measured wait time the day after. What comes out of that
+          stands at the top of this page as MAE, RMSE and MAPE, good or bad.
         </Highlight>
       </div>
 

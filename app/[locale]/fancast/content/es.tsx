@@ -65,7 +65,7 @@ const FAQ = [
   {
     question: '¿Con cuánta antelación puede predecir Fancast?',
     answer:
-      'Fancast ofrece niveles de afluencia diarios para un parque hasta 365 días por adelantado. Para atracciones concretas produce además previsiones horarias del tiempo de espera. Cuanto más se acerca el día, más pesan las señales a corto plazo, como la previsión meteorológica.',
+      'Fancast ofrece niveles de afluencia diarios para cada día que un parque ya ha publicado. Para atracciones concretas produce además previsiones horarias del tiempo de espera. Cuanto más se acerca el día, más pesan las señales a corto plazo, como la previsión meteorológica.',
   },
   {
     question: '¿Cómo sabe Fancast que un sábado de vacaciones estará lleno?',
@@ -80,7 +80,7 @@ const FAQ = [
   {
     question: '¿Puedo usar Fancast para un parque y un día concretos?',
     answer:
-      'Sí. Cada página de parque en park.fan tiene un calendario de afluencia que te muestra, para cada día concreto hasta un año por delante, una previsión verde, amarilla o roja: desde Europa-Park hasta Phantasialand, Efteling o Walt Disney World. Además obtienes previsiones horarias del tiempo de espera para las atracciones concretas.',
+      'Sí. Cada página de parque en park.fan tiene un calendario de afluencia que te muestra, para cada día publicado, una previsión verde, amarilla o roja: desde Europa-Park hasta Phantasialand, Efteling o Walt Disney World. Además obtienes previsiones horarias del tiempo de espera para las atracciones concretas.',
   },
   {
     question: '¿Qué datos usa Fancast?',
@@ -347,7 +347,7 @@ export function ContentES() {
               body: (
                 <>
                   el <Link href="/parks">calendario de los mejores días para visitar</Link> en cada
-                  página de parque: verde, amarillo, rojo, hasta un año por delante.
+                  página de parque: verde, amarillo, rojo, hasta donde llega el horario.
                 </>
               ),
             },

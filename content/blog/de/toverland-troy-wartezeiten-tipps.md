@@ -137,9 +137,9 @@ nochmal.
 ## Was Troy wirklich kostet, über 150 Betriebstage gemessen
 
 Gerechnet aus über 150 Betriebstagen mit
-Wartezeit-Daten, liegt Troys **typische Wartezeit bei 16 Minuten** (Median).
-Selbst das 90. Perzentil, also der Wert, unter dem neun von zehn Messungen
-liegen, kommt nur auf **21 Minuten**. Das ist nicht der tote Dienstag im März,
+Wartezeit-Daten, liegt Troys typische Wartezeit bei **einer knappen
+Viertelstunde** (Median). Selbst an dem einen Tag von zehn, an dem am meisten los
+ist, bleibt sie unter einer halben Stunde. Das ist nicht der tote Dienstag im März,
 das ist der Schnitt über alle Öffnungstage.
 
 Siebzig Kilometer weiter nordwestlich steht im [Efteling](ref:efteling)
@@ -430,19 +430,16 @@ Nach Halloween macht der Park kurz zu und öffnet vom **28. November 2026 bis 17
 Schlittschuh- und Curlingbahn, mittwochs und an Wochenenden plus durchgehend über
 die Weihnachtsferien. Die Wasserattraktionen pausieren dann, dafür kommt die
 Weltpremiere dazu. Wunderschön, nur eben kein Geheimtipp mehr, sobald die Lichter
-an sind: Dezember und Januar sind in unseren Daten die anstrengendsten Monate des
-Jahres.
+an sind: Der Dezember gehört in unseren Daten zu den vollsten Monaten des Jahres.
 
 ## Wann du hinfahren solltest
 
 Die Antwort fällt entspannt aus: fast immer.
 
-**Nach Monat** ist der Juni das Optimum (typisch 18 Minuten im Parkschnitt),
-gefolgt von Mai und Juli mit 20 bzw. 22 Minuten. Am anstrengendsten ist der
-**April** mit 25 Minuten, wenn Ostern, Königstag und die niederländischen
-Maiferien zusammenfallen, danach die Winterwochen im **Dezember und Januar** mit
-31 bzw. 26 Minuten. Das überrascht viele: Der vollste Zeitraum ist nicht der
-Sommer, sondern die kurze, stark gefragte Wintersaison, in der nur ein Teil der
+**Nach Monat** liegen März bis Juli eng beieinander, und darüber heraus ragen
+der **August** und die Winterwochen im **Dezember**. Das überrascht viele: Der
+vollste Zeitraum ist nicht nur der Sommer, sondern auch die kurze, stark
+gefragte Wintersaison, in der nur ein Teil der
 Attraktionen läuft und der Park nur mittwochs und an Wochenenden öffnet. Eine
 Einschränkung dazu: Winter und Vorsaison haben so wenige Öffnungstage, dass
 hinter diesen Monatswerten deutlich weniger Messtage stehen als hinter den
@@ -556,8 +553,7 @@ Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten.
 ### Wie lang sind die Wartezeiten im Toverland?
 
 Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
-**20 Minuten**, Troy und Fēnix bei je **16 Minuten** im Median. Am höchsten sind
-die Werte im Dezember und Januar sowie im April. Aktuelle Zahlen findest du auf
+einer knappen Viertelstunde, und Troy und Fēnix liegen im selben Bereich. Aktuelle Zahlen findest du auf
 der [Toverland-Parkseite](ref:attractiepark-toverland).
 
 ### Wann ist im Toverland am wenigsten los?

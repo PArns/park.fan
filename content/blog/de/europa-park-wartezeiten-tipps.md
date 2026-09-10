@@ -85,11 +85,12 @@ Nach der Wintersaison wird die Bahn abgebaut. Der Park hat für den
 
 ![Der Haupteingang des Europa-Parks, an der Fassade hängen Länderflaggen | Der Haupteingang in Rust. Dahinter liegen 95 Hektar und 18 europäische Länder. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park Wartezeiten: 23 Minuten aus 174 gemessenen Öffnungstagen
+## Europa-Park Wartezeiten: eine knappe halbe Stunde im Schnitt
 
 Unsere Wartezeit-Historie für den Europa-Park beginnt im Dezember 2025 und ist seit April lückenlos. Über
-alle Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei 23
-Minuten** (Median), das 90. Perzentil bei 36.
+alle Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt bei **gut
+einer Viertelstunde** (Median); an dem einen Tag von zehn, an dem richtig etwas
+los ist, liegt sie deutlich darüber.
 
 Die zehn Attraktionen, an denen du am längsten stehst, mit dem Wert von heute
 daneben:
@@ -851,9 +852,8 @@ in der Variante GO seit 2026 auch im blue-fire-Dome.
 ### Wie lang sind die Wartezeiten im Europa-Park?
 
 Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
-**23 Minuten** (Median), das 90. Perzentil bei 36. Die längste Schlange hat
-Voltron Nevera mit typisch 34 Minuten, gefolgt von Arthur mit 31 sowie Wodan und
-Eurosat mit je 28. Was heute an der Schlange steht, siehst du bei den
+gut einer Viertelstunde (Median). Die längste Schlange hat Voltron Nevera,
+gefolgt von Arthur, Wodan und Eurosat. Was heute an der Schlange steht, siehst du bei den
 [aktuellen Europa-Park-Wartezeiten](ref:europa-park?bare), alle fünf Minuten
 aktualisiert und mit Prognose für die nächsten Tage.
 

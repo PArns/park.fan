@@ -6,7 +6,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Wait Time',
     shortDefinition: 'The estimated duration a guest must queue before boarding an attraction.',
     definition:
-      "Wait time (also called queue time) is the estimated duration a guest stands in line before boarding a ride or attraction. Parks post wait times at ride entrances and in their own apps, and work the figure out from queue length sensors, past throughput and how fast the ride is loading at that moment. park.fan re-reads the wait times every five minutes, for every attraction in a park.",
+      'Wait time (also called queue time) is the estimated duration a guest stands in line before boarding a ride or attraction. Parks post wait times at ride entrances and in their own apps, and work the figure out from queue length sensors, past throughput and how fast the ride is loading at that moment. park.fan re-reads the wait times every five minutes, for every attraction in a park.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Wait Times', 'queue time', 'queue times'],
   },
@@ -16,7 +16,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A separate, faster queue lane for guests willing to ride alone and fill odd empty seats.',
     definition:
-      "A single rider queue is for guests willing to be split from their group, and fills the odd seats left over in ride vehicles. Because single riders slot into those gaps instead of waiting for a whole row to come free, the lane moves faster than the standby queue, often cutting the wait by 50–70%. Not every park or attraction offers it, and whether a ride runs the lane on a given day is announced at its entrance and in the park app.",
+      'A single rider queue is for guests willing to be split from their group, and fills the odd seats left over in ride vehicles. Because single riders slot into those gaps instead of waiting for a whole row to come free, the lane moves faster than the standby queue, often cutting the wait by 50–70%. Not every park or attraction offers it, and whether a ride runs the lane on a given day is announced at its entrance and in the park app.',
     alternateNames: ['Single Rider Lane', 'Solo rider queue'],
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Single Riders'],
@@ -27,7 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A digital queuing system where guests reserve a timed return slot instead of waiting in a physical line.',
     definition:
-      "A virtual queue (sometimes called a boarding group or return time) lets guests sign up for a ride through the park app or a kiosk and get a notification when their turn is coming. Instead of standing in a physical queue you can be somewhere else in the park until your group is called. Parks use them for their highest-demand new attractions, where a physical queue would concentrate more people in one place than the walkways can hold. A virtual queue usually opens at a fixed time, often the moment the gates do, and can be full within minutes.",
+      'A virtual queue (sometimes called a boarding group or return time) lets guests sign up for a ride through the park app or a kiosk and get a notification when their turn is coming. Instead of standing in a physical queue you can be somewhere else in the park until your group is called. Parks use them for their highest-demand new attractions, where a physical queue would concentrate more people in one place than the walkways can hold. A virtual queue usually opens at a fixed time, often the moment the gates do, and can be full within minutes.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Virtual Queues'],
   },
@@ -37,7 +37,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A paid or included ticket upgrade granting access to a dedicated, shorter priority queue.',
     definition:
-      "An Express Pass (the exact name varies by park: Universal Express, Disney Lightning Lane, Six Flags Flash Pass) is a ticket upgrade that lets the holder use a separate priority entrance with much shorter waits. Some parks include express access in premium hotel packages; others sell it as a daily add-on at a price that climbs as the park fills. At Universal Studios parks the unlimited version can be used on the same attraction again and again through the day.",
+      'An Express Pass (the exact name varies by park: Universal Express, Disney Lightning Lane, Six Flags Flash Pass) is a ticket upgrade that lets the holder use a separate priority entrance with much shorter waits. Some parks include express access in premium hotel packages; others sell it as a daily add-on at a price that climbs as the park fills. At Universal Studios parks the unlimited version can be used on the same attraction again and again through the day.',
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
     aliases: ['Express Passes'],
   },
@@ -67,7 +67,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A day-by-day forecast of predicted crowd levels, helping guests find the quietest times to visit.',
     definition:
-      "A crowd calendar is a month or year view showing the predicted crowd level for each day at one park. park.fan builds its crowd calendars with models trained on the wait times it has recorded, cross-referenced with school holiday schedules across several countries, upcoming events, park operating hours and seasonal patterns. Green days mean low predicted attendance; orange and red days mark the busy ones.",
+      'A crowd calendar is a month or year view showing the predicted crowd level for each day at one park. park.fan builds its crowd calendars with models trained on the wait times it has recorded, cross-referenced with school holiday schedules across several countries, upcoming events, park operating hours and seasonal patterns. Green days mean low predicted attendance; orange and red days mark the busy ones.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
     aliases: ['crowd calendars'],
   },
@@ -86,7 +86,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A planned maintenance closure during which a ride or area undergoes repairs or upgrades.',
     definition:
-      "A refurbishment (enthusiasts usually shorten it to “rehab”) is a scheduled maintenance or renovation period during which a ride, show or area of the park is closed. It can run from a few days to several months and is normally planned for the off-season. Parks publish refurbishment schedules in advance, though the dates shift; Disney and Universal rotate the closures so that different attractions come out of service each year. park.fan marks attractions currently undergoing refurbishment.",
+      'A refurbishment (enthusiasts usually shorten it to “rehab”) is a scheduled maintenance or renovation period during which a ride, show or area of the park is closed. It can run from a few days to several months and is normally planned for the off-season. Parks publish refurbishment schedules in advance, though the dates shift; Disney and Universal rotate the closures so that different attractions come out of service each year. park.fan marks attractions currently undergoing refurbishment.',
     relatedTermIds: ['downtime', 'ride-capacity'],
     aliases: ['Refurbishments', 'refurb', 'refurbs'],
   },
@@ -96,7 +96,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An unplanned temporary closure of a ride, typically caused by a technical fault or safety check.',
     definition:
-      "Downtime is an unscheduled, temporary closure of a ride, as opposed to a planned refurbishment. The causes are mechanical faults, sensor errors, safety checks after a guest incident, weather (lightning above all) or an animal in the ride zone. Most of it is resolved within minutes to a couple of hours, though a complex mechanical failure can keep a ride shut for the rest of the day. park.fan shows the current operating status of every tracked attraction and tells Operating, Down, Closed and Refurbishment apart.",
+      'Downtime is an unscheduled, temporary closure of a ride, as opposed to a planned refurbishment. The causes are mechanical faults, sensor errors, safety checks after a guest incident, weather (lightning above all) or an animal in the ride zone. Most of it is resolved within minutes to a couple of hours, though a complex mechanical failure can keep a ride shut for the rest of the day. park.fan shows the current operating status of every tracked attraction and tells Operating, Down, Closed and Refurbishment apart.',
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
     aliases: ['Downtimes', 'ride downtime'],
   },
@@ -106,7 +106,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The number of guests an attraction can process per hour under normal operating conditions.',
     definition:
-      "Ride capacity, or throughput, is the number of guests a ride can carry per hour under good operating conditions. It follows from vehicle size, how many vehicles are running, how fast the station loads and unloads, and the length of the ride cycle. Carousels, log flumes and large dark rides move 1,500 to 2,000 guests an hour; a single-vehicle dark ride or a coaster running one train may manage 500 to 800. Capacity is what decides how fast a queue moves: a 30-minute wait at 1,800 an hour is clearing people three times faster than the same 30 minutes at 600. Parks add trains or vehicles on busy days for exactly that reason.",
+      'Ride capacity, or throughput, is the number of guests a ride can carry per hour under good operating conditions. It follows from vehicle size, how many vehicles are running, how fast the station loads and unloads, and the length of the ride cycle. Carousels, log flumes and large dark rides move 1,500 to 2,000 guests an hour; a single-vehicle dark ride or a coaster running one train may manage 500 to 800. Capacity is what decides how fast a queue moves: a 30-minute wait at 1,800 an hour is clearing people three times faster than the same 30 minutes at 600. Parks add trains or vehicles on busy days for exactly that reason.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -153,7 +153,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A minimum height a guest must meet to ride an attraction, enforced for safety reasons.',
     definition:
-      "Height requirements are safety rules parks set so that restraints, lap bars, over-the-shoulder harnesses and seat belts, sit correctly on every rider. They run from about 90 cm (35 inches) on gentler family coasters to 140 cm (55 inches) on the most intense rides. A few attractions also have a maximum height or a weight limit, though those are rarer. Park websites and apps publish a height chart for every ride, which is worth reading before a family day rather than at the ride entrance. Where a child is too small, most parks run a rider switch system so the adults can take turns without queueing twice.",
+      'Height requirements are safety rules parks set so that restraints, lap bars, over-the-shoulder harnesses and seat belts, sit correctly on every rider. They run from about 90 cm (35 inches) on gentler family coasters to 140 cm (55 inches) on the most intense rides. A few attractions also have a maximum height or a weight limit, though those are rarer. Park websites and apps publish a height chart for every ride, which is worth reading before a family day rather than at the ride entrance. Where a child is too small, most parks run a rider switch system so the adults can take turns without queueing twice.',
     relatedTermIds: ['refurbishment', 'ride-capacity'],
     aliases: ['height requirements'],
   },
@@ -173,7 +173,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An unofficial early opening of a new attraction before its announced grand opening date.',
     definition:
-      "A soft opening is a park quietly running a new ride or land before the official opening date, usually with no announcement at all. Parks use them to test the systems with real guests, find the operational problems and train staff before the launch date. A soft opening can start and stop without warning and sometimes lasts a single day or a few hours. For anybody in the park at the time it is a windfall: a brand-new attraction with almost no queue. Enthusiast forums and park-news accounts on social media are usually the first to report one. It is not something to book travel around.",
+      'A soft opening is a park quietly running a new ride or land before the official opening date, usually with no announcement at all. Parks use them to test the systems with real guests, find the operational problems and train staff before the launch date. A soft opening can start and stop without warning and sometimes lasts a single day or a few hours. For anybody in the park at the time it is a windfall: a brand-new attraction with almost no queue. Enthusiast forums and park-news accounts on social media are usually the first to report one. It is not something to book travel around.',
     relatedTermIds: ['downtime', 'refurbishment', 'themed-land'],
   },
   {
@@ -182,7 +182,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The standard physical waiting line accessible to all guests without a special pass or upgrade.',
     definition:
-      "The standby queue is the ordinary waiting line, open to every guest without a ticket upgrade or priority pass. It runs first come, first served, and its posted wait reflects how busy that attraction is at that moment. On a busy day the standby queue for a headline ride can reach 90 minutes or more, filling every switchback and running back out of the queue building. park.fan shows the standby wait time for each attraction next to the other queue types.",
+      'The standby queue is the ordinary waiting line, open to every guest without a ticket upgrade or priority pass. It runs first come, first served, and its posted wait reflects how busy that attraction is at that moment. On a busy day the standby queue for a headline ride can reach 90 minutes or more, filling every switchback and running back out of the queue building. park.fan shows the standby wait time for each attraction next to the other queue types.',
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
     aliases: ['standby queues', 'standby'],
   },
@@ -238,7 +238,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An automatically captured photo taken of guests at a key moment during a ride, available to purchase afterwards.',
     definition:
-      "A ride photo is an on-ride image taken automatically by a fixed camera at a dramatic point of the ride: the drop on a water ride, the first hill of a coaster, the moment an accelerator launches. Afterwards guests can look at it at a kiosk or in the park app and decide whether to buy a print or the digital file. Many parks sell an all-day or all-resort photo package covering unlimited ride photos for a fixed price, which works out cheaper from about three or four rides.",
+      'A ride photo is an on-ride image taken automatically by a fixed camera at a dramatic point of the ride: the drop on a water ride, the first hill of a coaster, the moment an accelerator launches. Afterwards guests can look at it at a kiosk or in the park app and decide whether to buy a print or the digital file. Many parks sell an all-day or all-resort photo package covering unlimited ride photos for a fixed price, which works out cheaper from about three or four rides.',
     relatedTermIds: ['onride-offride', 'themed-land'],
   },
   {
@@ -267,7 +267,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A system letting accompanying adults take turns riding while the other waits with a child who cannot meet the height requirement.',
     definition:
-      "Rider Switch (also called Child Swap) lets a group take turns on a ride when one of them, usually a child under the height requirement, cannot go. One adult rides while the other waits with the child in a designated area; when the first returns, the second boards straight away without queueing again. Disney calls it Rider Switch, Universal calls it Child Swap. On a busy day it saves the second adult a standby wait that can run to 60 or 90 minutes. The attendants at the ride entrance are the ones who set it up.",
+      'Rider Switch (also called Child Swap) lets a group take turns on a ride when one of them, usually a child under the height requirement, cannot go. One adult rides while the other waits with the child in a designated area; when the first returns, the second boards straight away without queueing again. Disney calls it Rider Switch, Universal calls it Child Swap. On a busy day it saves the second adult a standby wait that can run to 60 or 90 minutes. The attendants at the ride entrance are the ones who set it up.',
     relatedTermIds: ['height-requirement', 'standby-queue', 'wait-time'],
   },
   {
@@ -347,7 +347,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Any element on a roller coaster where riders are rotated at least partially upside down.',
     definition:
-      "An inversion is any element where the track turns riders past the vertical plane, at least partly upside down. The main types are the vertical loop, cobra roll, Immelmann, dive loop, corkscrew, inline twist, heartline roll, zero-G roll, flat spin, batwing and pretzel loop, each with its own combination of G-force and change of direction. Modern coasters routinely fit six to fourteen of them into a single layout, and the count is one of the standard figures used to describe how intense a ride is; The Smiler at Alton Towers holds the record with 14. Inversions produce positive G at the bottom of a loop and negative G at the top, where riders get a brief moment of airtime while upside down.",
+      'An inversion is any element where the track turns riders past the vertical plane, at least partly upside down. The main types are the vertical loop, cobra roll, Immelmann, dive loop, corkscrew, inline twist, heartline roll, zero-G roll, flat spin, batwing and pretzel loop, each with its own combination of G-force and change of direction. Modern coasters routinely fit six to fourteen of them into a single layout, and the count is one of the standard figures used to describe how intense a ride is; The Smiler at Alton Towers holds the record with 14. Inversions produce positive G at the bottom of a loop and negative G at the top, where riders get a brief moment of airtime while upside down.',
     relatedTermIds: ['cobra-roll', 'corkscrew', 'immelmann', 'vertical-loop', 'zero-g-roll'],
     aliases: ['Inversions'],
     alternateNames: ['upside-down element', 'overhead element'],
@@ -376,7 +376,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A 360-degree roll following a parabolic arc where riders experience near-weightlessness while inverted at the apex.',
     definition:
-      "The zero-G roll is an inversion in which the track follows a parabolic arc through the rotation, like a heartline roll but faster and with more vertical travel. At the top of the roll riders get a brief negative G while upside down, which is airtime and an inversion in the same element. It is a B&M signature and belongs to their inverted and wing coasters: on a wing coaster, where the outer seats sit clear of the track, a zero-G roll swings those riders through a wide arc with nothing above, below or beside them.",
+      'The zero-G roll is an inversion in which the track follows a parabolic arc through the rotation, like a heartline roll but faster and with more vertical travel. At the top of the roll riders get a brief negative G while upside down, which is airtime and an inversion in the same element. It is a B&M signature and belongs to their inverted and wing coasters: on a wing coaster, where the outer seats sit clear of the track, a zero-G roll swings those riders through a wide arc with nothing above, below or beside them.',
     relatedTermIds: ['airtime', 'b-and-m', 'heartline-roll', 'inversion', 'zero-g-winder'],
   },
   {
@@ -405,7 +405,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A roller coaster built primarily with steel track and support structure, known for its smooth, precise ride experience.',
     definition:
-      "A steel coaster is built with tubular or flat steel track on a steel lattice or tubular frame. Where wood flexes and moves, steel gives engineers precise control over the G-forces, the transitions and the inversions, which is what makes complex layouts with several inversions, tight radii and long high-speed sections possible.\n\nSteel dominates modern coaster construction because a designer can draw almost any shape: beyond-vertical drops, full inversions, rapid changes of direction. Shambhala at PortAventura, Nemesis at Alton Towers and Silver Star at Europa-Park are the well-known European ones, and the category runs from small family rides to record-breaking mega coasters. The precision costs something: the track has to be inspected carefully and repainted often, and a design error in steel is less forgiving than one in wood.",
+      'A steel coaster is built with tubular or flat steel track on a steel lattice or tubular frame. Where wood flexes and moves, steel gives engineers precise control over the G-forces, the transitions and the inversions, which is what makes complex layouts with several inversions, tight radii and long high-speed sections possible.\n\nSteel dominates modern coaster construction because a designer can draw almost any shape: beyond-vertical drops, full inversions, rapid changes of direction. Shambhala at PortAventura, Nemesis at Alton Towers and Silver Star at Europa-Park are the well-known European ones, and the category runs from small family rides to record-breaking mega coasters. The precision costs something: the track has to be inspected carefully and repainted often, and a design error in steel is less forgiving than one in wood.',
     relatedTermIds: [
       'bobsled-coaster',
       'hyper-coaster',
@@ -424,7 +424,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster where the train hangs below the track on a swinging pivot, allowing the vehicle to swing freely side to side.',
     definition:
-      "A suspended coaster hangs its train from a pivot above the track, so the cars can swing sideways independently of the path the track takes. Going into a curve, the train swings out like a pendulum, which is where the whip comes from and what makes each lap slightly different. That is the difference from an inverted coaster, whose train is rigidly fixed to the rail.\n\nSuspended coasters are less common than inverted ones. The swing makes even a moderate-speed turn feel dramatic, and having the ground a long way below adds to it. Vekoma developed the Suspended Looping Coaster (SLC) in the 1990s and hundreds were built, because the model fits into a small plot. The swinging can feel chaotic next to the precision of a modern inversion, which is why opinion on the type splits sharply among enthusiasts.",
+      'A suspended coaster hangs its train from a pivot above the track, so the cars can swing sideways independently of the path the track takes. Going into a curve, the train swings out like a pendulum, which is where the whip comes from and what makes each lap slightly different. That is the difference from an inverted coaster, whose train is rigidly fixed to the rail.\n\nSuspended coasters are less common than inverted ones. The swing makes even a moderate-speed turn feel dramatic, and having the ground a long way below adds to it. Vekoma developed the Suspended Looping Coaster (SLC) in the 1990s and hundreds were built, because the model fits into a small plot. The swinging can feel chaotic next to the precision of a modern inversion, which is why opinion on the type splits sharply among enthusiasts.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
     aliases: ['Suspended'],
     alternateNames: ['Swinging coaster'],
@@ -435,7 +435,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster combining a traditional wooden support structure with precision steel I-box track, pioneered by Rocky Mountain Construction.',
     definition:
-      "A hybrid coaster puts a precision steel I-box track from Rocky Mountain Construction (RMC) onto the wooden support structure of a traditional coaster. The I-box allows tighter radii, beyond-vertical drops and inversions that laminated wood cannot carry. RMC developed it to rescue ageing wooden coasters that had become too rough to enjoy, and the rebuilt layouts come back with hard airtime, several inversions and steep drops. Steel Vengeance at Cedar Point, converted from Mean Streak in 2018, tops enthusiast polls; in Europe, Untamed at Walibi Holland (a new build, 2019) and Wildfire at Kolmården, built down a mountainside, are the two to know.",
+      'A hybrid coaster puts a precision steel I-box track from Rocky Mountain Construction (RMC) onto the wooden support structure of a traditional coaster. The I-box allows tighter radii, beyond-vertical drops and inversions that laminated wood cannot carry. RMC developed it to rescue ageing wooden coasters that had become too rough to enjoy, and the rebuilt layouts come back with hard airtime, several inversions and steep drops. Steel Vengeance at Cedar Point, converted from Mean Streak in 2018, tops enthusiast polls; in Europe, Untamed at Walibi Holland (a new build, 2019) and Wildfire at Kolmården, built down a mountainside, are the two to know.',
     relatedTermIds: ['airtime', 'rmc', 'wooden-coaster'],
   },
   {
@@ -444,7 +444,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bolliger & Mabillard, a Swiss manufacturer renowned for smooth, reliable coasters and signature elements including the Immelmann, cobra roll, and zero-G roll.',
     definition:
-      "B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, both previously at Intamin. Their rides are known for running very smoothly and breaking down rarely, and for a particular kind of intensity: sustained positive G rather than sharp jolts, and a set of signature inversions in the Immelmann, cobra roll and zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Goliath at Walibi Holland, Katun at Mirabilandia, Oziris at Parc Astérix.",
+      'B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by Walter Bolliger and Claude Mabillard, both previously at Intamin. Their rides are known for running very smoothly and breaking down rarely, and for a particular kind of intensity: sustained positive G rather than sharp jolts, and a set of signature inversions in the Immelmann, cobra roll and zero-G roll. The company builds inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines and flying coasters. Nearly every large European park has at least one: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Goliath at Walibi Holland, Katun at Mirabilandia, Oziris at Parc Astérix.',
     relatedTermIds: [
       'cobra-roll',
       'dive-coaster',
@@ -470,7 +470,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German family-owned manufacturer from Waldkirch, the company behind Europa-Park and producers of water rides, dark rides, and acclaimed hyper coasters.',
     definition:
-      "Mack Rides is a German ride manufacturer in Waldkirch, Baden-Württemberg, a few kilometres from Europa-Park, which the Mack family owns and uses as a showcase. Founded in 1921, it started with portable fairground rides before moving into permanent park attractions. The portfolio covers water rides, dark rides (Test Track and Radiator Springs Racers for Disney among them) and a growing range of steel coasters. Blue Fire Megacoaster at Europa-Park (2009) was the first ride anywhere to carry a Stengel Dive. Kondaa at Walibi Belgium is their hyper coaster; The Ride to Happiness at Plopsaland de Panne is a launched spinning coaster, and both rank near the top of European enthusiast polls.",
+      'Mack Rides is a German ride manufacturer in Waldkirch, Baden-Württemberg, a few kilometres from Europa-Park, which the Mack family owns and uses as a showcase. Founded in 1921, it started with portable fairground rides before moving into permanent park attractions. The portfolio covers water rides, dark rides (Test Track and Radiator Springs Racers for Disney among them) and a growing range of steel coasters. Blue Fire Megacoaster at Europa-Park (2009) was the first ride anywhere to carry a Stengel Dive. Kondaa at Walibi Belgium is their hyper coaster; The Ride to Happiness at Plopsaland de Panne is a launched spinning coaster, and both rank near the top of European enthusiast polls.',
     relatedTermIds: [
       'b-and-m',
       'bobsled-coaster',
@@ -505,7 +505,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A Dutch manufacturer and one of the world’s most prolific coaster producers, known for the Boomerang, the SLC, and a modern new-generation lineup.',
     definition:
-      "Vekoma Rides Manufacturing is a Dutch roller coaster manufacturer in Vlodrop and one of the most prolific in the world by number of installations. Founded in 1926 as an engineering firm, it moved into amusement rides in the 1970s and reached parks everywhere with the Boomerang: a compact, inexpensive shuttle coaster with three inversions, ridden once forwards and once backwards. More than 50 were built, on every inhabited continent. Other Vekoma models are the Suspended Looping Coaster (SLC), the mine train and the Giant Inverted Boomerang. From the 2010s the company rebuilt its product line around much smoother track and trains, and the new-generation Family Boomerang, Tilt Coaster and suspended family coasters are appearing across Europe. Disney has commissioned custom Vekoma designs, the Seven Dwarfs Mine Train among them.",
+      'Vekoma Rides Manufacturing is a Dutch roller coaster manufacturer in Vlodrop and one of the most prolific in the world by number of installations. Founded in 1926 as an engineering firm, it moved into amusement rides in the 1970s and reached parks everywhere with the Boomerang: a compact, inexpensive shuttle coaster with three inversions, ridden once forwards and once backwards. More than 50 were built, on every inhabited continent. Other Vekoma models are the Suspended Looping Coaster (SLC), the mine train and the Giant Inverted Boomerang. From the 2010s the company rebuilt its product line around much smoother track and trains, and the new-generation Family Boomerang, Tilt Coaster and suspended family coasters are appearing across Europe. Disney has commissioned custom Vekoma designs, the Seven Dwarfs Mine Train among them.',
     relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
   },
   {
@@ -514,7 +514,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A German manufacturer best known for the Euro-Fighter model with its beyond-vertical first drop, plus spinning coasters and compact family rides.',
     definition:
-      "Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer in Münsterhausen, Bavaria. Founded in 1946 as a metalworking firm, it entered the ride market in the 1980s and made its name with the Euro-Fighter: a compact coaster with a vertical chain lift and a first drop of up to 97 degrees. Euro-Fighters fit into very little space, which suits city parks and smaller sites; Saw – The Ride at Thorpe Park, Rage at Adventure Island and Speed at Oakwood are the British examples. Gerstlauer also builds the Infinity Coaster, spinning coasters and the SkyRoller, on which riders control their own rotation. Among enthusiasts the rides are valued for how much intensity they fit into a small footprint.",
+      'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer in Münsterhausen, Bavaria. Founded in 1946 as a metalworking firm, it entered the ride market in the 1980s and made its name with the Euro-Fighter: a compact coaster with a vertical chain lift and a first drop of up to 97 degrees. Euro-Fighters fit into very little space, which suits city parks and smaller sites; Saw – The Ride at Thorpe Park, Rage at Adventure Island and Speed at Oakwood are the British examples. Gerstlauer also builds the Infinity Coaster, spinning coasters and the SkyRoller, on which riders control their own rotation. Among enthusiasts the rides are valued for how much intensity they fit into a small footprint.',
     relatedTermIds: [
       'b-and-m',
       'beyond-vertical-drop',
@@ -530,7 +530,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A legendary German manufacturer whose classic looping coasters from the 1970s and 80s remain beloved across European parks for their smooth, intense ride experience.',
     definition:
-      "Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. Founded by Anton Schwarzkopf in 1954, it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run remarkably smoothly for their age, a consequence of how precisely they were engineered, and their layouts get intense airtime and inversions out of a small, elegant footprint. The company went bankrupt in 1983; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over some of the original tooling.",
+      'Anton Schwarzkopf GmbH & Co. KG was a German roller coaster manufacturer in Münsterhausen, Bavaria, the town Gerstlauer later worked out of. Founded by Anton Schwarzkopf in 1954, it was the company that brought the modern looping coaster to Europe and to the world: Revolution at Six Flags Magic Mountain (1976) was the first of them. The Looping Star, the Thriller/Wildcat and the transportable Looping Coaster toured fairs and were installed at parks across Europe. Schwarzkopf coasters run remarkably smoothly for their age, a consequence of how precisely they were engineered, and their layouts get intense airtime and inversions out of a small, elegant footprint. The company went bankrupt in 1983; many of its rides are still operating decades later, maintained by specialist firms or by Gerstlauer, which took over some of the original tooling.',
     relatedTermIds: ['b-and-m', 'gerstlauer', 'intamin', 'vekoma'],
   },
   {
@@ -539,7 +539,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The mechanically powered ascent that pulls a coaster train to its highest point, building the potential energy that powers the rest of the ride.',
     definition:
-      "The lift hill is the section where an external mechanism pulls the train from near ground level to the highest point of the ride, turning electrical energy into height. Usually that mechanism is a chain running along the centre of the track, and the familiar click-click-click is the anti-rollback ratchet engaging so the train cannot slide back. The alternatives are cable lifts (quieter and smoother, used on some B&M rides), tyre drives and magnetic lifts. The height of the lift hill sets the top speed the layout can reach: 70 metres buys more than 40, everything else being equal. It is also the slowest part of the ride, and the part a launch coaster deliberately does without.",
+      'The lift hill is the section where an external mechanism pulls the train from near ground level to the highest point of the ride, turning electrical energy into height. Usually that mechanism is a chain running along the centre of the track, and the familiar click-click-click is the anti-rollback ratchet engaging so the train cannot slide back. The alternatives are cable lifts (quieter and smoother, used on some B&M rides), tyre drives and magnetic lifts. The height of the lift hill sets the top speed the layout can reach: 70 metres buys more than 40, everything else being equal. It is also the slowest part of the ride, and the part a launch coaster deliberately does without.',
     relatedTermIds: ['block-brake', 'first-drop', 'launch-coaster'],
   },
   {
@@ -557,7 +557,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A hill-shaped element engineered to produce negative G-forces, causing riders to float or be lifted from their seats.',
     definition:
-      "An airtime hill (also called a camelback) is a rise-and-fall element built to produce negative G-force, the sensation of floating or of being lifted out of the seat. The hill follows a parabolic path that keeps the train on a free-fall arc for as long as the profile allows. A floater hill gives mild, comfortable floating; an ejector hill is shaped harder, and the lap bar is what keeps the rider in the car. Steel coasters use precisely machined profiles and give the same airtime on every run; wooden coasters vary from lap to lap, because the track flexes. In enthusiast rankings the number and quality of the airtime hills is what decides a hyper or giga coaster.",
+      'An airtime hill (also called a camelback) is a rise-and-fall element built to produce negative G-force, the sensation of floating or of being lifted out of the seat. The hill follows a parabolic path that keeps the train on a free-fall arc for as long as the profile allows. A floater hill gives mild, comfortable floating; an ejector hill is shaped harder, and the lap bar is what keeps the rider in the car. Steel coasters use precisely machined profiles and give the same airtime on every run; wooden coasters vary from lap to lap, because the track flexes. In enthusiast rankings the number and quality of the airtime hills is what decides a hyper or giga coaster.',
     relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 's-hill', 'stengel-dive'],
   },
   {
@@ -566,7 +566,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A continuous spiralling section where the track wraps around a central axis, generating sustained lateral G-forces.',
     definition:
-      "A helix is a section of track that spirals continuously around a central axis, like a screw thread, without turning riders upside down. Where an airtime hill works vertically, a helix produces sustained lateral G-force that presses riders into the outside of the turn. A descending helix trades height for speed; an ascending one bleeds speed off while keeping the lateral pressure on. Helices often sit near the end of a layout, to spend whatever kinetic energy is left rather than stopping the train abruptly. The underground finale of Nemesis at Alton Towers runs a tight descending helix through a rock pit, and Expedition GeForce at Holiday Park closes on a heavily loaded one.",
+      'A helix is a section of track that spirals continuously around a central axis, like a screw thread, without turning riders upside down. Where an airtime hill works vertically, a helix produces sustained lateral G-force that presses riders into the outside of the turn. A descending helix trades height for speed; an ascending one bleeds speed off while keeping the lateral pressure on. Helices often sit near the end of a layout, to spend whatever kinetic energy is left rather than stopping the train abruptly. The underground finale of Nemesis at Alton Towers runs a tight descending helix through a rock pit, and Expedition GeForce at Holiday Park closes on a heavily loaded one.',
     relatedTermIds: ['first-drop', 'horseshoe'],
   },
   {
@@ -584,7 +584,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The deceleration section at the end of a ride where the train slows to station-entry speed.',
     definition:
-      "The brake run is the stretch of track after the main circuit, where the train slows from ride speed to a safe station approach. Modern brake runs use eddy-current brakes: rows of permanent magnets that meet metal fins under the train and generate resistance by induction, with no contact, no friction and no wear. Older coasters used pneumatic caliper brakes that gripped the track directly. A mid-course brake run partway through the layout doubles as a block section for multi-train operation, holding the train until the station clears. The final brake run before the station is sometimes braked deliberately lightly, which keeps the entry into the station quick and gets the train back to the platform sooner.",
+      'The brake run is the stretch of track after the main circuit, where the train slows from ride speed to a safe station approach. Modern brake runs use eddy-current brakes: rows of permanent magnets that meet metal fins under the train and generate resistance by induction, with no contact, no friction and no wear. Older coasters used pneumatic caliper brakes that gripped the track directly. A mid-course brake run partway through the layout doubles as a block section for multi-train operation, holding the train until the station clears. The final brake run before the station is sometimes braked deliberately lightly, which keeps the entry into the station quick and gets the train back to the platform sooner.',
     relatedTermIds: ['block-brake', 'lifthill'],
   },
   {
@@ -602,7 +602,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A classic barrel-roll inversion where the track spirals 360 degrees around a central axis — one of the earliest inversion types ever built.',
     definition:
-      "The corkscrew is one of the earliest modern inversions, introduced by Arrow Dynamics in the 1970s. The track spirals around a central axis like a wine corkscrew, rolling riders through a full 360 degrees on a path offset from the direction of travel. Corkscrews are often built in pairs, back to back, and were the defining inversion of the steel coaster from the mid-1970s to the early 1990s. German park maps and signage use the word Korkenzieher for it. Smoother designs such as the zero-G roll, inline twist and heartline roll have largely replaced it in new construction, but it survives at many parks in Europe and North America as a nostalgic favourite.",
+      'The corkscrew is one of the earliest modern inversions, introduced by Arrow Dynamics in the 1970s. The track spirals around a central axis like a wine corkscrew, rolling riders through a full 360 degrees on a path offset from the direction of travel. Corkscrews are often built in pairs, back to back, and were the defining inversion of the steel coaster from the mid-1970s to the early 1990s. German park maps and signage use the word Korkenzieher for it. Smoother designs such as the zero-G roll, inline twist and heartline roll have largely replaced it in new construction, but it survives at many parks in Europe and North America as a nostalgic favourite.',
     relatedTermIds: ['flat-spin', 'inline-twist', 'inversion'],
   },
   {
@@ -620,7 +620,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A single 360-degree roll directly around the track axis, delivering a smooth inversion without significantly changing the train’s heading.',
     definition:
-      "An inline twist (also called an inline roll or barrel roll) rotates the train a full 360 degrees around the long axis of the track, so the coaster rolls without changing direction. Unlike a corkscrew, whose spiral is offset from the track centreline, the inline twist pivots on the track itself, which makes it a short, smooth inversion with very little lateral force. It is common on B&M flying and inverted coasters, often in pairs or run straight into another element, and because it leaves the heading unchanged it drops into a straight or a curved section without disturbing the rest of the layout.",
+      'An inline twist (also called an inline roll or barrel roll) rotates the train a full 360 degrees around the long axis of the track, so the coaster rolls without changing direction. Unlike a corkscrew, whose spiral is offset from the track centreline, the inline twist pivots on the track itself, which makes it a short, smooth inversion with very little lateral force. It is common on B&M flying and inverted coasters, often in pairs or run straight into another element, and because it leaves the heading unchanged it drops into a straight or a curved section without disturbing the rest of the layout.',
     relatedTermIds: ['corkscrew', 'flat-spin', 'heartline-roll', 'inversion'],
   },
   {
@@ -647,7 +647,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A massive inversion on B&M flying coasters where riders in the horizontal Superman position pass through the bottom of a vertical loop while fully inverted.',
     definition:
-      "The pretzel loop is one of the most intense inversions built, and is found only on B&M flying coasters, where riders lie face-down in a Superman position. The track sends them diving steeply downward while inverted, through the low point of a large vertical loop, then pulls them sharply upward again; seen from the side the shape is roughly a pretzel. Because the low point comes with riders face-down, the positive G there is exceptional and often passes 4g. Every B&M flying coaster is built around one; Manta at SeaWorld Orlando and Tatsu at Six Flags Magic Mountain are the best known.",
+      'The pretzel loop is one of the most intense inversions built, and is found only on B&M flying coasters, where riders lie face-down in a Superman position. The track sends them diving steeply downward while inverted, through the low point of a large vertical loop, then pulls them sharply upward again; seen from the side the shape is roughly a pretzel. Because the low point comes with riders face-down, the positive G there is exceptional and often passes 4g. Every B&M flying coaster is built around one; Manta at SeaWorld Orlando and Tatsu at Six Flags Magic Mountain are the best known.',
     relatedTermIds: ['b-and-m', 'inline-twist', 'inversion'],
   },
   {
@@ -656,7 +656,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A double-inversion with a 180-degree direction reversal combining two half-loops connected by a half-corkscrew, forming a bat-wing shape overhead.',
     definition:
-      "A batwing is two inversions with a change of direction built into them: the track arcs up into a half-loop, a half-corkscrew at the top inverts the train and turns it round, and the half-loop is then mirrored back down to ground level. Seen from above, the outline resembles a pair of spread bat wings. Unlike the bowtie, which puts two inversions back to back without changing the heading, the batwing leaves the train travelling 180 degrees from where it entered. It is a B&M element and appears on their inverted coasters, Montu at Busch Gardens Tampa and Afterburn at Carowinds among them.",
+      'A batwing is two inversions with a change of direction built into them: the track arcs up into a half-loop, a half-corkscrew at the top inverts the train and turns it round, and the half-loop is then mirrored back down to ground level. Seen from above, the outline resembles a pair of spread bat wings. Unlike the bowtie, which puts two inversions back to back without changing the heading, the batwing leaves the train travelling 180 degrees from where it entered. It is a B&M element and appears on their inverted coasters, Montu at Busch Gardens Tampa and Afterburn at Carowinds among them.',
     relatedTermIds: ['b-and-m', 'bowtie', 'cobra-roll', 'inversion'],
   },
   {
@@ -665,7 +665,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A loop variant where the train enters from the top, dives through the circular path, and exits at the top — the inverse geometry of a standard vertical loop.',
     definition:
-      "The Norwegian loop (sometimes called a reverse loop) is a standard vertical loop taken the other way round: instead of entering at the bottom and exiting at the same height, the train comes in from above, dives down through the circular path and exits again at the top. The strong positive G at the bottom of the circle is unchanged, since the geometry of the loop is, but the entry and exit feel like a dive and a recovery rather than the classic loop pull-out. Norwegian loops are rare, and turn up mainly on certain Vekoma designs and on a handful of custom installations.",
+      'The Norwegian loop (sometimes called a reverse loop) is a standard vertical loop taken the other way round: instead of entering at the bottom and exiting at the same height, the train comes in from above, dives down through the circular path and exits again at the top. The strong positive G at the bottom of the circle is unchanged, since the geometry of the loop is, but the entry and exit feel like a dive and a recovery rather than the classic loop pull-out. Norwegian loops are rare, and turn up mainly on certain Vekoma designs and on a handful of custom installations.',
     relatedTermIds: ['dive-loop', 'inversion', 'vertical-loop'],
   },
   {
@@ -683,7 +683,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A half-corkscrew inversion that simultaneously reverses the train’s direction by approximately 180 degrees.',
     definition:
-      "A cutback is a half-corkscrew in which the track also curves back on itself through roughly 180 degrees, so the element combines an inversion with a full reversal of direction. A standard corkscrew rotates the riders and leaves the heading largely intact; a cutback does not. The name describes what the track does, cutting back across its own previous heading while it flips. Cutbacks are uncommon and appear mainly on certain Vekoma models and on custom coasters that need a tight turnaround and an inversion in the same place. Doing both at once makes for harsher forces than a purpose-shaped Immelmann or zero-G roll.",
+      'A cutback is a half-corkscrew in which the track also curves back on itself through roughly 180 degrees, so the element combines an inversion with a full reversal of direction. A standard corkscrew rotates the riders and leaves the heading largely intact; a cutback does not. The name describes what the track does, cutting back across its own previous heading while it flips. Cutbacks are uncommon and appear mainly on certain Vekoma models and on custom coasters that need a tight turnaround and an inversion in the same place. Doing both at once makes for harsher forces than a purpose-shaped Immelmann or zero-G roll.',
     relatedTermIds: ['corkscrew', 'inversion', 'sidewinder'],
   },
   {
@@ -692,7 +692,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A double-inversion element similar to a sea serpent with a lower connecting apex, producing two inversions in a compact vertical footprint.',
     definition:
-      "The butterfly is a double inversion made of two half-loops joined at a relatively low apex. Like the sea serpent, which joins its half-loops at a high peak, it turns riders over twice without changing the direction of travel. The lower connecting section is what separates it from the sea serpent, from the bowtie, whose proportions differ, and from the batwing, which does change direction. Few have been built: the element appears on a small number of Vekoma and custom designs, where two inversions in very little vertical space are what the layout needs.",
+      'The butterfly is a double inversion made of two half-loops joined at a relatively low apex. Like the sea serpent, which joins its half-loops at a high peak, it turns riders over twice without changing the direction of travel. The lower connecting section is what separates it from the sea serpent, from the bowtie, whose proportions differ, and from the batwing, which does change direction. Few have been built: the element appears on a small number of Vekoma and custom designs, where two inversions in very little vertical space are what the layout needs.',
     relatedTermIds: ['batwing', 'bowtie', 'inversion'],
   },
   {
@@ -701,7 +701,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A double-inversion element where two mirrored half-loops form a bowtie shape — two inversions without a direction change.',
     definition:
-      "A bowtie is two mirrored half-loops joined at a shared peak, producing two inversions in quick succession while the train leaves in roughly the direction it entered. From above, the track outline looks like a bow tie. That is the difference from the batwing, which looks similar from the ground but reverses the heading: a bowtie rides as a flowing pair of loops rather than a twisting turnaround. Bowties are rare and are found mainly on certain Vekoma and custom installations.",
+      'A bowtie is two mirrored half-loops joined at a shared peak, producing two inversions in quick succession while the train leaves in roughly the direction it entered. From above, the track outline looks like a bow tie. That is the difference from the batwing, which looks similar from the ground but reverses the heading: a bowtie rides as a flowing pair of loops rather than a twisting turnaround. Bowties are rare and are found mainly on certain Vekoma and custom installations.',
     relatedTermIds: ['batwing', 'butterfly', 'inversion'],
   },
   {
@@ -710,7 +710,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A series of small, quick airtime hills near the end of a ride producing gentle floater airtime as the train loses speed.',
     definition:
-      "Bunny hops are a run of small, quick hills near the end of a layout, once the train has spent most of its energy. At that lower speed each hill gives gentle floater airtime, a soft rhythmic lift rather than the ejector airtime of the bigger hills earlier on. The name is the bouncing motion. They need very little height to work at low speed, which makes them an efficient way to use the last stretch of ground, and they are a standard closing figure on hyper coasters, giga coasters and wooden coasters. Getting something out of a train that is nearly finished is generally read as a sign of a carefully drawn layout.",
+      'Bunny hops are a run of small, quick hills near the end of a layout, once the train has spent most of its energy. At that lower speed each hill gives gentle floater airtime, a soft rhythmic lift rather than the ejector airtime of the bigger hills earlier on. The name is the bouncing motion. They need very little height to work at low speed, which makes them an efficient way to use the last stretch of ground, and they are a standard closing figure on hyper coasters, giga coasters and wooden coasters. Getting something out of a train that is nearly finished is generally read as a sign of a carefully drawn layout.',
     relatedTermIds: ['airtime', 'airtime-hill', 'brake-run', 's-hill'],
   },
   {
@@ -728,7 +728,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A sharply banked 180-degree turnaround shaped like a horseshoe, used to redirect the train between launch segments on multi-launch coasters.',
     definition:
-      "A horseshoe is a heavily banked semicircular turn, usually at 75 to 90 degrees, that turns the train through 180 degrees. The steep banking is what keeps the lateral force down at the tight radius the turnaround needs, and at speed it converts into positive G that presses riders into their seats. Horseshoes are mostly found in launched layouts, as the turnaround between two launch segments: Taron at Phantasialand uses them to swing the train back between its two launches through the rock landscape, and accelerator coasters use one to join the outbound and return legs.",
+      'A horseshoe is a heavily banked semicircular turn, usually at 75 to 90 degrees, that turns the train through 180 degrees. The steep banking is what keeps the lateral force down at the tight radius the turnaround needs, and at speed it converts into positive G that presses riders into their seats. Horseshoes are mostly found in launched layouts, as the turnaround between two launch segments: Taron at Phantasialand uses them to swing the train back between its two launches through the rock landscape, and accelerator coasters use one to join the outbound and return legs.',
     relatedTermIds: ['intamin', 'launch-coaster', 'mack-rides'],
   },
   {
@@ -737,7 +737,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A small dip just before the main first drop on a chain-lift coaster, easing chain tension and delivering a brief anticipatory moment of airtime.',
     definition:
-      "A pre-drop is a small hill or dip at the end of the lift hill, immediately before the crest that leads into the first drop. Its job is mechanical: it takes the tension off the lift chain as the train goes over the top, which would otherwise have to hold the whole weight of the train through the crest and would produce noise, wear and a jolt. The side effect is for the rider, a short pop of airtime before the main drop begins. Pre-drops are common on wooden and steel coasters alike; the one on Goliath at Six Flags Magic Mountain is known among enthusiasts for how strong that pop is.",
+      'A pre-drop is a small hill or dip at the end of the lift hill, immediately before the crest that leads into the first drop. Its job is mechanical: it takes the tension off the lift chain as the train goes over the top, which would otherwise have to hold the whole weight of the train through the crest and would produce noise, wear and a jolt. The side effect is for the rider, a short pop of airtime before the main drop begins. Pre-drops are common on wooden and steel coasters alike; the one on Goliath at Six Flags Magic Mountain is known among enthusiasts for how strong that pop is.',
     relatedTermIds: ['airtime', 'first-drop', 'lifthill'],
   },
   {
@@ -789,7 +789,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A roller coaster an enthusiast has ridden and logged to their personal count — collecting credits is a defining hobby in the coaster community.',
     definition:
-      "A coaster credit (or cred) is a roller coaster an enthusiast has ridden and added to a personal count. Collecting credits, riding as many different coasters as possible, is one of the defining activities of the enthusiast community. What counts varies: some people count only conventional coasters, others include water coasters, family coasters and kiddie coasters; some insist on riding every version of a layout, others count it once. The Roller Coaster Database (RCDB) and apps such as Coaster Count are where the totals get logged. Chasing credits is what sends enthusiasts on international trips and into small parks that hold a rare or historic ride, and round numbers (100, 500, 1,000) shape those itineraries for years.",
+      'A coaster credit (or cred) is a roller coaster an enthusiast has ridden and added to a personal count. Collecting credits, riding as many different coasters as possible, is one of the defining activities of the enthusiast community. What counts varies: some people count only conventional coasters, others include water coasters, family coasters and kiddie coasters; some insist on riding every version of a layout, others count it once. The Roller Coaster Database (RCDB) and apps such as Coaster Count are where the totals get logged. Chasing credits is what sends enthusiasts on international trips and into small parks that hold a rare or historic ride, and round numbers (100, 500, 1,000) shape those itineraries for years.',
     relatedTermIds: [
       'hybrid-coaster',
       'mackprodukt',
@@ -806,7 +806,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Point-of-view footage filmed from the front row of a coaster, letting prospective riders virtually preview the full experience.',
     definition:
-      "POV (point of view) is on-ride video shot from a front-row seat, usually with a camera mounted to the train. POV videos are one of the most-watched formats in the theme park community and are how most people look at a coaster before travelling to it: a good one shows every element, drop and inversion in order, and carries the pace and the layout better than a description can. Parks sometimes produce an official POV for a new ride; more often the footage comes from enthusiasts, media or a special guest event. YouTube holds tens of thousands of them. The term is also used for first-person footage of dark rides and water rides.",
+      'POV (point of view) is on-ride video shot from a front-row seat, usually with a camera mounted to the train. POV videos are one of the most-watched formats in the theme park community and are how most people look at a coaster before travelling to it: a good one shows every element, drop and inversion in order, and carries the pace and the layout better than a description can. Parks sometimes produce an official POV for a new ride; more often the footage comes from enthusiasts, media or a special guest event. YouTube holds tens of thousands of them. The term is also used for first-person footage of dark rides and water rides.',
     relatedTermIds: ['credit', 'dark-ride', 'onride-offride'],
   },
   {
@@ -842,7 +842,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A situation where multiple coaster trains accumulate in the brake run because the station is not clearing fast enough — reducing throughput and extending wait times.',
     definition:
-      "Stacking happens when a coaster loads and unloads more slowly than the ride cycle takes, so trains pile up in the brake run waiting for the station to clear. Instead of dispatching one train as the previous one comes back, the operator has to hold trains outside, and the ride stops briefly between dispatches. Every second of it comes straight off hourly capacity and goes onto the standby wait. The usual causes are slow loading (over-the-shoulder harnesses that have to be checked one seat at a time), bag checks and understaffing. It is visible from the queue: if a train is sitting in the brake run when the station dispatches, the ride is stacking, and its operated capacity is well under the figure the manufacturer quotes.",
+      'Stacking happens when a coaster loads and unloads more slowly than the ride cycle takes, so trains pile up in the brake run waiting for the station to clear. Instead of dispatching one train as the previous one comes back, the operator has to hold trains outside, and the ride stops briefly between dispatches. Every second of it comes straight off hourly capacity and goes onto the standby wait. The usual causes are slow loading (over-the-shoulder harnesses that have to be checked one seat at a time), bag checks and understaffing. It is visible from the queue: if a train is sitting in the brake run when the station dispatches, the ride is stacking, and its operated capacity is well under the figure the manufacturer quotes.',
     relatedTermIds: ['block-brake', 'ride-capacity', 'wait-time'],
   },
   {
@@ -860,7 +860,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A coaster type with seats extending on either side of the track, so riders have nothing above, below, or beside them — maximising the sensation of flight.',
     definition:
-      "A wing coaster (also called a wing rider) puts two seats on each side of the track, out on arms, so riders have nothing above, below or beside them. The design is built around the sensation of flight and around near misses with theming and structure that would be impossible with the track in the way; on the outer seats, a zero-G roll swings riders through a wide arc of open air. B&M is the main manufacturer. European examples are Flug der Dämonen at Heide-Park and The Swarm at Thorpe Park. park.fan lists the current wait times for every wing coaster it tracks.",
+      'A wing coaster (also called a wing rider) puts two seats on each side of the track, out on arms, so riders have nothing above, below or beside them. The design is built around the sensation of flight and around near misses with theming and structure that would be impossible with the track in the way; on the outer seats, a zero-G roll swings riders through a wide arc of open air. B&M is the main manufacturer. European examples are Flug der Dämonen at Heide-Park and The Swarm at Thorpe Park. park.fan lists the current wait times for every wing coaster it tracks.',
     relatedTermIds: ['b-and-m', 'dive-coaster', 'inverted-coaster'],
   },
   {
@@ -907,7 +907,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A banked turn where the track tilts beyond 90 degrees, putting riders briefly past the inverted position without completing a full inversion.',
     definition:
-      "An overbanked turn is a curve banked past 90 degrees, so the outer rail rises above vertical and riders are tilted slightly beyond upside down without the rotation ever completing. What they feel is lateral force mixed with a little negative G at the top of the banking, then the track rights itself. It is not an inversion, though it is regularly counted as one by people watching from the ground, because the banking looks that extreme. Overbanks are a fixture of modern B&M hypers and Intamin megas, and RMC layouts use them constantly, often straight into an airtime hill or a real inversion.",
+      'An overbanked turn is a curve banked past 90 degrees, so the outer rail rises above vertical and riders are tilted slightly beyond upside down without the rotation ever completing. What they feel is lateral force mixed with a little negative G at the top of the banking, then the track rights itself. It is not an inversion, though it is regularly counted as one by people watching from the ground, because the banking looks that extreme. Overbanks are a fixture of modern B&M hypers and Intamin megas, and RMC layouts use them constantly, often straight into an airtime hill or a real inversion.',
     relatedTermIds: ['airtime', 'b-and-m', 'intamin', 'inversion', 'rmc'],
   },
   {
@@ -916,7 +916,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A mid-course magnetic or friction brake that reduces a coaster’s speed without bringing the train to a full stop.',
     definition:
-      "A trim brake is a brake placed mid-course to take some speed off the train before a particular section, without stopping it the way a block brake does. Parks use them to hold the G-forces on a demanding element within limits, to cut wear on the track, to keep noise and vibration down, or to keep the ride within its envelope whatever the temperature and however loaded the train is. Enthusiasts dislike them, and with reason: a hill drawn for a certain speed gives less airtime when the train arrives slower. How hard a trim bites varies with the season, cold weather brings more of it, with the weight in the train and with park policy, so the same layout can feel like two different rides.",
+      'A trim brake is a brake placed mid-course to take some speed off the train before a particular section, without stopping it the way a block brake does. Parks use them to hold the G-forces on a demanding element within limits, to cut wear on the track, to keep noise and vibration down, or to keep the ride within its envelope whatever the temperature and however loaded the train is. Enthusiasts dislike them, and with reason: a hill drawn for a certain speed gives less airtime when the train arrives slower. How hard a trim bites varies with the season, cold weather brings more of it, with the weight in the train and with park policy, so the same layout can feel like two different rides.',
     relatedTermIds: ['airtime', 'block-brake', 'brake-run'],
   },
   {
@@ -1154,7 +1154,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Souvenir',
     shortDefinition: 'A memento or small item purchased at a theme park to commemorate a visit.',
     definition:
-      "A souvenir is a physical memento, merchandise, clothing or a collectible, bought to remember a park visit by. The usual ones are t-shirts with the park logo, caps, pins, postcards, soft toys and themed collectibles. They do two jobs at once: a practical one, since a shirt is a shirt, and an emotional one, in anchoring the memory of a particular day.\n\nParks make a substantial part of their revenue on merchandise, which typically carries a two- to threefold markup over retail prices. Photo spots are designed into themed lands to encourage the impulse purchase, limited and seasonal items create urgency, and park-exclusive items carry higher prices because they cannot be had anywhere else. For a lot of guests, collecting from several parks is part of the trip: gathering pins, trading them, filling a shelf.",
+      'A souvenir is a physical memento, merchandise, clothing or a collectible, bought to remember a park visit by. The usual ones are t-shirts with the park logo, caps, pins, postcards, soft toys and themed collectibles. They do two jobs at once: a practical one, since a shirt is a shirt, and an emotional one, in anchoring the memory of a particular day.\n\nParks make a substantial part of their revenue on merchandise, which typically carries a two- to threefold markup over retail prices. Photo spots are designed into themed lands to encourage the impulse purchase, limited and seasonal items create urgency, and park-exclusive items carry higher prices because they cannot be had anywhere else. For a lot of guests, collecting from several parks is part of the trip: gathering pins, trading them, filling a shelf.',
     relatedTermIds: ['gift-shop', 'merchandise', 'park-exclusive'],
     alternateNames: ['Memento', 'Keepsake'],
   },
@@ -1610,7 +1610,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Two parallel roller coaster tracks on which trains are dispatched simultaneously to race side by side.',
     definition:
-      "A racing coaster has two separate but mirrored tracks running parallel to each other, with the trains dispatched at the same moment so that each set of riders is racing the other. The tracks cross or run very close together at several points, which is what the format is for. Some are built as a Möbius loop, where the two tracks form one continuous circuit and riders automatically change sides between laps. It works with wooden and steel track alike. Racer at Kings Island and Gemini at Cedar Point are the American examples; in Europe they are rare, and the best known is the Möbius woodie Grand National at Blackpool Pleasure Beach.",
+      'A racing coaster has two separate but mirrored tracks running parallel to each other, with the trains dispatched at the same moment so that each set of riders is racing the other. The tracks cross or run very close together at several points, which is what the format is for. Some are built as a Möbius loop, where the two tracks form one continuous circuit and riders automatically change sides between laps. It works with wooden and steel track alike. Racer at Kings Island and Gemini at Cedar Point are the American examples; in Europe they are rare, and the best known is the Möbius woodie Grand National at Blackpool Pleasure Beach.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     alternateNames: ['twin coaster', 'duelling coaster', 'dueling coaster', 'dual track coaster'],
   },
@@ -2224,7 +2224,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A large, vertical rotating wheel with passenger gondolas providing panoramic views.',
     definition:
-      "A Ferris wheel is a large vertical wheel with passenger gondolas mounted around its rim, turning slowly enough that riders get a long look out over the park and the country around it. It is a landmark at a lot of parks and fairgrounds, partly because it is visible from outside the fence. They range from small family wheels a few metres across to observation wheels on the scale of the London Eye.",
+      'A Ferris wheel is a large vertical wheel with passenger gondolas mounted around its rim, turning slowly enough that riders get a long look out over the park and the country around it. It is a landmark at a lot of parks and fairgrounds, partly because it is visible from outside the fence. They range from small family wheels a few metres across to observation wheels on the scale of the London Eye.',
     relatedTermIds: ['flat-ride', 'opening-hours'],
   },
   {
@@ -2294,7 +2294,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'German-community slang for the reflexive, uncritical praise that devoted Mack Rides fans heap on anything the manufacturer builds.',
     definition:
-      'A "Mackprodukt" (literally "Mack product") is an in-joke from the German-speaking coaster enthusiast community, used to gently mock the fervent loyalty of Mack Rides fans. Because Mack is a German manufacturer and the family behind Europa-Park — by far the most beloved park in the region — its fanbase is famously devoted, and critics joke that every new Mack ride is hailed as a masterpiece before anyone has even ridden it.\n\nThe meme is built around a handful of stock phrases that supposedly stand in for any real analysis: admiration for how beautifully the track is bent ("die Schiene ist so toll gebogen" — "the track is so wonderfully curved") and for the gorgeous trains ("wunderschöne Fahrfiguren" — "beautiful ride cars"), aesthetic compliments that conveniently sidestep how the coaster actually rides. Calling something a "Mackprodukt", or simply quoting the phrases, has become the community’s shorthand for affectionate eye-rolling at brand loyalty winning out over substance.',
+      'A "Mackprodukt" (literally "Mack product") is an in-joke from the German-speaking coaster enthusiast community, used to gently mock the fervent loyalty of Mack Rides fans. Because Mack is a German manufacturer and the family behind Europa-Park — by far the most beloved park in the region — its fanbase is famously devoted, and critics joke that every new Mack ride is hailed as a masterpiece before anyone has even ridden it.\n\nThe meme is built around a handful of stock phrases that supposedly stand in for any real analysis: admiration for how beautifully the track is bent ("die Schiene ist so toll gebogen" — "the track is so wonderfully curved") and for the gorgeous ride elements ("wunderschöne Fahrfiguren"), aesthetic compliments that conveniently sidestep how the coaster actually rides. Calling something a "Mackprodukt", or simply quoting the phrases, has become the community’s shorthand for affectionate eye-rolling at brand loyalty winning out over substance.',
     relatedTermIds: ['credit', 'fanboy', 'gp', 'hype-train', 'mack-rides'],
     aliases: ['Mack-Produkt', 'Mackprodukte'],
   },

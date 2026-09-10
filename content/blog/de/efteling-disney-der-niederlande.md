@@ -353,8 +353,9 @@ nur mit Schlangen.
 
 Unsere Historie für das Efteling umfasst **über 150 Betriebstage** mit
 Wartezeit-Daten, aufgenommen seit Dezember 2025. Über alle
-Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei
-25 Minuten** (Median), das 90. Perzentil bei 36.
+Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt bei **gut einer
+Viertelstunde**; an dem einen Tag von zehn, an dem richtig etwas los ist, ist es
+gut das Anderthalbfache.
 
 Die gefragtesten zehn Attraktionen:
 
@@ -500,15 +501,15 @@ Das Efteling hat an 365 Tagen im Jahr geöffnet, und das verschiebt die übliche
 Regeln.
 
 **Nach Monat** ist der April in unseren Daten der entspannteste der großen
-Saisonmonate (typisch 22 Minuten), gefolgt von Mai mit 23 und Juli mit 25. Der
-Juni liegt bei 26, der August bei 29. Am anstrengendsten ist der **Dezember mit
-34 Minuten** im Median, also die Winter-Efteling-Saison, gefolgt vom März mit 28.
+Saisonmonate. Mai, Juni und Juli liegen eng beieinander, der August zieht
+spürbar an, und am anstrengendsten ist der **Dezember**, also die
+Winter-Efteling-Saison.
 
 Dazu gehört eine Einschränkung, sonst liest sich das genauer, als es ist: Hinter
-April, Mai, Juni und Juli stehen jeweils rund 30 Messtage, hinter dem Dezember
-sieben, hinter dem Januar fünf und hinter dem März drei. Für Februar, September,
-Oktober und November haben wir in diesem Zeitfenster noch gar keine
-auswertbaren Tage. Die Richtung stimmt, die Rangfolge im Nachkommabereich nicht.
+April bis August steht jeweils ein voller Monat an Messtagen, hinter Dezember,
+Januar und März nur eine Handvoll, und für Februar, Oktober und November haben
+wir bislang gar keine auswertbaren Tage. Die Richtung stimmt, die Rangfolge im
+Detail nicht.
 
 **Nach Wochentag** wird es interessant, weil sich der übliche Rat hier auflöst:
 
@@ -516,7 +517,7 @@ auswertbaren Tage. Die Richtung stimmt, die Rangfolge im Nachkommabereich nicht.
 
 ```
 
-Zwischen dem besten und dem schlechtesten Wochentag liegen vier Minuten. Im
+Zwischen dem besten und dem schlechtesten Wochentag liegt eine einzige Stufe. Im
 Phantasialand sind es zwischen Dienstag und Samstag Welten, hier ist der
 Wochentag fast egal. Der **Montag** ist in unseren Daten sogar der vollste Tag,
 was zunächst absurd klingt und sich auflöst, sobald man die niederländischen

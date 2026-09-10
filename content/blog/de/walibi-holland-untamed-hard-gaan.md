@@ -467,8 +467,8 @@ letzten zwei Jahren entschieden hat.
 
 Gerechnet aus **über 130 Öffnungstagen mit
 auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt bei
-einer knappen Viertelstunde** (Median). Das 90. Perzentil, also der Wert, unter dem neun von zehn
-Messungen liegen, kommt auf 31 Minuten.
+einer knappen Viertelstunde** (Median). An dem einen Tag von zehn, an dem am
+meisten los ist, ist es gut das Anderthalbfache.
 
 Für die Bahnen einzeln sieht es so aus:
 
@@ -865,16 +865,14 @@ Parks findet seit 2011 Defqon.1 statt, das größte Hardstyle-Festival der Welt.
 ### Wie lang sind die Wartezeiten in Walibi Holland?
 
 Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
-**20 Minuten** (Median), das 90. Perzentil bei 31 Minuten. Untamed und Goliath
-liegen knapp darunter, die Neuheit YOY THRILL hält mit Abstand den höchsten Wert
+einer knappen Viertelstunde (Median). Untamed und Goliath liegen knapp darunter, die Neuheit YOY THRILL hält mit Abstand den höchsten Wert
 im Park. Aktuelle Zahlen stehen auf der
 [Walibi-Holland-Parkseite](ref:walibi-holland).
 
 ### Wann ist in Walibi Holland am wenigsten los?
 
-Mai und Juli sind in unseren Daten die entspanntesten Monate (typisch 18
-Minuten), der April der vollste (22 Minuten). Nach Wochentag ist der Unterschied
-klein, der Donnerstag liegt mit 18 Minuten knapp vorn. Meide die
+Über die Saison hinweg unterscheiden sich die Monate kaum, und nach Wochentag
+ist gar kein Unterschied messbar: Alle sieben liegen auf demselben Wert. Meide die
 niederländischen Mai- und Sommerferien sowie die Halloween-Wochenenden. Für ein konkretes Datum hilft der [Wartezeiten-Kalender](ref:walibi-holland?calendar) weiter.
 
 ### Was kostet der Eintritt in Walibi Holland?

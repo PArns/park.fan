@@ -162,8 +162,8 @@ export function ContentEN() {
         >
           At the big headliners the first hour after opening often buys more rides than two in the
           afternoon. It does not hold everywhere: some rides stay equally busy all day, others only
-          pick up after lunch. Each ride’s own page carries its day curve, and says whether
-          the earlier alarm pays off for it.
+          pick up after lunch. Each ride’s own page carries its day curve, and says whether the
+          earlier alarm pays off for it.
         </SplitFigure>
       </SectionShell>
 

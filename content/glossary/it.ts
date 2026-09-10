@@ -1043,9 +1043,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'Previsione IA',
     shortDefinition:
-      'Previsioni basate sul machine learning per i livelli di affluenza e i tempi di attesa, fino a 365 giorni in anticipo.',
+      'Previsioni basate sul machine learning per i livelli di affluenza e i tempi di attesa, fin dove un parco ha pubblicato il proprio calendario.',
     definition:
-      'Una previsione IA utilizza modelli di machine learning addestrati su dati storici di affluenza, dati meteo, calendari scolastici e dati in tempo reale per prevedere quanto sarà affollato un parco o una singola attrazione in un determinato giorno o ora. park.fan genera previsioni IA per affluenza e tempi di attesa previsti fino a 365 giorni in anticipo.\n\nLe previsioni vengono ricalcolate a ogni ciclo di addestramento, ogni giorno alle 06:00 UTC. Le previsioni a breve termine (1–7 giorni) risultano più precise perché a quel punto meteo ed eventi sono già fissati ed entrano nel calcolo i dati meteo attuali, gli annunci di eventi e i segnali di prenotazione. Le previsioni a lungo termine sono naturalmente meno precise, ma rimangono utili per identificare in anticipo periodi tranquilli o affollati.',
+      'Una previsione IA utilizza modelli di machine learning addestrati su dati storici di affluenza, dati meteo, calendari scolastici e dati in tempo reale per prevedere quanto sarà affollato un parco o una singola attrazione in un determinato giorno o ora. park.fan genera previsioni IA per affluenza e tempi di attesa previsti per ogni giorno che un parco ha già pubblicato.\n\nLe previsioni vengono ricalcolate a ogni ciclo di addestramento, ogni giorno alle 06:00 UTC. Le previsioni a breve termine (1–7 giorni) risultano più precise perché a quel punto meteo ed eventi sono già fissati ed entrano nel calcolo i dati meteo attuali, gli annunci di eventi e i segnali di prenotazione. Le previsioni a lungo termine sono naturalmente meno precise, ma rimangono utili per identificare in anticipo periodi tranquilli o affollati.',
     aliases: ['AI Forecast', 'AI Forecasts'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -1089,7 +1089,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Intelligenza Artificiale — i modelli di machine learning che calcolano le previsioni di affluenza e i tempi di attesa.',
     definition:
-      'L’IA (Intelligenza Artificiale) si riferisce agli algoritmi di machine learning che riconoscono pattern in grandi dataset e generano previsioni. park.fan utilizza modelli IA addestrati sui tempi di attesa registrati, sui calendari scolastici, sui dati meteorologici e sugli annunci di eventi. Questi modelli calcolano ogni giorno nuove previsioni di affluenza e di tempi di attesa: per ogni parco, ogni giorno, fino a 365 giorni in anticipo.',
+      'L’IA (Intelligenza Artificiale) si riferisce agli algoritmi di machine learning che riconoscono pattern in grandi dataset e generano previsioni. park.fan utilizza modelli IA addestrati sui tempi di attesa registrati, sui calendari scolastici, sui dati meteorologici e sugli annunci di eventi. Questi modelli calcolano ogni giorno nuove previsioni di affluenza e di tempi di attesa: per ogni parco e ogni giorno che ha già pubblicato.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
     aliases: ['Intelligenza Artificiale'],
   },
