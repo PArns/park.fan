@@ -1609,7 +1609,23 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       if (busy === GuestState.RIDING) {
         const errand = errands.get(slot);
         if (errand) {
-          ridesApi()?.leave(errand.venue, errand.ticket);
+          const api = ridesApi();
+          api?.leave(errand.venue, errand.ticket);
+          /**
+           * Out of the exit, not back into the queue.
+           *
+           * A rider never moves while they are aboard — this module leaves them standing where
+           * they boarded and runs a timer — so without this line getting off puts them back at
+           * the head of the line they just left, which is where every rider in the park has
+           * stood since guests first rode anything. `rides` answers with the machine's exit,
+           * which its own dock declares where it knows one and which is otherwise a channel's
+           * width to the side of the entrance.
+           */
+          const out = api?.exit(errand.venue) ?? null;
+          if (out) {
+            d.x[slot] = out[0];
+            d.z[slot] = out[1];
+          }
           errands.delete(slot);
         }
       }

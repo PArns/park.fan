@@ -378,6 +378,20 @@ export interface Dock {
   rideMinutes: number;
   /** False while the machine can take nobody at all: no fleet, no station, pumps off, mid-build. */
   running: boolean;
+  /**
+   * Where a rider is standing once they are off, when the machine knows.
+   *
+   * Optional, because most machines do not know and the honest default is derivable: a flat ride
+   * lets people out where they got on. A station does not -- a coaster unloads at the far end of
+   * the platform onto its own path, which is why a real queue and a real exit never cross. A
+   * module that owns a platform can say so here; one that does not leaves it out and `rides`
+   * puts the exit clear of its own queue rather than guessing at geometry it cannot see.
+   *
+   * Until this existed a rider simply went idle WHERE THEY HAD QUEUED, so everybody who had ever
+   * ridden was standing at the head of the line they had just left.
+   */
+  exitX?: number;
+  exitZ?: number;
 }
 
 /**

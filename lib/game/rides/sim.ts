@@ -45,7 +45,7 @@ import type {
   SimHandle,
 } from '../core/types';
 import { attachRideContent, resolveDockedRide, resolveFlatRide } from './manifest';
-import { QUEUE_CYCLES, queueSlot } from './queue';
+import { QUEUE_CHANNEL, QUEUE_CYCLES, QUEUE_LEAD, queueSlot } from './queue';
 import {
   DOCKED_MOTION_STRIDE,
   MOTION_STRIDE,
@@ -148,6 +148,8 @@ interface RideRuntime {
   entrance: [number, number];
   /** Unit vector from the entrance back along the queue. */
   queueDir: [number, number];
+  /** Where a rider stands once they are off. See `exitFor`. */
+  exit: [number, number];
 
   state: RideStateValue;
   /** Park minutes left in this state (or in the current down time). */
@@ -220,6 +222,8 @@ export interface RidesSimApi {
   board(id: string, ticket: number): RideBoarding | null;
   leave(id: string, ticket: number): void;
   entrance(id: string): [number, number] | null;
+  /** Where a rider is standing once they are off. See `exitFor`. */
+  exit(id: string): [number, number] | null;
   list(): RideView[];
   stats(): RidesStats;
   /** Ride seconds one run of the machine takes — what the animation is drawn against. */
@@ -374,6 +378,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       Math.abs(geo.entrance[1] - r.entrance[1]) > 0.05;
     r.entrance = geo.entrance;
     r.queueDir = geo.queueDir;
+    r.exit = exitFor(dock, geo.entrance, geo.queueDir);
     /**
      * Say so when the head of the line moves, and only then.
      *
@@ -426,6 +431,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       existing.machine = machine;
       existing.entrance = geo.entrance;
       existing.queueDir = geo.queueDir;
+      existing.exit = exitFor(null, geo.entrance, geo.queueDir);
       return;
     }
     rides.set(entity.id, {
@@ -436,6 +442,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       dockOk: flat,
       entity,
       ...geo,
+      exit: exitFor(null, geo.entrance, geo.queueDir),
       state: RideState.CLOSED,
       stateTimer: 0,
       dwell: 0,
@@ -1028,6 +1035,10 @@ export function createRidesSim(ctx: SimContext): SimHandle {
         r.boarded.delete(ticket);
       }
     },
+    exit(id) {
+      const r = rides.get(id);
+      return r ? [r.exit[0], r.exit[1]] : null;
+    },
     entrance(id) {
       const r = rides.get(id);
       return r ? [...r.entrance] : null;
@@ -1119,6 +1130,30 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       if (!enabled) dropAllWalkUps();
     },
   };
+
+  /**
+   * Where a rider stands once they are off the machine.
+   *
+   * The dock says so when its module owns a platform and knows. Where it does not, the exit is
+   * put on the SIDE of the entrance the queue does not use -- one channel's width across, so
+   * somebody leaving does not walk back up the line they just came out of, and a step forward of
+   * the entrance so they are clear of the gate. It is the smallest claim that is still true of
+   * every machine: people come out beside where they went in, not through it.
+   *
+   * Before this a rider went idle exactly where they had queued, which put everybody who had
+   * ever ridden at the head of the line.
+   */
+  function exitFor(dock: Dock | null, entrance: [number, number], dir: [number, number]): [number, number] {
+    if (dock && dock.exitX != null && dock.exitZ != null) return [dock.exitX, dock.exitZ];
+    // The queue runs back along `dir`; the exit goes across it, on the LEFT-hand normal, which is
+    // the side `queueSlot` never uses (it lays its rows out along the right-hand one).
+    const nx = -dir[1];
+    const nz = dir[0];
+    return [
+      entrance[0] + nx * QUEUE_CHANNEL + dir[0] * QUEUE_LEAD,
+      entrance[1] + nz * QUEUE_CHANNEL + dir[1] * QUEUE_LEAD,
+    ];
+  }
 
   /**
    * Where this machine's line starts and which way it runs, for whoever draws it.

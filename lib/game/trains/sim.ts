@@ -119,7 +119,7 @@ interface Fleet {
    * spline pushed sideways off the platform, and the spline does not move. Null while the track
    * has not been built.
    */
-  dock: { x: number; z: number; dirX: number; dirZ: number } | null;
+  dock: { x: number; z: number; dirX: number; dirZ: number; exitX: number; exitZ: number } | null;
 }
 
 /** Metres beside the platform centreline a queue stands. Clear of a 3 m-wide train and its rails. */
@@ -319,11 +319,24 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
     const n = Math.hypot(dx, dz) || 1;
     dx /= n;
     dz /= n;
+    /**
+     * The exit, at the DOWNSTREAM end of the platform rather than beside its middle.
+     *
+     * A station loads and unloads at two different places, and that is not decoration: it is why
+     * a real queue and a real exit never cross. `rides` can only guess (it puts the exit a
+     * channel's width to the side, which is true of a waltzer and not of a coaster); this module
+     * holds the block plan, so it can say. The far end is `block.stop` -- where the train comes
+     * to rest -- pushed out on the same lateral vector, so riders step off the same side they
+     * boarded from and walk forward out of the building.
+     */
+    const exitFrame = api.frameAt(rideId, block.stop) ?? frame;
     return {
       x: frame.p[0] + dx * PLATFORM_OFFSET,
       z: frame.p[2] + dz * PLATFORM_OFFSET,
       dirX: dx,
       dirZ: dz,
+      exitX: exitFrame.p[0] + dx * PLATFORM_OFFSET,
+      exitZ: exitFrame.p[2] + dz * PLATFORM_OFFSET,
     };
   }
 
@@ -584,6 +597,8 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
         cycleMinutes: Math.max(0.05, cycleMinutes),
         rideMinutes,
         running: true,
+        exitX: fleet.dock.exitX,
+        exitZ: fleet.dock.exitZ,
       };
     },
 
