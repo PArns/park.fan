@@ -193,8 +193,8 @@ export function ContentEN() {
         icon={Compass}
       >
         <P>
-          It gets more tangible at a real park. Three examples of how the same ingredients turn
-          into three completely different forecasts:
+          It gets more tangible at a real park. Three examples of how the same ingredients turn into
+          three completely different forecasts:
         </P>
         <SplitFigure
           src="/media/europa-park/silver-star.jpg"
@@ -311,8 +311,8 @@ export function ContentEN() {
         icon={Ticket}
       >
         <P>
-          Fancast runs on every park page; here are a few popular ones to try it on directly.
-          Click in, open the crowd calendar, and see which colour your chosen day gets:
+          Fancast runs on every park page; here are a few popular ones to try it on directly. Click
+          in, open the crowd calendar, and see which colour your chosen day gets:
         </P>
         <PopularParksGrid />
       </SectionShell>

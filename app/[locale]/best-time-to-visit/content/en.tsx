@@ -89,9 +89,9 @@ export function ContentEN() {
           four leave fingerprints in the wait times.
         </Lead>
         <P>
-          That is what we did: worked through the wait times recorded at more than 200 parks.
-          Below are the quietest weekdays and months, the calmest hours of the day and the dates
-          worth dodging. The crowd calendar then picks the right day for the park you have in mind.
+          That is what we did: worked through the wait times recorded at more than 200 parks. Below
+          are the quietest weekdays and months, the calmest hours of the day and the dates worth
+          dodging. The crowd calendar then picks the right day for the park you have in mind.
         </P>
         <Highlight>
           Short version: go Tuesday to Thursday outside the school holidays, arrive at opening, and

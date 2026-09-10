@@ -960,7 +960,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'realtime-wait-time',
     name: 'Live Wait Time',
-    shortDefinition: 'Wait time data pulled from a park’s own systems and refreshed every five minutes.',
+    shortDefinition:
+      'Wait time data pulled from a park’s own systems and refreshed every five minutes.',
     definition:
       'A live wait time is the current wait pulled from a park’s own data systems — not a historical average, but what the queue is doing today, right now. park.fan reads live wait times from public sources and refreshes them every five minutes, so you can see which attractions are running short queues and which are backed up.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
