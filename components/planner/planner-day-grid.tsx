@@ -509,6 +509,10 @@ export function PlannerDayGrid({
       event.preventDefault();
       event.stopPropagation();
 
+      // Before anything else, for the same reason as the move drag: a displaced
+      // gesture has to be ended while the state it reads is still its own.
+      liveGesture.current?.();
+
       const handle = event.currentTarget;
       // Where this gesture's events will arrive — the handle when the capture
       // took, the document when it did not. See {@link capturePointer}.
@@ -541,7 +545,6 @@ export function PlannerDayGrid({
       // Held so an unmount mid-gesture can still tear it down: with the
       // document fallback the listeners outlive the component that added them,
       // and their closure holds the block.
-      liveGesture.current?.();
       liveGesture.current = detach;
       bus.addEventListener('pointermove', onPointerMove as EventListener);
       bus.addEventListener('pointerup', onEnd as EventListener);
@@ -557,6 +560,14 @@ export function PlannerDayGrid({
 
       const block = event.currentTarget.closest('[data-planner-block]') as HTMLElement | null;
       if (!block) return;
+
+      // FIRST, before this gesture writes a single thing down. Whatever was
+      // running has to be ended while `dragState` is still ITS state: an abort
+      // run after the assignment below nulls out the drag that just replaced
+      // it, and the rAF handle two dozen lines further down then writes to
+      // `null` and throws inside a pointerdown handler — one finger's drag
+      // silently cancelled, the other's inert.
+      liveGesture.current?.();
 
       const handle = event.currentTarget;
       // Where this gesture's events will arrive — the handle when the capture
@@ -616,7 +627,6 @@ export function PlannerDayGrid({
         endDrag(false);
       };
 
-      liveGesture.current?.();
       liveGesture.current = abort;
       bus.addEventListener('pointermove', onPointerMove as EventListener);
       bus.addEventListener('pointerup', onUp as EventListener);

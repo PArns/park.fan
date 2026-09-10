@@ -1211,12 +1211,18 @@ if (await phoneLauncher.count()) {
           // height, never counted outward from a rounded centre: a control
           // whose top lands on .5 would otherwise measure 43 and fail for
           // arithmetic.
-          const top = Math.ceil(box.top);
-          const bottom = Math.floor(box.bottom) - 1;
+          //
+          // Both walks start on the first row that is OUTSIDE the box, and
+          // `ceil` is what makes that true at either end. `floor(bottom)` is
+          // still inside a box that ends on .4, so it counted one row of the
+          // control as if it were overhang — which is a floor that passes a
+          // 43 px control, i.e. the one number this check exists to refuse.
           let up = 0;
-          while (up < REACH && hits(el, x, top - up - 1)) up += 1;
+          const firstAbove = Math.ceil(box.top) - 1;
+          while (up < REACH && hits(el, x, firstAbove - up)) up += 1;
           let down = 0;
-          while (down < REACH && hits(el, x, bottom + down + 1)) down += 1;
+          const firstBelow = Math.ceil(box.bottom);
+          while (down < REACH && hits(el, x, firstBelow + down)) down += 1;
           const reach = Math.round(box.height) + up + down;
           if (reach < FLOOR) {
             rows.push({
