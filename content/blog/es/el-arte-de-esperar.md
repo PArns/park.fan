@@ -6,9 +6,9 @@ author: patrick
 mode: published
 excerpt: >-
   ¿60 minutos de espera y aun así el tiempo pasa volando? Detrás de cada buena
-  cola hay psicología, storytelling y pura matemática de capacidad. Una
-  inmersión a fondo desde el pre-show hasta la ley de Little, y en medio la
-  razón por la que existe park.fan.
+  cola hay psicología, storytelling y pura matemática de capacidad. Del
+  pre-show a la ley de Little, y en medio la razón por la que existe
+  park.fan.
 tags:
   - tiempos-de-espera
   - colas
@@ -64,7 +64,7 @@ completa está aquí](/blog/un-cochecito-una-gondola-y-park-fan)). Qué me estab
 pasando allí en realidad, quise saberlo después con exactitud. Entran en juego
 dos fórmulas, y las dos caben juntas en un posavasos.
 
-## La psicología del tiempo: por qué los minutos se estiran
+## Por qué los minutos se estiran
 
 El problema de fondo lo diseccionó el economista de Harvard **David Maister**
 ya en 1985 en su clásico
@@ -73,8 +73,7 @@ Su primera y más importante regla: el tiempo desocupado se siente más largo qu
 el tiempo ocupado. Quien solo mira la espalda del de delante ve el reloj
 arrastrarse. Quien tiene algo que ver, oír o hacer lo ve avanzar casi normal.
 
-A eso se suman otras tres reglas de Maister que cualquier planificador de
-parques sabe de memoria:
+Maister anotó ocho. Estas tres se ven en cualquier cola:
 
 - **La espera incierta se siente más larga que la espera explicada.** Por eso la
   cola está marcada cada pocos metros con carteles de tiempo restante, y a la
@@ -113,7 +112,7 @@ es solo decoración, mantiene ocupado al contador.
 
 ```
 
-### Pre-shows: la experiencia empieza antes de subir
+### Pre-shows
 
 Lo que mejor lo resuelve es el **pre-show**, que declara la espera parte de la
 atracción. El ejemplo de manual
@@ -172,8 +171,8 @@ parte de la atracción, justo la fase que según la regla del pico-final se
 recuerda con más fuerza. Y son al mismo tiempo la columna vertebral de la
 capacidad: se vuela en **link chambers** tipo teatro con 16 plazas por nivel,
 tres niveles superpuestos, cuatro salas en paralelo. Casi 200 visitantes a la
-vez, unos 1.400 por hora. Incluso tras 120 minutos de espera, la mayoría no
-cuenta después la cola, sino el avatar que respira en el tanque.
+vez, unos 1.400 por hora. Quien pasa allí 120 minutos cuenta después el
+avatar que respira en el tanque.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -224,7 +223,7 @@ de single rider**. Quien va solo y deja que lo coloquen en el asiento suelto
 que deja libre un grupo de cuatro acorta drásticamente su propia espera y de
 paso ayuda al parque a llenar cada vagón hasta el borde. Cada
 asiento que si no iría vacío es capacidad desperdiciada; la fila de single
-rider lo llena sin que nadie pierda su sitio. Pocas veces está tan claro.
+rider lo llena sin que nadie pierda su sitio.
 
 ```glossary-widget slug=single-rider
 
@@ -234,9 +233,8 @@ rider lo llena sin que nadie pierda su sitio. Pocas veces está tan claro.
 
 ### Espectáculos: los ayudantes silenciosos de la capacidad
 
-Y luego hay un truco que ni siquiera ocurre en la atracción: **el
-Un desfile, unos fuegos
-artificiales o un espectáculo de acrobacias fijan de golpe a miles de
+Y luego hay un truco que ni siquiera ocurre en la atracción. Un desfile, unos
+fuegos artificiales o un espectáculo de acrobacias fijan de golpe a miles de
 visitantes, gente que durante esa hora no está en ninguna cola. El anfiteatro
 de **Fantasmic!** en los Hollywood Studios acoge, entre plazas de pie y
 sentadas, a cerca de 10.000 personas por función. Un solo espectáculo se traga
@@ -251,7 +249,7 @@ actualizamos los tiempos de espera cada minuto.
 
 ![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney’s Hollywood Studios | Fantasmic! en los Hollywood Studios: casi 10.000 personas por función, toda una ola de visitantes que durante esa media hora seguro que no está en ninguna cola de montaña rusa. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Capacidad y rendimiento: el secreto matemático
+## Cuántas personas mueve una atracción por hora
 
 **Rendimiento** significa sencillamente cuántas personas transporta realmente
 una atracción por hora. Esa cifra decide lo larga que es la cola de verdad.
@@ -323,7 +321,7 @@ Rides, allí circulan **siete trenes** a la vez, con un despacho objetivo de
 tren solo lleve a 16 personas, más de lo que consigue el Hulk con sus 32 plazas
 por salida.
 
-### La parada es el enemigo: rolling launches y rolling stations
+### Trenes que no paran nunca
 
 El último escalón de este razonamiento: trenes que ya no se paran en absoluto.
 Voltron usa **rolling launches**, en los que los trenes no se detienen antes
@@ -384,8 +382,8 @@ ganador. Regla del pico-final, recordemos: la experiencia termina mejor de lo
 esperado, y exactamente así queda archivada. O sea que el panel miente de
 verdad, pero miente a tu favor.
 
-De esta fórmula depende park.fan. Nuestros tiempos de espera en vivo te enseñan
-cada minuto qué están haciendo realmente L y λ, y cuando nuestro modelo de IA
+De esta fórmula depende park.fan. Los tiempos de espera en vivo enseñan
+cada minuto qué están haciendo realmente L y λ, y cuando nuestro modelo
 predice tiempos de espera hasta 365 días por adelantado, en el fondo no modela
 otra cosa que esas dos magnitudes: la **demanda** (¿cuánta gente quiere subir
 hoy a esta atracción?) y el **rendimiento** (¿a cuántos despacha?). Little
@@ -402,7 +400,7 @@ mundo, desde
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) hasta
 Orlando?
 
-Hay tres razones, y las tres son aritmética:
+Tiene poco que ver con la atracción y mucho con la aritmética:
 
 1. **Los barcos piratas no son transporte de masas.**
    [Peter Pan’s Flight en París](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -469,7 +467,7 @@ entre las que repartir la demanda.
 
 Las cifras casi dan risa. Taron despacha unos **1.200 visitantes por hora**, es
 decir, casi exactamente los mismos que Peter Pan’s Flight en París. La
-diferencia no está en la atracción, sino en aquello sobre lo que la demanda de
+diferencia está en el denominador: en aquello sobre lo que la demanda de
 alrededor puede repartirse. En París, Peter Pan está entre docenas de
 alternativas. En Brühl, un sábado de vacaciones, una parte considerable del
 parque tiene esa misma atracción en la cabeza al mismo tiempo. Y Voltron en el
@@ -598,7 +596,7 @@ vehículo en marcha, y la atracción se traga así más de 3.000 visitantes por
 hora, más que más de una megamontaña rusa, con una cadena de vehículos que da
 sus vueltas sin rechistar desde los años sesenta y nunca pide un descanso.
 
-## Conclusión: el panel cuenta solo la mitad de la historia
+## Qué parte de esto está en park.fan
 
 La próxima cola de 60 minutos no se acortará por ello. Pero se lee de otra
 manera. Quedan tres preguntas, y park.fan tiene respuesta para cada una:
@@ -620,10 +618,9 @@ manera. Quedan tres preguntas, y park.fan tiene respuesta para cada una:
 
 Solo contra la psicología no podemos hacer nada. Que la hora se sienta como una
 hora o como un primer acto lo deciden los pre-shows, la tematización y el
-efecto pico-final, y los parques que dominan ese oficio. Así que la próxima vez
-que estés en una cola tematizada con cariño y el tiempo pase extrañamente
-rápido: no es casualidad, es diseño. Disfrútalo, formas parte de una ilusión
-bastante magnífica. Y si merece la pena, te lo dicen antes los datos.
+efecto pico-final, y los parques que dominan ese oficio. Dos minutos antes de
+salir de casa, la cifra está en la página del parque. Después da igual lo larga
+que se sienta la hora.
 
 — Patrick
 

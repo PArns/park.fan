@@ -7,8 +7,8 @@ mode: published
 excerpt: >-
   60 minuten wachttijd, en toch vliegt de tijd voorbij? Achter elke goede
   wachtrij schuilen psychologie, storytelling en keiharde capaciteitswiskunde.
-  Een deep dive van de pre-show tot Little’s Law, en middenin de reden waarom
-  park.fan bestaat.
+  Van de pre-show tot Little’s Law, en middenin de reden waarom park.fan
+  bestaat.
 tags:
   - wachttijden
   - wachtrijen
@@ -63,7 +63,7 @@ verhaal staat hier](/blog/welkom-bij-de-park-fan-blog)). Wat er die middag
 eigenlijk met me gebeurde, wilde ik daarna precies weten. Er komen twee
 formules aan te pas, en die passen samen op één bierviltje.
 
-## De psychologie van tijd: waarom minuten uitrekken
+## Waarom minuten uitrekken
 
 Het kernprobleem ontleedde de Harvard-econoom **David Maister** al in 1985 in
 zijn klassieker
@@ -72,8 +72,7 @@ Zijn eerste en belangrijkste regel: onbezette tijd voelt langer dan bezette
 tijd. Wie alleen naar de rug van zijn voorganger staart, ziet de klok kruipen.
 Wie iets te zien, te horen of te doen heeft, ziet hem bijna normaal doorlopen.
 
-Daar komen nog drie Maister-regels bij die elke parkplanner uit zijn hoofd
-kent:
+Maister schreef er acht op. Deze drie zie je in elke wachtrij terug:
 
 - **Onzeker wachten voelt langer dan verklaard wachten.** Daarom markeren om de
   paar meter resttijdbordjes de weg door de wachtrij, en hangt bij de ingang het
@@ -109,7 +108,7 @@ details. Het decor is niet alleen decor, het houdt de teller bezig.
 
 ```
 
-### Pre-shows: de beleving begint voor het instappen
+### Pre-shows
 
 Het grondigst lost de **pre-show** dat op, die het wachten tot onderdeel van de
 attractie verklaart. Het schoolvoorbeeld staat
@@ -168,8 +167,8 @@ precies de fase die volgens de peak-end-regel het sterkst wordt onthouden. En
 ze zijn tegelijk de capaciteitsruggengraat: er wordt gevlogen in
 theaterachtige **link chambers** met 16 plaatsen per laag, drie lagen boven
 elkaar, vier theaters parallel. Krap 200 gasten tegelijk, zo’n 1.400 per uur.
-Zelfs na 120 minuten wachten vertellen de meesten achteraf niet over de rij,
-maar over de ademende avatar in de tank.
+Wie daar 120 minuten staat, vertelt achteraf over de ademende avatar in de
+tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -219,8 +218,7 @@ En dan is er hier nog een capaciteitstruc die beide kanten helpt: de
 laat zetten die een groepje van vier overlaat, bekort de eigen wachttijd
 drastisch en helpt het park en passant elke wagen tot de rand te vullen. Elke
 anders lege stoel is weggegooide capaciteit, en een solorijder vult hem zonder
-dat iemand zijn plek kwijtraakt. Zo eenduidig is het zelden. Een geval waarin eigenbelang en
-doorstroom precies dezelfde kant op trekken.
+dat iemand zijn plek kwijtraakt.
 
 ```glossary-widget slug=single-rider
 
@@ -245,7 +243,7 @@ verversen we de wachttijden elke minuut.
 
 ![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling, een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Capaciteit en doorstroom: het wiskundige geheim
+## Hoeveel mensen een baan per uur verwerkt
 
 **Doorstroom** betekent simpelweg: hoeveel mensen een attractie per uur
 daadwerkelijk vervoert. Dat getal bepaalt hoe lang de rij uiteindelijk echt is.
@@ -317,7 +315,7 @@ van **één vertrek elke 36 seconden**. Dat levert 1.600 gasten per uur op,
 terwijl er in één trein maar 16 personen passen, meer dus dan de Hulk met zijn
 32 plaatsen per vertrek haalt.
 
-### Stilstand is de vijand: rolling launches en rolling stations
+### Treinen die nooit stoppen
 
 De nieuwste escalatie van dit denken: treinen die helemaal niet meer stoppen.
 Voltron gebruikt **rolling launches**, waarbij de treinen niet vóór de launch
@@ -379,7 +377,7 @@ beleving eindigt beter dan verwacht, en precies zo wordt ze opgeslagen. De
 aanduiding liegt dus echt, maar ze liegt in jouw voordeel.
 
 Precies aan deze formule hangt park.fan. Onze live wachttijden laten je elke minuut zien wat L en λ werkelijk doen, en
-wanneer ons AI-model wachttijden tot 365 dagen vooruit voorspelt, modelleert het
+wanneer ons model wachttijden tot 365 dagen vooruit voorspelt, modelleert het
 in de kern niets anders dan die twee grootheden: **vraag** (hoeveel mensen
 willen vandaag naar deze baan?) en **doorstroom** (hoeveel werkt hij er weg?).
 Little zou vermoedelijk verbaasd zijn waar zijn formule tegenwoordig allemaal
@@ -394,7 +392,7 @@ achtbaan, geen thrill, in praktisch elk Disneypark ter wereld, van
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) tot
 Orlando, vrijwel permanent op 45+ minuten?
 
-Daar zijn drie redenen voor, en alle drie zijn rekenwerk:
+Dat heeft weinig met de baan te maken en veel met rekenwerk:
 
 1. **Piratenschepen zijn geen massavervoer.**
    [Peter Pan’s Flight in Parijs](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -460,8 +458,8 @@ als er maar weinig attracties zijn om de drukte over te verdelen.
 
 De cijfers erbij zijn bijna komisch. Taron verwerkt ongeveer **1.200 gasten per
 uur**, dus vrijwel precies evenveel als Peter Pan’s Flight in Parijs. Het
-verschil zit niet in de baan, maar in waarover de vraag eromheen zich kan
-verdelen. In Parijs staat Peter Pan tussen tientallen alternatieven. In Brühl
+verschil zit in de noemer: in waarover de vraag eromheen zich kan verdelen. In
+Parijs staat Peter Pan tussen tientallen alternatieven. In Brühl
 heeft op een vakantiezaterdag een fors deel van het park tegelijk dezelfde ene
 baan in gedachten. En Voltron in het Europa-Park ligt met 1.600 per uur maar
 een derde hoger, maar houdt zijn rij veel korter omdat twaalf andere achtbanen
@@ -585,7 +583,7 @@ voertuig, en de attractie slikt zo ruim 3.000 gasten per uur op, meer dan
 menige megacoaster, met een voertuigketen die sinds de jaren zestig
 klaglooss haar rondjes draait en nooit om een pauze vraagt.
 
-## Conclusie: de aanduiding vertelt maar het halve verhaal
+## Wat daarvan op park.fan staat
 
 Korter wordt de volgende rij van 60 minuten er niet van. Maar hij leest anders.
 Drie vragen blijven over, en voor elk heeft park.fan een antwoord:
@@ -607,10 +605,9 @@ Drie vragen blijven over, en voor elk heeft park.fan een antwoord:
 
 Alleen tegen de psychologie kunnen we niets doen. Of het uur als een uur voelt
 of als een eerste bedrijf, bepalen pre-shows, theming en het peak-end-effect,
-en de parken die dat vak beheersen. Sta je dus de volgende keer in een liefdevol
-gethematiseerde rij en gaat de tijd vreemd snel voorbij: dat is geen toeval,
-dat is ontwerp. Geniet ervan, je bent onderdeel van een behoorlijk grandioze
-illusie. En of ze de moeite waard is, zeggen de data je vooraf.
+en de parken die dat vak beheersen. Twee minuten voor vertrek staat het getal
+op de parkpagina. Daarna maakt het toch niet meer uit hoe lang dat uur
+aanvoelde.
 
 — Patrick
 

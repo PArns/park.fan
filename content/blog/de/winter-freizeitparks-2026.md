@@ -53,7 +53,7 @@ seo:
 
 Am 14. November gehen im [Phantasialand](ref:phantasialand) die Lichter an. Der
 Park bleibt bis 20 Uhr offen, und den Abend beschließt MAGIC SYMPHONY mit
-Feuerwerk, von da an jeden Tag bis in den Januar. In Bottrop hängen dann über 800.000 Lampen, in Wavre steht eine Eisbahn von 700 Quadratmetern unter
+Feuerwerk, von da an jeden Tag bis in den Januar. In Bottrop hängen dann über 800.000 Lichter, in Wavre steht eine Eisbahn von 700 Quadratmetern unter
 einem Hallendach, und in Kasterlee ist der Weihnachtsmann im Tagesticket drin.
 Zwischen Mitte November und Anfang Januar wird aus einem guten Teil der
 europäischen Freizeitparks etwas, das mit Achterbahnen nur noch nebenbei zu tun
@@ -79,8 +79,7 @@ Daran entscheidet sich, wer im Dezember aufmacht. Die Frage ist, wie viel
 Kapazität ein Park noch hat, wenn draußen niemand fahren will. Das
 [Efteling](ref:efteling) füllt denselben Zeitraum mit Dark Rides und sieht bei
 Regen sogar besser aus. Das [Phantasialand](ref:phantasialand) hat halbe
-Themenbereiche unter Dach, Walibi Belgium hat Hallen. Wer nur große Bahnen unter
-freiem Himmel besitzt, ist im Juli unschlagbar und im Dezember wehrlos.
+Themenbereiche unter Dach, Walibi Belgium hat Hallen. Walibi Holland hatte im Winter keine einzige überdachte Großbahn.
 
 Unten steht, wer die Saison 2026/27 fährt, mit Terminen, Öffnungszeiten und
 Preisen. Dazu eine Zahl, die den meisten quer zum Gefühl liegt: In den Monaten,
@@ -205,18 +204,17 @@ einem großen. Was Troy an einem normalen Tag an Wartezeit kostet, steht im
 
 ## Die Dezember-Öffner
 
-Diese Parks sind den Rest des Winters zu und machen für drei bis sechs Wochen
-noch einmal auf. Die Fenster sind kurz, und das hat Folgen für die Schlangen,
-dazu unten mehr.
+Diese Parks sind den Rest des Winters zu und machen für zwei bis sechs Wochen
+noch einmal auf. Die Fenster sind kurz, und kurze Fenster machen lange Schlangen.
 
 ### Walibi Belgium: Walibi Winter, 5. Dezember bis 3. Januar
 
 Während der niederländische Schwesterpark aufgibt, macht
 [Walibi Belgium](ref:walibi-belgium) in Wavre unverändert weiter. Vom
-**5. Dezember 2026 bis 3. Januar 2027** stehen acht dekorierte Bereiche, alle an
-nordischen Landschaften entlanggebaut: Alpin Village, Frozen Land, Polar
-Playground, Glowing Greetings, Chocolate Factory, Festive Tropics, Twinkle Town
-und neu der **Northern Dock**, ein skandinavischer Hafen rund um
+**5. Dezember 2026 bis 3. Januar 2027** stehen acht dekorierte Bereiche, die meisten davon
+nordisch: Alpin Village, Frozen Land, Polar Playground und Twinkle Town, dazu
+Glowing Greetings, Chocolate Factory, Festive Tropics und neu der
+**Northern Dock**, ein skandinavischer Hafen rund um
 [Mecalodon](ref:walibi-belgium/mecalodon), die Familienachterbahn zum 50. Geburtstag des Parks.
 
 ![Der Eingang von Walibi Belgium, mit Christbaumkugeln geschmückt, darüber der Schriftzug „Walibi Winter“ | Wavre macht weiter, Biddinghuizen nicht. Zwischen den beiden Parks liegen zwei Stunden Fahrt und ein paar Hallendächer. | wide](/media/walibi-belgium/background.jpg)
@@ -236,11 +234,10 @@ Termine: [walibi.be → Walibi Winter](https://www.walibi.be/walibi-winter/en).
 Geschichte im Winter aufgemacht und wiederholt das 2026/27. Sechs Themenzonen,
 darunter Santa City, Snow Valley, Lake of Frost mit Eisbahn und Land of Fire &
 Ice, dazu Winterparade, Feuer-und-Licht-Show und die Weihnachtsbaum-Illumination.
-Geöffnet ist von 11 bis 19 Uhr, am 24. und 31. Dezember bis 18 Uhr, geschlossen
-am 25. Dezember und 1. Januar.
+Geöffnet ist an 18 Tagen in diesem Fenster, von 11 bis 19 Uhr, am 24. und
+31. Dezember bis 18 Uhr; am 25. Dezember und 1. Januar bleibt der Park zu.
 
-Bemerkenswert ist die Ticketstruktur: In Kasterlee ist **alles im Tagesticket
-drin**, vom Eislaufen bis zum Eispalast. Zusatzbuchungen gibt es keine.
+In Kasterlee ist **alles im Tagesticket drin**, vom Eislaufen bis zum Eispalast. Zusatzbuchungen gibt es keine.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
@@ -347,8 +344,8 @@ Rundungsfrage.
 
 ```
 
-Eine Einschränkung dazu, und sie ist wichtig: Die Wintermonate stehen auf einer
-Handvoll Messtagen, die Sommermonate auf dreißig. Die Tage-Spalte in der Tabelle
+Die Wintermonate stehen auf einer Handvoll Messtagen, die Sommermonate auf
+dreißig. Die Tage-Spalte in der Tabelle
 sagt bei jeder Zeile, worauf sie steht. Für eine Aussage über die Größenordnung
 reicht das, für eine Prognose auf fünf Minuten genau nicht. Beim Efteling zeigt
 sich dasselbe Muster mit denselben Vorbehalten.
@@ -404,8 +401,8 @@ Das erklärt die dünnen Zeilen in den Tabellen oben. Als der letzte Wintertraum
 lief, ging diese Seite gerade erst an den Start: Aus dem Dezember 2025 haben wir
 eine Handvoll Messtage, aus dem Januar 2026 vier, aus dem November keinen
 einzigen. Erst seit April schreiben wir jeden Öffnungstag mit. Der Winter
-2026/27 ist damit der erste, den wir von der ersten bis zur letzten
-Lichterkette begleiten, und danach hat unser Modell zum ersten Mal ein
+2026/27 ist damit der erste, den wir vom ersten bis zum letzten
+Öffnungstag mitschreiben, und danach hat unser Modell zum ersten Mal ein
 vollständiges Jahr beisammen.
 
 Was die wenigen Wintertage schon jetzt zeigen, deckt sich mit dem, was jeder
@@ -415,7 +412,7 @@ Kalter Regen ändert daran nichts, und der Wochentag längst nicht so viel wie i
 Sommer: Auch dienstags im Advent ist in beiden Parks gut etwas los.
 
 Der Umschwung dorthin dauert genau eine Nacht. Bis einschließlich Freitag, dem 13. November, läuft in Brühl die reguläre Saison mit den alten Zeiten von 9 bis
-18 Uhr, und diese Woche ist die leerste des ganzen Spätjahrs. Am Samstag, dem 14. November, stellt der Park auf 11 bis 20 Uhr um, und ab diesem Tag ist voll.
+18 Uhr, und diese Woche ist die leerste des ganzen Spätjahrs. Am Samstag, dem 14. November, stellt der Park auf 11 bis 20 Uhr um, und ab diesem Tag ist es voll.
 
 Daraus folgt ein unangenehmer Rat: Die leere Woche nützt dir nichts, weil es den
 Wintertraum darin noch nicht gibt. Am ehesten kommst du an einem Werktag
@@ -430,7 +427,7 @@ Modell, das eine Saison nie gesehen hat, hält sie für ruhig, und dasselbe gilt
 für die Wintertage im Europa-Park und im Efteling. Ab dem nächsten Winter kennt
 es sie.
 
-## Drei Dinge, die im Winter anders laufen
+## Datum, Attraktionsliste, Dunkelheit
 
 1. **Das Datum entscheidet über den Preis, nicht der Park.** Fast alle
    Wintertickets sind datumsgebunden und nach Tag gestaffelt. Der Wintertraum

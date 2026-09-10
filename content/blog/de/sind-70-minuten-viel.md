@@ -64,7 +64,7 @@ der Tagesspitzen: An der Hälfte aller gemessenen Tage war die längste Schlange
 kürzer als dieser Wert, an der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem
 richtig was los war.
 
-Beides sind Perzentile und keine Durchschnitte, und das ist kein Detail. Ein
+Beides sind Perzentile und keine Durchschnitte. Ein
 Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
 mit Betriebsstörung und 150 Minuten Rückstau zieht den Schnitt eines ganzen
 Monats nach oben, obwohl an 29 Tagen nichts davon zu spüren war. Der Median
@@ -108,7 +108,7 @@ Seite jeder Bahn, mit konkreter Uhrzeit in Parkzeit.
 
 ## Das meiste entscheidet sich vor der Abreise
 
-Die Uhrzeit rettet dir eine halbe Stunde. Das Datum rettet dir den Tag. Zwischen
+Die Uhrzeit spart dir eine halbe Stunde, das Datum bis zu einer ganzen. Zwischen
 zwei Tagen derselben Ferienwoche kann eine halbe Stunde Durchschnittswartezeit
 liegen, und einem gewöhnlichen Kalender sieht man das nicht an. Was den
 Unterschied macht: welche Bundesländer gerade frei haben, ob ein Brückentag
@@ -144,10 +144,6 @@ ein Jahr Historie, und die beiden Jahre davor sind für immer weg.
 
 ## Und die Stellen, an denen wir nichts sagen
 
-Eine Seite voller gefüllter Felder ist leicht zu bauen. Interessant wird sie
-erst, wenn man den gefüllten Feldern trauen kann, und dafür müssen ein paar
-Felder leer bleiben dürfen.
-
 [Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der eigenen App aus, und
 nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
 Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
@@ -176,8 +172,6 @@ konkrete Besuchssituationen sind auch dabei, von der Familie in den
 Herbstferien bis zum Jahreskarten-Abend um sieben.
 
 Und wenn du das nächste Mal am Eingang stehst und auf die Anzeige starrst:
-Schau nach, was an dieser Bahn an einem Dienstag normal ist. Dann weißt du in
-zehn Sekunden, ob du dich gerade ärgern musst oder ob heute einfach Dienstag
-ist.
+Schau nach, was an dieser Bahn an einem Dienstag normal ist.
 
 — Patrick
