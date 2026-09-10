@@ -95,9 +95,9 @@ Dazu kommen drei weitere Maister-Regeln, die jeder Park-Planer auswendig kennt:
 Wie schlecht wir unbeschäftigtes Warten einschätzen, lässt sich messen. In den
 Feldexperimenten des Marketingforschers **Jacob Hornik** überschätzten Wartende
 die tatsächlich verstrichene Zeit im Schnitt um **rund 36 Prozent**. Aus
-gemessenen zehn Minuten werden im Kopf fast vierzehn. Dein innerer Uhrmacher
-ist ein notorischer Aufrundungskünstler, und er rundet grundsätzlich zu deinen
-Ungunsten. Der MIT-Warteschlangenforscher **Richard Larson** zeigte mit
+gemessenen zehn Minuten werden im Kopf fast vierzehn, und der Fehler geht immer
+in dieselbe Richtung: Niemand kommt aus einer Schlange und schätzt sie kürzer,
+als sie war. Der MIT-Warteschlangenforscher **Richard Larson** zeigte mit
 Kollegen schon 1991 unter dem schönen Titel
 [„Entertain, Enlighten, and Engage“](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 dass schon simple Ablenkung die empfundene Wartequalität deutlich verbessert.
@@ -108,8 +108,8 @@ wenn es sonst nichts zu tun hat. Richtet sich die Aufmerksamkeit auf Musik,
 Details im Theming oder eine Show, fehlen dem inneren Zähler schlicht die
 Ressourcen, und die Überschätzung schmilzt zusammen. Genau darauf zahlt alles
 ein, was du in einer guten Warteschlange siehst: Soundtracks, Animatronics,
-interaktive Elemente, versteckte Details. Was wie Deko aussieht, ist in
-Wahrheit angewandte Kognitionspsychologie.
+interaktive Elemente, versteckte Details. Die Deko ist nicht nur Deko, sie hält
+den Zähler beschäftigt.
 
 ```glossary-widget slug=pre-show
 
@@ -117,8 +117,8 @@ Wahrheit angewandte Kognitionspsychologie.
 
 ### Pre-Shows: Das Erlebnis beginnt vor dem Einstieg
 
-Die eleganteste Waffe gegen tote Zeit ist die **Pre-Show**, die das Warten
-einfach zum Teil der Attraktion umdeklariert. Das Paradebeispiel steht in den
+Am gründlichsten löst das die **Pre-Show**, die das Warten zum Teil der
+Attraktion umdeklariert. Das Paradebeispiel steht in den
 [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare): Beim
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 schiebst du dich nicht durch einen Korridor, sondern durch die verstaubte Lobby
@@ -222,13 +222,12 @@ den Kopf gedreht hat, schaut nicht alle zehn Sekunden aufs Handy.
 
 ```
 
-Und dann gibt es hier noch den vielleicht elegantesten Kapazitäts-Trick
-überhaupt: die **Single-Rider-Spur**. Wer allein fährt und sich auf den freien
+Dazu kommt hier ein Kapazitäts-Trick, der beiden Seiten hilft: die
+**Single-Rider-Spur**. Wer allein fährt und sich auf den freien
 Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt, kürzt die eigene
 Wartezeit drastisch ab und hilft nebenbei dem Park, jeden Wagen randvoll zu
-machen. Jeder sonst leere Sitz ist verschenkte Kapazität; die
-Single-Rider-Spur ist die elegante Art, diese Lücken zu stopfen. Ein seltener
-Fall, in dem Eigennutz und Durchsatz exakt in die gleiche Richtung ziehen.
+machen. Jeder sonst leere Sitz ist verschenkte Kapazität, und ein Einzelfahrer füllt
+ihn, ohne dass jemand seinen Platz verliert. Das ist selten so eindeutig.
 
 ```glossary-widget slug=single-rider
 
@@ -239,9 +238,9 @@ Fall, in dem Eigennutz und Durchsatz exakt in die gleiche Richtung ziehen.
 ### Shows: Die stillen Kapazitäts-Helfer
 
 Und dann gibt es noch einen Trick, der gar nicht an der Attraktion selbst
-stattfindet: **Entertainment als Massen-Schwamm.** Eine Parade, ein Feuerwerk
-oder eine Stunt-Show bindet auf einen Schlag tausende Gäste, also Menschen, die
-in dieser Stunde in keiner einzigen Warteschlange stehen. Das Amphitheater
+stattfindet. Eine Parade, ein Feuerwerk oder eine Stunt-Show bindet auf einen
+Schlag tausende Gäste, also Menschen, die in dieser Stunde in keiner einzigen
+Warteschlange stehen. Das Amphitheater
 von **Fantasmic!** in den Hollywood Studios fasst mit Steh- und Sitzplätzen an
 die 10.000 Menschen pro Vorstellung. Eine einzige Show schluckt also eine ganze
 Besucherwelle: zehntausend Leute, die für die nächste halbe Stunde garantiert
@@ -325,7 +324,8 @@ Wie ernst moderne Bahnen das nehmen, zeigt
 [Europa-Park](ref:europa-park?bare). Laut Hersteller-Factsheet von Mack Rides
 sind dort **sieben Züge** gleichzeitig unterwegs, mit einer Ziel-Abfertigung
 von **einer Abfahrt alle 36 Sekunden**. Macht 1.600 Gäste pro Stunde, obwohl
-ein Zug nur 16 Personen fasst. Frequenz schlägt Größe.
+ein Zug nur 16 Personen fasst, also mehr als der Hulk mit seinen 32 Plätzen pro
+Abfahrt schafft.
 
 ### Stillstand ist der Feind: Rolling Launches & Rolling Stations
 
@@ -334,8 +334,8 @@ Voltron nutzt **Rolling Launches**, bei denen die Züge nicht vor dem Launch
 gestoppt und dann abgeschossen, sondern im Vorbeifahren beschleunigt werden,
 „fliegend“ wie beim Staffellauf. Damit die LSM-Motoren das im 36-Sekunden-Takt
 durchhalten, hat Mack ihnen kurzerhand vier statt zwei Statorreihen spendiert.
-Jeder vermiedene Stopp bedeutet: Der Block wird schneller frei, der Takt hält,
-die Schlange rollt.
+Ein Zug, der nicht anhält, gibt seinen Block früher frei, und damit hält der
+36-Sekunden-Takt.
 
 Und [Walibi Holland](ref:walibi-holland?bare) hat dasselbe Prinzip 2025 auf die
 Station übertragen. Bei **YOY**, Europas erstem Single-Rail-Duell-Coaster, bei
@@ -388,9 +388,8 @@ Station als Gewinner. Peak-End-Regel, wir erinnern uns:
 Das Erlebnis endet besser als erwartet, und genau so wird es abgespeichert. Die
 Anzeige lügt also tatsächlich, aber sie lügt für dich.
 
-Kurz aus dem Maschinenraum, denn genau hier lebt park.fan. Unsere
-Live-Wartezeiten zeigen dir im Minutentakt, was L und λ
-gerade wirklich tun, und wenn unser KI-Modell Wartezeiten bis zu 365 Tage im
+Genau an dieser Formel hängt park.fan. Die Live-Wartezeiten zeigen im
+Minutentakt, was L und λ gerade wirklich tun, und wenn unser Modell Wartezeiten bis zu 365 Tage im
 Voraus prognostiziert, modelliert es im Kern nichts anderes als diese beiden
 Größen: **Nachfrage** (wie viele Menschen wollen heute zu dieser Bahn?) und
 **Durchsatz** (wie viele schafft sie weg?). Little wäre vermutlich erstaunt,

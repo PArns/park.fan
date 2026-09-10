@@ -295,7 +295,7 @@ Magos** durch den Mediterrània-Bereich, der Dreikönigsumzug, an dem in Spanien
 die Geschenke kommen.
 
 Eine Warnung dazu, und sie kommt aus unseren eigenen Messungen: Von allen
-Parks in diesem Artikel steht man bei PortAventura am längsten an, und das gilt über
+Parks in dieser Übersicht steht man bei PortAventura am längsten an, und das gilt über
 das ganze Jahr, nicht nur zu Weihnachten. Die Tabelle weiter unten stellt das
 nebeneinander. Wer im Dezember mit einer leeren Saison rechnet, weil bei ihm zu
 Hause Winter ist, plant für das falsche Land.
@@ -391,7 +391,7 @@ ein eigenes Ziel ist. Leute fahren wegen der Shows nach Brühl, nicht trotz der
 Jahreszeit.
 
 Und weil die Frage „welcher von denen ist der vollste“ auf jeder Autofahrt
-gestellt wird, hier die Parks aus diesem Artikel nebeneinander, jeweils mit
+gestellt wird, hier die Parks aus dieser Übersicht nebeneinander, jeweils mit
 ihrem ruhigsten Wochentag:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
