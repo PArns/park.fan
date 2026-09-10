@@ -50,6 +50,8 @@ export { buildTrackGeometry, extrusionStations } from './profile';
 export type { TrackGeometry, TrackStyleShape, Geo } from './profile';
 export { buildSupports } from './supports';
 export type { SupportBuild, SupportOptions } from './supports';
+export { buildStation } from './station';
+export type { StationBuild, StationOptions } from './station';
 export { resolveStyle, resolveTrain, resolveLimits, buildOptionsFor, trackStyles } from './resolve';
 export { TRACK_LAYOUTS, layoutData } from './layouts';
 export type { LayoutPreset } from './layouts';

@@ -32,6 +32,7 @@ import { simulateTrack, type TrackPhysics } from './physics';
 import { buildTrackGeometry, type Geo, type TrackGroup } from './profile';
 import { buildOptionsFor, resolveColor, resolveStyle, trackStyles } from './resolve';
 import { buildSupports } from './supports';
+import { buildStation } from './station';
 import type { TrackSpline, TrackFrame } from './spline';
 import type { DriveSection, TrackData } from './types';
 import type { TrackStyleDef } from '../core/pack-schema';
@@ -198,6 +199,20 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     if (footingMesh) {
       footingMesh.addLODLevel(tieDistance * 1.6, null);
       meshes.push(footingMesh);
+    }
+
+    // The boarding station. Three groups so each takes its own material: the deck is concrete, the
+    // posts and the canopy are painted with the track so a station reads as part of the ride, and
+    // the railing is the rail steel. A layout with no `station` drive section (the showcase's open
+    // test pieces) builds nothing and this is three no-ops.
+    const station = buildStation(built.spline, built.drives, { ground });
+    for (const [group, geo, material] of [
+      ['station-deck', station.deck, materials.concrete()],
+      ['station-structure', station.structure, paint],
+      ['station-rail', station.rail, materials.rail()],
+    ] as const) {
+      const mesh = meshFrom(`track-${id}-${group}`, geo, material);
+      if (mesh) meshes.push(mesh);
     }
 
     const env = ctx.module<EnvironmentLike>('environment');
