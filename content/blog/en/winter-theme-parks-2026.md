@@ -237,7 +237,7 @@ Fire & Ice, plus a winter parade, a fire and light show and the Christmas tree
 illumination. Open 11:00 to 19:00, until 18:00 on 24 and 31 December, closed on
 25 December and 1 January.
 
-The ticket structure is worth noting: in Kasterlee **everything is included in
+The ticket structure is unusual: in Kasterlee **everything is included in
 the day ticket**, from the skating to the ice palace. There is nothing to book
 on top.
 

@@ -159,7 +159,7 @@ as a recording studio. There are summer evenings with DJs and the park
 running until 22:00. And there is a Halloween event that goes further than any
 other in the Benelux.
 
-The Efteling tells you a fairy tale, Phantasialand builds you a seamless set.
+The Efteling tells you a fairy tale, Phantasialand builds you a set.
 Walibi Holland can do sets too, and at its best it does them very well, only
 here everything aims at something else: it wants you to scream. Six coasters with inversions, hardly a building to
 shelter in when it rains, music on every path and a volume level nobody set by
@@ -816,7 +816,7 @@ For coaster fans, yes. The park has the first hybrid coaster in Europe in
 [Untamed](ref:walibi-holland/untamed), the world’s first duelling single-rail
 installation in [YOY](ref:walibi-holland/yoy-thrill) and an Intamin Mega Coaster
 from 2002 in [Goliath](ref:walibi-holland/goliath), all at a typical wait of 20
-minutes. If you are after dark rides, a seamless world and weather-proofing, the
+minutes. If you are after dark rides, a world that holds together and weather-proofing, the
 [Efteling](ref:efteling) or [Phantasialand](ref:phantasialand) will serve you
 better.
 

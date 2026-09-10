@@ -102,7 +102,7 @@ showed, under the lovely title
 that even simple distraction markedly improves the perceived quality of the
 wait. In the experiment, a news screen in a bank branch was enough.
 
-The mechanism behind it: our brain can only count time meticulously when it has
+The mechanism behind it: our brain can only count time precisely when it has
 nothing else to do. Once attention turns to music, theming details or a show,
 the internal counter simply runs out of resources, and the overestimation melts
 away. That’s exactly what everything you see in a good queue is designed to
