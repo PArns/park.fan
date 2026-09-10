@@ -207,6 +207,16 @@ export async function followShow(
  * is missing and the write really did not happen) — the asymmetry is the point,
  * not an oversight.
  *
+ * Checked against the API rather than assumed, because "the row is gone" and
+ * "the ride you named is gone" would be very different answers: neither DELETE
+ * handler validates the entity id at all, both are documented idempotent and
+ * answer 204 for a row that was not there
+ * (`ride-alerts.controller.ts`/`show-follows.controller.ts`), so the ONE 404
+ * this path can produce is `subscriptionOrThrow` — this browser has no stored
+ * subscription — and a subscription that does not exist cannot be holding an
+ * alert. That matters for a retired ride, whose alert `AlertsOverview`
+ * deliberately still lists.
+ *
  * Everything else goes through `classifyFailure` like a write, so a caller has
  * the same classes to render either way.
  */
