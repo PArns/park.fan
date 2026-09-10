@@ -106,7 +106,7 @@
     "browseParks": "Voir tous les parcs"
   },
   "home": {
-    "intro": "park.fan affiche les temps d’attente en direct et l’affluence pour plus de 200 parcs d’attractions et 7 000+ attractions dans le monde—dont Disney, Universal Studios, Europa-Park et Phantasialand. Planifiez votre visite avec les files en direct, horaires et prédictions IA.",
+    "intro": "park.fan affiche les temps d’attente en direct et l’affluence de plus de 200 parcs d’attractions et de plus de 7 000 attractions dans le monde, dont Disney, Universal Studios, Europa-Park et Phantasialand. Préparez votre visite avec les temps d’attente en direct, les horaires d’ouverture et les prévisions par IA.",
     "hero": {
       "cta": "Explorer les parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
@@ -119,31 +119,31 @@
       "liveNow": "Parcs ouverts dans le monde",
       "liveNowIntro": "Nombre de parcs à thème ouverts par continent en temps réel.",
       "featuredParks": "Parcs populaires",
-      "featuredParksIntro": "Les parcs d’attractions les plus visités de votre région — avec temps d’attente en direct et prévisions d’affluence."
+      "featuredParksIntro": "Les six parcs les plus recherchés en français, avec temps d’attente en direct et prévision d’affluence."
     },
     "ai": {
-      "title": "Prédictions IA — Quelle Est Notre Précision ?",
-      "subtitle": "park.fan utilise son propre modèle d’IA entraîné sur des millions de données de files d’attente réelles pour prévoir les niveaux d’affluence et les temps d’attente dans les parcs à thème du monde entier. Le modèle tient compte des prévisions météo, des calendriers de vacances scolaires et des événements connus — et se réentraîne automatiquement dès que de nouvelles données arrivent.",
-      "avgErrorDesc": "MAE — de combien de minutes nos prédictions se trompent en moyenne",
-      "rmseDesc": "RMSE — l’impact des plus grandes erreurs sur la note globale",
-      "mapeDesc": "MAPE — écart en pourcentage par rapport au temps d’attente réel",
+      "title": "La précision de nos prévisions",
+      "subtitle": "park.fan calcule avec son propre modèle, entraîné sur les files d’attente mesurées dans plus de 200 parcs. Il tient compte de la prévision météo, des vacances scolaires et des événements spéciaux, et se réentraîne chaque jour à 06h00 UTC avec les temps d’attente de la veille.",
+      "avgErrorDesc": "MAE – de combien de minutes nos prévisions se trompent en moyenne",
+      "rmseDesc": "RMSE – le poids que prennent les écarts isolés",
+      "mapeDesc": "MAPE – l’écart en pourcentage par rapport au temps d’attente réel",
       "totalPredictions": "Prédictions effectuées",
       "totalPredictionsDesc": "vérifiées par rapport aux données de files d’attente réelles",
       "coverage": "Couverture vérifiée",
       "coverageDesc": "de toutes les prédictions croisées avec les données réelles",
       "parksCoverage": "Couverture",
       "r2Score": "Ajustement modèle",
-      "r2ScoreDesc": "R² — dans quelle mesure le modèle explique la variance des temps d’attente",
+      "r2ScoreDesc": "R² – ce que le modèle explique des variations de temps d’attente",
       "nextRetraining": "Réentraînement automatique",
       "modelAgeTile": "Âge du modèle",
       "nextTrainingIn": "Prochain entraînement dans",
       "dailySchedule": "Quotidien · 06:00 UTC",
       "dailyScheduleLocal": "Quotidien · 06:00 UTC · {time} heure locale",
       "howTitle": "Comment les prédictions sont calculées",
-      "howText": "Chaque prévision de temps d’attente repose sur trois couches de données : des historiques de files d’attente collectés dans les parcs sur plusieurs années, des signaux externes comme les prévisions météo et les calendriers de vacances scolaires, et des facteurs contextuels tels que les événements spéciaux et les tendances saisonnières. Le modèle génère à la fois des prévisions horaires pour chaque attraction et des niveaux d’affluence journaliers — disponibles jusqu’à 365 jours à l’avance.",
+      "howText": "Chaque prévision repose sur trois couches : l’historique mesuré des temps d’attente du parc, des signaux extérieurs comme la prévision météo, les vacances scolaires et les jours fériés, et ce qui se passe ce jour-là dans le parc, événements spéciaux et saison. Le modèle en tire le temps d’attente attendu par attraction et par heure, puis le condense en un niveau d’affluence pour la journée, jusqu’à 365 jours à l’avance.",
       "fancastLink": "Comment fonctionne Fancast, notre modèle de prévision",
-      "improvingTitle": "En développement actif — meilleur chaque jour",
-      "improvingText": "park.fan est une plateforme vivante, encore en développement actif. Chaque jour, le système compare automatiquement ses prédictions passées aux temps d’attente réellement enregistrés dans les parcs, et réintègre ces comparaisons dans le prochain cycle d’entraînement. Les métriques de précision présentées ci-dessus reflètent ces performances réelles — pas des benchmarks synthétiques. De nouveaux parcs et attractions sont ajoutés régulièrement, et le modèle gagne en précision à mesure que les données vérifiées s’accumulent.",
+      "improvingTitle": "Chaque prévision est recalculée le lendemain",
+      "improvingText": "Le lendemain de chaque prévision, le système la confronte au temps d’attente réellement mesuré et verse l’écart dans l’entraînement suivant. Les valeurs ci-dessus sortent de cette confrontation, pas d’un jeu de test que nous aurions taillé nous-mêmes.",
       "badge": {
         "excellent": "Excellente précision",
         "good": "Bonne précision",
@@ -164,7 +164,7 @@
   "homeStory": {
     "steps": {
       "kicker": "Comment ça marche",
-      "title": "Trois étapes pour une journée bien menée",
+      "title": "Trois étapes pour une journée au parc",
       "lead": "Choisir le parc, vérifier le jour, planifier le parcours. Pour chacune de ces trois étapes, park.fan apporte les mesures de plus de 200 parcs.",
       "one": {
         "title": "Choisir le parc",
@@ -237,7 +237,7 @@
       },
       "p2": {
         "title": "Collecter",
-        "text": "Chaque mesure est archivée avec son horodatage, son attraction et son parc. Des années de mesures donnent à chaque attraction son propre profil : déroulé de la journée, rythme de la semaine, saison.",
+        "text": "Chaque mesure est archivée avec son horodatage, son attraction et son parc. De ces mesures naît pour chaque attraction un profil : déroulé de la journée, rythme de la semaine, saison.",
         "label": "Enregistrements"
       },
       "p3": {
@@ -350,7 +350,7 @@
       },
       "r5": {
         "title": "Plus de 200 parcs, 23 pays, 6 langues",
-        "text": "De Phantasialand à Tokyo DisneySea. S’il y a des files là-bas, on les suit."
+        "text": "De Phantasialand à Tokyo DisneySea. Quand un parc publie ses temps d’attente, ils sont ici ; quand il ne les publie pas, sa page le dit."
       },
       "r6": {
         "title": "Des données qui expliquent",
@@ -376,9 +376,9 @@
     "blog": {
       "kicker": "Blog et guides",
       "title": "Des analyses parc par parc, avec les chiffres du jour",
-      "lead": "Guides de parcs, analyses des temps d’attente et conseils de saison, écrits par des gens qui font la queue eux-mêmes. Chaque page de parc porte les articles qui la concernent.",
+      "lead": "Guides de parcs, analyses des temps d’attente et conseils de saison, écrits par quelqu’un qui fait la queue lui-même. Chaque page de parc porte les articles qui la concernent.",
       "bestTimeTitle": "Meilleure période pour visiter un parc",
-      "bestTimeText": "Quand les parcs sont les plus vides : les jours et les mois les plus calmes, tirés de deux ans de temps d’attente réels sur plus de 200 parcs.",
+      "bestTimeText": "Quand les parcs sont les plus vides : les jours et les mois les plus calmes, tirés des temps d’attente mesurés dans plus de 200 parcs.",
       "glossaryCta": "Dictionnaire : single rider, rope drop, Lightning Lane",
       "glossaryText": "Chaque terme expliqué en une phrase, et les figures de parcours ont leur player 3D."
     },
@@ -396,7 +396,7 @@
     }
   },
   "footer": {
-    "description": "Temps d’attente en direct et prédictions d’affluence pour 200+ parcs d’attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
+    "description": "Temps d’attente en direct et prévisions d’affluence par IA pour plus de 200 parcs d’attractions dans le monde. Préparez votre visite avec des données en temps réel et la navigation dans le parc.",
     "keywords": "temps d’attente parc attraction, temps d’attente en direct, temps d’attente aujourd’hui, calendrier d’affluence, prévision IA, file d’attente, prévisions affluence, horaires ouverture, parc d’attractions, montagnes russes, Disney temps d’attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite",
     "sections": {
       "explore": "Parcs internationaux",
@@ -708,14 +708,14 @@
       }
     },
     "recommendations": {
-      "lowCrowds": "Faible affluence prévue - excellente journée",
-      "highCrowds": "Forte affluence prévue - arrivez tôt",
+      "lowCrowds": "Faible affluence prévue – une bonne journée pour venir",
+      "highCrowds": "Forte affluence prévue – arrivez tôt",
       "visitWeekday": "Préférez une visite en semaine",
       "moderateCrowds": "Affluence normale prévue",
-      "goodCrowds": "Niveaux d’affluence corrects",
-      "rainLikely": "Pluie probable - privilégiez les attractions couvertes",
-      "hotDay": "Journée chaude - restez hydraté",
-      "coldDay": "Froid - habillez-vous chaudement",
+      "goodCrowds": "Temps d’attente dans la normale",
+      "rainLikely": "Pluie probable – privilégiez les attractions couvertes",
+      "hotDay": "Journée chaude – pensez à boire",
+      "coldDay": "Froid – habillez-vous chaudement",
       "goodDay": "Bonne journée pour visiter"
     },
     "status": {
@@ -835,38 +835,38 @@
         "heading": "Pluie attendue",
         "bodyNow": "Il pleut actuellement dans le parc.",
         "bodyStartsInMin": "Pluie dans environ {duration} ({intensity}).",
-        "bodyEndsInMin": "Il pleut — se termine dans environ {duration}.",
-        "bodyEndsInMinIntensity": "Il pleut ({intensity}) — se termine dans environ {duration}.",
+        "bodyEndsInMin": "Il pleut – se termine dans environ {duration}.",
+        "bodyEndsInMinIntensity": "Il pleut ({intensity}) – se termine dans environ {duration}.",
         "bodyNowIntensity": "Il pleut actuellement dans le parc ({intensity}).",
         "bodyNowEndsAt": "Il pleut actuellement dans le parc. Fin vers {time}.",
         "bodyNowEndsAtIntensity": "Il pleut actuellement dans le parc ({intensity}). Fin vers {time}."
       },
       "thunderstorm": {
         "heading": "Alerte orage",
-        "bodyNow": "Orage en cours — rejoignez un endroit abrité.",
+        "bodyNow": "Orage en cours – rejoignez un endroit abrité.",
         "bodyInMin": "Orage prévu dans environ {duration}.",
-        "bodyInMinSoon": "Orage dans environ {duration} — rejoignez un endroit abrité.",
-        "bodyEndsInMin": "Orage en cours — se termine dans environ {duration}."
+        "bodyInMinSoon": "Orage dans environ {duration} – rejoignez un endroit abrité.",
+        "bodyEndsInMin": "Orage en cours – se termine dans environ {duration}."
       },
       "hail": {
         "heading": "Alerte grêle",
-        "bodyNow": "Grêle en cours — rejoignez un endroit abrité.",
+        "bodyNow": "Grêle en cours – rejoignez un endroit abrité.",
         "bodyInMin": "Grêle prévue dans environ {duration}.",
-        "bodyInMinSoon": "Grêle dans environ {duration} — rejoignez un endroit abrité.",
-        "bodyEndsInMin": "Grêle en cours — se termine dans environ {duration}."
+        "bodyInMinSoon": "Grêle dans environ {duration} – rejoignez un endroit abrité.",
+        "bodyEndsInMin": "Grêle en cours – se termine dans environ {duration}."
       },
       "storm": {
         "heading": "Alerte tempête",
         "bodyNow": "Rafales jusqu’à {gusts} en cours.",
         "bodyInMin": "Rafales jusqu’à {gusts} prévues dans environ {duration}.",
-        "bodyInMinSoon": "Rafales jusqu’à {gusts} dans environ {duration} — rejoignez un endroit abrité.",
-        "bodyEndsInMin": "Rafales jusqu’à {gusts} — se terminent dans environ {duration}."
+        "bodyInMinSoon": "Rafales jusqu’à {gusts} dans environ {duration} – rejoignez un endroit abrité.",
+        "bodyEndsInMin": "Rafales jusqu’à {gusts} – se terminent dans environ {duration}."
       },
       "precipTimeline": "Prévisions de précipitations jusquà {until}, pic de {max} mm par 15 min.",
       "precipProbability": "probabilité de pluie"
     },
     "h1Suffix": "Temps d’attente en direct",
-    "intro": "Temps d’attente en direct pour {park} à {city} — actualisés à la minute. Voyez l’affluence du jour, les attractions ouvertes en ce moment et le meilleur moment pour votre visite — avec prévision d’affluence par IA et les meilleurs jours.",
+    "intro": "Temps d’attente en direct pour {park} à {city} – actualisés toutes les cinq minutes. Voyez l’affluence du jour, les attractions ouvertes en ce moment et le meilleur moment pour votre visite, avec la prévision d’affluence par IA et les meilleurs jours.",
     "now": "Maintenant",
     "forecastToday": "Prévision du jour",
     "statusLabel": "Statut",
@@ -911,7 +911,7 @@
       "subtitle": "Basé sur les prévisions d’affluence IA pour les 3 prochains mois",
       "quietestDaysTitle": "Jours les plus calmes de la semaine",
       "upcomingQuietTitle": "Prochains jours calmes",
-      "schoolHolidayWarning": "Les vacances scolaires sont généralement beaucoup plus fréquentées à {park} — vérifiez le calendrier avant de réserver.",
+      "schoolHolidayWarning": "Pendant les vacances scolaires, {park} est nettement plus fréquenté – vérifiez le calendrier d’affluence avant de réserver.",
       "noUpcomingQuiet": "Aucun jour particulièrement calme dans les 30 prochains jours.",
       "noData": "Pas encore assez de données de prévision disponibles.",
       "bestWeekendDayTitle": "Meilleur jour de week-end",
@@ -936,7 +936,7 @@
     },
     "headlinerForecastTitle": "Attentes prévues (incontournables)",
     "crowdMeaning": {
-      "very_low": "Très peu de monde – attentes courtes, idéal pour une visite tranquille.",
+      "very_low": "Très peu de monde – attentes courtes, y compris sur les grandes attractions.",
       "low": "Journée calme – attentes inférieures à la moyenne.",
       "moderate": "Une journée typique – attentes normales pour ce parc.",
       "high": "Plus de monde que d’habitude – attendez-vous à des files nettement plus longues.",
@@ -1159,7 +1159,7 @@
       }
     },
     "h1Suffix": "Temps d’attente en direct",
-    "intro": "Temps d’attente actuel pour {attraction} à {park} – en direct, mis à jour chaque minute. Suivez le statut en direct, l’historique du jour et les heures d’affluence pour éviter les longues files.",
+    "intro": "Temps d’attente actuel pour {attraction} à {park} – en direct, actualisé toutes les cinq minutes. Suivez le statut en direct, l’historique du jour et les heures d’affluence pour éviter les longues files.",
     "headliner": {
       "title": "Headliner",
       "description": "Attraction incontournable de ce parc"
@@ -1284,13 +1284,13 @@
     "enable": "Activer la localisation",
     "loadingLocation": "Localisation...",
     "permissionDenied": "Localisation requise",
-    "permissionDeniedDescription": "park.fan fonctionne mieux avec votre localisation. Nous l’utilisons pour montrer les parcs proches et pour la navigation.",
+    "permissionDeniedDescription": "Sans votre position, nous ne pouvons ni afficher les parcs proches ni vous dire, une fois dans un parc, ce qui se trouve juste à côté. L’autorisation se règle dans les paramètres du navigateur.",
     "locationUnavailable": "Localisation introuvable",
-    "locationUnavailableDescription": "Nous n’avons pas pu déterminer votre position. Vous pouvez activer la localisation pour des résultats plus précis, ou réessayer plus tard.",
+    "locationUnavailableDescription": "Votre position n’a pas pu être déterminée. Activez l’accès à la localisation ou réessayez plus tard.",
     "loadError": "Impossible de charger les parcs à proximité",
     "loadErrorDescription": "Une erreur s’est produite lors du chargement des parcs. Veuillez réessayer.",
     "locationHint": "Les parcs à proximité sont plus précis si vous activez la localisation.",
-    "bannerHeadline": "park.fan fonctionne mieux quand vous partagez votre position !",
+    "bannerHeadline": "Les parcs proches ont besoin de votre position",
     "bannerBody": "park.fan n’utilise votre position exacte que pour afficher les parcs près de vous et pour afficher les attractions et temps d’attente autour de vous dans un parc.",
     "bannerPrivacy": "Nous ne stockons pas ces données.",
     "youAreIn": "Vous êtes ici",
@@ -1370,7 +1370,7 @@
     "longestWait": "Attente la plus longue",
     "shortestWait": "Attente la plus courte",
     "platformStats": "Statistiques plateforme",
-    "platformStatsDescription": "Aperçu des données en temps réel sur la plateforme",
+    "platformStatsDescription": "Ce que park.fan mesure en ce moment, tous parcs confondus.",
     "totalWaitTime": "Temps d’attente total",
     "dataPoints": "Points de données",
     "dataPointsTooltipSuffix": "points actuellement",
@@ -1384,10 +1384,10 @@
       "searchPlaceholder": "Rechercher des parcs, attractions, shows et restaurants..."
     },
     "features": {
-      "title": "Planifiez votre Visite Parfaite au Parc d’Attractions",
+      "title": "Planifiez votre visite au parc d’attractions",
       "realtime": {
         "title": "Temps d’attente temps réel",
-        "description": "Données en direct mises à jour chaque minute."
+        "description": "Données en direct actualisées toutes les cinq minutes."
       },
       "predictions": {
         "title": "Prédictions machine learning",
@@ -1518,7 +1518,7 @@
       "diningQ": "Quelles options de restauration sont disponibles à {park}?",
       "diningA": "{park} propose {count} restaurants et stands de restauration:",
       "crowdCalendarQ": "Est-ce que {park} a un calendrier d’affluence?",
-      "crowdCalendarA": "Oui! park.fan fournit un calendrier d’affluence détaillé pour {park} montrant les niveaux d’affluence prévus pour les 30 prochains jours, vous aidant à choisir les meilleurs jours de visite avec des temps d’attente plus courts.",
+      "crowdCalendarA": "Oui. Le calendrier d’affluence de {park} évalue chaque jour, jusqu’à un an à l’avance pour les parcs ouverts toute l’année. Les jours verts annoncent des files courtes, les rouges des files longues.",
       "leastCrowdedQ": "Quand {park} est-il le moins fréquenté ?",
       "leastCrowdedA": "{park} est généralement le plus calme le {days}. Consultez le <calendar>calendrier d’affluence</calendar> ci-dessus pour les prochains jours calmes et planifiez votre visite en conséquence.",
       "leastCrowdedNoDataA": "Consultez le <calendar>calendrier d’affluence</calendar> sur cette page pour les prochains jours calmes. Les jours verts signalent des files courtes et moins de visiteurs.",
@@ -1539,19 +1539,19 @@
     "homepage": {
       "faq": {
         "whatIsQ": "Qu’est-ce que park.fan?",
-        "whatIsA": "park.fan est votre plateforme centrale pour les temps d’attente en direct et les informations actuelles de plus de 200 parcs d’attractions en Europe, Asie et Amérique du Nord. Nous vous montrons en temps réel combien de temps d’attente il y a pour vos attractions préférées, quels spectacles sont en cours et quand les parcs sont ouverts.",
+        "whatIsA": "park.fan rassemble les temps d’attente en direct de plus de 200 parcs d’attractions dans 23 pays. Chaque page de parc donne les temps d’attente de toutes les attractions, les horaires des spectacles, les horaires d’ouverture et un calendrier qui évalue l’affluence des mois à venir.",
         "whichParksQ": "Quels parcs d’attractions sont pris en charge par park.fan?",
-        "whichParksA": "park.fan prend en charge plus de 200 parcs d’attractions dans le monde, notamment Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland et bien d’autres. Vous pouvez trouver la liste complète de tous les parcs avec temps d’attente en direct sur notre page de présentation des parcs. Nous élargissons continuellement notre offre avec des parcs d’attractions supplémentaires.",
+        "whichParksA": "park.fan couvre plus de 200 parcs d’attractions dans le monde, dont Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland et Bobbejaanland. La liste complète, avec les temps d’attente en direct, se trouve sur la page d’ensemble des parcs.",
         "liveDataQ": "Les temps d’attente sur park.fan sont-ils en direct et en temps réel?",
         "liveDataA": "Oui. Chaque parc est interrogé toutes les cinq minutes, à partir de trois sources publiques en parallèle – ThemeParks.wiki, Wartezeiten.app et Queue-Times.com. Si deux sources divergent, la majorité tranche, puis la médiane, puis la moyenne. Le résultat est arrondi à cinq minutes, car c’est ainsi que les parcs les affichent.",
         "freeQ": "L’utilisation de park.fan est-elle gratuite?",
-        "freeA": "Oui, park.fan est entièrement gratuit. Vous pouvez consulter tous les temps d’attente en direct, les horaires d’ouverture, les spectacles et les restaurants sans inscription ni paiement. Notre objectif est de fournir le meilleur service possible à chaque visiteur de parc d’attractions.",
+        "freeA": "Oui. Les temps d’attente en direct, les horaires d’ouverture, les spectacles, les restaurants et le calendrier d’affluence sont accessibles sans compte et sans péage. Il n’y a pas de formule payante derrière laquelle se cacheraient plus de données.",
         "favoritesQ": "Puis-je enregistrer mes parcs et attractions préférés sur park.fan?",
-        "favoritesA": "Oui! Avec la fonction favoris de park.fan, vous pouvez marquer vos parcs préférés et attractions préférées. Ils seront ensuite affichés sur votre page d’accueil personnalisée, afin que vous puissiez voir immédiatement les temps d’attente actuels de vos favoris.",
+        "favoritesA": "Oui. Un clic sur l’étoile met de côté un parc, une attraction, un spectacle ou un restaurant. Les favoris apparaissent ensuite en haut de la page d’accueil, avec le temps d’attente en direct et l’état d’ouverture. Cela fonctionne sans compte, l’enregistrement reste dans le navigateur.",
         "featuresQ": "Quelles informations park.fan offre-t-il en plus des temps d’attente en direct?",
-        "featuresA": "En plus des temps d’attente en direct pour les attractions, park.fan fournit également les horaires d’ouverture du parc, les horaires des spectacles, les informations sur les restaurants, les prévisions météorologiques, les statistiques historiques des temps d’attente et les prévisions d’affluence. De cette façon, vous pouvez planifier de manière optimale votre visite au parc d’attractions et trouver les meilleurs moments pour vos attractions préférées.",
+        "featuresA": "Outre les temps d’attente en direct, chaque page de parc donne les horaires d’ouverture, les horaires des spectacles, les restaurants avec leur cuisine et l’obligation éventuelle de réserver, la météo du jour, l’historique mesuré des temps d’attente et le calendrier d’affluence. La page de chaque attraction y ajoute son déroulé de journée habituel.",
         "mobileQ": "Est-ce que park.fan fonctionne sur les smartphones?",
-        "mobileA": "Absolument! park.fan est entièrement responsive et fonctionne parfaitement sur les smartphones et les tablettes. Vous pouvez consulter les temps d’attente en direct directement dans le parc d’attractions pour décider spontanément quelle attraction visiter ensuite. La version mobile offre toutes les fonctionnalités de la version desktop."
+        "mobileA": "Oui. park.fan est un site web et non une application : il s’ouvre dans le navigateur, sur téléphone, tablette et ordinateur. Dans le parc, vous y voyez où la file est courte en ce moment ; si la page détecte que vous êtes sur place, les attractions les plus proches remontent en haut."
       }
     }
   },
@@ -1667,7 +1667,7 @@
       "title": "{term} sur le blog"
     },
     "overviewTitle": "Dictionnaire des parcs à thème",
-    "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair — temps d’attente, niveaux d’affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore.",
+    "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair – temps d’attente, niveaux d’affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore.",
     "overviewKeywords": "dictionnaire parc à thème, définitions parc à thème, définition temps d’attente, Lightning Lane, niveau affluence, termes montagnes russes, file d’attente virtuelle, vocabulaire parc loisirs",
     "termTitleSuffix": "Dictionnaire parcs d’attractions",
     "termH1Suffix": "expliqué – définition",
@@ -1742,7 +1742,7 @@
   },
   "bestTime": {
     "title": "Meilleure période pour visiter les parcs d’attractions",
-    "description": "Les jours et mois les plus calmes de plus de 200 parcs, à partir de données réelles de temps d’attente — astuces anti-file et calendrier d’affluence.",
+    "description": "Les jours et mois les plus calmes de plus de 200 parcs, à partir de temps d’attente réellement mesurés – astuces anti-file et calendrier d’affluence.",
     "quietestByPark": {
       "title": "Le jour le plus calme dans chaque parc",
       "intro": "Les moyennes ci-dessus portent sur l’ensemble des parcs. Park par parc, c’est différent : chacun a son rythme, selon les vacances scolaires, les distances et l’heure d’arrivée des visiteurs à la journée.",
@@ -1779,7 +1779,7 @@
     "heroTitle": "Histoires, données et actus des parcs",
     "badge": "Blog park.fan",
     "description": "Carnets de visite, analyses de données et actualités des parcs par l’équipe park.fan.",
-    "intro": "Carnets de visite, analyses de temps d’attente et brèves d’actualité.",
+    "intro": "Carnets de visite, analyses des temps d’attente et brèves des parcs que nous couvrons. Écrits par quelqu’un qui fait la queue lui-même.",
     "blog": "Blog",
     "empty": "Aucun article pour le moment.",
     "readMore": "Lire l’article",
@@ -1787,18 +1787,18 @@
     "updatedOn": "Mis à jour le {date}",
     "languageNotice": {
       "available": "Cet article est aussi disponible en {language}",
-      "fallback": "Pas encore traduit — version en {language} affichée."
+      "fallback": "Pas encore traduit – version en {language} affichée."
     },
     "breadcrumbs": "Fil d’Ariane",
     "categories": "Catégories",
     "category": {
       "label": "Catégorie",
-      "description": "Tous les articles du blog park.fan classés dans {category} — carnets de visite, analyses de données et actualité des parcs, les plus récents d’abord.",
+      "description": "Tous les articles du blog park.fan classés dans {category} – carnets de visite, analyses de données et actualité des parcs, les plus récents d’abord.",
       "postsCount": "{count, plural, =1 {# article} other {# articles}}"
     },
     "home": {
       "heading": "Depuis le blog",
-      "intro": "Carnets de visite, analyses de données et actualités des parcs – les derniers articles apparaissent ici en premier.",
+      "intro": "Carnets de visite, analyses de données et actualités des parcs – les derniers articles sont en haut.",
       "viewAll": "Lire tous les articles"
     },
     "gallery": {
@@ -1869,7 +1869,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Tous les articles du blog park.fan tagués #{tag} — guides, analyses des temps d’attente et actualité des parcs, les plus récents d’abord.",
+      "description": "Tous les articles du blog park.fan tagués #{tag} – guides, analyses des temps d’attente et actualité des parcs, les plus récents d’abord.",
       "postsCount": "{count, plural, =1 {# article} other {# articles}}",
       "cloudTitle": "Thèmes"
     },
@@ -1882,7 +1882,7 @@
   "contribute": {
     "gallery": {
       "title": "Inspirez-vous",
-      "subtitle": "Des collines à sensations aux dark rides thématisés — quelques parcs et attractions de park.fan auxquels ajouter vos photos."
+      "subtitle": "Des collines à sensations aux dark rides thématisés – quelques parcs et attractions de park.fan auxquels ajouter vos photos."
     },
     "meta": {
       "title": "Partagez vos photos de parcs et attractions",
@@ -1890,7 +1890,7 @@
     },
     "hero": {
       "title": "Partagez vos photos de parcs et attractions",
-      "subtitle": "De beaux clichés d’un coaster, d’une parade ou d’un parc au coucher du soleil ? Déposez-les ici, indiquez l’attraction ou le parc concerné – après une rapide vérification, ils rejoignent la galerie."
+      "subtitle": "Vous avez des photos d’un coaster, d’une parade ou d’un parc au coucher du soleil ? Déposez-les ici, indiquez l’attraction ou le parc concerné – après une rapide vérification, elles rejoignent la galerie."
     },
     "banner": {
       "eyebrow": "Galerie communautaire",
@@ -1939,10 +1939,10 @@
     "rights": {
       "title": "Vos photos, vos droits",
       "intro": "Avant de téléverser, voici exactement ce qu’il advient de vos photos :",
-      "ownership": "Vous conservez le droit d’auteur. Vous ne cédez rien — vous nous accordez simplement l’autorisation d’utiliser la photo.",
+      "ownership": "Vous conservez le droit d’auteur. Vous ne cédez rien – vous nous accordez simplement l’autorisation d’utiliser la photo.",
       "license": "Vous accordez à park.fan une licence non exclusive, mondiale et gratuite pour afficher, redimensionner et optimiser la photo sur park.fan et nos canaux, avec mention si vous en fournissez une.",
       "moderation": "Chaque envoi est vérifié par une personne avant publication. Rien n’est mis en ligne automatiquement.",
-      "ownContent": "Ne téléversez que des photos que vous avez prises ou dont vous détenez clairement les droits — pas de personnes s’opposant à être montrées, pas de contenu appartenant à autrui.",
+      "ownContent": "Ne téléversez que des photos que vous avez prises ou dont vous détenez clairement les droits – pas de personnes s’opposant à être montrées, pas de contenu appartenant à autrui.",
       "withdraw": "Vous avez changé d’avis ? Contactez-nous et nous retirerons votre photo."
     },
     "success": {
@@ -1971,7 +1971,7 @@
       "typeLabel": "Type d’attraction",
       "multiLaunchCoaster": "Multi-Launch coaster",
       "elementsLabel": "Éléments du tracé",
-      "elementsHint": "Dans l’ordre du parcours — touchez une figure pour la voir en 3-D.",
+      "elementsHint": "Dans l’ordre du parcours – touchez une figure pour la voir en 3-D.",
       "has3d": "3-D",
       "manufacturer": "Constructeur",
       "opened": "Ouverture",
@@ -2201,7 +2201,7 @@
       "label": "Attraction phare"
     },
     "coach": {
-      "drag": "Faites glisser une attraction depuis la page du parc sur la frise — cela choisit l'heure en même temps.",
+      "drag": "Faites glisser une attraction depuis la page du parc sur la frise – cela choisit l’heure en même temps.",
       "dismiss": "Masquer l'astuce"
     },
     "parkSearch": {

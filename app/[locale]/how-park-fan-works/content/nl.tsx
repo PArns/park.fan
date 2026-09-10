@@ -79,7 +79,7 @@ import {
 
 /**
  * Feeds both the chapter list at the top and the rail down the right edge, and
- * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
+ * must match the `<SectionShell id=… index=…>` calls below exactly – the rail
  * looks its sections up by id, so an entry that drifts silently stops
  * highlighting.
  */
@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attracties',
     body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, doorzoekbaar en gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
     example:
-      'Taron in Klugheim, vanaf 140 centimeter — de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Chiapas met 75 bespaarde minuten.',
+      'Taron in Klugheim, vanaf 140 centimeter – de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Chiapas met 75 bespaarde minuten.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -217,7 +217,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Beste dagen',
     body: 'De rustigste data van de komende drie maanden, plus de rustigste weekdag van het park.',
     example:
-      'De rustigste weekdag van het park en de eerstvolgende rustige data — dezelfde berekening als hoofdstuk 04, drie maanden vooruit.',
+      'De rustigste weekdag van het park en de eerstvolgende rustige data – dezelfde berekening als hoofdstuk 04, drie maanden vooruit.',
     demo: <AnatomyBestDaysDemo locale="nl" />,
     onlyWhen: 'het park een openingskalender publiceert.',
   },
@@ -845,7 +845,7 @@ export function ContentNL() {
             <BadgeRowDemo
               crowdLabel="Drukte: hoe vol is het nu"
               comparisonLabel="Vergelijking: voller dan normaal?"
-              caption="Twee schalen, één voorbeeld: bij 70 minuten staat Taron op “Zeer hoog” — dat is de drukte. Vergeleken met zijn eigen normale 45 minuten is het “Veel hoger” — dat is de vergelijking met zichzelf. Een klein park kan “Zeer hoog” zijn en toch “Normaal”: daar zijn 25 minuten gewoon."
+              caption="Twee schalen, één voorbeeld: bij 70 minuten staat Taron op “Zeer hoog” – dat is de drukte. Vergeleken met zijn eigen normale 45 minuten is het “Veel hoger” – dat is de vergelijking met zichzelf. Een klein park kan “Zeer hoog” zijn en toch “Normaal”: daar zijn 25 minuten gewoon."
             />
           </DemoFrame>
         </div>
