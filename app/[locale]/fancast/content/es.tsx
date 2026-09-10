@@ -75,7 +75,7 @@ const FAQ = [
   {
     question: '¿Con qué frecuencia se actualiza el modelo?',
     answer:
-      'Cada día. Fancast se reentrena automáticamente una vez al día, a las 06:00 UTC, con los datos más frescos, incluidos los tiempos de espera de ayer. Así que, literalmente, cada mañana es un poquito mejor.',
+      'Cada día. Fancast se reentrena automáticamente una vez al día, a las 06:00 UTC: ese entrenamiento ya conoce los tiempos de espera de la jornada anterior.',
   },
   {
     question: '¿Puedo usar Fancast para un parque y un día concretos?',
@@ -90,7 +90,7 @@ const FAQ = [
   {
     question: '¿Por qué un parque muestra «Sin previsión»?',
     answer:
-      'Fancast solo valora un parque cuando hay suficientes datos de funcionamiento: al menos unos 30 días de operación. Los parques totalmente nuevos o que abren rara vez aún no tienen esa base. Entonces preferimos mostrar honestamente «Sin previsión» antes que una cifra inventada.',
+      'Fancast solo valora un parque cuando hay suficientes datos de funcionamiento: al menos unos 30 días de operación. Los parques totalmente nuevos o que abren rara vez aún no tienen esa base. Entonces ahí pone «Sin previsión» en lugar de una cifra a ojo.',
   },
   {
     question: '¿Cuesta algo Fancast?',
@@ -111,15 +111,13 @@ export function ContentES() {
           meteorológico para las colas, vamos.
         </Lead>
         <P>
-          Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast hace
-          algo que la mayoría de los modelos evita en voz baja: se pone nota a sí mismo. Cada
-          predicción se contrasta después con el tiempo de espera que de verdad ocurrió, a la vista
-          de todos, en esta página. Hacer trampas, inútil.
+          Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast se
+          pone nota a sí mismo. Cada predicción se contrasta después con el tiempo de espera que de
+          verdad ocurrió, a la vista de todos, en esta página. Hacer trampas, inútil.
         </P>
         <Highlight>
-          En resumen: Fancast no es un adivino con bola de cristal. Es un estadístico tozudo que
-          recibe clases de refuerzo cada noche y tiene que volver a examinarse cada mañana. Una rana
-          del tiempo que verifica su propio tiempo.
+          Fancast no es un adivino con bola de cristal. Es un estadístico tozudo que recibe clases
+          de refuerzo cada noche y tiene que volver a examinarse cada mañana.
         </Highlight>
       </div>
 
@@ -132,9 +130,8 @@ export function ContentES() {
         icon={Gauge}
       >
         <P>
-          Basta de preámbulos: aquí está la nota, en directo y sin maquillar. Fancast saca estas
-          cifras de su propio panel en este preciso momento; cambiarán en cuanto el modelo vuelva a
-          entrenarse esta noche.
+          Aquí está la nota, en directo y sin maquillar. Fancast saca estas cifras de su propio
+          panel en este preciso momento, y cambiarán en cuanto el modelo se vuelva a entrenar.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -157,8 +154,8 @@ export function ContentES() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Tiempos de espera en directo" delay={0}>
-            Millones de lecturas reales de más de 200 parques, actualizadas al minuto. La moneda en
-            bruto de cada previsión.
+            Una medición por cola cada cinco minutos, en más de 200 parques. Sobre eso se apoya
+            todo lo demás.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendarios y vacaciones" delay={60}>
             Fines de semana, días festivos y vacaciones escolares, también los de las regiones
@@ -173,8 +170,8 @@ export function ContentES() {
             sospechosos habituales de un día abarrotado.
           </IngredientCard>
           <IngredientCard icon={History} title="Historial" delay={60}>
-            Años de historial de tiempos de espera por parque. Patrones que solo se ven si los miras
-            fijamente el tiempo suficiente.
+            Cada día de apertura registrado de un parque, sin huecos desde abril. De ahí salen el
+            ritmo de la semana y el de la temporada.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Horarios y capacidad" delay={120}>
             Cuándo abre el parque, durante cuánto tiempo, con qué capacidad: el marco en el que
@@ -197,8 +194,8 @@ export function ContentES() {
         icon={Compass}
       >
         <P>
-          Toda teoría es gris: Fancast solo se vuelve tangible en un parque concreto. Tres ejemplos
-          de cómo los mismos ingredientes se convierten en tres previsiones completamente distintas:
+          En un parque concreto se ve mejor. Tres ejemplos de cómo los mismos ingredientes se
+          convierten en tres previsiones completamente distintas:
         </P>
         <SplitFigure
           src="/media/europa-park/silver-star.jpg"
@@ -250,9 +247,8 @@ export function ContentES() {
       >
         <P>
           El truco más importante es de lo más discreto: Fancast se reentrena{' '}
-          <strong>cada noche</strong>, todos los días a las 06:00 UTC. Lo que pasó ayer, el modelo
-          lo sabe hoy. Un fan de las montañas rusas se hace mayor y se cansa con los años; Fancast
-          se vuelve un poco más listo cada mañana.
+          <strong>cada día</strong>, a las 06:00 UTC. Lo que pasó ayer en el parque está en la
+          previsión de la mañana siguiente.
         </P>
         <P>
           Y solo se le pone a prueba en días que <strong>nunca ha visto</strong>: en el futuro, no
@@ -263,8 +259,7 @@ export function ContentES() {
         <P>
           Además, Fancast vigila si está <strong>derivando</strong>, si la realidad se le escapa
           poco a poco. Y una nueva versión del modelo solo entra en producción si de verdad supera a
-          la anterior en un duelo justo. Democracia entre algoritmos: quien no es mejor, se queda en
-          el banquillo.
+          la anterior en un duelo justo.
         </P>
       </SectionShell>
 
@@ -319,9 +314,9 @@ export function ContentES() {
         icon={Ticket}
       >
         <P>
-          Basta de teoría. Fancast funciona en cada página de parque; aquí tienes unos cuantos
-          populares para probarlo directamente. Entra, abre el calendario de afluencia y mira qué
-          color le toca al día que elijas:
+          Fancast funciona en cada página de parque; aquí tienes unos cuantos populares para
+          probarlo directamente. Entra, abre el calendario de afluencia y mira qué color le toca al
+          día que elijas:
         </P>
         <PopularParksGrid />
       </SectionShell>
@@ -374,14 +369,14 @@ export function ContentES() {
             {
               icon: Sunrise,
               title: 'Recomendación de rope-drop',
-              body: 'la respuesta honesta a «¿merece la pena llegar temprano?», incluidos los mínimos esperados.',
+              body: 'la respuesta a «¿merece la pena llegar temprano?», con los mínimos esperados.',
             },
             {
               icon: HelpCircle,
               title: 'Sin previsión',
               body: (
                 <>
-                  honesto antes que adivinado: los parques con muy pocos datos reciben{' '}
+                  Antes que adivinar: los parques con muy pocos datos reciben{' '}
                   <CrowdLevelBadge level="unknown" /> en lugar de una cifra inventada.
                 </>
               ),

@@ -376,7 +376,7 @@
     "blog": {
       "kicker": "Blog & guides",
       "title": "Analyses of single parks, with today’s numbers",
-      "lead": "Park guides, wait-time analyses and seasonal tips, written by someone who queues himself. Every park page carries the articles that belong to it.",
+      "lead": "Park guides, wait-time analyses and seasonal tips, written by someone who stands in the queues too. Every park page carries the articles that belong to it.",
       "bestTimeTitle": "Best time to visit a theme park",
       "bestTimeText": "When parks are emptiest: the quietest weekdays and months, out of the measured wait times of more than 200 parks.",
       "glossaryCta": "Dictionary: single rider, rope drop, Lightning Lane",
@@ -1439,7 +1439,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Theme Park Wait Times & Predictions",
-      "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 200+ theme parks worldwide.",
+      "description": "Live wait times and AI crowd forecasts for 200+ theme parks worldwide. Plan your visit with real-time data and in-park navigation.",
       "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit"
     },
     "home": {
@@ -1477,7 +1477,7 @@
     },
     "country": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & best days to visit. Compare parks and plan your perfect visit.",
+      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd forecasts and opening hours. Plan the best days to visit.",
       "titleTemplateShort": "Theme Parks in {location}: Wait Times"
     },
     "city": {
@@ -1779,7 +1779,7 @@
     "heroTitle": "Stories, data and news from the parks",
     "badge": "park.fan Blog",
     "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
-    "intro": "Trip reports, wait-time analyses and short news from the parks we cover. Written by someone who queues himself.",
+    "intro": "Trip reports, wait-time analyses and short news from the parks we cover. Written by someone who stands in the queues too.",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read article",

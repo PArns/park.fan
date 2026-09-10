@@ -375,8 +375,8 @@ export function ContentNL() {
               title: 'Geen voorspelling',
               body: (
                 <>
-                  niet gokken: parken met te weinig data krijgen{' '}
-                  <CrowdLevelBadge level="unknown" /> in plaats van een verzonnen getal.
+                  niet gokken: parken met te weinig data krijgen <CrowdLevelBadge level="unknown" />{' '}
+                  in plaats van een verzonnen getal.
                 </>
               ),
             },

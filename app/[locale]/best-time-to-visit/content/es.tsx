@@ -33,7 +33,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Los días laborables más tranquilos',
   weekdaysBody:
-    'Promediado entre todos los parques — cada parque normalizado primero a su propia media, para que los parques grandes no eclipsen a los pequeños. Así de lleno está un día laborable típico frente a la media. De martes a jueves ganan casi siempre.',
+    'Aquí cada parque cuenta lo mismo, sea Disneyland o un parque familiar pequeño: primero lo convertimos a su propia media y solo después promediamos. La barra indica lo lleno que está un día laborable típico frente a esa media. De martes a jueves ganan casi siempre.',
   monthsTitle: 'Los meses más tranquilos',
   monthsBody:
     'El mismo cálculo a lo largo del año: los meses de temporada baja están notablemente más vacíos que los picos del verano y las vacaciones.',
@@ -49,12 +49,12 @@ const FAQ = [
   {
     question: '¿Cuál es la mejor época para visitar un parque de atracciones?',
     answer:
-      'Lo más tranquilo son los días laborables fuera de las vacaciones escolares — de martes a jueves en temporada baja son casi siempre los días más relajados. Los patrones exactos por día de la semana y mes se muestran arriba, en directo a partir de datos reales de tiempos de espera de todos los parques.',
+      'Lo más tranquilo son los días laborables fuera de las vacaciones escolares, y de ellos el martes, el miércoles y el jueves en temporada baja. Los patrones exactos por día de la semana y por mes están arriba, sacados de los tiempos de espera reales de todos los parques.',
   },
   {
     question: '¿Qué día de la semana está menos concurrido?',
     answer:
-      'Promediado entre todos los parques, el martes, el miércoles y el jueves son los más tranquilos, mientras que el sábado y el domingo son claramente los más concurridos. Cada parque puede variar — cada página de parque tiene un calendario de afluencia que lo muestra día a día.',
+      'Promediado entre todos los parques, el martes, el miércoles y el jueves son los más tranquilos, mientras que el sábado y el domingo son claramente los más concurridos. En un parque concreto puede ser otro: el calendario de afluencia de su página lo muestra día a día.',
   },
   {
     question: '¿En qué meses están menos concurridos los parques de atracciones?',
@@ -64,17 +64,17 @@ const FAQ = [
   {
     question: '¿Merece la pena visitar con lluvia?',
     answer:
-      'A menudo sí: el mal tiempo echa para atrás a muchos visitantes y las colas se acortan — sobre todo en las montañas rusas, que funcionan igualmente. Pero el truco de iniciado solo sirve mientras no todos tengan la misma idea; por eso nuestro modelo de predicción incorpora el tiempo directamente.',
+      'A menudo sí: el mal tiempo echa para atrás a muchos visitantes y las colas se acortan, sobre todo en las montañas rusas, que funcionan igualmente. El truco de iniciado solo sirve mientras no todos tengan la misma idea; por eso nuestro modelo de predicción incorpora el tiempo directamente.',
   },
   {
     question: '¿Cómo encuentro el mejor día para un parque concreto?',
     answer:
-      'Esta página muestra los patrones globales como punto de partida. Para un parque concreto, abre su calendario de afluencia: muestra para cada día, hasta un año por delante, una previsión verde, amarilla o roja — incluidas las vacaciones escolares y los festivos de esa región.',
+      'Esta página muestra los patrones generales como punto de partida. Para un parque concreto, abre su calendario de afluencia: da para cada día, hasta un año por delante, una previsión verde, amarilla o roja, con las vacaciones escolares y los festivos de esa región incluidos.',
   },
   {
     question: '¿De dónde salen estos datos?',
     answer:
-      'De los tiempos de espera realmente registrados de más de 200 parques durante los dos últimos años. Cada parque se normaliza a su propia media y luego se promedia entre todos los parques, para que la clasificación sea justa y no la dominen los parques más grandes.',
+      'De los tiempos de espera que hemos ido registrando nosotros mismos en más de 200 parques. Para que la clasificación no la marquen los parques más grandes, primero convertimos cada parque a su propia media y solo después promediamos.',
   },
 ] as const;
 
@@ -84,15 +84,16 @@ export function ContentES() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          La mejor época para visitar un parque de atracciones no es un secreto — es un patrón.
-          Cuándo se llena un parque sigue el día de la semana, el calendario de vacaciones
-          escolares, el tiempo y la temporada; los cuatro dejan huellas en los tiempos de espera.
+          Cuándo se llena un parque de atracciones es sorprendentemente previsible. El día de la
+          semana, las vacaciones escolares, el tiempo y la temporada deciden en buena parte si en la
+          montaña rusa esperas diez minutos o hora y media. Y como cada visita deja tiempos de
+          espera detrás, eso se puede recalcular con bastante precisión.
         </Lead>
         <P>
-          Esas huellas las hemos medido en más de 200 parques durante los dos últimos años. Más
-          abajo: los días laborables y los meses más tranquilos, las horas más tranquilas del día,
-          las fechas que conviene esquivar — y el calendario de afluencia que convierte todo eso en
-          el único mejor día para tu parque.
+          Eso es justo lo que hemos hecho: analizar los tiempos de espera registrados en más de 200
+          parques. Aquí están los días laborables y los meses más tranquilos, las horas más
+          tranquilas del día y las fechas que conviene esquivar. El calendario de afluencia te busca
+          después el día que le va a tu parque.
         </P>
         <Highlight>
           Versión corta: de martes a jueves fuera de las vacaciones escolares, llegar a la apertura
@@ -110,9 +111,8 @@ export function ContentES() {
         icon={CalendarRange}
       >
         <PG>
-          La afluencia no es cosa del azar: cuándo se llena sigue patrones claros de día de la
-          semana, vacaciones, tiempo y temporada. Aquí tienes los dos mayores — promediados entre
-          todos los parques, a partir de datos reales de tiempos de espera:
+          Empecemos por las dos palancas más grandes: el día de la semana y el mes. Las dos están
+          promediadas entre todos los parques, a partir de los tiempos de espera medidos:
         </PG>
         <BestTimesData locale="es" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="es" />
@@ -140,7 +140,7 @@ export function ContentES() {
             {
               icon: Users,
               title: 'A la hora de comer',
-              body: 'Cuando la multitud come, las colas se vacían — un buen momento para las atracciones populares (y para comer más tarde).',
+              body: 'Cuando la multitud come, las colas se vacían. Aprovecha ese rato para las atracciones populares y come más tarde.',
             },
             {
               icon: Sun,
@@ -150,7 +150,7 @@ export function ContentES() {
             {
               icon: Ticket,
               title: 'Durante el gran espectáculo nocturno',
-              body: 'Un desfile o unos fuegos artificiales retienen a miles de visitantes a la vez — los tiempos de espera de las montañas rusas caen de forma medible.',
+              body: 'Un desfile o unos fuegos artificiales retienen a miles de visitantes a la vez, y justo entonces quedan sitios libres en las montañas rusas.',
             },
           ]}
         />
@@ -161,8 +161,8 @@ export function ContentES() {
           title="La primera hora es de oro"
         >
           Quien está dentro a la apertura sube a las atracciones estrella a menudo por una fracción
-          de la espera posterior. La primera hora sustituye habitualmente a dos de la tarde — sin
-          fast-pass, solo un despertador temprano.
+          de la espera posterior. La primera hora sustituye habitualmente a dos de la tarde, y no
+          hace falta un pase caro para eso, solo un despertador algo más temprano.
         </SplitFigure>
       </SectionShell>
 
@@ -176,7 +176,7 @@ export function ContentES() {
       >
         <PG>
           Tan importantes como los días tranquilos son los concurridos. En estas fechas cuenta con
-          aglomeraciones — prevélas, o planifica esquivándolas:
+          aglomeraciones: o te preparas para ellas, o planificas esquivándolas.
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -186,7 +186,7 @@ export function ContentES() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          La combinación punta clásica — un sábado de vacaciones en pleno verano — reúne casi todos
+          La combinación punta clásica, un sábado de vacaciones en pleno verano, reúne casi todos
           los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente: el mismo
           parque, la mitad de cola.
         </SplitFigure>
@@ -200,7 +200,7 @@ export function ContentES() {
             {
               icon: CalendarRange,
               title: 'Vacaciones escolares',
-              body: 'Durante las vacaciones de tu región y de las vecinas la afluencia sube con fuerza — las de verano por encima de todo.',
+              body: 'En cuanto hay vacaciones en tu región o en las vecinas, se llena. Las de verano son la temporada alta absoluta.',
             },
             {
               icon: Sun,
@@ -210,7 +210,7 @@ export function ContentES() {
             {
               icon: Sparkles,
               title: 'Novedades en su primer verano',
-              body: 'Una montaña rusa recién estrenada atrae multitudes en su temporada de apertura — cuenta con largas colas en los estrenos.',
+              body: 'Una montaña rusa recién estrenada atrae a todo el mundo en su primera temporada. En un estreno, cuenta con colas largas.',
             },
           ]}
         />
@@ -234,7 +234,7 @@ export function ContentES() {
             {
               icon: CloudRain,
               title: 'Aprovecha el tiempo con astucia',
-              body: 'Una previsión dudosa echa para atrás a mucha gente. Quien va preparado para la lluvia hace menos cola — un chubasquero gana al paraguas.',
+              body: 'Una previsión dudosa echa para atrás a mucha gente. Si no te importa un poco de llovizna, harás bastante menos cola. El chubasquero gana al paraguas.',
             },
             {
               icon: Sunrise,
@@ -244,7 +244,7 @@ export function ContentES() {
             {
               icon: Ticket,
               title: 'Single rider y colas virtuales',
-              body: 'Sube solo o haz cola en digital mientras comes o compras — tiempo regalado en los días concurridos.',
+              body: 'Sube solo en los asientos sueltos o haz cola desde la app mientras comes o das una vuelta. En los días llenos, es tiempo regalado.',
             },
           ]}
         />
@@ -263,9 +263,9 @@ export function ContentES() {
         icon={Ticket}
       >
         <P>
-          Los patrones de arriba son el punto de partida. El mejor día exacto te lo revela el
-          calendario de afluencia de cada página de parque — verde, amarillo, rojo, hasta un año por
-          delante, con las vacaciones y festivos de la región correspondiente.
+          Los patrones de arriba son el punto de partida. El mejor día exacto está en el calendario
+          de afluencia de cada página de parque: verde, amarillo o rojo para cada día, hasta un año
+          por delante y con las vacaciones y los festivos de la región que toca.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
@@ -285,7 +285,7 @@ export function ContentES() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Impulsado por Fancast"
-        body="Nuestro modelo de predicción — anticipa la afluencia hasta 365 días por delante y se califica a sí mismo de forma abierta."
+        body="Nuestro propio modelo de predicción estima la afluencia hasta 365 días por delante y se pone nota a sí mismo."
       />
 
       {/* 06 — FAQ */}

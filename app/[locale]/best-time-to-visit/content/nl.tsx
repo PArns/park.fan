@@ -84,8 +84,8 @@ export function ContentNL() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Wanneer een pretpark vol loopt, is verrassend goed te voorspellen. Weekdag, vakanties, weer
-          en seizoen bepalen voor een groot deel of je bij de achtbaan tien minuten wacht of
+          Wanneer een pretpark vol loopt, is verrassend goed te voorspellen. Weekdag, vakanties,
+          weer en seizoen bepalen voor een groot deel of je bij de achtbaan tien minuten wacht of
           anderhalf uur. En omdat elk bezoek wachttijden achterlaat, valt dat vrij nauwkeurig na te
           rekenen.
         </Lead>
@@ -127,8 +127,8 @@ export function ContentNL() {
         icon={Clock}
       >
         <P>
-          De dag is het halve werk, het uur de andere helft. Deze vier tijdvensters zijn bijna overal
-          het rustigst:
+          De dag is het halve werk, het uur de andere helft. Deze vier tijdvensters zijn bijna
+          overal het rustigst:
         </P>
         <TouchpointGrid
           items={[
@@ -160,10 +160,10 @@ export function ContentNL() {
           kicker="Bij opening"
           title="Vroeg zijn helpt – maar niet bij elke baan"
         >
-          Bij de grote publiekstrekkers levert het eerste uur na opening vaak meer ritten op dan twee
-          uur in de middag. Overal geldt dat niet: sommige banen lopen de hele dag even vol, andere
-          trekken pas na de middag aan. Op de pagina van elke attractie staat haar eigen dagcurve, en
-          daar staat ook of de vroegere wekker zich voor haar loont.
+          Bij de grote publiekstrekkers levert het eerste uur na opening vaak meer ritten op dan
+          twee uur in de middag. Overal geldt dat niet: sommige banen lopen de hele dag even vol,
+          andere trekken pas na de middag aan. Op de pagina van elke attractie staat haar eigen
+          dagcurve, en daar staat ook of de vroegere wekker zich voor haar loont.
         </SplitFigure>
       </SectionShell>
 
@@ -276,8 +276,8 @@ export function ContentNL() {
           badge={<CrowdLevelBadge level="low" />}
         >
           Elke parkpagina heeft een dag-op-dag voorspelling die de school- en feestdagen van precies
-          die regio meerekent. Kies een groene dag en het belangrijkste deel van de planning is klaar
-          voordat je ook maar een ticket koopt.
+          die regio meerekent. Kies een groene dag en het belangrijkste deel van de planning is
+          klaar voordat je ook maar een ticket koopt.
         </SplitFigure>
         <P>Een paar populaire parken om meteen in te duiken:</P>
         <PopularParksGrid />
