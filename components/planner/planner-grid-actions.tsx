@@ -246,11 +246,19 @@ export function PlannerGridActions({
       >
         <X className="size-4" />
       </button>
+      {/* `max-sm:size-11` wie bei den vier Knöpfen darüber, und aus demselben Grund: dies ist
+          ein Ziel für einen Finger, und ohne die Klasse maß es 14×16 px in einer Zeile, deren
+          andere Knöpfe 44×44 haben. Auf dem Desktop bleibt es bei der Textbreite — die
+          Nachbarn sind dort `size-9`, dieser Knopf war dort immer kleiner und soll es bleiben.
+          `flex items-center justify-center` gehört dazu, nicht zur Zier: ohne sie säße das `×`
+          in der 44-px-Box oben links statt in ihrer Mitte, und der Knopf wäre nur formal groß
+          genug. Kein `rounded-md` und kein `hover:bg-*`: die tragen die Nachbarn, hier wären
+          sie eine Gestaltungsänderung an einer Leiste, die keine bekommen soll. */}
       <button
         type="button"
         onClick={onClose}
         aria-label={t('close')}
-        className="text-muted-foreground/40 hover:text-foreground shrink-0 px-1 text-xs"
+        className="text-muted-foreground/40 hover:text-foreground flex shrink-0 items-center justify-center px-1 text-xs max-sm:size-11"
       >
         ×
       </button>
