@@ -438,6 +438,17 @@ export interface TrackElementRegistry {
 
 export function attachTrackElements(registry: TrackElementRegistry): () => void {
   registry.registerPackCategory('trackElements', 'track');
+  /**
+   * The layout catalogue: what a player may put down, and how much ground it needs.
+   *
+   * Claimed here rather than read here, and the split is deliberate. `tools` builds the palette
+   * straight off the raw manifests, so a `coasterLayouts` entry becomes a placeable tile without
+   * this module doing anything — but a key nobody CLAIMS is reported by
+   * `Registry.unclaimedPackKeys()` as a probable typo, which is exactly what it did the first
+   * time this key shipped. `track` is the module that resolves a layout id into pieces
+   * (`main.ts`'s `entityData`), so `track` is its owner.
+   */
+  registry.registerPackCategory('coasterLayouts', 'track');
   for (const pack of registry.packs()) registerTrackElementsFromPack(pack);
   return registry.onPack((pack) => {
     registerTrackElementsFromPack(pack);

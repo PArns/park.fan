@@ -34,6 +34,7 @@ import { createTrackMaterials, type TrackMaterials } from './materials';
 import { simulateTrack, type TrackPhysics } from './physics';
 import { buildTrackGeometry, type Geo, type TrackGroup } from './profile';
 import { buildOptionsFor, resolveColor, resolveStyle, trackStyles } from './resolve';
+import { TRACK_LAYOUTS, layoutData } from './layouts';
 import { buildSupports } from './supports';
 import { buildStation, type StationBuild } from './station';
 import type { TrackSpline, TrackFrame } from './spline';
@@ -388,10 +389,31 @@ export function createTrackMain(ctx: MainContext): MainHandle {
     },
   };
 
+  /**
+   * The layout an entity means, whether it carries one or names one.
+   *
+   * Two callers write a `coaster` entity and they know different amounts. `demo-park` builds the
+   * whole `TrackData` — pieces and all — because it is placing a specific circuit at a measured
+   * spot. The BUILD BAR writes `{kind, pack, item, position, yaw}` and nothing else, because
+   * `tools` may not know what a coaster is: its own docblock forbids a pack id or an item id
+   * anywhere in that module, so it hands over the key and lets the owner of the kind resolve it.
+   *
+   * That second path is what makes a coaster placeable at all. Until it existed the build bar's
+   * `Coasters` tab was dimmed — correctly, since a `rides` entry with `kind: 'coaster'` declares
+   * no footprint and is therefore not a point — and the only coaster in the game was the one the
+   * demo park put down.
+   *
+   * A key nothing resolves returns null and draws nothing, which is the same answer an entity
+   * with no pieces always got.
+   */
   function entityData(entity: Entity): TrackData | null {
     const data = entity.data as unknown as TrackData | undefined;
-    if (!data || !Array.isArray(data.pieces)) return null;
-    return { ...data, origin: entity.position, yaw: entity.yaw };
+    if (data && Array.isArray(data.pieces)) {
+      return { ...data, origin: entity.position, yaw: entity.yaw };
+    }
+    const preset = TRACK_LAYOUTS.find((p) => p.id === entity.item);
+    if (!preset) return null;
+    return { ...layoutData(preset), origin: entity.position, yaw: entity.yaw };
   }
 
   return {

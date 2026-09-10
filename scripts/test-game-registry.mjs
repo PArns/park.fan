@@ -240,6 +240,7 @@ assert.throws(
 // out, and the surface recipe it names resolving with it.
 {
   const { attachPathStyles, pathStyle, pathStyles } = await import('@/lib/game/paths/manifest.ts');
+  const { attachTrackElements } = await import('@/lib/game/track/elements.ts');
   const r = new Registry();
   r.registerPack(packs[0]);
   const before = pathStyles().length;
@@ -272,6 +273,10 @@ assert.throws(
       },
     ],
   });
+  // `core-classic` carries `coasterLayouts`, a category `track` owns, so this registry is only
+  // fully claimed with `track` attached too — which is the point of the assertion below: an
+  // unclaimed key is a probable typo, and a key whose owning module was never attached is not.
+  const detachTrack = attachTrackElements(r);
   const detach = attachPathStyles(r);
   assert.equal(pathStyles().length, before + 1, 'a manifest alone must add a path style');
   assert.equal(pathStyle('brick-walk').surface, 'redbrick', 'the style keeps its surface recipe');
@@ -281,6 +286,7 @@ assert.throws(
     'pathStyles and pathMaterials must both be claimed, so neither is reported as unclaimed'
   );
   detach();
+  detachTrack();
 }
 
 // And a GROUND LAYER from a manifest — the third module found never reading packs at all.
@@ -297,6 +303,9 @@ assert.throws(
 {
   const { attachGroundLayers, groundLayer, groundLayers } =
     await import('@/lib/game/terrain/manifest.ts');
+  // Same reason as the paths block above: `core-classic` carries a `track` category.
+  const { attachTrackElements: attachTrackForTerrain } =
+    await import('@/lib/game/track/elements.ts');
   const r = new Registry();
   r.registerPack(packs[0]);
   const before = groundLayers().length;
@@ -329,6 +338,7 @@ assert.throws(
       { id: 'broken', pattern: 'nope', colours: {} },
     ],
   });
+  const detachTrack = attachTrackForTerrain(r);
   const detach = attachGroundLayers(r);
   console.warn = realWarn;
   assert.notEqual(groundLayer(0).colours.dark.join(','), grassBefore, 'a pack can retint a layer');
@@ -341,6 +351,7 @@ assert.throws(
   );
   assert.deepEqual(r.unclaimedPackKeys(), [], 'groundLayers must be claimed');
   detach();
+  detachTrack();
 }
 
 console.log(

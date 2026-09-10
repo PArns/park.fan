@@ -35,6 +35,12 @@ export const PALETTE_CATEGORIES: readonly PaletteCategory[] = [
   'scenery',
   'foliage',
   'shops',
+  // Before `rides`, and that is the whole of how the coaster tab avoids opening onto dead tiles.
+  // A `rides` entry with `kind: 'coaster'` lands in the same group and is correctly unplaceable
+  // ("needs the track tool"); listed first, it was the first three tiles a player saw. The order
+  // here is a declaration, not a sort — `buildPalette` keeps registration order on purpose, so
+  // this is the only lever that does not break that rule.
+  'coasterLayouts',
   'rides',
   'buildings',
 ];
@@ -51,6 +57,21 @@ const KIND_BY_CATEGORY: Record<Exclude<PaletteCategory, 'rides'>, EntityKind> = 
   foliage: 'scenery',
   shops: 'shop',
   buildings: 'building',
+  /**
+   * A whole coaster, as one thing you put down.
+   *
+   * The docblock above says a coaster "has `trackCostPerM` and no footprint; that is the manifest
+   * saying I am not a point" — and that is still true of a `rides` entry with `kind: 'coaster'`,
+   * which stays unplaceable. A `coasterLayouts` entry is a different claim: it is a LAYOUT, it
+   * declares the ground rectangle its circuit sweeps, and a click therefore is enough to say
+   * where it goes. This module needs to know nothing else about it — `track` resolves the pieces
+   * from the same `pack:item` the entity carries, the way every other kind resolves its own
+   * geometry.
+   *
+   * Which is also why the tab lights up on its own: `available` is `hasOwner && placement ===
+   * 'point'`, `track` owns `coaster`, and the footprint in the manifest is what makes it a point.
+   */
+  coasterLayouts: 'coaster',
 };
 
 /**

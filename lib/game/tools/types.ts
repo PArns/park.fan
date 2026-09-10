@@ -40,7 +40,8 @@ export type PlacementMode =
   | 'route';
 
 /** The categories of a pack manifest this module offers as placeable things. */
-export type PaletteCategory = 'scenery' | 'foliage' | 'shops' | 'rides' | 'buildings';
+export type PaletteCategory =
+  'scenery' | 'foliage' | 'shops' | 'rides' | 'buildings' | 'coasterLayouts';
 
 export interface PaletteItem {
   /** `pack:item`, the registry's own key. */
