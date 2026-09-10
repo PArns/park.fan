@@ -558,8 +558,8 @@ der [Toverland-Parkseite](ref:attractiepark-toverland).
 
 März bis Juli liegen in unseren Daten eng beieinander und bilden den ruhigsten
 Teil des Jahres. Wochentags ist es etwas leerer als am Wochenende, aber der
-Unterschied ist klein. Meide den April,
-die niederländischen Mai- und Herbstferien und die kurze Wintersaison. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
+Unterschied ist klein. Aus dieser Spanne heraus stechen die niederländischen
+Mai- und Herbstferien und die kurze Wintersaison. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
 
 ### Braucht man im Toverland einen Fast Pass?
 

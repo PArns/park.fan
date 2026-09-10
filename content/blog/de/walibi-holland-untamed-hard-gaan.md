@@ -849,7 +849,7 @@ Für Achterbahnfans ja. Der Park hat mit [Untamed](ref:walibi-holland/untamed)
 die erste Hybrid-Achterbahn Europas, mit [YOY](ref:walibi-holland/yoy-thrill)
 die weltweit erste Duell-Anlage auf Einzelschiene und mit
 [Goliath](ref:walibi-holland/goliath) einen Intamin-Mega-Coaster von 2002, und
-das alles bei einer typischen Wartezeit von 20 Minuten. Wer Dark Rides, eine
+das alles bei einer typischen Wartezeit von gut einer Viertelstunde. Wer Dark Rides, eine
 lückenlose Kulisse und Wetterunabhängigkeit sucht, ist im [Efteling](ref:efteling) oder
 [Phantasialand](ref:phantasialand) besser aufgehoben.
 
@@ -902,8 +902,8 @@ Wer im Dezember einen Walibi-Park will, fährt nach Wavre zu
 
 ### Braucht man einen Fast Lane Pass?
 
-An einem normalen Tag nicht. Bei 20 Minuten Median zahlst du für eingesparte
-Minuten, die du gar nicht hast. An Wochenenden in den Sommerferien, an den
+An einem normalen Tag nicht. Bei dem Median, der hier steht, zahlst du für
+eingesparte Minuten, die du gar nicht hast. An Wochenenden in den Sommerferien, an den
 Abendevents und für YOY kann es sich lohnen.
 
 ## Fahr die zusätzliche Stunde
