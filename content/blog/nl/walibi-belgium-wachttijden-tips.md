@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Wie "Walibi" hoort, denkt aan Biddinghuizen en aan Untamed. Terwijl de oudste
+  Wie “Walibi” hoort, denkt aan Biddinghuizen en aan Untamed. Terwijl de oudste
   van de twee parken in Waver ligt, een half uur rijden voorbij Brussel, sinds
   1975 zo heet, op drie jaar als Six Flags Belgium na, en sinds 2021 met Kondaa
   de hoogste en snelste achtbaan van de Benelux heeft staan. Wachttijden,
@@ -62,7 +62,7 @@ daarvoor op geen enkele achtbaan ter wereld bestond: een cobra roll waar de
 trein doorheen rijdt zonder ook maar één keer op zijn kop te gaan. Je stoel
 blijft boven. Je maag niet.
 
-Dat is [Kondaa](ref:walibi-belgium/kondaa), en wie hier "Walibi" zegt, denkt
+Dat is [Kondaa](ref:walibi-belgium/kondaa), en wie hier “Walibi” zegt, denkt
 vrijwel nooit als eerste aan deze baan. De meesten denken aan
 [Walibi Holland](ref:walibi-holland) en aan
 [Untamed](ref:walibi-holland/untamed). Terwijl het park waar het hier over gaat
@@ -151,7 +151,7 @@ looping van de installatie, klimt de toren daarachter op en rolt hetzelfde
 traject achteruit weer terug, door die looping heen en achter het station de
 tweede toren op. Pas daarna remt hij in. Schwarzkopf bouwde er wereldwijd maar
 een handvol van, de meeste zijn allang gesloopt. Tot 1998 heette ze **Sirocco**,
-van 2013 tot 2024 reed ze in een horrorthema als **"Psyké Underground"**, en de
+van 2013 tot 2024 reed ze in een horrorthema als **“Psyké Underground”**, en de
 verbouwing tot Dock World heeft haar de naam Turbine teruggegeven.
 
 **Vampire** (1999) is een **Vekoma SLC** (Suspended Looping Coaster, model 689)
@@ -159,7 +159,7 @@ en was bij de opening de eerste baan van dit type in België. De trein hangt
 onder de rail in plaats van erop, zodat je voeten in elke bocht vrij door de
 lucht zwaaien, zonder dat er onder je een vloer te zien is.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, oorspronkelijk
-"Colorado" gedoopt) is de klassieke mijnachtbaan over 785 meter, rustig tempo,
+“Colorado” gedoopt) is de klassieke mijnachtbaan over 785 meter, rustig tempo,
 krappe bochten, ideaal om in te komen.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) is een **Boomerang**: de trein
 wordt achteruit een lifthill op getrokken, gaat vooruit door een dubbele looping
@@ -173,7 +173,7 @@ gelanceerde waterachtbaan), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
 (2018, Gerstlauer Bobsled Coaster) en **[Fun Pilot](ref:walibi-belgium/fun-pilot)**
 (2019, Zierer, voor de kleinere gasten).
 
-![Een vuurtoren met het opschrift "Port Wavre" aan een havenkom, ervoor boten en paalwoningen | Port Wavre, het fictieve havenplaatsje in het nieuwe gebied Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
+![Een vuurtoren met het opschrift “Port Wavre” aan een havenkom, ervoor boten en paalwoningen | Port Wavre, het fictieve havenplaatsje in het nieuwe gebied Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
 
 De jongste nieuwigheid is **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
 Gerstlauer), een launch coaster in het volledig nieuw gebouwde gebied
@@ -206,12 +206,12 @@ kocht ondernemer **Eddy Meeùs** een plas in Limal om er waterski te
 demonstreren. Uit die demonstratieplek groeide in een paar jaar een echt park,
 en op **26 juli 1975** ging Walibi open, met zo’n **47.000 bezoekers** in het
 eerste seizoen. De mascotte, een kangoeroe, stond vanaf het begin naast de
-ingang en past tot vandaag toevallig goed bij de naam: "Walibi" klinkt bijna als
-"wallaby", ook al ligt de werkelijke herkomst elders.
+ingang en past tot vandaag toevallig goed bij de naam: “Walibi” klinkt bijna als
+“wallaby”, ook al ligt de werkelijke herkomst elders.
 
 Het park groeide snel over Waver heen. Uit die ene vestiging ontstond een kleine
-Europese keten met filialen in Frankrijk (onder meer **Walibi Rhône-Alpes**, 1981) en Nederland. In 1998 kocht de Amerikaanse groep **Premier Parks**, die
-zich kort daarna omdoopte tot **Six Flags**, zich in de keten in, en van 2001
+Europese keten met filialen in Frankrijk (onder meer Walibi Rhône-Alpes, 1981) en Nederland. In 1998 kocht de Amerikaanse groep Premier Parks, die
+zich kort daarna omdoopte tot Six Flags, zich in de keten in, en van 2001
 tot 2004 heette de vestiging in Waver **Six Flags Belgium**, in dezelfde
 overnamegolf waarin Six Flags ook het huidige
 [Walibi Holland](ref:walibi-holland) kreeg. Eddy Meeùs maakte daar alleen het
@@ -219,7 +219,7 @@ begin van mee: hij overleed op **24 november 2001**, in het jaar waarin zijn
 park voor het eerst een andere naam droeg.
 
 In 2004 ging het merk via investeringsmaatschappij Star Parks terug naar
-**Walibi**, in 2006 kocht **Grévin & Cie**, een dochter van het Franse
+Walibi, in 2006 kocht Grévin & Cie, een dochter van het Franse
 **Compagnie des Alpes**, het park en daarmee de rest van de overgebleven
 Walibi-vestigingen. Sindsdien zijn Waver, Biddinghuizen en
 [Parc Astérix](ref:parc-asterix) van hetzelfde concern.
@@ -233,7 +233,7 @@ eerder was opengegaan.
 ## Worlds of Walibi: honderd miljoen euro voor acht nieuwe themagebieden
 
 Op **22 juni 2017** presenteerde het park een investeringsplan waar in zijn
-geschiedenis niets aan voorafging: **"Worlds of Walibi"**, zo’n
+geschiedenis niets aan voorafging: **“Worlds of Walibi”**, zo’n
 **100 miljoen euro**, waarmee 75 % van het terrein in acht nieuwe themagebieden
 moest veranderen, plus tien nieuwe attracties. De oorspronkelijke horizon was 2023. Toen was er pas een deel klaar, wat bij een verbouwing van deze omvang
 eerder regel dan uitzondering is: **Kondaa** (2021) was het eerste grote gebied,
@@ -258,7 +258,7 @@ gebied.
 
 ![Vervallen houten gebouw met het opschrift Aquarium, blauwgroen verlicht bij nacht | Het spookhuis Aquarium, midden in Dock World, waar overdag Mecalodon rijdt. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-Met halloween draait het park zijn eigen naam om: **"Ibilaw"** is "Walibi"
+Met halloween draait het park zijn eigen naam om: **“Ibilaw”** is “Walibi”
 achterstevoren, sinds 2024 met mascotte **Bill** en meerdere spookhuizen en
 scare zones zoals het clowneske **Psycho Circus** en **Arachnophobia**,
 gezinsvriendelijker dan de strikte vanaf-16-events van andere parken. Een van de
@@ -284,7 +284,7 @@ buren, en de weekdagen buiten de zomervakantie, waarop het park toch al niet
 dagelijks opengaat. Welke van de komende openingsdagen de rustigste zijn, staat
 hierboven in de kalender, dag voor dag bijgewerkt.
 
-## De perfecte dag, kort samengevat
+## De perfecte dag, in vier zinnen
 
 Bij opening meteen naar **Kondaa**, omdat zij de reden is dat de meesten hier
 komen, en omdat het eerste uur de kortste rij van de dag heeft. Direct daarna
@@ -350,7 +350,7 @@ die in Nederland staat.
 
 ### Wat is Ibilaw in Walibi Belgium?
 
-Het halloween-evenement van het park, genoemd naar "Walibi" achterstevoren
+Het halloween-evenement van het park, genoemd naar “Walibi” achterstevoren
 gelezen, met spookhuizen, scare zones en mascotte Bill. Details in de
 [halloweengids 2026](/blog/halloween-pretparken-2026).
 
@@ -361,7 +361,7 @@ waterskidemonstraties. Daaruit groeide het park dat op 26 juli 1975 openging,
 met zo’n 47.000 bezoekers in het eerste seizoen. Meeùs overleed in 2001,
 hetzelfde jaar waarin zijn park korte tijd Six Flags Belgium werd.
 
-### Wat is "Worlds of Walibi"?
+### Wat is “Worlds of Walibi”?
 
 Het in 2017 aangekondigde investeringsplan van het park: zo’n 100 miljoen euro
 voor acht nieuwe themagebieden en tien nieuwe attracties.

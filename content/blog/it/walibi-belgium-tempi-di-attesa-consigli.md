@@ -210,16 +210,16 @@ accanto all’ingresso fin dall’inizio e ancora oggi sta per caso benissimo co
 nome: «Walibi» suona quasi come «wallaby», anche se l’origine vera è un’altra.
 
 Il parco crebbe in fretta oltre Wavre. Da quell’unica sede nacque una piccola
-catena europea con propaggini in Francia (fra le altre **Walibi Rhône-Alpes**, 1981) e nei Paesi Bassi. Nel 1998 entrò nella catena il gruppo statunitense
-**Premier Parks**, che poco dopo si sarebbe ribattezzato **Six Flags**, e dal
+catena europea con propaggini in Francia (fra le altre Walibi Rhône-Alpes, 1981) e nei Paesi Bassi. Nel 1998 entrò nella catena il gruppo statunitense
+Premier Parks, che poco dopo si sarebbe ribattezzato Six Flags, e dal
 2001 al 2004 la sede di Wavre si chiamò **Six Flags Belgium**, nella stessa
 ondata di acquisizioni in cui a Six Flags finì anche l’attuale
 [Walibi Holland](ref:walibi-holland). Eddy Meeùs ne vide soltanto l’inizio: morì
 il **24 novembre 2001**, l’anno in cui il suo parco portò per la prima volta un
 altro nome.
 
-Nel 2004 il marchio tornò a **Walibi** attraverso la società d’investimento Star
-Parks, e nel 2006 **Grévin & Cie**, controllata della francese
+Nel 2004 il marchio tornò a Walibi attraverso la società d’investimento Star
+Parks, e nel 2006 Grévin & Cie, controllata della francese
 **Compagnie des Alpes**, comprò il parco e con esso quel che restava delle sedi
 Walibi. Da allora Wavre, Biddinghuizen e il [Parc Astérix](ref:parc-asterix)
 appartengono allo stesso gruppo.
@@ -287,7 +287,7 @@ quando comunque il parco non apre tutti i giorni. Quali dei prossimi giorni di
 apertura siano i più tranquilli sta nel calendario più in alto, aggiornato ogni
 giorno.
 
-## La giornata perfetta, in breve
+## La giornata perfetta, in quattro frasi
 
 All’apertura prima di tutto a **Kondaa**, perché è il motivo per cui i più
 vengono fin qui, e perché la prima ora ha la coda più corta della giornata.

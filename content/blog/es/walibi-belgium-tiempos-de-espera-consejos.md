@@ -218,16 +218,16 @@ sea otro.
 
 El parque creció deprisa más allá de Wavre. De aquel único recinto salió una
 pequeña cadena europea con sucursales en Francia (entre ellas
-**Walibi Rhône-Alpes**, 1981) y en los Países Bajos. En 1998 entró en la cadena
-el grupo estadounidense **Premier Parks**, que poco después pasó a llamarse
-**Six Flags**, y de 2001 a 2004 el recinto de Wavre se llamó
+Walibi Rhône-Alpes, 1981) y en los Países Bajos. En 1998 entró en la cadena
+el grupo estadounidense Premier Parks, que poco después pasó a llamarse
+Six Flags, y de 2001 a 2004 el recinto de Wavre se llamó
 **Six Flags Belgium**, en la misma oleada de compras con la que Six Flags se
 quedó también el actual [Walibi Holland](ref:walibi-holland). Eddy Meeùs solo
 vivió el principio de aquello: murió el **24 de noviembre de 2001**, el año en
 que su parque llevó por primera vez otro nombre.
 
-En 2004 la marca volvió a **Walibi** a través de la sociedad de inversión Star
-Parks; en 2006, **Grévin & Cie**, filial de la francesa
+En 2004 la marca volvió a Walibi a través de la sociedad de inversión Star
+Parks; en 2006, Grévin & Cie, filial de la francesa
 **Compagnie des Alpes**, compró el parque y con él lo que quedaba de recintos
 Walibi. Desde entonces, Wavre, Biddinghuizen y el
 [Parc Astérix](ref:parc-asterix) pertenecen al mismo grupo.
@@ -293,7 +293,7 @@ del verano, cuando el parque no abre
 a diario de todos modos. Cuáles de los próximos días de apertura son los más
 tranquilos está en el calendario de más arriba, actualizado a diario.
 
-## El día perfecto, en resumen
+## El día perfecto, en cuatro frases
 
 Al abrir, directo a **Kondaa**, porque es el motivo por el que la mayoría viene
 hasta aquí y porque la primera hora tiene la cola más corta del día. Justo

@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Say "Walibi" and most people think of Holland and Untamed. The older of the
+  Say “Walibi” and most people think of Holland and Untamed. The older of the
   two parks sits in Wavre, half an hour’s drive beyond Brussels, has carried
   the name since 1975 bar three years as Six Flags Belgium, and has had, since
   2021, the tallest and fastest coaster in the Benelux in Kondaa. Wait times,
@@ -61,7 +61,7 @@ Wavre as far as the town’s water tower. Then the train tips, 80 degrees down,
 the world had before: a cobra roll the train runs through without ever going
 upside down. Your seat stays the right way up. Your stomach does not.
 
-That is [Kondaa](ref:walibi-belgium/kondaa), and say "Walibi" out loud and
+That is [Kondaa](ref:walibi-belgium/kondaa), and say “Walibi” out loud and
 almost nobody thinks of this ride first. Most people think of
 [Walibi Holland](ref:walibi-holland) and
 [Untamed](ref:walibi-holland/untamed). The park this is about is the older of
@@ -148,7 +148,7 @@ has, climbs the tower behind it and then rolls the same track back in reverse,
 through the loop again and up a second tower behind the station. Only after
 that does it brake. Schwarzkopf built a handful of these worldwide and most
 were scrapped long ago. It was called **Sirocco** until 1998, ran from 2013 to
-2024 under a horror theme as **"Psyké Underground"**, and the Dock World
+2024 under a horror theme as **“Psyké Underground”**, and the Dock World
 rebuild gave it the Turbine name back.
 
 **Vampire** (1999) is a **Vekoma SLC** (Suspended Looping Coaster, model 689)
@@ -156,7 +156,7 @@ and was the first ride of its type in Belgium when it opened. The train hangs
 under the rail instead of sitting on it, so your feet swing freely through
 every curve with no floor in sight beneath them.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, originally
-christened "Colorado") is the classic mine train over 785 metres of track,
+christened “Colorado”) is the classic mine train over 785 metres of track,
 gentle pace, tight curves, ideal for easing into the day.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) is a **Boomerang**: the train is
 hauled backwards up a lift hill, runs forwards through a double loop (cobra
@@ -170,7 +170,7 @@ water coaster), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)** (2018, Gerstlauer
 bobsled coaster) and **[Fun Pilot](ref:walibi-belgium/fun-pilot)** (2019,
 Zierer, for the smaller guests).
 
-![A lighthouse lettered "Port Wavre" above a harbour basin, boats and stilt houses in front of it | Port Wavre, the fictional harbour town in the new Dock World area. | wide](/media/walibi-belgium/mecalodon.jpg)
+![A lighthouse lettered “Port Wavre” above a harbour basin, boats and stilt houses in front of it | Port Wavre, the fictional harbour town in the new Dock World area. | wide](/media/walibi-belgium/mecalodon.jpg)
 
 The newest addition is **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
 Gerstlauer), a launch coaster in the completely new **Dock World** area. At its
@@ -202,20 +202,20 @@ businessman **Eddy Meeùs** bought a stretch of water in Limal to put on
 water-ski displays. Within a few years the display area had turned into a
 proper park, and on **26 July 1975** Walibi opened its gates, drawing around
 **47,000 visitors** in its first season. The mascot, a kangaroo, stood beside
-the entrance from day one and still happens to suit the name: "Walibi" sounds
-almost like "wallaby", even though the actual origin is a different one.
+the entrance from day one and still happens to suit the name: “Walibi” sounds
+almost like “wallaby”, even though the actual origin is a different one.
 
 The park outgrew Wavre quickly. One site became a small European chain with
-offshoots in France (**Walibi Rhône-Alpes**, 1981, among them) and the
-Netherlands. In 1998 the American group **Premier Parks**, which renamed itself
-**Six Flags** shortly afterwards, bought into the chain, and from 2001 to 2004
+offshoots in France (Walibi Rhône-Alpes, 1981, among them) and the
+Netherlands. In 1998 the American group Premier Parks, which renamed itself
+Six Flags shortly afterwards, bought into the chain, and from 2001 to 2004
 the Wavre site was called **Six Flags Belgium**, in the same wave of takeovers
 that brought Six Flags what is now [Walibi Holland](ref:walibi-holland). Eddy
 Meeùs saw only the start of it: he died on **24 November 2001**, in the year
 his park carried a different name for the first time.
 
-In 2004 the brand went back to **Walibi** by way of the investment company Star
-Parks; in 2006 **Grévin & Cie**, a subsidiary of the French
+In 2004 the brand went back to Walibi by way of the investment company Star
+Parks; in 2006 Grévin & Cie, a subsidiary of the French
 **Compagnie des Alpes**, bought the park and with it what was left of the
 Walibi sites. Wavre, Biddinghuizen and [Parc Astérix](ref:parc-asterix) have
 belonged to the same group ever since.
@@ -229,7 +229,7 @@ had opened just ten weeks earlier.
 ## Worlds of Walibi: a hundred million euros for eight new themed worlds
 
 On **22 June 2017** the park presented an investment plan with nothing
-comparable anywhere in its history: **"Worlds of Walibi"**, around
+comparable anywhere in its history: **“Worlds of Walibi”**, around
 **100 million euros** to turn 75 % of the site into eight new themed worlds,
 plus ten new attractions. The original target was 2023. By then only part of it
 was finished, which on a rebuild this size is the rule rather than the
@@ -254,7 +254,7 @@ coasters and a whole new area inside four years.
 
 ![A derelict wooden building lettered Aquarium, lit blue and green at night | The haunted house Aquarium, inside Dock World, where Mecalodon runs by day. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-At Halloween the park turns its own name around: **"Ibilaw"** is "Walibi"
+At Halloween the park turns its own name around: **“Ibilaw”** is “Walibi”
 backwards, running since 2024 with the mascot **Bill** and several haunted
 houses and scare zones such as the clownish **Psycho Circus** and
 **Arachnophobia**, all of it friendlier to families than the strict 16-plus
@@ -280,7 +280,7 @@ sharply than its German neighbours, and the weekdays outside the summer
 holidays, when it does not open every day anyway. Which of the coming operating
 days are the quietest is in the calendar further up, updated daily.
 
-## The perfect day, the short version
+## The perfect day, in four sentences
 
 At opening, go to **Kondaa** first, because it is the reason most people came
 at all, and because the first hour brings the shortest queue of the day.
@@ -346,7 +346,7 @@ Kondaa is a ride of a build type Germany does not have.
 
 ### What is Ibilaw at Walibi Belgium?
 
-The park’s Halloween event, named after "Walibi" read backwards, with haunted
+The park’s Halloween event, named after “Walibi” read backwards, with haunted
 houses, scare zones and the mascot Bill. Details are in the
 [Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
@@ -357,7 +357,7 @@ displays. Out of it came the park that opened on 26 July 1975 and drew around
 47,000 visitors in its first season. Meeùs died in 2001, the same year his park
 briefly became Six Flags Belgium.
 
-### What is "Worlds of Walibi"?
+### What is “Worlds of Walibi”?
 
 The investment plan the park announced in 2017: around 100 million euros for
 eight new themed worlds and ten new attractions.
