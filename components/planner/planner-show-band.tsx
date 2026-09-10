@@ -96,7 +96,29 @@ export function PlannerShowBand({
   return (
     <div
       data-planner-show-band=""
-      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm"
+      // `max-sm:min-h-11`, and it is the strip that grows rather than only the
+      // switch inside it. A 44 px pseudo-element hanging out of a 22 px strip
+      // was tried and is wrong here: this strip is `sticky top-0` INSIDE the
+      // grid's scroller, so the overhang follows the scroll across the blocks —
+      // and a block is selected by a plain `onClick` on its own `<li>` with no
+      // pointer-type gate (`planner-block.tsx`), so the top-right corner of
+      // whatever block passed underneath would toggle the shows instead of
+      // opening its action row.
+      //
+      // Growing costs the axis nothing, which is the part worth writing down:
+      // the strip is scrolled CONTENT, not part of the scroller's box, so
+      // `check:planner`'s axis measurement is unmoved. What it does cost is
+      // coverage — stuck at the top it hides 44 px of grid instead of 22 — and
+      // that is recoverable by scrolling, where a stolen tap is not.
+      //
+      // Unconditional, though the switch it was raised for renders only where
+      // there are shows: a height that depends on the answer is not a
+      // reservation, and this strip's whole job in the loading state is to keep
+      // the grid from moving when `/plan/day` lands. Tying `min-h-11` to
+      // `lines?.length` would buy back 22 px on a park with no shows and pay
+      // for it with a 22 px jump on every park that has them, one second after
+      // the panel opens.
+      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm max-sm:min-h-11"
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
       title={observedOn ? t('shows.projectedFrom', { date: observedOn }) : undefined}
@@ -143,7 +165,10 @@ export function PlannerShowBand({
           data-planner-shows-toggle={visible ? 'on' : 'off'}
           aria-pressed={visible}
           title={visible ? t('shows.hide') : t('shows.show')}
-          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors"
+          // 16 px measured, and the smallest target in the panel. It grows
+          // inside a strip that grew with it — see the strip's own note for why
+          // this is the one place a pseudo-element was the wrong instrument.
+          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11"
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />

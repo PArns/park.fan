@@ -54,7 +54,12 @@ export function PlannerPushToggle() {
         disabled={busy}
         aria-pressed={on}
         className={cn(
-          'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:py-2.5',
+          // `min-h-11`, not `py-2.5`. Padding sizes a box from its content, and
+          // the content here is a 14 px icon beside one line of `text-xs` —
+          // 10 px top and bottom of it came to 36, not 44. The topic rows
+          // below already say `min-h-11`, which is why they measured right and
+          // the master switch above them did not.
+          'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11',
           'hover:bg-accent disabled:opacity-60',
           on && 'text-foreground'
         )}
