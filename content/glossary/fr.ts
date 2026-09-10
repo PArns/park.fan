@@ -7,7 +7,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le temps estimé qu’un visiteur doit passer en file avant d’accéder à une attraction.',
     definition:
-      'Le temps d’attente est la durée estimée qu’un visiteur passe en file d’attente avant de pouvoir embarquer sur une attraction. Les parcs affichent les temps d’attente aux entrées des attractions et sur leurs applications. park.fan suit les temps d’attente en direct mis à jour chaque minute.',
+      'Le temps d’attente est la durée estimée qu’un visiteur passe en file d’attente avant de pouvoir embarquer sur une attraction. Les parcs affichent les temps d’attente aux entrées des attractions et sur leurs applications. park.fan relit les temps d’attente toutes les cinq minutes, pour chaque attraction d’un parc.',
     alternateNames: ['File d’attente', 'Queue time'],
 
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une file séparée pour les visiteurs acceptant de voyager seuls afin de remplir les places vides.',
     definition:
-      'La file Single Rider permet aux visiteurs acceptant de voyager seuls de remplir les sièges vides dans les véhicules d’attractions. Comme les passagers en Single Rider comblent les espaces libres, la file avance beaucoup plus vite que la file standard — souvent 50 à 70 % de temps d’attente en moins. Toutes les attractions ne proposent pas cette option ; vérifiez avant de rejoindre la file.',
+      'La file Single Rider est faite pour celles et ceux qui acceptent de monter séparément de leur groupe : elle comble les places restées libres dans les trains. Comme ces passagers sont glissés dans les trous, la file avance nettement plus vite que la file standard, souvent 50 à 70 % de temps d’attente en moins. Toutes les attractions ne proposent pas de file Single Rider.',
     alternateNames: ['Single Rider Lane', 'File individuelle'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un système de file numérique où les visiteurs réservent un horaire plutôt que d’attendre physiquement.',
     definition:
-      'Une file d’attente virtuelle permet aux visiteurs de s’inscrire pour une attraction via une application ou une borne et de recevoir une notification quand leur tour approche. Au lieu de faire la queue physiquement, les visiteurs peuvent profiter d’autres zones du parc et revenir lorsqu’ils sont appelés.',
+      'Une file d’attente virtuelle permet aux visiteurs de s’inscrire pour une attraction via une application ou une borne et de recevoir une notification quand leur tour approche. Au lieu de patienter dans la file, on passe ce temps ailleurs dans le parc et on revient quand le groupe est appelé.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Files d’attente virtuelles', 'File Virtuelle', 'File virtuelle'],
   },
@@ -51,7 +51,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Temps d’attente affiché',
     shortDefinition: 'Le temps d’attente officiel affiché par le parc à l’entrée d’une attraction.',
     definition:
-      'Le temps d’attente affiché est l’estimation officielle visible sur les panneaux à l’entrée physique d’une attraction et/ou dans l’application officielle du parc. park.fan agrège les temps d’attente affichés depuis les sources officielles chaque minute.',
+      'Le temps d’attente affiché est l’estimation officielle, celle qui est écrite à l’entrée d’une attraction et dans l’application du parc. Les parcs la calculent à partir de la longueur mesurée de la file, du débit passé de l’attraction et du rythme auquel on embarque à cet instant. park.fan réunit les temps d’attente affichés de plusieurs sources publiques toutes les cinq minutes.',
     relatedTermIds: ['crowd-level', 'wait-time'],
   },
   {
@@ -70,7 +70,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une prévision jour par jour montrant les niveaux d’affluence prédits pour aider à planifier sa visite.',
     definition:
-      'Un calendrier d’affluence est un calendrier mensuel ou annuel montrant les niveaux d’affluence prévus pour chaque jour. park.fan génère des calendriers d’affluence à l’aide de modèles IA entraînés sur des années de données historiques de temps d’attente, combinées avec les calendriers scolaires, les événements à venir et les tendances saisonnières.',
+      'Un calendrier d’affluence est un calendrier mensuel ou annuel montrant les niveaux d’affluence prévus pour chaque jour. park.fan génère des calendriers d’affluence à l’aide de modèles IA entraînés sur les temps d’attente relevés, combinés aux calendriers scolaires, aux événements à venir et aux tendances saisonnières. Les jours verts annoncent une faible affluence, les jours orange et rouges une forte affluence.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
   },
   {
@@ -250,7 +250,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Périodes de moindre fréquentation offrant des files plus courtes, des prix plus bas et une expérience plus sereine.',
     definition:
-      'La hors-saison correspond aux périodes plus calmes du calendrier, lorsque les écoles sont en session et qu’aucun grand jour férié ne tombe — typiquement janvier à début février, mi-septembre à octobre (hors événements Halloween) et les premières semaines de novembre. En hors-saison, les temps d’attente pour les attractions populaires peuvent être nettement plus courts, les prix des billets souvent au plus bas et les parcs bien moins bondés. Pour les visiteurs disposant d’un emploi du temps flexible, choisir la hors-saison est l’une des stratégies les plus efficaces. Le calendrier d’affluence de park.fan met en évidence ces fenêtres.',
+      'La hors-saison correspond aux périodes plus calmes du calendrier, lorsque les écoles sont en session et qu’aucun grand jour férié ne tombe — typiquement janvier à début février, mi-septembre à octobre (hors événements Halloween) et les premières semaines de novembre. En hors-saison, les temps d’attente pour les attractions populaires peuvent être nettement plus courts, les prix des billets souvent au plus bas et les parcs bien moins bondés. Pour les visiteurs disposant d’un emploi du temps flexible, choisir la hors-saison est l’une des stratégies les plus efficaces. Le calendrier d’affluence de park.fan marque les fenêtres de hors-saison d’un parc.',
     alternateNames: ['Basse Saison', 'Hors Saison', 'Période Calme'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -1042,9 +1042,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'Prévision IA',
     shortDefinition:
-      'Prédictions basées sur le machine learning pour les niveaux de fréquentation et les temps d’attente — jusqu’à 30+ jours à l’avance.',
+      'Prédictions basées sur le machine learning pour les niveaux de fréquentation et les temps d’attente – jusqu’à 365 jours à l’avance.',
     definition:
-      'Une prévision IA utilise des modèles de machine learning entraînés sur des données historiques de fréquentation, des données météo, des calendriers scolaires et des données en temps réel pour prédire l’affluence dans un parc ou pour une attraction donnée. park.fan génère des prévisions IA pour la fréquentation et les temps d’attente prévus jusqu’à 30+ jours à l’avance.\n\nLes prévisions sont continuellement mises à jour à mesure que de nouvelles données arrivent. Les prévisions à court terme (1–7 jours) sont généralement très précises car elles intègrent les données météo actuelles, les annonces d’événements et les signaux de réservation. Les prévisions à long terme sont naturellement moins précises, mais restent utiles pour identifier les périodes calmes ou animées bien à l’avance.',
+      'Une prévision IA utilise des modèles de machine learning entraînés sur des données historiques de fréquentation, des données météo, des calendriers scolaires et des données en temps réel pour prédire l’affluence dans un parc ou pour une attraction donnée. park.fan génère des prévisions IA pour la fréquentation et les temps d’attente prévus jusqu’à 365 jours à l’avance.\n\nLes prévisions sont recalculées à chaque entraînement, tous les jours à 06h00 UTC. Les prévisions à court terme (1–7 jours) sont généralement très précises car elles intègrent les données météo actuelles, les annonces d’événements et les signaux de réservation. Les prévisions à long terme sont naturellement moins précises, mais restent utiles pour identifier les périodes calmes ou animées bien à l’avance.',
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     aliases: ['Prévision IA', 'Prévisions IA'],
@@ -1085,9 +1085,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ki',
     name: 'IA',
     shortDefinition:
-      'Intelligence Artificielle — les modèles de machine learning qui calculent les prévisions de fréquentation et les temps d’attente.',
+      'Intelligence artificielle – les modèles de machine learning qui calculent les prévisions de fréquentation et les temps d’attente.',
     definition:
-      'L’IA (Intelligence Artificielle) désigne les algorithmes de machine learning qui reconnaissent des patterns dans de grands jeux de données et génèrent des prédictions. park.fan utilise des modèles IA entraînés sur des années de données historiques de temps d’attente, de calendriers scolaires, de données météo et d’annonces d’événements pour produire des prévisions quotidiennes de fréquentation et de temps d’attente — jusqu’à 30+ jours à l’avance.',
+      'L’IA (intelligence artificielle) désigne les algorithmes de machine learning qui reconnaissent des motifs dans de grands jeux de données et en tirent des prédictions. park.fan utilise des modèles entraînés sur les temps d’attente relevés, les calendriers scolaires, les données météo et les annonces d’événements. Ils recalculent chaque jour les prévisions de fréquentation et de temps d’attente, pour chaque parc et chaque jour, jusqu’à 365 jours à l’avance.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
     aliases: ['Intelligence Artificielle'],
   },
@@ -1097,7 +1097,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Temps d’attente mis à jour en temps réel directement depuis les systèmes du parc.',
     definition:
-      'Un temps d’attente en direct est la donnée actuelle en temps réel extraite des systèmes du parc — pas une moyenne historique, mais le chiffre réel à la minute près. park.fan récupère les temps d’attente en direct depuis les APIs officielles des parcs et des sources tierces, avec une mise à jour chaque minute.',
+      'Un temps d’attente en direct est la donnée du moment, tirée des systèmes du parc : pas une moyenne historique, mais l’état d’aujourd’hui, maintenant. park.fan récupère ces temps d’attente depuis des sources publiques et les actualise toutes les cinq minutes. Vous voyez ainsi quelle attraction est vide en ce moment et où il faudrait vraiment attendre 60 minutes.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
   },
   {
@@ -1965,7 +1965,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'R-carré — mesure dans quelle proportion le modèle IA explique les variations des temps d’attente réels (0–1, plus haut = mieux).',
     definition:
-      'Le R² (R-carré, ou coefficient de détermination) mesure quelle part de la variation des temps d’attente réels le modèle parvient à expliquer. Une valeur de 1,0 signifierait des prédictions parfaites ; 0,0 signifie que le modèle n’explique rien au-delà d’une simple moyenne. En pratique, des valeurs supérieures à 0,7 indiquent un bon modèle ; au-dessus de 0,9, excellent.\n\nPour les prédictions de temps d’attente, atteindre un R² élevé est difficile car les files sont influencées par des facteurs imprévisibles. Le score R² de park.fan reflète les performances réelles sur toutes les prédictions suivies, mis à jour quotidiennement.',
+      'Le R² (R-carré, ou coefficient de détermination) mesure quelle part de la variation des temps d’attente réels le modèle parvient à expliquer. Une valeur de 1,0 signifierait des prédictions parfaites ; 0,0 signifie que le modèle n’explique rien au-delà d’une simple moyenne. En pratique, des valeurs supérieures à 0,7 indiquent un bon modèle ; au-dessus de 0,9, excellent.\n\nPour les prédictions de temps d’attente, atteindre un R² élevé est difficile car les files sont influencées par des facteurs imprévisibles. Le R² affiché sur park.fan sort de la comparaison de toutes les prévisions recalculées, et il est redéterminé chaque jour.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'rmse'],
     aliases: ['R-squared', 'coefficient de détermination'],
   },

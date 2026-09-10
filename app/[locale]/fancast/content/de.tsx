@@ -76,7 +76,7 @@ const FAQ = [
   {
     question: 'Wie oft wird das Modell aktualisiert?',
     answer:
-      'Jeden Tag. Fancast trainiert sich automatisch einmal täglich um 06:00 UTC mit den frischesten Daten neu – inklusive der Wartezeiten von gestern. Der Trainingslauf von heute Nacht kennt die Wartezeiten von gestern.',
+      'Jeden Tag. Fancast trainiert sich automatisch einmal täglich um 06:00 UTC neu, mit den Wartezeiten von gestern.',
   },
   {
     question: 'Kann ich Fancast für einen bestimmten Park und Tag nutzen?',
@@ -118,7 +118,7 @@ export function ContentDE() {
         </P>
         <Highlight>
           Fancast ist kein Wahrsager mit Glaskugel, sondern ein notorischer Statistiker, der jeden
-          Abend Nachhilfe bekommt und am nächsten Morgen noch mal ranmuss.
+          Morgen noch einmal nachsitzen muss.
         </Highlight>
       </div>
 
@@ -247,8 +247,8 @@ export function ContentDE() {
       >
         <P>
           Der wichtigste Trick ist ein unspektakulärer: Fancast trainiert sich{' '}
-          <strong>jede Nacht neu</strong>, jeden Tag um 06:00 UTC. Was gestern im Park passiert ist,
-          steckt ab dem nächsten Morgen in der Prognose.
+          <strong>einmal am Tag neu</strong>, um 06:00 UTC. Was gestern im Park passiert ist, steckt
+          ab dem nächsten Morgen in der Prognose.
         </P>
         <P>
           Getestet wird dabei nur an Tagen, die das Modell <strong>noch nie gesehen hat</strong> –

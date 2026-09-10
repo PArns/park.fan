@@ -33,7 +33,7 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Les jours de semaine les plus calmes',
   weekdaysBody:
-    'Moyenne sur tous les parcs — chaque parc d’abord normalisé sur sa propre moyenne, pour que les grands parcs n’écrasent pas les petits. Voilà à quel point un jour de semaine typique est fréquenté par rapport à la moyenne. Du mardi au jeudi l’emportent presque à chaque fois.',
+    'Chaque parc compte ici pour autant, Disneyland comme un petit parc familial : nous le ramenons d’abord à sa propre moyenne, et nous moyennons ensuite. La barre montre à quel point un jour de semaine typique est fréquenté par rapport à la moyenne. Du mardi au jeudi l’emportent presque à chaque fois.',
   monthsTitle: 'Les mois les plus calmes',
   monthsBody:
     'Le même calcul sur l’année : les mois hors saison sont nettement plus vides que les pics de l’été et des vacances.',
@@ -49,12 +49,12 @@ const FAQ = [
   {
     question: 'Quel est le meilleur moment pour visiter un parc d’attractions ?',
     answer:
-      'C’est le plus calme en semaine hors vacances scolaires — du mardi au jeudi en basse saison sont presque toujours les journées les plus détendues. Les tendances précises par jour de semaine et par mois sont affichées ci-dessus, en direct à partir de vraies données de temps d’attente sur tous les parcs.',
+      'C’est le plus calme en semaine hors vacances scolaires, et du mardi au jeudi en basse saison sont presque toujours les journées les plus détendues. Les tendances précises par jour de semaine et par mois sont affichées ci-dessus, en direct à partir de vraies données de temps d’attente sur tous les parcs.',
   },
   {
     question: 'Quel jour de la semaine est le moins fréquenté ?',
     answer:
-      'En moyenne sur tous les parcs, le mardi, le mercredi et le jeudi sont les plus calmes, tandis que le samedi et le dimanche sont nettement les plus chargés. Les parcs peuvent différer — chaque page de parc propose un calendrier d’affluence qui le montre jour par jour.',
+      'En moyenne sur tous les parcs, le mardi, le mercredi et le jeudi sont les plus calmes, tandis que le samedi et le dimanche sont nettement les plus chargés. Les parcs peuvent différer ; la page de chaque parc porte un calendrier d’affluence qui le montre jour par jour.',
   },
   {
     question: 'Quels mois les parcs d’attractions sont-ils les moins fréquentés ?',
@@ -64,17 +64,17 @@ const FAQ = [
   {
     question: 'Est-ce que ça vaut le coup de venir sous la pluie ?',
     answer:
-      'Souvent oui : le mauvais temps décourage beaucoup de visiteurs et les files raccourcissent — surtout pour les montagnes russes qui tournent quand même. Mais l’astuce d’initié ne marche que tant que tout le monde n’a pas la même idée ; c’est pourquoi notre modèle de prévision intègre directement la météo.',
+      'Souvent oui : le mauvais temps décourage beaucoup de visiteurs et les files raccourcissent, surtout aux montagnes russes qui tournent sous la pluie. Mais l’astuce d’initié ne marche que tant que tout le monde n’a pas la même idée ; c’est pourquoi notre modèle de prévision intègre directement la météo.',
   },
   {
     question: 'Comment trouver le meilleur jour pour un parc précis ?',
     answer:
-      'Cette page montre les tendances globales comme point de départ. Pour un parc précis, ouvrez son calendrier d’affluence : il affiche pour chaque journée, jusqu’à un an à l’avance, une prévision verte, jaune ou rouge — vacances scolaires et jours fériés de la région compris.',
+      'Cette page montre les tendances globales comme point de départ. Pour un parc précis, ouvrez son calendrier d’affluence : il affiche pour chaque journée, jusqu’à un an à l’avance, une prévision verte, jaune ou rouge, vacances scolaires et jours fériés de la région compris.',
   },
   {
     question: 'D’où viennent ces données ?',
     answer:
-      'Des temps d’attente réellement enregistrés de plus de 200 parcs au cours des deux dernières années. Chaque parc est normalisé sur sa propre moyenne puis moyenné sur l’ensemble des parcs, pour que le classement soit équitable et ne soit pas dominé par les plus grands parcs.',
+      'Des temps d’attente que nous avons relevés nous-mêmes dans plus de 200 parcs. Pour que le classement ne soit pas dicté par les plus grands parcs, chaque parc est d’abord ramené à sa propre moyenne, et la moyenne d’ensemble n’est calculée qu’ensuite.',
   },
 ] as const;
 
@@ -84,16 +84,16 @@ export function ContentFR() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Le meilleur moment pour visiter un parc d’attractions n’est pas un secret — c’est une
+          Le meilleur moment pour visiter un parc d’attractions n’est pas un secret, c’est une
           tendance. Le moment où un parc se remplit suit le jour de la semaine, le calendrier des
           vacances scolaires, la météo et la saison ; les quatre laissent des empreintes dans les
           temps d’attente.
         </Lead>
         <P>
-          Ces empreintes, nous les avons mesurées sur plus de 200 parcs au cours des deux dernières
-          années. Ci-dessous : les jours de semaine et les mois les plus calmes, les heures les plus
-          tranquilles de la journée, les dates à esquiver — et le calendrier d’affluence qui
-          transforme tout cela en le meilleur jour possible pour votre parc.
+          C’est exactement ce que nous avons fait : dépouiller les temps d’attente relevés dans
+          plus de 200 parcs. Ici se trouvent les jours de semaine et les mois les plus calmes, les
+          heures les plus tranquilles de la journée et les dates à esquiver. Le calendrier
+          d’affluence vous sort ensuite le bon jour pour le parc de votre choix.
         </P>
         <Highlight>
           Version courte : du mardi au jeudi hors vacances scolaires, arriver à l’ouverture et
@@ -112,8 +112,8 @@ export function ContentFR() {
       >
         <PG>
           L’affluence n’a rien d’un hasard : le moment où ça se remplit suit des tendances claires
-          de jour de semaine, de vacances, de météo et de saison. Voici les deux plus marquantes —
-          en moyenne sur tous les parcs, à partir de vraies données de temps d’attente :
+          de jour de semaine, de vacances, de météo et de saison. Voici les deux plus marquantes,
+          en moyenne sur tous les parcs, à partir des temps d’attente relevés :
         </PG>
         <BestTimesData locale="fr" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="fr" />
@@ -141,7 +141,7 @@ export function ContentFR() {
             {
               icon: Users,
               title: 'Autour du déjeuner',
-              body: 'Quand la foule mange, les files se vident — un bon moment pour les attractions populaires (et pour manger plus tard).',
+              body: 'Quand la foule mange, les files se vident, un bon moment pour les attractions populaires (et pour manger plus tard).',
             },
             {
               icon: Sun,
@@ -151,7 +151,7 @@ export function ContentFR() {
             {
               icon: Ticket,
               title: 'Pendant le grand spectacle du soir',
-              body: 'Une parade ou un feu d’artifice mobilise des milliers de visiteurs d’un coup — les temps d’attente des montagnes russes chutent de façon mesurable.',
+              body: 'Une parade ou un feu d’artifice mobilise des milliers de visiteurs d’un coup, et les temps d’attente des montagnes russes chutent de façon mesurable.',
             },
           ]}
         />
@@ -163,7 +163,7 @@ export function ContentFR() {
         >
           En arrivant à l’ouverture, on enchaîne souvent les têtes d’affiche pour une fraction du
           temps d’attente ultérieur. La première heure remplace régulièrement deux heures de
-          l’après-midi — pas besoin de fast-pass, juste d’un réveil matinal.
+          l’après-midi, sans fast-pass, avec un réveil matinal.
         </SplitFigure>
       </SectionShell>
 
@@ -177,7 +177,7 @@ export function ContentFR() {
       >
         <PG>
           Aussi importantes que les jours calmes sont les jours chargés. À ces dates, attendez-vous
-          à de l’affluence — prévoyez-les, ou contournez-les :
+          à de l’affluence : prévoyez-les, ou contournez-les :
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -187,7 +187,7 @@ export function ContentFR() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          La combinaison de pointe classique — un samedi de vacances en plein été — cumule presque
+          La combinaison de pointe classique, un samedi de vacances en plein été, cumule presque
           tous les facteurs d’affluence d’un coup. Si vous le pouvez, prenez plutôt le mardi suivant
           : même parc, moitié moins de file.
         </SplitFigure>
@@ -201,7 +201,7 @@ export function ContentFR() {
             {
               icon: CalendarRange,
               title: 'Vacances scolaires',
-              body: 'Pendant les vacances de votre région et des régions voisines, l’affluence grimpe fortement — les grandes vacances d’été surtout.',
+              body: 'Pendant les vacances de votre région et des régions voisines, l’affluence grimpe fortement, les grandes vacances d’été surtout.',
             },
             {
               icon: Sun,
@@ -211,7 +211,7 @@ export function ContentFR() {
             {
               icon: Sparkles,
               title: 'Les nouveautés lors de leur premier été',
-              body: 'Une montagne russe toute neuve attire les foules lors de sa saison d’ouverture — attendez-vous à de longues files pour les premières.',
+              body: 'Une montagne russe toute neuve attire les foules lors de sa saison d’ouverture ; attendez-vous à de longues files pour les premières.',
             },
           ]}
         />
@@ -235,7 +235,7 @@ export function ContentFR() {
             {
               icon: CloudRain,
               title: 'Jouer la météo avec malice',
-              body: 'Une prévision incertaine en décourage beaucoup. Qui est équipé contre la pluie fait moins la queue — un imperméable vaut mieux qu’un parapluie.',
+              body: 'Une prévision incertaine en décourage beaucoup. Qui est équipé contre la pluie fait moins la queue ; un imperméable vaut mieux qu’un parapluie.',
             },
             {
               icon: Sunrise,
@@ -245,7 +245,7 @@ export function ContentFR() {
             {
               icon: Ticket,
               title: 'Single rider & files virtuelles',
-              body: 'Montez seul ou faites la queue en version numérique pendant que vous mangez ou faites les boutiques — du temps gagné les jours chargés.',
+              body: 'Montez seul ou faites la queue en version numérique pendant que vous mangez ou faites les boutiques : du temps gagné les jours chargés.',
             },
           ]}
         />
@@ -265,7 +265,7 @@ export function ContentFR() {
       >
         <P>
           Les tendances ci-dessus sont le point de départ. Le jour idéal exact, c’est le calendrier
-          d’affluence de chaque page de parc qui vous le donne — vert, jaune, rouge, jusqu’à un an à
+          d’affluence de chaque page de parc qui vous le donne : vert, jaune, rouge, jusqu’à un an à
           l’avance, avec les vacances et jours fériés de la région concernée.
         </P>
         <SplitFigure
@@ -286,7 +286,7 @@ export function ContentFR() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Propulsé par Fancast"
-        body="Notre modèle de prévision — il anticipe l’affluence jusqu’à 365 jours à l’avance et se note lui-même en toute transparence."
+        body="Notre modèle de prévision maison estime l’affluence jusqu’à 365 jours à l’avance et se note lui-même le lendemain."
       />
 
       {/* 06 — FAQ */}

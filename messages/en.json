@@ -123,7 +123,7 @@
     },
     "ai": {
       "title": "How accurate our forecasts are",
-      "subtitle": "park.fan runs a model of its own, trained on the queues measured at more than 200 parks. It counts in the weather forecast, school holidays and special events, and retrains daily at 06:00 UTC on the previous day’s wait times.",
+      "subtitle": "park.fan runs a model of its own, trained on the queues measured at more than 200 parks. It factors in the weather forecast, school holidays and special events, and retrains daily at 06:00 UTC on the previous day’s wait times.",
       "avgErrorDesc": "MAE — how many minutes off our predictions are on average",
       "rmseDesc": "RMSE — how bad the worst misses are, outliers weighted more",
       "mapeDesc": "MAPE — percentage error relative to actual wait time",

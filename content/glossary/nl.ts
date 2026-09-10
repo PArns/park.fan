@@ -126,7 +126,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Het moment waarop een park officieel zijn poorten opent en de rijen voor populaire attracties het kortst zijn.',
     definition:
-      "De Rope Drop verwijst naar het moment waarop een pretpark voor de dag opent – vernoemd naar het letterlijke touw (of barrière) dat parkpersoneel laat zakken om de eerste bezoekers binnen te laten. Vroeg aankomen bij de Rope Drop is een populaire strategie omdat populaire attracties 's ochtends de kortste rijen hebben, voordat de drukte aantrekt. Het schema van park.fan toont exacte openingstijden zodat je je strategie perfect kunt plannen.",
+      "De Rope Drop verwijst naar het moment waarop een pretpark voor de dag opent – vernoemd naar het letterlijke touw (of barrière) dat parkpersoneel laat zakken om de eerste bezoekers binnen te laten. Vroeg aankomen bij de Rope Drop is een populaire strategie omdat populaire attracties 's ochtends de kortste rijen hebben, voordat de drukte aantrekt. Het schema van park.fan toont exacte openingstijden.",
     aliases: ['Rope-Drop'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 're-ride', 'wait-time'],

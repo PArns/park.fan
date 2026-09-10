@@ -111,8 +111,8 @@ export function ContentES() {
           meteorológico para las colas, vamos.
         </Lead>
         <P>
-          Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast se
-          pone nota a sí mismo. Cada predicción se contrasta después con el tiempo de espera que de
+          Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast se pone
+          nota a sí mismo. Cada predicción se contrasta después con el tiempo de espera que de
           verdad ocurrió, a la vista de todos, en esta página. Hacer trampas, inútil.
         </P>
         <Highlight>
@@ -154,8 +154,8 @@ export function ContentES() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Tiempos de espera en directo" delay={0}>
-            Una medición por cola cada cinco minutos, en más de 200 parques. Sobre eso se apoya
-            todo lo demás.
+            Una medición por cola cada cinco minutos, en más de 200 parques. Sobre eso se apoya todo
+            lo demás.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendarios y vacaciones" delay={60}>
             Fines de semana, días festivos y vacaciones escolares, también los de las regiones

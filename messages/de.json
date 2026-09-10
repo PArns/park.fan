@@ -764,7 +764,7 @@
       "goodCrowds": "Wartezeiten im normalen Bereich",
       "rainLikely": "Regen wahrscheinlich – Indoor-Attraktionen empfohlen",
       "hotDay": "Heißer Tag – viel trinken",
-      "coldDay": "Kaltes Wetter - warm anziehen",
+      "coldDay": "Kaltes Wetter – warm anziehen",
       "goodDay": "Guter Tag für einen Parkbesuch"
     },
     "attractions": "Attraktionen",
@@ -1387,7 +1387,7 @@
       "title": "Plane deinen Freizeitpark-Besuch",
       "realtime": {
         "title": "Echtzeit-Wartezeiten",
-        "description": "Live-Wartezeiten werden jede Minute von Parks weltweit aktualisiert."
+        "description": "Live-Wartezeiten, alle fünf Minuten neu aus Parks weltweit."
       },
       "predictions": {
         "title": "ML-Vorhersagen",
