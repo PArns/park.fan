@@ -7,7 +7,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die geschätzte Zeit, die ein Besucher warten muss, bevor er eine Attraktion betreten kann.',
     definition:
-      'Die Wartezeit (auch Wartezeit in der Warteschlange) ist die geschätzte Dauer, die ein Besucher in der Warteschlange verbringt, bevor er eine Attraktion besteigen kann. Parks zeigen Wartezeiten an Attraktionseingängen und in ihren Apps an. park.fan erfasst live Wartezeiten, die jede Minute aktualisiert werden, damit du die aktuellen Bedingungen für alle Attraktionen einsehen kannst.',
+      'Die Wartezeit (auch Wartezeit in der Warteschlange) ist die geschätzte Dauer, die ein Besucher in der Warteschlange verbringt, bevor er eine Attraktion besteigen kann. Parks zeigen Wartezeiten an Attraktionseingängen und in ihren Apps an. park.fan liest die Wartezeiten alle fünf Minuten neu ein, für jede Attraktion eines Parks.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
     aliases: ['Wartezeiten', 'Warteschlange', 'Warteschlangen', 'Wartezeit-Daten'],
     alternateNames: ['Wartezeit in der Warteschlange', 'Queue Time', 'Queue Times'],
@@ -18,7 +18,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine separate Warteschlangenspur für Besucher, die bereit sind, allein zu fahren, um freie Plätze zu füllen.',
     definition:
-      'Einzelfahrer-Warteschlangen ermöglichen es Besuchern, die bereit sind, allein (oder getrennt von ihrer Gruppe) zu fahren, freie Plätze in Fahrzeugserien zu belegen. Da Einzelfahrer in Lücken eingeschoben werden, bewegt sich die Warteschlange deutlich schneller als die normale Reihe — oft 50–70 % kürzere Wartezeiten. Nicht alle Attraktionen bieten Einzelfahrerzugang an.',
+      'Die Single-Rider-Spur ist für alle, die bereit sind, getrennt von ihrer Gruppe zu fahren, und füllt die einzelnen freien Plätze in den Zügen auf. Weil solche Fahrgäste in Lücken einsortiert werden, geht es dort schneller voran als in der normalen Schlange — oft 50–70 % kürzere Wartezeiten. Nicht alle Attraktionen bieten Einzelfahrerzugang an.',
     alternateNames: ['Single Rider Lane', 'Einzelfahrer', 'Single-Spur'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -30,7 +30,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein digitales Warteschlangensystem, bei dem Besucher eine Fahrzeit reservieren, anstatt physisch zu warten.',
     definition:
-      'Eine virtuelle Warteschlange (manchmal auch als Boarding-Gruppe oder Rückkehrzeit bezeichnet) ermöglicht es Besuchern, sich über eine App oder einen Kiosk für eine Attraktion anzumelden und eine Benachrichtigung zu erhalten, wenn ihre Runde naht. Anstatt in einer physischen Schlange zu stehen, können Besucher andere Parkbereiche genießen und zurückkehren, wenn sie aufgerufen werden.',
+      'Eine virtuelle Warteschlange (manchmal auch als Boarding-Gruppe oder Rückkehrzeit bezeichnet) ermöglicht es Besuchern, sich über eine App oder einen Kiosk für eine Attraktion anzumelden und eine Benachrichtigung zu erhalten, wenn ihre Runde naht. Statt in der Schlange zu stehen, kann man in dieser Zeit woanders im Park unterwegs sein und kommt zurück, wenn die Gruppe aufgerufen wird.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
     aliases: ['Virtuelle Warteschlangen'],
   },
@@ -51,7 +51,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Angezeigte Wartezeit',
     shortDefinition: 'Die offizielle Wartezeit, die der Park am Eingang einer Attraktion anzeigt.',
     definition:
-      'Die angezeigte Wartezeit ist die offizielle Schätzung, die auf Schildern am physischen Eingang einer Attraktion und/oder in der offiziellen Park-App angezeigt wird. Parks berechnen diese Zahl anhand von Warteschlangenlängensensoren, historischen Durchsatzdaten und aktueller Ladeeffizienz. park.fan aggregiert angezeigte Wartezeiten aus offiziellen Quellen jede Minute.',
+      'Die angezeigte Wartezeit ist die offizielle Schätzung, die am Eingang einer Attraktion und in der Park-App steht. Die Parks berechnen sie aus der gemessenen Länge der Schlange, dem bisherigen Durchsatz der Bahn und dem Tempo, mit dem gerade beladen wird. park.fan führt die angezeigten Wartezeiten aus mehreren öffentlichen Quellen alle fünf Minuten zusammen.',
     relatedTermIds: ['crowd-level', 'wait-time'],
     aliases: ['Angezeigte Wartezeit', 'Angezeigte Wartezeiten'],
   },
@@ -72,7 +72,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine tagesweise Vorschau mit vorhergesagten Besucherdichten, um den Besuch zu planen.',
     definition:
-      'Ein Besucherkalender ist ein Monats- oder Jahreskalender, der vorhergesagte Besucherdichten für jeden Tag zeigt. park.fan erstellt Besucherkalender mit KI-Modellen, die auf jahrelangen historischen Wartezeitdaten, kombinierten Schulferienkalendern, bevorstehenden Veranstaltungen und saisonalen Trends trainiert wurden. Grüne Tage zeigen niedrige Besucherzahlen an; orange und rote Tage zeigen hohe Besucherzahlen an.',
+      'Ein Besucherkalender ist ein Monats- oder Jahreskalender, der vorhergesagte Besucherdichten für jeden Tag zeigt. park.fan erstellt Besucherkalender mit KI-Modellen, die auf den mitgeschriebenen Wartezeiten, kombinierten Schulferienkalendern, bevorstehenden Veranstaltungen und saisonalen Trends trainiert wurden. Grüne Tage zeigen niedrige Besucherzahlen an; orange und rote Tage zeigen hohe Besucherzahlen an.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
     aliases: ['Besucherkalender', 'Crowd-Kalender', 'Crowd-Kalendar'],
   },
@@ -259,7 +259,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Zeiträume mit geringerer Besucherauslastung, kürzeren Wartezeiten und günstigeren Preisen.',
     definition:
-      'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen — typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Für Besucher mit flexiblem Zeitplan ist der Besuch in der Nebensaison eine der wirkungsvollsten Strategien. Der Besucherkalender von park.fan markiert Nebensaison-Fenster, damit du deinen Besuch optimal planen kannst.',
+      'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen — typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Für Besucher mit flexiblem Zeitplan ist der Besuch in der Nebensaison eine der wirkungsvollsten Strategien. Der Besucherkalender von park.fan markiert die Nebensaison-Fenster eines Parks.',
     alternateNames: ['Ruhige Zeiten', 'Schwache Saison', 'Off-Peak', 'Quieter Season'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -293,7 +293,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Der physische Wartebereich vor einer Attraktion, der oft selbst thematisch gestaltet ist.',
     definition:
-      'Die Warteschlange ist der physische Raum — Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume —, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt dir die aktuellen Wartezeiten aller Attraktionen, damit du die Planung deines Parkbesuchs optimal anpassen kannst.',
+      'Die Warteschlange ist der physische Raum — Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume —, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt die aktuelle Wartezeit jeder Attraktion eines Parks.',
     relatedTermIds: ['single-rider', 'standby-queue', 'wait-time'],
     aliases: ['Warteschlangen', 'Schlange', 'Schlangen'],
   },
@@ -1056,9 +1056,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'KI-Prognose',
     shortDefinition:
-      'KI-gestützte Vorhersagen für Besucherdichte und Wartezeiten in Freizeitparks – bis zu 30+ Tage im Voraus.',
+      'KI-gestützte Vorhersagen für Besucherdichte und Wartezeiten in Freizeitparks – bis zu 365 Tage im Voraus.',
     definition:
-      'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 30+ Tage im Voraus.\n\nDie Vorhersagen werden kontinuierlich aktualisiert, wenn neue Daten eintreffen. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
+      'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 365 Tage im Voraus.\n\nDie Vorhersagen werden mit jedem Trainingslauf neu berechnet, täglich um 06:00 UTC. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     alternateNames: ['AI Forecast', 'AI Forecasts'],
     aliases: ['KI-Prognose', 'KI-Prognosen', 'KI-Vorhersage', 'KI-Vorhersagen'],
@@ -1069,7 +1069,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Künstliche Intelligenz — Machine-Learning-Modelle, die Besucherprognosen und Wartezeiten für Freizeitparks berechnen.',
     definition:
-      'KI (Künstliche Intelligenz) bezeichnet Machine-Learning-Algorithmen, die Muster in großen Datensätzen erkennen und Vorhersagen treffen. park.fan setzt KI-Modelle ein, die auf jahrelangen historischen Wartezeitdaten, Schulferienkalendern, Wetterdaten und Veranstaltungsankündigungen trainiert wurden. Diese Modelle berechnen täglich neue Prognosen für Besucherdichte und erwartete Wartezeiten – für jeden Park, jeden Tag, bis zu 30+ Tage im Voraus.',
+      'KI (Künstliche Intelligenz) bezeichnet Machine-Learning-Algorithmen, die Muster in großen Datensätzen erkennen und Vorhersagen treffen. park.fan setzt KI-Modelle ein, die auf den mitgeschriebenen Wartezeiten, Schulferienkalendern, Wetterdaten und Veranstaltungsankündigungen trainiert wurden. Diese Modelle berechnen täglich neue Prognosen für Besucherdichte und erwartete Wartezeiten – für jeden Park, jeden Tag, bis zu 365 Tage im Voraus.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
     alternateNames: ['Künstliche Intelligenz'],
   },
@@ -1079,7 +1079,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Minütlich aktualisierte Live-Wartezeit direkt aus den Systemen eines Freizeitparks.',
     definition:
-      'Eine Echtzeit-Wartezeit ist die aktuelle, live aus den Erfassungssystemen eines Freizeitparks abgerufene Wartezeit — kein historischer Durchschnitt, sondern der tatsächliche Stand von heute, jetzt, auf die Minute genau. park.fan ruft Echtzeit-Wartezeiten aus offiziellen Park-APIs und Drittquellen ab und aktualisiert die Daten im Minutentakt. So siehst du immer, welche Attraktion gerade leer ist und wo du wirklich 60 Minuten warten müsstest.',
+      'Eine Echtzeit-Wartezeit ist die aktuelle, live aus den Erfassungssystemen eines Freizeitparks abgerufene Wartezeit — kein historischer Durchschnitt, sondern der tatsächliche Stand von heute, jetzt, auf die Minute genau. park.fan ruft die Wartezeiten aus öffentlichen Quellen ab und aktualisiert sie alle fünf Minuten. So siehst du immer, welche Attraktion gerade leer ist und wo du wirklich 60 Minuten warten müsstest.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     alternateNames: ['Live-Wartezeit', 'Live-Wartezeiten'],
     aliases: ['Echtzeit-Wartezeit', 'Echtzeit-Wartezeiten', 'Live-Wartezeit', 'Live-Wartezeiten'],
@@ -2052,7 +2052,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bestimmtheitsmaß — misst, wie gut das KI-Modell die Muster in echten Wartezeiten erklärt (0–1, höher ist besser).',
     definition:
-      'R² (R-Quadrat, auch Bestimmtheitsmaß) misst, wie viel der Schwankungen in echten Wartezeiten das Modell erfolgreich erklären kann. Ein Wert von 1,0 würde bedeuten, dass das Modell jede Warteschlange perfekt vorhersagt; 0,0 bedeutet, dass es nichts über einen einfachen Durchschnitt hinaus erklärt. In der Praxis gelten Werte über 0,7 als stark, Werte über 0,9 als ausgezeichnet.\n\nFür Wartezeit-Prognosen ist ein hoher R²-Wert schwer zu erreichen, da Warteschlangen von unvorhersehbaren Ereignissen beeinflusst werden – Attraktionsausfälle, plötzliche Wetteränderungen, spontane Veranstaltungen. Der park.fan-R²-Wert spiegelt die reale Performance über alle verfolgten Vorhersagen wider und wird täglich aktualisiert.',
+      'R² (R-Quadrat, auch Bestimmtheitsmaß) misst, wie viel der Schwankungen in echten Wartezeiten das Modell erfolgreich erklären kann. Ein Wert von 1,0 würde bedeuten, dass das Modell jede Warteschlange perfekt vorhersagt; 0,0 bedeutet, dass es nichts über einen einfachen Durchschnitt hinaus erklärt. In der Praxis gelten Werte über 0,7 als stark, Werte über 0,9 als ausgezeichnet.\n\nFür Wartezeit-Prognosen ist ein hoher R²-Wert schwer zu erreichen, da Warteschlangen von unvorhersehbaren Ereignissen beeinflusst werden – Attraktionsausfälle, plötzliche Wetteränderungen, spontane Veranstaltungen. Der R²-Wert auf park.fan stammt aus dem Abgleich aller nachgerechneten Vorhersagen und wird täglich neu bestimmt.',
     relatedTermIds: ['ai-forecast', 'mae', 'mape', 'rmse'],
     alternateNames: ['R-squared', 'Bestimmtheitsmaß'],
   },

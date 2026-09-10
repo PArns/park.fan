@@ -106,17 +106,8 @@
     "browseParks": "Alle parken bekijken"
   },
   "home": {
-    "hottestParks": {
-      "badge": "Hittegolf",
-      "title": "De heetste parken in Duitsland, Frankrijk, Italië, Nederland en België",
-      "subtitle": "Hittegolf in de parken — de drie heetste bestemmingen van vandaag",
-      "description": "Als het in de parken boven 35 °C wordt, telt de timing: kom vroeg, kies voor schaduw en waterattracties en drink genoeg. Dit zijn de heetste bestemmingen van vandaag.",
-      "hottestLabel": "Heetste park",
-      "viewPark": "Naar het park"
-    },
     "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 200 pretparken en 7.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",
     "hero": {
-      "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
       "title": "Waar is de rij vandaag de moeite waard?",
@@ -125,32 +116,14 @@
       "searchExamples": "Efteling, Taron, Europa-Park …"
     },
     "sections": {
-      "explore": "Verkennen per regio",
-      "plan": "Plan je perfecte bezoek",
       "liveNow": "Parken open wereldwijd",
       "liveNowIntro": "Actueel aantal open pretparken per continent.",
-      "featuresIntro": "Gebruik realtime wachttijden, druktevoorspellingen en parkkalenders om de beste dag te kiezen en wachtrijen bij Disney, Universal, Europa-Park en meer te plannen.",
       "featuredParks": "Populaire parken",
       "featuredParksIntro": "De meest bezochte pretparken in jouw regio — met realtime wachttijden en drukteverwachtingen."
-    },
-    "features": {
-      "realtime": {
-        "title": "Realtime wachttijden",
-        "description": "Live wachttijden elke minuut bijgewerkt van parken wereldwijd."
-      },
-      "ml": {
-        "title": "AI voorspellingen",
-        "description": "Slimme voorspellingen voor drukte en wachttijden met geavanceerde AI."
-      },
-      "calendar": {
-        "title": "Planning & navigatie",
-        "description": "Vind de beste dagen met onze drukteskalender en navigeer live in het park."
-      }
     },
     "ai": {
       "title": "AI-gestuurde Voorspellingen — Hoe Nauwkeurig Zijn We?",
       "subtitle": "park.fan gebruikt een eigen AI-model dat is getraind op miljoenen echte wachtrij-records om drukte en wachttijden bij pretparken wereldwijd te voorspellen. Het model houdt rekening met weersvoorspellingen, schoolvakantieschema’s en bekende evenementen — en hertraint automatisch zodra nieuwe data beschikbaar is.",
-      "avgError": "Gemiddelde fout",
       "avgErrorDesc": "MAE — hoeveel minuten onze voorspellingen gemiddeld afwijken",
       "rmseDesc": "RMSE — hoe zwaar grote uitschieters meetellen",
       "mapeDesc": "MAPE — procentuele fout ten opzichte van de werkelijke wachttijd",
@@ -161,12 +134,8 @@
       "parksCoverage": "Dekking",
       "r2Score": "Model fit",
       "r2ScoreDesc": "R² — hoe goed het model wachttijdvariatie verklaart",
-      "modelAge": "Model {days} dagen geleden getraind · automatisch hertraind met nieuwe gegevens",
-      "modelAgeHours": "Model {time} uur geleden getraind · automatisch hertraind met nieuwe gegevens",
       "nextRetraining": "Automatisch hertrainen",
       "modelAgeTile": "Model-leeftijd",
-      "modelAgeShort": "{days}d {hours}u oud",
-      "modelAgeShortHours": "{hours}u {minutes}m oud",
       "nextTrainingIn": "Volgend training in",
       "dailySchedule": "Dagelijks · 06:00 UTC",
       "dailyScheduleLocal": "Dagelijks · 06:00 UTC · {time} lokaal",
@@ -181,26 +150,7 @@
         "fair": "Redelijke nauwkeurigheid",
         "poor": "Onder doelwaarde",
         "insufficient_data": "Gegevens verzamelen"
-      },
-      "badgeDesc": {
-        "excellent": "Voorspellingen zijn zeer nauwkeurig",
-        "good": "Voorspellingen zijn betrouwbaar",
-        "fair": "Voorspellingen zijn redelijk",
-        "poor": "Modelnauwkeurigheid onder doelwaarde",
-        "insufficient_data": "Vergelijkingsgegevens worden verzameld"
       }
-    },
-    "about": {
-      "title": "Wat is park.fan?",
-      "p1": "park.fan is ontstaan uit een frustratie die elke pretparkfan kent: 90 minuten in de rij staan en je afvragen of slimmer plannen dit had kunnen voorkomen. Wat begon als een zijproject — «ik ga gewoon wat wachttijden bijhouden» — groeide uit tot een volledig platform dat nu 212 parken, 7.101 attracties dekt en dagelijks miljoenen wachtrij-records verwerkt. Het doel was en is: het giswerk bij het plannen van een pretparkbezoek voorgoed elimineren.",
-      "p2": "De AI achter park.fan analyseert historische bezoekersdata, weersverwachtingen, schoolvakantiekalenders en speciale evenementen om drukte en wachttijden dagen of zelfs weken van tevoren te voorspellen. In plaats van hopen op het beste, kun je van tevoren checken of aanstaande zaterdag in Europa-Park of Phantasialand een groene dag wordt — korte rijen, relaxte sfeer — of een rode dag met 60 minuten wachten bij elke populaire attractie. Het model wordt voortdurend getraind op nieuwe data en wordt met de tijd nauwkeuriger.",
-      "coverageTitle": "Welke parken zijn gedekt?",
-      "p3": "park.fan dekt momenteel 212 pretparken en 7.101 attracties wereldwijd — van Walt Disney World, Disneyland Resort, Universal Orlando en Universal Studios Japan tot Europese parken als Europa-Park, Phantasialand, Efteling, Heide Park en Toverland, plus parken in Azië, Australië en Zuid-Amerika. Er worden regelmatig nieuwe parken toegevoegd.",
-      "howTitle": "Hoe gebruik je park.fan?",
-      "p4": "Zoek je park via de zoekbalk of blader per continent, land en stad. Op de parkpagina vind je live wachttijden voor elke attractie, restaurant en show — elke minuut bijgewerkt — samen met AI-druktevoorspellingen en een dag-voor-dag druktekalender. Groene dagen betekenen korte rijen en weinig drukte; oranje of rode dagen signaleren hogere bezetting en langere wachttijden.",
-      "p5": "park.fan is een levend project dat voortdurend wordt uitgebreid met nieuwe functies en parken. Sla je favoriete parken op voor snelle toegang, gebruik de navigatie in het park voor de meest efficiënte route, en check altijd de druktekalender vóór het boeken om je bezoek op de best mogelijke dag te plannen.",
-      "fancastLink": "Ontdek Fancast",
-      "howtoLink": "Zo werkt park.fan"
     },
     "worldPanel": {
       "title": "Parken in {continent}",

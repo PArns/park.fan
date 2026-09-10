@@ -106,17 +106,8 @@
     "browseParks": "Ver todos los parques"
   },
   "home": {
-    "hottestParks": {
-      "badge": "Ola de calor",
-      "title": "Los parques más calurosos de Alemania, Francia, Italia, Países Bajos y Bélgica",
-      "subtitle": "Ola de calor en los parques — los tres destinos más calurosos de hoy",
-      "description": "Cuando la temperatura en los parques supera los 35 °C, el momento importa: llega temprano, busca sombra y atracciones acuáticas, y mantente hidratado. Estos son los destinos más calurosos de hoy.",
-      "hottestLabel": "Parque más caluroso",
-      "viewPark": "Ver parque"
-    },
     "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 200 parques temáticos y 7.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
     "hero": {
-      "badge": "Predicciones por IA",
       "cta": "Explorar parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
       "title": "¿Dónde merece la pena hacer cola hoy?",
@@ -125,32 +116,14 @@
       "searchExamples": "PortAventura, Taron, Efteling …"
     },
     "sections": {
-      "explore": "Explorar por región",
-      "plan": "Planifica tu visita",
       "liveNow": "Parques abiertos en el mundo",
       "liveNowIntro": "Número de parques temáticos abiertos por continente en tiempo real.",
-      "featuresIntro": "Usa tiempos de espera en vivo, predicciones de afluencia y calendarios de parques para elegir el mejor día y planificar colas en Disney, Universal, Europa-Park y más.",
       "featuredParks": "Parques populares",
       "featuredParksIntro": "Los parques de atracciones más visitados de tu región — con tiempos de espera en tiempo real y predicciones de afluencia."
-    },
-    "features": {
-      "realtime": {
-        "title": "Tiempos de espera en vivo",
-        "description": "Datos actualizados cada minuto de parques en todo el mundo."
-      },
-      "ml": {
-        "title": "Predicciones IA",
-        "description": "Predicciones inteligentes de afluencia y tiempos de espera con IA avanzada."
-      },
-      "calendar": {
-        "title": "Planificación y navegación",
-        "description": "Encuentra los mejores días con nuestro calendario de afluencia y navega por el parque."
-      }
     },
     "ai": {
       "title": "Predicciones IA — ¿Qué Tan Precisos Somos?",
       "subtitle": "park.fan utiliza su propio modelo de IA entrenado con millones de registros de colas reales para predecir niveles de afluencia y tiempos de espera en parques temáticos de todo el mundo. El modelo considera pronósticos meteorológicos, calendarios de vacaciones escolares y eventos conocidos — y se vuelve a entrenar automáticamente cuando llegan nuevos datos.",
-      "avgError": "Error medio",
       "avgErrorDesc": "MAE — cuántos minutos se equivocan nuestras predicciones de media",
       "rmseDesc": "RMSE — cómo de grandes son los peores errores",
       "mapeDesc": "MAPE — error en porcentaje sobre el tiempo de espera real",
@@ -161,12 +134,8 @@
       "parksCoverage": "Cobertura",
       "r2Score": "Ajuste del modelo",
       "r2ScoreDesc": "R² — en qué medida el modelo explica la varianza de los tiempos de espera",
-      "modelAge": "Modelo entrenado hace {days} días · reentrenado automáticamente con nuevos datos",
-      "modelAgeHours": "Modelo entrenado hace {time} horas · reentrenado automáticamente con nuevos datos",
       "nextRetraining": "Reentrenamiento automático",
       "modelAgeTile": "Edad del modelo",
-      "modelAgeShort": "{days}d {hours}h",
-      "modelAgeShortHours": "{hours}h {minutes}m",
       "nextTrainingIn": "Próximo entrenamiento en",
       "dailySchedule": "Diariamente · 06:00 UTC",
       "dailyScheduleLocal": "Diariamente · 06:00 UTC · {time} hora local",
@@ -181,26 +150,7 @@
         "fair": "Precisión aceptable",
         "poor": "Por debajo del objetivo",
         "insufficient_data": "Recopilando datos"
-      },
-      "badgeDesc": {
-        "excellent": "Las predicciones son muy precisas",
-        "good": "Las predicciones son fiables",
-        "fair": "Las predicciones son razonables",
-        "poor": "La precisión del modelo está por debajo del objetivo",
-        "insufficient_data": "Recopilando datos de comparación"
       }
-    },
-    "about": {
-      "title": "¿Qué es park.fan?",
-      "p1": "park.fan nació de una frustración que todo fanático de los parques temáticos conoce bien: hacer cola 90 minutos preguntándose si una mejor planificación lo habría evitado. Lo que comenzó como un proyecto personal — «solo voy a rastrear algunos tiempos de espera» — se convirtió en una plataforma completa que hoy cubre 212 parques, 7.101 atracciones y procesa millones de registros de colas cada día. El objetivo siempre fue el mismo: eliminar las conjeturas al planificar una visita a un parque temático.",
-      "p2": "La IA detrás de park.fan analiza datos históricos de afluencia, pronósticos del tiempo, calendarios de vacaciones escolares y eventos especiales para predecir niveles de afluencia y tiempos de espera con días o incluso semanas de antelación. En lugar de adivinar, puedes comprobar si el próximo sábado en Europa-Park o Phantasialand será un día verde — colas cortas, ambiente relajado — o un día rojo con 60 minutos de espera en cada atracción popular. El modelo se entrena continuamente con nuevos datos y mejora con el tiempo.",
-      "coverageTitle": "¿Qué parques están incluidos?",
-      "p3": "park.fan cubre actualmente 212 parques temáticos y 7.101 atracciones en todo el mundo — desde Walt Disney World, Disneyland Resort, Universal Orlando y Universal Studios Japan hasta parques europeos como Europa-Park, Phantasialand, Efteling, Heide Park y Toverland, además de parques en Asia, Australia y América del Sur. Se añaden nuevos parques regularmente.",
-      "howTitle": "¿Cómo usar park.fan?",
-      "p4": "Busca tu parque en la barra de búsqueda o navega por continente, país y ciudad. En la página del parque encontrarás tiempos de espera en vivo para cada atracción, restaurante y espectáculo — actualizados cada minuto — junto con predicciones de afluencia y un calendario diario. Los días verdes señalan colas cortas; los días naranja o rojos indican mayor afluencia y esperas más largas.",
-      "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible.",
-      "fancastLink": "Descubre Fancast",
-      "howtoLink": "Así funciona park.fan"
     },
     "worldPanel": {
       "title": "Parques en {continent}",

@@ -222,7 +222,7 @@ draußen fährt gerade eine echte Bahn, und irgendwer da draußen will wissen, o
 sich die Schlange davor lohnt.
 
 Heute stehen dahinter Live-Wartezeiten aus über **200 Parks** und **7.000
-Attraktionen**, im Minutentakt. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
+Attraktionen**, alle fünf Minuten neu. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
 einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später
 gegen die tatsächlich gemessene Wartezeit gehalten, und was dabei herauskommt,
@@ -252,7 +252,7 @@ Ausnahme ist oder die Regel.
 ## Was park.fan anders macht
 
 Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
-Das können wir auch, im Minutentakt, weltweit. Aber park.fan wurde für die
+Das können wir auch, alle fünf Minuten, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
 Ein eigenes Modell schaut deshalb bis zu **365 Tage** nach vorn statt nur auf die

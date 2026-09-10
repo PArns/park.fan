@@ -4,9 +4,9 @@ endAt: 2026-03-28T09:00:00+01:00
 countdownTo: 2026-03-28T09:00:00+01:00
 background: '/media/phantasialand/taron.jpg'
 title: Freizeitpark Saisonstart 2026
-subtitle: Der Countdown läuft!
+subtitle: Noch etwas Geduld
 ---
 
-Die Vorfreude steigt! Wir zählen die Tage bis zum großen **Saisonstart 2026**. Erlebe mit **park.fan** den perfekten Start in die neue Freizeitpark-Saison.
+Am **28. März 2026** fahren die ersten Parks der Saison wieder an. Bis dahin läuft hier der Countdown.
 
-Entdecke aktuelle **Wartezeiten**, detaillierte **Crowd-Kalender** und spannende Neuheiten aus den Freizeitparks weltweit.
+Ab dem ersten Öffnungstag stehen die **Wartezeiten** wieder live auf jeder Parkseite, dazu der **Crowd-Kalender** für die Tage danach.
