@@ -190,8 +190,7 @@ de hoy, el más largo de Europa. Wing coaster significa que vas sentado a
 izquierda y derecha del raíl, sin vía por encima ni por debajo, y como tu
 asiento toma las curvas más por fuera que el vehículo, cada giro se siente más
 grande de lo que es. Por el camino un fénix te rocía niebla, lo cual no tiene
-nada que ver con la física y aun así mejora el asunto. Espera: los mismos
-16 minutos que en Troy.
+nada que ver con la física y aun así mejora el asunto. Espera: el mismo orden de magnitud que en Troy.
 
 ![La estación de Fēnix con raíl azul, tren de wing coaster y pebeteros colgados de cadenas bajo vigas de madera | La estación de Fēnix: pebeteros en cadenas, vigas macizas y el tren con los asientos junto al raíl. | wide](/media/toverland/background-16x9.jpg)
 
@@ -199,7 +198,7 @@ nada que ver con la física y aun así mejora el asunto. Espera: los mismos
 segunda favorita aquí. En 2004, Vekoma construyó en Sevenum el prototipo mundial
 de la montaña rusa de moto: no vas sentado, vas tumbado sobre una moto, con las
 manos en el manillar y las rodillas recogidas, y entonces te lanzan. Una
-atracción incómoda, absurda, maravillosa. Con una mediana de 21 minutos es
+atracción incómoda, absurda, maravillosa. Con su mediana es
 precisamente ella la que tiene la espera típica más larga de todas las montañas
 rusas del parque, y eso se debe a que se embarca de uno en uno y tumbado, y eso
 lleva su tiempo.
@@ -401,9 +400,9 @@ bastante importante como para que pase.
 Quien lleve tiempo sin ir echará en falta una atracción. El **17 de mayo de
 2026**, la **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** del
 Wunderwald abrió por última vez, la pista de bobsleigh de Mack de 2007, en la
-que con una palanca de freno decidías tú mismo a qué velocidad bajabas. En
-nuestro histórico fue durante años la atracción con la espera más larga de todo
-el parque, mediana de 34 minutos, y en los días llenos hubo también colas de 60
+que con una palanca de freno decidías tú mismo a qué velocidad bajabas. Mientras
+la estuvimos midiendo fue la atracción con la espera más larga de todo
+el parque, y en los días llenos hubo también colas de 60
 o 90 minutos.
 
 Eso se debía a una cuenta que nunca podía salir: en un vagón cabían una, como
@@ -580,7 +579,7 @@ Toverland](ref:attractiepark-toverland).
 
 De marzo a julio los valores están muy juntos en nuestros datos y forman la
 parte más tranquila del año. Entre semana está algo más vacío que el fin de
-semana, pero la diferencia es pequeña. Evita abril,
+semana, pero la diferencia es pequeña. De ese tramo destacan
 las vacaciones neerlandesas de mayo y otoño y la corta temporada de invierno. Día a día lo muestra el [calendario de tiempos de espera](ref:attractiepark-toverland?calendar).
 
 ### ¿Hace falta un pase rápido en Toverland?

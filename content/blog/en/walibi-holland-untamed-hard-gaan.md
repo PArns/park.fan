@@ -814,8 +814,8 @@ Current conditions at the park:
 For coaster fans, yes. The park has the first hybrid coaster in Europe in
 [Untamed](ref:walibi-holland/untamed), the world’s first duelling single-rail
 installation in [YOY](ref:walibi-holland/yoy-thrill) and an Intamin Mega Coaster
-from 2002 in [Goliath](ref:walibi-holland/goliath), all at a typical wait of 20
-minutes. If you are after dark rides, a world that holds together and weather-proofing, the
+from 2002 in [Goliath](ref:walibi-holland/goliath), all at a typical wait of a
+good quarter of an hour. If you are after dark rides, a world that holds together and weather-proofing, the
 [Efteling](ref:efteling) or [Phantasialand](ref:phantasialand) will serve you
 better.
 
@@ -870,8 +870,8 @@ Walibi park in December, drive to Wavre for
 
 ### Do you need a Fast Lane pass?
 
-Not on a normal day. At a median of 20 minutes you are paying for saved minutes
-you do not have. On weekends in the summer holidays, at the evening events and
+Not on a normal day. At the median this park runs at, you are paying for saved
+minutes you do not have. On weekends in the summer holidays, at the evening events and
 for YOY it can be worth it.
 
 ## Drive the extra hour

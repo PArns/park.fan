@@ -260,7 +260,7 @@ terug.
 **[Droomvlucht](ref:efteling/droomvlucht)** uit 1993 is de elfenrit waar
 Nederlandse volwassenen week van worden. Je zweeft in gondels door bossen,
 elfenkastelen en een nachtstuk waarin de baan even wegzakt. Wie wil weten waarom
-een darkride zonder één schrikmoment 22 minuten typische wachttijd oplevert, rijdt
+een darkride zonder één schrikmoment zoveel typische wachttijd oplevert, rijdt
 hem één keer en snapt het.
 
 ![De minaret van Fata Morgana in het blauwe uur, met de koepels van de bazaar erachter | Van buiten zie je niets van de attractie. Ze ligt volledig achter deze gevel. | left](/media/efteling/fata-morgana-4x3.jpg)

@@ -185,7 +185,7 @@ langste van Europa. Wing coaster betekent: je zit links en rechts naast de rail,
 zonder baan boven of onder je, en omdat je stoel de bochten verder naar buiten
 meemaakt dan het voertuig, voelt elke draai groter dan hij is. Onderweg sproeit
 een feniks nevel over je heen, wat niets met natuurkunde te maken heeft en de
-zaak toch beter maakt. Wachttijd: dezelfde 16 minuten als bij Troy.
+zaak toch beter maakt. Wachttijd: dezelfde orde van grootte als bij Troy.
 
 ![Het station van Fēnix met blauwe rail, wingcoastertrein en vuurschalen aan kettingen onder houten balken | Het station van Fēnix: vuurschalen aan kettingen, zware balken, en de trein met de stoelen naast de rail. | wide](/media/toverland/background-16x9.jpg)
 
@@ -193,7 +193,7 @@ zaak toch beter maakt. Wachttijd: dezelfde 16 minuten als bij Troy.
 tweede favoriet hier. Vekoma bouwde in 2004 in Sevenum het wereldwijde prototype
 van de motorachtbaan: je zit niet, je ligt op een motor, handen aan het stuur,
 knieën opgetrokken, en wordt dan als launch coaster weggeschoten. Een
-ongemakkelijke, absurde, prachtige baan. Met een mediaan van 21 minuten heeft
+ongemakkelijke, absurde, prachtige baan. Met haar mediaan heeft
 uitgerekend zij de langste typische wachttijd van alle coasters in het park, wat
 komt doordat je één voor één en liggend instapt, en dat duurt nu eenmaal.
 
@@ -377,9 +377,9 @@ belangrijk genoeg dat het gebeurt.
 Wie er langer niet geweest is, zal een attractie missen. Op **17 mei 2026** was
 **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in het Wunderwald
 voor het laatst open, de Mack-bobbaan uit 2007, waarop je met een remhendel zelf
-bepaalde hoe snel het bergaf ging. In onze historie was ze jarenlang de
-attractie met de langste wachttijd van het hele park, mediaan 34 minuten, en op
-volle dagen stond er ook wel eens 60 of 90 minuten.
+bepaalde hoe snel het bergaf ging. Zolang we haar gemeten hebben, was ze de
+attractie met de langste wachttijd van het hele park, en op volle dagen stond er
+ook wel eens 60 of 90 minuten.
 
 Dat lag aan een rekensom die nooit kon uitkomen: in een wagen pasten één,
 hooguit twee personen. En omdat bij de uitgang het actuele record met foto hing,
@@ -548,7 +548,7 @@ vind je op de [Toverland-parkpagina](ref:attractiepark-toverland).
 
 Maart tot en met juli liggen in onze data dicht bij elkaar en vormen het
 rustigste deel van het jaar. Doordeweeks is het iets leger dan in het weekend,
-maar het verschil is klein. Vermijd april, de
+maar het verschil is klein. Wat daaruit opvalt, zijn de
 Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat de [wachttijden-kalender](ref:attractiepark-toverland?calendar) dat zien.
 
 ### Heb je in Toverland een fastpass nodig?

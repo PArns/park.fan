@@ -265,7 +265,7 @@ de este modelo.
 **[Droomvlucht](ref:efteling/droomvlucht)**, de 1993, es el vuelo de los elfos que
 ablanda a los adultos neerlandeses. Flotas en góndolas por bosques, castillos de
 hadas y una secuencia nocturna en la que la vía se hunde un instante. Quien quiera
-saber por qué un dark ride sin un solo susto produce 22 minutos de espera típica,
+saber por qué un dark ride sin un solo susto produce tanta espera típica,
 que lo monte una vez y lo entenderá.
 
 ![El minarete de Fata Morgana en la hora azul, con las cúpulas del bazar detrás | Desde fuera no se ve nada de la atracción. Está entera detrás de esta fachada. | left](/media/efteling/fata-morgana-4x3.jpg)

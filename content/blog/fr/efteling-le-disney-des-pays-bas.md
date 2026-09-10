@@ -271,7 +271,7 @@ l’Europe descendent tous de ce modèle.
 lequel les adultes néerlandais fondent. On flotte en nacelle à travers des forêts,
 des châteaux de fées et une séquence nocturne où la voie se dérobe brièvement.
 Pour comprendre comment un dark ride sans le moindre effet de frayeur produit
-22 minutes d’attente typique, il suffit d’y monter une fois.
+autant d’attente typique, il suffit d’y monter une fois.
 
 ![Le minaret de Fata Morgana à l’heure bleue, les coupoles du bazar derrière | De l’extérieur, on ne voit rien de l’attraction. Elle est entièrement cachée derrière cette façade. | left](/media/efteling/fata-morgana-4x3.jpg)
 

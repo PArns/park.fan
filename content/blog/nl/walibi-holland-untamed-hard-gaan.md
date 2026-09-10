@@ -831,7 +831,7 @@ Voor achtbaanfans wel. Het park heeft met [Untamed](ref:walibi-holland/untamed)
 de eerste hybride achtbaan van Europa, met [YOY](ref:walibi-holland/yoy-thrill)
 de eerste duelinstallatie op enkele rail ter wereld en met
 [Goliath](ref:walibi-holland/goliath) een Intamin Mega Coaster uit 2002, en dat
-alles bij een typische wachttijd van 20 minuten. Wie darkrides, een sluitend
+alles bij een typische wachttijd van ruim een kwartier. Wie darkrides, een sluitend
 decor en weerbestendigheid zoekt, zit in de [Efteling](ref:efteling) of
 [Phantasialand](ref:phantasialand) beter.
 
@@ -885,8 +885,8 @@ december een Walibi-park wil, rijdt naar Waver voor
 
 ### Heb je een Fast Lane-pas nodig?
 
-Op een normale dag niet. Bij een mediaan van 20 minuten betaal je voor bespaarde
-minuten die je helemaal niet hebt. In weekenden in de zomervakantie, bij de
+Op een normale dag niet. Bij de mediaan die dit park draait, betaal je voor
+bespaarde minuten die je helemaal niet hebt. In weekenden in de zomervakantie, bij de
 avondevenementen en voor YOY kan het lonen.
 
 ## Rijd dat extra uur

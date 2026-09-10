@@ -259,7 +259,7 @@ The madhouses put up across half of Europe afterwards all go back to this model.
 **[Droomvlucht](ref:efteling/droomvlucht)** from 1993 is the elf ride that turns
 Dutch adults to mush. You float in gondolas through forests, fairy castles and a
 night sequence where the track briefly drops away. If you want to know why a dark
-ride without a single scare produces 22 minutes of typical wait, ride it once and
+ride without a single scare produces the typical wait it does, ride it once and
 you will get it.
 
 ![Fata Morgana’s minaret at blue hour, the bazaar’s domes behind it | You see nothing of the attraction from outside. It sits entirely behind this facade. | left](/media/efteling/fata-morgana-4x3.jpg)

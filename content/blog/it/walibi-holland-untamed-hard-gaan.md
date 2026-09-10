@@ -844,7 +844,7 @@ Per gli appassionati di coaster sì. Il parco ha in
 [Untamed](ref:walibi-holland/untamed) il primo coaster ibrido d’Europa, in
 [YOY](ref:walibi-holland/yoy-thrill) il primo impianto in duello su rotaia
 singola al mondo e in [Goliath](ref:walibi-holland/goliath) un Mega Coaster
-Intamin del 2002, e tutto questo con un’attesa tipica di 20 minuti. Chi cerca
+Intamin del 2002, e tutto questo con un’attesa tipica di un quarto d’ora abbondante. Chi cerca
 dark ride, un’ambientazione senza cuciture e indipendenza dal meteo sta meglio all’[Efteling](ref:efteling)
 o a [Phantasialand](ref:phantasialand).
 
@@ -900,7 +900,7 @@ dicembre vuole un parco Walibi va a Wavre, da
 
 ### Serve un pass Fast Lane?
 
-In un giorno normale no. Con una mediana di 20 minuti paghi per minuti
+In un giorno normale no. Con la mediana di questo parco paghi per minuti
 risparmiati che non hai. Nei fine settimana delle vacanze estive, agli eventi
 serali e per YOY può valerne la pena.
 

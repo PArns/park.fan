@@ -196,8 +196,7 @@ long d’Europe. Wing coaster veut dire : tu es assis à gauche et à droite du
 rail, sans voie au-dessus ni en dessous de toi, et comme ton siège prend les
 virages plus à l’extérieur que le véhicule, chaque rotation paraît plus ample
 qu’elle ne l’est. En chemin, un phénix te vaporise de la brume, ce qui n’a rien
-à voir avec la physique et améliore quand même l’affaire. Attente : les mêmes
-16 minutes que pour Troy.
+à voir avec la physique et améliore quand même l’affaire. Attente : le même ordre de grandeur que pour Troy.
 
 ![La gare de Fēnix avec rail bleu, train de wing coaster et vasques de feu suspendues à des chaînes sous des poutres en bois | La gare de Fēnix : vasques de feu sur chaînes, poutres massives, et le train avec ses sièges à côté du rail. | wide](/media/toverland/background-16x9.jpg)
 
@@ -205,7 +204,7 @@ qu’elle ne l’est. En chemin, un phénix te vaporise de la brume, ce qui n’
 mon deuxième coup de cœur ici. En 2004, Vekoma a construit à Sevenum le
 prototype mondial du coaster à moto : tu n’es pas assis, tu es allongé sur une
 moto, mains au guidon, genoux repliés, et on te catapulte. Une attraction
-inconfortable, absurde, formidable. Avec une médiane de 21 minutes, c’est elle
+inconfortable, absurde, formidable. Avec sa médiane, c’est elle
 qui affiche le temps d’attente typique le plus long de tous les coasters du
 parc, tout simplement parce qu’on embarque un par un et allongé, et que ça prend
 du temps.
@@ -407,9 +406,9 @@ Ceux qui n’y sont pas allés depuis longtemps chercheront une attraction. Le
 **17 mai 2026**, la **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)**
 du Wunderwald a ouvert pour la dernière fois, la piste de bobsleigh Mack de
 2007, sur laquelle un levier de frein te laissait décider de ta vitesse en
-descente. Dans notre historique, elle a longtemps été l’attraction au temps
-d’attente le plus long de tout le parc, 34 minutes en médiane, et les jours
-chargés on y a aussi attendu 60 ou 90 minutes.
+descente. Sur toute la période où nous l’avons mesurée, elle a été l’attraction au temps
+d’attente le plus long de tout le parc, et les jours chargés on y a aussi
+attendu 60 ou 90 minutes.
 
 Cela tenait à un calcul qui ne pouvait pas tomber juste : un chariot accueillait
 une personne, deux au maximum. Et comme le record en cours était affiché à la
@@ -585,8 +584,8 @@ Toverland](ref:attractiepark-toverland).
 
 De mars à juillet, les valeurs sont très proches dans nos données et forment la
 partie la plus calme de l’année. En semaine c’est un peu plus vide que le
-week-end, mais l’écart est faible. Évite avril, les vacances
-néerlandaises de mai et d’automne et la courte saison d’hiver. Jour après jour, le [calendrier des temps d’attente](ref:attractiepark-toverland?calendar) le montre.
+week-end, mais l’écart est faible. Ce qui ressort de cette période, ce sont les
+vacances néerlandaises de mai et d’automne et la courte saison d’hiver. Jour après jour, le [calendrier des temps d’attente](ref:attractiepark-toverland?calendar) le montre.
 
 ### A-t-on besoin d’un coupe-file à Toverland ?
 

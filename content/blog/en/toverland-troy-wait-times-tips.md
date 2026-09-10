@@ -186,15 +186,15 @@ Europe. Wing coaster means you sit out to the left and right of the rail, with
 no track above or below you, and because your seat swings wider through a curve
 than the vehicle does, every turn feels bigger than it is. Along the way a
 phoenix sprays mist over you, which has nothing to do with physics and improves
-the whole thing anyway. Wait: the same 16 minutes as Troy.
+the whole thing anyway. Wait: the same order of magnitude as Troy.
 
 ![The Fēnix station with blue track, a wing coaster train and fire bowls hanging on chains under wooden beams | The Fēnix station: fire bowls on chains, heavy beams, and the train with its seats beside the rail. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** is the oddball, and my second
 favourite here. In 2004, Vekoma built the world’s prototype motorbike coaster in
 Sevenum: you don’t sit, you lie on a motorbike, hands on the bars, knees tucked
-in, and then get launched. An uncomfortable, absurd, wonderful ride. With a
-median of 21 minutes it has, of all things, the longest typical wait of any
+in, and then get launched. An uncomfortable, absurd, wonderful ride. With its
+median it has, of all things, the longest typical wait of any
 coaster in the park, which comes down to boarding one at a time, lying down,
 which takes as long as it takes.
 
@@ -380,9 +380,9 @@ small enough that it can happen, and evidently important enough that it does.
 If you haven’t been for a while, one attraction will be missing. On
 **17 May 2026**, **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in
 the Wunderwald opened for the last time, the 2007 Mack bobsled where a brake
-lever let you decide how fast you went downhill. For years our history had it as
-the attraction with the longest wait in the entire park, a median of 34 minutes,
-and on busy days it hit 60 or 90.
+lever let you decide how fast you went downhill. For as long as we measured it, it was
+the attraction with the longest wait in the entire park, and on busy days it hit
+60 or 90 minutes.
 
 That came down to arithmetic that could never work out: one car held one, maybe
 two people. And because the current record was posted at the exit with a photo,
@@ -545,8 +545,8 @@ figures are on the
 
 March to July sit close together in our data and make up the calmest part of
 the year. Weekdays are a little emptier than weekends, but the difference is
-small. Avoid April, the Dutch May and
-autumn holidays, and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
+small. What stands out from that range are the Dutch May and
+autumn holidays and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
 
 ### Do you need a fast pass at Toverland?
 

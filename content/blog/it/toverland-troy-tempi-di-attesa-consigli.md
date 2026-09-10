@@ -191,7 +191,7 @@ rotaia, senza tracciato sopra o sotto di te, e siccome il tuo sedile prende le
 curve più all’esterno rispetto al veicolo, ogni rotazione sembra più ampia di
 quanto sia. Lungo il percorso una fenice ti spruzza addosso della nebbia, cosa
 che con la fisica non c’entra nulla e che comunque migliora la faccenda. Attesa:
-gli stessi 16 minuti di Troy.
+lo stesso ordine di grandezza di Troy.
 
 ![La stazione di Fēnix con rotaia azzurra, treno del wing coaster e bracieri appesi a catene sotto travi di legno | La stazione di Fēnix: bracieri su catene, travi massicce e il treno con i sedili accanto alla rotaia. | wide](/media/toverland/background-16x9.jpg)
 
@@ -199,7 +199,7 @@ gli stessi 16 minuti di Troy.
 mio secondo preferito qui. Nel 2004 Vekoma ha costruito a Sevenum il prototipo
 mondiale del coaster in moto: non sei seduto, sei sdraiato su una moto, mani sul
 manubrio, ginocchia raccolte, e poi vieni lanciato. Un’attrazione scomoda,
-assurda, splendida. Con una mediana di 21 minuti è proprio lei ad avere l’attesa
+assurda, splendida. Con la sua mediana è proprio lei ad avere l’attesa
 tipica più lunga di tutti i coaster del parco, e il motivo è che si sale uno
 alla volta e da sdraiati, e questo richiede tempo.
 
@@ -394,9 +394,10 @@ sia possibile, ed evidentemente abbastanza importante perché venga fatta.
 Chi non ci va da un po' sentirà la mancanza di un’attrazione. Il **17 maggio
 2026** la **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** nel
 Wunderwald ha aperto per l’ultima volta, la pista da bob Mack del 2007, su cui
-con una leva del freno decidevi tu quanto correre in discesa. Nel nostro storico
-è stata per anni l’attrazione con l’attesa più lunga di tutto il parco, mediana
-34 minuti, e nei giorni pieni ci sono stati anche 60 o 90 minuti di fila.
+con una leva del freno decidevi tu quanto correre in discesa. Per tutto il tempo
+in cui l’abbiamo misurata è stata l’attrazione con l’attesa più lunga di tutto il
+parco,
+e nei giorni pieni ci sono stati anche 60 o 90 minuti di fila.
 
 Il motivo era un conto che non poteva tornare: in una vettura entravano una, al
 massimo due persone. E siccome all’uscita era appeso il record in corso con
@@ -569,8 +570,8 @@ Toverland](ref:attractiepark-toverland).
 Da marzo a luglio i valori nei nostri dati stanno vicini e formano la parte più
 tranquilla dell’anno. Nei giorni feriali è un po' più vuoto che nel fine
 settimana, ma la differenza è piccola.
-Evita aprile, le vacanze olandesi di maggio e d’autunno e la breve stagione
-invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:attractiepark-toverland?calendar).
+Da quella fascia spiccano le vacanze olandesi di maggio e d’autunno e la breve
+stagione invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:attractiepark-toverland?calendar).
 
 ### Serve un pass salta-fila a Toverland?
 

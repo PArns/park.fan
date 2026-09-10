@@ -100,13 +100,13 @@ De tien attracties waar je het langst staat, met de waarde van vandaag ernaast:
 waarde op de tien procent drukste dagen. Geen van beide zegt iets over hoe een
 rij zich over de dag beweegt.
 
-Het Voletarium valt uit de toon. Zijn mediaan van 14 minuten is de laagste van
-de tien langste, de piek van 27 precies zo hoog als die van Poseidon. Een
+Het Voletarium valt uit de toon. Zijn mediaan is de laagste van
+de tien langste, de piek precies zo hoog als die van Poseidon. Een
 vliegtheater laadt in grote porties. Tussen twee voorstellingen staat er
 nauwelijks iemand, op een volle ochtend reikt de rij tot op het voorplein. In
 het daggemiddelde blijft daar niets van over.
 
-Verder leest de lijst weinig spectaculair. **34 minuten voor de baan die in haar
+Verder leest de lijst weinig spectaculair. **De langste rij van het park, voor de baan die in haar
 eerste jaar 3,25 miljoen ritten kreeg**, is, afgezet tegen ruim zes miljoen
 gasten, heel weinig. Ter vergelijking, dezelfde gegevens, dezelfde
 rekenmethode:
@@ -123,7 +123,7 @@ Phantasialand 2,1 miljoen, in de Efteling 5,6, in Parijs ongeveer tien.
 Toverland staat daar niet in, de 1,17 miljoen is de eigen opgave van het park.
 Rechts staat telkens de attractie met de hoogste mediaan waarvoor we minstens
 honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
-Bahn boven met 34 minuten, maar op slechts 61 dagen, en een kinderachtbaan met
+Bahn boven, maar op slechts 61 meetdagen, en een kinderachtbaan met
 een dunne meetbasis deugt niet als kengetal voor een heel park.
 
 Met ongeveer een derde van het publiek heeft het Phantasialand parkbreed negen
@@ -132,8 +132,8 @@ banen; nagerekend in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tip
 Voor de [Efteling](/blog/efteling-disney-van-nederland) en
 [Toverland](/blog/toverland-troy-wachttijden-tips) hebben we dezelfde rekensom
 gemaakt. En in Parijs, waar ongeveer anderhalf keer zoveel gasten doorheen gaan,
-staat het parkgemiddelde op 34 minuten. Dat is precies de waarde die in Rust de
-_langste_ rij van het park heeft.
+ligt het parkgemiddelde ongeveer daar waar in Rust de _langste_ rij van het park
+staat.
 
 ## Waarom het grootste park de kortste rijen heeft
 
@@ -364,8 +364,8 @@ Sponsor Rimac bouwt een paar honderd kilometer zuidelijker elektrische
 hypersportwagens, en “nevera” is Kroatisch voor de plotselinge onweersbui die in
 de zomer boven de Adriatische Zee opsteekt.
 
-3,25 miljoen ritten in het eerste jaar, en de typische wachttijd ligt op 34
-minuten. Elf boven het parkgemiddelde, voor de baan waarvoor half
+3,25 miljoen ritten in het eerste jaar, en de langste typische wachttijd van het
+park. Ruim boven het parkgemiddelde, voor de baan waarvoor half
 Zuid-Duitsland in 2024 naar Rust is gereden.
 
 **[Silver Star](ref:europa-park/silver-star)** is de oude dame met de records. In
@@ -400,7 +400,7 @@ aanvoelt alsof je in slow motion wordt omgedraaid.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** loopt sinds
 1989 volledig binnen in een zilveren bol. In 2018 ruilde de baan het
 ruimtevaartthema in voor Parijs, met een Moulin-Rouge-gevel ervoor. 198 seconden
-in het donker. Dat ze met 28 minuten typische wachttijd op
+in het donker. Dat ze met haar typische wachttijd op
 plek vier staat, heeft een banale reden. Ze is een van de weinige banen die bij
 regen betrouwbaar doorrijden.
 
@@ -420,7 +420,7 @@ een wilde muis met draaiende wagens, de
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** uit 1984, de
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Ierland, plus
 **[Arthur](ref:europa-park/arthur)**, een hangende powered coaster door het
-Koninkrijk van de Minimoys, die met 31 minuten de op een na langste rij van het
+Koninkrijk van de Minimoys, die de op een na langste rij van het
 park heeft. De vijftiende is de **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dezelfde baan als
 de Enzian, alleen met VR-bril en als aparte attractie geteld.
 
@@ -638,8 +638,8 @@ november. De 15e zou zo’n dag zijn.
 
 Dat klinkt als een fout. Onze rope-drop-analyse vergelijkt voor elke attractie
 de wachttijd meteen bij opening met de hoogste dagpiek die daar op een volle dag
-is gemeten. Bij het Voletarium staan 23 minuten tegenover 80, dat scheelt
-**57 minuten**. Veruit de hoogste waarde in het hele park.
+is gemeten. Bij het Voletarium staan ruim twintig minuten tegenover tachtig, en dat is
+veruit de grootste besparing in het hele park.
 
 ```glossary-widget slug=rope-drop
 
@@ -718,9 +718,9 @@ Zwitserse vakanties voor dit park mee, de vakantiekalender van één enkele
 deelstaat doet dat niet.
 
 **De dinsdag voor een rustige werkdag houden.** Van maandag tot en met vrijdag is
-hij de drukste, met 25 minuten typische wachttijd tegenover 22 op maandag,
-donderdag en vrijdag. Als er toch maar één doordeweekse dag in aanmerking komt,
-neem dan maandag, donderdag of vrijdag, die liggen alle drie gelijk.
+hij de drukste, drukker dan maandag, donderdag en vrijdag. Als er toch maar één
+doordeweekse dag in aanmerking komt, neem dan een van die drie, die liggen alle
+drie gelijk.
 
 ## Halloween, HALLOWinter, winter
 
@@ -734,8 +734,8 @@ eigen leeftijdsgrens. Het heet Traumatica, en wie het voor een extraatje voor
 
 Vanaf **28 november** is het winter. Kerstmarkten, een ijsbaan, ijsshows en
 gebieden die er alleen in deze weken zijn, zoals de Winter World of Wonder en de
-sleerit Snowflake. De typische wachttijd in december lag bij ons op 28 minuten
-en daarmee een tikje boven augustus, zij het op maar zes meetdagen. Op **24 en
+sleerit Snowflake. De typische wachttijd in december lag bij ons een tikje
+boven augustus, zij het op maar zes meetdagen. Op **24 en
 25 december** is het dicht, hotelgasten mogen tot 10 januari blijven.
 
 ## Traumatica, het park in het park
@@ -853,8 +853,8 @@ met een voorspelling voor de komende dagen.
 
 ### Wanneer is het in het Europa-Park het rustigst?
 
-De **zondag** is de rustigste weekdag (18 minuten typisch tegenover 28 op
-zaterdag), mei en juni zijn de rustigste zomermaanden. Het leegst is het in het
+De **zondag** is de rustigste weekdag, de zaterdag de drukste, en mei en juni
+zijn de rustigste zomermaanden. Het leegst is het in het
 HALLOWinter-seizoen begin november. [In onze voorspelling voor de komende drie
 maanden](ref:europa-park?calendar) staan alle 19 novemberdagen op “laag”.
 
@@ -909,7 +909,7 @@ dubbele van een dagkaart.
 Ja, met één kanttekening. De winterdecoratie, de ijsbaan en de kerstmarkten zijn
 er alleen dan, daar staat tegenover dat het eerder donker wordt, dat het park al
 om 19 uur dichtgaat en dat de waterbanen niet doorlopend draaien. De wachttijden
-liggen in december met typisch 28 minuten zelfs een tikje hoger dan in augustus.
+liggen in december zelfs een tikje hoger dan in augustus.
 Voor november zet onze voorspelling daarentegen alle 19 dagen die ze afdekt op
 “laag”; gemeten wachttijden hebben we uit die maand nog niet.
 

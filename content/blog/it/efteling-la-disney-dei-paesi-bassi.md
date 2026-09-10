@@ -263,8 +263,8 @@ Duinen. I madhouse installati poi in mezza Europa derivano tutti da questo model
 **[Droomvlucht](ref:efteling/droomvlucht)**, del 1993, è il volo degli elfi davanti
 al quale gli adulti olandesi si sciolgono. Si fluttua in gondole attraverso boschi,
 castelli di fate e una sequenza notturna in cui il binario cede per un attimo. Chi
-vuole capire perché una dark ride senza un solo spavento produca 22 minuti di
-attesa tipica, la faccia una volta e ci arriva.
+vuole capire perché una dark ride senza un solo spavento produca tanta attesa
+tipica, la faccia una volta e ci arriva.
 
 ![Il minareto di Fata Morgana nell’ora blu, con le cupole del bazar dietro | Da fuori dell’attrazione non si vede niente. Sta tutta dietro questa facciata. | left](/media/efteling/fata-morgana-4x3.jpg)
 

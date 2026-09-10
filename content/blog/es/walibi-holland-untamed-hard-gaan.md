@@ -842,7 +842,7 @@ Para los aficionados a las montañas rusas, sí. El parque tiene en
 [Untamed](ref:walibi-holland/untamed) la primera montaña rusa híbrida de Europa,
 en [YOY](ref:walibi-holland/yoy-thrill) la primera instalación en duelo sobre
 raíl único del mundo y en [Goliath](ref:walibi-holland/goliath) un Mega Coaster
-de Intamin de 2002, y todo ello con una espera típica de 20 minutos. Quien busque
+de Intamin de 2002, y todo ello con una espera típica de un cuarto de hora largo. Quien busque
 dark rides, una ambientación sin costuras e independencia del tiempo estará mejor en el
 [Efteling](ref:efteling) o en [Phantasialand](ref:phantasialand).
 
@@ -899,8 +899,8 @@ quiera un parque Walibi en diciembre, que vaya a Wavre, a
 
 ### ¿Hace falta un pase Fast Lane?
 
-Un día normal, no. Con una mediana de 20 minutos pagas por minutos ahorrados que
-no tienes. Los fines de semana de las vacaciones de verano, en los eventos
+Un día normal, no. Con la mediana que tiene este parque pagas por minutos
+ahorrados que no tienes. Los fines de semana de las vacaciones de verano, en los eventos
 nocturnos y para YOY puede compensar.
 
 ## Haz la hora de más

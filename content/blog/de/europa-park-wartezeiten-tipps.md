@@ -103,8 +103,8 @@ daneben:
 derselbe Wert an den zehn Prozent vollsten Tagen. Beides sagt nichts darüber,
 wie sich eine Schlange über den Tag bewegt.
 
-Das Voletarium fällt aus der Reihe. Sein Median von 14 Minuten ist der
-niedrigste der zehn längsten, die Spitze mit 27 genauso hoch wie die von Poseidon. Ein
+Das Voletarium fällt aus der Reihe. Sein Median ist der niedrigste der zehn
+längsten, seine Spitze genauso hoch wie die von Poseidon. Ein
 Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
 jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
@@ -367,8 +367,8 @@ beleuchtet. Der Sponsor Rimac baut ein paar hundert Kilometer weiter
 südlich elektrische Hypersportwagen, und „Nevera“ heißt auf Kroatisch das
 plötzliche Gewitter, das im Sommer über der Adria aufzieht.
 
-3,25 Millionen Fahrten im ersten Jahr, und die typische Wartezeit liegt bei 34
-Minuten. Elf über dem Parkschnitt, für die Bahn, wegen der halb Süddeutschland
+3,25 Millionen Fahrten im ersten Jahr, und die längste typische Wartezeit im
+Park, deutlich über dem Parkschnitt, für die Bahn, wegen der halb Süddeutschland
 2024 nach Rust gefahren ist.
 
 **[Silver Star](ref:europa-park/silver-star)** ist die alte Dame mit den
@@ -723,9 +723,8 @@ rechnet die französischen und die Schweizer Ferien für diesen Park mit, der
 Ferienkalender eines einzelnen Bundeslandes tut das nicht.
 
 **Den Dienstag für einen ruhigen Werktag halten.** Von Montag bis Freitag ist er
-der vollste, mit 25 Minuten typischer Wartezeit gegenüber 22 am Montag,
-Donnerstag und Freitag. Kommt ohnehin nur ein Wochentag infrage, nimm einen von
-diesen dreien, die liegen alle gleichauf.
+der vollste, vor Montag, Donnerstag und Freitag. Kommt ohnehin nur ein Wochentag
+infrage, nimm einen von diesen dreien, die liegen alle gleichauf.
 
 ## Halloween, HALLOWinter, Winter
 
