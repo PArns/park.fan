@@ -390,11 +390,15 @@ Vier Entscheidungen dahinter:
   mit Platz.
 - **Die Übersetzungen bleiben in `pushAlerts.menu`.** Das ist Layout-Chrome und wird auf jeder
   Seite × sechs Sprachen serialisiert. `pushAlerts.overview` hätte zwölf Schlüssel Fließtext
-  mitgebracht; die sechs kurzen Schlüssel hier kosten +1198 B roh über alle sechs Sprachen, rund
-  +81 B komprimiert pro Seite. Der siebte, `removeError`, kam aus demselben Grund dazu: die Zeile
-  braucht einen Satz für ein abgelehntes DELETE, und `usePushErrorMessage` mitzunehmen hätte
-  `pushAlerts.pushErrors` in die Chrome jeder Seite gezogen. `/alerts` benutzt den Helfer, weil
-  es dort eine Route zahlt und nicht das Layout.
+  mitgebracht; die sechs kurzen Schlüssel hier kosteten +1198 B roh über alle sechs Sprachen, rund
+  +81 B komprimiert pro Seite. Zwei kamen später dazu — `removeError` und `removeRateLimited`, die
+  Sätze für ein abgelehntes DELETE —, aus demselben Grund: `usePushErrorMessage` mitzunehmen hätte
+  `pushAlerts.pushErrors` in die Chrome jeder Seite gezogen, und der Löschpfad meldet ohnehin nur
+  zwei unterscheidbare Fälle (er registriert nie eine Anmeldung, also fällt die ganze
+  `unavailable`-Familie weg). Gemessen über alle neun Schlüssel: `pushAlerts.menu` wächst um
+  1048 B roh über sechs Sprachen, die Layout-Chrome von 7488 auf 7654 B pro Seite, komprimiert
+  +68 B (deutsch, brotli-11). `/alerts` benutzt den Helfer, weil es dort eine Route zahlt und
+  nicht das Layout.
 
 ### Eine Zeile geht erst, wenn der Server sie gehen lässt
 

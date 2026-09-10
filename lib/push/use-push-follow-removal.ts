@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
 import { removeRideAlert, unfollowShow, type PushWriteError } from './push-follows';
@@ -53,6 +53,35 @@ export function usePushFollowRemoval(): PushFollowRemoval {
    */
   const [removing, setRemoving] = useState<readonly PushFollowRowKey[]>([]);
   const [errors, setErrors] = useState<Readonly<Record<PushFollowRowKey, PushWriteError>>>({});
+  /**
+   * One pending expiry per row, for the one message that stops being true on its own.
+   *
+   * "Please try again in 42 seconds" is a claim with a shelf life, and `/alerts` is a page
+   * somebody leaves open: without this it would still name that window ten minutes later. Every
+   * other class ("that didn't work, try again") stays true until it is tried again, so only the
+   * rate limit gets a timer.
+   */
+  const expiries = useRef(new Map<PushFollowRowKey, ReturnType<typeof setTimeout>>());
+  useEffect(() => {
+    const pending = expiries.current;
+    return () => {
+      pending.forEach(clearTimeout);
+      pending.clear();
+    };
+  }, []);
+
+  const forgetError = (key: PushFollowRowKey) => {
+    const pending = expiries.current.get(key);
+    if (pending !== undefined) {
+      clearTimeout(pending);
+      expiries.current.delete(key);
+    }
+    setErrors((current) => {
+      if (!(key in current)) return current;
+      const { [key]: _gone, ...rest } = current;
+      return rest;
+    });
+  };
 
   const run = async (
     key: PushFollowRowKey,
@@ -61,11 +90,7 @@ export function usePushFollowRemoval(): PushFollowRemoval {
     track: () => void
   ) => {
     setRemoving((current) => (current.includes(key) ? current : [...current, key]));
-    setErrors((current) => {
-      if (!(key in current)) return current;
-      const { [key]: _gone, ...rest } = current;
-      return rest;
-    });
+    forgetError(key);
     const result = await remove();
     if (result.ok) {
       // The cache is the list, and it is edited only after the server has answered — anything
@@ -76,6 +101,23 @@ export function usePushFollowRemoval(): PushFollowRemoval {
       track();
     } else {
       setErrors((current) => ({ ...current, [key]: result.error }));
+      if (result.error.reason === 'rate-limited') {
+        // Clamped: the limiter's number is data from the network, and an hour is already far
+        // longer than any surface here stays open. Unclamped it could also overflow the 32-bit
+        // delay, which fires the timer immediately instead of never.
+        const seconds = Math.min(Math.max(result.error.retryAfterSeconds, 1), 3600);
+        expiries.current.set(
+          key,
+          setTimeout(() => {
+            expiries.current.delete(key);
+            setErrors((current) => {
+              if (!(key in current)) return current;
+              const { [key]: _expired, ...rest } = current;
+              return rest;
+            });
+          }, seconds * 1000)
+        );
+      }
     }
     setRemoving((current) => current.filter((k) => k !== key));
   };
