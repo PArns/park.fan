@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Bell, CalendarClock, Loader2, X } from 'lucide-react';
 import { GroupHeading, MoreLine, Row, RowSkeletons } from './favorites-menu-rows';
 import { usePushFollowsList } from '@/lib/push/use-push-follows-list';
+import type { PushWriteError } from '@/lib/push/push-follows';
 import { rideRowKey, showRowKey, usePushFollowRemoval } from '@/lib/push/use-push-follow-removal';
 import { formatShowClock } from '@/lib/push/show-clock';
 import { cn } from '@/lib/utils';
@@ -70,6 +71,25 @@ export function FavoritesMenuAlerts({
    * cache, so what it takes for one of them to leave is decided in one place.
    */
   const removal = usePushFollowRemoval();
+
+  /**
+   * Why a removal did not go through, in the two sentences this surface can actually produce.
+   *
+   * `usePushErrorMessage` is the shared helper the dialogs and `/alerts` use, and it is
+   * deliberately NOT used here: it reads `pushAlerts.pushErrors`, and this group renders in the
+   * layout chrome, so importing it would serialize six more strings into every one of ~35,000
+   * pages for a line almost nobody sees. Two keys in `pushAlerts.menu`, which the chrome already
+   * carries, buy the distinction that matters instead.
+   *
+   * And it is the only one that matters: the DELETE path never registers a subscription, so the
+   * `unavailable` causes the helper exists to separate cannot occur here — what is left is a rate
+   * limit, where "please try again" is a lie in front of a limiter that will refuse the retry,
+   * and everything else, where it is the right sentence.
+   */
+  const removeErrorMessage = (error: PushWriteError) =>
+    error.reason === 'rate-limited'
+      ? t('removeRateLimited', { seconds: error.retryAfterSeconds })
+      : t('removeError');
 
   const rows: AlertRow[] = [
     ...(data?.rideAlerts ?? []).map((alert) => ({
@@ -140,42 +160,48 @@ export function FavoritesMenuAlerts({
           <RowSkeletons count={expected} max={cap} />
         ) : (
           <>
-            {shown.map((row) => (
-              <Fragment key={row.key}>
-                <Row
-                  href={row.href}
-                  title={row.title}
-                  subtitle={row.detail}
-                  leading={row.icon}
-                  action={
-                    <button
-                      type="button"
-                      onClick={row.remove}
-                      disabled={removal.isRemoving(row.key)}
-                      aria-label={t('remove', { name: row.title })}
-                      // 32 px rather than the 44 px phone tier the button scale documents: this
-                      // group is drawn in the band only, and the band needs a 1024 px header
-                      // before its trigger is even in the row.
-                      className="text-muted-foreground hover:text-destructive hover:bg-muted/60 flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors disabled:cursor-default disabled:opacity-50"
-                    >
-                      {removal.isRemoving(row.key) ? (
-                        <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
-                      ) : (
-                        <X className="size-3.5" aria-hidden="true" />
-                      )}
-                    </button>
-                  }
-                />
-                {/* Under the row it belongs to, not at the top of the group: the visitor pressed
-                    one X and needs to know which alert is still armed. `role="alert"` because it
-                    appears after their action and nothing else moves the focus to it. */}
-                {removal.errorFor(row.key) && (
-                  <li role="alert" className="text-destructive px-2 pb-1 text-xs leading-snug">
-                    {t('removeError')}
-                  </li>
-                )}
-              </Fragment>
-            ))}
+            {shown.map((row) => {
+              const removeError = removal.errorFor(row.key);
+              return (
+                <Fragment key={row.key}>
+                  <Row
+                    href={row.href}
+                    title={row.title}
+                    subtitle={row.detail}
+                    leading={row.icon}
+                    action={
+                      <button
+                        type="button"
+                        onClick={row.remove}
+                        disabled={removal.isRemoving(row.key)}
+                        aria-label={t('remove', { name: row.title })}
+                        // 32 px rather than the 44 px phone tier the button scale documents: this
+                        // group is drawn in the band only, and the band needs a 1024 px header
+                        // before its trigger is even in the row.
+                        className="text-muted-foreground hover:text-destructive hover:bg-muted/60 flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors disabled:cursor-default disabled:opacity-50"
+                      >
+                        {removal.isRemoving(row.key) ? (
+                          <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
+                        ) : (
+                          <X className="size-3.5" aria-hidden="true" />
+                        )}
+                      </button>
+                    }
+                  />
+                  {/* Under the row it belongs to, not at the top of the group: the visitor pressed
+                    one X and needs to know which alert is still armed. `role="alert"` goes on the
+                    paragraph and never on the `<li>`, which would replace its implicit `listitem`
+                    role and leave this `<ul>` holding a child that is not a list item. */}
+                  {removeError && (
+                    <li className="px-2 pb-1">
+                      <p role="alert" className="text-destructive text-xs leading-snug">
+                        {removeErrorMessage(removeError)}
+                      </p>
+                    </li>
+                  )}
+                </Fragment>
+              );
+            })}
             <MoreLine
               hidden={rows.length - shown.length}
               label={(n) => tFavorites('more', { count: n })}
