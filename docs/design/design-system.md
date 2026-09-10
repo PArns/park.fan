@@ -396,7 +396,10 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
 legend — and the tiles used to say the opposite of the other two. „Voll" (P90) was the blue number
 in the tiles while blue was „Normal" (P50) in the bars and the legend: one colour meaning two
 things a quarter of an inch apart. The rank is **Normal = accent, Voll = recessive**, in all three,
-and it is what tells a reader which of the two the number above each bar is.
+and it is what tells a reader which of the two the number above each bar is. The tiles carry it
+as the legend's two swatches rather than by tinting the digits: `text-primary` is 3.47 : 1 on the
+light card and `text-lg font-semibold` is 18 px at 600, which is not WCAG "large text" and so owes
+4.5 — a swatch owes 3, which the same colour clears.
 
 The wash under it was the other half of the same fault, and it is arithmetic rather than taste.
 Computed from `--primary`/`--muted` (oklch → sRGB → WCAG), the Voll segment at `bg-primary/25` over

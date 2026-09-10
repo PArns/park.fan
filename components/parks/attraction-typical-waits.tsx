@@ -30,6 +30,10 @@ const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
  * and Normal was plain white, while in the bars and the legend blue was Normal and Voll a wash
  * of the same blue. The same colour meant two things on one card, a quarter of an inch apart.
  *
+ * The tiles carry it as the legend's two swatches rather than by tinting the digits, because a
+ * `text-primary` figure is 3.47 : 1 on the light card and `text-lg font-semibold` is 18 px at
+ * 600 — not WCAG "large text", so it owes 4.5. A swatch owes 3, which the same colour clears.
+ *
  * The wash is also why the bar looked like it ended at the Normal value while the number above it
  * was the Voll one. `bg-primary/25` over the `bg-muted/40` track computes to a contrast of
  * **1.32:1 in light and 1.40:1 in dark** — the segment was very nearly not drawn. And it cannot
@@ -241,22 +245,36 @@ function SummaryCard({
   return (
     <div className="rounded-lg border p-3">
       <p className="text-muted-foreground text-xs">{label}</p>
-      {/* Normal is the accent, Voll the recessive tone — the same rank the bars and the legend
-        draw. These two were the wrong way round: blue was Voll here and Normal there. */}
+      {/* The rank is carried by the same two swatches the bars and the legend use, not by the
+        colour of the digits. The tiles used to say the opposite of the chart — blue was Voll
+        here and Normal there — and colouring the Normal figure `text-primary` to fix that would
+        put a 3.47 : 1 number on the light card at `text-lg font-semibold`, which is 18 px at 600
+        and therefore not WCAG "large text": it needs 4.5. The accent moves to an 8 px square,
+        where 3 : 1 is the bar to clear, and both figures keep a text-grade contrast
+        (19.8 : 1 and 4.73 : 1 light, 19.0 : 1 and 7.63 : 1 dark). */}
       <div className="mt-1.5 flex items-end gap-4">
         <div>
-          <p className="text-primary text-lg leading-none font-semibold">
+          <p className="text-foreground text-lg leading-none font-semibold">
             {bucket.typical ?? '–'}
             <span className="text-muted-foreground ml-0.5 text-xs font-normal">{unit}</span>
           </p>
-          <p className="text-muted-foreground mt-0.5 text-[10px]">{typicalLabel}</p>
+          <p className="text-muted-foreground mt-0.5 flex items-center gap-1 text-[10px]">
+            <span className="bg-primary h-2 w-2 shrink-0 rounded-sm" aria-hidden="true" />
+            {typicalLabel}
+          </p>
         </div>
         <div>
           <p className="text-muted-foreground text-lg leading-none font-semibold">
             {bucket.busy ?? '–'}
             <span className="text-muted-foreground ml-0.5 text-xs font-normal">{unit}</span>
           </p>
-          <p className="text-muted-foreground mt-0.5 text-[10px]">{busyLabel}</p>
+          <p className="text-muted-foreground mt-0.5 flex items-center gap-1 text-[10px]">
+            <span
+              className={cn(BUSY_FILL, 'ring-primary h-2 w-2 shrink-0 rounded-sm ring-1')}
+              aria-hidden="true"
+            />
+            {busyLabel}
+          </p>
         </div>
       </div>
     </div>
