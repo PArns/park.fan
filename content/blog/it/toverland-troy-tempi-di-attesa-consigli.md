@@ -82,13 +82,12 @@ davanti, fino a Kaatsheuvel, fino all’[Efteling](ref:efteling), la Disney dei
 Paesi Bassi.
 
 Settanta chilometri separano i due parchi. In entrambi c’è un coaster in legno
-dello stesso costruttore americano. Per uno aspetti di solito 16 minuti, per
-l’altro più del doppio. La fila più corta appartiene all’attrazione migliore.
+dello stesso costruttore americano. Per uno aspetti di solito un quarto d’ora
+scarso, per l’altro più del doppio. La fila più corta sta a Sevenum.
 
-Qui voglio parlare del parco che ci sta intorno: il
-[Toverland](ref:attractiepark-toverland?long) di Sevenum, che quest’anno compie 25 anni, che
-considero uno dei parchi piccoli più belli d’Europa, e in cui una volta mi sono
-ritrovato in costume dall’altra parte. Ne parlo più avanti.
+Il [Toverland](ref:attractiepark-toverland?long) di Sevenum quest’anno compie
+25 anni, lo considero uno dei parchi piccoli più belli d’Europa, e una volta mi
+ci sono ritrovato in costume dall’altra parte.
 
 ## Cosa rende Troy così buono
 
@@ -133,10 +132,7 @@ anni fa e la ricorda come «fantastica, ma ruvida»: rifalla.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## 16 minuti, misurati su due stagioni
-
-«Segreto meglio custodito» si scrive in fretta in un titolo. Dimostrarlo è più
-complicato. Quindi, i numeri.
+## Quanto costa davvero Troy, misurato su due stagioni
 
 Nelle ultime due stagioni, calcolato su più di 150 giorni di apertura con dati di
 attesa, il **tempo di attesa tipico di Troy è di 16 minuti** (mediana). Persino
@@ -153,8 +149,8 @@ di calcolo:
 
 ```
 
-Più del doppio, per un’attrazione che quasi nessuna classifica degli
-appassionati mette sopra Troy. Se si guarda oltre il tipo di costruzione,
+Più del doppio, per un’attrazione che agli European Star Awards non è mai
+finita sopra Troy. Se si guarda oltre il tipo di costruzione,
 l’immagine diventa ancora più netta. Quanto costano in attesa i grandi nomi
 della regione, legno o acciaio che siano?
 
@@ -460,7 +456,7 @@ mesi estivi. La direzione è chiara, il decimale no.
 **Per giorno della settimana** i numeri si distanziano appena. Il giorno più
 pieno è il sabato (25 minuti), poi il venerdì (24 minuti); da domenica a
 mercoledì sono 20 minuti dappertutto. A Phantasialand tra un martedì e un sabato
-ci sono mondi di differenza. Qui quasi ogni giorno è un buon giorno.
+ci sono mondi di differenza.
 
 Su questo non ci si può fidare non appena calendari scolastici olandesi e
 tedeschi, meteo e orari di apertura si sovrappongono, e nella zona di confine del
@@ -522,7 +518,8 @@ Su quest’ultimo punto vale la pena guardare oltre confine: Toverland vende un
 abbonamento annuale del tutto normale con dentro Halloween. Phantasialand ha
 abolito il suo dopo la pandemia e, nonostante diverse petizioni dei fan, non
 l’ha reintrodotto. Chi abita nella zona di confine e va più volte l’anno in un
-buon parco dovrebbe rileggere queste due frasi.
+buon parco, con l’abbonamento di Toverland risparmia su una cosa che
+Phantasialand non offre più.
 
 **Come arrivare.** Toverland si trova a **Sevenum** (comune di Horst aan de
 Maas), Toverlaan 2, a una decina di minuti d’auto a ovest di Venlo. Sulla

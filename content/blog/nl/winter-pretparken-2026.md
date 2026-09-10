@@ -53,8 +53,8 @@ seo:
 
 Op 14 november gaan in [Phantasialand](ref:phantasialand) de lichten aan. Het
 park blijft tot 20 uur open, en MAGIC SYMPHONY sluit de avond af met vuurwerk,
-vanaf dat moment elke dag tot in januari. In Bottrop hangen er dan ruim een
-800.000 lampen, in Waver staat een ijsbaan van 700 vierkante meter onder een
+vanaf dat moment elke dag tot in januari. In Bottrop hangen er dan ruim
+800.000 lichtjes, in Waver staat een ijsbaan van 700 vierkante meter onder een
 hallendak, en in Kasterlee zit de kerstman in het dagticket. Tussen half
 november en begin januari wordt een flink deel van de Europese pretparken iets
 dat met achtbanen nog maar zijdelings te maken heeft: glühwein, schaatsen en
@@ -65,7 +65,7 @@ gaat pas in het voorjaar weer open, en één is er in april helemaal mee gestopt
 
 Op 23 april 2026 stopte [Walibi Holland](ref:walibi-holland) met zijn
 winterbedrijf. **Bright Nights**, vier edities lang: verlichte achtbanen en een
-vuurwerkshow die „Light up the Night“ heette. Voorbij, zonder opvolger. Het park
+vuurwerkshow die “Light up the Night” heette. Voorbij, zonder opvolger. Het park
 blijft van november tot april dicht.
 
 De onderbouwing daarvan verklaart bijna het hele winterseizoen.
@@ -78,8 +78,8 @@ Daar wordt beslist wie in december opengaat. De vraag is hoeveel capaciteit een
 park nog heeft als buiten niemand wil rijden. [De Efteling](ref:efteling) vult
 dezelfde weken met dark rides en ziet er in de regen zelfs beter uit.
 [Phantasialand](ref:phantasialand) heeft halve themagebieden onder een dak,
-Walibi Belgium heeft hallen. Wie alleen grote banen in de open lucht bezit, is
-in juli onverslaanbaar en in december weerloos.
+Walibi Belgium heeft hallen. Walibi Holland had in de winter geen enkele
+overdekte grote baan.
 
 Hieronder staat wie het seizoen 2026/27 draait, met data, tijden en prijzen. En
 één cijfer dat dwars op het gevoel staat: in de maanden waarin het om half vijf
@@ -149,7 +149,7 @@ openging. Het park heeft voor **9 januari 2027** een afscheidsevenement
 aangekondigd. Daarna is de baan weg.
 
 Waarom uitgerekend de zondag in Rust de rustigste dag is en welke novemberweken
-onze kalender volledig op „laag“ zet, rekent de
+onze kalender volledig op “laag” zet, rekent de
 [Europa-Park-gids](/blog/europa-park-wachttijden-tips) na.
 
 [Europa-Park](ref:europa-park?full)
@@ -203,22 +203,21 @@ gewone dag aan wachttijd kost, staat in de
 
 ## De decemberopeners
 
-Deze parken zijn de rest van de winter dicht en gaan voor drie tot zes weken nog
-één keer open. De vensters zijn kort, en dat heeft gevolgen voor de rijen,
-daarover verderop meer.
+Deze parken zijn de rest van de winter dicht en gaan voor twee tot zes weken nog
+één keer open. De vensters zijn kort, en korte vensters maken lange rijen.
 
 ### Walibi Belgium: Walibi Winter, 5 december tot 3 januari
 
 Terwijl het Nederlandse zusterpark ermee ophoudt, gaat
 [Walibi Belgium](ref:walibi-belgium) in Waver onveranderd door. Van
-**5 december 2026 tot 3 januari 2027** staan er acht versierde gebieden, alle
-gebouwd rond noordelijke landschappen: Alpin Village, Frozen Land, Polar
-Playground, Glowing Greetings, Chocolate Factory, Festive Tropics, Twinkle Town
-en nieuw de **Northern Dock**, een Scandinavische haven rond
+**5 december 2026 tot 3 januari 2027** staan er acht versierde gebieden, de
+meeste daarvan noords: Alpin Village, Frozen Land, Polar Playground en Twinkle
+Town, daarbij Glowing Greetings, Chocolate Factory, Festive Tropics en nieuw de
+**Northern Dock**, een Scandinavische haven rond
 [Mecalodon](ref:walibi-belgium/mecalodon), de familieachtbaan voor de 50e
 verjaardag van het park.
 
-![De ingang van Walibi Belgium versierd met kerstballen, met daarboven de letters „Walibi Winter“ | Waver gaat door, Biddinghuizen niet. Ertussen liggen twee uur rijden en een paar hallendaken. | wide](/media/walibi-belgium/background.jpg)
+![De ingang van Walibi Belgium versierd met kerstballen, met daarboven de letters “Walibi Winter” | Waver gaat door, Biddinghuizen niet. Ertussen liggen twee uur rijden en een paar hallendaken. | wide](/media/walibi-belgium/background.jpg)
 
 Inbegrepen zijn een **overdekte ijsbaan van 700 m²**, een rodelbaan met zes
 sporen, een schaatsshow met tien artiesten, een 4D-kerstfilm en een kerstmarkt.
@@ -234,12 +233,12 @@ Data: [walibi.be → Walibi Winter](https://www.walibi.be/walibi-winter/en).
 [Bobbejaanland](ref:bobbejaanland) ging in december 2025 voor het eerst in zijn
 bestaan in de winter open en herhaalt dat in 2026/27. Zes themazones, waaronder
 Santa City, Snow Valley, Lake of Frost met ijsbaan en Land of Fire & Ice, plus
-een winterparade, een vuur-en-lichtshow en de kerstboomverlichting. Open van 11
-tot 19 uur, op 24 en 31 december tot 18 uur, gesloten op 25 december en
-1 januari.
+een winterparade, een vuur-en-lichtshow en de kerstboomverlichting. Open op 18
+dagen in dit venster, van 11 tot 19 uur, op 24 en 31 december tot 18 uur; op
+25 december en 1 januari blijft het park dicht.
 
-De ticketstructuur is het vermelden waard: in Kasterlee zit **alles in het
-dagticket**, van het schaatsen tot het ijspaleis. Bijboeken hoeft niet.
+In Kasterlee zit **alles in het dagticket**, van het schaatsen tot het
+ijspaleis. Bijboeken hoeft niet.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
@@ -296,7 +295,7 @@ Mediterrània-gebied, de driekoningenstoet, de avond waarop Spaanse kinderen hun
 cadeaus krijgen.
 
 Een waarschuwing die uit onze eigen metingen komt: van alle parken in dit
-artikel sta je bij PortAventura het langst in de rij, en dat geldt het hele jaar
+overzicht sta je bij PortAventura het langst in de rij, en dat geldt het hele jaar
 door, niet alleen met kerst. De tabel verderop zet ze naast elkaar. Wie in
 december een leeg seizoen verwacht omdat het bij hem thuis winter is, plant voor
 het verkeerde land.
@@ -347,8 +346,7 @@ afrondingskwestie.
 
 ```
 
-Eén beperking, en die telt: de wintermaanden staan op een handvol meetdagen, de
-zomermaanden op dertig. De kolom met dagen zegt bij elke regel waarop hij rust.
+De wintermaanden staan op een handvol meetdagen, de zomermaanden op dertig. De kolom met dagen zegt bij elke regel waarop hij rust.
 Voor een uitspraak over de orde van grootte is dat genoeg, voor een voorspelling
 op vijf minuten niet. Bij de Efteling zie je hetzelfde patroon met dezelfde
 voorbehouden.
@@ -390,8 +388,8 @@ winterbezoeker kiest tussen drie weekenden, met de kerstvakantie er middenin.
 Bij de Wintertraum komt daar nog bij dat het een doel op zich is. Mensen rijden
 naar Brühl vanwege de shows, niet ondanks het jaargetijde.
 
-En omdat de vraag „welke van die parken is het drukst“ op elke autorit
-langskomt, hier de parken uit dit artikel naast elkaar, elk met zijn rustigste
+En omdat de vraag “welke van die parken is het drukst” op elke autorit
+langskomt, hier de parken uit dit overzicht naast elkaar, elk met zijn rustigste
 weekdag:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
@@ -404,8 +402,8 @@ Dat verklaart de dunne regels in de tabellen hierboven. Toen de vorige
 Wintertraum liep, ging deze site net van start: uit december 2025 hebben we een
 handvol meetdagen, uit januari 2026 vier, uit november geen enkele. Pas sinds
 april schrijven we elke openingsdag mee. Daarmee is de winter 2026/27 de eerste
-die we van het eerste tot het laatste lichtsnoer volgen, en daarna heeft ons
-model voor het eerst een compleet jaar bij elkaar.
+die we van de eerste tot de laatste openingsdag meeschrijven, en daarna heeft
+ons model voor het eerst een compleet jaar bij elkaar.
 
 Wat die paar winterdagen nu al laten zien, klopt met wat iedereen ziet die er in
 december staat. In Phantasialand liggen december en januari op zomerniveau, in
@@ -425,12 +423,12 @@ net iets minder, en vanaf de vakantie is tot ver in januari elke dag een
 vakantiedag.
 
 Neem de drukte-kalender deze ene winter nog niet op zijn woord: voor december
-zet hij in Brühl 29 van de 29 openingsdagen op „laag“, terwijl hij in juli van
+zet hij in Brühl 29 van de 29 openingsdagen op “laag”, terwijl hij in juli van
 hetzelfde park over vier niveaus verdeelt. Een model dat een seizoen nooit
 gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
 het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.
 
-## Drie dingen die in de winter anders gaan
+## Datum, attractielijst, duisternis
 
 1. **De datum bepaalt de prijs, niet het park.** Bijna alle wintertickets zijn
    datumgebonden en per dag gestaffeld. De Wintertraum begint bij €29, en die

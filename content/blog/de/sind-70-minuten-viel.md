@@ -31,8 +31,8 @@ coverImage:
 seo:
   title: 'Wartezeiten richtig lesen: Sind 70 Minuten viel?'
   description: >-
-    Warum eine Wartezeit ohne Vergleichswert nichts aussagt, was „typisch" und
-    „voll" bei einer Attraktion bedeuten und wie park.fan aus Millionen
+    Warum eine Wartezeit ohne Vergleichswert nichts aussagt, was „typisch“ und
+    „voll“ bei einer Attraktion bedeuten und wie park.fan aus Millionen
     Messwerten eine Auskunft macht.
   keywords:
     - Wartezeiten Freizeitpark
@@ -57,14 +57,14 @@ Problem ist, dass sie allein steht. 70 Minuten sind an einem Dienstag im Mai
 etwas völlig anderes als an einem Samstag in den Sommerferien, und ohne den
 zweiten Teil dieses Satzes kannst du nichts damit anfangen.
 
-## Was „typisch" und „voll" wirklich heißen
+## Was „typisch“ und „voll“ wirklich heißen
 
 park.fan legt neben jede Bahn zwei Vergleichswerte. **Typisch** ist der Median
 der Tagesspitzen: An der Hälfte aller gemessenen Tage war die längste Schlange
 kürzer als dieser Wert, an der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem
 richtig was los war.
 
-Beides sind Perzentile und keine Durchschnitte, und das ist kein Detail. Ein
+Beides sind Perzentile und keine Durchschnitte. Ein
 Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
 mit Betriebsstörung und 150 Minuten Rückstau zieht den Schnitt eines ganzen
 Monats nach oben, obwohl an 29 Tagen nichts davon zu spüren war. Der Median
@@ -108,7 +108,7 @@ Seite jeder Bahn, mit konkreter Uhrzeit in Parkzeit.
 
 ## Das meiste entscheidet sich vor der Abreise
 
-Die Uhrzeit rettet dir eine halbe Stunde. Das Datum rettet dir den Tag. Zwischen
+Die Uhrzeit spart dir eine halbe Stunde, das Datum bis zu einer ganzen. Zwischen
 zwei Tagen derselben Ferienwoche kann eine halbe Stunde Durchschnittswartezeit
 liegen, und einem gewöhnlichen Kalender sieht man das nicht an. Was den
 Unterschied macht: welche Bundesländer gerade frei haben, ob ein Brückentag
@@ -139,30 +139,26 @@ den Wartezeiten des Vortags neu.
 
 Dazu kommt die andere Hälfte: Wir werfen nichts weg. Ältere Zeiträume werden
 komprimiert, aber jede Auswertung läuft weiterhin über alle Messwerte, die je
-angekommen sind. Ein Archiv, das man nachträglich anlegen will, ist genau das
-eine, was man nicht nachträglich anlegen kann.
+angekommen sind. Wer im dritten Jahr anfängt zu speichern, hat im dritten Jahr
+ein Jahr Historie, und die beiden Jahre davor sind für immer weg.
 
 ## Und die Stellen, an denen wir nichts sagen
-
-Eine Seite voller gefüllter Felder ist leicht zu bauen. Interessant wird sie
-erst, wenn man den gefüllten Feldern trauen kann, und dafür müssen ein paar
-Felder leer bleiben dürfen.
 
 [Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der eigenen App aus, und
 nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
 Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
 meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort 82
-Attraktionen auf „sehr niedrig", dazu ein Ø von 0 Minuten und eine Prognose,
+Attraktionen auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
 die auf null Beobachtungen beruht. Stattdessen steht auf der Parkseite ein
 Hinweis, dass es hier nichts zu lesen gibt.
 
 Dieselbe Regel an einer kleineren Stelle: Der Schlittschuhverleih im
 Phantasialand läuft von November bis Januar. Im August meldet über ihn niemand
-etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet" zu lesen,
+etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet“ zu lesen,
 wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite.
 Und Betriebsmonate einer Bahn nennen wir überhaupt erst nach 330
 Beobachtungstagen: Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
-April" dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen
+April“ dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen
 haben.
 
 ## Wo das alles steht
@@ -170,14 +166,12 @@ haben.
 Die lange Fassung, mit den echten Karten zum Mitlesen, ist jetzt eine eigene
 Seite: [So funktioniert park.fan](/de/so-funktioniert-park-fan). Dort steht
 Kapitel für Kapitel, was auf einer Attraktionskarte zu sehen ist, wie die
-Skala unter „typisch" und „voll" funktioniert, wie der Kalender die Ferien
+Skala unter „typisch“ und „voll“ funktioniert, wie der Kalender die Ferien
 verrechnet und an welchen drei Stellen wir bewusst nichts behaupten. Vier
 konkrete Besuchssituationen sind auch dabei, von der Familie in den
 Herbstferien bis zum Jahreskarten-Abend um sieben.
 
 Und wenn du das nächste Mal am Eingang stehst und auf die Anzeige starrst:
-Schau nach, was an dieser Bahn an einem Dienstag normal ist. Dann weißt du in
-zehn Sekunden, ob du dich gerade ärgern musst oder ob heute einfach Dienstag
-ist.
+Schau nach, was an dieser Bahn an einem Dienstag normal ist.
 
 — Patrick

@@ -62,15 +62,12 @@ Parks längst kein bisschen Deko mehr, sondern eine eigene Saison, mit eigenen
 Tickets, eigenen Altersgrenzen und einem Publikum, das genau für diesen
 kontrollierten Herzinfarkt anreist.
 
-Der Grusel schert sich herrlich wenig um Landesgrenzen, deshalb lohnt der Blick
-über den Tellerrand: In rund vier Autostunden erreichst du von NRW aus
-das größte Halloween-Event des Kontinents und die vielleicht durchtriebenste
-Grusel-Innovation Europas. Nur liegen die zufällig in zwei verschiedenen
-Ländern. Hier steht, was die Saison **2026** zu bieten hat: die großen
-Horror-Nächte, die familientauglichen Varianten mit Sicherheitsnetz, die zwei
-Top-Parks, die bei dem ganzen Zirkus demonstrativ _nicht_ mitmachen, und die
-Frage, die park.fan besser beantwortet als jede Pressemitteilung: Wann ist es
-am vollsten, und wann kommst du am entspanntesten durch?
+Der Grusel schert sich dabei wenig um Landesgrenzen. Von NRW aus liegen in
+rund vier Autostunden das größte Halloween-Event des Kontinents und die
+Experiences, für die Leute aus ganz Europa nach Biddinghuizen fahren, nur eben
+in zwei verschiedenen Ländern. Und die Frage, die dabei am seltensten
+beantwortet wird, ist die nach dem Datum: An welchen Abenden man in diese
+Nebelmaschinen läuft, ohne vierzig Minuten davor zu stehen.
 
 > **Kurz zu den Terminen:** Die Parks schrauben ihre Halloween-Programme über
 > den Sommer noch nach. Wir verlinken bei jedem Park die offizielle Event-Seite
@@ -126,11 +123,10 @@ DJ-Sets von Max Bering.
 Nach der Ankündigung lässt sich auch die naheliegende Frage beantworten: „Am
 größten“ ist nicht automatisch „am besten“. Das HHF ist der Volkswagen unter
 den Halloween-Events: riesig, solide, für jeden was dabei, an vollen Abenden
-aber eben auch Fließbandware mit Stau vor dem Maze. Die spannendste Entwicklung
-im europäischen Grusel passiert gerade woanders, in deutlich kleineren,
-deutlich persönlicheren Dosen, gut zwei Stunden nördlich in Biddinghuizen
-(Geduld, wir kommen gleich dazu). Wer Masse und Kettensägen-Romantik sucht, ist
-in Bottrop goldrichtig. Wer sich _wirklich_ fürchten will, liest weiter.
+aber eben auch Fließbandware mit Stau vor dem Maze. Die kleineren, persönlicheren Formate stehen gut zwei Stunden nördlich in
+Biddinghuizen, und wer sich dort einmal auf eine Trage hat schnallen lassen,
+findet neun Mazes im Durchlaufbetrieb hinterher zahm. Wer Masse und
+Kettensägen-Romantik sucht, ist in Bottrop goldrichtig.
 
 Gespielt wird an **22 ausgewählten Abenden vom 26. September bis 8. November
 2026**, überwiegend Freitag bis Sonntag; tagsüber ist der Park ab 10 Uhr normal
@@ -149,7 +145,7 @@ bis Sonntag geöffnet wird, steht im
 
 Wer nicht bis Ende September warten will: Bottrop hat diesen Sommer eines
 seiner Halloween-Häuser einfach früher aufgesperrt. **Slaughterhouse** läuft
-unter dem Label „Summerween" an allen Samstagen und Sonntagen bis zum 30.
+unter dem Label „Summerween“ an allen Samstagen und Sonntagen bis zum 30.
 August, 5 € pro Person. Ein Spukhaus bei dreißig Grad und Tageslicht ist eine
 eigene Erfahrung, und zwar keine schlechtere.
 
@@ -261,7 +257,7 @@ diesem Abend das Normalste, was dir passiert.
 
 ![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. Und nein, das ist kein Willkommenskomitee. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
-Der heimliche Star der Sammlung ist **Slaughterhouse**, ein
+Am längsten erzählt wird hinterher von **Slaughterhouse**, einem
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
 Erst wirst du in einem Viehwaggon-artigen Warteraum „begutachtet“, dann in
 einen an der Deckenschiene hängenden Sitz geschnallt. Die Idee ist der
@@ -309,8 +305,8 @@ danach in einen Schredder fallen gelassen wurde. Mit **889 Beschwerden** wurde
 daraus die meistbeanstandete niederländische Werbung des Jahres; die Reclame
 Code Commissie sah die Menschenwürde verletzt, Walibi nahm den Spot am 21.
 August 2025 offline. Ein Jahr später verteilt derselbe Clown Zuckerwatte und
-schläft schlecht. Man kann das vorsichtig nennen oder clever. Vermutlich stimmt
-beides.
+schläft schlecht. Als Werbung funktioniert das besser: Der Spot von 2025 wurde
+wegen seiner Bilder diskutiert, dieser wegen seiner Pointe.
 
 Wie sich Biddinghuizen ohne Nebelmaschine anfühlt und was Untamed an einem
 normalen Tag an Wartezeit kostet, steht im
@@ -327,7 +323,7 @@ Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/hallo
 Der belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 sein bis dahin
 größtes Spukhaus überhaupt eröffnet, und das läuft auch 2026 weiter:
 **„Paranormal Activity: Next of Kin“**, gebaut in Kooperation mit dem
-Filmstudio Paramount in den früheren „Forbidden Caves“. Die Zahlen sind ansage:
+Filmstudio Paramount in den früheren „Forbidden Caves“. Die Zahlen sind eine Ansage:
 **520 Quadratmeter, siebzehn Szenen, zwei Etagen** voller technischer
 Spielereien. Die Story dreht sich um eine Dokumentarfilmerin, ein
 abgeschottetes Dorf und eine Familie, die man sich lieber nicht zum Grillen
@@ -482,9 +478,9 @@ garantiert auch ein Wildschwein.
 
 ## Die Verweigerer: zwei Top-Parks, die Halloween aussitzen
 
-Die charmanteste Kategorie überhaupt sind die Parks, die bei dem ganzen
-Nebel-und-Kettensägen-Zirkus einfach nicht mitmachen. Nicht aus Versehen,
-sondern aus Prinzip.
+Zwei der stärksten Parks in dieser Übersicht machen bei dem ganzen
+Nebel-und-Kettensägen-Zirkus überhaupt nicht mit, und beide sagen es vorher
+deutlich.
 
 ### Phantasialand: nichts. Gar nichts. Mit Ansage.
 
@@ -593,28 +589,15 @@ mit:
 
 ```
 
-## Fazit: sechs Wochen Grusel, für jede Nervenstärke etwas
+## Wann du hingehst
 
-Die Halloween-Saison 2026 hat für jede Schmerzgrenze etwas: das schiere Volumen
-im [Movie Park](ref:movie-park-germany) mit neun Mazes, die große Inszenierung
-von [Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) Kino zum
-Reinlaufen, das frische Maisfeld in
-[Toverland](ref:attractiepark-toverland), und, für die ganz Tapferen, die
-[Walibi-Experiences](ref:walibi-holland), bei denen man freiwillig Geld dafür
-bezahlt, gestempelt, geflutet und aufgeschlitzt zu werden. Als Gegenpol das
-stille, vornehme Herbst-[Efteling](ref:efteling) und ein
-[Phantasialand](ref:phantasialand), das Halloween mit einem Schulterzucken
-überspringt und lieber gleich den Schnee anwirft.
+Für welche Nervenstärke du dich entscheidest, ist deine Sache. Die
+Oktober-Wochenenden sind die vollsten Tage des Herbstes, und in einer Schlange
+springt dich garantiert _niemand_ an, was bei diesen Preisen ärgerlich ist.
+Welcher Tag der leerste ist, verraten die Live-Wartezeiten und der
+Crowd-Kalender auf park.fan, den ganzen Herbst über.
 
-Für welche Nervenstärke du dich entscheidest, ist deine Sache. Nur eins gilt
-für alle: Der beste Halloween-Abend ist der, an dem du nicht die halbe Zeit in
-der Schlange verbringst. Dort springt dich garantiert _niemand_ an, und das ist
-bei diesen Preisen fast schon eine Frechheit. Welcher Tag der leerste ist,
-verraten dir die Live-Wartezeiten und der Crowd-Kalender auf park.fan, den
-ganzen Herbst über.
-
-Bleib trocken (Stichwort Below), bleib in Bewegung (Stichwort Mais), und wenn
-dich im Nebel etwas anspringt: Es ist nur Teil der Show. Ziemlich sicher.
+Wer Below bucht, packt Wechselsocken ein. Ich habe das einmal nicht getan.
 
 — Patrick
 

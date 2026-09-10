@@ -28,7 +28,7 @@ coverImage:
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: der Velocicoaster im Looping, dahinter das Hogwarts-Schloss.'
 seo:
-  title: 'Vom Märchensee zur Wartezeiten-KI'
+  title: 'Warum es park.fan gibt'
   description: >-
     Ein Kinderwagen am Märchensee, Nächte voller Code, eine KI, die Parktage
     liest: die Geschichte von park.fan und wann sich dein Parkbesuch wirklich
@@ -75,8 +75,7 @@ waren, bin ich zurückgelaufen und habe sie noch einmal gedrückt. Für mich war
 das nie ein Parkbesuch.
 
 Dass dieser See der Anfang von allem sein würde, wusste ich damals natürlich
-nicht. Aber irgendwo zwischen den Kulissen hat sich etwas festgesetzt, das mich
-nie wieder losgelassen hat.
+nicht.
 
 ## „1001 Nacht“, die Fahrten, die bleiben
 
@@ -116,9 +115,8 @@ haben. Das hier ist meine Art, etwas davon zurückzugeben.
 
 ## Von 5000er-Mäusen und einer 10.000er-Legende
 
-Parks, die mit Herzblut gebaut werden, hören nie auf, neue Momente
-hinzuzufügen. Die [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
-ist seit Juni 2011 so einer: ein interaktiver Dark Ride, in dem der
+Die [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
+ist seit Juni 2011 so ein Moment: ein interaktiver Dark Ride, in dem der
 Kammerjäger Oskar Koslowski die Backstube des Pâtissiers Gustav E. Lehmann von
 Mäusen befreit, bewaffnet mit einer Sahnespritze, verteilt auf 48 3D-Leinwände
 und sechs Minuten Fahrt. Ein frischer Highscore zaubert mir heute noch
@@ -135,13 +133,10 @@ Was ich lange nicht wusste und was mich bis heute jedes Mal kurz still werden
 lässt: Die Maus au Chocolat wurde 2011 auf genau der Fläche gebaut, auf der bis
 2009 die Gondelbahn stand. Wenn ich dort mit meiner Freundin um Punkte streite,
 sitze ich in einem Gebäude, das dort steht, wo ich als Kind mit meinem Vater
-durch das Drachenmaul gefahren bin. Dasselbe Stück Erde, dreißig Jahre und ein
-Leben dazwischen.
+durch das Drachenmaul gefahren bin.
 
-Danach Pancakes und Shakes im **Phenie’s** in Wuze Town, fluffig und prachtvoll
-und viel zu gut für Freizeitpark-Gastronomie. Spätestens dann versteht man,
-womit dieser Park seinen Anspruch begründet, „Europas Most Immersive Theme
-Park“ zu sein.
+Danach Pancakes und Shakes im **Phenie’s** in Wuze Town, und sie sind besser als
+das, was Freizeitparks sonst an Frühstück verkaufen.
 
 ## Orlando, Mai 2026, einmal im Leben
 
@@ -171,14 +166,14 @@ Parallel zu all diesen Parkjahren gab es immer ein zweites Ich, eines, das seit
 über fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt,
 erst als Head of Software Development bei **CyberGhost**, heute als
 Distinguished Software Engineer bei **ExpressVPN**. Systeme, die Millionen
-Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu verschwenden,
-was vermutlich das größte Kompliment ist, das man Infrastruktur machen kann.
+Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu verschwenden.
 Dazu Open Source, Smart-Home-Adapter und mehr Side-Projects, als mir guttun;
 der ganze Kram, der sich auf [arns.dev](https://arns.dev) und
 [GitHub](https://github.com/PArns) stapelt.
 
-Zwei Leidenschaften, die jahrzehntelang nebeneinanderher liefen, ohne sich je
-zu begegnen.
+Die beiden hatten jahrzehntelang nichts miteinander zu tun. Im Büro ging es um
+Durchsatz und Latenz, im Park ums Anstehen, und dass das dieselbe Frage ist, ist
+mir erst sehr spät aufgefallen.
 
 ## Der Moment in der Taron-Schlange
 
@@ -199,23 +194,22 @@ tauschte.
 > „Lass mich mal eben die Wartezeiten tracken.“ _Sagte ich. Es wurden drei
 > Jahre._
 
-## Vom Skript zur Plattform: wie park.fan wirklich entstand
+## Drei Jahre, in denen aus einem Skript etwas anderes wurde
 
 Was daraus wurde, nennen Entwickler ein Herzensprojekt und Freundinnen
-vermutlich eher „schon wieder dieses Park-Ding“. Aus einem Skript wurde ein
-Datensammler, aus dem Datensammler eine Pipeline, aus der Pipeline eine
-Plattform. Dazwischen lagen Nächte, in denen
+vermutlich eher „schon wieder dieses Park-Ding“. Aus dem Skript wurde ein Datensammler, und irgendwann lief
+er für zweihundert Parks statt für einen. Dazwischen lagen Nächte, in denen
 ich um zwei Uhr morgens auf Wartezeiten-Kurven starrte, weil irgendein Park
 seine Daten anders meldete als alle anderen. Debugging-Sessions, die länger
 dauerten als mancher Parktag. Und dieser ganz eigene Moment von Ehrfurcht, wenn
 ein Modell zum ersten Mal einen überfüllten Samstag korrekt vorhersagt, Tage
 bevor er stattfindet.
 
-Denn das war der eigentliche Herzenswunsch: kein weiteres Dashboard, das Zahlen
-anzeigt, sondern ein System, das Parktage _versteht_. Ein eigenes KI-Modell,
-das lernen musste, dass ein verregneter Brückentag im Oktober etwas völlig
-anderes ist als ein sonniger Ferien-Samstag im Juli. Dass Ferienkalender,
-Wetter, Öffnungszeiten und Jahre an Wartezeit-Historie zusammen ein Muster
+Der Punkt war nie die Anzeige der aktuellen Zahl. Die schreibt der Park selbst
+an. Interessant wird es einen Schritt davor: Ein eigenes Modell musste lernen,
+dass ein verregneter Brückentag im Oktober etwas völlig anderes ist als ein
+sonniger Ferien-Samstag im Juli. Dass Ferienkalender,
+Wetter, Öffnungszeiten und die mitgeschriebenen Öffnungstage zusammen ein Muster
 ergeben, das man lesen kann, wenn man nur hartnäckig genug hinschaut.
 
 Auf dem Schreibtisch, an dem all diese Nächte stattfanden, liegt heute übrigens
@@ -227,15 +221,14 @@ Debugging-Session daran, wofür der ganze Aufwand eigentlich ist. Irgendwo da
 draußen fährt gerade eine echte Bahn, und irgendwer da draußen will wissen, ob
 sich die Schlange davor lohnt.
 
-Heute ist daraus ein Echtzeit-Nervensystem für Freizeitparks geworden.
-Live-Wartezeiten aus über **200 Parks** und **7.000 Attraktionen**, im
-Minutentakt. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
+Heute stehen dahinter Live-Wartezeiten aus über **200 Parks** und **7.000
+Attraktionen**, im Minutentakt. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
 einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später
 gegen die tatsächlich gemessene Wartezeit gehalten, und was dabei herauskommt,
 steht auf der [Fancast-Seite](/fancast).
 
-## Wann ist der beste Tag? Lohnt sich ein Sonntag?
+## Der beste Tag ist selten der, den man vermutet
 
 Es sind immer dieselben drei Fragen, die ein Parkbesuch aufwirft, lange bevor
 irgendjemand im Auto sitzt. Wann ist der beste Tag? Lohnt sich ein Sonntag? Und
@@ -243,18 +236,18 @@ wie voll wird es wirklich?
 
 Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der besten
 Besuchstage, bis zu einem Jahr im Voraus, gefüttert mit Ferienkalendern,
-Wetterprognosen, Öffnungszeiten und der kompletten Wartezeit-Historie des
-Parks. Der Blick in diese Daten räumt nebenbei mit ein paar Bauchgefühlen auf.
+Wetterprognosen, Öffnungszeiten und jedem Öffnungstag, den wir bisher
+mitgeschrieben haben. Der Blick in diese Daten räumt nebenbei mit ein paar Bauchgefühlen auf.
 Ein Sonntag im grauen November kann entspannter sein als jeder Dienstag in den
 NRW-Sommerferien. Ein Brückentag ist fast nie eine gute Idee. Und der
 „Geheimtipp“, bei Regen zu fahren, funktioniert exakt so lange, bis alle
 anderen denselben Geheimtipp gelesen haben.
 
-Die Antwort lautet eben nicht „Sonntage sind voll“, sondern: _dieser_ Sonntag,
-in _diesem_ Park, zu _dieser_ Jahreszeit. Grün, gelb oder rot. Kalender
-öffnen, Farbe anschauen, entscheiden. Und wenn du schon im Park stehst, zeigen
-dir die Live-Daten, ob die Schlange vor dir gerade die Ausnahme ist oder die
-Regel.
+„Sonntage sind voll“ ist deshalb keine brauchbare Auskunft. Ein Sonntag Ende
+November im Phantasialand ist eine andere Frage als ein Sonntag Anfang August im
+Europa-Park, und der Kalender beantwortet die zweite Fassung. Und wenn du schon
+im Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade die
+Ausnahme ist oder die Regel.
 
 ## Was park.fan anders macht
 
@@ -262,34 +255,31 @@ Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
 Das können wir auch, im Minutentakt, weltweit. Aber park.fan wurde für die
 Frage davor gebaut: _Lohnt es sich überhaupt, hinzufahren?_
 
-Deshalb gehen wir ein paar Schritte weiter:
+Ein eigenes Modell schaut deshalb bis zu **365 Tage** nach vorn statt nur auf die
+Anzeigetafel, und der Kalender der besten Tage verdichtet Ferien, Wetter,
+Schedules und jeden mitgeschriebenen Öffnungstag zu einer Antwort: hin oder
+lieber nicht. Jede dieser Prognosen wird später gegen die tatsächlich gemessene
+Wartezeit gehalten, und wer wissen will, wie gut das Modell ist, muss mir nicht
+glauben: die Zahlen stehen auf der [Fancast-Seite](/fancast).
 
-- **Prognosen statt nur Ist-Zustand.** Ein eigenes KI-Modell schaut bis zu 365
-  Tage nach vorn, nicht nur auf die aktuelle Anzeigetafel.
-- **Der Kalender der besten Tage.** Ferien, Wetter, Schedules und Jahre an
-  Historie, verdichtet zu einer einfachen Antwort: hin oder lieber nicht.
-- **Trefferquoten öffentlich.** Jede Prognose wird später gegen die tatsächlich
-  gemessene Wartezeit gehalten. Wer wissen will, wie gut das Modell ist, muss
-  mir nicht glauben. Die Zahlen stehen auf der [Fancast-Seite](/fancast).
-- **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am Parkeingang,
-  Öffnungszeiten und Attraktions-Historien, in sechs Sprachen.
-- **Kostenlos und ohne Werbung.** Kein Konzern, keine Paywall. Eine Fanpage im
-  besten Wortsinn, gebaut von jemandem, der selbst ansteht.
+Dazu Wartezeiten, Crowd-Level, Wetter am Parkeingang, Öffnungszeiten und
+Attraktions-Historien in sechs Sprachen. Kein Konzern, keine Paywall, keine
+Werbung, gebaut von jemandem, der selbst ansteht.
 
 ## Was dieser Blog werden soll
 
-Eine Wartezeit ohne Kontext ist nur ein Gerücht mit Nachkommastelle. „50
-Minuten“, dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
+Eine Wartezeit allein sagt fast nichts. Dieselbe Zahl bedeutet je nach Bahn und
+Tag etwas völlig anderes:
 
 - **50 Minuten** für ein Flat Ride? Glatte Zeitverschwendung. In der Spanne
   wären drei echte Coaster drin gewesen.
 - **50 Minuten** für den
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  an einem Samstagnachmittag? Stark, der Peak liegt sonst bei 85, du hast quasi
-  den Express erwischt.
+  an einem Samstagnachmittag? Stark, sonst ist der Nachmittagspeak fast doppelt so
+  lang, du hast quasi den Express erwischt.
 - **20 Minuten** für
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), ein
-  Jahr nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), zwei
+  Jahre nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
   verlaufen.
 
 ![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch ist hier eine gute halbe Stunde, an Spitzentagen ein Vielfaches davon. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
@@ -307,8 +297,7 @@ oben macht den Anfang: Disney World, Universal und SeaWorld, Bilder inklusive.
 Wann lohnt sich [Taron](ref:phantasialand/taron?bare) am ehesten? Und halten
 unsere Prognosen, was sie versprechen?
 
-**News.** Kurz und ohne Umschweife. Passiert etwas, steht es hier, schneller,
-als du ein Cookie-Banner wegklickst.
+**News.** Kurz und ohne Umschweife. Passiert etwas, steht es hier, meist noch am selben Tag.
 
 Die Beiträge leben dabei. Charts, Karten und Wartezeiten ziehen direkt aus
 park.fan, was du liest, macht der Park in diesem Moment wirklich.
@@ -334,8 +323,7 @@ Datenmensch aus Berufung. Mehr Tech- und Side-Project-Kram auf
 
 ## Was hier nicht passieren wird
 
-park.fan kostet nichts, zeigt keine Werbung und gehört niemandem außer der
-Neugier. Wird ein Park mies gemanagt, steht das hier. Ist eine App schlechter
+park.fan kostet nichts, zeigt keine Werbung und gehört niemandem. Wird ein Park mies gemanagt, steht das hier. Ist eine App schlechter
 als die offizielle, steht das auch hier. Du hast ein Thema, das dich juckt?
 Schreib mir, die E-Mail steht im [Impressum](/impressum).
 
@@ -344,12 +332,8 @@ Ja, im Ernst:
 
 [Mehr Loopings, weniger Stehen, die inoffizielle park.fan-Hymne](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
-Danke, dass du bis hierhin gelesen hast. Dieser Ort, die Plattform, der Blog,
-das alles, ist mein Dankeschön an einen Park am Märchensee, an Eltern, die
-einen kleinen Jungen immer wieder dorthin mitgenommen haben, an einen Vater in
-einer Gondel, und an jeden einzelnen Menschen, der Freizeitparks genauso liebt
-wie ich. Und jetzt: geh anstehen. Aber bitte nur, wenn die Daten sagen, dass es
-sich lohnt.
+Das hier ist mein Dankeschön an einen Park am Märchensee und an zwei Eltern, die
+einen kleinen Jungen immer wieder dorthin mitgenommen haben.
 
 — Patrick
 

@@ -28,7 +28,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Un théâtre en plein air bondé vu de l’arrière, le public attend dans le noir'
-  caption: 'Tout le monde au même endroit au même moment. C’est le cas normal, pas l’exception.'
+  caption: 'Fantasmic aux Hollywood Studios, juste avant le début. Dix mille personnes qui, pendant cette demi-heure, ne font la queue nulle part.'
   credit: 'Patrick Arns'
 seo:
   title: 'Un planificateur pour les parcs : compter les files avant de partir'
@@ -64,7 +64,7 @@ n’est pas cochée. Pas parce qu’il y avait trop de monde, mais parce que l�
 
 C’est précisément le trou qu’avait park.fan. « Combien de temps d’attente en ce
 moment », on y répond depuis le premier jour. « Est-ce beaucoup pour un mardi »,
-depuis [l’été dernier](/blog/70-minutes-est-ce-beaucoup). La troisième question
+depuis [deux semaines](/blog/70-minutes-est-ce-beaucoup). La troisième question
 n’était nulle part : est-ce que ma journée tient debout ?
 
 Depuis cette semaine, elle y est. Le [planificateur](/planificateur) pose tes
@@ -254,7 +254,7 @@ planificateur écrit ce que ça implique : qui a le lien peut le lire et le
 modifier. Aucun mot de passe ne protège ça. Qui n’en veut pas laisse les
 notifications désactivées et ne perd rien d’autre.
 
-Deux choses encore, faciles à manquer. Un onglet est accroché au bord droit de
+Deux choses encore, faciles à manquer. Un onglet est accroché au bord de
 l’écran sur chaque page et ouvre le planificateur, même quand rien n’est encore
 prévu. Et sur ordinateur, tu peux ouvrir une deuxième colonne, ce qui met deux
 journées côte à côte. Je l’ai construit pour exactement une phrase : « et ça

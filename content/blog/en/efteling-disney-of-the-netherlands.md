@@ -268,7 +268,8 @@ you will get it.
 ride through fourteen scenes from the Thousand and One Nights, without a single
 drop, designed by Ton van de Ven. 1,800 guests an hour, which explains why it
 rarely shows up in the wait-time table despite being popular. Practically nothing
-happens in there, and it still gets counted among the best dark rides in Europe.
+happens in there, and it still turns up on almost every list of Europe’s best
+dark rides.
 
 ![The Stoomcarrousel and its gilded horses under an orange canvas roof | The Gavioli organ is as old as the carousel. The steam engine went out in 1944, the name stayed. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -325,7 +326,7 @@ again since 26 April 2019.
 
 The practical value of this patch of woodland is enormous, incidentally. There is
 no queue, no capacity limit and no ride time. Several thousand guests can be in
-here at once without a number having to be written on a sign anywhere. That is one
+here at once without a wait time ever having to go up at the entrance. That is one
 reason a park with almost six million visits has bearable wait times.
 
 Since May 2026 the park has been rebuilding the routing, because thirty fairy
@@ -370,8 +371,8 @@ Efteling 5.78 m, Toverland 1.14 m.
 
 ```
 
-Phantasialand does not publish its attendance; industry estimates put it around
-two million. So it has a fraction of Efteling’s crowd and still the longest queues
+Phantasialand does not publish its attendance; the TEA index lists 2.1 million
+for 2024. So it has a fraction of Efteling’s crowd and still the longest queues
 in the table. The reason is the same division I worked through in
 [The Art of Waiting](/blog/the-art-of-waiting): wait time is demand divided by
 capacity, and at Efteling the numerator is high but the denominator is higher
@@ -414,8 +415,8 @@ administrative court in the Netherlands. On **15 May 2024** they lost, but on
 grounds that leave the matter open: the court found they had no standing, because
 their homes are 1.5 to 1.8 kilometres from the protected area with the N261
 provincial road in between. Whether Efteling actually breached the condition is
-something the Raad van State did not rule on. So the question is not answered. It
-is just no longer being asked.
+something the Raad van State did not rule on. Nobody has brought a new case
+since.
 
 An application for a new permit covering **six million** has also been sitting
 with the province since September 2021. It has not been granted to this day.
@@ -472,10 +473,8 @@ back on stage there this year. The Dutch park scene is smaller than it looks.
 > [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) is the platform for your
 > own campaigns.
 
-A foundation that is not allowed to pay anything out has put four million and a
-plot of land into something that will never return a euro. A corporation would
-have sold the land and distributed the proceeds. The house has been run by
-volunteers and on donations ever since, week after week, for twenty-five years.
+The house has been run by volunteers and on donations, week after week, for
+twenty-five years.
 
 ## When to go
 
@@ -794,22 +793,15 @@ After that come the Sprookjesbibliotheek in 2027 and Missie Luminar in 2029.
 
 ## A bin that says thank you
 
-Efteling is not the best coaster park in Europe, and it does not want to be. Three
-of the ten most in-demand attractions are dark rides, two are stations on the same
-steam railway, and the part almost every guest walks through once is a patch of
-woodland without a single ride in it.
-
-What it is instead: a big park owned by neither a corporation nor a family, but by
-a foundation that may not pay anything out. A park that opened three years before
-Disneyland and still runs its very first idea, a forest full of fairy tales. And one
-whose owner put a holiday village for seriously ill children next door and kept it
-going for twenty-five years.
+Three of the ten most in-demand attractions are dark rides, two are stations on
+the same steam railway, and the part almost every guest walks through once is a
+patch of woodland without a single ride in it.
 
 So the line about the Disney of the Netherlands holds up if you mean it as a
 compliment about craft, detail and the will to tell a story. As a description of
 where it came from it does not. Nobody copied this park. It was here first.
 
-How it looks in Kaatsheuvel right now:
+Whether it is raining in Kaatsheuvel decides half the day:
 
 ```weather-widget slug=efteling
 

@@ -6,9 +6,9 @@ author: patrick
 mode: published
 excerpt: >-
   Sixty minutes of waiting, and yet the time simply flies by? Behind every good
-  queue lie psychology, storytelling and hard-nosed capacity math. A deep dive
-  from the pre-show to Little’s Law, and right in the middle of it, the reason
-  park.fan exists.
+  queue lie psychology, storytelling and hard-nosed capacity math. From the
+  pre-show to Little’s Law, and right in the middle of it, the reason park.fan
+  exists.
 tags:
   - wait-times
   - queues
@@ -64,7 +64,7 @@ happening to me back there was something I wanted to know exactly. Two formulas
 come into it, and the two of them fit together on the back of a single beer
 mat.
 
-## The psychology of time: why minutes stretch
+## Why minutes stretch
 
 The Harvard economist **David Maister** dissected the core problem back in 1985
 in his classic
@@ -74,8 +74,7 @@ time. If all you do is stare at the back of the person in front of you, the
 clock crawls. If you have something to see, hear or do, it keeps ticking at
 almost normal speed.
 
-On top of that come three more Maister rules that every park planner knows by
-heart:
+Maister wrote down eight of them. These three turn up in every queue:
 
 - **Uncertain waits feel longer than explained waits.** That’s why the queue is
   marked every few metres with time-remaining signs, and a wait-time display
@@ -94,8 +93,9 @@ heart:
 Just how badly we judge unoccupied waiting can be measured. In the field
 experiments of marketing researcher **Jacob Hornik**, people waiting
 overestimated the time that had actually elapsed by **around 36 percent** on
-average. Ten measured minutes become almost fourteen in your head. Your inner
-clockmaker is a virtuoso of rounding up, and it always rounds against you. And
+average. Ten measured minutes become almost fourteen in your head, and the error always
+runs the same way: nobody comes out of a queue and guesses it was shorter than
+it was. And
 back in 1991, the MIT queueing researcher **Richard Larson** and colleagues
 showed, under the lovely title
 ["Entertain, Enlighten, and Engage"](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
@@ -106,17 +106,17 @@ The mechanism behind it: our brain can only count time meticulously when it has
 nothing else to do. Once attention turns to music, theming details or a show,
 the internal counter simply runs out of resources, and the overestimation melts
 away. That’s exactly what everything you see in a good queue is designed to
-exploit: soundtracks, animatronics, interactive elements, hidden details. What
-looks like decoration is in fact applied cognitive psychology.
+exploit: soundtracks, animatronics, interactive elements, hidden details. The
+decoration is not only decoration, it keeps the counter busy.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Pre-shows: the experience starts before you board
+### Pre-shows
 
-The most elegant weapon against dead time is the **pre-show**, which simply
-redefines the wait as part of the attraction. The textbook example sits in
+The most thorough answer is the **pre-show**, which redefines the wait as part
+of the attraction. The textbook example sits in
 [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). At the
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 you don’t shuffle down a corridor; you move through the dusty lobby of the
@@ -169,9 +169,8 @@ groups and turn the final quarter of an hour into part of the attraction, which
 is exactly the phase the peak-end rule says will be remembered most strongly.
 They’re also the capacity backbone: you fly in theatre-style **link chambers**
 with 16 seats per level, three levels stacked, four theatres in parallel. Just
-under 200 guests at a time, around 1,400 an hour. Even after a 120-minute wait,
-most people afterwards don’t talk about the queue but about the breathing
-avatar in the tank.
+under 200 guests at a time, around 1,400 an hour. Stand there for 120 minutes
+and what you talk about afterwards is the breathing avatar in the tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -215,13 +214,12 @@ seconds.
 
 ```
 
-And then there’s what may be the most elegant capacity trick of all: the
+And there is a capacity trick here that helps both sides: the
 **single rider line**. If you ride alone and let yourself be slotted into the
 odd seat a group of four leaves behind, you cut your own wait drastically and
 help the park fill every car to the brim along the way. Every otherwise
-empty seat is wasted capacity; the single rider line is the elegant way of
-plugging those gaps. A rare case where self-interest and throughput pull in
-exactly the same direction.
+empty seat is wasted capacity, and a solo rider fills it without anybody losing
+their place.
 
 ```glossary-widget slug=single-rider
 
@@ -231,8 +229,8 @@ exactly the same direction.
 
 ### Shows: the quiet capacity helpers
 
-And then there’s a trick that doesn’t happen at the attraction at all:
-**entertainment as a crowd sponge.** A parade, a firework or a stunt show ties
+And then there’s a trick that doesn’t happen at the attraction at all. A parade,
+a firework or a stunt show ties
 up thousands of guests in one go, people who aren’t standing in a single ride
 queue during that hour. The amphitheatre for **Fantasmic!** at Hollywood
 Studios holds close to 10,000 people per show including standing room. So a
@@ -246,7 +244,7 @@ that are exactly why we update wait times by the minute.
 
 ![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney’s Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show, a whole wave of visitors guaranteed not to be standing in a single coaster line for this half hour. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Capacity and throughput: the mathematical secret
+## How many people a ride moves in an hour
 
 **Throughput** simply means how many people an attraction actually moves per
 hour. That number decides how long the queue really is.
@@ -313,16 +311,17 @@ How seriously modern rides take this is shown by
 [Europa-Park](ref:europa-park?bare). According to the Mack Rides manufacturer
 factsheet, **seven trains** run there at once, with a target dispatch of **one
 every 36 seconds**. That makes 1,600 guests an hour, even though a single train
-seats only 16. Frequency beats size.
+seats only 16, which is more than the Hulk manages with its 32 places per
+dispatch.
 
-### Standing still is the enemy: rolling launches and rolling stations
+### Trains that never stop
 
 The latest escalation of this thinking: trains that don’t stop at all. Voltron
 uses **rolling launches**, where trains aren’t halted before the launch and
 then fired off, but accelerated as they pass through, “flying” like a relay
 handover. To let the LSM motors sustain that on a 36-second cycle, Mack simply
-gave them four rows of stators instead of two. Every stop avoided means the
-block clears sooner, the cycle holds, and the queue keeps rolling.
+gave them four rows of stators instead of two. A train that never stops clears
+its block sooner, and that is what keeps the 36-second cycle.
 
 And [Walibi Holland](ref:walibi-holland?bare) applied the same principle to the
 station in 2025. On **YOY**, Europe’s first single-rail duelling coaster, where
@@ -374,10 +373,9 @@ winner. Peak-end rule, remember: the experience ends better than expected, and
 that’s exactly how it gets filed away. So the display really does lie, but it
 lies in your favour.
 
-Let me talk shop for a moment, because this is exactly where park.fan lives.
-Our live wait times show you by the minute what L and λ are
-actually doing, and when our AI model forecasts wait times up to 365 days
-ahead, at its core it’s modelling nothing other than those two quantities:
+park.fan hangs off this very formula. The live wait times show by the minute
+what L and λ are actually doing, and when our model forecasts wait times up to
+365 days ahead, at its core it’s modelling nothing other than those two quantities:
 **demand** (how many people want to ride this thing today?) and **throughput**
 (how many can it move?). Little would probably be astonished at what his
 formula gets used for these days. How often our forecasts match reality is on
@@ -391,7 +389,7 @@ board in practically every Disney park in the world, from
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) to
 Orlando?
 
-There are three reasons for that, and all three of them are arithmetic:
+That has little to do with the ride and a lot to do with arithmetic:
 
 1. **Pirate ships are not mass transit.**
    [Peter Pan’s Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -456,8 +454,8 @@ attractions can absorb the demand at once.
 
 The numbers are almost funny. Taron handles around **1,200 guests per hour**,
 which is almost exactly what Peter Pan’s Flight in Paris manages. The
-difference isn’t the ride, it’s what the demand around it can spread across. In
-Paris, Peter Pan stands among dozens of alternatives. In Brühl, on a holiday
+difference sits in the denominator: in what the demand around it can spread
+across. In Paris, Peter Pan stands among dozens of alternatives. In Brühl, on a holiday
 Saturday, a substantial share of the park has the same single ride in mind at
 the same time. And Voltron at Europa-Park, at 1,600 an hour, is only a third
 higher, yet keeps its queue far shorter because twelve other coasters next door
@@ -581,7 +579,7 @@ vehicle, and the attraction swallows over 3,000 guests an hour that way, more
 than many a mega-coaster, with a vehicle chain that has been doing its rounds
 uncomplainingly since the sixties and never asks for a break.
 
-## Conclusion: the display tells only half the story
+## What of all this ends up on park.fan
 
 The next 60-minute queue won’t get any shorter for it. But it reads
 differently. Three questions remain, and park.fan has an answer for each:
@@ -603,11 +601,9 @@ differently. Three questions remain, and park.fan has an answer for each:
 
 The only thing we can’t do anything about is the psychology. Whether the hour
 feels like an hour or like a first act is decided by pre-shows, theming and the
-peak-end effect, and by the parks that have mastered that craft. So the next
-time you’re standing in a lovingly themed queue and the time passes strangely
-quickly: that’s no accident, that’s design. Enjoy it, you’re part of a rather
-magnificent illusion. And whether it’s worth it, the data will tell you
-beforehand.
+peak-end effect, and by the parks that have mastered that craft. Two minutes
+before you set off, the number is there on the park page. After that it makes
+no difference how long the hour feels.
 
 — Patrick
 

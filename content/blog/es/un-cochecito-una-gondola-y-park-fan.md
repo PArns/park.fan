@@ -28,7 +28,7 @@ coverImage:
   alt: 'Looping del Velocicoaster frente al castillo de Hogwarts, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure en Orlando: el Velocicoaster en pleno looping y, detrás, el castillo de Hogwarts.'
 seo:
-  title: 'Del lago de cuentos a la IA de colas'
+  title: 'Por qué existe park.fan'
   description: >-
     Un cochecito junto al lago de los cuentos, noches de código y una IA que lee
     los días de parque: la historia de park.fan y cuándo tu visita merece la
@@ -76,8 +76,6 @@ volvía corriendo para apretarlos otra vez. Para mí aquello nunca fue una visit
 a un parque.
 
 Que aquel lago fuera el principio de todo, evidentemente entonces no lo sabía.
-Pero en algún punto entre aquellos decorados se me quedó prendido algo que no me
-ha soltado nunca más.
 
 ## «1001 Noches», los viajes que se quedan
 
@@ -115,9 +113,8 @@ manera de devolver algo.
 
 ## De ratones de 5000 y una leyenda de 10.000
 
-Los parques construidos con el corazón nunca dejan de añadir momentos nuevos.
-[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) es uno de ellos
-desde junio de 2011: un dark ride interactivo en el que el exterminador Oskar
+[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) es uno de esos
+momentos desde junio de 2011: un dark ride interactivo en el que el exterminador Oskar
 Koslowski libra de ratones el obrador del pastelero Gustav E. Lehmann, armado
 con una manga pastelera, repartido en 48 pantallas 3D y seis minutos de
 recorrido. Una puntuación récord fresca me sigue dibujando hoy la misma sonrisa
@@ -134,13 +131,10 @@ Hay algo que ignoré durante mucho tiempo y que aún hoy me deja callado un
 instante: Maus au Chocolat se construyó en 2011 justo sobre el terreno donde
 estuvo el telecabina hasta 2009. Cuando discuto allí por puntos con mi novia,
 estoy sentado en un edificio que se levanta donde de niño atravesaba las fauces
-del dragón con mi padre. El mismo trozo de tierra, treinta años y una vida
-entera de por medio.
+del dragón con mi padre.
 
-Después, tortitas y batidos en el **Phenie’s** de Wuze Town, esponjosas,
-espléndidas y demasiado buenas para ser restauración de parque. A más tardar
-entonces se entiende en qué basa este parque su pretensión de llamarse «Europe’s
-Most Immersive Theme Park».
+Después, tortitas y batidos en el **Phenie’s** de Wuze Town, y son mejores que
+lo que los parques venden normalmente como desayuno.
 
 ## Orlando, mayo de 2026, una vez en la vida
 
@@ -169,13 +163,14 @@ En paralelo a todos esos años de parques hubo siempre un segundo yo, uno que
 lleva más de veinticinco años construyendo software. Muchos de esos años en el
 mundo de las VPN, primero como Head of Software Development en **CyberGhost** y
 hoy como Distinguished Software Engineer en **ExpressVPN**. Sistemas que
-millones de personas usan a la vez sin dedicarles jamás un pensamiento, que es
-probablemente el mayor cumplido que se le puede hacer a una infraestructura. A
+millones de personas usan a la vez sin dedicarles jamás un pensamiento. A
 eso se suman open source, adaptadores de domótica y más proyectos paralelos de
 los que me convienen; todo el material que se apila en
 [arns.dev](https://arns.dev) y [GitHub](https://github.com/PArns).
 
-Dos pasiones que corrieron décadas en paralelo sin encontrarse nunca.
+Las dos no tuvieron nada que ver durante décadas. En el trabajo se trataba de
+rendimiento y latencia, en el parque de hacer cola, y que sean la misma
+pregunta se me ocurrió muy tarde.
 
 ## El momento en la cola de Taron
 
@@ -195,24 +190,23 @@ o si simplemente estaba cambiando tiempo de vida por una barandilla.
 > «Déjame trastear un poco con los tiempos de espera.» _Dije. Fueron tres
 > años._
 
-## Del script a la plataforma: cómo nació park.fan de verdad
+## Tres años en los que un script se convirtió en otra cosa
 
 En lo que se convirtió es en lo que los
 desarrolladores llaman un proyecto del corazón y las novias probablemente «otra
-vez lo de los parques». De un script salió un recolector de datos; del
-recolector, una pipeline; de la pipeline, una plataforma. Por el medio hubo
+vez lo de los parques». Del script salió un recolector de datos, y en algún
+momento corría para doscientos parques en lugar de para uno. Por el medio hubo
 noches mirando curvas de tiempos de espera a las dos de la madrugada porque
 algún parque reportaba sus datos de forma distinta a todos los demás. Sesiones
 de depuración más largas que más de un día de parque. Y ese momento de
 admiración tan particular en el que un modelo predice correctamente por primera
 vez un sábado abarrotado, días antes de que ocurra.
 
-Porque ese era el deseo real: no un panel más que muestre cifras, sino un
-sistema que _entienda_ los días de parque. Un modelo de IA propio que tuvo que
-aprender que un puente lluvioso de octubre es algo completamente distinto de un
+Nunca se trató de mostrar la cifra del momento. Esa la cuelga el parque mismo.
+Interesante se pone un paso antes: un modelo propio tuvo que aprender que un puente lluvioso de octubre es algo completamente distinto de un
 sábado soleado de vacaciones en julio. Que los calendarios escolares, el tiempo,
-los horarios y años de histórico de colas forman juntos un patrón que se puede
-leer, si uno lo mira con la suficiente terquedad.
+los horarios y cada día de apertura que hemos ido anotando forman juntos un
+patrón que se puede leer, si uno lo mira con la suficiente terquedad.
 
 En el escritorio donde ocurrieron todas esas noches hay hoy, por cierto, una
 **rueda de rodadura original de Taron**. Una de la atracción, ojo, no el vehículo
@@ -222,8 +216,7 @@ jubilarse en mi casa y, en cada sesión nocturna de depuración, me recuerda par
 qué es todo este esfuerzo. Ahí fuera hay ahora mismo un tren real circulando y,
 ahí fuera, alguien quiere saber si la cola que tiene delante merece la pena.
 
-Lo que ha salido de ahí es un sistema nervioso en tiempo real para parques de
-atracciones. Tiempos de espera en directo de más de **200 parques** y **7000
+Detrás hay hoy tiempos de espera en directo de más de **200 parques** y **7000
 atracciones**, minuto a minuto. Previsiones que estiman la afluencia hasta
 **365 días** por adelantado. Y como por principio solo me fío de las cifras que
 tienen que demostrarse, el modelo se pone nota a sí mismo: cada previsión se
@@ -239,16 +232,17 @@ domingo? ¿Y cuánta gente habrá de verdad?
 Exactamente para eso está hecho park.fan. Cada página de parque tiene un
 calendario de los mejores días de visita, hasta un año por adelantado,
 alimentado con calendarios escolares, previsiones meteorológicas, horarios de
-apertura y el histórico completo de colas del parque. Mirar esos datos se lleva
+apertura y cada día de apertura que hemos anotado hasta hoy. Mirar esos datos se lleva
 por delante, de paso, unas cuantas corazonadas. Un domingo de noviembre gris
 puede ser más tranquilo que cualquier martes de las vacaciones de verano de
 Renania del Norte-Westfalia. Un puente casi nunca es buena idea. Y el «truco de
 iniciados» de ir con lluvia funciona exactamente hasta que todos los demás han
 leído el mismo truco de iniciados.
 
-La respuesta no es «los domingos hay mucha gente», sino: _este_ domingo, en
-_este_ parque, en _esta_ época del año. Verde, amarillo o rojo. Abrir el
-calendario, mirar el color, decidir. Y si ya estás en el parque, los datos en
+«Los domingos hay mucha gente» no es, por tanto, una respuesta útil. Un domingo
+de finales de noviembre en el Phantasialand es otra pregunta que un domingo de
+principios de agosto en el Europa-Park, y el calendario responde la segunda. Y
+si ya estás en el parque, los datos en
 directo te enseñan si la cola que tienes delante es la excepción o la regla.
 
 ## Qué hace park.fan de otra manera
@@ -257,33 +251,30 @@ Hay buenas webs que te enseñan cuánta cola hay ahora mismo. Eso también sabem
 hacerlo, minuto a minuto, en todo el mundo. Pero park.fan se construyó para la
 pregunta anterior: _¿merece siquiera la pena ir?_
 
-Por eso damos unos pasos más:
+Por eso un modelo propio mira hasta **365 días** hacia delante en lugar de al
+panel de encima de la entrada, y el calendario de los mejores días condensa
+vacaciones, tiempo, horarios y cada día de apertura anotado en una respuesta: se
+va, o mejor no. Cada una de esas previsiones se contrasta después con el tiempo
+de espera realmente medido, y quien quiera saber qué tal es el modelo no tiene
+que creerme: las cifras están en la [página de Fancast](/fancast).
 
-- **Previsiones, no solo el estado actual.** Un modelo de IA propio mira hasta
-  365 días hacia delante, no solo al panel de encima de la entrada.
-- **El calendario de los mejores días.** Vacaciones, tiempo, horarios y años de
-  histórico, condensados en una respuesta sencilla: se va, o mejor no.
-- **Tasas de acierto públicas.** Cada previsión se contrasta después con el
-  tiempo de espera realmente medido. Quien quiera saber qué tal es el modelo no
-  tiene que creerme: puede mirarlo en la [página de Fancast](/fancast).
-- **Todo en un sitio.** Tiempos de espera, niveles de afluencia, tiempo en la
-  entrada del parque, horarios e históricos de atracciones, en seis idiomas.
-- **Gratis y sin publicidad.** Ni corporación ni muro de pago. Una web de fans
-  en el mejor sentido de la palabra, hecha por alguien que también hace cola.
+A eso se suman tiempos de espera, niveles de afluencia, tiempo en la entrada del
+parque, horarios e históricos de atracciones en seis idiomas. Ni corporación ni
+muro de pago ni publicidad, hecho por alguien que también hace cola.
 
 ## Qué quiere ser este blog
 
-Un tiempo de espera sin contexto no es más que un rumor con decimales. «50
-minutos»: tres veces la misma cifra, tres historias completamente distintas.
+Un tiempo de espera por sí solo no dice casi nada. La misma cifra significa algo
+completamente distinto según la atracción y el día:
 
 - ¿**50 minutos** para un flat ride? Pura pérdida de tiempo. En ese hueco
   habrían cabido tres coasters de verdad.
 - ¿**50 minutos** para el
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  un sábado por la tarde? Muy bien: el pico está normalmente en 85, así que
+  un sábado por la tarde? Muy bien: el pico de la tarde es normalmente casi el doble de largo, así que
   prácticamente has pillado el exprés.
 - ¿**20 minutos** para
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) un año
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) dos años
   después de la inauguración? O es un día de ensueño, o las multitudes se han
   dispersado por fin.
 
@@ -303,8 +294,8 @@ fotos incluidas.
 parque? ¿Cuándo merece más la pena [Taron](ref:phantasialand/taron?bare)? ¿Y
 cumplen nuestras previsiones lo que prometen?
 
-**Noticias.** Breves y sin rodeos. Si pasa algo, está aquí, más rápido de lo que
-tardas en cerrar un aviso de cookies.
+**Noticias.** Breves y sin rodeos. Si pasa algo, está aquí, casi siempre el mismo
+día.
 
 Además, las entradas están vivas. Gráficos, mapas y tiempos de espera se
 sacan directamente de park.fan, así que lo que lees es lo que el parque está
@@ -330,8 +321,8 @@ datos por vocación. Más material técnico y de proyectos paralelos en
 
 ## Lo que aquí no va a pasar
 
-park.fan no cuesta nada, no muestra publicidad y no pertenece a nadie salvo a la
-curiosidad. Si un parque está mal gestionado, aquí se dice. Si una app es peor
+park.fan no cuesta nada, no muestra publicidad y no pertenece a nadie. Si un
+parque está mal gestionado, aquí se dice. Si una app es peor
 que la oficial, también se dice. ¿Tienes un tema que te reconcome? Escríbeme, la
 dirección está en el [aviso legal](/impressum).
 
@@ -340,12 +331,8 @@ en serio:
 
 [Más loopings, menos estar de pie: el himno no oficial de park.fan](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
-Gracias por haber leído hasta aquí. Este lugar, la plataforma, el blog, todo
-esto, es mi manera de dar las gracias a un parque junto a un lago de cuentos, a
-unos padres que llevaron allí una y otra vez a un niño pequeño, a un padre en
-una góndola y a cada una de las personas que quieren a los parques de
-atracciones tanto como yo. Y ahora: ve a hacer cola. Pero solo si los datos
-dicen que merece la pena.
+Esto es mi manera de dar las gracias a un parque junto a un lago de cuentos y a
+unos padres que llevaron allí una y otra vez a un niño pequeño.
 
 — Patrick
 

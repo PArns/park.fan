@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'A packed open-air theatre seen from the back, the audience waiting in the dark'
-  caption: 'Everybody in the same place at the same time. That is the normal case, not the exception.'
+  caption: 'Fantasmic at Hollywood Studios, just before it starts. Ten thousand people who are not queueing anywhere for that half hour.'
   credit: 'Patrick Arns'
 seo:
   title: 'A trip planner for theme parks: count the queues before you go'
@@ -48,8 +48,7 @@ seo:
 The plan in your head holds until about two in the afternoon. By then you have
 done three rides out of eight, you are standing in the wrong queue, and you know
 it will not work out. The number above the entrance has been right the whole
-time. It is almost always right. It just says nothing about whether the rest of
-your list still happens today.
+time. About the rest of your list it says nothing at all.
 
 At a compact park that costs you one ride, and you catch it next time. At a park
 that opens at eight in the morning and does not close until eleven at night,
@@ -61,7 +60,7 @@ it was too busy, but because the order was wrong.
 
 That is the gap park.fan had. “How long is the queue right now” we have answered
 since day one. “Is that a lot for a Tuesday” since
-[last summer](/blog/is-70-minutes-a-long-wait). The third question was nowhere:
+[two weeks ago](/blog/is-70-minutes-a-long-wait). The third question was nowhere:
 does my day actually add up?
 
 Since this week it is there. The [trip planner](/trip-planner) lays your rides
@@ -78,9 +77,9 @@ Between two blocks sits the transfer: how far it is and whether the time is
 enough. The walk out of the station and the ride itself live in that gap rather
 than in the block, because they belong to getting there and not to queueing.
 
-Sounds like a detail, and it changes how you look at a park day. A list of eight
-rides says nothing about whether eight rides are possible that day. Eight blocks
-on a timeline that ends at eleven at night say it immediately.
+Sounds like a detail, and it changes how you look at a park day. Eight rides on
+a list are a statement of intent. Eight blocks on a timeline that ends at eleven
+at night are a calculation.
 
 ![The trip planner with a planned day at Magic Kingdom: ten blocks on a timeline from 8 in the morning, with transfers between them showing distance and walking time. | Ten rides on a Saturday in September, put in this order by the planner itself.](/media/tagesplaner/planer-tag-en.webp)
 
@@ -196,8 +195,8 @@ and “please go and join the back of that queue again”. Press the button at t
 o’clock and you are standing in some queue at two o’clock, and nobody moves that
 one.
 
-And because one press can turn three blocks into eleven, there is an undo beside
-the result. Once, not endlessly, but the one time you need it.
+And because one press can turn three blocks into eleven, the result comes with
+an undo. Once, not endlessly, but the one time you need it.
 
 ## What the planner does not know, it says
 
@@ -206,15 +205,15 @@ claims less than it could.
 
 **The forecast is off, and measurably so.** Every selected block says how far
 the predictions for that ride sat, on average, from what the day actually
-brought. “Typical” means literally what it says: half the days land further out.
+brought. “Typical” here means: half the days land further out.
 So the number stands there as a typical error and never as a range that already
 contains the right answer.
 
 **Showtimes are two different things.** What the park has published for today is
 a statement. What we carried forward from the last matching weekday is a guess,
 and the planner draws it more softly: a tilde in front of the time, a dotted
-line, and the date the times came from. Nobody on earth knows showtimes for the
-Saturday after next.
+line, and the date the times came from. Showtimes for the Saturday after next
+are known to nobody, us included.
 
 **Some parks we cannot measure at all.** [Hansa-Park](ref:hansa-park) publishes
 its wait times only in its own app on the park wi-fi. No number ever reaches us
@@ -231,7 +230,7 @@ all.
 
 ## It lives in your browser
 
-There is no account, no sign-up and no login. Your plan sits in your browser,
+You sign in nowhere. Your plan sits in your browser,
 and that is the default rather than the stripped-down version. Clear your
 browser data and it is gone. Open park.fan on your phone and it is a different
 plan.
@@ -242,7 +241,7 @@ means: whoever has the link can read it and change it. No password stands in
 front of it. If you do not want that, leave the notifications off and you lose
 nothing else.
 
-Two more things that are easy to miss. A tab hangs at the right edge of the
+Two more things that are easy to miss. A tab hangs at the edge of the
 screen on every page and opens the planner, even with nothing planned yet. And
 on a desktop you can open a second column, which puts two days side by side. I
 built it for exactly one sentence: “and what would that look like on Saturday”.

@@ -67,9 +67,9 @@ feiert seinen dreißigsten Geburtstag ausgerechnet mit einer Attraktion von
 Paramount.
 
 Dazu kommt eine Zahl, die zum Ruf dieses Parks überhaupt nicht passt. Über
-**135 gemessene Öffnungstage** liegt die typische Wartezeit im
-[Movie Park](ref:movie-park-germany) bei zwanzig Minuten. Im
-[Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich, sind
+**135 gemessene Öffnungstage** steht man im
+[Movie Park](ref:movie-park-germany) gut halb so lang an wie im
+[Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich. Dort sind
 es dreißig.
 
 Und der leerste Wochentag ist der, den dir kein Ratgeber im Netz nennt.
@@ -637,7 +637,7 @@ die Preise sind der am häufigsten genannte Kritikpunkt in Besucherbewertungen.
 Für 2026 hat der Park Verbesserungen angekündigt. Gemerkt habe ich davon bisher
 nichts, und ich esse hier so schnell wie möglich.
 
-Wie es gerade in Bottrop aussieht:
+Ob in Bottrop gerade Regen fällt, entscheidet über den halben Park:
 
 ```weather-widget slug=movie-park-germany
 
@@ -706,7 +706,7 @@ große Achterbahnen sucht, ist im
 [Phantasialand](ref:phantasialand) oder im [Heide-Park](ref:heide-park) besser
 aufgehoben.
 
-## Zum Schluss
+## Was ich dir für Bottrop mitgebe
 
 Ich bin diesem Park lange nicht gerecht geworden. Aus dem Rheinland fährt man am
 Phantasialand vorbei, um nach Bottrop zu kommen, und wer das tut, will einen

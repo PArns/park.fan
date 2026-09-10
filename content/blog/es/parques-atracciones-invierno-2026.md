@@ -54,7 +54,7 @@ seo:
 El 14 de noviembre se encienden las luces en
 [Phantasialand](ref:phantasialand). El parque abre hasta las 20 h y MAGIC
 SYMPHONY cierra la noche con fuegos artificiales, a partir de ahí cada día hasta
-enero. Para entonces en Bottrop cuelgan más de 800.000 lámparas, en Wavre
+enero. Para entonces en Bottrop cuelgan más de 800.000 luces, en Wavre
 hay una pista de hielo de 700 metros cuadrados bajo el techo de una nave y en
 Kasterlee el Papá Noel entra en la entrada de día. Entre mediados de noviembre y
 principios de enero, buena parte de los parques europeos se convierte en otra
@@ -81,8 +81,8 @@ Ahí se decide quién abre en diciembre. La pregunta es cuánta capacidad le que
 a un parque cuando nadie quiere montar al aire libre. [Efteling](ref:efteling)
 llena esas mismas semanas con dark rides y hasta luce mejor bajo la lluvia.
 [Phantasialand](ref:phantasialand) tiene medias zonas temáticas bajo techo,
-Walibi Belgium tiene naves. Un parque construido solo alrededor de grandes
-coasters al aire libre es imbatible en julio e indefenso en diciembre.
+Walibi Belgium tiene naves. Walibi Holland no tenía en invierno ni una sola
+atracción grande cubierta.
 
 Abajo está quién hace la temporada 2026/27, con fechas, horarios y precios. Y un
 dato que va a contracorriente de la sensación: en los meses en los que anochece
@@ -208,17 +208,17 @@ está en la [guía de Toverland](/blog/toverland-troy-tiempos-de-espera-consejos
 ## Los que abren en diciembre
 
 Estos parques están cerrados el resto del invierno y abren una vez más durante
-tres a seis semanas. Las ventanas son cortas, y eso se nota en las colas; más
-abajo, con números.
+dos a seis semanas. Las ventanas son cortas, y las ventanas cortas hacen colas
+largas.
 
 ### Walibi Belgium: Walibi Winter, del 5 de diciembre al 3 de enero
 
 Mientras el parque hermano neerlandés lo deja, [Walibi
 Belgium](ref:walibi-belgium), en Wavre, sigue sin cambios. Del **5 de diciembre
-de 2026 al 3 de enero de 2027** hay ocho zonas decoradas, todas construidas
-alrededor de paisajes nórdicos: Alpin Village, Frozen Land, Polar Playground,
-Glowing Greetings, Chocolate Factory, Festive Tropics, Twinkle Town y, como
-novedad, el **Northern Dock**, un puerto escandinavo alrededor de
+de 2026 al 3 de enero de 2027** hay ocho zonas decoradas, la mayoría de ellas
+nórdicas: Alpin Village, Frozen Land, Polar Playground y
+Twinkle Town, además de Glowing Greetings, Chocolate Factory, Festive Tropics y,
+como novedad, el **Northern Dock**, un puerto escandinavo alrededor de
 [Mecalodon](ref:walibi-belgium/mecalodon), la montaña rusa familiar del
 50 aniversario del parque.
 
@@ -240,11 +240,11 @@ Fechas: [walibi.be → Walibi Winter](https://www.walibi.be/walibi-winter/en).
 historia en diciembre de 2025 y lo repite en 2026/27. Seis zonas temáticas,
 entre ellas Santa City, Snow Valley, Lake of Frost con pista de hielo y Land of
 Fire & Ice, además de un desfile de invierno, un espectáculo de fuego y luz y la
-iluminación del árbol. Abre de 11 a 19 h, hasta las 18 h el 24 y el 31 de
-diciembre, cerrado el 25 de diciembre y el 1 de enero.
+iluminación del árbol. Abre 18 días dentro de esa ventana, de 11 a 19 h, hasta las 18 h el 24 y el 31 de
+diciembre; el 25 de diciembre y el 1 de enero permanece cerrado.
 
-La estructura de entradas merece una nota: en Kasterlee **todo está incluido en
-la entrada de día**, desde el patinaje hasta el palacio de hielo. No hay nada
+En Kasterlee **todo está incluido en la entrada de día**, desde el patinaje
+hasta el palacio de hielo. No hay nada
 que reservar aparte.
 
 [Bobbejaanland](ref:bobbejaanland?full)
@@ -301,8 +301,8 @@ En la Costa Daurada el invierno es otra cosa que en Soltau.
 Año Nuevo incluidos. El 5 de enero de 2027 la **Cabalgata de los Reyes Magos**
 recorre la zona de Mediterrània.
 
-Un aviso que sale de nuestras propias mediciones: de todos los parques de este
-artículo, en PortAventura es donde más se espera, y eso vale para el año entero,
+Un aviso que sale de nuestras propias mediciones: de todos los parques de esta
+selección, en PortAventura es donde más se espera, y eso vale para el año entero,
 no solo para Navidad. La tabla de más abajo los pone uno al lado del otro. Quien
 llegue en diciembre desde el norte contando con una temporada vacía porque en su
 casa es invierno, está planificando para el país equivocado.
@@ -353,8 +353,8 @@ redondeo.
 
 ```
 
-Una limitación, y pesa: los meses de invierno se apoyan en un puñado de días
-medidos, los de verano en treinta. La columna de días indica en cada fila sobre
+Los meses de invierno se apoyan en un puñado de días medidos, los de verano en
+treinta. La columna de días indica en cada fila sobre
 qué se sostiene. Da para hablar del orden de magnitud, no para una previsión
 con cinco minutos de precisión. En Efteling se ve el mismo patrón con las mismas
 reservas.
@@ -398,7 +398,7 @@ sí mismo. La gente conduce hasta Brühl por los espectáculos, no a pesar de la
 estación.
 
 Y como la pregunta «¿cuál de ellos es el más lleno?» sale en cada viaje en
-coche, aquí están los parques de este artículo uno al lado del otro, cada uno
+coche, aquí están los parques de esta selección uno al lado del otro, cada uno
 con su día de la semana más tranquilo:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
@@ -411,7 +411,7 @@ Eso explica las filas flacas de las tablas de arriba. Cuando corría el último
 Wintertraum, esta página estaba arrancando: de diciembre de 2025 tenemos un
 puñado de días medidos, de enero de 2026 cuatro, de noviembre ni uno. Solo desde
 abril anotamos cada día de apertura. El invierno 2026/27 es, por tanto, el
-primero que acompañamos desde la primera hasta la última guirnalda, y después
+primero que anotamos desde el primer hasta el último día de apertura, y después
 nuestro modelo tendrá por primera vez un año completo.
 
 Lo que esos pocos días de invierno ya enseñan coincide con lo que ve cualquiera
@@ -438,7 +438,7 @@ visto una temporada la da por tranquila, y lo mismo vale para los días de
 invierno en Europa-Park y en Efteling. A partir del invierno que viene los
 conocerá.
 
-## Tres cosas que en invierno funcionan distinto
+## Fecha, lista de atracciones, oscuridad
 
 1. **La fecha marca el precio, no el parque.** Casi todas las entradas de
    invierno van ligadas a una fecha y escalonadas por día. El Wintertraum

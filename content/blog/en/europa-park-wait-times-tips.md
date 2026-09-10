@@ -135,8 +135,8 @@ _longest_ queue reaches.
 
 ## Why the biggest park has the shortest queues
 
-Wait time is not a question of popularity. It is a division, demand over
-capacity. I worked through it at length in
+Wait time is demand divided by capacity, and a ride’s popularity only sits in
+the numerator. I worked through it at length in
 [the art of waiting](/blog/the-art-of-waiting). Europa-Park is the best evidence
 for it I know in Europe, because both halves of the fraction are extreme.
 
@@ -903,7 +903,7 @@ are even a shade above August. For November, by contrast, our forecast rates all
 19 days it covers as “low”; measured wait times from that month we do not have
 yet.
 
-## In closing
+## Why I am going back once more for Euro-Mir
 
 The sentence written above this park more often than any other is “best theme
 park in the world”, and it is true insofar as an international industry vote has
@@ -916,7 +916,7 @@ let nobody past the line.
 People drive to Rust for Voltron and Silver Star. That the queue for both is so
 short is down to the eighty other things standing next to them.
 
-How Rust looks right now:
+Whether it is raining in Rust decides Eurosat:
 
 ```weather-widget slug=europa-park
 

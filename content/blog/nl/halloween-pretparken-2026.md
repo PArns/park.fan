@@ -62,15 +62,12 @@ lang geen beetje decoratie meer, maar een eigen seizoen, met eigen tickets,
 eigen leeftijdsgrenzen en een publiek dat precies voor deze gecontroleerde
 hartaanval afreist.
 
-Griezelen trekt zich heerlijk weinig aan van landsgrenzen, dus loont het om
-over de grens te kijken: vanuit NRW bereik je in zo’n vier uur rijden het
-grootste Halloween-event van het continent en misschien wel de sluwste
-griezelinnovatie van Europa. Alleen liggen die toevallig in twee verschillende
-landen. Hier staat wat het seizoen **2026** te bieden heeft: de grote
-horrornachten, de gezinsvriendelijke varianten met vangnet, de twee topparken
-die aan de hele poppenkast demonstratief _niet_ meedoen, en de vraag die
-park.fan beter beantwoordt dan welk persbericht ook: wanneer is het het drukst,
-en wanneer kom je er het ontspanst doorheen?
+Griezelen trekt zich daarbij weinig aan van landsgrenzen. Vanuit NRW liggen op
+zo’n vier uur rijden het grootste Halloween-event van het continent en de
+experiences waarvoor mensen uit heel Europa naar Biddinghuizen rijden, alleen
+dan in twee verschillende landen. En de vraag die daarbij het minst vaak
+beantwoord wordt, is die naar de datum: op welke avonden je die rookmachines in
+loopt zonder er veertig minuten voor te staan.
 
 > **Kort over de data:** De parken schaven hun Halloween-programma’s de hele
 > zomer nog bij. Bij elk park linken we de officiële eventpagina met de
@@ -123,11 +120,11 @@ de drumshow **“Drums of Doom”**, de monsterparade en dj-sets van Max Bering.
 Nu de line-up bekend is, kan ook de voor de hand liggende vraag beantwoord
 worden: “het grootst” is niet automatisch “het best”. Het HHF is de Volkswagen
 onder de Halloween-events: enorm, degelijk, voor ieder wat wils, maar op volle
-avonden ook lopendebandwerk met file voor de maze. De echt spannende
-ontwikkeling in het Europese griezelen gebeurt momenteel elders, in veel
-kleinere, veel persoonlijkere doses, ruim twee uur noordelijker in
-Biddinghuizen (geduld, we komen er zo). Wie massa en kettingzaagromantiek
-zoekt, zit in Bottrop goed. Wie zich _echt_ wil laten bang maken, leest verder.
+avonden ook lopendebandwerk met file voor de maze. De kleinere, persoonlijkere
+formaten staan ruim twee uur noordelijker in Biddinghuizen, en wie zich daar
+eenmaal op een brancard heeft laten vastgespen, vindt negen mazes in
+doorloopbedrijf achteraf tam. Wie massa en kettingzaagromantiek zoekt, zit in
+Bottrop goed.
 
 Er wordt gespeeld op **22 geselecteerde avonden van 26 september tot 8 november
 2026**, overwegend vrijdag tot zondag; overdag is het park vanaf 10 uur gewoon
@@ -257,7 +254,7 @@ avond het normaalste wat je overkomt.
 
 ![Acteur met lasmasker en leren schort voor een containerdeur | De slager wacht al. En nee, dat is geen welkomstcomité. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
-De heimelijke ster van de verzameling is **Slaughterhouse**, een
+Waar achteraf het langst over verteld wordt, is **Slaughterhouse**, een
 vleesverwerkingsbedrijf waarin jij de rol van grondstof op je neemt. Eerst word
 je in een wachtruimte in veewagenstijl “gekeurd”, daarna in een aan een
 plafondrail hangende stoel gegespt. Het idee is de slagershaak, het effect is
@@ -302,8 +299,9 @@ in 2025 een doodsbange vrouw zien die als “object 666” werd geveild en daarn
 een versnipperaar viel. Met **889 klachten** werd dat de meest beklaagde
 Nederlandse reclame van het jaar; de Reclame Code Commissie zag de menselijke
 waardigheid geschonden, Walibi haalde de spot op 21 augustus 2025 offline. Een
-jaar later deelt dezelfde clown suikerspinnen uit en slaapt slecht. Je kunt dat
-voorzichtig noemen of slim. Waarschijnlijk klopt allebei.
+jaar later deelt dezelfde clown suikerspinnen uit en slaapt slecht. Als reclame
+werkt dat beter: over de spot van 2025 werd om de beelden gepraat, over deze om
+de clou.
 
 Hoe Biddinghuizen aanvoelt zonder rookmachines, en wat Untamed op een gewone dag
 aan wachttijd kost, staat in de
@@ -471,9 +469,9 @@ everzwijn op de loer.
 
 ## De weigeraars: twee topparken die Halloween uitzitten
 
-De charmantste categorie van allemaal zijn de parken die aan de hele
-mist-en-kettingzaagpoppenkast gewoon niet meedoen. Niet per ongeluk, maar uit
-principe.
+Twee van de sterkste parken in dit overzicht doen aan de hele
+mist-en-kettingzaagpoppenkast helemaal niet mee, en allebei zeggen ze dat
+vooraf duidelijk.
 
 ### Phantasialand: niets. Helemaal niets. Met aankondiging.
 
@@ -580,26 +578,15 @@ meetdata van de afgelopen seizoenen, levert de statistiek er meteen bij:
 
 ```
 
-## Conclusie: zes weken griezelen, voor elke zenuwsterkte iets
+## Wanneer je gaat
 
-Het Halloween-seizoen 2026 heeft voor elke pijngrens iets: het pure volume in
-[Movie Park](ref:movie-park-germany) met negen mazes, de grote enscenering van
-[Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) bioscoop om
-in te lopen, het verse maisveld in [Toverland](ref:attractiepark-toverland),
-en, voor de heel dapperen, de [Walibi-experiences](ref:walibi-holland) waarbij
-je vrijwillig geld betaalt om gestempeld, ondergelopen en opengesneden te
-worden. Als tegenpool de stille, voorname herfst-[Efteling](ref:efteling) en
-een [Phantasialand](ref:phantasialand) dat Halloween met een schouderophalen
-overslaat en liever meteen de sneeuw aanzet.
+Voor welke zenuwsterkte je kiest, is jouw zaak. De oktoberweekenden zijn de
+drukste dagen van het najaar, en in een rij springt gegarandeerd _niemand_ op je
+af, wat bij deze prijzen vervelend is. Welke dag het leegst is, verklappen de
+live wachttijden en de druktekalender op park.fan, de hele herfst door.
 
-Voor welke zenuwsterkte je kiest, is jouw zaak. Slechts één ding geldt voor
-iedereen: de beste Halloween-avond is die waarop je niet de halve tijd in de rij
-staat. Daar springt gegarandeerd _niemand_ op je af, en dat is bij deze prijzen
-bijna een brutaliteit. Welke dag het leegst is, verklappen je de live
-wachttijden en de druktekalender op park.fan, de hele herfst door.
-
-Blijf droog (trefwoord Below), blijf in beweging (trefwoord mais), en als er in
-de mist iets op je afspringt: het is maar een deel van de show. Vrij zeker.
+Wie Below boekt, stopt reservesokken in zijn tas. Ik heb dat één keer niet
+gedaan.
 
 — Patrick
 

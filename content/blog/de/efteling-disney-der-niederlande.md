@@ -273,8 +273,8 @@ Wartezeit produziert, fährt sie einmal und versteht es.
 Bootsfahrt durch vierzehn Szenen aus Tausendundeiner Nacht, ohne ein einziges
 Gefälle, entworfen von Ton van de Ven. 1.800 Gäste pro Stunde, was erklärt, warum
 sie trotz ihrer Beliebtheit selten in der Wartezeit-Tabelle auftaucht. Es
-passiert dort praktisch nichts, und trotzdem wird sie regelmäßig zu den besten
-Dark Rides Europas gezählt.
+passiert dort praktisch nichts, und sie steht trotzdem in fast jeder Bestenliste
+für europäische Dark Rides.
 
 ![Das Stoomcarrousel mit vergoldeten Pferden unter einem orangefarbenen Zeltdach | Das Gavioli-Orgelwerk ist so alt wie das Karussell. Die Dampfmaschine flog 1944 raus, der Name blieb. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -334,8 +334,8 @@ wieder offen.
 
 Der praktische Wert dieses Waldstücks ist nebenbei enorm. Es gibt keine
 Warteschlange, keine Kapazitätsgrenze und keine Fahrzeit. Mehrere tausend Gäste
-können hier gleichzeitig unterwegs sein, ohne dass irgendwo eine Zahl auf ein
-Schild geschrieben werden müsste. Genau das ist ein Grund, warum dieser Park mit
+können hier gleichzeitig unterwegs sein, ohne dass am Eingang je eine Wartezeit
+ausgehängt werden müsste. Genau das ist ein Grund, warum dieser Park mit
 fast sechs Millionen Besuchen erträgliche Wartezeiten hat.
 
 Seit Mai 2026 baut der Park die Wegeführung um, weil dreißig Märchen auf einer
@@ -381,8 +381,8 @@ Resort, Efteling 5,78 Mio, Toverland 1,14 Mio.
 
 ```
 
-Das Phantasialand veröffentlicht seine Besucherzahl nicht, Branchenschätzungen
-liegen bei rund zwei Millionen. Es hat damit einen Bruchteil des
+Das Phantasialand veröffentlicht seine Besucherzahl nicht, der TEA-Index führt
+für 2024 2,1 Millionen. Es hat damit einen Bruchteil des
 Efteling-Publikums und trotzdem die längsten Schlangen der Tabelle. Der Grund
 ist dieselbe Division, die ich in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens) durchgerechnet habe: Wartezeit
@@ -430,7 +430,7 @@ aus einem Grund, der die Sache offenlässt: Das Gericht befand sie nicht für
 klagebefugt, weil ihre Häuser 1,5 bis 1,8 Kilometer vom Schutzgebiet entfernt
 liegen und die Provinzstraße N261 dazwischen verläuft. Ob das Efteling die
 Auflage tatsächlich gerissen hat, hat der Raad van State nicht entschieden.
-Beantwortet ist die Frage also nicht. Sie wird nur nicht mehr gestellt.
+Ein neues Verfahren hat seitdem niemand angestrengt.
 
 Seit September 2021 liegt außerdem ein Antrag auf eine neue Genehmigung über
 **sechs Millionen** bei der Provinz. Erteilt ist sie bis heute nicht.
@@ -491,11 +491,8 @@ steht. Die niederländische Parkszene ist kleiner, als sie aussieht.
 > [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) die Plattform für
 > eigene Aktionen.
 
-Eine Stiftung, die nichts ausschütten darf, hat hier vier Millionen und ein
-Grundstück in etwas gesteckt, das nie einen Euro zurückbringen wird. Ein Konzern
-hätte das Land verkauft und den Erlös ausgeschüttet. Betrieben wird das Haus
-seitdem von Ehrenamtlichen und aus Spenden, Woche für Woche, seit fünfundzwanzig
-Jahren.
+Betrieben wird das Haus von Ehrenamtlichen und aus Spenden, Woche für Woche,
+seit fünfundzwanzig Jahren.
 
 ## Wann du hinfahren solltest
 
@@ -829,23 +826,15 @@ Danach folgen die Sprookjesbibliotheek 2027 und Missie Luminar 2029.
 
 ## Ein Papierkorb, der danke sagt
 
-Das Efteling ist nicht der beste Achterbahnpark Europas, und es will das auch
-nicht sein. Drei der zehn gefragtesten Attraktionen sind Dark Rides, zwei sind
-Bahnhöfe derselben Dampfeisenbahn, und der Teil, durch den fast jeder Gast
-einmal läuft, ist ein Waldstück ohne ein einziges Fahrgeschäft.
-
-Was es dagegen ist: ein großer Park, der weder einem Konzern noch einer Familie
-gehört, sondern einer Stiftung, die nichts ausschütten darf. Ein Park, der drei
-Jahre vor Disneyland aufmachte und seine allererste Idee, einen Wald voller
-Märchen, bis heute in Betrieb hat. Und einer, dessen Eigentümerin nebenan ein
-Feriendorf für schwer kranke Kinder hingestellt und fünfundzwanzig Jahre lang
-durchgehalten hat.
+Drei der zehn gefragtesten Attraktionen sind Dark Rides, zwei sind Bahnhöfe
+derselben Dampfeisenbahn, und der Teil, durch den fast jeder Gast einmal läuft,
+ist ein Waldstück ohne ein einziges Fahrgeschäft.
 
 Der Satz vom Disney der Niederlande stimmt also, wenn man ihn als Kompliment für
 Ausstattung, Detailtiefe und Erzählwillen meint. Als Herkunftsbeschreibung
 stimmt er nicht. Diesen Park hat niemand kopiert. Er war zuerst da.
 
-Wie es gerade in Kaatsheuvel aussieht:
+Ob es in Kaatsheuvel gerade regnet, entscheidet über den halben Tag:
 
 ```weather-widget slug=efteling
 

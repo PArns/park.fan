@@ -66,54 +66,48 @@ The whole sentimental backstory is in
 [our origin story](/blog/welcome-to-park-fan-blog); here I want to talk about
 the hard-won knowledge that’s rubbed off over the years. Because as much as I
 love this park, I have to defend it and hold it to account right at the outset:
-it’s compact, wildly popular and, on the wrong days, a test of patience. Simply
-showing up on a whim and catching the perfect day, that works out less often
+it has six real headliners for a crowd that would keep twenty of them busy.
+Simply showing up on a whim and catching the perfect day, that works out less often
 here than elsewhere. But with a little preparation it becomes what it has been
 for me for over thirty years: the loveliest day a theme park in Europe can give
-you. This guide shows you both: the wonders you come for, and, very
-practically, how to keep the **Phantasialand wait times** short and catch the
-best day.
+you. So both, then: the wonders you come for, and the **Phantasialand wait
+times**, which you can keep short if you pick the day right.
 
-![Phantasialand in Brühl from a bird’s-eye view | My home park in Brühl, Europe’s most immersive theme park. | wide](/media/phantasialand/background-16x9.jpg)
+![Phantasialand in Brühl from a bird’s-eye view | My home park in Brühl: nine themed areas on 28 hectares. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## A park like another world, and why it’s so busy
 
 ![Taron in the basalt village of Klugheim | Taron races through the basalt village of Klugheim, a complete village, not a mere coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
-Phantasialand calls itself “Europe’s Most Immersive Theme Park.” Anyone who has been there understands
-what the claim rests on: nowhere else in Europe do the
-boundaries between queue, ride and set dissolve so completely. You don’t stand
-_in front of_ [Taron](ref:phantasialand/taron), you stand _inside_ Klugheim,
-a complete basalt village with crooked roofs and weathered walls, built so
-convincingly that for a moment you forget the coaster. You don’t walk to a ride
-you travel through worlds.
+Phantasialand calls itself “Europe’s Most Immersive Theme Park.” What that rests
+on: the queue for [Taron](ref:phantasialand/taron) is Klugheim, a basalt village
+with crooked roofs and weathered walls, and there is no visible line between
+queueing and set. From inside the village you don’t get to see much of the
+coaster until late.
 
-And what worlds: from the belle-époque Berlin at the entrance you stroll
-into the temple-lined China Town, past Deep in Africa with its mud huts,
-into the Aztec-massive Mexico, on into the enchanted Mysteryland, into
-the dreamy Fantasy around the Märchensee, and finally into the two crown
-jewels of recent years: the rugged Klugheim and the Victorian-flying
-Rookburgh. Each of these areas has its own sound, its own smell, its own
-music. You can spend a whole day here without riding a single ride and still go
-home overwhelmed.
+Nine areas sit on 28 hectares, and none of them bleeds into the next: Berlin
+around 1900 at the entrance, China Town with its temples, Deep in Africa with
+mud huts, Aztec Mexico, Mysteryland, Fantasy around the Märchensee, plus the two
+youngest, Klugheim and Victorian Rookburgh. Each has its own music and its own
+smell, which is more noticeable in summer outside the churros stand in China
+Town than in any press release. Ride nothing at all and you still have a full
+day.
 
 But that very compactness is the flip side. The park has only a handful of real
 headliners, and on a busy day everyone wants the same two or three rides at the
-same time. In our deep dive on [the art of waiting](/blog/the-art-of-waiting) I
+same time. In [the art of waiting](/blog/the-art-of-waiting) I
 worked out why [Taron](ref:phantasialand/taron) runs into saturation on a
 holiday Saturday just as fast as Peter Pan’s Flight in Paris: a small crowd
 doesn’t protect you from long lines when there are only a few attractions for
 the demand to spread across. The math is more merciless at Phantasialand than at
 the sprawling [Europa-Park](ref:europa-park) with its thirteen roller coasters.
 On top of that, the park prices its tickets so aggressively that it fills plenty
-of weekends nicely on its own, the fabled “empty Saturday” has become rare. All
-the more reason for everything that follows.
+of weekends nicely on its own, the fabled “empty Saturday” has become rare.
 
-## From Märchenwald to Europe’s most immersive park: a short history
+## From a brown-coal pit to a basalt village
 
-Before we get to rides, tickets and the best times, a quick look back, because
-you only understand why Phantasialand feels the way it feels once you know where
-it comes from. And that’s pretty much the exact opposite of a thrill park.
+Why Phantasialand feels the way it feels has to do with where it comes from, and
+that is pretty much the exact opposite of a thrill park.
 
 It all began in 1967, in a mined-out brown-coal pit on the edge of Brühl. Two
 men who had met in Berlin after the war poured their money and their hearts into
@@ -127,15 +121,15 @@ the gates opened. Roller coasters? Not a one.
 
 ![F.L.Y. in Rookburgh | Rookburgh with F.L.Y. (2020), the world’s first flying launch coaster and, for now, the peak of a long transformation. | left](/media/phantasialand/fly-4x3.jpg)
 
-That it became, over the decades, the wildest, most densely themed park on the
-continent is a story of slow growth, and a near-ending. The park grew bigger,
+That it became, over the decades, a park enthusiasts travel across Europe for
+is a story of slow growth and a near-ending. The park grew bigger,
 bolder, more technical; in 1996 Michael Jackson personally opened the mine
 train [Colorado Adventure](ref:phantasialand/colorado-adventure). And then, on
 **1 May 2001**, came the fire. A technical fault on the Grand Canyon ride set a
 large part of the old park ablaze; the fire brigade said afterwards they had
 “narrowly avoided a catastrophe.” It could have been the end.
 
-Instead it became the turning point. On the ruins of the burned-down rides the
+On the ruins of the burned-down rides the
 park built, within a year, the themed world Wuze Town with the two crazy
 spinning coasters [Winja’s Fear](ref:phantasialand/winjas-fear) & Force and the
 water ride [River Quest](ref:phantasialand/river-quest), both of which you can
@@ -145,25 +139,25 @@ new, do it properly, themed down to the last screw.
 Just how seriously the park meant it became clear in 2006. With **Deep in
 Africa** and the inverted coaster [Black Mamba](ref:phantasialand/black-mamba),
 Phantasialand laid out a complete African world, mud huts, watercourses, the
-ride set low among the rocks rather than screwed up into the sky. That was the
-moment the pleasant day-trip destination became a place of pilgrimage for park
-fans from all over Europe. In 2016 came the basalt village Klugheim with
+ride set low among the rocks rather than screwed up into the sky. From 2006 on,
+the enthusiasts from Belgium and the Netherlands made the trip for it. In 2016
+came the basalt village Klugheim with
 [Taron](ref:phantasialand/taron), in 2020 the Victorian aviator city
 Rookburgh with the world’s first flying launch coaster
-[F.L.Y.](ref:phantasialand/fly), both regarded by enthusiasts as world-class,
-and both not simply rides but complete, seamless stage sets.
+[F.L.Y.](ref:phantasialand/fly). In both cases the themed area came first and
+the ride was built into it, not the other way round.
 
 The best part: to this day, Phantasialand has remained in **family hands**. In
 1998 Gottlieb Löffelhardt handed the business to his son Robert; the park has
 never answered to an international corporation or shareholders watching the quarterly
-figures. You feel it in every detail no controller would ever have
-approved, and that’s exactly why you keep coming back.
+figures. You can see it in details a controller would have cut: in the aviator
+workshop in front of F.L.Y., which you walk through without it dispatching
+anything at all.
 
 ## The headliners, and what they do to you
 
-Let’s start with the reason most people come at all, the rides. I’m putting the
-live wait times right next to the names, so you can see what’s happening right
-now even as you read:
+The live wait times hang right next to the names, so you can see what’s
+happening while you read:
 
 - **[Taron](ref:phantasialand/taron)**, the centerpiece, and for me the best
   launch coaster in Germany (you can argue about that; I won’t). Two brutal
@@ -243,9 +237,8 @@ crowd.** Since the annual passes went and the tickets got priced so
 aggressively, something has noticeably shifted in the park, and I don’t mean
 that only romantically. In the last year or two I’ve noticed distinctly more
 **vandalism** than in all the years before, in a place where you simply never
-used to see such things. Whether it’s directly connected I can’t say for sure.
-but I dearly wish my home park would push back here. It deserves better, and so
-do we guests.
+used to see such things. Whether it’s directly connected I can’t say for sure,
+and I have no numbers on it either. It stands out to me anyway.
 
 ## Phantasialand wait times: when they’re shortest
 
@@ -267,9 +260,9 @@ A few rules of thumb that almost always hold:
 
 Gut feeling is a poor advisor here, the moment holiday calendars, weather and
 opening hours all overlap. That’s exactly what park.fan is built for. The
-best-days-to-visit calendar condenses all of that, plus the park’s complete
-wait-time history, into a single, wonderfully simple color, green, yellow, red.
-Here are the quietest upcoming days for Phantasialand:
+best-days-to-visit calendar works all of that together with the park’s
+wait-time history into one color per day, green, yellow or red. Here are the
+quietest upcoming days for Phantasialand:
 
 ```best-days-widget slug=phantasialand
 
@@ -283,10 +276,10 @@ last two seasons will show you:
 
 ```
 
-The right answer to “when should I go?” is never “Sundays are busy,” but always:
-**this** Sunday, in **this** month, in **this** weather. Open the calendar, look
-at the color, book the ticket for the green day, that’s half the magic and saves
-you more of your life than any trick inside the park.
+“Sundays are busy” gets you nowhere. 12 October at Phantasialand in the rain
+does. That’s why the calendar carries a value per day and not a rule per
+weekday, and why you’re best off booking the ticket only after you’ve looked at
+it.
 
 ## Quick Pass: the new concept, Single Ride & Ultimate
 
@@ -328,7 +321,7 @@ at the live wait times: if the numbers are low, save your money and treat
 yourself to a second slice of cake instead. (Besides Ultimate there’s a second
 route to F.L.Y. without a long line, more on that in a moment, with the hotels.)
 
-## Rope Drop & order: how to skip the longest wait times
+## The order you ride in
 
 The most effective free trick at Phantasialand is **being there early and riding
 counter-cyclically**. There’s hardly anything lovelier than one of these parks in
@@ -361,19 +354,19 @@ an army of express-pass guests constantly buying up the capacity out from under
 you. Your best weapon is simply timing, and that, unlike the weather, is
 entirely in your own hands.
 
-## Food: the park’s secret star
+## Food at Phantasialand
 
 There is no other park where I would single this out:
 Phantasialand is worth the trip for the **food**, too. Where at many parks “food”
 is synonymous with lukewarm fries at outrageous prices, here the dining is a firm
 part of the experience, with a care you otherwise only know from proper
-restaurants. A few spots are genuine insider tips, worth the visit on their own:
+restaurants. Three places I name to anybody who asks:
 
-- **Rutmor’s Taverne** (Klugheim) is my favorite and, for many fans, the best
-  restaurant ever built into a theme park. À la carte, rustic down to the carved
+- **Rutmor’s Taverne** (Klugheim) is my favorite, and I know nobody who has
+  eaten there and disagrees. À la carte, rustic down to the carved
   wooden benches, with hearty cooking, Spätzle, Schnitzel, fried potatoes, plus
   soups and sharing platters and a Kaiserschmarrn that briefly makes you forget a
-  roller coaster is waiting outside. Large portions, fair prices, friendly
+  roller coaster is waiting outside. Friendly
   service. If there’s one moment on a park day where you want to properly sit
   down and eat: here.
 - **Restaurant Uhrwerk** (Rookburgh) is its steampunk sibling, burgers,
@@ -391,9 +384,8 @@ available all year round, the perfect companion for the walk to the next ride.
 
 And the most important food tip is the same as for queuing: **counter-cyclically.**
 Eat around 11:30 a.m. or after 2:30 p.m., that way you ride the short lines during peak
-hours and sit in peace in the restaurant during ride time. Two birds, one stone,
-one satisfied stomach. (And if you come in winter, a treat all its own is waiting
-for you in the Wintertraum.)
+hours and sit in the restaurant while everybody else queues. (And if you come in
+winter, a treat all its own is waiting for you in the Wintertraum.)
 
 ## The small things I keep coming back for
 
@@ -485,7 +477,6 @@ atmospheric.
 And then there’s the **food you only get in winter.** Every year Wintertraum
 rolls out specialties, my secret number one is the **flat croissants**: crisply
 pressed, gloriously buttery and genuinely only available in the winter season.
-Add a cup of mulled wine, and the coldest park day becomes the coziest.
 
 And my very favorite Wintertraum tip of all: **Taron in the dark.** In winter it
 gets dark early, and racing through the illuminated Klugheim then, when the
@@ -555,12 +546,12 @@ Yes, with a well-chosen day and the order above, everything important fits into
 one day. More relaxed (and, with the themed hotels, a little celebration) are two
 days.
 
-## Conclusion: little park, lots of planning, a huge reward
+## What I would take with you for your day
 
-Phantasialand isn’t a park you take in on the side. It’s compact, sought-after
-and, on the wrong days, exhausting, but on the right days, with the right order
-and a break in Rutmor’s Taverne, it’s the most immersive, most loving experience
-Europe has to offer. The good news: almost everything that separates a good day
+Phantasialand isn’t a park you take in on the side. It has a third of
+Europa-Park’s crowd and nine minutes longer queues. On the right days, with the
+right order and a break in Rutmor’s Taverne, it is the park I have been going
+back to for thirty years. The good news: almost everything that separates a good day
 from a great one, you decide **beforehand**, with a look at the calendar.
 
 Before you set off, take a look at what the park is doing right now, the weather
@@ -582,8 +573,8 @@ hour of the evening still doesn’t want to go home.
 — Patrick
 
 _P.S.: No, I don’t buy a Quick Pass on a green Tuesday. On principle, and because
-the data says I don’t need it. As for the red Saturday: the best Fast Pass is the
-day you never booked in the first place._
+the data says I don’t need it. For the red Saturday I would have bought one, and
+could have saved myself the trouble by booking four weeks earlier for €28._
 
 ---
 

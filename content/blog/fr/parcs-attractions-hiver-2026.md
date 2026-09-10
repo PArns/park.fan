@@ -210,8 +210,8 @@ d’attente un jour ordinaire est dans le
 
 ## Ceux qui ouvrent en décembre
 
-Ces parcs sont fermés le reste de l’hiver et rouvrent pour trois à six semaines.
-Les fenêtres sont courtes, et cela se voit dans les files, on y revient plus
+Ces parcs sont fermés le reste de l’hiver et rouvrent pour deux à six semaines.
+Les fenêtres sont courtes, et des fenêtres courtes font de longues files, on y revient plus
 bas.
 
 ### Walibi Belgium : Walibi Winter, du 5 décembre au 3 janvier
@@ -219,9 +219,9 @@ bas.
 Pendant que le parc frère néerlandais renonce, [Walibi
 Belgium](ref:walibi-belgium) à Wavre continue sans changement. Du **5 décembre
 2026 au 3 janvier 2027**, huit zones décorées, toutes bâties autour de paysages
-nordiques : Alpin Village, Frozen Land, Polar Playground, Glowing Greetings,
-Chocolate Factory, Festive Tropics, Twinkle Town et, nouveauté, le **Northern
-Dock**, un port scandinave autour de
+nordiques pour la plupart : Alpin Village, Frozen Land, Polar Playground et
+Twinkle Town, plus Glowing Greetings, Chocolate Factory, Festive Tropics et,
+nouveauté, le **Northern Dock**, un port scandinave autour de
 [Mecalodon](ref:walibi-belgium/mecalodon), le coaster familial des 50 ans du
 parc.
 
@@ -242,7 +242,7 @@ Dates : [walibi.be → Walibi Winter](https://www.walibi.be/walibi-winter/en).
 son histoire en décembre 2025, et remet cela en 2026/27. Six zones thématiques,
 dont Santa City, Snow Valley, Lake of Frost avec sa patinoire et Land of Fire &
 Ice, plus une parade d’hiver, un spectacle de feu et de lumière et l’illumination
-du sapin. Ouvert de 11 h à 19 h, jusqu’à 18 h les 24 et 31 décembre, fermé le
+du sapin. Ouvert 18 jours dans cette fenêtre, de 11 h à 19 h, jusqu’à 18 h les 24 et 31 décembre, fermé le
 25 décembre et le 1er janvier.
 
 La structure tarifaire mérite d’être signalée : à Kasterlee, **tout est compris
@@ -303,7 +303,7 @@ compris. Le 5 janvier 2027, la **Cabalgata de los Reyes Magos** traverse la zone
 Mediterrània, le défilé des Rois mages, le soir où les enfants espagnols
 reçoivent leurs cadeaux.
 
-Un avertissement issu de nos propres mesures : de tous les parcs de cet article,
+Un avertissement issu de nos propres mesures : de tous les parcs de cette sélection,
 c’est à PortAventura que l’on attend le plus longtemps, et cela vaut sur toute
 l’année, pas seulement à Noël. Le tableau plus bas les met côte à côte. Attendre
 une saison vide parce que c’est l’hiver chez soi, c’est planifier pour le
@@ -401,7 +401,7 @@ de Noël au milieu. Pour le Wintertraum s’ajoute qu’il est une destination e
 soi. On roule vers Brühl pour les spectacles, pas malgré la saison.
 
 Et parce que la question « lequel est le plus chargé » revient à chaque trajet en
-voiture, voici les parcs de cet article côte à côte, chacun avec son jour de
+voiture, voici les parcs de cette sélection côte à côte, chacun avec son jour de
 semaine le plus calme :
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand

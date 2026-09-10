@@ -166,7 +166,9 @@ the biggest compliment you can pay infrastructure. Plus open source, smart home
 adapters and more side projects than are good for me; all the stuff piling up at
 [arns.dev](https://arns.dev) and [GitHub](https://github.com/PArns).
 
-Two passions that ran side by side for decades without ever meeting.
+The two had nothing to do with each other for decades. At work it was about
+throughput and latency, in the park it was about queueing, and that these are
+the same question only dawned on me very late.
 
 ## The moment in the Taron queue
 
@@ -196,11 +198,11 @@ sessions that lasted longer than some park days. And that very particular moment
 of awe when a model correctly predicts a packed Saturday for the first time,
 days before it happens.
 
-Because that was the real wish behind it: not another dashboard showing numbers,
-but a system that _understands_ park days. A model of our own that had to learn
+The point was never displaying the current number. The park writes that up
+itself. It gets interesting one step earlier: a model of our own had to learn
 that a rainy bridge day in October is something completely different from a
 sunny holiday Saturday in July. That school holidays, weather, opening hours and
-years of wait-time history together form a pattern you can read, if you stare at
+the operating days we have recorded together form a pattern you can read, if you stare at
 it stubbornly enough.
 
 On the desk where all those nights took place there is, incidentally, an
@@ -212,8 +214,7 @@ reminds me what all the effort is actually for. Somewhere out there a real train
 is running right now, and somebody out there wants to know whether the queue in
 front of it is worth joining.
 
-What grew out of that is a real-time nervous system for theme parks. Live wait
-times from over **200 parks** and **7,000 attractions**, updated by the minute.
+Behind it today are live wait times from over **200 parks** and **7,000 attractions**, updated by the minute.
 Forecasts that estimate crowds up to **365 days** ahead. And because I only ever
 trust numbers that have to prove themselves, the model grades itself: every
 prediction is later held against the wait time actually measured, and whatever
@@ -227,16 +228,17 @@ really get?
 
 That’s exactly what park.fan was built for. Every park page has a calendar of
 the best days to visit, up to a year ahead, fed with school holiday calendars,
-weather forecasts, opening hours and the park’s complete wait-time history.
+weather forecasts, opening hours and every operating day we have recorded so far.
 Looking into that data clears out a few gut feelings along the way. A Sunday in
 grey November can be calmer than any Tuesday during the North Rhine-Westphalian
 summer holidays. A bridge day is almost never a good idea. And the “insider tip”
 of going in the rain works exactly as long as it takes everyone else to read the
 same insider tip.
 
-The answer isn’t “Sundays are busy”, it’s: _this_ Sunday, in _this_ park, at
-_this_ time of year. Green, amber or red. Open the calendar, look at the colour,
-decide. And once you’re in the park, the live data tells you whether the queue
+“Sundays are busy” is therefore not a usable answer. A Sunday in late November at
+Phantasialand is a different question from a Sunday in early August at
+Europa-Park, and the calendar answers the second version. And once you’re in the
+park, the live data tells you whether the queue
 in front of you is the exception or the rule.
 
 ## What park.fan does differently
@@ -256,22 +258,22 @@ So we go a few steps further:
   to take my word for it, you can look it up on the [Fancast page](/fancast).
 - **Everything in one place.** Wait times, crowd levels, weather at the park
   entrance, opening hours and attraction histories, in six languages.
-- **Free and without ads.** No corporation, no paywall. A fan site in the best
-  sense of the word, built by somebody who queues up himself.
+- **Free and without ads.** No corporation, no paywall, built by somebody who
+  queues up himself.
 
 ## What this blog is meant to be
 
-A wait time without context is just a rumour with a decimal place. “50 minutes”,
-the same number three times over, three completely different stories:
+A wait time on its own says almost nothing. The same number means something
+completely different depending on the ride and the day:
 
 - **50 minutes** for a flat ride? A straight waste of time. Three proper
   coasters would have fitted into that window.
 - **50 minutes** for the
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  on a Saturday afternoon? Strong. The peak is usually 85, so you basically
+  on a Saturday afternoon? Strong. Otherwise the afternoon peak is nearly twice as long, so you basically
   caught the express.
 - **20 minutes** for
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a year
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) two years
   after opening? Either a dream day, or the crowds have finally dispersed.
 
 ![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Typical here is a good half hour, several times that on peak days. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
@@ -326,8 +328,7 @@ really:
 Thank you for reading this far. This place, the platform, the blog, all of it,
 is my thank-you to a park by a fairy-tale lake, to parents who took a small boy
 there again and again, to a father in a gondola, and to every single person who
-loves theme parks as much as I do. And now: go queue up. But only if the data
-says it’s worth it.
+loves theme parks as much as I do. 
 
 — Patrick
 

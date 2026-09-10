@@ -7,8 +7,8 @@ mode: published
 excerpt: >-
   60 minutes de file d’attente, et pourtant le temps file à toute allure ?
   Derrière chaque bonne file se cachent de la psychologie, du storytelling et
-  des mathématiques de capacité impitoyables. Une plongée en profondeur, du
-  pre-show à la loi de Little, et en plein milieu la raison d’être de park.fan.
+  des mathématiques de capacité impitoyables. Du pre-show à la loi de Little,
+  et en plein milieu la raison d’être de park.fan.
 tags:
   - temps-d-attente
   - files-attente
@@ -66,7 +66,7 @@ qui m’arrivait vraiment cet après-midi-là, j’ai voulu ensuite le savoir
 précisément. Deux formules entrent en jeu, et les deux tiennent ensemble au dos
 d’un sous-bock.
 
-## La psychologie du temps : pourquoi les minutes s’étirent
+## Pourquoi les minutes s’étirent
 
 L’économiste de Harvard **David Maister** a disséqué le problème de fond dès
 1985 dans son classique
@@ -76,8 +76,7 @@ que le temps occupé. Quand on ne fait que fixer le dos de la personne devant
 soi, l’horloge se traîne. Quand on a quelque chose à voir, à entendre ou à
 faire, elle tourne presque normalement.
 
-S’y ajoutent trois autres règles de Maister que tout concepteur de parc connaît
-par cœur :
+Maister en a noté huit. Ces trois-là, on les voit dans toutes les files :
 
 - **Une attente incertaine paraît plus longue qu’une attente expliquée.** D’où
   les panneaux de temps restant tous les quelques mètres dans la file, et
@@ -97,8 +96,8 @@ par cœur :
 expériences de terrain du chercheur en marketing **Jacob Hornik**, les personnes
 qui attendaient surestimaient le temps réellement écoulé de **près de 36 pour
 cent** en moyenne. Dix minutes mesurées en deviennent presque quatorze dans la
-tête. Votre horloger intérieur est un virtuose de l’arrondi vers le haut, et il
-arrondit systématiquement à votre désavantage. Et dès 1991, le chercheur du MIT
+tête, et l’erreur va toujours dans le même sens : personne ne sort d’une file
+en l’estimant plus courte qu’elle ne l’était. Et dès 1991, le chercheur du MIT
 **Richard Larson** a montré avec ses collègues, sous le beau titre
 [« Entertain, Enlighten, and Engage »](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 qu’une simple distraction améliore nettement la qualité perçue de l’attente.
@@ -109,18 +108,17 @@ que lorsqu’il n’a rien d’autre à faire. Dès que l’attention se porte s
 musique, sur des détails de thématisation ou sur un spectacle, le compteur
 interne manque tout simplement de ressources, et la surestimation fond. C’est
 exactement là-dessus que mise tout ce que vous voyez dans une bonne file :
-bandes-son, animatroniques, éléments interactifs, détails cachés. Ce qui
-ressemble à de la décoration est en réalité de la psychologie cognitive
-appliquée.
+bandes-son, animatroniques, éléments interactifs, détails cachés. Le décor
+n’est pas seulement du décor, il occupe le compteur.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Les pre-shows : l’expérience commence avant l’embarquement
+### Les pre-shows
 
-L’arme la plus élégante contre le temps mort est le **pre-show**, qui déclare
-simplement l’attente partie intégrante de l’attraction. L’exemple d’école se
+C’est le **pre-show** qui règle cela le plus complètement, en déclarant
+l’attente partie intégrante de l’attraction. L’exemple d’école se
 trouve aux [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). À
 la [Tour de la Terreur](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror),
 on ne se traîne pas dans un couloir : on traverse le hall poussiéreux du
@@ -179,8 +177,7 @@ pic-fin dit qu’elle sera la plus mémorisée. Elles sont en même temps la col
 vertébrale de la capacité : on vole dans des **link chambers** en forme de
 salles de spectacle, 16 places par niveau, trois niveaux superposés, quatre
 salles en parallèle. Près de 200 visiteurs à la fois, environ 1 400 par heure.
-Même après 120 minutes d’attente, la plupart des gens ne racontent pas la file,
-mais l’avatar qui respire dans sa cuve.
+Qui y passe 120 minutes raconte ensuite l’avatar qui respire dans sa cuve.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -226,14 +223,12 @@ ne regarde pas son téléphone toutes les dix secondes.
 
 ```
 
-Et puis il y a ici ce qui est peut-être l’astuce de capacité la plus élégante
-de toutes : la **file single rider**. Quand on roule seul et qu’on se laisse
+Et puis il y a ici une astuce de capacité qui arrange les deux côtés : la
+**file single rider**. Quand on roule seul et qu’on se laisse
 placer sur le siège isolé qu’un groupe de quatre laisse libre, on raccourcit
 drastiquement sa propre attente et on aide au passage le parc à remplir chaque
 wagon à ras bord. Chaque siège autrement vide est de la capacité
-gaspillée ; la file single rider est la manière élégante de boucher ces trous.
-Un cas rare où l’intérêt personnel et le débit tirent exactement dans le même
-sens.
+gaspillée, et un visiteur seul la remplit sans que personne ne perde sa place.
 
 ```glossary-widget slug=single-rider
 
@@ -244,7 +239,7 @@ sens.
 ### Les spectacles : les auxiliaires discrets de la capacité
 
 Et il existe encore une astuce qui ne se joue pas du tout au niveau de
-l’attraction : **le divertissement comme éponge à foule.** Une parade, un feu
+l’attraction. Une parade, un feu
 d’artifice ou un spectacle de cascades mobilise d’un coup des milliers de
 visiteurs, des gens qui, pendant cette heure-là, ne sont dans aucune file. Avec
 ses places assises et debout, l’amphithéâtre de **Fantasmic!** aux Hollywood
@@ -261,7 +256,7 @@ la minute.
 
 ![Des milliers de spectateurs dans l’amphithéâtre nocturne de Fantasmic! à Disney’s Hollywood Studios | Fantasmic! aux Hollywood Studios : près de 10 000 personnes par représentation, toute une vague de visiteurs qui, le temps de cette demi-heure, ne se trouvera dans aucune file de coaster. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Capacité et débit : le secret mathématique
+## Combien de personnes une attraction fait passer par heure
 
 Le **débit**, c’est tout simplement le nombre de personnes qu’une attraction
 transporte réellement par heure. Ce chiffre décide de la longueur réelle de la
@@ -335,17 +330,18 @@ sur
 l’[Europa-Park](ref:europa-park?bare). Selon la fiche technique du constructeur
 Mack Rides, **sept trains** y circulent simultanément, avec un objectif
 d’**un départ toutes les 36 secondes**. Cela donne 1 600 visiteurs par heure,
-alors qu’un train ne compte que 16 places. La fréquence bat la taille.
+alors qu’un train ne compte que 16 places, soit plus que le Hulk avec ses 32
+places par départ.
 
-### L’arrêt est l’ennemi : rolling launches et rolling stations
+### Des trains qui ne s’arrêtent jamais
 
 Le dernier degré d’escalade de ce raisonnement : des trains qui ne s’arrêtent
 plus du tout. Voltron utilise des **rolling launches**, où les trains ne sont
 pas immobilisés avant le lancement puis propulsés, mais accélérés au passage,
 « en vol », comme lors d’un relais. Pour que les moteurs LSM tiennent ce rythme
 de 36 secondes, Mack leur a tout bonnement donné quatre rangées de stators au
-lieu de deux. Chaque arrêt évité signifie : le bloc se libère plus vite, la
-cadence tient, la file avance.
+lieu de deux. Un train qui ne s’arrête pas libère son bloc plus tôt, et la cadence de 36
+secondes tient.
 
 Et [Walibi Holland](ref:walibi-holland?bare) a transposé le même principe à la
 gare en 2025. Sur **YOY**, premier duelling coaster monorail d’Europe, où l’on
@@ -401,9 +397,9 @@ pic-fin, souvenez-vous : l’expérience se termine mieux que prévu, et c’es
 exactement ainsi qu’elle est archivée. L’affichage ment donc bel et bien, mais
 il ment en votre faveur.
 
-Un mot depuis la salle des machines, car c’est exactement là que vit park.fan. Nos temps d’attente en direct vous montrent à la minute ce
-que font réellement L et λ, et quand notre modèle d’IA prévoit les temps
-d’attente jusqu’à 365 jours à l’avance, il ne modélise au fond rien d’autre que
+C’est exactement à cette formule que tient park.fan. Les temps d’attente en
+direct vous montrent à la minute ce que font réellement L et λ, et quand notre
+modèle prévoit les temps d’attente jusqu’à 365 jours à l’avance, il ne modélise au fond rien d’autre que
 ces deux grandeurs : la **demande** (combien de personnes veulent monter dans
 cette attraction aujourd’hui ?) et le **débit** (combien peut-elle en évacuer
 ?). Little serait sans doute étonné de tous les usages qu’on fait aujourd’hui
@@ -419,7 +415,7 @@ du monde, de
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
 jusqu’à Orlando ?
 
-Il y a trois raisons à cela, et toutes les trois sont du calcul :
+Cela tient peu à l’attraction et beaucoup à l’arithmétique :
 
 1. **Les bateaux pirates ne sont pas des transports en commun.**
    [Peter Pan’s Flight à Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -488,7 +484,7 @@ d’attractions simultanées est limité.
 
 Les chiffres sont presque comiques. Taron traite environ **1 200 visiteurs par
 heure**, soit à peu près autant que Peter Pan’s Flight à Paris. La différence
-ne vient pas de l’attraction, mais de ce sur quoi la demande alentour peut se
+est au dénominateur : dans ce sur quoi la demande alentour peut se
 répartir. À Paris, Peter Pan se trouve au milieu de dizaines d’alternatives. À
 Brühl, un samedi de vacances, une part considérable du parc a la même
 attraction en tête au même moment. Et Voltron à l’Europa-Park, avec 1 600 par
@@ -624,7 +620,7 @@ mouvement, et l’attraction avale ainsi plus de 3 000 visiteurs par heure, plus
 que bien des méga-coasters, avec une chaîne de véhicules qui tourne sans
 broncher depuis les années soixante et ne demande jamais de pause.
 
-## Conclusion : l’affichage ne raconte que la moitié de l’histoire
+## Ce que park.fan en affiche
 
 La prochaine file de 60 minutes n’en sera pas plus courte. Mais elle se lit
 autrement. Trois questions demeurent, et park.fan a une réponse pour chacune :
@@ -647,11 +643,9 @@ autrement. Trois questions demeurent, et park.fan a une réponse pour chacune :
 
 Contre la psychologie seule, nous ne pouvons rien. Que l’heure ressemble à une
 heure ou à un premier acte, cela se décide par les pre-shows, la thématisation
-et l’effet pic-fin, et par les parcs qui maîtrisent ce métier. Alors la
-prochaine fois que vous serez dans une file thématisée avec amour et que le
-temps passera étrangement vite : ce n’est pas un hasard, c’est du design.
-Profitez-en, vous faites partie d’une illusion plutôt magnifique. Et pour
-savoir si elle en vaut la peine, les données vous le diront avant.
+et l’effet pic-fin, et par les parcs qui maîtrisent ce métier. Deux minutes
+avant de partir, le chiffre est sur la page du parc. Ensuite, peu importe la
+longueur que semble prendre cette heure.
 
 — Patrick
 

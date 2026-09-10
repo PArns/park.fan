@@ -272,8 +272,8 @@ attesa tipica, la faccia una volta e ci arriva.
 minuti attraverso quattordici scene delle Mille e una notte, senza una sola
 discesa, progettato da Ton van de Ven. 1.800 ospiti l’ora, il che spiega perché
 nonostante la popolarità compaia di rado nella tabella delle attese. Lì non succede
-praticamente niente, e nonostante questo viene regolarmente contata tra le migliori
-dark ride d’Europa.
+praticamente niente, e sta lo stesso in quasi ogni classifica delle migliori
+dark ride europee.
 
 ![Lo Stoomcarrousel e i suoi cavalli dorati sotto un telo arancione | L’organo Gavioli ha la stessa età della giostra. La macchina a vapore è uscita nel 1944, il nome è rimasto. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -333,7 +333,7 @@ chiuso nel 2002 per mancanza di incassi ed è di nuovo aperto dal 26 aprile 2019
 Il valore pratico di questo pezzo di bosco è enorme, per inciso. Non c’è fila, non
 c’è limite di capienza e non c’è durata della corsa. Qui possono girare
 contemporaneamente diverse migliaia di ospiti senza che da nessuna parte debba
-essere scritto un numero su un cartello. È proprio uno dei motivi per cui un parco
+essere esposto un tempo di attesa all’ingresso. È proprio uno dei motivi per cui un parco
 con quasi sei milioni di visite ha attese sopportabili.
 
 Da maggio 2026 il parco sta rifacendo i percorsi, perché trenta fiabe su un
@@ -379,8 +379,8 @@ numeri di visitatori del 2025: Europa-Park 7 mln per tutto il resort, Efteling
 
 ```
 
-Phantasialand non pubblica il proprio numero di visitatori; le stime del settore lo
-collocano intorno ai due milioni. Ha quindi una frazione del pubblico di Efteling e
+Phantasialand non pubblica il proprio numero di visitatori; l’indice TEA per il
+2024 riporta 2,1 milioni. Ha quindi una frazione del pubblico di Efteling e
 nonostante questo le file più lunghe della tabella. Il motivo è la stessa divisione
 che ho sviluppato ne [L’arte dell’attesa](/blog/l-arte-dell-attesa): l’attesa è
 domanda divisa per capacità, e a Efteling il numeratore è sì alto, ma il
@@ -425,8 +425,8 @@ giurisdizione amministrativa dei Paesi Bassi. Il **15 maggio 2024** hanno perso,
 per un motivo che lascia la questione aperta: la corte non li ha ritenuti
 legittimati ad agire, perché le loro case distano da 1,5 a 1,8 chilometri dall’area
 protetta, con in mezzo la strada provinciale N261. Se Efteling abbia davvero
-sforato la condizione, il Raad van State non l’ha deciso. La domanda quindi non ha
-risposta. Semplicemente non viene più posta.
+sforato la condizione, il Raad van State non l’ha deciso. Da allora nessuno ha
+avviato un nuovo procedimento.
 
 Da settembre 2021 giace inoltre presso la provincia una richiesta di nuovo permesso
 per **sei milioni**. A oggi non è stata concessa.
@@ -486,10 +486,8 @@ olandesi è più piccolo di quanto sembri.
 > [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) la piattaforma per le
 > iniziative personali.
 
-Una fondazione che non può distribuire nulla ha messo qui quattro milioni e un
-terreno in qualcosa che non renderà mai un euro. Un gruppo avrebbe venduto il
-terreno e distribuito il ricavato. La casa da allora è portata avanti da volontari e
-da donazioni, settimana dopo settimana, da venticinque anni.
+La casa è portata avanti da volontari e da donazioni, settimana dopo settimana,
+da venticinque anni.
 
 ## Quando andarci
 
@@ -817,22 +815,15 @@ spettacolo. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar nel 20
 
 ## Un cestino che dice grazie
 
-Efteling non è il miglior parco di ottovolanti d’Europa, e non vuole nemmeno
-esserlo. Tre delle dieci attrazioni più richieste sono dark ride, due sono stazioni
-dello stesso treno a vapore, e la parte che quasi ogni ospite attraversa una volta è
-un pezzo di bosco senza una sola attrazione.
-
-Quello che è, invece: un grande parco che non appartiene né a un gruppo né a una
-famiglia, ma a una fondazione che non può distribuire nulla. Un parco che ha aperto
-tre anni prima di Disneyland e che tiene ancora in funzione la sua primissima idea,
-un bosco pieno di fiabe. E uno la cui proprietaria ha messo accanto una casa
-vacanze per bambini gravemente malati e l’ha tenuta in piedi venticinque anni.
+Tre delle dieci attrazioni più richieste sono dark ride, due sono stazioni dello
+stesso treno a vapore, e la parte che quasi ogni ospite attraversa una volta è un
+pezzo di bosco senza una sola attrazione.
 
 La frase sulla Disney dei Paesi Bassi regge quindi, se la si intende come
 complimento su finiture, dettaglio e voglia di raccontare. Come descrizione
 d’origine non regge. Questo parco non l’ha copiato nessuno. C’era prima.
 
-Com’è la situazione a Kaatsheuvel in questo momento:
+Se a Kaatsheuvel piove o no decide metà della giornata:
 
 ```weather-widget slug=efteling
 

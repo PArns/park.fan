@@ -63,16 +63,12 @@ un peu de décoration pour devenir une saison à part entière, avec ses propres
 billets, ses propres limites d’âge et un public qui se déplace précisément pour
 cette crise cardiaque sous contrôle.
 
-La frousse se moque délicieusement des frontières, il vaut donc la peine de
-regarder au-delà de son jardin : depuis la Rhénanie-du-Nord-Westphalie, environ
-quatre heures de route vous mènent au plus grand événement Halloween du
-continent et à la plus retorse innovation de la peur en Europe. Elles se
-trouvent seulement dans deux pays différents. Voici ce que propose la saison
-**2026** : les grandes nuits d’horreur, les versions familiales avec filet de
-sécurité, les deux parcs de tête qui _ne_ participent ostensiblement _pas_ à
-tout ce cirque, et la question à laquelle park.fan répond mieux que n’importe
-quel communiqué de presse : quand y a-t-il le plus de monde, et quand s’en
-sort-on le plus tranquillement ?
+La frousse se moque des frontières. Depuis la Rhénanie-du-Nord-Westphalie,
+quatre heures de route mènent au plus grand événement Halloween du continent et
+aux experiences pour lesquelles on vient de toute l’Europe à Biddinghuizen,
+seulement voilà, dans deux pays différents. Et la question à laquelle on répond
+le plus rarement, c’est celle de la date : quels soirs on entre dans ces
+machines à fumée sans passer quarante minutes devant.
 
 > **Un mot sur les dates :** les parcs peaufinent leurs programmes d’Halloween
 > tout l’été. Pour chaque parc, nous renvoyons vers la page officielle de
@@ -129,11 +125,11 @@ Maintenant que la programmation est connue, on peut aussi répondre à la
 question évidente : « le plus grand » n’est pas automatiquement « le meilleur ».
 Le HHF est la Volkswagen des événements Halloween : énorme, solide, quelque
 chose pour chacun, mais aussi, les soirs bondés, du travail à la chaîne avec
-bouchon devant le maze. L’évolution vraiment passionnante de l’horreur
-européenne se joue en ce moment ailleurs, à doses bien plus petites et bien plus
-personnelles, deux bonnes heures plus au nord, à Biddinghuizen (patience, on y
-arrive). Si vous cherchez le volume et la romance à la tronçonneuse, Bottrop est
-parfait. Si vous voulez avoir _vraiment_ peur, lisez la suite.
+bouchon devant le maze. Les formats plus petits et plus personnels se trouvent
+deux bonnes heures plus au nord, à Biddinghuizen, et qui s’est fait sangler
+là-bas une fois sur un brancard trouve ensuite bien sages neuf mazes exploités à
+la chaîne. Si vous cherchez le volume et la romance à la tronçonneuse, Bottrop
+est parfait.
 
 Le festival se joue sur **22 soirées sélectionnées, du 26 septembre au 8
 novembre 2026**, principalement du vendredi au dimanche ; en journée, le parc
@@ -266,8 +262,8 @@ d’attractions est ce soir-là la chose la plus normale qui vous arrive.
 
 ![Acteur portant un masque de soudeur et un tablier de cuir devant une porte de conteneur | Le boucher attend déjà. Et non, ce n’est pas un comité d’accueil. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
-Et puis la vedette discrète de la collection : **Slaughterhouse**, une usine de
-transformation de viande dans laquelle vous tenez le rôle de la matière
+Celle dont on reparle le plus longtemps ensuite, c’est **Slaughterhouse**, une
+usine de transformation de viande dans laquelle vous tenez le rôle de la matière
 première. On vous « inspecte » d’abord dans une salle d’attente façon wagon à
 bestiaux, puis on vous sangle sur un siège suspendu à un rail de plafond.
 L’idée, c’est le croc de boucher ; l’effet, c’est l’impuissance totale : bras
@@ -315,7 +311,8 @@ Sale » montrait en 2025 une femme terrifiée vendue aux enchères comme « 
 la publicité néerlandaise la plus contestée de l’année ; la Reclame Code
 Commissie y a vu une atteinte à la dignité humaine, et Walibi l’a retirée le 21
 août 2025. Un an plus tard, le même clown distribue de la barbe à papa et dort
-mal. On peut appeler ça de la prudence ou de l’habileté. Les deux, sans doute.
+mal. Comme publicité, ça marche mieux : le spot de 2025 a fait parler de ses
+images, celui-ci fait parler de sa chute.
 
 Ce que vaut Biddinghuizen sans machines à fumée, et ce que coûte Untamed en file
 d’attente un jour ordinaire, se trouve dans le [guide
@@ -488,9 +485,9 @@ gaulois : quelque part entre deux menhirs, un sanglier guette forcément.
 
 ## Les réfractaires : deux parcs de tête qui zappent Halloween
 
-La catégorie la plus charmante de toutes, ce sont les parcs qui ne participent
-tout simplement pas à ce cirque de brume et de tronçonneuses. Pas
-par inadvertance, mais par principe.
+Deux des parcs les plus forts de cette sélection ne participent pas du tout à ce
+cirque de brume et de tronçonneuses, et tous deux le disent clairement à
+l’avance.
 
 ### Phantasialand : rien. Absolument rien. Et c’est assumé.
 
@@ -605,29 +602,16 @@ statistique le fournit dans la foulée :
 
 ```
 
-## Conclusion : six semaines de frissons, pour tous les niveaux de nerfs
+## Quand y aller
 
-La saison Halloween 2026 a de quoi satisfaire tous les seuils de douleur : le
-volume pur au [Movie Park](ref:movie-park-germany) avec neuf mazes, la grande
-mise en scène de [Traumatica](ref:europa-park), le cinéma à parcourir de
-[Bobbejaanland](ref:bobbejaanland), le champ de maïs tout neuf de
-[Toverland](ref:attractiepark-toverland), et, pour les plus courageux, les
-[Walibi-Experiences](ref:walibi-holland) où l’on paie volontairement pour se
-faire tamponner, inonder et ouvrir. En contrepoint, l’automne silencieux et
-distingué de l’[Efteling](ref:efteling) et un
-[Phantasialand](ref:phantasialand) qui saute Halloween d’un haussement d’épaules
-et préfère enclencher directement la neige.
+Le niveau de nerfs que vous choisissez ne regarde que vous. Les week-ends
+d’octobre sont les jours les plus chargés de l’automne, et dans une file,
+personne ne vous saute dessus, c’est garanti, ce qui à ces prix-là est agaçant.
+Quel jour est le plus vide, les temps d’attente en direct et le calendrier
+d’affluence sur park.fan vous le disent, tout l’automne.
 
-Le niveau de nerfs que vous choisissez ne regarde que vous. Une seule chose vaut
-pour tous : la meilleure soirée d’Halloween est celle où vous ne passez pas la
-moitié du temps dans la file. Là, personne ne vous saute dessus, c’est garanti,
-et à ces prix-là c’est presque un affront. Quel jour est le plus vide, les temps
-d’attente en direct et le calendrier d’affluence sur park.fan vous le disent,
-tout l’automne.
-
-Restez au sec (mot-clé Below), restez en mouvement (mot-clé maïs), et si quelque
-chose vous saute dessus dans la brume : ce n’est qu’un élément du spectacle.
-Presque sûrement.
+Qui réserve Below emporte des chaussettes de rechange. Une fois, je ne l’ai pas
+fait.
 
 — Patrick
 

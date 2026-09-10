@@ -278,8 +278,8 @@ Pour comprendre comment un dark ride sans le moindre effet de frayeur produit
 bateau de huit minutes à travers quatorze scènes des Mille et Une Nuits, sans la
 moindre descente, conçue par Ton van de Ven. 1 800 visiteurs par heure, ce qui
 explique pourquoi elle apparaît rarement dans le tableau des attentes malgré sa
-popularité. Il ne s’y passe pratiquement rien, et pourtant on la range
-régulièrement parmi les meilleurs dark rides d’Europe.
+popularité. Il ne s’y passe pratiquement rien, et elle figure pourtant dans
+presque tous les classements des meilleurs dark rides européens.
 
 ![Le Stoomcarrousel et ses chevaux dorés sous une toile orange | L’orgue Gavioli a le même âge que le manège. La machine à vapeur est partie en 1944, le nom est resté. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -340,8 +340,8 @@ fermé en 2002 faute de chiffre d’affaires et a rouvert le 26 avril 2019.
 
 La valeur pratique de ce morceau de forêt est énorme, au passage. Il n’y a pas de
 file, pas de limite de capacité et pas de durée de parcours. Plusieurs milliers de
-visiteurs peuvent y circuler en même temps sans qu’un chiffre doive être inscrit
-sur un panneau quelque part. C’est précisément l’une des raisons pour lesquelles
+visiteurs peuvent y circuler en même temps sans qu’un temps d’attente doive
+jamais être affiché à l’entrée. C’est précisément l’une des raisons pour lesquelles
 un parc à près de six millions de visites a des attentes supportables.
 
 Depuis mai 2026, le parc refait le cheminement, parce que trente contes sur un
@@ -387,8 +387,8 @@ Efteling 5,78 M, Toverland 1,14 M.
 
 ```
 
-Phantasialand ne publie pas sa fréquentation ; les estimations du secteur tournent
-autour de deux millions. Il a donc une fraction du public d’Efteling et pourtant
+Phantasialand ne publie pas sa fréquentation ; l’index TEA en recense 2,1 millions
+pour 2024. Il a donc une fraction du public d’Efteling et pourtant
 les files les plus longues du tableau. La raison est la même division que celle que
 j’ai détaillée dans [L’art d’attendre](/blog/l-art-d-attendre) : l’attente, c’est
 la demande divisée par la capacité, et chez Efteling le numérateur est certes
@@ -435,8 +435,7 @@ sur un motif qui laisse la question ouverte : la juridiction a estimé qu’ils
 n’avaient pas qualité pour agir, leurs maisons se trouvant à 1,5 à 1,8 kilomètre
 de la zone protégée, avec la route provinciale N261 entre les deux. La question de
 savoir si Efteling a effectivement dépassé la condition, le Raad van State ne l’a
-pas tranchée. La question n’est donc pas répondue. Elle n’est simplement plus
-posée.
+pas tranchée. Personne n’a engagé de nouvelle procédure depuis.
 
 Depuis septembre 2021, une demande de nouveau permis portant sur **six millions**
 est par ailleurs déposée auprès de la province. Elle n’a toujours pas été accordée.
@@ -498,10 +497,8 @@ néerlandais est plus petit qu’il n’en a l’air.
 > eux-mêmes, [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) est la
 > plateforme des actions personnelles.
 
-Une fondation qui n’a le droit de rien reverser a mis ici quatre millions et un
-terrain dans quelque chose qui ne rapportera jamais un euro. Un groupe aurait
-vendu le terrain et distribué le produit. La maison est depuis tenue par des
-bénévoles et par des dons, semaine après semaine, depuis vingt-cinq ans.
+La maison est tenue par des bénévoles et par des dons, semaine après semaine,
+depuis vingt-cinq ans.
 
 ## Quand y aller
 
@@ -838,23 +835,15 @@ spectacle. Suivront la Sprookjesbibliotheek en 2027 et Missie Luminar en 2029.
 
 ## Une poubelle qui dit merci
 
-Efteling n’est pas le meilleur parc à montagnes russes d’Europe, et il ne veut pas
-l’être. Trois des dix attractions les plus demandées sont des dark rides, deux sont
-des gares du même train à vapeur, et la partie que presque chaque visiteur traverse
+Trois des dix attractions les plus demandées sont des dark rides, deux sont des
+gares du même train à vapeur, et la partie que presque chaque visiteur traverse
 une fois est un bout de forêt sans la moindre attraction.
-
-Ce qu’il est en revanche : un grand parc qui n’appartient ni à un groupe ni à une
-famille, mais à une fondation qui n’a le droit de rien reverser. Un parc qui a
-ouvert trois ans avant Disneyland et qui exploite encore aujourd’hui sa toute
-première idée, une forêt pleine de contes. Et un parc dont la propriétaire a
-installé à côté un village de vacances pour enfants gravement malades et l’a tenu
-vingt-cinq ans.
 
 La formule du Disney des Pays-Bas tient donc, si on l’entend comme un compliment
 sur la finition, le détail et l’envie de raconter. Comme description d’origine, elle
 ne tient pas. Personne n’a copié ce parc. Il était là le premier.
 
-À quoi cela ressemble en ce moment à Kaatsheuvel :
+S’il pleut en ce moment à Kaatsheuvel, cela décide de la moitié de la journée :
 
 ```weather-widget slug=efteling
 

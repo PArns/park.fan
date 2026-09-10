@@ -82,13 +82,13 @@ Disney der Niederlande.
 
 Siebzig Kilometer trennen die beiden Parks. In beiden steht eine Holzachterbahn
 vom selben amerikanischen Hersteller. Für die eine wartest du typischerweise
-16 Minuten, für die andere mehr als doppelt so lang. Die kürzere Schlange gehört
-der besseren Bahn.
+eine gute Viertelstunde, für die andere mehr als doppelt so lang. Die kürzere
+Schlange steht in Sevenum.
 
-Hier soll es um den Park drumherum gehen: das [Toverland](ref:attractiepark-toverland?long) in
-Sevenum, das dieses Jahr 25 wird, das ich für einen der schönsten kleinen Parks
+Das [Toverland](ref:attractiepark-toverland?long) in
+Sevenum wird dieses Jahr 25, das ich für einen der schönsten kleinen Parks
 Europas halte, und in dem ich einmal selbst im Kostüm auf der anderen Seite
-gestanden habe. Dazu später.
+gestanden habe.
 
 ## Was Troy so gut macht
 
@@ -134,10 +134,7 @@ nochmal.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## 16 Minuten, über zwei Saisons gemessen
-
-„Geheimtipp“ schreibt sich leicht in eine Überschrift. Belegen lässt er sich
-schwerer. Also die Zahlen.
+## Was Troy wirklich kostet, über zwei Saisons gemessen
 
 Über die letzten beiden Saisons, gerechnet aus über 150 Betriebstagen mit
 Wartezeit-Daten, liegt Troys **typische Wartezeit bei 16 Minuten** (Median).
@@ -154,8 +151,8 @@ Rechenmethode:
 
 ```
 
-Mehr als das Doppelte, für eine Bahn, die unter Enthusiasten in kaum einem
-Ranking über Troy steht. Über die Bauart hinweg wird das Bild noch deutlicher.
+Mehr als das Doppelte, für eine Bahn, die bei den European Star Awards nie über
+Troy stand. Über die Bauart hinweg wird das Bild noch deutlicher.
 Was kosten die großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-Launch, Stahl;phantasialand/fly|F.L.Y.|Flying, Stahl;efteling/joris-en-de-draak|Joris en de Draak|Holz;efteling/baron-1898|Baron 1898|Dive Coaster, Stahl;attractiepark-toverland/troy|Troy|Holz;attractiepark-toverland/fenix|Fēnix|Wing, Stahl columns=type,park,peak highlight=attractiepark-toverland/troy
@@ -454,7 +451,7 @@ Sommermonaten. Die Richtung ist eindeutig, die Nachkommastelle nicht.
 **Nach Wochentag** gehen die Zahlen kaum auseinander. Am vollsten ist es samstags
 (25 Minuten) und freitags (24 Minuten), von Sonntag bis Mittwoch sind es überall
 20 Minuten. Im Phantasialand liegen zwischen einem Dienstag und einem Samstag
-Welten. Hier ist fast jeder Tag ein guter Tag.
+Welten.
 
 Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
 Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limburg
@@ -516,7 +513,7 @@ Beim letzten Punkt lohnt sich ein Blick über die Grenze: Das Toverland verkauft
 eine ganz normale Jahreskarte mit Halloween drin. Das Phantasialand hat seine
 nach der Pandemie abgeschafft und trotz mehrerer Fan-Petitionen nicht
 zurückgebracht. Wer im Grenzgebiet wohnt und mehrmals im Jahr in einen guten Park
-geht, sollte diese beiden Sätze zweimal lesen.
+geht, spart mit der Toverland-Jahreskarte, was das Phantasialand gar nicht mehr anbietet.
 
 **Anreise.** Das Toverland liegt in **Sevenum** (Gemeinde Horst aan de Maas),
 Toverlaan 2, rund zehn Autominuten westlich von Venlo. Über die **A67** bist du

@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Un teatro al aire libre abarrotado visto desde atrás, con el público esperando a oscuras'
-  caption: 'Todos en el mismo sitio a la misma hora. Ese es el caso normal, no la excepción.'
+  caption: 'Fantasmic en los Hollywood Studios, justo antes de empezar. Diez mil personas que durante esa media hora no hacen cola en ningún sitio.'
   credit: 'Patrick Arns'
 seo:
   title: 'Un planificador para parques: cuenta las colas antes de ir'
@@ -49,8 +49,7 @@ seo:
 El plan que llevas en la cabeza aguanta hasta las dos de la tarde más o menos.
 Para entonces has hecho tres atracciones de ocho, estás en la cola equivocada y
 sabes que ya no sale. El número sobre la entrada ha sido correcto todo el rato.
-Lo es casi siempre. Solo que no dice nada sobre si el resto de tu lista va a
-ocurrir hoy.
+Sobre el resto de tu lista ahí no pone nada.
 
 En un parque compacto eso te cuesta una atracción, y la haces la próxima vez. En
 un parque que abre a las ocho de la mañana y no cierra hasta las once de la
@@ -62,7 +61,7 @@ demasiada gente, sino porque el orden estaba mal.
 
 Ese hueco es el que tenía park.fan. «Cuánta cola hay ahora» lo respondemos desde
 el primer día. «¿Es mucho para un martes?» desde
-[el verano pasado](/blog/son-70-minutos-mucho). La tercera pregunta no estaba en
+[hace dos semanas](/blog/son-70-minutos-mucho). La tercera pregunta no estaba en
 ninguna parte: ¿mi día sale así?
 
 Desde esta semana está. El [planificador](/planificador) pone tus atracciones en
@@ -79,9 +78,9 @@ Entre dos bloques está el traslado: cuánto hay y si el tiempo alcanza. El cami
 para salir de la estación y la propia vuelta están en ese hueco y no en el
 bloque, porque pertenecen al desplazamiento y no a la cola.
 
-Suena a detalle, y cambia cómo se mira un día de parque. Una lista de ocho
-atracciones no dice nada sobre si ese día caben ocho. Ocho bloques en una línea
-de tiempo que termina a las once de la noche lo dicen enseguida.
+Suena a detalle, y cambia cómo se mira un día de parque. Ocho atracciones en una
+lista son una declaración de intenciones. Ocho bloques en una línea de tiempo
+que termina a las once de la noche son una cuenta.
 
 ![El planificador con un día preparado en Magic Kingdom: diez bloques en una línea de tiempo desde las 8, con los traslados entre ellos y su distancia y tiempo a pie. | Diez atracciones un sábado de septiembre, puestas en este orden por el propio planificador.](/media/tagesplaner/planer-tag-es.webp)
 
@@ -195,8 +194,8 @@ nos ocupó un tiempo, porque es la diferencia entre «te reordeno la tarde» y
 «vuelve al final de la cola, por favor». Quien pulsa a las dos está a las dos en
 alguna cola, y esa ya no la mueve nadie.
 
-Y como una pulsación puede convertir tres bloques en once, junto al resultado
-hay un deshacer. Una vez, no ilimitadas, pero esa vez que hace falta.
+Y como una pulsación puede convertir tres bloques en once, el resultado trae un
+deshacer. Una vez, no ilimitadas, pero esa vez que hace falta.
 
 ## Lo que el planificador no sabe, lo dice
 
@@ -205,16 +204,16 @@ propósito menos de lo que podría.
 
 **La previsión se equivoca, y de forma medible.** En cada bloque seleccionado
 pone cuánto se apartaron de media las previsiones de esa atracción de lo que el
-día trajo realmente. «Típico» significa literalmente lo que dice: la mitad de
-los días caen más lejos. Por eso el número está ahí como error típico y nunca
+día trajo realmente. «Típico» quiere decir aquí: la mitad de los días caen más
+lejos. Por eso el número está ahí como error típico y nunca
 como un margen que ya contuviera la respuesta correcta.
 
 **Los horarios de espectáculo son dos cosas.** Lo que el parque ha publicado
 para hoy es un anuncio. Lo que hemos proyectado desde el último día de la semana
 equivalente es una suposición, y el planificador la dibuja más suave: con una
 tilde delante de la hora, línea de puntos y la fecha de la que salen los
-horarios. Nadie en el mundo conoce los horarios del sábado de dentro de dos
-semanas.
+horarios. Los horarios del sábado de dentro de dos semanas no los sabe nadie,
+nosotros tampoco.
 
 **Hay parques que no podemos medir.** [Hansa-Park](ref:hansa-park) publica sus
 tiempos de espera solo en su propia aplicación, en el wifi del parque. Hasta
@@ -231,7 +230,7 @@ una estuvieras de verdad en esa cola es la razón por la que se guarda.
 
 ## Vive en tu navegador
 
-No hay cuenta, ni registro, ni inicio de sesión. Tu plan está en tu navegador, y
+No te registras en ninguna parte. Tu plan está en tu navegador, y
 eso es lo predeterminado, no la versión recortada. Si limpias los datos del
 navegador, desaparece. Si abres park.fan en el móvil, es otro plan.
 
@@ -241,7 +240,7 @@ significa eso: quien tenga el enlace puede leerlo y cambiarlo. No hay ninguna
 contraseña delante. Quien no lo quiera, deja las notificaciones apagadas y no
 pierde nada más.
 
-Dos cosas más que se pasan por alto fácilmente. En el borde derecho de la
+Dos cosas más que se pasan por alto fácilmente. En el borde de la
 pantalla cuelga en cada página una pestaña que abre el planificador, incluso sin
 nada planificado. Y en el ordenador puedes abrir una segunda columna, y entonces
 hay dos días a la vez. Lo construí por una sola frase: «y el sábado, ¿cómo

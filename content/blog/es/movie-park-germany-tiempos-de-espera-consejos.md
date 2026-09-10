@@ -66,10 +66,10 @@ llama de otra manera desde 2005, pertenece a un grupo español desde 2010 y
 celebra su trigésimo cumpleaños precisamente con una atracción de Paramount.
 
 A eso se suma una cifra que no encaja en absoluto con la fama de este parque. A
-lo largo de **135 días de apertura medidos**, la espera típica en el
-[Movie Park](ref:movie-park-germany) es de veinte minutos. En el
+lo largo de **135 días de apertura medidos**, en el
+[Movie Park](ref:movie-park-germany) se hace apenas la mitad de cola que en el
 [Phantasialand](ref:phantasialand), a poco menos de una hora en coche hacia el
-sur, son treinta.
+sur.
 
 Y el día de la semana más vacío es el que ninguna guía de internet te dice.
 
@@ -642,7 +642,7 @@ los precios son la crítica más repetida en las reseñas de los visitantes. Par
 2026 el parque ha anunciado mejoras. Hasta ahora no he notado nada, y aquí como
 lo más rápido posible.
 
-Cómo está Bottrop ahora mismo:
+Que llueva o no en Bottrop decide medio parque:
 
 ```weather-widget slug=movie-park-germany
 
@@ -714,7 +714,7 @@ el Halloween Horror Festival, otro negocio distinto. Quien busque sobre todo
 montañas rusas grandes estará mejor en el
 [Phantasialand](ref:phantasialand) o en el [Heide-Park](ref:heide-park).
 
-## Para terminar
+## Lo que me llevo de Bottrop
 
 Durante mucho tiempo fui injusto con este parque. Desde Renania se pasa por
 delante del Phantasialand para llegar a Bottrop, y quien hace eso quiere un

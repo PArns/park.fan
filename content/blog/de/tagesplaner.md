@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Ein voll besetztes Freilufttheater von hinten, vor der Bühne wartet das Publikum im Dunkeln'
-  caption: 'Alle sind zur selben Zeit am selben Ort. Das ist der Normalfall, nicht die Ausnahme.'
+  caption: 'Fantasmic im Hollywood Studios, kurz vor Beginn. Zehntausend Leute, die für diese halbe Stunde nirgends anstehen.'
   credit: 'Patrick Arns'
 seo:
   title: 'Tagesplaner für den Freizeitpark: Wartezeiten vorher einrechnen'
@@ -48,8 +48,7 @@ seo:
 Der Plan im Kopf hält bis ungefähr zwei Uhr nachmittags. Bis dahin hast du drei
 von acht Bahnen geschafft, stehst in der falschen Schlange und weißt, dass sich
 das nicht mehr ausgeht. Die Zahl über dem Eingang stimmt dabei die ganze Zeit.
-Sie stimmt praktisch immer. Sie sagt nur nichts darüber, ob der Rest deiner
-Liste heute noch passiert.
+Über den Rest deiner Liste steht dort nichts.
 
 In einem kompakten Park kostet dich das eine Bahn, und du fährst sie beim
 nächsten Mal. In einem Park, der morgens um acht aufmacht und erst um elf abends
@@ -62,7 +61,7 @@ war.
 
 Genau diese Lücke hatte park.fan bisher. „Wie lang steht es gerade an“
 beantworten wir seit dem ersten Tag. „Ist das viel für einen Dienstag“ seit
-[letztem Sommer](/blog/sind-70-minuten-viel). Die dritte Frage stand nirgends:
+[zwei Wochen](/blog/sind-70-minuten-viel). Die dritte Frage stand nirgends:
 Geht mein Tag so überhaupt auf?
 
 Seit dieser Woche steht sie da. Der [Tagesplaner](/tagesplaner) legt deine
@@ -79,10 +78,9 @@ Zwischen zwei Blöcken steht der Umstieg: wie weit es ist und ob die Zeit reicht
 Der Weg aus der Station und die Fahrt selbst stecken in diesem Zwischenraum und
 nicht im Block, weil sie zum Umsteigen gehören und nicht zum Anstehen.
 
-Klingt nach einer Kleinigkeit, ändert aber, wie man einen Parktag anguckt. Eine
-Liste mit acht Bahnen sagt nichts darüber, ob acht Bahnen an diesem Tag
-überhaupt drin sind. Acht Blöcke auf einer Zeitleiste, die um 23 Uhr endet,
-sagen es sofort.
+Klingt nach einer Kleinigkeit, ändert aber, wie man einen Parktag anguckt. Acht Bahnen auf einer Liste sind eine
+Absichtserklärung. Acht Blöcke auf einer Zeitleiste, die um 23 Uhr endet, sind
+eine Rechnung.
 
 ![Der Tagesplaner mit einem geplanten Tag im Magic Kingdom: zehn Blöcke auf einer Zeitachse ab 8 Uhr, dazwischen Umstiege mit Entfernung und Gehzeit. | Zehn Bahnen an einem Samstag im September, in dieser Reihenfolge vom Planer selbst sortiert.](/media/tagesplaner/planer-tag-de.webp)
 
@@ -202,8 +200,7 @@ zwischen „ich sortiere deinen Nachmittag“ und „stell dich bitte hinten wie
 an“. Wer um 14 Uhr auf den Knopf drückt, steht um 14 Uhr in irgendeiner
 Schlange, und die verschiebt niemand mehr.
 
-Und weil so ein Knopfdruck aus drei Blöcken elf machen kann, steht neben dem
-Ergebnis ein Rückgängig. Einmal, nicht beliebig oft, aber das eine Mal, das man
+Und weil so ein Knopfdruck aus drei Blöcken elf machen kann, gibt es zum Ergebnis ein Rückgängig. Einmal, nicht beliebig oft, aber das eine Mal, das man
 braucht.
 
 ## Was der Planer nicht weiß, sagt er dazu
@@ -213,16 +210,14 @@ weniger behauptet, als er könnte.
 
 **Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
 steht, wie weit die Vorhersagen für diese Bahn im Schnitt von dem entfernt
-lagen, was der Tag dann wirklich brachte. „Typisch“ heißt dabei wörtlich das,
-was es heißt: Die Hälfte der Tage liegt weiter daneben. Deshalb steht die Zahl
+lagen, was der Tag dann wirklich brachte. „Typisch“ heißt hier: Die Hälfte der Tage liegt weiter daneben. Deshalb steht die Zahl
 als typischer Fehler da und nie als Spanne, in der die richtige Antwort schon
 drin wäre.
 
 **Showzeiten sind zweierlei.** Was der Park für heute veröffentlicht hat, ist
 eine Ansage. Was wir vom letzten passenden Wochentag hochgerechnet haben, ist
 eine Vermutung, und die wird im Planer weicher gezeichnet: mit Tilde vor der
-Uhrzeit, gepunkteter Linie und dem Datum, von dem die Zeiten stammen. Kein
-Anbieter der Welt kennt Showzeiten für übernächsten Samstag.
+Uhrzeit, gepunkteter Linie und dem Datum, von dem die Zeiten stammen. Showzeiten für übernächsten Samstag kennt niemand, wir auch nicht.
 
 **Manche Parks können wir gar nicht messen.** Der [Hansa-Park](ref:hansa-park)
 gibt seine Wartezeiten nur in der eigenen App im Park-WLAN aus. Für uns kommt
@@ -240,7 +235,7 @@ ist der Grund, warum er überhaupt aufbewahrt wird.
 
 ## Er liegt in deinem Browser
 
-Es gibt kein Konto, keine Registrierung und keinen Login. Dein Plan liegt in
+Du meldest dich nirgends an. Dein Plan liegt in
 deinem Browser, und das ist die Voreinstellung, nicht die Sparversion. Räumst du
 die Browserdaten auf, ist er weg. Öffnest du park.fan auf dem Handy, ist es ein
 anderer Plan.
@@ -251,10 +246,10 @@ schreibt dazu, was das bedeutet: Wer den Link hat, kann ihn lesen und ändern. E
 gibt kein Passwort, das davor liegt. Wer das nicht will, schaltet die
 Benachrichtigungen nicht ein und verliert sonst nichts.
 
-Zwei Sachen noch, die man leicht übersieht. Am rechten Bildschirmrand hängt auf
-jeder Seite ein Reiter, der den Planer aufmacht, auch wenn noch gar nichts
-geplant ist. Und am Rechner kannst du eine zweite Spalte aufmachen, dann stehen
-zwei Tage gleichzeitig da. Für diesen einen Satz habe ich das gebaut: „und wie
+Zwei Sachen noch, die man leicht übersieht. Auf jeder Seite hängt am Rand ein
+Reiter, der den Planer aufmacht, auch wenn noch gar nichts geplant ist. Und am
+Rechner lässt sich eine zweite Spalte aufziehen, dann stehen zwei Tage
+gleichzeitig da. Für diesen einen Satz habe ich das gebaut: „und wie
 sähe das am Samstag aus“.
 
 ## So fängst du an

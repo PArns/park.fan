@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: «hard gaan», Untamed e 20 minuti di coda'
+title: 'Walibi Holland: «hard gaan», Untamed e il polder su cui sorge'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-08-19'
@@ -9,7 +9,8 @@ featured: false
 excerpt: >-
   Walibi Holland sorge su terra che nel 1957 era ancora sott’acqua, da dodici
   anni si promuove con una parola presa dalla scena hardstyle e con Untamed ha
-  uno dei migliori coaster d’Europa, per il quale di norma aspetti 20 minuti. Su
+  uno dei migliori coaster d’Europa, per il quale in un giorno normale non
+  aspetti quasi nulla. Su
   un parco che i visitatori fraintendono con regolarità, sulle experience di
   Halloween che si pagano volontariamente e sull’evento natalizio che il parco
   ha appena cancellato.
@@ -55,7 +56,7 @@ seo:
 
 Il terreno su cui sorge Untamed nel 1957 era ancora sott’acqua.
 
-Non è una metafora. Il 29 giugno 1957 la parte orientale del Flevoland è emersa,
+Il 29 giugno 1957 la parte orientale del Flevoland è emersa,
 nel 1963 in questo polder è stato fondato il villaggio di Biddinghuizen, e
 tuttora si trova circa tre metri sotto il livello del mare. Quando sei in cima
 al lift di [Untamed](ref:walibi-holland/untamed), sei sospeso a 36,5 metri sopra
@@ -216,7 +217,7 @@ sudore nella sua tana con l’ascia in mano e niente di tutto questo è successo
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Un pedale del freno non è ancora. Ma qualcuno è andato a vedere dov’è.
+Nel 2026 non è arrivato ancora un reclamo.
 
 ## Untamed
 
@@ -454,12 +455,12 @@ ciò che il parco ha deciso negli ultimi due anni.
 
 ```
 
-## Venti minuti per la migliore attrazione del parco
+## Quanto costa davvero Untamed
 
 Sulle ultime due stagioni, calcolato da **più di 130 giorni di apertura con dati di
-attesa utilizzabili**, l’**attesa tipica nella media del parco è di 20 minuti**
-(mediana). Il 90º percentile, il valore sotto il quale ricadono nove misurazioni
-su dieci, arriva a 31 minuti.
+attesa utilizzabili**, l’**attesa tipica nella media del parco è di un quarto
+d’ora scarso** (mediana). Il 90º percentile, il valore sotto il quale ricadono
+nove misurazioni su dieci, arriva a 31 minuti.
 
 Attrazione per attrazione si presenta così:
 
@@ -498,7 +499,8 @@ Una precisazione prima che qualcuno prenda i numeri troppo sul serio: il nostro
 storico per questo parco comincia nell’agosto 2024, e Walibi apre solo da aprile
 a ottobre. Dietro i valori mensili da aprile ad agosto ci sono ogni volta da 11 a
 30 giorni misurati, e questo regge. Da settembre a marzo non abbiamo quasi dati,
-per questo lì non compare alcun numero. La direzione è chiara, il decimale no.
+per questo lì non compare alcun numero. Un mese con undici giorni misurati ti dice se viaggi nella stagione giusta, non
+se risparmi cinque minuti.
 
 ## Halloween: il programma più duro del Benelux
 
@@ -926,7 +928,8 @@ Untamed con la cascata e le lettere sopra il lift: è lì che ti fermi e tiri
 fuori la macchina fotografica, e nulla di tutto questo deve nascondersi dietro
 Disney o Phantasialand.
 
-Venti minuti. È il prezzo di Untamed in un giorno normale.
+In un giorno normale Untamed ti costa meno coda di qualsiasi attrazione della
+sua categoria in Renania Settentrionale-Vestfalia.
 
 Fai l’ora in più. E quando sarai in cima al lift a guardare quel polder piatto,
 diritto, assolutamente artificiale, pensa per un attimo che nel 1957 qui c’era

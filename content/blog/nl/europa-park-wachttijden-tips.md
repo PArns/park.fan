@@ -136,8 +136,8 @@ _langste_ rij van het park heeft.
 
 ## Waarom het grootste park de kortste rijen heeft
 
-Wachttijd is geen kwestie van populariteit. Het is een deling, vraag gedeeld
-door capaciteit. In [De kunst van het wachten](/blog/de-kunst-van-het-wachten)
+Wachttijd is vraag gedeeld door capaciteit, en de populariteit van een baan
+staat daarbij alleen in de teller. In [De kunst van het wachten](/blog/de-kunst-van-het-wachten)
 heb ik dat uitvoerig doorgerekend. Het Europa-Park is het beste bewijs daarvoor
 dat ik in Europa ken, omdat bij dit park allebei de kanten van de breuk extreem
 zijn.
@@ -913,7 +913,7 @@ liggen in december met typisch 28 minuten zelfs een tikje hoger dan in augustus.
 Voor november zet onze voorspelling daarentegen alle 19 dagen die ze afdekt op
 “laag”; gemeten wachttijden hebben we uit die maand nog niet.
 
-## Tot slot
+## Waarom ik voor de Euro-Mir nog een keer terugga
 
 De zin die het vaakst boven dit park staat, luidt “beste pretpark ter wereld”,
 en hij klopt in zoverre dat een internationale stemming in de branche hem tien
@@ -926,7 +926,7 @@ jaar opengaat en niemand langs de rij laat.
 Voor Voltron en Silver Star rijd je naar Rust. Dat je voor allebei zo kort
 staat, ligt aan de tachtig andere dingen ernaast.
 
-Hoe het er op dit moment in Rust uitziet:
+Of het in Rust regent, bepaalt wat Eurosat doet:
 
 ```weather-widget slug=europa-park
 

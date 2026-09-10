@@ -203,17 +203,17 @@ in the [Toverland guide](/blog/toverland-troy-wait-times-tips).
 
 ## The December openers
 
-These parks are shut for the rest of the winter and open again for three to six
-weeks. The windows are short, and that has consequences for the queues, more on
+These parks are shut for the rest of the winter and open again for two to six
+weeks. The windows are short, and short windows make long queues, more on
 that below.
 
 ### Walibi Belgium: Walibi Winter, 5 December to 3 January
 
 While the Dutch sister park gives up, [Walibi Belgium](ref:walibi-belgium) in
 Wavre carries on unchanged. From **5 December 2026 to 3 January 2027** it puts
-up eight decorated areas, all built along northern landscapes: Alpin Village,
-Frozen Land, Polar Playground, Glowing Greetings, Chocolate Factory, Festive
-Tropics, Twinkle Town and, new this year, **Northern Dock**, a Scandinavian
+up eight decorated areas, most of them northern: Alpin Village, Frozen Land,
+Polar Playground and Twinkle Town, plus Glowing Greetings, Chocolate Factory,
+Festive Tropics and, new this year, **Northern Dock**, a Scandinavian
 harbour around [Mecalodon](ref:walibi-belgium/mecalodon), the family coaster
 built for the park’s 50th birthday.
 
@@ -296,7 +296,7 @@ the Mediterrània area, the Three Kings parade, the night Spanish children get
 their presents.
 
 A warning that comes from our own measurements: of all the parks in this
-article, PortAventura has the longest queues, and that holds across the whole
+overview, PortAventura has the longest queues, and that holds across the whole
 year rather than just at Christmas. The table further down puts them side by
 side. Expecting an empty season because it is winter where you live means
 planning for the wrong country.
@@ -388,7 +388,7 @@ the middle of them. Wintertraum adds a further twist: it is a destination in its
 own right. People drive to Brühl for the shows, not in spite of the season.
 
 And because "which of them is the busiest" gets asked on every car journey,
-here are the parks from this article side by side, each with its quietest
+here are the parks from this overview side by side, each with its quietest
 weekday:
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand

@@ -139,8 +139,8 @@ la coda _più lunga_ di tutte.
 
 ## Perché il parco più grande ha le code più corte
 
-Il tempo di attesa non è una questione di popolarità. È una divisione, domanda
-diviso capacità. Nell’[arte dell’attesa](/blog/l-arte-dell-attesa) ho fatto i
+Il tempo di attesa è domanda diviso capacità, e quanto una giostra sia amata
+entra solo al numeratore. Nell’[arte dell’attesa](/blog/l-arte-dell-attesa) ho fatto i
 conti per esteso. L’Europa-Park è la prova migliore che conosca in Europa, perché
 da lui entrambi i lati della frazione sono estremi.
 
@@ -927,7 +927,7 @@ agosto. Per novembre invece la nostra previsione classifica come “basso” tut
 19 i giorni che copre; tempi di attesa misurati da quel mese non ne abbiamo
 ancora.
 
-## Per finire
+## Perché per l’Euro-Mir ci torno un’altra volta
 
 La frase che sopra questo parco compare più spesso è “miglior parco divertimenti
 del mondo”, ed è vera nella misura in cui una votazione internazionale del settore
@@ -940,7 +940,7 @@ lasci passare nessuno davanti alla coda.
 A Rust ci si va per Voltron e Silver Star. Che davanti a tutt’e due si stia così
 poco, dipende dalle altre ottanta cose lì accanto.
 
-Com’è adesso a Rust:
+Se a Rust sta piovendo o no decide di Eurosat:
 
 ```weather-widget slug=europa-park
 

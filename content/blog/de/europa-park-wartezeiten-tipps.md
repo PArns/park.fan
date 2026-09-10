@@ -139,8 +139,8 @@ Rust die _längste_ Schlange des Parks hat.
 
 ## Warum der größte Park die kürzesten Schlangen hat
 
-Wartezeit ist keine Frage der Beliebtheit. Sie ist eine Division, Nachfrage
-geteilt durch Kapazität. In der [Kunst des Wartens](/blog/die-kunst-des-wartens)
+Wartezeit ist Nachfrage geteilt durch Kapazität, und die Beliebtheit einer Bahn
+steht dabei nur im Zähler. In der [Kunst des Wartens](/blog/die-kunst-des-wartens)
 habe ich das ausführlich durchgerechnet. Der Europa-Park ist der beste Beleg
 dafür, den ich in Europa kenne, weil bei ihm beide Seiten des Bruchs extrem sind.
 
@@ -920,7 +920,7 @@ Wartezeiten sind im Dezember mit typisch 28 Minuten sogar einen Tick höher als 
 August. Für den November stuft unsere Prognose dagegen alle 19 Tage, die sie abdeckt, auf
 „niedrig“ ein; gemessene Wartezeiten haben wir aus diesem Monat noch nicht.
 
-## Zum Schluss
+## Warum ich für die Euro-Mir noch einmal hinfahre
 
 Der Satz, der über diesem Park am häufigsten steht, lautet „bester Freizeitpark
 der Welt“, und er stimmt insofern, als eine internationale Branchenabstimmung ihn
@@ -933,7 +933,7 @@ Jahr aufmacht und niemanden an der Schlange vorbeilässt.
 Man fährt für Voltron und Silver Star nach Rust. Dass man vor beiden so kurz
 steht, liegt an den achtzig anderen Sachen daneben.
 
-Wie es gerade in Rust aussieht:
+Ob in Rust gerade Regen fällt, entscheidet über Eurosat:
 
 ```weather-widget slug=europa-park
 

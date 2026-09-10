@@ -80,13 +80,13 @@ exit Sevenum. Most of them still have a good hour ahead of them, on to
 Kaatsheuvel and the [Efteling](ref:efteling), the Disney of the Netherlands.
 
 Seventy kilometres separate the two parks. Both have a wooden coaster from the
-same American manufacturer. For one of them you typically wait 16 minutes, for
-the other more than twice that. The shorter queue belongs to the better ride.
+same American manufacturer. For one of them you typically wait a good quarter of
+an hour, for the other more than twice that. The shorter queue is the one in
+Sevenum.
 
-This is meant to be about the park around it: [Toverland](ref:attractiepark-toverland?long) in
-Sevenum, turning 25 this year, which I consider one of the loveliest small parks
-in Europe, and where I once stood on the other side of it all, in costume. More
-on that later.
+[Toverland](ref:attractiepark-toverland?long) in Sevenum turns 25 this year, I
+consider it one of the loveliest small parks in Europe, and I once stood on the
+other side of it all there, in costume.
 
 ## What Troy gets right
 
@@ -130,10 +130,7 @@ remember it as "brilliant, but rough": ride it again.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## 16 minutes, measured across two seasons
-
-"Best-kept secret" is easy to put in a headline. Harder to back up. So, the
-numbers.
+## What Troy really costs you, measured across two seasons
 
 Across the last two seasons, calculated from more than 150 operating days with wait-time
 data, Troy’s **typical wait is 16 minutes** (median). Even the 90th percentile,
@@ -149,7 +146,8 @@ racing coaster. Same data basis, same method:
 
 ```
 
-More than double, for a ride that hardly any enthusiast ranking puts above Troy.
+More than double, for a ride that has never finished above Troy at the European
+Star Awards.
 Across ride types the picture gets clearer still. What do the big names of the
 region cost you in waiting time, wood or steel?
 
@@ -439,7 +437,7 @@ days than the summer months. The direction is clear, the decimal place is not.
 **By weekday** the numbers barely spread out. Saturday is the busiest (25
 minutes) and Friday next (24 minutes), and from Sunday to Wednesday it is 20
 minutes throughout. At Phantasialand there are worlds between a Tuesday and a
-Saturday. Here, almost every day is a good day.
+Saturday.
 
 You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
@@ -499,7 +497,7 @@ That last point is worth a look across the border: Toverland sells a perfectly
 ordinary annual pass with Halloween included. Phantasialand scrapped theirs
 after the pandemic and, despite several fan petitions, has not brought it back.
 If you live in the border region and visit a good park more than once a year,
-read those two sentences twice.
+the Toverland annual pass saves you what Phantasialand no longer sells at all.
 
 **Getting there.** Toverland is in **Sevenum** (municipality of Horst aan de
 Maas), Toverlaan 2, about ten minutes' drive west of Venlo. Via the **A67** you

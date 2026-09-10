@@ -61,15 +61,12 @@ smesso da un pezzo di essere un po' di decorazione ed è diventato una stagione
 a sé, con biglietti propri, limiti d’età propri e un pubblico che si sposta
 proprio per questo infarto controllato.
 
-Al terrore importa deliziosamente poco dei confini nazionali, quindi conviene
-guardare oltre il proprio orticello: dalla Renania Settentrionale-Vestfalia,
-circa quattro ore di macchina ti portano al più grande evento di Halloween del
-continente e alla forse più subdola innovazione della paura d’Europa. Solo che
-si trovano, guarda caso, in due paesi diversi. Ecco cosa offre la stagione
-**2026**: le grandi notti horror, le versioni per famiglie con rete di
-sicurezza, i due parchi di primo piano che a tutto il circo _non_ partecipano
-ostentatamente e la domanda a cui park.fan risponde meglio di qualsiasi
-comunicato stampa: quando c’è più gente, e quando te la cavi meglio?
+Al terrore, in questo, importa poco dei confini nazionali. Dalla Renania
+Settentrionale-Vestfalia, in circa quattro ore di macchina, ci sono il più
+grande evento di Halloween del continente e le experience per cui la gente
+arriva a Biddinghuizen da tutta Europa, soltanto in due paesi diversi. E la
+domanda a cui si risponde più di rado è quella sulla data: in quali serate ci
+si infila in queste macchine del fumo senza restare quaranta minuti davanti.
 
 > **Due parole sulle date:** i parchi ritoccano i loro programmi di Halloween
 > per tutta l’estate. Per ogni parco linkiamo la pagina ufficiale dell’evento
@@ -124,12 +121,10 @@ Bering.
 Ora che la line-up è nota, si può rispondere anche alla domanda ovvia: “il più
 grande” non è automaticamente “il migliore”. L’HHF è la Volkswagen degli eventi
 di Halloween: enorme, solido, qualcosa per tutti, ma nelle serate piene anche
-lavoro di catena con coda davanti al maze. L’evoluzione davvero interessante
-dell’horror europeo sta avvenendo altrove in questo momento, in dosi molto più
-piccole e molto più personali, due ore buone più a nord, a Biddinghuizen
-(pazienza, ci arriviamo subito). Chi cerca la massa e il romanticismo da
-motosega, a Bottrop va benissimo. Chi vuole avere _davvero_ paura, continui a
-leggere.
+lavoro di catena con coda davanti al maze. I formati più piccoli e più
+personali stanno due ore buone più a nord, a Biddinghuizen, e chi lì si è fatto
+legare una volta a una barella, dopo trova mansueti nove maze a flusso continuo.
+Chi cerca la massa e il romanticismo da motosega, a Bottrop va benissimo.
 
 Si gioca in **22 serate selezionate, dal 26 settembre all'8 novembre 2026**,
 prevalentemente dal venerdì alla domenica; di giorno il parco è aperto
@@ -261,8 +256,9 @@ normale che ti capita.
 
 ![Attore con maschera da saldatore e grembiule di cuoio davanti alla porta di un container | Il macellaio aspetta già. E no, non è un comitato di benvenuto. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
-La star segreta della collezione è **Slaughterhouse**, uno stabilimento di
-lavorazione delle carni in cui assumi il ruolo della materia prima. Prima vieni
+Quello di cui si continua a parlare più a lungo è **Slaughterhouse**, uno
+stabilimento di lavorazione delle carni in cui assumi il ruolo della materia
+prima. Prima vieni
 “ispezionato” in una sala d’attesa in stile vagone bestiame, poi legato a un
 sedile appeso a una rotaia a soffitto. L’idea è il gancio da macellaio,
 l’effetto è la totale inermità: braccia inutili, gambe a comoda altezza di
@@ -306,8 +302,9 @@ mostrava nel 2025 una donna terrorizzata messa all’asta come “oggetto 666”
 lasciata cadere in un trituratore. Con **889 reclami** è diventato lo spot
 olandese più contestato dell’anno; la Reclame Code Commissie ci ha visto una
 lesione della dignità umana e Walibi lo ha ritirato il 21 agosto 2025. Un anno
-dopo lo stesso clown distribuisce zucchero filato e dorme male. Si può chiamarla
-prudenza o astuzia. Probabilmente sono entrambe.
+dopo lo stesso clown distribuisce zucchero filato e dorme male. Come pubblicità
+funziona meglio: dello spot del 2025 si discutevano le immagini, di questo si
+discute la battuta.
 
 Com’è Biddinghuizen senza macchine del fumo, e quanto costa Untamed in coda in
 una giornata normale, sta nella [guida a
@@ -482,9 +479,8 @@ sia in agguato anche un cinghiale.
 
 ## I renitenti: due parchi di punta che saltano Halloween
 
-E ora la categoria più simpatica di tutte: i parchi che a tutto il circo di
-nebbia e motoseghe semplicemente non partecipano. Non per svista, ma per
-principio.
+Due dei parchi più forti di questa panoramica al circo di nebbia e motoseghe
+non partecipano affatto, e lo dicono entrambi chiaramente in anticipo.
 
 ### Phantasialand: niente. Proprio niente. E dichiarato.
 
@@ -595,28 +591,15 @@ ultime stagioni, lo fornisce la statistica all’istante:
 
 ```
 
-## Conclusione: sei settimane di brivido, qualcosa per ogni tempra
+## Quando andarci
 
-La stagione di Halloween 2026 ha qualcosa per ogni soglia del dolore: il puro
-volume del [Movie Park](ref:movie-park-germany) con nove maze, la grande messa
-in scena di [Traumatica](ref:europa-park), il cinema percorribile di
-[Bobbejaanland](ref:bobbejaanland), il campo di mais appena nato di
-[Toverland](ref:attractiepark-toverland) e, per i più coraggiosi, le
-[Walibi-Experiences](ref:walibi-holland), in cui si paga volontariamente per
-essere timbrati, allagati e squarciati. Come contraltare, l’autunno silenzioso
-e signorile dell’[Efteling](ref:efteling) e un
-[Phantasialand](ref:phantasialand) che salta Halloween con un’alzata di spalle
-e preferisce accendere direttamente la neve.
+Per quale tempra decidere è affar tuo. I fine settimana di ottobre sono i giorni
+più pieni dell’autunno, e in coda non ti salta addosso _nessuno_, garantito, il
+che a questi prezzi dà fastidio. Quale giorno sia il più vuoto te lo dicono i
+tempi di attesa live e il calendario dell’affluenza su park.fan, per tutto
+l’autunno.
 
-Per quale tempra decidere è affar tuo. Una cosa sola vale per tutti: la miglior
-serata di Halloween è quella in cui non passi metà del tempo in coda. Lì non ti
-salta addosso _nessuno_, garantito, e a questi prezzi è quasi una sfacciataggine.
-Quale giorno sia il più vuoto te lo dicono i tempi di attesa live e il calendario
-dell’affluenza su park.fan, per tutto l’autunno.
-
-Resta asciutto (parola chiave Below), resta in movimento (parola chiave mais), e
-se nella nebbia qualcosa ti salta addosso: fa solo parte dello spettacolo. Quasi
-sicuramente.
+Chi prenota Below si porta un cambio di calze. Io una volta non l’ho fatto.
 
 — Patrick
 
