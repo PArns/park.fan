@@ -7,8 +7,8 @@ mode: published
 excerpt: >-
   60 Minuten Wartezeit, und trotzdem vergeht die Zeit wie im Flug? Hinter jeder
   guten Warteschlange stecken Psychologie, Storytelling und knallharte
-  Kapazitäts-Mathematik. Ein Deep Dive von der Pre-Show bis zu Little’s Law,
-  und mittendrin der Grund, warum es park.fan gibt.
+  Kapazitäts-Mathematik. Von der Pre-Show bis zu Little’s Law, und mittendrin
+  der Grund, warum es park.fan gibt.
 tags:
   - wartezeiten
   - warteschlangen
@@ -66,7 +66,7 @@ dem Nachmittag eigentlich mit mir passiert war, wollte ich danach genau wissen.
 Es kommen dabei zwei Formeln vor, und beide passen zusammen auf einen
 Bierdeckel.
 
-## Die Psychologie der Zeit: Warum sich Minuten dehnen
+## Warum sich Minuten dehnen
 
 Das Grundproblem hat der Harvard-Ökonom **David Maister** schon 1985 in seinem
 Klassiker
@@ -76,7 +76,7 @@ länger an als beschäftigte Zeit. Wer nur auf die Rückseite des Vordermanns
 starrt, für den kriecht die Uhr. Wer etwas zu sehen, zu hören oder zu tun hat,
 für den läuft sie fast normal weiter.
 
-Dazu kommen drei weitere Maister-Regeln, die jeder Park-Planer auswendig kennt:
+Maister hat acht davon aufgeschrieben. Diese drei sieht man in jeder Queue:
 
 - **Ungewisses Warten fühlt sich länger an als erklärtes Warten.** Deshalb
   markieren in der Queue alle paar Meter Restzeit-Angaben den Weg, und am
@@ -115,7 +115,7 @@ den Zähler beschäftigt.
 
 ```
 
-### Pre-Shows: Das Erlebnis beginnt vor dem Einstieg
+### Pre-Shows
 
 Am gründlichsten löst das die **Pre-Show**, die das Warten zum Teil der
 Attraktion umdeklariert. Das Paradebeispiel steht in den
@@ -174,9 +174,8 @@ Gruppen und verwandeln die letzte Viertelstunde in einen Teil der Attraktion,
 also genau die Phase, die laut Peak-End-Regel am stärksten erinnert wird. Und
 sie sind zugleich das Kapazitäts-Rückgrat: Geflogen wird in Theater-artigen
 **Link Chambers** mit 16 Plätzen pro Ebene, drei Ebenen übereinander, vier
-Theater parallel. Knapp 200 Gäste gleichzeitig, rund 1.400 pro Stunde. Selbst
-bei 120 Minuten Wartezeit erzählen die meisten hinterher nicht von der
-Schlange, sondern vom atmenden Avatar im Tank.
+Theater parallel. Knapp 200 Gäste gleichzeitig, rund 1.400 pro Stunde. Wer dort
+120 Minuten steht, erzählt hinterher vom atmenden Avatar im Tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -227,7 +226,7 @@ Dazu kommt hier ein Kapazitäts-Trick, der beiden Seiten hilft: die
 Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt, kürzt die eigene
 Wartezeit drastisch ab und hilft nebenbei dem Park, jeden Wagen randvoll zu
 machen. Jeder sonst leere Sitz ist verschenkte Kapazität, und ein Einzelfahrer füllt
-ihn, ohne dass jemand seinen Platz verliert. Das ist selten so eindeutig.
+ihn, ohne dass jemand seinen Platz verliert.
 
 ```glossary-widget slug=single-rider
 
@@ -253,7 +252,7 @@ Wartezeiten im Minutentakt.
 
 ![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung, eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Kapazität und Durchsatz: Das mathematische Geheimnis
+## Wie viele Menschen eine Bahn pro Stunde schafft
 
 **Durchsatz** heißt schlicht: wie viele Menschen eine Attraktion pro Stunde
 tatsächlich befördert. Diese Zahl entscheidet, wie lang die Schlange am Ende
@@ -327,7 +326,7 @@ von **einer Abfahrt alle 36 Sekunden**. Macht 1.600 Gäste pro Stunde, obwohl
 ein Zug nur 16 Personen fasst, also mehr als der Hulk mit seinen 32 Plätzen pro
 Abfahrt schafft.
 
-### Stillstand ist der Feind: Rolling Launches & Rolling Stations
+### Züge, die nie anhalten
 
 Die neueste Eskalationsstufe dieses Denkens: Züge, die gar nicht mehr anhalten.
 Voltron nutzt **Rolling Launches**, bei denen die Züge nicht vor dem Launch
@@ -404,7 +403,7 @@ der Welt, vom
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) bis
 nach Orlando, quasi permanent 45+ Minuten auf der Anzeige?
 
-Dafür gibt es drei Gründe, und alle drei sind Rechnerei:
+Das hat mit der Bahn wenig zu tun und mit Arithmetik viel:
 
 1. **Piratenschiffe sind keine Massentransportmittel.**
    [Peter Pan’s Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -472,8 +471,8 @@ können.
 
 Die Zahlen dazu sind fast schon komisch. Taron schafft rund **1.200 Gäste pro
 Stunde**, also ziemlich genau so viele wie Peter Pan’s Flight in Paris. Der
-Unterschied liegt nicht an der Bahn, sondern daran, worauf sich die Nachfrage
-drumherum verteilen kann. In Paris steht Peter Pan zwischen Dutzenden
+Unterschied steckt im Nenner: darauf, worauf sich die Nachfrage drumherum
+verteilen kann. In Paris steht Peter Pan zwischen Dutzenden
 Alternativen. In Brühl hat an einem Ferien-Samstag ein erheblicher Teil des
 Parks gleichzeitig dieselbe eine Bahn im Kopf. Und Voltron im Europa-Park liegt
 mit 1.600 pro Stunde nur ein Drittel darüber, hält aber die Schlange deutlich
@@ -599,7 +598,7 @@ laufenden Fahrzeug, und die Attraktion schluckt so über 3.000 Gäste pro Stunde
 mehr als so mancher Mega-Coaster, mit einer Fahrzeugkette, die seit den
 Sechzigern klaglos ihre Runden dreht und nie nach einer Pause fragt.
 
-## Fazit: Die Anzeige erzählt nur die halbe Geschichte
+## Was davon auf park.fan steht
 
 Kürzer wird die nächste 60-Minuten-Schlange dadurch nicht. Aber sie liest sich
 anders. Drei Fragen bleiben, und für jede gibt es auf park.fan eine Antwort:
@@ -621,11 +620,9 @@ anders. Drei Fragen bleiben, und für jede gibt es auf park.fan eine Antwort:
 
 Nur gegen die Psychologie können wir nichts tun. Ob sich die Stunde wie eine
 Stunde anfühlt oder wie ein erster Akt, entscheiden Pre-Shows, Theming und der
-Peak-End-Effekt, und die Parks, die dieses Handwerk beherrschen. Wenn du also
-das nächste Mal in einer liebevoll thematisierten Schlange stehst und die Zeit
-seltsam schnell vergeht: Das ist kein Zufall, das ist Design. Genieß es, du
-bist Teil einer ziemlich großartigen Illusion. Und ob sie sich lohnt, sagen dir
-vorher die Daten.
+Peak-End-Effekt, und die Parks, die dieses Handwerk beherrschen. Zwei Minuten vor der Abfahrt steht die Zahl
+auf der Parkseite. Danach ist es ohnehin egal, wie lang sich die Stunde
+anfühlt.
 
 — Patrick
 

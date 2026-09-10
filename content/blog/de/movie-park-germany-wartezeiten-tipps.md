@@ -637,7 +637,7 @@ die Preise sind der am häufigsten genannte Kritikpunkt in Besucherbewertungen.
 Für 2026 hat der Park Verbesserungen angekündigt. Gemerkt habe ich davon bisher
 nichts, und ich esse hier so schnell wie möglich.
 
-Wie es gerade in Bottrop aussieht:
+Ob in Bottrop gerade Regen fällt, entscheidet über den halben Park:
 
 ```weather-widget slug=movie-park-germany
 
@@ -706,7 +706,7 @@ große Achterbahnen sucht, ist im
 [Phantasialand](ref:phantasialand) oder im [Heide-Park](ref:heide-park) besser
 aufgehoben.
 
-## Zum Schluss
+## Was ich dir für Bottrop mitgebe
 
 Ich bin diesem Park lange nicht gerecht geworden. Aus dem Rheinland fährt man am
 Phantasialand vorbei, um nach Bottrop zu kommen, und wer das tut, will einen

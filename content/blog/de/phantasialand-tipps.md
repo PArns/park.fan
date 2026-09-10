@@ -67,15 +67,15 @@ Die ganze rührselige Vorgeschichte steht in
 [unserer Gründungsstory](/blog/willkommen-im-park-fan-blog); hier soll es um das
 gehen, was über die Jahre an handfestem Wissen abgefallen ist. Denn so sehr ich
 diesen Park liebe, muss ich ihn gleich zu Beginn in Schutz und in die Pflicht
-nehmen: Er ist kompakt, wahnsinnig begehrt und an den falschen Tagen ein
-Geduldsspiel. Einfach spontan hinfahren und den perfekten Tag erwischen, das
+nehmen: Er hat sechs echte Headliner für ein Publikum, das für zwanzig reichen
+würde. Einfach spontan hinfahren und den perfekten Tag erwischen, das
 gelingt hier seltener als anderswo. Aber mit ein bisschen Vorbereitung wird er zu
 dem, was er für mich seit über dreißig Jahren ist: der schönste Tag, den ein
 Freizeitpark in Europa schenken kann. Also beides: die Wunder, für die man kommt, und die
 **Phantasialand-Wartezeiten**, die man kleinhalten kann, wenn man den Tag richtig
 wählt.
 
-![Das Phantasialand in Brühl aus der Vogelperspektive | Mein Heimatpark in Brühl, Europas immersivster Freizeitpark. | wide](/media/phantasialand/background-16x9.jpg)
+![Das Phantasialand in Brühl aus der Vogelperspektive | Mein Heimatpark in Brühl: neun Themenbereiche auf 28 Hektar. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Ein Park wie eine andere Welt, und warum er so voll ist
 
@@ -97,8 +97,7 @@ fährt, hat trotzdem einen vollen Tag.
 
 Genau diese Kompaktheit ist aber die Kehrseite. Der Park hat nur eine Handvoll
 echter Headliner, und an einem vollen Tag will jeder zur selben Zeit auf
-dieselben zwei, drei Bahnen. In unserem Deep Dive zur
-[Kunst des Wartens](/blog/die-kunst-des-wartens) habe ich vorgerechnet, warum
+dieselben zwei, drei Bahnen. In der [Kunst des Wartens](/blog/die-kunst-des-wartens) habe ich vorgerechnet, warum
 [Taron](ref:phantasialand/taron) an einem Ferien-Samstag genauso schnell in die
 Sättigung läuft wie Peter Pan’s Flight in Paris: Ein kleines Publikum schützt dich
 nicht vor langen Schlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
@@ -107,7 +106,7 @@ weitläufigen [Europa-Park](ref:europa-park) mit seinen dreizehn Achterbahnen.
 Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenenden
 gut füllt, der sagenumwobene „leere Samstag“ ist selten geworden.
 
-## Vom Märchenwald zum immersivsten Park Europas: eine kurze Geschichte
+## Von der Braunkohlegrube zum Basaltdorf
 
 Dass sich das Phantasialand so anfühlt, wie es sich anfühlt, hat mit seiner
 Herkunft zu tun, und die ist ziemlich genau das Gegenteil eines Thrill-Parks.
@@ -133,8 +132,8 @@ Michael Jackson persönlich die Minenbahn
 einen großen Teil des alten Parks in Flammen; die Feuerwehr sprach hinterher davon,
 man sei „an einer Katastrophe vorbeigeschrammt“. Es hätte das Ende sein können.
 
-Es wurde stattdessen der Wendepunkt. Auf den Trümmern der abgebrannten Bahnen baute
-der Park binnen eines Jahres die Themenwelt Wuze Town mit den beiden verrückten
+Auf den Trümmern der abgebrannten Bahnen baute
+der Park stattdessen binnen eines Jahres die Themenwelt Wuze Town mit den beiden verrückten
 Spinning Coastern [Winja’s Fear](ref:phantasialand/winjas-fear) & Force und die
 Wildwasserbahn [River Quest](ref:phantasialand/river-quest), beide fährst du heute
 noch. Aus der Asche kam eine neue Haltung: Wenn schon neu bauen, dann richtig, dann
@@ -143,9 +142,8 @@ bis zur letzten Schraube durchthematisiert.
 Wie ernst es der Park damit meinte, zeigte sich 2006. Mit Deep in Africa und dem
 Inverted Coaster [Black Mamba](ref:phantasialand/black-mamba) legte das
 Phantasialand eine komplette afrikanische Welt an, Lehmhütten, Wasserläufe, die
-Bahn tief zwischen die Felsen gesetzt statt in den Himmel geschraubt. Das war der
-Moment, in dem aus dem netten Ausflugsziel eine Pilgerstätte für Park-Fans aus ganz
-Europa wurde. 2016 folgte das Basaltdorf Klugheim mit
+Bahn tief zwischen die Felsen gesetzt statt in den Himmel geschraubt. Ab 2006 reisten die Enthusiasten aus Belgien und den
+Niederlanden dafür an. 2016 folgte das Basaltdorf Klugheim mit
 [Taron](ref:phantasialand/taron), 2020 die viktorianische Fliegerstadt
 Rookburgh mit dem weltweit ersten Flying-Launch-Coaster
 [F.L.Y.](ref:phantasialand/fly). Bei beiden ist der Themenbereich zuerst da und
@@ -327,7 +325,7 @@ kurz auf die Live-Wartezeiten: Stehen die Zahlen niedrig, spar dir das Geld und 
 dir stattdessen ein zweites Stück Kuchen. (Neben dem Ultimate gibt es noch einen
 zweiten Weg zu F.L.Y. ohne lange Schlange, dazu gleich bei den Hotels.)
 
-## Rope Drop & Reihenfolge: so umgehst du die längsten Wartezeiten
+## In welcher Reihenfolge du fährst
 
 Der wirksamste kostenlose Trick im Phantasialand heißt **früh da sein und
 antizyklisch fahren**. Es gibt kaum etwas Schöneres als einen dieser Parks in der
@@ -360,7 +358,7 @@ gegen ein Heer von Express-Pass-Gästen, die dir pausenlos die Kapazität wegkau
 Deine beste Waffe ist schlicht das Timing, und das hast du, anders als das Wetter,
 komplett selbst in der Hand.
 
-## Essen, und warum es hier eine eigene Überschrift bekommt
+## Essen im Phantasialand
 
 Bei keinem anderen Park würde ich das so hervorheben: Das Phantasialand ist auch
 wegen des **Essens** eine Reise wert. Während in vielen
@@ -368,12 +366,11 @@ Parks „Essen“ gleichbedeutend ist mit lauwarmen Pommes zum Mondpreis, gehör
 Gastronomie hier fest zum Erlebnis dazu, mit einer Sorgfalt, die man sonst nur aus
 richtigen Restaurants kennt. Drei Adressen, die ich jedem nenne, der mich fragt:
 
-- **Rutmor’s Taverne** (Klugheim) ist mein Favorit und für viele Fans das beste
-  Restaurant, das je in einen Freizeitpark gebaut wurde. À la carte, urig bis in
+- **Rutmor’s Taverne** (Klugheim) ist mein Favorit, und ich kenne niemanden, der nach
+  einem Besuch dort widerspricht. À la carte, urig bis in
   die geschnitzten Holzbänke, mit herzhafter Küche, Spätzle, Schnitzel,
   Bratkartoffeln, dazu Suppen und Platten zum Teilen und ein Kaiserschmarrn, der
-  einen kurz vergessen lässt, dass draußen eine Achterbahn wartet. Große Portionen,
-  faire Preise, freundlicher Service. Wenn du an einem Parktag einmal richtig sitzen
+  einen kurz vergessen lässt, dass draußen eine Achterbahn wartet. Wenn du an einem Parktag einmal richtig sitzen
   und essen willst: hierher.
 - **Restaurant Uhrwerk** (Rookburgh) ist der Steampunk-Bruder davon, Burger,
   hausgemachte Pommes, Pasta und Bowls, in einer Kulisse aus Zahnrädern und Messing,
@@ -482,7 +479,6 @@ Stimmungsvolleres.
 Dann ist da das **Essen, das es nur im Winter gibt.** Der Wintertraum fährt jedes
 Jahr Spezialitäten auf, meine heimliche Nummer eins sind die Flat Croissants:
 knusprig gepresst, herrlich buttrig und tatsächlich nur in der Wintersaison zu haben.
-Dazu ein Becher Glühwein, und der kälteste Parktag wird zum gemütlichsten.
 
 Mein liebster Wintertraum-Tipp überhaupt: **Taron im Dunkeln.** Im Winter wird es
 früh finster, und dann durch das beleuchtete Klugheim zu jagen, wenn die
@@ -550,12 +546,12 @@ ein datiertes Online-Tagesticket, dessen Preis dynamisch mit der Nachfrage steig
 Ja, mit einem gut gewählten Tag und der Reihenfolge oben passt alles Wichtige in
 einen Tag. Entspannter (und mit den Themenhotels ein kleines Fest) sind zwei Tage.
 
-## Fazit: wenig Park, viel Planung, riesige Belohnung
+## Was ich dir für deinen Tag mitgebe
 
-Das Phantasialand ist kein Park, den man nebenbei mitnimmt. Er ist kompakt, begehrt
-und an den falschen Tagen anstrengend, aber an den richtigen Tagen, mit der
-richtigen Reihenfolge und einer Pause in Rutmor’s Taverne, ist er das immersivste,
-liebevollste Erlebnis, das Europa zu bieten hat. Die gute Nachricht: Fast alles, was
+Das Phantasialand ist kein Park, den man nebenbei mitnimmt. Er hat ein Drittel
+des Europa-Park-Publikums und neun Minuten längere Schlangen. An den richtigen
+Tagen, mit der richtigen Reihenfolge und einer Pause in Rutmor’s Taverne, ist er
+der Park, in den ich seit dreißig Jahren zurückgehe. Die gute Nachricht: Fast alles, was
 einen guten von einem großartigen Tag trennt, entscheidest du **vorher**, beim
 Blick auf den Kalender.
 
