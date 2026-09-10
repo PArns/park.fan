@@ -573,8 +573,8 @@ hour of the evening still doesn’t want to go home.
 — Patrick
 
 _P.S.: No, I don’t buy a Quick Pass on a green Tuesday. On principle, and because
-the data says I don’t need it. As for the red Saturday: the best Fast Pass is the
-day you never booked in the first place._
+the data says I don’t need it. For the red Saturday I would have bought one, and
+could have saved myself the trouble by booking four weeks earlier for €28._
 
 ---
 

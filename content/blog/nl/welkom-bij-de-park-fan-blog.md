@@ -28,7 +28,7 @@ coverImage:
   alt: 'Velocicoaster-looping voor het kasteel van Zweinstein, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: de Velocicoaster in de looping, daarachter het kasteel van Zweinstein.'
 seo:
-  title: 'Van sprookjesmeer tot wachttijden-AI'
+  title: 'Waarom park.fan bestaat'
   description: >-
     Een kinderwagen aan het sprookjesmeer, nachten vol code, een AI die
     pretparkdagen leest: het verhaal achter park.fan en wanneer je bezoek de
@@ -75,9 +75,7 @@ Ik heb op die knoppen gedrukt, en als mijn ouders al twee scènes verder waren,
 rende ik terug om nog een keer te drukken. Voor mij was dit nooit een
 parkbezoek.
 
-Dat dit meer het begin van alles zou zijn, wist ik toen natuurlijk niet. Maar
-ergens tussen die decors heeft zich iets vastgezet dat me nooit meer heeft
-losgelaten.
+Dat dit meer het begin van alles zou zijn, wist ik toen natuurlijk niet.
 
 ## “1001 Nacht”, de ritten die blijven
 
@@ -115,9 +113,8 @@ manier om er iets van terug te geven.
 
 ## Over muizen van 5000 en een legende van 10.000
 
-Parken die met hart en ziel gebouwd worden, houden nooit op met het toevoegen
-van nieuwe momenten. [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
-is er sinds juni 2011 zo een: een interactieve dark ride waarin
+[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare)
+is sinds juni 2011 zo’n moment: een interactieve dark ride waarin
 ongediertebestrijder Oskar Koslowski de bakkerij van patissier Gustav E. Lehmann
 van muizen verlost, gewapend met een spuitzak, verdeeld over 48 3D-schermen en
 zes minuten rijtijd. Een verse highscore tovert nog altijd dezelfde kinderlijke
@@ -132,13 +129,10 @@ precies zit? Dat blijft, met alle begrip voor de vraag, mijn geheim.
 Iets wat ik lang niet wist en waar ik nog steeds even stil van word: Maus au
 Chocolat is in 2011 gebouwd op precies het terrein waar tot 2009 de gondelbaan
 stond. Als ik daar met mijn vriendin over punten ruzie, zit ik in een gebouw dat
-staat waar ik als kind met mijn vader door de drakenmuil voer. Hetzelfde stuk
-grond, dertig jaar en een heel leven ertussen.
+staat waar ik als kind met mijn vader door de drakenmuil voer.
 
-Daarna pannenkoeken en shakes bij **Phenie’s** in Wuze Town, luchtig en
-schitterend en veel te goed voor pretparkhoreca. Uiterlijk dan begrijp je waar
-dit park zijn aanspraak op baseert om “Europe’s Most Immersive Theme Park” te
-heten.
+Daarna pannenkoeken en shakes bij **Phenie’s** in Wuze Town, en ze zijn beter
+dan wat pretparken verder als ontbijt verkopen.
 
 ## Orlando, mei 2026, eenmaal in je leven
 
@@ -167,8 +161,7 @@ Parallel aan al die parkjaren was er altijd een tweede ik, een dat al meer dan
 vijfentwintig jaar software bouwt. Veel van die jaren in de VPN-wereld, eerst
 als Head of Software Development bij **CyberGhost**, tegenwoordig als
 Distinguished Software Engineer bij **ExpressVPN**. Systemen die miljoenen
-mensen tegelijk gebruiken zonder er ooit een gedachte aan te wijden, wat
-vermoedelijk het grootste compliment is dat je infrastructuur kunt maken.
+mensen tegelijk gebruiken zonder er ooit een gedachte aan te wijden.
 Daarnaast open source, smarthome-adapters en meer zijprojecten dan goed voor me
 is; alle spullen die zich opstapelen op [arns.dev](https://arns.dev) en
 [GitHub](https://github.com/PArns).
@@ -193,23 +186,23 @@ inruilde voor een reling.
 
 > “Laat mij die wachttijden even trackken.” _Zei ik. Het werden drie jaar._
 
-## Van script naar platform: hoe park.fan echt ontstond
+## Drie jaar waarin uit een script iets anders werd
 
 Wat het werd, noemen ontwikkelaars een passieproject en vriendinnen
-vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
-kwam een dataverzamelaar, uit de dataverzamelaar een pipeline, uit de pipeline
-een platform. Daartussen lagen nachten waarin ik om twee uur ’s nachts naar
+vermoedelijk eerder “alweer dat parkgedoe”. Uit het script kwam een
+dataverzamelaar, en op een gegeven moment draaide die voor tweehonderd parken in
+plaats van voor één. Daartussen lagen nachten waarin ik om twee uur ’s nachts naar
 wachttijdcurves staarde omdat een of ander park zijn data anders doorgaf dan
 alle andere. Debugsessies die langer duurden dan menige parkdag. En dat heel
 eigen moment van ontzag wanneer een model voor het eerst een overvolle zaterdag
 correct voorspelt, dagen voordat die plaatsvindt.
 
-Want dat was de eigenlijke wens: Het ging nooit om het tonen van het actuele getal. Dat hangt het park zelf op.
-Interessant wordt het een stap eerder: een eigen model moest leren
-dat een regenachtige brugdag in oktober iets totaal anders is dan een zonnige
-vakantiezaterdag in juli. Dat vakantiekalenders, weer, openingstijden en jaren
-aan wachttijdhistorie samen een patroon vormen dat je kunt lezen, als je maar
-hardnekkig genoeg kijkt.
+Het ging nooit om het tonen van het actuele getal. Dat hangt het park zelf op.
+Interessant wordt het een stap eerder: een eigen model moest leren dat een
+regenachtige brugdag in oktober iets totaal anders is dan een zonnige
+vakantiezaterdag in juli. Dat vakantiekalenders, weer, openingstijden en de
+bijgehouden openingsdagen samen een patroon vormen dat je kunt lezen, als je
+maar hardnekkig genoeg kijkt.
 
 Op het bureau waar al die nachten plaatsvonden ligt tegenwoordig trouwens een
 origineel **Taron-loopwiel**. Eentje van de baan, welteverstaan, niet het
@@ -226,7 +219,7 @@ het model zichzelf een cijfer: elke voorspelling wordt later naast de werkelijk
 gemeten wachttijd gelegd, en wat daaruit komt staat op de
 [Fancast-pagina](/fancast).
 
-## Wanneer is de beste dag? Is een zondag de moeite waard?
+## De beste dag is zelden de dag die je vermoedt
 
 Het zijn altijd dezelfde drie vragen die een parkbezoek oproept, lang voordat
 iemand in de auto zit. Wanneer is de beste dag? Is een zondag de moeite waard?
@@ -234,8 +227,8 @@ En hoe druk wordt het echt?
 
 Precies daarvoor is park.fan gebouwd. Elke parkpagina heeft een kalender van de
 beste bezoekdagen, tot een jaar vooruit, gevoed met vakantiekalenders,
-weersverwachtingen, openingstijden en de complete wachttijdhistorie van het
-park. De blik in die data ruimt en passant een paar onderbuikgevoelens op. Een
+weersverwachtingen, openingstijden en elke openingsdag die we tot nu toe hebben
+bijgehouden. De blik in die data ruimt en passant een paar onderbuikgevoelens op. Een
 zondag in grauw november kan rustiger zijn dan welke dinsdag ook in de
 zomervakantie van Noordrijn-Westfalen. Een brugdag is bijna nooit een goed idee.
 En de “geheime tip” om bij regen te gaan werkt precies zolang tot alle anderen
@@ -253,19 +246,16 @@ Er zijn goede sites die je laten zien hoe lang de rij op dit moment is. Dat
 kunnen wij ook, elke minuut, wereldwijd. Maar park.fan is gebouwd voor de vraag
 die daaraan voorafgaat: _is het überhaupt de moeite om te gaan?_
 
-Daarom gaan we een paar stappen verder:
+Een eigen model kijkt daarom tot **365 dagen** vooruit in plaats van alleen naar
+de aanduiding boven de ingang, en de kalender van de beste dagen verdicht
+vakanties, weer, schedules en elke bijgehouden openingsdag tot één antwoord:
+gaan of liever niet. Elk van die voorspellingen wordt later naast de werkelijk
+gemeten wachttijd gelegd, en wie wil weten hoe goed het model is, hoeft mij niet
+te geloven: de cijfers staan op de [Fancast-pagina](/fancast).
 
-- **Voorspellingen in plaats van alleen de actuele stand.** Een eigen AI-model
-  kijkt tot 365 dagen vooruit, niet alleen naar de aanduiding boven de ingang.
-- **De kalender van de beste dagen.** Vakanties, weer, schedules en jaren aan
-  historie, verdicht tot één eenvoudig antwoord: gaan of liever niet.
-- **Trefferpercentages in het openbaar.** Elke voorspelling wordt later naast de
-  werkelijk gemeten wachttijd gelegd. Wie wil weten hoe goed het model is, hoeft
-  mij niet te geloven maar kan het nakijken op de [Fancast-pagina](/fancast).
-- **Alles op één plek.** Wachttijden, drukteniveaus, weer bij de parkingang,
-  openingstijden en attractiehistories, in zes talen.
-- **Gratis en zonder reclame.** Geen concern, geen paywall. Een fansite in de
-  beste zin van het woord, gebouwd door iemand die zelf in de rij staat.
+Daarbij wachttijden, drukteniveaus, weer bij de parkingang, openingstijden en
+attractiehistories in zes talen. Geen concern, geen paywall, geen reclame,
+gebouwd door iemand die zelf in de rij staat.
 
 ## Wat deze blog moet worden
 
@@ -276,10 +266,10 @@ totaal anders, afhankelijk van de baan en de dag:
   hadden drie echte coasters gepast.
 - **50 minuten** voor de
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  op een zaterdagmiddag? Sterk, de piek ligt anders op 85, je hebt zo’n beetje
+  op een zaterdagmiddag? Sterk, de piek ligt anders bijna twee keer zo hoog, je hebt zo’n beetje
   de express te pakken.
 - **20 minuten** voor
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), een
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), twee
   jaar na de opening? Of een topdag, of de massa is eindelijk uitgewaaierd.
 
 ![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Typisch is hier een klein half uur, op piekdagen een veelvoud daarvan. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
@@ -297,8 +287,8 @@ spits af: Disney World, Universal en SeaWorld, foto’s inbegrepen.
 Wanneer is [Taron](ref:phantasialand/taron?bare) het meest de moeite waard? En
 houden onze voorspellingen wat ze beloven?
 
-**Nieuws.** Kort en zonder omhaal. Gebeurt er iets, dan staat het hier, sneller
-dan jij een cookiebanner wegklikt.
+**Nieuws.** Kort en zonder omhaal. Gebeurt er iets, dan staat het hier, meestal
+nog dezelfde dag.
 
 De berichten leven daarbij. Grafieken, kaarten en wachttijden trekken
 rechtstreeks uit park.fan, wat je leest doet het park op dit moment echt. De
@@ -324,8 +314,8 @@ datamens uit roeping. Meer tech- en zijprojectmateriaal op
 
 ## Wat hier niet gaat gebeuren
 
-park.fan kost niets, toont geen reclame en is van niemand behalve de
-nieuwsgierigheid. Wordt een park slecht gerund, dan staat dat hier. Is een app
+park.fan kost niets, toont geen reclame en is van niemand. Wordt een park slecht
+gerund, dan staat dat hier. Is een app
 slechter dan de officiële, dan staat dat er ook. Heb je een onderwerp dat aan je
 knaagt? Schrijf me, het adres staat in het [colofon](/impressum).
 
@@ -333,11 +323,8 @@ En omdat het gewoon moest, is er nu zelfs een **park.fan-song**. Ja, echt:
 
 [Meer loopings, minder stilstaan, het onofficiële park.fan-volkslied](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
-Dank je wel dat je tot hier gelezen hebt. Deze plek, het platform, de blog, dat
-alles, is mijn dankjewel aan een park aan een sprookjesmeer, aan ouders die een
-klein jongetje er telkens weer mee naartoe namen, aan een vader in een gondel,
-en aan elke afzonderlijke persoon die net zoveel van pretparken houdt als ik. En
-
+Dit is mijn dankjewel aan een park aan een sprookjesmeer en aan twee ouders die
+een klein jongetje er telkens weer mee naartoe namen.
 
 — Patrick
 

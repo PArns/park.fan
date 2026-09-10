@@ -63,7 +63,7 @@ of the daily peaks: on half of all days measured the longest queue was shorter
 than that value, on the other half longer. **Busy** is the 90th percentile of
 the same series, roughly the one day in ten when there really was a crowd.
 
-Both are percentiles rather than averages, and that is not a detail. A mean can
+Both are percentiles rather than averages. A mean can
 be shifted by a single exceptional day: one afternoon with a breakdown and a
 150-minute backlog drags a whole month’s average upwards, even though on 29 days
 none of it was noticeable. The median does not flinch at a day like that. The
@@ -107,7 +107,7 @@ with a concrete time in park time.
 
 ## Most of it is decided before you set off
 
-The time of day saves you half an hour. The date saves you the day. Two days of
+The time of day saves you half an hour, the date up to a whole one. Two days of
 the same holiday week can be half an hour of average wait apart, and an ordinary
 calendar gives no sign of it. What makes the difference: which regions are on
 holiday, whether a bridge day is attached, whether it rains, and whether
@@ -142,10 +142,6 @@ year, and the two before it are gone for good.
 
 ## And the places where we say nothing
 
-A page full of filled-in fields is easy to build. It only gets interesting when
-the filled fields can be trusted, and for that a few fields have to be allowed
-to stay empty.
-
 [Hansa-Park](ref:hansa-park), for instance, only publishes its wait times in its own app, and only
 for devices on the park’s Wi-Fi. There is no public interface. In the raw data
 this park looks like any other at three in the morning: no ride is reporting
@@ -172,7 +168,6 @@ deliberately claim nothing. Four concrete visits are in there too, from the
 family in the autumn holidays to the annual pass holder at seven in the evening.
 
 And the next time you are standing at the entrance staring at the display: look
-up what is normal for this ride on a Tuesday. Ten seconds later you will know
-whether this is worth being annoyed about or whether today is simply Tuesday.
+up what is normal for this ride on a Tuesday.
 
 — Patrick

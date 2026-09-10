@@ -533,7 +533,8 @@ pancakes bij Phenie’s verdwijnt, en ’s avonds in het blauwe uur nog steeds n
 — Patrick
 
 _P.S.: Nee, ik koop op een groene dinsdag geen Quick Pass. Uit principe, en omdat de data zeggen dat ik hem niet
-nodig heb._
+nodig heb. Voor de rode zaterdag had ik hem wél gekocht, en had ik hem me kunnen
+besparen door vier weken eerder voor 28 € te boeken._
 
 ---
 

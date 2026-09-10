@@ -591,8 +591,8 @@ la hora azul, sigue sin querer irse a casa.
 — Patrick
 
 _P.D.: No, en un martes verde no compro ningún Quick Pass. Por principio, y porque
-los datos dicen que no lo necesito. Para el sábado rojo vale esto: el mejor Fast
-Pass es el día que ni siquiera llegaste a reservar._
+los datos dicen que no lo necesito. Para el sábado rojo sí lo habría comprado, y
+me lo habría ahorrado reservando cuatro semanas antes por 28 €._
 
 ---
 

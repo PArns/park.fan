@@ -81,12 +81,11 @@ delante, hasta Kaatsheuvel, hasta el [Efteling](ref:efteling), el Disney de los
 Países Bajos.
 
 Setenta kilómetros separan los dos parques. En ambos hay una montaña rusa de
-madera del mismo fabricante estadounidense. Por una esperas normalmente
-16 minutos, por la otra más del doble. La cola más corta le pertenece a la mejor
-atracción.
+madera del mismo fabricante estadounidense. Por una esperas normalmente un buen
+cuarto de hora, por la otra más del doble. La cola más corta está en Sevenum.
 
-Aquí quiero hablar del parque que la rodea: el [Toverland](ref:attractiepark-toverland?long)
-de Sevenum, que este año cumple 25, que considero uno de los parques pequeños
+El [Toverland](ref:attractiepark-toverland?long)
+de Sevenum cumple este año 25, lo considero uno de los parques pequeños
 más bonitos de Europa, y en el que una vez estuve yo mismo disfrazado, al otro
 lado.
 
@@ -134,10 +133,7 @@ brusca»: vuelve a montar.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## 16 minutos, medidos a lo largo de dos temporadas
-
-«Secreto mejor guardado» se escribe rápido en un titular. Demostrarlo cuesta
-más. Así que, los números.
+## Lo que Troy cuesta de verdad, medido a lo largo de dos temporadas
 
 A lo largo de las dos últimas temporadas, calculado sobre más de 150 días de
 funcionamiento con datos de espera, el **tiempo de espera típico de Troy es de
@@ -153,8 +149,8 @@ por su doble recorrido. Misma base de datos, mismo método de cálculo:
 
 ```
 
-Más del doble, para una atracción que en casi ningún ranking de aficionados
-queda por encima de Troy. Si cruzamos tipos de construcción, la imagen se vuelve
+Más del doble, para una atracción que en los European Star Awards nunca quedó
+por encima de Troy. Si cruzamos tipos de construcción, la imagen se vuelve
 aún más clara. ¿Qué cuestan en tiempo de espera los grandes nombres de la
 región, sean de madera o de acero?
 
@@ -468,7 +464,7 @@ decimal no.
 **Por días de la semana** las cifras apenas se separan. El día más lleno es el
 sábado (25 minutos) y después el viernes (24 minutos); de domingo a miércoles
 son 20 minutos en todos los casos. En Phantasialand hay un mundo entre un martes
-y un sábado. Aquí, casi cualquier día es un buen día.
+y un sábado.
 
 No te puedes fiar de eso en cuanto se superponen los calendarios de vacaciones
 neerlandeses y alemanes, el tiempo y los horarios de apertura, y en la zona
@@ -533,7 +529,8 @@ En este último punto conviene mirar al otro lado de la frontera: Toverland vend
 un pase anual de lo más normal con Halloween incluido. Phantasialand suprimió el
 suyo tras la pandemia y, pese a varias peticiones de fans, no lo ha recuperado.
 Quien viva en la zona fronteriza y vaya varias veces al año a un buen parque
-debería leer esas dos frases dos veces.
+ahorra con el pase anual de Toverland lo que Phantasialand ya ni siquiera
+ofrece.
 
 **Cómo llegar.** Toverland está en **Sevenum** (municipio de Horst aan de Maas),
 Toverlaan 2, a unos diez minutos en coche al oeste de Venlo. Por la **A67**

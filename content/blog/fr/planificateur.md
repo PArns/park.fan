@@ -64,7 +64,7 @@ n’est pas cochée. Pas parce qu’il y avait trop de monde, mais parce que l�
 
 C’est précisément le trou qu’avait park.fan. « Combien de temps d’attente en ce
 moment », on y répond depuis le premier jour. « Est-ce beaucoup pour un mardi »,
-depuis [l’été dernier](/blog/70-minutes-est-ce-beaucoup). La troisième question
+depuis [deux semaines](/blog/70-minutes-est-ce-beaucoup). La troisième question
 n’était nulle part : est-ce que ma journée tient debout ?
 
 Depuis cette semaine, elle y est. Le [planificateur](/planificateur) pose tes

@@ -203,17 +203,17 @@ in the [Toverland guide](/blog/toverland-troy-wait-times-tips).
 
 ## The December openers
 
-These parks are shut for the rest of the winter and open again for three to six
-weeks. The windows are short, and that has consequences for the queues, more on
+These parks are shut for the rest of the winter and open again for two to six
+weeks. The windows are short, and short windows make long queues, more on
 that below.
 
 ### Walibi Belgium: Walibi Winter, 5 December to 3 January
 
 While the Dutch sister park gives up, [Walibi Belgium](ref:walibi-belgium) in
 Wavre carries on unchanged. From **5 December 2026 to 3 January 2027** it puts
-up eight decorated areas, all built along northern landscapes: Alpin Village,
-Frozen Land, Polar Playground, Glowing Greetings, Chocolate Factory, Festive
-Tropics, Twinkle Town and, new this year, **Northern Dock**, a Scandinavian
+up eight decorated areas, most of them northern: Alpin Village, Frozen Land,
+Polar Playground and Twinkle Town, plus Glowing Greetings, Chocolate Factory,
+Festive Tropics and, new this year, **Northern Dock**, a Scandinavian
 harbour around [Mecalodon](ref:walibi-belgium/mecalodon), the family coaster
 built for the park’s 50th birthday.
 

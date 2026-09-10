@@ -64,7 +64,7 @@ più lunga è stata più corta di quel valore, nell’altra metà più lunga. **
 è il 90° percentile della stessa serie, all’incirca quel giorno su dieci in cui
 c’era davvero movimento.
 
-Sono entrambi percentili e non medie, e non è un dettaglio. Una media si lascia
+Sono entrambi percentili e non medie. Una media si lascia
 spostare da una singola giornata eccezionale: un pomeriggio con un guasto e 150
 minuti di coda tira su la media di un mese intero, anche se per 29 giorni non se
 n’è sentito nulla. La mediana davanti a una giornata così non si muove. Per
@@ -108,7 +108,7 @@ pagina di ogni attrazione, con un orario concreto nell’ora del parco.
 
 ## La parte grossa si decide prima di partire
 
-L’orario ti salva mezz’ora. La data ti salva la giornata. Tra due giorni della
+L’orario ti fa risparmiare mezz’ora, la data fino a un’ora intera. Tra due giorni della
 stessa settimana di vacanza ci può essere mezz’ora di attesa media di
 differenza, e da un calendario normale non si vede. A fare la differenza: quali
 regioni sono in vacanza, se c’è un ponte attaccato, se piove, e se oltre confine
@@ -143,10 +143,6 @@ due precedenti sono persi per sempre.
 
 ## E i punti in cui non diciamo nulla
 
-Una pagina con tutti i campi riempiti è facile da costruire. Diventa
-interessante solo quando ci si può fidare dei campi riempiti, e per questo
-qualche campo deve poter restare vuoto.
-
 [Hansa-Park](ref:hansa-park), per esempio, fornisce i suoi tempi di attesa solo nella propria app,
 e soltanto per i dispositivi collegati al wi-fi del parco. Non esiste
 un’interfaccia pubblica. Nei dati grezzi questo parco somiglia a qualunque altro
@@ -174,7 +170,6 @@ concrete, dalla famiglia nelle vacanze d’autunno all’abbonato annuale alle s
 di sera.
 
 E la prossima volta che sei all’ingresso a fissare il display: guarda cos’è
-normale su quell’attrazione di martedì. In dieci secondi saprai se c’è da
-arrabbiarsi o se oggi è semplicemente martedì.
+normale su quell’attrazione di martedì.
 
 — Patrick

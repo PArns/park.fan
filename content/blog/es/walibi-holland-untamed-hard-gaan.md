@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: «hard gaan», Untamed y 20 minutos de cola'
+title: 'Walibi Holland: «hard gaan», Untamed y el pólder sobre el que se levanta'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-08-19'
@@ -9,8 +9,8 @@ featured: false
 excerpt: >-
   Walibi Holland se levanta sobre tierra que en 1957 seguía bajo el agua, lleva
   doce años anunciándose con una palabra de la escena hardstyle y tiene en
-  Untamed una de las mejores montañas rusas de Europa, para la que normalmente
-  esperas 20 minutos. Sobre un parque que los visitantes malinterpretan una y
+  Untamed una de las mejores montañas rusas de Europa, para la que un día normal
+  apenas haces cola. Sobre un parque que los visitantes malinterpretan una y
   otra vez, sobre las experiences de Halloween por las que se paga
   voluntariamente y sobre el evento navideño que el parque acaba de cancelar.
 tags:
@@ -54,8 +54,7 @@ seo:
 
 El suelo sobre el que se levanta Untamed seguía bajo el agua en 1957.
 
-No es una metáfora. El 29 de junio de 1957 se secó la parte oriental de
-Flevoland, en 1963 se fundó en este pólder el pueblo de Biddinghuizen, y sigue
+El 29 de junio de 1957 se secó la parte oriental de Flevoland, en 1963 se fundó en este pólder el pueblo de Biddinghuizen, y sigue
 estando unos tres metros por debajo del nivel del mar. Cuando estás arriba en el
 lift de [Untamed](ref:walibi-holland/untamed), cuelgas a 36,5 metros sobre un
 campo que a su vez está bajo el nivel del mar. Toda la tierra bajo esta montaña
@@ -214,7 +213,7 @@ ha pasado. «Relax, het is bijna Halloween.»
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Un pedal de freno todavía no es. Pero alguien ha ido a mirar dónde está.
+En 2026 no ha habido ninguna queja.
 
 ## Untamed
 
@@ -451,11 +450,11 @@ decidido en los dos últimos años.
 
 ```
 
-## Veinte minutos para la mejor atracción del parque
+## Lo que Untamed cuesta de verdad
 
 A lo largo de las dos últimas temporadas, calculado a partir de **más de 130 días de
 apertura con datos de espera utilizables**, la **espera típica en el promedio
-del parque es de 20 minutos** (mediana). El percentil 90, el valor por debajo
+del parque es de un cuarto de hora escaso** (mediana). El percentil 90, el valor por debajo
 del cual quedan nueve de cada diez mediciones, llega a 31 minutos.
 
 Atracción por atracción queda así:
@@ -928,7 +927,8 @@ entrada a la Wilderness, la Zero Zone alrededor de Lost Gravity, la estación de
 Untamed con la cascada y las letras sobre el lift: ahí es donde te paras y sacas
 la cámara, y nada de eso tiene que esconderse ante Disney ni ante Phantasialand.
 
-Veinte minutos. Ese es el precio de Untamed un día normal.
+Untamed te cuesta un día normal menos cola que cualquier atracción de su clase
+en Renania del Norte-Westfalia.
 
 Haz la hora de más. Y cuando estés arriba en el lift mirando ese pólder plano,
 recto y absolutamente artificial, piensa un momento en que en 1957 aquí todavía

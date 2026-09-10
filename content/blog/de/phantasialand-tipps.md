@@ -574,8 +574,8 @@ blauen Stunde immer noch nicht heimwill.
 — Patrick
 
 _P.S.: Nein, ich kaufe an einem grünen Dienstag keinen Quick Pass. Aus Prinzip, und
-weil die Daten sagen, dass ich ihn nicht brauche. Für den roten Samstag gilt: Der
-beste Fast Pass ist der Tag, den du gar nicht erst gebucht hast._
+weil die Daten sagen, dass ich ihn nicht brauche. Für den roten Samstag hätte ich
+ihn gekauft, und hätte ihn mir vier Wochen früher für 28 € sparen können._
 
 ---
 

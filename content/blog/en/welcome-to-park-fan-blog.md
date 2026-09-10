@@ -202,7 +202,7 @@ The point was never displaying the current number. The park writes that up
 itself. It gets interesting one step earlier: a model of our own had to learn
 that a rainy bridge day in October is something completely different from a
 sunny holiday Saturday in July. That school holidays, weather, opening hours and
-years of wait-time history together form a pattern you can read, if you stare at
+the operating days we have recorded together form a pattern you can read, if you stare at
 it stubbornly enough.
 
 On the desk where all those nights took place there is, incidentally, an
@@ -228,7 +228,7 @@ really get?
 
 That’s exactly what park.fan was built for. Every park page has a calendar of
 the best days to visit, up to a year ahead, fed with school holiday calendars,
-weather forecasts, opening hours and the park’s complete wait-time history.
+weather forecasts, opening hours and every operating day we have recorded so far.
 Looking into that data clears out a few gut feelings along the way. A Sunday in
 grey November can be calmer than any Tuesday during the North Rhine-Westphalian
 summer holidays. A bridge day is almost never a good idea. And the “insider tip”
@@ -270,10 +270,10 @@ completely different depending on the ride and the day:
   coasters would have fitted into that window.
 - **50 minutes** for the
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  on a Saturday afternoon? Strong. The peak is usually 85, so you basically
+  on a Saturday afternoon? Strong. Otherwise the afternoon peak is nearly twice as long, so you basically
   caught the express.
 - **20 minutes** for
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a year
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) two years
   after opening? Either a dream day, or the crowds have finally dispersed.
 
 ![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Typical here is a good half hour, several times that on peak days. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)

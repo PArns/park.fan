@@ -48,9 +48,8 @@ seo:
 
 Il piano che hai in testa regge fino alle due del pomeriggio più o meno. A quel
 punto hai fatto tre attrazioni su otto, sei nella fila sbagliata e sai che non
-ci sta più. Il numero sopra l’ingresso è stato giusto per tutto il tempo. Lo è
-quasi sempre. Solo che non dice nulla sul fatto che il resto della tua lista
-accada ancora oggi.
+ci sta più. Il numero sopra l’ingresso è stato giusto per tutto il tempo. Sul
+resto della tua lista lì non c’è scritto niente.
 
 In un parco compatto questo ti costa un’attrazione, e la fai la prossima volta.
 In un parco che apre alle otto del mattino e chiude solo alle undici di sera,
@@ -61,7 +60,7 @@ tanto camminare, poco salire, e la sera metà lista non spuntata. Non perché ci
 fosse troppa gente, ma perché l’ordine era sbagliato.
 
 Questo era il buco che park.fan aveva. «Quanto si aspetta adesso» lo rispondiamo
-dal primo giorno. «È tanto per un martedì?» dall’[estate scorsa](/blog/70-minuti-sono-tanti).
+dal primo giorno. «È tanto per un martedì?» da [due settimane](/blog/70-minuti-sono-tanti).
 La terza domanda non c’era da nessuna parte: la mia giornata sta in piedi così?
 
 Da questa settimana c’è. Il [pianificatore](/pianificatore) mette le tue
@@ -78,10 +77,9 @@ Fra due blocchi c’è il trasferimento: quanto dista e se il tempo basta. Il
 percorso fuori dalla stazione e il giro stesso stanno in quello spazio e non nel
 blocco, perché appartengono allo spostamento e non alla fila.
 
-Sembra un dettaglio, e cambia il modo di guardare una giornata al parco. Una
-lista di otto attrazioni non dice nulla sul fatto che quel giorno ce ne stiano
-otto. Otto blocchi su una linea del tempo che finisce alle undici di sera lo
-dicono subito.
+Sembra un dettaglio, e cambia il modo di guardare una giornata al parco. Otto
+attrazioni in una lista sono una dichiarazione d’intenti. Otto blocchi su una
+linea del tempo che finisce alle undici di sera sono un conto.
 
 ![Il pianificatore con una giornata preparata a Magic Kingdom: dieci blocchi su una linea del tempo dalle 8, con i trasferimenti fra l’uno e l’altro, distanza e tempo a piedi. | Dieci attrazioni un sabato di settembre, messe in quest’ordine dal pianificatore stesso.](/media/tagesplaner/planer-tag-it.webp)
 
@@ -197,8 +195,8 @@ ci ha impegnati un po’, perché è la differenza fra «ti riordino il pomerigg
 «rimettiti in fondo alla fila, per favore». Chi preme alle due è alle due in
 qualche fila, e quella non la sposta più nessuno.
 
-E siccome una pressione può trasformare tre blocchi in undici, accanto al
-risultato c’è un annulla. Una volta, non a piacere, ma quella volta che serve.
+E siccome una pressione può trasformare tre blocchi in undici, al risultato è
+abbinato un annulla. Una volta, non a piacere, ma quella volta che serve.
 
 ## Quello che il pianificatore non sa, lo dice
 
@@ -207,8 +205,8 @@ di proposito meno di quanto potrebbe.
 
 **La previsione sbaglia, e in modo misurabile.** Su ogni blocco selezionato c’è
 scritto di quanto le previsioni per quell’attrazione si sono discostate in media
-da quello che la giornata ha portato davvero. «Tipico» significa alla lettera
-quello che dice: metà delle giornate cade più lontano. Per questo il numero sta
+da quello che la giornata ha portato davvero. «Tipico» qui vuol dire: metà
+delle giornate cade più lontano. Per questo il numero sta
 lì come errore tipico e mai come intervallo che conterrebbe già la risposta
 giusta.
 
@@ -216,8 +214,8 @@ giusta.
 pubblicato per oggi è un annuncio. Quello che abbiamo riportato dall’ultimo
 giorno della settimana corrispondente è una supposizione, e il pianificatore la
 disegna più tenue: con una tilde davanti all’ora, una linea punteggiata e la
-data da cui vengono gli orari. Nessuno al mondo conosce gli orari degli
-spettacoli del sabato fra due settimane.
+data da cui vengono gli orari. Gli orari degli spettacoli del sabato fra due
+settimane non li conosce nessuno, noi compresi.
 
 **Certi parchi non riusciamo proprio a misurarli.**
 [Hansa-Park](ref:hansa-park) pubblica i suoi tempi di attesa solo nella propria
@@ -236,7 +234,7 @@ quella fila è il motivo per cui viene conservata.
 
 ## Vive nel tuo browser
 
-Non c’è account, non c’è registrazione, non c’è login. Il tuo piano sta nel tuo
+Non ti registri da nessuna parte. Il tuo piano sta nel tuo
 browser, e questa è l’impostazione predefinita, non la versione ridotta. Se
 pulisci i dati del browser, sparisce. Se apri park.fan sul telefono, è un altro
 piano.
@@ -249,8 +247,8 @@ nient’altro.
 
 Ancora due cose che sfuggono facilmente. Sul bordo dello schermo, su ogni
 pagina, c’è una linguetta che apre il pianificatore, anche quando non è ancora
-pianificato nulla. E al computer puoi aprire una seconda colonna, e allora ci
-sono due giornate una accanto all’altra. L’ho costruito per una frase sola: «e
+pianificato nulla. E al computer si può aprire una seconda colonna, e allora ci
+sono due giornate insieme. L’ho costruito per una frase sola: «e
 sabato come verrebbe?».
 
 ## Come si comincia

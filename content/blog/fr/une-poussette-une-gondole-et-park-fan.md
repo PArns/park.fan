@@ -251,7 +251,7 @@ avant que quiconque monte en voiture. Quel est le meilleur jour ? Un dimanche,
 C’est exactement pour ça que park.fan a été construit. Chaque page de parc
 possède un calendrier des meilleurs jours de visite, jusqu’à un an à l’avance,
 nourri de calendriers de vacances scolaires, de prévisions météo, d’horaires
-d’ouverture et de l’historique complet des files du parc. Le regard porté sur
+d’ouverture et de chaque jour d’ouverture que nous avons relevé jusqu’ici. Le regard porté sur
 ces données balaie au passage quelques intuitions. Un dimanche de novembre gris
 peut être plus tranquille que n’importe quel mardi des vacances d’été de
 Rhénanie-du-Nord-Westphalie. Un jour de pont n’est presque jamais une bonne
@@ -297,10 +297,10 @@ différentes.
   coasters seraient entrés dans ce créneau.
 - **50 minutes** pour le
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  un samedi après-midi ? Excellent : le pic est sinon à 85, vous avez pour ainsi
+  un samedi après-midi ? Excellent : le pic de l’après-midi est sinon presque deux fois plus long, vous avez pour ainsi
   dire attrapé l’express.
 - **20 minutes** pour
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), un an
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), deux ans
   après l’ouverture ? Soit une journée de rêve, soit les foules se sont enfin
   dispersées.
 

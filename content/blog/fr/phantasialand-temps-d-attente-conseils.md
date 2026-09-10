@@ -67,13 +67,13 @@ Toute la préhistoire à l’eau de rose est racontée dans
 [notre histoire fondatrice](/blog/une-poussette-une-gondole-et-park-fan) ; ici,
 il sera question de ce qui, au fil des années, en a été tiré de plus concret. Car
 autant j’aime ce parc, autant je dois, d’emblée, le défendre et le rappeler à ses
-devoirs : il est compact, follement convoité et, les mauvais jours, une épreuve
-de patience. Y aller sur un coup de tête et tomber sur le jour parfait, cela
+devoirs : il a six vraies têtes d’affiche pour un public qui en remplirait
+vingt. Y aller sur un coup de tête et tomber sur le jour parfait, cela
 réussit ici plus rarement qu’ailleurs. Mais avec un peu de préparation, il
 devient ce qu’il est pour moi depuis plus de trente ans : la plus belle journée
-qu’un parc d’attractions puisse offrir en Europe. Ce guide te montre les deux :
-les merveilles pour lesquelles on vient, et, très concrètement, comment garder
-courts les **temps d’attente au Phantasialand** et décrocher le meilleur jour.
+qu’un parc d’attractions puisse offrir en Europe. Donc les deux : les merveilles
+pour lesquelles on vient, et les **temps d’attente au Phantasialand**, qu’on peut
+garder courts en choisissant bien son jour.
 
 ![Le Phantasialand à Brühl vu du ciel | Mon parc de cœur à Brühl : neuf zones thématiques sur 28 hectares. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -81,14 +81,11 @@ courts les **temps d’attente au Phantasialand** et décrocher le meilleur jour
 
 ![Taron dans le village de basalte de Klugheim | Taron file à travers le village de basalte de Klugheim, un village complet, pas un simple coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
-Le Phantasialand se présente comme le « Europe’s Most Immersive Theme Park ». Qui y est allé une fois comprend sur
-quoi repose cette prétention.
-Nulle part ailleurs en Europe les frontières entre la file d’attente,
-l’attraction et le décor ne s’effacent aussi totalement. Tu ne te tiens pas
-_devant_ [Taron](ref:phantasialand/taron), tu te tiens _dans_ Klugheim, un
-village de basalte complet aux toits de guingois et aux murs patinés, bâti avec
-une telle conviction que tu en oublies le coaster un instant. Tu ne vas pas vers
-une attraction, tu voyages à travers des mondes.
+Le Phantasialand se présente comme le « Europe’s Most Immersive Theme Park ». Ce
+à quoi cela se mesure : la file de [Taron](ref:phantasialand/taron), c’est
+Klugheim, un village de basalte aux toits de guingois et aux murs patinés, et
+entre l’attente et le décor il n’y a là aucune frontière visible. Depuis le
+village, on ne voit l’attraction elle-même que tard.
 
 Neuf zones tiennent sur 28 hectares, et aucune ne déborde sur la suivante : le
 Berlin de 1900 à l’entrée, le China Town et ses temples, Deep in Africa et ses
@@ -102,7 +99,7 @@ bouleversé.
 
 Mais cette compacité même est le revers de la médaille. Le parc ne compte qu’une
 poignée de véritables têtes d’affiche, et un jour de foule, tout le monde veut au
-même moment les deux ou trois mêmes attractions. Dans notre plongée sur
+même moment les deux ou trois mêmes attractions. Dans
 [l’art d’attendre](/blog/l-art-d-attendre), j’ai démontré par le calcul pourquoi
 [Taron](ref:phantasialand/taron), un samedi de vacances scolaires, atteint la
 saturation aussi vite que Peter Pan’s Flight à Paris : un petit public ne te
@@ -111,14 +108,12 @@ répartir l’affluence. Les mathématiques sont plus impitoyables au Phantasial
 que dans le vaste [Europa-Park](ref:europa-park) et ses treize montagnes russes.
 À cela s’ajoute que le parc fixe le prix de ses billets de façon si agressive
 qu’il se remplit bien même de nombreux week-ends, le légendaire « samedi vide » est
-devenu rare. Raison de plus pour prêter attention à tout ce qui suit.
+devenu rare.
 
-## Du Märchenwald au parc le plus immersif d’Europe : une brève histoire
+## De la mine de lignite au village de basalte
 
-Avant d’en venir aux attractions, aux billets et aux meilleures périodes, un bref
-regard en arrière, car si le Phantasialand donne la sensation qu’il donne, on ne
-le comprend vraiment qu’en sachant d’où il vient. Et c’est à peu près exactement
-le contraire d’un parc à sensations.
+Si le Phantasialand donne la sensation qu’il donne, cela tient à ses origines, et
+celles-ci sont à peu près exactement le contraire d’un parc à sensations.
 
 Tout a commencé en 1967, dans une mine de lignite épuisée à la lisière de Brühl.
 Deux hommes qui s’étaient connus après la guerre à Berlin y ont mis leur argent
@@ -133,9 +128,9 @@ portes s’ouvraient. Des montagnes russes ? Aucune.
 
 ![F.L.Y. à Rookburgh | Rookburgh avec F.L.Y. (2020), le premier flying-launch-coaster au monde et point culminant provisoire d’une longue métamorphose. | left](/media/phantasialand/fly-4x3.jpg)
 
-Que cela soit devenu, au fil des décennies, le parc le plus fou et le plus
-densément thématisé du continent, c’est une histoire de croissance lente, et de
-fin frôlée de près. Le parc a grandi, gagné en audace, en technique ; en 1996,
+Que cela soit devenu, au fil des décennies, un parc pour lequel les passionnés
+viennent de toute l’Europe, c’est une histoire de croissance lente et de fin
+frôlée de près. Le parc a grandi, gagné en audace, en technique ; en 1996,
 Michael Jackson en personne inaugurait le train minier
 [Colorado Adventure](ref:phantasialand/colorado-adventure). Et puis, le **1er mai
 2001**, l’incendie. Un défaut technique sur l’attraction Grand Canyon a embrasé
@@ -152,26 +147,25 @@ reconstruire, autant le faire pour de bon, thématisé jusqu’à la dernière v
 À quel point le parc était sérieux, cela s’est vu en 2006. Avec Deep in Africa
 et l’inverted coaster [Black Mamba](ref:phantasialand/black-mamba), le
 Phantasialand a posé tout un monde africain, huttes de torchis, cours d’eau, la
-piste plaquée au ras des rochers plutôt que vissée dans le ciel. Ce fut le moment
-où l’aimable destination d’excursion est devenue un lieu de pèlerinage pour les
-fans de parcs de toute l’Europe. En 2016 a suivi le village de basalte
+piste plaquée au ras des rochers plutôt que vissée dans le ciel. À partir de 2006,
+les passionnés sont venus de Belgique et des Pays-Bas pour elle. En 2016 a suivi
+le village de basalte
 Klugheim avec [Taron](ref:phantasialand/taron), en 2020 la ville aviatrice
 victorienne Rookburgh avec le premier flying-launch-coaster au monde,
-[F.L.Y.](ref:phantasialand/fly), les deux passent chez les passionnés pour du
-niveau mondial, et ni l’un ni l’autre ne sont de simples attractions, mais des
-décors de scène complets et sans faille.
+[F.L.Y.](ref:phantasialand/fly). Dans les deux cas, la zone thématique est venue
+d’abord et l’attraction a été bâtie dedans, pas l’inverse.
 
 Le plus beau : le Phantasialand est resté jusqu’à aujourd’hui **une affaire de
 famille**. En 1998, Gottlieb Löffelhardt a passé les rênes à son fils Robert ;
 jamais le parc n’a eu au-dessus de lui un groupe international ou des actionnaires
-obnubilés par le trimestre. On le sent dans chaque détail qu’aucun contrôleur de
-gestion n’aurait jamais validé, et c’est précisément pour cela qu’on revient.
+obnubilés par le trimestre. Cela se voit à des détails qu’un contrôleur de gestion
+aurait rayés : à l’atelier d’aviation devant F.L.Y., qu’on traverse sans qu’il
+fasse passer quoi que ce soit.
 
 ## Les têtes d’affiche, et ce qu’elles te font
 
-Commençons par la raison pour laquelle la plupart viennent d’abord, les
-attractions. Je te colle les temps d’attente en direct juste à côté des noms,
-pour que tu voies, dès la lecture, ce qu’il en est en ce moment :
+Les temps d’attente en direct sont collés juste à côté des noms, tu vois donc dès
+la lecture ce qu’il en est :
 
 - **[Taron](ref:phantasialand/taron)**, la pièce maîtresse, et pour moi le
   meilleur launch coaster d’Allemagne (on peut en débattre, moi je m’en abstiens).
@@ -255,9 +249,8 @@ aussi le public.** Depuis que les cartes annuelles ont disparu et que les billet
 sont tarifés de façon si agressive, quelque chose s’est visiblement déplacé dans
 le parc, et je ne le dis pas seulement par romantisme. Depuis un ou deux ans, j’ai remarqué nettement plus de **vandalisme** que
 durant toutes les années précédentes, dans un lieu où l’on ne connaissait tout
-simplement pas ce genre de chose autrefois. Est-ce directement lié, je n’en suis pas sûr, mais je souhaite
-sincèrement que mon parc de cœur corrige le tir. Il mérite mieux, et nous, les
-visiteurs, aussi.
+simplement pas ce genre de chose autrefois. Est-ce directement lié, je n’en suis
+pas sûr, et je n’ai pas de chiffres là-dessus. Cela me saute quand même aux yeux.
 
 ## Temps d’attente Phantasialand : quand ils sont les plus courts
 
@@ -282,9 +275,9 @@ Quelques règles empiriques qui se vérifient presque toujours :
 
 L’intuition est ici mauvaise conseillère dès que se superposent calendrier
 scolaire, météo et horaires d’ouverture. C’est précisément pour cela que park.fan
-a été bâti. Le calendrier des meilleurs jours de visite condense tout cela, plus
-l’historique complet des temps d’attente du parc, en une seule couleur
-merveilleusement simple, vert, jaune, rouge. Voici les prochains jours les plus
+a été bâti. Le calendrier des meilleurs jours de visite calcule tout cela avec
+l’historique des temps d’attente du parc et en tire une couleur par jour, vert,
+jaune ou rouge. Voici les prochains jours les plus
 calmes pour le Phantasialand :
 
 ```best-days-widget slug=phantasialand
@@ -299,11 +292,10 @@ coup d’œil sur les deux dernières saisons te le montre :
 
 ```
 
-La bonne réponse à « quand devrais-je y aller ? » n’est jamais « les dimanches
-sont pleins », mais toujours : **ce** dimanche-ci, en **ce** mois-ci, par **cette**
-météo-ci. Ouvrir le calendrier, regarder la couleur, réserver le billet pour le
-jour vert, c’est déjà la moitié de la magie, et cela t’épargne plus de temps de
-vie que n’importe quelle astuce dans le parc.
+« Les dimanches sont pleins » ne t’avance à rien. Le 12 octobre au
+Phantasialand sous la pluie, si. C’est pour cela que le calendrier affiche une
+valeur par jour et pas une règle par jour de la semaine, et pour cela que tu as
+intérêt à ne réserver ton billet qu’après y avoir jeté un œil.
 
 ## Quick Pass : le nouveau concept, Single Ride & Ultimate
 
@@ -384,14 +376,13 @@ contre une armée de détenteurs d’Express Pass qui te rachètent sans cesse l
 capacité. Ta meilleure arme, c’est tout simplement le timing, et celui-là,
 contrairement à la météo, tu le tiens entièrement en main.
 
-## La restauration : la star secrète du parc
+## Manger au Phantasialand
 
 Pour aucun autre parc je ne mettrais cela en avant : le Phantasialand vaut
 aussi le voyage pour sa **cuisine**. Là où, dans bien des parcs, « manger »
 rime avec frites tièdes à prix d’or, la gastronomie fait ici pleinement partie
 de l’expérience, avec un soin qu’on ne connaît d’ordinaire que de vrais
-restaurants. Quelques adresses sont de véritables bons plans qui, à eux seuls,
-valent déjà la visite :
+restaurants. Trois adresses, que je cite à tous ceux qui me le demandent :
 
 - **Rutmor’s Taverne** (Klugheim) est mon préféré, et je ne connais personne qui me contredise après y avoir mangé. Le
   meilleur restaurant jamais construit dans un parc d’attractions. À la carte,
@@ -417,9 +408,8 @@ l’attraction suivante.
 
 Et le conseil le plus important côté repas est le même que pour les files : **à
 contre-courant.** Mange vers 11 h 30 ou après 14 h 30, ainsi, à l’heure de pointe
-des repas tu enchaînes les files courtes des attractions, et à l’heure de pointe
-des attractions tu es tranquillement attablé. D’une pierre deux coups, et un ventre
-content. (Et si tu viens en hiver, une gourmandise bien à elle t’attend encore dans
+tu enchaînes les files courtes, et tu es attablé pendant que les autres font la
+queue. (Et si tu viens en hiver, une gourmandise bien à elle t’attend encore dans
 le Wintertraum.)
 
 ## Les petites choses pour lesquelles je reviens toujours
@@ -516,8 +506,7 @@ de parc, il n’y a presque rien de plus enchanteur.
 Et puis il y a la **cuisine qu’on ne trouve qu’en hiver.** Chaque année, le
 Wintertraum déploie ses spécialités, mon numéro un secret, ce sont les **Flat
 Croissants** : croustillants, pressés à plat, merveilleusement beurrés et
-effectivement disponibles seulement pendant la saison hivernale. Avec un gobelet de
-vin chaud, et le plus froid des jours de parc devient le plus douillet.
+effectivement disponibles seulement pendant la saison hivernale.
 
 Et mon conseil Wintertraum préféré entre tous : **Taron dans le noir.** En hiver,
 la nuit tombe tôt, et foncer alors à travers le Klugheim illuminé, quand les
@@ -618,8 +607,8 @@ l’heure bleue, ne veut toujours pas rentrer.
 — Patrick
 
 _P.-S. : Non, un mardi vert, je n’achète pas de Quick Pass. Par principe, et parce
-que les données disent que je n’en ai pas besoin. Pour le samedi rouge, une règle
-vaut : _
+que les données disent que je n’en ai pas besoin. Pour le samedi rouge, je l’aurais
+acheté, et j’aurais pu m’en passer en réservant quatre semaines plus tôt à 28 €._
 
 ---
 

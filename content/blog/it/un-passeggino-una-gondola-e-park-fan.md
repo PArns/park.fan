@@ -28,7 +28,7 @@ coverImage:
   alt: 'Loop del Velocicoaster davanti al castello di Hogwarts, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure a Orlando: il Velocicoaster in pieno loop e, dietro, il castello di Hogwarts.'
 seo:
-  title: 'Dal lago delle fiabe all’IA delle code'
+  title: 'Perché park.fan esiste'
   description: >-
     Un passeggino in riva al lago delle fiabe, notti di codice, un’IA che legge
     le giornate nei parchi: la storia di park.fan e quando la visita vale la
@@ -74,9 +74,7 @@ Io quei pulsanti li ho premuti, e quando i miei genitori erano già due scene
 avanti tornavo indietro di corsa per premerli ancora. Per me quella non è mai
 stata una visita a un parco.
 
-Che quel lago fosse l’inizio di tutto, ovviamente allora non lo sapevo. Ma da
-qualche parte tra quelle scenografie si è fissato qualcosa che non mi ha più
-lasciato.
+Che quel lago fosse l’inizio di tutto, ovviamente allora non lo sapevo.
 
 ## “1001 Notte”, i giri che restano
 
@@ -115,9 +113,8 @@ modo di restituirne una parte.
 
 ## Di topi da 5000 e di una leggenda da 10.000
 
-I parchi costruiti col cuore non smettono mai di aggiungere momenti nuovi.
-[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) è uno di questi da
-giugno 2011: un dark ride interattivo in cui il disinfestatore Oskar Koslowski
+[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) è uno di quei
+momenti da giugno 2011: un dark ride interattivo in cui il disinfestatore Oskar Koslowski
 libera dai topi il laboratorio del pasticciere Gustav E. Lehmann, armato di
 sac-à-poche, distribuito su 48 schermi 3D e sei minuti di percorso. Un nuovo
 record personale mi stampa ancora oggi lo stesso sorriso da bambino di allora.
@@ -134,13 +131,10 @@ C’è una cosa che ho ignorato a lungo e che ancora oggi mi fa restare un attim
 in silenzio: Maus au Chocolat è stato costruito nel 2011 esattamente sull’area
 dove fino al 2009 stava la cabinovia. Quando lì dentro litigo per i punti con la
 mia ragazza, sono seduto in un edificio che sorge dove da bambino attraversavo
-le fauci del drago con mio padre. Lo stesso pezzo di terra, trent’anni e una
-vita intera in mezzo.
+le fauci del drago con mio padre.
 
-Poi pancake e frullati al **Phenie’s** di Wuze Town, soffici e magnifici e
-troppo buoni per essere ristorazione da parco. Al più tardi lì si capisce su
-cosa questo parco fonda la pretesa di chiamarsi “Europe’s Most Immersive Theme
-Park”.
+Poi pancake e frullati al **Phenie’s** di Wuze Town, e sono migliori di quello
+che i parchi divertimenti vendono di solito a colazione.
 
 ## Orlando, maggio 2026, una volta nella vita
 
@@ -169,8 +163,7 @@ Parallelamente a tutti quegli anni di parchi c’è sempre stato un secondo io,
 uno che costruisce software da oltre venticinque anni. Molti di quegli anni nel
 mondo delle VPN, prima come Head of Software Development da **CyberGhost**, oggi
 come Distinguished Software Engineer da **ExpressVPN**. Sistemi che milioni di
-persone usano contemporaneamente senza dedicarci mai un pensiero, che è
-probabilmente il complimento più grande che si possa fare a un’infrastruttura. E
+persone usano contemporaneamente senza dedicarci mai un pensiero. E
 poi open source, adattatori per la domotica e più progetti collaterali di quanti
 mi facciano bene; tutta la roba che si accumula su [arns.dev](https://arns.dev)
 e [GitHub](https://github.com/PArns).
@@ -197,23 +190,23 @@ stessi semplicemente barattando tempo di vita con un corrimano.
 > “Fammi tracciare un attimo i tempi di attesa.” _Dissi. Sono diventati tre
 > anni._
 
-## Dallo script alla piattaforma: come è nato davvero park.fan
+## Tre anni in cui da uno script è venuto fuori altro
 
 Quello che ne è venuto fuori è ciò che
 gli sviluppatori chiamano progetto del cuore e le ragazze probabilmente “di
-nuovo quella cosa dei parchi”. Da uno script è nato un raccoglitore di dati, dal
-raccoglitore una pipeline, dalla pipeline una piattaforma. In mezzo ci sono
+nuovo quella cosa dei parchi”. Dallo script è nato un raccoglitore di dati, e a
+un certo punto girava per duecento parchi invece che per uno. In mezzo ci sono
 state notti passate a fissare curve dei tempi di attesa alle due del mattino
 perché un parco qualsiasi trasmetteva i suoi dati diversamente da tutti gli
 altri. Sessioni di debug più lunghe di certe giornate al parco. E quel momento
 di stupore tutto particolare in cui un modello prevede correttamente per la
 prima volta un sabato strapieno, giorni prima che accada.
 
-Perché il desiderio vero era questo: Non è mai stato il punto mostrare il numero del momento. Quello lo espone il
+Mostrare il numero del momento non è mai stato il punto. Quello lo espone il
 parco stesso. Interessante diventa un passo prima: un modello nostro ha dovuto
 imparare che un ponte piovoso di ottobre è qualcosa di completamente
 diverso da un sabato di vacanza assolato di luglio. Che calendari scolastici,
-meteo, orari di apertura e anni di storico delle code formano insieme uno schema
+meteo, orari di apertura e i giorni di apertura che abbiamo annotato formano insieme uno schema
 leggibile, a patto di guardarlo con abbastanza ostinazione.
 
 Sulla scrivania dove sono avvenute tutte quelle notti oggi c’è, tra l’altro, una
@@ -232,7 +225,7 @@ qualcosa, il modello si dà un voto da sé: ogni previsione viene poi confrontat
 con il tempo di attesa effettivamente misurato, e quello che ne esce sta sulla
 [pagina di Fancast](/fancast).
 
-## Qual è il giorno migliore? Vale la pena una domenica?
+## Il giorno migliore raramente è quello che ci si aspetta
 
 Sono sempre le stesse tre domande che solleva una visita a un parco, molto prima
 che qualcuno salga in auto. Qual è il giorno migliore? Vale la pena una
@@ -240,8 +233,8 @@ domenica? E quanto sarà pieno davvero?
 
 È esattamente per questo che park.fan è stato costruito. Ogni pagina di parco ha
 un calendario dei giorni migliori per la visita, fino a un anno in anticipo,
-alimentato con calendari scolastici, previsioni meteo, orari di apertura e lo
-storico completo delle code del parco. Lo sguardo su quei dati fa piazza pulita,
+alimentato con calendari scolastici, previsioni meteo, orari di apertura e ogni
+giorno di apertura che abbiamo annotato finora. Lo sguardo su quei dati fa piazza pulita,
 di passaggio, di qualche sensazione di pancia. Una domenica di un novembre
 grigio può essere più rilassata di qualsiasi martedì durante le vacanze estive
 della Renania Settentrionale-Vestfalia. Un ponte non è quasi mai una buona idea.
@@ -260,20 +253,16 @@ Ci sono buoni siti che ti mostrano quanto è lunga la coda proprio adesso. Lo
 sappiamo fare anche noi, minuto per minuto, in tutto il mondo. Ma park.fan è
 stato costruito per la domanda che viene prima: _vale la pena andarci?_
 
-Per questo andiamo qualche passo più in là:
+Per questo un modello nostro guarda fino a **365 giorni** avanti invece che al
+solo tabellone, e il calendario dei giorni migliori condensa vacanze, meteo,
+orari e ogni giorno di apertura annotato in una risposta: si va, o meglio di no.
+Ognuna di quelle previsioni viene poi confrontata con il tempo di attesa
+effettivamente misurato, e chi vuole sapere quanto vale il modello non deve
+credere a me: i numeri stanno sulla [pagina di Fancast](/fancast).
 
-- **Previsioni, non solo lo stato attuale.** Un modello di IA nostro guarda fino
-  a 365 giorni avanti, non solo il tabellone sopra l’ingresso.
-- **Il calendario dei giorni migliori.** Vacanze, meteo, orari e anni di storico,
-  condensati in una risposta semplice: si va, o meglio di no.
-- **Tassi di successo pubblici.** Ogni previsione viene poi confrontata con il
-  tempo di attesa effettivamente misurato. Chi vuole sapere quanto vale il
-  modello non deve credere a me: può guardare sulla [pagina di Fancast](/fancast).
-- **Tutto in un posto solo.** Tempi di attesa, livelli di affluenza, meteo
-  all’ingresso del parco, orari e storici delle attrazioni, in sei lingue.
-- **Gratuito e senza pubblicità.** Nessun gruppo, nessun paywall. Un sito di fan
-  costruito da uno che in coda ci sta di
-  persona.
+Più tempi di attesa, livelli di affluenza, meteo all’ingresso del parco, orari e
+storici delle attrazioni in sei lingue. Nessun gruppo, nessun paywall, nessuna
+pubblicità, costruito da uno che in coda ci sta di persona.
 
 ## Cosa vuole diventare questo blog
 
@@ -284,11 +273,11 @@ qualcosa di completamente diverso a seconda della giostra e del giorno.
   sarebbero stati tre coaster veri.
 - **50 minuti** per il
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  un sabato pomeriggio? Ottimo: il picco altrimenti sta a 85, praticamente hai
+  un sabato pomeriggio? Ottimo: il picco del pomeriggio è altrimenti quasi il doppio, praticamente hai
   beccato l’express.
 - **20 minuti** per
-  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a un
-  anno dall’apertura? O è una giornata da sogno, o la folla si è finalmente
+  [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a due
+  anni dall’apertura? O è una giornata da sogno, o la folla si è finalmente
   dispersa.
 
 ![Voltron Nevera capovolto sopra una facciata illuminata, di notte | Voltron Nevera all’Europa-Park. Qui la norma è una buona mezz’ora, molte volte tanto nei giorni di punta. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
@@ -307,8 +296,8 @@ comprese.
 Quando conviene di più il [Taron](ref:phantasialand/taron?bare)? E le nostre
 previsioni mantengono quello che promettono?
 
-**Notizie.** Brevi e senza giri di parole. Se succede qualcosa, sta qui, più
-veloce di quanto tu chiuda un banner dei cookie.
+**Notizie.** Brevi e senza giri di parole. Se succede qualcosa, sta qui, di
+solito lo stesso giorno.
 
 I post, poi, sono vivi. Grafici, mappe e tempi di attesa attingono direttamente
 da park.fan, quello che leggi è ciò che il parco sta facendo davvero in questo
@@ -334,8 +323,8 @@ collaterali su [arns.dev](https://arns.dev).
 
 ## Cosa qui non succederà
 
-park.fan non costa nulla, non mostra pubblicità e non appartiene a nessuno se
-non alla curiosità. Se un parco è gestito male, qui c’è scritto. Se un’app è
+park.fan non costa nulla, non mostra pubblicità e non appartiene a nessuno. Se
+un parco è gestito male, qui c’è scritto. Se un’app è
 peggiore di quella ufficiale, c’è scritto anche quello. Hai un tema che ti
 frulla in testa? Scrivimi, l’indirizzo sta nelle [note legali](/impressum).
 
@@ -344,10 +333,8 @@ Sì, sul serio:
 
 [Più loop, meno stare in piedi: l’inno non ufficiale di park.fan](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
-Grazie di aver letto fin qui. Questo posto, la piattaforma, il blog, tutto
-quanto, è il mio grazie a un parco in riva a un lago delle fiabe, a dei genitori
-che ci hanno portato un bambino piccolo ancora e ancora, a un padre in una
-gondola e a ogni singola persona che ama i parchi divertimento quanto li amo io.
+Questo è il mio grazie a un parco in riva a un lago delle fiabe e a due
+genitori che ci hanno portato un bambino piccolo ancora e ancora.
 
 
 — Patrick

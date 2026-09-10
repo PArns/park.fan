@@ -97,7 +97,7 @@ salire su una sola attrazione e tornare a casa lo stesso sopraffatto.
 
 Ma proprio questa compattezza è il rovescio della medaglia. Il parco ha solo una
 manciata di veri headliner, e in una giornata piena tutti vogliono, nello stesso
-momento, le stesse due o tre attrazioni. Nel nostro deep dive sull’[arte
+momento, le stesse due o tre attrazioni. Ne [L’arte
 dell’attesa](/blog/l-arte-dell-attesa) ho spiegato coi conti alla mano perché il
 [Taron](ref:phantasialand/taron), in un sabato di vacanze, va in saturazione
 tanto in fretta quanto Peter Pan’s Flight a Parigi: un pubblico ridotto non ti
@@ -593,8 +593,8 @@ blu, non vuole ancora tornare a casa.
 — Patrick
 
 _P.S.: No, in un martedì verde non compro nessun Quick Pass. Per principio, e
-perché i dati dicono che non mi serve. Per il sabato rosso vale invece: il miglior
-Fast Pass è il giorno che non hai proprio prenotato._
+perché i dati dicono che non mi serve. Per il sabato rosso l’avrei comprato, e me
+lo sarei risparmiato prenotando quattro settimane prima a 28 €._
 
 ---
 
