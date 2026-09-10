@@ -46,6 +46,7 @@ import type {
 } from '../core/types';
 import { attachRideContent, resolveDockedRide, resolveFlatRide } from './manifest';
 import {
+  DOCKED_MOTION_STRIDE,
   MOTION_STRIDE,
   RIDE_STATE_NAMES,
   RideState,
@@ -251,6 +252,14 @@ export function createRidesSim(ctx: SimContext): SimHandle {
    * this module draws and what it runs a queue for are two questions with two answers now.
    */
   let drawn: string[] = [];
+  /**
+   * The machines this module runs a line for and does NOT draw — coasters and slides.
+   *
+   * The complement of `drawn` within `order`, kept as its own list for its own frame buffer. Until
+   * it existed the HUD listed four rides and counted riders from six, because `ride:roster` is —
+   * and has to stay — the drawn ones alone.
+   */
+  let docked: string[] = [];
   let rosterDirty = true;
   const rngBreak = ctx.rng.fork('breakdowns');
   const walkUps = new Map<number, WalkUp>();
@@ -1128,6 +1137,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
   function publishRoster(): void {
     order = [...rides.keys()].sort();
     drawn = order.filter((id) => rides.get(id)?.machine != null);
+    docked = order.filter((id) => rides.get(id)?.machine == null);
     rosterDirty = false;
     ctx.events.emit('ride:roster', {
       rides: drawn.map((id) => {
@@ -1137,6 +1147,31 @@ export function createRidesSim(ctx: SimContext): SimHandle {
           key: r.profile.key,
           pack: r.entity.pack,
           item: r.entity.item,
+          runSeconds: runSecondsOf(r),
+        };
+      }),
+      /**
+       * The coasters and slides, in a key of their own.
+       *
+       * A separate array rather than more entries in `rides`, for the same reason
+       * `DOCKED_MOTION_STRIDE` is a separate buffer: `rides` is an INDEX into the frame buffers
+       * and into `rides/main.ts`'s rig list, and anything appended to it moves a rig.
+       *
+       * `name` rides along here and not in `rides`, because a reader that wants to LIST these has
+       * nowhere else to get one: `ui` resolves a flat ride's name through `rides.profile(id)` on
+       * the main thread, and a docked machine's profile is assembled in the worker from another
+       * module's dock. Without it the HUD would print `coaster-1553`.
+       */
+      docked: docked.map((id) => {
+        const r = rides.get(id)!;
+        return {
+          id,
+          key: r.profile.key,
+          pack: r.entity.pack,
+          item: r.entity.item,
+          name: r.profile.name,
+          dispatchedBy: r.dispatcher,
+          capacity: r.profile.capacity,
           runSeconds: runSecondsOf(r),
         };
       }),
@@ -1210,6 +1245,18 @@ export function createRidesSim(ctx: SimContext): SimHandle {
         motion[i * MOTION_STRIDE + 2] = r.onboard.length;
         motion[i * MOTION_STRIDE + 3] = r.queue.length;
         state[i] = r.state;
+      }
+      // The docked machines get their own pair of buffers over their own order. See
+      // `DOCKED_MOTION_STRIDE`: appending them to the two above would move a rig.
+      const dn = docked.length;
+      const dockedMotion = writer.f32('rides.dockedMotion', dn * DOCKED_MOTION_STRIDE);
+      const dockedState = writer.u8('rides.dockedState', dn);
+      for (let i = 0; i < dn; i++) {
+        const r = rides.get(docked[i]);
+        if (!r) continue;
+        dockedMotion[i * DOCKED_MOTION_STRIDE] = r.onboard.length;
+        dockedMotion[i * DOCKED_MOTION_STRIDE + 1] = r.queue.length;
+        dockedState[i] = r.state;
       }
       const s = api.stats();
       writer.stat('rides.count', s.rides);

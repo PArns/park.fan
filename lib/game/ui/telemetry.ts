@@ -34,7 +34,7 @@
 
 import type { Entity, EnvironmentState, SimFrame, Speed, World } from '../core/types';
 import type { Registry } from '../core/registry';
-import { MOTION_STRIDE, RIDE_STATE_NAMES } from '../rides/types';
+import { DOCKED_MOTION_STRIDE, MOTION_STRIDE, RIDE_STATE_NAMES } from '../rides/types';
 import type { FlatRideProfile } from '../rides/types';
 import { GUEST_STATE_NAMES } from '../guests/types';
 
@@ -82,6 +82,17 @@ export interface RideRow {
   upkeep: number;
   /** True while the player has shut it from the HUD. Optimistic: the sim owns the real flag. */
   shut: boolean;
+  /**
+   * The module whose vehicles this line boards: `rides` for a flat ride, `trains` for a coaster,
+   * `flumes` for a slide.
+   *
+   * It exists because the list now holds all three and they do not carry the same figures — a
+   * machine `rides` does not draw has no rig, so its row is the queue and the riders and nothing
+   * about spin. A row with `dispatchedBy !== 'rides'` therefore reports `excitement`, `fear`,
+   * `nausea`, `price` and `upkeep` as 0 rather than as measured: those come from
+   * `RidesMainApi.profile`, which answers for the drawn machines only.
+   */
+  dispatchedBy: string;
 }
 
 export interface ShopRow {
@@ -224,6 +235,22 @@ interface RosterEntry {
   key: string;
 }
 
+/**
+ * A machine `rides` runs a line for and does not draw — a coaster or a slide.
+ *
+ * It arrives on the same `ride:roster` event under its own key and carries its own `name`, because
+ * `rideProfile(id)` answers for the drawn machines only: their profile is a manifest entry this
+ * side can look up, while a docked machine's is assembled in the worker out of another module's
+ * dock. Without the name in the payload the HUD would print `coaster-1553`.
+ */
+interface DockedEntry {
+  id: string;
+  key: string;
+  name: Record<string, string>;
+  dispatchedBy: string;
+  capacity: number;
+}
+
 interface ShopTally {
   sold: number;
   cents: number;
@@ -239,8 +266,11 @@ interface ShopTally {
 export class TelemetryCollector {
   private sources: TelemetrySources;
   private roster: RosterEntry[] = [];
+  private docked: DockedEntry[] = [];
   private rideState: Uint8Array | null = null;
   private rideMotion: Float32Array | null = null;
+  private dockedState: Uint8Array | null = null;
+  private dockedMotion: Float32Array | null = null;
   private guestAnim: Uint8Array | null = null;
   private stats: Record<string, number> = {};
   private env: EnvironmentState | null = null;
@@ -268,9 +298,13 @@ export class TelemetryCollector {
     this.stats = frame.stats;
     const state = frame.buffers['rides.state'];
     const motion = frame.buffers['rides.motion'];
+    const dockedState = frame.buffers['rides.dockedState'];
+    const dockedMotion = frame.buffers['rides.dockedMotion'];
     const anim = frame.buffers['guests.anim'];
     this.rideState = state ? new Uint8Array(state) : null;
     this.rideMotion = motion ? new Float32Array(motion) : null;
+    this.dockedState = dockedState ? new Uint8Array(dockedState) : null;
+    this.dockedMotion = dockedMotion ? new Float32Array(dockedMotion) : null;
     this.guestAnim = anim ? new Uint8Array(anim) : null;
   }
 
@@ -278,8 +312,15 @@ export class TelemetryCollector {
     this.env = env;
   }
 
-  onRoster(entries: readonly RosterEntry[]): void {
+  onRoster(entries: readonly RosterEntry[], docked: readonly DockedEntry[] = []): void {
     this.roster = entries.map((e) => ({ id: e.id, key: e.key }));
+    this.docked = docked.map((e) => ({
+      id: e.id,
+      key: e.key,
+      name: e.name ?? { en: e.id },
+      dispatchedBy: e.dispatchedBy ?? 'rides',
+      capacity: e.capacity ?? 0,
+    }));
   }
 
   onEntitiesChanged(): void {
@@ -308,6 +349,7 @@ export class TelemetryCollector {
     this.priceOverride.clear();
     this.closedOverride.clear();
     this.roster = [];
+    this.docked = [];
     this.shopsDirty = true;
   }
 
@@ -417,8 +459,11 @@ export class TelemetryCollector {
         guests: num('guests.count'),
         happiness: num('guests.count') > 0 ? num('guests.happiness') : -1,
         rides: rides.length || num('rides.count'),
-        // `rides.open` from the frame counts what the sim calls open; the buffer's own state
-        // bytes are counted here so the number and the list a reader is looking at agree.
+        // Counted from the list rather than read off the frame, so the number and the rows a
+        // reader is looking at cannot disagree — which they did for as long as the list held the
+        // drawn machines alone and `ridersToday` came from the whole park: a demo park with a
+        // coaster in it said "3 / 4 running" over 1,842 rides taken. The list holds all six now
+        // (see `buildRides`), so these four and `rides.count` describe the same set again.
         ridesOpen: rides.length ? open : num('rides.open'),
         ridesDown,
         queued: rides.length ? queued : num('rides.queued'),
@@ -472,6 +517,41 @@ export class TelemetryCollector {
         price: profile?.price ?? 0,
         upkeep: profile?.upkeep ?? 0,
         shut: this.shut.has(entry.id),
+        dispatchedBy: 'rides',
+      });
+    }
+    /**
+     * The coasters and the slides, from their own roster key and their own frame buffers.
+     *
+     * They are appended rather than merged in id order on purpose: the drawn machines' rows are
+     * positional against `rides.motion`, and a reader scanning this array beside that buffer must
+     * not find a coaster at index 2. Everything past `this.roster.length` is docked.
+     *
+     * Five fields stay 0 for these rows and the type says why: `excitement`, `fear`, `nausea`,
+     * `price` and `upkeep` come from `RidesMainApi.profile`, which answers for the drawn machines
+     * only. Better a 0 a reader can see than a number this side made up.
+     */
+    const dstate = this.dockedState;
+    const dmotion = this.dockedMotion;
+    for (let i = 0; i < this.docked.length; i++) {
+      const entry = this.docked[i];
+      rows.push({
+        id: entry.id,
+        key: entry.key,
+        name: localized(entry.name, locale),
+        state: dstate && i < dstate.length ? (RIDE_STATE_NAMES[dstate[i]] ?? 'unknown') : 'unknown',
+        riders: dmotion ? Math.round(dmotion[i * DOCKED_MOTION_STRIDE] ?? 0) : 0,
+        capacity: entry.capacity,
+        queue: dmotion ? Math.round(dmotion[i * DOCKED_MOTION_STRIDE + 1] ?? 0) : 0,
+        ratedThroughput: 0,
+        excitement: 0,
+        fear: 0,
+        nausea: 0,
+        minHeightCm: null,
+        price: 0,
+        upkeep: 0,
+        shut: this.shut.has(entry.id),
+        dispatchedBy: entry.dispatchedBy,
       });
     }
     this.cachedRides = rows;

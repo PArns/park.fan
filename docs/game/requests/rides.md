@@ -355,36 +355,42 @@ dispatches both entities into a running `/game`, steps twenty thousand ticks and
 station. Both are runnable as they are; neither is wired to a script name. Once §5 lands, the
 first can be deleted and `pnpm game:day-budget` answers the question on its own.
 
-## 11. The park panel lists four rides and counts six
+## 11. ~~The park panel lists four rides and counts six~~ — DONE
 
-**Owner:** `ui` · **Value:** the HUD stops contradicting itself the moment a park has a coaster.
+**Owner:** `ui` and `rides` · **Done** — screenshotted on the demo park at 13:14 with 1,804 guests:
+**RUNNING 6 / 6**, where it read 0 / 4 an hour earlier.
 
-`ui/telemetry.ts` builds its ride list from the `ride:roster` event, and that event is — and has to
-stay — **the flat rides only**: `rides.motion` and `rides.state` are indexed by roster position and
-`rides/main.ts` builds one rig per entry, so a coaster in the roster would shift every index after
-it and hand the renderer a machine with no rig. `totals.rides`, `ridesOpen`, `ridesDown`, `queued`
-and `riding` are all computed from that list.
+The constraint this section named is real and unchanged: `ride:roster`'s `rides` array is — and
+has to stay — the flat rides only, because `rides.motion` and `rides.state` are indexed by roster
+position and `rides/main.ts` builds one rig per entry, so a coaster inserted there shifts every
+index after it and hands the renderer a machine with no rig. Neither of the two ways out this
+section proposed was taken, because both leave one half of the contradiction standing: reading the
+frame scalars unconditionally makes the numbers right over a list of four, and merging the docked
+machines into `rides` moves a rig.
 
-`ridersToday` and `throughputHour` are not: they come from `num('rides.ridersToday')` and
-`num('rides.throughputHour')`, i.e. the frame stats, which are the whole park. Measured on a demo
-park with one coaster added, at 16:33 on day 1:
+What shipped is the third: **their own key, their own buffers, their own order.**
 
-```
-RIDES   RUNNING 3 / 4        ← the four flat rides
-In a queue        0
-On a ride        13
-Rides taken today 1,842      ← includes the coaster's share
-Riders per hour     608      ← includes the coaster's share
-Out of action         1
-```
+- `ride:roster` gains `docked`, alongside `rides` and never inside it. It carries `name`, because
+  `ui` resolves a flat ride's name through `RidesMainApi.profile(id)` on the main thread and a
+  docked machine's profile is assembled in the worker out of another module's `Dock` — without it
+  the HUD prints `coaster-1553`. Also `dispatchedBy` and `capacity`.
+- `rides.dockedMotion` (`DOCKED_MOTION_STRIDE = 2`: riders, queue) and `rides.dockedState`, written
+  over `docked` rather than `drawn`. Narrower than `MOTION_STRIDE` because a machine this module
+  does not draw has no spin and no drive to report.
+- `ui` appends those rows after the drawn ones — appended and not sorted in, so a reader scanning
+  the array beside `rides.motion` cannot find a coaster at index 2 — and derives `rides`,
+  `ridesOpen`, `ridesDown`, `queued` and `riding` from the list, which now describes the same set
+  `ridersToday` always did.
 
-Two ways out and the second is better. Either read `num('rides.count')` / `num('rides.open')` /
-`num('rides.queued')` / `num('rides.riding')` unconditionally — the frame already carries all four
-for every machine with a line, and the `rides.length ? … :` fallbacks exist only so the number and
-the list agree — or list the docked machines too. The second needs a name to put in the row, which
-the roster event does not carry (`profile ? localized(profile.name) : entry.id` would print
-`demo-coaster`); `rides` can add `name` to the roster payload the moment `ui` wants to read it.
+Five fields stay 0 on a docked row and the type says so: `excitement`, `fear`, `nausea`, `price`
+and `upkeep` come from `RidesMainApi.profile`, which answers for the drawn machines only. A 0 a
+reader can see beats a number this side invented — and §6 above is the reason those four would be
+identical for all six machines anyway.
 
-Related: a coaster's own row would be the natural place for `trains.status(id)` —
-`trains × seats`, `cycleSeconds`, `dispatches` and the `riders` the queue last put on board — none
-of which the park panel shows today beyond `Trains and cars 2 · 10`.
+Both `docked` defaults are empty, so a worker or a reader built before the key still works and
+simply lists the drawn machines. `pnpm test:game-ui` went 22 → 24 checks and pins both that
+fallback and the agreement between the list and the totals.
+
+Still open, and still the natural home for it: a coaster's row is where `trains.status(id)` —
+`trains × seats`, `cycleSeconds`, `dispatches`, last load — belongs. The park panel shows none of
+it beyond `Trains and cars 2 · 10`.

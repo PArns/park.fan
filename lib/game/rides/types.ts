@@ -229,6 +229,20 @@ export const RIDE_STATE_NAMES: Record<number, string> = {
 
 /** Floats per ride in the `rides.motion` buffer. */
 export const MOTION_STRIDE = 4;
+/**
+ * Floats per machine in the `rides.dockedMotion` buffer: riders aboard, queue length.
+ *
+ * A SECOND buffer rather than two more entries in `rides.motion`, and the reason is the constraint
+ * that kept coasters out of the HUD's ride list in the first place: `rides.motion` and
+ * `rides.state` are indexed by position in the roster this module DRAWS, and `rides/main.ts`
+ * builds one rig per entry — so a coaster inserted into that order shifts every index after it and
+ * hands the renderer a machine with no rig. Its own buffer over its own order cannot collide with
+ * anything, and a reader that does not know about it is unaffected.
+ *
+ * Narrower than `MOTION_STRIDE` because a machine this module does not draw has no spin and no
+ * drive to report — the two floats it does have are the two a queue is about.
+ */
+export const DOCKED_MOTION_STRIDE = 2;
 /** Ring of per-minute rider counts behind `throughputHour`. One park hour. */
 export const THROUGHPUT_WINDOW = 60;
 

@@ -102,8 +102,19 @@ export class UiRuntime implements UiMainApi {
       this.offs.push(this.events.on(name, fn));
     };
     on('ride:roster', (p) => {
-      const payload = p as { rides?: { id: string; key: string }[] };
-      this.collector.onRoster(payload.rides ?? []);
+      const payload = p as {
+        rides?: { id: string; key: string }[];
+        docked?: {
+          id: string;
+          key: string;
+          name: Record<string, string>;
+          dispatchedBy: string;
+          capacity: number;
+        }[];
+      };
+      // `docked` defaults to empty rather than being required, so a worker built before this key
+      // existed still publishes a roster this side accepts — it just lists the drawn machines.
+      this.collector.onRoster(payload.rides ?? [], payload.docked ?? []);
     });
     on('ride:breakdown', (p) => {
       const payload = p as { name?: Record<string, string>; ride?: string };
