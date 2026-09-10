@@ -1651,7 +1651,7 @@
       "showNextAny": "próxima función",
       "remove": "{name}: quitar aviso",
       "removeError": "No se pudo quitar el aviso y sigue activo. Inténtalo de nuevo.",
-      "removeRateLimited": "Demasiados intentos. Inténtalo de nuevo en {seconds} segundos.",
+      "removeRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
       "loadError": "No se pudieron cargar tus avisos."
     },
     "pushErrors": {
