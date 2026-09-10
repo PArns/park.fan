@@ -61,7 +61,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Maß dafür, wie voll ein Freizeitpark an einem bestimmten Tag ist, von Sehr Niedrig bis Extrem.',
     definition:
-      'Die Besucherdichte beschreibt die allgemeine Besucherdichte in einem Park an einem bestimmten Tag oder zu einer bestimmten Zeit. park.fan verwendet eine Skala von Sehr Niedrig bis Extrem basierend auf historischen Wartezeitdaten, aktueller Belegung und KI-Prognosen. Ein Tag mit Sehr Niedriger Besucherdichte bedeutet kurze Schlangen und minimale Staus; ein Extremer Tag bedeutet maximale Besucherzahlen mit langen Wartezeiten bei den meisten Attraktionen.',
+      'Die Besucherdichte beschreibt, wie voll ein Park an einem bestimmten Tag oder zu einer bestimmten Uhrzeit ist. park.fan rechnet sie aus den gemessenen Wartezeiten, der aktuellen Auslastung und der Prognose und gibt sie auf einer Skala von „sehr niedrig“ bis „extrem“ aus. Sehr niedrig heißt kurze Schlangen und freie Wege; extrem heißt lange Wartezeiten an fast jeder Attraktion.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Besucherdichten', 'Besucherandrang', 'Crowd Level'],
     alternateNames: ['Crowd Level', 'Crowd Levels', 'Besucherandrang'],
@@ -117,7 +117,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Kapazität',
     shortDefinition: 'Die Anzahl der Besucher, die eine Attraktion pro Stunde aufnehmen kann.',
     definition:
-      'Die Attraktion Kapazität (oder Durchsatz) ist die maximale Anzahl von Besuchern, die eine Attraktion pro Stunde unter optimalen Betriebsbedingungen befördern kann. Die Kapazität hängt von der Fahrzeuggröße, der Anzahl der fahrenden Fahrzeuge, der Be- und Entladungsgeschwindigkeit und der Fahrzykluszeit ab. Die Kapazität bestimmt direkt, wie schnell sich die Warteschlange bewegt.',
+      'Die Kapazität einer Attraktion (oder Durchsatz) ist die maximale Anzahl von Besuchern, die eine Attraktion pro Stunde unter optimalen Betriebsbedingungen befördern kann. Die Kapazität hängt von der Fahrzeuggröße, der Anzahl der fahrenden Fahrzeuge, der Be- und Entladungsgeschwindigkeit und der Fahrzykluszeit ab. Die Kapazität bestimmt direkt, wie schnell sich die Warteschlange bewegt.',
     relatedTermIds: ['downtime', 'refurbishment', 'wait-time'],
   },
   {
@@ -183,7 +183,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein eigenständig gestalteter Bereich innerhalb eines Freizeitparks mit durchgehendem Thema.',
     definition:
-      'Ein Themenbereich (englisch: Themed Land) ist eine abgegrenzte Zone innerhalb eines Freizeitparks, die ein einheitliches Design, eine Hintergrundgeschichte (Storyline) und passende Attraktionen, Gastronomie und Shops vereint. Bekannte Beispiele sind Hogsmeade in den Universal-Parks, Fantasyland in Disney-Parks oder Scandinavica in Europa-Park. Theemenbereiche sorgen für ein immersives Erlebnis und leiten Besucher durch den Park.',
+      'Ein Themenbereich (englisch: Themed Land) ist eine abgegrenzte Zone innerhalb eines Freizeitparks, die ein einheitliches Design, eine Hintergrundgeschichte (Storyline) und passende Attraktionen, Gastronomie und Shops vereint. Bekannte Beispiele sind Hogsmeade in den Universal-Parks, Fantasyland in Disney-Parks oder Scandinavica in Europa-Park. Themenbereiche sorgen für ein immersives Erlebnis und leiten Besucher durch den Park.',
     aliases: ['Themenbereiche'],
     alternateNames: ['Themenzone', 'Land', 'Theming Area'],
 
@@ -438,7 +438,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine 360-Grad-Drehung entlang einer Parabelkurve, bei der die Fahrgäste am Scheitelpunkt Schwerelosigkeit erleben – eines der beliebtesten Elemente im modernen Achterbahndesign.',
     definition:
-      'Der Zero-G Roll ist eine Inversion, bei der die Strecke eine parabelförmige Kurve durch die Drehung beschreibt. Am Scheitelpunkt erleben die Fahrgäste kurzzeitig negative G-Kräfte (Airtime) während sie auf dem Kopf stehen – ein einzigartiges Gefühl der Schwerelosigkeit im Überschlag. Zero-G Rolls sind vor allem für B&M Wing-Coaster und Hypercoaster charakteristisch, wo das Element die Außensitz-Fahrer besonders spektakulär durch die Luft schwenkt. Shambhala in PortAventura und Fury 325 in Carowinds zeigen den Zero-G Roll in seiner beeindruckendsten Form.',
+      'Der Zero-G Roll ist eine Inversion, bei der die Strecke eine parabelförmige Kurve durch die Drehung beschreibt. Am Scheitelpunkt erleben die Fahrgäste kurzzeitig negative G-Kräfte (Airtime) während sie auf dem Kopf stehen – ein einzigartiges Gefühl der Schwerelosigkeit im Überschlag. Zero-G Rolls sind vor allem für B&M Wing-Coaster und Hypercoaster charakteristisch, wo das Element die Außensitz-Fahrer besonders spektakulär durch die Luft schwenkt. Der Zero-G Roll ist ein Markenzeichen der Inverted- und Wing-Coaster von B&M.',
     relatedTermIds: ['airtime', 'b-and-m', 'heartline-roll', 'inversion', 'zero-g-winder'],
   },
   {
@@ -494,7 +494,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Achterbahn, bei der die Wagen unter der Schiene an einem Pivot hängen und seitlich frei schwingen können.',
     definition:
-      'Eine Suspended Coaster ist ein spezieller Achterbahntyp, bei dem der Zug von oben an einem Pivot aufgehängt ist und seitlich unabhängig von der Schienenbahn schwingen kann. Während der Zug durch Kurven navigiert, schwingt er wie ein Pendel – eine Bewegung, die die charakteristische "Whip"-Sensation erzeugt. Diese Schwingbewegung unterscheidet sich von einer Inverted Coaster, wo der Zug starr an der Schiene befestigt ist.\n\nSuspended Coasters sind seltener als Inverted Coasters, bieten aber ein einzigartiges Erlebnis. Die Schwingbewegung macht selbst moderate Kurven dramatisch wirken, und das Gefühl des Fliegens erzeugt eine spannende Exposition. Vekoma entwickelte in den 1990er Jahren die Suspended Looping Coaster (SLC), von denen weltweit hunderte gebaut wurden. Die Schwingbewegung kann chaotisch wirken im Vergleich zur Präzision moderner Inversionen – manche Enthusiasten lieben sie für ihre rohe, unvorhersagbare Natur, während andere sie weniger mochten.',
+      'Der Suspended Coaster ist ein Achterbahntyp, bei dem der Zug von oben an einem Pivot aufgehängt ist und seitlich unabhängig von der Schienenbahn schwingen kann. Während der Zug durch Kurven navigiert, schwingt er wie ein Pendel – eine Bewegung, die die charakteristische "Whip"-Sensation erzeugt. Diese Schwingbewegung unterscheidet sich von einem Inverted Coaster, wo der Zug starr an der Schiene befestigt ist.\n\nSuspended Coasters sind seltener als Inverted Coasters, bieten aber ein einzigartiges Erlebnis. Die Schwingbewegung lässt selbst moderate Kurven dramatisch wirken, und das Gefühl des Fliegens erzeugt eine spannende Exposition. Vekoma entwickelte in den 1990er Jahren die Suspended Looping Coaster (SLC), von denen weltweit hunderte gebaut wurden. Die Schwingbewegung kann chaotisch wirken im Vergleich zur Präzision moderner Inversionen – manche Enthusiasten lieben sie für ihre rohe, unvorhersagbare Natur, während andere sie weniger mögen.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'vekoma'],
     alternateNames: ['Suspended Coaster', 'Hängende Achterbahn', 'Schwingende Achterbahn'],
   },
@@ -581,7 +581,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Niederländischer Achterbahn-Hersteller und einer der größten der Welt – bekannt für den allgegenwärtigen Boomerang sowie eine umfangreiche Palette an modernen Familien- und Thrill-Coasern in europäischen Parks.',
     definition:
-      'Vekoma Rides Manufacturing ist ein niederländischer Achterbahn-Hersteller mit Sitz in Vlodrop und einer der weltweit produktivsten nach Gesamtanlagen. 1926 als Maschinenbauunternehmen gegründet, stieg Vekoma in den 1970er Jahren auf Freizeitattraktionen um. Weltweite Bekanntheit erlangte das Unternehmen mit dem Boomerang – einem kompakten Shuttle-Coaster mit drei Inversionen, der günstig lizenziert und rund um den Globus aufgestellt wurde. Weitere ikonische Modelle sind der Suspended Looping Coaster (SLC), der Giant Inverted Boomerang und der Mine Train. Ab den 2010er Jahren erfand sich Vekoma mit einer modernen „New Generation"-Produktlinie neu: sanftere Fahrsysteme, innovative Layouts und verbesserte Familienattraktionen. Neue Modelle wie der Family Boomerang, der Tilt Coaster und hängende Familiencoaster tauchen zunehmend in europäischen Parks auf. Auch Disney hat maßgeschneiderte Vekoma-Anlagen für seine Resorts in Auftrag gegeben.',
+      'Vekoma Rides Manufacturing ist ein niederländischer Achterbahn-Hersteller mit Sitz in Vlodrop und einer der weltweit produktivsten nach Gesamtanlagen. 1926 als Maschinenbauunternehmen gegründet, stieg Vekoma in den 1970er Jahren auf Freizeitattraktionen um. Weltweite Bekanntheit erlangte das Unternehmen mit dem Boomerang – einem kompakten Shuttle-Coaster mit drei Inversionen, der günstig lizenziert und rund um den Globus aufgestellt wurde. Weitere ikonische Modelle sind der Suspended Looping Coaster (SLC), der Giant Inverted Boomerang und der Mine Train. Ab den 2010er Jahren erfand sich Vekoma mit einer modernen „New Generation“-Produktlinie neu: sanftere Fahrsysteme, innovative Layouts und verbesserte Familienattraktionen. Neue Modelle wie der Family Boomerang, der Tilt Coaster und hängende Familiencoaster tauchen zunehmend in europäischen Parks auf. Auch Disney hat maßgeschneiderte Vekoma-Anlagen für seine Resorts in Auftrag gegeben.',
     alternateNames: ['Vekoma Rides'],
 
     relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
@@ -592,7 +592,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deutscher Hersteller, vor allem bekannt für den Euro-Fighter mit seinem über-vertikalen Abfall sowie für Spinning Coaster und kompakte Familienbahnen.',
     definition:
-      'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. 1946 als metallverarbeitendes Unternehmen gegründet, stieg es in den 1980er Jahren in den Attraktionsmarkt ein und baute seinen Ruf mit dem Euro-Fighter-Modell aus – einem kompakten Elektro-Launch-Coaster mit berühmtem 97-Grad-Abfall über die Vertikale. Euro-Fighter lassen sich auf engem Raum installieren und sind damit attraktiv für Stadtparks und kleinere Veranstaltungsorte; Beispiele sind Rage im Adventure Island und Speed im Oakwood. Gerstlauer produziert außerdem das Infinity-Coaster-Modell, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste ihr eigenes Drehen steuern können. In der Enthusiasten-Szene werden Gerstlauer-Bahnen für ihre Intensität auf kleinem Footprint geschätzt.',
+      'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. 1946 als metallverarbeitendes Unternehmen gegründet, stieg es in den 1980er Jahren in den Attraktionsmarkt ein und baute seinen Ruf mit dem Euro-Fighter-Modell aus – einem kompakten Coaster mit vertikalem Kettenlift und einem Abfall von bis zu 97 Grad. Euro-Fighter lassen sich auf engem Raum installieren und sind damit attraktiv für Stadtparks und kleinere Veranstaltungsorte; Beispiele sind Rage im Adventure Island und Speed im Oakwood. Gerstlauer produziert außerdem das Infinity-Coaster-Modell, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste ihr eigenes Drehen steuern können. In der Enthusiasten-Szene werden Gerstlauer-Bahnen für ihre Intensität auf kleinem Footprint geschätzt.',
     alternateNames: ['Gerstlauer Rides'],
 
     relatedTermIds: [
@@ -683,7 +683,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Doppel-Inversions-Element, das in der Form eines erhobenen Kobrakopfs aussieht – zwei Inversionen verbunden durch eine 180-Grad-Drehung am Scheitelpunkt.',
     definition:
-      'Der Cobra Roll ist eines der markantesten B&M-Elemente und besteht aus zwei Inversionen in rascher Folge: Die Strecke zieht sich in einen halben Looping aufwärts, dreht am Scheitelpunkt 180 Grad durch eine kurze Überkopf-Passage, spiegelt dann die Sequenz und verlässt das Element in der ursprünglichen Fahrtrichtung. Aus der Seitenansicht ähnelt der Streckenverlauf dem erhobenen und gespreizten Kopf einer Kobra. Berühmte Cobra Rolls: Shambhala in PortAventura, Pyrenees in Madrid und zahlreiche B&M-Inverted-Coaster weltweit.',
+      'Der Cobra Roll ist eines der markantesten B&M-Elemente und besteht aus zwei Inversionen in rascher Folge: Die Strecke zieht sich in einen halben Looping aufwärts, dreht am Scheitelpunkt 180 Grad durch eine kurze Überkopf-Passage, spiegelt dann die Sequenz und verlässt das Element in der ursprünglichen Fahrtrichtung. Aus der Seitenansicht ähnelt der Streckenverlauf dem erhobenen und gespreizten Kopf einer Kobra. Berühmte Cobra Rolls: Dragon Khan in PortAventura und zahlreiche B&M-Inverted-Coaster weltweit.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -692,7 +692,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine spiralförmige 360-Grad-Inversion, bei der die Strecke um eine Mittelachse gewickelt ist – einer der frühesten und meistgebauten Inversionstypen.',
     definition:
-      "Der Korkenzieher (englisch: Corkscrew) ist eine der ältesten modernen Inversionen, von Arrow Dynamics in den 1970ern eingeführt. Die Strecke windet sich wie ein Weinkorkenziehen um einen zentralen Zylinder und dreht die Fahrgäste durch einen vollständigen 360-Grad-Roll, der seitlich versetzt zum Fahrtweg verläuft. Korkenzieher werden oft paarweise (hintereinander) gebaut und sind das Markenzeichen der 'klassischen' Stahl-Achterbahn-Ära. Auf deutschen Parkplänen und Beschilderungen wird der Begriff 'Korkenzieher' verwendet. Neuere Inversions-Designs haben den Korkenzieher weitgehend abgelöst, doch er bleibt ein nostalgisches Lieblingselement.",
+      "Der Korkenzieher (englisch: Corkscrew) ist eine der ältesten modernen Inversionen, von Arrow Dynamics in den 1970ern eingeführt. Die Strecke windet sich wie ein Korkenzieher um einen zentralen Zylinder und dreht die Fahrgäste durch einen vollständigen 360-Grad-Roll, der seitlich versetzt zum Fahrtweg verläuft. Korkenzieher werden oft paarweise (hintereinander) gebaut und sind das Markenzeichen der 'klassischen' Stahl-Achterbahn-Ära. Auf deutschen Parkplänen und Beschilderungen wird der Begriff 'Korkenzieher' verwendet. Neuere Inversions-Designs haben den Korkenzieher weitgehend abgelöst, doch er bleibt ein nostalgisches Lieblingselement.",
     relatedTermIds: ['flat-spin', 'inline-twist', 'inversion'],
   },
   {
@@ -746,7 +746,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Doppel-Inversions-Element mit 180-Grad-Richtungsumkehr, das in der Form einer Fledermaus-Flügelspannweite aussieht.',
     definition:
-      'Ein Batwing besteht aus zwei Inversionen mit Richtungsumkehr: Die Strecke zieht in einen halben Looping aufwärts, durchläuft am Scheitelpunkt einen halben Korkenzieher, der den Zug in einen kurzen Überkopf-Bereich bringt, und spiegelt dann die Sequenz zurück auf Bodenniveau – mit einer 180-Grad-Drehung der Fahrtrichtung. Aus der Vogelperspektive ähnelt der Streckenverlauf den ausgebreiteten Flügeln einer Fledermaus. Batswings sind ein Markenzeichen von B&M und erscheinen auf Coastern wie Afterburn in Carowinds und The Incredible Hulk Coaster im Universal’s Islands of Adventure. Anders als ein Bowtie (ohne Richtungsänderung) kehrt der Batwing die Fahrtrichtung um.',
+      'Ein Batwing besteht aus zwei Inversionen mit Richtungsumkehr: Die Strecke zieht in einen halben Looping aufwärts, durchläuft am Scheitelpunkt einen halben Korkenzieher, der den Zug in einen kurzen Überkopf-Bereich bringt, und spiegelt dann die Sequenz zurück auf Bodenniveau – mit einer 180-Grad-Drehung der Fahrtrichtung. Aus der Vogelperspektive ähnelt der Streckenverlauf den ausgebreiteten Flügeln einer Fledermaus. Batwings sind ein Markenzeichen von B&M und erscheinen auf Coastern wie Afterburn in Carowinds und The Incredible Hulk Coaster im Universal’s Islands of Adventure. Anders als ein Bowtie (ohne Richtungsänderung) kehrt der Batwing die Fahrtrichtung um.',
     relatedTermIds: ['b-and-m', 'bowtie', 'cobra-roll', 'inversion'],
   },
   {
@@ -929,7 +929,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein detaillierter, optimierter Besuchsplan für einen Freizeitparkbesuch, der die Abfolge der Attraktionen so ordnet, dass Wartezeiten minimiert und möglichst viele Fahrten erreicht werden.',
     definition:
-      'Ein Touringplan ist eine vorbereitete Abfolge von Attraktionen, Mahlzeiten und Parkbewegungen, die darauf ausgelegt ist, die Gesamtwartezeit über den Tag zu minimieren. Effektive Touringpläne berücksichtigen Besuchermuster (welche Parkbereiche sich zuerst füllen), Attraktionskapazitäten, Schlangenverhalten, Showpläne und Wetter. Seiten wie TouringPlans.com (heute Thrill-Data) veröffentlichen detaillierte Pläne für große Parks. Die Live-Wartezeiten und der Besucherkalender von park.fan sind komplementäre Werkzeuge: Echtzeit-Wartezeiten ermöglichen spontane Anpassungen des Plans. An belebten Tagen kann ein guter Touringplan die Gesamtwartezeit um 30–50 % gegenüber einem spontanen Ansatz reduzieren.',
+      'Ein Touringplan ist eine vorbereitete Abfolge von Attraktionen, Mahlzeiten und Parkbewegungen, die darauf ausgelegt ist, die Gesamtwartezeit über den Tag zu minimieren. Effektive Touringpläne berücksichtigen Besuchermuster (welche Parkbereiche sich zuerst füllen), Attraktionskapazitäten, Schlangenverhalten, Showpläne und Wetter. Seiten wie TouringPlans.com veröffentlichen detaillierte Pläne für große Parks. Die Live-Wartezeiten und der Besucherkalender von park.fan sind komplementäre Werkzeuge: Echtzeit-Wartezeiten ermöglichen spontane Anpassungen des Plans.',
     aliases: ['Touringpläne'],
     alternateNames: ['Touring Plan', 'Besuchsplan', 'Parkplan', 'Besuchsstrategie'],
 
@@ -963,7 +963,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achterbahntyp mit seitlich an der Schiene platzierten Sitzen – über, unter und neben den Fahrgästen ist nichts als Luft.',
     definition:
-      'Ein Wing Coaster (auch Wing Rider) platziert jeweils zwei Sitze links und rechts neben der Schiene, sodass die Fahrgäste keinerlei Struktur über, unter oder neben sich haben. Das Design maximiert das Flugerleben und ermöglicht spektakuläre Nahbegegnungen mit Theming und Konstruktionsteilen. B&M ist der primäre Hersteller von Wing Coastern. Herausragende europäische Beispiele: Flug der Dämonen in Europa-Park – oft als einer der besten Coaster Europas bezeichnet – sowie The Swarm in Thorpe Park. Mit park.fan findest du aktuelle Wartezeiten für alle Wing Coaster.',
+      'Ein Wing Coaster (auch Wing Rider) platziert jeweils zwei Sitze links und rechts neben der Schiene, sodass die Fahrgäste keinerlei Struktur über, unter oder neben sich haben. Das Design maximiert das Flugerleben und ermöglicht spektakuläre Nahbegegnungen mit Theming und Konstruktionsteilen. B&M ist der primäre Hersteller von Wing Coastern. Europäische Beispiele sind Flug der Dämonen im Heide-Park und The Swarm in Thorpe Park. Mit park.fan findest du aktuelle Wartezeiten für alle Wing Coaster.',
     alternateNames: ['Wing Coaster', 'Wing Rider', 'Wingcoaster', 'Flügelachterbahn'],
 
     relatedTermIds: ['b-and-m', 'dive-coaster', 'inverted-coaster'],
@@ -995,7 +995,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achterbahn mit mehr als 61 m Höhe – ohne Inversionen, dafür mit Fokus auf Geschwindigkeit und Airtime.',
     definition:
-      'Hyper Coaster ist die Klassifikation für Achterbahnen zwischen 61 und 91 m Höhe. B&M nennt ihre Modelle "Hyper Coaster"; Intamin verwendet für vergleichbare Bahnen den Begriff "Mega Coaster". Beide Typen setzen auf ausgedehnte Airtime-Hügel bei hoher Geschwindigkeit statt auf Inversionen. Shambhala in PortAventura (Spanien) ist mit 76 m Europas höchster und schnellster Hyper Coaster. Weitere bekannte Beispiele: Goliath in Walibi Holland und Mako in SeaWorld Orlando.',
+      'Hyper Coaster ist die Klassifikation für Achterbahnen zwischen 61 und 91 m Höhe. B&M nennt ihre Modelle "Hyper Coaster"; Intamin verwendet für vergleichbare Bahnen den Begriff "Mega Coaster". Beide Typen setzen auf ausgedehnte Airtime-Hügel bei hoher Geschwindigkeit statt auf Inversionen. Shambhala in PortAventura (76 m) und Hyperion in Energylandia (77 m) sind die höchsten Hyper Coaster Europas. Weitere bekannte Beispiele: Goliath in Walibi Holland und Mako in SeaWorld Orlando.',
     aliases: ['Hyper Coasters'],
     alternateNames: ['Hyper Coaster', 'Mega Coaster', 'Mega-Achterbahn', 'Hypercoaster'],
 
@@ -1006,7 +1006,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Giga Coaster',
     shortDefinition: 'Achterbahn mit mehr als 91 m Höhe – eine Stufe über dem Hyper Coaster.',
     definition:
-      'Giga Coaster ist die Klassifikation für Achterbahnen zwischen 91 und 121 m Höhe. Der Begriff wurde 2000 von Cedar Fair und Intamin für Millennium Force in Cedar Point geprägt. Giga Coaster betonen extreme Höhe, lange Layouts und massive Airtime-Momente. Fury 325 in Carowinds gilt vielen Enthusiasten als der beste Stahlcoaster der Welt. In Europa gibt es Stand 2025 noch keinen echten Giga Coaster; Hyperion in Energylandia (Polen) mit 77 m fällt technisch noch in die Hyper-Kategorie.',
+      'Giga Coaster ist die Klassifikation für Achterbahnen zwischen 91 und 121 m Höhe. Der Begriff wurde 2000 von Cedar Fair und Intamin für Millennium Force in Cedar Point geprägt. Giga Coaster betonen extreme Höhe, lange Layouts und massive Airtime-Momente. Fury 325 in Carowinds gilt vielen Enthusiasten als der beste Stahlcoaster der Welt. In Europa gibt es bislang keinen echten Giga Coaster; Hyperion in Energylandia (Polen) mit 77 m fällt technisch noch in die Hyper-Kategorie.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Giga Coaster', 'Gigacoaster'],
 
@@ -1058,7 +1058,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'KI-gestützte Vorhersagen für Besucherdichte und Wartezeiten in Freizeitparks – bis zu 365 Tage im Voraus.',
     definition:
-      'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 365 Tage im Voraus.\n\nDie Vorhersagen werden mit jedem Trainingslauf neu berechnet, täglich um 06:00 UTC. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
+      'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 365 Tage im Voraus.\n\nDie Vorhersagen werden mit jedem Trainingslauf neu berechnet, täglich um 06:00 UTC. Kurzfristige Prognosen (1–7 Tage) fallen genauer aus, weil Wetter und Veranstaltungen dann feststehen, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     alternateNames: ['AI Forecast', 'AI Forecasts'],
     aliases: ['KI-Prognose', 'KI-Prognosen', 'KI-Vorhersage', 'KI-Vorhersagen'],
@@ -1123,7 +1123,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Themenfahrt ohne feste Schiene – die Fahrzeuge navigieren frei durch den Raum, geführt von in den Boden eingelassener Technologie.',
     definition:
-      'Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Attractionsraum navigieren – geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L’Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).',
+      'Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Showraum navigieren – geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L’Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).',
     aliases: ['Trackless'],
     alternateNames: ['Trackless Dark Ride', 'Gleislose Attraktion'],
 
@@ -1228,7 +1228,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die letzte Reihe eines Fahrgeschäfts, bekannt für intensives Ejector Airtime auf Airtime-orientierten Layouts.',
     definition:
-      'Die letzte Reihe eines Achterbahn-Zugs ist bei Enthusiasten für intensive Airtime-Empfindungen berühmt. Bei jeder Airtime-Kuppe erlebt die letzte Reihe den stärksten Effekt: Fahrgäste werden intensiv aus den Sitzen gehoben und von den Bügeln gehalten (Ejector Airtime). Dieser Effekt verstärkt sich über mehrere Hügel hinweg – das intensive, anhaltende Schwebelosigkeitsgefühl macht die letzte Reihe auf Airtime-Achterbahnen zur bevorzugten Position.\n\nBei Coastern wie Goliath oder Shambhala gilt die letzte Reihe als die beste Position für Enthusiasten. Der Nachteil: Letzte Reihen können auf älteren Achterbahnen rauer wirken, und bei steilen Drops sitzt man mit dem Blick auf die Kehre statt ins Leere. Enthusiasten-Rankings platzieren die letzte Reihe dennoch konsistent oben bei der Intensität des Airtime-Erlebnisses.',
+      'Die letzte Reihe eines Achterbahn-Zugs ist bei Enthusiasten für intensive Airtime-Empfindungen berühmt. Bei jeder Airtime-Kuppe erlebt die letzte Reihe den stärksten Effekt: Fahrgäste werden intensiv aus den Sitzen gehoben und von den Bügeln gehalten (Ejector Airtime). Dieser Effekt verstärkt sich über mehrere Hügel hinweg – das intensive, anhaltende Schwerelosigkeitsgefühl macht die letzte Reihe auf Airtime-Achterbahnen zur bevorzugten Position.\n\nBei Coastern wie Goliath oder Shambhala gilt die letzte Reihe als die beste Position für Enthusiasten. Der Nachteil: Letzte Reihen können auf älteren Achterbahnen rauer wirken, und bei steilen Drops sitzt man mit dem Blick auf die Kehre statt ins Leere. Enthusiasten-Rankings platzieren die letzte Reihe dennoch konsistent oben bei der Intensität des Airtime-Erlebnisses.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'front-row', 'middle-row'],
   },
   {
@@ -1264,7 +1264,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein über-den-Schultern-Sicherheitsbügel, der den Oberkörper umschließt und Bewegung einschränkt.',
     definition:
-      'Ein Schulterbügel ist ein Sicherheitssystem, das über beide Schultern und über den Schoß kommt und den Oberkörper vollständig umhüllt. Schulterbügel waren Standard auf Achterbahnen der 1980er und 2000er und bleiben verbreitet auf Inverted Coastern, manchen Suspended Coastern und Family-Rides, wo maximale Sicherheit Vorrang hat. Moderne Bügel haben Ratschenmechanismen, die unterschiedliche Engstellung ermöglichen.\n\nWenn man mit Schulterbügel auf einer Airtime-Achterbahn sitzt, fühlt sich das Erlebnis anders an: Fahrgäste können nicht so dramativ aus dem Sitz aufstehen, weil der Bügel sie festhält. Dieser Kompromiss – bessere Sicherheit gegen weniger intensive Airtime-Empfindung – ist ein bewusster Designentscheid. Enthusiasten bevorzugen Schoßbügel für Airtime-Achterbahnen, aber Schulterbügel fühlen sich für nervöse Fahrgäste sicherer an.',
+      'Ein Schulterbügel ist ein Sicherheitssystem, das über beide Schultern und über den Schoß kommt und den Oberkörper vollständig umhüllt. Schulterbügel waren Standard auf Achterbahnen der 1980er und 2000er und bleiben verbreitet auf Inverted Coastern, manchen Suspended Coastern und Family-Rides, wo maximale Sicherheit Vorrang hat. Moderne Bügel haben Ratschenmechanismen, die unterschiedliche Engstellung ermöglichen.\n\nWenn man mit Schulterbügel auf einer Airtime-Achterbahn sitzt, fühlt sich das Erlebnis anders an: Fahrgäste können nicht so dramatisch aus dem Sitz aufstehen, weil der Bügel sie festhält. Dieser Kompromiss – bessere Sicherheit gegen weniger intensive Airtime-Empfindung – ist ein bewusster Designentscheid. Enthusiasten bevorzugen Schoßbügel für Airtime-Achterbahnen, aber Schulterbügel fühlen sich für nervöse Fahrgäste sicherer an.',
     relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
@@ -1283,7 +1283,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Offizielle Produkte und Waren eines Freizeitparks, einschließlich Kleidung, Sammelobjekte und thematische Artikel.',
     definition:
-      'Merchandise umfasst alle Waren eines Freizeitparks – von Markenbekleidung (T-Shirts, Hoodies, Kappen) über Sammelobjekte (Pins, Figuren, Plüschtiere) bis hin zu Spezial- und themengebundenen Artikeln. Parks betreiben umfangreiche Merchandise-Operationen über Dutzende Läden, mobile Verkaufswagen und spezialisierte Boutiquen. Merchandise ist eine kritische Einnahmequelle, oft 15–25% der Besucherausgaben.\n\nModerne Parks nutzen strategische Merchandising-Methoden: Limitierte saisonale Artikel, Kooperations-Merchandise mit beliebten Franchises, Park-exklusive Designs und Spezial-Releases zu neuen Eröffnungen. Merchandise-Design wird zunehmend datengesteuert – Parks verfolgen, welche Artikel am schnellsten verkaufen und am meisten auf Social Media funktionieren. Für dedizierte Fans wird Merchandise-Sammlung Teil ihrer Park-Erfahrung, und Sekundärmärkte existieren für seltene, ausverkaufte Artikel.',
+      'Merchandise umfasst alle Waren eines Freizeitparks – von Markenbekleidung (T-Shirts, Hoodies, Kappen) über Sammelobjekte (Pins, Figuren, Plüschtiere) bis hin zu Spezial- und themengebundenen Artikeln. Parks betreiben umfangreiche Merchandise-Operationen über Dutzende Läden, mobile Verkaufswagen und spezialisierte Boutiquen. Merchandise ist eine kritische Einnahmequelle, oft 15–25 % der Besucherausgaben.\n\nModerne Parks nutzen strategische Merchandising-Methoden: Limitierte saisonale Artikel, Kooperations-Merchandise mit beliebten Franchises, Park-exklusive Designs und Spezial-Releases zu neuen Eröffnungen. Merchandise-Design wird zunehmend datengesteuert – Parks verfolgen, welche Artikel am schnellsten verkaufen und am meisten auf Social Media funktionieren. Für dedizierte Fans wird Merchandise-Sammlung Teil ihrer Park-Erfahrung, und Sekundärmärkte existieren für seltene, ausverkaufte Artikel.',
     relatedTermIds: ['gift-shop', 'park-exclusive', 'souvenir'],
     alternateNames: ['Merch'],
   },
@@ -1302,7 +1302,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Produkt, das nur in einem bestimmten Freizeitpark erhältlich ist und nirgendwo sonst gekauft werden kann.',
     definition:
-      'Park-exklusive Merchandise sind Produkte, die nur in einem bestimmten Park oder Parksystem verkauft werden – nirgendwo sonst erhältlich. Park-Exklusiva erzeugen Knappheit, fördern Impulskäufe durch das Gefühl der Nicht-Verfügbarkeit anderswo, und ermöglichen 2–3x höhere Preismargen. Häufige Exklusiva sind limitierte Kleidung, Sammel-Pins, thematische Artikel zu neuen Attraktionen und Novelty-Lebensmittel.\n\nDie Park-Exklusiv-Strategie ist psychologisch zentral: Gäste, die weit gereist sind und viel für Eintritt gezahlt haben, kaufen eher Artikel, die sie daheim nicht bekommen. Sekundärmärkte zeigen, dass begehrte, limitierte Park-Exklusiva an Wert gewinnen und sammlerische Verhaltensweisen fördern. Parks betonen strategisch „Park Exklusiv" auf Verpackungen. Online-Foren und Social Media zeigen ständig Diskussionen über die begehrtesten oder rärsten Exklusiva.',
+      'Park-exklusive Merchandise sind Produkte, die nur in einem bestimmten Park oder Parksystem verkauft werden – nirgendwo sonst erhältlich. Park-Exklusiva erzeugen Knappheit, fördern Impulskäufe durch das Gefühl der Nicht-Verfügbarkeit anderswo, und ermöglichen 2–3x höhere Preismargen. Häufige Exklusiva sind limitierte Kleidung, Sammel-Pins, thematische Artikel zu neuen Attraktionen und Novelty-Lebensmittel.\n\nDie Park-Exklusiv-Strategie ist psychologisch zentral: Gäste, die weit gereist sind und viel für Eintritt gezahlt haben, kaufen eher Artikel, die sie daheim nicht bekommen. Sekundärmärkte zeigen, dass begehrte, limitierte Park-Exklusiva an Wert gewinnen und sammlerische Verhaltensweisen fördern. Parks betonen strategisch „Park Exklusiv“ auf Verpackungen. Online-Foren und Social Media zeigen ständig Diskussionen über die begehrtesten oder seltensten Exklusiva.',
     relatedTermIds: ['gift-shop', 'merchandise', 'souvenir'],
   },
   {
@@ -1572,7 +1572,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Schnellrestaurant',
     shortDefinition: 'Selbstbedienungsrestaurant ohne Bedienung am Tisch.',
     definition:
-      'Ein Schnellrestaurant (auch Counter Service oder Fast Casual) bezeichnet Parkrestaurants, bei denen Gäste an einer Theke bestellen und ihr Essen selbst zum Tisch tragen. Es ist die häufigste Restaurantform in Freizeitparks und bietet Schnelligkeit und Komfort. Disney popularisierte den Begriff „Quick Service" zur Unterscheidung vom „Table Service" in seinem Dining-Reservierungssystem.',
+      'Ein Schnellrestaurant (auch Counter Service oder Fast Casual) bezeichnet Parkrestaurants, bei denen Gäste an einer Theke bestellen und ihr Essen selbst zum Tisch tragen. Es ist die häufigste Restaurantform in Freizeitparks und bietet Schnelligkeit und Komfort. Disney popularisierte den Begriff „Quick Service“ zur Unterscheidung vom „Table Service“ in seinem Dining-Reservierungssystem.',
     relatedTermIds: ['character-dining', 'table-service'],
     alternateNames: ['Schnellrestaurant', 'Counter Service', 'Fast Food', 'Selbstbedienung'],
   },
@@ -1747,7 +1747,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Zwei parallele Achterbahn-Strecken, auf denen Züge gleichzeitig starten und Seite an Seite fahren.',
     definition:
-      'Ein Racing Coaster verfügt über zwei separate, aber spiegelbildliche Achterbahn-Strecken, die parallel zueinander verlaufen. Züge werden gleichzeitig losgeschickt, sodass Fahrgäste das Gefühl haben, gegen den anderen Zug zu rennen. Die Strecken überkreuzen sich oder verlaufen an mehreren Punkten extrem nah aneinander, um die Wettbewerbsspannung zu maximieren. Einige Racing Coaster sind als Möbius-Loop konzipiert: Beide Strecken bilden eine einzige zusammenhängende Schleife, sodass Fahrgäste automatisch die Seite wechseln. Das Format funktioniert sowohl mit Holz- als auch mit Stahlachterbahnen. Bekannte europäische Beispiele sind Piraten im Djurs Sommerland und Dwervelwind im Plopsaland.',
+      'Ein Racing Coaster verfügt über zwei separate, aber spiegelbildliche Achterbahn-Strecken, die parallel zueinander verlaufen. Züge werden gleichzeitig losgeschickt, sodass Fahrgäste das Gefühl haben, gegen den anderen Zug zu rennen. Die Strecken überkreuzen sich oder verlaufen an mehreren Punkten extrem nah aneinander, um die Wettbewerbsspannung zu maximieren. Einige Racing Coaster sind als Möbius-Loop konzipiert: Beide Strecken bilden eine einzige zusammenhängende Schleife, sodass Fahrgäste automatisch die Seite wechseln. Das Format funktioniert sowohl mit Holz- als auch mit Stahlachterbahnen. In Europa sind sie selten; das bekannteste Beispiel ist der Möbius-Woodie Grand National im Blackpool Pleasure Beach.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     alternateNames: ['Racing Coaster', 'Paarachterbahn', 'Twin Coaster', 'Dueling Coaster'],
   },
@@ -1757,7 +1757,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achterbahn-Element, bei dem zwei Züge auf parallelen Strecken in Armreichweite aneinander vorbeifahren.',
     definition:
-      'Ein High Five ist ein Beinahekollisions-Element bei Achterbahnen, bei dem zwei Züge auf separaten, aber eng benachbarten Strecken in extremer Nähe – manchmal in Armreichweite – aneinander vorbeifahren. Der Name leitet sich von der Empfindung ab, dass Fahrgäste die Insassen des anderen Zuges „abklatschen" könnten. Das Element erfordert präzise Abfahrtssteuerung, um beide Züge zur richtigen Zeit am Kreuzungspunkt zusammenzuführen. Wing Coaster und Inverted Coaster eignen sich besonders gut für High-Five-Elemente, da die außenliegenden Sitze den Nahbereichseffekt verstärken. Duelling Dragons / Dragon Challenge in Universal’s Islands of Adventure war ein bekanntes frühes Beispiel; das Element findet sich heute an verschiedenen B&M-Wing-Coastern weltweit.',
+      'Ein High Five ist ein Beinahekollisions-Element bei Achterbahnen, bei dem zwei Züge auf separaten, aber eng benachbarten Strecken in extremer Nähe – manchmal in Armreichweite – aneinander vorbeifahren. Der Name leitet sich von der Empfindung ab, dass Fahrgäste die Insassen des anderen Zuges „abklatschen“ könnten. Das Element erfordert präzise Abfahrtssteuerung, um beide Züge zur richtigen Zeit am Kreuzungspunkt zusammenzuführen. Wing Coaster und Inverted Coaster eignen sich besonders gut für High-Five-Elemente, da die außenliegenden Sitze den Nahbereichseffekt verstärken. Duelling Dragons / Dragon Challenge in Universal’s Islands of Adventure war ein bekanntes frühes Beispiel; das Element findet sich heute an verschiedenen B&M-Wing-Coastern weltweit.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'wing-coaster'],
     alternateNames: ['High Five', 'Beinahe-Kollisions-Element', 'Near Miss', 'Near-Miss-Element'],
   },
@@ -1832,7 +1832,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein vertikaler Looping, der aus der Senkrechten gekippt ist – der Zug fährt schräg ein und aus statt geradeaus.',
     definition:
-      'Ein geneigter Looping (englisch: Inclined Loop oder Tilted Loop) ist ein klassischer vertikaler Looping, der um seine Achse gedreht wurde – typischerweise um 45 bis 80 Grad relativ zur Fahrtrichtung. Statt dass der Zug den Looping geradeaus einleitet und verlässt, nähert er sich und verlässt das Element schräg, was sowohl ein asymmetrisches Erscheinungsbild als auch eine deutlich veränderte Fahrerfahrung erzeugt.\n\nDie gekippte Geometrie beeinflusst das Empfinden der Inversion: Die Einfahrt fühlt sich lateraler an als beim klassischen Looping, und die Ausleitung am Tiefstobjekt kommt aus einer anderen Richtung als erwartet – das kann sowohl orientierungsberaubend als auch aufregend sein. Für Zuschauer ist ein geneigter Looping sofort als ungewöhnlich erkennbar und wirkt visuell deutlich dramatischer als ein aufrechter Looping. Geneigte Loopings finden sich auf verschiedenen B&M- und Intamin-Coasters, oft im mittleren oder abschließenden Teil der Strecke.',
+      'Ein geneigter Looping (englisch: Inclined Loop oder Tilted Loop) ist ein klassischer vertikaler Looping, der um seine Achse gedreht wurde – typischerweise um 45 bis 80 Grad relativ zur Fahrtrichtung. Statt dass der Zug den Looping geradeaus einleitet und verlässt, nähert er sich und verlässt das Element schräg, was sowohl ein asymmetrisches Erscheinungsbild als auch eine deutlich veränderte Fahrerfahrung erzeugt.\n\nDie gekippte Geometrie beeinflusst das Empfinden der Inversion: Die Einfahrt fühlt sich lateraler an als beim klassischen Looping, und die Ausleitung am Tiefstobjekt kommt aus einer anderen Richtung als erwartet – das kann sowohl desorientierend als auch aufregend sein. Für Zuschauer ist ein geneigter Looping sofort als ungewöhnlich erkennbar und wirkt visuell deutlich dramatischer als ein aufrechter Looping. Geneigte Loopings finden sich auf verschiedenen B&M- und Intamin-Coasters, oft im mittleren oder abschließenden Teil der Strecke.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     aliases: ['geneigter Looping'],
     alternateNames: ['Tilted Loop', 'Inclined Loop'],
@@ -1912,7 +1912,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die Ratschensicherung am Liftberg, die verhindert, dass der Zug rückwärts rollt – Quelle des charakteristischen Click-Clack-Geräuschs.',
     definition:
-      'Ein Anti-Rollback-System (auch Rollback-Sperrklinke oder Anti-Rollback-Dog) ist eine mechanische Sicherungsvorrichtung entlang der Unterseite eines Liftbergs. Während der Zug aufsteigt, rasten federbelastete Metallklinken – sogenannte „Dogs" – über eine Zahnreihe, die in die Liftberg-Struktur eingelassen ist. Falls die Kette oder der Antrieb versagen würde, würden die Klinken in den Zähnen einrasten und den Zug blockieren, sodass er nicht rückwärts abrutschen kann. Das Rasten der Klinken über die Zähne erzeugt das rhythmische Klick-Klack-Geräusch, das zu den bekanntesten akustischen Erkennungszeichen klassischer Achterbahnen gehört.\n\nBei modernen Bahnen mit lautlosen Kabelliften oder LSM-betriebenen Liftbergen werden Anti-Rollback-Klinken oft durch leise elektromagnetische Bremssysteme ersetzt – weshalb neuere Anlagen am Liftberg auffällig leiser sind. Enthusiasten vermissen dieses akustische Ritual manchmal als Teil des klassischen Achterbahn-Erlebnisses.',
+      'Ein Anti-Rollback-System (auch Rollback-Sperrklinke oder Anti-Rollback-Dog) ist eine mechanische Sicherungsvorrichtung entlang der Unterseite eines Liftbergs. Während der Zug aufsteigt, rasten federbelastete Metallklinken – sogenannte „Dogs“ – über eine Zahnreihe, die in die Liftberg-Struktur eingelassen ist. Falls die Kette oder der Antrieb versagen würde, würden die Klinken in den Zähnen einrasten und den Zug blockieren, sodass er nicht rückwärts abrutschen kann. Das Rasten der Klinken über die Zähne erzeugt das rhythmische Klick-Klack-Geräusch, das zu den bekanntesten akustischen Erkennungszeichen klassischer Achterbahnen gehört.\n\nBei modernen Bahnen mit lautlosen Kabelliften oder LSM-betriebenen Liftbergen werden Anti-Rollback-Klinken oft durch leise elektromagnetische Bremssysteme ersetzt – weshalb neuere Anlagen am Liftberg auffällig leiser sind. Enthusiasten vermissen dieses akustische Ritual manchmal als Teil des klassischen Achterbahn-Erlebnisses.',
     relatedTermIds: ['launch-coaster', 'lifthill', 'rollback'],
     alternateNames: ['Anti-Rollback', 'Rollback-Sperre', 'Click-Clack', 'Sperrklinke'],
   },
@@ -1932,7 +1932,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Wenn ein Ride-Operator Schulterbügel oder Schoßbügel zu fest anzieht – wodurch Komfort und Airtime verloren gehen.',
     definition:
-      'Stapling bezeichnet die Praxis – ob absichtlich oder übervorsichtig – eines Operators, der einen Schoßbügel oder Schulterbügel so fest gegen den Fahrgast drückt, dass er deutlich enger sitzt als für die Sicherheit notwendig. Der Begriff leitet sich vom Gefühl ab, in den Sitz „geheftet" zu sein. Bei Airtime-orientierten Achterbahnen sollen Schoßbügel so locker sitzen, dass Fahrgäste an den Kammkuppen tatsächlich leicht vom Sitz abheben können – das ist Airtime. Wer gestapelt ist, wird während der gesamten Fahrt flach in den Sitz gepresst und kann das beabsichtigte Schwebebefühl nicht erleben, egal wie gut die Hügel gestaltet sind.\n\nStapling ist ein häufiger Kritikpunkt in der Enthusiasten-Community, insbesondere bei Holzachterbahnen und Hybrid-Coastern, wo Airtime die Hauptattraktion ist. Manche Parks sind für konsequent lockere, fahrerfreundliche Bügelpolitik bekannt; andere werden für systematisches Überzurren kritisiert.',
+      'Stapling bezeichnet die Praxis – ob absichtlich oder übervorsichtig – eines Operators, der einen Schoßbügel oder Schulterbügel so fest gegen den Fahrgast drückt, dass er deutlich enger sitzt als für die Sicherheit notwendig. Der Begriff leitet sich vom Gefühl ab, in den Sitz „geheftet“ zu sein. Bei Airtime-orientierten Achterbahnen sollen Schoßbügel so locker sitzen, dass Fahrgäste an den Kammkuppen tatsächlich leicht vom Sitz abheben können – das ist Airtime. Wer gestapelt ist, wird während der gesamten Fahrt flach in den Sitz gepresst und kann das beabsichtigte Schwebebefühl nicht erleben, egal wie gut die Hügel gestaltet sind.\n\nStapling ist ein häufiger Kritikpunkt in der Enthusiasten-Community, insbesondere bei Holzachterbahnen und Hybrid-Coastern, wo Airtime die Hauptattraktion ist. Manche Parks sind für konsequent lockere, fahrerfreundliche Bügelpolitik bekannt; andere werden für systematisches Überzurren kritisiert.',
     relatedTermIds: [
       'airtime',
       'ejector-airtime',
@@ -1949,7 +1949,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Wenn ein Achterbahn-Zug auf der Strecke so viel Schwung verliert, dass er in einem Tiefpunkt stecken bleibt und das Ziel nicht erreichen kann.',
     definition:
-      'Valleying (deutsch: „im Tal stecken bleiben") tritt auf, wenn ein Zug während der Fahrt zu viel kinetische Energie verliert, keinen ausreichenden Schwung mehr hat, um den nächsten Hügel oder das nächste Element zu überwinden, und zum Stillstand kommt – oder zurückrollt – in einem Tiefpunkt zwischen zwei Hochpunkten der Strecke. Da der Zug nun an einem Tiefpunkt steht und nicht an einer Bremsstrecke oder im Bahnhof, kann er mit den normalen Betriebssystemen nicht bewegt werden. Die Bergung erfordert in der Regel Wartungspersonal, das den Zug manuell über den nächsten Hochpunkt schiebt oder windet und die Fahrgäste evakuiert.\n\nValleying ist unter normalen Betriebsbedingungen selten, da Anlagen mit erheblichen Geschwindigkeitspuffern ausgelegt werden. Wahrscheinlicher tritt es bei ungewöhnlich kaltem Wetter auf (wenn Radlager steif laufen), bei zu vielen Trimbremsen oder auf gealtertem Streckenbelag, dessen Geometrie sich verschoben hat.',
+      'Valleying (deutsch: „im Tal stecken bleiben“) tritt auf, wenn ein Zug während der Fahrt zu viel kinetische Energie verliert, keinen ausreichenden Schwung mehr hat, um den nächsten Hügel oder das nächste Element zu überwinden, und zum Stillstand kommt – oder zurückrollt – in einem Tiefpunkt zwischen zwei Hochpunkten der Strecke. Da der Zug nun an einem Tiefpunkt steht und nicht an einer Bremsstrecke oder im Bahnhof, kann er mit den normalen Betriebssystemen nicht bewegt werden. Die Bergung erfordert in der Regel Wartungspersonal, das den Zug manuell über den nächsten Hochpunkt schiebt oder windet und die Fahrgäste evakuiert.\n\nValleying ist unter normalen Betriebsbedingungen selten, da Anlagen mit erheblichen Geschwindigkeitspuffern ausgelegt werden. Wahrscheinlicher tritt es bei ungewöhnlich kaltem Wetter auf (wenn Radlager steif laufen), bei zu vielen Trimbremsen oder auf gealtertem Streckenbelag, dessen Geometrie sich verschoben hat.',
     relatedTermIds: ['brake-run', 'downtime', 'rollback', 'trim-brake'],
     alternateNames: ['Valleying', 'im Tal feststecken', 'stecken gebliebener Zug'],
   },
@@ -1959,7 +1959,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Achterbahntyp mit kleinen Einzelwagen und engen, flachen Spitzkurven an den Kanten erhöhter Plattformen – das Gefühl, gleich herunterzufallen, ist Programm.',
     definition:
-      'Eine Wilde Maus (englisch: Wild Mouse) nutzt kleine Wagen für zwei bis vier Personen statt langer Züge. Das Markenzeichen ist eine Reihe enger, kaum überhöhter Haarnadel-Kurven, die an den äußersten Kanten der Strecke ausgeführt werden. Da die Kurven nicht steil überhöht sind – anders als bei anderen Achterbahnen – werden Fahrgäste seitlich gegen die Wagenwand gedrückt, und die Trägheit der Anfahrt lässt die Kurve später als erwartet kommen. Dies erzeugt überzeugend das Gefühl, gleich von der Strecke zu rutschen.\n\nWilde-Maus-Achterbahnen gehören zu den platzsparendsten Designs überhaupt und verpacken erstaunlich viel Strecke in ein kompaktes Gelände, indem die Haarnadel-Ebenen übereinander gestapelt werden. Sie sind in ganz Europa und weltweit verbreitet – insbesondere in Deutschland ist der Begriff „Wilde Maus" vielen Parkkunden geläufig. Hersteller sind unter anderem Mack Rides, Maurer und Gerstlauer.',
+      'Eine Wilde Maus (englisch: Wild Mouse) nutzt kleine Wagen für zwei bis vier Personen statt langer Züge. Das Markenzeichen ist eine Reihe enger, kaum überhöhter Haarnadel-Kurven, die an den äußersten Kanten der Strecke ausgeführt werden. Da die Kurven nicht steil überhöht sind – anders als bei anderen Achterbahnen – werden Fahrgäste seitlich gegen die Wagenwand gedrückt, und die Trägheit der Anfahrt lässt die Kurve später als erwartet kommen. Dies erzeugt überzeugend das Gefühl, gleich von der Strecke zu rutschen.\n\nWilde-Maus-Achterbahnen gehören zu den platzsparendsten Designs überhaupt und verpacken erstaunlich viel Strecke in ein kompaktes Gelände, indem die Haarnadel-Ebenen übereinander gestapelt werden. Sie sind in ganz Europa und weltweit verbreitet – insbesondere in Deutschland ist der Begriff „Wilde Maus“ vielen Parkkunden geläufig. Hersteller sind unter anderem Mack Rides, Maurer und Gerstlauer.',
     relatedTermIds: [
       'bobsled-coaster',
       'gerstlauer',
@@ -2022,7 +2022,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Mean Absolute Error – die durchschnittliche Abweichung in Minuten zwischen Vorhersage und tatsächlicher Wartezeit.',
     definition:
-      'MAE (Mean Absolute Error, mittlerer absoluter Fehler) ist das Standardmaß für die Vorhersagegenauigkeit bei park.fan. Er berechnet die durchschnittliche Differenz – in Minuten – zwischen jeder vorhergesagten Wartezeit und der tatsächlich an der Attraktion gemessenen Wartezeit. Ein MAE von 8 Minuten bedeutet, dass die Vorhersagen im Schnitt 8 Minuten daneben liegen.\n\nDer MAE gewichtet jeden Fehler gleich: Ein 5-Minuten-Fehler und ein 15-Minuten-Fehler gehen linear in den Durchschnitt ein. Das macht ihn intuitiv verständlich – ein MAE von 10 bedeutet: „Die Vorhersagen liegen typischerweise innerhalb von 10 Minuten an der Realität." Ein niedrigerer MAE bedeutet immer genauere Vorhersagen.',
+      'MAE (Mean Absolute Error, mittlerer absoluter Fehler) ist das Standardmaß für die Vorhersagegenauigkeit bei park.fan. Er berechnet die durchschnittliche Differenz – in Minuten – zwischen jeder vorhergesagten Wartezeit und der tatsächlich an der Attraktion gemessenen Wartezeit. Ein MAE von 8 Minuten bedeutet, dass die Vorhersagen im Schnitt 8 Minuten daneben liegen.\n\nDer MAE gewichtet jeden Fehler gleich: Ein 5-Minuten-Fehler und ein 15-Minuten-Fehler gehen linear in den Durchschnitt ein. Das macht ihn intuitiv verständlich – ein MAE von 10 bedeutet: „Die Vorhersagen liegen typischerweise innerhalb von 10 Minuten an der Realität.“ Ein niedrigerer MAE bedeutet immer genauere Vorhersagen.',
     relatedTermIds: ['ai-forecast', 'mape', 'r-squared', 'rmse'],
     alternateNames: ['Mean Absolute Error'],
   },
@@ -2042,7 +2042,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Mean Absolute Percentage Error – der Vorhersagefehler als prozentualer Anteil der tatsächlichen Wartezeit.',
     definition:
-      'MAPE (Mean Absolute Percentage Error, mittlerer absoluter prozentualer Fehler) drückt die Vorhersagegenauigkeit als Prozentzahl aus, nicht als absolute Minutenzahl. Statt „8 Minuten daneben" lautet die Aussage „15 % der tatsächlichen Wartezeit daneben". Das ist nützlich, um die Genauigkeit bei Attraktionen mit sehr unterschiedlichen Wartezeiten zu vergleichen – ein 10-Minuten-Fehler bei einer Attraktion mit normalerweise 15 Minuten Wartezeit ist viel gravierender als bei einer mit 90 Minuten.\n\nDer MAPE kann irreführend hoch sein, wenn die tatsächlichen Wartezeiten sehr kurz sind. Deshalb zeigt park.fan ihn immer zusammen mit MAE und RMSE.',
+      'MAPE (Mean Absolute Percentage Error, mittlerer absoluter prozentualer Fehler) drückt die Vorhersagegenauigkeit als Prozentzahl aus, nicht als absolute Minutenzahl. Statt „8 Minuten daneben“ lautet die Aussage „15 % der tatsächlichen Wartezeit daneben“. Das ist nützlich, um die Genauigkeit bei Attraktionen mit sehr unterschiedlichen Wartezeiten zu vergleichen – ein 10-Minuten-Fehler bei einer Attraktion mit normalerweise 15 Minuten Wartezeit ist viel gravierender als bei einer mit 90 Minuten.\n\nDer MAPE kann irreführend hoch sein, wenn die tatsächlichen Wartezeiten sehr kurz sind. Deshalb zeigt park.fan ihn immer zusammen mit MAE und RMSE.',
     relatedTermIds: ['ai-forecast', 'mae', 'r-squared', 'rmse'],
     alternateNames: ['Mean Absolute Percentage Error'],
   },
@@ -2212,7 +2212,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Achterbahn mit einer Höhe oder einem Gefälle von über 400 Fuß (122 Meter).',
     definition:
-      'Ein Strata-Coaster ist eine Achterbahn, die eine Höhe von 400 Fuß (122 Meter) oder mehr erreicht. Diese Klassifizierung wurde ursprünglich von Cedar Point für die Eröffnung von Top Thrill Dragster geprägt. Strata-Coaster sind aufgrund ihrer immensen Kosten und technischen Komplexität extrem selten. Bis heute wurden nur eine Handvoll gebaut, darunter Kingda Ka in Six Flags Great Adventure.',
+      'Ein Strata-Coaster ist eine Achterbahn, die eine Höhe von 400 Fuß (122 Meter) oder mehr erreicht. Diese Klassifizierung wurde ursprünglich von Cedar Point für die Eröffnung von Top Thrill Dragster geprägt. Strata-Coaster sind aufgrund ihrer immensen Kosten und technischen Komplexität extrem selten. Bis heute wurde nur eine Handvoll gebaut, darunter Kingda Ka in Six Flags Great Adventure.',
     relatedTermIds: ['giga-coaster', 'hyper-coaster', 'launch-coaster'],
     aliases: ['Strata Coasters', 'Strata-Achterbahn'],
   },
@@ -2249,9 +2249,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'testing',
     name: 'Testfahrten',
     shortDefinition:
-      'Die Runden, die eine Bahn leer dreht – vor der Eroeffnung, jeden Morgen und nach jeder Reparatur.',
+      'Die Runden, die eine Bahn leer dreht – vor der Eröffnung, jeden Morgen und nach jeder Reparatur.',
     definition:
-      'Testfahrten sind alles, was zwischen einer fertigen Bahn und einem besetzten Zug liegt. Bei der Inbetriebnahme sitzen Wasserdummies oder Sandsaecke an Stelle der Fahrgaeste, das Fahrsystem wird ueber Tausende Zyklen nachgewiesen, und mit dem Lichtraumprofil wird geprueft, dass entlang der Strecke nichts so nah steht, dass ein ausgestreckter Arm es beruehren koennte.\n\nAufhoeren tut das nie. Parks fahren jeden Morgen vor den ersten Gaesten leere Runden, und nach jeder Stoerung oder Wartung noch einmal – deshalb kann eine Bahn als geoeffnet angezeigt werden und trotzdem nicht abfertigen. Neue Bahnen testen vor aller Augen: Wochen vor der Eroeffnung fahren die Zuege ueber die Koepfe der Gaeste hinweg. Ein Soft Opening ist selbst ein Test, nur mit echten Fahrgaesten. In Deutschland muss der TUV eine Bahn abnehmen, bevor sie jemanden befoerdern darf.',
+      'Testfahrten sind alles, was zwischen einer fertigen Bahn und einem besetzten Zug liegt. Bei der Inbetriebnahme sitzen Wasserdummies oder Sandsäcke an Stelle der Fahrgäste, das Fahrsystem wird über Tausende Zyklen nachgewiesen, und mit dem Lichtraumprofil wird geprüft, dass entlang der Strecke nichts so nah steht, dass ein ausgestreckter Arm es berühren könnte.\n\nAufhoeren tut das nie. Parks fahren jeden Morgen vor den ersten Gaesten leere Runden, und nach jeder Störung oder Wartung noch einmal – deshalb kann eine Bahn als geöffnet angezeigt werden und trotzdem nicht abfertigen. Neue Bahnen testen vor aller Augen: Wochen vor der Eröffnung fahren die Züge über die Köpfe der Gäste hinweg. Ein Soft Opening ist selbst ein Test, nur mit echten Fahrgästen. In Deutschland muss der TÜV eine Bahn abnehmen, bevor sie jemanden befoerdern darf.',
     relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
     aliases: ['Test runs', 'Test cycles'],
   },
@@ -2259,9 +2259,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'kuka',
     name: 'KUKA',
     shortDefinition:
-      'Ein deutscher Industrieroboter-Hersteller, dessen Fabrikarme zu Fahrgeschaeften umgebaut wurden.',
+      'Ein deutscher Industrieroboter-Hersteller, dessen Fabrikarme zu Fahrgeschäften umgebaut wurden.',
     definition:
-      'KUKA – die Abkuerzung steht fuer Keller und Knappich Augsburg, wo das Unternehmen bis heute sitzt – baut die orangen Roboterarme, die an Automontagelinien stehen. Der schwere KR 500 wurde als RoboCoaster fuer den Fahrgeschaeftsbetrieb angepasst: eine Viererbank am Ende des Arms, frei genug zu nicken, zu rollen und Bewegungen zu fahren, die keine feste Schiene hergibt.\n\nDie bekannteste Anlage ist Harry Potter and the Forbidden Journey, 2010 eroeffnet, wo RoboCoaster-G2-Baenke auf fahrenden Untersaetzen sitzen – die Arme bewegen sich also durch die Szenen, statt an einer Stelle zu spielen. Epcots Sum of All Thrills (2009-2016) drehte das Prinzip um: Die Gaeste entwarfen an einem Terminal ihr eigenes Streckenprofil, und ein eigens gebauter KUKA-Arm fuhr anschliessend genau das nach.',
+      'KUKA – die Abkürzung steht für Keller und Knappich Augsburg, wo das Unternehmen bis heute sitzt – baut die orangen Roboterarme, die an Automontagelinien stehen. Der schwere KR 500 wurde als RoboCoaster für den Fahrgeschäftsbetrieb angepasst: eine Viererbank am Ende des Arms, frei genug zu nicken, zu rollen und Bewegungen zu fahren, die keine feste Schiene hergibt.\n\nDie bekannteste Anlage ist Harry Potter and the Forbidden Journey, 2010 eröffnet, wo RoboCoaster-G2-Bänke auf fahrenden Untersätzen sitzen – die Arme bewegen sich also durch die Szenen, statt an einer Stelle zu spielen. Epcots Sum of All Thrills (2009–2016) drehte das Prinzip um: Die Gäste entwarfen an einem Terminal ihr eigenes Streckenprofil, und ein eigens gebauter KUKA-Arm fuhr anschließend genau das nach.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
   },
@@ -2457,7 +2457,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Szene-Spott für die reflexhafte, unkritische Lobhudelei, mit der eingefleischte Mack-Rides-Fans jede Neuheit des Herstellers feiern.',
     definition:
-      'Ein „Mackprodukt" ist ein Insider-Gag der deutschsprachigen Achterbahn-Community, der die ausgeprägte Markentreue von Mack-Rides-Fans liebevoll auf die Schippe nimmt. Da Mack ein deutscher Hersteller und zugleich die Familie hinter dem Europa-Park ist – dem mit Abstand beliebtesten Park der Region –, gilt die Fangemeinde als besonders loyal. Spötter behaupten, jede neue Mack-Bahn werde schon vor der ersten Fahrt zum Meisterwerk erklärt.\n\nDer Running Gag lebt von einer Handvoll Standardfloskeln, die angeblich jede echte Analyse ersetzen: das Schwärmen davon, wie schön die Schiene gebogen sei („die Schiene ist so toll gebogen") und die Bewunderung für die „wunderschönen Fahrfiguren" – ästhetische Komplimente, die elegant umschiffen, wie sich die Bahn tatsächlich fährt. Etwas als „Mackprodukt" zu bezeichnen oder einfach die Floskeln zu zitieren, ist die Kurzform der Community für ein augenzwinkerndes Kopfschütteln über Markentreue statt Substanz.',
+      'Ein „Mackprodukt“ ist ein Insider-Gag der deutschsprachigen Achterbahn-Community, der die ausgeprägte Markentreue von Mack-Rides-Fans liebevoll auf die Schippe nimmt. Da Mack ein deutscher Hersteller und zugleich die Familie hinter dem Europa-Park ist – dem mit Abstand beliebtesten Park der Region –, gilt die Fangemeinde als besonders loyal. Spötter behaupten, jede neue Mack-Bahn werde schon vor der ersten Fahrt zum Meisterwerk erklärt.\n\nDer Running Gag lebt von einer Handvoll Standardfloskeln, die angeblich jede echte Analyse ersetzen: das Schwärmen davon, wie schön die Schiene gebogen sei („die Schiene ist so toll gebogen“) und die Bewunderung für die „wunderschönen Fahrfiguren“ – ästhetische Komplimente, die elegant umschiffen, wie sich die Bahn tatsächlich fährt. Etwas als „Mackprodukt“ zu bezeichnen oder einfach die Floskeln zu zitieren, ist die Kurzform der Community für ein augenzwinkerndes Kopfschütteln über Markentreue statt Substanz.',
     relatedTermIds: ['credit', 'fanboy', 'gp', 'hype-train', 'mack-rides'],
     aliases: ['Mack-Produkt', 'Mackprodukte'],
   },
@@ -2487,7 +2487,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die Welle der Begeisterung, die sich in der Community um eine angekündigte Bahn aufbaut und die Erwartungen mitunter über die Realität hinaus treibt.',
     definition:
-      'Der „Hype-Train" ist der Schwall an Vorfreude, der in Foren und sozialen Medien entsteht, sobald eine neue Attraktion angeteasert oder angekündigt wird. Er nährt sich von Baufortschritten, geleakten Layouts und frühen POV-Veröffentlichungen und kann die Erwartungen lange vor der Eröffnung in schwindelerregende Höhen treiben. Enthusiasten scherzen darüber, „im Hype-Train mitzufahren" – und über die unvermeidliche Enttäuschung, wenn eine Bahn ihm nicht gerecht wird. Das Konzept ist eng mit Markentreue und Memes wie dem Mackprodukt verbunden.',
+      'Der „Hype-Train“ ist der Schwall an Vorfreude, der in Foren und sozialen Medien entsteht, sobald eine neue Attraktion angeteasert oder angekündigt wird. Er nährt sich von Baufortschritten, geleakten Layouts und frühen POV-Veröffentlichungen und kann die Erwartungen lange vor der Eröffnung in schwindelerregende Höhen treiben. Enthusiasten scherzen darüber, „im Hype-Train mitzufahren“ – und über die unvermeidliche Enttäuschung, wenn eine Bahn ihm nicht gerecht wird. Das Konzept ist eng mit Markentreue und Memes wie dem Mackprodukt verbunden.',
     relatedTermIds: ['gp', 'mackprodukt', 'fanboy'],
     aliases: ['Hype', 'Hypetrain'],
   },
@@ -2497,7 +2497,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Fan, dessen Hingabe an einen bestimmten Park, Hersteller oder eine Bahn sein Urteil reflexhaft positiv und unkritisch färbt.',
     definition:
-      'In Enthusiasten-Kreisen ist ein „Fanboy" (der Begriff wird geschlechtsunabhängig verwendet) jemand, dessen Verbundenheit mit einem bestimmten Park oder Hersteller jedes Urteil einfärbt – er verteidigt und lobt dessen Produkte beinahe reflexartig. Das Etikett wird meist halb im Scherz vergeben, trifft aber eine reale Dynamik des Hobbys, in der Markentreue die objektive Bewertung überlagern kann. Das Mackprodukt-Meme der deutschsprachigen Szene ist im Grunde zum Running Gag gewordene Fanboy-Mentalität.',
+      'In Enthusiasten-Kreisen ist ein „Fanboy“ (der Begriff wird geschlechtsunabhängig verwendet) jemand, dessen Verbundenheit mit einem bestimmten Park oder Hersteller jedes Urteil einfärbt – er verteidigt und lobt dessen Produkte beinahe reflexartig. Das Etikett wird meist halb im Scherz vergeben, trifft aber eine reale Dynamik des Hobbys, in der Markentreue die objektive Bewertung überlagern kann. Das Mackprodukt-Meme der deutschsprachigen Szene ist im Grunde zum Running Gag gewordene Fanboy-Mentalität.',
     relatedTermIds: ['mackprodukt', 'hype-train', 'gp'],
     aliases: ['Fanboys', 'Fangirl'],
   },
@@ -2507,7 +2507,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Wie frei eine Achterbahn von Stößen, Rütteln und Vibrationen läuft – das Gegenteil einer rauen oder ratternden Fahrt.',
     definition:
-      'Die Laufruhe (englisch „Smoothness") beschreibt, wie sauber die Züge einer Achterbahn das Layout durchfahren, ohne Kopfschlagen, Rütteln oder Vibrationen. Sie hängt von der Präzision der Schienenfertigung, der Zug- und Radkonstruktion sowie von Alter und Wartung der Bahn ab. Hersteller wie B&M und Mack sind für ihre glasglatten Fahrten bekannt, und eine Bahn, die ihre Laufruhe auch im Alter behält, gilt als Beweis ingenieurtechnischer Qualität. Das Gegenteil – eine raue, ratternde Fahrt – zählt zu den häufigsten Kritikpunkten von Enthusiasten.',
+      'Die Laufruhe (englisch „Smoothness“) beschreibt, wie sauber die Züge einer Achterbahn das Layout durchfahren, ohne Kopfschlagen, Rütteln oder Vibrationen. Sie hängt von der Präzision der Schienenfertigung, der Zug- und Radkonstruktion sowie von Alter und Wartung der Bahn ab. Hersteller wie B&M und Mack sind für ihre glasglatten Fahrten bekannt, und eine Bahn, die ihre Laufruhe auch im Alter behält, gilt als Beweis ingenieurtechnischer Qualität. Das Gegenteil – eine raue, ratternde Fahrt – zählt zu den häufigsten Kritikpunkten von Enthusiasten.',
     relatedTermIds: ['rattle', 'b-and-m', 'g-force'],
     aliases: ['Smoothness', 'glasglatt'],
   },
@@ -2517,7 +2517,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Unerwünschte Vibrationen oder Erschütterungen, die durch einen Achterbahnzug übertragen werden und eine ansonsten gute Fahrt rau wirken lassen.',
     definition:
-      'Das Rattern (englisch „Rattle") ist das Brummen, Zittern oder Rütteln, das entsteht, wenn die Räder einer Achterbahn nicht mehr perfekt an den Schienen laufen – oft ein Zeichen für Schienenverschleiß, abgenutzte Räder oder eine alternde Konstruktion. Ein Rattern kann ein eigentlich hervorragendes Layout zu einem unbequemen Erlebnis machen und gehört zu den am heißesten diskutierten Schwächen der Community, besonders bei älteren Stahlbahnen von Arrow und Vekoma. Sein Fehlen wird als Laufruhe gefeiert.',
+      'Das Rattern (englisch „Rattle“) ist das Brummen, Zittern oder Rütteln, das entsteht, wenn die Räder einer Achterbahn nicht mehr perfekt an den Schienen laufen – oft ein Zeichen für Schienenverschleiß, abgenutzte Räder oder eine alternde Konstruktion. Ein Rattern kann ein eigentlich hervorragendes Layout zu einem unbequemen Erlebnis machen und gehört zu den am heißesten diskutierten Schwächen der Community, besonders bei älteren Stahlbahnen von Arrow und Vekoma. Sein Fehlen wird als Laufruhe gefeiert.',
     relatedTermIds: ['smoothness', 'wooden-coaster', 'arrow-dynamics'],
     aliases: ['Rattle', 'Geruckel', 'Geratter'],
   },
@@ -2537,7 +2537,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein moderner Achterbahntyp, der auf einer einzigen schmalen Mittelschiene läuft, mit hintereinander sitzenden Fahrgästen für ein exponiertes, verwundenes Erlebnis.',
     definition:
-      'Ein Single-Rail-Coaster nutzt eine einzige schmale Kastenschiene statt der üblichen zwei parallelen Schienen, mit Zügen, in denen die Fahrgäste hintereinander rittlings über der Schiene sitzen. Die dünne Schiene erlaubt extrem enge, verwundene Layouts und ein einzigartig exponiertes Gefühl. Rocky Mountain Construction begründete die moderne Variante mit dem Modell „Raptor" (etwa RailBlazer in Kaliforniens Great America); Vekoma und Intamin haben seither eigene Single-Rail-Konstruktionen entwickelt, was den Typ zu einem der markantesten Achterbahntypen des letzten Jahrzehnts macht.',
+      'Ein Single-Rail-Coaster nutzt eine einzige schmale Kastenschiene statt der üblichen zwei parallelen Schienen, mit Zügen, in denen die Fahrgäste hintereinander rittlings über der Schiene sitzen. Die dünne Schiene erlaubt extrem enge, verwundene Layouts und ein einzigartig exponiertes Gefühl. Rocky Mountain Construction begründete die moderne Variante mit dem Modell „Raptor“ (etwa RailBlazer in Kaliforniens Great America); Vekoma und Intamin haben seither eigene Single-Rail-Konstruktionen entwickelt, was den Typ zu einem der markantesten Achterbahntypen des letzten Jahrzehnts macht.',
     relatedTermIds: ['rmc', 'vekoma', 'steel-coaster'],
     aliases: ['Single Rail', 'Single-Rail', 'Raptor Track'],
   },
@@ -2557,7 +2557,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Achterbahn, deren Wagen frei durch eine offene, gekrümmte Rinne fahren, statt fest an eine Schiene gebunden zu sein.',
     definition:
-      'Eine Bobbahn (englisch „Bobsled Coaster") schickt ihre Wagen durch eine gekrümmte, halbröhrenförmige Rinne statt entlang einer klassischen Schiene, sodass die Wagen ihre eigene Linie durch die überhöhten Kurven finden können – ganz wie eine echte Bobbahn. Das Ergebnis ist eine schwingende, von Seitenkräften geprägte Fahrt ohne Inversionen, bei der Geschwindigkeit und Form der Rinne das Erlebnis bestimmen. Schwarzkopf baute gefeierte frühe Versionen, und Mack Rides ist der bekannteste Hersteller der modernen Stahl-Bobbahn, von denen mehrere in deutschen und alpinen Parks laufen.',
+      'Eine Bobbahn (englisch „Bobsled Coaster“) schickt ihre Wagen durch eine gekrümmte, halbröhrenförmige Rinne statt entlang einer klassischen Schiene, sodass die Wagen ihre eigene Linie durch die überhöhten Kurven finden können – ganz wie eine echte Bobbahn. Das Ergebnis ist eine schwingende, von Seitenkräften geprägte Fahrt ohne Inversionen, bei der Geschwindigkeit und Form der Rinne das Erlebnis bestimmen. Schwarzkopf baute gefeierte frühe Versionen, und Mack Rides ist der bekannteste Hersteller der modernen Stahl-Bobbahn, von denen mehrere in deutschen und alpinen Parks laufen.',
     relatedTermIds: ['mack-rides', 'wild-mouse', 'steel-coaster'],
     aliases: ['Bobsled Coaster', 'Bobbahnen', 'Bob Coaster'],
   },
@@ -2567,7 +2567,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Achterbahn-ähnliche Bahn, die durchgängig von einem Motor an Bord oder in der Schiene angetrieben wird, statt auf die Schwerkraft zu setzen.',
     definition:
-      'Ein Powered Coaster sieht aus wie eine Achterbahn, wird aber über den gesamten Rundkurs von Elektromotoren angetrieben, statt einmal hochgezogen und der Schwerkraft überlassen zu werden. Da er Tempo halten und mehrere Runden fahren kann, ist er meist eine sanfte Familienattraktion – oft als Minenzug, Drache oder Tier thematisiert – mit hoher Kapazität und gemäßigtem Nervenkitzel. Ob Powered Coaster als Credit „zählen", ist eine langwierige, halb ernst gemeinte Debatte in der Enthusiasten-Community.',
+      'Ein Powered Coaster sieht aus wie eine Achterbahn, wird aber über den gesamten Rundkurs von Elektromotoren angetrieben, statt einmal hochgezogen und der Schwerkraft überlassen zu werden. Da er Tempo halten und mehrere Runden fahren kann, ist er meist eine sanfte Familienattraktion – oft als Minenzug, Drache oder Tier thematisiert – mit hoher Kapazität und gemäßigtem Nervenkitzel. Ob Powered Coaster als Credit „zählen“, ist eine langwierige, halb ernst gemeinte Debatte in der Enthusiasten-Community.',
     relatedTermIds: ['alpine-coaster', 'credit', 'mack-rides', 'mine-train'],
     aliases: ['Powered Coasters', 'angetriebene Achterbahn'],
   },
@@ -2627,7 +2627,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein S-förmiger Airtime-Hügel, der die Fahrgäste beim Anheben zur Seite wirft und Schwebegefühl mit einem seitlichen Kick verbindet.',
     definition:
-      'Ein S-Hill ist ein Airtime-Hügel mit S-förmigem Verlauf, sodass der Zug beim Überfahren der Kuppe und im Schweben zugleich seitlich erst auf die eine, dann auf die andere Seite gedrückt wird. Das Ergebnis verbindet vertikale Airtime mit einem seitlichen Ruck, der die Fahrgäste überrascht, und ist ein Markenzeichen moderner Holz- und Hybrid-Coaster, die auf ein unberechenbares, „außer Kontrolle" wirkendes Tempo abzielen. Eng verwandt ist der Wave-Turn, der die Airtime vollständig auf die Seite legt.',
+      'Ein S-Hill ist ein Airtime-Hügel mit S-förmigem Verlauf, sodass der Zug beim Überfahren der Kuppe und im Schweben zugleich seitlich erst auf die eine, dann auf die andere Seite gedrückt wird. Das Ergebnis verbindet vertikale Airtime mit einem seitlichen Ruck, der die Fahrgäste überrascht, und ist ein Markenzeichen moderner Holz- und Hybrid-Coaster, die auf ein unberechenbares, „außer Kontrolle“ wirkendes Tempo abzielen. Eng verwandt ist der Wave-Turn, der die Airtime vollständig auf die Seite legt.',
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'S-Hügel', 'Speed Bump'],
   },
@@ -2935,7 +2935,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Der kostenpflichtige Pass an der Schlange vorbei, meist für den ganzen Besuchstag gekauft.',
     definition:
-      'Fast Lane heißt das Warteschlangen-Produkt in vielen Parks der Six-Flags- und Walibi-Familie, von Cedar Point bis Walibi Holland. Gekauft wird es für den Besuch, nicht für eine einzelne Fahrt: Ein Armband oder ein digitales Ticket öffnet den ganzen Tag über den Fast-Lane-Eingang der einbezogenen Attraktionen.\n\nEs gibt meist mehrere Stufen – bei Walibi Holland etwa Gold (unbegrenzt, rund 90 % weniger Wartezeit), Silber, Bronze sowie Einzel-Shots für eine oder vier Fahrten. Welche Bahnen dazugehören, legt der Park fest; Halloween-Häuser sind häufig ausgenommen.\n\nWeil der Preis für den Tag gilt und nicht pro Bahn, steht auf park.fan an solchen Bahnen ein „ab"-Preis statt eines festen.',
+      'Fast Lane heißt das Warteschlangen-Produkt in vielen Parks der Six-Flags- und Walibi-Familie, von Cedar Point bis Walibi Holland. Gekauft wird es für den Besuch, nicht für eine einzelne Fahrt: Ein Armband oder ein digitales Ticket öffnet den ganzen Tag über den Fast-Lane-Eingang der einbezogenen Attraktionen.\n\nEs gibt meist mehrere Stufen – bei Walibi Holland etwa Gold (unbegrenzt, rund 90 % weniger Wartezeit), Silber, Bronze sowie Einzel-Shots für eine oder vier Fahrten. Welche Bahnen dazugehören, legt der Park fest; Halloween-Häuser sind häufig ausgenommen.\n\nWeil der Preis für den Tag gilt und nicht pro Bahn, steht auf park.fan an solchen Bahnen ein „ab“-Preis statt eines festen.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
     aliases: ['Fastlane'],
   },

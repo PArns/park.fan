@@ -89,9 +89,9 @@ const FAQ = [
       'Live- und historische Wartezeiten aus über 200 Parks, Schul- und Feiertagskalender (auch aus Nachbarregionen), Wetterprognosen, Öffnungszeiten, Sonderevents und saisonale Muster. Aus diesem Mix entstehen die tagesgenauen Crowd-Level und die stündlichen Wartezeit-Prognosen.',
   },
   {
-    question: 'Warum zeigt ein Park „Keine Prognose"?',
+    question: 'Warum zeigt ein Park „Keine Prognose“?',
     answer:
-      'Fancast bewertet einen Park erst, wenn genügend Betriebsdaten vorliegen – mindestens rund 30 Betriebstage. Für ganz neue oder selten geöffnete Parks fehlt diese Grundlage noch. Dann steht dort „Keine Prognose" statt einer geratenen Zahl.',
+      'Fancast bewertet einen Park erst, wenn genügend Betriebsdaten vorliegen – mindestens rund 30 Betriebstage. Für ganz neue oder selten geöffnete Parks fehlt diese Grundlage noch. Dann steht dort „Keine Prognose“ statt einer geratenen Zahl.',
   },
   {
     question: 'Kostet Fancast etwas?',
@@ -273,7 +273,7 @@ export function ContentDE() {
       >
         <PG>
           Am Ende dieser ganzen Rechnerei steht eine einzige Farbe. Sechs Stufen von „hier hast du
-          den Park fast für dich" bis „willkommen im Ferien-Samstag":
+          den Park fast für dich“ bis „willkommen im Ferien-Samstag“:
         </PG>
         <CrowdSpectrum
           items={[
@@ -368,7 +368,7 @@ export function ContentDE() {
             {
               icon: Sunrise,
               title: 'Rope-Drop-Empfehlung',
-              body: 'die Antwort auf „lohnt es sich, früh da zu sein?", mit den erwarteten Tiefstwerten.',
+              body: 'die Antwort auf „lohnt es sich, früh da zu sein?“, mit den erwarteten Tiefstwerten.',
             },
             {
               icon: HelpCircle,

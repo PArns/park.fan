@@ -152,7 +152,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Kopfbereich',
-    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet".',
+    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet“.',
     example: 'Phantasialand, Brühl. Heute 09:00–19:00, 36 von 40 Bahnen offen.',
     demo: <AnatomyHeaderDemo />,
   },

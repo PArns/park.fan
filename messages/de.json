@@ -808,7 +808,7 @@
     "overview": {
       "title": "Wartezeiten im Überblick",
       "minutesUnit": "Min.",
-      "dataAsOf": "Datenstand: {time} Uhr – Live-Werte aktualisieren sich nach dem Laden der Seite alle paar Minuten."
+      "dataAsOf": "Datenstand: {time} Uhr – Live-Werte aktualisieren sich nach dem Laden der Seite alle fünf Minuten."
     },
     "restaurants": "Restaurants",
     "viewPark": "Park ansehen",
@@ -881,7 +881,7 @@
     "influencingHolidaysShort": "Nachbarregionen",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
-      "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",
+      "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · {years, plural, =1 {letztes Jahr} other {letzte # Jahre}}",
       "byMonthTitle": "Durchschnittlicher Besucherandrang nach Monat",
       "byDowTitle": "Durchschnittlicher Besucherandrang nach Wochentag",
       "topAttractionsTitle": "Attraktionen mit längsten Wartezeiten",
