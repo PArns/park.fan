@@ -73,6 +73,18 @@ const SUBSCRIBED = {
 };
 /** A browser that never granted permission: no registration, so no subscription. */
 const UNSUBSCRIBED = { serviceWorker: { getRegistration: async () => undefined } };
+/**
+ * The lookup itself failing — storage access refused, a partitioned context. It is NOT the same
+ * as having no subscription, and reading it as such would report a removal as done over a
+ * reminder that is still armed.
+ */
+const LOOKUP_BROKEN = {
+  serviceWorker: {
+    getRegistration: async () => {
+      throw new DOMException('storage access denied');
+    },
+  },
+};
 
 function setNavigator(value) {
   Object.defineProperty(globalThis, 'navigator', { value, configurable: true, writable: true });
@@ -248,6 +260,19 @@ await test('a browser with no subscription clears the stale entry without asking
   assert.equal(calls.length, 0);
 });
 
+await test('a failed subscription lookup is a failure, not "nothing to delete"', async () => {
+  setNavigator(LOOKUP_BROKEN);
+  seed();
+  fetchStub = () => response(204);
+  const result = await removeRideAlert('r1');
+  setNavigator(SUBSCRIBED);
+  assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
+  // Untouched on both counts: no request went out, and the alert is still listed, because for
+  // all this browser knows it is still armed on the server.
+  assert.equal(calls.length, 0);
+  assert.deepEqual(rideAlerts(), [{ attractionId: 'r1', thresholdMinutes: 30 }]);
+});
+
 await test('another browser’s alerts are left alone', async () => {
   seed({
     rideAlerts: [
@@ -313,6 +338,17 @@ await test('a browser with no subscription clears the stale entry without asking
   assert.deepEqual(result, { ok: true, value: undefined });
   assert.deepEqual(showFollows(), []);
   assert.equal(calls.length, 0);
+});
+
+await test('a failed subscription lookup is a failure, not "nothing to delete"', async () => {
+  setNavigator(LOOKUP_BROKEN);
+  seed();
+  fetchStub = () => response(204);
+  const result = await unfollowShow('s1');
+  setNavigator(SUBSCRIBED);
+  assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
+  assert.equal(calls.length, 0);
+  assert.deepEqual(showFollows(), [{ showId: 's1', startTime: null }]);
 });
 
 console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);

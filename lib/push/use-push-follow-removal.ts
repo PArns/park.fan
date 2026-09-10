@@ -62,9 +62,17 @@ export function usePushFollowRemoval(): PushFollowRemoval {
    * rate limit gets a timer.
    */
   const expiries = useRef(new Map<PushFollowRowKey, ReturnType<typeof setTimeout>>());
+  /**
+   * A removal outlives this hook: the band's alerts group unmounts the moment the menu closes,
+   * and the DELETE it started keeps going. Draining the map on cleanup is therefore not enough —
+   * a 429 landing after that would arm an hour-long timer nothing is left to clear.
+   */
+  const mounted = useRef(true);
   useEffect(() => {
+    mounted.current = true;
     const pending = expiries.current;
     return () => {
+      mounted.current = false;
       pending.forEach(clearTimeout);
       pending.clear();
     };
@@ -106,7 +114,7 @@ export function usePushFollowRemoval(): PushFollowRemoval {
       track();
     } else {
       setErrors((current) => ({ ...current, [key]: result.error }));
-      if (result.error.reason === 'rate-limited') {
+      if (result.error.reason === 'rate-limited' && mounted.current) {
         // The very number the surfaces print. `classifyFailure` has already bounded it, which is
         // what keeps the countdown and its expiry from disagreeing — and what keeps the delay
         // clear of the 32-bit overflow that would fire this timer at once instead of never.

@@ -3,6 +3,7 @@
 import {
   ensurePushRegistered,
   getExistingPushIdentity,
+  lookupExistingPushIdentity,
   type PushRegistration,
   type PushUnavailableCause,
 } from './push-registration';
@@ -242,13 +243,17 @@ async function deletePushFollow(url: string, body: unknown): Promise<PushWriteRe
  * succeeds.
  */
 export async function unfollowShow(showId: string): Promise<PushWriteResult<void>> {
-  const identity = await getExistingPushIdentity();
-  if (!identity) {
+  const lookup = await lookupExistingPushIdentity();
+  // Not `getExistingPushIdentity`: that one answers `null` for a lookup that THREW as well, and
+  // a removal cannot tell those apart and still be honest — "there is nothing to delete" would
+  // then be reported over a live subscription whose reminder stays armed.
+  if (!lookup.ok) return { ok: false, error: { reason: 'network' } };
+  if (!lookup.identity) {
     setShowFollowedLocal(showId, false);
     return { ok: true, value: undefined };
   }
   const result = await deletePushFollow('/api/push/show-follows', {
-    endpoint: identity.endpoint,
+    endpoint: lookup.identity.endpoint,
     showId,
   });
   if (result.ok) setShowFollowedLocal(showId, false);
@@ -302,13 +307,14 @@ export async function setRideAlert(
 
 /** Same contract as `unfollowShow` — see there for why the mirror moves last. */
 export async function removeRideAlert(attractionId: string): Promise<PushWriteResult<void>> {
-  const identity = await getExistingPushIdentity();
-  if (!identity) {
+  const lookup = await lookupExistingPushIdentity();
+  if (!lookup.ok) return { ok: false, error: { reason: 'network' } };
+  if (!lookup.identity) {
     removeRideAlertLocal(attractionId);
     return { ok: true, value: undefined };
   }
   const result = await deletePushFollow('/api/push/ride-alerts', {
-    endpoint: identity.endpoint,
+    endpoint: lookup.identity.endpoint,
     attractionId,
   });
   if (result.ok) removeRideAlertLocal(attractionId);

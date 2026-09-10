@@ -87,24 +87,47 @@ function supportsPush(): boolean {
 }
 
 /**
- * This browser's existing subscription, without prompting for anything.
- * `null` covers "never subscribed", "browser cannot", and "permission
- * denied" alike — none of them are worth telling apart here, since the only
- * use is deciding whether a follow/alert action needs `ensurePushRegistered`
- * first or can call the API directly.
+ * "There is no subscription" and "we could not find out" — a distinction only
+ * one caller needs, and it needs it badly.
+ *
+ * A removal reads this to decide whether the server can be holding anything
+ * for this browser: no subscription means the local mirror entry is stale and
+ * clearing it IS the removal. But `getRegistration()` can reject (storage
+ * access refused, a partitioned context), and folding that into the same
+ * `null` would report a removal as confirmed over an alert that is still
+ * armed — the exact failure the delete path was rebuilt to stop reporting.
  */
-export async function getExistingPushIdentity(): Promise<PushIdentity | null> {
-  if (!supportsPush()) return null;
+export type PushIdentityLookup = { ok: true; identity: PushIdentity | null } | { ok: false };
+
+export async function lookupExistingPushIdentity(): Promise<PushIdentityLookup> {
+  // Not a failure: a browser without push cannot be holding a subscription.
+  if (!supportsPush()) return { ok: true, identity: null };
   try {
     const registration = await navigator.serviceWorker.getRegistration('/sw.js');
     const subscription = await registration?.pushManager.getSubscription();
-    if (!subscription) return null;
+    if (!subscription) return { ok: true, identity: null };
     const json = subscription.toJSON();
-    if (!json.keys?.p256dh || !json.keys?.auth) return null;
-    return { endpoint: subscription.endpoint, p256dh: json.keys.p256dh, auth: json.keys.auth };
+    if (!json.keys?.p256dh || !json.keys?.auth) return { ok: true, identity: null };
+    return {
+      ok: true,
+      identity: { endpoint: subscription.endpoint, p256dh: json.keys.p256dh, auth: json.keys.auth },
+    };
   } catch {
-    return null;
+    return { ok: false };
   }
+}
+
+/**
+ * This browser's existing subscription, without prompting for anything.
+ * `null` covers "never subscribed", "browser cannot", "permission denied" and
+ * "the lookup itself failed" alike — none of them are worth telling apart for
+ * a WRITE, whose only use is deciding whether the action needs
+ * `ensurePushRegistered` first or can call the API directly. A removal has no
+ * such fallback and reads {@link lookupExistingPushIdentity} instead.
+ */
+export async function getExistingPushIdentity(): Promise<PushIdentity | null> {
+  const lookup = await lookupExistingPushIdentity();
+  return lookup.ok ? lookup.identity : null;
 }
 
 /**
