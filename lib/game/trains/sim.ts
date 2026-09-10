@@ -330,18 +330,27 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
   /**
    * How many trains a ride opens with.
    *
-   * The block plan is the hard limit — `n` blocks hold `n − 1` trains or the fleet deadlocks on the
-   * first tick — and the ride definition's `trainsMax` is the content's own say over it. A layout
-   * with a station, a lift and a brake run is three blocks and therefore two trains, which is what
-   * `core-classic`'s family coaster and wooden coaster both declare; the hyper coaster's four
-   * blocks and `trainsMax: 3` agree at three.
+   * Three limits, and the third exists because the first two are length-blind. The block plan is
+   * the hard one — `n` blocks hold `n − 1` trains or the fleet deadlocks on the first tick — and
+   * the ride definition's `trainsMax` is the content's own say over it. A layout with a station,
+   * a lift and a brake run is three blocks and therefore two trains, which is what `core-classic`'s
+   * family coaster and wooden coaster both declare; the hyper coaster's four blocks and
+   * `trainsMax: 3` agree at three.
+   *
+   * Neither knows how long the circuit is. `kleiner-wirbel` is the same three blocks as
+   * `kleiner-kreisel` on 345 m instead of 610, and two trains there came within 18.1 m of each
+   * other on a 13 m train with one stuck at zero laps. `TrackData.trainsMax` is the layout's own
+   * cap and is the third limit here.
    */
   function defaultFleetSize(rideId: string, plan: BlockPlan): number {
     const entity = ctx.world.entities[rideId];
     const data = entity ? (entity.data as unknown as TrackData | undefined) : undefined;
     const def = data?.ride ? ctx.registry.item('rides', data.ride)?.def : undefined;
     const declared = (def as { trainsMax?: number } | undefined)?.trainsMax ?? 1;
-    return Math.max(1, Math.min(declared, plan.capacity));
+    // A layout may say fewer than its ride allows, and that is the only one of the three limits
+    // that knows how LONG the circuit is — see `TrackData.trainsMax`.
+    const byLayout = data?.trainsMax ?? Number.POSITIVE_INFINITY;
+    return Math.max(1, Math.min(declared, byLayout, plan.capacity));
   }
 
   /**

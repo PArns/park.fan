@@ -176,21 +176,23 @@ export function buildWorld(seed: number, registry: Registry): World {
   //    grid over 24 headings and keeping the placements that clear every path by 3 m. The coaster
   //    clears its worst crossing by 3.84 m and the slide, at this heading, crosses none at all.
   //
-  // What is NOT fixed, and is reported by the fit check rather than hidden: both machines are
-  // bigger than the plots reserved for them. The coaster's 212.6 x 52.6 m circuit reaches well
-  // past a 58 x 48 m shelf and the slide's 59.5 x 42.4 m run past a 36 x 30 m pad. That is the
-  // plot sizing being wrong, not the placement — see STATUS.json, which recommends a compact
-  // fourth layout drawn for a starter plot rather than a demo park rebuilt around a 400 m circuit.
+  // The coaster is `kleiner-wirbel`, the fourth bundled layout and the one drawn for a plot this
+  // size: 345 m in a 56 x 112 m box against `kleiner-kreisel`'s 610 m in 52.6 x 212.6. It stays
+  // INSIDE the shelf's west edge by 5.4 m where its predecessor reached 95.7 m past it, and the
+  // depth still overhangs onto open ground the fit check clears. The slide's 59.5 x 42.4 m run
+  // past a 36 x 30 m pad is unchanged and is reported the same way.
   //
   // And the cost of having them out here at all, measured over a park day with
   // `pnpm game:day-budget` against the same day with `game-ride-boarding.mjs --flat-only`:
-  // arrivals rise 2261 -> 2738 (+21 %) because the park is worth more, total rides FALL
-  // 5418 -> 4277 (-21 %) and interactions per visitor 7.01 -> 5.14. That is the walk and not the
+  // arrivals rise 2261 -> 2695 (+19 %) because the park is worth more, total rides FALL
+  // 5418 -> 4955 (-9 %) and interactions per visitor 7.01 -> 5.74. That is the walk and not the
   // ride: a guest covers 1-1.5 m per park minute (D-006) and the coaster shelf is 200 m west of
-  // the fairground, so both machines settle at 18-19 % utilisation with an empty line while the
-  // four flat rides that used to carry the day lose a third of their riders each. A coaster
-  // nearer the main street would be a different park, and the number that decides it is the
-  // walking speed rather than the plot.
+  // the fairground, so both machines settle at 19 % utilisation with an empty line.
+  //
+  // The short layout is worth 12 % of that gap on its own. `kleiner-kreisel` gave 4277 rides and
+  // 5.14 interactions per visitor from the same placement; `kleiner-wirbel` gives 4955 and 5.74
+  // with ONE train instead of two, because a 66 s cycle round 345 m beats a 93 s cycle round 610
+  // by more than the second train was adding.
   attachFlumeContent(registry);
   for (const e of placeDemoCoaster(registry, allocId)) world.entities[e.id] = e;
   for (const e of placeDemoFlume(world, registry, allocId)) world.entities[e.id] = e;
@@ -480,7 +482,7 @@ function placeDemoShops(registry: Registry, allocId: (kind: string) => string): 
  * named, the fallbacks below keep a pack set without them from crashing the factory, and the fix
  * that would let this file measure instead of naming is a `footprint` on both layout types.
  */
-const MEASURED_COASTER_LAYOUT = 'kleiner-kreisel';
+const MEASURED_COASTER_LAYOUT = 'kleiner-wirbel';
 const MEASURED_FLUME_LAYOUT = 'spiral-tower';
 
 /**
@@ -489,11 +491,11 @@ const MEASURED_FLUME_LAYOUT = 'spiral-tower';
  * `y` is an ABSOLUTE world height, not an offset, and it is the output of a measurement rather
  * than a taste call: the lowest origin at which no sample of the built machine sits below the
  * terrain, plus 30 cm. The ground it stands on is 8.00 m for the coaster and 2.27 m for the slide,
- * so the platform is 3.80 m up and the tower 1.42 m up. `scripts/game-fit-check.mjs` rebuilds both
+ * so the platform is 4.53 m up and the tower 1.42 m up. `scripts/game-fit-check.mjs` rebuilds both
  * splines against the terrain and fails if either number stops being true — which is what makes
  * this a constant one may trust rather than a constant somebody typed.
  */
-const COASTER_AT = { x: -75, y: 11.8, z: -30, yaw: -Math.PI / 2 };
+const COASTER_AT = { x: -70, y: 12.53, z: -45, yaw: -Math.PI / 4 };
 const FLUME_AT = { x: 148, y: 3.69, z: 6, yaw: Math.PI / 2 };
 /**
  * The pool the slide's run-out lands in, 9 m beyond the trough's last metre and square to it.
@@ -518,10 +520,13 @@ const FLUME_RUNOUT_AT = { x: 167.1, z: 60, yaw: 0 };
 /**
  * The coaster on the `coaster` shelf.
  *
- * The 18 m platform runs west off the loop's east side, its dock 3.4 m from the `coaster-loop`
- * path — which is the whole of whether a queue can form, `paths` serving a 14 m radius. The rest
- * of `kleiner-kreisel`'s 610 m reaches well past the 58 x 48 m shelf; see the call site for what
- * that is and is not.
+ * `kleiner-wirbel` rather than `kleiner-kreisel`, and the swap is the point of the layout: 345 m
+ * in a 56 x 112 m box against 610 m in 52.6 x 212.6. The width now fits the 58 m shelf outright
+ * and the depth overhangs it onto open ground the fit check clears — where the layout it replaces
+ * reached 95.7 m past the plot to the west.
+ *
+ * The 12 m platform lies diagonally across the shelf, its dock 6.8 m from the `coaster-loop`
+ * path — which is the whole of whether a queue can form, `paths` serving a 14 m radius.
  *
  * A pack set with no coaster ride for the layout leaves the shelf empty rather than dispatching an
  * entity whose `pack:item` nothing can resolve — `track` would answer `null` and the park would

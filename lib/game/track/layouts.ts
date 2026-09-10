@@ -39,6 +39,8 @@ export interface LayoutPreset {
   yaw: number;
   /** One line for the report and for a future build-menu blurb. */
   note: string;
+  /** Fewer trains than the ride allows, when the circuit is too short for them. */
+  trainsMax?: number;
 }
 
 /**
@@ -139,7 +141,70 @@ const KLEINER_KREISEL: LayoutPreset = {
   ],
 };
 
-export const TRACK_LAYOUTS: readonly LayoutPreset[] = [NORDWIND, ALTE_MUEHLE, KLEINER_KREISEL];
+/**
+ * The starter-plot layout, and the first one in this file that was solved by a TOOL.
+ *
+ * The three above are out-and-backs of 900-980 m in boxes 390-400 m long — a park-defining
+ * object rather than a plot occupant, which is why the demo park's reserved 58 x 48 m coaster
+ * shelf could hold none of them. This one is 345 m in **56 x 112 m**: the width fits the shelf
+ * and the depth still overhangs it, onto open ground the fit check clears.
+ *
+ * `scripts/game-solve-layout.mjs` drove the closure to **0.089 m of residual in four
+ * iterations**, against the 0.85, 1.33 and 2.17 m the three above were hand-solved to. Six
+ * designs went through it and the five that failed are kept in `scripts/game-layout-designs.mjs`
+ * with what each one measured, because the reasons are the interesting part. Three of them are
+ * rules about this element table that nothing else writes down:
+ *
+ * - **A curve carries no drive.** Turning the lift off the station to save depth stalls the
+ *   train ten metres in, at walking pace, before the chain can pick it up. Station, transport
+ *   and lift have to be contiguous — which is where the 42 m of straight +z comes from.
+ * - **A train leaves the crest with chain speed and nothing else**, so it cannot coast through a
+ *   flat curve before it drops. The descent has to start at the crest.
+ * - **`helix` with a fractional `turns` IS a curved drop** — its ops pitch the nose over, turn
+ *   while pitched and level out. That is what resolves the two rules above, and it was missed
+ *   for four designs because the conclusion had been read off the element NAMES rather than
+ *   their ops.
+ *
+ * The two numbers that are not round are the solved pair, and neither is a length chosen for
+ * looks: 15.51 m of drop-helix radius and 19.43 m of out-leg. The helix's `hand` is +1 against
+ * the return path's -1 so their sideways displacements OPPOSE — inverted, the same design leaves
+ * 63 m of residual with both parameters pinned at their bounds.
+ */
+const STARTER_TWISTER: LayoutPreset = {
+  id: 'kleiner-wirbel',
+  name: 'Kleiner Wirbel',
+  ride: 'core-classic:family-invert',
+  style: 'core-classic:steel-tube',
+  train: 'core-classic:steel-open-5',
+  origin: [-62, 8, -80],
+  yaw: 0,
+  note: '345 m · 56 km/h · 19 m drop · curved drop into a full helix · 2.69 g peak · 45 s',
+  // One train. `family-invert` allows two and its 610 m sibling runs two; on 345 m they close to
+  // 18.1 m on a 13 m train and one of them never completes a lap. See `TrackData.trainsMax`.
+  trainsMax: 1,
+  pieces: [
+    { element: 'station', params: { length: 12 } },
+    { element: 'transport', params: { length: 8, speed: 2 } },
+    { element: 'lift-hill', params: { height: 15, angle: 34, radius: 12, speed: 2.5 } },
+    // The curved drop: off the crest, no flat to coast, 180 degrees while it falls.
+    { element: 'helix', params: { turns: 0.5, radius: 15.512, drop: 11, hand: 1 } },
+    { element: 'airtime-hill', params: { height: 2.5, g: 0.2, gLoad: 1.8 } },
+    { element: 'helix', params: { turns: 1, radius: 12, drop: 4, hand: -1 } },
+    { element: 'straight', params: { length: 19.431 } },
+    { element: 'curve', params: { angle: 90, radius: 9 } },
+    { element: 'straight', params: { length: 5 } },
+    { element: 'curve', params: { angle: 90, radius: 9 } },
+    { element: 'brake-run', params: { length: 14, speed: 4 } },
+    { element: 'level', params: { length: 6 } },
+  ],
+};
+
+export const TRACK_LAYOUTS: readonly LayoutPreset[] = [
+  NORDWIND,
+  ALTE_MUEHLE,
+  KLEINER_KREISEL,
+  STARTER_TWISTER,
+];
 
 export function layoutData(preset: LayoutPreset): TrackData {
   return {
@@ -150,5 +215,6 @@ export function layoutData(preset: LayoutPreset): TrackData {
     yaw: preset.yaw,
     closed: true,
     pieces: preset.pieces,
+    ...(preset.trainsMax !== undefined ? { trainsMax: preset.trainsMax } : {}),
   };
 }

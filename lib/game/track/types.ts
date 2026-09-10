@@ -51,6 +51,22 @@ export interface TrackData {
   pieces: TrackPiece[];
   /** Paint override; otherwise the style's own colour. */
   color?: string;
+  /**
+   * How many trains this CIRCUIT can hold, when that is fewer than the ride definition allows.
+   *
+   * The fleet size was `min(ride.trainsMax, blocks - 1)` and both halves are length-blind: a
+   * station, a lift and a brake run is three blocks whether the circuit between them is 610 m or
+   * 345, and the ride definition speaks for a machine rather than for a layout. Adding a 345 m
+   * layout to a ride whose `trainsMax` is 2 put two trains **18.1 m apart on a 13 m train** and
+   * deadlocked one of them at zero laps — `trains`' own selftest caught it, which is what that
+   * check is for.
+   *
+   * So a layout may cap its own fleet, because how many trains fit is a property of the circuit.
+   * Measured over the four bundled layouts as circuit length per train: `nordwind` 15.5 train
+   * lengths, `alte-muehle` 26.8, `kleiner-kreisel` 23.5 — and `kleiner-wirbel` 13.3, which is the
+   * one that fails. It is a cap and never a floor: absent, nothing changes.
+   */
+  trainsMax?: number;
 }
 
 /**
