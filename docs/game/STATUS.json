@@ -338,23 +338,23 @@
     },
     "flumes": {
       "wave": 3,
-      "status": "round 2 graded 8.30, FAIL (pass 8.5), by an INDEPENDENT critic — docs/game/critiques/flumes-round2.md. 0.20 short, all hard gates passing, and EVERY CLAIM THE ROUND MADE SURVIVED ADVERSARIAL TESTING. The tower: he walked all 53 meshes himself and reproduced the spans to the centimetre (-0.25 to 18.25 / 16.64 / 16.00 / 13.73 / 14.65 against chute tops 17.55 / 15.37 / 14.32 / 12.02 / 13.18), then went FURTHER than the module own test — 60 to 232 shell vertices lie INSIDE each deck XZ footprint at deck height, so the chute is carried rather than merely reached; :3100 still shows all five at 2.00 m as a live before. The selftest: he reintroduced the bug in a clean worktree and got 128/143 with 15 failures, three per slide, printing round 1 exact 2.0038 / 1.0000 — so the test now catches what it used to repeat. INSTANCESCOLOR: he verified the MECHANISM rather than the outcome, confirming all four Babylon lines and then reproducing the trap live on a clone of the module own rig mesh (false, still false when riders arrive, true after markAsDirty(8)); 9/9 on :3001 against 0/9 on :3100. wallResponse: deleted the coefficient again and got 134/143 with 9 failures, so the round-1 finding is closed. Budget reproduced exactly, and the stepped run matched 250/314,678 · 191/364,986 · 177/342,750 TO THE TRIANGLE; LOD verified through getLOD (4 of 5 coarse at 376-524 m, 46,880 to 25,488) and the report caveat about getActiveMeshes reporting master names is right. WHAT FAILS IT IS THE FRAME AXIS AND ONLY THAT: the mat racer and torrent lane sheets run 12.4 % and 19.2 % near-white vertices against the tube 5.2 %, and those are the two slides the module own ground preset points at; at 23:00 the sheet is self-lit at V 0.81 against night grass 0.43; the night rig is one emissive strip, so the two point lights leave an 18 m tower a black lattice; the riders are five detached blocks on a ring, three past the hull edge; and the deck and stair the tower fix just put on screen have a stringer on one side only and a handrail ending in mid-air (geom.ts:740-747). The critic notes the verdict is robust — frame 8.0 would still only reach 8.425. Two honesty notes, both small and both against the module: geom.ts:178 says deleting the coefficient fails TEN checks and it is nine; and the report forgets to claim two of its own fixes (sim.ts:363 now conserves descents across a save, closing round-1 finding 10, and the showcase basins are aqua-mosaic, closing finding 8).",
-      "round": 2,
-      "score": 8.3,
+      "status": "round 3 graded 8.72, PASS — docs/game/critiques/flumes-round3.md. THE THIRD MODULE TO CLEAR THE GATE and the highest score in the project, after rides 8.71 and track 8.54. Rounds 1-3 were 7.30, 8.30, 8.72. WHAT HELD UP UNDER ATTACK: the aeration model is applied rather than named — geom.ts:505-525 really marches, fall is -tangent.y on a unit tangent so genuinely sin θ, ds is arc length, the relaxation is exact over a step, growth and decay branch on which side of the target they are, the jump impulse is only ever a gain and telescopes over a monotone break, and speed appears NOWHERE; continuous by construction with a largest step change of 0.062-0.075 across three layouts. All sixteen cells of the pixel table reproduced to within 0.004 on frames the critic rendered himself, with the before column rebuilt from a worktree at 3dde084 rather than quoted. THE SHARED-MASK TRICK IS LEGITIMATE and he checked the premise rather than the conclusion: water-sheet vertex positions are bit-identical between the two commits, same counts, same sums, same first nine floats. Zero extra draw calls confirmed independently (53 meshes and 5 rim meshes unchanged; toggling the rim at 23:00 ground gives 56 to 59, which is what round 2 measured there). Riders 1.418 to 1.156 m and 5-of-5 to 0-of-5 reproduced on both trees, assertion vertex-level and per style. The leak test has teeth: three separate dispose lines broken, each 190 to 185 with accumulation across cycles. WHAT COST IT: (1) the night rig headline of 22,505 changed pixels is TWO THIRDS A UI TOAST — one screenshot carries a Medium-graphics-preset notification the other does not, and 15,227 of the 22,991 changed pixels are that box; the honest figure is 7,764 px, mean value 0.251 to 0.583, and the rope light itself is real (the diff mask is the eave, deck fascia, top rail and the stair zig-zag). (2) THE LEAK TEST IS BLIND TO BOTH CROSS-MODULE REGISTRATIONS: deleting main.ts:867 offTerrain() or main.ts:870-871 removeShadowCaster leaves it at 190/190, because the fixture passes module: () => undefined and a fresh EventBus per cycle — and those two are exactly the references that outlive a scene dispose. (3) the torrent lane is still a pale ribbon at 111 m, the cause correctly moved from the water to the cream shell but the frame barely changed. (4) 0.9·sin 30° is 0.45, not the 0.40 printed at geom.ts:473. (5) §4.7 says the camera preset changed two fields; it changed four. (6) a stale lane-pixels-before.json ships beside the report unlabelled, contradicting the report own table.",
+      "round": 3,
+      "score": 8.72,
       "consoleErrors": 0,
       "owner": "builder",
       "gated": true,
       "axes": {
-        "frame": 7.5,
-        "fidelity": 8,
+        "frame": 8.5,
+        "fidelity": 8.7,
         "extensibility": 9,
-        "budget": 8.5,
+        "budget": 8.7,
         "determinism": 9.5,
-        "reportHonesty": 8
+        "reportHonesty": 7.5
       },
-      "gradedAtCommit": "2d1a7db",
-      "hardGates": "all pass.",
-      "verdict": "round 1 FAILED at 7.30, round 2 FAILED at 8.30 — 0.20 short, entirely on the frame axis. Round 3 should start with the water sheet: 12.4 % and 19.2 % near-white vertices on the two slides the showcase actually points at."
+      "gradedAtCommit": "e93766e",
+      "hardGates": "all eleven tick.",
+      "verdict": "PASSED at round 3 with 8.72. The critic own advice for any round 4: start with the leak fixture, which is green on exactly the two lines that hand something to another module — the contaminated pixel count is embarrassing but harmless."
     },
     "trains": {
       "wave": 3,
