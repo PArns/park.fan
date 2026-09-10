@@ -829,7 +829,22 @@ crops, reverting it returns the original bytes. The ignore script was run agains
 docs-only commit (exit 0), a real code commit (exit 1, 13 files), a missing SHA and an unknown
 SHA (exit 1 both).
 
-**Open:** the per-build saving is derived from local timings, so confirm it on Vercel by
-comparing Build CPU on the next production deploy against the ~5 min the same build takes today,
-and read `✂️  Generating aspect-ratio image crops` in the build log — it prints its own
-wall-clock and whether each crop was cut, restored or already on disk.
+**The end-to-end number is measured, not added up.** Three full `pnpm build` runs on the same
+box, each starting from exactly what a Vercel builder has — crops absent from the clone,
+Turbopack and fetch caches restored — and the middle arm exists to show that neither half of the
+change carries it alone:
+
+| arm                                       | full `pnpm build` | crop step |
+| ----------------------------------------- | ----------------: | --------: |
+| before, as it shipped (mtime, sequential) |       **284.3 s** |    ~124 s |
+| parallel loop only, no crop cache         |           196.9 s |    34.6 s |
+| after, crop cache restored                |       **165.6 s** |     0.8 s |
+
+**284.3 s → 165.6 s, −118.7 s, −41.8 %.** The parallel loop is −87.4 s of that and the cache
+−31.3 s on top, which is why both stay: a build that changes a photo falls back to the middle
+row rather than to the first.
+
+**Open:** confirm it on Vercel by comparing Build CPU on the next production deploy against the
+~5 min the same build takes today, and read `✂️  Generating aspect-ratio image crops` in the
+build log — it prints its own wall-clock and whether each crop was cut, restored or already on
+disk.
