@@ -68,16 +68,21 @@ export function RideAlertDialog({
   const [thresholdRaw, setThresholdRaw] = useState('');
   const threshold = parseThresholdMinutes(thresholdRaw);
   const [adding, setAdding] = useState(false);
-  const [removingId, setRemovingId] = useState<string | null>(null);
-  const [addError, setAddError] = useState<PushWriteError | null>(null);
   /**
-   * Its own state beside `addError`, and keyed by the ride: the two are about different parts of
-   * this dialog, and a removal that the API refused has to name the alert it left armed.
+   * The rides currently being removed — a set, not one key, and their failures keyed the same
+   * way. Both for the reason `usePushFollowRemoval` documents for the other two surfaces: as a
+   * single slot, pressing X on a second ride re-enabled the first row's button mid-flight and
+   * erased the "still armed" line belonging to a ride that really is still armed. This list is
+   * every alert in the park, so two presses in a row is the ordinary case rather than the odd one.
+   *
+   * They are the dialog's own state instead of that hook because this surface holds its own
+   * `alerts` list rather than the shared query cache — it filters the server's answer down to
+   * this park, which is what the add-form's dropdown reads.
    */
-  const [removeError, setRemoveError] = useState<{
-    attractionId: string;
-    error: PushWriteError;
-  } | null>(null);
+  const [removingIds, setRemovingIds] = useState<readonly string[]>([]);
+  const [addError, setAddError] = useState<PushWriteError | null>(null);
+  /** Beside `addError`, which is about the form: these are about rows. */
+  const [removeErrors, setRemoveErrors] = useState<Readonly<Record<string, PushWriteError>>>({});
 
   useEffect(() => {
     if (!open) return;
@@ -88,7 +93,7 @@ export function RideAlertDialog({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAlerts('loading');
     setAddError(null);
-    setRemoveError(null);
+    setRemoveErrors({});
     void fetchRideAlertsRemote().then((result) => {
       if (cancelled) return;
       if (!result.ok) {
@@ -159,15 +164,21 @@ export function RideAlertDialog({
   };
 
   const handleRemove = async (attractionId: string) => {
-    setRemovingId(attractionId);
-    setRemoveError(null);
+    setRemovingIds((current) =>
+      current.includes(attractionId) ? current : [...current, attractionId]
+    );
+    setRemoveErrors((current) => {
+      if (!(attractionId in current)) return current;
+      const { [attractionId]: _gone, ...rest } = current;
+      return rest;
+    });
     const result = await removeRideAlert(attractionId);
-    setRemovingId(null);
+    setRemovingIds((current) => current.filter((id) => id !== attractionId));
     // The row leaves this list only where the server said it left the database. Dropping it on
     // a 500 would put the ride back in the add-form's dropdown while its alert is still armed,
     // so the next press would try to set an alert this browser already has.
     if (!result.ok) {
-      setRemoveError({ attractionId, error: result.error });
+      setRemoveErrors((current) => ({ ...current, [attractionId]: result.error }));
       return;
     }
     setAlerts((current) =>
@@ -227,9 +238,9 @@ export function RideAlertDialog({
                           a sentence under the whole list would name none of them. `role="alert"`
                           because it appears in response to a press and nothing moves the focus
                           to it. */}
-                      {removeError?.attractionId === alert.attractionId && (
+                      {removeErrors[alert.attractionId] && (
                         <p role="alert" className="text-destructive mt-1 text-xs leading-snug">
-                          {pushErrorMessage(removeError.error)}
+                          {pushErrorMessage(removeErrors[alert.attractionId])}
                         </p>
                       )}
                     </div>
@@ -238,7 +249,7 @@ export function RideAlertDialog({
                       variant="ghost"
                       size="icon-sm"
                       onClick={() => handleRemove(alert.attractionId)}
-                      disabled={removingId === alert.attractionId}
+                      disabled={removingIds.includes(alert.attractionId)}
                       aria-label={t('remove', { name: alert.attractionName })}
                     >
                       <X className="size-4" aria-hidden="true" />
