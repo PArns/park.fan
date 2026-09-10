@@ -31,8 +31,8 @@ coverImage:
 seo:
   title: 'Wartezeiten richtig lesen: Sind 70 Minuten viel?'
   description: >-
-    Warum eine Wartezeit ohne Vergleichswert nichts aussagt, was „typisch" und
-    „voll" bei einer Attraktion bedeuten und wie park.fan aus Millionen
+    Warum eine Wartezeit ohne Vergleichswert nichts aussagt, was „typisch“ und
+    „voll“ bei einer Attraktion bedeuten und wie park.fan aus Millionen
     Messwerten eine Auskunft macht.
   keywords:
     - Wartezeiten Freizeitpark
@@ -57,7 +57,7 @@ Problem ist, dass sie allein steht. 70 Minuten sind an einem Dienstag im Mai
 etwas völlig anderes als an einem Samstag in den Sommerferien, und ohne den
 zweiten Teil dieses Satzes kannst du nichts damit anfangen.
 
-## Was „typisch" und „voll" wirklich heißen
+## Was „typisch“ und „voll“ wirklich heißen
 
 park.fan legt neben jede Bahn zwei Vergleichswerte. **Typisch** ist der Median
 der Tagesspitzen: An der Hälfte aller gemessenen Tage war die längste Schlange
@@ -139,8 +139,8 @@ den Wartezeiten des Vortags neu.
 
 Dazu kommt die andere Hälfte: Wir werfen nichts weg. Ältere Zeiträume werden
 komprimiert, aber jede Auswertung läuft weiterhin über alle Messwerte, die je
-angekommen sind. Ein Archiv, das man nachträglich anlegen will, ist genau das
-eine, was man nicht nachträglich anlegen kann.
+angekommen sind. Wer im dritten Jahr anfängt zu speichern, hat im dritten Jahr
+ein Jahr Historie, und die beiden Jahre davor sind für immer weg.
 
 ## Und die Stellen, an denen wir nichts sagen
 
@@ -152,17 +152,17 @@ Felder leer bleiben dürfen.
 nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
 Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
 meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort 82
-Attraktionen auf „sehr niedrig", dazu ein Ø von 0 Minuten und eine Prognose,
+Attraktionen auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
 die auf null Beobachtungen beruht. Stattdessen steht auf der Parkseite ein
 Hinweis, dass es hier nichts zu lesen gibt.
 
 Dieselbe Regel an einer kleineren Stelle: Der Schlittschuhverleih im
 Phantasialand läuft von November bis Januar. Im August meldet über ihn niemand
-etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet" zu lesen,
+etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet“ zu lesen,
 wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite.
 Und Betriebsmonate einer Bahn nennen wir überhaupt erst nach 330
 Beobachtungstagen: Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
-April" dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen
+April“ dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen
 haben.
 
 ## Wo das alles steht
@@ -170,7 +170,7 @@ haben.
 Die lange Fassung, mit den echten Karten zum Mitlesen, ist jetzt eine eigene
 Seite: [So funktioniert park.fan](/de/so-funktioniert-park-fan). Dort steht
 Kapitel für Kapitel, was auf einer Attraktionskarte zu sehen ist, wie die
-Skala unter „typisch" und „voll" funktioniert, wie der Kalender die Ferien
+Skala unter „typisch“ und „voll“ funktioniert, wie der Kalender die Ferien
 verrechnet und an welchen drei Stellen wir bewusst nichts behaupten. Vier
 konkrete Besuchssituationen sind auch dabei, von der Familie in den
 Herbstferien bis zum Jahreskarten-Abend um sieben.

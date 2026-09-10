@@ -71,9 +71,9 @@ nehmen: Er ist kompakt, wahnsinnig begehrt und an den falschen Tagen ein
 Geduldsspiel. Einfach spontan hinfahren und den perfekten Tag erwischen, das
 gelingt hier seltener als anderswo. Aber mit ein bisschen Vorbereitung wird er zu
 dem, was er für mich seit über dreißig Jahren ist: der schönste Tag, den ein
-Freizeitpark in Europa schenken kann. Dieser Guide zeigt dir beides: die Wunder,
-für die man kommt, und ganz praktisch, wie du die **Phantasialand-Wartezeiten**
-kleinhältst und den besten Tag erwischst.
+Freizeitpark in Europa schenken kann. Also beides: die Wunder, für die man kommt, und die
+**Phantasialand-Wartezeiten**, die man kleinhalten kann, wenn man den Tag richtig
+wählt.
 
 ![Das Phantasialand in Brühl aus der Vogelperspektive | Mein Heimatpark in Brühl, Europas immersivster Freizeitpark. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -81,22 +81,19 @@ kleinhältst und den besten Tag erwischst.
 
 ![Taron im Basaltdorf Klugheim | Taron rast durchs Basaltdorf Klugheim, ein komplettes Dorf, kein bloßer Coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
-Das Phantasialand nennt sich „Europas Most Immersive Theme Park“. Wer einmal dort war, versteht, worauf sich
-der Anspruch stützt: Nirgendwo sonst in Europa verschwinden die Grenzen zwischen Warteschlange, Fahrgeschäft und
-Kulisse so restlos. Du stehst nicht _vor_ [Taron](ref:phantasialand/taron), du
-stehst _in_ Klugheim, einem kompletten Basaltdorf mit schiefen Dächern und
-verwitterten Mauern, das so überzeugend gebaut ist, dass du den Coaster für einen
-Moment vergisst. Du gehst nicht zu einer Bahn, du reist durch Welten.
+Das Phantasialand nennt sich „Europas Most Immersive Theme Park“. Woran sich das
+festmachen lässt: Die Warteschlange von [Taron](ref:phantasialand/taron) ist
+Klugheim, ein Basaltdorf mit schiefen Dächern und verwitterten Mauern, und
+zwischen Anstehen und Kulisse liegt dort keine sichtbare Grenze. Die Bahn selbst
+sieht man aus dem Dorf heraus erst spät.
 
-Und was für Welten: Vom belle-époquehaften Berlin am Eingang spazierst du ins
-tempelgesäumte China Town, vorbei an Deep in Africa mit seinen Lehmhütten,
-hinein ins aztekisch-wuchtige Mexiko, weiter ins verwunschene Mysteryland,
-ins verträumte Fantasy rund um den Märchensee, und schließlich in die beiden
-Kronjuwelen der letzten Jahre: das raue Klugheim und das
-viktorianisch-fliegende Rookburgh. Jeder dieser Bereiche hat seinen eigenen
-Klang, seinen eigenen Geruch, seine eigene Musik. Man kann hier einen ganzen Tag
-verbringen, ohne eine einzige Bahn zu fahren, und trotzdem überwältigt nach Hause
-gehen.
+Neun Bereiche liegen auf 28 Hektar, und keiner geht in den nächsten über: Berlin
+um 1900 am Eingang, China Town mit seinen Tempeln, Deep in Africa mit Lehmhütten,
+das aztekische Mexiko, Mysteryland, Fantasy rund um den Märchensee, dazu die
+beiden jüngsten, Klugheim und das viktorianische Rookburgh. Jeder hat seine
+eigene Musik und seinen eigenen Geruch, was im Sommer vor der Churros-Bude in
+China Town auffälliger ist als in jeder Pressemitteilung. Wer keine einzige Bahn
+fährt, hat trotzdem einen vollen Tag.
 
 Genau diese Kompaktheit ist aber die Kehrseite. Der Park hat nur eine Handvoll
 echter Headliner, und an einem vollen Tag will jeder zur selben Zeit auf
@@ -108,15 +105,12 @@ nicht vor langen Schlangen, wenn es nur wenige Attraktionen gibt, auf die sich d
 Andrang verteilen kann. Die Mathematik ist im Phantasialand unerbittlicher als im
 weitläufigen [Europa-Park](ref:europa-park) mit seinen dreizehn Achterbahnen.
 Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenenden
-gut füllt, der sagenumwobene „leere Samstag“ ist selten geworden. Umso mehr lohnt
-sich alles, was jetzt kommt.
+gut füllt, der sagenumwobene „leere Samstag“ ist selten geworden.
 
 ## Vom Märchenwald zum immersivsten Park Europas: eine kurze Geschichte
 
-Bevor es gleich um Bahnen, Tickets und die besten Zeiten geht, ein kurzer Blick
-zurück, denn dass sich das Phantasialand so anfühlt, wie es sich anfühlt,
-versteht man erst, wenn man weiß, wo es herkommt. Und das ist ziemlich genau das
-Gegenteil eines Thrill-Parks.
+Dass sich das Phantasialand so anfühlt, wie es sich anfühlt, hat mit seiner
+Herkunft zu tun, und die ist ziemlich genau das Gegenteil eines Thrill-Parks.
 
 Angefangen hat alles 1967, in einem ausgekohlten Braunkohleloch am Rand von
 Brühl. Zwei Männer, die sich nach dem Krieg in Berlin kennengelernt hatten,
@@ -130,8 +124,8 @@ Grün. Am 30. April 1967 öffneten die Tore. Achterbahnen? Fehlanzeige.
 
 ![F.L.Y. in Rookburgh | Rookburgh mit F.L.Y. (2020), der weltweit erste Flying-Launch-Coaster und vorläufiger Höhepunkt einer langen Verwandlung. | left](/media/phantasialand/fly-4x3.jpg)
 
-Dass daraus über die Jahrzehnte der wildeste, am dichtesten thematisierte Park des
-Kontinents wurde, ist eine Geschichte von langsamem Wachstum, und einem
+Dass daraus über die Jahrzehnte ein Park wurde, für den Enthusiasten aus ganz
+Europa anreisen, ist eine Geschichte von langsamem Wachstum und einem
 Beinahe-Ende. Der Park wurde größer, mutiger, technischer; 1996 eröffnete
 Michael Jackson persönlich die Minenbahn
 [Colorado Adventure](ref:phantasialand/colorado-adventure). Und dann, am
@@ -154,20 +148,20 @@ Moment, in dem aus dem netten Ausflugsziel eine Pilgerstätte für Park-Fans aus
 Europa wurde. 2016 folgte das Basaltdorf Klugheim mit
 [Taron](ref:phantasialand/taron), 2020 die viktorianische Fliegerstadt
 Rookburgh mit dem weltweit ersten Flying-Launch-Coaster
-[F.L.Y.](ref:phantasialand/fly), beide gelten unter Enthusiasten als Weltklasse,
-und beide sind nicht einfach Bahnen, sondern komplette, lückenlose Bühnenbilder.
+[F.L.Y.](ref:phantasialand/fly). Bei beiden ist der Themenbereich zuerst da und
+die Bahn hineingebaut, nicht umgekehrt.
 
 Das Schönste daran: Das Phantasialand ist bis heute in Familienhand geblieben.
 1998 übergab Gottlieb Löffelhardt die Geschäfte an seinen Sohn Robert; einen
 internationalen Konzern oder Aktionäre, die aufs Quartal schauen, hat der Park nie
-über sich gehabt. Man spürt das in jedem Detail, das kein Controller je genehmigt
-hätte, und genau das ist der Grund, warum man wiederkommt.
+über sich gehabt. Das sieht man an Details, die ein Controller gestrichen hätte: an der
+Fliegerwerkstatt vor F.L.Y., durch die man geht, ohne dass sie irgendetwas
+abfertigt.
 
 ## Die Headliner, und was sie mit dir machen
 
-Fangen wir mit dem Grund an, aus dem die meisten überhaupt kommen, den Bahnen. Ich
-setze dir die Live-Wartezeiten direkt an den Namen, damit du schon beim Lesen
-siehst, was gerade los ist:
+Die Live-Wartezeiten hängen direkt an den Namen, du siehst also beim Lesen, was
+gerade los ist:
 
 - **[Taron](ref:phantasialand/taron)**, das Herzstück, und für mich der beste
   Launch-Coaster Deutschlands (darüber kann man streiten, ich tue es nicht). Zwei
@@ -248,9 +242,8 @@ Publikum.** Seit die Jahreskarten weg sind und die Tickets so aggressiv bepreist
 werden, hat sich im Park spürbar etwas verschoben, und das meine ich nicht nur
 romantisch. In den letzten ein, zwei Jahren ist mir deutlich mehr Vandalismus
 aufgefallen als in all den Jahren zuvor, an einem Ort, an dem man so etwas früher
-schlicht nicht kannte. Ob das direkt zusammenhängt, weiß ich nicht sicher, aber ich
-wünsche mir sehr, dass mein Heimatpark hier gegensteuert. Er hat es besser verdient,
-und wir Gäste auch.
+schlicht nicht kannte. Ob das direkt zusammenhängt, weiß ich nicht sicher, und ich habe dazu auch keine
+Zahlen. Auffallen tut es mir trotzdem.
 
 ## Phantasialand Wartezeiten: wann sie am kürzesten sind
 
@@ -272,8 +265,8 @@ Ein paar Faustregeln, die fast immer stimmen:
 
 Bauchgefühl ist hier ein schlechter Ratgeber, sobald sich Ferienkalender, Wetter
 und Öffnungszeiten überlagern. Genau dafür ist park.fan gebaut. Der Kalender der
-besten Besuchstage verdichtet all das plus die komplette Wartezeit-Historie des
-Parks zu einer einzigen, wunderbar einfachen Farbe, grün, gelb, rot. Hier sind die
+besten Besuchstage rechnet das zusammen mit der Wartezeit-Historie des Parks in
+eine Farbe pro Tag um, grün, gelb oder rot. Hier sind die
 ruhigsten kommenden Tage fürs Phantasialand:
 
 ```best-days-widget slug=phantasialand
@@ -288,10 +281,10 @@ zeigt es dir dieser Blick auf die letzten beiden Saisons:
 
 ```
 
-Die richtige Antwort auf „wann soll ich hin?“ ist eben nie „Sonntage sind voll“,
-sondern immer: **dieser** Sonntag, in **diesem** Monat, bei **dieser** Wetterlage.
-Kalender öffnen, Farbe anschauen, Ticket für den grünen Tag buchen, das ist der
-halbe Zauber und spart dir mehr Lebenszeit als jeder Trick im Park.
+„Sonntage sind voll“ hilft dir nicht weiter. Der 12. Oktober im Phantasialand bei
+Regen schon. Deshalb steht im Kalender ein Wert pro Tag und keine Regel pro
+Wochentag, und deshalb buchst du das Ticket am besten erst, nachdem du dort
+nachgesehen hast.
 
 ## Quick Pass: das neue Konzept, Single Ride & Ultimate
 
@@ -367,14 +360,13 @@ gegen ein Heer von Express-Pass-Gästen, die dir pausenlos die Kapazität wegkau
 Deine beste Waffe ist schlicht das Timing, und das hast du, anders als das Wetter,
 komplett selbst in der Hand.
 
-## Essen: der heimliche Star des Parks
+## Essen, und warum es hier eine eigene Überschrift bekommt
 
 Bei keinem anderen Park würde ich das so hervorheben: Das Phantasialand ist auch
 wegen des **Essens** eine Reise wert. Während in vielen
 Parks „Essen“ gleichbedeutend ist mit lauwarmen Pommes zum Mondpreis, gehört die
 Gastronomie hier fest zum Erlebnis dazu, mit einer Sorgfalt, die man sonst nur aus
-richtigen Restaurants kennt. Ein paar Adressen sind echte Geheimtipps, für die
-allein sich der Besuch schon lohnt:
+richtigen Restaurants kennt. Drei Adressen, die ich jedem nenne, der mich fragt:
 
 - **Rutmor’s Taverne** (Klugheim) ist mein Favorit und für viele Fans das beste
   Restaurant, das je in einen Freizeitpark gebaut wurde. À la carte, urig bis in
@@ -398,9 +390,8 @@ ganze Jahr über zu haben, der perfekte Begleiter für den Weg zur nächsten Bah
 
 Und der wichtigste Ess-Tipp ist derselbe wie beim Anstehen: **antizyklisch.** Iss
 gegen 11:30 oder nach 14:30 Uhr, dann fährst du zur Stoßzeit die kurzen Schlangen
-und sitzt zur Fahrzeit in Ruhe im Restaurant. Zwei Fliegen, eine Klappe, ein
-zufriedener Bauch. (Und wenn du im Winter kommst, wartet im Wintertraum noch
-eine ganz eigene Leckerei auf dich.)
+und sitzt im Restaurant, während die anderen anstehen. (Und wenn du im Winter
+kommst, wartet im Wintertraum noch eine ganz eigene Leckerei auf dich.)
 
 ## Die kleinen Dinge, für die ich immer wiederkomme
 

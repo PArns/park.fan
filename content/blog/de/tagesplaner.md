@@ -27,7 +27,7 @@ rideLinks: false
 coverImage:
   src: /media/disney-hollywood-studios/fantasmic-crowd-16x9.jpg
   alt: 'Ein voll besetztes Freilufttheater von hinten, vor der Bühne wartet das Publikum im Dunkeln'
-  caption: 'Alle sind zur selben Zeit am selben Ort. Das ist der Normalfall, nicht die Ausnahme.'
+  caption: 'Fantasmic im Hollywood Studios, kurz vor Beginn. Zehntausend Leute, die für diese halbe Stunde nirgends anstehen.'
   credit: 'Patrick Arns'
 seo:
   title: 'Tagesplaner für den Freizeitpark: Wartezeiten vorher einrechnen'
@@ -251,10 +251,10 @@ schreibt dazu, was das bedeutet: Wer den Link hat, kann ihn lesen und ändern. E
 gibt kein Passwort, das davor liegt. Wer das nicht will, schaltet die
 Benachrichtigungen nicht ein und verliert sonst nichts.
 
-Zwei Sachen noch, die man leicht übersieht. Am rechten Bildschirmrand hängt auf
-jeder Seite ein Reiter, der den Planer aufmacht, auch wenn noch gar nichts
-geplant ist. Und am Rechner kannst du eine zweite Spalte aufmachen, dann stehen
-zwei Tage gleichzeitig da. Für diesen einen Satz habe ich das gebaut: „und wie
+Zwei Sachen noch, die man leicht übersieht. Auf jeder Seite hängt am Rand ein
+Reiter, der den Planer aufmacht, auch wenn noch gar nichts geplant ist. Und am
+Rechner lässt sich eine zweite Spalte aufziehen, dann stehen zwei Tage
+gleichzeitig da. Für diesen einen Satz habe ich das gebaut: „und wie
 sähe das am Samstag aus“.
 
 ## So fängst du an

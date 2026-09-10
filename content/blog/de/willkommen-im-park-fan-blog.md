@@ -177,8 +177,9 @@ Dazu Open Source, Smart-Home-Adapter und mehr Side-Projects, als mir guttun;
 der ganze Kram, der sich auf [arns.dev](https://arns.dev) und
 [GitHub](https://github.com/PArns) stapelt.
 
-Zwei Leidenschaften, die jahrzehntelang nebeneinanderher liefen, ohne sich je
-zu begegnen.
+Die beiden hatten jahrzehntelang nichts miteinander zu tun. Im Büro ging es um
+Durchsatz und Latenz, im Park ums Anstehen, und dass das dieselbe Frage ist, ist
+mir erst sehr spät aufgefallen.
 
 ## Der Moment in der Taron-Schlange
 
@@ -211,10 +212,10 @@ dauerten als mancher Parktag. Und dieser ganz eigene Moment von Ehrfurcht, wenn
 ein Modell zum ersten Mal einen überfüllten Samstag korrekt vorhersagt, Tage
 bevor er stattfindet.
 
-Denn das war der eigentliche Herzenswunsch: kein weiteres Dashboard, das Zahlen
-anzeigt, sondern ein System, das Parktage _versteht_. Ein eigenes KI-Modell,
-das lernen musste, dass ein verregneter Brückentag im Oktober etwas völlig
-anderes ist als ein sonniger Ferien-Samstag im Juli. Dass Ferienkalender,
+Der Punkt war nie die Anzeige der aktuellen Zahl. Die schreibt der Park selbst
+an. Interessant wird es einen Schritt davor: Ein eigenes Modell musste lernen,
+dass ein verregneter Brückentag im Oktober etwas völlig anderes ist als ein
+sonniger Ferien-Samstag im Juli. Dass Ferienkalender,
 Wetter, Öffnungszeiten und Jahre an Wartezeit-Historie zusammen ein Muster
 ergeben, das man lesen kann, wenn man nur hartnäckig genug hinschaut.
 
@@ -227,9 +228,8 @@ Debugging-Session daran, wofür der ganze Aufwand eigentlich ist. Irgendwo da
 draußen fährt gerade eine echte Bahn, und irgendwer da draußen will wissen, ob
 sich die Schlange davor lohnt.
 
-Heute ist daraus ein Echtzeit-Nervensystem für Freizeitparks geworden.
-Live-Wartezeiten aus über **200 Parks** und **7.000 Attraktionen**, im
-Minutentakt. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
+Heute stehen dahinter Live-Wartezeiten aus über **200 Parks** und **7.000
+Attraktionen**, im Minutentakt. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
 einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später
 gegen die tatsächlich gemessene Wartezeit gehalten, und was dabei herauskommt,
@@ -250,11 +250,11 @@ NRW-Sommerferien. Ein Brückentag ist fast nie eine gute Idee. Und der
 „Geheimtipp“, bei Regen zu fahren, funktioniert exakt so lange, bis alle
 anderen denselben Geheimtipp gelesen haben.
 
-Die Antwort lautet eben nicht „Sonntage sind voll“, sondern: _dieser_ Sonntag,
-in _diesem_ Park, zu _dieser_ Jahreszeit. Grün, gelb oder rot. Kalender
-öffnen, Farbe anschauen, entscheiden. Und wenn du schon im Park stehst, zeigen
-dir die Live-Daten, ob die Schlange vor dir gerade die Ausnahme ist oder die
-Regel.
+„Sonntage sind voll“ ist deshalb keine brauchbare Auskunft. Ein Sonntag Ende
+November im Phantasialand ist eine andere Frage als ein Sonntag Anfang August im
+Europa-Park, und der Kalender beantwortet die zweite Fassung. Und wenn du schon
+im Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade die
+Ausnahme ist oder die Regel.
 
 ## Was park.fan anders macht
 
@@ -273,13 +273,13 @@ Deshalb gehen wir ein paar Schritte weiter:
   mir nicht glauben. Die Zahlen stehen auf der [Fancast-Seite](/fancast).
 - **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am Parkeingang,
   Öffnungszeiten und Attraktions-Historien, in sechs Sprachen.
-- **Kostenlos und ohne Werbung.** Kein Konzern, keine Paywall. Eine Fanpage im
-  besten Wortsinn, gebaut von jemandem, der selbst ansteht.
+- **Kostenlos und ohne Werbung.** Kein Konzern, keine Paywall, gebaut von
+  jemandem, der selbst ansteht.
 
 ## Was dieser Blog werden soll
 
-Eine Wartezeit ohne Kontext ist nur ein Gerücht mit Nachkommastelle. „50
-Minuten“, dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
+Eine Wartezeit allein sagt fast nichts. Dieselbe Zahl bedeutet je nach Bahn und
+Tag etwas völlig anderes:
 
 - **50 Minuten** für ein Flat Ride? Glatte Zeitverschwendung. In der Spanne
   wären drei echte Coaster drin gewesen.
@@ -348,8 +348,7 @@ Danke, dass du bis hierhin gelesen hast. Dieser Ort, die Plattform, der Blog,
 das alles, ist mein Dankeschön an einen Park am Märchensee, an Eltern, die
 einen kleinen Jungen immer wieder dorthin mitgenommen haben, an einen Vater in
 einer Gondel, und an jeden einzelnen Menschen, der Freizeitparks genauso liebt
-wie ich. Und jetzt: geh anstehen. Aber bitte nur, wenn die Daten sagen, dass es
-sich lohnt.
+wie ich.
 
 — Patrick
 
