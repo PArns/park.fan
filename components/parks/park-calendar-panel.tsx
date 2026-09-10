@@ -214,6 +214,10 @@ export function ParkCalendarPanel({
             <CalendarCompareToggle parkSlug={parkSlug} />
           </div>
         }
+        /* Beside the heading, not inside its title row: this action is two storeys, and in the
+           row it made the row 80 px tall and pushed „Jeder Tag im September 2026 mit…" that far
+           down, away from the title it describes. */
+        actionAside
         frosted
         className="mb-0 rounded-b-none"
       />
@@ -304,12 +308,14 @@ function CalendarCompareToggle({ parkSlug }: { parkSlug: string }) {
     <Button
       variant={active ? 'secondary' : 'default'}
       size="sm"
-      // `h-9` to stand in the stepper's row of controls, and NOT full width below `sm`: at 390 px
-      // it took 234 px of the card in the primary colour, under a title and over a legend, and
-      // read as the loudest thing on a page whose subject is the month. It hugs its label, keeps
-      // the 44 px phone height the button scale imposes, and the `sm` size's own `px-2.5` beside
-      // an icon — the height is a touch floor, the width was never anything but a decision.
-      className="h-9"
+      // The `sm` size as it comes: 32 px at the desk, and NOT the 36 the stepper's controls take —
+      // it stands under that row rather than in it, so it owes it no height, and a filled button
+      // in the primary colour carries further than an outline one at the same size. Not full
+      // width below `sm` either: at 390 px that was 234 of the card's 358, under a title and over
+      // a legend, i.e. the loudest thing on a page whose subject is the month. What does NOT move
+      // is the phone height — `max-sm:h-11` is the touch floor the button scale imposes, and 44
+      // px is a target rather than a look. The horizontal padding is the size's own `px-2.5`
+      // beside an icon.
       aria-pressed={active}
       onClick={() => dayComparisonStore.setActive(parkSlug, !active)}
     >

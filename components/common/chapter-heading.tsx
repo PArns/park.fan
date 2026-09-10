@@ -44,6 +44,19 @@ interface ChapterHeadingProps {
    * the two are one row only while there is room for both.
    */
   action?: ReactNode;
+  /**
+   * Put that control BESIDE the whole heading rather than inside the title row.
+   *
+   * The title row's height is whatever its tallest item needs, and `hint` sits under that row —
+   * so a two-storey action (the calendar's month stepper with the comparison switch under it)
+   * pushed the subline 44 px down and detached it from the title it belongs to. Aside, the text
+   * column keeps `title` over `hint` and the control column stands to their right across both.
+   *
+   * Opt-in, because the three other call sites pass one small link, which reads right sitting on
+   * the title's own line. Below the width where both fit, the control column wraps under the text
+   * exactly as the in-row action does.
+   */
+  actionAside?: boolean;
   /** Heading level, for the document outline. */
   as?: 'h2' | 'h3';
   /** Anchor id — lands on the heading itself, with the sticky-header offset. */
@@ -130,6 +143,7 @@ export function ChapterHeading({
   hint,
   badge,
   action,
+  actionAside = false,
   as: As = 'h2',
   id,
   size = 'md',
@@ -139,11 +153,17 @@ export function ChapterHeading({
 }: ChapterHeadingProps) {
   const tile = variant === 'tile';
   const watermark = index ?? (Icon ? <Icon className="h-10 w-10 sm:h-14 sm:w-14" /> : null);
+  const aside = Boolean(action) && actionAside;
 
   return (
     <div
       className={cn(
         'border-border flex items-start border-b',
+        // `flex-wrap` only in the aside case, where the control column has to be able to drop
+        // under the text: what makes it drop is the text column's `min-w`, which is what says
+        // „below this the two do not share a line" rather than a breakpoint that guesses at the
+        // width of six languages' worth of buttons.
+        aside && 'flex-wrap',
         tile ? 'mb-8 gap-4 pb-5' : 'mb-6 gap-3 pb-4 sm:gap-4',
         frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3'),
         className
@@ -178,7 +198,13 @@ export function ChapterHeading({
               {watermark}
             </span>
           )}
-      <div className={cn('min-w-0 flex-1', tile ? 'pt-1' : 'pt-0.5 sm:pt-1')}>
+      <div
+        className={cn(
+          'min-w-0 flex-1',
+          aside && 'sm:min-w-[18rem]',
+          tile ? 'pt-1' : 'pt-0.5 sm:pt-1'
+        )}
+      >
         {kicker &&
           (tile ? (
             <div className="border-primary/30 bg-primary/10 text-primary mb-3 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase">
@@ -210,7 +236,7 @@ export function ChapterHeading({
               with `body { overflow-x: clip }` swallowing it. Plain `flex-wrap`, not `max-sm:`: the
               two other call sites (home/story/blog-chapter, nearby-chapter) pass a single small
               link and have nothing to wrap either way. */}
-          {action && (
+          {action && !aside && (
             <div className="ml-auto flex flex-wrap items-center justify-end gap-2">{action}</div>
           )}
         </div>
@@ -225,6 +251,11 @@ export function ChapterHeading({
           </p>
         )}
       </div>
+      {aside && (
+        <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2 max-sm:w-full">
+          {action}
+        </div>
+      )}
     </div>
   );
 }
