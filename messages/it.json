@@ -1219,9 +1219,9 @@
       "bestTimeTitle": "Quando qui c’è meno coda",
       "bestTimeText": "All’apertura qui si attende ~{openWait} min, al picco del giorno ~{busyPeak} min.",
       "spread": "Differenza",
-      "quietDay": "Più tranquillo il {day}: di solito ~{wait} min.",
-      "quietDays": "Più tranquillo il {first} e il {second}: di solito ~{wait} min.",
-      "quietDayNone": "Nessun giorno spicca, le attese sono molto simili."
+      "quietDay": "Giorno più tranquillo: {day}, normalmente ~{wait} min.",
+      "quietDays": "Giorni più tranquilli: {first} e {second}, normalmente ~{wait} min.",
+      "quietDayNone": "Nessun giorno spicca da solo."
     },
     "typicalWaits": {
       "title": "Tempi di attesa tipici",

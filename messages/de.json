@@ -1201,9 +1201,9 @@
       "bestTimeTitle": "Wann es hier ruhiger ist",
       "bestTimeText": "Zur Öffnung warten hier im Schnitt ca. {openWait} Min., im Tagespeak ca. {busyPeak} Min.",
       "spread": "Unterschied",
-      "quietDay": "Am ruhigsten am {day}: meist ca. {wait} Min.",
-      "quietDays": "Am ruhigsten am {first} und {second}: meist ca. {wait} Min.",
-      "quietDayNone": "Kein Wochentag sticht heraus, die Wartezeiten liegen dicht beieinander."
+      "quietDay": "Am ruhigsten am {day}, normalerweise ca. {wait} Min.",
+      "quietDays": "Am ruhigsten am {first} und {second}, normalerweise ca. {wait} Min.",
+      "quietDayNone": "Kein einzelner Wochentag sticht heraus."
     },
     "todayChart": {
       "title": "Wartezeiten heute",

@@ -1201,9 +1201,9 @@
       "bestTimeTitle": "Cuándo hay menos cola aquí",
       "bestTimeText": "En la apertura la espera aquí es de ~{openWait} min y en el pico del día de ~{busyPeak} min.",
       "spread": "Diferencia",
-      "quietDay": "Más tranquilo el {day}: normalmente ~{wait} min.",
-      "quietDays": "Más tranquilo el {first} y el {second}: normalmente ~{wait} min.",
-      "quietDayNone": "Ningún día destaca, las esperas están muy igualadas."
+      "quietDay": "Más tranquilo el {day}, normalmente ~{wait} min.",
+      "quietDays": "Más tranquilo el {first} y el {second}, normalmente ~{wait} min.",
+      "quietDayNone": "Ningún día destaca por sí solo."
     },
     "todayChart": {
       "title": "Tiempos de espera hoy",

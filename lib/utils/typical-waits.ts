@@ -36,7 +36,12 @@ export const MAX_TIED_DAYS = 2;
 export type QuietWeekdays =
   /** One or two days at the minimum, in API `dayOfWeek` numbering (0=Sun…6=Sat). */
   | { verdict: 'days'; days: number[]; typical: number }
-  /** Measured, and no day is quieter than the rest. Sayable. */
+  /**
+   * Measured, and no SINGLE day is quieter than the rest — which is all this says. It also
+   * covers three or more days sharing the minimum, so the string it renders may not claim that
+   * the week is level: „15 Min. Mon–Mi, 60 Do–So" lands here, with the bar chart beside it
+   * showing a fourfold spread.
+   */
   | { verdict: 'flat' }
   /** Not enough comparable data, or an answer that the bars beside it would contradict. */
   | { verdict: 'unknown' };

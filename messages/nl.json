@@ -1201,9 +1201,9 @@
       "bestTimeTitle": "Wanneer het hier rustiger is",
       "bestTimeText": "Bij opening wacht je hier gemiddeld ca. {openWait} min., op de dagpiek ca. {busyPeak} min.",
       "spread": "Verschil",
-      "quietDay": "Rustigst op {day}: meestal ca. {wait} min.",
-      "quietDays": "Rustigst op {first} en {second}: meestal ca. {wait} min.",
-      "quietDayNone": "Geen enkele weekdag springt eruit, de wachttijden liggen dicht bij elkaar."
+      "quietDay": "Rustigst op {day}, normaal ca. {wait} min.",
+      "quietDays": "Rustigst op {first} en {second}, normaal ca. {wait} min.",
+      "quietDayNone": "Geen enkele weekdag springt eruit."
     },
     "todayChart": {
       "title": "Wachttijden vandaag",

@@ -1201,9 +1201,9 @@
       "bestTimeTitle": "Quand c’est plus calme ici",
       "bestTimeText": "À l’ouverture, l’attente est d’env. {openWait} min ici, et d’env. {busyPeak} min au pic du jour.",
       "spread": "Écart",
-      "quietDay": "Plus calme le {day} : env. {wait} min en général.",
-      "quietDays": "Plus calme le {first} et le {second} : env. {wait} min en général.",
-      "quietDayNone": "Aucun jour ne se détache, les temps d’attente sont proches."
+      "quietDay": "Plus calme le {day}, normalement env. {wait} min.",
+      "quietDays": "Plus calme le {first} et le {second}, normalement env. {wait} min.",
+      "quietDayNone": "Aucun jour ne se détache vraiment."
     },
     "todayChart": {
       "title": "Temps d’attente aujourd’hui",

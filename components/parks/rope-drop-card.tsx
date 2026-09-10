@@ -48,7 +48,10 @@ interface RopeDropCardProps {
    * request and nothing arrives after paint. Reading the same object is not by itself enough to
    * keep the sentence and the bars in agreement — `quietestWeekdays` carries the two rules that
    * do (round on the displayed grid, and stay silent where a dropped thin day draws a shorter
-   * bar than the day it would name).
+   * bar than the day it would name). The third is in the strings: the sentence quotes the P50,
+   * while the only number the chart labels per column is the P90, so its adverb shares a root
+   * with the card's own P50 label („normalerweise" against „Normal") in all six locales — the
+   * word a reader has to match the figure against.
    */
   typicalWaits?: TypicalWaits | null;
   /**

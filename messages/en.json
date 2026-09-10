@@ -1201,9 +1201,9 @@
       "bestTimeTitle": "When it’s quieter here",
       "bestTimeText": "At opening the line here runs ~{openWait} min, at the day’s peak ~{busyPeak} min.",
       "spread": "Difference",
-      "quietDay": "Quietest on {day}: usually ~{wait} min.",
-      "quietDays": "Quietest on {first} and {second}: usually ~{wait} min.",
-      "quietDayNone": "No weekday stands out, the waits sit close together."
+      "quietDay": "Quietest on {day}, normally ~{wait} min.",
+      "quietDays": "Quietest on {first} and {second}, normally ~{wait} min.",
+      "quietDayNone": "No single weekday stands out."
     },
     "todayChart": {
       "title": "Today’s Wait Times",
