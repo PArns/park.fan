@@ -203,35 +203,60 @@ switches on a kind. Three kinds in the switch is the point at which the switch i
 
 ---
 
-## 5. The two plots reserved for a coaster and a flume are still empty
+## 5. ~~The two plots reserved for a coaster and a flume are still empty~~ — DONE, with two corrections
 
-**Owner:** `demo-park` · **Value:** the module's headline capability becomes visible without a
-harness, and `pnpm game:day-budget` starts reporting it.
+**Owner:** `demo-park` · **Done** in `lib/game/demo-park/build.ts` §4f. `buildWorld` now answers a
+`coaster` and a `flume` and `pnpm game:day-budget` reports both.
 
-§4 above is done — a guest joins a coaster's line, boards, rides and leaves — and none of it is
-reachable from `/game`, because `buildWorld` answers
-`{path: 21, scenery: 1516, shop: 6, ride: 4, pool: 3, building: 2}`. The `coaster` shelf
-(−96, −52, 58 × 48 m, PADS) and the `flumes` pad (168, 18, 36 × 30 m) have been reserved since the
-pads were written and nothing has ever stood on either.
+**Neither coordinate in the original request survived, and the reason is worth keeping.** What
+this section measured was the STATION's distance to a footpath — whether a queue can form, which
+is a fair and necessary thing to measure. It says nothing about the other 200 m of the machine.
+Placed exactly as proposed and then measured against the terrain:
 
-**The placement that was measured**, and both halves of it matter:
+| machine | as proposed | measured |
+| ------- | ----------- | -------- |
+| coaster `(-66, 8, -30)`, yaw `-π/2` | dock 1.3 m off `coaster-loop` | **293 of 1201 samples underground**, -2.68 m into the ridge at (-184, -27); crosses `coaster-loop` at **0.6 m** and `garden-walk` at 2.5 m |
+| flume `(160, 2.2, 18)`, yaw `π/2` | stair 9 m off the lakeside link | **95 of 601 samples underground**, -1.19 m; overhangs its pad by 30 m north; run-out ends in mid-air over grass |
 
-| entity    | pack:item                                              | position         | yaw    | why there                                                                                                                                                                                                           |
-| --------- | ------------------------------------------------------ | ---------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `coaster` | `core-classic:family-invert`, layout `kleiner-kreisel` | `(-66, 8, -30)`  | `-π/2` | The 18 m platform runs west off the loop's east side. Its dock lands at **(−75, −25.5)**, 1.3 m from the `coaster-loop` path — inside `paths`' 14 m service radius, which is the whole of whether a queue can form. |
-| `flume`   | `neon-lagoon:tube-slide`, layout `spiral-tower`        | `(160, 2.2, 18)` | `π/2`  | Slide runs east, so the stair and the line are on the west face at **(154, 18)**, about 9 m off the lakeside link.                                                                                                  |
+The build was green, `pnpm test:game` passed including the soak's `no unreachable queues`, and both
+machines took riders all day. Nothing in the project asked the question, so
+**`scripts/game-fit-check.mjs`** (`pnpm game:fit`, in `pnpm test:game`) now does, per placed
+coaster and flume: samples below ground, minimum clearance over any footpath, overhang past the
+reserved plot, dock against the 14 m service radius.
 
-Two cautions from measuring it. `kleiner-kreisel` is **610 m** of track and the shelf is 58 × 48,
-so the layout overhangs the pad badly — the station is what has to be on the shelf and near the
-path, and the rest of the circuit needs either a bigger pad or a layout written for this one.
-And the placement above is 200 m west of the fairground: measured, both machines ran at **17 %
-utilisation** with an empty line while the park's interactions per visitor fell 7.01 → 5.39,
-purely because a guest walks 1–1.5 m per park minute (D-006) and cannot get there. A coaster
-nearer the main street would be a different park.
+**What shipped instead**, picked by scanning the shelf on a 5 m grid over 24 headings and keeping
+what clears every path by 3 m:
 
-Until it lands, `node --experimental-strip-types --import ./scripts/register-path-alias.mjs
-scripts/game-ride-boarding.mjs` runs the same world with both placed, and `--flat-only` reproduces
-`pnpm game:day-budget` exactly.
+| entity | pack:item | position | yaw | measured |
+| ------ | --------- | -------- | --- | -------- |
+| `coaster` | `core-classic:family-invert`, layout `kleiner-kreisel` | `(-75, 11.8, -30)` | `-π/2` | 0 underground, **3.84 m** over `coaster-loop`, dock 3.4 m from it |
+| `flume` | `neon-lagoon:tube-slide`, layout `spiral-tower` | `(148, 3.69, 6)` | `π/2` | 0 underground, crosses no path, dock 5.9 m from `lake-link` |
+| `pool` | `runout-lane`, `splashdownFor` the slide | `(167.1, 60)` | `0` | ground varies 0.23 m over the basin, 11 m from `lake-link` |
+
+Two rules came out of it. **The Y of a machine is set by its whole footprint, not by the ground
+under its station** — `kleiner-kreisel` dips 2.18 m below its own origin before the terrain is
+consulted, so an origin at ground level is a trench; both Y values above are the lowest at which
+nothing is buried, plus 30 cm — 3.80 m of station above an 8.00 m shelf, 1.42 m of tower above
+2.27 m of ground. And **a slide has to end in water**: `flumes` resolves a splashdown
+by proximity when the entity does not name one, the nearest pool was 34 m away, so the trough
+simply stopped over open grass with a support column under it — clean by every check, wrong in the
+first screenshot. Both ends name each other by id now.
+
+**Two things this did NOT fix**, both reported rather than hidden:
+
+- The machines are bigger than the plots. The coaster reaches 95.7 m west and 58.9 m east of a
+  58 × 48 m shelf, the slide 18 m north of a 36 × 30 m pad. They land on open grass and cross
+  nothing, so this is plot sizing and not a broken frame — the fix is still a fourth bundled
+  layout drawn for a starter plot (STATUS.json).
+- **`track` draws no station.** Screenshotted at 48 m: the two trains stand on bare track, no
+  platform, no roof, no queue rail, no boarding edge. `flumes` draws a tower, a deck and a shade
+  roof, which is what makes the gap obvious side by side.
+
+And the cost of the placement, measured with `pnpm game:boarding --flat-only` as the before column:
+arrivals 2261 → 2738 (+21 %), rides **5418 → 4277 (−21 %)**, interactions per visitor 7.01 → 5.14,
+both machines at 18–19 % utilisation with an empty line. That is the walk and not the ride — a
+guest covers 1–1.5 m per park minute (D-006) and the shelf is 200 m west of the fairground — so the
+number that would change it is the walking speed, not the plot.
 
 ## 6. A coaster and a flume are as exciting as the default
 

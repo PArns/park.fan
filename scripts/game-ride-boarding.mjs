@@ -1,23 +1,21 @@
 /**
- * park.fan Coaster — can a guest actually ride the coaster and the flume?
+ * park.fan Coaster — what the coaster and the flume are worth over a park day.
  *
- * `scripts/game-day-budget.mjs` answers "where does a park day go" on the demo park, and the demo
- * park has **no coaster and no flume in it** — `buildWorld` answers
- * `{path, scenery, shop, ride, pool, building}` and nothing else, so the four flat rides carry the
- * whole park by default and the machine that most needs measuring is not in the world at all.
- * Placing one is `demo-park`'s call (see `docs/game/requests/rides.md`); measuring one is this
- * script's, so it takes the same world, drops a coaster on the `coaster` shelf and a slide on the
- * `flumes` pad, runs the same park day, and prints riders per machine with the module that
- * dispatched them beside each row.
+ * It began as the harness for a park that had neither: `buildWorld` answered
+ * `{path, scenery, shop, ride, pool, building}`, the four flat rides carried the whole day, and
+ * this script dropped a coaster on the `coaster` shelf and a slide on the `flumes` pad to measure
+ * what a park with them looks like. `demo-park` has since placed both (`build.ts`, §4f), so the
+ * default run is now simply the demo park's own day and **`--flat-only` is the interesting one**:
+ * it strips every `coaster` and `flume` entity back out and gives the before column.
  *
  *   node --experimental-strip-types --import ./scripts/register-path-alias.mjs \
  *     scripts/game-ride-boarding.mjs
  *   … --hours=14 --speed=20 --seed=1 --json=.game-render/boarding.json
- *   … --flat-only          # the same day with neither placed: the before column
+ *   … --flat-only          # the same day with the two machines removed: the before column
  *
- * The two placements are deliberately at the EDGE of their plots and next to the path loop that
- * rings them, because a queue is only real if somebody can walk to it: `paths`' service radius is
- * 14 m and a station in the middle of a 58 × 48 m shelf is not within it of anything.
+ * The placement itself is `docs/game/requests/rides.md` §5 and now lives in `demo-park`, which is
+ * why nothing here names a layout any more: a script that placed its own coaster beside the park's
+ * would measure a park nobody plays.
  */
 import { writeFile, mkdir } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
@@ -27,8 +25,6 @@ import { GAME_MODULES } from '@/lib/game/modules.ts';
 import { buildWorld } from '@/lib/game/demo-park/index.ts';
 import { Registry } from '@/lib/game/core/registry.ts';
 import { MINUTES_PER_TICK_AT_SPEED_1 } from '@/lib/game/core/types.ts';
-import { TRACK_LAYOUTS, layoutData } from '@/lib/game/track/index.ts';
-import { attachFlumeContent, makeFlumeEntity } from '@/lib/game/flumes/index.ts';
 
 const args = Object.fromEntries(
   process.argv.slice(2).map((a) => {
@@ -57,39 +53,20 @@ for (const pack of packs) registry.registerPack(pack);
 const world = buildWorld(seed, registry);
 
 /**
- * A coaster whose STATION is a metre off the loop path, and a slide whose STAIR is nine.
+ * `--flat-only`: the park as it was before `demo-park` placed the two machines.
  *
- * The layout is `Kleiner Kreisel` — 610 m, 19 m lift, the smallest of the three `track` ships —
- * re-origined so its 18 m platform runs west off the loop's east side at (−66, −30). The yaw
- * convention is the one `flumes` and `track` share: heading is `(sin yaw, cos yaw)`, so `−π/2`
- * points the platform at −x and the queue lands on its +z side.
+ * Removing them is not the same as never having built them — the entity ids the factory allocated
+ * are spent either way — but the world is seeded and the ids are allocated in a fixed order, so
+ * every remaining entity keeps the id and the position it had. What changes is the venue list the
+ * `guests` module builds, which is the whole point of the column.
  */
-if (!flatOnly) {
-  attachFlumeContent(registry);
-  const preset = TRACK_LAYOUTS.find((p) => p.id === 'kleiner-kreisel');
-  const origin = [-66, 8, -30];
-  const yaw = -Math.PI / 2;
-  const data = { ...layoutData(preset), origin, yaw };
-  const [cpack, citem] = preset.ride.split(':');
-  world.entities['demo-coaster'] = {
-    id: 'demo-coaster',
-    kind: 'coaster',
-    pack: cpack,
-    item: citem,
-    position: origin,
-    yaw,
-    data,
-  };
-  world.entities['demo-flume'] = makeFlumeEntity({
-    id: 'demo-flume',
-    pack: 'neon-lagoon',
-    item: 'tube-slide',
-    x: 160,
-    z: 18,
-    y: 2.2,
-    yaw: Math.PI / 2,
-    layout: 'spiral-tower',
-  });
+if (flatOnly) {
+  for (const [id, e] of Object.entries(world.entities)) {
+    // The slide's splashdown lane goes with it: a run-out pool with no run-out over it is not
+    // part of "the park before the two machines", it is a rectangle of water nobody built.
+    const isRunout = e.kind === 'pool' && e.data?.splashdownFor != null;
+    if (e.kind === 'coaster' || e.kind === 'flume' || isRunout) delete world.entities[id];
+  }
 }
 
 runtime.init({ type: 'init', world, packs, modules: GAME_MODULES.map((m) => m.id), seed });
@@ -148,7 +125,7 @@ const num = (v, w = 6) => (v == null ? '—'.padStart(w) : String(v).padStart(w)
 
 console.log(
   `one park day, seed ${seed}, speed ${speed} (${minutesPerTick} park min/tick)` +
-    `${flatOnly ? ' — FLAT RIDES ONLY' : ' — with a coaster and a flume'}\n`
+    `${flatOnly ? ' — FLAT RIDES ONLY' : ' — the demo park as built'}\n`
 );
 console.log(
   [

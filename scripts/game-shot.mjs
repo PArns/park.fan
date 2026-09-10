@@ -68,6 +68,36 @@ const viewport = { width: Number(args.w ?? 1280), height: Number(args.h ?? 720) 
 const engine = args.engine ?? 'webgl2';
 const stepTicks = Number(args.step ?? 0);
 /**
+ * `--nohud` — photograph the SCENE, with the interface out of the way.
+ *
+ * The HUD is a real part of the product and most shots should include it, but it covers a little
+ * over half the frame with the build bar open, and a shot meant to answer "does this machine sit
+ * on the ground" spends that half on a list of scenery items. The rule that no agent may claim
+ * anything it has not looked at is only worth something if the thing can be seen.
+ *
+ * It hides rather than unmounts (`[data-game-hud]`, the one attribute the HUD root carries), so
+ * React is untouched, no boundary re-renders, and the canvas is the same canvas — which is what
+ * makes a `--nohud` shot comparable with the one beside it.
+ */
+const noHud = args.nohud === '1';
+/**
+ * `--pose=alpha,beta,radius,x,y,z` — aim the camera at a THING rather than at a preset.
+ *
+ * The seven presets are the product's own viewpoints and every routine shot should use one. But a
+ * question like "does this machine sit on the ground" is about one object, and the nearest preset
+ * framed the coaster's station from 340 m with a hillside in front of it. Angles are degrees
+ * (alpha around Y, beta down from the pole) because a harness argument typed by hand should read
+ * like a protractor; the target is world metres.
+ *
+ * It replaces the preset for that shot, so the file is named `<tod>-pose`. The `--radius` override
+ * above stays what it is: same framing, further away.
+ */
+const pose = (args.pose ?? '').split(',').filter(Boolean).map(Number);
+if (pose.length && pose.length !== 6) {
+  console.error('--pose wants six numbers: alpha,beta,radius,x,y,z (degrees, degrees, metres)');
+  process.exit(2);
+}
+/**
  * `--particles=<seconds per frame>` — how a particle effect gets photographed at all.
  *
  * SwiftShader renders this game at 0.3-2 fps, and Babylon ages particles by
@@ -201,7 +231,7 @@ if (bootMs != null) {
       for (const radius of radii.length ? radii : [null]) {
         await readyHandle();
         await page.evaluate(
-          ({ tod, cam, radius }) => {
+          ({ tod, cam, radius, pose }) => {
             const g = globalThis.__parkfan_game;
             const m = /^(\d{1,2}):(\d{2})$/.exec(tod);
             g.setTimeOfDay(m ? Number(m[1]) * 60 + Number(m[2]) : Number(tod));
@@ -216,7 +246,7 @@ if (bootMs != null) {
               camera.radius = radius;
             }
           },
-          { tod, cam, radius }
+          { tod, cam, radius, pose }
         );
         await page.waitForTimeout(settleMs);
         // `--step=N` advances the simulation N ticks and waits for them to land.
@@ -270,8 +300,35 @@ if (bootMs != null) {
           }, particleStep);
           await waitFrames(particleFrames);
         }
+        /**
+         * The pose lands LAST, and that is not tidiness.
+         *
+         * `camera`'s presets are tweened, so a pose written before the settle wait is overwritten
+         * by the tail of the preset's own animation — the first version of this option produced
+         * an `overview` frame at 340 m every time and looked exactly like a flag that did not
+         * work. Setting it after the wait, one frame before the shutter, is what makes it hold.
+         */
+        if (pose.length === 6) {
+          await page.evaluate((p) => {
+            const camera = globalThis.__parkfan_game.scene().activeCamera;
+            const [alpha, beta, r, tx, ty, tz] = p;
+            camera.upperRadiusLimit = Math.max(camera.upperRadiusLimit ?? r, r);
+            camera.lowerRadiusLimit = Math.min(camera.lowerRadiusLimit ?? r, r);
+            camera.setTarget(new camera.target.constructor(tx, ty, tz));
+            camera.alpha = (alpha * Math.PI) / 180;
+            camera.beta = (beta * Math.PI) / 180;
+            camera.radius = r;
+          }, pose);
+          await waitFrames(2);
+        }
+        if (noHud) {
+          await page
+            .addStyleTag({ content: '[data-game-hud]{display:none!important}' })
+            .catch(() => {});
+        }
         const suffix = radius == null ? '' : `-r${radius}`;
-        const file = path.join(out, `${tod.replace(':', '')}-${cam}${suffix}.png`);
+        const name = pose.length === 6 ? 'pose' : cam;
+        const file = path.join(out, `${tod.replace(':', '')}-${name}${suffix}.png`);
         await page.screenshot({ path: file });
         await readyHandle();
         const metrics = await page.evaluate(() => globalThis.__parkfan_game.metrics());

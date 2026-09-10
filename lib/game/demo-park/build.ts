@@ -33,6 +33,8 @@ import type { PathEntityData } from '../paths';
 import { buildCatalog } from '../scenery';
 import { sampleHeight } from '../terrain';
 import { attachPoolContent, makePoolEntity } from '../pools';
+import { attachFlumeContent, flumeLayouts, makeFlumeEntity } from '../flumes';
+import { TRACK_LAYOUTS, layoutData } from '../track';
 import { paintDemoTerrain, sculptDemoTerrain } from './landform';
 import { missingRoles, placeDemoProps, resolveRoles } from './props';
 import { PADS, PATHS, PARK_SIZE } from './plan';
@@ -149,6 +151,49 @@ export function buildWorld(seed: number, registry: Registry): World {
   // as making it in the world factory, and `buildWorld` answered `{path:21, scenery:1516, shop:6,
   // ride:4, pool:3}` for days. Its own critic found it, by counting.
   for (const b of placeDemoBuildings(allocId)) world.entities[b.id] = b;
+
+  // 4f. The coaster on the `coaster` shelf and the water slide on the `flumes` pad — the two plots
+  // that had been reserved since the pads were written and were still empty on the day a guest
+  // first managed to ride a coaster.
+  //
+  // **Not the coordinates `docs/game/requests/rides.md` §5 proposed**, and the difference is the
+  // reason `scripts/game-fit-check.mjs` now exists. That request measured the STATION's distance
+  // to a footpath, which is whether a queue can form and is a fair thing to measure — but it is
+  // not whether the machine fits. Placed as written and measured against the terrain: 293 of 1201
+  // samples of the coaster were INSIDE the ridge west of the shelf (-2.68 m at (-184, -27)) and it
+  // crossed the `coaster-loop` path at 0.6 m and the `garden-walk` at 2.5 m, i.e. a train through
+  // a footpath at head height; the slide buried 95 of 601 samples and overhung its pad by 30 m to
+  // the north. The build was green, the soak passed, and both machines took riders all day.
+  //
+  // Two rules came out of that and both are in the numbers below.
+  //
+  // 1. **The Y of a machine is set by its whole footprint, not by the ground under its station.**
+  //    `kleiner-kreisel` dips 2.18 m below its own origin before the terrain is even consulted, so
+  //    an origin at ground level is a trench. Both origins here are the lowest Y at which no part
+  //    of the machine is underground, plus 30 cm — measured, not chosen: the coaster's station
+  //    ends up 3.80 m above the shelf and the slide's tower 1.42 m above its ground.
+  // 2. **A footpath needs headroom.** Yaw and position were picked by scanning the shelf on a 5 m
+  //    grid over 24 headings and keeping the placements that clear every path by 3 m. The coaster
+  //    clears its worst crossing by 3.84 m and the slide, at this heading, crosses none at all.
+  //
+  // What is NOT fixed, and is reported by the fit check rather than hidden: both machines are
+  // bigger than the plots reserved for them. The coaster's 212.6 x 52.6 m circuit reaches well
+  // past a 58 x 48 m shelf and the slide's 59.5 x 42.4 m run past a 36 x 30 m pad. That is the
+  // plot sizing being wrong, not the placement — see STATUS.json, which recommends a compact
+  // fourth layout drawn for a starter plot rather than a demo park rebuilt around a 400 m circuit.
+  //
+  // And the cost of having them out here at all, measured over a park day with
+  // `pnpm game:day-budget` against the same day with `game-ride-boarding.mjs --flat-only`:
+  // arrivals rise 2261 -> 2738 (+21 %) because the park is worth more, total rides FALL
+  // 5418 -> 4277 (-21 %) and interactions per visitor 7.01 -> 5.14. That is the walk and not the
+  // ride: a guest covers 1-1.5 m per park minute (D-006) and the coaster shelf is 200 m west of
+  // the fairground, so both machines settle at 18-19 % utilisation with an empty line while the
+  // four flat rides that used to carry the day lose a third of their riders each. A coaster
+  // nearer the main street would be a different park, and the number that decides it is the
+  // walking speed rather than the plot.
+  attachFlumeContent(registry);
+  for (const e of placeDemoCoaster(registry, allocId)) world.entities[e.id] = e;
+  for (const e of placeDemoFlume(world, registry, allocId)) world.entities[e.id] = e;
 
   // 5. what the main handle needs to finish the job
   const half = PARK_SIZE / 2 - DRESS_MARGIN;
@@ -422,4 +467,142 @@ function placeDemoShops(registry: Registry, allocId: (kind: string) => string): 
     });
   }
   return out;
+}
+
+/**
+ * Where the two measured placements come from, and why they are ids rather than a fit search.
+ *
+ * `placeDemoRides` and `placeDemoPools` above choose their machines by FOOTPRINT against the pad,
+ * which is the rule this file prefers because it survives a pack that ships different content. A
+ * coaster layout and a slide layout cannot be chosen that way yet: neither `LayoutPreset` nor
+ * `FlumeLayoutSpec` declares an extent, and the only way to learn one is to build the spline —
+ * which is the `track` and `flumes` modules' work and not the world factory's. So these two are
+ * named, the fallbacks below keep a pack set without them from crashing the factory, and the fix
+ * that would let this file measure instead of naming is a `footprint` on both layout types.
+ */
+const MEASURED_COASTER_LAYOUT = 'kleiner-kreisel';
+const MEASURED_FLUME_LAYOUT = 'spiral-tower';
+
+/**
+ * Where each machine stands, and how high.
+ *
+ * `y` is an ABSOLUTE world height, not an offset, and it is the output of a measurement rather
+ * than a taste call: the lowest origin at which no sample of the built machine sits below the
+ * terrain, plus 30 cm. The ground it stands on is 8.00 m for the coaster and 2.27 m for the slide,
+ * so the platform is 3.80 m up and the tower 1.42 m up. `scripts/game-fit-check.mjs` rebuilds both
+ * splines against the terrain and fails if either number stops being true — which is what makes
+ * this a constant one may trust rather than a constant somebody typed.
+ */
+const COASTER_AT = { x: -75, y: 11.8, z: -30, yaw: -Math.PI / 2 };
+const FLUME_AT = { x: 148, y: 3.69, z: 6, yaw: Math.PI / 2 };
+/**
+ * The pool the slide's run-out lands in, 9 m beyond the trough's last metre and square to it.
+ *
+ * A slide has to end in water, and the first placement here did not: the trough stopped 30 cm
+ * above open grass with a support column under it and nothing else, which is the sort of thing a
+ * fit check reports as clean because it is clean — nothing was underground, everything cleared its
+ * paths, and the machine simply ended. It took a screenshot to see it.
+ *
+ * `pools` ships a `runout-lane` shape (8 x 18 m, `role: 'splashdown'`, a channel 0.55-1.00 m deep)
+ * for exactly this and `flumes` resolves a splashdown by proximity when the entity does not name
+ * one — but the nearest pool was the lagoon 34 m away, so nothing resolved. Both ends are named
+ * here instead: the slide's `data.splashdown` is the pool's id and the pool's `splashdownFor` is
+ * the slide's, so neither depends on a radius.
+ *
+ * The site was measured with the placement: over an 8 x 18 m box the ground varies 0.23 m, which
+ * is the flattest exit any feasible heading on this pad reaches, and it is 11 m from the
+ * `lake-link` path.
+ */
+const FLUME_RUNOUT_AT = { x: 167.1, z: 60, yaw: 0 };
+
+/**
+ * The coaster on the `coaster` shelf.
+ *
+ * The 18 m platform runs west off the loop's east side, its dock 3.4 m from the `coaster-loop`
+ * path — which is the whole of whether a queue can form, `paths` serving a 14 m radius. The rest
+ * of `kleiner-kreisel`'s 610 m reaches well past the 58 x 48 m shelf; see the call site for what
+ * that is and is not.
+ *
+ * A pack set with no coaster ride for the layout leaves the shelf empty rather than dispatching an
+ * entity whose `pack:item` nothing can resolve — `track` would answer `null` and the park would
+ * carry an invisible machine with a queue in front of it.
+ */
+function placeDemoCoaster(registry: Registry, allocId: (kind: string) => string): Entity[] {
+  const preset =
+    TRACK_LAYOUTS.find((p) => p.id === MEASURED_COASTER_LAYOUT) ?? TRACK_LAYOUTS[0] ?? null;
+  if (!preset) return [];
+  const [pack, item] = preset.ride.split(':');
+  const def = registry.item('rides', preset.ride)?.def as { kind?: string } | undefined;
+  if (!pack || !item || def?.kind !== 'coaster') return [];
+  const origin: Vec3 = [COASTER_AT.x, COASTER_AT.y, COASTER_AT.z];
+  const yaw = COASTER_AT.yaw;
+  return [
+    {
+      id: allocId('coaster'),
+      kind: 'coaster',
+      pack,
+      item,
+      position: origin,
+      yaw,
+      // The layout travels in `data` and its `origin`/`yaw` are overwritten with the placement's,
+      // because a preset's own origin is where the showcase stands it.
+      data: { ...layoutData(preset), origin, yaw } as unknown as Record<string, unknown>,
+    },
+  ];
+}
+
+/**
+ * The water slide on the `flumes` pad.
+ *
+ * Yaw `π` runs the slide south-west off its tower, which is 3.5 m from the `lake-link` path and
+ * inside the service radius, and puts the run-out on the flat lakeside rather than up the rise to
+ * the east — the reason the machine clears the terrain everywhere at this heading and at no other
+ * one within a metre of it.
+ *
+ * The ride item is chosen by the LAYOUT's style rather than by id: `resolveFlume` says in as many
+ * words that the layout decides the style and not the ride's four-way enum, so a tube layout wants
+ * the tube slide and a pack shipping a differently named one still opens this plot.
+ */
+function placeDemoFlume(
+  world: World,
+  registry: Registry,
+  allocId: (kind: string) => string
+): Entity[] {
+  const layouts = flumeLayouts();
+  const layout = layouts.find((l) => l.id === MEASURED_FLUME_LAYOUT) ?? layouts[0] ?? null;
+  if (!layout) return [];
+  const flumes = registry
+    .items('rides')
+    .map((entry) => ({
+      pack: entry.pack,
+      def: entry.def as { id?: string; kind?: string; flumeStyle?: string },
+    }))
+    .filter((e) => e.def.kind === 'flume' && typeof e.def.id === 'string');
+  const found = flumes.find((e) => e.def.flumeStyle === layout.style) ?? flumes[0] ?? null;
+  if (!found) return [];
+  // Both ids are allocated before either entity is built, because the two name each other.
+  const slideId = allocId('flume');
+  const poolId = allocId('pool');
+  return [
+    makeFlumeEntity({
+      id: slideId,
+      pack: found.pack,
+      item: found.def.id as string,
+      x: FLUME_AT.x,
+      z: FLUME_AT.z,
+      y: FLUME_AT.y,
+      yaw: FLUME_AT.yaw,
+      layout: layout.id,
+      splashdown: poolId,
+    }),
+    makePoolEntity({
+      id: poolId,
+      shape: 'runout-lane',
+      x: FLUME_RUNOUT_AT.x,
+      z: FLUME_RUNOUT_AT.z,
+      y: sampleHeight(world.terrain, FLUME_RUNOUT_AT.x, FLUME_RUNOUT_AT.z),
+      yaw: FLUME_RUNOUT_AT.yaw,
+      splashdownFor: slideId,
+    }),
+  ];
 }

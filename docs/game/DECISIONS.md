@@ -310,3 +310,39 @@ currently using. The dev-server test exercises the same expression and the same 
 not the inlining Next does at build time.
 _Reversed by:_ `docs/game/FINAL_GATE.md` actually being run — at which point this flag, the
 `robots: { index: false }` in `app/game/layout.tsx` and `app/sitemap.ts` are flipped together.
+
+**D-029 — A machine's height comes from its whole footprint, not from the ground under its station, and a placement is not verified until a fit check has measured it.**
+
+`docs/game/requests/rides.md` §5 proposed a coaster at `(-66, 8, -30)` and a slide at
+`(160, 2.2, 18)`, with measured coordinates and a stated reason: the dock lands 1.3 m from the
+`coaster-loop` path, inside `paths`' 14 m service radius, so a queue can form. Both numbers were
+right about the thing they measured. Placed as written, **293 of 1201 samples of the coaster sat
+inside the ridge west of the shelf** — 2.68 m under the terrain at (-184, -27) — and the circuit
+crossed the `coaster-loop` path at 0.6 m and the `garden-walk` at 2.5 m, which is a train through a
+footpath at head height. The slide buried 95 of 601 samples and overhung its pad by 30 m. `next
+build` was green, `pnpm test:game` passed, the soak's own `no unreachable queues` passed, and both
+machines carried riders for a full simulated day.
+
+Two things follow and both are now written into the code rather than into a comment.
+
+The **Y of a placed machine is the lowest at which no part of it is below the terrain, plus 30 cm**,
+and it is a measurement rather than the pad's declared height. `kleiner-kreisel` dips 2.18 m below
+its own origin before the ground is consulted at all, so an origin at grade is a trench by
+construction; the shipped station stands 3.80 m above an 8.00 m shelf and the slide's tower 1.42 m
+above its own ground for exactly that reason. Position and yaw were then picked by scanning the shelf on a
+5 m grid over 24 headings and keeping only placements that clear every footpath by 3 m — the
+coaster clears its worst crossing by 3.84 m, the slide crosses nothing.
+
+And **`scripts/game-fit-check.mjs` runs in `pnpm test:game`**, because the reason this survived was
+not carelessness: no check in the project asked the question. It reports, per placed coaster and
+flume, samples below ground, minimum clearance over any path, overhang past the reserved plot and
+the dock against the service radius. The overhang is printed and never failed — the plots really
+are smaller than the machines the game ships, that is a sizing decision recorded in STATUS.json,
+and a check that went red on it would be red for as long as the park is honest.
+
+What the check still cannot see, stated so nobody reads a clean run as more than it is: it covers
+`coaster` and `flume` only, it compares each machine with the terrain and the paths and never with
+another machine, and it has nothing to say about whether a machine looks finished. Both of the
+last two were found by eye in this same round — the fairground's ten-metre overlap by hand, and the
+slide's run-out ending in mid-air over open grass by screenshot, on a placement this check had just
+called clean.
