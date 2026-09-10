@@ -354,8 +354,8 @@ Die zehn Attraktionen, an denen du am längsten stehst:
 ```
 
 Ganz oben steht keine Achterbahn mit 90 km/h, sondern eine Hallenfahrt mit 36.
-Van Helsing’s Factory hat den längsten Median im Park, direkt dahinter kommt die
-Wildwasserbahn aus dem Kinderbereich. Star Trek liegt im Mittelfeld, obwohl die
+Van Helsing’s Factory hat den längsten Median im Park, und dahinter liegen
+mehrere Bahnen gleichauf, darunter die Wildwasserbahn aus dem Kinderbereich. Star Trek liegt im Mittelfeld, obwohl die
 meisten wegen dieser Bahn überhaupt anreisen.
 
 Das hat wenig mit Beliebtheit zu tun und viel mit Durchsatz. Van Helsing schafft

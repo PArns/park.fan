@@ -188,8 +188,8 @@ export function ContentES() {
           badge={<CrowdLevelBadge level="very_high" />}
         >
           La combinación punta clásica, un sábado de vacaciones en pleno verano, reúne casi todos
-          los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente. El mismo parque
-          se siente completamente distinto.
+          los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente. El mismo
+          parque se siente completamente distinto.
         </SplitFigure>
         <TouchpointGrid
           items={[

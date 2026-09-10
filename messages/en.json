@@ -799,7 +799,6 @@
       "feelsLike": "Feels like",
       "dataBy": "Weather data by",
       "liveLabel": "Live",
-      "liveValueHint": "Live value – updated every 15 min.",
       "precipLabel": "Precip",
       "windLabel": "Wind",
       "compass": {

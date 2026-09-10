@@ -799,7 +799,6 @@
       "feelsLike": "Ressenti",
       "dataBy": "Données météo par",
       "liveLabel": "Live",
-      "liveValueHint": "Valeur en direct – mise à jour toutes les 15 min.",
       "precipLabel": "Précip.",
       "windLabel": "Vent",
       "compass": {

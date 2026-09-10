@@ -7,6 +7,6 @@ title: Freizeitpark Saisonstart 2026
 subtitle: Noch etwas Geduld
 ---
 
-Am **28. März 2026** fahren die ersten Parks der Saison wieder an. Bis dahin läuft hier der Countdown.
+Am **28. März 2026** startet das Phantasialand in die Saison. Bis dahin läuft hier der Countdown.
 
 Ab dem ersten Öffnungstag stehen die **Wartezeiten** wieder live auf jeder Parkseite, dazu der **Crowd-Kalender** für die Tage danach.
