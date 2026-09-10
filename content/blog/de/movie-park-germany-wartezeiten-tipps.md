@@ -67,9 +67,9 @@ feiert seinen dreißigsten Geburtstag ausgerechnet mit einer Attraktion von
 Paramount.
 
 Dazu kommt eine Zahl, die zum Ruf dieses Parks überhaupt nicht passt. Über
-**135 gemessene Öffnungstage** liegt die typische Wartezeit im
-[Movie Park](ref:movie-park-germany) bei zwanzig Minuten. Im
-[Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich, sind
+**135 gemessene Öffnungstage** steht man im
+[Movie Park](ref:movie-park-germany) gut halb so lang an wie im
+[Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich. Dort sind
 es dreißig.
 
 Und der leerste Wochentag ist der, den dir kein Ratgeber im Netz nennt.

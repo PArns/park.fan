@@ -75,7 +75,7 @@ bella che un parco divertimenti in Europa possa regalare. Questa guida ti mostra
 entrambe le cose: i prodigi per cui si viene, e, in concreto, come tenere bassi
 i **tempi di attesa Phantasialand** e beccare il giorno migliore.
 
-![Il Phantasialand di Brühl a volo d’uccello | Il mio parco di casa a Brühl, il parco divertimenti più immersivo d’Europa. | wide](/media/phantasialand/background-16x9.jpg)
+![Il Phantasialand di Brühl a volo d’uccello | Il mio parco di casa a Brühl: nove aree tematiche su 28 ettari. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Un parco come un altro mondo, e perché è così affollato
 
@@ -89,13 +89,12 @@ _dentro_ Klugheim, un intero villaggio di basalto con tetti storti e muri
 consunti, costruito in modo così convincente che per un momento ti dimentichi del
 coaster. Non vai verso un’attrazione, viaggi attraverso mondi.
 
-E che mondi: dalla Berlin in stile belle époque all’ingresso passeggi nella
-China Town costellata di templi, oltre Deep in Africa con le sue capanne
-di fango, dentro il Mexico azteco e massiccio, avanti nell’incantata
-Mysteryland, nella sognante Fantasy attorno al Märchensee, e infine nei
-due gioielli della corona degli ultimi anni: la ruvida Klugheim e la
-vittoriana e volante Rookburgh. Ognuna di queste aree ha il proprio suono, il
-proprio odore, la propria musica. Qui puoi passare un’intera giornata senza
+Nove aree stanno su 28 ettari, e nessuna sconfina nella successiva: la Berlin
+del 1900 all’ingresso, la China Town con i suoi templi, Deep in Africa con le
+capanne di fango, il Mexico azteco, Mysteryland, Fantasy attorno al Märchensee,
+più le due più giovani, Klugheim e la vittoriana Rookburgh. Ognuna ha la propria
+musica e il proprio odore, cosa che d’estate, davanti al chiosco dei churros
+della China Town, si nota più che in qualsiasi comunicato stampa. Qui puoi passare un’intera giornata senza
 salire su una sola attrazione e tornare a casa lo stesso sopraffatto.
 
 Ma proprio questa compattezza è il rovescio della medaglia. Il parco ha solo una
@@ -346,7 +345,7 @@ concediti piuttosto una seconda fetta di torta. (Oltre all’Ultimate c’è anc
 una seconda via per F.L.Y. senza lunghe code, ne parliamo tra poco, con gli
 hotel.)
 
-## Rope Drop e ordine di visita: così eviti i tempi di attesa più lunghi
+## In che ordine sali
 
 Il trucco gratuito più efficace al Phantasialand si chiama **arrivare presto e
 andare in controtendenza**. Non c’è quasi niente di più bello di uno di questi
@@ -379,7 +378,7 @@ contro un esercito di ospiti con l’Express Pass che ti comprano di continuo la
 capacità. La tua arma migliore è semplicemente il timing, e quello, a differenza
 del meteo, ce l’hai completamente in mano tu.
 
-## Il cibo: la star segreta del parco
+## Il cibo al Phantasialand
 
 Per nessun altro parco lo metterei così in risalto: il
 Phantasialand vale il viaggio anche per il **cibo**. Mentre in molti parchi
@@ -388,7 +387,7 @@ fa saldamente parte dell’esperienza, con una cura che di solito si conosce sol
 dai veri ristoranti. Un paio di indirizzi sono autentici consigli da intenditori,
 per cui vale la pena venire già solo per quelli:
 
-- **Rutmor’s Taverne** (Klugheim) è il mio preferito e, per molti fan, il miglior
+- **Rutmor’s Taverne** (Klugheim) è il mio preferito, e non conosco nessuno che lo smentisca dopo averci mangiato. Il miglior
   ristorante mai costruito dentro un parco divertimenti. Alla carta, rustico fino
   alle panche di legno intagliate, con una cucina saporita, Spätzle, Schnitzel,
   Bratkartoffeln, e poi zuppe e taglieri da condividere e un Kaiserschmarrn che
@@ -580,7 +579,7 @@ Sì, con un giorno ben scelto e l’ordine qui sopra, tutto l’essenziale ci st
 una giornata. Più rilassati (e, con gli hotel a tema, una piccola festa) sono due
 giorni.
 
-## Conclusione: poco parco, molta pianificazione, ricompensa enorme
+## Quello che ti lascio per la tua giornata
 
 Il Phantasialand non è un parco che ci si fa così, di sfuggita. È compatto, ambito
 e, nei giorni sbagliati, faticoso, ma nei giorni giusti, con l’ordine giusto e

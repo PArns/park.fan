@@ -75,7 +75,7 @@ doen. Deze gids laat je allebei zien: de wonderen waarvoor je komt, en heel
 praktisch, hoe je de **Phantasialand wachttijden** klein houdt en de beste dag
 treft.
 
-![Het Phantasialand in Brühl vanuit vogelperspectief | Mijn thuispark in Brühl, Europa’s immersiefste pretpark. | wide](/media/phantasialand/background-16x9.jpg)
+![Het Phantasialand in Brühl vanuit vogelperspectief | Mijn thuispark in Brühl: negen themagebieden op 28 hectare. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Een park als een andere wereld, en waarom het zo vol is
 
@@ -88,13 +88,12 @@ staat niet _voor_ [Taron](ref:phantasialand/taron), je staat _in_ Klugheim, een
 compleet basaltdorp met scheve daken en verweerde muren, zo overtuigend gebouwd
 dat je de coaster even vergeet. Je gaat niet naar een baan, je reist door werelden.
 
-En wat voor werelden: vanuit het belle-époque-achtige Berlin bij de ingang
-wandel je het door tempels omzoomde China Town in, langs Deep in Africa met
-zijn lemen hutten, het Azteeks-massieve Mexico in, verder het betoverde
-Mysteryland in, het dromerige Fantasy rond de Märchensee, en ten slotte de
-twee kroonjuwelen van de laatste jaren: het ruige Klugheim en het
-Victoriaans-vliegende Rookburgh. Elk van deze gebieden heeft zijn eigen klank,
-zijn eigen geur, zijn eigen muziek. Je kunt hier een hele dag doorbrengen zonder
+Negen gebieden liggen op 28 hectare, en geen enkel loopt in het volgende over:
+Berlin rond 1900 bij de ingang, China Town met zijn tempels, Deep in Africa met
+lemen hutten, het Azteekse Mexico, Mysteryland, Fantasy rond de Märchensee, en
+de twee jongste, Klugheim en het Victoriaanse Rookburgh. Elk heeft zijn eigen
+muziek en zijn eigen geur, wat in de zomer voor de churroskraam in China Town
+duidelijker opvalt dan in welk persbericht ook. Je kunt hier een hele dag doorbrengen zonder
 ook maar één baan te rijden, en toch overweldigd naar huis gaan.
 
 Maar precies die compactheid is de keerzijde. Het park heeft maar een handvol echte
@@ -137,7 +136,7 @@ Grand-Canyon-baan zette een groot deel van het oude park in vlammen; de brandwee
 sprak achteraf van “op een haar na aan een ramp ontsnapt”. Het had het einde kunnen
 zijn.
 
-In plaats daarvan werd het het keerpunt. Op de puinhopen van de afgebrande banen
+Op de puinhopen van de afgebrande banen
 bouwde het park binnen een jaar de themawereld Wuze Town met de twee dolle
 spinning coasters [Winja’s Fear](ref:phantasialand/winjas-fear) & Force en de
 wildwaterbaan [River Quest](ref:phantasialand/river-quest), allebei rijd je vandaag
@@ -147,7 +146,7 @@ goed, tot de laatste schroef doorgethematiseerd.
 Hoe serieus het park het daarmee meende, bleek in 2006. Met Deep in Africa en de
 inverted coaster [Black Mamba](ref:phantasialand/black-mamba) legde het Phantasialand
 een complete Afrikaanse wereld aan, lemen hutten, waterlopen, de baan diep tussen de
-rotsen gezet in plaats van de lucht in geschroefd. Dat was het moment waarop de
+rotsen gezet in plaats van de lucht in geschroefd. Vanaf 2006 kwamen de
 aardige uitstapbestemming een bedevaartsoord werd voor parkfans uit heel Europa. In
 2016 volgde het basaltdorp Klugheim met [Taron](ref:phantasialand/taron), in 2020
 de Victoriaanse vliegeniersstad Rookburgh met de eerste flying-launch-coaster ter
@@ -327,7 +326,7 @@ staan de cijfers laag, hou dan je geld op zak en gun jezelf in plaats daarvan ee
 taart. (Naast de Ultimate is er nog een tweede weg naar F.L.Y. zonder lange rij, daarover zo
 meteen bij de hotels.)
 
-## Rope Drop & volgorde: zo omzeil je de langste wachttijden
+## In welke volgorde je rijdt
 
 De doeltreffendste gratis truc in het Phantasialand heet **vroeg present zijn en anticyclisch
 rijden**. Er is nauwelijks iets mooiers dan zo’n park in het eerste uur: de steegjes nog leeg,
@@ -355,7 +354,7 @@ Het grote voordeel hier: anders dan in Orlando vecht je in het Phantasialand nie
 express-pass-gasten die je onophoudelijk de capaciteit wegkopen. Je beste wapen is simpelweg de
 timing, en die heb je, anders dan het weer, volledig zelf in de hand.
 
-## Eten: de stiekeme ster van het park
+## Eten in het Phantasialand
 
 Bij geen enkel ander park zou ik dit zo uitlichten: het Phantasialand is ook vanwege
 het **eten** een reis waard. Terwijl in veel parken “eten” synoniem is met lauwe friet tegen
@@ -363,11 +362,10 @@ woekerprijs, hoort de gastronomie hier vast bij de belevenis, met een zorgvuldig
 anders alleen van echte restaurants kent. Een paar adressen zijn echte geheimtips, waarvoor het
 bezoek alleen al de moeite waard is:
 
-- **Rutmor’s Taverne** (Klugheim) is mijn favoriet en voor veel fans het beste restaurant dat ooit
+- **Rutmor’s Taverne** (Klugheim) is mijn favoriet, en ik ken niemand die na een bezoek tegenspreekt. Het beste restaurant dat ooit
   in een pretpark is gebouwd. À la carte, rustiek tot in de gesneden houten banken, met hartige
   keuken, Spätzle, schnitzel, gebakken aardappels, daarbij soepen en schotels om te delen en een
-  Kaiserschmarrn die je even doet vergeten dat er buiten een achtbaan wacht. Grote porties, eerlijke
-  prijzen, vriendelijke bediening. Als je op een parkdag één keer echt wilt zitten en eten: hierheen.
+  Kaiserschmarrn die je even doet vergeten dat er buiten een achtbaan wacht. Vriendelijke bediening. Als je op een parkdag één keer echt wilt zitten en eten: hierheen.
 - **Restaurant Uhrwerk** (Rookburgh) is de steampunk-broer daarvan, burgers, huisgemaakte friet,
   pasta en bowls, in een decor van tandwielen en messing, met uitzicht op
   [F.L.Y.](ref:phantasialand/fly). Kleine geheimtip: ’s avonds is het voorbehouden aan de hotelgasten,
@@ -518,11 +516,12 @@ meestijgt.
 Ja, met een goed gekozen dag en de volgorde hierboven past al het belangrijke in één dag. Ontspannener (en met de
 themahotels een klein feest) zijn twee dagen.
 
-## Conclusie: weinig park, veel planning, enorme beloning
+## Wat ik je voor je dag meegeef
 
-Het Phantasialand is geen park dat je er even bij pakt. Het is compact, gewild en op de verkeerde dagen vermoeiend
-maar op de juiste dagen, met de juiste volgorde en een pauze in Rutmor’s Taverne, is het de immersiefste,
-liefdevolste belevenis die Europa te bieden heeft. Het goede nieuws: bijna alles wat een goede van een geweldige
+Het Phantasialand is geen park dat je er even bij pakt. Het heeft een derde van
+het publiek van het Europa-Park en negen minuten langere rijen. Op de juiste
+dagen, met de juiste volgorde en een pauze in Rutmor’s Taverne, is het het park
+waar ik al dertig jaar naar terugga. Het goede nieuws: bijna alles wat een goede van een geweldige
 dag scheidt, beslis je **vooraf**, bij de blik op de kalender.
 
 Voordat je vertrekt, kijk even wat het park op dit moment doet, het weer bij de ingang, precies nu:
@@ -542,7 +541,7 @@ pancakes bij Phenie’s verdwijnt, en ’s avonds in het blauwe uur nog steeds n
 — Patrick
 
 _P.S.: Nee, ik koop op een groene dinsdag geen Quick Pass. Uit principe, en omdat de data zeggen dat ik hem niet
-nodig heb. Voor de rode zaterdag geldt: de beste Fast Pass is de dag die je überhaupt niet hebt geboekt._
+nodig heb. _
 
 ---
 

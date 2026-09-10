@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: „hard gaan“, Untamed und 20 Minuten Wartezeit'
+title: 'Walibi Holland: „hard gaan“, Untamed und der Polder, auf dem er steht'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-08-19'
@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Walibi Holland steht auf Land, das 1957 noch unter Wasser lag, wirbt seit
   zwölf Jahren mit einem Wort aus der Hardstyle-Szene und hat mit Untamed eine
-  der besten Achterbahnen Europas, für die du typischerweise 20 Minuten
+  der besten Achterbahnen Europas, für die du an einem normalen Tag kaum
   anstehst. Über einen Park, den deutsche Besucher regelmäßig missverstehen,
   über die Halloween-Experiences, für die man freiwillig zahlt, und über das
   Weihnachtsevent, das der Park gerade abgesagt hat.
@@ -55,7 +55,7 @@ seo:
 
 Der Boden, auf dem Untamed steht, lag 1957 noch unter Wasser.
 
-Das ist keine Metapher. Am 29. Juni 1957 fiel der Ostteil von Flevoland trocken,
+Am 29. Juni 1957 fiel der Ostteil von Flevoland trocken,
 1963 wurde in diesem Polder das Dorf Biddinghuizen gegründet, und es liegt bis
 heute rund drei Meter unter dem Meeresspiegel. Wenn du oben auf dem Lifthill von
 [Untamed](ref:walibi-holland/untamed) sitzt, hängst du 36,5 Meter über einem
@@ -222,7 +222,7 @@ schweißgebadet in seiner Höhle auf, Axt in der Hand, alles nur ein Albtraum.
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Ein Bremspedal ist das noch nicht. Aber jemand hat nachgesehen, wo es sitzt.
+Beschwerden gab es 2026 bisher keine.
 
 ## Untamed
 
@@ -463,11 +463,11 @@ letzten zwei Jahren entschieden hat.
 
 ```
 
-## Zwanzig Minuten für die beste Bahn im Park
+## Was Untamed wirklich kostet
 
 Über die letzten beiden Saisons, gerechnet aus **über 130 Öffnungstagen mit
 auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt bei
-20 Minuten** (Median). Das 90. Perzentil, also der Wert, unter dem neun von zehn
+einer knappen Viertelstunde** (Median). Das 90. Perzentil, also der Wert, unter dem neun von zehn
 Messungen liegen, kommt auf 31 Minuten.
 
 Für die Bahnen einzeln sieht es so aus:
@@ -934,7 +934,8 @@ dem Wasserfall und den Buchstaben über dem Lifthill: Da bleibst du stehen und
 holst die Kamera raus, und das muss sich weder vor Disney noch vor dem
 Phantasialand verstecken.
 
-Zwanzig Minuten. Das ist der Preis für Untamed an einem normalen Tag.
+Untamed kostet dich an einem normalen Tag weniger Anstehen als jede Bahn ihrer
+Klasse in NRW.
 
 Fahr die zusätzliche Stunde. Und wenn du oben auf dem Lifthill sitzt und über
 den flachen, geraden, absolut künstlichen Polder schaust, denk kurz daran, dass

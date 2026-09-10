@@ -75,7 +75,7 @@ qu’un parc d’attractions puisse offrir en Europe. Ce guide te montre les deu
 les merveilles pour lesquelles on vient, et, très concrètement, comment garder
 courts les **temps d’attente au Phantasialand** et décrocher le meilleur jour.
 
-![Le Phantasialand à Brühl vu du ciel | Mon parc de cœur à Brühl, le parc d’attractions le plus immersif d’Europe. | wide](/media/phantasialand/background-16x9.jpg)
+![Le Phantasialand à Brühl vu du ciel | Mon parc de cœur à Brühl : neuf zones thématiques sur 28 hectares. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Un parc comme un autre monde, et pourquoi on s’y presse autant
 
@@ -90,13 +90,13 @@ village de basalte complet aux toits de guingois et aux murs patinés, bâti ave
 une telle conviction que tu en oublies le coaster un instant. Tu ne vas pas vers
 une attraction, tu voyages à travers des mondes.
 
-Et quels mondes : du Berlin Belle Époque de l’entrée, tu flânes jusqu’au
-China Town bordé de temples, tu passes devant Deep in Africa et ses
-huttes de torchis, tu entres dans le Mexico aztèque et massif, plus loin dans
-le Mysteryland ensorcelé, dans le Fantasy rêveur autour du Märchensee.
-et enfin dans les deux joyaux de la couronne des dernières années : le rude
-Klugheim et le Rookburgh victorien et volant. Chacune de ces zones a sa
-propre sonorité, sa propre odeur, sa propre musique. On peut y passer une journée
+Neuf zones tiennent sur 28 hectares, et aucune ne déborde sur la suivante : le
+Berlin de 1900 à l’entrée, le China Town et ses temples, Deep in Africa et ses
+huttes de torchis, le Mexico aztèque, le Mysteryland, le Fantasy autour du
+Märchensee, plus les deux dernières-nées, Klugheim et le Rookburgh victorien.
+Chacune a sa propre musique et sa propre odeur, ce qui se remarque davantage
+l’été devant le stand de churros du China Town que dans n’importe quel
+communiqué. On peut y passer une journée
 entière sans monter dans une seule attraction et rentrer chez soi malgré tout
 bouleversé.
 
@@ -142,7 +142,7 @@ Michael Jackson en personne inaugurait le train minier
 une grande partie du vieux parc ; les pompiers ont parlé après coup d’une
 « catastrophe évitée de justesse ». Cela aurait pu être la fin.
 
-Ce fut au contraire le tournant. Sur les décombres des attractions calcinées, le
+Sur les décombres des attractions calcinées, le
 parc a bâti en l’espace d’un an l’univers thématique Wuze Town, avec les deux
 spinning coasters déjantés [Winja’s Fear](ref:phantasialand/winjas-fear) & Force
 et la rivière sauvage [River Quest](ref:phantasialand/river-quest), les deux se
@@ -350,7 +350,7 @@ plutôt une deuxième part de gâteau. (À côté de l’Ultimate, il existe enc
 seconde voie vers F.L.Y. sans longue file, j’y viens tout de suite, du côté des
 hôtels.)
 
-## Rope Drop & ordre de passage : comment esquiver les plus longs temps d’attente
+## Dans quel ordre tu roules
 
 L’astuce gratuite la plus efficace au Phantasialand s’appelle **arriver tôt et
 rouler à contre-courant**. Il y a peu de choses plus belles qu’un de ces parcs
@@ -393,12 +393,12 @@ de l’expérience, avec un soin qu’on ne connaît d’ordinaire que de vrais
 restaurants. Quelques adresses sont de véritables bons plans qui, à eux seuls,
 valent déjà la visite :
 
-- **Rutmor’s Taverne** (Klugheim) est mon préféré et, pour beaucoup de fans, le
+- **Rutmor’s Taverne** (Klugheim) est mon préféré, et je ne connais personne qui me contredise après y avoir mangé. Le
   meilleur restaurant jamais construit dans un parc d’attractions. À la carte,
   rustique jusque dans ses bancs de bois sculptés, avec une cuisine généreuse.
   Spätzle, escalope panée, pommes de terre sautées, plus des soupes et des plateaux
   à partager et un Kaiserschmarrn qui te fait un instant oublier qu’au-dehors une
-  montagne russe t’attend. Grandes portions, prix justes, service aimable. Si, un
+  montagne russe t’attend. Service aimable. Si, un
   jour de parc, tu veux t’asseoir et manger pour de vrai : c’est ici.
 - **Restaurant Uhrwerk** (Rookburgh) en est le frère steampunk, burgers, frites
   maison, pâtes et bowls, dans un décor d’engrenages et de laiton, avec vue sur
@@ -590,12 +590,12 @@ Oui, avec un jour bien choisi et l’ordre de passage ci-dessus, tout l’essent
 tient en une journée. Deux jours sont plus détendus (et, avec les hôtels à thème,
 une petite fête).
 
-## Conclusion : peu de parc, beaucoup de planification, une immense récompense
+## Ce que je te donne pour ta journée
 
-Le Phantasialand n’est pas un parc qu’on visite en passant. Il est compact,
-convoité et, les mauvais jours, épuisant, mais les bons jours, avec le bon ordre
-de passage et une pause à la Rutmor’s Taverne, c’est l’expérience la plus immersive
-et la plus attachante que l’Europe ait à offrir. La bonne nouvelle : presque tout
+Le Phantasialand n’est pas un parc qu’on visite en passant. Il accueille un
+tiers du public de l’Europa-Park et ses files sont neuf minutes plus longues.
+Les bons jours, avec le bon ordre de passage et une pause à la Rutmor’s Taverne,
+c’est le parc où je retourne depuis trente ans. La bonne nouvelle : presque tout
 ce qui sépare une bonne journée d’une journée grandiose, tu le décides **à
 l’avance**, en jetant un œil au calendrier.
 
@@ -619,7 +619,7 @@ l’heure bleue, ne veut toujours pas rentrer.
 
 _P.-S. : Non, un mardi vert, je n’achète pas de Quick Pass. Par principe, et parce
 que les données disent que je n’en ai pas besoin. Pour le samedi rouge, une règle
-vaut : le meilleur Fast Pass, c’est le jour que tu n’as pas réservé du tout._
+vaut : _
 
 ---
 

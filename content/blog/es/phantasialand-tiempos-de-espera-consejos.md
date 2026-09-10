@@ -77,7 +77,7 @@ te enseña las dos caras: los milagros por los que uno viene, y, en lo práctico
 cómo mantienes a raya los **tiempos de espera en Phantasialand** y das con el
 mejor día.
 
-![El Phantasialand de Brühl a vista de pájaro | Mi parque de siempre en Brühl, el parque de atracciones más inmersivo de Europa. | wide](/media/phantasialand/background-16x9.jpg)
+![El Phantasialand de Brühl a vista de pájaro | Mi parque de siempre en Brühl: nueve áreas temáticas en 28 hectáreas. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Un parque como otro mundo, y por qué está tan lleno
 
@@ -92,13 +92,12 @@ muros desgastados, construido de forma tan convincente que por un momento te
 olvidas de la montaña rusa. No vas hacia una atracción, viajas a través de
 mundos.
 
-Y qué mundos: desde el Berlin de aires belle époque de la entrada paseas
-hasta el China Town flanqueado de templos, pasas junto a Deep in Africa
-con sus chozas de barro, te adentras en el Mexico azteca y contundente,
-sigues hacia el embrujado Mysteryland, hacia el soñador Fantasy en torno
-al Märchensee, y por fin a las dos joyas de la corona de los últimos años: el
-áspero Klugheim y el victoriano y volador Rookburgh. Cada una de estas
-zonas tiene su propio sonido, su propio olor, su propia música. Aquí uno puede
+Nueve áreas caben en 28 hectáreas, y ninguna se derrama sobre la siguiente: el
+Berlin de 1900 en la entrada, el China Town con sus templos, Deep in Africa con
+chozas de barro, el Mexico azteca, Mysteryland, Fantasy en torno al Märchensee,
+y las dos más jóvenes, Klugheim y el victoriano Rookburgh. Cada una tiene su
+propia música y su propio olor, lo que en verano, delante del puesto de churros
+del China Town, se nota más que en cualquier nota de prensa. Aquí uno puede
 pasar un día entero sin subir a una sola atracción y, aun así, volver a casa
 abrumado.
 
@@ -143,7 +142,7 @@ mayo de 2001**, ardió. Un fallo técnico en la atracción del Gran Cañón pren
 fuego a buena parte del parque antiguo; los bomberos dijeron después que se había
 «rozado la catástrofe». Podría haber sido el final.
 
-En su lugar, se convirtió en el punto de inflexión. Sobre los escombros de las
+Sobre los escombros de las
 atracciones calcinadas, el parque levantó en apenas un año el mundo temático de
 Wuze Town con los dos locos spinning coasters
 [Winja’s Fear](ref:phantasialand/winjas-fear) y Force y la atracción de aguas
@@ -154,7 +153,7 @@ entonces bien, entonces ambientado hasta el último tornillo.
 Lo en serio que iba el parque con esto se vio en 2006. Con Deep in Africa y el
 inverted coaster [Black Mamba](ref:phantasialand/black-mamba), el Phantasialand
 creó todo un mundo africano, chozas de barro, cursos de agua, la vía colocada muy
-abajo entre las rocas en lugar de atornillada al cielo. Ese fue el momento en que
+abajo entre las rocas en lugar de atornillada al cielo. A partir de 2006 llegaban los
 el simpático destino de excursión se convirtió en un lugar de peregrinación para
 fans de los parques de toda Europa. En 2016 llegó el pueblo de basalto de
 Klugheim con [Taron](ref:phantasialand/taron), en 2020 la victoriana ciudad de
@@ -346,7 +345,7 @@ están bajas, ahórrate el dinero y regálate mejor un segundo trozo de tarta.
 (Además del Ultimate hay una segunda vía para llegar a F.L.Y. sin cola larga, de
 eso hablamos enseguida, con los hoteles.)
 
-## Rope Drop y orden de recorrido: así esquivas los tiempos de espera más largos
+## En qué orden montas
 
 El truco gratuito más eficaz en el Phantasialand se llama **llegar temprano y
 montar a contracorriente**. Hay pocas cosas más bonitas que uno de estos parques en
@@ -380,7 +379,7 @@ un ejército de visitantes con Express Pass que no paran de comprarte la capacid
 Tu mejor arma es sencillamente el timing, y eso, al contrario que el tiempo, lo
 tienes por completo en tu propia mano.
 
-## La comida: la estrella secreta del parque
+## La comida en el Phantasialand
 
 En ningún otro parque destacaría esto así: el Phantasialand merece
 el viaje también por la **comida**. Mientras que en muchos parques «comer» es
@@ -389,12 +388,12 @@ firme de la experiencia, con un esmero que por lo demás solo se conoce de
 restaurantes de verdad. Un par de direcciones son auténticos tesoros escondidos por
 los que ya vale la pena la visita:
 
-- **Rutmor’s Taverne** (Klugheim) es mi favorito y, para muchos fans, el mejor
+- **Rutmor’s Taverne** (Klugheim) es mi favorito, y no conozco a nadie que lo contradiga después de comer ahí. El mejor
   restaurante que se haya construido jamás en un parque de atracciones. A la carta,
   rústico hasta en los bancos de madera tallada, con cocina contundente, Spätzle,
   Schnitzel, patatas salteadas, además de sopas y tablas para compartir y un
   Kaiserschmarrn que te hace olvidar por un momento que fuera te espera una montaña
-  rusa. Raciones grandes, precios justos, servicio amable. Si en un día de parque
+  rusa. Servicio amable. Si en un día de parque
   quieres sentarte y comer de verdad una vez: aquí.
 - **Restaurant Uhrwerk** (Rookburgh) es el hermano steampunk del anterior.
   hamburguesas, patatas fritas caseras, pasta y bowls, en un decorado de engranajes
@@ -578,12 +577,12 @@ Sí, con un día bien elegido y el orden de arriba, todo lo importante cabe en u
 jornada. Más relajados (y, con los hoteles temáticos, una pequeña fiesta) son dos
 días.
 
-## Conclusión: poco parque, mucha planificación, recompensa enorme
+## Lo que te llevo para tu día
 
-El Phantasialand no es un parque que se visite de pasada. Es compacto, codiciado y,
-en los días equivocados, agotador, pero en los días correctos, con el orden
-correcto y una pausa en Rutmor’s Taverne, es la experiencia más inmersiva y
-cariñosa que Europa puede ofrecer. La buena noticia: casi todo lo que separa un
+El Phantasialand no es un parque que se visite de pasada. Tiene un tercio del
+público del Europa-Park y nueve minutos más de cola. En los días correctos, con
+el orden correcto y una pausa en Rutmor’s Taverne, es el parque al que llevo
+treinta años volviendo. La buena noticia: casi todo lo que separa un
 buen día de uno magnífico lo decides **antes**, al mirar el calendario.
 
 Antes de salir, mira lo que está haciendo el parque, el tiempo en la entrada,

@@ -145,7 +145,7 @@ bis Sonntag geöffnet wird, steht im
 
 Wer nicht bis Ende September warten will: Bottrop hat diesen Sommer eines
 seiner Halloween-Häuser einfach früher aufgesperrt. **Slaughterhouse** läuft
-unter dem Label „Summerween" an allen Samstagen und Sonntagen bis zum 30.
+unter dem Label „Summerween“ an allen Samstagen und Sonntagen bis zum 30.
 August, 5 € pro Person. Ein Spukhaus bei dreißig Grad und Tageslicht ist eine
 eigene Erfahrung, und zwar keine schlechtere.
 
@@ -323,7 +323,7 @@ Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/hallo
 Der belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 sein bis dahin
 größtes Spukhaus überhaupt eröffnet, und das läuft auch 2026 weiter:
 **„Paranormal Activity: Next of Kin“**, gebaut in Kooperation mit dem
-Filmstudio Paramount in den früheren „Forbidden Caves“. Die Zahlen sind ansage:
+Filmstudio Paramount in den früheren „Forbidden Caves“. Die Zahlen sind eine Ansage:
 **520 Quadratmeter, siebzehn Szenen, zwei Etagen** voller technischer
 Spielereien. Die Story dreht sich um eine Dokumentarfilmerin, ein
 abgeschottetes Dorf und eine Familie, die man sich lieber nicht zum Grillen
@@ -589,28 +589,15 @@ mit:
 
 ```
 
-## Fazit: sechs Wochen Grusel, für jede Nervenstärke etwas
+## Wann du hingehst
 
-Die Halloween-Saison 2026 hat für jede Schmerzgrenze etwas: das schiere Volumen
-im [Movie Park](ref:movie-park-germany) mit neun Mazes, die große Inszenierung
-von [Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) Kino zum
-Reinlaufen, das frische Maisfeld in
-[Toverland](ref:attractiepark-toverland), und, für die ganz Tapferen, die
-[Walibi-Experiences](ref:walibi-holland), bei denen man freiwillig Geld dafür
-bezahlt, gestempelt, geflutet und aufgeschlitzt zu werden. Als Gegenpol das
-stille, vornehme Herbst-[Efteling](ref:efteling) und ein
-[Phantasialand](ref:phantasialand), das Halloween mit einem Schulterzucken
-überspringt und lieber gleich den Schnee anwirft.
+Für welche Nervenstärke du dich entscheidest, ist deine Sache. Die
+Oktober-Wochenenden sind die vollsten Tage des Herbstes, und in einer Schlange
+springt dich garantiert _niemand_ an, was bei diesen Preisen ärgerlich ist.
+Welcher Tag der leerste ist, verraten die Live-Wartezeiten und der
+Crowd-Kalender auf park.fan, den ganzen Herbst über.
 
-Für welche Nervenstärke du dich entscheidest, ist deine Sache. Nur eins gilt
-für alle: Der beste Halloween-Abend ist der, an dem du nicht die halbe Zeit in
-der Schlange verbringst. Dort springt dich garantiert _niemand_ an, und das ist
-bei diesen Preisen fast schon eine Frechheit. Welcher Tag der leerste ist,
-verraten dir die Live-Wartezeiten und der Crowd-Kalender auf park.fan, den
-ganzen Herbst über.
-
-Bleib trocken (Stichwort Below), bleib in Bewegung (Stichwort Mais), und wenn
-dich im Nebel etwas anspringt: Es ist nur Teil der Show. Ziemlich sicher.
+Wer Below bucht, packt Wechselsocken ein. Ich habe das einmal nicht getan.
 
 — Patrick
 

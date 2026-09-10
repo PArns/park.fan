@@ -74,7 +74,7 @@ you. This guide shows you both: the wonders you come for, and, very
 practically, how to keep the **Phantasialand wait times** short and catch the
 best day.
 
-![Phantasialand in Brühl from a bird’s-eye view | My home park in Brühl, Europe’s most immersive theme park. | wide](/media/phantasialand/background-16x9.jpg)
+![Phantasialand in Brühl from a bird’s-eye view | My home park in Brühl: nine themed areas on 28 hectares. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## A park like another world, and why it’s so busy
 
@@ -88,14 +88,13 @@ a complete basalt village with crooked roofs and weathered walls, built so
 convincingly that for a moment you forget the coaster. You don’t walk to a ride
 you travel through worlds.
 
-And what worlds: from the belle-époque Berlin at the entrance you stroll
-into the temple-lined China Town, past Deep in Africa with its mud huts,
-into the Aztec-massive Mexico, on into the enchanted Mysteryland, into
-the dreamy Fantasy around the Märchensee, and finally into the two crown
-jewels of recent years: the rugged Klugheim and the Victorian-flying
-Rookburgh. Each of these areas has its own sound, its own smell, its own
-music. You can spend a whole day here without riding a single ride and still go
-home overwhelmed.
+Nine areas sit on 28 hectares, and none of them bleeds into the next: Berlin
+around 1900 at the entrance, China Town with its temples, Deep in Africa with
+mud huts, Aztec Mexico, Mysteryland, Fantasy around the Märchensee, plus the two
+youngest, Klugheim and Victorian Rookburgh. Each has its own music and its own
+smell, which is more noticeable in summer outside the churros stand in China
+Town than in any press release. Ride nothing at all and you still have a full
+day.
 
 But that very compactness is the flip side. The park has only a handful of real
 headliners, and on a busy day everyone wants the same two or three rides at the
@@ -135,7 +134,7 @@ train [Colorado Adventure](ref:phantasialand/colorado-adventure). And then, on
 large part of the old park ablaze; the fire brigade said afterwards they had
 “narrowly avoided a catastrophe.” It could have been the end.
 
-Instead it became the turning point. On the ruins of the burned-down rides the
+On the ruins of the burned-down rides the
 park built, within a year, the themed world Wuze Town with the two crazy
 spinning coasters [Winja’s Fear](ref:phantasialand/winjas-fear) & Force and the
 water ride [River Quest](ref:phantasialand/river-quest), both of which you can
@@ -328,7 +327,7 @@ at the live wait times: if the numbers are low, save your money and treat
 yourself to a second slice of cake instead. (Besides Ultimate there’s a second
 route to F.L.Y. without a long line, more on that in a moment, with the hotels.)
 
-## Rope Drop & order: how to skip the longest wait times
+## The order you ride in
 
 The most effective free trick at Phantasialand is **being there early and riding
 counter-cyclically**. There’s hardly anything lovelier than one of these parks in
@@ -361,7 +360,7 @@ an army of express-pass guests constantly buying up the capacity out from under
 you. Your best weapon is simply timing, and that, unlike the weather, is
 entirely in your own hands.
 
-## Food: the park’s secret star
+## Food at Phantasialand
 
 There is no other park where I would single this out:
 Phantasialand is worth the trip for the **food**, too. Where at many parks “food”
@@ -369,11 +368,11 @@ is synonymous with lukewarm fries at outrageous prices, here the dining is a fir
 part of the experience, with a care you otherwise only know from proper
 restaurants. A few spots are genuine insider tips, worth the visit on their own:
 
-- **Rutmor’s Taverne** (Klugheim) is my favorite and, for many fans, the best
+- **Rutmor’s Taverne** (Klugheim) is my favorite, and I know nobody who disagrees after eating there. The best
   restaurant ever built into a theme park. À la carte, rustic down to the carved
   wooden benches, with hearty cooking, Spätzle, Schnitzel, fried potatoes, plus
   soups and sharing platters and a Kaiserschmarrn that briefly makes you forget a
-  roller coaster is waiting outside. Large portions, fair prices, friendly
+  roller coaster is waiting outside. Friendly
   service. If there’s one moment on a park day where you want to properly sit
   down and eat: here.
 - **Restaurant Uhrwerk** (Rookburgh) is its steampunk sibling, burgers,
@@ -555,12 +554,12 @@ Yes, with a well-chosen day and the order above, everything important fits into
 one day. More relaxed (and, with the themed hotels, a little celebration) are two
 days.
 
-## Conclusion: little park, lots of planning, a huge reward
+## What I would take with you for your day
 
-Phantasialand isn’t a park you take in on the side. It’s compact, sought-after
-and, on the wrong days, exhausting, but on the right days, with the right order
-and a break in Rutmor’s Taverne, it’s the most immersive, most loving experience
-Europe has to offer. The good news: almost everything that separates a good day
+Phantasialand isn’t a park you take in on the side. It has a third of
+Europa-Park’s crowd and nine minutes longer queues. On the right days, with the
+right order and a break in Rutmor’s Taverne, it is the park I have been going
+back to for thirty years. The good news: almost everything that separates a good day
 from a great one, you decide **beforehand**, with a look at the calendar.
 
 Before you set off, take a look at what the park is doing right now, the weather
@@ -582,7 +581,7 @@ hour of the evening still doesn’t want to go home.
 — Patrick
 
 _P.S.: No, I don’t buy a Quick Pass on a green Tuesday. On principle, and because
-the data says I don’t need it. As for the red Saturday: the best Fast Pass is the
+the data says I don’t need it. 
 day you never booked in the first place._
 
 ---
