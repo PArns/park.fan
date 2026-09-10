@@ -304,10 +304,20 @@ ninety consecutive polls, and it took writing the file back with `on` to recover
 container's `.env.local` now carries that line permanently (it is gitignored) so the dev server and
 `pnpm build && pnpm start` both keep the route up here whatever `NODE_ENV` says.
 
-Still unverified and recorded as such: the **production** resolution has not been observed in a real
-`next build`, because building would clear `.next/` underneath the dev server two builder agents are
-currently using. The dev-server test exercises the same expression and the same two call sites, but
-not the inlining Next does at build time.
+**Verified in a real `next build` on 2026-09-10**, which is what this paragraph used to say was
+still missing. Two full production builds from the same tree, each followed by `pnpm start` and the
+same four requests — the point being that a one-sided test proves half a switch:
+
+| | `/game` | `href="/game"` in `/de` | in `/en` | any `/game` in `/de` | `babylon` in `/de` |
+| --- | --- | --- | --- | --- | --- |
+| `NEXT_PUBLIC_GAME` unset, no `NEXT_PUBLIC_VERCEL_ENV` — the production resolution | **404** | **0** | **0** | **0** | **0** |
+| `NEXT_PUBLIC_GAME=on` | **200**, `<title>park.fan Coaster</title>` | **1** | **1** | — | — |
+
+So the flag really is inlined at build time and the "off" build ships no link, no route and no
+engine — not a hidden link, no occurrence of the string `/game` anywhere in a locale page's HTML.
+What this still does not observe is a Vercel preview resolving `NEXT_PUBLIC_VERCEL_ENV` to
+`preview` on Vercel's own infrastructure; that is the one branch of the three that no test here can
+reach, and the practical note above says what its failure looks like.
 _Reversed by:_ `docs/game/FINAL_GATE.md` actually being run — at which point this flag, the
 `robots: { index: false }` in `app/game/layout.tsx` and `app/sitemap.ts` are flipped together.
 
