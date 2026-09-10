@@ -338,9 +338,19 @@ export async function removeRideAlert(attractionId: string): Promise<PushWriteRe
  * }` is "we don't know", which a caller must not render as the same empty
  * state: a visitor with five real alerts must not see "nothing set up yet"
  * because a fetch hiccupped.
+ *
+ * That is also why the lookup is `lookupExistingPushIdentity` and not
+ * `getExistingPushIdentity`, for the same reason the removals read it: the
+ * latter answers `null` for a `getRegistration()` that THREW as well
+ * (storage access refused, a partitioned context), and folding that into
+ * "this browser has none" puts the empty state — the one sentence this
+ * result type exists to keep off the screen — in front of somebody whose
+ * alerts are all still armed.
  */
 export async function fetchRideAlertsRemote(): Promise<PushListResult<RideAlertRemote>> {
-  const identity = await getExistingPushIdentity();
+  const lookup = await lookupExistingPushIdentity();
+  if (!lookup.ok) return { ok: false };
+  const identity = lookup.identity;
   if (!identity) return { ok: true, items: [] };
   try {
     const response = await fetch(
@@ -359,7 +369,9 @@ export async function fetchRideAlertsRemote(): Promise<PushListResult<RideAlertR
 
 /** Same reasoning as `fetchRideAlertsRemote` — see there. */
 export async function fetchShowFollowsRemote(): Promise<PushListResult<ShowFollowRemote>> {
-  const identity = await getExistingPushIdentity();
+  const lookup = await lookupExistingPushIdentity();
+  if (!lookup.ok) return { ok: false };
+  const identity = lookup.identity;
   if (!identity) return { ok: true, items: [] };
   try {
     const response = await fetch(
