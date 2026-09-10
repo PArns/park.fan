@@ -134,9 +134,9 @@ nochmal.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Was Troy wirklich kostet, über zwei Saisons gemessen
+## Was Troy wirklich kostet, über 150 Betriebstage gemessen
 
-Über die letzten beiden Saisons, gerechnet aus über 150 Betriebstagen mit
+Gerechnet aus über 150 Betriebstagen mit
 Wartezeit-Daten, liegt Troys **typische Wartezeit bei 16 Minuten** (Median).
 Selbst das 90. Perzentil, also der Wert, unter dem neun von zehn Messungen
 liegen, kommt nur auf **21 Minuten**. Das ist nicht der tote Dienstag im März,
@@ -462,7 +462,7 @@ Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limbu
 ```
 
 Und so sieht der Andrang über Monate und Wochentage aus, gerechnet aus den
-letzten beiden Saisons:
+gemessenen Öffnungstage:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -555,7 +555,7 @@ Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten.
 
 ### Wie lang sind die Wartezeiten im Toverland?
 
-Über die letzten beiden Saisons liegt die typische Wartezeit im Parkschnitt bei
+Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
 **20 Minuten**, Troy und Fēnix bei je **16 Minuten** im Median. Am höchsten sind
 die Werte im Dezember und Januar sowie im April. Aktuelle Zahlen findest du auf
 der [Toverland-Parkseite](ref:attractiepark-toverland).
@@ -662,4 +662,4 @@ anderen Parks Europas kannst du es vergessen.
 - Halloween Days & Nights, Scare Zones und Fear Pass: [Scare Zones & Experiences (offiziell)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Anreise, Bus & Parken: [Adresse und Route (offiziell)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in der Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wartezeit- und Crowd-Daten: eigene Historie aus zwei Saisons, [Toverland auf park.fan](ref:attractiepark-toverland)
+- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Toverland auf park.fan](ref:attractiepark-toverland)

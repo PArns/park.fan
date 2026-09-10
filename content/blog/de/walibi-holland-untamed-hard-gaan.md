@@ -465,7 +465,7 @@ letzten zwei Jahren entschieden hat.
 
 ## Was Untamed wirklich kostet
 
-Über die letzten beiden Saisons, gerechnet aus **über 130 Öffnungstagen mit
+Gerechnet aus **über 130 Öffnungstagen mit
 auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt bei
 einer knappen Viertelstunde** (Median). Das 90. Perzentil, also der Wert, unter dem neun von zehn
 Messungen liegen, kommt auf 31 Minuten.
@@ -483,7 +483,7 @@ Aber es heißt eben: Wenn du morgens direkt ins Wilderness läufst, hast du
 Untamed drei Mal, bevor die YOY-Schlange ihre erste Runde durch hat.
 
 Interessanter wird es im Vergleich mit der Nachbarschaft. Gleiche Datenbasis,
-gleiche Rechenmethode, letzte zwei Saisons:
+gleiche Rechenmethode, alle gemessenen Öffnungstage:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -504,7 +504,7 @@ Verhältnis bestimmt die Wartezeit, nachzulesen in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
 Eine Einschränkung dazu, bevor jemand die Zahlen zu ernst nimmt: Unsere Historie
-für diesen Park beginnt im August 2024, und Walibi öffnet nur von April bis
+für diesen Park beginnt im Dezember 2025, und Walibi öffnet nur von April bis
 Oktober. Hinter den Monatswerten für April bis August stehen jeweils 11 bis 30
 Messtage, das trägt. Für September bis März haben wir kaum Daten, deshalb steht
 dort auch keine Zahl. Ein Monat mit elf Messtagen sagt dir, ob du in die richtige Jahreszeit fährst, und nicht, ob du fünf Minuten sparst.
@@ -756,7 +756,7 @@ Statt zu raten, hier die ruhigsten kommenden Tage aus unserem Crowd-Kalender:
 
 ```
 
-Und der Andrang über die Monate, gerechnet aus den letzten beiden Saisons:
+Und der Andrang über die Monate, gerechnet aus allen gemessenen Öffnungstagen:
 
 ```stats-widget slug=walibi-holland show=months
 
@@ -864,7 +864,7 @@ Parks findet seit 2011 Defqon.1 statt, das größte Hardstyle-Festival der Welt.
 
 ### Wie lang sind die Wartezeiten in Walibi Holland?
 
-Über die letzten beiden Saisons liegt die typische Wartezeit im Parkschnitt bei
+Über alle gemessenen Öffnungstage liegt die typische Wartezeit im Parkschnitt bei
 **20 Minuten** (Median), das 90. Perzentil bei 31 Minuten. Untamed und Goliath
 liegen knapp darunter, die Neuheit YOY THRILL hält mit Abstand den höchsten Wert
 im Park. Aktuelle Zahlen stehen auf der
@@ -968,4 +968,4 @@ denkst an gar nichts mehr.
 - #Lekkergaan und Zomerse Zaterdagen 2026: [„Walibi Holland viert de zomer met langere openingstijden en twee zomerevents“ (Pressemitteilung)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · [„Nieuw zomerfestival in Walibi Holland heet #Lekkergaan“ (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
 - Tickets, Parken und die drei Pass-Stufen 2026 samt Halloween-Kontingent: [Tickets (offiziell)](https://www.walibi.nl/en/tickets) · [Passes (offiziell)](https://www.walibi.nl/en/tickets/passes) · [Parken 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren)
 - Was ein kompletter Halloween-Abend kostet (mindestens 116,50 € über dem Eintritt, Stand 2025): [„In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken“ (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Wartezeit- und Crowd-Daten: eigene Historie aus zwei Saisons, [Walibi Holland auf park.fan](ref:walibi-holland)
+- Wartezeit- und Crowd-Daten: eigene Historie seit Dezember 2025, [Walibi Holland auf park.fan](ref:walibi-holland)

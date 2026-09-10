@@ -33,10 +33,10 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Die ruhigsten Wochentage',
   weekdaysBody:
-    'Jeder Park zählt hier gleich viel, egal ob Disneyland oder kleiner Familienpark: Wir rechnen ihn zuerst auf seinen eigenen Schnitt um und mitteln dann. Der Balken zeigt, wie voll ein typischer Wochentag im Vergleich zum Durchschnitt ist. Dienstag bis Donnerstag liegen fast immer vorn.',
+    'Jeder Park zählt hier gleich viel, egal ob Disneyland oder kleiner Familienpark: Wir rechnen ihn zuerst auf seinen eigenen Schnitt um und mitteln dann. Der Balken zeigt, wie voll ein typischer Wochentag im Vergleich zum Durchschnitt ist. Der Samstag sticht heraus; die übrigen sechs Tage liegen enger beieinander, als die meisten erwarten.',
   monthsTitle: 'Die ruhigsten Monate',
   monthsBody:
-    'Dieselbe Rechnung, diesmal übers Jahr verteilt. Die Nebensaison ist spürbar leerer als die Sommer- und Ferienwochen.',
+    'Dieselbe Rechnung, diesmal übers Jahr verteilt. Der Dezember fällt dabei aus dem Rahmen, weil nur die Parks darin stecken, die im Winter überhaupt öffnen, und die fahren dann Weihnachtsprogramm.',
   quieter: 'ruhiger',
   busier: 'voller',
   typical: 'wie der Schnitt',
@@ -49,17 +49,17 @@ const FAQ = [
   {
     question: 'Wann ist die beste Reisezeit für einen Freizeitpark?',
     answer:
-      'Am entspanntesten sind Wochentage außerhalb der Ferien, allen voran Dienstag bis Donnerstag in der Nebensaison. Die genauen Muster pro Wochentag und Monat siehst du oben, direkt aus den echten Wartezeiten über alle Parks.',
+      'Am entspanntesten sind Wochentage außerhalb der Ferien, allen voran Dienstag bis Donnerstag. Die genauen Muster pro Wochentag und Monat siehst du oben, direkt aus den gemessenen Wartezeiten über alle Parks.',
   },
   {
     question: 'Welcher Wochentag ist am leersten?',
     answer:
-      'Im Schnitt über alle Parks sind Dienstag, Mittwoch und Donnerstag am ruhigsten, Samstag und Sonntag mit Abstand am vollsten. Bei einzelnen Parks kann es anders aussehen; das zeigt dir der Crowd-Kalender auf der jeweiligen Parkseite tagesgenau.',
+      'Im Schnitt über alle Parks sind Dienstag, Mittwoch und Donnerstag am ruhigsten. Herausragend voll ist nur der Samstag; der Sonntag liegt näher am Dienstag als am Samstag. Bei einzelnen Parks kann es anders aussehen; das zeigt dir der Crowd-Kalender auf der jeweiligen Parkseite tagesgenau.',
   },
   {
     question: 'In welchen Monaten sind Freizeitparks am leersten?',
     answer:
-      'Am leersten ist es in der Nebensaison, also abseits der Sommerferien und der großen Feiertage. Die Monatsübersicht oben zeigt dir die Auslastung übers ganze Jahr, gemittelt über alle Parks.',
+      'Das hängt stärker vom Park ab, als die Faustregel vermuten lässt: Über alle Parks gerechnet sind die Sommermonate nicht die vollsten, und der Dezember sticht nach oben heraus, weil im Winter nur die Parks mit Weihnachtsprogramm geöffnet haben. Die Monatsübersicht oben zeigt es Monat für Monat. Für einen konkreten Park zählt sein eigener Kalender.',
   },
   {
     question: 'Lohnt sich ein Besuch bei Regen?',
@@ -196,7 +196,7 @@ export function ContentDE() {
             {
               icon: CalendarDays,
               title: 'Wochenenden & Feiertage',
-              body: 'Samstag und Sonntag sind über alle Parks hinweg am vollsten. Feiertage und lange Wochenenden legen noch mal einen drauf.',
+              body: 'Der Samstag ist über alle Parks hinweg der vollste Tag, mit deutlichem Abstand zum Rest der Woche. Feiertage und lange Wochenenden legen noch mal einen drauf.',
             },
             {
               icon: CalendarRange,
@@ -230,7 +230,7 @@ export function ContentDE() {
             {
               icon: CalendarDays,
               title: 'Wochentag statt Wochenende',
-              body: 'Der mit Abstand größte Hebel. Ein Dienstag statt eines Samstags kann die Wartezeiten glatt halbieren.',
+              body: 'Der größte Hebel im Kalender. Über alle Parks gerechnet liegt der Samstag am weitesten über dem Schnitt, der Dienstag am weitesten darunter.',
             },
             {
               icon: CloudRain,

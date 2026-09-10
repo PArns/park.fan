@@ -34,7 +34,7 @@ coverImage:
 seo:
   title: 'Efteling: Wartezeiten, Tipps & beste Reisezeit'
   description: >-
-    Das Efteling mit echten Wartezeit-Daten aus zwei Saisons: beste Reisezeit,
+    Das Efteling mit echten Wartezeit-Daten aus über 150 Betriebstagen: beste Reisezeit,
     Tickets, Winter Efteling und warum nur fünf Millionen Gäste im Jahr
     hineindürfen.
   keywords:
@@ -346,13 +346,13 @@ gepflasterten Stichwegen zu den einzelnen Szenen. Die gelben Abkürzungen
 verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen,
 ohne dich zu verlaufen.
 
-## 25 Minuten, über zwei Saisons gemessen
+## 25 Minuten, über 150 Betriebstage gemessen
 
 „Ein Park für die ganze Familie“ steht in jedem Prospekt. Belegen lässt sich das
 nur mit Schlangen.
 
 Unsere Historie für das Efteling umfasst **über 150 Betriebstage** mit
-Wartezeit-Daten, aufgenommen zwischen August 2024 und August 2026. Über alle
+Wartezeit-Daten, aufgenommen seit Dezember 2025. Über alle
 Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei
 25 Minuten** (Median), das 90. Perzentil bei 36.
 
@@ -533,7 +533,7 @@ zuerst, der deutsche danach. Die ruhigsten kommenden Tage:
 
 ```
 
-Und der Andrang über die Monate, gerechnet aus den letzten beiden Saisons:
+Und der Andrang über die Monate, gerechnet aus allen gemessenen Öffnungstagen:
 
 ```stats-widget slug=efteling show=months
 
@@ -773,7 +773,7 @@ schaffst du an einem Tag mehr, als der Besucherzahl nach zu erwarten wäre.
 
 ### Wie lang sind die Wartezeiten im Efteling?
 
-Über zwei Saisons liegt die typische Wartezeit im
+Über alle gemessenen Öffnungstage liegt die typische Wartezeit im
 Parkschnitt bei **25 Minuten** (Median), das 90. Perzentil bei 36. Am längsten
 steht man bei [Joris en de Draak](ref:efteling/joris-en-de-draak) mit gut einer
 halben Stunde, gefolgt von [Danse Macabre](ref:efteling/danse-macabre). Aktuelle Zahlen
@@ -879,4 +879,4 @@ mit dem offenen Mund. Er bedankt sich, seit 1959, bei jedem Einzelnen.
 - Kein Halloween: [„Geen Halloween in de Efteling“ (offiziell)](https://www.efteling.com/nl/park/events/halloween) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Preise, Parken und Jahreskarten 2026: [Ticket-Übersicht (offiziell)](https://www.efteling.com/en/park/information/ticket-overview) · [Preise & Öffnungszeiten (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jahreskarten-Vergleich (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (Gründung, Kapazität, Ehrenamt, Finanzierung): [Wie wij zijn (offiziell)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes auf Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes auf nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Spenden](https://www.villapardoes.nl/doneren)
-- Wartezeit- und Crowd-Daten: eigene Historie aus über 150 Betriebstagen (August 2024 bis August 2026), [Efteling auf park.fan](ref:efteling)
+- Wartezeit- und Crowd-Daten: eigene Historie aus über 150 Betriebstagen seit Dezember 2025, [Efteling auf park.fan](ref:efteling)

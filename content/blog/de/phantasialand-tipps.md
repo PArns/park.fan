@@ -273,7 +273,7 @@ ruhigsten kommenden Tage fürs Phantasialand:
 
 Und wenn du den **Andrang nach Wochentag und Monat** sehen willst, welche Tage
 übers Jahr typischerweise entspannt sind und welche du meiden solltest, dann
-zeigt es dir dieser Blick auf die letzten beiden Saisons:
+zeigt es dir dieser Blick auf die gemessenen Öffnungstage:
 
 ```stats-widget slug=phantasialand
 
