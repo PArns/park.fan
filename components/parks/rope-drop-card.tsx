@@ -45,7 +45,10 @@ interface RopeDropCardProps {
    * Read by the „best time" panel only, for the quietest weekday — the one answer to the
    * chapter's own heading that survives when the recommendation itself is a no. It is the same
    * object `AttractionTypicalWaits` draws in the cell next door, so naming a day costs no second
-   * request, nothing arrives after paint, and the two cannot disagree.
+   * request and nothing arrives after paint. Reading the same object is not by itself enough to
+   * keep the sentence and the bars in agreement — `quietestWeekdays` carries the two rules that
+   * do (round on the displayed grid, and stay silent where a dropped thin day draws a shorter
+   * bar than the day it would name).
    */
   typicalWaits?: TypicalWaits | null;
   /**
@@ -293,7 +296,8 @@ export function RopeDropCard({
        *   opening and shorter than the wait at opening; 146 carry a trough wait equal to the
        *   opening wait and 89 place it at opening itself. So the "quieter later" line renders on
        *   the sixth of rides where it is true and nowhere else.
-       * * The **weekday** is. 122 of 183 name one or two quiet days (see `quietestWeekdays`).
+       * * The **weekday** is. 119 of 183 name one or two quiet days, 61 read as a flat week and
+       *   3 stay silent (see `quietestWeekdays` for what separates those last two).
        * * The **day's own spread** is real everywhere: `busyPeak − openWait` runs 0 to 50 minutes
        *   with a median of 25. That is the fact the withheld rope-drop tip was standing on, and
        *   it is the one thing every one of these rides can state.
@@ -302,7 +306,7 @@ export function RopeDropCard({
        * lives in the backend, this repo cannot cite it, and a reason invented here would be the
        * kind of claim that reads as measured and is not.
        */
-      const quiet = quietestWeekdays(typicalWaits?.byDayOfWeek, roundWaitTo5);
+      const quiet = quietestWeekdays(typicalWaits, roundWaitTo5);
       const bestTimeTrough = troughWait(ropeDrop);
       // Only where coming back later actually buys something: later than opening AND shorter.
       const troughIsBetter =
@@ -342,32 +346,41 @@ export function RopeDropCard({
               {
                 icon: ArrowUpDown,
                 label: t('spread'),
-                value: ropeDrop.savings,
+                // Recomputed rather than read from `savings`, so the tile is the arithmetic of
+                // the two numbers in the sentence above it by construction. They agree on all
+                // 1,195 recommendations in production today — but `savings` is a stored column,
+                // and this file already documents fields on stale rows carrying DB defaults.
+                value: ropeDrop.busyPeak - ropeDrop.openWait,
                 highlight: true,
               },
             ]}
           />
           <div className="space-y-1.5 text-sm">
-            <p className="flex items-center gap-2 font-medium">
-              <CalendarDays
-                className="text-muted-foreground h-3.5 w-3.5 shrink-0"
-                aria-hidden="true"
-              />
-              <span>
-                {quiet
-                  ? quiet.days.length === 2
-                    ? t('quietDays', {
-                        first: weekdayName(quiet.days[0], locale),
-                        second: weekdayName(quiet.days[1], locale),
-                        wait: quiet.typical,
-                      })
-                    : t('quietDay', {
-                        day: weekdayName(quiet.days[0], locale),
-                        wait: quiet.typical,
-                      })
-                  : t('quietDayNone')}
-              </span>
-            </p>
+            {/* `unknown` renders no line at all. „Kein Wochentag sticht heraus" is a measurement
+              and may only be printed where the week WAS measured — over the 159 of these rides
+              with no displayable typical waits it would be missing data dressed as a finding. */}
+            {quiet.verdict !== 'unknown' && (
+              <p className="flex items-center gap-2 font-medium">
+                <CalendarDays
+                  className="text-muted-foreground h-3.5 w-3.5 shrink-0"
+                  aria-hidden="true"
+                />
+                <span>
+                  {quiet.verdict === 'flat'
+                    ? t('quietDayNone')
+                    : quiet.days.length === 2
+                      ? t('quietDays', {
+                          first: weekdayName(quiet.days[0], locale),
+                          second: weekdayName(quiet.days[1], locale),
+                          wait: quiet.typical,
+                        })
+                      : t('quietDay', {
+                          day: weekdayName(quiet.days[0], locale),
+                          wait: quiet.typical,
+                        })}
+                </span>
+              </p>
+            )}
             {troughIsBetter && (
               <p className="text-muted-foreground flex items-center gap-2">
                 <Moon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />

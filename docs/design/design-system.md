@@ -372,11 +372,20 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
   ride's own readings rather than an apology. Which readings was decided over the 183 rides it is
   drawn for, not at the whiteboard: the quietest **hour** is only defensible on **15** of them
   (146 carry a trough wait equal to the wait at opening, 89 place the trough at opening itself),
-  the quietest **weekday** on **122** (`quietestWeekdays`, which drops a thinly measured day
-  rather than refusing, and names both days of a tie), and the day's own spread — `busyPeak −
-openWait`, median 25 minutes — on all 183. It carries no sentence explaining why the
+  the quietest **weekday** on **119** (`quietestWeekdays`, which drops a thinly measured day
+  rather than refusing and names both days of a tie), and the day's own spread —
+  `busyPeak − openWait`, median 25 minutes — on all 183. It carries no sentence explaining why the
   recommendation is missing: that threshold lives in the backend, this repo cannot cite it, and a
   reason invented here would read as measured to the next person who finds it.
+- **A refusal is two different things, and only one of them is sayable.** „No weekday stands out"
+  is a measurement — 61 of those rides genuinely have a flat week — while „we cannot tell" is
+  missing data, and printing the first for the second dresses a gap as a finding. So
+  `quietestWeekdays` is three-valued and the card renders no line at all for `unknown`: for the
+  159 rides with no displayable typical waits, and for the **3** where a dropped thin day draws a
+  strictly shorter bar than the day the sentence would name. A day is dropped from the **vote**,
+  not from the **chart** — the bars beside the sentence draw every weekday the API measured — so
+  naming the comparable winner there would point at a bar that is visibly not the shortest one,
+  with nothing on screen explaining why.
 - **The three readings are one component** (`StatTiles`), because the stand-in panel's whole claim
   is that it carries the weight of the recommendation it replaces, and a fourth hand-written copy
   of those classes cannot keep that promise.
