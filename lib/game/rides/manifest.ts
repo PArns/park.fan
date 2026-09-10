@@ -29,6 +29,7 @@
 
 import { z } from 'zod';
 import type { Registry } from '../core/registry';
+import type { Dock } from '../core/types';
 import type { FlatRideDef, PackManifest, RideDef } from '../core/pack-schema';
 import type {
   Channel,
@@ -931,7 +932,8 @@ export function resolveDockedRide(
   registry: Registry,
   packId: string,
   itemId: string,
-  dock: { capacity: number; cycleMinutes: number; rideMinutes: number }
+  dock: Pick<Dock, 'capacity' | 'cycleMinutes' | 'rideMinutes'> &
+    Partial<Pick<Dock, 'excitement' | 'intensity' | 'nausea'>>
 ): RideProfile | null {
   const def = registry.find('rides', packId, itemId)?.def as RideDef | undefined;
   if (!def) return null;
@@ -941,9 +943,19 @@ export function resolveDockedRide(
     capacity: Math.max(1, Math.round(dock.capacity)),
     cycleMinutes: Math.max(0.05, dock.cycleMinutes),
     split: dockedSplit(dock.cycleMinutes, dock.rideMinutes),
-    excitement: def.excitement ?? 6,
-    fear: def.fear ?? 3,
-    nausea: def.nausea ?? 2,
+    /**
+     * The MACHINE's own opinion first, then the manifest's, then a default.
+     *
+     * That order and not the other way round: a coaster's numbers come from the layout it runs,
+     * and `track/rating.ts` measures them off the physics march — speed, drop, airtime, every
+     * g-force, against the comfort limits this ride declares. The manifest keeps the last word
+     * only where the dispatcher has no opinion, which is every machine that is not a coaster.
+     *
+     * Before this the `?? 6` was the whole story for every coaster in the game.
+     */
+    excitement: dock.excitement ?? def.excitement ?? 6,
+    fear: dock.intensity ?? def.fear ?? 3,
+    nausea: dock.nausea ?? def.nausea ?? 2,
     minHeightCm: def.minHeightCm ?? null,
     price: 0,
     upkeep: def.upkeep,

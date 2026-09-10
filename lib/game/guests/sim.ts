@@ -351,6 +351,19 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   let graphVersion = -1;
   let rideCount = 0;
   let shopCount = 0;
+  /**
+   * What the machines are WORTH, not how many there are.
+   *
+   * `appeal` was `0.55 + rideCount * 0.09 + shopCount * 0.02` — a count, so a world-class coaster
+   * pulled exactly as many people through the gate as a carousel, and the one thing a park
+   * builder does all day made no difference to attendance. `rideDraw` weighs each machine by its
+   * own excitement instead: a 4.3 family twister is worth about half of a 9.1 hyper, and the
+   * scale is set so that the old formula's 0.09 is what a middling 5-out-of-10 machine still
+   * earns. A park of five average rides is unchanged; a park that built something good is not.
+   */
+  let rideDraw = 0;
+  let bestExcitement = 0;
+  let excitementTotal = 0;
   let sceneryPoints: Float32Array = new Float32Array(0);
   const venueById = new Map<string, Venue>();
   /**
@@ -424,6 +437,9 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     venueById.clear();
     rideCount = 0;
     shopCount = 0;
+    rideDraw = 0;
+    bestExcitement = 0;
+    excitementTotal = 0;
     const sights: number[] = [];
     const ownShops = shopsApi() == null;
 
@@ -467,6 +483,13 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
         const def = registry.find('rides', entity.pack, entity.item)?.def;
         if (!def) continue;
         rideCount++;
+        {
+          const worth = ridesApi()?.offer(id)?.excitement ?? (typeof def.excitement === 'number' ? def.excitement : 4);
+          // 0.09 at excitement 5 — the old flat term — rising and falling from there.
+          rideDraw += (0.09 * worth) / 5;
+          excitementTotal += worth;
+          if (worth > bestExcitement) bestExcitement = worth;
+        }
         const happiness = needs.byId.get('happiness');
         /**
          * Where the LINE is, not where the entity is.
@@ -491,7 +514,10 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
           // its own module computes it from a fleet or a dispatch interval. Six a minute is the
           // same placeholder this line has always used, and it is only ever the fallback wait —
           // `rides.find()` answers with the real one the moment that module is loaded.
-          excitement: typeof def.excitement === 'number' ? def.excitement : 4,
+          // The machine's own opinion first: `rides.offer()` carries what a coaster's layout
+          // actually earned (`track/rating.ts`), and the manifest is the fallback for anything
+          // whose module has none.
+          excitement: ridesApi()?.offer(id)?.excitement ?? (typeof def.excitement === 'number' ? def.excitement : 4),
           throughput: typeof def.capacity === 'number' ? def.capacity / 3 : 6,
           incoming: 0,
         });
@@ -701,8 +727,28 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
    * When the rides module lands this is the line that turns three coasters into a queue.
    */
   function peakPopulation(): number {
-    const appeal = 0.55 + rideCount * 0.09 + shopCount * 0.02;
+    const appeal = 0.55 + rideDraw + shopCount * 0.02;
     return Math.min(MAX_GUESTS, Math.round(BASE_PEAK * Math.min(1.6, appeal)));
+  }
+
+  /**
+   * How good the park is, 0..100 — the number the day ledger has always had a field for.
+   *
+   * `DayLedger.rating` existed from the first commit and **nothing ever wrote it**: a grep for
+   * `.rating =` over `lib/game` returned nothing at all, so a park's quality was a zero that
+   * never moved. It is written once a day now, from the same terms that decide who turns up, so
+   * the figure a player reads and the figure the simulation acts on cannot drift apart.
+   *
+   * Half of it is the best ride in the park and half is the average, which is how a park is
+   * actually talked about: one headline machine gets people through the gate, and what is beside
+   * it decides whether they stay. Shops move it a little, because a park with nothing to eat is
+   * a worse park and not merely a less profitable one.
+   */
+  function parkRating(): number {
+    const head = bestExcitement / 10;
+    const spread = rideCount > 0 ? excitementTotal / rideCount / 10 : 0;
+    const fed = Math.min(1, shopCount / 8);
+    return Math.round(100 * Math.min(1, head * 0.5 + spread * 0.35 + fed * 0.15));
   }
 
   // ── Spawning ──────────────────────────────────────────────────────────────────────────────
@@ -2068,6 +2114,30 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   };
 
   ctx.events.on('clock:day', () => {
+    /**
+     * Fill in the day that just ended, on the two fields this module owns.
+     *
+     * `core/module.ts` opens the row (it owns the ledger's shape and its rollover) and writes
+     * `rating: 0` and `guests: 0` because it has no way to know either. Nothing then filled them
+     * in — for the whole life of the project a park's rating was a zero that never moved and its
+     * attendance a zero beside it. One writer per field is the rule the determinism axis exists
+     * for, so core keeps the row and this module keeps these two.
+     *
+     * `clock:day` fires from the runtime BEFORE the modules tick, so the row for `day - 1` may
+     * not exist yet on this listener; it is created here when missing and core's own check then
+     * finds it and leaves it alone.
+     */
+    const { clock, finance } = ctx.world;
+    const closed = clock.day - 1;
+    let row = finance.history.find((d) => d.day === closed);
+    if (!row) {
+      row = { day: closed, income: 0, expenses: 0, guests: 0, rating: 0 };
+      finance.history.push(row);
+      if (finance.history.length > 365) finance.history.shift();
+    }
+    row.rating = parkRating();
+    row.guests = arrivedToday;
+
     arrivedToday = 0;
     leftToday = 0;
     spentToday = 0;

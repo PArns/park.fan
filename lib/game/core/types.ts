@@ -392,6 +392,21 @@ export interface Dock {
    */
   exitX?: number;
   exitZ?: number;
+  /**
+   * What the machine is worth to a visitor, 0..10, when its own module can say.
+   *
+   * Same reason as `exitX`: the dispatcher knows things `rides` cannot see. A coaster's numbers
+   * come from the layout it actually runs — `track/rating.ts` marches the physics and reads speed,
+   * drop, airtime and every g-force off it — whereas `rides` could only fall back on a manifest
+   * constant. It did, and the constant was **6 for every coaster in the game**, so a 979 m hyper
+   * and a 345 m family twister were the same attraction to the simulation and building a better
+   * ride changed nothing about who came.
+   *
+   * Absent means "I have no opinion", and the manifest's own numbers stand.
+   */
+  excitement?: number;
+  intensity?: number;
+  nausea?: number;
 }
 
 /**

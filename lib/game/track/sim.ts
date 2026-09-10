@@ -15,6 +15,7 @@ import type { Command, Entity, SimContext, SimHandle } from '../core/types';
 import { attachTrackElements } from './elements';
 import { buildTrack, type BuiltTrack } from './build';
 import type { TrackPhysics } from './physics';
+import { rateCoaster, type CoasterRating } from './rating';
 import { buildOptionsFor } from './resolve';
 import type { TrackFrame, TrackSpline } from './spline';
 import type { DriveSection, TrackData } from './types';
@@ -28,6 +29,8 @@ export interface TrackSimApi {
   length(id: string): number;
   drives(id: string): readonly DriveSection[];
   physics(id: string): TrackPhysics | undefined;
+  /** What the layout is worth to a visitor, measured off its own physics. See `rating.ts`. */
+  rating(id: string): CoasterRating | undefined;
   /** True when the layout is a closed circuit. */
   closed(id: string): boolean;
   /** Build and simulate a layout without keeping it. */
@@ -91,6 +94,18 @@ export function createTrackSim(ctx: SimContext): SimHandle {
     length: (id) => tracks.get(id)?.spline.length() ?? 0,
     drives: (id) => tracks.get(id)?.drives ?? [],
     physics: (id) => tracks.get(id)?.physics,
+    /**
+     * Rated against the limits THIS ride declares, not against a global scale: the same forces
+     * mean different things to the people a family coaster was built for. `buildOptionsFor` is
+     * where those limits already come from, so asking it again is the one honest source.
+     */
+    rating(id) {
+      const built = tracks.get(id);
+      if (!built) return undefined;
+      const entity = ctx.world.entities[id];
+      const data = entity ? dataOf(entity) : null;
+      return rateCoaster(built.physics, data ? buildOptionsFor(ctx.registry, data).limits : undefined);
+    },
     closed: (id) => tracks.get(id)?.spline.closed ?? false,
     validate: (data) => buildTrack(data, buildOptionsFor(ctx.registry, data)).physics,
   };

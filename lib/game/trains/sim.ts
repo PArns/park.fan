@@ -587,6 +587,7 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
       // does for `ridersPerHour`, expressed as the interval a queue drains at rather than as a
       // rate. Seconds read as real seconds, then into park minutes; see `Dock`.
       const cycleMinutes = fleet.cycleSeconds / Math.max(1, trains) / 60;
+      const rating = track()?.rating(rideId);
       const rideMinutes = Math.max(0.05, (fleet.cycleSeconds - fleet.profile.dwellSeconds) / 60);
       return {
         x: fleet.dock.x,
@@ -599,6 +600,10 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
         running: true,
         exitX: fleet.dock.exitX,
         exitZ: fleet.dock.exitZ,
+        // What this coaster is worth, off its own physics rather than off a manifest constant.
+        // `track` owns the formula because the layout is the thing being rated; this module owns
+        // the dock, so it is where the answer is handed over.
+        ...(rating ? { excitement: rating.excitement, intensity: rating.intensity, nausea: rating.nausea } : {}),
       };
     },
 
