@@ -326,10 +326,74 @@ export interface GameModule {
   id: string;
   deps?: string[];
   kinds?: EntityKind[];
+  /**
+   * Entity kinds somebody may QUEUE FOR, and whose vehicles this module dispatches.
+   *
+   * Separate from `kinds` because the two answer different questions and the answers differ: a
+   * `coaster` is OWNED by `track` — which builds and stores the layout — and DISPATCHED by
+   * `trains`, which is the half that knows a train is standing on the platform with seats in it.
+   * Declaring it here is what lets `rides` run a line in front of a machine it has never heard
+   * of, and what lets `guests` build a venue out of one, without either of them growing a list of
+   * kinds. See `Dock` for what a module that declares this has to answer.
+   */
+  queueable?: EntityKind[];
   main?: (ctx: MainContext) => MainHandle | Promise<MainHandle>;
   sim?: (ctx: SimContext) => SimHandle;
   /** `/game?showcase=<id>`: stage a representative scene of this module alone. */
   showcase?: (ctx: MainContext) => Promise<void> | void;
+}
+
+// ── Queueing for a machine ──────────────────────────────────────────────────────────────────
+/**
+ * The head of a line: where people wait, how many the next vehicle takes, and how long it keeps
+ * them.
+ *
+ * One structure for every machine a guest can queue for, so the queue itself is written once. A
+ * flat ride answers it out of its own manifest, a coaster out of its fleet and block plan, a flume
+ * out of its dispatch interval — and `rides` runs the same line in front of all three.
+ *
+ * **Every duration here is in PARK MINUTES, and that is a decision rather than a unit.** A
+ * machine's own animation runs on a fixed ride clock (`RIDE_SECONDS_PER_TICK` in `trains`,
+ * `SLIDE_SECONDS_PER_TICK` in `flumes`) that is deliberately real time, while the park clock is
+ * compressed — twenty park minutes to the real minute at speed 1, four hundred at speed 20. A
+ * queue driven off the animation would therefore board once per park day at the speed the
+ * day-budget harness runs at, and the rate would change with a setting in the speed menu. So the
+ * dispatcher converts: `cycleMinutes` is the machine's own interval read as real time and
+ * expressed in park minutes, which is the number an operator would quote and the only one a
+ * throughput figure can be built on. `rides/sim.ts` already draws exactly this line for a flat
+ * ride — its cycle is park minutes and its `spin` is ride seconds — and this extends it.
+ */
+export interface Dock {
+  /** World metres a guest walks to in order to join the line. */
+  x: number;
+  z: number;
+  /** Unit vector the line runs BACK along from that point, away from the machine. */
+  dirX: number;
+  dirZ: number;
+  /** Riders one vehicle-load holds — the batch the line drains in. */
+  capacity: number;
+  /** Park minutes between departures with the machine running flat out. */
+  cycleMinutes: number;
+  /** Park minutes a rider is aboard, from the doors closing to getting off again. */
+  rideMinutes: number;
+  /** False while the machine can take nobody at all: no fleet, no station, pumps off, mid-build. */
+  running: boolean;
+}
+
+/**
+ * What a module that declares a `queueable` kind answers about its machines.
+ *
+ * Two verbs. `dock` is read every tick — the fleet size, the pumps and the block plan all move —
+ * and `seat` is how the load that just boarded gets back to the module that owns the vehicle, so
+ * a train knows how many people are in it. `seat` answers how many were actually taken.
+ */
+export interface DispatchApi {
+  /** Entity ids this module dispatches vehicles for. */
+  docks(): string[];
+  /** One machine's line-head, or null when this module does not run that entity (yet). */
+  dock(id: string): Dock | null;
+  /** `n` riders just boarded. Answers how many the vehicle actually took. */
+  seat(id: string, n: number): number;
 }
 
 // ── Events ──────────────────────────────────────────────────────────────────────────────────

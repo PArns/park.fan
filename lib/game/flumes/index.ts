@@ -25,6 +25,9 @@ export const flumesModule: GameModule = {
   id: 'flumes',
   deps: ['core', 'track', 'pools'],
   kinds: ['flume'],
+  // A slide sends a vehicle down every `dispatchSeconds`, which is the whole of what a queue in
+  // front of it needs to know. `sim.ts`'s `dock`/`seat` are the two verbs that go with this.
+  queueable: ['flume'],
   sim: createFlumesSim,
   main: async (ctx) => (await import('./main')).createFlumesMain(ctx),
   showcase: async (ctx) => (await import('./showcase')).stageFlumesShowcase(ctx),

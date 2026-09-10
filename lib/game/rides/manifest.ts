@@ -37,6 +37,7 @@ import type {
   FlatRideProfile,
   NightRig,
   ResolvedRig,
+  RideProfile,
   RigPartSpec,
   RideRigSpec,
   ShapeName,
@@ -906,10 +907,67 @@ export function resolveFlatRide(
  * packs do not have. A pack can still say so directly: `params` is not the place, so this is a
  * request rather than a hack (see `docs/game/requests/rides.md` §2).
  */
-function mtbfFor(def: FlatRideDef): number {
+function mtbfFor(def: RideDef): number {
   const intensity = (def.excitement ?? 3) * 0.5 + (def.fear ?? 1) * 0.3 + (def.nausea ?? 1) * 0.2;
   // 3000 park minutes (about two and a half park days) for a carousel down to ~700 for a top spin.
   return Math.round(3200 / (1 + intensity * 0.55));
+}
+
+/**
+ * Resolve a machine somebody ELSE dispatches into the numbers a line in front of it needs.
+ *
+ * A coaster and a flume are `rides` manifest entries like a carousel — same `excitement`, `fear`,
+ * `nausea`, `minHeightCm`, `upkeep`, `power`, same localized name — and differ only in where the
+ * throughput comes from. `resolveFlatRide` reads that out of `capacity` and `cycleMinutes`, which
+ * neither of the other two kinds has and neither of them should: `rig.ts` says it in its own
+ * docstring, a flat ride's throughput is a number a park manager plans with and a coaster's lap
+ * time is not. So those two fields come from the machine's own module, through the `Dock` it
+ * publishes, and everything else comes from the manifest exactly as it does for a flat ride.
+ *
+ * It deliberately does NOT check the kind. Anything with a `rides` entry that some module has
+ * declared queueable resolves here; a kind this file has never heard of is a pack away.
+ */
+export function resolveDockedRide(
+  registry: Registry,
+  packId: string,
+  itemId: string,
+  dock: { capacity: number; cycleMinutes: number; rideMinutes: number }
+): RideProfile | null {
+  const def = registry.find('rides', packId, itemId)?.def as RideDef | undefined;
+  if (!def) return null;
+  return {
+    key: `${packId}:${def.id}`,
+    name: def.name,
+    capacity: Math.max(1, Math.round(dock.capacity)),
+    cycleMinutes: Math.max(0.05, dock.cycleMinutes),
+    split: dockedSplit(dock.cycleMinutes, dock.rideMinutes),
+    excitement: def.excitement ?? 6,
+    fear: def.fear ?? 3,
+    nausea: def.nausea ?? 2,
+    minHeightCm: def.minHeightCm ?? null,
+    price: 0,
+    upkeep: def.upkeep,
+    power: def.power,
+    mtbfMinutes: mtbfFor(def),
+  };
+}
+
+/**
+ * The four phases of a cycle, for a machine that only reports two numbers.
+ *
+ * A dispatcher answers "how long is a whole cycle" and "how long is somebody aboard"; the queue
+ * needs to know how the rest of the cycle splits, because the load phase is rate-limited and the
+ * unload phase scales with how full the vehicle came back. `run` is the ride itself, taken
+ * straight from the dispatcher and capped so that a machine whose lap fills its whole interval —
+ * a single-train coaster — still leaves a moment to load in. What is left goes to the platform,
+ * in the same 3 : 1 loading-to-unloading proportion `DEFAULT_SPLIT` uses.
+ */
+function dockedSplit(cycleMinutes: number, rideMinutes: number): CycleSplit {
+  const cycle = Math.max(0.05, cycleMinutes);
+  const run = Math.min(0.88, Math.max(0.05, rideMinutes / cycle));
+  const dispatch = Math.min(0.05, (1 - run) * 0.12);
+  const rest = Math.max(0.01, 1 - run - dispatch);
+  return { load: rest * 0.75, dispatch, run, unload: rest * 0.25 };
 }
 
 function nightOf(def: FlatRideDef): NightRig | null {

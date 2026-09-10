@@ -20,7 +20,7 @@
  * arrive, and it will need a seeded stream and a serialised state when it does.
  */
 
-import type { Command, Entity, SimContext, SimFrameWriter, SimHandle } from '../core/types';
+import type { Command, Dock, Entity, SimContext, SimFrameWriter, SimHandle } from '../core/types';
 import type { TrackSimApi, TrackData, DriveSection } from '../track';
 import { HEARTLINE_HEIGHT } from '../track';
 import {
@@ -63,6 +63,40 @@ export interface TrainsSimApi {
   profile(rideId: string): TrainProfile | undefined;
   /** Set how many trains a ride runs, capped by its blocks and by the ride definition. */
   setFleetSize(rideId: string, count: number): number;
+
+  // ── the queue in front of it (core's `DispatchApi`) ──────────────────────────────────────
+  /** Coasters this module dispatches for. Same list as `ids()`; the name core's contract uses. */
+  docks(): string[];
+  /**
+   * The head of the line: where it stands, what one train takes and how long it keeps somebody.
+   *
+   * Read every tick by `rides`, which runs the queue. Everything in it is derived from the block
+   * plan, the fleet and the layout's own physics — nothing is stored, and a fleet that has not
+   * been built yet answers null rather than a guess.
+   */
+  dock(rideId: string): Dock | null;
+  /**
+   * A load of `n` riders just boarded. Answers how many the train actually took.
+   *
+   * This is the count the module draws and reports; it does not move a train. `rides` owns who
+   * is in the line and which of them are aboard, and the two clocks are why: a train's motion is
+   * integrated in RIDE seconds (real time, so the animation looks right) while a queue is park
+   * minutes (compressed twenty-fold at speed 1), so the dispatch a guest experiences and the
+   * dispatch you watch cannot be the same event. See `Dock` in `core/types.ts`.
+   */
+  seat(rideId: string, n: number): number;
+  /**
+   * The train standing on the platform right now and the seats free in it, or null when none is.
+   *
+   * The literal answer to "is there a train at the platform", which `Dock` deliberately does not
+   * carry — because it is deliberately NOT what gates boarding, for the clock reason above: a
+   * 92-second cycle at speed 20 is about one physical dispatch per park DAY, and a line gated on
+   * it would board twenty people between opening and closing. It is here for a HUD and for
+   * anybody debugging why a train is standing still, and `seat` records at fleet level rather
+   * than against the train this returns, so that a load handed over between two arrivals is not
+   * lost.
+   */
+  platform(rideId: string): { train: number; seats: number; free: number } | null;
 }
 
 interface Fleet {
@@ -78,7 +112,18 @@ interface Fleet {
   cycleSeconds: number;
   /** Set once when a layout the physics says is incomplete puts a train in trouble. */
   reportedStall: boolean;
+  /**
+   * Where a queue for this coaster ends, world metres, and which way it runs back.
+   *
+   * Derived from the station block once per layout rather than per call: it is a point on the
+   * spline pushed sideways off the platform, and the spline does not move. Null while the track
+   * has not been built.
+   */
+  dock: { x: number; z: number; dirX: number; dirZ: number } | null;
 }
+
+/** Metres beside the platform centreline a queue stands. Clear of a 3 m-wide train and its rails. */
+const PLATFORM_OFFSET = 4.5;
 
 export function createTrainsSim(ctx: SimContext): SimHandle {
   // Claim `trainProfiles` and read it off every pack. Done on the sim side as well as the main
@@ -148,6 +193,7 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
         existing.drives = drives;
         existing.profile = profile;
         existing.motion = motionFor(spline, drives, profile, plan);
+        existing.dock = dockPointOf(id, plan, api);
         continue;
       }
 
@@ -165,6 +211,7 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
           })),
           sinceDispatch: clampFinite(restored.sinceDispatch, 0),
           dispatches: Math.max(0, Math.round(clampFinite(restored.dispatches, 0))),
+          riders: Math.max(0, Math.round(clampFinite(restored.riders, 0))),
         };
       }
       fleets.set(id, fleet);
@@ -232,11 +279,51 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
       trainLength: trainLengthM(profile),
       cycleSeconds: cycle,
       reportedStall: false,
+      dock: dockPointOf(rideId, plan, api),
       state: {
         trains: placeTrains(plan, size),
         sinceDispatch: 0,
         dispatches: 0,
+        riders: 0,
       },
+    };
+  }
+
+  /**
+   * Where somebody queueing for this coaster stands.
+   *
+   * The middle of the station's hold section, pushed `PLATFORM_OFFSET` metres along the track
+   * frame's own `right` vector — so the line is beside the platform on the platform's own side,
+   * whichever way the layout was laid down, and never on the rails. The lateral vector is
+   * flattened into the ground plane and re-normalised, because a station on a graded shelf tilts
+   * it and a queue does not climb.
+   */
+  function dockPointOf(rideId: string, plan: BlockPlan, api: TrackSimApi): Fleet['dock'] {
+    if (plan.station < 0 || !plan.blocks[plan.station]) return null;
+    const block = plan.blocks[plan.station];
+    const s = block.stop > block.from ? (block.from + block.stop) / 2 : block.stop;
+    const frame = api.frameAt(rideId, s);
+    if (!frame) return null;
+    let dx = frame.right[0];
+    let dz = frame.right[2];
+    const len = Math.hypot(dx, dz);
+    if (len < 1e-4) {
+      // A vertical `right` means the platform is on its side, which no station is; fall back to
+      // the tangent's normal so the queue still lands somewhere sane rather than at the origin.
+      dx = frame.tangent[2];
+      dz = -frame.tangent[0];
+    } else {
+      dx /= len;
+      dz /= len;
+    }
+    const n = Math.hypot(dx, dz) || 1;
+    dx /= n;
+    dz /= n;
+    return {
+      x: frame.p[0] + dx * PLATFORM_OFFSET,
+      z: frame.p[2] + dz * PLATFORM_OFFSET,
+      dirX: dx,
+      dirZ: dz,
     };
   }
 
@@ -461,10 +548,56 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
       fleet.state.trains = placeTrains(fleet.plan, size);
       fleet.state.dispatches = 0;
       fleet.state.sinceDispatch = 0;
+      fleet.state.riders = 0;
       rebuildRoster();
       return size;
     },
+
+    docks: () => [...fleets.keys()].sort(),
+
+    dock(rideId) {
+      const fleet = fleets.get(rideId);
+      if (!fleet || !fleet.dock) return null;
+      const trains = fleet.state.trains.length;
+      if (trains === 0 || fleet.plan.station < 0) return null;
+      const seats = seatsOf(fleet);
+      // `n` trains on one circuit dispatch `n` times per cycle — the same arithmetic `statusOf`
+      // does for `ridersPerHour`, expressed as the interval a queue drains at rather than as a
+      // rate. Seconds read as real seconds, then into park minutes; see `Dock`.
+      const cycleMinutes = fleet.cycleSeconds / Math.max(1, trains) / 60;
+      const rideMinutes = Math.max(0.05, (fleet.cycleSeconds - fleet.profile.dwellSeconds) / 60);
+      return {
+        x: fleet.dock.x,
+        z: fleet.dock.z,
+        dirX: fleet.dock.dirX,
+        dirZ: fleet.dock.dirZ,
+        capacity: seats,
+        cycleMinutes: Math.max(0.05, cycleMinutes),
+        rideMinutes,
+        running: true,
+      };
+    },
+
+    seat(rideId, n) {
+      const fleet = fleets.get(rideId);
+      if (!fleet) return 0;
+      const taken = Math.max(0, Math.min(Math.round(n), seatsOf(fleet)));
+      fleet.state.riders = taken;
+      return taken;
+    },
+
+    platform(rideId) {
+      const fleet = fleets.get(rideId);
+      if (!fleet) return null;
+      const at = fleet.state.trains.findIndex((t) => t.mode === 'station');
+      if (at < 0) return null;
+      const seats = seatsOf(fleet);
+      return { train: at, seats, free: Math.max(0, seats - fleet.state.riders) };
+    },
   };
+
+  const seatsOf = (fleet: Fleet): number =>
+    Math.max(1, fleet.profile.cars * fleet.profile.seatsPerCar);
 
   function statusOf(fleet: Fleet | undefined): FleetStatus | undefined {
     if (!fleet) return undefined;
@@ -482,6 +615,8 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
       cycleSeconds: Math.round(fleet.cycleSeconds * 10) / 10,
       ridersPerHour: Math.round(dispatchesPerHour * fleet.profile.cars * fleet.profile.seatsPerCar),
       dispatches: fleet.state.dispatches,
+      seats: seatsOf(fleet),
+      riders: fleet.state.riders,
     };
   }
 
@@ -550,6 +685,7 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
           })),
           sinceDispatch: fleet.state.sinceDispatch,
           dispatches: fleet.state.dispatches,
+          riders: fleet.state.riders,
         };
       }
       ctx.world.modules.trains = out;

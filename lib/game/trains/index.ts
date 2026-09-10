@@ -19,6 +19,11 @@ import { createTrainsSim } from './sim';
 export const trainsModule: GameModule = {
   id: 'trains',
   deps: ['core', 'track'],
+  // `track` OWNS the `coaster` kind — it stores and builds the layout — and this module operates
+  // it: the block plan, the station dwell and the dispatch are here, so this is the half that can
+  // say a train is standing on the platform with seats in it. `registerQueueable` is a second map
+  // for exactly that reason; see `core/registry.ts`.
+  queueable: ['coaster'],
   sim: createTrainsSim,
   main: async (ctx) => (await import('./main')).createTrainsMain(ctx),
   showcase: async (ctx) => (await import('./showcase')).stageTrainsShowcase(ctx),

@@ -36,6 +36,8 @@ export class Registry {
   private packList: PackManifest[] = [];
   private index = new Map<ItemCategory, Map<string, RegisteredItem<ItemCategory>>>();
   private kinds = new Map<string, string>();
+  /** Entity kinds somebody may queue for, by kind → the module id that dispatches their vehicles. */
+  private queueable = new Map<string, string>();
   private procedurals = new Map<string, ProceduralFactory>();
   private listeners = new Set<(pack: PackManifest) => void>();
   /** Extension categories modules have claimed, by category name → owning module id. */
@@ -216,6 +218,45 @@ export class Registry {
 
   ownerOfKind(kind: string): string | undefined {
     return this.kinds.get(kind);
+  }
+
+  /**
+   * Declare that entities of `kind` can be QUEUED FOR, and that `dispatcher` (a module id) answers
+   * `DispatchApi` for them.
+   *
+   * The counterpart to `registerKind`, and deliberately a second map rather than a flag on the
+   * first: a `coaster` is owned by `track`, which stores the layout, and dispatched by `trains`,
+   * which is the half that has a train standing on a platform with seats in it. One map cannot
+   * hold both answers, and forcing it to would make the owner of a kind also the operator of it.
+   *
+   * It exists so that no module has to carry a list of kinds. Before it, `rides/sim.ts` opened
+   * with `if (entity.kind !== 'ride') return` and `guests/sim.ts` built a venue out of
+   * `entity.kind === 'ride'`, so a coaster was scenery that moved and a flume was a slide with
+   * nobody on it — and the obvious repair, adding two more strings to two checks, is the point at
+   * which the check becomes the bug. A kind says this about itself now, and the two consumers ask.
+   */
+  registerQueueable(kind: string, dispatcher: string): void {
+    const existing = this.queueable.get(kind);
+    if (existing && existing !== dispatcher) {
+      throw new Error(
+        `Entity kind "${kind}" is already dispatched by "${existing}", "${dispatcher}" cannot claim it`
+      );
+    }
+    this.queueable.set(kind, dispatcher);
+  }
+
+  /** Every kind somebody may queue for, sorted so a caller's iteration order is stable. */
+  queueableKinds(): string[] {
+    return [...this.queueable.keys()].sort();
+  }
+
+  /** The module that answers `DispatchApi` for this kind, or undefined if nobody queues for it. */
+  dispatcherOfKind(kind: string): string | undefined {
+    return this.queueable.get(kind);
+  }
+
+  isQueueable(kind: string): boolean {
+    return this.queueable.has(kind);
   }
 
   registerProcedural(name: string, factory: ProceduralFactory): void {

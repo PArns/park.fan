@@ -172,12 +172,12 @@ scenery that moves.
 check would send guests walking to a coaster where they would stand for ever, which is worse than
 the honest nothing they do now. Measured on the tree:
 
-| Question | Answer | Where |
-| --- | --- | --- |
-| Does `rides` see a coaster at all? | No, it returns on the first line | `rides/sim.ts:263` — `if (entity.kind !== 'ride') return;` |
-| Does `trains` have a boarding API? | No. `ids`, `status`, `statuses`, `trains`, `profile`, `setFleetSize` and nothing else | `trains/sim.ts:54-66` |
-| Does `trains` know about a station? | Yes — `plan.station`, `dwellSeconds`, dispatch, block holding | `trains/sim.ts:214-356` |
-| Does anything queue for a coaster? | No. Grepping `coaster` across `guests/` and `rides/` returns an archetype name, two comments and one docstring | — |
+| Question                            | Answer                                                                                                         | Where                                                      |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Does `rides` see a coaster at all?  | No, it returns on the first line                                                                               | `rides/sim.ts:263` — `if (entity.kind !== 'ride') return;` |
+| Does `trains` have a boarding API?  | No. `ids`, `status`, `statuses`, `trains`, `profile`, `setFleetSize` and nothing else                          | `trains/sim.ts:54-66`                                      |
+| Does `trains` know about a station? | Yes — `plan.station`, `dwellSeconds`, dispatch, block holding                                                  | `trains/sim.ts:214-356`                                    |
+| Does anything queue for a coaster?  | No. Grepping `coaster` across `guests/` and `rides/` returns an archetype name, two comments and one docstring | —                                                          |
 
 So a coaster's trains dispatch on a dwell timer with nobody in them, and the machinery that would
 put somebody in them — `join`, `place`, `board`, `leave`, balking, the refusal reasons, the height
@@ -200,3 +200,166 @@ refuses it too, and its riders queue exactly like a coaster's. Whoever does this
 switches on a kind. Three kinds in the switch is the point at which the switch is the bug.
 
 **Not done here** because it spans four modules and is a round of its own, not an integrator patch.
+
+---
+
+## 5. The two plots reserved for a coaster and a flume are still empty
+
+**Owner:** `demo-park` · **Value:** the module's headline capability becomes visible without a
+harness, and `pnpm game:day-budget` starts reporting it.
+
+§4 above is done — a guest joins a coaster's line, boards, rides and leaves — and none of it is
+reachable from `/game`, because `buildWorld` answers
+`{path: 21, scenery: 1516, shop: 6, ride: 4, pool: 3, building: 2}`. The `coaster` shelf
+(−96, −52, 58 × 48 m, PADS) and the `flumes` pad (168, 18, 36 × 30 m) have been reserved since the
+pads were written and nothing has ever stood on either.
+
+**The placement that was measured**, and both halves of it matter:
+
+| entity    | pack:item                                              | position         | yaw    | why there                                                                                                                                                                                                           |
+| --------- | ------------------------------------------------------ | ---------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `coaster` | `core-classic:family-invert`, layout `kleiner-kreisel` | `(-66, 8, -30)`  | `-π/2` | The 18 m platform runs west off the loop's east side. Its dock lands at **(−75, −25.5)**, 1.3 m from the `coaster-loop` path — inside `paths`' 14 m service radius, which is the whole of whether a queue can form. |
+| `flume`   | `neon-lagoon:tube-slide`, layout `spiral-tower`        | `(160, 2.2, 18)` | `π/2`  | Slide runs east, so the stair and the line are on the west face at **(154, 18)**, about 9 m off the lakeside link.                                                                                                  |
+
+Two cautions from measuring it. `kleiner-kreisel` is **610 m** of track and the shelf is 58 × 48,
+so the layout overhangs the pad badly — the station is what has to be on the shelf and near the
+path, and the rest of the circuit needs either a bigger pad or a layout written for this one.
+And the placement above is 200 m west of the fairground: measured, both machines ran at **17 %
+utilisation** with an empty line while the park's interactions per visitor fell 7.01 → 5.39,
+purely because a guest walks 1–1.5 m per park minute (D-006) and cannot get there. A coaster
+nearer the main street would be a different park.
+
+Until it lands, `node --experimental-strip-types --import ./scripts/register-path-alias.mjs
+scripts/game-ride-boarding.mjs` runs the same world with both placed, and `--flat-only` reproduces
+`pnpm game:day-budget` exactly.
+
+## 6. A coaster and a flume are as exciting as the default
+
+**Owner:** `core-classic` and `neon-lagoon` packs · **Value:** four numbers per entry, and the
+thrill model starts telling machines apart.
+
+`rideBase` carries `excitement`, `fear`, `nausea` and `minHeightCm`, and every **flat** ride in
+both packs declares them. Not one `coaster` or `flume` entry does:
+
+```
+core-classic  wooden-classic  coaster  minHeight 120  excitement —  fear —  nausea —
+core-classic  steel-hyper     coaster  minHeight 130  excitement —  …
+core-classic  family-invert   coaster  minHeight 100  excitement —  …
+neon-lagoon   neon-launch     coaster  minHeight 130  excitement —  …
+neon-lagoon   body-slide      flume    minHeight —    excitement —  …
+```
+
+So `resolveDockedRide` falls back to 6 / 3 / 2 for all six, and `guests/decide.ts`'s thrill match
+— which is a MATCH, not a maximum, so a nervous visitor should be steered away from a hyper and
+towards a family invert — gives every coaster in the game the same score. The rating model in
+`rides` is content-driven precisely so this is a manifest edit; it is only a manifest edit.
+
+A steel hyper is not a family invert and both are not a body slide. Rough shape: hyper 8.6 / 7.2 /
+3.4, wooden 7.4 / 6.0 / 4.1, family invert 5.8 / 3.4 / 1.9, neon launch 8.9 / 7.8 / 3.0, tube
+slide 5.2 / 3.0 / 1.4, body slide 6.0 / 4.2 / 1.8, raft slide 4.4 / 2.2 / 1.2.
+
+## 7. A train reports the last load it took, not who is on it
+
+**Owner:** `trains` · **Value:** the mass in the physics is honest, and a car can be drawn with
+people in it.
+
+`TrainsSimApi.seat(rideId, n)` records `FleetState.riders` — one number per fleet, the load the
+queue last handed over. That was the narrowest thing that could be added without restructuring the
+fleet, and it is enough for a HUD and for this round. Two things it is not:
+
+- **`trainMassKg(profile)` is computed once at fleet creation** and never sees a rider. A full
+  train and an empty one accelerate identically down the same drop, which is wrong by about 25 %
+  of the mass on a 20-seat train at `riderMass`.
+- **`geometry.ts` draws empty seats.** With a per-train rider count the front cars could be
+  filled first, which is what a real dispatch looks like.
+
+Both want `riders` on `TrainState` rather than on `FleetState`, set when a train leaves the
+platform and cleared when it returns — which is a change to `placeTrains`, the save shape and the
+motion context, i.e. exactly the restructuring this round was told not to do.
+
+## 8. The park clock and the ride clock cannot both be right, and a queue has to pick one
+
+**Owner:** core (D-006) · **Value:** the dispatch you watch and the dispatch a guest experiences
+become the same event.
+
+At speed 1 one tick is `MINUTES_PER_TICK_AT_SPEED_1 = 1/60` park minutes and `0.05` ride seconds,
+so twenty park minutes pass per real minute; at speed 20, four hundred do. A machine's animation
+is therefore real time and the park around it is not, and a 92.5-second coaster cycle is 30 park
+minutes of a guest's day at speed 1 and ten park HOURS at speed 20.
+
+`Dock` resolves it by converting — the machine's own interval read as real seconds, expressed in
+park minutes — which is the same conversion `rides/sim.ts` has always made between a flat ride's
+cycle and its `spin`, and the same one `trains`' `FleetStatus.ridersPerHour` and `flumes`'
+`ridersPerHour` both already make and both already document as "reported rather than counted".
+Three modules now paper over one arithmetic problem in three places.
+
+Measured consequence: over one park day the coaster's line boarded about **70** loads while its
+trains completed **2** physical dispatches. Nothing is wrong with either number; they are answers
+to different questions, and a visitor watching the platform sees the queue drain without a train
+leaving.
+
+There is no small fix. It is a decision about whether `clock.speed` scales the machines too (which
+makes a coaster at speed 20 a blur, and steps a train clean over a 24 m block brake in one tick —
+`trains/types.ts` gives that reason at length), or whether the park day slows down to real time
+(which makes a park day fourteen real hours). Anything in between is what is shipping.
+
+## 9. A coaster breaks down and its trains keep going round
+
+**Owner:** cross-module, `rides` + `trains` · **Value:** one event, and a breakdown looks like one.
+
+`rollBreakdown` runs for every machine with a line in front of it, including a coaster — derived
+MTBF 951 park minutes, so about once a park day. When it fires, `rides` closes the queue, lets the
+line go and emits `ride:breakdown`; `trains` is not listening, so the fleet carries on dispatching
+empty trains past a station nobody may join.
+
+The fix is small and is not mine: `trains` subscribes to `ride:breakdown` / `ride:fixed` and holds
+its trains at their block stop lines while the ride is down. It belongs with the fleet because
+holding a train is `advance()`'s business and this round was not allowed to touch it.
+
+## 10. `pnpm test:game` and `pnpm game:day-budget` do not see any of this
+
+**Owner:** `package.json` (integrator).
+
+```jsonc
+"game:ride-boarding": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-ride-boarding.mjs",
+```
+
+`scripts/game-ride-boarding.mjs` is the before/after rig for §5 and takes `--flat-only`,
+`--hours`, `--speed`, `--seed`, `--json`. `scripts/game-shot-coaster-queue.mjs` is the frame: it
+dispatches both entities into a running `/game`, steps twenty thousand ticks and photographs the
+station. Both are runnable as they are; neither is wired to a script name. Once §5 lands, the
+first can be deleted and `pnpm game:day-budget` answers the question on its own.
+
+## 11. The park panel lists four rides and counts six
+
+**Owner:** `ui` · **Value:** the HUD stops contradicting itself the moment a park has a coaster.
+
+`ui/telemetry.ts` builds its ride list from the `ride:roster` event, and that event is — and has to
+stay — **the flat rides only**: `rides.motion` and `rides.state` are indexed by roster position and
+`rides/main.ts` builds one rig per entry, so a coaster in the roster would shift every index after
+it and hand the renderer a machine with no rig. `totals.rides`, `ridesOpen`, `ridesDown`, `queued`
+and `riding` are all computed from that list.
+
+`ridersToday` and `throughputHour` are not: they come from `num('rides.ridersToday')` and
+`num('rides.throughputHour')`, i.e. the frame stats, which are the whole park. Measured on a demo
+park with one coaster added, at 16:33 on day 1:
+
+```
+RIDES   RUNNING 3 / 4        ← the four flat rides
+In a queue        0
+On a ride        13
+Rides taken today 1,842      ← includes the coaster's share
+Riders per hour     608      ← includes the coaster's share
+Out of action         1
+```
+
+Two ways out and the second is better. Either read `num('rides.count')` / `num('rides.open')` /
+`num('rides.queued')` / `num('rides.riding')` unconditionally — the frame already carries all four
+for every machine with a line, and the `rides.length ? … :` fallbacks exist only so the number and
+the list agree — or list the docked machines too. The second needs a name to put in the row, which
+the roster event does not carry (`profile ? localized(profile.name) : entry.id` would print
+`demo-coaster`); `rides` can add `name` to the roster payload the moment `ui` wants to read it.
+
+Related: a coaster's own row would be the natural place for `trains.status(id)` —
+`trains × seats`, `cycleSeconds`, `dispatches` and the `riders` the queue last put on board — none
+of which the park panel shows today beyond `Trains and cars 2 · 10`.

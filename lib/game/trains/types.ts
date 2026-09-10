@@ -143,6 +143,16 @@ export interface FleetState {
   sinceDispatch: number;
   /** Dispatches since the world was created. Serialised. */
   dispatches: number;
+  /**
+   * Riders the queue in front of this coaster last put on board.
+   *
+   * Set by `TrainsSimApi.seat`, which `rides` calls when a load boards; capped at the train's own
+   * seat count. It is what this module DRAWS and REPORTS — the ride's occupancy — and it moves no
+   * train: the line runs on the park clock and the fleet on the ride clock, which is why the two
+   * dispatches are different events. Serialised, because an occupancy that resets on reload is
+   * the same unsaved-accumulator bug the docblock at the top of `sim.ts` lists four of.
+   */
+  riders: number;
 }
 
 /** `world.modules.trains`. */
@@ -188,4 +198,8 @@ export interface FleetStatus {
   /** Trains per hour × seats, at the current fleet size. Analytic, not counted. */
   ridersPerHour: number;
   dispatches: number;
+  /** Seats one train holds, `cars × seatsPerCar`. */
+  seats: number;
+  /** Riders the queue last put on board. 0 in a park with no `rides` module running a line. */
+  riders: number;
 }

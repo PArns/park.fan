@@ -23,6 +23,10 @@ export const ridesModule: GameModule = {
   id: 'rides',
   deps: ['core', 'paths'],
   kinds: ['ride'],
+  // A flat ride is dispatched by this module itself, which is what makes the queue machinery
+  // below kind-free: `rides` looks the dispatcher up rather than testing for `'ride'`, and gets
+  // itself for a carousel and `trains`/`flumes` for the two machines it does not draw.
+  queueable: ['ride'],
   sim: createRidesSim,
   main: async (ctx) => (await import('./main')).createRidesMain(ctx),
   showcase: async (ctx) => (await import('./showcase')).stageRidesShowcase(ctx),
@@ -43,6 +47,7 @@ export type {
   RideBoarding,
   RideJoin,
   RideOffer,
+  RideProfile,
   RideRigSpec,
   RideTicket,
   RideView,
@@ -56,6 +61,7 @@ export {
   flatRides,
   presetNames,
   resetRideContent,
+  resolveDockedRide,
   resolveFlatRide,
   DEFAULT_SPLIT,
   RIG_CATEGORY,

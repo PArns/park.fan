@@ -193,6 +193,7 @@ export async function boot(opts: BootOptions): Promise<GameHandle> {
     if (!def?.main) continue;
     try {
       for (const kind of def.kinds ?? []) registry.registerKind(kind, def.id);
+      for (const kind of def.queueable ?? []) registry.registerQueueable(kind, def.id);
       handles.set(id, await def.main(ctxFor(id)));
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);

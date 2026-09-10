@@ -29,7 +29,7 @@
  * event would shift every later draw in it after a reload.
  */
 
-import type { Command, Entity, SimContext, SimFrameWriter, SimHandle } from '../core/types';
+import type { Command, Dock, Entity, SimContext, SimFrameWriter, SimHandle } from '../core/types';
 import { attachFlumeContent } from './manifest';
 import { buildFlume, resolveFlume, ridersPerHour, type FlumeBuild } from './resolve';
 import { quaternionOf, riderPose } from './geom';
@@ -58,7 +58,32 @@ export interface FlumesSimApi {
   /** Turn the pumps off. A dry slide dispatches nobody and its water bill stops. */
   setRunning(id: string, running: boolean): void;
   stats(): FlumesStats;
+
+  // ── the queue in front of it (core's `DispatchApi`) ──────────────────────────────────────
+  /** Flumes this module dispatches for. The same list as `ids()`, under core's own name. */
+  docks(): string[];
+  /**
+   * The head of the line: the foot of the stair, what one vehicle takes, how long the descent is.
+   *
+   * Read every tick by `rides`, which runs the queue and owns the riders. Everything in it comes
+   * off the built slide and the style's own dispatch interval — nothing new is stored here.
+   */
+  dock(id: string): Dock | null;
+  /**
+   * `n` riders just boarded. Answers how many the vehicle actually took.
+   *
+   * It does not put anybody on the chute, and that is deliberate rather than unfinished: this
+   * module's riders are transient by design (see the docblock at the top of this file), the
+   * descent is integrated on the slide clock while a queue is in park minutes, and `rides` is
+   * already the one authority on who is in a line and who is on board. What a boat is carrying is
+   * the queue's answer, not this module's, and inventing a second copy of it here is the
+   * two-writers failure the determinism axis exists for.
+   */
+  seat(id: string, n: number): number;
 }
+
+/** Metres behind the tower a queue stands. Clear of the stair's own landing. */
+const TOWER_QUEUE_CLEARANCE = 1.6;
 
 export function createFlumesSim(ctx: SimContext): SimHandle {
   const detachContent = attachFlumeContent(ctx.registry);
@@ -236,6 +261,40 @@ export function createFlumesSim(ctx: SimContext): SimHandle {
       ctx.events.emit('flumes:changed', { id, type: 'update' });
     },
     stats: () => ({ ...stats }),
+
+    docks: () => [...order],
+
+    dock(id) {
+      const build = builds.get(id);
+      const s = state.get(id);
+      if (!build || !s) return null;
+      const flume = build.flume;
+      // Behind the tower, on the layout's own heading: `towerPlacement` backs the deck off the
+      // start of the chute by half its footprint, so the stair's foot — and therefore the line —
+      // is another half-footprint back again. Reading it off the same two fields that place the
+      // tower is what keeps the queue at the bottom of the stair when a pack ships a bigger one.
+      const hx = Math.sin(flume.yaw);
+      const hz = Math.cos(flume.yaw);
+      const back = flume.tower.footprint[1] - 0.4 + TOWER_QUEUE_CLEARANCE;
+      return {
+        x: flume.position[0] - hx * back,
+        z: flume.position[2] - hz * back,
+        dirX: -hx,
+        dirZ: -hz,
+        capacity: Math.max(1, flume.style.rig.seats),
+        // The interval read as real seconds and expressed in park minutes — the figure
+        // `ridersPerHour` already quotes, as a period rather than a rate. See `Dock`.
+        cycleMinutes: Math.max(0.05, flume.style.dispatchSeconds / 60),
+        rideMinutes: Math.max(0.05, build.rideSeconds / 60),
+        running: s.running,
+      };
+    },
+
+    seat(id, n) {
+      const build = builds.get(id);
+      if (!build) return 0;
+      return Math.max(0, Math.min(Math.round(n), Math.max(1, build.flume.style.rig.seats)));
+    },
   };
 
   return {

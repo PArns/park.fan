@@ -123,6 +123,11 @@ export class SimRuntime {
        * empty tick purely so the module would be allowed to own its own kind.
        */
       for (const kind of def.kinds ?? []) this.registry.registerKind(kind, def.id);
+      // Same line and the same reason as the loop above it: a kind that can be queued for is a
+      // declaration, not a capability, and a module with no `sim` in this build must still be
+      // able to make it — otherwise `rides` and `guests` disagree with the main thread about
+      // which machines have a line in front of them.
+      for (const kind of def.queueable ?? []) this.registry.registerQueueable(kind, def.id);
       if (!def.sim) continue;
       const ctx: SimContext = {
         world: this.world,

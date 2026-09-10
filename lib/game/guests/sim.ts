@@ -374,7 +374,11 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
   const offerPool: Venue[] = [];
 
   const markDirty = (entity: Entity): void => {
-    if (entity.kind === 'shop' || entity.kind === 'ride' || entity.kind === 'scenery') {
+    if (
+      entity.kind === 'shop' ||
+      entity.kind === 'scenery' ||
+      ctx.registry.isQueueable(entity.kind)
+    ) {
       venuesDirty = true;
     }
   };
@@ -384,6 +388,17 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
     markDirty(change.entity)
   );
   const offPaths = ctx.events.on('paths:changed', () => {
+    venuesDirty = true;
+  });
+  /**
+   * The head of a line moved, so the index that points at it is stale.
+   *
+   * Emitted by `rides` for a machine whose boarding point comes from another module — a coaster's
+   * station is not known until `track` has laid the spline and `trains` has planned the blocks,
+   * which is a tick or two after the entity arrives. Without this, the venue would keep pointing
+   * at wherever the entity happened to be when this module first indexed it.
+   */
+  const offDock = ctx.events.on('ride:dock', () => {
     venuesDirty = true;
   });
 
@@ -434,18 +449,48 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
           throughput: typeof def.throughput === 'number' ? def.throughput : 4,
           incoming: 0,
         });
-      } else if (entity.kind === 'ride') {
+      } else if (ctx.registry.isQueueable(entity.kind)) {
+        /**
+         * Anything somebody can queue for, whatever it is.
+         *
+         * This read `entity.kind === 'ride'` and therefore built a venue out of a carousel and
+         * out of nothing else, which is half of why no guest in this game could ride a coaster —
+         * the other half was `rides/sim.ts` refusing the entity on its first line. Both are the
+         * same mistake and neither is fixed by naming two more kinds here: a kind declares that
+         * it can be queued for (`GameModule.queueable`) and this asks. A `coaster`, a `flume` and
+         * a `ride` are all `rides` manifest entries, so the def below resolves for all three.
+         *
+         * The venue's own kind stays `'ride'`, and that is not a shortcut: `VenueKind` is about
+         * what a guest DOES here — walk up, join a line, wait, board, be thrilled — and all three
+         * are the same errand. `scoreVenue`'s thrill match and `arriveAt`'s case 3 are unchanged.
+         */
         const def = registry.find('rides', entity.pack, entity.item)?.def;
         if (!def) continue;
         rideCount++;
         const happiness = needs.byId.get('happiness');
+        /**
+         * Where the LINE is, not where the entity is.
+         *
+         * For a flat ride the two are 1.4 m apart and it never mattered. For a coaster
+         * `entity.position` is where the layout starts and the platform is however far round the
+         * circuit the station sits — up to a hundred metres — so a venue at the entity would
+         * have guests walking to the wrong end of the ride, and `paths.reachable` would answer
+         * about the wrong end too. `rides` publishes the boarding point for every machine it
+         * runs a line for; `ride:dock` above is what re-indexes this when it moves.
+         */
+        const at = ridesApi()?.entrance(id);
         venues.push({
           id,
           kind: 'ride',
-          x,
-          z,
+          x: at ? at[0] : x,
+          z: at ? at[1] : z,
           relief: happiness ? [{ column: happiness.column, amount: 190 }] : [],
           price: typeof def.price === 'number' ? def.price : 0,
+          // A coaster's `excitement` is authored the same way a carousel's is; only the
+          // throughput differs, and a machine with no `capacity` in its manifest has one because
+          // its own module computes it from a fleet or a dispatch interval. Six a minute is the
+          // same placeholder this line has always used, and it is only ever the fallback wait —
+          // `rides.find()` answers with the real one the moment that module is loaded.
           excitement: typeof def.excitement === 'number' ? def.excitement : 4,
           throughput: typeof def.capacity === 'number' ? def.capacity / 3 : 6,
           incoming: 0,
@@ -2237,6 +2282,7 @@ export function createGuestsSim(ctx: SimContext): SimHandle {
       offRemove();
       offUpdate();
       offPaths();
+      offDock();
     },
   };
 }

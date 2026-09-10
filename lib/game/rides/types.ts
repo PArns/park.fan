@@ -130,21 +130,28 @@ export interface ResolvedRig extends RideRigSpec {
 
 // ── Content: the ride ───────────────────────────────────────────────────────────────────────
 /**
- * A flat ride, resolved from a `rides` manifest entry of `kind: 'flat'` plus its rig.
+ * What the LINE in front of a machine needs to know about it, whatever the machine is.
+ *
+ * The split from `FlatRideProfile` is the one this module's queue half turned out to want: a
+ * carousel, a coaster and a flume differ in how they are drawn, where their throughput comes
+ * from and who dispatches them, and differ in nothing at all about standing in a line, being too
+ * short for it, paying for it or thinking well of it afterwards. So the queue reads this and the
+ * rig reads the extension below, and a machine somebody else draws can be queued for without
+ * inventing a rig and a footprint it does not have. See `Dock` in `core/types.ts`.
  *
  * Everything here is content. Nothing in this module reads `key` to decide anything: it is carried
  * so a report, a HUD panel and a warning can name the thing they are talking about.
  */
-export interface FlatRideProfile {
+export interface RideProfile {
   /** `pack:id`. */
   key: string;
   name: Record<string, string>;
+  /** Riders one vehicle-load takes. */
   capacity: number;
   /** The whole load → dispatch → run → unload cycle at full capacity, park minutes. */
   cycleMinutes: number;
   /** Fractions of `cycleMinutes`; they sum to 1. */
   split: CycleSplit;
-  footprint: [number, number];
   excitement: number;
   fear: number;
   nausea: number;
@@ -160,6 +167,16 @@ export interface FlatRideProfile {
    * that is a real and well-known fact about fairground machinery rather than a balance knob.
    */
   mtbfMinutes: number;
+}
+
+/**
+ * A flat ride, resolved from a `rides` manifest entry of `kind: 'flat'` plus its rig.
+ *
+ * The machine this module DRAWS, as opposed to the line it runs. A coaster and a flume reach the
+ * queue through `RideProfile` above and are drawn by `trains` and `flumes`.
+ */
+export interface FlatRideProfile extends RideProfile {
+  footprint: [number, number];
   /** Which side of the footprint the queue and the loading gate are on, 0..3 = +z,+x,-z,-x. */
   queueSide: number;
   rig: ResolvedRig;
@@ -271,6 +288,14 @@ export interface RideView {
   id: string;
   key: string;
   name: Record<string, string>;
+  /**
+   * The module that dispatches this machine's vehicles — `'rides'` for a flat ride, which this
+   * module both draws and operates, `'trains'` for a coaster, `'flumes'` for a slide.
+   *
+   * A listing that reports riders per machine needs to say which machine, and after this module
+   * started running lines in front of things it does not draw, `key` alone stopped answering it.
+   */
+  dispatchedBy: string;
   state: string;
   open: boolean;
   /** 0..1 through the run. */

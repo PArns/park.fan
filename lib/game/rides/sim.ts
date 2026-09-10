@@ -35,8 +35,16 @@
  */
 
 import type { Rng } from '../core/rng';
-import type { Command, Entity, SimContext, SimFrameWriter, SimHandle } from '../core/types';
-import { attachRideContent, resolveFlatRide } from './manifest';
+import type {
+  Command,
+  DispatchApi,
+  Dock,
+  Entity,
+  SimContext,
+  SimFrameWriter,
+  SimHandle,
+} from '../core/types';
+import { attachRideContent, resolveDockedRide, resolveFlatRide } from './manifest';
 import {
   MOTION_STRIDE,
   RIDE_STATE_NAMES,
@@ -47,11 +55,15 @@ import {
   type RideBoarding,
   type RideJoin,
   type RideOffer,
+  type RideProfile,
   type RideStateValue,
   type RideTicket,
   type RideView,
   type RidesStats,
 } from './types';
+
+/** This module's own id in the registry — the dispatcher a flat ride names. */
+const SELF = 'rides';
 
 /**
  * Ride seconds one fixed tick advances the MACHINE.
@@ -110,7 +122,26 @@ interface GuestsLike {
 // ── per-ride state ──────────────────────────────────────────────────────────────────────────
 interface RideRuntime {
   id: string;
-  profile: FlatRideProfile;
+  profile: RideProfile;
+  /**
+   * The module whose vehicles this line boards.
+   *
+   * `SELF` for a flat ride, which this module both draws and operates; `'trains'` for a coaster
+   * and `'flumes'` for a slide, whose numbers are re-read off their `Dock` every tick. It is the
+   * only thing in this file that distinguishes the three, and it is read from the registry rather
+   * than from the entity's kind — see `add`.
+   */
+  dispatcher: string;
+  /** The machine this module draws, or null when somebody else draws it. */
+  machine: FlatRideProfile | null;
+  /**
+   * Has the dispatcher answered, and does it say the machine can run?
+   *
+   * Always true for a flat ride. For a docked one it is false until the other module has built
+   * the thing — a coaster whose track has not been laid yet, a flume with its pumps off — and a
+   * line does not form in front of it while it is.
+   */
+  dockOk: boolean;
   entity: Entity;
   /** World point a guest walks to in order to join. */
   entrance: [number, number];
@@ -209,8 +240,17 @@ export interface RidesSimApi {
 export function createRidesSim(ctx: SimContext): SimHandle {
   const detachContent = attachRideContent(ctx.registry);
   const rides = new Map<string, RideRuntime>();
-  /** Sorted ride ids — the buffer order, and the tick order (ARCHITECTURE §1 rule 4). */
+  /** Every machine with a line, sorted — the tick order and the api order (ARCHITECTURE §1 rule 4). */
   let order: string[] = [];
+  /**
+   * The flat rides only, sorted — the frame-buffer order and what `ride:roster` announces.
+   *
+   * Not the same list as `order` any more, and it must not be: `rides.motion` and `rides.state`
+   * are indexed by roster position and `main.ts` builds one rig per entry, so putting a coaster
+   * in there would hand the renderer a machine with no rig and shift every index after it. What
+   * this module draws and what it runs a queue for are two questions with two answers now.
+   */
+  let drawn: string[] = [];
   let rosterDirty = true;
   const rngBreak = ctx.rng.fork('breakdowns');
   const walkUps = new Map<number, WalkUp>();
@@ -259,15 +299,122 @@ export function createRidesSim(ctx: SimContext): SimHandle {
     };
   }
 
+  // ── machines somebody else dispatches ─────────────────────────────────────────────────────
+  /**
+   * The dispatcher's handle, resolved per call.
+   *
+   * Never captured: `ctx.module` reads the runtime's handle map and this module is constructed
+   * before `trains` and `flumes` are, so a handle taken at construction is `undefined` for ever.
+   * The same reason `guests` re-asks for `shops`.
+   */
+  function dispatchApi(id: string): DispatchApi | undefined {
+    return ctx.module<DispatchApi>(id);
+  }
+
+  function dockOf(dispatcher: string, id: string): Dock | null {
+    const api = dispatchApi(dispatcher);
+    if (!api || typeof api.dock !== 'function') return null;
+    try {
+      return api.dock(id);
+    } catch {
+      // A dispatcher that throws is a module mid-rebuild, not a park with a broken ride: the
+      // machine reads as not running for this tick and is asked again on the next one.
+      return null;
+    }
+  }
+
+  /** The provisional numbers a docked machine carries until its own module has answered. */
+  const PROVISIONAL: Pick<Dock, 'capacity' | 'cycleMinutes' | 'rideMinutes'> = {
+    capacity: 8,
+    cycleMinutes: 2,
+    rideMinutes: 1,
+  };
+
+  function dockedProfileFor(entity: Entity, dock: Dock | null): RideProfile | null {
+    return resolveDockedRide(ctx.registry, entity.pack, entity.item, dock ?? PROVISIONAL);
+  }
+
+  function dockGeometry(
+    entity: Entity,
+    dock: Dock | null
+  ): Pick<RideRuntime, 'entrance' | 'queueDir'> {
+    if (!dock) return { entrance: [entity.position[0], entity.position[2]], queueDir: [0, 1] };
+    const l = Math.hypot(dock.dirX, dock.dirZ) || 1;
+    return { entrance: [dock.x, dock.z], queueDir: [dock.dirX / l, dock.dirZ / l] };
+  }
+
+  /**
+   * Re-read one docked machine's numbers.
+   *
+   * Every tick, because all three move: a player adds a train, the pumps go off, `track` finishes
+   * a layout that was still building when the entity arrived. Cheap — a `Dock` is derived, and
+   * both dispatchers compute it from state they already hold.
+   */
+  function refreshDock(r: RideRuntime): void {
+    const dock = dockOf(r.dispatcher, r.id);
+    if (!dock || !dock.running) {
+      r.dockOk = false;
+      return;
+    }
+    r.dockOk = true;
+    const profile = dockedProfileFor(r.entity, dock);
+    if (profile) r.profile = profile;
+    const geo = dockGeometry(r.entity, dock);
+    const moved =
+      Math.abs(geo.entrance[0] - r.entrance[0]) > 0.05 ||
+      Math.abs(geo.entrance[1] - r.entrance[1]) > 0.05;
+    r.entrance = geo.entrance;
+    r.queueDir = geo.queueDir;
+    /**
+     * Say so when the head of the line moves, and only then.
+     *
+     * `guests` indexes a machine by the point it walks somebody to, and for a coaster that point
+     * is nowhere near the entity: `entity.position` is where the LAYOUT starts, and the platform
+     * can be a hundred metres of track away. It is also not known on the tick the entity arrives
+     * — `track` lays the spline on the same event and this module's `rebuild()` runs before
+     * `trains`' — so a venue built at that moment would point at the origin for ever and every
+     * guest would walk to the wrong end of the ride. An event rather than a poll, and named for
+     * what happened rather than for who cares.
+     */
+    if (moved) {
+      ctx.events.emit('ride:dock', {
+        ride: r.id,
+        key: r.profile.key,
+        x: r.entrance[0],
+        z: r.entrance[1],
+      });
+    }
+  }
+
+  /**
+   * Adopt any entity somebody has declared queueable, and remember who dispatches it.
+   *
+   * This line used to be `if (entity.kind !== 'ride') return`, which is why no guest in this game
+   * could ride a coaster: the queue, the height check, the balk, the refusal reasons and the
+   * boarding receipt all exist exactly once, here, and a coaster never reached them. The repair
+   * is not two more strings in the check — three kinds is the point at which the check is the
+   * bug, and this project's rule is that a module never switches on a kind. A kind declares
+   * itself instead (`GameModule.queueable`), and this asks the registry who answers for it.
+   */
   function add(entity: Entity): void {
-    if (entity.kind !== 'ride') return;
-    const profile = profileFor(entity);
+    const dispatcher = ctx.registry.dispatcherOfKind(entity.kind);
+    if (!dispatcher) return;
+    const flat = dispatcher === SELF;
+    const machine = flat ? profileFor(entity) : null;
+    if (flat && !machine) return;
+    // A docked machine's numbers come from its own module, which may not have built it yet — a
+    // coaster's spline is laid by `track` on the same event that brings the entity in, and this
+    // module's `rebuild()` runs before `trains`'. So it is adopted on a provisional profile and
+    // the dock is re-read every tick; `dockOk` is what keeps a line from forming meanwhile.
+    const dock = flat ? null : dockOf(dispatcher, entity.id);
+    const profile = machine ?? dockedProfileFor(entity, dock);
     if (!profile) return;
-    const geo = geometryOf(entity, profile);
+    const geo = machine ? geometryOf(entity, machine) : dockGeometry(entity, dock);
     const existing = rides.get(entity.id);
     if (existing) {
       existing.entity = entity;
       existing.profile = profile;
+      existing.machine = machine;
       existing.entrance = geo.entrance;
       existing.queueDir = geo.queueDir;
       return;
@@ -275,6 +422,9 @@ export function createRidesSim(ctx: SimContext): SimHandle {
     rides.set(entity.id, {
       id: entity.id,
       profile,
+      dispatcher,
+      machine,
+      dockOk: flat,
       entity,
       ...geo,
       state: RideState.CLOSED,
@@ -366,6 +516,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
 
   const isOpen = (r: RideRuntime): boolean =>
     !r.closedByPlayer &&
+    r.dockOk &&
     r.state !== RideState.BROKEN &&
     r.state !== RideState.MAINTENANCE &&
     parkOpen();
@@ -397,6 +548,17 @@ export function createRidesSim(ctx: SimContext): SimHandle {
 
   // ── the cycle ─────────────────────────────────────────────────────────────────────────────
   function step(r: RideRuntime, dt: number): void {
+    if (!r.dockOk) {
+      // The machine's own module says it cannot run — no fleet, no station, pumps off, or it has
+      // not finished building. Anybody standing in the line is let go rather than left there:
+      // a queue in front of a thing that will never board is worse than no queue at all.
+      if (r.state !== RideState.CLOSED) {
+        r.state = RideState.CLOSED;
+        releaseOnboard(r);
+      }
+      releaseQueue(r);
+      return;
+    }
     const open = parkOpen();
     if (r.state === RideState.CLOSED) {
       if (open && !r.closedByPlayer) r.state = RideState.LOADING;
@@ -517,6 +679,17 @@ export function createRidesSim(ctx: SimContext): SimHandle {
     if (state === RideState.LOADING) {
       r.dwell = 0;
       r.loadFactor = 0.82 + r.rng.next() * 0.36;
+    }
+    // The doors are shut and it is going: tell the module that owns the vehicle how many are in
+    // it. This is the only thing that travels back the other way, and it is what makes a train
+    // report an occupancy rather than a seat count.
+    if (state === RideState.DISPATCHING && r.dispatcher !== SELF) {
+      const api = dispatchApi(r.dispatcher);
+      try {
+        api?.seat(r.id, r.onboard.length);
+      } catch {
+        /* a dispatcher mid-rebuild; the load is still this module's to run */
+      }
     }
   }
 
@@ -870,6 +1043,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
           id,
           key: r.profile.key,
           name: r.profile.name,
+          dispatchedBy: r.dispatcher,
           state: RIDE_STATE_NAMES[r.state],
           open: isOpen(r),
           phase: r.spin - Math.floor(r.spin),
@@ -940,7 +1114,7 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       const r = rides.get(id);
       return r ? runSecondsOf(r) : 0;
     },
-    roster: () => [...order],
+    roster: () => [...drawn],
     setBridge(enabled: boolean) {
       if (bridgeEnabled === enabled) return;
       bridgeEnabled = enabled;
@@ -953,9 +1127,10 @@ export function createRidesSim(ctx: SimContext): SimHandle {
   // ── the handle ────────────────────────────────────────────────────────────────────────────
   function publishRoster(): void {
     order = [...rides.keys()].sort();
+    drawn = order.filter((id) => rides.get(id)?.machine != null);
     rosterDirty = false;
     ctx.events.emit('ride:roster', {
-      rides: order.map((id) => {
+      rides: drawn.map((id) => {
         const r = rides.get(id)!;
         return {
           id,
@@ -981,6 +1156,9 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       for (const id of order) {
         const r = rides.get(id);
         if (!r) continue;
+        // Ask the machine's own module what it can do this tick, before the line acts on it.
+        // A flat ride is its own dispatcher and has nothing to ask.
+        if (r.dispatcher !== SELF) refreshDock(r);
         step(r, dt);
         stepMachine(r);
       }
@@ -1021,11 +1199,11 @@ export function createRidesSim(ctx: SimContext): SimHandle {
       }
     },
     fill(writer: SimFrameWriter) {
-      const n = order.length;
+      const n = drawn.length;
       const motion = writer.f32('rides.motion', n * MOTION_STRIDE);
       const state = writer.u8('rides.state', n);
       for (let i = 0; i < n; i++) {
-        const r = rides.get(order[i]);
+        const r = rides.get(drawn[i]);
         if (!r) continue;
         motion[i * MOTION_STRIDE] = r.spin;
         motion[i * MOTION_STRIDE + 1] = r.drive;
