@@ -1650,6 +1650,8 @@
       "showAt": "alle {time}",
       "showNextAny": "prossimo spettacolo",
       "remove": "{name}: rimuovi avviso",
+      "removeError": "Non è stato possibile rimuovere l’avviso, che resta attivo. Riprova.",
+      "removeRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",
       "loadError": "Impossibile caricare i tuoi avvisi."
     },
     "pushErrors": {

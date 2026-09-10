@@ -62,6 +62,7 @@
     "test:is-uuid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-is-uuid.mjs",
     "test:threshold-minutes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-threshold-minutes.mjs",
     "test:show-follows-store": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-follows-store.mjs",
+    "test:push-follow-delete": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-push-follow-delete.mjs",
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
     "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",

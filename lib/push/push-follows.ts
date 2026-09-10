@@ -3,6 +3,7 @@
 import {
   ensurePushRegistered,
   getExistingPushIdentity,
+  lookupExistingPushIdentity,
   type PushRegistration,
   type PushUnavailableCause,
 } from './push-registration';
@@ -88,6 +89,31 @@ async function identityForWrite(): Promise<PushRegistration> {
   return ensurePushRegistered();
 }
 
+/** A "try later" default: not a claim about the real window, just a usable one. */
+const RATE_LIMIT_FALLBACK_SECONDS = 60;
+/**
+ * Longer than this is not a number to put in front of somebody — an hour is
+ * already past what any of these surfaces stays open for, and the value comes
+ * off the network, so it is not ours to trust unbounded.
+ */
+const RATE_LIMIT_MAX_SECONDS = 3600;
+
+/**
+ * The limiter's own window, normalized ONCE so every reader agrees.
+ *
+ * Callers both print this number ("bitte in {seconds} Sekunden") and time
+ * things by it, and the two must not diverge — a value clamped for the timer
+ * and rendered raw would show a countdown that clears an hour early. Anything
+ * under a second is not a wait a sentence can describe either, so it takes the
+ * same road as a body that could not be read at all.
+ */
+function normalizeRetryAfter(raw: unknown): number {
+  if (typeof raw !== 'number' || !Number.isFinite(raw) || raw < 1) {
+    return RATE_LIMIT_FALLBACK_SECONDS;
+  }
+  return Math.min(Math.round(raw), RATE_LIMIT_MAX_SECONDS);
+}
+
 /**
  * Turn a non-2xx response into a `PushWriteError`. 404 and the general 4xx
  * bucket carry no body worth reading; 429 does — `PushFollowAccessGuard`
@@ -97,20 +123,14 @@ async function classifyFailure(response: Response): Promise<PushWriteError> {
   if (response.status === 429) {
     const retryAfterSeconds = await response
       .json()
-      .then((body: unknown) => {
-        const raw =
-          typeof body === 'object' && body !== null && 'retryAfterSeconds' in body
-            ? (body as { retryAfterSeconds: unknown }).retryAfterSeconds
-            : undefined;
-        return typeof raw === 'number' && Number.isFinite(raw) ? raw : NaN;
-      })
-      .catch(() => NaN);
-    // A body the limiter didn't shape as expected is still a rate limit —
-    // 60s is a reasonable "try later" default, not a claim about the real window.
-    return {
-      reason: 'rate-limited',
-      retryAfterSeconds: Number.isFinite(retryAfterSeconds) ? retryAfterSeconds : 60,
-    };
+      .then((body: unknown) =>
+        typeof body === 'object' && body !== null && 'retryAfterSeconds' in body
+          ? (body as { retryAfterSeconds: unknown }).retryAfterSeconds
+          : undefined
+      )
+      .catch(() => undefined);
+    // A body the limiter didn't shape as expected is still a rate limit.
+    return { reason: 'rate-limited', retryAfterSeconds: normalizeRetryAfter(retryAfterSeconds) };
   }
   if (response.status === 404) return { reason: 'not-found' };
   if (response.status >= 400 && response.status < 500) return { reason: 'invalid' };
@@ -174,24 +194,80 @@ export async function followShow(
 }
 
 /**
- * Optimistic, like `FavoriteStar`'s toggle: the local mirror clears
- * immediately, and the server call best-effort follows. A browser with no
- * subscription at all (never granted permission) has nothing to tell the
- * server in the first place.
+ * The DELETE both removals send, and the one place that decides what counts as
+ * gone.
+ *
+ * **404 is a success.** The row this call names is one the visitor asked to be
+ * rid of, and a server that no longer has it has given them exactly that —
+ * pruning after repeated delivery failures, or a second tab that got there
+ * first. Reporting "das hat nicht geklappt" over a row that is provably not
+ * there would leave it on screen for ever, since every retry answers 404 too.
+ * The write path reads the same status the other way round (`setRideAlert`
+ * re-syncs and retries, because there a 404 means this browser's subscription
+ * is missing and the write really did not happen) — the asymmetry is the point,
+ * not an oversight.
+ *
+ * Checked against the API rather than assumed, because "the row is gone" and
+ * "the ride you named is gone" would be very different answers: neither DELETE
+ * handler validates the entity id at all, both are documented idempotent and
+ * answer 204 for a row that was not there
+ * (`ride-alerts.controller.ts`/`show-follows.controller.ts`), so the ONE 404
+ * this path can produce is `subscriptionOrThrow` — this browser has no stored
+ * subscription — and a subscription that does not exist cannot be holding an
+ * alert. That matters for a retired ride, whose alert `AlertsOverview`
+ * deliberately still lists.
+ *
+ * Everything else goes through `classifyFailure` like a write, so a caller has
+ * the same classes to render either way.
  */
-export async function unfollowShow(showId: string): Promise<void> {
-  setShowFollowedLocal(showId, false);
-  const identity = await getExistingPushIdentity();
-  if (!identity) return;
+async function deletePushFollow(url: string, body: unknown): Promise<PushWriteResult<void>> {
   try {
-    await fetch('/api/push/show-follows', {
+    const response = await fetch(url, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ endpoint: identity.endpoint, showId }),
+      body: JSON.stringify(body),
     });
+    if (!response.ok && response.status !== 404) {
+      return { ok: false, error: await classifyFailure(response) };
+    }
+    return { ok: true, value: undefined };
   } catch {
-    // Local state already reflects the choice; a retry happens next open.
+    return { ok: false, error: { reason: 'network' } };
   }
+}
+
+/**
+ * Stop reminding for a show — server first, mirror second.
+ *
+ * It used to be the other way round, optimistically like `FavoriteStar`'s
+ * toggle, and returned `Promise<void>` without ever reading `response.ok`. A
+ * 500 then took the row off the screen and left the reminder armed: it came
+ * back at the next open with nothing having said so, and the favorites band's
+ * whole alerts group — gated on the mirror — vanished in the same commit as the
+ * click, taking its own spinner and any error it might have shown with it. A
+ * star nobody else can see is a fair thing to move optimistically; a
+ * notification that will arrive on a phone is not.
+ *
+ * A browser with no push identity at all has nothing the server could be
+ * holding for it, so clearing the stale mirror entry IS the removal, and it
+ * succeeds.
+ */
+export async function unfollowShow(showId: string): Promise<PushWriteResult<void>> {
+  const lookup = await lookupExistingPushIdentity();
+  // Not `getExistingPushIdentity`: that one answers `null` for a lookup that THREW as well, and
+  // a removal cannot tell those apart and still be honest — "there is nothing to delete" would
+  // then be reported over a live subscription whose reminder stays armed.
+  if (!lookup.ok) return { ok: false, error: { reason: 'network' } };
+  if (!lookup.identity) {
+    setShowFollowedLocal(showId, false);
+    return { ok: true, value: undefined };
+  }
+  const result = await deletePushFollow('/api/push/show-follows', {
+    endpoint: lookup.identity.endpoint,
+    showId,
+  });
+  if (result.ok) setShowFollowedLocal(showId, false);
+  return result;
 }
 
 /**
@@ -239,19 +315,20 @@ export async function setRideAlert(
   return postRideAlert(resynced.identity, attractionId, thresholdMinutes);
 }
 
-export async function removeRideAlert(attractionId: string): Promise<void> {
-  removeRideAlertLocal(attractionId);
-  const identity = await getExistingPushIdentity();
-  if (!identity) return;
-  try {
-    await fetch('/api/push/ride-alerts', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ endpoint: identity.endpoint, attractionId }),
-    });
-  } catch {
-    // Same as unfollowShow — local state already moved.
+/** Same contract as `unfollowShow` — see there for why the mirror moves last. */
+export async function removeRideAlert(attractionId: string): Promise<PushWriteResult<void>> {
+  const lookup = await lookupExistingPushIdentity();
+  if (!lookup.ok) return { ok: false, error: { reason: 'network' } };
+  if (!lookup.identity) {
+    removeRideAlertLocal(attractionId);
+    return { ok: true, value: undefined };
   }
+  const result = await deletePushFollow('/api/push/ride-alerts', {
+    endpoint: lookup.identity.endpoint,
+    attractionId,
+  });
+  if (result.ok) removeRideAlertLocal(attractionId);
+  return result;
 }
 
 /**

@@ -1650,6 +1650,8 @@
       "showAt": "à {time}",
       "showNextAny": "prochaine séance",
       "remove": "{name} : supprimer l’alerte",
+      "removeError": "Impossible de supprimer l’alerte, elle est toujours active. Merci de réessayer.",
+      "removeRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",
       "loadError": "Impossible de charger vos alertes."
     },
     "pushErrors": {

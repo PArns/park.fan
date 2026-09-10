@@ -1,17 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
+import { Fragment } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Bell, CalendarClock, Loader2, X } from 'lucide-react';
 import { GroupHeading, MoreLine, Row, RowSkeletons } from './favorites-menu-rows';
-import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
-import {
-  PUSH_FOLLOWS_QUERY_KEY,
-  usePushFollowsList,
-  type PushFollowsList,
-} from '@/lib/push/use-push-follows-list';
-import { trackRideAlertRemoved, trackShowFollowRemove } from '@/lib/analytics/umami';
+import { usePushFollowsList } from '@/lib/push/use-push-follows-list';
+import type { PushWriteError } from '@/lib/push/push-follows';
+import { rideRowKey, showRowKey, usePushFollowRemoval } from '@/lib/push/use-push-follow-removal';
 import { formatShowClock } from '@/lib/push/show-clock';
 import { cn } from '@/lib/utils';
 
@@ -44,7 +39,7 @@ interface AlertRow {
   title: string;
   detail: string;
   icon: React.ReactNode;
-  remove: () => Promise<void>;
+  remove: () => void;
 }
 
 export function FavoritesMenuAlerts({
@@ -70,66 +65,45 @@ export function FavoritesMenuAlerts({
   const t = useTranslations('pushAlerts.menu');
   const tFavorites = useTranslations('favorites');
   const locale = useLocale();
-  const queryClient = useQueryClient();
   const { data, isFetching, isError } = usePushFollowsList({ enabled: open });
   /**
-   * The rows currently being deleted — a set, not one key.
-   *
-   * As a single key, pressing X on a second row re-enabled the first row's button while its
-   * DELETE was still in flight, and the first request coming back cleared the second row's
-   * spinner. Somebody clearing three alerts in a row does exactly that.
+   * Shared with `AlertsOverview` — the two surfaces list the same rows out of the same query
+   * cache, so what it takes for one of them to leave is decided in one place.
    */
-  const [removing, setRemoving] = useState<readonly string[]>([]);
+  const removal = usePushFollowRemoval();
 
   /**
-   * The cache is the list. Editing it after the DELETE has resolved is what keeps a removal from
-   * racing a refetch: `removeRideAlert` writes the local mirror first and only then calls the
-   * API, so anything keyed on that mirror would ask the server for the row again while the
-   * deletion was still in flight.
+   * Why a removal did not go through, in the two sentences this surface can actually produce.
    *
-   * `remove()` resolving is not the same as the alert being gone — neither `removeRideAlert` nor
-   * `unfollowShow` reads `response.ok`, so a 500 drops the row here and leaves it armed. That is
-   * the contract both of them have had since `/alerts` was written, and PF-76 is where it gets
-   * fixed for both surfaces at once; the same ticket covers the last row's group unmounting out
-   * from under its own spinner, which is the mirror-first write again.
+   * `usePushErrorMessage` is the shared helper the dialogs and `/alerts` use, and it is
+   * deliberately NOT used here: it reads `pushAlerts.pushErrors`, and this group renders in the
+   * layout chrome, so importing it would serialize six more strings into every one of ~35,000
+   * pages for a line almost nobody sees. Two keys in `pushAlerts.menu`, which the chrome already
+   * carries, buy the distinction that matters instead.
+   *
+   * And it is the only one that matters: the DELETE path never registers a subscription, so the
+   * `unavailable` causes the helper exists to separate cannot occur here — what is left is a rate
+   * limit, where "please try again" is a lie in front of a limiter that will refuse the retry,
+   * and everything else, where it is the right sentence.
    */
-  const drop = async (
-    key: string,
-    remove: () => Promise<void>,
-    next: (l: PushFollowsList) => PushFollowsList
-  ) => {
-    setRemoving((current) => (current.includes(key) ? current : [...current, key]));
-    await remove();
-    queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>
-      previous ? next(previous) : previous
-    );
-    setRemoving((current) => current.filter((k) => k !== key));
-  };
+  const removeErrorMessage = (error: PushWriteError) =>
+    error.reason === 'rate-limited'
+      ? t('removeRateLimited', { seconds: error.retryAfterSeconds })
+      : t('removeError');
 
   const rows: AlertRow[] = [
     ...(data?.rideAlerts ?? []).map((alert) => ({
-      key: `ride:${alert.attractionId}`,
+      key: rideRowKey(alert.attractionId),
       // A ride whose path the API could not resolve (retired, or a slug that moved) still has a
       // home: the overview page, which is where the rest of this group's rows lead anyway.
       href: alert.path ?? '/alerts',
       title: alert.attractionName,
       detail: `${alert.parkName} · ${t('threshold', { minutes: alert.thresholdMinutes })}`,
       icon: <Bell className="text-muted-foreground size-4" aria-hidden="true" />,
-      remove: () =>
-        drop(
-          `ride:${alert.attractionId}`,
-          async () => {
-            await removeRideAlert(alert.attractionId);
-            trackRideAlertRemoved();
-          },
-          (list) => ({
-            ...list,
-            rideAlerts: list.rideAlerts.filter((a) => a.attractionId !== alert.attractionId),
-          })
-        ),
+      remove: () => void removal.removeRide(alert.attractionId),
     })),
     ...(data?.showFollows ?? []).map((follow) => ({
-      key: `show:${follow.showId}`,
+      key: showRowKey(follow.showId),
       href: follow.path ?? '/alerts',
       title: follow.showName,
       detail: `${follow.parkName} · ${
@@ -138,18 +112,7 @@ export function FavoritesMenuAlerts({
           : t('showNextAny')
       }`,
       icon: <CalendarClock className="text-muted-foreground size-4" aria-hidden="true" />,
-      remove: () =>
-        drop(
-          `show:${follow.showId}`,
-          async () => {
-            await unfollowShow(follow.showId);
-            trackShowFollowRemove();
-          },
-          (list) => ({
-            ...list,
-            showFollows: list.showFollows.filter((s) => s.showId !== follow.showId),
-          })
-        ),
+      remove: () => void removal.removeShow(follow.showId),
     })),
   ];
 
@@ -197,33 +160,48 @@ export function FavoritesMenuAlerts({
           <RowSkeletons count={expected} max={cap} />
         ) : (
           <>
-            {shown.map((row) => (
-              <Row
-                key={row.key}
-                href={row.href}
-                title={row.title}
-                subtitle={row.detail}
-                leading={row.icon}
-                action={
-                  <button
-                    type="button"
-                    onClick={() => void row.remove()}
-                    disabled={removing.includes(row.key)}
-                    aria-label={t('remove', { name: row.title })}
-                    // 32 px rather than the 44 px phone tier the button scale documents: this
-                    // group is drawn in the band only, and the band needs a 1024 px header
-                    // before its trigger is even in the row.
-                    className="text-muted-foreground hover:text-destructive hover:bg-muted/60 flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors disabled:cursor-default disabled:opacity-50"
-                  >
-                    {removing.includes(row.key) ? (
-                      <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
-                    ) : (
-                      <X className="size-3.5" aria-hidden="true" />
-                    )}
-                  </button>
-                }
-              />
-            ))}
+            {shown.map((row) => {
+              const removeError = removal.errorFor(row.key);
+              return (
+                <Fragment key={row.key}>
+                  <Row
+                    href={row.href}
+                    title={row.title}
+                    subtitle={row.detail}
+                    leading={row.icon}
+                    action={
+                      <button
+                        type="button"
+                        onClick={row.remove}
+                        disabled={removal.isRemoving(row.key)}
+                        aria-label={t('remove', { name: row.title })}
+                        // 32 px rather than the 44 px phone tier the button scale documents: this
+                        // group is drawn in the band only, and the band needs a 1024 px header
+                        // before its trigger is even in the row.
+                        className="text-muted-foreground hover:text-destructive hover:bg-muted/60 flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors disabled:cursor-default disabled:opacity-50"
+                      >
+                        {removal.isRemoving(row.key) ? (
+                          <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
+                        ) : (
+                          <X className="size-3.5" aria-hidden="true" />
+                        )}
+                      </button>
+                    }
+                  />
+                  {/* Under the row it belongs to, not at the top of the group: the visitor pressed
+                    one X and needs to know which alert is still armed. `role="alert"` goes on the
+                    paragraph and never on the `<li>`, which would replace its implicit `listitem`
+                    role and leave this `<ul>` holding a child that is not a list item. */}
+                  {removeError && (
+                    <li className="px-2 pb-1">
+                      <p role="alert" className="text-destructive text-xs leading-snug">
+                        {removeErrorMessage(removeError)}
+                      </p>
+                    </li>
+                  )}
+                </Fragment>
+              );
+            })}
             <MoreLine
               hidden={rows.length - shown.length}
               label={(n) => tFavorites('more', { count: n })}

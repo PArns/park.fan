@@ -107,9 +107,16 @@ export function ShowFollowDialog({
     setPending(true);
     setError(null);
     if (following) {
-      setFollowing(false);
-      await unfollowShow(showId);
+      // No optimistic `setFollowing(false)` before the call any more: `unfollowShow` writes the
+      // local mirror itself, and only once the server has confirmed. Flipping the bell first
+      // meant a refused DELETE left it dark over a reminder that would still arrive.
+      const result = await unfollowShow(showId);
       setPending(false);
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
+      setFollowing(false);
       trackShowFollowRemove();
       onOpenChange(false);
       return;
