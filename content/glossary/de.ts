@@ -137,7 +137,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein exklusiver Vorteil für Hotelgäste, der den Parkeintritt vor der regulären Öffnung erlaubt.',
     definition:
-      'Früheinlass (auch "Extra Zauberzeit" bei Disney oder "Early Park Entry") ist ein Vorteil, der Gästen von Partnerhotels oder bestimmten Ticketkategorien ermöglicht, den Park eine halbe bis eine Stunde früher zu betreten. In dieser Zeit sind die Warteschlangen deutlich kürzer, da der Großteil der Besucher noch nicht eingelassen wird. Besonders an Spitzentagen ist der Früheinlass eine der wirkungsvollsten Strategien, um beliebte Attraktionen ohne langes Warten zu erleben.',
+      'Früheinlass (auch "Extra Zauberzeit" bei Disney oder "Early Park Entry") ist ein Vorteil, der Gästen von Partnerhotels oder bestimmten Ticketkategorien ermöglicht, den Park eine halbe bis eine Stunde früher zu betreten. In dieser Zeit sind die Warteschlangen deutlich kürzer, da der Großteil der Besucher noch nicht eingelassen wird. An Spitzentagen ist der Früheinlass die Stunde, in der die Schlangen an den beliebten Bahnen noch kurz sind.',
     alternateNames: ['Extra Magic Hours', 'Magic Hours', 'Early Park Entry', 'Extra Zauberzeit'],
 
     relatedTermIds: ['express-pass', 'peak-day', 'rope-drop'],
@@ -183,7 +183,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein eigenständig gestalteter Bereich innerhalb eines Freizeitparks mit durchgehendem Thema.',
     definition:
-      'Ein Themenbereich (englisch: Themed Land) ist eine abgegrenzte Zone innerhalb eines Freizeitparks, die ein einheitliches Design, eine Hintergrundgeschichte (Storyline) und passende Attraktionen, Gastronomie und Shops vereint. Bekannte Beispiele sind Hogsmeade in den Universal-Parks, Fantasyland in Disney-Parks oder Scandinavica in Europa-Park. Themenbereiche sorgen für ein immersives Erlebnis und leiten Besucher durch den Park.',
+      'Ein Themenbereich (englisch: Themed Land) ist eine abgegrenzte Zone innerhalb eines Freizeitparks, die ein einheitliches Design, eine Hintergrundgeschichte (Storyline) und passende Attraktionen, Gastronomie und Shops vereint. Bekannte Beispiele sind Hogsmeade in den Universal-Parks, Fantasyland in Disney-Parks oder Scandinavica in Europa-Park. Themenbereiche gliedern den Park und führen die Besucher durch ihn hindurch.',
     aliases: ['Themenbereiche'],
     alternateNames: ['Themenzone', 'Land', 'Theming Area'],
 
@@ -259,7 +259,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Zeiträume mit geringerer Besucherauslastung, kürzeren Wartezeiten und günstigeren Preisen.',
     definition:
-      'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen – typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Für Besucher mit flexiblem Zeitplan ist der Besuch in der Nebensaison eine der wirkungsvollsten Strategien. Der Besucherkalender von park.fan markiert die Nebensaison-Fenster eines Parks.',
+      'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen – typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Wer den Termin frei wählen kann, fährt in der Nebensaison. Der Besucherkalender von park.fan markiert die Nebensaison-Fenster eines Parks.',
     alternateNames: ['Ruhige Zeiten', 'Schwache Saison', 'Off-Peak', 'Quieter Season'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -533,7 +533,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Schweizer Fahrgeschäft-Hersteller, bekannt für Weltrekord-Hydraulik-Launches, Mega-/Gigacoaster und innovative Designs – das Unternehmen hinter vielen der schnellsten und höchsten Bahnen der Welt.',
     definition:
-      'Intamin AG ist ein Schweizer Freizeitgerätehersteller, 1967 gegründet, verantwortlich für einige der ehrgeizigsten Achterbahn-Rekorde der Geschichte. Ihr Hydraulik-Launch-System trieb jahrelang die schnellsten und höchsten Coaster der Welt an (Kingda Ka, 139 m; Top Thrill Dragster). Intamin ist auch für Mega- und Gigacoaster (Millennium Force in Cedar Point), Multi-Launch-Coaster, Wasserfahrten und Dark Rides bekannt. Europäische Intamin-Installationen umfassen Taron und Black Mamba in Phantasialand sowie Red Force in Ferrari Land.',
+      'Intamin AG ist ein Schweizer Freizeitgerätehersteller, 1967 gegründet, verantwortlich für einige der ehrgeizigsten Achterbahn-Rekorde der Geschichte. Ihr Hydraulik-Launch-System trieb jahrelang die schnellsten und höchsten Coaster der Welt an (Kingda Ka, 139 m; Top Thrill Dragster). Intamin ist auch für Mega- und Gigacoaster (Millennium Force in Cedar Point), Multi-Launch-Coaster, Wasserfahrten und Dark Rides bekannt. Europäische Intamin-Anlagen sind unter anderem Taron im Phantasialand, Expedition GeForce im Holiday Park und Red Force in Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
   },
   {
@@ -918,7 +918,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Exclusive Ride Time – eine Session mit exklusivem Zugang zu einer oder mehreren Attraktionen für Enthusiasten-Clubs oder Hotelgäste, ohne normales Publikum.',
     definition:
-      'ERT (Exclusive Ride Time, auf Deutsch auch EFZ: Exklusive Fahrzeit) ist ein Zeitraum, in dem eine ausgewählte Gruppe – typischerweise Mitglieder eines Coaster-Enthusiasten-Clubs (wie European Coaster Club oder Coasterfriends), Hotelgäste oder Jahrespass-Inhaber – exklusiven Zugang zu einer oder mehreren Attraktionen erhält, ohne normales Publikum. Während ERT können Teilnehmer die Bahn mit minimalen Wartezeiten wiederholt fahren und dabei oft Dutzende Fahrten in einer einzigen Session erleben. Für Enthusiasten ist ERT eines der wertvollsten Park-Erlebnisse überhaupt – es offenbart den wahren Charakter einer Bahn ohne Warteschlangen-Druck.',
+      'ERT (Exclusive Ride Time, auf Deutsch auch EFZ: Exklusive Fahrzeit) ist ein Zeitraum, in dem eine ausgewählte Gruppe – typischerweise Mitglieder eines Coaster-Enthusiasten-Clubs (wie European Coaster Club oder Coasterfriends), Hotelgäste oder Jahrespass-Inhaber – exklusiven Zugang zu einer oder mehreren Attraktionen erhält, ohne normales Publikum. Während ERT können Teilnehmer die Bahn mit minimalen Wartezeiten wiederholt fahren und dabei oft Dutzende Fahrten in einer einzigen Session erleben. Für Enthusiasten ist ERT die Gelegenheit, eine Bahn mehrmals hintereinander zu fahren, ohne Warteschlangen-Druck.',
     alternateNames: ['ERT', 'Exclusive Ride Time', 'Exklusive Fahrzeit', 'EFZ'],
 
     relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 're-ride', 'rope-drop'],
@@ -974,7 +974,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achterbahn mit frei drehbaren Fahrzeugen – jede Fahrt bietet eine andere Perspektive.',
     definition:
-      'Ein Spinning Coaster (auch Drehachterbahn) verwendet Fahrzeuge, die sich auf einer vertikalen Achse frei drehen. Da die Rotation nicht gesteuert wird, erlebt jedes Fahrzeug eine andere Abfolge von Vorwärts-, Rückwärts- und Seitwärtsfahrten. Mack Rides aus dem deutschen Waldkirch ist der führende Hersteller; ihre Modelle sind in Phantasialand, Efteling und Alton Towers zu finden. Spinning Coaster gelten als hervorragende Familienbahnen – aufregend genug für Enthusiasten, aber ohne extreme Größenanforderungen.',
+      'Ein Spinning Coaster (auch Drehachterbahn) verwendet Fahrzeuge, die sich auf einer vertikalen Achse frei drehen. Da die Rotation nicht gesteuert wird, erlebt jedes Fahrzeug eine andere Abfolge von Vorwärts-, Rückwärts- und Seitwärtsfahrten. Mack Rides aus Waldkirch baut die meisten davon; ihre Modelle sind in Phantasialand, Efteling und Alton Towers zu finden. Spinning Coaster gelten als hervorragende Familienbahnen – aufregend genug für Enthusiasten, aber ohne extreme Größenanforderungen.',
     alternateNames: ['Spinning Coaster', 'Spinner', 'Drehachterbahn'],
 
     relatedTermIds: ['credit', 'launch-coaster', 'mack-rides'],
@@ -1458,7 +1458,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Schulferien',
     shortDefinition: 'Schulferienzeiten, die zu deutlich höherem Besucherandrang führen.',
     definition:
-      'Schulferien – Sommerferien, Weihnachtsferien, Osterferien und Herbstferien – sind der wichtigste Treiber für Besucherspitzen in Freizeitparks. Familien mit Kindern sind das größte Besuchersegment und konzentrieren ihre Besuche auf diese Zeitfenster. Parks verlängern oft die Öffnungszeiten, erweitern das Unterhaltungsangebot und erhöhen die Preise. Das Meiden der Schulferien ist die effektivste Strategie zur Wartezeit-Reduzierung.',
+      'Schulferien – Sommerferien, Weihnachtsferien, Osterferien und Herbstferien – sind der wichtigste Treiber für Besucherspitzen in Freizeitparks. Familien mit Kindern sind das größte Besuchersegment und konzentrieren ihre Besuche auf diese Zeitfenster. Parks verlängern oft die Öffnungszeiten, erweitern das Unterhaltungsangebot und erhöhen die Preise. Wie stark die Ferien einen Park füllen, zeigt die Monatsübersicht auf der Seite Beste Reisezeit.',
     relatedTermIds: ['crowd-forecast', 'crowd-level', 'peak-day', 'shoulder-season'],
     aliases: ['Ferien', 'Schulferien'],
     alternateNames: [
@@ -1501,7 +1501,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Simulator-Attraktion',
     shortDefinition: 'Attraktion mit beweglicher Plattform und Filmprojektion.',
     definition:
-      'Eine Simulator-Attraktion kombiniert eine hydraulisch oder elektrisch angetriebene Bewegungsplattform mit einer Großleinwand, die physische Bewegungen mit dem Filmgeschehen synchronisiert. Es wird ein immersives Erlebnis ohne klassische Schiene erzeugt. Die Kapazität ist oft hoch, und die Erfahrung kann durch Filmwechsel aktualisiert werden. Bekannte Beispiele: Star Tours (Disney), Mystic Manor (HKDL).',
+      'Eine Simulator-Attraktion kombiniert eine hydraulisch oder elektrisch angetriebene Bewegungsplattform mit einer Großleinwand, die physische Bewegungen mit dem Filmgeschehen synchronisiert. Der Eindruck entsteht ohne klassische Schiene. Die Kapazität ist oft hoch, und die Erfahrung kann durch Filmwechsel aktualisiert werden. Bekannte Beispiele: Star Tours (Disney), Mystic Manor (HKDL).',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'trackless-ride'],
     alternateNames: [
       'Simulator-Attraktion',
@@ -2079,9 +2079,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'sally-dark-rides',
     name: 'Sally Dark Rides',
-    shortDefinition: 'Ein führender Hersteller von Dark Rides und Animatronics.',
+    shortDefinition: 'Hersteller von Dark Rides und Animatronics.',
     definition:
-      'Sally Dark Rides (ehemals Sally Corporation) ist ein führender Entwickler von immersiven Dark Rides und fortschrittlichen Animatronics. Das in Florida ansässige Unternehmen ist auf "schlüsselfertige" Attraktionen spezialisiert und deckt alles ab – vom Storytelling und Set-Design bis hin zu den Fahrsystemen und der Charakteranimation. Sie sind besonders berühmt für ihre interaktiven Dark Rides, bei denen Gäste Blaster benutzen, um Punkte zu sammeln, wie z. B. die verschiedenen Justice League: Battle for Metropolis-Attraktionen und viele Scooby-Doo-Themenfahrten weltweit.',
+      'Sally Dark Rides (ehemals Sally Corporation) entwickelt Dark Rides und Animatronics. Das in Florida ansässige Unternehmen ist auf "schlüsselfertige" Attraktionen spezialisiert und deckt alles ab – vom Storytelling und Set-Design bis hin zu den Fahrsystemen und der Charakteranimation. Sie sind besonders berühmt für ihre interaktiven Dark Rides, bei denen Gäste Blaster benutzen, um Punkte zu sammeln, wie z. B. die verschiedenen Justice League: Battle for Metropolis-Attraktionen und viele Scooby-Doo-Themenfahrten weltweit.',
     relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride'],
     aliases: ['Sally Corporation'],
   },
@@ -2108,7 +2108,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Technologieunternehmen, das fortschrittliche Fahrsysteme und Bewegungsplattformen entwickelt.',
     definition:
-      'Oceaneering Entertainment Systems (OES), eine Abteilung von Oceaneering International, ist ein weltweit führendes Unternehmen für fortschrittliche Attraktionstechnologie. Mit ihrem Fachwissen aus der Unterwasserrobotik entwickelten sie die revolutionäre Fahrzeugtechnologie mit Bewegungsplattformen, die in The Amazing Adventures of Spider-Man bei Universal Islands of Adventure eingesetzt wird. Sie fertigen auch schienenlose Fahrsysteme und komplexe animatronische Figuren und liefern die technische Basis für viele der anspruchsvollsten Themenpark-Erlebnisse der Welt.',
+      'Oceaneering Entertainment Systems (OES), eine Abteilung von Oceaneering International, baut Attraktionstechnik. Aus ihrem Fachwissen in der Unterwasserrobotik entstand die Fahrzeugtechnik mit Bewegungsplattformen, die in The Amazing Adventures of Spider-Man bei Universal Islands of Adventure eingesetzt wird. Sie fertigen auch schienenlose Fahrsysteme und komplexe animatronische Figuren und liefern die technische Basis für viele der anspruchsvollsten Themenpark-Erlebnisse der Welt.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'trackless-ride'],
   },
   {

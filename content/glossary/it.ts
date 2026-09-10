@@ -1734,7 +1734,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Due binari paralleli di montagne russe su cui i treni partono contemporaneamente e corrono fianco a fianco.',
     definition:
-      'Un racing coaster ha due circuiti separati ma speculari che corrono in parallelo, con i treni lanciati contemporaneamente in modo che i passeggeri vivano la sensazione di gareggiare contro l’altro convoglio. I binari si incrociano o si sfiorano in più punti per massimizzare la tensione. Alcuni modelli adottano un design a nastro di Möbius: entrambi i circuiti formano un unico anello continuo e i passeggeri cambiano automaticamente lato. Il formato funziona ugualmente bene con montagne russe in legno e in acciaio. In Europa sono rari; l’esempio più noto è il woodie a nastro di Möbius Grand National, al Blackpool Pleasure Beach.',
+      'Un racing coaster ha due circuiti separati ma speculari che corrono in parallelo, con i treni lanciati contemporaneamente in modo che i passeggeri vivano la sensazione di gareggiare contro l’altro convoglio. I binari si incrociano o si sfiorano in più punti per massimizzare la tensione. Alcuni modelli adottano un design a nastro di Möbius: entrambi i circuiti formano un unico anello continuo e i passeggeri cambiano automaticamente lato. Il formato funziona ugualmente bene con montagne russe in legno e in acciaio. In Europa sono rari; l’esempio più noto è il Grand National del Blackpool Pleasure Beach, un woodie a nastro di Möbius.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     aliases: [
       'montagne russe doppie',

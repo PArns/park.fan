@@ -1761,7 +1761,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Dos vías paralelas de montaña rusa en las que los trenes parten simultáneamente y corren codo a codo.',
     definition:
-      'Una montaña rusa de carreras (racing coaster) tiene dos circuitos separados pero simétricos que discurren en paralelo, con los trenes despachados simultáneamente para que los pasajeros vivan la emoción de competir contra el otro convoy. Los circuitos se cruzan o se aproximan en múltiples puntos para maximizar la tensión. Algunos modelos adoptan un diseño en bucle de Möbius: ambos circuitos forman un único recorrido continuo y los pasajeros cambian de lado automáticamente. El formato funciona igual con montañas rusas de madera y de acero. En Europa son raros; el ejemplo más conocido es el woodie de Möbius Grand National, en Blackpool Pleasure Beach.',
+      'Una montaña rusa de carreras (racing coaster) tiene dos circuitos separados pero simétricos que discurren en paralelo, con los trenes despachados simultáneamente para que los pasajeros vivan la emoción de competir contra el otro convoy. Los circuitos se cruzan o se aproximan en múltiples puntos para maximizar la tensión. Algunos modelos adoptan un diseño en bucle de Möbius: ambos circuitos forman un único recorrido continuo y los pasajeros cambian de lado automáticamente. El formato funciona igual con montañas rusas de madera y de acero. En Europa son raros; el ejemplo más conocido es el Grand National de Blackpool Pleasure Beach, un woodie con recorrido de Möbius.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     aliases: [
       'montaña rusa doble',
