@@ -34,7 +34,7 @@ coverImage:
 seo:
   title: 'Efteling: wait times, tips & best time to visit'
   description: >-
-    Efteling with real wait-time data from two seasons: best time to go,
+    Efteling with real wait-time data from more than 150 operating days: best time to go,
     tickets, Winter Efteling, and why only five million visitors a year are
     allowed in.
   keywords:
@@ -336,15 +336,15 @@ north-south and east-west that cross at the Herautenplein, with red-paved side
 paths to the individual scenes. The yellow shortcuts are going. After that you can
 take the forest in two portions on two days without getting lost.
 
-## 25 minutes, measured across two seasons
+## 25 minutes, measured across 150 operating days
 
 "A park for the whole family" is in every brochure. The only way to back it up is
 with queues.
 
 Our history for Efteling covers **more than 150 operating days** with wait-time data,
-recorded between August 2024 and August 2026. Across all days of the week the
-**typical wait averages 25 minutes** park-wide (median), with the 90th percentile
-at 36.
+recorded since December 2025. Across all days of the week the typical park-wide
+wait sits at **a good quarter of an hour** (median); on the one day in ten when
+there really is something going on, it is about half as long again.
 
 The ten most in-demand attractions:
 
@@ -480,16 +480,15 @@ twenty-five years.
 
 Efteling is open 365 days a year, and that shifts the usual rules.
 
-**By month**, April is the most relaxed of the main season months in our data
-(typically 22 minutes), followed by May at 23 and July at 25. June sits at 26 and
-August at 29. The hardest work is **December at 34 minutes** median, which is the
-Winter Efteling season, followed by March at 28.
+**By month**, April is the most relaxed of the main season months in our data.
+May, June and July sit close together, August picks up noticeably, and the
+hardest work is **December**, the Winter Efteling season.
 
-That comes with a caveat, otherwise it reads as more precise than it is: April,
-May, June and July each have around 30 days measured behind them, December seven,
-January five and March three. For February, September, October and November we have
-no usable days in this window at all. The direction holds, the ranking to the
-decimal does not.
+That comes with a caveat, otherwise it reads as more precise than it is: April
+through August each have a full month of measured days behind them, December,
+January and March only a handful, and for February, October and November we have
+no usable days at all so far. The direction holds, the ranking in detail does
+not.
 
 **By day of the week** it gets interesting, because the usual advice dissolves:
 
@@ -497,7 +496,7 @@ decimal does not.
 
 ```
 
-Four minutes separate the best and the worst day of the week. At Phantasialand
+A single step separates the best and the worst day of the week. At Phantasialand
 there are worlds between a Tuesday and a Saturday; here the day barely matters.
 **Monday** is even the busiest day in our data, which sounds absurd until you lay
 the Dutch holiday weeks over it: anyone booking a week in a holiday park or the
@@ -513,7 +512,8 @@ the German one after it. The quietest days coming up:
 
 ```
 
-And the crowding across the months, calculated from the last two seasons:
+And the crowding across the months, calculated from every operating day we have
+measured:
 
 ```stats-widget slug=efteling show=months
 
@@ -741,7 +741,7 @@ more in a day than the attendance figure would suggest.
 
 ### How long are the wait times at Efteling?
 
-Across more than 150 operating days from two seasons the typical park-wide wait is
+Across every operating day we have measured the typical park-wide wait is
 **25 minutes** (median), with the 90th percentile at 36. The longest queue is
 [Joris en de Draak](ref:efteling/joris-en-de-draak) at a good half hour, followed
 by [Danse Macabre](ref:efteling/danse-macabre). Current numbers are on the
@@ -847,4 +847,4 @@ person since 1959.
 - No Halloween: ["Geen Halloween in de Efteling" (official)](https://www.efteling.com/nl/park/events/halloween) · [our Halloween guide](/blog/halloween-theme-parks-2026)
 - Prices, parking and annual passes 2026: [Ticket overview (official)](https://www.efteling.com/en/park/information/ticket-overview) · [Prices & opening hours (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Annual pass comparison (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (founding, capacity, volunteers, funding): [Wie wij zijn (official)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes on Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes on nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Donate](https://www.villapardoes.nl/doneren)
-- Wait time and crowd data: our own history from more than 150 operating days (August 2024 to August 2026), [Efteling on park.fan](ref:efteling)
+- Wait time and crowd data: our own history from more than 150 operating days since December 2025, [Efteling on park.fan](ref:efteling)

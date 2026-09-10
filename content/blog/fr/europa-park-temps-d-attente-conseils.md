@@ -85,11 +85,13 @@ Après la saison d’hiver, l’attraction sera démontée. Le parc a annoncé u
 
 ![L’entrée principale de l’Europa-Park, des drapeaux nationaux accrochés à la façade | L’entrée principale à Rust. Derrière, 95 hectares et 18 pays européens. | wide](/media/europa-park/background-16x9.jpg)
 
-## Temps d’attente à l’Europa-Park : 23 minutes, mesurées sur un an
+## Temps d’attente à l’Europa-Park : une petite demi-heure en moyenne
 
-Notre historique des temps d’attente pour l’Europa-Park remonte à douze mois.
-Tous jours de la semaine confondus, le **temps d’attente typique sur l’ensemble
-du parc s’établit à 23 minutes** (médiane), le 90e centile à 36.
+Notre historique des temps d’attente pour l’Europa-Park commence en décembre
+2025 et ne connaît plus de trou depuis avril. Tous jours de la semaine
+confondus, l’attente typique sur l’ensemble du parc est d’**un bon quart
+d’heure** (médiane) ; le jour sur dix où il y a vraiment du monde, elle passe
+nettement au-dessus.
 
 Les dix attractions devant lesquelles tu patientes le plus longtemps, avec la
 valeur du jour à côté :
@@ -672,8 +674,8 @@ Tout cela est correct, mais rien qui justifie de se lever à huit heures. Les
 montagnes russes se répartissent sur la journée, le théâtre volant non.
 
 À quel point tout cela se répartit sur la journée, seul le profil horaire le
-montre : l’attente typique de chaque heure, moyennée sur une année de jours
-d’exploitation. En gras, l’heure la plus chargée de chaque attraction.
+montre : l’attente typique de chaque heure, moyennée sur tous les jours
+d’exploitation mesurés. En gras, l’heure la plus chargée de chaque attraction.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -879,13 +881,12 @@ dans le blue fire Dome.
 
 ### Quels sont les temps d’attente à l’Europa-Park ?
 
-Sur les douze derniers mois, le temps d’attente typique sur l’ensemble du parc
-s’établit à **23 minutes** (médiane), le 90e centile à 36. La file la plus longue
-est celle de Voltron Nevera, avec 34 minutes typiques, suivie d’Arthur avec 31,
-puis de Wodan et d’Eurosat avec 28 chacun. Ce qui est affiché aujourd’hui, tu le
-vois sur les [temps d’attente Europa-Park en direct](ref:europa-park?bare),
-actualisés toutes les cinq minutes et assortis d’une prévision pour les jours à
-venir.
+Sur tous les jours d’ouverture mesurés, le temps d’attente typique sur
+l’ensemble du parc est d’un bon quart d’heure (médiane). La file la plus longue
+est celle de Voltron Nevera, suivie d’Arthur, de Wodan et d’Eurosat. Ce qui est
+affiché aujourd’hui, tu le vois sur les [temps d’attente Europa-Park en
+direct](ref:europa-park?bare), actualisés toutes les cinq minutes et assortis
+d’une prévision pour les jours à venir.
 
 ### Quand y a-t-il le moins de monde à l’Europa-Park ?
 

@@ -218,12 +218,12 @@ debug notturna mi ricorda a cosa serva davvero tutta questa fatica. Là fuori, i
 questo momento, sta girando un treno vero, e là fuori qualcuno vuole sapere se
 la coda davanti valga la pena.
 
-Dietro ci sono oggi tempi di attesa live da oltre **200 parchi** e **7000 attrazioni**,
-minuto per minuto. Previsioni che stimano l’affluenza fino a **365 giorni** in
-anticipo. E siccome per principio mi fido dei numeri solo se devono dimostrare
-qualcosa, il modello si dà un voto da sé: ogni previsione viene poi confrontata
-con il tempo di attesa effettivamente misurato, e quello che ne esce sta sulla
-[pagina di Fancast](/fancast).
+Dietro ci sono oggi tempi di attesa live da oltre **200 parchi** e **7000
+attrazioni**, aggiornati ogni cinque minuti. Previsioni che stimano l’affluenza
+fino a **365 giorni** in anticipo. E siccome per principio mi fido dei numeri
+solo se devono dimostrare qualcosa, il modello si dà un voto da sé: ogni
+previsione viene poi confrontata con il tempo di attesa effettivamente misurato,
+e quello che ne esce sta sulla [pagina di Fancast](/fancast).
 
 ## Il giorno migliore raramente è quello che ci si aspetta
 
@@ -250,7 +250,7 @@ mostrano se la coda davanti a te è l’eccezione o la regola.
 ## Cosa fa park.fan di diverso
 
 Ci sono buoni siti che ti mostrano quanto è lunga la coda proprio adesso. Lo
-sappiamo fare anche noi, minuto per minuto, in tutto il mondo. Ma park.fan è
+sappiamo fare anche noi, ogni cinque minuti, in tutto il mondo. Ma park.fan è
 stato costruito per la domanda che viene prima: _vale la pena andarci?_
 
 Per questo un modello nostro guarda fino a **365 giorni** avanti invece che al

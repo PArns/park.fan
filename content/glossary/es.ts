@@ -419,7 +419,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricante suizo de atracciones y montañas rusas conocido por sus lanzamientos hidráulicos récord, mega/giga coasters y diseños innovadores — la empresa detrás de muchas de las atracciones más rápidas y altas del mundo.',
     definition:
-      'Intamin AG es un fabricante suizo de atracciones fundado en 1967, responsable de algunos de los récords de montañas rusas más ambiciosos de la historia. Su sistema de lanzamiento hidráulico impulsó durante años las montañas rusas más rápidas y altas del mundo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin también es conocido por sus mega y giga coasters (incluyendo Millennium Force en Cedar Point e Intimidator 305 en Kings Dominion), multi-launch coasters, atracciones acuáticas y dark rides. Las instalaciones europeas de Intamin incluyen Taron y Black Mamba en Phantasialand y Red Force en Ferrari Land.',
+      'Intamin AG es un fabricante suizo de atracciones fundado en 1967, responsable de algunos de los récords de montañas rusas más ambiciosos de la historia. Su sistema de lanzamiento hidráulico impulsó durante años las montañas rusas más rápidas y altas del mundo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin también es conocido por sus mega y giga coasters (incluyendo Millennium Force en Cedar Point e Intimidator 305 en Kings Dominion), multi-launch coasters, atracciones acuáticas y dark rides. Entre las instalaciones europeas de Intamin están Taron en Phantasialand, Expedition GeForce en Holiday Park y Red Force en Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
   },
   {

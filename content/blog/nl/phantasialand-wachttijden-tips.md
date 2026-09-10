@@ -267,9 +267,9 @@ voor het Phantasialand:
 
 ```
 
-En als je de **drukte per weekdag en maand** wilt zien, welke dagen over het jaar doorgaans
-ontspannen zijn en welke je moet mijden, dan laat deze blik op de laatste twee seizoenen
-het je zien:
+En als je de **drukte per weekdag en maand** wilt zien, welke dagen over het
+jaar doorgaans ontspannen zijn en welke je moet mijden, dan laat deze blik op de
+gemeten openingsdagen het je zien:
 
 ```stats-widget slug=phantasialand
 

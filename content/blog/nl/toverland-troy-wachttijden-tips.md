@@ -130,13 +130,12 @@ geleden reed en haar herinnert als "geweldig, maar ruw": rijd haar nog eens.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Wat Troy echt kost, gemeten over twee seizoenen
+## Wat Troy echt kost, gemeten over 150 bedrijfsdagen
 
-Over de laatste twee seizoenen, gerekend uit meer dan 150 bedrijfsdagen met
-wachttijdgegevens, ligt Troys **typische wachttijd op 16 minuten** (mediaan).
-Zelfs het 90e percentiel, de waarde waaronder negen van de tien metingen
-liggen, komt maar op **21 minuten**. Dat is niet de dode dinsdag in maart, dat
-is het gemiddelde over alle openingsdagen.
+Gerekend uit meer dan 150 bedrijfsdagen met wachttijdgegevens ligt Troys
+typische wachttijd op **een klein kwartier** (mediaan). Zelfs op die ene dag van
+de tien waarop het het drukst is, blijft hij onder het half uur. Dat is niet de
+dode dinsdag in maart, dat is het gemiddelde over alle openingsdagen.
 
 Zeventig kilometer noordwestelijker staat in de [Efteling](ref:efteling)
 **Joris en de Draak**, ook van GCI, drie jaar jonger, als racende dubbelbaan een
@@ -417,19 +416,17 @@ Na halloween gaat het park kort dicht en opent het van **28 november 2026 tot
 en curlingbaan, woensdags en in de weekends plus doorlopend tijdens de
 kerstvakantie. De waterattracties pauzeren dan, daarvoor komt de wereldprimeur
 erbij. Prachtig, alleen geen geheime tip meer zodra de lichtjes aan zijn:
-december en januari zijn in onze data de zwaarste maanden van het jaar.
+december hoort in onze data bij de drukste maanden van het jaar.
 
 ## Wanneer je moet gaan
 
 Het antwoord valt ontspannen uit: bijna altijd.
 
-**Per maand** is juni het optimum (typisch 18 minuten parkgemiddeld), gevolgd
-door mei en juli met 20 respectievelijk 22 minuten. Het zwaarst is **april** met
-25 minuten, als Pasen, Koningsdag en de Nederlandse meivakantie samenvallen,
-daarna de winterweken in **december en januari** met 31 en 26 minuten. Dat
-verrast velen: de drukste periode is niet de zomer, maar het korte, sterk
-gevraagde winterseizoen, waarin maar een deel van de attracties draait en het
-park alleen op woensdag en in het weekend opent. Eén beperking daarbij: winter
+**Per maand** liggen maart tot en met juli dicht bij elkaar, en daarboven steken
+**augustus** en de winterweken in **december** uit. Dat verrast velen: de
+drukste periode is niet alleen de zomer, maar ook het korte, sterk gevraagde
+winterseizoen, waarin maar een deel van de attracties draait en het park alleen
+op woensdag en in het weekend opent. Eén beperking daarbij: winter
 en voorseizoen hebben zo weinig openingsdagen dat achter die maandwaarden
 duidelijk minder meetdagen staan dan achter de zomermaanden. De richting is
 eenduidig, de decimaal niet.
@@ -446,8 +443,8 @@ schuiven ze voortdurend. Dit zijn de rustigste komende dagen:
 
 ```
 
-En zo ziet de drukte er over maanden en weekdagen uit, gerekend uit de laatste
-twee seizoenen:
+En zo ziet de drukte er over maanden en weekdagen uit, gerekend uit de gemeten
+openingsdagen:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -543,10 +540,9 @@ continent, bij typische wachttijden van 16 minuten.
 
 ### Hoe lang zijn de wachttijden in Toverland?
 
-Over de laatste twee seizoenen ligt de typische wachttijd parkbreed op
-**20 minuten**, Troy en Fēnix elk op **16 minuten** mediaan. Het hoogst zijn de
-waarden in december en januari en in april. Actuele cijfers vind je op de
-[Toverland-parkpagina](ref:attractiepark-toverland).
+Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op een
+klein kwartier, en Troy en Fēnix liggen in dezelfde orde van grootte. Actuele cijfers
+vind je op de [Toverland-parkpagina](ref:attractiepark-toverland).
 
 ### Wanneer is het in Toverland het rustigst?
 
@@ -650,4 +646,4 @@ meeste andere parken van Europa kun je het vergeten.
 - Halloween Days & Nights, scare zones en Fear Pass: [Scare zones & experiences (officieel)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [onze halloweengids](/blog/halloween-pretparken-2026)
 - Route, bus & parkeren: [Adres en route (officieel)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in de Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wachttijd- en drukte-data: eigen historie uit twee seizoenen, [Toverland op park.fan](ref:attractiepark-toverland)
+- Wachttijd- en drukte-data: eigen historie sinds december 2025, [Toverland op park.fan](ref:attractiepark-toverland)

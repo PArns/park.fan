@@ -261,8 +261,9 @@ export function ContentDE() {
       >
         <P>
           Die Muster von oben sind der Anfang. Den wirklich besten Tag findest du im Crowd-Kalender
-          auf jeder Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, bis zu ein
-          Jahr im Voraus und passend zu den Ferien und Feiertagen der jeweiligen Region.
+          auf jeder Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, so weit
+          der Park seinen Zeitplan veröffentlicht hat, und passend zu den Ferien und Feiertagen der
+          jeweiligen Region.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"

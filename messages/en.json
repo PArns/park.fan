@@ -7,7 +7,7 @@
     "title": "Share",
     "on": "Share on {platform}",
     "copy": "Copy link",
-    "copied": "Copied!"
+    "copied": "Copied"
   },
   "common": {
     "scroll": "Scroll",
@@ -96,7 +96,7 @@
     "errorPageTitle": "Something went wrong",
     "errorPageDescription": "An unexpected error occurred. Please try again.",
     "goHome": "Go to homepage",
-    "maintenanceTitle": "We’ll be back soon!",
+    "maintenanceTitle": "We’ll be back soon",
     "maintenanceDescription": "park.fan is temporarily unavailable while we perform maintenance. Please try again in a few minutes."
   },
   "notFound": {
@@ -1945,7 +1945,7 @@
       "withdraw": "Changed your mind? Contact us any time and we will remove your photo."
     },
     "success": {
-      "title": "Thank you!",
+      "title": "Thank you",
       "message": "{count, plural, one {Your photo has} other {Your # photos have}} been submitted and will appear in the gallery after a quick review.",
       "again": "Upload more photos",
       "home": "Back to home"

@@ -85,11 +85,12 @@ evento d’addio per il **9 gennaio 2027**.
 
 ![L’ingresso principale dell’Europa-Park, sulla facciata sono appese le bandiere dei paesi | L’ingresso principale a Rust. Dietro ci sono 95 ettari e 18 paesi europei. | wide](/media/europa-park/background-16x9.jpg)
 
-## Tempi di attesa Europa-Park: 23 minuti, misurati su un anno
+## Tempi di attesa Europa-Park: una mezz’ora scarsa in media
 
-Il nostro storico dei tempi di attesa per l’Europa-Park risale a dodici mesi fa.
-Su tutti i giorni della settimana l’**attesa tipica nella media del parco è di 23
-minuti** (mediana), il 90° percentile di 36.
+Il nostro storico dei tempi di attesa per l’Europa-Park comincia a dicembre 2025
+e da aprile non ha più buchi. Su tutti i giorni della settimana l’attesa tipica
+nella media del parco è di **un quarto d’ora abbondante** (mediana); in quel
+giorno su dieci in cui c’è davvero movimento sta nettamente più in alto.
 
 Le dieci attrazioni per cui aspetti di più, con accanto il valore di oggi:
 
@@ -663,7 +664,7 @@ rispettabile, ma niente per cui alzarsi alle otto. Le montagne russe si possono
 distribuire nell’arco della giornata, il teatro volante no.
 
 Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario:
-l’attesa tipica di ogni ora, mediata su un anno di giorni di apertura. In
+l’attesa tipica di ogni ora, mediata su tutti i giorni di apertura misurati. In
 grassetto l’ora di punta di ogni attrazione.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -857,12 +858,11 @@ novembre 2019 e richiede un biglietto proprio, quello del parco lì non vale.
 
 ### Quanto sono lunghi i tempi di attesa all’Europa-Park?
 
-Sugli ultimi dodici mesi l’attesa tipica nella media del parco è di **23 minuti**
-(mediana), il 90° percentile di 36. La coda più lunga ce l’ha Voltron Nevera con
-34 minuti tipici, seguita da Arthur con 31 e da Wodan ed Eurosat con 28 ciascuna.
-Quello che oggi è scritto in coda lo vedi nei
-[tempi di attesa Europa-Park aggiornati](ref:europa-park?bare), rinfrescati ogni
-cinque minuti e con la previsione per i prossimi giorni.
+Su tutti i giorni di apertura misurati l’attesa tipica nella media del parco è
+di un quarto d’ora abbondante (mediana). La coda più lunga ce l’ha Voltron
+Nevera, seguita da Arthur, Wodan ed Eurosat. Quello che oggi è scritto in coda
+lo vedi nei [tempi di attesa Europa-Park aggiornati](ref:europa-park?bare),
+rinfrescati ogni cinque minuti e con la previsione per i prossimi giorni.
 
 ### Quando c’è meno gente all’Europa-Park?
 

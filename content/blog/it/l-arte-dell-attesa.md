@@ -246,8 +246,8 @@ tempi di attesa nel resto del parco tirano il fiato in modo percepibile. Nei
 grafici live su park.fan puoi seguire questo effetto in tempo reale: durante il
 grande spettacolo serale i tempi di attesa delle attrazioni di punta calano in
 modo misurabile, e chi lo spettacolo lo conosce già in quell’ora gira al
-rapporto migliore della giornata. È esattamente per momenti così che
-aggiorniamo i tempi di attesa ogni minuto.
+rapporto migliore della giornata. È esattamente per momenti così che rileggiamo
+i tempi di attesa ogni cinque minuti.
 
 ![Migliaia di spettatori nell’anfiteatro notturno di Fantasmic! ai Disney’s Hollywood Studios | Fantasmic! agli Hollywood Studios: quasi 10.000 persone a rappresentazione, un’intera ondata di visitatori che per questa mezz’ora di sicuro non sta in nessuna coda di un coaster. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -387,14 +387,14 @@ picco-fine, ce lo ricordiamo: l’esperienza finisce meglio del previsto, ed è
 esattamente così che viene archiviata. Il tabellone mente davvero, quindi, ma
 mente a tuo favore.
 
-È esattamente a questa formula che è appeso park.fan. I nostri tempi di attesa live ti mostrano
-ogni minuto cosa stanno facendo davvero L e λ, e quando il nostro modello di IA
-prevede i tempi di attesa fino a 365 giorni in anticipo, in fondo non modella
-altro che quelle due grandezze: la **domanda** (quante persone vogliono salire
-oggi su questa attrazione?) e la **portata** (quante ne smaltisce?). Little
-sarebbe probabilmente stupito di tutti gli usi che si fanno oggi della sua
-formula. Quanto spesso le nostre previsioni colgano la realtà sta sulla
-[pagina di Fancast](/fancast).
+È esattamente a questa formula che è appeso park.fan. I nostri tempi di attesa
+live ti mostrano ogni cinque minuti cosa stanno facendo davvero L e λ, e quando
+il nostro modello di IA prevede i tempi di attesa fino a 365 giorni in anticipo,
+in fondo non modella altro che quelle due grandezze: la **domanda** (quante
+persone vogliono salire oggi su questa attrazione?) e la **portata** (quante ne
+smaltisce?). Little sarebbe probabilmente stupito di tutti gli usi che si fanno
+oggi della sua formula. Quanto spesso le nostre previsioni colgano la realtà sta
+sulla [pagina di Fancast](/fancast).
 
 ## Perché Peter Pan’s Flight “esplode” sempre
 
@@ -485,8 +485,8 @@ Sono proprio questi profili il motivo per cui ogni pagina di parco su park.fan
 mostra, accanto ai tempi di attesa live, anche le statistiche di lungo periodo.
 Perché “pieno” è relativo: 45 minuti a Brühl sono una brutta giornata e al
 Magic Kingdom un regalo. Guarda lo stesso insieme di dati per entrambi i
-parchi, i tempi di attesa tipici per mese e giorno della settimana, delle
-ultime due stagioni.
+parchi, i tempi di attesa tipici per mese e giorno della settimana, di tutti i
+giorni di apertura misurati.
 
 **Prima il [Phantasialand](ref:phantasialand?bare) a Brühl**, il caso estremo
 compatto: quando qui un numero sale, sale ripido, perché tutto si concentra su
@@ -608,9 +608,9 @@ La prossima coda da 60 minuti non si accorcerà per questo. Ma si legge in modo
 diverso. Restano tre domande, e park.fan ha una risposta per ognuna:
 
 - **Quanto è lunga _davvero_ la coda, proprio adesso?** Per questo ci sono i
-  nostri **tempi di attesa live**: oltre 200 parchi, 7.000 attrazioni, ogni
-  minuto. La legge di Little in tempo reale, senza che tu debba contarti da solo
-  le 640 persone davanti.
+  nostri **tempi di attesa live**: oltre 200 parchi, 7.000 attrazioni,
+  aggiornati ogni cinque minuti. La legge di Little in tempo reale, senza che tu
+  debba contarti da solo le 640 persone davanti.
 - **È tanto o è normale?** Lo dicono le **statistiche di lungo periodo** di
   ogni attrazione, perché 45 minuti sono, a seconda del parco, una seccatura o
   una vincita alla lotteria.

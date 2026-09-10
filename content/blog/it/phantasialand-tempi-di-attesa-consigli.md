@@ -280,7 +280,7 @@ tranquilli per il Phantasialand, live e senza abbellimenti:
 
 E se vuoi vedere l’**affluenza per giorno della settimana e mese**, quali giorni
 nel corso dell’anno sono tipicamente rilassati e quali dovresti evitare, allora
-te lo mostra questo sguardo alle ultime due stagioni:
+te lo mostra questo sguardo ai giorni di apertura misurati:
 
 ```stats-widget slug=phantasialand
 

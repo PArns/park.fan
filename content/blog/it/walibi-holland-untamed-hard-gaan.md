@@ -457,10 +457,9 @@ ciò che il parco ha deciso negli ultimi due anni.
 
 ## Quanto costa davvero Untamed
 
-Sulle ultime due stagioni, calcolato da **più di 130 giorni di apertura con dati di
-attesa utilizzabili**, l’**attesa tipica nella media del parco è di un quarto
-d’ora scarso** (mediana). Il 90º percentile, il valore sotto il quale ricadono
-nove misurazioni su dieci, arriva a 31 minuti.
+Calcolato da **più di 130 giorni di apertura con dati di attesa utilizzabili**,
+l’**attesa tipica nella media del parco è di un quarto d’ora scarso** (mediana).
+In quel giorno su dieci in cui c’è più movimento è una volta e mezza tanto.
 
 Attrazione per attrazione si presenta così:
 
@@ -475,7 +474,7 @@ la mattina vai dritto nella Wilderness, avrai fatto Untamed tre volte prima che
 la coda di YOY abbia compiuto un giro.
 
 Diventa più interessante nel confronto con il vicinato. Stessa base dati, stesso
-metodo di calcolo, ultime due stagioni:
+metodo di calcolo, tutti i giorni di apertura misurati:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -496,7 +495,7 @@ fissare l’attesa, come spiegato ne [l’arte
 dell’attesa](/blog/l-arte-dell-attesa).
 
 Una precisazione prima che qualcuno prenda i numeri troppo sul serio: il nostro
-storico per questo parco comincia nell’agosto 2024, e Walibi apre solo da aprile
+storico per questo parco comincia a dicembre 2025, e Walibi apre solo da aprile
 a ottobre. Dietro i valori mensili da aprile ad agosto ci sono ogni volta da 11 a
 30 giorni misurati, e questo regge. Da settembre a marzo non abbiamo quasi dati,
 per questo lì non compare alcun numero. Un mese con undici giorni misurati ti dice se viaggi nella stagione giusta, non
@@ -750,8 +749,8 @@ calendario dell’affluenza:
 
 ```
 
-Ed ecco come si distribuisce l’affluenza tra i mesi, calcolata sulle ultime due
-stagioni:
+Ed ecco come si distribuisce l’affluenza tra i mesi, calcolata su tutti i giorni
+di apertura misurati:
 
 ```stats-widget slug=walibi-holland show=months
 
@@ -859,18 +858,19 @@ Defqon.1, il più grande festival hardstyle del mondo.
 
 ### Quanto si aspetta a Walibi Holland?
 
-Nelle ultime due stagioni l’attesa tipica nella media del parco è di **20
-minuti** (mediana), con il 90º percentile a 31 minuti. Untamed e Goliath restano
-appena sotto, e la novità YOY THRILL detiene di gran lunga il valore più alto del
-parco. I numeri aggiornati stanno sulla
-[pagina del parco Walibi Holland](ref:walibi-holland).
+Su tutti i giorni di apertura misurati l’attesa tipica nella media del parco è
+di un quarto d’ora scarso (mediana). Untamed e Goliath restano appena sotto, e
+la novità YOY THRILL detiene di gran lunga il valore più alto del parco. I
+numeri aggiornati stanno sulla [pagina del parco Walibi
+Holland](ref:walibi-holland).
 
 ### Quando c’è meno gente a Walibi Holland?
 
-Maggio e luglio sono nei nostri dati i mesi più rilassati (tipicamente 18
-minuti), aprile il più affollato (22 minuti). Per giorno della settimana la
-differenza è piccola, con il giovedì leggermente avanti a 18 minuti. Evita le
-vacanze olandesi di maggio e d’estate e i fine settimana di Halloween. Per una data precisa aiuta il [calendario dei tempi di attesa](ref:walibi-holland?calendar).
+Nel corso della stagione i mesi si distinguono appena, e per giorno della
+settimana non è misurabile alcuna differenza: tutti e sette stanno sullo stesso
+valore. Evita le vacanze olandesi di maggio e d’estate e i fine settimana di
+Halloween. Per una data precisa aiuta il [calendario dei tempi di
+attesa](ref:walibi-holland?calendar).
 
 ### Quanto costa l’ingresso a Walibi Holland?
 
@@ -962,4 +962,4 @@ più a niente.
 - #Lekkergaan e Zomerse Zaterdagen 2026: [«Walibi Holland viert de zomer met langere openingstijden en twee zomerevents» (comunicato)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · [«Nieuw zomerfestival in Walibi Holland heet #Lekkergaan» (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
 - Biglietti, parcheggio e i tre livelli di pass 2026 con il contingente Halloween: [Tickets (ufficiale)](https://www.walibi.nl/en/tickets) · [Passes (ufficiale)](https://www.walibi.nl/en/tickets/passes) · [Parcheggio 2026 (Pretparkplanner)](https://www.pretparkplanner.nl/walibi-holland/parkeren)
 - Quanto costa una serata completa di Halloween (almeno 116,50 € oltre all’ingresso, dato 2025): [«In Walibi Holland kost het dit jaar minimaal 116,50 euro om alle spookhuizen te bezoeken» (Looopings)](https://www.looopings.nl/weblog/30062/In-Walibi-Holland-kost-het-dit-jaar-minimaal-116-50-euro-om-alle-spookhuizen-te-bezoeken.html)
-- Dati di attesa e affluenza: storico proprio su due stagioni, [Walibi Holland su park.fan](ref:walibi-holland)
+- Dati di attesa e affluenza: storico proprio da dicembre 2025, [Walibi Holland su park.fan](ref:walibi-holland)

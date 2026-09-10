@@ -62,7 +62,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een maat voor hoe druk een pretpark is op een bepaalde dag, van Zeer Laag tot Extreem.',
     definition:
-      'Het drukte-niveau beschrijft de algehele bezoekerdichtheid in een park op een bepaalde dag of tijd. park.fan gebruikt een schaal van Zeer Laag tot Extreem op basis van historische wachttijdgegevens, huidige bezetting en AI-voorspellingen.',
+      'Het drukte-niveau zegt hoe vol een park is op een bepaalde dag of op een bepaald uur. park.fan rekent het uit de gemeten wachttijden, de huidige bezetting en de voorspelling, en geeft het op een schaal van “zeer laag” tot “extreem”. Zeer laag betekent korte rijen en vrije paden; extreem betekent lange wachttijden bij bijna elke attractie.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Drukte-niveaus', 'druktes'],
   },
@@ -374,7 +374,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een gedetailleerd, geoptimaliseerd itinerarium voor een pretparkbezoek dat attracties in volgorde plaatst om wachttijden te minimaliseren en het aantal ritten per dag te maximaliseren.',
     definition:
-      'Een Touring Plan is een vooraf geplande reeks attracties, maaltijden en parkbewegingen ontworpen om de totale wachttijd gedurende de dag te minimaliseren. Effectieve Touring Plans houden rekening met drukte-patronen, attractiecapaciteiten, rijdynamiek, showschema’s en het weer. Sites zoals TouringPlans.com (nu Thrill-Data) publiceren gedetailleerde plannen voor grote parken. De live wachttijden en druktekalender van park.fan zijn aanvullende tools: het controleren van real-time wachtdata gedurende de dag maakt aanpassingen onderweg mogelijk. Op drukke dagen kan een goed Touring Plan de totale wachttijd met 30–50% verminderen ten opzichte van een spontane aanpak.',
+      'Een Touring Plan is een vooraf geplande reeks attracties, maaltijden en parkbewegingen ontworpen om de totale wachttijd gedurende de dag te minimaliseren. Effectieve Touring Plans houden rekening met drukte-patronen, attractiecapaciteiten, rijdynamiek, showschema’s en het weer. Sites zoals TouringPlans.com publiceren gedetailleerde plannen voor grote parken. De live wachttijden en druktekalender van park.fan zijn aanvullende tools: het controleren van real-time wachtdata gedurende de dag maakt aanpassingen onderweg mogelijk.',
     aliases: ['Touring Plan'],
     alternateNames: ['Bezoeksplan', 'Parkplan', 'Bezoeksstrategie'],
 
@@ -424,7 +424,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Een Zwitserse achtbaan- en attractiefabrikant bekend om recordbrekende hydraulische launches, mega/giga coasters en innovatieve ontwerpen – het bedrijf achter vele van 's werelds snelste en hoogste ritten.",
     definition:
-      'Intamin AG is een Zwitserse attractiefabrikant, opgericht in 1967, verantwoordelijk voor enkele van de meest ambitieuze achtbaanrecords in de geschiedenis. Hun hydraulisch lanceersysteem dreef jarenlang de snelste en hoogste achtbanen aan (Kingda Ka, 139 m; Top Thrill Dragster). Intamin is ook bekend om hun mega- en giga coasters (waaronder Millennium Force bij Cedar Point en Intimidator 305 bij Kings Dominion), multi-launch coasters, waterritten en dark rides. Hun ontwerpen bevinden zich vaak aan de voorhoede van schaal en innovatie. Europese Intamin-installaties zijn onder meer Taron en Black Mamba bij Phantasialand en Red Force bij Ferrari Land.',
+      'Intamin AG is een Zwitserse attractiefabrikant, opgericht in 1967, verantwoordelijk voor enkele van de meest ambitieuze achtbaanrecords in de geschiedenis. Hun hydraulisch lanceersysteem dreef jarenlang de snelste en hoogste achtbanen aan (Kingda Ka, 139 m; Top Thrill Dragster). Intamin is ook bekend om hun mega- en giga coasters (waaronder Millennium Force bij Cedar Point en Intimidator 305 bij Kings Dominion), multi-launch coasters, waterritten en dark rides. Hun ontwerpen bevinden zich vaak aan de voorhoede van schaal en innovatie. Europese Intamin-installaties zijn onder meer Taron in Phantasialand, Expedition GeForce in Holiday Park en Red Force in Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
   },
   {
@@ -483,7 +483,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Duitse fabrikant die het best bekend staat om het Euro-Fighter-model met zijn voorbij-verticale eerste helling, en om spinning coasters en compacte familieritten.',
     definition:
-      'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Opgericht in 1946 als metaalverwerkend bedrijf, stapte het in de jaren 80 over naar attracties en bouwde zijn wereldwijde reputatie op met het Euro-Fighter-model – een compacte elektrisch gelanceerde achtbaan beroemd om zijn voorbij-verticale (97 graden) eerste drop. Euro-Fighters kunnen op kleine ruimte worden geïnstalleerd, waardoor ze aantrekkelijk zijn voor stedelijke parken en kleinere locaties; voorbeelden zijn Rage bij Adventure Island en Speed bij Oakwood. Gerstlauer produceert ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een roterende achtbaan waarbij rijders hun eigen flikflak regelen. In de enthousiastengemeenschap worden Gerstlauer-achtbanen gewaardeerd om hun intensiteit ten opzichte van hun kleine footprint.',
+      'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Opgericht in 1946 als metaalverwerkend bedrijf, stapte het in de jaren 80 over naar attracties en bouwde zijn wereldwijde reputatie op met het Euro-Fighter-model – een compacte achtbaan met verticale kettinglift en een drop tot 97 graden. Euro-Fighters kunnen op kleine ruimte worden geïnstalleerd, waardoor ze aantrekkelijk zijn voor stedelijke parken en kleinere locaties; voorbeelden zijn Rage bij Adventure Island en Speed bij Oakwood. Gerstlauer produceert ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een roterende achtbaan waarbij rijders hun eigen flikflak regelen. In de enthousiastengemeenschap worden Gerstlauer-achtbanen gewaardeerd om hun intensiteit ten opzichte van hun kleine footprint.',
     aliases: ['Gerstlauer Rides'],
 
     relatedTermIds: [
@@ -664,7 +664,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een 360-graden rol langs een parabolische boog waarbij rijders aan het hoogste punt bijna gewichtloosheid ervaren – een van de meest gevierde elementen in modern achtbaanontwerp.',
     definition:
-      'De zero-G roll (nul-zwaartekracht-rol) is een inversie-element waarbij de trein een parabolische boog door de rotatie volgt – vergelijkbaar in concept met een heartline roll maar op hogere snelheid en met meer verticale verplaatsing. Op het hoogtepunt van de rol ervaren rijders kortstondige negatieve G-krachten (airtime) terwijl ze ondersteboven zijn, wat een uniek desoriënterend en geliefd gevoel creëert. Zero-G rolls worden voornamelijk geassocieerd met B&M wing coasters en hyper coasters, waarbij het element wing-seat rijders dramatisch door de open lucht stuurt. Shambhala bij PortAventura en Fury 325 bij Carowinds hebben gevierde zero-G rolls.',
+      'De zero-G roll (nul-zwaartekracht-rol) is een inversie-element waarbij de trein een parabolische boog door de rotatie volgt – vergelijkbaar in concept met een heartline roll maar op hogere snelheid en met meer verticale verplaatsing. Op het hoogtepunt van de rol ervaren rijders kortstondige negatieve G-krachten (airtime) terwijl ze ondersteboven zijn, wat een uniek desoriënterend en geliefd gevoel creëert. Zero-G rolls worden voornamelijk geassocieerd met B&M wing coasters en hyper coasters, waarbij het element wing-seat rijders dramatisch door de open lucht stuurt. De zero-G roll is een handtekening van de inverted en wing coasters van B&M.',
     relatedTermIds: ['airtime', 'b-and-m', 'heartline-roll', 'inversion', 'zero-g-winder'],
   },
   {
@@ -736,7 +736,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een dubbel-inversie B&M-handtekenelement waarbij het spoor de vorm aanneemt van een opgerichte kobrakop – twee inversies verbonden door een draai aan het hoogste punt.',
     definition:
-      'De cobra roll is een van B&M’s meest kenmerkende handtekenelementen, bestaande uit twee inversies in snelle opeenvolging: het spoor buigt omhoog in een halve looping, roteert 180 graden aan de top (door een korte onderstebovenstand), en spiegelt daarna de reeks om in dezelfde richting als bij de ingang te eindigen. Vanuit opzij gezien lijkt het spoortracé op de opgeheven en gespreide kop van een cobra. Beroemde cobra rolls staan op Shambhala bij PortAventura, Pyrenees bij Parque de Atracciones de Madrid en vele B&M inverted coasters wereldwijd.',
+      'De cobra roll is een van B&M’s meest kenmerkende handtekenelementen, bestaande uit twee inversies in snelle opeenvolging: het spoor buigt omhoog in een halve looping, roteert 180 graden aan de top (door een korte onderstebovenstand), en spiegelt daarna de reeks om in dezelfde richting als bij de ingang te eindigen. Vanuit opzij gezien lijkt het spoortracé op de opgeheven en gespreide kop van een cobra. Beroemde cobra rolls: Dragon Khan bij PortAventura en vele B&M inverted coasters wereldwijd.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -953,7 +953,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Type achtbaan met stoelen aan weerszijden van de rail – niets boven, onder of naast de passagiers.',
     definition:
-      'Een Wing Coaster (ook Wing Rider) plaatst twee stoelen aan elke kant van de rail, waardoor passagiers geen enkele constructie boven, onder of naast zich hebben. Dit ontwerp maximaliseert het vlieggevoel en creëert spectaculaire near-misses met decor en constructies. B&M is de primaire fabrikant. Bekende Europese voorbeelden: The Swarm (Thorpe Park), Fēnix (Toverland, Nederland) en Flug der Dämonen (Europa-Park), die vaak wordt beschouwd als een van de beste coasters van Europa.',
+      'Een Wing Coaster (ook Wing Rider) plaatst twee stoelen aan elke kant van de rail, waardoor passagiers geen enkele constructie boven, onder of naast zich hebben. Dit ontwerp maximaliseert het vlieggevoel en creëert spectaculaire near-misses met decor en constructies. B&M is de primaire fabrikant. Europese voorbeelden: Flug der Dämonen in Heide-Park, The Swarm in Thorpe Park en Fēnix in Toverland.',
     aliases: ['Wing Coasters'],
     alternateNames: ['Wing Rider', 'Vleugel-achtbaan'],
 
@@ -987,7 +987,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Achtbaan van meer dan 61 m hoog, doorgaans zonder inversies, met de nadruk op snelheid en airtime.',
     definition:
-      'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt hun modellen "Hyper Coaster"; Intamin gebruikt "Mega Coaster" voor hun vergelijkbaar type. Beide leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (Spanje) is met 76 m de hoogste en snelste Hyper Coaster van Europa. Andere bekende voorbeelden: Goliath in Walibi Holland en Mako in SeaWorld Orlando.',
+      'Hyper Coaster is de classificatie voor achtbanen tussen 61 en 91 m hoog. B&M noemt hun modellen "Hyper Coaster"; Intamin gebruikt "Mega Coaster" voor hun vergelijkbaar type. Beide leggen de nadruk op grote airtime-heuvels bij hoge snelheid in plaats van inversies. Shambhala in PortAventura (76 m) en Hyperion in Energylandia (77 m) zijn de hoogste Hyper Coasters van Europa. Andere bekende voorbeelden: Goliath in Walibi Holland en Mako in SeaWorld Orlando.',
     aliases: ['Hyper Coasters'],
     alternateNames: ['Mega Coaster', 'Mega Achtbaan', 'Hypercoaster'],
 
@@ -998,7 +998,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Giga Coaster',
     shortDefinition: 'Achtbaan van meer dan 91 m hoog – een klasse hoger dan de Hyper Coaster.',
     definition:
-      'Giga Coaster is de classificatie voor achtbanen tussen 91 en 121 m hoog. De term werd in 2000 bedacht door Cedar Fair en Intamin voor Millennium Force in Cedar Point. Giga Coasters benadrukken extreme hoogte, lange layouts en enorme airtime-momenten. Fury 325 in Carowinds wordt door veel liefhebbers beschouwd als de beste stalen achtbaan ter wereld. In Europa bestaat in 2025 nog geen echte Giga Coaster.',
+      'Giga Coaster is de classificatie voor achtbanen tussen 91 en 121 m hoog. De term werd in 2000 bedacht door Cedar Fair en Intamin voor Millennium Force in Cedar Point. Giga Coasters benadrukken extreme hoogte, lange layouts en enorme airtime-momenten. Fury 325 in Carowinds wordt door veel liefhebbers beschouwd als de beste stalen achtbaan ter wereld. In Europa bestaat nog geen echte Giga Coaster; Hyperion in Energylandia (Polen) valt met 77 m technisch nog in de Hyper-categorie.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Gigacoaster'],
 
@@ -1050,9 +1050,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'AI-voorspelling',
     shortDefinition:
-      'Machine learning-voorspellingen voor drukteniveaus en wachttijden – tot 365 dagen van tevoren.',
+      'Machine learning-voorspellingen voor drukteniveaus en wachttijden, zo ver als een park zijn openingstijden gepubliceerd heeft.',
     definition:
-      'Een AI-voorspelling gebruikt machine learning-modellen die getraind zijn op historische bezoekersdata, weersdata, schoolvakantieschema’s en real-time wachtrij-informatie om te voorspellen hoe druk een pretpark of attractie zal zijn op een bepaalde dag of tijdstip. park.fan genereert AI-voorspellingen voor drukte en verwachte wachttijden tot 365 dagen van tevoren.\n\nDe voorspellingen worden bij elke trainingsronde opnieuw berekend, dagelijks om 06:00 UTC. Kortetermijnvoorspellingen (1–7 dagen) zijn doorgaans zeer nauwkeurig omdat ze actuele weersdata, aankondigingen van evenementen en boekingssignalen meenemen. Langetermijnvoorspellingen zijn van nature minder nauwkeurig, maar blijven waardevol voor het identificeren van rustige of drukke perioden ruim van tevoren.',
+      'Een AI-voorspelling gebruikt machine learning-modellen die getraind zijn op historische bezoekersdata, weersdata, schoolvakantieschema’s en real-time wachtrij-informatie om te voorspellen hoe druk een pretpark of attractie zal zijn op een bepaalde dag of tijdstip. park.fan genereert AI-voorspellingen voor drukte en verwachte wachttijden voor elke dag die een park al gepubliceerd heeft.\n\nDe voorspellingen worden bij elke trainingsronde opnieuw berekend, dagelijks om 06:00 UTC. Kortetermijnvoorspellingen (1–7 dagen) worden nauwkeuriger omdat het weer en de evenementen dan vastliggen en de actuele weersdata, aankondigingen van evenementen en boekingssignalen meetellen. Langetermijnvoorspellingen zijn van nature minder nauwkeurig, maar blijven waardevol voor het identificeren van rustige of drukke perioden ruim van tevoren.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     aliases: ['AI-voorspelling', 'AI-voorspellingen'],
   },
@@ -1095,7 +1095,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Kunstmatige Intelligentie – de machine-learningmodellen die drukte-prognoses en wachttijdvoorspellingen berekenen.',
     definition:
-      'AI (Kunstmatige Intelligentie) verwijst naar machine-learningalgoritmen die patronen herkennen in grote datasets en voorspellingen genereren. park.fan gebruikt AI-modellen die getraind zijn op de meegeschreven wachttijden, schoolvakantieregelingen, weerdata en evenementaankondigingen om dagelijkse drukte- en wachttijdprognoses te produceren voor elk bijgehouden park – tot 365 dagen vooruit.',
+      'AI (Kunstmatige Intelligentie) verwijst naar machine-learningalgoritmen die patronen herkennen in grote datasets en voorspellingen genereren. park.fan gebruikt AI-modellen die getraind zijn op de meegeschreven wachttijden, schoolvakantieregelingen, weerdata en evenementaankondigingen om dagelijkse drukte- en wachttijdprognoses te produceren: voor elk park en elke dag die het al gepubliceerd heeft.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
     aliases: ['Kunstmatige Intelligentie'],
   },
@@ -1740,7 +1740,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Twee parallelle achtbaanrails waarop treinen tegelijkertijd rijden en zij aan zij racen.',
     definition:
-      'Een racing coaster heeft twee afzonderlijke maar gespiegelde achtbaanrails die parallel aan elkaar lopen; de treinen worden tegelijkertijd weggestuurd zodat passagiers de beleving hebben te racen tegen de andere trein. De rails kruisen elkaar of komen op meerdere punten extreem dichtbij, waardoor de spanning maximaal is. Sommige racing coasters zijn gebouwd als Möbius-lus: beide rails vormen één doorgaand circuit en passagiers wisselen automatisch van kant. Het format werkt even goed met houten als met stalen achtbanen. Bekende Europese voorbeelden: Piraten in Djurs Sommerland en Dwervelwind in Plopsaland.',
+      'Een racing coaster heeft twee afzonderlijke maar gespiegelde achtbaanrails die parallel aan elkaar lopen; de treinen worden tegelijkertijd weggestuurd zodat passagiers de beleving hebben te racen tegen de andere trein. De rails kruisen elkaar of komen op meerdere punten extreem dichtbij, waardoor de spanning maximaal is. Sommige racing coasters zijn gebouwd als Möbius-lus: beide rails vormen één doorgaand circuit en passagiers wisselen automatisch van kant. Het format werkt even goed met houten als met stalen achtbanen. In Europa zijn ze zeldzaam; het bekendste voorbeeld is de Möbius-woodie Grand National in Blackpool Pleasure Beach.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     aliases: [
       'dubbele achtbaan',

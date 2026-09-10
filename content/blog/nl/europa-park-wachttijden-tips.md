@@ -83,11 +83,12 @@ Na het winterseizoen wordt de baan afgebroken. Het park heeft voor
 
 ![De hoofdingang van het Europa-Park, aan de gevel hangen landsvlaggen | De hoofdingang in Rust. Daarachter liggen 95 hectare en 18 Europese landen. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park wachttijden: 23 minuten, gemeten over een jaar
+## Europa-Park wachttijden: een krap half uur gemiddeld
 
-Onze wachttijdhistorie voor het Europa-Park gaat twaalf maanden terug. Over alle
-weekdagen gerekend ligt de **typische wachttijd parkbreed op 23 minuten**
-(mediaan), het 90e percentiel op 36.
+Onze wachttijdhistorie voor het Europa-Park begint in december 2025 en is sinds
+april compleet. Over alle weekdagen gerekend ligt de typische wachttijd
+parkbreed op **een ruim kwartier** (mediaan); op die ene dag van de tien waarop
+het echt druk is, ligt hij daar duidelijk boven.
 
 De tien attracties waar je het langst staat, met de waarde van vandaag ernaast:
 
@@ -649,8 +650,8 @@ Allemaal netjes, maar niets waarvoor je om acht uur opstaat. De achtbanen laten
 zich over de dag verdelen, het vliegtheater niet.
 
 Hoe sterk zich dat over de dag verdeelt, zie je pas in het uurprofiel: de
-typische wachttijd per uur, gemiddeld over een jaar bedrijfsdagen. Het drukste
-uur van elke attractie staat vet.
+typische wachttijd per uur, gemiddeld over alle gemeten bedrijfsdagen. Het
+drukste uur van elke attractie staat vet.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -844,12 +845,11 @@ blue-fire-Dome.
 
 ### Hoe lang zijn de wachttijden in het Europa-Park?
 
-Over de laatste twaalf maanden ligt de typische wachttijd parkbreed op
-**23 minuten** (mediaan), het 90e percentiel op 36. De langste rij heeft Voltron
-Nevera met typisch 34 minuten, gevolgd door Arthur met 31 en Wodan en Eurosat
-met elk 28. Wat er vandaag bij de rij staat, zie je bij de
-[actuele Europa-Park wachttijden](ref:europa-park?bare), elke vijf minuten
-bijgewerkt en met een voorspelling voor de komende dagen.
+Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op een ruim
+kwartier (mediaan). De langste rij heeft Voltron Nevera, gevolgd door Arthur,
+Wodan en Eurosat. Wat er vandaag bij de rij staat, zie je bij de [actuele
+Europa-Park wachttijden](ref:europa-park?bare), elke vijf minuten bijgewerkt en
+met een voorspelling voor de komende dagen.
 
 ### Wanneer is het in het Europa-Park het rustigst?
 

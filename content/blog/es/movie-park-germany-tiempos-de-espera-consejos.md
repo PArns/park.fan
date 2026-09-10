@@ -344,9 +344,9 @@ veinte minutos, con carrozas, canto en directo y coreografía. El **4 de julio d
 
 ## Veinte minutos, y una cola que nunca se acorta
 
-Nuestro histórico de tiempos de espera para Bottrop se remonta al **26 de agosto
-de 2025** y abarca **135 días de apertura aprovechables**. Contando todos los
-días de la semana, la espera típica en la media del parque es de veinte minutos
+Nuestro histórico de tiempos de espera para Bottrop empieza en **diciembre de
+2025** y abarca **135 días de apertura aprovechables**. Contando todos los días
+de la semana, la espera típica en la media del parque es de veinte minutos
 (mediana).
 
 Las diez atracciones en las que más se espera:
@@ -356,9 +356,10 @@ Las diez atracciones en las que más se espera:
 ```
 
 Arriba del todo no hay una montaña rusa de 90 km/h, sino un recorrido bajo techo
-de 36. Van Helsing’s Factory tiene la mediana más alta del parque, y justo detrás
-viene el tronco de la zona infantil. Star Trek queda a media tabla, aunque la
-mayoría viaja hasta aquí precisamente por esa atracción.
+de 36. Van Helsing’s Factory tiene la mediana más alta del parque, y detrás van
+varias atracciones igualadas, entre ellas el tronco de la zona infantil. Star
+Trek queda a media tabla, aunque la mayoría viaja hasta aquí precisamente por
+esa atracción.
 
 Eso tiene poco que ver con la popularidad y mucho con la capacidad. Van Helsing
 saca 848 personas por hora, y como el recorrido va por dentro es además adonde se
@@ -396,7 +397,7 @@ cosas.
 
 > [!NOTE]
 > Una limitación que para este parque pesa especialmente. Nuestro histórico
-> empieza a finales de agosto de 2025, y para **septiembre, octubre y noviembre
+> empieza en diciembre de 2025, y para **septiembre, octubre y noviembre
 > no contiene ni un solo día aprovechable**. Precisamente las semanas del
 > Halloween Horror Festival no están medidas por nosotros. Lo que el calendario
 > muestra más abajo para el otoño es una previsión, no una medición.
@@ -652,12 +653,11 @@ Que llueva o no en Bottrop decide medio parque:
 
 ### ¿Cuánto se espera en el Movie Park?
 
-A lo largo de 135 días de apertura medidos desde agosto de 2025, la espera típica
-en la media del parque es de **veinte minutos** (mediana). El valor más alto del
-parque lo tiene
+A lo largo de 135 días de apertura medidos, la espera típica en la media del
+parque es de **veinte minutos** (mediana). El valor más alto del parque lo tiene
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), no la gran
-montaña rusa. Las cifras actuales están en la
-[página del Movie Park](ref:movie-park-germany?bare).
+montaña rusa. Las cifras actuales están en la [página del Movie
+Park](ref:movie-park-germany?bare).
 
 ### ¿Cuándo hay menos gente en el Movie Park?
 
@@ -777,4 +777,4 @@ derribar está entonces iluminada de violeta delante de la luna.
 - Cómo llegar, estación de Feldhausen, SB16: [Acceso y aparcamiento (oficial)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Excursión en tren (DB Regio NRW, en alemán)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Vacaciones de otoño en RNW 2026 (del 17 al 31 de octubre): [Calendario escolar de Renania del Norte-Westfalia (Bildungsportal NRW, en alemán)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - Balance de la temporada 2024 y 30 millones de visitantes desde 1996: [Balance de temporada y evento MPHC 2024 (oficial, en alemán)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany recibe a su visitante 30 millones (EuroAmusement Professional, en alemán)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
-- Datos de tiempos de espera y afluencia: histórico propio desde agosto de 2025, [Movie Park Germany en park.fan](ref:movie-park-germany)
+- Datos de tiempos de espera y afluencia: histórico propio desde diciembre de 2025, [Movie Park Germany en park.fan](ref:movie-park-germany)

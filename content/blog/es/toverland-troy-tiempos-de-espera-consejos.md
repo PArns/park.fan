@@ -133,13 +133,13 @@ brusca»: vuelve a montar.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Lo que Troy cuesta de verdad, medido a lo largo de dos temporadas
+## Lo que Troy cuesta de verdad, medido a lo largo de 150 días de funcionamiento
 
-A lo largo de las dos últimas temporadas, calculado sobre más de 150 días de
-funcionamiento con datos de espera, el **tiempo de espera típico de Troy es de
-16 minutos** (mediana). Incluso el percentil 90, el valor por debajo del cual
-quedan nueve de cada diez mediciones, se queda en **21 minutos**. Eso no es el
-martes muerto de marzo, es la media de todos los días de apertura.
+Calculado sobre más de 150 días de funcionamiento con datos de espera, el tiempo
+de espera típico de Troy es de **un cuarto de hora escaso** (mediana). Incluso
+ese día de cada diez en el que más movimiento hay, se queda por debajo de la
+media hora. Eso no es el martes muerto de marzo, es la media de todos los días
+de apertura.
 
 Setenta kilómetros al noroeste, el [Efteling](ref:efteling) tiene
 **Joris en de Draak**, también de GCI, tres años más joven, y un imán de público
@@ -442,24 +442,21 @@ Después de Halloween el parque cierra brevemente y abre del **28 de noviembre d
 mercado navideño, pista de hielo y de curling, los miércoles y fines de semana
 más de forma continuada durante las vacaciones de Navidad. Las atracciones
 acuáticas descansan entonces, y a cambio se suma la primicia mundial. Precioso,
-solo que deja de ser un secreto en cuanto se encienden las luces: diciembre y
-enero son, según nuestros datos, los meses más duros del año.
+solo que deja de ser un secreto en cuanto se encienden las luces: diciembre está,
+según nuestros datos, entre los meses más llenos del año.
 
 ## Cuándo ir
 
 La respuesta sale muy relajada: casi siempre.
 
-**Por meses**, junio es el óptimo (típicamente 18 minutos de media en el
-parque), seguido de mayo y julio con 20 y 22 minutos. El más duro es **abril**
-con 25 minutos, cuando coinciden la Semana Santa, el Día del Rey y las
-vacaciones neerlandesas de mayo, después las semanas de invierno de **diciembre
-y enero** con 31 y 26 minutos. Eso sorprende a mucha gente: el periodo más lleno
-no es el verano, sino la corta y muy demandada temporada de invierno, en la que
-solo funciona una parte de las atracciones y el parque abre solo los miércoles y
-los fines de semana. Una salvedad: el invierno y la pretemporada tienen tan
-pocos días de apertura que detrás de esos valores mensuales hay bastantes menos
-días de medición que detrás de los meses de verano. La dirección es clara, el
-decimal no.
+**Por meses**, de marzo a julio todo queda muy junto, y por encima destacan
+**agosto** y las semanas de invierno de **diciembre**. Eso sorprende a mucha
+gente: el periodo más lleno no es solo el verano, sino también la corta y muy
+demandada temporada de invierno, en la que solo funciona una parte de las
+atracciones y el parque abre solo los miércoles y los fines de semana. Una
+salvedad: el invierno y la pretemporada tienen tan pocos días de apertura que
+detrás de esos valores mensuales hay bastantes menos días de medición que detrás
+de los meses de verano. La dirección es clara, el decimal no.
 
 **Por días de la semana** las cifras apenas se separan. El día más lleno es el
 sábado (25 minutos) y después el viernes (24 minutos); de domingo a miércoles
@@ -475,8 +472,8 @@ tranquilos que vienen:
 
 ```
 
-Y así se reparte la afluencia por meses y días de la semana, calculada sobre las
-dos últimas temporadas:
+Y así se reparte la afluencia por meses y días de la semana, calculada sobre los
+días de apertura medidos:
 
 ```stats-widget slug=attractiepark-toverland
 
@@ -575,11 +572,10 @@ esperas típicas de 16 minutos.
 
 ### ¿Cuánto se espera en Toverland?
 
-En las dos últimas temporadas la espera típica en el conjunto del parque es de
-**20 minutos**, con Troy y Fēnix en **16 minutos** de mediana cada uno. Los
-valores más altos son los de diciembre y enero, y los de abril. Las cifras
-actuales están en la
-[página del parque Toverland](ref:attractiepark-toverland).
+A lo largo de todos los días de apertura medidos, la espera típica en el
+conjunto del parque es de un cuarto de hora escaso, y Troy y Fēnix están en ese
+mismo orden. Las cifras actuales están en la [página del parque
+Toverland](ref:attractiepark-toverland).
 
 ### ¿Cuándo hay menos gente en Toverland?
 
@@ -683,4 +679,4 @@ los demás parques de Europa, olvídate.
 - Halloween Days & Nights, scare zones y Fear Pass: [Scare zones & experiences (oficial)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [nuestra guía de Halloween](/blog/halloween-parques-atracciones-2026)
 - Cómo llegar, autobús y aparcamiento: [Dirección y ruta (oficial)](https://www.toverland.com/en/contact/adress-route)
 - Entre bastidores en la Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Datos de espera y afluencia: histórico propio de dos temporadas, [Toverland en park.fan](ref:attractiepark-toverland)
+- Datos de espera y afluencia: histórico propio desde diciembre de 2025, [Toverland en park.fan](ref:attractiepark-toverland)

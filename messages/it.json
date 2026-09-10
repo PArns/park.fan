@@ -7,7 +7,7 @@
     "title": "Condividi",
     "on": "Condividi su {platform}",
     "copy": "Copia link",
-    "copied": "Copiato!"
+    "copied": "Copiato"
   },
   "common": {
     "scroll": "Scorri",
@@ -96,7 +96,7 @@
     "errorPageTitle": "Qualcosa è andato storto",
     "errorPageDescription": "Si è verificato un errore imprevisto. Riprova.",
     "goHome": "Vai alla homepage",
-    "maintenanceTitle": "Torniamo presto!",
+    "maintenanceTitle": "Torniamo presto",
     "maintenanceDescription": "park.fan è temporaneamente non disponibile per manutenzione. Riprova tra qualche minuto."
   },
   "notFound": {
@@ -1945,7 +1945,7 @@
       "withdraw": "Hai cambiato idea? Contattaci e rimuoveremo la tua foto."
     },
     "success": {
-      "title": "Grazie!",
+      "title": "Grazie",
       "message": "{count, plural, one {La tua foto è} other {Le tue # foto sono}} stata/e inviata/e e comparirà/compariranno nella galleria dopo una rapida verifica.",
       "again": "Carica altre foto",
       "home": "Torna alla home"

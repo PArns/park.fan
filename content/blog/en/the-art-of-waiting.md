@@ -240,7 +240,7 @@ next half hour. Wait times across the rest of the park breathe noticeably as a
 result. You can watch this effect live in the charts on park.fan: during the
 big evening show, headliner wait times measurably dip, and anyone who’s already
 seen the show rides at the best value of the day in that hour. Moments like
-that are exactly why we update wait times by the minute.
+that are exactly why we re-read the wait times every five minutes.
 
 ![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney’s Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show, a whole wave of visitors guaranteed not to be standing in a single coaster line for this half hour. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -373,9 +373,9 @@ winner. Peak-end rule, remember: the experience ends better than expected, and
 that’s exactly how it gets filed away. So the display really does lie, but it
 lies in your favour.
 
-park.fan hangs off this very formula. The live wait times show by the minute
-what L and λ are actually doing, and when our model forecasts wait times up to
-365 days ahead, at its core it’s modelling nothing other than those two quantities:
+park.fan hangs off this very formula. The live wait times show every five
+minutes what L and λ are actually doing, and when our model forecasts wait times
+up to 365 days ahead, at its core it’s modelling nothing other than those two quantities:
 **demand** (how many people want to ride this thing today?) and **throughput**
 (how many can it move?). Little would probably be astonished at what his
 formula gets used for these days. How often our forecasts match reality is on
@@ -465,8 +465,8 @@ is its ratio to everything else that’s open.
 Those profiles are exactly why every park page on park.fan shows long-term
 statistics alongside the live wait times. Because “busy” is relative: 45
 minutes is a bad day in Brühl and a gift at the Magic Kingdom. Look at the same
-data set for both parks, typical wait times by month and weekday, from the last
-two seasons.
+data set for both parks, typical wait times by month and weekday, from every
+operating day we have measured.
 
 **First [Phantasialand](ref:phantasialand?bare) in Brühl**, the compact extreme
 case: when a number goes up here, it goes up steeply, because everything
@@ -585,9 +585,9 @@ The next 60-minute queue won’t get any shorter for it. But it reads
 differently. Three questions remain, and park.fan has an answer for each:
 
 - **How long is the queue _really_, right now?** That’s what our **live wait
-  times** are for: over 200 parks, 7,000 attractions, by the minute. Little’s
-  Law in real time, without you having to count the 640 people in front of you
-  yourself.
+  times** are for: over 200 parks, 7,000 attractions, refreshed every five
+  minutes. Little’s Law in real time, without you having to count the 640 people
+  in front of you yourself.
 - **Is that a lot or normal?** The **long-term statistics** for each attraction
   tell you, because 45 minutes is either an annoyance or a lottery win
   depending on the park.

@@ -269,8 +269,8 @@ quietest upcoming days for Phantasialand:
 ```
 
 And if you want to see the **crowds by weekday and month**, which days across
-the year are typically relaxed and which you should avoid, this look back at the
-last two seasons will show you:
+the year are typically relaxed and which you should avoid, this look at the
+operating days we have measured will show you:
 
 ```stats-widget slug=phantasialand
 

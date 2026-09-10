@@ -33,14 +33,14 @@ import { QuietestDaysByPark } from '../_quietest-days-by-park';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'De rustigste weekdagen',
   weekdaysBody:
-    'Elk park telt hier even zwaar, of het nu Disneyland is of een klein familiepark: we rekenen het eerst om naar zijn eigen gemiddelde en middelen daarna pas. De balk laat zien hoe druk een doorsnee weekdag is vergeleken met dat gemiddelde. Dinsdag tot en met donderdag winnen bijna altijd.',
+    'Elk park telt hier even zwaar, of het nu Disneyland is of een klein familiepark: we rekenen het eerst om naar zijn eigen gemiddelde en middelen daarna pas. De balk laat zien hoe druk een doorsnee weekdag is vergeleken met dat gemiddelde. De zaterdag springt eruit; de andere zes dagen liggen dichter bij elkaar dan de meeste mensen verwachten.',
   monthsTitle: 'De rustigste maanden',
   monthsBody:
-    'Dezelfde rekensom over het jaar: de maanden buiten het seizoen zijn merkbaar leger dan de zomer- en vakantiepieken.',
+    'Dezelfde rekensom, nu over het jaar verdeeld. December valt daarbij uit de toon, want daarin zitten alleen de parken die in de winter überhaupt opengaan, en die draaien dan kerstprogramma.',
   quieter: 'rustiger',
   busier: 'drukker',
   typical: 'rond het gemiddelde',
-  footnote: 'Op basis van {days} parkdagen uit {parks} parken, laatste {months} maanden.',
+  footnote: 'Op basis van {days} gemeten parkdagen uit {parks} parken.',
   pending:
     'De live ranglijst verzamelt nog wachttijden. De rustigste dagen verschijnen hier zodra er genoeg data is.',
 };
@@ -49,17 +49,17 @@ const FAQ = [
   {
     question: 'Wanneer kun je het best een pretpark bezoeken?',
     answer:
-      'Het rustigst is het op weekdagen buiten de schoolvakanties, met dinsdag tot en met donderdag in het laagseizoen voorop. De precieze patronen per weekdag en maand zie je hierboven, rechtstreeks uit de gemeten wachttijden over alle parken.',
+      'Het rustigst is het op weekdagen buiten de schoolvakanties, met dinsdag tot en met donderdag voorop. De precieze patronen per weekdag en maand zie je hierboven, rechtstreeks uit de gemeten wachttijden over alle parken.',
   },
   {
     question: 'Welke weekdag is het minst druk?',
     answer:
-      'Gemiddeld over alle parken zijn dinsdag, woensdag en donderdag het rustigst, terwijl zaterdag en zondag duidelijk het drukst zijn. Afzonderlijke parken kunnen afwijken; de druktekalender op de parkpagina laat het dag voor dag zien.',
+      'Gemiddeld over alle parken zijn dinsdag, woensdag en donderdag het rustigst. Uitgesproken druk is alleen de zaterdag; de zondag ligt dichter bij de dinsdag dan bij de zaterdag. Afzonderlijke parken kunnen afwijken; de druktekalender op de parkpagina laat het dag voor dag zien.',
   },
   {
     question: 'In welke maanden zijn pretparken het minst druk?',
     answer:
-      'De laagseizoensmaanden buiten de zomer- en feestdagpieken zijn het leegst. Het maandoverzicht hierboven toont de relatieve drukte over het jaar, gemiddeld over alle parken.',
+      'Dat hangt sterker van het park af dan de vuistregel doet vermoeden: over alle parken gerekend zijn de zomermaanden niet de drukste, en december steekt naar boven uit, omdat in de winter alleen de parken met kerstprogramma open zijn. Het maandoverzicht hierboven laat het maand voor maand zien. Voor een concreet park telt zijn eigen kalender.',
   },
   {
     question: 'Is een bezoek in de regen de moeite waard?',
@@ -69,7 +69,7 @@ const FAQ = [
   {
     question: 'Hoe vind ik de beste dag voor een specifiek park?',
     answer:
-      'Deze pagina toont de globale patronen als startpunt. Open voor een concreet park zijn druktekalender: die toont voor elke afzonderlijke dag tot een jaar vooruit een groene, gele of rode voorspelling, inclusief de school- en feestdagen van die regio.',
+      'Deze pagina toont de globale patronen als startpunt. Open voor een concreet park zijn druktekalender: die toont voor elke gepubliceerde dag een groene, gele of rode voorspelling, inclusief de school- en feestdagen van die regio.',
   },
   {
     question: 'Waar komen deze gegevens vandaan?',
@@ -96,9 +96,8 @@ export function ContentNL() {
           passende dag uit.
         </P>
         <Highlight>
-          Korte versie: dinsdag tot en met donderdag buiten de schoolvakanties, bij opening aanwezig
-          zijn en een wisselvallige weersvoorspelling voor je laten werken. Alles daaronder is het
-          kleingedrukte.
+          Korte versie: dinsdag tot en met donderdag buiten de schoolvakanties, op tijd bij de
+          opening zijn, en een wisselvallige weersvoorspelling is een voordeel, geen probleem.
         </Highlight>
       </div>
 
@@ -111,8 +110,8 @@ export function ContentNL() {
         icon={CalendarRange}
       >
         <PG>
-          Laten we met de twee grootste knoppen beginnen: de weekdag en de maand. Allebei gemiddeld
-          over alle parken, telkens uit de werkelijk gemeten wachttijden. Zo ziet dat eruit:
+          De weekdag en de maand bewegen het meest. Allebei gemiddeld over alle parken, telkens uit
+          de werkelijk gemeten wachttijden. Zo ziet dat eruit:
         </PG>
         <BestTimesData locale="nl" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="nl" />
@@ -127,8 +126,8 @@ export function ContentNL() {
         icon={Clock}
       >
         <P>
-          De dag is het halve werk, het uur de andere helft. Deze vier tijdvensters zijn bijna
-          overal het rustigst:
+          Na de weekdag beslist het tijdstip het meest. Deze vier tijdvensters zijn bijna overal het
+          rustigst:
         </P>
         <TouchpointGrid
           items={[
@@ -144,7 +143,7 @@ export function ContentNL() {
             },
             {
               icon: Sun,
-              title: 'De laatste 90 minuten',
+              title: 'Het laatste uur',
               body: 'Veel dagjesmensen vertrekken vroeg. Vlak voor sluitingstijd dalen de wachttijden vaak nog eens flink.',
             },
             {
@@ -196,7 +195,7 @@ export function ContentNL() {
             {
               icon: CalendarDays,
               title: 'Weekenden & feestdagen',
-              body: 'Zaterdag en zondag zijn over alle parken het drukst; feestdagen en lange weekenden doen er nog een schepje bovenop.',
+              body: 'De zaterdag is over alle parken de drukste dag, met duidelijke afstand tot de rest van de week. Feestdagen en lange weekenden doen er nog een schepje bovenop.',
             },
             {
               icon: CalendarRange,
@@ -206,7 +205,7 @@ export function ContentNL() {
             {
               icon: Sun,
               title: 'Brugdagen & vakantiezaterdagen in het hoogseizoen',
-              body: 'De klassieke piekcombinatie: zonnig, iedereen vrij, iedereen aanwezig. Kies als het kan liever de dinsdag erna.',
+              body: 'Zon, een vrije dag en hoogseizoen vallen hier samen. Van alle combinaties in de kalender is dit de drukste.',
             },
             {
               icon: Sparkles,
@@ -230,17 +229,12 @@ export function ContentNL() {
             {
               icon: CalendarDays,
               title: 'Weekdag boven weekend',
-              body: 'De grootste knop om aan te draaien: een dinsdag in plaats van een zaterdag kan de wachttijden halveren.',
+              body: 'De grootste knop in de kalender. Over alle parken gerekend ligt de zaterdag het verst boven het gemiddelde en de dinsdag het verst eronder.',
             },
             {
               icon: CloudRain,
               title: 'Gebruik het weer slim',
               body: 'Een wisselvallige voorspelling houdt veel mensen thuis. Wie tegen een buitje kan, staat merkbaar korter in de rij. Een regenjas verslaat een paraplu.',
-            },
-            {
-              icon: Sunrise,
-              title: 'Kom vroeg',
-              body: 'Bij de grote banen levert het eerste uur vaak meer op dan twee uur in de middag. Of het zich voor een bepaalde baan loont, staat op haar eigen pagina.',
             },
             {
               icon: Ticket,
@@ -265,14 +259,15 @@ export function ContentNL() {
       >
         <P>
           De patronen hierboven zijn het startpunt. De echt beste dag vind je in de druktekalender
-          op elke parkpagina: die geeft elke afzonderlijke dag groen, geel of rood, tot een jaar
-          vooruit en passend bij de vakanties en feestdagen van de betreffende regio.
+          op elke parkpagina: die geeft elke afzonderlijke dag groen, geel of rood, zo ver als het
+          park zijn openingstijden gepubliceerd heeft en passend bij de vakanties en feestdagen van
+          de betreffende regio.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="De paleisrit Symbolica in de Efteling"
           kicker="Groen, geel, rood"
-          title="Eén kleur per dag, een jaar vooruit"
+          title="Eén kleur per dag, zo ver als de openingstijden reiken"
           badge={<CrowdLevelBadge level="low" />}
         >
           Elke parkpagina heeft een dag-op-dag voorspelling die de school- en feestdagen van precies
@@ -286,7 +281,7 @@ export function ContentNL() {
       {/* Powered by Fancast */}
       <FancastCta
         title="Aangedreven door Fancast"
-        body="Ons eigen voorspelmodel schat de drukte tot 365 dagen vooruit en geeft zichzelf daarbij een cijfer."
+        body="Ons eigen voorspelmodel schat de drukte voor elke gepubliceerde dag en geeft zichzelf daarbij een cijfer."
       />
 
       {/* 06 – FAQ */}

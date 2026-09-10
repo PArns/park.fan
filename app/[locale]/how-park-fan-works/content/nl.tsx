@@ -313,7 +313,7 @@ const FAQ = [
   {
     question: 'Is 70 minuten wachten veel?',
     answer:
-      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten en blijft op negen van de tien maandagen op 70 of daaronder. Op zaterdag is de mediaan van dezelfde baan precies die 70 minuten, dus dezelfde stand is op maandag een uitgesproken drukke dag en op zaterdag volstrekt gemiddeld. Op zaterdag ligt de mediaan van dezelfde attractie op precies 70 minuten, en dan is dezelfde weergave volstrekt gemiddeld. Beide vergelijkingswaarden staan op park.fan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
+      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten, en op negen van de tien maandagen blijft de piek op 70 of daaronder. Op zaterdag ligt de mediaan van dezelfde baan precies op die 70 minuten. Dezelfde stand is op maandag dus een uitgesproken drukke dag en op zaterdag volstrekt gemiddeld. Beide vergelijkingswaarden staan op park.fan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
   },
   {
     question: 'Waar komen de wachttijden vandaan?',
@@ -672,9 +672,9 @@ export function ContentNL() {
             kilometer tellen daarom mee en krijgen in de kalender een eigen markering.
           </P>
           <PG>
-            De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat elke
-            nacht opnieuw wordt getraind met de wachttijden van de vorige dag en zich achteraf aan
-            de werkelijkheid laat narekenen.
+            De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat
+            dagelijks om 06:00 UTC opnieuw wordt getraind met de wachttijden van de vorige dag en
+            zich achteraf aan de werkelijkheid laat narekenen.
           </PG>
           <P>
             Hoe ver de kalender reikt, hangt van het park af. Een park dat het hele jaar open is,
@@ -763,8 +763,8 @@ export function ContentNL() {
 
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Wachttijden" delay={0}>
-              ThemeParks.wiki, Wartezeiten.app en Queue-Times.com, elke vijf minuten. De ruwe valuta
-              van al het andere op deze pagina.
+              ThemeParks.wiki, Wartezeiten.app en Queue-Times.com, elke vijf minuten. De ruwe
+              grondstof voor al het andere op deze pagina.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Vakanties & feestdagen" delay={60}>
               Nager.Date voor wettelijke feestdagen en brugdagen, OpenHolidays voor schoolvakanties.
@@ -805,7 +805,7 @@ export function ContentNL() {
           <NightShift
             locale="nl"
             jobs={NIGHT_JOBS}
-            caption="Tijden in UTC, dus midden in de nacht. De volgorde verklaart de tijden: “loont vroeg opstaan” van 05:15 heeft gisteren in kwartieren nodig, en die ontstaan pas om 04:30."
+            caption="Tijden in UTC, dus tussen middernacht en de vroege ochtend. De volgorde verklaart de tijden: “loont vroeg opstaan” van 05:15 heeft gisteren in kwartieren nodig, en die ontstaan pas om 04:30."
           />
         </SectionShell>
       </Ambience>

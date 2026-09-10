@@ -60,7 +60,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une mesure de l’affluence dans un parc à thème un jour donné, de Très Faible à Extrême.',
     definition:
-      'Le niveau d’affluence décrit la densité globale de visiteurs dans un parc un jour ou une heure donnés. park.fan utilise une échelle de Très Faible à Extrême basée sur les données historiques de temps d’attente, l’occupation actuelle et les prévisions IA.',
+      'Le niveau d’affluence dit à quel point un parc est chargé un jour ou à une heure donnés. park.fan le calcule à partir des temps d’attente mesurés, de l’occupation du moment et de la prévision, et le rend sur une échelle de « très faible » à « extrême ». Très faible, ce sont des files courtes et des allées dégagées ; extrême, ce sont des attentes longues sur presque toutes les attractions.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Niveaux d’affluence'],
   },
@@ -370,7 +370,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un itinéraire détaillé et optimisé pour une visite de parc à thème, séquençant les attractions pour minimiser les temps d’attente et maximiser le nombre de manèges dans la journée.',
     definition:
-      'Un Touring Plan est une séquence pré-planifiée d’attractions, de repas et de déplacements dans le parc conçue pour minimiser le temps total d’attente dans la journée. Les bons Touring Plans tiennent compte des schémas d’affluence (quelles zones se remplissent en premier), des capacités des attractions, de la dynamique des files, des horaires de spectacles et de la météo. Des sites comme TouringPlans.com (désormais Thrill-Data) publient des plans détaillés collaboratifs pour les grands parcs. Les temps d’attente en direct et le calendrier d’affluence de park.fan sont des outils complémentaires : consulter les données en temps réel permet d’ajuster son plan en cours de journée. Les jours chargés, un bon Touring Plan peut réduire le temps total en file de 30 à 50 % par rapport à une visite spontanée.',
+      'Un Touring Plan est une séquence pré-planifiée d’attractions, de repas et de déplacements dans le parc conçue pour minimiser le temps total d’attente dans la journée. Les bons Touring Plans tiennent compte des schémas d’affluence (quelles zones se remplissent en premier), des capacités des attractions, de la dynamique des files, des horaires de spectacles et de la météo. Des sites comme TouringPlans.com publient des plans détaillés pour les grands parcs. Les temps d’attente en direct et le calendrier d’affluence de park.fan sont des outils complémentaires : consulter les données en temps réel permet d’ajuster son plan en cours de journée.',
     alternateNames: ['Plan de Visite', 'Itinéraire', 'Plan de visite optimisé'],
 
     relatedTermIds: ['crowd-calendar', 'early-entry', 'rope-drop', 'wait-time'],
@@ -419,7 +419,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricant suisse de montagnes russes connu pour ses lancements hydrauliques records, ses mega/giga coasters et ses designs innovants – à l’origine de nombreuses attractions parmi les plus rapides et les plus hautes du monde.',
     definition:
-      'Intamin AG est un fabricant d’attractions suisse fondé en 1967, responsable de certains des records les plus ambitieux de l’histoire des montagnes russes. Son système de lancement hydraulique a propulsé les coasters les plus rapides et les plus hauts du monde pendant des années (Kingda Ka, 139 m ; Top Thrill Dragster). Intamin est également connu pour ses mega et giga coasters (dont Millennium Force à Cedar Point et Intimidator 305 à Kings Dominion), ses multi-launch coasters, ses attractions aquatiques et ses dark rides. Ses designs sont souvent à la pointe de l’échelle et de l’innovation, même si la société a aussi la réputation d’une maintenance complexe. Les installations Intamin en Europe incluent Taron et Black Mamba à Phantasialand et Red Force au Ferrari Land.',
+      'Intamin AG est un fabricant d’attractions suisse fondé en 1967, responsable de certains des records les plus ambitieux de l’histoire des montagnes russes. Son système de lancement hydraulique a propulsé les coasters les plus rapides et les plus hauts du monde pendant des années (Kingda Ka, 139 m ; Top Thrill Dragster). Intamin est également connu pour ses mega et giga coasters (dont Millennium Force à Cedar Point et Intimidator 305 à Kings Dominion), ses multi-launch coasters, ses attractions aquatiques et ses dark rides. Ses designs sont souvent à la pointe de l’échelle et de l’innovation, même si la société a aussi la réputation d’une maintenance complexe. Les installations Intamin en Europe incluent Taron à Phantasialand, Expedition GeForce au Holiday Park et Red Force au Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
   },
   {
@@ -478,7 +478,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricant allemand surtout connu pour son modèle Euro-Fighter avec sa première descente au-delà de la verticale, ainsi que pour ses spinning coasters et ses attractions familiales compactes.',
     definition:
-      'Gerstlauer Amusement Rides GmbH est un fabricant allemand de montagnes russes basé à Münsterhausen, en Bavière. Fondée en 1946 comme entreprise de métallurgie, elle s’est lancée dans les attractions foraines dans les années 1980 et a bâti sa réputation mondiale avec le modèle Euro-Fighter – un coaster compact à lancement électrique célèbre pour sa descente initiale au-delà de la verticale (97 degrés). Les Euro-Fighters peuvent être installés dans des espaces réduits, ce qui les rend attrayants pour les parcs urbains et les petits sites ; citons Rage à Adventure Island et Speed à Oakwood. Gerstlauer produit également le modèle Infinity Coaster, des spinning coasters et le SkyRoller, un coaster rotatif où les passagers contrôlent leur propre retournement. Les enthousiastes apprécient les montagnes russes Gerstlauer pour leur intensité malgré leur faible encombrement.',
+      'Gerstlauer Amusement Rides GmbH est un fabricant allemand de montagnes russes basé à Münsterhausen, en Bavière. Fondée en 1946 comme entreprise de métallurgie, elle s’est lancée dans les attractions foraines dans les années 1980 et a bâti sa réputation mondiale avec le modèle Euro-Fighter – un coaster compact à lift à chaîne vertical et à descente pouvant atteindre 97 degrés. Les Euro-Fighters peuvent être installés dans des espaces réduits, ce qui les rend attrayants pour les parcs urbains et les petits sites ; citons Rage à Adventure Island et Speed à Oakwood. Gerstlauer produit également le modèle Infinity Coaster, des spinning coasters et le SkyRoller, un coaster rotatif où les passagers contrôlent leur propre retournement. Les enthousiastes apprécient les montagnes russes Gerstlauer pour leur intensité malgré leur faible encombrement.',
     aliases: ['Gerstlauer Rides'],
 
     relatedTermIds: [
@@ -658,7 +658,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un tonneau à 360° suivant un arc parabolique où les passagers ressentent une quasi-apesanteur au sommet – l’un des éléments les plus appréciés du design moderne de coasters.',
     definition:
-      'Le zero-G roll (tonneau à gravité zéro) est un élément d’inversion dont la forme fait suivre au train un arc parabolique à travers la rotation – similaire dans le concept au heartline roll mais à plus grande vitesse et avec un déplacement vertical plus marqué. Au sommet du tonneau, les passagers ressentent un bref instant de G-forces négatives (airtime) tout en étant à l’envers, créant une sensation unique, désorientante et très appréciée. Les zero-G rolls sont associés principalement aux wing coasters et aux hyper coasters B&M, où l’élément fait balayer les passagers des sièges d’aile de manière spectaculaire dans l’espace ouvert. Shambhala à PortAventura et Fury 325 à Carowinds disposent de zero-G rolls reconnus.',
+      'Le zero-G roll (tonneau à gravité zéro) est un élément d’inversion dont la forme fait suivre au train un arc parabolique à travers la rotation – similaire dans le concept au heartline roll mais à plus grande vitesse et avec un déplacement vertical plus marqué. Au sommet du tonneau, les passagers ressentent un bref instant de G-forces négatives (airtime) tout en étant à l’envers, créant une sensation unique, désorientante et très appréciée. Les zero-G rolls sont associés principalement aux wing coasters et aux hyper coasters B&M, où l’élément fait balayer les passagers des sièges d’aile de manière spectaculaire dans l’espace ouvert. Le zero-G roll est une signature des inverted et des wing coasters de B&M.',
     relatedTermIds: ['airtime', 'b-and-m', 'heartline-roll', 'inversion', 'zero-g-winder'],
   },
   {
@@ -730,7 +730,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une double inversion signature B&M où la voie forme la tête dressée d’un cobra – deux inversions connectées par un demi-tonneau au sommet.',
     definition:
-      'Le cobra roll est l’un des éléments signature les plus distinctifs de B&M, composé de deux inversions rapprochées : la voie s’incurve vers le haut en demi-looping, effectue une rotation de 180° au sommet (passant par une brève section inversée), puis reproduit la séquence en miroir pour ressortir dans la même direction qu’à l’entrée. Vue de côté, la silhouette de la voie ressemble à la tête dressée et déployée d’un cobra. Des cobra rolls célèbres figurent sur Shambhala à PortAventura, Pyrenees au Parque de Atracciones de Madrid et de nombreux coasters B&M inversés dans le monde.',
+      'Le cobra roll est l’un des éléments signature les plus distinctifs de B&M, composé de deux inversions rapprochées : la voie s’incurve vers le haut en demi-looping, effectue une rotation de 180° au sommet (passant par une brève section inversée), puis reproduit la séquence en miroir pour ressortir dans la même direction qu’à l’entrée. Vue de côté, la silhouette de la voie ressemble à la tête dressée et déployée d’un cobra. Cobra rolls célèbres : Dragon Khan à PortAventura et de nombreux coasters B&M inversés dans le monde.',
     relatedTermIds: ['b-and-m', 'banana-roll', 'batwing', 'immelmann', 'inversion', 'sea-serpent'],
   },
   {
@@ -945,7 +945,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Type de coaster où les sièges sont disposés de chaque côté du rail – rien au-dessus, en dessous ni à côté des passagers.',
     definition:
-      'Un Wing Coaster (ou Wing Rider) dispose deux sièges de chaque côté du rail, laissant les passagers sans aucune structure au-dessus, en dessous ou à leurs côtés. Ce design maximise la sensation de vol et permet des near-misses spectaculaires avec le décor et les structures. B&M est le principal fabricant de Wing Coasters. Exemples notables en Europe : The Swarm (Thorpe Park), GateKeeper (Cedar Point) et Flug der Dämonen (Europa-Park), souvent cité parmi les meilleurs coasters d’Europe.',
+      'Un Wing Coaster (ou Wing Rider) dispose deux sièges de chaque côté du rail, laissant les passagers sans aucune structure au-dessus, en dessous ou à leurs côtés. Ce design maximise la sensation de vol et permet des near-misses spectaculaires avec le décor et les structures. B&M est le principal fabricant de Wing Coasters. Exemples européens : Flug der Dämonen au Heide-Park, The Swarm à Thorpe Park et Fēnix à Toverland.',
     aliases: ['Wing Coasters'],
     alternateNames: ['Wing Rider', 'Coaster à ailes'],
 
@@ -979,7 +979,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Coaster dépassant 61 m de hauteur, généralement sans inversions, axé sur la vitesse et l’airtime.',
     definition:
-      'Le Hyper Coaster est la classification pour les montagnes russes entre 61 et 91 m de hauteur. B&M utilise le terme « Hyper Coaster » ; Intamin préfère « Mega Coaster » pour leur type équivalent. Les deux se concentrent sur de grandes collines d’airtime à grande vitesse plutôt que sur des inversions. Shambhala à PortAventura (Espagne) est le Hyper Coaster le plus haut et le plus rapide d’Europe à 76 m. Parmi les autres exemples notables : Goliath à Walibi Holland et Mako à SeaWorld Orlando.',
+      'Le Hyper Coaster est la classification pour les montagnes russes entre 61 et 91 m de hauteur. B&M utilise le terme « Hyper Coaster » ; Intamin préfère « Mega Coaster » pour leur type équivalent. Les deux se concentrent sur de grandes collines d’airtime à grande vitesse plutôt que sur des inversions. Shambhala à PortAventura (76 m) et Hyperion à Energylandia (77 m) sont les Hyper Coasters les plus hauts d’Europe. Parmi les autres exemples notables : Goliath à Walibi Holland et Mako à SeaWorld Orlando.',
     aliases: ['Hyper Coasters'],
     alternateNames: ['Mega Coaster', 'Méga Montagne Russe', 'Hypercoaster'],
 
@@ -990,7 +990,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Giga Coaster',
     shortDefinition: 'Coaster dépassant 91 m de hauteur – un cran au-dessus du Hyper Coaster.',
     definition:
-      'Le Giga Coaster est la classification pour les montagnes russes entre 91 et 121 m de hauteur. Le terme a été créé par Cedar Fair et Intamin pour Millennium Force à Cedar Point en 2000. Les Giga Coasters misent sur une hauteur extrême, de longs circuits et d’immenses moments d’airtime. Fury 325 à Carowinds est considéré par de nombreux passionnés comme le meilleur coaster en acier au monde. En Europe, aucun Giga Coaster n’existe encore en 2025.',
+      'Le Giga Coaster est la classification pour les montagnes russes entre 91 et 121 m de hauteur. Le terme a été créé par Cedar Fair et Intamin pour Millennium Force à Cedar Point en 2000. Les Giga Coasters misent sur une hauteur extrême, de longs circuits et d’immenses moments d’airtime. Fury 325 à Carowinds est considéré par de nombreux passionnés comme le meilleur coaster en acier au monde. En Europe, aucun Giga Coaster n’existe à ce jour ; Hyperion à Energylandia (Pologne), avec ses 77 m, relève techniquement encore de la catégorie Hyper.',
     aliases: ['Giga Coasters'],
     alternateNames: ['Giga Montagne Russe', 'Gigacoaster'],
 
@@ -1042,9 +1042,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'ai-forecast',
     name: 'Prévision IA',
     shortDefinition:
-      'Prédictions basées sur le machine learning pour les niveaux de fréquentation et les temps d’attente – jusqu’à 365 jours à l’avance.',
+      'Prédictions basées sur le machine learning pour les niveaux de fréquentation et les temps d’attente, aussi loin qu’un parc a publié ses horaires.',
     definition:
-      'Une prévision IA utilise des modèles de machine learning entraînés sur des données historiques de fréquentation, des données météo, des calendriers scolaires et des données en temps réel pour prédire l’affluence dans un parc ou pour une attraction donnée. park.fan génère des prévisions IA pour la fréquentation et les temps d’attente prévus jusqu’à 365 jours à l’avance.\n\nLes prévisions sont recalculées à chaque entraînement, tous les jours à 06h00 UTC. Les prévisions à court terme (1–7 jours) sont généralement très précises car elles intègrent les données météo actuelles, les annonces d’événements et les signaux de réservation. Les prévisions à long terme sont naturellement moins précises, mais restent utiles pour identifier les périodes calmes ou animées bien à l’avance.',
+      'Une prévision IA utilise des modèles de machine learning entraînés sur des données historiques de fréquentation, des données météo, des calendriers scolaires et des données en temps réel pour prédire l’affluence dans un parc ou pour une attraction donnée. park.fan génère des prévisions IA pour la fréquentation et les temps d’attente prévus pour chaque jour qu’un parc a déjà publié.\n\nLes prévisions sont recalculées à chaque entraînement, tous les jours à 06h00 UTC. Les prévisions à court terme (1–7 jours) sortent plus précises parce que la météo et les événements sont alors fixés et que les données météo du moment, les annonces d’événements et les signaux de réservation entrent dans le calcul. Les prévisions à long terme sont naturellement moins précises, mais restent utiles pour identifier les périodes calmes ou animées bien à l’avance.',
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     aliases: ['Prévision IA', 'Prévisions IA'],
@@ -1087,7 +1087,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Intelligence artificielle – les modèles de machine learning qui calculent les prévisions de fréquentation et les temps d’attente.',
     definition:
-      'L’IA (intelligence artificielle) désigne les algorithmes de machine learning qui reconnaissent des motifs dans de grands jeux de données et en tirent des prédictions. park.fan utilise des modèles entraînés sur les temps d’attente relevés, les calendriers scolaires, les données météo et les annonces d’événements. Ils recalculent chaque jour les prévisions de fréquentation et de temps d’attente, pour chaque parc et chaque jour, jusqu’à 365 jours à l’avance.',
+      'L’IA (intelligence artificielle) désigne les algorithmes de machine learning qui reconnaissent des motifs dans de grands jeux de données et en tirent des prédictions. park.fan utilise des modèles entraînés sur les temps d’attente relevés, les calendriers scolaires, les données météo et les annonces d’événements. Ils recalculent chaque jour les prévisions de fréquentation et de temps d’attente : pour chaque parc et chaque jour qu’il a déjà publié.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-forecast'],
     aliases: ['Intelligence Artificielle'],
   },
@@ -1674,7 +1674,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deux voies parallèles de montagnes russes sur lesquelles les trains partent simultanément pour s’affronter.',
     definition:
-      'Un racing coaster (montagne russe en course) dispose de deux circuits séparés mais symétriques se déroulant côte à côte, avec des trains lancés simultanément pour que les passagers vivent la sensation de rivaliser avec l’autre rame. Les voies se croisent ou se frôlent en plusieurs points pour intensifier le suspense. Certains modèles adoptent une configuration Möbius : les deux circuits forment une seule boucle continue et les passagers changent automatiquement de côté d’un tour à l’autre. Le concept fonctionne aussi bien en bois qu’en acier. En Europe, Piraten à Djurs Sommerland et Dwervelwind à Plopsaland en sont des exemples reconnus.',
+      'Un racing coaster (montagne russe en course) dispose de deux circuits séparés mais symétriques se déroulant côte à côte, avec des trains lancés simultanément pour que les passagers vivent la sensation de rivaliser avec l’autre rame. Les voies se croisent ou se frôlent en plusieurs points pour intensifier le suspense. Certains modèles adoptent une configuration Möbius : les deux circuits forment une seule boucle continue et les passagers changent automatiquement de côté d’un tour à l’autre. Le concept fonctionne aussi bien en bois qu’en acier. En Europe, ils sont rares ; le plus connu est le woodie en boucle de Möbius Grand National, au Blackpool Pleasure Beach.',
     relatedTermIds: ['credit', 'steel-coaster', 'wooden-coaster'],
     aliases: ['coaster de course'],
   },

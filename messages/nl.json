@@ -7,7 +7,7 @@
     "title": "Delen",
     "on": "Delen op {platform}",
     "copy": "Link kopiëren",
-    "copied": "Gekopieerd!"
+    "copied": "Gekopieerd"
   },
   "common": {
     "scroll": "Scrollen",
@@ -96,7 +96,7 @@
     "errorPageTitle": "Er is iets misgegaan",
     "errorPageDescription": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
     "goHome": "Naar de startpagina",
-    "maintenanceTitle": "We zijn zo weer terug!",
+    "maintenanceTitle": "We zijn zo weer terug",
     "maintenanceDescription": "park.fan is tijdelijk niet beschikbaar vanwege onderhoud. Probeer het over een paar minuten opnieuw."
   },
   "notFound": {
@@ -119,7 +119,7 @@
       "liveNow": "Parken open wereldwijd",
       "liveNowIntro": "Actueel aantal open pretparken per continent.",
       "featuredParks": "Populaire parken",
-      "featuredParksIntro": "Zes parken waar in jouw taal het vaakst op wordt gezocht, met live wachttijden en drukteverwachting."
+      "featuredParksIntro": "Zes bekende parken om te beginnen, met live wachttijden en drukteverwachting."
     },
     "ai": {
       "title": "Hoe nauwkeurig onze voorspellingen zijn",
@@ -140,7 +140,7 @@
       "dailySchedule": "Dagelijks · 06:00 UTC",
       "dailyScheduleLocal": "Dagelijks · 06:00 UTC · {time} lokaal",
       "howTitle": "Hoe voorspellingen tot stand komen",
-      "howText": "Elke voorspelling staat op drie lagen: de gemeten wachttijdhistorie van het park, signalen van buiten zoals de weersverwachting, schoolvakanties en feestdagen, en wat er die dag in het park op het programma staat, dus speciale evenementen en seizoen. Daaruit rekent het model de verwachte wachttijd per attractie en per uur en vat die samen tot het drukteniveau van de dag, tot 365 dagen vooruit.",
+      "howText": "Elke voorspelling staat op drie lagen: de gemeten wachttijdhistorie van het park, signalen van buiten zoals de weersverwachting, schoolvakanties en feestdagen, en wat er die dag in het park op het programma staat, dus speciale evenementen en seizoen. Daaruit rekent het model de verwachte wachttijd per attractie en per uur en vat die samen tot het drukteniveau van de dag, zo ver als het park zijn openingstijden gepubliceerd heeft.",
       "fancastLink": "Zo werkt Fancast, ons voorspelmodel",
       "improvingTitle": "Elke voorspelling wordt de dag erna nagerekend",
       "improvingText": "De dag na elke voorspelling legt het systeem die naast de werkelijk gemeten wachttijd en schrijft het verschil door naar de volgende trainingsronde. De cijfers hierboven komen uit precies die vergelijking en niet uit een testset die we zelf hebben klaargelegd.",
@@ -175,7 +175,7 @@
       },
       "two": {
         "title": "Dag checken",
-        "text": "De druktekalender beoordeelt elke dag tot 365 dagen vooruit: groen betekent korte rijen, rood betekent volle paden en lange omwegen.",
+        "text": "De druktekalender beoordeelt elke dag die het park al gepubliceerd heeft: groen betekent korte rijen, rood betekent volle paden en lange omwegen.",
         "tip": "Twee dagen naast elkaar zijn vaak twee verschillende parken. Kun je de datum kiezen, kijk dan naar de week ervoor en erna voordat je boekt.",
         "legendLow": "rustig",
         "caption": "Een maand in de kalender: elke tegel een dag, de kleur is de verwachte drukte."
@@ -227,7 +227,7 @@
     "calendar": {
       "kicker": "Druktekalender",
       "title": "Groene dag of rode dag?",
-      "lead": "Voordat je het hotel boekt: de kalender beoordeelt elke afzonderlijke dag, tot 365 dagen vooruit. Waar de kleur van een dag vandaan komt, staat hieronder.",
+      "lead": "Voordat je het hotel boekt: de kalender beoordeelt elke dag die het park al gepubliceerd heeft. Waar de kleur van een dag vandaan komt, staat hieronder.",
       "pipelineTitle": "Van meting naar dagkleur",
       "pipelineLead": "Vier stappen, elke nacht opnieuw. Wat uiteindelijk als groene of rode dag in de kalender staat, heeft deze weg afgelegd.",
       "p1": {
@@ -258,7 +258,7 @@
     "ai": {
       "kicker": "Onze AI",
       "title": "Een eigen voorspelling, met de afwijking ernaast",
-      "lead": "Wachttijden voorspellen is het moeilijke deel, en de meeste sites gaan eromheen. park.fan pakt het aan met Fancast, een eigen model, elke nacht opnieuw getraind, tot 365 dagen vooruit.",
+      "lead": "Wachttijden voorspellen is het moeilijke deel, en de meeste sites gaan eromheen. park.fan pakt het aan met Fancast, een eigen model, elke nacht opnieuw getraind.",
       "compareTitle": "Hoe andere wachttijdsites voorspellen",
       "compareLead": "Drie aanpakken zijn gangbaar, en alle drie hebben dezelfde blinde vlek: niemand zegt hoe ver de voorspelling ernaast zat.",
       "c1": {
@@ -536,7 +536,7 @@
     "holidaysLabel": "Vakanties & feestdagen",
     "tileAttractions": "<b>{open}</b> open · gem. <b>{avg} min</b>",
     "tileAttractionsHeadliner": "Headliners vanaf <b>{min} min</b>",
-    "tileCalendar": "Beste bezoekdagen tot een jaar vooruit",
+    "tileCalendar": "Beste bezoekdagen, zo ver als de openingstijden reiken",
     "tileCalendarQuietDay": "Rustigste dag: <b>{day}</b> ({days, plural, =0 {vandaag} =1 {morgen} other {over # dagen}})",
     "tileMap": "Wachttijden op de plattegrond · <b>{lands}</b> themagebieden",
     "tileMapPlain": "Wachttijden op de plattegrond",
@@ -880,7 +880,7 @@
     "influencingHolidaysShort": "Nabije regio’s",
     "stats": {
       "title": "Historische wachttijdstatistieken",
-      "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",
+      "subtitle": "Gebaseerd op {days} gemeten openingsdagen",
       "byMonthTitle": "Gemiddelde drukte per maand",
       "byDowTitle": "Gemiddelde drukte per dag van de week",
       "topAttractionsTitle": "Attracties met langste wachtrijen gemiddeld",
@@ -1517,7 +1517,7 @@
       "diningQ": "Welke eetgelegenheden zijn er in {park}?",
       "diningA": "{park} biedt {count} restaurants en snackbars:",
       "crowdCalendarQ": "Heeft {park} een druktekalender?",
-      "crowdCalendarA": "Ja. De druktekalender voor {park} geeft elke afzonderlijke dag een oordeel, bij parken die het hele jaar open zijn tot een jaar vooruit. Groene dagen staan voor korte rijen, rode voor lange.",
+      "crowdCalendarA": "Ja. De druktekalender voor {park} geeft elke afzonderlijke dag een oordeel, zo ver als het park zijn openingstijden gepubliceerd heeft. Groene dagen staan voor korte rijen, rode voor lange.",
       "leastCrowdedQ": "Wanneer is {park} het minst druk?",
       "leastCrowdedA": "{park} is doorgaans het rustigst op {days}. Bekijk de <calendar>druktekalender</calendar> hierboven voor komende rustige dagen en plan je bezoek dienovereenkomstig.",
       "leastCrowdedNoDataA": "Bekijk de <calendar>druktekalender</calendar> op deze pagina voor rustige dagen. Groene dagen duiden op korte wachtrijen en minder bezoekers.",
@@ -1542,7 +1542,7 @@
         "whichParksQ": "Welke pretparken worden ondersteund door park.fan?",
         "whichParksA": "park.fan dekt meer dan 200 pretparken wereldwijd, waaronder Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland en Bobbejaanland. De volledige lijst met live wachttijden staat op de overzichtspagina met parken.",
         "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
-        "liveDataA": "Ja. Elk park wordt elke vijf minuten opgevraagd, uit drie openbare bronnen tegelijk – ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Als twee bronnen van elkaar afwijken, beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
+        "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op, uit drie openbare bronnen tegelijk – ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Als twee bronnen van elkaar afwijken, beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
         "freeQ": "Is het gebruik van park.fan gratis?",
         "freeA": "Ja. Live wachttijden, openingstijden, shows, restaurants en de druktekalender zijn te zien zonder account en zonder betaalmuur. Er is geen abonnement waarachter meer gegevens liggen.",
         "favoritesQ": "Kan ik mijn favoriete parken en attracties opslaan op park.fan?",
@@ -1737,7 +1737,7 @@
   },
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",
-    "description": "Fancast is het AI-model van park.fan: het voorspelt drukte en wachttijden tot 365 dagen vooruit en beoordeelt de eigen nauwkeurigheid in het openbaar."
+    "description": "Fancast is het AI-model van park.fan: het voorspelt drukte en wachttijden voor elke dag die een park al gepubliceerd heeft, en beoordeelt de eigen nauwkeurigheid in het openbaar."
   },
   "bestTime": {
     "title": "Beste tijd om pretparken te bezoeken",
@@ -1945,7 +1945,7 @@
       "withdraw": "Van gedachten veranderd? Neem contact op en we verwijderen je foto."
     },
     "success": {
-      "title": "Bedankt!",
+      "title": "Bedankt",
       "message": "{count, plural, one {Je foto is} other {Je # foto’s zijn}} verstuurd en verschijnt na een korte controle in de galerij.",
       "again": "Meer foto’s uploaden",
       "home": "Terug naar home"

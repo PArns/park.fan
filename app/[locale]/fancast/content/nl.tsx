@@ -65,7 +65,7 @@ const FAQ = [
   {
     question: 'Hoe ver vooruit kan Fancast voorspellen?',
     answer:
-      'Dagelijkse drukteniveaus voor een park geeft Fancast tot 365 dagen vooruit. Voor afzonderlijke attracties zijn er daarnaast wachttijd-voorspellingen per uur. Hoe dichterbij de dag komt, hoe zwaarder kortetermijnsignalen zoals de weersverwachting meewegen.',
+      'Dagelijkse drukteniveaus geeft Fancast voor elke dag die een park al gepubliceerd heeft. Voor afzonderlijke attracties zijn er daarnaast wachttijd-voorspellingen per uur. Hoe dichterbij de dag komt, hoe zwaarder kortetermijnsignalen zoals de weersverwachting meewegen.',
   },
   {
     question: 'Hoe weet Fancast dat een vakantiezaterdag druk wordt?',
@@ -75,12 +75,12 @@ const FAQ = [
   {
     question: 'Hoe vaak wordt het model bijgewerkt?',
     answer:
-      'Elke dag. Fancast traint zichzelf automatisch één keer per dag om 06:00 UTC opnieuw, met de meest recente gegevens. De trainingsronde van vannacht kent de wachttijden van gisteren.',
+      'Elke dag. Fancast traint zichzelf automatisch één keer per dag om 06:00 UTC opnieuw, met de wachttijden van gisteren erbij.',
   },
   {
     question: 'Kan ik Fancast voor een specifiek park en een specifieke dag gebruiken?',
     answer:
-      'Ja. Elke parkpagina op park.fan heeft een druktekalender die je voor elke afzonderlijke dag tot een jaar vooruit een groene, gele of rode voorspelling laat zien – van Europa-Park via Phantasialand en Efteling tot Walt Disney World. Daarnaast krijg je wachttijd-voorspellingen per uur voor de afzonderlijke attracties.',
+      'Ja. Elke parkpagina op park.fan heeft een druktekalender die je voor elke gepubliceerde dag een groene, gele of rode voorspelling laat zien – van Europa-Park via Phantasialand en Efteling tot Walt Disney World. Daarnaast krijg je wachttijd-voorspellingen per uur voor de afzonderlijke attracties.',
   },
   {
     question: 'Welke gegevens gebruikt Fancast?',
@@ -113,11 +113,11 @@ export function ContentNL() {
         <P>
           En omdat we cijfers alleen vertrouwen als ze zich moeten bewijzen, geeft Fancast zichzelf
           een cijfer. Elke voorspelling wordt later getoetst aan de wachttijd die er werkelijk was –
-          in het openbaar, op deze pagina. Valsspelen zinloos.
+          in het openbaar, op deze pagina.
         </P>
         <Highlight>
-          Fancast is geen waarzegger met een glazen bol. Het is een koppige statisticus die elke
-          avond bijles krijgt en elke ochtend opnieuw examen moet doen.
+          Elke voorspelling gaat de dag erna naast de gemeten wachttijd. Wat daaruit komt, staat
+          boven aan deze pagina als MAE, RMSE en MAPE, goed of slecht.
         </Highlight>
       </div>
 
@@ -131,7 +131,7 @@ export function ContentNL() {
       >
         <P>
           Hier is het cijfer, live en onopgesmukt. Fancast haalt deze getallen op dit moment uit
-          zijn eigen dashboard; ze verschuiven zodra het model vannacht opnieuw traint.
+          zijn eigen dashboard; ze verschuiven met de volgende trainingsronde, morgenochtend.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -247,7 +247,7 @@ export function ContentNL() {
       >
         <P>
           De belangrijkste truc is een oninteressante: Fancast traint zichzelf{' '}
-          <strong>elke nacht</strong> opnieuw, elke dag om 06:00 UTC. Wat gisteren in het park is
+          <strong>één keer per dag</strong> opnieuw, om 06:00 UTC. Wat gisteren in het park is
           gebeurd, zit vanaf de volgende ochtend in de voorspelling.
         </P>
         <P>
@@ -345,7 +345,7 @@ export function ContentNL() {
               body: (
                 <>
                   de <Link href="/parks">kalender met de beste bezoekdagen</Link> op elke parkpagina
-                  – groen, geel, rood, tot een jaar vooruit.
+                  – groen, geel, rood, zo ver als het park zijn openingstijden gepubliceerd heeft.
                 </>
               ),
             },

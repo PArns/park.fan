@@ -85,11 +85,13 @@ evento de despedida para el **9 de enero de 2027**.
 
 ![La entrada principal del Europa-Park, con banderas de países colgadas de la fachada | La puerta grande de Rust. Detrás hay 95 hectáreas y 18 países europeos. | wide](/media/europa-park/background-16x9.jpg)
 
-## Tiempos de espera en el Europa-Park: 23 minutos, medidos a lo largo de un año
+## Tiempos de espera en el Europa-Park: media hora escasa de media
 
-Nuestro historial de tiempos de espera del Europa-Park llega doce meses atrás.
-Contando todos los días de la semana, **el tiempo de espera típico en el conjunto
-del parque es de 23 minutos** (mediana), y el percentil 90 está en 36.
+Nuestro historial de tiempos de espera del Europa-Park empieza en diciembre de
+2025 y desde abril no tiene huecos. Contando todos los días de la semana, el
+tiempo de espera típico en el conjunto del parque es de **un cuarto de hora
+largo** (mediana); ese día de cada diez en el que de verdad hay movimiento,
+queda bastante por encima.
 
 Las diez atracciones en las que más cola haces, con el valor de hoy al lado:
 
@@ -662,8 +664,8 @@ Todo correcto, pero nada por lo que uno se levante a las ocho. Las montañas rus
 se pueden repartir a lo largo del día, el teatro volador no.
 
 Hasta qué punto se reparte todo esto por el día solo se ve en el perfil horario:
-la espera típica de cada hora, promediada sobre un año de días de operación. En
-negrita, la hora más cargada de cada atracción.
+la espera típica de cada hora, promediada sobre todos los días de operación
+medidos. En negrita, la hora más cargada de cada atracción.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -864,12 +866,12 @@ también en el domo de blue fire.
 
 ### ¿Cuánto duran los tiempos de espera en el Europa-Park?
 
-En los últimos doce meses, el tiempo de espera típico en el conjunto del parque
-está en **23 minutos** (mediana), y el percentil 90 en 36. La cola más larga la
-tiene Voltron Nevera, con 34 minutos típicos, seguida de Arthur con 31 y de Wodan
-y Eurosat con 28 cada una. Lo que hay hoy en las colas lo ves en los
-[tiempos de espera actuales del Europa-Park](ref:europa-park?bare), actualizados
-cada cinco minutos y con previsión para los próximos días.
+A lo largo de todos los días de apertura medidos, el tiempo de espera típico en
+el conjunto del parque es de un cuarto de hora largo (mediana). La cola más
+larga la tiene Voltron Nevera, seguida de Arthur, Wodan y Eurosat. Lo que hay
+hoy en las colas lo ves en los [tiempos de espera actuales del
+Europa-Park](ref:europa-park?bare), actualizados cada cinco minutos y con
+previsión para los próximos días.
 
 ### ¿Cuándo hay menos gente en el Europa-Park?
 

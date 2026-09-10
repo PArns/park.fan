@@ -286,7 +286,7 @@ calmes pour le Phantasialand :
 
 Et si tu veux voir l’**affluence par jour de la semaine et par mois**, quels
 jours de l’année sont typiquement détendus et lesquels tu devrais éviter, ce
-coup d’œil sur les deux dernières saisons te le montre :
+coup d’œil sur les jours d’ouverture mesurés te le montre :
 
 ```stats-widget slug=phantasialand
 

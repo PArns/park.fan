@@ -65,7 +65,7 @@ const FAQ = [
   {
     question: 'Jusqu’à quand Fancast peut-il prévoir ?',
     answer:
-      'Fancast fournit des niveaux d’affluence quotidiens pour un parc jusqu’à 365 jours à l’avance. Pour les attractions individuelles, il produit en plus des prévisions horaires de temps d’attente. Plus le jour approche, plus les signaux à court terme comme la prévision météo sont pris en compte.',
+      'Fancast fournit des niveaux d’affluence quotidiens pour chaque jour qu’un parc a déjà publié. Pour les attractions individuelles, il produit en plus des prévisions horaires de temps d’attente. Plus le jour approche, plus les signaux à court terme comme la prévision météo sont pris en compte.',
   },
   {
     question: 'Comment Fancast sait-il qu’un samedi de vacances sera chargé ?',
@@ -75,12 +75,12 @@ const FAQ = [
   {
     question: 'À quelle fréquence le modèle est-il mis à jour ?',
     answer:
-      'Chaque jour. Fancast se réentraîne automatiquement une fois par jour à 06h00 UTC sur les données les plus récentes : le passage de cette nuit connaît déjà les temps d’attente d’hier.',
+      'Chaque jour. Fancast se réentraîne automatiquement une fois par jour à 06h00 UTC, avec les temps d’attente de la veille.',
   },
   {
     question: 'Puis-je utiliser Fancast pour un parc et un jour précis ?',
     answer:
-      'Oui. Chaque page de parc sur park.fan dispose d’un calendrier d’affluence qui vous montre, pour chaque jour jusqu’à un an à l’avance, une prévision verte, jaune ou rouge, d’Europa-Park à Phantasialand en passant par Efteling et Walt Disney World. Vous obtenez aussi des prévisions horaires de temps d’attente pour les différentes attractions.',
+      'Oui. Chaque page de parc sur park.fan dispose d’un calendrier d’affluence qui vous montre, pour chaque jour publié, une prévision verte, jaune ou rouge, d’Europa-Park à Phantasialand en passant par Efteling et Walt Disney World. Vous obtenez aussi des prévisions horaires de temps d’attente pour les différentes attractions.',
   },
   {
     question: 'Quelles données Fancast utilise-t-il ?',
@@ -113,11 +113,11 @@ export function ContentFR() {
         <P>
           Et parce que nous ne faisons confiance qu’aux chiffres obligés de faire leurs preuves,
           Fancast se note lui-même. Chaque prévision est ensuite confrontée au temps d’attente
-          réellement survenu, au grand jour, sur cette page. Tricher, inutile.
+          réellement survenu, au grand jour, sur cette page.
         </P>
         <Highlight>
-          Fancast n’est pas une voyante avec une boule de cristal. C’est un statisticien têtu qui
-          prend des cours de soutien chaque soir et doit repasser l’examen chaque matin.
+          Chaque prévision est confrontée le lendemain au temps d’attente mesuré. Ce qui en sort
+          figure en haut de cette page, en MAE, RMSE et MAPE, bon ou mauvais.
         </Highlight>
       </div>
 
@@ -247,8 +247,8 @@ export function ContentFR() {
       >
         <P>
           Le plus important des tours est des plus ordinaires : Fancast se réentraîne{' '}
-          <strong>chaque nuit</strong>, tous les jours à 06h00 UTC. Ce qui s’est passé hier dans le
-          parc se retrouve dans la prévision dès le lendemain matin.
+          <strong>une fois par jour</strong>, à 06h00 UTC. Ce qui s’est passé hier dans le parc se
+          retrouve dans la prévision dès le lendemain matin.
         </P>
         <P>
           Et il n’est jamais testé que sur des jours qu’il n’a <strong>jamais vus</strong>, sur
@@ -345,7 +345,7 @@ export function ContentFR() {
               body: (
                 <>
                   le <Link href="/parks">calendrier des meilleurs jours de visite</Link> sur chaque
-                  page de parc : vert, jaune, rouge, jusqu’à un an à l’avance.
+                  page de parc : vert, jaune, rouge, aussi loin que le parc a publié ses horaires.
                 </>
               ),
             },

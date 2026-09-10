@@ -83,11 +83,12 @@ event for **9 January 2027**.
 
 ![The main entrance of Europa-Park, with national flags hanging on the facade | The main gate in Rust. Behind it lie 95 hectares and 18 European countries. | wide](/media/europa-park/background-16x9.jpg)
 
-## Europa-Park wait times: 23 minutes, measured across a year
+## Europa-Park wait times: just under half an hour on average
 
-Our wait-time history for Europa-Park goes back twelve months. Across all days
-of the week the **typical wait park-wide is 23 minutes** (median), with the 90th
-percentile at 36.
+Our wait-time history for Europa-Park starts in December 2025 and has been
+gapless since April. Across all days of the week the typical park-wide wait is
+**a good quarter of an hour** (median); on the one day in ten when there really
+is something going on, it sits well above that.
 
 The ten attractions you queue longest for, with today’s number beside them:
 
@@ -641,8 +642,8 @@ All respectable, none of it worth getting up at eight for. The roller coasters
 can be spread across the day, the flying theatre cannot.
 
 How far it all spreads across the day only becomes visible hour by hour: the
-typical wait in each hour, averaged over a year of operating days. Each ride’s
-busiest hour is in bold.
+typical wait in each hour, averaged over every operating day we have measured.
+Each ride’s busiest hour is in bold.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -835,10 +836,9 @@ since 2026.
 
 ### How long are the wait times at Europa-Park?
 
-Across the last twelve months the typical wait park-wide comes to **23 minutes**
-(median), with the 90th percentile at 36. The longest queue belongs to Voltron
-Nevera at a typical 34 minutes, followed by Arthur at 31 and Wodan and Eurosat
-at 28 each. What the boards say today is on the
+Across every operating day we have measured the typical wait park-wide comes to
+a good quarter of an hour (median). The longest queue belongs to Voltron Nevera,
+followed by Arthur, Wodan and Eurosat. What the boards say today is on the
 [live Europa-Park wait times](ref:europa-park?bare), updated every five minutes
 and with a forecast for the days ahead.
 

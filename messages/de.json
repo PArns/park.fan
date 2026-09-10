@@ -258,7 +258,7 @@
     "ai": {
       "kicker": "Unsere KI",
       "title": "Eine eigene Prognose, und die Abweichung steht dabei",
-      "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, jede Nacht neu trainiert.",
+      "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, täglich um 06:00 UTC neu trainiert.",
       "compareTitle": "Wie andere Wartezeit-Seiten vorhersagen",
       "compareLead": "Drei Ansätze sind verbreitet, und alle drei haben denselben blinden Fleck: niemand sagt dir, wie weit die Prognose danebenlag.",
       "c1": {
@@ -334,7 +334,7 @@
       "title": "Sechs Gründe, warum das hier anders läuft",
       "r1": {
         "title": "Eigenes Modell, täglich trainiert",
-        "text": "Kein Fremdanbieter, keine Blackbox von der Stange. Das Modell lernt jede Nacht mit den Daten des Vortags weiter."
+        "text": "Kein Fremdanbieter, keine Blackbox von der Stange. Das Modell lernt täglich um 06:00 UTC mit den Daten des Vortags weiter."
       },
       "r2": {
         "title": "Genauigkeit steht öffentlich da",
@@ -363,7 +363,7 @@
       "name": "Patrick Arns",
       "role": "Gründer von park.fan",
       "p1": "park.fan ist kein Startup mit Investoren und Roadmap-Meetings, sondern das Projekt von einem, der seit dem Kinderwagen in Freizeitparks unterwegs ist und seit über 25 Jahren Software baut. Die Frustration war konkret: 90 Minuten für eine Bahn anstehen und ahnen, dass clevere Planung das verhindert hätte.",
-      "p2": "Also entstand erst ein Tracker, dann eine Datenbank, dann ein eigenes ML-System, vom Datenimport bis zur Prognose selbst gebaut und jede Nacht neu trainiert.",
+      "p2": "Also entstand erst ein Tracker, dann eine Datenbank, dann ein eigenes ML-System, vom Datenimport bis zur Prognose selbst gebaut und täglich neu trainiert.",
       "b1": "25+ Jahre Software-Entwicklung",
       "b2": "Park-Nerd seit der Kindheit",
       "b3": "Kein Konzern, kein Investor",
