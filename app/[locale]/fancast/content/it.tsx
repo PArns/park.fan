@@ -310,8 +310,7 @@ export function ContentIT() {
       <SectionShell id="parks" index="06" kicker="Provaci tu" title="Scegli un parco" icon={Ticket}>
         <P>
           Fancast gira su ogni pagina di parco: eccone alcuni popolari per provarlo direttamente.
-          Entra, apri il calendario di affluenza e guarda quale colore tocca al giorno che
-          scegli:
+          Entra, apri il calendario di affluenza e guarda quale colore tocca al giorno che scegli:
         </P>
         <PopularParksGrid />
       </SectionShell>

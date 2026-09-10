@@ -419,7 +419,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricante suizo de atracciones y montañas rusas conocido por sus lanzamientos hidráulicos récord, mega/giga coasters y diseños innovadores — la empresa detrás de muchas de las atracciones más rápidas y altas del mundo.',
     definition:
-      'Intamin AG es un fabricante suizo de atracciones fundado en 1967, responsable de algunos de los récords de montañas rusas más ambiciosos de la historia. Su sistema de lanzamiento hidráulico impulsó durante años las montañas rusas más rápidas y altas del mundo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin también es conocido por sus mega y giga coasters (incluyendo Millennium Force en Cedar Point e Intimidator 305 en Kings Dominion), multi-launch coasters, atracciones acuáticas y dark rides. Sus diseños están frecuentemente en la vanguardia de la escala y la innovación, aunque la empresa también tiene fama de requerir un mantenimiento complejo. Las instalaciones europeas de Intamin incluyen Taron y Black Mamba en Phantasialand y Red Force en Ferrari Land.',
+      'Intamin AG es un fabricante suizo de atracciones fundado en 1967, responsable de algunos de los récords de montañas rusas más ambiciosos de la historia. Su sistema de lanzamiento hidráulico impulsó durante años las montañas rusas más rápidas y altas del mundo (Kingda Ka, 139 m; Top Thrill Dragster). Intamin también es conocido por sus mega y giga coasters (incluyendo Millennium Force en Cedar Point e Intimidator 305 en Kings Dominion), multi-launch coasters, atracciones acuáticas y dark rides. Las instalaciones europeas de Intamin incluyen Taron y Black Mamba en Phantasialand y Red Force en Ferrari Land.',
     relatedTermIds: ['b-and-m', 'launch-coaster', 'mack-rides', 'top-hat'],
   },
   {
@@ -2333,7 +2333,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricante canadiense de atracciones complejas, famoso por sus sistemas de brazo robótico.',
     definition:
-      "Dynamic Attractions es una empresa canadiense especializada en el diseño y construcción de atracciones tecnológicamente avanzadas. Son conocidos por su sistema de 'Brazo Robótico' (utilizado en Harry Potter and the Forbidden Journey), que emplea un brazo KUKA sobre raíles para crear movimientos dinámicos. Su catálogo incluye teatros voladores, vehículos de dark ride de última generación y montañas rusas complejas como el SFX Coaster.",
+      "Dynamic Attractions es una empresa canadiense especializada en el diseño y construcción de atracciones tecnológicamente avanzadas. Son conocidos por su sistema de 'Brazo Robótico' (utilizado en Harry Potter and the Forbidden Journey), que emplea un brazo KUKA sobre raíles para crear movimientos dinámicos. Su catálogo incluye teatros voladores, vehículos de dark ride modernos y montañas rusas complejas como el SFX Coaster.",
     relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
     aliases: ['Dynamic Structures'],
   },
