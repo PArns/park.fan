@@ -44,7 +44,9 @@ füllen.
    mit einer Frische-Prüfung über `mtime`, die auf einem Vercel-Builder nie greifen kann, weil
    ein Checkout jede Datei neu stempelt und die Zuschnitte gitignored sind. Jetzt 0,9 s aus
    `.next/cache`, 44 s bei einem Miss. Das ganze `prebuild` fällt von 132 s auf 9,9 s, und der
-   ganze Build, dreimal gemessen statt addiert, von **284,3 s auf 165,6 s (−41,8 %)**. Seltener
+   ganze Build, dreimal gemessen statt addiert, von **284,3 s auf 165,6 s (−41,8 %)** — und mit den
+   618 City-Seiten, die nur einen 308 liefern und die die Sitemap längst ausschließt, auf
+   **150,9 s (−47 %)**. Seltener
    deployen bleibt ein Hebel und ist für den kostenlosen Fall automatisch: `ignoreCommand`
    überspringt einen Deploy, dessen Diff nur `docs/`, `todo.md`, `CLAUDE.md` oder `.github/`
    berührt, was 3 der letzten 40 Commits waren. Was **nicht** fällt, ist das Prerendering von

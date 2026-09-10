@@ -862,3 +862,55 @@ row rather than to the first.
 ~5 min the same build takes today, and read `✂️  Generating aspect-ratio image crops` in the
 build log — it prints its own wall-clock and whether each crop was cut, restored or already on
 disk.
+
+---
+
+## 2026-09-10 — ACCEPTED: the build prerendered 618 pages whose whole output is a redirect
+
+**Lever:** Build CPU Minutes. **Files:**
+`app/[locale]/parks/[continent]/[country]/[city]/page.tsx`.
+
+A city with exactly one park redirects to that park (308, so Google consolidates the signals
+on the page that has content). `app/sitemap.ts:238` has carried the predicate for that all
+along — `if (city.parks.length > 1)` — and so the sitemap never listed those cities. The
+route's own `generateStaticParams` did not carry it, and nothing connected the two.
+
+Counted against the live geo structure: **145 cities, 103 of them with a single park.** At six
+locales that is **618 of 870 prerendered city pages, 71 %**, each one fetched, rendered and
+written at build time to emit a `Location` header. They are in no sitemap, and nothing links
+them — the country page links straight to `/…/<city>/<park>` — so the only visitor is somebody
+holding an old URL.
+
+Adding the same predicate to `generateStaticParams` does not remove the redirect:
+`dynamicParams` defaults to true, so such a URL renders on demand and still 308s. Measured:
+
+|        | routes prerendered | city routes | full `pnpm build` |
+| ------ | -----------------: | ----------: | ----------------: |
+| before |              3,151 |         870 |           165.6 s |
+| after  |          **2,533** |     **252** |       **150.9 s** |
+
+**−618 routes, −14.7 s.** With the crop fix that is 284.3 s → 150.9 s, **−47 %**.
+
+It is now the same rule in two places, so they move together: change the sitemap's predicate
+and change this one, or the build starts prerendering redirects again. The docstring says so at
+both ends.
+
+**Verification** against `pnpm build && next start`: Rust (Europa-Park + Rulantica, still
+prerendered) answers 200; Brühl (Phantasialand only, no longer prerendered) answers 308 to
+`/de/parks/europe/germany/bruehl/phantasialand`; the legacy shape `/de/parks/europe/germany/
+phantasialand`, which the second redirect branch exists for, still answers 308 to the same
+place; a nonsense slug still 404s. `tsc --noEmit`, eslint and prettier clean.
+
+**Two findings from the same audit, checked and REJECTED:**
+
+- **"The crop cache pushes `.next/cache` past Vercel's 1 GB cap"** — it does not.
+  Measured 461.9 MB total (turbopack 340.1, image-crops 108.5, fetch-cache 12.4,
+  `.tsbuildinfo` 1.0), i.e. 0.43 GiB. The claim was out by 2.4×. Worth re-measuring if the
+  Turbopack cache grows, since that is the half that moves on its own.
+- **"197 of 426 crops have no consumer"** — they do. `getParkImageSet` /
+  `getAttractionImageSet` reach `versionedImageSet`, and `buildStructuredImage`
+  (`components/seo/structured-data.tsx:187`) returns the WHOLE array whenever it holds more
+  than one entry, so all three ratios land in the JSON-LD `image` of park and ride pages, which
+  is what Google asks for. Cutting two of three would trade an SEO signal for ~20 s on the
+  cache-MISS path, which now costs 0.8 s on a hit. `variantFor()` in `lib/media/focus.ts` is
+  genuinely dead code, but it is a function, not a crop.
