@@ -447,9 +447,12 @@ to notice.
       visitors and none is being built, so this sentence is the whole security model.
       `components/planner/planner-push-toggle.tsx` renders `push.storedHint` ("Whoever
       has its link can read and change it — there is no account and no password") in all
-      six catalogs, and only while push is on, which today is the only state in which a
-      plan is on the server at all. A share entry point owes it a second time, next to
-      the action that hands the link over; that half travels with **PF-94**.
+      six catalogs, while push is on: the switch that uploads the plan is the one place
+      a visitor agrees to any of this, so that is where the sentence belongs. Two places
+      will owe it again, and neither of them is this box: a share entry point needs it
+      next to the action that hands the link over (**PF-94**), and `forgetTrip()`
+      drops the local id without deleting the row, so a plan outlives both the toggle
+      and the sentence by up to the 400-day TTL (**PF-103**).
 - [x] `POST /v1/trips` → id, `GET /v1/trips/{id}`, `PUT /v1/trips/{id}`.
       `trips.controller.ts`, all three live.
 - [x] Rate-limit writes. `trip-write-rate-limit.service.ts` — a Redis limiter of its own
@@ -458,11 +461,13 @@ to notice.
 - [x] Size cap, and reject payloads that are not a trip. `trip-payload.util.ts` — 256 KB,
       plus a skeleton check (version, parks, days, entries) with its own per-level caps.
 - [ ] The share link itself, which this section is half named after, which was never
-      one of the four boxes above, and which nothing builds. `lib/planner/trip-sync.ts` has one caller
-      (`lib/planner/use-push-subscription.ts`), `getTripId()` no reader outside it,
-      `components/planner/` neither `navigator.share` nor a clipboard write, and no page
-      loads a plan by id — `app/api/trips/[id]` is the proxy that `syncTrip` writes
-      through, not a route a visitor can arrive on. Where the entry point sits, what
+      one of the four boxes above, and which nothing builds. `lib/planner/trip-sync.ts`
+      has one caller (`use-push-subscription.ts`), `getTripId()` no reader outside it, and
+      `components/planner/` neither `navigator.share` nor a clipboard write. Reading a
+      shared plan is the half that does work: `app/api/trips/[id]`'s `GET` is public and
+      checks nothing but the id's shape, on purpose, so an id already fetches its plan
+      as JSON today. What is missing at both ends is the part a person can use — no way
+      to obtain the link, and no page that opens one. Where the entry point sits, what
       pressing it does while push is off (today the id is created by turning push on),
       and whether taking over a shared plan writes into the sender's row or copies it,
       are product questions: **PF-94**.
