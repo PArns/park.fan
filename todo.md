@@ -435,7 +435,8 @@ payload guard; `https://api.park.fan/api-json` lists all three verbs. On this si
 `app/api/trips/route.ts` and `app/api/trips/[id]/route.ts` relay all three and
 `lib/planner/trip-sync.ts` drives them, so a plan does reach the server. What is missing
 is the other word in this section's title: nothing shares it. That was never one of the
-four boxes, so it is a fifth one now rather than a sentence someone has to notice.
+four boxes, so it gets one of its own below rather than staying a sentence someone has
+to notice.
 
 - [x] Table: trip id (short, URL-safe, unguessable), payload, created/updated,
       expiry. `trip.entity.ts` — `varchar(32)` primary key, `jsonb` payload,
@@ -456,8 +457,8 @@ four boxes, so it is a fifth one now rather than a sentence someone has to notic
       come from this frontend; two buckets, 20 creates and 600 updates per hour per IP.
 - [x] Size cap, and reject payloads that are not a trip. `trip-payload.util.ts` — 256 KB,
       plus a skeleton check (version, parks, days, entries) with its own per-level caps.
-- [ ] The share link itself, which this section is half named after and which nothing
-      builds. `lib/planner/trip-sync.ts` has one caller
+- [ ] The share link itself, which this section is half named after, which was never
+      one of the four boxes above, and which nothing builds. `lib/planner/trip-sync.ts` has one caller
       (`lib/planner/use-push-subscription.ts`), `getTripId()` no reader outside it,
       `components/planner/` neither `navigator.share` nor a clipboard write, and no page
       loads a plan by id — `app/api/trips/[id]` is the proxy that `syncTrip` writes
@@ -586,9 +587,10 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
   own docstring. localStorage only, now.
 - [x] localStorage holds the plan (`parkfan_planner`), read through `secureJsonParse`.
 - [x] Backend sync for sharing (§2.7) — `lib/planner/trip-sync.ts` (`syncTrip`,
-      `startTripAutoSync`, `forgetTrip`) against `app/api/trips/*`. See §2.7's status
-      note: this is the frontend half, and it degrades quietly if the backend table
-      does not exist yet.
+      `startTripAutoSync`, `forgetTrip`) against `app/api/trips/*`. The table it writes
+      to exists and is live (see §2.7); what the relays still degrade quietly on is an
+      unreachable backend, which is the ordinary case they were written for. The sharing
+      this box is named after is the part nobody has built — §2.7's last box.
 - [~] ~~`proxy.ts:39` strips `set-cookie` from every non-redirect response. Cookie
   writes happen client-side, like `rememberLocale()` does.~~ — moot: the planner
   cookie was removed (see above), so there is nothing here for `proxy.ts` to strip.
