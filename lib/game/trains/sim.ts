@@ -20,6 +20,7 @@
  * arrive, and it will need a seeded stream and a serialised state when it does.
  */
 
+import { MAX_PLAYER_SPEED, MINUTES_PER_TICK_AT_SPEED_1 } from '../core/types';
 import type { Command, Dock, Entity, SimContext, SimFrameWriter, SimHandle } from '../core/types';
 import type { TrackSimApi, TrackData, DriveSection } from '../track';
 import { HEARTLINE_HEIGHT } from '../track';
@@ -651,7 +652,7 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
 
   return {
     api,
-    tick() {
+    tick(dtMinutes: number) {
       if (dirty) sync();
       /**
        * The train still runs on its own clock, and I tried to change that and could not afford it.
@@ -685,7 +686,18 @@ export function createTrainsSim(ctx: SimContext): SimHandle {
        * argument, not a constant to flip, so it is filed with these numbers rather than guessed
        * at. See STATUS.
        */
-      const dt = RIDE_SECONDS_PER_TICK;
+      /**
+       * Ride seconds this tick, from the park clock, bounded by the fastest a PLAYER can go.
+       *
+       * The bound is not a fudge and it is not about the frame: past `MAX_PLAYER_SPEED` the
+       * sub-step count needed to keep the block system's stop lines un-jumped grows with the
+       * step, and at 100x that is eight thousand sub-steps per train and a 192.99 ms tick against
+       * a 6 ms budget. `core/types.ts` cut the ladder to 10 for exactly that reason, so every
+       * speed a player can select is integrated in full and honest. A harness driving the sim
+       * faster than any player can (`game-soak.mjs --speed=100`) gets the old behaviour — the
+       * train falls behind the clock, as it always did — rather than a tick nobody can afford.
+       */
+      const dt = Math.min(dtMinutes, MAX_PLAYER_SPEED * MINUTES_PER_TICK_AT_SPEED_1) * 60;
       for (const fleet of fleets.values()) advance(fleet, dt);
     },
     fill(writer: SimFrameWriter) {

@@ -321,7 +321,7 @@ export const en = {
   'help.undo': 'Undo, and with Shift redo',
   'help.cancel': 'Leave the tool, or clear the selection',
   'help.pause': 'Pause and carry on',
-  'help.speed': 'Speed: pause, 1x, 3x, 5x',
+  'help.speed': 'Speed: pause, 1x, 2x, 3x, 5x, 10x',
   'help.help': 'This list',
   'help.more': 'Building',
   'help.moreNote':

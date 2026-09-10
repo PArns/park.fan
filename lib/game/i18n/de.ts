@@ -325,7 +325,7 @@ export const de: Record<GameStringKey, string> = {
   'help.undo': 'Rückgängig, mit Shift wiederherstellen',
   'help.cancel': 'Werkzeug verlassen oder Auswahl aufheben',
   'help.pause': 'Pause und weiter',
-  'help.speed': 'Tempo: Pause, 1x, 3x, 5x',
+  'help.speed': 'Tempo: Pause, 1x, 2x, 3x, 5x, 10x',
   'help.help': 'Diese Liste',
   'help.more': 'Bauen',
   'help.moreNote':

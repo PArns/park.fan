@@ -21,8 +21,30 @@ export type EntityId = string;
 /** Open string union; modules register the kinds they own through the registry. */
 export type EntityKind = string;
 
-export type Speed = 0 | 1 | 2 | 3 | 5 | 100;
-export const SPEEDS: readonly Speed[] = [0, 1, 2, 3, 5, 100];
+/**
+ * The speeds a player may select. **The top one is 10 and it used to be 100.**
+ *
+ * Not a UI decision — a simulation one, and it bought something. `trains` advanced the train a
+ * constant 0.05 ride-seconds a tick whatever the clock said, so the machine's dispatches and the
+ * number of people its queue boarded came off two different clocks: over a park day at speed 20
+ * the coaster's line boarded **1,507 riders while the train dispatched twice**. Putting the train
+ * on the park clock fixes that (2 dispatches → 229 over the same day) and costs sub-steps, and
+ * the bill is a cliff rather than a slope — mean ms per tick against a 6 ms budget: **5× → 1.37,
+ * 10× → 2.69, 12× → 4.58, 15× → 5.91, 20× → 9.03, 100× → 192.99**.
+ *
+ * So the ladder stops where the simulation can still be honest. Ten is twice the old usable
+ * fast-forward (the rung below the jump was 5) with 2.2x of headroom left, and a fourteen-hour
+ * park day runs in about four real minutes instead of twenty-five seconds. That is the trade,
+ * stated: a coaster whose riders are the people actually on it, against a button that skipped a
+ * day in the time it takes to read this sentence.
+ *
+ * 100 survives as a HARNESS speed — `game-soak.mjs` still stresses there — and `trains` clamps
+ * its own step to this ladder's top so that run costs what it always did.
+ */
+export type Speed = 0 | 1 | 2 | 3 | 5 | 10;
+export const SPEEDS: readonly Speed[] = [0, 1, 2, 3, 5, 10];
+/** The fastest a player can drive the park. Read by `trains` to bound its integration step. */
+export const MAX_PLAYER_SPEED = 10;
 /** Fixed simulation step. Unchanged by D-006 and not negotiable: the sim is 20 Hz. */
 export const TICK_HZ = 20;
 export const TICK_MS = 1000 / TICK_HZ;

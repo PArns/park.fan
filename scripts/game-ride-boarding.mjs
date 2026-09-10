@@ -10,7 +10,7 @@
  *
  *   node --experimental-strip-types --import ./scripts/register-path-alias.mjs \
  *     scripts/game-ride-boarding.mjs
- *   … --hours=14 --speed=20 --seed=1 --json=.game-render/boarding.json
+ *   … --hours=14 --speed=10 --seed=1 --json=.game-render/boarding.json
  *   … --flat-only          # the same day with the two machines removed: the before column
  *
  * The placement itself is `docs/game/requests/rides.md` §5 and now lives in `demo-park`, which is
@@ -33,7 +33,10 @@ const args = Object.fromEntries(
   })
 );
 const hours = Number(args.hours ?? 14);
-const speed = Number(args.speed ?? 20);
+// 10 is the top of the player ladder (`core/types.ts`), so a day measured here is a day
+// somebody can actually watch. It was 20, which stopped being a speed the game offers when the
+// train went onto the park clock.
+const speed = Number(args.speed ?? 10);
 const seed = Number(args.seed ?? 1);
 const flatOnly = args['flat-only'] === '1';
 const jsonOut = args.json ?? null;
