@@ -150,6 +150,16 @@ const browser = await chromium.launch({
   ],
 });
 const page = await browser.newPage({ viewport });
+/**
+ * Playwright's 30 s default is a SwiftShader budget, not a Playwright one.
+ *
+ * `page.screenshot()` waits for the compositor, and a preset heavy enough to take a second a frame
+ * in software takes longer than that to hand one over — the seven-preset sweep died on the
+ * `coaster` view with an empty `log: []` after the demo park gained a 610 m circuit, having
+ * already written four PNGs and no report. Two minutes is the same picture with room for the
+ * slowest frame this container produces.
+ */
+page.setDefaultTimeout(120000);
 const console_ = { errors: [], warnings: [], hydration: [] };
 page.on('console', (m) => {
   const text = m.text();
