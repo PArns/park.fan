@@ -728,9 +728,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             It does the two things a bottom sheet's handle is expected to do —
             pull up to see more of the day, push down to put it away — and a tap
             toggles, because a tap is what most people try first. The 8 px rail
-            is what is drawn; the 44 px target is a pseudo-element, so the rail
-            can stay a hairline without the touch area shrinking with it. */}
-        <div className="flex shrink-0 justify-center pt-1 pb-0.5 sm:hidden">
+            is what is drawn.
+
+            **The 44 px used to be a pseudo-element and is the button now**,
+            which costs this row 22 px and is worth them. Centred on a 16 px
+            button in a 22 px row, a 44 px `after:` reached 22 px past the row in
+            both directions — 12 of them over the header directly below, which
+            since this change carries two 44 px controls of its own. A
+            positioned pseudo-element beats a static button in hit-testing, so
+            the top of "Meine Pläne" opened the sheet's height instead of the
+            plan list. There is no arrangement of 44 + 44 in 66 px: the two
+            targets are stacked, not side by side, so one of them was always
+            going to be a lie. Anchoring the overhang upward instead only moves
+            the problem — pulled up to 100svh there is nothing above the sheet
+            to reach into. */}
+        <div className="flex shrink-0 justify-center pt-1 pb-0.5 max-sm:py-0 sm:hidden">
           <button
             type="button"
             onPointerDown={handleSheetGrab}
@@ -740,7 +752,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             }}
             data-planner-sheet-handle=""
             aria-label={t('sheet.handle')}
-            className='relative flex h-4 w-16 cursor-grab touch-none items-center justify-center after:absolute after:top-1/2 after:h-11 after:w-24 after:-translate-y-1/2 after:content-[""] active:cursor-grabbing'
+            className="relative flex h-4 w-16 cursor-grab touch-none items-center justify-center active:cursor-grabbing max-sm:h-11 max-sm:w-24"
           >
             <span className="bg-muted-foreground/40 h-1.5 w-10 rounded-full" />
           </button>

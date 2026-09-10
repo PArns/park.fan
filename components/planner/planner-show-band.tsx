@@ -110,6 +110,14 @@ export function PlannerShowBand({
       // `check:planner`'s axis measurement is unmoved. What it does cost is
       // coverage — stuck at the top it hides 44 px of grid instead of 22 — and
       // that is recoverable by scrolling, where a stolen tap is not.
+      //
+      // Unconditional, though the switch it was raised for renders only where
+      // there are shows: a height that depends on the answer is not a
+      // reservation, and this strip's whole job in the loading state is to keep
+      // the grid from moving when `/plan/day` lands. Tying `min-h-11` to
+      // `lines?.length` would buy back 22 px on a park with no shows and pay
+      // for it with a 22 px jump on every park that has them, one second after
+      // the panel opens.
       className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm max-sm:min-h-11"
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
