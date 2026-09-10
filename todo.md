@@ -427,28 +427,28 @@ reports every show as closed.
 
 **Backend-confirmed status (2026-09-10, PF-34) — replaces the frontend-observed caveat
 that stood here, which said the backend table was unproven and was already out of date
-when it was written:** all four boxes below were checked against the backend repo and the
-live API, and the storage half is done. `510a6c3`
+when it was written:** the four boxes it left open were checked against the backend repo,
+the live API and this repo, and all four are done. `510a6c3`
 ([v4.api.park.fan#216](https://github.com/PArns/v4.api.park.fan/pull/216), 2026-09-03)
 brought `src/trips/` with the entity, the three endpoints, the write limiter and the
 payload guard; `https://api.park.fan/api-json` lists all three verbs. On this side
 `app/api/trips/route.ts` and `app/api/trips/[id]/route.ts` relay all three and
 `lib/planner/trip-sync.ts` drives them, so a plan does reach the server. What is missing
-is the other word in this section's title: nothing shares it, which is the one box left
-open below.
+is the other word in this section's title: nothing shares it. That was never one of the
+four boxes, so it is a fifth one now rather than a sentence someone has to notice.
 
 - [x] Table: trip id (short, URL-safe, unguessable), payload, created/updated,
       expiry. `trip.entity.ts` — `varchar(32)` primary key, `jsonb` payload,
       `CreateDateColumn`/`UpdateDateColumn`, `expiresAt timestamptz` behind
       `idx_trips_expires_at`; `TripsService` pushes a 400-day TTL forward on every
       write and `queues/processors/trips-maintenance.processor.ts` sweeps what expires.
-- [ ] Say in the UI that the link is the credential. No account system exists for
-      visitors and none is being built, so this sentence is the whole security model —
-      and it has nowhere to stand: `lib/planner/trip-sync.ts` has exactly one caller
-      (`lib/planner/use-push-subscription.ts`), `getTripId()` no reader outside it, and
-      `components/planner/` contains neither `navigator.share` nor a clipboard write.
-      Where the share entry point goes, and what pressing it does when push is off, is
-      **PF-94**; the sentence lands with it.
+- [x] Say in the UI that the link is the credential — no account system exists for
+      visitors and none is being built, so this sentence is the whole security model.
+      `components/planner/planner-push-toggle.tsx` renders `push.storedHint` ("Whoever
+      has its link can read and change it — there is no account and no password") in all
+      six catalogs, and only while push is on, which today is the only state in which a
+      plan is on the server at all. A share entry point owes it a second time, next to
+      the action that hands the link over; that half travels with **PF-94**.
 - [x] `POST /v1/trips` → id, `GET /v1/trips/{id}`, `PUT /v1/trips/{id}`.
       `trips.controller.ts`, all three live.
 - [x] Rate-limit writes. `trip-write-rate-limit.service.ts` — a Redis limiter of its own
@@ -456,6 +456,15 @@ open below.
       come from this frontend; two buckets, 20 creates and 600 updates per hour per IP.
 - [x] Size cap, and reject payloads that are not a trip. `trip-payload.util.ts` — 256 KB,
       plus a skeleton check (version, parks, days, entries) with its own per-level caps.
+- [ ] The share link itself, which this section is half named after and which nothing
+      builds. `lib/planner/trip-sync.ts` has one caller
+      (`lib/planner/use-push-subscription.ts`), `getTripId()` no reader outside it,
+      `components/planner/` neither `navigator.share` nor a clipboard write, and no page
+      loads a plan by id — `app/api/trips/[id]` is the proxy that `syncTrip` writes
+      through, not a route a visitor can arrive on. Where the entry point sits, what
+      pressing it does while push is off (today the id is created by turning push on),
+      and whether taking over a shared plan writes into the sender's row or copies it,
+      are product questions: **PF-94**.
 
 ### 2.8 Push `[P2]` — frontend integration already built, ahead of this section's checkboxes
 
