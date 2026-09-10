@@ -465,7 +465,21 @@ export function ParkCalendarComparison({
           <div className="grid grid-cols-2 gap-2">
             {([a, b] as const).map((day) =>
               !plannable(day) ? (
-                beyondPlanner(day) ? (
+                // Noch nicht gefragt ist nicht dasselbe wie „geht nicht".
+                //
+                // Solange die Momentaufnahme unterwegs ist, sind `plannable` und `beyondPlanner`
+                // BEIDE falsch, und die Zelle fiel in den letzten Zweig: der Dialog empfahl einen
+                // Tag, bot keinen Knopf und nannte keinen Grund, und schob die Knöpfe einen
+                // Wimpernschlag später nach. Genau das Symptom, gegen das `blockedSides` in
+                // dieser Datei eingeführt wurde — nur eine Sekunde lang.
+                horizonPending ? (
+                  <p
+                    key={day.date}
+                    className="text-muted-foreground self-center text-[11px] leading-snug"
+                  >
+                    {tCommon('loading')}
+                  </p>
+                ) : beyondPlanner(day) ? (
                   <p
                     key={day.date}
                     className="text-muted-foreground self-center text-[11px] leading-snug"

@@ -530,11 +530,14 @@ export function PlannerWizard({
     step === 'park'
       ? null
       : step === 'headliners'
-        ? // Nicht abschließen, solange die Prognose unterwegs ist: der Schritt
-          // hätte sonst nichts anzubieten und der Tag entstünde leer. `pending`
-          // ist `!data && !isError`, hört also auch dann auf, wenn die Frage
-          // scheitert — ein Tag ohne Prognose bleibt abschließbar.
-          { run: finish, enabled: Boolean(park && date) && !dayPending }
+        ? // Bewusst NICHT an `dayPending` gehängt. Der Schritt sagt oben, dass er
+          // noch lädt, und das ist das, was er schuldet; den Knopf zusätzlich zu
+          // sperren macht den Wizard unabschließbar, sobald `/plan/day` hängt
+          // statt zu scheitern — ein `fetch` ohne Zeitgrenze setzt nie `isError`,
+          // und dann ist auch Enter tot. Eine Oberfläche, aus der es keinen
+          // Ausgang gibt, ist schlimmer als ein Tag ohne Headliner, den man
+          // im Panel in zwei Griffen füllt.
+          { run: finish, enabled: Boolean(park && date) }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
   /**
