@@ -131,7 +131,7 @@ export function ContentFR() {
       >
         <P>
           Voici la note, en direct et sans fard. Fancast tire ces chiffres de son propre tableau de
-          bord à l’instant même ; ils changeront dès que le modèle se réentraînera cette nuit.
+          bord à l’instant même ; ils changeront avec le prochain entraînement, demain matin.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />

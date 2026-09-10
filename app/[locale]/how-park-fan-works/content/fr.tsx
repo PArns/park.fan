@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attractions',
     body: 'Le premier onglet, avec le nombre d’attractions dans son titre. Des cartes comme au chapitre 01, avec recherche, groupées par zone. En haut, l’aperçu rope drop du parc, trié par minutes gagnées.',
     example:
-      'Taron à Klugheim, à partir de 140 centimètres — la carte du chapitre 01. Au-dessus, la liste rope drop, menée par Chiapas avec 75 minutes gagnées.',
+      'Taron à Klugheim, à partir de 140 centimètres – la carte du chapitre 01. Au-dessus, la liste rope drop, menée par Chiapas avec 75 minutes gagnées.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -217,7 +217,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Meilleurs jours',
     body: 'Les dates les plus calmes des trois prochains mois, plus le jour de semaine le plus calme du parc.',
     example:
-      'Le jour de semaine le plus calme du parc et les prochaines dates calmes — le même calcul qu’au chapitre 04, sur trois mois.',
+      'Le jour de semaine le plus calme du parc et les prochaines dates calmes – le même calcul qu’au chapitre 04, sur trois mois.',
     demo: <AnatomyBestDaysDemo locale="fr" />,
     onlyWhen: 'le parc publie un calendrier d’exploitation.',
   },
@@ -853,7 +853,7 @@ export function ContentFR() {
             <BadgeRowDemo
               crowdLabel="Affluence : à quel point c’est plein maintenant"
               comparisonLabel="Comparaison : plus que d’habitude ?"
-              caption="Deux échelles, un exemple : à 70 minutes, Taron affiche « Très élevée » — c’est l’affluence. Face à ses 45 minutes habituelles, c’est « Bien plus » — c’est la comparaison avec lui-même. Un petit parc peut être « Très élevée » et pourtant « Habituel » : chez lui, 25 minutes sont normales."
+              caption="Deux échelles, un exemple : à 70 minutes, Taron affiche « Très élevée » – c’est l’affluence. Face à ses 45 minutes habituelles, c’est « Bien plus » – c’est la comparaison avec lui-même. Un petit parc peut être « Très élevée » et pourtant « Habituel » : chez lui, 25 minutes sont normales."
             />
           </DemoFrame>
         </div>

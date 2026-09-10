@@ -40,7 +40,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un upgrade de billet payant ou inclus donnant accès à une file prioritaire plus courte.',
     definition:
-      'Un Pass Express (le nom varie selon les parcs – Universal Express, Disney Lightning Lane, etc.) est un upgrade qui permet aux détenteurs d’utiliser une entrée prioritaire dédiée avec des attentes nettement plus courtes. Utilisez le calendrier d’affluence de park.fan pour décider si un Pass Express vaut son coût.',
+      'Un Pass Express (le nom varie selon les parcs – Universal Express, Disney Lightning Lane, etc.) est un upgrade qui permet aux détenteurs d’utiliser une entrée prioritaire dédiée avec des attentes nettement plus courtes. Certains parcs incluent l’accès express dans leurs forfaits hôteliers, d’autres le vendent séparément.',
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
@@ -91,7 +91,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une période de fermeture planifiée pendant laquelle une attraction subit une maintenance ou des améliorations.',
     definition:
-      'Une rénovation est une période de maintenance ou de travaux programmée pendant laquelle une attraction, un spectacle ou une zone du parc est temporairement fermé. Les rénovations peuvent durer de quelques jours à plusieurs mois. park.fan indique les attractions en cours de rénovation pour que vous puissiez en tenir compte dans votre planification.',
+      'Une rénovation est une période de maintenance ou de travaux programmée pendant laquelle une attraction, un spectacle ou une zone du parc est temporairement fermé. Les rénovations peuvent durer de quelques jours à plusieurs mois. park.fan signale les attractions en cours de rénovation.',
     aliases: ['Rénovations'],
     alternateNames: ['Réhabilitation', 'Refurb', 'Fermeture technique'],
 
@@ -123,7 +123,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le moment où un parc ouvre officiellement ses portes et où les files pour les attractions populaires sont les plus courtes.',
     definition:
-      'Le Rope Drop désigne le moment où un parc à thème ouvre pour la journée – tirant son nom de la corde (ou barrière) que le personnel abaisse pour laisser entrer les premiers visiteurs. Arriver au Rope Drop est une stratégie populaire car les attractions populaires ont les files les plus courtes tôt le matin, avant que les foules n’affluent. Le planning de park.fan indique les heures d’ouverture exactes pour vous aider à préparer votre stratégie.',
+      'Le Rope Drop désigne le moment où un parc à thème ouvre pour la journée – tirant son nom de la corde (ou barrière) que le personnel abaisse pour laisser entrer les premiers visiteurs. Arriver au Rope Drop est une stratégie populaire car les attractions populaires ont les files les plus courtes tôt le matin, avant que les foules n’affluent. Le planning de park.fan indique les heures d’ouverture exactes.',
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 're-ride', 'wait-time'],
   },
@@ -203,7 +203,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La file d’attente classique d’une attraction, sans réservation ni pass spécial.',
     definition:
-      'La file Standby est la file d’attente physique standard accessible à tous les visiteurs sans ticket supplémentaire ni upgrade. Ceux qui font la Standby attendent dans l’ordre d’arrivée – le temps affiché reflète directement l’affluence actuelle à l’attraction. Les jours chargés, les temps de Standby pour les attractions phares peuvent dépasser 90 minutes. park.fan suit les temps de Standby en temps réel pour vous aider à trouver la file la plus courte à tout moment.',
+      'La file Standby est la file d’attente physique standard accessible à tous les visiteurs sans ticket supplémentaire ni upgrade. Ceux qui font la Standby attendent dans l’ordre d’arrivée – le temps affiché reflète directement l’affluence actuelle à l’attraction. Les jours chargés, les temps de Standby pour les attractions phares peuvent dépasser 90 minutes. park.fan affiche le temps d’attente Standby de chaque attraction, à côté des autres types de file.',
     aliases: ['File standby'],
     alternateNames: ['File Standard', 'File Normale', 'File classique'],
 
@@ -215,7 +215,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le système d’accès prioritaire payant de Disney, successeur du programme FastPass+.',
     definition:
-      'Lightning Lane est le nom donné par Disney à son système de file prioritaire, introduit en 2021 pour remplacer le programme gratuit FastPass+. Il existe en deux formules : Individual Lightning Lane (ILL), vendu séparément pour les attractions les plus demandées, et Lightning Lane Multi Pass (LLMP), un abonnement journalier permettant de réserver des créneaux de retour sur une sélection d’attractions. La Lightning Lane a suscité de nombreux débats car elle transforme un avantage autrefois gratuit en service payant. Le calendrier d’affluence de park.fan vous aide à juger les jours où la Lightning Lane vaut son prix.',
+      'Lightning Lane est le nom donné par Disney à son système de file prioritaire, introduit en 2021 pour remplacer le programme gratuit FastPass+. Il existe en deux formules : Individual Lightning Lane (ILL), vendu séparément pour les attractions les plus demandées, et Lightning Lane Multi Pass (LLMP), un abonnement journalier permettant de réserver des créneaux de retour sur une sélection d’attractions. La Lightning Lane a suscité de nombreux débats car elle transforme un avantage autrefois gratuit en service payant. Le calendrier d’affluence de park.fan montre les jours où il faut s’attendre à de longues files Standby.',
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
@@ -227,7 +227,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'L’ancien abonnement journalier de Disney donnant accès à la Lightning Lane Multi Pass sur la plupart des attractions.',
     definition:
-      'Genie+ (désormais rebaptisé Lightning Lane Multi Pass) était l’add-on journalier payant de Disney qui a remplacé FastPass+. Moyennant un tarif par personne et par jour, les visiteurs pouvaient réserver un créneau Lightning Lane à la fois sur une large sélection d’attractions. Les attractions phares étaient exclues et vendues séparément en Individual Lightning Lane. Le prix de Genie+ était dynamique et augmentait les jours les plus fréquentés. park.fan suit les niveaux d’affluence en détail pour vous aider à décider si l’abonnement en vaut la peine.',
+      'Genie+ (désormais rebaptisé Lightning Lane Multi Pass) était l’add-on journalier payant de Disney qui a remplacé FastPass+. Moyennant un tarif par personne et par jour, les visiteurs pouvaient réserver un créneau Lightning Lane à la fois sur une large sélection d’attractions. Les attractions phares étaient exclues et vendues séparément en Individual Lightning Lane. Le prix de Genie+ était dynamique et augmentait les jours les plus fréquentés. park.fan affiche le niveau d’affluence actuel de chaque parc.',
     aliases: ['Genie Plus'],
     alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
@@ -313,7 +313,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une date à laquelle certains niveaux d’abonnement annuel ne sont pas valables pour l’entrée au parc, généralement les jours les plus fréquentés de l’année.',
     definition:
-      'Les Blockout Dates (aussi appelées blackout dates) sont des jours précis du calendrier où certains niveaux d’abonnement annuel ne donnent pas droit à l’entrée. Les parcs appliquent ces restrictions pour gérer la capacité les jours les plus chargés – jours fériés, week-ends de pointe et dates d’événements majeurs. Les abonnements supérieurs ont peu ou pas de dates bloquées, tandis que les abonnements d’entrée de gamme peuvent être bloqués 30 à 60 jours par an. Vérifiez toujours le calendrier des restrictions avant de visiter si vous disposez d’un abonnement limité. Le calendrier d’affluence de park.fan met en évidence les périodes de pointe pour croiser avec les restrictions de votre abonnement.',
+      'Les Blockout Dates (aussi appelées blackout dates) sont des jours précis du calendrier où certains niveaux d’abonnement annuel ne donnent pas droit à l’entrée. Les parcs appliquent ces restrictions pour gérer la capacité les jours les plus chargés – jours fériés, week-ends de pointe et dates d’événements majeurs. Les abonnements supérieurs ont peu ou pas de dates bloquées, tandis que les abonnements d’entrée de gamme peuvent être bloqués 30 à 60 jours par an. Vérifiez toujours le calendrier des restrictions avant de visiter si vous disposez d’un abonnement limité. Le calendrier d’affluence de park.fan marque les jours de pointe typiques.',
     aliases: ['Dates bloquées'],
     alternateNames: ['Blackout', 'Blackout Date', 'Date de restriction'],
 
@@ -381,7 +381,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Une attraction intérieure dans laquelle les visiteurs se déplacent à bord de véhicules guidés à travers des décors thématiques, des effets spéciaux et des scènes animées dans l’obscurité.',
     definition:
-      'Un dark ride est une attraction fermée où des véhicules guidés transportent les visiteurs à travers une succession de décors thématiques, d’effets lumineux et sonores, d’animatroniques et de projections dans un environnement obscur ou semi-obscur. Les dark rides vont des classiques comme les Fantômes d’Halloween de Disneyland aux aventures modernes à base de simulateurs et de tir, comme Men in Black à Universal. Le terme est utilisé en français dans la communauté des parcs, au même titre que dans les milieux professionnels. Les dark rides sont parmi les attractions les plus accessibles à tous les publics et figurent en bonne place parmi les incontournables des grands parcs référencés sur park.fan.',
+      'Un dark ride est une attraction fermée où des véhicules guidés transportent les visiteurs à travers une succession de décors thématiques, d’effets lumineux et sonores, d’animatroniques et de projections dans un environnement obscur ou semi-obscur. Les dark rides vont des classiques comme les Fantômes d’Halloween de Disneyland aux aventures modernes à base de simulateurs et de tir, comme Men in Black à Universal. Le terme est utilisé en français dans la communauté des parcs, au même titre que dans les milieux professionnels. Les dark rides comptent parmi les attractions à plus forte capacité et les plus populaires.',
     aliases: ['Dark Rides'],
     alternateNames: ['Attraction Couverte', 'Manège Intérieur', 'Attraction en intérieur'],
 
@@ -1095,7 +1095,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'realtime-wait-time',
     name: 'Temps d’attente en direct',
     shortDefinition:
-      'Temps d’attente mis à jour en temps réel directement depuis les systèmes du parc.',
+      'Temps d’attente en direct tiré des systèmes du parc, actualisé toutes les cinq minutes.',
     definition:
       'Un temps d’attente en direct est la donnée du moment, tirée des systèmes du parc : pas une moyenne historique, mais l’état d’aujourd’hui, maintenant. park.fan récupère ces temps d’attente depuis des sources publiques et les actualise toutes les cinq minutes. Vous voyez ainsi quelle attraction est vide en ce moment et où il faudrait vraiment attendre 60 minutes.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],

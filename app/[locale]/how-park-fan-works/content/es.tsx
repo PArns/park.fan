@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Atracciones',
     body: 'La primera pestaña, con el número de atracciones en el título. Tarjetas como las del capítulo 01, con buscador y agrupadas por zonas. Arriba, el resumen de rope drop del parque, ordenado por minutos ahorrados.',
     example:
-      'Taron en Klugheim, desde 140 centímetros — la tarjeta del capítulo 01. Encima la lista de rope drop, encabezada por Chiapas con 75 minutos ahorrados.',
+      'Taron en Klugheim, desde 140 centímetros – la tarjeta del capítulo 01. Encima la lista de rope drop, encabezada por Chiapas con 75 minutos ahorrados.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -217,7 +217,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Mejores días',
     body: 'Las fechas más tranquilas de los próximos tres meses, además del día de la semana más tranquilo del parque.',
     example:
-      'El día de la semana más tranquilo del parque y las próximas fechas tranquilas — el mismo cálculo que en el capítulo 04, a tres meses.',
+      'El día de la semana más tranquilo del parque y las próximas fechas tranquilas – el mismo cálculo que en el capítulo 04, a tres meses.',
     demo: <AnatomyBestDaysDemo locale="es" />,
     onlyWhen: 'el parque publica un calendario de apertura.',
   },
@@ -847,7 +847,7 @@ export function ContentES() {
             <BadgeRowDemo
               crowdLabel="Afluencia: cuánto se llena ahora"
               comparisonLabel="Comparación: ¿más que de costumbre?"
-              caption="Dos escalas, un ejemplo: con 70 minutos Taron marca «Muy alta» — eso es la afluencia. Frente a sus 45 minutos típicos es «Mucho mayor» — eso es la comparación consigo mismo. Un parque pequeño puede estar en «Muy alta» y aun así en «Típico»: allí 25 minutos son lo normal."
+              caption="Dos escalas, un ejemplo: con 70 minutos Taron marca «Muy alta» – eso es la afluencia. Frente a sus 45 minutos típicos es «Mucho mayor» – eso es la comparación consigo mismo. Un parque pequeño puede estar en «Muy alta» y aun así en «Típico»: allí 25 minutos son lo normal."
             />
           </DemoFrame>
         </div>

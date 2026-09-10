@@ -324,7 +324,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Kalendertag, an dem bestimmte Jahrespass-Stufen nicht für den Parkeintritt gültig sind – meist an Spitzentagen.',
     definition:
-      'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Hochwertige Pässe haben wenige oder keine Sperrtage; günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Vor dem Besuch unbedingt den Sperrtagkalender prüfen. Der Besucherkalender von Der Besucherkalender von park.fan markiert die typischen Spitzentage.',
+      'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Hochwertige Pässe haben wenige oder keine Sperrtage; günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Vor dem Besuch unbedingt den Sperrtagkalender prüfen. Der Besucherkalender von park.fan markiert die typischen Spitzentage.',
     aliases: ['Sperrtage'],
     alternateNames: ['Blackout-Tage', 'Blackout-Datum', 'Blockout Date'],
 
@@ -378,7 +378,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein reserviertes Zeitfenster, in dem man mit einem Lightning Lane, einer virtuellen Warteschlange oder einem ähnlichen System zur Attraktion zurückkehren kann.',
     definition:
-      'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster – meist ein Ein-Stunden-Block –, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Schlange zu stehen. Wer das Zeitfenster verpasst – nach einer kurzen Toleranzzeit –, verliert die Reservierung. Mit den Live-Wartezeiten und Besucherdichte-Daten von park.fan kannst du gezielt entscheiden, welche Attraktionen du für Rückkehrzeiten einplanen möchtest.',
+      'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster – meist ein Ein-Stunden-Block –, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Schlange zu stehen. Wer das Zeitfenster verpasst – nach einer kurzen Toleranzzeit –, verliert die Reservierung. park.fan zeigt Live-Wartezeiten und Besucherdichte neben den Rückkehrzeiten eines Parks.',
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     aliases: ['Rückkehrzeiten'],
     alternateNames: ['Returntime', 'Return Time', 'Rückkehrfenster', 'Rückkehrzeit'],

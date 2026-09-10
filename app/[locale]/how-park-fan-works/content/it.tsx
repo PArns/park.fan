@@ -197,7 +197,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Attrazioni',
     body: 'La prima scheda, con il numero di attrazioni nel titolo. Card come quelle del capitolo 01, con ricerca e raggruppate per area. In cima il riepilogo rope drop del parco, ordinato per minuti risparmiati.',
     example:
-      'Taron a Klugheim, da 140 centimetri — la card del capitolo 01. Sopra la lista rope drop, guidata da Chiapas con 75 minuti risparmiati.',
+      'Taron a Klugheim, da 140 centimetri – la card del capitolo 01. Sopra la lista rope drop, guidata da Chiapas con 75 minuti risparmiati.',
     demo: <AnatomyAttractionDemo />,
   },
   {
@@ -217,7 +217,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Giorni migliori',
     body: 'Le date più tranquille dei prossimi tre mesi, più il giorno della settimana più tranquillo del parco.',
     example:
-      'Il giorno della settimana più tranquillo del parco e le prossime date tranquille — lo stesso calcolo del capitolo 04, su tre mesi.',
+      'Il giorno della settimana più tranquillo del parco e le prossime date tranquille – lo stesso calcolo del capitolo 04, su tre mesi.',
     demo: <AnatomyBestDaysDemo locale="it" />,
     onlyWhen: 'il parco pubblica un calendario di apertura.',
   },
@@ -847,7 +847,7 @@ export function ContentIT() {
             <BadgeRowDemo
               crowdLabel="Affollamento: quanto è pieno adesso"
               comparisonLabel="Confronto: più del solito?"
-              caption="Due scale, un esempio: a 70 minuti Taron segna «Molto alta» — questo è l’affollamento. Rispetto ai suoi tipici 45 minuti è «Molto più alto» — questo è il confronto con sé stesso. Un parco piccolo può stare su «Molto alta» ed essere comunque «Tipico»: lì 25 minuti sono la norma."
+              caption="Due scale, un esempio: a 70 minuti Taron segna «Molto alta» – questo è l’affollamento. Rispetto ai suoi tipici 45 minuti è «Molto più alto» – questo è il confronto con sé stesso. Un parco piccolo può stare su «Molto alta» ed essere comunque «Tipico»: lì 25 minuti sono la norma."
             />
           </DemoFrame>
         </div>
