@@ -742,3 +742,94 @@ Stunde statt der 48 h.
 **Offen, erst nach dem Deploy prüfbar:** ob Vercel die neuen Header genauso durchreicht wie
 den des Kalenders. `curl -sI` auf eine Ride-URL. **Die Cloudflare-Regel darf nicht umgestellt
 werden, bevor das bestätigt ist.**
+
+---
+
+## 2026-09-10 — ACCEPTED: the build's own profile, and the 124 s nobody had timed
+
+**Lever:** Build CPU Minutes. **Files:** `scripts/generate-image-crops.mjs`,
+`scripts/vercel-ignore-build.sh`, `vercel.json`.
+
+`README.md` says of this line item: „Wer an dieser Zeile sparen will, deployt seltener — nicht
+anders." That was never measured. Timed per step on a 4-core box, a production build is:
+
+| phase                              |  cold | warm (`.next/cache` restored) |
+| ---------------------------------- | ----: | ----------------------------: |
+| `prebuild` — image crops           | 124 s |                        0.16 s |
+| `prebuild` — the other seven steps | 8.6 s |                         8.6 s |
+| Turbopack compile                  |  46 s |                         1.5 s |
+| `tsc` type-check                   |  52 s |                         7.6 s |
+| collect page data                  | 2.2 s |                         2.2 s |
+| prerender 3,151 pages              | 154 s |                         154 s |
+| finalize                           | 0.9 s |                         0.9 s |
+
+Vercel restores `.next/cache` for a Next project with no configuration, and Next puts both the
+Turbopack build cache and its own `.tsbuildinfo` in there, so the compile and the type-check are
+already warm in production and needed nothing. The crops were the exception, and for a reason
+that is invisible locally: freshness was an **mtime** comparison, a git checkout stamps every
+file with the checkout time, and the crops are gitignored, so a Vercel builder could only ever
+take the cold path. 124 s of every build, or ~40 % of it, cutting 426 files that were
+byte-identical to the ones the previous build cut.
+
+**Two changes to that step, and both are needed.** Freshness is now a content hash (source
+bytes + the sidecar's focal point + geometry + the sharp/libvips version) against a copy kept
+in `.next/cache/image-crops`; and the loop, which was `for (…) await cropOne(…)` with three
+cores idle, runs at `cpus().length`. Measured end to end:
+
+| path                                            |  before |  after |
+| ----------------------------------------------- | ------: | -----: |
+| cache hit (what a Vercel build now does)        |   126 s | 0.93 s |
+| cache miss, e.g. a new photo or a cleared cache |   126 s |   44 s |
+| one retargeted focal point                      |   126 s |  1.2 s |
+| whole `prebuild`                                | 132.4 s | 9.85 s |
+
+The cache costs 106 MB inside a `.next/cache` that was already 312 MB, and it is pruned to the
+current source set on every run so it cannot grow with the repo's history.
+
+**Not a KV store, and not Blob.** Both would work and both are the wrong shape: 426 objects
+over the network per build, plus a token, to avoid a second of local file copying, for data
+that is a pure function of files already in the checkout. Next's own docs settle it — „The
+build cache lives in `.next/cache`. Builds only get faster when that directory is restored
+before each build." Vercel restores exactly that directory.
+
+**The prerender phase is 92 % of a warm build and stays.** 3,151 pages, of which the glossary
+is 1,644 (52 %) and the geo hubs 1,038 (33 %). Phase 0 called the glossary „a rounding error on
+the build line", which is wrong by an order of magnitude, but its conclusion survives for a
+better reason: the phase is CPU-bound, not IO-bound. `staticGenerationMaxConcurrency: 24`
+against the default 8 made it **worse**, 2.9 min against 2.5 min, because the fetch cache is
+warm and the pages are not waiting on anything. What is left is fewer pages or more builder
+cores, and fewer pages means the ISR writes June 2026 spent a release removing.
+
+**Also measured and rejected:** `mozjpeg: false` cuts the miss path from 44 s to ~11 s and adds
+21 % to 100 MB of image bytes, against a bill whose largest single item was images. A double
+`prebuild` (pnpm's implicit pre-hook plus the explicit `pnpm prebuild &&` inside `build`) was
+checked with a throwaway package and does not happen: pnpm 11 has pre/post scripts off by
+default, so the chain runs once. Narrowing `tsconfig` for the build buys nothing either — all
+995 checked files are `app/`, `components/` and `lib/`, and `scripts/*.mjs` was never in it.
+
+**Deploy cadence is a real lever, and it is now automatic for the free case.** 3 of the last 40
+commits touched only `docs/`, `todo.md`, `CLAUDE.md` or `.github/`, and each built and shipped
+an identical site. `ignoreCommand` runs `scripts/vercel-ignore-build.sh`, which diffs against
+`VERCEL_GIT_PREVIOUS_SHA` and skips only when every changed path is on a short anchored
+allowlist. It builds whenever it cannot be sure: no previous SHA, a SHA missing from a shallow
+clone, a failed diff, an empty diff. `content/blog/**`, `public/media/**` and `messages/**` are
+deliberately absent from the list, because each is the input to a generator and a README inside
+one of them is not worth a glob that could skip an article's deploy.
+
+**Cost-shift check:** the crop change shifts nothing — no fetches, no ISR writes, identical
+output bytes, verified by hashing all 426 crops before and after (`IDENTICAL`). `ignoreCommand`
+shifts nothing either; a skipped build leaves the previous deployment aliased, which is what a
+tree with no output-relevant change should serve.
+
+**Verification:** `pnpm build` green with the crop cache warm, and `next build` confirmed to
+leave `.next/cache/image-crops` intact (426 entries before, 426 after) — the whole mechanism
+fails silently if it does not. Crop determinism checked directly: the same source re-encoded
+three times gives one hash. Invalidation checked both ways: a retargeted focal point re-cuts 3
+crops, reverting it returns the original bytes. The ignore script was run against a real
+docs-only commit (exit 0), a real code commit (exit 1, 13 files), a missing SHA and an unknown
+SHA (exit 1 both).
+
+**Open:** the per-build saving is derived from local timings, so confirm it on Vercel by
+comparing Build CPU on the next production deploy against the ~5 min the same build takes today,
+and read `✂️  Generating aspect-ratio image crops` in the build log — it prints its own
+wall-clock and whether each crop was cut, restored or already on disk.

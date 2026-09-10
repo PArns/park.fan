@@ -37,8 +37,19 @@ füllen.
    selbst 466.150 Misses und 20,15 GB über 8 Tage → 1,75 Mio Writes/Monat × $4,50) und könnte
    realistisch $6–10/Monat sparen. Nullsummenspiel mit Zusatzkomplexität.
 2. **`Build CPU Minutes` ist der drittgrößte Posten** und hat mit Traffic nichts zu tun. Am
-   2026-09-03 liefen sieben PRs mit je einem Preview- und einem Produktions-Build. Wer an
-   dieser Zeile sparen will, deployt seltener — nicht anders.
+   2026-09-03 liefen sieben PRs mit je einem Preview- und einem Produktions-Build.
+   **Korrektur vom 2026-09-10:** hier stand „wer an dieser Zeile sparen will, deployt seltener
+   – nicht anders", und das war geraten, nicht gemessen. Der Build wurde danach zum ersten Mal
+   phasenweise gestoppt: **124 s davon waren der Bildzuschnitt**, sequentiell auf einem Kern und
+   mit einer Frische-Prüfung über `mtime`, die auf einem Vercel-Builder nie greifen kann, weil
+   ein Checkout jede Datei neu stempelt und die Zuschnitte gitignored sind. Jetzt 0,9 s aus
+   `.next/cache`, 44 s bei einem Miss. Das ganze `prebuild` fällt von 132 s auf 9,9 s. Seltener
+   deployen bleibt ein Hebel und ist für den kostenlosen Fall automatisch: `ignoreCommand`
+   überspringt einen Deploy, dessen Diff nur `docs/`, `todo.md`, `CLAUDE.md` oder `.github/`
+   berührt, was 3 der letzten 40 Commits waren. Was **nicht** fällt, ist das Prerendering von
+   3.151 Seiten: 154 s und 92 % eines warmen Builds, CPU-gebunden, und mehr Nebenläufigkeit
+   macht es messbar langsamer. Zahlen und die abgelehnten Varianten in
+   [decisions.md](./decisions.md#2026-09-10--accepted-the-builds-own-profile-and-the-124-s-nobody-had-timed).
 
 **Ebenfalls abgelehnt: Smart Shield + Argo** ($5/Monat + $0,10/GB). Cloudflares eigene Doku
 sagt, Regional Tiered Cache reduziere die Origin-Requests **nicht**, sondern die Latenz. Bei
