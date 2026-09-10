@@ -284,7 +284,7 @@ export function ParkTimeInfo({
                         <Info className="text-muted-foreground/60 h-3.5 w-3.5 cursor-help" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>{tNearby('estimatedHours')}</p>
+                        <p>{t('calendarView.details.schedule.estimatedHours')}</p>
                       </TooltipContent>
                     </Tooltip>
                   )}

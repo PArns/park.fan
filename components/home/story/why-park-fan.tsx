@@ -25,7 +25,7 @@ import type { Locale } from '@/i18n/config';
  * (`/how-park-fan-works`). A page of claims with nothing to open is a brochure.
  */
 export async function WhyParkFan({ locale }: { locale: Locale }) {
-  const [t, tHome] = await Promise.all([getTranslations('homeStory.why'), getTranslations('home')]);
+  const t = await getTranslations('homeStory.why');
 
   const reasons = [
     { icon: Cpu, key: 'r1' },
@@ -73,7 +73,7 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
               className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
             >
               <BookOpen className="h-4 w-4" aria-hidden="true" />
-              {tHome('about.howtoLink')}
+              {t('howtoLink')}
             </Link>
             <Link
               href="/fancast"
@@ -81,7 +81,7 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
               className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
             >
               <Sparkles className="h-4 w-4" aria-hidden="true" />
-              {tHome('about.fancastLink')}
+              {t('fancastLink')}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>

@@ -355,7 +355,9 @@
       "r6": {
         "title": "Data that explains something",
         "text": "A dictionary, park guides and data pieces on the blog. Why a park is empty in November and packed in October is written up as an article."
-      }
+      },
+      "howtoLink": "How park.fan works",
+      "fancastLink": "Fancast, our forecasting model"
     },
     "founder": {
       "kicker": "The person behind it",
@@ -880,7 +882,7 @@
     "influencingHolidaysShort": "Nearby regions",
     "stats": {
       "title": "Historical Wait Time Statistics",
-      "subtitle": "Based on {days} days of recorded data · Last {years} years",
+      "subtitle": "Based on {days} measured operating days",
       "byMonthTitle": "Average Crowd Level by Month",
       "byDowTitle": "Average Crowd Level by Day of Week",
       "topAttractionsTitle": "Longest Queues on Average",
@@ -1626,7 +1628,8 @@
       "outOfSeason": "Winter only",
       "retired": "Retired",
       "errorRateLimited": "Too many attempts. Try again in {seconds} seconds.",
-      "todayOnly": "Applies to today only – set it up again for another visit day."
+      "todayOnly": "Applies to today only – set it up again for another visit day.",
+      "loadError": "Couldn't load your alerts."
     },
     "overview": {
       "title": "My alerts",
