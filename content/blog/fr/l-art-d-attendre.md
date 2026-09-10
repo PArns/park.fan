@@ -397,9 +397,9 @@ pic-fin, souvenez-vous : l’expérience se termine mieux que prévu, et c’es
 exactement ainsi qu’elle est archivée. L’affichage ment donc bel et bien, mais
 il ment en votre faveur.
 
-C’est exactement à cette formule que tient park.fan. Nos temps d’attente en direct vous montrent à la minute ce
-que font réellement L et λ, et quand notre modèle d’IA prévoit les temps
-d’attente jusqu’à 365 jours à l’avance, il ne modélise au fond rien d’autre que
+C’est exactement à cette formule que tient park.fan. Les temps d’attente en
+direct vous montrent à la minute ce que font réellement L et λ, et quand notre
+modèle prévoit les temps d’attente jusqu’à 365 jours à l’avance, il ne modélise au fond rien d’autre que
 ces deux grandeurs : la **demande** (combien de personnes veulent monter dans
 cette attraction aujourd’hui ?) et le **débit** (combien peut-elle en évacuer
 ?). Little serait sans doute étonné de tous les usages qu’on fait aujourd’hui

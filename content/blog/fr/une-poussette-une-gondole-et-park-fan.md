@@ -217,8 +217,8 @@ de débogage plus longues que certaines journées de parc. Et ce moment de
 sidération très particulier quand un modèle prédit correctement, pour la
 première fois, un samedi bondé, des jours avant qu’il n’arrive.
 
-Car c’était là le vrai souhait : Il n’a jamais été question d’afficher le chiffre du moment. Le parc
-l’affiche lui-même. Cela devient intéressant un cran avant : un modèle maison
+Il n’a jamais été question d’afficher le chiffre du moment. Le parc l’affiche
+lui-même. Cela devient intéressant un cran avant : un modèle maison
 devait apprendre qu’un pont pluvieux en octobre est quelque chose de
 totalement différent d’un samedi ensoleillé de vacances en juillet. Que les
 calendriers scolaires, la météo, les horaires d’ouverture et des années
@@ -289,9 +289,8 @@ C’est pourquoi nous allons quelques pas plus loin :
 
 ## Ce que ce blog doit devenir
 
-Un temps d’attente seul ne dit presque rien.
-« 50 minutes » : trois fois le même chiffre, trois histoires complètement
-différentes.
+Un temps d’attente seul ne dit presque rien. Le même chiffre veut dire quelque
+chose de complètement différent selon l’attraction et selon le jour :
 
 - **50 minutes** pour un flat ride ? Du temps purement gaspillé. Trois vrais
   coasters seraient entrés dans ce créneau.
