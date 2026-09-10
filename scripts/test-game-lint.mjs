@@ -8,6 +8,7 @@
  *   - no TypeScript-only runtime syntax (parameter properties, enums, namespaces): the sim runs
  *     under node's strip-only mode in the soak harness and the tests
  *   - no Babylon side-effect API called without the import that links it (see SIDE_EFFECT_APIS)
+ *   - no content id in `lib/game/tools/` (the palette must stay generic; see CONTENT_ID_FREE)
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
@@ -70,6 +71,29 @@ const SIDE_EFFECT_APIS = [
   },
 ];
 
+/**
+ * Folders that may not name a piece of content.
+ *
+ * `tools` is the build bar, and its whole design rests on knowing nothing about what a pack
+ * contains: the palette reads `def.footprint` and `def.footprintOffset` generically, `available`
+ * is `hasOwner && placement === 'point'`, and adding a coaster catalogue to a pack took two lines
+ * because of it. That rule was written down in the module's own docblock and in CLAUDE.md and
+ * enforced by NOTHING -- a grep for it was never here, so the first `if (item === '...')` anybody
+ * typed would have been caught by review or not at all.
+ *
+ * It matches string LITERALS only, so a docblock naming the case that motivated a field (which is
+ * how the rest of this repository explains itself) is fine and a branch on that id is not.
+ * `selftest.mjs` is exempt: a test of the palette has to name something for it to be a test.
+ */
+const CONTENT_ID_FREE = [
+  {
+    dir: 'lib/game/tools/',
+    // Both bundled pack ids, and the `pack:item` shape any third pack would use.
+    pattern: /['"`](core-classic|neon-lagoon)(:[\w-]+)?['"`]/,
+    why: 'lib/game/tools must not name a pack or an item — the palette reads the manifest generically',
+  },
+];
+
 const problems = [];
 for (const file of files) {
   const src = readFileSync(file, 'utf8');
@@ -102,6 +126,11 @@ for (const file of files) {
         `${where}: ${rule.name} needs \`import '${rule.imports[0]}';\` — ` +
           `with deep imports the class it uses is not linked and the call throws at runtime`
       );
+    }
+    for (const rule of CONTENT_ID_FREE) {
+      if (!file.startsWith(rule.dir) || file.endsWith('selftest.mjs')) continue;
+      const hit = rule.pattern.exec(code);
+      if (hit) problems.push(`${where}: content id ${hit[0]} — ${rule.why}`);
     }
     if (/Math\.random\s*\(/.test(line) && !/eslint-disable|allow-random/.test(line))
       problems.push(`${where}: Math.random — use Rng`);

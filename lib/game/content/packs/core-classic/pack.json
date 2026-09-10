@@ -894,6 +894,11 @@
         61.5,
         392
       ],
+      "footprintOffset": [
+        30.7,
+        114.7
+      ],
+      "footprintDip": 6.0,
       "height": 46,
       "lengthM": 979,
       "cost": 514540000
@@ -909,6 +914,11 @@
         48.9,
         397
       ],
+      "footprintOffset": [
+        24.5,
+        128.2
+      ],
+      "footprintDip": 0,
       "height": 30,
       "lengthM": 900,
       "cost": 282000000
@@ -924,6 +934,11 @@
         52.6,
         212.6
       ],
+      "footprintOffset": [
+        26.3,
+        39.4
+      ],
+      "footprintDip": 2.18,
       "height": 21.2,
       "lengthM": 610,
       "cost": 155400000
@@ -939,6 +954,11 @@
         56,
         111.9
       ],
+      "footprintOffset": [
+        28.0,
+        23.2
+      ],
+      "footprintDip": 3.99,
       "height": 19,
       "lengthM": 345,
       "cost": 118300000

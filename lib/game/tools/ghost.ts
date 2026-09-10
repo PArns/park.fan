@@ -33,6 +33,7 @@ const PAD_THICKNESS = 0.08;
 const PAD_LIFT = 0.04;
 
 export interface SelectionMarker {
+  /** The footprint rectangle's CENTRE, not the entity's anchor. `tools/main.ts` resolves it. */
   position: [number, number, number];
   yaw: number;
   footprint: [number, number];
@@ -70,7 +71,11 @@ export function createGhostRig(scene: Scene): GhostRig {
   return {
     showGhost(state) {
       const material = state.valid ? ok : bad;
-      const [x, y, z] = state.position;
+      // The box is drawn at the rectangle's centre and NOT at `state.position`, which is the
+      // entity's anchor. For a coaster the two are 28 m apart, and drawing the outline on the
+      // anchor showed a player one patch of grass and built the machine on another.
+      const y = state.groundY;
+      const [x, z] = state.footprintCentre;
       const [sizeX, sizeZ] = state.footprint;
       const height = Math.max(0.4, state.height);
 

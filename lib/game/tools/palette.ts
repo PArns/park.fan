@@ -98,6 +98,8 @@ interface AnyDef {
   kind?: string;
   cost?: number;
   footprint?: [number, number];
+  footprintOffset?: [number, number];
+  footprintDip?: number;
   size?: [number, number, number];
   height?: number;
 }
@@ -118,6 +120,31 @@ export function footprintForItem(category: PaletteCategory, def: AnyDef): [numbe
   }
   if (category === 'buildings' && def.size) return [def.size[0], def.size[2]];
   return null;
+}
+
+/**
+ * Metres from the entity origin to the centre of that rectangle, in the item's own frame.
+ *
+ * Read straight off the manifest and nowhere else, the same way `footprint` is: an item whose art
+ * is centred on its anchor declares nothing and gets null. Which items are not centred is a fact
+ * about content, and this module is forbidden from knowing any of them by name.
+ */
+export function footprintOffsetForItem(_category: PaletteCategory, def: AnyDef): [number, number] | null {
+  const offset = def.footprintOffset;
+  if (!offset) return null;
+  if (offset[0] === 0 && offset[1] === 0) return null;
+  return [offset[0], offset[1]];
+}
+
+/**
+ * Metres the item reaches below its own origin. Read off the manifest, generic like the rest.
+ *
+ * A negative declaration is refused rather than honoured: it would push an anchor INTO the ground,
+ * which is the bug this exists to prevent, spelled backwards.
+ */
+export function footprintDipForItem(_category: PaletteCategory, def: AnyDef): number {
+  const dip = def.footprintDip;
+  return typeof dip === 'number' && dip > 0 ? dip : 0;
 }
 
 export function heightForItem(category: PaletteCategory, def: AnyDef): number {
@@ -143,6 +170,8 @@ export function paletteItemFrom(
   const kind = kindForItem(category, def);
   const footprint = footprintForItem(category, def);
   const placement: PlacementMode = footprint ? 'point' : 'route';
+  const footprintOffset = footprint ? footprintOffsetForItem(category, def) : null;
+  const footprintDip = footprint ? footprintDipForItem(category, def) : 0;
   const hasOwner = Boolean(ownerOfKind(kind));
   return {
     key: `${pack.id}:${def.id}`,
@@ -153,6 +182,8 @@ export function paletteItemFrom(
     name: def.name ?? { en: def.id },
     cost: def.cost ?? 0,
     footprint,
+    footprintOffset,
+    footprintDip,
     height: heightForItem(category, def),
     placement,
     icon: pack.icons?.[def.id] ?? null,

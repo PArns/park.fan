@@ -178,13 +178,41 @@ export function createToolsMain(ctx: MainContext): MainHandle {
     notify();
   });
 
+  /**
+   * Where an item's footprint rectangle actually sits, given the anchor it was placed by.
+   *
+   * The anchor and the rectangle's centre are the same point for everything whose art is drawn
+   * around its origin, which is nearly everything. A coaster is built FROM its origin outwards,
+   * so its box is metres away from the point the player clicked, and the manifest says how far
+   * (`footprintOffset`, in the item's own frame). The turn is the game's own facing convention --
+   * local +Z maps to world `(sin yaw, cos yaw)` -- the same one `samplePoints` uses for the
+   * corners and `track`'s cursor for its first piece, so a rotated ghost and a rotated machine
+   * agree at every yaw and not only at zero.
+   */
+  function rectCentre(
+    item: PaletteItem,
+    x: number,
+    z: number,
+    yaw: number,
+    scale: number
+  ): [number, number] {
+    const offset = item.footprintOffset;
+    if (!offset) return [x, z];
+    const dx = offset[0] * scale;
+    const dz = offset[1] * scale;
+    const cos = Math.cos(yaw);
+    const sin = Math.sin(yaw);
+    return [x + dx * cos + dz * sin, z - dx * sin + dz * cos];
+  }
+
   function rectFor(entity: Entity): Rect | null {
     const item = byKey.get(`${entity.pack}:${entity.item}`);
     if (!item?.footprint) return null;
     const scale = entity.scale ?? 1;
+    const [cx, cz] = rectCentre(item, entity.position[0], entity.position[2], entity.yaw, scale);
     return {
-      x: entity.position[0],
-      z: entity.position[2],
+      x: cx,
+      z: cz,
       yaw: entity.yaw,
       sizeX: item.footprint[0] * scale,
       sizeZ: item.footprint[1] * scale,
@@ -287,9 +315,10 @@ export function createToolsMain(ctx: MainContext): MainHandle {
       ? snapPoint(hover.x, hover.z, snapSettings.grid)
       : [hover.x, hover.z];
     const scale = tool === 'move' && selectedId ? (ctx.world.entities[selectedId]?.scale ?? 1) : 1;
+    const [cx, cz] = rectCentre(item, x, z, ghostYaw, scale);
     const rect: Rect = {
-      x,
-      z,
+      x: cx,
+      z: cz,
       yaw: ghostYaw,
       sizeX: item.footprint[0] * scale,
       sizeZ: item.footprint[1] * scale,
@@ -302,9 +331,13 @@ export function createToolsMain(ctx: MainContext): MainHandle {
       ignore: tool === 'move' ? ignoreSetFor(selectedId) : undefined,
     });
     const reasons = item.available ? verdict.reasons : [...verdict.reasons, 'unavailable' as const];
+    // The anchor is lifted clear of the ground it was judged on; the BOX is still drawn from that
+    // ground, because the declared height already spans the whole profile including the dip.
     ghost = {
-      position: [x, verdict.y, z],
+      position: [x, verdict.y + item.footprintDip * scale, z],
+      groundY: verdict.y,
       yaw: ghostYaw,
+      footprintCentre: [cx, cz],
       footprint: [rect.sizeX, rect.sizeZ],
       height: item.height * scale,
       valid: verdict.ok && item.available,
@@ -323,9 +356,10 @@ export function createToolsMain(ctx: MainContext): MainHandle {
       return;
     }
     const item = byKey.get(`${entity.pack}:${entity.item}`);
-    const [ex, , ez] = entity.position;
     rig.showSelection({
-      position: [ex, ground.height(ex, ez), ez],
+      // `rect` already carries the offset centre, and the marker outlines the ground the machine
+      // takes rather than the post it was hung on.
+      position: [rect.x, ground.height(rect.x, rect.z), rect.z],
       yaw: entity.yaw,
       footprint: [rect.sizeX, rect.sizeZ],
       height: (item?.height ?? 2) * (entity.scale ?? 1),
@@ -437,10 +471,13 @@ export function createToolsMain(ctx: MainContext): MainHandle {
       : wrapAngle(entity.yaw + (deltaDeg * Math.PI) / 180);
     if (item?.footprint) {
       const scale = entity.scale ?? 1;
+      // Turning an item whose box is offset from its anchor SWINGS that box, so the rectangle has
+      // to be rebuilt at the new yaw rather than merely re-oriented at the old centre.
+      const [cx, cz] = rectCentre(item, entity.position[0], entity.position[2], yaw, scale);
       const verdict = evaluatePlacement({
         rect: {
-          x: entity.position[0],
-          z: entity.position[2],
+          x: cx,
+          z: cz,
           yaw,
           sizeX: item.footprint[0] * scale,
           sizeZ: item.footprint[1] * scale,

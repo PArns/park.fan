@@ -57,6 +57,46 @@ export interface PaletteItem {
   cost: number;
   /** Metres, [x, z] before yaw. Null for a `route` item. */
   footprint: [number, number] | null;
+  /**
+   * Metres from the entity's origin to the CENTRE of that footprint, in the item's own frame
+   * (+Z is its facing), before yaw. Null means the two coincide, which is what every item in
+   * both bundled packs assumed and most of them are right about.
+   *
+   * A coaster is not. `track` starts its first piece AT the origin and runs the layout onwards,
+   * so `kleiner-wirbel`'s 56 x 111.9 m box has its centre 28.0 m to the side and 23.2 m ahead of
+   * the point the player clicked — and until this field existed the ghost judged a rectangle
+   * centred on the pointer while the game built somewhere else. Measured on the first coaster a
+   * player ever placed: 28 m east and 23.2 m north of the box `evaluatePlacement` had approved,
+   * 27.1 m past the plot it was dropped on, and **600 of 2001 track samples underground**, low
+   * point 1.79 m inside the hill. Green build, no warning, no console error.
+   *
+   * The manifest declares it, `lib/game/track/selftest.mjs` measures the built spline and fails
+   * on drift, and nothing here knows which items have one.
+   */
+  footprintOffset: [number, number] | null;
+  /**
+   * Metres this item reaches BELOW its own origin, before yaw. Zero for everything that stands on
+   * the ground, which is nearly everything.
+   *
+   * A coaster does not stand on the ground: `kleiner-wirbel`'s drop bottoms out **3.99 m** under
+   * its station and `nordwind`'s **6.00 m**, so an origin dropped on the terrain buries the whole
+   * valley of the layout. Measured on the first player-placed coaster after the offset above was
+   * fixed -- the box was then exactly right in x and z, entirely inside the plot with 4.4 to
+   * 11.7 m to spare, and **621 of 2001 track samples were still inside the hill**, low point
+   * 2.61 m under it. The demo park's own coasters escape it because their y was typed by hand
+   * (`COASTER_AT.y = 12.53`), which is not a number a player can supply.
+   *
+   * So the anchor is lifted by this much above the ground the footprint was judged on, which
+   * guarantees clearance everywhere: every point of the machine is at least `origin - dip`, and
+   * that is the highest ground under it. It over-lifts where the deepest point does not sit over
+   * the highest ground -- about a metre here, drawn as slightly taller footings, which is the
+   * trade a real park makes with a graded pad.
+   *
+   * It is NOT added to `height`: the declared height is already the whole profile span (this
+   * layout is -3.99..15.00 about its origin, declared 19), so the ghost's box is right as drawn
+   * and only the anchor inside it moves.
+   */
+  footprintDip: number;
   /** Metres. Used for the ghost's volume, so a lamp does not get a box the size of a shop. */
   height: number;
   placement: PlacementMode;
@@ -94,10 +134,18 @@ export type PlacementReason =
   'out-of-bounds' | 'under-water' | 'too-steep' | 'overlap' | 'no-ground' | 'unavailable' | 'route';
 
 export interface GhostState {
-  /** Where it stands, after snapping. Y is the ground under it. */
+  /** Where it stands, after snapping. Y is the ground under it. This is the ENTITY's origin. */
   position: Vec3;
   /** Radians about +Y. */
   yaw: number;
+  /** The ground the footprint was judged on. The pad and the box are drawn from here. */
+  groundY: number;
+  /**
+   * World [x, z] of the footprint rectangle's centre — `position` plus `footprintOffset` turned
+   * by `yaw`. It is what `evaluatePlacement` judged and what the rig draws, and for everything
+   * whose art is centred on its anchor it is `position` again.
+   */
+  footprintCentre: [number, number];
   footprint: [number, number];
   height: number;
   valid: boolean;

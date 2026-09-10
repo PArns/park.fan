@@ -194,6 +194,54 @@ export const PADS: readonly Pad[] = [
     blend: 20,
     note: 'The `pool` camera preset targets (110, 0, 60). Lowest ground in the developed park, next to the lake.',
   },
+  /**
+   * A plot with nothing on it, for the player.
+   *
+   * Measured rather than chosen, and the measurement was a surprise: with the build bar able to
+   * place a coaster, `evaluatePlacement` -- the very function the ghost calls -- was asked for
+   * every position in the park on an 8 m grid, and a 56 x 111.9 m layout had **ZERO** legal ones.
+   * Not few: none. The park is buildable enough for everything else (8 x 8 m has 1,887 spots,
+   * 40 x 40 has 153, 56 x 56 has 27) and simply had no room left for the smallest coaster the
+   * game ships. A feature nobody can use on the park everybody sees is not a feature.
+   *
+   * 72 x 128 m at (176, -72). The width is the number that matters and it is not free choice:
+   * a 56 m box inside a 72 m plot can slide **16 m**, which is the whole width of the target a
+   * player's pointer has to hit, and at the 64 m this plot started as it was 8 m -- about 30
+   * screen pixels at overview distance. Every extra metre comes off the east side, because the
+   * west side is where the paths are: `lake-link` runs 4.3 m off that kerb, `fairground-loop`
+   * 6.0 and `fairground-midway` 6.4, which is what puts a station built on that side inside the
+   * queue graph's `SERVICE_RADIUS` of 14 -- one built against the east edge is not. The ground
+   * falls 4.59 m across it. It is not isolated: the `flumes` pad is 11.0 m north and `fairground`
+   * 20.0 m west.
+   *
+   * **`height: null` on purpose.** A pad with a height flattens the land under it and blends the
+   * skirt outwards; this one only RESERVES, so `rejectPlanting` keeps the ambient scatter off it
+   * (props.ts, which is what makes the plot actually empty) and the landform is untouched. The
+   * mechanism was already there: `landform.ts` skips a pad whose height is null.
+   *
+   * **A pad is never a local edit, and that was worth finding out.** The terrain really is
+   * byte-identical -- 66,049 cells, mean 6.916382, max 25.9045 with the plot and without it -- so
+   * no ground changes shape. The PLANTING is a different story: `rejectPlanting` refuses a
+   * candidate position rather than skipping a draw, so every scatter brush that runs afterwards
+   * takes a different path through its stream. Measured across the whole park, with the plot
+   * against without: **1,061 props gone, 1,020 new, 494 unchanged**, net -41 -- and only **39** of
+   * the removals were inside the plot at all, while **532** of the new ones stand more than 150 m
+   * away from it. Flowerbeds at (-29, 86), on the far side of the map, moved. It stays
+   * deterministic (same seed and same plan give the same park every time) but it means a
+   * before/after frame of ANY corner of this park will differ after a pad is added, and a
+   * screenshot diff is not the way to review one.
+   */
+  {
+    id: 'build-plot',
+    owner: 'track',
+    x: 176,
+    z: -72,
+    halfX: 36,
+    halfZ: 64,
+    height: null,
+    blend: 0,
+    note: 'Empty, for the player. The only plot in the park a bundled coaster layout fits on.',
+  },
   {
     id: 'flumes',
     owner: 'flumes',
