@@ -222,6 +222,73 @@ Two things follow, and the second is the one that is easy to get wrong:
 The nowcast banner is the pattern done right by accident: it renders `null` until its clock stamps
 in an effect, so the unit never reaches its hydration output.
 
+## 16. Two places where `prettier --write` on Markdown is not a formatting change
+
+`pnpm format:check` covers `content/**` and `docs/**` as much as it covers `app/**`, and on
+Markdown Prettier is not only moving whitespace: it rewrites the source in two ways that change
+what a reader gets. Both were found the same way, as leftovers of a red `format:check` on `main`
+(PF-68, then again PF-101), and neither is fixed by running `pnpm format` — that is what puts them
+there. So: **when `format:check` names a Markdown file, read the diff `pnpm format` produces before
+committing it.** For every other file type `--write` is the answer and there is nothing to look at.
+
+### 16.1 Angle brackets around a link destination
+
+A destination with **unbalanced** parentheses is only a link inside `<…>`; CommonMark allows bare
+parentheses in a destination only in pairs. Prettier 3.9.6 removes those angle brackets:
+
+<!-- The fence below is `text`, not `markdown`: Prettier formats fenced Markdown too, and in a
+     `markdown` fence it eats the very brackets this example is about, leaving two identical lines. -->
+
+```text
+before:  [Vorteile 2026 (PDF)](<https://www.movieparkgermany.de/…/-(bonusclub(/….pdf>)
+after:   [Vorteile 2026 (PDF)](https://www.movieparkgermany.de/…/-(bonusclub(/….pdf)
+```
+
+The result no longer parses as a link. Measured against `remark-parse` + `remark-gfm`, i.e. the
+parser that renders the post: the three Markdown links on that line drop to zero, `remark-gfm`
+autolinks the bare address instead, the address gets a closing parenthesis appended — which
+answers 404 where the real one answers 200 — and the raw `[Bonus Club (offiziell)](https://…)`
+stands as visible text on the page.
+
+**The fix is to percent-encode the parentheses in the destination** (`%28` / `%29`). Prettier then
+leaves the address alone and drops the angle brackets by itself, the parser gets its links back,
+and nothing about the rendered text changes. Two things that look like fixes and are not: Prettier
+removes backslash escapes just as readily, and a reference definition never reaches its use,
+because a post body is split into one `<ReactMarkdown>` per widget fence.
+
+`(bonusclub(` is the operator's real path, not a typo — `(bonusclub)` answers 404. There is nothing
+to correct in the content.
+
+### 16.2 A paragraph indented under `- [ ]`
+
+`- [ ] ` puts its content column at 2 by CommonMark, but Prettier aligns list content with the
+**checkbox**, at column 6. A paragraph sitting four or more columns below the content column is
+therefore already an indented code block — Prettier reads it as code, prints it four columns
+deeper, reads the result as code again, and never converges.
+
+It takes a specific shape to see this, which is worth knowing before trying to reproduce it: the
+item's **first** paragraph has to wrap, so its continuation lines sit at column 6, and the block
+that diverges is a **second** paragraph aligned with them. A one-paragraph item converges in a
+single pass, whatever its indent. In other words the trigger is exactly what an editor does when it
+lines a paragraph up with the rest of the item:
+
+```
+pass 0:  6 columns
+pass 1: 10 columns
+pass 2: 14 columns
+pass 3: 18 columns
+```
+
+Four `--write` runs, four different file hashes, and `--check` red after every one of them. This is
+the one case where a red `format:check` survives `pnpm format`, so a loop that "just runs format
+again" never ends.
+
+**The fix is to put the paragraph on column 2**, where its own list item's content already is. Two
+inline code spans that ran across a line break caused the same non-idempotency in the same file and
+were joined onto one line; HTML collapses whitespace inside `<code>`, so nothing renders
+differently. `todo.md` was the file, and the block was prose whose backticks had been rendering as
+literal characters in a grey box the whole time.
+
 ---
 
 ## Related

@@ -1,0 +1,72 @@
+name: lint and format
+
+# Blocking gate for the two checks that need no build, no database and no browser:
+# ESLint and Prettier. It runs on every pull request and on pushes to main, so a
+# red main is visible where it happened rather than as somebody else's bycatch.
+#
+# Why it exists: `pnpm format:check` went red on main twice within a month, both
+# times from a merged PR that had not run `pnpm format` (PF-68: 8 files, PF-101:
+# 5 files). A pre-commit hook was considered and rejected — it only fires where
+# somebody installed it, and it misses an agent run and an edit made through the
+# GitHub web UI, which are the two ways those files got in.
+#
+# `pnpm build` deliberately stays out: its prebuild generates image crops and the
+# media manifest, which is minutes of work that the Vercel deployment already does
+# on every pull request.
+#
+# Two things this gate does not do, both on purpose. It runs `pnpm lint` as the
+# repo defines it, so an ESLint **warning** passes — main carries one today, and
+# turning warnings into failures is a repo-wide decision rather than part of a
+# formatting gate. And the pnpm store is not cached: `corepack enable` has to run
+# after `setup-node` (a node switch drops shims installed before it), which is too
+# late for that action's own `cache: pnpm`, and a cold install is ~15 s here.
+#
+# Before adding a step here, check it does not need Docker, Postgres, Redis or a
+# real browser — those belong to the local runner, not to this workflow.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # Superseding a run is right on a pull request, where only the head commit is
+  # being judged. On main every commit needs its own verdict, so each push gets a
+  # group of its own — `cancel-in-progress: false` would not be enough, because a
+  # group holds one pending run and a third push cancels the one waiting in the
+  # middle, which is exactly the commit whose red main would go unreported.
+  group: checks-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # corepack rather than pnpm/action-setup: `packageManager` in package.json
+      # already pins the version, and this is the same pair of commands the setup
+      # docs give a contributor.
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm lint
+        run: pnpm lint
+
+      # Kept last and separate so the log says which of the two failed without
+      # anyone opening the step — which needs `!cancelled()`, or a failing lint
+      # skips this one and a PR wrong in both ways costs two round-trips.
+      # `pnpm format` is the fix, except on Markdown, where it is sometimes the
+      # cause: section 16 of docs/development/conventions.md names the two cases.
+      - name: pnpm format:check
+        if: ${{ !cancelled() }}
+        run: pnpm format:check
