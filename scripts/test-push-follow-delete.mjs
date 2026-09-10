@@ -193,6 +193,32 @@ await test('a 429 with an unreadable body still reads as rate-limited', async ()
   assert.deepEqual(result, { ok: false, error: { reason: 'rate-limited', retryAfterSeconds: 60 } });
 });
 
+/*
+ * The window is both printed ("bitte in {seconds} Sekunden") and timed by, so it is normalized
+ * once where it enters the app. A value the caller had to bound on its own would be a countdown
+ * that disagrees with the moment it disappears.
+ */
+await test('a window past an hour is capped rather than printed as given', async () => {
+  seed();
+  fetchStub = () => response(429, { retryAfterSeconds: 7200 });
+  const result = await removeRideAlert('r1');
+  assert.equal(result.error.retryAfterSeconds, 3600);
+});
+
+await test('a window under a second takes the same road as an unreadable body', async () => {
+  seed();
+  fetchStub = () => response(429, { retryAfterSeconds: 0 });
+  const result = await removeRideAlert('r1');
+  assert.equal(result.error.retryAfterSeconds, 60);
+});
+
+await test('a fractional window is rounded, not printed with decimals', async () => {
+  seed();
+  fetchStub = () => response(429, { retryAfterSeconds: 12.4 });
+  const result = await removeRideAlert('r1');
+  assert.equal(result.error.retryAfterSeconds, 12);
+});
+
 await test('a 400 reads as invalid, mirror untouched', async () => {
   seed();
   fetchStub = () => response(400);

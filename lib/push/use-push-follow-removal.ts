@@ -93,6 +93,11 @@ export function usePushFollowRemoval(): PushFollowRemoval {
     forgetError(key);
     const result = await remove();
     if (result.ok) {
+      // A read that was already on its way was sent before this row was deleted, so letting it
+      // land would put the row back — the band mounting while a removal from `/alerts` is in
+      // flight is exactly that shape. Cancelling first is TanStack's own answer to it, and the
+      // next `enabled` read (this query has no stale window) asks again anyway.
+      await queryClient.cancelQueries({ queryKey: PUSH_FOLLOWS_QUERY_KEY });
       // The cache is the list, and it is edited only after the server has answered — anything
       // keyed on the local mirror would otherwise re-ask for a row while it was being deleted.
       queryClient.setQueryData<PushFollowsList>(PUSH_FOLLOWS_QUERY_KEY, (previous) =>
@@ -102,10 +107,10 @@ export function usePushFollowRemoval(): PushFollowRemoval {
     } else {
       setErrors((current) => ({ ...current, [key]: result.error }));
       if (result.error.reason === 'rate-limited') {
-        // Clamped: the limiter's number is data from the network, and an hour is already far
-        // longer than any surface here stays open. Unclamped it could also overflow the 32-bit
-        // delay, which fires the timer immediately instead of never.
-        const seconds = Math.min(Math.max(result.error.retryAfterSeconds, 1), 3600);
+        // The very number the surfaces print. `classifyFailure` has already bounded it, which is
+        // what keeps the countdown and its expiry from disagreeing — and what keeps the delay
+        // clear of the 32-bit overflow that would fire this timer at once instead of never.
+        const seconds = result.error.retryAfterSeconds;
         expiries.current.set(
           key,
           setTimeout(() => {

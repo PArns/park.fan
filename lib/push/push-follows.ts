@@ -88,6 +88,31 @@ async function identityForWrite(): Promise<PushRegistration> {
   return ensurePushRegistered();
 }
 
+/** A "try later" default: not a claim about the real window, just a usable one. */
+const RATE_LIMIT_FALLBACK_SECONDS = 60;
+/**
+ * Longer than this is not a number to put in front of somebody — an hour is
+ * already past what any of these surfaces stays open for, and the value comes
+ * off the network, so it is not ours to trust unbounded.
+ */
+const RATE_LIMIT_MAX_SECONDS = 3600;
+
+/**
+ * The limiter's own window, normalized ONCE so every reader agrees.
+ *
+ * Callers both print this number ("bitte in {seconds} Sekunden") and time
+ * things by it, and the two must not diverge — a value clamped for the timer
+ * and rendered raw would show a countdown that clears an hour early. Anything
+ * under a second is not a wait a sentence can describe either, so it takes the
+ * same road as a body that could not be read at all.
+ */
+function normalizeRetryAfter(raw: unknown): number {
+  if (typeof raw !== 'number' || !Number.isFinite(raw) || raw < 1) {
+    return RATE_LIMIT_FALLBACK_SECONDS;
+  }
+  return Math.min(Math.round(raw), RATE_LIMIT_MAX_SECONDS);
+}
+
 /**
  * Turn a non-2xx response into a `PushWriteError`. 404 and the general 4xx
  * bucket carry no body worth reading; 429 does — `PushFollowAccessGuard`
@@ -97,20 +122,14 @@ async function classifyFailure(response: Response): Promise<PushWriteError> {
   if (response.status === 429) {
     const retryAfterSeconds = await response
       .json()
-      .then((body: unknown) => {
-        const raw =
-          typeof body === 'object' && body !== null && 'retryAfterSeconds' in body
-            ? (body as { retryAfterSeconds: unknown }).retryAfterSeconds
-            : undefined;
-        return typeof raw === 'number' && Number.isFinite(raw) ? raw : NaN;
-      })
-      .catch(() => NaN);
-    // A body the limiter didn't shape as expected is still a rate limit —
-    // 60s is a reasonable "try later" default, not a claim about the real window.
-    return {
-      reason: 'rate-limited',
-      retryAfterSeconds: Number.isFinite(retryAfterSeconds) ? retryAfterSeconds : 60,
-    };
+      .then((body: unknown) =>
+        typeof body === 'object' && body !== null && 'retryAfterSeconds' in body
+          ? (body as { retryAfterSeconds: unknown }).retryAfterSeconds
+          : undefined
+      )
+      .catch(() => undefined);
+    // A body the limiter didn't shape as expected is still a rate limit.
+    return { reason: 'rate-limited', retryAfterSeconds: normalizeRetryAfter(retryAfterSeconds) };
   }
   if (response.status === 404) return { reason: 'not-found' };
   if (response.status >= 400 && response.status < 500) return { reason: 'invalid' };
