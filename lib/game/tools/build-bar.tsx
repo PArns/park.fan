@@ -92,6 +92,7 @@ import {
   TAB_ACTIVE,
   TAB_TROUGH,
   TRAY,
+  PANEL_HEAD,
   raise,
 } from '../ui/surface';
 import type { ToolsMainApi } from './main';
@@ -254,14 +255,26 @@ function BuildTray({
   }, [api, keys]);
   return (
     <section
-      className={cn(TRAY, BAR_WIDTH, 'overflow-hidden px-[10px] pt-[10px]')}
+      className={cn(TRAY, BAR_WIDTH, 'overflow-hidden px-[10px]')}
       data-build-tray={group.kind}
     >
-      <div className="flex items-baseline justify-between gap-3 px-0.5 pb-2">
+      {/* A title BAR rather than a line of text in the padding.
+          It was an `<h2>` sitting in the tray's own inset, which is the one place in this skin
+          where a heading had no strip under it — and the strip is what carries the key colour.
+          Full-bleed through the tray's `px-[10px]` and rounded to its top corners, so it reads as
+          the same object the panels' heads are. It is 32 px against the 36 the old row occupied
+          (10 of padding, 18 of line, 8 of gap), so the tray is 4 px SHORTER than before — which
+          matters on the phone, where this bar is already three fifths of an 844 px screen. */}
+      <div
+        className={cn(
+          PANEL_HEAD,
+          '-mx-[10px] mb-2 flex h-8 items-center justify-between gap-3 rounded-t-(--game-hud-radius) px-3'
+        )}
+      >
         <h2 className="text-[13px] font-bold text-white/95 [text-shadow:var(--game-engrave)]">
           {groupLabel(group.kind, t)}
         </h2>
-        <span className={cn(MICRO_LABEL, 'truncate')}>
+        <span className={cn(MICRO_LABEL, 'truncate text-white/70')}>
           {t('tools.palette.count', { n: total })}
         </span>
       </div>

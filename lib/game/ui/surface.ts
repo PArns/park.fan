@@ -156,9 +156,31 @@ export const TRAY =
 export const PANEL =
   'rounded-(--game-hud-radius) bg-(--game-hud-strong) bg-[image:var(--game-sheen),linear-gradient(180deg,rgb(255_255_255/0.05),transparent_180px)] shadow-[inset_0_1px_0_rgb(255_255_255/0.28),inset_0_-1px_0_rgb(0_0_0/0.5),inset_1px_0_0_rgb(255_255_255/0.07),inset_-1px_0_0_rgb(0_0_0/0.25),0_0_0_1px_var(--game-contour),var(--game-lift-panel)] backdrop-blur-[28px] backdrop-saturate-[1.3]';
 
-/** A panel's own 40 px raised strip: lighter than the body, with a hard shadow under it. */
+/**
+ * A panel's own 40 px raised strip, in the KEY COLOUR.
+ *
+ * It was a dark slate gradient a shade lighter than the body, which reads as a well-made dark
+ * interface and as nothing in particular. The brief is Windows XP with park.fan's key colour, and
+ * Luna's most recognisable single element is exactly this: a saturated blue title bar carrying
+ * white bold text, with a bright hairline along its top edge and a deeper band at the bottom.
+ *
+ * Measured before the change, the key colour covered **7.73 %** of the frame and only ever as a
+ * state signal — a lit tool, an armed action. Putting it on the title bars moves it onto the
+ * STRUCTURE, which is what makes an interface look like it has a house colour rather than a
+ * highlight colour.
+ *
+ * Three stops rather than two, because a two-stop ramp reads as a flat tint at this height: the
+ * lit shade for the top third, the key colour through the middle, the deep one at the foot. The
+ * existing `--game-gloss` overlay stays on top of it, so the strip keeps the curvature the rest
+ * of this skin has.
+ *
+ * The BODY stays dark on purpose, and that is a departure from Luna rather than an oversight.
+ * A park builder's chrome floats over a bright daylight scene; Luna's cream body (~230 luma)
+ * against grass at 101 has no edge of its own and every panel would need a border to exist. The
+ * dark body is what lets a title bar in the key colour be the brightest thing in the interface.
+ */
 export const PANEL_HEAD =
-  'bg-[image:var(--game-gloss),linear-gradient(180deg,oklch(0.30_0.04_246),oklch(0.24_0.038_247))] shadow-[inset_0_1px_0_rgb(255_255_255/0.3),0_1px_0_rgb(0_0_0/0.55)]';
+  'bg-[image:var(--game-gloss),linear-gradient(180deg,var(--game-accent-lit)_0%,var(--game-accent)_38%,var(--game-accent-deep)_100%)] shadow-[inset_0_1px_0_rgb(255_255_255/0.45),0_1px_0_rgb(0_0_0/0.55)]';
 
 // ── the build tray's tab strip, for `tools` ───────────────────────────────────────────────
 /** The trough the tabs stand in, along the tray's bottom edge. */
