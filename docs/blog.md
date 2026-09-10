@@ -525,10 +525,10 @@ the rest is not:
 | ------ | ----------- | ------------------------------------------------------------------------------------ |
 | de     | `„…"`       | Halbgeviertstrich `–` with spaces; `du`; no title case; decimal comma, `.` thousands |
 | en     | `"…"`       | No em dash (§4.1); decimal point, `,` thousands                                      |
-| nl     | `'…'`       | `je`; watch for German compounds carried over                                        |
+| nl     | `“…”`       | `je`; **never** the German `„` — 28 of them had been carried over; watch compounds too |
 | fr     | `« … »`     | Non-breaking space before `?` `!` `:` `;` and inside the guillemets                  |
 | es     | `«…»`/`"…"` | Opening `¿` and `¡` are not optional                                                 |
-| it     | `«…»`/`"…"` |                                                                                      |
+| it     | `«…»`/`“…”` | Both are correct; pick one **per post** — five of ours use guillemets, seven don't    |
 
 English needs its own pass rather than a translation: the English tell list (§3.2) is much
 better documented than the German one, and a German sentence rendered literally into English

@@ -26,7 +26,7 @@ rideLinks:
   - movie-park-germany/*
 coverImage:
   src: /media/movie-park-germany/star-trek-operation-enterprise-16x9.jpg
-  alt: 'De rood uitgelichte baan van Star Trek: Operation Enterprise bij nacht, daaronder de lichtletters „Horrorwood Studios”'
+  alt: 'De rood uitgelichte baan van Star Trek: Operation Enterprise bij nacht, daaronder de lichtletters “Horrorwood Studios”'
   caption: 'Zes weken per jaar heet dit park Horrorwood Studios. De letters bij de ingang worden daarvoor omgebouwd, niet vervangen.'
   credit: 'park.fan'
 seo:
@@ -304,7 +304,7 @@ waterattractie met animatronics in de stijl van de sciencefiction-B-films uit de
 jaren zestig. Het buitendecor is een van de hoeken waar je nog ziet hoeveel geld
 hier in 1996 in is gegaan.
 
-![Een golfplaten loods met het opschrift „U.S. A.F.", daarin een legerjeep, ernaast een klein vliegtuig en een rode rots | Het voorplein van Area 51. De jeep staat al dertig jaar op die plek. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
+![Een golfplaten loods met het opschrift “U.S. A.F.”, daarin een legerjeep, ernaast een klein vliegtuig en een rode rots | Het voorplein van Area 51. De jeep staat al dertig jaar op die plek. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
 
 **[The High Fall](ref:movie-park-germany/the-high-fall)** is de ongeveer 60 meter
 hoge vrijevaltoren van Intamin in het themagebied The Old West. De gondel draait
@@ -439,7 +439,7 @@ wachttijdtabel maar in de kalender.
 De **zomervakantie in Noordrijn-Westfalen eindigt op 1 september 2026**. Een dag
 later schakelt het park over op het najaarsbedrijf en gaat dan alleen nog van
 **donderdag tot en met zondag** open. Maandag, dinsdag en woensdag is het dicht.
-Het advies „ga doordeweeks" is vanaf september dus niet alleen slecht, het is
+Het advies “ga doordeweeks” is vanaf september dus niet alleen slecht, het is
 onuitvoerbaar.
 
 Daarmee blijft er voor de twee maanden tot het einde van het seizoen een heel
@@ -479,7 +479,7 @@ die anders nooit een pretpark van binnen zien.
 
 Het **Halloween Horror Festival** draait in 2026 zijn **28ste editie** op 22
 geselecteerde avonden van **26 september tot 8 november**, onder het jaarmotto
-„Legends Never Die". Het park noemt het zelf het grootste Halloween-evenement van
+“Legends Never Die”. Het park noemt het zelf het grootste Halloween-evenement van
 Europa, en op de cijfers valt daar weinig tegen in te brengen: ruim **300
 monsters**, negen horrormazes, vier scare zones en een monsterparade. Overdag
 draait het park vanaf 10 uur normaal, de horrorgebieden beginnen in de
@@ -741,7 +741,7 @@ wil slopen staat dan paars uitgelicht voor de maan.
 - Parkgeschiedenis, opening 1996, eigenaarswisselingen, themagebieden, oppervlakte: [Movie Park Germany op de.wikipedia](https://de.wikipedia.org/wiki/Movie_Park_Germany) · [Movie Park Germany op en.wikipedia](https://en.wikipedia.org/wiki/Movie_Park_Germany)
 - Warner Bros. Movie World aan de Gold Coast (geopend 3 juni 1991) als voorbeeld: [Warner Bros. Movie World op en.wikipedia](https://en.wikipedia.org/wiki/Warner_Bros._Movie_World)
 - Verlies van de Warner-licenties in 2004/05 en de gevolgen voor Looney Tunes Adventure en Ice Age Adventure: [Ice Age Adventure op en.wikipedia](https://en.wikipedia.org/wiki/Ice_Age_Adventure) · [Movie Park Germany to build a new ride on the site of the old Ice Age darkride (Dark Ride Database)](https://darkridedatabase.com/movie-park-germany-to-build-a-new-ride-on-the-site-of-the-old-ice-age-darkride/)
-- Movie Park Studio Tour (Intamin, 532 meter, 900 personen per uur, twaalf scènes, draaischijf, achteruitlancering): [Movie Park Studio Tour bij Intamin](https://www.intamin.com/project/movie-park-studio-tour/) · [10 feiten over de nieuwe „Studio Tour" (Parkerlebnis, Duits)](https://www.parkerlebnis.de/movie-park-studio-tour-neue-achterbahn-2021-fakten_120236.html)
+- Movie Park Studio Tour (Intamin, 532 meter, 900 personen per uur, twaalf scènes, draaischijf, achteruitlancering): [Movie Park Studio Tour bij Intamin](https://www.intamin.com/project/movie-park-studio-tour/) · [10 feiten over de nieuwe “Studio Tour” (Parkerlebnis, Duits)](https://www.parkerlebnis.de/movie-park-studio-tour-neue-achterbahn-2021-fakten_120236.html)
 - Journey to the Forbidden Chamber (opening 14 mei 2026, Simworx immersive tunnel, voorgangers The Lost Temple en Movie Magic): [Nieuw in 2026 (officieel)](https://www.movieparkgermany.de/en/journey-to-the-forbidden-chamber) · [Journey to the Forbidden Chamber (Dark Ride Database)](https://darkridedatabase.com/rides/journey-to-the-forbidden-chamber/) · [De Movie Park Germany-nieuwigheid 2026 (Themepark Central, Duits)](https://www.themepark-central.de/movie-park-journey-to-the-forbidden-chamber/)
 - Star Trek™: Operation Enterprise (Mack Rides, 40 meter, 90 km/u, 720 meter, drie inversies, LSM-lancering, IMAscore): [Star Trek: Operation Enterprise op en.wikipedia](https://en.wikipedia.org/wiki/Star_Trek:_Operation_Enterprise)
 - The Bandit (1999 als Wild Wild West, RCCA, 27,8 meter, 1.099 meter, Cyclone-lay-out, Premier-treinen vanaf 2001): [Bandit (Movie Park Germany) op de.wikipedia](<https://de.wikipedia.org/wiki/Bandit_(Movie_Park_Germany)>) · [Bandit bij Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
@@ -754,7 +754,7 @@ wil slopen staat dan paars uitgelicht voor de maan.
 - Halloween Horror Festival 2026 (26 september tot 8 november, 28ste editie, ruim 300 monsters, vier scare zones): [Movie Park Halloween (officieel)](https://www.movieparkgermany.de/en/halloween) · [Monstercasting 2026 (FreizeitparkNEWS, Duits)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [onze Halloween-gids 2026](/blog/halloween-pretparken-2026)
 - De negen huizen in 2026, waarvan Jason Universe als enige nieuw: [Horrormazes (officieel)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
 - PHOBIA – The Live Horror Game Show in Studio 7 en de monsterparade: [Shows (officieel)](https://www.movieparkgermany.de/en/halloween/shows)
-- Haunters Against Hate (sinds 2022, in 2026 de vijfde editie op 17 oktober): [Haunters Against Hate (officieel)](https://www.movieparkgermany.de/en/halloween/hah) · [„Haunters Against Hate" bij Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
+- Haunters Against Hate (sinds 2022, in 2026 de vijfde editie op 17 oktober): [Haunters Against Hate (officieel)](https://www.movieparkgermany.de/en/halloween/hah) · [“Haunters Against Hate” bij Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
 - Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (officieel)](https://www.movieparkgermany.de/en/christmas)
 - Prijzen, seizoenpassen, voorverkoop 2027 (tot 6 september 2026) en parkeergeld: [Onze prijzen & aanbiedingen (officieel)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Seizoenpas (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Entreeprijzen 2026 (NRW-Parks, Duits)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
 - Bonus Club: voordelen alleen voor Gold en Platin, gratis entree in de Efteling per kalenderjaar, drie keer Bobbejaanland, Slagharen en Weltvogelpark Walsrode, plus de kortingslijst: [Bonus Club (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Voordelen 2026, parken van de groep (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf) · [Voordelen 2026, pretparken, dierentuinen en co. (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf)

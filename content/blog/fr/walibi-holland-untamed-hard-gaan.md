@@ -10,9 +10,9 @@ excerpt: >-
   Walibi Holland est bâti sur des terres encore sous l’eau en 1957, communique
   depuis douze ans avec un mot venu de la scène hardstyle et possède avec
   Untamed l’un des meilleurs coasters d’Europe, pour lequel on ne patiente
-  presque pas un jour ordinaire. Portrait d’un parc que les visiteurs se figurent de
-  travers, des experiences d’Halloween que l’on paie de son plein gré, et de
-  l’événement de Noël que le parc vient d’annuler.
+  presque pas un jour ordinaire. Portrait d’un parc que les visiteurs se
+  figurent de travers, des experiences d’Halloween que l’on paie de son plein
+  gré, et de l’événement de Noël que le parc vient d’annuler.
 tags:
   - walibi-holland
   - untamed

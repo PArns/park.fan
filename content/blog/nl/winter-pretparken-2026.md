@@ -65,7 +65,7 @@ gaat pas in het voorjaar weer open, en één is er in april helemaal mee gestopt
 
 Op 23 april 2026 stopte [Walibi Holland](ref:walibi-holland) met zijn
 winterbedrijf. **Bright Nights**, vier edities lang: verlichte achtbanen en een
-vuurwerkshow die „Light up the Night“ heette. Voorbij, zonder opvolger. Het park
+vuurwerkshow die “Light up the Night” heette. Voorbij, zonder opvolger. Het park
 blijft van november tot april dicht.
 
 De onderbouwing daarvan verklaart bijna het hele winterseizoen.
@@ -149,7 +149,7 @@ openging. Het park heeft voor **9 januari 2027** een afscheidsevenement
 aangekondigd. Daarna is de baan weg.
 
 Waarom uitgerekend de zondag in Rust de rustigste dag is en welke novemberweken
-onze kalender volledig op „laag“ zet, rekent de
+onze kalender volledig op “laag” zet, rekent de
 [Europa-Park-gids](/blog/europa-park-wachttijden-tips) na.
 
 [Europa-Park](ref:europa-park?full)
@@ -217,7 +217,7 @@ Town, daarbij Glowing Greetings, Chocolate Factory, Festive Tropics en nieuw de
 [Mecalodon](ref:walibi-belgium/mecalodon), de familieachtbaan voor de 50e
 verjaardag van het park.
 
-![De ingang van Walibi Belgium versierd met kerstballen, met daarboven de letters „Walibi Winter“ | Waver gaat door, Biddinghuizen niet. Ertussen liggen twee uur rijden en een paar hallendaken. | wide](/media/walibi-belgium/background.jpg)
+![De ingang van Walibi Belgium versierd met kerstballen, met daarboven de letters “Walibi Winter” | Waver gaat door, Biddinghuizen niet. Ertussen liggen twee uur rijden en een paar hallendaken. | wide](/media/walibi-belgium/background.jpg)
 
 Inbegrepen zijn een **overdekte ijsbaan van 700 m²**, een rodelbaan met zes
 sporen, een schaatsshow met tien artiesten, een 4D-kerstfilm en een kerstmarkt.
@@ -388,7 +388,7 @@ winterbezoeker kiest tussen drie weekenden, met de kerstvakantie er middenin.
 Bij de Wintertraum komt daar nog bij dat het een doel op zich is. Mensen rijden
 naar Brühl vanwege de shows, niet ondanks het jaargetijde.
 
-En omdat de vraag „welke van die parken is het drukst“ op elke autorit
+En omdat de vraag “welke van die parken is het drukst” op elke autorit
 langskomt, hier de parken uit dit overzicht naast elkaar, elk met zijn rustigste
 weekdag:
 
@@ -423,7 +423,7 @@ net iets minder, en vanaf de vakantie is tot ver in januari elke dag een
 vakantiedag.
 
 Neem de drukte-kalender deze ene winter nog niet op zijn woord: voor december
-zet hij in Brühl 29 van de 29 openingsdagen op „laag“, terwijl hij in juli van
+zet hij in Brühl 29 van de 29 openingsdagen op “laag”, terwijl hij in juli van
 hetzelfde park over vier niveaus verdeelt. Een model dat een seizoen nooit
 gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
 het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.

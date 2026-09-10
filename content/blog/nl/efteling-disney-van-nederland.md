@@ -55,7 +55,7 @@ seo:
     - Efteling bezoekersaantallen
 ---
 
-„Papier hier! Papier hier!" De roep komt uit een knalgele kerel met wijd open
+“Papier hier! Papier hier!” De roep komt uit een knalgele kerel met wijd open
 mond die tussen twee bomen staat te wachten tot iemand er een ijspapiertje in
 gooit. Doet iemand dat, dan zegt hij netjes dank u wel. Voor mij verzamelt een
 jongen het afval van wildvreemden bij elkaar, zodat hij nog drie keer kan voeren.
@@ -296,7 +296,7 @@ het er ruim dertig.
 
 Een paar ervan zijn de omweg ook zonder kinderen aan de hand waard.
 
-**Langnek** komt uit Grimms „De zes dienaren" en is de figuur die volwassenen als
+**Langnek** komt uit Grimms “De zes dienaren” en is de figuur die volwassenen als
 eerste noemen als je ze naar het bos vraagt. Hij zit te wachten, en om de paar
 minuten schuift zijn nek omhoog tot zijn hoofd tussen de takken hangt. Geen
 scherm, geen projector, sinds 1952 gewoon mechaniek.
@@ -337,7 +337,7 @@ kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
 ## 25 minuten, gemeten over twee seizoenen
 
-„Een park voor het hele gezin" staat in elke folder. Aantonen kun je dat alleen
+“Een park voor het hele gezin” staat in elke folder. Aantonen kun je dat alleen
 met rijen.
 
 Onze historie voor de Efteling omvat **meer dan 150 bedrijfsdagen** met wachttijddata,
@@ -431,8 +431,8 @@ Een paar honderd meter ten zuiden van het park staat een gebouw dat van bovenaf 
 een slakkenhuis lijkt en op het eerste gezicht niets met het pretpark te maken
 heeft.
 
-**Piet van Haaren** van de Efteling-stichting bezocht in Florida „Give Kids The
-World", een vakantiedorp voor ernstig zieke kinderen naast Disney World. Hij kwam
+**Piet van Haaren** van de Efteling-stichting bezocht in Florida “Give Kids The
+World”, een vakantiedorp voor ernstig zieke kinderen naast Disney World. Hij kwam
 terug met het idee zoiets naast het eigen park te zetten. De stichting legde er
 **8,5 miljoen gulden** in, omgerekend krap vier miljoen euro. Op **26 oktober
 2000** opende **Villa Pardoes**, vernoemd naar Pardoes, de hofnar die het
@@ -715,8 +715,8 @@ trein die onder de rail hangen. Thematisch start de rit in een onderzoeksinstitu
 dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
 Zintuigen, dus pal achter de hoofdingang.
 
-Wat het park daarentegen blijft laten: Halloween. „Wees gerust, de Efteling viert
-geen Halloween" staat letterlijk op de eigen site. Hoe het dan tóch een van de meest
+Wat het park daarentegen blijft laten: Halloween. “Wees gerust, de Efteling viert
+geen Halloween” staat letterlijk op de eigen site. Hoe het dan tóch een van de meest
 sfeervolle herfstparken van Europa kan zijn, heb ik in de
 [Halloween-gids](/blog/halloween-pretparken-2026) opgeschreven. Korte versie: lange
 avonden tot 20 uur, lantaarns in de bomen, het Huyverwoud, en niemand met een
@@ -817,26 +817,26 @@ bedankt sinds 1959 iedereen persoonlijk.
 
 - Parkgeschiedenis, Anton Pieck, themagebieden, oppervlakte en bezoekcijfers: [Efteling op nl.wikipedia](https://nl.wikipedia.org/wiki/Efteling) · [Efteling op de.wikipedia](https://de.wikipedia.org/wiki/Efteling) · [Geschiedenis (officieel)](https://www.efteling.com/en/about-efteling/history)
 - Holle Bolle Gijs (eerste figuur op 29 maart 1959, Peter Reijnders en Henk Knuivers): [Holle Bolle Gijs op Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders op Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)
-- Stichtingsstructuur en winstbestemming: [Stichting Natuurpark de Efteling op Eftepedia](https://www.eftepedia.nl/lemma/Stichting_Natuurpark_de_Efteling) · [„Van wie is de Efteling?" (Parkplanet)](https://parkplanet.nl/2022/04/efteling-kaatsheuvel-eigenaar-stichting/)
-- Jaarcijfers 2025 (5,78 mln bezoeken, 347 mln omzet, Grand Hotel): [„Strong results for Efteling in 2025" (officieel)](https://www.efteling.com/en/press/strong-results-for-efteling-in-2025/) · [Jaarcijfers 2025 (Themepark Central)](https://www.themepark-central.de/efteling-besucherzahlen-2025/)
-- Het bezoekersplafond uit de natuurvergunning van 2016, de overschreden jaren en de huidige telmethode: [„Efteling meldet Besucherrekord 2025 – trotz strenger Obergrenze" (FreizeitparkNEWS)](https://www.freizeitparknews.de/efteling/besucherrekord2025/) · [Uitspraak rechtbank Oost-Brabant (Pretwerk)](https://pretwerk.nl/recreatie-actueel/efteling-onaangenaam-verrast-door-rechter-maximaal-5-miljoen-bezoekers-per-jaar/73822/) · [Dwangsom van 20 € per bezoeker en gewijzigde telmethode, mei 2022 (Looopings)](https://www.looopings.nl/weblog/20714/Efteling-moet-voortaan-dwangsom-betalen-bij-meer-dan-vijf-miljoen-bezoekers--maar-telmethode-is-veranderd.html) · [Zitting bij de Raad van State (Looopings)](https://www.looopings.nl/weblog/25415/Miljoenenboete-dreigt-voor-de-Efteling-Raad-van-State-buigt-zich-over-overschrijding-bezoekersaantal.html) · [Uitspraak van 15 mei 2024, belanghebbendheid (Looopings)](https://www.looopings.nl/weblog/25633/Klagende-buurtbewoners-Efteling-krijgen-ongelijk-van-Raad-van-State.html) · [Gesprekken over zes miljoen (Omroep Brabant)](https://www.omroepbrabant.nl/nieuws/6007528/efteling-in-gesprek-met-de-provincie-om-meer-bezoekers-te-mogen-ontvangen)
+- Stichtingsstructuur en winstbestemming: [Stichting Natuurpark de Efteling op Eftepedia](https://www.eftepedia.nl/lemma/Stichting_Natuurpark_de_Efteling) · [“Van wie is de Efteling?” (Parkplanet)](https://parkplanet.nl/2022/04/efteling-kaatsheuvel-eigenaar-stichting/)
+- Jaarcijfers 2025 (5,78 mln bezoeken, 347 mln omzet, Grand Hotel): [“Strong results for Efteling in 2025” (officieel)](https://www.efteling.com/en/press/strong-results-for-efteling-in-2025/) · [Jaarcijfers 2025 (Themepark Central)](https://www.themepark-central.de/efteling-besucherzahlen-2025/)
+- Het bezoekersplafond uit de natuurvergunning van 2016, de overschreden jaren en de huidige telmethode: [“Efteling meldet Besucherrekord 2025 – trotz strenger Obergrenze” (FreizeitparkNEWS)](https://www.freizeitparknews.de/efteling/besucherrekord2025/) · [Uitspraak rechtbank Oost-Brabant (Pretwerk)](https://pretwerk.nl/recreatie-actueel/efteling-onaangenaam-verrast-door-rechter-maximaal-5-miljoen-bezoekers-per-jaar/73822/) · [Dwangsom van 20 € per bezoeker en gewijzigde telmethode, mei 2022 (Looopings)](https://www.looopings.nl/weblog/20714/Efteling-moet-voortaan-dwangsom-betalen-bij-meer-dan-vijf-miljoen-bezoekers--maar-telmethode-is-veranderd.html) · [Zitting bij de Raad van State (Looopings)](https://www.looopings.nl/weblog/25415/Miljoenenboete-dreigt-voor-de-Efteling-Raad-van-State-buigt-zich-over-overschrijding-bezoekersaantal.html) · [Uitspraak van 15 mei 2024, belanghebbendheid (Looopings)](https://www.looopings.nl/weblog/25633/Klagende-buurtbewoners-Efteling-krijgen-ongelijk-van-Raad-van-State.html) · [Gesprekken over zes miljoen (Omroep Brabant)](https://www.omroepbrabant.nl/nieuws/6007528/efteling-in-gesprek-met-de-provincie-om-meer-bezoekers-te-mogen-ontvangen)
 - Aantrekkelijkste werkgever van Nederland 2023: [Winnaars Randstad Award per jaar (Randstad)](https://www.randstad.nl/werkgevers/kenniscentrum/employer-branding/winnaars-randstad-award) · [Randstad Employer Brand Research 2026, methode](https://www.randstad.nl/werkgevers/kenniscentrum/employer-branding/employer-brand-research-2026)
 - Danse Macabre en het Huyverwoud: [Persbericht bij de opening (officieel)](https://www.efteling.com/en/press/danse-macabre-efteling-reveals-opening-date-and-inside-of-new-haunted-attraction/) · [Danse Macabre op en.wikipedia](<https://en.wikipedia.org/wiki/Danse_Macabre_(Efteling)>) · [Aanpassing in mei 2025 (Looopings)](https://www.looopings.nl/weblog/28970/Nieuwe-effecten-en-wildere-bewegingen-Efteling-vernieuwt-Danse-Macabre.html)
-- De muziek en wat er uit het Spookslot is hergebruikt: [„Danse macabre werd bij toeval muziek van het Spookslot" (NPO Klassiek)](https://www.npoklassiek.nl/klassiek/funfact/fbc09021-dc6c-4b66-81a2-4d0c96a9e709/danse-macabre-werd-bij-toeval-muziek-van-het-spookslot-in-de-efteling) · [„Het Spookslot-verleden herleeft in Danse Macabre" (officieel)](https://www.efteling.com/nl/blog/nieuws/20231031-spookslot-verleden-herleeft-in-danse-macabre) · [Soundtrack, 29 minuten (Looopings)](https://www.looopings.nl/weblog/27810/Efteling-zet-soundtrack-Danse-Macabre-online-29-minuten-aan-muziek.html)
+- De muziek en wat er uit het Spookslot is hergebruikt: [“Danse macabre werd bij toeval muziek van het Spookslot” (NPO Klassiek)](https://www.npoklassiek.nl/klassiek/funfact/fbc09021-dc6c-4b66-81a2-4d0c96a9e709/danse-macabre-werd-bij-toeval-muziek-van-het-spookslot-in-de-efteling) · [“Het Spookslot-verleden herleeft in Danse Macabre” (officieel)](https://www.efteling.com/nl/blog/nieuws/20231031-spookslot-verleden-herleeft-in-danse-macabre) · [Soundtrack, 29 minuten (Looopings)](https://www.looopings.nl/weblog/27810/Efteling-zet-soundtrack-Danse-Macabre-online-29-minuten-aan-muziek.html)
 - Python (geopend 1981, staalconstructie vervangen in 2018 voor 4,5 mln €) en Kogeloog in het Sprookjesbos: [Python op nl.wikipedia](<https://nl.wikipedia.org/wiki/Python_(Efteling)>) · [Kogeloog (horeca) op Eftepedia](<https://www.eftepedia.nl/lemma/Kogeloog_(horeca)>)
-- De Dynamic Motion Stage als eerste installatie van dat type: [„Danse Macabre – The Dynamic Motion Stage" (Intamin)](https://www.intamin.com/2024/11/08/danse-macabre-the-dynamic-motion-stage/) · [Projectpagina (Intamin)](https://www.intamin.com/project/danse-macabre/) · Bouwdocumentatie van het park: [Making-of-playlist (Efteling op YouTube)](https://www.youtube.com/playlist?list=PLax_Jl-_6xzAc3BCLis1qbRrLs4Urwjdr)
+- De Dynamic Motion Stage als eerste installatie van dat type: [“Danse Macabre – The Dynamic Motion Stage” (Intamin)](https://www.intamin.com/2024/11/08/danse-macabre-the-dynamic-motion-stage/) · [Projectpagina (Intamin)](https://www.intamin.com/project/danse-macabre/) · Bouwdocumentatie van het park: [Making-of-playlist (Efteling op YouTube)](https://www.youtube.com/playlist?list=PLax_Jl-_6xzAc3BCLis1qbRrLs4Urwjdr)
 - Baron 1898 (gegevens, drie treinen van 18 plaatsen), Symbolica, Villa Volta: [Baron 1898 op nl.wikipedia](https://nl.wikipedia.org/wiki/Baron_1898) · [Baron 1898 op de.wikipedia](https://de.wikipedia.org/wiki/Baron_1898) · [Symbolica op nl.wikipedia](https://nl.wikipedia.org/wiki/Symbolica) · [Villa Volta op de.wikipedia](https://de.wikipedia.org/wiki/Villa_Volta)
 - Fata Morgana (acht minuten, 1.800 gasten per uur, Ton van de Ven), Gondoletta (sinds 13 april 1981, 20 minuten, 1.081 meter) en het Stoomcarrousel (gebouwd 1895, sinds 1956 in het park, sinds 1944 elektrisch): [Fata Morgana op nl.wikipedia](<https://nl.wikipedia.org/wiki/Fata_Morgana_(Efteling)>) · [Gondoletta op nl.wikipedia](https://nl.wikipedia.org/wiki/Gondoletta) · [Stoomcarrousel op nl.wikipedia](<https://nl.wikipedia.org/wiki/Stoomcarrousel_(Efteling)>)
-- Sprookjesboom (televisieserie vanaf oktober 2006, boom in het Sprookjesbos sinds 1 april 2010): [Sprookjesboom (televisieserie) op nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesboom_(televisieserie)>) · [„10 jaar Sprookjesboom" (officieel)](https://www.efteling.com/nl/blog/historie/20200317-10-jaar-sprookjesboom)
-- Hooghmoed (nieuw in 2026): [„Efteling kündigt neue Familienattraktion Hooghmoed an" (Themepark Central)](https://www.themepark-central.de/efteling-neuheit-2026/)
-- Het Sprookjesbos: de tien taferelen van 1952, Langnek, Kleine Boodschap en de huidige stand: [Sprookjesbos op nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesbos_(Efteling)>) · nieuwe routing vanaf 2026: [„Efteling neemt routing Sprookjesbos op de schop" (Parkplanet)](https://parkplanet.nl/2026/05/efteling-routing-navigeren-wayfinding-sprookjesbos/)
+- Sprookjesboom (televisieserie vanaf oktober 2006, boom in het Sprookjesbos sinds 1 april 2010): [Sprookjesboom (televisieserie) op nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesboom_(televisieserie)>) · [“10 jaar Sprookjesboom” (officieel)](https://www.efteling.com/nl/blog/historie/20200317-10-jaar-sprookjesboom)
+- Hooghmoed (nieuw in 2026): [“Efteling kündigt neue Familienattraktion Hooghmoed an” (Themepark Central)](https://www.themepark-central.de/efteling-neuheit-2026/)
+- Het Sprookjesbos: de tien taferelen van 1952, Langnek, Kleine Boodschap en de huidige stand: [Sprookjesbos op nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesbos_(Efteling)>) · nieuwe routing vanaf 2026: [“Efteling neemt routing Sprookjesbos op de schop” (Parkplanet)](https://parkplanet.nl/2026/05/efteling-routing-navigeren-wayfinding-sprookjesbos/)
 - Diorama (sinds 25 mei 1971) en Volk van Laaf (sinds 15 juni 1990): [Diorama op nl.wikipedia](<https://nl.wikipedia.org/wiki/Diorama_(Efteling)>) · [Volk van Laaf op nl.wikipedia](https://nl.wikipedia.org/wiki/Volk_van_Laaf)
-- Het einde van de paardenshow Raveleijn en wat er in 2026 volgt: [„De Efteling stopt na vijftien jaar met omstreden show met paarden" (NOS)](https://nos.nl/artikel/2580130-de-efteling-stopt-na-vijftien-jaar-met-omstreden-show-met-paarden) · [Raveleijn op nl.wikipedia](<https://nl.wikipedia.org/wiki/Raveleijn_(attractie)>)
-- Missie Luminar 2029 en Sprookjesbibliotheek 2027: [„New attraction in 2029: Missie Luminar" (officieel)](https://www.efteling.com/en/blog/nieuws/new-attraction-in-2029-mission-luminar) · [Missie Luminar (blooloop)](https://blooloop.com/news/efteling-missie-luminar-launch-coaster) · [„Efteling deelt eerste informatie over 32e sprookje" (Pretwerk)](https://pretwerk.nl/geen-categorie/efteling-deelt-eerst-informatie-over-32e-sprookje-in-het-sprookjesbos/101709/)
+- Het einde van de paardenshow Raveleijn en wat er in 2026 volgt: [“De Efteling stopt na vijftien jaar met omstreden show met paarden” (NOS)](https://nos.nl/artikel/2580130-de-efteling-stopt-na-vijftien-jaar-met-omstreden-show-met-paarden) · [Raveleijn op nl.wikipedia](<https://nl.wikipedia.org/wiki/Raveleijn_(attractie)>)
+- Missie Luminar 2029 en Sprookjesbibliotheek 2027: [“New attraction in 2029: Missie Luminar” (officieel)](https://www.efteling.com/en/blog/nieuws/new-attraction-in-2029-mission-luminar) · [Missie Luminar (blooloop)](https://blooloop.com/news/efteling-missie-luminar-launch-coaster) · [“Efteling deelt eerste informatie over 32e sprookje” (Pretwerk)](https://pretwerk.nl/geen-categorie/efteling-deelt-eerst-informatie-over-32e-sprookje-in-het-sprookjesbos/101709/)
 - Aquanura: [Aquanura (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/attraktionen/aquanura-s133)
 - Experimenten met de wachtrij: [Boarding-pass-proef bij Python vanaf 15 september 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [virtuele wachtrij bij Droomvlucht, zomer 2024 (officieel)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [even en oneven groepen bij Python vanaf 18 mei 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [het rad vanaf 19 juni 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [het ei vanaf 21 juni 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html)
 - Wachtrijen, single rider en eerder naar binnen: [Wachtrijen in de Efteling (officieel)](https://www.efteling.com/nl/park/informatie/wachtrijen) · [Eerder het park in (officieel)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
-- Geen Halloween: [„Geen Halloween in de Efteling" (officieel)](https://www.efteling.com/nl/park/events/halloween) · [onze Halloween-gids](/blog/halloween-pretparken-2026)
+- Geen Halloween: [“Geen Halloween in de Efteling” (officieel)](https://www.efteling.com/nl/park/events/halloween) · [onze Halloween-gids](/blog/halloween-pretparken-2026)
 - Prijzen, parkeren en jaarkaarten 2026: [Ticketoverzicht (officieel)](https://www.efteling.com/en/park/information/ticket-overview) · [Prijzen & openingstijden (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jaarkaartvergelijking (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (oprichting, capaciteit, vrijwilligers, financiering): [Wie wij zijn (officieel)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes op Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes op nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Doneren](https://www.villapardoes.nl/doneren)
 - Wachttijd- en drukte-data: eigen historie uit meer dan 150 bedrijfsdagen (augustus 2024 tot augustus 2026), [Efteling op park.fan](ref:efteling)
