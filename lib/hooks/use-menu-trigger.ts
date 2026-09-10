@@ -37,6 +37,8 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /** Set while Escape moves the focus back into the wrapper, so `onFocus` does not undo the close. */
+  const closingRef = useRef(false);
 
   const requested = openedOn === pathname;
   const open = requested && !disabled;
@@ -67,7 +69,14 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpenedOn(null);
+        // Putting the focus back on the trigger is what makes Escape usable with a keyboard — and
+        // it is why Escape closed nothing: the trigger is INSIDE the wrapper, so `focus()`
+        // dispatches a bubbling `focusin`, `onFocus` calls `setRequested(true)`, and the close
+        // from the line above is overwritten in the same batch. The flag holds only for the
+        // duration of that synchronous dispatch.
+        closingRef.current = true;
         rootRef.current?.querySelector<HTMLElement>('a, button')?.focus();
+        closingRef.current = false;
       }
     };
     // A click that lands outside the trigger and outside the band closes it. A click INSIDE is
@@ -95,7 +104,7 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
       if (e.pointerType === 'touch') return;
       schedule(false, CLOSE_DELAY_MS);
     },
-    onFocus: () => !disabled && setRequested(true),
+    onFocus: () => !disabled && !closingRef.current && setRequested(true),
     // Only a focus that names where it went can close the band — see `focusLeftMenu`. A button
     // that disables itself while it holds the focus blurs to nothing, and reading that as "the
     // visitor left" closed the band under its own click.

@@ -444,17 +444,19 @@ niemand, weil sie mit dem Band verschwand.
 Die Regel liegt jetzt als `focusLeftMenu` in `lib/utils/menu-focus.ts` (`pnpm test:menu-focus`,
 außerhalb des Hooks, weil `use-menu-trigger.ts` über next-intl an `next/navigation` reicht und
 damit außerhalb von Next nicht lädt) und verlangt ein benanntes Ziel: ein Fokus, der wirklich geht,
-sagt wohin. Was das Band in diesem Zustand schließt, ist das, was es vor jeder Fokusbewegung
-schloss: der Zeiger, der es verlässt (`onPointerLeave`, gemessen 180 ms), und ein `pointerdown`
-daneben. Es betrifft nicht nur die Alarmgruppe: jeder Knopf in einem Band, der sich selbst
+sagt wohin. Es betrifft nicht nur die Alarmgruppe: jeder Knopf in einem Band, der sich selbst
 deaktiviert, während er den Fokus hält, hätte dasselbe ausgelöst.
 
-**Escape ist der dritte Weg und funktioniert nicht** — an keinem der drei Bänder, gemessen an
-„Parks entdecken" ebenso wie an den Favoriten, mit und ohne diese Änderung. `onKey` setzt
-`setOpenedOn(null)` und fokussiert direkt danach `rootRef.current.querySelector('a, button')`, also
-ein Element **innerhalb** des Wrappers, dessen `onFocus` im selben Commit `setRequested(true)`
-ruft. Das ist älter als diese Regel und hat ein eigenes Ticket; es steht hier, damit niemand aus
-den zwei Zeilen oben ein funktionierendes Escape herausliest.
+**Und Escape musste dafür erst repariert werden.** Die Regel oben lässt das Band offen stehen, und
+nach einer Löschung sitzt der Fokus auf `<body>` — wer keinen Zeiger benutzt, hätte danach ein Band
+vor sich gehabt, das er nicht mehr loswird. Escape schloss nämlich keines der drei Bänder, gemessen
+an „Parks entdecken" wie an den Favoriten, auf beiden Wegen (per Hover geöffnet und per Fokus):
+`onKey` setzt `setOpenedOn(null)` und fokussiert direkt danach
+`rootRef.current.querySelector('a, button')` — ein Element **innerhalb** des Wrappers, dessen
+`onFocus` im selben Commit `setRequested(true)` ruft und den Schluss überschreibt. Der Fokus gehört
+dahin zurück, also bleibt er dort und `closingRef` unterdrückt für die Dauer dieses einen
+synchronen `focus()` das Wiederöffnen. Gemessen danach: alle drei Bänder schließen auf Escape, auf
+beiden Wegen, und der Fokus steht anschließend auf dem Auslöser.
 
 ## Bewegung im Sheet
 

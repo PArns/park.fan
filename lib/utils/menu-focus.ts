@@ -10,13 +10,14 @@
  * removal worked (the row disappearing, the rest moving up) went out of view with it.
  *
  * Focus that genuinely leaves says where it went. Losing it to a disabled button, to a node that
- * was just removed, or to another window says nothing, and none of those is somebody leaving. What
- * closes the band in that state is what closed it before the focus ever moved: the pointer leaving
- * it (`onPointerLeave`, measured at 180 ms) and a `pointerdown` landing outside it. Escape is
- * supposed to be the third and is not — it closes none of the three bands today, this one
- * included, because the handler focuses back into the wrapper and the wrapper's own `onFocus`
- * reopens it in the same commit. That is older than this rule and has its own ticket; it is named
- * here so nobody reads a working Escape into the two lines below.
+ * was just removed, or to another window says nothing, and none of those is somebody leaving. The
+ * three ways out are unaffected by this and each was measured in a browser: the pointer leaving
+ * the band (`onPointerLeave`, 180 ms), a `pointerdown` landing outside it, and Escape.
+ *
+ * Escape is the one that matters here, because it is the only one of the three a keyboard has —
+ * and it was itself broken until the same change fixed it. Removing an alert parks the focus on
+ * `<body>`, so without a working Escape this rule would have left somebody who cannot use a
+ * pointer holding a band with no way to dismiss it. See `closingRef` in `useMenuTrigger`.
  *
  * Kept apart from the hook so it can be tested: `use-menu-trigger.ts` reaches `next/navigation`
  * through next-intl and does not load outside Next.
