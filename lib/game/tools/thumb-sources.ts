@@ -488,17 +488,142 @@ function buildingSource(): Source {
   };
 }
 
+// ── coasters ─────────────────────────────────────────────────────────────────────────────────
+
+interface CoasterKit {
+  layouts: typeof import('../track/layouts').TRACK_LAYOUTS;
+  layoutData: typeof import('../track/layouts').layoutData;
+  buildTrack: typeof import('../track/build').buildTrack;
+  buildOptionsFor: typeof import('../track/resolve').buildOptionsFor;
+  buildTrackGeometry: typeof import('../track/profile').buildTrackGeometry;
+  buildSupports: typeof import('../track/supports').buildSupports;
+  buildStation: typeof import('../track/station').buildStation;
+  resolveStyle: typeof import('../track/resolve').resolveStyle;
+  resolveColor: typeof import('../track/resolve').resolveColor;
+  materials: import('../track/materials').TrackMaterials;
+  toMesh: typeof import('./thumb-mesh').surfaceToMesh;
+  dispose(): void;
+}
+
+/**
+ * The eight tiles the owner was looking at when they asked for pictures.
+ *
+ * The docblock this replaced said coasters get the Lucide glyph "until the track tool can hand a
+ * layout over", and that is exactly what changed: a `coasterLayouts` catalogue makes a layout a
+ * point item with a footprint, so there is now a thing to render. Eight coaster tiles over one
+ * grey pictogram was the last place in the palette where the names did all the work.
+ *
+ * **The whole circuit, and it has to be.** What separates these four is their PLAN -- 392 m of
+ * out-and-back against a 112 m twister -- so a picture of the station, or of the lift hill, would
+ * make the two layouts a player is actually choosing between look identical. It costs what a
+ * coaster costs: rails, spine and ties from `buildTrackGeometry`, the supports under them, and the
+ * station, i.e. the same five surfaces `track/main.ts` draws, out of the same functions.
+ *
+ * **`ground` is a flat zero and that is not a shortcut.** In the park a support reaches down to the
+ * terrain under it; in the studio there is no terrain, and a footing that stops at y=0 under a
+ * layout built at y=0 is the machine standing on its own pad. Handing it the park's sampler would
+ * be worse than useless -- the picture would change depending on where the player last looked.
+ *
+ * Nothing here names a layout: `item.item` is a value the palette carried in, and the catalogue is
+ * searched by it. A pack that adds a fifth layout gets a picture.
+ */
+function coasterSource(): Source {
+  async function boot(studio: StudioScene, alive: () => boolean): Promise<CoasterKit | null> {
+    const [layouts, build, profile, supports, station, resolve, materialsMod, mesh] =
+      await Promise.all([
+        import('../track/layouts'),
+        import('../track/build'),
+        import('../track/profile'),
+        import('../track/supports'),
+        import('../track/station'),
+        import('../track/resolve'),
+        import('../track/materials'),
+        import('./thumb-mesh'),
+      ]);
+    if (!alive()) return null;
+    const materials = materialsMod.createTrackMaterials(
+      studio.scene,
+      STUDIO_SEED,
+      STUDIO_TEXTURE_PX
+    );
+    return {
+      layouts: layouts.TRACK_LAYOUTS,
+      layoutData: layouts.layoutData,
+      buildTrack: build.buildTrack,
+      buildOptionsFor: resolve.buildOptionsFor,
+      buildTrackGeometry: profile.buildTrackGeometry,
+      buildSupports: supports.buildSupports,
+      buildStation: station.buildStation,
+      resolveStyle: resolve.resolveStyle,
+      resolveColor: resolve.resolveColor,
+      materials,
+      toMesh: mesh.surfaceToMesh,
+      dispose: () => materials.dispose(),
+    };
+  }
+
+  const kit_ = lazyKit(boot);
+  return {
+    async build(studio, item) {
+      const kit = await kit_.get(studio);
+      if (!kit || !kit_.alive()) return null;
+      const preset = kit.layouts.find((p) => p.id === item.item);
+      if (!preset) return null;
+
+      const data = { ...kit.layoutData(preset), origin: [0, 0, 0] as [number, number, number], yaw: 0 };
+      const built = kit.buildTrack(data, kit.buildOptionsFor(studio.registry, data));
+      const style = kit.resolveStyle(studio.registry, data.style);
+      const geometry = kit.buildTrackGeometry(built.spline, style);
+      const paint = kit.materials.paint(kit.resolveColor(studio.registry, data));
+      const timber = style.supports === 'timber';
+      const structureMaterial = timber ? kit.materials.timber() : paint;
+      const depth = style.rail.radius * 2 + (style.spine ? style.spine.size + 0.12 : 0.3) + 0.05;
+      const legs = kit.buildSupports(built.spline, geometry.frames, {
+        kind: style.supports,
+        ground: () => 0,
+        load: () => 1,
+        structureDepth: depth,
+      });
+      const platform = kit.buildStation(built.spline, built.drives, { ground: () => 0 });
+
+      const meshes: AbstractMesh[] = [];
+      const add = (name: string, geo: { positions: number[]; normals: number[]; uvs: number[]; indices: number[] }, material: import('@babylonjs/core/Materials/material').Material) => {
+        if (geo.indices.length === 0) return;
+        // `surfaceToMesh` wants vertex colours; track's geometry carries none, and an empty array
+        // is what its own `applyToMesh` path does with them.
+        meshes.push(kit.toMesh(studio.scene, `thumb-track-${name}`, { ...geo, colors: [] }, material));
+      };
+      add('rail', geometry.groups.rail, kit.materials.rail());
+      add('spine', geometry.groups.spine, paint);
+      add('tie', geometry.groups.tie, timber ? kit.materials.timber() : paint);
+      add('support', legs.member, structureMaterial);
+      add('footing', legs.footing, kit.materials.concrete());
+      add('station-deck', platform.deck, kit.materials.concrete());
+      add('station-structure', platform.structure, paint);
+      add('station-rail', platform.rail, kit.materials.rail());
+      if (!meshes.length) return null;
+      return {
+        meshes,
+        dispose() {
+          for (const m of meshes) m.dispose();
+        },
+      };
+    },
+    dispose: () => kit_.dispose(),
+  };
+}
+
 /**
  * Kind → source. A kind that is not here has no picture and gets the item's own icon on the stage,
- * which is the documented fallback and is what coasters and flumes get today: both are `route`
- * items with no `procedural` in the manifest, so there is nothing to render until the track tool
- * can hand a layout over.
+ * which is the documented fallback and is what `flume` gets today: its items carry no footprint,
+ * so they are `route` items and there is nothing a click could place yet.
  */
 const SOURCES: Record<string, SourceFactory> = {
   scenery: scenerySource,
   shop: shopSource,
   ride: rideSource,
   building: buildingSource,
+  coaster: coasterSource,
 };
 
 export interface SourceSet {
