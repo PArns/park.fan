@@ -336,7 +336,6 @@ Sì, sul serio:
 Questo è il mio grazie a un parco in riva a un lago delle fiabe e a due
 genitori che ci hanno portato un bambino piccolo ancora e ancora.
 
-
 — Patrick
 
 _P.S.: sì, il topo da 10.000 punti nella seconda sala di Maus au Chocolat esiste

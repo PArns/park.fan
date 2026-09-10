@@ -359,7 +359,7 @@ park.fan**. Oui, sérieusement :
 Merci d’avoir lu jusqu’ici. Cet endroit, la plateforme, le blog, tout ça, c’est
 mon merci à un parc au bord d’un lac aux contes, à des parents qui y ont emmené
 encore et encore un petit garçon, à un père dans une nacelle, et à chaque
-personne qui aime les parcs d’attractions autant que moi. 
+personne qui aime les parcs d’attractions autant que moi.
 
 — Patrick
 

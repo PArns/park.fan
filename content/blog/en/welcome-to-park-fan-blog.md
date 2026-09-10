@@ -328,7 +328,7 @@ really:
 Thank you for reading this far. This place, the platform, the blog, all of it,
 is my thank-you to a park by a fairy-tale lake, to parents who took a small boy
 there again and again, to a father in a gondola, and to every single person who
-loves theme parks as much as I do. 
+loves theme parks as much as I do.
 
 — Patrick
 
