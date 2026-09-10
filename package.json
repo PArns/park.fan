@@ -61,6 +61,7 @@
     "test:threshold-minutes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-threshold-minutes.mjs",
     "test:show-follows-store": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-follows-store.mjs",
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
+    "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
     "test:content-changes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-content-changes.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",

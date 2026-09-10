@@ -421,6 +421,34 @@ einen Render später und ist genau das `setState`-im-Effekt, das der Linter zu R
 `pathname` kommt aus `@/i18n/navigation`, ist also locale-bereinigt — richtig hier, weil ein
 Sprachwechsel dieselbe Route neu rendert und das Menü nicht mitten in der Geste zuschlagen soll.
 
+## Ein Fokus, der nirgendwohin geht, hat das Menü nicht verlassen
+
+`useMenuTrigger` schließt auf drei Wegen: Escape, ein `pointerdown` außerhalb, und ein `blur`,
+dessen Fokus das Band verlässt. Der dritte stand als `!e.currentTarget.contains(e.relatedTarget)`
+da, und `contains(null)` ist `false` — ein Fokus, der **nirgendwohin** geht, las sich damit wie
+einer, der nach draußen geht.
+
+Nirgendwohin geht er, sobald das fokussierte Element aufhört fokussierbar zu sein, während es den
+Fokus noch hält. Genau das tun die Entfernen-Knöpfe der Alarmgruppe: sie setzen `disabled` für die
+Dauer ihres eigenen DELETE. Gemessen mit echtem Zeiger bei 1440 px:
+
+```plain text
+focusin   BUTTON[Black Mamba: Alarm entfernen]
+focusout  BUTTON[Black Mamba: Alarm entfernen] disabled=true  related=null
+```
+
+Das Band ging unter dem Klick zu, der gerade gemacht worden war. Pro Öffnen ließ sich damit genau
+ein Alarm entfernen, und die Bestätigung — die Zeile verschwindet, die übrigen rücken nach — sah
+niemand, weil sie mit dem Band verschwand.
+
+Die Regel liegt jetzt als `focusLeftMenu` in `lib/utils/menu-focus.ts` (`pnpm test:menu-focus`,
+außerhalb des Hooks, weil `use-menu-trigger.ts` über next-intl an `next/navigation` reicht und
+damit außerhalb von Next nicht lädt) und verlangt ein benanntes Ziel: ein Fokus, der wirklich geht,
+sagt wohin. Die beiden Arten zu gehen, die nichts benennen, hängen ohnehin an den anderen zwei
+Wegen — ein Klick daneben schließt über `pointerdown`, Escape über `keydown`. Es betrifft nicht nur
+die Alarmgruppe: jeder Knopf in einem Band, der sich selbst deaktiviert, während er den Fokus hält,
+hätte dasselbe ausgelöst.
+
 ## Bewegung im Sheet
 
 Das Burger-Menü war die einzige Menüfläche ohne Bewegung. `useSheetReveal`

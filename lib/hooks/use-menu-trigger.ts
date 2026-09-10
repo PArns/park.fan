@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from '@/i18n/navigation';
+import { focusLeftMenu } from '@/lib/utils/menu-focus';
 
 /**
  * The open/close behaviour every entry in the header's mega-menu bar shares.
@@ -95,8 +96,11 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
       schedule(false, CLOSE_DELAY_MS);
     },
     onFocus: () => !disabled && setRequested(true),
+    // Only a focus that names where it went can close the band — see `focusLeftMenu`. A button
+    // that disables itself while it holds the focus blurs to nothing, and reading that as "the
+    // visitor left" closed the band under its own click.
     onBlur: (e: React.FocusEvent) => {
-      if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpenedOn(null);
+      if (focusLeftMenu(e.currentTarget, e.relatedTarget as Node | null)) setOpenedOn(null);
     },
   };
 
