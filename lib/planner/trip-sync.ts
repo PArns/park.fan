@@ -90,6 +90,13 @@ export type TripSyncResult = { ok: true; id: string } | { ok: false; error: Trip
  *
  * A 404 is not an error to report either: a trip expires, and a plan somebody
  * comes back to after a year should quietly get a new id rather than an apology.
+ *
+ * **What this does not close:** on that one remaining path the id really is
+ * replaced, and nothing re-points the stored subscription at the new one — so a
+ * trip expiring under an open tab leaves the same dangling reference described
+ * above, for the one reason that is not a server having a bad minute. The repair
+ * belongs on the push side rather than here (this file knows nothing about
+ * subscriptions, deliberately) and is PAR-131.
  */
 export async function syncTrip(): Promise<TripSyncResult> {
   const state = plannerStore.getSnapshot();
