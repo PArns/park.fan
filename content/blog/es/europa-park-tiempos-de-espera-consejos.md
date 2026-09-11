@@ -113,7 +113,7 @@ sumó 3,25 millones de vueltas en su primer año**, es, medida contra más de se
 millones de visitantes, muy poca cosa. La comparación, con la misma base de datos y el
 mismo método de cálculo:
 
-```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
+```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 

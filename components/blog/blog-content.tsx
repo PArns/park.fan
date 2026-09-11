@@ -409,8 +409,11 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       // Either one park (`park=`) or a semicolon-separated list of ride references, each of which
       // may carry `|Label|Type` after the ref. Semicolons because a ride type routinely holds a
       // comma.
-      if (attrs.park) {
-        await addPark(attrs.park);
+      // `slug=` is accepted by the renderer as an alias of `park=`, so it has to be prefetched
+      // too — a fence written that way resolved to nothing at all.
+      const single = attrs.park ?? attrs.slug;
+      if (single) {
+        await addPark(single);
       } else {
         for (const entry of (attrs.rides ?? '').split(';')) {
           const ride = parseWidgetRideRef(entry.split('|')[0]);
@@ -437,16 +440,24 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   // hover-card preview matches the favorites cards visually — and the focal point
   // with them, or a referenced ride would be top-cropped in a post while the same
   // card is correctly framed on the park page.
+  //
+  // Both maps are keyed by the reference as the post wrote it, which may be a bare slug or the
+  // long `/parks/<continent>/<country>/<city>/<park>` form. The media database is keyed by the
+  // bare slug alone, so the slug comes off the RESOLVED object rather than off the key — reading
+  // it out of the key gave `getParkBackgroundImage('/parks/europe/…')` and a ride whose park
+  // slug was the empty string, i.e. no photo and no focal point, silently.
   const parkBackgroundMap = new Map<string, string | null>();
   const parkFocusMap = new Map<string, string>();
-  for (const slug of parkMap.keys()) {
-    parkBackgroundMap.set(slug, getParkBackgroundImage(slug));
-    parkFocusMap.set(slug, getCardObjectPosition(slug));
+  for (const [ref, park] of parkMap) {
+    const slug = park?.slug ?? ref;
+    parkBackgroundMap.set(ref, getParkBackgroundImage(slug));
+    parkFocusMap.set(ref, getCardObjectPosition(slug));
   }
   const attractionBackgroundMap = new Map<string, string | null>();
   const attractionFocusMap = new Map<string, string>();
-  for (const [ref] of attractionMap) {
-    const [parkSlug, attractionSlug] = ref.split('/');
+  for (const [ref, { park, attraction }] of attractionMap) {
+    const parkSlug = attraction?.parkSlug ?? park?.slug ?? ref.split('/')[0];
+    const attractionSlug = attraction?.attractionSlug ?? ref.split('/').pop() ?? '';
     attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkSlug, attractionSlug));
     attractionFocusMap.set(ref, getCardObjectPosition(parkSlug, attractionSlug));
   }

@@ -142,10 +142,12 @@ export async function BlogRideWaitsWidget({
         missing.add(ride.parkKey);
         continue;
       }
-      // One fetch per park however many of its rides the table names.
-      if (!resolved.some((p) => p.parkSlug === entry.parkSlug)) resolved.push(entry);
+      // One fetch per park however many of its rides the table names. Deduplicated on the geo
+      // path, not the slug: `disneyland-park` is Paris and Anaheim, and collapsing those two
+      // would draw one park's rides from the other park's ranking.
+      if (!resolved.some((p) => p.basePath === entry.basePath)) resolved.push(entry);
       targets.push({
-        parkSlug: entry.parkSlug,
+        parkKey: entry.basePath,
         rideSlug: ride.rideSlug,
         ...(ride.label ? { label: ride.label } : {}),
         ...(ride.type ? { type: ride.type } : {}),

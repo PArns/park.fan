@@ -112,7 +112,7 @@ nel primo anno ha totalizzato 3,25 milioni di corse**, è, misurata su oltre sei
 milioni di ospiti, pochissima. Il confronto, stessa base dati, stesso metodo di
 calcolo:
 
-```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
+```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 

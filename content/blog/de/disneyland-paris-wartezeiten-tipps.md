@@ -1,7 +1,7 @@
 ---
 title: 'Disneyland Paris: zwei Parks, und der kleinere hat die längeren Schlangen'
 translationKey: disneyland-paris-guide
-date: '2026-09-18'
+date: '2026-09-11'
 author: patrick
 mode: published
 featured: false
@@ -10,8 +10,8 @@ excerpt: >-
   vierzehn. Trotzdem steht man im kleinen Park länger an, und in zwei Jahren
   Messung war es in keinem Monat und an keinem Wochentag umgekehrt. Dazu: warum
   die längste Schlange im großen Park an einer Dunkelfahrt von 1992 hängt, was
-  der zweite Park seit dem 29. März 2026 anders macht, und welche Bahn seit
-  vergangener Woche für zehn Monate zu ist.
+  der zweite Park seit dem 29. März 2026 anders macht, und welche Bahn seit dem
+  7. September für zehn Monate zu ist.
 tags:
   - disneyland-paris
   - wartezeiten
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Disneyland Paris: Wartezeiten, beste Zeit & Tipps 2026'
   description: >-
-    Echte Wartezeit-Daten aus 176 gemessenen Tagen je Park: welcher der beiden
-    Pariser Parks länger anstehen lässt, wann es dort am ruhigsten ist und wie
-    du den Tag auf beide verteilst.
+    Echte Wartezeit-Daten aus zwei Jahren Messung: welcher der beiden Pariser
+    Parks länger anstehen lässt, wann es dort am ruhigsten ist und wie du den
+    Tag auf beide verteilst.
   keywords:
     - Disneyland Paris
     - Disneyland Paris Wartezeiten
@@ -62,9 +62,9 @@ immer denselben Tag: den ganzen Vormittag im
 nachmittags noch schnell rüber in den zweiten, weil da ja nicht viel steht.
 
 Das ist die falsche Reihenfolge. Wir messen beide Parks seit zwei Jahren, und in
-dieser Zeit lag das Andrangsniveau in **Disney Adventure World** in jedem der
-neun erfassten Monate über dem des großen Parks, dazu an allen sieben
-Wochentagen. Umgekehrt war es nie. Der kleinere Park verteilt seine Gäste auf ein
+dieser Zeit lag das Andrangsniveau in **Disney Adventure World** in jedem Monat,
+für den wir Werte haben, über dem des großen Parks, und an jedem der sieben
+Wochentage. Umgekehrt war es nie. Der kleinere Park verteilt seine Gäste auf ein
 Drittel der Fahrgeschäfte, und das merkt man an jeder Absperrung.
 
 ## Ein Resort, zwei Parks, ein Bahnhof
@@ -76,7 +76,7 @@ ist es der meistbesuchte Freizeitpark Europas und mit rund 17.000 Beschäftigten
 der größte Arbeitgeber Frankreichs an einem einzigen Standort.
 
 Auf diesem Gelände stehen zwei Parks. Der
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?long) ist der
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ist der
 von 1992: 56,7 Hektar, fünf Themenländer, das Schloss in der Mitte. Der zweite
 kam am **16. März 2002** dazu, hieß bis vor Kurzem Walt Disney Studios Park und
 heißt seit dem **29. März 2026** [Disney Adventure World](ref:disney-adventure-world).
@@ -203,15 +203,17 @@ geschlossene Attraktion des Parks wurde danach weiter fortgeschrieben.
 
 Was das für einen Tag dort bedeutet: Die Bahn, die bisher den halben Vormittag
 gefressen hat, fällt weg, und ihre Gäste verteilen sich auf einen Park, der
-ohnehin wenig Kapazität hat. Die Tabelle oben zeigt tagesaktuell, wohin sie
-gegangen sind.
+ohnehin wenig Kapazität hat. In der Tabelle darüber steht Crush's Coaster noch
+mit ihren historischen Werten, weil die Rangliste zwei Jahre zurückreicht. Für
+deinen Besuch sind die Zeilen darunter die, die zählen.
 
 ## Wie voll es wirklich ist
 
-Beide Parks liefern uns durchgehend Wartezeiten. Unser Auswertungsfenster reicht
-vom **9. September 2024 bis zum 9. September 2026**; darin liegen 176 gemessene
-Tage für den Disneyland Park und 177 für Adventure World. Das ist mehr Substanz
-als bei manchem deutschen Park, über den hier schon ein ganzer Guide steht.
+Beide Parks liefern uns durchgehend Wartezeiten, über ein Auswertungsfenster von
+zwei Jahren und auf einer Basis von je gut einem halben Jahr gemessener
+Betriebstage. Das ist mehr Substanz als bei manchem deutschen Park, über den hier
+schon ein ganzer Guide steht. Wie viele Tage hinter jeder Zeile stehen, führen
+die Tabellen selbst mit.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
@@ -321,10 +323,10 @@ World anfangen und mittags wechseln, nicht umgekehrt.
 ### In welchem der beiden Parks wartet man länger?
 
 In Disney Adventure World, und das gilt in unserem Zwei-Jahres-Fenster für jeden
-der neun erfassten Monate und jeden Wochentag. Der Grund ist die Kapazität: Der
-kleinere Park verteilt etwas mehr als die Hälfte der Besucher auf nicht einmal
-ein Drittel der Fahrgeschäfte. Die aktuellen Werte für beide stehen in der
-Vergleichstabelle oben.
+erfassten Monat und jeden Wochentag. Der Grund ist die Kapazität: Der kleinere
+Park verteilt etwas mehr als die Hälfte der Besucher auf nicht einmal ein Drittel
+der Fahrgeschäfte. Die aktuellen Werte für beide stehen in der Vergleichstabelle
+oben.
 
 ### Warum heißt der Walt Disney Studios Park jetzt Disney Adventure World?
 

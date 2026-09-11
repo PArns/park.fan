@@ -110,7 +110,7 @@ Otherwise the list reads unspectacularly. **The park’s longest queue, for the 
 accounted for 3.25 million rides in its first year**, is, measured against over
 six million guests, very little. The comparison, same data basis, same method:
 
-```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
+```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 

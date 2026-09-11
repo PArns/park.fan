@@ -162,12 +162,16 @@ slash** in the key.
 
 ### Options (append after `?`, combine with `&`)
 
-| Option | Effect                                                    |
-| ------ | --------------------------------------------------------- |
-| `full` | Render the full spotlight card instead of an inline link. |
-| `bare` | Inline link **without** the short info annotation.        |
-| `info` | Force the inline annotation on (default for parks/rides). |
-| `long` | Park links show the longer "city, country" form.          |
+| Option     | Effect                                                     |
+| ---------- | ---------------------------------------------------------- |
+| `full`     | Render the full spotlight card instead of an inline link.  |
+| `bare`     | Inline link **without** the short info annotation.         |
+| `short`    | Park links show the city only, instead of "city, country". |
+| `calendar` | Park links point at the park's wait-time calendar.         |
+
+An option this table does not list does nothing. It is also not an error: unknown options are
+dropped silently, so `?long` and `?info` (both documented here until Sep 2026, neither ever
+implemented) read like a choice in the source and render the default.
 
 > `park:slug` and `attraction:parkSlug/slug` are kept as **aliases** of `ref:`
 > and accept the same options, but new posts should use `ref:`.
@@ -300,6 +304,31 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 | `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
 | `park-widget`            | `slug`                        | Park spotlight card — use `ref:…?full`.     |
 | `attraction-widget`      | `parkSlug`, `slug`            | Ride spotlight card — use `ref:…?full`.     |
+
+### Naming a park whose slug exists twice
+
+Every attribute above that names a park — `slug`, `park`, `parkSlug`, `slugs`, and the park half of
+`rides` — takes either the bare slug or the full path form `ref:` uses:
+
+````md
+```stats-widget slug=/parks/europe/france/paris/disneyland-park show=attractions
+
+```
+````
+
+Use the long form whenever the slug is ambiguous. **`disneyland-park` is the one slug in the
+catalogue that names two parks**, Paris and Anaheim, and the bare lookup is last-write-wins over
+the geo walk, so it answers **Anaheim**. A bare `slug=disneyland-park` in a post about Paris
+renders Californian medians with no error and nothing in the page to notice it by; that is how the
+Europa-Park guide's comparison table compared Anaheim to six European parks in all six languages.
+`pnpm check:blog-slugs` validates the long form against the geo path, so a typo inside the path is
+caught — but it cannot tell that a _bare_ slug meant the other park, which is why the long form is
+the thing to write rather than a thing to remember.
+
+**`highlight=` has to match the form you wrote**, in `park-comparison-widget` and in
+`ride-waits-widget`'s `rides=` mode alike: it is compared against the reference as written, so
+switching an entry to the long form and leaving `highlight=disneyland-park` behind drops the bold
+row without saying so. Nothing checks that one.
 
 ### `stats-widget show=…` — one table at a time
 

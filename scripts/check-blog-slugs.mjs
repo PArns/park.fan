@@ -52,10 +52,20 @@ const PARK_WIDGETS = new Set([
 const WIDGET = /```([a-z][a-z0-9-]*-widget)([^\n`]*)\n([\s\S]*?)\n?```/gm;
 const REF = /\((?:ref|park|attraction):([^)?\s]+)/g;
 const attr = (key) => new RegExp(`\\b${key}\\s*[:=]\\s*([A-Za-z0-9\\-/_]+)`, 'g');
-/** `slugs=` and `rides=` hold separators (`,` `;` `|`) the single-value matcher stops at. */
-const listAttr = (key) => new RegExp(`\\b${key}\\s*[:=]\\s*("([^"]*)"|([^\\s]+))`, 'g');
+/**
+ * `slugs=` and `rides=` hold separators (`,` `;` `|`) the single-value matcher stops at, AND
+ * spaces: a ride type is routinely `Multi-Launch, Stahl`. So the value runs to the next ` key=`
+ * or to the end of the line, which is exactly the rule `parseAttrs` in `blog-content.tsx` uses —
+ * stopping at the first space instead validated only the first entry of a `rides=` list and let
+ * every park after it through unchecked, which is the rename this script exists to catch.
+ */
+const listAttr = (key) =>
+  new RegExp(
+    `\\b${key}\\s*[:=]\\s*(?:"([^"]*)"|'([^']*)'|(.+?))(?=\\s+[a-zA-Z][a-zA-Z0-9_-]*\\s*=|\\s*$)`,
+    'gm'
+  );
 function collectList(key, text) {
-  return [...text.matchAll(listAttr(key))].map((m) => m[2] ?? m[3] ?? '');
+  return [...text.matchAll(listAttr(key))].map((m) => (m[1] ?? m[2] ?? m[3] ?? '').trim());
 }
 
 function collect(re, text) {
@@ -144,24 +154,31 @@ for (const file of blogFiles()) {
         if (!terms.has(id)) report(`glossary term "${id}"`, file);
       }
     } else if (name === 'attraction-widget' || name === 'ride-waits-widget') {
-      // `parkSlug=` is what attraction-widget documents, `park=` what ride-waits-widget takes;
-      // both accept the other spelling, so both are collected.
-      for (const key of ['park', 'parkSlug']) {
+      // `parkSlug=` is what attraction-widget documents, `park=` what ride-waits-widget takes,
+      // and `slug=` is an accepted alias of `park=`. All three are collected, because the
+      // renderer reads all three.
+      for (const key of ['park', 'parkSlug', ...(name === 'ride-waits-widget' ? ['slug'] : [])]) {
         for (const slug of collect(attr(key), blob)) {
           counts.parkWidget++;
           if (!parkResolves(slug, slugs, paths)) report(`park slug "${slug}" (${name})`, file);
         }
       }
       // `rides=parkRef/rideSlug|Label|Type;…` — only the park half is checkable here; a ride
-      // slug would need a park payload per entry.
+      // slug would need a park payload per entry. The shape IS checkable, and has to be: an
+      // entry with no ride half parses to null in the widget and its row vanishes from the
+      // table without a word.
       for (const list of collectList('rides', blob)) {
         for (const entry of list.split(';')) {
           const ref = entry.split('|')[0].trim();
           if (!ref) continue;
-          const parkRef = ref.startsWith('/parks/')
-            ? ref.split('/').slice(0, 6).join('/')
-            : ref.split('/')[0];
           counts.parkWidget++;
+          const parts = ref.split('/').filter(Boolean);
+          const long = ref.startsWith('/parks/');
+          if (parts.length !== (long ? 6 : 2)) {
+            report(`ride reference "${ref}" (${name} rides=, expected parkRef/rideSlug)`, file);
+            continue;
+          }
+          const parkRef = long ? `/${parts.slice(0, 5).join('/')}` : parts[0];
           if (!parkResolves(parkRef, slugs, paths)) {
             report(`park slug "${parkRef}" (${name} rides=)`, file);
           }
