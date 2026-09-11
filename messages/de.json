@@ -1197,7 +1197,13 @@
       "eveningBestOffsetHours": "Am kürzesten typischerweise ca. {hours} Std. nach Öffnung",
       "eveningWait": "Abends",
       "confidenceLow": "Basiert auf wenigen Daten – als grobe Orientierung verstehen",
-      "notWorth": "Hier musst du zur Öffnung nicht sprinten – die Wartezeiten bleiben über den Tag überschaubar (ca. {openWait} Min. zur Öffnung)."
+      "notWorth": "Hier musst du zur Öffnung nicht sprinten – die Wartezeiten bleiben über den Tag überschaubar (ca. {openWait} Min. zur Öffnung).",
+      "bestTimeTitle": "Wann es hier ruhiger ist",
+      "bestTimeText": "Zur Öffnung warten hier im Schnitt ca. {openWait} Min., im Tagespeak ca. {busyPeak} Min.",
+      "spread": "Unterschied",
+      "quietDay": "Am ruhigsten am {day}, normalerweise ca. {wait} Min.",
+      "quietDays": "Am ruhigsten am {first} und {second}, normalerweise ca. {wait} Min.",
+      "quietDayNone": "Kein einzelner Wochentag sticht heraus."
     },
     "todayChart": {
       "title": "Wartezeiten heute",
@@ -1225,6 +1231,7 @@
       "typical": "Normal",
       "busy": "Voll",
       "min": "Min",
+      "barNumbers": "Zahlen: {label}",
       "peak": "Rekord {value} Min · {date}"
     },
     "sectionLiveNow": "Wartezeit jetzt",

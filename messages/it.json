@@ -1215,7 +1215,13 @@
       "eveningBestOffsetHours": "Di solito l’attesa più corta ~{hours} h dopo l’apertura",
       "eveningWait": "La sera",
       "confidenceLow": "Basato su pochi dati: da considerare come indicazione di massima",
-      "notWorth": "Qui non serve correre all’apertura: le attese restano gestibili tutto il giorno (~{openWait} min all’apertura)."
+      "notWorth": "Qui non serve correre all’apertura: le attese restano gestibili tutto il giorno (~{openWait} min all’apertura).",
+      "bestTimeTitle": "Quando qui c’è meno coda",
+      "bestTimeText": "All’apertura qui si attende ~{openWait} min, al picco del giorno ~{busyPeak} min.",
+      "spread": "Differenza",
+      "quietDay": "Giorno più tranquillo: {day}, normalmente ~{wait} min.",
+      "quietDays": "Giorni più tranquilli: {first} e {second}, normalmente ~{wait} min.",
+      "quietDayNone": "Nessun giorno spicca da solo."
     },
     "typicalWaits": {
       "title": "Tempi di attesa tipici",
@@ -1225,6 +1231,7 @@
       "typical": "Normale",
       "busy": "Pieno",
       "min": "min",
+      "barNumbers": "Numeri: {label}",
       "peak": "Record {value} min · {date}"
     },
     "sectionLiveNow": "Tempo di attesa adesso",

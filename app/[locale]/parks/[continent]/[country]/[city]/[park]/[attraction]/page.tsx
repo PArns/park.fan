@@ -668,7 +668,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   and the statistics panel use. They were two `GlassCard`s side by side under a
                   band, i.e. three boxes for one chapter, each drawing its own border over the
                   ride's hero photo. Both render `bare` here because the `PANEL_CELL` around them
-                  already is the box. */}
+                  already is the box.
+
+                  The column count may be decided from the presence of the two blocks because
+                  BOTH components are total over them: `RopeDropCard` returns an element for
+                  every `ropeDrop` (its return type says so) and `AttractionTypicalWaits` renders
+                  exactly when `displayable`. That was not true for a year — the card answered
+                  `null` for a ride in a park with no recommendation at all, and this cell, its
+                  hairline and a second column stood around nothing on 183 ride pages. A cell
+                  whose content can decline to render has to be gated on the content, not on the
+                  data behind it. */}
                 <PanelGrid
                   columnCount={attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1}
                 >
@@ -677,6 +686,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <RopeDropCard
                         bare
                         ropeDrop={attraction.ropeDrop}
+                        typicalWaits={attraction.typicalWaits}
                         timezone={park.timezone}
                         todayClosingUtc={
                           park.schedule?.find(
