@@ -97,5 +97,17 @@ export function quietestWeekdays(
   const days = comparable.filter((d) => round(d.typical) === lowest);
   if (days.length > MAX_TIED_DAYS) return FLAT;
 
-  return { verdict: 'days', days: days.map((d) => d.dayOfWeek), typical: lowest };
+  /*
+   * Mon→Sun, rather than whatever order the payload arrived in. A tie renders as „Am ruhigsten am
+   * <a> und <b>", and the rest of this card already refuses to trust `byDayOfWeek`'s order — the
+   * chart walks a fixed `DISPLAY_ORDER` through a `Map`. Left as it came, a re-ordered response
+   * would read „am Mittwoch und Dienstag" beside bars that run Monday first.
+   */
+  const monFirst = (dayOfWeek: number) => (dayOfWeek + 6) % 7;
+
+  return {
+    verdict: 'days',
+    days: days.map((d) => d.dayOfWeek).sort((a, b) => monFirst(a) - monFirst(b)),
+    typical: lowest,
+  };
 }

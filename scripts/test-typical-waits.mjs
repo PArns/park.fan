@@ -60,6 +60,18 @@ test(
   '1,2@30'
 );
 
+test(
+  'both days of a tie are named Monday first, whatever order the payload arrived in',
+  () => {
+    // The sentence reads „am <a> und <b>" beside a chart that always runs Monday→Sunday, so the
+    // order may not be the response's. `days()` cannot express this — integer-like object keys
+    // always enumerate ascending — so the array is reversed by hand.
+    const block = days({ 0: [60], 1: [30], 2: [45], 3: [45], 5: [50], 6: [30] });
+    return show(quietestWeekdays({ ...block, byDayOfWeek: [...block.byDayOfWeek].reverse() }));
+  },
+  '1,6@30'
+);
+
 // --- the refusals ----------------------------------------------------------------------------
 
 test(

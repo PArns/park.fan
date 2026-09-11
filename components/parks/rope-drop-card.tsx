@@ -310,12 +310,27 @@ export function RopeDropCard({
        * kind of claim that reads as measured and is not.
        */
       const quiet = quietestWeekdays(typicalWaits, roundWaitTo5);
-      const bestTimeTrough = troughWait(ropeDrop);
-      // Only where coming back later actually buys something: later than opening AND shorter.
+      /*
+       * Displayed, so rounded — the weekday sentence under these tiles is already on the 5-minute
+       * grid (it passes `roundWaitTo5` into the vote so the minutes it names are the minutes the
+       * bars draw), and the chart in the neighbouring cell rounds too. Left raw, one panel could
+       * read 23 / 48 beside „ca. 25 Min." and beside a bar labelled 50.
+       */
+      const openWait = roundWaitTo5(ropeDrop.openWait);
+      const busyPeak = roundWaitTo5(ropeDrop.busyPeak);
+      const rawTrough = troughWait(ropeDrop);
+      const bestTimeTrough = rawTrough == null ? null : roundWaitTo5(rawTrough);
+      /*
+       * Only where coming back later actually buys something: later than opening AND shorter. The
+       * test runs on the two ROUNDED figures because they are the two the reader compares — „später
+       * ca. 25 Min." under a tile reading 25 promises a saving that is not on the screen. It is
+       * also the stricter test of the two: `roundWaitTo5` is monotone, so a rounded pair that
+       * differs had a raw pair that differed the same way.
+       */
       const troughIsBetter =
         bestTimeTrough != null &&
         ropeDrop.bestSlotMinutesAfterOpen > 0 &&
-        bestTimeTrough < ropeDrop.openWait &&
+        bestTimeTrough < openWait &&
         bestSlotPlausible;
 
       const BestTimeFrame = bare ? BareCardFrame : GlassCard;
@@ -334,26 +349,28 @@ export function RopeDropCard({
             className="mb-3"
           />
           <p className="text-muted-foreground mb-3 text-sm">
-            {t('bestTimeText', { openWait: ropeDrop.openWait, busyPeak: ropeDrop.busyPeak })}
+            {t('bestTimeText', { openWait, busyPeak })}
           </p>
           <StatTiles
             tone="primary"
             stats={[
-              { icon: Clock, label: t('atOpening'), value: ropeDrop.openWait, highlight: false },
+              { icon: Clock, label: t('atOpening'), value: openWait, highlight: false },
               {
                 icon: ChartColumn,
                 label: t('dayPeak'),
-                value: ropeDrop.busyPeak,
+                value: busyPeak,
                 highlight: false,
               },
               {
                 icon: ArrowUpDown,
                 label: t('spread'),
                 // Recomputed rather than read from `savings`, so the tile is the arithmetic of
-                // the two numbers in the sentence above it by construction. They agree on all
-                // 1,195 recommendations in production today — but `savings` is a stored column,
-                // and this file already documents fields on stale rows carrying DB defaults.
-                value: ropeDrop.busyPeak - ropeDrop.openWait,
+                // the two numbers in the sentence above it by construction — and of the two
+                // ROUNDED ones, or the third tile would not be the difference a reader can do in
+                // their head. They agree with `savings` on all 1,195 recommendations in production
+                // today, but it is a stored column, and this file already documents fields on
+                // stale rows carrying DB defaults.
+                value: busyPeak - openWait,
                 highlight: true,
               },
             ]}

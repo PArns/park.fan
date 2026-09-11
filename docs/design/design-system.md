@@ -386,6 +386,14 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
   not from the **chart** — the bars beside the sentence draw every weekday the API measured — so
   naming the comparable winner there would point at a bar that is visibly not the shortest one,
   with nothing on screen explaining why.
+- **Every minute the stand-in panel prints is on the 5-minute grid, including the ones it derives.**
+  The weekday sentence rounds (it hands `roundWaitTo5` to the vote), and the three tiles sit
+  directly above it beside a chart that rounds too — so `openWait` and `busyPeak` round once, the
+  spread tile is the difference of the two _rounded_ figures rather than of the raw ones, and the
+  "quieter later" line tests the rounded pair: „später ca. 25 Min." under a tile reading 25 promises
+  a saving that is not on the screen. That test is also the stricter one, since `roundWaitTo5` is
+  monotone. The three panels that predate the stand-in keep their raw figures — matching them is a
+  card-wide change and this one had a criterion demanding they stay byte-identical.
 - **The three readings are one component** (`StatTiles`), because the stand-in panel's whole claim
   is that it carries the weight of the recommendation it replaces, and a fourth hand-written copy
   of those classes cannot keep that promise.
