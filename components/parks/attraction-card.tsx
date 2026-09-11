@@ -314,14 +314,20 @@ export function AttractionCard({
         )}
 
         {/* Top glass panel. Its right padding reserves the corner circles'
-            footprint: 52px for one, 92px for the two a bell can make. It stays
-            at 92px wherever a bell is POSSIBLE rather than following the one
-            actually drawn, and that is deliberate — whether the bell renders
-            is partly a localStorage read (an alert already set keeps its bell
-            on any queue), so a padding tied to it would be a client-only
-            preference deciding server-rendered markup, and the failure mode is
-            a bell landing on top of the title at mount. 40px of unused padding
-            on a short queue is the cheaper half of that trade. */}
+            footprint: 52px for one, 92px for the two a bell can make. It keys
+            on `parkName` and does NOT follow the circle actually drawn, which
+            is deliberate for the bell's own condition — whether the bell
+            renders is half a localStorage read (an alert already set keeps its
+            bell on any queue), so a padding tied to that would be a
+            client-only preference deciding server-rendered markup, and the
+            failure mode is a bell landing on top of the title at mount. 40px
+            of unused padding on a short queue is the cheaper half of the trade.
+            The bell's OTHER condition is not like that: a fallback card's
+            `isUuid(attraction.id)` (above) is known to the render and can
+            never change, so 92px there reserves a circle that will never
+            arrive. Left alone rather than folded in, because narrowing it
+            widens the title on those cards — a visible change PAR-120 did not
+            ask for and no screenshot in this PR covers. */}
         <div
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
