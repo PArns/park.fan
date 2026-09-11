@@ -269,7 +269,32 @@ function SummaryCard({
         and therefore not WCAG "large text": it needs 4.5. The accent moves to an 8 px square,
         where 3 : 1 is the bar to clear, and both figures keep a text-grade contrast
         (19.8 : 1 and 4.73 : 1 light, 19.0 : 1 and 7.63 : 1 dark). */}
-      <div className="mt-1.5 flex items-end gap-4">
+      {/* `flex-wrap`, because the two readings side by side are wider than the tile wherever the
+        card is narrow, and this card has no floor: it is half of the `grid-cols-2` above, the
+        card is a `PanelGrid` column on the ride page (262.5 px at a 640 px window — narrower
+        than the 286 px it gets on a 360 px phone), and on the guide page it sits in a
+        `DemoFrame` inside a container, which leaves 254 px of card at 320 px and a 100 px tile.
+
+        Measured against each tile's content box, in all six locales:
+
+          ride page @640    before #452  4.8–8.8 px over, i.e. into the 12 px of `p-3`
+                            after  #452  6.8–16.8 px — the two labels each gained an 8 px swatch
+                                         with the colour rank, so nl („Normaal"/„Druk") and it
+                                         („Normale"/„Pieno") now cross the tile's border by
+                                         1.8–4.8 px and the card's right edge by 3.8 and 2.8
+          guide page @320   after  #452  32–42 px over in EVERY locale — the Voll column sits
+                                         outside its own tile, over the gap and the next one
+          guide page @360   after  #452  12–22 px, still past the border in all six
+          everywhere        with wrap    0 px
+
+        What binds is the LABEL row, not the digits: the same card with three-digit figures
+        (Chiapas, 100/115 min) overran by exactly the same amount. Shrinking `gap-4` to `gap-2`
+        was measured as the alternative and rejected — it buys 8 px, which is not half of what
+        the guide page needs, and it would leave the tile stacking in some languages and not in
+        others. The invariant is worth the 42 px the tile grows where it wraps: the two readings
+        sit side by side while they fit inside the padding, and stack when they do not, in every
+        language at the same time. */}
+      <div className="mt-1.5 flex flex-wrap items-end gap-x-4 gap-y-1.5">
         <div>
           <p className="text-foreground text-lg leading-none font-semibold">
             {bucket.typical ?? '–'}
