@@ -1,4 +1,4 @@
-import { Suspense, type ReactNode } from 'react';
+import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
@@ -11,6 +11,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { GlassCircle } from '@/components/common/glass-circle';
 import { RideAlertBell } from '@/components/push/ride-alert-bell';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
@@ -100,22 +101,6 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
 
 /** The upper sheet catching the light. Not part of the seam below it — see `panelSeat`. */
 const PANEL_SHINE = 'inset 0 1px 0 var(--pk-panel-shine)';
-
-/** The 34px glass circle both the ride-alert bell and the favorite star sit inside. */
-function GlassCircle({ children }: { children: ReactNode }) {
-  return (
-    <div
-      className="h-[34px] w-[34px] rounded-full"
-      style={{
-        background: 'var(--pk-fav-bg)',
-        border: '1px solid var(--pk-fav-border)',
-        boxShadow: 'var(--pk-fav-shadow)',
-      }}
-    >
-      {children}
-    </div>
-  );
-}
 
 // ============================================================================
 // Component
@@ -285,9 +270,12 @@ export function AttractionCard({
           }}
         />
 
-        {/* Notification bell + favorite star — a row of two 34px glass circles.
-            Needs the top panel's right padding widened to match (below): one
-            circle reserved 52px from the edge, two need roughly 92px.
+        {/* Notification bell + favorite star — a row of one or two 34px glass
+            circles. The bell brings its OWN circle (`RideAlertBell` renders
+            `GlassCircle` itself): it hides where the queue is too short to
+            set an alert on, and a circle drawn around it from here stayed
+            behind as an empty one. The star is the row's last child either
+            way, so it keeps the far-right position when the bell is gone.
             `gap-3`, not `gap-2`: each circle's `::after` touch target is 44px
             (`FavoriteStar`/`RideAlertBell`, below `sm`) centred on its own
             34px circle, so two adjacent circles' 44px zones reach past their
@@ -302,17 +290,14 @@ export function AttractionCard({
                 one to make any sense here. `FavoriteStar` below has no such
                 requirement (a purely local storage key), so it is unaffected. */}
             {parkName && isUuid(attraction.id) && (
-              <GlassCircle>
-                <RideAlertBell
-                  attractionId={attraction.id}
-                  attractionName={stripNewPrefix(attraction.name)}
-                  parkName={parkName}
-                  className="h-full w-full"
-                  backgroundImage={backgroundImage}
-                  objectPosition={objectPosition}
-                  currentWaitTime={waitTime}
-                />
-              </GlassCircle>
+              <RideAlertBell
+                attractionId={attraction.id}
+                attractionName={stripNewPrefix(attraction.name)}
+                parkName={parkName}
+                backgroundImage={backgroundImage}
+                objectPosition={objectPosition}
+                currentWaitTime={waitTime}
+              />
             )}
             <GlassCircle>
               <FavoriteStar
@@ -328,7 +313,21 @@ export function AttractionCard({
           </div>
         )}
 
-        {/* Top glass panel */}
+        {/* Top glass panel. Its right padding reserves the corner circles'
+            footprint: 52px for one, 92px for the two a bell can make. It keys
+            on `parkName` and does NOT follow the circle actually drawn, which
+            is deliberate for the bell's own condition — whether the bell
+            renders is half a localStorage read (an alert already set keeps its
+            bell on any queue), so a padding tied to that would be a
+            client-only preference deciding server-rendered markup, and the
+            failure mode is a bell landing on top of the title at mount. 40px
+            of unused padding on a short queue is the cheaper half of the trade.
+            The bell's OTHER condition is not like that: a fallback card's
+            `isUuid(attraction.id)` (above) is known to the render and can
+            never change, so 92px there reserves a circle that will never
+            arrive. Left alone rather than folded in, because narrowing it
+            widens the title on those cards — a visible change PAR-120 did not
+            ask for and no screenshot in this PR covers. */}
         <div
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
