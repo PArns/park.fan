@@ -102,7 +102,6 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
 /** The upper sheet catching the light. Not part of the seam below it — see `panelSeat`. */
 const PANEL_SHINE = 'inset 0 1px 0 var(--pk-panel-shine)';
 
-/** The 34px glass circle both the ride-alert bell and the favorite star sit inside. */
 // ============================================================================
 // Component
 // ============================================================================
