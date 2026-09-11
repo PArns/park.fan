@@ -115,7 +115,7 @@ export function usePushFollowRemoval(): PushFollowRemoval {
     } else {
       setErrors((current) => ({ ...current, [key]: result.error }));
       if (result.error.reason === 'rate-limited' && mounted.current) {
-        // The very number the surfaces print. `classifyFailure` has already bounded it, which is
+        // The very number the surfaces print. `classifyWriteFailure` has already bounded it, which is
         // what keeps the countdown and its expiry from disagreeing — and what keeps the delay
         // clear of the 32-bit overflow that would fire this timer at once instead of never.
         const seconds = result.error.retryAfterSeconds;

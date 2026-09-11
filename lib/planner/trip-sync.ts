@@ -57,6 +57,13 @@ function payloadOf(state: PlannerState): Record<string, unknown> {
  * The shared classes (`@/lib/api/write-failure`) minus the 404: a trip that is
  * gone is not a failure this file reports, it is the one case that starts a new
  * trip — see `syncTrip`.
+ *
+ * Nothing prints these yet. `enable()` reads `ok` and nothing else, and what a
+ * refused sync should SAY — a countdown for the limiter, silence for a hiccup —
+ * is a question about the push toggle rather than about this file; it is open at
+ * PAR-91. They are separated here because the alternative is the boolean that
+ * caused the bug above: a caller that cannot tell "this trip is gone" from "the
+ * server is busy" has to guess, and the guess was to create a second trip.
  */
 export type TripSyncError = Exclude<HttpWriteError, { reason: 'not-found' }>;
 
@@ -90,6 +97,17 @@ export type TripSyncResult = { ok: true; id: string } | { ok: false; error: Trip
  *
  * A 404 is not an error to report either: a trip expires, and a plan somebody
  * comes back to after a year should quietly get a new id rather than an apology.
+ *
+ * **Why a 404 is taken at face value here and not in `post` below.** It is the
+ * endpoint's contract that decides, not the number: `TripsController.update`
+ * documents 404 as "no such trip" and the proxy in front of it answers the same
+ * for an id that cannot be one (`app/api/trips/[id]/route.ts`), so on this path
+ * a 404 is an answer about the trip. `POST /api/trips` has no 404 in its
+ * contract at all, so there it can only mean the route is not answering. The
+ * residual risk is the same for both and is not worth a fragile
+ * tell-them-apart-by-body check: a deploy that has lost `/api/trips/:id` has
+ * lost `/api/trips` with it, so the id is dropped and the create that would
+ * replace it fails in the same breath.
  *
  * **What this does not close:** on that one remaining path the id really is
  * replaced, and nothing re-points the stored subscription at the new one — so a
