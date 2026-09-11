@@ -7,6 +7,7 @@ import {
   type PushRegistration,
   type PushUnavailableCause,
 } from './push-registration';
+import { classifyWriteFailure, type HttpWriteError } from '../api/write-failure';
 import {
   removeRideAlertLocal,
   setRideAlertLocal,
@@ -54,29 +55,19 @@ export interface ShowFollowRemote {
 }
 
 /**
- * Why a write didn't go through — collapsing all of these to one boolean
- * used to mean a rate-limited caller got the exact same "that didn't work,
- * try again" message as one whose threshold was malformed, and "try again"
- * against a limiter that has already refused the retry is a lie. Only
- * `rate-limited` carries data a caller can act on differently (the API's own
- * `retryAfterSeconds`); the rest are for a caller that wants to log or word
- * things slightly differently, not to retry sooner.
+ * No push identity at all. `cause` is what separates "blocked in your browser"
+ * (a setting only the visitor can change) from "this browser cannot" from "our
+ * end is down" — three different sentences, and the reason a single "please try
+ * again" was wrong in front of all of them.
  */
-export type PushWriteError =
-  /**
-   * No push identity at all. `cause` is what separates "blocked in your
-   * browser" (a setting only the visitor can change) from "this browser
-   * cannot" from "our end is down" — three different sentences, and the
-   * reason a single "please try again" was wrong in front of all of them.
-   */
-  | { reason: 'unavailable'; cause: PushUnavailableCause }
-  | { reason: 'rate-limited'; retryAfterSeconds: number }
-  /** 400 — a malformed request, or a rule the API enforces at write time (e.g. an unreadable park). */
-  | { reason: 'invalid' }
-  /** 404 — the subscription or the entity named no longer exists. */
-  | { reason: 'not-found' }
-  /** A thrown fetch, or any other non-2xx (5xx included) — the same "try again later" bucket as before. */
-  | { reason: 'network' };
+type PushUnavailableError = { reason: 'unavailable'; cause: PushUnavailableCause };
+
+/**
+ * Why a write didn't go through — the four HTTP classes every write path in
+ * this app shares (`@/lib/api/write-failure`), plus the one above, which only a
+ * push write can produce.
+ */
+export type PushWriteError = PushUnavailableError | HttpWriteError;
 
 export type PushWriteResult<T> = { ok: true; value: T } | { ok: false; error: PushWriteError };
 
@@ -87,54 +78,6 @@ async function identityForWrite(): Promise<PushRegistration> {
   const existing = await getExistingPushIdentity();
   if (existing) return { ok: true, identity: existing };
   return ensurePushRegistered();
-}
-
-/** A "try later" default: not a claim about the real window, just a usable one. */
-const RATE_LIMIT_FALLBACK_SECONDS = 60;
-/**
- * Longer than this is not a number to put in front of somebody — an hour is
- * already past what any of these surfaces stays open for, and the value comes
- * off the network, so it is not ours to trust unbounded.
- */
-const RATE_LIMIT_MAX_SECONDS = 3600;
-
-/**
- * The limiter's own window, normalized ONCE so every reader agrees.
- *
- * Callers both print this number ("bitte in {seconds} Sekunden") and time
- * things by it, and the two must not diverge — a value clamped for the timer
- * and rendered raw would show a countdown that clears an hour early. Anything
- * under a second is not a wait a sentence can describe either, so it takes the
- * same road as a body that could not be read at all.
- */
-function normalizeRetryAfter(raw: unknown): number {
-  if (typeof raw !== 'number' || !Number.isFinite(raw) || raw < 1) {
-    return RATE_LIMIT_FALLBACK_SECONDS;
-  }
-  return Math.min(Math.round(raw), RATE_LIMIT_MAX_SECONDS);
-}
-
-/**
- * Turn a non-2xx response into a `PushWriteError`. 404 and the general 4xx
- * bucket carry no body worth reading; 429 does — `PushFollowAccessGuard`
- * answers it with `{ statusCode, message, retryAfterSeconds }`.
- */
-async function classifyFailure(response: Response): Promise<PushWriteError> {
-  if (response.status === 429) {
-    const retryAfterSeconds = await response
-      .json()
-      .then((body: unknown) =>
-        typeof body === 'object' && body !== null && 'retryAfterSeconds' in body
-          ? (body as { retryAfterSeconds: unknown }).retryAfterSeconds
-          : undefined
-      )
-      .catch(() => undefined);
-    // A body the limiter didn't shape as expected is still a rate limit.
-    return { reason: 'rate-limited', retryAfterSeconds: normalizeRetryAfter(retryAfterSeconds) };
-  }
-  if (response.status === 404) return { reason: 'not-found' };
-  if (response.status >= 400 && response.status < 500) return { reason: 'invalid' };
-  return { reason: 'network' };
 }
 
 async function postFollowShow(
@@ -155,7 +98,7 @@ async function postFollowShow(
         ...(startTime ? { startTime } : {}),
       }),
     });
-    if (!response.ok) return { ok: false, error: await classifyFailure(response) };
+    if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
     // The mirror records WHICH performance was armed, because the API keeps
     // one row per (subscription, show) and its upsert overwrites `startTime`:
     // a browser that follows the 19:10 performance does not follow the 17:30
@@ -217,7 +160,7 @@ export async function followShow(
  * alert. That matters for a retired ride, whose alert `AlertsOverview`
  * deliberately still lists.
  *
- * Everything else goes through `classifyFailure` like a write, so a caller has
+ * Everything else goes through `classifyWriteFailure` like a write, so a caller has
  * the same classes to render either way.
  */
 async function deletePushFollow(url: string, body: unknown): Promise<PushWriteResult<void>> {
@@ -228,7 +171,7 @@ async function deletePushFollow(url: string, body: unknown): Promise<PushWriteRe
       body: JSON.stringify(body),
     });
     if (!response.ok && response.status !== 404) {
-      return { ok: false, error: await classifyFailure(response) };
+      return { ok: false, error: await classifyWriteFailure(response) };
     }
     return { ok: true, value: undefined };
   } catch {
@@ -287,7 +230,7 @@ async function postRideAlert(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ endpoint: identity.endpoint, attractionId, thresholdMinutes }),
     });
-    if (!response.ok) return { ok: false, error: await classifyFailure(response) };
+    if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
     const alert = (await response.json()) as RideAlertRemote;
     setRideAlertLocal(attractionId, thresholdMinutes);
     return { ok: true, value: alert };

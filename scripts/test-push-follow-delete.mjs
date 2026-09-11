@@ -106,7 +106,7 @@ globalThis.fetch = async (url, init) => {
 
 const { removeRideAlert, unfollowShow } = await import('../lib/push/push-follows.ts');
 
-/** A `Response` with just the parts `classifyFailure` reads. */
+/** A `Response` with just the parts `classifyWriteFailure` reads. */
 function response(status, body = null) {
   return {
     ok: status >= 200 && status < 300,
