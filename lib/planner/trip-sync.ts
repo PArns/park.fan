@@ -52,15 +52,16 @@ function payloadOf(state: PlannerState): Record<string, unknown> {
 }
 
 /**
- * Whether the plan reached the server, and why not where it did not.
+ * Why the plan did not reach the server.
  *
- * The classes are the shared ones (`@/lib/api/write-failure`), minus the 404:
- * a trip that is gone is not a failure this function reports, it is the one
- * case that starts a new trip — see `syncTrip`.
+ * The shared classes (`@/lib/api/write-failure`) minus the 404: a trip that is
+ * gone is not a failure this file reports, it is the one case that starts a new
+ * trip — see `syncTrip`.
  */
-export type TripSyncResult =
-  | { ok: true; id: string }
-  | { ok: false; error: Exclude<HttpWriteError, { reason: 'not-found' }> };
+export type TripSyncError = Exclude<HttpWriteError, { reason: 'not-found' }>;
+
+/** The id the plan is stored under, or why it is not stored. */
+export type TripSyncResult = { ok: true; id: string } | { ok: false; error: TripSyncError };
 
 /**
  * Push the current plan to the server, creating a trip the first time.

@@ -55,19 +55,19 @@ export interface ShowFollowRemote {
 }
 
 /**
- * Why a write didn't go through — the four HTTP classes every write path in
- * this app shares (`@/lib/api/write-failure`), plus the one only a push write
- * can produce.
+ * No push identity at all. `cause` is what separates "blocked in your browser"
+ * (a setting only the visitor can change) from "this browser cannot" from "our
+ * end is down" — three different sentences, and the reason a single "please try
+ * again" was wrong in front of all of them.
  */
-export type PushWriteError =
-  /**
-   * No push identity at all. `cause` is what separates "blocked in your
-   * browser" (a setting only the visitor can change) from "this browser
-   * cannot" from "our end is down" — three different sentences, and the
-   * reason a single "please try again" was wrong in front of all of them.
-   */
-  | { reason: 'unavailable'; cause: PushUnavailableCause }
-  | HttpWriteError;
+type PushUnavailableError = { reason: 'unavailable'; cause: PushUnavailableCause };
+
+/**
+ * Why a write didn't go through — the four HTTP classes every write path in
+ * this app shares (`@/lib/api/write-failure`), plus the one above, which only a
+ * push write can produce.
+ */
+export type PushWriteError = PushUnavailableError | HttpWriteError;
 
 export type PushWriteResult<T> = { ok: true; value: T } | { ok: false; error: PushWriteError };
 
