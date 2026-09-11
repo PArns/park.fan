@@ -24,6 +24,7 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks:
+  - /parks/europe/france/paris/disneyland-park/*
   - disney-adventure-world/*
 coverImage:
   src: /media/disneyland-park/background.jpg
@@ -60,11 +61,11 @@ immer denselben Tag: den ganzen Vormittag im
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), und irgendwann
 nachmittags noch schnell rüber in den zweiten, weil da ja nicht viel steht.
 
-Das ist die falsche Reihenfolge. Über zwei Jahre Messung liegt das Andrangsniveau
-im **Disney Adventure World** in jedem einzelnen der neun Monate höher, für die
-wir Werte haben, und an jedem der sieben Wochentage. Umgekehrt war es nie. Der
-kleinere Park verteilt seine Gäste auf ein Drittel der Fahrgeschäfte, und das
-merkt man an jeder Absperrung.
+Das ist die falsche Reihenfolge. Wir messen beide Parks seit zwei Jahren, und in
+dieser Zeit lag das Andrangsniveau in **Disney Adventure World** in jedem der
+neun erfassten Monate über dem des großen Parks, dazu an allen sieben
+Wochentagen. Umgekehrt war es nie. Der kleinere Park verteilt seine Gäste auf ein
+Drittel der Fahrgeschäfte, und das merkt man an jeder Absperrung.
 
 ## Ein Resort, zwei Parks, ein Bahnhof
 
@@ -83,9 +84,9 @@ Die Umbenennung war schon am 12. April 2024 angekündigt worden, vollzogen wurde
 sie an dem Tag, an dem der neue Bereich World of Frozen aufmachte.
 
 Beide Parks zahlst du getrennt. Das Tagesticket gilt für **einen** der beiden,
-und wer wechseln will, braucht die Zwei-Park-Variante. Das ist keine Formalie,
-sondern die einzige Entscheidung an diesem Tag, die du nachmittags nicht mehr
-korrigieren kannst.
+und wer wechseln will, braucht die Zwei-Park-Variante. Das ist die einzige
+Entscheidung an diesem Tag, die du nachmittags an keiner Kasse mehr korrigieren
+kannst.
 
 So stehen die beiden zueinander, und daneben zwei Parks, die aus Deutschland
 ähnlich weit weg sind:
@@ -128,25 +129,37 @@ Nach fünfzehn Monaten Umbau lief sie am 3. Mai 2019 wieder.
 
 **[Star Wars Hyperspace Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 heißt erst seit dem 7. Mai 2017 so. Eröffnet wurde sie am 1. Juni 1995 als
-*Space Mountain: De la Terre à la Lune*, nach Jules Verne, mit einer Kanone als
+_Space Mountain: De la Terre à la Lune_, nach Jules Verne, mit einer Kanone als
 Startanlage. Die gibt es immer noch: Der Zug wird in 1,8 Sekunden von 0 auf
 71 km/h den Berg hinaufgeschossen. Drei Überschläge, ein Kilometer Strecke, bis
 zu 5 g. Von allen Space Mountains weltweit ist das die einzige mit Launch und
 die einzige mit Inversionen, und sie war es auch, die den Park nach den
 Verlustjahren der Anfangszeit gerettet hat.
 
-Und trotzdem steht sie nicht oben in unserer Rangliste.
+Trotzdem steht sie in unserer Rangliste nicht oben.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
 ```
 
-Die längste Schlange im Park gehört einer Dunkelfahrt von 1992, die in
-anderthalb Minuten vorbei ist. Das ist kein Ausreißer und auch kein Hinweis
-darauf, dass sie besonders beliebt wäre. Es ist Rechnung: Eine Bahn mit vier
-Zügen und knapp 2.000 Personen pro Stunde arbeitet ihre Warteschlange ab, eine
-Dunkelfahrt mit kleinen Gondeln nicht. Wer nur die Achterbahnen im Blick hat,
-plant den falschen Vormittag.
+Die längste Schlange des Parks gehört **Peter Pan's Flight**, einer Dunkelfahrt
+von 1992, die in anderthalb Minuten vorbei ist. Beliebtheit erklärt davon nur
+die Hälfte. Die andere Hälfte ist Durchsatz: Hyperspace Mountain fährt vier Züge
+und schafft knapp 2.000 Personen in der Stunde, arbeitet ihre Schlange also den
+ganzen Tag über ab. Eine Dunkelfahrt mit kleinen Gondeln kann das nicht. Wer nur
+die Achterbahnen im Blick hat, plant den falschen Vormittag.
+
+Drei weitere Bahnen kosten an diesem Vormittag Zeit.
+**[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
+in Adventureland läuft seit dem ersten Tag und dauert zehneinhalb Minuten, was
+sie zur längsten Fahrt im Park macht.
+**[Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril)**
+eröffnete am 30. Juli 1993 als erste Achterbahn in einem Disney-Park mit einem
+Überschlag, gebaut von Intamin, 600 Meter Strecke, 58 km/h. Von April 2000 bis
+November 2004 fuhr sie rückwärts. Ihre Mindestgröße von 140 Zentimetern ist die
+höchste aller Disney-Attraktionen weltweit, was vor Ort regelmäßig Familien
+trennt. Und **[„it's a small world"](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
+ist genau das, was du befürchtest.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -163,12 +176,14 @@ dem 29. März 2026, mit einem 36 Meter hohen Berg und einem Fjord davor, und
 zwischen beiden ein neuer Weg, der die Zonen überhaupt erst verbindet. Eine
 Themenwelt zum König der Löwen ist angekündigt.
 
-Die Bahnen davor sind älter, als der Umbau vermuten lässt. **The Twilight Zone
-Tower of Terror** und **Crush's Coaster** sind beide von 2007,
+Die Bahnen davor sind älter, als der Umbau vermuten lässt.
+**[The Twilight Zone Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)**
+und **Crush's Coaster** sind beide von 2007,
 **[Ratatouille](ref:disney-adventure-world/ratatouille-laventure-totalement-toquee-de-remy)**
-mit seinen fahrerlosen Wagen von 2014.
-
-Und hier kommt der Teil, der diesen Herbst die Planung ändert.
+mit seinen fahrerlosen Wagen von 2014, und die beiden Marvel-Bahnen
+**[Avengers Assemble: Flight Force](ref:disney-adventure-world/avengers-assemble-flight-force)**
+und **[Spider-Man W.E.B. Adventure](ref:disney-adventure-world/spider-man-web-adventure)**
+kamen im Juli 2022 mit dem Areal.
 
 **[Crush's Coaster](ref:disney-adventure-world/crushs-coaster)** ist in unserer
 gesamten Historie die Bahn mit der längsten Schlange des Parks, auf breiter
@@ -204,12 +219,12 @@ als bei manchem deutschen Park, über den hier schon ein ganzer Guide steht.
 
 Der Abstand zwischen den beiden Parks ist über den ganzen Zeitraum stabil. Nur
 im Dezember gleichen sich die typischen Wartezeiten an, und selbst dann liegt
-das Andrangsniveau in Adventure World höher. Das liegt nicht daran, dass der
-Park beliebter wäre. Es liegt daran, dass dort vierzehn Attraktionen Wartezeiten
-melden und im Disneyland Park 43, bei Besucherzahlen, die sich 2023 wie 10,4 zu
-5,7 Millionen verhielten. Doppelt so viele Gäste auf dreimal so viele
-Fahrgeschäfte ist eine bessere Quote als die Hälfte der Gäste auf ein Drittel
-der Fahrgeschäfte.
+das Andrangsniveau in Adventure World höher. Mit Beliebtheit hat das wenig zu
+tun, mit Arithmetik viel: 2023 kamen 10,4 Millionen Besucher in den Disneyland
+Park und 5,7 Millionen in den zweiten. Rechnet man das auf die Attraktionen um,
+die uns Wartezeiten melden, sind das rund **242.000 Gäste pro Attraktion und
+Jahr** gegenüber **407.000**. Dieselbe Rechnung steht jeden Tag als Schlange
+auf dem Asphalt.
 
 So verteilt sich ein Tag im Disneyland Park über die Stunden:
 
@@ -230,10 +245,11 @@ Schulferien, die anders liegen als die deutschen und nach Zonen gestaffelt
 sind, dazu die britischen Half-Term-Wochen, weil ein spürbarer Teil der Gäste
 über den Eurostar kommt.
 
-Die Wochentagsunterschiede sind hier kleiner, als man es von deutschen Parks
-kennt. Ein Park, der 365 Tage im Jahr aufhat und international beworben wird,
-hat keinen wirklich toten Dienstag. Welche der nächsten Wochen trotzdem die
-ruhigsten sind, steht hier, laufend neu berechnet:
+Wie flach die Wochentagskurve ausfällt, steht in der Tabelle darüber, und sie
+fällt flach aus. Ein Park, der 365 Tage im Jahr aufhat und in einem halben
+Dutzend Ländern beworben wird, hat keinen toten Dienstag, auf den man
+ausweichen könnte. Welche der nächsten Wochen trotzdem die ruhigsten sind, steht
+hier, laufend neu berechnet:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -260,12 +276,13 @@ zwangsläufig die Bahnen, an denen du am längsten stehen würdest.
 
 Wenn du nur einen Tag hast und nur einen Park nimmst, nimm den Disneyland Park:
 mehr Fahrgeschäfte, kürzere Schlangen, und das Schloss ist der Grund, aus dem
-die meisten überhaupt kommen. Geh bei Öffnung sofort zu den Dunkelfahrten in
-Fantasyland, nicht zu den Achterbahnen, weil die Achterbahnen ihre Schlange den
-ganzen Tag über abarbeiten und die Dunkelfahrten nicht. Big Thunder Mountain,
-Hyperspace Mountain und Indiana Jones passen gut in die Mittagsstunden, wenn
-alle anderen essen. Und wenn du zwei Parks buchst, dreh die übliche Reihenfolge
-um und fang in Adventure World an, solange dort noch niemand steht.
+die meisten überhaupt kommen. Lauf bei Öffnung nach Fantasyland zu den
+Dunkelfahrten, die den Vorsprung des frühen Morgens am ganzen Tag nicht wieder
+hergeben. Big Thunder Mountain, Hyperspace Mountain und Indiana Jones passen gut
+in die Mittagsstunden, wenn alle anderen essen. Und wenn du zwei Parks buchst,
+dreh die übliche Reihenfolge um und fang in Adventure World an, wo unsere
+Rope-Drop-Auswertung für Ratatouille und den Tower of Terror die größte Ersparnis
+des frühen Starts ausweist.
 
 ## Praktisches: Anreise, Tickets, Öffnungszeiten
 
@@ -287,10 +304,10 @@ Variante für einen Park und eine für beide, und die Entscheidung triffst du be
 Kauf, nicht am Drehkreuz. Aktuelle Preise für dein Datum stehen auf
 [disneylandparis.com](https://www.disneylandparis.com/).
 
-**Essen.** Beide Parks haben Tischrestaurants mit Reservierung und eine Menge
-Schnellgastronomie dazwischen; im Disneyland Park sind es 35 Betriebe, in
-Adventure World 19. Zur Mittagszeit ist das der Moment, in dem die Schlangen an
-den Bahnen kurz nachgeben.
+**Essen.** Beide Parks haben Tischrestaurants mit Reservierung und viel
+Schnellgastronomie dazwischen. Unsere Datenbank führt 35 Gastronomiebetriebe im
+Disneyland Park und 19 in Adventure World. Zur Mittagszeit ist das der Moment,
+in dem die Schlangen an den Bahnen kurz nachgeben.
 
 ## Häufige Fragen zu Disneyland Paris
 
@@ -333,9 +350,9 @@ teilnehmenden Bahnen gibt es zusätzlich.
 ### Wie komme ich ohne Auto nach Disneyland Paris?
 
 Mit dem Zug bis **Marne-la-Vallée – Chessy**, dem Bahnhof zwischen den beiden
-Parkeingängen. TGV, Eurostar, ICE und die RER A halten dort. Aus Nordrhein-
-Westfalen und dem Rhein-Main-Gebiet sind gut vier Stunden mit einem Umstieg
-realistisch.
+Parkeingängen. TGV, Eurostar, ICE und die RER A halten dort.
+Aus dem Rheinland und dem Rhein-Main-Gebiet sind gut vier Stunden mit einem
+Umstieg realistisch.
 
 ## Zum Weiterlesen
 
@@ -346,13 +363,13 @@ den Außenbahnen heißt:
 
 ```
 
-Wer den Vergleich mit den Parks sucht, die aus Deutschland genauso weit weg
-sind: über das [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) und das
+Wer den Vergleich mit den Parks sucht, die aus Deutschland ähnlich weit weg
+sind: über [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) und über das
 [Efteling](/blog/efteling-disney-der-niederlande) steht hier schon je ein
-eigener Text. Und wenn du in den kommenden zehn Monaten nach Paris fährst, plane
-den Vormittag in Adventure World trotzdem ein. Ohne Crush's Coaster ist das der
-einzige Zeitraum seit 2007, in dem dieser Park an einem normalen Tag in zwei
-Stunden durchfahrbar ist.
+eigener Text. Und wenn deine Reise zwischen jetzt und dem Sommer 2027 liegt:
+Adventure World fährt in diesen Monaten dreizehn Attraktionen statt vierzehn.
+Wer ohnehin geschwankt hat, ob das Zwei-Park-Ticket den Aufpreis wert ist, hat
+gerade ein Argument weniger dafür.
 
 — Patrick
 
@@ -361,11 +378,12 @@ Stunden durchfahrbar ist.
 ### Quellen & Weiterlesen
 
 - Eröffnung, Namensgeschichte, Gelände, Besucherzahlen, Beschäftigte, Zwei-Milliarden-Umbau: [Disneyland Paris auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
-- Fläche, fünf Themenländer, Schlossgestaltung: [Disneyland Park (Paris) auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_(Paris))
+- Fläche, fünf Themenländer, Schlossgestaltung: [Disneyland Park (Paris) auf Wikipedia (EN)](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>)
 - Umbenennung zum 29.03.2026, Marvel Avengers Campus, World of Frozen, Eröffnungsjahre der Bahnen: [Disney Adventure World auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Disney_Adventure_World)
 - Phantom Manor (Handlung, Vincent Price, Umbau 2018/19, Omnimover, 92 Animatronics): [Phantom Manor auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Phantom_Manor)
 - Big Thunder Mountain (Insel, Tunnel, Vekoma, Umbau 2015/16, Mindestgröße): [Big Thunder Mountain Railroad auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Big_Thunder_Mountain_Railroad)
-- Hyperspace Mountain (1995, Kanonenstart, 0–71 km/h in 1,8 s, drei Inversionen, Umthemierungen): [Space Mountain (Disneyland Paris) auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Space_Mountain_(Disneyland_Paris))
+- Hyperspace Mountain (1995, Kanonenstart, 0–71 km/h in 1,8 s, drei Inversionen, Umthemierungen): [Space Mountain (Disneyland Paris) auf Wikipedia (EN)](<https://en.wikipedia.org/wiki/Space_Mountain_(Disneyland_Paris)>)
 - Schließung von Crush's Coaster ab 07.09.2026 und Umfang der Arbeiten: [Disneyland Paris Newsroom](https://news.disneylandparis.com/en/crushs-coaster-refurbishment-beginning-in-september-2026/)
 - Tickets, Öffnungszeiten, Premier Access: [disneylandparis.com](https://www.disneylandparis.com/)
-- Wartezeit- und Crowd-Daten, Betriebszeiten, letzte Live-Zeile von Crush's Coaster: eigene Historie, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und [Disney Adventure World](ref:disney-adventure-world) auf park.fan
+- Pirates of the Caribbean (Fahrzeit der Pariser Fassung), Indiana Jones (30.07.1993, erste Disney-Achterbahn mit Überschlag, Rückwärtsbetrieb 2000–2004, 140 cm): [Pirates of the Caribbean auf Wikipedia (EN)](<https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean_(attraction)>) · [Indiana Jones et le Temple du Péril auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Indiana_Jones_et_le_Temple_du_P%C3%A9ril)
+- Wartezeit- und Crowd-Daten, Betriebszeiten, Gastronomiezahlen, Rope-Drop-Auswertung, letzte Live-Zeile von Crush's Coaster: eigene Historie, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und [Disney Adventure World](ref:disney-adventure-world) auf park.fan

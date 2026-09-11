@@ -45,11 +45,14 @@ test('the long form splits into the slug and the path that disambiguates it', ()
     slug: 'disneyland-park',
     geoPath: 'europe/france/paris',
   });
-  assert.deepEqual(parseWidgetParkRef('/parks/north-america/united-states/anaheim/disneyland-park'), {
-    key: '/parks/north-america/united-states/anaheim/disneyland-park',
-    slug: 'disneyland-park',
-    geoPath: 'north-america/united-states/anaheim',
-  });
+  assert.deepEqual(
+    parseWidgetParkRef('/parks/north-america/united-states/anaheim/disneyland-park'),
+    {
+      key: '/parks/north-america/united-states/anaheim/disneyland-park',
+      slug: 'disneyland-park',
+      geoPath: 'north-america/united-states/anaheim',
+    }
+  );
 });
 
 test('the two Disneyland Parks keep separate keys, so one post may name both', () => {
@@ -90,10 +93,13 @@ test('the short form is unchanged', () => {
 });
 
 test('the long form keeps the park half as the key the prefetch stored', () => {
-  assert.deepEqual(parseWidgetRideRef('/parks/europe/france/paris/disneyland-park/peter-pans-flight'), {
-    parkKey: '/parks/europe/france/paris/disneyland-park',
-    rideSlug: 'peter-pans-flight',
-  });
+  assert.deepEqual(
+    parseWidgetRideRef('/parks/europe/france/paris/disneyland-park/peter-pans-flight'),
+    {
+      parkKey: '/parks/europe/france/paris/disneyland-park',
+      rideSlug: 'peter-pans-flight',
+    }
+  );
 });
 
 test('a park without a ride, or a lone slug, is not a ride reference', () => {
@@ -120,10 +126,7 @@ test('an attraction-widget on the long form indexes parkSlug/rideSlug', () => {
   );
   assert.deepEqual([...parkSlugs], ['disneyland-park']);
   assert.deepEqual([...attractions], ['disneyland-park/phantom-manor']);
-  assert.equal(
-    attractionGeoPaths.get('disneyland-park/phantom-manor'),
-    'europe/france/paris'
-  );
+  assert.equal(attractionGeoPaths.get('disneyland-park/phantom-manor'), 'europe/france/paris');
 });
 
 test('a bare fence still indexes exactly what it always did', () => {
