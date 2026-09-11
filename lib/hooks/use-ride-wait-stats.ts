@@ -23,7 +23,12 @@ export interface RideWaitPark extends ParkStatsTarget {
  * MINUTES are what drifts daily and what this hook exists to stop anyone from typing by hand.
  */
 export interface RideWaitTarget {
-  parkSlug: string;
+  /**
+   * The park's `basePath`, not its slug: a bare park slug is not unique (`disneyland-park` is
+   * Paris and Anaheim), so a table naming a ride in each would have drawn both rows from
+   * whichever park was resolved first — same name, same href, the wrong medians.
+   */
+  parkKey: string;
   rideSlug: string;
   /** Overrides the API's ride name. Use for a park that publishes "WODAN - Timburcoaster". */
   label?: string;
@@ -121,13 +126,15 @@ export function useRideWaitStats(
   const depth: StatsDepth = options.mode === 'rides' ? 'deep' : 'default';
   const { stats, isPending } = useParkStatsQueries(parks, depth);
 
-  const byParkSlug = new Map(
-    parks.map((p, i) => [p.parkSlug, { park: p, stats: stats[i] ?? null }])
+  // Keyed by `basePath` (`/parks/<continent>/<country>/<city>/<park>`), which is unique, rather
+  // than by the park slug, which is not.
+  const byParkKey = new Map(
+    parks.map((p, i) => [p.basePath, { park: p, stats: stats[i] ?? null }])
   );
 
   let rows: RideWaitRow[];
   if (options.mode === 'park') {
-    const entry = parks[0] ? byParkSlug.get(parks[0].parkSlug) : undefined;
+    const entry = parks[0] ? byParkKey.get(parks[0].basePath) : undefined;
     rows = (entry?.stats?.topAttractions ?? []).slice(0, options.limit).map((stat) =>
       toRow(
         `${entry!.park.parkSlug}/${stat.attractionSlug}`,
@@ -146,9 +153,9 @@ export function useRideWaitStats(
     // and a table that re-sorts itself when a median moves by a minute breaks that sentence
     // without touching a word of it.
     rows = options.targets.flatMap((target) => {
-      const entry = byParkSlug.get(target.parkSlug);
+      const entry = byParkKey.get(target.parkKey);
       if (!entry) return [];
-      const key = `${target.parkSlug}/${target.rideSlug}`;
+      const key = `${target.parkKey}/${target.rideSlug}`;
       return [
         toRow(
           key,

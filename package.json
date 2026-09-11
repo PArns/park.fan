@@ -84,6 +84,7 @@
     "test:photo-backlog": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-photo-backlog.mjs",
     "test:media-references": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-references.mjs",
     "test:blog-image-sidecar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-image-sidecar.mjs",
+    "test:widget-park-ref": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-widget-park-ref.mjs",
     "audit:media": "node scripts/audit-media.mjs",
     "check:media-urls": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-media-urls.mjs",
     "test:media-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-session.mjs",

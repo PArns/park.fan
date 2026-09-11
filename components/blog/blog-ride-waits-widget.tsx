@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { RideWaitTable, type RideWaitTableLabels } from '@/components/parks/ride-wait-table';
-import { parkGeoPath } from '@/lib/blog/widget-park';
+import { parkGeoPath, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import type { RideWaitPark, RideWaitTarget } from '@/lib/hooks/use-ride-wait-stats';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -44,16 +44,22 @@ function parseColumns(raw: string | undefined): Column[] | undefined {
   return picked.length > 0 ? picked : undefined;
 }
 
-/** `parkSlug/rideSlug|Label|Type` — the pipe segments are optional and positional. */
+/**
+ * `parkSlug/rideSlug|Label|Type` — the pipe segments are optional and positional. The park half
+ * also takes the long `continent/country/city/park` form, for the one slug in the catalogue that
+ * names two parks (`disneyland-park`, Paris and Anaheim).
+ *
+ * `parkKey` is the park exactly as the entry wrote it, which is the key the prefetch in
+ * `blog-content.tsx` stored the resolved park under.
+ */
 function parseRide(
   raw: string
-): { parkSlug: string; rideSlug: string; label?: string; type?: string } | null {
+): { parkKey: string; rideSlug: string; label?: string; type?: string } | null {
   const [ref, label, type] = raw.split('|').map((part) => part.trim());
-  const [parkSlug, rideSlug] = (ref ?? '').split('/').map((part) => part.trim());
-  if (!parkSlug || !rideSlug) return null;
+  const parsed = parseWidgetRideRef(ref ?? '');
+  if (!parsed) return null;
   return {
-    parkSlug,
-    rideSlug,
+    ...parsed,
     ...(label ? { label } : {}),
     ...(type ? { type } : {}),
   };
@@ -130,20 +136,24 @@ export async function BlogRideWaitsWidget({
     const highlighted = (highlight ?? '').trim();
 
     for (const ride of parsed) {
-      const park = parks.get(ride.parkSlug) ?? null;
+      const park = parks.get(ride.parkKey) ?? null;
       const entry = park ? toRideWaitPark(park) : null;
       if (!entry) {
-        missing.add(ride.parkSlug);
+        missing.add(ride.parkKey);
         continue;
       }
-      // One fetch per park however many of its rides the table names.
-      if (!resolved.some((p) => p.parkSlug === entry.parkSlug)) resolved.push(entry);
+      // One fetch per park however many of its rides the table names. Deduplicated on the geo
+      // path, not the slug: `disneyland-park` is Paris and Anaheim, and collapsing those two
+      // would draw one park's rides from the other park's ranking.
+      if (!resolved.some((p) => p.basePath === entry.basePath)) resolved.push(entry);
       targets.push({
-        parkSlug: entry.parkSlug,
+        parkKey: entry.basePath,
         rideSlug: ride.rideSlug,
         ...(ride.label ? { label: ride.label } : {}),
         ...(ride.type ? { type: ride.type } : {}),
-        highlight: highlighted === `${ride.parkSlug}/${ride.rideSlug}`,
+        // `highlight=` is matched against the ref as the post wrote it, so a table using the long
+        // park form highlights with the long form too.
+        highlight: highlighted === `${ride.parkKey}/${ride.rideSlug}`,
       });
     }
 
