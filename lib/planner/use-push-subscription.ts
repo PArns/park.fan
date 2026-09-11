@@ -124,11 +124,12 @@ export function usePushSubscription() {
       // it does not have, and the order matters for the failure too: a plan
       // stored with no subscription is a row that expires, while a subscription
       // with no plan is a switch that is on and does nothing.
-      const tripId = await syncTrip();
-      if (!tripId) {
+      const stored = await syncTrip();
+      if (!stored.ok) {
         setState('off');
         return;
       }
+      const tripId = stored.id;
 
       // Registered only now, not on every page load: a worker installed for
       // everybody would claim scope over the whole origin for a feature almost

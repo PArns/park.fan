@@ -1,5 +1,6 @@
 'use client';
 
+import { classifyWriteFailure, type HttpWriteError } from '../api/write-failure';
 import { plannerStore } from './store';
 import type { PlannerState } from './types';
 
@@ -51,58 +52,107 @@ function payloadOf(state: PlannerState): Record<string, unknown> {
 }
 
 /**
+ * Whether the plan reached the server, and why not where it did not.
+ *
+ * The classes are the shared ones (`@/lib/api/write-failure`), minus the 404:
+ * a trip that is gone is not a failure this function reports, it is the one
+ * case that starts a new trip — see `syncTrip`.
+ */
+export type TripSyncResult =
+  | { ok: true; id: string }
+  | { ok: false; error: Exclude<HttpWriteError, { reason: 'not-found' }> };
+
+/**
  * Push the current plan to the server, creating a trip the first time.
  *
- * Returns the trip id, or `null` when the plan could not be stored — the caller
- * must treat that as "push is not on", because a subscription against a trip
- * that does not exist can never produce a notification.
+ * **Only a 404 starts a new trip.** The update used to read `response.ok` and
+ * nothing else, so a 500, a 429 or a dropped connection all meant the same as
+ * an expired trip: throw the id away and POST a new one. That is wrong twice
+ * over, and neither shows up on screen. The stored subscription still names the
+ * OLD trip id — it was written once, when push was switched on — so the
+ * notification job keeps reading the plan as it stood at the moment of the
+ * failure, while every later edit goes to a row nobody reads; and switching push
+ * off then sends its scoped DELETE for the new id, leaving the subscription's
+ * trip half where it was. Each transient failure also leaves an orphan row
+ * behind for the full 400-day TTL.
  *
- * A 404 on the update path is not an error to report: a trip expires, and a
- * plan somebody comes back to after a year should quietly get a new id rather
- * than an apology.
+ * So the id survives everything the server might be having a bad minute about,
+ * and only the one answer that means "there is no such trip" replaces it:
+ *
+ * | Answer          | What happens                                   |
+ * | --------------- | ---------------------------------------------- |
+ * | 200             | the id stands, plan stored                      |
+ * | 404             | the trip is gone — id dropped, a new one POSTed |
+ * | 400             | id kept, `invalid` — a POST of the same payload would be refused in the same breath |
+ * | 429             | id kept, `rate-limited` with the limiter's window |
+ * | 5xx / no answer | id kept, `network`                              |
+ *
+ * A 404 is not an error to report either: a trip expires, and a plan somebody
+ * comes back to after a year should quietly get a new id rather than an apology.
  */
-export async function syncTrip(): Promise<string | null> {
+export async function syncTrip(): Promise<TripSyncResult> {
   const state = plannerStore.getSnapshot();
   const payload = payloadOf(state);
   const existing = getTripId();
 
   if (existing) {
     const updated = await put(existing, payload);
-    if (updated) return existing;
-    // Gone or expired. Fall through and make a new one.
+    if (updated.ok) return { ok: true, id: existing };
+    if (updated.error.reason !== 'not-found') return { ok: false, error: updated.error };
+    // Gone or expired, and the server said so. Dropping the id here rather
+    // than after the POST is the same "the mirror follows the server" rule the
+    // push removals keep: this local id is confirmed dead either way, and
+    // leaving it would only send the next sync into the same 404.
     setTripId(null);
   }
 
   const created = await post(payload);
-  if (created) setTripId(created);
+  if (!created.ok) return created;
+  setTripId(created.id);
   return created;
 }
 
-async function put(id: string, payload: Record<string, unknown>): Promise<boolean> {
+async function put(
+  id: string,
+  payload: Record<string, unknown>
+): Promise<{ ok: true } | { ok: false; error: HttpWriteError }> {
   try {
     const response = await fetch(`/api/trips/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ payload }),
     });
-    return response.ok;
+    if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
+    return { ok: true };
   } catch {
-    return false;
+    return { ok: false, error: { reason: 'network' } };
   }
 }
 
-async function post(payload: Record<string, unknown>): Promise<string | null> {
+/**
+ * `POST /api/trips` has no 404 of its own — there is no id in it to miss — so a
+ * 404 here means the route itself is not answering, which belongs in the same
+ * "our end, try later" bucket as a 502 rather than being reported as a payload
+ * the visitor could fix. A body without a usable id lands there too: the write
+ * may well have landed, but this browser cannot name what it landed as, which
+ * is the same dead end as no answer at all.
+ */
+async function post(payload: Record<string, unknown>): Promise<TripSyncResult> {
   try {
     const response = await fetch('/api/trips', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ payload }),
     });
-    if (!response.ok) return null;
-    const data = (await response.json()) as { id?: unknown };
-    return typeof data.id === 'string' ? data.id : null;
+    if (!response.ok) {
+      const error = await classifyWriteFailure(response);
+      return { ok: false, error: error.reason === 'not-found' ? { reason: 'network' } : error };
+    }
+    const data = (await response.json().catch(() => null)) as { id?: unknown } | null;
+    if (typeof data?.id !== 'string') return { ok: false, error: { reason: 'network' } };
+    return { ok: true, id: data.id };
   } catch {
-    return null;
+    return { ok: false, error: { reason: 'network' } };
   }
 }
 
