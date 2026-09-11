@@ -422,8 +422,19 @@ the same colour as a ring. The fill rises to `/40` to read as a body, not to car
 Printing „typical–busy" above each bar instead was measured and rejected: **217 of the catalogue's
 5,942 ride-days** round to seven characters („100–145"), about 40 px of 10 px tabular text in a
 column that is ~36 px wide at a 360 px viewport — and the seven columns are `flex-1`, so the row
-would run past the card rather than wrap. The number keeps the Voll tone, the bar now visibly
-reaches it, and the `title` carries the pair.
+would run past the card rather than wrap. The bar now visibly reaches its number, and the `title`
+carries the pair.
+
+**But the colour rank cannot name that number, and for a while the code claimed it did.** The
+comment above it read „the Voll value, in the Voll tone — the rank above is what says which of the
+two readings it is", and the browser disagrees: `text-muted-foreground` computes to
+`lab(66.13 0 0)` in dark and `lab(48.50 0 0)` in light. **a = b = 0** — the figure is achromatic
+and takes no part in a rank whose two members are a solid accent and a washed one. Nor does the
+`title` settle it: it predates the change, so it cannot be what a criterion written after the
+change is met by, and a phone has no hover. So the seven numbers get a **caption of their own**
+above the row — the legend's Voll swatch plus „Zahlen: Voll" — which names the rank in the same two
+ways the rest of the card does. It carries the swatch rather than the word alone because a lone
+label at the left edge of a seven-column row reads as the label of the first column.
 
 ### The ride's calendar cell is `ParkCalendarDay` plus a sparkline
 

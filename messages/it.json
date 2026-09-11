@@ -1231,6 +1231,7 @@
       "typical": "Normale",
       "busy": "Pieno",
       "min": "min",
+      "barNumbers": "Numeri: {label}",
       "peak": "Record {value} min · {date}"
     },
     "sectionLiveNow": "Tempo di attesa adesso",

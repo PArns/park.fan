@@ -1231,6 +1231,7 @@
       "typical": "Normaal",
       "busy": "Druk",
       "min": "min",
+      "barNumbers": "Getallen: {label}",
       "peak": "Record {value} min · {date}"
     },
     "sectionLiveNow": "Wachttijd op dit moment",

@@ -146,6 +146,22 @@ export function AttractionTypicalWaits({
         />
       </div>
 
+      {/* Which of the two readings the row of numbers is. It was the card's one unnamed figure:
+          the tiles label both of theirs, the bars have the legend, and the seven numbers above
+          them had only their colour to go by — which says nothing, because `text-muted-foreground`
+          computes to lab(66.13 0 0) in dark and lab(48.50 0 0) in light, i.e. achromatic, and
+          therefore sits outside the Normal/Voll rank entirely. Each column's `title` carries the
+          pair, but only for a reader whose pointer can hover. The swatch is the legend's own, so
+          the caption names the rank in the same two ways the rest of the card does, and a lone
+          label at the left edge of a seven-column row would read as the Monday column's. */}
+      <p className="text-muted-foreground mb-1 flex items-center gap-1.5 text-[10px] leading-none">
+        <span
+          className={cn(BUSY_FILL, 'ring-primary h-2 w-2 shrink-0 rounded-sm ring-1')}
+          aria-hidden="true"
+        />
+        {t('barNumbers', { label: t('busy') })}
+      </p>
+
       {/* Per-day breakdown */}
       <div className="flex h-28 items-stretch gap-1.5">
         {DISPLAY_ORDER.map((dow) => {
@@ -161,12 +177,13 @@ export function AttractionTypicalWaits({
               : dayLabel(dow, locale);
           return (
             <div key={dow} className="flex flex-1 flex-col items-center gap-1" title={title}>
-              {/* The Voll value, in the Voll tone — the rank above is what says which of the two
-                readings it is, and the `title` gives the pair. Printing „typical–busy" here
-                instead was measured and rejected: 217 of the catalogue's 5,942 ride-days round
-                to seven characters („100–145"), which is ~40 px of tabular 10 px text in a column
-                that is ~36 px wide at a 360 px viewport, and the seven columns are `flex-1`, so
-                the overflow would push the row past the card rather than wrap. */}
+              {/* The Voll value. Which of the two it is comes from the caption above the row, not
+                from this figure's colour — it is `text-muted-foreground` and therefore achromatic.
+                Printing „typical–busy" here instead was measured and rejected: 217 of the
+                catalogue's 5,942 ride-days round to seven characters („100–145"), which is ~40 px
+                of tabular 10 px text in a column that is ~36 px wide at a 360 px viewport, and the
+                seven columns are `flex-1`, so the overflow would push the row past the card rather
+                than wrap. */}
               <span className="text-muted-foreground text-[10px] leading-none tabular-nums">
                 {busy != null ? busy : ''}
               </span>
