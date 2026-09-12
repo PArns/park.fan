@@ -1,0 +1,458 @@
+/**
+ * `/game?showcase=buildings` — a street of buildings, plus the loose kit they are bashed out of.
+ *
+ * **The eighth building is the extensibility gate, in the frame rather than in a paragraph.** A pack
+ * called `buildings-showcase` is registered at runtime with an inn nothing in `lib/game/buildings`
+ * anticipated: three masses, of which the upper one is LARGER than the one under it and sits on top
+ * of it — a jettied first floor, the thing a Fachwerk street actually does — and a wing swung round
+ * thirty-five degrees off the block it joins. No code here knows the pack exists and nothing switches
+ * on its id. If a critic wants to know whether a new building is a manifest entry, that inn is in the
+ * picture.
+ *
+ * **They are placed as ENTITIES, never by calling the api.** `ctx.dispatch('entity:add', …)` is what
+ * a build tool does, so core mirrors the command into `world.entities`, announces it to every main
+ * handle and replays it when the worker starts. A showcase that calls the renderer directly is a
+ * showcase of a code path the game does not use.
+ *
+ * The pack is registered BEFORE the worker starts (`host.boot` stages the showcase at step 6 and
+ * sends `packs: [...registry.packs()]` at step 7), which is what makes a runtime pack work at all.
+ *
+ * **The layout is built round the three fallback cameras**, because a composition none of them frames
+ * is a composition nobody will see. `ground` stands on the gate axis 105 m in, so the street runs
+ * north from there with its terrace on one side and its market hall on the other; `close` and
+ * `overview` anchor on the centroid of the `building` entities, so the whole set sits round z ≈ 10
+ * rather than strung out over 200 m. `shops` strung twelve buildings along 220 m and its own report
+ * records that the overview frame got nothing.
+ */
+
+import type { ArcRotateCamera } from '@babylonjs/core/Cameras/arcRotateCamera';
+import type { Scene } from '@babylonjs/core/scene';
+import type { Entity, MainContext, TerrainData } from '../core/types';
+import { nextEntityId } from '../core/world';
+import { LAYER_CONCRETE, LAYER_GRASS, LAYER_MEADOW } from '../terrain';
+import type { BuildingsMainApi } from './main';
+
+interface PathsLike {
+  create(spec: {
+    form: 'path' | 'plaza' | 'queue';
+    style: string;
+    points: number[];
+    width?: number;
+    entrance?: boolean;
+  }): string;
+}
+
+/**
+ * A pack of one building, in JSON, using nothing but what a manifest may say.
+ *
+ * The jetty is the point: `base` puts the first floor at the height of the ground floor's head, and
+ * its `size` is a metre wider in both directions, so it oversails. Nothing in `build.ts` has a
+ * concept of an overhang — it draws each mass where the record puts it — which is exactly why this
+ * works and why it is worth photographing.
+ */
+const SHOWCASE_PACK = {
+  id: 'buildings-showcase',
+  version: 1,
+  name: { en: 'Buildings showcase', de: 'Gebäude-Schaufenster' },
+  requires: [],
+  buildingStyles: [
+    {
+      id: 'inn-timber',
+      name: { en: 'Inn timber', de: 'Gasthausfachwerk' },
+      wall: 'render',
+      plinth: 'rubble',
+      roof: 'pantile',
+      palette: {
+        wall: '#e9dfc8',
+        plinth: '#8b8577',
+        roof: '#9d5233',
+        trim: '#5b3a24',
+        joinery: '#5b3a24',
+        metal: '#43403a',
+        glass: '#28353d',
+        lit: '#ffc981',
+        sign: '#b8452f',
+      },
+      trim: {
+        cornice: 0.22,
+        stringCourse: 0.34,
+        quoins: false,
+        reveal: 0.14,
+        sill: 0.13,
+        corniceOut: 0.5,
+      },
+      glazing: { mullions: 3, transoms: 3 },
+    },
+  ],
+  buildingBlueprints: [
+    {
+      id: 'old-inn',
+      name: { en: 'The old inn', de: 'Gasthaus' },
+      style: 'inn-timber',
+      masses: [
+        {
+          id: 'ground',
+          size: [12, 9],
+          storeys: 1,
+          storeyHeight: 3.2,
+          plinth: 0.5,
+          bay: 3.0,
+          facades: { all: 'w*', front: 'w D w' },
+          roof: { form: 'flat', parapet: 0 },
+        },
+        {
+          id: 'jetty',
+          base: 3.7,
+          size: [13.1, 10.1],
+          storeys: 2,
+          storeyHeight: 2.9,
+          plinth: 0,
+          bay: 2.6,
+          facades: { all: 'w*', front: 'w* o w*' },
+          roof: { form: 'gable', pitch: 52, eaves: 0.7, ridge: 'x', dormers: 2, chimneys: 2 },
+        },
+        {
+          id: 'wing',
+          at: [10.5, -7],
+          yaw: 35,
+          size: [9, 7],
+          storeys: 2,
+          storeyHeight: 3.0,
+          plinth: 0.5,
+          bay: 3.0,
+          facades: { all: 'w*', front: 'w d w' },
+          roof: { form: 'gable', pitch: 48, eaves: 0.6, ridge: 'x', chimneys: 1 },
+        },
+      ],
+      ground: { apron: 2.0, steps: true, kerb: false },
+      night: { litFraction: 0.6, lanterns: true },
+      sign: { band: 0.8, width: 0.3, color: '#e8b04a' },
+    },
+  ],
+  buildings: [
+    {
+      id: 'old-inn',
+      name: { en: 'The old inn', de: 'Gasthaus' },
+      category: 'blueprint',
+      size: [22.0, 15.5, 18.0],
+      cost: 2800000,
+      procedural: 'old-inn',
+    },
+  ],
+  icons: { 'old-inn': 'lucide:beer' },
+  /**
+   * The cameras this showcase is judged through, replaced in place.
+   *
+   * `cameraPresets` is the `camera` module's own pack category and "a pack naming a built-in id
+   * replaces it in place" is its documented contract, so this is a manifest edit rather than a reach
+   * into another module. It is in the SHOWCASE pack and not in `pack.ts` on purpose: the demo park's
+   * `overview` belongs to the whole park and this one has ten buildings in a hundred metres.
+   *
+   * The built-in `overview` is a fixed 400 m, which on this scene put the whole street in a 90-pixel
+   * smudge in the middle of the frame — measured on `.game-render/showcase-buildings/0900-overview.png`
+   * from the first round. `frameRadius: 'auto'` fits the content instead. `kit`, `hall` and `gate`
+   * are inspection cameras: a kit piece is 4 m and no preset in the game gets close enough to judge
+   * one.
+   */
+  cameraPresets: [
+    // Explicit targets rather than the built-in anchors, and that is the difference between framing
+    // a park and framing a street. `kinds:building` puts the anchor on the centroid of twenty-three
+    // entities, ten of which are 4 m kit samples, and `frameRadius: 'auto'` then fits a 110 m circle
+    // — measured on the first round's `0900-overview.png`, where the whole set was a smudge a
+    // hundred pixels wide. A showcase knows where its own street is.
+    /**
+     * Framed against the HUD, not against the world.
+     *
+     * The round-2 preset (`target [0, 7, 4]`, distance 132) put the left 40 % of the frame on empty
+     * lawn and the kit row — this module's own open item — behind the panel that covers the right
+     * quarter of every harness shot. Nothing about the buildings had changed; the camera was
+     * pointing at the wrong part of them.
+     */
+    { id: 'overview', target: [14, 7, 20], bearing: 36, pitch: 25, distance: 116 },
+    // The clock tower from the plaza, and one building rather than a roofscape. Anchored on the
+    // centroid of the `building` entities the camera ends up over the terrace at 20 m, which is
+    // above their ridges: two rounds of `close` came back as a picture of slate.
+    { id: 'close', target: [-22, 7, -12], bearing: 125, pitch: 9, distance: 44 },
+    // Two metres from a facade: the only frame in the set where a brick, a sash bar and a sill are
+    // each more than a pixel, and therefore the only one that can answer whether they are there.
+    { id: 'facade', target: [-16, 6, 46], bearing: 92, pitch: 5, distance: 17 },
+    /**
+     * One aisle each, three quarters on, because `kit` down the middle photographs the street.
+     *
+     * The ten pieces stand in two rows of five at x = ±8.5, and a camera on the centreline looking
+     * north puts the 10 m promenade through the middle of the frame with a row receding along each
+     * edge: `1200-kit.png` has been a picture of paving with two samples in it for three rounds, and
+     * five of the ten are outside the frame entirely. These two look ALONG one aisle from 15° off
+     * its axis, so the near piece is three-quarters on and the four behind it step back in the same
+     * pose — the arrangement a merchant's yard has for the same reason, which is that you can see
+     * what is for sale.
+     *
+     * **The same bearing for both, and it is not a typo.** A preset is a compass bearing, and
+     * `bearingToAlpha` puts the camera at `target − r·sinβ·(sin b, −cos b)`: at `bearing: 20` and
+     * `distance: 34` round 3's east camera sat at x ≈ −2.8, west of the promenade centreline,
+     * looking back across 10 m of paving at the row it was named after — its own frame shows that
+     * and its own note claims the opposite. Both take 345 now, which stands each camera 9.6 m east
+     * of its own target and 36 m south of it, 22° up: the row runs away from the near corner and
+     * all five pieces are in frame between 26 and 49 m, a size ratio of 1.9. Two other arrangements
+     * were shot and are worse — mirrored bearings put the WEST camera at x ≈ −19, which is inside a
+     * terrace, and a 26 m stand-off fills two thirds of the frame with the nearest piece's back.
+     */
+    { id: 'kit', target: [-8.5, 2.4, 12], bearing: 340, pitch: 10, distance: 26 },
+    { id: 'kit-east', target: [8.5, 2.4, 15], bearing: 14, pitch: 7, distance: 23 },
+    { id: 'hall', target: [0, 8, -46], bearing: 8, pitch: 12, distance: 52 },
+    { id: 'gate', target: [-19, 5, 20], bearing: 96, pitch: 11, distance: 40 },
+    // The extensibility exhibit, square on to its front: the jettied first floor oversailing the
+    // ground floor, and the wing swung 35° off the block, both of them nothing but JSON.
+    { id: 'inn', target: [32, 8, 68], bearing: 300, pitch: 13, distance: 44 },
+    { id: 'market', target: [26, 7, 18], bearing: 265, pitch: 14, distance: 48 },
+    { id: 'ticket', target: [-25, 7, 20], bearing: 85, pitch: 14, distance: 48 },
+    { id: 'rot', target: [24, 8, -18], bearing: 262, pitch: 12, distance: 38 },
+  ],
+} as const;
+
+/** Where each blueprint stands. `yaw` turns its `+z` front towards the street. */
+const PLOTS: Array<{ item: string; pack: string; x: number; z: number; yaw: number }> = [
+  // The vista stop at the north end, square on to the camera.
+  { pack: 'parkfan-architecture', item: 'grand-pavilion', x: 0, z: -52, yaw: 0 },
+  // West side, facing east.
+  { pack: 'parkfan-architecture', item: 'ticket-hall', x: -25, z: 20, yaw: Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'clock-tower', x: -23, z: -14, yaw: Math.PI / 2 },
+  // Two shops and a house, not three houses. `g` — the shopfront bay — had been in the pattern
+  // language since round 1 with nothing using it, so a park's main street was a row of front doors
+  // and domestic sashes with a sign hung over one of them.
+  { pack: 'parkfan-architecture', item: 'shop-terrace', x: -16, z: 56, yaw: Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'shop-terrace', x: -16, z: 46, yaw: Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'terrace-house', x: -16, z: 36, yaw: Math.PI / 2 },
+  // The east side of the street's lower half, which `overview` was photographing as lawn.
+  { pack: 'parkfan-architecture', item: 'shop-terrace', x: 17, z: 74, yaw: -Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'terrace-house', x: 17, z: 64, yaw: -Math.PI / 2 },
+  // East side, facing west.
+  { pack: 'parkfan-architecture', item: 'market-hall', x: 26, z: 18, yaw: -Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'rotunda', x: 24, z: -18, yaw: -Math.PI / 2 },
+  { pack: 'parkfan-architecture', item: 'guest-services', x: 17, z: 52, yaw: -Math.PI / 2 },
+  // Off the street on its own plot at the north-east corner, because it is the exhibit and the
+  // street is 34 m wide: from the west every east-side building is behind the terrace, and three
+  // attempts at a three-quarter view of this one came back with a brick wall in the near third.
+  { pack: 'buildings-showcase', item: 'old-inn', x: 34, z: 68, yaw: -Math.PI / 2 },
+];
+
+export async function stageBuildingsShowcase(ctx: MainContext): Promise<void> {
+  try {
+    ctx.registry.registerPack(SHOWCASE_PACK);
+  } catch (error) {
+    // A duplicate id means the showcase has already staged once in this registry; everything below
+    // still works, and anything else is worth seeing in the console.
+    console.warn('[game/buildings] showcase pack not registered', error);
+  }
+
+  sculpt(ctx.world.terrain as TerrainData);
+  ctx.events.emit('terrain:changed', { rect: null });
+
+  const paths = ctx.module<PathsLike>('paths');
+  if (paths) {
+    paths.create({
+      form: 'path',
+      style: 'promenade',
+      width: 10,
+      entrance: true,
+      points: [0, 150, 0, 110, 0, 70, 0, 30, 0, -10, 0, -34],
+    });
+    paths.create({ form: 'plaza', style: 'pavers', points: polygon(0, -34, 17, 12) });
+    paths.create({
+      form: 'path',
+      style: 'pavers',
+      width: 6,
+      points: [-14, 20, -6, 20, 6, 20, 14, 20],
+    });
+    /**
+     * A paved aisle under each half of the kit row, so the ten pieces stand in a builder's merchant
+     * and not in grass.
+     *
+     * Each piece already brings its own apron, and ten aprons scattered on a lawn read as ten
+     * dropped objects — which is what "kit pieces are ten slabs on a lawn" has meant for three
+     * rounds.
+     *
+     * **Two aisles rather than one rectangle, and the reason is a photograph.** The first attempt
+     * was a single `plaza` from [-13.5, -9] to [13.5, 29], which is the shape the eye wants and lays
+     * a second surface straight over the 10 m promenade running up the middle of it. A plaza cuts a
+     * path that crosses it (`paths/layout.ts` `plazaClip`) and this one did not: `1200-kit.png` came
+     * back with the promenade's grey slabs and the yard's clay pavers interleaved in torn patches
+     * down the centre of the frame, the two surfaces coplanar and fighting for the depth buffer.
+     * Path against path clips correctly — the 6 m cross walk above has run through the promenade
+     * since round 2 with no seam — so the yard is two `path` strips flanking it, each 6 m over a row
+     * of 4 m pieces standing on their centreline at x = ±8.5, with 0.5 m of grass either side of the
+     * promenade's kerb. Content, and it stays out of the depth fight rather than winning it.
+     */
+    for (const side of [-1, 1]) {
+      paths.create({
+        form: 'path',
+        style: 'pavers',
+        width: 6,
+        points: [side * 8.5, -8, side * 8.5, 10, side * 8.5, 28],
+      });
+    }
+  } else {
+    console.warn('[game/buildings] showcase: no paths module — the street will be bare ground');
+  }
+
+  for (const plot of PLOTS) {
+    const found = ctx.registry.find('buildings', plot.pack, plot.item);
+    if (!found) {
+      console.warn(`[game/buildings] showcase: no item "${plot.pack}:${plot.item}"`);
+      continue;
+    }
+    const entity: Entity = {
+      id: nextEntityId(ctx.world, 'building'),
+      kind: 'building',
+      pack: plot.pack,
+      item: plot.item,
+      // Y stays 0 so the renderer samples the terrain — the path a build tool that has not sampled
+      // it takes, and therefore the one worth exercising.
+      position: [plot.x, 0, plot.z],
+      yaw: plot.yaw,
+    };
+    ctx.dispatch('entity:add', entity);
+  }
+
+  /**
+   * The loose kit, standing along the promenade like a builder's merchant laid it out.
+   *
+   * These are the ten `buildings` entries the two bundled packs already ship — a brick wall, a
+   * plaster wall, an arched window, a double door, a slate roof, a timber floor, a stone column, a
+   * concrete wall, a flat roof, a panorama window — none of which this module names anywhere. They
+   * are here because "kit-bash" is a claim about pieces, and a claim about pieces should be
+   * photographable one piece at a time.
+   */
+  const kit = ctx.registry
+    .items('buildings')
+    .filter((item) => (item.def as { category: string }).category !== 'blueprint');
+  /**
+   * The pieces with something IN them stand at the near end, and this is why the row never
+   * photographed.
+   *
+   * Registration order put `wall-brick` and `wall-plaster` first, which parked a featureless 4 × 4
+   * slab twelve metres in front of each camera with the other four behind it. Five arrangements of
+   * the camera were shot before the obvious reading: the framing was never the whole problem, the
+   * running order was. A blank wall is a perfectly good sample and it is also the one sample that
+   * says nothing from behind, so it goes to the back where it is a backdrop for the rest.
+   */
+  const dull = (id: string): number =>
+    id === 'wall' || /wall-(brick|plaster|concrete)/.test(id) ? 1 : 0;
+  kit.sort(
+    (a, b) =>
+      dull(
+        (a.def as { procedural?: string; id: string }).procedural ?? (a.def as { id: string }).id
+      ) -
+      dull(
+        (b.def as { procedural?: string; id: string }).procedural ?? (b.def as { id: string }).id
+      )
+  );
+  kit.forEach((item, i) => {
+    const side = i % 2 === 0 ? -1 : 1;
+    const step = Math.floor(i / 2);
+    const entity: Entity = {
+      id: nextEntityId(ctx.world, 'building'),
+      kind: 'building',
+      pack: item.pack,
+      item: (item.def as { id: string }).id,
+      position: [side * 8.5, 0, 24 - step * 6],
+      /**
+       * Turned 34° in towards the promenade, because the promenade is the only place a camera can
+       * stand.
+       *
+       * Round 3 left them square to the street and moved the CAMERA off each aisle's axis. Round 4
+       * shot five arrangements before accepting why none of them can work: **there is nowhere else
+       * to stand.** The ticket hall reaches x = −9.3 between z = 10 and z = 30 and the market hall
+       * reaches x = 13.9 between z = −2 and z = 38, so each aisle has a building hard against its
+       * far side; a camera east of the east row stands inside the ticket hall's colonnade
+       * (`.game-render/buildings-r4-insp4/1200-kit-east.png` is eight columns and no kit at all)
+       * and one west of the west row stands inside a terrace. Every camera is on the 10 m
+       * promenade, and from there a rank of 4 m slabs set square to it is five edges in a line.
+       *
+       * So the pieces turn and the camera stays put. 19.5° is `atan2(8.5, 24)`, the angle from the
+       * middle of a rank to a camera on the centreline 24 m south of it, so the near piece is 15°
+       * off square and the far one 6°: three-quarters on down the whole rank, and a visitor walking
+       * up the street still meets their fronts.
+       */
+      yaw: side * -0.34,
+    };
+    ctx.dispatch('entity:add', entity);
+  });
+
+  // Printed rather than asserted: the harness reads the console, and a blueprint that stops
+  // resolving after a manifest change should say so in the run that broke it.
+  const api = ctx.module<BuildingsMainApi>('buildings');
+  for (const entry of api?.catalogue() ?? []) {
+    const what = entry.blueprint
+      ? `blueprint ${entry.blueprint.id} · ${entry.blueprint.masses.length} masses`
+      : `piece ${entry.piece}`;
+    console.info(
+      `[game/buildings] ${entry.key}: ${what} · style ${entry.style.id} (${entry.source}) · ` +
+        `${entry.size[0]} × ${entry.size[1]} × ${entry.size[2]} m`
+    );
+  }
+  const stats = api?.stats();
+  if (stats) {
+    console.info(
+      `[game/buildings] ${stats.buildings} placed · ${stats.batches} batches · ` +
+        `${stats.drawnMeshes} draw calls · ${stats.triangles} triangles · ` +
+        `${stats.windows} windows (${stats.litWindows} lit) · atlas ${stats.atlasMs.toFixed(0)} ms · ` +
+        `build ${stats.buildMs.toFixed(0)} ms`
+    );
+  }
+
+  const scene = ctx.scene as Scene;
+  const camera = scene.activeCamera as ArcRotateCamera | null;
+  if (camera && 'alpha' in camera) {
+    camera.alpha = -Math.PI / 2.35;
+    camera.beta = 1.16;
+    camera.radius = 96;
+    camera.target.set(0, 6, 6);
+  }
+}
+
+function polygon(cx: number, cz: number, r: number, corners: number): number[] {
+  const out: number[] = [];
+  for (let i = 0; i < corners; i++) {
+    const a = (i / corners) * Math.PI * 2 + Math.PI / corners;
+    out.push(cx + Math.cos(a) * r, cz + Math.sin(a) * r);
+  }
+  return out;
+}
+
+/**
+ * A street is flat and the land round it is not, and that is the point of sculpting rather than
+ * leaving it.
+ *
+ * A showcase world arrives from `createWorld` with every height at zero, so a building on a plane
+ * proves nothing about a building on ground. The relief is gentle — a metre of fall over the length
+ * of the street and a slow roll across it — because what the frame has to show is a plinth meeting
+ * ground that is not level, which is the whole reason the plinth starts 0.7 m below grade.
+ */
+function sculpt(terrain: TerrainData): void {
+  const n = terrain.resolution;
+  const w = n + 1;
+  const half = terrain.size / 2;
+  for (let j = 0; j < w; j++) {
+    for (let i = 0; i < w; i++) {
+      const x = -half + (i / n) * terrain.size;
+      const z = -half + (j / n) * terrain.size;
+      const fall = (120 - z) * 0.005;
+      const roll = Math.sin(z / 82 + 0.6) * Math.cos(x / 104) * 0.6;
+      const ridge = 9 * Math.exp(-((x - 150) ** 2 + (z + 130) ** 2) / (2 * 110 * 110));
+      terrain.heights[j * w + i] = fall + roll + ridge;
+    }
+  }
+  for (let j = 0; j < n; j++) {
+    for (let i = 0; i < n; i++) {
+      const x = -half + ((i + 0.5) / n) * terrain.size;
+      const z = -half + ((j + 0.5) / n) * terrain.size;
+      const onStreet = Math.abs(x) < 7 && z > -46 && z < 152;
+      const onPlaza = Math.hypot(x, z + 34) < 18;
+      const verge = Math.abs(x) < 34 && z > -60 && z < 70;
+      terrain.paint[j * n + i] =
+        onStreet || onPlaza ? LAYER_CONCRETE : verge ? LAYER_MEADOW : LAYER_GRASS;
+    }
+  }
+  terrain.waterLevel = -60;
+}

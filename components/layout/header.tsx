@@ -3,10 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
+import NextLink from 'next/link';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { GAME_ENABLED } from '@/lib/config/features';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -488,6 +490,23 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           >
             {t('planner')}
           </Link>
+          {/* park.fan Coaster lives at /game outside the locale tree (docs/game/INTEGRATION.md), so
+              this is a plain next/link: the localized Link would prefix it into a 404. Behind
+              GAME_ENABLED, which is on in dev and on a preview deploy and off in production until
+              the game's own final gate has been run — the route 404s under the same flag, so this
+              never links at a page that is not there. A build-time constant, so with it off the
+              link is not in the HTML rather than hidden by CSS. */}
+          {GAME_ENABLED && (
+            <NextLink
+              href="/game"
+              prefetch={false}
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              tabIndex={isTransparent ? -1 : 0}
+              data-header-stagger
+            >
+              {t('game')}
+            </NextLink>
+          )}
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
               dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
@@ -701,6 +720,17 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   >
                     {t('planner')}
                   </Link>
+                  {/* Same flag as the desktop row — see there. */}
+                  {GAME_ENABLED && (
+                    <NextLink
+                      href="/game"
+                      prefetch={false}
+                      data-sheet-stagger
+                      className="hover:text-primary text-lg font-medium transition-colors"
+                    >
+                      {t('game')}
+                    </NextLink>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>

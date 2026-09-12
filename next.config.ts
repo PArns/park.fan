@@ -807,6 +807,12 @@ const nextConfig: NextConfig = {
         source: '/:file.png',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
+      // park.fan Coaster: fetched CC0 kit assets (glTF, KTX2, HDR, audio) under /game/assets are
+      // pinned by scripts/fetch-game-assets.mjs and never edited in place, so they are immutable.
+      {
+        source: '/game/assets/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
       // Static SVGs served from /public — cache for 1 year (immutable via content hash)
       {
         source: '/:file*.svg',
