@@ -176,6 +176,41 @@ const check = (name, ok, detail = '') => {
   console.log(`${ok ? '✅' : '❌'} ${name}${detail ? ` — ${detail}` : ''}`);
 };
 
+/**
+ * Go to the planner's OWN page and wait for it to be drawn — never for the
+ * network to fall quiet.
+ *
+ * `waitUntil: 'networkidle'` cannot resolve on `/de/tagesplaner`, and the reason
+ * is the page rather than the server. Measured here, 1280×1000, `pnpm dev` on
+ * :3112, in-flight count sampled every 1.5 s for 18 s:
+ *
+ *     /de              2 → 1 → 1 → 1 …   (the one is the HMR client)
+ *     /de/tagesplaner  13 → 13 → 13 …    (never moves)
+ *
+ * The thirteen are `loading="lazy"` images the article's chapters mount with no
+ * laid-out box — 22 of the page's 31 images are lazy and 15 of them never
+ * complete. Chromium issues the request and then defers the fetch indefinitely,
+ * Playwright counts every deferred one as in flight, and `networkidle` wants two
+ * or fewer for 500 ms. So the condition is unreachable by construction: it is
+ * not the dev server's HMR socket (`/de` holds exactly one of those and settles
+ * in 5 s), and `pnpm start` would not help either.
+ *
+ * `domcontentloaded` plus a wait for the element the next assertion is about is
+ * what the rest of this file already does. `attached`, not `visible`: an
+ * assertion that COUNTS something must still be allowed to find zero, so the
+ * wait is a best effort and the check downstream stays the judge.
+ */
+async function gotoPlannerPage(page, url, ready) {
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
+  if (ready) {
+    await page
+      .locator(ready)
+      .first()
+      .waitFor({ state: 'attached', timeout: 15_000 })
+      .catch(() => {});
+  }
+}
+
 /** Seeds the plan the way the store writes it, then loads the page fresh. */
 async function seed(page) {
   await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
@@ -912,28 +947,51 @@ if (await phoneLauncher.count()) {
 
   check('der Anfasser ist da', (await grab.count()) === 1);
   if (await grab.count()) {
+    /**
+     * How far a drag travels, and it is a DISTANCE rather than a destination.
+     *
+     * Both pulls used to end at an absolute y — `box.y - 80` going up and
+     * `box2.y + 40` coming down — while both started at the handle's MIDDLE. So
+     * the distance each covered depended on the handle's own height, in opposite
+     * directions, and PR #440 grew that handle from 16 px to 44 px: the upward
+     * pull silently became 102 px and the downward one 18 px, which is under the
+     * 24 px `SHEET_EXPAND_PX` needs. `herunterziehen senkt sie wieder` then
+     * failed for the height of the grip rather than for anything the sheet did.
+     *
+     * Measured from the same point, in both directions, and therefore immune to
+     * the next time somebody changes that height.
+     */
+    const DRAG_PX = 80;
+    const pullFrom = async (dy) => {
+      const box = await grab.boundingBox();
+      const x = box.x + box.width / 2;
+      const y = box.y + box.height / 2;
+      await phone.mouse.move(x, y);
+      await phone.mouse.down();
+      await phone.mouse.move(x, y + dy, { steps: 8 });
+      await phone.mouse.up();
+      await phone.waitForTimeout(500);
+    };
+
     const before = await sheetCap();
-    const box = await grab.boundingBox();
-    await phone.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    await phone.mouse.down();
-    await phone.mouse.move(box.x + box.width / 2, box.y - 80, { steps: 8 });
-    await phone.mouse.up();
-    await phone.waitForTimeout(500);
+    await pullFrom(-DRAG_PX);
     const after = await sheetCap();
-    check('hochziehen hebt die Obergrenze', after > before + 40, `${before} px -> ${after} px`);
+    check(
+      'hochziehen hebt die Obergrenze',
+      after > before + 40,
+      `${before} px -> ${after} px (Weg ${DRAG_PX} px)`
+    );
 
     // And back down, so the geometry assertions below measure the sheet in the
     // state they were written for.
-    const box2 = await grab.boundingBox();
-    await phone.mouse.move(box2.x + box2.width / 2, box2.y + box2.height / 2);
-    await phone.mouse.down();
-    await phone.mouse.move(box2.x + box2.width / 2, box2.y + 40, { steps: 6 });
-    await phone.mouse.up();
-    await phone.waitForTimeout(500);
+    await pullFrom(DRAG_PX);
+    const back = await sheetCap();
     check(
       'herunterziehen senkt sie wieder',
-      (await sheetCap()) === before,
-      `${await sheetCap()} px`
+      back === before,
+      back === before
+        ? `${back} px`
+        : `${back} px statt ${before} px — Weg ${DRAG_PX} px, Schwelle SHEET_EXPAND_PX`
     );
   }
 
@@ -1331,19 +1389,47 @@ await cal.reload({ waitUntil: 'networkidle' });
 await cal.waitForTimeout(4000);
 
 // The cell is a `div[role="button"]`, and the plan control only renders on a day
-// the park is OPERATING — so try a few until one is open rather than assuming
-// the first of the month is.
+// that is OPERATING *and* not in the past — `park-calendar-day-detail.tsx`:
+//
+//     {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
+//
+// So the candidates are picked to match that condition instead of being taken
+// off the top of the grid. Taking the first eight cells was the same assertion
+// for the first eight DAYS of the month, which is green until the 8th and red
+// from the 9th on, every month, without a line of the app changing.
+//
+// The filter reads what the cell already says: `aria-label` is
+// `"<Wochentag> <Tag>. <Monat> — <Status>…"`, so the day number carries the
+// "not in the past" half and „Geschlossen" carries the OPERATING half. Anything
+// else stays a candidate — a day the park is open on but has no forecast for
+// reads „Keine Prognose", and that day does render the button.
 const cells = cal.locator('[role="button"][tabindex="0"][aria-label*="—"]');
 const planButton = cal.getByRole('button', { name: 'Bahnen für diesen Tag einplanen' });
 const cellCount = await cells.count();
+const cellLabels = await cells.evaluateAll((nodes) =>
+  nodes.map((n) => n.getAttribute('aria-label') ?? '')
+);
+const todayOfMonth = Number(parkDay(0).slice(8, 10));
+const candidates = cellLabels
+  .map((label, index) => ({ label, index, day: Number(/\s(\d{1,2})\.\s/.exec(label)?.[1] ?? NaN) }))
+  .filter((cell) => cell.day >= todayOfMonth && !/—\s*Geschlossen/.test(cell.label));
 let reachable = false;
-for (let i = 0; i < Math.min(cellCount, 8) && !reachable; i++) {
-  await cells.nth(i).click();
+for (const cell of candidates.slice(0, 8)) {
+  if (reachable) break;
+  await cells.nth(cell.index).click();
   await cal.waitForTimeout(1200);
   reachable = (await planButton.count()) > 0;
   if (!reachable) await cal.keyboard.press('Escape');
 }
-check('„Bahnen für diesen Tag einplanen" im Kalendertag', reachable, `Zellen: ${cellCount}`);
+check(
+  '„Bahnen für diesen Tag einplanen" im Kalendertag',
+  reachable,
+  reachable
+    ? `Zellen: ${cellCount}, geprüft ab dem ${todayOfMonth}.`
+    : candidates.length === 0
+      ? `kein offener Tag ab dem ${todayOfMonth}. unter ${cellCount} Zellen — der Monat ist vorbei oder der Park hat zu`
+      : `${Math.min(candidates.length, 8)} offene Tage ab dem ${todayOfMonth}. angeklickt, keiner trug den Knopf (von ${cellCount} Zellen)`
+);
 
 if (reachable) {
   await planButton.first().click();
@@ -2933,7 +3019,7 @@ if (reachable) {
   await page.evaluate(() => {
     window.localStorage.removeItem('parkfan_planner');
   });
-  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/de/tagesplaner`, '[data-planner-page-intro]');
   await page.waitForTimeout(1200);
 
   check(
@@ -3025,7 +3111,7 @@ if (reachable) {
 
   // A second language, because the article is six modules and a missing one is
   // a build error only for the locale that lost it.
-  await page.goto(`${BASE}/fr/planificateur`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/fr/planificateur`, 'article h2');
   await page.waitForTimeout(1000);
   const frText = (await page.locator('article').innerText()) ?? '';
   check(
@@ -3035,7 +3121,7 @@ if (reachable) {
       /Phantasialand/.test(frText),
     frText.slice(0, 60).replace(/\s+/g, ' ')
   );
-  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/de/tagesplaner`, 'article');
   await page.waitForTimeout(800);
 
   // ── With plans ────────────────────────────────────────────────────────────
@@ -3063,7 +3149,7 @@ if (reachable) {
     },
     [PLAN, DATE, PAST]
   );
-  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/de/tagesplaner`, '[data-planner-page-day]');
   await page.waitForTimeout(1200);
 
   check(
