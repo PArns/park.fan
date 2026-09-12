@@ -508,6 +508,15 @@ export function PlannerBlock({
               // pixels from its neighbour. The grip keeps its full 44 px; it is
               // centred and overhangs symmetrically, which is what makes the
               // shortest block movable at all, and its own overhang is PAR-165.
+              //
+              // **This is the one documented exception to the 44 px floor, and
+              // `sweepSmallTargets` in `scripts/check-planner.mjs` does not know
+              // about it.** That sweep is green today only because the phone
+              // pass plans three rides and no free blocks; seed a free one on the
+              // minimum box into it and it goes red on this edge, correctly and
+              // for a thing that was decided rather than broken. Whoever does
+              // that teaches the sweep the exception — floor of `min(44, the
+              // block's room)` for a resize edge — rather than lifting this cap.
               'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-[min(2.75rem,var(--pl-edge-room))] max-sm:after:content-[""]'
             )}
           >

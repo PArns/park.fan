@@ -1477,8 +1477,31 @@ let stepped = false;
 if (month.candidates.length === 0) {
   const next = cal.getByRole('link', { name: 'Nächster Monat' });
   if (await next.count()) {
+    // The first cell's label BEFORE the step, so the wait below has something
+    // to compare against.
+    const firstBefore =
+      (await cells
+        .first()
+        .getAttribute('aria-label')
+        .catch(() => null)) ?? '';
     await next.first().click();
-    await cal.waitForTimeout(2500);
+    // A real route navigation with `keepPreviousData` behind it: for a moment
+    // the grid still holds the old month, and a beat later it holds none at all
+    // while the new one loads. `evaluateAll` does not auto-wait, so a fixed
+    // timeout here reads whichever of the three states it happens to land in —
+    // most likely zero cells, and the check fails for the wait rather than for
+    // the calendar. Waits for a grid that is both populated AND different.
+    await cal
+      .waitForFunction(
+        ([selector, before]) => {
+          const nodes = document.querySelectorAll(selector);
+          return nodes.length > 0 && (nodes[0].getAttribute('aria-label') ?? '') !== before;
+        },
+        ['[role="button"][tabindex="0"][aria-label*="—"]', firstBefore],
+        { timeout: 20_000 }
+      )
+      .catch(() => {});
+    await cal.waitForTimeout(1200);
     // The pill only lives in today's month, so from here the whole month counts.
     const after = await cells.evaluateAll((nodes) =>
       nodes.map((node) => node.getAttribute('aria-label') ?? '')
@@ -6154,7 +6177,13 @@ if (reachable) {
 // above — deliberately, because that overhang is the only reason the shortest
 // block can be moved at all. That is PAR-165 and not this. Probing the grip's
 // column here would fail for a thing this ticket decided to keep.
-{
+//
+// Behind `live`, like the two passes above it: with a 404 from `/plan/day` there
+// are no opening hours, so `buildDayGrid` answers `null`, the axis is never
+// drawn and there is no block to measure. Without the guard this pass would
+// report "die zwei freien Blöcke fehlen" on the very path the header at the top
+// of this file promises to support.
+if (live) {
   const tight = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
   noteErrors(tight);
   await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
