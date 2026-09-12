@@ -1416,41 +1416,101 @@ await cal.waitForTimeout(4000);
 // for the first eight DAYS of the month, which is green until the 8th and red
 // from the 9th on, every month, without a line of the app changing.
 //
-// The filter reads what the cell already says: `aria-label` is
-// `"<Wochentag> <Tag>. <Monat> — <Status>…"`, so the day number carries the
-// "not in the past" half exactly, and „Geschlossen" carries as much of the
-// OPERATING half as the label can carry. Only as much: `park-calendar-day.tsx`
-// prints the CROWD LEVEL there, not the status, so an `UNKNOWN` day and an
-// OPERATING day with no forecast both read „Keine Prognose" and the label
-// cannot separate them. That is why this stays a loop over several candidates
-// rather than a pick of the first one — an `UNKNOWN` day among them costs a
-// click, not the assertion.
+// Both halves of that condition are read off the page: the „Heute"-pill for
+// "not in the past", and the `aria-label` — `"<Wochentag> <Tag>. <Monat> —
+// <Status>…"` — for „Geschlossen". The label carries only as much of the
+// OPERATING half as it can: `park-calendar-day.tsx` prints the CROWD LEVEL
+// there, not the status, so an `UNKNOWN` day and an OPERATING day with no
+// forecast both read „Keine Prognose" and the label cannot separate them. That
+// is why this stays a loop over several candidates rather than a pick of the
+// first one — an `UNKNOWN` day among them costs a click, not the assertion.
 const cells = cal.locator('[role="button"][tabindex="0"][aria-label*="—"]');
 const planButton = cal.getByRole('button', { name: 'Bahnen für diesen Tag einplanen' });
-const cellCount = await cells.count();
-const cellLabels = await cells.evaluateAll((nodes) =>
-  nodes.map((n) => n.getAttribute('aria-label') ?? '')
-);
-const todayOfMonth = Number(parkDay(0).slice(8, 10));
-const candidates = cellLabels
-  .map((label, index) => ({ label, index, day: Number(/\s(\d{1,2})\.\s/.exec(label)?.[1] ?? NaN) }))
-  .filter((cell) => cell.day >= todayOfMonth && !/—\s*Geschlossen/.test(cell.label));
+
+/**
+ * The open days of the rendered month that are not in the past, in grid order.
+ *
+ * "Not in the past" is read off the page rather than counted here, and the
+ * instrument is the „Heute"-pill `park-calendar-day.tsx` prints in exactly one
+ * cell. A day number compared against `parkDay(0)` would be a number from one
+ * calendar held against a month from another: the hub passes `month={null}`, so
+ * `park-calendar-grid.tsx` builds `currentMonth` from the BROWSER's `new Date()`
+ * while the pill comes from a `todayStr` formatted in the PARK's zone. They
+ * agree on this host and would not have to — and a bare day-of-month cannot
+ * tell the two apart, which is the same trap `parkDay` above was written for.
+ *
+ * Everything from the pill onward is a candidate except „Geschlossen".
+ */
+async function openDaysFromToday() {
+  const cellInfo = await cells.evaluateAll((nodes) =>
+    nodes.map((node) => ({
+      label: node.getAttribute('aria-label') ?? '',
+      // The pill's own element, by its exact text. Searching the cell's
+      // `textContent` for it does not work and fails QUIETLY: the cell reads
+      // `12Heute55MinHoch09:00–18:00…`, so `\bHeute\b` finds no word boundary on
+      // either side, the day looks absent, and the run steps to the next month
+      // and passes there — green, for the wrong month.
+      today: [...node.querySelectorAll('span')].some(
+        (span) => (span.textContent ?? '').trim() === 'Heute'
+      ),
+    }))
+  );
+  const todayIndex = cellInfo.findIndex((cell) => cell.today);
+  return {
+    count: cellInfo.length,
+    todayIndex,
+    candidates:
+      todayIndex === -1
+        ? []
+        : cellInfo
+            .map((cell, index) => ({ ...cell, index }))
+            .filter((cell) => cell.index >= todayIndex && !/—\s*Geschlossen/.test(cell.label)),
+  };
+}
+
+let month = await openDaysFromToday();
+// One step forward if the rendered month has nothing to offer — the 31st with
+// the park closed on it, or a winter month the park sits out entirely. Without
+// it this check is red on a DATE rather than on a change, which is the whole
+// failure mode it was rewritten to stop having.
+let stepped = false;
+if (month.candidates.length === 0) {
+  const next = cal.getByRole('link', { name: 'Nächster Monat' });
+  if (await next.count()) {
+    await next.first().click();
+    await cal.waitForTimeout(2500);
+    // The pill only lives in today's month, so from here the whole month counts.
+    const after = await cells.evaluateAll((nodes) =>
+      nodes.map((node) => node.getAttribute('aria-label') ?? '')
+    );
+    month = {
+      count: after.length,
+      todayIndex: 0,
+      candidates: after
+        .map((label, index) => ({ label, index }))
+        .filter((cell) => !/—\s*Geschlossen/.test(cell.label)),
+    };
+    stepped = true;
+  }
+}
+
 let reachable = false;
-for (const cell of candidates.slice(0, 8)) {
+for (const cell of month.candidates.slice(0, 8)) {
   if (reachable) break;
   await cells.nth(cell.index).click();
   await cal.waitForTimeout(1200);
   reachable = (await planButton.count()) > 0;
   if (!reachable) await cal.keyboard.press('Escape');
 }
+const where = stepped ? 'im Folgemonat' : `ab „Heute" (Zelle ${month.todayIndex + 1})`;
 check(
   '„Bahnen für diesen Tag einplanen" im Kalendertag',
   reachable,
   reachable
-    ? `Zellen: ${cellCount}, geprüft ab dem ${todayOfMonth}.`
-    : candidates.length === 0
-      ? `kein offener Tag ab dem ${todayOfMonth}. unter ${cellCount} Zellen — der Monat ist vorbei oder der Park hat zu`
-      : `${Math.min(candidates.length, 8)} offene Tage ab dem ${todayOfMonth}. angeklickt, keiner trug den Knopf (von ${cellCount} Zellen)`
+    ? `Zellen: ${month.count}, geprüft ${where}`
+    : month.candidates.length === 0
+      ? `kein offener Tag ${where} unter ${month.count} Zellen — auch der Folgemonat half nicht`
+      : `${Math.min(month.candidates.length, 8)} offene Tage ${where} angeklickt, keiner trug den Knopf (von ${month.count} Zellen)`
 );
 
 if (reachable) {
@@ -6192,10 +6252,19 @@ if (reachable) {
       );
     } else {
       const stolen = tiles.depths.filter(([, mine]) => !mine).map(([d]) => d);
+      // Bounded from BELOW as well, and that half is not pedantry: the cap is an
+      // arbitrary Tailwind class reading a custom property set in an inline
+      // style, and neither end of that is something the type checker can see. A
+      // purged class or a renamed property leaves `height: 0px`, which satisfies
+      // "does not overhang" perfectly and hands the phone an edge nobody can
+      // touch. So the target must be the exact room it is entitled to —
+      // `min(44, Blockhöhe − 2)`, the two being the block's own border, which
+      // the edge is laid out inside of.
+      const entitled = Math.min(44, tiles.shortHeight - 2);
       check(
         'die Resize-Kante ragt nicht über den Mindestblock hinaus',
-        tiles.overhang !== null && tiles.overhang <= 0,
-        `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px · Überhang ${tiles.overhang} px`
+        tiles.overhang !== null && tiles.overhang <= 0 && Math.round(tiles.reach) === entitled,
+        `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px (erwartet ${entitled}) · Überhang ${tiles.overhang} px`
       );
       check(
         'die unteren 14 px des Blocks darüber gehören ihm, rechts vom Griff',
