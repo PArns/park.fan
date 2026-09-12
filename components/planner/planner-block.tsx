@@ -333,6 +333,12 @@ export function PlannerBlock({
         height: boxPx,
         left: laneLeft,
         width: laneWidth,
+        // The drawn height, readable from CSS — the resize edge's touch target
+        // is capped against it so that it cannot reach into the block above.
+        // A custom property rather than a second inline style on the edge
+        // itself: the edge is two elements down and the value belongs to the
+        // box, not to the control. Same shape as `--pl-drag-dy` below.
+        ['--pl-block-h' as string]: `${boxPx}px`,
         zIndex: dragging ? 30 : 10 + lane.column,
         transform: dragging ? 'translateY(var(--pl-drag-dy, 0px))' : undefined,
       }}
@@ -471,7 +477,22 @@ export function PlannerBlock({
               // the shortest free block, the one this whole fix is about, could
               // be resized and not moved. The two targets now tile the block
               // instead of stacking on it.
-              'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-11 max-sm:after:content-[""]'
+              //
+              // And 44 px OR the block's own height, whichever is smaller. The
+              // target is anchored to the bottom edge and grows upward, so on a
+              // block shorter than 44 px it used to reach out of the top — 14 px
+              // of it on a minimum block (30 px at `PX_PER_MIN_COARSE`),
+              // measured. Blocks are absolutely positioned in start order with
+              // no `z-index` of their own, so the later one wins: a press on the
+              // bottom 14 px of the block ABOVE, right of its grip, resized the
+              // short block below instead of selecting the block pressed. The
+              // cap costs the shortest free block a target under the 44 px
+              // floor — 30 px, the height it has — and that is the honest
+              // trade: no arrangement gives a 30 px box a 44 px edge without
+              // taking the pixels from its neighbour. The grip keeps its full
+              // 44 px; it is centred and overhangs symmetrically, which is what
+              // makes the shortest block movable at all.
+              'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-[min(2.75rem,var(--pl-block-h))] max-sm:after:content-[""]'
             )}
           >
             <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />

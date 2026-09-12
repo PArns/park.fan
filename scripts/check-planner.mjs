@@ -6051,6 +6051,126 @@ if (reachable) {
   await wiz.close();
 }
 
+// ── A minimum block does not reach into the block above it ──────────────────
+//
+// Since the block stopped clipping (PF-86, Etappe 1), the grip and the resize
+// edge grow 44 px touch targets out of a box that may be 30 px tall. That is
+// what makes the shortest block usable — and it put the resize edge, which is
+// anchored to the BOTTOM and grows upward, 14 px into whatever sits above it.
+// Blocks are absolutely positioned in start order with no `z-index` of their
+// own, so the later one wins: pressing the bottom of the upper block resized
+// the lower one.
+//
+// Two free blocks, the lower on the minimum box, and `elementFromPoint` at the
+// depths the report measured. A pointer probe rather than a bounding box: the
+// target is a pseudo-element, and `getBoundingClientRect` knows nothing about
+// one.
+{
+  const tight = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
+  noteErrors(tight);
+  await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await tight.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      // 25 minutes then 5, one after the other: the second lands on the minimum
+      // box (`MIN_BLOCK_PX` scaled to the coarse axis) with the first ending a
+      // pixel or two above it. That adjacency IS the case — with 15 px of gap
+      // the overhang reaches nothing.
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            {
+              id: 'lunch-1',
+              startMinute: 600,
+              custom: { label: 'Mittag', durationMinutes: 25, icon: 'food' },
+            },
+            {
+              id: 'pause-1',
+              startMinute: 626,
+              custom: { label: 'Pause', durationMinutes: 5, icon: 'break' },
+            },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+    },
+    [PLAN, DATE]
+  );
+  await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  const tightTab = tight.locator(LAUNCHER);
+  await tightTab.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
+  await settleHydration(tight);
+  if (await tightTab.count()) {
+    await tightTab.click();
+    await tight.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await tight.waitForTimeout(2500);
+    // Into the scroller's visible area first. A block outside it still reports a
+    // rectangle, and `elementFromPoint` would then answer for whatever is
+    // painted at those viewport coordinates instead — the ride search, in this
+    // layout, which reads as a pass for the wrong reason.
+    await tight.evaluate(() => {
+      const short = [...document.querySelectorAll('li[data-planner-block]')].find((el) =>
+        /Pause/.test(el.textContent ?? '')
+      );
+      short?.scrollIntoView({ block: 'center' });
+    });
+    await tight.waitForTimeout(600);
+
+    const tiles = await tight.evaluate(() => {
+      const blocks = [...document.querySelectorAll('li[data-planner-block]')].map((el) => ({
+        el,
+        text: (el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+        box: el.getBoundingClientRect(),
+      }));
+      const upper = blocks.find((b) => /Mittag/.test(b.text));
+      const lower = blocks.find((b) => /Pause/.test(b.text));
+      if (!upper || !lower) return null;
+      const edge = lower.el.querySelector('button[aria-label="Dauer ziehen"]');
+      const reach = edge ? parseFloat(getComputedStyle(edge, '::after').height) : null;
+      // Right of the grip's 44 px column, and well clear of it, so this measures
+      // the resize edge rather than the grip beside it.
+      const x = Math.round(lower.box.left + Math.min(200, lower.box.width - 60));
+      const owns = (depth) => {
+        const hit = document.elementFromPoint(x, Math.round(upper.box.bottom - depth));
+        return hit?.closest('li[data-planner-block]') === upper.el;
+      };
+      return {
+        shortHeight: Math.round(lower.box.height),
+        reach,
+        gap: Math.round(lower.box.top - upper.box.bottom),
+        depths: [2, 5, 8, 11, 14].map((d) => [d, owns(d)]),
+      };
+    });
+
+    if (!tiles) {
+      check('der Mindestblock bleibt in seinem Block', false, 'die zwei freien Blöcke fehlen');
+    } else {
+      const stolen = tiles.depths.filter(([, mine]) => !mine).map(([d]) => d);
+      check(
+        'die Resize-Kante ragt nicht über den Mindestblock hinaus',
+        tiles.reach !== null && tiles.reach <= tiles.shortHeight,
+        `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px`
+      );
+      check(
+        'die unteren 14 px des Blocks darüber gehören ihm selbst',
+        stolen.length === 0,
+        stolen.length === 0
+          ? `Lücke ${tiles.gap} px, fünf Tiefen geprüft`
+          : `gestohlen bei ${stolen.join(', ')} px über der Unterkante (Lücke ${tiles.gap} px)`
+      );
+    }
+  } else {
+    check('der Mindestblock bleibt in seinem Block', false, 'Launcher nicht gefunden');
+  }
+  await tight.close();
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,
