@@ -960,6 +960,16 @@ if (await phoneLauncher.count()) {
      *
      * Measured from the same point, in both directions, and therefore immune to
      * the next time somebody changes that height.
+     *
+     * **80 sits in a window with a ceiling as well as a floor.** Going down,
+     * `planner-flyout.tsx` reads three thresholds off the same gesture: under
+     * `SHEET_EXPAND_PX` (24) nothing happens, over it the sheet collapses, and
+     * over `SHEET_DISMISS_PX` (90) it CLOSES. A downward pull that crossed 90
+     * would not fail this assertion — it would take the sheet away, and every
+     * strict locator after it would reject on an empty match and end the script.
+     * So the number is 24 < 80 < 90, with the narrower margin on the dismissal
+     * side, and the assertion below says which end it hit rather than leaving a
+     * bare number.
      */
     const DRAG_PX = 80;
     const pullFrom = async (dy) => {
@@ -985,13 +995,21 @@ if (await phoneLauncher.count()) {
     // And back down, so the geometry assertions below measure the sheet in the
     // state they were written for.
     await pullFrom(DRAG_PX);
-    const back = await sheetCap();
+    // Before the cap is read, and not as an aside: past `SHEET_DISMISS_PX` the
+    // pull closes the sheet, and `sheetCap()` would then reject on a locator
+    // with nothing to match — taking the remaining two hundred assertions with
+    // it. Asked as a count so the answer is a failed check with a name, not a
+    // stack trace.
+    const stillOpen = (await phone.locator(SHEET).count()) === 1;
+    const back = stillOpen ? await sheetCap() : null;
     check(
       'herunterziehen senkt sie wieder',
-      back === before,
-      back === before
-        ? `${back} px`
-        : `${back} px statt ${before} px — Weg ${DRAG_PX} px, Schwelle SHEET_EXPAND_PX`
+      stillOpen && back === before,
+      !stillOpen
+        ? `der Zug von ${DRAG_PX} px hat das Sheet geschlossen — über SHEET_DISMISS_PX`
+        : back === before
+          ? `${back} px`
+          : `${back} px statt ${before} px — Weg ${DRAG_PX} px, Schwelle SHEET_EXPAND_PX`
     );
   }
 
@@ -1400,9 +1418,13 @@ await cal.waitForTimeout(4000);
 //
 // The filter reads what the cell already says: `aria-label` is
 // `"<Wochentag> <Tag>. <Monat> — <Status>…"`, so the day number carries the
-// "not in the past" half and „Geschlossen" carries the OPERATING half. Anything
-// else stays a candidate — a day the park is open on but has no forecast for
-// reads „Keine Prognose", and that day does render the button.
+// "not in the past" half exactly, and „Geschlossen" carries as much of the
+// OPERATING half as the label can carry. Only as much: `park-calendar-day.tsx`
+// prints the CROWD LEVEL there, not the status, so an `UNKNOWN` day and an
+// OPERATING day with no forecast both read „Keine Prognose" and the label
+// cannot separate them. That is why this stays a loop over several candidates
+// rather than a pick of the first one — an `UNKNOWN` day among them costs a
+// click, not the assertion.
 const cells = cal.locator('[role="button"][tabindex="0"][aria-label*="—"]');
 const planButton = cal.getByRole('button', { name: 'Bahnen für diesen Tag einplanen' });
 const cellCount = await cells.count();
@@ -6051,20 +6073,27 @@ if (reachable) {
   await wiz.close();
 }
 
-// ── A minimum block does not reach into the block above it ──────────────────
+// ── A minimum block's resize edge stays inside it ───────────────────────────
 //
 // Since the block stopped clipping (PF-86, Etappe 1), the grip and the resize
 // edge grow 44 px touch targets out of a box that may be 30 px tall. That is
 // what makes the shortest block usable — and it put the resize edge, which is
 // anchored to the BOTTOM and grows upward, 14 px into whatever sits above it.
-// Blocks are absolutely positioned in start order with no `z-index` of their
-// own, so the later one wins: pressing the bottom of the upper block resized
-// the lower one.
+// Blocks in the same lane column carry the same `z-index`, so DOM order decides
+// and the later — the lower — one wins: pressing the bottom of the upper block
+// resized the lower one.
 //
 // Two free blocks, the lower on the minimum box, and `elementFromPoint` at the
 // depths the report measured. A pointer probe rather than a bounding box: the
 // target is a pseudo-element, and `getBoundingClientRect` knows nothing about
 // one.
+//
+// **Right of the grip's column, and the name of the second assertion says so.**
+// The grip is centred rather than bottom-anchored, so it overhangs a 30 px block
+// by 7 px in both directions and still takes the bottom corner of the block
+// above — deliberately, because that overhang is the only reason the shortest
+// block can be moved at all. That is PAR-165 and not this. Probing the grip's
+// column here would fail for a thing this ticket decided to keep.
 {
   const tight = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
   noteErrors(tight);
@@ -6133,8 +6162,14 @@ if (reachable) {
       if (!upper || !lower) return null;
       const edge = lower.el.querySelector('button[aria-label="Dauer ziehen"]');
       const reach = edge ? parseFloat(getComputedStyle(edge, '::after').height) : null;
+      // Where the target's top edge actually LANDS, not how tall it is. The two
+      // differ by the block's border: the edge is absolute inside a `relative`
+      // bordered div, so it is laid out against that div's padding box and
+      // starts a pixel above the block's own bottom. Comparing heights would
+      // call a target that overhangs by exactly that pixel a pass.
+      const edgeTop = edge ? edge.getBoundingClientRect().bottom - (reach ?? 0) : null;
       // Right of the grip's 44 px column, and well clear of it, so this measures
-      // the resize edge rather than the grip beside it.
+      // the resize edge rather than the grip beside it — see the note above.
       const x = Math.round(lower.box.left + Math.min(200, lower.box.width - 60));
       const owns = (depth) => {
         const hit = document.elementFromPoint(x, Math.round(upper.box.bottom - depth));
@@ -6143,30 +6178,35 @@ if (reachable) {
       return {
         shortHeight: Math.round(lower.box.height),
         reach,
+        overhang: edgeTop === null ? null : Math.round(lower.box.top - edgeTop),
         gap: Math.round(lower.box.top - upper.box.bottom),
-        depths: [2, 5, 8, 11, 14].map((d) => [d, owns(d)]),
+        depths: [1, 2, 5, 8, 11, 14].map((d) => [d, owns(d)]),
       };
     });
 
     if (!tiles) {
-      check('der Mindestblock bleibt in seinem Block', false, 'die zwei freien Blöcke fehlen');
+      check(
+        'die Resize-Kante bleibt in ihrem Mindestblock',
+        false,
+        'die zwei freien Blöcke fehlen'
+      );
     } else {
       const stolen = tiles.depths.filter(([, mine]) => !mine).map(([d]) => d);
       check(
         'die Resize-Kante ragt nicht über den Mindestblock hinaus',
-        tiles.reach !== null && tiles.reach <= tiles.shortHeight,
-        `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px`
+        tiles.overhang !== null && tiles.overhang <= 0,
+        `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px · Überhang ${tiles.overhang} px`
       );
       check(
-        'die unteren 14 px des Blocks darüber gehören ihm selbst',
+        'die unteren 14 px des Blocks darüber gehören ihm, rechts vom Griff',
         stolen.length === 0,
         stolen.length === 0
-          ? `Lücke ${tiles.gap} px, fünf Tiefen geprüft`
+          ? `Lücke ${tiles.gap} px, sechs Tiefen ab 1 px geprüft`
           : `gestohlen bei ${stolen.join(', ')} px über der Unterkante (Lücke ${tiles.gap} px)`
       );
     }
   } else {
-    check('der Mindestblock bleibt in seinem Block', false, 'Launcher nicht gefunden');
+    check('die Resize-Kante bleibt in ihrem Mindestblock', false, 'Launcher nicht gefunden');
   }
   await tight.close();
 }
