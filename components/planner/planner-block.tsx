@@ -10,14 +10,7 @@ import {
   waitTimeCrowdTier,
 } from '@/lib/utils/crowd-level-styles';
 import { formatGridTime } from '@/lib/planner/park-time';
-import {
-  MIN_BAND_PX,
-  blockBoxFor,
-  heightFor,
-  minBlockPxFor,
-  yFor,
-  type DayGrid,
-} from '@/lib/planner/day-grid';
+import { blockBoxFor, heightFor, minBlockPxFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
@@ -199,10 +192,6 @@ export function PlannerBlock({
       ? blockBoxFor(grid, wait)
       : NO_FIGURE_PX;
 
-  const bandMinutes = custom || done || live ? null : estimate.uncertaintyMinutes;
-  const bandPx = bandMinutes === null ? 0 : heightFor(grid, bandMinutes);
-  const drawBand = bandPx >= MIN_BAND_PX;
-
   /** An assumed figure has no colour: a tint is a claim about how busy it is. */
   const assumed = estimate.missing === 'assumed';
   const tone = !custom && hasFigure && !assumed ? waitTimeCrowdTier(wait) : null;
@@ -357,18 +346,35 @@ export function PlannerBlock({
         transform: dragging ? 'translateY(var(--pl-drag-dy, 0px))' : undefined,
       }}
     >
-      {/* The uncertainty band, drawn FIRST so the solid fill sits on it, and
-          deliberately outside the block's clipping so it reaches down into the
-          gap — the leg's verdict is computed from this same spread, so a reader
-          can see the thing the verdict is about. One-sided downward, which is
-          what a one-sided-upward wait band means once it is a duration. */}
-      {drawBand && hasFigure && tone && (
-        <div
-          className={cn('absolute inset-x-0 top-0 rounded-b-md opacity-25', CROWD_DOT_CLASS[tone])}
-          style={{ height: fillPx + bandPx }}
-          aria-hidden="true"
-        />
-      )}
+      {/* No uncertainty band here, and that absence is the point: it is drawn in
+          a layer of its own beneath every block and every leg — see
+          `PlannerBandLayer` in `planner-day-grid.tsx` and `bandGeometry`. The
+          band is the one part of a block that is not IN the block; it hangs
+          past the box into the gap the next stop starts in, and a child of a
+          block cannot be painted under that stop's chip whatever z-index it
+          carries. */}
+
+      {/* The ground, UNDER the bordered box rather than inside it.
+
+          The rule is written out twenty lines down, for the block with no
+          figure: a block "still needs a GROUND. Transparent, it let the leg chip
+          in the gap below it paint through its own text, which reads as two
+          sentences printed on top of each other rather than as two elements at
+          different depths." That is just as true of a block WITH a figure, and
+          it had none — `CROWD_TILE_CLASS` is 8–18 % alpha, a tint rather than a
+          surface. Nothing used to sit behind one, so nothing showed; the band
+          layer now reaches down here, and a ride's name was being read through a
+          quarter of somebody else's crowd colour.
+
+          A SIBLING, and that placement is the whole of it: put inside the box it
+          would paint over the box's own background instead of under it, which
+          takes the tile off every block and the fill off the three that draw
+          theirs on the box alone — a ticked-off block, a free block and an
+          assumption. Behind it, every one of them keeps exactly the colour it
+          had, over an opaque surface rather than over whatever the axis is
+          holding. `rounded-md` to match the box it stands in for; the border is
+          the box's own and stays there. */}
+      <div className="bg-background absolute inset-0 rounded-md" aria-hidden="true" />
 
       {/* NO `overflow-hidden`, and that word is the whole of the first half of
           this bug. The grip and the resize edge grow their 44 px touch target

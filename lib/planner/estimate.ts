@@ -332,6 +332,25 @@ export function bandCarriesFigure(day: PlanDay | null | undefined): boolean {
 export const DEFAULT_OCCUPIED_MINUTES = 45;
 
 /**
+ * The two halves of a block's length, so the two readers below cannot drift.
+ *
+ * `planned` is what the entry is expected to cost; `band` is the model's own
+ * spread on top of it, and it exists only for a forecast — a free block's
+ * duration and a ridden entry's measured minutes are facts with no spread.
+ */
+function spanParts(
+  day: PlanDay | null | undefined,
+  entry: PlannerEntry,
+  fallback: number
+): { planned: number; band: number } {
+  if (entry.custom) return { planned: entry.custom.durationMinutes, band: 0 };
+  if (entry.done) return { planned: entry.actualWait ?? fallback, band: 0 };
+  const estimate = estimateFor(day, entry);
+  if (estimate.wait === null) return { planned: fallback, band: 0 };
+  return { planned: estimate.wait, band: estimate.uncertaintyMinutes ?? 0 };
+}
+
+/**
  * How long an entry occupies the visitor, for placement arithmetic.
  *
  * The reason this exists: the ride search filed every existing entry as 45
@@ -348,15 +367,49 @@ export const DEFAULT_OCCUPIED_MINUTES = 45;
  * can see. It deliberately does NOT reproduce the grid's `MIN_BLOCK_PX` floor:
  * that floor is about a block staying legible at 1.2 px/min and says nothing
  * about how long somebody is busy.
+ *
+ * This is the DRAWN length and the length a gesture is answered with. What the
+ * optimiser schedules against is {@link plannedMinutes} — see its docstring for
+ * why the two are different questions.
  */
 export function occupiedMinutes(
   day: PlanDay | null | undefined,
   entry: PlannerEntry,
   fallback = DEFAULT_OCCUPIED_MINUTES
 ): number {
-  if (entry.custom) return entry.custom.durationMinutes;
-  if (entry.done) return entry.actualWait ?? fallback;
-  const estimate = estimateFor(day, entry);
-  if (estimate.wait === null) return fallback;
-  return estimate.wait + (estimate.uncertaintyMinutes ?? 0);
+  const { planned, band } = spanParts(day, entry, fallback);
+  return planned + band;
+}
+
+/**
+ * The same length with the band left off — what a plan is BUILT on.
+ *
+ * `occupiedMinutes` answers "how tall is this block", and that is the right
+ * answer for drawing it and for the gestures that work on what is drawn. It is
+ * the wrong answer for the clock the optimiser runs, and the difference is not
+ * cosmetic: `uncertaintyMinutes` is a half-width around the prediction, so
+ * adding all of it schedules the pessimistic end of every queue as though it
+ * were the expected one. On Phantasialand's payload for 2026-09-13 the band is
+ * 29 minutes on Taron and 36–38 on F.L.Y. and the two Winja's — as long again
+ * as the queue it is a spread around — so every stop after the first was pushed
+ * back by most of an hour and the day ran past closing with a headliner left
+ * out of it.
+ *
+ * It was also only ever HALF the optimiser's arithmetic: `waitByHour`, the cost
+ * function and every comparison in `optimize.ts` read the bare `wait`, while the
+ * clock that moved between two stops read this. Two numbers for one ride inside
+ * one search, which is the shape of bug that module's own docstrings keep
+ * naming.
+ *
+ * So the expected wait plans the day, and the band is what the block still
+ * shows: a stop may start while the block before it is still drawing its spread,
+ * because the spread is an interval the true value sits somewhere in and not an
+ * appointment anybody has to keep.
+ */
+export function plannedMinutes(
+  day: PlanDay | null | undefined,
+  entry: PlannerEntry,
+  fallback = DEFAULT_OCCUPIED_MINUTES
+): number {
+  return spanParts(day, entry, fallback).planned;
 }
