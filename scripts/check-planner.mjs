@@ -1421,7 +1421,17 @@ if (await phoneLauncher.count()) {
       ['der Monatskalender ist antippbar', '[data-planner-day-trigger]'],
     ]) {
       const trigger = phone.locator(`${SHEET} ${opener}`).first();
-      if (!(await trigger.count())) continue;
+      // A missing trigger FAILS rather than skipping the pair of assertions
+      // under it. This pass seeds a plan with a park and a date, so both of
+      // these controls have to exist — the day picker's `{date && …}` is
+      // satisfied by construction here — and „the button is gone" is the
+      // loudest version of „the list is not tappable", not an excuse to stop
+      // asking. It is the same pass-by-omission the two checks below were
+      // rewritten to drop; leaving it here would have kept it one level up.
+      if (!(await trigger.count())) {
+        check(label, false, `${opener} nicht gefunden`);
+        continue;
+      }
       const opened = await trigger
         .click({ timeout: 5_000 })
         .then(() => true)

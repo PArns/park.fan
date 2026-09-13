@@ -558,17 +558,22 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * the overview replaces the day, and a park name and a date over a list of
    * OTHER days would be a statement about something that is not on screen.
    *
-   * It asks for the ACTIVE park rather than for `parks.length`, which is what
-   * the column asks, and the difference is not cosmetic: everything else in
-   * this row — the title's `sr-only`, the overview chevron — hangs on `park`,
-   * so a plan that holds parks while `activeParkSlug` points at none of them
-   * (the last day of the active park cleared away, a stale id out of
-   * `localStorage`) would hide the title AND draw no chevron, leaving a bar
-   * with no name on it above a chooser reading „kein Park". Gating on the same
-   * value the neighbours gate on makes that state unreachable by construction:
-   * wherever the head is drawn, the chevron beside it is too.
+   * `parks.length > 0` is the COLUMN's own gate, deliberately, and not the
+   * `park` the rest of this row hangs on. A plan can hold parks while
+   * `activeParkSlug` points at none of them — `clearDay` drops a park whose
+   * last day goes, and a stale id can arrive from `localStorage` — and in that
+   * state the head is the park chooser, i.e. the way out. Asking for `park`
+   * here took it off the phone entirely: no head in the header (this gate), no
+   * head in the column (`withHead` is false there), and no chevron either,
+   * since that one really is gated on `park`. A panel with a title and no
+   * control in it. The desktop has always shown the chooser in exactly this
+   * state, and now the phone shows it in the same place as everything else.
+   *
+   * What DOES follow `park` is the title's `sr-only` below: the word
+   * „Tagesplaner" gives way to a park name, so it may only give way where
+   * there is one.
    */
-  const phoneHead = isPhone && !showOverview && Boolean(park);
+  const phoneHead = isPhone && !showOverview && parks.length > 0;
 
   /**
    * The sheet's own height, on a phone.
@@ -827,12 +832,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 already looking at. `sr-only` rather than gone: the sheet is a
                 dialog and a dialog owes its reader a name.
 
-                It stays visible in the two phone states that have no head to
-                show — the overview, which is not a day, and a plan with no park
-                in it at all. An unlabelled bar over an empty panel would be the
-                one screen that has to say what this thing is saying nothing. */}
+                It stays visible wherever the row has no park name to carry it:
+                the overview (which is not a day), a plan with no park in it at
+                all, and the state where the plan holds parks but none of them
+                is active — there the head is a chooser reading „kein Park",
+                which labels a control and not the panel. `park` rather than
+                `phoneHead`, so the row is never left without a name on it. */}
             <SheetTitle
-              className={cn('flex shrink-0 items-center gap-2 text-sm', phoneHead && 'sr-only')}
+              className={cn(
+                'flex shrink-0 items-center gap-2 text-sm',
+                phoneHead && park && 'sr-only'
+              )}
             >
               <CalendarPlus className="size-4" />
               {t('title')}
