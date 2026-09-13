@@ -1243,8 +1243,9 @@ if (await phoneLauncher.count()) {
     //
     // A control that is not hittable at its own centre is skipped rather than
     // failed: it is scrolled out of its container or covered, which is a
-    // different defect and gets its own named check (see "einen Tag planen"
-    // below, which is the one this sweep would otherwise have swallowed).
+    // different defect and gets its own named check (see „das letzte
+    // Bedienelement der Kopfzeile" below, which is the one this sweep would
+    // otherwise have swallowed).
     const sweepSmallTargets = (sel) =>
       phone.evaluate((sheetSelector) => {
         // Radix portals every popover and dialog to `<body>`, so a sweep of the
@@ -1428,8 +1429,10 @@ if (await phoneLauncher.count()) {
       // loudest version of „the list is not tappable", not an excuse to stop
       // asking. It is the same pass-by-omission the two checks below were
       // rewritten to drop; leaving it here would have kept it one level up.
+      const reachName = `${label.replace(' ist antippbar', '')} nimmt den Druck an`;
       if (!(await trigger.count())) {
         check(label, false, `${opener} nicht gefunden`);
+        check(reachName, false, 'kein Trigger, also kein Popover');
         continue;
       }
       const opened = await trigger
@@ -1438,6 +1441,7 @@ if (await phoneLauncher.count()) {
         .catch(() => false);
       if (!opened) {
         check(label, false, 'ließ sich nicht öffnen');
+        check(reachName, false, 'Popover ließ sich nicht öffnen');
         continue;
       }
       await phone.waitForTimeout(400);
@@ -1500,7 +1504,7 @@ if (await phoneLauncher.count()) {
             .catch((error) => String(error.message).split('\n')[0].slice(0, 120))
         : 'kein bedienbarer Eintrag im geöffneten Popover';
       check(
-        `${label.replace(' ist antippbar', '')} nimmt den Druck an`,
+        reachName,
         reaches === 'erreichbar',
         `„${pressable?.name ?? '—'}" von ${pressable?.total ?? 0} — ${reaches}`
       );
