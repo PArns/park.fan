@@ -794,6 +794,46 @@ not a queue to be shuffled, and a ride that is ticked off already happened. Both
 keep their minute and the rides are planned around them; only undone ride
 entries move.
 
+### The leg chip judges against what the search builds against
+
+The chip between two blocks grades its gap on a four-rung ladder (`legBetween`,
+`lib/planner/leg.ts`): `broken` against the certifiable floor, then `tight` /
+`good` / `generous` against the assumed ceiling, with the boundary set by the
+previous ride's own `uncertaintyMinutes`. On a day somebody laid out themselves
+that ladder works. On a day this engine just packed, it reports the engine.
+
+The reason is that the search reserves the ceiling too, so the slack a planned
+day leaves over is the remainder on `SNAP_MIN_FINE` and nothing else. Measured
+over 14 parks × 14 dates of real `/plan/day` payloads — 169 planned days, 1369
+legs, 2026-09-13 — the slack is median 6 minutes (p25 2, p75 10, max 26) against
+a band of median 15 (p25 12, p75 18, max 44). So the rung is decided before the
+geography gets a word in, and which rung it is follows from what the optimiser
+reserves:
+
+|            | reserves wait + band (before PAR-169) | reserves the wait (now) |
+| ---------- | ------------------------------------- | ----------------------- |
+| `tight`    | 0 of 162 (0.0 %)                      | **144 of 162 (88.9 %)** |
+| `good`     | 144 (91.7 %)                          | 18 (11.1 %)             |
+| `generous` | 13 (8.3 %)                            | 0 (0.0 %)               |
+
+Those 162 are the legs whose ride reports a spread at all, and that is a property
+of the **date**: `tier: measured` (today and tomorrow) carries
+`uncertaintyMinutes` on every ride, `composed` on almost none — 13 of 2846 rides
+between lead 2 and lead 45 in the same corpus. Where it is absent the ladder caps
+at `good` by design, so the other 1207 legs read "Umstieg gut" with the `°`,
+100.0 % of them. The same packed day therefore reads amber throughout for
+tomorrow and green throughout for the day after.
+
+**The threshold stays at the whole band.** Lowering it only moves which single
+rung a packed day collapses onto — at ¼ band the same corpus reads 4.7 % tight
+and 92.1 % good — while costing the population where the rungs separate. Same
+169 days, same code, headliners at a fixed cadence instead of packed: at a
+60-minute cadence the band legs go 42.1 % tight / 27.6 % good / 22.8 % generous,
+with 8.5 % of all legs `broken`; at 90 minutes, 2.9 / 23.5 / 71.6. `PAR-174`
+carries the full tables, and `pnpm test:planner-leg` pins the three points that
+tell the thresholds apart: the snap remainder against a real band is `tight`,
+three quarters of a band is still `tight`, and a whole band is `good`.
+
 ### A queue is joined before closing, and never after
 
 Two halves of one rule, and the planner had both of them wrong in opposite

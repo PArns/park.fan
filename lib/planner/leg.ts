@@ -151,6 +151,33 @@ export function transferBetween(
  * rather than a number somebody picked, so `knapp` means precisely "this breaks
  * if the forecast is as wrong as it says it might be".
  *
+ * **On an optimiser-built day the ladder reports the optimiser, not the walk,
+ * and that is not a fault of the threshold.** The search builds against the same
+ * `ceilingMinutes` this judges against, so the slack of a freshly planned day is
+ * whatever the packing leaves over — the remainder on `SNAP_MIN_FINE`, nothing
+ * else. Measured over 14 parks × 14 dates from `/plan/day`, 169 planned days and
+ * 1369 legs (2026-09-13): slack median 6 min (p25 2, p75 10, max 26) against a
+ * band of median 15 (p25 12, p75 18, max 44). So `slack < uncertaintyMinutes`
+ * holds on 88.9 % of the legs that HAVE a band, and the day before PAR-169 —
+ * when the optimiser reserved wait PLUS band and the slack was therefore ≥ band
+ * by construction — it held on 0.0 % of them, with 8.3 % reading "großzügig".
+ * Both times the chip mirrored the reservation policy back.
+ *
+ * The threshold stays anyway, because lowering it moves which single rung a
+ * packed day lands on and buys nothing: at ¼ band the same corpus reads 4.7 %
+ * knapp and 92.1 % gut. What it would cost is the population where the ladder
+ * does work — a day somebody laid out or dragged themselves, where the slack is
+ * a free variable. Same 169 days, same code, headliners at a fixed cadence
+ * instead of packed: at 60 minutes the band legs go 42.1 % knapp / 27.6 % gut /
+ * 22.8 % großzügig (and 8.5 % of all legs broken), at 90 minutes 2.9 / 23.5 /
+ * 71.6. The rung answers the slack exactly as it is built to.
+ *
+ * One asymmetry this leaves, and it belongs to the payload rather than to the
+ * ladder: `uncertaintyMinutes` is reported on every ride of a `measured` day
+ * (today and tomorrow) and on almost no ride of a `composed` one, so the same
+ * packed day reads "knapp" throughout for tomorrow and "gut" throughout — capped,
+ * with the `°` — the day after. See PAR-167 for what the band itself covers.
+ *
  * `observed` says the waits are MEASUREMENTS rather than predictions, and it
  * changes what a missing spread means. On a forecast, no spread is a gap in what
  * the model reported and the ladder caps at "gut" — "großzügig" is a claim about
