@@ -48,7 +48,10 @@ evening hours.)
 
   - The check took `--url=` to be run on a chosen park at all; it used to hard-wire
     four pages. Without it the run grades a fixed set and says nothing about the
-    park that has the DOWN ride.
+    park that has the DOWN ride. A page named with `--url=` that renders no framed
+    photo now **fails** the run rather than passing with nothing measured — in the
+    default set an empty surface is ordinary, but a page you asked for by name is
+    the run, and "0 checked, 0 failures, exit 0" is the same output as a clean pass.
   - **No card was observed carrying both a framed photo and the outage line.** Of
     the 14 parks with the most DOWN rides, 13 render **zero** `data-card-photo="frame"`
     (Toverland, the check's own reference park, renders 6): the media database

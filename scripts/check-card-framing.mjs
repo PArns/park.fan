@@ -62,11 +62,26 @@ const DEFAULT_PAGES = [
   ['home', '/de'],
 ];
 
-const urlArg = process.argv
-  .slice(2)
-  .filter((a) => a.startsWith('--url='))
-  .map((a) => a.slice(6));
-const PAGES = urlArg.length ? urlArg.map((path) => ['--url', path]) : DEFAULT_PAGES;
+const argv = process.argv.slice(2);
+const urlArg = argv.filter((a) => a.startsWith('--url=')).map((a) => a.slice(6));
+
+// A mistyped page must not read as "no page asked for". `--url /path` with a space,
+// a bare path, or `--url=` with nothing after it would each fall through to
+// DEFAULT_PAGES and print a green result for four pages nobody asked about — a pass
+// that answers a different question than the one that was put.
+const stray = argv.filter((a) => !a.startsWith('--url='));
+if (stray.length || urlArg.some((u) => !u.startsWith('/'))) {
+  console.error(
+    'Unrecognised argument: ' +
+      [...stray, ...urlArg.filter((u) => !u.startsWith('/'))].map((a) => `"${a}"`).join(' ') +
+      '\n' +
+      'Usage: pnpm check:card-framing [--url=/de/… [--url=/de/…]]  (BASE=… to point elsewhere)'
+  );
+  process.exit(2);
+}
+
+const ASKED_FOR = urlArg.length > 0;
+const PAGES = ASKED_FOR ? urlArg.map((path) => ['requested page', path]) : DEFAULT_PAGES;
 
 /**
  * How wide the photo strip has to stay. 1.5 is comfortably below where the cards
@@ -122,6 +137,11 @@ const browser = await chromium.launch(
 const page = await browser.newPage({ viewport: { width: 1280, height: 1400 } });
 
 let failures = 0;
+/** Boxes that actually went square — the invariant this script is named after.
+ *  Kept apart from `failures`, which also counts a page that could not be loaded
+ *  or had nothing to measure: those make the run red without telling you anything
+ *  about an aspect ratio, and the closing line used to report them as if they did. */
+let squashed = 0;
 let checked = 0;
 
 for (const [label, path] of PAGES) {
@@ -135,6 +155,18 @@ for (const [label, path] of PAGES) {
   }
 
   if (rows.length === 0) {
+    // In the default set this is ordinary: not every surface renders a framed photo,
+    // and the other three still grade the invariant. A page named with `--url=` is the
+    // opposite case — it IS the run, and finding nothing to measure on it means the
+    // question was not answered. Exiting 0 there reports "the box is fine" about a page
+    // whose box was never looked at, which is the one outcome worse than a red run:
+    // most parks whose rides go down carry no card photos at all, so this is the
+    // common case for the flag rather than the exotic one.
+    if (ASKED_FOR) {
+      console.error(`✗ ${label} (${path}) — no framed photos on this page, nothing measured`);
+      failures++;
+      continue;
+    }
     console.log(`· ${label} (${path}) — no framed photos on this page`);
     continue;
   }
@@ -143,7 +175,10 @@ for (const [label, path] of PAGES) {
   for (const row of rows) {
     checked++;
     const ok = !row.panelled || row.boxAspect >= MIN_BOX_ASPECT;
-    if (!ok) failures++;
+    if (!ok) {
+      failures++;
+      squashed++;
+    }
     const note = !row.panelled
       ? '  (no bottom panel — the photo spans the card, nothing to crop)'
       : row.slack === 0
@@ -161,13 +196,13 @@ await browser.close();
 
 console.log(
   `\n${checked} framed photo${checked === 1 ? '' : 's'} checked, ` +
-    `${failures} in a panelled card whose box fell below ${MIN_BOX_ASPECT}.`
+    `${squashed} in a panelled card whose box fell below ${MIN_BOX_ASPECT}.`
 );
-if (failures > 0) {
+if (squashed > 0) {
   console.error(
     `A card's photo box has gone squarer than ${MIN_BOX_ASPECT}, so landscape photos in it\n` +
       'fill its height exactly and their focal point cannot move vertically.\n' +
       'See the note in components/parks/card-photo.tsx.'
   );
-  process.exit(1);
 }
+if (failures > 0) process.exit(1);
