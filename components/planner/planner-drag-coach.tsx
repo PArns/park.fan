@@ -14,7 +14,7 @@ import { plannerDragCoach } from '@/lib/planner/drag-coach';
  * sentence; that badge now waits for the pointer to arrive on a card, and this
  * is what reaches somebody who has not thought to hover yet.
  *
- * Shown only where the gesture exists — `hidden sm:flex`, because a coarse
+ * Shown only where the gesture exists — `planner-wide:flex`, because a coarse
  * pointer has no drag and drop and the panel's own search is the way in there —
  * and only while there is a park page behind the panel to drag from. Dismissed
  * for good on the button, because a hint that comes back is not a hint.

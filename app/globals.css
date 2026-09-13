@@ -100,7 +100,7 @@
  *
  * The utility ships as a MEDIA query — `width: 100%` plus a max-width tier picked from how wide
  * the WINDOW is — and the trip planner made those two different numbers: it insets the page
- * (`sm:pr-[var(--planner-inset,0px)]` on the `@container/page` div in app/[locale]/layout.tsx)
+ * (`planner-wide:pr-[var(--planner-inset,0px)]` on the `@container/page` div in app/[locale]/layout.tsx)
  * without the window moving a pixel. 69 call sites read the wrong one, all of them the bare class
  * and nearly all `container mx-auto`, so it is answered here rather than at each of them.
  *

@@ -96,7 +96,7 @@ export function PlannerShowBand({
   return (
     <div
       data-planner-show-band=""
-      // `planner-phone:min-h-11`, and it is the strip that grows rather than only the
+      // `max-sm:min-h-11`, and it is the strip that grows rather than only the
       // switch inside it. A 44 px pseudo-element hanging out of a 22 px strip
       // was tried and is wrong here: this strip is `sticky top-0` INSIDE the
       // grid's scroller, so the overhang follows the scroll across the blocks —
@@ -111,6 +111,18 @@ export function PlannerShowBand({
       // coverage — stuck at the top it hides 44 px of grid instead of 22 — and
       // that is recoverable by scrolling, where a stolen tap is not.
       //
+      // **`max-sm:` and not `planner-phone:`, and that trade is why** (PAR-76).
+      // "Recoverable by scrolling" assumes the viewport is taller than the
+      // strip. On a landscape phone it is not: the axis' scroller is 16 px
+      // there, so a 44 px strip stuck at its top covers the whole of it,
+      // permanently, and no amount of scrolling moves a `sticky top-0` child
+      // out of the way. The 22 px version at least leaves something to look at.
+      // The tap this gives up is the shows toggle's, in the one arrangement
+      // where the axis it would reveal is 16 px tall — the same bargain the
+      // axis' own 200 px floor makes two files over, and the same reason: the
+      // chrome there is 343 px of a 359 px sheet, and a class cannot mint room.
+      // Both are PAR-168's to spend.
+      //
       // Unconditional, though the switch it was raised for renders only where
       // there are shows: a height that depends on the answer is not a
       // reservation, and this strip's whole job in the loading state is to keep
@@ -118,7 +130,7 @@ export function PlannerShowBand({
       // `lines?.length` would buy back 22 px on a park with no shows and pay
       // for it with a 22 px jump on every park that has them, one second after
       // the panel opens.
-      className="border-border/60 bg-background/95 text-muted-foreground planner-phone:min-h-11 sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm"
+      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm max-sm:min-h-11"
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
       title={observedOn ? t('shows.projectedFrom', { date: observedOn }) : undefined}
@@ -168,7 +180,7 @@ export function PlannerShowBand({
           // 16 px measured, and the smallest target in the panel. It grows
           // inside a strip that grew with it — see the strip's own note for why
           // this is the one place a pseudo-element was the wrong instrument.
-          className="hover:text-foreground planner-phone:-my-0 planner-phone:size-11 -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors"
+          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11"
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />

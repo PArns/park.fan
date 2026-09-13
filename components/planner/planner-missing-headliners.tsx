@@ -186,7 +186,7 @@ export function PlannerMissingHeadliners({
                   }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:min-h-11 flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors sm:cursor-grab sm:active:cursor-grabbing"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:min-h-11 planner-wide:cursor-grab planner-wide:active:cursor-grabbing flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
             >
               {/* The ride's picture, at 16 px. A pill was a word in a rounded
                   box, which is what a filter chip looks like — and these are

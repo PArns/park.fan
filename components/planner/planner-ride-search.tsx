@@ -156,7 +156,11 @@ export function PlannerRideSearch({
   }, [byName, query]);
 
   return (
-    <div className="border-border/60 border-t px-2 pt-2 pb-2">
+    /* Named like every other row of the panel, because `check:planner` has to
+       be able to ask whether this surface is on screen: it is one half of two
+       pairs — the empty day's sentence and the free-block row both mean
+       something different depending on whether this list is drawn (PAR-76). */
+    <div data-planner-ride-search="" className="border-border/60 border-t px-2 pt-2 pb-2">
       <div className="relative">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input

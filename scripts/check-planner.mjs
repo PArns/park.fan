@@ -6386,8 +6386,14 @@ if (live) {
         // use that; the tag is only the fallback for a hit that has none above
         // it at all.
         if (hit && !scroller.contains(hit) && hit !== scroller) {
+          // `[data-planner-show-band]` is deliberately NOT in this list: the
+          // strip is a `sticky` CHILD of the scroller being measured, so the
+          // guard above (`!scroller.contains(hit)`) has already excluded it and
+          // listing it would only suggest a case this can report. It cannot —
+          // a band covering its own axis is invisible to this assertion, and
+          // that gap is real rather than closed here (see PAR-168).
           const named = hit.closest(
-            '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary],[data-planner-add-custom],[data-planner-show-band],[data-planner-column-head]'
+            '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary],[data-planner-add-custom],[data-planner-column-head]'
           );
           covers = named ? Object.keys(named.dataset)[0] : hit.tagName;
         }
@@ -6472,6 +6478,35 @@ if (live) {
       'der Griff ist im Querformat da und 44 px hoch',
       handleBox !== null && Math.round(handleBox.height) === 44,
       handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
+    );
+
+    // The two PAIRS this change is built on, asserted rather than assumed.
+    //
+    // Every class the sweep moved has a counterpart that has to move with it,
+    // and a pair that disagrees does not look broken — it draws the same offer
+    // twice, or names a gesture the reader does not have. Both of these were
+    // found by review rather than by this pass, which is the gap being closed:
+    // put either file back on `sm:` and the geometry assertions above stay
+    // green while the sheet says two contradictory things.
+    const addCustom = await land.locator(`${SHEET} [data-planner-add-custom]`).count();
+    check(
+      'der Eigener-Block-Knopf steht im Querformat genau einmal',
+      addCustom === 1,
+      `${addCustom}× gefunden (Fußzeile und Ride-Suche tragen beide eine Fassung — ` +
+        `oberhalb planner-wide die Fußzeile, darunter die Suche)`
+    );
+
+    // The empty day's sentence follows the ride search: where the search is
+    // drawn, "such dir unten eine Bahn" is true and the drag coach's line is
+    // not. On a landscape phone the search IS drawn, so the drag line — a
+    // gesture a thumb does not have, pointing at a page the modal sheet covers
+    // — may not be what stands there.
+    const searchShown = await land.locator(`${SHEET} [data-planner-ride-search]`).count();
+    const coachShown = await land.locator(`${SHEET} [data-planner-drag-coach]`).count();
+    check(
+      'im Querformat ist die Ride-Suche da und der Drag-Hinweis nicht',
+      searchShown > 0 && coachShown === 0,
+      `Ride-Suche ${searchShown}× · Drag-Hinweis ${coachShown}×`
     );
   } else {
     check('im Querformat liegt das Panel unten und nicht rechts', false, 'Launcher nicht gefunden');
