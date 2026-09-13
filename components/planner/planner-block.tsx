@@ -463,12 +463,12 @@ export function PlannerBlock({
           onClick={onSelect}
           aria-label={t('entry.dragHandle')}
           className={cn(
-            'absolute inset-y-0 left-0 z-30 w-6 cursor-grab touch-none active:cursor-grabbing max-sm:w-11',
+            'planner-phone:w-11 absolute inset-y-0 left-0 z-30 w-6 cursor-grab touch-none active:cursor-grabbing',
             // The target grows and the box does not: on a 20 px block a 44 px
             // pseudo-element reaches past the edges without moving anything.
             // Which only works because the box no longer clips — see the note on
             // the bordered div above.
-            'max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:h-11 max-sm:after:w-11 max-sm:after:-translate-y-1/2 max-sm:after:content-[""]'
+            'planner-phone:after:absolute planner-phone:after:top-1/2 planner-phone:after:h-11 planner-phone:after:w-11 planner-phone:after:-translate-y-1/2 planner-phone:after:content-[""]'
           )}
         />
 
@@ -517,7 +517,7 @@ export function PlannerBlock({
               // for a thing that was decided rather than broken. Whoever does
               // that teaches the sweep the exception — floor of `min(44, the
               // block's room)` for a resize edge — rather than lifting this cap.
-              'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-[min(2.75rem,var(--pl-edge-room))] max-sm:after:content-[""]'
+              'planner-phone:after:absolute planner-phone:after:right-0 planner-phone:after:bottom-0 planner-phone:after:left-11 planner-phone:after:h-[min(2.75rem,var(--pl-edge-room))] planner-phone:after:content-[""]'
             )}
           >
             <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />
@@ -552,7 +552,7 @@ export function PlannerBlock({
              handler. `pointer-events: none` removes it from hit-testing only:
              it keeps its place in the tab order, and arrow keys still move the
              block by `step`. */
-          className="pointer-events-none absolute inset-y-0 left-0 z-20 w-6 cursor-pointer appearance-none bg-transparent opacity-0 focus-visible:pointer-events-auto max-sm:w-11"
+          className="planner-phone:w-11 pointer-events-none absolute inset-y-0 left-0 z-20 w-6 cursor-pointer appearance-none bg-transparent opacity-0 focus-visible:pointer-events-auto"
         />
 
         {/* The text, and a shadow under it wherever a photograph is. A block's

@@ -6309,6 +6309,229 @@ if (live) {
   await tight.close();
 }
 
+// ── Landscape, 844×390 ───────────────────────────────────────────────────────
+//
+// The same device as the 390×844 pass above, rotated — and until PAR-76 the one
+// the panel got wrong, because `sm` asks the WIDTH and 844 is over it. The panel
+// therefore drew its desktop arrangement into a 390 px tall window: a 448×390
+// side sheet at x=396 whose time axis was 16 px, all sixteen of them under the
+// optimize row.
+//
+// What this pass guards is the SWITCH, not the axis' height. `planner-phone`
+// (app/globals.css) and `PLANNER_PHONE_QUERY` carry a height term now, so a flat
+// window gets the bottom sheet, the grab handle and the coarse-pointer targets.
+// The axis is still 16 px and that is measured rather than asserted: the sheet's
+// chrome rows add up to 426 px at this size against a 359 px sheet, so the axis —
+// `min-h-0 shrink` — has nothing to take. Two hours of day (216 px at
+// `PX_PER_MIN_COARSE`) needs the chrome down to 143, which is a different change
+// and a different ticket (PAR-76's first criterion, left open on purpose).
+//
+// So: assert what this change actually decides, and PRINT the number the next
+// change has to move. An assertion on 16 px would go red the moment somebody
+// improves it, which is the wrong direction for a check to fail in.
+//
+// NOT behind `live` as a whole, unlike the two passes above — and the split is
+// deliberate. What this pass is really about is the SWITCH: the arrangement,
+// the grab handle and the coarse-pointer branch are properties of the window
+// and the pointer, and they hold whether or not `/plan/day` answered. Only the
+// axis needs the day's opening hours, so only the axis' own assertion carries
+// the guard, right where it is made.
+{
+  const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
+  noteErrors(land);
+  await seed(land);
+  const landLauncher = land.locator(LAUNCHER);
+  await landLauncher.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
+  await settleHydration(land);
+  if (await landLauncher.count()) {
+    await landLauncher.click();
+    await land.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await land.waitForTimeout(2500);
+
+    // The instrument first, as in the portrait pass: a landscape phone that
+    // answers `(pointer: fine)` is a mouse in a short window, and every sentence
+    // below is about a thumb.
+    const pointer = await land.evaluate(() => ({
+      coarse: matchMedia('(pointer: coarse)').matches,
+      fine: matchMedia('(pointer: fine)').matches,
+    }));
+    check(
+      'die Querformat-Seite ist ein Grobzeiger',
+      pointer.coarse && !pointer.fine,
+      `coarse ${pointer.coarse} · fine ${pointer.fine}`
+    );
+
+    const room = await land.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      if (!sheet) return null;
+      const box = sheet.getBoundingClientRect();
+      const grid = sheet.querySelector('[data-planner-grid]');
+      const scroller = grid?.closest('.overflow-y-auto') ?? null;
+      const axis = scroller?.getBoundingClientRect() ?? null;
+      // Whatever is actually painted at the axis' centre. `getBoundingClientRect`
+      // cannot answer "is something over this" — two boxes overlap happily and
+      // both report their own geometry — so ask the browser what a finger would
+      // hit there instead.
+      let covers = null;
+      if (axis && axis.height > 0) {
+        const hit = document.elementFromPoint(
+          Math.round(axis.x + axis.width / 2),
+          Math.round(axis.y + axis.height / 2)
+        );
+        // The name of the ROW in the way, not the tag of whatever pixel the
+        // point happened to land on: `DIV` names nothing, and which row it is
+        // decides whose ticket it is — the optimize bar, the headliner band and
+        // the summary are three different sets of pixels. So walk up from the
+        // hit to the nearest element that carries a `data-planner-*` name and
+        // use that; the tag is only the fallback for a hit that has none above
+        // it at all.
+        if (hit && !scroller.contains(hit) && hit !== scroller) {
+          // `[data-planner-show-band]` is deliberately NOT in this list: the
+          // strip is a `sticky` CHILD of the scroller being measured, so the
+          // guard above (`!scroller.contains(hit)`) has already excluded it and
+          // listing it would only suggest a case this can report. It cannot —
+          // a band covering its own axis is invisible to this assertion, and
+          // that gap is real rather than closed here (see PAR-168).
+          const named = hit.closest(
+            '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary],[data-planner-add-custom],[data-planner-column-head]'
+          );
+          covers = named ? Object.keys(named.dataset)[0] : hit.tagName;
+        }
+      }
+      // How much of the axis is INSIDE the sheet, which is not the same as how
+      // tall it is: `min-h` on a box whose parent is `min-h-0 flex-1` makes it
+      // overflow rather than grow the parent, and an axis reported as 200 px can
+      // have 37 of them below the sheet's own bottom edge with four rows painted
+      // over the rest. `height - axis` as a stand-in for "chrome" is a lie in
+      // exactly that case, so both numbers are measured against the sheet.
+      const visible =
+        axis && axis.height > 0
+          ? Math.max(0, Math.min(axis.bottom, box.bottom) - Math.max(axis.top, box.top))
+          : 0;
+      return {
+        width: Math.round(box.width),
+        height: Math.round(box.height),
+        left: Math.round(box.x),
+        bottom: Math.round(window.innerHeight - box.bottom),
+        axis: axis ? Math.round(axis.height) : null,
+        axisVisible: Math.round(visible),
+        covers,
+        handle: sheet.querySelector('[data-planner-sheet-handle]'),
+      };
+    }, SHEET);
+
+    if (room) {
+      // A bottom sheet, measured the way the portrait pass measures one: it spans
+      // the window's width and sits on its bottom edge. The `left` and `bottom`
+      // halves are what separate it from the side panel this used to be — that
+      // one reported `left: 396`.
+      check(
+        'im Querformat liegt das Panel unten und nicht rechts',
+        room.left === 0 && room.bottom === 0 && room.width >= 800,
+        `Sheet ${room.width}×${room.height} bei (${room.left}, unten ${room.bottom} px)`
+      );
+      // 92svh of 390, i.e. the phone ceiling doing its job at a size where the
+      // width breakpoint never reached it. Bounded on both sides: `h-auto` with
+      // no ceiling would grow past the window, and a ceiling that clamps to
+      // nothing would collapse the sheet.
+      check(
+        'das Querformat-Sheet nimmt 92svh statt der ganzen Höhe',
+        room.height === 359,
+        `${room.height} px von 390 (erwartet 359 = 92svh)`
+      );
+      // Only where there IS an axis, and the guard is the assertion's own: with
+      // a 404 from `/plan/day` there are no opening hours, `buildDayGrid`
+      // answers `null` and nothing is drawn — at which point `covers` is `null`
+      // because there was nothing to cover, and this would go green on a run
+      // that measured no axis at all. That is the failure mode the whole pass
+      // exists to catch, so it may not be the one it reports as passing.
+      if (live) {
+        check(
+          'nichts liegt über der Achse',
+          room.axis !== null && room.axis > 0 && room.covers === null,
+          room.axis === null || room.axis === 0
+            ? 'keine Achse gefunden — nichts gemessen'
+            : room.covers === null
+              ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
+              : `${room.covers} liegt über der Achse · Achse ${room.axis} px, davon ${room.axisVisible} px im Sheet ` +
+                `· Chrome ${room.height - room.axisVisible} px von ${room.height} (PAR-168)`
+        );
+        // Printed, not asserted — see the note above this block. `axisVisible`
+        // rather than `axis`, and the difference is the whole finding: an axis
+        // can report 200 px with 10 of them in the sheet.
+        console.log(
+          `ℹ️  Achse im Querformat: ${room.axisVisible} px sichtbar (Box ${room.axis} px) ` +
+            `in einem ${room.height} px hohen Sheet · Chrome ${room.height - room.axisVisible} px ` +
+            `(PAR-168: 216 px nötig, also Chrome ≤ 143)`
+        );
+      }
+    } else {
+      check('im Querformat liegt das Panel unten und nicht rechts', false, 'kein Sheet gefunden');
+    }
+
+    // The handle is `planner-wide:hidden` now rather than `sm:hidden`, and this
+    // is the assertion that says the rename took: at 844 px wide the old class
+    // hid it, because 844 is over `sm`.
+    const handle = land.locator('[data-planner-sheet-handle]');
+    const handleBox = (await handle.count()) ? await handle.first().boundingBox() : null;
+    check(
+      'der Griff ist im Querformat da und 44 px hoch',
+      handleBox !== null && Math.round(handleBox.height) === 44,
+      handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
+    );
+
+    // The two PAIRS this change is built on, asserted rather than assumed.
+    //
+    // Every class the sweep moved has a counterpart that has to move with it,
+    // and a pair that disagrees does not look broken — it draws the same offer
+    // twice, or names a gesture the reader does not have. Both of these were
+    // found by review rather than by this pass, which is the gap being closed:
+    // put either file back on `sm:` and the geometry assertions above stay
+    // green while the sheet says two contradictory things.
+    // `:visible` on every one of these, never `count()`. Both halves of both
+    // pairs are always in the DOM — what the variants decide is `display`, and
+    // `count()` reads a `display:none` element as present. An assertion built on
+    // it cannot fail, which is the trap these two were written into first: the
+    // free-block row and the search's copy of it both existed at every size, so
+    // the "exactly once" it reported was the DOM's arithmetic and not the
+    // sheet's.
+    const addCustom = await land
+      .locator(
+        `${SHEET} [data-planner-add-custom]:visible, ${SHEET} [data-planner-add-custom-search]:visible`
+      )
+      .count();
+    check(
+      'der Eigener-Block-Knopf steht im Querformat genau einmal',
+      addCustom === 1,
+      `${addCustom}× sichtbar (die Fußzeile trägt eine Fassung, die Ride-Suche ihre eigene — ` +
+        `oberhalb planner-wide die Fußzeile, darunter die Suche, nie beide)`
+    );
+
+    // The ride search is the phone's way in, and on a landscape phone it has to
+    // BE there: `planner-wide:hidden` is the class that decides it, and at 844 px
+    // wide the `sm:hidden` it replaced took it away. Its visibility is also what
+    // the empty day's sentence is paired with — where this list is drawn,
+    // "such dir unten eine Bahn" is the true half.
+    const searchShown = await land.locator(`${SHEET} [data-planner-ride-search]:visible`).count();
+    check(
+      'die Ride-Suche ist im Querformat sichtbar',
+      searchShown === 1,
+      `${searchShown}× sichtbar`
+    );
+
+    // The drag coach is NOT asserted here, and the reason is worth a line rather
+    // than a silent omission: it renders only where a park page is behind the
+    // panel (`pagePark`), and `seed()` opens the planner from `/de`, where there
+    // is none — so it is absent at every viewport and an assertion on that would
+    // pass without testing anything, exactly like the two above nearly did. Its
+    // pairing with the search is covered by the class itself
+    // (`planner-wide:flex`) and by the empty grid's two lines.
+  } else {
+    check('im Querformat liegt das Panel unten und nicht rechts', false, 'Launcher nicht gefunden');
+  }
+  await land.close();
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,

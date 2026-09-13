@@ -62,7 +62,7 @@ export function PlannerFitList({
             <label
               data-planner-fit-row={wish.key}
               className={cn(
-                'hover:bg-accent/60 flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1.5 transition-colors max-sm:py-2.5',
+                'hover:bg-accent/60 planner-phone:py-2.5 flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1.5 transition-colors',
                 off && 'opacity-55'
               )}
             >
@@ -121,7 +121,7 @@ export function PlannerFitList({
                 data-planner-fit-pin={wish.key}
                 title={t('fit.pinHint')}
                 className={cn(
-                  'flex size-7 shrink-0 items-center justify-center rounded-md border transition-colors max-sm:size-11',
+                  'planner-phone:size-11 flex size-7 shrink-0 items-center justify-center rounded-md border transition-colors',
                   isPinned
                     ? 'border-primary/50 bg-primary/15 text-primary'
                     : 'border-border/60 text-muted-foreground hover:bg-accent',

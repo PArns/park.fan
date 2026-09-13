@@ -932,13 +932,20 @@ export function PlannerDayGrid({
                 `useMediaQuery`, whose server snapshot is `false` and would ship
                 the phone's line in every desktop's first HTML.
                 The split is not cosmetic: the ride search below this overlay is
-                `sm:hidden`, so "such dir unten eine Bahn" is true on a phone and
-                false at every width above it. The desktop line is the drag
-                gesture, from the coach's own key — one gesture, one wording,
-                and the coach stands down while the day is empty so the two
-                never appear together. */}
-            <p className="mt-1 sm:hidden">{t('empty.bodyGrid')}</p>
-            <p className="mt-1 hidden sm:block">{t('coach.drag')}</p>
+                `planner-wide:hidden`, so "such dir unten eine Bahn" is true
+                wherever that search is drawn and false wherever it is not. The
+                desktop line is the drag gesture, from the coach's own key — one
+                gesture, one wording, and the coach stands down while the day is
+                empty so the two never appear together.
+
+                Which is why these two moved off `sm:` with the search itself
+                (PAR-76): at 844x390 the search is there and this still said
+                "drag a ride from the park page", a gesture a thumb does not
+                have, while the list it should have pointed at sat right below.
+                The pair asks one question — is the search on screen — and both
+                halves have to ask it the same way. */}
+            <p className="planner-wide:hidden mt-1">{t('empty.bodyGrid')}</p>
+            <p className="planner-wide:block mt-1 hidden">{t('coach.drag')}</p>
             {/* The way OUT of an empty day, where a reader standing in another
                 park would otherwise be told to drag in a ride that does not
                 belong to the day on screen. Optional and usually absent — see

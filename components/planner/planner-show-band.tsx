@@ -111,6 +111,18 @@ export function PlannerShowBand({
       // coverage — stuck at the top it hides 44 px of grid instead of 22 — and
       // that is recoverable by scrolling, where a stolen tap is not.
       //
+      // **`max-sm:` and not `planner-phone:`, and that trade is why** (PAR-76).
+      // "Recoverable by scrolling" assumes the viewport is taller than the
+      // strip. On a landscape phone it is not: the axis' scroller is 16 px
+      // there, so a 44 px strip stuck at its top covers the whole of it,
+      // permanently, and no amount of scrolling moves a `sticky top-0` child
+      // out of the way. The 22 px version at least leaves something to look at.
+      // The tap this gives up is the shows toggle's, in the one arrangement
+      // where the axis it would reveal is 16 px tall — the same bargain the
+      // axis' own 200 px floor makes two files over, and the same reason: the
+      // chrome there is 343 px of a 359 px sheet, and a class cannot mint room.
+      // Both are PAR-168's to spend.
+      //
       // Unconditional, though the switch it was raised for renders only where
       // there are shows: a height that depends on the answer is not a
       // reservation, and this strip's whole job in the loading state is to keep

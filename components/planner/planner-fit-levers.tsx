@@ -49,7 +49,7 @@ export function PlannerFitLevers({
               aria-pressed={on}
               data-planner-fit-lever={key}
               className={cn(
-                'flex w-full items-start gap-2 rounded-md border px-2.5 py-2 text-left transition-colors max-sm:py-2.5',
+                'planner-phone:py-2.5 flex w-full items-start gap-2 rounded-md border px-2.5 py-2 text-left transition-colors',
                 on
                   ? 'border-primary/50 bg-primary/10'
                   : 'border-border/60 bg-background/60 hover:bg-accent'

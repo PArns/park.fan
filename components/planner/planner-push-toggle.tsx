@@ -59,7 +59,7 @@ export function PlannerPushToggle() {
           // 10 px top and bottom of it came to 36, not 44. The topic rows
           // below already say `min-h-11`, which is why they measured right and
           // the master switch above them did not.
-          'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11',
+          'planner-phone:min-h-11 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
           'hover:bg-accent disabled:opacity-60',
           on && 'text-foreground'
         )}
@@ -99,7 +99,7 @@ export function PlannerPushToggle() {
                 <label
                   key={topic}
                   className={cn(
-                    'flex items-center gap-2 rounded-md px-1 py-1 text-xs max-sm:min-h-11',
+                    'planner-phone:min-h-11 flex items-center gap-2 rounded-md px-1 py-1 text-xs',
                     last ? 'opacity-60' : 'hover:bg-accent/50 cursor-pointer'
                   )}
                 >

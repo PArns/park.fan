@@ -68,12 +68,12 @@ export function PlannerColumnHead({
   return (
     <div
       data-planner-column-head=""
-      // `max-sm:py-0`, because everything in this row is 44 px on a phone now
+      // `planner-phone:py-0`, because everything in this row is 44 px on a phone now
       // and the 2 px that used to give a 28 px control air is 4 px of axis
       // spent on nothing. The row is 32 → 44 px, and those 12 px buy the panel's
       // primary navigation: the park, and the day. Both were 28 px, i.e. under
       // a thumb, in the one control row every visit goes through.
-      className="border-border/60 flex min-w-0 shrink-0 items-center gap-1 border-b px-2 py-1.5 max-sm:py-0"
+      className="border-border/60 planner-phone:py-0 flex min-w-0 shrink-0 items-center gap-1 border-b px-2 py-1.5"
     >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -81,7 +81,7 @@ export function PlannerColumnHead({
             type="button"
             data-planner-column-park=""
             aria-label={t('column.pickPark')}
-            className="hover:bg-accent flex h-7 min-w-0 flex-1 items-center gap-1 rounded-md px-1.5 text-xs font-medium transition-colors max-sm:h-11"
+            className="hover:bg-accent planner-phone:h-11 flex h-7 min-w-0 flex-1 items-center gap-1 rounded-md px-1.5 text-xs font-medium transition-colors"
           >
             <span className="truncate">{park?.name ?? t('column.noPark')}</span>
             <ChevronDown className="size-3 shrink-0 opacity-60" aria-hidden="true" />
@@ -104,7 +104,7 @@ export function PlannerColumnHead({
                     // of 28 px rows: the door and the destination are one
                     // gesture, and this one is a scrolling list of parks where
                     // the wrong pick is a whole panel's worth of undo.
-                    'hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11',
+                    'hover:bg-accent planner-phone:min-h-11 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
                     entry.slug === parkSlug && 'bg-accent/60'
                   )}
                 >
@@ -126,7 +126,7 @@ export function PlannerColumnHead({
               onNewPark();
               setOpen(false);
             }}
-            className="hover:bg-accent border-border/60 mt-1 flex w-full items-center gap-2 rounded-md border-t px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
+            className="hover:bg-accent border-border/60 planner-phone:min-h-11 mt-1 flex w-full items-center gap-2 rounded-md border-t px-2 py-1.5 text-left text-xs transition-colors"
           >
             <Plus className="size-3.5 shrink-0" aria-hidden="true" />
             <span className="truncate">{t('column.addPark')}</span>
@@ -152,7 +152,7 @@ export function PlannerColumnHead({
           data-planner-column-close=""
           aria-label={t('column.close')}
           title={t('column.close')}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
+          className="text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:size-11 flex size-7 shrink-0 items-center justify-center rounded-md transition-colors"
         >
           <X className="size-4" aria-hidden="true" />
         </button>

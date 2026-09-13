@@ -104,12 +104,19 @@ export function PlannerDayFoot({
           DESKTOP only. It used to sit inside the ride search, which is the
           phone's surface alone, and it is the one thing in there that is not a
           ride: the catalogue has no answer for "and then we eat". The phone
-          keeps its copy inside the search, where the same question is asked. */}
+          keeps its copy inside the search, where the same question is asked.
+
+          Which makes this row and that search ONE pair, and the pair is why
+          this is `planner-wide:flex` rather than `sm:flex` (PAR-76): the search
+          is `planner-wide:hidden`, so at 844x390 it was drawn AND this row was
+          drawn, and `t('custom.add')` stood twice in the same sheet — once here
+          and once in the list right below. It also cost the axis 33 px it had
+          none of. "Desktop only" has to mean the same thing on both halves. */}
       <button
         type="button"
         onClick={onAddFreeBlock}
         data-planner-add-custom=""
-        className="text-muted-foreground hover:text-foreground hover:bg-accent/50 border-border/60 hidden shrink-0 items-center gap-2 border-t px-3 py-2 text-left text-xs transition-colors sm:flex"
+        className="text-muted-foreground hover:text-foreground hover:bg-accent/50 border-border/60 planner-wide:flex hidden shrink-0 items-center gap-2 border-t px-3 py-2 text-left text-xs transition-colors"
       >
         <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
         <span className="truncate">{t('custom.add')}</span>

@@ -176,7 +176,7 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
           aria-controls={listId}
           aria-autocomplete="list"
           aria-activedescendant={results[active] ? `${listId}-${results[active].slug}` : undefined}
-          className="pl-9 max-sm:h-11"
+          className="planner-phone:h-11 pl-9"
         />
       </div>
 
@@ -206,7 +206,7 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
                   onMouseEnter={() => setActiveSlug(park.slug)}
                   onClick={() => onPick(park)}
                   className={cn(
-                    'hover:bg-accent hover:border-border/60 flex w-full items-center gap-3 rounded-xl border border-transparent px-2 py-1.5 text-left transition-colors max-sm:py-2',
+                    'hover:bg-accent hover:border-border/60 planner-phone:py-2 flex w-full items-center gap-3 rounded-xl border border-transparent px-2 py-1.5 text-left transition-colors',
                     index === active && 'bg-accent border-border/60'
                   )}
                 >

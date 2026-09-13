@@ -57,7 +57,7 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
             // nothing loses a hit area and the band keeps its height. Same
             // trick and same reason as the block grip and the sheet handle;
             // unlike the grip, no ancestor here clips it — checked.
-            'max-sm:relative max-sm:after:absolute max-sm:after:inset-x-0 max-sm:after:top-0 max-sm:after:h-11 max-sm:after:content-[""]',
+            'planner-phone:relative planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:top-0 planner-phone:after:h-11 planner-phone:after:content-[""]',
             set
               ? 'border-primary/40 bg-primary/10 text-primary'
               : 'hover:bg-accent text-muted-foreground'
@@ -94,7 +94,7 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
             onClick={() => onChange({ riderHeightCm: undefined })}
             aria-pressed={prefs?.riderHeightCm === undefined}
             className={cn(
-              'rounded-full border px-2 py-1 text-[11px] transition-colors max-sm:min-h-11',
+              'planner-phone:min-h-11 rounded-full border px-2 py-1 text-[11px] transition-colors',
               prefs?.riderHeightCm === undefined
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'hover:bg-accent border-border'
@@ -109,7 +109,7 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
               onClick={() => onChange({ riderHeightCm: cm })}
               aria-pressed={prefs?.riderHeightCm === cm}
               className={cn(
-                'rounded-full border px-2 py-1 text-[11px] transition-colors max-sm:min-h-11',
+                'planner-phone:min-h-11 rounded-full border px-2 py-1 text-[11px] transition-colors',
                 prefs?.riderHeightCm === cm
                   ? 'bg-primary text-primary-foreground border-primary'
                   : 'hover:bg-accent border-border'
@@ -124,7 +124,7 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
             `<label>` is the checkbox's hit area, which is why the row and not
             the input gets the height. Etappe 4 raised the height chips above
             and left this one at 20 px, in the same popover. */}
-        <label className="mt-3 flex cursor-pointer items-center gap-2 text-xs max-sm:min-h-11">
+        <label className="planner-phone:min-h-11 mt-3 flex cursor-pointer items-center gap-2 text-xs">
           <input
             type="checkbox"
             checked={prefs?.avoidWet === true}
