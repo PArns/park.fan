@@ -15,6 +15,14 @@
  * keep the id and report their own class, from the shared
  * `@/lib/api/write-failure` the push writes use.
  *
+ * `forgetTrip` reads the same statuses with one flipped: there a 404 is a
+ * SUCCESS, because the caller is throwing the trip away and a trip that is
+ * already gone is the outcome they asked for. Its own rule is the push
+ * removals' — server first, mirror second — and it matters more here than
+ * anywhere else in the app: this browser holds the only copy of the id, so
+ * forgetting it before the server confirmed leaves the row unreachable to the
+ * one person who wanted it gone, for the full 400-day TTL.
+ *
  * Run: `pnpm test:trip-sync`
  */
 import assert from 'node:assert/strict';
@@ -50,7 +58,7 @@ globalThis.fetch = async (url, init) => {
   return fetchStub();
 };
 
-const { syncTrip, getTripId } = await import('../lib/planner/trip-sync.ts');
+const { syncTrip, getTripId, forgetTrip } = await import('../lib/planner/trip-sync.ts');
 
 /** A `Response` with just the parts `classifyWriteFailure` reads. */
 function response(status, body = null) {
@@ -247,6 +255,85 @@ await test('a 404 on the create route is our end, not the visitor’s payload', 
   const result = await syncTrip();
   assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
   assert.equal(getTripId(), null);
+});
+
+console.log('\nforgetTrip · switching push off');
+
+await test('a 204 deletes the row and only then forgets the id', async () => {
+  seed();
+  answers(response(204));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: true });
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].method, 'DELETE');
+  assert.equal(calls[0].url, `/api/trips/${EXISTING_ID}`);
+  // The order, not just the outcome: the request went out while the browser
+  // still knew which row to name.
+  assert.equal(calls[0].tripIdAtCall, EXISTING_ID);
+  assert.equal(getTripId(), null);
+});
+
+await test('a 404 is a success — the trip is already gone', async () => {
+  seed();
+  answers(response(404));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: true });
+  // Reported as an error it would stand for ever: every retry answers 404 too.
+  assert.equal(getTripId(), null);
+});
+
+await test('a 500 keeps the id, so the row stays reachable', async () => {
+  seed();
+  answers(response(500));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
+  // The whole point of the order: forgetting here would leave the plan on the
+  // server with nobody able to name it for 400 days.
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('a 429 keeps the id and names the limiter', async () => {
+  seed();
+  answers(response(429, { retryAfterSeconds: 42 }));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'rate-limited', retryAfterSeconds: 42 } });
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('a 400 keeps the id', async () => {
+  seed();
+  answers(response(400));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'invalid' } });
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('a thrown fetch keeps the id', async () => {
+  seed();
+  fetchStub = () => {
+    throw new TypeError('Failed to fetch');
+  };
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
+  assert.equal(calls.length, 1);
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('nothing stored sends no request and still reads as done', async () => {
+  seed({ tripId: null });
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: true });
+  assert.equal(calls.length, 0);
+  assert.equal(getTripId(), null);
+});
+
+await test('a second call after a success sends nothing', async () => {
+  seed();
+  answers(response(204));
+  await forgetTrip();
+  const again = await forgetTrip();
+  assert.deepEqual(again, { ok: true });
+  assert.equal(calls.length, 1);
 });
 
 console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);

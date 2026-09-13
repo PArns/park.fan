@@ -1,7 +1,14 @@
 'use client';
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
-import { forgetTrip, getTripId, startTripAutoSync, stopTripAutoSync, syncTrip } from './trip-sync';
+import {
+  forgetTrip,
+  getTripId,
+  startTripAutoSync,
+  stopTripAutoSync,
+  syncTrip,
+  type TripSyncError,
+} from './trip-sync';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
@@ -48,6 +55,16 @@ interface PushAvailability {
 export function usePushSubscription() {
   const [state, setState] = useState<PushState>('checking');
   const [availability, setAvailability] = useState<PushAvailability | null>(null);
+  /**
+   * Why switching off did not go through, or `null`.
+   *
+   * Only the stored plan's DELETE can refuse in a way the visitor has to hear
+   * about: it is the one step that leaves something of theirs on a server, and
+   * the switch stays ON when it fails, which needs a reason beside it. The class
+   * is carried rather than a boolean so the sentence can grow a limiter's window
+   * once one reaches the client (PAR-146).
+   */
+  const [deleteError, setDeleteError] = useState<TripSyncError | null>(null);
   const selectedTopics = useSyncExternalStore(
     plannerPushTopics.subscribe,
     plannerPushTopics.getSnapshot,
@@ -112,6 +129,17 @@ export function usePushSubscription() {
   const enable = useCallback(async () => {
     if (!availability?.publicKey) return;
     setState('working');
+    setDeleteError(null);
+
+    /**
+     * Whether this attempt put a plan on the server.
+     *
+     * Everything after the upload can still fail, and every one of those paths
+     * ends at `off` — where a stored plan may not exist, because the whole
+     * feature's rule is that the plan is uploaded only while push is on. So the
+     * row this attempt created is taken back down again on the way out.
+     */
+    let uploaded = false;
 
     try {
       const permission = await Notification.requestPermission();
@@ -130,6 +158,7 @@ export function usePushSubscription() {
         return;
       }
       const tripId = stored.id;
+      uploaded = true;
 
       // Registered only now, not on every page load: a worker installed for
       // everybody would claim scope over the whole origin for a feature almost
@@ -167,12 +196,17 @@ export function usePushSubscription() {
         // nothing. Undo it rather than leaving a dangling subscription — the
         // next attempt would otherwise find one and report "on".
         await subscription.unsubscribe().catch(() => {});
+        await forgetTrip();
         setState('off');
         return;
       }
 
       setState('on');
     } catch {
+      // Anywhere between the upload and the last line: the plan goes with it.
+      // A refused DELETE keeps the id (`forgetTrip`), which is right here too —
+      // the next attempt resumes that trip rather than stranding it.
+      if (uploaded) await forgetTrip();
       setState('off');
     }
   }, [availability, selectedTopics]);
@@ -220,8 +254,36 @@ export function usePushSubscription() {
     [availability, state]
   );
 
+  /**
+   * Switching off, and why the stored plan goes first.
+   *
+   * It is the only step that can refuse, and the only one whose failure leaves
+   * something behind: the id is the credential and this browser holds the sole
+   * copy, so a plan not deleted before the id is forgotten is unreachable to its
+   * owner for the rest of its 400 days. Running it first means a refusal finds
+   * nothing torn down — the switch stays on, the id stays, and pressing again is
+   * a real retry.
+   *
+   * The other order was worse than it looks. With the DELETE at the end, a
+   * refusal would leave the id (which it must) on a browser whose subscription
+   * had already been dismantled — and where another ride alert keeps that
+   * subscription alive, `resolve()` reads `existing && getTripId()` on the next
+   * mount and brings the switch back as ON with nothing behind it, which is the
+   * one thing this feature does not do.
+   */
   const disable = useCallback(async () => {
     setState('working');
+    setDeleteError(null);
+
+    // Read before the delete forgets it: the scoped unsubscribe below needs it.
+    const tripId = getTripId();
+    const forgotten = await forgetTrip();
+    if (!forgotten.ok) {
+      setDeleteError(forgotten.error);
+      setState('on');
+      return;
+    }
+
     try {
       const registration = await navigator.serviceWorker.getRegistration('/sw.js');
       const subscription = await registration?.pushManager.getSubscription();
@@ -237,7 +299,13 @@ export function usePushSubscription() {
         // tripId there is nothing of this feature's left on the server to
         // clear, so the call is skipped rather than sent unscoped (which
         // would read as "forget the browser entirely" and cascade anyway).
-        const tripId = getTripId();
+        //
+        // Still sent after the trip's own DELETE, which clears the same two
+        // columns on every subscription pointing at it: that one ran only on
+        // the 204 path, and on the 404 path — a trip already expired or swept —
+        // nothing has cleared this row. `PushService.unsubscribe` matches on
+        // (endpoint, tripId), so where the DELETE did clear it this is a no-op
+        // rather than a second, wider action.
         if (tripId) {
           await fetch('/api/push/subscriptions', {
             method: 'DELETE',
@@ -253,7 +321,6 @@ export function usePushSubscription() {
           await subscription.unsubscribe().catch(() => {});
         }
       }
-      forgetTrip();
     } finally {
       setState('off');
     }
@@ -274,6 +341,8 @@ export function usePushSubscription() {
     enable,
     disable,
     setTopics,
+    /** Why the last attempt to switch off was refused, or `null`. */
+    deleteError,
     /** What this deploy can send. Empty until `/api/push` has answered. */
     availableTopics: availability?.topics ?? [],
     /** The visitor's narrowing, or `null` for "everything above". */

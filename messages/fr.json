@@ -2225,7 +2225,8 @@
       "off": "Activer les notifications",
       "on": "Les notifications sont actives",
       "denied": "Votre navigateur bloque les notifications pour ce site. Seuls ses réglages peuvent le changer.",
-      "storedHint": "Votre plan est stocké sur le serveur pour cela. Qui a le lien peut le lire et le modifier : il n'y a ni compte ni mot de passe.",
+      "storedHint": "Votre plan est stocké sur le serveur pour cela. Qui a le lien peut le lire et le modifier : il n'y a ni compte ni mot de passe. Si vous désactivez les notifications, il y est supprimé.",
+      "deleteFailed": "Votre plan n'a pas pu être supprimé du serveur : les notifications restent donc actives. Réessayez dans un instant.",
       "topics": {
         "legend": "Sur quoi devons-nous vous prévenir ?",
         "only": "Vous recevrez un seul type de message : {kind}.",

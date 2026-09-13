@@ -20,11 +20,19 @@ import { usePushSubscription } from '@/lib/planner/use-push-subscription';
  *
  * The sentence under it is not decoration. Turning this on uploads the plan, and
  * the link to that copy is its only credential — no account, no password. That
- * has to be said where somebody presses the button, not in a policy page.
+ * has to be said where somebody presses the button, not in a policy page. It
+ * also says what switching off does, because switching off DELETES that copy:
+ * a hint that described the upload and stopped there would leave a visitor
+ * guessing at the only part of this they can still act on.
+ *
+ * One sentence covers a refused deletion, not one per class. The switch stays
+ * on when that happens, so what the reader needs is why it did not move and
+ * that pressing again retries — and the one class carrying a figure worth
+ * printing, the limiter's window, does not reach the client at all (PAR-146).
  */
 export function PlannerPushToggle() {
   const t = useTranslations('planner');
-  const { state, enable, disable, setTopics, availableTopics, selectedTopics } =
+  const { state, enable, disable, setTopics, availableTopics, selectedTopics, deleteError } =
     usePushSubscription();
 
   if (state === 'checking' || state === 'unsupported' || state === 'unavailable') {
@@ -139,6 +147,18 @@ export function PlannerPushToggle() {
       {on && (
         <p className="text-muted-foreground mt-1 px-2 text-[10px] leading-snug">
           {t('push.storedHint')}
+        </p>
+      )}
+
+      {/* The switch is still on and the plan is still up there. Announced,
+          because nothing else on screen changed when the press did nothing. */}
+      {deleteError !== null && (
+        <p
+          className="text-destructive mt-1 px-2 text-[10px] leading-snug"
+          role="status"
+          data-planner-push-error="delete"
+        >
+          {t('push.deleteFailed')}
         </p>
       )}
     </div>

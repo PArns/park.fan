@@ -231,14 +231,53 @@ export function stopTripAutoSync(): void {
  */
 const AUTO_SYNC_DEBOUNCE_MS = 4000;
 
+/** Deleted, or why not. A 404 lands in `ok` — see `forgetTrip`. */
+export type TripDeleteResult = { ok: true } | { ok: false; error: TripSyncError };
+
 /**
- * Forget the server's copy.
+ * Delete the server's copy, then forget it.
  *
- * Called when push is switched off. It drops the LINK rather than deleting the
- * row, because there is no delete endpoint — and deliberately so: a trip id may
- * have been shared, and a switch in one browser must not take a link somebody
- * else is holding with it. The row expires on its own.
+ * Called when push is switched off, and on the failure paths of switching it
+ * on: the plan is uploaded only while push is on, so an attempt that ends off
+ * may not leave a row behind.
+ *
+ * This used to drop the LINK and nothing else, on the grounds that a shared id
+ * must not die with one browser's switch. It had the effect backwards. There is
+ * no share entry point (PAR-82), so no id has ever been passed on — while
+ * dropping the link made the row **unreachable to the only person who wanted it
+ * gone**, for the full 400-day TTL, and left it readable and writable by anyone
+ * who had the id from a log or an old device. Switching off now deletes.
+ *
+ * **Server first, mirror second**, the rule the push removals keep: the id is
+ * the credential and this browser holds the only copy, so forgetting it before
+ * the server confirmed would lose the row for good. A refused DELETE therefore
+ * keeps the id and names its class, and the next attempt is a real retry.
+ *
+ * **A 404 is a success.** The trip has expired or is already gone; that is what
+ * the caller asked for, and an error over it would stand for ever since every
+ * retry answers 404 too. Same status, opposite reading to `syncTrip`, where a
+ * 404 means "this id is dead, start a new trip" — there it is an answer about a
+ * plan somebody is still editing, here about one they are throwing away.
  */
-export function forgetTrip(): void {
+export async function forgetTrip(): Promise<TripDeleteResult> {
+  const id = getTripId();
+  // Nothing stored: push was never on, or a previous delete already landed.
+  if (id === null) return { ok: true };
+
+  const deleted = await del(id);
+  if (!deleted.ok && deleted.error.reason !== 'not-found') {
+    return { ok: false, error: deleted.error };
+  }
   setTripId(null);
+  return { ok: true };
+}
+
+async function del(id: string): Promise<{ ok: true } | { ok: false; error: HttpWriteError }> {
+  try {
+    const response = await fetch(`/api/trips/${id}`, { method: 'DELETE' });
+    if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
+    return { ok: true };
+  } catch {
+    return { ok: false, error: { reason: 'network' } };
+  }
 }
