@@ -176,6 +176,41 @@ const check = (name, ok, detail = '') => {
   console.log(`${ok ? '✅' : '❌'} ${name}${detail ? ` — ${detail}` : ''}`);
 };
 
+/**
+ * Go to the planner's OWN page and wait for it to be drawn — never for the
+ * network to fall quiet.
+ *
+ * `waitUntil: 'networkidle'` cannot resolve on `/de/tagesplaner`, and the reason
+ * is the page rather than the server. Measured here, 1280×1000, `pnpm dev` on
+ * :3112, in-flight count sampled every 1.5 s for 18 s:
+ *
+ *     /de              2 → 1 → 1 → 1 …   (the one is the HMR client)
+ *     /de/tagesplaner  13 → 13 → 13 …    (never moves)
+ *
+ * The thirteen are `loading="lazy"` images the article's chapters mount with no
+ * laid-out box — 22 of the page's 31 images are lazy and 15 of them never
+ * complete. Chromium issues the request and then defers the fetch indefinitely,
+ * Playwright counts every deferred one as in flight, and `networkidle` wants two
+ * or fewer for 500 ms. So the condition is unreachable by construction: it is
+ * not the dev server's HMR socket (`/de` holds exactly one of those and settles
+ * in 5 s), and `pnpm start` would not help either.
+ *
+ * `domcontentloaded` plus a wait for the element the next assertion is about is
+ * what the rest of this file already does. `attached`, not `visible`: an
+ * assertion that COUNTS something must still be allowed to find zero, so the
+ * wait is a best effort and the check downstream stays the judge.
+ */
+async function gotoPlannerPage(page, url, ready) {
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
+  if (ready) {
+    await page
+      .locator(ready)
+      .first()
+      .waitFor({ state: 'attached', timeout: 15_000 })
+      .catch(() => {});
+  }
+}
+
 /** Seeds the plan the way the store writes it, then loads the page fresh. */
 async function seed(page) {
   await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
@@ -912,28 +947,69 @@ if (await phoneLauncher.count()) {
 
   check('der Anfasser ist da', (await grab.count()) === 1);
   if (await grab.count()) {
+    /**
+     * How far a drag travels, and it is a DISTANCE rather than a destination.
+     *
+     * Both pulls used to end at an absolute y — `box.y - 80` going up and
+     * `box2.y + 40` coming down — while both started at the handle's MIDDLE. So
+     * the distance each covered depended on the handle's own height, in opposite
+     * directions, and PR #440 grew that handle from 16 px to 44 px: the upward
+     * pull silently became 102 px and the downward one 18 px, which is under the
+     * 24 px `SHEET_EXPAND_PX` needs. `herunterziehen senkt sie wieder` then
+     * failed for the height of the grip rather than for anything the sheet did.
+     *
+     * Measured from the same point, in both directions, and therefore immune to
+     * the next time somebody changes that height.
+     *
+     * **80 sits in a window with a ceiling as well as a floor.** Going down,
+     * `planner-flyout.tsx` reads three thresholds off the same gesture: under
+     * `SHEET_EXPAND_PX` (24) nothing happens, over it the sheet collapses, and
+     * over `SHEET_DISMISS_PX` (90) it CLOSES. A downward pull that crossed 90
+     * would not fail this assertion — it would take the sheet away, and every
+     * strict locator after it would reject on an empty match and end the script.
+     * So the number is 24 < 80 < 90, with the narrower margin on the dismissal
+     * side, and the assertion below says which end it hit rather than leaving a
+     * bare number.
+     */
+    const DRAG_PX = 80;
+    const pullFrom = async (dy) => {
+      const box = await grab.boundingBox();
+      const x = box.x + box.width / 2;
+      const y = box.y + box.height / 2;
+      await phone.mouse.move(x, y);
+      await phone.mouse.down();
+      await phone.mouse.move(x, y + dy, { steps: 8 });
+      await phone.mouse.up();
+      await phone.waitForTimeout(500);
+    };
+
     const before = await sheetCap();
-    const box = await grab.boundingBox();
-    await phone.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    await phone.mouse.down();
-    await phone.mouse.move(box.x + box.width / 2, box.y - 80, { steps: 8 });
-    await phone.mouse.up();
-    await phone.waitForTimeout(500);
+    await pullFrom(-DRAG_PX);
     const after = await sheetCap();
-    check('hochziehen hebt die Obergrenze', after > before + 40, `${before} px -> ${after} px`);
+    check(
+      'hochziehen hebt die Obergrenze',
+      after > before + 40,
+      `${before} px -> ${after} px (Weg ${DRAG_PX} px)`
+    );
 
     // And back down, so the geometry assertions below measure the sheet in the
     // state they were written for.
-    const box2 = await grab.boundingBox();
-    await phone.mouse.move(box2.x + box2.width / 2, box2.y + box2.height / 2);
-    await phone.mouse.down();
-    await phone.mouse.move(box2.x + box2.width / 2, box2.y + 40, { steps: 6 });
-    await phone.mouse.up();
-    await phone.waitForTimeout(500);
+    await pullFrom(DRAG_PX);
+    // Before the cap is read, and not as an aside: past `SHEET_DISMISS_PX` the
+    // pull closes the sheet, and `sheetCap()` would then reject on a locator
+    // with nothing to match — taking the remaining two hundred assertions with
+    // it. Asked as a count so the answer is a failed check with a name, not a
+    // stack trace.
+    const stillOpen = (await phone.locator(SHEET).count()) === 1;
+    const back = stillOpen ? await sheetCap() : null;
     check(
       'herunterziehen senkt sie wieder',
-      (await sheetCap()) === before,
-      `${await sheetCap()} px`
+      stillOpen && back === before,
+      !stillOpen
+        ? `der Zug von ${DRAG_PX} px hat das Sheet geschlossen — über SHEET_DISMISS_PX`
+        : back === before
+          ? `${back} px`
+          : `${back} px statt ${before} px — Weg ${DRAG_PX} px, Schwelle SHEET_EXPAND_PX`
     );
   }
 
@@ -1331,19 +1407,134 @@ await cal.reload({ waitUntil: 'networkidle' });
 await cal.waitForTimeout(4000);
 
 // The cell is a `div[role="button"]`, and the plan control only renders on a day
-// the park is OPERATING — so try a few until one is open rather than assuming
-// the first of the month is.
+// that is OPERATING *and* not in the past — `park-calendar-day-detail.tsx`:
+//
+//     {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
+//
+// So the candidates are picked to match that condition instead of being taken
+// off the top of the grid. Taking the first eight cells was the same assertion
+// for the first eight DAYS of the month, which is green until the 8th and red
+// from the 9th on, every month, without a line of the app changing.
+//
+// Both halves of that condition are read off the page: the „Heute"-pill for
+// "not in the past", and the `aria-label` — `"<Wochentag> <Tag>. <Monat> —
+// <Status>…"` — for „Geschlossen". The label carries only as much of the
+// OPERATING half as it can: `park-calendar-day.tsx` prints the CROWD LEVEL
+// there, not the status, so an `UNKNOWN` day and an OPERATING day with no
+// forecast both read „Keine Prognose" and the label cannot separate them. That
+// is why this stays a loop over several candidates rather than a pick of the
+// first one — an `UNKNOWN` day among them costs a click, not the assertion.
 const cells = cal.locator('[role="button"][tabindex="0"][aria-label*="—"]');
 const planButton = cal.getByRole('button', { name: 'Bahnen für diesen Tag einplanen' });
-const cellCount = await cells.count();
+
+/**
+ * The open days of the rendered month that are not in the past, in grid order.
+ *
+ * "Not in the past" is read off the page rather than counted here, and the
+ * instrument is the „Heute"-pill `park-calendar-day.tsx` prints in exactly one
+ * cell. A day number compared against `parkDay(0)` would be a number from one
+ * calendar held against a month from another: the hub passes `month={null}`, so
+ * `park-calendar-grid.tsx` builds `currentMonth` from the BROWSER's `new Date()`
+ * while the pill comes from a `todayStr` formatted in the PARK's zone. They
+ * agree on this host and would not have to — and a bare day-of-month cannot
+ * tell the two apart, which is the same trap `parkDay` above was written for.
+ *
+ * Everything from the pill onward is a candidate except „Geschlossen".
+ */
+async function openDaysFromToday() {
+  const cellInfo = await cells.evaluateAll((nodes) =>
+    nodes.map((node) => ({
+      label: node.getAttribute('aria-label') ?? '',
+      // The pill's own element, by its exact text. Searching the cell's
+      // `textContent` for it does not work and fails QUIETLY: the cell reads
+      // `12Heute55MinHoch09:00–18:00…`, so `\bHeute\b` finds no word boundary on
+      // either side, the day looks absent, and the run steps to the next month
+      // and passes there — green, for the wrong month.
+      today: [...node.querySelectorAll('span')].some(
+        (span) => (span.textContent ?? '').trim() === 'Heute'
+      ),
+    }))
+  );
+  const todayIndex = cellInfo.findIndex((cell) => cell.today);
+  return {
+    count: cellInfo.length,
+    todayIndex,
+    candidates:
+      todayIndex === -1
+        ? []
+        : cellInfo
+            .map((cell, index) => ({ ...cell, index }))
+            .filter((cell) => cell.index >= todayIndex && !/—\s*Geschlossen/.test(cell.label)),
+  };
+}
+
+let month = await openDaysFromToday();
+// One step forward if the rendered month has nothing to offer — the 31st with
+// the park closed on it, or a winter month the park sits out entirely. Without
+// it this check is red on a DATE rather than on a change, which is the whole
+// failure mode it was rewritten to stop having.
+let stepped = false;
+if (month.candidates.length === 0) {
+  const next = cal.getByRole('link', { name: 'Nächster Monat' });
+  if (await next.count()) {
+    // The first cell's label BEFORE the step, so the wait below has something
+    // to compare against.
+    const firstBefore =
+      (await cells
+        .first()
+        .getAttribute('aria-label')
+        .catch(() => null)) ?? '';
+    await next.first().click();
+    // A real route navigation with `keepPreviousData` behind it: for a moment
+    // the grid still holds the old month, and a beat later it holds none at all
+    // while the new one loads. `evaluateAll` does not auto-wait, so a fixed
+    // timeout here reads whichever of the three states it happens to land in —
+    // most likely zero cells, and the check fails for the wait rather than for
+    // the calendar. Waits for a grid that is both populated AND different.
+    await cal
+      .waitForFunction(
+        ([selector, before]) => {
+          const nodes = document.querySelectorAll(selector);
+          return nodes.length > 0 && (nodes[0].getAttribute('aria-label') ?? '') !== before;
+        },
+        ['[role="button"][tabindex="0"][aria-label*="—"]', firstBefore],
+        { timeout: 20_000 }
+      )
+      .catch(() => {});
+    await cal.waitForTimeout(1200);
+    // The pill only lives in today's month, so from here the whole month counts.
+    const after = await cells.evaluateAll((nodes) =>
+      nodes.map((node) => node.getAttribute('aria-label') ?? '')
+    );
+    month = {
+      count: after.length,
+      todayIndex: 0,
+      candidates: after
+        .map((label, index) => ({ label, index }))
+        .filter((cell) => !/—\s*Geschlossen/.test(cell.label)),
+    };
+    stepped = true;
+  }
+}
+
 let reachable = false;
-for (let i = 0; i < Math.min(cellCount, 8) && !reachable; i++) {
-  await cells.nth(i).click();
+for (const cell of month.candidates.slice(0, 8)) {
+  if (reachable) break;
+  await cells.nth(cell.index).click();
   await cal.waitForTimeout(1200);
   reachable = (await planButton.count()) > 0;
   if (!reachable) await cal.keyboard.press('Escape');
 }
-check('„Bahnen für diesen Tag einplanen" im Kalendertag', reachable, `Zellen: ${cellCount}`);
+const where = stepped ? 'im Folgemonat' : `ab „Heute" (Zelle ${month.todayIndex + 1})`;
+check(
+  '„Bahnen für diesen Tag einplanen" im Kalendertag',
+  reachable,
+  reachable
+    ? `Zellen: ${month.count}, geprüft ${where}`
+    : month.candidates.length === 0
+      ? `kein offener Tag ${where} unter ${month.count} Zellen — auch der Folgemonat half nicht`
+      : `${Math.min(month.candidates.length, 8)} offene Tage ${where} angeklickt, keiner trug den Knopf (von ${month.count} Zellen)`
+);
 
 if (reachable) {
   await planButton.first().click();
@@ -2933,7 +3124,7 @@ if (reachable) {
   await page.evaluate(() => {
     window.localStorage.removeItem('parkfan_planner');
   });
-  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/de/tagesplaner`, '[data-planner-page-intro]');
   await page.waitForTimeout(1200);
 
   check(
@@ -3025,7 +3216,7 @@ if (reachable) {
 
   // A second language, because the article is six modules and a missing one is
   // a build error only for the locale that lost it.
-  await page.goto(`${BASE}/fr/planificateur`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/fr/planificateur`, 'article h2');
   await page.waitForTimeout(1000);
   const frText = (await page.locator('article').innerText()) ?? '';
   check(
@@ -3035,7 +3226,7 @@ if (reachable) {
       /Phantasialand/.test(frText),
     frText.slice(0, 60).replace(/\s+/g, ' ')
   );
-  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/de/tagesplaner`, 'article');
   await page.waitForTimeout(800);
 
   // ── With plans ────────────────────────────────────────────────────────────
@@ -3063,7 +3254,7 @@ if (reachable) {
     },
     [PLAN, DATE, PAST]
   );
-  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await gotoPlannerPage(page, `${BASE}/de/tagesplaner`, '[data-planner-page-day]');
   await page.waitForTimeout(1200);
 
   check(
@@ -5963,6 +6154,159 @@ if (reachable) {
   );
 
   await wiz.close();
+}
+
+// ── A minimum block's resize edge stays inside it ───────────────────────────
+//
+// Since the block stopped clipping (PF-86, Etappe 1), the grip and the resize
+// edge grow 44 px touch targets out of a box that may be 30 px tall. That is
+// what makes the shortest block usable — and it put the resize edge, which is
+// anchored to the BOTTOM and grows upward, 14 px into whatever sits above it.
+// Blocks in the same lane column carry the same `z-index`, so DOM order decides
+// and the later — the lower — one wins: pressing the bottom of the upper block
+// resized the lower one.
+//
+// Two free blocks, the lower on the minimum box, and `elementFromPoint` at the
+// depths the report measured. A pointer probe rather than a bounding box: the
+// target is a pseudo-element, and `getBoundingClientRect` knows nothing about
+// one.
+//
+// **Right of the grip's column, and the name of the second assertion says so.**
+// The grip is centred rather than bottom-anchored, so it overhangs a 30 px block
+// by 7 px in both directions and still takes the bottom corner of the block
+// above — deliberately, because that overhang is the only reason the shortest
+// block can be moved at all. That is PAR-165 and not this. Probing the grip's
+// column here would fail for a thing this ticket decided to keep.
+//
+// Behind `live`, like the two passes above it: with a 404 from `/plan/day` there
+// are no opening hours, so `buildDayGrid` answers `null`, the axis is never
+// drawn and there is no block to measure. Without the guard this pass would
+// report "die zwei freien Blöcke fehlen" on the very path the header at the top
+// of this file promises to support.
+if (live) {
+  const tight = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true });
+  noteErrors(tight);
+  await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await tight.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      // 25 minutes then 5, one after the other: the second lands on the minimum
+      // box (`MIN_BLOCK_PX` scaled to the coarse axis) with the first ending a
+      // pixel or two above it. That adjacency IS the case — with 15 px of gap
+      // the overhang reaches nothing.
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            {
+              id: 'lunch-1',
+              startMinute: 600,
+              custom: { label: 'Mittag', durationMinutes: 25, icon: 'food' },
+            },
+            {
+              id: 'pause-1',
+              startMinute: 626,
+              custom: { label: 'Pause', durationMinutes: 5, icon: 'break' },
+            },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+    },
+    [PLAN, DATE]
+  );
+  await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  const tightTab = tight.locator(LAUNCHER);
+  await tightTab.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
+  await settleHydration(tight);
+  if (await tightTab.count()) {
+    await tightTab.click();
+    await tight.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await tight.waitForTimeout(2500);
+    // Into the scroller's visible area first. A block outside it still reports a
+    // rectangle, and `elementFromPoint` would then answer for whatever is
+    // painted at those viewport coordinates instead — the ride search, in this
+    // layout, which reads as a pass for the wrong reason.
+    await tight.evaluate(() => {
+      const short = [...document.querySelectorAll('li[data-planner-block]')].find((el) =>
+        /Pause/.test(el.textContent ?? '')
+      );
+      short?.scrollIntoView({ block: 'center' });
+    });
+    await tight.waitForTimeout(600);
+
+    const tiles = await tight.evaluate(() => {
+      const blocks = [...document.querySelectorAll('li[data-planner-block]')].map((el) => ({
+        el,
+        text: (el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+        box: el.getBoundingClientRect(),
+      }));
+      const upper = blocks.find((b) => /Mittag/.test(b.text));
+      const lower = blocks.find((b) => /Pause/.test(b.text));
+      if (!upper || !lower) return null;
+      const edge = lower.el.querySelector('button[aria-label="Dauer ziehen"]');
+      const reach = edge ? parseFloat(getComputedStyle(edge, '::after').height) : null;
+      // Where the target's top edge actually LANDS, not how tall it is. The two
+      // differ by the block's border: the edge is absolute inside a `relative`
+      // bordered div, so it is laid out against that div's padding box and
+      // starts a pixel above the block's own bottom. Comparing heights would
+      // call a target that overhangs by exactly that pixel a pass.
+      const edgeTop = edge ? edge.getBoundingClientRect().bottom - (reach ?? 0) : null;
+      // Right of the grip's 44 px column, and well clear of it, so this measures
+      // the resize edge rather than the grip beside it — see the note above.
+      const x = Math.round(lower.box.left + Math.min(200, lower.box.width - 60));
+      const owns = (depth) => {
+        const hit = document.elementFromPoint(x, Math.round(upper.box.bottom - depth));
+        return hit?.closest('li[data-planner-block]') === upper.el;
+      };
+      return {
+        shortHeight: Math.round(lower.box.height),
+        reach,
+        overhang: edgeTop === null ? null : Math.round(lower.box.top - edgeTop),
+        gap: Math.round(lower.box.top - upper.box.bottom),
+        depths: [1, 2, 5, 8, 11, 14].map((d) => [d, owns(d)]),
+      };
+    });
+
+    if (!tiles) {
+      check(
+        'die Resize-Kante bleibt in ihrem Mindestblock',
+        false,
+        'die zwei freien Blöcke fehlen'
+      );
+    } else {
+      const stolen = tiles.depths.filter(([, mine]) => !mine).map(([d]) => d);
+      // Bounded from BELOW as well, and that half is not pedantry: the cap is an
+      // arbitrary Tailwind class reading a custom property set in an inline
+      // style, and neither end of that is something the type checker can see. A
+      // purged class or a renamed property leaves `height: 0px`, which satisfies
+      // "does not overhang" perfectly and hands the phone an edge nobody can
+      // touch. So the target must be the exact room it is entitled to —
+      // `min(44, Blockhöhe − 2)`, the two being the block's own border, which
+      // the edge is laid out inside of.
+      const entitled = Math.min(44, tiles.shortHeight - 2);
+      check(
+        'die Resize-Kante ragt nicht über den Mindestblock hinaus',
+        tiles.overhang !== null && tiles.overhang <= 0 && Math.round(tiles.reach) === entitled,
+        `Blockhöhe ${tiles.shortHeight} px · Trefferfläche ${tiles.reach} px (erwartet ${entitled}) · Überhang ${tiles.overhang} px`
+      );
+      check(
+        'die unteren 14 px des Blocks darüber gehören ihm, rechts vom Griff',
+        stolen.length === 0,
+        stolen.length === 0
+          ? `Lücke ${tiles.gap} px, sechs Tiefen ab 1 px geprüft`
+          : `gestohlen bei ${stolen.join(', ')} px über der Unterkante (Lücke ${tiles.gap} px)`
+      );
+    }
+  } else {
+    check('die Resize-Kante bleibt in ihrem Mindestblock', false, 'Launcher nicht gefunden');
+  }
+  await tight.close();
 }
 
 check(

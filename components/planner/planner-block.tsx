@@ -29,6 +29,19 @@ import type { PlanDayTier } from '@/lib/api/types';
 const NO_FIGURE_PX = 40;
 
 /**
+ * The bordered div's `border`, doubled — the two pixels the resize edge's touch
+ * target may NOT count on.
+ *
+ * That div is `relative`, so it is the containing block of everything absolute
+ * inside it, and an absolute box is laid out against a containing block's
+ * PADDING box rather than its border box. The edge is anchored `bottom-0` there
+ * and therefore starts a pixel above the block's own bottom edge; a target
+ * capped at the block's full height would end a pixel above its top edge, which
+ * is exactly the one pixel of the neighbour this cap exists to give back.
+ */
+const BLOCK_BORDER_PX = 2;
+
+/**
  * The box a block needs before the warning SENTENCE fits under the rows above it.
  *
  * 48 and 68 below are design thresholds — the height at which a photo stops
@@ -333,6 +346,13 @@ export function PlannerBlock({
         height: boxPx,
         left: laneLeft,
         width: laneWidth,
+        // The room the resize edge's touch target may take, readable from CSS,
+        // so that it cannot reach into the block above. The drawn height LESS
+        // the two border pixels the edge cannot reach — see
+        // {@link BLOCK_BORDER_PX}. A custom property rather than a second inline
+        // style on the edge itself: the edge is two elements down and the value
+        // belongs to the box, not to the control. Same shape as `--pl-drag-dy`.
+        ['--pl-edge-room' as string]: `${Math.max(0, boxPx - BLOCK_BORDER_PX)}px`,
         zIndex: dragging ? 30 : 10 + lane.column,
         transform: dragging ? 'translateY(var(--pl-drag-dy, 0px))' : undefined,
       }}
@@ -471,7 +491,33 @@ export function PlannerBlock({
               // the shortest free block, the one this whole fix is about, could
               // be resized and not moved. The two targets now tile the block
               // instead of stacking on it.
-              'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-11 max-sm:after:content-[""]'
+              //
+              // And 44 px OR the room this block has, whichever is smaller. The
+              // target is anchored to the bottom edge and grows upward, so on a
+              // block shorter than 44 px it used to reach out of the top — 14 px
+              // of it on a minimum block (30 px at `PX_PER_MIN_COARSE`),
+              // measured. Blocks in the same lane column carry the same
+              // `z-index`, so DOM order decides and the later — the lower —
+              // one wins: a press on the bottom 14 px of the block ABOVE, right
+              // of its grip, resized the short block below instead of selecting
+              // the block pressed.
+              //
+              // The cap costs the shortest free block a target under the 44 px
+              // floor — 28 px, the room it has — and that is the honest trade:
+              // no arrangement gives a 30 px box a 44 px edge without taking the
+              // pixels from its neighbour. The grip keeps its full 44 px; it is
+              // centred and overhangs symmetrically, which is what makes the
+              // shortest block movable at all, and its own overhang is PAR-165.
+              //
+              // **This is the one documented exception to the 44 px floor, and
+              // `sweepSmallTargets` in `scripts/check-planner.mjs` does not know
+              // about it.** That sweep is green today only because the phone
+              // pass plans three rides and no free blocks; seed a free one on the
+              // minimum box into it and it goes red on this edge, correctly and
+              // for a thing that was decided rather than broken. Whoever does
+              // that teaches the sweep the exception — floor of `min(44, the
+              // block's room)` for a resize edge — rather than lifting this cap.
+              'max-sm:after:absolute max-sm:after:right-0 max-sm:after:bottom-0 max-sm:after:left-11 max-sm:after:h-[min(2.75rem,var(--pl-edge-room))] max-sm:after:content-[""]'
             )}
           >
             <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />
