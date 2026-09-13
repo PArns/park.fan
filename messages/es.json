@@ -2226,7 +2226,7 @@
       "on": "Las notificaciones están activas",
       "denied": "Tu navegador bloquea las notificaciones de este sitio. Solo puedes cambiarlo en sus ajustes.",
       "storedHint": "Para esto tu plan se guarda en el servidor. Quien tenga su enlace puede leerlo y cambiarlo: no hay cuenta ni contraseña. Si vuelves a desactivar los avisos, se borra de allí.",
-      "deleteFailed": "No se pudo borrar tu plan del servidor, así que los avisos siguen activos. Inténtalo de nuevo en un momento.",
+      "deleteFailed": "Los avisos están desactivados. Tu plan guardado sigue en el servidor: actívalos y desactívalos una vez más para borrarlo.",
       "topics": {
         "legend": "¿Sobre qué quieres que te avisemos?",
         "only": "Recibirás un solo tipo de aviso: {kind}.",

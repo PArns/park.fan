@@ -2226,7 +2226,7 @@
       "on": "Notifications are on",
       "denied": "Your browser blocks notifications for this site. Only your browser settings can change that.",
       "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password. Switch notifications off again and it is deleted there.",
-      "deleteFailed": "Your plan could not be deleted from the server, so notifications stay on. Try again in a moment.",
+      "deleteFailed": "Notifications are off. Your stored plan is still on the server, though. Switch them on and off once more to delete it.",
       "topics": {
         "legend": "What should we tell you about?",
         "only": "You will get one kind of message: {kind}.",

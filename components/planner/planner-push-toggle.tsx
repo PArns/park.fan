@@ -25,10 +25,11 @@ import { usePushSubscription } from '@/lib/planner/use-push-subscription';
  * a hint that described the upload and stopped there would leave a visitor
  * guessing at the only part of this they can still act on.
  *
- * One sentence covers a refused deletion, not one per class. The switch stays
- * on when that happens, so what the reader needs is why it did not move and
- * that pressing again retries — and the one class carrying a figure worth
- * printing, the limiter's window, does not reach the client at all (PAR-146).
+ * One sentence covers a refused deletion, not one per class. Switching off
+ * always switches off — the notifications half owes the server nothing — so
+ * what the reader needs is that the plan is still up there and what to press
+ * to retry, and the one class carrying a figure worth printing, the limiter's
+ * window, does not reach the client at all (PAR-146).
  */
 export function PlannerPushToggle() {
   const t = useTranslations('planner');
@@ -150,12 +151,14 @@ export function PlannerPushToggle() {
         </p>
       )}
 
-      {/* The switch is still on and the plan is still up there. `alert` rather
-          than `status`: this is mounted in the same commit as its text, and a
-          polite region is announced on the text CHANGING inside one that was
-          already there — an assertive one is announced on insertion, which is
-          what actually happens here. Nothing else on screen moved when the
-          press did nothing, so it has to carry itself. */}
+      {/* Notifications did stop; the stored plan did not go with them. Said
+          out loud because the visible half of the press worked, so nothing
+          else on screen suggests the other half is outstanding.
+
+          `alert` rather than `status`: this is mounted in the same commit as
+          its text, and a polite region is announced on the text CHANGING
+          inside one that was already there — an assertive one is announced on
+          insertion, which is what actually happens here. */}
       {deleteError !== null && (
         <p
           className="text-destructive mt-1 px-2 text-[10px] leading-snug"

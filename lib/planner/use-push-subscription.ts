@@ -143,9 +143,11 @@ export function usePushSubscription() {
      * that was already there is not this attempt's to delete. A second tab with
      * push on shares that id through `localStorage`, so rolling back on every
      * successful sync would take down the plan a live subscription is pointing
-     * at. The id before the sync is what tells the two apart.
+     * at. The id before the sync is what tells the two apart — read after the
+     * permission prompt rather than before it, because that prompt can stand
+     * open for minutes and an id another tab stored while it did would read as
+     * this attempt's own.
      */
-    const before = getTripId();
     let created = false;
 
     try {
@@ -159,6 +161,7 @@ export function usePushSubscription() {
       // it does not have, and the order matters for the failure too: a plan
       // stored with no subscription is a row that expires, while a subscription
       // with no plan is a switch that is on and does nothing.
+      const before = getTripId();
       const stored = await syncTrip();
       if (!stored.ok) {
         setState('off');
@@ -271,21 +274,25 @@ export function usePushSubscription() {
   );
 
   /**
-   * Switching off, and why the stored plan goes first.
+   * Switching off: the stored plan goes first, and the switch goes off either
+   * way.
    *
-   * It is the only step that can refuse, and the only one whose failure leaves
-   * something behind: the id is the credential and this browser holds the sole
-   * copy, so a plan not deleted before the id is forgotten is unreachable to its
-   * owner for the rest of its 400 days. Running it first means a refusal finds
-   * nothing torn down — the switch stays on, the id stays, and pressing again is
-   * a real retry.
+   * First, because it is the only step whose failure leaves something behind.
+   * The id is the credential and this browser holds the sole copy, so a plan not
+   * deleted before the id is forgotten is unreachable to its owner for the rest
+   * of its 400 days. Running it before anything is torn down also means the
+   * scoped unsubscribe below still has an id to name.
    *
-   * The other order was worse than it looks. With the DELETE at the end, a
-   * refusal would leave the id (which it must) on a browser whose subscription
-   * had already been dismantled — and where another ride alert keeps that
-   * subscription alive, `resolve()` reads `existing && getTripId()` on the next
-   * mount and brings the switch back as ON with nothing behind it, which is the
-   * one thing this feature does not do.
+   * Either way, because the button says "notifications off" and that half owes
+   * nothing to the server. Refusing to switch off while the API is having a bad
+   * minute would keep sending notifications to somebody who asked for them to
+   * stop — and a 400 or a 502 from an offline phone never clears on its own, so
+   * "press it again" is not an answer there. So the teardown runs on both paths
+   * and only the deletion is reported as unfinished.
+   *
+   * What that costs is a retry that has to wait: the id is kept (it must be, or
+   * the row is lost), and the next switch-off sends the DELETE again. The
+   * sentence beside the control says so rather than implying it happened.
    */
   const disable = useCallback(async () => {
     setState('working');
@@ -294,11 +301,7 @@ export function usePushSubscription() {
     // Read before the delete forgets it: the scoped unsubscribe below needs it.
     const tripId = getTripId();
     const forgotten = await forgetTrip();
-    if (!forgotten.ok) {
-      setDeleteError(forgotten.error);
-      setState('on');
-      return;
-    }
+    setDeleteError(forgotten.ok ? null : forgotten.error);
 
     try {
       const registration = await navigator.serviceWorker.getRegistration('/sw.js');
@@ -317,9 +320,11 @@ export function usePushSubscription() {
         // would read as "forget the browser entirely" and cascade anyway).
         //
         // Still sent after the trip's own DELETE, which clears the same two
-        // columns on every subscription pointing at it: that one ran only on
-        // the 204 path, and on the 404 path — a trip already expired or swept —
-        // nothing has cleared this row. `PushService.unsubscribe` matches on
+        // columns on every subscription pointing at it: that one cleared them
+        // only on the 204 path. On the 404 path — a trip already expired or
+        // swept — and on a refused delete, nothing has, and this is then the
+        // only thing standing between the visitor's press and a job that keeps
+        // reading their plan. `PushService.unsubscribe` matches on
         // (endpoint, tripId), so where the DELETE did clear it this is a no-op
         // rather than a second, wider action.
         if (tripId) {

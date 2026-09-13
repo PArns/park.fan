@@ -163,6 +163,16 @@ export async function syncTrip(): Promise<TripSyncResult> {
  * nothing behind it on the next mount.
  *
  * So every sync carries the count it started under and gives up if it moved.
+ *
+ * **One tab's count.** It is module state, so a switch-off in a SECOND tab does
+ * not supersede a sync running in this one, and the resurrection above is still
+ * reachable there. That is not an oversight in the counter but the shape of
+ * this whole file: the plan, the trip id and the browser's one subscription are
+ * shared through `localStorage` with nothing telling one tab what another did,
+ * and the switch itself reads stale in that situation before any of this comes
+ * up. The case this counter covers is the one that happens without two windows
+ * and a stopwatch — the auto-sync, which fires every four seconds of editing
+ * and is not cancellable once dispatched.
  */
 let forgetCount = 0;
 
