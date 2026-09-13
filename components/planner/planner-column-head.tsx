@@ -102,8 +102,23 @@ export function PlannerColumnHead({
           </button>
         </PopoverTrigger>
         {/* Aligned to the column's own edge, so with two columns the list opens
-            under the one it belongs to rather than in the middle of the panel. */}
-        <PopoverContent align="start" className="w-56 p-1">
+            under the one it belongs to rather than in the middle of the panel.
+
+            `z-[80]` because this list opens INSIDE the sheet, and the sheet is
+            `z-[70]`: `PopoverContent`'s own `z-50` puts the portal under it, so
+            the list was drawn behind the panel's own frosted glass and every row
+            in it was untappable — `elementFromPoint` over the list answered with
+            the sheet's content, at 390 px and at 1440 px alike. The two other
+            popovers of this panel (the day picker beside this button, the party
+            chips) already carry the same number for the same reason; this one
+            was the third and did not.
+
+            It was invisible to the check because `die Parkliste ist antippbar`
+            OPENS the list and measures the rows it finds: a popper behind the
+            sheet has a box, it just cannot be reached. The assertion that
+            catches it is a trial click on a ROW, and it is in `check:planner`
+            now. */}
+        <PopoverContent align="start" className="z-[80] w-56 p-1">
           <ul className="max-h-64 overflow-y-auto">
             {parks.map((entry) => (
               <li key={entry.slug}>

@@ -1341,18 +1341,75 @@ if (await phoneLauncher.count()) {
     // the wrong thing. Asked of Playwright, because "receives events" is the
     // question and `click({ trial: true })` names the intercepting element when
     // the answer is no.
-    const newPlan = phone.locator(`${SHEET} [data-planner-new-plan]`).first();
-    if (await newPlan.count()) {
-      const free = await newPlan
+    //
+    // It asks for the control that is LAST in that row rather than for one by
+    // name, and that is the lesson of PAR-163 rather than a tidy-up: the
+    // assertion named „einen Tag planen", the phone lost that button when the
+    // head moved into this header, and `if (await count())` then turned a
+    // passing check into no check at all — silently, in the one place where
+    // something else had just taken its place at the edge. What is measured is
+    // the RIGHTMOST control in the header, whatever it is today.
+    const lastInHeader = await phone.evaluate((sel) => {
+      const header = document.querySelector(`${sel} [data-slot="sheet-header"]`);
+      if (!header) return null;
+      const controls = [...header.querySelectorAll('button')].filter(
+        (el) => el.getBoundingClientRect().width > 0
+      );
+      if (controls.length === 0) return null;
+      const last = controls.reduce((a, b) =>
+        b.getBoundingClientRect().right > a.getBoundingClientRect().right ? b : a
+      );
+      last.setAttribute('data-check-last-in-header', '');
+      // A name for the report, from whatever the element already carries.
+      const attr = [...last.attributes].find((a) => a.name.startsWith('data-planner'));
+      return attr?.name ?? last.getAttribute('aria-label') ?? last.tagName;
+    }, SHEET);
+    if (lastInHeader) {
+      const free = await phone
+        .locator(`${SHEET} [data-check-last-in-header]`)
+        .first()
         .click({ trial: true, timeout: 5_000 })
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check(
-        '„einen Tag planen" liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
         free === 'erreichbar',
-        free
+        `${lastInHeader} — ${free}`
+      );
+      await phone.evaluate(
+        (sel) =>
+          document
+            .querySelector(`${sel} [data-check-last-in-header]`)
+            ?.removeAttribute('data-check-last-in-header'),
+        SHEET
+      );
+    } else {
+      check(
+        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        false,
+        'keine Kopfzeile gefunden'
       );
     }
+
+    // ONE row of chrome above the axis, not two. The panel's header and the
+    // column's own head each took 45 px of a 776 px sheet to say two halves of
+    // one thing — which park, which day, and the word „Tagesplaner" over both —
+    // while the axis under them had 211. The head is drawn inside the header on
+    // a phone now (`withHead`), and this asserts it is the SAME element moved
+    // rather than a second copy: two would be two of every
+    // `[data-planner-column-park]` for the sweep above to pick the wrong one of.
+    const heads = await phone.locator(`${SHEET} [data-planner-column-head]`).count();
+    check(
+      'auf dem Telefon steht der Spaltenkopf in der Kopfzeile des Sheets',
+      heads === 1 &&
+        (await phone.evaluate((sel) => {
+          const sheet = document.querySelector(sel);
+          const header = sheet?.querySelector('[data-slot="sheet-header"]');
+          const head = sheet?.querySelector('[data-planner-column-head]');
+          return Boolean(header && head && header.contains(head));
+        }, SHEET)),
+      `${heads} Kopfzeile(n)`
+    );
 
     // And the two lists the head's own buttons open, each swept while it is
     // actually up — a popover that is shut is a popover with no DOM, so the
@@ -1377,6 +1434,26 @@ if (await phoneLauncher.count()) {
       // Only what the popper itself carries: the sheet behind it was measured
       // on its own pass, and reporting it twice would say a fixed thing twice.
       reportSweep(label, await sweepSmallTargets(null));
+      // …and a row of it actually RECEIVES the press, which is a different
+      // question from how big it is and is the one that was missing. The park
+      // list carried `PopoverContent`'s own `z-50` into a sheet at `z-[70]`, so
+      // it opened behind the panel's frosted glass: every row had a box of the
+      // right size, `elementFromPoint` over them answered with the sheet, and
+      // the sweep above passed. A target that cannot be hit is exactly the
+      // failure this pass exists to catch, so it is asked of Playwright —
+      // `trial: true` names the intercepting element on a no.
+      const row = phone.locator('[data-radix-popper-content-wrapper] button').first();
+      if (await row.count()) {
+        const reaches = await row
+          .click({ trial: true, timeout: 5_000 })
+          .then(() => 'erreichbar')
+          .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
+        check(
+          `${label.replace(' ist antippbar', '')} nimmt den Druck an`,
+          reaches === 'erreichbar',
+          reaches
+        );
+      }
       await phone.keyboard.press('Escape');
       await phone.waitForTimeout(300);
     }
