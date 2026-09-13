@@ -354,6 +354,28 @@ export function PlannerBlock({
           block cannot be painted under that stop's chip whatever z-index it
           carries. */}
 
+      {/* The ground, UNDER the bordered box rather than inside it.
+
+          The rule is written out twenty lines down, for the block with no
+          figure: a block "still needs a GROUND. Transparent, it let the leg chip
+          in the gap below it paint through its own text, which reads as two
+          sentences printed on top of each other rather than as two elements at
+          different depths." That is just as true of a block WITH a figure, and
+          it had none — `CROWD_TILE_CLASS` is 8–18 % alpha, a tint rather than a
+          surface. Nothing used to sit behind one, so nothing showed; the band
+          layer now reaches down here, and a ride's name was being read through a
+          quarter of somebody else's crowd colour.
+
+          A SIBLING, and that placement is the whole of it: put inside the box it
+          would paint over the box's own background instead of under it, which
+          takes the tile off every block and the fill off the three that draw
+          theirs on the box alone — a ticked-off block, a free block and an
+          assumption. Behind it, every one of them keeps exactly the colour it
+          had, over an opaque surface rather than over whatever the axis is
+          holding. `rounded-md` to match the box it stands in for; the border is
+          the box's own and stays there. */}
+      <div className="bg-background absolute inset-0 rounded-md" aria-hidden="true" />
+
       {/* NO `overflow-hidden`, and that word is the whole of the first half of
           this bug. The grip and the resize edge grow their 44 px touch target
           with an `after:` pseudo-element that deliberately reaches PAST the
@@ -402,24 +424,6 @@ export function PlannerBlock({
           className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
           aria-hidden="true"
         >
-          {/* The ground, under the photo and under everything else.
-
-              The rule is already written twenty lines up, for the block with no
-              figure: a block "still needs a GROUND. Transparent, it let the leg
-              chip in the gap below it paint through its own text, which reads as
-              two sentences printed on top of each other rather than as two
-              elements at different depths." That is just as true of a block WITH
-              a figure, and it had no ground at all — `CROWD_TILE_CLASS` is 8–18 %
-              alpha, i.e. a tint rather than a surface. Nothing used to sit behind
-              one, so nothing showed; now the block above reaches its band down
-              here, and the ride's name was being read through 25 % of somebody
-              else's crowd colour.
-
-              `bg-background` and not the tile: the tile still paints on top, so
-              the block keeps exactly the colour it had, over an opaque surface
-              instead of over whatever the axis happens to hold. */}
-          <div className="bg-background absolute inset-0" />
-
           {/* The ride's photo, behind everything, on every block that has one.
               `background-image` and not `next/image`, because a block is 130–400
               px wide, its size changes with the plan, and the crop is already the

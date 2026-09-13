@@ -1,4 +1,4 @@
-import { MIN_BAND_PX, heightFor, yFor, type DayGrid } from './day-grid';
+import { MIN_BAND_PX, blockBoxFor, heightFor, yFor, type DayGrid } from './day-grid';
 import type { PlannerEstimate } from './estimate';
 import type { PlannerEntry } from './types';
 
@@ -30,7 +30,7 @@ export interface BlockBand {
  * Measured with `elementFromPoint` at the centre of every chip on a planned
  * Phantasialand day: nine of nine were painted by somebody's band.
  *
- * It is a TAIL — from the end of the queue to the end of the spread — and not a
+ * It is a TAIL — from the block's lower edge to the end of the spread — and not a
  * slab behind the whole block. Run from the top it painted the queue's own
  * pixels a second time under the fill, and a headliner's band is as long again
  * as its queue (29 minutes on Taron, 36–38 on F.L.Y. and the two Winja's), so a
@@ -68,5 +68,11 @@ export function bandGeometry(
   const height = heightFor(grid, minutes);
   if (height < MIN_BAND_PX) return null;
 
-  return { top: yFor(grid, entry.startMinute) + heightFor(grid, wait), height };
+  // The block's drawn BOX, not the queue, and the two differ on exactly the
+  // blocks this matters for: a box is floored at `minBlockPxFor` so a line of
+  // text fits, so a ten-minute queue is drawn taller than it is long. Started at
+  // the queue's end the band's first pixels lie INSIDE that floor, behind an
+  // opaque block — and where the whole spread fits under the floor (a 10-minute
+  // queue with a 5-minute band) nothing was drawn at all.
+  return { top: yFor(grid, entry.startMinute) + blockBoxFor(grid, wait), height };
 }

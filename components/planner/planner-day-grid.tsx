@@ -994,6 +994,11 @@ export function PlannerDayGrid({
                 last minute is its least likely one and a slab that stops dead
                 claims its hardest edge exactly where it is least sure. */}
             {layout.rows.map((row) => {
+              // A block under the finger moves by a transform on its own box, and
+              // a band in a layer of its own does not follow it — left in, it
+              // detaches and hangs at the slot the block has already left. The
+              // ghost is what says where the drag lands.
+              if (draggingId === row.entry.id) return null;
               const band = bandGeometry(grid, row.entry, row.estimate, { live: row.live });
               if (!band) return null;
               const tone =
@@ -1003,8 +1008,9 @@ export function PlannerDayGrid({
               if (!tone) return null;
               const lane = layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 };
               return (
-                <div
+                <li
                   key={`band-${row.entry.id}`}
+                  aria-hidden="true"
                   className={cn(
                     'pointer-events-none absolute rounded-b-md opacity-25',
                     CROWD_DOT_CLASS[tone]
@@ -1018,7 +1024,6 @@ export function PlannerDayGrid({
                     maskImage: BAND_FADE,
                     WebkitMaskImage: BAND_FADE,
                   }}
-                  aria-hidden="true"
                 />
               );
             })}
