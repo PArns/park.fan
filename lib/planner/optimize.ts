@@ -1785,8 +1785,11 @@ export function optimizeDay(input: OptimizeInput): OptimizedPlan | null {
  * reads as overlapping, the guard never passes, and the button reshuffles the
  * day on every press for ever. It was `occupiedMinutes` — the drawn height,
  * band included — for as long as the search paced itself that way too, and it
- * moved with it. It is no longer `legBetween`'s `broken` rule to the letter,
- * and that is deliberate.
+ * moved with it. That move also put this back WITHIN a step of `legBetween`'s
+ * `broken` rule, which it had been written to depart from: both now measure the
+ * gap from the expected wait against the transfer's floor, and what is left
+ * between them is the `SNAP_MIN_FINE` floor under a span and what each does
+ * with a block that carries no figure.
  */
 function isExecutable(input: OptimizeInput, ctx: Context): boolean {
   const { day } = input;
