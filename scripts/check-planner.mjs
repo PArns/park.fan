@@ -6378,23 +6378,19 @@ if (live) {
           Math.round(axis.x + axis.width / 2),
           Math.round(axis.y + axis.height / 2)
         );
-        // The element's own name where it has one, its tag where it does not.
-        // `DIV` on its own names nothing, and this assertion's whole job is to
-        // say WHICH row is in the way — the optimize bar, the headliner band and
-        // the summary are three different tickets' worth of pixels.
-        covers =
-          hit && !scroller.contains(hit) && hit !== scroller
-            ? ((Object.keys(hit.dataset ?? {})[0] ??
-              hit.closest(
-                '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary]'
-              )?.dataset)
-                ? Object.keys(
-                    hit.closest(
-                      '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary]'
-                    )?.dataset ?? {}
-                  )[0]
-                : null) || hit.tagName
-            : null;
+        // The name of the ROW in the way, not the tag of whatever pixel the
+        // point happened to land on: `DIV` names nothing, and which row it is
+        // decides whose ticket it is — the optimize bar, the headliner band and
+        // the summary are three different sets of pixels. So walk up from the
+        // hit to the nearest element that carries a `data-planner-*` name and
+        // use that; the tag is only the fallback for a hit that has none above
+        // it at all.
+        if (hit && !scroller.contains(hit) && hit !== scroller) {
+          const named = hit.closest(
+            '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary],[data-planner-add-custom],[data-planner-show-band],[data-planner-column-head]'
+          );
+          covers = named ? Object.keys(named.dataset)[0] : hit.tagName;
+        }
       }
       // How much of the axis is INSIDE the sheet, which is not the same as how
       // tall it is: `min-h` on a box whose parent is `min-h-0 flex-1` makes it

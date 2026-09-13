@@ -68,7 +68,7 @@ export function PlannerColumnHead({
   return (
     <div
       data-planner-column-head=""
-      // ``planner-phone:py-0`, because everything in this row is 44 px on a phone now
+      // `planner-phone:py-0`, because everything in this row is 44 px on a phone now
       // and the 2 px that used to give a 28 px control air is 4 px of axis
       // spent on nothing. The row is 32 → 44 px, and those 12 px buy the panel's
       // primary navigation: the park, and the day. Both were 28 px, i.e. under

@@ -692,7 +692,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // The 68 px it costs is the overlay, and that is the whole trade.
           // Pulled up, the modal shield is behind the sheet and tapping beside
           // it is no longer a way out — so the two that remain have to be real,
-          // and both are: the × is `planner-phone:size-11` on `SheetContent` itself,
+          // and both are: the × is `max-sm:size-11` on `SheetContent` itself,
           // and this handle takes it back down (a drag, or a tap, which is why
           // the tap toggles rather than only dismissing). Resting at 92 the
           // shield is back. Only the pulled-up state gives it up, and only for
@@ -785,7 +785,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         <SheetHeader className="border-border/60 planner-phone:py-0 shrink-0 gap-0 border-b px-3 py-2">
           {/* `max-sm:pr-14` and not the desktop's `pr-7`, because the close
               button this clears is a DIFFERENT size on a phone: `SheetContent`
-              draws it `max-sm:top-2 max-sm:right-2 planner-phone:size-11`, so it
+              draws it `max-sm:top-2 max-sm:right-2 max-sm:size-11`, so it
               covers the rightmost 52 px, while `pr-7` reserves 28 and `px-3`
               adds 12 — 12 px short. The last control in this row is "einen Tag
               planen", and 12 of its 28 px sat under the ×. 56 px of clearance
