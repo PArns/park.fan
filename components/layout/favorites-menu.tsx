@@ -4,6 +4,7 @@ import { useId } from 'react';
 import { ChevronDown, Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { MenuBand } from '@/components/layout/menu-band';
+import { headerNavInk } from '@/components/layout/nav-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
@@ -52,11 +53,7 @@ export function FavoritesMenu({ floating }: { floating?: boolean }) {
         /* `gap-2.5` und nicht `gap-1`: die Zählblase ragt rechts aus dem Stern heraus und lag mit
            dem alten Abstand auf dem Chevron. Der Abstand ist konstant, ob null oder acht
            Favoriten — die Blase ist absolut positioniert und misst nichts aus. */
-        className={`flex cursor-pointer items-center gap-2.5 text-sm font-medium transition-colors ${
-          floating
-            ? 'text-foreground hover:text-foreground'
-            : 'text-muted-foreground hover:text-foreground'
-        }`}
+        className={`flex cursor-pointer items-center gap-2.5 text-sm font-medium transition-colors duration-200 ${headerNavInk(floating)}`}
       >
         {/* Der Zähler sitzt AUF dem Stern, nicht daneben. Als Geschwister war er eine zweite
             Marke in der Zeile — und er hätte den Eintrag breiter gemacht, sobald jemand etwas

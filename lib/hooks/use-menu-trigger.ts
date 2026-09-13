@@ -12,7 +12,7 @@ import { focusLeftMenu } from '@/lib/utils/menu-focus';
  * rule to drift, and a bar where one entry opens differently from its neighbours is worse than
  * one where none of them do.
  *
- * Three things it is built around:
+ * Two things it is built around:
  *
  * 1. **Open state is the PATH the panel was opened on, not a boolean.** The header lives in the
  *    locale layout and survives the route change, and the pointerdown handler deliberately

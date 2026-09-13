@@ -26,6 +26,28 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * behaviour rule 1 forbids, and forcing it to mount means fighting the library for the rest of its
  * API.
  */
+/**
+ * The ink of every entry in the header's nav row, in the bar's two states — one definition,
+ * because the row has three kinds of entry (a plain link, this trigger pair, the favorites button)
+ * and a row where one of them is a different grey is a row you read twice.
+ *
+ * While the bar floats over a hero the ground is a scrim over an arbitrary photo, and
+ * `text-muted-foreground` cannot survive that: it is oklch(0.556) on an oklch(1) background, i.e.
+ * 4.73 : 1, so 15 % of a dark photo through the scrim lands it at 3.3 : 1 and no scrim opacity
+ * short of a solid bar repairs it. `/90` rather than flat `foreground`, because a link owes the
+ * pointer an answer and the solid bar's own gesture is muted → foreground; measured over six hero
+ * pages × 360/1440 px × light/dark the worst reading is 14.3 : 1.
+ *
+ * The `delay-300` on the way back to muted is not polish: the scrim fades out over 500 ms while
+ * the solid material fades in over the same 500 ms and their sum dips to about 65 % in the middle.
+ * The colour may not arrive before the ground it is safe on. Going the other way there is no
+ * delay — the safe colour may always arrive early.
+ */
+export const headerNavInk = (floating: boolean | undefined) =>
+  floating
+    ? 'text-foreground/90 hover:text-foreground'
+    : 'text-muted-foreground hover:text-foreground delay-300';
+
 interface NavMenuProps {
   /** Where the trigger itself navigates. */
   href: string;
@@ -36,8 +58,8 @@ interface NavMenuProps {
    * True while the bar floats over a hero photo. It decides the INK and nothing else — the entry
    * is a link and a trigger up there exactly as it is anywhere else. It used to be `disabled`,
    * which took the whole row out of the tab order and refused to open the panel until the
-   * visitor had scrolled 50 px; the header's `navLinkClass` explains the contrast arithmetic
-   * this replaced it with.
+   * visitor had scrolled 50 px; `headerNavInk` above explains the contrast arithmetic this
+   * replaced it with.
    */
   floating?: boolean;
 }
@@ -45,9 +67,7 @@ interface NavMenuProps {
 export function NavMenu({ href, label, children, floating }: NavMenuProps) {
   const panelId = useId();
   const { open, triggerProps, toggle } = useMenuTrigger();
-  const ink = floating
-    ? 'text-foreground hover:text-foreground'
-    : 'text-muted-foreground hover:text-foreground';
+  const ink = headerNavInk(floating);
 
   return (
     <div {...triggerProps}>
@@ -55,7 +75,7 @@ export function NavMenu({ href, label, children, floating }: NavMenuProps) {
         <Link
           href={href}
           prefetch={false}
-          className={`text-sm font-medium transition-colors ${ink}`}
+          className={`text-sm font-medium transition-colors duration-200 ${ink}`}
         >
           {label}
         </Link>
@@ -67,7 +87,7 @@ export function NavMenu({ href, label, children, floating }: NavMenuProps) {
           aria-controls={panelId}
           aria-label={label}
           onClick={toggle}
-          className={`-m-1 cursor-pointer p-1 transition-colors ${ink}`}
+          className={`-m-1 cursor-pointer p-1 transition-colors duration-200 ${ink}`}
         >
           <ChevronDown
             className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}

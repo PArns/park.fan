@@ -12,7 +12,7 @@ import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
-import { NavMenu } from '@/components/layout/nav-menu';
+import { NavMenu, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
@@ -221,19 +221,12 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
     : undefined;
   /*
    * The nav's ink, and it is the only thing `isTransparent` is still allowed to decide about the
-   * navigation. Contrast is why it exists: `text-muted-foreground` is oklch(0.556) on an
-   * oklch(1) background, i.e. **4.73 : 1** — so any photo bleeding through the scrim below takes
-   * it under 4.5 (15 % of a dark hero already lands it at 3.3 : 1), and no scrim opacity short of
-   * a solid bar fixes that, because the starting point has 0.23 to give. At full `foreground`
-   * strength the same worst case reads 14 : 1 light and 12.9 : 1 dark. The bar's other controls
-   * need no branch — a ghost `Button`, the locale switcher and both toggles inherit `foreground`
+   * navigation. `headerNavInk` holds both halves and the arithmetic behind them, because the row
+   * has three kinds of entry and they must not drift apart. The bar's other controls need no
+   * branch at all — a ghost `Button`, the locale switcher and both toggles inherit `foreground`
    * already.
    */
-  const navLinkClass = `text-sm font-medium transition-colors ${
-    isTransparent
-      ? 'text-foreground hover:text-foreground'
-      : 'text-muted-foreground hover:text-foreground'
-  }`;
+  const navLinkClass = `text-sm font-medium transition-colors duration-200 ${headerNavInk(isTransparent)}`;
 
   return (
     <header
@@ -285,10 +278,12 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           `z-index: auto` paints above every non-positioned in-flow descendant, so an
           `absolute inset-0` sheet covers the bar's contents. It shipped that way and swallowed
           the logo, the locale switcher and both chevrons the moment the bar solidified — while the
-          nav links, the search field and the favorites star stayed visible, because those carry
-          `data-header-stagger` and the reveal's GSAP transform makes each of them its own
+          nav links, the search field and the favorites star stayed visible, because the header
+          reveal's GSAP transform was on those and a transform makes each of them its own
           stacking context that escapes above the sheet. "Everything without a transform
-          disappears" is what that bug looked like from the outside.
+          disappears" is what that bug looked like from the outside. That reveal is gone with
+          PAR-170 and nothing in the bar carries a transform of its own any more, so the `-z-10`
+          is now the only thing holding the material behind the row.
           The header is `sticky` with `z-index: 50`, so it is a stacking context of its own and a
           negative z-index here cannot slip behind the page — it lands between the header's own
           (transparent) background and its contents, which is exactly where a material belongs.
@@ -300,29 +295,45 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
           repaint on the hero pages, and it repeats on every direction change up there. The blur
           snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
-          while the colour keeps cross-fading.
-
-          **And the transparent state is no longer empty.** The nav used to be invisible up here,
-          so the bar could afford to be nothing at all; now it is a working menu sitting on an
-          arbitrary photo, and it needs a ground. This layer is that ground — the same layer, one
-          class list further, so the scrim can never become a `backdrop-filter` or a transform on
-          the `<header>` itself and turn it into a backdrop root (see above, and the menu band's
-          blur).
-
-          The geometry: the box grows 32 px BELOW the bar while transparent (`-bottom-8`), and the
-          gradient holds `background/85` for the first 60 % of those 80 px — which is exactly the
-          48 px the bar occupies — before fading out over the strip underneath. So the nav sits on
-          an even ground and the scrim has no edge of its own: a hard line across a hero photo
-          would read as part of the picture. Tint rather than blur, because the photo below the
-          bar stays a photo — the blur is still what the solid state adds. */}
+          while the colour keeps cross-fading. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-x-0 top-0 -z-10 transition-[background-color] duration-500 ${
-          isTransparent
-            ? 'from-background/85 -bottom-8 bg-gradient-to-b from-60% to-transparent'
-            : 'bg-background/80 bottom-0 backdrop-blur-md'
+        className={`pointer-events-none absolute inset-0 -z-10 transition-[background-color] duration-500 ${
+          isTransparent ? 'bg-transparent' : 'bg-background/80 backdrop-blur-md'
         }`}
       />
+
+      {/* The scrim, and it is a SECOND layer rather than a second class list on the first.
+
+          The transparent state is no longer empty: the nav used to be invisible up here, so the
+          bar could afford to be nothing at all, and now it is a working menu sitting on an
+          arbitrary photo. That needs a ground — never as a `backdrop-filter` or a transform on
+          the `<header>` itself, which would make it a backdrop root and take the menu band's blur
+          with it (see above).
+
+          Why not one layer with two class lists, which is where this started: a gradient is
+          `background-image` and a flat tint is `background-color`, and `background-image` does not
+          interpolate. The scrim would have vanished the instant the scroll crossed 50 px while the
+          solid colour faded in behind it over 500 ms — muted ink over ~25 % ground on a hero photo
+          for about a third of a second, i.e. precisely the case `navLinkClass` branches to avoid.
+          Two layers cross-fade on `opacity`, which does interpolate, so the ground falls from 85 %
+          to about 65 % at worst and climbs back. The ink waits that out (`delay-300`, see there).
+
+          The geometry: the box reaches 32 px BELOW the bar (`-bottom-8`) and the gradient holds
+          `background/85` for the first 60 % of those 80 px — exactly the 48 px the bar occupies —
+          before fading out over the strip underneath. So the nav sits on an even ground and the
+          scrim has no edge of its own: a hard line across a hero photo reads as part of the
+          picture. Tint rather than blur, because the photo under the bar stays a photo; the blur
+          is what the solid state adds. Hero pages only — everywhere else `isTransparent` is never
+          true and this would be an always-invisible layer. */}
+      {isHeroPage && (
+        <div
+          aria-hidden="true"
+          className={`from-background/85 pointer-events-none absolute inset-x-0 top-0 -bottom-8 -z-10 bg-gradient-to-b from-60% to-transparent transition-opacity duration-500 ${
+            isTransparent ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      )}
 
       <div
         /* `h-full`, not a second `h-12`: the header is `h-12 border-b` and Tailwind boxes are
