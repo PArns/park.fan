@@ -300,14 +300,22 @@ export type TripDeleteResult = { ok: true } | { ok: false; error: TripSyncError 
  * plan somebody is still editing, here about one they are throwing away.
  */
 export async function forgetTrip(): Promise<TripDeleteResult> {
+  // Counted first, before the id is even read, and unconditionally.
+  //
+  // Before the request, because a sync already on the wire has to be superseded
+  // from the moment this one starts, or it lands in the window between and
+  // resurrects what is being deleted. Before the `null` check, because the
+  // sync that most needs superseding is the one that has ALREADY dropped the id
+  // itself: a PUT answered 404 clears it and goes on to POST, so a switch-off
+  // arriving in that gap reads "nothing stored, nothing to do" and returns —
+  // and the create lands afterwards, storing a fresh id and a fresh row over a
+  // switch that is off by then.
+  forgetCount += 1;
+
   const id = getTripId();
   // Nothing stored: push was never on, or a previous delete already landed.
   if (id === null) return { ok: true };
 
-  // Counted BEFORE the request, not after it: a sync already on the wire has to
-  // be superseded from the moment this one starts, or it lands in the window
-  // between and resurrects what is being deleted.
-  forgetCount += 1;
   const deleted = await del(id);
   if (!deleted.ok && deleted.error.reason !== 'not-found') {
     return { ok: false, error: deleted.error };

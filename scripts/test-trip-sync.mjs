@@ -380,6 +380,43 @@ await test('a sync whose PUT 404s after the delete does not create a new trip', 
   );
 });
 
+await test('a switch-off during the gap where the sync holds no id still wins', async () => {
+  seed();
+  let releasePost;
+  const held = new Promise((resolve) => {
+    releasePost = resolve;
+  });
+  const queue = [
+    response(404), // the racing PUT: clears the id and goes on to POST
+    () => held.then(() => response(201, { id: NEW_ID })),
+  ];
+  fetchStub = () => {
+    const next = queue.shift();
+    if (!next) throw new Error('more requests than answers');
+    return typeof next === 'function' ? next() : next;
+  };
+
+  const racing = syncTrip();
+  // Let the PUT resolve, so the sync is sitting in its POST with no id stored.
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.equal(getTripId(), null, 'precondition: the sync has dropped the id');
+
+  // Nothing to DELETE — and that must not mean "nothing to supersede".
+  const forgotten = await forgetTrip();
+  releasePost();
+  const synced = await racing;
+
+  assert.deepEqual(forgotten, { ok: true });
+  assert.deepEqual(synced, { ok: false, error: { reason: 'network' } });
+  assert.equal(getTripId(), null);
+  // The row the create made is taken back down rather than left standing.
+  assert.deepEqual(
+    calls.map((c) => c.method),
+    ['PUT', 'POST', 'DELETE']
+  );
+  assert.equal(calls[2].url, `/api/trips/${NEW_ID}`);
+});
+
 await test('a sync started after a delete is a normal create', async () => {
   seed();
   answers(response(204), response(201, { id: NEW_ID }));
