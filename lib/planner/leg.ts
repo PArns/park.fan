@@ -154,14 +154,17 @@ export function transferBetween(
  * **On an optimiser-built day the ladder reports the optimiser, not the walk,
  * and that is not a fault of the threshold.** The search builds against the same
  * `ceilingMinutes` this judges against, so the slack of a freshly planned day is
- * whatever the packing leaves over — the remainder on `SNAP_MIN_FINE`, nothing
- * else. Measured over 14 parks × 14 dates from `/plan/day`, 169 planned days and
- * 1369 legs (2026-09-13): slack median 6 min (p25 2, p75 10, max 26) against a
- * band of median 15 (p25 12, p75 18, max 44). So `slack < uncertaintyMinutes`
- * holds on 88.9 % of the legs that HAVE a band, and the day before PAR-169 —
- * when the optimiser reserved wait PLUS band and the slack was therefore ≥ band
- * by construction — it held on 0.0 % of them, with 8.3 % reading "großzügig".
- * Both times the chip mirrored the reservation policy back.
+ * whatever the packing leaves over: mostly the remainder on `SNAP_MIN_FINE`,
+ * plus whatever a ride's own opening hour or a deliberate wait adds on top of
+ * it. Measured over 14 parks × 14 dates from `/plan/day`, 169 planned days and
+ * 1369 legs (2026-09-13): slack median 6 min (p25 2, p75 10, max 26 — the grid
+ * alone caps at 14) against a band of median 15 (p25 12, p75 18, max 44). So
+ * `slack < uncertaintyMinutes` holds on 144 of the 162 legs that HAVE a band
+ * (88.9 %), and the day before PAR-169 — when the optimiser reserved wait PLUS
+ * band and the slack was therefore ≥ band by construction — it held on 0 of 157
+ * (0.0 %), with 13 of them (8.3 %) reading "großzügig". The two denominators
+ * differ because the two engines file different plans, not because legs went
+ * missing. Both times the chip mirrored the reservation policy back.
  *
  * The threshold stays anyway, because lowering it moves which single rung a
  * packed day lands on and buys nothing: at ¼ band the same corpus reads 4.7 %

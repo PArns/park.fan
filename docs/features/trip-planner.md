@@ -803,18 +803,23 @@ previous ride's own `uncertaintyMinutes`. On a day somebody laid out themselves
 that ladder works. On a day this engine just packed, it reports the engine.
 
 The reason is that the search reserves the ceiling too, so the slack a planned
-day leaves over is the remainder on `SNAP_MIN_FINE` and nothing else. Measured
-over 14 parks × 14 dates of real `/plan/day` payloads — 169 planned days, 1369
-legs, 2026-09-13 — the slack is median 6 minutes (p25 2, p75 10, max 26) against
-a band of median 15 (p25 12, p75 18, max 44). So the rung is decided before the
-geography gets a word in, and which rung it is follows from what the optimiser
-reserves:
+day leaves over is mostly the remainder on `SNAP_MIN_FINE`, plus whatever a
+ride's own opening hour or a deliberate wait adds to it. Measured over 14 parks ×
+14 dates of real `/plan/day` payloads — 169 planned days, 1369 legs, 2026-09-13 —
+the slack is median 6 minutes (p25 2, p75 10, max 26, where the grid alone caps
+at 14) against a band of median 15 (p25 12, p75 18, max 44). So the rung is
+decided before the geography gets a word in, and which rung it is follows from
+what the optimiser reserves:
 
 |            | reserves wait + band (before PAR-169) | reserves the wait (now) |
 | ---------- | ------------------------------------- | ----------------------- |
-| `tight`    | 0 of 162 (0.0 %)                      | **144 of 162 (88.9 %)** |
+| `tight`    | 0 of 157 (0.0 %)                      | **144 of 162 (88.9 %)** |
 | `good`     | 144 (91.7 %)                          | 18 (11.1 %)             |
 | `generous` | 13 (8.3 %)                            | 0 (0.0 %)               |
+
+The two columns have different denominators because the two engines file
+different plans — 1366 legs against 1369 over the same 169 days — not because
+legs went missing between them.
 
 Those 162 are the legs whose ride reports a spread at all, and that is a property
 of the **date**: `tier: measured` (today and tomorrow) carries

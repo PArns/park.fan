@@ -226,20 +226,20 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
 // sie nach einer Panne aus: vorher stand jeder Chip eines gerechneten Tages auf
 // „gut", jetzt steht er auf „knapp". Der Grund ist keiner in dieser Datei — die
 // Suche baut gegen dasselbe `ceilingMinutes`, gegen das hier geurteilt wird,
-// also ist der Slack eines frisch gepackten Tages der Rundungsrest auf
-// `SNAP_MIN_FINE` und sonst nichts. Gemessen über 169 Tage aus `/plan/day`:
+// also ist der Slack eines frisch gepackten Tages im Wesentlichen der
+// Rundungsrest auf `SNAP_MIN_FINE`. Gemessen über 169 Tage aus `/plan/day`:
 // median 6 Minuten gegen ein Band von median 15.
 //
-// Festgehalten wird deshalb beides — daß der gepackte Tag auf `tight` fällt
-// (das ist erwartet, nicht kaputt) und daß die Leiter trotzdem vollständig
+// Festgehalten wird deshalb beides — dass der gepackte Tag auf `tight` fällt
+// (das ist erwartet, nicht kaputt) und dass die Leiter trotzdem vollständig
 // durchläuft, sobald jemand den Tag auseinanderzieht. Sonst repariert der
-// nächste Lauf das eine und merkt nicht, daß er das andere abschafft.
+// nächste Lauf das eine und merkt nicht, dass er das andere abschafft.
 {
   // Taron → Black Mamba: floor 8, ceiling 9. Ein Optimierer setzt den nächsten
   // Stopp auf das nächste Vielfache von SNAP_MIN_FINE über dem Ende der
   // Schlange — hier 15 Minuten später, also 6 Minuten Slack.
   const packedGap = Math.ceil(9 / SNAP_MIN_FINE) * SNAP_MIN_FINE;
-  test('ein gepackter Tag läßt nur den Rundungsrest übrig', packedGap, 15);
+  test('ein gepackter Tag lässt nur den Rundungsrest übrig', packedGap, 15);
   const band = 15;
 
   test(
