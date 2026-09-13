@@ -821,13 +821,21 @@ The two columns have different denominators because the two engines file
 different plans — 1366 legs against 1369 over the same 169 days — not because
 legs went missing between them.
 
-Those 162 are the legs whose ride reports a spread at all, and that is a property
-of the **date**: `tier: measured` (today and tomorrow) carries
+Those 162 are the legs whose ride reports a spread at all, and that is mostly a
+property of the **date**: `tier: measured` (today and tomorrow) carries
 `uncertaintyMinutes` on every ride, `composed` on almost none — 13 of 2846 rides
 between lead 2 and lead 45 in the same corpus. Where it is absent the ladder caps
 at `good` by design, so the other 1207 legs read "Umstieg gut" with the `°`,
 100.0 % of them. The same packed day therefore reads amber throughout for
 tomorrow and green throughout for the day after.
+
+The grid subtracts a few more before `legBetween` ever sees them: a block within
+`LIVE_WINDOW_MIN` of now is re-based on the live wait and passed on with
+`uncertaintyMinutes: null` (`planner-day-grid.tsx`), since a queue read off the
+park's own board carries no forecast error, and `estimateFor` reports none for a
+custom block, an assumed wait or a park with no readable source. Today's next
+hour is therefore capped at `good` as well — which is the same reading a
+`composed` day gets, for a different reason.
 
 **The threshold stays at the whole band.** Lowering it only moves which single
 rung a packed day collapses onto — at ¼ band the same corpus reads 4.7 % tight

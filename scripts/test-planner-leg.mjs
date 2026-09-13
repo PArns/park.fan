@@ -21,7 +21,6 @@ import {
   legBetween,
   legDeficit,
 } from '../lib/planner/leg.ts';
-import { SNAP_MIN_FINE } from '../lib/planner/day-grid.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -235,26 +234,32 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
 // durchläuft, sobald jemand den Tag auseinanderzieht. Sonst repariert der
 // nächste Lauf das eine und merkt nicht, dass er das andere abschafft.
 {
-  // Taron → Black Mamba: floor 8, ceiling 9. Ein Optimierer setzt den nächsten
-  // Stopp auf das nächste Vielfache von SNAP_MIN_FINE über dem Ende der
-  // Schlange — hier 15 Minuten später, also 6 Minuten Slack.
-  const packedGap = Math.ceil(9 / SNAP_MIN_FINE) * SNAP_MIN_FINE;
-  test('ein gepackter Tag lässt nur den Rundungsrest übrig', packedGap, 15);
   const band = 15;
 
+  // Taron → Black Mamba: floor 8, ceiling 9, Schlangenende 645. Wohin ein
+  // gepackter Tag den nächsten Stopp legt, rechnet `earliestGoodStart` selbst
+  // aus — dieselbe Aufrundung, die der Optimierer verwendet —, statt die 15 hier
+  // aus SNAP_MIN_FINE nachzubauen: eine Formel neben der Funktion ist eine
+  // zweite Antwort auf dieselbe Frage. Das Ziel des Probe-Legs liefert nur die
+  // Geometrie, die Startzeit geht nicht ein.
+  const packedStart = earliestGoodStart(from(600, 45), legBetween(from(600, 45), to(700), band));
+  test('ein gepackter Tag legt den nächsten Stopp auf 11:00', packedStart, 660);
+
+  // 660 − 645 = 15 Minuten Lücke, davon 9 Ceiling: 6 Minuten Slack, weniger als
+  // ein Zehntel des Bandes.
   test(
-    'und der Rundungsrest gegen ein echtes Band ist knapp',
-    legBetween(from(600, 45), to(645 + packedGap), band).verdict,
+    'und dieser Rundungsrest gegen ein echtes Band ist knapp',
+    legBetween(from(600, 45), to(packedStart), band).verdict,
     'tight'
   );
 
-  // Lücke 20, Ceiling 9 → 11 Minuten Slack: über einem Viertel des Bandes,
-  // unter dem ganzen. Genau hier entscheidet sich, gegen WELCHEN Anteil
-  // geurteilt wird — gegen das ganze Band ist das knapp, gegen ein Viertel wäre
-  // es gut. Ein Fall, der beides erfüllt, pinnt die Schwelle nicht.
+  // Lücke 21, Ceiling 9 → 12 Minuten Slack, also 80 % des Bandes: über drei
+  // Vierteln (11,25) und unter dem ganzen. Genau hier entscheidet sich, gegen
+  // WELCHEN Anteil geurteilt wird — ein Fall unterhalb jeder erwogenen Schwelle
+  // wäre unter allen grün und pinnte nichts.
   test(
-    'drei Viertel des Bandes reichen nicht — gemessen wird gegen das ganze',
-    legBetween(from(600, 45), to(665), band).verdict,
+    'vier Fünftel des Bandes reichen nicht — gemessen wird gegen das ganze',
+    legBetween(from(600, 45), to(666), band).verdict,
     'tight'
   );
 

@@ -175,11 +175,19 @@ export function transferBetween(
  * 22.8 % großzügig (and 8.5 % of all legs broken), at 90 minutes 2.9 / 23.5 /
  * 71.6. The rung answers the slack exactly as it is built to.
  *
- * One asymmetry this leaves, and it belongs to the payload rather than to the
- * ladder: `uncertaintyMinutes` is reported on every ride of a `measured` day
- * (today and tomorrow) and on almost no ride of a `composed` one, so the same
- * packed day reads "knapp" throughout for tomorrow and "gut" throughout — capped,
- * with the `°` — the day after. See PAR-167 for what the band itself covers.
+ * One asymmetry this leaves, and none of it is the ladder's doing: which rung a
+ * packed day can reach at all depends on whether a band arrives, and that is
+ * decided before this function is called. The payload decides most of it —
+ * `uncertaintyMinutes` is reported on every ride of a `measured` day (today and
+ * tomorrow) and on almost no ride of a `composed` one, so the same packed day
+ * reads "knapp" throughout for tomorrow and "gut" throughout, capped and with
+ * the `°`, the day after. The grid decides the rest, and it is the near-now
+ * exception: a block inside `LIVE_WINDOW_MIN` of the clock is re-based on the
+ * live wait and handed on with `uncertaintyMinutes: null`, because a queue
+ * somebody is reading off the park's own board has no forecast error. So today's
+ * next hour is capped too, and so is any leg leaving a custom block, an assumed
+ * wait or a park with no readable source. See PAR-167 for what the band covers
+ * where it does arrive.
  *
  * `observed` says the waits are MEASUREMENTS rather than predictions, and it
  * changes what a missing spread means. On a forecast, no spread is a gap in what
