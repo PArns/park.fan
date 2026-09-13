@@ -117,12 +117,14 @@ export type TripSyncResult = { ok: true; id: string } | { ok: false; error: Trip
  * subscriptions, deliberately) and is PAR-131.
  */
 export async function syncTrip(): Promise<TripSyncResult> {
+  const epoch = forgetCount;
   const state = plannerStore.getSnapshot();
   const payload = payloadOf(state);
   const existing = getTripId();
 
   if (existing) {
     const updated = await put(existing, payload);
+    if (overtaken(epoch)) return SUPERSEDED;
     if (updated.ok) return { ok: true, id: existing };
     if (updated.error.reason !== 'not-found') return { ok: false, error: updated.error };
     // Gone or expired, and the server said so. Dropping the id here rather
@@ -132,11 +134,59 @@ export async function syncTrip(): Promise<TripSyncResult> {
     setTripId(null);
   }
 
+  if (overtaken(epoch)) return SUPERSEDED;
   const created = await post(payload);
   if (!created.ok) return created;
+  if (overtaken(epoch)) {
+    // The delete landed while this create was on the wire, so the row exists
+    // and nothing wants it. Take it back down rather than store its id: the
+    // switch is off by now, and a plan may not outlive that. A refused delete
+    // here is the one orphan this cannot prevent — one request wide.
+    void del(created.id);
+    return SUPERSEDED;
+  }
   setTripId(created.id);
   return created;
 }
+
+/**
+ * How many times the stored trip has been thrown away, and why a counter.
+ *
+ * `stopTripAutoSync` clears the pending timer and nothing more: a sync that has
+ * already gone out cannot be called back. That was harmless while switching off
+ * only forgot the id — a racing PUT simply got its 200. The DELETE is what gives
+ * that request a 404 to read, and `syncTrip` reads a 404 as "this trip is gone,
+ * start another one": a sync overtaken by a switch-off would POST a fresh row
+ * and write its id back over the one `forgetTrip` had just cleared, leaving a
+ * plan nobody asked for standing for the full 400-day TTL — and, where another
+ * alert keeps the browser's push subscription alive, a switch that reads ON with
+ * nothing behind it on the next mount.
+ *
+ * So every sync carries the count it started under and gives up if it moved.
+ *
+ * **One tab's count.** It is module state, so a switch-off in a SECOND tab does
+ * not supersede a sync running in this one, and the resurrection above is still
+ * reachable there. That is not an oversight in the counter but the shape of
+ * this whole file: the plan, the trip id and the browser's one subscription are
+ * shared through `localStorage` with nothing telling one tab what another did,
+ * and the switch itself reads stale in that situation before any of this comes
+ * up. The case this counter covers is the one that happens without two windows
+ * and a stopwatch — the auto-sync, which fires every four seconds of editing
+ * and is not cancellable once dispatched.
+ */
+let forgetCount = 0;
+
+function overtaken(epoch: number): boolean {
+  return forgetCount !== epoch;
+}
+
+/**
+ * A sync abandoned because the plan was deleted underneath it. The "our end,
+ * try later" class rather than one of its own: nothing distinguishes it, and
+ * the one caller that reads the result (`enable`) wants exactly what that
+ * bucket means here — this did not land, leave the switch off.
+ */
+const SUPERSEDED: TripSyncResult = { ok: false, error: { reason: 'network' } };
 
 async function put(
   id: string,
@@ -231,14 +281,65 @@ export function stopTripAutoSync(): void {
  */
 const AUTO_SYNC_DEBOUNCE_MS = 4000;
 
+/** Deleted, or why not. A 404 lands in `ok` — see `forgetTrip`. */
+export type TripDeleteResult = { ok: true } | { ok: false; error: TripSyncError };
+
 /**
- * Forget the server's copy.
+ * Delete the server's copy, then forget it.
  *
- * Called when push is switched off. It drops the LINK rather than deleting the
- * row, because there is no delete endpoint — and deliberately so: a trip id may
- * have been shared, and a switch in one browser must not take a link somebody
- * else is holding with it. The row expires on its own.
+ * Called when push is switched off, and on the failure paths of switching it
+ * on: the plan is uploaded only while push is on, so an attempt that ends off
+ * may not leave a row behind.
+ *
+ * This used to drop the LINK and nothing else, on the grounds that a shared id
+ * must not die with one browser's switch. It had the effect backwards. There is
+ * no share entry point (PAR-82), so no id has ever been passed on — while
+ * dropping the link made the row **unreachable to the only person who wanted it
+ * gone**, for the full 400-day TTL, and left it readable and writable by anyone
+ * who had the id from a log or an old device. Switching off now deletes.
+ *
+ * **Server first, mirror second**, the rule the push removals keep: the id is
+ * the credential and this browser holds the only copy, so forgetting it before
+ * the server confirmed would lose the row for good. A refused DELETE therefore
+ * keeps the id and names its class, and the next attempt is a real retry.
+ *
+ * **A 404 is a success.** The trip has expired or is already gone; that is what
+ * the caller asked for, and an error over it would stand for ever since every
+ * retry answers 404 too. Same status, opposite reading to `syncTrip`, where a
+ * 404 means "this id is dead, start a new trip" — there it is an answer about a
+ * plan somebody is still editing, here about one they are throwing away.
  */
-export function forgetTrip(): void {
+export async function forgetTrip(): Promise<TripDeleteResult> {
+  // Counted first, before the id is even read, and unconditionally.
+  //
+  // Before the request, because a sync already on the wire has to be superseded
+  // from the moment this one starts, or it lands in the window between and
+  // resurrects what is being deleted. Before the `null` check, because the
+  // sync that most needs superseding is the one that has ALREADY dropped the id
+  // itself: a PUT answered 404 clears it and goes on to POST, so a switch-off
+  // arriving in that gap reads "nothing stored, nothing to do" and returns —
+  // and the create lands afterwards, storing a fresh id and a fresh row over a
+  // switch that is off by then.
+  forgetCount += 1;
+
+  const id = getTripId();
+  // Nothing stored: push was never on, or a previous delete already landed.
+  if (id === null) return { ok: true };
+
+  const deleted = await del(id);
+  if (!deleted.ok && deleted.error.reason !== 'not-found') {
+    return { ok: false, error: deleted.error };
+  }
   setTripId(null);
+  return { ok: true };
+}
+
+async function del(id: string): Promise<{ ok: true } | { ok: false; error: HttpWriteError }> {
+  try {
+    const response = await fetch(`/api/trips/${id}`, { method: 'DELETE' });
+    if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
+    return { ok: true };
+  } catch {
+    return { ok: false, error: { reason: 'network' } };
+  }
 }

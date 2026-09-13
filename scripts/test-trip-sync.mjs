@@ -15,6 +15,14 @@
  * keep the id and report their own class, from the shared
  * `@/lib/api/write-failure` the push writes use.
  *
+ * `forgetTrip` reads the same statuses with one flipped: there a 404 is a
+ * SUCCESS, because the caller is throwing the trip away and a trip that is
+ * already gone is the outcome they asked for. Its own rule is the push
+ * removals' — server first, mirror second — and it matters more here than
+ * anywhere else in the app: this browser holds the only copy of the id, so
+ * forgetting it before the server confirmed leaves the row unreachable to the
+ * one person who wanted it gone, for the full 400-day TTL.
+ *
  * Run: `pnpm test:trip-sync`
  */
 import assert from 'node:assert/strict';
@@ -50,7 +58,7 @@ globalThis.fetch = async (url, init) => {
   return fetchStub();
 };
 
-const { syncTrip, getTripId } = await import('../lib/planner/trip-sync.ts');
+const { syncTrip, getTripId, forgetTrip } = await import('../lib/planner/trip-sync.ts');
 
 /** A `Response` with just the parts `classifyWriteFailure` reads. */
 function response(status, body = null) {
@@ -247,6 +255,176 @@ await test('a 404 on the create route is our end, not the visitor’s payload', 
   const result = await syncTrip();
   assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
   assert.equal(getTripId(), null);
+});
+
+console.log('\nforgetTrip · switching push off');
+
+await test('a 204 deletes the row and only then forgets the id', async () => {
+  seed();
+  answers(response(204));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: true });
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].method, 'DELETE');
+  assert.equal(calls[0].url, `/api/trips/${EXISTING_ID}`);
+  // The order, not just the outcome: the request went out while the browser
+  // still knew which row to name.
+  assert.equal(calls[0].tripIdAtCall, EXISTING_ID);
+  assert.equal(getTripId(), null);
+});
+
+await test('a 404 is a success — the trip is already gone', async () => {
+  seed();
+  answers(response(404));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: true });
+  // Reported as an error it would stand for ever: every retry answers 404 too.
+  assert.equal(getTripId(), null);
+});
+
+await test('a 500 keeps the id, so the row stays reachable', async () => {
+  seed();
+  answers(response(500));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
+  // The whole point of the order: forgetting here would leave the plan on the
+  // server with nobody able to name it for 400 days.
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('a 429 keeps the id and names the limiter', async () => {
+  seed();
+  answers(response(429, { retryAfterSeconds: 42 }));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'rate-limited', retryAfterSeconds: 42 } });
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('a 400 keeps the id', async () => {
+  seed();
+  answers(response(400));
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'invalid' } });
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('a thrown fetch keeps the id', async () => {
+  seed();
+  fetchStub = () => {
+    throw new TypeError('Failed to fetch');
+  };
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: false, error: { reason: 'network' } });
+  assert.equal(calls.length, 1);
+  assert.equal(getTripId(), EXISTING_ID);
+});
+
+await test('nothing stored sends no request and still reads as done', async () => {
+  seed({ tripId: null });
+  const result = await forgetTrip();
+  assert.deepEqual(result, { ok: true });
+  assert.equal(calls.length, 0);
+  assert.equal(getTripId(), null);
+});
+
+await test('a second call after a success sends nothing', async () => {
+  seed();
+  answers(response(204));
+  await forgetTrip();
+  const again = await forgetTrip();
+  assert.deepEqual(again, { ok: true });
+  assert.equal(calls.length, 1);
+});
+
+console.log('\nforgetTrip · overtaking a sync that is already on the wire');
+
+/**
+ * The auto-sync cannot be called back once it has been dispatched — the stopper
+ * clears a debounce timer and nothing else — and the DELETE is what gives that
+ * request a 404 to read. Without the guard, `syncTrip` reads that 404 as "this
+ * trip is gone, start another one" and writes a brand-new id back over the one
+ * the switch-off had just cleared: a plan nobody asked for, standing for 400
+ * days, plus a browser that reads as subscribed on the next mount.
+ */
+await test('a sync whose PUT 404s after the delete does not create a new trip', async () => {
+  seed();
+  // The PUT is answered only after `forgetTrip` has been and gone.
+  let releasePut;
+  const held = new Promise((resolve) => {
+    releasePut = resolve;
+  });
+  const queue = [
+    () => held.then(() => response(404)), // the racing PUT
+    response(204), // the DELETE
+    response(201, { id: NEW_ID }), // must never be reached
+  ];
+  fetchStub = () => {
+    const next = queue.shift();
+    if (!next) throw new Error('more requests than answers');
+    return typeof next === 'function' ? next() : next;
+  };
+
+  const racing = syncTrip();
+  const forgotten = await forgetTrip();
+  releasePut();
+  const synced = await racing;
+
+  assert.deepEqual(forgotten, { ok: true });
+  // Abandoned, not turned into a second trip.
+  assert.deepEqual(synced, { ok: false, error: { reason: 'network' } });
+  assert.equal(getTripId(), null);
+  assert.equal(calls.length, 2);
+  assert.deepEqual(
+    calls.map((c) => c.method),
+    ['PUT', 'DELETE']
+  );
+});
+
+await test('a switch-off during the gap where the sync holds no id still wins', async () => {
+  seed();
+  let releasePost;
+  const held = new Promise((resolve) => {
+    releasePost = resolve;
+  });
+  const queue = [
+    response(404), // the racing PUT: clears the id and goes on to POST
+    () => held.then(() => response(201, { id: NEW_ID })),
+  ];
+  fetchStub = () => {
+    const next = queue.shift();
+    if (!next) throw new Error('more requests than answers');
+    return typeof next === 'function' ? next() : next;
+  };
+
+  const racing = syncTrip();
+  // Let the PUT resolve, so the sync is sitting in its POST with no id stored.
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.equal(getTripId(), null, 'precondition: the sync has dropped the id');
+
+  // Nothing to DELETE — and that must not mean "nothing to supersede".
+  const forgotten = await forgetTrip();
+  releasePost();
+  const synced = await racing;
+
+  assert.deepEqual(forgotten, { ok: true });
+  assert.deepEqual(synced, { ok: false, error: { reason: 'network' } });
+  assert.equal(getTripId(), null);
+  // The row the create made is taken back down rather than left standing.
+  assert.deepEqual(
+    calls.map((c) => c.method),
+    ['PUT', 'POST', 'DELETE']
+  );
+  assert.equal(calls[2].url, `/api/trips/${NEW_ID}`);
+});
+
+await test('a sync started after a delete is a normal create', async () => {
+  seed();
+  answers(response(204), response(201, { id: NEW_ID }));
+  await forgetTrip();
+  const result = await syncTrip();
+  // The counter supersedes what was in flight, never what comes after.
+  assert.deepEqual(result, { ok: true, id: NEW_ID });
+  assert.equal(getTripId(), NEW_ID);
 });
 
 console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
