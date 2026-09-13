@@ -845,7 +845,9 @@ and 92.1 % good — while costing the population where the rungs separate. Same
 with 8.5 % of all legs `broken`; at 90 minutes, 2.9 / 23.5 / 71.6. `PAR-174`
 carries the full tables, and `pnpm test:planner-leg` pins the three points that
 tell the thresholds apart: the snap remainder against a real band is `tight`,
-three quarters of a band is still `tight`, and a whole band is `good`.
+four fifths of a band is still `tight`, and a whole band is `good`. Four fifths
+rather than three: slack 11 of 15 reads `tight` under the whole band and under a
+¾ threshold alike, so it would sit there green while pinning neither.
 
 ### A queue is joined before closing, and never after
 

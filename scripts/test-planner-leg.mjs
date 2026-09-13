@@ -245,8 +245,8 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
   const packedStart = earliestGoodStart(from(600, 45), legBetween(from(600, 45), to(700), band));
   test('ein gepackter Tag legt den nächsten Stopp auf 11:00', packedStart, 660);
 
-  // 660 − 645 = 15 Minuten Lücke, davon 9 Ceiling: 6 Minuten Slack, weniger als
-  // ein Zehntel des Bandes.
+  // 660 − 645 = 15 Minuten Lücke, davon 9 Ceiling: 6 Minuten Slack, zwei Fünftel
+  // des Bandes.
   test(
     'und dieser Rundungsrest gegen ein echtes Band ist knapp',
     legBetween(from(600, 45), to(packedStart), band).verdict,
