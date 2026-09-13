@@ -6309,6 +6309,132 @@ if (live) {
   await tight.close();
 }
 
+// ── Landscape, 844×390 ───────────────────────────────────────────────────────
+//
+// The same device as the 390×844 pass above, rotated — and until PAR-76 the one
+// the panel got wrong, because `sm` asks the WIDTH and 844 is over it. The panel
+// therefore drew its desktop arrangement into a 390 px tall window: a 448×390
+// side sheet at x=396 whose time axis was 16 px, all sixteen of them under the
+// optimize row.
+//
+// What this pass guards is the SWITCH, not the axis' height. `planner-phone`
+// (app/globals.css) and `PLANNER_PHONE_QUERY` carry a height term now, so a flat
+// window gets the bottom sheet, the grab handle and the coarse-pointer targets.
+// The axis is still 16 px and that is measured rather than asserted: the sheet's
+// chrome rows add up to 426 px at this size against a 359 px sheet, so the axis —
+// `min-h-0 shrink` — has nothing to take. Two hours of day (216 px at
+// `PX_PER_MIN_COARSE`) needs the chrome down to 143, which is a different change
+// and a different ticket (PAR-76's first criterion, left open on purpose).
+//
+// So: assert what this change actually decides, and PRINT the number the next
+// change has to move. An assertion on 16 px would go red the moment somebody
+// improves it, which is the wrong direction for a check to fail in.
+{
+  const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
+  noteErrors(land);
+  await seed(land);
+  const landLauncher = land.locator(LAUNCHER);
+  await landLauncher.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
+  await settleHydration(land);
+  if (await landLauncher.count()) {
+    await landLauncher.click();
+    await land.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await land.waitForTimeout(2500);
+
+    // The instrument first, as in the portrait pass: a landscape phone that
+    // answers `(pointer: fine)` is a mouse in a short window, and every sentence
+    // below is about a thumb.
+    const pointer = await land.evaluate(() => ({
+      coarse: matchMedia('(pointer: coarse)').matches,
+      fine: matchMedia('(pointer: fine)').matches,
+    }));
+    check(
+      'die Querformat-Seite ist ein Grobzeiger',
+      pointer.coarse && !pointer.fine,
+      `coarse ${pointer.coarse} · fine ${pointer.fine}`
+    );
+
+    const room = await land.evaluate((sel) => {
+      const sheet = document.querySelector(sel);
+      if (!sheet) return null;
+      const box = sheet.getBoundingClientRect();
+      const grid = sheet.querySelector('[data-planner-grid]');
+      const scroller = grid?.closest('.overflow-y-auto') ?? null;
+      const axis = scroller?.getBoundingClientRect() ?? null;
+      // Whatever is actually painted at the axis' centre. `getBoundingClientRect`
+      // cannot answer "is something over this" — two boxes overlap happily and
+      // both report their own geometry — so ask the browser what a finger would
+      // hit there instead.
+      let covers = null;
+      if (axis && axis.height > 0) {
+        const hit = document.elementFromPoint(
+          Math.round(axis.x + axis.width / 2),
+          Math.round(axis.y + axis.height / 2)
+        );
+        covers = hit && !scroller.contains(hit) && hit !== scroller ? hit.tagName : null;
+      }
+      return {
+        width: Math.round(box.width),
+        height: Math.round(box.height),
+        left: Math.round(box.x),
+        bottom: Math.round(window.innerHeight - box.bottom),
+        axis: axis ? Math.round(axis.height) : null,
+        covers,
+        handle: sheet.querySelector('[data-planner-sheet-handle]'),
+      };
+    }, SHEET);
+
+    if (room) {
+      // A bottom sheet, measured the way the portrait pass measures one: it spans
+      // the window's width and sits on its bottom edge. The `left` and `bottom`
+      // halves are what separate it from the side panel this used to be — that
+      // one reported `left: 396`.
+      check(
+        'im Querformat liegt das Panel unten und nicht rechts',
+        room.left === 0 && room.bottom === 0 && room.width >= 800,
+        `Sheet ${room.width}×${room.height} bei (${room.left}, unten ${room.bottom} px)`
+      );
+      // 92svh of 390, i.e. the phone ceiling doing its job at a size where the
+      // width breakpoint never reached it. Bounded on both sides: `h-auto` with
+      // no ceiling would grow past the window, and a ceiling that clamps to
+      // nothing would collapse the sheet.
+      check(
+        'das Querformat-Sheet nimmt 92svh statt der ganzen Höhe',
+        room.height === 359,
+        `${room.height} px von 390 (erwartet 359 = 92svh)`
+      );
+      check(
+        'nichts liegt über der Achse',
+        room.covers === null,
+        room.covers === null
+          ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
+          : `${room.covers} liegt über der Achse`
+      );
+      // Printed, not asserted — see the note above this block.
+      console.log(
+        `ℹ️  Achse im Querformat: ${room.axis} px in einem ${room.height} px hohen Sheet ` +
+          `· Chrome ${room.height - room.axis} px (PAR-76, Kriterium 1 offen: 216 px nötig)`
+      );
+    } else {
+      check('im Querformat liegt das Panel unten und nicht rechts', false, 'kein Sheet gefunden');
+    }
+
+    // The handle is `planner-wide:hidden` now rather than `sm:hidden`, and this
+    // is the assertion that says the rename took: at 844 px wide the old class
+    // hid it, because 844 is over `sm`.
+    const handle = land.locator('[data-planner-sheet-handle]');
+    const handleBox = (await handle.count()) ? await handle.first().boundingBox() : null;
+    check(
+      'der Griff ist im Querformat da und 44 px hoch',
+      handleBox !== null && Math.round(handleBox.height) === 44,
+      handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
+    );
+  } else {
+    check('im Querformat liegt das Panel unten und nicht rechts', false, 'Launcher nicht gefunden');
+  }
+  await land.close();
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,

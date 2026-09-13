@@ -642,7 +642,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // makes `vh` taller than what is actually visible, and the summary row
         // at the bottom would sit under it.
         className={cn(
-          'flex w-full flex-col gap-0 p-0 max-sm:rounded-t-xl',
+          'planner-phone:rounded-t-xl flex w-full flex-col gap-0 p-0',
           // Glass, like the header's menu band: a translucent dark ground with
           // a real gaussian blur behind it, so the page keeps showing through
           // while the plan stays readable over a park photo. `/80` rather than
@@ -663,7 +663,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // supported, so this only matters where it is not; it costs nothing
           // and takes the browser's word out of the arrangement.
           'isolate',
-          'border-border/70 max-sm:border-t sm:border-l sm:shadow-2xl',
+          'border-border/70 planner-phone:border-t planner-wide:border-l planner-wide:shadow-2xl',
           // The width is the visitor's, so the class ceiling has to go — an
           // inline width beats `w-3/4` but not `max-w-md`, which would clamp
           // every drag past 448 px into looking broken rather than wide.
@@ -697,7 +697,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // the tap toggles rather than only dismissing). Resting at 92 the
           // shield is back. Only the pulled-up state gives it up, and only for
           // as long as somebody holds it there.
-          expanded ? 'max-sm:max-h-[100svh]' : 'max-sm:max-h-[92svh]'
+          expanded ? 'planner-phone:max-h-[100svh]' : 'planner-phone:max-h-[92svh]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
         // a bottom sheet spanning the viewport, and an inline pixel width would
@@ -742,7 +742,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             going to be a lie. Anchoring the overhang upward instead only moves
             the problem — pulled up to 100svh there is nothing above the sheet
             to reach into. */}
-        <div className="flex shrink-0 justify-center pt-1 pb-0.5 max-sm:py-0 sm:hidden">
+        <div className="planner-phone:py-0 planner-wide:hidden flex shrink-0 justify-center pt-1 pb-0.5">
           <button
             type="button"
             onPointerDown={handleSheetGrab}
@@ -752,7 +752,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             }}
             data-planner-sheet-handle=""
             aria-label={t('sheet.handle')}
-            className="relative flex h-4 w-16 cursor-grab touch-none items-center justify-center active:cursor-grabbing max-sm:h-11 max-sm:w-24"
+            className="planner-phone:h-11 planner-phone:w-24 relative flex h-4 w-16 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
           >
             <span className="bg-muted-foreground/40 h-1.5 w-10 rounded-full" />
           </button>
@@ -768,11 +768,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             close button at `absolute top-4 right-4`, which is now INSIDE this
             row, and without the clearance the picker's forward chevron sits
             under it and one of the two becomes untappable. */}
-        {/* `max-sm:py-0` rather than the `max-sm:py-1` it had: the two controls
+        {/* `planner-phone:py-0` rather than the `py-1` it had: the two controls
             in this row are 44 px tall on a phone now, so the padding that used
             to give a 28 px button air is 8 px this panel spends on nothing. The
-            row is 44 px either way. */}
-        <SheetHeader className="border-border/60 shrink-0 gap-0 border-b px-3 py-2 max-sm:py-0">
+            row is 44 px either way.
+
+            The padding and those two controls are ONE decision and move
+            together — which is why both carry `planner-phone:` and not the
+            `max-sm:` they were written with. Split them and a landscape phone
+            gets the tight padding with 28 px buttons still in it: a 29 px row of
+            targets a thumb cannot hit, measured at 844x390 before this line was
+            written. `pr-14` below is a different pair and deliberately stays on
+            `max-sm:` — it clears the close button in `components/ui/sheet.tsx`,
+            which is shared with every other sheet in the app and still asks the
+            width. */}
+        <SheetHeader className="border-border/60 planner-phone:py-0 shrink-0 gap-0 border-b px-3 py-2">
           {/* `max-sm:pr-14` and not the desktop's `pr-7`, because the close
               button this clears is a DIFFERENT size on a phone: `SheetContent`
               draws it `max-sm:top-2 max-sm:right-2 max-sm:size-11`, so it
@@ -796,7 +806,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onClick={() => setShowOverview((value) => !value)}
                   aria-expanded={showOverview}
                   data-planner-overview-toggle=""
-                  className="text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors max-sm:min-h-11"
+                  className="text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
                 >
                   {/* "Meine Pläne", never the active park's name. This control
                       opens the list of ALL plans, and labelling it with one of
@@ -829,7 +839,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   aria-label={t('wizard.open')}
                   title={t('wizard.open')}
                   data-planner-new-plan=""
-                  className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
+                  className="text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:size-11 flex size-7 shrink-0 items-center justify-center rounded-md transition-colors"
                 >
                   <Plus className="size-4" aria-hidden="true" />
                 </button>
@@ -1049,7 +1059,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                  the axis's own 200 px floor (270 px at 844), so on a tall phone
                  the two are the same order of size and on a short one this is
                  still the element that gives way first. */
-              <div className="min-h-0 shrink overflow-y-auto overscroll-y-contain max-sm:max-h-[32svh] sm:hidden">
+              <div className="planner-phone:max-h-[32svh] planner-wide:hidden min-h-0 shrink overflow-y-auto overscroll-y-contain">
                 <PlannerRideSearch
                   parkSlug={park.slug}
                   parkName={park.name}

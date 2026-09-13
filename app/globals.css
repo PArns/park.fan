@@ -37,6 +37,56 @@
 }
 
 /*
+ * What the PLANNER means by "phone", in CSS — the other half of
+ * `PLANNER_PHONE_QUERY` in `lib/planner/use-grid-scale.ts`.
+ *
+ * The panel used to ask Tailwind's built-in `max-sm:` for this, and a width
+ * breakpoint is exactly the question a landscape phone answers wrong: 844x390
+ * is the same device as 390x844 with the same thumb, but 844 is over `sm`, so
+ * the panel drew the DESKTOP arrangement into a 390 px tall window. Measured on
+ * `main` @ `9e37710a`: a 448x390 side panel at x=396, of which the time axis got
+ * **16 px** — and the "Alle Headliner einplanen / Tag optimieren" row (top 179,
+ * bottom 220) covered all sixteen. Portrait on the same build gives the axis 211.
+ *
+ * So the question grows a second term and stays ONE question, asked in two
+ * languages. Redefining `max-sm:` itself was the other way and is not available:
+ * it is Tailwind's own, and over sixty files outside the planner — header,
+ * footer, blog, search, admin — read it as "narrow window". Widening it there
+ * would move the whole site to fix one panel.
+ *
+ * **31.25rem, not 500px**, and rem for the same reason `PLANNER_PHONE_QUERY` and
+ * the `container` tiers below already give at length: Tailwind's breakpoints are
+ * rem, so `planner-wide:` moves with the reader's default font size while a px
+ * query would not, and the two halves of a pair would stop agreeing for exactly
+ * the readers who raised that default. 500 px is the number the ticket named
+ * (PAR-76); it clears a 390 px landscape phone by 110 px and leaves a 1512x982
+ * laptop and every desktop window on the wide side.
+ *
+ * **The two are complements and have to stay complements.** Every `planner-phone:`
+ * in the panel has a `planner-wide:` counterpart or none at all; a pair that
+ * disagreed — say a leftover `sm:border-l` beside a moved `planner-phone:border-t`
+ * — would apply BOTH at 844x390 and the winner would be whatever order the
+ * compiler happened to emit. `or` on one side, `and` on the other, and nothing
+ * between them.
+ */
+@variant planner-phone {
+  @media (width < 40rem) {
+    @slot;
+  }
+  @media (height < 31.25rem) {
+    @slot;
+  }
+}
+
+@variant planner-wide {
+  @media (width >= 40rem) {
+    @media (height >= 31.25rem) {
+      @slot;
+    }
+  }
+}
+
+/*
  * Tailwind's `container`, asked of the PAGE instead of the window.
  *
  * The utility ships as a MEDIA query — `width: 100%` plus a max-width tier picked from how wide
