@@ -1,28 +1,77 @@
 # TODO — Ride downtime: measure locally before it leaves draft (2026-09-06)
 
 The frontend half of the downtime work is built (PR #416; the API side is
-[v4.api.park.fan#228](https://github.com/PArns/v4.api.park.fan/pull/228)). Two
-things are unmeasured, and both need a park with a ride actually reported DOWN —
-which is roughly 0.7 % of rides at any instant, in a minority of parks, so it
-takes picking one rather than waiting for one.
+[v4.api.park.fan#228](https://github.com/PArns/v4.api.park.fan/pull/228)). Both
+measurements below need a park with a ride actually reported DOWN, so it takes
+picking one rather than waiting for one.
 
-Find a candidate by fetching a few open parks and grepping for
-`"effectiveStatus":"DOWN"`; Lotte World Adventure, Universal Studios Japan and
-Universal Studios Singapore all had one during the analysis.
+**Measured 2026-09-13, 18:10 UTC, against the live API** (PAR-13): of 213 parks,
+68 were `OPERATING`; of their 2 577 attractions, **97 (3.8 %) were `DOWN`**, spread
+over **28 of those 68 parks**. The "roughly 0.7 %, in a minority of parks" this
+section used to claim was five times too low and understated the spread — at any
+given hour there is usually a candidate rather than rarely one. The counts are
+hourly weather, not a constant; what holds is the order of magnitude.
 
-- [ ] **`pnpm build && pnpm start`, then `pnpm measure:cls --late` on a park page
+Find a candidate on the **park detail** endpoint,
+`/v1/parks/{continent}/{country}/{city}/{park}` → `attractions[].effectiveStatus`.
+Not the `/attractions` list endpoint beside it: that one carries neither
+`effectiveStatus` nor `queues` and reported all 2 592 attractions of the 68 open
+parks as `CLOSED`, which looks exactly like "nothing is down right now".
+(Lotte World Adventure, Universal Studios Japan and Universal Studios Singapore
+were the candidates during the original analysis; all three are closed at European
+evening hours.)
+
+- [x] **`pnpm build && pnpm start`, then `pnpm measure:cls --late` on a park page
       with a DOWN ride, and on that ride's own page.** Against `localhost`, never
       `127.0.0.1`, and never `next dev` — both report a confident 0.0000 for
       reasons that have nothing to do with the page.
 
+  Measured on Knott's Berry Farm (3 DOWN) and Six Flags Great Adventure (10 DOWN),
+  Node 24.21.0, `pnpm start` on :3177. Park pages **0.0000–0.0025**, ride pages of
+  a DOWN ride **0.0031 mobile / 0.0224–0.0559 desktop** — all four well inside the
+  0.100 "good" band, so **no CLS regression**. The largest single entry is the ride
+  page's own live-status block growing 387 → 417 px at 140 ms, not the card note.
+
   What could move: `OutageNote` adds a `w-full` line inside the card's badge
   wrap, and attraction cards share row heights through subgrid, so one card
-  growing a line grows the whole row. It arrives with the server render, so
-  there should be no shift at paint; what to check is the row geometry
-  against a park with no DOWN ride.
+  growing a line grows the whole row. **It does, and it costs nothing**: on
+  Knott's at 1280 px a row holding a DOWN card is 330–354 px against 288 px for a
+  row without one (+42 to +66 px), and CLS on that page is 0.0025, because the
+  note arrives with the server render and the row is that height at first paint.
 
-- [ ] **`pnpm check:card-framing` on the same park.** The note sits in the card's
+- [x] **`pnpm check:card-framing` on the same park.** The note sits in the card's
       lower panel, and the framed photo layer's box has to stay wider than 1.5.
+
+  Box 405×220, aspect **1.84** on Knott's, and **37 framed photos found / 32 in a
+  panelled card / 0 below 1.5** across the default regression set — **no framing
+  regression**. The three numbers are not one number: an unpanelled card is exempt
+  from the rule (its photo spans the card, there is no crop to choose), so only the
+  middle one says how often the invariant was actually applied. Two caveats worth
+  keeping, because neither is visible from the output alone:
+
+  - The check took `--url=` to be run on a chosen park at all; it used to hard-wire
+    four pages. Without it the run grades a fixed set and says nothing about the
+    park that has the DOWN ride. A page named with `--url=` that renders no framed
+    photo now **fails** the run rather than passing with nothing measured — in the
+    default set an empty surface is ordinary, but a page you asked for by name is
+    the run, and "0 checked, 0 failures, exit 0" is the same output as a clean pass.
+  - **The premise of this checkbox does not hold: a DOWN ride's card has no lower
+    panel.** `hasBottomPanel` is `isOperatingOrUnknown && waitTime !== null`
+    (`components/parks/attraction-card.tsx`), so a card reporting an outage renders
+    no `.pk-panel-bot` at all — its framed layer takes that row instead
+    (`row-span-2`), which puts it in the branch this check **exempts on purpose**:
+    the whole card is the visible photo there, so there is no crop to choose. The
+    outage note can therefore never square a box that this assertion guards, and
+    pointing `--url=` at a park full of DOWN rides grades nothing rather than
+    grading them. What the check guards is the OPERATING card with a wait time —
+    which is worth keeping, just not for the reason written here.
+
+    (Two things that would each have hidden this: no card was observed carrying a
+    framed photo and an outage line together — of the 14 parks with the most DOWN
+    rides, 13 render **zero** `data-card-photo="frame"`, against 6 on Toverland, so
+    the media database barely overlaps the parks whose feeds report outages; and a
+    page with nothing gradable used to exit 0. Both are now visible in the output
+    rather than silent.)
 
 - [ ] **The reliability chapter has never been seen with data in it.** Every gate
       in the API's `DOWNTIME_GATES` is provisional and currently withholds
