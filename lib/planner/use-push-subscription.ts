@@ -132,14 +132,21 @@ export function usePushSubscription() {
     setDeleteError(null);
 
     /**
-     * Whether this attempt put a plan on the server.
+     * Whether this attempt CREATED the row on the server.
      *
      * Everything after the upload can still fail, and every one of those paths
-     * ends at `off` — where a stored plan may not exist, because the whole
-     * feature's rule is that the plan is uploaded only while push is on. So the
-     * row this attempt created is taken back down again on the way out.
+     * ends at `off` — where a plan this attempt put there may not be left
+     * standing, because the whole feature's rule is that the plan is on the
+     * server only while push is on.
+     *
+     * Created, not uploaded: `syncTrip` re-uses a stored trip id, and a trip
+     * that was already there is not this attempt's to delete. A second tab with
+     * push on shares that id through `localStorage`, so rolling back on every
+     * successful sync would take down the plan a live subscription is pointing
+     * at. The id before the sync is what tells the two apart.
      */
-    let uploaded = false;
+    const before = getTripId();
+    let created = false;
 
     try {
       const permission = await Notification.requestPermission();
@@ -158,7 +165,8 @@ export function usePushSubscription() {
         return;
       }
       const tripId = stored.id;
-      uploaded = true;
+      // A different id than before (or none before) means the POST ran.
+      created = before !== tripId;
 
       // Registered only now, not on every page load: a worker installed for
       // everybody would claim scope over the whole origin for a feature almost
@@ -195,18 +203,26 @@ export function usePushSubscription() {
         // The browser is now subscribed to a push service that will send it
         // nothing. Undo it rather than leaving a dangling subscription — the
         // next attempt would otherwise find one and report "on".
-        await subscription.unsubscribe().catch(() => {});
-        await forgetTrip();
+        //
+        // Under the same guard `disable()` uses, and for the same reason: the
+        // browser has ONE push subscription for the whole origin, and the line
+        // above may well have found it rather than created it (a ride alert
+        // arms the very same one). Unsubscribing unconditionally here took
+        // every armed alert and followed show down with a failed POST.
+        if (!hasAnyPushFollowsLocal()) {
+          await subscription.unsubscribe().catch(() => {});
+        }
+        if (created) await forgetTrip();
         setState('off');
         return;
       }
 
       setState('on');
     } catch {
-      // Anywhere between the upload and the last line: the plan goes with it.
+      // Anywhere between the create and the last line: the plan goes with it.
       // A refused DELETE keeps the id (`forgetTrip`), which is right here too —
       // the next attempt resumes that trip rather than stranding it.
-      if (uploaded) await forgetTrip();
+      if (created) await forgetTrip();
       setState('off');
     }
   }, [availability, selectedTopics]);

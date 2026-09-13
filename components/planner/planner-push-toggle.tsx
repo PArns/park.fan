@@ -150,12 +150,16 @@ export function PlannerPushToggle() {
         </p>
       )}
 
-      {/* The switch is still on and the plan is still up there. Announced,
-          because nothing else on screen changed when the press did nothing. */}
+      {/* The switch is still on and the plan is still up there. `alert` rather
+          than `status`: this is mounted in the same commit as its text, and a
+          polite region is announced on the text CHANGING inside one that was
+          already there — an assertive one is announced on insertion, which is
+          what actually happens here. Nothing else on screen moved when the
+          press did nothing, so it has to carry itself. */}
       {deleteError !== null && (
         <p
           className="text-destructive mt-1 px-2 text-[10px] leading-snug"
-          role="status"
+          role="alert"
           data-planner-push-error="delete"
         >
           {t('push.deleteFailed')}

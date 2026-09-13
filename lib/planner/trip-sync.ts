@@ -117,12 +117,14 @@ export type TripSyncResult = { ok: true; id: string } | { ok: false; error: Trip
  * subscriptions, deliberately) and is PAR-131.
  */
 export async function syncTrip(): Promise<TripSyncResult> {
+  const epoch = forgetCount;
   const state = plannerStore.getSnapshot();
   const payload = payloadOf(state);
   const existing = getTripId();
 
   if (existing) {
     const updated = await put(existing, payload);
+    if (overtaken(epoch)) return SUPERSEDED;
     if (updated.ok) return { ok: true, id: existing };
     if (updated.error.reason !== 'not-found') return { ok: false, error: updated.error };
     // Gone or expired, and the server said so. Dropping the id here rather
@@ -132,11 +134,49 @@ export async function syncTrip(): Promise<TripSyncResult> {
     setTripId(null);
   }
 
+  if (overtaken(epoch)) return SUPERSEDED;
   const created = await post(payload);
   if (!created.ok) return created;
+  if (overtaken(epoch)) {
+    // The delete landed while this create was on the wire, so the row exists
+    // and nothing wants it. Take it back down rather than store its id: the
+    // switch is off by now, and a plan may not outlive that. A refused delete
+    // here is the one orphan this cannot prevent — one request wide.
+    void del(created.id);
+    return SUPERSEDED;
+  }
   setTripId(created.id);
   return created;
 }
+
+/**
+ * How many times the stored trip has been thrown away, and why a counter.
+ *
+ * `stopTripAutoSync` clears the pending timer and nothing more: a sync that has
+ * already gone out cannot be called back. That was harmless while switching off
+ * only forgot the id — a racing PUT simply got its 200. The DELETE is what gives
+ * that request a 404 to read, and `syncTrip` reads a 404 as "this trip is gone,
+ * start another one": a sync overtaken by a switch-off would POST a fresh row
+ * and write its id back over the one `forgetTrip` had just cleared, leaving a
+ * plan nobody asked for standing for the full 400-day TTL — and, where another
+ * alert keeps the browser's push subscription alive, a switch that reads ON with
+ * nothing behind it on the next mount.
+ *
+ * So every sync carries the count it started under and gives up if it moved.
+ */
+let forgetCount = 0;
+
+function overtaken(epoch: number): boolean {
+  return forgetCount !== epoch;
+}
+
+/**
+ * A sync abandoned because the plan was deleted underneath it. The "our end,
+ * try later" class rather than one of its own: nothing distinguishes it, and
+ * the one caller that reads the result (`enable`) wants exactly what that
+ * bucket means here — this did not land, leave the switch off.
+ */
+const SUPERSEDED: TripSyncResult = { ok: false, error: { reason: 'network' } };
 
 async function put(
   id: string,
@@ -264,6 +304,10 @@ export async function forgetTrip(): Promise<TripDeleteResult> {
   // Nothing stored: push was never on, or a previous delete already landed.
   if (id === null) return { ok: true };
 
+  // Counted BEFORE the request, not after it: a sync already on the wire has to
+  // be superseded from the moment this one starts, or it lands in the window
+  // between and resurrects what is being deleted.
+  forgetCount += 1;
   const deleted = await del(id);
   if (!deleted.ok && deleted.error.reason !== 'not-found') {
     return { ok: false, error: deleted.error };

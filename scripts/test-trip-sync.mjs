@@ -336,5 +336,59 @@ await test('a second call after a success sends nothing', async () => {
   assert.equal(calls.length, 1);
 });
 
+console.log('\nforgetTrip · overtaking a sync that is already on the wire');
+
+/**
+ * The auto-sync cannot be called back once it has been dispatched — the stopper
+ * clears a debounce timer and nothing else — and the DELETE is what gives that
+ * request a 404 to read. Without the guard, `syncTrip` reads that 404 as "this
+ * trip is gone, start another one" and writes a brand-new id back over the one
+ * the switch-off had just cleared: a plan nobody asked for, standing for 400
+ * days, plus a browser that reads as subscribed on the next mount.
+ */
+await test('a sync whose PUT 404s after the delete does not create a new trip', async () => {
+  seed();
+  // The PUT is answered only after `forgetTrip` has been and gone.
+  let releasePut;
+  const held = new Promise((resolve) => {
+    releasePut = resolve;
+  });
+  const queue = [
+    () => held.then(() => response(404)), // the racing PUT
+    response(204), // the DELETE
+    response(201, { id: NEW_ID }), // must never be reached
+  ];
+  fetchStub = () => {
+    const next = queue.shift();
+    if (!next) throw new Error('more requests than answers');
+    return typeof next === 'function' ? next() : next;
+  };
+
+  const racing = syncTrip();
+  const forgotten = await forgetTrip();
+  releasePut();
+  const synced = await racing;
+
+  assert.deepEqual(forgotten, { ok: true });
+  // Abandoned, not turned into a second trip.
+  assert.deepEqual(synced, { ok: false, error: { reason: 'network' } });
+  assert.equal(getTripId(), null);
+  assert.equal(calls.length, 2);
+  assert.deepEqual(
+    calls.map((c) => c.method),
+    ['PUT', 'DELETE']
+  );
+});
+
+await test('a sync started after a delete is a normal create', async () => {
+  seed();
+  answers(response(204), response(201, { id: NEW_ID }));
+  await forgetTrip();
+  const result = await syncTrip();
+  // The counter supersedes what was in flight, never what comes after.
+  assert.deepEqual(result, { ok: true, id: NEW_ID });
+  assert.equal(getTripId(), NEW_ID);
+});
+
 console.log(`\n${passed} test(s) passed, ${failures.length} failed.`);
 if (failures.length > 0) process.exit(1);
