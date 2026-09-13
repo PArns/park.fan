@@ -907,11 +907,22 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     takes 176, and each 44 px target plus its gap takes 52. One
                     of them leaves the park name 63 px; two leave it **11**,
                     i.e. no park name. Something had to go, and of the four the
-                    "+" is the only one that closes no route: the same wizard
-                    is one tap further on, behind the chevron beside it, where
-                    a new day stands next to the days that already exist. The
-                    day picker is the panel's most-pressed control and the park
-                    name is what tells a reader which plan they are looking at.
+                    "+" is the only one that closes no ROUTE. Two things reach
+                    what it reached, and it is worth being exact about which:
+                      · a second day at the park on screen is the day picker
+                        beside this, one tap on `›` — measured: the same park
+                        on an unplanned date, with axis, ride search and
+                        optimise, which is fewer taps than the "+" ever was;
+                      · the WIZARD is behind the chevron, in the overview,
+                        where a new day stands next to the days that exist.
+                    What does not survive is the wizard arriving with the page's
+                    park already filled in — the overview's start deliberately
+                    asks that question, and seeding it would delete the park
+                    step for everyone (`initialPark` drops `park` from `steps`
+                    entirely, so it cannot be reached forwards or backwards).
+                    That residue is PAR-181 rather than a decision taken here.
+                    The day picker is the panel's most-pressed control and the
+                    park name is what tells a reader which plan they are in.
 
                     `!isPhone` rather than `!phoneHead`: it is gone on a phone
                     for good, not only while the head is up. The overview is

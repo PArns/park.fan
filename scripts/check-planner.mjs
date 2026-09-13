@@ -1442,18 +1442,28 @@ if (await phoneLauncher.count()) {
       // the sweep above passed. A target that cannot be hit is exactly the
       // failure this pass exists to catch, so it is asked of Playwright —
       // `trial: true` names the intercepting element on a no.
-      const row = phone.locator('[data-radix-popper-content-wrapper] button').first();
-      if (await row.count()) {
-        const reaches = await row
-          .click({ trial: true, timeout: 5_000 })
-          .then(() => 'erreichbar')
-          .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
-        check(
-          `${label.replace(' ist antippbar', '')} nimmt den Druck an`,
-          reaches === 'erreichbar',
-          reaches
-        );
-      }
+      //
+      // `:visible` and `.last()`, not a bare `.first()`: a popper that a
+      // previous iteration left standing is still in the DOM, and taking the
+      // first match would measure THAT one — a stale popper is exactly the
+      // thing the Escape below exists to prevent, so the selector must not
+      // depend on it having worked. And no `if (count())` around the check:
+      // that is the pattern this whole block is a correction of. Zero rows is
+      // a failure of the assertion, not an absence of one.
+      const rows = phone.locator('[data-radix-popper-content-wrapper]:visible button');
+      const count = await rows.count();
+      const reaches = count
+        ? await rows
+            .last()
+            .click({ trial: true, timeout: 5_000 })
+            .then(() => 'erreichbar')
+            .catch((error) => String(error.message).split('\n')[0].slice(0, 120))
+        : 'keine Zeile im geöffneten Popover';
+      check(
+        `${label.replace(' ist antippbar', '')} nimmt den Druck an`,
+        reaches === 'erreichbar',
+        `${count} Zeile(n) — ${reaches}`
+      );
       await phone.keyboard.press('Escape');
       await phone.waitForTimeout(300);
     }
