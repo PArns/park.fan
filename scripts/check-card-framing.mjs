@@ -84,7 +84,7 @@ const urlArg = argv.filter((a) => a.startsWith('--url=')).map((a) => a.slice(6))
 // is accepted, the same two forms `scripts/measure-cls.mjs` takes, so the page really
 // can be handed to both.
 const wellFormed = (a) =>
-  a.startsWith('--url=') && (a.slice(6).startsWith('/') || a.slice(6).startsWith('http'));
+  a.startsWith('--url=') && (a.slice(6).startsWith('/') || /^https?:\/\//.test(a.slice(6)));
 const bad = argv.filter((a) => !wellFormed(a));
 if (bad.length) {
   console.error(
@@ -237,6 +237,11 @@ for (const [label, path] of PAGES) {
   // branch is exempt. Counted per page rather than once for the run, or a second page
   // that did grade something carries this one — with two `--url=` arguments a closed
   // park rides along on a healthy page and the run still exits 0.
+  // Deliberately a note rather than a failure in the default set: ride cards are the
+  // only conditionally-panelled surface there, so an empty wait-time feed would turn
+  // the release gate red on a site with nothing wrong with it. The run-wide
+  // `nothingMeasured` check below still catches the case that matters — every surface
+  // going quiet at once, which is what a renamed hook looks like.
   if (pageGraded === 0) report(label, path, 'no photo sat in a panelled card, rule never applied');
 }
 
@@ -260,8 +265,15 @@ if (nothingMeasured) {
   // happened, or after a server that is up.
   console.error('Nothing was measured.');
   if (unloadable > 0) {
+    // Not "is BASE up?" unconditionally: an absolute `--url=` bypasses BASE entirely,
+    // and naming a server that was never contacted is the same mis-diagnosis this
+    // block exists to avoid.
+    const hosts = [
+      ...new Set(PAGES.map(([, p]) => (/^https?:\/\//.test(p) ? new URL(p).origin : BASE))),
+    ];
     console.error(
-      `  ${unloadable} of ${PAGES.length} page${PAGES.length === 1 ? '' : 's'} never loaded — is ${BASE} up?`
+      `  ${unloadable} of ${PAGES.length} page${PAGES.length === 1 ? '' : 's'} never loaded — ` +
+        `is ${hosts.join(' / ')} up?`
     );
   }
   if (unloadable < PAGES.length) {
