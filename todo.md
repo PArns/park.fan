@@ -55,14 +55,23 @@ evening hours.)
     photo now **fails** the run rather than passing with nothing measured — in the
     default set an empty surface is ordinary, but a page you asked for by name is
     the run, and "0 checked, 0 failures, exit 0" is the same output as a clean pass.
-  - **No card was observed carrying both a framed photo and the outage line.** Of
-    the 14 parks with the most DOWN rides, 13 render **zero** `data-card-photo="frame"`
-    (Toverland, the check's own reference park, renders 6): the media database
-    barely overlaps the parks whose feeds report outages. So the specific
-    combination this checkbox was written to catch — an outage note squaring the
-    box of a card that has a photo — **has not been measured on a real page**, and
-    a green run here does not yet cover it. Re-run when media coverage reaches a
-    park whose rides go down.
+  - **The premise of this checkbox does not hold: a DOWN ride's card has no lower
+    panel.** `hasBottomPanel` is `isOperatingOrUnknown && waitTime !== null`
+    (`components/parks/attraction-card.tsx`), so a card reporting an outage renders
+    no `.pk-panel-bot` at all — its framed layer takes that row instead
+    (`row-span-2`), which puts it in the branch this check **exempts on purpose**:
+    the whole card is the visible photo there, so there is no crop to choose. The
+    outage note can therefore never square a box that this assertion guards, and
+    pointing `--url=` at a park full of DOWN rides grades nothing rather than
+    grading them. What the check guards is the OPERATING card with a wait time —
+    which is worth keeping, just not for the reason written here.
+
+    (Two things that would each have hidden this: no card was observed carrying a
+    framed photo and an outage line together — of the 14 parks with the most DOWN
+    rides, 13 render **zero** `data-card-photo="frame"`, against 6 on Toverland, so
+    the media database barely overlaps the parks whose feeds report outages; and a
+    page with nothing gradable used to exit 0. Both are now visible in the output
+    rather than silent.)
 
 - [ ] **The reliability chapter has never been seen with data in it.** Every gate
       in the API's `DOWNTIME_GATES` is provisional and currently withholds

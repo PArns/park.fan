@@ -35,11 +35,21 @@
  * The four pages below are the regression set and run by default. `--url=` (repeatable)
  * checks a specific page instead — the invariant is on the box, so it holds for any
  * surface that renders cards, and a park only reaches some card states while its live
- * data says so. A ride reported DOWN renders an extra badge line inside the card's badge
- * wrap, which is exactly the kind of change that squares the box, and it cannot be
- * reproduced from the fixed list: whether any park has one is a property of the hour the
- * check runs in. Same spelling as `scripts/measure-cls.mjs`, so one page can be handed to
- * both.
+ * data says so, which the fixed list cannot reproduce.
+ *
+ * ## What this check cannot say about a ride that is DOWN
+ *
+ * Measured 2026-09-13 (PAR-13), because the obvious expectation is the wrong one: a
+ * DOWN ride's card adds an outage line, so it looks like the clearest way to square a
+ * box. It is not, and it never reaches this assertion. `hasBottomPanel` is
+ * `isOperatingOrUnknown && waitTime !== null` (`components/parks/attraction-card.tsx`),
+ * so a DOWN card renders NO bottom panel at all: its framed layer takes that row as
+ * well (`row-span-2`) and lands in the unpanelled branch below, which is exempt by
+ * design — the whole card is the visible photo there, so there is no crop to choose.
+ * The outage note is therefore never the thing that squares a guarded box, and pointing
+ * `--url=` at a park full of DOWN rides grades nothing rather than grading them.
+ * What this check guards is the OPERATING card with a wait time. Same spelling as
+ * `scripts/measure-cls.mjs`, so one page can be handed to both.
  *
  * Exits non-zero when a photo box has gone too square, naming the page and the
  * card, so it can gate a release check as easily as a manual look.
@@ -62,7 +72,9 @@ const DEFAULT_PAGES = [
   ['home', '/de'],
 ];
 
-const argv = process.argv.slice(2);
+// pnpm forwards a literal `--` ahead of the script's own arguments; it is a separator,
+// not an argument, and rejecting it would fail `pnpm check:card-framing -- --url=…`.
+const argv = process.argv.slice(2).filter((a) => a !== '--');
 const urlArg = argv.filter((a) => a.startsWith('--url=')).map((a) => a.slice(6));
 
 // A mistyped page must not read as "no page asked for". `--url /path` with a space,
@@ -225,7 +237,7 @@ if (nothingMeasured) {
   // Two different causes, and naming the wrong one sends the reader after a rename that
   // never happened: if every page threw, the pages are the story, not the selector.
   console.error(
-    unloadable > 0
+    unloadable === PAGES.length
       ? `Nothing was measured — no page loaded far enough to grade. Is ${BASE} up?`
       : 'Nothing was measured — no framed photo sat in a panelled card, so the rule was\n' +
           `never applied. Check that ${BASE} is the site you meant, that ${FRAME} still\n` +
