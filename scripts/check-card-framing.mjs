@@ -146,6 +146,16 @@ let failures = 0;
  *  about an aspect ratio, and the closing line used to report them as if they did. */
 let squashed = 0;
 let checked = 0;
+/** Photos the invariant was actually applied to. `checked` counts every framed photo
+ *  found, but an unpanelled card is explicitly exempt (its photo spans the card, there
+ *  is no crop to choose), so a page whose cards are all unpanelled — a closed park with
+ *  no live wait times renders exactly that — evaluates the rule zero times while
+ *  printing a line per photo. Grading nothing is the case this script must not report
+ *  as a pass, and "N photos checked" is not the number that says whether it did. */
+let graded = 0;
+/** Pages that never rendered — a timeout or a dead server, as opposed to a page that
+ *  loaded fine and simply had no card to grade. The two want different advice. */
+let unloadable = 0;
 
 for (const [label, path] of PAGES) {
   let rows;
@@ -154,6 +164,7 @@ for (const [label, path] of PAGES) {
   } catch (error) {
     console.error(`✗ ${label} (${path}) — could not load: ${error.message.split('\n')[0]}`);
     failures++;
+    unloadable++;
     continue;
   }
 
@@ -177,6 +188,7 @@ for (const [label, path] of PAGES) {
   console.log(`\n${label} (${path})`);
   for (const row of rows) {
     checked++;
+    if (row.panelled) graded++;
     const ok = !row.panelled || row.boxAspect >= MIN_BOX_ASPECT;
     if (!ok) {
       failures++;
@@ -198,8 +210,8 @@ for (const [label, path] of PAGES) {
 await browser.close();
 
 console.log(
-  `\n${checked} framed photo${checked === 1 ? '' : 's'} checked, ` +
-    `${squashed} in a panelled card whose box fell below ${MIN_BOX_ASPECT}.`
+  `\n${checked} framed photo${checked === 1 ? '' : 's'} found, ${graded} in a panelled card ` +
+    `(the ones the rule applies to), ${squashed} below ${MIN_BOX_ASPECT}.`
 );
 
 // Nothing measured is not a pass, in either mode. The `--url=` branch above catches
@@ -208,11 +220,16 @@ console.log(
 // `domcontentloaded` resolves on a 404 as happily as on a 200), and the four default
 // pages each print "no framed photos" while the gate reports success. A release check
 // that cannot fail is worse than none: it answers the question it was asked.
-const nothingMeasured = checked === 0;
+const nothingMeasured = graded === 0;
 if (nothingMeasured) {
+  // Two different causes, and naming the wrong one sends the reader after a rename that
+  // never happened: if every page threw, the pages are the story, not the selector.
   console.error(
-    'Nothing was measured — every page came back without a framed photo.\n' +
-      `Check that the site at ${BASE} is the one you meant and that ${FRAME} still exists.`
+    unloadable > 0
+      ? `Nothing was measured — no page loaded far enough to grade. Is ${BASE} up?`
+      : 'Nothing was measured — no framed photo sat in a panelled card, so the rule was\n' +
+          `never applied. Check that ${BASE} is the site you meant, that ${FRAME} still\n` +
+          'exists, and that the pages render cards with a bottom panel.'
   );
 }
 

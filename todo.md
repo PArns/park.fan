@@ -42,8 +42,11 @@ evening hours.)
 - [x] **`pnpm check:card-framing` on the same park.** The note sits in the card's
       lower panel, and the framed photo layer's box has to stay wider than 1.5.
 
-  Box 405×220, aspect **1.84** on Knott's, and **37 framed photos / 0 below 1.5**
-  across the default regression set — **no framing regression**. Two caveats worth
+  Box 405×220, aspect **1.84** on Knott's, and **37 framed photos found / 32 in a
+  panelled card / 0 below 1.5** across the default regression set — **no framing
+  regression**. The three numbers are not one number: an unpanelled card is exempt
+  from the rule (its photo spans the card, there is no crop to choose), so only the
+  middle one says how often the invariant was actually applied. Two caveats worth
   keeping, because neither is visible from the output alone:
 
   - The check took `--url=` to be run on a chosen park at all; it used to hard-wire
