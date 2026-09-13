@@ -1391,8 +1391,9 @@ if (await phoneLauncher.count()) {
     //
     // A control that is not hittable at its own centre is skipped rather than
     // failed: it is scrolled out of its container or covered, which is a
-    // different defect and gets its own named check (see "einen Tag planen"
-    // below, which is the one this sweep would otherwise have swallowed).
+    // different defect and gets its own named check (see „das letzte
+    // Bedienelement der Kopfzeile" below, which is the one this sweep would
+    // otherwise have swallowed).
     const sweepSmallTargets = (sel) =>
       phone.evaluate((sheetSelector) => {
         // Radix portals every popover and dialog to `<body>`, so a sweep of the
@@ -1489,42 +1490,188 @@ if (await phoneLauncher.count()) {
     // the wrong thing. Asked of Playwright, because "receives events" is the
     // question and `click({ trial: true })` names the intercepting element when
     // the answer is no.
-    const newPlan = phone.locator(`${SHEET} [data-planner-new-plan]`).first();
-    if (await newPlan.count()) {
-      const free = await newPlan
+    //
+    // It asks for the control that is LAST in that row rather than for one by
+    // name, and that is the lesson of PAR-163 rather than a tidy-up: the
+    // assertion named „einen Tag planen", the phone lost that button when the
+    // head moved into this header, and `if (await count())` then turned a
+    // passing check into no check at all — silently, in the one place where
+    // something else had just taken its place at the edge. What is measured is
+    // the RIGHTMOST control in the header, whatever it is today.
+    const lastInHeader = await phone.evaluate((sel) => {
+      const header = document.querySelector(`${sel} [data-slot="sheet-header"]`);
+      if (!header) return null;
+      // `!disabled` as well as visible: a disabled control cannot receive the
+      // press this assertion is about, so a trial click on one times out and
+      // reports the overlap defect over a button that is merely off today —
+      // the day picker's `›` is exactly that at the best-days horizon (G-56).
+      const controls = [...header.querySelectorAll('button')].filter(
+        (el) => el.getBoundingClientRect().width > 0 && !el.disabled
+      );
+      if (controls.length === 0) return null;
+      const last = controls.reduce((a, b) =>
+        b.getBoundingClientRect().right > a.getBoundingClientRect().right ? b : a
+      );
+      last.setAttribute('data-check-last-in-header', '');
+      // A name for the report, from whatever the element already carries.
+      const attr = [...last.attributes].find((a) => a.name.startsWith('data-planner'));
+      return attr?.name ?? last.getAttribute('aria-label') ?? last.tagName;
+    }, SHEET);
+    if (lastInHeader) {
+      const free = await phone
+        .locator(`${SHEET} [data-check-last-in-header]`)
+        .first()
         .click({ trial: true, timeout: 5_000 })
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check(
-        '„einen Tag planen" liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
         free === 'erreichbar',
-        free
+        `${lastInHeader} — ${free}`
+      );
+      await phone.evaluate(
+        (sel) =>
+          document
+            .querySelector(`${sel} [data-check-last-in-header]`)
+            ?.removeAttribute('data-check-last-in-header'),
+        SHEET
+      );
+    } else {
+      check(
+        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        false,
+        'keine Kopfzeile gefunden'
       );
     }
+
+    // ONE row of chrome above the axis, not two. The panel's header and the
+    // column's own head each took 45 px of a 776 px sheet to say two halves of
+    // one thing — which park, which day, and the word „Tagesplaner" over both —
+    // while the axis under them had 211. The head is drawn inside the header on
+    // a phone now (`withHead`), and this asserts it is the SAME element moved
+    // rather than a second copy: two would be two of every
+    // `[data-planner-column-park]` for the sweep above to pick the wrong one of.
+    const heads = await phone.locator(`${SHEET} [data-planner-column-head]`).count();
+    check(
+      'auf dem Telefon steht der Spaltenkopf in der Kopfzeile des Sheets',
+      heads === 1 &&
+        (await phone.evaluate((sel) => {
+          const sheet = document.querySelector(sel);
+          const header = sheet?.querySelector('[data-slot="sheet-header"]');
+          const head = sheet?.querySelector('[data-planner-column-head]');
+          return Boolean(header && head && header.contains(head));
+        }, SHEET)),
+      `${heads} Kopfzeile(n)`
+    );
 
     // And the two lists the head's own buttons open, each swept while it is
     // actually up — a popover that is shut is a popover with no DOM, so the
     // sweep above passes over the park list and the month calendar without
     // seeing either. LAST in this pass and closed again with Escape, so a
     // popper left standing cannot intercept anything measured before it.
-    for (const [label, opener] of [
-      ['die Parkliste ist antippbar', '[data-planner-column-park]'],
-      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]'],
+    //
+    // The third entry is what counts as a ROW of each list, and it is named
+    // rather than derived: „the first enabled button in the popover" picked
+    // the park list's „Anderen Park planen" footer (outside the `<ul>`) and
+    // the calendar's „Vorheriger Monat" chevron — the run said so itself,
+    // „Vorheriger Monat" von 37. Neither is a row of the thing being tested.
+    for (const [label, opener, row] of [
+      ['die Parkliste ist antippbar', '[data-planner-column-park]', 'li button'],
+      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]', '[data-planner-day]'],
     ]) {
       const trigger = phone.locator(`${SHEET} ${opener}`).first();
-      if (!(await trigger.count())) continue;
+      // A missing trigger FAILS rather than skipping the pair of assertions
+      // under it. This pass seeds a plan with a park and a date, so both of
+      // these controls have to exist — the day picker's `{date && …}` is
+      // satisfied by construction here — and „the button is gone" is the
+      // loudest version of „the list is not tappable", not an excuse to stop
+      // asking. It is the same pass-by-omission the two checks below were
+      // rewritten to drop; leaving it here would have kept it one level up.
+      const reachName = `${label.replace(' ist antippbar', '')} nimmt den Druck an`;
+      if (!(await trigger.count())) {
+        check(label, false, `${opener} nicht gefunden`);
+        check(reachName, false, 'kein Trigger, also kein Popover');
+        continue;
+      }
       const opened = await trigger
         .click({ timeout: 5_000 })
         .then(() => true)
         .catch(() => false);
       if (!opened) {
         check(label, false, 'ließ sich nicht öffnen');
+        check(reachName, false, 'Popover ließ sich nicht öffnen');
         continue;
       }
       await phone.waitForTimeout(400);
       // Only what the popper itself carries: the sheet behind it was measured
       // on its own pass, and reporting it twice would say a fixed thing twice.
       reportSweep(label, await sweepSmallTargets(null));
+      // …and a row of it actually RECEIVES the press, which is a different
+      // question from how big it is and is the one that was missing. The park
+      // list carried `PopoverContent`'s own `z-50` into a sheet at `z-[70]`, so
+      // it opened behind the panel's frosted glass: every row had a box of the
+      // right size, `elementFromPoint` over them answered with the sheet, and
+      // the sweep above passed. A target that cannot be hit is exactly the
+      // failure this pass exists to catch, so it is asked of Playwright —
+      // `trial: true` names the intercepting element on a no.
+      //
+      // The panel is resolved through the trigger's OWN `aria-controls`, not
+      // by taking a `[data-radix-popper-content-wrapper]` off the document:
+      // a popper the previous iteration left standing would answer that
+      // selector just as well, and this assertion must not depend on the
+      // Escape below having worked.
+      //
+      // And it presses the first ENABLED ROW, `row` above — a park in the
+      // `<ul>`, a cell of the date grid. Two corrections live in that
+      // sentence. Taking the LAST match hit „Anderen Park planen" and the
+      // last matrix cell, which is `disabled` past the best-days horizon: red
+      // on a date rather than on a defect (G-56). Taking the first enabled
+      // BUTTON then hit the calendar's „Vorheriger Monat" chevron, which is in
+      // the popover but is not a row of the list under test. Measured: park
+      // list 3 buttons of which 1 is the footer; calendar 37 buttons, 24
+      // enabled, 13 that a trial click would have hung on.
+      //
+      // No `if (count())` around the `check`, which is the pattern this whole
+      // block is a correction of: an empty popover fails the assertion rather
+      // than removing it.
+      const pressable = await phone.evaluate(
+        ([sel, opener, rowSelector]) => {
+          const trigger = document.querySelector(`${sel} ${opener}`);
+          const panel = trigger?.getAttribute('aria-controls');
+          const content = panel ? document.getElementById(panel) : null;
+          if (!content) return null;
+          const buttons = [...content.querySelectorAll(rowSelector)];
+          const target = buttons.find((el) => !el.disabled);
+          if (!target) return { total: buttons.length, name: null };
+          target.setAttribute('data-check-popover-row', '');
+          return {
+            total: buttons.length,
+            name:
+              target.textContent?.trim().replace(/\s+/g, ' ').slice(0, 30) ||
+              target.getAttribute('aria-label') ||
+              '(ohne Text)',
+          };
+        },
+        [SHEET, opener, row]
+      );
+      const reaches = pressable?.name
+        ? await phone
+            .locator('[data-check-popover-row]')
+            .first()
+            .click({ trial: true, timeout: 5_000 })
+            .then(() => 'erreichbar')
+            .catch((error) => String(error.message).split('\n')[0].slice(0, 120))
+        : 'kein bedienbarer Eintrag im geöffneten Popover';
+      check(
+        reachName,
+        reaches === 'erreichbar',
+        `„${pressable?.name ?? '—'}" von ${pressable?.total ?? 0} — ${reaches}`
+      );
+      await phone.evaluate(() =>
+        document
+          .querySelector('[data-check-popover-row]')
+          ?.removeAttribute('data-check-popover-row')
+      );
       await phone.keyboard.press('Escape');
       await phone.waitForTimeout(300);
     }
