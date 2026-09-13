@@ -6488,26 +6488,44 @@ if (live) {
     // found by review rather than by this pass, which is the gap being closed:
     // put either file back on `sm:` and the geometry assertions above stay
     // green while the sheet says two contradictory things.
-    const addCustom = await land.locator(`${SHEET} [data-planner-add-custom]`).count();
+    // `:visible` on every one of these, never `count()`. Both halves of both
+    // pairs are always in the DOM — what the variants decide is `display`, and
+    // `count()` reads a `display:none` element as present. An assertion built on
+    // it cannot fail, which is the trap these two were written into first: the
+    // free-block row and the search's copy of it both existed at every size, so
+    // the "exactly once" it reported was the DOM's arithmetic and not the
+    // sheet's.
+    const addCustom = await land
+      .locator(
+        `${SHEET} [data-planner-add-custom]:visible, ${SHEET} [data-planner-add-custom-search]:visible`
+      )
+      .count();
     check(
       'der Eigener-Block-Knopf steht im Querformat genau einmal',
       addCustom === 1,
-      `${addCustom}× gefunden (Fußzeile und Ride-Suche tragen beide eine Fassung — ` +
-        `oberhalb planner-wide die Fußzeile, darunter die Suche)`
+      `${addCustom}× sichtbar (die Fußzeile trägt eine Fassung, die Ride-Suche ihre eigene — ` +
+        `oberhalb planner-wide die Fußzeile, darunter die Suche, nie beide)`
     );
 
-    // The empty day's sentence follows the ride search: where the search is
-    // drawn, "such dir unten eine Bahn" is true and the drag coach's line is
-    // not. On a landscape phone the search IS drawn, so the drag line — a
-    // gesture a thumb does not have, pointing at a page the modal sheet covers
-    // — may not be what stands there.
-    const searchShown = await land.locator(`${SHEET} [data-planner-ride-search]`).count();
-    const coachShown = await land.locator(`${SHEET} [data-planner-drag-coach]`).count();
+    // The ride search is the phone's way in, and on a landscape phone it has to
+    // BE there: `planner-wide:hidden` is the class that decides it, and at 844 px
+    // wide the `sm:hidden` it replaced took it away. Its visibility is also what
+    // the empty day's sentence is paired with — where this list is drawn,
+    // "such dir unten eine Bahn" is the true half.
+    const searchShown = await land.locator(`${SHEET} [data-planner-ride-search]:visible`).count();
     check(
-      'im Querformat ist die Ride-Suche da und der Drag-Hinweis nicht',
-      searchShown > 0 && coachShown === 0,
-      `Ride-Suche ${searchShown}× · Drag-Hinweis ${coachShown}×`
+      'die Ride-Suche ist im Querformat sichtbar',
+      searchShown === 1,
+      `${searchShown}× sichtbar`
     );
+
+    // The drag coach is NOT asserted here, and the reason is worth a line rather
+    // than a silent omission: it renders only where a park page is behind the
+    // panel (`pagePark`), and `seed()` opens the planner from `/de`, where there
+    // is none — so it is absent at every viewport and an assertion on that would
+    // pass without testing anything, exactly like the two above nearly did. Its
+    // pairing with the search is covered by the class itself
+    // (`planner-wide:flex`) and by the empty grid's two lines.
   } else {
     check('im Querformat liegt das Panel unten und nicht rechts', false, 'Launcher nicht gefunden');
   }

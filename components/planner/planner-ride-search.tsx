@@ -180,10 +180,16 @@ export function PlannerRideSearch({
           from. */}
       <p className="text-muted-foreground mt-2 px-1 text-[11px]">{t('search.tapHint')}</p>
 
+      {/* The phone's copy of the free-block offer, under its own name so the
+          two can be counted together without disturbing what counts the foot's:
+          they are a pair — this one is drawn where the search is, that one
+          where it is not — and the way that pair breaks is both appearing at
+          once. Before PAR-76 that is exactly what happened at 844x390. */}
       {onAddCustom && (
         <button
           type="button"
           onClick={onAddCustom}
+          data-planner-add-custom-search=""
           className="text-muted-foreground hover:text-foreground hover:bg-accent/50 planner-phone:min-h-11 mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors"
         >
           <CalendarPlus className="size-3.5 shrink-0" />

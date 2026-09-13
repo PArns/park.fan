@@ -160,12 +160,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * at `innerWidth - PAGE_MIN_PX`, so under `TWO_COLUMN_MIN_VIEWPORT` the cap
    * would take the width back in the same frame.
    *
-   * `isPhone` is kept beside it although 639 px cannot also be 1041 px, so it
-   * cannot fire today. The two thresholds are independent — one is a breakpoint,
-   * the other falls out of `PANEL_WIDTH_MIN` and `PAGE_MIN_PX` — and a phone is
-   * a bottom sheet the width of the screen, where no stored width applies at
-   * all: that refusal should not depend on arithmetic elsewhere staying above
-   * the breakpoint.
+   * `isPhone` is kept beside it, and since PAR-76 it is **load-bearing rather
+   * than belt-and-braces**. It used to be unreachable — 639 px cannot also be
+   * 1041 px — but `isPhone` stopped being a statement about width: a 1280x400
+   * window on a coarse pointer is wide enough for `TWO_COLUMN_MIN_VIEWPORT` and
+   * a phone by the height term, so without this guard it would be offered two
+   * columns inside a bottom sheet. The two thresholds remain independent — one
+   * is a breakpoint, the other falls out of `PANEL_WIDTH_MIN` and `PAGE_MIN_PX`
+   * — and a phone is a bottom sheet the width of the screen, where no stored
+   * width applies at all.
    */
   const twoColumnsFit = !isPhone && maxColumnsFor(panelWidth) === 2;
   const windowFitsTwoColumns = useMediaQuery(TWO_COLUMN_VIEWPORT_QUERY);
