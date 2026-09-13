@@ -2225,7 +2225,8 @@
       "off": "Meldingen inschakelen",
       "on": "Meldingen staan aan",
       "denied": "Je browser blokkeert meldingen voor deze site. Dat verander je alleen in de browserinstellingen.",
-      "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord.",
+      "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord. Zet je de meldingen weer uit, dan wordt het daar verwijderd.",
+      "deleteFailed": "De meldingen staan uit. Je opgeslagen plan staat alleen nog op de server – zet ze één keer aan en weer uit om het te verwijderen.",
       "topics": {
         "legend": "Waarover willen we je berichten?",
         "only": "Je krijgt één soort bericht: {kind}.",

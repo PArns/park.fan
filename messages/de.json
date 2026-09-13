@@ -2225,7 +2225,8 @@
       "off": "Benachrichtigungen einschalten",
       "on": "Benachrichtigungen sind an",
       "denied": "Dein Browser blockiert Benachrichtigungen für diese Seite. Das lässt sich nur in den Browser-Einstellungen ändern.",
-      "storedHint": "Dein Plan liegt dafür auf dem Server. Wer den Link dazu hat, kann ihn lesen und ändern – es gibt kein Konto und kein Passwort.",
+      "storedHint": "Dein Plan liegt dafür auf dem Server. Wer den Link dazu hat, kann ihn lesen und ändern – es gibt kein Konto und kein Passwort. Schaltest du die Benachrichtigungen wieder aus, wird er dort gelöscht.",
+      "deleteFailed": "Die Benachrichtigungen sind aus. Dein gespeicherter Plan liegt aber noch auf dem Server – schalte sie einmal ein und wieder aus, um das Löschen zu wiederholen.",
       "topics": {
         "legend": "Wobei sollen wir Bescheid sagen?",
         "only": "Du bekommst eine Nachricht: {kind}.",
