@@ -156,8 +156,11 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
    * The nav's ink, and it is the only thing the bar's two states still decide about the
    * navigation. `headerNavInk` holds both halves and the arithmetic behind them, because the row
    * has three kinds of entry and they must not drift apart. The bar's other controls need no
-   * branch at all — a ghost `Button`, the locale switcher and both toggles inherit `foreground`
-   * already.
+   * branch: the search trigger and the burger are ghost `Button`s, and the locale switcher and the
+   * theme toggle carry no colour of their own, so all four inherit `foreground`. The °C/°F toggle
+   * is the one that does — `text-muted-foreground` on its own pill — and it is left alone on
+   * purpose: it reads the same on both states of the bar, and the 85 % scrim it sits on while the
+   * bar floats is a better ground than the 80 % it has had on every page since it was built.
    *
    * **It switches with the state and waits for nothing**, which took two attempts to get right.
    * The worry is the way DOWN: muted ink arriving before the ground it is safe on. That was real
@@ -332,7 +335,8 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           solid colour faded in behind it over 500 ms — muted ink over ~25 % ground on a hero photo
           for about a third of a second, i.e. precisely the case `navLinkClass` branches to avoid.
           Two layers cross-fade on `opacity`, which does interpolate, so the ground falls from 85 %
-          to about 65 % at worst and climbs back. The ink waits that out (`delay-300`, see there).
+          to about 65 % at worst and climbs back — which is what makes the ink's own switch safe
+          with no delay at all (see `headerNavInk` above).
 
           The geometry: the box reaches 32 px BELOW the bar (`-bottom-8`) and the gradient holds
           `background/85` for the first 60 % of those 80 px — exactly the 48 px the bar occupies —

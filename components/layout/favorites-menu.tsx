@@ -75,7 +75,10 @@ export function FavoritesMenu({ floating }: { floating?: boolean }) {
                die Stelle, an der beide zusammen wie ein einziger unlesbarer Fleck aussehen.
                `ring-background` ist die Farbe des Balkens darunter (`bg-background/80`), also
                schneidet der Ring die Blase aus dem Stern heraus statt eine zweite Marke
-               danebenzusetzen.
+               danebenzusetzen. Auf einer Hero-Seite, wo dieser Eintrag seit PAR-170 auch oben
+               sichtbar ist, liegt darunter kein Material, sondern der Scrim — `background/85`,
+               also derselbe Ton fünf Prozentpunkte schwächer. Der Ring ist dort einen Hauch
+               heller als sein Untergrund und bleibt damit das, was er sein soll.
 
                Sie sitzt in der oberen rechten ECKE, nicht mittig auf dem Stern, und ist so klein
                wie zwei Ziffern erlauben: mittig und einen Tick größer deckte sie bei 13

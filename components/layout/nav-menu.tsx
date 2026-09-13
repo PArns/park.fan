@@ -18,12 +18,12 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * pointer an answer and the solid bar's own gesture is muted → foreground; measured over six hero
  * pages × 360/1440 px × light/dark the worst reading is 13.31 : 1.
  *
- * **Which of the two arrives when is the caller's job, not a `delay-` here.** The switch back to
- * muted may not land before the ground it is safe on: the scrim fades out over 500 ms while the
- * solid material fades in over the same 500 ms, and their sum dips to about 65 % in the middle.
- * A `delay-300` in this class list would have done it — and would have delayed the **hover** by
- * 300 ms as well, on every entry on every page, since `transition-delay` is one property and the
- * hover rule shares it. The header holds the falling edge in state instead (`INK_SETTLE_MS`).
+ * **And there is no `delay-` in here, deliberately.** The switch back to muted is the direction to
+ * worry about — it may not land before the ground it is safe on — but the two cross-fading scrim
+ * and material layers already keep that ground between 85 % and about 65 %, which is where the
+ * solid bar itself sits. A `delay-300` would have bought the remaining 200 ms and delayed the
+ * **hover** of every entry on every page by the same amount, since `transition-delay` is one
+ * property and the hover rule shares it. See the header for the arithmetic.
  */
 export const headerNavInk = (floating: boolean | undefined) =>
   floating
