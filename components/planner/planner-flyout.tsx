@@ -557,11 +557,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * `!showOverview` for the same reason the column carries the head at all:
    * the overview replaces the day, and a park name and a date over a list of
    * OTHER days would be a statement about something that is not on screen.
-   * `parks.length > 0` mirrors the column's own gate — with nothing planned
-   * the head is a chooser over an empty list, above the empty state that
-   * already carries the button which starts one.
+   *
+   * It asks for the ACTIVE park rather than for `parks.length`, which is what
+   * the column asks, and the difference is not cosmetic: everything else in
+   * this row — the title's `sr-only`, the overview chevron — hangs on `park`,
+   * so a plan that holds parks while `activeParkSlug` points at none of them
+   * (the last day of the active park cleared away, a stale id out of
+   * `localStorage`) would hide the title AND draw no chevron, leaving a bar
+   * with no name on it above a chooser reading „kein Park". Gating on the same
+   * value the neighbours gate on makes that state unreachable by construction:
+   * wherever the head is drawn, the chevron beside it is too.
    */
-  const phoneHead = isPhone && !showOverview && parks.length > 0;
+  const phoneHead = isPhone && !showOverview && Boolean(park);
 
   /**
    * The sheet's own height, on a phone.

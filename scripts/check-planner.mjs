@@ -1443,26 +1443,61 @@ if (await phoneLauncher.count()) {
       // failure this pass exists to catch, so it is asked of Playwright —
       // `trial: true` names the intercepting element on a no.
       //
-      // `:visible` and `.last()`, not a bare `.first()`: a popper that a
-      // previous iteration left standing is still in the DOM, and taking the
-      // first match would measure THAT one — a stale popper is exactly the
-      // thing the Escape below exists to prevent, so the selector must not
-      // depend on it having worked. And no `if (count())` around the check:
-      // that is the pattern this whole block is a correction of. Zero rows is
-      // a failure of the assertion, not an absence of one.
-      const rows = phone.locator('[data-radix-popper-content-wrapper]:visible button');
-      const count = await rows.count();
-      const reaches = count
-        ? await rows
-            .last()
+      // The panel is resolved through the trigger's OWN `aria-controls`, not
+      // by taking a `[data-radix-popper-content-wrapper]` off the document:
+      // a popper the previous iteration left standing would answer that
+      // selector just as well, and this assertion must not depend on the
+      // Escape below having worked.
+      //
+      // And it presses the first ENABLED button in it. Both halves are a
+      // correction of the first attempt, which took the last match: in the park
+      // list that is „Anderen Park planen", the footer outside the `<ul>`, so
+      // it never pressed a park at all; in the month calendar it is the last
+      // matrix cell, which is `disabled` whenever it falls past the best-days
+      // horizon — a check that goes red on a date rather than on a defect
+      // (G-56). Measured here: park list 3 buttons, 3 enabled; calendar 37
+      // buttons, 24 enabled, i.e. 13 that a trial click would have hung on.
+      //
+      // No `if (count())` around the `check`, which is the pattern this whole
+      // block is a correction of: an empty popover fails the assertion rather
+      // than removing it.
+      const pressable = await phone.evaluate(
+        ([sel, opener]) => {
+          const trigger = document.querySelector(`${sel} ${opener}`);
+          const panel = trigger?.getAttribute('aria-controls');
+          const content = panel ? document.getElementById(panel) : null;
+          if (!content) return null;
+          const buttons = [...content.querySelectorAll('button')];
+          const target = buttons.find((el) => !el.disabled);
+          if (!target) return { total: buttons.length, name: null };
+          target.setAttribute('data-check-popover-row', '');
+          return {
+            total: buttons.length,
+            name:
+              target.textContent?.trim().replace(/\s+/g, ' ').slice(0, 30) ||
+              target.getAttribute('aria-label') ||
+              '(ohne Text)',
+          };
+        },
+        [SHEET, opener]
+      );
+      const reaches = pressable?.name
+        ? await phone
+            .locator('[data-check-popover-row]')
+            .first()
             .click({ trial: true, timeout: 5_000 })
             .then(() => 'erreichbar')
             .catch((error) => String(error.message).split('\n')[0].slice(0, 120))
-        : 'keine Zeile im geöffneten Popover';
+        : 'kein bedienbarer Eintrag im geöffneten Popover';
       check(
         `${label.replace(' ist antippbar', '')} nimmt den Druck an`,
         reaches === 'erreichbar',
-        `${count} Zeile(n) — ${reaches}`
+        `„${pressable?.name ?? '—'}" von ${pressable?.total ?? 0} — ${reaches}`
+      );
+      await phone.evaluate(() =>
+        document
+          .querySelector('[data-check-popover-row]')
+          ?.removeAttribute('data-check-popover-row')
       );
       await phone.keyboard.press('Escape');
       await phone.waitForTimeout(300);
