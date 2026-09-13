@@ -68,13 +68,15 @@ const urlArg = argv.filter((a) => a.startsWith('--url=')).map((a) => a.slice(6))
 // A mistyped page must not read as "no page asked for". `--url /path` with a space,
 // a bare path, or `--url=` with nothing after it would each fall through to
 // DEFAULT_PAGES and print a green result for four pages nobody asked about — a pass
-// that answers a different question than the one that was put.
-const stray = argv.filter((a) => !a.startsWith('--url='));
-if (stray.length || urlArg.some((u) => !u.startsWith('/'))) {
+// that answers a different question than the one that was put. A path or a whole URL
+// is accepted, the same two forms `scripts/measure-cls.mjs` takes, so the page really
+// can be handed to both.
+const wellFormed = (a) =>
+  a.startsWith('--url=') && (a.slice(6).startsWith('/') || a.slice(6).startsWith('http'));
+const bad = argv.filter((a) => !wellFormed(a));
+if (bad.length) {
   console.error(
-    'Unrecognised argument: ' +
-      [...stray, ...urlArg.filter((u) => !u.startsWith('/'))].map((a) => `"${a}"`).join(' ') +
-      '\n' +
+    `Unrecognised argument: ${bad.map((a) => `"${a}"`).join(' ')}\n` +
       'Usage: pnpm check:card-framing [--url=/de/… [--url=/de/…]]  (BASE=… to point elsewhere)'
   );
   process.exit(2);
@@ -97,7 +99,8 @@ const PAGES = ASKED_FOR ? urlArg.map((path) => ['requested page', path]) : DEFAU
 const MIN_BOX_ASPECT = 1.5;
 
 async function measure(page, path) {
-  await page.goto(`${BASE}${path}`, { waitUntil: 'domcontentloaded', timeout: 120_000 });
+  const url = path.startsWith('http') ? path : `${BASE}${path}`;
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 120_000 });
   await page.waitForTimeout(5000);
   // Cards below the fold lazy-load their photos; walk the page so they all decode.
   await page.evaluate(() => {
@@ -198,6 +201,21 @@ console.log(
   `\n${checked} framed photo${checked === 1 ? '' : 's'} checked, ` +
     `${squashed} in a panelled card whose box fell below ${MIN_BOX_ASPECT}.`
 );
+
+// Nothing measured is not a pass, in either mode. The `--url=` branch above catches
+// the single named page; this catches the whole run going quiet — rename the
+// `data-card-photo="frame"` hook, or let every page 404 (`goto` with
+// `domcontentloaded` resolves on a 404 as happily as on a 200), and the four default
+// pages each print "no framed photos" while the gate reports success. A release check
+// that cannot fail is worse than none: it answers the question it was asked.
+const nothingMeasured = checked === 0;
+if (nothingMeasured) {
+  console.error(
+    'Nothing was measured — every page came back without a framed photo.\n' +
+      `Check that the site at ${BASE} is the one you meant and that ${FRAME} still exists.`
+  );
+}
+
 if (squashed > 0) {
   console.error(
     `A card's photo box has gone squarer than ${MIN_BOX_ASPECT}, so landscape photos in it\n` +
@@ -205,4 +223,19 @@ if (squashed > 0) {
       'See the note in components/parks/card-photo.tsx.'
   );
 }
-if (failures > 0) process.exit(1);
+
+// `failures` counts pages that could not be graded and photos whose box went square;
+// `nothingMeasured` is a property of the run as a whole and must not be added to it, or
+// one empty page reports as two problems.
+if (failures > 0 || nothingMeasured) {
+  // Said plainly, because the line above it ("0 … fell below 1.5") reads like an
+  // all-clear on a run that failed to load a page or found nothing to grade.
+  const parts = [];
+  if (squashed > 0)
+    parts.push(`${squashed} photo${squashed === 1 ? '' : 's'} below ${MIN_BOX_ASPECT}`);
+  const ungraded = failures - squashed;
+  if (ungraded > 0) parts.push(`${ungraded} page${ungraded === 1 ? '' : 's'} not graded`);
+  if (nothingMeasured && !parts.length) parts.push('nothing measured');
+  console.error(`\nFAILED — ${parts.join(', ')}.`);
+  process.exit(1);
+}
