@@ -24,15 +24,16 @@ import { focusLeftMenu } from '@/lib/utils/menu-focus';
  *    somewhere else does not flash three panels; closing waits ~180 ms so the diagonal from the
  *    trigger down into the panel does not fall through the gap. Neither timer runs for keyboard
  *    or touch, which open on click instead.
- * 3. **`disabled` wins, derived rather than synchronized.** A panel hanging open while the header
- *    floats transparent would sit over the hero attached to nothing. Closing it from an effect
- *    would leave it up for one more frame.
+ * It used to take a `disabled` flag as well, for the header floating transparent over a hero: up
+ * there the whole nav row was invisible, so a panel hanging open would have sat over the photo
+ * attached to nothing. The row is visible and usable from the first screen line now, so an entry
+ * that refuses to open has nothing left to protect.
  */
 
 const OPEN_DELAY_MS = 90;
 const CLOSE_DELAY_MS = 180;
 
-export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
+export function useMenuTrigger() {
   const pathname = usePathname();
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -40,8 +41,7 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
   /** Set while Escape moves the focus back into the wrapper, so `onFocus` does not undo the close. */
   const closingRef = useRef(false);
 
-  const requested = openedOn === pathname;
-  const open = requested && !disabled;
+  const open = openedOn === pathname;
 
   const clearTimer = () => {
     if (timerRef.current !== null) {
@@ -97,14 +97,14 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
   const triggerProps = {
     ref: rootRef,
     onPointerEnter: (e: React.PointerEvent) => {
-      if (disabled || e.pointerType === 'touch') return;
+      if (e.pointerType === 'touch') return;
       schedule(true, OPEN_DELAY_MS);
     },
     onPointerLeave: (e: React.PointerEvent) => {
       if (e.pointerType === 'touch') return;
       schedule(false, CLOSE_DELAY_MS);
     },
-    onFocus: () => !disabled && !closingRef.current && setRequested(true),
+    onFocus: () => !closingRef.current && setRequested(true),
     // Only a focus that names where it went can close the band — see `focusLeftMenu`. A button
     // that disables itself while it holds the focus blurs to nothing, and reading that as "the
     // visitor left" closed the band under its own click.
@@ -119,7 +119,7 @@ export function useMenuTrigger({ disabled }: { disabled?: boolean } = {}) {
     /** For the chevron button: toggles without waiting for the hover timers. */
     toggle: () => {
       clearTimer();
-      setRequested(!requested);
+      setRequested(!open);
     },
   };
 }

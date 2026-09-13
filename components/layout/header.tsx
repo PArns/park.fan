@@ -17,7 +17,6 @@ import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
-import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
@@ -154,14 +153,14 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   const isTransparent = isHeroPage && !scrolled;
 
   /*
-   * The corner-to-bar handoffs, on both ends of the header.
+   * The corner-to-bar handoff of the logo.
    *
-   * The bar carries two copies of each of its anchors: one parked in the corner while the header
-   * floats over the hero, one in the flex flow once it solidifies. Cross-fading a pair looked
-   * like exactly what it was — one thing disappearing while a second one appeared somewhere else,
+   * The bar carries two copies of the lockup: one parked in the corner while the header floats
+   * over the hero, one in the flex flow once it solidifies. Cross-fading the pair looked like
+   * exactly what it was — one thing disappearing while a second one appeared somewhere else,
    * at a different size on the left.
    *
-   * Each pair now travels the same path in the same 500 ms: the outgoing copy slides to where the
+   * The pair now travels the same path in the same 500 ms: the outgoing copy slides to where the
    * incoming one lives, the incoming one starts at the corner. At the midpoint the two coincide,
    * so the eye reads one object moving.
    *
@@ -174,14 +173,18 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
    * pin:wordmark ratio of 36:24 against 24:20, so the corner copy stayed ~25 px wider than the bar
    * copy the whole way across (measured at 1440: 147.2 px against 122.2 px).
    *
-   * Two anchors, two conventions:
+   * The logo is left-aligned, so the path is measured from the left edges and scales from
+   * `origin-left` — away from the screen edge, with its left edge on the path.
    *
-   * - **The logo** is left-aligned, so the path is measured from the left edges and scales from
-   *   `origin-left` — away from the screen edge, with its left edge on the path.
-   * - **The locale + theme cluster** is right-aligned, so it is measured from the RIGHT edges
-   *   (`offsetLeft + offsetWidth`) and moves from `origin-right`. It needs no scale at all: both
-   *   copies hold the same two controls at the same size, and only the corner one wraps them in
-   *   a frosted pill. That pill dissolving while the pair glides is the whole effect.
+   * **There used to be a second pair**, the locale + theme cluster, parked in a frosted pill at
+   * `right-6` while the bar floated. It is gone, and the reason is this change rather than taste:
+   * once the search trigger and the burger are visible from the first screen line, they are drawn
+   * at their flex positions on the right — which is exactly where that pill hangs. Measured at
+   * 360 px the pill spanned 240–336 px against the burger's 308–344 and the actions box's
+   * 216–304; at 1024 and 1280 it lay over the search control. Two copies of the same three
+   * preference controls, one of them painted across the burger, is not a handoff. The in-flow
+   * cluster is simply always there now, which also spares every hero page a second hydration of
+   * `LocaleSwitcher`, `ThemeToggle` and `TemperatureUnitToggle`.
    *
    * Every number is measured, never guessed, and always from `offsetLeft`/`offsetWidth`/
    * `offsetHeight` — layout values, which ignore the transforms, so a measurement can never feed
@@ -190,24 +193,17 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
    */
   const cornerLogoRef = useRef<HTMLAnchorElement>(null);
   const barLogoRef = useRef<HTMLAnchorElement>(null);
-  const cornerActionsRef = useRef<HTMLDivElement>(null);
-  const barActionsRef = useRef<HTMLDivElement>(null);
-  const [handoff, setHandoff] = useState({ logoShift: 0, logoScale: 1, actionsShift: 0 });
+  const [handoff, setHandoff] = useState({ logoShift: 0, logoScale: 1 });
 
   useEffect(() => {
     if (!isHeroPage) return;
-    const rightEdge = (el: HTMLElement) => el.offsetLeft + el.offsetWidth;
     const measure = () => {
       const cornerLogo = cornerLogoRef.current;
       const barLogo = barLogoRef.current;
-      const cornerActions = cornerActionsRef.current;
-      const barActions = barActionsRef.current;
       if (!cornerLogo || !barLogo || barLogo.offsetHeight === 0) return;
       setHandoff({
         logoShift: barLogo.offsetLeft - cornerLogo.offsetLeft,
         logoScale: cornerLogo.offsetHeight / barLogo.offsetHeight,
-        actionsShift:
-          cornerActions && barActions ? rightEdge(barActions) - rightEdge(cornerActions) : 0,
       });
     };
     measure();
@@ -215,7 +211,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
     return () => window.removeEventListener('resize', measure);
   }, [isHeroPage]);
 
-  const { logoShift, logoScale, actionsShift } = handoff;
+  const { logoShift, logoScale } = handoff;
   const handoffMotion = 'transition-[opacity,transform] duration-500 ease-out';
   const cornerLogoStyle = isTransparent
     ? undefined
@@ -223,19 +219,21 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   const barLogoStyle = isTransparent
     ? { transform: `translateX(${-logoShift}px) scale(${logoScale.toFixed(3)})` }
     : undefined;
-  const cornerActionsStyle = isTransparent
-    ? undefined
-    : { transform: `translateX(${actionsShift}px)` };
-  const barActionsStyle = isTransparent
-    ? { transform: `translateX(${-actionsShift}px)` }
-    : undefined;
-  // The bar's contents settle in as it solidifies and lift back out as it goes transparent —
-  // one timeline played and reversed, layered on top of the CSS crossfade below, never
-  // replacing it. See the hook for why it touches `y` and never `opacity`.
-  const barRef = useHeaderReveal({ enabled: isHeroPage, solid: !isTransparent });
-
-  // Shared fade class for elements that hide on the transparent homepage header
-  const fadeClass = `transition-opacity duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  /*
+   * The nav's ink, and it is the only thing `isTransparent` is still allowed to decide about the
+   * navigation. Contrast is why it exists: `text-muted-foreground` is oklch(0.556) on an
+   * oklch(1) background, i.e. **4.73 : 1** — so any photo bleeding through the scrim below takes
+   * it under 4.5 (15 % of a dark hero already lands it at 3.3 : 1), and no scrim opacity short of
+   * a solid bar fixes that, because the starting point has 0.23 to give. At full `foreground`
+   * strength the same worst case reads 14 : 1 light and 12.9 : 1 dark. The bar's other controls
+   * need no branch — a ghost `Button`, the locale switcher and both toggles inherit `foreground`
+   * already.
+   */
+  const navLinkClass = `text-sm font-medium transition-colors ${
+    isTransparent
+      ? 'text-foreground hover:text-foreground'
+      : 'text-muted-foreground hover:text-foreground'
+  }`;
 
   return (
     <header
@@ -302,16 +300,31 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
           repaint on the hero pages, and it repeats on every direction change up there. The blur
           snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
-          while the colour keeps cross-fading. */}
+          while the colour keeps cross-fading.
+
+          **And the transparent state is no longer empty.** The nav used to be invisible up here,
+          so the bar could afford to be nothing at all; now it is a working menu sitting on an
+          arbitrary photo, and it needs a ground. This layer is that ground — the same layer, one
+          class list further, so the scrim can never become a `backdrop-filter` or a transform on
+          the `<header>` itself and turn it into a backdrop root (see above, and the menu band's
+          blur).
+
+          The geometry: the box grows 32 px BELOW the bar while transparent (`-bottom-8`), and the
+          gradient holds `background/85` for the first 60 % of those 80 px — which is exactly the
+          48 px the bar occupies — before fading out over the strip underneath. So the nav sits on
+          an even ground and the scrim has no edge of its own: a hard line across a hero photo
+          would read as part of the picture. Tint rather than blur, because the photo below the
+          bar stays a photo — the blur is still what the solid state adds. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 -z-10 transition-[background-color] duration-500 ${
-          isTransparent ? 'bg-transparent' : 'bg-background/80 backdrop-blur-md'
+        className={`pointer-events-none absolute inset-x-0 top-0 -z-10 transition-[background-color] duration-500 ${
+          isTransparent
+            ? 'from-background/85 -bottom-8 bg-gradient-to-b from-60% to-transparent'
+            : 'bg-background/80 bottom-0 backdrop-blur-md'
         }`}
       />
 
       <div
-        ref={barRef}
         /* `h-full`, not a second `h-12`: the header is `h-12 border-b` and Tailwind boxes are
            border-box, so its CONTENT box is 47 px. A hard-coded 48 px here overflowed it by a
            pixel and, worse, centred the in-flow logo on a different box than the corner copy,
@@ -378,7 +391,14 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           <BrandLockup />
         </Link>
 
-        {/* Desktop Navigation – fades in on scroll */}
+        {/* Desktop Navigation.
+
+            It used to fade in on scroll, and that is what this change undid. `isTransparent` put
+            `opacity-0 pointer-events-none` on this row, `aria-hidden` on the `<nav>` and
+            `tabIndex={-1}` on every link inside it, so on all five hero pages the main menu was
+            unclickable and out of the accessibility tree and the tab order until the visitor had
+            scrolled 50 px — with nothing on screen saying a menu was there. The bar keeps its two
+            states; the navigation is no longer one of them. */}
         {/* One breakpoint for the whole bar, not two.
             The nav used to appear at `md` while the search input waits for `lg`, so between 768
             and 1023 px the row carried the full navigation AND a 256 px search button AND no
@@ -396,9 +416,8 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             `xl:gap-5` instead of 6) and the search field beside it shrinks
             before anything here does. */}
         <nav
-          className={`hidden items-center gap-3.5 whitespace-nowrap @min-[1024px]:flex @min-[1280px]:gap-5 ${fadeClass}`}
+          className="hidden items-center gap-3.5 whitespace-nowrap @min-[1024px]:flex @min-[1280px]:gap-5"
           aria-label="Main navigation"
-          aria-hidden={isTransparent}
         >
           {showNearbyPark && (
             <Link
@@ -406,8 +425,6 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               prefetch={false}
               className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label={t('nearbyPark', { parkName: nearestPark.name })}
-              tabIndex={isTransparent ? -1 : 0}
-              data-header-stagger
             >
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
@@ -416,92 +433,53 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           {/* Discovery. The trigger goes to `/parks` — the actual index — where it used to go
               straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
           {geoMenu && geoMenu.length > 0 ? (
-            <NavMenu href="/parks" label={t('explore')} disabled={isTransparent}>
+            <NavMenu href="/parks" label={t('explore')} floating={isTransparent}>
               <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? []} />
             </NavMenu>
           ) : (
-            <Link
-              href="/parks"
-              prefetch={false}
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-              tabIndex={isTransparent ? -1 : 0}
-              data-header-stagger
-            >
+            <Link href="/parks" prefetch={false} className={navLinkClass}>
               {t('explore')}
             </Link>
           )}
           {showBlog &&
             (blogMenu && blogMenu.categories.length > 0 ? (
-              <NavMenu href="/blog" label={t('blog')} disabled={isTransparent}>
+              <NavMenu href="/blog" label={t('blog')} floating={isTransparent}>
                 <BlogMenuPanel {...blogMenu} />
               </NavMenu>
             ) : (
-              <Link
-                href="/blog"
-                prefetch={false}
-                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-                tabIndex={isTransparent ? -1 : 0}
-                data-header-stagger
-              >
+              <Link href="/blog" prefetch={false} className={navLinkClass}>
                 {t('blog')}
               </Link>
             ))}
           {/* Visible from `md` up, like the rest of the row. Hiding it until `lg` would have left
               the hub unreachable between 768 and 1023 px, where the burger is already gone. */}
-          <Link
-            href={bestTimePath}
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            tabIndex={isTransparent ? -1 : 0}
-            data-header-stagger
-          >
+          <Link href={bestTimePath} prefetch={false} className={navLinkClass}>
             {t('bestTime')}
           </Link>
-          <Link
-            href={glossaryPath}
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            tabIndex={isTransparent ? -1 : 0}
-            data-header-stagger
-          >
+          <Link href={glossaryPath} prefetch={false} className={navLinkClass}>
             {t('glossary')}
           </Link>
-          <Link
-            href={howtoPath}
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            tabIndex={isTransparent ? -1 : 0}
-            data-header-stagger
-          >
+          <Link href={howtoPath} prefetch={false} className={navLinkClass}>
             {t('howto')}
           </Link>
           {/* Der Tagesplaner. Er stand hier zuerst nicht, weil diese Zeile mit
               sechs Einträgen schon umbrach — das ist mit `whitespace-nowrap`
               und der schmaleren Suche oben behoben, und erst dadurch ist Platz
               für einen siebten. */}
-          <Link
-            href={plannerPath}
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            tabIndex={isTransparent ? -1 : 0}
-            data-header-stagger
-          >
+          <Link href={plannerPath} prefetch={false} className={navLinkClass}>
             {t('planner')}
           </Link>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
               dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
               lernen. Der einzige Eintrag ohne Link — siehe FavoritesMenu. */}
-          <FavoritesMenu disabled={isTransparent} />
+          <FavoritesMenu floating={isTransparent} />
         </nav>
 
-        {/* Search Desktop – fades in on scroll */}
+        {/* Search Desktop */}
         {/* The full input from `xl`. Below that the row has no width to spare —
             see the icon trigger further down, which covers 1024–1279 px. */}
-        <div
-          data-header-stagger
-          className={`hidden @min-[1280px]:block @min-[1280px]:w-64 ${fadeClass}`}
-        >
+        <div className="hidden @min-[1280px]:block @min-[1280px]:w-64">
           <SearchCommand
             trigger="input"
             size="sm"
@@ -509,26 +487,6 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             isGlobal
           />
         </div>
-
-        {/* Corner pill – absolute right-6, mirrors the corner logo on the left. Fades out on scroll.
-            Only ever visible on the transparent homepage header (`isTransparent` can only be true when
-            `isHomePage`), so it's rendered ONLY on the homepage. On every other route it would be a
-            permanently-hidden second copy of the three preference controls that still hydrates
-            (display/opacity don't skip hydration) — double the work for two interactive dropdowns.
-            Rendered on the hero pages (homepage + Fancast) where the header floats transparent. */}
-        {isHeroPage && (
-          <div
-            ref={cornerActionsRef}
-            style={cornerActionsStyle}
-            className={`absolute top-1/2 right-6 flex origin-right -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md motion-reduce:transform-none! dark:bg-black/40 ${handoffMotion} ${
-              isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
-            }`}
-          >
-            <LocaleSwitcher />
-            <ThemeToggle />
-            <TemperatureUnitToggle />
-          </div>
-        )}
 
         {/* Actions. `max-sm:gap-1` is width, not taste: at 320 px — the smallest viewport still in
             the logs — this row is over its box by 26 px with the °C/°F button in it, and 16 px of
@@ -543,18 +501,13 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               in French with a 176 px input beside it. A 36 px icon that opens
               the same palette costs nobody a search; a horizontal scrollbar on
               every page costs everybody. */}
-          <div className={`@min-[1280px]:hidden ${fadeClass}`}>
+          <div className="@min-[1280px]:hidden">
             <SearchCommand trigger="button" size="sm" />
           </div>
 
-          {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
-          <div
-            ref={barActionsRef}
-            style={barActionsStyle}
-            className={`flex origin-right items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
-              isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
-            }`}
-          >
+          {/* Locale + theme + unit. The only copy — see the handoff note above for the corner
+              pill that used to hold a second one while the bar floated. */}
+          <div className="flex items-center gap-1">
             <LocaleSwitcher />
             <ThemeToggle />
             {/* The unit lived in the weather card's header, i.e. on park pages only, while it
@@ -565,8 +518,8 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             <TemperatureUnitToggle />
           </div>
 
-          {/* Mobile Menu – fades in on scroll */}
-          <div className={fadeClass}>
+          {/* Mobile Menu */}
+          <div>
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -577,8 +530,6 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                      names. Third and last opt-out, beside LocaleSwitcher and the search trigger. */
                   className="max-sm:size-9 @min-[1024px]:hidden"
                   suppressHydrationWarning
-                  tabIndex={isTransparent ? -1 : 0}
-                  data-header-stagger
                 >
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Menu</span>

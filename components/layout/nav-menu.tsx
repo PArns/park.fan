@@ -32,13 +32,22 @@ interface NavMenuProps {
   label: string;
   /** Panel body. Rendered on the server, present in the HTML, hidden until opened. */
   children: React.ReactNode;
-  /** Mirrors the rest of the bar: nothing in the header is focusable while it floats transparent. */
-  disabled?: boolean;
+  /**
+   * True while the bar floats over a hero photo. It decides the INK and nothing else — the entry
+   * is a link and a trigger up there exactly as it is anywhere else. It used to be `disabled`,
+   * which took the whole row out of the tab order and refused to open the panel until the
+   * visitor had scrolled 50 px; the header's `navLinkClass` explains the contrast arithmetic
+   * this replaced it with.
+   */
+  floating?: boolean;
 }
 
-export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
+export function NavMenu({ href, label, children, floating }: NavMenuProps) {
   const panelId = useId();
-  const { open, triggerProps, toggle } = useMenuTrigger({ disabled });
+  const { open, triggerProps, toggle } = useMenuTrigger();
+  const ink = floating
+    ? 'text-foreground hover:text-foreground'
+    : 'text-muted-foreground hover:text-foreground';
 
   return (
     <div {...triggerProps}>
@@ -46,9 +55,7 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
         <Link
           href={href}
           prefetch={false}
-          className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-          tabIndex={disabled ? -1 : 0}
-          data-header-stagger
+          className={`text-sm font-medium transition-colors ${ink}`}
         >
           {label}
         </Link>
@@ -59,9 +66,8 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
           aria-expanded={open}
           aria-controls={panelId}
           aria-label={label}
-          tabIndex={disabled ? -1 : 0}
           onClick={toggle}
-          className="text-muted-foreground hover:text-foreground -m-1 cursor-pointer p-1 transition-colors"
+          className={`-m-1 cursor-pointer p-1 transition-colors ${ink}`}
         >
           <ChevronDown
             className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
