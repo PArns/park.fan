@@ -30,6 +30,16 @@
  *
  *     pnpm check:card-framing
  *     BASE=http://localhost:3000 pnpm check:card-framing
+ *     pnpm check:card-framing --url=/de/parks/north-america/united-states/…
+ *
+ * The four pages below are the regression set and run by default. `--url=` (repeatable)
+ * checks a specific page instead — the invariant is on the box, so it holds for any
+ * surface that renders cards, and a park only reaches some card states while its live
+ * data says so. A ride reported DOWN renders an extra badge line inside the card's badge
+ * wrap, which is exactly the kind of change that squares the box, and it cannot be
+ * reproduced from the fixed list: whether any park has one is a property of the hour the
+ * check runs in. Same spelling as `scripts/measure-cls.mjs`, so one page can be handed to
+ * both.
  *
  * Exits non-zero when a photo box has gone too square, naming the page and the
  * card, so it can gate a release check as easily as a manual look.
@@ -45,12 +55,18 @@ const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 const FRAME = 'div[data-card-photo="frame"] img';
 
 /** Surfaces that render the three card kinds, in the states they ship in. */
-const PAGES = [
+const DEFAULT_PAGES = [
   ['ride cards', '/de/parks/europe/netherlands/sevenum/attractiepark-toverland'],
   ['park cards', '/de/parks/europe/netherlands'],
   ['blog cards', '/de/blog'],
   ['home', '/de'],
 ];
+
+const urlArg = process.argv
+  .slice(2)
+  .filter((a) => a.startsWith('--url='))
+  .map((a) => a.slice(6));
+const PAGES = urlArg.length ? urlArg.map((path) => ['--url', path]) : DEFAULT_PAGES;
 
 /**
  * How wide the photo strip has to stay. 1.5 is comfortably below where the cards
