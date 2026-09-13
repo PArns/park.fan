@@ -200,10 +200,20 @@ export function PlannerDayGrid({
         : entry.done
           ? (entry.actualWait ?? null)
           : effective.wait;
-      const spanMinutes = Math.max(
-        (wait ?? 0) + (entry.done ? 0 : (effective.uncertaintyMinutes ?? 0)),
-        MIN_BLOCK_MIN
-      );
+      // What a lane is cut for: the PLANNED occupancy, band excluded, which is
+      // the span the optimiser files a stop against and the span the block's
+      // own solid fill is drawn to. The band is the translucent tail below that
+      // fill — one-sided, `opacity-25`, deliberately outside the block's
+      // clipping so it reaches down into the gap (see `planner-block.tsx`) —
+      // and a following block starting inside it is the plan working, not two
+      // stops colliding. Counted as occupancy it put a day of ten headliners
+      // into two columns at every width: every block half as wide, its name
+      // truncated, and the leg chips lying over the blocks beside them.
+      //
+      // `MIN_BLOCK_MIN` stays, and is the reason this is a floor rather than the
+      // bare wait: a ten-minute queue is still drawn in a box a line of text
+      // fits in, and two of those must be laid out as the boxes they are.
+      const spanMinutes = Math.max(wait ?? 0, MIN_BLOCK_MIN);
 
       // "Meldet gerade geschlossen" is a statement about NOW, so it belongs to a
       // block that is near now — the same window the live wait already obeys.

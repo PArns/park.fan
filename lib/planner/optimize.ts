@@ -1,7 +1,7 @@
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { type DayGrid, SNAP_MIN_FINE, rideFloor } from './day-grid';
-import { estimateFor, occupiedMinutes } from './estimate';
+import { estimateFor, plannedMinutes } from './estimate';
 import { transferBetween } from './leg';
 import { partyFlags } from './party';
 import type { DayClock } from './park-time';
@@ -332,12 +332,13 @@ function overflowTier(
  * against a fixed clock. A block starting exactly now is somebody arriving, not
  * somebody queueing.
  *
- * Worth naming: the span such a block occupies comes from `occupiedMinutes`,
+ * Worth naming: the span such a block reserves comes from `plannedMinutes`,
  * i.e. the model's queue for an hour that has already happened. It is a
- * forecast — and it is the same forecast the block is drawn at on the axis and
- * measured with everywhere else, which beats a truer number nobody can see.
- * Somebody who knows better ticks the block off, and the real minutes are read
- * from `actualWait` after that.
+ * forecast — and it is the same forecast every other placement in this file is
+ * made of, which beats a truer number nobody can see. Somebody who knows better
+ * ticks the block off, and the real minutes are read from `actualWait` after
+ * that. The block on the axis is drawn a band taller than this; that band is a
+ * spread, not a commitment, so nothing here schedules around it.
  */
 function hasStarted(entry: PlannerEntry, clock?: DayClock): boolean {
   return clock?.phase === 'today' && entry.startMinute < clock.nowMinute;
@@ -736,6 +737,13 @@ function hourIndex(minute: number): number {
  * app's OWN estimator rather than a second copy of its rules, so the minutes the
  * optimiser reckons with are the minutes the block will draw.
  *
+ * `occupiedByHour` is the PLANNED length, not the drawn one, and that is the
+ * whole of what this file schedules against. The block on the axis keeps its
+ * uncertainty band; the clock between two stops does not carry it, or the search
+ * paces the day off the pessimistic end of every queue while `waitByHour` and
+ * every cost below rank it off the expected one — two numbers for one ride in
+ * one search. See `plannedMinutes`.
+ *
  * It runs to {@link TABLE_HOURS} and not to 24, which is the other half of a
  * statement `estimate.ts` already made on its own. `estimateFor` normalises an
  * hour past midnight (`hour - 24`) because `closeHour` reports the wall clock;
@@ -752,7 +760,7 @@ function tabulate(day: PlanDay, slug: string): Pick<Candidate, 'waitByHour' | 'o
   for (let hour = 0; hour < TABLE_HOURS; hour++) {
     const probe: PlannerEntry = { id: '', attractionSlug: slug, startMinute: hour * 60 };
     waitByHour.push(estimateFor(day, probe).wait);
-    occupiedByHour.push(Math.max(occupiedMinutes(day, probe), SNAP_MIN_FINE));
+    occupiedByHour.push(Math.max(plannedMinutes(day, probe), SNAP_MIN_FINE));
   }
   return { waitByHour, occupiedByHour };
 }
@@ -1466,7 +1474,7 @@ function buildContext(input: OptimizeInput): Context | null {
     .filter((entry) => entry.done || entry.custom || hasStarted(entry, clock))
     .map((entry) => ({
       from: entry.startMinute,
-      to: entry.startMinute + Math.max(occupiedMinutes(day, entry), SNAP_MIN_FINE),
+      to: entry.startMinute + Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE),
     }))
     .sort((a, b) => a.from - b.from);
 
@@ -1763,16 +1771,16 @@ export function optimizeDay(input: OptimizeInput): OptimizedPlan | null {
  * A block over a fixed one — a ride laid across the lunch break — fails for the
  * same reason: you cannot be in both.
  *
- * What a block ENDS is `occupiedMinutes`, not the queue: the wait plus the
- * model's own spread, which is the height the block is drawn at and the span
- * `place` reserves for every stop it files. Measuring the incumbent against the
- * bare wait instead measured it against something nothing in this app ever
- * draws — two blocks 40 minutes apart, each 55 minutes tall, overlapped by a
- * quarter of an hour on the axis and passed as executable, so the bar answered
- * "already in the right order" in precisely the case it exists for. It is no
- * longer `legBetween`'s `broken` rule to the letter, and that is deliberate:
- * the incumbent has to be judged by what the optimiser would have to produce to
- * replace it.
+ * What a block ENDS is `plannedMinutes` — the same span `place` reserves for
+ * every stop it files, and that identity is the point rather than a detail. The
+ * incumbent has to be judged by what the optimiser would have to produce to
+ * replace it, so the two have to measure a block the same way: judged against a
+ * LONGER span than the search files, every plan the search has just produced
+ * reads as overlapping, the guard never passes, and the button reshuffles the
+ * day on every press for ever. It was `occupiedMinutes` — the drawn height,
+ * band included — for as long as the search paced itself that way too, and it
+ * moved with it. It is no longer `legBetween`'s `broken` rule to the letter,
+ * and that is deliberate.
  */
 function isExecutable(input: OptimizeInput, ctx: Context): boolean {
   const { day } = input;
@@ -1796,7 +1804,7 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
 
   for (let i = 0; i < stops.length; i++) {
     const entry = stops[i];
-    const span = Math.max(occupiedMinutes(day, entry), SNAP_MIN_FINE);
+    const span = Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE);
     for (const block of ctx.fixed) {
       if (entry.startMinute < block.to && entry.startMinute + span > block.from) return false;
     }
@@ -1804,7 +1812,7 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
     const previous = stops[i - 1];
     const from = ctx.candidates.find((c) => c.entryId === previous.id);
     const to = ctx.candidates.find((c) => c.entryId === entry.id);
-    const occupied = Math.max(occupiedMinutes(day, previous), SNAP_MIN_FINE);
+    const occupied = Math.max(plannedMinutes(day, previous), SNAP_MIN_FINE);
     const floor = transferBetween(from?.ride ?? null, to?.ride ?? null).floorMinutes;
     if (entry.startMinute - (previous.startMinute + occupied) < floor) return false;
   }
@@ -1897,7 +1905,7 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
 
   for (const entry of movable) {
     const estimate = estimateFor(day, entry);
-    const span = Math.max(occupiedMinutes(day, entry), SNAP_MIN_FINE);
+    const span = Math.max(plannedMinutes(day, entry), SNAP_MIN_FINE);
     const freeAt = entry.startMinute + span;
     const ride = day.rides.find((r) => r.attractionSlug === entry.attractionSlug) ?? null;
     const transfer = previous === null ? 0 : transferBetween(previous, ride).ceilingMinutes;
