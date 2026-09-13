@@ -158,6 +158,22 @@ let failures = 0;
  *  about an aspect ratio, and the closing line used to report them as if they did. */
 let squashed = 0;
 let checked = 0;
+/**
+ * A page that produced no verdict. In the default set that is ordinary — not every
+ * surface renders a guarded card, and the others still carry the assertion. A page
+ * named with `--url=` is the opposite: it IS the run, and "nothing to measure" means
+ * the question was not answered. Exiting 0 there reports "the box is fine" about a box
+ * nobody looked at, which is worse than a red run — and for this flag it is the common
+ * case, since most parks whose rides go down render no card photo at all.
+ */
+const report = (label, path, why) => {
+  if (ASKED_FOR) {
+    console.error(`✗ ${label} (${path}) — ${why}, nothing measured`);
+    failures++;
+  } else {
+    console.log(`· ${label} (${path}) — ${why}`);
+  }
+};
 /** Photos the invariant was actually applied to. `checked` counts every framed photo
  *  found, but an unpanelled card is explicitly exempt (its photo spans the card, there
  *  is no crop to choose), so a page whose cards are all unpanelled — a closed park with
@@ -188,19 +204,18 @@ for (const [label, path] of PAGES) {
     // whose box was never looked at, which is the one outcome worse than a red run:
     // most parks whose rides go down carry no card photos at all, so this is the
     // common case for the flag rather than the exotic one.
-    if (ASKED_FOR) {
-      console.error(`✗ ${label} (${path}) — no framed photos on this page, nothing measured`);
-      failures++;
-      continue;
-    }
-    console.log(`· ${label} (${path}) — no framed photos on this page`);
+    report(label, path, 'no framed photos on this page');
     continue;
   }
 
   console.log(`\n${label} (${path})`);
+  let pageGraded = 0;
   for (const row of rows) {
     checked++;
-    if (row.panelled) graded++;
+    if (row.panelled) {
+      graded++;
+      pageGraded++;
+    }
     const ok = !row.panelled || row.boxAspect >= MIN_BOX_ASPECT;
     if (!ok) {
       failures++;
@@ -217,6 +232,12 @@ for (const [label, path] of PAGES) {
         note
     );
   }
+
+  // Photos alone are not evidence: every card on this page may be unpanelled, and that
+  // branch is exempt. Counted per page rather than once for the run, or a second page
+  // that did grade something carries this one — with two `--url=` arguments a closed
+  // park rides along on a healthy page and the run still exits 0.
+  if (pageGraded === 0) report(label, path, 'no photo sat in a panelled card, rule never applied');
 }
 
 await browser.close();
@@ -234,15 +255,21 @@ console.log(
 // that cannot fail is worse than none: it answers the question it was asked.
 const nothingMeasured = graded === 0;
 if (nothingMeasured) {
-  // Two different causes, and naming the wrong one sends the reader after a rename that
-  // never happened: if every page threw, the pages are the story, not the selector.
-  console.error(
-    unloadable === PAGES.length
-      ? `Nothing was measured — no page loaded far enough to grade. Is ${BASE} up?`
-      : 'Nothing was measured — no framed photo sat in a panelled card, so the rule was\n' +
-          `never applied. Check that ${BASE} is the site you meant, that ${FRAME} still\n` +
-          'exists, and that the pages render cards with a bottom panel.'
-  );
+  // Two causes, and they can occur together — three pages timing out beside one that
+  // loaded empty is both. Naming only one sends the reader after a rename that never
+  // happened, or after a server that is up.
+  console.error('Nothing was measured.');
+  if (unloadable > 0) {
+    console.error(
+      `  ${unloadable} of ${PAGES.length} page${PAGES.length === 1 ? '' : 's'} never loaded — is ${BASE} up?`
+    );
+  }
+  if (unloadable < PAGES.length) {
+    console.error(
+      `  ${PAGES.length - unloadable} loaded but graded nothing — check that ${FRAME} still\n` +
+        '  exists and that those pages render cards with a bottom panel.'
+    );
+  }
 }
 
 if (squashed > 0) {
