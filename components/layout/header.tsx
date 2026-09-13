@@ -153,6 +153,28 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   const isTransparent = isHeroPage && !scrolled;
 
   /*
+   * The nav's ink, and it is the only thing the bar's two states still decide about the
+   * navigation. `headerNavInk` holds both halves and the arithmetic behind them, because the row
+   * has three kinds of entry and they must not drift apart. The bar's other controls need no
+   * branch at all — a ghost `Button`, the locale switcher and both toggles inherit `foreground`
+   * already.
+   *
+   * **It switches with the state and waits for nothing**, which took two attempts to get right.
+   * The worry is the way DOWN: muted ink arriving before the ground it is safe on. That was real
+   * while the scrim and the solid material were one layer — the scrim is `background-image`, which
+   * does not interpolate, so it vanished at the threshold and left about a quarter of a ground
+   * under muted labels for a third of a second. Two layers cross-fading on `opacity` fixed that at
+   * the source: their sum runs 85 % → ~65 % → 80 %, i.e. never far from the 80 % the solid bar has
+   * always given muted ink while a hero is still behind it.
+   *
+   * A `delay-300` on the solid class list was the first fix and is the wrong one: `transition-delay`
+   * is one property and the hover rule shares it, so it would have delayed the hover of all seven
+   * entries by 300 ms on every page in the app. A timer in state is worse — a `setState` in an
+   * effect, which this project's lint rule refuses for good reason. Neither is worth buying 200 ms
+   * of 65 % instead of 80 %.
+   */
+
+  /*
    * The corner-to-bar handoff of the logo.
    *
    * The bar carries two copies of the lockup: one parked in the corner while the header floats
@@ -219,13 +241,6 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   const barLogoStyle = isTransparent
     ? { transform: `translateX(${-logoShift}px) scale(${logoScale.toFixed(3)})` }
     : undefined;
-  /*
-   * The nav's ink, and it is the only thing `isTransparent` is still allowed to decide about the
-   * navigation. `headerNavInk` holds both halves and the arithmetic behind them, because the row
-   * has three kinds of entry and they must not drift apart. The bar's other controls need no
-   * branch at all — a ghost `Button`, the locale switcher and both toggles inherit `foreground`
-   * already.
-   */
   const navLinkClass = `text-sm font-medium transition-colors duration-200 ${headerNavInk(isTransparent)}`;
 
   return (
@@ -406,7 +421,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
 
             It used to fade in on scroll, and that is what this change undid. `isTransparent` put
             `opacity-0 pointer-events-none` on this row, `aria-hidden` on the `<nav>` and
-            `tabIndex={-1}` on every link inside it, so on all five hero pages the main menu was
+            `tabIndex={-1}` on every link inside it, so on all six hero pages the main menu was
             unclickable and out of the accessibility tree and the tab order until the visitor had
             scrolled 50 px — with nothing on screen saying a menu was there. The bar keeps its two
             states; the navigation is no longer one of them. */}

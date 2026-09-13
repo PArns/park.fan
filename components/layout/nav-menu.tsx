@@ -7,6 +7,30 @@ import { MenuBand } from '@/components/layout/menu-band';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
 
 /**
+ * The ink of every entry in the header's nav row, in the bar's two states — one definition,
+ * because the row has three kinds of entry (a plain link, this trigger pair, the favorites button)
+ * and a row where one of them is a different grey is a row you read twice.
+ *
+ * While the bar floats over a hero the ground is a scrim over an arbitrary photo, and
+ * `text-muted-foreground` cannot survive that: it is oklch(0.556) on an oklch(1) background, i.e.
+ * 4.73 : 1, so 15 % of a dark photo through the scrim lands it at 3.3 : 1 and no scrim opacity
+ * short of a solid bar repairs it. `/90` rather than flat `foreground`, because a link owes the
+ * pointer an answer and the solid bar's own gesture is muted → foreground; measured over six hero
+ * pages × 360/1440 px × light/dark the worst reading is 13.31 : 1.
+ *
+ * **Which of the two arrives when is the caller's job, not a `delay-` here.** The switch back to
+ * muted may not land before the ground it is safe on: the scrim fades out over 500 ms while the
+ * solid material fades in over the same 500 ms, and their sum dips to about 65 % in the middle.
+ * A `delay-300` in this class list would have done it — and would have delayed the **hover** by
+ * 300 ms as well, on every entry on every page, since `transition-delay` is one property and the
+ * hover rule shares it. The header holds the falling edge in state instead (`INK_SETTLE_MS`).
+ */
+export const headerNavInk = (floating: boolean | undefined) =>
+  floating
+    ? 'text-foreground/90 hover:text-foreground'
+    : 'text-muted-foreground hover:text-foreground';
+
+/**
  * A header entry that is BOTH a link and the trigger of a panel.
  *
  * Two things this is built around; the open/close behaviour itself lives in `useMenuTrigger`,
@@ -26,28 +50,6 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * behaviour rule 1 forbids, and forcing it to mount means fighting the library for the rest of its
  * API.
  */
-/**
- * The ink of every entry in the header's nav row, in the bar's two states — one definition,
- * because the row has three kinds of entry (a plain link, this trigger pair, the favorites button)
- * and a row where one of them is a different grey is a row you read twice.
- *
- * While the bar floats over a hero the ground is a scrim over an arbitrary photo, and
- * `text-muted-foreground` cannot survive that: it is oklch(0.556) on an oklch(1) background, i.e.
- * 4.73 : 1, so 15 % of a dark photo through the scrim lands it at 3.3 : 1 and no scrim opacity
- * short of a solid bar repairs it. `/90` rather than flat `foreground`, because a link owes the
- * pointer an answer and the solid bar's own gesture is muted → foreground; measured over six hero
- * pages × 360/1440 px × light/dark the worst reading is 14.3 : 1.
- *
- * The `delay-300` on the way back to muted is not polish: the scrim fades out over 500 ms while
- * the solid material fades in over the same 500 ms and their sum dips to about 65 % in the middle.
- * The colour may not arrive before the ground it is safe on. Going the other way there is no
- * delay — the safe colour may always arrive early.
- */
-export const headerNavInk = (floating: boolean | undefined) =>
-  floating
-    ? 'text-foreground/90 hover:text-foreground'
-    : 'text-muted-foreground hover:text-foreground delay-300';
-
 interface NavMenuProps {
   /** Where the trigger itself navigates. */
   href: string;

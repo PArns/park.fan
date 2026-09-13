@@ -687,9 +687,17 @@ takes the menu band's blur with it.
 i.e. 4.73 : 1 — 0.23 over the threshold, so 15 % of a dark photo through the scrim lands it at
 3.3 : 1 and no opacity short of a solid bar repairs that. While the bar floats, the nav runs at
 `foreground/90` instead; measured over the six pages × two widths × two themes the worst reading is
-16.15 : 1, against 1.01 : 1 for what muted ink on an untinted hero would have been. The switch back
-to muted carries `delay-300`, because the two layers' sum dips to about 65 % in the middle of the
-cross-fade and the colour may not arrive before the ground it is safe on.
+13.31 : 1, against 1.01 : 1 for what muted ink on an untinted hero would have been.
+
+It switches with the state and waits for nothing, and that took two attempts. The worry is the way
+down — muted ink arriving before the ground it is safe on — and it was real while the scrim and the
+material were one layer: the scrim vanished at the threshold and left about a quarter of a ground
+under muted labels for a third of a second. The two layers fixed it at the source; their sum now
+runs 85 % → ~65 % → 80 %, i.e. never far from the 80 % the solid bar has always given muted ink
+while a hero is still behind it. A `delay-300` on the solid class list buys the remaining 200 ms and
+costs far more than it is worth: `transition-delay` is one property and the hover rule shares it, so
+it would delay the hover of all seven entries on every page in the app. A timer in state is worse —
+a `setState` in an effect, which this project's lint rule refuses.
 
 The header's own GSAP stagger went with it (`lib/hooks/use-header-reveal.ts`): it built a
 `fromTo(y: -10 → 0)` at the threshold and **reversed** it on the way back up, which is only
