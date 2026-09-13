@@ -276,6 +276,150 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     .catch(() => {});
 }
 
+/** How long a tap waits before it is reported as unreachable. */
+const TAP_TIMEOUT_MS = 10_000;
+
+/**
+ * Scroll a block to a resting place where the browser says its own click point
+ * is the topmost element, and answer with what it took.
+ *
+ * Two things this deliberately does NOT do. It does not centre in the scroller:
+ * measured on the phone sheet with a block selected, the scroller is 205 px, the
+ * show band takes 45 of them at the top and the action row 102 at the bottom, so
+ * the free strip runs 45…103 and its middle is 74 — a 45 px block centred on the
+ * scroller comes to rest at 80…125 with its lower half under the action row,
+ * which is exactly the element PAR-175 reported. And it does not go looking for
+ * the two bars by style or by selector: a sweep over everything `absolute` or
+ * `sticky` in the sheet answered a free strip of −205 px, 53 px, 103 px and
+ * −94 px on four runs of the same page, because content inside the scroller
+ * touches its edges too and a sticky element's box depends on where it is
+ * scrolled at the moment it is asked.
+ *
+ * So the question is put to the browser instead: offer the block a resting place,
+ * ask `elementFromPoint` whether the point that will be clicked belongs to it,
+ * and walk outwards from the middle in 6 px steps until one answers yes. That is
+ * the same question Playwright's own actionability check asks, so a placement
+ * this accepts is one the click accepts — and where nothing answers yes, the
+ * caller gets a named ❌ instead of the 30 s timeout that used to end the run.
+ *
+ * Measured per call site: 1 probe on the desktop panel, 1 on the demo, 3 on the
+ * phone sheet with the action row up.
+ */
+const placeWhereItCanBeTapped = (el, position) => {
+  // `overflow-y` as well as the two heights. A clipped box (`overflow-hidden`
+  // over content taller than itself) reports scrollHeight > clientHeight and
+  // takes a `scrollTop` from script without ever showing the difference, so on
+  // the height alone the search can stop at a clip and push the block out of its
+  // own box instead of into the room the page has. None of the three surfaces
+  // here has one on the path today; the condition is what keeps that true.
+  const scrolls = (node) =>
+    node.scrollHeight > node.clientHeight + 2 &&
+    /auto|scroll|overlay/.test(getComputedStyle(node).overflowY);
+  let scroller = el.parentElement;
+  while (scroller && !scrolls(scroller)) scroller = scroller.parentElement;
+  scroller ??= document.scrollingElement ?? document.documentElement;
+  // EVERY ancestor first, the scroller itself second. `elementFromPoint` only
+  // answers about the viewport, and on the planner's own page the block sits in
+  // a `max-h-[680px] overflow-y-auto` box whose own top is 1857 px down the
+  // article: every resting place inside it is off screen until the PAGE has
+  // scrolled, so the probe below asked about nothing 110 times before the block
+  // drifted into view by accident. `scrollIntoView` moves the whole chain; the
+  // loop then places the block inside the box it has just brought into sight.
+  el.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+  // …and the room to work in is what the scroller and the viewport SHARE. A
+  // scroller taller than the window, or one hanging half off its lower edge,
+  // otherwise offers a middle that cannot be looked at.
+  const scrollerBox = scroller.getBoundingClientRect();
+  const top = Math.max(0, scrollerBox.top);
+  const bottom = Math.min(window.innerHeight, scrollerBox.bottom);
+  const sc = { top, bottom, height: Math.max(0, bottom - top) };
+  const limit = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+  // The point the click will use: the caller's `position` where it passes one,
+  // the block's middle otherwise. Freeing the middle of a block whose click
+  // lands 8 px from its top proves nothing about that click. (Playwright reads
+  // `position` off the padding box and this reads it off the border box, which
+  // is the block's 1 px frame apart — under the 6 px the search steps in.)
+  const aim = () => {
+    const box = el.getBoundingClientRect();
+    return position
+      ? { x: box.left + position.x, y: box.top + position.y }
+      : { x: box.left + box.width / 2, y: box.top + box.height / 2 };
+  };
+  const free = () => {
+    const { x, y } = aim();
+    const hit = document.elementFromPoint(Math.round(x), Math.round(y));
+    return Boolean(hit && (hit === el || el.contains(hit)));
+  };
+  const middle = (sc.top + sc.bottom) / 2;
+  const reach = Math.max(6, Math.floor((sc.height - 8) / 2));
+  const offsets = [0];
+  for (let away = 6; away <= reach; away += 6) offsets.push(away, -away);
+  let tried = 0;
+  for (const away of offsets) {
+    tried += 1;
+    scroller.scrollTop = Math.max(
+      0,
+      Math.min(limit, scroller.scrollTop + aim().y - (middle + away))
+    );
+    if (free()) return { free: true, tried, rest: Math.round(aim().y - sc.top) };
+  }
+  return { free: false, tried, rest: Math.round(aim().y - sc.top) };
+};
+
+/**
+ * Tap a day block — after pulling it into the clear part of its own scroller.
+ *
+ * Playwright scrolls a target in before it clicks, and it scrolls the least it
+ * can: a block below the scroller's box comes to rest on its bottom edge, one
+ * above it on the top edge. **Both edges of this scroller are spoken for.** The
+ * show band is `sticky top-0 z-40` inside it and the action row a selected block
+ * raises is `absolute inset-x-0 bottom-0 z-40` over it, so the minimal scroll
+ * parks the block under one of the two, the hit test finds that element instead,
+ * and every retry scrolls to the same place again until the 30 s default runs
+ * out — as an exception, which takes the two hundred assertions after it with it.
+ *
+ * Where the block comes to rest has nothing to do with the code under test. It
+ * follows how tall the scroller is and where it happens to be scrolled, which
+ * follows what the rest of the sheet is drawing on the day of the run — which is
+ * why the same script was green at ~08:1x UTC and dead at ~08:3x on an unchanged
+ * `main` (PAR-175), with the error naming the show band and the action row in
+ * the same breath. Measured here against the reported state: with the action row
+ * up, a plain tap fails from a scroller parked at the top, in the middle AND at
+ * the bottom, and lands from all three once the block is placed itself.
+ *
+ * The click is then asked with a SHORT timeout and its error caught: a step that
+ * cannot reach its target is a named ❌ carrying the element that intercepted
+ * it and the room there was, never a stack trace.
+ */
+async function tapBlock(page, locator, name, options = {}) {
+  const target = locator.first();
+  const placement = await target
+    .evaluate(placeWhereItCanBeTapped, options.position ?? null)
+    .catch(() => null);
+  // The scroll itself is synchronous, the sticky band's reflow after it is not.
+  await page.waitForTimeout(150);
+  const failure = await target
+    .click({ timeout: TAP_TIMEOUT_MS, ...options })
+    .then(() => null)
+    .catch((error) => {
+      const lines = String(error.message)
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean);
+      // The interception lines name the element that is in the way, which is the
+      // whole diagnosis; the first line is the fallback for every other reason a
+      // click can fail (detached, disabled, not stable).
+      const blame = lines.filter((line) => /intercepts pointer events/.test(line)).slice(0, 2);
+      return (blame.length ? blame : lines.slice(0, 1)).join(' · ').slice(0, 200);
+    });
+  const room = placement
+    ? `${placement.free ? 'freigeräumt' : 'keine freie Stelle'} nach ${placement.tried} ` +
+      `Versuch${placement.tried === 1 ? '' : 'en'}, ${placement.rest} px unter der Kante`
+    : 'nicht vermessen';
+  check(name, failure === null, failure ? `${room} — ${failure}` : room);
+  return failure === null;
+}
+
 // ── Every `quality` a planner image asks for must be configured ─────────────
 //
 // Next 16 answers an unconfigured `quality` with a 400 from the image
@@ -606,9 +750,9 @@ if (await rowTick.count()) {
   tickPath = 'Zeile';
 } else {
   // The grid: select the first block, then use the bar it raises.
-  const firstBlock = page.locator('li[data-planner-block]').first();
+  const firstBlock = page.locator('li[data-planner-block]');
   if (await firstBlock.count()) {
-    await firstBlock.click();
+    await tapBlock(page, firstBlock, 'der Block lässt sich für das Abhaken auswählen');
     await page.waitForTimeout(300);
     const barTick = page.locator('button[aria-label="Als gefahren markieren"]').first();
     if (await barTick.count()) {
@@ -1172,7 +1316,11 @@ if (await phoneLauncher.count()) {
       // gesture landing on a 44 px strip of a box whose height is a queue, and a
       // plan may not depend on that. Selecting is a plain tap on the block, which
       // is what docks the action row.
-      await phone.locator(`li[data-planner-entry="${entryId}"]`).first().click();
+      await tapBlock(
+        phone,
+        phone.locator(`li[data-planner-entry="${entryId}"]`),
+        'der Block nimmt einen einfachen Tap an'
+      );
       await phone.waitForTimeout(300);
       const nudge = phone.locator(`${SHEET} button[aria-label="15 Min. später"]`);
       check('die Aktionsleiste bietet einen Verschieben-Knopf', (await nudge.count()) > 0);
@@ -1832,7 +1980,9 @@ if (reachable) {
     // 44 px targets, so they dock instead — and until this was wired a block
     // could be selected and then neither ticked off nor removed.
     // Anywhere on the block, not on its 24 px grip.
-    await blocks.first().click({ position: { x: 80, y: 8 } });
+    await tapBlock(grid, blocks, 'der Block nimmt einen Klick auf seinen Rumpf an', {
+      position: { x: 80, y: 8 },
+    });
     await grid.waitForTimeout(300);
     const actionRow = grid.locator(`${SHEET} button[aria-label="Als gefahren markieren"]`);
     check('Auswahl blendet die Aktionen ein', (await actionRow.count()) > 0);
@@ -3207,7 +3357,11 @@ if (reachable) {
   );
   // A reader operating the exhibit must not find a plan in their own planner
   // afterwards: the demo holds its state in the component, never in the store.
-  await page.locator('article li[data-planner-block]').first().click();
+  await tapBlock(
+    page,
+    page.locator('article li[data-planner-block]'),
+    'der Block der Demo nimmt einen Klick an'
+  );
   await page.waitForTimeout(300);
   check(
     'die Demo schreibt nichts in den Plan',
