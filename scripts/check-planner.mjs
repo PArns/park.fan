@@ -6329,6 +6329,13 @@ if (live) {
 // So: assert what this change actually decides, and PRINT the number the next
 // change has to move. An assertion on 16 px would go red the moment somebody
 // improves it, which is the wrong direction for a check to fail in.
+//
+// NOT behind `live` as a whole, unlike the two passes above — and the split is
+// deliberate. What this pass is really about is the SWITCH: the arrangement,
+// the grab handle and the coarse-pointer branch are properties of the window
+// and the pointer, and they hold whether or not `/plan/day` answered. Only the
+// axis needs the day's opening hours, so only the axis' own assertion carries
+// the guard, right where it is made.
 {
   const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
   noteErrors(land);
@@ -6371,14 +6378,41 @@ if (live) {
           Math.round(axis.x + axis.width / 2),
           Math.round(axis.y + axis.height / 2)
         );
-        covers = hit && !scroller.contains(hit) && hit !== scroller ? hit.tagName : null;
+        // The element's own name where it has one, its tag where it does not.
+        // `DIV` on its own names nothing, and this assertion's whole job is to
+        // say WHICH row is in the way — the optimize bar, the headliner band and
+        // the summary are three different tickets' worth of pixels.
+        covers =
+          hit && !scroller.contains(hit) && hit !== scroller
+            ? ((Object.keys(hit.dataset ?? {})[0] ??
+              hit.closest(
+                '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary]'
+              )?.dataset)
+                ? Object.keys(
+                    hit.closest(
+                      '[data-planner-optimize],[data-planner-headliner-hint],[data-planner-summary]'
+                    )?.dataset ?? {}
+                  )[0]
+                : null) || hit.tagName
+            : null;
       }
+      // How much of the axis is INSIDE the sheet, which is not the same as how
+      // tall it is: `min-h` on a box whose parent is `min-h-0 flex-1` makes it
+      // overflow rather than grow the parent, and an axis reported as 200 px can
+      // have 37 of them below the sheet's own bottom edge with four rows painted
+      // over the rest. `height - axis` as a stand-in for "chrome" is a lie in
+      // exactly that case, so both numbers are measured against the sheet.
+      const visible =
+        axis && axis.height > 0
+          ? Math.max(0, Math.min(axis.bottom, box.bottom) - Math.max(axis.top, box.top))
+          : 0;
       return {
         width: Math.round(box.width),
         height: Math.round(box.height),
         left: Math.round(box.x),
         bottom: Math.round(window.innerHeight - box.bottom),
         axis: axis ? Math.round(axis.height) : null,
+        axisVisible: Math.round(visible),
         covers,
         handle: sheet.querySelector('[data-planner-sheet-handle]'),
       };
@@ -6403,18 +6437,32 @@ if (live) {
         room.height === 359,
         `${room.height} px von 390 (erwartet 359 = 92svh)`
       );
-      check(
-        'nichts liegt über der Achse',
-        room.covers === null,
-        room.covers === null
-          ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
-          : `${room.covers} liegt über der Achse`
-      );
-      // Printed, not asserted — see the note above this block.
-      console.log(
-        `ℹ️  Achse im Querformat: ${room.axis} px in einem ${room.height} px hohen Sheet ` +
-          `· Chrome ${room.height - room.axis} px (PAR-76, Kriterium 1 offen: 216 px nötig)`
-      );
+      // Only where there IS an axis, and the guard is the assertion's own: with
+      // a 404 from `/plan/day` there are no opening hours, `buildDayGrid`
+      // answers `null` and nothing is drawn — at which point `covers` is `null`
+      // because there was nothing to cover, and this would go green on a run
+      // that measured no axis at all. That is the failure mode the whole pass
+      // exists to catch, so it may not be the one it reports as passing.
+      if (live) {
+        check(
+          'nichts liegt über der Achse',
+          room.axis !== null && room.axis > 0 && room.covers === null,
+          room.axis === null || room.axis === 0
+            ? 'keine Achse gefunden — nichts gemessen'
+            : room.covers === null
+              ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
+              : `${room.covers} liegt über der Achse · Achse ${room.axis} px, davon ${room.axisVisible} px im Sheet ` +
+                `· Chrome ${room.height - room.axisVisible} px von ${room.height} (PAR-168)`
+        );
+        // Printed, not asserted — see the note above this block. `axisVisible`
+        // rather than `axis`, and the difference is the whole finding: an axis
+        // can report 200 px with 10 of them in the sheet.
+        console.log(
+          `ℹ️  Achse im Querformat: ${room.axisVisible} px sichtbar (Box ${room.axis} px) ` +
+            `in einem ${room.height} px hohen Sheet · Chrome ${room.height - room.axisVisible} px ` +
+            `(PAR-168: 216 px nötig, also Chrome ≤ 143)`
+        );
+      }
     } else {
       check('im Querformat liegt das Panel unten und nicht rechts', false, 'kein Sheet gefunden');
     }

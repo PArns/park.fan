@@ -96,7 +96,7 @@ export function PlannerShowBand({
   return (
     <div
       data-planner-show-band=""
-      // `max-sm:min-h-11`, and it is the strip that grows rather than only the
+      // `planner-phone:min-h-11`, and it is the strip that grows rather than only the
       // switch inside it. A 44 px pseudo-element hanging out of a 22 px strip
       // was tried and is wrong here: this strip is `sticky top-0` INSIDE the
       // grid's scroller, so the overhang follows the scroll across the blocks —
@@ -118,7 +118,7 @@ export function PlannerShowBand({
       // `lines?.length` would buy back 22 px on a park with no shows and pay
       // for it with a 22 px jump on every park that has them, one second after
       // the panel opens.
-      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm max-sm:min-h-11"
+      className="border-border/60 bg-background/95 text-muted-foreground planner-phone:min-h-11 sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm"
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
       title={observedOn ? t('shows.projectedFrom', { date: observedOn }) : undefined}
@@ -168,7 +168,7 @@ export function PlannerShowBand({
           // 16 px measured, and the smallest target in the panel. It grows
           // inside a strip that grew with it — see the strip's own note for why
           // this is the one place a pseudo-element was the wrong instrument.
-          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11"
+          className="hover:text-foreground planner-phone:-my-0 planner-phone:size-11 -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors"
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />

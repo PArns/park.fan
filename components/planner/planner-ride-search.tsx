@@ -164,12 +164,12 @@ export function PlannerRideSearch({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t('search.placeholder')}
-          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none max-sm:h-11"
+          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 planner-phone:h-11 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none"
         />
       </div>
 
       {/* What a TAP does, because this component is mounted on phones alone
-          (`sm:hidden` at its only call site) and the sentence here used to be
+          (`planner-wide:hidden` at its only call site) and the sentence here used to be
           "oder zieh eine Bahn von der Parkseite auf die Zeitachse" — an HTML5
           drag, named on the one pointer that has no such gesture. The row's own
           click is what this describes, and `startFor` is where the minute comes
@@ -180,7 +180,7 @@ export function PlannerRideSearch({
         <button
           type="button"
           onClick={onAddCustom}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
+          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 planner-phone:min-h-11 mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors"
         >
           <CalendarPlus className="size-3.5 shrink-0" />
           <span className="truncate">{t('custom.add')}</span>
@@ -251,7 +251,7 @@ export function PlannerRideSearch({
                     }
                   )
                 }
-                className="hover:bg-accent flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing max-sm:py-2.5"
+                className="hover:bg-accent planner-phone:py-2.5 flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing"
               >
                 {/* The ride's photo. It is ALREADY in the payload — the proxy
                     route runs `enrichAttractionsWithImages` over `/plan/day`'s

@@ -475,6 +475,28 @@ export function PlannerDayColumn({
             cap comes down from 46svh to 32, and the chrome above gives back the
             handle row, the header's padding, this column's head and the weekend
             chip. */}
+        {/* **Stays on `max-sm:` and does NOT move to `planner-phone:`** — the
+            one class in PAR-76's sweep that was tried, measured and put back.
+
+            The argument for moving it was sound and the measurement refused it.
+            A floor written in pixels only buys an axis room the sheet actually
+            has: at 390x844 the chrome is 565 px of a 776 px sheet, so the axis
+            gets 211 and this floor never binds. At 844x390 the chrome is
+            **349 px of a 359 px sheet** — 44 handle, 45 header, 61 optimize, 96
+            headliners (capped), 33 free block, 37 summary, 30 foot — which
+            leaves the axis **10 px**. Asking for 200 does not find 190 more; it
+            makes this box overflow a `min-h-0 flex-1` parent that has none to
+            give, and the axis then ran from y=227 to y=427 in a sheet ending at
+            390: 37 px below the window, with the optimize row, the headliner
+            band, the summary and the foot all painted over it. Measured, both
+            ways, on this branch.
+
+            So the floor would not be showing two hours of day here, it would be
+            drawing them underneath four other rows. Ten visible pixels are worse
+            than sixteen, and both are the same finding one level down from
+            PAR-76's first criterion: on a landscape phone the chrome is taller
+            than the sheet, and no class on THIS element changes that. It is
+            PAR-168's to spend, and until then the axis shrinks honestly. */}
         <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}
@@ -584,7 +606,7 @@ export function PlannerDayColumn({
                         type="button"
                         onClick={onOpenWizard}
                         data-planner-start-wizard=""
-                        className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 planner-phone:min-h-11 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors"
                       >
                         <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
                         <span className="truncate">{t('wizard.open')}</span>

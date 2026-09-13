@@ -65,7 +65,7 @@ export function PlannerInParkCta({ activeParkSlug }: { activeParkSlug: string | 
             todayInZone(park.timezone)
           )
         }
-        className="bg-primary text-primary-foreground hover:bg-primary/90 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition-colors max-sm:min-h-11"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 planner-phone:min-h-11 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition-colors"
       >
         <MapPin className="size-4 shrink-0" aria-hidden="true" />
         <span className="truncate">{t('inPark.cta', { park: park.name })}</span>

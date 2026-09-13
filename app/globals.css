@@ -68,19 +68,28 @@
  * — would apply BOTH at 844x390 and the winner would be whatever order the
  * compiler happened to emit. `or` on one side, `and` on the other, and nothing
  * between them.
+ *
+ * **The height term asks `(pointer: coarse)` and the width term does not**, and
+ * the complement below carries the negation rather than `(pointer: fine)` —
+ * `fine` is not the opposite of `coarse`, `pointer: none` is neither, and a
+ * device that answers neither would fall out of BOTH variants and get whatever
+ * the unprefixed class said. A short window on a fine pointer is a desktop
+ * browser dragged flat (1440x480), not a phone: it stays wide, which is what
+ * keeps the panel non-modal and the ride-card drag alive. See the note on
+ * `PLANNER_PHONE_QUERY`.
  */
 @variant planner-phone {
   @media (width < 40rem) {
     @slot;
   }
-  @media (height < 31.25rem) {
+  @media (height < 31.25rem) and (pointer: coarse) {
     @slot;
   }
 }
 
 @variant planner-wide {
   @media (width >= 40rem) {
-    @media (height >= 31.25rem) {
+    @media (height >= 31.25rem), (not (pointer: coarse)) {
       @slot;
     }
   }

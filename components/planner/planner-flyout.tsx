@@ -692,7 +692,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // The 68 px it costs is the overlay, and that is the whole trade.
           // Pulled up, the modal shield is behind the sheet and tapping beside
           // it is no longer a way out — so the two that remain have to be real,
-          // and both are: the × is `max-sm:size-11` on `SheetContent` itself,
+          // and both are: the × is `planner-phone:size-11` on `SheetContent` itself,
           // and this handle takes it back down (a drag, or a tap, which is why
           // the tap toggles rather than only dismissing). Resting at 92 the
           // shield is back. Only the pulled-up state gives it up, and only for
@@ -721,7 +721,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             makes that the normal case is written down. */}
         <PlannerPanelPhoto src={panelPhoto.src} position={panelPhoto.position} />
 
-        {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
+        {/* The grab handle. Phone only, and `planner-wide:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a
             control that decides its own existence from that flickers.
 
@@ -785,7 +785,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         <SheetHeader className="border-border/60 planner-phone:py-0 shrink-0 gap-0 border-b px-3 py-2">
           {/* `max-sm:pr-14` and not the desktop's `pr-7`, because the close
               button this clears is a DIFFERENT size on a phone: `SheetContent`
-              draws it `max-sm:top-2 max-sm:right-2 max-sm:size-11`, so it
+              draws it `max-sm:top-2 max-sm:right-2 planner-phone:size-11`, so it
               covers the rightmost 52 px, while `pr-7` reserves 28 and `px-3`
               adds 12 — 12 px short. The last control in this row is "einen Tag
               planen", and 12 of its 28 px sat under the ×. 56 px of clearance
@@ -1043,7 +1043,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 the same time — so the list below would be a second way in that
                 costs the axis a third of the panel.
 
-                `sm:hidden` rather than `!isPhone`: `useMediaQuery` answers
+                `planner-wide:hidden` rather than `!isPhone`: `useMediaQuery` answers
                 `false` on the server snapshot, so a JS branch ships the phone's
                 markup in every desktop's first HTML and then deletes it. */}
             {park && activeDate && (
@@ -1091,7 +1091,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 the arithmetic that keeps it here is in `PlannerDayFoot`: inside
                 the column it would leave the axis 119 px of a 716 px sheet.
 
-                `isPhone` rather than the `sm:hidden` the ride search below
+                `isPhone` rather than the `planner-wide:hidden` the ride search below
                 uses, and the difference is real: that class exists because
                 `useMediaQuery` answers `false` on its server snapshot, and this
                 panel is never server-rendered — it is mounted client-side the

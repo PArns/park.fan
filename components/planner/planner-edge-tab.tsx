@@ -133,14 +133,22 @@ export function PlannerEdgeTab({
     <div
       className={cn(
         'pointer-events-none fixed inset-y-0 z-[60] flex items-center',
-        open && 'max-sm:hidden',
+        // `planner-phone:hidden` and not `max-sm:hidden`: this hides the tab
+        // while the panel is a BOTTOM SHEET, and which of the two arrangements
+        // the panel is in stopped being a question about width (PAR-76). At
+        // 844x390 the old class kept the tab visible and `right: panelWidth`
+        // then drove it 448 px inward — to a point behind a sheet that spans the
+        // whole window, i.e. an unreachable control over an opaque one. The
+        // `style` below is inert once this applies, which is why the offset
+        // needs no second term of its own.
+        open && 'planner-phone:hidden',
         // One clock for the three things that move together — the panel, the
         // page's inset and this tab. See the note in `components/ui/sheet.tsx`.
         !dragging && 'transition-[right] duration-300 ease-in-out'
       )}
-      // Above `sm` the panel is a side sheet of exactly this width, so this puts
-      // the tab against its edge. Below `sm` it is a bottom sheet and the tab is
-      // hidden while open, so the offset is never seen there.
+      // On the wide arrangement the panel is a side sheet of exactly this width,
+      // so this puts the tab against its edge. On `planner-phone` it is a bottom
+      // sheet and the tab is hidden while open, so the offset is never seen there.
       style={{ right: open ? panelWidth : 0 }}
     >
       <button

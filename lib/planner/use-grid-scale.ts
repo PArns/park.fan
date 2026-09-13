@@ -30,8 +30,17 @@ import { PX_PER_MIN, PX_PER_MIN_COARSE } from './day-grid';
  * `31.25rem` is 500 px at the default size, which clears a 390 px landscape
  * phone by 110 px and leaves a 1512x982 laptop on the wide side. See PAR-76 and
  * the note above `@variant planner-phone` for the measurements.
+ *
+ * **The height term asks the POINTER too, and the width term does not.** A short
+ * window is not by itself a phone: 1440x480 is a desktop browser somebody
+ * dragged flat, and the height term alone caught it and handed it the phone
+ * branch — which on this panel means `modal`, and `modal` kills the one gesture
+ * the planner is deliberately non-modal for (drag a ride card off the park page
+ * onto the axis). A landscape phone answers `(pointer: coarse)`, that window
+ * does not, and the width term needs no such guard because 390 px of width on a
+ * fine pointer wants the narrow arrangement anyway.
  */
-export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem)';
+export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem) and (pointer: coarse)';
 
 /**
  * How many pixels one minute of the day is worth, here and now.
