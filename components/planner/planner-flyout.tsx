@@ -868,8 +868,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   className={cn(
                     'text-muted-foreground hover:text-foreground flex items-center gap-1 rounded text-xs transition-colors max-sm:min-h-11',
                     // Beside the head it is the ONE 44 px target the row can
-                    // still afford — 176 px of day picker and 44 of this leave
-                    // the park name 75, and its label would take 123 of them.
+                    // still afford. Measured at 390 px: the row is 295 wide,
+                    // this takes 44 and the day picker 176, and what is left
+                    // for the park name is 63 — its label alone would be 123.
                     // The chevron is what this control is: the sign that a list
                     // opens here. The word goes to the screen reader, which is
                     // the reader it was carrying it for.
@@ -901,8 +902,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     than asking a question the route already answers.
 
                     NOT on a phone, and that is the decision this row cost.
-                    Measured: the row has 307 px, the day picker takes 176 and a
-                    44 px target 44 — two of those leave the park name 31 px,
+                    Measured at 390 px: the row is 295 px (375 − twice the
+                    header's `px-3` − the 56 of `max-sm:pr-14`), the day picker
+                    takes 176, and each 44 px target plus its gap takes 52. One
+                    of them leaves the park name 63 px; two leave it **11**,
                     i.e. no park name. Something had to go, and of the four the
                     "+" is the only one that closes no route: the same wizard
                     is one tap further on, behind the chevron beside it, where
