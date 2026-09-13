@@ -670,7 +670,13 @@ interface Candidate {
   dropWeight: number;
   /** Expected wait per park-local hour, `null` where the day has no figure. */
   waitByHour: (number | null)[];
-  /** What the block occupies at that hour — wait plus the model's own spread. */
+  /**
+   * What the stop occupies at that hour — the expected wait, band excluded.
+   *
+   * `plannedMinutes`, not `occupiedMinutes`: the band is a spread around the
+   * prediction, so scheduling against it paces the whole day off the
+   * pessimistic end of every queue. The block is still DRAWN a band taller.
+   */
   occupiedByHour: number[];
 }
 

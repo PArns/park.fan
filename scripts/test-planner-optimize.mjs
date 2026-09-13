@@ -18,9 +18,11 @@
  * ended at 11:45 with the break at 13:00, so it held before anything was
  * scheduled — §4 now uses two fixed blocks and a ride whose block grows across
  * an hour boundary, which is the case that was actually broken. And
- * `uncertaintyMinutes` was set on no fixture in this file, so `occupiedMinutes`
- * was always the bare queue and the "wait plus band" path — the one the
- * incumbent test measures against — had never run. That is §4b.
+ * `uncertaintyMinutes` was set on no fixture in this file, so every span in it
+ * was the bare queue and nothing exercised a band at all. That is §4b, which
+ * since PAR-169 pins the two apart: the block is DRAWN at wait plus band, the
+ * plan is BUILT on the wait alone, and the search and the incumbent measure it
+ * the same way.
  *
  *     pnpm test:planner-optimize
  *     BENCH=1 pnpm test:planner-optimize   # plus the timing table for §16
@@ -111,6 +113,20 @@ function flat(value, open = OPEN, close = CLOSE) {
 /** What a block OCCUPIES at a minute — the queue plus the model's own spread. */
 function spanOf(payload, slug, startMinute) {
   return Math.max(occupiedMinutes(payload, { id: '', attractionSlug: slug, startMinute }), 15);
+}
+
+/**
+ * The same, band excluded — what the optimiser actually schedules against.
+ *
+ * The two must not be mixed up in an assertion: `spanOf` is the DRAWN height
+ * and belongs in §4b's statement about the block, while every re-derivation of
+ * the plan's own arithmetic (when a stop frees up, where the day ends, how much
+ * standing about it leaves) has to use this one, or the check re-computes with
+ * a longer block than `optimizeDay` filed. Both were `spanOf` until PAR-169
+ * split the two, and both passed only because their fixtures carry no band.
+ */
+function plannedSpanOf(payload, slug, startMinute) {
+  return Math.max(plannedMinutes(payload, { id: '', attractionSlug: slug, startMinute }), 15);
 }
 
 /** Low early, high after lunch — the shape a headliner actually has. */
@@ -231,7 +247,7 @@ function idleOfPlan(payload, stops) {
   for (let i = 1; i < stops.length; i++) {
     const previous = stops[i - 1];
     const free =
-      previous.startMinute + spanOf(payload, previous.attractionSlug, previous.startMinute);
+      previous.startMinute + plannedSpanOf(payload, previous.attractionSlug, previous.startMinute);
     const transfer = transferBetween(
       rideOf(previous.attractionSlug),
       rideOf(stops[i].attractionSlug)
@@ -504,7 +520,7 @@ function idleOfPlan(payload, stops) {
 
   const clashes = [];
   for (const stop of found.stops) {
-    const span = spanOf(payload, stop.attractionSlug, stop.startMinute);
+    const span = plannedSpanOf(payload, stop.attractionSlug, stop.startMinute);
     for (const block of blocks) {
       if (stop.startMinute < block.to && stop.startMinute + span > block.from) {
         clashes.push(`${stop.attractionSlug} ${stop.startMinute}+${span} über ${block.label}`);
@@ -524,9 +540,9 @@ function idleOfPlan(payload, stops) {
     'der wachsende Block liegt auch wirklich im Nachmittag',
     late !== undefined &&
       late.startMinute >= 13 * 60 &&
-      spanOf(payload, 'afternoon', late.startMinute) === 90,
+      plannedSpanOf(payload, 'afternoon', late.startMinute) === 90,
     late
-      ? `${late.startMinute} + ${spanOf(payload, 'afternoon', late.startMinute)}`
+      ? `${late.startMinute} + ${plannedSpanOf(payload, 'afternoon', late.startMinute)}`
       : 'nicht geplant'
   );
 }
@@ -546,9 +562,19 @@ function idleOfPlan(payload, stops) {
 // 29 Minuten auf Taron, 36–38 auf F.L.Y. und beide Winja's) schob das den Tag
 // von 16:40 auf 18:54 und warf einen von zehn Headlinern hinaus.
 //
-// Und `legBetween` — das einzige Urteil dieser App, das einen Plan „unmöglich"
-// nennt — misst die Lücke seit jeher gegen `wait`, nicht gegen `wait + Band`.
-// Der Optimierer richtet sich hier nach dem Chip, den der Leser danach sieht.
+// Und `legBetween` misst die Lücke seit jeher gegen `wait`, nicht gegen
+// `wait + Band` — der Optimierer taktet jetzt also so, wie das einzige Urteil
+// dieser App rechnet, das einen Plan „unmöglich" nennt.
+//
+// Das gilt für die Sprosse `broken` (gegen den Transfer-Floor) und ausdrücklich
+// NICHT für `tight`: die Sprosse liegt bei `slack < uncertaintyMinutes`, und
+// weil die Suche gegen das Transfer-CEILING baut, ist der Slack eines
+// gepackten Tages ~0. Auf einem Tag mit Band liest sich damit fast jeder
+// Leg-Chip als „Umstieg knapp" — auf dem Phantasialand-Tag gemessen
+// (`gap=15 ceil=12 band=29`, `gap=10 ceil=9 band=36`). Vorher war es
+// spiegelbildlich: die Uhr polsterte jede Lücke um das Band, also stand dort
+// immer „gut". Ob die Schwelle mitziehen soll, ist eine Produktfrage und liegt
+// als Beifang daneben; hier wird sie nur nicht behauptet.
 {
   const rides = [
     ride('wide-a', flat(30), { land: 'X', uncertainty: 25, lat: 50.8 }),
@@ -1047,8 +1073,9 @@ function idleOfPlan(payload, stops) {
   const afterQueue = inQueue?.stops.find((s) => s.entryId === 'c-1');
   check(
     'und die nächste Bahn wartet, bis diese Schlange durch ist',
-    afterQueue !== undefined && afterQueue.startMinute >= 13 * 60 + spanOf(payload, 'b', 13 * 60),
-    `${afterQueue?.startMinute} gegen ${13 * 60 + spanOf(payload, 'b', 13 * 60)}`
+    afterQueue !== undefined &&
+      afterQueue.startMinute >= 13 * 60 + plannedSpanOf(payload, 'b', 13 * 60),
+    `${afterQueue?.startMinute} gegen ${13 * 60 + plannedSpanOf(payload, 'b', 13 * 60)}`
   );
 
   // The boundary, and it is strict. A block starting exactly now is somebody
@@ -1677,7 +1704,9 @@ function benchInput(n) {
     'und der Feierabend ist der der geplanten Bahnen',
     found.endMinute ===
       Math.max(
-        ...found.stops.map((s) => s.startMinute + spanOf(payload, s.attractionSlug, s.startMinute))
+        ...found.stops.map(
+          (s) => s.startMinute + plannedSpanOf(payload, s.attractionSlug, s.startMinute)
+        )
       ),
     `Feierabend ${found.endMinute}`
   );
