@@ -6,6 +6,7 @@ import { CalendarPlus, ChevronDown, Columns2, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import type { PlannerDayState } from './planner-context-band';
 import { PlannerDayColumn } from './planner-day-column';
+import { PlannerColumnHead } from './planner-column-head';
 import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
@@ -534,6 +535,35 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const prefs = activeDate ? park?.days[activeDate]?.prefs : undefined;
 
   /**
+   * What the head needs, where the PANEL draws it — see `phoneHead` below.
+   *
+   * All three are the column's own derivations, read from the same store and
+   * the same query rather than passed down or fetched again: `dayFacts` above
+   * is the key the column's day picker asks for, so the two share one request.
+   */
+  const parks = useMemo(() => Object.values(state.parks), [state.parks]);
+  const plannedDates = useMemo(
+    () =>
+      park
+        ? Object.values(park.days)
+            .filter((entry) => entry.entries.length > 0)
+            .map((entry) => entry.date)
+        : [],
+    [park]
+  );
+  /**
+   * Whether the panel's header IS the column's head, which is the phone case.
+   *
+   * `!showOverview` for the same reason the column carries the head at all:
+   * the overview replaces the day, and a park name and a date over a list of
+   * OTHER days would be a statement about something that is not on screen.
+   * `parks.length > 0` mirrors the column's own gate — with nothing planned
+   * the head is a chooser over an empty list, above the empty state that
+   * already carries the button which starts one.
+   */
+  const phoneHead = isPhone && !showOverview && parks.length > 0;
+
+  /**
    * The sheet's own height, on a phone.
    *
    * Reset on close rather than remembered: the panel opens from a launcher on
@@ -782,10 +812,49 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               puts its edge 8 px clear of the close button at every phone width.
           */}
           <div className="flex items-center gap-2 pr-7 max-sm:pr-14">
-            <SheetTitle className="flex shrink-0 items-center gap-2 text-sm">
+            {/* Radix wants a title and a phone has no room for one. 45 px went
+                to this row and 45 to the column's own head, 90 px of a 776 px
+                sheet spent saying "Tagesplaner" over a park name and a date —
+                and the axis under them had 211. The two rows are one row there,
+                and what gives way is the word for the thing the reader is
+                already looking at. `sr-only` rather than gone: the sheet is a
+                dialog and a dialog owes its reader a name.
+
+                It stays visible in the two phone states that have no head to
+                show — the overview, which is not a day, and a plan with no park
+                in it at all. An unlabelled bar over an empty panel would be the
+                one screen that has to say what this thing is saying nothing. */}
+            <SheetTitle
+              className={cn('flex shrink-0 items-center gap-2 text-sm', phoneHead && 'sr-only')}
+            >
               <CalendarPlus className="size-4" />
               {t('title')}
             </SheetTitle>
+            {/* The park and the day, on a phone. Same component, same place in
+                the DOM, drawn by the panel instead of by the column — see
+                `withHead` on {@link PlannerDayColumn}. Its own border and
+                padding come off, because the row it is in already has both;
+                `min-w-0` is what lets the park name truncate rather than push
+                the day picker off the edge. */}
+            {phoneHead && (
+              <PlannerColumnHead
+                parks={parks}
+                parkSlug={activeParkSlug}
+                date={activeDate}
+                onPickPark={(slug) => setActive(slug, activeDate)}
+                onPickDate={(date) => setActive(activeParkSlug, date)}
+                onNewPark={() => {
+                  setWizardPark(pagePark ? { ...pagePark } : null);
+                  setWizardDate(null);
+                  setWizardOpen(true);
+                }}
+                plannedDates={plannedDates}
+                timezone={resolveTimeZone(day?.timezone ?? park?.timezone)}
+                facts={dayFacts.byDate}
+                maxDate={dayFacts.lastDate ?? undefined}
+                className="min-w-0 flex-1 border-b-0 px-0 py-0"
+              />
+            )}
             {park && (
               <>
                 {/* The park name is the way into the overview. It was a plain
@@ -796,13 +865,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onClick={() => setShowOverview((value) => !value)}
                   aria-expanded={showOverview}
                   data-planner-overview-toggle=""
-                  className="text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors max-sm:min-h-11"
+                  className={cn(
+                    'text-muted-foreground hover:text-foreground flex items-center gap-1 rounded text-xs transition-colors max-sm:min-h-11',
+                    // Beside the head it is the ONE 44 px target the row can
+                    // still afford — 176 px of day picker and 44 of this leave
+                    // the park name 75, and its label would take 123 of them.
+                    // The chevron is what this control is: the sign that a list
+                    // opens here. The word goes to the screen reader, which is
+                    // the reader it was carrying it for.
+                    phoneHead
+                      ? 'hover:bg-accent size-11 shrink-0 justify-center rounded-md'
+                      : 'min-w-0 flex-1 px-1 py-0.5'
+                  )}
                 >
                   {/* "Meine Pläne", never the active park's name. This control
                       opens the list of ALL plans, and labelling it with one of
                       them made it read as a statement about the page — which on
                       a different park's page is simply wrong. */}
-                  <span className="truncate">{t('plans.title')}</span>
+                  <span className={cn('truncate', phoneHead && 'sr-only')}>{t('plans.title')}</span>
                   {/* Always. Hiding it until a second park or day existed made
                       the overview — the only route to another park or another
                       day — invisible to everyone who had exactly one, which is
@@ -818,21 +898,37 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 {/* A day can be started from anywhere in the panel, not only
                     from inside the overview. It carries the page's park where
                     there is one, so the wizard opens on the calendar rather
-                    than asking a question the route already answers. */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setWizardPark(pagePark ? { ...pagePark } : null);
-                    setWizardDate(null);
-                    setWizardOpen(true);
-                  }}
-                  aria-label={t('wizard.open')}
-                  title={t('wizard.open')}
-                  data-planner-new-plan=""
-                  className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
-                >
-                  <Plus className="size-4" aria-hidden="true" />
-                </button>
+                    than asking a question the route already answers.
+
+                    NOT on a phone, and that is the decision this row cost.
+                    Measured: the row has 307 px, the day picker takes 176 and a
+                    44 px target 44 — two of those leave the park name 31 px,
+                    i.e. no park name. Something had to go, and of the four the
+                    "+" is the only one that closes no route: the same wizard
+                    is one tap further on, behind the chevron beside it, where
+                    a new day stands next to the days that already exist. The
+                    day picker is the panel's most-pressed control and the park
+                    name is what tells a reader which plan they are looking at.
+
+                    `!isPhone` rather than `!phoneHead`: it is gone on a phone
+                    for good, not only while the head is up. The overview is
+                    where it went, and the overview is the other phone state. */}
+                {!isPhone && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setWizardPark(pagePark ? { ...pagePark } : null);
+                      setWizardDate(null);
+                      setWizardOpen(true);
+                    }}
+                    aria-label={t('wizard.open')}
+                    title={t('wizard.open')}
+                    data-planner-new-plan=""
+                    className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
+                  >
+                    <Plus className="size-4" aria-hidden="true" />
+                  </button>
+                )}
                 {/* The second column, on and off. The day picker that used to
                     sit here moved onto the column with the park name, because
                     with two of them a panel-level picker cannot say which day
@@ -970,6 +1066,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 onActivate={(navigate) => focusColumn(false, navigate)}
                 open={open}
                 withFoot={!isPhone}
+                withHead={!isPhone}
                 className="row-span-3 grid grid-rows-subgrid"
                 onPickPark={(slug) => setActive(slug, activeDate)}
                 onPickDate={(date) => setActive(activeParkSlug, date)}
@@ -1010,6 +1107,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onActivate={(navigate) => focusColumn(true, navigate)}
                   open={open}
                   withFoot={!isPhone}
+                  withHead={!isPhone}
                   className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
                   onPickPark={(slug) =>
                     plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })

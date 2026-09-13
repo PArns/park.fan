@@ -24,6 +24,16 @@ interface PlannerColumnHeadProps {
   timezone?: string;
   facts?: ReadonlyMap<string, CalendarDay> | null;
   maxDate?: string;
+  /**
+   * Extra classes for the row, because on a phone this row is not the column's.
+   *
+   * There the panel draws it in its own `SheetHeader` instead — one row rather
+   * than two, see the note on `withHead` in {@link PlannerDayColumn} — and a
+   * host that already carries a border and a padding needs this one to carry
+   * neither. It is the same element in the same place in the DOM either way,
+   * which is what keeps `[data-planner-column-head]` a single answer.
+   */
+  className?: string;
 }
 
 /**
@@ -60,6 +70,7 @@ export function PlannerColumnHead({
   timezone,
   facts,
   maxDate,
+  className,
 }: PlannerColumnHeadProps) {
   const t = useTranslations('planner');
   const [open, setOpen] = useState(false);
@@ -73,7 +84,10 @@ export function PlannerColumnHead({
       // spent on nothing. The row is 32 → 44 px, and those 12 px buy the panel's
       // primary navigation: the park, and the day. Both were 28 px, i.e. under
       // a thumb, in the one control row every visit goes through.
-      className="border-border/60 flex min-w-0 shrink-0 items-center gap-1 border-b px-2 py-1.5 max-sm:py-0"
+      className={cn(
+        'border-border/60 flex min-w-0 shrink-0 items-center gap-1 border-b px-2 py-1.5 max-sm:py-0',
+        className
+      )}
     >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
