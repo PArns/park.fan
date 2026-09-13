@@ -219,6 +219,64 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
   test('unmöglich bleibt unmöglich', legBetween(from, brokenTo, null, true).verdict, 'broken');
 }
 
+// ── Die Schwelle ist das ganze Band, und sie bleibt es ───────────────────────
+//
+// Diese Sprosse ist nach PAR-169 zweimal angesehen worden, und beide Male sah
+// sie nach einer Panne aus: vorher stand jeder Chip eines gerechneten Tages auf
+// „gut", jetzt steht er auf „knapp". Der Grund ist keiner in dieser Datei — die
+// Suche baut gegen dasselbe `ceilingMinutes`, gegen das hier geurteilt wird,
+// also ist der Slack eines frisch gepackten Tages im Wesentlichen der
+// Rundungsrest auf `SNAP_MIN_FINE`. Gemessen über 169 Tage aus `/plan/day`:
+// median 6 Minuten gegen ein Band von median 15.
+//
+// Festgehalten wird deshalb beides — dass der gepackte Tag auf `tight` fällt
+// (das ist erwartet, nicht kaputt) und dass die Leiter trotzdem vollständig
+// durchläuft, sobald jemand den Tag auseinanderzieht. Sonst repariert der
+// nächste Lauf das eine und merkt nicht, dass er das andere abschafft.
+{
+  const band = 15;
+
+  // Taron → Black Mamba: floor 8, ceiling 9, Schlangenende 645. Wohin ein
+  // gepackter Tag den nächsten Stopp legt, rechnet `earliestGoodStart` selbst
+  // aus — dieselbe Aufrundung, die der Optimierer verwendet —, statt die 15 hier
+  // aus SNAP_MIN_FINE nachzubauen: eine Formel neben der Funktion ist eine
+  // zweite Antwort auf dieselbe Frage. Das Ziel des Probe-Legs liefert nur die
+  // Geometrie, die Startzeit geht nicht ein.
+  const packedStart = earliestGoodStart(from(600, 45), legBetween(from(600, 45), to(700), band));
+  test('ein gepackter Tag legt den nächsten Stopp auf 11:00', packedStart, 660);
+
+  // 660 − 645 = 15 Minuten Lücke, davon 9 Ceiling: 6 Minuten Slack, zwei Fünftel
+  // des Bandes.
+  test(
+    'und dieser Rundungsrest gegen ein echtes Band ist knapp',
+    legBetween(from(600, 45), to(packedStart), band).verdict,
+    'tight'
+  );
+
+  // Lücke 21, Ceiling 9 → 12 Minuten Slack, also 80 % des Bandes: über drei
+  // Vierteln (11,25) und unter dem ganzen. Genau hier entscheidet sich, gegen
+  // WELCHEN Anteil geurteilt wird — ein Fall unterhalb jeder erwogenen Schwelle
+  // wäre unter allen grün und pinnte nichts.
+  test(
+    'vier Fünftel des Bandes reichen nicht — gemessen wird gegen das ganze',
+    legBetween(from(600, 45), to(666), band).verdict,
+    'tight'
+  );
+
+  // Und auseinandergezogen läuft die Leiter durch: ein volles Band Slack ist
+  // gut, zwei sind großzügig.
+  test(
+    'ein ganzes Band Slack ist gut',
+    legBetween(from(600, 45), to(645 + 9 + band), band).verdict,
+    'good'
+  );
+  test(
+    'zwei Bänder Slack sind großzügig',
+    legBetween(from(600, 45), to(645 + 9 + 2 * band), band).verdict,
+    'generous'
+  );
+}
+
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;
 for (const { name, actual, expected } of cases) {
