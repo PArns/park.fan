@@ -18,16 +18,18 @@
  * ended at 11:45 with the break at 13:00, so it held before anything was
  * scheduled — §4 now uses two fixed blocks and a ride whose block grows across
  * an hour boundary, which is the case that was actually broken. And
- * `uncertaintyMinutes` was set on no fixture in this file, so `occupiedMinutes`
- * was always the bare queue and the "wait plus band" path — the one the
- * incumbent test measures against — had never run. That is §4b.
+ * `uncertaintyMinutes` was set on no fixture in this file, so every span in it
+ * was the bare queue and nothing exercised a band at all. That is §4b, which
+ * since PAR-169 pins the two apart: the block is DRAWN at wait plus band, the
+ * plan is BUILT on the wait alone, and the search and the incumbent measure it
+ * the same way.
  *
  *     pnpm test:planner-optimize
  *     BENCH=1 pnpm test:planner-optimize   # plus the timing table for §16
  */
 
 import { buildDayGrid } from '../lib/planner/day-grid.ts';
-import { occupiedMinutes } from '../lib/planner/estimate.ts';
+import { occupiedMinutes, plannedMinutes } from '../lib/planner/estimate.ts';
 import { transferBetween } from '../lib/planner/leg.ts';
 import { applyPlan } from '../lib/planner/actions.ts';
 import {
@@ -111,6 +113,20 @@ function flat(value, open = OPEN, close = CLOSE) {
 /** What a block OCCUPIES at a minute — the queue plus the model's own spread. */
 function spanOf(payload, slug, startMinute) {
   return Math.max(occupiedMinutes(payload, { id: '', attractionSlug: slug, startMinute }), 15);
+}
+
+/**
+ * The same, band excluded — what the optimiser actually schedules against.
+ *
+ * The two must not be mixed up in an assertion: `spanOf` is the DRAWN height
+ * and belongs in §4b's statement about the block, while every re-derivation of
+ * the plan's own arithmetic (when a stop frees up, where the day ends, how much
+ * standing about it leaves) has to use this one, or the check re-computes with
+ * a longer block than `optimizeDay` filed. Both were `spanOf` until PAR-169
+ * split the two, and both passed only because their fixtures carry no band.
+ */
+function plannedSpanOf(payload, slug, startMinute) {
+  return Math.max(plannedMinutes(payload, { id: '', attractionSlug: slug, startMinute }), 15);
 }
 
 /** Low early, high after lunch — the shape a headliner actually has. */
@@ -231,7 +247,7 @@ function idleOfPlan(payload, stops) {
   for (let i = 1; i < stops.length; i++) {
     const previous = stops[i - 1];
     const free =
-      previous.startMinute + spanOf(payload, previous.attractionSlug, previous.startMinute);
+      previous.startMinute + plannedSpanOf(payload, previous.attractionSlug, previous.startMinute);
     const transfer = transferBetween(
       rideOf(previous.attractionSlug),
       rideOf(stops[i].attractionSlug)
@@ -504,7 +520,7 @@ function idleOfPlan(payload, stops) {
 
   const clashes = [];
   for (const stop of found.stops) {
-    const span = spanOf(payload, stop.attractionSlug, stop.startMinute);
+    const span = plannedSpanOf(payload, stop.attractionSlug, stop.startMinute);
     for (const block of blocks) {
       if (stop.startMinute < block.to && stop.startMinute + span > block.from) {
         clashes.push(`${stop.attractionSlug} ${stop.startMinute}+${span} über ${block.label}`);
@@ -524,18 +540,41 @@ function idleOfPlan(payload, stops) {
     'der wachsende Block liegt auch wirklich im Nachmittag',
     late !== undefined &&
       late.startMinute >= 13 * 60 &&
-      spanOf(payload, 'afternoon', late.startMinute) === 90,
+      plannedSpanOf(payload, 'afternoon', late.startMinute) === 90,
     late
-      ? `${late.startMinute} + ${spanOf(payload, 'afternoon', late.startMinute)}`
+      ? `${late.startMinute} + ${plannedSpanOf(payload, 'afternoon', late.startMinute)}`
       : 'nicht geplant'
   );
 }
 
-// ── 4b. A block is as tall as the queue PLUS the model's own spread ─────────
+// ── 4b. Der Block ist einen Puffer höher, als der Plan reserviert ───────────
 //
-// `uncertaintyMinutes` was set nowhere in this file, so `occupiedMinutes` was
-// always the bare wait and the whole "wait + band" path was untested — the path
-// the incumbent test measures against, and the one it used to ignore.
+// Zwei Zahlen an einer Bahn, und der Unterschied ist keine Feinheit.
+// `occupiedMinutes` ist die GEZEICHNETE Höhe: Warteschlange plus das eigene Band
+// des Modells. `plannedMinutes` ist das, wogegen der Optimierer taktet, und das
+// ist die Warteschlange allein.
+//
+// Die Richtung war bis PAR-169 andersherum, und sie war falsch:
+// `uncertaintyMinutes` ist eine halbe Bandbreite UM die Vorhersage, kein
+// Zuschlag darauf, also plante die Uhr jeden Stopp gegen das pessimistische Ende
+// jeder Schlange, während `waitByHour` und jede Kostenfunktion daneben den
+// Erwartungswert lasen. An der echten Phantasialand-Nutzlast (2026-09-13, Band
+// 29 Minuten auf Taron, 36–38 auf F.L.Y. und beide Winja's) schob das den Tag
+// von 16:40 auf 18:54 und warf einen von zehn Headlinern hinaus.
+//
+// Und `legBetween` misst die Lücke seit jeher gegen `wait`, nicht gegen
+// `wait + Band` — der Optimierer taktet jetzt also so, wie das einzige Urteil
+// dieser App rechnet, das einen Plan „unmöglich" nennt.
+//
+// Das gilt für die Sprosse `broken` (gegen den Transfer-Floor) und ausdrücklich
+// NICHT für `tight`: die Sprosse liegt bei `slack < uncertaintyMinutes`, und
+// weil die Suche gegen das Transfer-CEILING baut, ist der Slack eines
+// gepackten Tages ~0. Auf einem Tag mit Band liest sich damit fast jeder
+// Leg-Chip als „Umstieg knapp" — auf dem Phantasialand-Tag gemessen
+// (`gap=15 ceil=12 band=29`, `gap=10 ceil=9 band=36`). Vorher war es
+// spiegelbildlich: die Uhr polsterte jede Lücke um das Band, also stand dort
+// immer „gut". Ob die Schwelle mitziehen soll, ist eine Produktfrage und liegt
+// als Beifang daneben; hier wird sie nur nicht behauptet.
 {
   const rides = [
     ride('wide-a', flat(30), { land: 'X', uncertainty: 25, lat: 50.8 }),
@@ -543,32 +582,53 @@ function idleOfPlan(payload, stops) {
   ];
   const payload = day(rides);
   check(
-    'die Unsicherheit macht den Block breiter als die Warteschlange',
+    'die Unsicherheit macht den gezeichneten Block breiter als die Warteschlange',
     spanOf(payload, 'wide-a', 10 * 60) === 55,
     String(spanOf(payload, 'wide-a', 10 * 60))
   );
+  check(
+    'geplant wird trotzdem gegen die Warteschlange allein',
+    plannedMinutes(payload, { id: '', attractionSlug: 'wide-a', startMinute: 10 * 60 }) === 30,
+    String(plannedMinutes(payload, { id: '', attractionSlug: 'wide-a', startMinute: 10 * 60 }))
+  );
 
-  // Two blocks forty minutes apart, each drawn 55 minutes tall: on the axis they
-  // overlap by a quarter of an hour, and nobody stands in two queues at once. It
-  // passed as executable because the gap was measured against the 30-minute
-  // wait, so the bar answered „Passt schon so" in the one case it exists for.
+  // Zwei Blöcke vierzig Minuten auseinander, jeder mit dreißig Minuten
+  // Schlange: die zehn Minuten dazwischen tragen den Transfer, `legBetween`
+  // nennt den Tag begehbar — also hat der Knopf daran nichts zu sortieren. Die
+  // gezeichneten Bänder überlappen sich dabei; ein Band ist ein Intervall, in
+  // dem der wahre Wert liegt, und kein Termin, den jemand einhalten muss.
   const entries = [
     entry('wide-a-1', 'wide-a', 9 * 60 + 15),
     entry('wide-b-1', 'wide-b', 9 * 60 + 55),
   ];
-  const found = optimizeDay({ day: payload, grid: grid(payload), entries });
+  const gapMinutes = 40 - 30;
+  const floor = transferBetween(rides[0], rides[1]).floorMinutes;
   check(
-    'ein Tag, dessen Blöcke einander überlappen, gilt nicht als fertig sortiert',
-    found !== null,
-    'optimizeDay lieferte null'
+    'die Lücke trägt den Transfer-Floor, gemessen wie im Leg-Chip',
+    gapMinutes >= floor,
+    `${gapMinutes} Minuten gegen einen Floor von ${floor}`
+  );
+  check(
+    'und ein so gebauter Tag gilt als fertig sortiert',
+    optimizeDay({ day: payload, grid: grid(payload), entries }) === null,
+    'optimizeDay wollte umstellen'
   );
 
-  const ordered = [...(found?.stops ?? [])].sort((x, y) => x.startMinute - y.startMinute);
-  const gap = ordered.length === 2 ? ordered[1].startMinute - ordered[0].startMinute : 0;
+  // Die Zusicherung, an der beides hängt: Suche und Ist-Plan messen einen Block
+  // gleich. Täte der Ist-Plan es gegen die längere Spanne, läse sich jeder
+  // frisch erzeugte Plan als überlappend und der Knopf stellte den Tag bei jedem
+  // Druck neu um — für immer.
+  const sparse = [entry('wide-a-1', 'wide-a', 9 * 60 + 15), entry('wide-b-1', 'wide-b', 14 * 60)];
+  const first = optimizeDay({ day: payload, grid: grid(payload), entries: sparse });
+  const after = sparse.map((row) => {
+    const stop = first?.stops.find((s) => s.entryId === row.id);
+    return stop ? { ...row, startMinute: stop.startMinute } : row;
+  });
+  check('ein Tag mit Band wird einmal umgestellt', first !== null, 'optimizeDay lieferte null');
   check(
-    'und der neue Plan lässt jedem Block seine volle Höhe',
-    gap >= spanOf(payload, ordered[0]?.attractionSlug ?? 'wide-a', ordered[0]?.startMinute ?? 0),
-    `${gap} Minuten Abstand`
+    'und der erzeugte Plan hält dem eigenen Maßstab stand',
+    optimizeDay({ day: payload, grid: grid(payload), entries: after }) === null,
+    'zweiter Druck stellte denselben Tag erneut um'
   );
 }
 
@@ -1013,8 +1073,9 @@ function idleOfPlan(payload, stops) {
   const afterQueue = inQueue?.stops.find((s) => s.entryId === 'c-1');
   check(
     'und die nächste Bahn wartet, bis diese Schlange durch ist',
-    afterQueue !== undefined && afterQueue.startMinute >= 13 * 60 + spanOf(payload, 'b', 13 * 60),
-    `${afterQueue?.startMinute} gegen ${13 * 60 + spanOf(payload, 'b', 13 * 60)}`
+    afterQueue !== undefined &&
+      afterQueue.startMinute >= 13 * 60 + plannedSpanOf(payload, 'b', 13 * 60),
+    `${afterQueue?.startMinute} gegen ${13 * 60 + plannedSpanOf(payload, 'b', 13 * 60)}`
   );
 
   // The boundary, and it is strict. A block starting exactly now is somebody
@@ -1643,7 +1704,9 @@ function benchInput(n) {
     'und der Feierabend ist der der geplanten Bahnen',
     found.endMinute ===
       Math.max(
-        ...found.stops.map((s) => s.startMinute + spanOf(payload, s.attractionSlug, s.startMinute))
+        ...found.stops.map(
+          (s) => s.startMinute + plannedSpanOf(payload, s.attractionSlug, s.startMinute)
+        )
       ),
     `Feierabend ${found.endMinute}`
   );
