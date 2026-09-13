@@ -1353,8 +1353,12 @@ if (await phoneLauncher.count()) {
     const lastInHeader = await phone.evaluate((sel) => {
       const header = document.querySelector(`${sel} [data-slot="sheet-header"]`);
       if (!header) return null;
+      // `!disabled` as well as visible: a disabled control cannot receive the
+      // press this assertion is about, so a trial click on one times out and
+      // reports the overlap defect over a button that is merely off today —
+      // the day picker's `›` is exactly that at the best-days horizon (G-56).
       const controls = [...header.querySelectorAll('button')].filter(
-        (el) => el.getBoundingClientRect().width > 0
+        (el) => el.getBoundingClientRect().width > 0 && !el.disabled
       );
       if (controls.length === 0) return null;
       const last = controls.reduce((a, b) =>
@@ -1417,9 +1421,15 @@ if (await phoneLauncher.count()) {
     // sweep above passes over the park list and the month calendar without
     // seeing either. LAST in this pass and closed again with Escape, so a
     // popper left standing cannot intercept anything measured before it.
-    for (const [label, opener] of [
-      ['die Parkliste ist antippbar', '[data-planner-column-park]'],
-      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]'],
+    //
+    // The third entry is what counts as a ROW of each list, and it is named
+    // rather than derived: „the first enabled button in the popover" picked
+    // the park list's „Anderen Park planen" footer (outside the `<ul>`) and
+    // the calendar's „Vorheriger Monat" chevron — the run said so itself,
+    // „Vorheriger Monat" von 37. Neither is a row of the thing being tested.
+    for (const [label, opener, row] of [
+      ['die Parkliste ist antippbar', '[data-planner-column-park]', 'li button'],
+      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]', '[data-planner-day]'],
     ]) {
       const trigger = phone.locator(`${SHEET} ${opener}`).first();
       // A missing trigger FAILS rather than skipping the pair of assertions
@@ -1463,25 +1473,26 @@ if (await phoneLauncher.count()) {
       // selector just as well, and this assertion must not depend on the
       // Escape below having worked.
       //
-      // And it presses the first ENABLED button in it. Both halves are a
-      // correction of the first attempt, which took the last match: in the park
-      // list that is „Anderen Park planen", the footer outside the `<ul>`, so
-      // it never pressed a park at all; in the month calendar it is the last
-      // matrix cell, which is `disabled` whenever it falls past the best-days
-      // horizon — a check that goes red on a date rather than on a defect
-      // (G-56). Measured here: park list 3 buttons, 3 enabled; calendar 37
-      // buttons, 24 enabled, i.e. 13 that a trial click would have hung on.
+      // And it presses the first ENABLED ROW, `row` above — a park in the
+      // `<ul>`, a cell of the date grid. Two corrections live in that
+      // sentence. Taking the LAST match hit „Anderen Park planen" and the
+      // last matrix cell, which is `disabled` past the best-days horizon: red
+      // on a date rather than on a defect (G-56). Taking the first enabled
+      // BUTTON then hit the calendar's „Vorheriger Monat" chevron, which is in
+      // the popover but is not a row of the list under test. Measured: park
+      // list 3 buttons of which 1 is the footer; calendar 37 buttons, 24
+      // enabled, 13 that a trial click would have hung on.
       //
       // No `if (count())` around the `check`, which is the pattern this whole
       // block is a correction of: an empty popover fails the assertion rather
       // than removing it.
       const pressable = await phone.evaluate(
-        ([sel, opener]) => {
+        ([sel, opener, rowSelector]) => {
           const trigger = document.querySelector(`${sel} ${opener}`);
           const panel = trigger?.getAttribute('aria-controls');
           const content = panel ? document.getElementById(panel) : null;
           if (!content) return null;
-          const buttons = [...content.querySelectorAll('button')];
+          const buttons = [...content.querySelectorAll(rowSelector)];
           const target = buttons.find((el) => !el.disabled);
           if (!target) return { total: buttons.length, name: null };
           target.setAttribute('data-check-popover-row', '');
@@ -1493,7 +1504,7 @@ if (await phoneLauncher.count()) {
               '(ohne Text)',
           };
         },
-        [SHEET, opener]
+        [SHEET, opener, row]
       );
       const reaches = pressable?.name
         ? await phone
