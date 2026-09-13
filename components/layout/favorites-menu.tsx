@@ -4,6 +4,7 @@ import { useId } from 'react';
 import { ChevronDown, Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { MenuBand } from '@/components/layout/menu-band';
+import { headerNavInk } from '@/components/layout/nav-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
@@ -31,12 +32,15 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * is readable only after mount, and an entry that materialises after hydration shifts every
  * sibling in the row. It is also the only advertisement the feature gets — the empty panel says
  * what the star does.
+ *
+ * @param floating True while the bar floats over a hero photo — the ink, and nothing else. See
+ *   `NavMenu` for the prop it replaced and the header for the contrast arithmetic behind it.
  */
-export function FavoritesMenu({ disabled }: { disabled?: boolean }) {
+export function FavoritesMenu({ floating }: { floating?: boolean }) {
   const t = useTranslations('favorites');
   const panelId = useId();
   const counts = useFavoriteCounts();
-  const { open, triggerProps, toggle } = useMenuTrigger({ disabled });
+  const { open, triggerProps, toggle } = useMenuTrigger();
 
   return (
     <div {...triggerProps}>
@@ -45,13 +49,11 @@ export function FavoritesMenu({ disabled }: { disabled?: boolean }) {
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={t('title')}
-        tabIndex={disabled ? -1 : 0}
         onClick={toggle}
-        data-header-stagger
         /* `gap-2.5` und nicht `gap-1`: die Zählblase ragt rechts aus dem Stern heraus und lag mit
            dem alten Abstand auf dem Chevron. Der Abstand ist konstant, ob null oder acht
            Favoriten — die Blase ist absolut positioniert und misst nichts aus. */
-        className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-2.5 text-sm font-medium transition-colors"
+        className={`flex cursor-pointer items-center gap-2.5 text-sm font-medium transition-colors duration-200 ${headerNavInk(floating)}`}
       >
         {/* Der Zähler sitzt AUF dem Stern, nicht daneben. Als Geschwister war er eine zweite
             Marke in der Zeile — und er hätte den Eintrag breiter gemacht, sobald jemand etwas
@@ -73,7 +75,10 @@ export function FavoritesMenu({ disabled }: { disabled?: boolean }) {
                die Stelle, an der beide zusammen wie ein einziger unlesbarer Fleck aussehen.
                `ring-background` ist die Farbe des Balkens darunter (`bg-background/80`), also
                schneidet der Ring die Blase aus dem Stern heraus statt eine zweite Marke
-               danebenzusetzen.
+               danebenzusetzen. Auf einer Hero-Seite, wo dieser Eintrag seit PAR-170 auch oben
+               sichtbar ist, liegt darunter kein Material, sondern der Scrim — `background/85`,
+               also derselbe Ton fünf Prozentpunkte schwächer. Der Ring ist dort einen Hauch
+               heller als sein Untergrund und bleibt damit das, was er sein soll.
 
                Sie sitzt in der oberen rechten ECKE, nicht mittig auf dem Stern, und ist so klein
                wie zwei Ziffern erlauben: mittig und einen Tick größer deckte sie bei 13
