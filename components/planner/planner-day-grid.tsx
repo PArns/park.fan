@@ -36,6 +36,9 @@ import { PlannerWeatherRail } from './planner-weather-rail';
 import { PlannerBlock } from './planner-block';
 import { PlannerLeg } from './planner-leg';
 import { showLinePositions } from '@/lib/planner/day-grid';
+import { BAND_FADE, bandGeometry } from '@/lib/planner/block-band';
+import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
+import { cn } from '@/lib/utils';
 import type { PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 
@@ -69,6 +72,13 @@ interface PlannerDayGridProps {
   /** The scroll container, for the drag's auto-scroll. */
   scrollerRef: React.RefObject<HTMLDivElement | null>;
 }
+
+/**
+ * A lane's width, as the block itself computes it — same 2 px gutter, so a band
+ * and the block it belongs to cannot drift apart at any lane count.
+ */
+const laneWidth = (lane: { columns: number }) =>
+  `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
 
 /** How far from a live reading's own moment it may still speak for a block. */
 const LIVE_WINDOW_MIN = 45;
@@ -960,6 +970,58 @@ export function PlannerDayGrid({
           </div>
         ) : (
           <ol className="absolute inset-0">
+            {/* The uncertainty bands, all of them, UNDER everything else.
+
+                Depth here is an argument about what a reader owes what. A block
+                is a fact about the day and a leg chip is a fact about the gap;
+                a band is a maybe, so it goes behind both and never makes either
+                harder to read. It cannot live inside its block and be that: the
+                block carries a `z-index` for its lane and is therefore a
+                stacking context, so the band was pinned above the leg at
+                `zIndex: 5` — measured with `elementFromPoint` at the centre of
+                every chip on a planned Phantasialand day, nine of nine were
+                painted by somebody's band.
+
+                It is a TAIL, from the end of the queue to the end of the
+                spread, rather than a slab behind the whole block. Drawn from
+                the top it painted the queue's own pixels a second time under
+                the fill, and since a headliner's band is as long again as its
+                queue (29 minutes on Taron, 36–38 on F.L.Y. and the two Winja's)
+                a planned day came out as one unbroken orange column with the
+                blocks somewhere inside it.
+
+                And it fades to nothing over its own length, because a spread's
+                last minute is its least likely one and a slab that stops dead
+                claims its hardest edge exactly where it is least sure. */}
+            {layout.rows.map((row) => {
+              const band = bandGeometry(grid, row.entry, row.estimate, { live: row.live });
+              if (!band) return null;
+              const tone =
+                row.estimate.missing === 'assumed' || row.wait === null
+                  ? null
+                  : waitTimeCrowdTier(row.wait);
+              if (!tone) return null;
+              const lane = layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 };
+              return (
+                <div
+                  key={`band-${row.entry.id}`}
+                  className={cn(
+                    'pointer-events-none absolute rounded-b-md opacity-25',
+                    CROWD_DOT_CLASS[tone]
+                  )}
+                  style={{
+                    top: band.top,
+                    height: band.height,
+                    left: `calc((${laneWidth(lane)} + 2px) * ${lane.column})`,
+                    width: laneWidth(lane),
+                    zIndex: 4,
+                    maskImage: BAND_FADE,
+                    WebkitMaskImage: BAND_FADE,
+                  }}
+                  aria-hidden="true"
+                />
+              );
+            })}
             {layout.legs.map((entry) => (
               <PlannerLeg
                 key={entry.id}
