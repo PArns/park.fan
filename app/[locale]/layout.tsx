@@ -352,7 +352,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   What it does change is that the container's width has to be
                   resolvable without looking at the contents — which it is: the
                   div is block-level in `<body>` and fills it. */}
-              <div className="@container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out sm:pr-[var(--planner-inset,0px)]">
+              {/* `planner-wide:` and not `sm:`, because this inset is the other
+                  half of WHERE the panel sits, and the panel stopped deciding
+                  that by width alone (PAR-76). On a landscape phone the sheet
+                  comes up from the bottom while `sm:` still held 448 px of page
+                  reserved on the right — a gutter beside a panel that is not
+                  there. It has to ask the same question the panel asks, in the
+                  same two terms; `app/globals.css` keeps the pair. */}
+              <div className="planner-wide:pr-[var(--planner-inset,0px)] @container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out">
                 {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}

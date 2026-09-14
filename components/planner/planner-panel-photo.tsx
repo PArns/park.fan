@@ -48,7 +48,7 @@
  * background, which is a browser-dependent way of shipping no photo at all.
  *
  * `rounded-[inherit]` rather than a copy of the sheet's own radius: the phone's
- * bottom sheet is `max-sm:rounded-t-xl` and `SheetContent` clips nothing, so a
+ * bottom sheet is `planner-phone:rounded-t-xl` and `SheetContent` clips nothing, so a
  * square inset-0 layer cut the two top corners back off. Inherited, so the day
  * somebody changes that radius there is nothing here to change with it.
  *

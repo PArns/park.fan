@@ -93,7 +93,11 @@ export function ParkBackground({
             // `0px` while the planner is shut, i.e. unchanged for everybody who
             // never opens it. No transition on it deliberately: animating the
             // width would re-rasterize a 1440×739 blurred photo for 300 ms.
-            'fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] sm:right-[var(--planner-inset,0px)]'
+            // `planner-wide:` rather than `sm:`, for the reason the page
+            // wrapper gives: the panel is a bottom sheet on a landscape phone
+            // and there is no right-hand gutter to follow there (PAR-76). Same
+            // question, same two terms, same pair in `app/globals.css`.
+            'planner-wide:right-[var(--planner-inset,0px)] fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px]'
       )}
     >
       <div className="relative h-full w-full">

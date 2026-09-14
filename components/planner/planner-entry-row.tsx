@@ -135,7 +135,7 @@ export function PlannerEntryRow({
           aria-pressed={done}
           aria-label={done ? t('entry.markUndone') : t('entry.markDone')}
           className={cn(
-            'flex size-8 items-center justify-center rounded-md transition-colors max-sm:size-11',
+            'planner-phone:size-11 flex size-8 items-center justify-center rounded-md transition-colors',
             done
               ? 'bg-crowd-low/25 text-crowd-low'
               : 'text-muted-foreground/60 hover:bg-accent hover:text-foreground'
@@ -147,7 +147,7 @@ export function PlannerEntryRow({
           type="button"
           onClick={onRemove}
           aria-label={t('removeRide')}
-          className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive flex size-8 items-center justify-center rounded-md transition-colors max-sm:size-11"
+          className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive planner-phone:size-11 flex size-8 items-center justify-center rounded-md transition-colors"
         >
           <X className="size-4" />
         </button>

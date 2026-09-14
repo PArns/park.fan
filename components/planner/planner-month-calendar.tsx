@@ -105,7 +105,7 @@ export function PlannerMonthCalendar({
             roomy ? 'size-8' : 'size-7',
             // The phone floor, on both sizes: the compact arrows measured 32 px
             // in the day picker's popover and the roomy ones 32 in the wizard.
-            'max-sm:size-11',
+            'planner-phone:size-11',
             !canStepBack && 'pointer-events-none opacity-30'
           )}
         >
@@ -129,7 +129,7 @@ export function PlannerMonthCalendar({
             roomy ? 'size-8' : 'size-7',
             // The phone floor, on both sizes: the compact arrows measured 32 px
             // in the day picker's popover and the roomy ones 32 in the wizard.
-            'max-sm:size-11',
+            'planner-phone:size-11',
             !canStepOn && 'pointer-events-none opacity-30'
           )}
         >
@@ -182,7 +182,7 @@ export function PlannerMonthCalendar({
                 // A day cell is 43x40 in the wizard and 32x32 in the picker;
                 // the height is the half that can be fixed without touching
                 // the derived 254 px width, which is seven columns wide.
-                'max-sm:h-11',
+                'planner-phone:h-11',
                 !cell.inMonth && 'opacity-40',
                 disabled && 'text-muted-foreground/50 pointer-events-none',
                 closed && 'line-through',

@@ -153,7 +153,7 @@ export function PlannerGridActions({
             onClick={() => onNudge(entry.id, -NUDGE_MIN)}
             aria-label={t('entry.earlier', { minutes: NUDGE_MIN })}
             title={t('entry.earlier', { minutes: NUDGE_MIN })}
-            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-9 items-center justify-center rounded-md transition-colors max-sm:size-11"
+            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-9 items-center justify-center rounded-md transition-colors"
           >
             <ChevronUp className="size-4" />
           </button>
@@ -162,7 +162,7 @@ export function PlannerGridActions({
             onClick={() => onNudge(entry.id, NUDGE_MIN)}
             aria-label={t('entry.later', { minutes: NUDGE_MIN })}
             title={t('entry.later', { minutes: NUDGE_MIN })}
-            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-9 items-center justify-center rounded-md transition-colors max-sm:size-11"
+            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-9 items-center justify-center rounded-md transition-colors"
           >
             <ChevronDown className="size-4" />
           </button>
@@ -186,7 +186,7 @@ export function PlannerGridActions({
                   aria-label={t(`custom.icon.${key}`)}
                   aria-pressed={active}
                   className={cn(
-                    'flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11',
+                    'planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors',
                     active
                       ? 'bg-accent text-foreground'
                       : 'text-muted-foreground/50 hover:bg-accent/60 hover:text-foreground'
@@ -204,7 +204,7 @@ export function PlannerGridActions({
                 onEditCustom(entry.id, { durationMinutes: custom.durationMinutes - 15 })
               }
               aria-label={t('custom.shorter')}
-              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11"
+              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors"
             >
               <Minus className="size-3.5" />
             </button>
@@ -214,7 +214,7 @@ export function PlannerGridActions({
                 onEditCustom(entry.id, { durationMinutes: custom.durationMinutes + 15 })
               }
               aria-label={t('custom.longer')}
-              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11"
+              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors"
             >
               <Plus className="size-3.5" />
             </button>
@@ -229,7 +229,7 @@ export function PlannerGridActions({
           aria-pressed={done}
           aria-label={done ? t('entry.markUndone') : t('entry.markDone')}
           className={cn(
-            'flex size-9 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11',
+            'planner-phone:size-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
             done
               ? 'bg-crowd-low/25 text-crowd-low'
               : 'text-muted-foreground/60 hover:bg-accent hover:text-foreground'
@@ -242,11 +242,11 @@ export function PlannerGridActions({
         type="button"
         onClick={() => onRemove(entry.id)}
         aria-label={t('removeRide')}
-        className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive flex size-9 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
+        className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive planner-phone:size-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors"
       >
         <X className="size-4" />
       </button>
-      {/* `max-sm:size-11` wie bei den vier Knöpfen darüber, und aus demselben Grund: dies ist
+      {/* `planner-phone:size-11` wie bei den vier Knöpfen darüber, und aus demselben Grund: dies ist
           ein Ziel für einen Finger, und ohne die Klasse maß es 14×16 px in einer Zeile, deren
           andere Knöpfe 44×44 haben. Auf dem Desktop bleibt es bei der Textbreite — die
           Nachbarn sind dort `size-9`, dieser Knopf war dort immer kleiner und soll es bleiben.
@@ -258,7 +258,7 @@ export function PlannerGridActions({
         type="button"
         onClick={onClose}
         aria-label={t('close')}
-        className="text-muted-foreground/40 hover:text-foreground flex shrink-0 items-center justify-center px-1 text-xs max-sm:size-11"
+        className="text-muted-foreground/40 hover:text-foreground planner-phone:size-11 flex shrink-0 items-center justify-center px-1 text-xs"
       >
         ×
       </button>

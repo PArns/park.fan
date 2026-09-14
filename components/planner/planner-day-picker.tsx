@@ -70,7 +70,7 @@ export function PlannerDayPicker({
           // them. Stepping a day is the most-pressed control in the panel and
           // it was a 28 px square; the row it sits in is 44 px tall now, so
           // this costs the axis nothing beyond what the row already spent.
-          'hover:bg-accent flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11',
+          'hover:bg-accent planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors',
           atStart && 'pointer-events-none opacity-30'
         )}
       >
@@ -83,7 +83,7 @@ export function PlannerDayPicker({
             type="button"
             data-planner-day-trigger=""
             aria-label={t('day.pick')}
-            className="bg-accent/40 hover:bg-accent flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors max-sm:h-11"
+            className="bg-accent/40 hover:bg-accent planner-phone:h-11 flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
           >
             <CalendarDays className="size-3.5 shrink-0" aria-hidden="true" />
             {dayLabel(value, today, locale, t)}
@@ -131,7 +131,7 @@ export function PlannerDayPicker({
         disabled={atEnd}
         aria-label={t('calendar.nextDay')}
         className={cn(
-          'hover:bg-accent flex size-7 items-center justify-center rounded-md transition-colors max-sm:size-11',
+          'hover:bg-accent planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors',
           atEnd && 'pointer-events-none opacity-30'
         )}
       >

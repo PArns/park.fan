@@ -361,7 +361,7 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
-              'max-sm:min-h-11 max-sm:px-2.5'
+              'planner-phone:min-h-11 planner-phone:px-2.5'
             )}
           >
             <Crown className="size-3.5 shrink-0" aria-hidden="true" />
@@ -376,7 +376,7 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
-              'max-sm:min-h-11 max-sm:px-2.5'
+              'planner-phone:min-h-11 planner-phone:px-2.5'
             )}
           >
             <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />

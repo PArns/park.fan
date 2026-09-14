@@ -87,7 +87,7 @@ export function PlannerOverview({
         type="button"
         onClick={onNewDay}
         data-planner-new-day=""
-        className="bg-primary/10 text-primary hover:bg-primary/15 flex w-full items-center justify-center gap-1.5 rounded-md px-2 py-2 text-xs font-medium transition-colors max-sm:min-h-11"
+        className="bg-primary/10 text-primary hover:bg-primary/15 planner-phone:min-h-11 flex w-full items-center justify-center gap-1.5 rounded-md px-2 py-2 text-xs font-medium transition-colors"
       >
         <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
         {t('wizard.open')}
@@ -143,7 +143,7 @@ export function PlannerOverview({
                       onClick={() => onPick(park.slug, day.date)}
                       aria-current={isActive ? 'true' : undefined}
                       className={cn(
-                        'hover:bg-accent flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-2 text-left transition-colors max-sm:py-2.5',
+                        'hover:bg-accent planner-phone:py-2.5 flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-2 text-left transition-colors',
                         isActive && 'bg-accent/70',
                         past && !isActive && 'opacity-60'
                       )}
@@ -172,7 +172,7 @@ export function PlannerOverview({
                       type="button"
                       onClick={() => setPendingClear({ parkSlug: park.slug, date: day.date })}
                       aria-label={t('clearDay')}
-                      className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive flex size-8 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
+                      className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive planner-phone:size-11 flex size-8 shrink-0 items-center justify-center rounded-md transition-colors"
                     >
                       <Trash2 className="size-3.5" />
                     </button>

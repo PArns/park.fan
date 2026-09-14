@@ -156,7 +156,11 @@ export function PlannerRideSearch({
   }, [byName, query]);
 
   return (
-    <div className="border-border/60 border-t px-2 pt-2 pb-2">
+    /* Named like every other row of the panel, because `check:planner` has to
+       be able to ask whether this surface is on screen: it is one half of two
+       pairs — the empty day's sentence and the free-block row both mean
+       something different depending on whether this list is drawn (PAR-76). */
+    <div data-planner-ride-search="" className="border-border/60 border-t px-2 pt-2 pb-2">
       <div className="relative">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input
@@ -164,23 +168,29 @@ export function PlannerRideSearch({
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t('search.placeholder')}
-          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none max-sm:h-11"
+          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 planner-phone:h-11 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none"
         />
       </div>
 
       {/* What a TAP does, because this component is mounted on phones alone
-          (`sm:hidden` at its only call site) and the sentence here used to be
+          (`planner-wide:hidden` at its only call site) and the sentence here used to be
           "oder zieh eine Bahn von der Parkseite auf die Zeitachse" — an HTML5
           drag, named on the one pointer that has no such gesture. The row's own
           click is what this describes, and `startFor` is where the minute comes
           from. */}
       <p className="text-muted-foreground mt-2 px-1 text-[11px]">{t('search.tapHint')}</p>
 
+      {/* The phone's copy of the free-block offer, under its own name so the
+          two can be counted together without disturbing what counts the foot's:
+          they are a pair — this one is drawn where the search is, that one
+          where it is not — and the way that pair breaks is both appearing at
+          once. Before PAR-76 that is exactly what happened at 844x390. */}
       {onAddCustom && (
         <button
           type="button"
           onClick={onAddCustom}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
+          data-planner-add-custom-search=""
+          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 planner-phone:min-h-11 mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors"
         >
           <CalendarPlus className="size-3.5 shrink-0" />
           <span className="truncate">{t('custom.add')}</span>
@@ -251,7 +261,7 @@ export function PlannerRideSearch({
                     }
                   )
                 }
-                className="hover:bg-accent flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing max-sm:py-2.5"
+                className="hover:bg-accent planner-phone:py-2.5 flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing"
               >
                 {/* The ride's photo. It is ALREADY in the payload — the proxy
                     route runs `enrichAttractionsWithImages` over `/plan/day`'s
