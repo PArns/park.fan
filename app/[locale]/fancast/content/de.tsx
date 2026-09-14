@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from '@/i18n/navigation';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
