@@ -14,6 +14,16 @@ const getApiBaseUrl = () => {
 };
 
 /**
+ * Which days of a calendar range carry an hourly crowd curve (`CalendarDay.hourly`).
+ *
+ * Measured on 2026-09-14 against three parks: `all` and `today+tomorrow` return byte-identical
+ * responses, because the backend only ever has a curve for those two days — a range reaching
+ * further out gets no `hourly` on any later day whichever of the two is asked for. So `all` is a
+ * promise the endpoint does not keep, and a caller that wants the curve asks for `today+tomorrow`.
+ */
+export type CalendarHourlyMode = 'today+tomorrow' | 'today' | 'all' | 'none';
+
+/**
  * Fetch integrated calendar data for a park
  *
  * This replaces the old approach of fetching schedule, weather, holidays, etc. separately.
@@ -35,7 +45,7 @@ export async function getIntegratedCalendar(
   options: {
     from?: string;
     to?: string;
-    includeHourly?: 'today+tomorrow' | 'today' | 'all' | 'none';
+    includeHourly?: CalendarHourlyMode;
   } = {}
 ): Promise<IntegratedCalendarResponse> {
   const API_BASE_URL = getApiBaseUrl();

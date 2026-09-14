@@ -3,7 +3,8 @@
 import { createElement, useState } from 'react';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
-import { format, parseISO } from 'date-fns';
+import { addDays, format, parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import {
   Ban,
@@ -44,7 +45,10 @@ import {
   getEventIcon,
   getWeatherIconFromCode,
   getWeatherTranslationKey,
+  upcomingHourlyPredictions,
 } from '@/lib/utils/calendar-utils';
+import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
 const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
@@ -133,6 +137,34 @@ export function ParkCalendarDayDetail({
   // Target day is in flight: previous content stays visible but dimmed.
   const navigating = open && !dayProp && !!day;
 
+  // The hour-by-hour curve is the one field the month payload does NOT carry: it is scoped to the
+  // hour it was fetched in, and that payload is shared-cached for a day. So it is fetched here, for
+  // the one day the reader opened — and only where a curve can exist at all, which is today and
+  // tomorrow in the park's timezone.
+  //
+  // Tomorrow is derived rather than read off `day.isTomorrow`. That field is declared on
+  // `CalendarDay` and the API never sends it: measured against the live month payload, every day
+  // of September including the 15th came back without the key, so a gate on it would have been
+  // false for tomorrow for ever, with a curve sitting on the endpoint and nothing drawing it.
+  // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
+  // needs no timezone of its own.
+  // Only while the dialog is open. This component stays mounted behind every park and calendar
+  // page (it renders `null` when closed), so an unconditional interval would put a minute timer
+  // and a re-render on those pages for the life of the tab, for a chart almost nobody opens.
+  // `null` still gives one clock reading, which is all a closed dialog could want.
+  const browserNow = useBrowserNow(open ? 60_000 : null);
+  const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
+  const canHaveHourly =
+    !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
+  const hourlyQuery = useCalendarDayHourly({
+    continent: planner?.geo.continent ?? '',
+    country: planner?.geo.country ?? '',
+    city: planner?.geo.city ?? '',
+    parkSlug: planner?.parkSlug ?? '',
+    date: day?.date ?? null,
+    enabled: !!planner && open && canHaveHourly,
+  });
+
   if (!day) return null;
 
   const dayDate = parseISO(day.date);
@@ -169,7 +201,26 @@ export function ParkCalendarDayDetail({
   const forecast = day.headlinerForecast;
   const hasForecast = !!forecast && forecast.rides.length > 0;
 
-  const hourly = (day.hourly ?? []).filter((h) => h.predictedWaitTime > 0);
+  // `day.hourly` stays first: a caller that already holds a curve (a payload fetched with
+  // `includeHourly`) keeps rendering it, and the fetch above is the fallback that fills the gap
+  // the calendar grid's `includeHourly=none` leaves.
+  //
+  // `upcomingHourlyPredictions` does two things the raw array cannot: it carries the UTC `hour`
+  // over into an instant, so the axis can be labelled in park time, and it drops the bars whose
+  // hour is already over. The second is not cosmetic — the curve is a countdown of the remaining
+  // open hours and the backend serves it out of a cache that expires at park-local midnight, so a
+  // copy taken in the morning would draw this morning all evening.
+  const hourlySource = day.hourly ?? hourlyQuery.data ?? [];
+  const hourly = upcomingHourlyPredictions(
+    day.date,
+    hourlySource.filter((h) => h.predictedWaitTime > 0),
+    // `browserNow` rather than `Date.now()`: a clock read during render is impure, and the minute
+    // tick is what retires a bar while the dialog is open instead of only at the next re-render.
+    // The fallback still cuts — it reads the same wall clock — it just does not schedule anything,
+    // which is what the very first render needs before the hook's effect has run.
+    (browserNow ?? new Date()).getTime(),
+    parkTimezone
+  );
   const maxHourlyWait = hourly.reduce((m, h) => Math.max(m, h.predictedWaitTime), 0);
 
   // Neighbour holidays grouped BY COUNTRY (API already priority-sorted), each
@@ -519,18 +570,17 @@ export function ParkCalendarDayDetail({
               <div className="flex items-end gap-1" style={{ height: 72 }}>
                 {hourly.map((h) => {
                   const pct = maxHourlyWait > 0 ? (h.predictedWaitTime / maxHourlyWait) * 100 : 0;
+                  const label = formatInTimeZone(h.instant, parkTimezone, 'HH');
                   return (
                     <div key={h.hour} className="flex flex-1 flex-col items-center gap-1">
                       <div className="flex h-12 w-full items-end justify-center">
                         <div
                           className={`w-full rounded-t ${CROWD_BAR_COLOR[h.crowdLevel] ?? 'bg-slate-400'}`}
                           style={{ height: `${Math.max(pct, 6)}%` }}
-                          title={`${h.hour}:00 · ~${h.predictedWaitTime} min`}
+                          title={`${label}:00 · ~${roundWaitTo5(h.predictedWaitTime)} ${tCommon('min')}`}
                         />
                       </div>
-                      <span className="text-muted-foreground text-[9px] tabular-nums">
-                        {h.hour}
-                      </span>
+                      <span className="text-muted-foreground text-[9px] tabular-nums">{label}</span>
                     </div>
                   );
                 })}

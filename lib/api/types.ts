@@ -1845,7 +1845,27 @@ export interface CalendarEventItem {
   isNationwide?: boolean;
 }
 
+/**
+ * One bar of a day's hour-by-hour crowd curve.
+ *
+ * Only today and tomorrow carry these, whatever `includeHourly` asks for — measured 2026-09-14
+ * across three parks, where a range reaching four days out answered `all` and `today+tomorrow`
+ * byte-identically and left every later day without the field.
+ */
 export interface HourlyPrediction {
+  /**
+   * Hour of day, **UTC**, 0–23 — not the park's local hour and not the reader's.
+   *
+   * Measured at 11:42 UTC on 2026-09-14 against three parks at three offsets: Phantasialand
+   * (Europe/Berlin, opens 07:00Z), Alton Towers (Europe/London, 09:00Z) and Toverland
+   * (Europe/Amsterdam, 08:00Z) all answered `11 12 13 14 15` for today — the current UTC hour, not
+   * the local one (13, 12 and 13) — and `7…`, `9…`, `8…` for tomorrow, each matching that park's
+   * UTC opening hour rather than its local one (9, 10, 10).
+   *
+   * So a surface that prints this number as a clock time renders UTC on a park-local calendar.
+   * Convert first: `hourlyPredictionInstants` in `lib/utils/calendar-utils.ts` turns the series
+   * into instants, which `formatInTimeZone` then renders in park time.
+   */
   hour: number;
   crowdLevel: CrowdLevel;
   predictedWaitTime: number;
@@ -1868,6 +1888,9 @@ export interface CalendarDay {
   date: string;
   status: ParkStatus;
   isToday: boolean;
+  /** Declared by the API and, measured against the live month payload on 2026-09-14, **never
+   *  sent** — every day of the range came back without the key, tomorrow's included. Derive the
+   *  day after `isToday` from the park's timezone instead of gating anything on this. */
   isTomorrow?: boolean;
   isEstimated?: boolean;
   hours?: OperatingHours;

@@ -15,6 +15,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { isServableHourlyDate } from '@/lib/utils/calendar-utils';
 import {
   applyNowcastSimulation,
   applyParkSimulation,
@@ -53,6 +54,34 @@ const STATS_AGGREGATE_CACHE = 'public, max-age=86400, s-maxage=86400, stale-whil
  * CROSSING the threshold.
  */
 const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=21600';
+
+/**
+ * The window for `…/calendar/hourly`, the day-detail dialog's bar chart.
+ *
+ * Five minutes against the calendar's 86400, and the difference is what the curve IS. Measured at
+ * 11:42 UTC on 2026-09-14 against three parks in three timezones, today's series starts at the
+ * CURRENT UTC hour — Phantasialand, Alton Towers and Toverland all answered 11 12 13 14 15 — and
+ * tomorrow's at the UTC hour the park opens. It moves at the top of every hour, while everything
+ * else the calendar answers is a statement about a whole day.
+ *
+ * `max-age` is left out on purpose: the browser holds the curve for
+ * `CALENDAR_HOURLY_STALE_TIME_MS` in React Query, which is where that decision belongs, and a
+ * second HTTP window under it would only make the two disagree.
+ *
+ * **This window is not what a reader's freshness depends on**, and saying so was the first version
+ * of this comment. The binding constraint is upstream: api.park.fan answers this URL with
+ * `max-age=36251, s-maxage=36251` — an expiry at park-local midnight — and Cloudflare serves it
+ * from cache, measured 2026-09-14 12:56 UTC as a `HIT` (`age: 3651`) whose series started at 11
+ * while a cache-busted fetch of the same URL started at 12. So the first reader of the day fixes
+ * the curve for the rest of it, and nothing in this repo can shorten that. What this window still
+ * buys is that OUR layer never adds to it. The bars that have since expired are dropped at render
+ * (`upcomingHourlyPredictions`), so a kept copy draws fewer bars rather than wrong ones; shortening
+ * the backend's own window is PAR-217.
+ *
+ * Repeated verbatim in next.config.ts, like every other cacheable /api route — see the long note
+ * in that headers block: which of the two wins depends on where it runs, so they may never differ.
+ */
+const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=300';
 
 export async function GET(
   request: NextRequest,
@@ -148,7 +177,9 @@ export async function GET(
       const data = await getIntegratedCalendar(continent, country, city, park, {
         from,
         to,
-        includeHourly: 'none', // No hourly data needed for calendar view
+        // No hourly data in the calendar view. It is scoped to the hour it was fetched in, and
+        // this response is cached for a day — `…/calendar/hourly` below serves it instead.
+        includeHourly: 'none',
       });
 
       // A day, because a calendar month is a set of statements about days and none of them
@@ -170,6 +201,53 @@ export async function GET(
     } catch (error) {
       console.error('[Calendar API] Error:', error);
       return NextResponse.json({ error: 'Failed to fetch calendar data' }, { status: 500 });
+    }
+  }
+
+  // Handle one day's hourly crowd curve: [continent, country, city, park, 'calendar', 'hourly']
+  // with `?date=YYYY-MM-DD` (6 segments). The day-detail dialog's bar chart, and nothing else.
+  //
+  // A path of its own rather than an `includeHourly` parameter on the branch above, and the reason
+  // is written down in next.config.ts: a `headers()` rule overrides a route handler's own
+  // Cache-Control under `next start` while the handler wins on Vercel, so the two halves have to
+  // name the same value — and a `headers()` rule matches a PATH, never a query string. A window
+  // that varied by parameter would therefore be 300 s on Vercel and 86400 under `next start` for
+  // the same URL. It is also the shape every other windowed payload in this file already has
+  // (`/wait-times`, `/best-days`, `/stats/day`, `/plan/day`).
+  if (path && path.length === 6 && path[4] === 'calendar' && path[5] === 'hourly') {
+    const [continent, country, city, park] = path;
+    const date = new URL(request.url).searchParams.get('date');
+
+    // Bounded to a real calendar day inside today ± a day, because the value lands in the CDN
+    // cache key — see `isServableHourlyDate`, which is pinned by `pnpm test:calendar`.
+    if (!date || !isServableHourlyDate(date, Date.now())) {
+      return NextResponse.json(
+        { error: 'Missing or out-of-range query parameter: date (YYYY-MM-DD, today ± a day)' },
+        { status: 400 }
+      );
+    }
+
+    try {
+      // `today+tomorrow` rather than `all`: measured on 2026-09-14 the two return byte-identical
+      // responses because the backend has no curve beyond tomorrow, and the narrower word is the
+      // one that says so.
+      const data = await getIntegratedCalendar(continent, country, city, park, {
+        from: date,
+        to: date,
+        includeHourly: 'today+tomorrow',
+      });
+
+      // Projected to the two fields the chart reads. The rest of the day is already on the client
+      // from the month fetch, and shipping it twice is the habit docs/architecture/api-budget.md
+      // exists to break. `hourly` is absent on every day but today and tomorrow — an empty array
+      // is the honest answer for both, and the section hides itself on it.
+      return NextResponse.json(
+        { date, hourly: data.days?.[0]?.hourly ?? [] },
+        { headers: cdnCacheHeaders(CALENDAR_HOURLY_CACHE_CONTROL) }
+      );
+    } catch (error) {
+      console.error('[Calendar hourly API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch hourly forecast' }, { status: 500 });
     }
   }
 
@@ -469,7 +547,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, /stats/hourly, /stats/day, /wait-times, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /stats, /stats/hourly, /stats/day, /wait-times, or /weather/nowcast',
     },
     { status: 400 }
   );

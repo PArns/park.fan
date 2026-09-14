@@ -881,6 +881,16 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
+        // Five minutes, and it is the handler's own number — the day-detail dialog's hourly curve
+        // starts at the current UTC hour and moves at the top of every one, which is exactly why
+        // it does not ride along in the day-cached calendar above. This is also why it is a path
+        // and not an `includeHourly` parameter on that route: a rule here matches a path, never a
+        // query string, so a per-parameter window would be 300 s on Vercel and a day under
+        // `next start` for the same URL. Reasoning lives at the handler, with the payload.
+        source: '/api/parks/:continent/:country/:city/:park/calendar/hourly',
+        headers: sharedCache('public, s-maxage=300, stale-while-revalidate=300'),
+      },
+      {
         source: '/api/parks/:continent/:country/:city/:park/best-days',
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
