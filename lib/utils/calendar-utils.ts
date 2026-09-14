@@ -123,6 +123,32 @@ export function upcomingHourlyPredictions<T extends { hour: number }>(
 }
 
 /**
+ * Whether a `date` is one the hourly route may answer at all — a real calendar day, and one close
+ * enough to `nowMs` that a park somewhere could call it today or tomorrow.
+ *
+ * A form check alone is not enough, and the reason is the cache rather than the payload:
+ * `/^\d{4}-\d{2}-\d{2}$/` accepts `2026-99-99` and every other well-shaped nonsense, so each one
+ * would be a fresh CDN key AND an upstream request for a day the backend has nothing to say about.
+ * Four dates is the whole set the route can ever serve: only today and tomorrow carry a curve, and
+ * park timezones run from UTC−12 to UTC+14, so a park's own "today" is within a day of the UTC date
+ * and its "tomorrow" at most two ahead.
+ *
+ * `new Date('2026-02-30T00:00:00Z')` does not reject an impossible day, it rolls it forward, so the
+ * parsed value is formatted back and compared — that comparison is what turns it into a refusal.
+ */
+export function isServableHourlyDate(date: string, nowMs: number): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+
+  const parsed = new Date(`${date}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return false;
+
+  const utcToday = Date.parse(`${new Date(nowMs).toISOString().slice(0, 10)}T00:00:00Z`);
+  const daysFromUtcToday = Math.round((parsed.getTime() - utcToday) / 86_400_000);
+
+  return daysFromUtcToday >= -1 && daysFromUtcToday <= 2;
+}
+
+/**
  * Transform schedule items to calendar events
  */
 export function transformScheduleToEvents(

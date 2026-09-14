@@ -148,7 +148,11 @@ export function ParkCalendarDayDetail({
   // false for tomorrow for ever, with a curve sitting on the endpoint and nothing drawing it.
   // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
   // needs no timezone of its own.
-  const browserNow = useBrowserNow(60_000);
+  // Only while the dialog is open. This component stays mounted behind every park and calendar
+  // page (it renders `null` when closed), so an unconditional interval would put a minute timer
+  // and a re-render on those pages for the life of the tab, for a chart almost nobody opens.
+  // `null` still gives one clock reading, which is all a closed dialog could want.
+  const browserNow = useBrowserNow(open ? 60_000 : null);
   const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
   const canHaveHourly =
     !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
@@ -211,9 +215,9 @@ export function ParkCalendarDayDetail({
     day.date,
     hourlySource.filter((h) => h.predictedWaitTime > 0),
     // `browserNow` rather than `Date.now()`: a clock read during render is impure, and the minute
-    // tick also retires a bar while the dialog is open instead of at the next re-render. Before
-    // the first tick nothing is cut, which is the right way round — the dialog opens on a click,
-    // so the tick has long happened, and a missing clock must not empty a correct chart.
+    // tick is what retires a bar while the dialog is open instead of only at the next re-render.
+    // The fallback still cuts — it reads the same wall clock — it just does not schedule anything,
+    // which is what the very first render needs before the hook's effect has run.
     (browserNow ?? new Date()).getTime()
   );
   const maxHourlyWait = hourly.reduce((m, h) => Math.max(m, h.predictedWaitTime), 0);

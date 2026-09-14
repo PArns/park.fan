@@ -15,6 +15,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { isServableHourlyDate } from '@/lib/utils/calendar-utils';
 import {
   applyNowcastSimulation,
   applyParkSimulation,
@@ -81,34 +82,6 @@ const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-re
  * in that headers block: which of the two wins depends on where it runs, so they may never differ.
  */
 const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=300';
-
-/**
- * Whether `date` is one this route may answer at all — a real calendar day, and one close enough
- * to now that a park somewhere could call it today or tomorrow.
- *
- * The form check alone is not enough, and the reason is the cache rather than the payload: a
- * `/^\d{4}-\d{2}-\d{2}$/` accepts `2026-99-99` and every other well-shaped nonsense, so each one
- * is a fresh CDN key AND an upstream request for a day the backend has nothing to say about. Four
- * dates is the whole set this route can ever serve: only today and tomorrow carry a curve, park
- * timezones run from UTC−12 to UTC+14, so a park's own "today" is within a day of the UTC date and
- * its "tomorrow" at most two ahead.
- *
- * `Date.parse` on its own does not reject an impossible day — it clamps — so the parsed value is
- * formatted back and compared, which is what turns `2026-02-30` into a 400.
- */
-function isServableHourlyDate(date: string): boolean {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
-
-  const parsed = new Date(`${date}T00:00:00Z`);
-  if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return false;
-
-  const daysFromUtcToday = Math.round(
-    (parsed.getTime() - Date.parse(`${new Date().toISOString().slice(0, 10)}T00:00:00Z`)) /
-      86_400_000
-  );
-
-  return daysFromUtcToday >= -1 && daysFromUtcToday <= 2;
-}
 
 export async function GET(
   request: NextRequest,
@@ -245,7 +218,9 @@ export async function GET(
     const [continent, country, city, park] = path;
     const date = new URL(request.url).searchParams.get('date');
 
-    if (!date || !isServableHourlyDate(date)) {
+    // Bounded to a real calendar day inside today ± a day, because the value lands in the CDN
+    // cache key — see `isServableHourlyDate`, which is pinned by `pnpm test:calendar`.
+    if (!date || !isServableHourlyDate(date, Date.now())) {
       return NextResponse.json(
         { error: 'Missing or out-of-range query parameter: date (YYYY-MM-DD, today ± a day)' },
         { status: 400 }

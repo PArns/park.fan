@@ -2,6 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import {
   getWeatherEmoji,
   hourlyPredictionInstants,
+  isServableHourlyDate,
   upcomingHourlyPredictions,
 } from '../lib/utils/calendar-utils.ts';
 
@@ -230,6 +231,48 @@ const at = (iso) => Date.parse(iso);
     "tomorrow's curve survives today's afternoon in full",
     kept.length === 5,
     `kept ${kept.map((k) => k.hour).join(' ')}`
+  );
+}
+
+// ---------------------------------------------------------------------------
+// isServableHourlyDate
+//
+// The `/calendar/hourly` route's `date` lands in the CDN cache key, so it is bounded to the four
+// dates that can ever answer anything: only today and tomorrow carry a curve, and park timezones
+// run from UTC−12 to UTC+14.
+// ---------------------------------------------------------------------------
+
+console.log('\n🧪 Testing isServableHourlyDate\n');
+
+{
+  const now = at('2026-09-14T13:07:00Z');
+  const cases = [
+    ['2026-09-13', true, 'a park west of UTC is still on yesterday'],
+    ['2026-09-14', true, 'the UTC date itself'],
+    ['2026-09-15', true, "most parks' tomorrow"],
+    ['2026-09-16', true, 'and the tomorrow of a park at UTC+14'],
+    ['2026-09-17', false, 'one day further is a date nothing can answer'],
+    ['2026-09-12', false, 'and so is one day back'],
+    [
+      '2026-02-30',
+      false,
+      'a day that does not exist, which Date rolls forward instead of refusing',
+    ],
+    ['2026-99-99', false, 'well-shaped nonsense'],
+    ['2026-9-14', false, 'a single-digit month is not the format the API speaks'],
+    ['', false, 'the empty string'],
+    ['nonsense', false, 'anything else'],
+  ];
+  for (const [date, expected, name] of cases) {
+    check(
+      `${expected ? 'serves' : 'refuses'} ${date || '(empty)'} — ${name}`,
+      isServableHourlyDate(date, now) === expected
+    );
+  }
+  check(
+    'the window moves with the clock, it is not pinned to a build',
+    isServableHourlyDate('2027-01-02', at('2027-01-01T00:00:00Z')) &&
+      !isServableHourlyDate('2026-09-14', at('2027-01-01T00:00:00Z'))
   );
 }
 
