@@ -202,19 +202,19 @@ function RemainingBar({
   // 10 px is the floor the rest of the site's chart furniture sits at, and the labels keep the
   // block's inherited `text-muted-foreground` rather than dimming it further: an opacity on top
   // of it would take small text under the 4.5 : 1 it owes.
+  // Hidden at the OUTER element, not at the track: „jetzt" and „4 Std." are the scale's two ends
+  // and neither is this outage's remaining time, so a reader who has just heard „meist noch
+  // 25 Min. bis 1:00 Std." would get two more numbers that are about the drawing rather than
+  // about the ride. Hiding the track alone left exactly those two behind.
   return (
-    <span className="flex items-center gap-1.5 text-[10px] leading-none">
+    <span className="flex items-center gap-1.5 text-[10px] leading-none" aria-hidden="true">
       <span className="shrink-0">{nowLabel}</span>
-      <span
-        className="bg-muted/40 relative h-1.5 min-w-0 flex-1 overflow-hidden rounded-full"
-        aria-hidden="true"
-      >
+      <span className="bg-muted/40 relative h-1.5 min-w-0 flex-1 overflow-hidden rounded-full">
         {OUTAGE_BAR_TICKS_MIN.map((minutes) => (
           <span
             key={minutes}
             className="bg-muted-foreground/30 absolute inset-y-0 w-px"
             style={{ left: `${(minutes / OUTAGE_BAR_HORIZON_MIN) * 100}%` }}
-            aria-hidden="true"
           />
         ))}
         <span
@@ -231,7 +231,6 @@ function RemainingBar({
                 }
               : {}),
           }}
-          aria-hidden="true"
         />
       </span>
       <span className="shrink-0">{endLabel}</span>
