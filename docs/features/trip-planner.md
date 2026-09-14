@@ -872,6 +872,78 @@ four fifths of a band is still `tight`, and a whole band is `good`. Four fifths
 rather than three: slack 11 of 15 reads `tight` under the whole band and under a
 ¾ threshold alike, so it would sit there green while pinning neither.
 
+### …and it is drawn in the gap a reader can see, not in the gap between two queues
+
+The chip hangs in the space between one block and the next, and for as long as it
+existed that space was measured from the END of the first queue to the START of
+the second. That is not the space on screen. A block is drawn at
+`minBlockPxFor` even where its queue is shorter — twenty pixels is the smallest
+box a line of text sits in — so a short queue's box hangs into the gap below it,
+and the chip was placed in a gap that was partly already covered.
+
+It did not matter while the optimiser reserved the wait plus the band. Since
+PAR-169 it reserves the wait, the blocks stand close together, and the difference
+became the whole gap. Measured over 46 planned park-days from `/plan/day`, 267
+legs, 2026-09-14:
+
+| axis               | between the queues        | as drawn                          |
+| ------------------ | ------------------------- | --------------------------------- |
+| 1.2 px/min         | min 12, median 24, max 54 | min **12**, median **16**, max 48 |
+| 1.8 px/min (phone) | min 18, median 36, max 81 | min 18, median 24, max 72         |
+
+Against a 21 px chip that is nine of nine cut on a packed Phantasialand day at
+1440 px and eight of nine at 390 px.
+
+`lib/planner/leg-chip.ts` holds the arithmetic, pure and away from the component
+for the reason `weather-chart-axis.ts` is: it broke once in a way a green build
+showed nothing of. `legChipPlacement` takes the leg's own height and the
+overhang, and answers where the chip's top edge goes and whether it is the short
+form. Two numbers are **rendered rather than typed** — `LEG_CHIP_PX` 21 and
+`LEG_CHIP_COMPACT_PX` 12, measured in the app's own stylesheet at both scales in
+all six languages, where the height follows the type and not the words. The 18
+that stood in the component before was a guess and three pixels under the thing
+it was measuring.
+
+Three decisions sit underneath it.
+
+**What the short chip drops is the distance and the slack**, so the minutes and
+the verdict — the two things the gap is about — survive in every state, and the
+distance stays in the `title` where it always was. The rule is Patrick's, taken
+against dropping the chip (the warning would go exactly when the day is tight)
+and against raising it over the blocks (it would cover a ride's name on nearly
+every leg of a packed day).
+
+**The short chip's outline is a `ring-1 ring-inset`, not a border**, and that is
+what makes it 12 px rather than 14: a ring is a box-shadow and costs no height,
+where a border is two more pixels. Twelve is not a round number picked for looks
+— it is the smallest gap a planned day produces, 34 of those 267 legs, so a 14 px
+chip would still have been cut on 12.7 % of them. The colour is `current`, i.e.
+the verdict's own `text-*` class from `TRANSFER_CHIP_CLASS`, so there is no
+second per-verdict map to drift from the first. Shrinking the TYPE to 9 px would
+also have measured 12 and was refused: a chip that is hard to read is not fixed
+by making it smaller.
+
+**The wrapper is `flex`**, and that is load-bearing rather than tidy. The chip is
+`inline-flex`, so in a block wrapper it is an inline box sitting on a line box's
+baseline: measured at 1440×1000, a 12 px chip in a wrapper positioned at
+`top: 10px` painted at 18. The offset is the leading above the baseline, so it
+varies with the chip's own height and would have silently undone any position
+computed in pixels. A flex item has no baseline to sit on.
+
+Two things this does not cover, both named where the code is. A day somebody
+**drags** has no floor under the gap at all — two blocks can overlap, the room is
+then negative, and the chip is centred on it rather than favouring one side. And
+the repair button on a `broken` leg keeps its 21 px: it is a target rather than a
+label, its text is already down to a deficit and one word, and a broken leg has
+by definition too little room for anything.
+
+The gap itself comes from `drawnBoxPx` (`day-grid.ts`), which is the same
+function `planner-block.tsx` sizes its own box with — including the third case, a
+block with no figure, which is a stated 40 px and used to live in that component
+and nowhere else. A hand-written twin there would agree on the day it was written
+and on no other. `pnpm test:planner-leg` pins the placement and both heights;
+`pnpm test:planner-grid` pins the box.
+
 ### A queue is joined before closing, and never after
 
 Two halves of one rule, and the planner had both of them wrong in opposite

@@ -2091,6 +2091,64 @@ if (reachable) {
       legs.join(', ')
     );
 
+    // …und keiner ihrer Chips wird vom Block darunter angeschnitten. Der Chip
+    // liegt auf `zIndex: 5` und die Blöcke auf 10, also verdeckt ein Block sauber,
+    // was übersteht — auf dem Schirm ist das ein halber Satz ohne Unterlängen und
+    // in keiner Zusicherung (PAR-180).
+    //
+    // Dafür muss der enge Fall erst hergestellt werden, sonst ist die Prüfung
+    // grün gegen genau den Fehler, für den sie geschrieben ist: bei 10:00 und
+    // 12:30 liegen 105 Minuten zwischen den beiden, und in so eine Lücke passt
+    // jede Pille. F.L.Y. rückt also bis dicht hinter Taron — 11:00 gegen eine
+    // Schlange, die um 10:45 endet, eine Lücke von einer Rastereinheit. Dass sie
+    // wirklich eng ist, prüft die erste Zusicherung: ohne sie wäre die zweite
+    // wieder nur eine Aussage über eine Fixture.
+    await flyRange.fill('660');
+    await grid.waitForTimeout(400);
+    const chipRoom = await grid.evaluate(() => {
+      const blocks = [...document.querySelectorAll('li[data-planner-block]')].map((el) =>
+        el.getBoundingClientRect()
+      );
+      return [...document.querySelectorAll('li[data-planner-leg]')].flatMap((leg) => {
+        const chip = leg.querySelector('[data-planner-leg-chip], button[title]');
+        if (!chip) return [];
+        const c = chip.getBoundingClientRect();
+        const mid = (c.top + c.bottom) / 2;
+        let above = null;
+        let below = null;
+        let clipped = 0;
+        for (const b of blocks) {
+          if (b.left >= c.right - 1 || b.right <= c.left + 1) continue;
+          if (b.bottom <= mid && (above === null || b.bottom > above)) above = b.bottom;
+          if (b.top >= mid && (below === null || b.top < below)) below = b.top;
+          clipped = Math.max(clipped, Math.min(b.bottom, c.bottom) - Math.max(b.top, c.top));
+        }
+        return [
+          {
+            verdict: leg.dataset.verdict,
+            height: c.height,
+            room: above !== null && below !== null ? below - above : null,
+            clipped,
+          },
+        ];
+      });
+    });
+    await flyRange.fill('750');
+    await grid.waitForTimeout(400);
+
+    const tightChips = chipRoom.filter((c) => c.room !== null && c.room < 21);
+    check(
+      'der enge Fall ist hergestellt',
+      tightChips.length >= 1,
+      chipRoom.map((c) => `${c.verdict} ${c.room?.toFixed(0)}px`).join(', ')
+    );
+    const clippedChips = chipRoom.filter((c) => c.clipped > 0.5);
+    check(
+      'kein Bein-Chip wird von einem Block angeschnitten',
+      clippedChips.length === 0,
+      clippedChips.map((c) => `${c.verdict}: ${c.clipped.toFixed(1)}px`).join('; ')
+    );
+
     // Requirement 2: the drag may not go earlier than the ride can be ridden.
     // The floor is the ride's own `opensAt` where the API has one and the
     // park's opening otherwise — a FACT either way, which is why it is allowed
