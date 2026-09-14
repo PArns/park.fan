@@ -266,15 +266,38 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
-**They switch off, and the band stays.** Shows are the one thing on the grid
-nobody put there — a plan is what somebody dragged in, and four dotted rules
-across it are context. The switch lives in the band (`lib/planner/shows-visible.ts`,
-an external store on `localStorage` so the decision survives a reload) and hides
-the rules; the band then says so instead of disappearing with them, because a
-strip that vanished would take the switch with it and somebody who turned the
-shows off by accident would have nothing left to press. It renders only where
-there is something to switch: on a day the API answered with no shows, a control
-that toggles an empty set is a control that does nothing.
+**They switch off, and on a phone the strip goes with them.** Shows are the one
+thing on the grid nobody put there — a plan is what somebody dragged in, and four
+dotted rules across it are context. The switch lives in the band
+(`lib/planner/shows-visible.ts`, an external store on `localStorage` so the
+decision survives a reload) and hides the rules. It renders only where there is
+something to switch: on a day the API answered with no shows, a control that
+toggles an empty set is a control that does nothing.
+
+What the switch may take away depends on which screen is asking, and the reason
+is that only one of them is short. On a **desktop** the strip stays and says
+„Spielzeiten ausgeblendet": 22 px is not what is missing there, and a strip that
+vanished would take the switch with it. On a **phone** it is 45 px of a **776 px**
+sheet (measured at 390 × 844 — the sheet is `max-sm:max-h-[92svh]`, so the 716
+that older notes in this feature quote is the 85svh figure), so below `sm` the
+strip collapses to `h-0` — rule, glass, symbol and sentence with it — and the
+switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
+Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
+and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
+a switch rather than move somewhere else: the panel's header row has 63 px left
+for the park name at 390 px (see the arithmetic in `planner-flyout.tsx`), and a
+row of its own in `PlannerDayFoot` would have cost about 35 px of chrome to give
+45 back. It costs the corner: 44 × 44 of grid under a visible control, against
+44 px across the full width before.
+
+That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`
+flag), never in a `useMediaQuery` branch — this component is also server-rendered
+by the guide's demos, where the hook's snapshot would ship the phone's markup to
+every desktop and then delete it. And the collapse is gated on the switch
+EXISTING: `visible` is the panel's state rather than the day's, so it can be
+false over a park with no shows, where the strip reads „keine Spielzeiten" and
+carries no switch. Collapsing that one would remove a strip and leave nothing to
+bring it back with.
 
 ## The photo behind the panel sits in a NEGATIVE layer
 
@@ -794,6 +817,61 @@ not a queue to be shuffled, and a ride that is ticked off already happened. Both
 keep their minute and the rides are planned around them; only undone ride
 entries move.
 
+### The leg chip judges against what the search builds against
+
+The chip between two blocks grades its gap on a four-rung ladder (`legBetween`,
+`lib/planner/leg.ts`): `broken` against the certifiable floor, then `tight` /
+`good` / `generous` against the assumed ceiling, with the boundary set by the
+previous ride's own `uncertaintyMinutes`. On a day somebody laid out themselves
+that ladder works. On a day this engine just packed, it reports the engine.
+
+The reason is that the search reserves the ceiling too, so the slack a planned
+day leaves over is mostly the remainder on `SNAP_MIN_FINE`, plus whatever a
+ride's own opening hour or a deliberate wait adds to it. Measured over 14 parks ×
+14 dates of real `/plan/day` payloads — 169 planned days, 1369 legs, 2026-09-13 —
+the slack is median 6 minutes (p25 2, p75 10, max 26, where the grid alone caps
+at 14) against a band of median 15 (p25 12, p75 18, max 44). So the rung is
+decided before the geography gets a word in, and which rung it is follows from
+what the optimiser reserves:
+
+|            | reserves wait + band (before PAR-169) | reserves the wait (now) |
+| ---------- | ------------------------------------- | ----------------------- |
+| `tight`    | 0 of 157 (0.0 %)                      | **144 of 162 (88.9 %)** |
+| `good`     | 144 (91.7 %)                          | 18 (11.1 %)             |
+| `generous` | 13 (8.3 %)                            | 0 (0.0 %)               |
+
+The two columns have different denominators because the two engines file
+different plans — 1366 legs against 1369 over the same 169 days — not because
+legs went missing between them.
+
+Those 162 are the legs whose ride reports a spread at all, and that is mostly a
+property of the **date**: `tier: measured` (today and tomorrow) carries
+`uncertaintyMinutes` on every ride, `composed` on almost none — 13 of 2846 rides
+between lead 2 and lead 45 in the same corpus. Where it is absent the ladder caps
+at `good` by design, so the other 1207 legs read "Umstieg gut" with the `°`,
+100.0 % of them. The same packed day therefore reads amber throughout for
+tomorrow and green throughout for the day after.
+
+The grid subtracts a few more before `legBetween` ever sees them: a block within
+`LIVE_WINDOW_MIN` of now is re-based on the live wait and passed on with
+`uncertaintyMinutes: null` (`planner-day-grid.tsx`), since a queue read off the
+park's own board carries no forecast error, and `estimateFor` reports none for a
+custom block, an assumed wait or a park with no readable source. Today's next
+hour is therefore capped at `good` as well — which is the same reading a
+`composed` day gets, for a different reason.
+
+**The threshold stays at the whole band.** Lowering it only moves which single
+rung a packed day collapses onto — at ¼ band the same corpus reads 4.7 % tight
+and 92.1 % good — while costing the population where the rungs separate. Same
+169 days, same code, headliners at a fixed cadence instead of packed: at a
+60-minute cadence the band legs go 42.1 % tight / 27.6 % good / 22.8 % generous,
+with 8.5 % of all legs `broken`; at 90 minutes, 2.9 / 23.5 / 71.6. `PAR-174`
+carries the full tables, and `pnpm test:planner-leg` pins the three points that
+tell the thresholds apart: the snap remainder against a real band is `tight`,
+four fifths of a band is still `tight`, and a whole band is `good`. Four fifths
+rather than three: slack 11 of 15 reads `tight` under the whole band and under a
+¾ threshold alike, so it would sit there green while pinning neither.
+
 ### A queue is joined before closing, and never after
 
 Two halves of one rule, and the planner had both of them wrong in opposite
@@ -1213,6 +1291,30 @@ change there.
 `lib/planner/use-push-subscription.ts` + `public/sw.js`, VAPID, one topic
 (`next-up`). The plan is uploaded **before** subscribing, because a subscription
 with no plan behind it has nothing to notify about.
+
+**"On" is a statement about the server, and neither local signal makes it.** The
+switch opened on `existing && getTripId()` — a push subscription somewhere on
+this origin, plus a trip id stored at some point. The browser keeps **one**
+subscription for the whole origin and shares it with ride alerts and followed
+shows, so the first half only says that something on this site uses push; and
+the trip id survives a failed `POST /api/push/subscriptions` exactly as well as
+a successful one. So one network hiccup after the plan was stored left both
+halves standing with nothing joining them, and every later mount read `on` — the
+switch this file's own rule forbids, on and doing nothing, with no notification
+ever arriving and no reason for the visitor to touch it. There is no read to ask
+instead: `/v1/push/subscriptions` answers `POST` and `DELETE` only, and the two
+push GETs that do exist (`ride-alerts`, `show-follows`) list a browser's own
+rows without naming the subscription's `tripId`. What replaces the guess is the
+server's own 2xx, remembered against **the exact pair it was given for**
+(`lib/planner/push-arming.ts`, `parkfan_push_armed`) — written after the POST
+answers and nowhere else, cleared by switching off. Both halves expire it
+without anybody clearing anything: a rotated endpoint or a trip id replaced by a
+404 no longer matches, and `off` is then the honest answer, because the
+subscription the server holds is pointing at something this browser no longer
+has. And the failure paths of `enable()` deliberately do **not** clear it — the
+record describes a pair, not an attempt, and a second tab may have armed the
+same one. `pnpm test:push-arming` pins that, plus the wiring, since a record
+nothing reads decides nothing.
 
 **Delivery is unverified.** This environment has no VAPID key pair and no reach
 to a push service, so the wiring is written and typechecked and has never

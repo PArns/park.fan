@@ -276,6 +276,150 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     .catch(() => {});
 }
 
+/** How long a tap waits before it is reported as unreachable. */
+const TAP_TIMEOUT_MS = 10_000;
+
+/**
+ * Scroll a block to a resting place where the browser says its own click point
+ * is the topmost element, and answer with what it took.
+ *
+ * Two things this deliberately does NOT do. It does not centre in the scroller:
+ * measured on the phone sheet with a block selected, the scroller is 205 px, the
+ * show band takes 45 of them at the top and the action row 102 at the bottom, so
+ * the free strip runs 45…103 and its middle is 74 — a 45 px block centred on the
+ * scroller comes to rest at 80…125 with its lower half under the action row,
+ * which is exactly the element PAR-175 reported. And it does not go looking for
+ * the two bars by style or by selector: a sweep over everything `absolute` or
+ * `sticky` in the sheet answered a free strip of −205 px, 53 px, 103 px and
+ * −94 px on four runs of the same page, because content inside the scroller
+ * touches its edges too and a sticky element's box depends on where it is
+ * scrolled at the moment it is asked.
+ *
+ * So the question is put to the browser instead: offer the block a resting place,
+ * ask `elementFromPoint` whether the point that will be clicked belongs to it,
+ * and walk outwards from the middle in 6 px steps until one answers yes. That is
+ * the same question Playwright's own actionability check asks, so a placement
+ * this accepts is one the click accepts — and where nothing answers yes, the
+ * caller gets a named ❌ instead of the 30 s timeout that used to end the run.
+ *
+ * Measured per call site: 1 probe on the desktop panel, 1 on the demo, 3 on the
+ * phone sheet with the action row up.
+ */
+const placeWhereItCanBeTapped = (el, position) => {
+  // `overflow-y` as well as the two heights. A clipped box (`overflow-hidden`
+  // over content taller than itself) reports scrollHeight > clientHeight and
+  // takes a `scrollTop` from script without ever showing the difference, so on
+  // the height alone the search can stop at a clip and push the block out of its
+  // own box instead of into the room the page has. None of the three surfaces
+  // here has one on the path today; the condition is what keeps that true.
+  const scrolls = (node) =>
+    node.scrollHeight > node.clientHeight + 2 &&
+    /auto|scroll|overlay/.test(getComputedStyle(node).overflowY);
+  let scroller = el.parentElement;
+  while (scroller && !scrolls(scroller)) scroller = scroller.parentElement;
+  scroller ??= document.scrollingElement ?? document.documentElement;
+  // EVERY ancestor first, the scroller itself second. `elementFromPoint` only
+  // answers about the viewport, and on the planner's own page the block sits in
+  // a `max-h-[680px] overflow-y-auto` box whose own top is 1857 px down the
+  // article: every resting place inside it is off screen until the PAGE has
+  // scrolled, so the probe below asked about nothing 110 times before the block
+  // drifted into view by accident. `scrollIntoView` moves the whole chain; the
+  // loop then places the block inside the box it has just brought into sight.
+  el.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+  // …and the room to work in is what the scroller and the viewport SHARE. A
+  // scroller taller than the window, or one hanging half off its lower edge,
+  // otherwise offers a middle that cannot be looked at.
+  const scrollerBox = scroller.getBoundingClientRect();
+  const top = Math.max(0, scrollerBox.top);
+  const bottom = Math.min(window.innerHeight, scrollerBox.bottom);
+  const sc = { top, bottom, height: Math.max(0, bottom - top) };
+  const limit = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+  // The point the click will use: the caller's `position` where it passes one,
+  // the block's middle otherwise. Freeing the middle of a block whose click
+  // lands 8 px from its top proves nothing about that click. (Playwright reads
+  // `position` off the padding box and this reads it off the border box, which
+  // is the block's 1 px frame apart — under the 6 px the search steps in.)
+  const aim = () => {
+    const box = el.getBoundingClientRect();
+    return position
+      ? { x: box.left + position.x, y: box.top + position.y }
+      : { x: box.left + box.width / 2, y: box.top + box.height / 2 };
+  };
+  const free = () => {
+    const { x, y } = aim();
+    const hit = document.elementFromPoint(Math.round(x), Math.round(y));
+    return Boolean(hit && (hit === el || el.contains(hit)));
+  };
+  const middle = (sc.top + sc.bottom) / 2;
+  const reach = Math.max(6, Math.floor((sc.height - 8) / 2));
+  const offsets = [0];
+  for (let away = 6; away <= reach; away += 6) offsets.push(away, -away);
+  let tried = 0;
+  for (const away of offsets) {
+    tried += 1;
+    scroller.scrollTop = Math.max(
+      0,
+      Math.min(limit, scroller.scrollTop + aim().y - (middle + away))
+    );
+    if (free()) return { free: true, tried, rest: Math.round(aim().y - sc.top) };
+  }
+  return { free: false, tried, rest: Math.round(aim().y - sc.top) };
+};
+
+/**
+ * Tap a day block — after pulling it into the clear part of its own scroller.
+ *
+ * Playwright scrolls a target in before it clicks, and it scrolls the least it
+ * can: a block below the scroller's box comes to rest on its bottom edge, one
+ * above it on the top edge. **Both edges of this scroller are spoken for.** The
+ * show band is `sticky top-0 z-40` inside it and the action row a selected block
+ * raises is `absolute inset-x-0 bottom-0 z-40` over it, so the minimal scroll
+ * parks the block under one of the two, the hit test finds that element instead,
+ * and every retry scrolls to the same place again until the 30 s default runs
+ * out — as an exception, which takes the two hundred assertions after it with it.
+ *
+ * Where the block comes to rest has nothing to do with the code under test. It
+ * follows how tall the scroller is and where it happens to be scrolled, which
+ * follows what the rest of the sheet is drawing on the day of the run — which is
+ * why the same script was green at ~08:1x UTC and dead at ~08:3x on an unchanged
+ * `main` (PAR-175), with the error naming the show band and the action row in
+ * the same breath. Measured here against the reported state: with the action row
+ * up, a plain tap fails from a scroller parked at the top, in the middle AND at
+ * the bottom, and lands from all three once the block is placed itself.
+ *
+ * The click is then asked with a SHORT timeout and its error caught: a step that
+ * cannot reach its target is a named ❌ carrying the element that intercepted
+ * it and the room there was, never a stack trace.
+ */
+async function tapBlock(page, locator, name, options = {}) {
+  const target = locator.first();
+  const placement = await target
+    .evaluate(placeWhereItCanBeTapped, options.position ?? null)
+    .catch(() => null);
+  // The scroll itself is synchronous, the sticky band's reflow after it is not.
+  await page.waitForTimeout(150);
+  const failure = await target
+    .click({ timeout: TAP_TIMEOUT_MS, ...options })
+    .then(() => null)
+    .catch((error) => {
+      const lines = String(error.message)
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean);
+      // The interception lines name the element that is in the way, which is the
+      // whole diagnosis; the first line is the fallback for every other reason a
+      // click can fail (detached, disabled, not stable).
+      const blame = lines.filter((line) => /intercepts pointer events/.test(line)).slice(0, 2);
+      return (blame.length ? blame : lines.slice(0, 1)).join(' · ').slice(0, 200);
+    });
+  const room = placement
+    ? `${placement.free ? 'freigeräumt' : 'keine freie Stelle'} nach ${placement.tried} ` +
+      `Versuch${placement.tried === 1 ? '' : 'en'}, ${placement.rest} px unter der Kante`
+    : 'nicht vermessen';
+  check(name, failure === null, failure ? `${room} — ${failure}` : room);
+  return failure === null;
+}
+
 // ── Every `quality` a planner image asks for must be configured ─────────────
 //
 // Next 16 answers an unconfigured `quality` with a 400 from the image
@@ -606,9 +750,9 @@ if (await rowTick.count()) {
   tickPath = 'Zeile';
 } else {
   // The grid: select the first block, then use the bar it raises.
-  const firstBlock = page.locator('li[data-planner-block]').first();
+  const firstBlock = page.locator('li[data-planner-block]');
   if (await firstBlock.count()) {
-    await firstBlock.click();
+    await tapBlock(page, firstBlock, 'der Block lässt sich für das Abhaken auswählen');
     await page.waitForTimeout(300);
     const barTick = page.locator('button[aria-label="Als gefahren markieren"]').first();
     if (await barTick.count()) {
@@ -1172,7 +1316,11 @@ if (await phoneLauncher.count()) {
       // gesture landing on a 44 px strip of a box whose height is a queue, and a
       // plan may not depend on that. Selecting is a plain tap on the block, which
       // is what docks the action row.
-      await phone.locator(`li[data-planner-entry="${entryId}"]`).first().click();
+      await tapBlock(
+        phone,
+        phone.locator(`li[data-planner-entry="${entryId}"]`),
+        'der Block nimmt einen einfachen Tap an'
+      );
       await phone.waitForTimeout(300);
       const nudge = phone.locator(`${SHEET} button[aria-label="15 Min. später"]`);
       check('die Aktionsleiste bietet einen Verschieben-Knopf', (await nudge.count()) > 0);
@@ -1243,8 +1391,9 @@ if (await phoneLauncher.count()) {
     //
     // A control that is not hittable at its own centre is skipped rather than
     // failed: it is scrolled out of its container or covered, which is a
-    // different defect and gets its own named check (see "einen Tag planen"
-    // below, which is the one this sweep would otherwise have swallowed).
+    // different defect and gets its own named check (see „das letzte
+    // Bedienelement der Kopfzeile" below, which is the one this sweep would
+    // otherwise have swallowed).
     const sweepSmallTargets = (sel) =>
       phone.evaluate((sheetSelector) => {
         // Radix portals every popover and dialog to `<body>`, so a sweep of the
@@ -1341,42 +1490,188 @@ if (await phoneLauncher.count()) {
     // the wrong thing. Asked of Playwright, because "receives events" is the
     // question and `click({ trial: true })` names the intercepting element when
     // the answer is no.
-    const newPlan = phone.locator(`${SHEET} [data-planner-new-plan]`).first();
-    if (await newPlan.count()) {
-      const free = await newPlan
+    //
+    // It asks for the control that is LAST in that row rather than for one by
+    // name, and that is the lesson of PAR-163 rather than a tidy-up: the
+    // assertion named „einen Tag planen", the phone lost that button when the
+    // head moved into this header, and `if (await count())` then turned a
+    // passing check into no check at all — silently, in the one place where
+    // something else had just taken its place at the edge. What is measured is
+    // the RIGHTMOST control in the header, whatever it is today.
+    const lastInHeader = await phone.evaluate((sel) => {
+      const header = document.querySelector(`${sel} [data-slot="sheet-header"]`);
+      if (!header) return null;
+      // `!disabled` as well as visible: a disabled control cannot receive the
+      // press this assertion is about, so a trial click on one times out and
+      // reports the overlap defect over a button that is merely off today —
+      // the day picker's `›` is exactly that at the best-days horizon (G-56).
+      const controls = [...header.querySelectorAll('button')].filter(
+        (el) => el.getBoundingClientRect().width > 0 && !el.disabled
+      );
+      if (controls.length === 0) return null;
+      const last = controls.reduce((a, b) =>
+        b.getBoundingClientRect().right > a.getBoundingClientRect().right ? b : a
+      );
+      last.setAttribute('data-check-last-in-header', '');
+      // A name for the report, from whatever the element already carries.
+      const attr = [...last.attributes].find((a) => a.name.startsWith('data-planner'));
+      return attr?.name ?? last.getAttribute('aria-label') ?? last.tagName;
+    }, SHEET);
+    if (lastInHeader) {
+      const free = await phone
+        .locator(`${SHEET} [data-check-last-in-header]`)
+        .first()
         .click({ trial: true, timeout: 5_000 })
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check(
-        '„einen Tag planen" liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
         free === 'erreichbar',
-        free
+        `${lastInHeader} — ${free}`
+      );
+      await phone.evaluate(
+        (sel) =>
+          document
+            .querySelector(`${sel} [data-check-last-in-header]`)
+            ?.removeAttribute('data-check-last-in-header'),
+        SHEET
+      );
+    } else {
+      check(
+        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        false,
+        'keine Kopfzeile gefunden'
       );
     }
+
+    // ONE row of chrome above the axis, not two. The panel's header and the
+    // column's own head each took 45 px of a 776 px sheet to say two halves of
+    // one thing — which park, which day, and the word „Tagesplaner" over both —
+    // while the axis under them had 211. The head is drawn inside the header on
+    // a phone now (`withHead`), and this asserts it is the SAME element moved
+    // rather than a second copy: two would be two of every
+    // `[data-planner-column-park]` for the sweep above to pick the wrong one of.
+    const heads = await phone.locator(`${SHEET} [data-planner-column-head]`).count();
+    check(
+      'auf dem Telefon steht der Spaltenkopf in der Kopfzeile des Sheets',
+      heads === 1 &&
+        (await phone.evaluate((sel) => {
+          const sheet = document.querySelector(sel);
+          const header = sheet?.querySelector('[data-slot="sheet-header"]');
+          const head = sheet?.querySelector('[data-planner-column-head]');
+          return Boolean(header && head && header.contains(head));
+        }, SHEET)),
+      `${heads} Kopfzeile(n)`
+    );
 
     // And the two lists the head's own buttons open, each swept while it is
     // actually up — a popover that is shut is a popover with no DOM, so the
     // sweep above passes over the park list and the month calendar without
     // seeing either. LAST in this pass and closed again with Escape, so a
     // popper left standing cannot intercept anything measured before it.
-    for (const [label, opener] of [
-      ['die Parkliste ist antippbar', '[data-planner-column-park]'],
-      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]'],
+    //
+    // The third entry is what counts as a ROW of each list, and it is named
+    // rather than derived: „the first enabled button in the popover" picked
+    // the park list's „Anderen Park planen" footer (outside the `<ul>`) and
+    // the calendar's „Vorheriger Monat" chevron — the run said so itself,
+    // „Vorheriger Monat" von 37. Neither is a row of the thing being tested.
+    for (const [label, opener, row] of [
+      ['die Parkliste ist antippbar', '[data-planner-column-park]', 'li button'],
+      ['der Monatskalender ist antippbar', '[data-planner-day-trigger]', '[data-planner-day]'],
     ]) {
       const trigger = phone.locator(`${SHEET} ${opener}`).first();
-      if (!(await trigger.count())) continue;
+      // A missing trigger FAILS rather than skipping the pair of assertions
+      // under it. This pass seeds a plan with a park and a date, so both of
+      // these controls have to exist — the day picker's `{date && …}` is
+      // satisfied by construction here — and „the button is gone" is the
+      // loudest version of „the list is not tappable", not an excuse to stop
+      // asking. It is the same pass-by-omission the two checks below were
+      // rewritten to drop; leaving it here would have kept it one level up.
+      const reachName = `${label.replace(' ist antippbar', '')} nimmt den Druck an`;
+      if (!(await trigger.count())) {
+        check(label, false, `${opener} nicht gefunden`);
+        check(reachName, false, 'kein Trigger, also kein Popover');
+        continue;
+      }
       const opened = await trigger
         .click({ timeout: 5_000 })
         .then(() => true)
         .catch(() => false);
       if (!opened) {
         check(label, false, 'ließ sich nicht öffnen');
+        check(reachName, false, 'Popover ließ sich nicht öffnen');
         continue;
       }
       await phone.waitForTimeout(400);
       // Only what the popper itself carries: the sheet behind it was measured
       // on its own pass, and reporting it twice would say a fixed thing twice.
       reportSweep(label, await sweepSmallTargets(null));
+      // …and a row of it actually RECEIVES the press, which is a different
+      // question from how big it is and is the one that was missing. The park
+      // list carried `PopoverContent`'s own `z-50` into a sheet at `z-[70]`, so
+      // it opened behind the panel's frosted glass: every row had a box of the
+      // right size, `elementFromPoint` over them answered with the sheet, and
+      // the sweep above passed. A target that cannot be hit is exactly the
+      // failure this pass exists to catch, so it is asked of Playwright —
+      // `trial: true` names the intercepting element on a no.
+      //
+      // The panel is resolved through the trigger's OWN `aria-controls`, not
+      // by taking a `[data-radix-popper-content-wrapper]` off the document:
+      // a popper the previous iteration left standing would answer that
+      // selector just as well, and this assertion must not depend on the
+      // Escape below having worked.
+      //
+      // And it presses the first ENABLED ROW, `row` above — a park in the
+      // `<ul>`, a cell of the date grid. Two corrections live in that
+      // sentence. Taking the LAST match hit „Anderen Park planen" and the
+      // last matrix cell, which is `disabled` past the best-days horizon: red
+      // on a date rather than on a defect (G-56). Taking the first enabled
+      // BUTTON then hit the calendar's „Vorheriger Monat" chevron, which is in
+      // the popover but is not a row of the list under test. Measured: park
+      // list 3 buttons of which 1 is the footer; calendar 37 buttons, 24
+      // enabled, 13 that a trial click would have hung on.
+      //
+      // No `if (count())` around the `check`, which is the pattern this whole
+      // block is a correction of: an empty popover fails the assertion rather
+      // than removing it.
+      const pressable = await phone.evaluate(
+        ([sel, opener, rowSelector]) => {
+          const trigger = document.querySelector(`${sel} ${opener}`);
+          const panel = trigger?.getAttribute('aria-controls');
+          const content = panel ? document.getElementById(panel) : null;
+          if (!content) return null;
+          const buttons = [...content.querySelectorAll(rowSelector)];
+          const target = buttons.find((el) => !el.disabled);
+          if (!target) return { total: buttons.length, name: null };
+          target.setAttribute('data-check-popover-row', '');
+          return {
+            total: buttons.length,
+            name:
+              target.textContent?.trim().replace(/\s+/g, ' ').slice(0, 30) ||
+              target.getAttribute('aria-label') ||
+              '(ohne Text)',
+          };
+        },
+        [SHEET, opener, row]
+      );
+      const reaches = pressable?.name
+        ? await phone
+            .locator('[data-check-popover-row]')
+            .first()
+            .click({ trial: true, timeout: 5_000 })
+            .then(() => 'erreichbar')
+            .catch((error) => String(error.message).split('\n')[0].slice(0, 120))
+        : 'kein bedienbarer Eintrag im geöffneten Popover';
+      check(
+        reachName,
+        reaches === 'erreichbar',
+        `„${pressable?.name ?? '—'}" von ${pressable?.total ?? 0} — ${reaches}`
+      );
+      await phone.evaluate(() =>
+        document
+          .querySelector('[data-check-popover-row]')
+          ?.removeAttribute('data-check-popover-row')
+      );
       await phone.keyboard.press('Escape');
       await phone.waitForTimeout(300);
     }
@@ -1832,7 +2127,9 @@ if (reachable) {
     // 44 px targets, so they dock instead — and until this was wired a block
     // could be selected and then neither ticked off nor removed.
     // Anywhere on the block, not on its 24 px grip.
-    await blocks.first().click({ position: { x: 80, y: 8 } });
+    await tapBlock(grid, blocks, 'der Block nimmt einen Klick auf seinen Rumpf an', {
+      position: { x: 80, y: 8 },
+    });
     await grid.waitForTimeout(300);
     const actionRow = grid.locator(`${SHEET} button[aria-label="Als gefahren markieren"]`);
     check('Auswahl blendet die Aktionen ein', (await actionRow.count()) > 0);
@@ -2918,92 +3215,103 @@ if (reachable) {
     },
   ];
 
-  await shows.route('**/api/parks/**', async (route) => {
-    const url = route.request().url();
-    // Only the two the panel reads. `**/api/parks/**` also matches the stats and
-    // best-days routes, and answering those with a park payload made
-    // `use-park-comparison-stats` read `stats.meta.displayable` off an object
-    // with no `meta` — a console error from the stub, not from the planner.
-    const isPark = /\/api\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/?]+(\?|$)/.test(url);
-    if (!isPark && !url.includes('/plan/day')) return route.continue();
-    if (url.includes('/plan/day')) {
+  // Registered on two pages — this one and the phone at the end of the block —
+  // so the strip's phone behaviour is asserted against the same five shows
+  // rather than against whatever the day happens to hold.
+  const stubShows = async (page) =>
+    page.route('**/api/parks/**', async (route) => {
+      const url = route.request().url();
+      // Only the two the panel reads. `**/api/parks/**` also matches the stats and
+      // best-days routes, and answering those with a park payload made
+      // `use-park-comparison-stats` read `stats.meta.displayable` off an object
+      // with no `meta` — a console error from the stub, not from the planner.
+      const isPark = /\/api\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/?]+(\?|$)/.test(url);
+      if (!isPark && !url.includes('/plan/day')) return route.continue();
+      if (url.includes('/plan/day')) {
+        return route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            parkSlug: PARK.slug,
+            timezone: 'Europe/Berlin',
+            context: {
+              date: todayInPark,
+              status: 'OPERATING',
+              openHour: OPEN,
+              closeHour: CLOSE,
+              crowdLevel: 'moderate',
+              weather: null,
+              isHoliday: false,
+              isBridgeDay: false,
+              isSchoolVacation: false,
+              isWeekend: false,
+            },
+            tier: 'measured',
+            leadDays: 0,
+            leadTimeMae: 7,
+            rides: [
+              {
+                attractionSlug: 'taron',
+                attractionName: 'Taron',
+                land: 'Mystery',
+                hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
+                  hour: OPEN + i,
+                  wait: 45,
+                })),
+                dayPeak: 45,
+                uncertaintyMinutes: 15,
+                sampleDays: 400,
+              },
+            ],
+            shows: SHOWS,
+          }),
+        });
+      }
+      // The live park payload. It carries no showtimes any more and must not need
+      // to: a stub that still served them here would keep passing if the panel
+      // went back to reading them off the poll, which only ever knew today.
       return route.fulfill({
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({
-          parkSlug: PARK.slug,
+          slug: PARK.slug,
+          name: PARK.name,
+          status: 'OPERATING',
           timezone: 'Europe/Berlin',
-          context: {
-            date: todayInPark,
-            status: 'OPERATING',
-            openHour: OPEN,
-            closeHour: CLOSE,
-            crowdLevel: 'moderate',
-            weather: null,
-            isHoliday: false,
-            isBridgeDay: false,
-            isSchoolVacation: false,
-            isWeekend: false,
-          },
-          tier: 'measured',
-          leadDays: 0,
-          leadTimeMae: 7,
-          rides: [
-            {
-              attractionSlug: 'taron',
-              attractionName: 'Taron',
-              land: 'Mystery',
-              hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
-                hour: OPEN + i,
-                wait: 45,
-              })),
-              dayPeak: 45,
-              uncertaintyMinutes: 15,
-              sampleDays: 400,
-            },
-          ],
-          shows: SHOWS,
+          liveWaitTimes: { available: true },
+          attractions: [],
         }),
       });
-    }
-    // The live park payload. It carries no showtimes any more and must not need
-    // to: a stub that still served them here would keep passing if the panel
-    // went back to reading them off the poll, which only ever knew today.
-    return route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({
-        slug: PARK.slug,
-        name: PARK.name,
-        status: 'OPERATING',
-        timezone: 'Europe/Berlin',
-        liveWaitTimes: { available: true },
-        attractions: [],
-      }),
     });
-  });
+
+  await stubShows(shows);
+
+  /** The same one-block Phantasialand day both pages in this block run on. */
+  const seedDay = (page) =>
+    page.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.removeItem('parkfan_planner_shows');
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      },
+      [PLAN, todayInPark]
+    );
 
   await shows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-  await shows.evaluate(
-    ([plan, date]) => {
-      const seeded = JSON.parse(JSON.stringify(plan));
-      const park = seeded.parks.phantasialand;
-      park.timezone = 'Europe/Berlin';
-      park.days = {
-        [date]: {
-          date,
-          entries: [
-            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
-          ],
-        },
-      };
-      seeded.parks = { phantasialand: park };
-      seeded.activeParkSlug = 'phantasialand';
-      seeded.activeDate = date;
-      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-    },
-    [PLAN, todayInPark]
-  );
+  await seedDay(shows);
   await shows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await shows.locator(LAUNCHER).click();
   await shows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
@@ -3077,6 +3385,93 @@ if (reachable) {
     !(/Miji African Dancers/.test(bandText) && /Nobis Vol\. 2/.test(bandText)),
     bandText.slice(0, 120)
   );
+
+  // The switch says something different on each screen, and only the phone's
+  // half is a geometry claim: there the strip IS what is short, so switching the
+  // shows off has to give the axis its row back rather than swap the sentence in
+  // it. The desktop above keeps its strip in both states, which the two
+  // assertions before this one already read off the same element.
+  //
+  // Asserted on the same stubbed five shows as the desktop, because the strip
+  // only collapses where there is a switch on it: over a park the API answered
+  // with no shows the strip reads „keine Spielzeiten", carries no switch, and
+  // must not collapse — a page without the stub would take that branch and grade
+  // nothing (📚 G-72).
+  {
+    const phoneShows = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+    });
+    noteErrors(phoneShows);
+    await stubShows(phoneShows);
+    await phoneShows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await seedDay(phoneShows);
+    await phoneShows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await phoneShows.locator(LAUNCHER).click();
+    await phoneShows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await phoneShows.waitForTimeout(2500);
+
+    const bandHeight = () =>
+      phoneShows
+        .locator(`${SHEET} [data-planner-show-band]`)
+        .evaluate((el) => Math.round(el.getBoundingClientRect().height));
+    const phoneToggle = phoneShows.locator(`${SHEET} [data-planner-shows-toggle]`);
+
+    // The anchor the collapse is measured against: without it a strip that never
+    // rendered would pass the assertion below for the wrong reason.
+    const shownHeight = await bandHeight();
+    check(
+      'auf dem Telefon steht der Streifen, solange die Shows an sind',
+      shownHeight >= 40,
+      `${shownHeight} px`
+    );
+
+    await phoneToggle.click();
+    await phoneShows.waitForTimeout(500);
+    const hiddenHeight = await bandHeight();
+    check(
+      'ausgeblendet gibt der Streifen dem Telefon seine Zeile zurück',
+      hiddenHeight === 0,
+      `${shownHeight} px → ${hiddenHeight} px`
+    );
+
+    // The corner it claims in exchange. Collapsed, the switch is the only thing
+    // left of the strip and it hangs over the grid's own blocks, so the trade is
+    // 44 × 44 of cover against the 45 px × full width it gave up — worth pinning
+    // as a box AND as ownership, because a control that is drawn there and does
+    // not answer there is the worse half of both states.
+    const corner = await phoneShows
+      .locator(`${SHEET} [data-planner-shows-toggle]`)
+      .evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+        return { w: Math.round(box.width), h: Math.round(box.height), owns: el.contains(hit) };
+      });
+    check(
+      'der freistehende Schalter ist 44 px groß und gehört ihm auch',
+      corner.w === 44 && corner.h === 44 && corner.owns,
+      `${corner.w}×${corner.h}, Mitte ${corner.owns ? 'trifft ihn' : 'trifft etwas anderes'}`
+    );
+
+    // The way back. A `click()` fails on a control something else intercepts, so
+    // this is also the assertion that the freestanding switch is reachable where
+    // it hangs over the grid.
+    check(
+      'und der Schalter bleibt der einzige und ist antippbar',
+      (await phoneToggle.count()) === 1 &&
+        (await phoneShows.locator(`${SHEET} [data-planner-show-band]`).count()) === 1
+    );
+    await phoneToggle.click();
+    await phoneShows.waitForTimeout(500);
+    const backHeight = await bandHeight();
+    check(
+      'und derselbe Schalter holt den Streifen zurück',
+      backHeight === shownHeight,
+      `${hiddenHeight} px → ${backHeight} px`
+    );
+
+    await phoneShows.close();
+  }
 
   await shows.close();
 }
@@ -3207,7 +3602,11 @@ if (reachable) {
   );
   // A reader operating the exhibit must not find a plan in their own planner
   // afterwards: the demo holds its state in the component, never in the store.
-  await page.locator('article li[data-planner-block]').first().click();
+  await tapBlock(
+    page,
+    page.locator('article li[data-planner-block]'),
+    'der Block der Demo nimmt einen Klick an'
+  );
   await page.waitForTimeout(300);
   check(
     'die Demo schreibt nichts in den Plan',

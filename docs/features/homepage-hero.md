@@ -483,19 +483,18 @@ build: React 19 compares hydrated attributes in `react-dom-client.development.js
 - **Switching continents** replaces the whole country-chip row, and letting the new set flick in
   staggered reads as the panel answering the click rather than the content teleporting
   (`hero-world-panel-client.tsx`).
-- **The header solidifying** on a hero page (`lib/hooks/use-header-reveal.ts`). The existing CSS
-  crossfade is untouched and stays the source of truth — `backdrop-filter` is deliberately kept
-  out of its transition list, because animating it re-rasterized the blur of the whole page
-  behind the bar on every frame. GSAP layers a stagger over it and animates **`y` only, never
-  `opacity`**: a failed chunk then means a plain fade with everything visible, never a header
-  that JavaScript forgot to reveal. Nothing touches the `<header>` element itself — it carries
-  `backdrop-blur-md`, so a transform or opacity on it would cost the bar its blur for exactly as
-  long as it was fading in.
-
-  It is **one timeline, played and reversed**, not a flourish re-run per scroll. The 50 px
-  threshold is crossed every time the visitor scrolls up and back down; restarting there turned
-  the header into a fidget, whereas reversing simply continues the same motion from wherever it
-  currently is.
+- ~~**The header solidifying** on a hero page (`lib/hooks/use-header-reveal.ts`)~~ — **gone since
+  PAR-170**, and the reason is worth keeping because it is what a stagger over a scroll threshold
+  costs. The timeline was a `fromTo(targets, {y:-10}, {y:0})` built the first time the bar
+  solidified and **reversed** on the way back up, and reversing a `fromTo` ends on its from-state.
+  That was safe only because the bar's contents were `opacity-0` up there: the hook's own docblock
+  said so. Once the navigation became visible from the first screen line, the same reverse left
+  the row sitting 10 px high in a 48-px bar for as long as the visitor stayed at the top — measured
+  on `main`, first nav link, 1440 px: `top 13.5` at rest, `matrix(1, 0, 0, 1, 0, -10)` and
+  `top 3.5` after one scroll down and back. There is nothing left in the bar that appears at the
+  threshold, so there is nothing left to stagger. What survives is the CSS crossfade, untouched and
+  still the source of truth, with `backdrop-filter` deliberately kept out of its transition list
+  because animating it re-rasterized the blur of the whole page behind the bar on every frame.
 
 ### The corner anchors do not cross-fade, they move
 
@@ -515,11 +514,15 @@ container is centred, so the distance depends on the viewport and is re-measured
 `motion-reduce:transform-none!` drops the movement for reduced motion; the `!` is required
 because an inline style otherwise wins.
 
-The locale + theme cluster on the right does the same thing with two differences: it is measured
-from the **right** edges (`offsetLeft + offsetWidth`) and moves from `origin-right`, and it needs
-no scale at all — both copies hold the same two controls at the same size, and only the corner one
-wraps them in a frosted pill. That pill dissolving while the pair glides is the whole effect.
-Measured in the solid state, both right edges land on the same pixel.
+The locale + theme cluster on the right **used to do the same thing** from the right edges, with a
+frosted pill dissolving around the corner copy. It is gone since PAR-170, and not for taste: with
+the search trigger and the burger visible from the first screen line, those are drawn at their flex
+positions on the right, which is where the pill hung. Measured at 360 px the pill spanned
+240–336 px against the burger's 308–344 and the actions box's 216–304, and at 1024 and 1280 it lay
+over the search control. Two copies of the same three preference controls, one of them painted
+across the burger, is not a handoff — so there is one cluster now, always in the flex flow, and one
+hydration of `LocaleSwitcher`/`ThemeToggle`/`TemperatureUnitToggle` per hero page instead of two.
+The logo is the only pair left.
 
 In both cases the chunk loads while the visitor is already looking at the thing being animated,
 and if the import fails the content is in the DOM regardless — nothing is hidden up front waiting

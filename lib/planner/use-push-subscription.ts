@@ -1,7 +1,15 @@
 'use client';
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
-import { forgetTrip, getTripId, startTripAutoSync, stopTripAutoSync, syncTrip } from './trip-sync';
+import {
+  forgetTrip,
+  getTripId,
+  startTripAutoSync,
+  stopTripAutoSync,
+  syncTrip,
+  type TripSyncError,
+} from './trip-sync';
+import { forgetArmedPush, pushIsArmedFor, rememberArmedPush } from './push-arming';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
@@ -48,6 +56,16 @@ interface PushAvailability {
 export function usePushSubscription() {
   const [state, setState] = useState<PushState>('checking');
   const [availability, setAvailability] = useState<PushAvailability | null>(null);
+  /**
+   * Why switching off did not go through, or `null`.
+   *
+   * Only the stored plan's DELETE can refuse in a way the visitor has to hear
+   * about: it is the one step that leaves something of theirs on a server, and
+   * the switch stays ON when it fails, which needs a reason beside it. The class
+   * is carried rather than a boolean so the sentence can grow a limiter's window
+   * once one reaches the client (PAR-146).
+   */
+  const [deleteError, setDeleteError] = useState<TripSyncError | null>(null);
   const selectedTopics = useSyncExternalStore(
     plannerPushTopics.subscribe,
     plannerPushTopics.getSnapshot,
@@ -94,13 +112,20 @@ export function usePushSubscription() {
         return;
       }
 
-      // Already subscribed? Only counts if this browser ALSO still knows which
-      // trip it subscribed for — a subscription whose local trip id is gone
-      // cannot be updated when the plan changes, so it is not "on".
+      // Already subscribed? "On" is a statement about the SERVER — that this
+      // endpoint is stored against this trip — and neither local signal says
+      // so. The browser keeps one subscription for the whole origin, so its
+      // presence only means something on this site uses push; a stored trip id
+      // only means a plan was uploaded once. Reading the two together reported
+      // "on" after any failed `POST /api/push/subscriptions` below, which is
+      // the switch this file's own rule forbids: on, and doing nothing.
+      //
+      // So the pairing the server accepted is what is asked (`push-arming.ts`),
+      // and both halves have to still match the live values.
       const registration = await navigator.serviceWorker.getRegistration('/sw.js');
       const existing = await registration?.pushManager.getSubscription();
       if (cancelled) return;
-      setState(existing && getTripId() ? 'on' : 'off');
+      setState(pushIsArmedFor(existing?.endpoint, getTripId()) ? 'on' : 'off');
     };
 
     void resolve();
@@ -112,6 +137,26 @@ export function usePushSubscription() {
   const enable = useCallback(async () => {
     if (!availability?.publicKey) return;
     setState('working');
+    setDeleteError(null);
+
+    /**
+     * Whether this attempt CREATED the row on the server.
+     *
+     * Everything after the upload can still fail, and every one of those paths
+     * ends at `off` — where a plan this attempt put there may not be left
+     * standing, because the whole feature's rule is that the plan is on the
+     * server only while push is on.
+     *
+     * Created, not uploaded: `syncTrip` re-uses a stored trip id, and a trip
+     * that was already there is not this attempt's to delete. A second tab with
+     * push on shares that id through `localStorage`, so rolling back on every
+     * successful sync would take down the plan a live subscription is pointing
+     * at. The id before the sync is what tells the two apart — read after the
+     * permission prompt rather than before it, because that prompt can stand
+     * open for minutes and an id another tab stored while it did would read as
+     * this attempt's own.
+     */
+    let created = false;
 
     try {
       const permission = await Notification.requestPermission();
@@ -124,12 +169,15 @@ export function usePushSubscription() {
       // it does not have, and the order matters for the failure too: a plan
       // stored with no subscription is a row that expires, while a subscription
       // with no plan is a switch that is on and does nothing.
+      const before = getTripId();
       const stored = await syncTrip();
       if (!stored.ok) {
         setState('off');
         return;
       }
       const tripId = stored.id;
+      // A different id than before (or none before) means the POST ran.
+      created = before !== tripId;
 
       // Registered only now, not on every page load: a worker installed for
       // everybody would claim scope over the whole origin for a feature almost
@@ -166,13 +214,31 @@ export function usePushSubscription() {
         // The browser is now subscribed to a push service that will send it
         // nothing. Undo it rather than leaving a dangling subscription — the
         // next attempt would otherwise find one and report "on".
-        await subscription.unsubscribe().catch(() => {});
+        //
+        // Under the same guard `disable()` uses, and for the same reason: the
+        // browser has ONE push subscription for the whole origin, and the line
+        // above may well have found it rather than created it (a ride alert
+        // arms the very same one). Unsubscribing unconditionally here took
+        // every armed alert and followed show down with a failed POST.
+        if (!hasAnyPushFollowsLocal()) {
+          await subscription.unsubscribe().catch(() => {});
+        }
+        if (created) await forgetTrip();
         setState('off');
         return;
       }
 
+      // The one place this is written: the server has just accepted this
+      // endpoint against this trip, and that answer is what the next mount
+      // reads instead of guessing from two local signals. Deliberately not
+      // cleared on the paths above — see `forgetArmedPush`.
+      rememberArmedPush(subscription.endpoint, tripId);
       setState('on');
     } catch {
+      // Anywhere between the create and the last line: the plan goes with it.
+      // A refused DELETE keeps the id (`forgetTrip`), which is right here too —
+      // the next attempt resumes that trip rather than stranding it.
+      if (created) await forgetTrip();
       setState('off');
     }
   }, [availability, selectedTopics]);
@@ -220,8 +286,36 @@ export function usePushSubscription() {
     [availability, state]
   );
 
+  /**
+   * Switching off: the stored plan goes first, and the switch goes off either
+   * way.
+   *
+   * First, because it is the only step whose failure leaves something behind.
+   * The id is the credential and this browser holds the sole copy, so a plan not
+   * deleted before the id is forgotten is unreachable to its owner for the rest
+   * of its 400 days. Running it before anything is torn down also means the
+   * scoped unsubscribe below still has an id to name.
+   *
+   * Either way, because the button says "notifications off" and that half owes
+   * nothing to the server. Refusing to switch off while the API is having a bad
+   * minute would keep sending notifications to somebody who asked for them to
+   * stop — and a 400 or a 502 from an offline phone never clears on its own, so
+   * "press it again" is not an answer there. So the teardown runs on both paths
+   * and only the deletion is reported as unfinished.
+   *
+   * What that costs is a retry that has to wait: the id is kept (it must be, or
+   * the row is lost), and the next switch-off sends the DELETE again. The
+   * sentence beside the control says so rather than implying it happened.
+   */
   const disable = useCallback(async () => {
     setState('working');
+    setDeleteError(null);
+
+    // Read before the delete forgets it: the scoped unsubscribe below needs it.
+    const tripId = getTripId();
+    const forgotten = await forgetTrip();
+    setDeleteError(forgotten.ok ? null : forgotten.error);
+
     try {
       const registration = await navigator.serviceWorker.getRegistration('/sw.js');
       const subscription = await registration?.pushManager.getSubscription();
@@ -237,7 +331,15 @@ export function usePushSubscription() {
         // tripId there is nothing of this feature's left on the server to
         // clear, so the call is skipped rather than sent unscoped (which
         // would read as "forget the browser entirely" and cascade anyway).
-        const tripId = getTripId();
+        //
+        // Still sent after the trip's own DELETE, which clears the same two
+        // columns on every subscription pointing at it: that one cleared them
+        // only on the 204 path. On the 404 path — a trip already expired or
+        // swept — and on a refused delete, nothing has, and this is then the
+        // only thing standing between the visitor's press and a job that keeps
+        // reading their plan. `PushService.unsubscribe` matches on
+        // (endpoint, tripId), so where the DELETE did clear it this is a no-op
+        // rather than a second, wider action.
         if (tripId) {
           await fetch('/api/push/subscriptions', {
             method: 'DELETE',
@@ -253,8 +355,13 @@ export function usePushSubscription() {
           await subscription.unsubscribe().catch(() => {});
         }
       }
-      forgetTrip();
     } finally {
+      // With the switch. The record follows what the control says rather than
+      // what the server managed to do about it: `disable()` goes off on both
+      // paths (a refused DELETE is reported beside it, not by keeping the
+      // switch on), and a record left standing would put it back on at the
+      // next mount over a visitor who asked for it to stop.
+      forgetArmedPush();
       setState('off');
     }
   }, []);
@@ -274,6 +381,8 @@ export function usePushSubscription() {
     enable,
     disable,
     setTopics,
+    /** Why the last attempt to switch off was refused, or `null`. */
+    deleteError,
     /** What this deploy can send. Empty until `/api/push` has answered. */
     availableTopics: availability?.topics ?? [],
     /** The visitor's narrowing, or `null` for "everything above". */

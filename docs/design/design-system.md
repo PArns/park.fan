@@ -654,8 +654,56 @@ The button alone pushed it to 26 over and the document to 330 px on a 320 px scr
 13 over now, i.e. inside the padding, and the document is exactly the viewport at every width from
 320 to 768.
 
-The corner pill on the hero pages carries the same three controls, ends 24 px from the right edge at
-every width, and clears the corner lockup by 42 px at 320.
+The hero pages carried a second copy of those three controls in a frosted pill at `right-6` while
+the bar floated. PAR-170 removed it: once the nav, the search trigger and the burger are visible
+from the first screen line, the pill lies across them — 240–336 px against a burger at 308–344 at
+360 px, over the search control at 1024 and 1280. The in-flow cluster is the only one now, on every
+page and in both states of the bar, so the width budget above is the whole budget.
+
+### The bar has two states and the navigation is not one of them
+
+`isTransparent` used to decide whether the main menu existed. On the six pages that open on a
+full-bleed hero — homepage, Fancast, best-travel-time hub, the guide, the blog index, a blog
+article — the nav row, the search trigger and the burger carried `opacity-0 pointer-events-none`,
+the `<nav>` carried `aria-hidden`, every link in it carried `tabIndex={-1}`, and `NavMenu`/
+`FavoritesMenu` were handed a `disabled` that also refused to open their panels. Until the visitor
+had scrolled 50 px the menu was therefore not clickable, not tabbable and not in the accessibility
+tree, with nothing on screen saying there was one. Measured across all six pages × 360/1440 px ×
+light/dark: 24 of 24 combinations, first nav link out of the tab order.
+
+Two things had to come with the fix, and both are contrast rather than taste.
+
+**The scrim is its own layer.** The bar now sits over an arbitrary photo with working controls on
+it, so it needs a ground: a `background/85` gradient holding flat over the bar's 48 px and fading
+out across 32 px below it, so the scrim leaves no edge of its own on the picture. It is a **second**
+absolutely positioned layer rather than a second class list on the material layer, because a
+gradient is `background-image` and a flat tint is `background-color`: one layer would have dropped
+the scrim the instant the threshold was crossed while the solid colour faded in behind it over
+500 ms. Two layers cross-fade on `opacity`, which interpolates. Neither may ever become a
+`backdrop-filter` or a transform on the `<header>` itself — that makes it a backdrop root and
+takes the menu band's blur with it.
+
+**The ink switches with it.** `--muted-foreground` is `oklch(0.556)` on an `oklch(1)` background,
+i.e. 4.73 : 1 — 0.23 over the threshold, so 15 % of a dark photo through the scrim lands it at
+3.3 : 1 and no opacity short of a solid bar repairs that. While the bar floats, the nav runs at
+`foreground/90` instead; measured over the six pages × two widths × two themes the worst reading is
+13.31 : 1, against 1.01 : 1 for what muted ink on an untinted hero would have been.
+
+It switches with the state and waits for nothing, and that took two attempts. The worry is the way
+down — muted ink arriving before the ground it is safe on — and it was real while the scrim and the
+material were one layer: the scrim vanished at the threshold and left about a quarter of a ground
+under muted labels for a third of a second. The two layers fixed it at the source; their sum now
+runs 85 % → ~65 % → 80 %, i.e. never far from the 80 % the solid bar has always given muted ink
+while a hero is still behind it. A `delay-300` on the solid class list buys the remaining 200 ms and
+costs far more than it is worth: `transition-delay` is one property and the hover rule shares it, so
+it would delay the hover of all seven entries on every page in the app. A timer in state is worse —
+a `setState` in an effect, which this project's lint rule refuses.
+
+The header's own GSAP stagger went with it (`lib/hooks/use-header-reveal.ts`): it built a
+`fromTo(y: -10 → 0)` at the threshold and **reversed** it on the way back up, which is only
+invisible while the row is `opacity-0`. Measured on the old build, first nav link at 1440 px:
+`top 13.5` at rest, `matrix(1, 0, 0, 1, 0, -10)` and `top 3.5` after one scroll down and back — a
+visible row would have sat 10 px high in a 48 px bar from then on.
 
 What that leaves is a bar with no room for a fourth preference. The next thing that wants to live
 here is a question about the bar's height, or about a preferences sheet — not about shaving another

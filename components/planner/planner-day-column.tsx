@@ -79,6 +79,25 @@ interface PlannerDayColumnProps {
    */
   withFoot: boolean;
   /**
+   * Whether this column draws its own head — the park, the day.
+   *
+   * The panel decides, for the same reason it decides {@link withFoot}: the
+   * answer is about the SHEET. On a phone the sheet's own header and this row
+   * are two rows saying two halves of one thing, 45 px each over an axis that
+   * has 211 — so there the panel draws the head inside its `SheetHeader` and
+   * the two become one. The park name and the day are what a reader needs
+   * there; the panel's own title is what gives way, to `sr-only`.
+   *
+   * It is the same `PlannerColumnHead` in both places, moved rather than
+   * copied — a second markup would be a second `[data-planner-column-park]` for
+   * a selector to pick the wrong one of, and two lists that have to agree.
+   *
+   * A phone never has a second column, so the question of WHICH column a
+   * panel-level head speaks for — the reason the pair moved onto the column in
+   * the first place — cannot arise there.
+   */
+  withHead: boolean;
+  /**
    * The column the reader is working in, where there is more than one.
    *
    * NOT {@link primary}, which is a fact about the plan — its active day, the
@@ -144,6 +163,7 @@ export function PlannerDayColumn({
   onStartPagePark,
   onOpenWizard,
   withFoot,
+  withHead,
   active,
   onActivate,
   className,
@@ -396,9 +416,15 @@ export function PlannerDayColumn({
           be a chooser over an empty list under the words "kein Park" — a control
           asking a question the visitor has no way to answer — above the empty
           state, which is the one screen that has to say what this thing is for
-          and already carries the button that starts it. */}
+          and already carries the button that starts it.
+
+          `withHead` is the other gate and it is the panel's: on a phone this
+          row lives in the sheet's own header instead. The wrapper stays either
+          way — an empty ROW is what the subgrid needs, and a column that
+          rendered nothing at all here would hand its band to this row's
+          track. */}
       <div className="min-w-0">
-        {parks.length > 0 && (
+        {withHead && parks.length > 0 && (
           <PlannerColumnHead
             parks={parks}
             parkSlug={parkSlug}
