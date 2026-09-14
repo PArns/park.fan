@@ -284,10 +284,12 @@ strip collapses to `h-0` — rule, glass, symbol and sentence with it — and th
 switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
 Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
 and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
-a switch rather than move somewhere else: the panel's header row has 63 px left
-for the park name at 390 px (see the arithmetic in `planner-flyout.tsx`), and a
-row of its own in `PlannerDayFoot` would have cost about 35 px of chrome to give
-45 back. It costs the corner: 44 × 44 of grid under a visible control, against
+a switch rather than move somewhere else: the panel's header row has 119 px left
+for the park name at 390 px and the name measures 80 of them (63 until PAR-188
+dropped the ×; see the arithmetic in `planner-flyout.tsx`, and PAR-202 for what
+the 56 px it gave back are worth), so a fourth control there comes out of the
+park name — and a row of its own in `PlannerDayFoot` would have cost about 35 px
+of chrome to give 45 back. It costs the corner: 44 × 44 of grid under a visible control, against
 44 px across the full width before.
 
 That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`
@@ -872,6 +874,86 @@ four fifths of a band is still `tight`, and a whole band is `good`. Four fifths
 rather than three: slack 11 of 15 reads `tight` under the whole band and under a
 ¾ threshold alike, so it would sit there green while pinning neither.
 
+### …and it is drawn in the gap a reader can see, not in the gap between two queues
+
+The chip hangs in the space between one block and the next, and for as long as it
+existed that space was measured from the END of the first queue to the START of
+the second. That is not the space on screen. A block is drawn at
+`minBlockPxFor` even where its queue is shorter — twenty pixels is the smallest
+box a line of text sits in — so a short queue's box hangs into the gap below it,
+and the chip was placed in a gap that was partly already covered.
+
+It did not matter while the optimiser reserved the wait plus the band. Since
+PAR-169 it reserves the wait, the blocks stand close together, and the difference
+became the whole gap. Measured over 46 planned park-days from `/plan/day`, 267
+legs, 2026-09-14:
+
+| axis               | between the queues        | as drawn                          |
+| ------------------ | ------------------------- | --------------------------------- |
+| 1.2 px/min         | min 12, median 24, max 54 | min **12**, median **16**, max 48 |
+| 1.8 px/min (phone) | min 18, median 36, max 81 | min 18, median 24, max 72         |
+
+Against a 21 px chip that is nine of nine cut on a packed Phantasialand day at
+1440 px and eight of nine at 390 px.
+
+`lib/planner/leg-chip.ts` holds the arithmetic, pure and away from the component
+for the reason `weather-chart-axis.ts` is: it broke once in a way a green build
+showed nothing of. `legChipPlacement` takes the leg's own height and the
+overhang, and answers where the chip's top edge goes and whether it is the short
+form. Two numbers are **rendered rather than typed** — `LEG_CHIP_PX` 21 and
+`LEG_CHIP_COMPACT_PX` 12, measured in the app's own stylesheet at both scales in
+all six languages, where the height follows the type and not the words. The 18
+that stood in the component before was a guess and three pixels under the thing
+it was measuring.
+
+Three decisions sit underneath it.
+
+**What the short chip drops is the distance and the slack**, so the minutes and
+the verdict — the two things the gap is about — survive in every state, and the
+distance stays in the `title` where it always was. The rule is Patrick's, taken
+against dropping the chip (the warning would go exactly when the day is tight)
+and against raising it over the blocks (it would cover a ride's name on nearly
+every leg of a packed day).
+
+**The short chip's outline is a `ring-1 ring-inset`, not a border**, and that is
+what makes it 12 px rather than 14: a ring is a box-shadow and costs no height,
+where a border is two more pixels. Twelve is not a round number picked for looks
+— it is the smallest gap a planned day produces, 34 of those 267 legs, so a 14 px
+chip would still have been cut on 12.7 % of them. The colour is `current`, i.e.
+the verdict's own `text-*` class from `TRANSFER_CHIP_CLASS`, so there is no
+second per-verdict map to drift from the first. Shrinking the TYPE to 9 px would
+also have measured 12 and was refused: a chip that is hard to read is not fixed
+by making it smaller.
+
+**The wrapper is `flex`**, and that is load-bearing rather than tidy. The chip is
+`inline-flex`, so in a block wrapper it is an inline box sitting on a line box's
+baseline: measured at 1440×1000, a 12 px chip in a wrapper positioned at
+`top: 10px` painted at 18. The offset is the leading above the baseline, so it
+varies with the chip's own height and would have silently undone any position
+computed in pixels. A flex item has no baseline to sit on.
+
+Three things this does not cover, all named where the code is. A day somebody
+**drags** has no floor under the gap at all — two blocks can overlap, the room is
+then negative, and the chip is centred on it rather than favouring one side. A
+block with **no figure** is drawn at a flat 40 px while `spanMinutes` counts
+`MIN_BLOCK_MIN` for it, so its drawn bottom is 20 px below where the lane packing
+thinks it ends and the room goes negative there too; that disagreement predates
+this and is PAR-227, and it is also why the corpus above — which filtered parks
+with no readable wait times out — states a floor for days that have figures in
+them rather than for every day. And the repair button on a `broken` leg keeps its
+21 px: it is a target rather than a label, its text is already down to a deficit
+and one word, and a broken leg has by definition too little room for anything.
+
+The gap itself comes from `drawnBoxPx` (`day-grid.ts`), which is the same
+function `planner-block.tsx` sizes its own box with — including the third case, a
+block with no figure, which is a stated 40 px and used to live in that component
+and nowhere else. A hand-written twin there would agree on the day it was written
+and on no other. `pnpm test:planner-leg` pins the placement and `pnpm
+test:planner-grid` the box — but a unit test cannot see a stylesheet, so the two
+heights are pinned where a browser is: `pnpm check:planner` reads the rendered
+chip and fails if it is not `LEG_CHIP_PX` or `LEG_CHIP_COMPACT_PX`, which is what
+keeps "rendered rather than typed" true after somebody edits a padding class.
+
 ### A queue is joined before closing, and never after
 
 Two halves of one rule, and the planner had both of them wrong in opposite
@@ -1448,10 +1530,29 @@ resting height back: the resting height is where the 59 px came from, and it is
 what Patrick asked for in as many words.
 
 What 100svh costs is the modal overlay. Pulled up there is no shield left beside
-the sheet, so tapping outside is no longer a way out and the two that remain have
-to be real ones — the × on `SheetContent` is `max-sm:size-11`, and the handle
-brings the sheet back down by drag **or** tap, which is why the tap toggles
-rather than only dismissing. At rest the shield is back.
+the sheet, so tapping outside is no longer a way out and what remains has to be
+real: the handle brings the sheet back down by drag **or** tap, which is why the
+tap toggles rather than only dismissing. At rest the shield is back.
+
+**And the × is gone from the phone sheet**, which is what makes that handle the
+pulled-up state's only exit. Three ways out of a bottom sheet were one too many,
+and the one that went is the one parked in the corner a thumb reaches worst;
+`SheetContent` takes a `hideClose` prop for it, opt-in per call site rather than
+a breakpoint inside the component, because the same component draws the header's
+burger menu and that sheet has nothing else to close it with. The planner keys it
+on `isPhone`, the same value as `side` and `modal` two lines up, so a class does
+not become a fourth copy of `PLANNER_PHONE_QUERY` free to drift from the other
+three. That is also what keeps the trade honest at 844 × 390: the handle's
+wrapper is `planner-wide:hidden` and `planner-wide:` is the exact complement of
+`planner-phone:`, which is the CSS twin of that query — so the × goes exactly
+where the handle arrives, and there is no window that loses both. A `max-sm:`
+class would have taken the × off a landscape phone without giving it a handle,
+because 844 px is over `sm`. The desktop panel keeps its ×: a side panel has no
+handle, and its outside press is deliberately swallowed, so there the × and
+Escape are the whole list. `check:planner` asserts the pair at all three:
+no close button beside the existing `der Anfasser ist da` at 390 × 844, the same
+beside the handle assertion at 844 × 390, and a close button still present at
+1400 px.
 
 ### Every target in the sheet is 44 px, and three of them are not what they measure
 
@@ -1496,13 +1597,21 @@ action row. The strip grows instead, which costs the axis nothing (it is scrolle
 content, not part of the scroller's box) and costs coverage, which scrolling
 recovers where a stolen tap does not.
 
-One entry in that list was not a size at all. `SheetContent` draws its close
+One entry in that list was not a size at all. `SheetContent` drew its close
 button `max-sm:size-11` at `right-2`, covering the rightmost 52 px of the header
 row, while the row reserved `pr-7` plus the header's `px-3` — 40 px. "Einen Tag
-planen" sat 12 of its 28 px under the ×. A sweep skips a control that is covered
-at its own centre (that is a different defect), so this one has a named check of
-its own, asked as `click({ trial: true })` because "receives events" is the
-question and Playwright names the intercepting element when the answer is no.
+planen" sat 12 of its 28 px under the ×, and the fix was `max-sm:pr-14`. Dropping
+the × from the phone sheet takes both sides of that away: there is nothing to
+clear, so the row carries `pr-7` where `!isPhone` and nothing where the sheet is
+a phone's, and the 56 px go back to the head. The clearance is keyed on the same
+value as `hideClose` rather than on a width, because what it clears is the button
+that value decides. A sweep skips a control that is covered at its own centre
+(that is a different defect), so the overlap has a named check of its own, asked
+as `click({ trial: true })` because "receives events" is the question and
+Playwright names the intercepting element when the answer is no. It measures the
+**rightmost** control of the header whatever that is today, so it keeps working
+over a header that no longer has a × in it — it is the header's own controls it
+guards now.
 
 ### A plan may not depend on a gesture landing
 
@@ -1648,6 +1757,51 @@ with a 400 from the image optimizer, so the picture is simply absent in
 production while `next dev` serves it and prints a warning nobody reads; three
 planner surfaces shipped `quality={70}` and `quality={80}` against a configured
 `[50, 60, 75, 85, 90]`, i.e. every photograph the feature has.
+
+### Opening the panel is a step of its own, and a failed one is a ❌
+
+Every flow in that file starts by pressing the edge tab and waiting for the
+sheet, and for as long as it existed those were two bare calls. Both throw, and
+a throw at the top level of an ES module ends the run: twice on 2026-09-13, with
+roughly 300 green assertions behind it and all 40 flows after it unmeasured. The
+press is the fragile half — `waitUntil: 'domcontentloaded'` resolves before React
+has wired the tab, so the press lands on a painted button with no handler on it
+and the wait then expires over a sheet nobody asked for. It only reproduced while
+the machine was busy with something else, which is the run with the most to lose.
+
+`openSheet(page, where)` is the only way in now, at all 39 places, and three
+things about it are load-bearing. **The repeat is the mechanism, not the
+timeout**: a longer single wait only postpones the same press on a dead button,
+so a press that produced nothing is followed by `settleHydration` and another
+one, three at most. **A press that landed is read off
+`html[data-planner-open]`, not off the sheet** — the `planner` namespace is its
+own 15 KB chunk, so for the length of that fetch a landed press has no
+`[data-slot="sheet-content"]` to show for itself, and a guard reading the sheet
+would press a toggle twice and close the panel it was waiting for. **And the
+success is waited for on `[data-state="open"]`**, because a sheet on its way out
+stays visible for 300 ms while carrying `closed`. An attribute with no sheet
+behind it after three waits is reported as what it is: the press worked and the
+chunk never arrived, which `useLazyMessages` does not retry.
+
+A failure is a named ❌ carrying the presses and what the last one said, and the
+call site then leaves its own block (`step: { … break step; }`, closing its page
+on the way out) so the rest of the run still executes. Successes are counted
+rather than asserted — 39 green rows about opening would bury the assertions
+about what is _in_ the panel — and the count rides with the balance:
+`ℹ️ Planer 53× geöffnet`, with the repeats and the failures beside it. That
+figure is the one that says whether the run got as far as the flows it reports
+on. Add a bare `locator(LAUNCHER).click()` and it stops being true.
+
+The balance itself is now unconditional: `uncaughtException` and
+`unhandledRejection` print the stack and then the balance, and every exit leaves
+through `exitAfterFlush`, because `process.exit()` does not wait for a pending
+write and stdout is a pipe whenever this runs from a script. Measured on
+Node 24: a rejected top-level `await` arrives as an `uncaughtException`, not as
+an `unhandledRejection`. What is **not** hardened is every other interaction —
+56 bare `.click()` calls inside an already-open sheet, plus two bare
+`waitFor`s (one for the sheet going away after `Escape`, one for a search hit) —
+so a throw there still ends the run, with a balance but without the flows after
+it.
 
 After moving a planner component across the client boundary, or adding a
 namespace to one, re-run `pnpm generate:route-namespaces` and

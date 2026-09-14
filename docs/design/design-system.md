@@ -397,6 +397,19 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
 - **The three readings are one component** (`StatTiles`), because the stand-in panel's whole claim
   is that it carries the weight of the recommendation it replaces, and a fourth hand-written copy
   of those classes cannot keep that promise.
+- **And they restack on the row's own width, not the window's** — `@container/stattiles` with the
+  threshold at **380 px**. These tiles sit in a `PANEL_CELL` whose width follows the chapter's
+  column count, and that does not rise with the window: on the ride page the row measures 286 px
+  at a 360 px window, 262.5 px at 640 px and 302.5 px at 768 px, so the two widths the old window
+  media query left three-up are the narrowest the row ever gets outside a phone — and 640 px is
+  narrower than the phone. Three-up in 302.5 px is a 92.8 px tile with 68.8 px of content inside
+  `p-3`, against „Zur Öffnung" and „Du sparst" wanting 75–78 px: they wrap to two lines while
+  „Tagespeak" does not, and the three values then sit at three different heights. The threshold
+  separates the two cases that must stay apart: 302.5 px stacks, the 430.5 px a 1024 px window
+  gives stays three-up. Above it the fit is not perfect in every language — a row in which no
+  label wraps in any of the six starts near 438 px (the French „Vous économisez" wants 114 px and
+  has 111.5 px at 1024 px; Italian and Spanish wrap between 380 and 430 px of row), which is
+  unchanged from the window rule and is its own decision.
 
 ### One colour rank per card, and a wash is not a boundary
 

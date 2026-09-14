@@ -544,14 +544,35 @@ export function ParkCalendarDayDetail({
                 {forecast!.actual ? t('dayDetail.actualWaitsTitle') : t('headlinerForecastTitle')}
               </h3>
               <ul className="flex flex-col gap-1.5">
-                {forecast!.rides.map((r) => (
-                  <li key={r.attractionId} className="flex items-center justify-between gap-4">
-                    <span className="truncate text-sm">{r.name}</span>
-                    <span className="text-foreground shrink-0 text-sm font-semibold tabular-nums">
-                      ~{r.waitTime} {tCommon('min')}
-                    </span>
-                  </li>
-                ))}
+                {forecast!.rides.map((r) => {
+                  const band = r.uncertaintyMinutes ?? null;
+                  const hasBand = band !== null && Number.isFinite(band);
+                  return (
+                    <li key={r.attractionId} className="flex items-center justify-between gap-4">
+                      <span className="truncate text-sm">{r.name}</span>
+                      {/* `items-baseline`, so the smaller band figure sits on the number's
+                          baseline and the row keeps the height the number alone gave it —
+                          which is what makes a day with a band and a day without one the same
+                          height while the reader steps through days with ←/→. */}
+                      <span className="flex shrink-0 items-baseline gap-1.5">
+                        <span className="text-foreground text-sm font-semibold tabular-nums">
+                          ~{r.waitTime} {tCommon('min')}
+                        </span>
+                        {/* The spread belongs to a PREDICTION, so an `actual` day gets no slot
+                            at all — the same split the planner makes for a ticked-off stop
+                            (`planner-entry-row.tsx` hands the band on as `null` once `done`),
+                            and a different statement from „no spread was reported". */}
+                        {!forecast!.actual && (
+                          <span className="text-muted-foreground text-xs tabular-nums">
+                            {hasBand
+                              ? t('dayDetail.waitBand', { minutes: band })
+                              : t('dayDetail.waitBandUnknown')}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
               {!heroShowsAvgWait && (
                 <p className="text-muted-foreground border-border/50 mt-0.5 border-t pt-2 text-xs">

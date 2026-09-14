@@ -37,6 +37,9 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
+// The rendered chip heights are asserted below, so the numbers come from the
+// module that states them rather than from a copy that can drift (PAR-180).
+import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX } from '../lib/planner/leg-chip.ts';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
 // Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image
@@ -177,6 +180,91 @@ const check = (name, ok, detail = '') => {
 };
 
 /**
+ * The balance, and the number of times the planner was actually opened.
+ *
+ * It sits up here rather than beside the `process.exit` it feeds, because the
+ * guard below calls it from a path that can fire at any line of the file — and
+ * it is written to be callable twice, since a throw in the last few statements
+ * would otherwise print two balances that disagree.
+ *
+ * The open count is here and not among the assertions on purpose: it is the
+ * figure that says whether the run got as far as the flows it reports on, which
+ * a pass/fail row cannot (📚 G-72).
+ */
+let balanceShown = null;
+function printBalance() {
+  if (balanceShown !== null) return balanceShown;
+  console.log(
+    `\nℹ️  Planer ${sheetOpens.opened}× geöffnet` +
+      (sheetOpens.retried > 0
+        ? `, davon ${sheetOpens.retried}× erst nach einem zweiten Druck`
+        : '') +
+      (sheetOpens.failed > 0 ? `, ${sheetOpens.failed}× gar nicht` : '')
+  );
+  const failed = results.filter((r) => !r.ok);
+  console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
+  if (failed.length > 0) {
+    console.log(failed.map((f) => `  · ${f.name}`).join('\n'));
+  }
+  balanceShown = failed.length;
+  return failed.length;
+}
+
+/**
+ * Leave only once the balance has actually left the process.
+ *
+ * `process.exit()` does not wait for a pending write, and stdout is a PIPE
+ * rather than a terminal whenever this runs from a script or a CI step — so the
+ * last lines, which are the ones worth having, can be cut off mid-sentence. The
+ * callback of a final empty write fires after everything queued before it has
+ * been flushed; the timer is the way out if the reader on the other end has
+ * already gone away.
+ *
+ * It therefore does NOT end the run where it is called, which the two early
+ * exits below would otherwise carry on past with a closed browser. So it answers
+ * with a promise that never settles: `await exitAfterFlush(1)` is the last thing
+ * a caller does, and the exit itself is what ends it.
+ */
+function exitAfterFlush(code) {
+  process.exitCode = code;
+  const leave = () => process.exit(code);
+  process.stdout.write('', leave);
+  setTimeout(leave, 2000);
+  return new Promise(() => {});
+}
+
+/**
+ * A throw anywhere in this file used to take the balance with it.
+ *
+ * This module is one long top-level `await`, so a rejection it does not catch
+ * ends the run where it happened — and what a reader then has is a stack trace
+ * over an unknown number of assertions that had already passed. It happened
+ * twice on 2026-09-13 with roughly 300 green rows behind it (PAR-186), and both
+ * times the interesting question was not the stack but which of the 40 flows had
+ * not been measured at all.
+ *
+ * Measured in Node 24: a rejected top-level `await` arrives as
+ * `uncaughtException`, not as `unhandledRejection` — both are registered
+ * because the second is what a floating promise elsewhere in the file would
+ * produce. The stack is printed first and the balance last, so the balance is
+ * what the terminal ends on.
+ */
+for (const event of ['uncaughtException', 'unhandledRejection']) {
+  process.on(event, (error) => {
+    console.error(error);
+    check(
+      'der Lauf kommt bis zur Bilanz',
+      false,
+      `${event}: ${String(error?.message ?? error)
+        .split('\n')[0]
+        .slice(0, 200)}`
+    );
+    printBalance();
+    exitAfterFlush(1);
+  });
+}
+
+/**
  * Go to the planner's OWN page and wait for it to be drawn — never for the
  * network to fall quiet.
  *
@@ -242,6 +330,14 @@ async function seed(page) {
  * has executed, from the pages the earlier blocks open, not from the phone one.
  * Waiting here fixes the block it is in and nothing else.
  *
+ * It has a second reader since PAR-186: {@link openSheet} waits here before a
+ * REPEATED press, where the reason is the other half of the same fact — a
+ * launcher that swallowed the first press was painted but not yet wired, and the
+ * main thread going quiet is what says React has caught up. That call cannot
+ * waive a hydration error either: it runs before the press, so what it avoids is
+ * the mismatch the press itself would have caused, and anything the app logs on
+ * its own still fails the run.
+ *
  * It watched a MutationObserver first, and that was the wrong instrument for a
  * reason worth writing down: **hydration barely mutates the DOM.** React walks
  * server-rendered nodes and attaches to them, so the observer went quiet long
@@ -274,6 +370,130 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
       [idleRuns, timeoutMs]
     )
     .catch(() => {});
+}
+
+/** How long the edge tab is waited for before a step gives up on it. */
+const LAUNCHER_TIMEOUT_MS = 20_000;
+/**
+ * How long one press may take, actionability included.
+ *
+ * Not the old 30 s default and not a short number either: the press waits for a
+ * tab that tracks the panel on a 300 ms transform, and the runs this is written
+ * for are the ones where the machine is busy — a press that fails on a loaded
+ * box would report the planner shut over an animation.
+ */
+const SHEET_PRESS_MS = 10_000;
+/** How long ONE press gets to put the sheet on screen before the next one. */
+const SHEET_ARRIVE_MS = 4000;
+/** How many presses a step spends before it reports the planner shut. */
+const SHEET_ATTEMPTS = 3;
+
+/** Counted rather than asserted — see the last paragraph of {@link openSheet}. */
+const sheetOpens = { opened: 0, retried: 0, failed: 0 };
+
+/**
+ * Open the planner and answer whether it is on screen. Never throws.
+ *
+ * Every flow in this file starts with the same two lines — press the edge tab,
+ * wait for the sheet — and they were written as a bare `click()` followed by a
+ * `waitFor({ timeout: 10_000 })`. Both throw, and a throw here ends the run.
+ * The press is the fragile half: `waitUntil: 'domcontentloaded'` resolves before
+ * React has wired the tab, so the press lands on a painted button with no
+ * handler on it, goes nowhere, and the wait then expires over a sheet nobody
+ * asked for. Observed in two of four runs of one commit (PAR-186), both times
+ * while the machine was busy with something else — so it is the run with the
+ * most behind it that loses everything after.
+ *
+ * The repeat is the mechanism, not the timeout: a launcher that took the click
+ * needs no second one, and a launcher that was not listening yet gets another
+ * press once the main thread has gone quiet (`settleHydration`, which measures
+ * the thing that is actually busy — a longer single wait would only postpone
+ * the same press on a dead button).
+ *
+ * What it must never do is press a sheet that is already on its way in, because
+ * the tab is a TOGGLE: a second press closes the panel the first one opened. And
+ * the sheet is the wrong thing to ask, which is what the first version of this
+ * got wrong — between the press and the `SheetContent` lies the `planner`
+ * namespace's own 15 KB chunk (`planner-launcher.tsx` says so itself: "`open`
+ * flips at the press; the panel is drawn when the chunk lands"), so for the whole
+ * length of that fetch there is no `[data-slot="sheet-content"]` in the document
+ * at all and a guard reading it would press again into a press that had landed.
+ *
+ * The signal for "landed" is therefore `html[data-planner-open]`, which the
+ * launcher's own effect sets off `open` alone, independent of the chunk. Both
+ * halves are read: the attribute for the window before the sheet exists, and
+ * `data-state="open"` on the content for the one after, since a sheet on its way
+ * OUT is still visible for 300 ms while carrying `closed` — which is why the
+ * success is waited for on `[data-state="open"]` too and not on visibility.
+ *
+ * An attribute with no sheet behind it after three waits is its own diagnosis
+ * and is reported as one: the press worked and the chunk never arrived, which
+ * `useLazyMessages` does not retry.
+ *
+ * A failure is a named ❌ carrying the number of presses and what the last one
+ * said; the caller then leaves its own block (`break step`) so the rest of the
+ * run still executes. A success is silent and counted instead: 35 green rows
+ * saying "the panel opened" would bury the assertions that are about what is IN
+ * the panel, while the count printed with the balance is what says how often the
+ * rule was applied at all — and how often a SECOND press earned its keep, which
+ * is counted on the presses and never on the attempts: an opening that was
+ * merely slow costs no press and may not inflate that figure.
+ */
+async function openSheet(page, where) {
+  const name = `der Planer öffnet sich (${where})`;
+  const launcher = page.locator(LAUNCHER).first();
+  const arriving = page.locator(`${SHEET}[data-state="open"]`).first();
+  const pressed = page.locator('html[data-planner-open]');
+
+  const painted = await launcher
+    .waitFor({ state: 'visible', timeout: LAUNCHER_TIMEOUT_MS })
+    .then(() => true)
+    .catch(() => false);
+  if (!painted) {
+    sheetOpens.failed += 1;
+    check(name, false, `Launcher nach ${LAUNCHER_TIMEOUT_MS / 1000} s nicht sichtbar`);
+    return false;
+  }
+
+  let blame = '';
+  let presses = 0;
+  for (let attempt = 1; attempt <= SHEET_ATTEMPTS; attempt += 1) {
+    const landed = (await pressed.count()) > 0 || (await arriving.count()) > 0;
+    if (!landed) {
+      if (presses > 0) await settleHydration(page);
+      presses += 1;
+      const failure = await launcher
+        .click({ timeout: SHEET_PRESS_MS })
+        .then(() => null)
+        .catch((error) => String(error.message).split('\n')[0].trim().slice(0, 160));
+      if (failure) blame = failure;
+    }
+    const open = await arriving
+      .waitFor({ state: 'visible', timeout: SHEET_ARRIVE_MS })
+      .then(() => true)
+      .catch(() => false);
+    if (open) {
+      sheetOpens.opened += 1;
+      if (presses > 1) {
+        sheetOpens.retried += 1;
+        console.log(`ℹ️  Planer erst nach ${presses} Drücken offen (${where})`);
+      }
+      return true;
+    }
+  }
+  sheetOpens.failed += 1;
+  if (!blame) {
+    blame =
+      (await pressed.count()) > 0
+        ? 'der Druck sitzt (html[data-planner-open] steht), aber kein Sheet — der planner-Chunk ist nicht angekommen'
+        : 'das Sheet ist nach dem Druck nicht erschienen';
+  }
+  check(
+    name,
+    false,
+    `${presses} Druck${presses === 1 ? '' : 'e'}, je ${SHEET_ARRIVE_MS} ms gewartet — ${blame}`
+  );
+  return false;
 }
 
 /** How long a tap waits before it is reported as unreachable. */
@@ -525,7 +745,10 @@ try {
   planStatus = (await fetch(`${BASE}${PLAN_PATH}`)).status;
 } catch (error) {
   console.error(`Could not reach ${BASE} — is the site running? (${error.message})`);
-  process.exit(1);
+  // Nine static assertions have already run at this point, so this exit owes a
+  // balance too — same reason as the guard above, one flow earlier.
+  printBalance();
+  await exitAfterFlush(1);
 }
 
 if (planStatus === 200) {
@@ -537,7 +760,8 @@ if (planStatus === 200) {
   );
 } else {
   console.error(`/plan/day answered ${planStatus}. Expected 200 or 404 — a 502 is a real failure.`);
-  process.exit(1);
+  printBalance();
+  await exitAfterFlush(1);
 }
 const live = planStatus === 200;
 
@@ -630,7 +854,8 @@ check('Launcher bleibt mit Plan', hasLauncher);
 if (!hasLauncher) {
   console.error('\nOhne Launcher ist der Rest nicht prüfbar.');
   await browser.close();
-  process.exit(1);
+  printBalance();
+  await exitAfterFlush(1);
 }
 
 // Three in the active day plus two in the other park: the badge counts the
@@ -650,10 +875,20 @@ if (!hasLauncher) {
   check('Launcher zählt beide Parks', badge, JSON.stringify(tabText));
 }
 
-await launcher.click();
+// The one open that is not inside a `step:` block, and therefore the one that
+// cannot be skipped: everything down to the phone section reads THIS sheet, so
+// a run without it has nothing left to measure. It ends on the balance rather
+// than on a stack trace, which is the same courtesy the launcher check above
+// already does one exit earlier.
+const desktopOpen = await openSheet(page, 'Desktop');
 const sheet = page.locator(SHEET);
-await sheet.waitFor({ state: 'visible', timeout: 10_000 });
-check('Flyout öffnet', await sheet.isVisible());
+check('Flyout öffnet', desktopOpen && (await sheet.isVisible()));
+if (!desktopOpen) {
+  console.error('\nOhne geöffnetes Panel ist der Rest nicht prüfbar.');
+  await browser.close();
+  printBalance();
+  await exitAfterFlush(1);
+}
 
 // The query, and then the render it feeds.
 await page
@@ -1043,16 +1278,12 @@ const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, has
 noteErrors(phone);
 await seed(phone);
 
-const phoneLauncher = phone.locator(LAUNCHER);
-await phoneLauncher.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
 // The one modal sheet in this file, and the only place that needs this — see
 // `settleHydration`. The desktop panel is deliberately NOT modal and marks
 // nothing outside itself, which is why the same open on a 1280 px viewport
 // reports no hydration error at all.
 await settleHydration(phone);
-if (await phoneLauncher.count()) {
-  await phoneLauncher.click();
-  await phone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+if (await openSheet(phone, 'Handy, Hochformat')) {
   await phone.waitForTimeout(2500);
 
   // The instrument, before anything it measures. Every assertion in this pass
@@ -1090,6 +1321,19 @@ if (await phoneLauncher.count()) {
     phone.locator(SHEET).evaluate((el) => Math.round(parseFloat(getComputedStyle(el).maxHeight)));
 
   check('der Anfasser ist da', (await grab.count()) === 1);
+
+  // And he is the only way out that is drawn, which is why the line above is
+  // not a formality any more. The × went off the phone sheet with PAR-188 —
+  // three exits were one too many, and the one that went is the one parked in
+  // the corner a thumb reaches worst — so the pair has to be asserted
+  // together: no close button, AND a handle that is
+  // there. Either one alone would pass over a sheet with no visible exit at
+  // all, which is exactly the state at 100svh, where the modal shield sits
+  // behind the sheet and tapping beside it does nothing.
+  check(
+    'und auf dem Handy trägt das Sheet keinen ×-Knopf mehr',
+    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+  );
   if (await grab.count()) {
     /**
      * How far a drag travels, and it is a DISTANCE rather than a destination.
@@ -1483,13 +1727,20 @@ if (await phoneLauncher.count()) {
     reportSweep('jedes Ziel im Sheet ist 44 px hoch', await sweepSmallTargets(SHEET));
 
     // The one the sweep cannot see, and it is a real bug rather than a
-    // measurement: `SheetContent` draws its close button `max-sm:size-11` at
-    // `right-2`, so it covers the rightmost 52 px of the header — and the
+    // measurement: `SheetContent` USED TO draw its close button `max-sm:size-11`
+    // at `right-2`, covering the rightmost 52 px of the header while the
     // header's own content stopped 40 px from that edge. "Einen Tag planen" sat
     // 12 px under the ×, which reads from the outside as a button that opens
     // the wrong thing. Asked of Playwright, because "receives events" is the
     // question and `click({ trial: true })` names the intercepting element when
     // the answer is no.
+    //
+    // The × is gone from this sheet (PAR-188) and the assertion is not: what it
+    // guards is that the rightmost control of the header takes a press, and the
+    // next thing to cover it will not be a close button. So it is NAMED after
+    // the press rather than after the one element that used to swallow it — a
+    // name that points at something the phone no longer renders sends the next
+    // reader of a red line looking for the wrong culprit.
     //
     // It asks for the control that is LAST in that row rather than for one by
     // name, and that is the lesson of PAR-163 rather than a tidy-up: the
@@ -1525,7 +1776,7 @@ if (await phoneLauncher.count()) {
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check(
-        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile nimmt einen Druck an',
         free === 'erreichbar',
         `${lastInHeader} — ${free}`
       );
@@ -1538,7 +1789,7 @@ if (await phoneLauncher.count()) {
       );
     } else {
       check(
-        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile nimmt einen Druck an',
         false,
         'keine Kopfzeile gefunden'
       );
@@ -1683,7 +1934,7 @@ if (await phoneLauncher.count()) {
     check('ohne Achse rendert die Liste', fallbackRows > 0, `Zeilen: ${fallbackRows}`);
   }
 } else {
-  check('mobil als Bottom-Sheet', false, 'Launcher nicht gefunden');
+  check('mobil als Bottom-Sheet', false, 'Panel nicht geöffnet');
 }
 
 // ── The calendar's way in ────────────────────────────────────────────────────
@@ -1854,7 +2105,7 @@ if (reachable) {
 // day grid — the thing this feature IS — would go unverified by a green check.
 // The fixture is a fixture and is labelled as one; what it exercises is the real
 // geometry, the real drag and the real reducers.
-{
+step: {
   const grid = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(grid);
 
@@ -1937,8 +2188,10 @@ if (reachable) {
   );
 
   await seed(grid);
-  await grid.locator(LAUNCHER).click();
-  await grid.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(grid, 'gestubbtes Raster'))) {
+    await grid.close();
+    break step;
+  }
   await grid.waitForTimeout(2500);
 
   const blocks = grid.locator('li[data-planner-block]');
@@ -2091,6 +2344,83 @@ if (reachable) {
       legs.join(', ')
     );
 
+    // …und keiner ihrer Chips wird vom Block darunter angeschnitten. Der Chip
+    // liegt auf `zIndex: 5` und die Blöcke auf 10, also verdeckt ein Block sauber,
+    // was übersteht — auf dem Schirm ist das ein halber Satz ohne Unterlängen und
+    // in keiner Zusicherung (PAR-180).
+    //
+    // Dafür muss der enge Fall erst hergestellt werden, sonst ist die Prüfung
+    // grün gegen genau den Fehler, für den sie geschrieben ist: bei 10:00 und
+    // 12:30 liegen 105 Minuten zwischen den beiden, und in so eine Lücke passt
+    // jede Pille. F.L.Y. rückt also bis dicht hinter Taron — 11:00 gegen eine
+    // Schlange, die um 10:45 endet, eine Lücke von einer Rastereinheit. Dass sie
+    // wirklich eng ist, prüft die erste Zusicherung: ohne sie wäre die zweite
+    // wieder nur eine Aussage über eine Fixture.
+    await flyRange.fill('660');
+    await grid.waitForTimeout(400);
+    const chipRoom = await grid.evaluate(() => {
+      const blocks = [...document.querySelectorAll('li[data-planner-block]')].map((el) =>
+        el.getBoundingClientRect()
+      );
+      return [...document.querySelectorAll('li[data-planner-leg]')].flatMap((leg) => {
+        const chip = leg.querySelector('[data-planner-leg-chip], button[title]');
+        if (!chip) return [];
+        const c = chip.getBoundingClientRect();
+        const mid = (c.top + c.bottom) / 2;
+        let above = null;
+        let below = null;
+        let clipped = 0;
+        for (const b of blocks) {
+          if (b.left >= c.right - 1 || b.right <= c.left + 1) continue;
+          if (b.bottom <= mid && (above === null || b.bottom > above)) above = b.bottom;
+          if (b.top >= mid && (below === null || b.top < below)) below = b.top;
+          clipped = Math.max(clipped, Math.min(b.bottom, c.bottom) - Math.max(b.top, c.top));
+        }
+        return [
+          {
+            verdict: leg.dataset.verdict,
+            // `full` / `compact` on the informational chip, `null` on the repair
+            // button — which keeps its size by design and is therefore not part
+            // of the height assertion below.
+            kind: chip.dataset.plannerLegChip ?? null,
+            height: c.height,
+            room: above !== null && below !== null ? below - above : null,
+            clipped,
+          },
+        ];
+      });
+    });
+    await flyRange.fill('750');
+    await grid.waitForTimeout(400);
+
+    const tightChips = chipRoom.filter((c) => c.room !== null && c.room < LEG_CHIP_PX);
+    check(
+      'der enge Fall ist hergestellt',
+      tightChips.length >= 1,
+      chipRoom.map((c) => `${c.verdict} ${c.room?.toFixed(0)}px`).join(', ')
+    );
+    const clippedChips = chipRoom.filter((c) => c.clipped > 0.5);
+    check(
+      'kein Bein-Chip wird von einem Block angeschnitten',
+      clippedChips.length === 0,
+      clippedChips.map((c) => `${c.verdict}: ${c.clipped.toFixed(1)}px`).join('; ')
+    );
+    // Und die beiden Konstanten sind wirklich die gerenderten Höhen. Ein Unit-Test
+    // kann das nicht: er sieht kein Stylesheet, und `LEG_CHIP_COMPACT_PX === 12`
+    // gegen sich selbst zu prüfen ist eine Tautologie. Hier steht der Browser
+    // daneben, also fällt ein geändertes `py-0.5` oder `leading-[12px]` auf,
+    // statt still die Doku zu widerlegen, die „gemessen statt getippt" behauptet.
+    const wrongHeight = chipRoom.filter(
+      (c) =>
+        c.kind !== null &&
+        Math.abs(c.height - (c.kind === 'compact' ? LEG_CHIP_COMPACT_PX : LEG_CHIP_PX)) > 0.5
+    );
+    check(
+      'die Pillenhöhen sind die, die leg-chip.ts nennt',
+      wrongHeight.length === 0,
+      chipRoom.map((c) => `${c.kind} ${c.height.toFixed(1)}px`).join(', ')
+    );
+
     // Requirement 2: the drag may not go earlier than the ride can be ridden.
     // The floor is the ride's own `opensAt` where the API has one and the
     // park's opening otherwise — a FACT either way, which is why it is allowed
@@ -2182,7 +2512,7 @@ if (reachable) {
 // The CURATED flag, not the day's tallest bars. A plan holding Taron but not
 // F.L.Y. has to say so, and has to stop saying it the moment F.L.Y. goes in —
 // a hint that never goes away is a decoration.
-{
+step: {
   const hl = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(hl);
 
@@ -2252,8 +2582,10 @@ if (reachable) {
     [PLAN, DATE]
   );
   await hl.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await hl.locator(LAUNCHER).click();
-  await hl.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(hl, 'fehlender Headliner'))) {
+    await hl.close();
+    break step;
+  }
   await hl.waitForTimeout(2500);
 
   // The band of headliner pills is gone: it repeated rides the list below
@@ -2337,7 +2669,7 @@ if (reachable) {
 //
 // So intervals are tracked by ID, the live 60-second ones are what gets
 // compared, and the baseline is taken only once that number has stopped moving.
-{
+step: {
   const cpu = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(cpu);
   await cpu.addInitScript(() => {
@@ -2411,16 +2743,20 @@ if (reachable) {
   // planner's own subscription back off. What is left is a page whose clocks are
   // all running and a planner that has none — which is exactly the thing the
   // second open is being measured against.
-  await cpu.locator(LAUNCHER).click();
-  await cpu.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cpu, 'CPU, erster Aufbau'))) {
+    await cpu.close();
+    break step;
+  }
   await cpu.waitForTimeout(2500);
   await cpu.keyboard.press('Escape');
   await cpu.locator(SHEET).waitFor({ state: 'hidden', timeout: 10_000 });
   await cpu.waitForTimeout(1500);
   const beforeOpen = await liveMinuteClocks();
 
-  await cpu.locator(LAUNCHER).click();
-  await cpu.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cpu, 'CPU, zweiter Aufbau'))) {
+    await cpu.close();
+    break step;
+  }
   await cpu.waitForTimeout(2500);
 
   // The DELTA across opening the panel, not the page's total: the app runs a
@@ -2446,7 +2782,7 @@ if (reachable) {
 // none` on the page and a shield over it, so the card cannot be touched), and
 // the park in the dropped URL must match the plan's, or a Europa-Park ride would
 // be filed under a Phantasialand day whose forecast does not contain it.
-{
+step: {
   const drag = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
   noteErrors(drag);
 
@@ -2509,8 +2845,10 @@ if (reachable) {
   await drag.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
     waitUntil: 'networkidle',
   });
-  await drag.locator(LAUNCHER).click();
-  await drag.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(drag, 'Drag von der Parkseite'))) {
+    await drag.close();
+    break step;
+  }
   await drag.waitForTimeout(2500);
 
   // The page behind must still be reachable. With a modal sheet it is not, and
@@ -2751,7 +3089,7 @@ if (reachable) {
 // published or derived. Each is stubbed here rather than fetched, because the
 // interesting values are a park past its publication horizon and a date three
 // months out — neither of which is reproducible on a given morning.
-{
+step: {
   const acc = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
   noteErrors(acc);
 
@@ -2817,9 +3155,9 @@ if (reachable) {
   /** Reopen the panel on a fresh payload. */
   const reload = async () => {
     await acc.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await acc.locator(LAUNCHER).click();
-    await acc.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(acc, 'Herkunft der Zahl'))) return false;
     await acc.waitForTimeout(2200);
+    return true;
   };
 
   await acc.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
@@ -2844,7 +3182,10 @@ if (reachable) {
     },
     [PLAN, DATE]
   );
-  await reload();
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
 
   // The block's lower edge is the whole point of `hours[].source`: a hard end
   // for a measurement, a fade for a composition. Read off the mask rather than
@@ -2894,7 +3235,10 @@ if (reachable) {
   // recorded, so it is narrower than the truth by construction and the panel
   // says where it came from.
   body = dayBody({ context: { hoursSource: 'observed' } });
-  await reload();
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
   band = await bandText();
   // The hours themselves are asserted with it: without them this passed on the
   // suffix alone, over a chip reading "undefined bis undefined Uhr".
@@ -2902,7 +3246,10 @@ if (reachable) {
 
   // Nobody has ever checked how wrong the forecast is this far out.
   body = dayBody({ tier: 'composed', accuracy: { basis: 'unmeasured' } });
-  await reload();
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
   band = await bandText();
   check(
     'ohne geprüfte Genauigkeit sagt der Tag das',
@@ -2921,7 +3268,10 @@ if (reachable) {
   // "nobody has checked these numbers" under the only numbers on this panel
   // that are facts.
   body = dayBody({ tier: 'observed', accuracy: { basis: 'unmeasured' } });
-  await reload();
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
   band = await bandText();
   check(
     'ein vergangener Tag bleibt gemessen',
@@ -3000,8 +3350,10 @@ if (reachable) {
     await page.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
       waitUntil: 'networkidle',
     });
-    await page.locator(LAUNCHER).click();
-    await page.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(page, `leerer Tag, ${width} px`))) {
+      await page.close();
+      return null;
+    }
     await page.waitForTimeout(2500);
     return page;
   };
@@ -3016,8 +3368,9 @@ if (reachable) {
           .map((el) => (el.textContent ?? '').trim())
       );
 
-  {
+  emptyDesk: {
     const desk = await openEmptyDay(1400);
+    if (!desk) break emptyDesk;
     const lines = (await shownLines(desk)).join(' | ');
     const searchVisible = await desk
       .locator(`${SHEET} input[type="search"]`)
@@ -3035,11 +3388,21 @@ if (reachable) {
       'der Hinweis am Fuß schweigt, solange das Raster leer ist',
       (await desk.locator('[data-planner-drag-coach]').count()) === 0
     );
+    // The other half of the phone pass's „kein ×-Knopf mehr". `hideClose` is
+    // opt-in per call site and keyed on `isPhone`, so the side panel has to be
+    // asked separately — it has no grab handle, and its outside press is
+    // deliberately swallowed, so losing the × here would leave Escape as the
+    // only way out of a panel that is not modal.
+    check(
+      'am Rechner behält das Panel seinen ×-Knopf',
+      (await desk.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1
+    );
     await desk.close();
   }
 
-  {
+  emptyPhone: {
     const phone = await openEmptyDay(390);
+    if (!phone) break emptyPhone;
     const lines = (await shownLines(phone)).join(' | ');
     const searchVisible = await phone
       .locator(`${SHEET} input[type="search"]`)
@@ -3076,8 +3439,10 @@ if (reachable) {
       window.localStorage.removeItem('parkfan_planner');
     });
     await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await bare.locator(LAUNCHER).click();
-    await bare.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(bare, `ohne Plan, ${width} px`))) {
+      await bare.close();
+      continue;
+    }
     await bare.waitForTimeout(1500);
     const text = ((await bare.locator(SHEET).innerText()) ?? '').replace(/\s+/g, ' ');
     check(
@@ -3102,15 +3467,17 @@ if (reachable) {
 // the foot rows were drawn UNDER the wash rather than over it. Nothing about
 // that is visible to a DOM assertion — the classes were all correct — so this
 // samples the composited pixels.
-{
+step: {
   const shot = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
   noteErrors(shot);
   await seed(shot);
   await shot.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
     waitUntil: 'networkidle',
   });
-  await shot.locator(LAUNCHER).click();
-  await shot.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(shot, 'Chrome über dem Foto'))) {
+    await shot.close();
+    break step;
+  }
   await shot.waitForTimeout(4000);
 
   const photo = shot.locator(`${SHEET} [aria-hidden="true"].-z-10`);
@@ -3185,7 +3552,7 @@ if (reachable) {
 // the operator's own listing, or the last matching weekday carried forward. The
 // second kind may never be drawn like the first, so the stub serves both and the
 // checks below read the treatment off the markup rather than trusting the copy.
-{
+step: {
   const shows = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(shows);
 
@@ -3313,8 +3680,10 @@ if (reachable) {
   await shows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
   await seedDay(shows);
   await shows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await shows.locator(LAUNCHER).click();
-  await shows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(shows, 'Shows am Rechner'))) {
+    await shows.close();
+    break step;
+  }
   await shows.waitForTimeout(2500);
 
   // A dashed rule and a time in the hour column is not a show. The NAME is what
@@ -3407,8 +3776,11 @@ if (reachable) {
     await phoneShows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
     await seedDay(phoneShows);
     await phoneShows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await phoneShows.locator(LAUNCHER).click();
-    await phoneShows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(phoneShows, 'Shows auf dem Handy'))) {
+      await phoneShows.close();
+      await shows.close();
+      break step;
+    }
     await phoneShows.waitForTimeout(2500);
 
     const bandHeight = () =>
@@ -3697,7 +4069,7 @@ if (reachable) {
 // and undo the browser's subscription when the server refuses), and a real push
 // service would only add a dependency on Google's uptime to a test about our
 // own sequencing.
-{
+step: {
   const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(push);
 
@@ -3802,8 +4174,10 @@ if (reachable) {
     [PLAN, DATE]
   );
   await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await push.locator(LAUNCHER).click();
-  await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(push, 'Benachrichtigungen, an und aus'))) {
+    await push.close();
+    break step;
+  }
   await push.waitForTimeout(2000);
 
   const toggle = push.locator('[data-planner-push] button');
@@ -3861,8 +4235,10 @@ if (reachable) {
     // own subscription AND the stored id, so losing either has to read as off.
     await push.locator(`${SHEET} button[aria-label]`).first().press('Escape');
     await push.waitForTimeout(400);
-    await push.locator(LAUNCHER).click();
-    await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(push, 'Benachrichtigungen, zweiter Aufbau'))) {
+      await push.close();
+      break step;
+    }
     await push.waitForTimeout(1500);
     check(
       'nach dem Wiederöffnen sind sie immer noch an',
@@ -3899,7 +4275,7 @@ if (reachable) {
 }
 
 // ── Every plan is reachable, including the ones already walked ──────────────
-{
+step: {
   const past = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(past);
 
@@ -3932,8 +4308,10 @@ if (reachable) {
     [PLAN, DATE, YESTERDAY, LAST_WEEK]
   );
   await past.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await past.locator(LAUNCHER).click();
-  await past.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(past, 'begangene Pläne'))) {
+    await past.close();
+    break step;
+  }
   await past.waitForTimeout(1500);
 
   await past.locator('button[data-planner-overview-toggle]').click();
@@ -3981,7 +4359,7 @@ if (reachable) {
 // of twenty-to-thirty-five minute blocks — which is most days — drew none.
 // Measured before the fix on a four-ride day where every ride had a picture:
 // blocks 30, 20, 36 and 42 px tall, four photos in, zero out.
-{
+step: {
   const photos = await browser.newPage({ viewport: { width: 1280, height: 1100 } });
   noteErrors(photos);
 
@@ -4092,8 +4470,10 @@ if (reachable) {
     [PLAN, DATE]
   );
   await photos.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await photos.locator(LAUNCHER).click();
-  await photos.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(photos, 'Fotos aus dem Payload'))) {
+    await photos.close();
+    break step;
+  }
   await photos.waitForTimeout(2500);
 
   const drawn = await photos.evaluate(() =>
@@ -4157,7 +4537,7 @@ if (reachable) {
 // and does nothing is worse than no switch, and there are two ways to get one:
 // a deploy with no VAPID keypair, and a browser that has refused. Both are
 // checked here, because both look exactly like "working" from the code's side.
-{
+step: {
   const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(push);
 
@@ -4189,9 +4569,9 @@ if (reachable) {
       [PLAN, DATE]
     );
     await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await page.locator(LAUNCHER).click();
-    await page.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(page, 'Benachrichtigungen ohne Schlüssel'))) return false;
     await page.waitForTimeout(1800);
+    return true;
   };
 
   // 1. A deploy with no keypair offers nothing at all. Not a disabled switch —
@@ -4203,7 +4583,10 @@ if (reachable) {
       body: JSON.stringify({ available: false, topics: [] }),
     })
   );
-  await seedPlan(push);
+  if (!(await seedPlan(push))) {
+    await push.close();
+    break step;
+  }
   check(
     'ohne Schlüssel gibt es keinen Schalter',
     (await push.locator('[data-planner-push]').count()) === 0
@@ -4211,7 +4594,7 @@ if (reachable) {
   await push.close();
 }
 
-{
+step: {
   // 2. A configured deploy offers it, off.
   const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(push);
@@ -4253,8 +4636,10 @@ if (reachable) {
     [PLAN, DATE]
   );
   await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await push.locator(LAUNCHER).click();
-  await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(push, 'Benachrichtigungen, konfigurierter Deploy'))) {
+    await push.close();
+    break step;
+  }
   await push.waitForTimeout(2000);
 
   const toggle = push.locator('[data-planner-push]');
@@ -4274,7 +4659,7 @@ if (reachable) {
   await push.close();
 }
 
-{
+step: {
   // 3. A browser that has refused says so instead of offering. It is the only
   //    state where the visitor has to go somewhere else to change the answer.
   const context = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
@@ -4324,8 +4709,10 @@ if (reachable) {
     [PLAN, DATE]
   );
   await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await push.locator(LAUNCHER).click();
-  await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(push, 'Benachrichtigungen, verweigerter Browser'))) {
+    await context.close();
+    break step;
+  }
   await push.waitForTimeout(2000);
 
   const denied = push.locator('[data-planner-push="denied"]');
@@ -4347,7 +4734,7 @@ if (reachable) {
 // badge use, so 20 minutes is the same green everywhere — and it has to follow
 // the block, because the whole reason to drag one to 09:00 is that the queue is
 // shorter there.
-{
+step: {
   const tint = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(tint);
 
@@ -4418,8 +4805,10 @@ if (reachable) {
     [PLAN, DATE]
   );
   await tint.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await tint.locator(LAUNCHER).click();
-  await tint.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(tint, 'Crowd-Tint'))) {
+    await tint.close();
+    break step;
+  }
   await tint.waitForTimeout(2000);
 
   /** The crowd level the block is currently painted at, off its tile classes. */
@@ -4480,7 +4869,7 @@ if (reachable) {
 // `tier: "observed"` there, from the nightly 15-minute rollup, and the panel
 // has to say so: calling a measurement "Stundenprognose" is the panel
 // predicting the past.
-{
+step: {
   const past = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(past);
 
@@ -4558,8 +4947,10 @@ if (reachable) {
     [PLAN, YESTERDAY]
   );
   await past.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await past.locator(LAUNCHER).click();
-  await past.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(past, 'vergangener Tag'))) {
+    await past.close();
+    break step;
+  }
   await past.waitForTimeout(2500);
 
   const text = (await past.locator(SHEET).textContent()) ?? '';
@@ -4604,7 +4995,7 @@ if (reachable) {
 // write down what actually happened, so the hand controls stay. The free-block
 // row is the one asserted, because it is the desktop's own and it sits in the
 // very component the two hidden ones were taken out of.
-{
+step: {
   const gone = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(gone);
 
@@ -4693,14 +5084,17 @@ if (reachable) {
       [PLAN, date]
     );
     await gone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await gone.locator(LAUNCHER).click();
-    await gone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(gone, `begangener Tag ${date}`))) return false;
     await gone.waitForTimeout(2500);
+    return true;
   };
 
   // The positive control FIRST, so a selector typo cannot pass the two counts
   // below by matching nothing at all.
-  await seedOn(DATE);
+  if (!(await seedOn(DATE))) {
+    await gone.close();
+    break step;
+  }
   check(
     'auf einem künftigen Tag stehen beide Planer-Angebote',
     (await gone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
@@ -4708,7 +5102,10 @@ if (reachable) {
     `Leiste ${await gone.locator(`${SHEET} [data-planner-optimize]`).count()}, Bande ${await gone.locator(`${SHEET} [data-planner-headliner-hint]`).count()}`
   );
 
-  await seedOn(YESTERDAY);
+  if (!(await seedOn(YESTERDAY))) {
+    await gone.close();
+    break step;
+  }
   check(
     'ein vergangener Tag bietet kein Sortieren an',
     (await gone.locator(`${SHEET} [data-planner-optimize]`).count()) === 0
@@ -4737,7 +5134,7 @@ if (reachable) {
 // the browser at 14:00 park-local whatever time the run starts, and the day
 // payload is stubbed because today's real one is `tier: composed` with half the
 // rides of tomorrow's.
-{
+step: {
   const late = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(late);
 
@@ -4853,8 +5250,10 @@ if (reachable) {
     [PLAN, TODAY]
   );
   await late.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await late.locator(LAUNCHER).click();
-  await late.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(late, 'Vormittag am Nachmittag'))) {
+    await late.close();
+    break step;
+  }
   await late.waitForTimeout(3000);
 
   const readToday = () =>
@@ -5032,8 +5431,10 @@ if (reachable) {
       [PLAN, DATE]
     );
     await rail.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await rail.locator(LAUNCHER).click();
-    await rail.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(rail, `Wetterleiste, ${label}`))) {
+      await rail.close();
+      continue;
+    }
     await rail.waitForTimeout(2500);
 
     const band = rail.locator('[data-planner-weather-rail]');
@@ -5145,7 +5546,7 @@ if (reachable) {
 //
 // Against a fixture, and it has to be: `/plan/day` answers 404 on this backend
 // today, so the live path cannot exercise a field that only arrives with a 200.
-{
+step: {
   const learn = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   noteErrors(learn);
 
@@ -5208,8 +5609,10 @@ if (reachable) {
   );
   check('ohne Parkseite kennt der Plan keine Zone', before === undefined, `${before}`);
 
-  await learn.locator(LAUNCHER).click();
-  await learn.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(learn, 'Zone aus dem Payload'))) {
+    await learn.close();
+    break step;
+  }
   await learn.waitForTimeout(2000);
 
   const after = await learn.evaluate(
@@ -5274,12 +5677,8 @@ if (reachable) {
         `${JSON.stringify(tabText)} statt ${JSON.stringify(label)}`
       );
     }
-    if (found) {
-      await launcher.click();
-      await page
-        .locator(SHEET)
-        .waitFor({ state: 'visible', timeout: 10_000 })
-        .catch(() => {});
+    const opened = found && (await openSheet(page, locale));
+    if (opened) {
       await page.waitForTimeout(1500);
     }
     const text = (
@@ -5291,8 +5690,8 @@ if (reachable) {
 
     check(
       `${locale}: Planer öffnet und spricht die Sprache`,
-      found && missing.length === 0 && !/planner\.[a-z]/i.test(text),
-      `Launcher ${found ? 'da' : 'fehlt'}, ${missing.length} fehlende Texte`
+      opened && missing.length === 0 && !/planner\.[a-z]/i.test(text),
+      `Launcher ${found ? 'da' : 'fehlt'}, Panel ${opened ? 'offen' : 'zu'}, ${missing.length} fehlende Texte`
     );
     await page.close();
   }
@@ -5304,7 +5703,7 @@ if (reachable) {
 // What THIS has to prove is the half a unit test cannot see: that pressing them
 // writes the plan, that the sentence underneath says what happened, that the
 // undo puts it back byte for byte, and that a lunch break survives all of it.
-{
+step: {
   const opt = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   noteErrors(opt);
 
@@ -5349,9 +5748,9 @@ if (reachable) {
       [PLAN, DATE]
     );
     await opt.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    await opt.locator(LAUNCHER).click();
-    await opt.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(opt, 'Tag sortieren'))) return false;
     await opt.waitForTimeout(3000);
+    return true;
   };
 
   /** The stored day as `slug@minute`, which is what a re-plan actually writes. */
@@ -5364,7 +5763,10 @@ if (reachable) {
         .join(' | ');
     });
 
-  await seedOptimize();
+  if (!(await seedOptimize())) {
+    await opt.close();
+    break step;
+  }
 
   const before = await readDay();
   check(
@@ -5407,7 +5809,10 @@ if (reachable) {
   check('und sagt das auch', /Passt schon so/.test(twice), twice.slice(0, 80));
 
   // Back to a day it can improve, so the undo has something to take back.
-  await seedOptimize();
+  if (!(await seedOptimize())) {
+    await opt.close();
+    break step;
+  }
   await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
   await opt.waitForTimeout(1200);
   check(
@@ -5449,7 +5854,10 @@ if (reachable) {
 
   // The headliner button: it adds what the day has room for, and never a ride
   // past the gate.
-  await seedOptimize();
+  if (!(await seedOptimize())) {
+    await opt.close();
+    break step;
+  }
   const rideCountBefore = (await readDay()).split(' | ').length;
 
   /**
@@ -5632,8 +6040,10 @@ if (reachable) {
       ]
     );
     await opt.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-    await opt.locator(LAUNCHER).click();
-    await opt.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    if (!(await openSheet(opt, 'Tag sortieren, Fit-Assistent'))) {
+      await opt.close();
+      break step;
+    }
     await opt.waitForTimeout(3000);
 
     await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
@@ -5800,7 +6210,7 @@ if (reachable) {
 // be made. Hansa-Park publishes its numbers only in its own app on the park
 // WLAN — the same park `noLiveWaitTimesReason` is asserted against elsewhere in
 // this file.
-{
+step: {
   const bare = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   noteErrors(bare);
   await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
@@ -5846,8 +6256,10 @@ if (reachable) {
     [DATE]
   );
   await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await bare.locator(LAUNCHER).click();
-  await bare.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(bare, 'Tag sortieren, leerer Tag'))) {
+    await bare.close();
+    break step;
+  }
   await bare.waitForTimeout(3000);
   check(
     'ein Park ohne lesbare Wartezeiten bekommt keine Optimier-Leiste',
@@ -5863,7 +6275,7 @@ if (reachable) {
 // whole feature is three questions this block asks in order: does it appear only
 // where it fits, does the second column carry its own head, and is the
 // arrangement remembered.
-{
+step: {
   const cols = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   noteErrors(cols);
 
@@ -5873,8 +6285,10 @@ if (reachable) {
     window.localStorage.removeItem('parkfan_planner_column2');
   }, PLAN);
   await cols.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await cols.locator(LAUNCHER).click();
-  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cols, 'zwei Spalten, erster Aufbau'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
 
   /** The panel's real box, because the stored number is not what is on screen. */
@@ -5943,8 +6357,10 @@ if (reachable) {
 
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
   await cols.reload({ waitUntil: 'networkidle' });
-  await cols.locator(LAUNCHER).click();
-  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cols, 'zwei Spalten bei 780 px'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
 
   check(
@@ -6166,8 +6582,10 @@ if (reachable) {
   // looks at the page behind it and an arrangement that vanished then would not
   // be an arrangement.
   await cols.reload({ waitUntil: 'networkidle' });
-  await cols.locator(LAUNCHER).click();
-  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cols, 'zwei Spalten nach dem Reload'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2000);
   check(
     'die Anordnung überlebt einen Reload',
@@ -6182,8 +6600,10 @@ if (reachable) {
   // things that still hold: one column on screen, and the day still in storage.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '448'));
   await cols.reload({ waitUntil: 'networkidle' });
-  await cols.locator(LAUNCHER).click();
-  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cols, 'zwei Spalten bei 448 px'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
   const remembered = await cols.evaluate(() =>
     window.localStorage.getItem('parkfan_planner_column2')
@@ -6225,8 +6645,10 @@ if (reachable) {
   // launcher click and the sheet wait already wait for the things this measures.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
   await cols.reload({ waitUntil: 'domcontentloaded' });
-  await cols.locator(LAUNCHER).click();
-  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(cols, 'zwei Spalten, wieder 780 px'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2000);
   check(
     'wieder breit genug bringt denselben Tag zurück',
@@ -6258,7 +6680,7 @@ if (reachable) {
 // A switch here would promise a width the cap takes back in the same frame.
 // Deliberately a desktop viewport and not a phone — `isPhone` stops at 639 px
 // and would make this pass for the other reason.
-{
+step: {
   const tight = await browser.newPage({ viewport: { width: 900, height: 900 } });
   noteErrors(tight);
   await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
@@ -6269,8 +6691,10 @@ if (reachable) {
     window.localStorage.setItem('parkfan_planner_width', '780');
   }, PLAN);
   await tight.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await tight.locator(LAUNCHER).click();
-  await tight.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(tight, 'Fenster unter 1041 px'))) {
+    await tight.close();
+    break step;
+  }
   await tight.waitForTimeout(1500);
   check(
     'ein Fenster unter 1041 px bietet keine zweite Spalte an',
@@ -6287,7 +6711,7 @@ if (reachable) {
 // `isPhone`. It is kept because a phone refuses for its own reason, and because
 // everything below it (one foot, nothing painting over anything) is only ever
 // asserted here.
-{
+step: {
   const phone = await browser.newPage({
     viewport: { width: 390, height: 844 },
     isMobile: true,
@@ -6310,8 +6734,10 @@ if (reachable) {
   );
   await phone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await settleHydration(phone);
-  await phone.locator(LAUNCHER).click();
-  await phone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (!(await openSheet(phone, 'Handy'))) {
+    await phone.close();
+    break step;
+  }
   await phone.waitForTimeout(2000);
 
   check(
@@ -6649,12 +7075,8 @@ if (live) {
     [PLAN, DATE]
   );
   await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-  const tightTab = tight.locator(LAUNCHER);
-  await tightTab.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
   await settleHydration(tight);
-  if (await tightTab.count()) {
-    await tightTab.click();
-    await tight.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (await openSheet(tight, 'Resize-Kante, schmales Fenster')) {
     await tight.waitForTimeout(2500);
     // Into the scroller's visible area first. A block outside it still reports a
     // rectangle, and `elementFromPoint` would then answer for whatever is
@@ -6732,7 +7154,7 @@ if (live) {
       );
     }
   } else {
-    check('die Resize-Kante bleibt in ihrem Mindestblock', false, 'Launcher nicht gefunden');
+    check('die Resize-Kante bleibt in ihrem Mindestblock', false, 'Panel nicht geöffnet');
   }
   await tight.close();
 }
@@ -6780,12 +7202,8 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
   const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
   noteErrors(land);
   await seed(land);
-  const landLauncher = land.locator(LAUNCHER);
-  await landLauncher.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
   await settleHydration(land);
-  if (await landLauncher.count()) {
-    await landLauncher.click();
-    await land.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  if (await openSheet(land, 'Querformat')) {
     await land.waitForTimeout(2500);
 
     // The instrument first, as in the portrait pass: a landscape phone that
@@ -6969,6 +7387,20 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
       handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
     );
 
+    // The handle's other half, and the reason it is asserted HERE and not only
+    // in the portrait pass: `hideClose` is keyed on `isPhone`, so PAR-76's
+    // height term took the × off this window too — 844×390 is over `sm` and
+    // would have kept it under the old query. The pair is what AK 3 of PAR-188
+    // rests on: the × may only go where the handle is drawn, and
+    // `planner-wide:` is the exact complement of `planner-phone:`, so the two
+    // switch on the same window or the sheet has no visible way out. Asserted
+    // together for the same reason the portrait pass does it — either half
+    // alone passes over exactly that state.
+    check(
+      'und im Querformat trägt es keinen ×-Knopf',
+      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+    );
+
     // The two PAIRS this change is built on, asserted rather than assumed.
     //
     // Every class the sweep moved has a counterpart that has to move with it,
@@ -7069,7 +7501,7 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // pairing with the search is covered by the class itself
     // (`planner-wide:flex`) and by the empty grid's two lines.
   } else {
-    check('im Querformat liegt das Panel unten und nicht rechts', false, 'Launcher nicht gefunden');
+    check('im Querformat liegt das Panel unten und nicht rechts', false, 'Panel nicht geöffnet');
   }
   await land.close();
 }
@@ -7082,9 +7514,4 @@ check(
 
 await browser.close();
 
-const failed = results.filter((r) => !r.ok);
-console.log(`\n${results.length - failed.length}/${results.length} bestanden`);
-if (failed.length > 0) {
-  console.log(failed.map((f) => `  · ${f.name}`).join('\n'));
-}
-process.exit(failed.length === 0 ? 0 : 1);
+await exitAfterFlush(printBalance() === 0 ? 0 : 1);

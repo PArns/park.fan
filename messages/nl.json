@@ -950,6 +950,8 @@
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
       "actualWaitsTitle": "Gemiddelde wachttijden",
+      "waitBand": "± {minutes} min",
+      "waitBandUnknown": "geen marge bekend",
       "openToday": "Details van vandaag bekijken",
       "prevDay": "Vorige dag",
       "nextDay": "Volgende dag"
@@ -1236,6 +1238,7 @@
     },
     "sectionLiveNow": "Wachttijd op dit moment",
     "sectionPlanVisit": "Plan de beste bezoektijd",
+    "sectionPlanVisitHint": "Uit de gemeten wachttijden van deze attractie.",
     "todayRange": "Bereik vandaag",
     "peakToday": "Piek vandaag",
     "parkToday": "Park vandaag",

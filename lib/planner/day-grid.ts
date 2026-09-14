@@ -380,6 +380,25 @@ export function blockBoxFor(grid: DayGrid, minutes: number): number {
   return Math.max(heightFor(grid, minutes), minBlockPxFor(grid));
 }
 
+/** A block with no figure gets a stated box rather than a height it cannot back. */
+export const NO_FIGURE_PX = 40;
+
+/**
+ * How tall a block is DRAWN, for the one caller that is not the block.
+ *
+ * `blockBoxFor` answers for a block that has a number; a block that has none is
+ * {@link NO_FIGURE_PX}, and that second case lived in `planner-block.tsx` alone.
+ * The gap a leg chip sits in is measured from the bottom edge of the box above
+ * it, so the leg needs the same answer the block gives itself — and a second
+ * copy of `Math.max(…)` beside a hard-coded 40 is the kind of twin that agrees
+ * on the day it is written and on no other. `minutes` is the block's occupancy:
+ * a custom block's duration, a planned block's wait, `null` where there is no
+ * figure at all.
+ */
+export function drawnBoxPx(grid: DayGrid, minutes: number | null): number {
+  return minutes === null ? NO_FIGURE_PX : blockBoxFor(grid, minutes);
+}
+
 export function snapTo(minute: number, step: number): number {
   return Math.round(minute / step) * step;
 }

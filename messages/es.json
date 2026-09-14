@@ -950,6 +950,8 @@
       "hourlyTitle": "Previsión por horas",
       "holidaysTitle": "Festivos y vacaciones escolares",
       "actualWaitsTitle": "Esperas medias",
+      "waitBand": "± {minutes} min",
+      "waitBandUnknown": "sin margen conocido",
       "openToday": "Ver los detalles de hoy",
       "prevDay": "Día anterior",
       "nextDay": "Día siguiente"
@@ -1236,6 +1238,7 @@
     },
     "sectionLiveNow": "Tiempo de espera ahora",
     "sectionPlanVisit": "Planifica el mejor momento para visitar",
+    "sectionPlanVisitHint": "A partir de los tiempos de espera medidos de esta atracción.",
     "todayRange": "Rango de hoy",
     "peakToday": "Pico de hoy",
     "parkToday": "El parque hoy",

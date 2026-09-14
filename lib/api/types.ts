@@ -1524,6 +1524,23 @@ export interface HeadlinerWaitForecast {
   name: string;
   /** Expected (predicted) standby wait for this day, in minutes. */
   waitTime: number;
+  /**
+   * Half-width of the model's uncertainty band around its own prediction, in
+   * minutes — the same figure the trip planner draws as a band and prints as
+   * „± n Min." (`lib/planner/estimate.ts`, `lib/planner/block-band.ts`).
+   *
+   * `null`/absent means NO SPREAD WAS REPORTED, which is a different statement
+   * from a narrow one and may not be rendered as a zero.
+   *
+   * It may not be turned into an interval either: `waitTime` is rounded to 5
+   * and floored at 10 on the way out, while the spread is measured against the
+   * raw median, so `waitTime - uncertaintyMinutes` goes negative on a quiet
+   * ride. The figure is printed on its own, never subtracted.
+   *
+   * Absent on a day whose forecast is `actual` — a recorded average is a
+   * measurement, and a measurement has no spread.
+   */
+  uncertaintyMinutes?: number | null;
 }
 
 /** Expected headliner waits for a calendar day — grounds the abstract crowd
@@ -2064,8 +2081,17 @@ export interface RideDayCurve {
    * The ride's own mean absolute error in minutes.
    *
    * A measured, published figure — a caller may draw the forecast as
-   * `± forecastError`, but must NOT fan it out with the horizon, which nothing
-   * measures. `null` where the ride has not been scored.
+   * `± forecastError`, but must NOT fan it out with the horizon. The horizon is
+   * measured now (backend `forecast_accuracy_profile`, six lead buckets × three
+   * forecast bands), and what it measures rules out a multiplier: across the
+   * horizon, from one day out to sixty, every band widens by roughly the same
+   * four minutes — 21.5 → 25.5 for a queue predicted at 60 minutes or more,
+   * 8.6 → 12.5 for one under 30 (45-day window, measured 2026-09-11) — which is
+   * +19 % at the busy end against +45 % at the quiet one. A factor is therefore
+   * too small on a quiet ride and too large on a busy one. Where the horizon has
+   * to be accounted for, read `/plan/day`'s `rides[].expectedError` and
+   * `accuracy` instead: the lead bucket is already in them. `null` where the
+   * ride has not been scored.
    */
   forecastError: number | null;
   /** False for a park not open yet, a closed ride, an out-of-season ride. */
@@ -2360,10 +2386,15 @@ export interface PlanDay {
   leadDays: number;
   /**
    * Measured mean absolute error for predictions made this far ahead, in
-   * minutes. `null` until the backend's lead-time archive has been running that
-   * long — and `null` is the honest answer rather than a gap to fill: nothing
-   * measures how wrong the model is at this distance yet. Widen the band with
-   * distance WITHOUT attaching a figure.
+   * minutes. `null` until the backend's lead-time archive has enough scored rows
+   * at this distance — and `null` is the honest answer rather than a gap to
+   * fill, so where it is absent, widen the band with distance WITHOUT attaching
+   * a figure.
+   *
+   * Absent here is not the same as unmeasured everywhere: `accuracy.typicalError`
+   * below carries a distance-dependent error of its own, and so does
+   * `rides[].expectedError`, which resolves the backend's lead-bucket profile
+   * per ride.
    */
   leadTimeMae?: number | null;
   /**

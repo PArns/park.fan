@@ -20,7 +20,23 @@ interface ChapterPanelProps {
    * a fill of `--background` over `--background` sinks into the page — see {@link PANEL_FLAT}.
    */
   surface?: 'glass' | 'flat';
-  /** Body padding. Pass `p-0` when the body is a {@link PanelGrid}, whose cells bring their own. */
+  /**
+   * `none` where the body brings its own padding — a {@link PanelGrid}, whose cells carry both
+   * the padding and the hairlines.
+   *
+   * A prop rather than a `p-0` in {@link ChapterPanelProps.bodyClassName}, because a class cannot
+   * cancel the default: `twMerge('p-4 @min-[768px]/page:p-6', 'p-0')` keeps the container variant
+   * (it drops only the unprefixed `p-4`), so every `p-0` call site still had 24 px of padding from
+   * a 768 px container up. There the grid's `-mr-px -mb-px` no longer reaches the box's edge, and
+   * its trailing hairlines stood inside the panel with 24 px of nothing under them.
+   */
+  bodyPadding?: 'default' | 'none';
+  /**
+   * Extra classes for the body. A body that wants NO padding says so with
+   * {@link ChapterPanelProps.bodyPadding} rather than with a `p-0` here; a body that wants a
+   * different padding (`RideProfileSection`'s `p-5 sm:p-6`) still sets it here, because both of
+   * its classes outrank the default at every width where the default's container variant fires.
+   */
   bodyClassName?: string;
   className?: string;
   children: ReactNode;
@@ -39,7 +55,7 @@ interface ChapterPanelProps {
  * own above content that is a GRID of cards with a gap over it. The line between them is whether
  * the chapter's body is one surface. When it is, glue it here.
  *
- * `bodyClassName="p-0"` plus a `PanelGrid` inside is what „Heute im Park" and the statistics
+ * `bodyPadding="none"` plus a `PanelGrid` inside is what „Heute im Park" and the statistics
  * panel do: hairline-ruled columns instead of separate cards, with each card rendered bare —
  * a `GlassCard` inside a `PANEL_CELL` is a second frame around the same content.
  *
@@ -53,6 +69,7 @@ export function ChapterPanel({
   action,
   id,
   surface = 'glass',
+  bodyPadding = 'default',
   bodyClassName,
   className,
   children,
@@ -74,7 +91,7 @@ export function ChapterPanel({
           // `overflow-hidden` is what clips a `PanelGrid`'s trailing hairlines — the grid bleeds
           // its last row and column by a pixel and relies on the box to cut them off.
           'border-border/50 overflow-hidden rounded-b-xl border border-t-0',
-          'p-4 @min-[768px]/page:p-6',
+          bodyPadding === 'default' && 'p-4 @min-[768px]/page:p-6',
           bodyClassName
         )}
       >

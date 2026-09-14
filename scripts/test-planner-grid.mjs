@@ -16,12 +16,14 @@ import {
   GATE_TO_FIRST_RIDE_MIN,
   MIN_BLOCK_MIN,
   MIN_BLOCK_PX,
+  NO_FIGURE_PX,
   PX_PER_MIN,
   PX_PER_MIN_COARSE,
   SNAP_MIN_FINE,
   blockBoxFor,
   buildDayGrid,
   clampStart,
+  drawnBoxPx,
   growGridForSpans,
   heightFor,
   latestStart,
@@ -455,6 +457,27 @@ test(
   growGridForSpans(g, [{ startMinute: Number.NaN, spanMinutes: 60 }]).gridEndMin,
   g.gridEndMin
 );
+
+// ── 16b. The drawn box, for the caller that is not the block ─────────────────
+// `drawnBoxPx` is what the leg chip measures its gap against (PAR-180), so it
+// has to answer exactly what `planner-block.tsx` draws — including the third
+// case, a block with no figure at all, which used to live in that component and
+// nowhere else.
+{
+  const g = buildDayGrid(9, 18);
+  const m = buildDayGrid(9, 18, PX_PER_MIN_COARSE);
+
+  test('a queue over the floor is drawn at its own height', drawnBoxPx(g, 40), heightFor(g, 40));
+  test('a queue under it gets the floor', drawnBoxPx(g, 5), minBlockPxFor(g));
+  test('…and the floor is the box, not the height', drawnBoxPx(g, 5) > heightFor(g, 5), true);
+  test('no figure is a stated box', drawnBoxPx(g, null), NO_FIGURE_PX);
+  // The one that would have made the leg chip's gap wrong on the phone: the
+  // floor scales with the axis, the no-figure box does not — it is a statement
+  // about text, not about minutes.
+  test('the floor follows the axis', drawnBoxPx(m, 5), minBlockPxFor(m));
+  test('the stated box does not', drawnBoxPx(m, null), NO_FIGURE_PX);
+  test('a zero-minute custom block still gets the floor', drawnBoxPx(g, 0), minBlockPxFor(g));
+}
 
 // ── 15. The phone's axis ─────────────────────────────────────────────────────
 // A second scale, and the reason it needs its own section rather than a spot

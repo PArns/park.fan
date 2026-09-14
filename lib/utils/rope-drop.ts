@@ -1,4 +1,5 @@
 import type { RopeDropInfo } from '@/lib/api/types';
+import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 
 /**
  * The inverse rope-drop recommendation: the line is already long right at
@@ -29,6 +30,59 @@ export function isEveningBetter(ropeDrop: RopeDropInfo): boolean {
  */
 export function troughWait(ropeDrop: RopeDropInfo): number | null {
   return ropeDrop.bestSlotWait != null && ropeDrop.bestSlotWait > 0 ? ropeDrop.bestSlotWait : null;
+}
+
+/** The figures `RopeDropCard` prints, on the grid a park posts its wait times on. */
+export interface RopeDropDisplayWaits {
+  /** Typical wait at opening. */
+  openWait: number;
+  /** The day's peak wait. */
+  busyPeak: number;
+  /** Expected wait at the day's trough, or null when the recommendation does not carry one. */
+  trough: number | null;
+  /** Minutes saved by riding at opening — a DIFFERENCE, see below. */
+  savings: number;
+}
+
+/**
+ * Every wait `RopeDropCard` displays, rounded once for the whole card.
+ *
+ * A displayed wait time is always a multiple of five, because that is how parks post them; what
+ * breaks it is the maths on top, and the API's own rounding is one build away from a surface that
+ * has to be right whichever build answers. Three of the card's four panels printed what the payload
+ * held, beside a `bestTime` panel and an `AttractionTypicalWaits` chart in the neighbouring cell
+ * that both round. Measured against the production API over all 213 parks on 2026-09-14: of 1,196
+ * rides carrying a recommendation, **117 on 57 parks printed at least one figure off the grid** —
+ * Cedar Point's Millennium Force at 73 minutes peak and 63 saved, Alton Towers' Postman Pat at 43.
+ *
+ * Rounding here rather than at each tile is what keeps one panel from disagreeing with itself: the
+ * `worth` panel prints `openWait` in a tile and again inside the explainer sentence, and the trough
+ * it labels „best slot" is the same number the `bestTime` panel already draws rounded.
+ *
+ * `savings` goes through `roundWaitDeltaTo5` because it is a difference, and that is the rule for
+ * one. It is not a fix for anything visible today: the two functions agree on every non-negative
+ * input, and measured over production the 345 recommendations that print this tile carry savings
+ * of 45 to 225 minutes, none negative and none near the 2.5 floor — the backend's own gate is what
+ * keeps them there. The delta rule is right for the same reason the tile is a difference at all,
+ * and it is the half of the pair that stays right if a stored column ever comes back negative,
+ * where the wait rule would floor it to „you save 0 min".
+ *
+ * It is NOT recomputed as `busyPeak − openWait` either, which would make the tile agree with its
+ * neighbours by arithmetic; the API stores that column and substituting a local subtraction for it
+ * is explicitly out of scope here.
+ *
+ * Round only what is displayed. The gates keep reading the raw block — `ropeDropCardVariant` tests
+ * `openWait >= 30`, `troughWait` uses `> 0` as the sentinel for a field the row never filled in,
+ * and both would change which panel a ride gets if they read the rounded figures instead.
+ */
+export function ropeDropDisplayWaits(ropeDrop: RopeDropInfo): RopeDropDisplayWaits {
+  const rawTrough = troughWait(ropeDrop);
+  return {
+    openWait: roundWaitTo5(ropeDrop.openWait),
+    busyPeak: roundWaitTo5(ropeDrop.busyPeak),
+    trough: rawTrough == null ? null : roundWaitTo5(rawTrough),
+    savings: roundWaitDeltaTo5(ropeDrop.savings),
+  };
 }
 
 /** Which of `RopeDropCard`'s four panels a recommendation resolves to. */

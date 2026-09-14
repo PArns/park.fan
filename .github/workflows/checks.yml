@@ -14,12 +14,15 @@ name: lint and format
 # media manifest, which is minutes of work that the Vercel deployment already does
 # on every pull request.
 #
-# Two things this gate does not do, both on purpose. It runs `pnpm lint` as the
-# repo defines it, so an ESLint **warning** passes — main carries one today, and
-# turning warnings into failures is a repo-wide decision rather than part of a
-# formatting gate. And the pnpm store is not cached: `corepack enable` has to run
-# after `setup-node` (a node switch drops shims installed before it), which is too
-# late for that action's own `cache: pnpm`, and a cold install is ~15 s here.
+# It runs `pnpm lint` as the repo defines it, and since PAR-110 that is
+# `eslint . --max-warnings=0`, so an ESLint **warning** fails this job the same way
+# an error does. Leaving one in on purpose means an `eslint-disable-next-line` with
+# a reason beside it, not a warning nobody reads.
+#
+# One thing this gate does not do: the pnpm store is not cached. `corepack enable`
+# has to run after `setup-node` (a node switch drops shims installed before it),
+# which is too late for that action's own `cache: pnpm`, and a cold install is
+# ~15 s here.
 #
 # Before adding a step here, check it does not need Docker, Postgres, Redis or a
 # real browser — those belong to the local runner, not to this workflow.

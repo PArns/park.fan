@@ -628,7 +628,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 id="live"
                 // The chart brings its own padding and the queue band under it is a `PanelGrid`
                 // whose cells bring theirs — a `p-4` here would be a second box inside the box.
-                bodyClassName="p-0"
+                bodyPadding="none"
               >
                 {/* initialPark is trimmed to THIS attraction AND to the park-level fields this page
                 actually reads (see leanParkForAttractionShell): passing the full park serialized
@@ -661,8 +661,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <ChapterPanel
                 icon={Sparkles}
                 title={t('sectionPlanVisit')}
+                /* The chapter's own line, in the shape the other chapter hints on this page use:
+                  it names the BASIS, the way „Basierend auf den letzten 31 Tagen" does one
+                  chapter down, rather than restating the title. It names no window, because the
+                  two cards under it are computed over different ones and only one of them
+                  publishes its length — a figure here would be a claim about data this page does
+                  not hold. Length is measured, not guessed: the heading's text column is 244 px
+                  at a 360 px viewport, i.e. ~34 characters a line, so at 43–60 characters this
+                  wraps to two lines there and one at 1440 in all six locales. The first draft ran
+                  71–90 characters and took three lines on every phone. */
+                hint={t('sectionPlanVisitHint')}
                 id="plan"
-                bodyClassName="p-0"
+                bodyPadding="none"
               >
                 {/* Two readings, one box, a hairline between them — the shape „Heute im Park"
                   and the statistics panel use. They were two `GlassCard`s side by side under a

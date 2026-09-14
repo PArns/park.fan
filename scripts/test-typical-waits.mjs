@@ -1,5 +1,9 @@
 /**
- * Unit tests for the ride's quietest weekday (`lib/utils/typical-waits.ts`).
+ * Unit tests for the two pure halves of the ride page's „Beste Besuchszeit planen" chapter: the
+ * quietest weekday (`lib/utils/typical-waits.ts`) and the figures `RopeDropCard` prints
+ * (`ropeDropDisplayWaits` in `lib/utils/rope-drop.ts`). Both answer the same question — which
+ * minutes may appear on that screen — and both have to answer it the same way, because the panels
+ * sit in one card.
  *
  * The function exists because a ride page's „Beste Besuchszeit planen" chapter has to answer
  * its own heading even where the rope-drop recommendation is a no, and the weekday is the only
@@ -22,6 +26,7 @@
  */
 
 import { quietestWeekdays } from '../lib/utils/typical-waits.ts';
+import { ropeDropDisplayWaits } from '../lib/utils/rope-drop.ts';
 import { roundWaitTo5 } from '../lib/utils/wait-time.ts';
 
 const testCases = [];
@@ -228,6 +233,76 @@ test(
   () =>
     show(quietestWeekdays(days({ 1: [26], 2: [27], 3: [45], 4: [46], 5: [50], 6: [60], 0: [60] }))),
   '1@26'
+);
+
+// --- the figures the rope-drop panels print (`ropeDropDisplayWaits`) ---------------------------
+
+/**
+ * The weekday sentence above is drawn inside `RopeDropCard`, and for a while it was the only part
+ * of that card on the five-minute grid: three of the four panels printed the payload as it
+ * arrived, beside a chart in the neighbouring cell that rounds. The figures below are production
+ * readings from 2026-09-14 (`/v1/parks`, all 213 parks, 1,196 rides with a recommendation).
+ *
+ * `bestSlotWait` keeps its raw `> 0` sentinel: it is the DB default of rows stored before the
+ * field existed, so a value of 1 or 2 has to survive as „known" and become a displayed 0, rather
+ * than round to 0 and read as „no trough recorded".
+ */
+const ropeDrop = (over = {}) => ({
+  worth: true,
+  confidence: 'high',
+  openWait: 20,
+  busyPeak: 70,
+  savings: 50,
+  rideByMinutesAfterOpen: 45,
+  bestSlotMinutesAfterOpen: 480,
+  bestSlotWait: 15,
+  rideByUtc: null,
+  bestSlotUtc: null,
+  byDaytype: { weekend: { savings: 60 }, weekday: { savings: 40 } },
+  ...over,
+});
+
+const shown = (over) => {
+  const w = ropeDropDisplayWaits(ropeDrop(over));
+  return `${w.openWait}/${w.busyPeak}/${w.savings}/${w.trough}`;
+};
+
+test('figures already on the grid pass through untouched', () => shown(), '20/70/50/15');
+
+test(
+  "Cedar Point's Millennium Force lands on the grid the park posts",
+  // Measured: openWait 22, busyPeak 73, savings 63, trough 11 (2026-09-14).
+  () => shown({ openWait: 22, busyPeak: 73, savings: 63, bestSlotWait: 11 }),
+  '20/75/65/10'
+);
+
+test(
+  'a trough of 3 minutes is a wait, not a missing field',
+  // Cedar Point's Raptor, measured at 3. `troughWait`'s `> 0` runs before the rounding, so this
+  // stays a number; rounding first would make it 0 and the card would drop the line.
+  () => shown({ bestSlotWait: 3 }),
+  '20/70/50/5'
+);
+
+test(
+  'a recommendation without a stored trough keeps its null',
+  () => shown({ bestSlotWait: 0 }),
+  '20/70/50/null'
+);
+
+test(
+  'savings uses the delta rule, so a negative column survives instead of flooring to 0',
+  // No production row is negative today (345 worth recommendations, 45…225). This is the one
+  // input on which the delta rule and the wait rule differ at all.
+  () => shown({ savings: -8 }),
+  '20/70/-10/15'
+);
+
+test(
+  'savings is the stored column, not busyPeak − openWait',
+  // The two disagree by 5 here: 22→20 and 73→75 subtract to 55, the column says 63→65.
+  () => shown({ openWait: 22, busyPeak: 73, savings: 63 }).split('/')[2],
+  '65'
 );
 
 // ----------------------------------------------------------------------------------------------

@@ -950,6 +950,8 @@
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
       "actualWaitsTitle": "Average waits",
+      "waitBand": "± {minutes} min",
+      "waitBandUnknown": "no range available",
       "openToday": "Show today’s details",
       "prevDay": "Previous day",
       "nextDay": "Next day"
@@ -1236,6 +1238,7 @@
     },
     "sectionLiveNow": "Wait time right now",
     "sectionPlanVisit": "Plan the best time to visit",
+    "sectionPlanVisitHint": "From this ride's measured wait times.",
     "todayRange": "Range today",
     "peakToday": "Peak today",
     "parkToday": "Park today",
