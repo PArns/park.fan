@@ -280,8 +280,9 @@ export function PlannerDayGrid({
         // What the block above is DRAWN at, which is not what its queue is: the
         // chip's room is measured against this edge, and `drawnBoxPx` is the
         // same function the block itself sizes its box with. In minutes here,
-        // like everything else in this memo — the pixels are the render's.
-        fromStartMinute: from.entry.startMinute,
+        // like everything else in this memo — the pixels are the render's. The
+        // start it is counted from is `fromEntry.startMinute`, already on this
+        // object.
         fromWait: from.wait,
       };
     });
@@ -1048,7 +1049,9 @@ export function PlannerDayGrid({
                 grid={grid}
                 fromMinute={entry.fromMinute}
                 toMinute={entry.toEntry.startMinute}
-                fromBottomPx={yFor(grid, entry.fromStartMinute) + drawnBoxPx(grid, entry.fromWait)}
+                fromBottomPx={
+                  yFor(grid, entry.fromEntry.startMinute) + drawnBoxPx(grid, entry.fromWait)
+                }
                 lane={entry.lane}
                 onRepair={() =>
                   onMove(

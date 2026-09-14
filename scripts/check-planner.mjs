@@ -37,6 +37,9 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
+// The rendered chip heights are asserted below, so the numbers come from the
+// module that states them rather than from a copy that can drift (PAR-180).
+import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX } from '../lib/planner/leg-chip.ts';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
 // Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image
@@ -2126,6 +2129,10 @@ if (reachable) {
         return [
           {
             verdict: leg.dataset.verdict,
+            // `full` / `compact` on the informational chip, `null` on the repair
+            // button — which keeps its size by design and is therefore not part
+            // of the height assertion below.
+            kind: chip.dataset.plannerLegChip ?? null,
             height: c.height,
             room: above !== null && below !== null ? below - above : null,
             clipped,
@@ -2136,7 +2143,7 @@ if (reachable) {
     await flyRange.fill('750');
     await grid.waitForTimeout(400);
 
-    const tightChips = chipRoom.filter((c) => c.room !== null && c.room < 21);
+    const tightChips = chipRoom.filter((c) => c.room !== null && c.room < LEG_CHIP_PX);
     check(
       'der enge Fall ist hergestellt',
       tightChips.length >= 1,
@@ -2147,6 +2154,21 @@ if (reachable) {
       'kein Bein-Chip wird von einem Block angeschnitten',
       clippedChips.length === 0,
       clippedChips.map((c) => `${c.verdict}: ${c.clipped.toFixed(1)}px`).join('; ')
+    );
+    // Und die beiden Konstanten sind wirklich die gerenderten Höhen. Ein Unit-Test
+    // kann das nicht: er sieht kein Stylesheet, und `LEG_CHIP_COMPACT_PX === 12`
+    // gegen sich selbst zu prüfen ist eine Tautologie. Hier steht der Browser
+    // daneben, also fällt ein geändertes `py-0.5` oder `leading-[12px]` auf,
+    // statt still die Doku zu widerlegen, die „gemessen statt getippt" behauptet.
+    const wrongHeight = chipRoom.filter(
+      (c) =>
+        c.kind !== null &&
+        Math.abs(c.height - (c.kind === 'compact' ? LEG_CHIP_COMPACT_PX : LEG_CHIP_PX)) > 0.5
+    );
+    check(
+      'die Pillenhöhen sind die, die leg-chip.ts nennt',
+      wrongHeight.length === 0,
+      chipRoom.map((c) => `${c.kind} ${c.height.toFixed(1)}px`).join(', ')
     );
 
     // Requirement 2: the drag may not go earlier than the ride can be ridden.

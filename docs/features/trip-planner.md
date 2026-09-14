@@ -930,19 +930,27 @@ baseline: measured at 1440×1000, a 12 px chip in a wrapper positioned at
 varies with the chip's own height and would have silently undone any position
 computed in pixels. A flex item has no baseline to sit on.
 
-Two things this does not cover, both named where the code is. A day somebody
+Three things this does not cover, all named where the code is. A day somebody
 **drags** has no floor under the gap at all — two blocks can overlap, the room is
-then negative, and the chip is centred on it rather than favouring one side. And
-the repair button on a `broken` leg keeps its 21 px: it is a target rather than a
-label, its text is already down to a deficit and one word, and a broken leg has
-by definition too little room for anything.
+then negative, and the chip is centred on it rather than favouring one side. A
+block with **no figure** is drawn at a flat 40 px while `spanMinutes` counts
+`MIN_BLOCK_MIN` for it, so its drawn bottom is 20 px below where the lane packing
+thinks it ends and the room goes negative there too; that disagreement predates
+this and is PAR-227, and it is also why the corpus above — which filtered parks
+with no readable wait times out — states a floor for days that have figures in
+them rather than for every day. And the repair button on a `broken` leg keeps its
+21 px: it is a target rather than a label, its text is already down to a deficit
+and one word, and a broken leg has by definition too little room for anything.
 
 The gap itself comes from `drawnBoxPx` (`day-grid.ts`), which is the same
 function `planner-block.tsx` sizes its own box with — including the third case, a
 block with no figure, which is a stated 40 px and used to live in that component
 and nowhere else. A hand-written twin there would agree on the day it was written
-and on no other. `pnpm test:planner-leg` pins the placement and both heights;
-`pnpm test:planner-grid` pins the box.
+and on no other. `pnpm test:planner-leg` pins the placement and `pnpm
+test:planner-grid` the box — but a unit test cannot see a stylesheet, so the two
+heights are pinned where a browser is: `pnpm check:planner` reads the rendered
+chip and fails if it is not `LEG_CHIP_PX` or `LEG_CHIP_COMPACT_PX`, which is what
+keeps "rendered rather than typed" true after somebody edits a padding class.
 
 ### A queue is joined before closing, and never after
 

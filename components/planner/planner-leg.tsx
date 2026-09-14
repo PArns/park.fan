@@ -46,7 +46,10 @@ interface PlannerLegProps {
  * queues (`leg-chip.ts`). Since the optimiser started timing on the expected
  * wait the blocks stand close together, and the 21 px chip stopped fitting: the
  * short form drops the distance and the slack and keeps the two things the gap
- * is about, the minutes and the verdict. Both of those also stay in the `title`.
+ * is about, the minutes and the verdict. The distance is still in the `title`;
+ * the slack is not, there or anywhere else, and that is the cost of the short
+ * form rather than an oversight — the `title` has always carried the parts of
+ * the arithmetic rather than its result.
  */
 export function PlannerLeg({
   leg,

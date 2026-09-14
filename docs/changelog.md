@@ -27,6 +27,11 @@ Dritter Fund beim Messen: die Pille ist `inline-flex` und saß im Block-Wrapper 
 einer Zeilenbox — bei `top: 10px` gezeichnet bei 18. Der Wrapper ist `flex`, ein Flex-Item hat keine
 Grundlinie. Nachher **0 von 9** angeschnitten, sechs Sprachen, beide Breiten, hell und dunkel.
 
+Nicht abgedeckt und benannt, wo der Code steht: ein Block **ohne Zahl** wird flach 40 px gezeichnet,
+während die Spurenpackung 16,7 Minuten für ihn rechnet — dort ist die Lücke weiter negativ. Das ist
+PAR-227 und älter als diese Änderung; die Messung oben hat Parks ohne lesbare Wartezeiten
+ausgefiltert und gilt deshalb für Tage, in denen Zahlen stehen.
+
 ---
 
 ## Unreleased – Planer: der Fit-Assistent nimmt sich nicht selbst vom Schirm
