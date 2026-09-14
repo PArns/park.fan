@@ -17,9 +17,9 @@ import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { ParkTime } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
-import { ropeDropCardVariant, troughWait } from '@/lib/utils/rope-drop';
+import { ropeDropCardVariant, ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
 import { quietestWeekdays } from '@/lib/utils/typical-waits';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { RopeDropInfo, TypicalWaits } from '@/lib/api/types';
 
@@ -223,9 +223,17 @@ export function RopeDropCard({
 
   const variant = ropeDropCardVariant(ropeDrop, { parkHasRecommendations });
 
+  /*
+   * Every wait this card prints, rounded once for the whole card rather than at each tile. The
+   * raw block stays available above for the gates that must not move onto the five-minute grid —
+   * `ropeDropCardVariant` just read it, and `rideByMinutesAfterOpen` / `bestSlotMinutesAfterOpen`
+   * below are offsets from opening rather than waits.
+   */
+  const shown = ropeDropDisplayWaits(ropeDrop);
+
   if (variant !== 'worth') {
     if (variant === 'evening') {
-      const eveningTroughWait = troughWait(ropeDrop);
+      const eveningTroughWait = shown.trough;
 
       const eveningBestNode: ReactNode = ropeDrop.bestSlotUtc
         ? eveningTroughWait != null
@@ -239,11 +247,11 @@ export function RopeDropCard({
       const eveningStats =
         eveningTroughWait != null
           ? [
-              { icon: Clock, label: t('atOpening'), value: ropeDrop.openWait, highlight: false },
+              { icon: Clock, label: t('atOpening'), value: shown.openWait, highlight: false },
               {
                 icon: ChartColumn,
                 label: t('dayPeak'),
-                value: ropeDrop.busyPeak,
+                value: shown.busyPeak,
                 highlight: false,
               },
               { icon: Moon, label: t('eveningWait'), value: eveningTroughWait, highlight: true },
@@ -267,8 +275,8 @@ export function RopeDropCard({
           />
           <p className="text-muted-foreground mb-3 text-sm">
             {t.rich('eveningText', {
-              openWait: ropeDrop.openWait,
-              busyPeak: ropeDrop.busyPeak,
+              openWait: shown.openWait,
+              busyPeak: shown.busyPeak,
               term: (chunks) => <GlossaryTermLink termId="rope-drop">{chunks}</GlossaryTermLink>,
             })}
           </p>
@@ -314,12 +322,12 @@ export function RopeDropCard({
        * Displayed, so rounded — the weekday sentence under these tiles is already on the 5-minute
        * grid (it passes `roundWaitTo5` into the vote so the minutes it names are the minutes the
        * bars draw), and the chart in the neighbouring cell rounds too. Left raw, one panel could
-       * read 23 / 48 beside „ca. 25 Min." and beside a bar labelled 50.
+       * read 23 / 48 beside „ca. 25 Min." and beside a bar labelled 50. This panel rounded its own
+       * three figures before the other three did; they come from the shared `shown` now, so the
+       * trough this panel labels and the one the `worth` panel calls the best slot are one value
+       * rounded once.
        */
-      const openWait = roundWaitTo5(ropeDrop.openWait);
-      const busyPeak = roundWaitTo5(ropeDrop.busyPeak);
-      const rawTrough = troughWait(ropeDrop);
-      const bestTimeTrough = rawTrough == null ? null : roundWaitTo5(rawTrough);
+      const { openWait, busyPeak, trough: bestTimeTrough } = shown;
       /*
        * Only where coming back later actually buys something: later than opening AND shorter. The
        * test runs on the two ROUNDED figures because they are the two the reader compares — „später
@@ -431,7 +439,7 @@ export function RopeDropCard({
       <NoteFrame variant="light" className={cn(!bare && 'p-4', className)}>
         <p className="text-muted-foreground flex items-center gap-2 text-sm">
           <Sunrise className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {t('notWorth', { openWait: ropeDrop.openWait })}
+          {t('notWorth', { openWait: shown.openWait })}
         </p>
       </NoteFrame>
     );
@@ -458,7 +466,7 @@ export function RopeDropCard({
         })
       : t('rideWithin', { minutes: ropeDrop.rideByMinutesAfterOpen });
 
-  const worthTroughWait = troughWait(ropeDrop);
+  const worthTroughWait = shown.trough;
   const bestSlotNode: ReactNode = ropeDrop.bestSlotUtc
     ? worthTroughWait != null
       ? t.rich('bestSlotAtWait', {
@@ -469,12 +477,15 @@ export function RopeDropCard({
     : bestSlotOffsetNode('bestSlotOffset');
 
   const stats = [
-    { icon: Clock, label: t('atOpening'), value: ropeDrop.openWait, highlight: false },
-    { icon: ChartColumn, label: t('dayPeak'), value: ropeDrop.busyPeak, highlight: false },
+    { icon: Clock, label: t('atOpening'), value: shown.openWait, highlight: false },
+    { icon: ChartColumn, label: t('dayPeak'), value: shown.busyPeak, highlight: false },
     {
       icon: TrendingDown,
       label: t('savings'),
-      value: ropeDrop.savings,
+      // The API's stored column on the delta grid, not `busyPeak − openWait` — swapping the
+      // figure for a local subtraction is out of this card's scope. The two can therefore differ
+      // by five here where the `bestTime` panel's spread tile, which IS that subtraction, cannot.
+      value: shown.savings,
       highlight: true,
       prefix: '−',
     },
@@ -528,9 +539,14 @@ export function RopeDropCard({
 
       <div className="text-muted-foreground mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3 text-xs">
         <span>
+          {/* Two more savings, three lines under the tile that holds the third — rounded on the
+              same delta grid, or this footer would print 32 beneath a tile reading 30. They are
+              read here rather than in `ropeDropDisplayWaits` because this is the only panel that
+              draws them, and a helper touching `byDaytype` for all four would reach into a block
+              the other three never ask a stale row for. */}
           {t('byDaytype', {
-            weekend: ropeDrop.byDaytype.weekend.savings,
-            weekday: ropeDrop.byDaytype.weekday.savings,
+            weekend: roundWaitDeltaTo5(ropeDrop.byDaytype.weekend.savings),
+            weekday: roundWaitDeltaTo5(ropeDrop.byDaytype.weekday.savings),
           })}
         </span>
         {ropeDrop.confidence === 'low' && (
