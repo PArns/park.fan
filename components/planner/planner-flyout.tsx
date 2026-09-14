@@ -52,9 +52,10 @@ interface PlannerFlyoutProps {
  * and the two differ in where they come from rather than in what they are.
  *
  * The scroll belongs to the list, never to `SheetContent`: that element is the
- * positioned ancestor of the close button, so scrolling it takes the close
- * button off screen. `components/ui/sheet.tsx` says so at the button, and the
- * burger menu solves it the same way.
+ * positioned ancestor of the desktop's close button, so scrolling it takes the
+ * close button off screen. `components/ui/sheet.tsx` says so at the button, and
+ * the burger menu solves it the same way. (The phone sheet drops that button
+ * altogether — `hideClose` — and closes on its grab handle instead.)
  */
 /** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
 const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
@@ -668,6 +669,23 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       <SheetContent
         modal={isPhone}
         side={isPhone ? 'bottom' : 'right'}
+        /* No × on the phone. The bottom sheet already has two ways out that a
+           finger finds first — the grab handle right above the header, which
+           drags the sheet away and toggles its height on a tap, and the shield
+           beside it while the sheet rests at 92svh — and the × was a third,
+           parked in the one corner a thumb reaches worst. The desktop keeps it:
+           a side panel has no handle, and its outside press is deliberately
+           swallowed by `onInteractOutside` below, so there the × and Escape are
+           the whole list.
+
+           Keyed on `isPhone` and not on a `max-sm:` class, because that is the
+           condition the sheet's SHAPE is keyed on two lines up — `side` and
+           `modal` read the same value, and a class would be a fourth copy of
+           `PLANNER_PHONE_QUERY` free to drift from the other three the next
+           time that query grows a term. The panel only mounts on an open, i.e.
+           long after hydration, so `useMediaQuery`'s `false` server snapshot
+           never reaches the screen here. */
+        hideClose={isPhone}
         /* A click on the page does NOT close the panel on a desktop.
            `DismissableLayer` fires this for every pointer press outside the
            sheet, and outside the sheet is exactly where the work is: the panel
@@ -678,7 +696,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
            behind it shut the plan.
            The phone keeps its overlay tap: there the sheet is modal, the page
            behind is covered and inert, and tapping the shield is the ordinary
-           way out of a bottom sheet. Escape and the × work in both. */
+           way out of a bottom sheet. Escape works in both; the × is the
+           desktop's, see `hideClose` above. */
         onInteractOutside={(event) => {
           if (!isPhone) event.preventDefault();
         }}
@@ -736,12 +755,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           //
           // The 68 px it costs is the overlay, and that is the whole trade.
           // Pulled up, the modal shield is behind the sheet and tapping beside
-          // it is no longer a way out — so the two that remain have to be real,
-          // and both are: the × is `max-sm:size-11` on `SheetContent` itself,
-          // and this handle takes it back down (a drag, or a tap, which is why
-          // the tap toggles rather than only dismissing). Resting at 92 the
-          // shield is back. Only the pulled-up state gives it up, and only for
-          // as long as somebody holds it there.
+          // it is no longer a way out — so what remains has to be real, and it
+          // is: the handle takes the sheet back down (a drag, or a tap, which
+          // is why the tap toggles rather than only dismissing). It used to
+          // have the × beside it; `hideClose` above takes that away on the
+          // phone, which is what makes this handle the state's only exit and
+          // the reason it may not become decoration. Resting at 92 the shield
+          // is back. Only the pulled-up state gives it up, and only for as long
+          // as somebody holds it there.
           expanded ? 'planner-phone:max-h-[100svh]' : 'planner-phone:max-h-[92svh]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
@@ -809,10 +830,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             vertical axis with 324 px to draw it in. Merged and at `py-2` the
             head is 45 px, and the row's height is the day picker's own 28 px.
 
-            `pr-7` is structural, not padding taste: `SheetContent` puts its
-            close button at `absolute top-4 right-4`, which is now INSIDE this
-            row, and without the clearance the picker's forward chevron sits
-            under it and one of the two becomes untappable. */}
+            The desktop's `pr-7` is structural, not padding taste:
+            `SheetContent` puts its close button at `absolute top-4 right-4`,
+            which is now INSIDE this row, and without the clearance the picker's
+            forward chevron sits under it and one of the two becomes
+            untappable. */}
         {/* `planner-phone:py-0` rather than the `py-1` it had: the two controls
             in this row are 44 px tall on a phone now, so the padding that used
             to give a 28 px button air is 8 px this panel spends on nothing. The
@@ -823,20 +845,29 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             `max-sm:` they were written with. Split them and a landscape phone
             gets the tight padding with 28 px buttons still in it: a 29 px row of
             targets a thumb cannot hit, measured at 844x390 before this line was
-            written. `pr-14` below is a different pair and deliberately stays on
-            `max-sm:` — it clears the close button in `components/ui/sheet.tsx`,
-            which is shared with every other sheet in the app and still asks the
-            width. */}
+            written. The clearance below is the same kind of pair and is keyed on
+            `isPhone` for the same reason — it clears the close button, so it has
+            to follow the condition that decides whether there IS one. */}
         <SheetHeader className="border-border/60 planner-phone:py-0 shrink-0 gap-0 border-b px-3 py-2">
-          {/* `max-sm:pr-14` and not the desktop's `pr-7`, because the close
-              button this clears is a DIFFERENT size on a phone: `SheetContent`
-              draws it `max-sm:top-2 max-sm:right-2 max-sm:size-11`, so it
-              covers the rightmost 52 px, while `pr-7` reserves 28 and `px-3`
-              adds 12 — 12 px short. The last control in this row is "einen Tag
-              planen", and 12 of its 28 px sat under the ×. 56 px of clearance
-              puts its edge 8 px clear of the close button at every phone width.
-          */}
-          <div className="flex items-center gap-2 pr-7 max-sm:pr-14">
+          {/* The clearance is for the × and goes with it. On a desktop
+              `SheetContent` draws its close button `absolute top-4 right-4`,
+              inside this very row, so `pr-7` keeps the last control out from
+              under a 16 px target. The phone used to need `max-sm:pr-14` for
+              the same reason and one size up — there the button is
+              `max-sm:right-2 max-sm:size-11`, covering the rightmost 52 px
+              against the 28 + 12 the desktop pair reserves, and 12 px of "einen
+              Tag planen" sat under it. With `hideClose` there is nothing to
+              clear on a phone, and holding the 56 px anyway would spend them on
+              a button that is gone.
+
+              `!isPhone` and not `sm:`, because `hideClose` two elements up is
+              `isPhone`: a landscape phone is a phone by the height term but
+              matches `sm:`, so a width class would hold 28 px clear of a button
+              that is not drawn there. The × in `components/ui/sheet.tsx` keeps
+              its own `max-sm:` sizing — that file is shared with every other
+              sheet in the app — and the two never disagree, because on every
+              window this branch calls a phone the button is gone entirely. */}
+          <div className={cn('flex items-center gap-2', !isPhone && 'pr-7')}>
             {/* Radix wants a title and a phone has no room for one. 45 px went
                 to this row and 45 to the column's own head, 90 px of a 776 px
                 sheet spent saying "Tagesplaner" over a park name and a date —
@@ -898,12 +929,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   className={cn(
                     'text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex items-center gap-1 rounded text-xs transition-colors',
                     // Beside the head it is the ONE 44 px target the row can
-                    // still afford. Measured at 390 px: the row is 295 wide,
-                    // this takes 44 and the day picker 176, and what is left
-                    // for the park name is 63 — its label alone would be 123.
-                    // The chevron is what this control is: the sign that a list
-                    // opens here. The word goes to the screen reader, which is
-                    // the reader it was carrying it for.
+                    // still afford, and the word beside it is what pays for
+                    // that. Measured at 390 px: the row is 351 wide — 295
+                    // until `hideClose` gave back the 56 px this header used
+                    // to hold for the × — and it spends them on this button's
+                    // 44, an 8 px gap and the head's 299. Inside that head the
+                    // park name's control gets 121 and the name draws its full
+                    // 80, where the narrower row cut it to 37. Putting „Meine
+                    // Pläne" back beside the chevron costs 68 px plus the gap,
+                    // i.e. most of what the park name is using, so the extra
+                    // room does not change this: the chevron IS the control,
+                    // the sign that a list opens here, and the word goes to
+                    // the screen reader it was being carried for.
                     phoneHead
                       ? 'hover:bg-accent size-11 shrink-0 justify-center rounded-md'
                       : 'min-w-0 flex-1 px-1 py-0.5'
@@ -932,11 +969,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     than asking a question the route already answers.
 
                     NOT on a phone, and that is the decision this row cost.
-                    Measured at 390 px: the row is 295 px (375 − twice the
-                    header's `px-3` − the 56 of `max-sm:pr-14`), the day picker
-                    takes 176, and each 44 px target plus its gap takes 52. One
-                    of them leaves the park name 63 px; two leave it **11**,
-                    i.e. no park name. Something had to go, and of the four the
+                    Measured at 390 px, against the row as it then was — 295 px
+                    (375 − twice the header's `px-3` − the 56 of
+                    `max-sm:pr-14`) —, the day picker took 176 and each 44 px
+                    target plus its gap 52. One of them left the park name
+                    63 px; two left it **11**, i.e. no park name. Something had
+                    to go, and of the four the
                     "+" is the only one that closes no ROUTE. Two things reach
                     what it reached, and it is worth being exact about which:
                       · a second day at the park on screen is the day picker
@@ -953,6 +991,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     That residue is PAR-181 rather than a decision taken here.
                     The day picker is the panel's most-pressed control and the
                     park name is what tells a reader which plan they are in.
+
+                    And the budget the paragraph above is measured against has
+                    since moved: dropping the × gave the row 351 px, i.e. 56
+                    more, so two 44 px targets leave the park name 67 rather
+                    than 11. That does not put the "+" back by itself — 67 is
+                    still under the 80 „Phantasialand" measures, and the two
+                    paths above still reach what it reached — but it does
+                    re-open the question this comment closed, which is PAR-202.
 
                     `!isPhone` rather than `!phoneHead`: it is gone on a phone
                     for good, not only while the head is up. The overview is

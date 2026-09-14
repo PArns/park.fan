@@ -284,10 +284,12 @@ strip collapses to `h-0` — rule, glass, symbol and sentence with it — and th
 switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
 Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
 and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
-a switch rather than move somewhere else: the panel's header row has 63 px left
-for the park name at 390 px (see the arithmetic in `planner-flyout.tsx`), and a
-row of its own in `PlannerDayFoot` would have cost about 35 px of chrome to give
-45 back. It costs the corner: 44 × 44 of grid under a visible control, against
+a switch rather than move somewhere else: the panel's header row has 119 px left
+for the park name at 390 px and the name measures 80 of them (63 until PAR-188
+dropped the ×; see the arithmetic in `planner-flyout.tsx`, and PAR-202 for what
+the 56 px it gave back are worth), so a fourth control there comes out of the
+park name — and a row of its own in `PlannerDayFoot` would have cost about 35 px
+of chrome to give 45 back. It costs the corner: 44 × 44 of grid under a visible control, against
 44 px across the full width before.
 
 That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`
@@ -1528,10 +1530,29 @@ resting height back: the resting height is where the 59 px came from, and it is
 what Patrick asked for in as many words.
 
 What 100svh costs is the modal overlay. Pulled up there is no shield left beside
-the sheet, so tapping outside is no longer a way out and the two that remain have
-to be real ones — the × on `SheetContent` is `max-sm:size-11`, and the handle
-brings the sheet back down by drag **or** tap, which is why the tap toggles
-rather than only dismissing. At rest the shield is back.
+the sheet, so tapping outside is no longer a way out and what remains has to be
+real: the handle brings the sheet back down by drag **or** tap, which is why the
+tap toggles rather than only dismissing. At rest the shield is back.
+
+**And the × is gone from the phone sheet**, which is what makes that handle the
+pulled-up state's only exit. Three ways out of a bottom sheet were one too many,
+and the one that went is the one parked in the corner a thumb reaches worst;
+`SheetContent` takes a `hideClose` prop for it, opt-in per call site rather than
+a breakpoint inside the component, because the same component draws the header's
+burger menu and that sheet has nothing else to close it with. The planner keys it
+on `isPhone`, the same value as `side` and `modal` two lines up, so a class does
+not become a fourth copy of `PLANNER_PHONE_QUERY` free to drift from the other
+three. That is also what keeps the trade honest at 844 × 390: the handle's
+wrapper is `planner-wide:hidden` and `planner-wide:` is the exact complement of
+`planner-phone:`, which is the CSS twin of that query — so the × goes exactly
+where the handle arrives, and there is no window that loses both. A `max-sm:`
+class would have taken the × off a landscape phone without giving it a handle,
+because 844 px is over `sm`. The desktop panel keeps its ×: a side panel has no
+handle, and its outside press is deliberately swallowed, so there the × and
+Escape are the whole list. `check:planner` asserts the pair at all three:
+no close button beside the existing `der Anfasser ist da` at 390 × 844, the same
+beside the handle assertion at 844 × 390, and a close button still present at
+1400 px.
 
 ### Every target in the sheet is 44 px, and three of them are not what they measure
 
@@ -1576,13 +1597,21 @@ action row. The strip grows instead, which costs the axis nothing (it is scrolle
 content, not part of the scroller's box) and costs coverage, which scrolling
 recovers where a stolen tap does not.
 
-One entry in that list was not a size at all. `SheetContent` draws its close
+One entry in that list was not a size at all. `SheetContent` drew its close
 button `max-sm:size-11` at `right-2`, covering the rightmost 52 px of the header
 row, while the row reserved `pr-7` plus the header's `px-3` — 40 px. "Einen Tag
-planen" sat 12 of its 28 px under the ×. A sweep skips a control that is covered
-at its own centre (that is a different defect), so this one has a named check of
-its own, asked as `click({ trial: true })` because "receives events" is the
-question and Playwright names the intercepting element when the answer is no.
+planen" sat 12 of its 28 px under the ×, and the fix was `max-sm:pr-14`. Dropping
+the × from the phone sheet takes both sides of that away: there is nothing to
+clear, so the row carries `pr-7` where `!isPhone` and nothing where the sheet is
+a phone's, and the 56 px go back to the head. The clearance is keyed on the same
+value as `hideClose` rather than on a width, because what it clears is the button
+that value decides. A sweep skips a control that is covered at its own centre
+(that is a different defect), so the overlap has a named check of its own, asked
+as `click({ trial: true })` because "receives events" is the question and
+Playwright names the intercepting element when the answer is no. It measures the
+**rightmost** control of the header whatever that is today, so it keeps working
+over a header that no longer has a × in it — it is the header's own controls it
+guards now.
 
 ### A plan may not depend on a gesture landing
 

@@ -1321,6 +1321,19 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
     phone.locator(SHEET).evaluate((el) => Math.round(parseFloat(getComputedStyle(el).maxHeight)));
 
   check('der Anfasser ist da', (await grab.count()) === 1);
+
+  // And he is the only way out that is drawn, which is why the line above is
+  // not a formality any more. The × went off the phone sheet with PAR-188 —
+  // three exits were one too many, and the one that went is the one parked in
+  // the corner a thumb reaches worst — so the pair has to be asserted
+  // together: no close button, AND a handle that is
+  // there. Either one alone would pass over a sheet with no visible exit at
+  // all, which is exactly the state at 100svh, where the modal shield sits
+  // behind the sheet and tapping beside it does nothing.
+  check(
+    'und auf dem Handy trägt das Sheet keinen ×-Knopf mehr',
+    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+  );
   if (await grab.count()) {
     /**
      * How far a drag travels, and it is a DISTANCE rather than a destination.
@@ -1714,13 +1727,20 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
     reportSweep('jedes Ziel im Sheet ist 44 px hoch', await sweepSmallTargets(SHEET));
 
     // The one the sweep cannot see, and it is a real bug rather than a
-    // measurement: `SheetContent` draws its close button `max-sm:size-11` at
-    // `right-2`, so it covers the rightmost 52 px of the header — and the
+    // measurement: `SheetContent` USED TO draw its close button `max-sm:size-11`
+    // at `right-2`, covering the rightmost 52 px of the header while the
     // header's own content stopped 40 px from that edge. "Einen Tag planen" sat
     // 12 px under the ×, which reads from the outside as a button that opens
     // the wrong thing. Asked of Playwright, because "receives events" is the
     // question and `click({ trial: true })` names the intercepting element when
     // the answer is no.
+    //
+    // The × is gone from this sheet (PAR-188) and the assertion is not: what it
+    // guards is that the rightmost control of the header takes a press, and the
+    // next thing to cover it will not be a close button. So it is NAMED after
+    // the press rather than after the one element that used to swallow it — a
+    // name that points at something the phone no longer renders sends the next
+    // reader of a red line looking for the wrong culprit.
     //
     // It asks for the control that is LAST in that row rather than for one by
     // name, and that is the lesson of PAR-163 rather than a tidy-up: the
@@ -1756,7 +1776,7 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check(
-        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile nimmt einen Druck an',
         free === 'erreichbar',
         `${lastInHeader} — ${free}`
       );
@@ -1769,7 +1789,7 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       );
     } else {
       check(
-        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile nimmt einen Druck an',
         false,
         'keine Kopfzeile gefunden'
       );
@@ -3367,6 +3387,15 @@ step: {
     check(
       'der Hinweis am Fuß schweigt, solange das Raster leer ist',
       (await desk.locator('[data-planner-drag-coach]').count()) === 0
+    );
+    // The other half of the phone pass's „kein ×-Knopf mehr". `hideClose` is
+    // opt-in per call site and keyed on `isPhone`, so the side panel has to be
+    // asked separately — it has no grab handle, and its outside press is
+    // deliberately swallowed, so losing the × here would leave Escape as the
+    // only way out of a panel that is not modal.
+    check(
+      'am Rechner behält das Panel seinen ×-Knopf',
+      (await desk.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1
     );
     await desk.close();
   }
@@ -7266,6 +7295,20 @@ if (live) {
       'der Griff ist im Querformat da und 44 px hoch',
       handleBox !== null && Math.round(handleBox.height) === 44,
       handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
+    );
+
+    // The handle's other half, and the reason it is asserted HERE and not only
+    // in the portrait pass: `hideClose` is keyed on `isPhone`, so PAR-76's
+    // height term took the × off this window too — 844×390 is over `sm` and
+    // would have kept it under the old query. The pair is what AK 3 of PAR-188
+    // rests on: the × may only go where the handle is drawn, and
+    // `planner-wide:` is the exact complement of `planner-phone:`, so the two
+    // switch on the same window or the sheet has no visible way out. Asserted
+    // together for the same reason the portrait pass does it — either half
+    // alone passes over exactly that state.
+    check(
+      'und im Querformat trägt es keinen ×-Knopf',
+      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
     );
 
     // The two PAIRS this change is built on, asserted rather than assumed.

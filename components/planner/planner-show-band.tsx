@@ -148,9 +148,13 @@ export function PlannerShowBand({
       // from the top right — 44 × 44 of cover instead of 44 × the full width.
       // The way back is where the way out was, which is what makes it a switch
       // rather than a one-way door; the header row this could otherwise have
-      // moved to has 63 px left for the park name at 390 px (see the
-      // arithmetic in `planner-flyout.tsx`), and a row of its own in
-      // `PlannerDayFoot` would cost more chrome than the strip gives back.
+      // moved to has 119 px left for the park name at 390 px — 63 until
+      // PAR-188 dropped the ×, which is where the other 56 came from — and the
+      // name itself measures 80 of them, so a fourth 44 px control there is
+      // still paid for out of the park name (the arithmetic is in
+      // `planner-flyout.tsx`, and what the extra room does or does not buy
+      // that row is PAR-202). A row of its own in `PlannerDayFoot` would cost
+      // more chrome than the strip gives back.
       //
       // It is the phone's state alone: every class here is `max-sm:`, so the
       // desktop keeps the "Ausgeblendet" strip it has always had. CSS rather
