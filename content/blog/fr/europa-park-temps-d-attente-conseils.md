@@ -114,7 +114,7 @@ l’attraction qui a totalisé 3,25 millions de tours la première année**, c�
 peu au regard de plus de six millions de visiteurs. La comparaison, même base de
 données, même méthode de calcul :
 
-```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
+```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 

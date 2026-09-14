@@ -111,7 +111,7 @@ eerste jaar 3,25 miljoen ritten kreeg**, is, afgezet tegen ruim zes miljoen
 gasten, heel weinig. Ter vergelijking, dezelfde gegevens, dezelfde
 rekenmethode:
 
-```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
+```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 
