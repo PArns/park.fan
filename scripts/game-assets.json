@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "id": "hdri/kloofendal-partly-cloudy-1k",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloofendal_43d_clear_puresky_1k.hdr",
+      "target": "polyhaven/hdri/day-clear-1k.hdr",
+      "source": "Poly Haven",
+      "author": "Greg Zaal / Jarod Guest",
+      "license": "CC0-1.0",
+      "usedBy": "environment (IBL, day)",
+      "sha256": "de7ba9d0b070470dbb70d0144294c8708068df353537b26ab59c394707e84377"
+    },
+    {
+      "id": "hdri/dusk-1k",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/venice_sunset_1k.hdr",
+      "target": "polyhaven/hdri/dusk-1k.hdr",
+      "source": "Poly Haven",
+      "author": "Greg Zaal",
+      "license": "CC0-1.0",
+      "usedBy": "environment (IBL, golden hour)",
+      "sha256": "92fe2b29b1957828fb8925a57633540bbba5bf380d9285ed553443e834249352"
+    },
+    {
+      "id": "hdri/night-1k",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/dikhololo_night_1k.hdr",
+      "target": "polyhaven/hdri/night-1k.hdr",
+      "source": "Poly Haven",
+      "author": "Greg Zaal",
+      "license": "CC0-1.0",
+      "usedBy": "environment (IBL, night)",
+      "sha256": "6861489f983cdc0c22435b781a3487171bd25f25f9cc52c46ac402d48e08249e"
+    }
+  ]
+}
