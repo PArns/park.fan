@@ -171,17 +171,34 @@ opening hour — Phantasialand, Alton Towers and Toverland all answered `11 12 1
 UTC. An hour-scoped field inside a day-stable entry is the shows-and-restaurants case one section
 up, and it ends the same way: the field travels on its own request.
 
-`useCalendarDayHourly` fetches exactly one day (`from` = `to`), only while the dialog is open, and
-only for a day the API itself marks `isToday` or `isTomorrow` — so a park has at most two such URLs
-in a cache at a time and a reader who never opens the dialog pays nothing. The proxy accepts
-`includeHourly` as a **closed set** (the value lands in the CDN cache key, same rule as the blog
-widgets' `topN`) and answers that variant with a five-minute window instead of the month's day.
+It travels as its own route, `…/calendar/hourly?date=`, rather than as an `includeHourly` parameter
+on the calendar branch, and that is a caching constraint rather than a taste: `next.config.ts`
+carries a `headers()` rule for every cacheable `/api` route with exactly the value its handler
+returns, because a rule overrides the handler under `next start` while the handler wins on Vercel —
+and such a rule matches a path, never a query string. A per-parameter window would therefore have
+been 300 s on one and 86400 on the other for the same URL.
+
+`useCalendarDayHourly` asks for it only while the dialog is open, and only for today or tomorrow in
+the **park's** timezone — derived from the park-local date, because `CalendarDay.isTomorrow` is
+declared and never sent (measured across a whole month payload), so a gate on it would be false for
+ever. A park therefore has at most two such URLs in a cache at a time, and a reader who never opens
+the dialog pays nothing. `date` is checked against a real calendar day and against a window of
+today ± a day: only four dates can ever answer anything, and without the bound every well-shaped
+string (`2026-99-99`) would be a fresh CDN key plus an upstream request.
+
+**The five-minute window is not what decides how fresh a reader's curve is.** api.park.fan answers
+this URL with `max-age=36251, s-maxage=36251` — an expiry at park-local midnight — and Cloudflare
+serves it from cache: measured 2026-09-14 12:56 UTC, a `HIT` (`age: 3651`) whose series started at
+11 against a cache-busted fetch of the same URL that started at 12. The first reader of the day
+fixes the curve for the rest of it. Nothing here can shorten that window (PAR-217); what keeps the
+chart honest is that the bars whose hour has ended are dropped at render, so a kept copy draws
+fewer bars rather than wrong ones, and one that is stale throughout draws none.
 
 One trap that comes with the data rather than the budget: `HourlyPrediction.hour` is a **UTC**
 hour, not the park's. The dialog printed it raw, which would have put `11 12 13 14 15` under a
-Phantasialand day that runs 13 to 18. `hourlyPredictionInstants` (`lib/utils/calendar-utils.ts`)
+Phantasialand day that runs 13 to 18. `upcomingHourlyPredictions` (`lib/utils/calendar-utils.ts`)
 turns the series into instants and `formatInTimeZone` renders them in park time;
-`pnpm test:calendar` pins the three measured series and the midnight-UTC crossing.
+`pnpm test:calendar` pins the three measured series, the midnight-UTC crossing and the expiry cut.
 
 ### Attraction detail: 58 KB → 27 KB
 

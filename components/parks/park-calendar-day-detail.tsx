@@ -45,9 +45,10 @@ import {
   getEventIcon,
   getWeatherIconFromCode,
   getWeatherTranslationKey,
-  hourlyPredictionInstants,
+  upcomingHourlyPredictions,
 } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
 const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
@@ -147,6 +148,7 @@ export function ParkCalendarDayDetail({
   // false for tomorrow for ever, with a curve sitting on the endpoint and nothing drawing it.
   // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
   // needs no timezone of its own.
+  const browserNow = useBrowserNow(60_000);
   const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
   const canHaveHourly =
     !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
@@ -198,15 +200,23 @@ export function ParkCalendarDayDetail({
   // `day.hourly` stays first: a caller that already holds a curve (a payload fetched with
   // `includeHourly`) keeps rendering it, and the fetch above is the fallback that fills the gap
   // the calendar grid's `includeHourly=none` leaves.
+  //
+  // `upcomingHourlyPredictions` does two things the raw array cannot: it carries the UTC `hour`
+  // over into an instant, so the axis can be labelled in park time, and it drops the bars whose
+  // hour is already over. The second is not cosmetic — the curve is a countdown of the remaining
+  // open hours and the backend serves it out of a cache that expires at park-local midnight, so a
+  // copy taken in the morning would draw this morning all evening.
   const hourlySource = day.hourly ?? hourlyQuery.data ?? [];
-  const hourly = hourlySource.filter((h) => h.predictedWaitTime > 0);
-  const maxHourlyWait = hourly.reduce((m, h) => Math.max(m, h.predictedWaitTime), 0);
-  // The API's `hour` is a UTC hour, so the axis is labelled off an instant rather than off the
-  // number — printing it raw put `11 12 13 14 15` under a Phantasialand day that runs 13 to 18.
-  const hourlyInstants = hourlyPredictionInstants(
+  const hourly = upcomingHourlyPredictions(
     day.date,
-    hourly.map((h) => h.hour)
+    hourlySource.filter((h) => h.predictedWaitTime > 0),
+    // `browserNow` rather than `Date.now()`: a clock read during render is impure, and the minute
+    // tick also retires a bar while the dialog is open instead of at the next re-render. Before
+    // the first tick nothing is cut, which is the right way round — the dialog opens on a click,
+    // so the tick has long happened, and a missing clock must not empty a correct chart.
+    (browserNow ?? new Date()).getTime()
   );
+  const maxHourlyWait = hourly.reduce((m, h) => Math.max(m, h.predictedWaitTime), 0);
 
   // Neighbour holidays grouped BY COUNTRY (API already priority-sorted), each
   // country listing its regions — so a border park splits cleanly into e.g.
@@ -553,9 +563,9 @@ export function ParkCalendarDayDetail({
                 {t('dayDetail.hourlyTitle')}
               </h3>
               <div className="flex items-end gap-1" style={{ height: 72 }}>
-                {hourly.map((h, i) => {
+                {hourly.map((h) => {
                   const pct = maxHourlyWait > 0 ? (h.predictedWaitTime / maxHourlyWait) * 100 : 0;
-                  const label = formatInTimeZone(hourlyInstants[i], parkTimezone, 'HH');
+                  const label = formatInTimeZone(h.instant, parkTimezone, 'HH');
                   return (
                     <div key={h.hour} className="flex flex-1 flex-col items-center gap-1">
                       <div className="flex h-12 w-full items-end justify-center">

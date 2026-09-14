@@ -1,5 +1,9 @@
 import { formatInTimeZone } from 'date-fns-tz';
-import { getWeatherEmoji, hourlyPredictionInstants } from '../lib/utils/calendar-utils.ts';
+import {
+  getWeatherEmoji,
+  hourlyPredictionInstants,
+  upcomingHourlyPredictions,
+} from '../lib/utils/calendar-utils.ts';
 
 const testCases = [
   // Numeric codes (WMO)
@@ -157,6 +161,77 @@ for (const c of labelCases) {
 
 check('an empty series stays empty', hourlyPredictionInstants('2026-09-14', []).length === 0);
 check('a date the API never sends yields nothing', hourlyPredictionInstants('', [11]).length === 0);
+
+// ---------------------------------------------------------------------------
+// upcomingHourlyPredictions
+//
+// The curve is a countdown of the remaining open hours, and api.park.fan caches it until
+// park-local midnight — so the copy a reader gets in the afternoon can still start at this
+// morning. The expired bars are cut at render; these cases are what says so.
+// ---------------------------------------------------------------------------
+
+console.log('\n🧪 Testing upcomingHourlyPredictions\n');
+
+const series = [11, 12, 13, 14, 15].map((hour) => ({ hour, predictedWaitTime: 10 }));
+const at = (iso) => Date.parse(iso);
+
+{
+  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T11:41:00Z'));
+  check(
+    'a fresh curve loses nothing — the current hour has not ended',
+    kept.length === 5 && kept[0].hour === 11,
+    `kept ${kept.map((k) => k.hour).join(' ')}`
+  );
+  check(
+    'and every entry carries the instant its bar covers',
+    kept[0].instant === at('2026-09-14T11:00:00Z') &&
+      kept[4].instant === at('2026-09-14T15:00:00Z'),
+    `first ${new Date(kept[0].instant).toISOString()}`
+  );
+}
+
+{
+  // The measured case: a copy taken at 11:41 and served again at 14:20 out of the backend's cache.
+  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T14:20:00Z'));
+  check(
+    'a curve kept for three hours drops the three that are over',
+    kept.map((k) => k.hour).join(' ') === '14 15',
+    `kept ${kept.map((k) => k.hour).join(' ')}`
+  );
+}
+
+{
+  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T16:00:00Z'));
+  check(
+    'past the last bar the section has nothing left to draw',
+    kept.length === 0,
+    `kept ${kept.map((k) => k.hour).join(' ')}`
+  );
+}
+
+{
+  // Exactly on the hour: the 11:00 bar covers 11:00–12:00, so at 12:00 it is over and 12 is not.
+  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T12:00:00Z'));
+  check(
+    'a bar ends when its hour does, not when it starts',
+    kept.map((k) => k.hour).join(' ') === '12 13 14 15',
+    `kept ${kept.map((k) => k.hour).join(' ')}`
+  );
+}
+
+{
+  // Tomorrow is entirely ahead whatever the clock says today.
+  const kept = upcomingHourlyPredictions(
+    '2026-09-15',
+    [7, 8, 9, 10, 11].map((hour) => ({ hour, predictedWaitTime: 10 })),
+    at('2026-09-14T14:20:00Z')
+  );
+  check(
+    "tomorrow's curve survives today's afternoon in full",
+    kept.length === 5,
+    `kept ${kept.map((k) => k.hour).join(' ')}`
+  );
+}
 
 console.log('\n' + '='.repeat(80));
 console.log(`\n📊 Results: ${passed}/${total} passed, ${failed} failed\n`);

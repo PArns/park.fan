@@ -65,13 +65,50 @@ const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-re
  *
  * `max-age` is left out on purpose: the browser holds the curve for
  * `CALENDAR_HOURLY_STALE_TIME_MS` in React Query, which is where that decision belongs, and a
- * second HTTP window under it would only make the two disagree. The stale window matches the fresh
- * one so nobody is served a curve more than ten minutes behind.
+ * second HTTP window under it would only make the two disagree.
+ *
+ * **This window is not what a reader's freshness depends on**, and saying so was the first version
+ * of this comment. The binding constraint is upstream: api.park.fan answers this URL with
+ * `max-age=36251, s-maxage=36251` — an expiry at park-local midnight — and Cloudflare serves it
+ * from cache, measured 2026-09-14 12:56 UTC as a `HIT` (`age: 3651`) whose series started at 11
+ * while a cache-busted fetch of the same URL started at 12. So the first reader of the day fixes
+ * the curve for the rest of it, and nothing in this repo can shorten that. What this window still
+ * buys is that OUR layer never adds to it. The bars that have since expired are dropped at render
+ * (`upcomingHourlyPredictions`), so a kept copy draws fewer bars rather than wrong ones; shortening
+ * the backend's own window is PAR-217.
  *
  * Repeated verbatim in next.config.ts, like every other cacheable /api route — see the long note
  * in that headers block: which of the two wins depends on where it runs, so they may never differ.
  */
 const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=300';
+
+/**
+ * Whether `date` is one this route may answer at all — a real calendar day, and one close enough
+ * to now that a park somewhere could call it today or tomorrow.
+ *
+ * The form check alone is not enough, and the reason is the cache rather than the payload: a
+ * `/^\d{4}-\d{2}-\d{2}$/` accepts `2026-99-99` and every other well-shaped nonsense, so each one
+ * is a fresh CDN key AND an upstream request for a day the backend has nothing to say about. Four
+ * dates is the whole set this route can ever serve: only today and tomorrow carry a curve, park
+ * timezones run from UTC−12 to UTC+14, so a park's own "today" is within a day of the UTC date and
+ * its "tomorrow" at most two ahead.
+ *
+ * `Date.parse` on its own does not reject an impossible day — it clamps — so the parsed value is
+ * formatted back and compared, which is what turns `2026-02-30` into a 400.
+ */
+function isServableHourlyDate(date: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+
+  const parsed = new Date(`${date}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return false;
+
+  const daysFromUtcToday = Math.round(
+    (parsed.getTime() - Date.parse(`${new Date().toISOString().slice(0, 10)}T00:00:00Z`)) /
+      86_400_000
+  );
+
+  return daysFromUtcToday >= -1 && daysFromUtcToday <= 2;
+}
 
 export async function GET(
   request: NextRequest,
@@ -208,9 +245,9 @@ export async function GET(
     const [continent, country, city, park] = path;
     const date = new URL(request.url).searchParams.get('date');
 
-    if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    if (!date || !isServableHourlyDate(date)) {
       return NextResponse.json(
-        { error: 'Missing or invalid query parameter: date (YYYY-MM-DD)' },
+        { error: 'Missing or out-of-range query parameter: date (YYYY-MM-DD, today ± a day)' },
         { status: 400 }
       );
     }

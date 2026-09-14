@@ -87,6 +87,42 @@ export function hourlyPredictionInstants(date: string, hours: number[]): number[
 }
 
 /**
+ * The entries of a day's hourly curve that a reader can still act on, each with the instant its
+ * bar covers.
+ *
+ * The filter exists because the curve is a countdown rather than a whole day: measured on
+ * 2026-09-14, Phantasialand answered `11 12 13 14 15` at 11:41 UTC and `12 13 14 15` at 12:56 —
+ * the remaining open hours, capped at five. A copy of it therefore goes wrong by simply being kept,
+ * and it is kept: api.park.fan serves this URL as `s-maxage=36251` expiring at park-local midnight,
+ * and Cloudflare answered a `HIT` starting at 11 while a cache-busted fetch of the same URL
+ * answered 12. Whoever opens the dialog first in the morning fixes the curve for the rest of the
+ * day, and by the evening its first bars are hours that are over.
+ *
+ * Nothing in this repo can shorten that window — it is the backend's own header — so the bars that
+ * have expired are dropped here instead. A fresh response loses nothing (its first hour is the
+ * current one, which has not ended), a stale one gets shorter, and one that is stale all the way
+ * through comes back empty so the section hides rather than drawing this morning.
+ *
+ * @param date `YYYY-MM-DD` in park time — `CalendarDay.date`.
+ * @param series the day's entries, in the order the API returned them.
+ * @param nowMs the reader's clock, epoch milliseconds.
+ */
+export function upcomingHourlyPredictions<T extends { hour: number }>(
+  date: string,
+  series: T[],
+  nowMs: number
+): Array<T & { instant: number }> {
+  const instants = hourlyPredictionInstants(
+    date,
+    series.map((entry) => entry.hour)
+  );
+
+  return series
+    .map((entry, index) => ({ ...entry, instant: instants[index] }))
+    .filter(({ instant }) => instant + 60 * 60 * 1000 > nowMs);
+}
+
+/**
  * Transform schedule items to calendar events
  */
 export function transformScheduleToEvents(
