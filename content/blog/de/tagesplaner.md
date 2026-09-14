@@ -4,7 +4,7 @@ translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   Ein Wartezeiten-Feed sagt dir, wie lang die Schlange gerade ist. Er sagt dir
   nicht, ob deine Liste bis zum Parkschluss durchkommt. Dafür gibt es jetzt den

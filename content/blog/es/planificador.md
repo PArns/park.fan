@@ -4,7 +4,7 @@ translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   Un feed de tiempos de espera te dice cuánta cola hay ahora. No te dice si tu
   lista llega hasta la hora de cierre. Para eso está el planificador: tus

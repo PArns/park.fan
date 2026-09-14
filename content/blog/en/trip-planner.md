@@ -4,7 +4,7 @@ translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   A wait-time feed tells you how long the queue is right now. It does not tell
   you whether your list makes it to closing time. That is what the trip planner

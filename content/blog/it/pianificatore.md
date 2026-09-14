@@ -4,7 +4,7 @@ translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   Un feed di tempi di attesa ti dice quanto è lunga la fila adesso. Non ti dice
   se la tua lista arriva fino alla chiusura. A questo serve il pianificatore: le
