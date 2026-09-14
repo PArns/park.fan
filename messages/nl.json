@@ -1238,6 +1238,7 @@
     },
     "sectionLiveNow": "Wachttijd op dit moment",
     "sectionPlanVisit": "Plan de beste bezoektijd",
+    "sectionPlanVisitHint": "Uit de gemeten wachttijden van deze attractie.",
     "todayRange": "Bereik vandaag",
     "peakToday": "Piek vandaag",
     "parkToday": "Park vandaag",

@@ -42,7 +42,7 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
       icon={HelpCircle}
       title={t('title', { attraction: attractionName })}
       id="faq"
-      bodyClassName="p-0"
+      bodyPadding="none"
     >
       <FaqAccordion
         items={faqs.map((faq) => ({
