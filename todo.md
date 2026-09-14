@@ -524,32 +524,78 @@ to notice.
       and whether taking over a shared plan writes into the sender's row or copies it,
       are product questions: **PF-94**.
 
-### 2.8 Push `[P2]` — frontend integration already built, ahead of this section's checkboxes
+### 2.8 Push `[P2]` — shipped, except two of the four triggers and quiet hours
 
-**Frontend-observed status (2026-09-08, PF-23 reconciliation):** `app/api/push/route.ts`,
-`app/api/push/subscriptions/route.ts`, `public/sw.js` and `lib/planner/use-push-subscription.ts`
-implement the full subscribe/unsubscribe/topic-change flow against `/v1/push` and
-`/v1/push/subscriptions`, plus a hand-written service worker with `push` and
-`notificationclick` listeners. Same caveat as §2.7: every one of these is written to
-answer `unavailable`/`off` on a non-OK or unreachable backend by design, so this
-confirms the frontend is ready, not that `push_subscriptions` exists yet. See the
-batch's separate backend-side ticket for this section.
+**Backend-confirmed status (2026-09-14, PAR-83) — replaces the frontend-observed caveat
+that stood here, and the paragraph under it that said the backend had nothing at all:**
+checked against `main` in both repos (frontend `f6f4b46a`, backend `15d94b0`), against
+`https://api.park.fan/api-json`, and against `GET https://api.park.fan/v1/push`. Seven of
+the nine boxes below are done, with the evidence on each line; two are open and carry a
+ticket. The caveat's own sentence — "this confirms the frontend is ready, not that
+`push_subscriptions` exists yet" — was fair when it was written and outlived itself by
+**62 minutes**: `e36d60ee` wrote it at 16:48 on 2026-09-08 and `d367377`
+([v4.api.park.fan#230](https://github.com/PArns/v4.api.park.fan/pull/230)) landed at 17:51
+the same day, on top of `510a6c3`
+([#216](https://github.com/PArns/v4.api.park.fan/pull/216), 2026-09-03), which had already
+brought `src/push/`. Nobody came back to it.
 
-Nothing exists: `grep -rniE "web-push|webpush|vapid|push_subscription|notification|firebase|fcm|apns" src/` returns zero. There is no outbound notification of any kind in this backend — no push, no email, no user-facing webhook. The only outbound call is the revalidation hook to the frontend (`src/common/revalidation/revalidation.service.ts:45-60`). "Alert" in this codebase always means an internal ML or weather record, never something sent.
+The paragraph that followed it is the one worth naming, because it was an absolute and it
+is now false in every part: "Nothing exists: `grep -rniE "web-push|webpush|vapid|…" src/`
+returns zero. There is no outbound notification of any kind in this backend." Run in full
+against backend `15d94b0`, that grep hits **41 files** — 25 of them not `*.spec.ts`;
+narrowed to `web-push|webpush|vapid` alone it still hits 10. `src/push/` holds the entity,
+controller, service, config,
+messages, the pure notification planner and a follow-access guard; `src/ride-alerts/` and
+`src/show-follows/` sit beside it; `PushNotificationProcessor` runs a five-minute tick and
+sends. What the paragraph got right and still is right about is the vocabulary trap: an
+"alert" in `src/ml/` or `src/weather/` is still an internal record and still nothing sent.
 
-- [ ] `push_subscriptions` table in **Postgres, not Redis**. Redis runs
+What cannot be read out of either repo, and is therefore not claimed below: whether a
+notification actually arrives on a device. The key half of that question is settled from
+outside — `GET /v1/push` answers `{"available":true,"publicKey":"BMRIch…","topics":["next-up"]}`,
+so production has a VAPID keypair and the browser is offered the switch. The last step, a
+real send landing on a real lock screen, needs a device and is nobody's checkbox here.
+
+- [x] `push_subscriptions` table in **Postgres, not Redis**. Redis runs
       `maxmemory 512mb` with `allkeys-lru` (`docker-compose.yml:45-50`), so it is
       free to evict any key — a subscription store there would silently lose
       subscribers.
-- [ ] Columns: endpoint (unique — the write is an **upsert on endpoint**, not an
+      `push/entities/push-subscription.entity.ts` — `@Entity("push_subscriptions")`, and
+      its docblock gives this box's own reason back, plus the asymmetry that makes it a
+      decision rather than a default: the rate limiter next door **is** in Redis, because
+      an evicted counter resets a window and an evicted subscription is gone.
+- [x] Columns: endpoint (unique — the write is an **upsert on endpoint**, not an
       insert), keys, trip id, locale, timezone, wanted topics, and a failure counter,
       because a 404/410 from the push service means the subscription is dead and
       should be counted then dropped.
-- [ ] `POST /v1/push/subscriptions`, `DELETE /v1/push/subscriptions`.
-- [ ] VAPID keys as env (`VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`).
-- [ ] Dependency: `web-push`. Pure JS, no native addon — which matters here for the
+      Same file, all nine: `endpoint text` under the unique
+      `idx_push_subscriptions_endpoint` (`text`, not a guessed `varchar` — FCM endpoints
+      run past 200 characters), `p256dh`/`auth`, `tripId varchar(32)` nullable,
+      `locale varchar(12)`, `timezone varchar(64)`, `topics jsonb`, `failureCount int`,
+      plus a `lastNotifiedAt` this box never asked for. The upsert is
+      `PushService.subscribe()` — find by endpoint, create only if absent, and `tripId`
+      and `topics` are written only when the caller sends them, because one browser
+      subscribes through this method for three unrelated reasons and each call knows
+      about one of them. One refinement over the wording above, in
+      `PushService.recordFailure()`: a 404 or 410 deletes the row on the **first** answer
+      rather than counting, since that is the push service saying the browser is gone;
+      the counter is for everything else and drops at `MAX_FAILURES = 8`, and a
+      re-subscribe resets it.
+- [x] `POST /v1/push/subscriptions`, `DELETE /v1/push/subscriptions`.
+      `push/push.controller.ts`; both live, and `api-json` on 2026-09-14 lists three more
+      this box never asked for: `GET /v1/push`, and `GET`/`POST`/`DELETE` on both
+      `/v1/push/ride-alerts` and `/v1/push/show-follows`.
+- [x] VAPID keys as env (`VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`).
+      `push/push-config.ts` — `getVapidConfig()` reads all three lazily (never at import
+      time, because `ConfigModule.forRoot()` runs after this module's imports) and returns
+      `null` unless all three are set and the subject is `mailto:` or `https://`. An
+      unconfigured deploy answers 503 and stores nothing rather than failing to boot,
+      which is the opposite of the frontend's Turnstile choice and argued as such in the
+      file. Production is configured: see `GET /v1/push` above.
+- [x] Dependency: `web-push`. Pure JS, no native addon — which matters here for the
       same reason `password.util.ts:13-20` gives for choosing scrypt over argon2: the
       image has no build toolchain.
+      `package.json` — `"web-push": "^3.6.7"`, `@types/web-push` in devDependencies.
 - [ ] Job that walks due notifications: next plan item, show starting, ride opening,
       rain moving in. **The scheduler is Bull v4, not BullMQ, and there is no
       `@nestjs/schedule`** — no `@Cron`, no `@Interval`, no `ScheduleModule` anywhere
@@ -558,16 +604,56 @@ Nothing exists: `grep -rniE "web-push|webpush|vapid|push_subscription|notificati
       hand-written block in `QueueSchedulerService.registerScheduledJobs()`
       (`queue-scheduler.service.ts:75-977`): check `hasRepeatableJob()`, else
       `queue.add(name, {}, { repeat: { cron }, jobId })`.
-- [ ] Dispatch belongs on its own queue, not inside the wait-times sync, so it
+      **Two of the four triggers exist, which is why this box is still open.**
+      `PushNotificationProcessor.handleDue` (`queues/processors/push-notification.processor.ts`)
+      runs every five minutes and has two halves: the next plan item (`dueNotifications`
+      in `push/notification-planner.ts`, topic `next-up`, a 10–20 minute lead window wider
+      than the tick so one missed run costs nothing) and a followed show about to start. A
+      ride **opening** is not one of them — `ride-alerts` fire on a STANDBY wait falling
+      under a threshold (`ride-alerts/ride-alert-transitions.ts`), over readings that are
+      already `OPERATING`, so a status change is not a trigger. Rain has no producer at
+      all. `PUSH_TOPICS` is `["next-up"]` and `push-config.ts` says why a topic may not be
+      listed before something sends it. The two missing producers are **PAR-214**. The
+      scheduler note above also still holds and is still unfixed: `@nestjs/bull ^11.0.5`
+      with `bull ^4.16.5`, the push job registered by hand in
+      `queues/services/queue-scheduler.service.ts` with `cron: "*/5 * * * *"`, and the two
+      documentation lines it names still saying BullMQ. Nobody passed through, so they got
+      a ticket of their own: **PAR-216**.
+- [x] Dispatch belongs on its own queue, not inside the wait-times sync, so it
       cannot hang the 5-minute window and Bull can retry it independently.
+      Queue `push-notifications` (`queues/queues.module.ts:209`),
+      `@Processor("push-notifications")`, with the daily show-follow sweep on the same
+      queue because it competes with nothing. The two halves of a tick run under
+      `Promise.all` with a `try`/`catch` each, so a failure on the show side cannot
+      silence the trip side or fail the Bull job into resending what already went out. One
+      deliberate exception, and it is not the case this box was written against:
+      `RideAlertsService.checkAndNotify` runs inside the wait-times cycle
+      (`queues/processors/wait-times.processor.ts:331`) because it reads that cycle's own
+      readings, and is best-effort and self-contained so it cannot fail the park's sync.
 - [ ] Quiet hours in the subscriber's timezone. A 03:00 push kills the feature.
-- [ ] There is no visitor identity anywhere in this backend, so a subscription has to
+      **Nothing is built**: `grep -rniE "quiet.?hours|do not disturb|dnd" src/` returns
+      zero across the backend. The ingredient is there and read by nothing:
+      `push.service.ts:112` writes `subscription.timezone` on every subscribe and no line
+      in `src/` ever reads it back — every zone the send path reckons in is
+      `park.timezone` or `show.timezone`, and the language comes from `subscription.locale`
+      (`push-notification.processor.ts:188,310`). That is what makes it the subscriber's
+      03:00 rather than the park's: all three of today's producers sit inside the
+      **park's** opening hours, so the case is the subscriber who is not in the park's
+      zone — a Magic Kingdom plan read on a phone in Berlin, where a 21:00 block is 03:00.
+      **PAR-215**.
+- [x] There is no visitor identity anywhere in this backend, so a subscription has to
       carry its own — the trip id is the natural handle, which ties this to §2.7.
+      `tripId varchar(32)` on `push_subscriptions`, indexed by
+      `idx_push_subscriptions_trip`, and the trip half of the job groups subscriptions by
+      it so a family sharing one plan is four rows against one id. Nullable, because
+      `d367377` gave the row two more reasons to exist: a ride alert and a show follow
+      hang off the **endpoint** instead, so a subscription is no longer proof of a trip.
 
 Worth knowing while working in `src/queues/`: `MLHealthCheckProcessor`
 (`ml-health-check.processor.ts:18`) is not registered in `queues.module.ts` and its
 queue is never created, so it never runs — while its spec passes. Do not take a green
-spec in that directory as proof that the processor is wired up.
+spec in that directory as proof that the processor is wired up. Re-checked 2026-09-14
+against backend `15d94b0`: still absent from `queues.module.ts`, still no queue.
 
 ---
 
