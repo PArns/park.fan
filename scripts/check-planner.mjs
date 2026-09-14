@@ -3215,92 +3215,103 @@ if (reachable) {
     },
   ];
 
-  await shows.route('**/api/parks/**', async (route) => {
-    const url = route.request().url();
-    // Only the two the panel reads. `**/api/parks/**` also matches the stats and
-    // best-days routes, and answering those with a park payload made
-    // `use-park-comparison-stats` read `stats.meta.displayable` off an object
-    // with no `meta` — a console error from the stub, not from the planner.
-    const isPark = /\/api\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/?]+(\?|$)/.test(url);
-    if (!isPark && !url.includes('/plan/day')) return route.continue();
-    if (url.includes('/plan/day')) {
+  // Registered on two pages — this one and the phone at the end of the block —
+  // so the strip's phone behaviour is asserted against the same five shows
+  // rather than against whatever the day happens to hold.
+  const stubShows = async (page) =>
+    page.route('**/api/parks/**', async (route) => {
+      const url = route.request().url();
+      // Only the two the panel reads. `**/api/parks/**` also matches the stats and
+      // best-days routes, and answering those with a park payload made
+      // `use-park-comparison-stats` read `stats.meta.displayable` off an object
+      // with no `meta` — a console error from the stub, not from the planner.
+      const isPark = /\/api\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/?]+(\?|$)/.test(url);
+      if (!isPark && !url.includes('/plan/day')) return route.continue();
+      if (url.includes('/plan/day')) {
+        return route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            parkSlug: PARK.slug,
+            timezone: 'Europe/Berlin',
+            context: {
+              date: todayInPark,
+              status: 'OPERATING',
+              openHour: OPEN,
+              closeHour: CLOSE,
+              crowdLevel: 'moderate',
+              weather: null,
+              isHoliday: false,
+              isBridgeDay: false,
+              isSchoolVacation: false,
+              isWeekend: false,
+            },
+            tier: 'measured',
+            leadDays: 0,
+            leadTimeMae: 7,
+            rides: [
+              {
+                attractionSlug: 'taron',
+                attractionName: 'Taron',
+                land: 'Mystery',
+                hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
+                  hour: OPEN + i,
+                  wait: 45,
+                })),
+                dayPeak: 45,
+                uncertaintyMinutes: 15,
+                sampleDays: 400,
+              },
+            ],
+            shows: SHOWS,
+          }),
+        });
+      }
+      // The live park payload. It carries no showtimes any more and must not need
+      // to: a stub that still served them here would keep passing if the panel
+      // went back to reading them off the poll, which only ever knew today.
       return route.fulfill({
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({
-          parkSlug: PARK.slug,
+          slug: PARK.slug,
+          name: PARK.name,
+          status: 'OPERATING',
           timezone: 'Europe/Berlin',
-          context: {
-            date: todayInPark,
-            status: 'OPERATING',
-            openHour: OPEN,
-            closeHour: CLOSE,
-            crowdLevel: 'moderate',
-            weather: null,
-            isHoliday: false,
-            isBridgeDay: false,
-            isSchoolVacation: false,
-            isWeekend: false,
-          },
-          tier: 'measured',
-          leadDays: 0,
-          leadTimeMae: 7,
-          rides: [
-            {
-              attractionSlug: 'taron',
-              attractionName: 'Taron',
-              land: 'Mystery',
-              hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
-                hour: OPEN + i,
-                wait: 45,
-              })),
-              dayPeak: 45,
-              uncertaintyMinutes: 15,
-              sampleDays: 400,
-            },
-          ],
-          shows: SHOWS,
+          liveWaitTimes: { available: true },
+          attractions: [],
         }),
       });
-    }
-    // The live park payload. It carries no showtimes any more and must not need
-    // to: a stub that still served them here would keep passing if the panel
-    // went back to reading them off the poll, which only ever knew today.
-    return route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({
-        slug: PARK.slug,
-        name: PARK.name,
-        status: 'OPERATING',
-        timezone: 'Europe/Berlin',
-        liveWaitTimes: { available: true },
-        attractions: [],
-      }),
     });
-  });
+
+  await stubShows(shows);
+
+  /** The same one-block Phantasialand day both pages in this block run on. */
+  const seedDay = (page) =>
+    page.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.removeItem('parkfan_planner_shows');
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      },
+      [PLAN, todayInPark]
+    );
 
   await shows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-  await shows.evaluate(
-    ([plan, date]) => {
-      const seeded = JSON.parse(JSON.stringify(plan));
-      const park = seeded.parks.phantasialand;
-      park.timezone = 'Europe/Berlin';
-      park.days = {
-        [date]: {
-          date,
-          entries: [
-            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
-          ],
-        },
-      };
-      seeded.parks = { phantasialand: park };
-      seeded.activeParkSlug = 'phantasialand';
-      seeded.activeDate = date;
-      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-    },
-    [PLAN, todayInPark]
-  );
+  await seedDay(shows);
   await shows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await shows.locator(LAUNCHER).click();
   await shows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
@@ -3374,6 +3385,93 @@ if (reachable) {
     !(/Miji African Dancers/.test(bandText) && /Nobis Vol\. 2/.test(bandText)),
     bandText.slice(0, 120)
   );
+
+  // The switch says something different on each screen, and only the phone's
+  // half is a geometry claim: there the strip IS what is short, so switching the
+  // shows off has to give the axis its row back rather than swap the sentence in
+  // it. The desktop above keeps its strip in both states, which the two
+  // assertions before this one already read off the same element.
+  //
+  // Asserted on the same stubbed five shows as the desktop, because the strip
+  // only collapses where there is a switch on it: over a park the API answered
+  // with no shows the strip reads „keine Spielzeiten", carries no switch, and
+  // must not collapse — a page without the stub would take that branch and grade
+  // nothing (📚 G-72).
+  {
+    const phoneShows = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+    });
+    noteErrors(phoneShows);
+    await stubShows(phoneShows);
+    await phoneShows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await seedDay(phoneShows);
+    await phoneShows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await phoneShows.locator(LAUNCHER).click();
+    await phoneShows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await phoneShows.waitForTimeout(2500);
+
+    const bandHeight = () =>
+      phoneShows
+        .locator(`${SHEET} [data-planner-show-band]`)
+        .evaluate((el) => Math.round(el.getBoundingClientRect().height));
+    const phoneToggle = phoneShows.locator(`${SHEET} [data-planner-shows-toggle]`);
+
+    // The anchor the collapse is measured against: without it a strip that never
+    // rendered would pass the assertion below for the wrong reason.
+    const shownHeight = await bandHeight();
+    check(
+      'auf dem Telefon steht der Streifen, solange die Shows an sind',
+      shownHeight >= 40,
+      `${shownHeight} px`
+    );
+
+    await phoneToggle.click();
+    await phoneShows.waitForTimeout(500);
+    const hiddenHeight = await bandHeight();
+    check(
+      'ausgeblendet gibt der Streifen dem Telefon seine Zeile zurück',
+      hiddenHeight === 0,
+      `${shownHeight} px → ${hiddenHeight} px`
+    );
+
+    // The corner it claims in exchange. Collapsed, the switch is the only thing
+    // left of the strip and it hangs over the grid's own blocks, so the trade is
+    // 44 × 44 of cover against the 45 px × full width it gave up — worth pinning
+    // as a box AND as ownership, because a control that is drawn there and does
+    // not answer there is the worse half of both states.
+    const corner = await phoneShows
+      .locator(`${SHEET} [data-planner-shows-toggle]`)
+      .evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+        return { w: Math.round(box.width), h: Math.round(box.height), owns: el.contains(hit) };
+      });
+    check(
+      'der freistehende Schalter ist 44 px groß und gehört ihm auch',
+      corner.w === 44 && corner.h === 44 && corner.owns,
+      `${corner.w}×${corner.h}, Mitte ${corner.owns ? 'trifft ihn' : 'trifft etwas anderes'}`
+    );
+
+    // The way back. A `click()` fails on a control something else intercepts, so
+    // this is also the assertion that the freestanding switch is reachable where
+    // it hangs over the grid.
+    check(
+      'und der Schalter bleibt der einzige und ist antippbar',
+      (await phoneToggle.count()) === 1 &&
+        (await phoneShows.locator(`${SHEET} [data-planner-show-band]`).count()) === 1
+    );
+    await phoneToggle.click();
+    await phoneShows.waitForTimeout(500);
+    const backHeight = await bandHeight();
+    check(
+      'und derselbe Schalter holt den Streifen zurück',
+      backHeight === shownHeight,
+      `${hiddenHeight} px → ${backHeight} px`
+    );
+
+    await phoneShows.close();
+  }
 
   await shows.close();
 }

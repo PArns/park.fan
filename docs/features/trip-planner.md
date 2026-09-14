@@ -266,15 +266,38 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
-**They switch off, and the band stays.** Shows are the one thing on the grid
-nobody put there — a plan is what somebody dragged in, and four dotted rules
-across it are context. The switch lives in the band (`lib/planner/shows-visible.ts`,
-an external store on `localStorage` so the decision survives a reload) and hides
-the rules; the band then says so instead of disappearing with them, because a
-strip that vanished would take the switch with it and somebody who turned the
-shows off by accident would have nothing left to press. It renders only where
-there is something to switch: on a day the API answered with no shows, a control
-that toggles an empty set is a control that does nothing.
+**They switch off, and on a phone the strip goes with them.** Shows are the one
+thing on the grid nobody put there — a plan is what somebody dragged in, and four
+dotted rules across it are context. The switch lives in the band
+(`lib/planner/shows-visible.ts`, an external store on `localStorage` so the
+decision survives a reload) and hides the rules. It renders only where there is
+something to switch: on a day the API answered with no shows, a control that
+toggles an empty set is a control that does nothing.
+
+What the switch may take away depends on which screen is asking, and the reason
+is that only one of them is short. On a **desktop** the strip stays and says
+„Spielzeiten ausgeblendet": 22 px is not what is missing there, and a strip that
+vanished would take the switch with it. On a **phone** it is 45 px of a **776 px**
+sheet (measured at 390 × 844 — the sheet is `max-sm:max-h-[92svh]`, so the 716
+that older notes in this feature quote is the 85svh figure), so below `sm` the
+strip collapses to `h-0` — rule, glass, symbol and sentence with it — and the
+switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
+Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
+and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
+a switch rather than move somewhere else: the panel's header row has 63 px left
+for the park name at 390 px (see the arithmetic in `planner-flyout.tsx`), and a
+row of its own in `PlannerDayFoot` would have cost about 35 px of chrome to give
+45 back. It costs the corner: 44 × 44 of grid under a visible control, against
+44 px across the full width before.
+
+That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`
+flag), never in a `useMediaQuery` branch — this component is also server-rendered
+by the guide's demos, where the hook's snapshot would ship the phone's markup to
+every desktop and then delete it. And the collapse is gated on the switch
+EXISTING: `visible` is the panel's state rather than the day's, so it can be
+false over a park with no shows, where the strip reads „keine Spielzeiten" and
+carries no switch. Collapsing that one would remove a strip and leave nothing to
+bring it back with.
 
 ## The photo behind the panel sits in a NEGATIVE layer
 
