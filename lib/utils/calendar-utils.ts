@@ -1,5 +1,5 @@
 import { parseISO, startOfDay, endOfDay } from 'date-fns';
-import { toZonedTime, formatInTimeZone } from 'date-fns-tz';
+import { toZonedTime, formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 import { stripNewPrefix } from '@/lib/utils';
 import type {
   CalendarEvent,
@@ -53,36 +53,66 @@ export function getParkTime(dateInput: string | Date, timezone: string): Date {
   return new Date(parkTimeString);
 }
 
+const HOUR_MS = 60 * 60 * 1000;
+const DAY_MS = 24 * HOUR_MS;
+
 /**
  * Turn a day's `HourlyPrediction` series into UTC instants, so a caller can render each bar in the
- * park's own clock instead of in the API's.
+ * park's own clock and tell which of them are already over.
  *
- * `HourlyPrediction.hour` is an hour of day in **UTC** (see its docstring for the measurement).
- * The series belongs to `date`, which is a calendar day in the PARK's timezone, and those two
- * calendars do not line up: a park-local day reaches into the UTC day before it or after it,
- * depending on the sign of its offset. Anchoring each hour on `date` at 00:00 UTC and stepping
- * forward is therefore off by a day at the edges — and it does not matter, because the only thing
- * read off the instant is its hour in the park's timezone, and that comes out right either way.
+ * `HourlyPrediction.hour` is an hour of day in **UTC** (see its docstring for the measurement),
+ * while the series belongs to `date`, a calendar day in the PARK's timezone. Those two calendars do
+ * not line up, and the gap is a whole day rather than a few hours: the park-local day `2026-09-15`
+ * in Asia/Tokyo begins at `2026-09-14T15:00Z`, so its hour `20` is on the UTC day BEFORE the one
+ * the date names. An earlier version anchored on `${date}T00:00:00Z` and said the slip did not
+ * matter because only the hour was ever read back — true then, false as soon as the instant was
+ * also compared against the clock, where a day of error is the difference between cutting every
+ * bar and cutting none.
  *
- * The one thing that must be handled is the series crossing midnight UTC: a park open late answers
- * `… 22 23 0 1`, and a `0` that is not carried into the next UTC day would render twenty-three
- * hours before its neighbour. A drop in the value is the crossing.
+ * So the anchor is the park-local day's own UTC span: each hour becomes the first instant at that
+ * UTC hour at or after the day begins. Two consequences worth knowing. The window is a fixed 24
+ * hours, so the extra hour of a 25-hour DST day falls outside it — the API sends at most five
+ * entries, all inside the park's opening hours, so that hour is not one of them. And midnight is
+ * not used as the reference, because a zone whose DST jump lands on it has no midnight (📚 G-39):
+ * the day's midday is converted and twelve hours subtracted, which exists everywhere.
+ *
+ * The series crossing midnight UTC needs no special case any more — a park open late answers
+ * `… 22 23 0 1`, and the `0` resolves into the next UTC day on its own because the earlier one is
+ * before the day began.
  *
  * @param date `YYYY-MM-DD` in park time — `CalendarDay.date`.
  * @param hours the series' `hour` values, in the order the API returned them.
+ * @param timeZone the park's IANA timezone.
  * @returns one epoch-millisecond instant per entry, in the same order.
  */
-export function hourlyPredictionInstants(date: string, hours: number[]): number[] {
-  const base = Date.parse(`${date}T00:00:00Z`);
-  if (Number.isNaN(base)) return [];
+export function hourlyPredictionInstants(
+  date: string,
+  hours: number[],
+  timeZone: string
+): number[] {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return [];
 
-  let dayOffset = 0;
-  let previous = -1;
+  let dayStart: number;
+  try {
+    dayStart = fromZonedTime(`${date}T12:00:00`, timeZone).getTime() - 12 * HOUR_MS;
+  } catch {
+    return [];
+  }
+  if (Number.isNaN(dayStart)) return [];
+
+  const utcMidnightBefore = Math.floor(dayStart / DAY_MS) * DAY_MS;
+  let previous = -Infinity;
 
   return hours.map((hour) => {
-    if (hour < previous) dayOffset += 1;
-    previous = hour;
-    return base + (dayOffset * 24 + hour) * 60 * 60 * 1000;
+    let candidate = utcMidnightBefore + hour * HOUR_MS;
+    if (candidate < dayStart) candidate += DAY_MS;
+    // The day's own start is not enough on its own: an hour equal to the start hour resolves to
+    // the near edge while a smaller one has already been pushed to the far edge, so a series that
+    // straddles that hour would come back out of order. The API sends its entries in time order,
+    // so a step backwards is a wrap and never a reordering.
+    if (candidate < previous) candidate += DAY_MS;
+    previous = candidate;
+    return candidate;
   });
 }
 
@@ -106,20 +136,26 @@ export function hourlyPredictionInstants(date: string, hours: number[]): number[
  * @param date `YYYY-MM-DD` in park time — `CalendarDay.date`.
  * @param series the day's entries, in the order the API returned them.
  * @param nowMs the reader's clock, epoch milliseconds.
+ * @param timeZone the park's IANA timezone — the comparison is absolute, so the instants have to
+ *   be anchored on the park's own day rather than on the UTC day of the same name.
  */
 export function upcomingHourlyPredictions<T extends { hour: number }>(
   date: string,
   series: T[],
-  nowMs: number
+  nowMs: number,
+  timeZone: string
 ): Array<T & { instant: number }> {
   const instants = hourlyPredictionInstants(
     date,
-    series.map((entry) => entry.hour)
+    series.map((entry) => entry.hour),
+    timeZone
   );
+
+  if (instants.length !== series.length) return [];
 
   return series
     .map((entry, index) => ({ ...entry, instant: instants[index] }))
-    .filter(({ instant }) => instant + 60 * 60 * 1000 > nowMs);
+    .filter(({ instant }) => instant + HOUR_MS > nowMs);
 }
 
 /**

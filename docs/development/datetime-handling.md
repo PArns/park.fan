@@ -112,13 +112,21 @@ import { hourlyPredictionInstants } from '@/lib/utils/calendar-utils';
 // ✅ Correct — 11 UTC reads as 13 for a park in Europe/Berlin
 const instants = hourlyPredictionInstants(
   day.date,
-  hourly.map((h) => h.hour)
+  hourly.map((h) => h.hour),
+  timezone
 );
 const label = formatInTimeZone(instants[i], timezone, 'HH');
 
 // ❌ Wrong — prints the API's UTC hour on a park-local calendar
 const label = `${h.hour}`;
 ```
+
+**The timezone is not optional, and not only for the label.** `day.date` is a calendar day in the
+park's timezone and the hours are UTC, so the two calendars are a whole day apart at the edges: the
+park-local `2026-09-15` in `Asia/Tokyo` begins at `2026-09-14T15:00Z`, and its hour `20` sits on the
+UTC day _before_ the one the date names. A label survives that (the hour is right either way); a
+comparison against the clock does not, which is what `upcomingHourlyPredictions` does when it drops
+the bars whose hour has ended.
 
 ---
 
@@ -129,7 +137,7 @@ const label = `${h.hour}`;
 | Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`                 |
 | FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                                    |
 | Calendar (day cells)    | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')` — timezone from `meta.timezone` |
-| Calendar (hourly chart) | `hourlyPredictionInstants(day.date, hours)` → `formatInTimeZone(…, timezone, 'HH')`          |
+| Calendar (hourly chart) | `hourlyPredictionInstants(day.date, hours, timezone)` → `formatInTimeZone(…, 'HH')`          |
 | Calendar utils          | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone`              |
 | ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                                   |
 

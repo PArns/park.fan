@@ -93,7 +93,9 @@ const check = (name, condition, detail) => {
 };
 
 const labels = (date, hours, timezone) =>
-  hourlyPredictionInstants(date, hours).map((instant) => formatInTimeZone(instant, timezone, 'HH'));
+  hourlyPredictionInstants(date, hours, timezone).map((instant) =>
+    formatInTimeZone(instant, timezone, 'HH')
+  );
 
 const labelCases = [
   {
@@ -146,7 +148,9 @@ for (const c of labelCases) {
 // entry has to land one hour after the one before it, or the `0` is filed twenty-three hours
 // earlier than its neighbour.
 {
-  const instants = hourlyPredictionInstants('2026-09-14', [22, 23, 0, 1]);
+  // A park open past midnight UTC answers `… 22 23 0 1`. Each entry has to land one hour after the
+  // one before it, or the `0` is filed twenty-three hours earlier than its neighbour.
+  const instants = hourlyPredictionInstants('2026-09-14', [22, 23, 0, 1], 'America/New_York');
   const steps = instants.slice(1).map((v, i) => v - instants[i]);
   check(
     'a series crossing midnight UTC stays one hour apart',
@@ -154,14 +158,42 @@ for (const c of labelCases) {
     `Steps (ms): ${steps.join(', ')}`
   );
   check(
-    'and starts where the day starts',
-    instants[0] === Date.parse('2026-09-14T22:00:00Z'),
-    `Got: ${new Date(instants[0]).toISOString()}`
+    'and the wrap lands on the next UTC day, not the same one',
+    instants[2] === Date.parse('2026-09-15T00:00:00Z'),
+    `Got: ${new Date(instants[2]).toISOString()}`
   );
 }
 
-check('an empty series stays empty', hourlyPredictionInstants('2026-09-14', []).length === 0);
-check('a date the API never sends yields nothing', hourlyPredictionInstants('', [11]).length === 0);
+// The instant is compared against the clock, not just formatted, so the anchor has to be the
+// PARK's day rather than the UTC day of the same name. These two are where the two calendars
+// disagree by a whole day — an earlier version was 24 h out in both.
+{
+  const tokyo = hourlyPredictionInstants('2026-09-15', [20, 21, 22, 23], 'Asia/Tokyo');
+  check(
+    'a park east of UTC: its local 15th starts on the UTC 14th, and hour 20 belongs there',
+    tokyo[0] === Date.parse('2026-09-14T20:00:00Z'),
+    `Got: ${new Date(tokyo[0]).toISOString()}`
+  );
+  const halifax = hourlyPredictionInstants('2026-09-13', [2, 3], 'America/Halifax');
+  check(
+    'a park west of UTC: its local 13th reaches into the UTC 14th, and hour 2 belongs there',
+    halifax[0] === Date.parse('2026-09-14T02:00:00Z'),
+    `Got: ${new Date(halifax[0]).toISOString()}`
+  );
+}
+
+check(
+  'an empty series stays empty',
+  hourlyPredictionInstants('2026-09-14', [], 'Europe/Berlin').length === 0
+);
+check(
+  'a date the API never sends yields nothing',
+  hourlyPredictionInstants('', [11], 'Europe/Berlin').length === 0
+);
+check(
+  'and so does a timezone that is not one',
+  hourlyPredictionInstants('2026-09-14', [11], 'Middle/Earth').length === 0
+);
 
 // ---------------------------------------------------------------------------
 // upcomingHourlyPredictions
@@ -177,7 +209,12 @@ const series = [11, 12, 13, 14, 15].map((hour) => ({ hour, predictedWaitTime: 10
 const at = (iso) => Date.parse(iso);
 
 {
-  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T11:41:00Z'));
+  const kept = upcomingHourlyPredictions(
+    '2026-09-14',
+    series,
+    at('2026-09-14T11:41:00Z'),
+    'Europe/Berlin'
+  );
   check(
     'a fresh curve loses nothing — the current hour has not ended',
     kept.length === 5 && kept[0].hour === 11,
@@ -193,7 +230,12 @@ const at = (iso) => Date.parse(iso);
 
 {
   // The measured case: a copy taken at 11:41 and served again at 14:20 out of the backend's cache.
-  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T14:20:00Z'));
+  const kept = upcomingHourlyPredictions(
+    '2026-09-14',
+    series,
+    at('2026-09-14T14:20:00Z'),
+    'Europe/Berlin'
+  );
   check(
     'a curve kept for three hours drops the three that are over',
     kept.map((k) => k.hour).join(' ') === '14 15',
@@ -202,7 +244,12 @@ const at = (iso) => Date.parse(iso);
 }
 
 {
-  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T16:00:00Z'));
+  const kept = upcomingHourlyPredictions(
+    '2026-09-14',
+    series,
+    at('2026-09-14T16:00:00Z'),
+    'Europe/Berlin'
+  );
   check(
     'past the last bar the section has nothing left to draw',
     kept.length === 0,
@@ -212,7 +259,12 @@ const at = (iso) => Date.parse(iso);
 
 {
   // Exactly on the hour: the 11:00 bar covers 11:00–12:00, so at 12:00 it is over and 12 is not.
-  const kept = upcomingHourlyPredictions('2026-09-14', series, at('2026-09-14T12:00:00Z'));
+  const kept = upcomingHourlyPredictions(
+    '2026-09-14',
+    series,
+    at('2026-09-14T12:00:00Z'),
+    'Europe/Berlin'
+  );
   check(
     'a bar ends when its hour does, not when it starts',
     kept.map((k) => k.hour).join(' ') === '12 13 14 15',
@@ -225,7 +277,8 @@ const at = (iso) => Date.parse(iso);
   const kept = upcomingHourlyPredictions(
     '2026-09-15',
     [7, 8, 9, 10, 11].map((hour) => ({ hour, predictedWaitTime: 10 })),
-    at('2026-09-14T14:20:00Z')
+    at('2026-09-14T14:20:00Z'),
+    'Europe/Berlin'
   );
   check(
     "tomorrow's curve survives today's afternoon in full",
@@ -273,6 +326,35 @@ console.log('\n🧪 Testing isServableHourlyDate\n');
     'the window moves with the clock, it is not pinned to a build',
     isServableHourlyDate('2027-01-02', at('2027-01-01T00:00:00Z')) &&
       !isServableHourlyDate('2026-09-14', at('2027-01-01T00:00:00Z'))
+  );
+}
+
+// The reason the anchor was rewritten in round three: a park east of UTC in its evening kept every
+// bar for ever, and one west of UTC in its late evening lost a fresh curve entirely, because the
+// instants were built on the UTC day of the same name instead of on the park's own day.
+{
+  const s5 = (hs) => hs.map((hour) => ({ hour, predictedWaitTime: 10 }));
+  const tokyoEvening = upcomingHourlyPredictions(
+    '2026-09-15',
+    s5([20, 21, 22, 23]),
+    at('2026-09-14T22:30:00Z'),
+    'Asia/Tokyo'
+  );
+  check(
+    'east of UTC, an hour that is over is cut like anywhere else',
+    tokyoEvening.map((k) => k.hour).join(' ') === '22 23',
+    `kept ${tokyoEvening.map((k) => k.hour).join(' ')}`
+  );
+  const halifaxLate = upcomingHourlyPredictions(
+    '2026-09-13',
+    s5([2, 3]),
+    at('2026-09-14T02:00:00Z'),
+    'America/Halifax'
+  );
+  check(
+    'west of UTC, a fresh curve is not thrown away for being on yesterday',
+    halifaxLate.map((k) => k.hour).join(' ') === '2 3',
+    `kept ${halifaxLate.map((k) => k.hour).join(' ')}`
   );
 }
 

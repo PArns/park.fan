@@ -218,7 +218,8 @@ export function ParkCalendarDayDetail({
     // tick is what retires a bar while the dialog is open instead of only at the next re-render.
     // The fallback still cuts — it reads the same wall clock — it just does not schedule anything,
     // which is what the very first render needs before the hook's effect has run.
-    (browserNow ?? new Date()).getTime()
+    (browserNow ?? new Date()).getTime(),
+    parkTimezone
   );
   const maxHourlyWait = hourly.reduce((m, h) => Math.max(m, h.predictedWaitTime), 0);
 
