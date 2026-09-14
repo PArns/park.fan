@@ -9,6 +9,7 @@ import {
   syncTrip,
   type TripSyncError,
 } from './trip-sync';
+import { forgetArmedPush, pushIsArmedFor, rememberArmedPush } from './push-arming';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
@@ -111,13 +112,20 @@ export function usePushSubscription() {
         return;
       }
 
-      // Already subscribed? Only counts if this browser ALSO still knows which
-      // trip it subscribed for — a subscription whose local trip id is gone
-      // cannot be updated when the plan changes, so it is not "on".
+      // Already subscribed? "On" is a statement about the SERVER — that this
+      // endpoint is stored against this trip — and neither local signal says
+      // so. The browser keeps one subscription for the whole origin, so its
+      // presence only means something on this site uses push; a stored trip id
+      // only means a plan was uploaded once. Reading the two together reported
+      // "on" after any failed `POST /api/push/subscriptions` below, which is
+      // the switch this file's own rule forbids: on, and doing nothing.
+      //
+      // So the pairing the server accepted is what is asked (`push-arming.ts`),
+      // and both halves have to still match the live values.
       const registration = await navigator.serviceWorker.getRegistration('/sw.js');
       const existing = await registration?.pushManager.getSubscription();
       if (cancelled) return;
-      setState(existing && getTripId() ? 'on' : 'off');
+      setState(pushIsArmedFor(existing?.endpoint, getTripId()) ? 'on' : 'off');
     };
 
     void resolve();
@@ -220,6 +228,11 @@ export function usePushSubscription() {
         return;
       }
 
+      // The one place this is written: the server has just accepted this
+      // endpoint against this trip, and that answer is what the next mount
+      // reads instead of guessing from two local signals. Deliberately not
+      // cleared on the paths above — see `forgetArmedPush`.
+      rememberArmedPush(subscription.endpoint, tripId);
       setState('on');
     } catch {
       // Anywhere between the create and the last line: the plan goes with it.
@@ -343,6 +356,12 @@ export function usePushSubscription() {
         }
       }
     } finally {
+      // With the switch. The record follows what the control says rather than
+      // what the server managed to do about it: `disable()` goes off on both
+      // paths (a refused DELETE is reported beside it, not by keeping the
+      // switch on), and a record left standing would put it back on at the
+      // next mount over a visitor who asked for it to stop.
+      forgetArmedPush();
       setState('off');
     }
   }, []);
