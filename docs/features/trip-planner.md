@@ -285,10 +285,11 @@ switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
 Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
 and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
 a switch rather than move somewhere else: the panel's header row has 119 px left
-for the park name at 390 px against a label that needs 123 (63 until PAR-188
+for the park name at 390 px and the name measures 80 of them (63 until PAR-188
 dropped the ×; see the arithmetic in `planner-flyout.tsx`, and PAR-202 for what
-the 56 px it gave back are worth), and a row of its own in `PlannerDayFoot` would
-have cost about 35 px of chrome to give 45 back. It costs the corner: 44 × 44 of grid under a visible control, against
+the 56 px it gave back are worth), so a fourth control there comes out of the
+park name — and a row of its own in `PlannerDayFoot` would have cost about 35 px
+of chrome to give 45 back. It costs the corner: 44 × 44 of grid under a visible control, against
 44 px across the full width before.
 
 That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`

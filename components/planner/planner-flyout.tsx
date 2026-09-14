@@ -929,15 +929,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   className={cn(
                     'text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex items-center gap-1 rounded text-xs transition-colors',
                     // Beside the head it is the ONE 44 px target the row can
-                    // still afford. Measured at 390 px: the row is 351 wide
-                    // (it was 295 until `hideClose` gave back the 56 px this
-                    // header held for the ×), this takes 44 and the day picker
-                    // 176, and what is left for the park name is 119 — its own
-                    // label alone would be 123, so it still does not fit and
-                    // the decision below is unchanged by the extra room. The
-                    // chevron is what this control is: the sign that a list
-                    // opens here. The word goes to the screen reader, which is
-                    // the reader it was carrying it for.
+                    // still afford, and the word beside it is what pays for
+                    // that. Measured at 390 px: the row is 351 wide — 295
+                    // until `hideClose` gave back the 56 px this header used
+                    // to hold for the × — and it spends them on this button's
+                    // 44, an 8 px gap and the head's 299. Inside that head the
+                    // park name's control gets 121 and the name draws its full
+                    // 80, where the narrower row cut it to 37. Putting „Meine
+                    // Pläne" back beside the chevron costs 68 px plus the gap,
+                    // i.e. most of what the park name is using, so the extra
+                    // room does not change this: the chevron IS the control,
+                    // the sign that a list opens here, and the word goes to
+                    // the screen reader it was being carried for.
                     phoneHead
                       ? 'hover:bg-accent size-11 shrink-0 justify-center rounded-md'
                       : 'min-w-0 flex-1 px-1 py-0.5'
