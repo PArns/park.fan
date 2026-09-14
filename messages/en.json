@@ -950,6 +950,8 @@
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
       "actualWaitsTitle": "Average waits",
+      "waitBand": "± {minutes} min",
+      "waitBandUnknown": "no range available",
       "openToday": "Show today’s details",
       "prevDay": "Previous day",
       "nextDay": "Next day"

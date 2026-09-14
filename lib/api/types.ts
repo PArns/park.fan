@@ -1524,6 +1524,23 @@ export interface HeadlinerWaitForecast {
   name: string;
   /** Expected (predicted) standby wait for this day, in minutes. */
   waitTime: number;
+  /**
+   * Half-width of the model's uncertainty band around its own prediction, in
+   * minutes — the same figure the trip planner draws as a band and prints as
+   * „± n Min." (`lib/planner/estimate.ts`, `lib/planner/block-band.ts`).
+   *
+   * `null`/absent means NO SPREAD WAS REPORTED, which is a different statement
+   * from a narrow one and may not be rendered as a zero.
+   *
+   * It may not be turned into an interval either: `waitTime` is rounded to 5
+   * and floored at 10 on the way out, while the spread is measured against the
+   * raw median, so `waitTime - uncertaintyMinutes` goes negative on a quiet
+   * ride. The figure is printed on its own, never subtracted.
+   *
+   * Absent on a day whose forecast is `actual` — a recorded average is a
+   * measurement, and a measurement has no spread.
+   */
+  uncertaintyMinutes?: number | null;
 }
 
 /** Expected headliner waits for a calendar day — grounds the abstract crowd
