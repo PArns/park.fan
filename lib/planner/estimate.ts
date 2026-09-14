@@ -305,10 +305,11 @@ export function totalsFor(
  * Whether the band may carry a figure at this distance.
  *
  * `uncertaintyMinutes` is the model's spread for the prediction it made, and it
- * is honest at any tier. What is NOT measured is how much worse the model gets
+ * is honest at any tier. What this function has no figure for is the widening
  * with distance: `leadTimeMae` is null until the backend's lead-time archive has
- * run long enough, and `forecastError`'s own docstring forbids fanning a band out
- * with the horizon "which nothing measures".
+ * run long enough, and `forecastError` may not be scaled into one — the horizon
+ * adds roughly four minutes to every band rather than a factor, so a scaled
+ * figure is wrong at both ends (`RideDayCurve.forecastError` in lib/api/types.ts).
  *
  * So: show the figure where the model gave one, and widen visually with distance
  * without ever attaching a number to the widening.

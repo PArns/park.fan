@@ -109,9 +109,11 @@ export interface RideDayCurveProps {
    * The ride's own mean absolute error, in minutes. Draws the forecast tunnel as
    * `forecast ± forecastError`.
    *
-   * Constant width on purpose. It is a measured, published figure; fanning it out
-   * with the horizon would look more like a forecast cone and would be an
-   * uncertainty model nothing here has measured.
+   * Constant width on purpose. It is a measured, published figure, and so is the
+   * horizon's own effect: it adds roughly four minutes to every band over 60
+   * days, +19 % on a busy queue against +45 % on a quiet one, so a cone drawn by
+   * scaling this figure is wrong at both ends. See `RideDayCurve.forecastError`
+   * in lib/api/types.ts.
    */
   forecastError?: number | null;
   /** Highlighted windows — rope drop, the last hour. */

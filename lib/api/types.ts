@@ -2064,8 +2064,16 @@ export interface RideDayCurve {
    * The ride's own mean absolute error in minutes.
    *
    * A measured, published figure — a caller may draw the forecast as
-   * `± forecastError`, but must NOT fan it out with the horizon, which nothing
-   * measures. `null` where the ride has not been scored.
+   * `± forecastError`, but must NOT fan it out with the horizon. The horizon is
+   * measured now (backend `forecast_accuracy_profile`, six lead buckets × three
+   * forecast bands), and what it measures rules out a multiplier: over 60 days
+   * every band widens by roughly the same four minutes — 21.5 → 25.5 for a queue
+   * predicted at 60 minutes or more, 8.6 → 12.5 for one under 30 — which is
+   * +19 % at the busy end against +45 % at the quiet one. A factor is therefore
+   * too small on a quiet ride and too large on a busy one. Where the horizon has
+   * to be accounted for, read `/plan/day`'s `rides[].expectedError` and
+   * `accuracy` instead: the lead bucket is already in them. `null` where the
+   * ride has not been scored.
    */
   forecastError: number | null;
   /** False for a park not open yet, a closed ride, an out-of-season ride. */
