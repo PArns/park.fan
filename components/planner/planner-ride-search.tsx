@@ -159,8 +159,17 @@ export function PlannerRideSearch({
     /* Named like every other row of the panel, because `check:planner` has to
        be able to ask whether this surface is on screen: it is one half of two
        pairs — the empty day's sentence and the free-block row both mean
-       something different depending on whether this list is drawn (PAR-76). */
-    <div data-planner-ride-search="" className="border-border/60 border-t px-2 pt-2 pb-2">
+       something different depending on whether this list is drawn (PAR-76).
+
+       `py-1` rather than `py-2`, and the field keeps its 44 px: this block is
+       the one the panel squeezes (`shrink` at the call site), so at 390×844 it
+       is handed about 80 px while its own head — padding, field, hint — was 94.
+       Everything the visitor came here for, the ride rows, therefore started
+       below the fold, which is what „das Suchfeld ist zu hoch" describes. The
+       44 px are the touch-target floor from `CLAUDE.md`, asserted by
+       `check:planner`, so what gives way is the room around the field and never
+       the field. */
+    <div data-planner-ride-search="" className="border-border/60 border-t px-2 pt-1 pb-1">
       <div className="relative">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input
@@ -177,8 +186,16 @@ export function PlannerRideSearch({
           "oder zieh eine Bahn von der Parkseite auf die Zeitachse" — an HTML5
           drag, named on the one pointer that has no such gesture. The row's own
           click is what this describes, and `startFor` is where the minute comes
-          from. */}
-      <p className="text-muted-foreground mt-2 px-1 text-[11px]">{t('search.tapHint')}</p>
+          from.
+
+          Two lines at 11 px, in every locale — the sentence runs 100 to 140
+          characters and 374 px of phone will not take it in one. So what it
+          gives back is leading rather than words: `leading-snug` draws the same
+          two lines in 30 px instead of 33, and the 4 px off the margin come out
+          of the gap to a field that carries its own background anyway. */}
+      <p className="text-muted-foreground mt-1 px-1 text-[11px] leading-snug">
+        {t('search.tapHint')}
+      </p>
 
       {/* The phone's copy of the free-block offer, under its own name so the
           two can be counted together without disturbing what counts the foot's:
