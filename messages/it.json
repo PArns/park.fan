@@ -950,6 +950,8 @@
       "hourlyTitle": "Previsione oraria",
       "holidaysTitle": "Festività e vacanze scolastiche",
       "actualWaitsTitle": "Attese medie",
+      "waitBand": "± {minutes} min",
+      "waitBandUnknown": "nessun margine noto",
       "openToday": "Mostra i dettagli di oggi",
       "prevDay": "Giorno precedente",
       "nextDay": "Giorno successivo"

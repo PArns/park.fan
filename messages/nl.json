@@ -950,6 +950,8 @@
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
       "actualWaitsTitle": "Gemiddelde wachttijden",
+      "waitBand": "± {minutes} min",
+      "waitBandUnknown": "geen marge bekend",
       "openToday": "Details van vandaag bekijken",
       "prevDay": "Vorige dag",
       "nextDay": "Volgende dag"
