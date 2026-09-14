@@ -4,6 +4,36 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Planer: die Leg-Pille rechnet gegen die Lücke, die man sieht
+
+Gemeldet aus PAR-169: seit der Optimierer auf den Erwartungswert taktet, stehen die Blöcke dicht,
+und der Chip zwischen zweien wurde vom Block darunter angeschnitten. Gemessen an einem gepackten
+Phantasialand-Tag: **9 von 9** bei 1440 px, 8 von 9 bei 390 px.
+
+Zwei Ursachen. Die Pille hing in der Lücke zwischen **Schlangenende und nächstem Start** — das ist
+nicht die Lücke auf dem Schirm, denn ein Block unter 16,7 Minuten wird trotzdem in einem Kasten
+gezeichnet, in den eine Textzeile passt, und hängt damit nach unten hinein. Über 46 geplante
+Park-Tage aus `/plan/day` (267 Legs): Abstand der Schlangen median 24 px, gezeichnete Lücke median
+**16**, kleinste **12**. Und die Pille ist 21 px hoch, nicht die 18, die im Code standen.
+
+Die Rechnung liegt jetzt in `lib/planner/leg-chip.ts`, die gezeichnete Kastenhöhe in `drawnBoxPx`
+(dieselbe Funktion, mit der sich der Block selbst bemisst, inklusive der 40 px eines Blocks ohne
+Zahl). Wo 21 px nicht passen, fallen Distanz und Slack weg und Minuten plus Urteil bleiben; die
+kurze Pille ist **12 px**, weil ihr Umriss ein `ring-1 ring-inset` ist statt eines Rahmens — ein Ring
+ist ein Schatten und kostet keine Höhe. Zwölf ist die kleinste Lücke, die ein geplanter Tag erzeugt,
+also passt sie überall; 14 px hätten 12,7 % der Legs weiter angeschnitten.
+
+Dritter Fund beim Messen: die Pille ist `inline-flex` und saß im Block-Wrapper auf der Grundlinie
+einer Zeilenbox — bei `top: 10px` gezeichnet bei 18. Der Wrapper ist `flex`, ein Flex-Item hat keine
+Grundlinie. Nachher **0 von 9** angeschnitten, sechs Sprachen, beide Breiten, hell und dunkel.
+
+Nicht abgedeckt und benannt, wo der Code steht: ein Block **ohne Zahl** wird flach 40 px gezeichnet,
+während die Spurenpackung 16,7 Minuten für ihn rechnet — dort ist die Lücke weiter negativ. Das ist
+PAR-227 und älter als diese Änderung; die Messung oben hat Parks ohne lesbare Wartezeiten
+ausgefiltert und gilt deshalb für Tage, in denen Zahlen stehen.
+
+---
+
 ## Unreleased – Planer: der Fit-Assistent nimmt sich nicht selbst vom Schirm
 
 Direkt nach dem Assistenten gemeldet: „wenn ich anfange, Bahnen abzuwählen, verschwindet die Liste

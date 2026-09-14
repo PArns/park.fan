@@ -10,16 +10,13 @@ import {
   waitTimeCrowdTier,
 } from '@/lib/utils/crowd-level-styles';
 import { formatGridTime } from '@/lib/planner/park-time';
-import { blockBoxFor, heightFor, minBlockPxFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
+import { drawnBoxPx, heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import type { PlannerEstimate } from '@/lib/planner/estimate';
 import type { PlanDayTier } from '@/lib/api/types';
-
-/** A block with no figure gets a stated box rather than a height it cannot back. */
-const NO_FIGURE_PX = 40;
 
 /**
  * The bordered div's `border`, doubled — the two pixels the resize edge's touch
@@ -186,11 +183,9 @@ export function PlannerBlock({
     : hasFigure
       ? heightFor(grid, wait)
       : 0;
-  const boxPx = custom
-    ? Math.max(minBlockPxFor(grid), fillPx)
-    : hasFigure
-      ? blockBoxFor(grid, wait)
-      : NO_FIGURE_PX;
+  // The same function the leg chip measures its gap against, so the bottom edge
+  // this block draws and the edge a chip is placed under cannot disagree.
+  const boxPx = drawnBoxPx(grid, custom ? custom.durationMinutes : wait);
 
   /** An assumed figure has no colour: a tint is a claim about how busy it is. */
   const assumed = estimate.missing === 'assumed';

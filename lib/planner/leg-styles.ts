@@ -14,6 +14,11 @@ import type { TransferVerdict } from './leg';
  * palette entirely — it is not "very busy", it is "this does not work", and
  * `destructive` is the only colour in the system that says so.
  *
+ * The `border-*` entry is the FULL chip's. The short chip (`leg-chip.ts`) draws
+ * its outline as `ring-current/40`, so both halves of a verdict's colour come
+ * from the one `text-*` class here and there is no second map to drift from this
+ * one.
+ *
  * The colour is in the TEXT and the border, never in the fill, and that is about
  * what a chip sits on. These float in the gap between two blocks, and a block is
  * a park photograph under two sheets of frosted glass — a `/20` tint took

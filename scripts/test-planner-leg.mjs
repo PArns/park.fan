@@ -21,6 +21,7 @@ import {
   legBetween,
   legDeficit,
 } from '../lib/planner/leg.ts';
+import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '../lib/planner/leg-chip.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -275,6 +276,56 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
     legBetween(from(600, 45), to(645 + 9 + 2 * band), band).verdict,
     'generous'
   );
+}
+
+// ── Wo die Pille hängt, und wie groß sie dort sein darf ──────────────────────
+// Die Lücke, gegen die gerechnet wird, ist die GEZEICHNETE — Unterkante des
+// Kastens über der Pille bis Oberkante des nächsten Blocks. Sie ist nicht der
+// Abstand der Warteschlangen: eine Schlange unter 16,7 Minuten wird trotzdem in
+// einem Kasten gezeichnet, in den eine Textzeile passt, und der Überhang ist
+// genau die Differenz. Gemessen an einem gepackten Phantasialand-Tag waren das
+// 24 px Abstand und 16 px Lücke, in die eine 21-px-Pille gesetzt wurde.
+{
+  // 24 px Abstand, 8 px Überhang: 16 px Lücke, also die kurze Pille, mittig.
+  const tight = legChipPlacement(24, 8);
+  test('eine 16-px-Lücke bekommt die kurze Pille', tight.compact, true);
+  test('…und die Lücke ist die gezeichnete, nicht die der Schlangen', tight.roomPx, 16);
+  test('…und sie hängt mittig darin', tight.topPx, 8 + (16 - LEG_CHIP_COMPACT_PX) / 2);
+  test(
+    '…also unter der Unterkante des Kastens',
+    tight.topPx >= 8 && tight.topPx + LEG_CHIP_COMPACT_PX <= 24,
+    true
+  );
+
+  // Die kleinste Lücke, die ein geplanter Tag erzeugt: 12 px, 34 von 267 Legs.
+  const smallest = legChipPlacement(12, 0);
+  test('die kleinste gemessene Lücke trägt die kurze Pille genau', smallest.roomPx, 12);
+  test('…ohne sie anzuschneiden', smallest.topPx, 0);
+  test('…und ohne Rest', LEG_CHIP_COMPACT_PX, 12);
+
+  // Ab 21 px die volle Pille, und zwar auf die Lücke gerechnet: 28 px Abstand
+  // mit 8 px Überhang sind 20 px Lücke und damit noch die kurze.
+  test('20 px Lücke sind noch zu wenig', legChipPlacement(28, 8).compact, true);
+  test('21 px reichen für die volle', legChipPlacement(29, 8).compact, false);
+  test('…und sie sitzt dann bündig', legChipPlacement(29, 8).topPx, 8);
+  test('ohne Überhang entscheidet der Abstand selbst', legChipPlacement(21, 0).compact, false);
+
+  // Der Reparieren-Knopf ist ein Ziel und kein Etikett: er schrumpft nicht, er
+  // wird nur besser platziert.
+  const repair = legChipPlacement(10, 0, true);
+  test('der Reparieren-Knopf behält seine Größe', repair.compact, false);
+  test('…und wird auf die Lücke zentriert', repair.topPx, (10 - LEG_CHIP_PX) / 2);
+
+  // Ein Überhang, der größer ist als das Leg — zwei Blöcke, die einander
+  // überlappen, also ein von Hand gezogener Tag. Die Lücke ist negativ, die
+  // Pille wird auf ihre Mitte zentriert und weicht keiner der beiden Seiten aus.
+  const overlap = legChipPlacement(10, 16);
+  test('überlappende Blöcke ergeben eine negative Lücke', overlap.roomPx, -6);
+  test('…und die Pille liegt auf deren Mitte', overlap.topPx, 16 + (-6 - LEG_CHIP_COMPACT_PX) / 2);
+  // Ein negativer Überhang kann nicht vorkommen — der gezeichnete Kasten ist nie
+  // kürzer als seine Schlange — und würde die Pille nach OBEN in den Block
+  // darüber schieben, während er behauptet, ihr Platz verschafft zu haben.
+  test('ein negativer Überhang wird geklemmt', legChipPlacement(24, -8).roomPx, 24);
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

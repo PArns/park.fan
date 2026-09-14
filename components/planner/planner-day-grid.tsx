@@ -8,6 +8,7 @@ import {
   SNAP_MIN_COARSE,
   SNAP_MIN_FINE,
   clampStart,
+  drawnBoxPx,
   heightFor,
   latestStart,
   minuteAt,
@@ -276,6 +277,13 @@ export function PlannerDayGrid({
         // and so is the distance — Winja's is in between".
         lane: lanes.get(from.entry.id) ?? { column: 0, columns: 1, overflow: 0 },
         fromMinute: from.entry.startMinute + (from.wait ?? 0),
+        // What the block above is DRAWN at, which is not what its queue is: the
+        // chip's room is measured against this edge, and `drawnBoxPx` is the
+        // same function the block itself sizes its box with. In minutes here,
+        // like everything else in this memo — the pixels are the render's. The
+        // start it is counted from is `fromEntry.startMinute`, already on this
+        // object.
+        fromWait: from.wait,
       };
     });
 
@@ -1041,6 +1049,9 @@ export function PlannerDayGrid({
                 grid={grid}
                 fromMinute={entry.fromMinute}
                 toMinute={entry.toEntry.startMinute}
+                fromBottomPx={
+                  yFor(grid, entry.fromEntry.startMinute) + drawnBoxPx(grid, entry.fromWait)
+                }
                 lane={entry.lane}
                 onRepair={() =>
                   onMove(
