@@ -950,7 +950,7 @@
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",
       "actualWaitsTitle": "Ø Wartezeiten",
-      "waitBand": "± {minutes} Min",
+      "waitBand": "± {minutes} Min.",
       "waitBandUnknown": "keine Spanne bekannt",
       "openToday": "Details für heute anzeigen",
       "prevDay": "Vorheriger Tag",
