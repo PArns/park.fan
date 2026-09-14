@@ -1462,10 +1462,17 @@ a breakpoint inside the component, because the same component draws the header's
 burger menu and that sheet has nothing else to close it with. The planner keys it
 on `isPhone`, the same value as `side` and `modal` two lines up, so a class does
 not become a fourth copy of `PLANNER_PHONE_QUERY` free to drift from the other
-three. The desktop panel keeps its ×: a side panel has no handle, and its outside
-press is deliberately swallowed, so there the × and Escape are the whole list.
-`check:planner` asserts both halves — no close button on the phone beside the
-existing `der Anfasser ist da`, and a close button still present at 1400 px.
+three. That is also what keeps the trade honest at 844 × 390: the handle's
+wrapper is `planner-wide:hidden` and `planner-wide:` is the exact complement of
+`planner-phone:`, which is the CSS twin of that query — so the × goes exactly
+where the handle arrives, and there is no window that loses both. A `max-sm:`
+class would have taken the × off a landscape phone without giving it a handle,
+because 844 px is over `sm`. The desktop panel keeps its ×: a side panel has no
+handle, and its outside press is deliberately swallowed, so there the × and
+Escape are the whole list. `check:planner` asserts the pair at all three:
+no close button beside the existing `der Anfasser ist da` at 390 × 844, the same
+beside the handle assertion at 844 × 390, and a close button still present at
+1400 px.
 
 ### Every target in the sheet is 44 px, and three of them are not what they measure
 
@@ -1515,8 +1522,10 @@ button `max-sm:size-11` at `right-2`, covering the rightmost 52 px of the header
 row, while the row reserved `pr-7` plus the header's `px-3` — 40 px. "Einen Tag
 planen" sat 12 of its 28 px under the ×, and the fix was `max-sm:pr-14`. Dropping
 the × from the phone sheet takes both sides of that away: there is nothing to
-clear, so the row carries `pr-7` on the desktop and nothing below it, and the 56
-px go back to the head. A sweep skips a control that is covered at its own centre
+clear, so the row carries `pr-7` where `!isPhone` and nothing where the sheet is
+a phone's, and the 56 px go back to the head. The clearance is keyed on the same
+value as `hideClose` rather than on a width, because what it clears is the button
+that value decides. A sweep skips a control that is covered at its own centre
 (that is a different defect), so the overlap has a named check of its own, asked
 as `click({ trial: true })` because "receives events" is the question and
 Playwright names the intercepting element when the answer is no. It measures the

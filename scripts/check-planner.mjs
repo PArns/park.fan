@@ -6908,6 +6908,20 @@ if (live) {
       handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)} px` : 'kein Griff'
     );
 
+    // The handle's other half, and the reason it is asserted HERE and not only
+    // in the portrait pass: `hideClose` is keyed on `isPhone`, so PAR-76's
+    // height term took the × off this window too — 844×390 is over `sm` and
+    // would have kept it under the old query. The pair is what AK 3 of PAR-188
+    // rests on: the × may only go where the handle is drawn, and
+    // `planner-wide:` is the exact complement of `planner-phone:`, so the two
+    // switch on the same window or the sheet has no visible way out. Asserted
+    // together for the same reason the portrait pass does it — either half
+    // alone passes over exactly that state.
+    check(
+      'und im Querformat trägt es keinen ×-Knopf',
+      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+    );
+
     // The two PAIRS this change is built on, asserted rather than assumed.
     //
     // Every class the sweep moved has a counterpart that has to move with it,
