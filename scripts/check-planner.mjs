@@ -1495,13 +1495,20 @@ if (await phoneLauncher.count()) {
     reportSweep('jedes Ziel im Sheet ist 44 px hoch', await sweepSmallTargets(SHEET));
 
     // The one the sweep cannot see, and it is a real bug rather than a
-    // measurement: `SheetContent` draws its close button `max-sm:size-11` at
-    // `right-2`, so it covers the rightmost 52 px of the header — and the
+    // measurement: `SheetContent` USED TO draw its close button `max-sm:size-11`
+    // at `right-2`, covering the rightmost 52 px of the header while the
     // header's own content stopped 40 px from that edge. "Einen Tag planen" sat
     // 12 px under the ×, which reads from the outside as a button that opens
     // the wrong thing. Asked of Playwright, because "receives events" is the
     // question and `click({ trial: true })` names the intercepting element when
     // the answer is no.
+    //
+    // The × is gone from this sheet (PAR-188) and the assertion is not: what it
+    // guards is that the rightmost control of the header takes a press, and the
+    // next thing to cover it will not be a close button. So it is NAMED after
+    // the press rather than after the one element that used to swallow it — a
+    // name that points at something the phone no longer renders sends the next
+    // reader of a red line looking for the wrong culprit.
     //
     // It asks for the control that is LAST in that row rather than for one by
     // name, and that is the lesson of PAR-163 rather than a tidy-up: the
@@ -1537,7 +1544,7 @@ if (await phoneLauncher.count()) {
         .then(() => 'erreichbar')
         .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
       check(
-        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile nimmt einen Druck an',
         free === 'erreichbar',
         `${lastInHeader} — ${free}`
       );
@@ -1550,7 +1557,7 @@ if (await phoneLauncher.count()) {
       );
     } else {
       check(
-        'das letzte Bedienelement der Kopfzeile liegt nicht unter dem Schließen-Knopf',
+        'das letzte Bedienelement der Kopfzeile nimmt einen Druck an',
         false,
         'keine Kopfzeile gefunden'
       );

@@ -929,10 +929,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   className={cn(
                     'text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex items-center gap-1 rounded text-xs transition-colors',
                     // Beside the head it is the ONE 44 px target the row can
-                    // still afford. Measured at 390 px: the row is 295 wide,
-                    // this takes 44 and the day picker 176, and what is left
-                    // for the park name is 63 — its label alone would be 123.
-                    // The chevron is what this control is: the sign that a list
+                    // still afford. Measured at 390 px: the row is 351 wide
+                    // (it was 295 until `hideClose` gave back the 56 px this
+                    // header held for the ×), this takes 44 and the day picker
+                    // 176, and what is left for the park name is 119 — its own
+                    // label alone would be 123, so it still does not fit and
+                    // the decision below is unchanged by the extra room. The
+                    // chevron is what this control is: the sign that a list
                     // opens here. The word goes to the screen reader, which is
                     // the reader it was carrying it for.
                     phoneHead
@@ -963,11 +966,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     than asking a question the route already answers.
 
                     NOT on a phone, and that is the decision this row cost.
-                    Measured at 390 px: the row is 295 px (375 − twice the
-                    header's `px-3` − the 56 of `max-sm:pr-14`), the day picker
-                    takes 176, and each 44 px target plus its gap takes 52. One
-                    of them leaves the park name 63 px; two leave it **11**,
-                    i.e. no park name. Something had to go, and of the four the
+                    Measured at 390 px, against the row as it then was — 295 px
+                    (375 − twice the header's `px-3` − the 56 of
+                    `max-sm:pr-14`) —, the day picker took 176 and each 44 px
+                    target plus its gap 52. One of them left the park name
+                    63 px; two left it **11**, i.e. no park name. Something had
+                    to go, and of the four the
                     "+" is the only one that closes no ROUTE. Two things reach
                     what it reached, and it is worth being exact about which:
                       · a second day at the park on screen is the day picker
@@ -984,6 +988,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     That residue is PAR-181 rather than a decision taken here.
                     The day picker is the panel's most-pressed control and the
                     park name is what tells a reader which plan they are in.
+
+                    And the budget the paragraph above is measured against has
+                    since moved: dropping the × gave the row 351 px, i.e. 56
+                    more, so two 44 px targets leave the park name 67 rather
+                    than 11. That does not put the "+" back by itself — 67 is
+                    still under the 80 „Phantasialand" measures, and the two
+                    paths above still reach what it reached — but it does
+                    re-open the question this comment closed, which is PAR-202.
 
                     `!isPhone` rather than `!phoneHead`: it is gone on a phone
                     for good, not only while the head is up. The overview is

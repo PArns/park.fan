@@ -63,10 +63,15 @@ function SheetContent({
    * component also draws the header's burger menu, which is the phone
    * navigation and has nothing else to close it with.
    *
-   * Only pass it where the sheet carries a dismiss gesture the reader can SEE —
-   * the planner's bottom sheet has its grab handle, which both drags and taps
-   * the sheet away. A sheet with no × and no visible way out is a trap, and the
-   * call site is the only place that knows which of the two it is.
+   * Only pass it where the sheet keeps a dismissal that does not depend on this
+   * button, and check it for a POINTER and for everything else separately — the
+   * two are not the same list. The planner's bottom sheet qualifies on both: a
+   * pull down past `SHEET_DISMISS_PX` on its grab handle for a finger (its tap
+   * changes the sheet's HEIGHT and does not close it — the handle is an
+   * affordance, not a close button), and for anyone not making that gesture,
+   * Escape plus a press on the modal shield beside it. A sheet with no × and no
+   * way out is a trap, and the call site is the only place that knows which it
+   * is.
    */
   hideClose?: boolean;
 }) {

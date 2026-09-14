@@ -1453,7 +1453,7 @@ real: the handle brings the sheet back down by drag **or** tap, which is why the
 tap toggles rather than only dismissing. At rest the shield is back.
 
 **And the × is gone from the phone sheet**, which is what makes that handle the
-pulled-up state's only exit. Three ways out of a bottom sheet were two too many,
+pulled-up state's only exit. Three ways out of a bottom sheet were one too many,
 and the one that went is the one parked in the corner a thumb reaches worst;
 `SheetContent` takes a `hideClose` prop for it, opt-in per call site rather than
 a breakpoint inside the component, because the same component draws the header's
