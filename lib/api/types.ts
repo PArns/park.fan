@@ -2066,9 +2066,10 @@ export interface RideDayCurve {
    * A measured, published figure — a caller may draw the forecast as
    * `± forecastError`, but must NOT fan it out with the horizon. The horizon is
    * measured now (backend `forecast_accuracy_profile`, six lead buckets × three
-   * forecast bands), and what it measures rules out a multiplier: over 60 days
-   * every band widens by roughly the same four minutes — 21.5 → 25.5 for a queue
-   * predicted at 60 minutes or more, 8.6 → 12.5 for one under 30 — which is
+   * forecast bands), and what it measures rules out a multiplier: across the
+   * horizon, from one day out to sixty, every band widens by roughly the same
+   * four minutes — 21.5 → 25.5 for a queue predicted at 60 minutes or more,
+   * 8.6 → 12.5 for one under 30 (45-day window, measured 2026-09-11) — which is
    * +19 % at the busy end against +45 % at the quiet one. A factor is therefore
    * too small on a quiet ride and too large on a busy one. Where the horizon has
    * to be accounted for, read `/plan/day`'s `rides[].expectedError` and
@@ -2368,10 +2369,14 @@ export interface PlanDay {
   leadDays: number;
   /**
    * Measured mean absolute error for predictions made this far ahead, in
-   * minutes. `null` until the backend's lead-time archive has been running that
-   * long — and `null` is the honest answer rather than a gap to fill: nothing
-   * measures how wrong the model is at this distance yet. Widen the band with
-   * distance WITHOUT attaching a figure.
+   * minutes. `null` until the backend's forward archive has enough scored rows
+   * at this distance — and `null` is the honest answer rather than a gap to
+   * fill, so where it is absent, widen the band with distance WITHOUT attaching
+   * a figure.
+   *
+   * Absent is not the same as unmeasured: `accuracy.typicalError` below carries
+   * a distance-dependent error from a different source, and so does
+   * `RideDayCurve.forecastError`'s lead-bucket profile.
    */
   leadTimeMae?: number | null;
   /**

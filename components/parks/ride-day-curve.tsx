@@ -110,10 +110,10 @@ export interface RideDayCurveProps {
    * `forecast ± forecastError`.
    *
    * Constant width on purpose. It is a measured, published figure, and so is the
-   * horizon's own effect: it adds roughly four minutes to every band over 60
-   * days, +19 % on a busy queue against +45 % on a quiet one, so a cone drawn by
-   * scaling this figure is wrong at both ends. See `RideDayCurve.forecastError`
-   * in lib/api/types.ts.
+   * horizon's own effect: across the horizon, from one day out to sixty, it adds
+   * roughly four minutes to every band, +19 % on a busy queue against +45 % on a
+   * quiet one, so a cone drawn by scaling this figure is wrong at both ends. See
+   * `RideDayCurve.forecastError` in lib/api/types.ts.
    */
   forecastError?: number | null;
   /** Highlighted windows — rope drop, the last hour. */
