@@ -1093,8 +1093,9 @@ if (await phoneLauncher.count()) {
 
   // And he is the only way out that is drawn, which is why the line above is
   // not a formality any more. The × went off the phone sheet with PAR-188 —
-  // three exits in a corner a thumb reaches worst were two too many — so the
-  // pair has to be asserted together: no close button, AND a handle that is
+  // three exits were one too many, and the one that went is the one parked in
+  // the corner a thumb reaches worst — so the pair has to be asserted
+  // together: no close button, AND a handle that is
   // there. Either one alone would pass over a sheet with no visible exit at
   // all, which is exactly the state at 100svh, where the modal shield sits
   // behind the sheet and tapping beside it does nothing.
