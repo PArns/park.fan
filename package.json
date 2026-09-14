@@ -28,7 +28,7 @@
     "og:preview": "node scripts/render-og.mjs",
     "ping:websub": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/ping-websub.mjs",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

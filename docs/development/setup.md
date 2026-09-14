@@ -57,7 +57,7 @@ the media database replaced both; see [media database](../features/media-databas
 | `pnpm dev:live`                | Dev server for an impeccable live session |
 | `pnpm build`                   | Production build                          |
 | `pnpm start`                   | Run production build                      |
-| `pnpm lint`                    | Run ESLint                                |
+| `pnpm lint`                    | Run ESLint, a warning fails it            |
 | `pnpm lint:fix`                | Fix lint errors                           |
 | `pnpm format`                  | Format with Prettier                      |
 | `pnpm format:check`            | Check formatting                          |
