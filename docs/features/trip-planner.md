@@ -1552,8 +1552,18 @@ which side of the row draws the context band.
 The sheet's body is carried by two wrappers that are `display: contents` at every
 other size. That is what makes the arrangement free: with no box, the sheet's
 flex children are the same boxes in the same order as before, so portrait and
-desktop cannot move — measured, and they did not, box for box at 390 × 844,
-1440 × 900 and 1440 × 480.
+desktop cannot move. Measured against `main` @ `1a0c17d7` on the same dev server,
+the axis' visible height and whether anything is painted over it:
+
+| Fenster           | Sheet                 | vorher                                          | nachher                    |
+| ----------------- | --------------------- | ----------------------------------------------- | -------------------------- |
+| 844 × 390, coarse | 829 × 359 bei (0, 31) | **16 px**, verdeckt von `data-planner-optimize` | **269 px**, nichts darüber |
+| 390 × 844, coarse | 375 × 776 bei (0, 68) | 253 px                                          | 253 px                     |
+| 1440 × 900, fine  | 448 × 900 bei x=992   | 464 px                                          | 464 px                     |
+| 1440 × 480, fine  | 448 × 480 bei x=992   | 44 px                                           | 44 px                      |
+
+The lower three are identical row for row and not only in the total — the sheet's
+whole child list, each box's height and top, compared before and after.
 
 What the row looks like at 844 × 390: the left column is `20rem` and scrolls
 (616 px of content in 269), the axis takes the 509 px beside it and **269 px of

@@ -1125,7 +1125,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 no box at all, so at every other size the sheet's flex children
                 are the same boxes in the same order as before this change and
                 the portrait and desktop geometry cannot move by construction —
-                measured, and it did not (see the PR).
+                measured, and it did not. The three viewports and their numbers
+                are in `docs/features/trip-planner.md`.
 
                 On a landscape phone it becomes the row: `min-h-0` so the axis'
                 own scroller can bound itself, `flex-1` to take what the handle

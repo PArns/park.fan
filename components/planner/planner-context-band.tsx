@@ -42,7 +42,7 @@ interface PlannerContextBandProps {
  *   today               60 → 60             60 → 75.5
  *   derived hours       60 → 103.5          60 → 92
  *
- * The phone hides the tier's hint (`max-sm:sr-only`), which is why the common
+ * The phone hides the tier's hint (`planner-phone:sr-only`), which is why the common
  * case costs nothing there and 15.5 px in the panel. The rest is the chip row
  * wrapping, exactly as it does on a day carrying four badges. Two things were
  * kept out of this box because of those numbers: the day's typical error is
@@ -250,9 +250,16 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
             is a chip on a row that WRAPS, so on the reported day (Phantasialand,
             Sunday) it was the one that pushed the row onto a second line and
             cost the axis 26 px. It stays above `sm`, where the row has the width
-            to carry it on one line and the panel is not fighting for pixels. */}
+            to carry it on one line and the panel is not fighting for pixels.
+
+            **`planner-phone:` rather than `max-sm:` since PAR-168**, and that is
+            the same correction PAR-76 made across the sheet: the class asked the
+            WINDOW's width, so at 844x390 it did not fire and the band drew its
+            desktop fassung into a 320 px column. The sentence above is about a
+            narrow BOX and a coarse pointer, and both hold on a landscape phone —
+            measured, the band came out 138 px of the 269 the column has. */}
         {context.isWeekend && (
-          <Badge variant="outline" className="text-[11px] max-sm:hidden">
+          <Badge variant="outline" className="planner-phone:hidden text-[11px]">
             {t('context.weekend')}
           </Badge>
         )}
@@ -297,7 +304,10 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
         <span className="text-muted-foreground inline-flex items-center gap-1">
           <CalendarDays className="size-3" />
           <span className="text-foreground/80 font-medium">{tierLabel}</span>
-          <span className="max-sm:sr-only">{tierHint}</span>
+          {/* `planner-phone:` rather than `max-sm:` for the reason the weekend
+              chip above gives: the hint is folded away where the box is narrow
+              and the pointer coarse, and a landscape phone is both. */}
+          <span className="planner-phone:sr-only">{tierHint}</span>
         </span>
       </div>
     </div>
