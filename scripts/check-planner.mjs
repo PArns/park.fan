@@ -407,25 +407,40 @@ const sheetOpens = { opened: 0, retried: 0, failed: 0 };
  * the thing that is actually busy — a longer single wait would only postpone
  * the same press on a dead button).
  *
- * What it must never do is press a sheet that is already opening. Radix mounts
- * the content on the press and animates it in over 300 ms, so an impatient
- * second press would CLOSE the panel this is waiting for. Hence the guard reads
- * `data-state="open"` on the content rather than its mere presence: a sheet on
- * its way out still exists for a moment and carries `data-state="closed"`, and
- * that one does need pressing again.
+ * What it must never do is press a sheet that is already on its way in, because
+ * the tab is a TOGGLE: a second press closes the panel the first one opened. And
+ * the sheet is the wrong thing to ask, which is what the first version of this
+ * got wrong — between the press and the `SheetContent` lies the `planner`
+ * namespace's own 15 KB chunk (`planner-launcher.tsx` says so itself: "`open`
+ * flips at the press; the panel is drawn when the chunk lands"), so for the whole
+ * length of that fetch there is no `[data-slot="sheet-content"]` in the document
+ * at all and a guard reading it would press again into a press that had landed.
+ *
+ * The signal for "landed" is therefore `html[data-planner-open]`, which the
+ * launcher's own effect sets off `open` alone, independent of the chunk. Both
+ * halves are read: the attribute for the window before the sheet exists, and
+ * `data-state="open"` on the content for the one after, since a sheet on its way
+ * OUT is still visible for 300 ms while carrying `closed` — which is why the
+ * success is waited for on `[data-state="open"]` too and not on visibility.
+ *
+ * An attribute with no sheet behind it after three waits is its own diagnosis
+ * and is reported as one: the press worked and the chunk never arrived, which
+ * `useLazyMessages` does not retry.
  *
  * A failure is a named ❌ carrying the number of presses and what the last one
  * said; the caller then leaves its own block (`break step`) so the rest of the
  * run still executes. A success is silent and counted instead: 35 green rows
  * saying "the panel opened" would bury the assertions that are about what is IN
  * the panel, while the count printed with the balance is what says how often the
- * rule was applied at all — and how often the retry earned its keep.
+ * rule was applied at all — and how often a SECOND press earned its keep, which
+ * is counted on the presses and never on the attempts: an opening that was
+ * merely slow costs no press and may not inflate that figure.
  */
 async function openSheet(page, where) {
   const name = `der Planer öffnet sich (${where})`;
   const launcher = page.locator(LAUNCHER).first();
-  const sheet = page.locator(SHEET).first();
   const arriving = page.locator(`${SHEET}[data-state="open"]`).first();
+  const pressed = page.locator('html[data-planner-open]');
 
   const painted = await launcher
     .waitFor({ state: 'visible', timeout: LAUNCHER_TIMEOUT_MS })
@@ -437,31 +452,44 @@ async function openSheet(page, where) {
     return false;
   }
 
-  let blame = 'das Sheet ist nach dem Druck nicht erschienen';
+  let blame = '';
+  let presses = 0;
   for (let attempt = 1; attempt <= SHEET_ATTEMPTS; attempt += 1) {
-    if ((await arriving.count()) === 0) {
-      if (attempt > 1) await settleHydration(page);
+    const landed = (await pressed.count()) > 0 || (await arriving.count()) > 0;
+    if (!landed) {
+      if (presses > 0) await settleHydration(page);
+      presses += 1;
       const failure = await launcher
         .click({ timeout: SHEET_PRESS_MS })
         .then(() => null)
         .catch((error) => String(error.message).split('\n')[0].trim().slice(0, 160));
       if (failure) blame = failure;
     }
-    const open = await sheet
+    const open = await arriving
       .waitFor({ state: 'visible', timeout: SHEET_ARRIVE_MS })
       .then(() => true)
       .catch(() => false);
     if (open) {
       sheetOpens.opened += 1;
-      if (attempt > 1) {
+      if (presses > 1) {
         sheetOpens.retried += 1;
-        console.log(`ℹ️  Planer erst im ${attempt}. Versuch offen (${where})`);
+        console.log(`ℹ️  Planer erst nach ${presses} Drücken offen (${where})`);
       }
       return true;
     }
   }
   sheetOpens.failed += 1;
-  check(name, false, `${SHEET_ATTEMPTS} Drücke, je ${SHEET_ARRIVE_MS} ms gewartet — ${blame}`);
+  if (!blame) {
+    blame =
+      (await pressed.count()) > 0
+        ? 'der Druck sitzt (html[data-planner-open] steht), aber kein Sheet — der planner-Chunk ist nicht angekommen'
+        : 'das Sheet ist nach dem Druck nicht erschienen';
+  }
+  check(
+    name,
+    false,
+    `${presses} Druck${presses === 1 ? '' : 'e'}, je ${SHEET_ARRIVE_MS} ms gewartet — ${blame}`
+  );
   return false;
 }
 
@@ -714,7 +742,10 @@ try {
   planStatus = (await fetch(`${BASE}${PLAN_PATH}`)).status;
 } catch (error) {
   console.error(`Could not reach ${BASE} — is the site running? (${error.message})`);
-  process.exit(1);
+  // Nine static assertions have already run at this point, so this exit owes a
+  // balance too — same reason as the guard above, one flow earlier.
+  printBalance();
+  await exitAfterFlush(1);
 }
 
 if (planStatus === 200) {
@@ -726,7 +757,8 @@ if (planStatus === 200) {
   );
 } else {
   console.error(`/plan/day answered ${planStatus}. Expected 200 or 404 — a 502 is a real failure.`);
-  process.exit(1);
+  printBalance();
+  await exitAfterFlush(1);
 }
 const live = planStatus === 200;
 

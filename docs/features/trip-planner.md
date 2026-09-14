@@ -1569,6 +1569,51 @@ production while `next dev` serves it and prints a warning nobody reads; three
 planner surfaces shipped `quality={70}` and `quality={80}` against a configured
 `[50, 60, 75, 85, 90]`, i.e. every photograph the feature has.
 
+### Opening the panel is a step of its own, and a failed one is a ❌
+
+Every flow in that file starts by pressing the edge tab and waiting for the
+sheet, and for as long as it existed those were two bare calls. Both throw, and
+a throw at the top level of an ES module ends the run: twice on 2026-09-13, with
+roughly 300 green assertions behind it and all 40 flows after it unmeasured. The
+press is the fragile half — `waitUntil: 'domcontentloaded'` resolves before React
+has wired the tab, so the press lands on a painted button with no handler on it
+and the wait then expires over a sheet nobody asked for. It only reproduced while
+the machine was busy with something else, which is the run with the most to lose.
+
+`openSheet(page, where)` is the only way in now, at all 39 places, and three
+things about it are load-bearing. **The repeat is the mechanism, not the
+timeout**: a longer single wait only postpones the same press on a dead button,
+so a press that produced nothing is followed by `settleHydration` and another
+one, three at most. **A press that landed is read off
+`html[data-planner-open]`, not off the sheet** — the `planner` namespace is its
+own 15 KB chunk, so for the length of that fetch a landed press has no
+`[data-slot="sheet-content"]` to show for itself, and a guard reading the sheet
+would press a toggle twice and close the panel it was waiting for. **And the
+success is waited for on `[data-state="open"]`**, because a sheet on its way out
+stays visible for 300 ms while carrying `closed`. An attribute with no sheet
+behind it after three waits is reported as what it is: the press worked and the
+chunk never arrived, which `useLazyMessages` does not retry.
+
+A failure is a named ❌ carrying the presses and what the last one said, and the
+call site then leaves its own block (`step: { … break step; }`, closing its page
+on the way out) so the rest of the run still executes. Successes are counted
+rather than asserted — 39 green rows about opening would bury the assertions
+about what is _in_ the panel — and the count rides with the balance:
+`ℹ️ Planer 53× geöffnet`, with the repeats and the failures beside it. That
+figure is the one that says whether the run got as far as the flows it reports
+on. Add a bare `locator(LAUNCHER).click()` and it stops being true.
+
+The balance itself is now unconditional: `uncaughtException` and
+`unhandledRejection` print the stack and then the balance, and every exit leaves
+through `exitAfterFlush`, because `process.exit()` does not wait for a pending
+write and stdout is a pipe whenever this runs from a script. Measured on
+Node 24: a rejected top-level `await` arrives as an `uncaughtException`, not as
+an `unhandledRejection`. What is **not** hardened is every other interaction —
+56 bare `.click()` calls inside an already-open sheet, plus two bare
+`waitFor`s (one for the sheet going away after `Escape`, one for a search hit) —
+so a throw there still ends the run, with a balance but without the flows after
+it.
+
 After moving a planner component across the client boundary, or adding a
 namespace to one, re-run `pnpm generate:route-namespaces` and
 `pnpm generate:message-chunks` — the wizard's `sr-only` weather condition is what
