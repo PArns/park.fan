@@ -11,6 +11,7 @@ import {
   subscribeToNothing,
 } from '@/lib/planner/minute-tick';
 import { formatGridTime, parkMinuteNow } from '@/lib/planner/park-time';
+import { cn } from '@/lib/utils';
 
 interface PlannerShowBandProps {
   /** `null` while the day payload is still on its way. */
@@ -93,6 +94,15 @@ export function PlannerShowBand({
       : null;
   const label = projected ? t('shows.projected') : isToday ? t('shows.next') : t('shows.first');
 
+  // Whether there is anything to switch at all. The store is the panel's, not
+  // the day's, so `visible` can be false over a park that has no shows — and
+  // there the strip says "keine Spielzeiten" rather than "ausgeblendet", with no
+  // switch on it. Collapsing THAT would take a strip away and leave nothing to
+  // bring it back with.
+  const switchable = Boolean(onToggle) && lines !== null && lines.length > 0;
+  // The phone's hidden state: no strip, just the switch.
+  const collapsed = switchable && !visible;
+
   return (
     <div
       data-planner-show-band=""
@@ -118,21 +128,45 @@ export function PlannerShowBand({
       // `lines?.length` would buy back 22 px on a park with no shows and pay
       // for it with a 22 px jump on every park that has them, one second after
       // the panel opens.
-      className="border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm max-sm:min-h-11"
+      //
+      // `collapsed` is the one state that gives the 44 px back, and it is the
+      // state a reader ASKED for: the switch is off, so there is nothing to
+      // reserve room for. Below `sm` the strip then goes to `h-0` and drops its
+      // rule, its glass and its text, and the switch alone hangs into the grid
+      // from the top right — 44 × 44 of cover instead of 44 × the full width.
+      // The way back is where the way out was, which is what makes it a switch
+      // rather than a one-way door; the header row this could otherwise have
+      // moved to has 63 px left for the park name at 390 px (see the
+      // arithmetic in `planner-flyout.tsx`), and a row of its own in
+      // `PlannerDayFoot` would cost more chrome than the strip gives back.
+      //
+      // It is the phone's state alone: every class here is `max-sm:`, so the
+      // desktop keeps the "Ausgeblendet" strip it has always had. CSS rather
+      // than a `useMediaQuery` branch, because this component is also
+      // server-rendered by the guide's demos, where the hook's snapshot would
+      // ship the phone's markup to every desktop and then delete it.
+      className={cn(
+        'border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm',
+        collapsed
+          ? 'max-sm:pointer-events-none max-sm:h-0 max-sm:min-h-0 max-sm:items-start max-sm:border-b-0 max-sm:bg-transparent max-sm:backdrop-blur-none'
+          : 'max-sm:min-h-11'
+      )}
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
       title={observedOn ? t('shows.projectedFrom', { date: observedOn }) : undefined}
     >
-      <Theater className="size-3 shrink-0" aria-hidden="true" />
+      <Theater className={cn('size-3 shrink-0', collapsed && 'max-sm:hidden')} aria-hidden="true" />
       {lines === null ? (
         <span aria-hidden="true">&nbsp;</span>
       ) : lines.length === 0 ? (
         <span className="truncate">{t('shows.none')}</span>
       ) : !visible ? (
-        /* Hidden, and the band says so rather than disappearing with them: a
-           strip that vanished would take the switch with it, and a reader who
-           turned the shows off by accident would have nothing left to press. */
-        <span className="truncate">{t('shows.hidden')}</span>
+        /* Hidden, and on a desktop the band says so rather than disappearing
+           with them: there the strip is not what is short, and a reader who
+           turned the shows off by accident would otherwise have nothing left to
+           read. On a phone the sentence goes with the strip — the switch stays,
+           so nothing is lost but the row. */
+        <span className={cn('truncate', collapsed && 'max-sm:hidden')}>{t('shows.hidden')}</span>
       ) : next ? (
         <>
           <span className="shrink-0">{label}</span>
@@ -158,7 +192,7 @@ export function PlannerShowBand({
           It renders only where there is something to switch: on a day the API
           answered with no shows there is nothing to hide, and a control that
           toggles an empty set is a control that does nothing. */}
-      {onToggle && lines !== null && lines.length > 0 && (
+      {switchable && (
         <button
           type="button"
           onClick={onToggle}
@@ -168,7 +202,16 @@ export function PlannerShowBand({
           // 16 px measured, and the smallest target in the panel. It grows
           // inside a strip that grew with it — see the strip's own note for why
           // this is the one place a pseudo-element was the wrong instrument.
-          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11"
+          //
+          // Collapsed, it is the only thing left of the strip: it takes back the
+          // pointer its parent gave up, and it carries the glass the strip was
+          // wearing, because on its own it sits over the grid's own blocks and
+          // an unbacked icon there is a shape in a drawing.
+          className={cn(
+            'hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11',
+            collapsed &&
+              'max-sm:border-border/60 max-sm:bg-background/95 max-sm:pointer-events-auto max-sm:rounded-md max-sm:border max-sm:shadow-sm max-sm:backdrop-blur-sm'
+          )}
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />
