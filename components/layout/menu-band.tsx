@@ -63,7 +63,18 @@ export function MenuBand({
           favorites menu's empty state — the state nearly every visitor sees — is three steps of
           real sentences, and it ran them out of the band on one line each, clipped by the
           `overflow-hidden` below. A panel is a page, not a row in the bar. */}
-      <div className="pk-menu-glass text-popover-foreground border-border/60 w-full border-b whitespace-normal shadow-2xl ring-1 ring-black/5 dark:ring-white/10">
+      {/* `shadow-lg`, not `shadow-2xl`. The band is full-bleed, so its left and right edges are
+          off-screen and the lower one is the only edge a shadow is ever seen on — which is what
+          made `shadow-2xl` (25 px offset, 50 px blur, 0.25 alpha) read as a tinted strip across
+          the page rather than as depth. Measured at 1440 px against the same band with no shadow
+          at all: it darkened the 62 px below the edge, peaking 27.7/255 in light and 7.5 in dark.
+          `shadow-lg` (10 px, 15 px, 0.10) reaches 18 px and peaks 19.5 and 4.8 — still a visible
+          edge, in under a third of the depth.
+
+          It is not dropped altogether: the band is translucent glass over whatever page it covers,
+          usually a park photo, and `border-b` plus the ring are hairlines that vanish against a
+          busy one. */}
+      <div className="pk-menu-glass text-popover-foreground border-border/60 w-full border-b whitespace-normal shadow-lg ring-1 ring-black/5 dark:ring-white/10">
         {/* The content column, and it is the BAR's column — the same four container-query
             tiers and the same `px-4` floor `components/layout/header.tsx` puts on its row, so a
             panel entry sits on the same vertical line as the nav entry that opened it and as the
