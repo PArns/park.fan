@@ -7028,6 +7028,39 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
       `${bands}× sichtbar (das Panel zeichnet es hier, die Spalte überall sonst — nie beide)`
     );
 
+    // And the left column REACHES what it carries. Moving the rows beside the
+    // axis only moved the arithmetic: 562 px of content in 269, so the summary
+    // and the push toggle sit below the sheet's own bottom edge and are reached
+    // by scrolling that column or not at all. `planner-landscape:overflow-y-auto`
+    // is the whole of that, and nothing above notices if it goes: the axis is
+    // just as tall, nothing covers it, and the search is still left of it —
+    // verified by taking the property away and reading the same numbers back.
+    //
+    // Both halves, because either alone is a half-truth: `overflow-y: auto`
+    // without an overflow scrolls nothing, and an overflow without it is
+    // content nobody can get to.
+    const scrolls = await land.evaluate((sel) => {
+      const column = document.querySelector(`${sel} [data-planner-landscape-chrome]`);
+      if (!column) return null;
+      return {
+        overflowY: getComputedStyle(column).overflowY,
+        scrollHeight: column.scrollHeight,
+        clientHeight: column.clientHeight,
+      };
+    }, SHEET);
+    check(
+      'die linke Spalte im Querformat ist erreichbar, nicht abgeschnitten',
+      Boolean(
+        scrolls &&
+        scrolls.overflowY === 'auto' &&
+        scrolls.scrollHeight > scrolls.clientHeight &&
+        scrolls.clientHeight > 0
+      ),
+      scrolls === null
+        ? 'keine linke Spalte gefunden — nichts gemessen'
+        : `overflow-y ${scrolls.overflowY} · ${scrolls.scrollHeight} px Inhalt in ${scrolls.clientHeight} px`
+    );
+
     // The drag coach is NOT asserted here, and the reason is worth a line rather
     // than a silent omission: it renders only where a park page is behind the
     // panel (`pagePark`), and `seed()` opens the planner from `/de`, where there

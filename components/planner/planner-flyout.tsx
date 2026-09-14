@@ -1256,6 +1256,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 was the bug; beside it, it is a scrollbar in a column nobody has
                 to scroll to see the day. */}
               <div
+                /* Named, so `check:planner` can ask THIS box whether it scrolls
+                   rather than walking up from the band inside it. Present at
+                   every size, like every other `data-planner-*` here — what the
+                   variants decide is the display, not the markup. */
+                data-planner-landscape-chrome=""
                 className={cn(
                   'contents',
                   /* Same gate as the row above, and it has to be the same
