@@ -94,6 +94,32 @@ const open = format(parseISO(day.hours.openingTime), 'HH:mm');
 
 The timezone comes from `IntegratedCalendarResponse.meta.timezone` (or `park.timezone`).
 
+### Hourly predictions (`CalendarDay.hourly[].hour`)
+
+A **UTC** hour of day, 0–23 — not the park's local hour. Measured at 11:42 UTC on 2026-09-14:
+Phantasialand (`Europe/Berlin`, opens 07:00Z), Alton Towers (`Europe/London`, 09:00Z) and
+Toverland (`Europe/Amsterdam`, 08:00Z) all answered `11 12 13 14 15` for today — the current UTC
+hour, not the local one — and tomorrow's series starts at each park's UTC opening hour rather than
+its local one.
+
+It is a bare number, not an ISO string, so there is no `Z` to warn the next reader. Build the
+instant first:
+
+```ts
+import { formatInTimeZone } from 'date-fns-tz';
+import { hourlyPredictionInstants } from '@/lib/utils/calendar-utils';
+
+// ✅ Correct — 11 UTC reads as 13 for a park in Europe/Berlin
+const instants = hourlyPredictionInstants(
+  day.date,
+  hourly.map((h) => h.hour)
+);
+const label = formatInTimeZone(instants[i], timezone, 'HH');
+
+// ❌ Wrong — prints the API's UTC hour on a park-local calendar
+const label = `${h.hour}`;
+```
+
 ---
 
 ## Where we use it
@@ -103,6 +129,7 @@ The timezone comes from `IntegratedCalendarResponse.meta.timezone` (or `park.tim
 | Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`                 |
 | FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                                    |
 | Calendar (day cells)    | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')` — timezone from `meta.timezone` |
+| Calendar (hourly chart) | `hourlyPredictionInstants(day.date, hours)` → `formatInTimeZone(…, timezone, 'HH')`          |
 | Calendar utils          | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone`              |
 | ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                                   |
 

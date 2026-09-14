@@ -3,7 +3,8 @@
 import { createElement, useState } from 'react';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
-import { format, parseISO } from 'date-fns';
+import { addDays, format, parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import {
   Ban,
@@ -44,7 +45,9 @@ import {
   getEventIcon,
   getWeatherIconFromCode,
   getWeatherTranslationKey,
+  hourlyPredictionInstants,
 } from '@/lib/utils/calendar-utils';
+import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 
 const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
@@ -133,6 +136,29 @@ export function ParkCalendarDayDetail({
   // Target day is in flight: previous content stays visible but dimmed.
   const navigating = open && !dayProp && !!day;
 
+  // The hour-by-hour curve is the one field the month payload does NOT carry: it is scoped to the
+  // hour it was fetched in, and that payload is shared-cached for a day. So it is fetched here, for
+  // the one day the reader opened — and only where a curve can exist at all, which is today and
+  // tomorrow in the park's timezone.
+  //
+  // Tomorrow is derived rather than read off `day.isTomorrow`. That field is declared on
+  // `CalendarDay` and the API never sends it: measured against the live month payload, every day
+  // of September including the 15th came back without the key, so a gate on it would have been
+  // false for tomorrow for ever, with a curve sitting on the endpoint and nothing drawing it.
+  // `todayInPark` above is already park-local, so stepping one day on is calendar arithmetic and
+  // needs no timezone of its own.
+  const tomorrowInPark = format(addDays(parseISO(todayInPark), 1), 'yyyy-MM-dd');
+  const canHaveHourly =
+    !!day && (day.isToday || day.date === todayInPark || day.date === tomorrowInPark);
+  const hourlyQuery = useCalendarDayHourly({
+    continent: planner?.geo.continent ?? '',
+    country: planner?.geo.country ?? '',
+    city: planner?.geo.city ?? '',
+    parkSlug: planner?.parkSlug ?? '',
+    date: day?.date ?? null,
+    enabled: !!planner && open && canHaveHourly,
+  });
+
   if (!day) return null;
 
   const dayDate = parseISO(day.date);
@@ -169,8 +195,18 @@ export function ParkCalendarDayDetail({
   const forecast = day.headlinerForecast;
   const hasForecast = !!forecast && forecast.rides.length > 0;
 
-  const hourly = (day.hourly ?? []).filter((h) => h.predictedWaitTime > 0);
+  // `day.hourly` stays first: a caller that already holds a curve (a payload fetched with
+  // `includeHourly`) keeps rendering it, and the fetch above is the fallback that fills the gap
+  // the calendar grid's `includeHourly=none` leaves.
+  const hourlySource = day.hourly ?? hourlyQuery.data ?? [];
+  const hourly = hourlySource.filter((h) => h.predictedWaitTime > 0);
   const maxHourlyWait = hourly.reduce((m, h) => Math.max(m, h.predictedWaitTime), 0);
+  // The API's `hour` is a UTC hour, so the axis is labelled off an instant rather than off the
+  // number — printing it raw put `11 12 13 14 15` under a Phantasialand day that runs 13 to 18.
+  const hourlyInstants = hourlyPredictionInstants(
+    day.date,
+    hourly.map((h) => h.hour)
+  );
 
   // Neighbour holidays grouped BY COUNTRY (API already priority-sorted), each
   // country listing its regions — so a border park splits cleanly into e.g.
@@ -517,20 +553,19 @@ export function ParkCalendarDayDetail({
                 {t('dayDetail.hourlyTitle')}
               </h3>
               <div className="flex items-end gap-1" style={{ height: 72 }}>
-                {hourly.map((h) => {
+                {hourly.map((h, i) => {
                   const pct = maxHourlyWait > 0 ? (h.predictedWaitTime / maxHourlyWait) * 100 : 0;
+                  const label = formatInTimeZone(hourlyInstants[i], parkTimezone, 'HH');
                   return (
                     <div key={h.hour} className="flex flex-1 flex-col items-center gap-1">
                       <div className="flex h-12 w-full items-end justify-center">
                         <div
                           className={`w-full rounded-t ${CROWD_BAR_COLOR[h.crowdLevel] ?? 'bg-slate-400'}`}
                           style={{ height: `${Math.max(pct, 6)}%` }}
-                          title={`${h.hour}:00 · ~${h.predictedWaitTime} min`}
+                          title={`${label}:00 · ~${roundWaitTo5(h.predictedWaitTime)} ${tCommon('min')}`}
                         />
                       </div>
-                      <span className="text-muted-foreground text-[9px] tabular-nums">
-                        {h.hour}
-                      </span>
+                      <span className="text-muted-foreground text-[9px] tabular-nums">{label}</span>
                     </div>
                   );
                 })}

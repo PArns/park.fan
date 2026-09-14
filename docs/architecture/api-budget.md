@@ -151,6 +151,38 @@ globally unique, `disneyland-park` is Anaheim and Paris), and the backend POSTs 
 per transition, and only the parks somebody then visits are re-fetched — where a cron would sweep
 all 213 on a clock that fits none of their timezones.
 
+### The hourly curve: an hour-scoped field in a day-cached payload
+
+The calendar's day-detail dialog draws an hour-by-hour crowd chart, and for as long as it has
+existed it drew nothing: `includeHourly=none` is written into the proxy's calendar branch and into
+`fetchCalendarMonth`, so `day.hourly` was always an empty array. Turning it on across the month
+range is the obvious fix and the wrong one — but not for the reason the field's size suggests.
+
+Measured on 2026-09-14 against `api.park.fan`, a four-day range costs **4958 bytes with
+`includeHourly=all` against 4349 with `none`**, i.e. ~600 bytes, because only today and tomorrow
+ever carry a curve. `all` and `today+tomorrow` return byte-identical responses; a single-day
+request for a date a week out answers 1191 bytes either way, with no `hourly` key at all. So the
+worry about "a month's worth of hourly data" does not exist.
+
+The cache is the reason. The month response is shared-cached for a day (`s-maxage=86400`) and held
+in the browser for an hour (`CALENDAR_STALE_TIME_MS`), while the curve is scoped to the hour it was
+fetched in: today's series starts at the **current UTC hour** and tomorrow's at the park's UTC
+opening hour — Phantasialand, Alton Towers and Toverland all answered `11 12 13 14 15` at 11:42
+UTC. An hour-scoped field inside a day-stable entry is the shows-and-restaurants case one section
+up, and it ends the same way: the field travels on its own request.
+
+`useCalendarDayHourly` fetches exactly one day (`from` = `to`), only while the dialog is open, and
+only for a day the API itself marks `isToday` or `isTomorrow` — so a park has at most two such URLs
+in a cache at a time and a reader who never opens the dialog pays nothing. The proxy accepts
+`includeHourly` as a **closed set** (the value lands in the CDN cache key, same rule as the blog
+widgets' `topN`) and answers that variant with a five-minute window instead of the month's day.
+
+One trap that comes with the data rather than the budget: `HourlyPrediction.hour` is a **UTC**
+hour, not the park's. The dialog printed it raw, which would have put `11 12 13 14 15` under a
+Phantasialand day that runs 13 to 18. `hourlyPredictionInstants` (`lib/utils/calendar-utils.ts`)
+turns the series into instants and `formatInTimeZone` renders them in park time;
+`pnpm test:calendar` pins the three measured series and the midnight-UTC crossing.
+
 ### Attraction detail: 58 KB → 27 KB
 
 `schedule[].influencingHolidays` — the neighbouring regions whose school break falls on each of the

@@ -54,6 +54,39 @@ export function getParkTime(dateInput: string | Date, timezone: string): Date {
 }
 
 /**
+ * Turn a day's `HourlyPrediction` series into UTC instants, so a caller can render each bar in the
+ * park's own clock instead of in the API's.
+ *
+ * `HourlyPrediction.hour` is an hour of day in **UTC** (see its docstring for the measurement).
+ * The series belongs to `date`, which is a calendar day in the PARK's timezone, and those two
+ * calendars do not line up: a park-local day reaches into the UTC day before it or after it,
+ * depending on the sign of its offset. Anchoring each hour on `date` at 00:00 UTC and stepping
+ * forward is therefore off by a day at the edges — and it does not matter, because the only thing
+ * read off the instant is its hour in the park's timezone, and that comes out right either way.
+ *
+ * The one thing that must be handled is the series crossing midnight UTC: a park open late answers
+ * `… 22 23 0 1`, and a `0` that is not carried into the next UTC day would render twenty-three
+ * hours before its neighbour. A drop in the value is the crossing.
+ *
+ * @param date `YYYY-MM-DD` in park time — `CalendarDay.date`.
+ * @param hours the series' `hour` values, in the order the API returned them.
+ * @returns one epoch-millisecond instant per entry, in the same order.
+ */
+export function hourlyPredictionInstants(date: string, hours: number[]): number[] {
+  const base = Date.parse(`${date}T00:00:00Z`);
+  if (Number.isNaN(base)) return [];
+
+  let dayOffset = 0;
+  let previous = -1;
+
+  return hours.map((hour) => {
+    if (hour < previous) dayOffset += 1;
+    previous = hour;
+    return base + (dayOffset * 24 + hour) * 60 * 60 * 1000;
+  });
+}
+
+/**
  * Transform schedule items to calendar events
  */
 export function transformScheduleToEvents(

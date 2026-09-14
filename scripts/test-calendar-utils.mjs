@@ -1,4 +1,5 @@
-import { getWeatherEmoji } from '../lib/utils/calendar-utils.ts';
+import { formatInTimeZone } from 'date-fns-tz';
+import { getWeatherEmoji, hourlyPredictionInstants } from '../lib/utils/calendar-utils.ts';
 
 const testCases = [
   // Numeric codes (WMO)
@@ -60,8 +61,105 @@ testCases.forEach((testCase, _index) => {
   }
 });
 
+let total = testCases.length;
+
+// ---------------------------------------------------------------------------
+// hourlyPredictionInstants
+//
+// `HourlyPrediction.hour` is a UTC hour, and the day-detail dialog draws it on a park-local
+// calendar. The three series below are what api.park.fan actually answered on 2026-09-14 at
+// 11:42 UTC for three parks at three offsets — printing `hour` raw would have put 11 12 13 14 15
+// under a Phantasialand day that runs 13 to 18.
+// ---------------------------------------------------------------------------
+
 console.log('\n' + '='.repeat(80));
-console.log(`\n📊 Results: ${passed}/${testCases.length} passed, ${failed} failed\n`);
+console.log('\n🧪 Testing hourlyPredictionInstants\n');
+
+const check = (name, condition, detail) => {
+  total++;
+  if (condition) {
+    console.log(`✅ PASS: ${name}`);
+    passed++;
+  } else {
+    console.log(`❌ FAIL: ${name}`);
+    if (detail) console.log(`   ${detail}`);
+    failed++;
+  }
+};
+
+const labels = (date, hours, timezone) =>
+  hourlyPredictionInstants(date, hours).map((instant) => formatInTimeZone(instant, timezone, 'HH'));
+
+const labelCases = [
+  {
+    name: 'Phantasialand, today — UTC 11–15 reads 13–17 in Europe/Berlin',
+    date: '2026-09-14',
+    hours: [11, 12, 13, 14, 15],
+    timezone: 'Europe/Berlin',
+    expected: ['13', '14', '15', '16', '17'],
+  },
+  {
+    name: "Phantasialand, tomorrow — the series starts at the park's 09:00, not at 07",
+    date: '2026-09-15',
+    hours: [7, 8, 9, 10, 11],
+    timezone: 'Europe/Berlin',
+    expected: ['09', '10', '11', '12', '13'],
+  },
+  {
+    name: 'Alton Towers, tomorrow — one hour of offset, three bars',
+    date: '2026-09-15',
+    hours: [9, 10, 11],
+    timezone: 'Europe/London',
+    expected: ['10', '11', '12'],
+  },
+  {
+    name: 'A park west of UTC — the same hours read as a morning, not an evening',
+    date: '2026-09-14',
+    hours: [15, 16, 17, 18],
+    timezone: 'America/New_York',
+    expected: ['11', '12', '13', '14'],
+  },
+  {
+    name: 'A park east of UTC — and as an evening there',
+    date: '2026-09-14',
+    hours: [8, 9, 10, 11],
+    timezone: 'Asia/Tokyo',
+    expected: ['17', '18', '19', '20'],
+  },
+];
+
+for (const c of labelCases) {
+  const got = labels(c.date, c.hours, c.timezone);
+  check(
+    c.name,
+    got.join(' ') === c.expected.join(' '),
+    `Expected: ${c.expected.join(' ')}   Got: ${got.join(' ')}`
+  );
+}
+
+// A late-closing park's series runs past midnight UTC, and the values drop (… 22 23 0 1). Each
+// entry has to land one hour after the one before it, or the `0` is filed twenty-three hours
+// earlier than its neighbour.
+{
+  const instants = hourlyPredictionInstants('2026-09-14', [22, 23, 0, 1]);
+  const steps = instants.slice(1).map((v, i) => v - instants[i]);
+  check(
+    'a series crossing midnight UTC stays one hour apart',
+    steps.every((s) => s === 3600_000),
+    `Steps (ms): ${steps.join(', ')}`
+  );
+  check(
+    'and starts where the day starts',
+    instants[0] === Date.parse('2026-09-14T22:00:00Z'),
+    `Got: ${new Date(instants[0]).toISOString()}`
+  );
+}
+
+check('an empty series stays empty', hourlyPredictionInstants('2026-09-14', []).length === 0);
+check('a date the API never sends yields nothing', hourlyPredictionInstants('', [11]).length === 0);
+
+console.log('\n' + '='.repeat(80));
+console.log(`\n📊 Results: ${passed}/${total} passed, ${failed} failed\n`);
 
 if (failed === 0) {
   console.log('🎉 All tests passed!');
