@@ -1090,6 +1090,18 @@ if (await phoneLauncher.count()) {
     phone.locator(SHEET).evaluate((el) => Math.round(parseFloat(getComputedStyle(el).maxHeight)));
 
   check('der Anfasser ist da', (await grab.count()) === 1);
+
+  // And he is the only way out that is drawn, which is why the line above is
+  // not a formality any more. The × went off the phone sheet with PAR-188 —
+  // three exits in a corner a thumb reaches worst were two too many — so the
+  // pair has to be asserted together: no close button, AND a handle that is
+  // there. Either one alone would pass over a sheet with no visible exit at
+  // all, which is exactly the state at 100svh, where the modal shield sits
+  // behind the sheet and tapping beside it does nothing.
+  check(
+    'und auf dem Handy trägt das Sheet keinen ×-Knopf mehr',
+    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+  );
   if (await grab.count()) {
     /**
      * How far a drag travels, and it is a DISTANCE rather than a destination.
@@ -3034,6 +3046,15 @@ if (reachable) {
     check(
       'der Hinweis am Fuß schweigt, solange das Raster leer ist',
       (await desk.locator('[data-planner-drag-coach]').count()) === 0
+    );
+    // The other half of the phone pass's „kein ×-Knopf mehr". `hideClose` is
+    // opt-in per call site and keyed on `isPhone`, so the side panel has to be
+    // asked separately — it has no grab handle, and its outside press is
+    // deliberately swallowed, so losing the × here would leave Escape as the
+    // only way out of a panel that is not modal.
+    check(
+      'am Rechner behält das Panel seinen ×-Knopf',
+      (await desk.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1
     );
     await desk.close();
   }

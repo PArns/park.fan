@@ -52,11 +52,23 @@ function SheetContent({
   children,
   side = 'right',
   modal,
+  hideClose = false,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: 'top' | 'right' | 'bottom' | 'left';
   /** Mirrors the root's `modal`; a non-modal sheet renders no overlay. */
   modal?: boolean;
+  /**
+   * Drops the × below. Opt-in per call site, never a global default: this
+   * component also draws the header's burger menu, which is the phone
+   * navigation and has nothing else to close it with.
+   *
+   * Only pass it where the sheet carries a dismiss gesture the reader can SEE —
+   * the planner's bottom sheet has its grab handle, which both drags and taps
+   * the sheet away. A sheet with no × and no visible way out is a trap, and the
+   * call site is the only place that knows which of the two it is.
+   */
+  hideClose?: boolean;
 }) {
   return (
     <SheetPortal>
@@ -99,10 +111,15 @@ function SheetContent({
             the positioned ancestor, so an `overflow-y-auto` PUT ON IT scrolls this button away
             with the content. Give the scroll to a child instead (see the burger sheet in
             components/layout/header.tsx). */}
-        <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 flex items-center justify-center rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none max-sm:top-2 max-sm:right-2 max-sm:size-11 max-sm:rounded-md">
-          <XIcon className="size-4" />
-          <span className="sr-only">Close</span>
-        </SheetPrimitive.Close>
+        {!hideClose && (
+          <SheetPrimitive.Close
+            data-slot="sheet-close"
+            className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 flex items-center justify-center rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none max-sm:top-2 max-sm:right-2 max-sm:size-11 max-sm:rounded-md"
+          >
+            <XIcon className="size-4" />
+            <span className="sr-only">Close</span>
+          </SheetPrimitive.Close>
+        )}
       </SheetPrimitive.Content>
     </SheetPortal>
   );

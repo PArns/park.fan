@@ -1448,10 +1448,22 @@ resting height back: the resting height is where the 59 px came from, and it is
 what Patrick asked for in as many words.
 
 What 100svh costs is the modal overlay. Pulled up there is no shield left beside
-the sheet, so tapping outside is no longer a way out and the two that remain have
-to be real ones — the × on `SheetContent` is `max-sm:size-11`, and the handle
-brings the sheet back down by drag **or** tap, which is why the tap toggles
-rather than only dismissing. At rest the shield is back.
+the sheet, so tapping outside is no longer a way out and what remains has to be
+real: the handle brings the sheet back down by drag **or** tap, which is why the
+tap toggles rather than only dismissing. At rest the shield is back.
+
+**And the × is gone from the phone sheet**, which is what makes that handle the
+pulled-up state's only exit. Three ways out of a bottom sheet were two too many,
+and the one that went is the one parked in the corner a thumb reaches worst;
+`SheetContent` takes a `hideClose` prop for it, opt-in per call site rather than
+a breakpoint inside the component, because the same component draws the header's
+burger menu and that sheet has nothing else to close it with. The planner keys it
+on `isPhone`, the same value as `side` and `modal` two lines up, so a class does
+not become a fourth copy of `PLANNER_PHONE_QUERY` free to drift from the other
+three. The desktop panel keeps its ×: a side panel has no handle, and its outside
+press is deliberately swallowed, so there the × and Escape are the whole list.
+`check:planner` asserts both halves — no close button on the phone beside the
+existing `der Anfasser ist da`, and a close button still present at 1400 px.
 
 ### Every target in the sheet is 44 px, and three of them are not what they measure
 
@@ -1496,13 +1508,19 @@ action row. The strip grows instead, which costs the axis nothing (it is scrolle
 content, not part of the scroller's box) and costs coverage, which scrolling
 recovers where a stolen tap does not.
 
-One entry in that list was not a size at all. `SheetContent` draws its close
+One entry in that list was not a size at all. `SheetContent` drew its close
 button `max-sm:size-11` at `right-2`, covering the rightmost 52 px of the header
 row, while the row reserved `pr-7` plus the header's `px-3` — 40 px. "Einen Tag
-planen" sat 12 of its 28 px under the ×. A sweep skips a control that is covered
-at its own centre (that is a different defect), so this one has a named check of
-its own, asked as `click({ trial: true })` because "receives events" is the
-question and Playwright names the intercepting element when the answer is no.
+planen" sat 12 of its 28 px under the ×, and the fix was `max-sm:pr-14`. Dropping
+the × from the phone sheet takes both sides of that away: there is nothing to
+clear, so the row carries `pr-7` on the desktop and nothing below it, and the 56
+px go back to the head. A sweep skips a control that is covered at its own centre
+(that is a different defect), so the overlap has a named check of its own, asked
+as `click({ trial: true })` because "receives events" is the question and
+Playwright names the intercepting element when the answer is no. It measures the
+**rightmost** control of the header whatever that is today, so it keeps working
+over a header that no longer has a × in it — it is the header's own controls it
+guards now.
 
 ### A plan may not depend on a gesture landing
 
