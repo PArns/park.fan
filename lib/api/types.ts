@@ -2369,14 +2369,15 @@ export interface PlanDay {
   leadDays: number;
   /**
    * Measured mean absolute error for predictions made this far ahead, in
-   * minutes. `null` until the backend's forward archive has enough scored rows
+   * minutes. `null` until the backend's lead-time archive has enough scored rows
    * at this distance — and `null` is the honest answer rather than a gap to
    * fill, so where it is absent, widen the band with distance WITHOUT attaching
    * a figure.
    *
-   * Absent is not the same as unmeasured: `accuracy.typicalError` below carries
-   * a distance-dependent error from a different source, and so does
-   * `RideDayCurve.forecastError`'s lead-bucket profile.
+   * Absent here is not the same as unmeasured everywhere: `accuracy.typicalError`
+   * below carries a distance-dependent error of its own, and so does
+   * `rides[].expectedError`, which resolves the backend's lead-bucket profile
+   * per ride.
    */
   leadTimeMae?: number | null;
   /**
