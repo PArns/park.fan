@@ -735,7 +735,6 @@
         "range": "Outages like this one usually had {from} to {to} left.",
         "rangeOpen": "Outages like this one usually had more than {from} left.",
         "barNow": "now",
-        "barLabel": "Estimated time left",
         "recovery": "About {percent}% were back within an hour.",
         "recoveryOnly": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
       },

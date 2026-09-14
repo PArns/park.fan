@@ -22,6 +22,16 @@ import {
   roundOutageMinutes,
 } from '../lib/utils/outage.ts';
 import { formatSpanDuration, formatWholeHours } from '../lib/utils/duration.ts';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
+
+/** The catalogs as they ship, read from disk — the keys below are strings on both sides. */
+function readMessages(locale) {
+  const path = fileURLToPath(new URL(`../messages/${locale}.json`, import.meta.url));
+  return JSON.parse(readFileSync(path, 'utf8'));
+}
 
 /** The shape production actually sends for a long outage — no `p75` key at all. */
 const LONG = {
@@ -278,6 +288,42 @@ const testCases = [
     actual: () =>
       `${outageRecoveryLine(null, 'compact', false)} ${outageRecoveryLine(null, 'full', false)}`,
     expected: 'null null',
+  },
+  {
+    name: 'both keys this function can name resolve in all six locales',
+    // The key literals moved out of the `t()` call and into this file, so a grep over the
+    // component no longer finds them and a rename would go unnoticed on both sides. next-intl
+    // does not throw on a missing namespace key — it logs MISSING_MESSAGE and renders the raw
+    // key, so the failure would ship as the word „recoveryOnly" on a ride page.
+    actual: () => {
+      const keys = ['recovery', 'recoveryOnly', 'range', 'rangeOpen', 'barNow'];
+      const missing = [];
+      for (const locale of LOCALES) {
+        const messages = readMessages(locale);
+        const estimate = messages?.parks?.outage?.estimate ?? {};
+        for (const key of keys) {
+          if (typeof estimate[key] !== 'string') missing.push(`${locale}.${key}`);
+        }
+      }
+      return missing.length === 0 ? 'all resolve' : missing.join(', ');
+    },
+    expected: 'all resolve',
+  },
+  {
+    name: 'the percent placeholder is in both probability sentences, in all six locales',
+    // A sentence that resolves but drops `{percent}` is a probability line with no probability
+    // in it, which no type and no lint rule sees.
+    actual: () => {
+      const missing = [];
+      for (const locale of LOCALES) {
+        const estimate = readMessages(locale)?.parks?.outage?.estimate ?? {};
+        for (const key of ['recovery', 'recoveryOnly']) {
+          if (!String(estimate[key] ?? '').includes('{percent}')) missing.push(`${locale}.${key}`);
+        }
+      }
+      return missing.length === 0 ? 'all carry it' : missing.join(', ');
+    },
+    expected: 'all carry it',
   },
 
   // ── elapsed ──

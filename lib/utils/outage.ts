@@ -89,7 +89,13 @@ export function outageRemainingWindow(
  */
 export const OUTAGE_BAR_HORIZON_MIN = 240;
 
-/** Hour marks inside the track. Labelled on the ride page, drawn as hairlines on a card. */
+/**
+ * Hour marks inside the track, drawn as hairlines in both variants.
+ *
+ * Unlabelled on purpose: the two ends of the scale are named beside the track, and three more
+ * labels between them is a row of five on a 360 px card. Evenly spaced marks between „jetzt" and
+ * „4 Std." are read as hours without being told.
+ */
 export const OUTAGE_BAR_TICKS_MIN = [60, 120, 180];
 
 /**
@@ -98,8 +104,12 @@ export const OUTAGE_BAR_TICKS_MIN = [60, 120, 180];
  * A ten-minute window on a four-hour scale is 4 % wide, which is two pixels on a card and looks
  * like a rendering fault rather than a short outage. The floor widens it to the right, so a
  * segment is never drawn starting earlier than it was measured.
+ *
+ * Exported because the open-end fade has to respect it: a gradient that turns transparent partway
+ * along the segment takes the guaranteed width back, and nothing in the geometry can see that.
  */
-const MIN_SEGMENT_PCT = 5;
+export const OUTAGE_MIN_SEGMENT_PCT = 5;
+const MIN_SEGMENT_PCT = OUTAGE_MIN_SEGMENT_PCT;
 
 export interface OutageRemainingBar {
   /** Left edge, percent of the track. */

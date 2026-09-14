@@ -518,7 +518,6 @@
         "range": "Störungen wie diese dauerten meist noch {from} bis {to}",
         "rangeOpen": "Störungen wie diese dauerten meist noch über {from}",
         "barNow": "jetzt",
-        "barLabel": "Geschätzte Restdauer",
         "recovery": "Rund {percent} % waren binnen einer Stunde behoben.",
         "recoveryOnly": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
       },

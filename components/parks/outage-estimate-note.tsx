@@ -7,6 +7,7 @@ import { formatShortDuration, formatWholeHours } from '@/lib/utils/duration';
 import {
   OUTAGE_BAR_HORIZON_MIN,
   OUTAGE_BAR_TICKS_MIN,
+  OUTAGE_MIN_SEGMENT_PCT,
   outageRecoveryLine,
   outageRecoveryPercent,
   outageRemainingBar,
@@ -62,8 +63,13 @@ import {
  * that reason; one drawn per window would make every ride look alike, which is
  * the trap `Sparkline`'s `yMax` exists for. Where the window's top is not on the
  * scale the segment fades out to the right instead of ending in a cap, and where
- * even its bottom is past four hours there is no bar at all — the geometry, and
- * why it refuses, sit in `outageRemainingBar`.
+ * the window leaves no room for a full segment there is no bar at all — the
+ * geometry, and why it refuses, sit in `outageRemainingBar`.
+ *
+ * Neither bar is in the accessibility tree. Each restates, as a picture, the
+ * sentence directly above it, and on a park page the whole block sits inside the
+ * card's one `<Link>`, so a label here would be read out as part of the link's
+ * name. The numbers are in the sentence, where a screen reader reaches them once.
  *
  * The probability gets a plain meter, which needs no axis: 0 to 100 % is the
  * axis. `components/ui/progress.tsx` is not reused for either — it fills from
@@ -153,7 +159,6 @@ export function OutageEstimateNote({
           bar={bar}
           nowLabel={t('barNow')}
           endLabel={formatWholeHours(OUTAGE_BAR_HORIZON_MIN / 60, locale)}
-          ariaLabel={t('barLabel')}
         />
       ) : null}
       {recovery ? (
@@ -179,13 +184,21 @@ function RemainingBar({
   bar,
   nowLabel,
   endLabel,
-  ariaLabel,
 }: {
   bar: OutageRemainingBar;
   nowLabel: string;
   endLabel: string;
-  ariaLabel: string;
 }) {
+  // How much of the segment is drawn solid before the open end fades out.
+  //
+  // A share of the SEGMENT, floored so the solid head is never narrower than the whole segment
+  // was guaranteed to be: at 35 % of a five-percent segment the visible part is 1.75 % of the
+  // track, which is the sliver `outageRemainingBar` refuses to produce, put back by the paint.
+  // A segment that cannot afford the fade is drawn solid — at that width the fade is a pixel and
+  // the sentence above says „über …" either way.
+  const width = bar.endPct - bar.startPct;
+  const solidPct = Math.min(100, Math.max(35, (OUTAGE_MIN_SEGMENT_PCT / width) * 100));
+
   // 10 px is the floor the rest of the site's chart furniture sits at, and the labels keep the
   // block's inherited `text-muted-foreground` rather than dimming it further: an opacity on top
   // of it would take small text under the 4.5 : 1 it owes.
@@ -194,8 +207,7 @@ function RemainingBar({
       <span className="shrink-0">{nowLabel}</span>
       <span
         className="bg-muted/40 relative h-1.5 min-w-0 flex-1 overflow-hidden rounded-full"
-        role="img"
-        aria-label={ariaLabel}
+        aria-hidden="true"
       >
         {OUTAGE_BAR_TICKS_MIN.map((minutes) => (
           <span
@@ -215,8 +227,7 @@ function RemainingBar({
             // 50 Min." once both segments reach the right edge of the track.
             ...(bar.openEnd
               ? {
-                  backgroundImage:
-                    'linear-gradient(to right, var(--color-primary) 35%, transparent)',
+                  backgroundImage: `linear-gradient(to right, var(--color-primary) ${solidPct}%, transparent)`,
                 }
               : {}),
           }}

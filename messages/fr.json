@@ -735,7 +735,6 @@
         "range": "Les pannes de ce type duraient encore {from} à {to} en général.",
         "rangeOpen": "Les pannes de ce type duraient encore plus de {from} en général.",
         "barNow": "maintenant",
-        "barLabel": "Durée restante estimée",
         "recovery": "Environ {percent} % étaient résolues en une heure.",
         "recoveryOnly": "Parmi les pannes durant déjà aussi longtemps, environ {percent} % étaient de nouveau signalées en service en une heure."
       },
