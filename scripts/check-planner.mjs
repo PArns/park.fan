@@ -208,6 +208,29 @@ function printBalance() {
 }
 
 /**
+ * Leave only once the balance has actually left the process.
+ *
+ * `process.exit()` does not wait for a pending write, and stdout is a PIPE
+ * rather than a terminal whenever this runs from a script or a CI step — so the
+ * last lines, which are the ones worth having, can be cut off mid-sentence. The
+ * callback of a final empty write fires after everything queued before it has
+ * been flushed; the timer is the way out if the reader on the other end has
+ * already gone away.
+ *
+ * It therefore does NOT end the run where it is called, which the two early
+ * exits below would otherwise carry on past with a closed browser. So it answers
+ * with a promise that never settles: `await exitAfterFlush(1)` is the last thing
+ * a caller does, and the exit itself is what ends it.
+ */
+function exitAfterFlush(code) {
+  process.exitCode = code;
+  const leave = () => process.exit(code);
+  process.stdout.write('', leave);
+  setTimeout(leave, 2000);
+  return new Promise(() => {});
+}
+
+/**
  * A throw anywhere in this file used to take the balance with it.
  *
  * This module is one long top-level `await`, so a rejection it does not catch
@@ -234,7 +257,7 @@ for (const event of ['uncaughtException', 'unhandledRejection']) {
         .slice(0, 200)}`
     );
     printBalance();
-    process.exit(1);
+    exitAfterFlush(1);
   });
 }
 
@@ -796,7 +819,8 @@ check('Launcher bleibt mit Plan', hasLauncher);
 if (!hasLauncher) {
   console.error('\nOhne Launcher ist der Rest nicht prüfbar.');
   await browser.close();
-  process.exit(1);
+  printBalance();
+  await exitAfterFlush(1);
 }
 
 // Three in the active day plus two in the other park: the badge counts the
@@ -828,7 +852,7 @@ if (!desktopOpen) {
   console.error('\nOhne geöffnetes Panel ist der Rest nicht prüfbar.');
   await browser.close();
   printBalance();
-  process.exit(1);
+  await exitAfterFlush(1);
 }
 
 // The query, and then the render it feeds.
@@ -2109,7 +2133,10 @@ step: {
   );
 
   await seed(grid);
-  if (!(await openSheet(grid, 'gestubbtes Raster'))) break step;
+  if (!(await openSheet(grid, 'gestubbtes Raster'))) {
+    await grid.close();
+    break step;
+  }
   await grid.waitForTimeout(2500);
 
   const blocks = grid.locator('li[data-planner-block]');
@@ -2423,7 +2450,10 @@ step: {
     [PLAN, DATE]
   );
   await hl.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(hl, 'fehlender Headliner'))) break step;
+  if (!(await openSheet(hl, 'fehlender Headliner'))) {
+    await hl.close();
+    break step;
+  }
   await hl.waitForTimeout(2500);
 
   // The band of headliner pills is gone: it repeated rides the list below
@@ -2581,14 +2611,20 @@ step: {
   // planner's own subscription back off. What is left is a page whose clocks are
   // all running and a planner that has none — which is exactly the thing the
   // second open is being measured against.
-  if (!(await openSheet(cpu, 'CPU, erster Aufbau'))) break step;
+  if (!(await openSheet(cpu, 'CPU, erster Aufbau'))) {
+    await cpu.close();
+    break step;
+  }
   await cpu.waitForTimeout(2500);
   await cpu.keyboard.press('Escape');
   await cpu.locator(SHEET).waitFor({ state: 'hidden', timeout: 10_000 });
   await cpu.waitForTimeout(1500);
   const beforeOpen = await liveMinuteClocks();
 
-  if (!(await openSheet(cpu, 'CPU, zweiter Aufbau'))) break step;
+  if (!(await openSheet(cpu, 'CPU, zweiter Aufbau'))) {
+    await cpu.close();
+    break step;
+  }
   await cpu.waitForTimeout(2500);
 
   // The DELTA across opening the panel, not the page's total: the app runs a
@@ -2677,7 +2713,10 @@ step: {
   await drag.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
     waitUntil: 'networkidle',
   });
-  if (!(await openSheet(drag, 'Drag von der Parkseite'))) break step;
+  if (!(await openSheet(drag, 'Drag von der Parkseite'))) {
+    await drag.close();
+    break step;
+  }
   await drag.waitForTimeout(2500);
 
   // The page behind must still be reachable. With a modal sheet it is not, and
@@ -3011,7 +3050,10 @@ step: {
     },
     [PLAN, DATE]
   );
-  if (!(await reload())) break step;
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
 
   // The block's lower edge is the whole point of `hours[].source`: a hard end
   // for a measurement, a fade for a composition. Read off the mask rather than
@@ -3061,7 +3103,10 @@ step: {
   // recorded, so it is narrower than the truth by construction and the panel
   // says where it came from.
   body = dayBody({ context: { hoursSource: 'observed' } });
-  if (!(await reload())) break step;
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
   band = await bandText();
   // The hours themselves are asserted with it: without them this passed on the
   // suffix alone, over a chip reading "undefined bis undefined Uhr".
@@ -3069,7 +3114,10 @@ step: {
 
   // Nobody has ever checked how wrong the forecast is this far out.
   body = dayBody({ tier: 'composed', accuracy: { basis: 'unmeasured' } });
-  if (!(await reload())) break step;
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
   band = await bandText();
   check(
     'ohne geprüfte Genauigkeit sagt der Tag das',
@@ -3088,7 +3136,10 @@ step: {
   // "nobody has checked these numbers" under the only numbers on this panel
   // that are facts.
   body = dayBody({ tier: 'observed', accuracy: { basis: 'unmeasured' } });
-  if (!(await reload())) break step;
+  if (!(await reload())) {
+    await acc.close();
+    break step;
+  }
   band = await bandText();
   check(
     'ein vergangener Tag bleibt gemessen',
@@ -3247,7 +3298,10 @@ step: {
       window.localStorage.removeItem('parkfan_planner');
     });
     await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    if (!(await openSheet(bare, `ohne Plan, ${width} px`))) continue;
+    if (!(await openSheet(bare, `ohne Plan, ${width} px`))) {
+      await bare.close();
+      continue;
+    }
     await bare.waitForTimeout(1500);
     const text = ((await bare.locator(SHEET).innerText()) ?? '').replace(/\s+/g, ' ');
     check(
@@ -3279,7 +3333,10 @@ step: {
   await shot.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
     waitUntil: 'networkidle',
   });
-  if (!(await openSheet(shot, 'Chrome über dem Foto'))) break step;
+  if (!(await openSheet(shot, 'Chrome über dem Foto'))) {
+    await shot.close();
+    break step;
+  }
   await shot.waitForTimeout(4000);
 
   const photo = shot.locator(`${SHEET} [aria-hidden="true"].-z-10`);
@@ -3482,7 +3539,10 @@ step: {
   await shows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
   await seedDay(shows);
   await shows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(shows, 'Shows am Rechner'))) break step;
+  if (!(await openSheet(shows, 'Shows am Rechner'))) {
+    await shows.close();
+    break step;
+  }
   await shows.waitForTimeout(2500);
 
   // A dashed rule and a time in the hour column is not a show. The NAME is what
@@ -3575,7 +3635,11 @@ step: {
     await phoneShows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
     await seedDay(phoneShows);
     await phoneShows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    if (!(await openSheet(phoneShows, 'Shows auf dem Handy'))) break step;
+    if (!(await openSheet(phoneShows, 'Shows auf dem Handy'))) {
+      await phoneShows.close();
+      await shows.close();
+      break step;
+    }
     await phoneShows.waitForTimeout(2500);
 
     const bandHeight = () =>
@@ -3969,7 +4033,10 @@ step: {
     [PLAN, DATE]
   );
   await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(push, 'Benachrichtigungen, an und aus'))) break step;
+  if (!(await openSheet(push, 'Benachrichtigungen, an und aus'))) {
+    await push.close();
+    break step;
+  }
   await push.waitForTimeout(2000);
 
   const toggle = push.locator('[data-planner-push] button');
@@ -4027,7 +4094,10 @@ step: {
     // own subscription AND the stored id, so losing either has to read as off.
     await push.locator(`${SHEET} button[aria-label]`).first().press('Escape');
     await push.waitForTimeout(400);
-    if (!(await openSheet(push, 'Benachrichtigungen, zweiter Aufbau'))) break step;
+    if (!(await openSheet(push, 'Benachrichtigungen, zweiter Aufbau'))) {
+      await push.close();
+      break step;
+    }
     await push.waitForTimeout(1500);
     check(
       'nach dem Wiederöffnen sind sie immer noch an',
@@ -4097,7 +4167,10 @@ step: {
     [PLAN, DATE, YESTERDAY, LAST_WEEK]
   );
   await past.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(past, 'begangene Pläne'))) break step;
+  if (!(await openSheet(past, 'begangene Pläne'))) {
+    await past.close();
+    break step;
+  }
   await past.waitForTimeout(1500);
 
   await past.locator('button[data-planner-overview-toggle]').click();
@@ -4256,7 +4329,10 @@ step: {
     [PLAN, DATE]
   );
   await photos.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(photos, 'Fotos aus dem Payload'))) break step;
+  if (!(await openSheet(photos, 'Fotos aus dem Payload'))) {
+    await photos.close();
+    break step;
+  }
   await photos.waitForTimeout(2500);
 
   const drawn = await photos.evaluate(() =>
@@ -4366,7 +4442,10 @@ step: {
       body: JSON.stringify({ available: false, topics: [] }),
     })
   );
-  if (!(await seedPlan(push))) break step;
+  if (!(await seedPlan(push))) {
+    await push.close();
+    break step;
+  }
   check(
     'ohne Schlüssel gibt es keinen Schalter',
     (await push.locator('[data-planner-push]').count()) === 0
@@ -4416,7 +4495,10 @@ step: {
     [PLAN, DATE]
   );
   await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(push, 'Benachrichtigungen, konfigurierter Deploy'))) break step;
+  if (!(await openSheet(push, 'Benachrichtigungen, konfigurierter Deploy'))) {
+    await push.close();
+    break step;
+  }
   await push.waitForTimeout(2000);
 
   const toggle = push.locator('[data-planner-push]');
@@ -4486,7 +4568,10 @@ step: {
     [PLAN, DATE]
   );
   await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(push, 'Benachrichtigungen, verweigerter Browser'))) break step;
+  if (!(await openSheet(push, 'Benachrichtigungen, verweigerter Browser'))) {
+    await context.close();
+    break step;
+  }
   await push.waitForTimeout(2000);
 
   const denied = push.locator('[data-planner-push="denied"]');
@@ -4579,7 +4664,10 @@ step: {
     [PLAN, DATE]
   );
   await tint.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(tint, 'Crowd-Tint'))) break step;
+  if (!(await openSheet(tint, 'Crowd-Tint'))) {
+    await tint.close();
+    break step;
+  }
   await tint.waitForTimeout(2000);
 
   /** The crowd level the block is currently painted at, off its tile classes. */
@@ -4718,7 +4806,10 @@ step: {
     [PLAN, YESTERDAY]
   );
   await past.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(past, 'vergangener Tag'))) break step;
+  if (!(await openSheet(past, 'vergangener Tag'))) {
+    await past.close();
+    break step;
+  }
   await past.waitForTimeout(2500);
 
   const text = (await past.locator(SHEET).textContent()) ?? '';
@@ -4859,7 +4950,10 @@ step: {
 
   // The positive control FIRST, so a selector typo cannot pass the two counts
   // below by matching nothing at all.
-  if (!(await seedOn(DATE))) break step;
+  if (!(await seedOn(DATE))) {
+    await gone.close();
+    break step;
+  }
   check(
     'auf einem künftigen Tag stehen beide Planer-Angebote',
     (await gone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
@@ -4867,7 +4961,10 @@ step: {
     `Leiste ${await gone.locator(`${SHEET} [data-planner-optimize]`).count()}, Bande ${await gone.locator(`${SHEET} [data-planner-headliner-hint]`).count()}`
   );
 
-  if (!(await seedOn(YESTERDAY))) break step;
+  if (!(await seedOn(YESTERDAY))) {
+    await gone.close();
+    break step;
+  }
   check(
     'ein vergangener Tag bietet kein Sortieren an',
     (await gone.locator(`${SHEET} [data-planner-optimize]`).count()) === 0
@@ -5012,7 +5109,10 @@ step: {
     [PLAN, TODAY]
   );
   await late.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(late, 'Vormittag am Nachmittag'))) break step;
+  if (!(await openSheet(late, 'Vormittag am Nachmittag'))) {
+    await late.close();
+    break step;
+  }
   await late.waitForTimeout(3000);
 
   const readToday = () =>
@@ -5190,7 +5290,10 @@ step: {
       [PLAN, DATE]
     );
     await rail.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-    if (!(await openSheet(rail, `Wetterleiste, ${label}`))) continue;
+    if (!(await openSheet(rail, `Wetterleiste, ${label}`))) {
+      await rail.close();
+      continue;
+    }
     await rail.waitForTimeout(2500);
 
     const band = rail.locator('[data-planner-weather-rail]');
@@ -5365,7 +5468,10 @@ step: {
   );
   check('ohne Parkseite kennt der Plan keine Zone', before === undefined, `${before}`);
 
-  if (!(await openSheet(learn, 'Zone aus dem Payload'))) break step;
+  if (!(await openSheet(learn, 'Zone aus dem Payload'))) {
+    await learn.close();
+    break step;
+  }
   await learn.waitForTimeout(2000);
 
   const after = await learn.evaluate(
@@ -5516,7 +5622,10 @@ step: {
         .join(' | ');
     });
 
-  if (!(await seedOptimize())) break step;
+  if (!(await seedOptimize())) {
+    await opt.close();
+    break step;
+  }
 
   const before = await readDay();
   check(
@@ -5559,7 +5668,10 @@ step: {
   check('und sagt das auch', /Passt schon so/.test(twice), twice.slice(0, 80));
 
   // Back to a day it can improve, so the undo has something to take back.
-  if (!(await seedOptimize())) break step;
+  if (!(await seedOptimize())) {
+    await opt.close();
+    break step;
+  }
   await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
   await opt.waitForTimeout(1200);
   check(
@@ -5601,7 +5713,10 @@ step: {
 
   // The headliner button: it adds what the day has room for, and never a ride
   // past the gate.
-  if (!(await seedOptimize())) break step;
+  if (!(await seedOptimize())) {
+    await opt.close();
+    break step;
+  }
   const rideCountBefore = (await readDay()).split(' | ').length;
 
   /**
@@ -5784,7 +5899,10 @@ step: {
       ]
     );
     await opt.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-    if (!(await openSheet(opt, 'Tag sortieren, Fit-Assistent'))) break step;
+    if (!(await openSheet(opt, 'Tag sortieren, Fit-Assistent'))) {
+      await opt.close();
+      break step;
+    }
     await opt.waitForTimeout(3000);
 
     await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
@@ -5997,7 +6115,10 @@ step: {
     [DATE]
   );
   await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(bare, 'Tag sortieren, leerer Tag'))) break step;
+  if (!(await openSheet(bare, 'Tag sortieren, leerer Tag'))) {
+    await bare.close();
+    break step;
+  }
   await bare.waitForTimeout(3000);
   check(
     'ein Park ohne lesbare Wartezeiten bekommt keine Optimier-Leiste',
@@ -6023,7 +6144,10 @@ step: {
     window.localStorage.removeItem('parkfan_planner_column2');
   }, PLAN);
   await cols.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(cols, 'zwei Spalten, erster Aufbau'))) break step;
+  if (!(await openSheet(cols, 'zwei Spalten, erster Aufbau'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
 
   /** The panel's real box, because the stored number is not what is on screen. */
@@ -6092,7 +6216,10 @@ step: {
 
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
   await cols.reload({ waitUntil: 'networkidle' });
-  if (!(await openSheet(cols, 'zwei Spalten bei 780 px'))) break step;
+  if (!(await openSheet(cols, 'zwei Spalten bei 780 px'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
 
   check(
@@ -6314,7 +6441,10 @@ step: {
   // looks at the page behind it and an arrangement that vanished then would not
   // be an arrangement.
   await cols.reload({ waitUntil: 'networkidle' });
-  if (!(await openSheet(cols, 'zwei Spalten nach dem Reload'))) break step;
+  if (!(await openSheet(cols, 'zwei Spalten nach dem Reload'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2000);
   check(
     'die Anordnung überlebt einen Reload',
@@ -6329,7 +6459,10 @@ step: {
   // things that still hold: one column on screen, and the day still in storage.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '448'));
   await cols.reload({ waitUntil: 'networkidle' });
-  if (!(await openSheet(cols, 'zwei Spalten bei 448 px'))) break step;
+  if (!(await openSheet(cols, 'zwei Spalten bei 448 px'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(1500);
   const remembered = await cols.evaluate(() =>
     window.localStorage.getItem('parkfan_planner_column2')
@@ -6371,7 +6504,10 @@ step: {
   // launcher click and the sheet wait already wait for the things this measures.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
   await cols.reload({ waitUntil: 'domcontentloaded' });
-  if (!(await openSheet(cols, 'zwei Spalten, wieder 780 px'))) break step;
+  if (!(await openSheet(cols, 'zwei Spalten, wieder 780 px'))) {
+    await cols.close();
+    break step;
+  }
   await cols.waitForTimeout(2000);
   check(
     'wieder breit genug bringt denselben Tag zurück',
@@ -6414,7 +6550,10 @@ step: {
     window.localStorage.setItem('parkfan_planner_width', '780');
   }, PLAN);
   await tight.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  if (!(await openSheet(tight, 'Fenster unter 1041 px'))) break step;
+  if (!(await openSheet(tight, 'Fenster unter 1041 px'))) {
+    await tight.close();
+    break step;
+  }
   await tight.waitForTimeout(1500);
   check(
     'ein Fenster unter 1041 px bietet keine zweite Spalte an',
@@ -6454,7 +6593,10 @@ step: {
   );
   await phone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await settleHydration(phone);
-  if (!(await openSheet(phone, 'Handy'))) break step;
+  if (!(await openSheet(phone, 'Handy'))) {
+    await phone.close();
+    break step;
+  }
   await phone.waitForTimeout(2000);
 
   check(
@@ -7074,4 +7216,4 @@ check(
 
 await browser.close();
 
-process.exit(printBalance() === 0 ? 0 : 1);
+await exitAfterFlush(printBalance() === 0 ? 0 : 1);
