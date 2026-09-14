@@ -632,11 +632,15 @@ real send landing on a real lock screen, needs a device and is nobody's checkbox
       readings, and is best-effort and self-contained so it cannot fail the park's sync.
 - [ ] Quiet hours in the subscriber's timezone. A 03:00 push kills the feature.
       **Nothing is built**: `grep -rniE "quiet.?hours|do not disturb|dnd" src/` returns
-      zero across the backend. The ingredient is there and unread — `timezone` is written
-      on every subscribe and used only to pick a language. In practice all three of
-      today's producers sit inside the **park's** opening hours, so the 03:00 case is the
-      subscriber who is not in the park's zone: a Magic Kingdom plan read on a phone in
-      Berlin, where a 21:00 block is 03:00. **PAR-215**.
+      zero across the backend. The ingredient is there and read by nothing:
+      `push.service.ts:112` writes `subscription.timezone` on every subscribe and no line
+      in `src/` ever reads it back — every zone the send path reckons in is
+      `park.timezone` or `show.timezone`, and the language comes from `subscription.locale`
+      (`push-notification.processor.ts:188,310`). That is what makes it the subscriber's
+      03:00 rather than the park's: all three of today's producers sit inside the
+      **park's** opening hours, so the case is the subscriber who is not in the park's
+      zone — a Magic Kingdom plan read on a phone in Berlin, where a 21:00 block is 03:00.
+      **PAR-215**.
 - [x] There is no visitor identity anywhere in this backend, so a subscription has to
       carry its own — the trip id is the natural handle, which ties this to §2.7.
       `tripId varchar(32)` on `push_subscriptions`, indexed by
