@@ -4,7 +4,7 @@ translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   Un flux de temps d’attente te dit la longueur de la file maintenant. Il ne te
   dit pas si ta liste tiendra jusqu’à la fermeture. C’est à ça que sert le

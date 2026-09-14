@@ -4,7 +4,7 @@ translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   Een wachttijdenfeed vertelt je hoe lang de rij nu is. Hij vertelt je niet of
   jouw lijstje het tot sluitingstijd redt. Daar is de dagplanner voor: je
