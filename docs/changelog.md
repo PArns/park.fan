@@ -4,6 +4,31 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Planer im Querformat: das Chrome steht jetzt neben der Achse
+
+Ein quer gehaltenes Handy bekam seit PAR-76 das Bottom-Sheet, den Griff und die 44-px-Ziele — und
+trotzdem keinen Tag. Bei 844 × 390 stapeln sich Griff, Sheet-Kopf, Kontextband, Optimize-Zeile,
+Headliner-Band, Summary und Push-Zeile zu **343 px in einem 359 px hohen Sheet**; von der Zeitachse
+blieben **16 px**, verdeckt von der Optimize-Zeile. Zwei Stunden Tag sind 216 px, also gibt es keine
+Reihenfolge dieser Zeilen, die über die Achse paßt.
+
+Also stehen sie jetzt **daneben**: links eine 20 rem breite, scrollende Spalte mit dem Kontextband,
+der Ride-Suche und allem, was man mit dem Tag machen kann — rechts die Achse mit **269 px**, zwei
+Stunden und 29 Minuten. Der Schalter dafür ist `planner-landscape`, eine Verfeinerung von
+`planner-phone` statt eines dritten Falls daneben.
+
+Hoch- und Desktopformat bewegen sich um **keinen Pixel**, und das ist Bauart statt Vorsatz: die
+zwei Wrapper, die die Reihe tragen, stehen sonst auf `display: contents` und zeichnen gar keine Box.
+Gemessen vorher/nachher bei 390 × 844, 1440 × 900 und 1440 × 480 — Zeile für Zeile gleich.
+
+`pnpm check:planner` sichert die Achsenhöhe im Querformat jetzt zu, statt sie zu drucken, und die
+Überdeckungs-Zusicherung verlangt zusätzlich, daß die Achse ganz im Sheet liegt: `elementFromPoint`
+antwortet außerhalb des Fensters `null`, also meldete eine unter die Sheet-Kante gelaufene Achse
+bisher „nichts liegt darüber". Details in
+[trip-planner.md](features/trip-planner.md#a-landscape-phone-is-a-row-because-the-chrome-is-taller-than-the-sheet).
+
+---
+
 ## Unreleased – Planer: der Fit-Assistent nimmt sich nicht selbst vom Schirm
 
 Direkt nach dem Assistenten gemeldet: „wenn ich anfange, Bahnen abzuwählen, verschwindet die Liste

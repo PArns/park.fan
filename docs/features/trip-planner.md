@@ -1521,6 +1521,60 @@ The row wraps below `sm` (`max-sm:flex-wrap`, label on its own line) because a
 free block now carries four icons, two durations, two moves and a delete beside a
 label — over 400 px in a 390 px screen.
 
+### A landscape phone is a row, because the chrome is taller than the sheet
+
+`planner-phone` reaches a landscape phone since PAR-76 — `(height < 31.25rem) and
+(pointer: coarse)` is the second half of that switch — so 844 × 390 gets the
+bottom sheet, the grab handle and the 44 px targets. It still had no day.
+Measured on `main` @ `1a0c17d7`, direct children of the open sheet with a height:
+
+```plain
+Griff 44 · sheet-header 45 · Kontextband 61 · Optimize 61 · Headliner 96
+· Summary 37 · Push 30   =  343 px Chrome in einem 359 px hohen Sheet
+```
+
+Sixteen pixels of axis, all of them under the optimize row. **Two hours of day is
+216 px** at `PX_PER_MIN_COARSE`, so no order of those rows fits above the axis:
+they have to stand beside it. That is PAR-168, and Patrick picked the arrangement
+(way B, two columns) over the alternative of naming rows a flat window does not
+get.
+
+The switch is a third variant, `planner-landscape`, and it **refines
+`planner-phone` rather than standing beside it**: same two terms plus
+`(width >= 40rem)`, so everything the phone branch says still holds here and a
+`planner-landscape:` class only ever says something it left open. There is
+deliberately no complement — an arrangement that holds everywhere except one size
+is written unprefixed and the one size overrides it. The JS twin is
+`PLANNER_LANDSCAPE_QUERY`, beside `PLANNER_PHONE_QUERY` in
+`lib/planner/use-grid-scale.ts`, and it answers the one question a class cannot:
+which side of the row draws the context band.
+
+The sheet's body is carried by two wrappers that are `display: contents` at every
+other size. That is what makes the arrangement free: with no box, the sheet's
+flex children are the same boxes in the same order as before, so portrait and
+desktop cannot move — measured, and they did not, box for box at 390 × 844,
+1440 × 900 and 1440 × 480.
+
+What the row looks like at 844 × 390: the left column is `20rem` and scrolls
+(616 px of content in 269), the axis takes the 509 px beside it and **269 px of
+height**, i.e. two and a half hours. The context band moves left with the rest —
+`withBand` on `PlannerDayColumn`, the third gate of its kind after `withHead` and
+`withFoot`, and for the same reason: 61 px above a 270 px axis is a quarter of
+the day, 61 px beside it is nothing.
+
+One class had to change with it. The ride search is the sheet's only `shrink`
+child, so in the left column it absorbed the whole overflow and came out **0 px
+tall** while its inner element still reported a box. `planner-landscape:shrink-0`:
+in a column that scrolls, nothing has to give way, so nothing may.
+
+`check:planner` asserts all three of those now rather than printing the axis
+height: two hours visible (`AXIS_MIN_LANDSCAPE_PX`), nothing over the axis, and
+the chrome beside rather than above it — the last one because two hours could
+also be bought by deleting rows, and the check should be able to tell the two
+apart. The covering assertion also gained `axisVisible === axis`: without it an
+axis pushed past the sheet's own bottom edge reports "nothing is over me",
+because `elementFromPoint` answers `null` outside the window.
+
 ## Checking it
 
 ```bash

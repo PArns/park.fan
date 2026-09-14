@@ -43,6 +43,31 @@ import { PX_PER_MIN, PX_PER_MIN_COARSE } from './day-grid';
 export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem) and (pointer: coarse)';
 
 /**
+ * A landscape phone, as a media query — the one size the sheet draws in two
+ * columns.
+ *
+ * **A refinement of {@link PLANNER_PHONE_QUERY}, not a sibling of it.** These
+ * are the terms of its second branch plus a width, so everything that answers
+ * this also answers that: a window this matches is a phone, gets the bottom
+ * sheet, the 44 px targets and `PX_PER_MIN_COARSE`. What it adds is the room to
+ * put the day's chrome BESIDE the axis instead of above it.
+ *
+ * The CSS half is `planner-landscape:` in `app/globals.css`, written directly
+ * under the pair it refines, and the two carry the same numbers for the same
+ * reason the pair does: rem, so a raised default font size moves both halves or
+ * neither.
+ *
+ * Read by `planner-flyout.tsx` for the two things a class cannot decide — which
+ * side of the panel draws the context band, and therefore what
+ * `PlannerDayColumn` is asked to draw at all. `useMediaQuery` answers `false` on
+ * the server snapshot, which is right here for the same reason it is right for
+ * `isPhone`: the panel is mounted on the client the first time somebody asks for
+ * it and is never server-rendered.
+ */
+export const PLANNER_LANDSCAPE_QUERY =
+  '(width >= 40rem) and (height < 31.25rem) and (pointer: coarse)';
+
+/**
  * How many pixels one minute of the day is worth, here and now.
  *
  * A hook rather than six `isPhone ? … : …` at the call sites, because the six

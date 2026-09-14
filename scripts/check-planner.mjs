@@ -6716,18 +6716,20 @@ if (live) {
 // side sheet at x=396 whose time axis was 16 px, all sixteen of them under the
 // optimize row.
 //
-// What this pass guards is the SWITCH, not the axis' height. `planner-phone`
-// (app/globals.css) and `PLANNER_PHONE_QUERY` carry a height term now, so a flat
-// window gets the bottom sheet, the grab handle and the coarse-pointer targets.
-// The axis is still 16 px and that is measured rather than asserted: the sheet's
-// chrome rows add up to 426 px at this size against a 359 px sheet, so the axis —
-// `min-h-0 shrink` — has nothing to take. Two hours of day (216 px at
-// `PX_PER_MIN_COARSE`) needs the chrome down to 143, which is a different change
-// and a different ticket (PAR-76's first criterion, left open on purpose).
+// What this pass guarded until PAR-168 was the SWITCH and not the axis' height:
+// `planner-phone` (app/globals.css) and `PLANNER_PHONE_QUERY` carry a height
+// term since PAR-76, so a flat window gets the bottom sheet, the grab handle and
+// the coarse-pointer targets — but the axis was still 16 px, because the sheet
+// stacked 343 px of chrome into a 359 px one and `min-h-0 shrink` had nothing to
+// take. The number was printed rather than asserted for exactly as long as it
+// was somebody else's to move.
 //
-// So: assert what this change actually decides, and PRINT the number the next
-// change has to move. An assertion on 16 px would go red the moment somebody
-// improves it, which is the wrong direction for a check to fail in.
+// **PAR-168 moved it, so the print becomes an assertion.** The sheet is a ROW at
+// this size now — the day's chrome in a 320 px column, the axis in the 509 px
+// beside it — and the axis gets 269 px of the 270 the row has. Asserted at
+// `AXIS_MIN_LANDSCAPE_PX`, i.e. two hours of day, which is what the arrangement
+// exists to buy; the rest of the slack is what keeps an honest change from going
+// red for a pixel.
 //
 // NOT behind `live` as a whole, unlike the two passes above — and the split is
 // deliberate. What this pass is really about is the SWITCH: the arrangement,
@@ -6735,6 +6737,16 @@ if (live) {
 // and the pointer, and they hold whether or not `/plan/day` answered. Only the
 // axis needs the day's opening hours, so only the axis' own assertion carries
 // the guard, right where it is made.
+/**
+ * Two hours of day on the landscape axis, in pixels.
+ *
+ * 120 minutes at `PX_PER_MIN_COARSE` (1.8), which is the scale a coarse pointer
+ * gets — so this number and the phone's axis are the same statement about the
+ * DAY, written in the unit a browser can be asked about. PAR-168's first
+ * acceptance criterion is this number.
+ */
+const AXIS_MIN_LANDSCAPE_PX = 216;
+
 {
   const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
   noteErrors(land);
@@ -6807,14 +6819,37 @@ if (live) {
         axis && axis.height > 0
           ? Math.max(0, Math.min(axis.bottom, box.bottom) - Math.max(axis.top, box.top))
           : 0;
+      // The ride search, because it is what says the sheet is a ROW rather than
+      // a stack: it is the one chrome row that is always drawn at this size
+      // (`planner-wide:hidden`, asserted on its own below), so "it is left of
+      // the axis and level with it" is the arrangement in two numbers. A test on
+      // the axis' own left edge alone would be a threshold nobody can derive —
+      // this one is a relation between two boxes and holds at any column width.
+      const search = document.querySelector('[data-planner-ride-search]');
+      const searchBox = search?.getBoundingClientRect() ?? null;
+      const beside =
+        axis && searchBox && searchBox.height > 0
+          ? {
+              searchRight: Math.round(searchBox.right),
+              searchTop: Math.round(searchBox.top),
+              searchBottom: Math.round(searchBox.bottom),
+              // Left of it, and overlapping it vertically. Stacked, the second
+              // half is false; side by side, both are true.
+              leftOfAxis: searchBox.right <= axis.left + 1,
+              levelWithAxis: searchBox.top < axis.bottom && searchBox.bottom > axis.top,
+            }
+          : null;
       return {
         width: Math.round(box.width),
         height: Math.round(box.height),
         left: Math.round(box.x),
         bottom: Math.round(window.innerHeight - box.bottom),
         axis: axis ? Math.round(axis.height) : null,
+        axisLeft: axis ? Math.round(axis.x) : null,
+        axisWidth: axis ? Math.round(axis.width) : null,
         axisVisible: Math.round(visible),
         covers,
+        beside,
         handle: sheet.querySelector('[data-planner-sheet-handle]'),
       };
     }, SHEET);
@@ -6845,23 +6880,49 @@ if (live) {
       // that measured no axis at all. That is the failure mode the whole pass
       // exists to catch, so it may not be the one it reports as passing.
       if (live) {
+        // **`axisVisible === axis` is part of the assertion, not decoration**,
+        // and without it this goes green on the one failure it is here to catch.
+        // `elementFromPoint` answers `null` for a point outside the window, so an
+        // axis pushed below the sheet's own bottom edge — `min-h` in a
+        // `min-h-0 flex-1` parent, which is exactly what the 200 px floor did on
+        // PAR-76's branch — left `covers` at `null` and reported "nothing is over
+        // the axis" about an axis nobody could see. Measured there: box 200 px,
+        // 10 of them inside the sheet, four rows painted over the rest.
+        // (PAR-212, first of its four holes.)
+        const axisWhole = room.axis !== null && room.axis > 0 && room.axisVisible === room.axis;
         check(
           'nichts liegt über der Achse',
-          room.axis !== null && room.axis > 0 && room.covers === null,
+          axisWhole && room.covers === null,
           room.axis === null || room.axis === 0
             ? 'keine Achse gefunden — nichts gemessen'
-            : room.covers === null
-              ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
-              : `${room.covers} liegt über der Achse · Achse ${room.axis} px, davon ${room.axisVisible} px im Sheet ` +
-                `· Chrome ${room.height - room.axisVisible} px von ${room.height} (PAR-168)`
+            : !axisWhole
+              ? `die Achse läuft aus dem Sheet: Box ${room.axis} px, davon ${room.axisVisible} px drin`
+              : room.covers === null
+                ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
+                : `${room.covers} liegt über der Achse · Achse ${room.axis} px, davon ${room.axisVisible} px im Sheet ` +
+                  `· Chrome ${room.height - room.axisVisible} px von ${room.height} (PAR-168)`
         );
-        // Printed, not asserted — see the note above this block. `axisVisible`
+        // Asserted since PAR-168 — see the note above this block. `axisVisible`
         // rather than `axis`, and the difference is the whole finding: an axis
         // can report 200 px with 10 of them in the sheet.
-        console.log(
-          `ℹ️  Achse im Querformat: ${room.axisVisible} px sichtbar (Box ${room.axis} px) ` +
-            `in einem ${room.height} px hohen Sheet · Chrome ${room.height - room.axisVisible} px ` +
-            `(PAR-168: 216 px nötig, also Chrome ≤ 143)`
+        check(
+          'die Achse zeigt im Querformat zwei Stunden des Tages',
+          room.axisVisible >= AXIS_MIN_LANDSCAPE_PX,
+          `${room.axisVisible} px sichtbar (Box ${room.axis} px) in einem ${room.height} px hohen Sheet ` +
+            `· nötig ${AXIS_MIN_LANDSCAPE_PX} px = 2 h bei PX_PER_MIN_COARSE · ` +
+            `Chrome daneben ${room.height - room.axisVisible} px`
+        );
+        // And WHY it has them: the chrome stands beside the axis rather than
+        // over it. Two hours could also be bought by taking rows away, and this
+        // is the assertion that tells the two apart.
+        check(
+          'im Querformat steht das Chrome neben der Achse, nicht darüber',
+          Boolean(room.beside?.leftOfAxis && room.beside?.levelWithAxis),
+          room.beside === null
+            ? 'keine Ride-Suche mit Höhe gefunden — nichts gemessen'
+            : `Ride-Suche endet bei x=${room.beside.searchRight}, Achse beginnt bei x=${room.axisLeft} ` +
+                `(${room.axisWidth} px breit) · Suche y ${room.beside.searchTop}–${room.beside.searchBottom}, ` +
+                `Achse ${room.axisVisible} px hoch`
         );
       }
     } else {

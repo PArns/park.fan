@@ -4,7 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown, Columns2, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import type { PlannerDayState } from './planner-context-band';
+import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
+import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerDayColumn } from './planner-day-column';
 import { PlannerColumnHead } from './planner-column-head';
 import { PlannerRideSearch } from './planner-ride-search';
@@ -21,7 +22,11 @@ import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
-import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
+import {
+  PLANNER_LANDSCAPE_QUERY,
+  PLANNER_PHONE_QUERY,
+  usePlannerPxPerMin,
+} from '@/lib/planner/use-grid-scale';
 import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 import { addDays, dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
@@ -82,6 +87,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     clearDay,
     addCustom,
     learnTimezone,
+    // Only reachable from here on a landscape phone, where the panel draws the
+    // context band and therefore owns its party chips — every other size leaves
+    // both inside the column. See `isLandscape`.
+    setDayPrefs,
   } = usePlanner();
 
   // Which of the two things the panel is: one day, or everything planned. It
@@ -113,6 +122,19 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   };
 
   const isPhone = useMediaQuery(PLANNER_PHONE_QUERY);
+  /**
+   * A landscape phone — the one size where the sheet is a ROW rather than a
+   * stack, with the day's chrome left of the axis instead of above it.
+   *
+   * Always implies {@link isPhone}: the query is that one's height branch plus a
+   * width term, so nothing here can be true where that is false. Read for the
+   * one decision no class can make — which side of the row draws the context
+   * band — and passed on as `withBand`, exactly as `isPhone` is passed on as
+   * `withHead` and `withFoot`. Everything else the arrangement needs is
+   * `planner-landscape:` in the markup below, so the sheet does not depend on
+   * a hook having answered before it can be laid out.
+   */
+  const isLandscape = useMediaQuery(PLANNER_LANDSCAPE_QUERY);
   const router = useRouter();
   /**
    * Whether the page behind the panel is the planner's own.
@@ -1096,39 +1118,58 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 318 px a single honest column needs. `isPhone` rather than a CSS
                 breakpoint, because a second column also costs a `/plan/day`
                 query and a hidden one must not be paid for. */}
-            <div
-              className={cn(
-                'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
-                secondColumn ? 'grid-cols-2' : 'grid-cols-1'
-              )}
-            >
-              <PlannerDayColumn
-                parkSlug={activeParkSlug}
-                date={activeDate}
-                primary
-                active={Boolean(secondColumn) && !focusSecond}
-                onActivate={(navigate) => focusColumn(false, navigate)}
-                open={open}
-                withFoot={!isPhone}
-                withHead={!isPhone}
-                className="row-span-3 grid grid-rows-subgrid"
-                onPickPark={(slug) => setActive(slug, activeDate)}
-                onPickDate={(date) => setActive(activeParkSlug, date)}
-                onNewPark={() => {
-                  setWizardPark(pagePark ? { ...pagePark } : null);
-                  setWizardDate(null);
-                  setWizardOpen(true);
-                }}
-                unplannedPagePark={unplannedPagePark}
-                onStartPagePark={startPagePark}
-                onOpenWizard={() => {
-                  setWizardPark(null);
-                  setWizardDate(null);
-                  setWizardOpen(true);
-                }}
-              />
-              {secondColumn && (
-                /* It arrives from the side it comes from rather than appearing
+            {/* The sheet's body, and on ONE size it is a row.
+
+                `contents` everywhere else, which is the whole reason this
+                wrapper is affordable: an element with `display: contents` draws
+                no box at all, so at every other size the sheet's flex children
+                are the same boxes in the same order as before this change and
+                the portrait and desktop geometry cannot move by construction —
+                measured, and it did not (see the PR).
+
+                On a landscape phone it becomes the row: `min-h-0` so the axis'
+                own scroller can bound itself, `flex-1` to take what the handle
+                and the sheet header leave. Why a row: 844x390 stacks 343 px of
+                chrome into a 359 px sheet and leaves the axis 16 px, and two
+                hours of day is 216 px at `PX_PER_MIN_COARSE` — the rows have to
+                move BESIDE the axis, because there is no order of them that
+                fits above it. See `planner-landscape` in `app/globals.css` for
+                the arithmetic and PAR-168 for the decision. */}
+            <div className="planner-landscape:flex planner-landscape:min-h-0 planner-landscape:flex-1 planner-landscape:flex-row contents">
+              <div
+                className={cn(
+                  'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
+                  secondColumn ? 'grid-cols-2' : 'grid-cols-1'
+                )}
+              >
+                <PlannerDayColumn
+                  parkSlug={activeParkSlug}
+                  date={activeDate}
+                  primary
+                  active={Boolean(secondColumn) && !focusSecond}
+                  onActivate={(navigate) => focusColumn(false, navigate)}
+                  open={open}
+                  withFoot={!isPhone}
+                  withHead={!isPhone}
+                  withBand={!isLandscape}
+                  className="row-span-3 grid grid-rows-subgrid"
+                  onPickPark={(slug) => setActive(slug, activeDate)}
+                  onPickDate={(date) => setActive(activeParkSlug, date)}
+                  onNewPark={() => {
+                    setWizardPark(pagePark ? { ...pagePark } : null);
+                    setWizardDate(null);
+                    setWizardOpen(true);
+                  }}
+                  unplannedPagePark={unplannedPagePark}
+                  onStartPagePark={startPagePark}
+                  onOpenWizard={() => {
+                    setWizardPark(null);
+                    setWizardDate(null);
+                    setWizardOpen(true);
+                  }}
+                />
+                {secondColumn && (
+                  /* It arrives from the side it comes from rather than appearing
                    in one frame — a 389 px block popping into a panel somebody
                    is reading is a jump, not a change. On a DESCENDANT, which is
                    the one place in this panel a transform is free: the glass is
@@ -1143,31 +1184,77 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                    `subgrid` child has to be a DIRECT child of the grid that owns
                    the rows, and a div in between would have taken the three rows
                    for itself and handed the column back one. */
-                <PlannerDayColumn
-                  parkSlug={secondColumn.parkSlug}
-                  date={secondColumn.date}
-                  primary={false}
-                  active={focusSecond}
-                  onActivate={(navigate) => focusColumn(true, navigate)}
-                  open={open}
-                  withFoot={!isPhone}
-                  withHead={!isPhone}
-                  className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
-                  onPickPark={(slug) =>
-                    plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
-                  }
-                  onPickDate={(date) => plannerSecondColumn.setDate(date)}
-                  onNewPark={() => {
-                    setWizardPark(null);
-                    setWizardDate(null);
-                    setWizardOpen(true);
-                  }}
-                  onClose={() => plannerSecondColumn.close()}
-                />
-              )}
-            </div>
+                  <PlannerDayColumn
+                    parkSlug={secondColumn.parkSlug}
+                    date={secondColumn.date}
+                    primary={false}
+                    active={focusSecond}
+                    onActivate={(navigate) => focusColumn(true, navigate)}
+                    open={open}
+                    withFoot={!isPhone}
+                    withHead={!isPhone}
+                    /* Never `!isLandscape`: a second column needs `!isPhone` to
+                     exist at all, and a landscape phone is a phone — so this is
+                     `true` wherever this element is drawn, and writing the
+                     other thing would only suggest a case that cannot arise. */
+                    withBand
+                    className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
+                    onPickPark={(slug) =>
+                      plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
+                    }
+                    onPickDate={(date) => plannerSecondColumn.setDate(date)}
+                    onNewPark={() => {
+                      setWizardPark(null);
+                      setWizardDate(null);
+                      setWizardOpen(true);
+                    }}
+                    onClose={() => plannerSecondColumn.close()}
+                  />
+                )}
+              </div>
 
-            {/* PHONE ONLY, and that is the whole shape of this feature now.
+              {/* The other side of the row, and `contents` everywhere else for the
+                same reason the wrapper above is: at every size but one these
+                are the sheet's own flex children, in this order, unchanged.
+
+                On a landscape phone they become the left column — 20rem of the
+                829 px sheet, which leaves the axis 509 and is a little over the
+                318 px a single honest column is reckoned at elsewhere in this
+                file. `order-first` rather than a different DOM order, so the
+                reading order stays the one every other size has: the day, then
+                what can be done to it.
+
+                `overflow-y-auto` because the rows inside add up to more than the
+                270 px this row has — optimize 61, headliners up to 96, the free
+                block 33, the summary 37, the push toggle 30, plus the band and
+                whatever the search is showing. Above the axis that arithmetic
+                was the bug; beside it, it is a scrollbar in a column nobody has
+                to scroll to see the day. */}
+              <div className="planner-landscape:flex planner-landscape:order-first planner-landscape:w-80 planner-landscape:min-h-0 planner-landscape:shrink-0 planner-landscape:flex-col planner-landscape:overflow-y-auto planner-landscape:overscroll-y-contain planner-landscape:border-r planner-landscape:border-border/60 contents">
+                {/* The day's own head, and ONLY on a landscape phone — every other
+                  size draws it inside the column, where `withBand` leaves it.
+                  It is the same component with the same props either way; what
+                  changes is which side of the row it stands on, because 61 px
+                  above a 270 px axis is a quarter of the day and 61 px beside it
+                  is nothing. The border goes with it for the same reason it does
+                  in the column: a rule with nothing above it is a stray
+                  hairline. */}
+                {isLandscape && park && activeDate && (
+                  <div className="border-border/60 min-w-0 shrink-0 border-b">
+                    <PlannerContextBand
+                      day={day ?? null}
+                      state={dayState}
+                      trailing={
+                        <PlannerPartyChips
+                          prefs={prefs}
+                          onChange={(patch) => setDayPrefs(park.slug, activeDate, patch)}
+                        />
+                      }
+                    />
+                  </div>
+                )}
+
+                {/* PHONE ONLY, and that is the whole shape of this feature now.
                 A coarse pointer has no drag and drop, so the search is the way
                 a ride gets into a plan and it does the inserting. A fine
                 pointer drags the ride card itself out of the page behind the
@@ -1178,8 +1265,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 `planner-wide:hidden` rather than `!isPhone`: `useMediaQuery` answers
                 `false` on the server snapshot, so a JS branch ships the phone's
                 markup in every desktop's first HTML and then deletes it. */}
-            {park && activeDate && (
-              /* NOT `shrink-0`, unlike its neighbours: this is the block that
+                {park && activeDate && (
+                  /* NOT `shrink-0`, unlike its neighbours: this is the block that
                  has to give way when the sheet runs out of room, or the floor
                  above it just moves the overflow onto the summary row. It keeps
                  a cap so it cannot take the sheet on a tall phone either, and
@@ -1190,33 +1277,43 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                  is more than the axis's whole box. The cap is now a little over
                  the axis's own 200 px floor (270 px at 844), so on a tall phone
                  the two are the same order of size and on a short one this is
-                 still the element that gives way first. */
-              <div className="planner-phone:max-h-[32svh] planner-wide:hidden min-h-0 shrink overflow-y-auto overscroll-y-contain">
-                <PlannerRideSearch
-                  parkSlug={park.slug}
-                  parkName={park.name}
-                  geo={park.geo}
-                  date={activeDate}
-                  day={day ?? null}
-                  dayState={dayState}
-                  timezone={day?.timezone ?? park?.timezone}
-                  prefs={prefs}
-                  onAddCustom={addFreeBlock}
-                />
-              </div>
-            )}
+                 still the element that gives way first.
 
-            {/* Named once, and only where the gesture exists: a fine pointer,
+                 **Except on a landscape phone, where it gives way to nothing.**
+                 There this block is in the left column of a row whose content
+                 (band 138, optimize 111, headliners 143, summary 37, push 63 at
+                 320 px wide) is taller than the 269 px the column has — so every
+                 pixel of that overflow landed on the one `shrink` child and the
+                 search came out **0 px tall**, with its own inner element still
+                 reporting a box and clipping to nothing. Measured. The column
+                 scrolls there, which is the answer the stacked sheet does not
+                 have: nothing has to give way, so nothing may. */
+                  <div className="planner-phone:max-h-[32svh] planner-wide:hidden planner-landscape:shrink-0 min-h-0 shrink overflow-y-auto overscroll-y-contain">
+                    <PlannerRideSearch
+                      parkSlug={park.slug}
+                      parkName={park.name}
+                      geo={park.geo}
+                      date={activeDate}
+                      day={day ?? null}
+                      dayState={dayState}
+                      timezone={day?.timezone ?? park?.timezone}
+                      prefs={prefs}
+                      onAddCustom={addFreeBlock}
+                    />
+                  </div>
+                )}
+
+                {/* Named once, and only where the gesture exists: a fine pointer,
                 and a park page behind the panel to drag a card out of — and not
                 while the day is empty, because the empty axis says the same
                 sentence in the middle of the panel, from the same key. Two
                 copies of one instruction 300 px apart is how a hint stops
                 reading as a hint. */}
-            <PlannerDragCoach
-              show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
-            />
+                <PlannerDragCoach
+                  show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
+                />
 
-            {/* The active day's foot, PHONE ONLY — the desktop's copy is drawn
+                {/* The active day's foot, PHONE ONLY — the desktop's copy is drawn
                 by each column, one set per column, because every control in
                 here names a park and a date and there are two of each once a
                 second column is open. A phone never has a second column, and
@@ -1231,39 +1328,41 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 first render here. Two copies in the DOM would be two of every
                 `data-planner-optimize` for a selector to pick the wrong one
                 of. */}
-            {isPhone && park && activeDate && (
-              <>
-                <PlannerDayFoot
-                  parkSlug={park.slug}
-                  parkName={park.name}
-                  geo={park.geo}
-                  date={activeDate}
-                  day={day ?? null}
-                  grid={grid}
-                  timezone={resolveTimeZone(day?.timezone ?? park.timezone)}
-                  prefs={prefs}
-                  entries={activeEntries}
-                  onAddFreeBlock={addFreeBlock}
-                />
-              </>
-            )}
+                {isPhone && park && activeDate && (
+                  <>
+                    <PlannerDayFoot
+                      parkSlug={park.slug}
+                      parkName={park.name}
+                      geo={park.geo}
+                      date={activeDate}
+                      day={day ?? null}
+                      grid={grid}
+                      timezone={resolveTimeZone(day?.timezone ?? park.timezone)}
+                      prefs={prefs}
+                      entries={activeEntries}
+                      onAddFreeBlock={addFreeBlock}
+                    />
+                  </>
+                )}
 
-            {/* Above the push toggle and below the search, because it is an
+                {/* Above the push toggle and below the search, because it is an
                 offer about a DIFFERENT day than the one on screen — putting it
                 in the header would read as a statement about the plan being
                 looked at. Renders nothing unless the visitor is inside a park
                 that is not the one being planned. */}
-            <PlannerInParkCta activeParkSlug={activeParkSlug} />
+                <PlannerInParkCta activeParkSlug={activeParkSlug} />
 
-            {/* Under the ride search, above the summary: it belongs to the DAY
+                {/* Under the ride search, above the summary: it belongs to the DAY
                 rather than to the panel's chrome, and it is the last thing
                 somebody decides once the plan is actually built. Renders
                 nothing at all where push cannot work — see the component. */}
-            {activeEntries.length > 0 && (
-              <div className="border-border/60 shrink-0 border-t">
-                <PlannerPushToggle />
+                {activeEntries.length > 0 && (
+                  <div className="border-border/60 shrink-0 border-t">
+                    <PlannerPushToggle />
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </>
         )}
 

@@ -98,6 +98,23 @@ interface PlannerDayColumnProps {
    */
   withHead: boolean;
   /**
+   * Whether this column draws its own context band — crowd level, hours,
+   * weather, who is coming.
+   *
+   * The panel decides, for the same reason it decides {@link withHead}, and on
+   * exactly one size: a landscape phone. There the sheet is a row — the day's
+   * chrome to the left of the axis, see `planner-landscape` in `app/globals.css`
+   * — and a band left inside the column would be the one chrome row still
+   * stacked ABOVE the axis, for 61 px of the 270 the axis has to work with. So
+   * the panel draws it on its own side of the row, the same component with the
+   * same props, and this row stays an empty element for the subgrid to count.
+   *
+   * A landscape phone never has a second column (`isPhone` gates that), so the
+   * two bands this row's subgrid exists to align cannot both be asked for at a
+   * size where one of them is drawn elsewhere.
+   */
+  withBand: boolean;
+  /**
    * The column the reader is working in, where there is more than one.
    *
    * NOT {@link primary}, which is a fact about the plan — its active day, the
@@ -164,6 +181,7 @@ export function PlannerDayColumn({
   onOpenWizard,
   withFoot,
   withHead,
+  withBand,
   active,
   onActivate,
   className,
@@ -452,9 +470,15 @@ export function PlannerDayColumn({
           The band draws only where a day has been CHOSEN. `dayState` ends in a
           fall-through `empty`, and with no park or date the query is disabled —
           so the band cannot tell "nobody ever asked" from a real 404 and would
-          print "keine Prognose" over an empty planner. */}
-      <div className={cn('min-w-0', park && date && 'border-border/60 border-b')}>
-        {park && date && (
+          print "keine Prognose" over an empty planner.
+
+          `withBand` is the panel's gate and it is the third of its kind here —
+          on a landscape phone the band is drawn beside the axis rather than
+          over it, by the panel, and this row stays the empty ELEMENT the
+          subgrid counts. The border goes with the band: a rule under a row that
+          drew nothing is a hairline under the sheet header. */}
+      <div className={cn('min-w-0', withBand && park && date && 'border-border/60 border-b')}>
+        {withBand && park && date && (
           <PlannerContextBand
             day={day ?? null}
             state={dayState}
