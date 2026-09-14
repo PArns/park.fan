@@ -1269,6 +1269,30 @@ change there.
 (`next-up`). The plan is uploaded **before** subscribing, because a subscription
 with no plan behind it has nothing to notify about.
 
+**"On" is a statement about the server, and neither local signal makes it.** The
+switch opened on `existing && getTripId()` — a push subscription somewhere on
+this origin, plus a trip id stored at some point. The browser keeps **one**
+subscription for the whole origin and shares it with ride alerts and followed
+shows, so the first half only says that something on this site uses push; and
+the trip id survives a failed `POST /api/push/subscriptions` exactly as well as
+a successful one. So one network hiccup after the plan was stored left both
+halves standing with nothing joining them, and every later mount read `on` — the
+switch this file's own rule forbids, on and doing nothing, with no notification
+ever arriving and no reason for the visitor to touch it. There is no read to ask
+instead: `/v1/push/subscriptions` answers `POST` and `DELETE` only, and the two
+push GETs that do exist (`ride-alerts`, `show-follows`) list a browser's own
+rows without naming the subscription's `tripId`. What replaces the guess is the
+server's own 2xx, remembered against **the exact pair it was given for**
+(`lib/planner/push-arming.ts`, `parkfan_push_armed`) — written after the POST
+answers and nowhere else, cleared by switching off. Both halves expire it
+without anybody clearing anything: a rotated endpoint or a trip id replaced by a
+404 no longer matches, and `off` is then the honest answer, because the
+subscription the server holds is pointing at something this browser no longer
+has. And the failure paths of `enable()` deliberately do **not** clear it — the
+record describes a pair, not an attempt, and a second tab may have armed the
+same one. `pnpm test:push-arming` pins that, plus the wiring, since a record
+nothing reads decides nothing.
+
 **Delivery is unverified.** This environment has no VAPID key pair and no reach
 to a push service, so the wiring is written and typechecked and has never
 delivered a notification. `.env.example` documents `VAPID_PUBLIC_KEY`,
