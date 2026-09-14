@@ -128,13 +128,27 @@ interface StatTile {
  * same weight as the recommendation it stands in for, which is a promise a fourth copy of these
  * classes cannot keep.
  *
- * The `max-[380px]:` row form is the measured one and is unchanged. The German labels do not fit
- * three-up below ~380 px: measured on the guide page the grid is 204 px at 320 (60 px a tile,
- * 36 px of content inside `p-3`) and 244 at 360, against a „Tagespeak" of ~54 px and a `text-2xl`
- * value carrying a „min" after it — at 320 all three tiles overflow their box, at 360 one does, at
- * 390 none. So the gate is the width where it actually breaks rather than `sm`, which would
- * restack the whole 390–639 px range that measures clean. Below it each tile becomes a row, label
- * left and value right, where there is nothing left to overflow.
+ * The row form is the measured one and its threshold is unchanged at 380 px. What changed is
+ * which box those 380 px are measured on: the `@container/stattiles` wrapper, i.e. the tile row
+ * itself, rather than the window. The window is the wrong ruler here because these tiles sit in a
+ * `PANEL_CELL` whose width follows the chapter's column count, and that does not rise with the
+ * window — measured on the ride page the row is 286 px at a 360 px window, 262.5 px at 640 and
+ * 302.5 px at 768, so the two widths the old `max-[380px]:` left three-up are the narrowest the
+ * row ever gets outside a phone, one of them narrower than the phone itself. Three-up in 302.5 px
+ * is a 92.8 px tile with 68.8 px of content inside `p-3`, against „Zur Öffnung" and „Du sparst"
+ * wanting 75–78 px: they wrap to two lines while „Tagespeak" does not, and the three values then
+ * sit at three different heights.
+ *
+ * 380 px of row is what separates the two cases that have to stay apart: 302.5 px at a 768 px
+ * window has to stack, 430.5 px at 1024 px has to stay three-up. Below it each tile becomes a
+ * row, label left and value right — a long label costs height there instead of alignment, and
+ * nothing overflows.
+ *
+ * It does not make every locale fit above the threshold. A row in which no label wraps in any of
+ * the six starts near 438 px: the French „Vous économisez" wants 114 px and has 111.5 px at a
+ * 1024 px window, and Italian and Spanish wrap as well between 380 and 430 px of row. Nothing
+ * about that is new — the window rule was three-up there too — and raising the threshold that far
+ * restacks 1024 px, which is a product decision rather than this bug: PAR-218.
  */
 function StatTiles({ tone, stats }: { tone: 'emerald' | 'indigo' | 'primary'; stats: StatTile[] }) {
   const accent = {
@@ -150,36 +164,40 @@ function StatTiles({ tone, stats }: { tone: 'emerald' | 'indigo' | 'primary'; st
   }[tone];
 
   return (
-    <div className="mb-4 grid grid-cols-3 gap-3 max-[380px]:grid-cols-1 max-[380px]:gap-2">
-      {stats.map(({ icon: Icon, label, value, highlight, prefix }) => (
-        <div
-          key={label}
-          className={cn(
-            'rounded-lg border p-3 text-center max-[380px]:flex max-[380px]:items-center max-[380px]:justify-between max-[380px]:gap-3 max-[380px]:px-3 max-[380px]:py-2 max-[380px]:text-left',
-            highlight ? accent.box : 'border-border/50 bg-background/40'
-          )}
-        >
+    /* The wrapper is what carries `@container`: a container query styles descendants, so the grid
+       cannot be both the container and the element the query restacks. */
+    <div className="@container/stattiles mb-4">
+      <div className="grid grid-cols-3 gap-3 @max-[380px]/stattiles:grid-cols-1 @max-[380px]/stattiles:gap-2">
+        {stats.map(({ icon: Icon, label, value, highlight, prefix }) => (
           <div
+            key={label}
             className={cn(
-              'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium max-[380px]:mx-0 max-[380px]:mb-0 max-[380px]:justify-start',
-              highlight && accent.ink
+              'rounded-lg border p-3 text-center @max-[380px]/stattiles:flex @max-[380px]/stattiles:items-center @max-[380px]/stattiles:justify-between @max-[380px]/stattiles:gap-3 @max-[380px]/stattiles:px-3 @max-[380px]/stattiles:py-2 @max-[380px]/stattiles:text-left',
+              highlight ? accent.box : 'border-border/50 bg-background/40'
             )}
           >
-            <Icon className="h-3 w-3 shrink-0" aria-hidden="true" />
-            {label}
+            <div
+              className={cn(
+                'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium @max-[380px]/stattiles:mx-0 @max-[380px]/stattiles:mb-0 @max-[380px]/stattiles:justify-start',
+                highlight && accent.ink
+              )}
+            >
+              <Icon className="h-3 w-3 shrink-0" aria-hidden="true" />
+              {label}
+            </div>
+            <div
+              className={cn(
+                'text-2xl font-bold tabular-nums @max-[380px]/stattiles:shrink-0 @max-[380px]/stattiles:text-xl',
+                highlight && accent.ink
+              )}
+            >
+              {prefix}
+              {value}
+              <span className="text-muted-foreground ml-1 text-xs font-medium">min</span>
+            </div>
           </div>
-          <div
-            className={cn(
-              'text-2xl font-bold tabular-nums max-[380px]:shrink-0 max-[380px]:text-xl',
-              highlight && accent.ink
-            )}
-          >
-            {prefix}
-            {value}
-            <span className="text-muted-foreground ml-1 text-xs font-medium">min</span>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
