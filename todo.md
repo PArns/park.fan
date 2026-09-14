@@ -532,16 +532,19 @@ checked against `main` in both repos (frontend `f6f4b46a`, backend `15d94b0`), a
 `https://api.park.fan/api-json`, and against `GET https://api.park.fan/v1/push`. Seven of
 the nine boxes below are done, with the evidence on each line; two are open and carry a
 ticket. The caveat's own sentence — "this confirms the frontend is ready, not that
-`push_subscriptions` exists yet" — was fair when it was written on 2026-09-08 and had
-about four hours left to live: `d367377`
-([v4.api.park.fan#230](https://github.com/PArns/v4.api.park.fan/pull/230)) landed the same
-day, on top of `510a6c3` ([#216](https://github.com/PArns/v4.api.park.fan/pull/216),
-2026-09-03), which had already brought `src/push/`.
+`push_subscriptions` exists yet" — was fair when it was written and outlived itself by
+**62 minutes**: `e36d60ee` wrote it at 16:48 on 2026-09-08 and `d367377`
+([v4.api.park.fan#230](https://github.com/PArns/v4.api.park.fan/pull/230)) landed at 17:51
+the same day, on top of `510a6c3`
+([#216](https://github.com/PArns/v4.api.park.fan/pull/216), 2026-09-03), which had already
+brought `src/push/`. Nobody came back to it.
 
 The paragraph that followed it is the one worth naming, because it was an absolute and it
 is now false in every part: "Nothing exists: `grep -rniE "web-push|webpush|vapid|…" src/`
-returns zero. There is no outbound notification of any kind in this backend." That grep
-hits **11 files** today. `src/push/` holds the entity, controller, service, config,
+returns zero. There is no outbound notification of any kind in this backend." Run in full
+against backend `15d94b0`, that grep hits **41 files** — 25 of them not `*.spec.ts`;
+narrowed to `web-push|webpush|vapid` alone it still hits 10. `src/push/` holds the entity,
+controller, service, config,
 messages, the pure notification planner and a follow-access guard; `src/ride-alerts/` and
 `src/show-follows/` sit beside it; `PushNotificationProcessor` runs a five-minute tick and
 sends. What the paragraph got right and still is right about is the vocabulary trap: an
