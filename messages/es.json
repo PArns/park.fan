@@ -1236,6 +1236,7 @@
     },
     "sectionLiveNow": "Tiempo de espera ahora",
     "sectionPlanVisit": "Planifica el mejor momento para visitar",
+    "sectionPlanVisitHint": "A partir de los tiempos de espera medidos de esta atracción.",
     "todayRange": "Rango de hoy",
     "peakToday": "Pico de hoy",
     "parkToday": "El parque hoy",

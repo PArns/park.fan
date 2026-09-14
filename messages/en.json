@@ -1236,6 +1236,7 @@
     },
     "sectionLiveNow": "Wait time right now",
     "sectionPlanVisit": "Plan the best time to visit",
+    "sectionPlanVisitHint": "From this ride's measured wait times.",
     "todayRange": "Range today",
     "peakToday": "Peak today",
     "parkToday": "Park today",

@@ -203,7 +203,7 @@ export function ParkFAQSection({
         Nothing left the served HTML. A collapsed `<details>` is in the DOM, and this section
         emits no structured data of its own — the park page's `FAQStructuredData` does, from the
         same `buildParkFaqItems` array, so the two cannot drift apart. */}
-      <ChapterPanel icon={HelpCircle} title={t('title', { park: parkName })} bodyClassName="p-0">
+      <ChapterPanel icon={HelpCircle} title={t('title', { park: parkName })} bodyPadding="none">
         <FaqAccordion
           items={faqs.map((faq) => ({
             icon: ICON_MAP[faq.iconName as keyof typeof ICON_MAP],

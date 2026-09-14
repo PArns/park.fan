@@ -1236,6 +1236,7 @@
     },
     "sectionLiveNow": "Wartezeit jetzt",
     "sectionPlanVisit": "Beste Besuchszeit planen",
+    "sectionPlanVisitHint": "Aus den gemessenen Wartezeiten dieser Bahn.",
     "todayRange": "Spanne heute",
     "peakToday": "Spitze heute",
     "parkToday": "Park heute",
