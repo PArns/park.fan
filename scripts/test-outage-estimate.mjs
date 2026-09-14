@@ -13,12 +13,14 @@
 // range and formatted `undefined`, so all three rendered „meist noch 1:55 Std. bis NaN:NaN Std."
 // on the park page and again on the ride page.
 import {
+  OUTAGE_BAR_HORIZON_MIN,
   outageElapsedMinutes,
   outageRecoveryPercent,
+  outageRemainingBar,
   outageRemainingWindow,
   roundOutageMinutes,
 } from '../lib/utils/outage.ts';
-import { formatSpanDuration } from '../lib/utils/duration.ts';
+import { formatSpanDuration, formatWholeHours } from '../lib/utils/duration.ts';
 
 /** The shape production actually sends for a long outage — no `p75` key at all. */
 const LONG = {
@@ -151,6 +153,75 @@ const testCases = [
     name: 'the thinnest measured bucket still answers',
     actual: () => outageRecoveryPercent(LONG),
     expected: 15,
+  },
+
+  // ── the bar ──
+  //
+  // Same numbers as the sentence above it, placed on a scale that is the same on every card.
+  // Everything here is the geometry the component would otherwise compute inline, where a
+  // green build proves nothing about it.
+  {
+    name: 'a closed window sits between its two quartiles on the fixed scale',
+    // 25 and 150 minutes of 240.
+    actual: () => JSON.stringify(outageRemainingBar(outageRemainingWindow(FRESH))),
+    expected: JSON.stringify({
+      startPct: (25 / OUTAGE_BAR_HORIZON_MIN) * 100,
+      endPct: (150 / OUTAGE_BAR_HORIZON_MIN) * 100,
+      openEnd: false,
+    }),
+  },
+  {
+    name: 'an open window runs to the right edge and says so, rather than being drawn as a cap',
+    actual: () => JSON.stringify(outageRemainingBar(outageRemainingWindow(LONG))),
+    expected: JSON.stringify({
+      startPct: (115 / OUTAGE_BAR_HORIZON_MIN) * 100,
+      endPct: 100,
+      openEnd: true,
+    }),
+  },
+  {
+    name: 'an open window still starts at its lower quartile, never at zero',
+    // The whole point of AK 3: „über 1:55 Std." is not a full bar.
+    actual: () => outageRemainingBar(outageRemainingWindow(LONG)).startPct > 0,
+    expected: true,
+  },
+  {
+    name: 'an upper quartile past the end of the scale is open-ended too',
+    // The scale stops at four hours and the segment cannot say „5:00 Std." by reaching the same
+    // right edge a bounded one would. The sentence above the bar keeps the number.
+    actual: () => outageRemainingBar({ from: 60, to: OUTAGE_BAR_HORIZON_MIN + 60 }).openEnd,
+    expected: true,
+  },
+  {
+    name: 'an upper quartile exactly on the end of the scale is still bounded',
+    actual: () => outageRemainingBar({ from: 60, to: OUTAGE_BAR_HORIZON_MIN }).openEnd,
+    expected: false,
+  },
+  {
+    name: 'a window that starts past the scale gets no bar rather than a sliver at the edge',
+    // „noch 5 Std." and „noch 40 Std." would draw the same five pixels, which is a picture that
+    // says nothing. The sentence stands alone there.
+    actual: () => outageRemainingBar({ from: OUTAGE_BAR_HORIZON_MIN, to: null }),
+    expected: null,
+  },
+  {
+    name: 'a ten-minute window is widened to a visible segment instead of two pixels',
+    // Widened to the RIGHT: a segment may never start earlier than it was measured.
+    actual: () => {
+      const bar = outageRemainingBar({ from: 30, to: 40 });
+      return `${bar.startPct === 12.5} ${bar.endPct - bar.startPct >= 5}`;
+    },
+    expected: 'true true',
+  },
+  {
+    name: 'no window at all means no bar',
+    actual: () => outageRemainingBar(null),
+    expected: null,
+  },
+  {
+    name: 'the scale label is whole hours, not the h:mm form a measured span uses',
+    actual: () => formatWholeHours(OUTAGE_BAR_HORIZON_MIN / 60, 'de'),
+    expected: '4 Std.',
   },
 
   // ── elapsed ──

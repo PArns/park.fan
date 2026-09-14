@@ -31,6 +31,18 @@ export function formatShortDuration(minutes: number, locale: string): string {
   return `${h}:${m} ${labels.hr}`;
 }
 
+/**
+ * Whole hours with the locale's short hour label — „2 Std.", „2 h", „2 u".
+ *
+ * For an axis tick, where {@link formatShortDuration}'s „2:00 Std." spends four characters saying
+ * the minutes are zero. Not for a measured span: a duration that happens to be a round number of
+ * hours still belongs in the h:mm form the rest of the site uses.
+ */
+export function formatWholeHours(hours: number, locale: string): string {
+  const labels = SHORT_LABELS[locale] ?? SHORT_LABELS.en;
+  return `${hours} ${labels.hr}`;
+}
+
 /** A day. Past it, `h:mm` stops reading as a duration. */
 const CLOCK_LIKE_LIMIT_MIN = 24 * 60;
 
