@@ -7,6 +7,7 @@ import { formatShortDuration, formatWholeHours } from '@/lib/utils/duration';
 import {
   OUTAGE_BAR_HORIZON_MIN,
   OUTAGE_BAR_TICKS_MIN,
+  outageRecoveryLine,
   outageRecoveryPercent,
   outageRemainingBar,
   outageRemainingWindow,
@@ -137,25 +138,12 @@ export function OutageEstimateNote({
   // The range alone is honest; the zero is not.
   if (percent === null && !range) return null;
 
-  // The probability rides along only where the range is missing on a card: the
-  // compact block sits in the badge row of a card whose height every card in
-  // that grid row inherits, and the sentence is the widest thing in it.
-  const recovery = percent !== null && (variant === 'full' || !range) ? percent : null;
-
-  // Which of the two sentences carries the probability is the VARIANT's question, not the
-  // range's. The long one names the condition the curve is conditioned on — „Von Störungen, die
-  // schon so lange dauern …" — and it is the ride page's, where there is a line to spend on it.
-  // A card gets the short one, for the same reason it gets no probability at all beside a range:
-  // the sentence is the widest thing in the badge row, and every card in that grid row inherits
-  // whatever height it wraps to. Deciding this on `range` instead put the long sentence on the
-  // card in exactly the case a card can reach — `remaining` is absent past about two hours
-  // elapsed, which is when the compact block has nothing else to say.
-  const recoveryText =
-    recovery === null
-      ? null
-      : variant === 'full' && !range
-        ? t('recoveryOnly', { percent: recovery })
-        : t('recovery', { percent: recovery });
+  // Whether the probability is said here, and in which of its two sentences — three inputs, all
+  // three of them rules rather than layout, so the answer comes from `outageRecoveryLine` and is
+  // tested there. This branch got it wrong on its first write while it lived in this file: it
+  // read the range instead of the variant and put the ride page's long, conditioned sentence on
+  // a card, in exactly the case a card can reach.
+  const recovery = outageRecoveryLine(percent, variant, range !== null);
 
   return (
     <div className={cn('flex w-full flex-col gap-1', className)} data-nosnippet>
@@ -168,10 +156,10 @@ export function OutageEstimateNote({
           ariaLabel={t('barLabel')}
         />
       ) : null}
-      {recovery !== null ? (
+      {recovery ? (
         <>
-          <span>{recoveryText}</span>
-          <RecoveryMeter percent={recovery} />
+          <span>{t(recovery.key, { percent: recovery.percent })}</span>
+          <RecoveryMeter percent={recovery.percent} />
         </>
       ) : null}
     </div>

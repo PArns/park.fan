@@ -15,6 +15,7 @@
 import {
   OUTAGE_BAR_HORIZON_MIN,
   outageElapsedMinutes,
+  outageRecoveryLine,
   outageRecoveryPercent,
   outageRemainingBar,
   outageRemainingWindow,
@@ -205,6 +206,20 @@ const testCases = [
     expected: null,
   },
   {
+    name: 'a window starting just under the horizon is refused too, not drawn two percent wide',
+    // The degenerate case one step below the threshold that was supposed to catch it: 235 is
+    // inside the scale, so a `from >= horizon` test passes it — and then the widening floor
+    // cannot help, because it only pushes the right edge and the right edge is already at 100.
+    actual: () => outageRemainingBar({ from: 235, to: null }),
+    expected: null,
+  },
+  {
+    name: 'the last window that still fits a full segment is still drawn',
+    // 228 minutes is exactly 95 % of the scale, which leaves the five the segment needs.
+    actual: () => outageRemainingBar({ from: 228, to: null })?.openEnd,
+    expected: true,
+  },
+  {
     name: 'a ten-minute window is widened to a visible segment instead of two pixels',
     // Widened to the RIGHT: a segment may never start earlier than it was measured.
     actual: () => {
@@ -222,6 +237,47 @@ const testCases = [
     name: 'the scale label is whole hours, not the h:mm form a measured span uses',
     actual: () => formatWholeHours(OUTAGE_BAR_HORIZON_MIN / 60, 'de'),
     expected: '4 Std.',
+  },
+
+  // ── which probability sentence, and whether there is one ──
+  //
+  // This branch lived in the component and was wrong on its first write: it read the range
+  // instead of the variant and put the ride page's long sentence on a card. Lint, format and
+  // every other case in this file were green through it, which is why it is a function now.
+  {
+    name: 'a card beside a range says nothing about the probability',
+    // One statement per card: the badge row is shared with every other card in the grid row.
+    actual: () => outageRecoveryLine(75, 'compact', true),
+    expected: null,
+  },
+  {
+    name: 'a card without a range gets the SHORT sentence',
+    // The case a card really reaches — `remaining` is absent past about two hours elapsed.
+    actual: () => outageRecoveryLine(15, 'compact', false)?.key,
+    expected: 'recovery',
+  },
+  {
+    name: 'the ride page without a range gets the long, conditioned one',
+    actual: () => outageRecoveryLine(15, 'full', false)?.key,
+    expected: 'recoveryOnly',
+  },
+  {
+    name: 'the ride page beside a range gets the short one, the condition being in the range line',
+    actual: () => outageRecoveryLine(75, 'full', true)?.key,
+    expected: 'recovery',
+  },
+  {
+    name: 'the figure travels with the sentence rather than being read a second time',
+    actual: () => outageRecoveryLine(75, 'full', true)?.percent,
+    expected: 75,
+  },
+  {
+    name: 'a withheld percentage is no line at all, on either surface',
+    // `outageRecoveryPercent` answers null for a rounded zero; „0 %" over a zero-width meter
+    // would read as „never".
+    actual: () =>
+      `${outageRecoveryLine(null, 'compact', false)} ${outageRecoveryLine(null, 'full', false)}`,
+    expected: 'null null',
   },
 
   // ── elapsed ──
