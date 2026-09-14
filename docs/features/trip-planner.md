@@ -1565,7 +1565,23 @@ the day, 61 px beside it is nothing.
 One class had to change with it. The ride search is the sheet's only `shrink`
 child, so in the left column it absorbed the whole overflow and came out **0 px
 tall** while its inner element still reported a box. `planner-landscape:shrink-0`:
-in a column that scrolls, nothing has to give way, so nothing may.
+in a column that scrolls, nothing has to give way, so nothing may. Its `32svh`
+cap stays, which makes it a scroller inside a scroller — deliberate, because
+without the cap the park's whole ride list expands into the column and pushes the
+totals and the push toggle past anything a thumb will reach.
+
+The left column is `order-first` rather than first in the document, and that is a
+trade worth stating: `order` moves the box and not the document, so the visual
+order runs left to right while tab and screen reader run right to left
+(WCAG 2.4.3). Reordering the children for one size means React unmounts and
+remounts them on every rotation — the ride search loses its query, the column its
+scroll position and its selected block. So the reading order is the one every
+other size gives: the day, then what can be done to it.
+
+The row is only drawn where a day has been chosen. Every row it puts on the left
+hangs on a park and a date, so without one the left column would be 320 px of
+empty box and a divider beside the empty state; there the sheet stays the stack it
+has always been.
 
 `check:planner` asserts all three of those now rather than printing the axis
 height: two hours visible (`AXIS_MIN_LANDSCAPE_PX`), nothing over the axis, and

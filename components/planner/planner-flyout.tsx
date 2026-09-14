@@ -1135,7 +1135,20 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 move BESIDE the axis, because there is no order of them that
                 fits above it. See `planner-landscape` in `app/globals.css` for
                 the arithmetic and PAR-168 for the decision. */}
-            <div className="planner-landscape:flex planner-landscape:min-h-0 planner-landscape:flex-1 planner-landscape:flex-row contents">
+            <div
+              className={cn(
+                'contents',
+                /* The row only where there IS a day, and that is not caution —
+                   every row it puts on the left hangs on a chosen park and date,
+                   so without one the left column would be 320 px of the 829 px
+                   sheet standing empty beside its own divider, next to the empty
+                   state that is the one screen this panel has to get right.
+                   Without a day the sheet stays the stack it is today. */
+                park &&
+                  activeDate &&
+                  'planner-landscape:flex planner-landscape:min-h-0 planner-landscape:flex-1 planner-landscape:flex-row'
+              )}
+            >
               <div
                 className={cn(
                   'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
@@ -1224,13 +1237,35 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 reading order stays the one every other size has: the day, then
                 what can be done to it.
 
+                **That is a trade and it is worth naming.** `order` moves the box
+                and not the document, so here the visual order runs left to right
+                while tab and screen reader run right to left — the classic
+                WCAG 2.4.3 divergence. The alternative is reordering the children
+                for one size, which in React means these components unmount and
+                remount on rotation: the ride search loses its query, the column
+                its scroll position and its selected block. A reader who tabs
+                gets the axis before the controls that act on it, which is the
+                same order every other size gives them; a reader who rotates
+                keeps their work. See `docs/features/trip-planner.md`.
+
                 `overflow-y-auto` because the rows inside add up to more than the
                 270 px this row has — optimize 61, headliners up to 96, the free
                 block 33, the summary 37, the push toggle 30, plus the band and
                 whatever the search is showing. Above the axis that arithmetic
                 was the bug; beside it, it is a scrollbar in a column nobody has
                 to scroll to see the day. */}
-              <div className="planner-landscape:flex planner-landscape:order-first planner-landscape:w-80 planner-landscape:min-h-0 planner-landscape:shrink-0 planner-landscape:flex-col planner-landscape:overflow-y-auto planner-landscape:overscroll-y-contain planner-landscape:border-r planner-landscape:border-border/60 contents">
+              <div
+                className={cn(
+                  'contents',
+                  /* Same gate as the row above, and it has to be the same
+                     expression: a column without the row around it would be a
+                     320 px box inside a flex COLUMN, i.e. a narrow strip where
+                     the sheet used to be full width. */
+                  park &&
+                    activeDate &&
+                    'planner-landscape:flex planner-landscape:order-first planner-landscape:w-80 planner-landscape:min-h-0 planner-landscape:shrink-0 planner-landscape:flex-col planner-landscape:overflow-y-auto planner-landscape:overscroll-y-contain planner-landscape:border-border/60 planner-landscape:border-r'
+                )}
+              >
                 {/* The day's own head, and ONLY on a landscape phone — every other
                   size draws it inside the column, where `withBand` leaves it.
                   It is the same component with the same props either way; what

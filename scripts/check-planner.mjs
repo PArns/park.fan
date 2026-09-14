@@ -6333,19 +6333,48 @@ if (reachable) {
   // Nothing in the sheet paints over anything else. It did: with the foot inside
   // the column, the column's content ran 98 px past its box and the headliner
   // band and the totals were drawn across the ride search under them.
-  const stack = await phone.locator(SHEET).evaluate((sheet) =>
-    [...sheet.children]
-      .map((el) => {
+  const stack = await phone.locator(SHEET).evaluate((sheet) => {
+    // **Through `display: contents`, not past it.** Such an element has no box
+    // of its own — `getBoundingClientRect()` answers 0×0 — but its CHILDREN are
+    // the rows the sheet actually lays out, and PAR-168 put two of them in
+    // exactly this position (the landscape row's two wrappers, which are
+    // `contents` at every other size). Reading `sheet.children` and filtering on
+    // a height left two rows in the list, no pair to compare, and a guard that
+    // could not fail: the one assertion that says the portrait sheet did not
+    // move, passing because it had stopped looking.
+    const rows = [];
+    const collect = (parent) => {
+      for (const el of parent.children) {
+        const style = getComputedStyle(el);
+        if (style.display === 'contents') {
+          collect(el);
+          continue;
+        }
         const box = el.getBoundingClientRect();
-        return {
+        // Hidden rows have no box, and an absolute one is out of the flow.
+        if (box.height <= 0 || style.position === 'absolute') continue;
+        rows.push({
           cls: el.className.slice(0, 40),
           top: Math.round(box.top),
           bottom: Math.round(box.bottom),
-          // `display: contents` and hidden rows have no box and cannot overlap.
-          real: box.height > 0 && getComputedStyle(el).position !== 'absolute',
-        };
-      })
-      .filter((row) => row.real)
+        });
+      }
+    };
+    collect(sheet);
+    // Document order, which is what makes "the next row" mean anything. The
+    // recursion already yields it, and sorting by `top` would hide the very
+    // defect this looks for.
+    return rows;
+  });
+  // The guard on the guard, and it is here because this assertion has already
+  // been silently emptied once (see the note above): the portrait sheet draws
+  // the handle, its header, the column, the ride search and at least the
+  // totals, so anything under five rows means the reading failed rather than
+  // the layout passing.
+  check(
+    'das Telefon-Panel hat überhaupt Zeilen zu vergleichen',
+    stack.length >= 5,
+    `${stack.length} Zeile(n): ${stack.map((row) => row.cls).join(' | ')}`
   );
   const overlaps = stack
     .slice(1)
@@ -6977,6 +7006,26 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
       'die Ride-Suche ist im Querformat sichtbar',
       searchShown === 1,
       `${searchShown}× sichtbar`
+    );
+
+    // The THIRD pair, and it is the one PAR-168 added: the context band is drawn
+    // by the panel here and by the column everywhere else, and the two halves
+    // are two separate conditions — `isLandscape &&` in `planner-flyout.tsx`,
+    // `withBand={!isLandscape}` on `PlannerDayColumn`. Let them drift and the
+    // sheet carries the band twice or not at all, while every geometry
+    // assertion above stays green: two bands sit left of the axis, and a
+    // missing one only makes the axis taller. The same trap the two pairs above
+    // were written for, one change later.
+    //
+    // `:visible` rather than `count()`, for the reason the block above gives at
+    // length — but note the difference: here it is React that draws one or the
+    // other, so a second band would be a second ELEMENT rather than a hidden
+    // one. `:visible` is right either way and says what is meant.
+    const bands = await land.locator(`${SHEET} [data-planner-context-band]:visible`).count();
+    check(
+      'das Kontextband steht im Querformat genau einmal',
+      bands === 1,
+      `${bands}× sichtbar (das Panel zeichnet es hier, die Spalte überall sonst — nie beide)`
     );
 
     // The drag coach is NOT asserted here, and the reason is worth a line rather
