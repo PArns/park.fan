@@ -142,6 +142,21 @@ export function OutageEstimateNote({
   // that grid row inherits, and the sentence is the widest thing in it.
   const recovery = percent !== null && (variant === 'full' || !range) ? percent : null;
 
+  // Which of the two sentences carries the probability is the VARIANT's question, not the
+  // range's. The long one names the condition the curve is conditioned on — „Von Störungen, die
+  // schon so lange dauern …" — and it is the ride page's, where there is a line to spend on it.
+  // A card gets the short one, for the same reason it gets no probability at all beside a range:
+  // the sentence is the widest thing in the badge row, and every card in that grid row inherits
+  // whatever height it wraps to. Deciding this on `range` instead put the long sentence on the
+  // card in exactly the case a card can reach — `remaining` is absent past about two hours
+  // elapsed, which is when the compact block has nothing else to say.
+  const recoveryText =
+    recovery === null
+      ? null
+      : variant === 'full' && !range
+        ? t('recoveryOnly', { percent: recovery })
+        : t('recovery', { percent: recovery });
+
   return (
     <div className={cn('flex w-full flex-col gap-1', className)} data-nosnippet>
       {range ? <span>{range}</span> : null}
@@ -155,11 +170,7 @@ export function OutageEstimateNote({
       ) : null}
       {recovery !== null ? (
         <>
-          <span>
-            {range
-              ? t('recovery', { percent: recovery })
-              : t('recoveryOnly', { percent: recovery })}
-          </span>
+          <span>{recoveryText}</span>
           <RecoveryMeter percent={recovery} />
         </>
       ) : null}
