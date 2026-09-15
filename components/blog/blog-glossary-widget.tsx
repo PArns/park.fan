@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
+import { GlossaryRichText } from '@/components/glossary/glossary-rich-text';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
@@ -56,7 +57,15 @@ export async function BlogGlossaryWidget({ slug, locale }: BlogGlossaryWidgetPro
         </div>
         <div className="text-foreground/90 space-y-3 leading-relaxed" itemProp="description">
           {term.definition.split('\n\n').map((para, i) => (
-            <p key={i}>{para}</p>
+            <p key={i}>
+              {/* Same renderer the glossary page uses, so an authored `[label](/href)` in a
+                  definition arrives as a link here too — 25 of 274 terms carry one, and
+                  printed raw they also put an unbreakable URL in a 278 px column. Auto-linking
+                  is off: see the `autoLink` docblock in glossary-rich-text.tsx. */}
+              <GlossaryRichText locale={locale} autoLink={false}>
+                {para}
+              </GlossaryRichText>
+            </p>
           ))}
         </div>
         <Link
