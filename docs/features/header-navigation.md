@@ -130,15 +130,16 @@ request drops its key so the next hover can retry instead of caching the failure
 23 countries, hovering one, moving on before the answer lands, then coming back: **23 of 23 stayed
 empty before, 0 of 23 after**.
 
-## The blog panel: three categories, four posts, no tags
+## The blog panel: three categories, six posts, no tags
 
 Fully server-rendered — the blog manifest is a build-time artifact, so there is no fetch and no
-loading state, and it is eight links. The four posts carry their own cover images, which is where
+loading state, and it is ten links. The six posts (`RECENT_LIMIT`) carry their own cover images,
+which is where
 this differs from the parks rail: those had to be a curated four because 14 of 212 parks have a
 picture, here the coverage is 7 of 7 and the covers are already 16:9 crops.
 
 The blog holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes 1, news 1),
-**31 tags** and one author. So the categories are in, the four newest posts are in, and **the tags
+**31 tags** and one author. So the categories are in, the six newest posts are in, and **the tags
 are out**. 31 tag pages over 7 posts means most of them are one post's teaser under a second URL;
 promoting that set into a template that runs on ~35,000 pages hands sitewide weight to the pages
 worth the least and dilutes what the three category hubs get. Tags stay on the posts that carry
@@ -197,8 +198,19 @@ Four entries moved one level down, behind a trigger with no page of its own:
 - **Blog** keeps the panel it had. Emptying it to match its neighbours would have taken 3 category
   and 6 post links (`RECENT_LIMIT`) out of the link graph of ~35,000 pages for nothing in return.
 
+**The four sections cost five strings in the chrome, and the chrome is serialized by every page.**
+`navigation.more` plus one hint per section, measured against the namespace without them:
+**+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr** (raw +283 to +322).
+They are in `navigation` rather than in `bestTime`/`glossary`/`howto` for the reason
+`BlogMenuPanel` already carries in its own comment: one `useTranslations('blog')` in a header
+component once took the layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single
+label. A hint that grows into a paragraph belongs in a lazy namespace, not here.
+
 Below two posts in a locale there is no blog block and no rail: the four sections are a flat row of
-columns, blog among them as a heading and a line. `BlogMenuPanel` draws the panel's only `/blog`
+columns, blog among them as a heading and a line. The count of posts is the whole condition, and a
+count of categories is deliberately not in it — the bar's old entry switched on
+`categories.length > 0`, and that term throws away up to six post links for a locale whose posts
+carry no category at all, which `BlogMenuPanel` renders perfectly well. `BlogMenuPanel` draws the panel's only `/blog`
 link in the column of posts _after_ the lead one, so a locale with a single published post would
 otherwise have had no way from the header to its blog index, where the bar's old entry was always a
 link to it. The `showBlog === false` case takes the same branch with three columns instead of four,
@@ -317,7 +329,7 @@ stops being worth the scannability, rendering them after mount moves them into t
 and off all 35,000 pages.
 
 The 48 break down as: `/parks` + 5 continents + 23 countries + 6 featured parks, `/blog` + 3
-categories + 4 posts, plus Beste Reisezeit, Wörterbuch and Anleitung.
+categories + 6 posts, plus Beste Reisezeit, Wörterbuch and Anleitung.
 
 ---
 

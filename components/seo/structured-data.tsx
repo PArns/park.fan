@@ -291,8 +291,8 @@ export function SiteNavigationStructuredData({
    * What the header's main navigation is, stated rather than inferred.
    *
    * Google works the primary navigation out from the markup on its own, so this is a hint, not a
-   * requirement — which is exactly why it stays SHORT. It names five destinations and the five
-   * continent hubs and stops there. The 23 country links are in the rendered `<nav>` where they
+   * requirement — which is exactly why it stays SHORT. It names five destinations (four where the
+   * blog has nothing published) and the five continent hubs and stops there. The 23 country links are in the rendered `<nav>` where they
    * belong; repeating them here would put a second copy of the same list into the head of every
    * one of ~35,000 pages to tell the crawler something the markup already says.
    *

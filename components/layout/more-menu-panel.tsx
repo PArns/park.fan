@@ -91,12 +91,17 @@ export function MoreMenuPanel({
    *   entry was always a link to it. Here the blog is a fourth heading with its own line, and the
    *   post keeps its URL one click further on.
    *
+   * **The count of posts is the whole condition, and a count of CATEGORIES is deliberately not in
+   * it.** The bar's old entry switched on `categories.length > 0`, which is where this started, and
+   * that term throws away up to six post links for a locale whose posts simply carry no category —
+   * `category` is optional in the frontmatter, and `BlogMenuPanel` guards its own pill row with the
+   * same check and renders fine without it.
+   *
    * `grid-cols-3`/`-4` with no threshold under them: this panel only ever renders inside the nav
    * row, and that row is `@min-[1024px]:flex` on the same container, so a one-column state of these
    * has no width at which anybody could see it.
    */
-  const hasBlogBlock =
-    showBlog && blog != null && blog.categories.length > 0 && blog.recent.length > 1;
+  const hasBlogBlock = showBlog && blog != null && blog.recent.length > 1;
 
   if (!hasBlogBlock) {
     return (
@@ -135,8 +140,9 @@ export function MoreMenuPanel({
      * preference: the trip planner's panel insets the page, so the `<header>` (which carries
      * `@container`) gets narrower without the window moving. At a 1600 px window with the planner
      * open the band's content column is 992 px while `xl:` still reads 1600 — the rail would split
-     * a band that has the width the stacked layout is for, and the blog block would draw 712 px
-     * instead of 968. `MenuBand` one level up already sizes that column with `@min-[1280px]:`;
+     * a band that has the width the stacked layout is for, leaving the blog block 712 px of the
+     * 992 it would otherwise have. `MenuBand` one level up already sizes that column with
+     * `@min-[1280px]:`;
      * these are the same numbers asked of the same container.
      */
     <div className="flex flex-col gap-5 @min-[1280px]:flex-row @min-[1280px]:gap-6">

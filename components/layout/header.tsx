@@ -486,8 +486,9 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               `MoreMenuPanel` beschreibt — im HTML jeder Seite, weil `MenuBand` das Panel nur
               versteckt und nie abhängt.
 
-              Als letzter der drei Einträge, weil ein Sammel-Trigger ans Ende einer Zeile gehört;
-              die Favoriten dahinter sind die vierte Fläche dieser Zeile und wie „Mehr" kein Link.
+              Als letzter der drei Navigationseinträge, weil ein Sammel-Trigger ans Ende einer
+              Zeile gehört; die Favoriten dahinter sind wie „Mehr" kein Link. Vor allen dreien
+              kann noch der Nearby-Chip stehen, der ist aber ein Fund und kein Menüpunkt.
 
               Ohne `href`: „Mehr" hat keine eigene Seite. Siehe NavMenu, Regel 2. */}
           <NavMenu label={t('more')} floating={isTransparent}>
