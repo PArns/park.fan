@@ -219,11 +219,18 @@ that number stood in this file and in the component for one review round. So the
 the panel wants, not a saving, and neither layout touches the real figure: three quarters of a
 900 px window, which is the blog block's height and predates this panel.
 
-The rail is `xl:flex xl:flex-col`, not `xl:grid-cols-1`: it is a flex item and stretches to the blog
-block's height, and a grid that tall splits into three equal rows — the sections came out 226 px
-apart with their text pinned to the top of each. Its `xl:w-64` and `xl:border-r` describe a
-relationship to the block beside it, so with `showBlog` false the component returns the three
-columns alone rather than a 256 px rail and a rule into an empty half.
+The rail is `flex flex-col`, not `grid-cols-1`: it is a flex item and stretches to the blog block's
+height, and a grid that tall splits into three equal rows — the sections came out 226 px apart with
+their text pinned to the top of each. Its `w-64` and `border-r` describe a relationship to the block
+beside it, so with `showBlog` false the component returns the three columns alone rather than a
+256 px rail and a rule into an empty half (counter-checked at 1440 px: 3 × 394.7 px, band 93.1 px).
+
+**Its breakpoints are `@min-[640px]:` and `@min-[1280px]:`, never `sm:`/`xl:`.** The `<header>`
+carries `@container` because the trip planner's panel insets the page, so the bar gets narrower
+without the window moving — at a 1600 px window with the planner open the band's content column is
+992 px while `xl:` still reads 1600, and the rail would split a band that has the width the stacked
+layout is for (blog block 712 px instead of 968). `MenuBand` one level up already sizes that column
+with the same numbers as container queries.
 
 **No `data-menu-stagger` on the blog wrapper.** `useMenuReveal` collects its targets with
 `querySelectorAll`, i.e. at any depth, and `BlogMenuPanel` carries three of its own. Nested, the
@@ -325,7 +332,7 @@ in all six locales: no overflow, no wrap.
 
 ## Favoriten im Band
 
-Der Stern rechts in der Leiste öffnet dieselbe volle Bandfläche wie „Parks entdecken" und „Blog",
+Der Stern rechts in der Leiste öffnet dieselbe volle Bandfläche wie „Parks entdecken" und „Mehr",
 über die gemeinsame `MenuBand` (`components/layout/menu-band.tsx`, aus `NavMenu` herausgelöst, als
 der zweite Auslöser dazukam — zwei Kopien der Glasfläche wären zwei Gelegenheiten, dass Ring, Blur
 und Container-Padding auseinanderlaufen).
@@ -342,8 +349,9 @@ Vier Entscheidungen sitzen darin:
   auftaucht, schiebt Sprachwahl, Theme-Schalter und Burger zur Seite. 32 px, dafür kein Sprung.
 - **Er liegt in der Navigationszeile und öffnet mit derselben Hysterese wie die Nachbarn**
   (`useMenuTrigger`). Eine Zeile, in der ein Eintrag anders reagiert als die daneben, muss man
-  zweimal lernen. Er ist der einzige Eintrag ohne Link — siehe `FavoritesMenu`: Favoriten haben
-  kein Ziel, das für alle dasselbe zeigt.
+  zweimal lernen. Er ist einer von zwei Einträgen ohne Link, aus einem anderen Grund als „Mehr" —
+  siehe `FavoritesMenu`: dort gibt es keine Seite, hier gibt es eine, die für jeden Leser etwas
+  anderes antworten würde.
 - **Die Anfrage läuft erst beim Öffnen** (`useFavorites({ enabled, poll })`). Der Header rendert
   auf ~35 000 Seiten; ungebremst wäre das ein `/api/favorites`-Call pro Seite für jeden, der je
   etwas markiert hat. Der Query-Key ist derselbe wie auf der Startseite, dort kostet das Öffnen

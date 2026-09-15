@@ -499,9 +499,11 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             />
           </NavMenu>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
-              dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
+              dasselbe Band wie „Parks entdecken" und „Mehr", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
-              lernen. Der einzige Eintrag ohne Link — siehe FavoritesMenu. */}
+              lernen. Einer von zwei Einträgen ohne Link, aus einem anderen Grund als „Mehr":
+              dort gibt es keine Seite, hier gibt es keine, die für alle dasselbe antwortet —
+              siehe FavoritesMenu. */}
           <FavoritesMenu floating={isTransparent} />
         </nav>
 

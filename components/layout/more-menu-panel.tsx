@@ -82,7 +82,7 @@ export function MoreMenuPanel({
    * the case where one does not.
    */
   if (!showBlog) {
-    return <div className="grid gap-x-8 gap-y-5 sm:grid-cols-3">{columns}</div>;
+    return <div className="grid gap-x-8 gap-y-5 @min-[640px]:grid-cols-3">{columns}</div>;
   }
 
   /*
@@ -101,12 +101,21 @@ export function MoreMenuPanel({
    * three quarters of a 900 px window — that height is the blog block's and predates this panel.
    */
   return (
-    <div className="flex flex-col gap-5 xl:flex-row xl:gap-6">
-      {/* `xl:flex-col`, not `xl:grid-cols-1`: the rail is a flex item and stretches to the blog
-          block's height, and a grid that tall splits itself into three equal rows — the three
-          sections came out 226 px apart with their text pinned to the top of each. A column lets
-          them keep their own height while the border still runs the full side. */}
-      <div className="border-border/60 grid gap-x-8 gap-y-5 sm:grid-cols-3 xl:flex xl:w-64 xl:shrink-0 xl:flex-col xl:border-r xl:pr-6">
+    /*
+     * Container queries, not `sm:`/`xl:`, and that is the header's own requirement rather than a
+     * preference: the trip planner's panel insets the page, so the `<header>` (which carries
+     * `@container`) gets narrower without the window moving. At a 1600 px window with the planner
+     * open the band's content column is 992 px while `xl:` still reads 1600 — the rail would split
+     * a band that has the width the stacked layout is for, and the blog block would draw 712 px
+     * instead of 968. `MenuBand` one level up already sizes that column with `@min-[1280px]:`;
+     * these are the same numbers asked of the same container.
+     */
+    <div className="flex flex-col gap-5 @min-[1280px]:flex-row @min-[1280px]:gap-6">
+      {/* `flex-col`, not `grid-cols-1`: the rail is a flex item and stretches to the blog block's
+          height, and a grid that tall splits itself into three equal rows — the three sections
+          came out 226 px apart with their text pinned to the top of each. A column lets them keep
+          their own height while the border still runs the full side. */}
+      <div className="border-border/60 grid gap-x-8 gap-y-5 @min-[640px]:grid-cols-3 @min-[1280px]:flex @min-[1280px]:w-64 @min-[1280px]:shrink-0 @min-[1280px]:flex-col @min-[1280px]:border-r @min-[1280px]:pr-6">
         {columns}
       </div>
 
@@ -115,7 +124,7 @@ export function MoreMenuPanel({
           nesting them would tween the parent AND the child, so the block would start 20 px high
           instead of 10 and three stagger steps late. It is the only place in the app where the two
           could nest, because every other panel keeps its targets flat. */}
-      <div className="border-border/60 min-w-0 flex-1 border-t pt-4 xl:border-t-0 xl:pt-0">
+      <div className="border-border/60 min-w-0 flex-1 border-t pt-4 @min-[1280px]:border-t-0 @min-[1280px]:pt-0">
         {blog && blog.categories.length > 0 ? (
           <BlogMenuPanel {...blog} />
         ) : (

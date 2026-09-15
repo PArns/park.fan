@@ -18,15 +18,18 @@ import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
  * back to what they had starred.
  *
  * It sits in the nav row rather than in the actions cluster, and it opens on hover with the same
- * hysteresis as "Parks entdecken" and "Blog" (`useMenuTrigger`), because a row where one entry
+ * hysteresis as "Parks entdecken" and "Mehr" (`useMenuTrigger`), because a row where one entry
  * behaves differently from its neighbours is a row you have to learn twice.
  *
- * **It is the one entry that is not a link, and that is deliberate.** Every other trigger goes
- * somewhere whether or not the panel opens — for a keyboard, for a touch screen, for the crawler.
- * Favorites have no such destination: they are per-visitor state living in a cookie, there is no
- * page to crawl, and pointing this at the homepage's favorites band would promise a URL that
- * answers differently for every reader. So the trigger is a button, and the panel is the whole
- * feature.
+ * **It is not a link, and that is deliberate.** "Parks entdecken" goes somewhere whether or not
+ * its panel opens — for a keyboard, for a touch screen, for the crawler. Favorites have no such
+ * destination: they are per-visitor state living in a cookie, there is no page to crawl, and
+ * pointing this at the homepage's favorites band would promise a URL that answers differently for
+ * every reader. So the trigger is a button, and the panel is the whole feature.
+ *
+ * It is one of two buttons in the row now, for a different reason from the other: "Mehr" is a
+ * collection with no page of its own, while this one has a page it must not name (`NavMenu`,
+ * rule 2).
  *
  * The star is rendered even at zero favorites: the nav row is laid out on the server, the cookie
  * is readable only after mount, and an entry that materialises after hydration shifts every
