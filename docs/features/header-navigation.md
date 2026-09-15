@@ -202,16 +202,16 @@ Two decisions worth keeping:
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
 catch-all — `/alerts`, `/fancast` and `/contribute` are meant to land in here too — so it is named
-after being one, and it sits at the END of the three links, where a catch-all belongs.
+after being one, and it sits at the END of the row's three entries, where a catch-all belongs.
 
 **`NavMenu.href` is optional for this one entry.** Every other trigger is a real `<a>` that works
 without the panel; "Mehr" has nowhere to go, so its label and its chevron are one button rather
 than a dead link beside a live one. The link graph does not notice, because the band is `hidden`
-and never unmounted — a crawler reads the four destinations inside it exactly as it read the four
+and never unmounted — a crawler reads the destinations inside it exactly as it read the four
 entries in the bar.
 
-**The three sections are a rail from `xl`, three columns below it — and the rail is not the shorter
-of the two.** Measured at 1440 px on the same build, same page, both with every cover decoded:
+**The three sections are a rail from a bar width of 1280 px, three columns below it — and the rail
+is not the shorter of the two.** Measured at 1440 px on the same build, same page, both with every cover decoded:
 stacked **756.3 px**, as a rail **758.8 px**. The rail takes 256 px off the blog block and the block
 gives the height straight back by wrapping, its two halves going 563.1 → 654.8 px. Arithmetic that
 holds the block's height constant answers 867.6 px and is measuring a layout that does not exist;
@@ -225,7 +225,7 @@ their text pinned to the top of each. Its `w-64` and `border-r` describe a relat
 beside it, so with `showBlog` false the component returns the three columns alone rather than a
 256 px rail and a rule into an empty half (counter-checked at 1440 px: 3 × 394.7 px, band 93.1 px).
 
-**Its breakpoints are `@min-[640px]:` and `@min-[1280px]:`, never `sm:`/`xl:`.** The `<header>`
+**Its one breakpoint is `@min-[1280px]:`, never `xl:`.** The `<header>`
 carries `@container` because the trip planner's panel insets the page, so the bar gets narrower
 without the window moving — at a 1600 px window with the planner open the band's content column is
 992 px while `xl:` still reads 1600, and the rail would split a band that has the width the stacked
@@ -276,8 +276,11 @@ tween clears its inline `transform` when it finishes, so nothing is left on the 
 ## Structured data
 
 `SiteNavigationStructuredData` emits an `ItemList` of `SiteNavigationElement` beside the existing
-`Organization` and `WebSite` data: the five bar entries in the bar's order, then the five continent
-hubs. Ten items, and it stops there. Google works the primary navigation out from the markup on its
+`Organization` and `WebSite` data: five targets of the main navigation, in that list's own order,
+then the five continent hubs. Ten items, and it stops there. It used to say "the five bar entries in
+the bar's order", which stopped being true when four of them moved behind the "Mehr" trigger — they
+are still in the navigation, one level down, but the bar's order is no longer this one, and the
+planner is in the bar and not in the list (PAR-248). Google works the primary navigation out from the markup on its
 own, so this is a hint; repeating the 23 country links here would put a second copy of a list the
 markup already carries into the head of every page.
 
@@ -350,8 +353,8 @@ Vier Entscheidungen sitzen darin:
 - **Er liegt in der Navigationszeile und öffnet mit derselben Hysterese wie die Nachbarn**
   (`useMenuTrigger`). Eine Zeile, in der ein Eintrag anders reagiert als die daneben, muss man
   zweimal lernen. Er ist einer von zwei Einträgen ohne Link, aus einem anderen Grund als „Mehr" —
-  siehe `FavoritesMenu`: dort gibt es keine Seite, hier gibt es eine, die für jeden Leser etwas
-  anderes antworten würde.
+  siehe `FavoritesMenu`: „Mehr" ist eine Sammlung ohne eigene Seite, die Favoriten haben eine, die
+  jedem Leser etwas anderes antwortet und deshalb keine Adresse ist, die man verlinken kann.
 - **Die Anfrage läuft erst beim Öffnen** (`useFavorites({ enabled, poll })`). Der Header rendert
   auf ~35 000 Seiten; ungebremst wäre das ein `/api/favorites`-Call pro Seite für jeden, der je
   etwas markiert hat. Der Query-Key ist derselbe wie auf der Startseite, dort kostet das Öffnen
