@@ -200,7 +200,7 @@ Four entries moved one level down, behind a trigger with no page of its own:
 
 **The four sections cost five strings in the chrome, and the chrome is serialized by every page.**
 `navigation.more` plus one hint per section, measured against the namespace without them:
-**+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr** (raw +283 to +322).
+**+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr** (raw +283 to +325).
 They are in `navigation` rather than in `bestTime`/`glossary`/`howto` for the reason
 `BlogMenuPanel` already carries in its own comment: one `useTranslations('blog')` in a header
 component once took the layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single
@@ -248,7 +248,8 @@ beside it, so with `showBlog` false the component returns the three columns alon
 carries `@container` because the trip planner's panel insets the page, so the bar gets narrower
 without the window moving — at a 1600 px window with the planner open the band's content column is
 992 px while `xl:` still reads 1600, and the rail would split a band that has the width the stacked
-layout is for (blog block 712 px instead of 968). `MenuBand` one level up already sizes that column
+layout is for, leaving the blog block 712 px of the 992 it would otherwise have. `MenuBand` one
+level up already sizes that column
 with the same numbers as container queries.
 
 **No `data-menu-stagger` on the blog wrapper.** `useMenuReveal` collects its targets with
@@ -308,7 +309,9 @@ markup already carries into the head of every page.
 
 ## Measured
 
-Against a running dev server, park page, `de`:
+Against a running dev server, park page, `de`, measured for the mega-menu PR and **not** re-measured
+for "Mehr" — that change moves one `/blog` link out of the `<nav>` and into the panel, so the link
+count below is 48 before it and 47 after, with the same destinations:
 
 |                                                         |                     before |                      after |
 | ------------------------------------------------------- | -------------------------: | -------------------------: |
