@@ -478,9 +478,9 @@ export function AttractionCard({
               className="text-muted-foreground w-full text-[11px] leading-tight"
             />
             {/* "how much longer" on the card too, in the compact form: the
-                range alone, because the probability sentence would wrap on a
-                phone and every card in the row shares its height through the
-                subgrid. Same numbers as the ride page, fewer words. */}
+                range and its bar, because the probability sentence would wrap
+                on a phone and every card in the row shares its height through
+                the subgrid. Same numbers as the ride page, fewer words. */}
             <OutageEstimateNote
               estimate={'outage' in attraction ? attraction.outage?.estimate : undefined}
               variant="compact"

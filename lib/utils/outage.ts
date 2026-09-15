@@ -79,6 +79,121 @@ export function outageRemainingWindow(
 }
 
 /**
+ * The right-hand end of the scale the remaining window is drawn against, in minutes.
+ *
+ * Fixed, never per instance. A park page can draw several of these bars at once, and a bar scaled
+ * to its own window would make the ride that is nearly back look exactly like the one that is not
+ * — the trap `Sparkline`'s `yMax` prop exists for. Four hours because that is what the measured
+ * windows fit in: of the ten outages running on 2026-09-14, five carried a curve, and the four
+ * with a resolved upper quartile ran 25-180, 15-59, 10-63 and 20-220 minutes.
+ */
+export const OUTAGE_BAR_HORIZON_MIN = 240;
+
+/**
+ * Hour marks inside the track, drawn as hairlines in both variants.
+ *
+ * Unlabelled on purpose: the two ends of the scale are named beside the track, and three more
+ * labels between them is a row of five on a 360 px card. Evenly spaced marks between „jetzt" and
+ * „4 Std." are read as hours without being told.
+ */
+export const OUTAGE_BAR_TICKS_MIN = [60, 120, 180];
+
+/**
+ * Narrowest segment that still reads as a segment, in percent of the track.
+ *
+ * A ten-minute window on a four-hour scale is 4 % wide, which is two pixels on a card and looks
+ * like a rendering fault rather than a short outage. The floor widens it to the right, so a
+ * segment is never drawn starting earlier than it was measured.
+ *
+ * Exported because the open-end fade has to respect it: a gradient that turns transparent partway
+ * along the segment takes the guaranteed width back, and nothing in the geometry can see that.
+ */
+export const OUTAGE_MIN_SEGMENT_PCT = 5;
+const MIN_SEGMENT_PCT = OUTAGE_MIN_SEGMENT_PCT;
+
+export interface OutageRemainingBar {
+  /** Left edge, percent of the track. */
+  startPct: number;
+  /** Right edge, percent of the track. */
+  endPct: number;
+  /**
+   * The window's top is not on this scale — either no upper quartile resolved, or it resolved
+   * past {@link OUTAGE_BAR_HORIZON_MIN}. Drawn as a fading edge rather than a cap; the sentence
+   * above the bar still carries the number when there is one.
+   */
+  openEnd: boolean;
+}
+
+/**
+ * Where the remaining window sits on the fixed scale, as two percentages.
+ *
+ * Geometry lives here rather than in the component for the same reason `weather-chart-axis` does:
+ * it is arithmetic with edge cases, and a green build shows nothing of it.
+ *
+ * **A window that cannot be drawn a full segment wide gets no bar at all.** Its segment would be
+ * a sliver pinned to the right edge, identical for „noch 5 Std." and „noch 40 Std." — the scale
+ * cannot show that window, so it does not draw it and the sentence stands alone. The long outages
+ * are where this bites: Revenge of the Mummy sat at `p25: 117` after 2648 operating minutes, which
+ * is still inside the scale, but a lower quartile above four hours is reachable from there.
+ *
+ * The refusal is measured against the SEGMENT, not against the horizon, because the widening floor
+ * below only ever pushes an edge to the right and the right edge is already at the wall: a lower
+ * quartile of 235 minutes is under the horizon, passes a `from >= horizon` test, and then draws
+ * two percent of track — the degenerate case one step below the threshold that was supposed to
+ * catch it.
+ */
+export function outageRemainingBar(
+  window: OutageRemainingWindow | null | undefined
+): OutageRemainingBar | null {
+  if (!window) return null;
+
+  const startPct = (window.from / OUTAGE_BAR_HORIZON_MIN) * 100;
+  if (startPct > 100 - MIN_SEGMENT_PCT) return null;
+
+  const openEnd = window.to === null || window.to > OUTAGE_BAR_HORIZON_MIN;
+  const endPct = openEnd ? 100 : (window.to! / OUTAGE_BAR_HORIZON_MIN) * 100;
+
+  return {
+    startPct,
+    endPct: Math.min(100, Math.max(endPct, startPct + MIN_SEGMENT_PCT)),
+    openEnd,
+  };
+}
+
+/** Which of the two probability sentences a surface gets, with the figure it prints. */
+export interface OutageRecoveryLine {
+  /** A key under `parks.outage.estimate`. */
+  key: 'recovery' | 'recoveryOnly';
+  percent: number;
+}
+
+/**
+ * Whether the recovery probability is said at all, and in which of its two sentences.
+ *
+ * Three inputs decide it and every one of them is a rule rather than a layout, which is why the
+ * answer is computed here: the branch that used to live in the component got it wrong on its first
+ * write, silently, with a green build and a passing suite behind it.
+ *
+ * - **A card beside a range says nothing about the probability.** The compact block sits in a ride
+ *   card's badge row, and every card in that grid row inherits the height its widest sentence
+ *   wraps to. One statement per card; the range is the one a visitor came for.
+ * - **The long sentence is the ride page's.** „Von Störungen, die schon so lange dauern …" names
+ *   the condition the whole estimate rests on and costs a line to do it. A card that has no range
+ *   to print still gets the short form.
+ * - **No percentage, no line.** `outageRecoveryPercent` withholds a rounded zero, and „0 %" beside
+ *   a meter drawn at zero width would read as „never".
+ */
+export function outageRecoveryLine(
+  percent: number | null,
+  variant: 'compact' | 'full',
+  hasRange: boolean
+): OutageRecoveryLine | null {
+  if (percent === null) return null;
+  if (variant === 'compact' && hasRange) return null;
+  return { key: variant === 'full' && !hasRange ? 'recoveryOnly' : 'recovery', percent };
+}
+
+/**
  * P(reported running again within 60 more operating minutes), in whole five-point steps.
  *
  * Five, because the curve is calibrated out-of-sample to 2.55 percentage points and „47 %" claims

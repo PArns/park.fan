@@ -734,9 +734,9 @@
       "estimate": {
         "range": "Outages like this one usually had {from} to {to} left.",
         "rangeOpen": "Outages like this one usually had more than {from} left.",
-        "compactProbability": "About {percent}% were back within an hour.",
-        "fullWithRange": "{range} About {percent}% were reported running again within an hour.",
-        "fullProbability": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
+        "barNow": "now",
+        "recovery": "About {percent}% were back within an hour.",
+        "recoveryOnly": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
       },
       "sinceClosed": "Not running since {when}",
       "startUnknownClosed": "Not running, start unknown"

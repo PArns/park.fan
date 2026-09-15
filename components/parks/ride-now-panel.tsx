@@ -265,9 +265,10 @@ export function RideNowPanel({
                 timezone={timezone}
                 className="text-muted-foreground text-xs"
               />
-              {/* The full sentence here: the ride page has the width for the
-                  probability, and this is the page a visitor opens when they
-                  are standing in front of the ride wondering whether to wait. */}
+              {/* Both figures here: the ride page has the room for the
+                  probability and its meter, and this is the page a visitor
+                  opens when they are standing in front of the ride wondering
+                  whether to wait. */}
               <OutageEstimateNote
                 estimate={attraction.outage?.estimate}
                 variant="full"

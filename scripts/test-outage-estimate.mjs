@@ -13,12 +13,25 @@
 // range and formatted `undefined`, so all three rendered „meist noch 1:55 Std. bis NaN:NaN Std."
 // on the park page and again on the ride page.
 import {
+  OUTAGE_BAR_HORIZON_MIN,
   outageElapsedMinutes,
+  outageRecoveryLine,
   outageRecoveryPercent,
+  outageRemainingBar,
   outageRemainingWindow,
   roundOutageMinutes,
 } from '../lib/utils/outage.ts';
-import { formatSpanDuration } from '../lib/utils/duration.ts';
+import { formatSpanDuration, formatWholeHours } from '../lib/utils/duration.ts';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
+
+/** The catalogs as they ship, read from disk — the keys below are strings on both sides. */
+function readMessages(locale) {
+  const path = fileURLToPath(new URL(`../messages/${locale}.json`, import.meta.url));
+  return JSON.parse(readFileSync(path, 'utf8'));
+}
 
 /** The shape production actually sends for a long outage — no `p75` key at all. */
 const LONG = {
@@ -151,6 +164,166 @@ const testCases = [
     name: 'the thinnest measured bucket still answers',
     actual: () => outageRecoveryPercent(LONG),
     expected: 15,
+  },
+
+  // ── the bar ──
+  //
+  // Same numbers as the sentence above it, placed on a scale that is the same on every card.
+  // Everything here is the geometry the component would otherwise compute inline, where a
+  // green build proves nothing about it.
+  {
+    name: 'a closed window sits between its two quartiles on the fixed scale',
+    // 25 and 150 minutes of 240.
+    actual: () => JSON.stringify(outageRemainingBar(outageRemainingWindow(FRESH))),
+    expected: JSON.stringify({
+      startPct: (25 / OUTAGE_BAR_HORIZON_MIN) * 100,
+      endPct: (150 / OUTAGE_BAR_HORIZON_MIN) * 100,
+      openEnd: false,
+    }),
+  },
+  {
+    name: 'an open window runs to the right edge and says so, rather than being drawn as a cap',
+    actual: () => JSON.stringify(outageRemainingBar(outageRemainingWindow(LONG))),
+    expected: JSON.stringify({
+      startPct: (115 / OUTAGE_BAR_HORIZON_MIN) * 100,
+      endPct: 100,
+      openEnd: true,
+    }),
+  },
+  {
+    name: 'an open window still starts at its lower quartile, never at zero',
+    // The whole point of AK 3: „über 1:55 Std." is not a full bar.
+    actual: () => outageRemainingBar(outageRemainingWindow(LONG)).startPct > 0,
+    expected: true,
+  },
+  {
+    name: 'an upper quartile past the end of the scale is open-ended too',
+    // The scale stops at four hours and the segment cannot say „5:00 Std." by reaching the same
+    // right edge a bounded one would. The sentence above the bar keeps the number.
+    actual: () => outageRemainingBar({ from: 60, to: OUTAGE_BAR_HORIZON_MIN + 60 }).openEnd,
+    expected: true,
+  },
+  {
+    name: 'an upper quartile exactly on the end of the scale is still bounded',
+    actual: () => outageRemainingBar({ from: 60, to: OUTAGE_BAR_HORIZON_MIN }).openEnd,
+    expected: false,
+  },
+  {
+    name: 'a window that starts past the scale gets no bar rather than a sliver at the edge',
+    // „noch 5 Std." and „noch 40 Std." would draw the same five pixels, which is a picture that
+    // says nothing. The sentence stands alone there.
+    actual: () => outageRemainingBar({ from: OUTAGE_BAR_HORIZON_MIN, to: null }),
+    expected: null,
+  },
+  {
+    name: 'a window starting just under the horizon is refused too, not drawn two percent wide',
+    // The degenerate case one step below the threshold that was supposed to catch it: 235 is
+    // inside the scale, so a `from >= horizon` test passes it — and then the widening floor
+    // cannot help, because it only pushes the right edge and the right edge is already at 100.
+    actual: () => outageRemainingBar({ from: 235, to: null }),
+    expected: null,
+  },
+  {
+    name: 'the last window that still fits a full segment is still drawn',
+    // 228 minutes is exactly 95 % of the scale, which leaves the five the segment needs.
+    actual: () => outageRemainingBar({ from: 228, to: null })?.openEnd,
+    expected: true,
+  },
+  {
+    name: 'a ten-minute window is widened to a visible segment instead of two pixels',
+    // Widened to the RIGHT: a segment may never start earlier than it was measured.
+    actual: () => {
+      const bar = outageRemainingBar({ from: 30, to: 40 });
+      return `${bar.startPct === 12.5} ${bar.endPct - bar.startPct >= 5}`;
+    },
+    expected: 'true true',
+  },
+  {
+    name: 'no window at all means no bar',
+    actual: () => outageRemainingBar(null),
+    expected: null,
+  },
+  {
+    name: 'the scale label is whole hours, not the h:mm form a measured span uses',
+    actual: () => formatWholeHours(OUTAGE_BAR_HORIZON_MIN / 60, 'de'),
+    expected: '4 Std.',
+  },
+
+  // ── which probability sentence, and whether there is one ──
+  //
+  // This branch lived in the component and was wrong on its first write: it read the range
+  // instead of the variant and put the ride page's long sentence on a card. Lint, format and
+  // every other case in this file were green through it, which is why it is a function now.
+  {
+    name: 'a card beside a range says nothing about the probability',
+    // One statement per card: the badge row is shared with every other card in the grid row.
+    actual: () => outageRecoveryLine(75, 'compact', true),
+    expected: null,
+  },
+  {
+    name: 'a card without a range gets the SHORT sentence',
+    // The case a card really reaches — `remaining` is absent past about two hours elapsed.
+    actual: () => outageRecoveryLine(15, 'compact', false)?.key,
+    expected: 'recovery',
+  },
+  {
+    name: 'the ride page without a range gets the long, conditioned one',
+    actual: () => outageRecoveryLine(15, 'full', false)?.key,
+    expected: 'recoveryOnly',
+  },
+  {
+    name: 'the ride page beside a range gets the short one, the condition being in the range line',
+    actual: () => outageRecoveryLine(75, 'full', true)?.key,
+    expected: 'recovery',
+  },
+  {
+    name: 'the figure travels with the sentence rather than being read a second time',
+    actual: () => outageRecoveryLine(75, 'full', true)?.percent,
+    expected: 75,
+  },
+  {
+    name: 'a withheld percentage is no line at all, on either surface',
+    // `outageRecoveryPercent` answers null for a rounded zero; „0 %" over a zero-width meter
+    // would read as „never".
+    actual: () =>
+      `${outageRecoveryLine(null, 'compact', false)} ${outageRecoveryLine(null, 'full', false)}`,
+    expected: 'null null',
+  },
+  {
+    name: 'both keys this function can name resolve in all six locales',
+    // The key literals moved out of the `t()` call and into this file, so a grep over the
+    // component no longer finds them and a rename would go unnoticed on both sides. next-intl
+    // does not throw on a missing namespace key — it logs MISSING_MESSAGE and renders the raw
+    // key, so the failure would ship as the word „recoveryOnly" on a ride page.
+    actual: () => {
+      const keys = ['recovery', 'recoveryOnly', 'range', 'rangeOpen', 'barNow'];
+      const missing = [];
+      for (const locale of LOCALES) {
+        const messages = readMessages(locale);
+        const estimate = messages?.parks?.outage?.estimate ?? {};
+        for (const key of keys) {
+          if (typeof estimate[key] !== 'string') missing.push(`${locale}.${key}`);
+        }
+      }
+      return missing.length === 0 ? 'all resolve' : missing.join(', ');
+    },
+    expected: 'all resolve',
+  },
+  {
+    name: 'the percent placeholder is in both probability sentences, in all six locales',
+    // A sentence that resolves but drops `{percent}` is a probability line with no probability
+    // in it, which no type and no lint rule sees.
+    actual: () => {
+      const missing = [];
+      for (const locale of LOCALES) {
+        const estimate = readMessages(locale)?.parks?.outage?.estimate ?? {};
+        for (const key of ['recovery', 'recoveryOnly']) {
+          if (!String(estimate[key] ?? '').includes('{percent}')) missing.push(`${locale}.${key}`);
+        }
+      }
+      return missing.length === 0 ? 'all carry it' : missing.join(', ');
+    },
+    expected: 'all carry it',
   },
 
   // ── elapsed ──
