@@ -26,12 +26,13 @@ import type { BlogMenu } from '@/lib/navigation/blog-menu';
  * what is here is the skeleton the follow-ups fill in. The heading IS the link, which is what keeps
  * those three hub URLs in the HTML of every page — the band is `hidden`, never unmounted, so a
  * crawler reads it exactly as it read the three entries in the bar. `/blog` is the fourth and comes
- * from the blog section below, which is why that section's condition is about a link and not about
- * how much there is to show.
+ * from the blog section below.
  *
- * **The blog section keeps the panel it already had.** Emptying it to match its three neighbours
- * would have taken 3 category and 4 post links out of the link graph of ~35,000 pages until the
- * follow-up ticket puts them back, for no gain in the meantime.
+ * **The blog section keeps the panel it already had**, wherever there is one to keep: from two
+ * posts up it is `BlogMenuPanel` beside the rail, below that a fourth heading in a flat row of
+ * columns (see the branch). Emptying it to match its three neighbours would have taken 3 category
+ * and 6 post links (`RECENT_LIMIT`) out of the link graph of ~35,000 pages until the follow-up
+ * ticket puts them back, for no gain in the meantime.
  */
 interface MoreMenuPanelProps {
   /** Localized hub paths, resolved in the header, which already derives them for the phone sheet. */
@@ -75,19 +76,42 @@ export function MoreMenuPanel({
   );
 
   /*
-   * Without a blog there is no rail — the three sections ARE the panel and take its width. The
-   * rail's `w-64` and its `border-r` describe a relationship to the block beside it, so with
-   * nothing there they would draw a 256 px column and a rule into the empty half of a band up to
-   * 1280 px wide. The branch is latent today (every locale publishes posts) and the prop exists for
-   * the case where one does not; counter-checked by forcing it at 1440 px: 3 × 394.7 px, band
-   * 93.1 px.
+   * The rail exists to stand beside the blog BLOCK, so without that block there is no rail: `w-64`
+   * and `border-r` describe a relationship to a neighbour, and with nothing there they draw a
+   * 256 px column and a rule into the empty half of a band up to 1280 px wide.
    *
-   * `grid-cols-3` with no threshold under it: this panel only ever renders inside the nav row, and
-   * that row is `@min-[1024px]:flex` on the same container, so a one-column state of these three
+   * Two cases arrive here, and they get the same flat row of columns because they have the same
+   * shape — a heading and a line per section, with nothing tall beside them:
+   *
+   * - `showBlog` false, i.e. a locale that publishes nothing. Latent today, and the prop exists
+   *   for it; counter-checked by forcing it at 1440 px: 3 × 394.7 px, band 93.1 px.
+   * - fewer than two posts. `BlogMenuPanel` draws its heading — the only `/blog` link in the whole
+   *   panel — in the column of posts AFTER the lead one, so a locale with exactly one published
+   *   post would otherwise get a panel with no way to the blog index at all, where the bar's old
+   *   entry was always a link to it. Here the blog is a fourth heading with its own line, and the
+   *   post keeps its URL one click further on.
+   *
+   * `grid-cols-3`/`-4` with no threshold under them: this panel only ever renders inside the nav
+   * row, and that row is `@min-[1024px]:flex` on the same container, so a one-column state of these
    * has no width at which anybody could see it.
    */
-  if (!showBlog) {
-    return <div className="grid grid-cols-3 gap-x-8 gap-y-5">{columns}</div>;
+  const hasBlogBlock =
+    showBlog && blog != null && blog.categories.length > 0 && blog.recent.length > 1;
+
+  if (!hasBlogBlock) {
+    return (
+      <div className={`grid gap-x-8 gap-y-5 ${showBlog ? 'grid-cols-4' : 'grid-cols-3'}`}>
+        {columns}
+        {showBlog && (
+          <div data-menu-stagger>
+            <MenuSectionHeading label={t('blog')} href="/blog" />
+            <p className="text-muted-foreground text-[13px] leading-relaxed text-pretty">
+              {t('blogHint')}
+            </p>
+          </div>
+        )}
+      </div>
+    );
   }
 
   /*
@@ -130,22 +154,7 @@ export function MoreMenuPanel({
           instead of 10 and three stagger steps late. It is the only place in the app where the two
           could nest, because every other panel keeps its targets flat. */}
       <div className="border-border/60 min-w-0 flex-1 border-t pt-4 @min-[1280px]:border-t-0 @min-[1280px]:pt-0">
-        {/* `recent.length > 1`, and it is about the `/blog` link rather than about having enough to
-            show. `BlogMenuPanel` draws its heading — the only `/blog` link in the whole panel — in
-            the column of posts AFTER the lead one, so a locale with exactly one published post
-            gets a panel with no way to the blog index at all, where the bar's old entry was always
-            a link to it. Below two posts the fallback takes over: the hub link and a line, and the
-            lead post's own URL stays reachable from there. */}
-        {blog && blog.categories.length > 0 && blog.recent.length > 1 ? (
-          <BlogMenuPanel {...blog} />
-        ) : (
-          <div data-menu-stagger>
-            <MenuSectionHeading label={t('blog')} href="/blog" />
-            <p className="text-muted-foreground text-[13px] leading-relaxed text-pretty">
-              {t('blogHint')}
-            </p>
-          </div>
-        )}
+        <BlogMenuPanel {...blog} />
       </div>
     </div>
   );

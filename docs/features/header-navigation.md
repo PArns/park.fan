@@ -195,7 +195,14 @@ Four entries moved one level down, behind a trigger with no page of its own:
   lists are separate tickets; the heading IS the link, which is what keeps all three hub URLs in
   the HTML of every page.
 - **Blog** keeps the panel it had. Emptying it to match its neighbours would have taken 3 category
-  and 4 post links out of the link graph of ~35,000 pages for nothing in return.
+  and 6 post links (`RECENT_LIMIT`) out of the link graph of ~35,000 pages for nothing in return.
+
+Below two posts in a locale there is no blog block and no rail: the four sections are a flat row of
+columns, blog among them as a heading and a line. `BlogMenuPanel` draws the panel's only `/blog`
+link in the column of posts _after_ the lead one, so a locale with a single published post would
+otherwise have had no way from the header to its blog index, where the bar's old entry was always a
+link to it. The `showBlog === false` case takes the same branch with three columns instead of four,
+for the same reason: a rail is a relationship to the block beside it.
 
 Two decisions worth keeping:
 
@@ -277,7 +284,8 @@ tween clears its inline `transform` when it finishes, so nothing is left on the 
 
 `SiteNavigationStructuredData` emits an `ItemList` of `SiteNavigationElement` beside the existing
 `Organization` and `WebSite` data: five targets of the main navigation, in that list's own order,
-then the five continent hubs. Ten items, and it stops there. It used to say "the five bar entries in
+then the five continent hubs. Ten items, and it stops there — nine where `showBlog` is false, since
+the blog entry hangs off it. It used to say "the five bar entries in
 the bar's order", which stopped being true when four of them moved behind the "Mehr" trigger — they
 are still in the navigation, one level down, but the bar's order is no longer this one, and the
 planner is in the bar and not in the list (PAR-248). Google works the primary navigation out from the markup on its

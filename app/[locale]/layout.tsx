@@ -149,8 +149,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const blogMenu = showBlog ? getBlogMenu(locale as Locale) : undefined;
   const featuredParks = getFeaturedParksMenu(locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
-  // parks menu opens onto. Kept to ten: this is a hint about the primary navigation, and the
-  // country links are already in the rendered <nav>.
+  // parks menu opens onto. Kept to ten, or nine where `showBlog` is false: this is a hint about
+  // the primary navigation, and the country links are already in the rendered <nav>.
   //
   // It used to say "the same entries the bar renders, in the same order", and that has not been
   // true since four of them moved behind the "Mehr" trigger: they are still in the navigation,

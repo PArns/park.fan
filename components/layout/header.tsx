@@ -472,9 +472,10 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             </Link>
           )}
           {/* Der Tagesplaner. Er stand hier zuerst nicht, weil diese Zeile mit
-              sechs Einträgen schon umbrach — das ist mit `whitespace-nowrap`
-              und der schmaleren Suche oben behoben, und erst dadurch ist Platz
-              für einen siebten. */}
+              sechs Einträgen schon umbrach; `whitespace-nowrap` und die
+              schmalere Suche haben ihn möglich gemacht und **nicht** gereicht —
+              auf Französisch lief die Zeile bei 1024 px 23,7 px über ihre Box,
+              siehe den Kommentar am „Mehr"-Eintrag unten. */}
           <Link href={plannerPath} prefetch={false} className={navLinkClass}>
             {t('planner')}
           </Link>
