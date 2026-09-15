@@ -454,9 +454,23 @@ export function RopeDropCard({
         </div>
         {/* ONE hairline for both notes, the shape the `worth` panel's footer already has —
               two `border-t` paragraphs under each other would draw a rule per sentence and read
-              as two footers. `notWorth` names no figure any more: the wait at opening it used to
-              carry in brackets is already in the tile above it and in the sentence under the
-              heading, and a third copy is what makes a reader check whether they agree. */}
+              as two footers.
+
+              `notWorth` says something different here than it did as a panel of its own, and the
+              move is what forced it. It used to end on „die Wartezeiten bleiben über den Tag
+              überschaubar (ca. {openWait} Min. zur Öffnung)", alone in half a card. Under three
+              tiles and the sentence that already prints both figures, the bracket is a third copy
+              of the wait at opening — and the clause in front of it is a claim the tiles can
+              contradict outright: of these 470 rides, 65 peak at 60 minutes or more and 7 at 90 or
+              more, up to Tokyo DisneySea's Soaring reading 140 at opening and 180 at the peak,
+              directly above a line calling the day manageable.
+
+              So the footer keeps only what the branch actually knows. „Not worth rope-dropping" is
+              exactly `worth === false`, and the contrast is `parkHasRecommendations` — and it may
+              be stated as a comparison with the park's other rides because every one of those 470
+              sits in a park carrying at least one real `worth` tip: measured over all 213 parks,
+              **zero** of them recommend only evenings. The size of the queue is left to the tiles,
+              which measured it. */}
         {(parkHasRecommendations || ropeDrop.confidence === 'low') && (
           <div className="text-muted-foreground mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3 text-xs">
             {parkHasRecommendations && (

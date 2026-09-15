@@ -9,8 +9,14 @@ import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
  * Prefers the server verdict (`endOfDayWorth`, backend PR #69, computed with a
  * pre-closing line-drain guard). Cached recommendations predating that field
  * fall back to a local heuristic: opening must be genuinely costly (≥30 min)
- * and the trough clearly past the opening window (≥2 h after open). Rides that
- * are simply never busy (low openWait) keep the plain "no need to rush" note.
+ * and the trough clearly past the opening window (≥2 h after open).
+ *
+ * Everything this returns `false` for, and that is not `worth` either, goes to the `bestTime`
+ * panel. That is NOT the same as "never busy": of the 470 such rides in parks that do carry
+ * recommendations, 65 peak at 60 minutes or more and 7 at 90 or more, up to Tokyo DisneySea's
+ * Soaring at 140 minutes from opening against a 180-minute peak. What the branch says is only
+ * that being there at rope drop does not pay and that the day's trough is not late enough to
+ * send somebody back in the evening — no claim about the size of the queue in between.
  */
 export function isEveningBetter(ropeDrop: RopeDropInfo): boolean {
   if (ropeDrop.worth) return false;

@@ -377,10 +377,18 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
   stand-in panel's footer, beside the low-confidence hint and under the same single hairline, and
   `parkHasRecommendations` stopped picking a panel. The ride now gets the readings it always had:
   **312 of those 470 print the quietest-weekday sentence (66 %)**, against 209 of the 377 rides
-  that resolve to the stand-in on their own (55 %), counted in the same pass. The note also lost
-  the „(ca. {openWait} Min. zur Öffnung)" it used to carry, in all six locales — inside the card
-  that figure is already a tile and already the first half of the sentence under the heading, and
-  a third copy is what makes a reader check whether the three agree.
+  that resolve to the stand-in on their own (55 %), counted in the same pass.
+- **Moving a sentence changes what it claims, because its neighbours change.** The note read „…
+  die Wartezeiten bleiben über den Tag überschaubar (ca. {openWait} Min. zur Öffnung)", which was
+  survivable alone in half a card and is not survivable above three tiles: the bracket is a third
+  copy of the wait at opening, and „überschaubar" is a claim the tiles can contradict outright —
+  of those 470 rides **65 peak at 60 minutes or more and 7 at 90 or more**, up to Tokyo DisneySea's
+  _Soaring_ reading 140 at opening against a 180-minute peak. So the footer keeps only what the
+  branch knows: not worth rope-dropping (`worth === false`) and the contrast to the neighbours
+  (`parkHasRecommendations`), with the size of the queue left to the tiles that measured it. The
+  contrast may be phrased as a comparison with the park's other rides because **zero** of the
+  parks holding one of those 470 recommend only evenings — every one has at least one real
+  `worth` tip — which is a measurement and not an assumption. Rewritten in all six locales.
 - **A panel standing in for a missing recommendation says what the data supports, and its shape is
   a measurement.** „Beste Besuchszeit planen" promises an answer, so the stand-in panel gives the
   ride's own readings rather than an apology. Which readings was decided over the 183 rides it is
