@@ -41,18 +41,21 @@ export const headerNavInk = (floating: boolean | undefined) =>
  *    nothing to the link graph — which would defeat the reason the continent and country links are
  *    in the header at all. Google indexes CSS-hidden navigation normally; content that only
  *    appears after an interaction is what it cannot see.
- * 2. **The trigger is a real `<a>`.** "Parks entdecken" goes to `/parks` and "Blog" to `/blog`
- *    whether or not the panel ever opens — with a keyboard, on a touch screen, and for the
- *    crawler. The panel is an accelerator, not the only way through. (The favorites entry is the
- *    one exception in the row, and for a reason: see `FavoritesMenu`.)
+ * 2. **The trigger is a real `<a>` wherever it has somewhere to go.** "Parks entdecken" goes to
+ *    `/parks` whether or not the panel ever opens — with a keyboard, on a touch screen, and for the
+ *    crawler. The panel is an accelerator, not the only way through. `href` is optional for the one
+ *    entry that is a collection rather than a place: "more" has no page of its own, so its label is
+ *    the button. That costs the link graph nothing, because rule 1 keeps every destination inside
+ *    the panel in the HTML anyway. (The favorites entry is the other exception in the row, and for
+ *    a reason of its own: see `FavoritesMenu`.)
  *
  * Not a Radix `NavigationMenu`: it unmounts its content when closed, which is precisely the
  * behaviour rule 1 forbids, and forcing it to mount means fighting the library for the rest of its
  * API.
  */
 interface NavMenuProps {
-  /** Where the trigger itself navigates. */
-  href: string;
+  /** Where the trigger itself navigates. Omitted where the entry has no page — see rule 2. */
+  href?: string;
   label: string;
   /** Panel body. Rendered on the server, present in the HTML, hidden until opened. */
   children: React.ReactNode;
@@ -71,31 +74,54 @@ export function NavMenu({ href, label, children, floating }: NavMenuProps) {
   const { open, triggerProps, toggle } = useMenuTrigger();
   const ink = headerNavInk(floating);
 
+  const chevron = (
+    <ChevronDown
+      className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+      aria-hidden="true"
+    />
+  );
+
   return (
     <div {...triggerProps}>
       <div className="flex items-center gap-1">
-        <Link
-          href={href}
-          prefetch={false}
-          className={`text-sm font-medium transition-colors duration-200 ${ink}`}
-        >
-          {label}
-        </Link>
-        {/* Separate from the link so a click can open the panel without swallowing the
-            navigation — and so touch and keyboard have a control at all. */}
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={panelId}
-          aria-label={label}
-          onClick={toggle}
-          className={`-m-1 cursor-pointer p-1 transition-colors duration-200 ${ink}`}
-        >
-          <ChevronDown
-            className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-            aria-hidden="true"
-          />
-        </button>
+        {href ? (
+          <>
+            <Link
+              href={href}
+              prefetch={false}
+              className={`text-sm font-medium transition-colors duration-200 ${ink}`}
+            >
+              {label}
+            </Link>
+            {/* Separate from the link so a click can open the panel without swallowing the
+                navigation — and so touch and keyboard have a control at all. */}
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls={panelId}
+              aria-label={label}
+              onClick={toggle}
+              className={`-m-1 cursor-pointer p-1 transition-colors duration-200 ${ink}`}
+            >
+              {chevron}
+            </button>
+          </>
+        ) : (
+          /* No destination, so the label and the chevron are one control rather than a dead link
+             beside a live button. `aria-label` would be redundant here: the button has a name
+             already, and a second one reading the same word is what a screen reader announces
+             instead of the visible text. */
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={toggle}
+            className={`flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors duration-200 ${ink}`}
+          >
+            {label}
+            {chevron}
+          </button>
+        )}
       </div>
 
       <MenuBand id={panelId} open={open}>

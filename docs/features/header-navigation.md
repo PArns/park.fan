@@ -1,6 +1,6 @@
 # Header navigation
 
-The bar's five entries, the two panels behind them, and why the panels stop where they do.
+The bar's entries, the panels behind them, and why the panels stop where they do.
 
 Geometry (heights, the logo, the transparent-hero handoff) lives in
 [design system → header geometry](../design/design-system.md#header-geometry). This is about what
@@ -163,6 +163,59 @@ covering, which is the point of opening over the page rather than replacing it.
 `/95`, though, not the `/80` the small popovers use. Those sit over a card or a margin; this one
 covers half a park page, and at 80 % the headline, the status badges and a paragraph of body text
 read straight through the menu and fought with it, in both themes.
+
+---
+
+## "Mehr": one entry for everything that is reading material
+
+The row ran out of width. Six equal entries (Parks entdecken, Blog, Beste Reisezeit, Wörterbuch,
+So funktioniert's, Tagesplaner) plus favorites, search and the three preference buttons in one
+48 px bar, measured on `/parks/europe/germany` against the content box of the header row:
+
+| container | locale |                         before |                           after |
+| --------- | ------ | -----------------------------: | ------------------------------: |
+| 1024 px   | de     |                       +26.3 px |                   **+351.6** px |
+| 1024 px   | fr     | **−23.7 px**, document 1032 px | **+346.8** px, document 1024 px |
+| 1280 px   | de     |                       +34.3 px |                   **+377.6** px |
+| 1280 px   | fr     |                        +0.0 px |                   **+372.8** px |
+| 360 px    | de, fr |                       +27.2 px |                        +27.2 px |
+
+French at 1024 px was **over** its box and gave the document a horizontal scrollbar on every page,
+and at 1280 px it had nothing left. The nav row itself goes 667 → 342 px in German and 718 → 347 px
+in French.
+
+360 px does not move and cannot: the nav is `@min-[1024px]:flex`, so at a phone's width it does not
+exist. The ~25 px of slack the
+[header geometry requirement](../design/design-system.md#header-geometry) counts there is the
+actions row — lockup, search, locale, theme, °C/°F, burger — and none of this touches it.
+
+Four entries moved one level down, behind a trigger with no page of its own:
+
+- **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's** are a heading and a line each. Their
+  lists are separate tickets; the heading IS the link, which is what keeps all three hub URLs in
+  the HTML of every page.
+- **Blog** keeps the panel it had. Emptying it to match its neighbours would have taken 3 category
+  and 4 post links out of the link graph of ~35,000 pages for nothing in return.
+
+Two decisions worth keeping:
+
+**It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
+entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
+catch-all — `/alerts`, `/fancast` and `/contribute` are meant to land in here too — so it is named
+after being one, and it sits at the END of the three links, where a catch-all belongs.
+
+**`NavMenu.href` is optional for this one entry.** Every other trigger is a real `<a>` that works
+without the panel; "Mehr" has nowhere to go, so its label and its chevron are one button rather
+than a dead link beside a live one. The link graph does not notice, because the band is `hidden`
+and never unmounted — a crawler reads the four destinations inside it exactly as it read the four
+entries in the bar.
+
+**The three sections are a rail from `xl`, three columns below it.** Stacked above the blog block
+they cost the band 110 px; beside it they fit in the height the blog block occupies anyway, so the
+band is exactly as tall as it was when the blog trigger owned it (758.75 px at 1440 px, of which
+717.8 is the blog block). The rail is `xl:flex xl:flex-col`, not `xl:grid-cols-1`: it is a flex item
+and stretches to the blog block's height, and a grid that tall splits into three equal rows — the
+sections came out 226 px apart with their text pinned to the top of each.
 
 ---
 

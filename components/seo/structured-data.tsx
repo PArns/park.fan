@@ -282,7 +282,7 @@ export function SiteNavigationStructuredData({
   items,
 }: {
   locale: string;
-  /** Label + path (locale-relative, leading slash) of each entry, in the order the bar shows them. */
+  /** Label + path (locale-relative, leading slash) of each entry of the main navigation. */
   items: { name: string; path: string }[];
 }) {
   const baseUrl = `${SITE_URL}/${locale}`;
@@ -291,13 +291,16 @@ export function SiteNavigationStructuredData({
    * What the header's main navigation is, stated rather than inferred.
    *
    * Google works the primary navigation out from the markup on its own, so this is a hint, not a
-   * requirement — which is exactly why it stays SHORT. It names the five bar entries and the five
+   * requirement — which is exactly why it stays SHORT. It names five destinations and the five
    * continent hubs and stops there. The 23 country links are in the rendered `<nav>` where they
    * belong; repeating them here would put a second copy of the same list into the head of every
    * one of ~35,000 pages to tell the crawler something the markup already says.
    *
-   * An `ItemList` rather than a bare array: the order is the bar's order, and `position` is the
-   * only way to say so.
+   * It used to say "the five bar entries", and that stopped being true when four of them moved
+   * behind the "Mehr" trigger: they are still in the main navigation, one level down in a band
+   * that is `hidden` rather than unmounted, so the hint is unchanged and only its description was.
+   * An `ItemList` rather than a bare array: `position` states an order, and the order here is the
+   * one a reader meets these five in.
    */
   const data = {
     '@context': 'https://schema.org' as const,
