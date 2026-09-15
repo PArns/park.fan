@@ -1595,6 +1595,11 @@
       "thenText": "Ab dann stehen sie hier im Menü und auf der Startseite, mit Live-Status und Wartezeit."
     }
   },
+  "favoritesPage": {
+    "title": "Meine Favoriten",
+    "subtitle": "Parks, Attraktionen, Shows und Restaurants, die du in diesem Browser markiert hast, mit Live-Status und Wartezeiten.",
+    "howToTitle": "So legst du Favoriten an"
+  },
   "pushAlerts": {
     "showBell": {
       "follow": "Erinnerung vor {name} aktivieren",

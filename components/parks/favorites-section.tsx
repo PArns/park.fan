@@ -35,7 +35,13 @@ const emptySubscribe = () => () => {};
 const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
-export function FavoritesSection() {
+/**
+ * `standalone` is what `/favorites` passes: there the band is the page's whole content, so the
+ * page carries the title (as its `<h1>`) and the instructions (under the band, in every state)
+ * and this component draws neither. Everywhere else — homepage, blog, glossary — it is one band
+ * among several and needs its own heading to be one.
+ */
+export function FavoritesSection({ standalone = false }: { standalone?: boolean }) {
   const t = useTranslations('favorites');
   const mounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
 
@@ -114,7 +120,7 @@ export function FavoritesSection() {
   // three outcomes below this is. Hold the empty state's box anyway — it is the outcome
   // for the overwhelming majority, and the same box is this component's dynamic-import
   // fallback, so it stands from the first paint through hydration without moving.
-  if (!mounted) return <FavoritesEmptyState textHidden />;
+  if (!mounted) return <FavoritesEmptyState textHidden standalone={standalone} />;
 
   // Cookies say no favorites, so the answer is already settled: render the empty state now
   // instead of waiting for a query whose result we can predict. It used to return null here
@@ -122,16 +128,18 @@ export function FavoritesSection() {
   // gated on geolocation and answers `{parks: [], …}`, a TRUTHY empty result, so the guard
   // never held for long and the box arrived late instead of never.
   if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) {
-    return <FavoritesEmptyState />;
+    return <FavoritesEmptyState standalone={standalone} />;
   }
 
   // One skeleton shape for both waits below, so whatever replaces it lands in the same box.
   const renderSkeleton = (parkCount: number, attractionCount: number) => (
     <section className="bg-muted/30 px-4 py-8">
       <div className="container mx-auto">
-        <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
-          {t('title')}
-        </GlassSectionTitle>
+        {!standalone && (
+          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
+            {t('title')}
+          </GlassSectionTitle>
+        )}
         <div className="space-y-6">
           {parkCount > 0 && (
             <div>
@@ -184,7 +192,7 @@ export function FavoritesSection() {
     (sortedFavorites?.restaurants.length || 0);
 
   if (!hasAnyFavorites) {
-    return <FavoritesEmptyState />;
+    return <FavoritesEmptyState standalone={standalone} />;
   }
 
   // Favorites are here, their translations are not (yet). Hold the skeleton at the REAL counts so
@@ -203,10 +211,19 @@ export function FavoritesSection() {
   const content = (
     <section className="bg-muted/30 px-4 py-8">
       <div className="container mx-auto">
-        <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
-          <Star className="text-primary h-5 w-5" />
-          {t('title')} ({totalFavorites})
-        </h2>
+        {standalone ? (
+          // On `/favorites` the page's own `<h1>` says it, so this one is only here to keep the
+          // outline unbroken over the `<h3>` group headings below — and to say the count, which
+          // a server-rendered `<h1>` cannot carry.
+          <h2 className="sr-only">
+            {t('title')} ({totalFavorites})
+          </h2>
+        ) : (
+          <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+            <Star className="text-primary h-5 w-5" />
+            {t('title')} ({totalFavorites})
+          </h2>
+        )}
         {!position && (
           <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>
         )}

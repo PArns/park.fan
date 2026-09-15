@@ -20,16 +20,29 @@ import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
  * `textHidden` keeps the box at full height with the two lines held back, for the phase
  * where the cookie has not been read yet: a visitor who DOES have favorites should not be
  * told for a beat that they have none.
+ *
+ * `standalone` is for `/favorites`, where this band IS the page rather than one chapter of
+ * one: the page's own `<h1>` already says "Favorites" and its own `FavoritesHowTo` block
+ * already stands under the band in every state, so drawing either here would be the same
+ * heading twice and the same three steps twice.
  */
-export function FavoritesEmptyState({ textHidden = false }: { textHidden?: boolean }) {
+export function FavoritesEmptyState({
+  textHidden = false,
+  standalone = false,
+}: {
+  textHidden?: boolean;
+  standalone?: boolean;
+}) {
   const t = useTranslations('favorites');
 
   return (
     <section className="bg-muted/30 px-4 py-12">
       <div className="container mx-auto">
-        <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
-          {t('title')}
-        </GlassSectionTitle>
+        {!standalone && (
+          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
+            {t('title')}
+          </GlassSectionTitle>
+        )}
         {/* `inert`, not just `aria-hidden`: the box now holds a link and a button, and a
             focusable control inside an aria-hidden subtree is reachable by keyboard while being
             invisible to a screen reader — the worst of both. Before FavoritesHowTo there were
@@ -44,7 +57,7 @@ export function FavoritesEmptyState({ textHidden = false }: { textHidden?: boole
               FavoritesHowTo. Every state of this band renders the same component, so the box
               growing costs no shift: the pre-mount copy, the dynamic-import fallback and the
               settled empty state are the same markup with the text held back. */}
-          <FavoritesHowTo className="mx-auto mt-5 max-w-3xl" />
+          {!standalone && <FavoritesHowTo className="mx-auto mt-5 max-w-3xl" />}
         </div>
       </div>
     </section>

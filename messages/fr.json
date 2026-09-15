@@ -1595,6 +1595,11 @@
       "thenText": "Ils apparaissent ensuite dans ce menu et sur la page d’accueil, avec leur statut en direct et leur temps d’attente."
     }
   },
+  "favoritesPage": {
+    "title": "Mes favoris",
+    "subtitle": "Parcs, attractions, spectacles et restaurants que vous avez marqués dans ce navigateur, avec leur statut en direct et leurs temps d’attente.",
+    "howToTitle": "Comment ajouter des favoris"
+  },
   "pushAlerts": {
     "showBell": {
       "follow": "Activer un rappel avant {name}",

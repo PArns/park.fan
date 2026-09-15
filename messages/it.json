@@ -1595,6 +1595,11 @@
       "thenText": "Da quel momento compaiono in questo menu e in home page, con stato live e tempo di attesa."
     }
   },
+  "favoritesPage": {
+    "title": "I miei preferiti",
+    "subtitle": "Parchi, attrazioni, spettacoli e ristoranti che hai segnato in questo browser, con stato live e tempi di attesa.",
+    "howToTitle": "Come aggiungere preferiti"
+  },
   "pushAlerts": {
     "showBell": {
       "follow": "Attiva promemoria prima di {name}",

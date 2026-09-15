@@ -619,7 +619,7 @@ export function FavoritesMenuPanel({
           <PushAlertsMenuLink label={tPush('link')} />
           {somethingHidden && (
             <Link
-              href="/#favorites"
+              href="/favorites"
               prefetch={false}
               className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
             >
@@ -954,9 +954,9 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
     id: v.id,
     title: v.title,
     park: v.park,
-    // Ohne auflösbare Parkseite bleibt das Favoritenband der Startseite der einzige Ort, an dem
-    // der Eintrag noch zu sehen ist.
-    href: v.base ? v.build(v.base) : '/#favorites',
+    // Ohne auflösbare Parkseite bleibt die Favoritenseite der einzige Ort, an dem der Eintrag
+    // noch zu sehen ist.
+    href: v.base ? v.build(v.base) : '/favorites',
   }));
 }
 

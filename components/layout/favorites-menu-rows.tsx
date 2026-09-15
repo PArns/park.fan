@@ -150,13 +150,15 @@ export function RowGroupSkeleton({
 }
 
 /**
- * „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is — the
- * homepage band for favorites, `/alerts` for the alerts group.
+ * „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is —
+ * `/favorites` for favorites, `/alerts` for the alerts group. It used to be `/#favorites`, an
+ * anchor no page in this repo ever carried: the link landed at the top of the homepage and left
+ * the reader to find the band.
  */
 export function MoreLine({
   hidden,
   label,
-  href = '/#favorites',
+  href = '/favorites',
 }: {
   hidden: number;
   label: (n: number) => string;
