@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { CountryFlag } from '@/components/common/icons/flags';
+import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
@@ -200,7 +201,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
         <div className="grid min-w-0 flex-1 grid-cols-3 gap-x-6 gap-y-5 lg:grid-cols-5">
           {continents.map((continent) => (
             <div key={continent.slug} data-menu-stagger>
-              <SectionHeading
+              <MenuSectionHeading
                 label={translateContinent(t, continent.slug, locale, continent.name)}
                 count={continent.parkCount}
                 href={`/parks/${continent.slug}`}
@@ -247,7 +248,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
             data-menu-stagger
             className="border-border/60 hidden w-80 shrink-0 border-l pl-6 xl:block"
           >
-            <SectionHeading
+            <MenuSectionHeading
               label={showNearby ? tNav('nearby') : tNav('popularParks')}
               href="/parks"
             />
@@ -404,33 +405,6 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
 /** What a hovered country row hands to the detail row below it. */
 function target(continent: string, country: { slug: string; code: string }) {
   return { continent, country: country.slug, code: country.code };
-}
-
-/** The rule above each column — a link where there is a hub to link to. */
-function SectionHeading({ label, count, href }: { label: string; count?: number; href?: string }) {
-  const inner = (
-    <>
-      <span className="truncate">{label}</span>
-      {count != null && (
-        <span className="text-muted-foreground/70 text-[11px] font-normal tabular-nums">
-          {count}
-        </span>
-      )}
-    </>
-  );
-  const className =
-    'border-border/60 mb-2 flex items-baseline justify-between gap-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase';
-
-  if (!href) return <div className={`${className} text-foreground`}>{inner}</div>;
-  return (
-    <Link
-      href={href as '/'}
-      prefetch={false}
-      className={`${className} text-foreground hover:text-primary transition-colors`}
-    >
-      {inner}
-    </Link>
-  );
 }
 
 /**

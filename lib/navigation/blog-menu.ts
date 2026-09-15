@@ -11,8 +11,9 @@ import { versionedPath } from '@/lib/media/focus';
  * 1, news 1), **31 tags** and one author. So:
  *
  * - **Categories are in.** Three stable hubs; that is what a template link is for.
- * - **The newest posts are in.** Four links, server-rendered. At this publishing rate the "the
- *   template's link set changes with every post" objection costs nothing — it is four URLs on a
+ * - **The newest posts are in.** Six links (`RECENT_LIMIT` below), server-rendered. At this
+ *   publishing rate the "the template's link set changes with every post" objection costs nothing
+ *   — it is six URLs on a
  *   site that publishes a handful of times a year. If the blog ever reaches the point where the
  *   front of the list turns over weekly, move this pane to a fetch the way the parks menu does
  *   with its cities.

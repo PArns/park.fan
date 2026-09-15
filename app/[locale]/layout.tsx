@@ -148,9 +148,15 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const geoMenu = await getGeoMenu();
   const blogMenu = showBlog ? getBlogMenu(locale as Locale) : undefined;
   const featuredParks = getFeaturedParksMenu(locale);
-  // The same entries the bar renders, in the same order, plus the continent hubs the parks menu
-  // opens onto. Kept to ten: this is a hint about the primary navigation, and the country links
-  // are already in the rendered <nav>.
+  // The targets of the main navigation, in this list's own order, plus the continent hubs the
+  // parks menu opens onto. Kept to ten, or nine where `showBlog` is false: this is a hint about
+  // the primary navigation, and the country links are already in the rendered <nav>.
+  //
+  // It used to say "the same entries the bar renders, in the same order", and that has not been
+  // true since four of them moved behind the "Mehr" trigger: they are still in the navigation,
+  // one level down in a band that is `hidden` rather than unmounted, but the bar's order is no
+  // longer this one. The planner is in the bar and not in here, which predates that move and is
+  // PAR-248.
   const tNav = await getTranslations({ locale, namespace: 'navigation' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const navigationItems = [

@@ -14,7 +14,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
-import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
+import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
@@ -471,38 +471,41 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               {t('explore')}
             </Link>
           )}
-          {showBlog &&
-            (blogMenu && blogMenu.categories.length > 0 ? (
-              <NavMenu href="/blog" label={t('blog')} floating={isTransparent}>
-                <BlogMenuPanel {...blogMenu} />
-              </NavMenu>
-            ) : (
-              <Link href="/blog" prefetch={false} className={navLinkClass}>
-                {t('blog')}
-              </Link>
-            ))}
-          {/* Visible from `md` up, like the rest of the row. Hiding it until `lg` would have left
-              the hub unreachable between 768 and 1023 px, where the burger is already gone. */}
-          <Link href={bestTimePath} prefetch={false} className={navLinkClass}>
-            {t('bestTime')}
-          </Link>
-          <Link href={glossaryPath} prefetch={false} className={navLinkClass}>
-            {t('glossary')}
-          </Link>
-          <Link href={howtoPath} prefetch={false} className={navLinkClass}>
-            {t('howto')}
-          </Link>
           {/* Der Tagesplaner. Er stand hier zuerst nicht, weil diese Zeile mit
-              sechs Einträgen schon umbrach — das ist mit `whitespace-nowrap`
-              und der schmaleren Suche oben behoben, und erst dadurch ist Platz
-              für einen siebten. */}
+              sechs Einträgen schon umbrach; `whitespace-nowrap` und die
+              schmalere Suche haben ihn möglich gemacht und **nicht** gereicht —
+              auf Französisch lief die Zeile bei 1024 px 23,7 px über ihre Box,
+              siehe den Kommentar am „Mehr"-Eintrag unten. */}
           <Link href={plannerPath} prefetch={false} className={navLinkClass}>
             {t('planner')}
           </Link>
+          {/* Der Sammel-Eintrag, und er ist der Grund, warum die vier Links darüber hier nicht
+              mehr stehen: „Beste Reisezeit", „Wörterbuch", „So funktioniert's" und „Blog" waren
+              vier eigene Einträge in einer Zeile, die auf Französisch bei 1024 px 23,7 px über
+              ihre Box lief und das Dokument auf 1032 px zog. Sie liegen jetzt im Panel, das
+              `MoreMenuPanel` beschreibt — im HTML jeder Seite, weil `MenuBand` das Panel nur
+              versteckt und nie abhängt.
+
+              Als letzter der drei Navigationseinträge, weil ein Sammel-Trigger ans Ende einer
+              Zeile gehört; die Favoriten dahinter sind wie „Mehr" kein Link. Vor allen dreien
+              kann noch der Nearby-Chip stehen, der ist aber ein Fund und kein Menüpunkt.
+
+              Ohne `href`: „Mehr" hat keine eigene Seite. Siehe NavMenu, Regel 2. */}
+          <NavMenu label={t('more')} floating={isTransparent}>
+            <MoreMenuPanel
+              bestTimeHref={bestTimePath}
+              glossaryHref={glossaryPath}
+              howtoHref={howtoPath}
+              showBlog={showBlog}
+              blog={blogMenu}
+            />
+          </NavMenu>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
-              dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
+              dasselbe Band wie „Parks entdecken" und „Mehr", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
-              lernen. Der einzige Eintrag ohne Link — siehe FavoritesMenu. */}
+              lernen. Einer von zwei Einträgen ohne Link, aus einem anderen Grund als „Mehr":
+              „Mehr" ist eine Sammlung ohne eigene Seite, die Favoriten haben eine, die jedem
+              Leser etwas anderes antwortet — siehe FavoritesMenu. */}
           <FavoritesMenu floating={isTransparent} />
         </nav>
 

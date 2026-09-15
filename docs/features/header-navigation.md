@@ -1,6 +1,6 @@
 # Header navigation
 
-The bar's five entries, the two panels behind them, and why the panels stop where they do.
+The bar's entries, the panels behind them, and why the panels stop where they do.
 
 Geometry (heights, the logo, the transparent-hero handoff) lives in
 [design system → header geometry](../design/design-system.md#header-geometry). This is about what
@@ -130,15 +130,16 @@ request drops its key so the next hover can retry instead of caching the failure
 23 countries, hovering one, moving on before the answer lands, then coming back: **23 of 23 stayed
 empty before, 0 of 23 after**.
 
-## The blog panel: three categories, four posts, no tags
+## The blog panel: three categories, six posts, no tags
 
 Fully server-rendered — the blog manifest is a build-time artifact, so there is no fetch and no
-loading state, and it is eight links. The four posts carry their own cover images, which is where
+loading state, and it is ten links. The six posts (`RECENT_LIMIT`) carry their own cover images,
+which is where
 this differs from the parks rail: those had to be a curated four because 14 of 212 parks have a
 picture, here the coverage is 7 of 7 and the covers are already 16:9 crops.
 
 The blog holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes 1, news 1),
-**31 tags** and one author. So the categories are in, the four newest posts are in, and **the tags
+**31 tags** and one author. So the categories are in, the six newest posts are in, and **the tags
 are out**. 31 tag pages over 7 posts means most of them are one post's teaser under a second URL;
 promoting that set into a template that runs on ~35,000 pages hands sitewide weight to the pages
 worth the least and dilutes what the three category hubs get. Tags stay on the posts that carry
@@ -163,6 +164,99 @@ covering, which is the point of opening over the page rather than replacing it.
 `/95`, though, not the `/80` the small popovers use. Those sit over a card or a margin; this one
 covers half a park page, and at 80 % the headline, the status badges and a paragraph of body text
 read straight through the menu and fought with it, in both themes.
+
+---
+
+## "Mehr": one entry for everything that is reading material
+
+The row ran out of width. Six equal entries (Parks entdecken, Blog, Beste Reisezeit, Wörterbuch,
+So funktioniert's, Tagesplaner) plus favorites, search and the three preference buttons in one
+48 px bar, measured on `/parks/europe/germany` against the content box of the header row:
+
+| container | locale |                         before |                           after |
+| --------- | ------ | -----------------------------: | ------------------------------: |
+| 1024 px   | de     |                       +26.3 px |                   **+351.6** px |
+| 1024 px   | fr     | **−23.7 px**, document 1032 px | **+346.8** px, document 1024 px |
+| 1280 px   | de     |                       +34.3 px |                   **+377.6** px |
+| 1280 px   | fr     |                        +0.0 px |                   **+372.8** px |
+| 360 px    | de, fr |                       +27.2 px |                        +27.2 px |
+
+French at 1024 px was **over** its box and gave the document a horizontal scrollbar on every page,
+and at 1280 px it had nothing left. The nav row itself goes 667 → 342 px in German and 718 → 347 px
+in French.
+
+360 px does not move and cannot: the nav is `@min-[1024px]:flex`, so at a phone's width it does not
+exist. The ~25 px of slack the
+[header geometry requirement](../design/design-system.md#header-geometry) counts there is the
+actions row — lockup, search, locale, theme, °C/°F, burger — and none of this touches it.
+
+Four entries moved one level down, behind a trigger with no page of its own:
+
+- **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's** are a heading and a line each. Their
+  lists are separate tickets; the heading IS the link, which is what keeps all three hub URLs in
+  the HTML of every page.
+- **Blog** keeps the panel it had. Emptying it to match its neighbours would have taken 3 category
+  and 6 post links (`RECENT_LIMIT`) out of the link graph of ~35,000 pages for nothing in return.
+
+**The four sections cost five strings in the chrome, and the chrome is serialized by every page.**
+`navigation.more` plus one hint per section, measured against the namespace without them:
+**+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr** (raw +283 to +325).
+They are in `navigation` rather than in `bestTime`/`glossary`/`howto` for the reason
+`BlogMenuPanel` already carries in its own comment: one `useTranslations('blog')` in a header
+component once took the layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single
+label. A hint that grows into a paragraph belongs in a lazy namespace, not here.
+
+Below two posts in a locale there is no blog block and no rail: the four sections are a flat row of
+columns, blog among them as a heading and a line. The count of posts is the whole condition, and a
+count of categories is deliberately not in it — the bar's old entry switched on
+`categories.length > 0`, and that term throws away up to six post links for a locale whose posts
+carry no category at all, which `BlogMenuPanel` renders perfectly well. `BlogMenuPanel` draws the panel's only `/blog`
+link in the column of posts _after_ the lead one, so a locale with a single published post would
+otherwise have had no way from the header to its blog index, where the bar's old entry was always a
+link to it. The `showBlog === false` case takes the same branch with three columns instead of four,
+for the same reason: a rail is a relationship to the block beside it.
+
+Two decisions worth keeping:
+
+**It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
+entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
+catch-all — `/alerts`, `/fancast` and `/contribute` are meant to land in here too — so it is named
+after being one, and it sits at the END of the row's three entries, where a catch-all belongs.
+
+**`NavMenu.href` is optional for this one entry.** Every other trigger is a real `<a>` that works
+without the panel; "Mehr" has nowhere to go, so its label and its chevron are one button rather
+than a dead link beside a live one. The link graph does not notice, because the band is `hidden`
+and never unmounted — a crawler reads the destinations inside it exactly as it read the four
+entries in the bar.
+
+**The three sections are a rail from a bar width of 1280 px, three columns below it — and the rail
+is not the shorter of the two.** Measured at 1440 px on the same build, same page, both with every cover decoded:
+stacked **756.3 px**, as a rail **758.8 px**. The rail takes 256 px off the blog block and the block
+gives the height straight back by wrapping, its two halves going 563.1 → 654.8 px. Arithmetic that
+holds the block's height constant answers 867.6 px and is measuring a layout that does not exist;
+that number stood in this file and in the component for one review round. So the rail is the shape
+the panel wants, not a saving, and neither layout touches the real figure: three quarters of a
+900 px window, which is the blog block's height and predates this panel.
+
+The rail is `flex flex-col`, not `grid-cols-1`: it is a flex item and stretches to the blog block's
+height, and a grid that tall splits into three equal rows — the sections came out 226 px apart with
+their text pinned to the top of each. Its `w-64` and `border-r` describe a relationship to the block
+beside it, so with `showBlog` false the component returns the three columns alone rather than a
+256 px rail and a rule into an empty half (counter-checked at 1440 px: 3 × 394.7 px, band 93.1 px).
+
+**Its one breakpoint is `@min-[1280px]:`, never `xl:`.** The `<header>`
+carries `@container` because the trip planner's panel insets the page, so the bar gets narrower
+without the window moving — at a 1600 px window with the planner open the band's content column is
+992 px while `xl:` still reads 1600, and the rail would split a band that has the width the stacked
+layout is for, leaving the blog block 712 px of the 992 it would otherwise have. `MenuBand` one
+level up already sizes that column
+with the same numbers as container queries.
+
+**No `data-menu-stagger` on the blog wrapper.** `useMenuReveal` collects its targets with
+`querySelectorAll`, i.e. at any depth, and `BlogMenuPanel` carries three of its own. Nested, the
+tween runs on parent and child, so the block starts 20 px high instead of 10 and three stagger steps
+late. This is the only place in the app where two of them could nest; every other panel keeps its
+targets flat.
 
 ---
 
@@ -202,8 +296,12 @@ tween clears its inline `transform` when it finishes, so nothing is left on the 
 ## Structured data
 
 `SiteNavigationStructuredData` emits an `ItemList` of `SiteNavigationElement` beside the existing
-`Organization` and `WebSite` data: the five bar entries in the bar's order, then the five continent
-hubs. Ten items, and it stops there. Google works the primary navigation out from the markup on its
+`Organization` and `WebSite` data: five targets of the main navigation, in that list's own order,
+then the five continent hubs. Ten items, and it stops there — nine where `showBlog` is false, since
+the blog entry hangs off it. It used to say "the five bar entries in
+the bar's order", which stopped being true when four of them moved behind the "Mehr" trigger — they
+are still in the navigation, one level down, but the bar's order is no longer this one, and the
+planner is in the bar and not in the list (PAR-248). Google works the primary navigation out from the markup on its
 own, so this is a hint; repeating the 23 country links here would put a second copy of a list the
 markup already carries into the head of every page.
 
@@ -211,7 +309,9 @@ markup already carries into the head of every page.
 
 ## Measured
 
-Against a running dev server, park page, `de`:
+Against a running dev server, park page, `de`, measured for the mega-menu PR and **not** re-measured
+for "Mehr" — that change moves one `/blog` link out of the `<nav>` and into the panel, so the link
+count below is 48 before it and 47 after, with the same destinations:
 
 |                                                         |                     before |                      after |
 | ------------------------------------------------------- | -------------------------: | -------------------------: |
@@ -232,7 +332,7 @@ stops being worth the scannability, rendering them after mount moves them into t
 and off all 35,000 pages.
 
 The 48 break down as: `/parks` + 5 continents + 23 countries + 6 featured parks, `/blog` + 3
-categories + 4 posts, plus Beste Reisezeit, Wörterbuch and Anleitung.
+categories + 6 posts, plus Beste Reisezeit, Wörterbuch and Anleitung.
 
 ---
 
@@ -258,7 +358,7 @@ in all six locales: no overflow, no wrap.
 
 ## Favoriten im Band
 
-Der Stern rechts in der Leiste öffnet dieselbe volle Bandfläche wie „Parks entdecken" und „Blog",
+Der Stern rechts in der Leiste öffnet dieselbe volle Bandfläche wie „Parks entdecken" und „Mehr",
 über die gemeinsame `MenuBand` (`components/layout/menu-band.tsx`, aus `NavMenu` herausgelöst, als
 der zweite Auslöser dazukam — zwei Kopien der Glasfläche wären zwei Gelegenheiten, dass Ring, Blur
 und Container-Padding auseinanderlaufen).
@@ -275,8 +375,9 @@ Vier Entscheidungen sitzen darin:
   auftaucht, schiebt Sprachwahl, Theme-Schalter und Burger zur Seite. 32 px, dafür kein Sprung.
 - **Er liegt in der Navigationszeile und öffnet mit derselben Hysterese wie die Nachbarn**
   (`useMenuTrigger`). Eine Zeile, in der ein Eintrag anders reagiert als die daneben, muss man
-  zweimal lernen. Er ist der einzige Eintrag ohne Link — siehe `FavoritesMenu`: Favoriten haben
-  kein Ziel, das für alle dasselbe zeigt.
+  zweimal lernen. Er ist einer von zwei Einträgen ohne Link, aus einem anderen Grund als „Mehr" —
+  siehe `FavoritesMenu`: „Mehr" ist eine Sammlung ohne eigene Seite, die Favoriten haben eine, die
+  jedem Leser etwas anderes antwortet und deshalb keine Adresse ist, die man verlinken kann.
 - **Die Anfrage läuft erst beim Öffnen** (`useFavorites({ enabled, poll })`). Der Header rendert
   auf ~35 000 Seiten; ungebremst wäre das ein `/api/favorites`-Call pro Seite für jeden, der je
   etwas markiert hat. Der Query-Key ist derselbe wie auf der Startseite, dort kostet das Öffnen
