@@ -355,7 +355,7 @@ It is the same card now, built from the same parts:
 - **A cell is gated on its content, never on the data behind it — so the content may not decline
   to render.** The same chapter's grid decides its column count from `attraction.ropeDrop &&
 typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answered `null` for
-  its fourth case: not worth a rope drop, not an evening ride, and no neighbour in the park
+  its negative case: not worth a rope drop, not an evening ride, and no neighbour in the park
   carrying a recommendation either, so the muted „no need to rush" note had nothing to contrast
   against. The cell, its hairline and a second grid column were drawn around nothing. Measured
   over all 213 parks: **183 ride pages showed a visibly empty half** and 159 more an empty box
@@ -363,12 +363,26 @@ typicalWaits?.displayable`, which is one level above `RopeDropCard`, which answe
   the Efteling carrying a recommendation is one of them, which is how it was reported. The fix is
   not a third condition at the call site (a second copy of the card's own logic, free to drift
   from it) but making the component **total**: `ropeDropCardVariant()` resolves every
-  recommendation to one of four panels, and `RopeDropCard` returns `React.ReactElement`, so the
+  recommendation to one of three panels, and `RopeDropCard` returns `React.ReactElement`, so the
   next `return null` is a compiler error rather than another empty half-card. Where a component
   genuinely may render nothing, the gate has to be the predicate it uses itself, exported and
   shared — the count and the cell must ask the same question.
+- **Filling a cell with one line is the same bug one size smaller, and the fix is a footer rather
+  than a panel.** For a while there were four panels, because a ride in a park that _does_ carry
+  recommendations got the muted „no need to rush" note on its own: half a card, one line of grey
+  text, beside a full `AttractionTypicalWaits` chart in the cell next door. Measured against the
+  production API over all 213 parks on 2026-09-15 that is **470 ride pages in 87 parks**, against
+  the 183 the `null` cost. The note itself is not the problem — it exists as a contrast to the
+  neighbours that do carry a tip, and that contrast is real information — so it moved into the
+  stand-in panel's footer, beside the low-confidence hint and under the same single hairline, and
+  `parkHasRecommendations` stopped picking a panel. The ride now gets the readings it always had:
+  **312 of those 470 print the quietest-weekday sentence (66 %)**, against 209 of the 377 rides
+  that resolve to the stand-in on their own (55 %), counted in the same pass. The note also lost
+  the „(ca. {openWait} Min. zur Öffnung)" it used to carry, in all six locales — inside the card
+  that figure is already a tile and already the first half of the sentence under the heading, and
+  a third copy is what makes a reader check whether the three agree.
 - **A panel standing in for a missing recommendation says what the data supports, and its shape is
-  a measurement.** „Beste Besuchszeit planen" promises an answer, so the fourth panel gives the
+  a measurement.** „Beste Besuchszeit planen" promises an answer, so the stand-in panel gives the
   ride's own readings rather than an apology. Which readings was decided over the 183 rides it is
   drawn for, not at the whiteboard: the quietest **hour** is only defensible on **15** of them
   (146 carry a trough wait equal to the wait at opening, 89 place the trough at opening itself),
