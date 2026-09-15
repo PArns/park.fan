@@ -195,9 +195,17 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
 
   return (
     <div>
-      <div className="flex flex-col gap-5 xl:flex-row xl:gap-6">
+      {/* Container queries, not `lg:`/`xl:`, and for the reason `components/layout/header.tsx`
+          gives for its own four switches: the trip planner's panel insets the bar without the
+          window moving, so a media query here lays out against room this panel does not have.
+          Measured at a 1600 px window with the panel open: the header is 1152, this band's
+          content column 992 — and `xl:` still read 1600, so the 320 px rail drew, the five
+          continent columns split the remaining 648 into 110.4 px each, and 5 of the 23 country
+          labels were cut (narrowest label box 64 px). The thresholds are the old numbers, so
+          with the planner shut, where the header spans the window, nothing moves. */}
+      <div className="flex flex-col gap-5 @min-[1280px]:flex-row @min-[1280px]:gap-6">
         {/* Level 1 + 2 — every continent and every country, all of it in the first HTML. */}
-        <div className="grid min-w-0 flex-1 grid-cols-3 gap-x-6 gap-y-5 lg:grid-cols-5">
+        <div className="grid min-w-0 flex-1 grid-cols-3 gap-x-6 gap-y-5 @min-[1024px]:grid-cols-5">
           {continents.map((continent) => (
             <div key={continent.slug} data-menu-stagger>
               <SectionHeading
@@ -240,12 +248,13 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
           ))}
         </div>
 
-        {/* The photo rail. Hidden below `xl`: the five country columns need the room first, and a
-            2×2 photo grid stacked under them would push the detail row off the screen. */}
+        {/* The photo rail. Hidden below 1280 px OF THE BAR: the five country columns need the
+            room first, and a 2×2 photo grid stacked under them would push the detail row off
+            the screen. */}
         {featured.length > 0 && (
           <div
             data-menu-stagger
-            className="border-border/60 hidden w-80 shrink-0 border-l pl-6 xl:block"
+            className="border-border/60 hidden w-80 shrink-0 border-l pl-6 @min-[1280px]:block"
           >
             <SectionHeading
               label={showNearby ? tNav('nearby') : tNav('popularParks')}
@@ -343,7 +352,10 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
               )}
             </div>
             {detail === undefined ? (
-              <div className="grid grid-cols-3 gap-x-6 lg:grid-cols-5" aria-hidden="true">
+              <div
+                className="grid grid-cols-3 gap-x-6 @min-[1024px]:grid-cols-5"
+                aria-hidden="true"
+              >
                 {Array.from({ length: CITY_COLUMNS }, (_, i) => (
                   <div key={i} data-row-stagger className="space-y-1.5">
                     <div className="bg-muted/60 h-2.5 w-16 animate-pulse rounded" />
@@ -352,7 +364,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
                 ))}
               </div>
             ) : (
-              <ul className="grid grid-cols-3 items-start gap-x-6 gap-y-3 lg:grid-cols-5">
+              <ul className="grid grid-cols-3 items-start gap-x-6 gap-y-3 @min-[1024px]:grid-cols-5">
                 {shown.map((city) => (
                   <li key={city.slug} data-row-stagger>
                     <Link
