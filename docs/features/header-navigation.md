@@ -210,12 +210,26 @@ than a dead link beside a live one. The link graph does not notice, because the 
 and never unmounted — a crawler reads the four destinations inside it exactly as it read the four
 entries in the bar.
 
-**The three sections are a rail from `xl`, three columns below it.** Stacked above the blog block
-they cost the band 110 px; beside it they fit in the height the blog block occupies anyway, so the
-band is exactly as tall as it was when the blog trigger owned it (758.75 px at 1440 px, of which
-717.8 is the blog block). The rail is `xl:flex xl:flex-col`, not `xl:grid-cols-1`: it is a flex item
-and stretches to the blog block's height, and a grid that tall splits into three equal rows — the
-sections came out 226 px apart with their text pinned to the top of each.
+**The three sections are a rail from `xl`, three columns below it — and the rail is not the shorter
+of the two.** Measured at 1440 px on the same build, same page, both with every cover decoded:
+stacked **756.3 px**, as a rail **758.8 px**. The rail takes 256 px off the blog block and the block
+gives the height straight back by wrapping, its two halves going 563.1 → 654.8 px. Arithmetic that
+holds the block's height constant answers 867.6 px and is measuring a layout that does not exist;
+that number stood in this file and in the component for one review round. So the rail is the shape
+the panel wants, not a saving, and neither layout touches the real figure: three quarters of a
+900 px window, which is the blog block's height and predates this panel.
+
+The rail is `xl:flex xl:flex-col`, not `xl:grid-cols-1`: it is a flex item and stretches to the blog
+block's height, and a grid that tall splits into three equal rows — the sections came out 226 px
+apart with their text pinned to the top of each. Its `xl:w-64` and `xl:border-r` describe a
+relationship to the block beside it, so with `showBlog` false the component returns the three
+columns alone rather than a 256 px rail and a rule into an empty half.
+
+**No `data-menu-stagger` on the blog wrapper.** `useMenuReveal` collects its targets with
+`querySelectorAll`, i.e. at any depth, and `BlogMenuPanel` carries three of its own. Nested, the
+tween runs on parent and child, so the block starts 20 px high instead of 10 and three stagger steps
+late. This is the only place in the app where two of them could nest; every other panel keeps its
+targets flat.
 
 ---
 

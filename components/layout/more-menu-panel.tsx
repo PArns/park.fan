@@ -61,14 +61,44 @@ export function MoreMenuPanel({
     { href: howtoHref, label: t('howto'), hint: t('howtoHint') },
   ];
 
+  const columns = (
+    <>
+      {sections.map((section) => (
+        <div key={section.href} data-menu-stagger>
+          <MenuSectionHeading label={section.label} href={section.href} />
+          <p className="text-muted-foreground text-[13px] leading-relaxed text-pretty">
+            {section.hint}
+          </p>
+        </div>
+      ))}
+    </>
+  );
+
   /*
-   * A rail beside the blog block from `xl`, three columns above it below that — the same shape,
-   * and for the same reason, as the parks panel's photo rail.
+   * Without a blog there is no rail — the three sections ARE the panel and take its width. The
+   * rail's `xl:w-64` and its `xl:border-r` describe a relationship to the block beside it, so with
+   * nothing there they would draw a 256 px column and a rule into the empty half of a band up to
+   * 1280 px wide. The branch is latent today (every locale publishes posts) and the prop exists for
+   * the case where one does not.
+   */
+  if (!showBlog) {
+    return <div className="grid gap-x-8 gap-y-5 sm:grid-cols-3">{columns}</div>;
+  }
+
+  /*
+   * A rail beside the blog block from `xl`, three columns above it below that — the same shape as
+   * the parks panel's photo rail.
    *
-   * Stacked, the three sections cost the band 110 px it did not have to spend: the blog block alone
-   * already draws 756 px of a 900 px window at 1440, and a menu that fills the screen it hangs in
-   * stops reading as a menu. In the rail they fit in the height the blog block occupies anyway, so
-   * the band is exactly as tall as it was when the blog trigger owned it.
+   * **It is not the shorter of the two, and the first version of this comment claimed it was.**
+   * Measured at 1440 px on the same build, same page, both with every cover decoded: stacked
+   * 756.3 px, as a rail 758.8 px. The rail takes 256 px off the blog block, and the block gives the
+   * height straight back by wrapping — its two halves go 563.1 → 654.8 px. Any arithmetic that
+   * holds the block's height constant (mine did, and answered 867.6) is measuring a layout that
+   * does not exist.
+   *
+   * So the reason is the shape the issue asks for and not a saving: four sections reading side by
+   * side at the width where there is room for them. Neither layout helps with the band filling
+   * three quarters of a 900 px window — that height is the blog block's and predates this panel.
    */
   return (
     <div className="flex flex-col gap-5 xl:flex-row xl:gap-6">
@@ -77,33 +107,26 @@ export function MoreMenuPanel({
           sections came out 226 px apart with their text pinned to the top of each. A column lets
           them keep their own height while the border still runs the full side. */}
       <div className="border-border/60 grid gap-x-8 gap-y-5 sm:grid-cols-3 xl:flex xl:w-64 xl:shrink-0 xl:flex-col xl:border-r xl:pr-6">
-        {sections.map((section) => (
-          <div key={section.href} data-menu-stagger>
-            <MenuSectionHeading label={section.label} href={section.href} />
-            <p className="text-muted-foreground text-[13px] leading-relaxed text-pretty">
-              {section.hint}
-            </p>
-          </div>
-        ))}
+        {columns}
       </div>
 
-      {showBlog && (
-        <div
-          data-menu-stagger
-          className="border-border/60 min-w-0 flex-1 border-t pt-4 xl:border-t-0 xl:pt-0"
-        >
-          {blog && blog.categories.length > 0 ? (
-            <BlogMenuPanel {...blog} />
-          ) : (
-            <>
-              <MenuSectionHeading label={t('blog')} href="/blog" />
-              <p className="text-muted-foreground text-[13px] leading-relaxed text-pretty">
-                {t('blogHint')}
-              </p>
-            </>
-          )}
-        </div>
-      )}
+      {/* No `data-menu-stagger` on this wrapper. `useMenuReveal` collects its targets with
+          `querySelectorAll`, i.e. at any depth, and `BlogMenuPanel` carries three of its own —
+          nesting them would tween the parent AND the child, so the block would start 20 px high
+          instead of 10 and three stagger steps late. It is the only place in the app where the two
+          could nest, because every other panel keeps its targets flat. */}
+      <div className="border-border/60 min-w-0 flex-1 border-t pt-4 xl:border-t-0 xl:pt-0">
+        {blog && blog.categories.length > 0 ? (
+          <BlogMenuPanel {...blog} />
+        ) : (
+          <div data-menu-stagger>
+            <MenuSectionHeading label={t('blog')} href="/blog" />
+            <p className="text-muted-foreground text-[13px] leading-relaxed text-pretty">
+              {t('blogHint')}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

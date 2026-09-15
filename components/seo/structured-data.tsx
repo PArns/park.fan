@@ -299,8 +299,11 @@ export function SiteNavigationStructuredData({
    * It used to say "the five bar entries", and that stopped being true when four of them moved
    * behind the "Mehr" trigger: they are still in the main navigation, one level down in a band
    * that is `hidden` rather than unmounted, so the hint is unchanged and only its description was.
-   * An `ItemList` rather than a bare array: `position` states an order, and the order here is the
-   * one a reader meets these five in.
+   *
+   * An `ItemList` rather than a bare array, because `position` is the only way to state an order at
+   * all — and the order is this list's own, not a copy of any surface's. It has not mirrored the
+   * bar since the blog moved out of it, and the caller is where it is decided
+   * (`app/[locale]/layout.tsx`).
    */
   const data = {
     '@context': 'https://schema.org' as const,
