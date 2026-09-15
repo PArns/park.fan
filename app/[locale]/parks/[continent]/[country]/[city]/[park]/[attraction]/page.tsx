@@ -687,7 +687,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   `null` for a ride in a park with no recommendation at all, and this cell, its
                   hairline and a second column stood around nothing on 183 ride pages. A cell
                   whose content can decline to render has to be gated on the content, not on the
-                  data behind it. */}
+                  data behind it.
+
+                  Rendering an element was not the whole of it: where the park DID carry
+                  recommendations elsewhere, the card filled its half with one line of muted text
+                  on 470 further ride pages. That line is the `bestTime` panel's footer now
+                  (PAR-122), so `parkHasRecommendations` below no longer picks a panel — it picks
+                  whether that footer is printed. */}
                 <PanelGrid
                   columnCount={attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1}
                 >

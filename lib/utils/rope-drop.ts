@@ -9,8 +9,14 @@ import { roundWaitTo5, roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
  * Prefers the server verdict (`endOfDayWorth`, backend PR #69, computed with a
  * pre-closing line-drain guard). Cached recommendations predating that field
  * fall back to a local heuristic: opening must be genuinely costly (≥30 min)
- * and the trough clearly past the opening window (≥2 h after open). Rides that
- * are simply never busy (low openWait) keep the plain "no need to rush" note.
+ * and the trough clearly past the opening window (≥2 h after open).
+ *
+ * Everything this returns `false` for, and that is not `worth` either, goes to the `bestTime`
+ * panel. That is NOT the same as "never busy": of the 470 such rides in parks that do carry
+ * recommendations, 65 peak at 60 minutes or more and 7 at 90 or more, up to Tokyo DisneySea's
+ * Soaring at 140 minutes from opening against a 180-minute peak. What the branch says is only
+ * that being there at rope drop does not pay and that the day's trough is not late enough to
+ * send somebody back in the evening — no claim about the size of the queue in between.
  */
 export function isEveningBetter(ropeDrop: RopeDropInfo): boolean {
   if (ropeDrop.worth) return false;
@@ -85,15 +91,15 @@ export function ropeDropDisplayWaits(ropeDrop: RopeDropInfo): RopeDropDisplayWai
   };
 }
 
-/** Which of `RopeDropCard`'s four panels a recommendation resolves to. */
-export type RopeDropCardVariant = 'worth' | 'evening' | 'bestTime' | 'note';
+/** Which of `RopeDropCard`'s three panels a recommendation resolves to. */
+export type RopeDropCardVariant = 'worth' | 'evening' | 'bestTime';
 
 /**
  * The panel a `ropeDrop` block gets. Total by construction — every recommendation resolves to
- * one of four, and none of them is "nothing".
+ * one of three, and none of them is "nothing".
  *
  * That totality is the point rather than a detail of the switch. The card used to answer `null`
- * for the fourth case (not worth, not an evening ride, and no neighbour in the park carrying a
+ * for the negative case (not worth, not an evening ride, and no neighbour in the park carrying a
  * recommendation either — the "no need to rush" note has nothing to contrast against there),
  * while its cell on the ride page hangs on `attraction.ropeDrop` being present, one level up and
  * out of reach of that `null`. So the chapter drew a `PANEL_CELL`, its hairline and a second grid
@@ -101,12 +107,23 @@ export type RopeDropCardVariant = 'worth' | 'evening' | 'bestTime' | 'note';
  * visibly empty half**, measured over all 213 parks, plus 159 more where the single column was an
  * empty box under a heading. Every Efteling ride carrying a recommendation is one of them, which
  * is how it was reported.
+ *
+ * **There were four for a while, and the fourth was the same mistake one size smaller.** Where
+ * the park DID carry recommendations, a ride without one got a `note` panel: one line of muted
+ * text in half a card, beside a full `AttractionTypicalWaits` chart in the cell next door.
+ * Measured against the production API over all 213 parks on 2026-09-15, that was **470 ride pages
+ * in 87 parks**. The contrast it drew is real information and it is kept — as the `bestTime`
+ * panel's footer, where it costs a line rather than a card (PAR-122, decided by Patrick on
+ * 2026-09-13). So `parkHasRecommendations` is no longer a branch here; `RopeDropCard` reads it
+ * for that footer alone, and the panel itself is the one the same ride would get in a park with
+ * no recommendation at all.
+ *
+ * The population is at least as well served by it as the one the panel was built for: 312 of
+ * those 470 print the quietest-weekday sentence (66 %), against 209 of the 377 rides resolving to
+ * `bestTime` on their own (55 %), both counted in the same pass over the same snapshot.
  */
-export function ropeDropCardVariant(
-  ropeDrop: RopeDropInfo,
-  { parkHasRecommendations = true }: { parkHasRecommendations?: boolean } = {}
-): RopeDropCardVariant {
+export function ropeDropCardVariant(ropeDrop: RopeDropInfo): RopeDropCardVariant {
   if (ropeDrop.worth) return 'worth';
   if (isEveningBetter(ropeDrop)) return 'evening';
-  return parkHasRecommendations ? 'note' : 'bestTime';
+  return 'bestTime';
 }

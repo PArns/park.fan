@@ -34,9 +34,16 @@ interface RopeDropCardProps {
   todayClosingUtc?: string | null;
   /**
    * Whether any attraction in this park carries a rope-drop or evening
-   * recommendation. The "no need to rush" note only makes sense as a contrast
-   * to recommended neighbors — in parks without any recommendation it would
-   * appear on every headliner as noise.
+   * recommendation.
+   *
+   * Read for one thing: whether the `bestTime` panel prints the "no need to rush" note in its
+   * footer. The note only makes sense as a contrast to recommended neighbours — in a park with
+   * no recommendation anywhere it would appear on every headliner as noise, saying that this
+   * ride is unlike siblings that are exactly like it.
+   *
+   * It used to pick the whole panel, and that is what PAR-122 closed: a park WITH neighbours put
+   * the ride's own readings out of reach and left half a card holding one line of grey text, on
+   * 470 ride pages in 87 parks.
    */
   parkHasRecommendations?: boolean;
   /**
@@ -67,19 +74,18 @@ interface RopeDropCardProps {
 }
 
 /**
- * Rope-drop recommendation panel for the attraction detail page. **Four** states, and the
+ * Rope-drop recommendation panel for the attraction detail page. **Three** states, and the
  * component is total — it always returns an element, which its return type is what enforces
- * (see {@link ropeDropCardVariant} for the 183 empty half-cards the fourth one closes):
+ * (see {@link ropeDropCardVariant} for the empty and half-empty cards that totality closes):
  *
  * * `worth` → full panel with the minutes saved by riding at park opening, the advantage window
  *   (concrete park time when the API resolved an opening time, minutes-after-open otherwise) and
  *   the quieter evening alternative when the day's trough isn't at opening.
  * * `evening` → inverse recommendation (long line right at opening, trough much later — ride
  *   late instead).
- * * `bestTime` → no recommendation anywhere in this park, so the "no need to rush" note has
- *   nothing to contrast against: the ride's own readings instead, and the quietest weekday.
- * * `note` → the muted "no need to rush" line, where neighbours in the park DO carry a
- *   recommendation and the contrast is the information.
+ * * `bestTime` → no recommendation for THIS ride: the ride's own readings instead, and the
+ *   quietest weekday. Where the park's other rides do carry one, the "no need to rush" note
+ *   rides along in the footer, which is the contrast it exists to draw.
  *
  * Server Component: only the embedded <ParkTime> islands (browser-timezone tooltip) hydrate on
  * the client.
@@ -121,11 +127,11 @@ interface StatTile {
 }
 
 /**
- * The three-reading grid all four panels share.
+ * The three-reading grid all three panels share.
  *
- * It was written out three times before the fourth panel existed, differing only in the accent
- * of the highlighted tile — and the whole point of the "best time" panel is that it carries the
- * same weight as the recommendation it stands in for, which is a promise a fourth copy of these
+ * It was written out three times before the "best time" panel existed, differing only in the
+ * accent of the highlighted tile — and the whole point of that panel is that it carries the same
+ * weight as the recommendation it stands in for, which is a promise a fourth copy of these
  * classes cannot keep.
  *
  * The row form is the measured one and its threshold is unchanged at 380 px. What changed is
@@ -239,7 +245,7 @@ export function RopeDropCard({
       ? t(`${key}Hours`, { hours: Math.round(ropeDrop.bestSlotMinutesAfterOpen / 60) })
       : t(key, { minutes: ropeDrop.bestSlotMinutesAfterOpen });
 
-  const variant = ropeDropCardVariant(ropeDrop, { parkHasRecommendations });
+  const variant = ropeDropCardVariant(ropeDrop);
 
   /*
    * Every wait this card prints, rounded once for the whole card rather than at each tile. The
@@ -315,151 +321,173 @@ export function RopeDropCard({
       );
     }
 
-    if (variant === 'bestTime') {
-      /*
-       * The chapter is called „Beste Besuchszeit planen", so it owes an answer even where the
-       * recommendation is a no. What it may say is bounded by what the shell already holds, and
-       * the shape of that data decided the panel — measured over the 183 rides it is drawn for:
-       *
-       * * The **hour** is not the answer. Only 15 of 183 have a trough that is both later than
-       *   opening and shorter than the wait at opening; 146 carry a trough wait equal to the
-       *   opening wait and 89 place it at opening itself. So the "quieter later" line renders on
-       *   the sixth of rides where it is true and nowhere else.
-       * * The **weekday** is. 119 of 183 name one or two quiet days, 61 read as a flat week and
-       *   3 stay silent (see `quietestWeekdays` for what separates those last two).
-       * * The **day's own spread** is real everywhere: `busyPeak − openWait` runs 0 to 50 minutes
-       *   with a median of 25. That is the fact the withheld rope-drop tip was standing on, and
-       *   it is the one thing every one of these rides can state.
-       *
-       * No sentence explains why the recommendation is missing. The threshold that decides it
-       * lives in the backend, this repo cannot cite it, and a reason invented here would be the
-       * kind of claim that reads as measured and is not.
-       */
-      const quiet = quietestWeekdays(typicalWaits, roundWaitTo5);
-      /*
-       * Displayed, so rounded — the weekday sentence under these tiles is already on the 5-minute
-       * grid (it passes `roundWaitTo5` into the vote so the minutes it names are the minutes the
-       * bars draw), and the chart in the neighbouring cell rounds too. Left raw, one panel could
-       * read 23 / 48 beside „ca. 25 Min." and beside a bar labelled 50. This panel rounded its own
-       * three figures before the other three did; they come from the shared `shown` now, so the
-       * trough this panel labels and the one the `worth` panel calls the best slot are one value
-       * rounded once.
-       */
-      const { openWait, busyPeak, trough: bestTimeTrough } = shown;
-      /*
-       * Only where coming back later actually buys something: later than opening AND shorter. The
-       * test runs on the two ROUNDED figures because they are the two the reader compares — „später
-       * ca. 25 Min." under a tile reading 25 promises a saving that is not on the screen. It is
-       * also the stricter test of the two: `roundWaitTo5` is monotone, so a rounded pair that
-       * differs had a raw pair that differed the same way.
-       */
-      const troughIsBetter =
-        bestTimeTrough != null &&
-        ropeDrop.bestSlotMinutesAfterOpen > 0 &&
-        bestTimeTrough < openWait &&
-        bestSlotPlausible;
+    /*
+     * Everything that is not a recommendation is this panel. It used to be two — where the park
+     * carried recommendations elsewhere, a ride without one got a muted one-liner in half a card
+     * instead (470 ride pages in 87 parks, measured 2026-09-15). The note survives as this
+     * panel's footer, which is the whole of PAR-122.
+     */
+    /*
+     * The chapter is called „Beste Besuchszeit planen", so it owes an answer even where the
+     * recommendation is a no. What it may say is bounded by what the shell already holds, and
+     * the shape of that data decided the panel — measured over the 183 rides it is drawn for:
+     *
+     * * The **hour** is not the answer. Only 15 of 183 have a trough that is both later than
+     *   opening and shorter than the wait at opening; 146 carry a trough wait equal to the
+     *   opening wait and 89 place it at opening itself. So the "quieter later" line renders on
+     *   the sixth of rides where it is true and nowhere else.
+     * * The **weekday** is. 119 of 183 name one or two quiet days, 61 read as a flat week and
+     *   3 stay silent (see `quietestWeekdays` for what separates those last two).
+     * * The **day's own spread** is real everywhere: `busyPeak − openWait` runs 0 to 50 minutes
+     *   with a median of 25. That is the fact the withheld rope-drop tip was standing on, and
+     *   it is the one thing every one of these rides can state.
+     *
+     * No sentence explains why the recommendation is missing. The threshold that decides it
+     * lives in the backend, this repo cannot cite it, and a reason invented here would be the
+     * kind of claim that reads as measured and is not.
+     */
+    const quiet = quietestWeekdays(typicalWaits, roundWaitTo5);
+    /*
+     * Displayed, so rounded — the weekday sentence under these tiles is already on the 5-minute
+     * grid (it passes `roundWaitTo5` into the vote so the minutes it names are the minutes the
+     * bars draw), and the chart in the neighbouring cell rounds too. Left raw, one panel could
+     * read 23 / 48 beside „ca. 25 Min." and beside a bar labelled 50. This panel rounded its own
+     * three figures before the other three did; they come from the shared `shown` now, so the
+     * trough this panel labels and the one the `worth` panel calls the best slot are one value
+     * rounded once.
+     */
+    const { openWait, busyPeak, trough: bestTimeTrough } = shown;
+    /*
+     * Only where coming back later actually buys something: later than opening AND shorter. The
+     * test runs on the two ROUNDED figures because they are the two the reader compares — „später
+     * ca. 25 Min." under a tile reading 25 promises a saving that is not on the screen. It is
+     * also the stricter test of the two: `roundWaitTo5` is monotone, so a rounded pair that
+     * differs had a raw pair that differed the same way.
+     */
+    const troughIsBetter =
+      bestTimeTrough != null &&
+      ropeDrop.bestSlotMinutesAfterOpen > 0 &&
+      bestTimeTrough < openWait &&
+      bestSlotPlausible;
 
-      const BestTimeFrame = bare ? BareCardFrame : GlassCard;
-      return (
-        <BestTimeFrame
-          variant="medium"
-          className={cn(!bare && 'border-primary/30', className)}
-          aria-label={t('bestTimeTitle')}
-        >
-          <SectionHeading
-            icon={Clock}
-            iconClassName="text-primary"
-            title={t('bestTimeTitle')}
-            variant="plain"
-            as="h3"
-            className="mb-3"
-          />
-          <p className="text-muted-foreground mb-3 text-sm">
-            {t('bestTimeText', { openWait, busyPeak })}
-          </p>
-          <StatTiles
-            tone="primary"
-            stats={[
-              { icon: Clock, label: t('atOpening'), value: openWait, highlight: false },
-              {
-                icon: ChartColumn,
-                label: t('dayPeak'),
-                value: busyPeak,
-                highlight: false,
-              },
-              {
-                icon: ArrowUpDown,
-                label: t('spread'),
-                // Recomputed rather than read from `savings`, so the tile is the arithmetic of
-                // the two numbers in the sentence above it by construction — and of the two
-                // ROUNDED ones, or the third tile would not be the difference a reader can do in
-                // their head. They agree with `savings` on all 1,195 recommendations in production
-                // today, but it is a stored column, and this file already documents fields on
-                // stale rows carrying DB defaults.
-                value: busyPeak - openWait,
-                highlight: true,
-              },
-            ]}
-          />
-          <div className="space-y-1.5 text-sm">
-            {/* `unknown` renders no line at all. „Kein Wochentag sticht heraus" is a measurement
+    const BestTimeFrame = bare ? BareCardFrame : GlassCard;
+    return (
+      <BestTimeFrame
+        variant="medium"
+        className={cn(!bare && 'border-primary/30', className)}
+        aria-label={t('bestTimeTitle')}
+      >
+        <SectionHeading
+          icon={Clock}
+          iconClassName="text-primary"
+          title={t('bestTimeTitle')}
+          variant="plain"
+          as="h3"
+          className="mb-3"
+        />
+        <p className="text-muted-foreground mb-3 text-sm">
+          {t('bestTimeText', { openWait, busyPeak })}
+        </p>
+        <StatTiles
+          tone="primary"
+          stats={[
+            { icon: Clock, label: t('atOpening'), value: openWait, highlight: false },
+            {
+              icon: ChartColumn,
+              label: t('dayPeak'),
+              value: busyPeak,
+              highlight: false,
+            },
+            {
+              icon: ArrowUpDown,
+              label: t('spread'),
+              // Recomputed rather than read from `savings`, so the tile is the arithmetic of
+              // the two numbers in the sentence above it by construction — and of the two
+              // ROUNDED ones, or the third tile would not be the difference a reader can do in
+              // their head. They agree with `savings` on all 1,195 recommendations in production
+              // today, but it is a stored column, and this file already documents fields on
+              // stale rows carrying DB defaults.
+              value: busyPeak - openWait,
+              highlight: true,
+            },
+          ]}
+        />
+        <div className="space-y-1.5 text-sm">
+          {/* `unknown` renders no line at all. „Kein Wochentag sticht heraus" is a measurement
               and may only be printed where the week WAS measured — over the 159 of these rides
               with no displayable typical waits it would be missing data dressed as a finding. */}
-            {quiet.verdict !== 'unknown' && (
-              <p className="flex items-center gap-2 font-medium">
-                <CalendarDays
-                  className="text-muted-foreground h-3.5 w-3.5 shrink-0"
-                  aria-hidden="true"
-                />
-                <span>
-                  {quiet.verdict === 'flat'
-                    ? t('quietDayNone')
-                    : quiet.days.length === 2
-                      ? t('quietDays', {
-                          first: weekdayName(quiet.days[0], locale),
-                          second: weekdayName(quiet.days[1], locale),
-                          wait: quiet.typical,
-                        })
-                      : t('quietDay', {
-                          day: weekdayName(quiet.days[0], locale),
-                          wait: quiet.typical,
-                        })}
-                </span>
-              </p>
-            )}
-            {troughIsBetter && (
-              <p className="text-muted-foreground flex items-center gap-2">
-                <Moon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                <span suppressHydrationWarning>
-                  {ropeDrop.bestSlotUtc
-                    ? t.rich('bestSlotAtWait', {
-                        wait: bestTimeTrough,
-                        time: timeTag(ropeDrop.bestSlotUtc),
+          {quiet.verdict !== 'unknown' && (
+            <p className="flex items-center gap-2 font-medium">
+              <CalendarDays
+                className="text-muted-foreground h-3.5 w-3.5 shrink-0"
+                aria-hidden="true"
+              />
+              <span>
+                {quiet.verdict === 'flat'
+                  ? t('quietDayNone')
+                  : quiet.days.length === 2
+                    ? t('quietDays', {
+                        first: weekdayName(quiet.days[0], locale),
+                        second: weekdayName(quiet.days[1], locale),
+                        wait: quiet.typical,
                       })
-                    : bestSlotOffsetNode('bestSlotOffset')}
-                </span>
-              </p>
-            )}
-          </div>
-          {ropeDrop.confidence === 'low' && (
-            <p className="text-muted-foreground mt-4 flex items-center gap-1 border-t pt-3 text-xs">
-              <Info className="h-3 w-3 shrink-0" aria-hidden="true" />
-              {t('confidenceLow')}
+                    : t('quietDay', {
+                        day: weekdayName(quiet.days[0], locale),
+                        wait: quiet.typical,
+                      })}
+              </span>
             </p>
           )}
-        </BestTimeFrame>
-      );
-    }
+          {troughIsBetter && (
+            <p className="text-muted-foreground flex items-center gap-2">
+              <Moon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+              <span suppressHydrationWarning>
+                {ropeDrop.bestSlotUtc
+                  ? t.rich('bestSlotAtWait', {
+                      wait: bestTimeTrough,
+                      time: timeTag(ropeDrop.bestSlotUtc),
+                    })
+                  : bestSlotOffsetNode('bestSlotOffset')}
+              </span>
+            </p>
+          )}
+        </div>
+        {/* ONE hairline for both notes, the shape the `worth` panel's footer already has —
+              two `border-t` paragraphs under each other would draw a rule per sentence and read
+              as two footers.
 
-    const NoteFrame = bare ? BareCardFrame : GlassCard;
+              `notWorth` says something different here than it did as a panel of its own, and the
+              move is what forced it. It used to end on „die Wartezeiten bleiben über den Tag
+              überschaubar (ca. {openWait} Min. zur Öffnung)", alone in half a card. Under three
+              tiles and the sentence that already prints both figures, the bracket is a third copy
+              of the wait at opening — and the clause in front of it is a claim the tiles can
+              contradict outright: of these 470 rides, 65 peak at 60 minutes or more and 7 at 90 or
+              more, up to Tokyo DisneySea's Soaring reading 140 at opening and 180 at the peak,
+              directly above a line calling the day manageable.
 
-    return (
-      <NoteFrame variant="light" className={cn(!bare && 'p-4', className)}>
-        <p className="text-muted-foreground flex items-center gap-2 text-sm">
-          <Sunrise className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {t('notWorth', { openWait: shown.openWait })}
-        </p>
-      </NoteFrame>
+              So the footer keeps only what the branch actually knows. „Not worth rope-dropping" is
+              exactly `worth === false`, and the contrast is `parkHasRecommendations` — and it may
+              be stated as a comparison with the park's other rides because every one of those 470
+              sits in a park carrying at least one real `worth` tip: measured over all 213 parks,
+              **zero** of them recommend only evenings. The size of the queue is left to the tiles,
+              which measured it. */}
+        {(parkHasRecommendations || ropeDrop.confidence === 'low') && (
+          <div className="text-muted-foreground mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3 text-xs">
+            {parkHasRecommendations && (
+              <span className="flex items-start gap-1">
+                <Sunrise className="mt-0.5 h-3 w-3 shrink-0" aria-hidden="true" />
+                {t('notWorth')}
+              </span>
+            )}
+            {ropeDrop.confidence === 'low' && (
+              <span className="flex items-center gap-1">
+                <Info className="h-3 w-3 shrink-0" aria-hidden="true" />
+                {t('confidenceLow')}
+              </span>
+            )}
+          </div>
+        )}
+      </BestTimeFrame>
     );
   }
 

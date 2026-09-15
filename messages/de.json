@@ -1204,7 +1204,7 @@
       "eveningBestOffsetHours": "Am kürzesten typischerweise ca. {hours} Std. nach Öffnung",
       "eveningWait": "Abends",
       "confidenceLow": "Basiert auf wenigen Daten – als grobe Orientierung verstehen",
-      "notWorth": "Hier musst du zur Öffnung nicht sprinten – die Wartezeiten bleiben über den Tag überschaubar (ca. {openWait} Min. zur Öffnung).",
+      "notWorth": "Hier musst du zur Öffnung nicht sprinten – anders als bei anderen Bahnen in diesem Park.",
       "bestTimeTitle": "Wann es hier ruhiger ist",
       "bestTimeText": "Zur Öffnung warten hier im Schnitt ca. {openWait} Min., im Tagespeak ca. {busyPeak} Min.",
       "spread": "Unterschied",
