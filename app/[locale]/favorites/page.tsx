@@ -4,7 +4,6 @@ import { Star } from 'lucide-react';
 import { SITE_URL } from '@/i18n/config';
 import { routing } from '@/i18n/routing';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
-import { PageContainer } from '@/components/common/page-container';
 import { FavoritesSection } from '@/components/parks/favorites-section';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 
@@ -55,8 +54,13 @@ export default async function FavoritesPage({ params }: FavoritesPageProps) {
 
   return (
     <>
-      <PageContainer className="pb-0">
-        <div className="flex items-center gap-3">
+      {/* `px-4` outside, `container mx-auto` inside — the band's own geometry, not
+          `PageContainer`'s. `PageContainer` puts the padding INSIDE the container, so from
+          1440 px up its text starts 16 px right of the band's: measured 96 against 80 at
+          1440 and 208 against 192 at 1920, identical below that. Two columns a reader can
+          see the step between, on the one page where they stand on top of each other. */}
+      <div className="px-4 pt-8">
+        <div className="container mx-auto flex items-center gap-3">
           <div className="bg-primary/10 flex size-10 shrink-0 items-center justify-center rounded-xl">
             <Star className="text-primary size-5" aria-hidden="true" />
           </div>
@@ -65,17 +69,19 @@ export default async function FavoritesPage({ params }: FavoritesPageProps) {
             <p className="text-muted-foreground text-sm">{t('subtitle')}</p>
           </div>
         </div>
-      </PageContainer>
+      </div>
 
       {/* `standalone`: the heading is the `<h1>` above and the instructions are the block
           below, in every state — the band would otherwise draw both a second time, and in the
           empty state the three steps would stand twice under each other. */}
       <FavoritesSection standalone />
 
-      <PageContainer>
-        <h2 className="mb-4 text-lg font-semibold">{t('howToTitle')}</h2>
-        <FavoritesHowTo />
-      </PageContainer>
+      <div className="px-4 py-8">
+        <div className="container mx-auto">
+          <h2 className="mb-4 text-lg font-semibold">{t('howToTitle')}</h2>
+          <FavoritesHowTo />
+        </div>
+      </div>
     </>
   );
 }
