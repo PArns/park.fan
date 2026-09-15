@@ -1590,6 +1590,11 @@
       "thenText": "From then on they show up in this menu and on the homepage, with live status and wait time."
     }
   },
+  "favoritesPage": {
+    "title": "My favorites",
+    "subtitle": "Parks, rides, shows and restaurants you starred in this browser, with live status and wait times.",
+    "howToTitle": "How to add favorites"
+  },
   "pushAlerts": {
     "showBell": {
       "follow": "Get a reminder before {name}",

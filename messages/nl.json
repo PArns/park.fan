@@ -1590,6 +1590,11 @@
       "thenText": "Vanaf dan staan ze in dit menu en op de homepage, met live status en wachttijd."
     }
   },
+  "favoritesPage": {
+    "title": "Mijn favorieten",
+    "subtitle": "Parken, attracties, shows en restaurants die je in deze browser hebt gemarkeerd, met live status en wachttijden.",
+    "howToTitle": "Zo voeg je favorieten toe"
+  },
   "pushAlerts": {
     "showBell": {
       "follow": "Herinnering voor {name} inschakelen",

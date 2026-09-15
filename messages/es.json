@@ -1590,6 +1590,11 @@
       "thenText": "A partir de ahí aparecen en este menú y en la portada, con estado en vivo y tiempo de espera."
     }
   },
+  "favoritesPage": {
+    "title": "Mis favoritos",
+    "subtitle": "Parques, atracciones, espectáculos y restaurantes que has marcado en este navegador, con estado en vivo y tiempos de espera.",
+    "howToTitle": "Cómo añadir favoritos"
+  },
   "pushAlerts": {
     "showBell": {
       "follow": "Activar aviso antes de {name}",

@@ -62,6 +62,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/contribute/thanks': [],
   '/datenschutz': ['datenschutz.analyticsOptOut'],
   '/fancast': ['home', 'nearby', 'parkCard'],
+  '/favorites': [],
   '/glossary': ['glossary'],
   '/glossary/[term]': ['nearby', 'parkCard'],
   '/how-park-fan-works': [
@@ -135,6 +136,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
  */
 export const LAZY_CHUNK_NAMESPACES = [
   'attractions',
+  'nearby',
+  'parkCard',
   'parks',
   'parks.weather',
   'planner',
