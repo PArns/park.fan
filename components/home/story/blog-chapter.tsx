@@ -64,7 +64,7 @@ export async function BlogChapter({
             <Link
               href={`/${BEST_TIME_SEGMENTS[locale]}` as '/'}
               prefetch={false}
-              className="border-border bg-card hover:border-primary/40 group rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
+              className="border-border bg-card hover:border-primary/40 rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
             >
               <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
                 <CalendarRange className="h-5 w-5" aria-hidden="true" />
@@ -73,16 +73,12 @@ export async function BlogChapter({
               <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
                 {t('bestTimeText')}
               </p>
-              <ArrowRight
-                className="text-primary mt-3 h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
             </Link>
 
             <Link
               href={`/${GLOSSARY_SEGMENTS[locale]}` as '/'}
               prefetch={false}
-              className="border-border bg-card hover:border-primary/40 group flex flex-col rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
+              className="border-border bg-card hover:border-primary/40 rounded-2xl border p-5 shadow-sm transition-colors sm:p-6"
             >
               <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
                 <BookOpen className="h-5 w-5" aria-hidden="true" />
@@ -91,16 +87,6 @@ export async function BlogChapter({
               <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
                 {t('glossaryText')}
               </p>
-              {/* The push to the bottom belongs on a wrapper, never on the icon:
-                  `pt-3` on a `h-4` SVG leaves four pixels of drawing area, and
-                  the arrow rendered as a stub. The other card gets this right
-                  with a plain `mt-3`, which is why only this one looked broken. */}
-              <span className="mt-auto pt-3">
-                <ArrowRight
-                  className="text-primary h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </span>
             </Link>
           </div>
         </Reveal>
