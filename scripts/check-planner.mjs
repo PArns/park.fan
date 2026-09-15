@@ -6759,19 +6759,48 @@ step: {
   // Nothing in the sheet paints over anything else. It did: with the foot inside
   // the column, the column's content ran 98 px past its box and the headliner
   // band and the totals were drawn across the ride search under them.
-  const stack = await phone.locator(SHEET).evaluate((sheet) =>
-    [...sheet.children]
-      .map((el) => {
+  const stack = await phone.locator(SHEET).evaluate((sheet) => {
+    // **Through `display: contents`, not past it.** Such an element has no box
+    // of its own — `getBoundingClientRect()` answers 0×0 — but its CHILDREN are
+    // the rows the sheet actually lays out, and PAR-168 put two of them in
+    // exactly this position (the landscape row's two wrappers, which are
+    // `contents` at every other size). Reading `sheet.children` and filtering on
+    // a height left two rows in the list, no pair to compare, and a guard that
+    // could not fail: the one assertion that says the portrait sheet did not
+    // move, passing because it had stopped looking.
+    const rows = [];
+    const collect = (parent) => {
+      for (const el of parent.children) {
+        const style = getComputedStyle(el);
+        if (style.display === 'contents') {
+          collect(el);
+          continue;
+        }
         const box = el.getBoundingClientRect();
-        return {
+        // Hidden rows have no box, and an absolute one is out of the flow.
+        if (box.height <= 0 || style.position === 'absolute') continue;
+        rows.push({
           cls: el.className.slice(0, 40),
           top: Math.round(box.top),
           bottom: Math.round(box.bottom),
-          // `display: contents` and hidden rows have no box and cannot overlap.
-          real: box.height > 0 && getComputedStyle(el).position !== 'absolute',
-        };
-      })
-      .filter((row) => row.real)
+        });
+      }
+    };
+    collect(sheet);
+    // Document order, which is what makes "the next row" mean anything. The
+    // recursion already yields it, and sorting by `top` would hide the very
+    // defect this looks for.
+    return rows;
+  });
+  // The guard on the guard, and it is here because this assertion has already
+  // been silently emptied once (see the note above): the portrait sheet draws
+  // the handle, its header, the column, the ride search and at least the
+  // totals, so anything under five rows means the reading failed rather than
+  // the layout passing.
+  check(
+    'das Telefon-Panel hat überhaupt Zeilen zu vergleichen',
+    stack.length >= 5,
+    `${stack.length} Zeile(n): ${stack.map((row) => row.cls).join(' | ')}`
   );
   const overlaps = stack
     .slice(1)
@@ -7138,18 +7167,20 @@ if (live) {
 // side sheet at x=396 whose time axis was 16 px, all sixteen of them under the
 // optimize row.
 //
-// What this pass guards is the SWITCH, not the axis' height. `planner-phone`
-// (app/globals.css) and `PLANNER_PHONE_QUERY` carry a height term now, so a flat
-// window gets the bottom sheet, the grab handle and the coarse-pointer targets.
-// The axis is still 16 px and that is measured rather than asserted: the sheet's
-// chrome rows add up to 426 px at this size against a 359 px sheet, so the axis —
-// `min-h-0 shrink` — has nothing to take. Two hours of day (216 px at
-// `PX_PER_MIN_COARSE`) needs the chrome down to 143, which is a different change
-// and a different ticket (PAR-76's first criterion, left open on purpose).
+// What this pass guarded until PAR-168 was the SWITCH and not the axis' height:
+// `planner-phone` (app/globals.css) and `PLANNER_PHONE_QUERY` carry a height
+// term since PAR-76, so a flat window gets the bottom sheet, the grab handle and
+// the coarse-pointer targets — but the axis was still 16 px, because the sheet
+// stacked 343 px of chrome into a 359 px one and `min-h-0 shrink` had nothing to
+// take. The number was printed rather than asserted for exactly as long as it
+// was somebody else's to move.
 //
-// So: assert what this change actually decides, and PRINT the number the next
-// change has to move. An assertion on 16 px would go red the moment somebody
-// improves it, which is the wrong direction for a check to fail in.
+// **PAR-168 moved it, so the print becomes an assertion.** The sheet is a ROW at
+// this size now — the day's chrome in a 320 px column, the axis in the 509 px
+// beside it — and the axis gets 269 px of the 270 the row has. Asserted at
+// `AXIS_MIN_LANDSCAPE_PX`, i.e. two hours of day, which is what the arrangement
+// exists to buy; the rest of the slack is what keeps an honest change from going
+// red for a pixel.
 //
 // NOT behind `live` as a whole, unlike the two passes above — and the split is
 // deliberate. What this pass is really about is the SWITCH: the arrangement,
@@ -7157,6 +7188,16 @@ if (live) {
 // and the pointer, and they hold whether or not `/plan/day` answered. Only the
 // axis needs the day's opening hours, so only the axis' own assertion carries
 // the guard, right where it is made.
+/**
+ * Two hours of day on the landscape axis, in pixels.
+ *
+ * 120 minutes at `PX_PER_MIN_COARSE` (1.8), which is the scale a coarse pointer
+ * gets — so this number and the phone's axis are the same statement about the
+ * DAY, written in the unit a browser can be asked about. PAR-168's first
+ * acceptance criterion is this number.
+ */
+const AXIS_MIN_LANDSCAPE_PX = 216;
+
 {
   const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
   noteErrors(land);
@@ -7225,14 +7266,37 @@ if (live) {
         axis && axis.height > 0
           ? Math.max(0, Math.min(axis.bottom, box.bottom) - Math.max(axis.top, box.top))
           : 0;
+      // The ride search, because it is what says the sheet is a ROW rather than
+      // a stack: it is the one chrome row that is always drawn at this size
+      // (`planner-wide:hidden`, asserted on its own below), so "it is left of
+      // the axis and level with it" is the arrangement in two numbers. A test on
+      // the axis' own left edge alone would be a threshold nobody can derive —
+      // this one is a relation between two boxes and holds at any column width.
+      const search = document.querySelector('[data-planner-ride-search]');
+      const searchBox = search?.getBoundingClientRect() ?? null;
+      const beside =
+        axis && searchBox && searchBox.height > 0
+          ? {
+              searchRight: Math.round(searchBox.right),
+              searchTop: Math.round(searchBox.top),
+              searchBottom: Math.round(searchBox.bottom),
+              // Left of it, and overlapping it vertically. Stacked, the second
+              // half is false; side by side, both are true.
+              leftOfAxis: searchBox.right <= axis.left + 1,
+              levelWithAxis: searchBox.top < axis.bottom && searchBox.bottom > axis.top,
+            }
+          : null;
       return {
         width: Math.round(box.width),
         height: Math.round(box.height),
         left: Math.round(box.x),
         bottom: Math.round(window.innerHeight - box.bottom),
         axis: axis ? Math.round(axis.height) : null,
+        axisLeft: axis ? Math.round(axis.x) : null,
+        axisWidth: axis ? Math.round(axis.width) : null,
         axisVisible: Math.round(visible),
         covers,
+        beside,
         handle: sheet.querySelector('[data-planner-sheet-handle]'),
       };
     }, SHEET);
@@ -7263,23 +7327,49 @@ if (live) {
       // that measured no axis at all. That is the failure mode the whole pass
       // exists to catch, so it may not be the one it reports as passing.
       if (live) {
+        // **`axisVisible === axis` is part of the assertion, not decoration**,
+        // and without it this goes green on the one failure it is here to catch.
+        // `elementFromPoint` answers `null` for a point outside the window, so an
+        // axis pushed below the sheet's own bottom edge — `min-h` in a
+        // `min-h-0 flex-1` parent, which is exactly what the 200 px floor did on
+        // PAR-76's branch — left `covers` at `null` and reported "nothing is over
+        // the axis" about an axis nobody could see. Measured there: box 200 px,
+        // 10 of them inside the sheet, four rows painted over the rest.
+        // (PAR-212, first of its four holes.)
+        const axisWhole = room.axis !== null && room.axis > 0 && room.axisVisible === room.axis;
         check(
           'nichts liegt über der Achse',
-          room.axis !== null && room.axis > 0 && room.covers === null,
+          axisWhole && room.covers === null,
           room.axis === null || room.axis === 0
             ? 'keine Achse gefunden — nichts gemessen'
-            : room.covers === null
-              ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
-              : `${room.covers} liegt über der Achse · Achse ${room.axis} px, davon ${room.axisVisible} px im Sheet ` +
-                `· Chrome ${room.height - room.axisVisible} px von ${room.height} (PAR-168)`
+            : !axisWhole
+              ? `die Achse läuft aus dem Sheet: Box ${room.axis} px, davon ${room.axisVisible} px drin`
+              : room.covers === null
+                ? `Achse ${room.axis} px, an ihrer Mitte liegt die Achse selbst`
+                : `${room.covers} liegt über der Achse · Achse ${room.axis} px, davon ${room.axisVisible} px im Sheet ` +
+                  `· Chrome ${room.height - room.axisVisible} px von ${room.height} (PAR-168)`
         );
-        // Printed, not asserted — see the note above this block. `axisVisible`
+        // Asserted since PAR-168 — see the note above this block. `axisVisible`
         // rather than `axis`, and the difference is the whole finding: an axis
         // can report 200 px with 10 of them in the sheet.
-        console.log(
-          `ℹ️  Achse im Querformat: ${room.axisVisible} px sichtbar (Box ${room.axis} px) ` +
-            `in einem ${room.height} px hohen Sheet · Chrome ${room.height - room.axisVisible} px ` +
-            `(PAR-168: 216 px nötig, also Chrome ≤ 143)`
+        check(
+          'die Achse zeigt im Querformat zwei Stunden des Tages',
+          room.axisVisible >= AXIS_MIN_LANDSCAPE_PX,
+          `${room.axisVisible} px sichtbar (Box ${room.axis} px) in einem ${room.height} px hohen Sheet ` +
+            `· nötig ${AXIS_MIN_LANDSCAPE_PX} px = 2 h bei PX_PER_MIN_COARSE · ` +
+            `Chrome daneben ${room.height - room.axisVisible} px`
+        );
+        // And WHY it has them: the chrome stands beside the axis rather than
+        // over it. Two hours could also be bought by taking rows away, and this
+        // is the assertion that tells the two apart.
+        check(
+          'im Querformat steht das Chrome neben der Achse, nicht darüber',
+          Boolean(room.beside?.leftOfAxis && room.beside?.levelWithAxis),
+          room.beside === null
+            ? 'keine Ride-Suche mit Höhe gefunden — nichts gemessen'
+            : `Ride-Suche endet bei x=${room.beside.searchRight}, Achse beginnt bei x=${room.axisLeft} ` +
+                `(${room.axisWidth} px breit) · Suche y ${room.beside.searchTop}–${room.beside.searchBottom}, ` +
+                `Achse ${room.axisVisible} px hoch`
         );
       }
     } else {
@@ -7348,6 +7438,59 @@ if (live) {
       'die Ride-Suche ist im Querformat sichtbar',
       searchShown === 1,
       `${searchShown}× sichtbar`
+    );
+
+    // The THIRD pair, and it is the one PAR-168 added: the context band is drawn
+    // by the panel here and by the column everywhere else, and the two halves
+    // are two separate conditions — `isLandscape &&` in `planner-flyout.tsx`,
+    // `withBand={!isLandscape}` on `PlannerDayColumn`. Let them drift and the
+    // sheet carries the band twice or not at all, while every geometry
+    // assertion above stays green: two bands sit left of the axis, and a
+    // missing one only makes the axis taller. The same trap the two pairs above
+    // were written for, one change later.
+    //
+    // `:visible` rather than `count()`, for the reason the block above gives at
+    // length — but note the difference: here it is React that draws one or the
+    // other, so a second band would be a second ELEMENT rather than a hidden
+    // one. `:visible` is right either way and says what is meant.
+    const bands = await land.locator(`${SHEET} [data-planner-context-band]:visible`).count();
+    check(
+      'das Kontextband steht im Querformat genau einmal',
+      bands === 1,
+      `${bands}× sichtbar (das Panel zeichnet es hier, die Spalte überall sonst — nie beide)`
+    );
+
+    // And the left column REACHES what it carries. Moving the rows beside the
+    // axis only moved the arithmetic: 562 px of content in 269, so the summary
+    // and the push toggle sit below the sheet's own bottom edge and are reached
+    // by scrolling that column or not at all. `planner-landscape:overflow-y-auto`
+    // is the whole of that, and nothing above notices if it goes: the axis is
+    // just as tall, nothing covers it, and the search is still left of it —
+    // verified by taking the property away and reading the same numbers back.
+    //
+    // Both halves, because either alone is a half-truth: `overflow-y: auto`
+    // without an overflow scrolls nothing, and an overflow without it is
+    // content nobody can get to.
+    const scrolls = await land.evaluate((sel) => {
+      const column = document.querySelector(`${sel} [data-planner-landscape-chrome]`);
+      if (!column) return null;
+      return {
+        overflowY: getComputedStyle(column).overflowY,
+        scrollHeight: column.scrollHeight,
+        clientHeight: column.clientHeight,
+      };
+    }, SHEET);
+    check(
+      'die linke Spalte im Querformat ist erreichbar, nicht abgeschnitten',
+      Boolean(
+        scrolls &&
+        scrolls.overflowY === 'auto' &&
+        scrolls.scrollHeight > scrolls.clientHeight &&
+        scrolls.clientHeight > 0
+      ),
+      scrolls === null
+        ? 'keine linke Spalte gefunden — nichts gemessen'
+        : `overflow-y ${scrolls.overflowY} · ${scrolls.scrollHeight} px Inhalt in ${scrolls.clientHeight} px`
     );
 
     // The drag coach is NOT asserted here, and the reason is worth a line rather

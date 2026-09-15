@@ -1630,6 +1630,86 @@ The row wraps below `sm` (`max-sm:flex-wrap`, label on its own line) because a
 free block now carries four icons, two durations, two moves and a delete beside a
 label — over 400 px in a 390 px screen.
 
+### A landscape phone is a row, because the chrome is taller than the sheet
+
+`planner-phone` reaches a landscape phone since PAR-76 — `(height < 31.25rem) and
+(pointer: coarse)` is the second half of that switch — so 844 × 390 gets the
+bottom sheet, the grab handle and the 44 px targets. It still had no day.
+Measured on `main` @ `1a0c17d7`, direct children of the open sheet with a height:
+
+```plain
+Griff 44 · sheet-header 45 · Kontextband 61 · Optimize 61 · Headliner 96
+· Summary 37 · Push 30   =  343 px Chrome in einem 359 px hohen Sheet
+```
+
+Sixteen pixels of axis, all of them under the optimize row. **Two hours of day is
+216 px** at `PX_PER_MIN_COARSE`, so no order of those rows fits above the axis:
+they have to stand beside it. That is PAR-168, and Patrick picked the arrangement
+(way B, two columns) over the alternative of naming rows a flat window does not
+get.
+
+The switch is a third variant, `planner-landscape`, and it **refines
+`planner-phone` rather than standing beside it**: same two terms plus
+`(width >= 40rem)`, so everything the phone branch says still holds here and a
+`planner-landscape:` class only ever says something it left open. There is
+deliberately no complement — an arrangement that holds everywhere except one size
+is written unprefixed and the one size overrides it. The JS twin is
+`PLANNER_LANDSCAPE_QUERY`, beside `PLANNER_PHONE_QUERY` in
+`lib/planner/use-grid-scale.ts`, and it answers the one question a class cannot:
+which side of the row draws the context band.
+
+The sheet's body is carried by two wrappers that are `display: contents` at every
+other size. That is what makes the arrangement free: with no box, the sheet's
+flex children are the same boxes in the same order as before, so portrait and
+desktop cannot move. Measured against `main` @ `1a0c17d7` on the same dev server,
+the axis' visible height and whether anything is painted over it:
+
+| Fenster           | Sheet                 | vorher                                          | nachher                    |
+| ----------------- | --------------------- | ----------------------------------------------- | -------------------------- |
+| 844 × 390, coarse | 829 × 359 bei (0, 31) | **16 px**, verdeckt von `data-planner-optimize` | **269 px**, nichts darüber |
+| 390 × 844, coarse | 375 × 776 bei (0, 68) | 253 px                                          | 253 px                     |
+| 1440 × 900, fine  | 448 × 900 bei x=992   | 464 px                                          | 464 px                     |
+| 1440 × 480, fine  | 448 × 480 bei x=992   | 44 px                                           | 44 px                      |
+
+The lower three are identical row for row and not only in the total — the sheet's
+whole child list, each box's height and top, compared before and after.
+
+What the row looks like at 844 × 390: the left column is `20rem` and scrolls
+(616 px of content in 269), the axis takes the 509 px beside it and **269 px of
+height**, i.e. two and a half hours. The context band moves left with the rest —
+`withBand` on `PlannerDayColumn`, the third gate of its kind after `withHead` and
+`withFoot`, and for the same reason: 61 px above a 270 px axis is a quarter of
+the day, 61 px beside it is nothing.
+
+One class had to change with it. The ride search is the sheet's only `shrink`
+child, so in the left column it absorbed the whole overflow and came out **0 px
+tall** while its inner element still reported a box. `planner-landscape:shrink-0`:
+in a column that scrolls, nothing has to give way, so nothing may. Its `32svh`
+cap stays, which makes it a scroller inside a scroller — deliberate, because
+without the cap the park's whole ride list expands into the column and pushes the
+totals and the push toggle past anything a thumb will reach.
+
+The left column is `order-first` rather than first in the document, and that is a
+trade worth stating: `order` moves the box and not the document, so the visual
+order runs left to right while tab and screen reader run right to left
+(WCAG 2.4.3). Reordering the children for one size means React unmounts and
+remounts them on every rotation — the ride search loses its query, the column its
+scroll position and its selected block. So the reading order is the one every
+other size gives: the day, then what can be done to it.
+
+The row is only drawn where a day has been chosen. Every row it puts on the left
+hangs on a park and a date, so without one the left column would be 320 px of
+empty box and a divider beside the empty state; there the sheet stays the stack it
+has always been.
+
+`check:planner` asserts all three of those now rather than printing the axis
+height: two hours visible (`AXIS_MIN_LANDSCAPE_PX`), nothing over the axis, and
+the chrome beside rather than above it — the last one because two hours could
+also be bought by deleting rows, and the check should be able to tell the two
+apart. The covering assertion also gained `axisVisible === axis`: without it an
+axis pushed past the sheet's own bottom edge reports "nothing is over me",
+because `elementFromPoint` answers `null` outside the window.
+
 ## Checking it
 
 ```bash

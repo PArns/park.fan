@@ -96,6 +96,39 @@
 }
 
 /*
+ * A landscape phone, which is the one size where the sheet lays itself out in
+ * two columns.
+ *
+ * **This is not a third member of the pair above — it REFINES `planner-phone`.**
+ * The terms are the second branch of `planner-phone` plus a width: a window
+ * shorter than 31.25rem on a coarse pointer, wide enough that two columns of it
+ * are worth having. Everything `planner-phone:` says therefore still applies
+ * here — the bottom sheet, the 44 px targets, the 1.8 px per minute — and a
+ * `planner-landscape:` class only ever says something `planner-phone:` left
+ * open. There is deliberately no complement: an arrangement that holds
+ * everywhere except one size is written unprefixed, and the one size overrides
+ * it.
+ *
+ * Why it exists at all is arithmetic, measured on `main` @ `1a0c17d7` at
+ * 844x390 with the panel open: handle 44, sheet header 45, context band 61,
+ * optimize row 61, headliner band 96, summary 37, push toggle 30 — 343 px of
+ * chrome stacked in a 359 px sheet, which leaves the axis **16 px**, all of them
+ * under the optimize row. Two hours of day is 216 px at `PX_PER_MIN_COARSE`, so
+ * no rearrangement of a single column can pay for it: the rows have to stop
+ * being above the axis and start being beside it. See PAR-168, and
+ * `PLANNER_LANDSCAPE_QUERY` for the JS half of exactly this question.
+ *
+ * `40rem` and `31.25rem` are the same two numbers the pair above uses, in rem
+ * for the same reason it gives — a reader who raised the default font size must
+ * not get one half of the switch.
+ */
+@variant planner-landscape {
+  @media (width >= 40rem) and (height < 31.25rem) and (pointer: coarse) {
+    @slot;
+  }
+}
+
+/*
  * Tailwind's `container`, asked of the PAGE instead of the window.
  *
  * The utility ships as a MEDIA query — `width: 100%` plus a max-width tier picked from how wide

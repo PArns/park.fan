@@ -98,6 +98,23 @@ interface PlannerDayColumnProps {
    */
   withHead: boolean;
   /**
+   * Whether this column draws its own context band — crowd level, hours,
+   * weather, who is coming.
+   *
+   * The panel decides, for the same reason it decides {@link withHead}, and on
+   * exactly one size: a landscape phone. There the sheet is a row — the day's
+   * chrome to the left of the axis, see `planner-landscape` in `app/globals.css`
+   * — and a band left inside the column would be the one chrome row still
+   * stacked ABOVE the axis, for 61 px of the 270 the axis has to work with. So
+   * the panel draws it on its own side of the row, the same component with the
+   * same props, and this row stays an empty element for the subgrid to count.
+   *
+   * A landscape phone never has a second column (`isPhone` gates that), so the
+   * two bands this row's subgrid exists to align cannot both be asked for at a
+   * size where one of them is drawn elsewhere.
+   */
+  withBand: boolean;
+  /**
    * The column the reader is working in, where there is more than one.
    *
    * NOT {@link primary}, which is a fact about the plan — its active day, the
@@ -164,6 +181,7 @@ export function PlannerDayColumn({
   onOpenWizard,
   withFoot,
   withHead,
+  withBand,
   active,
   onActivate,
   className,
@@ -452,9 +470,15 @@ export function PlannerDayColumn({
           The band draws only where a day has been CHOSEN. `dayState` ends in a
           fall-through `empty`, and with no park or date the query is disabled —
           so the band cannot tell "nobody ever asked" from a real 404 and would
-          print "keine Prognose" over an empty planner. */}
-      <div className={cn('min-w-0', park && date && 'border-border/60 border-b')}>
-        {park && date && (
+          print "keine Prognose" over an empty planner.
+
+          `withBand` is the panel's gate and it is the third of its kind here —
+          on a landscape phone the band is drawn beside the axis rather than
+          over it, by the panel, and this row stays the empty ELEMENT the
+          subgrid counts. The border goes with the band: a rule under a row that
+          drew nothing is a hairline under the sheet header. */}
+      <div className={cn('min-w-0', withBand && park && date && 'border-border/60 border-b')}>
+        {withBand && park && date && (
           <PlannerContextBand
             day={day ?? null}
             state={dayState}
@@ -506,23 +530,27 @@ export function PlannerDayColumn({
 
             The argument for moving it was sound and the measurement refused it.
             A floor written in pixels only buys an axis room the sheet actually
-            has: at 390x844 the chrome is 565 px of a 776 px sheet, so the axis
-            gets 211 and this floor never binds. At 844x390 the chrome is
-            **349 px of a 359 px sheet** — 44 handle, 45 header, 61 optimize, 96
-            headliners (capped), 33 free block, 37 summary, 30 foot — which
-            leaves the axis **10 px**. Asking for 200 does not find 190 more; it
-            makes this box overflow a `min-h-0 flex-1` parent that has none to
-            give, and the axis then ran from y=227 to y=427 in a sheet ending at
-            390: 37 px below the window, with the optimize row, the headliner
-            band, the summary and the foot all painted over it. Measured, both
-            ways, on this branch.
+            has: at 390x844 the chrome is 523 px of a 776 px sheet, so the axis
+            gets 253 and this floor never binds. At 844x390 the chrome was
+            **343 px of a 359 px sheet** and the axis had **16 px**. Asking for
+            200 did not find 190 more; it made this box overflow a
+            `min-h-0 flex-1` parent that has none to give, and the axis then ran
+            from y=227 to y=427 in a sheet ending at 390: 37 px below the window,
+            with the optimize row, the headliner band, the summary and the foot
+            all painted over it. Measured, both ways, on PAR-76's branch.
 
-            So the floor would not be showing two hours of day here, it would be
-            drawing them underneath four other rows. Ten visible pixels are worse
-            than sixteen, and both are the same finding one level down from
-            PAR-76's first criterion: on a landscape phone the chrome is taller
-            than the sheet, and no class on THIS element changes that. It is
-            PAR-168's to spend, and until then the axis shrinks honestly. */}
+            **PAR-168 answered that size by moving the rows rather than the
+            floor.** Above 40 rem a landscape phone is a ROW now — the chrome
+            stands left of the axis, which gets 269 px — so `max-sm:` and
+            `planner-landscape:` no longer overlap at all and this floor is not
+            in that arrangement's way.
+
+            What it still governs is the landscape phone NARROWER than 40 rem
+            (568x320 and its neighbours), which stays stacked and where the same
+            overflow is to be expected: 92svh of 320 is 294 px, of which the
+            handle and the header take 89. That is unmeasured and open as
+            PAR-231; it is not made worse here, and it is not fixed here
+            either. */}
         <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}
