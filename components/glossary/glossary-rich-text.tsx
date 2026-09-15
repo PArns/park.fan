@@ -1,20 +1,40 @@
+import { Fragment } from 'react';
 import type { Locale } from '@/i18n/config';
 import { GlossaryInject } from './glossary-inject';
 
 /**
- * Renders a glossary definition paragraph with two layers of linking:
+ * Renders a glossary definition paragraph with up to two layers of linking:
  *
  *  1. Inline markdown links `[label](href)` — authored directly in the
  *     definition text (e.g. linking a ride or park to its source). External
  *     `http(s)` links open in a new tab; anything else is treated as internal.
- *  2. Everything between those links is passed through {@link GlossaryInject},
- *     which auto-links the first mention of other glossary terms.
+ *  2. With `autoLink` (the default), everything between those links is passed
+ *     through {@link GlossaryInject}, which auto-links the first mention of
+ *     other glossary terms.
  *
  * Links are parsed first so a term name inside a markdown label is never
  * double-wrapped. Server component (GlossaryInject is async).
+ *
+ * `autoLink={false}` keeps layer 1 and drops layer 2. It exists for the blog's
+ * `glossary-widget`, where a second auto-linking layer would be wrong twice:
+ * the post body already runs its own first-occurrence pass over the prose
+ * around the card (`usedGlossaryTerms` in `blog-content.tsx`) and the widget
+ * renders outside that pass, so both would link the same term from their own
+ * separate ledgers; and `parseGlossarySegments` has no self-exclusion, so a
+ * card explaining one term would link that term's own name inside its own
+ * definition, to the page its "more in the glossary" button already points at.
+ * On the glossary page itself auto-linking is the only layer and stays on.
  */
 
-export function GlossaryRichText({ children, locale }: { children: string; locale: Locale }) {
+export function GlossaryRichText({
+  children,
+  locale,
+  autoLink = true,
+}: {
+  children: string;
+  locale: Locale;
+  autoLink?: boolean;
+}) {
   type Part = { text: string } | { label: string; href: string };
   const parts: Part[] = [];
   // Local regex (fresh `lastIndex`) so there's no shared mutable module state.
@@ -44,6 +64,7 @@ export function GlossaryRichText({ children, locale }: { children: string; local
             </a>
           );
         }
+        if (!autoLink) return <Fragment key={i}>{p.text}</Fragment>;
         return (
           <GlossaryInject key={i} locale={locale}>
             {p.text}
