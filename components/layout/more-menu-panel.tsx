@@ -93,7 +93,7 @@ function MoreMenuCard({
       data-menu-stagger
       href={href as '/'}
       prefetch={false}
-      className="group border-border/60 bg-card/50 hover:border-primary focus-visible:ring-ring block rounded-xl border p-3 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+      className="border-border/60 bg-card/50 hover:border-primary focus-visible:ring-ring block rounded-xl border p-3 transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
       <span className="bg-primary/10 text-primary mb-2.5 flex size-9 items-center justify-center rounded-lg">
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
