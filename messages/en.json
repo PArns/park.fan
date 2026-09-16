@@ -477,8 +477,7 @@
     "planner": "Trip planner",
     "glossary": "Dictionary",
     "glossaryHint": "Queue and roller coaster terms, explained.",
-    "blog": "Blog",
-    "blogHint": "Reports from the parks, and what the data says about them.",
+    "blog": "Backstage",
     "more": "More",
     "bestTime": "Best Time to Visit",
     "bestTimeHint": "The quietest weekdays and months, park by park.",
@@ -486,7 +485,6 @@
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
     "categories": "Categories",
     "popularParks": "Popular parks",
-    "allPosts": "See all posts",
     "readingTime": "{minutes} min",
     "nearby": "Near you"
   },

@@ -477,8 +477,7 @@
     "planner": "Dagplanner",
     "glossary": "Woordenboek",
     "glossaryHint": "Begrippen uit de wachtrij en de achtbaan, uitgelegd.",
-    "blog": "Blog",
-    "blogHint": "Verslagen uit de parken en wat de data erover zegt.",
+    "blog": "Backstage",
     "more": "Meer",
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
@@ -486,7 +485,6 @@
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
-    "allPosts": "Alle berichten bekijken",
     "readingTime": "{minutes} min.",
     "nearby": "Bij jou in de buurt"
   },

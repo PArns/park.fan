@@ -132,11 +132,41 @@ empty before, 0 of 23 after**.
 
 ## The blog panel: three categories, six posts, no tags
 
+It hangs off a bar entry of its own, labelled **"Backstage"**. It spent one release inside the
+"Mehr" panel, as the block the three reading-material sections stood beside — see
+["Backstage" comes back out of "Mehr"](#backstage-comes-back-out-of-mehr) for why it did not stay
+there.
+
 Fully server-rendered — the blog manifest is a build-time artifact, so there is no fetch and no
 loading state, and it is ten links. The six posts (`RECENT_LIMIT`) carry their own cover images,
 which is where
 this differs from the parks rail: those had to be a curated four because 14 of 212 parks have a
 picture, here the coverage is 7 of 7 and the covers are already 16:9 crops.
+
+**One heading over both columns.** There were two — "Neueste Beiträge" over the opener and "Blog"
+over the rows — for one list of posts drawn in two shapes, and the second of them repeated the word
+that labels the entry the panel hangs from. It is a `MenuSectionHeading` now, the rule the parks and
+"Mehr" bands already draw, and it is the panel's link to `/blog` under the same "the heading IS the
+link" rule those two follow. The separate "Alle Beiträge" link went with the second heading;
+`navigation.allPosts` had no other reader and is out of all six locale files.
+
+**Every row carries its category**, in the same small uppercase accent the opener beside it uses.
+The reference is that opener and deliberately not `BlogPostRow`, which sets the category in
+`text-muted-foreground` (and the post card in `var(--pk-text-3)`): those are elsewhere on a page,
+these two sit side by side in one band, and two tones for one field in one surface is a surface you
+read twice. This was the one place the site listed posts without a category at all. The
+row is four lines of text instead of three now, so its thumbnail goes 112 × 70 → **128 × 80**: the
+old size was tuned to the three-line height, and an image shorter than its own row hangs out of the
+bottom of it.
+
+That was a data change before it was a layout one: `getBlogMenu` resolved `category` under an
+`index === 0`, so only the opener carried the field at all and a row had nothing to draw. The
+comment beside it priced the alternative as "five more strings in the chrome of every page". The
+labels are three category names repeated — five of the six rows here read "Guides" — so the measured
+cost on a country listing page is **+517 B raw, +36 B gzip-9**. (gzip-9 rather than brotli: the
+container has neither the binary nor the module. The park page in the same pair came out 378 B
+_smaller_ compressed, which is the re-chunking CLAUDE.md warns about rather than a saving, so the
+listing page is the number to read.)
 
 The blog holds 7 posts per locale across **3 categories** (guides 5, behind-the-scenes 1, news 1),
 **31 tags** and one author. So the categories are in, the six newest posts are in, and **the tags
@@ -190,38 +220,26 @@ exist. The ~25 px of slack the
 [header geometry requirement](../design/design-system.md#header-geometry) counts there is the
 actions row — lockup, search, locale, theme, °C/°F, burger — and none of this touches it.
 
-Four entries moved one level down, behind a trigger with no page of its own:
+Four entries moved one level down, behind a trigger with no page of its own. Three of them are
+still there: **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's**, a heading and a line
+each. Their lists are separate tickets; the heading IS the link, which is what keeps all three hub
+URLs in the HTML of every page. The fourth, the blog, came back out — see below.
 
-- **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's** are a heading and a line each. Their
-  lists are separate tickets; the heading IS the link, which is what keeps all three hub URLs in
-  the HTML of every page.
-- **Blog** keeps the panel it had. Emptying it to match its neighbours would have taken 3 category
-  and 6 post links (`RECENT_LIMIT`) out of the link graph of ~35,000 pages for nothing in return.
-
-**The four sections cost five strings in the chrome, and the chrome is serialized by every page.**
-`navigation.more` plus one hint per section, measured against the namespace without them:
-**+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr** (raw +283 to +325).
-They are in `navigation` rather than in `bestTime`/`glossary`/`howto` for the reason
-`BlogMenuPanel` already carries in its own comment: one `useTranslations('blog')` in a header
-component once took the layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single
-label. A hint that grows into a paragraph belongs in a lazy namespace, not here.
-
-Below two posts in a locale there is no blog block and no rail: the four sections are a flat row of
-columns, blog among them as a heading and a line. The count of posts is the whole condition, and a
-count of categories is deliberately not in it — the bar's old entry switched on
-`categories.length > 0`, and that term throws away up to six post links for a locale whose posts
-carry no category at all, which `BlogMenuPanel` renders perfectly well. `BlogMenuPanel` draws the panel's only `/blog`
-link in the column of posts _after_ the lead one, so a locale with a single published post would
-otherwise have had no way from the header to its blog index, where the bar's old entry was always a
-link to it. The `showBlog === false` case takes the same branch with three columns instead of four,
-for the same reason: a rail is a relationship to the block beside it.
+**The sections cost four strings in the chrome, and the chrome is serialized by every page.**
+`navigation.more` plus one hint per section, measured against the namespace without them when there
+were four of each: **+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr**
+(raw +283 to +325); `navigation.blogHint` has since come out with the blog section. They are in
+`navigation` rather than in `bestTime`/`glossary`/`howto` for the reason `BlogMenuPanel` already
+carries in its own comment: one `useTranslations('blog')` in a header component once took the
+layout's chrome JSON from 6066 B to 9047 B, times six locales, for a single label. A hint that grows
+into a paragraph belongs in a lazy namespace, not here.
 
 Two decisions worth keeping:
 
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
 catch-all — `/alerts`, `/fancast` and `/contribute` are meant to land in here too — so it is named
-after being one, and it sits at the END of the row's three entries, where a catch-all belongs.
+after being one, and it sits at the END of the row's entries, where a catch-all belongs.
 
 **`NavMenu.href` is optional for this one entry.** Every other trigger is a real `<a>` that works
 without the panel; "Mehr" has nowhere to go, so its label and its chevron are one button rather
@@ -229,34 +247,54 @@ than a dead link beside a live one. The link graph does not notice, because the 
 and never unmounted — a crawler reads the destinations inside it exactly as it read the four
 entries in the bar.
 
-**The three sections are a rail from a bar width of 1280 px, three columns below it — and the rail
-is not the shorter of the two.** Measured at 1440 px on the same build, same page, both with every cover decoded:
-stacked **756.3 px**, as a rail **758.8 px**. The rail takes 256 px off the blog block and the block
-gives the height straight back by wrapping, its two halves going 563.1 → 654.8 px. Arithmetic that
-holds the block's height constant answers 867.6 px and is measuring a layout that does not exist;
-that number stood in this file and in the component for one review round. So the rail is the shape
-the panel wants, not a saving, and neither layout touches the real figure: three quarters of a
-900 px window, which is the blog block's height and predates this panel.
+**The sections are a flat `grid-cols-3`, with no threshold under it.** They used to be a 256 px
+rail beside the blog block from a bar width of 1280 px, and that rail went out with the block: `w-64`
+and `border-r` describe a relationship to a neighbour, and with nothing beside them they draw a
+column and a rule into the empty half of a band up to 1280 px wide. The grid needs no breakpoint
+because this panel only ever renders inside the nav row, and that row is `@min-[1024px]:flex` on the
+same container — a one-column state has no width at which anybody could see it.
 
-The rail is `flex flex-col`, not `grid-cols-1`: it is a flex item and stretches to the blog block's
-height, and a grid that tall splits into three equal rows — the sections came out 226 px apart with
-their text pinned to the top of each. Its `w-64` and `border-r` describe a relationship to the block
-beside it, so with `showBlog` false the component returns the three columns alone rather than a
-256 px rail and a rule into an empty half (counter-checked at 1440 px: 3 × 394.7 px, band 93.1 px).
+---
 
-**Its one breakpoint is `@min-[1280px]:`, never `xl:`.** The `<header>`
-carries `@container` because the trip planner's panel insets the page, so the bar gets narrower
-without the window moving — at a 1600 px window with the planner open the band's content column is
-992 px while `xl:` still reads 1600, and the rail would split a band that has the width the stacked
-layout is for, leaving the blog block 712 px of the 992 it would otherwise have. `MenuBand` one
-level up already sizes that column
-with the same numbers as container queries.
+## "Backstage" comes back out of "Mehr"
 
-**No `data-menu-stagger` on the blog wrapper.** `useMenuReveal` collects its targets with
-`querySelectorAll`, i.e. at any depth, and `BlogMenuPanel` carries three of its own. Nested, the
-tween runs on parent and child, so the block starts 20 px high instead of 10 and three stagger steps
-late. This is the only place in the app where two of them could nest; every other panel keeps its
-targets flat.
+The blog is the site's strongest entry point, and behind a catch-all trigger it was visible only to
+somebody who opened one. It is a bar entry again, a fourth `NavMenu` beside "Parks entdecken" and
+"Tagesplaner" and before "Mehr", opening the panel it already had.
+
+**The label is "Backstage", unchanged in all six locales.** It is an international loanword, so it
+needs no transcreation, and it says what the posts are.
+
+`navigation.blog` carries it, and it has **three** readers, not the two a first count of the
+components gives: this entry, the phone sheet's link, and `app/[locale]/layout.tsx`, which builds
+the `SiteNavigationElement` for `/blog` out of the same key. That third one is right as it stands —
+the structured data describes the primary navigation, and the navigation says "Backstage" — but it
+means a rename here is a rename in the markup of every page, so it is worth knowing before the next
+one. Two keys deliberately do **not** follow: `footer.blog`, which the footer link reads, and
+`blog.blog`, which the index page's breadcrumb reads, because a breadcrumb names the page rather
+than the menu entry that points at it.
+
+**The width was there, and it was measured rather than assumed.** The 23.7 px of French overflow
+that moved four entries out of the bar came from **six** entries; the row stood at +346.8 px of slack
+in French at a 1024 px container before this, which is the measurement in the table above. After,
+measured the same way on `/parks/europe/germany`, against the content box of the header row:
+
+| container | locale |    before |         after |
+| --------- | ------ | --------: | ------------: |
+| 1024 px   | de     | +351.6 px | **+249.9 px** |
+| 1024 px   | fr     | +346.8 px | **+245.0 px** |
+| 1280 px   | de     | +377.6 px |     +269.9 px |
+| 1280 px   | fr     | +372.8 px |     +265.0 px |
+
+**The phone sheet already had the link**, first in the list, above "Startseite" — the issue that
+asked for this reported it missing after reading the sheet from its `<details>` block downwards. It
+renders the same `navigation.blog`, so it says "Backstage" now and is otherwise unchanged.
+
+**No `data-menu-stagger` wrapper around `BlogMenuPanel`.** `useMenuReveal` collects its targets with
+`querySelectorAll`, i.e. at any depth, and the panel carries several of its own. Nested, the tween
+runs on parent and child, so the block starts 20 px high instead of 10 and three stagger steps late.
+That trap is gone with the "Mehr" rail — `NavMenu` hands the panel straight to `MenuBand` — but it is
+the reason nothing between the two may grow a stagger attribute.
 
 ---
 
@@ -310,8 +348,9 @@ markup already carries into the head of every page.
 ## Measured
 
 Against a running dev server, park page, `de`, measured for the mega-menu PR and **not** re-measured
-for "Mehr" — that change moves one `/blog` link out of the `<nav>` and into the panel, so the link
-count below is 48 before it and 47 after, with the same destinations:
+since. "Mehr" moved one `/blog` link out of the `<nav>` and into the panel (48 links before it, 47
+after, same destinations); "Backstage" put that link back in the `<nav>` as a bar entry, so the count
+is 48 again with, once more, the same destinations. Neither change added or removed a URL:
 
 |                                                         |                     before |                      after |
 | ------------------------------------------------------- | -------------------------: | -------------------------: |

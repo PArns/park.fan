@@ -477,8 +477,7 @@
     "planner": "Planificateur",
     "glossary": "Dictionnaire",
     "glossaryHint": "Les termes des files d'attente et des montagnes russes, expliqués.",
-    "blog": "Blog",
-    "blogHint": "Des reportages dans les parcs et ce que les données en disent.",
+    "blog": "Backstage",
     "more": "Plus",
     "bestTime": "Meilleure période",
     "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc.",
@@ -486,7 +485,6 @@
     "moreCities": "{count, plural, =1 {1 autre ville} other {# autres villes}}",
     "categories": "Catégories",
     "popularParks": "Parcs populaires",
-    "allPosts": "Voir tous les articles",
     "readingTime": "{minutes} min",
     "nearby": "Près de chez vous"
   },

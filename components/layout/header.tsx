@@ -15,6 +15,7 @@ import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
+import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
@@ -479,15 +480,38 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           <Link href={plannerPath} prefetch={false} className={navLinkClass}>
             {t('planner')}
           </Link>
-          {/* Der Sammel-Eintrag, und er ist der Grund, warum die vier Links darüber hier nicht
-              mehr stehen: „Beste Reisezeit", „Wörterbuch", „So funktioniert's" und „Blog" waren
-              vier eigene Einträge in einer Zeile, die auf Französisch bei 1024 px 23,7 px über
-              ihre Box lief und das Dokument auf 1032 px zog. Sie liegen jetzt im Panel, das
-              `MoreMenuPanel` beschreibt — im HTML jeder Seite, weil `MenuBand` das Panel nur
-              versteckt und nie abhängt.
+          {/* Backstage — der Blog, und er ist der eine der vier Reiselektüre-Einträge, der aus
+              dem „Mehr"-Panel wieder in die Zeile zurückkommt. Er ist der stärkste SEO-Treiber
+              der Seite, und hinter einem Sammel-Trigger sieht ihn nur, wer ihn aufklappt.
 
-              Als letzter der drei Navigationseinträge, weil ein Sammel-Trigger ans Ende einer
-              Zeile gehört; die Favoriten dahinter sind wie „Mehr" kein Link. Vor allen dreien
+              Ein eigener `NavMenu` und nicht bloß ein Link: das Panel, das `BlogMenuPanel`
+              zeichnet, steht damit wieder unmittelbar unter seinem eigenen Eintrag statt in der
+              rechten Hälfte eines fremden. Mit `href="/blog"`, also ein echtes `<a>` plus
+              Chevron-Button — siehe NavMenu, Regel 2. Ohne Panel-Daten bleibt der nackte Link
+              übrig, dieselbe Staffelung wie beim Parks-Eintrag oben.
+
+              Der Platz dafür war da: die Zeile hatte vor diesem Eintrag 346,8 px Luft auf
+              Französisch bei 1024 px Container (gemessen auf `/parks/europe/germany`), und die
+              23,7 px Überlauf, die PAR-191 aufgelöst hat, kamen von SECHS Einträgen. */}
+          {showBlog &&
+            (blogMenu && blogMenu.recent.length > 0 ? (
+              <NavMenu href="/blog" label={t('blog')} floating={isTransparent}>
+                <BlogMenuPanel {...blogMenu} />
+              </NavMenu>
+            ) : (
+              <Link href="/blog" prefetch={false} className={navLinkClass}>
+                {t('blog')}
+              </Link>
+            ))}
+          {/* Der Sammel-Eintrag, und er ist der Grund, warum die drei Links darüber hier nicht
+              mehr stehen: „Beste Reisezeit", „Wörterbuch" und „So funktioniert's" waren eigene
+              Einträge in einer Zeile, die auf Französisch bei 1024 px 23,7 px über ihre Box lief
+              und das Dokument auf 1032 px zog. Sie liegen jetzt im Panel, das `MoreMenuPanel`
+              beschreibt — im HTML jeder Seite, weil `MenuBand` das Panel nur versteckt und nie
+              abhängt.
+
+              Als letzter der vier Navigationseinträge, weil ein Sammel-Trigger ans Ende einer
+              Zeile gehört; die Favoriten dahinter sind wie „Mehr" kein Link. Vor allen vieren
               kann noch der Nearby-Chip stehen, der ist aber ein Fund und kein Menüpunkt.
 
               Ohne `href`: „Mehr" hat keine eigene Seite. Siehe NavMenu, Regel 2. */}
@@ -496,8 +520,6 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               bestTimeHref={bestTimePath}
               glossaryHref={glossaryPath}
               howtoHref={howtoPath}
-              showBlog={showBlog}
-              blog={blogMenu}
             />
           </NavMenu>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen

@@ -477,8 +477,7 @@
     "planner": "Planificador",
     "glossary": "Diccionario",
     "glossaryHint": "Términos de colas y montañas rusas, explicados.",
-    "blog": "Blog",
-    "blogHint": "Reportajes desde los parques y lo que dicen los datos.",
+    "blog": "Backstage",
     "more": "Más",
     "bestTime": "Mejor época",
     "bestTimeHint": "Los días y los meses más tranquilos, parque por parque.",
@@ -486,7 +485,6 @@
     "moreCities": "{count, plural, =1 {1 ciudad más} other {# ciudades más}}",
     "categories": "Categorías",
     "popularParks": "Parques populares",
-    "allPosts": "Ver todas las entradas",
     "readingTime": "{minutes} min",
     "nearby": "Cerca de ti"
   },

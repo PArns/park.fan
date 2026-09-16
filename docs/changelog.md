@@ -4,6 +4,29 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – „Backstage": der Blog ist wieder ein eigener Eintrag in der Leiste
+
+Vier Einträge sind mit dem Sammel-Trigger „Mehr" aus der Navigationszeile verschwunden, weil sechs
+davon auf Französisch bei 1024 px 23,7 px über ihre Box liefen. Einer der vier ist der stärkste
+Einstiegspunkt der Seite, und hinter einem Sammeleintrag sah ihn nur, wer ihn aufklappte. Er steht
+wieder in der Zeile, als vierter Eintrag zwischen „Tagesplaner" und „Mehr", und öffnet dasselbe
+Panel wie vorher. Sein Label ist **„Backstage"**, unverändert in allen sechs Sprachen.
+
+Gemessen an zwei eigenen Builds auf `/{locale}/parks/europe/germany`, gegen die Inhaltsbox der
+Header-Zeile: der Eintrag kostet **101,8 px**, und der engste Fall, Französisch bei 1024 px
+Container, behält danach **245 px** Luft (vorher 346,8). `document.scrollWidth` bleibt in allen vier
+gemessenen Kombinationen gleich der Viewport-Breite.
+
+Das „Mehr"-Panel verliert damit seine Blog-Sektion und die 256-px-Schiene, die nur existierte, um
+neben dem Blog-Block zu stehen: übrig bleiben drei Spalten. Im Blog-Panel steht jetzt **eine**
+Überschrift über beiden Spalten statt zweier für dieselbe Liste, und **jede Listenzeile trägt ihre
+Kategorie** – das war die einzige Stelle der Seite, die Beiträge ohne sie auflistet. Das Feld dafür
+lag nur am ersten Post an; die Zeile wird damit vierzeilig, also wächst ihr Vorschaubild von
+112 × 70 auf 128 × 80. Details in
+[header-navigation.md](features/header-navigation.md#backstage-comes-back-out-of-mehr).
+
+---
+
 ## Unreleased – Planer im Querformat: das Chrome steht jetzt neben der Achse
 
 Ein quer gehaltenes Handy bekam seit PAR-76 das Bottom-Sheet, den Griff und die 44-px-Ziele — und

@@ -477,8 +477,7 @@
     "planner": "Tagesplaner",
     "glossary": "Wörterbuch",
     "glossaryHint": "Begriffe aus Warteschlange und Achterbahn, erklärt.",
-    "blog": "Blog",
-    "blogHint": "Berichte aus den Parks und was die Daten dazu sagen.",
+    "blog": "Backstage",
     "more": "Mehr",
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
@@ -486,7 +485,6 @@
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
-    "allPosts": "Alle Beiträge ansehen",
     "readingTime": "{minutes} Min.",
     "nearby": "In deiner Nähe"
   },

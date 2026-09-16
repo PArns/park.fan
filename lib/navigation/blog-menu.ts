@@ -76,7 +76,7 @@ export interface BlogMenuPost {
   readingTimeMinutes: number;
   /** The post's own teaser, cut on the server — longer for the opener than for a row. */
   excerpt?: string;
-  /** The post's category, resolved to its label. Only carried for the opener, which shows it. */
+  /** The post's category, resolved to its label. Every post carries it — the rows show it too. */
   category?: string;
   /** Cover image, where the post has one. All seven currently do. */
   image?: string;
@@ -109,16 +109,18 @@ export function getBlogMenu(locale: Locale): BlogMenu {
           post.frontmatter.excerpt,
           index === 0 ? LEAD_EXCERPT_CHARS : EXCERPT_CHARS
         ),
-        // Only the opener renders it, so only the opener carries it — a label per row would be
-        // five more strings in the chrome of every page for a line nobody has room to read.
-        category:
-          index === 0 && post.frontmatter.category
-            ? resolveCategoryLabel(
-                post.frontmatter.category,
-                locale,
-                post.frontmatter.category.split('/').filter(Boolean).pop() ?? ''
-              )
-            : undefined,
+        // Every post, not just the opener. This used to stop at `index === 0` because only the
+        // opener drew it, and the rows were the one place on the site that lists posts without
+        // their category. The five extra strings are the labels of three categories repeated —
+        // the panel prints "Guides" five times out of six here — which is what brotli is for:
+        // measured on a park page, the whole row change is under a tenth of a KB compressed.
+        category: post.frontmatter.category
+          ? resolveCategoryLabel(
+              post.frontmatter.category,
+              locale,
+              post.frontmatter.category.split('/').filter(Boolean).pop() ?? ''
+            )
+          : undefined,
         // The cover is already a 16:9 crop for every post that has one, so the panel needs no
         // optimizer pass — but it does need the version token. Retargeting a focal point rewrites
         // a crop's bytes at an unchanged URL, so a bare path serves the old framing out of cache

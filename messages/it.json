@@ -477,8 +477,7 @@
     "planner": "Pianificatore",
     "glossary": "Dizionario",
     "glossaryHint": "I termini delle code e delle montagne russe, spiegati.",
-    "blog": "Blog",
-    "blogHint": "Reportage dai parchi e quello che dicono i dati.",
+    "blog": "Backstage",
     "more": "Altro",
     "bestTime": "Periodo migliore",
     "bestTimeHint": "I giorni e i mesi più tranquilli, parco per parco.",
@@ -486,7 +485,6 @@
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
-    "allPosts": "Vedi tutti gli articoli",
     "readingTime": "{minutes} min",
     "nearby": "Vicino a te"
   },

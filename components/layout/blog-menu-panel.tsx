@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 
 /**
@@ -20,6 +21,13 @@ import type { BlogMenu } from '@/lib/navigation/blog-menu';
  * The teaser is there for a reader first and a crawler second, and it is cut on the SERVER
  * (`trimExcerpt`, 170 characters): this text sits in the chrome of every page on the site, and a
  * CSS line clamp would hide the bytes without stopping them from shipping.
+ *
+ * **One heading over both columns, not one per column.** It used to carry two — "Neueste Beiträge"
+ * over the opener and "Blog" over the rows — for a single list of posts split across two shapes,
+ * and the second of them repeated the word that now labels the bar entry this panel hangs from. The
+ * heading is `MenuSectionHeading`, the same rule the parks and "more" bands draw, and it is the
+ * link to `/blog` (the "heading IS the link" rule those two already follow), so the panel keeps its
+ * way to the index without a second copy of the word beside it.
  *
  * Categories move to a pill row along the bottom. As a left column they cost 13 rem of the band
  * for three links; as pills they cost one line and read as what they are, a filter rather than a
@@ -46,107 +54,114 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
-        {/* The opener. */}
-        {lead && (
-          <div data-menu-stagger>
-            <div className="text-foreground border-border/60 mb-2.5 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">
-              {t('latestPosts')}
-            </div>
-            <Link
-              href={`/blog/${lead.slug}`}
-              prefetch={false}
-              className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
-            >
-              {lead.image && (
-                <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
-                  <Image
-                    src={lead.image}
-                    alt=""
-                    width={640}
-                    height={360}
-                    sizes="(min-width: 1024px) 480px, 100vw"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </span>
-              )}
-              {lead.category && (
-                <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">
-                  {lead.category}
-                </span>
-              )}
-              <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
-                {lead.title}
-              </span>
-              {lead.excerpt && (
-                <span className="text-muted-foreground mt-1.5 line-clamp-4 block text-[13px] leading-relaxed">
-                  {lead.excerpt}
-                </span>
-              )}
-              <span className="text-muted-foreground/80 mt-2 block text-xs">
-                {dateOf(lead.date)} · {t('readingTime', { minutes: lead.readingTimeMinutes })}
-              </span>
-            </Link>
-          </div>
-        )}
+      <div>
+        {/* The one heading, spanning both columns — see the docblock. */}
+        <div data-menu-stagger>
+          <MenuSectionHeading label={t('latestPosts')} href="/blog" />
+        </div>
 
-        {/* The rest, as rows. A row carries the two facts that decide a click — how old it is and
-            how long it takes — where a fourth equal card carried neither at a legible size. */}
-        {rest.length > 0 && (
-          <div data-menu-stagger>
-            <div className="text-foreground border-border/60 mb-2.5 flex items-center justify-between gap-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">
-              <span>{t('blog')}</span>
+        <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+          {/* The opener. */}
+          {lead && (
+            <div data-menu-stagger>
               <Link
-                href="/blog"
+                href={`/blog/${lead.slug}`}
                 prefetch={false}
-                className="text-primary hover:text-primary/80 text-[11px] font-medium normal-case transition-colors"
+                className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
               >
-                {t('allPosts')}
+                {lead.image && (
+                  <span className="bg-muted relative mb-3 block aspect-[16/9] overflow-hidden rounded-xl">
+                    <Image
+                      src={lead.image}
+                      alt=""
+                      width={640}
+                      height={360}
+                      sizes="(min-width: 1024px) 480px, 100vw"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </span>
+                )}
+                {lead.category && (
+                  <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">
+                    {lead.category}
+                  </span>
+                )}
+                <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
+                  {lead.title}
+                </span>
+                {lead.excerpt && (
+                  <span className="text-muted-foreground mt-1.5 line-clamp-4 block text-[13px] leading-relaxed">
+                    {lead.excerpt}
+                  </span>
+                )}
+                <span className="text-muted-foreground/80 mt-2 block text-xs">
+                  {dateOf(lead.date)} · {t('readingTime', { minutes: lead.readingTimeMinutes })}
+                </span>
               </Link>
             </div>
-            <ul className="flex flex-col gap-1">
-              {rest.map((post) => (
-                <li key={post.slug}>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    prefetch={false}
-                    className="group hover:bg-muted/60 -mx-2 flex items-start gap-3 rounded-lg px-2 py-2 transition-colors"
-                  >
-                    {/* 16:10 auf 7 rem: die Zeile trägt drei Zeilen Text
-                        (Titel, Teaser, Datum) und ist damit rund 70 px hoch. Auf 6 rem und 16:10
-                        war das Bild 60 px und fiel unten aus der Zeile; auf 4:3 waren es 84 und es
-                        stand über. 112×70 trifft die Texthöhe. */}
-                    {post.image && (
-                      <span className="bg-muted relative block aspect-[16/10] w-28 shrink-0 overflow-hidden rounded-lg">
-                        <Image
-                          src={post.image}
-                          alt=""
-                          fill
-                          sizes="112px"
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </span>
-                    )}
-                    <span className="min-w-0 flex-1">
-                      <span className="text-foreground group-hover:text-primary line-clamp-2 block text-sm leading-snug font-medium text-pretty transition-colors">
-                        {post.title}
-                      </span>
-                      {post.excerpt && (
-                        <span className="text-muted-foreground mt-0.5 line-clamp-1 block text-xs">
-                          {post.excerpt}
+          )}
+
+          {/* The rest, as rows. A row carries the two facts that decide a click — how old it is and
+              how long it takes — where a fourth equal card carried neither at a legible size. */}
+          {rest.length > 0 && (
+            <div data-menu-stagger>
+              <ul className="flex flex-col gap-1">
+                {rest.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      prefetch={false}
+                      className="group hover:bg-muted/60 -mx-2 flex items-start gap-3 rounded-lg px-2 py-2 transition-colors"
+                    >
+                      {/* 16:10 auf 8 rem: die Zeile trägt vier Zeilen Text (Kategorie, Titel,
+                          Teaser, Datum). Auf 7 rem waren es 112×70 und drei Zeilen — die Kategorie
+                          ist die vierte, und ein Bild, das kürzer ist als sein Text, fällt unten
+                          aus der Zeile. 128×80 trifft die neue Texthöhe. */}
+                      {post.image && (
+                        <span className="bg-muted relative block aspect-[16/10] w-32 shrink-0 overflow-hidden rounded-lg">
+                          <Image
+                            src={post.image}
+                            alt=""
+                            fill
+                            sizes="128px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
                         </span>
                       )}
-                      <span className="text-muted-foreground/80 mt-1 block text-[11px]">
-                        {dateOf(post.date)} ·{' '}
-                        {t('readingTime', { minutes: post.readingTimeMinutes })}
+                      <span className="min-w-0 flex-1">
+                        {/* Dieselbe Optik wie der Opener links daneben: über dem Titel, klein,
+                            versal, in der Akzentfarbe. Der Bezug ist bewusst der Opener und
+                            nicht `BlogPostRow` — die Zeile dort setzt die Kategorie in
+                            `text-muted-foreground`, die Karte in `var(--pk-text-3)`. Beide
+                            stehen aber auf einer Seite, und diese zwei stehen in einem Band
+                            nebeneinander: zwei Tonwerte für dasselbe Feld in derselben Fläche
+                            liest man zweimal. Sie fehlte hier als einziger Stelle der App, die
+                            Beiträge auflistet. */}
+                        {post.category && (
+                          <span className="text-primary mb-0.5 block text-[10px] font-semibold tracking-wide uppercase">
+                            {post.category}
+                          </span>
+                        )}
+                        <span className="text-foreground group-hover:text-primary line-clamp-2 block text-sm leading-snug font-medium text-pretty transition-colors">
+                          {post.title}
+                        </span>
+                        {post.excerpt && (
+                          <span className="text-muted-foreground mt-0.5 line-clamp-1 block text-xs">
+                            {post.excerpt}
+                          </span>
+                        )}
+                        <span className="text-muted-foreground/80 mt-1 block text-[11px]">
+                          {dateOf(post.date)} ·{' '}
+                          {t('readingTime', { minutes: post.readingTimeMinutes })}
+                        </span>
                       </span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. */}
