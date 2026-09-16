@@ -399,13 +399,13 @@ zentriert, mit `max-w-3xl` darunter: ein 768-px-Block, der in einem 1248 px brei
 anfing und bei 1104 aufhörte, während die Navigationszeile darüber, die Karten des gefüllten
 Zustands und die Seite darunter alle bei 96 beginnen — eine Insel, die sich an nichts ausrichtet,
 mit je einem Viertel leerem Glas links und rechts. Dazu eine andere Kopfzeile als der gefüllte
-Zustand: dort links „★ Favoriten" und rechts „Alle anzeigen", hier eine zentrierte Zeile ohne
-Gegenstück. Wer nichts markiert hat, bekam damit nicht dasselbe Menü zu sehen wie jemand mit
+Zustand: dort links „★ Favoriten" und rechts die Links auf die beiden persönlichen Seiten, hier
+eine zentrierte Zeile ohne Gegenstück. Wer nichts markiert hat, bekam damit nicht dasselbe Menü zu sehen wie jemand mit
 Favoriten. Die Begründung fürs Zentrieren war „linksbündig bliebe rechts eine leere Hälfte" — die
 bleibt zentriert auch, nur in zwei Vierteln statt in einer Hälfte und dafür an keiner Kante.
 
-Jetzt: dieselbe Kopfzeile (links „★ Noch keine Favoriten", rechts „Parks entdecken", wo im
-gefüllten Zustand „Alle anzeigen" steht — als Knopf unter der Anleitung nahm derselbe Link eine
+Jetzt: dieselbe Kopfzeile (links „★ Noch keine Favoriten", rechts „Meine Alarme", „Meine
+Favoriten" und „Parks entdecken" — als Knopf unter der Anleitung nahm derselbe Link eine
 eigene Zeile und stand wieder auf keiner Kante), darunter die drei Schritte als drei Spalten über
 die volle Bandbreite, darunter die Parkvorschläge linksbündig. Bei 1248 px sind das ~405 px pro
 Schritt für ein bis zwei Zeilen. Gemessen bei 1024/1440/1920 px: Überschrift, Schritte und Chips
@@ -465,6 +465,28 @@ demselben Grund: sie ist einmal auf eine Art gebrochen, die ein grüner Build ni
 jeder Bandbreite dieselbe Breite bekommt und die Gruppen zusammen ins Band passen, und dass jede
 Zusammenstellung, die es vor der Alarmgruppe gab, exakt so geplant wird wie vorher (die alte
 Formel steht als Vergleichsimplementierung im Test).
+
+## Die beiden persönlichen Seiten sind aus jedem Zustand erreichbar
+
+`/favorites` und `/alerts` sind `noindex` und stehen in keiner Sitemap. Das Menü ist damit der
+einzige Ort, an dem sie überhaupt verlinkt sind – und der Link auf `/favorites` hing an einer
+Bedingung: „Alle anzeigen" erschien nur, wenn eine Gruppe über ihre Obergrenze lief. Drei
+Favoriten passen in ein Band mit Platz für sechzehn, null erst recht, also sah die Mehrheit der
+Besucher den Link nie. Auf dem 300-px-Sheet war der leere Zustand dazu die einzige Fläche im
+ganzen Menü ohne einen der beiden Links.
+
+Jetzt trägt jeder der drei Zustände (Band gefüllt, Band leer, Sheet leer) dieselben zwei Links,
+als `PushAlertsMenuLink` und `FavoritesPageMenuLink`: Glocke plus „Meine Alarme", Stern plus
+„Meine Favoriten". Was die Obergrenze verbirgt, sagt weiterhin die „+N"-Zeile unter der Gruppe –
+das ist eine Aussage über die Gruppe, keine darüber, ob die Seite existiert. Der Footer trägt
+dieselben zwei Ziele als Textlinks (`footer.favorites`, `footer.alerts`), damit ein Lesezeichen
+nicht davon abhängt, dass jemand das Menü öffnet.
+
+Der Tab-Titel beider Seiten trägt seither den Marken-Suffix. Das Locale-Layout setzt
+`template: '%s'`, hängt also nichts an; jede Seite trägt ihren vollen Titel selbst. Beide Seiten
+benutzen ihren `title` aber auch als `<h1>`, deshalb liegt der Suffix in einem eigenen Schlüssel
+(`favoritesPage.metaTitle`, `pushAlerts.overview.metaTitle`) und nicht im `title` – sonst stünde
+„– park.fan" in der Überschrift.
 
 ## Alarme im Favoritenmenü
 

@@ -421,6 +421,8 @@
     "bestTime": "Beste Reisezeit",
     "glossaryLink": "Wörterbuch",
     "blog": "Blog",
+    "favorites": "Favoriten",
+    "alerts": "Alarme",
     "feed": "RSS-Feed",
     "datenschutz": "Datenschutzerklärung",
     "privacy": "Datenschutzerklärung",
@@ -1573,6 +1575,7 @@
   },
   "favorites": {
     "title": "Favoriten",
+    "link": "Meine Favoriten",
     "empty": "Noch keine Favoriten",
     "parks": "Parks",
     "attractions": "Attraktionen",
@@ -1597,6 +1600,7 @@
   },
   "favoritesPage": {
     "title": "Meine Favoriten",
+    "metaTitle": "Meine Favoriten – park.fan",
     "subtitle": "Parks, Attraktionen, Shows und Restaurants, die du in diesem Browser markiert hast, mit Live-Status und Wartezeiten.",
     "howToTitle": "So legst du Favoriten an"
   },
@@ -1653,6 +1657,7 @@
     },
     "overview": {
       "title": "Meine Alarme",
+      "metaTitle": "Meine Alarme – park.fan",
       "subtitle": "Wartezeit-Alarme und Show-Erinnerungen für dieses Gerät, parkübergreifend.",
       "loading": "Lädt …",
       "emptyBody": "Noch nichts eingerichtet. Auf einer Parkseite lässt sich über die Glocke bei einem Fahrgeschäft oder einer Show eine Erinnerung einrichten.",

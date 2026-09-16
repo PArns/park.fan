@@ -21,7 +21,9 @@ export async function generateMetadata({ params }: AlertsPageProps): Promise<Met
   if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'pushAlerts.overview' });
   return {
-    title: t('title'),
+    // `metaTitle` carries the brand suffix the `%s` template does not add; `title` stays the
+    // `<h1>` below. Same split as `/favorites`.
+    title: t('metaTitle'),
     // This browser's own alerts — nothing here is the same page twice.
     robots: { index: false, follow: false },
     alternates: { canonical: `${SITE_URL}/${locale}/alerts` },

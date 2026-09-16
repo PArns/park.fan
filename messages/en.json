@@ -421,6 +421,8 @@
     "bestTime": "Best time to visit",
     "glossaryLink": "Dictionary",
     "blog": "Blog",
+    "favorites": "Favorites",
+    "alerts": "Alerts",
     "feed": "RSS feed",
     "datenschutz": "Privacy Policy",
     "privacy": "Privacy Policy",
@@ -1573,6 +1575,7 @@
   },
   "favorites": {
     "title": "Favorites",
+    "link": "My favorites",
     "empty": "No favorites yet",
     "parks": "Parks",
     "attractions": "Attractions",
@@ -1597,6 +1600,7 @@
   },
   "favoritesPage": {
     "title": "My favorites",
+    "metaTitle": "My favorites - park.fan",
     "subtitle": "Parks, rides, shows and restaurants you starred in this browser, with live status and wait times.",
     "howToTitle": "How to add favorites"
   },
@@ -1653,6 +1657,7 @@
     },
     "overview": {
       "title": "My alerts",
+      "metaTitle": "My alerts - park.fan",
       "subtitle": "Wait-time alerts and show reminders for this device, across every park.",
       "loading": "Loading…",
       "emptyBody": "Nothing set up yet. On a park page, the bell next to a ride or a show sets up a reminder.",

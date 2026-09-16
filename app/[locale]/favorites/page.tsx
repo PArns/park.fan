@@ -39,7 +39,10 @@ export async function generateMetadata({ params }: FavoritesPageProps): Promise<
   if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'favoritesPage' });
   return {
-    title: t('title'),
+    // `metaTitle`, not `title`: the locale layout's template is `%s`, so every page carries its
+    // own brand suffix, and `title` is also the `<h1>` below — putting "– park.fan" in the one
+    // that belongs in a tab would put it in the heading too.
+    title: t('metaTitle'),
     // A cookie in one browser — nothing here is the same page twice.
     robots: { index: false, follow: false },
     alternates: { canonical: `${SITE_URL}/${locale}/favorites` },
