@@ -27,10 +27,27 @@ export const metadata: Metadata = {
  * Dark is hardcoded rather than themed. The admin is a tool, it is used in the
  * same conditions every time, and a theme toggle here would be one more thing
  * to keep working for no benefit anybody has asked for.
+ *
+ * `color-scheme: dark` says that to the browser, and the class alone does not:
+ * `.dark` repaints our own surfaces and leaves every control the UA draws for
+ * itself in the light style. What somebody hit is the calendar glyph of
+ * `<input type="date">` — dark ink on the `bg-background/60` field. Measured on
+ * `/admin/retirement`: `color-scheme` computed `normal` before, `dark` after,
+ * the field's box unchanged at 332×44 (390 px) and 477×36 (1280 px). The other
+ * five date inputs (`season-editor` ×2, `curated-fields`, `attraction-status`)
+ * are the same `TextInput` in the same document, and the same declaration
+ * reaches the rest of the UA-drawn set in here: six native `<select>` elements
+ * and the six `NumberInput` call sites with their spinner.
+ *
+ * On this element rather than on `.dark` in `globals.css`, because the public
+ * site's dark mode also carries native checkboxes, range sliders and a
+ * `<select>`, and changing how those are drawn is a different ticket. The
+ * admin's document is unconditionally dark, so here the declaration is simply
+ * true.
  */
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className="dark" data-admin="" suppressHydrationWarning>
+    <html lang="de" className="dark [color-scheme:dark]" data-admin="" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} bg-background text-foreground relative min-h-screen font-sans antialiased`}
       >
