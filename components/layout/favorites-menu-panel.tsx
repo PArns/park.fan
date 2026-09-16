@@ -497,8 +497,9 @@ export function FavoritesMenuPanel({
               auf keiner Kante. */}
           <span className="flex items-center gap-3">
             {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
-                eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. */}
-            <PushAlertsMenuLink label={tPush('link')} />
+                eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. Im Sheet
+                nicht — dort steht derselbe Link unbedingt in `MoreMenuLinks`, siehe unten. */}
+            {!isSheet && <PushAlertsMenuLink label={tPush('link')} />}
             {/* Und die Favoritenseite ist im leeren Zustand gerade das, was fehlt: dort steht
                 die Anleitung noch einmal, und ein Lesezeichen darauf ist der Weg zurück. */}
             <FavoritesPageMenuLink label={t('link')} />
@@ -624,7 +625,12 @@ export function FavoritesMenuPanel({
           {t('title')}
         </span>
         <span className="flex items-center gap-3">
-          <PushAlertsMenuLink label={tPush('link')} />
+          {/* Nicht im Sheet: dort trägt `MoreMenuLinks` denselben Link mit demselben Icon und
+              demselben Text unbedingt, und in einer 300-px-Spalte stünde „Meine Alarme" für jeden
+              Besucher mit mindestens einem Favoriten zweimal untereinander (gemessen: y = 104 und
+              y = 547 bei 360 px). Im Band bleibt er, weil dieses Panel und das „Mehr"-Panel nie
+              gleichzeitig offen sind. */}
+          {!isSheet && <PushAlertsMenuLink label={tPush('link')} />}
           <FavoritesPageMenuLink label={t('link')} />
         </span>
       </div>

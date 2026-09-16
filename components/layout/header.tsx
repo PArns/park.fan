@@ -8,12 +8,13 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import type { Locale } from '@/i18n/config';
-import { Bell, Camera, ChevronDown, LineChart, MapPin, Menu } from 'lucide-react';
+import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
+import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
@@ -722,37 +723,11 @@ export function Header({
                   >
                     {t('planner')}
                   </Link>
-                  {/* Dieselben drei wie im Fuß des „Mehr"-Panels, und aus demselben Grund hier
-                      unten und kleiner: der Rest dieser Liste sind Ziele, die Besucher suchen,
-                      diese drei sind Ziele, die man findet. Sie stehen im Sheet, weil die Nav-Zeile
-                      mit dem Panel `@min-[1024px]` ist — ohne diese Zeile wären /alerts, /fancast
-                      und /contribute unter 1024 px weiterhin aus der Kopfnavigation gar nicht
-                      erreichbar, und das Panel darüber ist genau die Fläche, die das Sheet auf dem
-                      Telefon vertritt.
-
-                      `min-h-11`, nicht die 28 px der Zeilen darüber: das Sheet ist die Navigation
-                      auf dem Telefon, und eine 13-px-Zeile in einer Reihe zu dritt ist der eine
-                      Ort hier, an dem die Trefferfläche nicht schon vom Schriftgrad kommt. */}
-                  <div
-                    data-sheet-stagger
-                    className="border-border/60 flex flex-wrap items-center gap-x-5 gap-y-1 border-t pt-2"
-                  >
-                    {[
-                      { href: '/alerts' as const, label: t('alerts'), Icon: Bell },
-                      { href: '/fancast' as const, label: t('fancast'), Icon: LineChart },
-                      { href: '/contribute' as const, label: t('contribute'), Icon: Camera },
-                    ].map(({ href, label, Icon }) => (
-                      <Link
-                        key={href}
-                        href={href}
-                        prefetch={false}
-                        className="text-muted-foreground hover:text-foreground flex min-h-11 items-center gap-1.5 text-sm transition-colors"
-                      >
-                        <Icon className="size-3.5 shrink-0" aria-hidden="true" />
-                        {label}
-                      </Link>
-                    ))}
-                  </div>
+                  {/* Dieselben drei wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
+                      demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
+                      Besucher suchen, diese drei sind Ziele, die man findet. Warum das Sheet sie
+                      überhaupt trägt, steht in `MoreMenuLinks`. */}
+                  <MoreMenuLinks variant="sheet" />
                 </nav>
               </SheetContent>
             </Sheet>

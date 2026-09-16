@@ -241,8 +241,38 @@ Two decisions worth keeping:
 
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
-catch-all — `/alerts`, `/fancast` and `/contribute` are meant to land in here too — so it is named
-after being one, and it sits at the END of the row's entries, where a catch-all belongs.
+catch-all — `/alerts`, `/fancast` and `/contribute` sit in here too, in the footer row below —
+so it is named after being one, and it sits at the END of the row's three entries, where a
+catch-all belongs.
+
+**The footer row is `MoreMenuLinks`, and it renders twice.** Those three pages had no link from the
+header at all: measured before it was added, a grep over `components/layout/` found `/fancast` once
+(the footer) and `/alerts` once (the favorites panel), and `/contribute` **nowhere**. They are a
+row under the panel's closing rule rather than a fourth column, because a column would rank an
+upload form with the guide and the dictionary, and because the panel already switches column shape
+at 1280 px — a fourth member would have to be fitted into both layouts, a row is one element in
+either. No heading over it: a heading in this panel is a link to a hub page, and these three have
+none above them.
+
+The same component renders at the foot of the **burger sheet**, and that is not a second surface
+for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it the
+three stay unreachable from the header on every phone. One definition, `variant="panel" | "sheet"`,
+differing in type scale and in nothing else.
+
+Two things the second host cost, both measured rather than reasoned:
+
+- The sheet row wraps to two lines in **all six locales at 320 and 360 px**, so it needs a `gap-y`:
+  without one, two 44 px tap targets abutted at exactly 0 px. It is 4 px in all twelve now.
+- `/alerts` was then in that 300 px column **twice** — the favorites panel's own
+  `PushAlertsMenuLink` carries the same destination, the same `Bell` and, in all six locales, the
+  same string. Measured with one favorite at 360 px: y = 104 and y = 547. The favorites panel's
+  copy is therefore suppressed in the sheet (`!isSheet`) and kept in the band, where that panel and
+  the "more" panel are never open at the same time.
+
+And the row's alerts label reads `pushAlerts.menu.link`, not a `navigation.alerts` of its own.
+The two would be byte-identical in all six locales, both namespaces are already in
+`LAYOUT_MESSAGE_NAMESPACES`, and a second copy is the same string serialized on ~35,000 pages
+× 6 locales with nothing keeping the two in step.
 
 **`NavMenu.href` is optional for this one entry.** Every other trigger is a real `<a>` that works
 without the panel; "Mehr" has nowhere to go, so its label and its chevron are one button rather

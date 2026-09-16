@@ -1,8 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Bell, BookOpen, Camera, CalendarRange, Compass, LineChart, type LucideIcon } from 'lucide-react';
+import { BookOpen, CalendarRange, Compass, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
 /**
@@ -174,6 +175,10 @@ export function MoreMenuPanel({
     { href: howtoHref, icon: Compass, label: t('howto'), hint: t('howtoHint') },
   ];
 
+  /* The footer row — `/alerts`, `/fancast`, `/contribute`. See `MoreMenuLinks` for why it is a
+     row rather than a fourth column, and why the burger sheet renders the same component. */
+  const extras = <MoreMenuLinks variant="panel" />;
+
   return (
     <div className="flex flex-col gap-5">
       <div className="grid grid-cols-3 gap-3">
@@ -220,29 +225,7 @@ export function MoreMenuPanel({
         ))}
       </div>
 
-      {/* `/alerts`, `/fancast`, `/contribute` — a row rather than a fourth card, and no heading
-          over it, because a heading here promises a hub page and these three have none. Shared
-          with the phone sheet, which draws the same row at the foot of its own list. */}
-      <div
-        data-menu-stagger
-        className="border-border/60 flex flex-wrap items-center gap-x-6 gap-y-2 border-t pt-3"
-      >
-        {[
-          { href: '/alerts' as const, label: t('alerts'), Icon: Bell },
-          { href: '/fancast' as const, label: t('fancast'), Icon: LineChart },
-          { href: '/contribute' as const, label: t('contribute'), Icon: Camera },
-        ].map(({ href, label, Icon }) => (
-          <Link
-            key={href}
-            href={href}
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-[13px] transition-colors"
-          >
-            <Icon className="size-3.5 shrink-0" aria-hidden="true" />
-            {label}
-          </Link>
-        ))}
-      </div>
+      {extras}
     </div>
   );
 }
