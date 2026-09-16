@@ -4,6 +4,32 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Das „Mehr"-Panel sieht aus wie ein Menü
+
+Beste Reisezeit, Wörterbuch und So funktioniert's standen im Panel als Überschrift plus Absatz:
+eine 16 px hohe Versalzeile trug den einzigen Link, die Zeile darunter lag außerhalb der
+Trefferfläche, und in der Schiene stapelten sich drei solche Zeilen mit 458 px Leere darunter.
+Jede Sektion ist jetzt eine Karte mit Icon-Kachel, Namen und Zeile, und die **ganze** Karte ist der
+Link — dieselbe Form, die `BlogChapter` auf der Startseite zwei dieser drei Ziele schon gibt,
+bis zu den Icons (`CalendarRange`, `BookOpen`, dazu `Compass` für den Guide).
+
+Das Icon steht **über** dem Text, und das hat die Schiene entschieden, die es davor gab: daneben
+blieben der 231 px breiten Karte 157 px für Titel und Zeile, der Hinweis lief auf drei Zeilen und
+brach als „und Monate, Park / für Park". Darüber hat der Text die vollen 205 px, jeder Titel bleibt
+einzeilig, jeder Hinweis zweizeilig; die Karte geht von 112,6 auf 137,5 px.
+
+Der Hover ist der Rand und sonst nichts, aus drei Messungen an den gerenderten Pixeln:
+`border-primary/40` liest 1,60 : 1 hell und 1,81 : 1 dunkel gegen die Karte, voll deckend dagegen
+**3,46 : 1** und **5,31 : 1**. Ein Rand schuldet 3 : 1, ein 14-px-`font-semibold`-Label 4,5 — ein
+`group-hover:text-primary` auf dem Titel liefe also genau beim Lesen auf 3,47 : 1. Die Fläche bleibt
+mit: `bg-card/50` → `bg-card` mißt 19,76 → 19,80 : 1 unter dem Label, und ein sichtbarer Farbton
+kostet stattdessen — `bg-primary/5` zog den 13-px-Hinweis auf 4,47 : 1.
+
+Die drei Hub-URLs stehen unverändert im HTML jeder Seite; das Panel ist weiterhin `hidden` und nie
+abgehängt. Blog und die vierte Kachel gehören nicht mehr hierher – siehe der Backstage-Eintrag
+unten, der das Panel wieder auf drei Karten gebracht hat. Details in
+[header-navigation.md](features/header-navigation.md#mehr-one-entry-for-everything-that-is-reading-material).
+
 ## Unreleased – „Backstage": der Blog ist wieder ein eigener Eintrag in der Leiste
 
 Vier Einträge sind mit dem Sammel-Trigger „Mehr" aus der Navigationszeile verschwunden, weil sechs
