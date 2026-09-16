@@ -735,7 +735,7 @@ export function Header({
                       Ort hier, an dem die Trefferfläche nicht schon vom Schriftgrad kommt. */}
                   <div
                     data-sheet-stagger
-                    className="border-border/60 flex flex-wrap items-center gap-x-5 border-t pt-2"
+                    className="border-border/60 flex flex-wrap items-center gap-x-5 gap-y-1 border-t pt-2"
                   >
                     {[
                       { href: '/alerts' as const, label: t('alerts'), Icon: Bell },
