@@ -19,6 +19,7 @@ import { PlannerLauncher } from '@/components/planner/planner-launcher';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
+import { getGlossaryMenu } from '@/lib/navigation/glossary-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
@@ -148,6 +149,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const geoMenu = await getGeoMenu();
   const blogMenu = showBlog ? getBlogMenu(locale as Locale) : undefined;
   const featuredParks = getFeaturedParksMenu(locale);
+  // The dictionary's categories for the "more" menu. No I/O either — the term data is a module in
+  // this repo; the await is only `getTranslations` reaching for the labels.
+  const glossaryMenu = await getGlossaryMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
   // parks menu opens onto. Kept to ten, or nine where `showBlog` is false: this is a hint about
   // the primary navigation, and the country links are already in the rendered <nav>.
@@ -375,6 +379,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     geoMenu={geoMenu}
                     blogMenu={blogMenu}
                     featuredParks={featuredParks}
+                    glossaryMenu={glossaryMenu}
                   />
                 </Suspense>
                 <main className="flex-1">{children}</main>

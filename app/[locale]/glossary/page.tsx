@@ -7,6 +7,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
 import { getRideCountsByTerm } from '@/lib/api/glossary-rides';
+import { GLOSSARY_CATEGORY_ORDER } from '@/lib/glossary/categories';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -62,20 +63,6 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
   };
 }
 
-const CATEGORY_ORDER: GlossaryCategory[] = [
-  'wait-times',
-  'crowd-levels',
-  'park-operations',
-  'planning',
-  'attractions',
-  'manufacturers',
-  'coasters',
-  'coaster-elements',
-  'ride-experience',
-  'dining',
-  'shopping',
-];
-
 export default async function GlossaryPage({ params }: GlossaryPageProps) {
   const { locale } = await params;
   assertServableRoute(locale);
@@ -126,8 +113,11 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
     );
   }
 
-  // Build ordered array for the client component (with translated category labels)
-  const groupedTerms = CATEGORY_ORDER.flatMap((category) => {
+  // Build ordered array for the client component (with translated category labels).
+  // The order comes from `lib/glossary/categories.ts` because the header's "more" panel lists the
+  // same categories, and a menu entry for a category this page does not draw is a link to an
+  // anchor that is not in the document.
+  const groupedTerms = GLOSSARY_CATEGORY_ORDER.flatMap((category) => {
     const categoryTerms = grouped.get(category);
     if (!categoryTerms || categoryTerms.length === 0) return [];
     return [{ category, categoryLabel: t(`category.${category}`), terms: categoryTerms }];

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { BookOpen, CalendarRange, Compass, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
 /**
  * The "more" band: the reading material that has no place of its own in the bar.
@@ -26,10 +27,20 @@ import { Link } from '@/i18n/navigation';
  * after being one.
  *
  * **Each section is a card, and that is the whole of them for now (PAR-269).** Their lists
- * (glossary categories, the guide's chapters, the hub's parks) are separate tickets, so what is
- * here is the skeleton the follow-ups fill in. Each card IS the link, which is what keeps those
- * three hub URLs in the HTML of every page — the band is `hidden`, never unmounted, so a crawler
- * reads it exactly as it read the three entries in the bar.
+ * (the guide's chapters, the hub's parks) are separate tickets, so what is here is the skeleton the
+ * follow-ups fill in. Each card IS the link, which is what keeps those three hub URLs in the HTML
+ * of every page — the band is `hidden`, never unmounted, so a crawler reads it exactly as it read
+ * the three entries in the bar.
+ *
+ * **The glossary card carries its categories too (PAR-235)**, the one place in the app that says
+ * what is in the dictionary before a reader is already inside it: 274 terms behind one bare
+ * `/glossary` link until now, and eleven category rows below the card — the categories the
+ * overview itself draws, which is twelve minus the one PAR-264 is about. Terms themselves stay
+ * out, like the parks panel's 144 cities and the blog panel's 31 tags — see
+ * `lib/navigation/glossary-menu.ts`, which also explains why the labels arrive as props instead of
+ * a `useTranslations('glossary')` here. Each row points at `/{segment}#{category}`, an anchor on
+ * the overview rather than a filtered view, because the overview's filter is client state with no
+ * URL of its own — a fragment is not a second crawl target.
  *
  * They were a `MenuSectionHeading` plus a `<p>` until PAR-269: an uppercase rule carrying the only
  * link, with the line under it outside the hit area. Three rules stacked in a column read as three
@@ -47,6 +58,12 @@ interface MoreMenuPanelProps {
   bestTimeHref: string;
   glossaryHref: string;
   howtoHref: string;
+  /**
+   * The dictionary's categories with their labels already translated, resolved in the layout.
+   * Absent only if the layout ever stops passing them; the card then reads as it did before, with
+   * no rows under it.
+   */
+  glossary?: GlossaryMenu;
 }
 
 /**
@@ -76,17 +93,23 @@ interface MoreMenuPanelProps {
  * `bg-card/50` → `bg-card` measured 19.76 → 19.80 : 1 under the label, i.e. a change no eye
  * resolves. A real tint does the damage instead: `bg-primary/5` took the 13 px hint from 4.73 : 1
  * to **4.47 : 1** on the light card, under the 4.5 that size owes. The border is the whole state.
+ *
+ * **`count`** is the number beside the label — the terms in the listed categories, not the whole
+ * dictionary, so it never claims more than the rows under it add up to. Only the glossary card
+ * passes one.
  */
 function MoreMenuCard({
   href,
   icon: Icon,
   label,
   hint,
+  count,
 }: {
   href: string;
   icon: LucideIcon;
   label: string;
   hint: string;
+  count?: number;
 }) {
   return (
     <Link
@@ -98,8 +121,13 @@ function MoreMenuCard({
       <span className="bg-primary/10 text-primary mb-2.5 flex size-9 items-center justify-center rounded-lg">
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </span>
-      <span className="text-foreground block text-sm leading-snug font-semibold text-pretty">
-        {label}
+      <span className="text-foreground flex items-baseline gap-2 text-sm leading-snug font-semibold text-pretty">
+        <span className="truncate">{label}</span>
+        {count != null && (
+          <span className="text-muted-foreground/70 shrink-0 text-[11px] font-normal tabular-nums">
+            {count}
+          </span>
+        )}
       </span>
       <span className="text-muted-foreground mt-1 block text-[13px] leading-relaxed text-pretty">
         {hint}
@@ -108,24 +136,77 @@ function MoreMenuCard({
   );
 }
 
-export function MoreMenuPanel({ bestTimeHref, glossaryHref, howtoHref }: MoreMenuPanelProps) {
+export function MoreMenuPanel({
+  bestTimeHref,
+  glossaryHref,
+  howtoHref,
+  glossary,
+}: MoreMenuPanelProps) {
   // `navigation` only. A `useTranslations('blog')` in a header component pulls the whole namespace
   // into the chrome every page serializes — see `BlogMenuPanel` for what that cost the last time.
   const t = useTranslations('navigation');
+
+  const categories = glossary?.categories ?? [];
 
   // `CalendarRange` and `BookOpen` are the icons `BlogChapter` already gives these two hubs on the
   // homepage — the same destination gets the same mark wherever it is offered. `Compass` is the
   // guide's, and it is the one of the three that had no prior mark to inherit.
   const sections = [
     { href: bestTimeHref, icon: CalendarRange, label: t('bestTime'), hint: t('bestTimeHint') },
-    { href: glossaryHref, icon: BookOpen, label: t('glossary'), hint: t('glossaryHint') },
+    {
+      href: glossaryHref,
+      icon: BookOpen,
+      label: t('glossary'),
+      hint: t('glossaryHint'),
+      // The number is the terms in the listed categories, not `GLOSSARY_TERMS.length`: a card
+      // that counts more than the rows under it add up to is a card that is wrong about them.
+      count: glossary?.termCount,
+    },
     { href: howtoHref, icon: Compass, label: t('howto'), hint: t('howtoHint') },
   ];
 
   return (
     <div className="grid grid-cols-3 gap-3">
       {sections.map((section) => (
-        <MoreMenuCard key={section.href} {...section} />
+        <div key={section.href}>
+          <MoreMenuCard {...section} />
+          {section.href === glossaryHref && categories.length > 0 && (
+            /* The same row as a country in the parks panel — label, count, `-mx-2` bleed —
+               because the two bands are meant to read as one surface.
+
+               **Drawn from 1280 px of the BAR, and in the document at every width** — the same
+               `hidden … @min-[1280px]:block` the parks panel's photo rail carries, at the same
+               threshold and for the same reason. From 1280 px these eleven rows stand beside the
+               other two cards in a row that is already taller than a single card, so they cost
+               the band nothing extra. Below that the three sections are a flat `grid-cols-3`, a
+               grid row is as tall as its tallest cell, and eleven rows under one of three cards
+               took the band from ~140 px to ~470 px — the same kind of shift PAR-235 measured and
+               refused at 1024 px before this panel became cards.
+
+               Two columns there instead of one was measured and refused: the cell is narrow at
+               1024 px, and `truncate` then ellipsized „Achterbahnelemente" and three of the French
+               labels, up to „Expérience de manège". A menu word may not be cut.
+
+               `hidden`, never unmounted, is what keeps the eleven links in the HTML of every page
+               at every width — the same rule that puts the closed band there at all. */
+            <ul className="mt-2.5 hidden space-y-px @min-[1280px]:block">
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <Link
+                    href={category.href as '/'}
+                    prefetch={false}
+                    className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors"
+                  >
+                    <span className="min-w-0 flex-1 truncate">{category.label}</span>
+                    <span className="text-muted-foreground/70 text-xs tabular-nums">
+                      {category.termCount}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       ))}
     </div>
   );

@@ -216,8 +216,14 @@ export function GlossaryOverviewClient({
           </div>
         ) : (
           <div className="space-y-10">
+            {/* `id` is the category, which is what the header's "more" panel links into: the
+                filter beside this list is client state with no URL of its own, so a fragment is
+                the only way into a category from outside the page. `scroll-mt-24` is the house
+                number for an anchor under the floating 48 px bar (`page-section.tsx`,
+                `chapter-panel.tsx`). It stays on the section while a filter is active — the
+                filter drops the other groups rather than renaming this one. */}
             {filtered.map(({ category, categoryLabel, terms }) => (
-              <section key={category}>
+              <section key={category} id={category} className="scroll-mt-24">
                 <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
                 <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
                   {terms.map((term) => (

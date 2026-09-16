@@ -31,6 +31,7 @@ import type { NearbyParksData } from '@/types/nearby';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
+import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
 const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
@@ -48,13 +49,26 @@ interface HeaderProps {
   /** Categories + newest posts for the blog menu, read from the generated manifest. */
   blogMenu?: BlogMenu;
   /**
+   * The dictionary's categories for the "more" menu, with their labels already translated.
+   * Resolved in the layout for the same reason `featuredParks` is: this is a Client Component,
+   * and `useTranslations('glossary')` in here would put the whole 2,402 B namespace into the
+   * chrome of every page for 358 B of labels.
+   */
+  glossaryMenu?: GlossaryMenu;
+  /**
    * The photo rail in the parks menu. Resolved in the layout because `@/lib/media` is the 107 KB
    * catalog and this is a Client Component — only four URLs cross the boundary.
    */
   featuredParks?: FeaturedParkCard[];
 }
 
-export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: HeaderProps) {
+export function Header({
+  showBlog = true,
+  geoMenu,
+  blogMenu,
+  featuredParks,
+  glossaryMenu,
+}: HeaderProps) {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
@@ -520,6 +534,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               bestTimeHref={bestTimePath}
               glossaryHref={glossaryPath}
               howtoHref={howtoPath}
+              glossary={glossaryMenu}
             />
           </NavMenu>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
