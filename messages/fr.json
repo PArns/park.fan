@@ -421,6 +421,8 @@
     "bestTime": "Meilleure période",
     "glossaryLink": "Dictionnaire",
     "blog": "Blog",
+    "favorites": "Favoris",
+    "alerts": "Alertes",
     "feed": "Flux RSS",
     "datenschutz": "Confidentialité",
     "privacy": "Politique de confidentialité",
@@ -1573,6 +1575,7 @@
   },
   "favorites": {
     "title": "Favoris",
+    "link": "Mes favoris",
     "empty": "Aucun favori",
     "parks": "Parcs",
     "attractions": "Attractions",
@@ -1597,6 +1600,7 @@
   },
   "favoritesPage": {
     "title": "Mes favoris",
+    "metaTitle": "Mes favoris - park.fan",
     "subtitle": "Parcs, attractions, spectacles et restaurants que vous avez marqués dans ce navigateur, avec leur statut en direct et leurs temps d’attente.",
     "howToTitle": "Comment ajouter des favoris"
   },
@@ -1653,6 +1657,7 @@
     },
     "overview": {
       "title": "Mes alertes",
+      "metaTitle": "Mes alertes - park.fan",
       "subtitle": "Alertes de temps d’attente et rappels de spectacles pour cet appareil, tous parcs confondus.",
       "loading": "Chargement…",
       "emptyBody": "Rien configuré pour l’instant. Sur la page d’un parc, la cloche à côté d’une attraction ou d’un spectacle permet de créer un rappel.",

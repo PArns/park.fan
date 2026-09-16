@@ -440,6 +440,31 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               {t('planner')}
             </Link>
             <span className="text-muted-foreground/60 flex items-center">•</span>
+            {/*
+              The two pages that report this browser's own state. Both are `noindex` and in no
+              sitemap, so nothing else links to them from every page — and until this row did,
+              `/favorites` was reachable only from the header panel, and only while the band had
+              something left to hide. A link a visitor can bookmark belongs where the rest of the
+              site's fixed destinations are.
+            */}
+            <Link
+              href="/favorites"
+              prefetch={false}
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
+              aria-label={t('favorites')}
+            >
+              {t('favorites')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
+              href="/alerts"
+              prefetch={false}
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
+              aria-label={t('alerts')}
+            >
+              {t('alerts')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link
               href={glossaryPath}
               prefetch={false}

@@ -8,8 +8,11 @@ import { FavoritesSection } from '@/components/parks/favorites-section';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 
 /**
- * Everything this browser has starred, on a page of its own — the destination the header
- * band's "+N more" and "view all" links point at.
+ * Everything this browser has starred, on a page of its own — the destination of the header
+ * band's permanent "Meine Favoriten" link (`FavoritesPageMenuLink`, in all three of the panel's
+ * states) and of the footer's. The link used to be "Alle anzeigen" and appeared only where the
+ * band had a "+N more" line to justify it, which left the page unreachable for anybody with few
+ * favorites or none.
  *
  * Same shape as `/alerts`, down to the segment: both report state that lives in this one
  * browser, so both are `noindex` and neither is in a sitemap (a noindex URL in a sitemap is a
@@ -39,7 +42,10 @@ export async function generateMetadata({ params }: FavoritesPageProps): Promise<
   if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'favoritesPage' });
   return {
-    title: t('title'),
+    // `metaTitle`, not `title`: the locale layout's template is `%s`, so every page carries its
+    // own brand suffix, and `title` is also the `<h1>` below — putting "– park.fan" in the one
+    // that belongs in a tab would put it in the heading too.
+    title: t('metaTitle'),
     // A cookie in one browser — nothing here is the same page twice.
     robots: { index: false, follow: false },
     alternates: { canonical: `${SITE_URL}/${locale}/favorites` },

@@ -421,6 +421,8 @@
     "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
     "blog": "Blog",
+    "favorites": "Favorieten",
+    "alerts": "Meldingen",
     "feed": "RSS-feed",
     "datenschutz": "Privacybeleid",
     "privacy": "Privacybeleid",
@@ -1573,6 +1575,7 @@
   },
   "favorites": {
     "title": "Favorieten",
+    "link": "Mijn favorieten",
     "empty": "Nog geen favorieten",
     "parks": "Parken",
     "attractions": "Attracties",
@@ -1597,6 +1600,7 @@
   },
   "favoritesPage": {
     "title": "Mijn favorieten",
+    "metaTitle": "Mijn favorieten - park.fan",
     "subtitle": "Parken, attracties, shows en restaurants die je in deze browser hebt gemarkeerd, met live status en wachttijden.",
     "howToTitle": "Zo voeg je favorieten toe"
   },
@@ -1653,6 +1657,7 @@
     },
     "overview": {
       "title": "Mijn meldingen",
+      "metaTitle": "Mijn meldingen - park.fan",
       "subtitle": "Wachttijdmeldingen en show-herinneringen voor dit apparaat, voor alle parken.",
       "loading": "Laden…",
       "emptyBody": "Nog niets ingesteld. Op een parkpagina stel je via de bel bij een attractie of show een herinnering in.",

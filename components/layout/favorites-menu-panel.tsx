@@ -433,13 +433,24 @@ export function FavoritesMenuPanel({
      */
     if (isSheet) {
       return (
-        <div data-menu-stagger className="flex gap-3">
-          <Star className="text-muted-foreground/60 mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-          <span className="min-w-0">
-            <span className="text-foreground block text-sm font-semibold">{t('empty')}</span>
-            <span className="text-muted-foreground block text-xs leading-relaxed">
-              {t('howTo.starText')}
+        <div data-menu-stagger>
+          <div className="flex gap-3">
+            <Star className="text-muted-foreground/60 mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <span className="min-w-0">
+              <span className="text-foreground block text-sm font-semibold">{t('empty')}</span>
+              <span className="text-muted-foreground block text-xs leading-relaxed">
+                {t('howTo.starText')}
+              </span>
             </span>
+          </div>
+          {/* Die beiden Links, die der gefüllte Zustand in seiner Kopfzeile trägt. Ohne sie ist
+              dieser Zustand der einzige im ganzen Menü, aus dem keine der beiden persönlichen
+              Seiten erreichbar ist — und auf dem Handy ist dieses Sheet die Navigation. Eine
+              Zeile unter den zwei Sätzen, nicht neben ihnen: 252 px Inhalt tragen die beiden
+              Labels nebeneinander, den Satz daneben nicht. */}
+          <span className="mt-3 flex items-center gap-3 pl-7">
+            <PushAlertsMenuLink label={tPush('link')} />
+            <FavoritesPageMenuLink label={t('link')} />
           </span>
         </div>
       );
@@ -481,12 +492,16 @@ export function FavoritesMenuPanel({
             <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
             {t('empty')}
           </span>
-          {/* Wo im gefüllten Zustand „Alle anzeigen" steht. Als Knopf unter der Anleitung nahm
-              derselbe Link eine eigene Zeile im Band und stand wieder auf keiner Kante. */}
+          {/* Dieselben zwei Links wie im gefüllten Zustand, plus „Parks entdecken": als Knopf
+              unter der Anleitung nahm derselbe Link eine eigene Zeile im Band und stand wieder
+              auf keiner Kante. */}
           <span className="flex items-center gap-3">
             {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
                 eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. */}
             <PushAlertsMenuLink label={tPush('link')} />
+            {/* Und die Favoritenseite ist im leeren Zustand gerade das, was fehlt: dort steht
+                die Anleitung noch einmal, und ein Lesezeichen darauf ist der Weg zurück. */}
+            <FavoritesPageMenuLink label={t('link')} />
             <Link
               href="/parks"
               prefetch={false}
@@ -546,18 +561,14 @@ export function FavoritesMenuPanel({
   const loading = isPending || !data;
   const cap = isSheet ? MAX_ROWS : MAX_CARDS;
   /*
-   * „Alle anzeigen" nur, wenn es etwas zu sehen gibt, das hier nicht steht.
+   * Wie viele Karten eine Gruppe zeigt, entscheidet die Aufteilung des Bandes (`planBand`) und
+   * nicht eine feste Zahl: so viele, wie in `MAX_CARD_ROWS` Reihen ihrer Spalten passen. Damit
+   * hängt die Höhe des Bandes an der Anzahl der REIHEN statt daran, wie viel jemand markiert
+   * hat — der Rest fällt in dieselbe „+N"-Zeile.
    *
-   * Der Link stand immer da, auch wenn drei Favoriten in ein Band mit Platz für sechzehn passen —
-   * dann führt er auf eine Seite, die exakt dasselbe zeigt. Sichtbar wird er, wenn eine Gruppe
-   * über ihre Obergrenze läuft oder wenn Shows und Restaurants dabei sind: die rendert dieses
-   * Panel als eigene Gruppe, aber ohne Bild und Kennzahl, und die Startseite zeigt sie
-   * vollständig.
-   *
-   * Wie viele Karten eine Gruppe zeigt, entscheidet jetzt die Aufteilung des Bandes (`planBand`)
-   * und nicht mehr eine feste Zahl: so viele, wie in `MAX_CARD_ROWS` Reihen ihrer Spalten
-   * passen. Damit hängt die Höhe des Bandes an der Anzahl der REIHEN statt daran, wie viel
-   * jemand markiert hat — der Rest fällt in dieselbe „+N"-Zeile.
+   * Diese Obergrenzen entscheiden nur noch über die „+N"-Zeile. Der Link auf `/favorites` hing
+   * einmal an ihnen („Alle anzeigen", nur wenn eine Gruppe überläuft); er ist jetzt
+   * unbedingt, siehe `FavoritesPageMenuLink`.
    */
   const plan = isSheet ? null : planBand(bandWidth, counts, rowGroups);
   const cardCap = (cols: number | undefined, count: number) =>
@@ -565,10 +576,7 @@ export function FavoritesMenuPanel({
   const parkCap = isSheet ? MAX_ROWS : cardCap(plan?.parks, counts.parks);
   const attractionCap = isSheet ? MAX_ROWS : cardCap(plan?.attractions, counts.attractions);
 
-  const hiddenParks = Math.max(0, counts.parks - parkCap);
-  const hiddenAttractions = Math.max(0, counts.attractions - attractionCap);
   const hiddenVenues = Math.max(0, counts.shows + counts.restaurants - cap);
-  const somethingHidden = hiddenParks + hiddenAttractions + hiddenVenues > 0;
 
   const listClass = isSheet ? 'space-y-px' : 'grid gap-3';
   /*
@@ -617,15 +625,7 @@ export function FavoritesMenuPanel({
         </span>
         <span className="flex items-center gap-3">
           <PushAlertsMenuLink label={tPush('link')} />
-          {somethingHidden && (
-            <Link
-              href="/favorites"
-              prefetch={false}
-              className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
-            >
-              {tCommon('viewAll')}
-            </Link>
-          )}
+          <FavoritesPageMenuLink label={t('link')} />
         </span>
       </div>
 
@@ -700,7 +700,7 @@ export function FavoritesMenuPanel({
 
         {/* Shows und Restaurants stehen in DIESER Reihe, nicht in der Kopfzeile.
             Dort standen sie: im `flex items-center justify-between` neben Überschrift und
-            „Alle anzeigen", also als dritte Spalte einer Titelleiste, vertikal zentriert und
+            den beiden Links, also als dritte Spalte einer Titelleiste, vertikal zentriert und
             32 px hoch gequetscht. Sie sind eine Gruppe wie Parks und Attraktionen und gehören
             neben sie — nur eben als Zeilen, siehe `venueRows`. */}
         {counts.shows + counts.restaurants > 0 && (
@@ -778,6 +778,27 @@ function PushAlertsMenuLink({ label }: { label: string }) {
       className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
     >
       <Bell className="size-3" aria-hidden="true" />
+      {label}
+    </Link>
+  );
+}
+
+/**
+ * The link to `/favorites`, beside the alerts link in every state of this panel.
+ *
+ * It used to be „Alle anzeigen" and appeared only when a group ran over its cap — so a visitor
+ * with three favorites, or with none, had no way to the page at all, and the page is where the
+ * full list and the instructions live. What the cap hides is already said by the „+N" line
+ * under the group; whether the page exists is not something the current count should decide.
+ */
+function FavoritesPageMenuLink({ label }: { label: string }) {
+  return (
+    <Link
+      href="/favorites"
+      prefetch={false}
+      className="text-primary hover:text-primary/80 flex items-center gap-1 text-xs font-medium transition-colors"
+    >
+      <Star className="size-3" aria-hidden="true" />
       {label}
     </Link>
   );

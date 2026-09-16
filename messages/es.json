@@ -421,6 +421,8 @@
     "bestTime": "Mejor época para visitar",
     "glossaryLink": "Diccionario",
     "blog": "Blog",
+    "favorites": "Favoritos",
+    "alerts": "Avisos",
     "feed": "Fuente RSS",
     "datenschutz": "Privacidad",
     "privacy": "Política de privacidad",
@@ -1573,6 +1575,7 @@
   },
   "favorites": {
     "title": "Favoritos",
+    "link": "Mis favoritos",
     "empty": "Sin favoritos aún",
     "parks": "Parques",
     "attractions": "Atracciones",
@@ -1597,6 +1600,7 @@
   },
   "favoritesPage": {
     "title": "Mis favoritos",
+    "metaTitle": "Mis favoritos - park.fan",
     "subtitle": "Parques, atracciones, espectáculos y restaurantes que has marcado en este navegador, con estado en vivo y tiempos de espera.",
     "howToTitle": "Cómo añadir favoritos"
   },
@@ -1653,6 +1657,7 @@
     },
     "overview": {
       "title": "Mis avisos",
+      "metaTitle": "Mis avisos - park.fan",
       "subtitle": "Avisos de tiempo de espera y recordatorios de espectáculos para este dispositivo, en todos los parques.",
       "loading": "Cargando…",
       "emptyBody": "Todavía no hay nada configurado. En la página de un parque, la campana junto a una atracción o un espectáculo activa un recordatorio.",

@@ -421,6 +421,8 @@
     "bestTime": "Periodo migliore",
     "glossaryLink": "Dizionario",
     "blog": "Blog",
+    "favorites": "Preferiti",
+    "alerts": "Avvisi",
     "feed": "Feed RSS",
     "datenschutz": "Informativa sulla privacy",
     "privacy": "Informativa sulla privacy",
@@ -1573,6 +1575,7 @@
   },
   "favorites": {
     "title": "Preferiti",
+    "link": "I miei preferiti",
     "empty": "Nessun preferito ancora",
     "parks": "Parchi",
     "attractions": "Attrazioni",
@@ -1597,6 +1600,7 @@
   },
   "favoritesPage": {
     "title": "I miei preferiti",
+    "metaTitle": "I miei preferiti - park.fan",
     "subtitle": "Parchi, attrazioni, spettacoli e ristoranti che hai segnato in questo browser, con stato live e tempi di attesa.",
     "howToTitle": "Come aggiungere preferiti"
   },
@@ -1653,6 +1657,7 @@
     },
     "overview": {
       "title": "I miei avvisi",
+      "metaTitle": "I miei avvisi - park.fan",
       "subtitle": "Avvisi sul tempo di attesa e promemoria degli show per questo dispositivo, in tutti i parchi.",
       "loading": "Caricamento…",
       "emptyBody": "Ancora niente impostato. Nella pagina di un parco, la campanella accanto a un’attrazione o a uno show attiva un promemoria.",
