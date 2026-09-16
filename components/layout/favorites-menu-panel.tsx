@@ -492,7 +492,7 @@ export function FavoritesMenuPanel({
             <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
             {t('empty')}
           </span>
-          {/* Dieselben drei Links wie im gefüllten Zustand, plus „Parks entdecken": als Knopf
+          {/* Dieselben zwei Links wie im gefüllten Zustand, plus „Parks entdecken": als Knopf
               unter der Anleitung nahm derselbe Link eine eigene Zeile im Band und stand wieder
               auf keiner Kante. */}
           <span className="flex items-center gap-3">
