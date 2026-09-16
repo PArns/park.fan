@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { BookOpen, CalendarRange, Compass, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 
 /**
@@ -22,9 +23,9 @@ import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
  *
  * **Why the trigger is called "more" and not "discover".** The issue's own working title was
  * "Entdecken", which in German would have stood 101 px from "Parks entdecken" in the same row, and
- * in French put "Explorer" next to "Explorer les parcs". The thing is a catch-all — the follow-up
- * tickets hang `/alerts`, `/fancast` and `/contribute` in here as well — and a catch-all is named
- * after being one.
+ * in French put "Explorer" next to "Explorer les parcs". The thing is a catch-all — `/alerts`,
+ * `/fancast` and `/contribute` hang in here too, in the footer row at the bottom — and a catch-all
+ * is named after being one.
  *
  * **Each section is a card, and that is the whole of them for now (PAR-269).** Their lists
  * (the guide's chapters, the hub's parks) are separate tickets, so what is here is the skeleton the
@@ -48,6 +49,15 @@ import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
  * reader points at. `MoreMenuCard` is the same content in the shape `BlogChapter` already uses on
  * the homepage for two of these same three destinations — icon tile, title, line, whole surface
  * clickable.
+ *
+ * **A footer row links the three pages the header never linked at all (PAR-255)**: `/alerts`,
+ * `/fancast` and `/contribute`. Measured on `main` before that change, a grep over
+ * `components/layout/` found `/fancast` once (the footer), `/alerts` once (the favorites panel)
+ * and `/contribute` nowhere — the upload form was reachable from a park or ride page's banner and
+ * from a typed URL and from nothing else. It is a row under the closing rule rather than a fourth
+ * card: a card would rank an upload form with the guide and the dictionary, and a row is one
+ * element whichever column shape the grid is in. No heading over it either, because a heading here
+ * is a promise of a hub page and these three have nothing above them.
  *
  * `grid-cols-3` with no threshold under it: this panel only ever renders inside the nav row, and
  * that row is `@min-[1024px]:flex` on the same container, so a one-column state has no width at
@@ -165,49 +175,57 @@ export function MoreMenuPanel({
     { href: howtoHref, icon: Compass, label: t('howto'), hint: t('howtoHint') },
   ];
 
+  /* The footer row — `/alerts`, `/fancast`, `/contribute`. See `MoreMenuLinks` for why it is a
+     row rather than a fourth column, and why the burger sheet renders the same component. */
+  const extras = <MoreMenuLinks variant="panel" />;
+
   return (
-    <div className="grid grid-cols-3 gap-3">
-      {sections.map((section) => (
-        <div key={section.href}>
-          <MoreMenuCard {...section} />
-          {section.href === glossaryHref && categories.length > 0 && (
-            /* The same row as a country in the parks panel — label, count, `-mx-2` bleed —
-               because the two bands are meant to read as one surface.
+    <div className="flex flex-col gap-5">
+      <div className="grid grid-cols-3 gap-3">
+        {sections.map((section) => (
+          <div key={section.href}>
+            <MoreMenuCard {...section} />
+            {section.href === glossaryHref && categories.length > 0 && (
+              /* The same row as a country in the parks panel — label, count, `-mx-2` bleed —
+                 because the two bands are meant to read as one surface.
 
-               **Drawn from 1280 px of the BAR, and in the document at every width** — the same
-               `hidden … @min-[1280px]:block` the parks panel's photo rail carries, at the same
-               threshold and for the same reason. From 1280 px these eleven rows stand beside the
-               other two cards in a row that is already taller than a single card, so they cost
-               the band nothing extra. Below that the three sections are a flat `grid-cols-3`, a
-               grid row is as tall as its tallest cell, and eleven rows under one of three cards
-               took the band from ~140 px to ~470 px — the same kind of shift PAR-235 measured and
-               refused at 1024 px before this panel became cards.
+                 **Drawn from 1280 px of the BAR, and in the document at every width** — the same
+                 `hidden … @min-[1280px]:block` the parks panel's photo rail carries, at the same
+                 threshold and for the same reason. From 1280 px these eleven rows stand beside the
+                 other two cards in a row that is already taller than a single card, so they cost
+                 the band nothing extra. Below that the three sections are a flat `grid-cols-3`, a
+                 grid row is as tall as its tallest cell, and eleven rows under one of three cards
+                 took the band from ~140 px to ~470 px — the same kind of shift PAR-235 measured and
+                 refused at 1024 px before this panel became cards.
 
-               Two columns there instead of one was measured and refused: the cell is narrow at
-               1024 px, and `truncate` then ellipsized „Achterbahnelemente" and three of the French
-               labels, up to „Expérience de manège". A menu word may not be cut.
+                 Two columns there instead of one was measured and refused: the cell is narrow at
+                 1024 px, and `truncate` then ellipsized „Achterbahnelemente" and three of the French
+                 labels, up to „Expérience de manège". A menu word may not be cut.
 
-               `hidden`, never unmounted, is what keeps the eleven links in the HTML of every page
-               at every width — the same rule that puts the closed band there at all. */
-            <ul className="mt-2.5 hidden space-y-px @min-[1280px]:block">
-              {categories.map((category) => (
-                <li key={category.id}>
-                  <Link
-                    href={category.href as '/'}
-                    prefetch={false}
-                    className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors"
-                  >
-                    <span className="min-w-0 flex-1 truncate">{category.label}</span>
-                    <span className="text-muted-foreground/70 text-xs tabular-nums">
-                      {category.termCount}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+                 `hidden`, never unmounted, is what keeps the eleven links in the HTML of every page
+                 at every width — the same rule that puts the closed band there at all. */
+              <ul className="mt-2.5 hidden space-y-px @min-[1280px]:block">
+                {categories.map((category) => (
+                  <li key={category.id}>
+                    <Link
+                      href={category.href as '/'}
+                      prefetch={false}
+                      className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors"
+                    >
+                      <span className="min-w-0 flex-1 truncate">{category.label}</span>
+                      <span className="text-muted-foreground/70 text-xs tabular-nums">
+                        {category.termCount}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {extras}
     </div>
   );
 }

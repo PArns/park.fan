@@ -14,6 +14,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
+import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
@@ -722,6 +723,11 @@ export function Header({
                   >
                     {t('planner')}
                   </Link>
+                  {/* Dieselben drei wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
+                      demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
+                      Besucher suchen, diese drei sind Ziele, die man findet. Warum das Sheet sie
+                      überhaupt trägt, steht in `MoreMenuLinks`. */}
+                  <MoreMenuLinks variant="sheet" />
                 </nav>
               </SheetContent>
             </Sheet>
