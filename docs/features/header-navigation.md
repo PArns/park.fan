@@ -150,8 +150,11 @@ that labels the entry the panel hangs from. It is a `MenuSectionHeading` now, th
 link" rule those two follow. The separate "Alle Beiträge" link went with the second heading;
 `navigation.allPosts` had no other reader and is out of all six locale files.
 
-**Every row carries its category**, in the same small uppercase accent the opener above it and
-`BlogPostRow` elsewhere in the app use. This was the one place the site listed posts without it. The
+**Every row carries its category**, in the same small uppercase accent the opener beside it uses.
+The reference is that opener and deliberately not `BlogPostRow`, which sets the category in
+`text-muted-foreground` (and the post card in `var(--pk-text-3)`): those are elsewhere on a page,
+these two sit side by side in one band, and two tones for one field in one surface is a surface you
+read twice. This was the one place the site listed posts without a category at all. The
 row is four lines of text instead of three now, so its thumbnail goes 112 × 70 → **128 × 80**: the
 old size was tuned to the three-line height, and an image shorter than its own row hangs out of the
 bottom of it.
@@ -260,9 +263,16 @@ somebody who opened one. It is a bar entry again, a fourth `NavMenu` beside "Par
 "Tagesplaner" and before "Mehr", opening the panel it already had.
 
 **The label is "Backstage", unchanged in all six locales.** It is an international loanword, so it
-needs no transcreation, and it says what the posts are. `navigation.blog` carries it, and it reaches
-exactly two surfaces: this entry and the phone sheet's link. The footer's blog link reads
-`footer.blog`, a key of its own, and is untouched.
+needs no transcreation, and it says what the posts are.
+
+`navigation.blog` carries it, and it has **three** readers, not the two a first count of the
+components gives: this entry, the phone sheet's link, and `app/[locale]/layout.tsx`, which builds
+the `SiteNavigationElement` for `/blog` out of the same key. That third one is right as it stands —
+the structured data describes the primary navigation, and the navigation says "Backstage" — but it
+means a rename here is a rename in the markup of every page, so it is worth knowing before the next
+one. Two keys deliberately do **not** follow: `footer.blog`, which the footer link reads, and
+`blog.blog`, which the index page's breadcrumb reads, because a breadcrumb names the page rather
+than the menu entry that points at it.
 
 **The width was there, and it was measured rather than assumed.** The 23.7 px of French overflow
 that moved four entries out of the bar came from **six** entries; the row stood at +346.8 px of slack

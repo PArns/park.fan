@@ -129,9 +129,13 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                         </span>
                       )}
                       <span className="min-w-0 flex-1">
-                        {/* Dieselbe Optik wie auf der Feature-Karte darüber und wie in
-                            `BlogPostRow`: die Kategorie steht über dem Titel, klein und in der
-                            Akzentfarbe. Sie fehlte hier als einzige Stelle, an der die Seite
+                        {/* Dieselbe Optik wie der Opener links daneben: über dem Titel, klein,
+                            versal, in der Akzentfarbe. Der Bezug ist bewusst der Opener und
+                            nicht `BlogPostRow` — die Zeile dort setzt die Kategorie in
+                            `text-muted-foreground`, die Karte in `var(--pk-text-3)`. Beide
+                            stehen aber auf einer Seite, und diese zwei stehen in einem Band
+                            nebeneinander: zwei Tonwerte für dasselbe Feld in derselben Fläche
+                            liest man zweimal. Sie fehlte hier als einziger Stelle der App, die
                             Beiträge auflistet. */}
                         {post.category && (
                           <span className="text-primary mb-0.5 block text-[10px] font-semibold tracking-wide uppercase">
