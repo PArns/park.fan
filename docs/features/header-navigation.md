@@ -225,6 +225,9 @@ still there: **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's**, a h
 each. Their lists are separate tickets; the heading IS the link, which is what keeps all three hub
 URLs in the HTML of every page. The fourth, the blog, came back out — see below.
 
+**Each of the three is a card** — icon tile, name, one line — and the whole card is the link,
+which is what keeps all three hub URLs in the HTML of every page.
+
 **The sections cost four strings in the chrome, and the chrome is serialized by every page.**
 `navigation.more` plus one hint per section, measured against the namespace without them when there
 were four of each: **+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr**
@@ -253,6 +256,29 @@ and `border-r` describe a relationship to a neighbour, and with nothing beside t
 column and a rule into the empty half of a band up to 1280 px wide. The grid needs no breakpoint
 because this panel only ever renders inside the nav row, and that row is `@min-[1024px]:flex` on the
 same container — a one-column state has no width at which anybody could see it.
+
+**The icon sits above the text, not beside it — a decision made when these cards still lived in a
+256 px rail beside the blog block.** Beside the text, that rail's 231 px card left 157 px for a
+title and a line: "Beste Reisezeit" still fit, but its hint went to three lines and broke as "und
+Monate, Park / für Park." Above it, the text got the full 205 px, every title stayed on one line and
+every hint ran to two — the card went 112.6 → 137.5 px. The rail is gone (see "Backstage" below),
+but the shape it forced stayed, because it is still the better fit for a three-column grid.
+
+**The hover is the border and nothing else, and that is three measurements rather than a
+preference.** Sampled off the rendered pixels at 1024 and 1440 px in both themes:
+
+|                                            | light        | dark         |
+| ------------------------------------------ | ------------ | ------------ |
+| `hover:border-primary/40` against the card | 1.60 : 1     | 1.81 : 1     |
+| `hover:border-primary` against the card    | **3.46 : 1** | **5.31 : 1** |
+| label (14 px semibold) on the card         | 19.76 : 1    | 17.65 : 1    |
+| hint (13 px) on the card                   | 4.73 : 1     | 7.13 : 1     |
+
+A border owes 3 : 1 and a 14 px semibold label owes 4.5, so the state lives on the border:
+`group-hover:text-primary` on the title would run it at `text-primary`'s 3.47 : 1 for exactly as
+long as somebody is reading it. The surface stays put with it — `bg-card/50` → `bg-card` measures
+19.76 → 19.80 : 1 under the label, a change no eye resolves, and a tint that _is_ visible does
+damage instead: `bg-primary/5` took the 13 px hint to 4.47 : 1 on the light card.
 
 ---
 

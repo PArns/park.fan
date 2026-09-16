@@ -55,10 +55,27 @@ interface MoreMenuPanelProps {
  * `size-9` and `p-3`, where the homepage's version of this card is `size-10` in `p-5`: this one
  * sits three to a row inside a 48 px bar's drop-down.
  *
- * The hover is the border and the surface, never the label's colour. `text-primary` is 3.47 : 1 on
- * the light card, and a 14 px semibold label is not WCAG large text, so tinting it on hover would
- * put the card's own title under 4.5 : 1 for as long as a pointer rests on it — the one moment it
- * is certainly being read. The border carries the state instead, which owes 3 : 1 and clears it.
+ * **The icon sits above the text and not beside it, and the rail is what decides that.** Beside the
+ * text it leaves 157 px of the rail's 231 px card for a title and a line: "Beste Reisezeit" still
+ * fits, its hint went to three lines and broke as "und Monate, Park / für Park." Above it, the text
+ * gets the full 205 px, every title stays on one line and the hints run to two — 112.6 px of card
+ * against 137.5, in a column that had 458 px of nothing under it.
+ *
+ * **The hover is the border, never the label's colour.** `text-primary` is 3.47 : 1 on the light
+ * card, and a 14 px semibold label is not WCAG large text, so tinting it on hover would put the
+ * card's own title under 4.5 : 1 for as long as a pointer rests on it — the one moment it is
+ * certainly being read. A border owes 3 : 1 (WCAG 1.4.11) rather than 4.5, which is why the state
+ * can live there instead.
+ *
+ * It is `border-primary` at full strength for the same measurement. `/40`, which is what
+ * `BlogChapter` hovers with on a page-sized card, samples at **1.60 : 1** light and 1.81 : 1 dark
+ * against the card behind it — a hairline that faint on a 1 px border is a state nobody can name.
+ * Solid reads **3.46 : 1** light and 5.31 : 1 dark, and clears the line in both themes.
+ *
+ * **And the hover moves nothing else, because every candidate cost more than it bought.**
+ * `bg-card/50` → `bg-card` measured 19.76 → 19.80 : 1 under the label, i.e. a change no eye
+ * resolves. A real tint does the damage instead: `bg-primary/5` took the 13 px hint from 4.73 : 1
+ * to **4.47 : 1** on the light card, under the 4.5 that size owes. The border is the whole state.
  */
 function MoreMenuCard({
   href,
@@ -76,18 +93,16 @@ function MoreMenuCard({
       data-menu-stagger
       href={href as '/'}
       prefetch={false}
-      className="border-border/60 bg-card/50 hover:border-primary/40 hover:bg-card focus-visible:ring-ring flex items-start gap-3 rounded-xl border p-3 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+      className="group border-border/60 bg-card/50 hover:border-primary focus-visible:ring-ring block rounded-xl border p-3 transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
-      <span className="bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-lg">
+      <span className="bg-primary/10 text-primary mb-2.5 flex size-9 items-center justify-center rounded-lg">
         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
       </span>
-      <span className="min-w-0">
-        <span className="text-foreground block text-sm leading-snug font-semibold text-pretty">
-          {label}
-        </span>
-        <span className="text-muted-foreground mt-1 block text-[13px] leading-relaxed text-pretty">
-          {hint}
-        </span>
+      <span className="text-foreground block text-sm leading-snug font-semibold text-pretty">
+        {label}
+      </span>
+      <span className="text-muted-foreground mt-1 block text-[13px] leading-relaxed text-pretty">
+        {hint}
       </span>
     </Link>
   );
