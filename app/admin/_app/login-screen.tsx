@@ -285,11 +285,16 @@ export function LoginScreen() {
               went on offering a full sign-in against the hidden `username` and
               the `otp` field next to it instead of filling the code. Changing
               the key replaces the DOM node, which is what makes the manager scan
-              it again. Nothing is lost by the remount: every value the login
-              holds lives in `LoginScreen`, not in the form's children. The
-              Turnstile widget inside does go with it and mints a fresh token —
-              which is what the step change asked for anyway, since the password
-              step spends the one it had. */}
+              it again. Nothing the login needs is lost by the remount: every
+              value it holds is a `useState` or a `useRef` up here, above the
+              form. What lives below it is per-mount bookkeeping — the Turnstile
+              widget's own id, `TurnstileGate`'s retry counter — and the widget
+              itself, which mints a fresh token on the way back in. That is what
+              the step change wanted anyway, the password step having spent the
+              one it had, and it makes `reset()` in the `finally` below a no-op
+              on this one transition. The reset stays where it is: it is what
+              covers a second attempt on the SAME step, where no key changes and
+              nothing remounts. */}
           <form
             key={needsTotp ? 'totp' : 'credentials'}
             onSubmit={handleSubmit}
@@ -431,6 +436,11 @@ export function LoginScreen() {
                   setNeedsTotp(false);
                   setTotpCode('');
                   setError(null);
+                  // The step change replaces the form and with it the widget,
+                  // so a challenge that failed on this step has no widget left
+                  // to describe. Left standing, "could not be loaded" would sit
+                  // over a freshly mounted one until its own error fired again.
+                  setTurnstileBroken(false);
                 }}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
               >

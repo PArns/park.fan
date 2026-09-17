@@ -127,7 +127,10 @@ Two consequences that are easy to trip over:
   requests, and the password step spends the first token. The form resets its
   widget in the `finally` of every attempt, successful or not, and waits for the
   new token before it will send the code — which is why `canSubmit` includes it
-  and why the button spins while the challenge is still running.
+  and why the button spins while the challenge is still running. Since the form
+  carries a per-step `key` (below), the credentials → code transition remounts
+  the widget and gets its fresh token that way; the reset is what covers a second
+  attempt on the same step, where nothing remounts.
 - **A missing secret in production is a hard failure**, by design and now on one
   surface more than before. `verifyTurnstile` refuses rather than waving traffic
   through, so an unset `TURNSTILE_SECRET_KEY` on the frontend deployment locks
@@ -194,12 +197,18 @@ the children and keeps the element — and a manager that fingerprinted the form
 as "username + password" need not look again. 1Password went on offering a full
 sign-in on the code step, against the hidden `username` and the `otp` field beside
 it, rather than filling the code. `key={needsTotp ? 'totp' : 'credentials'}` replaces
-the DOM node instead, which is what makes it scan again. The remount costs nothing:
-every value the login holds sits in `LoginScreen` above the form, and the Turnstile
-widget that goes with it mints the fresh token the step change needed anyway.
-Whether it moves 1Password is a question about an extension and can only be answered
-by trying it — the fingerprint story is the likeliest reading of the behaviour, not a
-measurement.
+the DOM node instead, which is what makes it scan again. The remount costs the login
+nothing: every value it holds is state or a ref in `LoginScreen`, above the form, and
+what sits below is per-mount bookkeeping plus the Turnstile widget, which mints the
+fresh token that step needed anyway. One thing had to move with it — the back button
+("Andere Anmeldung") now clears `turnstileBroken`, because the widget that failed
+goes out with the form and the notice would otherwise stand over a new one.
+
+Whether any of this moves 1Password is a question about an extension and can only be
+answered by trying it — the fingerprint story is the likeliest reading of the reported
+behaviour, not a measurement. Nothing in the repo can pin it either: there is no React
+testing library here, and a grep asserting the attribute would pin the source text
+rather than the behaviour, so the comment at the call site is the guard.
 
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have
