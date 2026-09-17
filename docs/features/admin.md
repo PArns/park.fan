@@ -200,9 +200,12 @@ it, rather than filling the code. `key={needsTotp ? 'totp' : 'credentials'}` rep
 the DOM node instead, which is what makes it scan again. The remount costs the login
 nothing: every value it holds is state or a ref in `LoginScreen`, above the form, and
 what sits below is per-mount bookkeeping plus the Turnstile widget, which mints the
-fresh token that step needed anyway. One thing had to move with it — the back button
-("Andere Anmeldung") now clears `turnstileBroken`, because the widget that failed
-goes out with the form and the notice would otherwise stand over a new one.
+fresh token that step needed anyway. One thing had to move with it: `turnstileBroken`
+is cleared at **both** step changes — where `attempt()` turns the code step on, and in
+the back button ("Andere Anmeldung") — because the widget that failed goes out with the
+form and "could not be loaded" would otherwise stand over a new one. A challenge that
+really cannot load says so again on the next mount, since `loadTurnstileScript` drops
+its failed promise and the fresh mount retries.
 
 Whether any of this moves 1Password is a question about an extension and can only be
 answered by trying it — the fingerprint story is the likeliest reading of the reported

@@ -139,6 +139,12 @@ export function LoginScreen() {
 
       if (result.status === 'totp-required') {
         setNeedsTotp(true);
+        // Same rule as the "Andere Anmeldung" button below, and for the same
+        // reason: the step change swaps the form's key, so the widget this flag
+        // describes goes out with it. A challenge that errored while this
+        // request was in flight would otherwise put "could not be loaded" over
+        // the freshly mounted one on the code step.
+        setTurnstileBroken(false);
         return;
       }
       if (result.status === 'locked' || result.status === 'rate-limited') {
@@ -291,10 +297,11 @@ export function LoginScreen() {
               widget's own id, `TurnstileGate`'s retry counter — and the widget
               itself, which mints a fresh token on the way back in. That is what
               the step change wanted anyway, the password step having spent the
-              one it had, and it makes `reset()` in the `finally` below a no-op
-              on this one transition. The reset stays where it is: it is what
-              covers a second attempt on the SAME step, where no key changes and
-              nothing remounts. */}
+              one it had. `reset()` in the `finally` below still runs first and
+              still hits the old widget — React has not re-rendered yet — so the
+              challenge it starts is thrown away with it. The reset stays where
+              it is all the same: it is what covers a second attempt on the SAME
+              step, where no key changes and nothing remounts. */}
           <form
             key={needsTotp ? 'totp' : 'credentials'}
             onSubmit={handleSubmit}
@@ -436,10 +443,13 @@ export function LoginScreen() {
                   setNeedsTotp(false);
                   setTotpCode('');
                   setError(null);
-                  // The step change replaces the form and with it the widget,
-                  // so a challenge that failed on this step has no widget left
-                  // to describe. Left standing, "could not be loaded" would sit
-                  // over a freshly mounted one until its own error fired again.
+                  // Same rule as the step forward in `attempt()`: the key change
+                  // replaces the form and with it the widget, so a challenge
+                  // that failed here has nothing left to describe. Left
+                  // standing, "could not be loaded" would sit over a freshly
+                  // mounted one until its own error fired again — and one that
+                  // really cannot load says so again on the next mount, because
+                  // `loadTurnstileScript` drops its failed promise and retries.
                   setTurnstileBroken(false);
                 }}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
