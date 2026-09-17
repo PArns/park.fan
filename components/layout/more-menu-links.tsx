@@ -15,9 +15,9 @@ import { Link } from '@/i18n/navigation';
  *
  * **One definition, two hosts**, which is the same call `PushAlertsMenuLink` one file over already
  * made: the row renders at the foot of the "more" panel above `@min-[1024px]` and at the foot of
- * the burger sheet below it, and two hand-kept copies of a three-entry list are two places for the
- * fourth entry — or a changed path — to land in only one of them. The two differ in type scale and
- * in nothing else, so `variant` is the whole parameter.
+ * the burger sheet below it, and two hand-kept copies of the list are two places for a new entry —
+ * or a changed path — to land in only one of them. The two differ in type scale and in which
+ * entries they carry (see `panelOnly` below), so `variant` is the whole parameter.
  *
  * **Why the sheet gets it at all**, when the issue only named the panel: the nav row that carries
  * the panel is `@min-[1024px]:flex`, so without this row `/alerts`, `/fancast` and `/contribute`

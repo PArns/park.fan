@@ -274,7 +274,8 @@ above them.
 The same component renders at the foot of the **burger sheet**, and that is not a second surface
 for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it
 those three stay unreachable from the header on every phone. One definition,
-`variant="panel" | "sheet"`, differing in type scale and in nothing else.
+`variant="panel" | "sheet"`, differing in type scale and in which entries it carries — the next
+paragraph is the one entry that differs.
 
 **`/favorites` is the fourth entry, and the one the sheet does not get (PAR-290).** It is labelled
 from `favorites.link` and marked with the `Star` that `FavoritesPageMenuLink` already gives that
