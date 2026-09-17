@@ -210,12 +210,15 @@ its failed promise and the fresh mount retries.
 Whether any of this moves 1Password is a question about an extension and can only be
 answered by trying it — the fingerprint story is the likeliest reading of the reported
 behaviour, not a measurement. The half that _is_ checkable — that the `<form>` node is
-replaced at the step change — has no check either, and the reason is not the missing
-React testing library: this repo pins UI behaviour with Playwright, and
-`check-planner.mjs` walks a three-step flow. What blocks it here is the way in. The
-code step is only reachable after a password login against the real API with a real
-account, so a check would need a credential nobody may put in the repo. The comment at
-the call site is the guard instead.
+replaced at the step change — has no check, and there is no good reason for that: this
+repo pins UI behaviour with Playwright, `check-planner.mjs` walks a four-step flow, and
+that script reaches most of its states by stubbing responses with `page.route` rather
+than by owning an account. The same trick works here — a stubbed
+`{"status":"totp-required"}` from `/api/admin/session` opens the code step with no
+credential at all, and the widget falls back to Cloudflare's always-passes test key
+when `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is unset. Nobody has written it. Until somebody
+does, the comment at the call site is what stops the attribute being deleted as a
+stray list key.
 
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have

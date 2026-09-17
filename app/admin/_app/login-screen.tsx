@@ -145,14 +145,18 @@ export function LoginScreen() {
         // request was in flight would otherwise put "could not be loaded" over
         // the freshly mounted one on the code step.
         //
-        // Guarded on the step actually changing. A second `totp-required` while
-        // already on the code step is a React bailout — nothing remounts — and
-        // clearing the flag there would take the notice and its retry link away
-        // from a widget that is still broken, leaving a spinner over a button
-        // that cannot be enabled, because the same error callback cleared the
-        // token too. Today's backend cannot produce that answer twice; the
-        // condition costs nothing and does not depend on it staying that way.
-        if (!wasTotpStep) setTurnstileBroken(false);
+        // Guarded on the step actually changing. Answering `totp-required` to a
+        // request sent from the code step is a React bailout — nothing remounts
+        // — and clearing the flag there would take the notice and its retry link
+        // away from a widget that is still broken, leaving a spinner over a
+        // button that cannot be enabled, since the same error callback cleared
+        // the token too.
+        //
+        // Read from the ref, not from `wasTotpStep`: that one is the step this
+        // request was SENT from, and the back button stays live while it is in
+        // flight. Press it mid-request and the answer lands on a step the person
+        // has already left, which is the one case where the two disagree.
+        if (!needsTotpRef.current) setTurnstileBroken(false);
         return;
       }
       if (result.status === 'locked' || result.status === 'rate-limited') {
@@ -196,10 +200,15 @@ export function LoginScreen() {
   }
 
   // The auto-submit below must call the *current* attempt, not the one captured
-  // on the render that armed it.
+  // on the render that armed it. `needsTotpRef` rides along for the same reason
+  // one line further out: an answer arrives after the request was sent, and the
+  // step may have changed in between — the back button is live while a request
+  // is in flight.
   const attemptRef = useRef(attempt);
+  const needsTotpRef = useRef(needsTotp);
   useEffect(() => {
     attemptRef.current = attempt;
+    needsTotpRef.current = needsTotp;
   });
 
   // A filled code submits itself.
@@ -296,21 +305,23 @@ export function LoginScreen() {
               password manager fingerprints a form once, and on the code step
               1Password went on offering a full sign-in against the hidden
               `username` and the `otp` field next to it rather than filling the
-              code. That much was reported and seen; the fingerprint surviving a
-              swap of the children is the likeliest reading of it and not a
+              code. That much was reported and seen. The fingerprint surviving a
+              swap of the children is the likeliest reading of it, not a
               measurement — an extension's behaviour cannot be read out of this
               file. Changing the key replaces the DOM node, which is the cheap
-              way to make a manager look at the form again. Nothing the login needs is lost by the remount: every
-              value it holds is a `useState` or a `useRef` up here, above the
-              form. What lives below it is per-mount bookkeeping — the Turnstile
+              way to make a manager look at the form again.
+
+              Nothing the login needs is lost by the remount: every value it
+              holds is a `useState` or a `useRef` up here, above the form. What
+              lives below it is per-mount bookkeeping — the Turnstile
               widget's own id, `TurnstileGate`'s retry counter — and the widget
               itself, which mints a fresh token on the way back in. That is what
               the step change wanted anyway, the password step having spent the
-              one it had. `reset()` in the `finally` below still runs first and
-              still hits the old widget — React has not re-rendered yet — so the
-              challenge it starts is thrown away with it. The reset stays where
-              it is all the same: it is what covers a second attempt on the SAME
-              step, where no key changes and nothing remounts. */}
+              one it had. `reset()` in `attempt()`'s `finally`, above, still runs
+              first and still hits the old widget — React has not re-rendered yet
+              — so the challenge it starts is thrown away with it. The reset
+              stays where it is all the same: it is what covers a second attempt
+              on the SAME step, where no key changes and nothing remounts. */}
           <form
             key={needsTotp ? 'totp' : 'credentials'}
             onSubmit={handleSubmit}
