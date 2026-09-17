@@ -157,12 +157,13 @@ export function LoginScreen() {
         // flight. Press it mid-request and the answer lands on a step the person
         // has already left, which is the one case where the two disagree.
         //
-        // That race is NOT settled here, only this flag. Everything else in
-        // this function still acts on the step the request was sent from:
-        // `setNeedsTotp(true)` one line up pulls somebody who just pressed back
-        // onto the code step again, and the `catch` below answers a 401 with
-        // "Der Code stimmt nicht" over a form that has no code field. Both
-        // predate this change and are PAR-305.
+        // That race is NOT settled here, only this flag. Two other places in
+        // `attempt()` mishandle it, both predating this change and both
+        // PAR-305: `setNeedsTotp(true)` one line up forces the code step
+        // unconditionally, so a late answer pulls somebody who just pressed
+        // back onto it again, and the `catch` below reads `wasTotpStep`, so a
+        // 401 says "Der Code stimmt nicht" over a form with no code field.
+        // Nothing else here is step-dependent.
         if (!needsTotpRef.current) setTurnstileBroken(false);
         return;
       }
