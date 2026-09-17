@@ -188,6 +188,19 @@ limit), and a `readOnly` username field rides along hidden on that step, because
 the e-mail input is gone from the DOM by then and a manager with nothing to match
 on offers codes from every item that has one.
 
+That hidden username has a second effect, and the `<form>` carries a `key` because
+of it. Both steps are branches of one ternary inside the same form, so React swaps
+the children and keeps the element — and a manager that fingerprinted the form once
+as "username + password" need not look again. 1Password went on offering a full
+sign-in on the code step, against the hidden `username` and the `otp` field beside
+it, rather than filling the code. `key={needsTotp ? 'totp' : 'credentials'}` replaces
+the DOM node instead, which is what makes it scan again. The remount costs nothing:
+every value the login holds sits in `LoginScreen` above the form, and the Turnstile
+widget that goes with it mints the fresh token the step change needed anyway.
+Whether it moves 1Password is a question about an extension and can only be answered
+by trying it — the fingerprint story is the likeliest reading of the behaviour, not a
+measurement.
+
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have
 saved nobody the typing they came to avoid, and on a phone the keyboard is

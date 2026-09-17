@@ -276,7 +276,22 @@ export function LoginScreen() {
             </div>
           </div>
 
+          {/* The key is the whole point of this line, and it is not a list key.
+              Both steps are branches of one ternary inside this form, so React
+              swaps the children and keeps the `<form>` element itself. A
+              password manager fingerprints a form once — 1Password read this one
+              as "username + password" on the credentials step and had no reason
+              to re-read it when the children changed, so on the code step it
+              went on offering a full sign-in against the hidden `username` and
+              the `otp` field next to it instead of filling the code. Changing
+              the key replaces the DOM node, which is what makes the manager scan
+              it again. Nothing is lost by the remount: every value the login
+              holds lives in `LoginScreen`, not in the form's children. The
+              Turnstile widget inside does go with it and mints a fresh token —
+              which is what the step change asked for anyway, since the password
+              step spends the one it had. */}
           <form
+            key={needsTotp ? 'totp' : 'credentials'}
             onSubmit={handleSubmit}
             className="border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7"
           >
