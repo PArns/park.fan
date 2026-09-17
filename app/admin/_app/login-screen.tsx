@@ -163,7 +163,9 @@ export function LoginScreen() {
         // unconditionally, so a late answer pulls somebody who just pressed
         // back onto it again, and the `catch` below reads `wasTotpStep`, so a
         // 401 says "Der Code stimmt nicht" over a form with no code field.
-        // Nothing else here is step-dependent.
+        // Nothing else here acts on the step AFTER the request went out; the
+        // guard at the top and the request body read it before, where it
+        // cannot have changed yet.
         if (!needsTotpRef.current) setTurnstileBroken(false);
         return;
       }
