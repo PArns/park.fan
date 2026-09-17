@@ -139,33 +139,19 @@ export function LoginScreen() {
 
       if (result.status === 'totp-required') {
         setNeedsTotp(true);
-        // Same rule as the "Andere Anmeldung" button below, and for the same
-        // reason: the step change swaps the form's key, so the widget this flag
-        // describes goes out with it. A challenge that errored while this
-        // request was in flight would otherwise put "could not be loaded" over
-        // the freshly mounted one on the code step.
+        // Same rule as the "Andere Anmeldung" button below: the step change
+        // swaps the form's key, so the widget this flag describes goes out with
+        // it, and a challenge that errored while this request was in flight
+        // would otherwise put "could not be loaded" over the freshly mounted
+        // one. Guarded on the step really changing — answering `totp-required`
+        // to a request sent FROM the code step is a React bailout, and clearing
+        // the flag there would take the notice and its retry link away from a
+        // widget that is still broken.
         //
-        // Guarded on the step actually changing. Answering `totp-required` to a
-        // request sent from the code step is a React bailout — nothing remounts
-        // — and clearing the flag there would take the notice and its retry link
-        // away from a widget that is still broken, leaving a spinner over a
-        // button that cannot be enabled, since the same error callback cleared
-        // the token too.
-        //
-        // Read from the ref, not from `wasTotpStep`: that one is the step this
-        // request was SENT from, and the back button stays live while it is in
-        // flight. Press it mid-request and the answer lands on a step the person
-        // has already left, which is the one case where the two disagree.
-        //
-        // That race is NOT settled here, only this flag. Two other places in
-        // `attempt()` mishandle it, both predating this change and both
-        // PAR-305: `setNeedsTotp(true)` one line up forces the code step
-        // unconditionally, so a late answer pulls somebody who just pressed
-        // back onto it again, and the `catch` below reads `wasTotpStep`, so a
-        // 401 says "Der Code stimmt nicht" over a form with no code field.
-        // Nothing else here acts on the step AFTER the request went out; the
-        // guard at the top and the request body read it before, where it
-        // cannot have changed yet.
+        // The ref, not `wasTotpStep`: that is the step the request was sent
+        // from, and the back button stays live while one is in flight. Only
+        // this flag is settled here; two other places in `attempt()` mishandle
+        // the same race and predate this change — PAR-305.
         if (!needsTotpRef.current) setTurnstileBroken(false);
         return;
       }
