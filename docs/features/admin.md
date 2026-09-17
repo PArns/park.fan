@@ -216,9 +216,9 @@ that script reaches most of its states by stubbing responses with `page.route` r
 than by owning an account. The same trick works here — a stubbed
 `{"status":"totp-required"}` from `/api/admin/session` opens the code step with no
 credential at all, and the widget falls back to Cloudflare's always-passes test key
-when `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is unset. Nobody has written it. Until somebody
-does, the comment at the call site is what stops the attribute being deleted as a
-stray list key.
+when `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is unset. Nobody has written it; PAR-304 is where
+it belongs. Until then, the comment at the call site is what stops the attribute being
+deleted as a stray list key.
 
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have
