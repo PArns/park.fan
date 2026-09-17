@@ -144,7 +144,15 @@ export function LoginScreen() {
         // describes goes out with it. A challenge that errored while this
         // request was in flight would otherwise put "could not be loaded" over
         // the freshly mounted one on the code step.
-        setTurnstileBroken(false);
+        //
+        // Guarded on the step actually changing. A second `totp-required` while
+        // already on the code step is a React bailout — nothing remounts — and
+        // clearing the flag there would take the notice and its retry link away
+        // from a widget that is still broken, leaving a spinner over a button
+        // that cannot be enabled, because the same error callback cleared the
+        // token too. Today's backend cannot produce that answer twice; the
+        // condition costs nothing and does not depend on it staying that way.
+        if (!wasTotpStep) setTurnstileBroken(false);
         return;
       }
       if (result.status === 'locked' || result.status === 'rate-limited') {
@@ -285,13 +293,14 @@ export function LoginScreen() {
           {/* The key is the whole point of this line, and it is not a list key.
               Both steps are branches of one ternary inside this form, so React
               swaps the children and keeps the `<form>` element itself. A
-              password manager fingerprints a form once — 1Password read this one
-              as "username + password" on the credentials step and had no reason
-              to re-read it when the children changed, so on the code step it
-              went on offering a full sign-in against the hidden `username` and
-              the `otp` field next to it instead of filling the code. Changing
-              the key replaces the DOM node, which is what makes the manager scan
-              it again. Nothing the login needs is lost by the remount: every
+              password manager fingerprints a form once, and on the code step
+              1Password went on offering a full sign-in against the hidden
+              `username` and the `otp` field next to it rather than filling the
+              code. That much was reported and seen; the fingerprint surviving a
+              swap of the children is the likeliest reading of it and not a
+              measurement — an extension's behaviour cannot be read out of this
+              file. Changing the key replaces the DOM node, which is the cheap
+              way to make a manager look at the form again. Nothing the login needs is lost by the remount: every
               value it holds is a `useState` or a `useRef` up here, above the
               form. What lives below it is per-mount bookkeeping — the Turnstile
               widget's own id, `TurnstileGate`'s retry counter — and the widget
