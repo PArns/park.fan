@@ -1,0 +1,5 @@
+# Park/Ride page ↔ blog link
+
+One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md), which carries the rule in one line and links here for the reasoning, the measurements and the counter-examples.
+
+park pages list the posts about that park, ride pages the posts about that ride (`ParkBlogPostsSection` / `AttractionBlogPostsSection`, reverse index in `lib/blog/backlinks.ts`). The relation is derived from the post itself (`ref:`/widget references, a ride counts for its park too, plus `relatedParks`/`relatedAttractions`), so a round-up like the Halloween guide lands on all ten park pages without a list. `parkLinks` / `rideLinks` in the frontmatter override it (`false` = never, or an explicit list; `rideLinks` also takes `parkSlug/*`), are **independent of each other** and are resolved **per post, not per locale** — setting one in any language governs all six, and `pnpm generate:blog-manifest` warns when translations disagree or an entry isn't a valid slug. See the [blog authoring guide](content/blog/README.md#the-other-direction-park-and-ride-pages-linking-back).

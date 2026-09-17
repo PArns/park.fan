@@ -16,24 +16,25 @@
 | [SEO](seo/analysis.md)                               | SEO analysis and recommendations                   |
 | [Troubleshooting](troubleshooting/common-issues.md)  | Common issues and solutions                        |
 | [Writing rules](blog.md)                             | How every text on the site is written              |
-| [Standing rules](rules/architecture.md)              | The rules indexed by the repo's `CLAUDE.md`        |
+| [Standing rules](rules/README.md)                    | The rules indexed by the repo's `CLAUDE.md`        |
 
 ---
 
 ## Standing rules
 
 The repo's [`CLAUDE.md`](../CLAUDE.md) is an **index**: it carries one line per standing rule and
-links here for the rest. The rules themselves live under `rules/`, grouped the way a task is
-grouped, so a session opens one page instead of all of them.
+links here for the rest. The rules themselves live under `rules/`, **one file per rule**, indexed by
+[rules/README.md](rules/README.md) — so a session opens the one page its task needs instead of a
+group that carries eight.
 
-| Page                                                  | Covers                                                                                   |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [Architecture rules](rules/architecture.md)           | Page payload, caching, `revalidate`, streaming and CLS, translations reaching the client |
-| [Data and API rules](rules/data-and-api.md)           | Wait times, seasons, a park with no source                                               |
-| [Feature rules](rules/features.md)                    | Trip planner, header menu, admin, weather chart, guide page, glossary, blog manifest     |
-| [Design rules](rules/design.md)                       | Layout, components, breakpoints, the header, cards, three.js                             |
-| [SEO rules](rules/seo.md)                             | Sitemaps, feeds, favicon, robots and agents, analytics                                   |
-| [Content and media rules](rules/content-and-media.md) | Blog posts, UI strings, images, captions                                                 |
+| Page                                                                                     | Covers                                                                                   |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Architecture and payload](rules/README.md#architecture-and-payload)                     | Page payload, caching, `revalidate`, streaming and CLS, translations reaching the client |
+| [Data and API](rules/README.md#data-and-api)                                             | Wait times, seasons, a park with no source                                               |
+| [Features](rules/README.md#features)                                                     | Trip planner, header menu, admin, weather chart, guide page, glossary, blog manifest     |
+| [Design and layout](rules/README.md#design-and-layout)                                   | Layout, components, breakpoints, the header, cards, three.js                             |
+| [SEO and the machine-facing surface](rules/README.md#seo-and-the-machine-facing-surface) | Sitemaps, feeds, favicon, robots and agents, analytics                                   |
+| [Content and media](rules/README.md#content-and-media)                                   | Blog posts, UI strings, images, captions                                                 |
 
 **New background goes into the page that owns the subject, or into a new file — never back into
 `CLAUDE.md`.** That file is read by every session on every task; these pages are read by the
