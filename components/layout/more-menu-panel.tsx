@@ -209,21 +209,34 @@ export function MoreMenuPanel({
 
             **Drawn from 1280 px of the BAR, and in the document at every width** — the same
             `hidden … @min-[1280px]:block` the parks panel's photo rail carries, at the same
-            threshold and for the same reason. From 1280 px these eleven rows stand beside the
-            other two cards in a row that is already taller than a single card, so they cost the
-            band nothing extra. Below that the three sections are a flat `grid-cols-3`, a grid row
-            is as tall as its tallest cell, and eleven rows under one of three cards took the band
-            from ~140 px to ~470 px — the same kind of shift PAR-235 measured and refused at
+            threshold and for the same reason. From 1280 px the band is as tall as these eleven
+            rows make it whatever else is in it, so they are what the reader came for rather than
+            an addition to a menu. Below that the three sections are a flat `grid-cols-3`, a grid
+            row is as tall as its tallest cell, and eleven rows under one of three cards took the
+            band from ~140 px to ~470 px — the same kind of shift PAR-235 measured and refused at
             1024 px before this panel became cards.
+
+            PAR-290 moved the list out of the card's cell and put **23.1 px** on the band at
+            1440 px (the footer row went 544.4 → 567.5): the card row is the tallest card now
+            rather than the dictionary's own height, and the 10 px `mt-2.5` became the grid's
+            12 px. That is the price of the three cards agreeing, and it is paid once, above a
+            list that is ~330 px tall.
 
             Two columns there instead of one was measured and refused: the cell is narrow at
             1024 px, and `truncate` then ellipsized „Achterbahnelemente" and three of the French
             labels, up to „Expérience de manège". A menu word may not be cut.
 
             `hidden`, never unmounted, is what keeps the eleven links in the HTML of every page at
-            every width — the same rule that puts the closed band there at all. */}
+            every width — the same rule that puts the closed band there at all.
+
+            **The list carries the dictionary's name** because it no longer sits inside its cell.
+            A sighted reader gets the association from the column; in the DOM the rows used to
+            follow the card they belong to and now follow all three, so the only thing left saying
+            whose rows these are is the label. It is the card's own `navigation.glossary`, so the
+            two can never disagree, and the namespace is one the chrome already ships. */}
         {categories.length > 0 && glossaryColumn > 0 && (
           <ul
+            aria-label={t('glossary')}
             style={{ gridColumnStart: glossaryColumn }}
             className="hidden space-y-px @min-[1280px]:block"
           >
