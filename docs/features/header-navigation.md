@@ -228,6 +228,23 @@ URLs in the HTML of every page. The fourth, the blog, came back out — see belo
 **Each of the three is a card** — icon tile, name, one line — and the whole card is the link,
 which is what keeps all three hub URLs in the HTML of every page.
 
+**The three are one height, and they are grid items to get it (PAR-290).** A grid item stretches to
+its row by default, so they would have agreed all along; each sat in a wrapper `<div>` instead, and
+in the dictionary's cell that wrapper holds the card _and_ the category rows, which is why an
+`h-full` on the card is the wrong fix — it would stretch the card over the rows there. The wrapper
+is gone and the rows are a grid item of their own in the second row, at the column
+`sections.findIndex` puts them in. A card is 116.4 px while its hint fits one line and 137.5 px on
+two: German wrapped the guide's hint (116.4 / 116.4 / 137.5 at a 1440 px bar), French the
+dictionary's (116.4 / 137.5 / 116.4), English none of them, so which edge stuck out was a property
+of the translation. Measure this with the webfont loaded — "Geist Fallback" is wider, and a reading
+taken before `document.fonts.ready` wraps lines the built page does not. It costs the band 23.1 px
+at 1440 px, once, above a list that is ~330 px tall: the card row is the tallest card now, and the
+10 px margin over the category list became the grid's 12 px gap.
+
+**One mark, two layouts.** The card's glyph sits in a tinted `size-9` tile above its title; the
+footer row's sits inline before the label, in the same accent, because a row is a line and has no
+block to hold a tile. The row's label stays muted, which is where its lower rank lives.
+
 **The sections cost four strings in the chrome, and the chrome is serialized by every page.**
 `navigation.more` plus one hint per section, measured against the namespace without them when there
 were four of each: **+103 B brotli** in English, +128 es, +143 nl, +146 it, +148 de, **+151 fr**
@@ -241,23 +258,34 @@ Two decisions worth keeping:
 
 **It is called "Mehr", not "Entdecken".** "Entdecken" would have stood 101 px from "Parks
 entdecken" in the same row, and in French put "Explorer" beside "Explorer les parcs". It is a
-catch-all — `/alerts`, `/fancast` and `/contribute` sit in here too, in the footer row below —
-so it is named after being one, and it sits at the END of the row's three entries, where a
-catch-all belongs.
+catch-all — `/alerts`, `/favorites`, `/fancast` and `/contribute` sit in here too, in the footer
+row below — so it is named after being one, and it sits at the END of the row's three entries,
+where a catch-all belongs.
 
-**The footer row is `MoreMenuLinks`, and it renders twice.** Those three pages had no link from the
-header at all: measured before it was added, a grep over `components/layout/` found `/fancast` once
-(the footer) and `/alerts` once (the favorites panel), and `/contribute` **nowhere**. They are a
-row under the panel's closing rule rather than a fourth column, because a column would rank an
-upload form with the guide and the dictionary, and because the panel already switches column shape
-at 1280 px — a fourth member would have to be fitted into both layouts, a row is one element in
-either. No heading over it: a heading in this panel is a link to a hub page, and these three have
-none above them.
+**The footer row is `MoreMenuLinks`, and it renders twice.** Three of those pages had no link from
+the header at all: measured before it was added, a grep over `components/layout/` found `/fancast`
+once (the footer) and `/alerts` once (the favorites panel), and `/contribute` **nowhere**. They are
+a row under the panel's closing rule rather than a column of their own, because a column would rank
+an upload form with the guide and the dictionary, and because the panel already switches column
+shape at 1280 px — a further member would have to be fitted into both layouts, a row is one element
+in either. No heading over it: a heading in this panel is a link to a hub page, and these have none
+above them.
 
 The same component renders at the foot of the **burger sheet**, and that is not a second surface
-for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it the
-three stay unreachable from the header on every phone. One definition, `variant="panel" | "sheet"`,
-differing in type scale and in nothing else.
+for the sake of it — the nav row that carries the panel is `@min-[1024px]:flex`, so without it
+those three stay unreachable from the header on every phone. One definition,
+`variant="panel" | "sheet"`, differing in type scale and in which entries it carries — the next
+paragraph is the one entry that differs.
+
+**`/favorites` is the fourth entry, and the one the sheet does not get (PAR-290).** It is labelled
+from `favorites.link` and marked with the `Star` that `FavoritesPageMenuLink` already gives that
+URL, so no new string ships. It carries `panelOnly`, because that panel links `/favorites` in every
+sheet state — including the empty one, where the branch adds it back deliberately — and an
+unconditional entry here would stand under it as a second "Meine Favoriten" in a 300 px column.
+That is the duplication the `/alerts` bullet below measured, solved from the same side. In the
+panel there is no such pair: this band and the favorites band are never open at once. Measured at
+360 px afterwards: `/favorites` appears once, and the panel's four entries stay on one line with
+≥525 px of slack at a 1024 px bar in all six locales.
 
 Two things the second host cost, both measured rather than reasoned:
 

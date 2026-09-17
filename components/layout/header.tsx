@@ -723,10 +723,12 @@ export function Header({
                   >
                     {t('planner')}
                   </Link>
-                  {/* Dieselben drei wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
+                  {/* Dieselbe Zeile wie im Fuß des „Mehr"-Panels, aus einer Definition, und aus
                       demselben Grund hier unten und kleiner: der Rest dieser Liste sind Ziele, die
-                      Besucher suchen, diese drei sind Ziele, die man findet. Warum das Sheet sie
-                      überhaupt trägt, steht in `MoreMenuLinks`. */}
+                      Besucher suchen, diese sind Ziele, die man findet. Hier stehen drei davon und
+                      im Panel vier — „Meine Favoriten" trägt in diesem Sheet schon das
+                      Favoriten-Panel darüber, siehe `MoreMenuLinks` samt Begründung, warum das
+                      Sheet die Zeile überhaupt bekommt. */}
                   <MoreMenuLinks variant="sheet" />
                 </nav>
               </SheetContent>
