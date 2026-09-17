@@ -24,8 +24,8 @@ import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
  * **Why the trigger is called "more" and not "discover".** The issue's own working title was
  * "Entdecken", which in German would have stood 101 px from "Parks entdecken" in the same row, and
  * in French put "Explorer" next to "Explorer les parcs". The thing is a catch-all — `/alerts`,
- * `/fancast` and `/contribute` hang in here too, in the footer row at the bottom — and a catch-all
- * is named after being one.
+ * `/favorites`, `/fancast` and `/contribute` hang in here too, in the footer row at the bottom —
+ * and a catch-all is named after being one.
  *
  * **Each section is a card, and that is the whole of them for now (PAR-269).** Their lists
  * (the guide's chapters, the hub's parks) are separate tickets, so what is here is the skeleton the
@@ -195,9 +195,14 @@ export function MoreMenuPanel({
           own in the second row, under the column the card stands in.
 
           Measured on `/de/parks/europe/germany` at a 1440 px bar, before: 116.4 / 116.4 / 137.5 px
-          — „So funktioniert's" runs its hint to three lines where the other two need two. In
-          French the odd card is the dictionary instead (116.4 / 137.5 / 116.4), so which bottom
-          edge sticks out is a property of the translation, not of the layout. */}
+          — a card is 116.4 px while its hint fits one line and 137.5 px on two, and „So
+          funktioniert's" is the German hint that wraps. In French the odd card is the dictionary
+          instead (116.4 / 137.5 / 116.4) and in English no hint wraps at all, so all three were
+          116.4 px there and this change moves nothing. Which bottom edge sticks out is a property
+          of the translation, not of the layout. The hint box is 382 px at a 1280 px bar and at a
+          1440 px one alike, so the line counts are the same across that range; measured with the
+          webfont loaded, because „Geist Fallback" is wider and a reading taken before
+          `document.fonts.ready` wraps lines the built page does not. */}
       <div className="grid grid-cols-3 gap-3">
         {sections.map((section) => (
           <MoreMenuCard key={section.href} {...section} />
