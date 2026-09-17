@@ -50,14 +50,14 @@ import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
  * the homepage for two of these same three destinations — icon tile, title, line, whole surface
  * clickable.
  *
- * **A footer row links the three pages the header never linked at all (PAR-255)**: `/alerts`,
- * `/fancast` and `/contribute`. Measured on `main` before that change, a grep over
- * `components/layout/` found `/fancast` once (the footer), `/alerts` once (the favorites panel)
- * and `/contribute` nowhere — the upload form was reachable from a park or ride page's banner and
- * from a typed URL and from nothing else. It is a row under the closing rule rather than a fourth
- * card: a card would rank an upload form with the guide and the dictionary, and a row is one
- * element whichever column shape the grid is in. No heading over it either, because a heading here
- * is a promise of a hub page and these three have nothing above them.
+ * **A footer row links the pages the header never linked at all (PAR-255)**: `/alerts`,
+ * `/fancast` and `/contribute`, plus `/favorites` since PAR-290. Measured on `main` before that
+ * change, a grep over `components/layout/` found `/fancast` once (the footer), `/alerts` once (the
+ * favorites panel) and `/contribute` nowhere — the upload form was reachable from a park or ride
+ * page's banner and from a typed URL and from nothing else. It is a row under the closing rule
+ * rather than a fourth card: a card would rank an upload form with the guide and the dictionary,
+ * and a row is one element whichever column shape the grid is in. No heading over it either,
+ * because a heading here is a promise of a hub page and these have nothing above them.
  *
  * `grid-cols-3` with no threshold under it: this panel only ever renders inside the nav row, and
  * that row is `@min-[1024px]:flex` on the same container, so a one-column state has no width at
@@ -175,54 +175,74 @@ export function MoreMenuPanel({
     { href: howtoHref, icon: Compass, label: t('howto'), hint: t('howtoHint') },
   ];
 
-  /* The footer row — `/alerts`, `/fancast`, `/contribute`. See `MoreMenuLinks` for why it is a
-     row rather than a fourth column, and why the burger sheet renders the same component. */
+  /* The footer row — `/favorites`, `/alerts`, `/fancast`, `/contribute`. See `MoreMenuLinks` for
+     why it is a row rather than a fourth column, why the favorites entry is the one of the four
+     the burger sheet does not get, and why the sheet renders the same component at all. */
   const extras = <MoreMenuLinks variant="panel" />;
+
+  /* Which column the dictionary's rows hang under, read off the list above rather than written
+     down as `col-start-2`. The cards are direct grid items now (see below), so the rows are no
+     longer inside the card's own cell and cannot inherit its column by position. */
+  const glossaryColumn = sections.findIndex((section) => section.href === glossaryHref) + 1;
 
   return (
     <div className="flex flex-col gap-5">
+      {/* **The three cards are grid items themselves, and that is what makes them one height.**
+          A grid item stretches to its row by default, so the cards would have agreed all along —
+          except each sat in a `<div>` of its own, and in the dictionary's cell that wrapper holds
+          the card AND the eleven category rows. An `h-full` on the card would have stretched it
+          over the rows there, so the wrapper goes instead and the rows become a grid item of their
+          own in the second row, under the column the card stands in.
+
+          Measured on `/de/parks/europe/germany` at a 1440 px bar, before: 116.4 / 116.4 / 137.5 px
+          — „So funktioniert's" runs its hint to three lines where the other two need two. In
+          French the odd card is the dictionary instead (116.4 / 137.5 / 116.4), so which bottom
+          edge sticks out is a property of the translation, not of the layout. */}
       <div className="grid grid-cols-3 gap-3">
         {sections.map((section) => (
-          <div key={section.href}>
-            <MoreMenuCard {...section} />
-            {section.href === glossaryHref && categories.length > 0 && (
-              /* The same row as a country in the parks panel — label, count, `-mx-2` bleed —
-                 because the two bands are meant to read as one surface.
-
-                 **Drawn from 1280 px of the BAR, and in the document at every width** — the same
-                 `hidden … @min-[1280px]:block` the parks panel's photo rail carries, at the same
-                 threshold and for the same reason. From 1280 px these eleven rows stand beside the
-                 other two cards in a row that is already taller than a single card, so they cost
-                 the band nothing extra. Below that the three sections are a flat `grid-cols-3`, a
-                 grid row is as tall as its tallest cell, and eleven rows under one of three cards
-                 took the band from ~140 px to ~470 px — the same kind of shift PAR-235 measured and
-                 refused at 1024 px before this panel became cards.
-
-                 Two columns there instead of one was measured and refused: the cell is narrow at
-                 1024 px, and `truncate` then ellipsized „Achterbahnelemente" and three of the French
-                 labels, up to „Expérience de manège". A menu word may not be cut.
-
-                 `hidden`, never unmounted, is what keeps the eleven links in the HTML of every page
-                 at every width — the same rule that puts the closed band there at all. */
-              <ul className="mt-2.5 hidden space-y-px @min-[1280px]:block">
-                {categories.map((category) => (
-                  <li key={category.id}>
-                    <Link
-                      href={category.href as '/'}
-                      prefetch={false}
-                      className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors"
-                    >
-                      <span className="min-w-0 flex-1 truncate">{category.label}</span>
-                      <span className="text-muted-foreground/70 text-xs tabular-nums">
-                        {category.termCount}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          <MoreMenuCard key={section.href} {...section} />
         ))}
+        {/* The same row as a country in the parks panel — label, count, `-mx-2` bleed — because
+            the two bands are meant to read as one surface. The 10 px that used to sit above this
+            list as an `mt-2.5` is the grid's own 12 px row gap now: the list is a row of the grid
+            rather than the lower half of a cell.
+
+            **Drawn from 1280 px of the BAR, and in the document at every width** — the same
+            `hidden … @min-[1280px]:block` the parks panel's photo rail carries, at the same
+            threshold and for the same reason. From 1280 px these eleven rows stand beside the
+            other two cards in a row that is already taller than a single card, so they cost the
+            band nothing extra. Below that the three sections are a flat `grid-cols-3`, a grid row
+            is as tall as its tallest cell, and eleven rows under one of three cards took the band
+            from ~140 px to ~470 px — the same kind of shift PAR-235 measured and refused at
+            1024 px before this panel became cards.
+
+            Two columns there instead of one was measured and refused: the cell is narrow at
+            1024 px, and `truncate` then ellipsized „Achterbahnelemente" and three of the French
+            labels, up to „Expérience de manège". A menu word may not be cut.
+
+            `hidden`, never unmounted, is what keeps the eleven links in the HTML of every page at
+            every width — the same rule that puts the closed band there at all. */}
+        {categories.length > 0 && glossaryColumn > 0 && (
+          <ul
+            style={{ gridColumnStart: glossaryColumn }}
+            className="hidden space-y-px @min-[1280px]:block"
+          >
+            {categories.map((category) => (
+              <li key={category.id}>
+                <Link
+                  href={category.href as '/'}
+                  prefetch={false}
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors"
+                >
+                  <span className="min-w-0 flex-1 truncate">{category.label}</span>
+                  <span className="text-muted-foreground/70 text-xs tabular-nums">
+                    {category.termCount}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {extras}
