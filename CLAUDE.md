@@ -58,7 +58,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A streamed section owes the page its height](docs/rules/a-streamed-section-owes-the-page-its-height.md)** — a `<Suspense>` fallback reserves the height its
   content will take, per breakpoint, measured off the real thing. `fallback={null}` is honest only
   when nothing renders below it. Prove a fix with `pnpm measure:cls --late` against
-  `pnpm build && pnpm start` at `localhost` — never `next dev`, never `127.0.0.1`.
+  `pnpm build && pnpm start` at `localhost` — never `next dev`, never `127.0.0.1`. A score
+  belongs to a **reader position**, printed as `y=` on every line: from `y=0` these pages read
+  0.0002 while the field scores 0.98.
 - **[API budget per page](docs/rules/api-budget-per-page.md)** — the 5-minute live poll sends `LiveParkSnapshot`, a projection, never the
   park. Before adding a field, decide which of four kinds it is. Measure with
   `node scripts/measure-api-calls.mjs` before and after.

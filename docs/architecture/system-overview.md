@@ -136,6 +136,21 @@ the glossary term page measured 0.5425 desktop and 0.4872 mobile (`--scroll=900`
 Cloudflare's 0.538 for the same page. Add `--scroll=<y>` — a shift only scores what is in
 view, and the same page reads 0.0000 from the top of the page on a phone.
 
+**The reader position is part of the setup, and the run prints it.** CLS charges for what
+moves inside the viewport, so a score is a fact about a place to stand, not about a page.
+Measured from `y=0` alone, three park pages Cloudflare scores 0.98 came back 0.0001, 0.0002
+and 0.0002 — the block that grows sits around y = 3400 on a phone, four screens down, and a
+reader at the top does not see it move. So `--late` measures two positions for each viewport:
+the top of the page, and just under whichever block the page grows by the most. The second
+one comes from a shell-versus-settled diff the first pass collects while it waits, so it fits
+the page in hand rather than a constant that fits one page type; **under** the block, not at
+it, because what a growth displaces is the content after it, and a block growing downward
+with nothing below it in view scores 0.0000. Each line carries its `y=`, and a run that
+scores nothing at every position it tried says that in words rather than printing `CLS
+0.0000` — Islands of Adventure reads 0.0002 at `y=0` and **1.3421** at `y=3346`. Two replays
+instead of one: the default six URLs take about three minutes. `--scroll=<y>` overrides both
+and measures exactly one position.
+
 **Measure a production build, at `localhost`.** Both halves, and each of them fails the
 same way: the run finishes, prints `CLS 0.0000`, and looks exactly like a page with
 nothing wrong.
