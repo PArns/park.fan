@@ -122,7 +122,8 @@ interface PlannerBlockProps {
   /** Bounds for the keyboard control — the same clamp the drag obeys. */
   minMinute: number;
   maxMinute: number;
-  snapStep: number;
+  /** The arrow-key step of the range input below. NOT the drag's step. */
+  keyboardStep: number;
 }
 
 /**
@@ -163,7 +164,7 @@ export function PlannerBlock({
   onMove,
   minMinute,
   maxMinute,
-  snapStep,
+  keyboardStep,
 }: PlannerBlockProps) {
   const t = useTranslations('planner');
   const done = Boolean(entry.done);
@@ -533,7 +534,7 @@ export function PlannerBlock({
           type="range"
           min={minMinute}
           max={maxMinute}
-          step={snapStep}
+          step={keyboardStep}
           value={entry.startMinute}
           aria-label={`${custom ? custom.label : entry.attractionName} — ${range}`}
           onChange={(event) => onMove(Number(event.target.value))}
@@ -595,13 +596,28 @@ export function PlannerBlock({
               <span className="min-w-0 flex-1 truncate">
                 {custom ? custom.label : entry.attractionName}
               </span>
-              {hasFigure && (
+              {(ghost || hasFigure) && (
                 <span
                   data-figure=""
                   className="text-muted-foreground shrink-0 font-mono text-[10px] tabular-nums"
                 >
-                  {formatGridTime(entry.startMinute)} · {assumed && '~'}
-                  {wait} {t('unit.min')}
+                  {/* A ghost spends this row on the RANGE instead, and spends it
+                      even where there is no figure at all. The one question a
+                      preview answers is when this lands, and the drag steps in
+                      fives — so the start alone is the half of the answer that
+                      changes under the pointer, and the end is the half that
+                      says how far into the next thing it reaches. Nothing is
+                      lost by dropping the wait here: on a ghost the wait is the
+                      height and the colour, recomputed for this very minute,
+                      and both are drawn whatever the box can print. */}
+                  {ghost ? (
+                    range
+                  ) : (
+                    <>
+                      {formatGridTime(entry.startMinute)} · {assumed && '~'}
+                      {wait} {t('unit.min')}
+                    </>
+                  )}
                 </span>
               )}
             </p>
@@ -657,7 +673,14 @@ export function PlannerBlock({
                 )}
               </div>
 
-              {boxPx >= RANGE_MIN_PX && (
+              {/* A ghost prints its range at every height it can reach in this
+                  branch — 30 px up, where the two-line stack already fits well
+                  enough for the name row to survive the column's
+                  `overflow-hidden`. Below 30 the one-row branch above carries
+                  the same range instead. Nothing else in the planner gets this
+                  exemption, because nothing else is a question the pointer is
+                  in the middle of asking. */}
+              {(ghost || boxPx >= RANGE_MIN_PX) && (
                 <p className="text-muted-foreground truncate text-[10px] tabular-nums">
                   {range}
                   {typeof metresFromPrevious === 'number' && (

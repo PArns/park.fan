@@ -26,8 +26,10 @@ import type { DayClock } from './park-time';
  *
  * Chosen from content rather than from a viewport: a 40-minute queue — the
  * common headliner figure — is 48 px, which is two lines of `text-sm` plus a
- * `text-[10px]` meta line and 6 px of padding; a 15-minute drag step is 18 px,
- * comfortably above touch tolerance. Deriving it from a container's height would
+ * `text-[10px]` meta line and 6 px of padding; the drag step a FINGER gets
+ * ({@link SNAP_MIN_COARSE}) is 36 px here, comfortably above touch tolerance,
+ * and a mouse's {@link DRAG_SNAP_MIN_FINE} is 6 px, which is a step a pointer
+ * with sub-pixel resolution can aim at. Deriving it from a container's height would
  * be a measurement arriving after paint, i.e. a resize of the whole grid on
  * every open, so it is a constant per pointer class and not a function of the
  * box.
@@ -99,11 +101,41 @@ export const POST_PAD_MIN = 30;
  */
 export const CLOSE_SLACK_MIN = 60;
 
-/** Outlook's own drag granularity. 18 px here. */
+/**
+ * The quarter hour this app's own arithmetic sits on. 18 px here.
+ *
+ * Every start the app FILES lands on it: `nowFloor`, `rideFloor`, the optimiser's
+ * search step, the ceiling in {@link latestStart}. Those are roundings and
+ * clamps, not a gesture — they decide where a computed minute may come to rest.
+ *
+ * It was the drag's step too until PAR-307, and that is the one thing it is no
+ * longer: a pointer has a resolution of its own and does not have to agree with
+ * the grid the optimiser plans on. {@link DRAG_SNAP_MIN_FINE} is that step now.
+ */
 export const SNAP_MIN_FINE = 15;
 
 /** 36 px. Fifteen minutes under a finger reads as jitter, not as a choice. */
 export const SNAP_MIN_COARSE = 30;
+
+/**
+ * What a drag with a mouse or trackpad commits to. Five minutes, 6 px here.
+ *
+ * Five because that is the resolution every displayed wait in this app already
+ * has, so a block dropped on a five is on a minute the rest of the panel can
+ * pronounce — and because a free block could already be RESIZED in fives
+ * (`RESIZE_STEP_MIN` in `planner-day-grid.tsx`) while it could only be MOVED in
+ * fifteens, which is a finer grip on a block's end than on its start.
+ *
+ * This is the drag's step and nothing else's. It does not travel to
+ * {@link SNAP_MIN_FINE}'s call sites: a visitor placing a block by hand is
+ * saying a minute out loud, while `nowFloor` and the optimiser are rounding one
+ * they computed, and the quarter hour is what those round to.
+ *
+ * There is no coarse twin of this constant on purpose. Under a finger the step
+ * stays {@link SNAP_MIN_COARSE} — the reason for the half hour there is the
+ * contact patch, which a smaller number makes worse rather than better.
+ */
+export const DRAG_SNAP_MIN_FINE = 5;
 
 /**
  * The smallest BOX a block may occupy — not a claim about its height.
