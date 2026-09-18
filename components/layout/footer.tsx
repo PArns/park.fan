@@ -2,7 +2,9 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ExternalLink, Rss } from 'lucide-react';
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 import { Separator } from '@/components/ui/separator';
+import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { BuildInfo } from '@/components/common/build-info';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -26,6 +28,71 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
   const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const currentYear = await getCurrentYear();
+
+  const footerLinkClass =
+    'hover:text-foreground inline-flex items-center gap-1 py-1 text-sm transition-colors max-sm:min-h-11';
+
+  /** The groups the closing link list is drawn from, in the order their columns stand. */
+  const linkGroups: {
+    key: string;
+    heading: string;
+    items: { key: string; href: string; label: string; plain?: boolean; icon?: ReactNode }[];
+  }[] = [
+    {
+      key: 'content',
+      heading: t('sections.content'),
+      items: [
+        ...(showBlog
+          ? [
+              { key: 'blog', href: '/blog', label: t('blog') },
+              /*
+                The feed's only visible link on the site. The `<head>` link autodiscovery needs has
+                been there all along, which no person can see and no reader shows you until you
+                have already found the page — so a visitor who wanted the feed had nothing to
+                click. A plain <a>, not the i18n `Link`: the target is a route handler, and a
+                client-side navigation to one fetches an RSC payload that does not exist. Inside
+                `showBlog` because the feed 404s under exactly the same condition.
+              */
+              {
+                key: 'feed',
+                href: `/${locale}/blog/feed.xml`,
+                label: t('feed'),
+                plain: true,
+                icon: <Rss className="size-3.5" aria-hidden="true" />,
+              },
+            ]
+          : []),
+        { key: 'glossary', href: glossaryPath, label: t('glossaryLink') },
+      ],
+    },
+    {
+      key: 'tools',
+      heading: t('sections.tools'),
+      items: [
+        { key: 'fancast', href: '/fancast', label: t('fancast') },
+        { key: 'bestTime', href: bestTimePath, label: t('bestTime') },
+        { key: 'howto', href: howtoPath, label: t('howto') },
+        { key: 'planner', href: plannerPath, label: t('planner') },
+        /*
+          `/favorites` and `/alerts` are the two pages that report this browser's own state. Both
+          are `noindex` and in no sitemap, so nothing else links to them from every page — and
+          until this list did, `/favorites` was reachable only from the header panel, and only
+          while the band had something left to hide. A link a visitor can bookmark belongs where
+          the rest of the site's fixed destinations are.
+        */
+        { key: 'favorites', href: '/favorites', label: t('favorites') },
+        { key: 'alerts', href: '/alerts', label: t('alerts') },
+      ],
+    },
+    {
+      key: 'legal',
+      heading: t('sections.legal'),
+      items: [
+        { key: 'impressum', href: '/impressum', label: t('impressum') },
+        { key: 'datenschutz', href: '/datenschutz', label: t('datenschutz') },
+      ],
+    },
+  ];
 
   return (
     <footer className="bg-card border-t" role="contentinfo">
@@ -361,136 +428,57 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
           <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
         </div>
 
-        <div className="text-muted-foreground flex flex-col items-center justify-between gap-6 text-sm md:flex-row">
+        <div className="text-muted-foreground flex flex-col items-center gap-8 text-sm md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col items-center text-center md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
-          {/* Every link in this row carries `max-sm:min-h-11`. They were bare `text-sm` with no
-              padding at all — a 14 px font on a 20 px line box, `gap-2` apart in both axes — and
-              on a German phone the row wraps to about five lines, so adjacent targets sat 8 px
-              from each other vertically. Two of the nine are Impressum and Datenschutz. The rows
-              grow on a phone and nothing moves horizontally; above `sm` the footer keeps its
-              density, the same split as the button scale's phone tier. */}
-          <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end">
-            {showBlog && (
-              <>
-                <Link
-                  href="/blog"
-                  prefetch={false}
-                  className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-                  aria-label={t('blog')}
-                >
-                  {t('blog')}
-                </Link>
-                <span className="text-muted-foreground/60 flex items-center">•</span>
-                {/*
-                  The feed's only visible link on the site. The `<head>` link
-                  autodiscovery needs has been there all along, which no person
-                  can see and no reader shows you until you have already found
-                  the page — so a visitor who wanted the feed had nothing to
-                  click. A plain <a>, not the i18n `Link`: the target is a route
-                  handler, and a client-side navigation to one fetches an RSC
-                  payload that does not exist. Inside `showBlog` because the
-                  feed 404s under exactly the same condition.
-                */}
-                <a
-                  href={`/${locale}/blog/feed.xml`}
-                  className="hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors max-sm:min-h-11"
-                >
-                  <Rss className="size-3.5" aria-hidden="true" />
-                  {t('feed')}
-                </a>
-                <span className="text-muted-foreground/60 flex items-center">•</span>
-              </>
-            )}
-            <Link
-              href="/fancast"
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('fancast')}
+          <div className="flex w-full flex-col gap-6 md:w-auto md:items-end">
+            {/* Three named columns, and the names are what keep a `•` off the end of a line. This
+                was a flat `flex flex-wrap gap-2` row: eleven links with a `<span>•</span>` between
+                each pair, breaking wherever the width ran out, so the separator behind the last
+                link of a line stayed on that line with nothing after it. A column needs no
+                separator, and where the groups break is the grid's decision rather than the
+                browser's.
+
+                The rule over each column is `MenuSectionHeading`, the one the header's menu bands
+                already draw over theirs. Without `href`: a category here names two to six links
+                and is not a hub page anybody could open.
+
+                Every link keeps `max-sm:min-h-11`. They were bare `text-sm` with no padding at
+                all — a 14 px font on a 20 px line box — and two of the eleven are Impressum and
+                Datenschutz. Above `sm` the footer keeps its density, the same split as the button
+                scale's phone tier. */}
+            <nav
+              className="grid w-full grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3"
+              aria-label="Site sections"
             >
-              {t('fancast')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href={bestTimePath}
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('bestTime')}
-            >
-              {t('bestTime')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href={howtoPath}
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('howto')}
-            >
-              {t('howto')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href={plannerPath}
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('planner')}
-            >
-              {t('planner')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            {/*
-              The two pages that report this browser's own state. Both are `noindex` and in no
-              sitemap, so nothing else links to them from every page — and until this row did,
-              `/favorites` was reachable only from the header panel, and only while the band had
-              something left to hide. A link a visitor can bookmark belongs where the rest of the
-              site's fixed destinations are.
-            */}
-            <Link
-              href="/favorites"
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('favorites')}
-            >
-              {t('favorites')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href="/alerts"
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('alerts')}
-            >
-              {t('alerts')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href={glossaryPath}
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-            >
-              {t('glossaryLink')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href="/impressum"
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('impressum')}
-            >
-              {t('impressum')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href="/datenschutz"
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('datenschutz')}
-            >
-              {t('datenschutz')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
+              {linkGroups.map((group) => (
+                <div key={group.key}>
+                  <MenuSectionHeading label={group.heading} />
+                  <div className="flex flex-col">
+                    {group.items.map((item) =>
+                      item.plain ? (
+                        <a key={item.key} href={item.href} className={footerLinkClass}>
+                          {item.icon}
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.key}
+                          href={item.href as '/'}
+                          prefetch={false}
+                          className={footerLinkClass}
+                        >
+                          {item.icon}
+                          {item.label}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                </div>
+              ))}
+            </nav>
             <p>
               <a
                 href="https://arns.dev"
