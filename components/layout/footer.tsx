@@ -428,16 +428,17 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
           <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
         </div>
 
-        {/* The same four columns the block above the separator stands in: the copyright holds the
-            first, the three link columns share the rest. As a `flex … justify-between` row the
-            three sat against the right edge with the copyright's own column nearly 1000 px wide
-            and empty under two lines of text. */}
-        <div className="text-muted-foreground grid gap-8 text-sm md:grid-cols-4">
-          <div className="flex flex-col items-center text-center md:items-start md:text-left">
+        {/* The same six columns and the same 2/4 split as the block above the separator, so the
+            link columns start where „Beliebte Parks" starts and the copyright sits under the
+            brand. As a `flex … justify-between` row the three link columns sat against the right
+            edge with the copyright's own column nearly 1000 px wide and empty under two lines of
+            text. */}
+        <div className="text-muted-foreground grid gap-8 text-sm md:grid-cols-6">
+          <div className="flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
-          <div className="flex w-full flex-col gap-6 md:col-span-3">
+          <div className="flex w-full flex-col gap-6 md:col-span-4">
             {/* Three named columns, and the names are what keep a `•` off the end of a line. This
                 was a flat `flex flex-wrap gap-2` row: eleven links with a `<span>•</span>` between
                 each pair, breaking wherever the width ran out, so the separator behind the last
