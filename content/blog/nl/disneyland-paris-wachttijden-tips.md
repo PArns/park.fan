@@ -347,8 +347,7 @@ er daadwerkelijk staat.
 ### Rijdt Crush's Coaster op dit moment?
 
 Nee. De baan is sinds 7 september 2026 gesloten voor een grote renovatie
-van ongeveer tien maanden, met een geplande terugkeer in de zomer van
-2027. De actuele status staat op de
+van ongeveer tien maanden, met een geplande terugkeer in de zomer van 2027. De actuele status staat op de
 [attractiepagina](ref:disney-adventure-world/crushs-coaster).
 
 ### Wat kost Premier Access in Disneyland Paris?
