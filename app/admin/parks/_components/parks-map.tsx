@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import type { AdminParkListItem } from '../../_lib/types';
+import { cartoTileUrl } from '@/lib/utils/carto-tile-url';
 import 'leaflet/dist/leaflet.css';
 
 /**
@@ -78,7 +79,7 @@ export default function ParksMap({ parks }: { parks: AdminParkListItem[] }) {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        url={cartoTileUrl('dark_all')}
       />
       {located.map((park) => (
         <Marker

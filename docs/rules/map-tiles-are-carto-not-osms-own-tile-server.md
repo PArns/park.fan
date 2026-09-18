@@ -21,5 +21,9 @@ exists, not invent a third one: both `TileLayer`s now point at
 dropping CARTO's half is the same policy mistake with a different host.
 
 CARTO's free tier has its own fair-use ceiling; it is not a permanent license for unlimited
-production traffic. If park.fan's map traffic ever grows enough to hit it, the next step is a paid
-tile provider with an API key — never a return to `tile.openstreetmap.org`.
+production traffic. That ceiling is why `NEXT_PUBLIC_CARTO_MAP_KEY` exists — with it set,
+`cartoTileUrl()` (`lib/utils/carto-tile-url.ts`) switches both maps to CARTO's keyed single-host
+endpoint (`basemaps.cartocdn.com/<style>/{z}/{x}/{y}.png?key=…`, no `{s}` sharding); unset, it falls
+back to the anonymous subdomain-sharded endpoint from the initial fix, which is what local dev runs
+on. If park.fan's map traffic ever outgrows the keyed tier too, the next step is a different paid
+tile provider — never a return to `tile.openstreetmap.org`.
