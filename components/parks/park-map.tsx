@@ -10,6 +10,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useParkMapGeolocation } from '@/lib/hooks/use-park-map-geolocation';
 import { parkIcon, userIcon } from '@/lib/utils/leaflet-icons';
+import { cartoTileUrl } from '@/lib/utils/carto-tile-url';
 import {
   AttractionMarkers,
   ShowMarkers,
@@ -201,8 +202,8 @@ export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
         className="h-full w-full"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          url={cartoTileUrl('rastertiles/voyager')}
           maxNativeZoom={19}
           maxZoom={23}
         />

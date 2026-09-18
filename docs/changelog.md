@@ -4,6 +4,22 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Die Parkkarte hing an OSMs eigenem Tile-Server
+
+`tile.openstreetmap.org` ist für OSM selbst und für Renderer-Tests gedacht, nicht zum Einbetten in
+eine produktive Drittanbieter-Seite — die [Tile Usage Policy](https://operations.osmfoundation.org/policies/tiles/)
+sagt das ausdrücklich, und am 18.09. hat OSMs Edge das durchgesetzt: jede Kachel auf jeder Parkseite
+und in jedem Blog-`map-widget` kam als „403 Access blocked" zurück, für alle Besucher. Die
+Kartenkomponente (`components/parks/park-map.tsx`) zog ihre Kacheln direkt von dort; das
+Admin-Katalog-Karte hatte das Problem nie, weil sie schon CARTOs kostenlose Basemap-CDN nutzt.
+Beide `TileLayer` zeigen jetzt auf `basemaps.cartocdn.com`, mit Attribution für OpenStreetMap
+**und** CARTO. Damit auch CARTOs eigene Fair-Use-Grenze nicht zum nächsten Blocker wird, liest
+`cartoTileUrl()` (`lib/utils/carto-tile-url.ts`) jetzt `NEXT_PUBLIC_CARTO_MAP_KEY`: gesetzt, laufen
+beide Karten über CARTOs authentifizierten Single-Host-Endpunkt mit höherem Limit; ungesetzt bleibt
+der anonyme, subdomain-gesharded Endpunkt aus dem ersten Fix — genau das, was ein lokaler Checkout
+ohne Key sieht. Details in
+[map-tiles-are-carto-not-osms-own-tile-server.md](rules/map-tiles-are-carto-not-osms-own-tile-server.md).
+
 ## Unreleased – Das „Mehr"-Panel sieht aus wie ein Menü
 
 Beste Reisezeit, Wörterbuch und So funktioniert's standen im Panel als Überschrift plus Absatz:
