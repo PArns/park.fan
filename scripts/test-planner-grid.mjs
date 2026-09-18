@@ -366,7 +366,11 @@ test(
 );
 // `latestStart` is one of `SNAP_MIN_FINE`'s clamp call sites and the one a drag
 // runs into, so it is the place the two constants would first get confused.
-test('the drag ceiling is still a quarter hour under the slack', latestStart(g), g.closeMin + 60 - 15);
+test(
+  'the drag ceiling is still a quarter hour under the slack',
+  latestStart(g),
+  g.closeMin + 60 - 15
+);
 // With no floor passed, the park's opening is the contract — the ride floor is
 // the CALLER's to supply, and every call site in the app passes it.
 test('an empty day places the first ride at opening', nextFreeStart([], g), g.openMin);

@@ -107,13 +107,29 @@ interface PlannerBlockProps {
   /**
    * A preview of where a drag would land, not a block in the plan.
    *
-   * Translucent and inert. It is a whole block rather than an outline because
-   * the thing a visitor is deciding is what they GET at the new time: the wait
-   * is recomputed for that minute, so the ghost's height and its colour are the
-   * answer, and an outline of the old height would be the wrong answer drawn
-   * confidently.
+   * Inert, dashed, and the brightest thing on the grid while it exists. It is a
+   * whole block rather than an outline because the thing a visitor is deciding
+   * is what they GET at the new time: the wait is recomputed for that minute,
+   * so the ghost's height and its colour are the answer, and an outline of the
+   * old height would be the wrong answer drawn confidently.
+   *
+   * It was translucent — `opacity-50` — from the days it was painted UNDER the
+   * block being dragged and had to peek out from behind it. Now it is on top
+   * and everything else steps back; see {@link PlannerBlockProps.dimmed}.
    */
   ghost?: boolean;
+  /**
+   * A drag is running and this block is not the ghost.
+   *
+   * Every real block recedes for the length of the gesture, the one under the
+   * pointer included. Two boxes of the same ride at the same opacity, three
+   * pixels apart, are one smeared box; and the question being asked — how long
+   * does this get and where does it land — is asked about the ghost, so the
+   * ghost is the only thing that may answer at full strength. The dimming
+   * animates for free: a block that is not `dragging` already transitions its
+   * opacity over 300 ms.
+   */
+  dimmed?: boolean;
   onSelect: () => void;
   onDragStart: (event: React.PointerEvent<HTMLElement>) => void;
   /** Free blocks only: dragging the bottom edge sets the duration. */
@@ -158,6 +174,7 @@ export function PlannerBlock({
   dragging = false,
   conflict = false,
   ghost = false,
+  dimmed = false,
   onSelect,
   onDragStart,
   onResizeStart,
@@ -311,13 +328,22 @@ export function PlannerBlock({
       }}
       className={cn(
         'group absolute',
-        dragging && 'z-30 opacity-90 shadow-lg',
-        // A preview, and it may not be mistaken for the plan: half opacity, a
-        // dashed primary ring so it reads as "would land here", and inert —
+        dragging && 'shadow-lg',
+        // 35 %: far enough back that the ghost reads as the only live block,
+        // near enough that the day is still legible as context — a visitor
+        // dragging into a gap has to see what the gap is between.
+        dimmed && 'opacity-35',
+        // A preview, and it may not be mistaken for the plan: a dashed primary
+        // ring so it reads as "would land here", and inert —
         // `pointer-events-none` covers the grip, the resize edge and the range
         // input in one place, so the ghost cannot be grabbed, focused or
         // tabbed to while the real block is under the pointer.
-        ghost && 'outline-primary/70 pointer-events-none z-20 opacity-50 outline-2 outline-dashed',
+        //
+        // No z-index HERE: every one of these blocks carries an inline
+        // `zIndex`, which wins against a utility class whatever the class says.
+        // `z-20` sat in this list and the ghost computed to 10 — see the style
+        // block below, which is now the only place a block's layer is decided.
+        ghost && 'outline-primary/70 pointer-events-none outline-2 outline-dashed',
         // The tone recomputes on every move — `estimate.wait` is a function of
         // `startMinute` — so the colour DOES follow a block across the day. It
         // just arrived in a single frame, at the instant the eye was on the
@@ -338,7 +364,24 @@ export function PlannerBlock({
         // style on the edge itself: the edge is two elements down and the value
         // belongs to the box, not to the control. Same shape as `--pl-drag-dy`.
         ['--pl-edge-room' as string]: `${Math.max(0, boxPx - BLOCK_BORDER_PX)}px`,
-        zIndex: dragging ? 30 : 10 + lane.column,
+        /**
+         * The ghost is topmost, and that is the whole reason it is drawn.
+         *
+         * It used to compute to 10 — its `z-20` class lost to this very
+         * property — so it was painted UNDER the block being dragged, which is
+         * at 30 and 90 % opaque. Measured mid-drag at 1400 px: the two boxes
+         * sat 0 px apart, `elementFromPoint` at the ghost's centre answered the
+         * dragged block, and the only legible time on screen was the block's
+         * OLD one. Every word the ghost prints — the time this lands at, which
+         * is the point of the gesture — was behind the thing it is a preview
+         * of.
+         *
+         * The gap between them shrank with PAR-307: at a fifteen-minute step
+         * the pointer could be up to 9 px off the step it commits to, at five
+         * it is at most 3, so the sliver the ghost used to show past the block
+         * is gone as well.
+         */
+        zIndex: ghost ? 40 : dragging ? 30 : 10 + lane.column,
         transform: dragging ? 'translateY(var(--pl-drag-dy, 0px))' : undefined,
       }}
     >
@@ -575,7 +618,15 @@ export function PlannerBlock({
           className="pointer-events-none relative min-w-0 flex-1 overflow-hidden px-1.5 py-0.5 pl-2.5"
           style={photo ? { filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.65))' } : undefined}
         >
-          {boxPx < 30 ? (
+          {/* A ghost stays on ONE row all the way up to {@link RANGE_MIN_PX},
+              where a block switches at 30. Thirty is the box that holds a name
+              row; 34 is the box that holds a name row AND a line under it, and
+              between the two a ghost's range was drawn and then cut through the
+              middle of its glyphs by the column's `overflow-hidden` — measured
+              on the phone axis, where `minBlockPxFor` puts the smallest box at
+              exactly 30. Its range fits beside the name at that height, and on
+              a ghost the wait it displaces is the height and the colour. */}
+          {boxPx < (ghost ? RANGE_MIN_PX : 30) ? (
             /* One row, and the figure sits IN it. It used to escape past the
                block's right edge (`left: 100%`) so a 20 px box would not have to
                hold two things — which works only while something is beside the
@@ -673,14 +724,7 @@ export function PlannerBlock({
                 )}
               </div>
 
-              {/* A ghost prints its range at every height it can reach in this
-                  branch — 30 px up, where the two-line stack already fits well
-                  enough for the name row to survive the column's
-                  `overflow-hidden`. Below 30 the one-row branch above carries
-                  the same range instead. Nothing else in the planner gets this
-                  exemption, because nothing else is a question the pointer is
-                  in the middle of asking. */}
-              {(ghost || boxPx >= RANGE_MIN_PX) && (
+              {boxPx >= RANGE_MIN_PX && (
                 <p className="text-muted-foreground truncate text-[10px] tabular-nums">
                   {range}
                   {typeof metresFromPrevious === 'number' && (

@@ -459,10 +459,14 @@ export function PlannerDayGrid({
    * Both are needed at once and they are not the same number, which is what
    * makes a drag read as a drag: the BLOCK follows the pointer freely, because
    * a block that jumps from step to step feels stuck rather than snapped, and
-   * the GHOST sits on the step it will actually commit to. Drawing both
-   * from the snapped minute put them at exactly the same pixel, so the ghost —
-   * the whole point of which is to say where this lands — was hidden under the
-   * block it was previewing.
+   * the GHOST sits on the step it will actually commit to.
+   *
+   * Which no longer keeps them apart on screen, and the fix for that is not
+   * here. At a five-minute step the two are at most 3 px apart and often at 0,
+   * so the ghost is in front of the dragged block and the dragged block is
+   * dimmed — see `PlannerBlockProps.dimmed`. This split survives because it is
+   * about the FEEL of the gesture: drawing the block at the snapped minute makes
+   * it stutter under the pointer, whatever the layers do.
    */
   const minuteUnderPointer = useCallback(
     (snap: boolean) => {
@@ -1114,8 +1118,14 @@ export function PlannerDayGrid({
                 down.
 
                 It re-renders on the snapped minute, not on the pointer, so a
-                gesture costs a handful of renders. `ghost` makes it translucent
-                and inert; nothing about it can be clicked or dragged. */}
+                gesture costs a handful of renders. `ghost` makes it inert —
+                nothing about it can be clicked or dragged — and puts it in
+                front of everything, with every real block stepping back to 35 %
+                for the length of the gesture (`dimmed` below). It used to be
+                the other way round: the ghost was translucent and sat UNDER the
+                block being dragged, which with a five-minute step lands within
+                three pixels of it, so the preview was a dashed outline around
+                somebody else's old time. */}
             {ghostRow && ghostMinute !== null && ghostEstimate && (
               <PlannerBlock
                 key="ghost"
@@ -1187,6 +1197,7 @@ export function PlannerDayGrid({
                   downYesterday={row.ride?.downYesterday === true}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
+                  dimmed={draggingId !== null}
                   conflict={layout.broken.has(row.entry.id)}
                   onSelect={() => onSelect(row.entry.id)}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
