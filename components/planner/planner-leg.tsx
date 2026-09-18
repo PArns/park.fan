@@ -23,6 +23,15 @@ interface PlannerLegProps {
    */
   fromBottomPx: number;
   lane: LanePlacement;
+  /**
+   * A drag is under way, so this leg steps back with the blocks.
+   *
+   * The chip is a bordered pill on the grid's flat ground and the rail is a
+   * solid 2 px line — leave them at full strength while every block drops to
+   * 35 % and they become the loudest thing that is not the ghost, which is the
+   * opposite of what the dimming is for. Same 35 % and the same transition.
+   */
+  dimmed?: boolean;
   /** Offered on a broken leg. Moves ONE entry; never fires on its own. */
   onRepair?: () => void;
   onRepairCascade?: () => void;
@@ -58,6 +67,7 @@ export function PlannerLeg({
   toMinute,
   fromBottomPx,
   lane,
+  dimmed = false,
   onRepair,
   onRepairCascade,
 }: PlannerLegProps) {
@@ -99,7 +109,10 @@ export function PlannerLeg({
     <li
       data-planner-leg=""
       data-verdict={leg.verdict}
-      className="pointer-events-none absolute"
+      className={cn(
+        'pointer-events-none absolute transition-opacity duration-300',
+        dimmed && 'opacity-35'
+      )}
       style={{ top, height, left: laneLeft, width: laneWidth, zIndex: 5 }}
     >
       {/* The rail. Dashed where there is no verdict to give. */}

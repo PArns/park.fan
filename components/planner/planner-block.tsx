@@ -647,6 +647,19 @@ export function PlannerBlock({
               <span className="min-w-0 flex-1 truncate">
                 {custom ? custom.label : entry.attractionName}
               </span>
+              {/* The warning rides on this row too, and that is not a flourish:
+                  the sentence and the triangle both used to start at the
+                  two-row branch, so a block under 30 px carried no sign at all
+                  that it lands after closing. Raising the ghost's threshold to
+                  {@link RANGE_MIN_PX} would have taken the triangle off every
+                  ghost between 30 and 34 px as well — on the phone axis, where
+                  the smallest box IS 30, that is every ghost with a queue under
+                  about eighteen minutes, and a drag into the closing slack is
+                  the gesture that needs the warning most. `shrink-0`, so the
+                  name gives way to it rather than the other way round. */}
+              {warnLabel && (
+                <AlertTriangle className={cn('size-3 shrink-0', warnTone)} aria-label={warnLabel} />
+              )}
               {(ghost || hasFigure) && (
                 <span
                   data-figure=""

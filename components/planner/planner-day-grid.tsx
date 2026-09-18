@@ -376,6 +376,23 @@ export function PlannerDayGrid({
     [day, ghostRow, ghostMinute]
   );
 
+  /**
+   * A drag that has actually gone somewhere — which is what dims the day.
+   *
+   * NOT `draggingId !== null`. `setDraggingId` fires in `pointerdown`, with no
+   * movement threshold, because the same press is how a block gets selected.
+   * Dimming on that alone made every click on a block flash the whole column:
+   * the pressed block dropped to 35 % with no transition (it is `dragging`, and
+   * that branch is deliberately transition-free) while its neighbours faded
+   * over 300 ms, and the release faded them all back.
+   *
+   * So the test is whether the ghost stands anywhere other than where the block
+   * already is. That is also exactly when there is something to compare, which
+   * is the only reason to take contrast away from the rest of the day.
+   */
+  const dragMoved =
+    ghostRow !== null && ghostMinute !== null && ghostMinute !== ghostRow.entry.startMinute;
+
   const weatherSegments = useMemo(
     () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),
     [grid, hourlyWeather, loading]
@@ -1085,6 +1102,7 @@ export function PlannerDayGrid({
                   yFor(grid, entry.fromEntry.startMinute) + drawnBoxPx(grid, entry.fromWait)
                 }
                 lane={entry.lane}
+                dimmed={dragMoved}
                 onRepair={() =>
                   onMove(
                     entry.toEntry.id,
@@ -1197,7 +1215,7 @@ export function PlannerDayGrid({
                   downYesterday={row.ride?.downYesterday === true}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
-                  dimmed={draggingId !== null}
+                  dimmed={dragMoved}
                   conflict={layout.broken.has(row.entry.id)}
                   onSelect={() => onSelect(row.entry.id)}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
