@@ -428,12 +428,16 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
           <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
         </div>
 
-        <div className="text-muted-foreground flex flex-col items-center gap-8 text-sm md:flex-row md:items-start md:justify-between">
-          <div className="flex flex-col items-center text-center md:text-left">
+        {/* The same four columns the block above the separator stands in: the copyright holds the
+            first, the three link columns share the rest. As a `flex … justify-between` row the
+            three sat against the right edge with the copyright's own column nearly 1000 px wide
+            and empty under two lines of text. */}
+        <div className="text-muted-foreground grid gap-8 text-sm md:grid-cols-4">
+          <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
-          <div className="flex w-full flex-col gap-6 md:w-auto md:items-end">
+          <div className="flex w-full flex-col gap-6 md:col-span-3">
             {/* Three named columns, and the names are what keep a `•` off the end of a line. This
                 was a flat `flex flex-wrap gap-2` row: eleven links with a `<span>•</span>` between
                 each pair, breaking wherever the width ran out, so the separator behind the last
@@ -479,12 +483,15 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 </div>
               ))}
             </nav>
-            <p>
+            {/* `gap-1` because the word and the name are two flex items, and the space between
+                them in the source was collapsing: the line read "Powered byArns.dev". The gap
+                disappears with the span on a phone, where only the name shows. */}
+            <p className="md:text-right">
               <a
                 href="https://arns.dev"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center transition-colors max-sm:min-h-11"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
                 aria-label="Visit Arns.dev website (opens in new tab)"
               >
                 <span className="hidden md:inline">{t('poweredBy')}</span> Arns.dev
