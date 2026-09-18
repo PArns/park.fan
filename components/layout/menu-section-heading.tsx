@@ -14,8 +14,9 @@ import { Link } from '@/i18n/navigation';
  *
  * No `'use client'`: there is no hook, no state and no handler in here, and the footer renders it
  * from the server. With the directive each of its three headings down there became a client
- * reference in the RSC payload of every page. The three menu panels are client components
- * themselves, so the component still compiles into their bundle without it.
+ * reference in the RSC payload of every page. The two panels that still import it —
+ * `ParksMenuPanel` and `BlogMenuPanel`, the "more" panel drew cards instead from PAR-269 — are
+ * client components themselves, so it still compiles into their bundle without it.
  */
 export function MenuSectionHeading({
   label,
