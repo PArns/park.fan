@@ -139,6 +139,20 @@ export function LoginScreen() {
 
       if (result.status === 'totp-required') {
         setNeedsTotp(true);
+        // Same rule as the "Andere Anmeldung" button below: the step change
+        // swaps the form's key, so the widget this flag describes goes out with
+        // it, and a challenge that errored while this request was in flight
+        // would otherwise put "could not be loaded" over the freshly mounted
+        // one. Guarded on the step really changing — answering `totp-required`
+        // to a request sent FROM the code step is a React bailout, and clearing
+        // the flag there would take the notice and its retry link away from a
+        // widget that is still broken.
+        //
+        // The ref, not `wasTotpStep`: that is the step the request was sent
+        // from, and the back button stays live while one is in flight. Only
+        // this flag is settled here; two other places in `attempt()` mishandle
+        // the same race and predate this change — PAR-305.
+        if (!needsTotpRef.current) setTurnstileBroken(false);
         return;
       }
       if (result.status === 'locked' || result.status === 'rate-limited') {
@@ -182,10 +196,15 @@ export function LoginScreen() {
   }
 
   // The auto-submit below must call the *current* attempt, not the one captured
-  // on the render that armed it.
+  // on the render that armed it. `needsTotpRef` rides along for the same reason
+  // one line further out: an answer arrives after the request was sent, and the
+  // step may have changed in between — the back button is live while a request
+  // is in flight.
   const attemptRef = useRef(attempt);
+  const needsTotpRef = useRef(needsTotp);
   useEffect(() => {
     attemptRef.current = attempt;
+    needsTotpRef.current = needsTotp;
   });
 
   // A filled code submits itself.
@@ -276,7 +295,31 @@ export function LoginScreen() {
             </div>
           </div>
 
+          {/* The key is the whole point of this line, and it is not a list key.
+              Both steps are branches of one ternary inside this form, so React
+              swaps the children and keeps the `<form>` element itself. A
+              password manager fingerprints a form once, and on the code step
+              1Password went on offering a full sign-in against the hidden
+              `username` and the `otp` field next to it rather than filling the
+              code. That much was reported and seen. The fingerprint surviving a
+              swap of the children is the likeliest reading of it, not a
+              measurement — an extension's behaviour cannot be read out of this
+              file. Changing the key replaces the DOM node, which is the cheap
+              way to make a manager look at the form again.
+
+              Nothing the login needs is lost by the remount: every value it
+              holds is a `useState` or a `useRef` up here, above the form. What
+              lives below it is per-mount bookkeeping — the Turnstile
+              widget's own id, `TurnstileGate`'s retry counter — and the widget
+              itself, which mints a fresh token on the way back in. That is what
+              the step change wanted anyway, the password step having spent the
+              one it had. `reset()` in `attempt()`'s `finally`, above, still runs
+              first and still hits the old widget — React has not re-rendered yet
+              — so the challenge it starts is thrown away with it. The reset
+              stays where it is all the same: it is what covers a second attempt
+              on the SAME step, where no key changes and nothing remounts. */}
           <form
+            key={needsTotp ? 'totp' : 'credentials'}
             onSubmit={handleSubmit}
             className="border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7"
           >
@@ -416,6 +459,14 @@ export function LoginScreen() {
                   setNeedsTotp(false);
                   setTotpCode('');
                   setError(null);
+                  // Same rule as the step forward in `attempt()`: the key change
+                  // replaces the form and with it the widget, so a challenge
+                  // that failed here has nothing left to describe. Left
+                  // standing, "could not be loaded" would sit over a freshly
+                  // mounted one until its own error fired again — and one that
+                  // really cannot load says so again on the next mount, because
+                  // `loadTurnstileScript` drops its failed promise and retries.
+                  setTurnstileBroken(false);
                 }}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
               >
