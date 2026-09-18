@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
+  DRAG_SNAP_MIN_FINE,
   MIN_BLOCK_MIN,
   SNAP_MIN_COARSE,
   SNAP_MIN_FINE,
@@ -86,6 +87,19 @@ const LIVE_WINDOW_MIN = 45;
 
 /** Five minutes, like every displayed wait in this app. */
 const RESIZE_STEP_MIN = 5;
+
+/**
+ * The step a drag commits to.
+ *
+ * A property of the POINTER, not of the grid, so it is asked at the moment of
+ * the gesture: a laptop with a touchscreen answers differently depending on
+ * which of its two inputs is in the visitor's hand, and a value captured at
+ * render would answer for the other one. Both call sites — a block being moved
+ * and a ride being dropped in from the list — go through here so they cannot
+ * drift apart; they were two copies of this ternary.
+ */
+const dragStep = () =>
+  matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : DRAG_SNAP_MIN_FINE;
 
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
@@ -362,6 +376,23 @@ export function PlannerDayGrid({
     [day, ghostRow, ghostMinute]
   );
 
+  /**
+   * A drag that has actually gone somewhere — which is what dims the day.
+   *
+   * NOT `draggingId !== null`. `setDraggingId` fires in `pointerdown`, with no
+   * movement threshold, because the same press is how a block gets selected.
+   * Dimming on that alone made every click on a block flash the whole column:
+   * the pressed block dropped to 35 % with no transition (it is `dragging`, and
+   * that branch is deliberately transition-free) while its neighbours faded
+   * over 300 ms, and the release faded them all back.
+   *
+   * So the test is whether the ghost stands anywhere other than where the block
+   * already is. That is also exactly when there is something to compare, which
+   * is the only reason to take contrast away from the rest of the day.
+   */
+  const dragMoved =
+    ghostRow !== null && ghostMinute !== null && ghostMinute !== ghostRow.entry.startMinute;
+
   const weatherSegments = useMemo(
     () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),
     [grid, hourlyWeather, loading]
@@ -413,8 +444,11 @@ export function PlannerDayGrid({
       const canvas = canvasRef.current;
       if (!canvas) return grid.openMin;
       const raw = minuteAt(grid, clientY - canvas.getBoundingClientRect().top);
-      const step = matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : SNAP_MIN_FINE;
-      return clampStart(grid, snapTo(raw, step), Math.max(grid.openMin, floorMin ?? grid.openMin));
+      return clampStart(
+        grid,
+        snapTo(raw, dragStep()),
+        Math.max(grid.openMin, floorMin ?? grid.openMin)
+      );
     },
     [grid]
   );
@@ -441,11 +475,15 @@ export function PlannerDayGrid({
    *
    * Both are needed at once and they are not the same number, which is what
    * makes a drag read as a drag: the BLOCK follows the pointer freely, because
-   * a block that jumps in fifteen-minute steps feels stuck rather than snapped,
-   * and the GHOST sits on the step it will actually commit to. Drawing both
-   * from the snapped minute put them at exactly the same pixel, so the ghost —
-   * the whole point of which is to say where this lands — was hidden under the
-   * block it was previewing.
+   * a block that jumps from step to step feels stuck rather than snapped, and
+   * the GHOST sits on the step it will actually commit to.
+   *
+   * Which no longer keeps them apart on screen, and the fix for that is not
+   * here. At a five-minute step the two are at most 3 px apart and often at 0,
+   * so the ghost is in front of the dragged block and the dragged block is
+   * dimmed — see `PlannerBlockProps.dimmed`. This split survives because it is
+   * about the FEEL of the gesture: drawing the block at the snapped minute makes
+   * it stutter under the pointer, whatever the layers do.
    */
   const minuteUnderPointer = useCallback(
     (snap: boolean) => {
@@ -457,8 +495,7 @@ export function PlannerDayGrid({
       const top = canvas.getBoundingClientRect().top;
       const raw = minuteAt(grid, state.lastClientY - top - state.grabOffsetPx);
       if (!snap) return clampStart(grid, Math.round(raw), state.floorMin);
-      const step = matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : SNAP_MIN_FINE;
-      return clampStart(grid, snapTo(raw, step), state.floorMin);
+      return clampStart(grid, snapTo(raw, dragStep()), state.floorMin);
     },
     [grid]
   );
@@ -747,7 +784,19 @@ export function PlannerDayGrid({
     };
   }, []);
 
-  const snapStep =
+  /**
+   * The `step` of each block's range input, which is the ARROW-KEY step.
+   *
+   * It carried the drag's step as well until PAR-307, under the name `snapStep`,
+   * and that is why it still reads the pointer: half an hour is the right arrow
+   * key on a phone for the same reason it is the right drag there. What it must
+   * NOT become is {@link DRAG_SNAP_MIN_FINE} — five minutes is a good step for a
+   * hand moving a block over a distance it can see, and a bad one for a key that
+   * has to be pressed once per step to cross a day. So the fine branch stays at
+   * the quarter hour the keyboard has always had, and this is now the only place
+   * in the planner where the pointer decides a keyboard value.
+   */
+  const keyboardStep =
     typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
       ? SNAP_MIN_COARSE
       : SNAP_MIN_FINE;
@@ -1053,6 +1102,7 @@ export function PlannerDayGrid({
                   yFor(grid, entry.fromEntry.startMinute) + drawnBoxPx(grid, entry.fromWait)
                 }
                 lane={entry.lane}
+                dimmed={dragMoved}
                 onRepair={() =>
                   onMove(
                     entry.toEntry.id,
@@ -1086,8 +1136,14 @@ export function PlannerDayGrid({
                 down.
 
                 It re-renders on the snapped minute, not on the pointer, so a
-                gesture costs a handful of renders. `ghost` makes it translucent
-                and inert; nothing about it can be clicked or dragged. */}
+                gesture costs a handful of renders. `ghost` makes it inert —
+                nothing about it can be clicked or dragged — and puts it in
+                front of everything, with every real block stepping back to 35 %
+                for the length of the gesture (`dimmed` below). It used to be
+                the other way round: the ghost was translucent and sat UNDER the
+                block being dragged, which with a five-minute step lands within
+                three pixels of it, so the preview was a dashed outline around
+                somebody else's old time. */}
             {ghostRow && ghostMinute !== null && ghostEstimate && (
               <PlannerBlock
                 key="ghost"
@@ -1122,7 +1178,7 @@ export function PlannerDayGrid({
                 onMove={() => {}}
                 minMinute={grid.openMin}
                 maxMinute={latestStart(grid)}
-                snapStep={snapStep}
+                keyboardStep={keyboardStep}
               />
             )}
 
@@ -1159,6 +1215,7 @@ export function PlannerDayGrid({
                   downYesterday={row.ride?.downYesterday === true}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
+                  dimmed={dragMoved}
                   conflict={layout.broken.has(row.entry.id)}
                   onSelect={() => onSelect(row.entry.id)}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
@@ -1166,7 +1223,7 @@ export function PlannerDayGrid({
                   onMove={(minute) => onMove(row.entry.id, minute)}
                   minMinute={floor.hardMin}
                   maxMinute={latestStart(grid)}
-                  snapStep={snapStep}
+                  keyboardStep={keyboardStep}
                 />
               );
             })}
