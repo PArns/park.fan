@@ -15,11 +15,18 @@
  * had not.
  *
  * Checked here:
- *   - `slug=` on the park widgets (park, map, weather, best-days, stats) and `park=` on
- *     attraction-widget → the geo index
+ *   - `slug=` on the park widgets (park, map, weather, best-days, stats, hourly-profile),
+ *     `park=` on attraction-widget and ride-waits-widget, and `slugs=` on
+ *     park-comparison-widget → the geo index
  *   - `slug=` on glossary-widget → the term ids in content/glossary/en.ts
  *   - `(ref:…)`, `(park:…)`, `(attraction:…)` link targets, in both the bare-slug and the
  *     `/parks/<continent>/<country>/<city>/<park>` form → the same index
+ *
+ * Every park a fence names is accepted in BOTH forms, because a bare park slug is not unique:
+ * `disneyland-park` is Paris and Anaheim, and the resolver's bare lookup answers whichever the
+ * geo walk wrote last. The long form is how a post says which one it means, and validating it
+ * against the path index is what keeps a typo in the middle of a four-segment path from
+ * silently falling back to the wrong park.
  *
  * Exits non-zero on the first unresolvable reference, listing every file it appears in.
  */
@@ -39,14 +46,46 @@ const PARK_WIDGETS = new Set([
   'weather-widget',
   'best-days-widget',
   'stats-widget',
+  'hourly-profile-widget',
 ]);
 
 const WIDGET = /```([a-z][a-z0-9-]*-widget)([^\n`]*)\n([\s\S]*?)\n?```/gm;
 const REF = /\((?:ref|park|attraction):([^)?\s]+)/g;
 const attr = (key) => new RegExp(`\\b${key}\\s*[:=]\\s*([A-Za-z0-9\\-/_]+)`, 'g');
+/**
+ * `slugs=` and `rides=` hold separators (`,` `;` `|`) the single-value matcher stops at, AND
+ * spaces: a ride type is routinely `Multi-Launch, Stahl`. So the value runs to the next ` key=`
+ * or to the end of the line, which is exactly the rule `parseAttrs` in `blog-content.tsx` uses —
+ * stopping at the first space instead validated only the first entry of a `rides=` list and let
+ * every park after it through unchecked, which is the rename this script exists to catch.
+ */
+const listAttr = (key) =>
+  new RegExp(
+    `\\b${key}\\s*[:=]\\s*(?:"([^"]*)"|'([^']*)'|(.+?))(?=\\s+[a-zA-Z][a-zA-Z0-9_-]*\\s*=|\\s*$)`,
+    'gm'
+  );
+function collectList(key, text) {
+  return [...text.matchAll(listAttr(key))].map((m) => (m[1] ?? m[2] ?? m[3] ?? '').trim());
+}
 
 function collect(re, text) {
   return [...text.matchAll(re)].map((m) => m[1]);
+}
+
+/**
+ * Does this park reference resolve — in either the bare form (`efteling`) or the long one
+ * (`/parks/europe/france/paris/disneyland-park`)?
+ *
+ * The long form is checked against the PATH index, not the slug one: `/parks/europe/spain/paris/
+ * disneyland-park` carries a valid park slug in its last segment and points nowhere.
+ */
+function parkResolves(raw, slugs, paths) {
+  const clean = raw.replace(/^\/+|\/+$/g, '');
+  if (clean.startsWith('parks/')) {
+    const segments = clean.split('/');
+    return segments.length === 5 && paths.has(segments.slice(1, 5).join('/'));
+  }
+  return slugs.has(clean);
 }
 
 async function parkIndex() {
@@ -107,17 +146,53 @@ for (const file of blogFiles()) {
     if (PARK_WIDGETS.has(name)) {
       for (const slug of collect(attr('slug'), blob)) {
         counts.parkWidget++;
-        if (!slugs.has(slug)) report(`park slug "${slug}" (${name})`, file);
+        if (!parkResolves(slug, slugs, paths)) report(`park slug "${slug}" (${name})`, file);
       }
     } else if (name === 'glossary-widget') {
       for (const id of collect(attr('slug'), blob)) {
         counts.glossary++;
         if (!terms.has(id)) report(`glossary term "${id}"`, file);
       }
-    } else if (name === 'attraction-widget') {
-      for (const slug of collect(attr('park'), blob)) {
-        counts.parkWidget++;
-        if (!slugs.has(slug)) report(`park slug "${slug}" (attraction-widget)`, file);
+    } else if (name === 'attraction-widget' || name === 'ride-waits-widget') {
+      // `parkSlug=` is what attraction-widget documents, `park=` what ride-waits-widget takes,
+      // and `slug=` is an accepted alias of `park=`. All three are collected, because the
+      // renderer reads all three.
+      for (const key of ['park', 'parkSlug', ...(name === 'ride-waits-widget' ? ['slug'] : [])]) {
+        for (const slug of collect(attr(key), blob)) {
+          counts.parkWidget++;
+          if (!parkResolves(slug, slugs, paths)) report(`park slug "${slug}" (${name})`, file);
+        }
+      }
+      // `rides=parkRef/rideSlug|Label|Type;…` — only the park half is checkable here; a ride
+      // slug would need a park payload per entry. The shape IS checkable, and has to be: an
+      // entry with no ride half parses to null in the widget and its row vanishes from the
+      // table without a word.
+      for (const list of collectList('rides', blob)) {
+        for (const entry of list.split(';')) {
+          const ref = entry.split('|')[0].trim();
+          if (!ref) continue;
+          counts.parkWidget++;
+          const parts = ref.split('/').filter(Boolean);
+          const long = ref.startsWith('/parks/');
+          if (parts.length !== (long ? 6 : 2)) {
+            report(`ride reference "${ref}" (${name} rides=, expected parkRef/rideSlug)`, file);
+            continue;
+          }
+          const parkRef = long ? `/${parts.slice(0, 5).join('/')}` : parts[0];
+          if (!parkResolves(parkRef, slugs, paths)) {
+            report(`park slug "${parkRef}" (${name} rides=)`, file);
+          }
+        }
+      }
+    } else if (name === 'park-comparison-widget') {
+      for (const list of collectList('slugs', blob)) {
+        for (const slug of list.split(',')) {
+          if (!slug.trim()) continue;
+          counts.parkWidget++;
+          if (!parkResolves(slug.trim(), slugs, paths)) {
+            report(`park slug "${slug.trim()}" (park-comparison-widget)`, file);
+          }
+        }
       }
     }
   }

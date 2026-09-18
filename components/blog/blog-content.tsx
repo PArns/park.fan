@@ -53,6 +53,7 @@ import { BlogRideWaitsWidget } from './blog-ride-waits-widget';
 import { BlogHourlyProfileWidget } from './blog-hourly-profile-widget';
 import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogGallery } from './blog-gallery';
+import { parseWidgetParkRef, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
 import type { BlogImage } from '@/lib/blog/types';
 
@@ -389,39 +390,46 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   for (const seg of segments) {
     if (seg.type !== 'widget' || !seg.widget) continue;
     const { name, attrs } = seg.widget;
-    if (PARK_SLUG_WIDGETS.has(name) && attrs.slug && !parkMap.has(attrs.slug)) {
-      parkMap.set(attrs.slug, await resolvePark(attrs.slug));
+    // Every park a fence names goes through `parseWidgetParkRef`, which accepts the long
+    // `continent/country/city/park` form as well as the bare slug — `disneyland-park` is Paris
+    // AND Anaheim, and the bare lookup hands out whichever the geo walk wrote last.
+    const addPark = async (raw: string) => {
+      const ref = parseWidgetParkRef(raw);
+      if (!ref || parkMap.has(ref.key)) return;
+      parkMap.set(ref.key, await resolvePark(ref.slug, ref.geoPath));
+    };
+    if (PARK_SLUG_WIDGETS.has(name) && attrs.slug) {
+      await addPark(attrs.slug);
     }
     // The two widgets keyed by a LIST of parks, so they can't join PARK_SLUG_WIDGETS above.
     if (name === 'park-comparison-widget' && attrs.slugs) {
-      for (const raw of attrs.slugs.split(',')) {
-        const slug = raw.trim();
-        if (slug && !parkMap.has(slug)) parkMap.set(slug, await resolvePark(slug));
-      }
+      for (const raw of attrs.slugs.split(',')) await addPark(raw);
     }
     if (name === 'ride-waits-widget') {
-      // Either one park (`park=`) or a semicolon-separated list of `parkSlug/rideSlug` entries,
-      // each of which may carry `|Label|Type` after the ref — the park slug is everything before
-      // the first slash. Semicolons because a ride type routinely holds a comma.
-      const slugs = attrs.park
-        ? [attrs.park]
-        : (attrs.rides ?? '').split(';').map((entry) => entry.split('|')[0].split('/')[0]);
-      for (const raw of slugs) {
-        const slug = raw.trim();
-        if (slug && !parkMap.has(slug)) parkMap.set(slug, await resolvePark(slug));
+      // Either one park (`park=`) or a semicolon-separated list of ride references, each of which
+      // may carry `|Label|Type` after the ref. Semicolons because a ride type routinely holds a
+      // comma.
+      // `slug=` is accepted by the renderer as an alias of `park=`, so it has to be prefetched
+      // too — a fence written that way resolved to nothing at all.
+      const single = attrs.park ?? attrs.slug;
+      if (single) {
+        await addPark(single);
+      } else {
+        for (const entry of (attrs.rides ?? '').split(';')) {
+          const ride = parseWidgetRideRef(entry.split('|')[0]);
+          if (ride) await addPark(ride.parkKey);
+        }
       }
     }
     if (name === 'attraction-widget') {
-      const parkSlug = attrs.parkSlug ?? attrs.park;
+      const parkRef = parseWidgetParkRef(attrs.parkSlug ?? attrs.park ?? '');
       const aSlug = attrs.slug;
-      if (parkSlug && aSlug) {
-        const ref = `${parkSlug}/${aSlug}`;
-        if (!parkMap.has(parkSlug)) {
-          parkMap.set(parkSlug, await resolvePark(parkSlug));
-        }
+      if (parkRef && aSlug) {
+        const ref = `${parkRef.key}/${aSlug}`;
+        await addPark(parkRef.key);
         if (!attractionMap.has(ref)) {
-          const park = await resolvePark(parkSlug);
-          const attraction = await resolveAttraction(parkSlug, aSlug);
+          const park = parkMap.get(parkRef.key) ?? null;
+          const attraction = await resolveAttraction(parkRef.slug, aSlug, parkRef.geoPath);
           attractionMap.set(ref, { park, attraction });
         }
       }
@@ -432,16 +440,24 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   // hover-card preview matches the favorites cards visually — and the focal point
   // with them, or a referenced ride would be top-cropped in a post while the same
   // card is correctly framed on the park page.
+  //
+  // Both maps are keyed by the reference as the post wrote it, which may be a bare slug or the
+  // long `/parks/<continent>/<country>/<city>/<park>` form. The media database is keyed by the
+  // bare slug alone, so the slug comes off the RESOLVED object rather than off the key — reading
+  // it out of the key gave `getParkBackgroundImage('/parks/europe/…')` and a ride whose park
+  // slug was the empty string, i.e. no photo and no focal point, silently.
   const parkBackgroundMap = new Map<string, string | null>();
   const parkFocusMap = new Map<string, string>();
-  for (const slug of parkMap.keys()) {
-    parkBackgroundMap.set(slug, getParkBackgroundImage(slug));
-    parkFocusMap.set(slug, getCardObjectPosition(slug));
+  for (const [ref, park] of parkMap) {
+    const slug = park?.slug ?? ref;
+    parkBackgroundMap.set(ref, getParkBackgroundImage(slug));
+    parkFocusMap.set(ref, getCardObjectPosition(slug));
   }
   const attractionBackgroundMap = new Map<string, string | null>();
   const attractionFocusMap = new Map<string, string>();
-  for (const [ref] of attractionMap) {
-    const [parkSlug, attractionSlug] = ref.split('/');
+  for (const [ref, { park, attraction }] of attractionMap) {
+    const parkSlug = attraction?.parkSlug ?? park?.slug ?? ref.split('/')[0];
+    const attractionSlug = attraction?.attractionSlug ?? ref.split('/').pop() ?? '';
     attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkSlug, attractionSlug));
     attractionFocusMap.set(ref, getCardObjectPosition(parkSlug, attractionSlug));
   }
@@ -935,15 +951,15 @@ function renderWidget(
     );
   }
   if (name === 'attraction-widget') {
-    const parkSlug = attrs.parkSlug ?? attrs.park;
+    const parkRef = parseWidgetParkRef(attrs.parkSlug ?? attrs.park ?? '');
     const slug = attrs.slug;
-    if (!parkSlug || !slug) return null;
-    const data = ctx.attractionMap.get(`${parkSlug}/${slug}`);
+    if (!parkRef || !slug) return null;
+    const data = ctx.attractionMap.get(`${parkRef.key}/${slug}`);
     return (
       <BlogAttractionWidget
         park={data?.park ?? null}
         attraction={data?.attraction ?? null}
-        parkSlug={parkSlug}
+        parkSlug={parkRef.slug}
         attractionSlug={slug}
       />
     );
