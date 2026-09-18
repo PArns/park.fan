@@ -77,6 +77,22 @@
  *
  * A page that prints "does not stream" has no deferred boundary left — which, for a
  * page that used to have one, is the fix landing.
+ *
+ * AND WHERE THE READER IS STANDING IS HALF THE MEASUREMENT
+ *
+ * CLS scores what moves IN THE VIEWPORT, so a score is a fact about a reader position, not
+ * about a page. This run used to measure one position, the top, and print the number bare:
+ * three park pages the field scores 0.98 came back 0.0001, 0.0002 and 0.0002, because the
+ * block that grows sits around y = 3458 on a phone and a reader at y = 0 does not see it.
+ * That reads exactly like a page with nothing wrong.
+ *
+ * So `--late` measures two positions per viewport: the top, and just under whichever block
+ * the page turns out to grow by the most — read off a shell-versus-settled diff the first
+ * pass collects on its way past, so it fits the page in front of it rather than a constant
+ * that fits one page type. Every score carries the position it was measured at, and a run
+ * that scores nothing at any of them says so in words instead of printing a confident
+ * 0.0000. `--scroll=<y>` still pins the reader to exactly one position. See
+ * `growthPosition` for why the target is under the block and not at it.
  */
 
 import { chromium } from 'playwright';
@@ -120,8 +136,19 @@ const CLIENT_IP = flag('ip', '91.64.1.1');
 
 /** `--late` / `--late=2500`: replay mode, and how long the streamed tail is held back. */
 const LATE_MS = has('late') ? 1500 : Number(flag('late', '0'));
-/** Where the reader is parked in `--late` mode. A shift only scores what is in view. */
-const SCROLL_TO = Number(flag('scroll', '0'));
+/**
+ * Where the reader is parked in `--late` mode.
+ *
+ * A shift scores only what is in the viewport, so the reader position is half of what the
+ * number means rather than a detail of the run. `--scroll=<y>` measures that one position
+ * and nothing else; without it the run measures the top of the page and then wherever the
+ * page turns out to grow, see `growthPosition`.
+ */
+const SCROLL_ARG = flag('scroll', null);
+const SCROLL_TO = SCROLL_ARG === null ? null : Number(SCROLL_ARG);
+/** How far above the growth the reader sits, so what it pushes down is in view rather than
+ *  level with the top edge. */
+const READER_MARGIN = 80;
 
 /** Same fallback the other Playwright scripts use: the CI image's build when it is there, and
  *  otherwise nothing, which hands the choice to Playwright's own resolution. `CHROMIUM_PATH` is
@@ -243,7 +270,15 @@ function alignChildren(a, b) {
  */
 function diffTrees(before, after, minDelta) {
   const rows = [];
-  const visit = (a, b, path, depth) => {
+  /**
+   * `yBeforeHint` is where an INSERTED block lands, in the shell's coordinates: right after
+   * the last sibling that existed in both trees, or at the parent's top when there was none.
+   * An inserted block has no before-geometry of its own, and taking its settled `y` instead
+   * points at where it ended up AFTER everything above it had already moved — 12960 against
+   * 4629 on one park page. Anything that reads the diff to place a reader needs the second
+   * number, because the reader takes their position before the page moves.
+   */
+  const visit = (a, b, path, depth, yBeforeHint) => {
     if (depth > 14) return;
 
     const pairs = alignChildren(a ? a.children : [], b.children);
@@ -254,24 +289,58 @@ function diffTrees(before, after, minDelta) {
     );
 
     if (b.inFlow) {
-      if (!a) rows.push({ path, ...b, dh: b.h, inserted: true, contained: false });
+      // `yBefore` is where the block sat BEFORE the change, which is not `y` on a page where
+      // something above it also grew: Flamingo Land's `section.mt-10` reports y = 12960
+      // settled and 4629 in the shell. A reader has to be parked at the second one — they
+      // take their position before the page moves, not after.
+      if (!a)
+        rows.push({
+          path,
+          ...b,
+          yBefore: yBeforeHint ?? b.y,
+          hBefore: 0,
+          dh: b.h,
+          inserted: true,
+          contained: false,
+        });
       else if (Math.abs(b.h - a.h) >= minDelta)
-        rows.push({ path, ...b, dh: b.h - a.h, inserted: false, contained: false });
+        rows.push({
+          path,
+          ...b,
+          yBefore: a.y,
+          hBefore: a.h,
+          dh: b.h - a.h,
+          inserted: false,
+          contained: false,
+        });
     }
 
     const seen = {};
+    // The last child that exists in BOTH trees. Everything inserted after it lands at its
+    // bottom edge, which is the only before-position an insertion has.
+    let lastMatched = null;
     for (const [ca, cb] of pairs) {
       seen[cb.sig] = (seen[cb.sig] ?? 0) + 1;
       const childPath = `${path}>${cb.sig}:${seen[cb.sig]}`;
+      const hint = lastMatched ? lastMatched.y + lastMatched.h : a ? a.y : cb.y;
       if (!ca && cb.inFlow && !movedSiblings && a) {
         // Appeared, and nothing around it moved: a swap, not a shift.
-        rows.push({ path: childPath, ...cb, dh: cb.h, inserted: true, contained: true });
+        rows.push({
+          path: childPath,
+          ...cb,
+          yBefore: hint,
+          hBefore: 0,
+          dh: cb.h,
+          inserted: true,
+          contained: true,
+        });
         continue;
       }
-      visit(ca, cb, childPath, depth + 1);
+      visit(ca, cb, childPath, depth + 1, hint);
+      if (ca) lastMatched = ca;
     }
   };
-  visit(before, after, 'main', 0);
+  visit(before, after, 'main', 0, before ? before.y : after.y);
   return rows;
 }
 
@@ -429,6 +498,74 @@ function readShifts() {
   }).observe({ type: 'layout-shift', buffered: true });
 }
 
+/**
+ * Parks the reader at `y` and keeps them there, and records where they actually were when
+ * the tail landed.
+ *
+ * Re-asserted every frame, not set once: right after `commit` the document is still the
+ * shell and often too short to scroll that far, so a single call silently lands at the
+ * bottom and the reader ends up somewhere else. Where the shell is too short for the target
+ * the run is not wrong, it is just measuring a different position than it asked for —
+ * `atTail` is the one it got, and that is the one the output prints.
+ */
+function holdReader({ y, tailAtMs }) {
+  const state = { atTail: null };
+  window.__reader = state;
+  const hold = () => {
+    if (window.scrollY !== y) window.scrollTo(0, y);
+    if (state.atTail === null && performance.now() >= tailAtMs) {
+      state.atTail = Math.round(window.scrollY);
+    }
+    if (performance.now() < 20000) requestAnimationFrame(hold);
+  };
+  requestAnimationFrame(hold);
+}
+
+/**
+ * The second reader position: just under the block that grows most.
+ *
+ * Under it, not at it. A shift charges for CONTENT THAT MOVES, and what a growing block
+ * moves is everything after it — the block's own new content does not shift anything, it
+ * simply appears. Parking level with the top of a block that grows downward measured 0.0000
+ * on a park page whose tab panel adds 7676 px, because the only thing in view below the
+ * reader was the panel filling itself. So the reader sits just past the block's bottom edge
+ * IN THE SHELL, which is where the content that travels is standing before it travels.
+ *
+ * Where the target comes from, and why not somewhere simpler:
+ *
+ *  - Not a constant. It would be right for one page type — the block that grows sits at
+ *    y ≈ 3458 on a park page on a phone and somewhere else on the glossary term page, and
+ *    the default list holds six types.
+ *  - Not React's boundary markers (`<!--$?-->`). They cover only what is still pending when
+ *    the shell paints, and much of what moves here is client-mounted behind an already
+ *    resolved marker; a run steered by markers parked four screens low and scored 0.0000.
+ *
+ * Three corrections the raw diff needs before it can point at anything:
+ *
+ *  1. **The innermost block of a growth, not the outermost.** `dedupeToCauses` keeps the
+ *     outermost on purpose — for a report, "this section grew" is the finding. As a reader
+ *     position it is useless: `main` starts at y = 48 and "grows" by the 8485 px the
+ *     attraction grid adds four screens down, which parks the reader at the top of the page,
+ *     the position the first pass just measured.
+ *  2. **At least a screen below the top.** Anything nearer is already in view of the first
+ *     pass, and a second replay of the same view buys nothing.
+ *
+ * Nothing qualifies on some pages. The caller then measures one position and says so, rather
+ * than inventing a second.
+ */
+function growthPosition(rows, viewport) {
+  const explainedByChild = (row) =>
+    rows.some((d) => d !== row && d.path.startsWith(row.path + '>') && d.dh >= row.dh * 0.8);
+  const row = rows
+    .filter((r) => !explainedByChild(r) && r.yBefore + r.hBefore - READER_MARGIN >= viewport.height)
+    .sort((x, y) => y.dh - x.dh)[0];
+  if (!row) return null;
+  return {
+    y: Math.max(0, row.yBefore + row.hBefore - READER_MARGIN),
+    why: `just under ${row.sig.slice(0, 30)}, which grows +${row.dh} px`,
+  };
+}
+
 /** The CLS session window: entries within 1s of each other and 5s of the first. */
 function sessionWindowMax(entries) {
   let best = 0;
@@ -447,11 +584,77 @@ function sessionWindowMax(entries) {
   return Math.max(best, current);
 }
 
+/**
+ * One replay: one viewport, one reader position, one score.
+ *
+ * With `collectGrowth`, the same replay also reads the layout twice — once while the tail is
+ * still held back, once after it has settled — and diffs them. That is where the NEXT reader
+ * position comes from, and it rides along on a pass the run was making anyway: a separate
+ * discovery replay per viewport cost nine seconds per URL and told it nothing this one does
+ * not already have in front of it. Reading geometry does not move anything, and both reads
+ * sit clear of the tail.
+ */
+async function scoreAt(browser, { viewport, position, origin, splitPath, url, collectGrowth }) {
+  const ctx = await browser.newContext({
+    viewport: { width: viewport.width, height: viewport.height },
+    isMobile: viewport.isMobile,
+    hasTouch: viewport.isMobile,
+    extraHTTPHeaders: { 'x-forwarded-for': CLIENT_IP },
+  });
+  const page = await ctx.newPage();
+  await page.addInitScript(readShifts);
+  await page.addInitScript(holdReader, { y: position.y, tailAtMs: LATE_MS });
+  // Surfaces the hydration errors the split used to cause itself — a run that prints
+  // these is not measuring the page the server sent.
+  const pageErrors = [];
+  page.on('console', (m) => {
+    if (m.type() === 'error') pageErrors.push(m.text().split('\n')[0].slice(0, 120));
+  });
+  // Same guard as the diff mode: a chunk that 403s leaves a page that never hydrates,
+  // and an unhydrated page scores 0.0000 with nothing to say it did not measure.
+  const failed = [];
+  page.on('response', (r) => {
+    if (r.status() >= 400 && new URL(r.url()).pathname.startsWith('/_next/')) {
+      failed.push({ status: r.status(), url: r.url() });
+    }
+  });
+  try {
+    await page.goto(origin + splitPath, { waitUntil: 'commit', timeout: 90000 });
+    let shell = null;
+    if (collectGrowth) {
+      // Comfortably before the tail, and late enough that the shell has laid itself out.
+      await page.waitForTimeout(Math.round(LATE_MS * 0.6));
+      shell = await page.evaluate(collectTree);
+    }
+    await page.waitForTimeout(LATE_MS + 6000 - (collectGrowth ? Math.round(LATE_MS * 0.6) : 0));
+    assertMeasurable({ url, js: true, failed });
+    const entries = await page.evaluate(() => window.__cls);
+    const atTail = await page.evaluate(() => window.__reader.atTail);
+    const settled = collectGrowth ? await page.evaluate(collectTree) : null;
+    return {
+      position,
+      atTail: atTail ?? position.y,
+      cls: sessionWindowMax(entries),
+      entries,
+      pageErrors: [...new Set(pageErrors)],
+      // Not run through `dedupeToCauses`: that keeps the outermost block of a growth, and
+      // a reader position needs the innermost. `growthPosition` does its own narrowing.
+      growth: shell
+        ? diffTrees(shell.tree, settled.tree, MIN_DELTA_PX).filter((r) => !r.contained && r.dh > 0)
+        : [],
+    };
+  } finally {
+    await ctx.close();
+  }
+}
+
 if (LATE_MS > 0) {
   const browser = await chromium.launch(LAUNCH);
   console.log(
     `Streamed tail held back ${LATE_MS} ms, no throttling.` +
-      (SCROLL_TO ? ` Reader parked at y=${SCROLL_TO}.` : ' Reader at the top of the page.')
+      (SCROLL_TO !== null
+        ? ` One reader position, asked for with --scroll: y=${SCROLL_TO}.`
+        : ' Every score below carries the reader position it was measured at.')
   );
   for (const path of URLS) {
     const url = path.startsWith('http') ? path : BASE + path;
@@ -475,56 +678,54 @@ if (LATE_MS > 0) {
     const origin = `http://127.0.0.1:${server.address().port}`;
     try {
       for (const viewport of VIEWPORTS) {
-        const ctx = await browser.newContext({
-          viewport: { width: viewport.width, height: viewport.height },
-          isMobile: viewport.isMobile,
-          hasTouch: viewport.isMobile,
-          extraHTTPHeaders: { 'x-forwarded-for': CLIENT_IP },
-        });
-        const page = await ctx.newPage();
-        await page.addInitScript(readShifts);
-        if (SCROLL_TO) {
-          // Re-asserted every frame, not set once: right after `commit` the document is
-          // still the shell and often too short to scroll that far, so a single call
-          // silently lands at the bottom and the reader ends up somewhere else.
-          await page.addInitScript((y) => {
-            const hold = () => {
-              if (window.scrollY !== y) window.scrollTo(0, y);
-              if (performance.now() < 20000) requestAnimationFrame(hold);
-            };
-            requestAnimationFrame(hold);
-          }, SCROLL_TO);
-        }
-        // Surfaces the hydration errors the split used to cause itself — a run that prints
-        // these is not measuring the page the server sent.
-        const pageErrors = [];
-        page.on('console', (m) => {
-          if (m.type() === 'error') pageErrors.push(m.text().split('\n')[0].slice(0, 120));
-        });
-        // Same guard as the diff mode: a chunk that 403s leaves a page that never hydrates,
-        // and an unhydrated page scores 0.0000 with nothing to say it did not measure.
-        const failed = [];
-        page.on('response', (r) => {
-          if (r.status() >= 400 && new URL(r.url()).pathname.startsWith('/_next/')) {
-            failed.push({ status: r.status(), url: r.url() });
-          }
-        });
-        await page.goto(origin + splitPath, { waitUntil: 'commit', timeout: 90000 });
-        await page.waitForTimeout(LATE_MS + 6000);
-        assertMeasurable({ url, js: true, failed });
-        const entries = await page.evaluate(() => window.__cls);
-        const cls = sessionWindowMax(entries);
-        console.log(`  ${viewport.name.padEnd(8)} CLS ${cls.toFixed(4)}`);
-        for (const err of [...new Set(pageErrors)].slice(0, 3)) {
-          console.log(`      ⚠️  console error: ${err}`);
-        }
-        for (const e of entries.filter((x) => x.v > 0)) {
+        const pass = (position, collectGrowth) =>
+          scoreAt(browser, { viewport, position, origin, splitPath, url, collectGrowth });
+        const runs = [
+          SCROLL_TO !== null
+            ? await pass({ y: SCROLL_TO, why: 'asked for with --scroll' }, false)
+            : await pass({ y: 0, why: 'top of the page' }, true),
+        ];
+        // The top of the page is where a visitor starts and it is the only position this run
+        // used to measure. On its own it is not a measurement of the page: three park pages
+        // the field scores 0.98 came back 0.0002 from up here.
+        const next = SCROLL_TO === null ? growthPosition(runs[0].growth, viewport) : null;
+        if (next) runs.push(await pass(next, false));
+
+        // Where the reader ended up, which is not always where they were sent: a shell
+        // shorter than the target stops the scroll early, and the score belongs to the
+        // position that was actually held.
+        const at = (run) =>
+          `y=${run.atTail}` +
+          (run.atTail === run.position.y ? '' : ` (aimed ${run.position.y}, the shell ends first)`);
+
+        // A run that scored nothing anywhere has NOT established that the page is clean —
+        // it has established that these positions saw nothing, which is a different
+        // sentence and the one this run is entitled to. Printing "CLS 0.0000" instead let
+        // a page the field scores 0.98 read as a pass.
+        if (runs.every((run) => Number(run.cls.toFixed(4)) === 0)) {
           console.log(
-            `      ${String(e.t).padStart(6)} ms  ${e.v.toFixed(4).padStart(7)}  ` +
-              e.sources.map((src) => `${src.el} ${src.move}`).join(' | ')
+            `  ${viewport.name.padEnd(8)} no shift at any reader position measured ` +
+              `(${runs.map(at).join(', ')}) — that is a statement about those positions,\n` +
+              `  ${' '.repeat(8)} not about the page`
           );
+          continue;
         }
-        await ctx.close();
+
+        for (const run of runs) {
+          console.log(
+            `  ${viewport.name.padEnd(8)} ${at(run).padEnd(12)} CLS ${run.cls.toFixed(4)}` +
+              `   ${run.position.why}`
+          );
+          for (const err of run.pageErrors.slice(0, 3)) {
+            console.log(`      ⚠️  console error: ${err}`);
+          }
+          for (const e of run.entries.filter((x) => x.v > 0)) {
+            console.log(
+              `      ${String(e.t).padStart(6)} ms  ${e.v.toFixed(4).padStart(7)}  ` +
+                e.sources.map((src) => `${src.el} ${src.move}`).join(' | ')
+            );
+          }
+        }
       }
     } finally {
       server.close();
