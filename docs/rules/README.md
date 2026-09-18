@@ -52,6 +52,7 @@ _Layout, a component, a breakpoint, the header, a card, three.js._
 - [The quietest weekday may be two days, and a thin day drops out rather than ending the vote (REQUIREMENT)](the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md)
 - [Blog spotlight cards](blog-spotlight-cards.md)
 - [A blog card is a row on phones (REQUIREMENT)](a-blog-card-is-a-row-on-phones.md)
+- [Map tiles are CARTO, never OSM's own tile server (REQUIREMENT)](map-tiles-are-carto-not-osms-own-tile-server.md)
 
 ## SEO and the machine-facing surface
 

@@ -143,6 +143,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
   Two markups, not one responsive tree. The hero overlap is safe by construction:
   `HERO_FLOW_INTO_PULL` (176 px) must stay smaller than the hero's mobile `pb-48`.
+- **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
+  `tile.openstreetmap.org` is for OSM's own site, not for embedding; hotlinking it got park.fan
+  hard-blocked on 2026-09-18. Both `TileLayer`s use CARTO's basemap CDN, credited alongside OSM.
 
 ### SEO and the machine-facing surface
 
