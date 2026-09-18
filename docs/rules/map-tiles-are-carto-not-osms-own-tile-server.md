@@ -13,17 +13,29 @@ had pointed its `TileLayer` straight at `https://{s}.tile.openstreetmap.org/{z}/
 `BlogMapClient` mounts that same component, so the block took the blog widget down with it.
 
 The admin catalogue map (`app/admin/parks/_components/parks-map.tsx`) never had this problem — it
-already draws from CARTO's free basemap CDN — so the fix is to match the pattern that already
-exists, not invent a third one: both `TileLayer`s now point at
-`{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png` (park page) or
-`.../dark_all/...` (admin, unchanged), and **both** attribution strings must credit OpenStreetMap
-(the data) and CARTO (the tiles) — `&copy; OpenStreetMap contributors &copy; CARTO` — because
-dropping CARTO's half is the same policy mistake with a different host.
+already drew from CARTO's free basemap CDN — so the fix matched the pattern that already existed
+rather than inventing a third one: both `TileLayer`s now credit OpenStreetMap (the data) **and**
+CARTO (the tiles) — `&copy; OpenStreetMap contributors &copy; CARTO` — because dropping CARTO's half
+of the attribution is the same policy mistake with a different host.
 
-CARTO's free tier has its own fair-use ceiling; it is not a permanent license for unlimited
-production traffic. That ceiling is why `NEXT_PUBLIC_CARTO_MAP_KEY` exists — with it set,
-`cartoTileUrl()` (`lib/utils/carto-tile-url.ts`) switches both maps to CARTO's keyed single-host
-endpoint (`basemaps.cartocdn.com/<style>/{z}/{x}/{y}.png?key=…`, no `{s}` sharding); unset, it falls
-back to the anonymous subdomain-sharded endpoint from the initial fix, which is what local dev runs
-on. If park.fan's map traffic ever outgrows the keyed tier too, the next step is a different paid
-tile provider — never a return to `tile.openstreetmap.org`.
+Both `TileLayer`s no longer point at CARTO directly, though. `cartoTileUrl()`
+(`lib/utils/carto-tile-url.ts`) returns a same-origin path — `/api/tiles/<style>/{z}/{x}/{y}.png` —
+proxied by `app/api/tiles/[...path]/route.ts`, which fetches the tile from
+`basemaps.cartocdn.com/<style>/{z}/{x}/{y}.png` (with `?key=…` when `CARTO_MAP_KEY` is set) and
+answers with a 7-day `Cache-Control`/`CDN-Cache-Control`. park.fan's zone already has a Cloudflare
+rule caching any `/api/*` GET by its `Cache-Control` header (see
+[caching-strategy.md](../architecture/caching-strategy.md)), so this is the same idiom every other
+cacheable `/api/parks/…` route already uses (`cdnCacheHeaders()`), not a new mechanism: it puts
+Cloudflare's edge, not each visitor's browser, between park.fan and CARTO. Two things follow from
+routing it through our own origin instead of hotlinking CARTO's CDN from the browser:
+
+- **`CARTO_MAP_KEY` is server-only**, never `NEXT_PUBLIC_`— the browser only ever talks to
+  `park.fan/api/tiles/…`, so the key never has to leave our server.
+- The proxy allow-lists the style path (`ALLOWED_STYLES` in the route handler) and validates
+  `z`/`x`/`y` as digits before they reach the upstream URL — this is a public route on our own
+  domain now, so it must not become an open proxy for arbitrary CARTO paths.
+
+CARTO's free tier still has its own fair-use ceiling; the key raises it, it doesn't remove it. If
+park.fan's map traffic ever outgrows the keyed tier too — Cloudflare's edge cache absorbing most
+repeat requests for the same park's tiles should push that a long way out — the next step is a
+different paid tile provider, never a return to `tile.openstreetmap.org`.

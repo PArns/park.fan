@@ -1003,6 +1003,17 @@ const nextConfig: NextConfig = {
         source: '/api/glossary-term-ids',
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
+      {
+        // CARTO basemap tiles, proxied so Cloudflare holds them at the edge instead of
+        // every browser hitting CARTO directly (see the route handler and
+        // docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md). 7 days fresh,
+        // matching the tile-caching floor providers ask for; identical to the handler's
+        // own value, like every rule in this block.
+        source: '/api/tiles/:path*',
+        headers: sharedCache(
+          'public, max-age=604800, s-maxage=604800, stale-while-revalidate=2592000'
+        ),
+      },
       // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
       // is now settled on the platform they actually run on, not just locally.
       //
