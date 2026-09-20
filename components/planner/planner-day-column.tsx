@@ -214,6 +214,14 @@ export function PlannerDayColumn({
    * blocks and edit whichever one the action row happened to be handed.
    */
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  /**
+   * A block is being dragged somewhere else in the day.
+   *
+   * It comes back out of the grid because the action bar below it is a sibling
+   * of the grid rather than one of its blocks, and it lies over the grid's
+   * lower edge — see the note where {@link PlannerGridActions} is rendered.
+   */
+  const [dragging, setDragging] = useState(false);
   const [flatDropActive, setFlatDropActive] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -636,6 +644,7 @@ export function PlannerDayColumn({
                 }
                 selectedId={selectedId}
                 scrollerRef={scrollerRef}
+                onDragChange={setDragging}
                 onSelect={setSelectedId}
                 onMove={(entryId, startMinute) =>
                   parkSlug && date && moveRide(parkSlug, date, entryId, startMinute)
@@ -681,10 +690,21 @@ export function PlannerDayColumn({
               />
             )}
           </div>
+          {/* The bar is `absolute … bottom-0 z-40` over the grid's lower edge,
+              and a drag SELECTS the block it grabs — so it used to appear with
+              the press and sit on top of the very gesture. On a phone that is
+              101 px of a 200 px scroller, and the ghost was underneath it
+              (PAR-316). It also states the block's OLD start and estimate while
+              the ghost states the new ones, which is two answers to one
+              question. So it stands down for the length of a drag that has
+              actually moved: nothing on it is reachable while a finger is
+              holding a block, and it comes back at the drop with the minute the
+              drop wrote. */}
           {grid && selectedId && (
             <PlannerGridActions
               entry={entries.find((e: PlannerEntry) => e.id === selectedId) ?? null}
               day={day ?? null}
+              standBack={dragging}
               onToggleDone={toggleDone}
               onRemove={(entryId) => {
                 if (parkSlug && date) removeRide(parkSlug, date, entryId);

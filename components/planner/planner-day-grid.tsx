@@ -73,6 +73,14 @@ interface PlannerDayGridProps {
   selectedId: string | null;
   /** The scroll container, for the drag's auto-scroll. */
   scrollerRef: React.RefObject<HTMLDivElement | null>;
+  /**
+   * A drag has left the minute it started on, or has ended.
+   *
+   * The drag is this component's business, but one thing outside it has to
+   * know: the selected block's action bar is a SIBLING of this grid and lies
+   * over its lower edge. See the note on `dragMoved`.
+   */
+  onDragChange?: (dragging: boolean) => void;
 }
 
 /**
@@ -130,6 +138,7 @@ export function PlannerDayGrid({
   onSelect,
   selectedId,
   scrollerRef,
+  onDragChange,
 }: PlannerDayGridProps) {
   const t = useTranslations('planner');
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -392,6 +401,32 @@ export function PlannerDayGrid({
    */
   const dragMoved =
     ghostRow !== null && ghostMinute !== null && ghostMinute !== ghostRow.entry.startMinute;
+
+  /**
+   * Tell the column when that is true, so the selected block's action bar can
+   * step aside for the gesture.
+   *
+   * The bar is `absolute inset-x-0 bottom-0 z-40` in the box this grid scrolls
+   * inside, so it is not one of the blocks `dimmed` reaches — and it is opaque.
+   * Measured at 360 px on 2026-09-20 (PAR-316): the scroller is 200 px tall,
+   * the bar wraps to two lines and takes 101 of them, and `elementFromPoint` on
+   * the ghost's own centre answered the bar's `<p>` — the drag was blind on a
+   * phone. It also prints `entry.startMinute` and the estimate of the OLD
+   * position, which is a second, contradicting answer to the question the ghost
+   * exists to answer.
+   *
+   * Through a ref so the effect depends on `dragMoved` alone: the column hands
+   * its callback down fresh on every render of its own, and an effect that
+   * depended on the identity would fire on renders where nothing about the drag
+   * had changed.
+   */
+  const onDragChangeRef = useRef(onDragChange);
+  useEffect(() => {
+    onDragChangeRef.current = onDragChange;
+  });
+  useEffect(() => {
+    onDragChangeRef.current?.(dragMoved);
+  }, [dragMoved]);
 
   const weatherSegments = useMemo(
     () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),

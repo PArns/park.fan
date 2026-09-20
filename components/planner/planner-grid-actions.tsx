@@ -32,6 +32,14 @@ interface PlannerGridActionsProps {
    * paths cannot disagree about where a block may go.
    */
   onNudge?: (entryId: string, deltaMinutes: number) => void;
+  /**
+   * A drag is running on this block, so the bar takes itself out of the way.
+   *
+   * Not a styling preference: it is opaque, it lies over the grid's lower edge,
+   * and the figure it prints is the one the drag is in the middle of replacing.
+   * The caller's comment carries the measurement.
+   */
+  standBack?: boolean;
 }
 
 /**
@@ -68,6 +76,7 @@ export function PlannerGridActions({
   onClose,
   onEditCustom,
   onNudge,
+  standBack = false,
 }: PlannerGridActionsProps) {
   const t = useTranslations('planner');
   if (!entry) return null;
@@ -86,7 +95,19 @@ export function PlannerGridActions({
        moves and a delete beside a label — over 400 px in a 390 px screen. It
        wraps on a phone, where the label takes the first line, and lays out
        exactly as it did on every wider box. */
-    <div className="border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t px-3 py-1.5 backdrop-blur-sm max-sm:flex-wrap">
+    <div
+      className={cn(
+        'border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t px-3 py-1.5 backdrop-blur-sm max-sm:flex-wrap',
+        // Gone for the length of the drag, and gone rather than faded: at any
+        // opacity above zero the old figure is still readable beside the new
+        // one, and that is half of what this is for. `invisible` also takes it
+        // out of hit-testing and out of the accessibility tree, so the finger
+        // holding a block cannot land on a button under it. It keeps its box,
+        // which costs nothing: the bar is `absolute` and the grid's scroll
+        // height never depended on it.
+        standBack && 'invisible'
+      )}
+    >
       <div className="min-w-0 flex-1 max-sm:basis-full">
         {custom && onEditCustom ? (
           <input
