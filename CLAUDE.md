@@ -106,8 +106,8 @@ carries the reasoning, the measurements and the counter-examples.
   panel server-renders continents and countries only; cities and parks arrive per opened country.
   The band is glass, positioned against the `<header>`. Card widths come from
   `lib/utils/favorites-band-plan.ts`. A row leaves only where the server let it go: API first,
-  local mirror second. `pnpm test:favorites-band`, `pnpm test:push-follow-delete`,
-  `pnpm test:push-follow-read`.
+  local mirror second. `pnpm check:header-links`, `pnpm test:favorites-band`,
+  `pnpm test:push-follow-delete`, `pnpm test:push-follow-read`.
 - **[The guide page teaches the real cards with the ride's real numbers](docs/rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md)** — every block renders a
   production component, and every figure is a value the API returned, dated in `_fixtures.ts`.
   Audit before you claim. A displayed wait time is always a multiple of five; round only what is
