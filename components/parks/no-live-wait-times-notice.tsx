@@ -22,7 +22,11 @@ interface NoLiveWaitTimesNoticeProps {
  *
  * Sits on `GlassNotice`, which carries the frosted surface and the
  * `data-nosnippet` that keeps these two sentences out of Google's snippet while
- * leaving them indexed — the reasoning for both is over there.
+ * leaving them indexed — the reasoning for both is over there. The measurement
+ * behind it is this notice's own: on 2026-08-30 the head query still rendered
+ * the meta description verbatim, so the attribute is prevention rather than a
+ * fix, and a snippet is chosen per query — the more specific the query, the
+ * likelier Google builds one from the page instead.
  */
 export function NoLiveWaitTimesNotice({ reason, scope, className }: NoLiveWaitTimesNoticeProps) {
   const t = useTranslations('parks.noLiveWaitTimes');
