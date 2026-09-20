@@ -1,0 +1,22 @@
+{
+  "park": "efteling",
+  "ride": "max-and-moritz",
+  "area": "Anderrijk",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-20",
+  "gps": {
+    "lat": 51.647969,
+    "lon": 5.047214
+  },
+  "review": true
+}
