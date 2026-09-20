@@ -11,6 +11,14 @@ import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
 interface LiveParkDataProps {
   initialData: ParkWithAttractions;
+  /**
+   * Today in the PARK's timezone, `YYYY-MM-DD`, from the server render.
+   *
+   * Passed rather than computed here for the reason the park page states at the
+   * call site: this tree renders on both sides of hydration, and a clock read
+   * inside it would answer twice.
+   */
+  todayIso: string;
   continent: string;
   country: string;
   city: string;
@@ -33,6 +41,7 @@ interface LiveParkDataProps {
  */
 export function LiveParkData({
   initialData,
+  todayIso,
   continent,
   country,
   city,
@@ -85,6 +94,7 @@ export function LiveParkData({
   const tabsWithHash = (
     <TabsWithHash
       defaultValue="attractions"
+      todayIso={todayIso}
       showsAvailable={currentPark.shows && currentPark.shows.length > 0}
       restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
       weatherAvailable={!!currentPark.weather?.current}

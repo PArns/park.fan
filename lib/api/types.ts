@@ -529,6 +529,34 @@ export interface Land {
 }
 
 /**
+ * A curated "this ride is being rebuilt from … to …" window.
+ *
+ * Hand-written under `/admin/attractions/<id>`, because no feed can tell a
+ * breakdown from a rebuild: ThemeParks.wiki passes `REFURBISHMENT` through with
+ * no start and no end, and a long rebuild seen from outside looks exactly like a
+ * ride that keeps failing. Served next to `outage` and never inside it — an
+ * outage is a fault somebody is reporting right now, this is planned work
+ * somebody wrote down in advance.
+ *
+ * Both days are the PARK's, both bounds are inclusive, and either may stand
+ * alone: `from` with no `to` while nobody has been told when it ends, `to` with
+ * no `from` for a window that was already running when it was written down.
+ *
+ * The API deliberately says nothing about whether the window covers today —
+ * that needs the park's timezone and the reader's clock is the wrong one. The
+ * predicate lives in `lib/utils/works-period.ts`, the TypeScript twin of the
+ * backend's `isCuratedOutOfService()`.
+ */
+export interface WorksPeriod {
+  /** First park-local day, inclusive, or null for a window with no start. */
+  from: string | null;
+  /** Last park-local day, inclusive, or null while nobody knows when it ends. */
+  to: string | null;
+  /** Whether `to` is our estimate rather than a date the park published. */
+  toUncertain: boolean;
+}
+
+/**
  * When a ride that is down right now was first reported down.
  *
  * `startedAt` is a clock time and stays one. `queue_data` is a change log whose
@@ -720,6 +748,16 @@ export interface ParkAttraction {
    * there and nothing when it is not; never a "no outages" state.
    */
   outage?: AttractionOutage;
+  /**
+   * The curated rebuild window, or absent when nothing is curated — which is
+   * nearly every ride in the catalogue.
+   *
+   * Day-stable and curated, so it rides the server render and is deliberately
+   * NOT part of the five-minute poll's projection: `mergeLiveParkSnapshot`
+   * spreads the snapshot over the park, so an omitted key leaves this one
+   * standing. It says nothing about today on its own — see {@link WorksPeriod}.
+   */
+  worksPeriod?: WorksPeriod | null;
   /**
    * Reported-outage figures, or the reason there are none.
    *

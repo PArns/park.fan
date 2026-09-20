@@ -759,6 +759,14 @@
       "park": "Openingstijden, weer en de kalender vind je hier gewoon.",
       "ride": "Daarmee ontbreekt ook de voorspelling voor deze attractie. Openingstijden en weer vind je gewoon."
     },
+    "worksPeriod": {
+      "label": "Verbouwing",
+      "sinceUntil": "Deze attractie is sinds {from} gesloten voor verbouwing, tot en met {to}.",
+      "sinceUntilUncertain": "Deze attractie is sinds {from} gesloten voor verbouwing, naar verwachting tot en met {to}.",
+      "since": "Deze attractie is sinds {from} gesloten voor verbouwing. Er is nog geen einddatum.",
+      "until": "Deze attractie is gesloten voor verbouwing tot en met {to}.",
+      "untilUncertain": "Deze attractie is gesloten voor verbouwing, naar verwachting tot en met {to}."
+    },
     "info": {
       "title": "Parkinformatie",
       "address": "Adres",

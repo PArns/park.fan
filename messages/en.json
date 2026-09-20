@@ -759,6 +759,14 @@
       "park": "Opening hours, weather and the calendar are all still here.",
       "ride": "So there is no forecast for this ride either. Opening hours and weather are unaffected."
     },
+    "worksPeriod": {
+      "label": "Refurbishment",
+      "sinceUntil": "This ride has been closed for works since {from}, until {to}.",
+      "sinceUntilUncertain": "This ride has been closed for works since {from}, probably until {to}.",
+      "since": "This ride has been closed for works since {from}. There is no end date yet.",
+      "until": "This ride is closed for works until {to}.",
+      "untilUncertain": "This ride is closed for works, probably until {to}."
+    },
     "info": {
       "title": "Park information",
       "address": "Address",

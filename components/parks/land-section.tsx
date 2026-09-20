@@ -25,6 +25,8 @@ interface LandSectionProps {
   parkSlug?: string;
   parkStatus?: ParkStatus;
   timezone?: string;
+  /** Today in the PARK's timezone, `YYYY-MM-DD`, from the server render — see `LiveParkData`. */
+  todayIso?: string;
   /**
    * The park's own name — these attractions never carry a nested `park`
    * field (every card here is already known to belong to it), so it has to
@@ -46,6 +48,7 @@ export const LandSection = memo(function LandSection({
   parkSlug: _parkSlug,
   parkStatus,
   timezone,
+  todayIso,
   parkName,
 }: LandSectionProps) {
   const t = useTranslations('parks');
@@ -88,6 +91,7 @@ export const LandSection = memo(function LandSection({
                 parkPath={parkPath}
                 parkStatus={parkStatus}
                 timezone={timezone}
+                todayIso={todayIso}
                 parkName={parkName}
               />
             </li>
