@@ -1,0 +1,21 @@
+{
+  "park": "efteling",
+  "ride": "game-gallery",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-20",
+  "gps": {
+    "lat": 51.648311,
+    "lon": 5.053047
+  },
+  "review": true
+}
