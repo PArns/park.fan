@@ -804,17 +804,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // of travel is over the 40 `check:planner` asserts, where the 4svh
           // the handle used to have before PAR-188 was under it.
           //
-          // **Landscape keeps the 92.** There 100svh − 48 px is 342 of 390,
-          // i.e. SMALLER than the 359 it has today, and that window is the one
-          // where the axis already runs on 269 px. `isLandscape` rather than a
-          // class, because the two branches are a portrait/landscape split
-          // inside `planner-phone:` and one of them has to win: written as two
-          // variants they would depend on the order `@variant` emits them in.
+          // **`max()` and not a branch on the orientation**, because the two
+          // rules cross at a HEIGHT rather than at a shape: `h − 48 < 0.92·h`
+          // holds for every `h < 600`, so subtracting the bar is the bigger
+          // number on a tall window and the smaller one on a short window. A
+          // landscape phone is short (359 px against 342 at 390 high) and so is
+          // a 320×568 portrait phone and a split screen — an `isLandscape`
+          // branch would have caught the first of those and quietly made the
+          // other two SHORTER than they were. `max` takes whichever rule gives
+          // the sheet more, at every size, with no size named anywhere.
           expanded
             ? 'planner-phone:max-h-[100svh]'
-            : isLandscape
-              ? 'planner-phone:max-h-[92svh]'
-              : 'planner-phone:max-h-[calc(100svh-3rem)]'
+            : 'planner-phone:max-h-[max(92svh,calc(100svh-3rem))]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
         // a bottom sheet spanning the viewport, and an inline pixel width would

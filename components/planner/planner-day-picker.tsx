@@ -67,8 +67,8 @@ export function PlannerDayPicker({
        There is nothing left to take off the height.
        The width came from the chevron that used to sit to the right of this
        bar — 44 px plus an 8 px gap, see `planner-flyout.tsx`. Measured at
-       360 px: the bar goes 174 → 200 px (the two steppers 44 → 48 each, the
-       day button 78 → 96) and the park name keeps 132 of the 106 it had. */
+       360 px: the bar goes 174 → 196 px (48 + 2 + 96 + 2 + 48) and the park
+       name grows from 106 to 132. */
     <div className="planner-phone:gap-0.5 flex items-center gap-1">
       <button
         type="button"

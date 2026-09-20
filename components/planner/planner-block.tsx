@@ -548,6 +548,61 @@ export function PlannerBlock({
           />
         </div>
 
+        {/* Delete, on the card. Phone only, and only on the SELECTED block,
+            which is what keeps it off the other eleven blocks of a day: a row
+            of ✕ down the right edge of every card is a day that looks like a
+            delete list, and the gesture that selects is the same tap the block
+            already answers.
+
+            **First of the three controls in the DOM, and lowest in z, because
+            it is the one that gives way.** The three targets tile a box that
+            cannot always hold them: the grip takes 44 px from the left edge,
+            the resize edge takes what is left of the bottom, and this takes 44
+            from the right. Two of those overlap on a block narrower than 88 px
+            — measured, that is three lanes at 320 px, where `laneWidth` comes
+            out at 86.7 — and one of them has to lose the overlap. It is this
+            one: the grip is the only pointer path a finger has to a block and
+            has owed its full 44 px since PAR-165, while the ✕ is new and has
+            the action bar behind it. So the grip keeps `z-30` and stands LATER
+            in the document, the resize edge keeps `z-40`, and both win the
+            pixels they share with this — the same tiling the resize edge's own
+            note describes, rather than a fourth stack on the same box.
+
+            The height is capped at the block's own room, exactly the way the
+            resize edge is, and for the same reason: anchored `top-0` a full
+            44 px would reach past a 30 px block into the one under it, and that
+            block's body is a plain `onClick` that selects — so the top right
+            corner of the card below would delete the card above.
+            `--pl-edge-room` is the box less its two border pixels and is set on
+            the `<li>`; this is its second reader. `planner-wide:hidden`, so a
+            fine pointer keeps the ✕ where it has always been, in the action
+            bar, and nothing about the desktop moves. */}
+        {showRemove && onRemove && (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onRemove();
+            }}
+            data-planner-block-remove=""
+            /* The opt-in `check:planner`'s 44 px sweep reads: a control
+               anchored to a block's edge is capped at the block's room, since
+               the block's height is a queue and may not grow to fit a target.
+               The resize edge below carries the same attribute for the same
+               trade. Nothing else in a block does — the grip overhangs
+               symmetrically and owes its full 44 px at every height. */
+            data-planner-block-edge=""
+            aria-label={t('removeRide')}
+            title={t('removeRide')}
+            className={cn(
+              'text-muted-foreground hover:text-destructive hover:bg-destructive/15 bg-background/80 planner-wide:hidden absolute top-0 right-0 z-30 flex size-5 items-center justify-center rounded transition-colors',
+              'after:absolute after:top-0 after:right-0 after:h-[min(2.75rem,var(--pl-edge-room))] after:w-11 after:content-[""]'
+            )}
+          >
+            <X className="size-3.5" aria-hidden="true" />
+          </button>
+        )}
+
         {/* The grip. A rail on a coarse pointer, the whole body on a fine one —
             `touch-none` never goes on the block, which covers most of the grid's
             area and would make it unscrollable exactly where the plan is read. */}
@@ -578,7 +633,8 @@ export function PlannerBlock({
             onClick={(event) => event.stopPropagation()}
             /* See the ✕ above: this is the other control capped at the block's
                room, and `check:planner` now knows the exception this comment
-               has asked for since PAR-165. */
+               has asked for since PAR-165. Its `z-40` also outranks that ✕,
+               which is the other half of the tiling described there. */
             data-planner-block-edge=""
             aria-label={t('entry.resizeHandle')}
             className={cn(
@@ -620,50 +676,6 @@ export function PlannerBlock({
             )}
           >
             <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />
-          </button>
-        )}
-
-        {/* Delete, on the card. Phone only, selected only, and after the resize
-            edge in the DOM so it wins the corner they share on a short free
-            block — both are `z-40`, so document order decides.
-
-            **Only while the block is selected**, which is what keeps it off
-            the other eleven blocks of a day: a row of ✕ down the right edge of
-            every card is a day that looks like a delete list, and the gesture
-            that selects is the same tap the block already answers.
-
-            The target is capped at the block's own room, exactly the way the
-            resize edge below is, and for the same reason: anchored `top-0` a
-            full 44 px would reach past a 30 px block into the one under it,
-            and that block's body is a plain `onClick` that selects — so the
-            top right corner of the card below would delete the card above.
-            `--pl-edge-room` is the box less its two border pixels and is set on
-            the `<li>`; this is its second reader. `planner-wide:hidden`, so a
-            fine pointer keeps the ✕ where it has always been, in the action
-            bar, and nothing about the desktop moves. */}
-        {showRemove && onRemove && (
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              onRemove();
-            }}
-            data-planner-block-remove=""
-            /* The opt-in `check:planner`'s 44 px sweep reads: a control
-               anchored to a block's edge is capped at the block's room, since
-               the block's height is a queue and may not grow to fit a target.
-               The resize edge below carries the same attribute for the same
-               trade. Nothing else in a block does — the grip overhangs
-               symmetrically and owes its full 44 px at every height. */
-            data-planner-block-edge=""
-            aria-label={t('removeRide')}
-            title={t('removeRide')}
-            className={cn(
-              'text-muted-foreground hover:text-destructive hover:bg-destructive/15 bg-background/80 planner-wide:hidden absolute top-0 right-0 z-40 flex size-5 items-center justify-center rounded transition-colors',
-              'after:absolute after:top-0 after:right-0 after:h-[min(2.75rem,var(--pl-edge-room))] after:w-11 after:content-[""]'
-            )}
-          >
-            <X className="size-3.5" aria-hidden="true" />
           </button>
         )}
 
