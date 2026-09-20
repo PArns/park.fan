@@ -563,7 +563,16 @@ export function PlannerDayColumn({
           <div
             ref={scrollerRef}
             className={cn(
-              'relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
+              /* `planner-phone:pt-0` (PAR-313): the show band is `sticky top-0`
+                 INSIDE this scroller, so the 8 px above it are 8 px the
+                 "Shows ausblenden" switch sits below the top of the axis at
+                 every scroll position — which is what "der Knopf soll weiter
+                 nach oben" describes. The strip carries its own background,
+                 its own rule and `backdrop-blur`, so flush against the band
+                 above it still reads as a strip. Only the TOP padding: the 8
+                 at the foot are what keeps the last block clear of the
+                 action bar docked over this box's lower edge. */
+              'planner-phone:pt-0 relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
               flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
             )}
             onDragOver={(event) => {
@@ -647,6 +656,13 @@ export function PlannerDayColumn({
                 scrollerRef={scrollerRef}
                 onDragChange={setDragging}
                 onSelect={setSelectedId}
+                /* The block's own ✕, and the same two statements the action
+                   bar's made: take the entry out, and let go of a selection
+                   that now points at nothing. */
+                onRemove={(entryId) => {
+                  if (parkSlug && date) removeRide(parkSlug, date, entryId);
+                  setSelectedId(null);
+                }}
                 onMove={(entryId, startMinute) =>
                   parkSlug && date && moveRide(parkSlug, date, entryId, startMinute)
                 }

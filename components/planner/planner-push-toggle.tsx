@@ -2,8 +2,28 @@
 
 import { useTranslations } from 'next-intl';
 import { Bell, BellOff, Loader2 } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { usePushSubscription } from '@/lib/planner/use-push-subscription';
+
+interface PlannerPushToggleProps {
+  /**
+   * `row` is the block this has always been; `icon` is the phone's bell.
+   *
+   * A variant rather than a second component, and that is forced rather than
+   * chosen: {@link usePushSubscription} holds its own state and asks
+   * `/api/push` from an effect, so a wrapper that only wanted to know WHICH
+   * icon to draw would be a second subscription — two requests, and two
+   * answers free to disagree about whether notifications are on.
+   *
+   * What the icon variant changes is where the body is drawn, never what it
+   * says: the same switch, the same topics and the same sentences move into a
+   * popover behind a 44 px bell. The three states that render nothing render
+   * nothing here too, bell included — a bell that opens a popover explaining
+   * that this browser has no push is a control that does nothing.
+   */
+  variant?: 'row' | 'icon';
+}
 
 /**
  * The one control that turns notifications on.
@@ -31,7 +51,7 @@ import { usePushSubscription } from '@/lib/planner/use-push-subscription';
  * to retry, and the one class carrying a figure worth printing, the limiter's
  * window, does not reach the client at all (PAR-146).
  */
-export function PlannerPushToggle() {
+export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = {}) {
   const t = useTranslations('planner');
   const { state, enable, disable, setTopics, availableTopics, selectedTopics, deleteError } =
     usePushSubscription();
@@ -41,21 +61,31 @@ export function PlannerPushToggle() {
   }
 
   if (state === 'denied') {
-    return (
+    const denied = (
       <p
-        className="text-muted-foreground flex items-start gap-1.5 px-2 py-1.5 text-[11px]"
+        className={cn(
+          'text-muted-foreground flex items-start gap-1.5 px-2 py-1.5 text-[11px]',
+          variant === 'icon' && 'max-w-64'
+        )}
         data-planner-push="denied"
       >
         <BellOff className="mt-px size-3 shrink-0" aria-hidden="true" />
         <span>{t('push.denied')}</span>
       </p>
     );
+    return variant === 'icon' ? (
+      <PushPopover label={t('push.denied')} icon={<BellOff className="size-4" />} state="denied">
+        {denied}
+      </PushPopover>
+    ) : (
+      denied
+    );
   }
 
   const busy = state === 'working';
   const on = state === 'on';
 
-  return (
+  const body = (
     <div className="px-2 py-1.5" data-planner-push={on ? 'on' : 'off'}>
       <button
         type="button"
@@ -169,6 +199,69 @@ export function PlannerPushToggle() {
         </p>
       )}
     </div>
+  );
+
+  if (variant === 'row') return body;
+
+  return (
+    <PushPopover
+      label={on ? t('push.on') : t('push.off')}
+      icon={
+        busy ? (
+          <Loader2 className="size-4 animate-spin" />
+        ) : on ? (
+          <Bell className="text-primary size-4" />
+        ) : (
+          <BellOff className="size-4" />
+        )
+      }
+      state={on ? 'on' : 'off'}
+    >
+      {body}
+    </PushPopover>
+  );
+}
+
+/**
+ * The bell, and the panel's switch behind it.
+ *
+ * `z-[80]` like every other popover this panel opens: `SheetContent` is
+ * `z-[70]` and both are portalled to `<body>`, so the shared primitive's
+ * `z-50` would draw this list behind the sheet that triggered it — a button
+ * that opens something nobody can see or reach. The park chooser, the day
+ * picker and the party chips all carry the same number for the same reason.
+ *
+ * `align="end"` because the bell sits at the sheet's right edge; centred on it
+ * the panel would hang off the screen at 360 px.
+ */
+function PushPopover({
+  label,
+  icon,
+  state,
+  children,
+}: {
+  label: string;
+  icon: React.ReactNode;
+  state: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          data-planner-push-trigger={state}
+          aria-label={label}
+          title={label}
+          className="text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:size-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors"
+        >
+          {icon}
+        </button>
+      </PopoverTrigger>
+      <PopoverContent align="end" className="z-[80] w-72 p-0">
+        {children}
+      </PopoverContent>
+    </Popover>
   );
 }
 

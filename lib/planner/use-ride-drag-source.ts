@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import {
   PLANNER_RIDE_MIME,
   buildRideDragPayload,
+  rememberRideDrag,
   serializeRideDrag,
   setRideDragImage,
 } from './ride-drag';
@@ -77,6 +78,12 @@ export function useRideDragSource(enabled: boolean): void {
         // Nothing to add, and nothing is broken: the fallback path reads the
         // URL the browser put there.
       }
+
+      // What the panel's `dragover` reads, because the payload above is
+      // unreadable until the drop — see `activeRideDrag`. Outside the `try`
+      // for the same reason it is in `startRideDrag`: a protected store costs
+      // the payload, and the preview should not pay for that too.
+      rememberRideDrag(payload);
 
       // The same chip the panel's own list hands over. Without it the browser
       // snapshots the whole card — 405 × 404 px of photograph and panels — and

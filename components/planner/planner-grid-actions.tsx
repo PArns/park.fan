@@ -259,11 +259,21 @@ export function PlannerGridActions({
           <Check className="size-4" />
         </button>
       )}
+      {/* Delete, and on a phone it is not here any more (PAR-313): the block
+          itself carries a ✕ at its top right, where the thing being deleted is
+          under the finger deleting it. This bar is docked to the grid's lower
+          edge, so on a 200 px scroller it can be a screen away from the block
+          it names. `planner-phone:hidden` rather than a branch — the desktop
+          keeps the row it has always had, and the two are the complementary
+          pair `app/globals.css` asks every `planner-phone:` class to be part
+          of. Everything else in this bar stays: ticking off, the ±15-minute
+          nudge and a free block's icon and duration are four more 44 px
+          targets, and a twenty-pixel block has room for one. */}
       <button
         type="button"
         onClick={() => onRemove(entry.id)}
         aria-label={t('removeRide')}
-        className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive planner-phone:size-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors"
+        className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive planner-phone:hidden flex size-9 shrink-0 items-center justify-center rounded-md transition-colors"
       >
         <X className="size-4" />
       </button>

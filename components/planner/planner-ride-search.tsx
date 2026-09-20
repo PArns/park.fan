@@ -169,7 +169,15 @@ export function PlannerRideSearch({
        44 px are the touch-target floor from `CLAUDE.md`, asserted by
        `check:planner`, so what gives way is the room around the field and never
        the field. */
-    <div data-planner-ride-search="" className="border-border/60 border-t px-2 pt-1 pb-1">
+    /* `planner-phone:py-0.5` on top of that (PAR-313): the field is a touch
+       target and stays 44 px, so „das Feld niedriger" is spent on the room
+       around it a second time. 4 px here and 2 more off the hint's margin
+       below; the hint itself stays, because it is the only place this panel
+       says what a tap on a row does. */
+    <div
+      data-planner-ride-search=""
+      className="border-border/60 planner-phone:py-0.5 border-t px-2 pt-1 pb-1"
+    >
       <div className="relative">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input
@@ -193,7 +201,7 @@ export function PlannerRideSearch({
           gives back is leading rather than words: `leading-snug` draws the same
           two lines in 30 px instead of 33, and the 4 px off the margin come out
           of the gap to a field that carries its own background anyway. */}
-      <p className="text-muted-foreground mt-1 px-1 text-[11px] leading-snug">
+      <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
         {t('search.tapHint')}
       </p>
 

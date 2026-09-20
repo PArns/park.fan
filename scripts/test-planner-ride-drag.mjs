@@ -14,13 +14,16 @@
 
 import {
   PLANNER_RIDE_MIME,
+  activeRideDrag,
   buildRideDragPayload,
   parseRideDrag,
+  rememberRideDrag,
   rideFromPath,
   rideFromUrl,
   serializeRideDrag,
   coverOffset,
 } from '../lib/planner/ride-drag.ts';
+import { buildDayGrid, clampStart, rideFloor } from '../lib/planner/day-grid.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -184,6 +187,84 @@ test('one value applies to both axes', offset('25%'), '0.25,0.25');
 test('past the right edge is clamped', offset('140% 50%'), '1,0.5');
 test('a negative offset is clamped', offset('-30% 50%'), '0,0.5');
 test('a value that is not a number is the centre', offset('abc% 50%'), '0.5,0.5');
+
+// ── 6. The preview and the drop land on the same floor ──────────────────────
+// The bug this is written for is a promise the app broke by itself: `onDrop`
+// clamps a dropped ride to `rideFloor().softMin`, `onDragOver` clamped to the
+// park's opening, so the line drawn under the pointer named a minute the
+// release could not use. Taron opens at 11:00 in a park that opens at 09:00 —
+// the preview offered 09:00 and the block appeared at 11:00.
+//
+// The two halves are asserted against the SAME function the two handlers call,
+// with the slug arriving the way each of them gets it: the preview from
+// `activeRideDrag`, the drop from the payload on the DataTransfer. What the
+// pair proves is that the two paths cannot answer differently — a floor read
+// off one of them and not the other is the defect itself.
+const GRID = buildDayGrid(9, 18);
+const TARON = {
+  attractionSlug: 'taron',
+  attractionName: 'Taron',
+  opensAt: '11:00',
+  hours: [],
+  sampleDays: 0,
+};
+const DAY_RIDES = [TARON];
+/** The grid's own lookup, copied by neither handler: both call this one. */
+const floorForSlug = (slug) =>
+  rideFloor(
+    GRID,
+    DAY_RIDES.find((ride) => ride.attractionSlug === slug)
+  ).softMin;
+
+const DRAG = {
+  parkSlug: 'phantasialand',
+  attractionSlug: 'taron',
+  attractionName: 'Taron',
+};
+/** 09:30 — before the ride opens, which is the minute the bug was visible at. */
+const POINTER_MINUTE = 570;
+
+rememberRideDrag(DRAG);
+test('a drag remembers itself for the handler that cannot read it', activeRideDrag(), DRAG);
+
+// `dragover`: the slug comes from the remembered drag, and the park is checked
+// the way the grid checks it — a ride from another park is a floor this day
+// knows nothing about.
+const remembered = activeRideDrag();
+const previewFloor =
+  remembered && remembered.parkSlug === 'phantasialand'
+    ? floorForSlug(remembered.attractionSlug)
+    : GRID.openMin;
+// `drop`: the slug comes off the DataTransfer, which is the one channel that
+// survives a drag from another tab.
+const dropped = parseRideDrag(serializeRideDrag(DRAG));
+const dropFloor = floorForSlug(dropped.attractionSlug);
+
+test('the preview clamps to the ride, not to the park', previewFloor, 660);
+test('the drop clamps to the same minute', dropFloor, previewFloor);
+test(
+  'so a pointer at 09:30 previews where the drop puts it',
+  clampStart(GRID, POINTER_MINUTE, previewFloor),
+  clampStart(GRID, POINTER_MINUTE, dropFloor)
+);
+// And the control: the value the preview used to pass. Without it the three
+// assertions above would pass over a ride whose own opening IS the park's.
+test(
+  'the old preview floor was a different minute',
+  clampStart(GRID, POINTER_MINUTE, GRID.openMin) === clampStart(GRID, POINTER_MINUTE, dropFloor),
+  false
+);
+
+// A ride belonging to another park is refused rather than looked up: `rideFloor`
+// with no ride answers the park's opening, which is where the line was before.
+const FOREIGN = { ...DRAG, parkSlug: 'europa-park', attractionSlug: 'voltron-nevera' };
+rememberRideDrag(FOREIGN);
+const foreign = activeRideDrag();
+test(
+  'a ride from another park falls back to the park opening',
+  foreign.parkSlug === 'phantasialand' ? floorForSlug(foreign.attractionSlug) : GRID.openMin,
+  GRID.openMin
+);
 
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;
