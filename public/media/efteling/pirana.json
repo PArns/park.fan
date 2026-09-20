@@ -1,0 +1,22 @@
+{
+  "park": "efteling",
+  "ride": "pirana",
+  "area": "Anderrijk",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-20",
+  "gps": {
+    "lat": 51.64775,
+    "lon": 5.048453
+  },
+  "review": true
+}

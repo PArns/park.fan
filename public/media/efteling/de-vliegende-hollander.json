@@ -1,0 +1,21 @@
+{
+  "park": "efteling",
+  "ride": "de-vliegende-hollander",
+  "area": "Ruigrijk",
+  "tags": [
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-20",
+  "gps": {
+    "lat": 51.646994,
+    "lon": 5.052589
+  },
+  "review": true
+}

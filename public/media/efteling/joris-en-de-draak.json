@@ -1,0 +1,21 @@
+{
+  "park": "efteling",
+  "ride": "joris-en-de-draak",
+  "area": "Ruigrijk",
+  "tags": [
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-09-20",
+  "gps": {
+    "lat": 51.646781,
+    "lon": 5.051561
+  },
+  "review": true
+}

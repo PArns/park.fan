@@ -1,0 +1,17 @@
+{
+  "park": "efteling",
+  "ride": "gondoletta",
+  "area": "Reizenrijk",
+  "tags": [
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2024
+  },
+  "shotAt": "2024-12-31",
+  "review": true
+}
