@@ -41,7 +41,8 @@ import { showLinePositions } from '@/lib/planner/day-grid';
 import { BAND_FADE, bandGeometry } from '@/lib/planner/block-band';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
-import type { PlannerEntry } from '@/lib/planner/types';
+import { partyFlags } from '@/lib/planner/party';
+import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 
 interface PlannerDayGridProps {
@@ -66,6 +67,16 @@ interface PlannerDayGridProps {
   onDropRide?: (attractionSlug: string, attractionName: string, startMinute: number) => void;
   /** Rides reporting closed right now. Empty where the date is not today. */
   closedNow?: ReadonlySet<string>;
+  /**
+   * Who is coming, if anybody asked — the day's own answers, not the park's.
+   *
+   * The grid needs them for the same reason the ride search does: a block is a
+   * ride, and a ride the party flagged keeps that flag once it is placed. The
+   * search list was the only view that ever showed it, so a visitor who dragged
+   * a water ride in saw the mark for as long as the list was open and never
+   * again. A FLAG and never a filter — nothing here removes a block.
+   */
+  prefs?: PlannerDayPrefs;
   loading?: boolean;
   onMove: (entryId: string, startMinute: number) => void;
   onShiftFrom: (entryId: string, deltaMinutes: number) => void;
@@ -124,6 +135,7 @@ export function PlannerDayGrid({
   parkSlug,
   onDropRide,
   closedNow,
+  prefs,
   loading = false,
   onMove,
   onShiftFrom,
@@ -1170,6 +1182,11 @@ export function PlannerDayGrid({
                 }
                 closedNow={false}
                 downYesterday={false}
+                /* The ghost is the same ride, so it carries the same mark: a
+                   preview that dropped the droplet would say the flag goes away
+                   at the new hour, which is a claim about the ride and not
+                   about the clock. */
+                wet={partyFlags(ghostRow.ride ?? {}, prefs).wet}
                 selected={false}
                 dragging={false}
                 conflict={false}
@@ -1213,6 +1230,12 @@ export function PlannerDayGrid({
                       : false
                   }
                   downYesterday={row.ride?.downYesterday === true}
+                  /* `{}` where the entry is a free block or a ride the day
+                     payload does not carry: `partyFlags` reads two optional
+                     facts off it and answers `NONE` for a ride with neither,
+                     which is the honest answer for a ride we know nothing
+                     about. */
+                  wet={partyFlags(row.ride ?? {}, prefs).wet}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
                   dimmed={dragMoved}

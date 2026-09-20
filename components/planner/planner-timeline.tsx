@@ -4,12 +4,19 @@ import { useTranslations } from 'next-intl';
 import { PlannerEntryRow } from './planner-entry-row';
 import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
 import { dayScale } from '@/lib/planner/bar-geometry';
-import type { PlannerEntry } from '@/lib/planner/types';
+import { partyFlags } from '@/lib/planner/party';
+import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay } from '@/lib/api/types';
 
 interface PlannerTimelineProps {
   entries: readonly PlannerEntry[];
   day: PlanDay | null;
+  /**
+   * Who is coming, if anybody asked. The grid's blocks carry the party's marks
+   * and so do these rows — this is the same plan drawn without an axis, and a
+   * park whose hours we do not know is not a park where the water is drier.
+   */
+  prefs?: PlannerDayPrefs;
   onToggleDone: (entryId: string, done: boolean) => void;
   onRemove: (entryId: string) => void;
 }
@@ -29,8 +36,18 @@ interface PlannerTimelineProps {
  * a time without an axis to express it against. With no hours there is no time
  * to drop onto; the grid does the real thing.
  */
-export function PlannerTimeline({ entries, day, onToggleDone, onRemove }: PlannerTimelineProps) {
+export function PlannerTimeline({
+  entries,
+  day,
+  prefs,
+  onToggleDone,
+  onRemove,
+}: PlannerTimelineProps) {
   const t = useTranslations('planner');
+
+  // Keyed lookup rather than a `find` per row: the grid reaches its ride through
+  // a layout that has already paired the two, and this view has only the entry.
+  const ridesBySlug = new Map((day?.rides ?? []).map((ride) => [ride.attractionSlug, ride]));
 
   const estimates = entries.map((entry) => estimateFor(day, entry));
   const scale = dayScale(estimates.map((e) => e.wait));
@@ -49,6 +66,12 @@ export function PlannerTimeline({ entries, day, onToggleDone, onRemove }: Planne
           scale={scale}
           tier={tier}
           showBandFigure={showBandFigure}
+          wet={
+            partyFlags(
+              (entry.attractionSlug ? ridesBySlug.get(entry.attractionSlug) : undefined) ?? {},
+              prefs
+            ).wet
+          }
           onToggleDone={() => onToggleDone(entry.id, !entry.done)}
           onRemove={() => onRemove(entry.id)}
         />

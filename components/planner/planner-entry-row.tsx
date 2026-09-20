@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Check, X } from 'lucide-react';
+import { Check, Droplets, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlannerBar } from './planner-bar';
 import { formatGridTime } from '@/lib/planner/park-time';
@@ -16,6 +16,15 @@ interface PlannerEntryRowProps {
   tier: PlanDayTier;
   /** Whether the band may carry a figure — see `bandCarriesFigure`. */
   showBandFigure: boolean;
+  /**
+   * The party asked to stay dry and this is a water ride — `partyFlags().wet`.
+   *
+   * A boolean, decided by the caller, because this row has the plan's entry and
+   * not the catalogue's ride: `PlannerEntry` stores a slug and a name, and the
+   * two facts the flag is computed from live in the day payload. A FLAG and
+   * never a filter — the row is the same row with a mark on it.
+   */
+  wet?: boolean;
   onToggleDone: () => void;
   onRemove: () => void;
 }
@@ -38,6 +47,7 @@ export function PlannerEntryRow({
   scale,
   tier,
   showBandFigure,
+  wet = false,
   onToggleDone,
   onRemove,
 }: PlannerEntryRowProps) {
@@ -77,8 +87,20 @@ export function PlannerEntryRow({
 
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-2">
-          <span className={cn('truncate text-sm', done && 'line-through')}>
-            {entry.attractionName}
+          {/* The name and the party's mark are ONE column, so the figure on the
+              right keeps its place and the name is what gives way. The strike
+              stays on the text alone: a line drawn through the droplet would
+              read as the flag itself being crossed out. */}
+          <span className="flex min-w-0 flex-1 items-center gap-1.5">
+            <span className={cn('truncate text-sm', done && 'line-through')}>
+              {entry.attractionName}
+            </span>
+            {wet && (
+              <Droplets
+                className="text-crowd-moderate size-3 shrink-0"
+                aria-label={t('party.wet')}
+              />
+            )}
           </span>
           {/* The number alone does not say whether it is a prediction or a
               record — the strikethrough and the bar's tone carry that visually,
