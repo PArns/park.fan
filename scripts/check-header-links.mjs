@@ -27,8 +27,18 @@
  * without the geographic pane), which is the one way this could have gone green with nothing
  * checked. Every run prints how many links it compared (see G-72).
  *
- * Links are read out of the `<header>` element alone, so a match is the header's and never a
- * breadcrumb or a body link that happens to point at the same hub.
+ * WHICH `<header>` — THE ONE OUTSIDE `<main>`, AND IT IS NOT THE FIRST ONE
+ *
+ * Links are read out of the site header alone, so a match is the header's and never a breadcrumb
+ * or a body link that happens to point at the same hub. Finding it is two traps deep. The header
+ * is a Client Component behind a Suspense boundary, so although it precedes `<main>` in the JSX it
+ * arrives in the streamed tail: on a park page its markup starts at byte 193,924 and `</main>`
+ * closes at 192,467. And a page with a hero ships a `<header>` of its own inside `<main>` — on
+ * `/de/blog` that one opens at byte 16,900 and the site header at 204,737, so "the first
+ * `<header>`" reads the hero and reports 0 of 33 links on a page that has all of them.
+ *
+ * The site header is therefore the `<header>` that lies outside the `<main>` element, and finding
+ * anything other than exactly one of those is a failure rather than a guess.
  *
  * Needs a running site (`pnpm dev`, or `pnpm start` after a build):
  *
@@ -61,23 +71,48 @@ function check(label, ok, detail = '') {
 }
 
 /**
- * The `<header>` element's markup, depth-aware so a nested `<header>` cannot end the slice early.
- * Returns null when the document has none, which is itself a failure worth naming.
+ * The span of the first `<name>` element that opens at or after `from`, depth-aware so a nested
+ * element of the same name cannot end the slice early. Null when there is none.
  */
-function headerMarkup(html) {
-  const open = /<header[\s>]/gi;
-  const first = open.exec(html);
-  if (!first) return null;
+function elementSpan(html, name, from = 0) {
+  const tags = new RegExp(`<(/?)${name}[\\s>]`, 'gi');
+  tags.lastIndex = from;
 
-  const tags = /<(\/?)header[\s>]/gi;
-  tags.lastIndex = first.index;
-  let depth = 0;
+  const first = tags.exec(html);
+  if (!first || first[1] === '/') return null;
+
+  let depth = 1;
   let tag;
   while ((tag = tags.exec(html)) !== null) {
     depth += tag[1] === '/' ? -1 : 1;
-    if (depth === 0) return html.slice(first.index, tags.lastIndex);
+    if (depth === 0) return { start: first.index, end: tags.lastIndex };
   }
-  return html.slice(first.index);
+  return { start: first.index, end: html.length };
+}
+
+/**
+ * The site header's markup: the `<header>` that is not inside `<main>`. See the note above for
+ * why neither "the first one" nor "before `<main>`" finds it.
+ *
+ * Returns a string, or a sentence saying what was found instead — guessing between two candidates
+ * is how a check starts reporting about the wrong element.
+ */
+function siteHeaderMarkup(html) {
+  const main = elementSpan(html, 'main');
+  if (main === null) return { error: 'no <main> element, so the site header cannot be told apart' };
+
+  const outside = [];
+  for (let at = 0; at < html.length;) {
+    const header = elementSpan(html, 'header', at);
+    if (header === null) break;
+    if (header.start < main.start || header.start >= main.end) outside.push(header);
+    at = header.end;
+  }
+
+  if (outside.length !== 1) {
+    return { error: `${outside.length} <header> elements outside <main>, expected exactly 1` };
+  }
+  return { markup: html.slice(outside[0].start, outside[0].end) };
 }
 
 /** Every `href` value in a chunk of markup, as a set of paths. */
@@ -135,13 +170,13 @@ for (const locale of locales) {
     continue;
   }
 
-  const header = headerMarkup(html);
-  if (header === null) {
-    check(`${locale}: document has a <header>`, false, url);
+  const header = siteHeaderMarkup(html);
+  if (header.error) {
+    check(`${locale}: document has a site header`, false, `${url}: ${header.error}`);
     continue;
   }
 
-  const found = hrefs(header);
+  const found = hrefs(header.markup);
   const expected = [
     `/${locale}/parks`,
     `/${locale}/blog`,
