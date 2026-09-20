@@ -1,6 +1,7 @@
 'use client';
 
 import { urlBase64ToUint8Array } from './vapid-key';
+import { currentPushTimezone, rememberSentPushTimezone } from './push-timezone';
 
 /**
  * Subscribing a browser to push, without a trip — for a ride alert or a
@@ -162,6 +163,12 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
     // trip planner's own registration: a worker installed for everybody
     // would claim scope over the whole origin for a feature almost nobody
     // turns on. It is the SAME file either way, generic to both features.
+    //
+    // `lib/push/push-timezone.ts` does run on every page load and does not
+    // break that: it reads an EXISTING registration to keep the stored zone
+    // current, and installs nothing. A browser that has never armed anything
+    // leaves it after two `localStorage` reads, so the rule above still holds
+    // — what is forbidden here is claiming scope, not looking.
     const registration = await navigator.serviceWorker.register('/sw.js');
     await navigator.serviceWorker.ready;
 
@@ -183,6 +190,7 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
     // No tripId, no topics: this call is not about the trip planner, and
     // omitting both leaves whatever this endpoint already has for them
     // untouched (see the module docstring).
+    const timezone = currentPushTimezone();
     const response = await fetch('/api/push/subscriptions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -191,7 +199,7 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
         p256dh: identity.p256dh,
         auth: identity.auth,
         locale: document.documentElement.lang || 'en',
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        ...(timezone ? { timezone } : {}),
       }),
     });
 
@@ -201,6 +209,14 @@ export async function ensurePushRegistered(): Promise<PushRegistration> {
       await subscription.unsubscribe().catch(() => {});
       return { ok: false, cause: 'failed' };
     }
+
+    // The zone above is now the one the API holds for this endpoint. Recorded
+    // on the 2xx and nowhere else, so the next page load compares against
+    // something the server actually took — without this, every browser that
+    // just armed an alert would send the same zone again on its next load.
+    // Omitted above means nothing was sent, so there is nothing to record:
+    // the stored zone is then whatever it already was.
+    if (timezone) rememberSentPushTimezone(identity.endpoint, timezone);
 
     return { ok: true, identity };
   } catch {
