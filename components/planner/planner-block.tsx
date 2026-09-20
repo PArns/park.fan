@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, Droplets } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_DOT_CLASS,
@@ -101,6 +101,15 @@ interface PlannerBlockProps {
   closedNow?: boolean;
   /** The ride was down all of the previous operating day. */
   downYesterday?: boolean;
+  /**
+   * The party asked to stay dry and this is a water ride — `partyFlags().wet`.
+   *
+   * A boolean rather than the prefs and the ride's own facts, like `closedNow`
+   * and `downYesterday` beside it: the block draws what it is told and the one
+   * place that decides is `party.ts`. It is a FLAG and never a filter — the
+   * block is drawn exactly as it would be without it, with a mark added.
+   */
+  wet?: boolean;
   selected?: boolean;
   dragging?: boolean;
   conflict?: boolean;
@@ -170,6 +179,7 @@ export function PlannerBlock({
   photo = null,
   closedNow = false,
   downYesterday = false,
+  wet = false,
   selected = false,
   dragging = false,
   conflict = false,
@@ -278,6 +288,22 @@ export function PlannerBlock({
           ? t('warn.maybeAfterClose')
           : null;
   const warnTone = closedNow ? 'text-destructive' : 'text-crowd-high';
+
+  /**
+   * The water mark, beside the warning rather than competing with it.
+   *
+   * `warnLabel` is one slot that three conditions take turns in, because all
+   * three are statements about THIS BLOCK being wrong — shut, down, or after
+   * closing. "You said you would rather stay dry" is not one of those: the block
+   * is right, the hour is right, and the ride is still a water ride. So it gets
+   * a mark of its own and both can show at once.
+   *
+   * Rides only. A free block stands for nothing in the catalogue and has no
+   * facts to flag — `partyFlags` answers `NONE` for it, and this is the same
+   * statement said locally, so a future caller cannot hand a lunch break a
+   * droplet.
+   */
+  const showWet = wet && !custom;
 
   const missingLabel =
     custom || estimate.missing === 'custom'
@@ -660,6 +686,12 @@ export function PlannerBlock({
               {warnLabel && (
                 <AlertTriangle className={cn('size-3 shrink-0', warnTone)} aria-label={warnLabel} />
               )}
+              {showWet && (
+                <Droplets
+                  className="text-crowd-moderate size-3 shrink-0"
+                  aria-label={t('party.wet')}
+                />
+              )}
               {(ghost || hasFigure) && (
                 <span
                   data-figure=""
@@ -703,6 +735,12 @@ export function PlannerBlock({
                   <AlertTriangle
                     className={cn('size-3 shrink-0', warnTone)}
                     aria-label={warnLabel}
+                  />
+                )}
+                {showWet && (
+                  <Droplets
+                    className="text-crowd-moderate size-3 shrink-0"
+                    aria-label={t('party.wet')}
                   />
                 )}
                 {hasFigure && (

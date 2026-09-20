@@ -607,6 +607,7 @@ export function PlannerDayColumn({
                  prop's "the day payload has not arrived". */
                 showLines={showsVisible ? showLines : []}
                 closedNow={closedNow}
+                prefs={prefs}
                 parkSlug={park?.slug}
                 onDropRide={(attractionSlug, attractionName, startMinute) => {
                   if (!park || !date) return;
@@ -676,6 +677,7 @@ export function PlannerDayColumn({
               <PlannerTimeline
                 entries={entries}
                 day={day ?? null}
+                prefs={prefs}
                 onToggleDone={toggleDone}
                 onRemove={(entryId) => parkSlug && date && removeRide(parkSlug, date, entryId)}
               />
