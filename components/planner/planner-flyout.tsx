@@ -785,7 +785,36 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // the reason it may not become decoration. Resting at 92 the shield
           // is back. Only the pulled-up state gives it up, and only for as long
           // as somebody holds it there.
-          expanded ? 'planner-phone:max-h-[100svh]' : 'planner-phone:max-h-[92svh]'
+          //
+          // **A PORTRAIT phone rests on the header instead of on a percentage**
+          // (PAR-313). 92svh is 736 px at 800 and leaves 64, of which the site
+          // header is 48 and the rest is a strip of page nobody reads — so the
+          // sheet gave up a whole 15-minute block of axis to show 16 px of
+          // park page. `calc(100svh-3rem)` is the same edge stated as what it
+          // is: everything under the bar. The `3rem` is the `h-12` of
+          // `<header>` — this does not RESERVE the bar's height, which is what
+          // the four places in
+          // `docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md`
+          // do; it stops below it, and that rule's page names it as the one
+          // reader of the number outside the four.
+          //
+          // Resting at a full `100svh` is what the report asked for and it is
+          // not available: the handle's only job is the difference between the
+          // two states, and at 100 there is no difference left to pull. 48 px
+          // of travel is over the 40 `check:planner` asserts, where the 4svh
+          // the handle used to have before PAR-188 was under it.
+          //
+          // **Landscape keeps the 92.** There 100svh − 48 px is 342 of 390,
+          // i.e. SMALLER than the 359 it has today, and that window is the one
+          // where the axis already runs on 269 px. `isLandscape` rather than a
+          // class, because the two branches are a portrait/landscape split
+          // inside `planner-phone:` and one of them has to win: written as two
+          // variants they would depend on the order `@variant` emits them in.
+          expanded
+            ? 'planner-phone:max-h-[100svh]'
+            : isLandscape
+              ? 'planner-phone:max-h-[92svh]'
+              : 'planner-phone:max-h-[calc(100svh-3rem)]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
         // a bottom sheet spanning the viewport, and an inline pixel width would
@@ -830,7 +859,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             going to be a lie. Anchoring the overhang upward instead only moves
             the problem — pulled up to 100svh there is nothing above the sheet
             to reach into. */}
-        <div className="planner-phone:py-0 planner-wide:hidden flex shrink-0 justify-center pt-1 pb-0.5">
+        <div className="planner-phone:py-0 planner-wide:hidden relative flex shrink-0 justify-center pt-1 pb-0.5">
           <button
             type="button"
             onPointerDown={handleSheetGrab}
@@ -844,6 +873,31 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           >
             <span className="bg-muted-foreground/40 h-1.5 w-10 rounded-full" />
           </button>
+          {/* Notifications, and this row is where they fit (PAR-313).
+              The report asked for an icon at the top instead of the text row at
+              the foot, and the row BELOW cannot take one: measured at 360 px it
+              holds 336, of which the park name has 106 and the day picker 174,
+              and a fourth 44 px target there would be paid for out of the park
+              name — the arithmetic this file already carries two comments
+              further down. This row holds a 96 px handle in 336 and nothing
+              else, so the two 120 px margins beside it are the only free space
+              the sheet's chrome has.
+
+              `absolute`, so the handle stays centred on the SHEET rather than
+              on what is left of the row — it is the sheet's only exit at
+              100svh and may not drift with a control that comes and goes. The
+              handle is 96 px wide from x=132, this is 44 from x=296: they do
+              not meet, and `elementFromPoint` over both says so.
+
+              Same gate as the foot's copy had — a plan with nothing in it has
+              nothing to be notified about — plus `isPhone`, because the
+              desktop keeps its row at the foot. The component still renders
+              nothing at all in three of its seven states. */}
+          {isPhone && park && activeDate && activeEntries.length > 0 && (
+            <div className="absolute top-0 right-2">
+              <PlannerPushToggle variant="icon" />
+            </div>
+          )}
         </div>
 
         {/* ONE row, not two. The title sat on its own line with nothing beside
@@ -935,6 +989,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 timezone={resolveTimeZone(day?.timezone ?? park?.timezone)}
                 facts={dayFacts.byDate}
                 maxDate={dayFacts.lastDate ?? undefined}
+                /* The way into the overview, on the one arrangement where the
+                   chevron beside the date is gone — see the note on the toggle
+                   below. It is the park chooser's own foot, next to "Park
+                   hinzufügen", because both rows answer the same question a
+                   step apart: which plan am I in, and where is the other one. */
+                onShowOverview={park ? () => setShowOverview(true) : undefined}
                 className="min-w-0 flex-1 border-b-0 px-0 py-0"
               />
             )}
@@ -942,49 +1002,44 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               <>
                 {/* The park name is the way into the overview. It was a plain
                     label with a row of chips under it naming the OTHER parks,
-                    and a chip said nothing about what was planned in one. */}
-                <button
-                  type="button"
-                  onClick={() => setShowOverview((value) => !value)}
-                  aria-expanded={showOverview}
-                  data-planner-overview-toggle=""
-                  className={cn(
-                    'text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex items-center gap-1 rounded text-xs transition-colors',
-                    // Beside the head it is the ONE 44 px target the row can
-                    // still afford, and the word beside it is what pays for
-                    // that. Measured at 390 px: the row is 351 wide — 295
-                    // until `hideClose` gave back the 56 px this header used
-                    // to hold for the × — and it spends them on this button's
-                    // 44, an 8 px gap and the head's 299. Inside that head the
-                    // park name's control gets 121 and the name draws its full
-                    // 80, where the narrower row cut it to 37. Putting „Meine
-                    // Pläne" back beside the chevron costs 68 px plus the gap,
-                    // i.e. most of what the park name is using, so the extra
-                    // room does not change this: the chevron IS the control,
-                    // the sign that a list opens here, and the word goes to
-                    // the screen reader it was being carried for.
-                    phoneHead
-                      ? 'hover:bg-accent size-11 shrink-0 justify-center rounded-md'
-                      : 'min-w-0 flex-1 px-1 py-0.5'
-                  )}
-                >
-                  {/* "Meine Pläne", never the active park's name. This control
-                      opens the list of ALL plans, and labelling it with one of
-                      them made it read as a statement about the page — which on
-                      a different park's page is simply wrong. */}
-                  <span className={cn('truncate', phoneHead && 'sr-only')}>{t('plans.title')}</span>
-                  {/* Always. Hiding it until a second park or day existed made
-                      the overview — the only route to another park or another
-                      day — invisible to everyone who had exactly one, which is
-                      everyone at the start. This chevron is where "how do I add
-                      another day" is answered, so it cannot wait. */}
-                  <ChevronDown
-                    className={cn(
-                      'size-3 shrink-0 transition-transform',
-                      showOverview && 'rotate-180'
-                    )}
-                  />
-                </button>
+                    and a chip said nothing about what was planned in one.
+
+                    **Not while the phone's head is up** (PAR-313). There this
+                    button is the icon alone — 44 px of chevron sitting against
+                    the day picker's own `›` — and the report read it as a
+                    minimize control, which is a fair reading of two chevrons
+                    side by side. `!phoneHead` and not `!isPhone`: with the
+                    overview OPEN `phoneHead` is false, and then this same
+                    button is drawn with its word and is the only way back. So
+                    what goes is the icon-only state and nothing else; the way
+                    IN moved into the park chooser beside it, see
+                    `onShowOverview` above. */}
+                {!phoneHead && (
+                  <button
+                    type="button"
+                    onClick={() => setShowOverview((value) => !value)}
+                    aria-expanded={showOverview}
+                    data-planner-overview-toggle=""
+                    className="text-muted-foreground hover:text-foreground planner-phone:min-h-11 flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
+                  >
+                    {/* "Meine Pläne", never the active park's name. This control
+                        opens the list of ALL plans, and labelling it with one of
+                        them made it read as a statement about the page — which on
+                        a different park's page is simply wrong. */}
+                    <span className="truncate">{t('plans.title')}</span>
+                    {/* Always. Hiding it until a second park or day existed made
+                        the overview — the only route to another park or another
+                        day — invisible to everyone who had exactly one, which is
+                        everyone at the start. This chevron is where "how do I add
+                        another day" is answered, so it cannot wait. */}
+                    <ChevronDown
+                      className={cn(
+                        'size-3 shrink-0 transition-transform',
+                        showOverview && 'rotate-180'
+                      )}
+                    />
+                  </button>
+                )}
                 {/* A day can be started from anywhere in the panel, not only
                     from inside the overview. It carries the page's park where
                     there is one, so the wizard opens on the calendar rather
@@ -1442,8 +1497,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 {/* Under the ride search, above the summary: it belongs to the DAY
                 rather than to the panel's chrome, and it is the last thing
                 somebody decides once the plan is actually built. Renders
-                nothing at all where push cannot work — see the component. */}
-                {activeEntries.length > 0 && (
+                nothing at all where push cannot work — see the component.
+
+                `!isPhone` since PAR-313: on a phone the same component is the
+                bell in the handle row, and two copies would be two
+                `[data-planner-push]` for a selector to pick the wrong one of —
+                and two `usePushSubscription()`, i.e. two `/api/push` requests
+                and two states free to disagree about whether it is on. */}
+                {!isPhone && activeEntries.length > 0 && (
                   <div className="border-border/60 shrink-0 border-t">
                     <PlannerPushToggle />
                   </div>

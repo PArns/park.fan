@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Check, ChevronDown, MapPin, Plus, X } from 'lucide-react';
+import { Check, ChevronDown, LayoutList, MapPin, Plus, X } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import type { PlannerPark } from '@/lib/planner/types';
@@ -18,6 +18,18 @@ interface PlannerColumnHeadProps {
   onPickDate: (date: string) => void;
   /** Starts a park this plan does not have yet — the wizard asks all three questions. */
   onNewPark: () => void;
+  /**
+   * Opens the plan overview from inside the park list. Phone only.
+   *
+   * The chooser lists the plan's parks; the overview lists its parks AND their
+   * days, which is the next question after "which park am I in". They used to
+   * be two controls in one row — this one and a chevron beside the day picker
+   * — and on a phone that chevron was 44 px of icon against the picker's own
+   * `›`, read as a minimize button (PAR-313). So the route moved to where its
+   * neighbour already is. Absent on a desktop, where the labelled button in
+   * the panel header says „Meine Pläne" in as many words.
+   */
+  onShowOverview?: () => void;
   /** Absent on the first column: it is the plan's active day and cannot be closed. */
   onClose?: () => void;
   plannedDates?: readonly string[];
@@ -65,6 +77,7 @@ export function PlannerColumnHead({
   onPickPark,
   onPickDate,
   onNewPark,
+  onShowOverview,
   onClose,
   plannedDates = [],
   timezone,
@@ -95,7 +108,18 @@ export function PlannerColumnHead({
             type="button"
             data-planner-column-park=""
             aria-label={t('column.pickPark')}
-            className="hover:bg-accent planner-phone:h-11 flex h-7 min-w-0 flex-1 items-center gap-1 rounded-md px-1.5 text-xs font-medium transition-colors"
+            // `planner-phone:bg-accent/40`, and it is the fix for "the park
+            // button is hard to press" (PAR-313). The target is not the
+            // problem: measured at 360 px it is 106 × 44 and `elementFromPoint`
+            // answers this button at all 25 points of a 5 × 5 grid over it —
+            // nothing overlaps it, and 44 px is the floor. What it has no
+            // is a SURFACE. `hover:bg-accent` is the only ground here and a
+            // touch screen has no hover, so beside a day picker that carries
+            // `bg-accent/40` at rest this reads as the panel's heading rather
+            // than as the control that changes the park. Same tint as its
+            // neighbour, phone only: a fine pointer gets the hover and the
+            // desktop row keeps the two controls it has always had.
+            className="hover:bg-accent planner-phone:bg-accent/40 planner-phone:h-11 flex h-7 min-w-0 flex-1 items-center gap-1 rounded-md px-1.5 text-xs font-medium transition-colors"
           >
             <span className="truncate">{park?.name ?? t('column.noPark')}</span>
             <ChevronDown className="size-3 shrink-0 opacity-60" aria-hidden="true" />
@@ -149,13 +173,35 @@ export function PlannerColumnHead({
               </li>
             ))}
           </ul>
+          {/* The foot of the list, and its two rows are one pair: this one
+              goes to the days that exist, the one below starts a park that does
+              not. The border sits on the first of them, so the pair reads as a
+              foot rather than as two loose rows — which is why `mt-1 border-t`
+              moved off "Park hinzufügen" when this was added. */}
+          {onShowOverview && (
+            <button
+              type="button"
+              onClick={() => {
+                onShowOverview();
+                setOpen(false);
+              }}
+              data-planner-overview-row=""
+              className="hover:bg-accent border-border/60 planner-phone:min-h-11 mt-1 flex w-full items-center gap-2 rounded-md border-t px-2 py-1.5 text-left text-xs transition-colors"
+            >
+              <LayoutList className="size-3.5 shrink-0" aria-hidden="true" />
+              <span className="truncate">{t('plans.title')}</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => {
               onNewPark();
               setOpen(false);
             }}
-            className="hover:bg-accent border-border/60 planner-phone:min-h-11 mt-1 flex w-full items-center gap-2 rounded-md border-t px-2 py-1.5 text-left text-xs transition-colors"
+            className={cn(
+              'hover:bg-accent border-border/60 planner-phone:min-h-11 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
+              !onShowOverview && 'mt-1 border-t'
+            )}
           >
             <Plus className="size-3.5 shrink-0" aria-hidden="true" />
             <span className="truncate">{t('column.addPark')}</span>

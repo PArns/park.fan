@@ -59,7 +59,17 @@ export function PlannerDayPicker({
   const atEnd = Boolean(maxDate && value >= maxDate);
 
   return (
-    <div className="flex items-center gap-1">
+    /* **Wider on a phone, and it could not be shorter** (PAR-313). The report
+       asked for this bar less tall and wider, and the first half is already
+       spent: every control in it is 44 px, which is the touch floor
+       `CLAUDE.md` states and `check:planner` asserts, and the row around them
+       carries `planner-phone:py-0`, so the bar is exactly 44 px + its rule.
+       There is nothing left to take off the height.
+       The width came from the chevron that used to sit to the right of this
+       bar — 44 px plus an 8 px gap, see `planner-flyout.tsx`. Measured at
+       360 px: the bar goes 174 → 200 px (the two steppers 44 → 48 each, the
+       day button 78 → 96) and the park name keeps 132 of the 106 it had. */
+    <div className="planner-phone:gap-0.5 flex items-center gap-1">
       <button
         type="button"
         onClick={() => onChange(addDays(value, -1))}
@@ -70,7 +80,9 @@ export function PlannerDayPicker({
           // them. Stepping a day is the most-pressed control in the panel and
           // it was a 28 px square; the row it sits in is 44 px tall now, so
           // this costs the axis nothing beyond what the row already spent.
-          'hover:bg-accent planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors',
+          // 48 WIDE since PAR-313 — the height is at its floor, so what the
+          // freed chevron buys the most-pressed control is width.
+          'hover:bg-accent planner-phone:h-11 planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
           atStart && 'pointer-events-none opacity-30'
         )}
       >
@@ -83,7 +95,7 @@ export function PlannerDayPicker({
             type="button"
             data-planner-day-trigger=""
             aria-label={t('day.pick')}
-            className="bg-accent/40 hover:bg-accent planner-phone:h-11 flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
+            className="bg-accent/40 hover:bg-accent planner-phone:h-11 planner-phone:min-w-24 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
           >
             <CalendarDays className="size-3.5 shrink-0" aria-hidden="true" />
             {dayLabel(value, today, locale, t)}
@@ -131,7 +143,8 @@ export function PlannerDayPicker({
         disabled={atEnd}
         aria-label={t('calendar.nextDay')}
         className={cn(
-          'hover:bg-accent planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors',
+          // 48 × 44 on a phone, like its twin above — see the note on the row.
+          'hover:bg-accent planner-phone:h-11 planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
           atEnd && 'pointer-events-none opacity-30'
         )}
       >

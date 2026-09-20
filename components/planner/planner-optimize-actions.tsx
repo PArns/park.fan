@@ -350,7 +350,12 @@ export function PlannerOptimizeActions({
   return (
     <div
       data-planner-optimize=""
-      className="border-border/60 flex shrink-0 flex-col gap-1 border-t px-3 py-2"
+      /* `planner-phone:py-1` (PAR-313). The report asked for a lower "Tag
+         optimieren", and the button itself is at the floor: `planner-phone:min-h-11`
+         is the 44 px `CLAUDE.md` states and `check:planner` asserts, so what
+         gives way is the room around it and never the target. Measured at
+         360 px the row goes 61 → 53 px; the button stays 44. */
+      className="border-border/60 planner-phone:py-1 flex shrink-0 flex-col gap-1 border-t px-3 py-2"
     >
       <div className="flex flex-wrap items-center gap-1.5">
         {missing.length > 0 && (

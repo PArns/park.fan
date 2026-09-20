@@ -50,8 +50,18 @@ interface PlannerContextBandProps {
  * separate span measured 60 → 75.5 on the phone), and "the hours are derived"
  * is a two-word suffix inside the hours chip rather than a badge of its own (a
  * badge measured 92 → 120 in the panel).
+ *
+ * `planner-phone:py-1` since PAR-313 — 4 px off the gap between the day row
+ * above and this band, which the report asked for by name. What it takes is
+ * padding around chips that carry their own; none of them is a touch target, so
+ * the 44 px floor is not in this trade. The `min-h` is unchanged and binds on
+ * neither side here: measured at 360 px the band draws 83 px of content.
+ *
+ * One constant and not two class lists, because the skeleton and the settled
+ * state have to agree — a loading box a few pixels off its own result is a jump
+ * one second after the panel opens.
  */
-const BAND_CLASS = 'flex min-h-[60px] flex-col justify-center gap-1 px-3 py-1.5';
+const BAND_CLASS = 'flex min-h-[60px] flex-col justify-center gap-1 px-3 py-1.5 planner-phone:py-1';
 
 /**
  * Below this a day is dry. Open-Meteo reports a few hundredths of a millimetre

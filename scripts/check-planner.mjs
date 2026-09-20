@@ -1638,6 +1638,19 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
     // different defect and gets its own named check (see „das letzte
     // Bedienelement der Kopfzeile" below, which is the one this sweep would
     // otherwise have swallowed).
+    //
+    // **And one exception, which `planner-block.tsx` asked for by name**
+    // (PAR-313): a control ANCHORED TO A BLOCK'S OWN EDGE is capped at that
+    // block's room rather than at 44 px, because a block's height is a queue
+    // and may not grow to fit a target. The resize edge has held that cap since
+    // PAR-165 — `h-[min(2.75rem,var(--pl-edge-room))]` — and its comment says
+    // outright that whoever adds a second one teaches this sweep the exception
+    // instead of lifting the cap. The ✕ that moved onto the card is the second
+    // one. So a target inside `[data-planner-block]` passes at
+    // `min(44, the block's room)` and fails at anything under it: a 45 px block
+    // owes its ✕ 43 px, which is every pixel it has, and a 200 px block still
+    // owes it 44. Written as the block's own box less its two border pixels,
+    // which is what `--pl-edge-room` is.
     const sweepSmallTargets = (sel) =>
       phone.evaluate((sheetSelector) => {
         // Radix portals every popover and dialog to `<body>`, so a sweep of the
@@ -1693,9 +1706,25 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
           const firstBelow = Math.ceil(box.bottom);
           while (down < REACH && hits(el, x, firstBelow + down)) down += 1;
           const reach = Math.round(box.height) + up + down;
-          if (reach < FLOOR) {
+          // The exception, and it is OPTED INTO rather than inferred from the
+          // ancestor. Keying it on `closest('[data-planner-block]')` would
+          // excuse the grip too — which also lives in a block, also overhangs,
+          // and is the one target in here that reaches its 44 px on every block
+          // whatever the block's height. `data-planner-block-edge` is carried by
+          // the two controls anchored to an EDGE, and only they trade the floor
+          // for the block's room. `BLOCK_BORDER_PX` is 2 in
+          // `planner-block.tsx`, the same two pixels `--pl-edge-room` subtracts.
+          const block = el.hasAttribute('data-planner-block-edge')
+            ? el.closest('[data-planner-block]')
+            : null;
+          const room = block
+            ? Math.max(0, Math.round(block.getBoundingClientRect().height) - 2)
+            : null;
+          const floor = room === null ? FLOOR : Math.min(FLOOR, room);
+          if (reach < floor) {
             rows.push({
               reach,
+              floor,
               box: `${Math.round(box.width)}x${Math.round(box.height)}`,
               name: (
                 el.getAttribute('aria-label') ||
@@ -1721,7 +1750,14 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         rows.length === 0,
         rows.length === 0
           ? 'alle geprüften Ziele ≥ 44 px'
-          : rows.map((row) => `${row.reach} px „${row.name}" (Box ${row.box})`).join(' · ')
+          : rows
+              .map(
+                (row) =>
+                  `${row.reach} px „${row.name}" (Box ${row.box}${
+                    row.floor === 44 ? '' : `, nötig ${row.floor} — die Höhe des Blocks`
+                  })`
+              )
+              .join(' · ')
       );
     };
     reportSweep('jedes Ziel im Sheet ist 44 px hoch', await sweepSmallTargets(SHEET));

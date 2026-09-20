@@ -30,7 +30,12 @@ import {
 import { lineSource, type PlannerShowLine } from '@/lib/planner/shows';
 import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
-import { PLANNER_RIDE_MIME, parseRideDrag, rideFromUrl } from '@/lib/planner/ride-drag';
+import {
+  PLANNER_RIDE_MIME,
+  activeRideDrag,
+  parseRideDrag,
+  rideFromUrl,
+} from '@/lib/planner/ride-drag';
 import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { PlannerGridGround } from './planner-grid-ground';
@@ -81,6 +86,14 @@ interface PlannerDayGridProps {
   onMove: (entryId: string, startMinute: number) => void;
   onShiftFrom: (entryId: string, deltaMinutes: number) => void;
   onSelect: (entryId: string | null) => void;
+  /**
+   * Take an entry out of the day, from the block's own ✕.
+   *
+   * The same write the action bar's ✕ does, reachable without leaving the
+   * block — see `PlannerBlockProps.onRemove` for why only this one action
+   * moved onto the card and only on a phone.
+   */
+  onRemove?: (entryId: string) => void;
   selectedId: string | null;
   /** The scroll container, for the drag's auto-scroll. */
   scrollerRef: React.RefObject<HTMLDivElement | null>;
@@ -148,6 +161,7 @@ export function PlannerDayGrid({
   onMove,
   onShiftFrom,
   onSelect,
+  onRemove,
   selectedId,
   scrollerRef,
   onDragChange,
@@ -516,6 +530,33 @@ export function PlannerDayGrid({
       ).softMin,
     [grid, day]
   );
+
+  /**
+   * The same floor, for `dragover`, where the slug cannot come off the event.
+   *
+   * The line the grid draws under the pointer is a promise about where a
+   * release lands, and it was drawing one the drop then broke: `onDrop` clamps
+   * to {@link floorForSlug}, `onDragOver` clamped to the park's opening, so a
+   * ride whose curve starts an hour after the gates previewed a slot it could
+   * not be filed in — the ride's own strike-through hour, drawn as if it were
+   * available (PAR-313).
+   *
+   * It cannot be fixed the obvious way. Chrome hides a drag's payload until the
+   * drop, which is why the handler below reads `dataTransfer.types` and never
+   * `getData`, so `dragover` has no slug to look up. `activeRideDrag` is where
+   * the slug is instead, remembered by the `dragstart` of both sources.
+   *
+   * `parkSlug` is checked for the same reason `rideFromTransfer` checks it: a
+   * slug from another park is a floor this day knows nothing about, and
+   * `rideFloor` with no ride answers the park's opening — the value this line
+   * already had. A drag from another tab remembers nothing and lands there
+   * too, which is the honest answer rather than a guessed one.
+   */
+  const draggedRideFloor = useCallback(() => {
+    const dragged = activeRideDrag();
+    if (!dragged || !parkSlug || dragged.parkSlug !== parkSlug) return undefined;
+    return floorForSlug(dragged.attractionSlug);
+  }, [floorForSlug, parkSlug]);
 
   /**
    * The minute under the pointer, snapped or not.
@@ -944,7 +985,9 @@ export function PlannerDayGrid({
           if (!types.includes(PLANNER_RIDE_MIME) && !types.includes('text/uri-list')) return;
           event.preventDefault();
           event.dataTransfer.dropEffect = 'copy';
-          setDropMinute(minuteAtClientY(event.clientY));
+          // The ride's own floor, not the park's — the same number the drop
+          // below clamps to. See `draggedRideFloor`.
+          setDropMinute(minuteAtClientY(event.clientY, draggedRideFloor()));
         }}
         onDragLeave={() => setDropMinute(null)}
         onDrop={(event) => {
@@ -1276,6 +1319,7 @@ export function PlannerDayGrid({
                   dimmed={dragMoved}
                   conflict={layout.broken.has(row.entry.id)}
                   onSelect={() => onSelect(row.entry.id)}
+                  onRemove={onRemove ? () => onRemove(row.entry.id) : undefined}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
                   onResizeStart={row.entry.custom ? handleResizeStart(row.entry) : undefined}
                   onMove={(minute) => onMove(row.entry.id, minute)}

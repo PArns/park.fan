@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { AlertTriangle, Droplets } from 'lucide-react';
+import { AlertTriangle, Droplets, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_DOT_CLASS,
@@ -140,6 +140,18 @@ interface PlannerBlockProps {
    */
   dimmed?: boolean;
   onSelect: () => void;
+  /**
+   * Take this entry out of the day. Drawn on the block itself, phone only.
+   *
+   * The delete used to live in {@link PlannerGridActions} alone, which is a bar
+   * docked at the grid's lower edge — so on a phone the block being deleted and
+   * the button deleting it were a screen apart, and the bar states the block's
+   * name in `text-sm` truncated. It is the ONE action that moved: ticking off,
+   * the ±15-minute nudge and a free block's duration stay in the bar, because
+   * a block can legitimately be twenty pixels tall and four 44 px targets do
+   * not fit in twenty pixels. One does, capped — see the button.
+   */
+  onRemove?: () => void;
   onDragStart: (event: React.PointerEvent<HTMLElement>) => void;
   /** Free blocks only: dragging the bottom edge sets the duration. */
   onResizeStart?: (event: React.PointerEvent<HTMLElement>) => void;
@@ -186,6 +198,7 @@ export function PlannerBlock({
   ghost = false,
   dimmed = false,
   onSelect,
+  onRemove,
   onDragStart,
   onResizeStart,
   onMove,
@@ -304,6 +317,16 @@ export function PlannerBlock({
    * droplet.
    */
   const showWet = wet && !custom;
+
+  /**
+   * Whether this block draws its own ✕ — see {@link PlannerBlockProps.onRemove}.
+   *
+   * Read twice: once to draw the button, and once by the text column, which
+   * gives up 24 px of its right edge for it. Without that the mark lands on the
+   * figure — measured on a 30 px block at 360 px, `~5 Min.` came out `~5 M`
+   * with the ✕ over the rest.
+   */
+  const showRemove = Boolean(onRemove) && selected && !ghost;
 
   const missingLabel =
     custom || estimate.missing === 'custom'
@@ -553,6 +576,10 @@ export function PlannerBlock({
             type="button"
             onPointerDown={onResizeStart}
             onClick={(event) => event.stopPropagation()}
+            /* See the ✕ above: this is the other control capped at the block's
+               room, and `check:planner` now knows the exception this comment
+               has asked for since PAR-165. */
+            data-planner-block-edge=""
             aria-label={t('entry.resizeHandle')}
             className={cn(
               'group/resize absolute inset-x-0 bottom-0 z-40 flex h-2 cursor-ns-resize touch-none items-end justify-center',
@@ -580,18 +607,63 @@ export function PlannerBlock({
               // centred and overhangs symmetrically, which is what makes the
               // shortest block movable at all, and its own overhang is PAR-165.
               //
-              // **This is the one documented exception to the 44 px floor, and
-              // `sweepSmallTargets` in `scripts/check-planner.mjs` does not know
-              // about it.** That sweep is green today only because the phone
-              // pass plans three rides and no free blocks; seed a free one on the
-              // minimum box into it and it goes red on this edge, correctly and
-              // for a thing that was decided rather than broken. Whoever does
-              // that teaches the sweep the exception — floor of `min(44, the
-              // block's room)` for a resize edge — rather than lifting this cap.
+              // **This was the one documented exception to the 44 px floor, and
+              // `sweepSmallTargets` in `scripts/check-planner.mjs` knows about
+              // it since PAR-313**: a control carrying `data-planner-block-edge`
+              // is measured against `min(44, the block's room)` rather than
+              // against 44. The sweep was green before that only because the
+              // phone pass plans three rides and no free blocks; it would have
+              // gone red on the first free block seeded onto the minimum box,
+              // correctly and for a thing that was decided rather than broken.
+              // The ✕ above is the second control on the same trade.
               'planner-phone:after:absolute planner-phone:after:right-0 planner-phone:after:bottom-0 planner-phone:after:left-11 planner-phone:after:h-[min(2.75rem,var(--pl-edge-room))] planner-phone:after:content-[""]'
             )}
           >
             <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />
+          </button>
+        )}
+
+        {/* Delete, on the card. Phone only, selected only, and after the resize
+            edge in the DOM so it wins the corner they share on a short free
+            block — both are `z-40`, so document order decides.
+
+            **Only while the block is selected**, which is what keeps it off
+            the other eleven blocks of a day: a row of ✕ down the right edge of
+            every card is a day that looks like a delete list, and the gesture
+            that selects is the same tap the block already answers.
+
+            The target is capped at the block's own room, exactly the way the
+            resize edge below is, and for the same reason: anchored `top-0` a
+            full 44 px would reach past a 30 px block into the one under it,
+            and that block's body is a plain `onClick` that selects — so the
+            top right corner of the card below would delete the card above.
+            `--pl-edge-room` is the box less its two border pixels and is set on
+            the `<li>`; this is its second reader. `planner-wide:hidden`, so a
+            fine pointer keeps the ✕ where it has always been, in the action
+            bar, and nothing about the desktop moves. */}
+        {showRemove && onRemove && (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onRemove();
+            }}
+            data-planner-block-remove=""
+            /* The opt-in `check:planner`'s 44 px sweep reads: a control
+               anchored to a block's edge is capped at the block's room, since
+               the block's height is a queue and may not grow to fit a target.
+               The resize edge below carries the same attribute for the same
+               trade. Nothing else in a block does — the grip overhangs
+               symmetrically and owes its full 44 px at every height. */
+            data-planner-block-edge=""
+            aria-label={t('removeRide')}
+            title={t('removeRide')}
+            className={cn(
+              'text-muted-foreground hover:text-destructive hover:bg-destructive/15 bg-background/80 planner-wide:hidden absolute top-0 right-0 z-40 flex size-5 items-center justify-center rounded transition-colors',
+              'after:absolute after:top-0 after:right-0 after:h-[min(2.75rem,var(--pl-edge-room))] after:w-11 after:content-[""]'
+            )}
+          >
+            <X className="size-3.5" aria-hidden="true" />
           </button>
         )}
 
@@ -641,7 +713,16 @@ export function PlannerBlock({
              borrow the box's, and the box's is gone so the grip can reach out
              of it. This is the one child that can genuinely overflow — a
              sentence in a box measured for two lines. */
-          className="pointer-events-none relative min-w-0 flex-1 overflow-hidden px-1.5 py-0.5 pl-2.5"
+          className={cn(
+            'pointer-events-none relative min-w-0 flex-1 overflow-hidden px-1.5 py-0.5 pl-2.5',
+            // The ✕'s room, and only where there IS one: `showRemove` is the
+            // React half of the condition and `planner-phone:` is the CSS half,
+            // because the mark itself is `planner-wide:hidden` rather than a
+            // branch. Both are needed — the class alone would hold 24 px on
+            // every block, the state alone would hold them on a desktop where
+            // nothing is drawn there.
+            showRemove && 'planner-phone:pr-6'
+          )}
           style={photo ? { filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.65))' } : undefined}
         >
           {/* A ghost stays on ONE row all the way up to {@link RANGE_MIN_PX},

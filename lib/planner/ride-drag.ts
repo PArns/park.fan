@@ -75,6 +75,54 @@ export function rideFromUrl(uri: string): { parkSlug: string; attractionSlug: st
   }
 }
 
+/**
+ * The ride currently in the air, for the handlers that may not read the payload.
+ *
+ * `dragover` cannot see what is being dragged. Chrome puts the DataTransfer in
+ * protected mode for the whole gesture and hands `getData` an empty string
+ * until the `drop` — which is why the grid's `dragover` reads
+ * `dataTransfer.types` and nothing else. That is fine for deciding whether to
+ * accept a drop and useless for anything that needs the RIDE, and the ghost
+ * line the grid draws under the pointer needs exactly that: a ride whose curve
+ * starts at 11:00 may not be previewed at 09:00 when the drop is going to clamp
+ * it to 11:00 anyway (PAR-313).
+ *
+ * So the drag remembers itself here, module-level, for as long as it lasts.
+ * Module-level is not a shortcut: a drag is one gesture in one document, both
+ * sources go through `dragstart` in this same bundle, and the two readers (the
+ * grid's `dragover`, the column's) are in it too.
+ *
+ * What it is NOT is a second channel for the drop. The payload on the
+ * DataTransfer stays the only thing a drop files a ride from, because that one
+ * survives a drag from another tab and this does not — and the worst a missing
+ * entry can do here is draw the preview the way it was drawn before this
+ * existed, on a floor the drop then corrects.
+ */
+let activeDrag: PlannerRideDrag | null = null;
+
+/** What is being dragged right now, or `null` — see {@link activeDrag}. */
+export function activeRideDrag(): PlannerRideDrag | null {
+  return activeDrag;
+}
+
+/**
+ * Remember a drag for its own length, and forget it at `dragend`.
+ *
+ * `dragend` rather than `drop`: it fires on the SOURCE after every gesture,
+ * including one that ends outside the window or is cancelled with Escape, where
+ * `drop` fires on neither. Registered per drag and removed by its own handler,
+ * so nothing here outlives the gesture that installed it.
+ */
+export function rememberRideDrag(ride: PlannerRideDrag): void {
+  activeDrag = ride;
+  if (typeof document === 'undefined') return;
+  const done = () => {
+    activeDrag = null;
+    document.removeEventListener('dragend', done, true);
+  };
+  document.addEventListener('dragend', done, true);
+}
+
 export function serializeRideDrag(ride: PlannerRideDrag): string {
   return JSON.stringify({
     parkSlug: ride.parkSlug,
@@ -163,6 +211,10 @@ export function startRideDrag(
   } catch {
     // A store in protected mode — the drag was not started by this gesture.
   }
+  // Outside the `try`: the payload and the remembered drag are two channels and
+  // a store that refuses the first must not cost the second — `dragover` is
+  // exactly where the payload is unreadable anyway.
+  rememberRideDrag(ride);
   setRideDragImage(dt, ride.attractionName, image);
 }
 
