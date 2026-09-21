@@ -121,7 +121,7 @@ export default function CapturePage() {
     (ride: RankedRide): number | null => {
       if (!position || ride.latitude === null || ride.longitude === null) return null;
       return distanceMeters(
-        { lat: position.lat, lon: position.lon, source: 'exif' },
+        { lat: position.lat, lon: position.lon },
         { latitude: ride.latitude, longitude: ride.longitude }
       );
     },
