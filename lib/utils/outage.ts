@@ -99,6 +99,25 @@ export interface OutageRecoveryClock {
 const WEEKDAY_HORIZON_DAYS = 7;
 
 /**
+ * Narrowest clock window that still prints as a window, in milliseconds.
+ *
+ * The same rule {@link outageRemainingWindow} applies to the duration pair, at
+ * this surface's resolution: a range whose two ends print the same number is not
+ * a range, and „zwischen 14:35 und 14:35 Uhr" is the clock's version of
+ * „5 Min. bis 5 Min.". These instants are placed from quartiles that can sit
+ * inside one bucket — `{p25: 118, median: 118.5, p75: 119}` is a measured shape
+ * — so under a minute apart is reachable, and both ends then format to the same
+ * label.
+ *
+ * One minute, because the sentence prints whole minutes: two instants that far
+ * apart always fall in different minutes, and one step is the least that can be
+ * added. Widening only ever pushes the upper end later, so the printed window
+ * can be wider than the measured one and never narrower — it cannot claim the
+ * ride is back sooner than the quartile said.
+ */
+const MIN_CLOCK_SPREAD_MS = 60_000;
+
+/**
  * A formatter for the calendar day an instant falls on in a given zone, as
  * `YYYY-MM-DD`.
  *
@@ -145,11 +164,15 @@ function zonedDayFormat(timeZone: string): Intl.DateTimeFormat {
  *   where „zwischen 16:10 und 14:35 Uhr" reads as a typo. Same rule, same
  *   reasoning as the inverted `p75` in {@link outageRemainingWindow}.
  *
- * And one narrowing: past {@link WEEKDAY_HORIZON_DAYS} the upper end is dropped
- * to an open range. The sentence names a weekday to say which day it means, and
- * a weekday stops naming one day after a week. Reachable only in theory — the
- * largest measured `p75` is 460 operating minutes — but the alternative is a
- * „Dienstag" that could be either of two.
+ * And two corrections to the pair that survives:
+ *
+ * - Past {@link WEEKDAY_HORIZON_DAYS} the upper end is dropped to an open
+ *   range. The sentence names a weekday to say which day it means, and a
+ *   weekday stops naming one day after a week. Reachable only in theory — the
+ *   largest measured `p75` is 460 operating minutes — but the alternative is a
+ *   „Dienstag" that could be either of two.
+ * - A pair closer together than {@link MIN_CLOCK_SPREAD_MS} is widened, so the
+ *   two ends never print the same clock label.
  */
 export function outageRecoveryClock(
   estimate: OutageEstimate | undefined,
@@ -176,12 +199,20 @@ export function outageRecoveryClock(
 
   const to = new Date(window.to);
   if (Number.isNaN(to.getTime()) || to.getTime() < from.getTime()) return open;
+  // Judged on the RAW upper end, before the widening below: the horizon asks
+  // how far out the quartile was, and a minute added for legibility may not
+  // decide whether the window has a top at all.
   if (to.getTime() - from.getTime() >= WEEKDAY_HORIZON_DAYS * 86_400_000) return open;
+
+  // The day marker reads the widened end, not the measured one, so the label
+  // and the weekday beside it can never disagree: widening 23:59:40 by a minute
+  // prints „00:00", and that „00:00" is tomorrow.
+  const spread = new Date(Math.max(to.getTime(), from.getTime() + MIN_CLOCK_SPREAD_MS));
 
   return {
     from: window.from,
-    to: window.to,
-    toOnLaterDay: day.format(to) !== day.format(from),
+    to: spread.toISOString(),
+    toOnLaterDay: day.format(spread) !== day.format(from),
   };
 }
 

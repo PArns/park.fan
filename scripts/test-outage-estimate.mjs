@@ -188,6 +188,38 @@ const testCases = [
     expected: null,
   },
   {
+    name: 'two ends inside one minute are widened, „zwischen 14:35 und 14:35 Uhr" being no range',
+    // The clock's version of the collapse `outageRemainingWindow` already guards against. Both
+    // instants format to „14:35" here, and quartiles that close together are a measured shape —
+    // `{p25: 118, median: 118.5, p75: 119}` is in this file. Widened to the RIGHT, so the printed
+    // window is never narrower than the one that was measured.
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T12:35:10.000Z', '2026-09-21T12:35:45.000Z'), BERLIN)
+        ?.to,
+    expected: '2026-09-21T12:36:10.000Z',
+  },
+  {
+    name: 'a pair already a minute apart is printed as it was measured',
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T12:35:10.000Z', '2026-09-21T12:36:10.000Z'), BERLIN)
+        ?.to,
+    expected: '2026-09-21T12:36:10.000Z',
+  },
+  {
+    name: 'a widened end that crosses midnight takes its weekday with it',
+    // 23:59:40 in Berlin, widened to 00:00:40. The label says „00:00" and the day marker has to
+    // agree with the label rather than with the instant that was measured.
+    actual: () =>
+      JSON.stringify(
+        outageRecoveryClock(CLOCK('2026-09-21T21:59:40.000Z', '2026-09-21T21:59:50.000Z'), BERLIN)
+      ),
+    expected: JSON.stringify({
+      from: '2026-09-21T21:59:40.000Z',
+      to: '2026-09-21T22:00:40.000Z',
+      toOnLaterDay: true,
+    }),
+  },
+  {
     name: 'an upper end more than a week out is dropped, a weekday no longer naming one day',
     // Only reachable in theory — the largest measured p75 is 460 operating minutes — but
     // „Dienstag" that could be either of two Tuesdays is worse than no upper end.
