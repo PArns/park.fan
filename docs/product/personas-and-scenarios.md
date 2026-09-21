@@ -246,7 +246,7 @@ P2, P3 and P6 are deliberately **not** in the pilot, and each for its own reason
 
 ### What would overturn this
 
-The order above optimises for **conversion**: a visitor who does something the product can already do for them. If the goal is **visibility** instead — impressions and sessions, with conversion left to a later step — then P6 comes first. Stating that plainly is better than arguing it away, and it is worth knowing where the board already stands: PAR-371 is scheduled in the current cycle and builds the _historical_ statistics page per park, on the rule from §2 of the SEO analysis that a new URL earns its place by server-rendering something no existing URL server-renders. It is the visibility play, and it is deliberately not the live park-query page. So the two halves of the bet do not collide, and neither of them covers the alert nudge on the park page.
+The order above optimises for **conversion**: a visitor who does something the product can already do for them. If the goal is **visibility** instead — impressions and sessions, with conversion left to a later step — then P6 comes first. Stating that plainly is better than arguing it away, and it is worth knowing where the board already stands: PAR-371 is scheduled in the current cycle and builds the _historical_ statistics page per park, on the rule from [dedicated-landing-pages.md §2](../seo/dedicated-landing-pages.md) that a new URL earns its place by server-rendering something no existing URL server-renders. It is the visibility play, and it is deliberately not the live park-query page. So the two halves of the bet do not collide, and neither of them covers the alert nudge on the park page.
 
 ---
 
