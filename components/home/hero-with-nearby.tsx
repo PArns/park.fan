@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
@@ -10,6 +9,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { BrandPin } from '@/components/layout/brand-lockup';
 import { Skeleton } from '@/components/ui/skeleton';
 import type {
   NearbyAttractionsData,
@@ -152,10 +152,7 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
 }
 
 /**
- * The headline, with the pin to the left of it once the page is wide enough.
- *
- * Both headline variants go through here, so the mark does not appear and disappear when the
- * visitor turns out to be standing next to a park.
+ * The headline, with the pin to its left on a wide page.
  *
  * **It is the pin alone, not `BrandLockup`.** The lockup is pin + wordmark, 4.21 : 1 on the
  * wordmark, so its smallest sensible hero size is 122 px of the row. Measured against the built
@@ -168,6 +165,18 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
  * **48 px is one line of the headline** (`text-5xl` is 3rem/1 above `sm`, and the mark only
  * renders far above `sm`), so the mark is exactly as tall as the text it stands next to.
  *
+ * **`mark` is off for the welcome headline, and that is not a nicety.** The two headlines are not
+ * the same kind of string: `hero.title` is six fixed sentences that can be measured once, while
+ * `heroWelcome` interpolates a park name of no fixed length. Measured on the built site at 1304 px
+ * and up, the 47 px the mark takes moved „Welcome to Europa-Park" and its nl/fr/es twins from one
+ * line to two and „… Chessington World of Adventures" from two to three in en, fr, es and it. That
+ * is a shift rather than a wider headline, because the welcome variant only appears AFTER the
+ * mount, when the nearby lookup lands: measured at 1440, the row grew 96 → 144 px and moved the
+ * intro paragraph 24 px down and the open-parks badge 24 px up, where the same swap without the
+ * mark moves nothing. Raising the threshold cannot fix it — the plate is capped at 672 px from
+ * 1280 up, so the mark costs the same 47 px at every width above the threshold. Without the mark
+ * the welcome headline lays out exactly as it did before this change.
+ *
  * **The threshold asks the PAGE, not this card and not the window.** The card's own width is not
  * monotonic in the window's: the plate is `max-w-3xl` and centred while it is alone, and
  * `max-w-2xl` next to the world map from 1280 up, so it measures 704 px on a tablet and 608 px on
@@ -179,31 +188,16 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
  * there. Same `@container/page` every other threshold in this hero asks, so the planner's panel
  * closes the mark rather than the window deciding without it.
  */
-function HeroHeadline({ children }: { children: React.ReactNode }) {
+function HeroHeadline({ children, mark = false }: { children: React.ReactNode; mark?: boolean }) {
   return (
     // mt-4 mb-3 sat on the <h1> and moved here unchanged: margins do not collapse in a flex
     // container, so the spacing above and below the headline is the same with the row as without.
     <div className="mt-4 mb-3 flex items-center gap-3">
-      <span data-hero-mark className="hidden shrink-0 @min-[1304px]/page:block">
-        <Image
-          src="/logo-small-dark.svg"
-          width={35}
-          height={48}
-          alt=""
-          aria-hidden="true"
-          className="hidden h-12 w-auto dark:block"
-          loading="eager"
-        />
-        <Image
-          src="/logo-small.svg"
-          width={35}
-          height={48}
-          alt=""
-          aria-hidden="true"
-          className="block h-12 w-auto dark:hidden"
-          loading="eager"
-        />
-      </span>
+      {mark && (
+        <span className="hidden shrink-0 @min-[1304px]/page:block">
+          <BrandPin className="h-12 w-auto" />
+        </span>
+      )}
       <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
         {children}
       </h1>
@@ -333,7 +327,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
   return (
     <>
       <OpenParksBadge openParks={openParks} />
-      <HeroHeadline>{tHome('hero.title')}</HeroHeadline>
+      <HeroHeadline mark>{tHome('hero.title')}</HeroHeadline>
       {showNearParkHero ? (
         <>
           <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
