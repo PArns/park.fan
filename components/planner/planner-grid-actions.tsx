@@ -11,7 +11,7 @@ import {
   type PlannerEntry,
 } from '@/lib/planner/types';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
-import { estimateFor } from '@/lib/planner/estimate';
+import { actualVsEstimate, estimateFor } from '@/lib/planner/estimate';
 import type { PlanDay } from '@/lib/api/types';
 
 interface PlannerGridActionsProps {
@@ -86,8 +86,17 @@ export function PlannerGridActions({
   const estimate = estimateFor(day, entry);
   // Ticked off, the figure that matters is the one that HAPPENED. `actualWait`
   // is what the visitor recorded by ticking; the forecast beside it would be
-  // this panel arguing with a measurement.
+  // this panel arguing with a measurement. The DIFFERENCE between the two is
+  // not that argument — it is one statement, and it is what a tick is for.
   const actual = done ? (entry.actualWait ?? null) : null;
+  const delta = actualVsEstimate(entry, estimate);
+  const deltaLabel = !delta
+    ? null
+    : delta.direction === 'same'
+      ? t('entry.deltaAsEstimated')
+      : t(delta.direction === 'over' ? 'entry.deltaOver' : 'entry.deltaUnder', {
+          minutes: Math.abs(delta.minutes),
+        });
 
   return (
     /* `max-sm:flex-wrap` and nothing above `sm`: the row gained a second pair of
@@ -157,6 +166,16 @@ export function PlannerGridActions({
               {t('entry.typicalError', { minutes: Math.round(estimate.expectedError) })}
             </span>
           )}
+          {/* The difference, on a ticked-off block. It is the one thing about the
+              forecast that still belongs here: the bare forecast beside a
+              measurement would be two figures for one queue, and a visitor
+              cannot tell from that which of them happened. How far the
+              measurement landed from it is a single fact, and it is the whole
+              reason for ticking a ride off.
+              A block can be twenty pixels tall, so this bar is the only surface
+              in the grid that can carry it on every ticked entry — the block's
+              own annotation line needs 68 px. */}
+          {deltaLabel && <span className="font-sans">{deltaLabel}</span>}
         </p>
       </div>
 

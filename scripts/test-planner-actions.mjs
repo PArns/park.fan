@@ -39,6 +39,7 @@ import {
   RIDER_HEIGHT_DEFAULT_CM,
 } from '../lib/planner/party.ts';
 import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
+import { actualVsEstimate, estimateFor } from '../lib/planner/estimate.ts';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -376,6 +377,43 @@ test(
   })(),
   [null, null]
 );
+
+// ---------------------------------------------------------------------------
+// What the tick is FOR: the measured value against the forecast.
+// The full round-trip — `setEntryDone` records the queue, `actualVsEstimate`
+// compares it with the figure the block was drawn at. `roundWaitDeltaTo5` keeps
+// the falling half of the scale, so a queue that came in SHORTER than forecast
+// reads as one instead of collapsing to "as estimated".
+// ---------------------------------------------------------------------------
+{
+  // A day the entry's hour (10:00 → startMinute 600) has a 45-minute forecast in.
+  const day = {
+    context: { date: PARK.date, status: 'OPERATING', openHour: 9, closeHour: 20 },
+    tier: 'measured',
+    leadDays: 0,
+    rides: [{ attractionSlug: 'taron', attractionName: 'Taron', hours: [{ hour: 10, wait: 45 }] }],
+    shows: [],
+  };
+  const tickedEntry = (actualWait) => {
+    const s = setEntryDone(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', true, actualWait);
+    return entriesFor(s, PARK.parkSlug, PARK.date).find((x) => x.id === 'taron-1');
+  };
+  const deltaFor = (actualWait) => {
+    const e = tickedEntry(actualWait);
+    return actualVsEstimate(e, estimateFor(day, e));
+  };
+
+  test('over-estimate: longer than forecast reads as over', deltaFor(60)?.direction, 'over');
+  test('over-estimate: and by how much', deltaFor(60)?.minutes, 15);
+  test('under-estimate: shorter than forecast survives the rounding', deltaFor(30)?.minutes, -15);
+  test('under-estimate: and reads as under', deltaFor(30)?.direction, 'under');
+  test('exact match reads as as-estimated', deltaFor(45)?.direction, 'same');
+  test(
+    'missing forecast: an entry with no ticked figure has nothing to compare',
+    deltaFor(undefined),
+    null
+  );
+}
 
 // ---------------------------------------------------------------------------
 // Removing and clearing

@@ -2,6 +2,7 @@ import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
 import { unfoldedCloseHour } from './day-grid';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
+import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 
 /**
  * What a planned entry is expected to cost, and how much that expectation is
@@ -299,6 +300,72 @@ export function totalsFor(
   }
 
   return { expectedMinutes, counted, unknown, done, actualMinutes, actualCounted, custom };
+}
+
+export interface PlannerActualDelta {
+  /**
+   * Measured minus forecast, in minutes, on the five-minute grid. Positive is a
+   * queue longer than the forecast, negative is shorter.
+   */
+  minutes: number;
+  /**
+   * Which way it went, and `same` where the grid says it did not go anywhere.
+   *
+   * A separate field rather than the sign of {@link minutes}, because zero has
+   * to be readable as a statement: a surface that tests the sign has to test
+   * for `0` as well, and the one that forgets prints "0 minutes over".
+   */
+  direction: 'over' | 'under' | 'same';
+}
+
+/**
+ * What a ticked-off entry actually cost against what was forecast for it.
+ *
+ * Both halves already existed and nothing compared them: `actualWait` is the
+ * live reading the tick recorded, and `estimateFor` is the figure the block was
+ * drawn at. The comparison is the point of ticking a ride off at all — a day
+ * whose queues all came in under forecast is a different day from one that ran
+ * over, and until now the planner stored both numbers and said nothing about the
+ * difference.
+ *
+ * `roundWaitDeltaTo5`, never `roundWaitTo5`: this is a DIFFERENCE, and the
+ * wait-time rule floors everything under 2.5 to zero because no queue is −15
+ * minutes long. Pointed at a delta it deletes the whole falling half of the
+ * scale, which is exactly how every shrinking queue on every park page came to
+ * render as "stable" (see `lib/utils/wait-time.ts`). Here it would have swallowed
+ * every queue that came in SHORTER than forecast, which is the outcome a visitor
+ * most wants to see.
+ *
+ * `null` where there is nothing to compare, and the cases are not the same thing:
+ *
+ * - not ticked off, or ticked off with no figure — a closed ride, a park with no
+ *   readable wait times. The visit is a fact, the queue is not.
+ * - no forecast for the entry's hour at all (`wait: null`).
+ * - a forecast that is the ASSUMED five minutes. `ASSUMED_WAIT_MIN` is a
+ *   placeholder for a ride the model never had enough observations to shape, and
+ *   a difference against it would report the app's own floor as a forecast error:
+ *   a 25-minute queue on a flat ride would read "20 minutes over estimate" when
+ *   nobody ever estimated anything.
+ *
+ * The forecast it compares against is the one for the entry's own hour, read
+ * from the same payload that drew the block — the plan stores no snapshot of
+ * what was predicted at the moment of ticking, so moving a ticked-off entry to
+ * another hour moves the figure it is compared with.
+ */
+export function actualVsEstimate(
+  entry: PlannerEntry,
+  estimate: PlannerEstimate
+): PlannerActualDelta | null {
+  if (!entry.done || typeof entry.actualWait !== 'number' || !Number.isFinite(entry.actualWait)) {
+    return null;
+  }
+  if (estimate.wait === null || estimate.missing !== 'none') return null;
+
+  const minutes = roundWaitDeltaTo5(entry.actualWait - estimate.wait);
+  return {
+    minutes,
+    direction: minutes > 0 ? 'over' : minutes < 0 ? 'under' : 'same',
+  };
 }
 
 /**

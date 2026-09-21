@@ -15,7 +15,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
-import type { PlannerEstimate } from '@/lib/planner/estimate';
+import { actualVsEstimate, type PlannerEstimate } from '@/lib/planner/estimate';
 import type { PlanDayTier } from '@/lib/api/types';
 
 /**
@@ -342,6 +342,24 @@ export function PlannerBlock({
             estimate.missing === 'no-source'
             ? t('entry.noSource')
             : null;
+
+  /**
+   * How far the queue came in from the forecast, on a ticked-off block.
+   *
+   * It takes the slot the `±` band figure has, and the two are the same
+   * statement at the two ends of the visit: the band is the spread around a
+   * prediction, this is what the prediction turned out to be worth. Neither can
+   * be drawn while the other is — a band belongs to a forecast, a delta to a
+   * measurement — so the line stays one line.
+   */
+  const delta = custom ? null : actualVsEstimate(entry, estimate);
+  const deltaLabel = !delta
+    ? null
+    : delta.direction === 'same'
+      ? t('entry.deltaAsEstimated')
+      : t(delta.direction === 'over' ? 'entry.deltaOver' : 'entry.deltaUnder', {
+          minutes: Math.abs(delta.minutes),
+        });
 
   const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
   const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
@@ -896,6 +914,7 @@ export function PlannerBlock({
                       {t('band.plusMinus', { minutes: estimate.uncertaintyMinutes })}
                     </span>
                   )}
+                  {deltaLabel && <span className="ml-1.5">{deltaLabel}</span>}
                 </p>
               )}
             </>
