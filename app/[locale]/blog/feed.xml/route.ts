@@ -1,8 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import type { NextRequest } from 'next/server';
 import { hasPublishedPosts, listPosts } from '@/lib/blog/listing';
-import { getPostByTranslationKey } from '@/lib/blog';
 import { resolveAuthor } from '@/lib/blog/authors';
 import { routing, type Locale } from '@/i18n/routing';
 import { SITE_URL } from '@/i18n/config';
@@ -10,17 +7,12 @@ import { versionedPath } from '@/lib/media/focus';
 import { getMediaImageBySrc } from '@/lib/media';
 import { WEBSUB_HUB } from '@/lib/websub';
 import { BLOG_FEED_DESCRIPTION, BLOG_FEED_TITLE, blogFeedUrl } from '@/lib/blog/feed';
-import { renderFeedContentHtml } from '@/lib/blog/feed-content';
 
 /**
- * How many items a feed carries.
- *
- * Was 40, which was free while items were an excerpt each and is not now that
- * they carry the article: nine posts already weigh ~390 KB per locale, so 40
- * would be roughly 1.7 MB fetched by every subscriber's reader on every poll.
- * Fifteen keeps a full-text feed near half a megabyte at the point the blog
- * grows into the cap, and everything older stays where an archive belongs — the
- * blog index, the category pages and the sitemap.
+ * How many items a feed carries. Items hold the excerpt, not the article, so
+ * this stays cheap regardless of how long a post grows; everything older than
+ * the cap stays where an archive belongs — the blog index, the category pages
+ * and the sitemap.
  */
 const MAX_ITEMS = 15;
 
@@ -56,34 +48,23 @@ const MIME_BY_EXTENSION: Record<string, string> = {
 };
 
 /**
- * The cover image as an `<enclosure>`, with its real byte count.
+ * The cover image as an `<enclosure>`, with a byte count.
  *
- * `length` is required by RSS and this feed used to hard-code `0`, which some
- * readers take at face value and use to decide whether to prefetch. The number
- * is measured off the file rather than read from the media database, because a
- * frontmatter cover is usually a build-time crop (`…-16x9.jpg`) and the
- * database's `bytes` describes the **source** photo — `getMediaImageForPath`
- * documents exactly that trap. The route is statically generated, so this stat
- * happens at build time.
- *
- * A file we cannot measure still gets an enclosure: a missing cover is a worse
- * outcome than an unknown size, and `0` is what the previous version said about
- * every image anyway.
+ * `length` is required by RSS. It comes from the media manifest rather than a
+ * filesystem stat: `getMediaImageBySrc` answers for the **source** photo, not
+ * the `-16x9`/`-4x3`/`-1x1` crop a cover usually points at, so the number is
+ * approximate — but a dynamic `fs.statSync(path.join(process.cwd(), 'public',
+ * …))` here traces as "unresolvable" and Next bundles the **entire** `/public`
+ * directory into this function to cover every path it might resolve to (see
+ * the `/api/og/[...path]` note in `next.config.ts`), which is what pushed this
+ * route's Vercel Function past its size limit. An approximate length is a far
+ * cheaper trade than 250+ MB of ride photos in an RSS handler.
  */
 function coverEnclosure(coverAbs: string, coverPath: string): string {
   const clean = coverPath.split('?')[0];
   const extension = clean.split('.').pop()?.toLowerCase() ?? '';
   const type = MIME_BY_EXTENSION[extension] ?? 'image/jpeg';
-
-  let length = 0;
-  if (clean.startsWith('/')) {
-    try {
-      length = fs.statSync(path.join(process.cwd(), 'public', clean.slice(1))).size;
-    } catch {
-      // Not on disk at build time (a remote cover, a crop not cut in this build).
-      length = getMediaImageBySrc(clean)?.bytes ?? 0;
-    }
-  }
+  const length = getMediaImageBySrc(clean)?.bytes ?? 0;
   return `    <enclosure url="${escapeXml(coverAbs)}" type="${type}" length="${length}" />`;
 }
 
@@ -98,10 +79,15 @@ function coverEnclosure(coverAbs: string, coverPath: string): string {
  * older post moved the channel's timestamp backwards and told every subscriber
  * the feed had gotten older.
  *
- * **Items carry the full article** (`content:encoded`), not just the excerpt.
- * The namespace was declared and never used. What a body cannot carry into a
- * feed — the live widget tables — is linked rather than frozen; see
- * `renderFeedContentHtml`.
+ * **Items carry the excerpt**, not the full article. A `content:encoded` item
+ * once carried the whole post, which meant the route's only path to a post's
+ * markdown was `@/lib/blog` — the module `docs/development/scripts.md` reserves
+ * for the post page alone, because it pulls in every post body, every locale,
+ * as one generated module. That single import was enough for Next's function
+ * tracer to fold the entire post-body manifest into this route; combined with
+ * the `/public` sweep documented on `coverEnclosure` below, the built function
+ * cleared Vercel's size limit. A feed reader gets a teaser and a link either
+ * way, so the excerpt is the one this route can afford.
  *
  * **Only elements RSS actually defines.** The old items ended with
  * `<readingTime>`, an invented element in no namespace, plus a `<comments>`
@@ -149,62 +135,43 @@ export async function GET(
     return newest;
   }, new Date(0));
 
-  const items = (
-    await Promise.all(
-      posts.map(async (post) => {
-        const { frontmatter, slug, translationKey } = post;
-        const url = `${SITE_URL}/${locale}/blog/${slug}`;
-        const author = resolveAuthor(frontmatter.author, locale).name;
-        const pubDate = rfc822(new Date(frontmatter.date));
-        // Content-versioned like every other media URL. A feed reader caches an
-        // enclosure by its address, so an unversioned crop keeps the old framing in
-        // every subscriber's client after a focal point moves.
-        const coverPath = versionedPath(frontmatter.coverImage?.src) ?? frontmatter.coverImage?.src;
-        const coverAbs = coverPath
-          ? coverPath.startsWith('http')
-            ? coverPath
-            : `${SITE_URL}${coverPath}`
-          : null;
-        const categories = (frontmatter.tags ?? [])
-          .map((tag) => `    <category>${escapeXml(tag)}</category>`)
-          .join('\n');
-        const enclosure = coverAbs && coverPath ? coverEnclosure(coverAbs, coverPath) : '';
+  const items = posts
+    .map((post) => {
+      const { frontmatter, slug } = post;
+      const url = `${SITE_URL}/${locale}/blog/${slug}`;
+      const author = resolveAuthor(frontmatter.author, locale).name;
+      const pubDate = rfc822(new Date(frontmatter.date));
+      // Content-versioned like every other media URL. A feed reader caches an
+      // enclosure by its address, so an unversioned crop keeps the old framing in
+      // every subscriber's client after a focal point moves.
+      const coverPath = versionedPath(frontmatter.coverImage?.src) ?? frontmatter.coverImage?.src;
+      const coverAbs = coverPath
+        ? coverPath.startsWith('http')
+          ? coverPath
+          : `${SITE_URL}${coverPath}`
+        : null;
+      const categories = (frontmatter.tags ?? [])
+        .map((tag) => `    <category>${escapeXml(tag)}</category>`)
+        .join('\n');
+      const enclosure = coverAbs && coverPath ? coverEnclosure(coverAbs, coverPath) : '';
 
-        // The body, rendered for a reader with no stylesheet and no JavaScript.
-        // A post whose body will not load still ships as title + excerpt rather
-        // than dropping out of the feed.
-        const loaded = getPostByTranslationKey(translationKey, locale);
-        const contentHtml = loaded?.content
-          ? await renderFeedContentHtml(loaded.content, { locale, postUrl: url })
-          : '';
-        const coverFigure = coverAbs
-          ? `<figure><img src="${escapeXml(coverAbs)}" alt="${escapeXml(
-              frontmatter.coverImage?.alt ?? frontmatter.title
-            )}" /></figure>`
-          : '';
-        const encoded = contentHtml
-          ? `    <content:encoded><![CDATA[${escapeCData(`${coverFigure}${contentHtml}`)}]]></content:encoded>\n`
-          : '';
-
-        return `  <item>
+      return `  <item>
     <title>${escapeXml(frontmatter.title)}</title>
     <link>${escapeXml(url)}</link>
     <guid isPermaLink="true">${escapeXml(url)}</guid>
     <pubDate>${pubDate}</pubDate>
     <dc:creator><![CDATA[${escapeCData(author)}]]></dc:creator>
     <description><![CDATA[${escapeCData(frontmatter.excerpt)}]]></description>
-${encoded}${categories}
+${categories}
 ${enclosure}
   </item>`;
-      })
-    )
-  ).join('\n');
+    })
+    .join('\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
      xmlns:atom="http://www.w3.org/2005/Atom"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
   <title>${escapeXml(channelTitle)}</title>
   <link>${escapeXml(channelLink)}</link>

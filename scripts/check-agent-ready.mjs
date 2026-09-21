@@ -209,8 +209,8 @@ check(
 
 // ── the blog feed ───────────────────────────────────────────────────────────
 // A feed has no reader inside the site either. Nothing on park.fan renders it, so it can lose
-// its autodiscovery link, start serving HTML, or quietly drop every item's body through a green
-// build — and the first symptom would be a subscriber's client showing nothing new for weeks.
+// its autodiscovery link, start serving HTML, or quietly drop every item's excerpt through a
+// green build — and the first symptom would be a subscriber's client showing nothing new for weeks.
 const FEED_LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 
 for (const locale of FEED_LOCALES) {
@@ -236,19 +236,14 @@ for (const locale of FEED_LOCALES) {
   // silently fall back to polling; drop the ping and the hub never learns anything changed.
   check(`${locale} feed declares a WebSub hub`, /rel="hub"/.test(feed.text));
 
-  // The whole point of the full-text feed: an item that lost its body is an item that reads as
-  // a teaser, and nothing on the site would show it.
-  const bodies = feed.text.match(/<content:encoded>/g)?.length ?? 0;
-  check(`${locale} feed ships full posts`, bodies === items, `${bodies}/${items} with a body`);
-
-  // A frozen wait-time table in a subscriber's archive is wrong forever, which is the same
-  // reason the posts hold widget fences rather than typed numbers.
-  check(`${locale} feed froze no live widget`, !feed.text.includes('-widget'));
-
-  // `ref:` is a protocol only this app resolves; in a reader it is a dead link.
+  // Items carry the excerpt, not the article — rendering the body pulled the whole post-body
+  // manifest and a full filesystem sweep into this route's function and broke the deployment.
+  // An item that lost its excerpt is one that reads as a bare link.
+  const descriptions = feed.text.match(/<description>/g)?.length ?? 0;
   check(
-    `${locale} feed left no unresolved entity link`,
-    !/href="(ref|park|attraction):/.test(feed.text)
+    `${locale} feed ships a description per item`,
+    descriptions === items,
+    `${descriptions}/${items} with a description`
   );
 
   // RSS requires a byte count on an enclosure, and this feed answered 0 for every cover until
