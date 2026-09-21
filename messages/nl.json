@@ -525,6 +525,13 @@
       "unknown": "Geen voorspelling",
       "closed": "Gesloten"
     },
+    "crowdScale": {
+      "title": "Drukteniveaus",
+      "note": "100% is de wachttijd van de belangrijkste attracties op een typische dag in dit park.",
+      "upTo": "tot {max}%",
+      "between": "{min}–{max}%",
+      "above": "meer dan {min}%"
+    },
     "avgWaitTime": "Gem. Wachttijd",
     "openAttractions": "Open attracties",
     "closedAttractions": "Gesloten attracties",

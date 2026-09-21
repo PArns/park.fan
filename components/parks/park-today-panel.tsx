@@ -494,7 +494,9 @@ export function ParkTodayPanel({
             <div className="flex flex-wrap gap-x-6 gap-y-3">
               <PanelMetric caption={t('crowdNow')}>
                 {isOpenish && currentCrowd ? (
-                  <CrowdLevelBadge level={currentCrowd} />
+                  // The park's own "how busy is it right now", and the one badge here that
+                  // nothing interactive encloses — so this is where the scale is explained.
+                  <CrowdLevelBadge level={currentCrowd} withScale />
                 ) : (
                   <span className="text-muted-foreground text-sm">—</span>
                 )}

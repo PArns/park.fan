@@ -525,6 +525,13 @@
       "unknown": "Sin previsión",
       "closed": "Cerrado"
     },
+    "crowdScale": {
+      "title": "Niveles de afluencia",
+      "note": "100 % son los tiempos de espera de las atracciones principales en un día típico en este parque.",
+      "upTo": "hasta {max} %",
+      "between": "{min}–{max} %",
+      "above": "más de {min} %"
+    },
     "avgWaitTime": "Espera Prom.",
     "openAttractions": "Atracciones abiertas",
     "closedAttractions": "Atracciones cerradas",

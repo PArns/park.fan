@@ -13,6 +13,7 @@ export const LAYOUT_MESSAGE_NAMESPACES = [
   'geo',
   'navigation',
   'parks.crowdLevels',
+  'parks.crowdScale',
   'parks.status',
   'pushAlerts.menu',
   'search',
