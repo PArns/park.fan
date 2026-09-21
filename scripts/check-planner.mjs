@@ -325,10 +325,15 @@ async function seed(page) {
  * precondition of the measurement rather than a waiver: any hydration error
  * outside this window still fails the run.
  *
- * It does not make the RUN green, and that is worth stating rather than hiding:
- * the three warnings this file still reports arrive before the first assertion
- * has executed, from the pages the earlier blocks open, not from the phone one.
- * Waiting here fixes the block it is in and nothing else.
+ * A call written into one block fixed that block and nothing else, and the run
+ * stayed red on what the other blocks produced: 41 warnings on the last run
+ * before PAR-328, 37 of them from the homepage at 390 px and 4 from the park
+ * page, none from the phone block that already waited. So the wait moved into
+ * {@link openSheet}, where it runs for a page whose sheet will be MODAL, and the
+ * four calls that stood in front of an `openSheet` went with it. What still
+ * calls this directly is the one press that does not go through the launcher:
+ * the park header's button, which opens the wizard dialog — modal at every
+ * width, unlike the panel.
  *
  * It has a second reader since PAR-186: {@link openSheet} waits here before a
  * REPEATED press, where the reason is the other half of the same fact — a
@@ -390,6 +395,28 @@ const SHEET_ATTEMPTS = 3;
 
 /** Counted rather than asserted — see the last paragraph of {@link openSheet}. */
 const sheetOpens = { opened: 0, retried: 0, failed: 0 };
+
+/**
+ * The query the flyout draws a MODAL sheet on (`modal={isPhone}`), read out of
+ * the module that states it.
+ *
+ * Read rather than imported, and rather than copied. Imported is what this file
+ * does with `leg-chip.ts`, but `use-grid-scale.ts` reaches for `@/lib` and
+ * `--experimental-strip-types` resolves no alias, so the import ends the run
+ * before the first assertion. Copied would be a second source of truth for a
+ * string that decides whether {@link openSheet} waits at all. Missing the
+ * constant therefore means waiting on every page rather than on none: slower,
+ * and never silently unguarded.
+ */
+const PLANNER_PHONE_QUERY =
+  readFileSync('lib/planner/use-grid-scale.ts', 'utf8').match(
+    /PLANNER_PHONE_QUERY\s*=\s*'([^']+)'/
+  )?.[1] ?? null;
+if (!PLANNER_PHONE_QUERY) {
+  console.log(
+    'ℹ️  PLANNER_PHONE_QUERY steht nicht mehr in lib/planner/use-grid-scale.ts — es wird vor jedem Druck gewartet'
+  );
+}
 
 /**
  * Open the planner and answer whether it is on screen. Never throws.
@@ -455,12 +482,30 @@ async function openSheet(page, where) {
     return false;
   }
 
+  // Whether THIS page will get a modal sheet, which is the only case that has
+  // to wait out the hydration before the first press — see the paragraph on
+  // {@link settleHydration}. Asked of the browser rather than derived from the
+  // viewport size, because `PLANNER_PHONE_QUERY` has a pointer term and a
+  // 844x390 window on a coarse pointer answers yes at 844 px wide.
+  const modal = PLANNER_PHONE_QUERY
+    ? await page
+        .evaluate((q) => window.matchMedia(q).matches, PLANNER_PHONE_QUERY)
+        .catch(() => true)
+    : true;
+
   let blame = '';
   let presses = 0;
   for (let attempt = 1; attempt <= SHEET_ATTEMPTS; attempt += 1) {
     const landed = (await pressed.count()) > 0 || (await arriving.count()) > 0;
     if (!landed) {
-      if (presses > 0) await settleHydration(page);
+      // The first press waits only where the sheet is modal; every repeat waits
+      // whatever the viewport, because there the reason is the other one — a
+      // launcher painted but not yet wired. Waiting on a desktop page buys
+      // nothing (the panel marks nothing outside itself, and the run reported no
+      // hydration warning from one) and costs the run real time: with the wait
+      // on every press the run took 1468 s, and one desktop assertion that reads
+      // a URL 1500 ms after a click went red twice in a row.
+      if (modal || presses > 0) await settleHydration(page);
       presses += 1;
       const failure = await launcher
         .click({ timeout: SHEET_PRESS_MS })
@@ -1278,11 +1323,10 @@ const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, has
 noteErrors(phone);
 await seed(phone);
 
-// The one modal sheet in this file, and the only place that needs this — see
-// `settleHydration`. The desktop panel is deliberately NOT modal and marks
-// nothing outside itself, which is why the same open on a 1280 px viewport
-// reports no hydration error at all.
-await settleHydration(phone);
+// The sheet here is MODAL, unlike the 1280 px panel above: the desktop one
+// marks nothing outside itself, which is why the same open on a wide viewport
+// reports no hydration error at all. The wait that the modal one needs is inside
+// `openSheet` since PAR-328 — see `settleHydration` for what it buys.
 if (await openSheet(phone, 'Handy, Hochformat')) {
   await phone.waitForTimeout(2500);
 
@@ -6769,7 +6813,6 @@ step: {
     [PLAN, NEXT_DATE]
   );
   await phone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-  await settleHydration(phone);
   if (!(await openSheet(phone, 'Handy'))) {
     await phone.close();
     break step;
@@ -6949,6 +6992,15 @@ step: {
   const link = wiz.locator('[data-park-planner-link]');
   check('der Parkkopf trägt den Planer-Knopf', (await link.count()) === 1);
 
+  // The one press in this file that does not go through {@link openSheet}, so
+  // it waits for the main thread itself. The wizard is a MODAL dialog even at
+  // 1280 px, and pressing it open while the page hydrates is the mismatch
+  // {@link settleHydration} describes. Measured on this page (PAR-328): two
+  // warnings when the press follows `networkidle` directly, naming
+  // `aria-hidden` and `data-aria-hidden` on `<header>` and on `<footer>`; zero
+  // without the press, zero with this line.
+  await settleHydration(wiz);
+
   await link.first().click();
   await wiz.waitForTimeout(1500);
 
@@ -7111,7 +7163,6 @@ if (live) {
     [PLAN, DATE]
   );
   await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
-  await settleHydration(tight);
   if (await openSheet(tight, 'Resize-Kante, schmales Fenster')) {
     await tight.waitForTimeout(2500);
     // Into the scroller's visible area first. A block outside it still reports a
@@ -7238,7 +7289,6 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
   const land = await browser.newPage({ viewport: { width: 844, height: 390 }, hasTouch: true });
   noteErrors(land);
   await seed(land);
-  await settleHydration(land);
   if (await openSheet(land, 'Querformat')) {
     await land.waitForTimeout(2500);
 
