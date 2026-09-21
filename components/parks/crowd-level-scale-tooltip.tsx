@@ -95,7 +95,7 @@ export function CrowdLevelScaleTooltip({ level, children }: CrowdLevelScaleToolt
                 aria-current={isCurrent ? 'true' : undefined}
                 className={cn(
                   'flex items-center gap-2 rounded-md px-1.5 py-1 text-[11px]',
-                  isCurrent ? 'bg-foreground/10 font-semibold' : 'text-muted-foreground'
+                  isCurrent ? 'bg-foreground/10 font-bold' : 'text-muted-foreground'
                 )}
               >
                 <span
