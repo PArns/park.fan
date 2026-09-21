@@ -4,6 +4,70 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: die OG-Funktion trägt 18 MB Fotos statt 256
+
+Der Deploy scheiterte an `The Vercel Function "api/og/[...path]" is 290.96mb uncompressed`, zum
+zweiten Mal nach `2.11.0` und diesmal, ohne dass an der Route etwas geändert worden wäre. Lokal
+nachgestellt über den Trace, den `next build` selbst schreibt
+(`.next/server/app/api/og/[...path]/route.js.nft.json`, 1162 Dateien): **287,0 MB**, die Differenz
+zu Vercels Zahl ist das Linux-Binary von sharp/libvips gegen das für darwin.
+
+| im Bundle                              |    MB |
+| -------------------------------------- | ----: |
+| `public/media`, Quellen + Sidecars     | 109,3 |
+| `public/media`, `-4x3`-Crops           |  56,8 |
+| `public/media`, `-1x1`-Crops           |  46,5 |
+| `public/media`, `-16x9`-Crops          |  43,8 |
+| sharp, Next, `.next/server`, Blogtexte |  30,6 |
+
+Die Karte malt davon **ein** Bild: ein 16:9-Foto hinter der Überschrift, `opacity: 0.4`, im Rahmen
+1200 × 630. Der Rest lag im Bundle, weil der Lesezugriff dort verwurzelt war. Ein
+`join(process.cwd(), 'public', <Variable>)` ist für den Tracer nicht auflösbar, und seine Antwort
+darauf ist, das ganze Verzeichnis einzupacken, an dem der Pfad hängt – das steht seit `2.11.0` so
+in `next.config.ts`, neu war nur, dass `public/media` seitdem auf 256 MB gewachsen ist. An der
+Konfiguration ist dagegen nichts zu holen: `outputFileTracingIncludes`/`-Excludes` werden unter
+`next build --turbo` nie angewendet, weil `collectBuildTraces` nie aufgerufen wird.
+
+Der Hebel ist die Wurzel. Die OG-Funktion hat jetzt ein eigenes Asset-Verzeichnis, `og-assets/`,
+geschrieben von `scripts/generate-og-assets.mjs` im `prebuild` und mit nichts darin außer dem, was
+diese Karten malen: eine Fassung pro Medienfoto plus die beiden Marken-PNGs. Der Sweep ist damit
+das Feature – das Verzeichnis **ist** die Liste dessen, was die Funktion trägt, und wächst nicht
+mehr hinter dem Rücken von irgendwem.
+
+Die Fassungen sind verkleinert und nicht kopiert. Die `-16x9`-Crops werden in der größten Größe
+geschnitten, die in die Quelle passt: elf davon sind 4096 × 2304, im Schnitt 286 KB, und Satori
+dekodiert das in voller Auflösung, um 1200 px zu malen. Auf Kartengröße sind es 117 KB im Schnitt,
+94 der 157 landen exakt auf 1200 × 630, kleinere Quellen bleiben klein (`withoutEnlargement`). Der
+Cache liegt content-adressiert unter `.next/cache/og-assets`, wie bei den Crops – kalt 2,1 s, warm
+0,1 s.
+
+`lib/og/brand-mark.tsx` liest die beiden PNGs aus demselben Verzeichnis und fällt für `next dev`
+(kein `prebuild`, also kein `og-assets/`) auf `public/` zurück. Dieser Fallback nennt **pro Datei
+einen literalen Pfad** statt einer Schleife, und das ist der ganze Punkt: `join(process.cwd(),
+'public', 'logo-dark.png')` traciert auf genau diese eine Datei, `join(process.cwd(), 'public',
+file)` auf alle.
+
+Gemessen nach dem Umbau, gleicher Trace: **46,8 MB in 497 Dateien**, davon 17,9 MB `og-assets/` und
+17,3 MB das sharp-Binary. Aus `public/` sind noch genau drei Dateien übrig – `world.svg` und die
+zwei Marken-PNGs des Fallbacks, alle drei statisch benannt. Nachprüfbar mit
+`pnpm measure:function-size` (neu, `scripts/measure-function-size.mjs`): ohne Argument alle 129
+Funktionen nach Größe, mit einem Routen-Fragment die Aufschlüsselung nach Verzeichnis. Die Regel
+dazu steht in
+[a-runtime-file-read-ships-the-directory-it-is-rooted-at.md](rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md).
+
+Verifiziert wurde außerdem, dass die Karten noch aussehen wie vorher: `pnpm og:preview` rendert alle
+15 Varianten mit 200 (Parkkarte 102 ms). Und ein A/B mit weggeschobenem `og-assets/` zeigt genau das
+erwartete Bild – Foto weg, Logo noch da, weil der literale Fallback greift.
+
+Dabei ist nebenbei herausgekommen, dass der **HTTP-Fallback in `ogBackgroundSrc` das Foto gar nicht
+rettet**: die Karte rendert, aber ohne Bild. Die Quelle ist ein progressives JPEG
+(`/media/phantasialand/background.jpg`, 1024 × 768, 185 KB, per `curl` sauber mit 200 erreichbar),
+und Satori überspringt still, was es nicht dekodieren kann. Das ist kein Rückschritt aus diesem
+Umbau, sondern war immer so – auch `next dev` hatte nie Crops, weil die git-ignoriert sind und im
+`prebuild` entstehen. Der Fallback bleibt trotzdem stehen: eine Karte ohne Foto ist besser als ein
+fehlgeschlagener Render. Wer ihn wirklich reparieren will, müsste die Quelle baseline kodieren –
+eigene Aufgabe, hier nicht mitgemacht.
+
 ## Unreleased – Eine öffentliche Changelog-Seite, und die Regel, wann eine Version geschnitten wird
 
 Diese Datei hier ist das interne Log: deutsch, ein Abschnitt pro PR, mit Dateinamen und Messwerten.

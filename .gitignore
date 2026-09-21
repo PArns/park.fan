@@ -74,6 +74,13 @@ public/media/**/*-16x9.jpg
 public/media/**/*-4x3.jpg
 public/media/**/*-1x1.jpg
 
+# The OG function's own asset root (scripts/generate-og-assets.mjs) — one 1200×630
+# rendition per media photo plus the two brand PNGs, cut from those crops at build
+# time. It exists so the card's runtime read is rooted somewhere small: the tracer
+# bundles the whole directory an unresolvable path is rooted at, and while that was
+# `public/` this function shipped 256 MB of photos it never paints.
+/og-assets/
+
 # The pre-media-database photo tree. Everything the site paints now lives under
 # public/media; what was left here were 351 orphaned crops with no source images,
 # and a `git add -A` swept 282 MB of them into a commit — which then pushed the OG

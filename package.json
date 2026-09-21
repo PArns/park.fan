@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:live": "node scripts/dev-live.mjs",
-    "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-message-chunks.mjs && node scripts/check-client-messages.mjs && node scripts/check-untranslated.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:image-crops && pnpm generate:media",
+    "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-message-chunks.mjs && node scripts/check-client-messages.mjs && node scripts/check-untranslated.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:image-crops && pnpm generate:og-assets && pnpm generate:media",
     "build": "pnpm prebuild && next build --turbo",
     "analyze": "pnpm prebuild && cross-env ANALYZE=true next build --webpack",
     "build:webpack": "pnpm prebuild && next build --webpack",
@@ -21,6 +21,7 @@
     "generate:brand-pin": "node scripts/generate-brand-pin.mjs",
     "generate:hero-textures": "node scripts/fetch-hero-textures.mjs",
     "generate:image-crops": "node scripts/generate-image-crops.mjs",
+    "generate:og-assets": "node scripts/generate-og-assets.mjs",
     "generate:client-glossary": "node scripts/generate-client-glossary.mjs",
     "generate:route-namespaces": "node scripts/generate-route-namespaces.mjs",
     "generate:message-chunks": "node scripts/generate-message-chunks.mjs",
@@ -118,6 +119,7 @@
     "impeccable:install": "npx -y impeccable@3 install",
     "impeccable:update": "npx -y impeccable@3 update",
     "measure:cls": "node scripts/measure-cls.mjs",
+    "measure:function-size": "node scripts/measure-function-size.mjs",
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {

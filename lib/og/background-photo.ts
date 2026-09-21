@@ -17,19 +17,38 @@ import { join } from 'node:path';
  * of the whole site's function time on 6 % of its requests. It also billed twice, once outbound to
  * fetch and once inbound to serve.
  *
- * Two things happen here:
+ * ## The read is rooted at `og-assets/`, and that is the whole point
+ *
+ * A runtime `join(process.cwd(), <root>, <variable>)` is a path the function tracer cannot
+ * resolve, and its answer to one is to bundle **the entire directory that path is rooted at**.
+ * This used to read `join(process.cwd(), 'public', …)`, so the OG function carried all of
+ * `/public` — the sources, the sidecars and all three crop ratios, 256 MB of photos for a card
+ * that paints one — and the deploy failed at 290.96 MB against Vercel's 250 MB limit.
+ *
+ * `outputFileTracingIncludes` is not the lever: `next build --turbo` never calls
+ * `collectBuildTraces`, the only place includes and excludes are applied, so under the build this
+ * project ships every key in that map is inert (`outputFileTracingExcludes` was tried, and the
+ * crops it named stayed in the trace). The lever is **where the read is rooted**. So the OG
+ * function has its own asset directory, written by `scripts/generate-og-assets.mjs` in prebuild
+ * and holding nothing but what these cards paint: one 1200×630 rendition per media photo, plus
+ * the two brand PNGs. The sweep is then a feature — `og-assets/` **is** the list of what this
+ * function carries, and it cannot grow past what somebody deliberately put in it.
+ *
+ * Two things still happen per render, and both predate that move:
  *
  *  1. **Read locally.** No network, no CDN miss, no DNS.
- *  2. **Prefer the 16:9 crop.** `scripts/generate-image-crops.mjs` already cuts a `-16x9` variant
- *     of every source image (~119 KB vs ~376 KB) and 16:9 is exactly the card's 1200×630 frame, so
- *     `objectFit: cover` has nothing to throw away.
+ *  2. **Prefer the 16:9 rendition.** The card frame IS 1200×630, so `objectFit: cover` has
+ *     nothing to throw away.
  *
- * Requires the crops to be traced into the OG function bundle — see `outputFileTracingIncludes`
- * for `/api/og/[...path]` in next.config.ts — now a single glob over the 16:9 crops
- * under public/media, which covers the park, ride and blog-cover photos alike.
- *
- * Falls back to the absolute URL when a crop isn't on disk, so a source image that never got a
- * crop keeps rendering exactly as it does today rather than losing its photo.
+ * Falls back to the absolute URL when a rendition isn't on disk — a photo that never got one, or
+ * any `next dev` run, which skips prebuild and therefore has no `og-assets/` at all. **That
+ * fallback is best-effort and measured not to paint**: with `og-assets/` moved aside the park card
+ * still renders, correctly, but with no photo behind it. The source is a *progressive* JPEG
+ * (`/media/phantasialand/background.jpg`, 1024×768, 185 KB) and Satori quietly skips an image it
+ * cannot decode. This predates the move — dev never had the `-16x9` crops either, since they are
+ * git-ignored and cut in prebuild — so the fallback has always been "a card without its photo"
+ * rather than "the photo over HTTP". It is left in place because a card without a photo beats a
+ * failed render, not because it recovers the picture.
  */
 
 /** Read once per warm function instance. Keyed by the site-relative source path. */
@@ -55,9 +74,11 @@ function readAsDataUri(relPath: string): string | null {
   const cached = dataUriCache.get(relPath);
   if (cached !== undefined) return cached;
 
-  const absolute = join(process.cwd(), 'public', relPath.replace(/^\//, ''));
+  // `og-assets`, never `public` — see the header. The variable segment is what makes the tracer
+  // sweep the whole root, so the root has to be a directory holding only these cards' assets.
+  const absolute = join(process.cwd(), 'og-assets', relPath.replace(/^\//, ''));
   let uri: string | null = null;
-  // existsSync first: a miss is the expected path for un-cropped images, and letting readFileSync
+  // existsSync first: a miss is the expected path for un-rendered images, and letting readFileSync
   // throw for that would mean try/catch as control flow on every cold card.
   if (existsSync(absolute)) {
     try {
@@ -83,6 +104,9 @@ export function ogBackgroundSrc(imagePath: string | null, baseUrl: string): stri
   if (/^https?:\/\//i.test(imagePath)) return imagePath;
   const onDisk = withoutVersion(imagePath);
   return (
+    // Both attempts matter: a park background is named `/media/x/background.jpg` and needs the
+    // suffix added, while a blog cover often points straight at `…-16x9.jpg` in its frontmatter,
+    // where adding it again would miss.
     readAsDataUri(toCropPath(onDisk)) ??
     readAsDataUri(onDisk) ??
     // The fallback keeps the version token: that one IS fetched over HTTP.

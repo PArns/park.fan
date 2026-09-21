@@ -78,6 +78,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[An ISR route needs both halves](docs/rules/an-isr-route-needs-both-halves.md)** — `export const revalidate` alone caches nothing: every
   fetch needs `next: { revalidate }`, and an all-dynamic route needs a `generateStaticParams`
   (empty is right) or it never enters `dynamicRoutes`. Prove it in `.next/prerender-manifest.json`.
+- **[A runtime file read ships the directory it is rooted at](docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)** — an unresolvable
+  `join(process.cwd(), <root>, <var>)` bundles the whole root into the function (three failed
+  deploys); `outputFileTracing*` is inert under `--turbo`. Root it at a purpose-built directory
+  (`og-assets/`) or name the file literally. Prove it with `pnpm measure:function-size`.
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.

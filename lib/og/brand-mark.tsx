@@ -16,8 +16,9 @@ import { join } from 'node:path';
  * was a full CDN miss.) Reading them locally removes that traffic entirely — and
  * removes two network round-trips from OG render latency.
  *
- * Requires the PNGs to be traced into the function bundle — see
- * `outputFileTracingIncludes` for `/api/og/[...path]` in next.config.ts.
+ * They are read out of `og-assets/`, the directory prebuild fills with everything
+ * these cards paint and nothing else — see `lib/og/background-photo.ts` for why
+ * the root of that read decides how big this function is.
  *
  * The aspect ratios are pinned to the source assets (`logo-dark.png` 569×683 ≈
  * 0.833, `parkfan-dark.png` 768×219 ≈ 3.507) so every caller only passes a
@@ -34,11 +35,33 @@ const WORDMARK_RATIO = 768 / 219; // ≈ 3.507 (width / height of parkfan-dark.p
  */
 const dataUriCache = new Map<string, string>();
 
-function brandAssetDataUri(file: string): string {
+/** The two files `scripts/generate-og-assets.mjs` copies. Change one list and change the other. */
+type BrandAsset = 'logo-dark.png' | 'parkfan-dark.png';
+
+/**
+ * Read a brand PNG, preferring the OG function's own asset root.
+ *
+ * The `public/` fallback covers `next dev`, which skips prebuild and therefore has no
+ * `og-assets/`. It spells out **one literal path per asset on purpose**: a
+ * `join(process.cwd(), 'public', file)` with a variable in it is unresolvable to the function
+ * tracer, and its answer to that is to bundle all of `/public` — which is precisely the 256 MB
+ * this module stopped shipping. A fallback here may name its files; it may not compute them.
+ */
+function readBrandAsset(file: BrandAsset): Buffer {
+  try {
+    return readFileSync(join(process.cwd(), 'og-assets', file));
+  } catch {
+    /* prebuild has not run — fall through to the copy under public/ */
+  }
+  return file === 'logo-dark.png'
+    ? readFileSync(join(process.cwd(), 'public', 'logo-dark.png'))
+    : readFileSync(join(process.cwd(), 'public', 'parkfan-dark.png'));
+}
+
+function brandAssetDataUri(file: BrandAsset): string {
   const cached = dataUriCache.get(file);
   if (cached) return cached;
-  const bytes = readFileSync(join(process.cwd(), 'public', file));
-  const dataUri = `data:image/png;base64,${bytes.toString('base64')}`;
+  const dataUri = `data:image/png;base64,${readBrandAsset(file).toString('base64')}`;
   dataUriCache.set(file, dataUri);
   return dataUri;
 }

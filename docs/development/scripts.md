@@ -9,9 +9,22 @@
 | `generate-blog-manifest.mjs`   | Generates the blog manifests (see below)                                                                      |
 | `generate-media-manifest.mjs`  | Builds the media database manifests from `public/media` (see [media database](../features/media-database.md)) |
 | `generate-image-crops.mjs`     | Generates image crop configs                                                                                  |
+| `generate-og-assets.mjs`       | Writes `og-assets/`, the OG function's own asset root (see below)                                             |
 | `fetch-hero-textures.mjs`      | Fetches textures for the 3-D hero (`generate:hero-textures`)                                                  |
 
 All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run automatically via `prebuild` before `pnpm build`. See [Assets, Images & Content](assets.md) for what each generates.
+
+### `og-assets/` is the OG function's bundle, not a cache
+
+`generate-og-assets.mjs` runs after the crops and writes one 1200 × 630 rendition per media photo
+plus the two brand PNGs into `og-assets/` (git-ignored, content-addressed cache under
+`.next/cache/og-assets`, 2.1 s cold and 0.1 s warm). It is not an optimisation: `lib/og/background-photo.ts`
+reads its photo at request time through a path the function tracer cannot resolve, and the tracer's
+answer to one of those is to bundle **the whole directory the path is rooted at** — while that root
+was `public/` the OG function shipped 256 MB of photos and the deploy failed at 290.96 MB. Rooting
+the read here is what makes the directory the complete, deliberate list of what that function
+carries (287.0 MB → 46.8 MB). Check any function with `pnpm measure:function-size` after a build;
+the rule is [a runtime file read ships the directory it is rooted at](../rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md).
 
 ### The blog manifest is three files, on purpose
 
