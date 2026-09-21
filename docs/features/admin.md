@@ -355,6 +355,25 @@ nobody has ever photographed. The list comes from `/api/admin/media/backlog`, wh
 crosses the park payload with the media index server-side and answers a few KB
 instead of the 65–85 KB park payload over park WLAN.
 
+### The park is a row too
+
+Above the ride list sits one row for the park itself, and everything it uploads carries
+`ride: null` — the entrance, the parade, the Halloween dressing of a path. None of that
+belonged to a ride, and until it had a row of its own the field screen was the one way
+into the database that could not produce it, because every input on the screen hung off
+a ride in the backlog.
+
+It is also the one place on this screen where a tag is chosen by hand. The vocabulary's
+`season` facet (`halloween`, `christmas`, `winter`, `spring`, `summer`, `autumn`) is read
+from `lib/media/tags.mjs`, the same list the media browser offers, and the chips are
+rendered by `_components/park-row.tsx`. The other five facets stay off this screen: 49
+chips is a desk's worth of decisions, and subject, weather and light are all readable off
+the picture in the evening. Which event a park was dressed for, six months later, is not
+reliably readable off anything — and it is what makes the photo findable for a post.
+
+The selection survives the upload rather than resetting with it: an evening at a Halloween
+event is a dozen photographs, not one.
+
 ### Three ways to a picture, and one of them is why HEIC matters
 
 The camera button carries `capture="environment"` and opens the camera. The library
