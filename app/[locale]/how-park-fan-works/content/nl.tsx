@@ -749,9 +749,8 @@ export function ContentNL() {
         </Highlight>
         <PG>
           Bij het geselecteerde blok staat bovendien hoeveel de voorspelling voor die attractie er
-          gewoonlijk naast zit. Voor Taron is dat op deze zaterdag 15 minuten, voor de vlakkere
-          attracties van die dag 11. Gewoonlijk betekent: op de helft van de dagen zit ze er verder
-          naast.
+          gewoonlijk naast zit. Voor Taron is dat op deze zaterdag 15 minuten. Gewoonlijk betekent:
+          op de helft van de dagen zit ze er verder naast.
         </PG>
       </SectionShell>
 
@@ -764,9 +763,9 @@ export function ContentNL() {
         icon={Layers}
       >
         <P>
-          Alles tot hier staat op park.fan op één pagina per park, gebouwd in de volgorde waarin
-          mensen vragen: is het park vandaag open? Gaat het zo regenen? Hoe lang is de rij? En
-          wanneer had ik beter kunnen komen?
+          Alles uit de eerste vier hoofdstukken staat op park.fan op één pagina per park, gebouwd in
+          de volgorde waarin mensen vragen: is het park vandaag open? Gaat het zo regenen? Hoe lang
+          is de rij? En wanneer had ik beter kunnen komen?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">

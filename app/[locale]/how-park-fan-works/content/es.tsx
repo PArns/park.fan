@@ -751,8 +751,8 @@ export function ContentES() {
         </Highlight>
         <PG>
           En el bloque seleccionado está además cuánto se desvía normalmente la previsión de esa
-          atracción. Para Taron, ese sábado, son 15 minutos; para las atracciones más tranquilas del
-          día, 11. Normalmente quiere decir: la mitad de los días se desvía más.
+          atracción. Para Taron, ese sábado, son 15 minutos. Normalmente quiere decir: la mitad de
+          los días se desvía más.
         </PG>
       </SectionShell>
 
@@ -765,9 +765,9 @@ export function ContentES() {
         icon={Layers}
       >
         <P>
-          Todo lo anterior está en park.fan en una sola página por parque, construida en el orden en
-          que la gente pregunta: ¿abre hoy el parque? ¿Va a llover? ¿Cuánto mide la cola? ¿Y cuándo
-          habría sido mejor venir?
+          Todo lo de los cuatro primeros capítulos está en park.fan en una sola página por parque,
+          construida en el orden en que la gente pregunta: ¿abre hoy el parque? ¿Va a llover?
+          ¿Cuánto mide la cola? ¿Y cuándo habría sido mejor venir?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">

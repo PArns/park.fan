@@ -758,9 +758,8 @@ export function ContentFR() {
         </Highlight>
         <PG>
           Le bloc sélectionné indique aussi de combien la prévision se trompe habituellement pour
-          cette attraction. Pour Taron, ce samedi-là, c’est 15 minutes, et 10,9 pour les attractions
-          plus calmes de la journée. Habituellement veut dire : la moitié des jours s’en écartent
-          davantage.
+          cette attraction. Pour Taron, ce samedi-là, c’est 15 minutes. Habituellement veut dire :
+          la moitié des jours s’en écartent davantage.
         </PG>
       </SectionShell>
 
@@ -773,9 +772,10 @@ export function ContentFR() {
         icon={Layers}
       >
         <P>
-          Tout ce qui précède tient sur une seule page park.fan par parc, construite dans l’ordre où
-          les questions viennent : le parc est-il ouvert aujourd’hui ? Va-t-il pleuvoir ? Quelle est
-          la longueur de la file ? Et quand aurais-je mieux fait de venir ?
+          Tout ce qui précède le planificateur tient sur une seule page park.fan par parc,
+          construite dans l’ordre où les questions viennent : le parc est-il ouvert aujourd’hui ?
+          Va-t-il pleuvoir ? Quelle est la longueur de la file ? Et quand aurais-je mieux fait de
+          venir ?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">

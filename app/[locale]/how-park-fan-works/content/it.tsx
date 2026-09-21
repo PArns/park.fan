@@ -750,8 +750,8 @@ export function ContentIT() {
         </Highlight>
         <PG>
           Sul blocco selezionato c’è inoltre di quanto la previsione per quell’attrazione sbaglia di
-          solito. Per Taron, quel sabato, sono 15 minuti, per le attrazioni più tranquille della
-          giornata 11. Di solito significa: metà dei giorni sbaglia di più.
+          solito. Per Taron, quel sabato, sono 15 minuti. Di solito significa: metà dei giorni
+          sbaglia di più.
         </PG>
       </SectionShell>
 
@@ -764,9 +764,9 @@ export function ContentIT() {
         icon={Layers}
       >
         <P>
-          Tutto quello che precede sta su una sola pagina park.fan per parco, costruita nell’ordine
-          in cui si fanno le domande: il parco oggi è aperto? Sta per piovere? Quanto è lunga la
-          fila? E quando sarebbe stato meglio venire?
+          Tutto quello dei primi quattro capitoli sta su una sola pagina park.fan per parco,
+          costruita nell’ordine in cui si fanno le domande: il parco oggi è aperto? Sta per piovere?
+          Quanto è lunga la fila? E quando sarebbe stato meglio venire?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">

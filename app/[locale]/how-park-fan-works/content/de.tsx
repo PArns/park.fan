@@ -757,8 +757,8 @@ export function ContentDE() {
         </Highlight>
         <PG>
           Am ausgewählten Block steht außerdem, wie weit die Prognose für diese Bahn typischerweise
-          danebenliegt. Für Taron sind das an diesem Samstag 15 Minuten, für die flacheren Bahnen
-          des Tages 11. Typisch heißt: An der Hälfte der Tage liegt sie weiter daneben.
+          danebenliegt. Für Taron sind das an diesem Samstag 15 Minuten. Typisch heißt: An der
+          Hälfte der Tage liegt sie weiter daneben.
         </PG>
       </SectionShell>
 
@@ -771,9 +771,9 @@ export function ContentDE() {
         icon={Layers}
       >
         <P>
-          Alles bisherige steht auf park.fan auf einer einzigen Seite pro Park, gebaut nach der
-          Reihenfolge, in der man fragt: Hat der Park heute auf? Regnet es gleich? Wie lang ist die
-          Schlange? Und wann wäre ich besser gekommen?
+          Alles aus den ersten vier Kapiteln steht auf park.fan auf einer einzigen Seite pro Park,
+          gebaut nach der Reihenfolge, in der man fragt: Hat der Park heute auf? Regnet es gleich?
+          Wie lang ist die Schlange? Und wann wäre ich besser gekommen?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">

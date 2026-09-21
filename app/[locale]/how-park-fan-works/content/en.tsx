@@ -748,8 +748,7 @@ export function ContentEN() {
         </Highlight>
         <PG>
           The selected block also names how far the forecast for that ride typically lands off. For
-          Taron that Saturday it is 15 minutes, 10.9 for the flatter rides of the day. Typical means
-          half the days land further off.
+          Taron that Saturday it is 15 minutes. Typical means half the days land further off.
         </PG>
       </SectionShell>
 
@@ -762,9 +761,9 @@ export function ContentEN() {
         icon={Layers}
       >
         <P>
-          Everything so far lives on one park.fan page per park, built in the order people ask: is
-          the park open today? Is it about to rain? How long is the queue? And when should I have
-          come instead?
+          Everything from the first four chapters lives on one park.fan page per park, built in the
+          order people ask: is the park open today? Is it about to rain? How long is the queue? And
+          when should I have come instead?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
