@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { Crown, Pin } from 'lucide-react';
-import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import type { FitWish } from '@/lib/planner/fit';
 import { cn } from '@/lib/utils';
@@ -85,16 +84,10 @@ export function PlannerFitList({
                     is known for and cannot know which one somebody drove four
                     hours for. */}
                 {wish.headliner && (
-                  /* `tooltipOnly`, because the row is a <label> around a checkbox:
-                     a link inside it would navigate away from a list somebody is
-                     ticking. The crown keeps its own label; the span only carries
-                     the glossary definition on hover. */
-                  <GlossaryTermLink termId="headliner" tooltipOnly className="flex shrink-0">
-                    <Crown
-                      className="text-primary/70 size-3 shrink-0"
-                      aria-label={t('fit.headliner')}
-                    />
-                  </GlossaryTermLink>
+                  <Crown
+                    className="text-primary/70 size-3 shrink-0"
+                    aria-label={t('fit.headliner')}
+                  />
                 )}
               </span>
 

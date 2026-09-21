@@ -156,17 +156,27 @@ export function PlannerMissingHeadliners({
           <span>
             {t.rich('headliners.missing', {
               count: missing.length,
-              // A link on the desktop, a tooltip on the phone. Every target in the
-              // sheet owes a coarse pointer 44 px, and an 11 px hint line cannot
-              // pay it: as a link this word measured 50x15 and `check:planner`
-              // refused it, rightly — a 15 px target next to the 44 px pills below
-              // is a miss waiting to happen. The wide arrangement has no such floor
-              // and keeps the link.
-              term: (chunks) => (
-                <GlossaryTermLink termId="headliner" tooltipOnly={isPhone}>
-                  {chunks}
-                </GlossaryTermLink>
-              ),
+              // A link on the wide arrangement, plain text on the phone. Every
+              // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
+              // line cannot pay it: as a link this word measured 50x15 and
+              // `check:planner` refused it, rightly — a 15 px target above the
+              // 44 px pills is one that gets missed.
+              //
+              // `showTooltip={false}` and that is NOT a preference: a tooltip
+              // opened from inside this sheet paints UNDER it. Measured at
+              // 1440x900 with the panel open — the box is 256x80 at x=934, the
+              // sheet starts at x=992, and 20 of 25 points sampled across the
+              // tooltip answer the sheet, because `TooltipContent` is `z-50`
+              // against the sheet's `z-[70]`. A definition four fifths hidden is
+              // worse than none; the link carries the reader to the whole of it.
+              term: (chunks) =>
+                isPhone ? (
+                  <>{chunks}</>
+                ) : (
+                  <GlossaryTermLink termId="headliner" showTooltip={false}>
+                    {chunks}
+                  </GlossaryTermLink>
+                ),
             })}
           </span>
         </p>
