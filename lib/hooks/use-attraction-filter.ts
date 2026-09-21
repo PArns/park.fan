@@ -112,6 +112,27 @@ export function useAttractionFilter({
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // INP: a pill tap used to re-filter the park and re-render the grid in the SAME commit that lit
+  // the pill, so the paint that ends the interaction waited for all of it — 392 ms on the park
+  // pages Cloudflare scores "Poor" (PAR-272's diagnosis, PAR-384). The array work is not the cost:
+  // the predicates below run over ~100 attractions. The cost is what the new arrays force — every
+  // land whose set changed reconciles, the rope-drop block mounts or unmounts, and every card that
+  // entered the set mounts with its two images, its hand-built sparkline path and its ten
+  // translation hooks.
+  //
+  // So the pill's own state stays urgent — `aria-pressed`, the lit glass and the counts paint on
+  // the tap — and everything derived from it reads a DEFERRED copy: the grid arrives a beat later
+  // at lower priority, and React may interrupt that render for the next tap. Same split the search
+  // box got below and the tab row got in `tabs-with-hash.tsx`, for the same reason.
+  //
+  // Read as a set, not one by one. All five come from one update, so a render sees either every
+  // old value or every new one, and the grid can never show "open now" applied without "wet".
+  const deferredOnlyOpen = useDeferredValue(onlyOpen);
+  const deferredWetMode = useDeferredValue(wetMode);
+  const deferredOnlyFastPass = useDeferredValue(onlyFastPass);
+  const deferredOnlySingleRider = useDeferredValue(onlySingleRider);
+  const deferredShowOffSeasonAttractions = useDeferredValue(showOffSeasonAttractions);
+
   // Clear search on Escape key. The updater form reads the current query, so the listener has
   // no dependencies — it used to depend on `searchQuery`, which tore down and re-attached a
   // global `keydown` listener on EVERY keystroke, right in the middle of the typing path this
@@ -163,12 +184,12 @@ export function useAttractionFilter({
       .filter(
         (a) =>
           a.isHeadliner &&
-          (showOffSeasonAttractions || isInSeason(a)) &&
+          (deferredShowOffSeasonAttractions || isInSeason(a)) &&
           (riderHeight === null || canRideAtHeight(a, riderHeight)) &&
-          (!onlyOpen || isOpenNow(a, parkStatus)) &&
-          matchesWet(a, wetMode) &&
-          (!onlyFastPass || hasFastPass(a)) &&
-          (!onlySingleRider || hasSingleRider(a))
+          (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
+          matchesWet(a, deferredWetMode) &&
+          (!deferredOnlyFastPass || hasFastPass(a)) &&
+          (!deferredOnlySingleRider || hasSingleRider(a))
       );
 
     // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
@@ -186,12 +207,12 @@ export function useAttractionFilter({
       .map((item) => item.a);
   }, [
     attractionsByLand,
-    showOffSeasonAttractions,
+    deferredShowOffSeasonAttractions,
     riderHeight,
-    onlyOpen,
-    wetMode,
-    onlyFastPass,
-    onlySingleRider,
+    deferredOnlyOpen,
+    deferredWetMode,
+    deferredOnlyFastPass,
+    deferredOnlySingleRider,
     parkStatus,
   ]);
 
@@ -338,33 +359,48 @@ export function useAttractionFilter({
    * it is that ride, shut or dry; the card says "Geschlossen" on its own.
    */
   const narrowedByLand = useMemo(() => {
-    if (!onlyOpen && wetMode === null && !onlyFastPass && !onlySingleRider) {
+    if (
+      !deferredOnlyOpen &&
+      deferredWetMode === null &&
+      !deferredOnlyFastPass &&
+      !deferredOnlySingleRider
+    ) {
       return heightFilteredByLand;
     }
     const result: Record<string, ParkAttraction[]> = {};
     for (const [land, attractions] of Object.entries(heightFilteredByLand)) {
       const filtered = attractions.filter(
         (a) =>
-          (!onlyOpen || isOpenNow(a, parkStatus)) &&
-          matchesWet(a, wetMode) &&
-          (!onlyFastPass || hasFastPass(a)) &&
-          (!onlySingleRider || hasSingleRider(a))
+          (!deferredOnlyOpen || isOpenNow(a, parkStatus)) &&
+          matchesWet(a, deferredWetMode) &&
+          (!deferredOnlyFastPass || hasFastPass(a)) &&
+          (!deferredOnlySingleRider || hasSingleRider(a))
       );
       if (filtered.length > 0) result[land] = filtered;
     }
     return result;
-  }, [heightFilteredByLand, onlyOpen, wetMode, onlyFastPass, onlySingleRider, parkStatus]);
+  }, [
+    heightFilteredByLand,
+    deferredOnlyOpen,
+    deferredWetMode,
+    deferredOnlyFastPass,
+    deferredOnlySingleRider,
+    parkStatus,
+  ]);
 
   const inSeasonAttractionsByLand = useMemo(() => {
-    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return narrowedByLand;
+    if (deferredShowOffSeasonAttractions || offSeasonAttractionCount === 0) return narrowedByLand;
     const result: Record<string, ParkAttraction[]> = {};
     for (const [land, attractions] of Object.entries(narrowedByLand)) {
       const filtered = attractions.filter(isInSeason);
       if (filtered.length > 0) result[land] = filtered;
     }
     return result;
-  }, [narrowedByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
+  }, [narrowedByLand, deferredShowOffSeasonAttractions, offSeasonAttractionCount]);
 
+  // The shows tab's own off-season toggle stays urgent. It filters a list a park publishes a
+  // handful of entries for, against the attraction grid's ~100 cards, and a show card carries
+  // neither sparkline nor photo layers.
   const visibleShows = useMemo(() => {
     if (showOffSeasonShows || offSeasonShowCount === 0) return shows ?? [];
     return (shows ?? []).filter(isInSeason);
@@ -412,6 +448,24 @@ export function useAttractionFilter({
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
+  /**
+   * Whether anything is currently cutting the grid down.
+   *
+   * Every narrowing filter in its DEFERRED reading, so it describes the grid on screen rather
+   * than the pills. It gates the rope-drop block, which is advice about the whole park: mounting
+   * or unmounting that block is one of the costs a pill tap used to pay before its paint, and
+   * flipping it off the urgent value would put the advice back over a grid that no longer
+   * matches it for as long as the deferred render takes. The rider height is the exception and
+   * is read live — it is a slider, not a pill, and it was never on the tap path.
+   */
+  const isNarrowing =
+    isSearching ||
+    riderHeight !== null ||
+    deferredOnlyOpen ||
+    deferredWetMode !== null ||
+    deferredOnlyFastPass ||
+    deferredOnlySingleRider;
+
   return {
     // Search
     inputRef,
@@ -436,6 +490,18 @@ export function useAttractionFilter({
     setOnlyFastPass,
     onlySingleRider,
     setOnlySingleRider,
+    /**
+     * The pills as the GRID currently reads them, for anything that describes the grid instead of
+     * the controls — the empty state's escape hatches, which belong to the list they explain. The
+     * panel keeps the urgent values above, so a pill lights up on the tap.
+     */
+    appliedPills: {
+      onlyOpen: deferredOnlyOpen,
+      wetMode: deferredWetMode,
+      onlyFastPass: deferredOnlyFastPass,
+      onlySingleRider: deferredOnlySingleRider,
+    },
+    isNarrowing,
     openAttractionCount,
     wetAttractionCount,
     fastPassAttractionCount,
