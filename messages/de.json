@@ -2240,7 +2240,7 @@
       "resize": "Breite ziehen"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {1 Headliner fehlt noch} other {# Headliner fehlen noch}}",
+      "missing": "{count, plural, =1 {1 <term>Headliner</term> fehlt noch} other {# <term>Headliner</term> fehlen noch}}",
       "label": "Headliner"
     },
     "coach": {

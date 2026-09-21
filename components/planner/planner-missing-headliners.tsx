@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Crown } from 'lucide-react';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
@@ -146,7 +147,15 @@ export function PlannerMissingHeadliners({
       <div className="planner-phone:max-h-[126px] planner-phone:overflow-y-auto planner-phone:overscroll-y-contain border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
-          {t('headliners.missing', { count: missing.length })}
+          {/* The line is one flex item, not three. `t.rich` splits the sentence into
+              text, link, text, and each run would otherwise become its own flex item
+              with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
+          <span>
+            {t.rich('headliners.missing', {
+              count: missing.length,
+              term: (chunks) => <GlossaryTermLink termId="headliner">{chunks}</GlossaryTermLink>,
+            })}
+          </span>
         </p>
         <div className="mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (

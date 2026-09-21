@@ -2240,7 +2240,7 @@
       "resize": "Breedte slepen"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {1 headliner ontbreekt nog} other {# headliners ontbreken nog}}",
+      "missing": "{count, plural, =1 {1 <term>headliner</term> ontbreekt nog} other {# <term>headliners</term> ontbreken nog}}",
       "label": "Headliner"
     },
     "coach": {

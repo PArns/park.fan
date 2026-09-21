@@ -6,6 +6,7 @@ import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-reac
 import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
 import { RiderHeight } from '@/components/common/unit-display';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
@@ -317,10 +318,15 @@ export function PlannerRideSearch({
                   </span>
                 )}
                 {ride.isHeadliner && (
-                  <Crown
-                    className="text-crowd-high size-3 shrink-0"
-                    aria-label={t('headliners.label')}
-                  />
+                  /* `tooltipOnly`, like the same crown in the fit list: the row
+                     is a draggable button, so a link inside it would take the
+                     reader off the search instead of adding the ride. */
+                  <GlossaryTermLink termId="headliner" tooltipOnly className="flex shrink-0">
+                    <Crown
+                      className="text-crowd-high size-3 shrink-0"
+                      aria-label={t('headliners.label')}
+                    />
+                  </GlossaryTermLink>
                 )}
                 {/* What this party's own answers say about this ride. A flag,
                     never a filter — see the `prefs` prop. The height is shown

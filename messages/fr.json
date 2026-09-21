@@ -2240,7 +2240,7 @@
       "resize": "Ajuster la largeur"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {1 attraction phare manque encore} other {# attractions phares manquent encore}}",
+      "missing": "{count, plural, =1 {1 <term>attraction phare</term> manque encore} other {# <term>attractions phares</term> manquent encore}}",
       "label": "Attraction phare"
     },
     "coach": {
