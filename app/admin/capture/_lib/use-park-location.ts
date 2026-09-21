@@ -86,12 +86,33 @@ export interface NearbyPark {
 }
 
 /**
+ * Metres around a park's stored point that still count as standing in it.
+ *
+ * The endpoint answers `in_park` on `distance <= radius` against one stored point
+ * per park — there is no boundary and no tolerance, so at 1001 m the answer flips.
+ * Its default of 1000 m is smaller than several parks: measured across the 182
+ * parks with attraction coordinates, 22 have a ride further than 1000 m from their
+ * own point (Shanghai Disneyland 2097 m, Ocean Park 1993 m, Cedar Point 1446 m),
+ * and the widest genuine one is 2266 m. Standing at those rides returned "no park"
+ * while the ride list beside it worked, because that one is computed on the client
+ * with no radius gate at all.
+ *
+ * 3000 m covers the widest park and leaves the car park and the entrance plaza
+ * inside. It does not make the answer less certain: which park comes back is
+ * decided by whichever point is nearest, and inside a resort that is already a
+ * coin toss (PortAventura, Ferrari Land and Caribe share one point; Disneyland and
+ * DCA are 86 m apart). That is what the picker is for, and a hand-picked park wins
+ * over this one anyway.
+ */
+const IN_PARK_RADIUS_M = 3000;
+
+/**
  * Which park a fix falls inside, via the public nearby endpoint.
  *
- * `type: 'in_park'` is the only answer this screen acts on. Standing in the car
- * park an hour before opening returns `nearby_parks`, and guessing from that list
- * would file a morning's photographs under whichever park was closest to the
- * motorway — so it reports "no park" and the screen offers the picker.
+ * `type: 'in_park'` is the only answer this screen acts on — the `nearby_parks`
+ * list is never guessed from, because picking its first entry would file a
+ * morning's photographs under whichever park was closest to the motorway. It
+ * reports "no park" instead and the screen offers the picker.
  *
  * The park's own URL is `/v1/parks/<continent>/<country>/<city>/<slug>`; the four
  * segments are what everything downstream addresses a park by.
@@ -110,7 +131,9 @@ export function useNearbyPark(position: DevicePosition | null) {
     setFailed(false);
 
     const controller = new AbortController();
-    fetch(`/api/nearby?lat=${position.lat}&lng=${position.lon}`, { signal: controller.signal })
+    fetch(`/api/nearby?lat=${position.lat}&lng=${position.lon}&radius=${IN_PARK_RADIUS_M}`, {
+      signal: controller.signal,
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data?.type !== 'in_park' || !data?.data?.park?.url) {
