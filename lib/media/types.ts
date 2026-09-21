@@ -28,6 +28,7 @@ export type MediaLicense =
   | 'cc-by-nc-4.0'
   | 'cc0-1.0'
   | 'public-domain'
+  | 'unsplash'
   | 'unknown';
 
 export const MEDIA_LICENSES: readonly MediaLicense[] = [
@@ -37,11 +38,15 @@ export const MEDIA_LICENSES: readonly MediaLicense[] = [
   'cc-by-nc-4.0',
   'cc0-1.0',
   'public-domain',
+  'unsplash',
   'unknown',
 ];
 
 /** Per-locale strings. Lookup falls back through `de` → `en` → any present value. */
 export type LocalizedText = Partial<Record<Locale, string>>;
+
+/** The shoot's own photographer — every other `credit.author` needs a visible, on-image credit. */
+export const OWN_PHOTO_AUTHOR = 'Patrick Arns';
 
 export interface MediaCredit {
   /** Who took the photo. `null` when unestablished — never guessed. */
