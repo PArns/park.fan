@@ -56,12 +56,12 @@ in, it makes the park look emptier than it is all summer, and the deficit is a r
 The same sentence is rendered from four different sources, and each one had to learn the rule
 separately:
 
-| Surface                                      | Source                                               |
-| -------------------------------------------- | ---------------------------------------------------- |
-| Park page (`AttractionWaitOverview`, header) | `analytics.statistics` from `ParkIntegrationService` |
-| Park listings (`park-enrichment`)            | `AnalyticsService.getParkStatistics` — SQL           |
-| Park cards, geo pages (`/parks/live`)        | `DiscoveryService.LIVE_STATS_SQL` — SQL              |
-| Global realtime stats                        | `AnalyticsService.getGlobalRealtimeStats` — SQL      |
+| Surface                                  | Source                                               |
+| ---------------------------------------- | ---------------------------------------------------- |
+| Park page (header, `LandSection` counts) | `analytics.statistics` from `ParkIntegrationService` |
+| Park listings (`park-enrichment`)        | `AnalyticsService.getParkStatistics` — SQL           |
+| Park cards, geo pages (`/parks/live`)    | `DiscoveryService.LIVE_STATS_SQL` — SQL              |
+| Global realtime stats                    | `AnalyticsService.getGlobalRealtimeStats` — SQL      |
 
 Three of the four are SQL over the whole catalogue and never load an entity, which is why the
 API carries **`attractionIsOutOfSeason()`** (`common/utils/season-window.sql.ts`) — a SQL twin
@@ -72,8 +72,10 @@ disagreement; it is a hand-written twin, so a change to either half is a change 
 ## On this side
 
 - The **card grid** hides off-season rides behind the "N außer Saison" toggle (`useAttractionFilter`).
-- The **pre-mount wait-time overview** — the only attraction markup a crawler sees without JS —
-  hides them too. It used to list them all, right under the counter that leaves them out.
+- That grid is also the markup a crawler reads without JS, since PAR-272 dropped the separate
+  pre-mount overview, so the rule holds on both sides of hydration with nothing to keep in sync.
+  The overview it replaced used to list every off-season ride, right under the counter that
+  leaves them out.
 - The **seasonal badge** says which way round it is: "Winter" in season, **"Nur im Winter"**
   out of it. It used to show the same word either way at half opacity, so "Geschlossen · Winter"
   read as a ride that happened to be shut rather than one that cannot open for three months.

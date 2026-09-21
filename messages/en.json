@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} operating",
     "attractionCount": "{count, plural, =1 {# attraction} other {# attractions}}",
-    "overview": {
-      "title": "Wait times at a glance",
-      "minutesUnit": "min",
-      "dataAsOf": "Data as of {time} – live values refresh every few minutes once the page has loaded."
-    },
     "restaurants": "Restaurants",
     "viewPark": "View Park",
     "planYourVisit": "Plan Your Visit",
@@ -1064,6 +1059,9 @@
       "blockerNoForecast": "There is no forecast for this day yet.",
       "resultUnavailable": "Neither of these two days can be compared.",
       "beyondPlanner": "The trip planner does not reach this day yet."
+    },
+    "overview": {
+      "minutesUnit": "min"
     }
   },
   "attractions": {

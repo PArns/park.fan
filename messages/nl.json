@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} open",
     "attractionCount": "{count, plural, =1 {# attractie} other {# attracties}}",
-    "overview": {
-      "title": "Wachttijden in één oogopslag",
-      "minutesUnit": "min.",
-      "dataAsOf": "Gegevens per {time} – live waarden worden na het laden van de pagina elke paar minuten ververst."
-    },
     "restaurants": "Restaurants",
     "viewPark": "Bekijk Park",
     "planYourVisit": "Plan je bezoek",
@@ -1064,6 +1059,9 @@
       "blockerNoForecast": "Voor deze dag is er nog geen voorspelling.",
       "resultUnavailable": "Geen van deze twee dagen is te vergelijken.",
       "beyondPlanner": "De dagplanner reikt nog niet tot deze dag."
+    },
+    "overview": {
+      "minutesUnit": "min."
     }
   },
   "attractions": {
