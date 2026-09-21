@@ -768,6 +768,7 @@
       "title": "Información del parque",
       "address": "Dirección",
       "phone": "Teléfono",
+      "directions": "Cómo llegar",
       "website": "Sitio oficial",
       "tickets": "Entradas",
       "opened": "Inauguración",

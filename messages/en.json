@@ -768,6 +768,7 @@
       "title": "Park information",
       "address": "Address",
       "phone": "Phone",
+      "directions": "Directions",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Opened",
