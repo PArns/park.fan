@@ -766,6 +766,7 @@
       "title": "Parkinformatie",
       "address": "Adres",
       "phone": "Telefoon",
+      "directions": "Route",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Geopend",
