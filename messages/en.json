@@ -738,6 +738,8 @@
       "estimate": {
         "range": "Outages like this one usually had {from} to {to} left.",
         "rangeOpen": "Outages like this one usually had more than {from} left.",
+        "clockRange": "Outages like this one were usually over between {from} and {to}.",
+        "clockRangeOpen": "Outages like this one were usually not over before {from}.",
         "barNow": "now",
         "recovery": "About {percent}% were back within an hour.",
         "recoveryOnly": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
@@ -766,6 +768,7 @@
       "title": "Park information",
       "address": "Address",
       "phone": "Phone",
+      "directions": "Directions",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Opened",

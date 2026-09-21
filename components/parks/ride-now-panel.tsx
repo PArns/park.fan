@@ -271,6 +271,7 @@ export function RideNowPanel({
                   whether to wait. */}
               <OutageEstimateNote
                 estimate={attraction.outage?.estimate}
+                timezone={timezone}
                 variant="full"
                 className="text-muted-foreground text-xs"
               />

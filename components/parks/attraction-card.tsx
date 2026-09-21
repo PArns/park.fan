@@ -501,6 +501,7 @@ export function AttractionCard({
                 the subgrid. Same numbers as the ride page, fewer words. */}
             <OutageEstimateNote
               estimate={'outage' in attraction ? attraction.outage?.estimate : undefined}
+              timezone={effectiveTimezone}
               variant="compact"
               className="text-muted-foreground w-full text-[11px] leading-tight"
             />

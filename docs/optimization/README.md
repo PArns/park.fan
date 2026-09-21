@@ -279,6 +279,29 @@ verweigert — das **1,24-fache**, und er wird von Cloudflare **nie** gecacht, g
 garantiert und dauerhaft an Vercel. Der Schnitt bleibt richtig (die Anfragen enden
 irgendwann), aber er hat den Wert des 308-Fixes vervielfacht.
 
+Nachgemessen am **2026-09-21** (PAR-368), dieselben Monats-URLs, drei Parks und zwei Locales:
+
+```
+HTTP 308 · 81.963 B (de/Phantasialand) · 81.951 B (de/Europa-Park) · 81.243 B (en/Phantasialand)
+KEIN content-encoding · cf-cache-status: MISS beim ersten Fetch, HIT ab dem zweiten
+```
+
+Der Body ist in 18 Tagen um **13,5 %** gewachsen, das Verhältnis liegt jetzt beim
+**1,4-fachen** — aber er fällt seit dem 2026-09-03 nicht mehr pro Request am Origin an, weil
+Cloudflare den 308 hält (Hebel ① unten, dort nachgeprüft). Drei Zahlen daneben, die das Bild
+ändern: die Kalender-Sitemap hält heute **970 URLs je Locale (5.820 gesamt, 210 Parks)** gegen
+die 27.984 vom 2026-08-27, von der Differenz gehen nur 6.300 auf den `back`-Schnitt zurück
+(rund 10.560 auf den Zukunfts-Trim vom 2026-08-28, 5.088 auf Monate vor dem Archiv-Beginn), und
+der Monatswechsel schiebt dauerhaft **1.260 neue 308er** nach (210 Parks × 6 Locales) — das ist
+kein Übergang. Was am Edge hängen bleibt, hilft dem Crawl-Budget nicht: für Googlebot ist ein
+gecachter 308 derselbe 308. Volumen und Abklingen stehen nur im GSC-Report oder in Cloudflare
+Path Analytics; von außen ist beides nicht messbar.
+
+Der Park-Multiplikator wandert mit dem Katalog: 213 am 2026-09-01, **210 am 2026-09-21**, gezählt
+als distinkte Parks in `sitemap-calendar/de.xml`. Ältere Zahlen in dieser Datei und in
+`docs/seo/sitemaps.md` rechnen deshalb mit 212 oder 213 — das ist kein Widerspruch, sondern ihr
+Messdatum.
+
 ### Das Caching-Panel im Vercel-CDN-Tab zeigt „nichts gecacht" — und das ist korrekt
 
 17 K bzw. 26 K in einer einzigen Kategorie. Das ist **Vercels eigener** Cache
@@ -544,17 +567,46 @@ Nach Schritt 2 ist der Statuscode-Eintrag aus Schritt 1 möglicherweise überfl�
 308 dann selbst ein `cdn-cache-control` trägt (die Monats-Regel in `next.config.ts` greift auf
 ihm). Das ist eine Vermutung — nachmessen, nicht vorher entfernen.
 
-### ① Statuscode-TTL für 308 und 301 auf der Parks-Cache-Rule
+### ① Erledigt am 2026-09-03, nachgeprüft am 2026-09-21: Statuscode-TTL für 308 und 301
 
 **Cloudflare → Caching → Cache Rules → die `/*/parks/*`-Regel → Edge TTL → Statuscode-TTL.**
 
-Heute ist nur `200` mit einem TTL versehen; `308` fällt durch, Cloudflare sieht das
-`no-store` des Origin und antwortet `BYPASS`. Sieben von sieben geprüften Proben (gestern)
-plus drei von drei (heute) liefern ein konstantes, byte-identisches `Location` — den
-Kalender-Hub des Parks. Das ist sicher cachebar.
+Der Stand, der diesen Hebel eröffnet hat: nur `200` war mit einem TTL versehen, `308` fiel
+durch, Cloudflare sah das `no-store` des Origin und antwortete `BYPASS`. Sieben von sieben
+geprüften Proben plus drei von drei am Folgetag lieferten ein konstantes, byte-identisches
+`Location` — den Kalender-Hub des Parks, also sicher cachebar. Erwartung aus der Messung vom
+02.09.: **−5.000 Invocations und −353 MB pro 12 h** auf der Kalender-Route.
 
-Erwartung aus der Messung vom 02.09.: **−5.000 Invocations und −353 MB pro 12 h** auf der
-Kalender-Route.
+**Er wurde am 2026-09-03 gesetzt**, und zwar im selben Zug wie die Regel-Umstellung. Beides
+steht oben schon in dieser Datei: in der Tabelle „Ergebnis der Runde vom 2026-09-03" die Zeile
+„308 auf ausgelaufene Monats-URL: `BYPASS` → **HIT**", und in der Regel-Tabelle der Eintrag
+„Status code TTL: 308 → 12 h, 301 → 12 h, 404 → 1 h". Dieser Abschnitt hier ist seitdem nur
+stehen geblieben. Wer ihn liest, ohne die beiden Stellen zu kennen, hält einen gesetzten Hebel
+für offen — PAR-368 ist genau darauf hereingefallen.
+
+Nachgeprüft am 2026-09-21 (PAR-368), zwei nie abgerufene Monats-URLs, je dreimal geholt, plus
+eine dritte mit Cache-Buster für die Origin-Header:
+
+```
+it/…/heide-park/…/2026/2          MISS -> HIT age=1 -> HIT age=2
+fr/…/disneyland-paris/…/2026/3    MISS -> HIT age=0
+nl/…/phantasialand/…/2026/4?cb=   cache-control:     private, no-cache, no-store, must-revalidate
+                                  cdn-cache-control: public, s-maxage=604800, swr=3600
+```
+
+Es hält also 18 Tage später noch, und die dritte Zeile sagt **warum**: der Origin setzt auf dem
+308 ein eigenes `cdn-cache-control` (die Monats-Regel in `next.config.ts`), und die Cache Rule
+steht auf „use cache-control header if present". Es ist der Header, der den Redirect cachebar
+macht, nicht eine Regel über ihm. Die Statuscode-TTL ist der Gürtel dazu, nicht der Träger —
+wer sie später entfernt, muss vorher nachmessen, ob der Header allein trägt.
+
+Zwei Vorbehalte, die zu dieser Messung gehören. Der Bypass-Parameter aus `CDN_CHECK_QUERY` ist
+Teil des Cloudflare-Cache-Keys, gemessen ist also der Eintrag der Bypass-URL und nicht der, den
+Googlebot anfasst; dass beide unter derselben Cache Rule liegen, macht es wahrscheinlich, aber
+nicht bewiesen. Und die erwarteten −5.000 Invocations sind **nicht nachgerechnet**: dafür
+braucht es die Kalender-Route im Vercel-Observability-Tab, und der Connector eines Runners
+kommt nicht an das Projekt (`403`, Scope `arns`). Was der Cache ohnehin **nicht** kauft, ist
+Crawl-Budget: ein gecachter 308 ist für Googlebot derselbe 308.
 
 ### ② Edge TTL nach Pfadfamilie, statt einer Zahl für `/*/parks/*`
 

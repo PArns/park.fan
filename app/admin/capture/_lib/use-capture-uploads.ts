@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { adminFetch } from '../../_lib/api';
 import { analyzePhoto, commitPhoto } from '../../_lib/media-upload';
 import {
   dropQueued,
@@ -12,7 +13,7 @@ import {
   type QueuedPhoto,
 } from './queue';
 import { fieldTags, freeName, parkDate } from './naming';
-import type { ActiveUpload, BacklogResponse, UploadState } from './types';
+import type { ActiveUpload, BacklogResponse, CaptureSessionResponse, UploadState } from './types';
 
 /**
  * Taking a photograph and getting it into the repository, in a place with no network.
@@ -49,6 +50,35 @@ export function useCaptureUploads({ data, author }: Options) {
     if (!data) return;
     taken.current = new Set(data.park.takenNames);
   }, [data]);
+
+  /**
+   * Which pull request the photographs are landing in, asked once on mount.
+   *
+   * The state lives in git — the open PR carrying the `media/session-` branch
+   * prefix — and the commit endpoint resolves it there on every save, so the
+   * photographs of a reloaded tab join the right one either way. What the
+   * reload lost was the link: the bar at the bottom is the only way to the pull
+   * request from a phone, and it went blank mid-session with nothing to say
+   * that the session was still running.
+   *
+   * A commit that answered while this request was in flight wins — it is the
+   * newer answer to the same question.
+   */
+  useEffect(() => {
+    let cancelled = false;
+    adminFetch<CaptureSessionResponse>('/api/admin/media/session')
+      .then((payload) => {
+        const url = payload?.session?.url;
+        if (cancelled || !url) return;
+        setPullRequest((current) => current ?? url);
+      })
+      // No session, no token, no network: the bar stays as it was. Uploading
+      // reports a real failure with its reason.
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const refreshQueue = useCallback(() => {
     if (!queueAvailable()) return;

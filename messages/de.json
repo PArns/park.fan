@@ -526,6 +526,8 @@
       "estimate": {
         "range": "Störungen wie diese dauerten meist noch {from} bis {to}",
         "rangeOpen": "Störungen wie diese dauerten meist noch über {from}",
+        "clockRange": "Störungen wie diese waren meist zwischen {from} und {to} Uhr behoben",
+        "clockRangeOpen": "Störungen wie diese waren meist nicht vor {from} Uhr behoben",
         "barNow": "jetzt",
         "recovery": "Rund {percent} % waren binnen einer Stunde behoben.",
         "recoveryOnly": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
@@ -554,6 +556,7 @@
       "title": "Infos zum Park",
       "address": "Adresse",
       "phone": "Telefon",
+      "directions": "Anfahrt",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Eröffnet",

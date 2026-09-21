@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Camera,
@@ -33,6 +33,14 @@ import { RideRow } from './_components/ride-row';
 import { UploadBar } from './_components/upload-bar';
 import { useDevicePosition, useNearbyPark } from './_lib/use-park-location';
 import { useCaptureUploads } from './_lib/use-capture-uploads';
+import {
+  forgetPark,
+  parkMemoryServerSnapshot,
+  parkMemorySnapshot,
+  parseRememberedPark,
+  rememberPark,
+  subscribeParkMemory,
+} from './_lib/park-memory';
 import type { BacklogResponse, UploadState } from './_lib/types';
 
 /**
@@ -66,7 +74,31 @@ export default function CapturePage() {
   const [showCovered, setShowCovered] = useState(false);
   const [showOutOfSeason, setShowOutOfSeason] = useState(false);
 
-  const path = manualPath ?? park?.path ?? null;
+  /** What this tab knew before the reload. Null on the server and until hydration. */
+  const savedPark = useSyncExternalStore(
+    subscribeParkMemory,
+    parkMemorySnapshot,
+    parkMemoryServerSnapshot
+  );
+  const remembered = useMemo(() => parseRememberedPark(savedPark), [savedPark]);
+
+  // A hand-picked park outranks the coordinates whether it was picked a minute
+  // ago or before the reload — that is what picking one is for. A remembered
+  // detection ranks below a fresh fix instead: it fills the gap until the
+  // coordinates answer again, and is wrong the moment somebody drives on.
+  const rememberedManual = remembered?.manual ? remembered.path : null;
+  const rememberedFix = remembered && !remembered.manual ? remembered.path : null;
+  const chosenPath = manualPath ?? rememberedManual;
+  const path = chosenPath ?? park?.path ?? rememberedFix ?? null;
+
+  // Written whenever the park in force changes, so the next mount has it. What
+  // is written is what is in force, hand-picked parks included — writing the
+  // detected one while a pick from before the reload is still on screen would
+  // let the coordinates take the screen back on the next reload.
+  useEffect(() => {
+    if (chosenPath) rememberPark({ path: chosenPath, manual: true });
+    else if (park) rememberPark({ path: park.path, manual: false });
+  }, [chosenPath, park]);
 
   const backlog = useQuery({
     queryKey: ['admin', 'photo-backlog', path],
@@ -154,11 +186,14 @@ export default function CapturePage() {
         resolving={resolving}
         failed={failed}
         parkName={data?.park.name ?? park?.name ?? null}
-        manual={Boolean(manualPath)}
+        manual={Boolean(chosenPath)}
         onRetry={retry}
         onPick={() => setPicking(true)}
         onRedetect={() => {
           setManualPath(null);
+          // Also the remembered one, or the pick this press is undoing would be
+          // read back on the next render and win again.
+          forgetPark();
           redetect();
         }}
       />

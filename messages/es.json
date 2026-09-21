@@ -738,6 +738,8 @@
       "estimate": {
         "range": "Las averías como esta solían durar entre {from} y {to} más.",
         "rangeOpen": "Las averías como esta solían durar más de {from} más.",
+        "clockRange": "Las averías como esta solían estar resueltas entre {from} y {to}.",
+        "clockRangeOpen": "Las averías como esta no solían estar resueltas antes de {from}.",
         "barNow": "ahora",
         "recovery": "Alrededor del {percent} % se resolvió en una hora.",
         "recoveryOnly": "De las averías que ya habían durado tanto, alrededor del {percent} % volvió a estar en servicio en una hora."
@@ -766,6 +768,7 @@
       "title": "Información del parque",
       "address": "Dirección",
       "phone": "Teléfono",
+      "directions": "Cómo llegar",
       "website": "Sitio oficial",
       "tickets": "Entradas",
       "opened": "Inauguración",

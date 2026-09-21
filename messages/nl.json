@@ -738,6 +738,8 @@
       "estimate": {
         "range": "Storingen zoals deze duurden meestal nog {from} tot {to}.",
         "rangeOpen": "Storingen zoals deze duurden meestal nog meer dan {from}.",
+        "clockRange": "Storingen zoals deze waren meestal tussen {from} en {to} verholpen.",
+        "clockRangeOpen": "Storingen zoals deze waren meestal niet voor {from} verholpen.",
         "barNow": "nu",
         "recovery": "Ongeveer {percent}% was binnen een uur verholpen.",
         "recoveryOnly": "Van storingen die al zo lang duurden, draaide ongeveer {percent}% binnen een uur weer."
@@ -766,6 +768,7 @@
       "title": "Parkinformatie",
       "address": "Adres",
       "phone": "Telefoon",
+      "directions": "Route",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Geopend",

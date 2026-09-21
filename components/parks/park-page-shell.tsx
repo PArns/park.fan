@@ -210,11 +210,14 @@ export async function ParkPageShell({
           {/* Address, phone and the hard facts — hand-curated in the admin, because none of the
             three upstream feeds carries any of it. The links that used to close this section are
             <ParkQuickLinks> in the header now, so this renders nothing at all for a park that had
-            only those. */}
+            only those. The coordinates are the one part no curator has to type: they feed the two
+            map links, so a park with nothing curated still gets a route to its gate. */}
           <ParkInfoCard
             info={park.info}
             city={cityName}
             country={translateGeoSlug(tGeo, 'countries', country, countryName)}
+            latitude={park.latitude}
+            longitude={park.longitude}
             className="mt-8"
           />
 
