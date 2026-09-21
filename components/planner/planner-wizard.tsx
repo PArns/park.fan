@@ -28,6 +28,8 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { loadMessageChunk } from '@/lib/i18n/message-chunk-loader';
+import type { Locale } from '@/i18n/config';
 import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM } from '@/lib/planner/party';
 import { buildDayGrid } from '@/lib/planner/day-grid';
@@ -483,6 +485,24 @@ export function PlannerWizard({
           })),
       });
     }
+    /**
+     * The panel this lands in reads `planner`, and on this route it is the
+     * LAUNCHER that has to fetch it.
+     *
+     * `PlannerLauncher` sits beside `children` in `app/[locale]/layout.tsx`, so
+     * it never sees a route's own namespaces and fetches the chunk wherever it
+     * is asked for — including here, on the planner's own page, where the
+     * wizard beside it got `planner` from the page payload. Left to the
+     * launcher alone that fetch starts from an effect a commit after the
+     * request below, i.e. behind the RSC request for the park page: measured
+     * from the homepage through `/tagesplaner` at 150 ms RTT, `open` was true
+     * after 75 ms and the panel was drawn after 307–328 ms, so for ~240 ms the
+     * page was already holding 448 px open for a panel that was not there.
+     *
+     * Not awaited, and the call is the loader's own deduplicated one, so the
+     * launcher's effect joins this request rather than starting a second.
+     */
+    void loadMessageChunk(locale as Locale);
     plannerUi.requestOpen('wizard');
     onOpenChange(false);
     // The park's own page, where the ride cards are. `@/i18n/navigation`'s
