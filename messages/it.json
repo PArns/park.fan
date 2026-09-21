@@ -738,6 +738,8 @@
       "estimate": {
         "range": "I guasti come questo duravano di solito ancora da {from} a {to}.",
         "rangeOpen": "I guasti come questo duravano di solito ancora più di {from}.",
+        "clockRange": "I guasti come questo erano di solito risolti tra {from} e {to}.",
+        "clockRangeOpen": "I guasti come questo di solito non erano risolti prima di {from}.",
         "barNow": "adesso",
         "recovery": "Circa il {percent} % è stato risolto entro un'ora.",
         "recoveryOnly": "Dei guasti che duravano già da così tanto, circa il {percent} % è tornato in funzione entro un'ora."
