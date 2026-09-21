@@ -8,7 +8,8 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
-import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
+import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { startRideDrag } from '@/lib/planner/ride-drag';
@@ -57,6 +58,8 @@ export function PlannerMissingHeadliners({
   const t = useTranslations('planner');
   /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
+  /** The same arrangement the `planner-phone:` classes below switch on. */
+  const isPhone = useMediaQuery(PLANNER_PHONE_QUERY);
   const { state, addRide } = usePlanner();
 
   const activeEntries = useMemo(
@@ -153,7 +156,17 @@ export function PlannerMissingHeadliners({
           <span>
             {t.rich('headliners.missing', {
               count: missing.length,
-              term: (chunks) => <GlossaryTermLink termId="headliner">{chunks}</GlossaryTermLink>,
+              // A link on the desktop, a tooltip on the phone. Every target in the
+              // sheet owes a coarse pointer 44 px, and an 11 px hint line cannot
+              // pay it: as a link this word measured 50x15 and `check:planner`
+              // refused it, rightly — a 15 px target next to the 44 px pills below
+              // is a miss waiting to happen. The wide arrangement has no such floor
+              // and keeps the link.
+              term: (chunks) => (
+                <GlossaryTermLink termId="headliner" tooltipOnly={isPhone}>
+                  {chunks}
+                </GlossaryTermLink>
+              ),
             })}
           </span>
         </p>
