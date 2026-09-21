@@ -6,11 +6,19 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { stripNewPrefix } from '@/lib/utils';
 import { isInSeason } from '@/lib/utils/season';
+import { isWorksPeriodActive } from '@/lib/utils/works-period';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface AttractionWaitOverviewProps {
   park: ParkWithAttractions;
+  /**
+   * Today in the PARK's timezone, `YYYY-MM-DD`, from the server render.
+   *
+   * A prop rather than a clock read for the reason this component states
+   * below: it renders on the server AND on the first client render.
+   */
+  todayIso: string;
   parkPath: string;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
@@ -47,6 +55,7 @@ function getDataTimestamp(park: ParkWithAttractions): string | null {
  */
 export function AttractionWaitOverview({
   park,
+  todayIso,
   parkPath,
   landNames,
   attractionsByLand,
@@ -128,6 +137,11 @@ export function AttractionWaitOverview({
                 {attractions.map((attraction) => {
                   const status = getAttractionDisplayStatus(attraction, park.status);
                   const waitTime = status === 'OPERATING' ? getStandbyWait(attraction) : null;
+                  // A rebuild reads „Geschlossen" here and on the cards that replace this view,
+                  // which is the one closure a visitor can plan around and the one this list
+                  // used to swallow. Only where there is no wait time to show: a live queue
+                  // beats a curated window, the same way it beats a season.
+                  const inWorksPeriod = isWorksPeriodActive(attraction.worksPeriod, todayIso);
                   const href =
                     `${parkPath}/${attraction.slug}` as '/parks/europe/germany/rust/europa-park/blue-fire';
 
@@ -148,7 +162,7 @@ export function AttractionWaitOverview({
                         </span>
                       ) : (
                         <span className="text-muted-foreground shrink-0 text-sm">
-                          {t(`status.${status}`)}
+                          {inWorksPeriod ? t('worksPeriod.label') : t(`status.${status}`)}
                         </span>
                       )}
                     </li>

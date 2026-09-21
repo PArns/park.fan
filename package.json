@@ -58,6 +58,7 @@
     "test:planner-optimize": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-optimize.mjs",
     "test:planner-fit": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-fit.mjs",
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",
+    "test:works-period": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-works-period.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",
     "test:is-uuid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-is-uuid.mjs",

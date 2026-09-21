@@ -759,6 +759,14 @@
       "park": "Les horaires, la météo et le calendrier restent disponibles ici.",
       "ride": "Cette attraction n’a donc pas non plus de prévision. Les horaires et la météo restent disponibles."
     },
+    "worksPeriod": {
+      "label": "Travaux",
+      "sinceUntil": "Cette attraction est fermée pour travaux depuis le {from}, jusqu’au {to}.",
+      "sinceUntilUncertain": "Cette attraction est fermée pour travaux depuis le {from}, jusqu’au {to} selon les prévisions.",
+      "since": "Cette attraction est fermée pour travaux depuis le {from}. La date de réouverture n’est pas encore connue.",
+      "until": "Cette attraction est fermée pour travaux jusqu’au {to}.",
+      "untilUncertain": "Cette attraction est fermée pour travaux jusqu’au {to} selon les prévisions."
+    },
     "info": {
       "title": "Informations pratiques",
       "address": "Adresse",

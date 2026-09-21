@@ -23,6 +23,7 @@ import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
+import { WorksPeriodBadge } from './works-period-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
@@ -47,6 +48,16 @@ interface AttractionCardProps {
   distance?: number;
   showParkName?: boolean;
   timezone?: string;
+  /**
+   * Today in the PARK's timezone, `YYYY-MM-DD`, computed by the server render.
+   *
+   * The only thing that reads it is the curated works period, which has to know
+   * the park's day to say whether the window is running. It is a prop and not a
+   * clock read because this card renders on both sides of hydration — see
+   * `isWorksPeriodActive`. The cross-park listings (favorites, the blog, the
+   * homepage) have no park day to pass, and the marker stays off there.
+   */
+  todayIso?: string;
   /**
    * The park's name, for the ride-alert bell's dialog — not for display (that
    * is `showParkName`'s job). On the park's own page (`LandSection`) the
@@ -115,6 +126,7 @@ export function AttractionCard({
   distance,
   showParkName = false,
   timezone,
+  todayIso,
   parkName: parkNameProp,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
@@ -427,6 +439,12 @@ export function AttractionCard({
                 bestSlotWait={troughWait(ropeDropData!)}
               />
             )}
+            {/* Beside the season badge, never instead of it: a ride can be out of season AND
+                behind hoardings, and the status badge above says `CLOSED` for both. */}
+            <WorksPeriodBadge
+              worksPeriod={'worksPeriod' in attraction ? attraction.worksPeriod : null}
+              todayIso={todayIso}
+            />
             {'isSeasonal' in attraction && attraction.isSeasonal && (
               <SeasonalBadge
                 seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}

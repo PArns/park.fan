@@ -542,6 +542,14 @@
       "park": "Öffnungszeiten, Wetter und Kalender findest du hier wie gewohnt.",
       "ride": "Damit fehlt auch die Prognose für dieses Fahrgeschäft. Öffnungszeiten und Wetter findest du wie gewohnt."
     },
+    "worksPeriod": {
+      "label": "Umbaupause",
+      "sinceUntil": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen, bis zum {to}.",
+      "sinceUntilUncertain": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen, voraussichtlich bis zum {to}.",
+      "since": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen. Ein Enddatum steht noch nicht fest.",
+      "until": "Diese Bahn ist wegen Umbau geschlossen, bis zum {to}.",
+      "untilUncertain": "Diese Bahn ist wegen Umbau geschlossen, voraussichtlich bis zum {to}."
+    },
     "info": {
       "title": "Infos zum Park",
       "address": "Adresse",

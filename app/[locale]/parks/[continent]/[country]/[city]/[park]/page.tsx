@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { formatInTimeZone } from 'date-fns-tz';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import {
@@ -298,6 +299,15 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
+
+  // Today in the PARK's timezone, decided here and handed down. What reads it is the curated
+  // works period on the attraction cards and in the pre-mount overview, and both render inside a
+  // client tree that also renders on the server: a `new Date()` down there would be read twice,
+  // once per side of hydration, which is the mismatch `AttractionWaitOverview` forbids itself in
+  // its own docstring. Safe to read the server clock because this route is `force-dynamic` —
+  // there is no ISR window for the value to be pinned in.
+  const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
+
   const attractionsByLand = groupAttractionsByLand(park.attractions || [], otherAttractionsLabel);
   const landNames = Object.keys(attractionsByLand).sort((a, b) => {
     // Put "Other Attractions" at the end
@@ -477,6 +487,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           when the weather card had one. */}
         <LiveParkData
           initialData={park}
+          todayIso={todayIso}
           continent={continent}
           country={country}
           city={city}

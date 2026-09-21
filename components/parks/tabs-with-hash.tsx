@@ -31,6 +31,8 @@ const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) =
 
 interface TabsWithHashProps {
   defaultValue: string;
+  /** Today in the PARK's timezone, `YYYY-MM-DD`, from the server render — see `LiveParkData`. */
+  todayIso: string;
   showsAvailable: boolean | undefined;
   restaurantsAvailable: boolean | undefined;
   /** The park has weather data — drives both the tile and the chapter behind it. */
@@ -54,6 +56,7 @@ interface TabsWithHashProps {
 // tree bails on the fetch-start render instead of reconciling.
 export const TabsWithHash = memo(function TabsWithHash({
   defaultValue,
+  todayIso,
   showsAvailable,
   restaurantsAvailable,
   weatherAvailable,
@@ -203,6 +206,7 @@ export const TabsWithHash = memo(function TabsWithHash({
             />
             <AttractionWaitOverview
               park={park}
+              todayIso={todayIso}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
               landNames={landNames}
               attractionsByLand={attractionsByLand}
@@ -311,6 +315,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                     parkSlug={parkSlug}
                     parkStatus={park.status}
                     timezone={park.timezone}
+                    todayIso={todayIso}
                     parkName={park.name}
                   />
                 )}
@@ -338,6 +343,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                           parkSlug={parkSlug}
                           parkStatus={park.status}
                           timezone={park.timezone}
+                          todayIso={todayIso}
                           parkName={park.name}
                         />
                       </LazyMount>
