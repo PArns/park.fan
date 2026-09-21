@@ -145,7 +145,7 @@ sessions that need them.
 
 | Doc                                                                   | Description                                                                              |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [Personas & Scenarios](product/personas-and-scenarios.md)             | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9)                             |
+| [Personas & Scenarios](product/personas-and-scenarios.md)             | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9), landing-page pilot order   |
 | [Attraction Metadata Sources](product/attraction-metadata-sources.md) | G1 research: where to get min-height/indoor/accessibility data, licenses, recommendation |
 
 ### Other
