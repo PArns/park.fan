@@ -355,6 +355,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // OG card is only a fallback for the JSON-LD image when the park has no real photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
+  // This page's canonical URL, which is also the `@id` of its `AmusementPark` node — the Shows
+  // Events reference that node as their `organizer` rather than restating the park.
+  const parkUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`;
+
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
       {/* Tells the planner which park this route is about — see
@@ -415,7 +419,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           <>
             <ParkStructuredData
               park={park}
-              url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+              url={parkUrl}
               description={tSeo('metaDescriptionTemplate', {
                 ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
                 city: cityName,
@@ -432,7 +436,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               locale={locale}
             />
             {park.shows && park.shows.length > 0 && (
-              <ShowsStructuredData shows={park.shows} park={park} />
+              <ShowsStructuredData shows={park.shows} park={park} parkUrl={parkUrl} />
             )}
             {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
               least-crowded question is appended when the seed resolves — awaiting it here would

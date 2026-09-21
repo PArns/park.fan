@@ -597,9 +597,12 @@ export function AttractionStructuredData({
 export function ShowsStructuredData({
   shows,
   park,
+  parkUrl,
 }: {
   shows: ParkShow[];
   park: ParkResponse | ParkWithAttractions;
+  /** The park page's URL, which is also the `@id` of its `AmusementPark` node. */
+  parkUrl: string;
 }) {
   if (!shows || shows.length === 0) return null;
 
@@ -636,12 +639,19 @@ export function ShowsStructuredData({
   // of JSON-LD). A single representative Event per show keeps the rich-result
   // value; the remaining showtimes are preserved via eventSchedule.
   const parkBgImage = getParkBackgroundImage(park.slug);
+  const parkName = stripNewPrefix(park.name);
   const events = showsWithTimes.map((show) => {
+    const showName = stripNewPrefix(show.name);
     const startTimes = (show.showtimes || []).map((s) => s.startTime).filter(Boolean);
     return {
       '@context': 'https://schema.org' as const,
       '@type': 'Event' as const,
-      name: stripNewPrefix(show.name),
+      name: showName,
+      // Search Console reported all 24 Show events as missing `description`. Nothing upstream
+      // carries one — `ParkShow` has no description field — so this is the same fallback
+      // template `TouristAttractionStructuredData` uses for a ride, built from two values the
+      // node already states. Writing anything richer would mean inventing it.
+      description: `${showName} at ${parkName} - Show times and live status.`,
       startDate: toStartDate(startTimes[0]),
       // One Schedule per remaining showtime: `Schedule` carries a single `startTime`, so the
       // list has to be expressed as a list of schedules rather than one multi-valued entry.
@@ -655,13 +665,25 @@ export function ShowsStructuredData({
       image: parkBgImage ? `${SITE_URL}${parkBgImage}` : `${SITE_URL}/logo-big.png`,
       location: {
         '@type': 'Place' as const,
-        name: stripNewPrefix(park.name),
+        name: parkName,
         address: {
           '@type': 'PostalAddress' as const,
           addressLocality: park.city || undefined,
           addressCountry: park.country || undefined,
           addressRegion: park.region || undefined,
         },
+      },
+      // The park runs its own shows, so the organizer is the `AmusementPark` this page already
+      // declares — referenced by its `@id` instead of described a second time. `AmusementPark`
+      // is a `LocalBusiness`, which schema.org makes an `Organization` as well as a `Place`, so
+      // it satisfies the range of `organizer`. The reference leaves this `<script>` to reach
+      // `ParkStructuredData`'s node, so it carries `@type` next to `@id` (see
+      // `docs/seo/analysis.md`, item 12) plus the name and url that make it readable on its own.
+      organizer: {
+        '@type': 'AmusementPark' as const,
+        '@id': parkUrl,
+        name: parkName,
+        url: parkUrl,
       },
       eventStatus: 'https://schema.org/EventScheduled' as const,
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode' as const,
