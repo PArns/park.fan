@@ -244,9 +244,10 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // or a crawler probing, and answering it with the current month would put one page's content on
   // unbounded URLs.
   if (resolved === 'invalid') {
-    // A well-formed month that has simply fallen out of the window gets a 301 to the hub, not a
-    // 404. Narrowing the back span from twelve months to what the archive covers turned four
-    // months × 212 parks × 6 locales from 200 into gone — URLs the stepper linked last week and a
+    // A well-formed month that has simply fallen out of the window gets a 308 to the hub, not a
+    // 404. Narrowing the back span from twelve months to three turned five months × 210 parks ×
+    // 6 locales — 6,300 URLs, verified against production on 2026-09-21 — from 200 into gone, and
+    // every month boundary adds 210 × 6 more. These are URLs the stepper linked last month and a
     // crawler may still hold. A malformed segment (`/2026/13`, `/abc/x`) stays a 404: that is a
     // typo or a probe, and there is nothing to send it to.
     const [rawYear, rawMonth] = date ?? [];

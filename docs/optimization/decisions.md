@@ -166,17 +166,53 @@ They were re-anchored to months where each still proves its own property, and st
 parameterized on the constant.
 
 **Cost-shift check — one, and it is real.** The 6,390 removed URLs do not stop being
-requested the moment they leave the sitemap. They now resolve to the hub with a `301`, and
-that redirect carries the **71 kB uncompressed `__next_error__` body** documented in the
-deferred entry above. Per request that is _more_ bytes than the 200 it replaces (71 kB
-uncompressed vs ~57 kB brotli), against lower CPU (the redirect fires before the heavy
-render). At ~25 fetches/URL/month that is roughly **+2 GB/month during the decay**, falling
-to zero as crawlers drop the URLs.
+requested the moment they leave the sitemap. They now resolve to the hub with a `308`
+(`permanentRedirect`), and that redirect carries the **71 kB uncompressed `__next_error__`
+body** documented in the deferred entry above. Per request that is _more_ bytes than the 200
+it replaces (71 kB uncompressed vs ~57 kB brotli), against lower CPU (the redirect fires
+before the heavy render). At ~25 fetches/URL/month that is roughly **+2 GB/month during the
+decay**, falling to zero as crawlers drop the URLs.
 
 Net still clearly negative on spend — the requests end, the renders end with them, and the
 January growth never happens. But it raises the value of the deferred bodyless-308 work
 by roughly 3x for as long as the decay runs — still small in absolute terms. Worth revisiting
 now rather than later.
+
+**Follow-up measurement, 2026-09-21 (PAR-368).** Three weeks later, against production: the
+orphaned months still answer `308` and the body has grown to **81,963 B** uncompressed with no
+`content-encoding` (+13.5 % on the 72,235 B measured on 2026-09-03) — but the cost shift this
+entry worried about was paid off two days after it was written: the round of 2026-09-03 put a
+`cdn-cache-control` on the redirect and moved the Cache Rule onto it, and the 308 has been a
+Cloudflare `HIT` since. Re-verified here (`MISS` on the first fetch of a fresh month URL, `HIT`
+with a growing `age` after), so the "+2 GB/month during the decay" above stopped describing the
+bill on 2026-09-03 rather than today.
+
+The decay itself cannot be read from outside — Cloudflare Path Analytics and GSC are the only
+sources for the request volume, and neither is reachable from a runner. The population is, and
+it is the part that changes the reading:
+
+|                                             |        URLs | how it was counted                                                             |
+| ------------------------------------------- | ----------: | ------------------------------------------------------------------------------ |
+| this cut, months 2026-01…2026-05            |       6,300 | 5 × 210 parks × 6, boundary checked on the wire (2026-05 → 308, 2026-06 → 200) |
+| forward `scheduleCoverage` trim, 2026-08-28 |     ~10,560 | (11 × 210 − 550) × 6, from the live sitemaps                                   |
+| back months before the archive starts       |       5,088 | 4 × 212 × 6, listed on 2026-08-27 and dead on arrival                          |
+|                                             | **~21,948** |                                                                                |
+
+Two things the table does not say on its own. The 6,300 uses 210 parks where the 6,390 above
+uses 213: the catalogue shrank by three in three weeks, and every figure here is only as current
+as its park count. And the forward row is today's untrimmed window minus today's listing, not a
+diff against the 2026-08-27 listing — the two windows are offset by a month, so up to 1,260 of
+it (2027-08) was never listed. That row is an estimate with a ±1-month edge, not a count.
+
+**GSC's 15,917 "page with redirect"** comes from the coverage report quoted in PAR-368. It was
+not measured here and carries that report's date, not this one's. It fits inside the calendar's
+~21,948 without needing a second source, so the cut is **at most 40 % of it**. A proportional
+reading gives 29 %, but that assumes Google drew its redirects evenly from the population, which
+nothing here shows and the city hubs (which also 308) argue against — 40 % is the number with a
+reason behind it.
+
+The one thing that is not a transition: every month boundary drops one more month out of the
+three, which is 210 × 6 = **1,260 fresh redirects per rollover**, indefinitely.
 
 ---
 
