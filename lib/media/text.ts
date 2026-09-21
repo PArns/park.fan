@@ -1,7 +1,12 @@
 import type { Locale } from '@/i18n/config';
 import { MEDIA_TEXT } from './manifest-text';
 import { pickText } from './sidecar.mjs';
-import { OWN_PHOTO_AUTHOR, type LocalizedText, type MediaImage, type ResolvedMediaImage } from './types';
+import {
+  OWN_PHOTO_AUTHOR,
+  type LocalizedText,
+  type MediaImage,
+  type ResolvedMediaImage,
+} from './types';
 
 /**
  * Localized alt/caption resolution — the half of the media database that costs
