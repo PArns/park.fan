@@ -72,6 +72,9 @@ carries the reasoning, the measurements and the counter-examples.
   route executes. Never pass a numeric TTL at a call site: put it in `CACHE_TTL` or the helper's
   default, and set it from the data's cadence, not as a floor under some page. Prove it against
   `initialRevalidateSeconds` in `.next/prerender-manifest.json`.
+- **[A redirect thrown from a render carries the layout as its body](docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)** — `permanentRedirect()` from a page
+  answers `308` with an 81,963 B not-found document, uncompressed. On a crawled surface hoist it
+  into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
 - **[An ISR route needs both halves](docs/rules/an-isr-route-needs-both-halves.md)** — `export const revalidate` alone caches nothing: every
   fetch needs `next: { revalidate }`, and an all-dynamic route needs a `generateStaticParams`
   (empty is right) or it never enters `dynamicRoutes`. Prove it in `.next/prerender-manifest.json`.

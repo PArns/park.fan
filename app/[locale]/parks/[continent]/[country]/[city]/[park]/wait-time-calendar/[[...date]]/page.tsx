@@ -26,6 +26,7 @@ import {
   isParkCalendarMonthInRange,
   parkCalendarPath,
   parseParkCalendarMonth,
+  parseParkCalendarMonthSpelling,
   shiftParkCalendarMonth,
   type ParkCalendarMonth,
 } from '@/lib/parks/calendar-segments';
@@ -251,13 +252,13 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
     // every month boundary adds 210 × 6 more. These are URLs the stepper linked last month and a
     // crawler may still hold. A malformed segment (`/2026/13`, `/abc/x`) stays a 404: that is a
     // typo or a probe, and there is nothing to send it to.
-    const [rawYear, rawMonth] = date ?? [];
-    const wellFormed =
-      /^\d{4}$/.test(rawYear ?? '') &&
-      /^\d{1,2}$/.test(rawMonth ?? '') &&
-      Number(rawMonth) >= 1 &&
-      Number(rawMonth) <= 12;
-    if (wellFormed) {
+    //
+    // Most of these never reach this line: `proxy.ts` answers a month that is out of the window
+    // for every park before the render starts, because a redirect thrown from here carries this
+    // route's not-found document as its body. What arrives here is what the proxy could not
+    // decide from the URL alone — the months at the edge of the window, where this park's own
+    // timezone and `scheduleCoverage.to` are what settles it. See `lib/parks/calendar-redirects.ts`.
+    if (parseParkCalendarMonthSpelling(date)) {
       permanentRedirect(
         `/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug)}`
       );

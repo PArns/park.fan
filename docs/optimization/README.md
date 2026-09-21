@@ -323,8 +323,27 @@ beide sind flach). Das deckt sich mit der unabhängigen Auflösung aus der Egres
 
 Gerechnet auf die abgelesenen 17 K und 1 GB: **~5.600 Redirects × 72 kB ≈ 400 MB**, also
 **~40 % der Transferzeile dieser Route** für Antworten, deren einzige Nutzlast ein
-`Location`-Header sein sollte. Das ist der größte einzelne, sofort behebbare Posten auf der
-ganzen Site — und er ist ein Dashboard-Feld (Hebel ① unten).
+`Location`-Header sein sollte. Das war der größte einzelne, sofort behebbare Posten auf der
+ganzen Site.
+
+**Erledigt am 2026-09-21 (PAR-373).** Der Body war nicht der Redirect, sondern das Dokument, das
+Next nach dem geworfenen `permanentRedirect()` trotzdem rendert — die Not-Found-Seite der Route
+durch Root- und Locale-Layout, davon 77.152 B eingebetteter Flight-Payload. Die Fenstergrenze der
+Kalendermonate entscheidet jetzt `proxy.ts`, bevor irgendetwas rendert, und liest die Regel dabei
+aus `lib/parks/calendar-segments.ts` statt sie ein zweites Mal hinzuschreiben. Gemessen gegen
+`next start`, dieselbe URL vor und nach der Änderung:
+
+```
+vorher   308 · 75.832 B · location: /de/…/wartezeiten-kalender
+nachher  308 ·     66 B · location: /de/…/wartezeiten-kalender   (unverändert, inkl. cdn-cache-control)
+```
+
+Die 66 B sind der Zielpfad als Text, den `NextResponse.redirect()` schreibt — **1.149-mal kleiner**.
+Die Invocations bleiben, die Bytes nicht. Was **nicht** erledigt ist, sind
+die zehn übrigen Redirect-Stellen (Park umgezogen, umbenannt, Geo-Pfad falsch, Glossar-Term,
+Blog-Slug) — die brauchen einen API-Lookup und können nicht in den Proxy. Sie tragen den Body
+weiter, treffen aber eine Handvoll URLs statt 21.948. Begründung und Gegenbeispiele:
+[`docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md`](../rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md).
 
 ---
 

@@ -18,25 +18,12 @@
  */
 
 import { notFound } from 'next/navigation';
-import { isValidLocale } from '@/i18n/config';
+import { isServableRoute } from './servable-route';
 
-/**
- * Geo slugs the API serves are strictly lowercase alphanumerics + dashes — verified
- * across every continent/country/city/park/attraction segment the API publishes
- * (7012 attractions, no exceptions). Anything else (a dot above all) is a URL the
- * backend can never resolve.
- */
-const GEO_SLUG_RE = /^[a-z0-9-]+$/;
-
-/**
- * True when a `/[locale]/...` URL can possibly resolve: the locale is one we serve
- * and every geo segment passed is slug-shaped. Call with just the locale on routes
- * that take no geo params. Use this in `generateMetadata`, which must return a
- * value rather than throw.
- */
-export function isServableRoute(locale: string, ...slugs: string[]): boolean {
-  return isValidLocale(locale) && slugs.every((slug) => GEO_SLUG_RE.test(slug));
-}
+// The predicate lives in `./servable-route` and is re-exported here so every caller keeps one
+// import. It was split off when `proxy.ts` started asking the same question: this module imports
+// `next/navigation`, and the middleware bundle has no business carrying it.
+export { isServableRoute } from './servable-route';
 
 /**
  * `isServableRoute` as a guard — 404s before a single backend call is made.
