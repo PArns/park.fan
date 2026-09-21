@@ -552,6 +552,10 @@
       "until": "Diese Bahn ist wegen Umbau geschlossen, bis zum {to}.",
       "untilUncertain": "Diese Bahn ist wegen Umbau geschlossen, voraussichtlich bis zum {to}."
     },
+    "transportSystem": {
+      "label": "Transportsystem",
+      "hint": "Eine Verbindung durch den Park, kein Fahrgeschäft. Die Wartezeit hängt am Fahrplan, nicht am Andrang."
+    },
     "info": {
       "title": "Infos zum Park",
       "address": "Adresse",

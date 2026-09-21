@@ -764,6 +764,10 @@
       "until": "Deze attractie is gesloten voor verbouwing tot en met {to}.",
       "untilUncertain": "Deze attractie is gesloten voor verbouwing, naar verwachting tot en met {to}."
     },
+    "transportSystem": {
+      "label": "Vervoer",
+      "hint": "Een verbinding door het park, geen attractie. De wachttijd volgt de dienstregeling, niet de drukte."
+    },
     "info": {
       "title": "Parkinformatie",
       "address": "Adres",
