@@ -26,6 +26,7 @@ import {
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
@@ -134,7 +135,11 @@ export function ContentFR() {
           items={[
             {
               icon: Sunrise,
-              title: 'À l’ouverture (rope drop)',
+              title: (
+                <>
+                  À l’ouverture (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
+                </>
+              ),
               body: 'La première heure est en or : en arrivant à l’ouverture, on enchaîne souvent les têtes d’affiche pour une fraction du temps d’attente ultérieur.',
             },
             {
@@ -186,7 +191,11 @@ export function ContentFR() {
           kicker="Jour de pointe"
           title="Beau temps, tout le monde en congé, tout le monde là"
           reverse
-          badge={<CrowdLevelBadge level="very_high" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="very_high" />
+            </GlossaryTermLink>
+          }
         >
           Un samedi des vacances d’été par beau temps, c’est le pire des cas : tout le monde est en
           congé, tout le monde veut sortir, tout le monde est là. Si vous êtes flexible, prenez
@@ -201,7 +210,9 @@ export function ContentFR() {
             },
             {
               icon: CalendarRange,
-              title: 'Vacances scolaires',
+              title: (
+                <GlossaryTermLink termId="school-holiday">Vacances scolaires</GlossaryTermLink>
+              ),
               body: 'Pendant les vacances de votre région et des régions voisines, l’affluence grimpe fortement, les grandes vacances d’été surtout.',
             },
             {
@@ -240,7 +251,12 @@ export function ContentFR() {
             },
             {
               icon: Ticket,
-              title: 'Single rider & files virtuelles',
+              title: (
+                <>
+                  <GlossaryTermLink termId="single-rider">Single rider</GlossaryTermLink> &{' '}
+                  <GlossaryTermLink termId="virtual-queue">files virtuelles</GlossaryTermLink>
+                </>
+              ),
               body: 'Montez seul ou faites la queue en version numérique pendant que vous mangez ou faites les boutiques : du temps gagné les jours chargés.',
             },
           ]}
@@ -260,16 +276,21 @@ export function ContentFR() {
         icon={Ticket}
       >
         <P>
-          Les tendances ci-dessus sont le point de départ. Le jour idéal exact, c’est le calendrier
-          d’affluence de chaque page de parc qui vous le donne : vert, jaune, rouge, aussi loin que
-          le parc a publié ses horaires, avec les vacances et jours fériés de la région concernée.
+          Les tendances ci-dessus sont le point de départ. Le jour idéal exact, c’est le{' '}
+          <GlossaryTermLink termId="crowd-calendar">calendrier d’affluence</GlossaryTermLink> de
+          chaque page de parc qui vous le donne : vert, jaune, rouge, aussi loin que le parc a
+          publié ses horaires, avec les vacances et jours fériés de la région concernée.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="L’attraction du palais Symbolica à Efteling"
           kicker="Vert, jaune, rouge"
           title="Une couleur par jour, aussi loin que vont les horaires"
-          badge={<CrowdLevelBadge level="low" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="low" />
+            </GlossaryTermLink>
+          }
         >
           Chaque page de parc porte une prévision jour par jour qui intègre les vacances scolaires
           et les jours fériés de cette région précise. Choisissez un jour vert et vous avez fait
