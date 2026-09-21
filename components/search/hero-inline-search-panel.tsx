@@ -175,32 +175,87 @@ export default function HeroInlineSearchPanel({
 
   // Cap the dropdown at whatever room is left below the field, so a long result list ends at
   // the bottom of the screen and scrolls inside itself instead of running off the page. The
-  // field's viewport position only moves on scroll and resize, so those are the only triggers;
-  // the value is written straight onto the node as a custom property, which keeps a scroll
-  // listener from re-rendering the whole result tree.
+  // value is written straight onto the node as a custom property, which keeps a scroll listener
+  // from re-rendering the whole result tree.
+  //
+  // Two things here exist because this runs on EVERY scroll frame of the homepage — the resting
+  // dropdown is always mounted, so there is no closed state to bail out on.
+  //
+  // **The field's box is measured in document space**, not read per frame. `getBoundingClientRect()`
+  // forces a synchronous layout, and this then wrote a custom property that invalidates style for
+  // the dropdown — a read and a write of the same pipeline, once per frame, forever. Traced on a
+  // production build it was 1031 forced style recalc / layout passes in a four-second scroll, the
+  // second largest source on the page after the card pointer effect. `top + scrollY` does not move
+  // when the page scrolls, so the per-frame path is now arithmetic over a cached number.
+  //
+  // **And it does not run while the field is off screen.** Clamping the written value was not
+  // enough and the trace said so: skipping the WRITE still left the per-frame READ of `scrollY`
+  // and `innerHeight`, and reading either one flushes style whenever style is dirty — the same
+  // forced pass, just bought with a different property. So an IntersectionObserver gates the
+  // handler itself, and once the hero has left the screen a scroll frame costs one boolean.
   useEffect(() => {
-    const update = () => {
+    let bottomDoc = 0;
+    let written: string | null = null;
+    let onScreen = true;
+
+    const measure = () => {
       const input = inputRef.current;
-      const dropdown = dropdownRef.current;
-      if (!input || !dropdown) return;
-      const room = window.innerHeight - input.getBoundingClientRect().bottom - DROPDOWN_GAP_PX;
-      dropdown.style.setProperty('--hero-search-max-h', `${Math.max(DROPDOWN_MIN_PX, room)}px`);
+      if (input) bottomDoc = input.getBoundingClientRect().bottom + window.scrollY;
     };
+
+    const update = () => {
+      const dropdown = dropdownRef.current;
+      if (!dropdown || !onScreen) return;
+      const room = window.innerHeight - (bottomDoc - window.scrollY) - DROPDOWN_GAP_PX;
+      const next = `${Math.max(DROPDOWN_MIN_PX, room)}px`;
+      if (next === written) return;
+      written = next;
+      dropdown.style.setProperty('--hero-search-max-h', next);
+    };
+
+    measure();
     update();
 
     let frame = 0;
     const schedule = () => {
-      if (frame) return;
+      if (frame || !onScreen) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
         update();
       });
     };
+
+    // The gate. A generous margin so the value is already right by the time the field is back in
+    // view, rather than one frame late.
+    const seen = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry.isIntersecting;
+        if (onScreen) {
+          measure();
+          update();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (inputRef.current) seen.observe(inputRef.current);
+    // A resize moves the field as well as the viewport, so it re-measures before it updates.
+    const onResize = () => {
+      measure();
+      schedule();
+    };
+    // The field also moves when the plate above it changes size — a longer heading wrapping, the
+    // streamed rest of the hero landing. A ResizeObserver catches that without anyone scrolling,
+    // which the old scroll+resize pair did not.
+    const observer = new ResizeObserver(onResize);
+    if (inputRef.current?.parentElement) observer.observe(inputRef.current.parentElement);
+
     window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
+    window.addEventListener('resize', onResize);
     return () => {
+      seen.disconnect();
+      observer.disconnect();
       window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
+      window.removeEventListener('resize', onResize);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);

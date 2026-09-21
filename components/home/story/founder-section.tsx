@@ -54,7 +54,7 @@ export async function FounderSection({ locale }: { locale: Locale }) {
   return (
     <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <Reveal>
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={User}
@@ -65,7 +65,7 @@ export async function FounderSection({ locale }: { locale: Locale }) {
         </Reveal>
 
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <Reveal>
+          <Reveal containsGlass>
             {/* The name plate hangs off the portrait's lower-left corner, so the
                 two need one positioning context and room for the overhang —
                 hence the padding on the wrapper rather than a negative margin

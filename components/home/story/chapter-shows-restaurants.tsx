@@ -35,7 +35,7 @@ export async function ChapterShowsRestaurants() {
   return (
     <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <Reveal>
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={FerrisWheel}

@@ -23,7 +23,7 @@ export async function NearbyChapter({ children }: { children: React.ReactNode })
   return (
     <section className="px-4 pb-16 sm:pb-18">
       <div className="container mx-auto">
-        <Reveal>
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={Navigation}
