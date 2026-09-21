@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
+import { getChangelogEntries } from '@/lib/changelog';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -100,6 +101,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: contributeAlternates,
       }
     );
+  }
+
+  // ── Changelog ─────────────────────────────────────────────────────────────
+  // One URL, outside the locale loop and without an `alternates` map: the page
+  // is English only (`app/[locale]/changelog/page.tsx`), and the other five
+  // spellings are 301s. Listing them as hreflang alternates would advertise
+  // five URLs that answer with a redirect.
+  //
+  // `lastModified` is the date of the newest published entry, which is the day
+  // that page last changed — no crawl needed, the content carries its own date.
+  //
+  // Listed only while there is something to list: with no published entry the
+  // page answers `notFound()`, and a sitemap that advertises a 404 is worse
+  // than one that omits the URL.
+  const changelogEntries = getChangelogEntries();
+  if (changelogEntries.length > 0) {
+    routes.push({
+      url: `${BASE_URL}/en/changelog`,
+      lastModified: new Date(`${changelogEntries[0].date}T00:00:00Z`),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    });
   }
 
   // ── "How park.fan works" guide ────────────────────────────────────────────

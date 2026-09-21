@@ -4,6 +4,40 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Eine öffentliche Changelog-Seite, und die Regel, wann eine Version geschnitten wird
+
+Diese Datei hier ist das interne Log: deutsch, ein Abschnitt pro PR, mit Dateinamen und Messwerten.
+Sie hatte seit `2.11.0 (2026-08-15)` **31** `## Unreleased`-Abschnitte, `package.json` stand bei
+`2.12.0`, und gelesen hat das niemand außerhalb des Repos. Neu ist deshalb eine zweite, öffentliche
+Sammlung unter `content/changelog/<version>.md`, englisch und von Hand aus den internen Abschnitten
+geschrieben, gerendert auf `/en/changelog`. **Kein Parser zwischen beiden**: die interne Prosa
+beschreibt Code, und wer sie ungefiltert veröffentlicht, hat eine Commit-Liste mit Absätzen.
+
+Die Seite ist bewusst einsprachig. `generateStaticParams` liefert nur `en`, `dynamicParams` ist aus,
+und die fünf anderen Schreibweisen plus das nackte `/changelog` sind 301er in `next.config.ts` –
+dort und nicht im Proxy, weil `redirects()` aus `next.config` in Nexts Reihenfolge Schritt 2 ist und
+der Proxy Schritt 3
+([Beleg](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#execution-order)). Ohne
+sie würde `localePrefix: 'always'` einen deutschen Besucher auf `/de/changelog` schicken. Neue
+Message-Keys gibt es keine: die Namespace-Delta der Route ist leer (`'/changelog': []`), also trägt
+sie auch kein `<RouteMessages>`. In `app/sitemap.ts` steht genau eine URL ohne `alternates`, ihr
+`lastmod` ist das Datum des neuesten Eintrags.
+
+Zwei Stolpersteine, die im Code als Kommentar stehen: `@tailwindcss/typography` ist hier **nicht**
+installiert, eine `prose`-Klasse also wirkungslos – die Markdown-Elemente werden einzeln abgebildet,
+mit den Klassen aus `components/blog/blog-content.tsx`. Und ein unquotiertes `date: 2026-09-21` im
+Frontmatter ist kein String, sondern ein `Date`; der erste Build ist daran in `sitemap.xml`
+gescheitert, nicht auf der Seite. `toIsoDate()` normalisiert beide Formen.
+
+Die Versions-Policy des PO (kein Bump pro Merge, MINOR für eine neue sichtbare Fähigkeit, PATCH für
+ein Bündel Fixes, geschnitten wird vom PO) steht als Regelseite in
+[a-version-is-a-unit-of-communication.md](rules/a-version-is-a-unit-of-communication.md), der
+`CLAUDE.md`-Index bekommt eine Zeile. Der erste Eintrag ist `2.12.0`, kuratiert aus den 31
+Abschnitten darunter, mit einem Highlight-Screenshot in der neuen Sammlung
+`public/media/changelog/` (`tags: ["diagram"]`, kein `park`, kein `ride` – ein Bild der eigenen
+Oberfläche ist keine Parkaufnahme). Autorenanleitung:
+[content/changelog/README.md](../content/changelog/README.md).
+
 ## Unreleased – Jeder Park mit genug Messtagen hat jetzt eine eigene Statistikseite
 
 Die Parkseite rendert die Live-Tabelle serverseitig, die historische Hälfte aber nicht: der
