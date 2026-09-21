@@ -26,6 +26,7 @@ import {
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
@@ -133,7 +134,11 @@ export function ContentDE() {
           items={[
             {
               icon: Sunrise,
-              title: 'Zur Öffnung (Rope Drop)',
+              title: (
+                <>
+                  Zur Öffnung (<GlossaryTermLink termId="rope-drop">Rope Drop</GlossaryTermLink>)
+                </>
+              ),
               body: 'Die erste Stunde nach dem Einlass ist Gold wert. Wer pünktlich am Tor steht, fährt die großen Bahnen oft, bevor sich überhaupt Schlangen bilden.',
             },
             {
@@ -185,7 +190,11 @@ export function ContentDE() {
           kicker="Spitzentag"
           title="Schön, frei, alle da"
           reverse
-          badge={<CrowdLevelBadge level="very_high" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="very_high" />
+            </GlossaryTermLink>
+          }
         >
           Ein Samstag in den Sommerferien bei bestem Wetter ist der Worst Case: alle haben frei,
           alle wollen raus, alle sind da. Wenn du flexibel bist, nimm lieber den Dienstag danach.
@@ -200,7 +209,7 @@ export function ContentDE() {
             },
             {
               icon: CalendarRange,
-              title: 'Schulferien',
+              title: <GlossaryTermLink termId="school-holiday">Schulferien</GlossaryTermLink>,
               body: 'Sobald bei dir oder im Nachbarbundesland Ferien sind, wird es voller. Die Sommerferien sind die absolute Hochsaison.',
             },
             {
@@ -239,7 +248,14 @@ export function ContentDE() {
             },
             {
               icon: Ticket,
-              title: 'Single-Rider & virtuelle Warteschlangen',
+              title: (
+                <>
+                  <GlossaryTermLink termId="single-rider">Single-Rider</GlossaryTermLink> &{' '}
+                  <GlossaryTermLink termId="virtual-queue">
+                    virtuelle Warteschlangen
+                  </GlossaryTermLink>
+                </>
+              ),
               body: 'Fahr als Einzelfahrer auf freie Plätze oder stell dich per App digital an, während du isst oder bummelst. An vollen Tagen ist das geschenkte Zeit.',
             },
           ]}
@@ -260,9 +276,10 @@ export function ContentDE() {
         icon={Ticket}
       >
         <P>
-          Die Muster von oben sind der Anfang. Den wirklich besten Tag findest du im Crowd-Kalender
-          auf jeder Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, so weit
-          der Park seinen Zeitplan veröffentlicht hat, und passend zu den Ferien und Feiertagen der
+          Die Muster von oben sind der Anfang. Den wirklich besten Tag findest du im{' '}
+          <GlossaryTermLink termId="crowd-calendar">Crowd-Kalender</GlossaryTermLink> auf jeder
+          Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, so weit der Park
+          seinen Zeitplan veröffentlicht hat, und passend zu den Ferien und Feiertagen der
           jeweiligen Region.
         </P>
         <SplitFigure
@@ -270,7 +287,11 @@ export function ContentDE() {
           alt="Die Palastfahrt Symbolica in der Efteling"
           kicker="Grün, gelb, rot"
           title="Eine Farbe pro Tag, so weit der Zeitplan reicht"
-          badge={<CrowdLevelBadge level="low" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="low" />
+            </GlossaryTermLink>
+          }
         >
           Jede Parkseite hat eine tagesgenaue Prognose, die die Ferien und Feiertage genau der
           richtigen Region berücksichtigt. Such dir einen grünen Tag aus, und der wichtigste Teil
