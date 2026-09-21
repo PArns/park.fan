@@ -1,12 +1,11 @@
 # Blog feeds
 
-Six RSS 2.0 feeds, one per locale, at `/{locale}/blog/feed.xml`. Full posts, a
-cover enclosure, and a WebSub hub so a new article reaches a subscriber without
-waiting for their reader's next poll.
+Six RSS 2.0 feeds, one per locale, at `/{locale}/blog/feed.xml`. An excerpt per
+item, a cover enclosure, and a WebSub hub so a new article reaches a subscriber
+without waiting for their reader's next poll.
 
 - Route: `app/[locale]/blog/feed.xml/route.ts`
 - Identity and the autodiscovery link: `lib/blog/feed.ts`
-- Body → feed HTML: `lib/blog/feed-content.tsx`
 - Hub and ping: `lib/websub.ts`, `app/api/cron/websub/route.ts`, `pnpm ping:websub`
 - Asserted from outside by `pnpm check:agent-ready`
 
@@ -60,47 +59,47 @@ guard the feed itself 404s under.
 
 ## What an item contains
 
-`description` stays the excerpt. `content:encoded` carries the whole article —
-the namespace was declared and unused for as long as the feed existed.
+`description` is the excerpt, written by hand in frontmatter — never the
+rendered body. An item once carried the whole article as `content:encoded`
+(rendered by a since-deleted `feed-content.tsx`), which broke the deployment;
+see "Why not the full article" below. The feed still carries 15 items — sized
+for full articles, and generous now that an item is an excerpt.
 
-Rendering the body for a feed is not rendering it for the site, and
-`feed-content.tsx` exists because three things in a post body only mean
-something inside this app:
+`coverEnclosure()`'s byte count comes from the media manifest
+(`getMediaImageBySrc(clean)?.bytes`), which answers for the **source** photo,
+not the `-16x9`/`-4x3`/`-1x1` crop a cover usually points at — an approximate
+length, and deliberately so; see the same section.
 
-**Widget fences are live tables.** A feed item is archived by the reader the
-moment it arrives and never re-fetched, so rendering today's numbers into one
-freezes them in every subscriber's client forever — the same mistake as typing a
-wait time into a post, which is why the fences exist. Each fence becomes a link
-to the live table, in place, because the prose around it refers to it.
+## Why not the full article
 
-**`ref:` links are a private protocol.** `ref:efteling/baron-1898` is a dead
-href anywhere but here. They are resolved against the geo structure —
-`resolvePark` only, never `resolveAttraction`: a ride URL is its park's href
-plus the slug, and the attraction payload is 425 KB of data no feed renders. One
-geo fetch covers every ride an article names. A ref that does not resolve loses
-its anchor and keeps its label.
+The feed used to render the body, for exactly the reasons you'd want that:
+`ref:efteling/baron-1898` links and live-widget fences only mean something
+inside this app, so a naive dump of the markdown would have shipped dead hrefs
+and frozen wait-time tables into every subscriber's archive. `feed-content.tsx`
+resolved `ref:` links against the geo structure and swapped each widget fence
+for a link back to the live post.
 
-**Relative paths resolve against the reader's host.** Everything is absolute,
-and image URLs keep their `?v=` content version, because a reader caches an
-image by its address and a retargeted crop would otherwise keep the old framing
-in every subscriber's client.
+Two things in that path each blew up this route's Vercel Function:
 
-Two smaller decisions in the same file. `react-markdown`'s default
-`urlTransform` strips protocols it does not recognise, so every entity link
-arrived as `href=""` until the transform was overridden — the site renderer has
-the same guard for the same reason. And an image-only paragraph is unwrapped,
-decided from the **hast node** rather than the rendered children: with a
-`components` map the child element's type is the component, so the `<figure>`
-does not exist yet and a `child.type === 'figure'` test matches nothing.
+**The body import.** Loading a post's markdown has exactly one door,
+`getPostByTranslationKey` from `@/lib/blog` — and `@/lib/blog` pulls in
+`manifest-bodies.ts`, every post body in every locale, as one generated module
+(`docs/development/scripts.md` reserves that import for the post page alone).
+One import here was enough for Next's function tracer to fold the whole thing
+into this route.
 
-`react-dom/server` is imported dynamically. Next rejects a static import of it
-anywhere in the App Router graph.
+**The cover's byte count.** `coverEnclosure()` used to `fs.statSync` a path
+built from `path.join(process.cwd(), 'public', …)` to get the crop's exact
+size. Next's tracer cannot resolve a dynamic filesystem path built like that,
+and falls back to bundling the **entire** directory the join is rooted at —
+all of `/public`, the same failure mode already documented for
+`/api/og/[...path]` in `next.config.ts`. That alone put roughly 256 MB of ride
+photos into an RSS handler.
 
-**The feed carries 15 items, not 40.** Forty was free while an item was an
-excerpt and is not now that it carries the article: nine posts already weigh
-~390 KB per locale, so forty would be roughly 1.7 MB fetched by every
-subscriber's reader on every poll. Everything older stays where an archive
-belongs — the blog index, the category pages and the sitemap.
+Neither is worth what it costs. A reader gets a teaser and a link regardless of
+which one broke the build, so the fix was to stop doing both: read the excerpt
+already sitting in the listing, and answer the enclosure length from the media
+manifest instead of the filesystem.
 
 ## Three things the feed used to get wrong
 
@@ -115,10 +114,11 @@ namespace, plus a `<comments>` pointing at the post itself and a `<source>`
 naming this very feed — `source` means "republished from elsewhere", so every
 item claimed to be a repost of itself.
 
-**`length="0"`.** RSS requires a byte count on an enclosure. It is measured off
-the file, not read from the media database: a frontmatter cover is usually a
-build-time crop, and the database's `bytes` describes the **source** photo. For
-Voltron's cover the difference is 89 KB against 290 KB.
+**`length="0"`.** RSS requires a byte count on an enclosure; it used to say `0`
+for every cover. It now reads `getMediaImageBySrc(clean)?.bytes` — the media
+database's own number for the **source** photo, not the build-time crop a
+cover usually points at (see "Why not the full article" above for why this
+route does not stat the file itself). Approximate beats `0`.
 
 The channel description was a two-branch ternary that gave German its own
 sentence and handed the English one to the other four locales. All six are
@@ -144,10 +144,10 @@ the old feed and finds nothing.
 
 `pnpm check:agent-ready` (needs a running site) fetches all six feeds and
 asserts, per locale, that they serve as RSS, carry items, name themselves,
-declare a hub, ship a body per item, froze no widget, left no unresolved `ref:`,
-and sized every enclosure — then that the homepage, blog index, category and tag
-pages each carry the autodiscovery link, and that `/rss.xml` still redirects.
+declare a hub, ship a description per item, and sized every enclosure — then
+that the homepage, blog index, category and tag pages each carry the
+autodiscovery link, and that `/rss.xml` still redirects.
 
 None of that is visible from the site, which is the point: a feed can lose its
-link, start serving HTML, or drop every body through a green build, and the
-first symptom would be a subscriber seeing nothing new for weeks.
+link, start serving HTML, or drop every item's excerpt through a green build,
+and the first symptom would be a subscriber seeing nothing new for weeks.
