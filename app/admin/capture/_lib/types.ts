@@ -18,6 +18,17 @@ export interface BacklogResponse {
   backlog: Backlog;
 }
 
+/**
+ * What `/api/admin/media/session` answers, down to the part this screen uses.
+ *
+ * The session is the open pull request carrying the `media/session-` branch
+ * prefix, resolved on the server from git. The media browser reads the same
+ * endpoint for its session bar and needs the whole shape; here it is one link.
+ */
+export interface CaptureSessionResponse {
+  session: { url: string | null } | null;
+}
+
 /** A photo the screen is currently doing something with. */
 export type UploadState =
   | { kind: 'reading' }
