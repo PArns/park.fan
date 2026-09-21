@@ -15,9 +15,11 @@ import {
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import {
   Activity,
   BarChart3,
+  CalendarClock,
   CalendarDays,
   CloudSun,
   Compass,
@@ -44,6 +46,7 @@ import {
   LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
+  PlannerDayFigure,
   RopeDropDemo,
   TwoRidesDemo,
   TypicalWaitsDemo,
@@ -88,12 +91,13 @@ const CHAPTERS: Chapter[] = [
   { id: 'echelle', index: '02', label: 'Habituel, chargé, record' },
   { id: 'moment', index: '03', label: 'Le meilleur moment' },
   { id: 'jour', index: '04', label: 'Le bon jour' },
-  { id: 'page-parc', index: '05', label: 'Une page de parc, de haut en bas' },
-  { id: 'nuit', index: '06', label: 'D’où viennent les chiffres' },
-  { id: 'limites', index: '07', label: 'Quand nous ne savons pas' },
-  { id: 'visites', index: '08', label: 'Quatre visites' },
-  { id: 'reperes', index: '09', label: 'Où trouver quoi' },
-  { id: 'faq', index: '10', label: 'Questions fréquentes' },
+  { id: 'plan-journee', index: '05', label: 'La journée en plan' },
+  { id: 'page-parc', index: '06', label: 'Une page de parc, de haut en bas' },
+  { id: 'nuit', index: '07', label: 'D’où viennent les chiffres' },
+  { id: 'limites', index: '08', label: 'Quand nous ne savons pas' },
+  { id: 'visites', index: '09', label: 'Quatre visites' },
+  { id: 'reperes', index: '10', label: 'Où trouver quoi' },
+  { id: 'faq', index: '11', label: 'Questions fréquentes' },
 ];
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
@@ -255,7 +259,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Saison, infos, questions',
     body: 'Périodes d’ouverture et événements annoncés, adresse et fuseau horaire, et les questions fréquentes sur ce parc précis.',
-    example: 'La patinoire du chapitre 07 figure ici avec novembre à janvier.',
+    example: 'La patinoire du chapitre 08 figure ici avec novembre à janvier.',
     demo: <AnatomySeasonDemo label="Patinoire" />,
   },
 ];
@@ -351,6 +355,7 @@ const FAQ = [
 export function ContentFR() {
   const glossary = `/${GLOSSARY_SEGMENTS.fr}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.fr}`;
+  const planner = `/${PLANNER_SEGMENTS.fr}`;
 
   return (
     <>
@@ -714,8 +719,55 @@ export function ContentFR() {
 
       {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
-        id="page-parc"
+        id="plan-journee"
         index="05"
+        kicker="Le planificateur"
+        title="Dérouler la journée à l’avance"
+        icon={CalendarClock}
+      >
+        <P>
+          Jusqu’ici, il s’agissait de situer un chiffre et de trouver le bon jour. Le planificateur
+          réunit les deux : il pose les attractions que vous voulez faire sur une frise horaire et
+          calcule si la journée tient. Chaque bloc est une attraction, sa hauteur est le temps
+          d’attente prévu pour son heure, et entre deux blocs se trouve le trajet de l’une à
+          l’autre.
+        </P>
+        <P>
+          L’exemple ci-dessous n’est pas un dessin. Ce sont les mêmes pièces qui tournent dans le
+          planificateur, alimentées par la réponse que l’API a donnée le 4 septembre 2026 pour le
+          samedi 12 septembre à Phantasialand : ouvert de 9 h à 18 h, peu de monde, bruine. Faites
+          glisser un bloc sur une autre heure : il recalcule sa hauteur, et les correspondances à
+          côté aussi. Rien de tout cela n’arrive dans votre propre plan.
+        </P>
+
+        <DemoFrame
+          label="Un samedi planifié"
+          href={planner}
+          hrefLabel="Vers le planificateur →"
+          className="mx-auto max-w-[560px]"
+        >
+          <PlannerDayFigure />
+        </DemoFrame>
+
+        <Highlight>
+          Deux choses que le planificateur sait et qu’aucun temps d’attente ne porte. Le parc ouvre
+          à 9 h ce samedi-là, Taron seulement à 10 h, et son bloc ne se laisse pas glisser avant
+          cette heure. Et le trajet entre deux attractions est calculé à partir de la distance à vol
+          d’oiseau entre les deux stations, plus des marges pour la sortie et pour le tour lui-même,
+          et il dit si le temps suffit.
+        </Highlight>
+        <PG>
+          Le bloc sélectionné indique aussi de combien la prévision se trompe habituellement pour
+          cette attraction. Pour Taron, ce samedi-là, c’est 15 minutes, et 10,9 pour les attractions
+          plus calmes de la journée. Habituellement veut dire : la moitié des jours s’en écartent
+          davantage.
+        </PG>
+      </SectionShell>
+
+      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="page-parc"
+        index="06"
         kicker="La visite guidée"
         title="Une page de parc, de haut en bas"
         icon={Layers}
@@ -753,11 +805,11 @@ export function ContentFR() {
         </div>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="nuit"
-          index="06"
+          index="07"
           kicker="Les fondations"
           title="D’où viennent les chiffres"
           icon={Database}
@@ -818,10 +870,10 @@ export function ContentFR() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
+      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="limites"
-        index="07"
+        index="08"
         kicker="Les limites"
         title="Quand nous ne savons pas"
         icon={HelpCircle}
@@ -866,10 +918,10 @@ export function ContentFR() {
         </Highlight>
       </SectionShell>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
+      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="visites"
-        index="08"
+        index="09"
         kicker="En pratique"
         title="Quatre visites"
         icon={Users}
@@ -986,13 +1038,18 @@ export function ContentFR() {
                 Les spectacles sont dans l’onglet du même nom. Les horaires y figurent pour toute la
                 journée, et les parades vident les allées pendant une demi-heure environ.
               </>,
+              <>
+                Personne n’a à deviner l’ordre : le planificateur du chapitre 05 remplit la journée
+                d’un clic avec les grandes attractions du parc, la trie selon les courbes horaires
+                et compte le trajet entre deux attractions.
+              </>,
             ]}
           />
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
-      <SectionShell id="reperes" index="09" kicker="Repères" title="Où trouver quoi" icon={Search}>
+      {/* ── 10 ──────────────────────────────────────────────────────────── */}
+      <SectionShell id="reperes" index="10" kicker="Repères" title="Où trouver quoi" icon={Search}>
         <TouchpointGrid
           items={[
             {
@@ -1022,6 +1079,17 @@ export function ContentFR() {
                 <>
                   Une étoile sur chaque carte de parc et d’attraction. Stockés dans un cookie du
                   navigateur, sans compte et sans serveur.
+                </>
+              ),
+            },
+            {
+              icon: CalendarClock,
+              title: 'Planificateur',
+              body: (
+                <>
+                  L’onglet sur le bord droit de la fenêtre l’ouvre depuis n’importe quelle page. Le
+                  plan reste dans le navigateur, sans compte. Le chapitre 05 montre ce qu’il fait
+                  d’une journée au parc.
                 </>
               ),
             },
@@ -1061,10 +1129,10 @@ export function ContentFR() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
+      {/* ── 11 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
-        index="10"
+        index="11"
         kicker="Vos questions"
         title="Questions fréquentes"
         icon={HelpCircle}

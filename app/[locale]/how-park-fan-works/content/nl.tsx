@@ -15,9 +15,11 @@ import {
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import {
   Activity,
   BarChart3,
+  CalendarClock,
   CalendarDays,
   CloudSun,
   Compass,
@@ -44,6 +46,7 @@ import {
   LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
+  PlannerDayFigure,
   RopeDropDemo,
   TwoRidesDemo,
   TypicalWaitsDemo,
@@ -88,12 +91,13 @@ const CHAPTERS: Chapter[] = [
   { id: 'maatstaf', index: '02', label: 'Normaal, druk, record' },
   { id: 'moment', index: '03', label: 'Het beste moment' },
   { id: 'dag', index: '04', label: 'De juiste dag' },
-  { id: 'parkpagina', index: '05', label: 'Een parkpagina van boven naar beneden' },
-  { id: 'nachtdienst', index: '06', label: 'Waar de cijfers vandaan komen' },
-  { id: 'gaten', index: '07', label: 'Als we het niet weten' },
-  { id: 'bezoeken', index: '08', label: 'Vier bezoeken' },
-  { id: 'wegwijzer', index: '09', label: 'Waar je wat vindt' },
-  { id: 'faq', index: '10', label: 'Veelgestelde vragen' },
+  { id: 'dagplan', index: '05', label: 'De dag als plan' },
+  { id: 'parkpagina', index: '06', label: 'Een parkpagina van boven naar beneden' },
+  { id: 'nachtdienst', index: '07', label: 'Waar de cijfers vandaan komen' },
+  { id: 'gaten', index: '08', label: 'Als we het niet weten' },
+  { id: 'bezoeken', index: '09', label: 'Vier bezoeken' },
+  { id: 'wegwijzer', index: '10', label: 'Waar je wat vindt' },
+  { id: 'faq', index: '11', label: 'Veelgestelde vragen' },
 ];
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
@@ -254,7 +258,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Seizoen, info, vragen',
     body: 'Seizoenstijden en aangekondigde evenementen, adres en tijdzone, en de veelgestelde vragen over juist dit park.',
-    example: 'De schaatsbaan uit hoofdstuk 07 staat hier met november tot januari.',
+    example: 'De schaatsbaan uit hoofdstuk 08 staat hier met november tot januari.',
     demo: <AnatomySeasonDemo label="Schaatsbaan" />,
   },
 ];
@@ -350,6 +354,7 @@ const FAQ = [
 export function ContentNL() {
   const glossary = `/${GLOSSARY_SEGMENTS.nl}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.nl}`;
+  const planner = `/${PLANNER_SEGMENTS.nl}`;
 
   return (
     <>
@@ -706,8 +711,54 @@ export function ContentNL() {
 
       {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
-        id="parkpagina"
+        id="dagplan"
         index="05"
+        kicker="De planner"
+        title="De dag vooraf doorlopen"
+        icon={CalendarClock}
+      >
+        <P>
+          Tot hier ging het erom één getal te plaatsen en de juiste dag te vinden. De dagplanner zet
+          die twee bij elkaar: hij legt de attracties die je wilt rijden op een tijdlijn en rekent
+          na of de dag zo uitkomt. Elk blok is een attractie, de hoogte ervan is de wachttijd die
+          voor dat uur voorspeld is, en tussen twee blokken staat de weg van de ene naar de andere.
+        </P>
+        <P>
+          Het voorbeeld hieronder is niet nagetekend. Het zijn dezelfde onderdelen die in de planner
+          draaien, gevoed met het antwoord dat de API op 4 september 2026 gaf voor zaterdag 12
+          september in Phantasialand: open van 9 tot 18 uur, rustig, motregen. Sleep een blok naar
+          een ander tijdstip, dan rekent het zijn hoogte opnieuw uit, en de overstappen ernaast ook.
+          In je eigen plan komt daar niets van terecht.
+        </P>
+
+        <DemoFrame
+          label="Een geplande zaterdag"
+          href={planner}
+          hrefLabel="Naar de dagplanner →"
+          className="mx-auto max-w-[560px]"
+        >
+          <PlannerDayFigure />
+        </DemoFrame>
+
+        <Highlight>
+          Twee dingen weet de planner die bij geen enkele wachttijd staan. Het park opent die
+          zaterdag om 9 uur, Taron pas om 10, en vóór dat uur laat zijn blok zich niet slepen. En de
+          overstap ertussen rekent met de hemelsbrede afstand tussen beide stations, plus opslagen
+          voor de weg naar buiten en voor de rit zelf, en zegt erbij of de tijd daarvoor toereikend
+          is.
+        </Highlight>
+        <PG>
+          Bij het geselecteerde blok staat bovendien hoeveel de voorspelling voor die attractie er
+          gewoonlijk naast zit. Voor Taron is dat op deze zaterdag 15 minuten, voor de vlakkere
+          attracties van die dag 11. Gewoonlijk betekent: op de helft van de dagen zit ze er verder
+          naast.
+        </PG>
+      </SectionShell>
+
+      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="parkpagina"
+        index="06"
         kicker="De rondgang"
         title="Een parkpagina van boven naar beneden"
         icon={Layers}
@@ -745,11 +796,11 @@ export function ContentNL() {
         </div>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="nachtdienst"
-          index="06"
+          index="07"
           kicker="De onderbouw"
           title="Waar de cijfers vandaan komen"
           icon={Database}
@@ -810,10 +861,10 @@ export function ContentNL() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
+      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="gaten"
-        index="07"
+        index="08"
         kicker="De grenzen"
         title="Als we het niet weten"
         icon={HelpCircle}
@@ -858,10 +909,10 @@ export function ContentNL() {
         </Highlight>
       </SectionShell>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
+      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="bezoeken"
-        index="08"
+        index="09"
         kicker="In de praktijk"
         title="Vier bezoeken"
         icon={Users}
@@ -975,15 +1026,20 @@ export function ContentNL() {
                 Shows in het gelijknamige tabblad. De tijden staan daar voor de hele dag, en parades
                 maken de paden zo’n half uur leger.
               </>,
+              <>
+                Niemand hoeft de volgorde te raden: de dagplanner uit hoofdstuk 05 vult de dag met
+                één druk met de grote attracties van het park, sorteert hem op de uurcurves en
+                rekent de weg tussen twee attracties mee.
+              </>,
             ]}
           />
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="wegwijzer"
-        index="09"
+        index="10"
         kicker="Wegwijzer"
         title="Waar je wat vindt"
         icon={Search}
@@ -1021,6 +1077,17 @@ export function ContentNL() {
               ),
             },
             {
+              icon: CalendarClock,
+              title: 'Dagplanner',
+              body: (
+                <>
+                  Het tabblad aan de rechterrand van het venster opent hem op elke pagina. Het plan
+                  staat in de browser, zonder account. Hoofdstuk 05 laat zien wat hij van een
+                  parkdag maakt.
+                </>
+              ),
+            },
+            {
               icon: Activity,
               title: 'Blog',
               body: (
@@ -1054,10 +1121,10 @@ export function ContentNL() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
+      {/* ── 11 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
-        index="10"
+        index="11"
         kicker="Nagevraagd"
         title="Veelgestelde vragen"
         icon={HelpCircle}
