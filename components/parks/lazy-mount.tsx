@@ -50,8 +50,14 @@ function reservedHeight({ count, rowHeight, headerHeight = 0 }: LazyMountGrid, c
  * mounted (no unmount → no scroll jank, no lost state). On long pages this slashes the initial
  * DOM node count and the layout/paint/compositing cost — e.g. a big park's attraction grid
  * renders 100+ glass cards (each with backdrop-blur + sparkline), which Lighthouse flags as an
- * excessive DOM and which dominates mobile rendering time. SSR/SEO are unaffected: the grid is
- * already client-rendered, so the server payload never contained these nodes anyway.
+ * excessive DOM and which dominates mobile rendering time.
+ *
+ * It decides what the first HTML contains. That was not true while the grid was mount-gated —
+ * the server payload never held these nodes either way — and it is true since PAR-272, which
+ * renders the grid on both sides of hydration: what a reader without JavaScript sees of the
+ * areas below the first is this placeholder, and the rides in them arrive with the mount.
+ * The park's full ride list stays machine-readable through `containsPlace` in the page's
+ * structured data.
  *
  * The observer uses a generous rootMargin so a section mounts ~1.5 screens before it scrolls
  * into view — the swap happens off-screen, below the fold, so the user never sees a placeholder.

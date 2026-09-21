@@ -9,10 +9,11 @@
  * nobody has understood yet. `undefined` is an older payload.
  *
  * So the predicate is `!== false`, in that exact shape, and it lives here
- * because two surfaces of the same park page ask it. The card grid hid
- * off-season rides behind its "N außer Saison" toggle while the pre-mount
- * wait-time overview — the only attraction markup a crawler sees without JS —
- * listed them all, right under a counter that leaves them out.
+ * because several surfaces ask it. It was written when the park page had two:
+ * the card grid hid off-season rides behind its "N außer Saison" toggle while
+ * the pre-mount wait-time overview listed them all, right under a counter that
+ * leaves them out. The overview is gone (PAR-272) and the grid renders on both
+ * sides of hydration, so that particular pair cannot disagree any more.
  */
 export const isInSeason = (entity: { isCurrentlyInSeason?: boolean | null }): boolean =>
   entity.isCurrentlyInSeason !== false;

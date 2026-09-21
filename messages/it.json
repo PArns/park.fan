@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} operative",
     "attractionCount": "{count, plural, =1 {# attrazione} other {# attrazioni}}",
-    "overview": {
-      "title": "Tempi di attesa a colpo d’occhio",
-      "minutesUnit": "min",
-      "dataAsOf": "Dati aggiornati alle {time} – i valori live si aggiornano ogni pochi minuti dopo il caricamento della pagina."
-    },
     "restaurants": "Ristoranti",
     "viewPark": "Vedi parco",
     "planYourVisit": "Pianifica la tua visita",
@@ -743,6 +738,8 @@
       "estimate": {
         "range": "I guasti come questo duravano di solito ancora da {from} a {to}.",
         "rangeOpen": "I guasti come questo duravano di solito ancora più di {from}.",
+        "clockRange": "I guasti come questo erano di solito risolti tra {from} e {to}.",
+        "clockRangeOpen": "I guasti come questo di solito non erano risolti prima di {from}.",
         "barNow": "adesso",
         "recovery": "Circa il {percent} % è stato risolto entro un'ora.",
         "recoveryOnly": "Dei guasti che duravano già da così tanto, circa il {percent} % è tornato in funzione entro un'ora."
@@ -759,10 +756,19 @@
       "park": "Orari, meteo e calendario restano disponibili qui.",
       "ride": "Per questa attrazione manca quindi anche la previsione. Orari e meteo non sono interessati."
     },
+    "worksPeriod": {
+      "label": "Lavori",
+      "sinceUntil": "Questa attrazione è chiusa per lavori dal {from} al {to}.",
+      "sinceUntilUncertain": "Questa attrazione è chiusa per lavori dal {from}, presumibilmente fino al {to}.",
+      "since": "Questa attrazione è chiusa per lavori dal {from}. Non c’è ancora una data di riapertura.",
+      "until": "Questa attrazione è chiusa per lavori fino al {to}.",
+      "untilUncertain": "Questa attrazione è chiusa per lavori presumibilmente fino al {to}."
+    },
     "info": {
       "title": "Informazioni sul parco",
       "address": "Indirizzo",
       "phone": "Telefono",
+      "directions": "Come arrivare",
       "website": "Sito ufficiale",
       "tickets": "Biglietti",
       "opened": "Apertura",
@@ -1056,6 +1062,9 @@
       "blockerNoForecast": "Per questo giorno non c'è ancora una previsione.",
       "resultUnavailable": "Nessuno di questi due giorni può essere confrontato.",
       "beyondPlanner": "Il pianificatore non arriva ancora a questo giorno."
+    },
+    "overview": {
+      "minutesUnit": "min"
     }
   },
   "attractions": {
@@ -2052,6 +2061,9 @@
       "markDone": "Segna come fatta",
       "markUndone": "Alla fine no",
       "actual": "{minutes} min in realtà",
+      "deltaOver": "{minutes} min in più del previsto",
+      "deltaUnder": "{minutes} min in meno del previsto",
+      "deltaAsEstimated": "come previsto",
       "noCurve": "Per questa attrazione non c’è una curva oraria.",
       "noSource": "Questo parco non pubblica i tempi di attesa.",
       "laneOverflow": "{count, plural, =1 {Sotto c'è un altro blocco.} other {Sotto ci sono altri # blocchi.}}",

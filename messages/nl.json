@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} open",
     "attractionCount": "{count, plural, =1 {# attractie} other {# attracties}}",
-    "overview": {
-      "title": "Wachttijden in één oogopslag",
-      "minutesUnit": "min.",
-      "dataAsOf": "Gegevens per {time} – live waarden worden na het laden van de pagina elke paar minuten ververst."
-    },
     "restaurants": "Restaurants",
     "viewPark": "Bekijk Park",
     "planYourVisit": "Plan je bezoek",
@@ -743,6 +738,8 @@
       "estimate": {
         "range": "Storingen zoals deze duurden meestal nog {from} tot {to}.",
         "rangeOpen": "Storingen zoals deze duurden meestal nog meer dan {from}.",
+        "clockRange": "Storingen zoals deze waren meestal tussen {from} en {to} verholpen.",
+        "clockRangeOpen": "Storingen zoals deze waren meestal niet voor {from} verholpen.",
         "barNow": "nu",
         "recovery": "Ongeveer {percent}% was binnen een uur verholpen.",
         "recoveryOnly": "Van storingen die al zo lang duurden, draaide ongeveer {percent}% binnen een uur weer."
@@ -759,10 +756,19 @@
       "park": "Openingstijden, weer en de kalender vind je hier gewoon.",
       "ride": "Daarmee ontbreekt ook de voorspelling voor deze attractie. Openingstijden en weer vind je gewoon."
     },
+    "worksPeriod": {
+      "label": "Verbouwing",
+      "sinceUntil": "Deze attractie is sinds {from} gesloten voor verbouwing, tot en met {to}.",
+      "sinceUntilUncertain": "Deze attractie is sinds {from} gesloten voor verbouwing, naar verwachting tot en met {to}.",
+      "since": "Deze attractie is sinds {from} gesloten voor verbouwing. Er is nog geen einddatum.",
+      "until": "Deze attractie is gesloten voor verbouwing tot en met {to}.",
+      "untilUncertain": "Deze attractie is gesloten voor verbouwing, naar verwachting tot en met {to}."
+    },
     "info": {
       "title": "Parkinformatie",
       "address": "Adres",
       "phone": "Telefoon",
+      "directions": "Route",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Geopend",
@@ -1056,6 +1062,9 @@
       "blockerNoForecast": "Voor deze dag is er nog geen voorspelling.",
       "resultUnavailable": "Geen van deze twee dagen is te vergelijken.",
       "beyondPlanner": "De dagplanner reikt nog niet tot deze dag."
+    },
+    "overview": {
+      "minutesUnit": "min."
     }
   },
   "attractions": {
@@ -2052,6 +2061,9 @@
       "markDone": "Als gedaan markeren",
       "markUndone": "Toch niet gedaan",
       "actual": "werkelijk {minutes} min",
+      "deltaOver": "{minutes} min. meer dan geschat",
+      "deltaUnder": "{minutes} min. minder dan geschat",
+      "deltaAsEstimated": "zoals geschat",
       "noCurve": "Voor deze attractie is er geen uurcurve.",
       "noSource": "Dit park publiceert geen wachttijden.",
       "laneOverflow": "{count, plural, =1 {Hier ligt nog één blok onder.} other {Hier liggen nog # blokken onder.}}",

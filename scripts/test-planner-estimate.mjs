@@ -16,10 +16,13 @@
 
 import {
   ASSUMED_WAIT_MIN,
+  actualVsEstimate,
   estimateFor,
   occupiedMinutes,
   totalsFor,
 } from '../lib/planner/estimate.ts';
+import { bandGeometry } from '../lib/planner/block-band.ts';
+import { buildDayGrid } from '../lib/planner/day-grid.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -391,6 +394,97 @@ const ride = (startMinute) => ({
     'outside-hours'
   );
   test('und färbt keine andere Stunde', estimateFor(strayMidnight, ride(10 * 60)).wait, 45);
+}
+
+// ── Was die Bahn gekostet hat, gegen das, was vorhergesagt war ───────────────
+// Die Differenz läuft über `roundWaitDeltaTo5` und nie über `roundWaitTo5`:
+// letzteres drückt alles unter 2,5 auf 0, weil keine Schlange −15 Minuten lang
+// ist. Auf eine Differenz gezeigt löscht es die fallende Hälfte der Skala — und
+// das ist hier genau der Fall, den ein Besucher am liebsten sieht, nämlich die
+// Schlange, die kürzer war als angekündigt.
+{
+  const day = dayWith();
+  const ticked = (actualWait, startMinute = 600) => ({
+    ...ride(startMinute),
+    done: true,
+    actualWait,
+  });
+  const deltaOf = (entry) => actualVsEstimate(entry, estimateFor(day, entry));
+
+  // 10:00 ist mit 45 Min. vorhergesagt.
+  test('länger als vorhergesagt: die Differenz ist positiv', deltaOf(ticked(60)).minutes, 15);
+  test('und sie sagt, in welche Richtung', deltaOf(ticked(60)).direction, 'over');
+  test('kürzer als vorhergesagt: die Differenz ist negativ', deltaOf(ticked(30)).minutes, -15);
+  test('und die fallende Hälfte überlebt das Runden', deltaOf(ticked(42)).minutes, -5);
+  test('auch als Richtung', deltaOf(ticked(42)).direction, 'under');
+  test('genau getroffen ist keine Richtung', deltaOf(ticked(45)).direction, 'same');
+  test('und keine Minute', deltaOf(ticked(45)).minutes, 0);
+  // Zwei Minuten sind auf dem Fünf-Minuten-Raster keine Differenz. Sie werden
+  // als „wie geschätzt" gelesen und nicht als „+2 Min.", das kein Park je
+  // ausgeschildert hat.
+  test('unter dem Raster liegt gar keine Differenz', deltaOf(ticked(47)).direction, 'same');
+  test('ab drei Minuten schon', deltaOf(ticked(48)).minutes, 5);
+
+  test('ohne Haken gibt es nichts zu vergleichen', deltaOf(ride(600)), null);
+  test(
+    'und abgehakt ohne Zahl auch nicht',
+    deltaOf({ ...ride(600), done: true, actualWait: undefined }),
+    null
+  );
+  // Außerhalb der Öffnungszeiten und ohne Stundenpunkt gibt es keine Vorhersage,
+  // gegen die man messen könnte.
+  test('ohne Vorhersage für die Stunde nicht', deltaOf(ticked(30, 8 * 60)), null);
+  // Und die angenommenen fünf Minuten sind keine: eine Differenz gegen sie würde
+  // den eigenen Platzhalter der App als Prognosefehler ausgeben.
+  test(
+    'gegen die angenommenen fünf Minuten erst recht nicht',
+    (() => {
+      const entry = { id: 'f', attractionSlug: 'maus-au-chocolat', startMinute: 600 };
+      return actualVsEstimate(
+        { ...entry, done: true, actualWait: 25 },
+        estimateFor(day, { ...entry, done: true, actualWait: 25 })
+      );
+    })(),
+    null
+  );
+  test(
+    'ein eigener Block hat keine Vorhersage, die er verfehlen könnte',
+    (() => {
+      const entry = {
+        id: 'b',
+        custom: { label: 'Pause', icon: 'break', durationMinutes: 45 },
+        startMinute: 720,
+        done: true,
+        actualWait: 30,
+      };
+      return actualVsEstimate(entry, estimateFor(day, entry));
+    })(),
+    null
+  );
+}
+
+// ── Abgehakt heißt: kein Band mehr ───────────────────────────────────────────
+// Das Band ist die Streuung des Modells um eine Vorhersage. Ist die Bahn
+// gefahren, steht an ihrer Stelle eine Messung, und eine Messung hat keine
+// Streuung — der Block fällt auf seinen einen Wert zusammen. Gezeichnet wird das
+// an zwei Stellen: im Grid über `bandGeometry` (hier geprüft), in der flachen
+// Liste dadurch, dass `PlannerEntryRow` dem `PlannerBar` bei `done`
+// `uncertaintyMinutes={null}` übergibt.
+{
+  const day = dayWith();
+  const grid = buildDayGrid(day.context.openHour, day.context.closeHour);
+  const planned = ride(600);
+  test(
+    'eine offene Bahn mit Streuung bekommt ein Band',
+    bandGeometry(grid, planned, estimateFor(day, planned)) !== null,
+    true
+  );
+  const walked = { ...planned, done: true, actualWait: 30 };
+  test(
+    'dieselbe Bahn abgehakt keines mehr',
+    bandGeometry(grid, walked, estimateFor(day, walked)),
+    null
+  );
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

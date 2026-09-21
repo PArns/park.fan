@@ -1,4 +1,5 @@
 import type { AttractionOutage, OutageEstimate } from '@/lib/api/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * Reading the running-outage block, in one place, for the two surfaces that draw it.
@@ -76,6 +77,143 @@ export function outageRemainingWindow(
   // effectively the same value (both inside one five-minute bucket and on its edges, or both
   // under the one-step floor), so the extra step is never narrower than what was measured.
   return { from, to: Math.max(ceilOutageMinutes(p75), from + STEP) };
+}
+
+/** The recovery window on the wall clock. Instants, never durations. */
+export interface OutageRecoveryClock {
+  /** ISO 8601 instant, the lower quartile. */
+  from: string;
+  /** ISO 8601 instant, the upper quartile. `null` = the range has no top. */
+  to: string | null;
+  /**
+   * `to` falls on a later calendar day than `from`, in the PARK's zone.
+   *
+   * The one thing the sentence has to say out loud, and the reason this is
+   * computed here rather than in the component: „zwischen 19:30 und 11:00 Uhr"
+   * is not a window, it is two times a reader will map onto one evening.
+   */
+  toOnLaterDay: boolean;
+}
+
+/** How far apart two instants may be before a weekday stops naming one day. */
+const WEEKDAY_HORIZON_DAYS = 7;
+
+/**
+ * Narrowest clock window that still prints as a window, in milliseconds.
+ *
+ * The same rule {@link outageRemainingWindow} applies to the duration pair, at
+ * this surface's resolution: a range whose two ends print the same number is not
+ * a range, and „zwischen 14:35 und 14:35 Uhr" is the clock's version of
+ * „5 Min. bis 5 Min.". These instants are placed from quartiles that can sit
+ * inside one bucket — `{p25: 118, median: 118.5, p75: 119}` is a measured shape
+ * — so under a minute apart is reachable, and both ends then format to the same
+ * label.
+ *
+ * One minute, because the sentence prints whole minutes: two instants that far
+ * apart always fall in different minutes, and one step is the least that can be
+ * added. Widening only ever pushes the upper end later, so the printed window
+ * can be wider than the measured one and never narrower — it cannot claim the
+ * ride is back sooner than the quartile said.
+ */
+const MIN_CLOCK_SPREAD_MS = 60_000;
+
+/**
+ * A formatter for the calendar day an instant falls on in a given zone, as
+ * `YYYY-MM-DD`.
+ *
+ * `en-CA` because it is the one widely-supported locale whose short date IS
+ * ISO order, so the result compares as a string. The zone is the whole point:
+ * two instants 40 minutes apart sit on different days in Sydney and on the same
+ * day in Berlin, and it is the park's evening a visitor is standing in.
+ *
+ * Throws on an unusable zone rather than falling back to the runtime's own — a
+ * fallback would make this answer differ between the server render and the
+ * hydration render, which is the one failure mode a day comparison must not
+ * have. {@link outageRecoveryClock} catches it and withholds the clock form.
+ */
+function zonedDayFormat(timeZone: string): Intl.DateTimeFormat {
+  return getDateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+}
+
+/**
+ * When the outage is expected to be over, on the park's own clock.
+ *
+ * The duration sentence beside this one is measured in OPERATING minutes, and
+ * that is why this field exists rather than being derived: „noch 2:00 Std." in
+ * a park that shuts in twenty minutes means tomorrow morning, and the opening
+ * calendar that turns one into the other lives in the API. Nothing here
+ * recomputes it — the instants arrive placed.
+ *
+ * Four refusals, and each of them leaves the duration sentence standing rather
+ * than inventing a time:
+ *
+ * - **No `recoveryWindow`.** The park publishes no opening hours, or its
+ *   calendar does not reach far enough. Both are a park the clock cannot be
+ *   built for, and a wall-clock fallback would answer a different question.
+ * - **No usable `timezone`.** A time without a zone is a time in whichever zone
+ *   the renderer happened to sit in, and this renders on a server in one zone
+ *   and in a browser in another.
+ * - **An unparsable `from`.** Half a window is not a window.
+ * - **A `to` before its `from`.** Quartiles are ordered by construction, so an
+ *   inversion means the payload is wrong; the open range is at least true,
+ *   where „zwischen 16:10 und 14:35 Uhr" reads as a typo. Same rule, same
+ *   reasoning as the inverted `p75` in {@link outageRemainingWindow}.
+ *
+ * And two corrections to the pair that survives:
+ *
+ * - Past {@link WEEKDAY_HORIZON_DAYS} the upper end is dropped to an open
+ *   range. The sentence names a weekday to say which day it means, and a
+ *   weekday stops naming one day after a week. Reachable only in theory — the
+ *   largest measured `p75` is 460 operating minutes — but the alternative is a
+ *   „Dienstag" that could be either of two.
+ * - A pair closer together than {@link MIN_CLOCK_SPREAD_MS} is widened, so the
+ *   two ends never print the same clock label.
+ */
+export function outageRecoveryClock(
+  estimate: OutageEstimate | undefined,
+  timezone: string | undefined
+): OutageRecoveryClock | null {
+  const window = estimate?.recoveryWindow;
+  if (!window?.from || !timezone) return null;
+
+  const from = new Date(window.from);
+  if (Number.isNaN(from.getTime())) return null;
+
+  // One `Intl.DateTimeFormat` for both ends, built before either is read: an
+  // unusable zone throws on construction, and that has to cost the clock form
+  // rather than half of it.
+  let day: Intl.DateTimeFormat;
+  try {
+    day = zonedDayFormat(timezone);
+  } catch {
+    return null;
+  }
+
+  const open: OutageRecoveryClock = { from: window.from, to: null, toOnLaterDay: false };
+  if (!window.to) return open;
+
+  const to = new Date(window.to);
+  if (Number.isNaN(to.getTime()) || to.getTime() < from.getTime()) return open;
+  // Judged on the RAW upper end, before the widening below: the horizon asks
+  // how far out the quartile was, and a minute added for legibility may not
+  // decide whether the window has a top at all.
+  if (to.getTime() - from.getTime() >= WEEKDAY_HORIZON_DAYS * 86_400_000) return open;
+
+  // The day marker reads the widened end, not the measured one, so the label
+  // and the weekday beside it can never disagree: widening 23:59:40 by a minute
+  // prints „00:00", and that „00:00" is tomorrow.
+  const spread = new Date(Math.max(to.getTime(), from.getTime() + MIN_CLOCK_SPREAD_MS));
+
+  return {
+    from: window.from,
+    to: spread.toISOString(),
+    toOnLaterDay: day.format(spread) !== day.format(from),
+  };
 }
 
 /**

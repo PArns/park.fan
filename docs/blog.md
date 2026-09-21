@@ -480,7 +480,8 @@ Two different jobs, and the second is not a longer version of the first. Full fo
 ### 5.3 Meta titles, descriptions and template copy
 
 This is the highest-stakes surface on the site and the one nobody re-reads, because it is
-generated: 212 parks, 42,756 attraction URLs, 27,984 calendar URLs, six locales. **One templated
+generated: 210 parks, 42,756 attraction URLs, 5,820 calendar URLs (27,984 before the span cuts of
+2026-08-28 and 2026-09-01), six locales. **One templated
 sentence is not one text — it is tens of thousands of near-identical pages**, which is precisely
 what Google's spam policy calls scaled content abuse, whoever or whatever wrote it.
 

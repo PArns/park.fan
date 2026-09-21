@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} operating",
     "attractionCount": "{count, plural, =1 {# attraction} other {# attractions}}",
-    "overview": {
-      "title": "Wait times at a glance",
-      "minutesUnit": "min",
-      "dataAsOf": "Data as of {time} – live values refresh every few minutes once the page has loaded."
-    },
     "restaurants": "Restaurants",
     "viewPark": "View Park",
     "planYourVisit": "Plan Your Visit",
@@ -743,6 +738,8 @@
       "estimate": {
         "range": "Outages like this one usually had {from} to {to} left.",
         "rangeOpen": "Outages like this one usually had more than {from} left.",
+        "clockRange": "Outages like this one were usually over between {from} and {to}.",
+        "clockRangeOpen": "Outages like this one were usually not over before {from}.",
         "barNow": "now",
         "recovery": "About {percent}% were back within an hour.",
         "recoveryOnly": "Of outages that had already lasted this long, about {percent}% were reported running again within an hour."
@@ -759,10 +756,19 @@
       "park": "Opening hours, weather and the calendar are all still here.",
       "ride": "So there is no forecast for this ride either. Opening hours and weather are unaffected."
     },
+    "worksPeriod": {
+      "label": "Refurbishment",
+      "sinceUntil": "This ride has been closed for works since {from}, until {to}.",
+      "sinceUntilUncertain": "This ride has been closed for works since {from}, probably until {to}.",
+      "since": "This ride has been closed for works since {from}. There is no end date yet.",
+      "until": "This ride is closed for works until {to}.",
+      "untilUncertain": "This ride is closed for works, probably until {to}."
+    },
     "info": {
       "title": "Park information",
       "address": "Address",
       "phone": "Phone",
+      "directions": "Directions",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Opened",
@@ -1056,6 +1062,9 @@
       "blockerNoForecast": "There is no forecast for this day yet.",
       "resultUnavailable": "Neither of these two days can be compared.",
       "beyondPlanner": "The trip planner does not reach this day yet."
+    },
+    "overview": {
+      "minutesUnit": "min"
     }
   },
   "attractions": {
@@ -2052,6 +2061,9 @@
       "markDone": "Mark as ridden",
       "markUndone": "Not ridden after all",
       "actual": "actually {minutes} min",
+      "deltaOver": "{minutes} min more than estimated",
+      "deltaUnder": "{minutes} min less than estimated",
+      "deltaAsEstimated": "as estimated",
       "noCurve": "There is no hourly curve for this ride.",
       "noSource": "This park does not publish wait times.",
       "laneOverflow": "{count, plural, =1 {One more block sits underneath this one.} other {# more blocks sit underneath this one.}}",

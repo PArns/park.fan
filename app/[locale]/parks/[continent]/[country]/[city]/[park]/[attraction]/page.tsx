@@ -16,6 +16,8 @@ import { Clock, MapPin, Sparkles } from 'lucide-react';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
+import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
+import { WorksPeriodNote } from '@/components/parks/works-period-note';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
@@ -493,6 +495,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           isCurrentlyInSeason={attraction.isCurrentlyInSeason}
                         />
                       )}
+                      {/* Beside the season badge and not instead of it — the two say different
+                          things about the same ride. The dates are in the note below. */}
+                      <WorksPeriodBadge worksPeriod={attraction.worksPeriod} todayIso={todayIso} />
                     </div>
                   </div>
                   {attraction.id && (
@@ -604,6 +609,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             <NoLiveWaitTimesNotice
               reason={noLiveWaitTimesReason(park)}
               scope="ride"
+              className="mt-4 mb-8"
+            />
+
+            {/* Why the panel above is empty, for the rides where the answer is a rebuild rather
+              than a park that publishes nothing. Same place, same surface, and the same reason
+              for it: the live panel has already raised the question. Renders nothing for every
+              ride outside a curated window. */}
+            <WorksPeriodNote
+              worksPeriod={attraction.worksPeriod}
+              todayIso={todayIso}
               className="mt-4 mb-8"
             />
 

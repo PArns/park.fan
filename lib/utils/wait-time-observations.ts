@@ -43,9 +43,11 @@ function getStandbyTimestamp(attraction: ParkAttraction): string | undefined {
 /**
  * `Observation` nodes for a park's current standby waits.
  *
- * The selection deliberately mirrors {@link AttractionWaitOverview} — the no-JS
- * view a crawler's first wave reads — rule for rule, because structured data
- * that contradicts the visible page is worse than no structured data at all:
+ * The selection deliberately mirrors the rules the attraction cards apply —
+ * not the subset of them the first HTML happens to carry — because structured
+ * data that contradicts the visible page is worse than no structured data at
+ * all. A ride whose card is still behind a `LazyMount` placeholder is on the
+ * page all the same, and `containsPlace` declares every one of them:
  *
  * 1. **Nothing at all for a park whose waits we cannot read.** Hansa-Park
  *    publishes wait times only inside its own app, and a park with no source is
@@ -53,12 +55,12 @@ function getStandbyTimestamp(attraction: ParkAttraction): string | undefined {
  *    the generic path it would emit a full set of `value: 0` readings — a
  *    measurement we never made, asserted in machine-readable form. See
  *    `hasReadableWaitTimes`.
- * 2. **Out-of-season rides are skipped**, matching the overview's `isInSeason`
+ * 2. **Out-of-season rides are skipped**, matching the grid's `isInSeason`
  *    filter. `containsPlace` still lists them, and should: it says what the park
  *    contains, which stays true in every month. An observation says what was
  *    measured today, and nobody measures the queue for an ice rink in August.
- * 3. **Only `OPERATING` rides**, via the same `getAttractionDisplayStatus` the
- *    overview uses. A closed ride has no queue to stand in, so `value: 0` would
+ * 3. **Only `OPERATING` rides**, via the same `getAttractionDisplayStatus` a
+ *    card reads. A closed ride has no queue to stand in, so `value: 0` would
  *    not be a short wait — it would be a wait that does not exist. The
  *    competitor emits exactly that (`value: 0` alongside `Status: closed`), and
  *    it is how a quiet park comes to look like a park with no queues.

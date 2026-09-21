@@ -101,19 +101,30 @@ Neue FAQ-Frage mit datengenerierter Antwort → landet in `FAQStructuredData` �
 
 ## Phase 3 — Statistiken & Landingpages
 
-### 3A · Park-Statistik-Tab
+> **Stand 2026-09-21:** 3B ist gebaut, 3A halb — die Komponenten stehen, ihre Zahlen stehen aber in
+> keinem crawlbaren HTML. Das Konzept für den verbleibenden Teil samt Zensus über alle 201 Parks
+> und Aufwandsschätzung: [dedicated-landing-pages.md](dedicated-landing-pages.md).
 
-Neuer Tab "Statistiken" / "Statistics" auf der Park-Seite. Zeigt historische Wartezeit-Durchschnitte pro Attraktion und Crowd-Level nach Monat/Wochentag.
+### 3A · Park-Statistiken
+
+Historische Wartezeit-Durchschnitte pro Attraktion und Crowd-Level nach Monat/Wochentag.
 
 Konkurriert gegen `queue-times.com/en-US/parks/{id}/stats`.
 
-**Voraussetzung:** API-Endpoints für historische Daten prüfen.
+**Voraussetzung geprüft (2026-09-21):** Beide Endpoints existieren und sind verdrahtet —
+`/v1/parks/<geo>/stats` und `/v1/parks/<geo>/stats/hourly`, mit Server-Seed-Helfern
+`getParkHistoricalStatsSeed` und `getParkHourlyProfileSeed` (`lib/api/stats.ts`). Gebaut sind auch
+die Karten: `ParkStatsSection` und `ParkHourlyProfileCard`. Was fehlt, ist eine Seite, die sie
+server-seitig rendert. `ParkStatsSection` steht auf der Parkseite, läuft dort aber bewusst
+client-seitig, weil der kalte Stats-Compute deren Prerender gekippt hätte; `ParkHourlyProfileCard`
+rendert heute nur das Blog-Widget und die Guide-Seite, keine Park-Route.
 
-### 3B · Landingpage-Texte für Top-Länder
+### 3B · Landingpage-Texte für Top-Länder ✅
 
 **Datei:** `app/[locale]/parks/[continent]/[country]/page.tsx`
 
-Redaktionellen Einführungstext für Top-Länder (DE, NL, FR, US, JP) ergänzen. Datenbasiert (Parkanzahl, bekannteste Parks). Bedient "beste Freizeitparks [Land]"-Suchen.
+Gebaut als `CountrySummarySection`: datenbasierter Einführungstext (Parkanzahl, Städte, ruhigste
+und vollste Monate, Top-Parks), server-gerendert auf jeder Länderseite.
 
 ---
 

@@ -526,6 +526,8 @@
       "estimate": {
         "range": "Störungen wie diese dauerten meist noch {from} bis {to}",
         "rangeOpen": "Störungen wie diese dauerten meist noch über {from}",
+        "clockRange": "Störungen wie diese waren meist zwischen {from} und {to} Uhr behoben",
+        "clockRangeOpen": "Störungen wie diese waren meist nicht vor {from} Uhr behoben",
         "barNow": "jetzt",
         "recovery": "Rund {percent} % waren binnen einer Stunde behoben.",
         "recoveryOnly": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
@@ -542,10 +544,19 @@
       "park": "Öffnungszeiten, Wetter und Kalender findest du hier wie gewohnt.",
       "ride": "Damit fehlt auch die Prognose für dieses Fahrgeschäft. Öffnungszeiten und Wetter findest du wie gewohnt."
     },
+    "worksPeriod": {
+      "label": "Umbaupause",
+      "sinceUntil": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen, bis zum {to}.",
+      "sinceUntilUncertain": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen, voraussichtlich bis zum {to}.",
+      "since": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen. Ein Enddatum steht noch nicht fest.",
+      "until": "Diese Bahn ist wegen Umbau geschlossen, bis zum {to}.",
+      "untilUncertain": "Diese Bahn ist wegen Umbau geschlossen, voraussichtlich bis zum {to}."
+    },
     "info": {
       "title": "Infos zum Park",
       "address": "Adresse",
       "phone": "Telefon",
+      "directions": "Anfahrt",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Eröffnet",
@@ -815,11 +826,6 @@
     },
     "operatingCount": "{count}/{total} in Betrieb",
     "attractionCount": "{count, plural, =1 {# Attraktion} other {# Attraktionen}}",
-    "overview": {
-      "title": "Wartezeiten im Überblick",
-      "minutesUnit": "Min.",
-      "dataAsOf": "Datenstand: {time} Uhr – Live-Werte aktualisieren sich nach dem Laden der Seite alle fünf Minuten."
-    },
     "restaurants": "Restaurants",
     "viewPark": "Park ansehen",
     "planYourVisit": "Besuch planen",
@@ -1056,6 +1062,9 @@
       "blockerNoForecast": "Für diesen Tag gibt es noch keine Prognose.",
       "resultUnavailable": "Keiner der beiden Tage lässt sich vergleichen.",
       "beyondPlanner": "Der Tagesplaner reicht noch nicht bis zu diesem Tag."
+    },
+    "overview": {
+      "minutesUnit": "Min."
     }
   },
   "attractions": {
@@ -2052,6 +2061,9 @@
       "markDone": "Als gefahren markieren",
       "markUndone": "Doch noch nicht gefahren",
       "actual": "tatsächlich {minutes} Min.",
+      "deltaOver": "{minutes} Min. mehr als geschätzt",
+      "deltaUnder": "{minutes} Min. weniger als geschätzt",
+      "deltaAsEstimated": "wie geschätzt",
       "noCurve": "Für diese Bahn liegt keine Stundenkurve vor.",
       "noSource": "Für diesen Park gibt es keine Wartezeiten.",
       "laneOverflow": "{count, plural, =1 {Ein weiterer Block liegt hier darunter.} other {# weitere Blöcke liegen hier darunter.}}",
