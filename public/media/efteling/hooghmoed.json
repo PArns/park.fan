@@ -2,11 +2,7 @@
   "park": "efteling",
   "ride": "hooghmoed",
   "area": "Ruigrijk",
-  "tags": [
-    "day",
-    "photo",
-    "ride"
-  ],
+  "tags": ["day", "photo", "ride"],
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",
