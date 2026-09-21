@@ -525,6 +525,13 @@
       "unknown": "Pas de prévision",
       "closed": "Fermé"
     },
+    "crowdScale": {
+      "title": "Niveaux d’affluence",
+      "note": "100 % correspond aux temps d’attente des attractions principales lors d’une journée typique dans ce parc.",
+      "upTo": "jusqu’à {max} %",
+      "between": "{min}–{max} %",
+      "above": "plus de {min} %"
+    },
     "avgWaitTime": "Attente Moy.",
     "openAttractions": "Attractions ouvertes",
     "closedAttractions": "Attractions fermées",

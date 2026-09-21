@@ -683,6 +683,13 @@
       "unknown": "Keine Prognose",
       "closed": "Geschlossen"
     },
+    "crowdScale": {
+      "title": "Auslastungsstufen",
+      "note": "100 % sind die Wartezeiten an einem typischen Tag in diesem Park, gemessen an den wichtigsten Attraktionen.",
+      "upTo": "bis {max} %",
+      "between": "{min}–{max} %",
+      "above": "über {min} %"
+    },
     "avgWaitTime": "Ø Wartezeit",
     "openAttractions": "Offene Attraktionen",
     "closedAttractions": "Geschlossene Attraktionen",
