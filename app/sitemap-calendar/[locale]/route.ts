@@ -36,9 +36,9 @@ export async function GET(
   // advertise a month that has just fallen outside. A well-formed month past the edge 308s to the
   // hub rather than 404ing, so what a stale copy buys is not a dead URL but a self-inflicted one:
   // a redirect we put in a sitemap ourselves, and hand a crawler as if it were a page. Cloudflare
-  // holds it now (measured 2026-09-21), so the 81,963 B body is an edge cost rather than an
-  // origin one — but the crawl it spends is ours either way. That is the one error here that
-  // costs something.
+  // has held it since 2026-09-03 and still did on 2026-09-21, so the 81,963 B body is an edge
+  // cost rather than an origin one — but the crawl it spends is ours either way. That is the one
+  // error here that costs something.
   //
   // The back end looks like it would not need the slack, because `parkCalendarMonthsBack` grows
   // as the archive fills and a growing window can only make a cached file too SHORT. That holds

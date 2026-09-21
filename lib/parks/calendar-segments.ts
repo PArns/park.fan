@@ -107,10 +107,10 @@ export function parkCalendarPath(
  * **The cut has a running cost, not only a one-off one.** Measured against production on
  * 2026-09-21: the five months it orphaned (2026-01…2026-05) still answer `308` with an
  * **81,963 B uncompressed** body and no `content-encoding` — 1.4× the ~58 kB brotli page they
- * refuse, though Cloudflare now holds the redirect, so that body reaches the origin only on a
- * miss. The crawl it spends is ours either way, and that part is not a transition: every month
- * boundary drops one more month out of the three, which is 210 parks × 6 locales = **1,260
- * fresh redirects per rollover**, for as long as the span stays at three.
+ * refuse, though Cloudflare has held the redirect since 2026-09-03, so that body reaches the
+ * origin only on a miss. The crawl is ours either way, and that part is not a transition: every
+ * month boundary drops one more month out of the three, which is 210 parks × 6 locales =
+ * **1,260 fresh redirects per rollover**, for as long as the span stays at three.
  */
 export const PARK_CALENDAR_MONTH_SPAN = { back: 3, forward: 12 } as const;
 

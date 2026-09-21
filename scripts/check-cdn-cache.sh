@@ -82,8 +82,10 @@ case "${1:-headers}" in
     ;;
 
   # ---- The 82 kB redirect. Note: no content-encoding even though we ask for br. --------------
-  #      2026/1 and 2025/12 fell out when the back span went 12 → 3; 2030/1 is past every park's
-  #      schedule. All three are well-formed months, so they 308 to the hub rather than 404.
+  #      Three different reasons to be out of the window, and only the first is the span: 2026/1
+  #      fell out when `back` went 12 → 3, 2025/12 is older than CALENDAR_DATA_START and has never
+  #      been served, 2030/1 is past every park's published schedule. All three are well-formed
+  #      months, so they 308 to the hub rather than 404.
   redirect)
     for m in 2026/1 2025/12 2030/1; do
       h=$(hdr "$BASE$CAL/$m")

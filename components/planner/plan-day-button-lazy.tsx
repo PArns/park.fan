@@ -12,8 +12,11 @@ const PLANNER_NAMESPACES = ['planner'] as const;
  * The lazy boundary around the calendar's "plan this day" button.
  *
  * Without it the `planner` namespace lands in the payload of the park page and
- * all 27,984 calendar URLs — two of the three highest-invocation routes in the
- * app — for one label, in six locales, on every request including the crawler's.
+ * of every calendar URL — two of the three highest-invocation routes in the app —
+ * for one label, in six locales, on every request including the crawler's. The
+ * calendar surface was 27,984 URLs when this was written and is 5,820 since the
+ * span cuts of 2026-08-28 and 2026-09-01; the boundary earns its keep either way,
+ * because what it saves is per request, not per URL.
  *
  * A lazy boundary usually costs a flash, and here it costs none: this button
  * only ever renders inside the day-detail DIALOG, so the chunk is fetched at the
