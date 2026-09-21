@@ -1,0 +1,33 @@
+{
+  "title": "Colossos, Feuerfigur",
+  "park": "heide-park",
+  "ride": "colossos-kampf-der-giganten",
+  "area": "Land der Vergessenen",
+  "tags": ["day", "sunny", "theming", "detail", "outdoor", "photo"],
+  "alt": {
+    "de": "Eine hölzerne Riesenfigur mit rot leuchtenden Augen speit eine Flamme in den blauen Himmel.",
+    "en": "A wooden giant with glowing red eyes spits a jet of flame into a blue sky.",
+    "es": "Una figura gigante de madera con los ojos rojos encendidos escupe una llamarada hacia el cielo azul.",
+    "fr": "Une figure géante en bois aux yeux rouges lumineux crache une flamme dans un ciel bleu.",
+    "it": "Una figura gigante di legno con gli occhi rossi accesi sputa una fiammata nel cielo azzurro.",
+    "nl": "Een houten reuzenfiguur met rood oplichtende ogen spuwt een vlam in een blauwe lucht."
+  },
+  "caption": {
+    "de": "Die Feuerfigur am Colossos, im Land der Vergessenen.",
+    "en": "The fire-breathing figure next to Colossos.",
+    "es": "La figura que escupe fuego junto a Colossos.",
+    "fr": "La figure cracheuse de feu installée près de Colossos.",
+    "it": "La figura sputafuoco accanto a Colossos.",
+    "nl": "De vuurspuwende figuur bij Colossos."
+  },
+  "credit": {
+    "author": "Anakin",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-burning-tree-with-glowing-eyes-T-zVMbf2e2A"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.56
+  }
+}
