@@ -26,6 +26,7 @@ import Script from 'next/script';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
+import { PushTimezoneSync } from '@/components/push/push-timezone-sync';
 import { WebMcpTools } from '@/components/agents/webmcp-tools';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
 import {
@@ -283,6 +284,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     costs nothing on pages that have no cards. */}
                 <CardPointerFx />
                 <WebVitalsReporter />
+                {/* Keeps the stored push zone pointed at where the phone is, so the quiet
+                    window from PAR-215 follows a traveller instead of staying where they
+                    armed the alert. Does nothing at all on a browser with none armed. */}
+                <PushTimezoneSync />
                 {/* Offers this tab's search and live park data to a browser-side agent
                     (WebMCP). Registers nothing where the API does not exist, which is nearly
                     everywhere, and is mounted here rather than in the root layout so /admin —

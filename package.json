@@ -67,6 +67,7 @@
     "test:push-follow-delete": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-push-follow-delete.mjs",
     "test:push-follow-read": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-push-follow-read.mjs",
     "test:push-arming": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-push-arming.mjs",
+    "test:push-timezone": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-push-timezone.mjs",
     "test:trip-sync": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-trip-sync.mjs",
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
     "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",

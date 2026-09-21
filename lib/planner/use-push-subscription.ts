@@ -12,6 +12,7 @@ import {
 import { forgetArmedPush, pushIsArmedFor, rememberArmedPush } from './push-arming';
 import { plannerPushTopics, resolvePushTopics } from './push-topics';
 import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
+import { currentPushTimezone, rememberSentPushTimezone } from '../push/push-timezone';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
 
 /**
@@ -196,6 +197,7 @@ export function usePushSubscription() {
         }));
 
       const json = subscription.toJSON();
+      const timezone = currentPushTimezone();
       const response = await fetch('/api/push/subscriptions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -205,7 +207,7 @@ export function usePushSubscription() {
           auth: json.keys?.auth,
           tripId,
           locale: document.documentElement.lang || 'en',
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          ...(timezone ? { timezone } : {}),
           topics: resolvePushTopics(availability.topics, selectedTopics),
         }),
       });
@@ -233,6 +235,10 @@ export function usePushSubscription() {
       // reads instead of guessing from two local signals. Deliberately not
       // cleared on the paths above — see `forgetArmedPush`.
       rememberArmedPush(subscription.endpoint, tripId);
+      // Same reasoning as the record above, one field over: the zone the API
+      // just took is what `refreshPushTimezone` compares against on the next
+      // page load, so a visitor who never travels never sends a second POST.
+      if (timezone) rememberSentPushTimezone(subscription.endpoint, timezone);
       setState('on');
     } catch {
       // Anywhere between the create and the last line: the plan goes with it.
@@ -265,7 +271,8 @@ export function usePushSubscription() {
         const tripId = getTripId();
         if (!subscription || !tripId) return;
         const json = subscription.toJSON();
-        await fetch('/api/push/subscriptions', {
+        const timezone = currentPushTimezone();
+        const response = await fetch('/api/push/subscriptions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -274,10 +281,14 @@ export function usePushSubscription() {
             auth: json.keys?.auth,
             tripId,
             locale: document.documentElement.lang || 'en',
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            ...(timezone ? { timezone } : {}),
             topics: resolvePushTopics(availability.topics, topics),
           }),
         });
+        // Only on the 2xx — this call's own failure is swallowed below, and a
+        // zone recorded over a refused POST would stop the next page load from
+        // sending the one the API never got.
+        if (response.ok && timezone) rememberSentPushTimezone(subscription.endpoint, timezone);
       } catch {
         // The choice is stored either way; the next `enable` or plan sync
         // carries it up. Nothing here is worth a message.
