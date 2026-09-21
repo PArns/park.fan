@@ -63,6 +63,14 @@ export const CACHE_TTL = {
   weather: 300, // /v1/parks/:slug/weather - API: 3600s
   predictions: 86400, // /v1/parks/:slug/predictions/yearly - API: 86400s
   holidays: 86400, // Holiday data - API: 86400s
+  // /v1/parks/:geo/stats and /stats/hourly — the historical aggregates. The backend recomputes
+  // them once a day, so a day is the data's own cadence and not a floor propped under a page.
+  //
+  // One window, four readers, and that is the point: the wait-time record page (ISR, same day),
+  // the crowd calendar's link to it, `app/sitemap.ts` deciding which parks get a URL at all, and
+  // whichever of them asks first. All four go through the Data Cache on the same request URL, so
+  // the whole class costs ONE upstream call per park per day however many readers there are.
+  stats: 86400,
 } as const;
 
 export type CacheTTLKey = keyof typeof CACHE_TTL;

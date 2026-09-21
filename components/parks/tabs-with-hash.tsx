@@ -40,6 +40,9 @@ interface TabsWithHashProps {
   restaurantsAvailable: boolean | undefined;
   /** The park has weather data — drives both the tile and the chapter behind it. */
   weatherAvailable: boolean | undefined;
+  /** The park has a wait-time record page. Tile only: there is no chapter behind this one, it is
+   *  a URL of its own — see `ParkTileSource.statsAvailable`. */
+  statsAvailable?: boolean;
   park: ParkWithAttractions;
   continent: string;
   country: string;
@@ -63,6 +66,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   showsAvailable,
   restaurantsAvailable,
   weatherAvailable,
+  statsAvailable,
   park,
   continent,
   country,
@@ -162,6 +166,7 @@ export const TabsWithHash = memo(function TabsWithHash({
           showsAvailable={showsAvailable}
           restaurantsAvailable={restaurantsAvailable}
           weatherAvailable={weatherAvailable}
+          statsAvailable={statsAvailable}
         />
       }
     />

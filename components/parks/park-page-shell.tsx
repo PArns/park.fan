@@ -6,6 +6,7 @@ import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
+import { parkStatsPath } from '@/lib/parks/stats-segments';
 import { buildContributeHref } from '@/lib/contribute/prefill';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { stripNewPrefix } from '@/lib/utils';
@@ -57,6 +58,14 @@ interface ParkPageShellProps {
    * today's wait times and the statistics are a footnote, so they stay where they are.
    */
   statsAfterChildren?: boolean;
+  /**
+   * Leave the historical-statistics chapter out entirely.
+   *
+   * One page sets it: the wait-time record, whose whole subject is that chapter. It renders the
+   * same `ParkStatsSection` itself, seeded from the server and split across its own headings, so
+   * the shell's client-fetched copy would be the same three tables a second time.
+   */
+  hideStats?: boolean;
   /**
    * The park's article list, rendered between the neighbours and the statistics.
    *
@@ -125,6 +134,7 @@ export async function ParkPageShell({
   pagePath,
   children,
   statsAfterChildren = false,
+  hideStats = false,
   blogSection,
   faqSection,
 }: ParkPageShellProps) {
@@ -135,7 +145,7 @@ export async function ParkPageShell({
 
   /* Built once and placed in one of two slots — a second copy would be a second set of props to
      keep in step, and this one already carries six. */
-  const stats = (
+  const stats = hideStats ? null : (
     <ParkStatsSection
       continent={continent}
       country={country}
@@ -143,6 +153,11 @@ export async function ParkPageShell({
       parkSlug={parkSlug}
       locale={locale}
       hasLiveWaitTimes={hasReadableWaitTimes(park)}
+      // The chapter's own header links on to the park's wait-time record — which is where these
+      // three tables come from and where the typical day and the method behind them live. Handed
+      // down unconditionally: the section renders nothing unless the aggregate is `displayable`,
+      // which is the same flag that route is gated on, so the link cannot outlive the page.
+      statsPageHref={parkStatsPath(locale, continent, country, city, parkSlug)}
     />
   );
 

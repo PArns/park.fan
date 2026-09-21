@@ -19,6 +19,7 @@ export function ParkStatsHeader({
   subtitle,
   hidden = false,
   className,
+  action,
 }: {
   /** The data window line. Omitted while the stats query is still out. */
   subtitle?: string;
@@ -27,6 +28,14 @@ export function ParkStatsHeader({
   /** Passed to `ChapterHeading` — the section squares off the bottom so the panel underneath can
    *  be glued to it. Skeleton and settled section must pass the same thing. */
   className?: string;
+  /**
+   * A control at the far end of the title row — the link to the park's wait-time record.
+   *
+   * Only the settled section passes one. The skeleton deliberately does not: whether that page
+   * exists is the same question as whether these cards render at all, and a link drawn before the
+   * answer arrives would be a link to a 404 on 82 of 201 parks.
+   */
+  action?: React.ReactNode;
 }) {
   const t = useTranslations('parks.stats');
   if (hidden) return null;
@@ -38,6 +47,7 @@ export function ParkStatsHeader({
       id="stats-heading"
       frosted
       hint={subtitle ?? <Skeleton as="span" className="block h-4 w-80 max-w-full" />}
+      action={action}
       className={className}
     />
   );

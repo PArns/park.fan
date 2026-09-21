@@ -746,12 +746,17 @@ export function ParkSubPageStructuredData({
 }
 
 /**
- * `Dataset` for a park's crowd calendar — the hub's current month, or one month page.
+ * `Dataset` for a table of measurements about one park — the crowd calendar's month, or the
+ * wait-time record's two-year window.
  *
- * The calendar page is not prose about a park; it is a table of one row per day, and `Dataset` is
- * what schema.org has for that. wartezeiten.app marks its own calendar pages the same way, which
- * is what prompted this, but the shape here is deliberately narrower than theirs in three places
- * because a `Dataset` makes claims a page has to be able to honour.
+ * Neither page is prose about a park; each is a table of one row per day or per hour, and
+ * `Dataset` is what schema.org has for that. wartezeiten.app marks its own calendar pages the
+ * same way, which is what prompted this, but the shape here is deliberately narrower than theirs
+ * in three places because a `Dataset` makes claims a page has to be able to honour.
+ *
+ * Everything that differs between the two pages arrives as a prop — the name, the description,
+ * the covered interval and the list of values measured — so there is one node shape and one place
+ * where its rules are written down.
  *
  * **`variableMeasured` lists what the grid actually draws** and nothing else. It is passed in by
  * the caller, already translated, rather than assembled from a fixed English list — the node
@@ -774,7 +779,7 @@ export function ParkSubPageStructuredData({
  * `spatialCoverage` also carries the park's name, because it is the one reference here a
  * consumer renders rather than follows.
  */
-export function ParkCalendarDatasetStructuredData({
+export function ParkDatasetStructuredData({
   url,
   parkUrl,
   parkName,
@@ -789,12 +794,12 @@ export function ParkCalendarDatasetStructuredData({
   parkUrl: string;
   /** Names `spatialCoverage`, the one reference here a consumer renders rather than follows. */
   parkName: string;
-  /** The dataset's own name — the park and the month, not the park alone. */
+  /** The dataset's own name — the park AND what is tabulated, not the park alone. */
   name: string;
   description: string;
-  /** ISO-8601 interval for the month this page shows, e.g. `2026-11-01/2026-11-30`. */
+  /** ISO-8601 interval this page's figures were measured over, e.g. `2026-11-01/2026-11-30`. */
   temporalCoverage: string;
-  /** Localized names of the per-day values the grid renders. */
+  /** Localized names of the values the table renders. */
   variableMeasured: string[];
   locale?: string;
 }) {

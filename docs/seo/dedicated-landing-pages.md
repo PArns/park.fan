@@ -1,8 +1,15 @@
 # Dedicated landing pages per park — concept
 
 Concept for [PAR-292](https://linear.app/parkfan/issue/PAR-292). It answers one question: **is
-there a park sub-page worth its own URL that we have not built, and what would be on it?** No
-implementation; the build is a follow-up ticket and needs the owner's approval first.
+there a park sub-page worth its own URL that we have not built, and what would be on it?**
+
+**Built on 2026-09-21** ([PAR-371](https://linear.app/parkfan/issue/PAR-371)), with the four
+decisions of §10 answered: build it, naming set **A**, gate on `meta.displayable`, and the ranked
+table deep-links each ride. The route is
+`app/[locale]/parks/[continent]/[country]/[city]/[park]/average-wait-times`, its segments are in
+`lib/parks/stats-segments.ts`, and it is ISR on a one-day window rather than `force-dynamic` — the
+first park-level route that is not. What follows is the concept as it was written, because it is
+the argument the page is built on; §3 to §6 are what shipped.
 
 It continues [Phase 3 of the SEO roadmap](seo-roadmap.md#phase-3--statistiken--landingpages)
 rather than restarting it, and it replaces the one-line "remaining upside" in
@@ -103,8 +110,8 @@ redirect. The segment sits in the `[attraction]` position, so the chosen words m
 with a ride slug — the note in `lib/parks/calendar-segments.ts` states the rule and applies
 unchanged.
 
-Two candidate naming sets. **This is a naming decision and therefore the owner's**, so both are
-listed with what they buy:
+Two candidate naming sets. **This was a naming decision and therefore the owner's**; **A** was
+chosen on 2026-09-21 and is what `PARK_STATS_SEGMENTS` holds. Both are listed with what they buy:
 
 | Locale | A — recommended                 | B — alternative               |
 | ------ | ------------------------------- | ----------------------------- |
@@ -207,15 +214,36 @@ different question — domain authority and inbound links — and is not a page 
 The cards themselves are reuse, not new components, which is what keeps this at L. The one genuinely
 new piece of UI is the method section, and it is text.
 
-## 10. Decisions this needs before a build ticket
+## 10. Decisions this needed before a build ticket — all four taken on 2026-09-21
 
-1. Build it at all, or leave the statistics intent unserved.
-2. Naming set **A** (recommended) or **B**, per §4.
-3. Gate on `meta.displayable` (recommended, 714 URLs) or publish for every park (1,206 URLs,
-   492 of them thin).
-4. Whether the ranked table links each ride to its own page. Recommended: yes — those pages are
-   already in the lean attraction sitemap, and this is the only place they would be linked from by
-   a historical figure rather than a live one.
+1. ~~Build it at all, or leave the statistics intent unserved.~~ **Built.**
+2. ~~Naming set **A** (recommended) or **B**, per §4.~~ **A.**
+3. ~~Gate on `meta.displayable` (recommended, 714 URLs) or publish for every park.~~ **Gated.**
+   Re-measured against every park in the catalogue on the day of the build: **119 of 210
+   displayable**, which is the 714 URLs this section predicted.
+4. ~~Whether the ranked table links each ride to its own page.~~ **Yes** — `ParkStatsAttractionsCard`
+   already did, and the page reuses it unchanged.
+
+## 11. What the build added that the concept did not name
+
+Three things the page needs that no section above covers, each written down where it lives:
+
+- **The gate has readers outside the page.** The route reads `meta.displayable` off the aggregate
+  it fetches anyway; the sitemap, the park page and the crowd calendar do not have one.
+  `hasParkStatsPage()` / `parksWithStatsPage()` (`lib/api/stats.ts`) answer for them off the same
+  `CACHE_TTL.stats` Data Cache entry, so however many of them ask, the whole class costs one
+  upstream call per park per day. A probe that fails answers `false` there and throws on the page:
+  a URL missing from one day's sitemap costs a day of discovery, one advertised at a 404 costs the
+  file's credibility.
+- **ISR is two declarations, not one** — see
+  [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
+- **The park page pays for the tile, not for the link.** Its link sits in `ParkStatsSection`,
+  which already returns `null` unless the aggregate is displayable, so that one is gated for free.
+  The tile is not: the entry-tile row is the park's navigation and is rendered on every page of
+  the park, so a cell present on the calendar and absent here would be two renderings of one row
+  (`components/parks/park-entry-tiles.tsx`) and would break the `rememberTileRow` handoff between
+  them. The park page therefore resolves the flag as well — one day-cached fetch, fired alongside
+  `getParkSeasons` and awaited with it, sharing the entry above rather than adding to it.
 
 ---
 

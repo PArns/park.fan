@@ -72,6 +72,9 @@ carries the reasoning, the measurements and the counter-examples.
   route executes. Never pass a numeric TTL at a call site: put it in `CACHE_TTL` or the helper's
   default, and set it from the data's cadence, not as a floor under some page. Prove it against
   `initialRevalidateSeconds` in `.next/prerender-manifest.json`.
+- **[An ISR route needs both halves](docs/rules/an-isr-route-needs-both-halves.md)** — `export const revalidate` alone caches nothing: every
+  fetch needs `next: { revalidate }`, and an all-dynamic route needs a `generateStaticParams`
+  (empty is right) or it never enters `dynamicRoutes`. Prove it in `.next/prerender-manifest.json`.
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.
