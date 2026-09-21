@@ -62,13 +62,22 @@ export function CrowdLevelScaleTooltip({ level, children }: CrowdLevelScaleToolt
         className="focus-visible:ring-ring/60 inline-flex w-fit cursor-help rounded-full focus-visible:ring-2 focus-visible:outline-none"
         onPointerDown={(event) => {
           tappedRef.current = event.pointerType !== 'mouse';
-          if (!tappedRef.current) return;
-          event.preventDefault();
-          setOpen((wasOpen) => !wasOpen);
+          // Only the opening half is ours. Radix's own pointerdown handler still runs, and
+          // it does two things we need: it closes an open tooltip (so the second tap
+          // closes), and it sets the `isPointerDownRef` that stops the focus a tap leaves
+          // behind from opening it straight back up. Suppressing that handler with
+          // `preventDefault()` also suppressed that guard, and the focus reopened what the
+          // tap had just closed.
+          if (tappedRef.current && !open) setOpen(true);
         }}
         onClick={(event) => {
-          // Radix closes on click, which would undo the tap that just opened it.
-          if (tappedRef.current) event.preventDefault();
+          // Radix closes on click, which would undo the tap that just opened it. Only a tap
+          // is swallowed, and the flag is cleared here rather than on the next pointerdown:
+          // a keyboard Enter is a click with no pointer event before it, and it would
+          // otherwise inherit the last tap and never reach Radix.
+          if (!tappedRef.current) return;
+          tappedRef.current = false;
+          event.preventDefault();
         }}
       >
         {children}

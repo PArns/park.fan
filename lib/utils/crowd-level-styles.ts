@@ -33,9 +33,9 @@ export function isColoredCrowdLevel(level: string): level is ColoredCrowdLevel {
  * These are the API's own thresholds, not a second definition: `determineCrowdLevel`
  * (backend `src/common/utils/crowd-level.util.ts`) buckets `reading ÷ baseline × 100`
  * into the six levels, and both regimes that feed a badge run through it — a calendar
- * day is its peak ÷ the park's typical-day peak, a live reading is the current peak ÷
- * the P50 baseline. In both, 100 % is a typical reading, which is why one table can
- * caption both surfaces.
+ * day is its peak against the park's typical-day peak, a live reading is the headliners'
+ * current waits summed against their summed P50 baselines. In both, 100 % is a typical
+ * reading, which is why one table can caption both surfaces.
  *
  * `min` is absent on `very_low` and `max` on `extreme`: those two ends are open. The union
  * spells that out rather than making both optional, so a caller that handles the open end
