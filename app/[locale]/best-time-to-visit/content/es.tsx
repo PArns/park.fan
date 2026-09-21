@@ -26,6 +26,7 @@ import {
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
@@ -134,7 +135,11 @@ export function ContentES() {
           items={[
             {
               icon: Sunrise,
-              title: 'A la apertura (rope drop)',
+              title: (
+                <>
+                  A la apertura (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
+                </>
+              ),
               body: 'La primera hora es de oro: quien está dentro a la apertura sube a las atracciones estrella a menudo por una fracción de la espera posterior.',
             },
             {
@@ -185,7 +190,11 @@ export function ContentES() {
           kicker="Día punta"
           title="Sol, todos libres, todos aquí"
           reverse
-          badge={<CrowdLevelBadge level="very_high" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="very_high" />
+            </GlossaryTermLink>
+          }
         >
           La combinación punta clásica, un sábado de vacaciones en pleno verano, reúne casi todos
           los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente. El mismo
@@ -200,7 +209,9 @@ export function ContentES() {
             },
             {
               icon: CalendarRange,
-              title: 'Vacaciones escolares',
+              title: (
+                <GlossaryTermLink termId="school-holiday">Vacaciones escolares</GlossaryTermLink>
+              ),
               body: 'En cuanto hay vacaciones en tu región o en las vecinas, se llena. Las de verano son la temporada alta absoluta.',
             },
             {
@@ -239,7 +250,12 @@ export function ContentES() {
             },
             {
               icon: Ticket,
-              title: 'Single rider y colas virtuales',
+              title: (
+                <>
+                  <GlossaryTermLink termId="single-rider">Single rider</GlossaryTermLink> y{' '}
+                  <GlossaryTermLink termId="virtual-queue">colas virtuales</GlossaryTermLink>
+                </>
+              ),
               body: 'Sube solo en los asientos sueltos o haz cola desde la app mientras comes o das una vuelta. En los días llenos, es tiempo regalado.',
             },
           ]}
@@ -259,16 +275,21 @@ export function ContentES() {
         icon={Ticket}
       >
         <P>
-          Los patrones de arriba son el punto de partida. El mejor día exacto está en el calendario
-          de afluencia de cada página de parque: verde, amarillo o rojo para cada día publicado, con
-          las vacaciones y los festivos de la región que toca.
+          Los patrones de arriba son el punto de partida. El mejor día exacto está en el{' '}
+          <GlossaryTermLink termId="crowd-calendar">calendario de afluencia</GlossaryTermLink> de
+          cada página de parque: verde, amarillo o rojo para cada día publicado, con las vacaciones
+          y los festivos de la región que toca.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="La atracción del palacio Symbolica en Efteling"
           kicker="Verde, amarillo, rojo"
           title="Un color por día, hasta donde llega el horario"
-          badge={<CrowdLevelBadge level="low" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="low" />
+            </GlossaryTermLink>
+          }
         >
           Cada página de parque lleva una previsión día a día que incorpora las vacaciones escolares
           y los festivos de esa región exacta. Elige un día verde y habrás hecho el noventa por

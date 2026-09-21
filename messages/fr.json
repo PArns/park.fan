@@ -525,6 +525,13 @@
       "unknown": "Pas de prévision",
       "closed": "Fermé"
     },
+    "crowdScale": {
+      "title": "Niveaux d’affluence",
+      "note": "100 % correspond aux temps d’attente des attractions principales lors d’une journée typique dans ce parc.",
+      "upTo": "jusqu’à {max} %",
+      "between": "{min}–{max} %",
+      "above": "plus de {min} %"
+    },
     "avgWaitTime": "Attente Moy.",
     "openAttractions": "Attractions ouvertes",
     "closedAttractions": "Attractions fermées",
@@ -549,6 +556,8 @@
     "tileAttractionsHeadliner": "Phares dès <b>{min} min</b>",
     "tileCalendar": "Meilleurs jours, aussi loin que vont les horaires",
     "tileCalendarQuietDay": "Jour le plus calme : <b>{day}</b> ({days, plural, =0 {aujourd’hui} =1 {demain} other {dans # jours}})",
+    "tileStatsLabel": "Statistiques",
+    "tileStats": "Par mois, jour et heure",
     "tileMap": "Temps d’attente sur le plan · <b>{lands}</b> zones thématiques",
     "tileMapPlain": "Temps d’attente sur le plan",
     "tileShowsNext": "Prochain : <b>{time}</b> · dans {duration}",
@@ -738,6 +747,8 @@
       "estimate": {
         "range": "Les pannes de ce type duraient encore {from} à {to} en général.",
         "rangeOpen": "Les pannes de ce type duraient encore plus de {from} en général.",
+        "clockRange": "Les pannes de ce type étaient en général résolues entre {from} et {to}.",
+        "clockRangeOpen": "Les pannes de ce type n'étaient en général pas résolues avant {from}.",
         "barNow": "maintenant",
         "recovery": "Environ {percent} % étaient résolues en une heure.",
         "recoveryOnly": "Parmi les pannes durant déjà aussi longtemps, environ {percent} % étaient de nouveau signalées en service en une heure."
@@ -762,10 +773,15 @@
       "until": "Cette attraction est fermée pour travaux jusqu’au {to}.",
       "untilUncertain": "Cette attraction est fermée pour travaux jusqu’au {to} selon les prévisions."
     },
+    "transportSystem": {
+      "label": "Transport",
+      "hint": "Un moyen de traverser le parc, pas une attraction. L’attente dépend des horaires, pas de l’affluence."
+    },
     "info": {
       "title": "Informations pratiques",
       "address": "Adresse",
       "phone": "Téléphone",
+      "directions": "Itinéraire",
       "website": "Site officiel",
       "tickets": "Billets",
       "opened": "Ouverture",
@@ -902,6 +918,7 @@
       "p50": "Typique",
       "p90": "Pic",
       "sampleDaysShort": "jours",
+      "recordLink": "Tous les chiffres du parc",
       "noData": "Pas encore assez de données historiques disponibles.",
       "comparisonTitle": "En comparaison avec d’autres parcs",
       "parkAverage": "Moyenne du parc",
@@ -1023,6 +1040,39 @@
         "varHours": "Horaires d’ouverture",
         "varHolidays": "Jours fériés et vacances scolaires",
         "varWeather": "Prévisions météo"
+      }
+    },
+    "statsPage": {
+      "breadcrumb": "Temps d’attente moyens",
+      "h1Suffix": "Temps d’attente moyens",
+      "metaTitle": "{park} : temps d’attente moyens",
+      "metaTitleShort": "{park} : attente moyenne",
+      "metaDescription": "Combien attend-on vraiment {inPark} à {city} ? Attente typique et de pointe par mois, jour et heure, mesurée sur {days} jours d’ouverture.",
+      "metaDescriptionNoCity": "Combien attend-on vraiment {inPark} ? Attente typique et de pointe par mois, jour et heure, mesurée sur {days} jours d’ouverture.",
+      "leadBusiest": "C’est en {months} qu’il y a le plus de monde {inPark}, avec {minutes} minutes en temps normal.",
+      "leadQuietest": "{count, plural, =1 {Le calme revient {days}, à {minutes} minutes.} other {Le calme revient {days}, à {minutes} minutes chacun.}}",
+      "leadLongest": "La file la plus longue est en général celle de {ride} : {minutes} minutes en temps normal.",
+      "leadFallback": "Les temps d’attente {inPark} par mois, jour et heure, mesurés sur {days} jours d’ouverture.",
+      "hourlyTitle": "La journée type",
+      "hourlyHint": "Sur {days} jours d’ouverture de l’année écoulée.",
+      "nextTitle": "Et ensuite",
+      "nextLive": "Temps d’attente en direct",
+      "nextLiveBody": "Ce que les files affichent en ce moment, attraction par attraction.",
+      "nextCalendar": "Calendrier des temps d’attente",
+      "nextCalendarBody": "Affluence attendue jour par jour, avec horaires et vacances scolaires.",
+      "method": {
+        "title": "D’où viennent ces chiffres",
+        "measured": "Chaque chiffre de cette page est mesuré, pas estimé. La source est le <posted>temps d’attente affiché</posted> publié {inPark} : park.fan le relève en continu et enregistre chaque relevé avec son horodatage. Cette analyse porte sur {days} jours d’ouverture répartis sur {years} ans.",
+        "percentiles": "« Typique » est la médiane de tous les relevés : la moitié des <wait>temps d’attente</wait> se situait en dessous, l’autre au-dessus. « Pic » est le 90e centile, la valeur dépassée par un relevé sur dix seulement. La médiane dit à quoi s’attendre, le pic dit à quoi ressemble un jour chargé. L’<crowd>affluence</crowd> d’un mois résume les deux sur l’ensemble des attractions.",
+        "hourly": "La courbe de la journée repose sur une fenêtre plus courte : {days} jours d’ouverture depuis le {from}. Les heures pour lesquelles une attraction n’a rien signalé restent vides. Une absence n’est pas un zéro."
+      },
+      "dataset": {
+        "name": "Statistiques des temps d’attente {forPark}",
+        "description": "Temps d’attente typiques et de pointe {inPark} par mois, jour, attraction et heure, à partir de {days} jours d’ouverture mesurés sur {years} ans.",
+        "varTypical": "Temps d’attente typique (médiane)",
+        "varPeak": "Temps d’attente de pointe (90e centile)",
+        "varCrowd": "Affluence",
+        "varSampleDays": "Jours d’ouverture mesurés"
       }
     },
     "planDayCta": "Planifier une journée à {park}",
@@ -2120,7 +2170,8 @@
     "error": "Le planning n’a pas pu être chargé.",
     "noPlan": "Aucune prévision pour ce jour.",
     "overview": {
-      "empty": "Aucune journée planifiée."
+      "empty": "Aucune journée planifiée.",
+      "countdown": "dans {count, plural, one {# jour} other {# jours}}"
     },
     "planThisDay": "Planifier vos attractions pour ce jour",
     "unit": {
@@ -2237,7 +2288,7 @@
       "resize": "Ajuster la largeur"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {1 attraction phare manque encore} other {# attractions phares manquent encore}}",
+      "missing": "{count, plural, =1 {1 <term>attraction phare</term> manque encore} other {# <term>attractions phares</term> manquent encore}}",
       "label": "Attraction phare"
     },
     "coach": {

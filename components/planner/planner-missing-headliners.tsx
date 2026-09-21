@@ -3,11 +3,13 @@
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Crown } from 'lucide-react';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
-import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
+import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { startRideDrag } from '@/lib/planner/ride-drag';
@@ -56,6 +58,8 @@ export function PlannerMissingHeadliners({
   const t = useTranslations('planner');
   /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
+  /** The same arrangement the `planner-phone:` classes below switch on. */
+  const isPhone = useMediaQuery(PLANNER_PHONE_QUERY);
   const { state, addRide } = usePlanner();
 
   const activeEntries = useMemo(
@@ -146,7 +150,35 @@ export function PlannerMissingHeadliners({
       <div className="planner-phone:max-h-[126px] planner-phone:overflow-y-auto planner-phone:overscroll-y-contain border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
-          {t('headliners.missing', { count: missing.length })}
+          {/* The line is one flex item, not three. `t.rich` splits the sentence into
+              text, link, text, and each run would otherwise become its own flex item
+              with the row's 6 px gap between them — "3 | Headliner | fehlen noch". */}
+          <span>
+            {t.rich('headliners.missing', {
+              count: missing.length,
+              // A link on the wide arrangement, plain text on the phone. Every
+              // target in the sheet owes a coarse pointer 44 px, and an 11 px hint
+              // line cannot pay it: as a link this word measured 50x15 and
+              // `check:planner` refused it, rightly — a 15 px target above the
+              // 44 px pills is one that gets missed.
+              //
+              // `showTooltip={false}` and that is NOT a preference: a tooltip
+              // opened from inside this sheet paints UNDER it. Measured at
+              // 1440x900 with the panel open — the box is 256x80 at x=934, the
+              // sheet starts at x=992, and 20 of 25 points sampled across the
+              // tooltip answer the sheet, because `TooltipContent` is `z-50`
+              // against the sheet's `z-[70]`. A definition four fifths hidden is
+              // worse than none; the link carries the reader to the whole of it.
+              term: (chunks) =>
+                isPhone ? (
+                  <>{chunks}</>
+                ) : (
+                  <GlossaryTermLink termId="headliner" showTooltip={false}>
+                    {chunks}
+                  </GlossaryTermLink>
+                ),
+            })}
+          </span>
         </p>
         <div className="mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (

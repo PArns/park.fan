@@ -12,6 +12,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
+import { hasParkStatsPage } from '@/lib/api/stats';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
 import {
@@ -233,6 +234,17 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // day-cached list and the page has no reason to serialise it behind the park.
   const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
 
+  // Whether this park has a wait-time record, for the tile row. Same shape and the same cost as
+  // the seasons above: one day-cached fetch, fired here and awaited with them.
+  //
+  // It is asked even though this route is `force-dynamic`, because the entry is shared — the
+  // record page, the crowd calendar and `app/sitemap.ts` read the same one — so the whole class
+  // still costs ONE upstream call per park per day. What it buys is the row: the tile row is the
+  // park's navigation and is rendered on every page of the park, and a cell that appears on the
+  // calendar and not here would make two renderings of one row, which is the thing
+  // `park-entry-tiles.tsx` exists to prevent.
+  const statsAvailablePromise = hasParkStatsPage(continent, country, city, parkSlug);
+
   // Fetch park data and holidays (holidays are optional). `leanParkForParkShell` strips the two
   // per-attraction fields only the ride page renders (typicalWaits, rideProfile) — ~11 KB of this
   // park's 33 KB attraction list that nothing here reads. The live poll returns them regardless.
@@ -241,7 +253,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Dev/preview only, and a no-op with no `?state=` — see `lib/parks/park-simulation.ts` for why
   // this one fabricates data where `?sim=` refuses to.
   const park = parkLean ? applyParkSimulation(parkLean, simScenarios) : parkLean;
-  const seasons = await seasonsPromise;
+  const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
 
   if (!park) {
     // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
@@ -343,6 +355,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // OG card is only a fallback for the JSON-LD image when the park has no real photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
+  // This page's canonical URL, which is also the `@id` of its `AmusementPark` node — the Shows
+  // Events reference that node as their `organizer` rather than restating the park.
+  const parkUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`;
+
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
       {/* Tells the planner which park this route is about — see
@@ -403,7 +419,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           <>
             <ParkStructuredData
               park={park}
-              url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+              url={parkUrl}
               description={tSeo('metaDescriptionTemplate', {
                 ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
                 city: cityName,
@@ -420,7 +436,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               locale={locale}
             />
             {park.shows && park.shows.length > 0 && (
-              <ShowsStructuredData shows={park.shows} park={park} />
+              <ShowsStructuredData shows={park.shows} park={park} parkUrl={parkUrl} />
             )}
             {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
               least-crowded question is appended when the seed resolves — awaiting it here would
@@ -488,6 +504,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         <LiveParkData
           initialData={park}
           todayIso={todayIso}
+          statsAvailable={statsAvailable}
           continent={continent}
           country={country}
           city={city}

@@ -526,6 +526,8 @@
       "estimate": {
         "range": "Störungen wie diese dauerten meist noch {from} bis {to}",
         "rangeOpen": "Störungen wie diese dauerten meist noch über {from}",
+        "clockRange": "Störungen wie diese waren meist zwischen {from} und {to} Uhr behoben",
+        "clockRangeOpen": "Störungen wie diese waren meist nicht vor {from} Uhr behoben",
         "barNow": "jetzt",
         "recovery": "Rund {percent} % waren binnen einer Stunde behoben.",
         "recoveryOnly": "Von Störungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde wieder in Betrieb."
@@ -550,10 +552,15 @@
       "until": "Diese Bahn ist wegen Umbau geschlossen, bis zum {to}.",
       "untilUncertain": "Diese Bahn ist wegen Umbau geschlossen, voraussichtlich bis zum {to}."
     },
+    "transportSystem": {
+      "label": "Transportsystem",
+      "hint": "Eine Verbindung durch den Park, kein Fahrgeschäft. Die Wartezeit hängt am Fahrplan, nicht am Andrang."
+    },
     "info": {
       "title": "Infos zum Park",
       "address": "Adresse",
       "phone": "Telefon",
+      "directions": "Anfahrt",
       "website": "Website",
       "tickets": "Tickets",
       "opened": "Eröffnet",
@@ -680,6 +687,13 @@
       "unknown": "Keine Prognose",
       "closed": "Geschlossen"
     },
+    "crowdScale": {
+      "title": "Auslastungsstufen",
+      "note": "100 % sind die Wartezeiten an einem typischen Tag in diesem Park, gemessen an den wichtigsten Attraktionen.",
+      "upTo": "bis {max} %",
+      "between": "{min}–{max} %",
+      "above": "über {min} %"
+    },
     "avgWaitTime": "Ø Wartezeit",
     "openAttractions": "Offene Attraktionen",
     "closedAttractions": "Geschlossene Attraktionen",
@@ -803,6 +817,8 @@
     "tileAttractionsHeadliner": "Headliner ab <b>{min} min</b>",
     "tileCalendar": "Beste Besuchstage, so weit der Zeitplan reicht",
     "tileCalendarQuietDay": "Ruhigster Tag: <b>{day}</b> ({days, plural, =0 {heute} =1 {morgen} other {in # Tagen}})",
+    "tileStatsLabel": "Statistik",
+    "tileStats": "Nach Monat, Wochentag und Uhrzeit",
     "tileMap": "Wartezeiten auf dem Plan · <b>{lands}</b> Themenbereiche",
     "tileMapPlain": "Wartezeiten auf dem Plan",
     "tileShowsNext": "Nächste: <b>{time}</b> · in {duration}",
@@ -902,6 +918,7 @@
       "p50": "Typisch",
       "p90": "Spitze",
       "sampleDaysShort": "Tage",
+      "recordLink": "Alle Zahlen zum Park",
       "noData": "Noch nicht genug historische Daten verfügbar.",
       "comparisonTitle": "Im Vergleich mit anderen Parks",
       "parkAverage": "Parkschnitt",
@@ -1023,6 +1040,39 @@
         "varHours": "Öffnungszeiten",
         "varHolidays": "Feiertage und Schulferien",
         "varWeather": "Wettervorhersage"
+      }
+    },
+    "statsPage": {
+      "breadcrumb": "Durchschnittliche Wartezeiten",
+      "h1Suffix": "Durchschnittliche Wartezeiten",
+      "metaTitle": "{park}: durchschnittliche Wartezeiten",
+      "metaTitleShort": "{park}: Wartezeiten im Schnitt",
+      "metaDescription": "Wie lange wartet man {inPark} in {city} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
+      "metaDescriptionNoCity": "Wie lange wartet man {inPark} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
+      "leadBusiest": "Am vollsten ist es {inPark} im {months}, mit typisch {minutes} Minuten.",
+      "leadQuietest": "{count, plural, =1 {Am ruhigsten bleibt es {days}, bei {minutes} Minuten.} other {Am ruhigsten bleibt es {days}, jeweils bei {minutes} Minuten.}}",
+      "leadLongest": "Die längste Schlange steht meist an {ride}: typisch {minutes} Minuten.",
+      "leadFallback": "Wartezeiten {inPark} nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
+      "hourlyTitle": "Der typische Tag",
+      "hourlyHint": "Aus {days} Öffnungstagen des letzten Jahres.",
+      "nextTitle": "Weiter zu",
+      "nextLive": "Aktuelle Wartezeiten",
+      "nextLiveBody": "Was die Schlangen gerade jetzt anzeigen, Bahn für Bahn.",
+      "nextCalendar": "Wartezeiten-Kalender",
+      "nextCalendarBody": "Erwarteter Andrang Tag für Tag, mit Öffnungszeiten und Ferien.",
+      "method": {
+        "title": "Woher diese Zahlen kommen",
+        "measured": "Jede Zahl auf dieser Seite ist gemessen, nicht geschätzt. Grundlage ist die <posted>ausgeschriebene Wartezeit</posted>, die {inPark} veröffentlicht wird: park.fan liest sie laufend aus und legt jede Ablesung mit Zeitstempel ab. Diese Auswertung deckt {days} Öffnungstage aus {years} Jahren ab.",
+        "percentiles": "„Typisch“ ist der Median aller Ablesungen: die Hälfte der <wait>Wartezeiten</wait> lag darunter, die Hälfte darüber. „Spitze“ ist das 90. Perzentil, also der Wert, den nur jede zehnte Ablesung überschritten hat. Der Median sagt, womit zu rechnen ist, die Spitze sagt, wie ein voller Tag aussieht. Der <crowd>Andrang</crowd> eines Monats fasst beides über alle Bahnen zusammen.",
+        "hourly": "Der Tagesverlauf stützt sich auf ein kürzeres Fenster: {days} Öffnungstage seit dem {from}. Stunden, in denen eine Bahn nichts gemeldet hat, bleiben leer. Eine Lücke ist keine Null."
+      },
+      "dataset": {
+        "name": "Wartezeiten-Statistik {forPark}",
+        "description": "Typische und Spitzenwartezeiten {inPark} nach Monat, Wochentag, Attraktion und Uhrzeit, aus {days} gemessenen Öffnungstagen über {years} Jahre.",
+        "varTypical": "Typische Wartezeit (Median)",
+        "varPeak": "Spitzenwartezeit (90. Perzentil)",
+        "varCrowd": "Andrang",
+        "varSampleDays": "Gemessene Öffnungstage"
       }
     },
     "planDayCta": "Tag im {park} planen",
@@ -2120,7 +2170,8 @@
     "error": "Der Plan konnte nicht geladen werden.",
     "noPlan": "Für diesen Tag liegt keine Prognose vor.",
     "overview": {
-      "empty": "Noch keine Tage geplant."
+      "empty": "Noch keine Tage geplant.",
+      "countdown": "in {count, plural, one {# Tag} other {# Tagen}}"
     },
     "planThisDay": "Bahnen für diesen Tag einplanen",
     "unit": {
@@ -2237,7 +2288,7 @@
       "resize": "Breite ziehen"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {1 Headliner fehlt noch} other {# Headliner fehlen noch}}",
+      "missing": "{count, plural, =1 {1 <term>Headliner</term> fehlt noch} other {# <term>Headliner</term> fehlen noch}}",
       "label": "Headliner"
     },
     "coach": {

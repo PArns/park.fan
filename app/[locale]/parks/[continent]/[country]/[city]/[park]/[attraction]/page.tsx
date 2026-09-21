@@ -17,6 +17,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
+import { TransportSystemBadge } from '@/components/parks/transport-system-badge';
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
@@ -489,6 +490,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         for travel purposes) — client-only, appears once the position is known. */}
                       <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
                       {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
+                      {/* What this ride IS, next to where it is: the curated
+                          marker for a station on a park railway, whose wait is
+                          a departure interval rather than a queue. Independent
+                          of the season and works badges beside it. */}
+                      <TransportSystemBadge parkSlug={parkSlug} attractionSlug={attractionSlug} />
                       {attraction.isSeasonal && (
                         <SeasonalBadge
                           seasonMonths={attraction.seasonMonths}

@@ -126,6 +126,24 @@ const parkCalendarHeaderSegments: Record<string, string> = {
   es: 'calendario-tiempos-espera',
 };
 
+/**
+ * A park's wait-time record, in the six segments a browser actually asks for.
+ *
+ * Same list as `PARK_STATS_SEGMENTS` in `lib/parks/stats-segments.ts`; spelled out here because
+ * this file is the build config and cannot import from `@/`. Three places move together — that
+ * module, the rewrite block below and the cache-header block under it — and the third is the one
+ * that rots silently: a stale entry there is a page that loses its edge window, rendered by
+ * nothing and caught by no test.
+ */
+const parkStatsHeaderSegments: Record<string, string> = {
+  en: 'average-wait-times',
+  de: 'durchschnittliche-wartezeiten',
+  fr: 'temps-attente-moyens',
+  it: 'tempi-di-attesa-medi',
+  nl: 'gemiddelde-wachttijden',
+  es: 'tiempos-de-espera-medios',
+};
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Cache Components (PPR) is intentionally OFF. The high-traffic detail pages (park, attraction,
@@ -742,6 +760,24 @@ const nextConfig: NextConfig = {
       );
     }
 
+    // A park's wait-time record (app/[locale]/parks/…/[park]/average-wait-times). Same shape as
+    // the calendar hub above and one rule shorter, because this page has nothing under it. EN
+    // needs no rewrite. Keep in step with `lib/parks/stats-segments.ts` — that module is what
+    // every link and every canonical URL is built from, this is only what serves them.
+    const parkStatsSegments: Record<string, string> = {
+      de: 'durchschnittliche-wartezeiten',
+      fr: 'temps-attente-moyens',
+      it: 'tempi-di-attesa-medi',
+      nl: 'gemiddelde-wachttijden',
+      es: 'tiempos-de-espera-medios',
+    };
+    for (const [locale, segment] of Object.entries(parkStatsSegments)) {
+      rules.push({
+        source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
+        destination: `/${locale}/parks/:continent/:country/:city/:park/average-wait-times`,
+      });
+    }
+
     return rules;
   },
   async headers() {
@@ -1303,6 +1339,23 @@ const nextConfig: NextConfig = {
           ],
         },
       ]),
+      ...Object.entries(parkStatsHeaderSegments).map(([locale, segment]) => ({
+        // A park's WAIT-TIME RECORD. A day, which is both the longest window on any park URL and
+        // the least eventful: nothing on this page is live, the aggregate behind it is recomputed
+        // once a day by the backend, and the route's own `revalidate` is the same 86400. The
+        // calendar hub above has to stay at an hour because its title names a month and a day-old
+        // copy would name the wrong one on the 1st; this page's title names no date at all.
+        //
+        // Only `CDN-Cache-Control`, as on the calendar: the shared caches get the explicit
+        // window, a visitor's own tab keeps the page's own directive.
+        source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=86400, stale-while-revalidate=3600',
+          },
+        ],
+      })),
       {
         // The search PAGE. `:locale` is pinned to the six real locales because a bare `:locale`
         // matches any single segment — including `api`, so this rule sat after the `/api/search`

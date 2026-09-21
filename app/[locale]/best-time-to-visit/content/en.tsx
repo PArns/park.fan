@@ -26,6 +26,7 @@ import {
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
@@ -134,7 +135,11 @@ export function ContentEN() {
           items={[
             {
               icon: Sunrise,
-              title: 'At opening (rope drop)',
+              title: (
+                <>
+                  At opening (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
+                </>
+              ),
               body: 'The first hour is golden: arrive for opening and you often ride the headliners at a fraction of the later wait.',
             },
             {
@@ -179,7 +184,11 @@ export function ContentEN() {
           kicker="Peak day"
           title="Sunny, everyone off, everyone here"
           reverse
-          badge={<CrowdLevelBadge level="very_high" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="very_high" />
+            </GlossaryTermLink>
+          }
         >
           The classic peak combo — a holiday Saturday in high summer — carries almost every crowd
           factor at once. If you can, take the Tuesday after instead: same park, half the queue.
@@ -193,7 +202,7 @@ export function ContentEN() {
             },
             {
               icon: CalendarRange,
-              title: 'School holidays',
+              title: <GlossaryTermLink termId="school-holiday">School holidays</GlossaryTermLink>,
               body: 'Crowds rise sharply during the holidays of your own and neighbouring regions — the summer break most of all.',
             },
             {
@@ -232,7 +241,12 @@ export function ContentEN() {
             },
             {
               icon: Ticket,
-              title: 'Single rider & virtual queues',
+              title: (
+                <>
+                  <GlossaryTermLink termId="single-rider">Single rider</GlossaryTermLink> &{' '}
+                  <GlossaryTermLink termId="virtual-queue">virtual queues</GlossaryTermLink>
+                </>
+              ),
               body: 'Ride alone or queue digitally while you eat or shop — free time on busy days.',
             },
           ]}
@@ -252,16 +266,20 @@ export function ContentEN() {
         icon={Ticket}
       >
         <P>
-          The patterns above are the starting point. The exact best day comes from the crowd
-          calendar on each park page — green, yellow, red, up to a year ahead, with that region’s
-          holidays built in.
+          The patterns above are the starting point. The exact best day comes from the{' '}
+          <GlossaryTermLink termId="crowd-calendar">crowd calendar</GlossaryTermLink> on each park
+          page — green, yellow, red, up to a year ahead, with that region’s holidays built in.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="Symbolica palace ride at Efteling"
           kicker="Green, yellow, red"
           title="One colour per day, a year ahead"
-          badge={<CrowdLevelBadge level="low" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="low" />
+            </GlossaryTermLink>
+          }
         >
           Every park page carries a day-by-day forecast that folds in the school and public holidays
           for that exact region. Pick a green day and you have done ninety percent of the planning

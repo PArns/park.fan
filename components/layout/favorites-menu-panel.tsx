@@ -443,13 +443,17 @@ export function FavoritesMenuPanel({
               </span>
             </span>
           </div>
-          {/* Die beiden Links, die der gefüllte Zustand in seiner Kopfzeile trägt. Ohne sie ist
-              dieser Zustand der einzige im ganzen Menü, aus dem keine der beiden persönlichen
-              Seiten erreichbar ist — und auf dem Handy ist dieses Sheet die Navigation. Eine
-              Zeile unter den zwei Sätzen, nicht neben ihnen: 252 px Inhalt tragen die beiden
-              Labels nebeneinander, den Satz daneben nicht. */}
-          <span className="mt-3 flex items-center gap-3 pl-7">
-            <PushAlertsMenuLink label={tPush('link')} />
+          {/* `/favorites` only, and the alerts link deliberately not beside it.
+              `MoreMenuLinks variant="sheet"` carries `/alerts` unconditionally at the foot of this
+              same sheet, so a second one printed „Meine Alarme" twice in one 300 px column,
+              366 px apart (measured at 360 px: y = 170.5 and y = 536.5) — the duplication the
+              filled state's header already avoids with its `!isSheet`. `/favorites` is the
+              opposite case: `MoreMenuLinks` leaves it out of the sheet on purpose (PAR-290)
+              because this panel carries it, so without this line the empty state is the one
+              place in the whole menu with no way to that page, and on a phone this sheet is the
+              navigation. Its own line under the two sentences, not beside them: 252 px of
+              content carry the label, the sentence next to it they do not. */}
+          <span className="mt-3 flex pl-7">
             <FavoritesPageMenuLink label={t('link')} />
           </span>
         </div>
@@ -790,7 +794,8 @@ function PushAlertsMenuLink({ label }: { label: string }) {
 }
 
 /**
- * The link to `/favorites`, beside the alerts link in every state of this panel.
+ * The link to `/favorites`, in every state of this panel — the sheet included, where
+ * `MoreMenuLinks` leaves the destination out precisely because this link is here (PAR-290).
  *
  * It used to be „Alle anzeigen" and appeared only when a group ran over its cap — so a visitor
  * with three favorites, or with none, had no way to the page at all, and the page is where the

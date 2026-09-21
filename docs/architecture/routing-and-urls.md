@@ -16,6 +16,23 @@ The app uses **geographic routes** analogous to the API:
 
 **Important:** The **city** segment is **required** – there is no route without city.
 
+### Park sub-pages
+
+Two routes sit in the `[attraction]` position and are matched before it, because Next matches a
+static segment first: the crowd calendar (`lib/parks/calendar-segments.ts`) and the wait-time
+record (`lib/parks/stats-segments.ts`). Both follow the same pattern as the glossary and the
+guide — the route folder is the **English** slug, and the other five locales are served on it by a
+rewrite in `next.config.ts`:
+
+- `/de/parks/…/phantasialand/wartezeiten-kalender` → `…/wait-time-calendar`
+- `/de/parks/…/phantasialand/durchschnittliche-wartezeiten` → `…/average-wait-times`
+
+**Each segment list lives in three places that move together**: its module (which every link and
+canonical URL is built from), the rewrite block in `next.config.ts`, and the cache-header block
+above it. The third is the one that rots silently — nothing renders it and no test catches a stale
+entry, so a page just loses its edge window. A ride slugged like one of these twelve words would
+be shadowed by the route; none is, and the modules say so.
+
 ---
 
 ## URL Conversion (API → Frontend)

@@ -6,6 +6,8 @@ import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
 import { versionedPath } from '@/lib/media/focus';
+import { OWN_PHOTO_AUTHOR } from '@/lib/media/types';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 
@@ -34,6 +36,10 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
       ? versionedPath(frontmatter.coverImage.src)
       : null;
   const coverAlt = frontmatter.coverImage?.alt ?? frontmatter.title;
+  // Own shoots carry `credit: 'Patrick Arns'` on every existing post — the same name
+  // `needsAttribution()` uses to stay quiet for the media database's own images.
+  const coverCredit = frontmatter.coverImage?.credit;
+  const showCredit = cover && coverCredit && coverCredit !== OWN_PHOTO_AUTHOR;
 
   const author = resolveAuthor(frontmatter.author, currentLocale);
   const authorHref = author.key ? (`/blog/authors/${author.key}` as '/') : null;
@@ -72,6 +78,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
       ) : (
         <div className="from-primary/15 via-background to-muted absolute inset-0 bg-gradient-to-br" />
       )}
+      {showCredit && <PhotoCredit credit={coverCredit} />}
       {/* Title/excerpt/byline sit directly on the cover (no panel). Readability
           comes from a theme-aware tint that fades into the page background — a dark
           tint in dark mode, a light tint in light mode — so the cover never gets a

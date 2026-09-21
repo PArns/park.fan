@@ -12,6 +12,7 @@ import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkByGeoPath, getParkSeasons, leanParkForCalendarShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
+import { hasParkStatsPage } from '@/lib/api/stats';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
@@ -42,7 +43,7 @@ import { getServerToday } from '@/lib/utils/server-time';
 
 import {
   BreadcrumbStructuredData,
-  ParkCalendarDatasetStructuredData,
+  ParkDatasetStructuredData,
   ParkSubPageStructuredData,
 } from '@/components/seo/structured-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
@@ -244,9 +245,10 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // or a crawler probing, and answering it with the current month would put one page's content on
   // unbounded URLs.
   if (resolved === 'invalid') {
-    // A well-formed month that has simply fallen out of the window gets a 301 to the hub, not a
-    // 404. Narrowing the back span from twelve months to what the archive covers turned four
-    // months × 212 parks × 6 locales from 200 into gone — URLs the stepper linked last week and a
+    // A well-formed month that has simply fallen out of the window gets a 308 to the hub, not a
+    // 404. Narrowing the back span from twelve months to three turned five months × 210 parks ×
+    // 6 locales — 6,300 URLs, verified against production on 2026-09-21 — from 200 into gone, and
+    // every month boundary adds 210 × 6 more. These are URLs the stepper linked last month and a
     // crawler may still hold. A malformed segment (`/2026/13`, `/abc/x`) stays a 404: that is a
     // typo or a probe, and there is nothing to send it to.
     const [rawYear, rawMonth] = date ?? [];
@@ -290,6 +292,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
   const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
+  // Whether this park has a wait-time record, for the tile row below. Data-cached for a day and
+  // shared with that page's own render and with `app/sitemap.ts`, so the whole class costs one
+  // upstream call per park per day however many calendar URLs ask. Fired here and awaited with
+  // the seasons, rather than on its own line further down where it would be a second round trip.
+  const statsAvailablePromise = hasParkStatsPage(continent, country, city, parkSlug);
   // The month the page is ABOUT — on the hub that is the current one, which is the month the grid
   // opens on and therefore the month a summary there would describe. Fired here, awaited inside
   // its own boundary below, and data-cached so tens of thousands of URLs do not each mean an
@@ -298,7 +305,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const monthSeedPromise = getCalendarMonthSeed(continent, country, city, parkSlug, summaryMonth);
 
   const park = parkForClock;
-  const seasons = await seasonsPromise;
+  const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
   if (!park) {
     const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
     if (relocated) {
@@ -405,7 +412,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             {/* The page is a table of one row per day, which is what `Dataset` is for. The month
               it covers is `summaryMonth` — on the hub that is the current one, which is what its
               grid opens on, so the coverage matches what a visitor actually sees. */}
-            <ParkCalendarDatasetStructuredData
+            <ParkDatasetStructuredData
               url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
               parkName={parkName}
@@ -501,6 +508,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
               showsAvailable={(park.shows?.length ?? 0) > 0}
               restaurantsAvailable={(park.restaurants?.length ?? 0) > 0}
               weatherAvailable={!!park.weather?.current}
+              statsAvailable={statsAvailable}
             />
           }
         />

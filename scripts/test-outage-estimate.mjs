@@ -15,6 +15,7 @@
 import {
   OUTAGE_BAR_HORIZON_MIN,
   outageElapsedMinutes,
+  outageRecoveryClock,
   outageRecoveryLine,
   outageRecoveryPercent,
   outageRemainingBar,
@@ -50,6 +51,17 @@ const FRESH = {
   remaining: { p25: 25, median: 55, p75: 150 },
   basis: 'pooled',
 };
+
+/**
+ * The same window placed on the clock, the shape `RecoveryWindowDto` publishes.
+ *
+ * Read off the API's own schema on 2026-09-21 (`/api-json`): `from` required, `to` absent rather
+ * than null whenever the upper quartile does not resolve, and the whole object absent for a park
+ * that publishes no opening hours. Berlin throughout, because the day boundary is the thing under
+ * test and a zone two hours off UTC shows it.
+ */
+const BERLIN = 'Europe/Berlin';
+const CLOCK = (from, to) => ({ ...FRESH, recoveryWindow: to ? { from, to } : { from } });
 
 const OUTAGE = (estimate, extra = {}) => ({
   startedAt: '2026-09-09T05:20:12.443Z',
@@ -123,6 +135,142 @@ const testCases = [
         outageRemainingWindow({ ...FRESH, remaining: { p25: 120, median: 130, p75: 118 } })
       ),
     expected: JSON.stringify({ from: 120, to: null }),
+  },
+
+  // ── the window on the clock ──
+  //
+  // `remaining` is in OPERATING minutes and may not be added to a wall clock, so the instants
+  // arrive placed on the park's calendar and nothing here re-derives them. What is tested is the
+  // reading: which shapes are refused, and when a bare clock time would be read as the wrong day.
+  {
+    name: 'a placed window is read as instants, not re-derived from the operating minutes',
+    actual: () =>
+      JSON.stringify(
+        outageRecoveryClock(CLOCK('2026-09-21T12:35:00.000Z', '2026-09-21T14:10:00.000Z'), BERLIN)
+      ),
+    expected: JSON.stringify({
+      from: '2026-09-21T12:35:00.000Z',
+      to: '2026-09-21T14:10:00.000Z',
+      toOnLaterDay: false,
+    }),
+  },
+  {
+    name: 'an upper end past a closing is flagged, because a bare „11:10 Uhr" reads as this evening',
+    // 23:00 to 01:00 in Berlin. The whole reason the instants exist: two operating hours left in
+    // a park that shuts in twenty minutes end tomorrow.
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T21:00:00.000Z', '2026-09-21T23:00:00.000Z'), BERLIN)
+        ?.toOnLaterDay,
+    expected: true,
+  },
+  {
+    name: 'the day boundary is the PARK’s, not UTC’s',
+    // Two UTC days, one Berlin day: 01:30 and 02:30 on the 22nd. Comparing the ISO strings, or
+    // comparing in the runner's zone, calls this a crossing and puts a weekday on an end that is
+    // the same night.
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T23:30:00.000Z', '2026-09-22T00:30:00.000Z'), BERLIN)
+        ?.toOnLaterDay,
+    expected: false,
+  },
+  {
+    name: 'a missing `to` key is an open range on the clock too',
+    // Same absence as `remaining.p75`, and the API writes it the same way — the key is dropped,
+    // never sent as null.
+    actual: () => JSON.stringify(outageRecoveryClock(CLOCK('2026-09-21T12:35:00.000Z'), BERLIN)),
+    expected: JSON.stringify({ from: '2026-09-21T12:35:00.000Z', to: null, toOnLaterDay: false }),
+  },
+  {
+    name: 'an inverted pair opens the range rather than printing a window that runs backwards',
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T14:10:00.000Z', '2026-09-21T12:35:00.000Z'), BERLIN)
+        ?.to,
+    expected: null,
+  },
+  {
+    name: 'two ends inside one minute are widened, „zwischen 14:35 und 14:35 Uhr" being no range',
+    // The clock's version of the collapse `outageRemainingWindow` already guards against. Both
+    // instants format to „14:35" here, and quartiles that close together are a measured shape —
+    // `{p25: 118, median: 118.5, p75: 119}` is in this file. Widened to the RIGHT, so the printed
+    // window is never narrower than the one that was measured.
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T12:35:10.000Z', '2026-09-21T12:35:45.000Z'), BERLIN)
+        ?.to,
+    expected: '2026-09-21T12:36:10.000Z',
+  },
+  {
+    name: 'a pair already a minute apart is printed as it was measured',
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T12:35:10.000Z', '2026-09-21T12:36:10.000Z'), BERLIN)
+        ?.to,
+    expected: '2026-09-21T12:36:10.000Z',
+  },
+  {
+    name: 'a widened end that crosses midnight takes its weekday with it',
+    // 23:59:40 in Berlin, widened to 00:00:40. The label says „00:00" and the day marker has to
+    // agree with the label rather than with the instant that was measured.
+    actual: () =>
+      JSON.stringify(
+        outageRecoveryClock(CLOCK('2026-09-21T21:59:40.000Z', '2026-09-21T21:59:50.000Z'), BERLIN)
+      ),
+    expected: JSON.stringify({
+      from: '2026-09-21T21:59:40.000Z',
+      to: '2026-09-21T22:00:40.000Z',
+      toOnLaterDay: true,
+    }),
+  },
+  {
+    name: 'an upper end more than a week out is dropped, a weekday no longer naming one day',
+    // Only reachable in theory — the largest measured p75 is 460 operating minutes — but
+    // „Dienstag" that could be either of two Tuesdays is worse than no upper end.
+    actual: () =>
+      outageRecoveryClock(CLOCK('2026-09-21T12:35:00.000Z', '2026-09-28T13:00:00.000Z'), BERLIN)
+        ?.to,
+    expected: null,
+  },
+  {
+    name: 'no recoveryWindow means no clock, and the duration sentence keeps the block',
+    // A park that publishes no opening hours, or a calendar that does not reach far enough.
+    // There is deliberately no wall-clock fallback: it would answer a different question.
+    actual: () => outageRecoveryClock(FRESH, BERLIN),
+    expected: null,
+  },
+  {
+    name: 'no estimate at all means no clock',
+    actual: () => outageRecoveryClock(undefined, BERLIN),
+    expected: null,
+  },
+  {
+    name: 'no timezone means no clock — a time without a zone is a time in the renderer’s zone',
+    actual: () => outageRecoveryClock(CLOCK('2026-09-21T12:35:00.000Z'), undefined),
+    expected: null,
+  },
+  {
+    name: 'a zone Intl refuses costs the clock form, not the render',
+    // The fallback a formatter would take here is the RUNTIME's own zone, which is UTC on the
+    // server and the reader's in the browser — the one failure mode a day comparison may not
+    // have. Refusing leaves the duration sentence, which is identical on both sides.
+    actual: () => outageRecoveryClock(CLOCK('2026-09-21T12:35:00.000Z'), 'Europe/Atlantis'),
+    expected: null,
+  },
+  {
+    name: 'an unparsable instant is refused rather than formatted as Invalid Date',
+    actual: () => outageRecoveryClock(CLOCK('not-a-date'), BERLIN),
+    expected: null,
+  },
+  {
+    name: 'an unparsable upper end opens the range instead of losing the lower one',
+    actual: () =>
+      JSON.stringify(outageRecoveryClock(CLOCK('2026-09-21T12:35:00.000Z', 'not-a-date'), BERLIN)),
+    expected: JSON.stringify({ from: '2026-09-21T12:35:00.000Z', to: null, toOnLaterDay: false }),
+  },
+  {
+    name: 'an instant already in the past is still a clock time, not an error',
+    // Documented on the field: a cached park page can be up to ~15 minutes behind, and `from`
+    // having passed reads as „any moment now". Nothing here compares against now, so there is
+    // nothing to get wrong across hydration.
+    actual: () => outageRecoveryClock(CLOCK('2020-01-01T09:00:00.000Z'), BERLIN)?.from,
+    expected: '2020-01-01T09:00:00.000Z',
   },
 
   // ── rounding ──
@@ -296,7 +444,15 @@ const testCases = [
     // does not throw on a missing namespace key — it logs MISSING_MESSAGE and renders the raw
     // key, so the failure would ship as the word „recoveryOnly" on a ride page.
     actual: () => {
-      const keys = ['recovery', 'recoveryOnly', 'range', 'rangeOpen', 'barNow'];
+      const keys = [
+        'recovery',
+        'recoveryOnly',
+        'range',
+        'rangeOpen',
+        'clockRange',
+        'clockRangeOpen',
+        'barNow',
+      ];
       const missing = [];
       for (const locale of LOCALES) {
         const messages = readMessages(locale);
@@ -324,6 +480,29 @@ const testCases = [
       return missing.length === 0 ? 'all carry it' : missing.join(', ');
     },
     expected: 'all carry it',
+  },
+  {
+    name: 'each range sentence carries the ends it is given, in all six locales',
+    // A two-ended sentence that drops `{to}` prints half a window as if it were the whole one,
+    // and an open one that carries a `{to}` it is never given renders the literal braces. Both
+    // are invisible to types, to lint and to a build — the catalogs are plain JSON.
+    actual: () => {
+      const twoEnded = ['range', 'clockRange'];
+      const oneEnded = ['rangeOpen', 'clockRangeOpen'];
+      const wrong = [];
+      for (const locale of LOCALES) {
+        const estimate = readMessages(locale)?.parks?.outage?.estimate ?? {};
+        for (const key of [...twoEnded, ...oneEnded]) {
+          const text = String(estimate[key] ?? '');
+          const wantsTo = twoEnded.includes(key);
+          if (!text.includes('{from}') || text.includes('{to}') !== wantsTo) {
+            wrong.push(`${locale}.${key}`);
+          }
+        }
+      }
+      return wrong.length === 0 ? 'all carry their ends' : wrong.join(', ');
+    },
+    expected: 'all carry their ends',
   },
 
   // ── elapsed ──

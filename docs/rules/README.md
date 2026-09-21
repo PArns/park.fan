@@ -17,6 +17,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [API budget per page (REQUIREMENT)](api-budget-per-page.md)
 - [The page render is the bigger half of the API budget, and it was never audited (ANTI-PATTERN)](the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)
 - [A `revalidate` at a call site is somebody else's page (REQUIREMENT)](a-revalidate-at-a-call-site-is-somebody-elses-page.md)
+- [An ISR route needs both halves, and one of them is an empty `generateStaticParams` (REQUIREMENT)](an-isr-route-needs-both-halves.md)
 - [Translations are routed, not bundled (REQUIREMENT)](translations-are-routed-not-bundled.md)
 
 ## Data and API

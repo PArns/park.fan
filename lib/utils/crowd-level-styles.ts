@@ -22,6 +22,39 @@ export const CROWD_LEVEL_ORDER: readonly ColoredCrowdLevel[] = [
   'extreme',
 ] as const;
 
+/** Whether a level is one of the six that carry a colour (i.e. not `unknown`, not `closed`). */
+export function isColoredCrowdLevel(level: string): level is ColoredCrowdLevel {
+  return (CROWD_LEVEL_ORDER as readonly string[]).includes(level);
+}
+
+/**
+ * What each level means as a percentage, for the surfaces that explain the scale.
+ *
+ * These are the API's own thresholds, not a second definition: `determineCrowdLevel`
+ * (backend `src/common/utils/crowd-level.util.ts`) buckets `reading ÷ baseline × 100`
+ * into the six levels, and both regimes that feed a badge run through it — a calendar
+ * day is its peak against the park's typical-day peak, a live reading is the headliners'
+ * current waits summed against their summed P50 baselines. In both, 100 % is a typical
+ * reading, which is why one table can caption both surfaces.
+ *
+ * `min` is absent on `very_low` and `max` on `extreme`: those two ends are open. The union
+ * spells that out rather than making both optional, so a caller that handles the open end
+ * has the closed one narrowed to a number instead of reaching for a non-null assertion.
+ */
+export type CrowdPercentRange =
+  | { min?: undefined; max: number }
+  | { min: number; max: number }
+  | { min: number; max?: undefined };
+
+export const CROWD_LEVEL_PERCENT_RANGE: Record<ColoredCrowdLevel, CrowdPercentRange> = {
+  very_low: { max: 60 },
+  low: { min: 61, max: 89 },
+  moderate: { min: 90, max: 110 },
+  high: { min: 111, max: 150 },
+  very_high: { min: 151, max: 200 },
+  extreme: { min: 200 },
+};
+
 /** `text-crowd-*` text color per level (inline values, blog annotations, …). */
 export const CROWD_TEXT_CLASS: Record<ColoredCrowdLevel, string> = {
   very_low: 'text-crowd-very-low',

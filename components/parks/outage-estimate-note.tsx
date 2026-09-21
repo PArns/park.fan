@@ -4,10 +4,12 @@ import { useLocale, useTranslations } from 'next-intl';
 import type { OutageEstimate } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 import { formatShortDuration, formatWholeHours } from '@/lib/utils/duration';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import {
   OUTAGE_BAR_HORIZON_MIN,
   OUTAGE_BAR_TICKS_MIN,
   OUTAGE_MIN_SEGMENT_PCT,
+  outageRecoveryClock,
   outageRecoveryLine,
   outageRecoveryPercent,
   outageRemainingBar,
@@ -52,6 +54,36 @@ import {
  * is `outageRemainingWindow`'s problem, not this component's: it arrives as an
  * absent key at least as often as the documented `null`, and the `=== null`
  * test that used to sit here formatted the difference as „NaN:NaN Std.".
+ *
+ * ## A clock time where the API can place one, a duration everywhere else
+ *
+ * „meist noch 25 Min. bis 1:00 Std." is a subtraction a visitor standing at the
+ * ride should not have to do, and for most of the day the answer is simply
+ * „zwischen 14:35 und 16:10 Uhr". What stops the component from computing it is
+ * the unit: `remaining` counts OPERATING minutes, so two hours left in a park
+ * shutting in twenty minutes is tomorrow morning, and the opening calendar that
+ * says so lives in the API. It sends the placed instants as
+ * `estimate.recoveryWindow`, and where they are missing — a park that publishes
+ * no hours, a calendar that does not reach — the duration sentence stays
+ * exactly as it was. Nothing here derives a time from minutes.
+ *
+ * **The sentence names the weekday, and never asks what day it is now.**
+ * `OutageNote` directly above settled this: „the park's current day" is not
+ * available identically on both sides of hydration, so a form chosen by
+ * comparing against now can only appear after mount, and a text swap in a
+ * subgrid whose row heights are shared across a whole row of cards is banned
+ * here. So the weekday comes from the instant alone. `from` always carries one;
+ * `to` carries one only where it falls on a later day, because that is the case
+ * a bare „11:00 Uhr" would be read as this evening. Both renders are identical
+ * whenever they happen, which is why this needs no mount guard.
+ *
+ * **No bar under a clock time.** The bar's axis is operating minutes, from
+ * „jetzt" to four hours. Where the window crosses a closing — the case the
+ * placed instants exist for — the picture would put the ride back in two hours
+ * while the sentence over it says tomorrow morning, and a picture that
+ * contradicts its caption is worse than no picture. Which of the two forms a
+ * park gets is a property of the park rather than of the ride, so the cards in
+ * one grid do not disagree.
  *
  * ## Why the numbers are drawn as well as written
  *
@@ -99,10 +131,18 @@ import {
  */
 export function OutageEstimateNote({
   estimate,
+  timezone,
   variant = 'compact',
   className,
 }: {
   estimate: OutageEstimate | undefined;
+  /**
+   * The park's IANA timezone. A clock time is stated in the park's own clock,
+   * the way every other time on these two surfaces is; without one the block
+   * keeps the duration sentence rather than naming a time in whichever zone the
+   * renderer happens to sit in.
+   */
+  timezone?: string;
   /**
    * `compact` says one thing, for a card where every row is shared with every
    * other card in the grid through the subgrid: the range and its bar, or the
@@ -118,19 +158,29 @@ export function OutageEstimateNote({
   if (!estimate) return null;
 
   const percent = outageRecoveryPercent(estimate);
+  const clock = outageRecoveryClock(estimate, timezone);
   const remaining = outageRemainingWindow(estimate);
-  const bar = outageRemainingBar(remaining);
+  // Only under the duration sentence. Under a clock time the bar would be
+  // drawn on the other unit — see the note on the component.
+  const bar = clock ? null : outageRemainingBar(remaining);
 
-  const range = remaining
-    ? remaining.to === null
-      ? t('rangeOpen', {
-          from: formatShortDuration(remaining.from, locale),
+  const range = clock
+    ? clock.to === null
+      ? t('clockRangeOpen', { from: formatClock(clock.from, timezone, locale, true) })
+      : t('clockRange', {
+          from: formatClock(clock.from, timezone, locale, true),
+          to: formatClock(clock.to, timezone, locale, clock.toOnLaterDay),
         })
-      : t('range', {
-          from: formatShortDuration(remaining.from, locale),
-          to: formatShortDuration(remaining.to, locale),
-        })
-    : null;
+    : remaining
+      ? remaining.to === null
+        ? t('rangeOpen', {
+            from: formatShortDuration(remaining.from, locale),
+          })
+        : t('range', {
+            from: formatShortDuration(remaining.from, locale),
+            to: formatShortDuration(remaining.to, locale),
+          })
+      : null;
 
   // A rounded 0 % would read as "never", a claim the curve does not make: the
   // thinnest measured bucket is still 8.5 %. If a future curve produced it,
@@ -169,6 +219,42 @@ export function OutageEstimateNote({
       ) : null}
     </div>
   );
+}
+
+/**
+ * One end of the clock window, in the park's zone and the reader's language.
+ *
+ * `withWeekday` is not a style choice: a bare „11:00 Uhr" is read as today, and
+ * whether it is today cannot be decided identically on both sides of hydration
+ * (see the note on the component). The weekday is therefore attached from the
+ * instant alone — always on the lower end, and on the upper one only where it
+ * sits on a later day, which is what `outageRecoveryClock` has already worked
+ * out against the park's calendar day.
+ *
+ * Falls back to the runtime's own zone rather than throwing, the way
+ * `OutageNote` does: an unknown zone costs the sentence its precision, not the
+ * card its render. The fallback cannot disagree across hydration here —
+ * `outageRecoveryClock` has already withheld the whole clock form for any zone
+ * `Intl` refuses, so a throw at this point means a zone that resolves there and
+ * not here, which no runtime does.
+ */
+function formatClock(
+  instant: string,
+  timezone: string | undefined,
+  locale: string,
+  withWeekday: boolean
+): string {
+  const options: Intl.DateTimeFormatOptions = {
+    ...(withWeekday ? { weekday: 'long' as const } : {}),
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+  const date = new Date(instant);
+  try {
+    return getDateTimeFormat(locale, { ...options, timeZone: timezone }).format(date);
+  } catch {
+    return getDateTimeFormat(locale, options).format(date);
+  }
 }
 
 /**

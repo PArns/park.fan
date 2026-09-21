@@ -16,6 +16,8 @@ import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { getAttractionBackgroundImage, getCardObjectPosition } from '@/lib/utils/park-assets';
+import { PlannerDayDemo } from '../trip-planner/_demos';
+import { demoEntries, demoPlanDay } from '../trip-planner/_fixtures';
 import { WaitSign } from './_chrome';
 import {
   buildDemoFixtures,
@@ -300,6 +302,32 @@ export function BadgeRowDemo({
       </div>
       <p className="text-muted-foreground text-xs leading-relaxed">{caption}</p>
     </div>
+  );
+}
+
+/**
+ * A whole planned day, drawn by the planner's own components.
+ *
+ * Imported from the planner's page rather than rebuilt here, and so is its
+ * fixture: `PlannerDayDemo` mounts `PlannerDayGrid`, `PlannerShowBand`,
+ * `PlannerContextBand` and `PlannerGridActions` against the payload the API
+ * answered on 4 September 2026 for Saturday 12 September at Phantasialand. A
+ * second day grid beside the real one would start lying at the first restyle,
+ * and a second copy of the day would be a second date to keep honest.
+ *
+ * The figure is operable — a block drags, snaps and recomputes its height — and
+ * inert: the demo holds its own state, the day has passed, so nothing is
+ * written to a reader's plan and the grid's weather query stays outside its
+ * horizon and never fires.
+ *
+ * Server-side like every block above it. `demoPlanDay()` reads the rides'
+ * photos out of the media database, and the free block's label is a word this
+ * page has in six languages.
+ */
+export async function PlannerDayFigure() {
+  const t = await getTranslations('planner.custom.icon');
+  return (
+    <PlannerDayDemo day={demoPlanDay()} entries={demoEntries(t('food'))} selected="demo-taron" />
   );
 }
 

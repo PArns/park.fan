@@ -425,10 +425,14 @@ export function Figure({
 }
 
 // ── Icon touchpoint cards ────────────────────────────────────────────────────
+/**
+ * `title` is a node, not a string, so a card can carry a glossary link on the term it is named
+ * after — the same thing {@link SectionHeading} does on the park pages. `body` was already one.
+ */
 export function TouchpointGrid({
   items,
 }: {
-  items: Array<{ icon: React.ElementType; title: string; body: React.ReactNode }>;
+  items: Array<{ icon: React.ElementType; title: React.ReactNode; body: React.ReactNode }>;
 }) {
   return (
     <div className="grid gap-4 sm:grid-cols-2">

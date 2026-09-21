@@ -365,10 +365,14 @@ fetched about **0.7 times a day** and each ride URL about **0.5** — a daily sw
 that could never be warm for it.
 
 That also bounds what this section can win. Trimming the payload moves transfer and a little CPU;
-the number of _renders_ is set by the 71,000-URL crawl surface, and the only lever on that is a
-product decision about the calendar's twenty-two-month span (212 parks × 22 months × 6 locales).
-The span was chosen deliberately — see `PARK_CALENDAR_MONTH_SPAN` for what it already refuses —
-so it is named here as the largest remaining cost item, not as a recommendation.
+the number of _renders_ is set by the crawl surface, which at the time of this table was 71,000
+URLs — 27,984 of them the calendar's, at 212 parks × 22 months × 6 locales.
+
+**That lever has since been pulled, twice.** `scheduleCoverage` trimmed the forward end per park
+on 2026-08-28 and `PARK_CALENDAR_MONTH_SPAN.back` went from twelve months to three on 2026-09-01.
+Counted from the live sitemap on 2026-09-21 the calendar surface is **5,820 URLs**, down 79 %, so
+the rows above are a record of what the route cost at 27,984 URLs and not a current bill. What the
+cut bought and what it costs in redirects is in `docs/optimization/decisions.md`.
 
 ### Where the remaining weight is (server render)
 

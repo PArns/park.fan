@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { adminFetch } from '../../_lib/api';
 import { analyzePhoto, commitPhoto } from '../../_lib/media-upload';
 import {
   dropQueued,
@@ -12,7 +13,7 @@ import {
   type QueuedPhoto,
 } from './queue';
 import { fieldTags, freeName, parkDate } from './naming';
-import type { ActiveUpload, BacklogResponse, UploadState } from './types';
+import type { ActiveUpload, BacklogResponse, CaptureSessionResponse, UploadState } from './types';
 
 /**
  * Taking a photograph and getting it into the repository, in a place with no network.
@@ -49,6 +50,35 @@ export function useCaptureUploads({ data, author }: Options) {
     if (!data) return;
     taken.current = new Set(data.park.takenNames);
   }, [data]);
+
+  /**
+   * Which pull request the photographs are landing in, asked once on mount.
+   *
+   * The state lives in git — the open PR carrying the `media/session-` branch
+   * prefix — and the commit endpoint resolves it there on every save, so the
+   * photographs of a reloaded tab join the right one either way. What the
+   * reload lost was the link: the bar at the bottom is the only way to the pull
+   * request from a phone, and it went blank mid-session with nothing to say
+   * that the session was still running.
+   *
+   * A commit that answered while this request was in flight wins — it is the
+   * newer answer to the same question.
+   */
+  useEffect(() => {
+    let cancelled = false;
+    adminFetch<CaptureSessionResponse>('/api/admin/media/session')
+      .then((payload) => {
+        const url = payload?.session?.url;
+        if (cancelled || !url) return;
+        setPullRequest((current) => current ?? url);
+      })
+      // No session, no token, no network: the bar stays as it was. Uploading
+      // reports a real failure with its reason.
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const refreshQueue = useCallback(() => {
     if (!queueAvailable()) return;
@@ -112,16 +142,20 @@ export function useCaptureUploads({ data, author }: Options) {
   }, []);
 
   /**
-   * Hand a ride one or more files.
+   * Hand a ride — or the park itself, with `slug: null` — one or more files.
    *
    * Sequential, deliberately: the first commit of a session opens the pull request
    * and the rest look it up and join. Fired in parallel they race to open their own,
    * which is the bug the media browser's batch dialog was rewritten to avoid.
+   *
+   * `chosenTags` are the ones a person set on the screen. They are added to what
+   * the phone can derive on its own and never replace it.
    */
   const upload = useCallback(
     async (
       files: FileList | File[],
-      ride: { slug: string | null; name: string; area: string | null }
+      ride: { slug: string | null; name: string; area: string | null },
+      chosenTags: string[] = []
     ) => {
       if (!data) return;
       const list = Array.from(files).filter(
@@ -157,7 +191,15 @@ export function useCaptureUploads({ data, author }: Options) {
           shotAt: dateOf(file.lastModified) ?? parkDate(data.park.timezone),
           gps: null,
           author,
-          tags: fieldTags(data.park.timezone),
+          // A `Set` rather than a concatenation: a chip the person pressed may
+          // already be in what the clock derived, and a tag twice in one sidecar
+          // is a row the tag audit has to explain away.
+          tags: [
+            ...new Set([
+              ...fieldTags(data.park.timezone, ride.slug ? 'ride' : 'park'),
+              ...chosenTags,
+            ]),
+          ],
           queuedAt: Date.now(),
           attempts: 0,
           lastError: null,
