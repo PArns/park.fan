@@ -773,6 +773,10 @@
       "until": "Cette attraction est fermée pour travaux jusqu’au {to}.",
       "untilUncertain": "Cette attraction est fermée pour travaux jusqu’au {to} selon les prévisions."
     },
+    "transportSystem": {
+      "label": "Transport",
+      "hint": "Un moyen de traverser le parc, pas une attraction. L’attente dépend des horaires, pas de l’affluence."
+    },
     "info": {
       "title": "Informations pratiques",
       "address": "Adresse",

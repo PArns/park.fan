@@ -773,6 +773,10 @@
       "until": "This ride is closed for works until {to}.",
       "untilUncertain": "This ride is closed for works, probably until {to}."
     },
+    "transportSystem": {
+      "label": "Transport",
+      "hint": "A way across the park, not a ride. The wait follows the timetable, not the crowd."
+    },
     "info": {
       "title": "Park information",
       "address": "Address",
