@@ -108,6 +108,8 @@ export const TabsWithHash = memo(function TabsWithHash({
     setOnlyFastPass,
     onlySingleRider,
     setOnlySingleRider,
+    appliedPills,
+    isNarrowing,
     openAttractionCount,
     wetAttractionCount,
     fastPassAttractionCount,
@@ -127,15 +129,6 @@ export const TabsWithHash = memo(function TabsWithHash({
     activeTab,
     parkStatus: park.status,
   });
-
-  /** Whether anything is currently cutting the grid down — see the rope-drop block below. */
-  const isNarrowing =
-    isSearching ||
-    riderHeight !== null ||
-    onlyOpen ||
-    wetMode !== null ||
-    onlyFastPass ||
-    onlySingleRider;
 
   // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the
   // tab highlight — 50+ glass cards, 55 restaurant cards, or the Leaflet map — so the paint
@@ -319,7 +312,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                     {t('heightFilter.reset')}
                   </button>
                 )}
-                {onlyOpen && (
+                {appliedPills.onlyOpen && (
                   <button
                     className="text-primary mt-2 text-sm underline hover:no-underline"
                     onClick={() => setOnlyOpen(false)}
@@ -327,7 +320,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                     {t('filterSection.resetOpenNow')}
                   </button>
                 )}
-                {wetMode !== null && (
+                {appliedPills.wetMode !== null && (
                   <button
                     className="text-primary mt-2 text-sm underline hover:no-underline"
                     onClick={() => setWetMode(null)}
@@ -335,7 +328,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                     {t('filterSection.resetWet')}
                   </button>
                 )}
-                {onlyFastPass && (
+                {appliedPills.onlyFastPass && (
                   <button
                     className="text-primary mt-2 text-sm underline hover:no-underline"
                     onClick={() => setOnlyFastPass(false)}
@@ -343,7 +336,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                     {t('filterSection.resetFastPass')}
                   </button>
                 )}
-                {onlySingleRider && (
+                {appliedPills.onlySingleRider && (
                   <button
                     className="text-primary mt-2 text-sm underline hover:no-underline"
                     onClick={() => setOnlySingleRider(false)}

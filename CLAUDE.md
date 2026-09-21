@@ -61,6 +61,9 @@ carries the reasoning, the measurements and the counter-examples.
   `pnpm build && pnpm start` at `localhost` — never `next dev`, never `127.0.0.1`. A score
   belongs to a **reader position**, printed as `y=` on every line: from `y=0` these pages read
   0.0002 while the field scores 0.98.
+- **[An interaction may not rebuild the grid in its own commit](docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)** — a control's own state
+  stays urgent, everything derived from it reads a `useDeferredValue` copy (search, tabs, the five
+  filter pills). Measure `event` entries inside the page, against `pnpm build && pnpm start`.
 - **[API budget per page](docs/rules/api-budget-per-page.md)** — the 5-minute live poll sends `LiveParkSnapshot`, a projection, never the
   park. Before adding a field, decide which of four kinds it is. Measure with
   `node scripts/measure-api-calls.mjs` before and after.

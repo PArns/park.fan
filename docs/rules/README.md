@@ -14,6 +14,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 
 - [Park page loading priority (REQUIREMENT)](park-page-loading-priority.md)
 - [A streamed section owes the page its height (REQUIREMENT)](a-streamed-section-owes-the-page-its-height.md)
+- [An interaction may not rebuild the grid in the commit that answers it (REQUIREMENT)](an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)
 - [API budget per page (REQUIREMENT)](api-budget-per-page.md)
 - [The page render is the bigger half of the API budget, and it was never audited (ANTI-PATTERN)](the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)
 - [A `revalidate` at a call site is somebody else's page (REQUIREMENT)](a-revalidate-at-a-call-site-is-somebody-elses-page.md)
