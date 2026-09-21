@@ -101,9 +101,9 @@ Neue FAQ-Frage mit datengenerierter Antwort → landet in `FAQStructuredData` �
 
 ## Phase 3 — Statistiken & Landingpages
 
-> **Stand 2026-09-21:** 3B ist gebaut, 3A halb — die Komponenten stehen, ihre Zahlen sind aber
-> client-geladen und damit nicht crawlbar. Das Konzept für den verbleibenden Teil samt Zensus über
-> alle 201 Parks und Aufwandsschätzung: [dedicated-landing-pages.md](dedicated-landing-pages.md).
+> **Stand 2026-09-21:** 3B ist gebaut, 3A halb — die Komponenten stehen, ihre Zahlen stehen aber in
+> keinem crawlbaren HTML. Das Konzept für den verbleibenden Teil samt Zensus über alle 201 Parks
+> und Aufwandsschätzung: [dedicated-landing-pages.md](dedicated-landing-pages.md).
 
 ### 3A · Park-Statistiken
 
@@ -115,8 +115,9 @@ Konkurriert gegen `queue-times.com/en-US/parks/{id}/stats`.
 `/v1/parks/<geo>/stats` und `/v1/parks/<geo>/stats/hourly`, mit Server-Seed-Helfern
 `getParkHistoricalStatsSeed` und `getParkHourlyProfileSeed` (`lib/api/stats.ts`). Gebaut sind auch
 die Karten: `ParkStatsSection` und `ParkHourlyProfileCard`. Was fehlt, ist eine Seite, die sie
-server-seitig rendert — auf der Parkseite laufen sie bewusst client-seitig, weil der kalte
-Stats-Compute deren Prerender gekippt hätte.
+server-seitig rendert. `ParkStatsSection` steht auf der Parkseite, läuft dort aber bewusst
+client-seitig, weil der kalte Stats-Compute deren Prerender gekippt hätte; `ParkHourlyProfileCard`
+rendert heute nur das Blog-Widget und die Guide-Seite, keine Park-Route.
 
 ### 3B · Landingpage-Texte für Top-Länder ✅
 

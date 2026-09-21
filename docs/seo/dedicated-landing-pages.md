@@ -17,12 +17,12 @@ census, not a sample: every one of the 201 parks that has attractions was probed
 
 The ticket named two candidates, `/wartezeiten` and `/crowd-calendar`. Their status differs.
 
-| Candidate                      | State                               | Where                                                                                                                                                                                 |
-| ------------------------------ | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/crowd-calendar`              | **built**                           | `app/[locale]/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]/page.tsx`, segments in `lib/parks/calendar-segments.ts`, own sitemap child (3,604 URLs/locale) |
-| Roadmap 3B, country intro text | **built**                           | `CountrySummarySection` on `app/[locale]/parks/[continent]/[country]/page.tsx` — data-derived, server-rendered                                                                        |
-| Roadmap 3A, park statistics    | **components exist, not crawlable** | `ParkStatsSection` + `ParkHourlyProfileCard`, loaded client-side via `/api/parks/.../stats` (`components/parks/park-page-shell.tsx:139`)                                              |
-| `/wartezeiten`                 | **open, and see §2**                | —                                                                                                                                                                                     |
+| Candidate                      | State                               | Where                                                                                                                                                                                                                                              |
+| ------------------------------ | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/crowd-calendar`              | **built**                           | `app/[locale]/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]/page.tsx`, segments in `lib/parks/calendar-segments.ts`, own sitemap child (3,604 URLs/locale)                                                              |
+| Roadmap 3B, country intro text | **built**                           | `CountrySummarySection` on `app/[locale]/parks/[continent]/[country]/page.tsx` — data-derived, server-rendered                                                                                                                                     |
+| Roadmap 3A, park statistics    | **components exist, not crawlable** | `ParkStatsSection` is on the park page but client-loaded via `/api/parks/.../stats` (`components/parks/park-page-shell.tsx:139`); `ParkHourlyProfileCard` exists and is rendered only by the blog widget and the guide page, never by a park route |
+| `/wartezeiten`                 | **open, and see §2**                | —                                                                                                                                                                                                                                                  |
 
 So the chassis for a park sub-page is in the repo already: localized segment map, rewrite rules,
 `ParkNavTiles`, `ParkSubPageStructuredData`, the redirect chain and a per-route sitemap child. A
@@ -42,12 +42,17 @@ the best-days text and the least-crowded FAQ. **A page that shows that table aga
 with its own URL, and it competes with the park page for the query the park page already ranks
 for.** That is the whole reason a bare `/wartezeiten` is the wrong page to build.
 
-What the park page does **not** put into the first HTML is the historical half. `ParkStatsSection`
-and `ParkHourlyProfileCard` are mounted client-side on purpose: the stats aggregate computes
-lazily on a cold park and a slow fill would have failed the static prerender, which is what pushed
-the whole route to `no-store` once before (`lib/api/stats.ts`, and the comment at
-`app/[locale]/parks/.../[park]/page.tsx:296`). Both components already accept a server seed and
-are used with one elsewhere — the park page simply does not pass it.
+What the park page does **not** put into the first HTML is the historical half, and it does so in
+two different ways. `ParkStatsSection` is on the page but mounted client-side on purpose: the
+stats aggregate computes lazily on a cold park and a slow fill would have failed the static
+prerender, which is what pushed the whole route to `no-store` once before (`lib/api/stats.ts`, and
+the comment at `app/[locale]/parks/.../[park]/page.tsx:296`). The typical-day curve is not on the
+park page at all — `ParkHourlyProfileCard` is rendered only by `blog-hourly-profile-widget.tsx`
+and the guide page's demos.
+
+Both components already accept a server seed and are used with one elsewhere, so neither is a new
+build: the stats section only has to be passed the seed it already takes, and the hourly card has
+to be placed for the first time.
 
 That is the gap, and it is the same gap a competitor occupies: `queue-times.com/parks/{id}/stats`
 ranks on the statistics intent, and park.fan has no URL for it at all.
@@ -169,7 +174,7 @@ cannot be cached, this argument does not carry over to it.
 | Crowd level per day, month URLs                    |      —      |      ✅       |    —     |
 | Best travel time text                              |     ✅      |      ✅       |    —     |
 | Crowd by month / weekday, 2-year window            | client-only |       —       |  **✅**  |
-| Typical day curve (P25/P50/P90 per hour)           | client-only |       —       |  **✅**  |
+| Typical day curve (P25/P50/P90 per hour)           |      —      |       —       |  **✅**  |
 | Rides ranked by typical peak wait, deep-linked     |      —      |       —       |  **✅**  |
 | Sample size and method                             |      —      |       —       |  **✅**  |
 
