@@ -3,7 +3,7 @@ title: 'Heide Park: Colossos wird 25, und nebenan stehen drei deutsche Premieren
 translationKey: heide-park-guide
 date: '2026-09-25'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   In Soltau steht die höchste reine Holzachterbahn Europas, und fast drei
@@ -22,6 +22,11 @@ tags:
   - deutschland
   - saison-2026
 category: guides
+coverImage:
+  src: /media/heide-park/colossos-feuerfigur-16x9.jpg
+  alt: 'Eine hölzerne Riesenfigur mit rot leuchtenden Augen speit eine Flamme in den blauen Himmel.'
+  caption: 'Die Feuerfigur am Colossos, im Land der Vergessenen.'
+  credit: 'Anakin / Unsplash'
 parkLinks:
   - heide-park
 rideLinks:
