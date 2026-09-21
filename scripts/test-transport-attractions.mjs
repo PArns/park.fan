@@ -26,14 +26,23 @@ function test(name, fn) {
   console.log(`  ✓ ${name}`);
 }
 
-test('Efteling’s east steam-train station is curated, spelled as the API spells it', () => {
-  assert.ok(
-    TRANSPORT_ATTRACTIONS.some(
-      (e) => e.parkSlug === 'efteling' && e.attractionSlug === 'stoomtrein-oost'
-    ),
-    'expected { efteling, stoomtrein-oost } in TRANSPORT_ATTRACTIONS'
-  );
-  assert.equal(isTransportAttraction('efteling', 'stoomtrein-oost'), true);
+test('the three curated Efteling entries are there, spelled as the API spells them', () => {
+  // PAR-343's decision of 2026-09-21: both steam-train stations and the monorail.
+  for (const slug of ['stoomtrein-oost', 'stoomtrein-marerijk', 'monorail']) {
+    assert.ok(
+      TRANSPORT_ATTRACTIONS.some((e) => e.parkSlug === 'efteling' && e.attractionSlug === slug),
+      `expected { efteling, ${slug} } in TRANSPORT_ATTRACTIONS`
+    );
+    assert.equal(isTransportAttraction('efteling', slug), true);
+  }
+});
+
+test('gondoletta and pagode are OUT, and stay out', () => {
+  // Both sit in the same park's attraction list and read like candidates.
+  // PAR-343 ruled on them: the gondoletta is a ride, the pagode is not a ride
+  // at all. Without this assertion a later pass "completes" the list with them.
+  assert.equal(isTransportAttraction('efteling', 'gondoletta'), false);
+  assert.equal(isTransportAttraction('efteling', 'pagode'), false);
 });
 
 test('the ticket’s spelling is NOT what the list holds — one o, not "ro"', () => {
@@ -54,9 +63,10 @@ test('every entry is unique — a duplicate pair is a curation mistake, not a se
 });
 
 test('the pair is matched, not the ride slug alone', () => {
-  // `monorail` and `gondoletta` exist in more than one park. Curating one
-  // park's must never mark another park's.
+  // `monorail` is not a name unique to Efteling. Curating one park's must never
+  // mark another park's ride of the same name.
   assert.equal(isTransportAttraction('phantasialand', 'stoomtrein-oost'), false);
+  assert.equal(isTransportAttraction('disneyland-park', 'monorail'), false);
   assert.equal(isTransportAttraction('efteling', 'baron-1898'), false);
 });
 

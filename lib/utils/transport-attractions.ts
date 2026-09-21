@@ -9,6 +9,11 @@
  * headliner algorithm — which reads wait times — occasionally ranks the station
  * among the park's highlights on that evidence alone.
  *
+ * Membership is a judgement about what a ride is for, not about how it looks in
+ * the attraction list, and it is made per entry rather than derived: Efteling's
+ * `gondoletta` is a boat ride through the park's scenery and stays out, while
+ * its `monorail` goes in.
+ *
  * The badge this list feeds is deliberately NOT gated on headliner status. A
  * station is a station on the days the algorithm promotes it and on the days it
  * does not; a marker that appeared and vanished with a computed rank would tell
@@ -33,10 +38,14 @@ export interface TransportAttraction {
  * because a typo here produces no badge and no error.
  */
 export const TRANSPORT_ATTRACTIONS: readonly TransportAttraction[] = [
-  // Efteling's steam railway, east station. Its sibling `stoomtrein-marerijk`,
-  // plus `monorail`, `gondoletta` and `pagode`, are the same kind of thing and
-  // are deliberately not here yet: PAR-343 curated the one case it verified.
+  // Efteling's steam railway, both of its stations, and the monorail.
   { parkSlug: 'efteling', attractionSlug: 'stoomtrein-oost' },
+  { parkSlug: 'efteling', attractionSlug: 'stoomtrein-marerijk' },
+  { parkSlug: 'efteling', attractionSlug: 'monorail' },
+  // Not here on purpose, decided on PAR-343: `gondoletta` is a ride rather than
+  // a way of getting somewhere, and `pagode` is not a ride at all. Both look
+  // like candidates from the park's attraction list, so the test pins them as
+  // negatives — otherwise a later pass "completes" the list with them.
 ];
 
 /**
