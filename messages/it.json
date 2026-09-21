@@ -2123,7 +2123,8 @@
     "error": "Non è stato possibile caricare il piano.",
     "noPlan": "Per questo giorno non c’è una previsione.",
     "overview": {
-      "empty": "Ancora nessun giorno pianificato."
+      "empty": "Ancora nessun giorno pianificato.",
+      "countdown": "tra {count, plural, one {# giorno} other {# giorni}}"
     },
     "planThisDay": "Pianifica le attrazioni per questo giorno",
     "unit": {

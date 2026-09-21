@@ -2123,7 +2123,8 @@
     "error": "Der Plan konnte nicht geladen werden.",
     "noPlan": "Für diesen Tag liegt keine Prognose vor.",
     "overview": {
-      "empty": "Noch keine Tage geplant."
+      "empty": "Noch keine Tage geplant.",
+      "countdown": "in {count, plural, one {# Tag} other {# Tagen}}"
     },
     "planThisDay": "Bahnen für diesen Tag einplanen",
     "unit": {

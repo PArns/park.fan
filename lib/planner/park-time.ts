@@ -1,4 +1,5 @@
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import type { PlannerState } from './types';
 
 /**
  * The planner's clock, which is the PARK's clock.
@@ -138,6 +139,22 @@ export function addDays(isoDate: string, days: number): string {
 }
 
 /**
+ * Whole calendar days from `from` to `to`, negative where `to` is the earlier one.
+ *
+ * Both dates are park-local calendar days, and the count is a count of NIGHTS
+ * between them — not of elapsed hours. Noon UTC on both sides for the reason
+ * {@link longDate} gives: a date string here names a day in some park's reading,
+ * and anchoring it at midnight lets a negative offset name the day before. From
+ * noon the subtraction is a whole number of days by construction, because UTC
+ * has no DST to shorten one.
+ */
+export function daysBetween(from: string, to: string): number {
+  const start = Date.parse(`${from}T12:00:00Z`);
+  const end = Date.parse(`${to}T12:00:00Z`);
+  return Math.round((end - start) / 86_400_000);
+}
+
+/**
  * Where a planned day sits against the park's own clock.
  *
  * One value rather than a date plus a minute, because the two decide the same
@@ -167,4 +184,58 @@ export function dayClock(date: string, timeZone: string, now: number = Date.now(
   if (date < today) return { phase: 'past' };
   if (date > today) return { phase: 'future' };
   return { phase: 'today', nowMinute: parkMinuteNow(timeZone, now) };
+}
+
+/** The next planned day in the whole plan, and how far off it is. */
+export interface NextPlannedDay {
+  parkSlug: string;
+  /** `YYYY-MM-DD`, in that park's own reading. */
+  date: string;
+  /** Nights from that park's today to the planned date. Always at least 1. */
+  inDays: number;
+}
+
+/**
+ * Which planned day comes next, across every park in the plan.
+ *
+ * There is no single "today" to measure this against, for the reason
+ * `planner-overview.tsx` states for its greying-out: a plan may hold
+ * Phantasialand and Magic Kingdom at once, and at 23:00 in Berlin those two
+ * parks are on different dates. So each park's days are measured against that
+ * park's own today, and what is compared across parks is the RESULT — the
+ * number of nights — rather than the dates, which are not read on one clock.
+ *
+ * Today's day is not the answer: it is the day being walked, not the one being
+ * waited for, and the list already calls it "Heute". A past day never is.
+ *
+ * Ties are broken by date and then by slug, so two parks the same number of
+ * nights out do not swap places between renders — `Object.values` follows
+ * insertion order, which is the order the visitor happened to plan in.
+ */
+export function nextPlannedDay(
+  state: PlannerState,
+  now: number = Date.now()
+): NextPlannedDay | null {
+  let best: NextPlannedDay | null = null;
+
+  for (const park of Object.values(state.parks)) {
+    const today = todayInZone(park.timezone, now);
+
+    for (const day of Object.values(park.days)) {
+      if (day.entries.length === 0) continue;
+      const inDays = daysBetween(today, day.date);
+      if (inDays < 1) continue;
+
+      if (
+        best === null ||
+        inDays < best.inDays ||
+        (inDays === best.inDays &&
+          (day.date < best.date || (day.date === best.date && park.slug < best.parkSlug)))
+      ) {
+        best = { parkSlug: park.slug, date: day.date, inDays };
+      }
+    }
+  }
+
+  return best;
 }

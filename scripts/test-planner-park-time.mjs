@@ -13,7 +13,9 @@
 
 import {
   addDays,
+  daysBetween,
   formatGridTime,
+  nextPlannedDay,
   parkMinuteNow,
   parkToday,
   resolveTimeZone,
@@ -110,6 +112,99 @@ test(
   'an unknown zone falls back to the reader, not to UTC',
   resolveTimeZone(undefined),
   Intl.DateTimeFormat().resolvedOptions().timeZone
+);
+
+// ── Nights between two park-local dates ──────────────────────────────────────
+test('the same day is no nights away', daysBetween('2026-09-04', '2026-09-04'), 0);
+test('a month boundary is still four nights', daysBetween('2026-09-29', '2026-10-03'), 4);
+// Europe/Berlin springs forward in the night of 2027-03-28, so those two dates
+// are 47 real hours apart. A night is a night: the count is of calendar days,
+// which is why both sides are anchored at noon UTC.
+test('a spring-forward night counts as one', daysBetween('2027-03-27', '2027-03-29'), 2);
+test('a date behind the reference counts down', daysBetween('2026-09-10', '2026-09-08'), -2);
+
+// ── The next planned day, across the whole trip ──────────────────────────────
+const entries = (count) =>
+  Array.from({ length: count }, (_, i) => ({ id: `e${i}`, startMinute: 600 }));
+const park = (slug, timeZone, days) => [
+  slug,
+  {
+    slug,
+    name: slug,
+    geo: { continent: 'europe', country: 'germany', city: 'bruehl' },
+    timezone: timeZone,
+    days: Object.fromEntries(
+      days.map(([date, count]) => [date, { date, entries: entries(count) }])
+    ),
+  },
+];
+const plan = (...parks) => ({
+  parks: Object.fromEntries(parks),
+  activeParkSlug: null,
+  activeDate: null,
+  version: 1,
+});
+
+test('an empty plan has no next day', nextPlannedDay(plan(), ACROSS_MIDNIGHT), null);
+
+// The panel's own case: at 23:30 UTC Phantasialand is already ON the 4th and
+// Magic Kingdom is still on the evening of the 3rd. The same date string is
+// today for one park and tomorrow for the other, so the two cannot be compared
+// as dates — only the measured nights can.
+{
+  const trip = plan(
+    park('phantasialand', 'Europe/Berlin', [['2026-09-04', 2]]),
+    park('magic-kingdom', 'America/New_York', [['2026-09-04', 1]])
+  );
+  const next = nextPlannedDay(trip, ACROSS_MIDNIGHT);
+  test('the park still on the evening before wins', next?.parkSlug, 'magic-kingdom');
+  test('and it is one night out', next?.inDays, 1);
+}
+
+// Today is the day being walked, not the day being waited for — the list
+// already calls it "Heute". A day behind it is gone.
+test(
+  'a plan holding only today and yesterday has no next day',
+  nextPlannedDay(
+    plan(
+      park('phantasialand', 'Europe/Berlin', [
+        ['2026-09-04', 3],
+        ['2026-09-02', 1],
+      ])
+    ),
+    ACROSS_MIDNIGHT
+  ),
+  null
+);
+
+// A day whose entries were all deleted is not a planned day: the list filters
+// those out, and a countdown to one would point at a row nobody can see.
+test(
+  'an emptied day is skipped for the one behind it',
+  nextPlannedDay(
+    plan(
+      park('phantasialand', 'Europe/Berlin', [
+        ['2026-09-06', 0],
+        ['2026-09-09', 1],
+      ])
+    ),
+    ACROSS_MIDNIGHT
+  )?.date,
+  '2026-09-09'
+);
+
+// `Object.values` follows insertion order, which is the order the visitor
+// happened to plan in. Two parks the same night out must not swap places.
+test(
+  'a tie is broken by slug, not by insertion order',
+  nextPlannedDay(
+    plan(
+      park('b-park', 'Europe/Berlin', [['2026-09-10', 1]]),
+      park('a-park', 'Europe/Berlin', [['2026-09-10', 1]])
+    ),
+    ACROSS_MIDNIGHT
+  )?.parkSlug,
+  'a-park'
 );
 
 // ── Report ───────────────────────────────────────────────────────────────────
