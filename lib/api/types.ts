@@ -643,6 +643,32 @@ export interface OutageEstimate {
    * not, and formatted the difference as „NaN:NaN Std.".
    */
   remaining?: { p25: number; median: number; p75?: number | null };
+  /**
+   * The same two quartiles placed on the park's opening calendar, as instants.
+   *
+   * The only field here a clock time may be built from. `remaining` is in
+   * operating minutes and may not be added to a wall clock: a ride with two
+   * operating hours left, in a park shutting in twenty minutes, comes back
+   * tomorrow morning, and only the API knows that because only the API has the
+   * calendar.
+   *
+   * Absent for a park that publishes no opening hours, and absent when the
+   * calendar does not reach far enough. There is deliberately no fallback —
+   * read it through `outageRecoveryClock`, which answers `null` and leaves the
+   * duration sentence standing.
+   *
+   * `to` follows `remaining.p75`: the key is **absent**, never `null`, when the
+   * upper quartile does not resolve (`ExcludeNullInterceptor` strips a null
+   * before it reaches the wire, so the type is written the way the wire
+   * behaves).
+   *
+   * `from` may already be in the past on a cached copy — up to about 15 minutes
+   * on a park page's server render. That reads as „any moment now" and is not
+   * an error: the instants were computed against the same moment
+   * `elapsedMinutes` was, so a stale payload stays consistent with itself,
+   * where a relative figure would silently re-base on the reader's clock.
+   */
+  recoveryWindow?: { from: string; to?: string };
   /** Whether the park carried its own curve here. Diagnostic, not for display. */
   basis: 'park' | 'pooled';
 }
