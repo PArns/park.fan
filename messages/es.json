@@ -2166,7 +2166,8 @@
     "error": "No se pudo cargar el plan.",
     "noPlan": "No hay previsión para este día.",
     "overview": {
-      "empty": "Aún no hay días planificados."
+      "empty": "Aún no hay días planificados.",
+      "countdown": "en {count, plural, one {# día} other {# días}}"
     },
     "planThisDay": "Planifica tus atracciones para este día",
     "unit": {

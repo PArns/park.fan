@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, MapPin, Trash2 } from 'lucide-react';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { cn } from '@/lib/utils';
-import { addDays, todayInZone } from '@/lib/planner/park-time';
+import { addDays, nextPlannedDay, todayInZone } from '@/lib/planner/park-time';
 import type { PlannerState } from '@/lib/planner/types';
 
 interface PlannerOverviewProps {
@@ -81,6 +81,17 @@ export function PlannerOverview({
       .sort((a, b) => a.name.localeCompare(b.name, locale));
   }, [state.parks, locale]);
 
+  /**
+   * The one day the panel counts down to — the nearest planned day still ahead,
+   * whichever park it belongs to.
+   *
+   * One badge rather than one per row. Every other day in the list is reachable
+   * by reading the date beside it; the question this answers is the one a date
+   * does not, which is how long the wait is, and it has a single answer for the
+   * whole trip.
+   */
+  const next = useMemo(() => nextPlannedDay(state), [state]);
+
   const newDay = onNewDay ? (
     <div className="border-border/60 border-b px-2 py-2">
       <button
@@ -121,6 +132,17 @@ export function PlannerOverview({
               {park.days.map((day) => {
                 const isActive = park.slug === activeParkSlug && day.date === activeDate;
                 const past = day.date < park.today;
+                // The countdown goes on the nearest day ahead, and only from two
+                // nights out: at one the row already says "Morgen", and at zero
+                // it says "Heute". Those two labels ARE the count, and printing
+                // "in 1 Tag" beside "Morgen" is the same arithmetic twice.
+                const countdown =
+                  next !== null &&
+                  next.parkSlug === park.slug &&
+                  next.date === day.date &&
+                  next.inDays >= 2
+                    ? next.inDays
+                    : null;
                 const done = day.entries.filter((entry) => entry.done).length;
                 // Same wording as the day picker for the two dates that have a
                 // name: a list that calls today "Do., 03. September" while the
@@ -149,6 +171,12 @@ export function PlannerOverview({
                       )}
                     >
                       <span className="min-w-0 flex-1 truncate text-sm">{label}</span>
+
+                      {countdown !== null && (
+                        <span className="text-primary shrink-0 text-[11px] font-medium tabular-nums">
+                          {t('overview.countdown', { count: countdown })}
+                        </span>
+                      )}
 
                       {/* A day everything has been ridden on gets a tick instead of
                         a count: "5 von 5" is arithmetic the reader should not

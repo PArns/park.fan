@@ -2166,7 +2166,8 @@
     "error": "The plan could not be loaded.",
     "noPlan": "There is no forecast for this day.",
     "overview": {
-      "empty": "No days planned yet."
+      "empty": "No days planned yet.",
+      "countdown": "in {count, plural, one {# day} other {# days}}"
     },
     "planThisDay": "Plan your rides for this day",
     "unit": {

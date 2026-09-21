@@ -2166,7 +2166,8 @@
     "error": "Het plan kon niet worden geladen.",
     "noPlan": "Voor deze dag is er geen prognose.",
     "overview": {
-      "empty": "Nog geen dagen gepland."
+      "empty": "Nog geen dagen gepland.",
+      "countdown": "over {count, plural, one {# dag} other {# dagen}}"
     },
     "planThisDay": "Attracties voor deze dag inplannen",
     "unit": {
