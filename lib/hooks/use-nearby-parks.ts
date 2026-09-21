@@ -1,7 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
-import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
+import {
+  CACHE_MAX_AGE_MS,
+  isMeaningful,
+  readCache,
+  readCacheEntry,
+  writeCache,
+} from '@/lib/nearby/nearby-cache';
+import type { NearbyResponse } from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
 export interface UseNearbyParksOptions {
@@ -23,83 +30,6 @@ export interface UseNearbyParksOptions {
 // "nearest parks" list — keeping the hero welcome and the card in sync.
 export const HOME_NEARBY_RADIUS_M = IN_PARK_FALLBACK_DISTANCE_M; // 1 km
 export const HOME_NEARBY_LIMIT = 6;
-
-const CACHE_KEY = 'nearby-parks-v2';
-const CACHE_MAX_AGE_MS = 5 * 60 * 1000; // matches staleTime
-// Skip placeholder if user has moved more than this distance since the cache was written.
-const CACHE_COORD_MAX_DIST_KM = 10;
-
-interface CachedNearby {
-  data: NearbyResponse;
-  cachedAt: number;
-  lat: number | null;
-  lng: number | null;
-}
-
-/** Only count results that are worth showing — in_park always qualifies, nearby_parks needs ≥1 park. */
-function isMeaningful(data: NearbyResponse): boolean {
-  if (data.type === 'in_park') return true;
-  if (data.type === 'nearby_parks') return ((data.data as NearbyParksData).parks?.length ?? 0) > 0;
-  return false;
-}
-
-function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
-  const R = 6371;
-  const dLat = ((lat2 - lat1) * Math.PI) / 180;
-  const dLng = ((lng2 - lng1) * Math.PI) / 180;
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
-
-/**
- * Read from localStorage. Returns undefined when:
- * - No entry exists
- * - Entry is older than CACHE_MAX_AGE_MS
- * - Both current and cached coords are present and user has moved > CACHE_COORD_MAX_DIST_KM
- *
- * Pass null for both coords to skip the distance check (used at init time before GPS resolves).
- */
-function readCacheEntry(
-  currentLat: number | null,
-  currentLng: number | null
-): CachedNearby | undefined {
-  if (typeof window === 'undefined') return undefined;
-  try {
-    const raw = localStorage.getItem(CACHE_KEY);
-    if (!raw) return undefined;
-    const cached: CachedNearby = JSON.parse(raw);
-    if (!cached?.data || !cached.cachedAt) return undefined;
-    if (Date.now() - cached.cachedAt > CACHE_MAX_AGE_MS) return undefined;
-    if (
-      currentLat != null &&
-      currentLng != null &&
-      cached.lat != null &&
-      cached.lng != null &&
-      haversineKm(currentLat, currentLng, cached.lat, cached.lng) > CACHE_COORD_MAX_DIST_KM
-    ) {
-      return undefined;
-    }
-    return cached;
-  } catch {
-    return undefined;
-  }
-}
-
-function readCache(
-  currentLat: number | null,
-  currentLng: number | null
-): NearbyResponse | undefined {
-  return readCacheEntry(currentLat, currentLng)?.data;
-}
-
-function writeCache(data: NearbyResponse, lat: number | null, lng: number | null): void {
-  try {
-    const entry: CachedNearby = { data, cachedAt: Date.now(), lat, lng };
-    localStorage.setItem(CACHE_KEY, JSON.stringify(entry));
-  } catch {}
-}
 
 /**
  * Hook to fetch nearby parks using React Query.
@@ -205,8 +135,11 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     // it the entry expires when it actually expires. Both stay off while simulating, same as
     // the placeholder — a simulated location must never seed or read the real cache.
     //
-    // The distance guard inside readCacheEntry still applies, so when GPS coords arrive and
-    // the query key changes, an entry from more than 10 km away seeds nothing.
+    // When GPS coords arrive and the query key changes, readCacheEntry seeds the new query
+    // only from an entry that asked the same question: one written from coordinates, and from
+    // no further than 10 km away. The GeoIP entry the page just wrote seeds nothing, so the
+    // first request with real coordinates goes out immediately instead of waiting out
+    // `staleTime` — that wait is what kept the in-park hero from ever appearing.
     initialData: simMode
       ? undefined
       : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.data,

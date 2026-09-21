@@ -654,6 +654,44 @@ Note the case that was never real: a park with **thin history** does not produce
 API answers it with a 200 and an aggregate to match, so `null` never meant "too little history",
 however the route's comment read. Guarded by `pnpm test:stats-fetchers`.
 
+## A cached entry may only seed the question it answered (Sep 2026)
+
+The homepage asks `/api/nearby` twice on a first visit. Once without coordinates — the backend
+geolocates the request IP — and again with real coordinates the moment the visitor grants location
+through the banner. Those are two React Query keys, and the second one is seeded from
+`localStorage` by `initialData` plus `initialDataUpdatedAt`, so `staleTime` applies to whatever it
+finds.
+
+It found the entry the IP request had written seconds earlier. React Query dated it to a moment
+ago, declared the GPS query fresh, and **sent no request for five minutes**. Measured against
+production at 390 px, GPS on the Phantasialand entrance, permission granted after load:
+
+```
+getCurrentPosition:  { ok: true, lat: 50.7989, lng: 6.8792 }   the browser delivers
+pf_geo_optin:        1                                          the context stored the grant
+nearby requests:     ["/api/nearby?radius=1000&limit=6"]        only the IP one
+h1:                  "Wo lohnt sich heute das Anstehen?"        not "Willkommen im Phantasialand"
+```
+
+Deleting `localStorage['nearby-parks-v2']` immediately before the click — the only difference
+between the two runs — sent the coordinate request and flipped the headline. So a visitor standing
+at the gate read the generic homepage, which is the one place the in-park hero exists for.
+
+The distance guard that should have caught it needs coordinates on **both** sides, and the IP entry
+has none, so it fell through every check and seeded any coordinate query at any distance. The
+comment above `initialData` claimed the opposite in writing, which is why the gap survived five
+weeks: it is true for an entry that has coordinates, and the failing entry is the one that does
+not.
+
+**The rule:** an entry may seed a query only when both asked the same question. An answer
+geolocated from an IP is city-level at best and can never resolve the 1 km in-park radius, so it is
+not a weaker version of a GPS answer — it is an answer to a different question, and `staleTime`
+must not be allowed to treat it as one. `sameLocationBasis` in `lib/nearby/nearby-cache.ts`
+compares the two, and the reverse direction holds too. Both savings survive: a reload inside the
+five-minute window still sends nothing, and `placeholderData` still paints the previous result
+while the new one loads, because that comes from the previous query's in-memory data and not from
+this entry. Guarded by `pnpm test:nearby-cache`, whose first two cases fail without the guard.
+
 ## Related
 
 - [System Overview](system-overview.md)
