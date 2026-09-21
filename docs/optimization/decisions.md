@@ -850,23 +850,37 @@ default, so the chain runs once. Narrowing `tsconfig` for the build buys nothing
 **Deploy cadence is a real lever, and it is now automatic for the free case.** 3 of the last 40
 commits touched only `docs/`, `todo.md`, `CLAUDE.md` or `.github/`, and each built and shipped
 an identical site. `ignoreCommand` runs `scripts/vercel-ignore-build.sh`, which diffs against
-`VERCEL_GIT_PREVIOUS_SHA` and skips only when every changed path is on a short anchored
+`VERCEL_GIT_PREVIOUS_SHA` and skips when every changed path is on a short anchored
 allowlist. It builds whenever it cannot be sure: no previous SHA, a SHA missing from a shallow
 clone, a failed diff, an empty diff. `content/blog/**`, `public/media/**` and `messages/**` are
 deliberately absent from the list, because each is the input to a generator and a README inside
 one of them is not worth a glob that could skip an article's deploy.
 
+**The second skip is not about paths at all: a batch of merges.** Every squash merge of a batch
+but the last one carries `[skip deploy]` in its message, and the script skips those production
+builds before it looks at a single path. The batch is not lost, because the diff runs against
+the last successful deployment and a skipped build never becomes one, so the closing merge
+builds every file the batch touched — 4 PRs merged at once cost 1 build instead of 4. Previews
+are untouched: a preview belongs to its pull request, where the eventual squash message does not
+exist yet. Should the closing merge fail and leave a marked commit as the tip, the way out is
+Vercel's own: redeploy from the dashboard with **Use project's Ignore Build Step** unchecked
+([Vercel docs](https://vercel.com/docs/monorepos#ignoring-the-build-step)), because a plain
+redeploy runs this script like any other build. Any commit without the marker builds as well —
+only `HEAD` is read.
+
 **The asymmetry is the whole design, so it is pinned rather than argued.** A needless build
 costs minutes of Build CPU. A skipped build that should have run is silent: the deploy reports
 success, Vercel keeps the previous deployment aliased, and a published article stays invisible
-until somebody happens to push again. `pnpm test:ignore-build` (28 cases, part of
+until somebody happens to push again. `pnpm test:ignore-build` (33 cases, part of
 `release:check`) drives the real script against a throwaway git repository and asserts the
 answer for every input a build step reads — a post in each of the six locales, an author, the
 categories, an agent `SKILL.md` whose served bytes carry a build-time SHA-256, homepage content,
 a photo, a sidecar, a translation file, the lockfile, `.nvmrc` — plus the two shapes a careless
 allowlist gets wrong: a commit touching documentation AND a post (08764e8 is a real one, six
 posts alongside `CLAUDE.md`), and `content/blog/README.md`, which an unanchored `README.md`
-pattern would swallow. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,
+pattern would swallow. The five cases for the marker run it against a commit the allowlist would
+have built, in production and in preview, and read the closing build's own file list to prove
+the skipped merges reached it. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,
 `todo.md` or the root `README.md`; the only grep hit is `generate-media-manifest.mjs`
 explicitly EXCLUDING `README.md` when it collects posts.
 
