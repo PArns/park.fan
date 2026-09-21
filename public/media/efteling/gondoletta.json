@@ -2,10 +2,7 @@
   "park": "efteling",
   "ride": "gondoletta",
   "area": "Reizenrijk",
-  "tags": [
-    "photo",
-    "ride"
-  ],
+  "tags": ["photo", "ride"],
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",
