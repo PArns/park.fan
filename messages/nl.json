@@ -549,6 +549,8 @@
     "tileAttractionsHeadliner": "Headliners vanaf <b>{min} min</b>",
     "tileCalendar": "Beste bezoekdagen, zo ver als de openingstijden reiken",
     "tileCalendarQuietDay": "Rustigste dag: <b>{day}</b> ({days, plural, =0 {vandaag} =1 {morgen} other {over # dagen}})",
+    "tileStatsLabel": "Statistiek",
+    "tileStats": "Per maand, weekdag en uur",
     "tileMap": "Wachttijden op de plattegrond · <b>{lands}</b> themagebieden",
     "tileMapPlain": "Wachttijden op de plattegrond",
     "tileShowsNext": "Volgende: <b>{time}</b> · over {duration}",
@@ -905,6 +907,7 @@
       "p50": "Typisch",
       "p90": "Piek",
       "sampleDaysShort": "dagen",
+      "recordLink": "Alle cijfers van dit park",
       "noData": "Nog niet genoeg historische data beschikbaar.",
       "comparisonTitle": "Vergeleken met andere parken",
       "parkAverage": "Parkgemiddelde",
@@ -1026,6 +1029,39 @@
         "varHours": "Openingstijden",
         "varHolidays": "Feestdagen en schoolvakanties",
         "varWeather": "Weersverwachting"
+      }
+    },
+    "statsPage": {
+      "breadcrumb": "Gemiddelde wachttijden",
+      "h1Suffix": "Gemiddelde wachttijden",
+      "metaTitle": "{park}: gemiddelde wachttijden",
+      "metaTitleShort": "{park}: wachttijden gemiddeld",
+      "metaDescription": "Hoe lang sta je echt in de rij {inPark} in {city}? Typische en piekwachttijden per maand, weekdag en uur, gemeten over {days} openingsdagen.",
+      "metaDescriptionNoCity": "Hoe lang sta je echt in de rij {inPark}? Typische en piekwachttijden per maand, weekdag en uur, gemeten over {days} openingsdagen.",
+      "leadBusiest": "Het drukst is het {inPark} in {months}, met typisch {minutes} minuten.",
+      "leadQuietest": "{count, plural, =1 {Het rustigst blijft {days}, met {minutes} minuten.} other {Het rustigst blijven {days}, met telkens {minutes} minuten.}}",
+      "leadLongest": "De langste rij staat meestal bij {ride}: typisch {minutes} minuten.",
+      "leadFallback": "Wachttijden {inPark} per maand, weekdag en uur, gemeten over {days} openingsdagen.",
+      "hourlyTitle": "De typische dag",
+      "hourlyHint": "Uit {days} openingsdagen van het afgelopen jaar.",
+      "nextTitle": "Verder naar",
+      "nextLive": "Actuele wachttijden",
+      "nextLiveBody": "Wat de rijen op dit moment aangeven, attractie voor attractie.",
+      "nextCalendar": "Wachttijden-kalender",
+      "nextCalendarBody": "Verwachte drukte dag voor dag, met openingstijden en schoolvakanties.",
+      "method": {
+        "title": "Waar deze cijfers vandaan komen",
+        "measured": "Elk cijfer op deze pagina is gemeten, niet geschat. De bron is de <posted>aangegeven wachttijd</posted> die {inPark} wordt gepubliceerd: park.fan leest die doorlopend uit en legt elke aflezing vast met een tijdstempel. Deze analyse beslaat {days} openingsdagen uit {years} jaar.",
+        "percentiles": "„Typisch” is de mediaan van alle aflezingen: de helft van de <wait>wachttijden</wait> lag eronder, de helft erboven. „Piek” is het 90e percentiel, de waarde die slechts één op de tien aflezingen overschreed. De mediaan zegt waarop je moet rekenen, de piek zegt hoe een volle dag eruitziet. De <crowd>drukte</crowd> van een maand vat beide samen over alle attracties.",
+        "hourly": "Het dagverloop rust op een korter venster: {days} openingsdagen sinds {from}. Uren waarin een attractie niets meldde, blijven leeg. Een gat is geen nul."
+      },
+      "dataset": {
+        "name": "Wachttijdstatistiek {forPark}",
+        "description": "Typische en piekwachttijden {inPark} per maand, weekdag, attractie en uur, uit {days} gemeten openingsdagen over {years} jaar.",
+        "varTypical": "Typische wachttijd (mediaan)",
+        "varPeak": "Piekwachttijd (90e percentiel)",
+        "varCrowd": "Drukte",
+        "varSampleDays": "Gemeten openingsdagen"
       }
     },
     "planDayCta": "Een dag in {park} plannen",

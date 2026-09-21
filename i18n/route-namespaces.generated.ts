@@ -102,6 +102,16 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'planner',
     'share',
   ],
+  '/parks/[continent]/[country]/[city]/[park]/average-wait-times': [
+    'nearby',
+    'parkCard',
+    'parks',
+    'pushAlerts.pushErrors',
+    'pushAlerts.rideDialog',
+    'pushAlerts.showBell',
+    'pushAlerts.showDialog',
+    'share',
+  ],
   '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
     'attractions.historyLegend',
     'nearby',

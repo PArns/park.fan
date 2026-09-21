@@ -12,7 +12,7 @@ The URL of the index is the one submitted in Search Console, which is why the sp
 
 hreflang still stays out of the children: every attraction page already serves the complete alternate set from its `<head>`, which Google weighs the same, so 42 MB of XML would buy a second copy of a signal that is already there. Search Console also reports coverage per sitemap file, so the split turns one undiagnosable number into six comparable ones — expect the six children to appear as "Discovered" with coverage starting from zero for the first few weeks.
 
-**The calendar months were split for the same reason, one build later.** They shipped inside `app/sitemap.ts` first, and that is how the ceiling got measured: 212 parks × 22 months × 6 locales was 27,984 entries, and with that file's seven-alternate `xhtml:link` block per URL the main sitemap came out at **39.5 MB against the 50 MB limit** — 32,748 URLs, so plenty of headroom on the count and almost none on the bytes. A file over the limit is rejected whole, which would have taken the park pages, the geo hubs, the glossary and the blog down with the calendar. Split out, `/sitemap.xml` is back to 4,764 URLs / 4.6 MB and each calendar child is about 0.6 MB. Two later cuts shrank the children further — the `scheduleCoverage` trim on the forward end (2026-08-28) and `PARK_CALENDAR_MONTH_SPAN.back` from twelve months to three (2026-09-01) — so counted on 2026-09-21 a child holds **970 URLs, 5,820 across the six locales**. The split stands on the span, not on that count: raising `back` puts the bytes back.
+**The calendar months were split for the same reason, one build later.** They shipped inside `app/sitemap.ts` first, and that is how the ceiling got measured: 212 parks × 22 months × 6 locales was 27,984 entries, and with that file's seven-alternate `xhtml:link` block per URL the main sitemap came out at **39.5 MB against the 50 MB limit** — 32,748 URLs, so plenty of headroom on the count and almost none on the bytes. A file over the limit is rejected whole, which would have taken the park pages, the geo hubs, the glossary and the blog down with the calendar. Split out, `/sitemap.xml` came back to 4,764 URLs / 4.6 MB and each calendar child is about 0.6 MB; adding the wait-time record's 714 URLs on 2026-09-21 put the main file at **5,557 URLs / 5.78 MB**, measured off the built file. Two later cuts shrank the children further — the `scheduleCoverage` trim on the forward end (2026-08-28) and `PARK_CALENDAR_MONTH_SPAN.back` from twelve months to three (2026-09-01) — so counted on 2026-09-21 a child holds **970 URLs, 5,820 across the six locales**. The split stands on the span, not on that count: raising `back` puts the bytes back.
 
 Three rules decide which months are listed, and each prevents a specific wrong URL. **The current month is skipped** — its content is the hub's, and the route canonicals `/2026/8` to `/…/wartezeiten-kalender` in August, so listing it would be a self-inflicted duplicate. **The range stops one month short of the route's window at each end** — since 2026-09-01 that is 2 of 3 back and 11 of 12 forward: this file is cached for a day while the route recomputes its range from a live clock, so at a month rollover a cached sitemap would otherwise advertise the month that just fell off the back. That month does not 404, it 308s to the hub, which is worse in the one way that counts: a redirect we hand a crawler in a sitemap of our own making. And **the window is measured from today in the park**, via `currentParkCalendarMonth(park.timezone)`, exactly as the page does it.
 
@@ -24,22 +24,33 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 
 ## What IS in the sitemaps
 
-| URLs                                                                | Priority | changeFrequency | lastModified              |
-| ------------------------------------------------------------------- | -------- | --------------- | ------------------------- |
-| `/{locale}` (home)                                                  | 0.9      | weekly          | –                         |
-| `/{locale}/parks` (overview hub)                                    | 0.8      | weekly          | observed (catalog)        |
-| `/{locale}/parks/{continent}` + `/{country}` hubs                   | 0.6–0.7  | weekly          | observed (catalog)        |
-| `/{locale}/parks/…/{city}` hubs (**only multi-park cities**)        | 0.6      | weekly          | observed (catalog)        |
-| `/{locale}/parks/{continent}/{country}/{city}/{park}`               | 1.0      | daily           | observed (content change) |
-| `/{locale}/parks/…/{park}/{attraction}` (own sitemap)               | 0.6      | weekly          | observed (content change) |
-| `/{locale}/parks/…/{park}/{calendar-segment}` (hub)                 | 0.8      | weekly          | –                         |
-| `/{locale}/parks/…/{park}/{calendar-segment}/{y}/{m}` (own sitemap) | 0.4–0.6  | weekly–monthly  | –                         |
-| `/{locale}/{glossary-segment}/{term}`                               | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
-| `/{locale}/blog/{slug}` (**blog-live locales only**)                | 0.6      | monthly         | `updatedAt ?? date`       |
-| `/{locale}/blog` + category/tag/author listings                     | 0.4–0.7  | daily–weekly    | newest post in the list   |
-| `/{locale}/search` (plain, no query)                                | 0.5      | monthly         | –                         |
-| `/{locale}/{howto-segment}` (the guide, localized slug)             | 0.8      | monthly         | –                         |
-| `/{locale}/{glossary-segment}` (index)                              | 0.5      | weekly          | `GLOSSARY_CONTENT_DATE`   |
+| URLs                                                                    | Priority | changeFrequency | lastModified              |
+| ----------------------------------------------------------------------- | -------- | --------------- | ------------------------- |
+| `/{locale}` (home)                                                      | 0.9      | weekly          | –                         |
+| `/{locale}/parks` (overview hub)                                        | 0.8      | weekly          | observed (catalog)        |
+| `/{locale}/parks/{continent}` + `/{country}` hubs                       | 0.6–0.7  | weekly          | observed (catalog)        |
+| `/{locale}/parks/…/{city}` hubs (**only multi-park cities**)            | 0.6      | weekly          | observed (catalog)        |
+| `/{locale}/parks/{continent}/{country}/{city}/{park}`                   | 1.0      | daily           | observed (content change) |
+| `/{locale}/parks/…/{park}/{attraction}` (own sitemap)                   | 0.6      | weekly          | observed (content change) |
+| `/{locale}/parks/…/{park}/{calendar-segment}` (hub)                     | 0.8      | weekly          | –                         |
+| `/{locale}/parks/…/{park}/{calendar-segment}/{y}/{m}` (own sitemap)     | 0.4–0.6  | weekly–monthly  | –                         |
+| `/{locale}/parks/…/{park}/{stats-segment}` (**displayable parks only**) | 0.7      | monthly         | –                         |
+| `/{locale}/{glossary-segment}/{term}`                                   | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
+| `/{locale}/blog/{slug}` (**blog-live locales only**)                    | 0.6      | monthly         | `updatedAt ?? date`       |
+| `/{locale}/blog` + category/tag/author listings                         | 0.4–0.7  | daily–weekly    | newest post in the list   |
+| `/{locale}/search` (plain, no query)                                    | 0.5      | monthly         | –                         |
+| `/{locale}/{howto-segment}` (the guide, localized slug)                 | 0.8      | monthly         | –                         |
+| `/{locale}/{glossary-segment}` (index)                                  | 0.5      | weekly          | `GLOSSARY_CONTENT_DATE`   |
+
+**The wait-time record is the one URL class in this file that is not the whole catalogue.** It is
+published only for a park whose two-year aggregate the API marks `meta.displayable` — 119 of 210
+on 2026-09-21, so 714 URLs rather than 1,206 — because the other 91 would be tables built from a
+handful of measured days, 222 of them from none at all, and the route 404s for them on purpose
+(`docs/seo/dedicated-landing-pages.md` §5). `app/sitemap.ts` asks `parksWithStatsPage()` once per
+build; a park whose probe fails is left out rather than advertised, since a day of lost discovery
+is cheaper than a 404 in the file. It carries no `lastModified` for the same reason the calendar
+hub carries none: the aggregate behind it is recomputed daily on every park at once, and one
+identical date across a whole URL class is the signal that gets `lastmod` discounted wholesale.
 
 The six URLs still marked `–` are `/`, `/search`, `/fancast`, `/contribute`, the guide and the
 best-time hub, ×6 locales — 36 in total. They are code, not content: nothing writes down when they

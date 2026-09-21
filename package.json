@@ -73,6 +73,7 @@
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
     "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
+    "test:park-stats-derive": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-stats-derive.mjs",
     "test:content-changes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-content-changes.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",

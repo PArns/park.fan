@@ -2,6 +2,8 @@
 
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
+import { ArrowRight } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
@@ -61,6 +63,17 @@ interface ParkStatsSectionProps {
    * prerendered blog posts seed.
    */
   initialStats?: ParkHistoricalStats | null;
+  /**
+   * Locale-relative path of the park's wait-time record page, which the chapter header links to.
+   *
+   * Passed by `ParkPageShell`, so the park page and the crowd calendar both carry it, and read
+   * only by the settled/seeded render. That is the whole gate: this component already returns
+   * `null` unless `meta.displayable`, which is the same flag the route is gated on — so the link
+   * exists exactly where the page does, and neither the park page nor the calendar has to spend
+   * an upstream call finding out. The blog widgets pass nothing; a post argues from one table and
+   * has its own links.
+   */
+  statsPageHref?: string;
 }
 
 /**
@@ -81,6 +94,7 @@ export function ParkStatsSection({
   hideHeading = false,
   flat = false,
   initialStats,
+  statsPageHref,
 }: ParkStatsSectionProps) {
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
   // static prerender renders the placeholder rather than an empty section.
@@ -113,6 +127,7 @@ export function ParkStatsSection({
           show={show}
           hideHeading={hideHeading}
           flat={flat}
+          statsPageHref={statsPageHref}
         />
       );
     }
@@ -135,6 +150,7 @@ export function ParkStatsSection({
       show={show}
       hideHeading={hideHeading}
       flat={flat}
+      statsPageHref={statsPageHref}
     />
   );
 }
@@ -150,6 +166,7 @@ function StatsContent({
   show,
   hideHeading,
   flat,
+  statsPageHref,
 }: {
   stats: ParkHistoricalStats;
   continent: string;
@@ -161,6 +178,7 @@ function StatsContent({
   show: ReadonlyArray<'attractions' | 'months' | 'weekdays'>;
   hideHeading: boolean;
   flat: boolean;
+  statsPageHref?: string;
 }) {
   const t = useTranslations('parks.stats');
   const tParks = useTranslations('parks');
@@ -290,6 +308,17 @@ function StatsContent({
       <ParkStatsHeader
         hidden={hideHeading}
         subtitle={t('subtitle', { days: stats.meta.totalSampleDays })}
+        action={
+          statsPageHref ? (
+            <Link
+              href={statsPageHref}
+              className="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
+            >
+              {t('recordLink')}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          ) : undefined
+        }
         className={hideHeading ? undefined : 'mb-0 rounded-b-none'}
       />
 

@@ -549,6 +549,8 @@
     "tileAttractionsHeadliner": "Di punta da <b>{min} min</b>",
     "tileCalendar": "Giorni migliori, fin dove arriva il calendario",
     "tileCalendarQuietDay": "Giorno più tranquillo: <b>{day}</b> ({days, plural, =0 {oggi} =1 {domani} other {tra # giorni}})",
+    "tileStatsLabel": "Statistiche",
+    "tileStats": "Per mese, giorno e ora",
     "tileMap": "Tempi di attesa sulla mappa · <b>{lands}</b> aree tematiche",
     "tileMapPlain": "Tempi di attesa sulla mappa",
     "tileShowsNext": "Prossimo: <b>{time}</b> · tra {duration}",
@@ -905,6 +907,7 @@
       "p50": "Tipico",
       "p90": "Picco",
       "sampleDaysShort": "giorni",
+      "recordLink": "Tutti i numeri del parco",
       "noData": "Dati storici insufficienti al momento.",
       "comparisonTitle": "Rispetto ad altri parchi",
       "parkAverage": "Media del parco",
@@ -1026,6 +1029,39 @@
         "varHours": "Orari di apertura",
         "varHolidays": "Festività e vacanze scolastiche",
         "varWeather": "Previsioni meteo"
+      }
+    },
+    "statsPage": {
+      "breadcrumb": "Tempi di attesa medi",
+      "h1Suffix": "Tempi di attesa medi",
+      "metaTitle": "{park}: tempi di attesa medi",
+      "metaTitleShort": "{park}: attesa media",
+      "metaDescription": "Quanto si aspetta davvero {inPark} a {city}? Attesa tipica e di picco per mese, giorno e ora, misurata su {days} giorni di apertura.",
+      "metaDescriptionNoCity": "Quanto si aspetta davvero {inPark}? Attesa tipica e di picco per mese, giorno e ora, misurata su {days} giorni di apertura.",
+      "leadBusiest": "{count, plural, =1 {Il mese più affollato {inPark} è {months}, con {minutes} minuti nella norma.} other {I mesi più affollati {inPark} sono {months}, con {minutes} minuti nella norma.}}",
+      "leadQuietest": "{count, plural, =1 {Il giorno più tranquillo resta {days}, con {minutes} minuti.} other {I giorni più tranquilli restano {days}, con {minutes} minuti ciascuno.}}",
+      "leadLongest": "La fila più lunga è di solito quella di {ride}: {minutes} minuti nella norma.",
+      "leadFallback": "I tempi di attesa {inPark} per mese, giorno e ora, misurati su {days} giorni di apertura.",
+      "hourlyTitle": "La giornata tipo",
+      "hourlyHint": "Da {days} giorni di apertura dell’ultimo anno.",
+      "nextTitle": "Dove andare ora",
+      "nextLive": "Tempi di attesa in diretta",
+      "nextLiveBody": "Quello che le file segnano in questo momento, attrazione per attrazione.",
+      "nextCalendar": "Calendario tempi di attesa",
+      "nextCalendarBody": "Affluenza prevista giorno per giorno, con orari e vacanze scolastiche.",
+      "method": {
+        "title": "Da dove vengono questi numeri",
+        "measured": "Ogni numero di questa pagina è misurato, non stimato. La fonte è il <posted>tempo di attesa esposto</posted> pubblicato {inPark}: park.fan lo legge di continuo e archivia ogni rilevazione con l’orario. Questa analisi copre {days} giorni di apertura nell’arco di {years} anni.",
+        "percentiles": "«Tipico» è la mediana di tutte le rilevazioni: metà dei <wait>tempi di attesa</wait> era al di sotto, metà al di sopra. «Picco» è il 90° percentile, il valore superato solo da una rilevazione su dieci. La mediana dice che cosa aspettarsi, il picco dice com’è una giornata piena. L’<crowd>affluenza</crowd> di un mese riassume entrambi su tutte le attrazioni.",
+        "hourly": "L’andamento della giornata poggia su una finestra più breve: {days} giorni di apertura dal {from}. Le ore in cui un’attrazione non ha segnalato nulla restano vuote. Un vuoto non è uno zero."
+      },
+      "dataset": {
+        "name": "Statistiche dei tempi di attesa {forPark}",
+        "description": "Tempi di attesa tipici e di picco {inPark} per mese, giorno, attrazione e ora, da {days} giorni di apertura misurati nell’arco di {years} anni.",
+        "varTypical": "Tempo di attesa tipico (mediana)",
+        "varPeak": "Tempo di attesa di picco (90° percentile)",
+        "varCrowd": "Affluenza",
+        "varSampleDays": "Giorni di apertura misurati"
       }
     },
     "planDayCta": "Pianifica una giornata a {park}",

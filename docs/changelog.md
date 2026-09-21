@@ -4,6 +4,33 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Jeder Park mit genug Messtagen hat jetzt eine eigene Statistikseite
+
+Die Parkseite rendert die Live-Tabelle serverseitig, die historische Hälfte aber nicht: der
+Statistik-Abschnitt wird bewusst client-seitig nachgeladen, und den typischen Tagesverlauf
+(`ParkHourlyProfileCard`) zeichnete gar keine Parkroute. Genau diese Hälfte steht jetzt unter einer
+eigenen URL — `/de/parks/…/durchschnittliche-wartezeiten`, in allen sechs Sprachen über einen
+Rewrite auf dem englischen Routenordner `average-wait-times`, wie beim Kalender.
+
+Die Seite zeigt Andrang nach Monat und Wochentag über zwei Jahre, die Bahnen nach typischer
+Wartezeit (jede Zeile verlinkt ihre Ride-Seite), den typischen Tag Stunde für Stunde und einen
+Methodik-Abschnitt, der die Zahl der gemessenen Öffnungstage dieses Parks nennt und „typisch" und
+„Spitze" ins Wörterbuch verlinkt. Die Karten sind alle bestehende Komponenten, neu ist nur der
+Methodik-Text. Die Parkseite selbst bleibt unverändert und bekommt einen Link.
+
+**Gegatet auf `meta.displayable`:** 119 der 210 Parks im Katalog erfüllen das (gemessen am
+21.09.), also 714 URLs statt 1.206. Die übrigen 91 würden Tabellen aus einer Handvoll Messtagen
+zeigen, 222 davon aus gar keinem; sie liefern 404 und werden nirgends verlinkt. Sitemap, Nav-Tile
+und Kalenderseite teilen sich dafür einen datengecachten Aufruf pro Park und Tag.
+
+Es ist die erste Park-Route, die **nicht** `force-dynamic` ist: nichts darauf ist live, der
+Aggregat dahinter wird einmal täglich neu gerechnet, also ISR mit Tagesfenster. Ein
+Crawler-Durchlauf über diese 714 URLs trifft damit einen Prerender statt einer Function. Was dafür
+nötig ist, steht in
+[an-isr-route-needs-both-halves.md](rules/an-isr-route-needs-both-halves.md) — `revalidate` allein
+reicht nicht. Konzept und Messungen:
+[dedicated-landing-pages.md](seo/dedicated-landing-pages.md).
+
 ## Unreleased – Die Parkkarte hing an OSMs eigenem Tile-Server
 
 `tile.openstreetmap.org` ist für OSM selbst und für Renderer-Tests gedacht, nicht zum Einbetten in

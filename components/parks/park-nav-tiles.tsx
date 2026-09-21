@@ -4,6 +4,7 @@ import { useLocale } from 'next-intl';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { Link, getPathname } from '@/i18n/navigation';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
+import { parkStatsPath } from '@/lib/parks/stats-segments';
 import {
   EntryTileBody,
   ParkTileGrid,
@@ -28,14 +29,14 @@ import { cn } from '@/lib/utils';
  * shows — was two clicks away again. The row is the park's navigation, so it belongs on every
  * page of the park, not only on the one that happens to own the tab panels.
  *
- * The five chapter cells link to the park page with the chapter's hash, which its tab router
- * already reads on arrival and on `hashchange`; the cell for the page you are on carries
- * `aria-current="page"` and the same treatment a selected tab gets. Nothing here is a
- * `TabsTrigger`, because there is no `Tabs` on this page to switch — a trigger without a panel
- * would be a button that does nothing.
+ * The chapter cells link to the park page with the chapter's hash, which its tab router already
+ * reads on arrival and on `hashchange`; the calendar and the wait-time record link to their own
+ * pages. The cell for the page you are on carries `aria-current="page"` and the same treatment a
+ * selected tab gets. Nothing here is a `TabsTrigger`, because there is no `Tabs` on this page to
+ * switch — a trigger without a panel would be a button that does nothing.
  *
- * Same `useParkTileItems` as `ParkTabsList`, so both rows show the same six cells with the same
- * live hints and the same order. Walking park → calendar → park has to feel like one site.
+ * Same `useParkTileItems` as `ParkTabsList`, so both rows show the same cells with the same live
+ * hints and the same order. Walking park → calendar → park has to feel like one site.
  */
 export function ParkNavTiles({
   current,
@@ -75,12 +76,15 @@ export function ParkNavTiles({
     <ParkTileGrid tileCount={tileCount} parkSlug={parkSlug}>
       {items.map((item) => {
         const isCurrent = item.key === current;
+        // Two of the cells are pages of their own; the rest are chapters of the park page, whose
+        // tab router activates one from the hash on arrival, so the link lands on the right tab
+        // without any extra plumbing.
         const href =
           item.key === 'calendar'
             ? parkCalendarPath(locale, continent, country, city, parkSlug)
-            : // The park page's tab router activates a chapter from the hash on arrival, so the
-              // link lands on the right tab without any extra plumbing.
-              `${parkPath}#${item.key}`;
+            : item.key === 'stats'
+              ? parkStatsPath(locale, continent, country, city, parkSlug)
+              : `${parkPath}#${item.key}`;
 
         const body = (
           <EntryTileBody

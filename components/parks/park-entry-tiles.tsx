@@ -2,7 +2,15 @@
 
 import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { CalendarDays, CloudSun, Map, Sparkles, UtensilsCrossed, Zap } from 'lucide-react';
+import {
+  BarChart3,
+  CalendarDays,
+  CloudSun,
+  Map,
+  Sparkles,
+  UtensilsCrossed,
+  Zap,
+} from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody } from '@/components/common/entry-tile';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
@@ -22,10 +30,11 @@ import type { ParkWithAttractions } from '@/lib/api/types';
 /**
  * The entry-tile row of the park header card — everything both of its renderings share.
  *
- * There are two, and they differ only in what a cell IS. On the park page the five chapter cells
- * are `TabsTrigger`s that switch a panel in place (`ParkTabsList`); on every park SUB-page — the
- * crowd calendar today — there is no `Tabs` to switch, so all six are links back into the park
- * page (`ParkNavTiles`). What must not differ is the row itself: the same six cells in the same
+ * There are two, and they differ only in what a cell IS. On the park page the chapter cells are
+ * `TabsTrigger`s that switch a panel in place (`ParkTabsList`); on a park SUB-page — the crowd
+ * calendar and the wait-time record — there is no `Tabs` to switch, so every cell is a link
+ * (`ParkNavTiles`). Two of them are links in BOTH rows, because the calendar and the record are
+ * pages rather than panels. What must not differ is the row itself: the same cells in the same
  * order, with the same live hints, so that walking from the park to the calendar and back does
  * not feel like walking between two sites.
  *
@@ -33,7 +42,8 @@ import type { ParkWithAttractions } from '@/lib/api/types';
  * panel above it and the sections below — no cell in either rendering fetches anything of its own.
  */
 
-export type ParkTileKey = 'attractions' | 'calendar' | 'weather' | 'map' | 'shows' | 'restaurants';
+export type ParkTileKey =
+  'attractions' | 'calendar' | 'stats' | 'weather' | 'map' | 'shows' | 'restaurants';
 
 export interface ParkTileItem {
   key: ParkTileKey;
@@ -42,11 +52,12 @@ export interface ParkTileItem {
   count?: number;
   hint: React.ReactNode;
   /**
-   * CSS order class. The visual order is not the DOM order, because the calendar cell is a link
-   * and must sit after every `TabsTrigger` — Radix's arrow keys have to run over an uninterrupted
-   * set. It still belongs SECOND in the row, because the order is how often a visitor needs the
-   * answer (what is open, when to come, what it will be like, then the ways around the park), and
-   * re-sorting the row by how a cell happens to navigate would be sorting it by implementation.
+   * CSS order class. The visual order is not the DOM order, because the two link cells — the
+   * calendar and the wait-time record — must sit after every `TabsTrigger`, since Radix's arrow
+   * keys have to run over an uninterrupted set. The calendar still belongs SECOND in the row,
+   * because the order is how often a visitor needs the answer (what is open, when to come, what
+   * it will be like, then the ways around the park), and re-sorting the row by how a cell happens
+   * to navigate would be sorting it by implementation.
    */
   order: string;
 }
@@ -61,6 +72,20 @@ export interface ParkTileSource {
   restaurantsAvailable: boolean | undefined;
   /** The park has weather data, so the weather chapter exists at all. */
   weatherAvailable: boolean | undefined;
+  /**
+   * The park has a wait-time record page — `meta.displayable` on its two-year aggregate, read
+   * server-side through `hasParkStatsPage()`.
+   *
+   * Absent means "do not offer it", not "unknown and probably fine", and the difference is 82 of
+   * the 201 parks with attractions: their aggregate is too thin to print, the route 404s for them
+   * on purpose, and a cell pointing there would be a dead end in the row a visitor navigates the
+   * park with. Only the pages that already know the answer pass it — the record page itself and
+   * the crowd calendar, which share the one Data Cache entry the flag lives in. The PARK page
+   * passes nothing: it is `force-dynamic`, so asking would be an upstream call per request, and
+   * its link to this page sits in `ParkStatsSection` instead, where the same flag arrives with
+   * the numbers.
+   */
+  statsAvailable?: boolean;
 }
 
 export const tileCell = cn(
@@ -110,7 +135,7 @@ export function SelectionBar() {
   );
 }
 
-/** The six cells with their live hints, plus how many there are (three are optional). */
+/** The cells with their live hints, plus how many there are (four of the seven are optional). */
 export function useParkTileItems({
   park,
   continent,
@@ -120,6 +145,7 @@ export function useParkTileItems({
   showsAvailable,
   restaurantsAvailable,
   weatherAvailable,
+  statsAvailable,
 }: ParkTileSource): { items: ParkTileItem[]; tileCount: number } {
   const t = useTranslations('parks');
   const locale = useLocale();
@@ -351,6 +377,20 @@ export function useParkTileItems({
           },
         ]
       : []),
+    // Last in the row, and the only cell whose order is not "how often a visitor needs the
+    // answer" — it is how often they need it FIRST. The record answers "how is this park
+    // normally", which is the question you ask before a trip, not the one you ask in the queue.
+    ...(statsAvailable
+      ? [
+          {
+            key: 'stats' as const,
+            icon: BarChart3,
+            label: t('tileStatsLabel'),
+            hint: t('tileStats'),
+            order: 'order-4',
+          },
+        ]
+      : []),
   ];
 
   // Counted, never written down: three of the six cells are optional, and at a fixed six-column
@@ -393,6 +433,11 @@ export function ParkTileGrid({
         // the panel's own column band does one row up. No `gap`: the cells touch and the rules
         // between them are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
+        // Seven cells need more room than six, not the same room divided further: at the
+        // 1024 px the six-cell row starts at, seven cells are 146 px wide and „Restaurants"
+        // wraps. 1180 px puts a seven-cell row back at the same 168 px per cell that six cells
+        // get at their own breakpoint, and below it the row wraps to the three-column layout.
+        tileCount === 7 && '@min-[1180px]/page:grid-cols-7',
         tileCount === 6 && '@min-[1024px]/page:grid-cols-6',
         tileCount === 5 && '@min-[1024px]/page:grid-cols-5',
         tileCount === 4 && '@min-[1024px]/page:grid-cols-4',

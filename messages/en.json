@@ -549,6 +549,8 @@
     "tileAttractionsHeadliner": "Headliners from <b>{min} min</b>",
     "tileCalendar": "Best days to visit, up to a year ahead",
     "tileCalendarQuietDay": "Quietest day: <b>{day}</b> ({days, plural, =0 {today} =1 {tomorrow} other {in # days}})",
+    "tileStatsLabel": "Statistics",
+    "tileStats": "By month, weekday and hour",
     "tileMap": "Wait times on the map · <b>{lands}</b> themed areas",
     "tileMapPlain": "Wait times on the map",
     "tileShowsNext": "Next: <b>{time}</b> · in {duration}",
@@ -905,6 +907,7 @@
       "p50": "Typical",
       "p90": "Peak",
       "sampleDaysShort": "days",
+      "recordLink": "All of this park’s figures",
       "noData": "Not enough historical data available yet.",
       "comparisonTitle": "Compared with other parks",
       "parkAverage": "Park average",
@@ -1026,6 +1029,39 @@
         "varHours": "Opening hours",
         "varHolidays": "Public and school holidays",
         "varWeather": "Weather forecast"
+      }
+    },
+    "statsPage": {
+      "breadcrumb": "Average Wait Times",
+      "h1Suffix": "Average Wait Times",
+      "metaTitle": "{park}: Average Wait Times",
+      "metaTitleShort": "{park}: Average Waits",
+      "metaDescription": "How long do you really queue {inPark} in {city}? Typical and peak waits by month, weekday and hour, measured across {days} operating days.",
+      "metaDescriptionNoCity": "How long do you really queue {inPark}? Typical and peak waits by month, weekday and hour, measured across {days} operating days.",
+      "leadBusiest": "It is busiest {inPark} in {months}, at a typical {minutes} minutes.",
+      "leadQuietest": "{count, plural, =1 {{days} stays quietest, at {minutes} minutes.} other {{days} stay quietest, at {minutes} minutes each.}}",
+      "leadLongest": "The longest queue is usually {ride}: typically {minutes} minutes.",
+      "leadFallback": "Wait times {inPark} by month, weekday and hour, measured across {days} operating days.",
+      "hourlyTitle": "The typical day",
+      "hourlyHint": "From {days} operating days over the past year.",
+      "nextTitle": "Where to go next",
+      "nextLive": "Live wait times",
+      "nextLiveBody": "What the queues are showing right now, ride by ride.",
+      "nextCalendar": "Wait-time calendar",
+      "nextCalendarBody": "Expected crowds day by day, with opening hours and school holidays.",
+      "method": {
+        "title": "Where these numbers come from",
+        "measured": "Every figure on this page is measured, not estimated. The source is the <posted>posted wait time</posted> published {inPark}: park.fan reads it continuously and files every reading with a timestamp. This analysis covers {days} operating days across {years} years.",
+        "percentiles": "“Typical” is the median of all readings: half the <wait>wait times</wait> were below it, half above. “Peak” is the 90th percentile, the value only one reading in ten went past. The median says what to expect, the peak says what a full day looks like. A month’s <crowd>crowd level</crowd> sums up both across every ride.",
+        "hourly": "The day curve rests on a shorter window: {days} operating days since {from}. Hours in which a ride reported nothing stay empty. A gap is not a zero."
+      },
+      "dataset": {
+        "name": "Wait-time statistics {forPark}",
+        "description": "Typical and peak wait times {inPark} by month, weekday, attraction and hour, from {days} measured operating days over {years} years.",
+        "varTypical": "Typical wait time (median)",
+        "varPeak": "Peak wait time (90th percentile)",
+        "varCrowd": "Crowd level",
+        "varSampleDays": "Measured operating days"
       }
     },
     "planDayCta": "Plan a day at {park}",
