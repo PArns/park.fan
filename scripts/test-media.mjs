@@ -375,6 +375,22 @@ checkThat(
     '…and prettier leaves it broken',
     overflows === (await prettier.format(overflows, options))
   );
+
+  // What decides the break is the width on screen, not the number of UTF-16 units.
+  // A Han character is one unit wide and two columns wide, so measuring with
+  // `.length` read a line of 45 of them as 69 columns when it prints as 114, and
+  // kept on one line an array Prettier breaks. Tags are the only array here that is
+  // not slug-validated, so they are the only way such a character reaches the file.
+  // 39 through 76 repeats is the window where the two measures disagreed.
+  const wide = write({ tags: ['photo', '一'.repeat(45)] });
+  checkThat(
+    'a wide-character array is measured in columns, not code units',
+    tagLine(wide).endsWith('[')
+  );
+  checkThat(
+    '…and prettier agrees where it breaks',
+    wide === (await prettier.format(wide, options))
+  );
 }
 
 console.log('\n' + '='.repeat(62));
