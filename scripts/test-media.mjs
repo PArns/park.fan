@@ -9,6 +9,8 @@
  * of these produces no error — just images that quietly stop being found.
  */
 
+import { readFileSync } from 'node:fs';
+
 import {
   MEDIA_IMAGES,
   getCollection,
@@ -302,6 +304,92 @@ checkThat(
   checkThat(
     '…and is reported',
     round({ review: 'yes' }).issues.some((i) => i.startsWith('review:'))
+  );
+}
+
+// ─── the written file is the file Prettier wants ─────────────────────────────
+// `prettier --check .` covers `public/media/`, so a sidecar written by the admin
+// commit endpoint has to come out already formatted. It did not: `JSON.stringify`
+// breaks every array across lines and Prettier pulls a short one back onto one,
+// which made all 157 sidecars fail the check the moment they were re-saved. Thirteen
+// of them reached `main` in `f5d6f5e1` and turned `lint-and-format` red for every
+// pull request open at the time.
+//
+// `serializeSidecar` therefore prints arrays the way Prettier does, and these cases
+// are what holds it there. They run Prettier itself rather than asserting a column
+// number, so the binding is to `.prettierrc` as it actually is: raise or lower
+// `printWidth` and the two boundary cases go red here instead of on `main`.
+{
+  const prettier = (await import('prettier')).default;
+  const sample = 'public/media/sample/image.json';
+  const options = { ...(await prettier.resolveConfig(sample)), filepath: sample };
+  const write = (raw) => {
+    const { sidecar, text } = normalizeSidecar(raw);
+    return serializeSidecar(sidecar, text);
+  };
+  const tagLine = (out) => out.split('\n').find((line) => line.trimStart().startsWith('"tags":'));
+
+  // Every sidecar in the repository, read and written back untouched.
+  const rewritten = await Promise.all(
+    MEDIA_IMAGES.map(async (image) => {
+      const file = `public/media/${image.id}.json`;
+      const out = write(JSON.parse(readFileSync(file, 'utf8')));
+      return { file, clean: out === (await prettier.format(out, options)) };
+    })
+  );
+  const dirty = rewritten.filter((r) => !r.clean);
+  checkThat(
+    `all ${rewritten.length} sidecars are written in the shape prettier --check accepts`,
+    dirty.length === 0,
+    dirty
+      .slice(0, 5)
+      .map((r) => r.file)
+      .join(', ')
+  );
+
+  // The two cases that decide where an array breaks. `credit.license` falls back to
+  // `unknown`, so a sidecar always has a key after `tags` and the tags line always
+  // ends in a comma — which counts toward the width, here as it does in Prettier.
+  // The width is computed from the single-line form rather than read back off the
+  // output: past the boundary the output has no single line left to measure, and a
+  // loop that grew the array until one appeared would never stop.
+  const tagsOfWidth = (target) => {
+    const base = ['photo', 'queue', 'theming'];
+    const inlineWidth = (tags) =>
+      `  "tags": [${[...tags]
+        .sort()
+        .map((tag) => JSON.stringify(tag))
+        .join(', ')}],`.length;
+    let pad = 1;
+    while (inlineWidth([...base, 'x'.repeat(pad)]) < target) pad += 1;
+    return [...base, 'x'.repeat(pad)];
+  };
+
+  const fits = write({ tags: tagsOfWidth(100) });
+  check('an array that fills the line exactly stays on it', tagLine(fits).length, 100);
+  checkThat('…and prettier leaves it there', fits === (await prettier.format(fits, options)));
+
+  const overflows = write({ tags: tagsOfWidth(101) });
+  checkThat('an array one column too wide breaks', tagLine(overflows).endsWith('['));
+  checkThat(
+    '…and prettier leaves it broken',
+    overflows === (await prettier.format(overflows, options))
+  );
+
+  // What decides the break is the width on screen, not the number of UTF-16 units.
+  // A Han character is one unit wide and two columns wide, so measuring with
+  // `.length` read a line of 45 of them as 69 columns when it prints as 114, and
+  // kept on one line an array Prettier breaks. Tags are the only array here that is
+  // not slug-validated, so they are the only way such a character reaches the file.
+  // 39 through 76 repeats is the window where the two measures disagreed.
+  const wide = write({ tags: ['photo', '一'.repeat(45)] });
+  checkThat(
+    'a wide-character array is measured in columns, not code units',
+    tagLine(wide).endsWith('[')
+  );
+  checkThat(
+    '…and prettier agrees where it breaks',
+    wide === (await prettier.format(wide, options))
   );
 }
 
