@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} ouverts",
     "attractionCount": "{count, plural, =1 {# attraction} other {# attractions}}",
-    "overview": {
-      "title": "Temps d’attente en un coup d’œil",
-      "minutesUnit": "min",
-      "dataAsOf": "Données au {time} – les valeurs en direct s’actualisent toutes les quelques minutes après le chargement de la page."
-    },
     "restaurants": "Restaurants",
     "viewPark": "Voir le parc",
     "planYourVisit": "Planifier votre visite",
@@ -1064,6 +1059,9 @@
       "blockerNoForecast": "Aucune prévision n'est encore disponible pour ce jour.",
       "resultUnavailable": "Aucun de ces deux jours ne peut être comparé.",
       "beyondPlanner": "Le planificateur ne va pas encore jusqu'à ce jour."
+    },
+    "overview": {
+      "minutesUnit": "min"
     }
   },
   "attractions": {

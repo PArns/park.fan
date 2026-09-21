@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
-import { AttractionWaitOverview } from '@/components/parks/attraction-wait-overview';
 import { LandSection } from '@/components/parks/land-section';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
@@ -23,6 +22,10 @@ import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
+
+/** The enter animation of the attractions panel, named because both branches must carry the
+ *  same one — see the pre-mount branch below. */
+const ATTRACTIONS_PANEL_ENTER = 'animate-in fade-in-0 slide-in-from-bottom-2 duration-200';
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
@@ -141,76 +144,250 @@ export const TabsWithHash = memo(function TabsWithHash({
   // the tab value, arriving a beat later at lower priority.
   const deferredTab = useDeferredValue(activeTab);
 
-  // Pre-mount (SSR + first client render): render the server-renderable wait-time OVERVIEW
-  // instead of a skeleton. This is the ONLY attractions markup crawlers see without JS —
-  // every attraction name, its wait/status from the snapshot and the link to its detail page
-  // land in the initial HTML (the interactive cards below are mount-gated and lazy-mounted,
-  // so they never reach the first HTML). After mount the cards replace it seamlessly.
+  const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+
+  // The header card is the same object on both sides of hydration, so it is built once. Written
+  // out twice it was 20 lines that had to be kept equal by hand, and everything below it moves
+  // when they drift.
+  const headerCard = (
+    <ParkHeaderCard
+      panel={todayPanel}
+      tiles={
+        <ParkTabsList
+          park={park}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          showsAvailable={showsAvailable}
+          restaurantsAvailable={restaurantsAvailable}
+          weatherAvailable={weatherAvailable}
+        />
+      }
+    />
+  );
+
+  // The REAL filter panel, not a spacer shaped like it.
+  //
+  // It used to be an `h-9` div, and that only worked while the row was one control tall: the
+  // panel has a height row whose size depends on whether the park publishes any rider limits,
+  // which is one more number to keep in sync than a comment can hold. Every prop it needs is
+  // derived from the park payload, so it renders identically on both sides of hydration and the
+  // ride list below cannot move. Its controls are live for the frame between paint and mount,
+  // and what they set survives into the mounted tree — the state lives in `useAttractionFilter`,
+  // above this branch.
+  //
+  // No chapter heading above it, and that is deliberate: the tile in the row already says
+  // „Attraktionen 40" and is the selected one of six. A band repeating the word 100 px under it
+  // is the same chapter opened twice. What is left of that band is the controls it carried, and
+  // they are one object now: search, rider height and the off-season toggle over one list.
+  const filterPanel = (
+    <AttractionFilterPanel
+      inputRef={inputRef}
+      searchQuery={searchQuery}
+      onSearchChange={setSearchQuery}
+      isSearching={isSearching}
+      offSeasonCount={offSeasonAttractionCount}
+      showOffSeason={showOffSeasonAttractions}
+      onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
+      heightStops={heightStops}
+      riderHeight={riderHeight}
+      onRiderHeightChange={setRiderHeight}
+      rideableCount={rideableAttractionCount}
+      totalCount={totalAttractionCount}
+      openCount={openAttractionCount}
+      onlyOpen={onlyOpen}
+      onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
+      wetCount={wetAttractionCount}
+      wetMode={wetMode}
+      onCycleWet={() => setWetMode(nextWetMode)}
+      fastPassCount={fastPassAttractionCount}
+      fastPassLabel={fastPassLabel}
+      onlyFastPass={onlyFastPass}
+      onToggleOnlyFastPass={() => setOnlyFastPass((v) => !v)}
+      singleRiderCount={singleRiderAttractionCount}
+      onlySingleRider={onlySingleRider}
+      onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
+    />
+  );
+
+  // Attractions grouped by Land — ONE tree, rendered by both branches below.
+  //
+  // It used to be two: before the mount the tab showed `AttractionWaitOverview`, a compact row
+  // list, and the cards took its place afterwards. The two states differed by 3145 px (desktop)
+  // to 24919 px (mobile) of document height on the five park pages Cloudflare scores „Poor",
+  // and everything under them — nearby parks, blog, statistics, FAQ, footer — moved by that
+  // much. A reader who had already scrolled when the mount landed was charged the whole
+  // distance: measured 1.0458 on Lotte World Adventure and 0.8480 on Islands of Adventure at
+  // y=3000, against 0.0002 at the top of the same page.
+  //
+  // Reserving the height instead was the obvious repair and is not available here: a card's
+  // height depends on live data (93-123 px shut at 390 px, 262-374 px open with a sparkline),
+  // so any constant is wrong on one of the two. Rendering the same tree twice needs no
+  // constant — the geometry is equal because the markup is the same markup.
+  const attractionsPanel = (
+    <div className="relative space-y-8">
+      {deferredTab !== 'attractions' ? (
+        // Switching BACK to this tab remounts the whole grid. EVERYTHING below the search
+        // box is deferred — the rope-drop picks and the headliner cards are real cards
+        // too, so leaving them out of this branch kept the urgent commit expensive and the
+        // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
+        <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+          {Array.from({ length: 6 }, (_, i) => (
+            <AttractionCardSkeleton key={i} />
+          ))}
+        </div>
+      ) : (
+        <>
+          {/* Renders nothing when there are neither worth nor evening picks — and
+                    nothing while a filter is narrowing the list either. It reads
+                    `park.attractions` raw, so with "Nur mit Nässe" on it put a dry
+                    rope-drop tip above a grid of four water rides, and with a rider
+                    height set it recommended being at the gate for a coaster the child
+                    below it cannot board. Hidden for the same reason it is hidden while
+                    searching: it is advice about the whole park, and the visitor has
+                    just said they are asking about part of it. The off-season toggle is
+                    not in this list — it widens the grid rather than narrowing it. */}
+          {!isNarrowing && (
+            <RopeDropHeadliners
+              headliners={park.ropeDropHeadliners ?? []}
+              attractions={park.attractions ?? []}
+              parkPath={parkPath}
+            />
+          )}
+
+          {headliners.length > 0 && !isSearching && (
+            <LandSection
+              landName={t('headlinersSection')}
+              attractions={headliners}
+              parkPath={parkPath}
+              parkSlug={parkSlug}
+              parkStatus={park.status}
+              timezone={park.timezone}
+              todayIso={todayIso}
+              parkName={park.name}
+            />
+          )}
+
+          {hasSearchResults ? (
+            landNames.map((landName, index) => {
+              const attractions = filteredAttractionsByLand[landName];
+              if (!attractions) return null;
+
+              return (
+                // Lazy-mount every land below the first so a big park's 100+ glass cards no
+                // longer all render at once (excessive DOM + mobile paint/compositing cost).
+                // While searching, render every matching land eagerly so no result is hidden
+                // behind a placeholder. The reservation follows the grid's column count per
+                // breakpoint so the scroll length stays stable on desktop too.
+                <LazyMount
+                  key={landName}
+                  eager={index === 0 || isSearching}
+                  grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
+                >
+                  <LandSection
+                    landName={landName}
+                    attractions={attractions}
+                    parkPath={parkPath}
+                    parkSlug={parkSlug}
+                    parkStatus={park.status}
+                    timezone={park.timezone}
+                    todayIso={todayIso}
+                    parkName={park.name}
+                  />
+                </LazyMount>
+              );
+            })
+          ) : (
+            <div className="flex justify-center pt-14">
+              <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
+                <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
+                {/* Six filters can empty this grid and only one of them is obviously
+                          to blame: a search box you just typed into is right there, a rider
+                          height or a pill set three scrolls ago is not. So each of them
+                          offers its own way out here whenever it is on. */}
+                {riderHeight !== null && (
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setRiderHeight(null)}
+                  >
+                    {t('heightFilter.reset')}
+                  </button>
+                )}
+                {onlyOpen && (
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setOnlyOpen(false)}
+                  >
+                    {t('filterSection.resetOpenNow')}
+                  </button>
+                )}
+                {wetMode !== null && (
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setWetMode(null)}
+                  >
+                    {t('filterSection.resetWet')}
+                  </button>
+                )}
+                {onlyFastPass && (
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setOnlyFastPass(false)}
+                  >
+                    {t('filterSection.resetFastPass')}
+                  </button>
+                )}
+                {onlySingleRider && (
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setOnlySingleRider(false)}
+                  >
+                    {t('filterSection.resetSingleRider')}
+                  </button>
+                )}
+                {isSearching && (
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setSearchQuery('')}
+                  >
+                    {t('clearSearch')}
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+
+  // Pre-mount (SSR + first client render): the attractions tab renders the SAME filter panel and
+  // the SAME card grid the mounted tree renders — rope-drop strip, headliner section, first land
+  // eager, the lands below it as `LazyMount` reservations. `defaultValue` is `attractions` and
+  // `activeTab` starts there, so both branches take the same path through `attractionsPanel`
+  // with the same (untouched) filter state, and the mount changes no geometry.
+  //
+  // What a crawler sees changed with it: the row list named every ride in the park, the cards
+  // name the headliners and the first land (about 14 of Europa-Park's 120), each with its link,
+  // its wait and its status. A crawler that runs the JavaScript reads as far down the lands as
+  // its rendering viewport reaches, since each `LazyMount` waits until it is within 1200 px;
+  // one that does not run it reads the first land. The full ride list is machine-readable
+  // either way through `containsPlace` in the page's structured data.
   if (!isMounted) {
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
-          <ParkHeaderCard
-            panel={todayPanel}
-            tiles={
-              <ParkTabsList
-                park={park}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                showsAvailable={showsAvailable}
-                restaurantsAvailable={restaurantsAvailable}
-                weatherAvailable={weatherAvailable}
-              />
-            }
-          />
-          <TabsContent value={defaultValue}>
-            {/* The REAL filter panel, not a spacer shaped like it.
-                
-                It used to be an `h-9` div, and that only worked while the row was one
-                control tall: the panel now has a height row whose size depends on
-                whether the park publishes any rider limits, which is one more number
-                to keep in sync than a comment can hold. Every prop it needs is derived
-                from the park payload, so it renders identically on both sides of
-                hydration and the ride list below cannot move. Its controls are live
-                for the frame between paint and mount, and what they set survives into
-                the mounted tree — the state lives in `useAttractionFilter`, above this
-                branch. */}
-            <AttractionFilterPanel
-              inputRef={inputRef}
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              isSearching={isSearching}
-              offSeasonCount={offSeasonAttractionCount}
-              showOffSeason={showOffSeasonAttractions}
-              onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
-              heightStops={heightStops}
-              riderHeight={riderHeight}
-              onRiderHeightChange={setRiderHeight}
-              rideableCount={rideableAttractionCount}
-              totalCount={totalAttractionCount}
-              openCount={openAttractionCount}
-              onlyOpen={onlyOpen}
-              onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
-              wetCount={wetAttractionCount}
-              wetMode={wetMode}
-              onCycleWet={() => setWetMode(nextWetMode)}
-              fastPassCount={fastPassAttractionCount}
-              fastPassLabel={fastPassLabel}
-              onlyFastPass={onlyFastPass}
-              onToggleOnlyFastPass={() => setOnlyFastPass((v) => !v)}
-              singleRiderCount={singleRiderAttractionCount}
-              onlySingleRider={onlySingleRider}
-              onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
-            />
-            <AttractionWaitOverview
-              park={park}
-              todayIso={todayIso}
-              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-              landNames={landNames}
-              attractionsByLand={attractionsByLand}
-            />
+          {headerCard}
+          {/* Same `className` as the mounted branch, and it has to be: the mount updates this
+              node rather than replacing it, so a class added there would start the 200 ms
+              enter animation on content that is already painted and has not changed — a fade
+              from `opacity: 0` and an 8 px slide over the ride list. CLS does not charge it
+              (transform and opacity), a reader sees it. Here it runs once, with the first
+              paint, and the mount finds the class already in place. */}
+          <TabsContent value={defaultValue} className={ATTRACTIONS_PANEL_ENTER}>
+            {filterPanel}
+            {attractionsPanel}
           </TabsContent>
         </Tabs>
       </div>
@@ -220,197 +397,11 @@ export const TabsWithHash = memo(function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <ParkHeaderCard
-          panel={todayPanel}
-          tiles={
-            <ParkTabsList
-              park={park}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              showsAvailable={showsAvailable}
-              restaurantsAvailable={restaurantsAvailable}
-              weatherAvailable={weatherAvailable}
-            />
-          }
-        />
+        {headerCard}
 
-        <TabsContent
-          value="attractions"
-          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-        >
-          {/* No chapter heading here, and that is deliberate: the tile above this panel already
-              says „Attraktionen 40" and is the selected one of six. A band repeating the word
-              100 px under it is the same chapter opened twice — the tile row IS this chapter's
-              header. The other chapters on the page keep theirs, because nothing above them
-              names them.
-
-              What is left of that band is the controls it carried, and they are one object now:
-              search, rider height and the off-season toggle over one list. */}
-          <AttractionFilterPanel
-            inputRef={inputRef}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            isSearching={isSearching}
-            offSeasonCount={offSeasonAttractionCount}
-            showOffSeason={showOffSeasonAttractions}
-            onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
-            heightStops={heightStops}
-            riderHeight={riderHeight}
-            onRiderHeightChange={setRiderHeight}
-            rideableCount={rideableAttractionCount}
-            totalCount={totalAttractionCount}
-            openCount={openAttractionCount}
-            onlyOpen={onlyOpen}
-            onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
-            wetCount={wetAttractionCount}
-            wetMode={wetMode}
-            onCycleWet={() => setWetMode(nextWetMode)}
-            fastPassCount={fastPassAttractionCount}
-            fastPassLabel={fastPassLabel}
-            onlyFastPass={onlyFastPass}
-            onToggleOnlyFastPass={() => setOnlyFastPass((v) => !v)}
-            singleRiderCount={singleRiderAttractionCount}
-            onlySingleRider={onlySingleRider}
-            onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
-          />
-
-          {/* Attractions grouped by Land */}
-          <div className="relative space-y-8">
-            {deferredTab !== 'attractions' ? (
-              // Switching BACK to this tab remounts the whole grid. EVERYTHING below the search
-              // box is deferred — the rope-drop picks and the headliner cards are real cards
-              // too, so leaving them out of this branch kept the urgent commit expensive and the
-              // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
-              <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                {Array.from({ length: 6 }, (_, i) => (
-                  <AttractionCardSkeleton key={i} />
-                ))}
-              </div>
-            ) : (
-              <>
-                {/* Renders nothing when there are neither worth nor evening picks — and
-                    nothing while a filter is narrowing the list either. It reads
-                    `park.attractions` raw, so with "Nur mit Nässe" on it put a dry
-                    rope-drop tip above a grid of four water rides, and with a rider
-                    height set it recommended being at the gate for a coaster the child
-                    below it cannot board. Hidden for the same reason it is hidden while
-                    searching: it is advice about the whole park, and the visitor has
-                    just said they are asking about part of it. The off-season toggle is
-                    not in this list — it widens the grid rather than narrowing it. */}
-                {!isNarrowing && (
-                  <RopeDropHeadliners
-                    headliners={park.ropeDropHeadliners ?? []}
-                    attractions={park.attractions ?? []}
-                    parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                  />
-                )}
-
-                {headliners.length > 0 && !isSearching && (
-                  <LandSection
-                    landName={t('headlinersSection')}
-                    attractions={headliners}
-                    parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                    parkSlug={parkSlug}
-                    parkStatus={park.status}
-                    timezone={park.timezone}
-                    todayIso={todayIso}
-                    parkName={park.name}
-                  />
-                )}
-
-                {hasSearchResults ? (
-                  landNames.map((landName, index) => {
-                    const attractions = filteredAttractionsByLand[landName];
-                    if (!attractions) return null;
-
-                    return (
-                      // Lazy-mount every land below the first so a big park's 100+ glass cards no
-                      // longer all render at once (excessive DOM + mobile paint/compositing cost).
-                      // While searching, render every matching land eagerly so no result is hidden
-                      // behind a placeholder. The reservation follows the grid's column count per
-                      // breakpoint so the scroll length stays stable on desktop too.
-                      <LazyMount
-                        key={landName}
-                        eager={index === 0 || isSearching}
-                        grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
-                      >
-                        <LandSection
-                          landName={landName}
-                          attractions={attractions}
-                          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                          parkSlug={parkSlug}
-                          parkStatus={park.status}
-                          timezone={park.timezone}
-                          todayIso={todayIso}
-                          parkName={park.name}
-                        />
-                      </LazyMount>
-                    );
-                  })
-                ) : (
-                  <div className="flex justify-center pt-14">
-                    <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
-                      <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                      {/* Six filters can empty this grid and only one of them is obviously
-                          to blame: a search box you just typed into is right there, a rider
-                          height or a pill set three scrolls ago is not. So each of them
-                          offers its own way out here whenever it is on. */}
-                      {riderHeight !== null && (
-                        <button
-                          className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setRiderHeight(null)}
-                        >
-                          {t('heightFilter.reset')}
-                        </button>
-                      )}
-                      {onlyOpen && (
-                        <button
-                          className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setOnlyOpen(false)}
-                        >
-                          {t('filterSection.resetOpenNow')}
-                        </button>
-                      )}
-                      {wetMode !== null && (
-                        <button
-                          className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setWetMode(null)}
-                        >
-                          {t('filterSection.resetWet')}
-                        </button>
-                      )}
-                      {onlyFastPass && (
-                        <button
-                          className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setOnlyFastPass(false)}
-                        >
-                          {t('filterSection.resetFastPass')}
-                        </button>
-                      )}
-                      {onlySingleRider && (
-                        <button
-                          className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setOnlySingleRider(false)}
-                        >
-                          {t('filterSection.resetSingleRider')}
-                        </button>
-                      )}
-                      {isSearching && (
-                        <button
-                          className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setSearchQuery('')}
-                        >
-                          {t('clearSearch')}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+        <TabsContent value="attractions" className={ATTRACTIONS_PANEL_ENTER}>
+          {filterPanel}
+          {attractionsPanel}
         </TabsContent>
 
         {showsAvailable && (

@@ -569,11 +569,6 @@
     },
     "operatingCount": "{count}/{total} abiertos",
     "attractionCount": "{count, plural, =1 {# atracción} other {# atracciones}}",
-    "overview": {
-      "title": "Tiempos de espera de un vistazo",
-      "minutesUnit": "min",
-      "dataAsOf": "Datos actualizados a las {time} – los valores en vivo se actualizan cada pocos minutos tras cargar la página."
-    },
     "restaurants": "Restaurantes",
     "viewPark": "Ver parque",
     "planYourVisit": "Planifica tu visita",
@@ -1064,6 +1059,9 @@
       "blockerNoForecast": "Todavía no hay pronóstico para ese día.",
       "resultUnavailable": "Ninguno de estos dos días se puede comparar.",
       "beyondPlanner": "El planificador todavía no llega a este día."
+    },
+    "overview": {
+      "minutesUnit": "min"
     }
   },
   "attractions": {

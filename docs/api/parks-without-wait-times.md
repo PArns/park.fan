@@ -38,7 +38,7 @@ exactly as before instead of warning about parks that are fine.
 | Park page                               | `<NoLiveWaitTimesNotice scope="park">` above the ride tabs                       |
 | Ride page                               | `<NoLiveWaitTimesNotice scope="ride">` under the header card, above the chapters |
 | `ParkStatus` (`detailed`/`card`/`hero`) | wait/peak/occupancy/open-count cards dropped                                     |
-| `AttractionWaitOverview`                | the SEO summary line becomes "no wait times available"                           |
+| `NoLiveWaitTimesNotice`                 | the notice carries the reason; no aggregate line is printed over an empty set    |
 | `LandSection`                           | "82 attractions" instead of "0/82 operating"                                     |
 | Ride cards & `RideNowPanel`             | `UNKNOWN` status, `unknown` crowd — both already supported                       |
 | `/api/parks/live`, nearby, favourites   | wait-derived fields stripped at the projection boundary                          |
@@ -64,16 +64,19 @@ crawled, still counts for ranking and still stands in front of the visitor who o
 page — it is only barred from becoming the snippet, so Google falls back to the meta
 description. It rides on:
 
-| Element                                                  | Why it is marked                                                                       |
-| -------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `NoLiveWaitTimesNotice`'s root `<section>`               | the title + reason sentence, the page's most quotable prose                            |
-| `AttractionWaitOverview`'s summary line (inner `<span>`) | first prose under the "Wartezeiten" `<h2>`, and the pre-mount markup Googlebot indexes |
+| Element                                    | Why it is marked                                            |
+| ------------------------------------------ | ----------------------------------------------------------- |
+| `NoLiveWaitTimesNotice`'s root `<section>` | the title + reason sentence, the page's most quotable prose |
 
-Google honours the attribute on **`div`, `span` and `section` only**, which is why the
-summary line wraps its text in a `<span>` instead of taking the attribute on its `<p>`. It is
-a boolean attribute (any value is ignored, so React's `data-nosnippet="true"` is fine),
+The second marked element was `AttractionWaitOverview`'s summary line, the first prose under
+the "Wartezeiten" `<h2>` in the pre-mount markup. That overview went with PAR-272 — the card
+grid renders on both sides of hydration now — and the line went with it.
+
+Google honours the attribute on **`div`, `span` and `section` only**, so a fragment that needs
+it wraps its text in one of the three rather than taking the attribute on a `<p>`. It is a
+boolean attribute (any value is ignored, so React's `data-nosnippet="true"` is fine),
 structured data inside a marked element stays usable, and it must not be toggled from
-JavaScript — both of ours are server-rendered and never change.
+JavaScript — the notice is server-rendered and never changes.
 
 Two things this does **not** fix, both visible in the same result:
 

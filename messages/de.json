@@ -823,11 +823,6 @@
     },
     "operatingCount": "{count}/{total} in Betrieb",
     "attractionCount": "{count, plural, =1 {# Attraktion} other {# Attraktionen}}",
-    "overview": {
-      "title": "Wartezeiten im Überblick",
-      "minutesUnit": "Min.",
-      "dataAsOf": "Datenstand: {time} Uhr – Live-Werte aktualisieren sich nach dem Laden der Seite alle fünf Minuten."
-    },
     "restaurants": "Restaurants",
     "viewPark": "Park ansehen",
     "planYourVisit": "Besuch planen",
@@ -1064,6 +1059,9 @@
       "blockerNoForecast": "Für diesen Tag gibt es noch keine Prognose.",
       "resultUnavailable": "Keiner der beiden Tage lässt sich vergleichen.",
       "beyondPlanner": "Der Tagesplaner reicht noch nicht bis zu diesem Tag."
+    },
+    "overview": {
+      "minutesUnit": "Min."
     }
   },
   "attractions": {
