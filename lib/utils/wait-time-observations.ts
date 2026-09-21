@@ -43,9 +43,11 @@ function getStandbyTimestamp(attraction: ParkAttraction): string | undefined {
 /**
  * `Observation` nodes for a park's current standby waits.
  *
- * The selection deliberately mirrors the attraction cards — the view a reader
- * and a crawler's first wave both get — rule for rule, because structured data
- * that contradicts the visible page is worse than no structured data at all:
+ * The selection deliberately mirrors the rules the attraction cards apply —
+ * not the subset of them the first HTML happens to carry — because structured
+ * data that contradicts the visible page is worse than no structured data at
+ * all. A ride whose card is still behind a `LazyMount` placeholder is on the
+ * page all the same, and `containsPlace` declares every one of them:
  *
  * 1. **Nothing at all for a park whose waits we cannot read.** Hansa-Park
  *    publishes wait times only inside its own app, and a park with no source is

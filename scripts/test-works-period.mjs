@@ -1,7 +1,7 @@
 /**
  * Unit tests for `isWorksPeriodActive` (`lib/utils/works-period.ts`) — the
- * predicate that decides whether the „Umbaupause" badge, the ride page's note
- * and the pre-mount overview's label say anything at all.
+ * predicate that decides whether the „Umbaupause" badge and the ride page's
+ * note say anything at all.
  *
  * It is the TypeScript twin of the backend's `isCuratedOutOfService()`, and the
  * cases below are the ones that make a twin worth having: inclusive bounds,

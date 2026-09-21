@@ -301,10 +301,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   const otherAttractionsLabel = t('otherAttractions');
 
   // Today in the PARK's timezone, decided here and handed down. What reads it is the curated
-  // works period on the attraction cards and in the pre-mount overview, and both render inside a
-  // client tree that also renders on the server: a `new Date()` down there would be read twice,
-  // once per side of hydration, which is the mismatch `AttractionWaitOverview` forbids itself in
-  // its own docstring. Safe to read the server clock because this route is `force-dynamic` —
+  // works period on the attraction cards, and they render inside a client tree that also renders
+  // on the server — both sides of hydration since PAR-272: a `new Date()` down there would be
+  // read once per side, and the two reads can fall on different days.
+  // Safe to read the server clock because this route is `force-dynamic` —
   // there is no ISR window for the value to be pinned in.
   const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
 

@@ -23,6 +23,10 @@ import { ParkHeaderCard } from '@/components/parks/park-header-card';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
+/** The enter animation of the attractions panel, named because both branches must carry the
+ *  same one — see the pre-mount branch below. */
+const ATTRACTIONS_PANEL_ENTER = 'animate-in fade-in-0 slide-in-from-bottom-2 duration-200';
+
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
@@ -364,16 +368,24 @@ export const TabsWithHash = memo(function TabsWithHash({
   // `activeTab` starts there, so both branches take the same path through `attractionsPanel`
   // with the same (untouched) filter state, and the mount changes no geometry.
   //
-  // What a crawler without JavaScript sees changed with it: the row list named every ride in the
-  // park, the cards name the headliners and the first land (about 14 of Europa-Park's 120), each
-  // with its link, its wait and its status. Googlebot runs the JavaScript and still sees all of
-  // them; a crawler that does not, does not.
+  // What a crawler sees changed with it: the row list named every ride in the park, the cards
+  // name the headliners and the first land (about 14 of Europa-Park's 120), each with its link,
+  // its wait and its status. A crawler that runs the JavaScript reads as far down the lands as
+  // its rendering viewport reaches, since each `LazyMount` waits until it is within 1200 px;
+  // one that does not run it reads the first land. The full ride list is machine-readable
+  // either way through `containsPlace` in the page's structured data.
   if (!isMounted) {
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
           {headerCard}
-          <TabsContent value={defaultValue}>
+          {/* Same `className` as the mounted branch, and it has to be: the mount updates this
+              node rather than replacing it, so a class added there would start the 200 ms
+              enter animation on content that is already painted and has not changed — a fade
+              from `opacity: 0` and an 8 px slide over the ride list. CLS does not charge it
+              (transform and opacity), a reader sees it. Here it runs once, with the first
+              paint, and the mount finds the class already in place. */}
+          <TabsContent value={defaultValue} className={ATTRACTIONS_PANEL_ENTER}>
             {filterPanel}
             {attractionsPanel}
           </TabsContent>
@@ -387,10 +399,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       <Tabs value={activeTab} onValueChange={handleTabChange}>
         {headerCard}
 
-        <TabsContent
-          value="attractions"
-          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-        >
+        <TabsContent value="attractions" className={ATTRACTIONS_PANEL_ENTER}>
           {filterPanel}
           {attractionsPanel}
         </TabsContent>
