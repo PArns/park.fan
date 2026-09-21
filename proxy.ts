@@ -9,8 +9,8 @@ export default function proxy(request: NextRequest) {
   // A park calendar month outside the window the route serves, answered before anything renders.
   // Thrown from the page instead, the same 308 carries that route's not-found document as its
   // body — 81,963 B in production, none of it compressed, on ~21,948 URLs. Here it is a header and
-  // an empty body. Only months no park could serve are decided here; the rest fall through to the
-  // route untouched. `lib/parks/calendar-redirects.ts` has the measurements and the reasoning.
+  // 66 B, the target path as text. Only months no park could serve are decided here; the rest fall
+  // through to the route untouched. `lib/parks/calendar-redirects.ts` has the measurements.
   //
   // The target is absolute here and relative on the wire. A middleware `Location` MUST be
   // absolute — Next parses it with `new NextURL(...)` and a path alone throws `ERR_INVALID_URL`,

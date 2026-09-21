@@ -653,6 +653,18 @@ test(
   'null/null'
 );
 
+// A third segment after year and month is spelled by `parseParkCalendarMonthSpelling` as "not a
+// month", and both the proxy and the route now answer it with a 404. The route used to 308 it to
+// the hub, because its own check read `date[0]` and `date[1]` and never looked at the length —
+// verified against a build of `main`, and pinned here because it is the one URL class where this
+// change is visible. The 404 is what the route's comment asks for: a segment nobody links and
+// nobody published is a probe, and an unbounded URL space is not something to redirect.
+test(
+  'a third date segment is a probe, not a month — 404 from the route, nothing from the proxy',
+  () => parkCalendarRedirect(`/de/parks/${GEO}/wartezeiten-kalender/2026/9/15`),
+  null
+);
+
 test(
   'the hub itself carries no month and is never redirected',
   () => parkCalendarRedirect(DE_HUB),
