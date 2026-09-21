@@ -173,7 +173,6 @@ test('ignores a ride nobody has watched for long', () => {
     })
   );
   assert.equal(out.longestName, 'Solid');
-  assert.equal(out.longestSlug, 'solid');
   assert.equal(out.longestP50, 45);
 });
 

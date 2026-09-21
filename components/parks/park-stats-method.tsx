@@ -5,6 +5,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlassCard } from '@/components/common/glass-card';
 import { buildGlossaryTermHref } from '@/lib/glossary/segments';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { Locale } from '@/i18n/config';
@@ -21,7 +22,12 @@ type MethodTermId = 'wait-time' | 'posted-wait-time' | 'crowd-level';
 
 interface ParkStatsMethodProps {
   stats: ParkHistoricalStats;
-  /** `null` for a park with no readable hourly profile — the third paragraph then does not run. */
+  /**
+   * The hourly profile as the page fetched it. The third paragraph runs only when
+   * `hasReadableHourlyProfile` says the table above is actually drawn — a profile can answer 200
+   * with `displayable: false` or with no measurable hours, and prose about a window whose table
+   * the page left out is a paragraph describing something that is not there.
+   */
   profile: ParkHourlyProfile | null;
   locale: Locale;
   parkName: string;
@@ -83,14 +89,23 @@ export async function ParkStatsMethod({
   // The window's first day, spelled the way the reader's locale spells a date. `dataFrom` is a
   // plain `YYYY-MM-DD` with no zone in it, so it is read as UTC and printed as UTC — a park in
   // Los Angeles must not have its window start a day earlier than the payload says it does.
-  const hourlyFrom = profile
-    ? getDateTimeFormat(locale, {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-        timeZone: 'UTC',
-      }).format(new Date(`${profile.meta.dataFrom}T00:00:00Z`))
+  //
+  // `dataFrom` is typed `string` and crosses a network boundary, so it is checked before it
+  // reaches `Intl`: a value that is not a bare date parses to `Invalid Date`, and
+  // `DateTimeFormat.format()` throws a RangeError on one — which in an ISR render takes the whole
+  // page down rather than this paragraph.
+  const hourlyStart = hasReadableHourlyProfile(profile)
+    ? new Date(`${profile.meta.dataFrom}T00:00:00Z`)
     : null;
+  const hourlyFrom =
+    hourlyStart && !Number.isNaN(hourlyStart.getTime())
+      ? getDateTimeFormat(locale, {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          timeZone: 'UTC',
+        }).format(hourlyStart)
+      : null;
 
   return (
     <section className="mt-8" aria-labelledby="stats-method-heading">
@@ -112,7 +127,7 @@ export async function ParkStatsMethod({
               crowd: link('crowd-level'),
             })}
           </p>
-          {profile && hourlyFrom && (
+          {hasReadableHourlyProfile(profile) && hourlyFrom && (
             <p>
               {t('hourly', {
                 days: profile.meta.totalSampleDays,

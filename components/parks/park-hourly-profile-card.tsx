@@ -8,6 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { useParkHourlyProfile } from '@/lib/hooks/use-park-hourly-profile';
+import { hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
 import type { ParkHourlyProfile } from '@/lib/api/types';
 
 export interface HourlyProfileLabels {
@@ -121,7 +122,10 @@ export function ParkHourlyProfileCard({
   // Nothing to draw: too few measured days, or the park's hours are so ragged that no single hour
   // was measured often enough to be a column. Rendering an empty grid would claim the park has no
   // queues rather than that we cannot describe its day.
-  if (!profile || !profile.meta.displayable || profile.hours.length === 0) return null;
+  //
+  // The predicate is shared rather than written here, because the wait-time record's chapter
+  // heading and its method paragraph have to draw exactly when this table does.
+  if (!hasReadableHourlyProfile(profile)) return null;
 
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">

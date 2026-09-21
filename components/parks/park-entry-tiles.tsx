@@ -76,14 +76,17 @@ export interface ParkTileSource {
    * The park has a wait-time record page — `meta.displayable` on its two-year aggregate, read
    * server-side through `hasParkStatsPage()`.
    *
-   * Absent means "do not offer it", not "unknown and probably fine", and the difference is 82 of
-   * the 201 parks with attractions: their aggregate is too thin to print, the route 404s for them
+   * Absent means "do not offer it", not "unknown and probably fine", and the difference is 91 of
+   * the 210 parks in the catalogue: their aggregate is too thin to print, the route 404s for them
    * on purpose, and a cell pointing there would be a dead end in the row a visitor navigates the
-   * park with. Only the pages that already know the answer pass it — the record page itself and
-   * the crowd calendar, which share the one Data Cache entry the flag lives in. The PARK page
-   * passes nothing: it is `force-dynamic`, so asking would be an upstream call per request, and
-   * its link to this page sits in `ParkStatsSection` instead, where the same flag arrives with
-   * the numbers.
+   * park with.
+   *
+   * **All three pages of a park resolve it**, and that is the point of it being a prop rather
+   * than a query in here: the row is the park's navigation and is rendered on every one of them,
+   * so a cell that appeared on the calendar and not on the park page would make two renderings of
+   * one row — the exact thing this module exists to prevent, and it would also break the
+   * `rememberTileRow` handoff between them. They share one Data Cache entry on
+   * `CACHE_TTL.stats`, so asking three times costs one upstream call per park per day.
    */
   statsAvailable?: boolean;
 }

@@ -19,6 +19,9 @@ interface LiveParkDataProps {
    * inside it would answer twice.
    */
   todayIso: string;
+  /** Does this park have a wait-time record page? Server-resolved, since the flag is a fact about
+   *  the park's aggregate and not about the live poll — see `ParkTileSource.statsAvailable`. */
+  statsAvailable?: boolean;
   continent: string;
   country: string;
   city: string;
@@ -42,6 +45,7 @@ interface LiveParkDataProps {
 export function LiveParkData({
   initialData,
   todayIso,
+  statsAvailable,
   continent,
   country,
   city,
@@ -98,6 +102,7 @@ export function LiveParkData({
       showsAvailable={currentPark.shows && currentPark.shows.length > 0}
       restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
       weatherAvailable={!!currentPark.weather?.current}
+      statsAvailable={statsAvailable}
       park={currentPark}
       continent={continent}
       country={country}

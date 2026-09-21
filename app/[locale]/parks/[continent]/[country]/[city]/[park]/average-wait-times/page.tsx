@@ -15,7 +15,7 @@ import {
   getParkStatsForPage,
   PARK_STATS_PAGE_QUERY,
 } from '@/lib/api/stats';
-import { deriveParkStatsFindings } from '@/lib/parks/park-stats-derive';
+import { deriveParkStatsFindings, hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { parkStatsPath } from '@/lib/parks/stats-segments';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
@@ -230,9 +230,11 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   // chapter no other park URL renders, and bake it for a day, invisibly. A throw leaves the ISR
   // entry unwritten and the next request tries again.
   const profile = await getParkHourlyProfileForPage(continent, country, city, parkSlug);
-  // Gated on its content, not on the fetch: the card returns `null` for a thin profile or one
-  // with no measurable hours, and a chapter heading over nothing is worse than no chapter.
-  const showHourly = !!profile && profile.meta.displayable && profile.hours.length > 0;
+  // Gated on its content, not on the fetch, and through the card's OWN predicate: it returns
+  // `null` for a thin profile or one with no measurable hours, and a chapter heading over nothing
+  // is worse than no chapter. The method section below reads the same predicate, so its paragraph
+  // about the hourly window cannot describe a table this page did not draw.
+  const showHourly = hasReadableHourlyProfile(profile);
 
   const [seasons, t, tStats, tOverview, tDataset, tGeo, tCommon, tNav] = await Promise.all([
     getParkSeasons(continent, country, city, parkSlug),

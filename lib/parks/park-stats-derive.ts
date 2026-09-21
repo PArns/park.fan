@@ -1,4 +1,9 @@
-import type { DayOfWeekStat, MonthStat, ParkHistoricalStats } from '@/lib/api/types';
+import type {
+  DayOfWeekStat,
+  MonthStat,
+  ParkHistoricalStats,
+  ParkHourlyProfile,
+} from '@/lib/api/types';
 
 /**
  * What a park's two-year aggregate actually says, once the readings too thin to mean anything
@@ -47,11 +52,29 @@ const MIN_COMPARABLE_WEEKDAYS = 4;
  */
 const MAX_TIED_QUIETEST_DAYS = 2;
 
+/**
+ * Is there a typical-day table to draw?
+ *
+ * Exported because three places have to ask it and must not each decide for themselves:
+ * `ParkHourlyProfileCard` (which draws nothing when the answer is no), the wait-time record's
+ * hourly chapter (whose heading must not stand over nothing), and that page's method paragraph
+ * about the hourly window. Two of those got it from separate expressions first, and the third
+ * from `profile !== null` alone — so a park whose profile answers 200 with `displayable: false`
+ * read a paragraph about a table that was not on the page.
+ *
+ * Same shape as the cell rule: where a count and a cell must agree, the predicate is exported
+ * rather than written twice — `docs/rules/a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md`.
+ */
+export function hasReadableHourlyProfile(
+  profile: ParkHourlyProfile | null | undefined
+): profile is ParkHourlyProfile {
+  return !!profile && profile.meta.displayable && profile.hours.length > 0;
+}
+
 export interface ParkStatsFindings {
   /** Sample-day-weighted median across all weekdays, the "park average" the posts quote. */
   parkP50: number | null;
   longestName: string | null;
-  longestSlug: string | null;
   longestP50: number | null;
   /**
    * The quietest weekday(s), 0 = Sunday … 6 = Saturday, ascending. Empty when
@@ -77,7 +100,6 @@ export function deriveParkStatsFindings(stats: ParkHistoricalStats | null): Park
     return {
       parkP50: null,
       longestName: null,
-      longestSlug: null,
       longestP50: null,
       quietestDays: [],
       quietestP50: null,
@@ -110,7 +132,6 @@ export function deriveParkStatsFindings(stats: ParkHistoricalStats | null): Park
   return {
     parkP50,
     longestName: longest?.attractionName ?? null,
-    longestSlug: longest?.attractionSlug ?? null,
     longestP50: longest?.avgWaitP50 ?? null,
     quietestDays: quietest?.days ?? [],
     quietestP50: quietest?.avgWaitP50 ?? null,
