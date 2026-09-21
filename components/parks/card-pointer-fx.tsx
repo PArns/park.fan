@@ -33,14 +33,39 @@ interface Active {
   driftX: number;
   driftY: number;
   /**
-   * The card's box, measured ONCE when the pointer arrives.
+   * The card's box in DOCUMENT space, measured ONCE when the pointer arrives.
    *
    * Reading it per frame instead cost 20 ms a frame at 6× CPU throttle (53.1 against a 33.6 ms
    * baseline over the same card): `getBoundingClientRect()` forces a synchronous layout, and
-   * doing that inside a rAF that then writes styles is the textbook layout thrash. Scrolling
-   * invalidates it, which is the only thing that can move a card under a stationary pointer.
+   * doing that inside a rAF that then writes styles is the textbook layout thrash.
+   *
+   * Document space, and that is the whole reason scrolling no longer has to re-measure. A
+   * viewport box is invalidated by every scroll frame, so this used to carry a `scroll` listener
+   * that called `getBoundingClientRect()` again — **unthrottled**, on every scroll event, for as
+   * long as the pointer sat on a card. Traced on a production build, that was 2072 forced style
+   * recalc / layout passes in a single four-second scroll of the homepage, the largest single
+   * source on the page. `rect.top + scrollY` does not move when the page scrolls, and the
+   * pointer's own `pageX`/`pageY` are in the same space, so the subtraction in `onMove` is
+   * unchanged arithmetic that reads no layout at all.
+   *
+   * What still invalidates it is the box genuinely moving: a resize (handled) or a layout shift
+   * above a card the pointer is already resting on (a lazy-mounted section). The latter leaves
+   * the highlight offset by that shift until the pointer crosses into another card, which
+   * re-measures — the same exposure the viewport box had between two scroll events, on an effect
+   * whose whole travel is 12 px.
    */
-  box: DOMRect;
+  box: { left: number; top: number; width: number; height: number };
+}
+
+/** The card's box in document space — invariant under scrolling, unlike a viewport rect. */
+function documentBox(el: HTMLElement): Active['box'] {
+  const r = el.getBoundingClientRect();
+  return {
+    left: r.left + window.scrollX,
+    top: r.top + window.scrollY,
+    width: r.width,
+    height: r.height,
+  };
 }
 
 /**
@@ -109,8 +134,12 @@ export function CardPointerFx() {
         if (!active) return;
         active.frame = null;
         const { box } = active;
-        const px = event.clientX - box.left;
-        const py = event.clientY - box.top;
+        // `pageX/pageY`, not `clientX/clientY`: the box is in document space, and the pointer has
+        // to be read in the same one. `pageX === clientX + scrollX`, so the difference is the
+        // identical number the viewport pair produced — without anything reading the scroll
+        // offset or the layout to get there.
+        const px = event.pageX - box.left;
+        const py = event.pageY - box.top;
         // −1 … 1 from the card's centre
         const nx = (px / box.width) * 2 - 1;
         const ny = (py / box.height) * 2 - 1;
@@ -138,7 +167,7 @@ export function CardPointerFx() {
         frame: null,
         driftX: photo ? photo.width * headroom * DRIFT_FRACTION : 0,
         driftY: photo ? photo.height * headroom * DRIFT_FRACTION : 0,
-        box: card.getBoundingClientRect(),
+        box: documentBox(card),
       };
       card.style.setProperty('--fx-o', '1');
       card.addEventListener('pointermove', onMove);
@@ -163,19 +192,19 @@ export function CardPointerFx() {
           });
     };
 
-    // Scrolling is the only thing that moves a card out from under a stationary pointer, so it
-    // is the only thing that has to re-measure. Passive: this never blocks the scroll.
+    // A resize is what actually moves a card now — scrolling does not, because the box is
+    // measured in document space (see `Active['box']`). There is deliberately no `scroll`
+    // listener here any more; the one that used to sit here was this page's single biggest
+    // source of forced layout.
     const remeasure = () => {
-      if (active) active.box = active.card.getBoundingClientRect();
+      if (active) active.box = documentBox(active.card);
     };
 
     document.addEventListener('pointerover', onOver);
-    window.addEventListener('scroll', remeasure, { passive: true });
     window.addEventListener('resize', remeasure);
     return () => {
       disposed = true;
       document.removeEventListener('pointerover', onOver);
-      window.removeEventListener('scroll', remeasure);
       window.removeEventListener('resize', remeasure);
       release();
     };

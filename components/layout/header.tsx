@@ -37,6 +37,15 @@ import type { GlossaryMenu } from '@/lib/navigation/glossary-menu';
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
 const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
 
+/**
+ * Where a transparent hero bar turns solid, and where it turns back — two numbers, not one.
+ *
+ * They straddle the 50 px this used to test on both sides. See the `check` they are used in for
+ * why a single line is the wrong shape for a threshold that switches a `backdrop-filter`.
+ */
+const SOLID_ON_Y = 56;
+const SOLID_OFF_Y = 44;
+
 interface HeaderProps {
   /** Whether the blog has at least one published post — every blog link
    *  hides while the answer is no. Computed server-side in the layout. */
@@ -150,7 +159,24 @@ export function Header({
     // is unused, and calling `check()` here queued a pointless state update + re-render of
     // the whole header on each navigation).
     if (!isHeroPage) return;
-    const check = () => setScrolled(window.scrollY > 50);
+    // A BAND, not a line, and the reason is written two comments down: crossing the threshold
+    // snaps `backdrop-filter` on or off, and the note on the bar's glass already says that it
+    // "repeats on every direction change up there". A single 50 px line means a reader resting
+    // anywhere near it — trackpad momentum settling, a short drag, a rubber-band bounce — flips
+    // the bar's glass on and off, which is the most prominent piece of glass on the page.
+    //
+    // 12 px of hysteresis is enough that no ordinary scroll oscillates across both edges, and
+    // small enough that the handoff still happens where it always did: the bar solidifies at
+    // 56 px on the way down and goes transparent again at 44 px on the way up, against the 50 px
+    // both used to share. `setScrolled` with an unchanged value is a React bail-out, so the
+    // steady state still costs nothing.
+    // `scrollY` is read HERE and not inside the updater: React may call an updater more than
+    // once and does it during render, so reading the document from inside one is both impure and
+    // a layout read in the wrong phase.
+    const check = () => {
+      const y = window.scrollY;
+      setScrolled((was) => (was ? y > SOLID_OFF_Y : y > SOLID_ON_Y));
+    };
     check();
     const handleScroll = () => {
       if (rafRef.current !== null) return;

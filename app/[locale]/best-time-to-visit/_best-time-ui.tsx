@@ -12,7 +12,8 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 export function FancastCta({ title, body }: { title: string; body: string }) {
   return (
     <div className="container mx-auto px-4">
-      <Reveal>
+      {/* `containsGlass`: the `<Card>` below is `backdrop-blur-md`. */}
+      <Reveal containsGlass>
         <Card className="border-primary/30 from-primary/10 mx-auto max-w-3xl gap-0 bg-gradient-to-br to-transparent py-0 shadow-sm">
           <Link
             href="/fancast"

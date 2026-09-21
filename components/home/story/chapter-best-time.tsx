@@ -36,7 +36,8 @@ export async function ChapterBestTime({ locale }: { locale: string }) {
   return (
     <section className="px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <Reveal>
+        {/* `containsGlass`: `variant="tile"` is TILE_GLASS, i.e. `backdrop-blur-2xl`. */}
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={Hourglass}

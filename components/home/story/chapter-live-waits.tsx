@@ -33,7 +33,7 @@ export async function ChapterLiveWaits({ locale }: { locale: string }) {
     // scrollbar, while `hidden` would make this a scroll container.
     <section className="border-border bg-muted/30 overflow-x-clip border-t px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <Reveal>
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={Gauge}

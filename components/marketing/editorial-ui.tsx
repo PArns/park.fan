@@ -280,7 +280,7 @@ export function IngredientCard({
   delay?: number;
 }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal containsGlass delay={delay}>
       <Card className="hover:border-primary/40 h-full py-0 transition-colors">
         <CardContent className="flex h-full flex-col gap-2 p-5">
           <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl">

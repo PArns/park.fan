@@ -38,7 +38,7 @@ export async function BlogChapter({
   return (
     <section className="border-border border-t px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <Reveal>
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={Newspaper}

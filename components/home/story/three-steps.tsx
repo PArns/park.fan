@@ -82,7 +82,7 @@ export async function ThreeSteps() {
     // everything.
     <section className="relative z-30 px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <Reveal>
+        <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
             icon={Compass}
