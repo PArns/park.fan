@@ -1,7 +1,7 @@
 import type { Locale } from '@/i18n/config';
 import { MEDIA_TEXT } from './manifest-text';
 import { pickText } from './sidecar.mjs';
-import type { LocalizedText, MediaImage, ResolvedMediaImage } from './types';
+import { OWN_PHOTO_AUTHOR, type LocalizedText, type MediaImage, type ResolvedMediaImage } from './types';
 
 /**
  * Localized alt/caption resolution — the half of the media database that costs
@@ -65,6 +65,17 @@ export function getCreditLine(image: MediaImage): string | null {
   const line = year ? `© ${year} ${author}` : `© ${author}`;
   if (license === 'all-rights-reserved' || license === 'unknown') return line;
   return `${line} (${formatLicense(license)})`;
+}
+
+/**
+ * Whether an image needs a visible, on-image credit rather than just the
+ * sidecar-only line every photo already carries. Own shoots are implicitly
+ * park.fan's — everything else (stock, press, a contribution) has to say so
+ * where a reader can see it, not just in metadata nobody opens.
+ */
+export function needsAttribution(image: MediaImage): boolean {
+  const { author } = image.credit;
+  return author != null && author !== OWN_PHOTO_AUTHOR;
 }
 
 function formatLicense(license: string): string {
