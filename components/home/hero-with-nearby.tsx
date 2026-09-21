@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
@@ -151,6 +152,66 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
 }
 
 /**
+ * The headline, with the pin to the left of it once the page is wide enough.
+ *
+ * Both headline variants go through here, so the mark does not appear and disappear when the
+ * visitor turns out to be standing next to a park.
+ *
+ * **It is the pin alone, not `BrandLockup`.** The lockup is pin + wordmark, 4.21 : 1 on the
+ * wordmark, so its smallest sensible hero size is 122 px of the row. Measured against the built
+ * site, that pushes the headline from two lines to three in nl, fr and es at every desktop width
+ * the plate reaches, and in fr even on the 704 px plate a tablet gets — the plate is 608 px wide
+ * from 1280 up and the headline needs ~536 of them for its second line in French. The pin costs
+ * 35 px plus the 12 px gap and leaves all six languages on two lines. The wordmark is also the
+ * half the header is already showing 48 px above this.
+ *
+ * **48 px is one line of the headline** (`text-5xl` is 3rem/1 above `sm`, and the mark only
+ * renders far above `sm`), so the mark is exactly as tall as the text it stands next to.
+ *
+ * **The threshold asks the PAGE, not this card and not the window.** The card's own width is not
+ * monotonic in the window's: the plate is `max-w-3xl` and centred while it is alone, and
+ * `max-w-2xl` next to the world map from 1280 up, so it measures 704 px on a tablet and 608 px on
+ * a desktop. A container query on the card would therefore put the mark on tablets — which the
+ * ticket rules out — and take it off the wide displays it is for. 1304 px is where the plate stops
+ * being squeezed by the map column: 48 (the hero section's `px-6`) + 672 (`max-w-2xl`) + 40 (the
+ * grid's gap) + 544 (the map column's `34rem`). Below it the two-column grid cuts the plate to
+ * 584 px and the French headline takes a third line; at it the plate is at its cap and stays
+ * there. Same `@container/page` every other threshold in this hero asks, so the planner's panel
+ * closes the mark rather than the window deciding without it.
+ */
+function HeroHeadline({ children }: { children: React.ReactNode }) {
+  return (
+    // mt-4 mb-3 sat on the <h1> and moved here unchanged: margins do not collapse in a flex
+    // container, so the spacing above and below the headline is the same with the row as without.
+    <div className="mt-4 mb-3 flex items-center gap-3">
+      <span data-hero-mark className="hidden shrink-0 @min-[1304px]/page:block">
+        <Image
+          src="/logo-small-dark.svg"
+          width={35}
+          height={48}
+          alt=""
+          aria-hidden="true"
+          className="hidden h-12 w-auto dark:block"
+          loading="eager"
+        />
+        <Image
+          src="/logo-small.svg"
+          width={35}
+          height={48}
+          alt=""
+          aria-hidden="true"
+          className="block h-12 w-auto dark:hidden"
+          loading="eager"
+        />
+      </span>
+      <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
+        {children}
+      </h1>
+    </div>
+  );
+}
+
+/**
  * The hero's left column: live open-count badge, headline and the intro with live park/
  * attraction counts (SSR seed + 5-min client overlay). When the visitor is inside or right
  * next to a park it switches to the "Willkommen im …" variant with that park's live badges.
@@ -229,9 +290,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
     return (
       <>
         <OpenParksBadge openParks={openParks} />
-        <h1 className="mt-4 mb-3 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
-          {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
-        </h1>
+        <HeroHeadline>{t('heroWelcome', { parkName: stripNewPrefix(park.name) })}</HeroHeadline>
         <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
           {tHome.rich('hero.intro', introValues)}
         </p>
@@ -274,9 +333,7 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
   return (
     <>
       <OpenParksBadge openParks={openParks} />
-      <h1 className="mt-4 mb-3 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
-        {tHome('hero.title')}
-      </h1>
+      <HeroHeadline>{tHome('hero.title')}</HeroHeadline>
       {showNearParkHero ? (
         <>
           <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
