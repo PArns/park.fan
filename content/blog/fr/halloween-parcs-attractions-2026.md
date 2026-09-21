@@ -472,6 +472,9 @@ un maze pendant que les autres s’accrochent à une saucisse grillée.
 Dates actuelles et âges autorisés :
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
+Le reste de la saison à Soltau, de Colossos au jour de la semaine, est traité
+dans le [guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).
+
 ### Parc Astérix : Peur sur le Parc
 
 Qui voit plus grand file en France : le [Parc Astérix](ref:parc-asterix) au nord

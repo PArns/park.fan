@@ -447,7 +447,8 @@ et repartent le dimanche, comme on peut le lire dans le
 [guide Europa-Park](/blog/europa-park-temps-d-attente-conseils). Le même jour de
 la semaine, deux raisons différentes. Au [Heide-Park](ref:heide-park), qui
 ressemble structurellement au Movie Park, la semaine a d’ailleurs presque la même
-allure.
+allure, calculs à l’appui dans le
+[guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).
 
 ### Le calendrier à partir du 2 septembre
 

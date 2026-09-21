@@ -465,6 +465,9 @@ aferra a una salchicha.
 Fechas actuales y edades permitidas:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
+El resto de la temporada en Soltau, de Colossos al día de la semana, lo trata la
+[guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
+
 ### Parc Astérix: Peur sur le Parc
 
 Quien piense la excursión a lo grande se va a Francia: el

@@ -432,7 +432,8 @@ the opposite reason: Rust lives off hotel guests who arrive on Saturday and
 leave on Sunday, as covered in the
 [Europa-Park guide](/blog/europa-park-wait-times-tips). Same weekday, two
 different reasons. At [Heide-Park](ref:heide-park), which resembles Movie Park
-structurally, the week looks almost identical, by the way.
+structurally, the week looks almost identical, by the way, as the
+[Heide Park guide](/blog/heide-park-wait-times-tips) works out.
 
 ### The timetable from 2 September
 

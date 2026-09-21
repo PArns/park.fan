@@ -318,7 +318,8 @@ the busiest days of the Italian season.
 
 [Heide-Park](ref:heide-park) runs its 2026 season from 28 March to
 **31 October** and then closes. There is no winter operation in Soltau and no
-Christmas market either.
+Christmas market either. What happens in the seven months before that is in the
+[Heide Park guide](/blog/heide-park-wait-times-tips).
 
 [Walibi Holland](ref:walibi-holland) also stays shut now that Bright Nights has
 ended. Anyone holding a 2026 season pass that included winter operation in 2026

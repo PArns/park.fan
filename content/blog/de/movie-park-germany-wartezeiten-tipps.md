@@ -434,7 +434,8 @@ dort aber aus dem umgekehrten Grund: Rust lebt von Hotelgästen, die samstags
 anreisen und sonntags abfahren, nachzulesen im
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Derselbe Wochentag,
 zwei verschiedene Gründe. Im [Heide-Park](ref:heide-park), der strukturell dem
-Movie Park ähnelt, sieht die Woche übrigens fast genauso aus.
+Movie Park ähnelt, sieht die Woche übrigens fast genauso aus, nachgerechnet im
+[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 ### Der Fahrplan ab dem 2. September
 

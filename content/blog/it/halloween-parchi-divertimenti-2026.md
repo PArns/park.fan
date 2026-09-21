@@ -464,6 +464,9 @@ altri si aggrappano a una salsiccia.
 Date attuali e limiti d’età:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
+Il resto della stagione a Soltau, da Colossos al giorno della settimana, lo
+affronta la [guida dell’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
+
 ### Parc Astérix: Peur sur le Parc
 
 Chi pensa la gita in grande va in Francia: il [Parc Astérix](ref:parc-asterix) a

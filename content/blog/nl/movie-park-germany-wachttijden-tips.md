@@ -429,7 +429,8 @@ de omgekeerde reden: Rust leeft van hotelgasten die op zaterdag aankomen en op
 zondag vertrekken, na te lezen in de
 [Europa-Park-gids](/blog/europa-park-wachttijden-tips). Dezelfde weekdag, twee
 verschillende redenen. In het [Heide-Park](ref:heide-park), dat qua opzet op
-Movie Park lijkt, ziet de week er trouwens bijna hetzelfde uit.
+Movie Park lijkt, ziet de week er trouwens bijna hetzelfde uit, nagerekend in de
+[Heide-Park-gids](/blog/heide-park-wachttijden-tips).
 
 ### Het rooster vanaf 2 september
 

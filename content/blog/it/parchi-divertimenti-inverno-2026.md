@@ -321,7 +321,8 @@ una delle giornate più piene della stagione.
 
 L’[Heide-Park](ref:heide-park) fa la stagione 2026 dal 28 marzo al
 **31 ottobre** e poi chiude. A Soltau non c’è apertura invernale, e nemmeno un
-mercatino di Natale.
+mercatino di Natale. Quello che succede nei sette mesi precedenti sta nella
+[guida dell’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
 
 Anche [Walibi Holland](ref:walibi-holland) resta chiuso dopo la fine di Bright
 Nights. Chi aveva un abbonamento 2026 che comprendeva l’apertura invernale del
