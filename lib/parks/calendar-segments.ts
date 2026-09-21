@@ -134,7 +134,10 @@ export const PARK_CALENDAR_MONTH_SPAN = { back: 3, forward: 12 } as const;
 export const CALENDAR_DATA_START = { year: 2025, month: 12, day: 26 } as const;
 
 /** Months since year 0, so a window can be checked without date arithmetic. */
-const monthIndex = ({ year, month }: ParkCalendarMonth) => year * 12 + (month - 1);
+export const parkCalendarMonthIndex = ({ year, month }: ParkCalendarMonth) =>
+  year * 12 + (month - 1);
+
+const monthIndex = parkCalendarMonthIndex;
 
 /**
  * The oldest month a calendar page may serve: the first one the archive covers *completely*.
@@ -228,18 +231,37 @@ export function parseParkCalendarMonth(
   coverageTo?: string | null
 ): { month: ParkCalendarMonth | null; padded: boolean } | 'invalid' {
   if (!segments || segments.length === 0) return { month: null, padded: false };
-  if (segments.length !== 2) return 'invalid';
+
+  const spelled = parseParkCalendarMonthSpelling(segments);
+  if (!spelled) return 'invalid';
+  if (!isParkCalendarMonthInRange(spelled.month, now, coverageTo)) return 'invalid';
+
+  return spelled;
+}
+
+/**
+ * Whether two URL segments SPELL a month — not whether the route serves it.
+ *
+ * {@link parseParkCalendarMonth}'s `'invalid'` answers two questions at once, and its callers have
+ * to tell them apart, because the two get opposite answers: `/2026/13` is a typo and stays a 404,
+ * while `/2025/3` is a real month that fell out of the window and 308s to the hub. The route asks
+ * this after the fact; `parkCalendarRedirect` in `./calendar-redirects` asks it before anything
+ * renders. The spelling rule is written here once so those two cannot drift.
+ */
+export function parseParkCalendarMonthSpelling(
+  segments: string[] | undefined
+): { month: ParkCalendarMonth; padded: boolean } | null {
+  if (!segments || segments.length !== 2) return null;
 
   const [rawYear, rawMonth] = segments;
-  if (!/^\d{4}$/.test(rawYear) || !/^\d{1,2}$/.test(rawMonth)) return 'invalid';
+  if (!/^\d{4}$/.test(rawYear) || !/^\d{1,2}$/.test(rawMonth)) return null;
 
   const year = Number(rawYear);
   const month = Number(rawMonth);
-  if (month < 1 || month > 12) return 'invalid';
-  if (!isParkCalendarMonthInRange({ year, month }, now, coverageTo)) return 'invalid';
+  if (month < 1 || month > 12) return null;
 
   // `09` and `9` are the same month and must not be two URLs. `0` alone is already out on the
-  // range check above, so the only padded form left is a leading zero on 1–9.
+  // 1–12 check above, so the only padded form left is a leading zero on 1–9.
   return { month: { year, month }, padded: rawMonth.length === 2 && rawMonth.startsWith('0') };
 }
 

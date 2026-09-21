@@ -1,10 +1,27 @@
 import createMiddleware from 'next-intl/middleware';
-import type { NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
+import { parkCalendarRedirect } from './lib/parks/calendar-redirects';
 
 const handleI18nRouting = createMiddleware(routing);
 
 export default function proxy(request: NextRequest) {
+  // A park calendar month outside the window the route serves, answered before anything renders.
+  // Thrown from the page instead, the same 308 carries that route's not-found document as its
+  // body — 81,963 B in production, none of it compressed, on ~21,948 URLs. Here it is a header and
+  // an empty body. Only months no park could serve are decided here; the rest fall through to the
+  // route untouched. `lib/parks/calendar-redirects.ts` has the measurements and the reasoning.
+  //
+  // The target is absolute here and relative on the wire. A middleware `Location` MUST be
+  // absolute — Next parses it with `new NextURL(...)` and a path alone throws `ERR_INVALID_URL`,
+  // which is a 500, not a redirect — and the same code relativizes it again when the host matches
+  // the request's. So the header a visitor sees is byte-identical to the one the page used to
+  // send, and the query string is dropped exactly as `permanentRedirect()` dropped it.
+  const calendarTarget = parkCalendarRedirect(request.nextUrl.pathname);
+  if (calendarTarget) {
+    return NextResponse.redirect(new URL(calendarTarget, request.url), 308);
+  }
+
   const response = handleI18nRouting(request);
 
   // next-intl detects the locale from the Accept-Language header and redirects

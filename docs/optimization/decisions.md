@@ -98,6 +98,10 @@ invocations** with no behavioural change. Pending 48 h confirmation.
 
 ## 2026-09-01 — DEFERRED: bodyless 308 for out-of-range calendar months
 
+> **Superseded on 2026-09-21 (PAR-373)** — done, by the route this entry rejected. Read the entry
+> at the end of this file for what changed about the reasoning: the month window did move into the
+> proxy, and it is not a second copy of the rule. What stands here is the measurement.
+
 **Measured:** any out-of-range month (`/wartezeiten-kalender/2025/3`, `/2030/1`) returns
 `308` carrying a **71,238-byte, uncompressed `id="__next_error__"` HTML document** — no
 `content-encoding`, byte-identical across URLs, plus a Cloudflare challenge script. 4 % of
@@ -950,3 +954,84 @@ place; a nonsense slug still 404s. `tsc --noEmit`, eslint and prettier clean.
   is what Google asks for. Cutting two of three would trade an SEO signal for ~20 s on the
   cache-MISS path, which now costs 0.8 s on a hit. `variantFor()` in `lib/media/focus.ts` is
   genuinely dead code, but it is a function, not a crop.
+
+---
+
+## 2026-09-21 — ACCEPTED: the bodyless 308, three weeks after it was deferred
+
+**Lever:** origin transfer. **Files:** `proxy.ts`, `lib/parks/calendar-redirects.ts`,
+`lib/parks/calendar-segments.ts`, `lib/utils/servable-route.ts`,
+`app/[locale]/…/wait-time-calendar/[[...date]]/page.tsx`.
+
+**What the body actually is.** The deferred entry above called it an `__next_error__` document and
+left it there. It is the route's **not-found page**, rendered through the root and locale layouts
+after the redirect is thrown — `next/dist/server/app-render/app-render.js`, the `isRedirectError`
+branch, sets the status and `location` and then renders
+`UNDERSCORE_NOT_FOUND_ROUTE_ENTRY` anyway. Broken down on production's 81,963 B:
+
+```
+<head>                  3,502 B   down to <title>Park nicht gefunden</title>
+RSC flight payload     77,152 B   the locale layout: header, footer, route messages
+Cloudflare script         921 B
+content-encoding        (none)
+```
+
+That explains the growth the follow-up measurement recorded (72,235 → 81,963 B in eighteen days)
+without anything having changed about the redirect: the body is the layout, so it grows with the
+layout. It also means this was never specific to `permanentRedirect()` or to the calendar — all
+**15** redirect call sites in the app tree carry it.
+
+**Why the objection no longer holds.** The deferred entry rejected a proxy-level check because the
+window depends on the park's `scheduleCoverage.to` and timezone, so it would be "a second copy of
+the month rule, living where nothing renders it". `lib/parks/calendar-redirects.ts` is not a copy:
+it **imports** `PARK_CALENDAR_SEGMENTS`, `parkCalendarPath`, `parseParkCalendarMonthSpelling`,
+`isParkCalendarMonthInRange` and `currentParkCalendarMonth` from `lib/parks/calendar-segments.ts`,
+the same module the route reads. The two park-dependent halves resolve without the API:
+
+- The timezone only moves which **day** it is, so the extreme offsets bracket every park's current
+  month — `currentParkCalendarMonth('Etc/GMT+12')` (UTC−12) and `('Etc/GMT-14')` (UTC+14). They are
+  the same month on all but about a day per month, and the pair collapses to one.
+- `parkCalendarMonthsForward` shows `scheduleCoverage.to` can only **shorten** the forward window.
+  Omitted, the check uses the widest window any park could have.
+
+A month outside that for every candidate is outside for every park. Everything else returns `null`
+and falls through to the route, which still owns the rule — including the edge months, which still
+308 from the render and still carry the body. One thing about the response is load-bearing and was
+measured the wrong way round first: a middleware `Location` must be **absolute**. Handing Next a
+bare path throws `ERR_INVALID_URL` inside `new NextURL(...)` and the URL answers **500**, which the
+first build here did on all three redirect URLs. `NextResponse.redirect(new URL(target,
+request.url), 308)` is correct, and the adapter relativizes the header again when the host matches
+the request's — so what reaches the visitor is the same relative `Location` the page sent before.
+
+**Measured effect** (local `next start`, Node 24, same build twice — baseline, then the change):
+
+| URL                                                 |         before |          after |
+| --------------------------------------------------- | -------------: | -------------: |
+| `/de/…/wartezeiten-kalender/2025/3` (out of window) |       75,832 B |           66 B |
+| `/en/…/wait-time-calendar/2026/1` (out of window)   |       75,026 B |           64 B |
+| `/de/…/wartezeiten-kalender/2026/09` (padded)       |       77,470 B |           73 B |
+| `/de/…/koeln/phantasialand/…/2026/10` (wrong city)  |       77,378 B |       77,375 B |
+| `/de/…/wartezeiten-kalender/2026/13` (malformed)    |  404, 75,873 B |  404, 75,956 B |
+| `/de/…/wartezeiten-kalender/2026/10` (in window)    | 200, 450,259 B | 200, 450,253 B |
+
+The remaining 64–73 B are the target path as text, which is what `NextResponse.redirect()` writes:
+**1,149× smaller** on the first row. Status, `Location` and `CDN-Cache-Control` are unchanged on
+every row. The last three rows are the control — they are not supposed to move, and the tens of
+bytes between them are build-id noise in the markup, not a behaviour change. Against the ~5,600
+redirects per 12 h read off the calendar route, this is the ~400 MB the track has been carrying
+since 2026-09-01.
+
+**What stays.** The other ten page-render redirects — `findParkPageRedirect`,
+`findRelocatedParkRedirect`, `findRenamedParkRedirect` on the park, ride, city and calendar
+routes, the glossary's localized-segment 308, the blog's canonical-slug 307 — each need a lookup
+the proxy would have to run on **every** request. Row four above is one of them and does not move.
+They are a handful of URLs against 21,948, and buying their bodies back would cost a fetch on every
+page view.
+
+**Cost-shift check:** none. No new fetches; the proxy work is a `split('/')` and, on a calendar
+month URL only, two `Intl.DateTimeFormat` reads. Invocations are unchanged — a middleware response
+is still an invocation — so this is a pure transfer saving.
+
+**Verification:** `pnpm lint`, `pnpm format:check`, `pnpm build` (Node 24, exit 0),
+`pnpm test:calendar-month` (60 cases, 11 of them new and pinning both window edges),
+`pnpm test:calendar`, `pnpm test:calendar-park-projection`, `pnpm test:content-changes`.

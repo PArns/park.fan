@@ -14,6 +14,11 @@
  *     one pattern and not two
  *   - week rows and list rows survive leap years, month lengths and Monday-first weeks
  *
+ * The month window in `lib/parks/calendar-segments.ts` and the proxy redirect in
+ * `lib/parks/calendar-redirects.ts` are pinned here too, because the second anticipates the
+ * first's answer from the URL alone and the two disagreeing means a month page becomes
+ * unreachable or a dead URL starts answering 200.
+ *
  * Run: pnpm test:calendar-month
  */
 
@@ -26,10 +31,13 @@ import {
 import {
   CALENDAR_DATA_START,
   PARK_CALENDAR_MONTH_SPAN,
+  currentParkCalendarMonth,
   isParkCalendarMonthInRange,
   parkCalendarMonthsBack,
   parkCalendarMonthsForward,
+  shiftParkCalendarMonth,
 } from '../lib/parks/calendar-segments.ts';
+import { parkCalendarRedirect } from '../lib/parks/calendar-redirects.ts';
 
 const testCases = [];
 const test = (name, actual, expected) => testCases.push({ name, actual, expected });
@@ -557,6 +565,127 @@ test(
     return isParkCalendarMonthInRange({ year: 2025, month: 6 }, now, '2027-01-24');
   },
   false
+);
+
+// ---------------------------------------------------------------------------
+// The proxy redirect: which month URLs are decided before the render, and which are not.
+//
+// `parkCalendarRedirect` reads the real clock, because the window it anticipates moves with it.
+// So do these cases: they are anchored on today's UTC month and assert PROPERTIES that hold in
+// every month — a month far outside the window redirects, a month inside it does not, and the
+// edge belongs to the route. `PARK_CALENDAR_MONTH_SPAN` is read where an offset has to clear it,
+// so the cases move with the constant instead of pinning today's value of it.
+
+const GEO = 'europe/germany/bruehl/phantasialand';
+const nowUtc = currentParkCalendarMonth('UTC');
+/** A month URL under the DE calendar segment, spelled as the proxy sees it. */
+const deMonth = (offset, pad = false) => {
+  const { year, month } = shiftParkCalendarMonth(nowUtc, offset);
+  return `/de/parks/${GEO}/wartezeiten-kalender/${year}/${pad && month < 10 ? `0${month}` : month}`;
+};
+const DE_HUB = `/de/parks/${GEO}/wartezeiten-kalender`;
+
+test(
+  'a month well past the back edge is redirected to the hub before the render',
+  // +1 clears the timezone bracket: the two candidate months differ by at most one.
+  () => parkCalendarRedirect(deMonth(-(PARK_CALENDAR_MONTH_SPAN.back + 2))),
+  DE_HUB
+);
+
+test(
+  'a month well past the forward edge goes to the hub too — coverage can only shorten that side',
+  () => parkCalendarRedirect(deMonth(PARK_CALENDAR_MONTH_SPAN.forward + 2)),
+  DE_HUB
+);
+
+test(
+  'the current month is served, so the proxy does not answer it',
+  () => parkCalendarRedirect(deMonth(0)),
+  null
+);
+
+// The two edges themselves, and they are the cases that matter: a proxy that redirects one month
+// too far makes a page that exists unreachable, and no build turns red over it. `nowUtc` is always
+// one of the candidate months — UTC sits between UTC−12 and UTC+14, and those two are at most one
+// month apart — so a month this window still holds is served by a candidate and must fall through.
+test(
+  'the oldest month the window still holds is served, so the proxy does not answer it',
+  () => parkCalendarRedirect(deMonth(-parkCalendarMonthsBack(nowUtc))),
+  null
+);
+
+test(
+  'the last forward month falls through too — a park with coverage may still serve it',
+  () => parkCalendarRedirect(deMonth(PARK_CALENDAR_MONTH_SPAN.forward)),
+  null
+);
+
+test(
+  'a padded month the route certainly serves 308s to the unpadded spelling',
+  () => parkCalendarRedirect(deMonth(0, true)),
+  // Only meaningful in January–September; from October on there is no padded form to redirect.
+  nowUtc.month < 10 ? `${DE_HUB}/${nowUtc.year}/${nowUtc.month}` : null
+);
+
+test(
+  'a padded month outside the window goes to the hub, not to its unpadded twin',
+  () => parkCalendarRedirect(deMonth(-(PARK_CALENDAR_MONTH_SPAN.back + 2), true)),
+  DE_HUB
+);
+
+test(
+  'a padded FUTURE month is left to the route — only the park knows how far its schedule reaches',
+  () => {
+    const future = shiftParkCalendarMonth(nowUtc, 1);
+    return future.month < 10
+      ? parkCalendarRedirect(
+          `/de/parks/${GEO}/wartezeiten-kalender/${future.year}/0${future.month}`
+        )
+      : null;
+  },
+  null
+);
+
+test(
+  'a month that is not a month stays a 404 — the route answers it, not the proxy',
+  () =>
+    `${parkCalendarRedirect(`/de/parks/${GEO}/wartezeiten-kalender/2026/13`)}/${parkCalendarRedirect(`/de/parks/${GEO}/wartezeiten-kalender/abc/x`)}`,
+  'null/null'
+);
+
+test(
+  'the hub itself carries no month and is never redirected',
+  () => parkCalendarRedirect(DE_HUB),
+  null
+);
+
+test(
+  'the English URL is decided on the English segment, and the localized one is not a URL under /en',
+  () => {
+    const { year, month } = shiftParkCalendarMonth(nowUtc, -(PARK_CALENDAR_MONTH_SPAN.back + 2));
+    const en = parkCalendarRedirect(`/en/parks/${GEO}/wait-time-calendar/${year}/${month}`);
+    const mixed = parkCalendarRedirect(`/en/parks/${GEO}/wartezeiten-kalender/${year}/${month}`);
+    return `${en}|${mixed}`;
+  },
+  `/en/parks/${GEO}/wait-time-calendar|null`
+);
+
+test(
+  'a geo segment the API can never resolve is a 404 first — the same guard the page runs',
+  () => {
+    const { year, month } = shiftParkCalendarMonth(nowUtc, -(PARK_CALENDAR_MONTH_SPAN.back + 2));
+    return parkCalendarRedirect(
+      `/de/parks/europe/germany/bruehl/taron-16x9.jpg/wartezeiten-kalender/${year}/${month}`
+    );
+  },
+  null
+);
+
+test(
+  "a path that is not a park calendar is not this function's business",
+  () =>
+    `${parkCalendarRedirect(`/de/parks/${GEO}`)}/${parkCalendarRedirect('/de/blog/2026/9')}/${parkCalendarRedirect(`/xx/parks/${GEO}/wartezeiten-kalender/2026/1`)}`,
+  'null/null/null'
 );
 
 // ---------------------------------------------------------------------------

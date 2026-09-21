@@ -72,6 +72,9 @@ carries the reasoning, the measurements and the counter-examples.
   route executes. Never pass a numeric TTL at a call site: put it in `CACHE_TTL` or the helper's
   default, and set it from the data's cadence, not as a floor under some page. Prove it against
   `initialRevalidateSeconds` in `.next/prerender-manifest.json`.
+- **[A redirect thrown from a render carries the layout as its body](docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)** — `permanentRedirect()` from a page
+  answers `308` with an 81,963 B not-found document, uncompressed. On a crawled surface hoist it
+  into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.
