@@ -19,6 +19,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [A `revalidate` at a call site is somebody else's page (REQUIREMENT)](a-revalidate-at-a-call-site-is-somebody-elses-page.md)
 - [A redirect thrown from a render carries the layout as its body (REQUIREMENT)](a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)
 - [An ISR route needs both halves, and one of them is an empty `generateStaticParams` (REQUIREMENT)](an-isr-route-needs-both-halves.md)
+- [A runtime file read ships the whole directory it is rooted at (REQUIREMENT)](a-runtime-file-read-ships-the-directory-it-is-rooted-at.md)
 - [Translations are routed, not bundled (REQUIREMENT)](translations-are-routed-not-bundled.md)
 
 ## Data and API
