@@ -71,6 +71,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'nearby',
     'parkCard',
     'parks',
+    'planner',
     'pushAlerts.pushErrors',
     'pushAlerts.rideBell',
     'pushAlerts.rideDialog',

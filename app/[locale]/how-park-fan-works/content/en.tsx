@@ -15,9 +15,11 @@ import {
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import {
   Activity,
   BarChart3,
+  CalendarClock,
   CalendarDays,
   CloudSun,
   Compass,
@@ -44,6 +46,7 @@ import {
   LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
+  PlannerDayFigure,
   RopeDropDemo,
   TwoRidesDemo,
   TypicalWaitsDemo,
@@ -88,12 +91,13 @@ const CHAPTERS: Chapter[] = [
   { id: 'scale', index: '02', label: 'Typical, busy, record' },
   { id: 'moment', index: '03', label: 'The best moment' },
   { id: 'day', index: '04', label: 'The right day' },
-  { id: 'park-page', index: '05', label: 'A park page, top to bottom' },
-  { id: 'night-shift', index: '06', label: 'Where the numbers come from' },
-  { id: 'gaps', index: '07', label: 'When we do not know' },
-  { id: 'visits', index: '08', label: 'Four visits' },
-  { id: 'signposts', index: '09', label: 'Where to find what' },
-  { id: 'faq', index: '10', label: 'Common questions' },
+  { id: 'day-plan', index: '05', label: 'The day as a plan' },
+  { id: 'park-page', index: '06', label: 'A park page, top to bottom' },
+  { id: 'night-shift', index: '07', label: 'Where the numbers come from' },
+  { id: 'gaps', index: '08', label: 'When we do not know' },
+  { id: 'visits', index: '09', label: 'Four visits' },
+  { id: 'signposts', index: '10', label: 'Where to find what' },
+  { id: 'faq', index: '11', label: 'Common questions' },
 ];
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
@@ -253,7 +257,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Season, info, questions',
     body: 'Operating season and announced events, address and time zone, and the common questions about this particular park.',
-    example: 'The ice rink from chapter 07 sits here with November to January.',
+    example: 'The ice rink from chapter 08 sits here with November to January.',
     demo: <AnatomySeasonDemo label="Ice rink" />,
   },
 ];
@@ -349,6 +353,7 @@ const FAQ = [
 export function ContentEN() {
   const glossary = `/${GLOSSARY_SEGMENTS.en}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.en}`;
+  const planner = `/${PLANNER_SEGMENTS.en}`;
 
   return (
     <>
@@ -705,16 +710,60 @@ export function ContentEN() {
 
       {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
-        id="park-page"
+        id="day-plan"
         index="05"
+        kicker="The planner"
+        title="Playing the day through beforehand"
+        icon={CalendarClock}
+      >
+        <P>
+          Up to here it was about placing a number and finding the right day. The trip planner puts
+          the two together: it lays the rides you want on a timeline and works out whether the day
+          adds up. Every block is a ride, its height is the wait predicted for its hour, and between
+          two blocks stands the walk from one to the other.
+        </P>
+        <P>
+          The example below is not a drawing. These are the same parts that run in the planner, fed
+          with the answer the API gave on 4 September 2026 for Saturday 12 September at
+          Phantasialand: open from 9 to 18, quiet, drizzle. Drag a block to another time and it
+          recomputes its height, and the transfers beside it as well. None of it reaches your own
+          plan.
+        </P>
+
+        <DemoFrame
+          label="A planned Saturday"
+          href={planner}
+          hrefLabel="To the trip planner →"
+          className="mx-auto max-w-[560px]"
+        >
+          <PlannerDayFigure />
+        </DemoFrame>
+
+        <Highlight>
+          Two things the planner knows that no wait time carries. The park opens at 9 that Saturday,
+          Taron only at 10, and its block cannot be dragged before that hour. And the transfer
+          between two rides is computed from the straight-line distance between the two stations,
+          plus allowances for the walk out and for the ride itself, and it says whether there is
+          time for it.
+        </Highlight>
+        <PG>
+          The selected block also names how far the forecast for that ride typically lands off. For
+          Taron that Saturday it is 15 minutes. Typical means half the days land further off.
+        </PG>
+      </SectionShell>
+
+      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="park-page"
+        index="06"
         kicker="The walk-through"
         title="A park page, top to bottom"
         icon={Layers}
       >
         <P>
-          Everything so far lives on one park.fan page per park, built in the order people ask: is
-          the park open today? Is it about to rain? How long is the queue? And when should I have
-          come instead?
+          Everything from the first four chapters lives on one park.fan page per park, built in the
+          order people ask: is the park open today? Is it about to rain? How long is the queue? And
+          when should I have come instead?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -744,11 +793,11 @@ export function ContentEN() {
         </div>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="night-shift"
-          index="06"
+          index="07"
           kicker="The machinery"
           title="Where the numbers come from"
           icon={Database}
@@ -809,10 +858,10 @@ export function ContentEN() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
+      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="gaps"
-        index="07"
+        index="08"
         kicker="The limits"
         title="When we do not know"
         icon={HelpCircle}
@@ -856,8 +905,8 @@ export function ContentEN() {
         </Highlight>
       </SectionShell>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
-      <SectionShell id="visits" index="08" kicker="In practice" title="Four visits" icon={Users}>
+      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      <SectionShell id="visits" index="09" kicker="In practice" title="Four visits" icon={Users}>
         <P>
           The same data answers very different questions. Four examples, each with the route we
           would take.
@@ -968,15 +1017,20 @@ export function ContentEN() {
                 Shows are in the tab of the same name. The times are listed there for the whole day,
                 and parades empty the paths for about half an hour.
               </>,
+              <>
+                Nobody has to guess the order: the trip planner from chapter 05 fills the day with
+                the park’s headliners at one press, sorts it by the hourly curves and counts the
+                walk between two rides.
+              </>,
             ]}
           />
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="signposts"
-        index="09"
+        index="10"
         kicker="Signposts"
         title="Where to find what"
         icon={Search}
@@ -1014,6 +1068,16 @@ export function ContentEN() {
               ),
             },
             {
+              icon: CalendarClock,
+              title: 'Trip planner',
+              body: (
+                <>
+                  The tab on the right edge of the window opens it on every page. The plan lives in
+                  the browser, with no account. Chapter 05 shows what it makes of a day in the park.
+                </>
+              ),
+            },
+            {
               icon: Activity,
               title: 'Blog',
               body: (
@@ -1047,10 +1111,10 @@ export function ContentEN() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
+      {/* ── 11 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
-        index="10"
+        index="11"
         kicker="Asked and answered"
         title="Common questions"
         icon={HelpCircle}
