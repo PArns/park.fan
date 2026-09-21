@@ -70,7 +70,7 @@ export function useTabHashRouting({
   // whole time (the first INP sample taken here showed ~1 s of input delay).
   //
   // Since PAR-272 the attractions panel is the same tree on both sides, so the flip no longer
-  // builds that grid — what it still switches on are the other five panels, the tab bar's
+  // builds that grid — what it still switches on are the other four panels, the tab bar's
   // handlers and the hash sync. It stays a transition for the same reason: none of that is
   // worth blocking a tap that arrives during hydration.
   /**
