@@ -80,6 +80,7 @@ export function needsAttribution(image: MediaImage): boolean {
 
 function formatLicense(license: string): string {
   if (license === 'public-domain') return 'Public domain';
+  if (license === 'unsplash') return 'Unsplash License';
   // cc-by-sa-4.0 → CC BY-SA 4.0
   return license
     .replace(/^cc-/, 'cc ')
