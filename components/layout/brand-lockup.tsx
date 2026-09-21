@@ -36,6 +36,52 @@ import Image from 'next/image';
  * along on its right — an optical ~8.5 px that no call site could see, and that changed with the
  * pin's height. It is `gap-2` in the header now, and it is the only place the spacing lives.
  */
+/**
+ * The pin on its own, at whatever height the caller's class sets.
+ *
+ * It exists because the homepage hero's headline needs the mark without the wordmark, and the
+ * artwork paths, the light/dark pair and the eager load may not be written down a second time —
+ * the drawing lives in this file, so the next artwork change reaches every consumer.
+ *
+ * `width`/`height` are the artwork's own ink box (90.03 × 124.21, rounded), not a rendered size:
+ * they only tell the browser what to reserve before the file arrives, and `w-auto` takes the real
+ * ratio from the file at any height. The header's 26 px pin renders exactly as before.
+ */
+export function BrandPin({
+  /** The height, as a class — e.g. `h-[26px] w-auto`. */
+  className,
+  /** Force the light-ink artwork regardless of theme. */
+  forceLight = false,
+}: {
+  className: string;
+  forceLight?: boolean;
+}) {
+  return (
+    <>
+      <Image
+        src="/logo-small-dark.svg"
+        width={90}
+        height={124}
+        alt=""
+        aria-hidden="true"
+        className={forceLight ? className : `hidden ${className} dark:block`}
+        loading="eager"
+      />
+      {!forceLight && (
+        <Image
+          src="/logo-small.svg"
+          width={90}
+          height={124}
+          alt=""
+          aria-hidden="true"
+          className={`block ${className} dark:hidden`}
+          loading="eager"
+        />
+      )}
+    </>
+  );
+}
+
 export function BrandLockup({
   /** Force the light-ink artwork regardless of theme — for a lockup over a permanently dark hero. */
   forceLight = false,
@@ -46,26 +92,7 @@ export function BrandLockup({
   const word = 'h-[19px] w-auto';
   return (
     <>
-      <Image
-        src="/logo-small-dark.svg"
-        width={19}
-        height={26}
-        alt=""
-        aria-hidden="true"
-        className={forceLight ? pin : `hidden ${pin} dark:block`}
-        loading="eager"
-      />
-      {!forceLight && (
-        <Image
-          src="/logo-small.svg"
-          width={19}
-          height={26}
-          alt=""
-          aria-hidden="true"
-          className={`block ${pin} dark:hidden`}
-          loading="eager"
-        />
-      )}
+      <BrandPin className={pin} forceLight={forceLight} />
       <Image
         src="/parkfan-dark.svg"
         width={80}

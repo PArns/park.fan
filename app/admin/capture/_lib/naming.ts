@@ -36,15 +36,21 @@ export function freeName(rideSlug: string | null, taken: ReadonlySet<string>): s
 /**
  * The tags a phone may set without guessing.
  *
- * `photo` and `ride` are facts about what is being uploaded. The time of day is
- * read off the park's own clock, and only in the two windows where it cannot be
- * wrong — nine to five is daylight in every month this catalogue covers, ten at
- * night is not. Everything between them is `dusk`, `dawn` or `blue-hour`, which
- * are judgements about the light rather than the hour, and they belong to the
- * review pass along with the weather and the subject.
+ * `photo` and the subject are facts about what is being uploaded: a photograph
+ * handed to a ride row shows a `ride`, one handed to the park row shows the
+ * `park`, and both tags are in the vocabulary's `subject` facet. The time of day
+ * is read off the park's own clock, and only in the two windows where it cannot
+ * be wrong — nine to five is daylight in every month this catalogue covers, ten
+ * at night is not. Everything between them is `dusk`, `dawn` or `blue-hour`,
+ * which are judgements about the light rather than the hour, and they belong to
+ * the review pass along with the weather and what is actually in frame.
  */
-export function fieldTags(parkTimezone: string | null, when: Date = new Date()): string[] {
-  const tags = ['photo', 'ride'];
+export function fieldTags(
+  parkTimezone: string | null,
+  subject: 'ride' | 'park' = 'ride',
+  when: Date = new Date()
+): string[] {
+  const tags = ['photo', subject];
   const hour = parkHour(parkTimezone, when);
   if (hour === null) return tags;
   if (hour >= 9 && hour < 17) tags.push('day');

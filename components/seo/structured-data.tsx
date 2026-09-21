@@ -597,9 +597,12 @@ export function AttractionStructuredData({
 export function ShowsStructuredData({
   shows,
   park,
+  parkUrl,
 }: {
   shows: ParkShow[];
   park: ParkResponse | ParkWithAttractions;
+  /** The park page's URL, which is also the `@id` of its `AmusementPark` node. */
+  parkUrl: string;
 }) {
   if (!shows || shows.length === 0) return null;
 
@@ -636,12 +639,19 @@ export function ShowsStructuredData({
   // of JSON-LD). A single representative Event per show keeps the rich-result
   // value; the remaining showtimes are preserved via eventSchedule.
   const parkBgImage = getParkBackgroundImage(park.slug);
+  const parkName = stripNewPrefix(park.name);
   const events = showsWithTimes.map((show) => {
+    const showName = stripNewPrefix(show.name);
     const startTimes = (show.showtimes || []).map((s) => s.startTime).filter(Boolean);
     return {
       '@context': 'https://schema.org' as const,
       '@type': 'Event' as const,
-      name: stripNewPrefix(show.name),
+      name: showName,
+      // Search Console reported all 24 Show events as missing `description`. Nothing upstream
+      // carries one — `ParkShow` has no description field — so this is the same fallback
+      // template `TouristAttractionStructuredData` uses for a ride, built from two values the
+      // node already states. Writing anything richer would mean inventing it.
+      description: `${showName} at ${parkName} - Show times and live status.`,
       startDate: toStartDate(startTimes[0]),
       // One Schedule per remaining showtime: `Schedule` carries a single `startTime`, so the
       // list has to be expressed as a list of schedules rather than one multi-valued entry.
@@ -655,13 +665,25 @@ export function ShowsStructuredData({
       image: parkBgImage ? `${SITE_URL}${parkBgImage}` : `${SITE_URL}/logo-big.png`,
       location: {
         '@type': 'Place' as const,
-        name: stripNewPrefix(park.name),
+        name: parkName,
         address: {
           '@type': 'PostalAddress' as const,
           addressLocality: park.city || undefined,
           addressCountry: park.country || undefined,
           addressRegion: park.region || undefined,
         },
+      },
+      // The park runs its own shows, so the organizer is the `AmusementPark` this page already
+      // declares — referenced by its `@id` instead of described a second time. `AmusementPark`
+      // is a `LocalBusiness`, which schema.org makes an `Organization` as well as a `Place`, so
+      // it satisfies the range of `organizer`. The reference leaves this `<script>` to reach
+      // `ParkStructuredData`'s node, so it carries `@type` next to `@id` (see
+      // `docs/seo/analysis.md`, item 12) plus the name and url that make it readable on its own.
+      organizer: {
+        '@type': 'AmusementPark' as const,
+        '@id': parkUrl,
+        name: parkName,
+        url: parkUrl,
       },
       eventStatus: 'https://schema.org/EventScheduled' as const,
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode' as const,
@@ -746,12 +768,17 @@ export function ParkSubPageStructuredData({
 }
 
 /**
- * `Dataset` for a park's crowd calendar — the hub's current month, or one month page.
+ * `Dataset` for a table of measurements about one park — the crowd calendar's month, or the
+ * wait-time record's two-year window.
  *
- * The calendar page is not prose about a park; it is a table of one row per day, and `Dataset` is
- * what schema.org has for that. wartezeiten.app marks its own calendar pages the same way, which
- * is what prompted this, but the shape here is deliberately narrower than theirs in three places
- * because a `Dataset` makes claims a page has to be able to honour.
+ * Neither page is prose about a park; each is a table of one row per day or per hour, and
+ * `Dataset` is what schema.org has for that. wartezeiten.app marks its own calendar pages the
+ * same way, which is what prompted this, but the shape here is deliberately narrower than theirs
+ * in three places because a `Dataset` makes claims a page has to be able to honour.
+ *
+ * Everything that differs between the two pages arrives as a prop — the name, the description,
+ * the covered interval and the list of values measured — so there is one node shape and one place
+ * where its rules are written down.
  *
  * **`variableMeasured` lists what the grid actually draws** and nothing else. It is passed in by
  * the caller, already translated, rather than assembled from a fixed English list — the node
@@ -774,7 +801,7 @@ export function ParkSubPageStructuredData({
  * `spatialCoverage` also carries the park's name, because it is the one reference here a
  * consumer renders rather than follows.
  */
-export function ParkCalendarDatasetStructuredData({
+export function ParkDatasetStructuredData({
   url,
   parkUrl,
   parkName,
@@ -789,12 +816,12 @@ export function ParkCalendarDatasetStructuredData({
   parkUrl: string;
   /** Names `spatialCoverage`, the one reference here a consumer renders rather than follows. */
   parkName: string;
-  /** The dataset's own name — the park and the month, not the park alone. */
+  /** The dataset's own name — the park AND what is tabulated, not the park alone. */
   name: string;
   description: string;
-  /** ISO-8601 interval for the month this page shows, e.g. `2026-11-01/2026-11-30`. */
+  /** ISO-8601 interval this page's figures were measured over, e.g. `2026-11-01/2026-11-30`. */
   temporalCoverage: string;
-  /** Localized names of the per-day values the grid renders. */
+  /** Localized names of the values the table renders. */
   variableMeasured: string[];
   locale?: string;
 }) {

@@ -75,6 +75,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A redirect thrown from a render carries the layout as its body](docs/rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)** — `permanentRedirect()` from a page
   answers `308` with an 81,963 B not-found document, uncompressed. On a crawled surface hoist it
   into `proxy.ts` and import the rule rather than restating it (`lib/parks/calendar-redirects.ts`).
+- **[An ISR route needs both halves](docs/rules/an-isr-route-needs-both-halves.md)** — `export const revalidate` alone caches nothing: every
+  fetch needs `next: { revalidate }`, and an all-dynamic route needs a `generateStaticParams`
+  (empty is right) or it never enters `dynamicRoutes`. Prove it in `.next/prerender-manifest.json`.
 - **[Translations are routed, not bundled](docs/rules/translations-are-routed-not-bundled.md)** — the locale layout ships only the chrome; each route adds
   its delta via `<RouteMessages route="…">`. Never hand-edit `i18n/route-namespaces.generated.ts`;
   re-run `pnpm generate:route-namespaces` and keep `pnpm check:client-messages` green.
@@ -104,7 +107,7 @@ carries the reasoning, the measurements and the counter-examples.
 - **[The admin holds no credential](docs/rules/the-admin-holds-no-credential.md)** — an httpOnly session cookie; `adminFetch` is a plain same-origin
   fetch and `app/api/admin/[...path]` turns the cookie into a bearer token server-side. Four things
   in that proxy are load-bearing. Turnstile is checked for **action and hostname**, not just
-  `success: true`.
+  `success: true`. The login's step change replaces the `<form>` node — `pnpm check:admin-login-step`.
 - **[The header menu is three kinds of content, and the split is about the link graph](docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)** — the parks
   panel server-renders continents and countries only; cities and parks arrive per opened country.
   The band is glass, positioned against the `<header>`. Card widths come from
@@ -188,6 +191,10 @@ carries the reasoning, the measurements and the counter-examples.
   (`CardPhotoFrame`), never the whole card. `pnpm check:card-framing`.
 - **[Localized blog gallery captions](docs/rules/localized-blog-gallery-captions.md)** — a gallery is a collection, and its captions live per image in
   the sidecar.
+- **[A version is a unit of communication](docs/rules/a-version-is-a-unit-of-communication.md)** — no bump per merge; the PO cuts one, MINOR for a new
+  visible capability, PATCH for a bundle of fixes. `docs/changelog.md` is the internal log and
+  `content/changelog/<version>.md` the public entry at `/en/changelog`; never parse one into the
+  other, and a blog post is never a release.
 
 ---
 

@@ -87,6 +87,9 @@ public/media/**/*-1x1.jpg
 
 !content/home/*.md
 !content/blog/**/*.md
+# The public changelog is content, not a scratch note: `content/changelog/<version>.md`
+# is what `/en/changelog` renders, and the README beside them is its authoring contract.
+!content/changelog/*.md
 .env*.local
 
 # Docs and project markdown (keep in git)

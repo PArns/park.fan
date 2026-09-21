@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { distanceMeters } from '@/lib/media/geo';
+
 /**
  * Where the phone is, and which park that is.
  *
@@ -22,22 +24,68 @@ export interface DevicePosition {
 export type PositionStatus = 'idle' | 'locating' | 'ready' | 'denied' | 'unavailable';
 
 /**
+ * Metres a fix must differ by before it replaces the published one.
+ *
+ * A stationary phone still reports a new fix about once a second, a few metres
+ * either side of where it stands, and every one of those used to re-sort the
+ * whole backlog and re-run the nearest-ride search. Rides are tens of metres
+ * apart, so a difference under this threshold cannot change either answer —
+ * dropping it costs nothing and saves the render. A real walk crosses it within
+ * a few steps, which is why there is no timer beside it: the screen follows
+ * movement, not the clock.
+ */
+const MIN_MOVE_M = 10;
+
+/**
+ * Whether a fresh fix is far enough from the published one to replace it.
+ *
+ * The first fix always is: there is nothing on screen to keep. After that the
+ * question is only whether any answer on the screen would come out differently,
+ * and below `MIN_MOVE_M` none of them can.
+ */
+export function hasMovedEnough(current: DevicePosition | null, next: DevicePosition): boolean {
+  if (!current) return true;
+  return distanceMeters(current, { latitude: next.lat, longitude: next.lon }) >= MIN_MOVE_M;
+}
+
+/**
  * The device's position, kept current.
  *
  * `watchPosition` rather than `getCurrentPosition`: a single fix taken at the
  * entrance is wrong by half a kilometre by the time somebody reaches the back of
  * the park. `enableHighAccuracy` is on because the whole list is ordered by
  * distances of tens of metres, and the coarse fix cannot tell two neighbouring
- * rides apart.
+ * rides apart — the nearest-ride card is on screen the whole time, so there is no
+ * stretch of this screen that the coarse fix would serve.
+ *
+ * That leaves three ways to spend less battery, and this hook takes all three.
+ * The watch is released while the tab is in the background, because the workflow
+ * is to leave for the camera and come back, and a fix nobody is on screen to read
+ * is the GPS radio running for nothing. `maximumAge` lets the browser answer the
+ * first callback from its cache instead of waking the radio for it — 60 s is
+ * older than the park detection needs to care about at a 3000 m radius, and the
+ * ranking corrects itself on the next real fix a second later. And a fix that
+ * moved less than `MIN_MOVE_M` is dropped rather than published.
  */
 export function useDevicePosition(enabled = true) {
   const [position, setPosition] = useState<DevicePosition | null>(null);
   const [status, setStatus] = useState<PositionStatus>(enabled ? 'locating' : 'idle');
   /** Bumped by `retry`, which is the only thing that re-subscribes. */
   const [attempt, setAttempt] = useState(0);
+  /** Whether the tab is in front. Only then is there a watch at all. */
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (typeof document === 'undefined') return;
+
+    const read = () => setActive(document.visibilityState === 'visible');
+    read();
+    document.addEventListener('visibilitychange', read);
+    return () => document.removeEventListener('visibilitychange', read);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled || !active) return;
 
     const geolocation = typeof navigator === 'undefined' ? undefined : navigator.geolocation;
     if (!geolocation) {
@@ -51,11 +99,15 @@ export function useDevicePosition(enabled = true) {
 
     const watch = geolocation.watchPosition(
       (fix) => {
-        setPosition({
+        const next: DevicePosition = {
           lat: fix.coords.latitude,
           lon: fix.coords.longitude,
           accuracy: fix.coords.accuracy,
-        });
+        };
+        // Returning the current object is how the drop works: React bails out of
+        // the render when the state comes back identical, so the backlog is not
+        // re-sorted for a step nobody took.
+        setPosition((current) => (hasMovedEnough(current, next) ? next : current));
         setStatus('ready');
       },
       (error) => {
@@ -65,11 +117,11 @@ export function useDevicePosition(enabled = true) {
         // not have.
         setStatus(error.code === error.PERMISSION_DENIED ? 'denied' : 'unavailable');
       },
-      { enableHighAccuracy: true, maximumAge: 15_000, timeout: 20_000 }
+      { enableHighAccuracy: true, maximumAge: 60_000, timeout: 20_000 }
     );
 
     return () => geolocation.clearWatch(watch);
-  }, [enabled, attempt]);
+  }, [enabled, active, attempt]);
 
   const retry = useCallback(() => {
     setStatus('locating');

@@ -525,6 +525,13 @@
       "unknown": "Sin previsión",
       "closed": "Cerrado"
     },
+    "crowdScale": {
+      "title": "Niveles de afluencia",
+      "note": "100 % son los tiempos de espera de las atracciones principales en un día típico en este parque.",
+      "upTo": "hasta {max} %",
+      "between": "{min}–{max} %",
+      "above": "más de {min} %"
+    },
     "avgWaitTime": "Espera Prom.",
     "openAttractions": "Atracciones abiertas",
     "closedAttractions": "Atracciones cerradas",
@@ -549,6 +556,8 @@
     "tileAttractionsHeadliner": "Estrella desde <b>{min} min</b>",
     "tileCalendar": "Mejores días, hasta donde llega el horario",
     "tileCalendarQuietDay": "Día más tranquilo: <b>{day}</b> ({days, plural, =0 {hoy} =1 {mañana} other {en # días}})",
+    "tileStatsLabel": "Estadísticas",
+    "tileStats": "Por mes, día y hora",
     "tileMap": "Tiempos de espera en el plano · <b>{lands}</b> áreas temáticas",
     "tileMapPlain": "Tiempos de espera en el plano",
     "tileShowsNext": "Próximo: <b>{time}</b> · en {duration}",
@@ -764,6 +773,10 @@
       "until": "Esta atracción está cerrada por obras hasta el {to}.",
       "untilUncertain": "Esta atracción está cerrada por obras previsiblemente hasta el {to}."
     },
+    "transportSystem": {
+      "label": "Transporte",
+      "hint": "Un medio para cruzar el parque, no una atracción. La espera depende del horario, no de la afluencia."
+    },
     "info": {
       "title": "Información del parque",
       "address": "Dirección",
@@ -905,6 +918,7 @@
       "p50": "Típico",
       "p90": "Pico",
       "sampleDaysShort": "días",
+      "recordLink": "Todas las cifras del parque",
       "noData": "Aún no hay suficientes datos históricos disponibles.",
       "comparisonTitle": "En comparación con otros parques",
       "parkAverage": "Media del parque",
@@ -1026,6 +1040,39 @@
         "varHours": "Horario de apertura",
         "varHolidays": "Festivos y vacaciones escolares",
         "varWeather": "Previsión meteorológica"
+      }
+    },
+    "statsPage": {
+      "breadcrumb": "Tiempos de espera medios",
+      "h1Suffix": "Tiempos de espera medios",
+      "metaTitle": "{park}: tiempos de espera medios",
+      "metaTitleShort": "{park}: espera media",
+      "metaDescription": "¿Cuánto se espera realmente {inPark} en {city}? Espera típica y punta por mes, día y hora, medida en {days} días de apertura.",
+      "metaDescriptionNoCity": "¿Cuánto se espera realmente {inPark}? Espera típica y punta por mes, día y hora, medida en {days} días de apertura.",
+      "leadBusiest": "{count, plural, =1 {El mes con más gente {inPark} es {months}, con {minutes} minutos habituales.} other {Los meses con más gente {inPark} son {months}, con {minutes} minutos habituales.}}",
+      "leadQuietest": "{count, plural, =1 {El día más tranquilo sigue siendo {days}, con {minutes} minutos.} other {Los días más tranquilos siguen siendo {days}, con {minutes} minutos cada uno.}}",
+      "leadLongest": "La cola más larga suele ser la de {ride}: {minutes} minutos habituales.",
+      "leadFallback": "Los tiempos de espera {inPark} por mes, día y hora, medidos en {days} días de apertura.",
+      "hourlyTitle": "El día típico",
+      "hourlyHint": "A partir de {days} días de apertura del último año.",
+      "nextTitle": "Continuar en",
+      "nextLive": "Tiempos de espera en vivo",
+      "nextLiveBody": "Lo que marcan las colas en este momento, atracción por atracción.",
+      "nextCalendar": "Calendario de tiempos de espera",
+      "nextCalendarBody": "Afluencia prevista día a día, con horarios y vacaciones escolares.",
+      "method": {
+        "title": "De dónde salen estas cifras",
+        "measured": "Cada cifra de esta página está medida, no estimada. La fuente es el <posted>tiempo de espera anunciado</posted> publicado {inPark}: park.fan lo lee de forma continua y archiva cada lectura con su hora. Este análisis abarca {days} días de apertura a lo largo de {years} años.",
+        "percentiles": "«Típico» es la mediana de todas las lecturas: la mitad de los <wait>tiempos de espera</wait> quedó por debajo y la mitad por encima. «Punta» es el percentil 90, el valor que solo superó una lectura de cada diez. La mediana dice con qué contar, la punta dice cómo es un día lleno. La <crowd>afluencia</crowd> de un mes resume ambas cosas en todas las atracciones.",
+        "hourly": "La curva del día se apoya en una ventana más corta: {days} días de apertura desde el {from}. Las horas en las que una atracción no informó nada quedan vacías. Un hueco no es un cero."
+      },
+      "dataset": {
+        "name": "Estadísticas de tiempos de espera {forPark}",
+        "description": "Tiempos de espera típicos y punta {inPark} por mes, día, atracción y hora, a partir de {days} días de apertura medidos durante {years} años.",
+        "varTypical": "Tiempo de espera típico (mediana)",
+        "varPeak": "Tiempo de espera punta (percentil 90)",
+        "varCrowd": "Afluencia",
+        "varSampleDays": "Días de apertura medidos"
       }
     },
     "planDayCta": "Planificar un día en {park}",
@@ -2123,7 +2170,8 @@
     "error": "No se pudo cargar el plan.",
     "noPlan": "No hay previsión para este día.",
     "overview": {
-      "empty": "Aún no hay días planificados."
+      "empty": "Aún no hay días planificados.",
+      "countdown": "en {count, plural, one {# día} other {# días}}"
     },
     "planThisDay": "Planifica tus atracciones para este día",
     "unit": {
@@ -2240,7 +2288,7 @@
       "resize": "Ajustar el ancho"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {Falta 1 atracción estrella} other {Faltan # atracciones estrella}}",
+      "missing": "{count, plural, =1 {Falta 1 <term>atracción estrella</term>} other {Faltan # <term>atracciones estrella</term>}}",
       "label": "Atracción estrella"
     },
     "coach": {

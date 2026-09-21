@@ -138,7 +138,14 @@ export async function GET(
         { namespace: 'glossary', key: 'overviewTitle' },
       ])
     );
-    const genericPages = {
+    // A page is either translated — `{ namespace, key }` — or English-only, in which
+    // case it carries its headline literally. The changelog is the second kind: it
+    // renders at `/en/changelog` alone and ships no message namespace, so there is no
+    // key to look up. Without an entry here its path (`en/changelog`, length 2) falls
+    // through to CONTINENT and the card comes out as an empty headline over
+    // "🌍 Explore by region · 0 Parks".
+    const genericPages: Record<string, { namespace: string; key: string } | { literal: string }> = {
+      changelog: { literal: 'Changelog' },
       search: { namespace: 'common', key: 'search' },
       datenschutz: { namespace: 'datenschutz', key: 'title' },
       privacy: { namespace: 'datenschutz', key: 'title' },
@@ -180,7 +187,9 @@ export async function GET(
     let tGeneric: any = null;
     if (type === 'GENERIC') {
       const config = genericPages[secondSegment as keyof typeof genericPages];
-      tGeneric = await getTranslations({ locale, namespace: config.namespace });
+      if ('namespace' in config) {
+        tGeneric = await getTranslations({ locale, namespace: config.namespace });
+      }
     }
 
     let name = '';
@@ -229,7 +238,10 @@ export async function GET(
       // from the OG headline so the brand appears once (the corner lockup).
       // A trailing separator is required, so integral names ("Cos'è park.fan?")
       // are left untouched.
-      name = tGeneric(config.key).replace(/\s*[-–—·|]\s*park\.fan\s*$/i, '');
+      name = ('literal' in config ? config.literal : tGeneric(config.key)).replace(
+        /\s*[-–—·|]\s*park\.fan\s*$/i,
+        ''
+      );
 
       // For 'parks' generic page, we can show stats
       if (secondSegment === 'parks') {

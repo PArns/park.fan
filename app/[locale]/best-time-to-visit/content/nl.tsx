@@ -26,6 +26,7 @@ import {
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
@@ -133,7 +134,11 @@ export function ContentNL() {
           items={[
             {
               icon: Sunrise,
-              title: 'Bij opening (rope drop)',
+              title: (
+                <>
+                  Bij opening (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
+                </>
+              ),
               body: 'Het eerste uur is goud waard: wie bij opening binnen is, rijdt de topattracties vaak met een fractie van de latere wachttijd.',
             },
             {
@@ -184,7 +189,11 @@ export function ContentNL() {
           kicker="Piekdag"
           title="Zonnig, iedereen vrij, iedereen er"
           reverse
-          badge={<CrowdLevelBadge level="very_high" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="very_high" />
+            </GlossaryTermLink>
+          }
         >
           Een zaterdag in de zomervakantie bij mooi weer is het slechtste geval: iedereen is vrij,
           iedereen wil eruit, iedereen is er. Ben je flexibel, neem dan liever de dinsdag daarna.
@@ -199,7 +208,7 @@ export function ContentNL() {
             },
             {
               icon: CalendarRange,
-              title: 'Schoolvakanties',
+              title: <GlossaryTermLink termId="school-holiday">Schoolvakanties</GlossaryTermLink>,
               body: 'Zodra bij jou of in een buurregio de vakantie begint, wordt het voller. De zomervakantie is het absolute hoogseizoen.',
             },
             {
@@ -238,7 +247,12 @@ export function ContentNL() {
             },
             {
               icon: Ticket,
-              title: 'Single rider & virtuele wachtrijen',
+              title: (
+                <>
+                  <GlossaryTermLink termId="single-rider">Single rider</GlossaryTermLink> &{' '}
+                  <GlossaryTermLink termId="virtual-queue">virtuele wachtrijen</GlossaryTermLink>
+                </>
+              ),
               body: 'Rijd als single rider op de losse vrije plaatsen, of sta via de app digitaal in de rij terwijl je eet of rondloopt. Op drukke dagen is dat gewonnen tijd.',
             },
           ]}
@@ -258,17 +272,22 @@ export function ContentNL() {
         icon={Ticket}
       >
         <P>
-          De patronen hierboven zijn het startpunt. De echt beste dag vind je in de druktekalender
-          op elke parkpagina: die geeft elke afzonderlijke dag groen, geel of rood, zo ver als het
-          park zijn openingstijden gepubliceerd heeft en passend bij de vakanties en feestdagen van
-          de betreffende regio.
+          De patronen hierboven zijn het startpunt. De echt beste dag vind je in de{' '}
+          <GlossaryTermLink termId="crowd-calendar">druktekalender</GlossaryTermLink> op elke
+          parkpagina: die geeft elke afzonderlijke dag groen, geel of rood, zo ver als het park zijn
+          openingstijden gepubliceerd heeft en passend bij de vakanties en feestdagen van de
+          betreffende regio.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="De paleisrit Symbolica in de Efteling"
           kicker="Groen, geel, rood"
           title="Eén kleur per dag, zo ver als de openingstijden reiken"
-          badge={<CrowdLevelBadge level="low" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="low" />
+            </GlossaryTermLink>
+          }
         >
           Elke parkpagina heeft een dag-op-dag voorspelling die de school- en feestdagen van precies
           die regio meerekent. Kies een groene dag en het belangrijkste deel van de planning is

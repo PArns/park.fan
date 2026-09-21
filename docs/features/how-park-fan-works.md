@@ -127,6 +127,17 @@ Every block sits in a `DemoFrame`, and the intro says in plain words that the
 figures are examples. That is not decoration: a card that is pixel-identical to
 the live one must not be mistakable for a live reading.
 
+One block comes from another route. Chapter 05 (the trip planner) mounts
+`PlannerDayFigure`, a server wrapper around `PlannerDayDemo` in
+`app/[locale]/trip-planner/_demos.tsx`, fed by that page's `_fixtures.ts` —
+imported rather than copied, because a second day grid would start lying at the
+first restyle and a second copy of the day would be a second date to keep
+honest. It costs the route the `planner` message namespace, which
+`pnpm generate:route-namespaces` adds on its own: the guide's client messages go
+from 40,974 to 53,147 B (raw JSON, `messages/en.json`). The page renders those
+components, so it pays for them; nothing else on the route reaches that
+namespace.
+
 ### Two anchors, on purpose
 
 `_fixtures.ts` splits into constants and `buildDemoFixtures(nowMs)`:

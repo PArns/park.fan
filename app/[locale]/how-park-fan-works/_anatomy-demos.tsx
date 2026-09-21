@@ -26,7 +26,7 @@ import { getServerNowMs } from '@/lib/utils/server-time';
 import { buildDemoFixtures, DEMO_CALENDAR_DAYS, DEMO_TIMEZONE, OFF_SEASON_CARD } from './_fixtures';
 
 /**
- * One production component per step of the park-page walk-through (chapter 05).
+ * One production component per step of the park-page walk-through (chapter 06).
  *
  * The chapter used to be the only one on this page with nothing in it: fourteen
  * paragraphs about cards a reader never saw, on a page whose whole premise is
@@ -304,7 +304,7 @@ export function AnatomyStatsDemo({
   );
 }
 
-/** 14 — the season a ride runs in, on the ride from chapter 07. */
+/** 14 — the season a ride runs in, on the ride from chapter 08. */
 export function AnatomySeasonDemo({ label }: { label: string }) {
   const ride = OFF_SEASON_CARD as ParkAttraction;
   return (

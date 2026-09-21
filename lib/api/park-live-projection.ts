@@ -279,6 +279,10 @@ export function mergeLiveParkSnapshot(
  * An ALLOW-list, not a `delete` chain like the shell trims in `./parks`, because here the kept set
  * is the short one — and a field the API adds tomorrow then stays out of this route by default
  * instead of quietly joining the payload.
+ *
+ * The name is the calendar's because the calendar is where it was measured; the shape it keeps is
+ * every park SUB-page's, and the wait-time record reads it for the same two components and the
+ * same twelve fields. A third sub-page needs no third projection.
  */
 export function leanParkForCalendarShell(park: ParkWithAttractions): ParkWithAttractions {
   return {

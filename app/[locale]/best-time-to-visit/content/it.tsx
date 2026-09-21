@@ -26,6 +26,7 @@ import {
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 import { QuietestDaysByPark } from '../_quietest-days-by-park';
@@ -135,7 +136,11 @@ export function ContentIT() {
           items={[
             {
               icon: Sunrise,
-              title: 'All’apertura (rope drop)',
+              title: (
+                <>
+                  All’apertura (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
+                </>
+              ),
               body: 'La prima ora è d’oro: chi è dentro all’apertura sale sulle attrazioni di punta spesso con una frazione dell’attesa successiva.',
             },
             {
@@ -180,7 +185,11 @@ export function ContentIT() {
           kicker="Giorno di punta"
           title="Bel tempo, tutti liberi, tutti qui"
           reverse
-          badge={<CrowdLevelBadge level="very_high" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="very_high" />
+            </GlossaryTermLink>
+          }
         >
           La classica combinazione di punta (un sabato di vacanza in piena estate) mette insieme
           quasi tutti i fattori di affluenza in una volta. Se puoi, prendi piuttosto il martedì
@@ -195,7 +204,9 @@ export function ContentIT() {
             },
             {
               icon: CalendarRange,
-              title: 'Vacanze scolastiche',
+              title: (
+                <GlossaryTermLink termId="school-holiday">Vacanze scolastiche</GlossaryTermLink>
+              ),
               body: 'Durante le vacanze della tua regione e di quelle vicine l’affluenza sale nettamente, e le vacanze estive sono l’alta stagione assoluta.',
             },
             {
@@ -234,7 +245,12 @@ export function ContentIT() {
             },
             {
               icon: Ticket,
-              title: 'Single rider e code virtuali',
+              title: (
+                <>
+                  <GlossaryTermLink termId="single-rider">Single rider</GlossaryTermLink> e{' '}
+                  <GlossaryTermLink termId="virtual-queue">code virtuali</GlossaryTermLink>
+                </>
+              ),
               body: 'Sali da solo o mettiti in coda in versione digitale mentre mangi o fai shopping: nei giorni affollati è tempo regalato.',
             },
           ]}
@@ -254,16 +270,21 @@ export function ContentIT() {
         icon={Ticket}
       >
         <P>
-          Gli schemi qui sopra sono il punto di partenza. Il giorno migliore esatto te lo svela il
-          calendario dell’affluenza di ogni pagina di parco: verde, giallo, rosso, per ogni giornata
-          pubblicata, con le vacanze e i giorni festivi della regione interessata.
+          Gli schemi qui sopra sono il punto di partenza. Il giorno migliore esatto te lo svela il{' '}
+          <GlossaryTermLink termId="crowd-calendar">calendario dell’affluenza</GlossaryTermLink> di
+          ogni pagina di parco: verde, giallo, rosso, per ogni giornata pubblicata, con le vacanze e
+          i giorni festivi della regione interessata.
         </P>
         <SplitFigure
           src="/media/efteling/symbolica.jpg"
           alt="L’attrazione del palazzo Symbolica a Efteling"
           kicker="Verde, giallo, rosso"
           title="Un colore al giorno, fin dove arriva il calendario"
-          badge={<CrowdLevelBadge level="low" />}
+          badge={
+            <GlossaryTermLink termId="crowd-level" className="inline-flex cursor-help">
+              <CrowdLevelBadge level="low" />
+            </GlossaryTermLink>
+          }
         >
           Ogni pagina di parco porta una previsione giorno per giorno che tiene conto delle vacanze
           scolastiche e dei giorni festivi di quella precisa regione. Scegli un giorno verde e hai

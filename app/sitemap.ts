@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
+import { getChangelogEntries } from '@/lib/changelog';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -10,6 +11,8 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
+import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
+import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -31,6 +34,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getContentLastmodIndex(),
   ]);
   const routes: MetadataRoute.Sitemap = [];
+
+  /**
+   * Every park in the catalogue, collected as the geo loop walks it, so the wait-time record's
+   * availability can be resolved in one batched pass afterwards instead of park by park inside
+   * four nested loops.
+   */
+  const catalogue: ParkGeoPath[] = [];
 
   /**
    * `<lastmod>` for a catalog URL, as the daily content-change crawl observed it.
@@ -91,6 +101,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: contributeAlternates,
       }
     );
+  }
+
+  // ── Changelog ─────────────────────────────────────────────────────────────
+  // One URL, outside the locale loop and without an `alternates` map: the page
+  // is English only (`app/[locale]/changelog/page.tsx`), and the other five
+  // spellings are 301s. Listing them as hreflang alternates would advertise
+  // five URLs that answer with a redirect.
+  //
+  // `lastModified` is the date of the newest published entry, which is the day
+  // that page last changed — no crawl needed, the content carries its own date.
+  //
+  // Listed only while there is something to list: with no published entry the
+  // page answers `notFound()`, and a sitemap that advertises a 404 is worse
+  // than one that omits the URL.
+  const changelogEntries = getChangelogEntries();
+  if (changelogEntries.length > 0) {
+    routes.push({
+      url: `${BASE_URL}/en/changelog`,
+      lastModified: new Date(`${changelogEntries[0].date}T00:00:00Z`),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    });
   }
 
   // ── "How park.fan works" guide ────────────────────────────────────────────
@@ -252,6 +284,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         for (const park of city.parks) {
           const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
+          catalogue.push({
+            continent: continent.slug,
+            country: country.slug,
+            city: city.slug,
+            parkSlug: park.slug,
+          });
           const parkAlternates = buildAlternates(() => parkPath);
           const parkLastModified = lastModified(parkPath);
           // Image sitemap extension: associates the park's hero photo(s) with its URL so Google can
@@ -302,6 +340,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           // route for the arithmetic and why the split mirrors the attractions one.
         }
       }
+    }
+  }
+
+  // ── The wait-time record, for the parks that have one ─────────────────────
+  // Gated on `meta.displayable`, the same flag the route 404s on: 119 of the 201 parks with
+  // attractions passed on 2026-09-21, which is 714 URLs rather than 1,206. The other 492 would
+  // have been tables built from a handful of measured days, 222 of them from none at all — and
+  // every one of them a 404 advertised in a sitemap, which is the one thing worse than not
+  // advertising the page at all. See `docs/seo/dedicated-landing-pages.md` §5.
+  //
+  // No `lastModified`, for the same reason the calendar hub above carries none: the aggregate
+  // behind these pages is recomputed daily on every park at once, so a date here would be one
+  // identical value across the whole class — precisely the signal that gets a sitemap's `lastmod`
+  // discounted wholesale. Monthly, because a two-year window barely moves in a week.
+  //
+  // This is 201 probes on a cold Data Cache and none on a warm one: the answers are the very
+  // entries the record pages and the calendar pages read, all on `CACHE_TTL.stats`.
+  const statsParks = await parksWithStatsPage(catalogue);
+  for (const park of catalogue) {
+    if (!statsParks.has(parkGeoKey(park))) continue;
+    const parkPath = `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+    const statsAlternates = buildAlternates(
+      (locale) => `${parkPath}/${PARK_STATS_SEGMENTS[locale as Locale]}`
+    );
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}${parkPath}/${PARK_STATS_SEGMENTS[locale]}`,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: statsAlternates,
+      });
     }
   }
 

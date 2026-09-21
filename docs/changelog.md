@@ -4,6 +4,68 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Eine öffentliche Changelog-Seite, und die Regel, wann eine Version geschnitten wird
+
+Diese Datei hier ist das interne Log: deutsch, ein Abschnitt pro PR, mit Dateinamen und Messwerten.
+Sie hatte seit `2.11.0 (2026-08-15)` **31** `## Unreleased`-Abschnitte, `package.json` stand bei
+`2.12.0`, und gelesen hat das niemand außerhalb des Repos. Neu ist deshalb eine zweite, öffentliche
+Sammlung unter `content/changelog/<version>.md`, englisch und von Hand aus den internen Abschnitten
+geschrieben, gerendert auf `/en/changelog`. **Kein Parser zwischen beiden**: die interne Prosa
+beschreibt Code, und wer sie ungefiltert veröffentlicht, hat eine Commit-Liste mit Absätzen.
+
+Die Seite ist bewusst einsprachig. `generateStaticParams` liefert nur `en`, `dynamicParams` ist aus,
+und die fünf anderen Schreibweisen plus das nackte `/changelog` sind 301er in `next.config.ts` –
+dort und nicht im Proxy, weil `redirects()` aus `next.config` in Nexts Reihenfolge Schritt 2 ist und
+der Proxy Schritt 3
+([Beleg](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#execution-order)). Ohne
+sie würde `localePrefix: 'always'` einen deutschen Besucher auf `/de/changelog` schicken. Neue
+Message-Keys gibt es keine: die Namespace-Delta der Route ist leer (`'/changelog': []`), also trägt
+sie auch kein `<RouteMessages>`. In `app/sitemap.ts` steht genau eine URL ohne `alternates`, ihr
+`lastmod` ist das Datum des neuesten Eintrags.
+
+Zwei Stolpersteine, die im Code als Kommentar stehen: `@tailwindcss/typography` ist hier **nicht**
+installiert, eine `prose`-Klasse also wirkungslos – die Markdown-Elemente werden einzeln abgebildet,
+mit den Klassen aus `components/blog/blog-content.tsx`. Und ein unquotiertes `date: 2026-09-21` im
+Frontmatter ist kein String, sondern ein `Date`; der erste Build ist daran in `sitemap.xml`
+gescheitert, nicht auf der Seite. `toIsoDate()` normalisiert beide Formen.
+
+Die Versions-Policy des PO (kein Bump pro Merge, MINOR für eine neue sichtbare Fähigkeit, PATCH für
+ein Bündel Fixes, geschnitten wird vom PO) steht als Regelseite in
+[a-version-is-a-unit-of-communication.md](rules/a-version-is-a-unit-of-communication.md), der
+`CLAUDE.md`-Index bekommt eine Zeile. Der erste Eintrag ist `2.12.0`, kuratiert aus den 31
+Abschnitten darunter, mit einem Highlight-Screenshot in der neuen Sammlung
+`public/media/changelog/` (`tags: ["diagram"]`, kein `park`, kein `ride` – ein Bild der eigenen
+Oberfläche ist keine Parkaufnahme). Autorenanleitung:
+[content/changelog/README.md](../content/changelog/README.md).
+
+## Unreleased – Jeder Park mit genug Messtagen hat jetzt eine eigene Statistikseite
+
+Die Parkseite rendert die Live-Tabelle serverseitig, die historische Hälfte aber nicht: der
+Statistik-Abschnitt wird bewusst client-seitig nachgeladen, und den typischen Tagesverlauf
+(`ParkHourlyProfileCard`) zeichnete gar keine Parkroute. Genau diese Hälfte steht jetzt unter einer
+eigenen URL — `/de/parks/…/durchschnittliche-wartezeiten`, in allen sechs Sprachen über einen
+Rewrite auf dem englischen Routenordner `average-wait-times`, wie beim Kalender.
+
+Die Seite zeigt Andrang nach Monat und Wochentag über zwei Jahre, die Bahnen nach typischer
+Wartezeit (jede Zeile verlinkt ihre Ride-Seite), den typischen Tag Stunde für Stunde und einen
+Methodik-Abschnitt, der die Zahl der gemessenen Öffnungstage dieses Parks nennt und „typisch" und
+„Spitze" ins Wörterbuch verlinkt. Die Karten sind alle bestehende Komponenten, neu ist nur der
+Methodik-Text. Die Parkseite selbst bleibt unverändert und bekommt einen Link.
+
+**Gegatet auf `meta.displayable`:** 119 der 210 Parks im Katalog erfüllen das (gemessen am
+21.09.), also 714 URLs statt 1.206. Die übrigen 91 würden Tabellen aus einer Handvoll Messtagen
+zeigen, 222 davon aus gar keinem; sie liefern 404 und werden nirgends verlinkt. Sitemap, Parkseite
+und Kalenderseite fragen dafür denselben datengecachten Eintrag ab: ein Upstream-Aufruf pro Park
+und Tag, egal wie viele fragen.
+
+Es ist die erste Park-Route, die **nicht** `force-dynamic` ist: nichts darauf ist live, der
+Aggregat dahinter wird einmal täglich neu gerechnet, also ISR mit Tagesfenster. Ein
+Crawler-Durchlauf über diese 714 URLs trifft damit einen Prerender statt einer Function. Was dafür
+nötig ist, steht in
+[an-isr-route-needs-both-halves.md](rules/an-isr-route-needs-both-halves.md) — `revalidate` allein
+reicht nicht. Konzept und Messungen:
+[dedicated-landing-pages.md](seo/dedicated-landing-pages.md).
+
 ## Unreleased – Die Parkkarte hing an OSMs eigenem Tile-Server
 
 `tile.openstreetmap.org` ist für OSM selbst und für Renderer-Tests gedacht, nicht zum Einbetten in

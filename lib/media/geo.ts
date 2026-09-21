@@ -32,8 +32,14 @@ export interface ParkMatch {
  * A park's stored coordinate is a single point, usually the entrance, while the
  * grounds themselves run to a kilometre or more across — so this is a
  * "which park is this" signal, never a "was the shutter inside the fence" one.
+ *
+ * The first argument is any pair of coordinates, not only a photo's tag: the
+ * capture screen measures the phone's own fix against a ride with it.
  */
-export function distanceMeters(a: MediaGps, b: { latitude: number; longitude: number }): number {
+export function distanceMeters(
+  a: { lat: number; lon: number },
+  b: { latitude: number; longitude: number }
+): number {
   const EARTH_RADIUS_M = 6_371_000;
   const toRad = (deg: number) => (deg * Math.PI) / 180;
 

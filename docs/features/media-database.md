@@ -305,8 +305,10 @@ pointer crosses the icon or the text inside the zone.
 
 A photograph taken from `/admin/capture` arrives with what a phone standing in front
 of a ride can know for certain: park, ride, area, capture date, credit, `photo`,
-`ride`, and `day` or `night` if the park's own clock is unambiguous about it. What it
-cannot know is what is in frame — the alt text, the caption, the subject and weather
+`ride`, and `day` or `night` if the park's own clock is unambiguous about it. One taken
+from that screen's park row carries `ride: null` and the subject tag `park` instead,
+plus whichever `season` tag the photographer pressed. What neither can know is what is
+in frame — the alt text, the caption, the subject and weather
 tags, usually the focal point. Those are the evening's work, and `review: true` is
 what finds them again: the **Zu prüfen** chip in this browser, and a count in
 `pnpm generate:media`'s report next to the unlicensed and unassigned ones.

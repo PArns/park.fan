@@ -18,6 +18,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [The page render is the bigger half of the API budget, and it was never audited (ANTI-PATTERN)](the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)
 - [A `revalidate` at a call site is somebody else's page (REQUIREMENT)](a-revalidate-at-a-call-site-is-somebody-elses-page.md)
 - [A redirect thrown from a render carries the layout as its body (REQUIREMENT)](a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)
+- [An ISR route needs both halves, and one of them is an empty `generateStaticParams` (REQUIREMENT)](an-isr-route-needs-both-halves.md)
 - [Translations are routed, not bundled (REQUIREMENT)](translations-are-routed-not-bundled.md)
 
 ## Data and API
@@ -77,3 +78,4 @@ _A blog post, UI strings, images, captions._
 - [One photo can index two rides (`alsoRides`)](one-photo-can-index-two-rides-alsorides.md)
 - [Card photos are two layers (REQUIREMENT)](card-photos-are-two-layers.md)
 - [Localized blog gallery captions](localized-blog-gallery-captions.md)
+- [A version is a unit of communication, not a build artifact (REQUIREMENT)](a-version-is-a-unit-of-communication.md)
