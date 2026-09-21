@@ -63,13 +63,16 @@ export function useTabHashRouting({
 
   // Avoid hydration mismatch by only rendering after mount.
   //
-  // The flip is a TRANSITION: it swaps the server-rendered wait-time overview for the full
-  // interactive card grid, which on a big park is 50+ glass cards with sparklines. As an urgent
-  // update that landed in the same uninterruptible task as hydration — measured as a single
-  // 1017 ms long task on a 4x-throttled Pixel 5, and a tap arriving inside it waits the whole
-  // time (the first INP sample taken here showed ~1 s of input delay). At transition priority
-  // React can yield to input while building the grid, so an early tap is answered instead of
-  // queued behind it.
+  // The flip is a TRANSITION. It used to swap the server-rendered wait-time overview for the
+  // full interactive card grid, which on a big park is 50+ glass cards with sparklines: as an
+  // urgent update that landed in the same uninterruptible task as hydration — measured as a
+  // single 1017 ms long task on a 4x-throttled Pixel 5, and a tap arriving inside it waits the
+  // whole time (the first INP sample taken here showed ~1 s of input delay).
+  //
+  // Since PAR-272 the attractions panel is the same tree on both sides, so the flip no longer
+  // builds that grid — what it still switches on are the other four panels, the tab bar's
+  // handlers and the hash sync. It stays a transition for the same reason: none of that is
+  // worth blocking a tap that arrives during hydration.
   /**
    * Slug from a `#map-show-<slug>` deep link, handed to `ParkMap` so it can centre on that show
    * and open its popup. Kept in state rather than read inside the map: `hashchange` is already
