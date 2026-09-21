@@ -135,8 +135,3 @@ export function getChangelogEntries(): ChangelogEntry[] {
 
   return entries.sort((a, b) => compareVersionsDesc(a.version, b.version));
 }
-
-/** The newest published version, for the page's `lastModified`. Null when empty. */
-export function getLatestChangelogDate(): string | null {
-  return getChangelogEntries()[0]?.date ?? null;
-}

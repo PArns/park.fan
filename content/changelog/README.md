@@ -42,14 +42,14 @@ highlights:
 - **What was broken.** What it does instead.
 ```
 
-| Field        | Meaning                                                                      |
-| ------------ | ---------------------------------------------------------------------------- |
-| `version`    | Semver, as `package.json` carried it when the version was cut.               |
-| `date`       | `YYYY-MM-DD`, the day it was cut.                                            |
-| `title`      | A sentence about the release. Never the version number again.                |
-| `summary`    | One paragraph, rendered above the sections.                                  |
-| `mode`       | `draft` hides the entry while it is being written; anything else publishes.  |
-| `highlights` | Media database ids, rendered as figures under the summary. Optional.         |
+| Field        | Meaning                                                                     |
+| ------------ | --------------------------------------------------------------------------- |
+| `version`    | Semver, as `package.json` carried it when the version was cut.              |
+| `date`       | `YYYY-MM-DD`, the day it was cut.                                           |
+| `title`      | A sentence about the release. Never the version number again.               |
+| `summary`    | One paragraph, rendered above the sections.                                 |
+| `mode`       | `draft` hides the entry while it is being written; anything else publishes. |
+| `highlights` | Media database ids, rendered as figures under the summary. Optional.        |
 
 Versions sort numerically, newest first, so the file name does not decide the order.
 

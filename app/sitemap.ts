@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
-import { getLatestChangelogDate } from '@/lib/changelog';
+import { getChangelogEntries } from '@/lib/changelog';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -102,13 +102,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   //
   // `lastModified` is the date of the newest published entry, which is the day
   // that page last changed — no crawl needed, the content carries its own date.
-  const latestReleaseDate = getLatestChangelogDate();
-  routes.push({
-    url: `${BASE_URL}/en/changelog`,
-    ...(latestReleaseDate ? { lastModified: new Date(`${latestReleaseDate}T00:00:00Z`) } : {}),
-    changeFrequency: 'monthly',
-    priority: 0.4,
-  });
+  //
+  // Listed only while there is something to list: with no published entry the
+  // page answers `notFound()`, and a sitemap that advertises a 404 is worse
+  // than one that omits the URL.
+  const changelogEntries = getChangelogEntries();
+  if (changelogEntries.length > 0) {
+    routes.push({
+      url: `${BASE_URL}/en/changelog`,
+      lastModified: new Date(`${changelogEntries[0].date}T00:00:00Z`),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    });
+  }
 
   // ── "How park.fan works" guide ────────────────────────────────────────────
   // Its own loop rather than a line in the static block above: the URL segment
