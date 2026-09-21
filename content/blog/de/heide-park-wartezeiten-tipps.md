@@ -140,11 +140,10 @@ Schienenführung in einer Halbröhre, und der
 Runden für alle, die für die großen Bahnen noch zu klein sind.
 
 Der auffälligste Bau steht gar nicht auf Schienen.
-**[Scream](ref:heide-park/scream)** ist **103 Meter** hoch, lässt 71 Meter
-frei fallen und erreicht dabei knapp **100 km/h**. Angefangen hat der Turm
-1992 als Aussichtsturm; Intamin baute ihn zwischen Oktober 2002 und April 2003
-für 7,5 Millionen Euro zum Gyro-Drop-Tower um. Er ist bis heute das höchste
-Bauwerk auf dem Gelände.
+**[Scream](ref:heide-park/scream)** ist **103 Meter** hoch und lässt 71 Meter
+davon frei fallen. Angefangen hat der Turm 1992 als Aussichtsturm; Intamin
+baute ihn zwischen Oktober 2002 und April 2003 für 7,5 Millionen Euro zum
+Gyro-Drop-Tower um. Er ist bis heute das höchste Bauwerk auf dem Gelände.
 
 Dazu kommen die Fahrgeschäfte, die im Sommer die längsten Schlangen
 einsammeln, ohne dass jemand darüber schreibt: die
@@ -236,10 +235,13 @@ und einem Gründer aus einer Schaustellerfamilie: **Hans-Jürgen Tiemann**. In
 der ersten Saison kamen rund **600.000 Gäste**, und aus den sechs
 Fahrgeschäften wurden 85 Hektar Park.
 
-Der Bau, der den frühen Heide Park am besten beschreibt, steht seit **1986**
-im Gelände: ein 35 Meter hoher Nachbau der Freiheitsstatue, zu dessen
-Einweihung am 4. Juli ein Glückwunsch von Ronald Reagan kam. Es war die Zeit,
-in der deutsche Parks Wahrzeichen nachbauten, statt Lizenzen einzukaufen.
+Den Bau, der den frühen Heide Park am besten beschreibt, gibt es nicht mehr.
+Von **1986** bis zum Winter 2011/2012 stand hier ein 35 Meter hoher Nachbau
+der Freiheitsstatue, eingeweiht am 4. Juli 1986 zum hundertsten Geburtstag des
+Originals, mit einem Glückwunsch von Ronald Reagan. Nach dem Abbau diente die
+obere Hälfte noch einige Jahre als Dekoration an Colossos, und zur
+Wiedereröffnung 2019 wurde auch der Rest verschrottet. Es war die Zeit, in der
+deutsche Parks Wahrzeichen nachbauten, statt Lizenzen einzukaufen.
 
 Zum Jahresende 2001 kaufte die britische **Tussauds Group** den Park, seit
 Anfang 2007 gehört er **Merlin Entertainments**. 2023 zählte Soltau
@@ -347,8 +349,11 @@ gegenseitig lesen lassen.
 
 ### Quellen & Weiterlesen
 
-- Parkgeschichte, Besucherzahlen, Themenbereiche, frühere Ride-Namen:
+- Parkgeschichte, Besucherzahlen, Themenbereiche, frühere Ride-Namen, das Ende
+  der Freiheitsstatue:
   [Heide-Park Resort auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Heide-Park_Resort)
+- Bauzeit, Umbaukosten und Vorgeschichte des Turms:
+  [Scream auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Scream_%28Heide_Park%29)
 - Technische Daten der Achterbahnen:
   [Colossos](https://rcdb.com/988.htm) ·
   [Krake](https://rcdb.com/9097.htm) ·
