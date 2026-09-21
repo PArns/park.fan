@@ -140,8 +140,8 @@ export function LoginScreen() {
       if (result.status === 'totp-required') {
         setNeedsTotp(true);
         // Same rule as the "Andere Anmeldung" button below: the step change
-        // swaps the form's key, so the widget this flag describes goes out with
-        // it, and a challenge that errored while this request was in flight
+        // unmounts the credentials form, so the widget this flag describes goes
+        // out with it, and a challenge that errored while this request was in flight
         // would otherwise put "could not be loaded" over the freshly mounted
         // one. Guarded on the step really changing — answering `totp-required`
         // to a request sent FROM the code step is a React bailout, and clearing
@@ -226,6 +226,71 @@ export function LoginScreen() {
     void attemptRef.current();
   }, [needsTotp, totpCode, canSubmit]);
 
+  // The bottom half of both forms: the challenge, whatever went wrong, and the
+  // button. Only the label differs between the steps.
+  //
+  // A function rather than a component, and rendered as `{gateAndSubmit(…)}`
+  // rather than `<GateAndSubmit />`: a component declared in here would be a new
+  // type on every render and would remount its whole subtree — the Turnstile
+  // widget with it — on every keystroke. Calling it just returns this render's
+  // elements, and the two call sites are in different branches, so at most one
+  // of them is ever mounted.
+  const gateAndSubmit = (submitLabel: string) => (
+    <>
+      <TurnstileGate
+        ref={turnstileRef}
+        solved={Boolean(turnstileToken)}
+        broken={turnstileBroken}
+        onVerify={(token) => {
+          setTurnstileToken(token);
+          setTurnstileBroken(false);
+        }}
+        onExpire={() => setTurnstileToken('')}
+        onError={() => setTurnstileBroken(true)}
+        onRetry={() => {
+          setTurnstileBroken(false);
+          setTurnstileToken('');
+          turnstileRef.current?.reset();
+        }}
+      />
+
+      {error && (
+        <p
+          role="alert"
+          className="border-destructive/30 bg-destructive/10 text-destructive mt-4 flex items-start gap-2 rounded-xl border px-3 py-2.5 text-xs leading-relaxed"
+        >
+          <TriangleAlert className="mt-px h-3.5 w-3.5 shrink-0" />
+          <span>{error}</span>
+        </p>
+      )}
+
+      {lockedFor !== null && (
+        <p className="text-muted-foreground border-border/50 bg-muted/30 mt-3 flex items-center gap-2 rounded-xl border px-3 py-2 text-xs tabular-nums">
+          <Timer className="h-3.5 w-3.5 shrink-0" />
+          Wieder möglich in {formatCountdown(lockedFor)}
+        </p>
+      )}
+
+      <button
+        type="submit"
+        disabled={!canSubmit}
+        className={cn(
+          'group from-primary to-primary/85 text-primary-foreground shadow-primary/25 focus-visible:ring-primary/50 mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-b text-sm font-semibold shadow-lg transition-all',
+          'hover:brightness-110 active:scale-[0.99]',
+          'focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-none',
+          'disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:brightness-100'
+        )}
+      >
+        {busy || (!turnstileToken && !turnstileBroken) ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
+        )}
+        {submitLabel}
+      </button>
+    </>
+  );
+
   return (
     <div className="relative min-h-[100dvh] overflow-hidden">
       {/* The base. Renders alone until the photo has loaded, and behind it
@@ -295,58 +360,44 @@ export function LoginScreen() {
             </div>
           </div>
 
-          {/* The key is the whole point of this line, and it is not a list key.
-              Both steps are branches of one ternary inside this form, so React
-              swaps the children and keeps the `<form>` element itself. A
-              password manager fingerprints a form once, and on the code step
+          {/* Two forms, side by side in the tree, one of them rendered at a
+              time. Not one form with its children swapped, and the difference
+              is the whole point of the arrangement.
+
+              A password manager fingerprints a form, and on the code step
               1Password went on offering a full sign-in against the hidden
               `username` and the `otp` field next to it rather than filling the
-              code. That much was reported and seen. The fingerprint surviving a
-              swap of the children is the likeliest reading of it, not a
-              measurement — an extension's behaviour cannot be read out of this
-              file. Changing the key replaces the DOM node, which is the cheap
-              way to make a manager look at the form again.
+              code. That much was reported and seen; what a fingerprint is keyed
+              on cannot be read out of this file. The first attempt kept one
+              `<form>` and changed its `key`, which replaces the DOM node — true
+              of React, and enough only if the manager tracks the node. Managers
+              are also documented to key on origin plus the shape of the fields,
+              and against that a remounted form with the same tag in the same
+              place is the same form. Two sibling branches are the version that
+              holds under both readings: `!needsTotp` and `needsTotp` are
+              different slots, so React unmounts one subtree and mounts the
+              other, and the two forms never share an element, a position or a
+              field list.
 
-              Nothing the login needs is lost by the remount: every value it
-              holds is a `useState` or a `useRef` up here, above the form. What
-              lives below it is per-mount bookkeeping — the Turnstile
-              widget's own id, `TurnstileGate`'s retry counter — and the widget
-              itself, which mints a fresh token on the way back in. That is what
-              the step change wanted anyway, the password step having spent the
-              one it had. `reset()` in `attempt()`'s `finally`, above, still runs
-              first and still hits the old widget — React has not re-rendered yet
+              Nothing the login needs is lost when a step goes out: every value
+              it holds is a `useState` or a `useRef` up here, above both forms.
+              What lives inside is per-mount bookkeeping — the Turnstile widget's
+              own id, `TurnstileGate`'s retry counter — and the widget itself,
+              which mints a fresh token on the way in. That is what the step
+              change wanted anyway, the password step having spent the one it
+              had. `reset()` in `attempt()`'s `finally`, above, still runs first
+              and still hits the outgoing widget — React has not re-rendered yet
               — so the challenge it starts is thrown away with it. The reset
               stays where it is all the same: it is what covers a second attempt
-              on the SAME step, where no key changes and nothing remounts. */}
-          <form
-            key={needsTotp ? 'totp' : 'credentials'}
-            onSubmit={handleSubmit}
-            className="border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7"
-          >
-            {/* A hairline where the light would hit. One pixel, and it is the
-                difference between a glass panel and a grey rectangle. */}
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-            />
+              on the SAME step, where nothing unmounts. */}
+          {!needsTotp && (
+            <form onSubmit={handleSubmit} className={CARD_CLASS}>
+              <CardHairline />
 
-            <div className="mb-5">
-              <h1 className="text-lg font-semibold tracking-tight">
-                {needsTotp ? 'Zweiter Faktor' : 'Anmelden'}
-              </h1>
-              <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                {needsTotp ? (
-                  <>
-                    Sechs Ziffern aus der Authenticator-App für{' '}
-                    <span className="text-foreground font-medium">{email}</span>.
-                  </>
-                ) : (
-                  'Parks, Bahnen, Saisons und alles, was daran hängt.'
-                )}
-              </p>
-            </div>
+              <FormHeading title="Anmelden">
+                Parks, Bahnen, Saisons und alles, was daran hängt.
+              </FormHeading>
 
-            {!needsTotp ? (
               <div className="space-y-4">
                 <LoginField label="E-Mail" htmlFor="admin-email" icon={AtSign}>
                   <input
@@ -391,81 +442,42 @@ export function LoginScreen() {
                   </p>
                 )}
               </div>
-            ) : (
+
+              {gateAndSubmit('Anmelden')}
+            </form>
+          )}
+
+          {needsTotp && (
+            <form onSubmit={handleSubmit} className={CARD_CLASS}>
+              <CardHairline />
+
+              <FormHeading title="Zweiter Faktor">
+                Sechs Ziffern aus der Authenticator-App für{' '}
+                <span className="text-foreground font-medium">{email}</span>.
+              </FormHeading>
+
               <TotpField
                 code={totpCode}
                 email={email}
                 onChange={setTotpCode}
                 disabled={busy || locked}
               />
-            )}
 
-            <TurnstileGate
-              ref={turnstileRef}
-              solved={Boolean(turnstileToken)}
-              broken={turnstileBroken}
-              onVerify={(token) => {
-                setTurnstileToken(token);
-                setTurnstileBroken(false);
-              }}
-              onExpire={() => setTurnstileToken('')}
-              onError={() => setTurnstileBroken(true)}
-              onRetry={() => {
-                setTurnstileBroken(false);
-                setTurnstileToken('');
-                turnstileRef.current?.reset();
-              }}
-            />
+              {gateAndSubmit('Bestätigen')}
 
-            {error && (
-              <p
-                role="alert"
-                className="border-destructive/30 bg-destructive/10 text-destructive mt-4 flex items-start gap-2 rounded-xl border px-3 py-2.5 text-xs leading-relaxed"
-              >
-                <TriangleAlert className="mt-px h-3.5 w-3.5 shrink-0" />
-                <span>{error}</span>
-              </p>
-            )}
-
-            {lockedFor !== null && (
-              <p className="text-muted-foreground border-border/50 bg-muted/30 mt-3 flex items-center gap-2 rounded-xl border px-3 py-2 text-xs tabular-nums">
-                <Timer className="h-3.5 w-3.5 shrink-0" />
-                Wieder möglich in {formatCountdown(lockedFor)}
-              </p>
-            )}
-
-            <button
-              type="submit"
-              disabled={!canSubmit}
-              className={cn(
-                'group from-primary to-primary/85 text-primary-foreground shadow-primary/25 focus-visible:ring-primary/50 mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-b text-sm font-semibold shadow-lg transition-all',
-                'hover:brightness-110 active:scale-[0.99]',
-                'focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-none',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:brightness-100'
-              )}
-            >
-              {busy || (!turnstileToken && !turnstileBroken) ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : (
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
-              )}
-              {needsTotp ? 'Bestätigen' : 'Anmelden'}
-            </button>
-
-            {needsTotp && (
               <button
                 type="button"
                 onClick={() => {
                   setNeedsTotp(false);
                   setTotpCode('');
                   setError(null);
-                  // Same rule as the step forward in `attempt()`: the key change
-                  // replaces the form and with it the widget, so a challenge
-                  // that failed here has nothing left to describe. Left
-                  // standing, "could not be loaded" would sit over a freshly
-                  // mounted one until its own error fired again — and one that
-                  // really cannot load says so again on the next mount, because
-                  // `loadTurnstileScript` drops its failed promise and retries.
+                  // Same rule as the step forward in `attempt()`: this form goes
+                  // out and takes its widget with it, so a challenge that failed
+                  // here has nothing left to describe. Left standing, "could not
+                  // be loaded" would sit over a freshly mounted one until its own
+                  // error fired again — and one that really cannot load says so
+                  // again on the next mount, because `loadTurnstileScript` drops
+                  // its failed promise and retries.
                   setTurnstileBroken(false);
                 }}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
@@ -473,8 +485,8 @@ export function LoginScreen() {
                 <ArrowLeft className="h-3 w-3" />
                 Andere Anmeldung
               </button>
-            )}
-          </form>
+            </form>
+          )}
 
           {/* Not a badge for its own sake: it is the one property of this login
               worth knowing, and the reason the whole thing was rebuilt. */}
@@ -509,6 +521,37 @@ export function LoginScreen() {
  */
 const FIELD_CLASS =
   'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 placeholder:text-muted-foreground/50 h-11 w-full rounded-xl border px-3 text-base outline-none transition-[color,box-shadow,border-color] focus:ring-2 sm:text-sm';
+
+/**
+ * The glass card each step is drawn on. A class string on two `<form>` elements
+ * rather than a wrapper component around them, because a shared wrapper is the
+ * thing the two steps are deliberately not sharing — see the comment above them.
+ */
+const CARD_CLASS =
+  'border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7';
+
+/**
+ * A hairline where the light would hit. One pixel, and it is the difference
+ * between a glass panel and a grey rectangle. Positioned against the `<form>`,
+ * which carries `relative` through `CARD_CLASS`.
+ */
+function CardHairline() {
+  return (
+    <span
+      aria-hidden="true"
+      className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+    />
+  );
+}
+
+function FormHeading({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="mb-5">
+      <h1 className="text-lg font-semibold tracking-tight">{title}</h1>
+      <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{children}</p>
+    </div>
+  );
+}
 
 function LoginField({
   label,
