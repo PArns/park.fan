@@ -19,6 +19,12 @@
  * re-implementing its matching, so the git plumbing (a missing SHA, a shallow
  * clone, an empty diff) is covered too.
  *
+ * The last section drives the `[skip deploy]` marker the PO puts on every
+ * squash merge of a batch but the last one. It is the one skip that is not
+ * about the files in the diff, so it is tested against a commit the allowlist
+ * would have built, in production and in preview, and the closing build of a
+ * batch is checked for the files of the merges it skipped.
+ *
  * `pnpm test:ignore-build`
  */
 
@@ -86,8 +92,13 @@ const CASES = [
 ];
 
 let failures = 0;
-const pass = (msg) => console.log(`  ✓ ${msg}`);
+let checks = 0;
+const pass = (msg) => {
+  checks += 1;
+  console.log(`  ✓ ${msg}`);
+};
 const fail = (msg) => {
+  checks += 1;
   failures += 1;
   console.log(`  ✗ ${msg}`);
 };
@@ -95,22 +106,32 @@ const fail = (msg) => {
 const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'ignore-build-'));
 const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
 
-/** Run the real script in `repo` with `base` as the previous deployment. */
-function runScript(base) {
+/**
+ * Run the real script in `repo` with `base` as the previous deployment.
+ *
+ * `env` adds to the environment — `VERCEL_ENV` is what the `[skip deploy]`
+ * marker reads, and leaving it out is the shape every other case runs in.
+ * Returns the exit code and what the script printed, because one case asserts
+ * the file list and not just the answer.
+ */
+function runScript(base, env = {}) {
+  const options = {
+    cwd: repo,
+    encoding: 'utf8',
+    env: { ...process.env, VERCEL_GIT_PREVIOUS_SHA: base ?? '', ...env },
+  };
   try {
-    execFileSync('bash', [SCRIPT], {
-      cwd: repo,
-      encoding: 'utf8',
-      env: { ...process.env, VERCEL_GIT_PREVIOUS_SHA: base ?? '' },
-    });
-    return 0;
+    return { status: 0, output: execFileSync('bash', [SCRIPT], options) };
   } catch (err) {
-    return err.status ?? -1;
+    return { status: err.status ?? -1, output: err.stdout ?? '' };
   }
 }
 
+/** The exit code alone, for the cases that only care about build or skip. */
+const exitOf = (base, env) => runScript(base, env).status;
+
 /** Commit `files` on top of the current HEAD and return the two SHAs. */
-function commitTouching(files) {
+function commitTouching(files, message = `touch ${files[0]}`) {
   for (const file of files) {
     const abs = path.join(repo, file);
     fs.mkdirSync(path.dirname(abs), { recursive: true });
@@ -118,7 +139,7 @@ function commitTouching(files) {
   }
   const base = git('rev-parse', 'HEAD');
   git('add', '-A');
-  git('-c', 'user.email=t@t', '-c', 'user.name=t', 'commit', '-q', '-m', `touch ${files[0]}`);
+  git('-c', 'user.email=t@t', '-c', 'user.name=t', 'commit', '-q', '-m', message);
   return { base, head: git('rev-parse', 'HEAD') };
 }
 
@@ -131,7 +152,7 @@ try {
   console.log('vercel-ignore-build — what must reach a build\n');
   for (const [label, expected, files] of CASES) {
     const { base } = commitTouching(files);
-    const got = runScript(base);
+    const got = exitOf(base);
     const want = expected === BUILD ? 'build' : 'skip';
     const actual = got === BUILD ? 'build' : got === SKIP ? 'skip' : `exit ${got}`;
     if (got === expected) pass(`${want.padEnd(5)} — ${label}`);
@@ -141,16 +162,58 @@ try {
   console.log('\nvercel-ignore-build — when it cannot be sure, it builds\n');
 
   // No previous deployment: the first build on a branch.
-  if (runScript('') === BUILD) pass('build — no VERCEL_GIT_PREVIOUS_SHA');
+  if (exitOf('') === BUILD) pass('build — no VERCEL_GIT_PREVIOUS_SHA');
   else fail('an unset VERCEL_GIT_PREVIOUS_SHA must build');
 
   // A SHA that is not in this checkout (a shallow clone, a force-pushed base).
-  if (runScript('0'.repeat(40)) === BUILD) pass('build — a SHA this checkout does not have');
+  if (exitOf('0'.repeat(40)) === BUILD) pass('build — a SHA this checkout does not have');
   else fail('an unknown SHA must build');
 
   // A redeploy of an unchanged tree: Vercel asked for it, so it is not ours to refuse.
-  if (runScript(git('rev-parse', 'HEAD')) === BUILD) pass('build — no file changes at all');
+  if (exitOf(git('rev-parse', 'HEAD')) === BUILD) pass('build — no file changes at all');
   else fail('an empty diff must build');
+
+  console.log('\nvercel-ignore-build — the [skip deploy] marker on a merge batch\n');
+
+  // A marked merge in production. The file it touches is a component, so the
+  // allowlist would build it — the marker is what decides here, nothing else.
+  const marked = commitTouching(
+    ['components/home/hero.tsx'],
+    'PAR-1: the first of a batch [skip deploy]'
+  );
+  if (exitOf(marked.base, { VERCEL_ENV: 'production' }) === SKIP)
+    pass('skip  — a production commit whose message carries [skip deploy]');
+  else fail('a marked production commit must skip');
+
+  // The same commit as a preview. A preview belongs to its pull request, and
+  // the marker in the eventual squash message is none of its business.
+  if (exitOf(marked.base, { VERCEL_ENV: 'preview' }) === BUILD)
+    pass('build — the same marked commit as a preview (the allowlist decides)');
+  else fail('a marked preview commit must fall through to the normal check');
+
+  // ...and a marked preview commit that only touches documentation still skips,
+  // for the reason it always did. The marker changes nothing either way here.
+  const markedDocs = commitTouching(['docs/changelog.md'], 'PAR-2: docs only [skip deploy]');
+  if (exitOf(markedDocs.base, { VERCEL_ENV: 'preview' }) === SKIP)
+    pass('skip  — a marked preview commit that only changed documentation');
+  else fail('the marker must not turn a documentation-only preview into a build');
+
+  // The end of a batch: two marked merges, then an unmarked one. The unmarked
+  // commit builds, and because the base is the last successful deployment, that
+  // one build carries all three commits' files.
+  const batch = commitTouching(['components/a.tsx'], 'PAR-3: batch one [skip deploy]');
+  commitTouching(['components/b.tsx'], 'PAR-4: batch two [skip deploy]');
+  commitTouching(['components/c.tsx'], 'PAR-5: batch three, the last merge');
+  const last = runScript(batch.base, { VERCEL_ENV: 'production' });
+  if (last.status === BUILD) pass('build — an unmarked commit on top of two marked ones');
+  else fail('the unmarked commit that ends a batch must build');
+
+  const carried = ['components/a.tsx', 'components/b.tsx', 'components/c.tsx'].filter((file) =>
+    last.output.includes(file)
+  );
+  if (carried.length === 3) pass('      — and that build sees all three commits of the batch');
+  else
+    fail(`the closing build must list all three files, listed ${carried.length}: ${last.output}`);
 } finally {
   fs.rmSync(repo, { recursive: true, force: true });
 }
@@ -159,4 +222,4 @@ if (failures > 0) {
   console.error(`\n✗ ${failures} case(s) failed.`);
   process.exit(1);
 }
-console.log(`\n✅ ${CASES.length + 3} cases — nothing a build step reads can be skipped.`);
+console.log(`\n✅ ${checks} cases — nothing a build step reads can be skipped.`);

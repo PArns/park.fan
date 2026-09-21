@@ -30,8 +30,32 @@
 # content, a photo, a sidecar, a translation file, the lockfile — plus the two
 # shapes a careless allowlist gets wrong: a commit touching documentation AND a
 # post (a real one did, 08764e8), and `content/blog/README.md`, which an
-# unanchored `README.md` pattern would swallow. It is part of `release:check`.
+# unanchored `README.md` pattern would swallow — plus the `[skip deploy]` marker
+# below, in production and in preview. It is part of `release:check`.
 set -uo pipefail
+
+# A batch of merges. The PO squash-merges every PR of a batch but the last with
+# `[skip deploy]` in the message; those production builds are skipped and the
+# last merge builds the batch as a whole. That works because the diff below runs
+# against VERCEL_GIT_PREVIOUS_SHA — the last SUCCESSFUL deployment, which a
+# skipped build never becomes — so the one build that runs sees every file the
+# batch touched. At 4 PRs that is 3 production builds, ~5 minutes each, saved.
+#
+# Production only. A preview belongs to its pull request, where the marker in
+# the eventual squash message has no business.
+#
+# To build a marked HEAD anyway — the last merge of a batch failed and the tip
+# still carries the marker — redeploy it from the dashboard with the
+# "Use project's Ignore Build Step" checkbox unchecked, which is what that
+# checkbox is for (vercel.com/docs/monorepos#ignoring-the-build-step). A plain
+# redeploy is not enough: this script runs for one. The way that needs nobody's
+# dashboard is a commit without the marker on top, since only HEAD is read.
+if [ "${VERCEL_ENV:-}" = "production" ] &&
+  git log -1 --pretty=%B HEAD 2>/dev/null | grep -qF '[skip deploy]'; then
+  echo "ignore-build: HEAD is marked [skip deploy] — skipping this production build."
+  echo "  the next merge without the marker builds this commit too (it diffs against the last successful deploy)."
+  exit 0
+fi
 
 # What the previous SUCCESSFUL deployment built. Vercel only exposes this once
 # an Ignored Build Step is configured, and a skipped build is not a deployment —
