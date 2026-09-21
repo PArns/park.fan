@@ -20,8 +20,9 @@ Methodik-Text. Die Parkseite selbst bleibt unverändert und bekommt einen Link.
 
 **Gegatet auf `meta.displayable`:** 119 der 210 Parks im Katalog erfüllen das (gemessen am
 21.09.), also 714 URLs statt 1.206. Die übrigen 91 würden Tabellen aus einer Handvoll Messtagen
-zeigen, 222 davon aus gar keinem; sie liefern 404 und werden nirgends verlinkt. Sitemap, Nav-Tile
-und Kalenderseite teilen sich dafür einen datengecachten Aufruf pro Park und Tag.
+zeigen, 222 davon aus gar keinem; sie liefern 404 und werden nirgends verlinkt. Sitemap, Parkseite
+und Kalenderseite fragen dafür denselben datengecachten Eintrag ab: ein Upstream-Aufruf pro Park
+und Tag, egal wie viele fragen.
 
 Es ist die erste Park-Route, die **nicht** `force-dynamic` ist: nichts darauf ist live, der
 Aggregat dahinter wird einmal täglich neu gerechnet, also ISR mit Tagesfenster. Ein

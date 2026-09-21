@@ -229,16 +229,21 @@ new piece of UI is the method section, and it is text.
 Three things the page needs that no section above covers, each written down where it lives:
 
 - **The gate has readers outside the page.** The route reads `meta.displayable` off the aggregate
-  it fetches anyway; the sitemap, the crowd calendar's tile row and any future link do not have
-  one. `hasParkStatsPage()` / `parksWithStatsPage()` (`lib/api/stats.ts`) answer for them off the
-  same `CACHE_TTL.stats` Data Cache entry, so the whole class costs one upstream call per park per
-  day. A probe that fails answers `false` there and throws on the page: a URL missing from one
-  day's sitemap costs a day of discovery, one advertised at a 404 costs the file's credibility.
+  it fetches anyway; the sitemap, the park page and the crowd calendar do not have one.
+  `hasParkStatsPage()` / `parksWithStatsPage()` (`lib/api/stats.ts`) answer for them off the same
+  `CACHE_TTL.stats` Data Cache entry, so however many of them ask, the whole class costs one
+  upstream call per park per day. A probe that fails answers `false` there and throws on the page:
+  a URL missing from one day's sitemap costs a day of discovery, one advertised at a 404 costs the
+  file's credibility.
 - **ISR is two declarations, not one** — see
   [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md).
-- **The park page's link is gated for free.** It sits in `ParkStatsSection`, which already returns
-  `null` unless the aggregate is displayable, so the link exists exactly where the page does and
-  the `force-dynamic` park page spends no fetch finding out.
+- **The park page pays for the tile, not for the link.** Its link sits in `ParkStatsSection`,
+  which already returns `null` unless the aggregate is displayable, so that one is gated for free.
+  The tile is not: the entry-tile row is the park's navigation and is rendered on every page of
+  the park, so a cell present on the calendar and absent here would be two renderings of one row
+  (`components/parks/park-entry-tiles.tsx`) and would break the `rememberTileRow` handoff between
+  them. The park page therefore resolves the flag as well — one day-cached fetch, fired alongside
+  `getParkSeasons` and awaited with it, sharing the entry above rather than adding to it.
 
 ---
 
