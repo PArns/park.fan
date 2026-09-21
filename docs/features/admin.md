@@ -127,10 +127,11 @@ Two consequences that are easy to trip over:
   requests, and the password step spends the first token. The form resets its
   widget in the `finally` of every attempt, successful or not, and waits for the
   new token before it will send the code — which is why `canSubmit` includes it
-  and why the button spins while the challenge is still running. Since the form
-  carries a per-step `key` (below), the credentials → code transition remounts
-  the widget and gets its fresh token that way; the reset is what covers a second
-  attempt on the same step, where nothing remounts.
+  and why the button spins while the challenge is still running. Since the two
+  steps are two separate forms (below), the credentials → code transition
+  unmounts one and mounts the other, and the widget that comes up with the code
+  step mints its fresh token that way; the reset is what covers a second attempt
+  on the same step, where nothing unmounts.
 - **A missing secret in production is a hard failure**, by design and now on one
   surface more than before. `verifyTurnstile` refuses rather than waving traffic
   through, so an unset `TURNSTILE_SECRET_KEY` on the frontend deployment locks
@@ -191,34 +192,44 @@ limit), and a `readOnly` username field rides along hidden on that step, because
 the e-mail input is gone from the DOM by then and a manager with nothing to match
 on offers codes from every item that has one.
 
-That hidden username has a second effect, and the `<form>` carries a `key` because
-of it. Both steps are branches of one ternary inside the same form, so React swaps
-the children and keeps the element — and a manager that fingerprinted the form once
-as "username + password" need not look again. 1Password went on offering a full
-sign-in on the code step, against the hidden `username` and the `otp` field beside
-it, rather than filling the code. `key={needsTotp ? 'totp' : 'credentials'}` replaces
-the DOM node instead, which is what makes it scan again. The remount costs the login
-nothing: every value it holds is state or a ref in `LoginScreen`, above the form, and
-what sits below is per-mount bookkeeping plus the Turnstile widget, which mints the
-fresh token that step needed anyway. One thing had to move with it: `turnstileBroken`
-is cleared at **both** step changes — where `attempt()` turns the code step on, and in
-the back button ("Andere Anmeldung") — because the widget that failed goes out with the
-form and "could not be loaded" would otherwise stand over a new one. A challenge that
-really cannot load says so again on the next mount, since `loadTurnstileScript` drops
-its failed promise and the fresh mount retries.
+That hidden username has a second effect, and it is why the two steps are **two
+`<form>` elements** rather than one. 1Password went on offering a full sign-in on the
+code step, against the hidden `username` and the `otp` field beside it, rather than
+filling the code — a manager that fingerprinted the form once as "username + password"
+need not look again. The first fix kept one form and gave it a per-step
+`key={needsTotp ? 'totp' : 'credentials'}`, which replaces the DOM node; that is true
+of React and enough only if the manager tracks the node. Managers are also documented
+to key on origin plus the shape of the fields, and under that reading a remounted form
+with the same tag in the same position is the same form again. So the steps are now
+sibling branches — `{!needsTotp && <form>…</form>}` and `{needsTotp && <form>…</form>}`
+— which are different slots in the tree: React unmounts one subtree and mounts the
+other, and the two never share an element, a position or a field list. The unmount
+costs the login nothing: every value it holds is state or a ref in `LoginScreen`, above
+both forms, and what sits inside is per-mount bookkeeping plus the Turnstile widget,
+which mints the fresh token that step needed anyway. The bottom half both forms share —
+challenge, error, lockout, submit button — is `gateAndSubmit(label)`, a function called
+inside each form rather than a component declared in the render, which would be a new
+type every render and would remount the widget on every keystroke. One thing had to
+move with the step: `turnstileBroken` is cleared at **both** step changes — where
+`attempt()` turns the code step on, and in the back button ("Andere Anmeldung") —
+because the widget that failed goes out with its form and "could not be loaded" would
+otherwise stand over a new one. A challenge that really cannot load says so again on
+the next mount, since `loadTurnstileScript` drops its failed promise and the fresh
+mount retries.
 
 Whether any of this moves 1Password is a question about an extension and can only be
 answered by trying it — the fingerprint story is the likeliest reading of the reported
-behaviour, not a measurement. The half that _is_ checkable — that the `<form>` node is
-replaced at the step change — has no check, and there is no good reason for that: this
-repo pins UI behaviour with Playwright, `check-planner.mjs` walks a four-step flow, and
+behaviour, not a measurement, and nobody has run the manual autofill test through
+either version. The half that _is_ checkable — that the step change replaces the
+`<form>` node rather than reusing it — has no check, and there is no good reason for
+that: this repo pins UI behaviour with Playwright, `check-planner.mjs` walks a four-step flow, and
 that script reaches most of its states by stubbing responses with `page.route` rather
 than by owning an account. The same trick works here — a stubbed
 `{"status":"totp-required"}` from `/api/admin/session` opens the code step with no
 credential at all, and the widget falls back to Cloudflare's always-passes test key
 when `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is unset. Nobody has written it; PAR-304 is where
-it belongs. Until then, the comment at the call site is what stops the attribute being
-deleted as a stray list key.
+it belongs. Until then, the comment above the two forms is what stops them being folded
+back into one card component with swapped children.
 
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have
