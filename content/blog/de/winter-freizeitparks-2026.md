@@ -312,7 +312,8 @@ einem der vollsten Tage der italienischen Saison im Park.
 
 Der [Heide-Park](ref:heide-park) fährt die Saison 2026 vom 28. März bis zum
 **31. Oktober** und macht danach zu. Winterbetrieb gibt es in Soltau nicht,
-auch keinen Weihnachtsmarkt.
+auch keinen Weihnachtsmarkt. Was in den sieben Monaten davor passiert, steht im
+[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 [Walibi Holland](ref:walibi-holland) bleibt nach dem Ende von Bright Nights
 ebenfalls geschlossen. Wer ein Abo für 2026 gekauft hatte, in dem der

@@ -317,7 +317,8 @@ drukste dagen van het Italiaanse seizoen in het park.
 
 Het [Heide-Park](ref:heide-park) draait het seizoen 2026 van 28 maart tot
 **31 oktober** en gaat daarna dicht. Winterbedrijf is er in Soltau niet, en een
-kerstmarkt evenmin.
+kerstmarkt evenmin. Wat er in de zeven maanden daarvoor gebeurt, staat in de
+[Heide-Park-gids](/blog/heide-park-wachttijden-tips).
 
 [Walibi Holland](ref:walibi-holland) blijft na het einde van Bright Nights ook
 gesloten. Wie een abonnement voor 2026 had waarin het winterbedrijf van 2026 en

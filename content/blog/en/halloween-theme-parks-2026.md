@@ -448,6 +448,9 @@ maze in the evening while the rest hold on to a bratwurst.
 Current dates and age ratings:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
+The rest of the season in Soltau, from Colossos to the weekday, is covered by
+the [Heide Park guide](/blog/heide-park-wait-times-tips).
+
 ### Parc Astérix: Peur sur le Parc
 
 If you’re thinking bigger, head to France: [Parc Astérix](ref:parc-asterix)

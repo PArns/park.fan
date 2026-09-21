@@ -438,7 +438,8 @@ sábado y se van el domingo, como se puede leer en la
 [guía del Europa-Park](/blog/europa-park-tiempos-de-espera-consejos). El mismo
 día de la semana, dos razones distintas. En el [Heide-Park](ref:heide-park), que
 se parece estructuralmente al Movie Park, la semana tiene por cierto casi la
-misma forma.
+misma forma, con las cuentas en la
+[guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 
 ### El calendario a partir del 2 de septiembre
 

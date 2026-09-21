@@ -463,6 +463,9 @@ Maze, während der Rest sich an der Bratwurst festhält.
 Aktuelle Termine und Altersfreigaben:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
+Den Rest der Saison in Soltau, von Colossos bis zum Wochentag, nimmt sich der
+[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps) vor.
+
 ### Parc Astérix: Peur sur le Parc
 
 Wer den Ausflug größer denkt, fährt nach Frankreich: [Parc Astérix](ref:parc-asterix)

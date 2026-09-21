@@ -454,6 +454,9 @@ vasthoudt.
 Actuele data en leeftijdsindicaties:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
+De rest van het seizoen in Soltau, van Colossos tot de weekdag, behandelt de
+[Heide-Park-gids](/blog/heide-park-wachttijden-tips).
+
 ### Parc Astérix: Peur sur le Parc
 
 Wie het uitje groter opzet, rijdt naar Frankrijk: [Parc Astérix](ref:parc-asterix)

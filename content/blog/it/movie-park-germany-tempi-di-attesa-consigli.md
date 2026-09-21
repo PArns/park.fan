@@ -438,7 +438,8 @@ ripartono la domenica, come si legge nella
 [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Lo stesso
 giorno della settimana, due ragioni diverse. Allo [Heide-Park](ref:heide-park),
 che assomiglia strutturalmente al Movie Park, la settimana ha del resto quasi la
-stessa forma.
+stessa forma, conti alla mano nella
+[guida dell’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
 
 ### Il calendario dal 2 settembre
 

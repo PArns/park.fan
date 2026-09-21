@@ -324,7 +324,8 @@ días más llenos de la temporada italiana.
 
 El [Heide-Park](ref:heide-park) hace la temporada 2026 del 28 de marzo al **31
 de octubre** y después cierra. En Soltau no hay operación invernal, ni tampoco
-mercado de Navidad.
+mercado de Navidad. Lo que pasa en los siete meses anteriores está en la
+[guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 
 [Walibi Holland](ref:walibi-holland) también sigue cerrado tras el final de
 Bright Nights. Quien tenía un abono de 2026 que incluía la operación invernal de
