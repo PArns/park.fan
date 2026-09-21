@@ -3,13 +3,13 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
-import { BrandPin } from '@/components/layout/brand-lockup';
 import { Skeleton } from '@/components/ui/skeleton';
 import type {
   NearbyAttractionsData,
@@ -152,50 +152,68 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
 }
 
 /**
- * The headline, with the pin to its left on a wide page.
+ * The headline, with the pin beside it on a wide page, sized to German's two-line wrap — the case
+ * in the screenshot that started this ticket.
  *
- * **It is the pin alone, not `BrandLockup`.** The lockup is pin + wordmark, 4.21 : 1 on the
- * wordmark, so its smallest sensible hero size is 122 px of the row. Measured against the built
- * site, that pushes the headline from two lines to three in nl, fr and es at every desktop width
- * the plate reaches, and in fr even on the 704 px plate a tablet gets — the plate is 608 px wide
- * from 1280 up and the headline needs ~536 of them for its second line in French. The pin costs
- * 35 px plus the 12 px gap and leaves all six languages on two lines. The wordmark is also the
- * half the header is already showing 48 px above this.
+ * **Pin only, not the full lockup.** A full lockup (pin + wordmark, 4.21 : 1 on the wordmark) at a
+ * height that reads next to `text-5xl` text is ~400 px wide — built and measured, not guessed —
+ * and that leaves too little of the 608–672 px plate for the headline: German and French both fold
+ * to four short lines. The pin alone is roughly 0.82 : 1, so it can go tall without doing that: at
+ * 96 px it is ~79 px wide, and the headline keeps its normal two-line wrap in every locale that
+ * matters.
  *
- * **48 px is one line of the headline** (`text-5xl` is 3rem/1 above `sm`, and the mark only
- * renders far above `sm`), so the mark is exactly as tall as the text it stands next to.
+ * **The detailed pin (`logo.svg`), not `BrandPin`'s simplified one.** `BrandPin` (the header's
+ * `logo-small.svg`) is a flat silhouette meant to still read at 26 px; blown up to 96 px it looks
+ * like a plain icon rather than the mark. `logo.svg`/`logo-dark.svg` is cut from the same master
+ * lockup (`logo-big.svg`) the favicon's detailed sizes use and the footer draws next to its own
+ * wordmark — full linework at any size, which is the point at 96 px. It is inlined here rather
+ * than going through a shared component: the footer draws the same pair the same way with no
+ * component either, and `BrandPin`'s own contract (26 px ink box, `logo-small.svg` specifically)
+ * would have to change shape to fit a different file.
+ *
+ * **96 px is the two-line headline's own height**, measured at the 1440 px width the ticket's
+ * screenshot was taken at (`h-24`). A shorter headline (English's one-liner) sits under a taller
+ * pin than its own line — the same tradeoff the original 48 px version made in the other direction,
+ * just resolved toward the ticket's own reference case instead of away from it.
  *
  * **`mark` is off for the welcome headline, and that is not a nicety.** The two headlines are not
  * the same kind of string: `hero.title` is six fixed sentences that can be measured once, while
- * `heroWelcome` interpolates a park name of no fixed length. Measured on the built site at 1304 px
- * and up, the 47 px the mark takes moved „Welcome to Europa-Park" and its nl/fr/es twins from one
- * line to two and „… Chessington World of Adventures" from two to three in en, fr, es and it. That
- * is a shift rather than a wider headline, because the welcome variant only appears AFTER the
- * mount, when the nearby lookup lands: measured at 1440, the row grew 96 → 144 px and moved the
- * intro paragraph 24 px down and the open-parks badge 24 px up, where the same swap without the
- * mark moves nothing. Raising the threshold cannot fix it — the plate is capped at 672 px from
- * 1280 up, so the mark costs the same 47 px at every width above the threshold. Without the mark
- * the welcome headline lays out exactly as it did before this change.
+ * `heroWelcome` interpolates a park name of no fixed length, and the welcome variant only appears
+ * AFTER the mount, when the nearby lookup lands. Turning the mark on there would move the intro
+ * paragraph and the open-parks badge at that exact moment — the same post-mount jump this version
+ * was built to avoid. Without the mark the welcome headline lays out exactly as it did before this
+ * change.
  *
- * **The threshold asks the PAGE, not this card and not the window.** The card's own width is not
- * monotonic in the window's: the plate is `max-w-3xl` and centred while it is alone, and
- * `max-w-2xl` next to the world map from 1280 up, so it measures 704 px on a tablet and 608 px on
- * a desktop. A container query on the card would therefore put the mark on tablets — which the
- * ticket rules out — and take it off the wide displays it is for. 1304 px is where the plate stops
- * being squeezed by the map column: 48 (the hero section's `px-6`) + 672 (`max-w-2xl`) + 40 (the
- * grid's gap) + 544 (the map column's `34rem`). Below it the two-column grid cuts the plate to
- * 584 px and the French headline takes a third line; at it the plate is at its cap and stays
- * there. Same `@container/page` every other threshold in this hero asks, so the planner's panel
- * closes the mark rather than the window deciding without it.
+ * **The threshold asks the PAGE, not this card and not the window.** 1304 px is where the plate
+ * stops being squeezed by the world map column (48 the hero section's `px-6` + 672 `max-w-2xl` +
+ * 40 the grid's gap + 544 the map column's `34rem`) — because the ticket asks for this on a wide
+ * page. Same `@container/page` every other threshold in this hero asks.
  */
 function HeroHeadline({ children, mark = false }: { children: React.ReactNode; mark?: boolean }) {
   return (
     // mt-4 mb-3 sat on the <h1> and moved here unchanged: margins do not collapse in a flex
     // container, so the spacing above and below the headline is the same with the row as without.
-    <div className="mt-4 mb-3 flex items-center gap-3">
+    <div className="mt-4 mb-3 flex items-center gap-4">
       {mark && (
         <span className="hidden shrink-0 @min-[1304px]/page:block">
-          <BrandPin className="h-12 w-auto" />
+          <Image
+            src="/logo-dark.svg"
+            width={1562}
+            height={1905}
+            alt=""
+            aria-hidden="true"
+            className="hidden h-24 w-auto dark:block"
+            loading="eager"
+          />
+          <Image
+            src="/logo.svg"
+            width={1562}
+            height={1905}
+            alt=""
+            aria-hidden="true"
+            className="block h-24 w-auto dark:hidden"
+            loading="eager"
+          />
         </span>
       )}
       <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
