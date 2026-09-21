@@ -33,15 +33,19 @@ export async function GET(
 
   // One month short at BOTH ends. This file is generated and cached for a day while the route
   // recomputes its range from a live clock, so at a month rollover a cached copy would otherwise
-  // advertise a month that has just fallen outside — a 404 in a sitemap, which is the one error
-  // here that costs something.
+  // advertise a month that has just fallen outside. A well-formed month past the edge 308s to the
+  // hub rather than 404ing, so what a stale copy buys is not a dead URL but a self-inflicted one:
+  // a redirect we put in a sitemap ourselves, and hand a crawler as if it were a page. Cloudflare
+  // holds it now (measured 2026-09-21), so the 81,963 B body is an edge cost rather than an
+  // origin one — but the crawl it spends is ours either way. That is the one error here that
+  // costs something.
   //
   // The back end looks like it would not need the slack, because `parkCalendarMonthsBack` grows
   // as the archive fills and a growing window can only make a cached file too SHORT. That holds
-  // until it saturates at the span's `back`. From January 2027 it is pinned at twelve and the
-  // oldest served month advances with every rollover, so a copy generated on 2027-02-28 lists
-  // 2026-02 and the route stops serving it the next morning — 212 parks × 6 locales of listed
-  // 404s per month boundary.
+  // until it saturates at the span's `back`, and with `back: 3` against an archive that starts at
+  // 2026-01 it saturated on 2026-04-01. The oldest served month has advanced with every rollover
+  // since, so a copy generated on 2026-09-30 would list 2026-06 and the route stops serving it
+  // the next morning — 210 parks × 6 locales of listed redirects per month boundary.
   //
   // The forward end now needs the slack for a second reason: it follows each park's published
   // schedule, and that edge moves BACKWARDS as days pass without the park releasing more. A copy

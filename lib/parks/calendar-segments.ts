@@ -101,7 +101,16 @@ export function parkCalendarPath(
  *
  * Three keeps the months a visitor might actually compare against ("wie voll war es letzten
  * Monat") and matches the window the backend keeps warm. Months that fall out do not 404: the
- * route 301s them to the hub, which is what already happens whenever this number moves.
+ * route 308s them to the hub (`permanentRedirect`), which is what already happens whenever this
+ * number moves.
+ *
+ * **The cut has a running cost, not only a one-off one.** Measured against production on
+ * 2026-09-21: the five months it orphaned (2026-01…2026-05) still answer `308` with an
+ * **81,963 B uncompressed** body and no `content-encoding` — 1.4× the ~58 kB brotli page they
+ * refuse, though Cloudflare now holds the redirect, so that body reaches the origin only on a
+ * miss. The crawl it spends is ours either way, and that part is not a transition: every month
+ * boundary drops one more month out of the three, which is 210 parks × 6 locales = **1,260
+ * fresh redirects per rollover**, for as long as the span stays at three.
  */
 export const PARK_CALENDAR_MONTH_SPAN = { back: 3, forward: 12 } as const;
 
@@ -150,8 +159,11 @@ const EARLIEST_CALENDAR_MONTH: ParkCalendarMonth = shiftParkCalendarMonth(
  * the sitemap (so it never advertises one). They drifted apart once already, when the sitemap
  * carried its own hand-set constant.
  *
- * Grows on its own as the archive fills: today it yields 7, and it reaches the full 12 once a
- * year has passed since the data start — no follow-up edit, and none to forget.
+ * Grew on its own as the archive filled, and has been saturated since 2026-04-01: the archive
+ * starts at 2026-01 and the span is three, so from that month on this returns the span itself and
+ * the oldest served month advances with every rollover. It was written when the span was twelve,
+ * where saturation was still a year out; a later change to {@link PARK_CALENDAR_MONTH_SPAN} moves
+ * that date with it, and no other edit is needed.
  */
 export function parkCalendarMonthsBack(now: ParkCalendarMonth): number {
   const available = monthIndex(now) - monthIndex(EARLIEST_CALENDAR_MONTH);

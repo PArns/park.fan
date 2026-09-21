@@ -279,6 +279,24 @@ verweigert — das **1,24-fache**, und er wird von Cloudflare **nie** gecacht, g
 garantiert und dauerhaft an Vercel. Der Schnitt bleibt richtig (die Anfragen enden
 irgendwann), aber er hat den Wert des 308-Fixes vervielfacht.
 
+Nachgemessen am **2026-09-21** (PAR-368), dieselben Monats-URLs, drei Parks und zwei Locales:
+
+```
+HTTP 308 · 81.963 B (de/Phantasialand) · 81.951 B (de/Europa-Park) · 81.243 B (en/Phantasialand)
+KEIN content-encoding · cf-cache-status: MISS beim ersten Fetch, HIT ab dem zweiten
+```
+
+Der Body ist in 18 Tagen um **13,5 %** gewachsen, das Verhältnis liegt jetzt beim
+**1,4-fachen** — aber es fällt nicht mehr pro Request am Origin an, weil Cloudflare den 308
+inzwischen hält (Hebel ① unten, erledigt). Drei Zahlen daneben, die das Bild ändern: die
+Kalender-Sitemap hält heute **970 URLs je Locale (5.820 gesamt, 210 Parks)** gegen die 27.984
+vom 2026-08-27, von der Differenz gehen nur 6.300 auf den `back`-Schnitt zurück (10.560 auf den
+Zukunfts-Trim vom 2026-08-28, 5.088 auf Monate vor dem Archiv-Beginn), und der Monatswechsel
+schiebt dauerhaft **1.260 neue 308er** nach (210 Parks × 6 Locales) — das ist kein Übergang.
+Was am Edge hängen bleibt, hilft dem Crawl-Budget nicht: für Googlebot ist ein gecachter 308
+derselbe 308. Volumen und Abklingen stehen nur im GSC-Report oder in Cloudflare Path Analytics;
+von außen ist beides nicht messbar.
+
 ### Das Caching-Panel im Vercel-CDN-Tab zeigt „nichts gecacht" — und das ist korrekt
 
 17 K bzw. 26 K in einer einzigen Kategorie. Das ist **Vercels eigener** Cache
@@ -544,17 +562,30 @@ Nach Schritt 2 ist der Statuscode-Eintrag aus Schritt 1 möglicherweise überfl�
 308 dann selbst ein `cdn-cache-control` trägt (die Monats-Regel in `next.config.ts` greift auf
 ihm). Das ist eine Vermutung — nachmessen, nicht vorher entfernen.
 
-### ① Statuscode-TTL für 308 und 301 auf der Parks-Cache-Rule
+### ① Erledigt (nachgemessen am 2026-09-21): Statuscode-TTL für 308 und 301 auf der Parks-Cache-Rule
 
 **Cloudflare → Caching → Cache Rules → die `/*/parks/*`-Regel → Edge TTL → Statuscode-TTL.**
 
-Heute ist nur `200` mit einem TTL versehen; `308` fällt durch, Cloudflare sieht das
-`no-store` des Origin und antwortet `BYPASS`. Sieben von sieben geprüften Proben (gestern)
-plus drei von drei (heute) liefern ein konstantes, byte-identisches `Location` — den
-Kalender-Hub des Parks. Das ist sicher cachebar.
+Der Stand vom 2026-09-03: nur `200` war mit einem TTL versehen, `308` fiel durch, Cloudflare
+sah das `no-store` des Origin und antwortete `BYPASS`. Sieben von sieben geprüften Proben plus
+drei von drei am Folgetag lieferten ein konstantes, byte-identisches `Location` — den
+Kalender-Hub des Parks, also sicher cachebar. Erwartung aus der Messung vom 02.09.:
+**−5.000 Invocations und −353 MB pro 12 h** auf der Kalender-Route.
 
-Erwartung aus der Messung vom 02.09.: **−5.000 Invocations und −353 MB pro 12 h** auf der
-Kalender-Route.
+Nachgemessen am 2026-09-21 (PAR-368), zwei nie abgerufene Monats-URLs, je dreimal geholt:
+
+```
+it/…/heide-park/…/2026/2          MISS -> HIT age=1 -> HIT age=2
+fr/…/disneyland-paris/…/2026/3    MISS -> HIT age=0
+de/…/phantasialand/…/2026/1       HIT age=456   (7,6 min zuvor gewaermt)
+```
+
+Der Origin-Header ist unverändert `cache-control: public, max-age=0, must-revalidate`, es
+HITtet trotzdem — die Edge-Regel steht also über dem Header, und der 308 erreicht Vercel nur
+noch beim MISS. Die erwarteten −5.000 Invocations sind damit **nicht nachgerechnet**: dafür
+braucht es die Kalender-Route im Vercel-Observability-Tab, und der Connector eines Runners
+kommt nicht an das Projekt (`403`, Scope `arns`). Was der Cache **nicht** kauft, ist
+Crawl-Budget: ein gecachter 308 ist für Googlebot derselbe 308.
 
 ### ② Edge TTL nach Pfadfamilie, statt einer Zahl für `/*/parks/*`
 

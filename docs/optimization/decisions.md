@@ -166,17 +166,36 @@ They were re-anchored to months where each still proves its own property, and st
 parameterized on the constant.
 
 **Cost-shift check — one, and it is real.** The 6,390 removed URLs do not stop being
-requested the moment they leave the sitemap. They now resolve to the hub with a `301`, and
-that redirect carries the **71 kB uncompressed `__next_error__` body** documented in the
-deferred entry above. Per request that is _more_ bytes than the 200 it replaces (71 kB
-uncompressed vs ~57 kB brotli), against lower CPU (the redirect fires before the heavy
-render). At ~25 fetches/URL/month that is roughly **+2 GB/month during the decay**, falling
-to zero as crawlers drop the URLs.
+requested the moment they leave the sitemap. They now resolve to the hub with a `308`
+(`permanentRedirect`), and that redirect carries the **71 kB uncompressed `__next_error__`
+body** documented in the deferred entry above. Per request that is _more_ bytes than the 200
+it replaces (71 kB uncompressed vs ~57 kB brotli), against lower CPU (the redirect fires
+before the heavy render). At ~25 fetches/URL/month that is roughly **+2 GB/month during the
+decay**, falling to zero as crawlers drop the URLs.
 
 Net still clearly negative on spend — the requests end, the renders end with them, and the
 January growth never happens. But it raises the value of the deferred bodyless-308 work
 by roughly 3x for as long as the decay runs — still small in absolute terms. Worth revisiting
 now rather than later.
+
+**Follow-up measurement, 2026-09-21 (PAR-368).** Three weeks later, against production: the
+orphaned months still answer `308` and the body has grown to **81,963 B** uncompressed with no
+`content-encoding` (+13.5 % on the 72,235 B measured on 2026-09-03) — but the cost shift this
+entry worried about has since been paid off at the edge. Cloudflare holds the redirect now
+(`MISS` on the first fetch of a fresh month URL, `HIT` with a growing `age` after), so the body
+reaches the origin only on a miss and the "+2 GB/month during the decay" above no longer
+describes the bill. That also closes lever ① in `docs/optimization/README.md`.
+
+The decay itself cannot be read from outside — Cloudflare Path Analytics and GSC are the only
+sources for the request volume, and neither is reachable from a runner. The population is, and
+it is the part that
+changes the reading: the cut's own share is 6,300 URLs (five months × 210 parks × 6 locales),
+while the calendar's total once-listed-now-redirecting surface is **21,948** — the forward
+`scheduleCoverage` trim of 2026-08-28 contributes 10,560 of it and the pre-archive back months
+5,088. GSC's 15,917 "page with redirect" fits inside the calendar alone, so the cut is **at
+most 40 % of it and proportionally nearer 29 %**. The one thing that is not a transition: every
+month boundary drops one more month out of the three, which is 210 × 6 = **1,260 fresh
+redirects per rollover**, indefinitely.
 
 ---
 

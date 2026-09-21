@@ -6,14 +6,39 @@
 #   cache    — what Cloudflare does. Must NOT have a cache-buster: the second fetch of the SAME
 #              URL is the whole measurement.
 #
+# park.fan sits behind Cloudflare Turnstile. From a browser that has passed the challenge every
+# mode works as written; from a shell that has not, all four answer `403` — measured 2026-09-21,
+# three 403s where `redirect` prints a status. Export CDN_CHECK_QUERY with the query fragment that
+# gets waved through (`key=value`, no leading `?`) and every request carries it. The value is not
+# in this repo and must not be: this repository is public, and the fragment bypasses a protection
+# on the live site. Runners take it from their own playbook.
+#
+#   export CDN_CHECK_QUERY='…'   # then any mode below
+#
+# It goes on EVERY request, not just the first one of a mode — a page fetched with it and a
+# subresource fetched without it do not measure the same site.
+#
+# It is also part of the Cloudflare cache key, so with it set, `cache` and `hitrate` read the
+# cache entry of the bypass URL rather than a visitor's. They still answer their own question
+# (does the SAME URL come back HIT on the second fetch), just about a different key. Leave the
+# variable unset in a browser-blessed shell for the visitor's numbers.
+#
 # Usage:  scripts/check-cdn-cache.sh [headers|cache|hitrate|redirect] [base-url]
 set -uo pipefail
 
 BASE="${2:-https://park.fan}"
 PARK="/de/parks/europe/germany/bruehl/phantasialand"
 CAL="$PARK/wartezeiten-kalender"
+BYPASS="${CDN_CHECK_QUERY:-}"
+[ -z "$BYPASS" ] && echo "note: CDN_CHECK_QUERY unset — expect 403 unless this shell is past Turnstile" >&2
 
-hdr() { curl -sS -o /dev/null -D - --compressed --max-time 25 "$1" 2>/dev/null | tr -d '\r'; }
+# Append the bypass to a URL that may already carry a query string.
+mc() {
+  [ -z "$BYPASS" ] && { printf '%s' "$1"; return; }
+  case "$1" in *\?*) printf '%s&%s' "$1" "$BYPASS" ;; *) printf '%s?%s' "$1" "$BYPASS" ;; esac
+}
+
+hdr() { curl -sS -o /dev/null -D - --compressed --max-time 25 "$(mc "$1")" 2>/dev/null | tr -d '\r'; }
 field() { grep -i "^$2:" <<<"$1" | head -1 | cut -d' ' -f2-; }
 
 case "${1:-headers}" in
@@ -51,16 +76,18 @@ case "${1:-headers}" in
         h=$(hdr "$u"); tot=$((tot+1))
         [ "$(field "$h" cf-cache-status)" = "HIT" ] && hit=$((hit+1))
         a=$(field "$h" age); [ -n "${a:-}" ] && [ "$a" -gt "$max" ] 2>/dev/null && max=$a
-      done < <(curl -sS --compressed "$BASE/${map#*:}" | grep -oP '(?<=<loc>)[^<]+' | shuf -n 40)
+      done < <(curl -sS --compressed "$(mc "$BASE/${map#*:}")" | grep -oP '(?<=<loc>)[^<]+' | shuf -n 40)
       echo "$n: HIT $hit/$tot = $((hit*100/tot))%   groesstes age=${max}s (~$((max/3600))h)"
     done
     ;;
 
-  # ---- The 72 kB redirect. Note: no content-encoding even though we ask for br. --------------
+  # ---- The 82 kB redirect. Note: no content-encoding even though we ask for br. --------------
+  #      2026/1 and 2025/12 fell out when the back span went 12 → 3; 2030/1 is past every park's
+  #      schedule. All three are well-formed months, so they 308 to the hub rather than 404.
   redirect)
     for m in 2026/1 2025/12 2030/1; do
       h=$(hdr "$BASE$CAL/$m")
-      b=$(curl -sS -o /dev/null --compressed --max-time 25 -w '%{size_download}' "$BASE$CAL/$m")
+      b=$(curl -sS -o /dev/null --compressed --max-time 25 -w '%{size_download}' "$(mc "$BASE$CAL/$m")")
       printf '%-10s %s  %7s B  enc=%-6s cf=%s\n' "$m" \
         "$(grep -oE 'HTTP/[0-9.]+ [0-9]+' <<<"$h" | tail -1 | awk '{print $2}')" "$b" \
         "$(field "$h" content-encoding || echo none)" "$(field "$h" cf-cache-status)"
