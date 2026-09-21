@@ -2,11 +2,7 @@
   "park": "efteling",
   "ride": "max-and-moritz",
   "area": "Anderrijk",
-  "tags": [
-    "day",
-    "photo",
-    "ride"
-  ],
+  "tags": ["day", "photo", "ride"],
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",

@@ -2,10 +2,7 @@
   "park": "efteling",
   "ride": "de-vliegende-hollander",
   "area": "Ruigrijk",
-  "tags": [
-    "photo",
-    "ride"
-  ],
+  "tags": ["photo", "ride"],
   "credit": {
     "author": "Patrick",
     "license": "all-rights-reserved",
