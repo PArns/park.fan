@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { PlannerBar } from './planner-bar';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { PlannerEntry } from '@/lib/planner/types';
-import type { PlannerEstimate } from '@/lib/planner/estimate';
+import { actualVsEstimate, type PlannerEstimate } from '@/lib/planner/estimate';
 import type { PlanDayTier } from '@/lib/api/types';
 
 interface PlannerEntryRowProps {
@@ -40,6 +40,10 @@ interface PlannerEntryRowProps {
  * The reason a figure is missing is shown, not swallowed. "Outside the park's
  * hours" and "we have never measured this ride's day" are different things to
  * tell someone, and both are better than a blank where a number should be.
+ *
+ * That one line under the bar carries the reason OR, on a ticked-off ride, how
+ * far the queue came in from the forecast. Never both — see `deltaLabel` — so
+ * the row's height is the same row it has always been.
  */
 export function PlannerEntryRow({
   entry,
@@ -72,6 +76,18 @@ export function PlannerEntryRow({
         : estimate.missing === 'no-source'
           ? t('entry.noSource')
           : null;
+
+  // What the queue cost against what was forecast for it. It takes the line the
+  // reason takes, and the two cannot both be there: a delta needs a figure and a
+  // forecast, and every `missingLabel` is a state that has neither.
+  const delta = actualVsEstimate(entry, estimate);
+  const deltaLabel = !delta
+    ? null
+    : delta.direction === 'same'
+      ? t('entry.deltaAsEstimated')
+      : t(delta.direction === 'over' ? 'entry.deltaOver' : 'entry.deltaUnder', {
+          minutes: Math.abs(delta.minutes),
+        });
 
   return (
     <li
@@ -147,6 +163,10 @@ export function PlannerEntryRow({
 
         {missingLabel && (
           <p className="text-muted-foreground mt-0.5 truncate text-[11px]">{missingLabel}</p>
+        )}
+
+        {deltaLabel && (
+          <p className="text-muted-foreground mt-0.5 truncate text-[11px]">{deltaLabel}</p>
         )}
       </div>
 

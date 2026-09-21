@@ -97,6 +97,7 @@
     "check:prose": "node scripts/check-prose.mjs",
     "check:planner": "node --experimental-strip-types scripts/check-planner.mjs",
     "check:agent-ready": "node scripts/check-agent-ready.mjs",
+    "check:header-links": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-header-links.mjs",
     "test:ignore-build": "node scripts/test-vercel-ignore-build.mjs",
     "check:webmcp": "node scripts/check-webmcp.mjs",
     "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
