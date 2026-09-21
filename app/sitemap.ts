@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
+import { getLatestChangelogDate } from '@/lib/changelog';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -92,6 +93,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
     );
   }
+
+  // ── Changelog ─────────────────────────────────────────────────────────────
+  // One URL, outside the locale loop and without an `alternates` map: the page
+  // is English only (`app/[locale]/changelog/page.tsx`), and the other five
+  // spellings are 301s. Listing them as hreflang alternates would advertise
+  // five URLs that answer with a redirect.
+  //
+  // `lastModified` is the date of the newest published entry, which is the day
+  // that page last changed — no crawl needed, the content carries its own date.
+  const latestReleaseDate = getLatestChangelogDate();
+  routes.push({
+    url: `${BASE_URL}/en/changelog`,
+    ...(latestReleaseDate ? { lastModified: new Date(`${latestReleaseDate}T00:00:00Z`) } : {}),
+    changeFrequency: 'monthly',
+    priority: 0.4,
+  });
 
   // ── "How park.fan works" guide ────────────────────────────────────────────
   // Its own loop rather than a line in the static block above: the URL segment

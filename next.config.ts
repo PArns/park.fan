@@ -633,6 +633,23 @@ const nextConfig: NextConfig = {
       );
     }
 
+    // 13. The changelog exists in English only, so every other spelling of its
+    // URL points at the one page that exists. Without these the proxy would
+    // treat `/changelog` like any other unprefixed path and send a German
+    // visitor to `/de/changelog`, which `dynamicParams = false` answers with a
+    // 404 — and the same for a link that was pasted with the wrong prefix.
+    // These belong here rather than in `proxy.ts` because `redirects()` runs
+    // BEFORE the proxy (step 2 against step 3 in Next's execution order, see
+    // node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md).
+    rules.push(
+      { source: '/changelog', destination: '/en/changelog', permanent: true },
+      {
+        source: '/:locale(de|fr|it|nl|es)/changelog',
+        destination: '/en/changelog',
+        permanent: true,
+      }
+    );
+
     return rules;
   },
   async rewrites() {

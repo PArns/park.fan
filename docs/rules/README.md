@@ -76,3 +76,4 @@ _A blog post, UI strings, images, captions._
 - [One photo can index two rides (`alsoRides`)](one-photo-can-index-two-rides-alsorides.md)
 - [Card photos are two layers (REQUIREMENT)](card-photos-are-two-layers.md)
 - [Localized blog gallery captions](localized-blog-gallery-captions.md)
+- [A version is a unit of communication, not a build artifact (REQUIREMENT)](a-version-is-a-unit-of-communication.md)

@@ -53,6 +53,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/blog/authors/[author]': ['nearby', 'parkCard'],
   '/blog/category/[...path]': ['nearby', 'parkCard'],
   '/blog/tag/[tag]': ['nearby', 'parkCard'],
+  '/changelog': [],
   '/contribute': [
     'contribute.dropzone',
     'contribute.error',
