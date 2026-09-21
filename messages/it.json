@@ -2247,7 +2247,7 @@
       "resize": "Regola la larghezza"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {Manca 1 attrazione di punta} other {Mancano # attrazioni di punta}}",
+      "missing": "{count, plural, =1 {Manca 1 <term>attrazione di punta</term>} other {Mancano # <term>attrazioni di punta</term>}}",
       "label": "Attrazione di punta"
     },
     "coach": {

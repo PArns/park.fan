@@ -2247,7 +2247,7 @@
       "resize": "Drag to resize"
     },
     "headliners": {
-      "missing": "{count, plural, =1 {1 headliner still missing} other {# headliners still missing}}",
+      "missing": "{count, plural, =1 {1 <term>headliner</term> still missing} other {# <term>headliners</term> still missing}}",
       "label": "Headliner"
     },
     "coach": {
