@@ -142,16 +142,20 @@ export function useCaptureUploads({ data, author }: Options) {
   }, []);
 
   /**
-   * Hand a ride one or more files.
+   * Hand a ride — or the park itself, with `slug: null` — one or more files.
    *
    * Sequential, deliberately: the first commit of a session opens the pull request
    * and the rest look it up and join. Fired in parallel they race to open their own,
    * which is the bug the media browser's batch dialog was rewritten to avoid.
+   *
+   * `chosenTags` are the ones a person set on the screen. They are added to what
+   * the phone can derive on its own and never replace it.
    */
   const upload = useCallback(
     async (
       files: FileList | File[],
-      ride: { slug: string | null; name: string; area: string | null }
+      ride: { slug: string | null; name: string; area: string | null },
+      chosenTags: string[] = []
     ) => {
       if (!data) return;
       const list = Array.from(files).filter(
@@ -187,7 +191,15 @@ export function useCaptureUploads({ data, author }: Options) {
           shotAt: dateOf(file.lastModified) ?? parkDate(data.park.timezone),
           gps: null,
           author,
-          tags: fieldTags(data.park.timezone),
+          // A `Set` rather than a concatenation: a chip the person pressed may
+          // already be in what the clock derived, and a tag twice in one sidecar
+          // is a row the tag audit has to explain away.
+          tags: [
+            ...new Set([
+              ...fieldTags(data.park.timezone, ride.slug ? 'ride' : 'park'),
+              ...chosenTags,
+            ]),
+          ],
           queuedAt: Date.now(),
           attempts: 0,
           lastError: null,

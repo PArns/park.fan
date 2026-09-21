@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   ChevronDown,
   Crosshair,
+  Images,
   MapPin,
   Snowflake,
 } from 'lucide-react';
@@ -29,6 +30,7 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { ParkRidePicker, type PickerResult } from '../blog-editor/_components/park-ride-picker';
+import { ParkRow } from './_components/park-row';
 import { RideRow } from './_components/ride-row';
 import { UploadBar } from './_components/upload-bar';
 import { useDevicePosition, useNearbyPark } from './_lib/use-park-location';
@@ -168,6 +170,15 @@ export default function CapturePage() {
     [uploads]
   );
 
+  /** A photograph of the park rather than of one of its rides. */
+  const handleParkFiles = useCallback(
+    (files: FileList | null, tags: string[]) => {
+      if (!files || !data) return;
+      void uploads.upload(files, { slug: null, name: data.park.name, area: null }, tags);
+    },
+    [data, uploads]
+  );
+
   const applyPick = (result: PickerResult) => {
     const picked = result.refKey
       .replace(/^\/?(?:v1\/)?parks\//, '')
@@ -250,6 +261,21 @@ export default function CapturePage() {
               </ul>
             </Panel>
           )}
+
+          <Panel>
+            <PanelHeader
+              icon={Images}
+              title="Park-Fotos"
+              hint="Landen ohne Bahn in der Bibliothek."
+            />
+            <ul>
+              <ParkRow
+                parkName={data.park.name}
+                states={statesByRide.get('') ?? []}
+                onFiles={handleParkFiles}
+              />
+            </ul>
+          </Panel>
 
           <Panel>
             <PanelHeader
