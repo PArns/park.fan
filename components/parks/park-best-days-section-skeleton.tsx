@@ -6,9 +6,11 @@ import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
 
 /**
  * Loading placeholder for <ParkBestDaysSection> (non-compact). Its job is to hold the exact box the
- * real section will occupy: on the park page this sits inside the streamed best-days slot, and on
- * desktop the whole attraction grid hangs below it — so every pixel the reservation is off by is a
- * pixel the ride list jumps when the boundary resolves.
+ * real section will occupy. That is the CALENDAR page and nowhere else: the park page renders no
+ * best-days chapter at all, and the blog widget passes `compact`, which returns null rather than
+ * this. On the calendar page the chapter sits a third of the way down and the whole rest of the
+ * article hangs below it — the statistics, the nearby parks, the park's address, the share row —
+ * so every pixel the reservation is off by is a pixel all of that jumps when the boundary resolves.
  *
  * It renders the REAL header (see <ParkBestDaysHeader>) instead of grey boxes shaped like one: the
  * header needs no calendar data, and its height depends on how the park name and subtitle wrap,
@@ -58,13 +60,22 @@ export function ParkBestDaysSectionSkeleton({
         />
 
         {/* The three data cards. Chip geometry mirrors <DayChip> (`px-3 py-1 text-sm` → 30px tall,
-          `gap-2` between them) so the rows line up with the real ones. The date card carries five
-          chips because that is what wraps to the same two rows the real list takes at both
-          breakpoints — its length varies with the park (0–8 upcoming quiet days), so this is the
-          middle of the range rather than a value that is exact for one park and wrong for the next. */}
+          `gap-2` between them) so the rows line up with the real ones. The date card carries SEVEN
+          chips, which is three chip rows at both breakpoints; five was two. The height is quantized
+          — a row is 38px, so this card can only reserve 122px or 160px, and the question is which
+          of the two the majority gets.
+
+          Measured against the running site on 24 parks spread across the catalogue, 18 of which
+          render the chapter at all. At 1440px the real row is 160px on twelve of them, 122px on two
+          (Disneyland Park, Six Flags Great Adventure), and 84px on the four whose
+          `upcomingQuietDays` is empty — there the real cell is a one-line paragraph, not chips.
+          Three rows is therefore exact for twelve, over-reserves two by 38px and four by 76px:
+          380px of error across the sample against 608px for two rows, and the mode rather than a
+          value that is exact for nobody. The four short ones are the price, and they are named here
+          because the next person to measure one of them should know it was counted. */}
         {/* Mirrors the real columns exactly — same wrapper, same `PANEL_CELL`, same caption line.
-          Anything that differs here is a jump the moment the seed lands, and on the park page the
-          whole attraction grid hangs below this section. */}
+          Anything that differs here is a jump the moment the seed lands, and the rest of the
+          calendar page hangs below it. */}
         <div
           className={cn(
             TILE_GLASS,
@@ -78,7 +89,7 @@ export function ParkBestDaysSectionSkeleton({
             {[
               { titleWidth: 'w-40', chips: 3, chipWidth: 'w-12' }, // quietest weekdays
               { titleWidth: 'w-36', chips: 1, chipWidth: 'w-12' }, // best weekend day
-              { titleWidth: 'w-36', chips: 5, chipWidth: 'w-24' }, // upcoming quiet days
+              { titleWidth: 'w-36', chips: 7, chipWidth: 'w-24' }, // upcoming quiet days
             ].map((card, i) => (
               <div key={i} className={PANEL_CELL} aria-hidden="true">
                 <div className="flex min-w-0 flex-col gap-1.5">

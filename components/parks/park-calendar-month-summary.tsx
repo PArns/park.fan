@@ -3,7 +3,6 @@ import { CalendarRange, Clock, GraduationCap, Timer } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 import { Skeleton } from '@/components/ui/skeleton';
-import { cn } from '@/lib/utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getParkArticleForms } from '@/lib/faq/park-faq';
 import type { CalendarMonthSummary, NamedCalendarDay } from '@/lib/parks/calendar-month-summary';
@@ -263,12 +262,21 @@ export function ParkCalendarMonthSummarySkeleton() {
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {/* Four from `sm` up, where they are one row either way — below it the grid is two
-          columns, so a fourth entry is a whole second row, and only the first fact is
-          unconditional. Reserving two rows for a month that renders one is the same
-          over-reservation this file spent its other numbers avoiding. */}
+        {/* Four entries at every width. From `sm` up that is one row either way; below it the
+          two-column grid makes it two, and two is what the real row almost always takes. Only
+          `factOpenDays` is unconditional — hours, headliner wait and school holidays each drop out
+          on their own — so a month CAN come back with one or two facts and one row.
+
+          It rarely does. Measured at 390px on 24 parks spread across the catalogue, 18 of which
+          render the chapter: the real `dl` is 108px on fourteen, 92px on two, and 40px on the two
+          that produced fewer than three facts (Fantawild Dreamland Zhuzhou, Le Pal). Reserving two
+          rows is 92px, so sixteen of eighteen now land within 16px of the real height instead of
+          68px under it, and two over-reserve by 52px — 328px of error across the sample against
+          1056px for the single row this used to hold. The 16px still missing on the common case is
+          the label wrapping to two lines at that width, which varies by locale and is not worth a
+          second guess. */}
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className={cn('flex flex-col gap-1', i >= 2 && 'hidden sm:flex')}>
+          <div key={i} className="flex flex-col gap-1">
             <Skeleton className="h-[16px] w-24" />
             <Skeleton className="h-[20px] w-16" />
           </div>
