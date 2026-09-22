@@ -22,6 +22,8 @@ import { attractionPathSlugs } from '@/lib/utils/transport-attractions';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
+import { RideCrowdScaleTooltip } from './ride-crowd-scale-tooltip';
+import { isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { WorksPeriodBadge } from './works-period-badge';
@@ -430,11 +432,18 @@ export function AttractionCard({
           <div className="relative mt-[9px] flex flex-wrap items-start gap-[6px]">
             <ParkStatusBadge status={status as ParkStatus} />
             {isOperatingOrUnknown && crowdLevel && (
-              <CrowdLevelBadge
-                level={
-                  crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
-                }
-              />
+              // The scale is this ride's own, in minutes, and only where the API sent the
+              // baseline it rated against — without one the badge stands alone.
+              <RideCrowdScaleTooltip
+                level={isColoredCrowdLevel(crowdLevel) ? crowdLevel : null}
+                baseline={attraction.baseline}
+              >
+                <CrowdLevelBadge
+                  level={
+                    crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
+                  }
+                />
+              </RideCrowdScaleTooltip>
             )}
             {/* Right after the crowd level, because it qualifies exactly that
                 number: on a station the queue is people waiting for the next

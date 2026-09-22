@@ -694,6 +694,14 @@
       "between": "{min}–{max} %",
       "above": "über {min} %"
     },
+    "rideCrowdScale": {
+      "title": "Auslastung dieser Bahn",
+      "note": "Gemessen an der typischen Wartezeit dieser Bahn: {baseline} min. Jede Bahn hat ihre eigene Skala.",
+      "upTo": "bis {max} min",
+      "exactly": "{min} min",
+      "between": "{min}–{max} min",
+      "from": "ab {min} min"
+    },
     "avgWaitTime": "Ø Wartezeit",
     "openAttractions": "Offene Attraktionen",
     "closedAttractions": "Geschlossene Attraktionen",

@@ -115,12 +115,17 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
   return {
     ...live,
     attractions: live.attractions.map((a) => {
-      // `comparison` and `baseline` ride in on every attraction and nothing in this app has ever
-      // rendered them — `ComparisonBadge` exists but is wired to nothing outside `/ui`, where it
-      // is fed string literals. {@link leanParkForLivePoll} already leaves them out of the poll,
-      // and that rule was written down without ever being applied to the half that reaches a
-      // reader: the SERVER render, which is the copy that lands in the HTML of every park page.
-      // 1.0 KB per park page, on the route with the second-highest origin-miss count in the app.
+      // `comparison` rides in on every attraction and nothing in this app has ever rendered it —
+      // `ComparisonBadge` exists but is wired to nothing outside `/ui`, where it is fed string
+      // literals. {@link leanParkForLivePoll} leaves it out of the poll, and that rule was written
+      // down without ever being applied to the half that reaches a reader: the SERVER render,
+      // which is the copy that lands in the HTML of every park page. 1.0 KB per park page, on the
+      // route with the second-highest origin-miss count in the app.
+      //
+      // `baseline` is rendered now (the ride card's crowd-scale tooltip) and still stays out of
+      // the HTML: the tooltip draws nothing until someone reaches for it, and the poll that
+      // `useLiveParkData` fires on mount carries it long before that. Shipping it here would put
+      // a number in every park page's HTML that no first paint shows.
       const lean = { ...a } as ParkAttraction & { comparison?: unknown; baseline?: unknown };
       delete lean.comparison;
       delete lean.baseline;

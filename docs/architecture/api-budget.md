@@ -108,8 +108,15 @@ The identity fields are not incidental: membership and order come from the snaps
 opened since the page was rendered still appears within one poll, exactly as when the poll returned
 the whole park.
 
-`comparison` and `baseline` arrive on every attraction from the API and have never been rendered
-anywhere. They are simply not in the projection.
+`comparison` arrives on every attraction from the API and has never been rendered anywhere. It is
+simply not in the projection.
+
+`baseline` used to share that sentence. Since PAR-378 the ride card's crowd badge explains itself
+in the ride's own minutes (`rideCrowdMinuteRanges`), and those minutes cannot be had without
+`baseline`. It travels on the poll and not in the server render: the API sends it only
+while a ride has a live wait, so a shell written before opening has none, and the tooltip draws
+nothing until someone reaches for it, by which time the mount poll has landed. Cost on Epcot's 33
+rides, 2026-09-22: +498 B raw, **+39 B brotli** per poll.
 
 ### The day-scoped block: shows and restaurant status
 

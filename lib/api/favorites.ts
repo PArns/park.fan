@@ -106,6 +106,11 @@ export interface FavoriteAttraction {
     message?: string;
   } | null;
   crowdLevel?: CrowdLevel;
+  /**
+   * Not yet delivered by /v1/favorites: the service rates against the P50 but does not return it.
+   * Typed so the ride card's crowd-scale tooltip lights up here once the API ships it.
+   */
+  baseline?: number | null;
   currentLoad?: {
     crowdLevel: CrowdLevel;
     baseline?: number;
