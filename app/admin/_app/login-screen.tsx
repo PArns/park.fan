@@ -402,7 +402,15 @@ export function LoginScreen() {
                   autoComplete="username"
                   placeholder="du@park.fan"
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                    // A different address is a different account, and the next
+                    // one may have no second factor at all. Without this,
+                    // `canSubmit` would go on demanding six digits because a
+                    // previous account wanted them — the state the "Andere
+                    // Anmeldung" button used to clear.
+                    setTotpMissing(false);
+                  }}
                   required
                   className={cn(FIELD_CLASS, 'pl-10')}
                 />
@@ -483,9 +491,10 @@ const FIELD_CLASS =
   'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 placeholder:text-muted-foreground/50 h-11 w-full rounded-xl border px-3 text-base outline-none transition-[color,box-shadow,border-color] focus:ring-2 sm:text-sm';
 
 /**
- * The glass card each step is drawn on. A class string on two `<form>` elements
- * rather than a wrapper component around them, because a shared wrapper is the
- * thing the two steps are deliberately not sharing — see the comment above them.
+ * The glass card the form is drawn on. A class string rather than a wrapper
+ * component, so the `<form>` itself is the card: a wrapper between the card and
+ * the fields is one more element between a password manager and the three
+ * inputs it is looking at.
  */
 const CARD_CLASS =
   'border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7';
