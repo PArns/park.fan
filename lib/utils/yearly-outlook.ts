@@ -41,9 +41,21 @@ export interface OutlookMonth {
    * that carry no colour, so they are kept apart from the six that do.
    */
   days: (ColoredCrowdLevel | 'closed' | 'unknown' | null)[];
-  /** How many days of this month the forecast covers at all. */
-  forecastDays: number;
-  /** Of those, how many it recommends visiting (`recommended` or `highly_recommended`). */
+  /** How many days of this month the response carries an entry for, whatever it says. */
+  coveredDays: number;
+  /**
+   * Of those, how many carry one of the six coloured tiers — the ones the page can draw and name.
+   *
+   * It is not the same number as {@link coveredDays}, and the gap is a whole class of park.
+   * `rateOrUnknown` in the backend returns `unknown` where there is no typical-day peak to rate
+   * against (a park with fewer than 30 operating days on file), and it keeps sending a
+   * `recommendation` anyway: Aquatica Orlando answered on 2026-09-22 with 181 days that were
+   * `unknown` and `recommended` at once. A row gated on `coveredDays` would have put „no
+   * forecast" next to „181/181 recommended" on that park, so every count and every badge here
+   * is gated on this one instead.
+   */
+  ratedDays: number;
+  /** Of the RATED days, how many carry `recommended` or `highly_recommended`. */
   recommendedDays: number;
   /**
    * The month's headline crowd level: the most frequent of the six coloured tiers.
@@ -100,26 +112,33 @@ export function buildYearlyOutlook(
     const length = daysInMonth(year, month);
 
     const days: OutlookMonth['days'] = new Array(length).fill(null);
-    const tierCounts = new Map<ColoredCrowdLevel, number>();
-    let forecastDays = 0;
-    let recommendedDays = 0;
+    const recommended: boolean[] = new Array(length).fill(false);
 
     for (const prediction of byMonth.get(key) ?? []) {
       const dayOfMonth = Number(prediction.date.slice(8, 10));
       if (!Number.isInteger(dayOfMonth) || dayOfMonth < 1 || dayOfMonth > length) continue;
 
-      const level = prediction.crowdLevel;
-      days[dayOfMonth - 1] = level;
-      forecastDays++;
-      if (
+      days[dayOfMonth - 1] = prediction.crowdLevel;
+      recommended[dayOfMonth - 1] =
         prediction.recommendation === 'recommended' ||
-        prediction.recommendation === 'highly_recommended'
-      ) {
-        recommendedDays++;
-      }
-      if (isColoredCrowdLevel(level)) {
-        tierCounts.set(level, (tierCounts.get(level) ?? 0) + 1);
-      }
+        prediction.recommendation === 'highly_recommended';
+    }
+
+    // Counted off the filled calendar, not off the response: two entries for one date would
+    // otherwise both be counted and the row could read „32/31 recommended".
+    const tierCounts = new Map<ColoredCrowdLevel, number>();
+    let coveredDays = 0;
+    let ratedDays = 0;
+    let recommendedDays = 0;
+
+    for (let index = 0; index < length; index++) {
+      const level = days[index];
+      if (level === null) continue;
+      coveredDays++;
+      if (!isColoredCrowdLevel(level)) continue;
+      ratedDays++;
+      tierCounts.set(level, (tierCounts.get(level) ?? 0) + 1);
+      if (recommended[index]) recommendedDays++;
     }
 
     let dominant: ColoredCrowdLevel | null = null;
@@ -139,7 +158,8 @@ export function buildYearlyOutlook(
       month,
       daysInMonth: length,
       days,
-      forecastDays,
+      coveredDays,
+      ratedDays,
       recommendedDays,
       dominant,
     });

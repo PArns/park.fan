@@ -36,6 +36,11 @@ import { buildYearlyOutlook, type OutlookMonth } from '@/lib/utils/yearly-outloo
  * whether April is quiet or merely unknown. The frame is constant, the months past the horizon
  * say „no forecast", and the `<Suspense>` placeholder can reserve the height exactly.
  *
+ * **A month says something only where the backend could rate it.** `/predictions/yearly` sends a
+ * `recommendation` even for days it could not rate at all, so eight of forty sampled parks would
+ * have shown „no forecast" and „181/181 recommended" on the same row. Every badge and every count
+ * reads `ratedDays`, never the number of entries that came back.
+ *
  * **No colour legend.** Each row names its own tier in words through `CrowdLevelBadge`, which is
  * the same badge and the same palette the calendar and the header card use, so the strip beside it
  * needs no second key. `ParkCalendarLegend` would have brought four calendar-only signal keys with
@@ -61,18 +66,18 @@ const STRIP_HEIGHT = 'h-5';
  *
  * Same posture and the same number as the best-days seed: the response is a Redis read on a warm
  * cache, but a cold one falls through to a CatBoost rebuild that can take seconds, and this
- * chapter sits eight screens down. On timeout the section renders nothing for that one request
- * while `after()` keeps the fetch alive, so the next reader finds the data cache warm.
+ * chapter sits eight screens down. On timeout the section keeps its frame and says nothing, while
+ * `after()` keeps the fetch alive so the next reader finds the data cache warm.
  */
 const FORECAST_TIMEOUT_MS = 3000;
 
 /** The list's own box — the band above it squares off its bottom edge, so it drops its top one. */
-export const OUTLOOK_LIST_CLASS = cn(
+const OUTLOOK_LIST_CLASS = cn(
   TILE_GLASS,
   'border-border/50 divide-border/50 divide-y rounded-b-xl border'
 );
 
-export function outlookMonthLabel(locale: string, year: number, month: number): string {
+function outlookMonthLabel(locale: string, year: number, month: number): string {
   // Noon UTC and `timeZone: 'UTC'`: the label names a month, and a date built at local midnight
   // can fall into the previous one for any reader west of Greenwich.
   return getDateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
@@ -114,17 +119,7 @@ function MonthStrip({ month }: { month: OutlookMonth }) {
   );
 }
 
-/**
- * One month's row, and the reason it is exported: the `<Suspense>` placeholder renders the SAME
- * row over an empty frame rather than a grey box shaped like it, so the reservation is the real
- * geometry at every breakpoint instead of a number somebody typed (see
- * docs/rules/a-streamed-section-owes-the-page-its-height.md).
- *
- * `muted` is what the placeholder passes: the badge and the count keep their boxes and go
- * `invisible`, because a row that reads „Keine Prognose" while the forecast is still in flight
- * would be a claim the page cannot make yet.
- */
-export function OutlookMonthRow({
+function OutlookMonthRow({
   month,
   locale,
   recommendedLabel,
@@ -132,7 +127,7 @@ export function OutlookMonthRow({
 }: {
   month: OutlookMonth;
   locale: string;
-  /** Pre-formatted „12/31 recommended", or `null` for a month the forecast does not reach. */
+  /** Pre-formatted „12/31 recommended", or `null` for a month with no rated day. */
   recommendedLabel: string | null;
   muted?: boolean;
 }) {
@@ -170,6 +165,71 @@ export function OutlookMonthRow({
   );
 }
 
+/**
+ * The chapter's box: the heading band and the twelve rows under it.
+ *
+ * Both states of the boundary go through here — the settled section and the `<Suspense>`
+ * placeholder — which is what makes the reservation the real geometry at every breakpoint rather
+ * than a number somebody typed (docs/rules/a-streamed-section-owes-the-page-its-height.md).
+ *
+ * `muted` keeps every box and hides the badge and the count with `invisible`. A row that already
+ * read „Keine Prognose" would be making a claim the page cannot make while the fetch is in
+ * flight — or, on a timeout, one it never got to check.
+ *
+ * `headingId` is left off in the muted state on purpose: the two states overlap for the instant
+ * React swaps them, and two elements with one id is one id too many.
+ */
+export async function YearlyOutlookFrame({
+  months,
+  locale,
+  muted = false,
+  className,
+}: {
+  months: OutlookMonth[];
+  locale: string;
+  muted?: boolean;
+  className?: string;
+}) {
+  const t = await getTranslations('parks.yearlyOutlook');
+
+  return (
+    <section
+      {...(muted ? { 'aria-hidden': true } : { 'aria-labelledby': 'yearly-outlook-heading' })}
+      className={cn('mt-8', className)}
+    >
+      {/* Header and the rows are one box, the way the best-days chapter is: the band squares off
+        its bottom edge and the list underneath drops its top border. */}
+      <ChapterHeading
+        id={muted ? undefined : 'yearly-outlook-heading'}
+        icon={CalendarRange}
+        title={t('title')}
+        hint={t('hint')}
+        frosted
+        className="mb-0 rounded-b-none"
+      />
+
+      <ul className={OUTLOOK_LIST_CLASS}>
+        {months.map((month) => (
+          <OutlookMonthRow
+            key={month.key}
+            month={month}
+            locale={locale}
+            muted={muted}
+            recommendedLabel={
+              month.ratedDays > 0
+                ? t('recommendedDays', {
+                    count: month.recommendedDays,
+                    total: month.ratedDays,
+                  })
+                : null
+            }
+          />
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export async function ParkYearlyOutlookSection({
   continent,
   country,
@@ -184,44 +244,28 @@ export async function ParkYearlyOutlookSection({
     FORECAST_TIMEOUT_MS
   );
 
-  // Nothing at all — a park the ML service has no forecast for (one of the fifteen sampled), or a
-  // seed that timed out. A chapter of twelve empty rows would be worse than no chapter.
-  if (!forecast || forecast.predictions.length === 0) return null;
-
-  const t = await getTranslations('parks.yearlyOutlook');
-  const months = buildYearlyOutlook(forecast.predictions, todayIso);
-  if (months.every((month) => month.forecastDays === 0)) return null;
-
-  return (
-    <section aria-labelledby="yearly-outlook-heading" className={cn('mt-8', className)}>
-      {/* Header and the rows are one box, the way the best-days chapter is: the band squares off
-        its bottom edge and the list underneath drops its top border. */}
-      <ChapterHeading
-        id="yearly-outlook-heading"
-        icon={CalendarRange}
-        title={t('title')}
-        hint={t('hint')}
-        frosted
-        className="mb-0 rounded-b-none"
+  // `null` is the timeout or a failed fetch — the case the three seconds exist for. It is NOT
+  // „this park has no forecast", and returning nothing here would collapse the twelve rows the
+  // placeholder just reserved. So the empty frame stays, claiming nothing, and `after()` warms
+  // the data cache for the next reader.
+  if (!forecast) {
+    return (
+      <YearlyOutlookFrame
+        months={buildYearlyOutlook([], todayIso)}
+        locale={locale}
+        muted
+        className={className}
       />
+    );
+  }
 
-      <ul className={OUTLOOK_LIST_CLASS}>
-        {months.map((month) => (
-          <OutlookMonthRow
-            key={month.key}
-            month={month}
-            locale={locale}
-            recommendedLabel={
-              month.forecastDays > 0
-                ? t('recommendedDays', {
-                    count: month.recommendedDays,
-                    total: month.forecastDays,
-                  })
-                : null
-            }
-          />
-        ))}
-      </ul>
-    </section>
-  );
+  const months = buildYearlyOutlook(forecast.predictions, todayIso);
+
+  // No month carries a single day the backend could RATE — either the park has no forecast at
+  // all, or it has one made entirely of `unknown` (Aquatica Orlando and seven more of forty
+  // sampled on 2026-09-22: a park with too little history for a typical-day peak). Twelve rows of
+  // „Keine Prognose" is not a chapter.
+  if (months.every((month) => month.ratedDays === 0)) return null;
+
+  return <YearlyOutlookFrame months={months} locale={locale} className={className} />;
 }

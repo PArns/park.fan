@@ -84,14 +84,14 @@ test('leaves a skipped day empty instead of closing the gap', () => {
     october.days.slice(1, 30).every((d) => d === null),
     true
   );
-  assert.equal(october.forecastDays, 2);
+  assert.equal(october.ratedDays, 2);
 });
 
 test('ignores a day that does not belong to the month it names', () => {
   // Nothing observed sends a 31st of November; the guard is what keeps a malformed date from
   // writing past the end of the strip.
   const months = buildYearlyOutlook([day('2026-11-31', 'high')], '2026-11-01');
-  assert.equal(months[0].forecastDays, 0);
+  assert.equal(months[0].ratedDays, 0);
   assert.equal(months[0].days.length, 30);
 });
 
@@ -100,9 +100,9 @@ test('drops days outside the twelve-month frame', () => {
     [day('2026-09-30', 'low'), day('2027-09-01', 'high')],
     '2026-09-30'
   );
-  assert.equal(months[0].forecastDays, 1);
+  assert.equal(months[0].ratedDays, 1);
   assert.equal(
-    months.reduce((sum, m) => sum + m.forecastDays, 0),
+    months.reduce((sum, m) => sum + m.ratedDays, 0),
     1,
     'September 2027 is the thirteenth month and has nowhere to go'
   );
@@ -111,9 +111,9 @@ test('drops days outside the twelve-month frame', () => {
 test('a forecast that starts in spring leaves the months before it unknown', () => {
   // Sesame Place San Diego, 2026-09-22: the response ran 2027-03 … 2027-09.
   const months = buildYearlyOutlook([day('2027-03-14', 'low')], '2026-09-22');
-  assert.equal(months[0].forecastDays, 0);
+  assert.equal(months[0].ratedDays, 0);
   assert.equal(months[0].dominant, null);
-  assert.equal(months.find((m) => m.key === '2027-03').forecastDays, 1);
+  assert.equal(months.find((m) => m.key === '2027-03').ratedDays, 1);
 });
 
 console.log('buildYearlyOutlook — what a month says about itself');
@@ -131,7 +131,7 @@ test('counts only the two recommending recommendations', () => {
     '2026-10-01'
   );
   assert.equal(months[0].recommendedDays, 2);
-  assert.equal(months[0].forecastDays, 6);
+  assert.equal(months[0].ratedDays, 6);
 });
 
 test('the headline tier is the most frequent one', () => {
@@ -157,15 +157,46 @@ test('a tie goes to the busier tier', () => {
   assert.equal(months[0].dominant, 'very_high');
 });
 
-test('closed and unknown days count as covered but carry no tier', () => {
+test('closed and unknown days are covered but not rated', () => {
   const months = buildYearlyOutlook(
     [day('2026-10-01', 'closed'), day('2026-10-02', 'unknown')],
     '2026-10-01'
   );
-  assert.equal(months[0].forecastDays, 2);
-  assert.equal(months[0].dominant, null, 'neither is one of the six coloured tiers');
+  assert.equal(months[0].coveredDays, 2);
+  assert.equal(months[0].ratedDays, 0, 'neither is one of the six coloured tiers');
+  assert.equal(months[0].dominant, null);
   assert.equal(months[0].days[0], 'closed');
   assert.equal(months[0].days[1], 'unknown');
+});
+
+test('an unrateable park recommends nothing, however the endpoint labels it', () => {
+  // Aquatica Orlando, 2026-09-22: 181 days, every one of them `unknown` AND `recommended`.
+  // Counted off the entries, the row would have read „no forecast" and „30/30 recommended" at
+  // once — the badge and the number contradicting each other on the same line.
+  const october = Array.from({ length: 31 }, (_, i) =>
+    day(`2026-10-${String(i + 1).padStart(2, '0')}`, 'unknown', 'recommended')
+  );
+  const months = buildYearlyOutlook(october, '2026-10-01');
+  assert.equal(months[0].coveredDays, 31);
+  assert.equal(months[0].ratedDays, 0);
+  assert.equal(months[0].recommendedDays, 0);
+  assert.equal(months[0].dominant, null);
+});
+
+test('a duplicate date is one day, not two', () => {
+  // Not observed in production today. The counters are read off the filled calendar rather than
+  // off the response precisely so that a repeat cannot produce „32/31 recommended".
+  const months = buildYearlyOutlook(
+    [
+      day('2026-10-01', 'low', 'recommended'),
+      day('2026-10-01', 'low', 'recommended'),
+      day('2026-10-02', 'high', 'neutral'),
+    ],
+    '2026-10-01'
+  );
+  assert.equal(months[0].coveredDays, 2);
+  assert.equal(months[0].ratedDays, 2);
+  assert.equal(months[0].recommendedDays, 1);
 });
 
 console.log('buildYearlyOutlook — the empty frame the placeholder renders');
@@ -174,7 +205,7 @@ test('an empty response still produces twelve drawable months', () => {
   const months = buildYearlyOutlook([], '2026-09-22');
   assert.equal(months.length, 12);
   assert.equal(
-    months.every((m) => m.days.length === m.daysInMonth && m.forecastDays === 0),
+    months.every((m) => m.days.length === m.daysInMonth && m.ratedDays === 0),
     true
   );
   assert.equal(
