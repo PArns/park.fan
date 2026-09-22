@@ -1,5 +1,4 @@
 import 'server-only';
-import { catchNonFatal } from '@/lib/api/client';
 import { getContinents } from '@/lib/api/discovery';
 
 /**
@@ -46,11 +45,16 @@ export interface GeoMenuContinent {
  * Continents with their countries, sorted by park count so the regions somebody is most likely to
  * be looking for sit at the top of each column.
  *
- * Never throws: `catchNonFatal` turns an unreachable API into an empty list, and the menu then
- * renders its plain links without the geographic pane. A header is not worth a 500.
+ * Never throws, not even on a maintenance-flagged 502: this runs inside `app/[locale]/layout.tsx`
+ * itself, and no `error.tsx` can catch a layout's own throw (its nested boundary renders only
+ * what the layout returns, never the layout's own body) — so `catchNonFatal`'s usual re-throw,
+ * which every page-level caller relies on to reach its error boundary, would take the whole page
+ * (and, at build time, the whole build) down instead of reaching one. A plain swallow turns an
+ * unreachable API into an empty list, and the menu then renders its plain links without the
+ * geographic pane. A header is not worth a 500.
  */
 export async function getGeoMenu(): Promise<GeoMenuContinent[]> {
-  const continents = await catchNonFatal(getContinents()).then((r) => r ?? []);
+  const continents = await getContinents().catch(() => []);
 
   return continents
     .map((continent) => ({
