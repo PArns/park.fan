@@ -262,14 +262,19 @@ export function ParkCalendarMonthSummarySkeleton() {
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {/* Four entries at every width. From `sm` up that is one row; below it the two-column grid
-          makes it two, which is what the real list takes — measured on the running site at 390px
-          for Phantasialand, Europa-Park, Heide-Park, Efteling, Movie Park and Toverland, where the
-          real `dl` is 108px on all six and only the first fact is formally optional. Two of these
-          entries used to be `hidden sm:flex` against the argument that a month might render one
-          row; no sampled month did, and the one row reserved 40px under a real 108. The 16px that
-          are still missing are the label wrapping to two lines at that width, which varies by
-          locale and is not worth a second guess. */}
+        {/* Four entries at every width. From `sm` up that is one row either way; below it the
+          two-column grid makes it two, and two is what the real row almost always takes. Only
+          `factOpenDays` is unconditional — hours, headliner wait and school holidays each drop out
+          on their own — so a month CAN come back with one or two facts and one row.
+
+          It rarely does. Measured at 390px on 24 parks spread across the catalogue, 18 of which
+          render the chapter: the real `dl` is 108px on fourteen, 92px on two, and 40px on the two
+          that produced fewer than three facts (Fantawild Dreamland Zhuzhou, Le Pal). Reserving two
+          rows is 92px, so sixteen of eighteen now land within 16px of the real height instead of
+          68px under it, and two over-reserve by 52px — 328px of error across the sample against
+          1056px for the single row this used to hold. The 16px still missing on the common case is
+          the label wrapping to two lines at that width, which varies by locale and is not worth a
+          second guess. */}
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className="flex flex-col gap-1">
             <Skeleton className="h-[16px] w-24" />

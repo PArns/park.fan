@@ -61,16 +61,21 @@ export function ParkBestDaysSectionSkeleton({
 
         {/* The three data cards. Chip geometry mirrors <DayChip> (`px-3 py-1 text-sm` → 30px tall,
           `gap-2` between them) so the rows line up with the real ones. The date card carries SEVEN
-          chips, which is three rows at both breakpoints — five was two rows, and the real list is
-          three. Measured against the running site on six parks (Phantasialand, Europa-Park,
-          Heide-Park, Efteling, Movie Park, Toverland): the real grid is 160px on all six at 1440px,
-          against the 122px two rows reserved, and 160px on three of them / 198px on the other three
-          at 390px. So three rows is exact on desktop everywhere in the sample and reserves no more
-          than the real card anywhere — which is the direction to be wrong in, because the card
-          sits above everything else on the calendar page. */}
+          chips, which is three chip rows at both breakpoints; five was two. The height is quantized
+          — a row is 38px, so this card can only reserve 122px or 160px, and the question is which
+          of the two the majority gets.
+
+          Measured against the running site on 24 parks spread across the catalogue, 18 of which
+          render the chapter at all. At 1440px the real row is 160px on twelve of them, 122px on two
+          (Disneyland Park, Six Flags Great Adventure), and 84px on the four whose
+          `upcomingQuietDays` is empty — there the real cell is a one-line paragraph, not chips.
+          Three rows is therefore exact for twelve, over-reserves two by 38px and four by 76px:
+          380px of error across the sample against 608px for two rows, and the mode rather than a
+          value that is exact for nobody. The four short ones are the price, and they are named here
+          because the next person to measure one of them should know it was counted. */}
         {/* Mirrors the real columns exactly — same wrapper, same `PANEL_CELL`, same caption line.
-          Anything that differs here is a jump the moment the seed lands, and on the park page the
-          whole attraction grid hangs below this section. */}
+          Anything that differs here is a jump the moment the seed lands, and the rest of the
+          calendar page hangs below it. */}
         <div
           className={cn(
             TILE_GLASS,
