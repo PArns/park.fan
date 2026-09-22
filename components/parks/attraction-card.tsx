@@ -301,9 +301,10 @@ export function AttractionCard({
             34px circle, so two adjacent circles' 44px zones reach past their
             shared edge — measured, `gap-2` (8px) left a 2px sliver where a
             tap could land on either icon's zone. `gap-3` (12px, 34+12=46 ≥
-            44) puts the zones edge-to-edge with room to spare. */}
+            44) puts the zones edge-to-edge with room to spare. From `sm` up
+            the touch targets are gone, so the row tightens to `gap-2`. */}
         {attraction.id && (
-          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3">
+          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3 sm:gap-2">
             {/* `attraction.id` on a blog fallback card (its live detail failed
                 to resolve at build time) is `attractionSlug`, not a UUID —
                 `POST /push/ride-alerts` 400s on that, so the bell needs a real

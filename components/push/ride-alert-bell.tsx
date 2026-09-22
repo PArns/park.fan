@@ -93,7 +93,7 @@ export function RideAlertBell({
             // This bell's only home is the glass photo corner of AttractionCard,
             // so it takes FavoriteStar's `glass` colors directly rather than a
             // variant prop nothing else would ever set to `default`.
-            <Bell className="fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45" />
+            <Bell className="h-4 w-4 fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45" />
           )}
         </button>
       </GlassCircle>
