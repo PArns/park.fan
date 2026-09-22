@@ -70,8 +70,9 @@ type LoginResponse =
  * `value.replace(/\D/g,'').slice(-1)` per box, so 1Password handing "123456" to
  * the first box left a 6 in it and nothing anywhere else — the autofill looked
  * like a typo. One field with `autocomplete="one-time-code"` on it is what
- * every manager, and iOS and Android, actually look for, and the username stays
- * in the DOM on this step so the item they fill from is still the right one.
+ * every manager, and iOS and Android, actually look for. There is no hidden
+ * username field alongside it any more — see `TotpField` for why one made
+ * things worse rather than better.
  */
 export function LoginScreen() {
   const client = useQueryClient();
@@ -124,7 +125,16 @@ export function LoginScreen() {
     setBusy(true);
     setError(null);
 
-    const wasTotpStep = needsTotp;
+    // The step this request is sent from. The "Andere Anmeldung" button stays
+    // live while one is in flight, so by the time the answer lands the operator
+    // may be standing somewhere else.
+    const sentFromTotpStep = needsTotp;
+
+    // Read when the answer arrives, never when it was sent: `needsTotpRef`
+    // carries the step of the last committed render. False means the operator
+    // has left the step this answer is about, and then everything the answer
+    // says about that step describes a form nobody is looking at any more.
+    const answersTheCurrentStep = () => needsTotpRef.current === sentFromTotpStep;
 
     try {
       const result = await adminFetch<LoginResponse>('/api/admin/session', {
@@ -138,7 +148,18 @@ export function LoginScreen() {
       });
 
       if (result.status === 'totp-required') {
+        // "You still owe me a code" is a fact about the step, so it lapses with
+        // it: somebody who pressed "Andere Anmeldung" while this was in flight
+        // asked to start over, and pulling them back onto the step they just
+        // left is the opposite of what they pressed.
+        if (!answersTheCurrentStep()) return;
+
         setNeedsTotp(true);
+        // Written here and not left to the effect that syncs it after a render:
+        // the effect is a passive one, so between the commit and the flush
+        // there is a slice in which a second answer would read the old step.
+        // The step changes when this line runs, so the ref changes with it.
+        needsTotpRef.current = true;
         // Same rule as the "Andere Anmeldung" button below: the step change
         // unmounts the credentials form, so the widget this flag describes goes
         // out with it, and a challenge that errored while this request was in flight
@@ -147,15 +168,13 @@ export function LoginScreen() {
         // to a request sent FROM the code step is a React bailout, and clearing
         // the flag there would take the notice and its retry link away from a
         // widget that is still broken.
-        //
-        // The ref, not `wasTotpStep`: that is the step the request was sent
-        // from, and the back button stays live while one is in flight. Only
-        // this flag is settled here; two other places in `attempt()` mishandle
-        // the same race and predate this change — PAR-305.
-        if (!needsTotpRef.current) setTurnstileBroken(false);
+        if (!sentFromTotpStep) setTurnstileBroken(false);
         return;
       }
       if (result.status === 'locked' || result.status === 'rate-limited') {
+        // Not gated on the step, unlike everything else in here: a lockout is a
+        // fact about the account, it is true on whichever form is on screen,
+        // and both of them render `lockedFor`.
         setLockedFor(result.retryAfterSeconds);
         setError(
           result.status === 'locked'
@@ -165,8 +184,18 @@ export function LoginScreen() {
         return;
       }
 
+      // Also not gated on the step: the session cookie is set by the time this
+      // line runs, and a login screen drawn over a live session is a worse
+      // answer than one the operator did not expect.
       await client.invalidateQueries({ queryKey: adminKeys.session });
     } catch (err) {
+      // A failed attempt says something about the step it was made on, and
+      // nothing that survives leaving it. A 401 on a code nobody is entering
+      // any more would put "Der Code stimmt nicht" over a form with no code
+      // field, and the field resets below would empty a password somebody has
+      // started retyping on the form that replaced it.
+      if (!answersTheCurrentStep()) return;
+
       // On the code step it is the code that was wrong, not the password. The
       // old version said "E-Mail oder Passwort stimmt nicht" and cleared the
       // password field, so a single mistyped digit sent people back to the
@@ -174,17 +203,23 @@ export function LoginScreen() {
       const message =
         err instanceof AdminApiError && err.status !== 401
           ? err.message
-          : wasTotpStep
+          : sentFromTotpStep
             ? 'Der Code stimmt nicht. Er wechselt alle 30 Sekunden.'
             : 'E-Mail oder Passwort stimmt nicht.';
       setError(message);
       setTotpCode('');
-      if (!wasTotpStep) setPassword('');
+      if (!sentFromTotpStep) setPassword('');
     } finally {
       setBusy(false);
       // The token is spent whatever the answer was — including the successful
       // password step of a two-step login, whose code step is still to come.
       // Ask for a fresh one rather than replaying one Cloudflare has retired.
+      //
+      // Not gated on the step, although a step change has mounted a new widget
+      // by the time this runs and the token in state may be its fresh one: the
+      // spent token is in that state until this line clears it, and leaving it
+      // there would send it a second time. The cost of clearing one that was
+      // still good is a button disabled until the widget mints again.
       setTurnstileToken('');
       turnstileRef.current?.reset();
     }
@@ -195,11 +230,34 @@ export function LoginScreen() {
     void attempt();
   }
 
+  /**
+   * Back to the credentials step, from the button under the code form. A named
+   * function rather than an arrow in the JSX, because it writes a ref and the
+   * compiler reads a handler declared in the render as part of the render.
+   */
+  function leaveTotpStep() {
+    setNeedsTotp(false);
+    // Written here and not left to the effect that syncs it after a render: the
+    // effect is a passive one, so between the commit and the flush there is a
+    // slice in which an answer still in flight would read the step this press
+    // just ended. The step changes when this line runs, so the ref does too.
+    needsTotpRef.current = false;
+    setTotpCode('');
+    setError(null);
+    // Same rule as the step forward in `attempt()`: this form goes out and
+    // takes its widget with it, so a challenge that failed here has nothing
+    // left to describe. Left standing, "could not be loaded" would sit over a
+    // freshly mounted one until its own error fired again — and one that really
+    // cannot load says so again on the next mount, because
+    // `loadTurnstileScript` drops its failed promise and retries.
+    setTurnstileBroken(false);
+  }
+
   // The auto-submit below must call the *current* attempt, not the one captured
-  // on the render that armed it. `needsTotpRef` rides along for the same reason
-  // one line further out: an answer arrives after the request was sent, and the
-  // step may have changed in between — the back button is live while a request
-  // is in flight.
+  // on the render that armed it. `needsTotpRef` rides along for the same
+  // reason, and `attempt()` reads it through `answersTheCurrentStep`: an answer
+  // arrives after the request was sent, and the step may have changed in
+  // between — the back button is live while a request is in flight.
   const attemptRef = useRef(attempt);
   const needsTotpRef = useRef(needsTotp);
   useEffect(() => {
@@ -389,7 +447,17 @@ export function LoginScreen() {
               and still hits the outgoing widget — React has not re-rendered yet
               — so the challenge it starts is thrown away with it. The reset
               stays where it is all the same: it is what covers a second attempt
-              on the SAME step, where nothing unmounts. */}
+              on the SAME step, where nothing unmounts.
+
+              Tested against a real vault, this did not change the reported
+              behaviour: 1Password still offered a full sign-in on the code
+              step. So the fingerprint was not keyed on the DOM node after all,
+              or not only on it — see `TotpField` for the field-level change
+              this reading led to. The sibling-branch split stays regardless:
+              two forms that never share an element or a field list is still
+              the right shape for a step change, independently of what any
+              extension does with it, and `attempt()`'s abandoned-step guards
+              (PAR-305) depend on the steps being distinguishable at all. */}
           {!needsTotp && (
             <form onSubmit={handleSubmit} className={CARD_CLASS}>
               <CardHairline />
@@ -456,30 +524,13 @@ export function LoginScreen() {
                 <span className="text-foreground font-medium">{email}</span>.
               </FormHeading>
 
-              <TotpField
-                code={totpCode}
-                email={email}
-                onChange={setTotpCode}
-                disabled={busy || locked}
-              />
+              <TotpField code={totpCode} onChange={setTotpCode} disabled={busy || locked} />
 
               {gateAndSubmit('Bestätigen')}
 
               <button
                 type="button"
-                onClick={() => {
-                  setNeedsTotp(false);
-                  setTotpCode('');
-                  setError(null);
-                  // Same rule as the step forward in `attempt()`: this form goes
-                  // out and takes its widget with it, so a challenge that failed
-                  // here has nothing left to describe. Left standing, "could not
-                  // be loaded" would sit over a freshly mounted one until its own
-                  // error fired again — and one that really cannot load says so
-                  // again on the next mount, because `loadTurnstileScript` drops
-                  // its failed promise and retries.
-                  setTurnstileBroken(false);
-                }}
+                onClick={leaveTotpStep}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
               >
                 <ArrowLeft className="h-3 w-3" />
@@ -599,18 +650,27 @@ function LoginField({
  * five empty boxes. No error, nothing in the console — it looked like the fill
  * had simply missed.
  *
- * The username rides along, hidden. On this step the e-mail field is gone from
- * the DOM, and a manager with nothing to match on offers codes from every item
- * that has one rather than the account being signed in to.
+ * There is no hidden username field here any more — PAR-291 tried one, on the
+ * theory that 1Password needed it to know which saved login the code belongs
+ * to. Tested against a real vault, twice (PAR-291's form key, then PAR-345's
+ * sibling forms), it did not help: 1Password kept offering a full sign-in
+ * against the hidden field and this one rather than filling the code. The
+ * next-best explanation, tried in PAR-404, is the field itself: an
+ * `autocomplete="username"` input next to any other fillable field is what
+ * 1Password's "this is a login form" detector plausibly keys on, regardless
+ * of which DOM node carries it. Without a username field on this step, the
+ * code field is the only thing here to fill, and 1Password's one-time-code
+ * suggestion is domain-scoped rather than keyed to a specific saved item — it
+ * does not need one. This, too, is a hypothesis rather than a measurement;
+ * see docs/features/admin.md for the full chain and the only test that
+ * settles it.
  */
 function TotpField({
   code,
-  email,
   onChange,
   disabled,
 }: {
   code: string;
-  email: string;
   onChange: (next: string) => void;
   disabled: boolean;
 }) {
@@ -633,19 +693,6 @@ function TotpField({
       >
         Bestätigungscode
       </label>
-
-      {/* Not for anybody to read or reach — it is here so the manager filling
-          the code knows which saved login it belongs to. */}
-      <input
-        type="text"
-        name="username"
-        autoComplete="username"
-        value={email}
-        readOnly
-        tabIndex={-1}
-        aria-hidden="true"
-        className="sr-only"
-      />
 
       <div className="relative h-14">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex gap-2">

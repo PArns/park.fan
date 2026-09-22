@@ -188,48 +188,34 @@ event, the slice kept the last of them, and what came out was a lone `6` in box
 one and five empty boxes. No error and nothing in the console — it read as a fill
 that had missed. One field carries everything a manager, iOS and Android actually
 look for (`autocomplete="one-time-code"`, `inputMode="numeric"`, a six-character
-limit), and a `readOnly` username field rides along hidden on that step, because
-the e-mail input is gone from the DOM by then and a manager with nothing to match
-on offers codes from every item that has one.
+limit).
 
-That hidden username has a second effect, and it is why the two steps are **two
-`<form>` elements** rather than one. 1Password went on offering a full sign-in on the
-code step, against the hidden `username` and the `otp` field beside it, rather than
-filling the code — a manager that fingerprinted the form once as "username + password"
-need not look again. The first fix kept one form and gave it a per-step
-`key={needsTotp ? 'totp' : 'credentials'}`, which replaces the DOM node; that is true
-of React and enough only if the manager tracks the node. Managers are also documented
-to key on origin plus the shape of the fields, and under that reading a remounted form
-with the same tag in the same position is the same form again. So the steps are now
-sibling branches — `{!needsTotp && <form>…</form>}` and `{needsTotp && <form>…</form>}`
-— which are different slots in the tree: React unmounts one subtree and mounts the
-other, and the two never share an element, a position or a field list. The unmount
-costs the login nothing: every value it holds is state or a ref in `LoginScreen`, above
-both forms, and what sits inside is per-mount bookkeeping plus the Turnstile widget,
-which mints the fresh token that step needed anyway. The bottom half both forms share —
-challenge, error, lockout, submit button — is `gateAndSubmit(label)`, a function called
-inside each form rather than a component declared in the render, which would be a new
-type every render and would remount the widget on every keystroke. One thing had to
-move with the step: `turnstileBroken` is cleared at **both** step changes — where
-`attempt()` turns the code step on, and in the back button ("Andere Anmeldung") —
-because the widget that failed goes out with its form and "could not be loaded" would
-otherwise stand over a new one. A challenge that really cannot load says so again on
-the next mount, since `loadTurnstileScript` drops its failed promise and the fresh
-mount retries.
+There used to be a hidden, `readOnly` username field riding along on this step
+(PAR-291), on the theory that a manager with nothing to match on would offer codes
+from every item that has one rather than the account being signed in to. Two
+follow-ups tried to fix the resulting misdetection at the DOM level — first a
+per-step `key` on a shared `<form>` (PAR-291), then two true sibling `<form>`
+elements that never share a node, a position or a field list (PAR-345) — on the
+reading that 1Password was fingerprinting the form once as "username + password"
+and not re-scanning it. Tested against a real vault, neither helped: the code
+step kept offering a full sign-in against the hidden `username` field and the
+`otp` field beside it (PAR-404). That rules out DOM identity as the cause, or at
+least as the only one. The next-best reading is the field itself: an
+`autocomplete="username"` input next to any other fillable field, hidden or not,
+is plausibly what 1Password's login-form detector keys on. So the field is gone
+(PAR-404) — the two steps stay two sibling `<form>` elements regardless, since
+that split is independently correct for `attempt()`'s abandoned-step handling
+(PAR-305) and costs nothing on its own. 1Password's one-time-code suggestion is
+scoped to the domain and its saved items rather than to a specific form field, so
+it does not need a username field to find the right code, at least for the
+common case of one admin account per person.
 
-Whether any of this moves 1Password is a question about an extension and can only be
-answered by trying it — the fingerprint story is the likeliest reading of the reported
-behaviour, not a measurement, and nobody has run the manual autofill test through
-either version. The half that _is_ checkable — that the step change replaces the
-`<form>` node rather than reusing it — has no check, and there is no good reason for
-that: this repo pins UI behaviour with Playwright, `check-planner.mjs` walks a four-step flow, and
-that script reaches most of its states by stubbing responses with `page.route` rather
-than by owning an account. The same trick works here — a stubbed
-`{"status":"totp-required"}` from `/api/admin/session` opens the code step with no
-credential at all, and the widget falls back to Cloudflare's always-passes test key
-when `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is unset. Nobody has written it; PAR-304 is where
-it belongs. Until then, the comment above the two forms is what stops them being folded
-back into one card component with swapped children.
+Whether this one moves 1Password is, again, a question about an extension and
+can only be answered by trying it. The half that _is_ checkable — that the two
+steps really are separate `<form>` elements, sharing no node — has a check now:
+`pnpm check:admin-login-step` (PAR-304) drives the step change in a browser
+against a stubbed `{"status":"totp-required"}` and fails if a future edit folds
+the two forms back into one with swapped children.
 
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have
