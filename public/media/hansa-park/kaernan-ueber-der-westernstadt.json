@@ -1,0 +1,34 @@
+{
+  "title": "Der Schwur des Kärnan über der Westernstadt",
+  "park": "hansa-park",
+  "ride": "the-oath-of-kaernan",
+  "tags": ["photo", "day", "sunny", "coaster", "theming", "outdoor", "summer"],
+  "alt": {
+    "de": "Ein hoher Steinturm mit Zinnen ragt hinter Bäumen auf, links daneben schwingt eine hellgrüne Achterbahnschiene in einem steilen Bogen nach oben. Davor die Holzdächer einer Westernstadt.",
+    "en": "A tall battlemented stone tower rises behind trees, a pale green coaster track sweeping up and over to its left, with the wooden roofs of a western town in front.",
+    "es": "Una alta torre de piedra almenada se alza detrás de los árboles y a su izquierda una vía verde claro traza una curva empinada; delante, los tejados de madera de un pueblo del oeste.",
+    "fr": "Une haute tour de pierre crénelée se dresse derrière les arbres, une voie vert clair s'élève en courbe raide à sa gauche, et devant s'alignent les toits en bois d'une ville western.",
+    "it": "Un'alta torre di pietra merlata si alza dietro gli alberi, a sinistra un binario verde chiaro sale in una curva ripida e davanti ci sono i tetti di legno di una città western.",
+    "nl": "Een hoge stenen toren met kantelen steekt boven de bomen uit, links ernaast zwaait een lichtgroene achtbaanrail in een steile boog omhoog, met daarvoor de houten daken van een westernstadje."
+  },
+  "caption": {
+    "de": "Der Kärnan über der Westernstadt, die 2018 noch Bonanza City hieß und heute New Lübeck heißt.",
+    "en": "Kärnan over the western town, called Bonanza City in 2018 and New Lübeck today.",
+    "es": "Kärnan sobre el pueblo del oeste, que en 2018 aún se llamaba Bonanza City y hoy es New Lübeck.",
+    "fr": "Le Kärnan au-dessus de la ville western, appelée Bonanza City en 2018 et New Lübeck aujourd'hui.",
+    "it": "Il Kärnan sopra la città western, che nel 2018 si chiamava ancora Bonanza City e oggi è New Lübeck.",
+    "nl": "De Kärnan boven het westernstadje, dat in 2018 nog Bonanza City heette en nu New Lübeck is."
+  },
+  "credit": {
+    "author": "Tobiasi0",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:DerSchwurDesK%C3%A4rnan.jpg",
+    "year": 2018
+  },
+  "shotAt": "2018-07-30",
+  "focus": {
+    "x": 0.6,
+    "y": 0.42
+  }
+}

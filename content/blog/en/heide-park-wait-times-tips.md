@@ -1,7 +1,7 @@
 ---
 title: 'Heide Park: Colossos turns 25, and next to it stand four German firsts'
 translationKey: heide-park-guide
-date: '2026-09-25'
+date: '2026-09-20'
 author: patrick
 mode: published
 featured: false

@@ -1,7 +1,7 @@
 ---
 title: 'Heide Park: Colossos compie 25 anni, e accanto ci sono quattro debutti tedeschi'
 translationKey: heide-park-guide
-date: '2026-09-25'
+date: '2026-09-20'
 author: patrick
 mode: published
 featured: false
