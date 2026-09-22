@@ -857,30 +857,40 @@ deliberately absent from the list, because each is the input to a generator and 
 one of them is not worth a glob that could skip an article's deploy.
 
 **The second skip is not about paths at all: a batch of merges.** Every squash merge of a batch
-but the last one carries `[skip deploy]` in its message, and the script skips those production
-builds before it looks at a single path. The batch is not lost, because the diff runs against
-the last successful deployment and a skipped build never becomes one, so the closing merge
-builds every file the batch touched — 4 PRs merged at once cost 1 build instead of 4. Previews
-are untouched: a preview belongs to its pull request, where the eventual squash message does not
-exist yet. Should the closing merge fail and leave a marked commit as the tip, the way out is
-Vercel's own: redeploy from the dashboard with **Use project's Ignore Build Step** unchecked
-([Vercel docs](https://vercel.com/docs/monorepos#ignoring-the-build-step)), because a plain
-redeploy runs this script like any other build. Any commit without the marker builds as well —
-only `HEAD` is read.
+but the last one carries `[skip deploy]` in its message. The batch is not lost, because the diff
+runs against the last successful deployment and a skipped build never becomes one, so the
+closing merge builds every file the batch touched — 4 PRs merged at once cost 1 build instead of 4. Previews are untouched: a preview belongs to its pull request, where the eventual squash
+message does not exist yet. Any commit without the marker builds as well — only `HEAD` is read.
+
+**The marker asks the question; the tip of `main` answers it.** A batch can end early — the
+closing merge conflicts, its checks turn red — and the marked commit is then the tip with
+nothing behind it. Skipping that one is the silent failure the allowlist is built to avoid, so
+the marker alone does not decide. The script polls `git ls-remote origin refs/heads/main` every
+15 s for up to 5 minutes (`IGNORE_BUILD_POLL_INTERVAL`, `IGNORE_BUILD_POLL_TIMEOUT`): a tip that
+has moved past this commit means the batch is still running and the newer build carries these
+files too, so this one skips; a tip that is still this commit after the timeout builds, and so
+does a failing `ls-remote`. The wait holds the container but burns no Active CPU, which is the
+trade that makes it worth making. It replaced an unconditional skip and the manual escape that
+went with it — redeploying from the dashboard with **Use project's Ignore Build Step** unchecked
+([Vercel docs](https://vercel.com/docs/monorepos#ignoring-the-build-step)) — because nobody is
+watching a merge batch at the moment it stalls.
 
 **The asymmetry is the whole design, so it is pinned rather than argued.** A needless build
 costs minutes of Build CPU. A skipped build that should have run is silent: the deploy reports
 success, Vercel keeps the previous deployment aliased, and a published article stays invisible
-until somebody happens to push again. `pnpm test:ignore-build` (33 cases, part of
+until somebody happens to push again. `pnpm test:ignore-build` (39 cases, part of
 `release:check`) drives the real script against a throwaway git repository and asserts the
 answer for every input a build step reads — a post in each of the six locales, an author, the
 categories, an agent `SKILL.md` whose served bytes carry a build-time SHA-256, homepage content,
 a photo, a sidecar, a translation file, the lockfile, `.nvmrc` — plus the two shapes a careless
 allowlist gets wrong: a commit touching documentation AND a post (08764e8 is a real one, six
 posts alongside `CLAUDE.md`), and `content/blog/README.md`, which an unanchored `README.md`
-pattern would swallow. The five cases for the marker run it against a commit the allowlist would
-have built, in production and in preview, and read the closing build's own file list to prove
-the skipped merges reached it. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,
+pattern would swallow. The marker gets a bare repository as `origin` and both answers the tip can
+give, against a commit the allowlist would have built: the tip already ahead, an unmarked commit
+in that same position, the tip still on the marked commit until the poll times out, and the tip
+moved by another process while the poll is running — that last one is the case the loop exists
+for, and a script that compared only on its first look passes every other one. The closing
+build's own file list is read to prove the skipped merges reached it. Verified separately that nothing in the build reads `docs/`, `CLAUDE.md`,
 `todo.md` or the root `README.md`; the only grep hit is `generate-media-manifest.mjs`
 explicitly EXCLUDING `README.md` when it collects posts.
 

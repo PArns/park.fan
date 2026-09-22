@@ -53,16 +53,17 @@ set -uo pipefail
 # the silent failure this script exists to avoid. So the marker only asks a
 # question and the tip of `origin/main` answers it:
 #
-#   tip is a newer commit  → the batch moved on and that build carries this
-#                            commit's files too → skip
+#   tip is a newer commit   → the batch moved on and that build carries this
+#                             commit's files too → skip
 #   tip is this commit      → poll until the timeout, then build
 #   ls-remote fails         → build
 #
 # Polling, not one look: the ignore step runs seconds after the push, and the
-# next merge of a batch is a minute or two behind it. The wait is the ignore
-# step's own runtime, which is not Build CPU; the build it avoids is ~5 minutes
-# of it. IGNORE_BUILD_POLL_INTERVAL and IGNORE_BUILD_POLL_TIMEOUT are seconds
-# and exist so `pnpm test:ignore-build` does not sit through five minutes.
+# next merge of a batch is a minute or two behind it. Waiting is not free — the
+# container is held and billed as Provisioned Memory — but it burns no Active
+# CPU, and at most 5 minutes of idle buys a ~5 minute build back.
+# IGNORE_BUILD_POLL_INTERVAL and IGNORE_BUILD_POLL_TIMEOUT are seconds and exist
+# so `pnpm test:ignore-build` does not sit through five minutes.
 #
 # `refs/heads/main` is written out rather than taken from VERCEL_GIT_COMMIT_REF,
 # because this block is about the production branch and about nothing else.

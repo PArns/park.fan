@@ -33,7 +33,7 @@
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { execFileSync } from 'child_process';
+import { execFileSync, spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -212,7 +212,10 @@ try {
     'PAR-1: the first of a batch [skip deploy]'
   );
   git('push', '-q', 'origin', 'main');
-  commitTouching(['components/home/teaser.tsx'], 'PAR-2: the next merge of the batch');
+  const nextMerge = commitTouching(
+    ['components/home/teaser.tsx'],
+    'PAR-2: the next merge of the batch'
+  );
   git('push', '-q', 'origin', 'main');
   git('reset', '-q', '--hard', marked.head);
 
@@ -262,6 +265,36 @@ try {
   if (waited >= 900)
     pass(`      — and it polled for ${waited} ms first, rather than falling through`);
   else fail(`the timeout case returned after ${waited} ms, so it never waited`);
+
+  // The case the loop exists for, and the only one that fails if it looks once
+  // and stops: the tip is still the marked commit when the script starts, and
+  // the next merge of the batch lands a second later. A version that compared
+  // only on its first look passes every case above this one.
+  //
+  // `origin/main` is moved by a child process while the script blocks here, and
+  // it is moved to a commit `origin` already has under another ref, so the
+  // object cannot have been pruned by the force-push above.
+  git('push', '-q', 'origin', `${nextMerge.head}:refs/heads/rest-of-batch`);
+  const mover = spawn(
+    'bash',
+    ['-c', `sleep 1 && git --git-dir="${originRepo}" update-ref refs/heads/main ${nextMerge.head}`],
+    { stdio: 'ignore' }
+  );
+  const pollStartedAt = Date.now();
+  const arriving = runScript(marked.base, {
+    VERCEL_ENV: 'production',
+    VERCEL_GIT_COMMIT_SHA: marked.head,
+    IGNORE_BUILD_POLL_INTERVAL: '0.3',
+    IGNORE_BUILD_POLL_TIMEOUT: '20',
+  });
+  const polled = Date.now() - pollStartedAt;
+  mover.kill();
+  if (arriving.status === SKIP && arriving.output.includes('has moved on to'))
+    pass('skip  — a marked commit that the next merge overtakes while the poll is running');
+  else
+    fail(`a tip that moves during the poll must skip: exit ${arriving.status}\n${arriving.output}`);
+  if (polled >= 900) pass(`      — and it took ${polled} ms, so the answer came from a later look`);
+  else fail(`the poll answered after ${polled} ms, before the tip could have moved`);
 
   // No `origin` to ask. Same rule as everywhere else in this script: a question
   // that cannot be answered is a reason to build, not to guess.
