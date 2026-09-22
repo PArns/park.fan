@@ -1,5 +1,5 @@
 ---
-title: 'Heide Park: Colossos compie 25 anni, e accanto ci sono quattro debutti tedeschi'
+title: 'Heide Park: Colossos tutto in legno, e intorno è un debutto tedesco dopo l’altro'
 translationKey: heide-park-guide
 date: '2026-09-20'
 updatedAt: '2026-09-22'
@@ -8,11 +8,11 @@ mode: published
 featured: false
 excerpt: >-
   A Soltau si trovano le montagne russe interamente in legno più alte d’Europa, e
-  per quasi tre anni nessuno ha potuto salirci. Nel 2026 Colossos compie 25
-  anni. Intorno, il parco ha portato quattro tipi di attrazione per la prima
-  volta in Germania, più una torre di 103 metri nata come punto panoramico.
-  Quando si riempie, cosa prevede la stagione 2026 e perché il Big Loop viaggia
-  su carrelli nuovi.
+  per quasi tre anni nessuno ha potuto salirci. Hanno aperto nel
+  2001. Intorno, il parco ha portato per primo in Germania quattro tipi di
+  attrazione, e la sua torre di 103 metri è nata come punto panoramico. Dentro:
+  quando si riempie, perché un lunedì tranquillo a Soltau di solito è un lunedì
+  chiuso e come mai il Big Loop, dopo più di quarant’anni, ha avuto carrelli nuovi.
 tags:
   - heide-park
   - colossos
@@ -32,11 +32,10 @@ parkLinks:
 rideLinks:
   - heide-park/*
 seo:
-  title: 'Heide Park: tempi di attesa, Colossos e consigli 2026'
+  title: 'Heide Park 2026: Colossos, attese e il giorno giusto'
   description: >-
-    Heide Park Soltau con dati reali di attesa su Colossos, Krake e Flug der
-    Dämonen, più la stagione 2026, le date di Halloween, l’Express Ticket, le
-    altezze minime e il giorno della settimana più vuoto.
+    Heide Park Soltau: attese reali a Colossos e Krake, più Halloween, Express
+    Ticket, altezze minime e il giorno della settimana con le code più corte.
   keywords:
     - Heide Park
     - Heide Park tempi di attesa
@@ -87,7 +86,8 @@ cinque inversioni.
 **[Desert Race](ref:heide-park/desert-race)** è arrivato il **15 maggio 2007**
 come primo launch coaster della Germania: niente salita di traino, ma una
 catapulta idraulica che porta il treno a **102 km/h** in due secondi. Poi sono
-650 metri e 49 secondi fino al ritorno in stazione.
+650 metri e 49 secondi fino al ritorno in stazione, meno di quanto sia durata
+la discussione su chi si siede davanti.
 
 ```glossary-widget slug=launch-coaster
 
@@ -98,7 +98,8 @@ dive coaster della Germania, costruito da Bolliger & Mabillard per 12 milioni
 di euro. 41 metri di altezza, sei persone affiancate per fila e, in cima, il
 treno si ferma finché l’intera vettura sporge oltre il bordo. Poi scende a
 87 gradi, quindi quasi in verticale, fino a **103 km/h** e a un Immelmann.
-L’intero giro dura meno di mezzo minuto.
+L’intero giro dura meno di mezzo minuto; l’attesa appesi sul bordo sembra
+molto più lunga.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** è stato, il
 **29 marzo 2014**, il primo wing coaster del paese. In questa tipologia nessuno
@@ -134,11 +135,12 @@ nel 2016 e, quando ha riaperto, si chiamava **Colossos – Kampf der Giganten** 
 aveva intorno a sé un’intera area tematica.
 
 A oggi non c’è sopra nessuna rotaia d’acciaio. Chi ama le montagne russe di
-legno lo sente dalla prima discesa.
+legno lo sente dalla prima discesa, e la sua schiena al più tardi alla prima
+curva.
 
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## Il resto del parco
+## Il resto del parco: signore attempate e una torre
 
 La prima montagna russa del parco è il
 **[Big Loop](ref:heide-park/big-loop)** del **1983**, un looper Vekoma con due
@@ -178,7 +180,8 @@ L’attrazione più giovane sta in un edificio che sarebbe dovuto sparire. La
 attraversa dal **2024** la vecchia stazione della seconda log flume, chiusa nel
 2011, per cinque minuti. Il tracciato di quell’attrazione acquatica passa sotto
 Flug der Dämonen, gli edifici sono rimasti in piedi e, dopo tredici anni, il
-parco ne ha rimesso uno in funzione.
+parco ne ha rimesso uno in funzione. (Chi non butta via niente dalla soffitta,
+prima o poi si ritrova un’attrazione nuova.)
 
 A questo si aggiungono le attrazioni che d’estate raccolgono le file più lunghe
 senza che nessuno ne scriva: la
@@ -228,7 +231,8 @@ Sulle montagne russe le celle in grassetto cadono tutte nella stessa finestra,
 poco prima e poco dopo mezzogiorno. La log flume tocca il massimo ore più
 tardi, quando si è scaldato. Il che si adatta a un parco i cui ospiti arrivano
 soprattutto in auto la mattina: tutti stanno nello stesso momento davanti alle
-stesse tre attrazioni, e nel pomeriggio si distribuiscono.
+stesse tre attrazioni, come all’Ikea il sabato mattina, e nel pomeriggio si
+distribuiscono.
 
 Per la pianificazione significa che la prima ora appartiene a Colossos e a
 Krake, perché è l’unico momento in cui entrambi sono corti insieme. Dopo
@@ -302,7 +306,8 @@ famiglie, con un bosco dei maghi e una caccia ai dolcetti per i bambini. Dalle
 minima di **16 anni** con controllo del documento, e ognuno richiede il proprio
 biglietto a fascia oraria, in vendita solo online e in anticipo (il pacchetto
 da tre era da ultimo a 22 €). Chi arriva troppo presto o troppo tardi
-all’ingresso resta fuori. Come si colloca il tutto rispetto a Toverland, Movie
+all’ingresso resta fuori, e l’ingresso del maze tratta più o meno come un
+buttafuori il sabato sera. Come si colloca il tutto rispetto a Toverland, Movie
 Park e Walibi sta nella
 [guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
 
@@ -325,7 +330,8 @@ La costruzione che descrive meglio il primo Heide Park non esiste più. Dal
 Statua della Libertà, inaugurata il 4 luglio 1986 per il centesimo compleanno
 dell’originale, con gli auguri di Ronald Reagan. Dopo lo smontaggio la metà
 superiore è rimasta piazzata come decorazione accanto a Colossos ancora per
-qualche anno, e il resto è finito in rottami per la riapertura del 2019.
+qualche anno, una seconda carriera che la Libertà non si era immaginata così, e
+il resto è finito in rottami per la riapertura del 2019.
 
 Il **31 dicembre 2001** il britannico **Tussauds Group** ha comprato il parco,
 e all’inizio del 2007 **Merlin Entertainments** ha rilevato la maggioranza di
@@ -335,7 +341,7 @@ anni novanta Soltau contava fino a due milioni di ospiti, nel 2001 erano
 fasi: l’origine da giostrai nella densità delle attrazioni, il gruppo nelle
 aree su licenza di Peppa Pig e Ghostbusters.
 
-## Dormire lì
+## Dormire lì, magari in un pulmino VW
 
 Chi arriva dalla Germania meridionale di solito ne fa due giorni.
 L’**Abenteuerhotel** ha 680 posti letto, quattro stelle ed è stato ricavato nel

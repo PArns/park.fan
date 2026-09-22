@@ -1,5 +1,5 @@
 ---
-title: 'Efteling: the Disney of the Netherlands, three years before Disneyland'
+title: 'Efteling: the Disney of the Netherlands, three years older than the original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
 updatedAt: '2026-09-22'
@@ -7,10 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Efteling gets called the Disney of the Netherlands, but it opened three years
-  before Disneyland. It belongs to no corporation, only to a foundation that
-  isn’t allowed to pay anyone out and that built a holiday village for
-  seriously ill children next door. And because a nature permit draws the line
+  Efteling gets called the Disney of the Netherlands, but it got there three years first. It belongs to a foundation rather than shareholders, has bins that say thank you, and runs a holiday village for seriously ill children next door. And because a nature permit draws the line
   at five million guests, the queues here are surprisingly short for 5.78
   million visits.
 tags:
@@ -33,11 +30,9 @@ coverImage:
   caption: 'Symbolica on a winter evening. That is the Pagode floating in at the top left.'
   credit: 'park.fan'
 seo:
-  title: 'Efteling: wait times, tips & best time to visit'
+  title: 'Efteling: wait times, tips and a very polite bin'
   description: >-
-    Efteling with real wait-time data we measured ourselves: best time to go,
-    tickets, Winter Efteling, and why only five million visitors a year are
-    allowed in.
+    Efteling wait times we measured ourselves: when it is quiet, what tickets cost, why only five million guests a year get in, and what an egg was doing at Python.
   keywords:
     - Efteling
     - Efteling wait times
@@ -71,8 +66,7 @@ when there was not a single roller coaster here.
 [Efteling](ref:efteling?long) in Kaatsheuvel gets called the Disney of the
 Netherlands, and I use the phrase myself. The order of it is wrong, though. The
 Fairytale Forest opened on **31 May 1952** with ten fairy tale scenes. Disneyland
-in Anaheim opened three years later, in July 1955. If anyone here should be named
-after anyone, it is the other way round.
+in Anaheim opened three years later, in July 1955. Strictly speaking, Disneyland ought to be called the Efteling of America.
 
 The comparison falls down in a second place too. Disney belongs to shareholders.
 Efteling belongs to nobody.
@@ -89,7 +83,7 @@ park, though. A fairytale forest that has had new scenes built into it since 195
 not one of which counts a single rider. A boat ride from 1986 that has served no
 purpose for forty years beyond being beautiful. Twelve bins with a voice.
 
-None of which makes it a small operation. In 2025 Efteling counted **5.78 million
+It is not a hobby run out of a garden shed, though. In 2025 Efteling counted **5.78 million
 visits** from 4.98 million guests, along with 347 million euros in operating
 revenue, 27.2 million in profit and around 3,000 staff across 72 hectares of park.
 That makes it the most visited theme park in the Netherlands and one of the three
@@ -102,27 +96,24 @@ And the 3,000 people who work there seem to like it. In 2023 the Dutch voted Eft
 **Randstad Employer Brand Research**. Kantar surveys more than ten thousand people
 about the 150 largest employers in the Netherlands every year, and what came up
 for Efteling was reputation, working atmosphere and financial health. ASML holds
-the title now, three years running, but in 2023 a theme park finished ahead of
-every corporation in the country. In an industry better known for seasonal
+the title now, three years running, but in 2023 a park with talking bins finished ahead of every corporation in the country. In an industry better known for seasonal
 contracts and minimum wage, that is not a headline you see often.
 
 It started with two men and a sports park. **Anton Pieck**, an illustrator, drew
 the fairy tales and, over the following decades, well over a thousand designs for
 attractions, squares and restaurants. **Peter Reijnders**, a photographer and
 film maker, built the machinery behind them: the movements, the sound, later
-Holle Bolle Gijs. Pieck’s rule for the forest was that nothing was allowed to look
-like a machine. You can still see it on every roof overhang.
+Holle Bolle Gijs. Pieck’s rule for the forest was that nothing was allowed to look like a machine, which is an ambitious brief for a park full of machines. You can still see it on every roof overhang.
 
 The ten fairy tales of 1952 have grown to more than thirty, the newest being the
 Princess and the Pea from 2025. For the **75th birthday in 2027**, according to
 the park, number 32 joins them.
 
-## The five realms
+## The five realms and what runs in them
 
 The park splits into five areas: Marerijk, Reizenrijk, Anderrijk, Ruigrijk,
 Fantasierijk. Roughly translated that is the realms of fairy tales, travel, the
-other, the rough and fantasy, and the rough realm really is where the wilder
-rides are. Plus the
+other, the rough and fantasy, and for once it says what it does on the tin: the rough realm is where the wilder rides are. Plus the
 Fairytale Forest, counted as an area of its own since November 2023.
 
 ![The Symbolica palace at night, lit blue, with a fountain in front | You can walk through the palace from the outside without queueing. The ride itself starts in the cellar below. | right](/media/efteling/symbolica-4x3.jpg)
@@ -143,8 +134,7 @@ presumably deliberate.
 **[Baron 1898](ref:efteling/baron-1898)** is the coaster enthusiasts come for: a
 dive coaster by **Bolliger & Mabillard**, open since 1 July 2015, with a 37.5
 metre drop, 87 degrees and 90 km/h. Three trains of 18 seats, six abreast in three
-rows, and up top those seconds where the train hangs over the edge and you are
-looking down instead of forward. The story around it is typical of this park and
+rows, and up top those seconds where the train hangs over the edge and you are looking down, because there is no other direction left. The story around it is typical of this park and
 entirely invented: Baron Gustave Hooghmoed finds gold in an old coal shaft, the
 Witte Wieven from Dutch folklore guard it, and at some point they cut the cable of
 the cage. Two pre-shows with animatronics tell you all that before you even sit
@@ -188,10 +178,9 @@ There is more of the Spookslot left physically, too, than the outside suggests.
 When the building was cleared out in September 2022, everything usable went into
 the archive. The **candelabra** from the queue in the octagonal tower are
 repaired, repainted and back one to one. The **satyrs** were detailed enough to
-reuse directly. The **gargoyles** were 3D-scanned and scaled up, and now carry the
-ceiling beams. The big **chandeliers** from the tunnel beside the old castle hang
+reuse directly. The **gargoyles** got a promotion: they were 3D-scanned and scaled up, and now carry the ceiling beams. The big **chandeliers** from the tunnel beside the old castle hang
 in the restaurant _In den Swarte Kat_ today, and the **old Spookslot entrance** has
-become the entrance to the souvenir shop _Dr. Charlatans Kwalycke Zaken_. The
+become the entrance to the souvenir shop _Dr. Charlatans Kwalycke Zaken_, which you can read as a comment on the industry if you like. The
 neon **violin**, the Spookslot’s lead character, does not return in its old form,
 but it does get a big moment in the new show.
 
@@ -223,14 +212,14 @@ lose, though, Joris does something Troy cannot.
 **[De Vliegende Hollander](ref:efteling/de-vliegende-hollander)** from 2007 is
 half dark ride, half water coaster. You go through a harbour town and the ghost
 ship first, then a stretch of track outside, then a drop into the water that
-reliably gets the front row.
+reliably gets the front row, thoroughly enough that their socks remember it until evening.
 
 ![Python’s loops at night, lit violet | Lit violet after dark, which hides its build year remarkably well. | right](/media/efteling/python-4x3.jpg)
 
 **[Python](ref:efteling/python)** is the old-timer by **Vekoma**, opened on
 12 April 1981: 750 metres, 29 metres tall, four inversions in the shape of two
 loops and two corkscrews. It was for a long time the coaster the Netherlands
-measured all coasters against, and for years it had a reputation for rattling.
+measured all coasters against, and for years it was also the one after which you counted your vertebrae one by one.
 So in early 2018 the park had the entire steel structure between the first drop
 and the final brakes replaced, for 4.5 million euros. The layout stayed the same;
 a few curves were widened and re-banked. The trains are the old ones.
@@ -248,10 +237,10 @@ have been two parallel family coasters by Mack since 2020, named after the two
 troublemakers, and **[Hooghmoed](ref:efteling/hooghmoed)** is this season’s new
 one: since **1 May 2026** there has been a 14.5 metre chimney next to Baron, with
 three small drop towers that rotate their way up to 9.5 metres and then fall six.
-From 90 centimetres, around 600 guests an hour.
+From 90 centimetres, around 600 guests an hour: Baron for everyone who still fails the height check over there.
 
 **[Villa Volta](ref:efteling/villa-volta)** in Marerijk was, in 1996, the **first modern
-madhouse in the world**: a room that turns around you while your bench stays put,
+madhouse in the world**: a room that turns around you while your bench stays put (your sense of balance will not believe a word of it),
 built by Vekoma, told as a curse on the highwayman Hugo van den Loonsche Duinen.
 The madhouses put up across half of Europe afterwards all go back to this model.
 
@@ -283,10 +272,9 @@ lake in front of Fata Morgana. 17 million euros, over 900 lamps, ten minutes, ro
 for 6,500 spectators. After the Dubai Fountain and the Bellagio in Las Vegas it is
 the third largest fountain show in the world.
 
-## The Fairytale Forest
+## The Fairytale Forest was here first
 
-Plenty of visitors treat the Fairytale Forest as the kids' bit and walk through it
-once, briskly. It is not the extra that came with the park, though. It was the
+Plenty of visitors treat the Fairytale Forest as the kids' bit and walk through it once, briskly, with the look of someone who would rather be at Baron. It is not the extra that came with the park, though. It was the
 park. Everything else grew around it later.
 
 On 31 May 1952 ten scenes stood between the trees: Sleeping Beauty, Snow White,
@@ -321,8 +309,7 @@ too. **Kogeloog**,
 the coffee and stroopwafel stand, sits directly opposite Langnek and is named
 that way because Kogeloog is one of the six servants from that very fairy tale.
 His bust hangs on the facade, along with oval frames holding all six. The stand
-has been there since 1967, closed in 2002 for lack of custom, and has been open
-again since 26 April 2019.
+has been there since 1967, closed in 2002 for lack of custom (failing to sell stroopwafels in the Netherlands takes some doing), and has been open again since 26 April 2019.
 
 This patch of woodland is also the best trick against queues the park has. There
 is no queue, no capacity limit and no ride time. Several thousand guests can be in
@@ -334,9 +321,9 @@ tales on one fixed loop has become too much for a single pass. Four equal entran
 and exits are being created, plus the **Dreven**: brown-paved main axes running
 north-south and east-west that cross at the Herautenplein, with red-paved side
 paths to the individual scenes. The yellow shortcuts are going. After that you can
-take the forest in two portions on two days without getting lost.
+take the forest in two portions on two days without getting lost. In a fairy tale, getting lost is usually half the plot.
 
-## How long you will queue here
+## How long you will queue here, and why so little
 
 "A park for the whole family" is in every brochure. Whether the whole family ever
 gets on anything is a question for the wait times.
@@ -356,8 +343,7 @@ Two things stand out.
 
 First, the steam railway keeps turning up in this list. A train from 1969 that
 does a lap of the park, in among the dark rides and coasters. That is down to capacity
-rather than popularity: two trains, a tight timetable, and in summer a lot of
-families who have stopped wanting to walk with tired children. The measurement
+rather than popularity: two trains, a tight timetable, and in summer a lot of families for whom, by mid-afternoon, a train with a bench is the most attractive attraction in the park. The measurement
 base is much thinner than the others (see the days column), because the stations do
 not report wait times all year. I would not lean on the exact ordering behind
 that, but the order of magnitude holds.
@@ -382,8 +368,7 @@ three times the capacity here.
 
 And one detail in that table I find particularly nice: **Voltron** at Europa-Park,
 opened in 2024, the most expensive new build in the park’s history, sits roughly
-level in the longest-queue column with **Joris en de Draak**, a 2010 wooden coaster that Efteling
-does not even market as a headliner.
+level in the longest-queue column with **Joris en de Draak**, a 2010 wooden coaster that Efteling does not even market as a headliner. I would not say that out loud in Rust.
 
 ## The five million ceiling
 
@@ -395,7 +380,7 @@ for its expansion in **2016**, the nitrogen load was calculated on the basis of
 **five million visitors a year**. That number has been a condition of the permit
 ever since. Not a target, not a recommendation, a ceiling.
 
-The park kept growing past it anyway. 2017 brought 5.18 million, 2018 came in at
+The park cheerfully kept growing past it anyway. 2017 brought 5.18 million, 2018 came in at
 5,351,572, and 2019 at around 5.26 million. Local residents called on the province
 of Noord-Brabant to enforce the limit. The province refused at first, citing the
 park’s economic importance. The court in Den Bosch found for the residents and gave
@@ -409,7 +394,7 @@ or holiday park counts once, however often they go through the turnstile that
 week. Which is exactly why the 2025 figures fit together: **5.78 million visits
 from 4.98 million guests**, and so just under the line.
 
-The residents took it further, to the **Raad van State**, the highest
+You can call that pragmatic or you can call it creative. The residents went with creative and took it further, to the **Raad van State**, the highest
 administrative court in the Netherlands. On **15 May 2024** they lost, but on
 grounds that leave the matter open: the court found they had no standing, because
 their homes are 1.5 to 1.8 kilometres from the protected area with the N261
@@ -473,7 +458,7 @@ back on stage there this year. The Dutch park scene is smaller than it looks.
 
 ## When to go
 
-Efteling is open 365 days a year, and that shifts the usual rules.
+Efteling is open 365 days a year. So you never need to check whether it is open, only how many other people had the same idea.
 
 **By month**, April is the most relaxed of the main season months in our data.
 May, June and July sit close together, August picks up noticeably, and the
@@ -496,7 +481,7 @@ there are worlds between a Tuesday and a Saturday; here the day barely matters.
 **Monday** is even the busiest day in our data, which sounds absurd until you lay
 the Dutch holiday weeks over it: anyone booking a week in a holiday park or the
 park hotel starts on a Monday. At around 20 days measured per weekday I would still
-not sell two-minute differences as a recommendation. The Monday effect is visible,
+not sell differences that small as a recommendation. The Monday effect is visible,
 the ordering in between is noise.
 
 The practical upshot: **at Efteling it is not the day that decides, it is the
@@ -549,19 +534,15 @@ in the ring, an arrow points at the correct side. The next day there were colour
 signs instead. And on **21 June** a large white egg on a wooden plinth appeared at
 the entrance, on which every member of the group places one hand, whereupon a
 colour lights up according to the number of hands and assigns you a queue. Three
-methods in three days, without a word of official communication. Looopings wrote
-that it now resembles an art project more than capacity optimisation, and they are
-not wrong.
+methods in three days, without a word of official communication. Looopings wrote that it now resembled an art project more than capacity optimisation. Not far off: two days later the park explained that the trials were part of a TU Delft student's graduation research. The research is finished, and Python is back to a perfectly ordinary queue.
 
-For you it still comes down to this: nothing to buy, and at Python you do what the
-egg says.
+For you it comes down to this: nothing to buy, and at Python you do whatever the park has come up with that day. If there is an egg again, put your hand on it.
 
-## The perfect day
+## The perfect day, more or less
 
 Which leaves timing, and at Efteling that works differently than in a compact park.
 
-Head into **Ruigrijk** at opening, to the far corner. The walk there is long, which
-is exactly why it is empty in the morning.
+Head into **Ruigrijk** at opening, to the far corner. The walk there is long, which is exactly why it is empty in the morning: most people get snagged by something pretty on the way.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) is our clearest rope-drop
 recommendation for this park; it builds its queue fastest. Right next to it stand
 [Baron 1898](ref:efteling/baron-1898),
@@ -592,7 +573,7 @@ park.
 
 ```
 
-## The small things
+## The small things hardly anyone queues for
 
 Between the big attractions there is stuff standing around here that will never
 pay for itself and that I keep coming back for anyway.
@@ -607,8 +588,7 @@ and look. Most people walk past.
 The **[Volk van Laaf](ref:efteling/volk-van-laaf)** has been an entire invented
 people by Ton van de Ven since 15 June 1990, with its own settlement, its own
 mythology and a backstory in which it dug its way through the earth to Kaatsheuvel.
-There is no source material, no fairy tale, no book. The park simply made
-them up.
+There is no source material, no fairy tale, no book. Other parks license film characters; Efteling made up an entire people.
 
 The **[Gondoletta](ref:efteling/gondoletta)** has been running since 13 April 1981,
 forty boats across 1,081 metres of water, and one lap takes **twenty minutes**.
@@ -642,8 +622,7 @@ blockout days anyway.
 hours from Düsseldorf and a good two from Cologne and the Ruhr, in both cases via
 the A67 and A2. If you are in the border region anyway, the visit combines well
 with [Toverland](ref:attractiepark-toverland), which is right on the way. By train it is more of
-a slog: to 's-Hertogenbosch or Tilburg, then a bus. Count on changes and plan the
-journey back before you set off.
+a slog: to 's-Hertogenbosch or Tilburg, then a bus. Count on changes and plan the journey back before you set off, not after Aquanura at the bus stop with half the park.
 
 **Sleeping.** Four options right at the park: the **Efteling Grand Hotel**, open
 since 1 August 2025 with 140 rooms and suites, two restaurants and a pool, the
@@ -658,7 +637,7 @@ with children for decades. And **In den Swarte Kat** in the Huyverwoud, the dark
 heavy counterpart, built together with
 [Danse Macabre](ref:efteling/danse-macabre). For in between there are poffertjes on
 every corner, and the advice is the same as everywhere: eat at half past eleven or
-after half past two, and you will not queue twice at peak time.
+after half past two, and you will not queue a second time at peak hour, this time for chips.
 
 ## Winter Efteling
 
@@ -686,7 +665,7 @@ around the ruined church of Danse Macabre simply does not look like that in July
 
 ## What comes next
 
-The park keeps building, at a rate otherwise only corporations manage.
+For a park that belongs to nobody, Efteling builds at a rate otherwise only corporations manage.
 
 On **4 January 2026** **Raveleijn** ran for the last time, the outdoor show with
 five riders, ravens and fire that had played several times a day in front of the
@@ -711,8 +690,7 @@ alongside it in a smaller form.
 
 **In 2029** comes **Missie Luminar**, for 50 million euros: the park’s first
 suspended launch coaster, 80 km/h, over two minutes of ride time, 18 people per
-train hanging under the track. The story starts in a research institute trying to
-break the light barrier. It is being built on the Eiland van de Vijf Zintuigen,
+train hanging under the track. The story starts in a research institute trying to break the light barrier, whatever that means in physics. It is being built on the Eiland van de Vijf Zintuigen,
 which is to say right behind the main entrance.
 
 What the park continues not to do is Halloween. "Wees gerust, de Efteling viert
@@ -755,8 +733,7 @@ No. Efteling sells no fast pass, no express pass and no single-ride priority. Fr
 of charge there are single rider lines at some attractions and baby switch. Guests
 staying overnight get into the park 30 minutes before everyone else, which is the
 only advantage you can buy. The park does keep testing virtual queues, most
-recently at [Droomvlucht](ref:efteling/droomvlucht) via the free app, and has been
-sorting by group size at [Python](ref:efteling/python) since May 2026.
+recently at [Droomvlucht](ref:efteling/droomvlucht) via the free app, and in June 2026 experimented with queues by group size at [Python](ref:efteling/python).
 
 ### Why does Efteling cap its visitor numbers?
 
@@ -836,7 +813,7 @@ person since 1959.
 - The end of the Raveleijn horse show and what follows in 2026: ["De Efteling stopt na vijftien jaar met omstreden show met paarden" (NOS)](https://nos.nl/artikel/2580130-de-efteling-stopt-na-vijftien-jaar-met-omstreden-show-met-paarden) · [Raveleijn on nl.wikipedia](<https://nl.wikipedia.org/wiki/Raveleijn_(attractie)>)
 - Missie Luminar 2029 and Sprookjesbibliotheek 2027: ["New attraction in 2029: Missie Luminar" (official)](https://www.efteling.com/en/blog/nieuws/new-attraction-in-2029-mission-luminar) · [Missie Luminar (blooloop)](https://blooloop.com/news/efteling-missie-luminar-launch-coaster) · ["Efteling deelt eerste informatie over 32e sprookje" (Pretwerk)](https://pretwerk.nl/geen-categorie/efteling-deelt-eerst-informatie-over-32e-sprookje-in-het-sprookjesbos/101709/)
 - Aquanura: [Aquanura (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/attraktionen/aquanura-s133)
-- Queue experiments: [Boarding Pass trial at Python from 15 September 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [virtual queue at Droomvlucht, summer 2024 (official)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [even and odd groups at Python from 18 May 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [the wheel from 19 June 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [the egg from 21 June 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html)
+- Queue experiments: [Boarding Pass trial at Python from 15 September 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [virtual queue at Droomvlucht, summer 2024 (official)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [even and odd groups at Python from 18 May 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [the wheel from 19 June 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [the egg from 21 June 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html) · [the explanation: a TU Delft graduation project, trial over (Looopings)](https://www.looopings.nl/weblog/33163/Mysterie-opgelost-Efteling-legt-uit-wat-experimenten-bij-de-Python-moesten-voorstellen.html)
 - Queues, single rider and early entry: [Queues at Efteling (official)](https://www.efteling.com/en/park/information/queues) · [Into the park early (official)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
 - No Halloween: ["Geen Halloween in de Efteling" (official)](https://www.efteling.com/nl/park/events/halloween) · [our Halloween guide](/blog/halloween-theme-parks-2026)
 - Prices, parking and annual passes 2026: [Ticket overview (official)](https://www.efteling.com/en/park/information/ticket-overview) · [Prices & opening hours (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Annual pass comparison (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)

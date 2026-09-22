@@ -7,11 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Aus dem Verlust hat der Park eine Angewohnheit gemacht: Er baut
-  Fahrgeschäfte über sich selbst. Zum 30. Geburtstag ein Guide mit gemessenen
-  Wartezeiten, dem Wochentag, bei dem die üblichen Ratgeber danebenliegen, dem
-  Fahrplan ab September und dem Halloween Horror Festival ab dem 26.
-  September.
+  Batman weg, Bugs Bunny weg, und seitdem baut der Park Fahrgeschäfte über sich
+  selbst. Zum 30. Geburtstag: gemessene Wartezeiten, der Wochentag, bei dem fast
+  jeder Ratgeber danebenliegt, der Fahrplan ab September und das Halloween Horror
+  Festival ab dem 26. September.
 tags:
   - movie-park
   - wartezeiten
@@ -32,11 +31,10 @@ coverImage:
   caption: 'Sechs Wochen im Jahr heißt der Park Horrorwood Studios. Der Schriftzug am Eingang wird dafür umgebaut, nicht ausgetauscht.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park Wartezeiten, beste Tage & Halloween 2026'
+  title: 'Movie Park Wartezeiten & Halloween 2026, ohne Batman'
   description: >-
-    Movie Park Germany mit echten Wartezeit-Daten: der ruhigste Wochentag, der
-    Do-bis-So-Fahrplan ab September, das Halloween Horror Festival ab 26.
-    September, Preise 2026 und die Anreise.
+    Movie Park mit gemessenen Wartezeiten: der Wochentag, bei dem Ratgeber irren,
+    der Herbst-Fahrplan, Halloween ab 26.9. und wie du den Kassenaufschlag sparst.
   keywords:
     - Movie Park Germany
     - Movie Park Wartezeiten
@@ -65,7 +63,8 @@ Von den Marken, für die dieser Aufwand betrieben wurde, ist heute keine einzige
 mehr da. Bugs Bunny weg, Batman weg, die Gremlins weg, Police Academy weg. Der
 Park heißt seit 2005 anders, gehört seit 2010 einem spanischen Konzern und
 feiert seinen dreißigsten Geburtstag ausgerechnet mit einer Attraktion von
-Paramount.
+Paramount. Das ist ungefähr so, als stünde auf der Torte zur Perlenhochzeit der
+Name des Nachbarn.
 
 Dazu kommt eine Zahl, die zum Ruf dieses Parks überhaupt nicht passt. Über
 alle Öffnungstage, die wir bisher gemessen haben, steht man im
@@ -74,7 +73,7 @@ alle Öffnungstage, die wir bisher gemessen haben, steht man im
 
 Und der leerste Wochentag ist der, den dir kein Ratgeber im Netz nennt.
 
-## Ein Park, der jede Marke verloren hat, mit der er gebaut wurde
+## Bugs Bunny, Batman, Gremlins: alle ausgezogen
 
 Angefangen hat das Gelände als **Kirchhellener Märchenwald**, den die Familie
 Allekötter 1967 aufmachte. Daraus wurde der Traumlandpark, und Anfang der
@@ -90,11 +89,12 @@ Es blieb acht Jahre. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
 Amerikaner ihr europäisches Geschäft an den Finanzinvestor **Palamon Capital
 Partners**, und mit dem Verkauf endeten die Lizenzverträge. Im Winter 2004/05
 musste der Park praktisch alles umbenennen, was einen Namen aus einem Warner-Film
-trug. Im März 2005 machte er als **Movie Park Germany** wieder auf. Fünf Jahre
+trug, ein Umzug, bei dem die Möbel bleiben und nur die Klingelschilder neu
+kommen. Im März 2005 machte er als **Movie Park Germany** wieder auf. Fünf Jahre
 später, am 17. Mai 2010, übernahm der spanische Betreiber **Parques Reunidos**.
 
-Fünf der bekanntesten Fahrgeschäfte haben deshalb ihren Namen gewechselt, weil
-im Hintergrund ein Vertrag auslief:
+Fünf der bekanntesten Fahrgeschäfte leben deshalb unter neuem Namen weiter, wie
+Kronzeugen im Schutzprogramm:
 
 | Eröffnet als              | Jahr | Heißt heute                                     |
 | ------------------------- | ---- | ----------------------------------------------- |
@@ -117,8 +117,8 @@ zwar etwas anderes.
 
 Diese Vorgeschichte erklärt den Ruf, den der Movie Park in der Coaster-Szene bis
 heute hat. Wer ihn zwischen 2012 und 2016 besucht hat, sah einen Park, in dem
-sich wenig bewegte und dessen Werbeversprechen aus Filmen bestand, die er nicht
-mehr zeigen durfte.
+sich wenig bewegte, ungefähr wie ein Kino, das im Foyer noch die Plakate von
+Filmen hängen hat, die es nicht mehr zeigen darf.
 
 ## Die Filmgeschichte, die er stattdessen erzählt
 
@@ -167,8 +167,9 @@ dafür wurde im November 2025 auf dem echten Studiogelände gedreht.
 Gebaut ist das im Gebäude von **The Lost Temple** (2014), und darunter liegt
 noch eine Schicht: Dort stand ab 1996 **Movie Magic**, die Attraktion, mit der
 Warner den Besuchern erklärte, wie Film gemacht wird. Dreißig Jahre später
-erklärt Paramount an derselben Stelle dasselbe. Mindestgröße 100 Zentimeter, am
-Ausgang ein Paramount-Showroom.
+erklärt Paramount an derselben Stelle dasselbe. Mindestgröße 100 Zentimeter.
+Die Gage für die Statistenrolle: Der Ausgang führt durch einen
+Paramount-Showroom.
 
 ## Die anderen sieben Achterbahnen
 
@@ -189,12 +190,14 @@ Personen.
 
 Der Ablauf ist ungewöhnlich, weil du dreimal beschleunigt wirst, bevor die Bahn
 überhaupt anfängt. Der Zug wird auf der Startstrecke vor und zurück geworfen,
-erst beim dritten Anlauf reicht das Tempo für den Top Hat, und danach kommen
+erst beim dritten Anlauf reicht das Tempo für den Top Hat, wie beim Kombi, der
+im Schnee die Einfahrt zur Tiefgarage hochwill. Danach kommen
 Immelmann, Heartline Roll und Korkenzieher. Der Soundtrack stammt von IMAscore,
 davor läuft eine Preshow mit Projektionen.
 
-Außerdem ist es die Bahn, bei der sich Rennen am Morgen am meisten auszahlt: Ihre Schlange ist in der zweiten Stunde am längsten und danach nie
-wieder so lang.
+Außerdem ist es die Bahn, bei der sich Rennen am Morgen am meisten auszahlt:
+Ihre Schlange ist in der zweiten Stunde am längsten und danach nie wieder so
+lang.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -225,15 +228,15 @@ Zimmerleute, darunter zwei Wandergesellen auf der Walz, im Winter 2015/16 rund
 
 Sie rappelt. Nach 27 Jahren ist sie laut und ruppig, hinten im Zug etwas
 erträglicher als vorne, und bei mir reicht es spätestens ab der zweiten Fahrt
-für Kopfschmerzen. Einmal gehört trotzdem dazu, dafür ist sie zu wichtig für die
-deutsche Achterbahngeschichte. Wer Colossos im [Heide-Park](ref:heide-park) als
+für Kopfschmerzen. Einmal gehört trotzdem dazu, wie der Pflichtbesuch bei der Großtante: Sie ist
+zu wichtig für die deutsche Achterbahngeschichte, um sie auszulassen. Wer Colossos im [Heide-Park](ref:heide-park) als
 Maßstab nimmt, sollte es bei dem einen Mal belassen.
 
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** ist das
 Fahrgeschäft, an dem in diesem Park am längsten angestanden wird, und die
-Eckdaten lesen sich nicht danach. Eröffnet am **18. Juni 2011**, ein
+Eckdaten lesen sich wie die einer Bahn für den Kindergeburtstag. Eröffnet am **18. Juni 2011**, ein
 Bobsled-Coaster von **Gerstlauer** in der ehemaligen Gremlins-Halle, 3.000
 Quadratmeter, acht Meter hoch, 400 Meter lang, **36 km/h**. Fünf Millionen Euro
 hat Parques Reunidos dafür freigegeben, einen Monat nach der Übernahme.
@@ -250,8 +253,8 @@ Reibrädern an, sodass der Wagen im Steigen schneller wird.
 
 Die Erklärung steht trotzdem im Datenblatt, nur eine Zeile tiefer: **848
 Personen pro Stunde**. Für einen Park, der an starken Tagen Zehntausende
-hereinlässt, ist das zu wenig, und man sieht es in unseren Zahlen den ganzen Tag
-über.
+hereinlässt, ist das eine einzige offene Kasse am Ikea-Samstag, und man sieht es
+in unseren Zahlen den ganzen Tag über.
 
 ```glossary-widget slug=ride-capacity
 
@@ -263,7 +266,7 @@ hereinlässt, ist das zu wenig, und man sieht es in unseren Zahlen den ganzen Ta
 Looping Coaster**, den es in leichten Abwandlungen weltweit dutzendfach gibt.
 Eröffnet am 6. April 2001 als **Eraser**, 689 Meter, 80 km/h, zwei Überschläge,
 zwei Züge zu zwanzig Personen. Die Beine hängen frei, der Kopf steckt zwischen
-zwei harten Schulterbügeln.
+zwei harten Schulterbügeln wie eine Walnuss im Nussknacker.
 
 ```glossary-widget slug=suspended-coaster
 
@@ -297,7 +300,7 @@ ist ein Speed Rapid River von Intamin aus dem Eröffnungsjahr, der schon drei
 Leben hatte: 1996 als Die Unendliche Geschichte, ab 2005 als Mystery River, seit
 dem 7. Mai 2018 als Artussage mit dunklen Gestalten, verwunschenem Wald und
 einem Seeungeheuer am Ende. Von den drei Fassungen ist die aktuelle die beste,
-und sie macht nass.
+und sie macht nass, gern bis in die Socken.
 
 ```glossary-widget slug=river-rapids
 
@@ -325,8 +328,8 @@ genau deswegen sehenswert.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 schließlich ist die Wildwasserbahn im **Nickland**, gebaut für Grundschulkinder,
-und trotzdem eine der längsten Schlangen des Parks, weil sie an heißen
-Nachmittagen der halbe Park gleichzeitig ansteuert.
+und trotzdem eine der längsten Schlangen des Parks, weil an heißen Nachmittagen
+der halbe Park gleichzeitig sein inneres Kind entdeckt.
 
 Die Bühnen gehören hier seit dem ersten Tag dazu: Ein
 Studio-Park ohne Stunt-Show war 1996 undenkbar, also lief zur Eröffnung die
@@ -357,8 +360,8 @@ mehrere Bahnen gleichauf, darunter die Wildwasserbahn aus dem Kinderbereich. Sta
 Bahn im Park, liegt im Mittelfeld.
 
 Das hat wenig mit Beliebtheit zu tun und viel mit Durchsatz. Van Helsing schafft
-848 Personen pro Stunde, und weil die Fahrt drinnen liegt, ist sie außerdem das,
-was der halbe Park bei Regen ansteuert. Wie aus Kapazität und Nachfrage eine
+848 Personen pro Stunde, und weil die Fahrt drinnen liegt, ist sie außerdem das
+Vordach, unter das sich bei Regen alle gleichzeitig stellen wollen. Wie aus Kapazität und Nachfrage eine
 Wartezeit wird, steht ausführlich in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
@@ -375,7 +378,8 @@ genau andersherum**. Dora, Excalibur und Area 51 haben ihre volle Stunde am
 späten Nachmittag, weil bei dreißig Grad irgendwann alle nass werden wollen.
 
 Und dann ist da Van Helsing. Diese Zeile springt in der zweiten Stunde hoch und
-bleibt danach bis zum Schluss auf demselben Wert stehen. Wer nicht in den ersten
+bleibt danach bis zum Schluss auf demselben Wert stehen, wie eine
+Autobahnbaustelle, die nicht schlimmer wird, aber auch nie aufhört. Wer nicht in den ersten
 sechzig Minuten dort war, findet den ganzen Tag keinen besseren Moment mehr.
 
 Im Vergleich mit der Nachbarschaft:
@@ -470,7 +474,8 @@ Die ruhigsten der kommenden Öffnungstage laut unserem Kalender:
 
 April bis Juni tragen jeweils rund zwanzig bis fünfundzwanzig Messtage, Juli und
 August noch ein paar mehr. Diese fünf Monate sind belastbar, und sie sagen das,
-was jeder vermutet: In den Sommerferien wird es voll.
+was jeder vermutet, der schon einmal im August auf dem Parkplatz einen Platz
+gesucht hat: In den Sommerferien wird es voll.
 
 Bei Januar, März und Dezember stehen dagegen nur drei bis vier Messtage hinter
 dem Wert. Die Größenordnung stimmt, auf die Minute würde ich mich da nicht
@@ -494,7 +499,8 @@ das Genre nicht mögen: **Jason Universe** holt Jason Voorhees nach Bottrop und
 arbeitet sich durch die Teile zwei bis sechs der Reihe. Die anderen acht kommen
 aus den Vorjahren, zwei davon überarbeitet. Das **Ahoj-Brause Horror Lab** hat
 zusätzliche Schreckmomente und eine neue Storyline um Geschmackstest und
-Testlabor bekommen, das True-Crime-Haus **Murder Museum** eine Pathologieszene.
+Testlabor bekommen (ein Satz, den über Brausepulver auch erst einmal jemand
+schreiben muss), das True-Crime-Haus **Murder Museum** eine Pathologieszene.
 Dazu kommt **PHOBIA – The Live Horror Game Show** im Studio 7, eine Bühnenshow,
 bei der das Publikum mitspielt statt zuzusehen.
 
@@ -612,7 +618,7 @@ Beim Pass selbst stehen drei Dinge im Kleingedruckten:
 
 - **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, dazu alle
   Feiertage, die Samstage in den NRW-Ferien, die Oktober-Samstage und Halloween
-  selbst. Also ausgerechnet die Tage, an denen die meisten hinwollen.
+  selbst. Also ausgerechnet die Tage, an denen du hinwillst.
 - **Parken ist erst ab Gold enthalten.** Bei Bronze und Silber kostet die
   Saisonkarte fürs Parken 25 € extra, sonst zahlst du die 9 € bei jedem Besuch.
 - **Es gibt ein Tageskontingent.** Jeder Besuch muss vorher angemeldet werden,
@@ -637,7 +643,7 @@ die Preise sind der am häufigsten genannte Kritikpunkt in Besucherbewertungen.
 Für 2026 hat der Park Verbesserungen angekündigt. Gemerkt habe ich davon bisher
 nichts, und ich esse hier so schnell wie möglich.
 
-Ob in Bottrop gerade Regen fällt, entscheidet über den halben Park:
+Ob es in Bottrop gerade regnet, entscheidet, wo sich die Schlangen stapeln:
 
 ```weather-widget slug=movie-park-germany
 

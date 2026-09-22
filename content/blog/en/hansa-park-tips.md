@@ -1,5 +1,5 @@
 ---
-title: 'Hansa-Park: Kärnan does 127 km/h, and the season has no closing day'
+title: "Hansa-Park: half of Germany's fastest coaster lives on the Baltic"
 translationKey: hansa-park-guide
 date: '2026-09-22'
 updatedAt: '2026-09-22'
@@ -7,10 +7,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Sierksdorf has the tallest and fastest coaster in Germany, tied with Silver
-  Star, plus the tallest gyro drop tower in the world. Add a calendar without a
-  single closed day, 16 evenings of illuminated figures in October, and eight
-  coasters, four of them built for children.
+  In Sierksdorf, Kärnan shares the title of Germany's tallest and fastest
+  coaster with Silver Star, and next door stands the tallest gyro drop tower in
+  the world. Add a calendar without a single closed day, 16 October evenings
+  of illuminated figures instead of horror mazes, and eight coasters, half of
+  them built for children.
 tags:
   - hansa-park
   - kaernan
@@ -30,11 +31,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: Tips, Opening Hours, Prices, Kärnan'
+  title: 'Hansa-Park 2026: Tips, Prices and Kärnan by the Sea'
   description: >-
-    Hansa-Park Sierksdorf: 2026 season opening hours, Herbstzauber from 10 to
-    25 October, ticket and parking prices, all eight coasters with their
-    figures, and the calendar without a closing day.
+    Hansa-Park Sierksdorf 2026: not one closed day, Herbstzauber in October,
+    ticket prices, parking (the electric car pays more) and all eight
+    coasters.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -82,7 +83,7 @@ and hangs up 2,000 illuminated figures in October where other parks build mazes.
 
 [Hansa-Park](ref:hansa-park?full)
 
-## The coasters
+## The coasters, from the tower to the little tsar
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** opened in 2015 and was the biggest investment the park had made. Gerstlauer
 built it as an Infinity Coaster: **1,235 metres** of track, minimum height 1.30 metres. The lift hill
@@ -107,7 +108,8 @@ added a t and turned the curse into an escape.
 
 Anton Schwarzkopf built **[Nessie](ref:hansa-park/nessie)** in **1980**: 26 metres tall, 741 metres long, 85 km/h, one
 vertical loop, and at the time the largest looping coaster in Europe. It has been running for 46
-years, and since 2019 it has done so in a rethemed area.
+years and got a rethemed area in 2019, the way other people that age get a new
+kitchen.
 
 Four more are built for children. **[Crazy Mine](ref:hansa-park/crazy-mine)** by Maurer Rides has run
 as a wild mouse in mine-shaft dressing since 1997, 13 metres tall and over in 70 seconds. The
@@ -119,8 +121,8 @@ Zar](ref:hansa-park/the-little-tsar)** since 2017 at 95 centimetres, all three m
 The newest arrived this season. The **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opened on **23 May 2026**, Gerstlauer again, 18
 metres tall, roughly 570 metres long, from 90 centimetres. The park counts **seven launches** on one
-circuit, forwards and backwards. Seven accelerations over 570 metres is a lot for a family coaster,
-and you notice them in the ride time: 1:45 minutes, longer than [Crazy Mine](ref:hansa-park/crazy-mine?bare) and [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) at 1:10 each.
+circuit, forwards and backwards. That is more pulling away than a bank-holiday Friday on the
+M25, and a lot for a family coaster; you notice it in the ride time: 1:45 minutes, longer than [Crazy Mine](ref:hansa-park/crazy-mine?bare) and [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) at 1:10 each.
 
 ## The tower that took the record off Soltau
 
@@ -149,7 +151,8 @@ calendar in spring and autumn, and Movie Park closes on several weekdays outside
 if you look for a quiet weekday in Sierksdorf, you get it as an opening day rather than a locked
 gate.
 
-The hours are nearly as uniform. Until **9 October** the park opens daily at **10:00** and the rides
+The hours are nearly as monotonous, in the best sense: planning a day here needs no calendar with
+footnotes. Until **9 October** the park opens daily at **10:00** and the rides
 close at **18:00**. Exactly three days depart from that. On Good Friday, 3 April, the attractions do not
 start until 11:00. On 11 August the grounds stay open until 19:00 and on 12 August until 18:30, but
 the rides still stop at 18:00 on both evenings. Only the last 16 days of the season run differently,
@@ -176,7 +179,8 @@ more of a lunch-break ride, becomes in October the one I would queue for first.
 
 Three times rearrange an evening like that. The
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) and
-[Super Splash](ref:hansa-park/super-splash) close as early as **16:00**. [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) and [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) and [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) take their **last ride at 19:30**, because the fireworks
+[Super Splash](ref:hansa-park/super-splash) close as early as **16:00**, which on an October
+evening mostly pleases your socks. [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) and [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) and [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) take their **last ride at 19:30**, because the fireworks
 need setting up. And during the light parade eleven further rides stand still, among them [Highlander](ref:hansa-park/highlander?bare),
 [Nessie](ref:hansa-park/nessie?bare) and the [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
@@ -217,7 +221,8 @@ Rudolf Erich Leicht bought it in the autumn of 1976 together with two investors.
 their stake at about 10 million marks in 1977. With Horst Hamelberg as first managing director,
 Leicht drew up a concept around the theme of the maritime Hanseatic League, and it came with a change
 that looks obvious today: at Legoland every ride cost separately, at Hansaland an all-inclusive
-ticket was phased in.
+ticket was phased in. If the gate price makes you wince today, picture reaching for your wallet
+again before every turn on the carousel.
 
 Plenty of Legoland attractions simply stayed where they were and got a new look. The
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), the one that turns into a channel of
@@ -241,14 +246,15 @@ Landungsbrücken since 2008 and is going up façade by façade, in eight documen
 Holstentor as an entrance in 2008; Bruges, Visby, Lübeck, Hamburg and Rostock in 2010; Groningen and
 Paris in 2011; London, Ribe and Bergen in 2012; six more from Copenhagen to Nuremberg in 2013; Gdańsk
 and Kraków in 2018; and in 2021 the largest phase so far, 14 façades from Kraków, Stockholm,
-Stralsund, Helsinki, Riga and Venice. Twenty years was the estimate. The last phase, the Palacio de
+Stralsund, Helsinki, Riga and Venice. Twenty years was the estimate, a schedule you would normally expect from motorway roadworks. The
+last phase, the Palacio de
 Braga, is not finished.
 
 The years since 2021 read accordingly small-scale: Awildas Welt, the Peterhof von Novgorod in place
 of the old logging camp, New Lübeck in place of the western town Bonanza City, the Carrousel
 Baltique, the Lost Trails of Roanoke, Einars Fjordfahrt. None of those is a coaster. That came in 2026.
 
-## Where to stay
+## Where to stay: three nights or none
 
 The **HANSA-PARK Resort am Meer** sits at the edge of Sierksdorf, with the railway line running
 between the holiday park and the theme park. Booking goes through Landal or Ostseezeit, the minimum
@@ -267,7 +273,7 @@ the beach at the station and you avoid the steps.
 
 **Parking.** **€7** per day for a car in the main car park, maximum entry height 2.30 metres.
 Motorbikes park free, motorhomes pay €15 per twelve hours started. The odd one out is the EV car
-park: an electric car costs **€16 per day**, more than double the combustion price. Season pass
+park: an electric car costs **€16 per day**, more than double the combustion price, a tariff you have to read twice. Season pass
 holders over 18 pay €2 in the main car park. The drop-off zone is free for 30 minutes.
 
 **Tickets 2026.** **€53** from age 12, **€43** for children aged 4 to 11, free under 4, €43 from age 70. Come on your birthday up to and including your twelfth and you get in free, but only at the gate.

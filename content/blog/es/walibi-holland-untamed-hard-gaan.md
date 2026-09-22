@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: «hard gaan», Untamed y un pólder que en 1957 aún era mar'
+title: 'Walibi Holland: «hard gaan», Untamed y un campo donde en 1957 aún nadaban peces'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-09-22'
@@ -7,12 +7,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland se levanta sobre tierra que en 1957 seguía bajo el agua, lleva
-  doce años anunciándose con una palabra de la escena hardstyle y tiene en
-  Untamed una de las mejores montañas rusas de Europa, para la que un día normal
-  apenas haces cola. Sobre un parque que los visitantes malinterpretan una y
-  otra vez, sobre las experiences de Halloween por las que se paga
-  voluntariamente y sobre el evento navideño que el parque acaba de cancelar.
+  Walibi Holland se levanta sobre un campo que en 1957 aún era mar, se anuncia
+  con un eslogan que llegó a imprimir en preservativos y tiene en Untamed una
+  de las mejores montañas rusas de Europa, para la que un día normal apenas
+  haces cola. Súmale unas experiences de Halloween en las que la gente paga
+  aparte para que la aten a un raíl del techo, y un evento navideño que el
+  parque acaba de cancelar.
 tags:
   - walibi-holland
   - untamed
@@ -33,10 +33,11 @@ coverImage:
   caption: 'La entrada de Untamed. La madera de debajo procede en su mayor parte de Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: 'Walibi Holland: Untamed, tiempos de espera y Halloween'
+  title: 'Walibi Holland: Untamed, esperas y terror en el pólder'
   description: >-
-    Entender Walibi Holland: el concepto «hard gaan», Untamed y YOY con datos
-    reales de espera, las Halloween Fright Nights, precios y cómo llegar.
+    Montañas rusas en un antiguo fondo marino: Untamed y YOY con datos
+    reales de espera, las Halloween Fright Nights que se pagan con gusto,
+    precios y cómo llegar.
   keywords:
     - Walibi Holland
     - Walibi Holland tiempos de espera
@@ -65,22 +66,22 @@ Después el tren se vuelca por un canto más inclinado que la vertical.
 Por una montaña rusa conduzco lejos con gusto, pero Walibi Holland es una
 buena paliza incluso para mí: dos horas y media largas desde Colonia, y en la
 segunda mitad ya no pasas junto a nada salvo aerogeneradores y campos de colza.
-Por eso el parque pasa desapercibido. El [Efteling](ref:efteling) y
+No es raro que el parque pase tan a menudo desapercibido. El [Efteling](ref:efteling) y
 [Toverland](ref:attractiepark-toverland) quedan más cerca,
 [Phantasialand](ref:phantasialand) está a la puerta, y quien planea un día en
-los Países Bajos rara vez hace la hora extra hasta Flevoland.
+los Países Bajos rara vez se apunta por gusto a una hora más de pólder.
 
 Es un error. Untamed por sí solo ya bastaría, pero la mejor razón es una
 idea que en la primera visita parece completamente absurda y que en la tercera
 lo explica todo. Está pegada en dos palabras por media Biddinghuizen: **hard gaan**.
 
-## Un parque sobre un antiguo fondo marino
+## Primero mar, luego vacas, luego montañas rusas
 
 Aquí todo empezó con vacas.
 
 El **21 de mayo de 1971**, la princesa Beatriz inauguró sobre la tierra recién
 ganada al mar la **Flevohof**, un parque agrícola de 150 hectáreas. La idea:
-que los niños de ciudad vieran de dónde viene la leche. Había establos,
+que los niños de ciudad vieran que la leche no crece en los bricks. Había establos,
 invernaderos, una quesería, algunos juegos. Durante dos décadas fue una
 excursión para colegios y familias, luego dejaron de salir las cuentas, y a
 principios de los noventa el negocio quebró. La Flevohof abrió por última vez en 1992.
@@ -116,8 +117,9 @@ Las cifras de visitantes llevan años rozando el millón por debajo: 936.000 en 
 ejercicio 2023, 919.000 en 2024 y últimamente **972.000** en el ejercicio de
 octubre de 2024 a septiembre de 2025, casi un seis por ciento más. El director
 de marketing Marc Guffens lo llamó «el mejor año de la historia, si no cuentas
-las cifras de la época de Six Flags», porque entonces quedaba mucho menos por
-visitante. Para comparar: el Efteling mueve alrededor del quíntuple.
+las cifras de la época de Six Flags» (un récord con asterisco), porque entonces quedaba mucho menos por
+visitante. Para comparar: el Efteling mueve alrededor del quíntuple, y eso es una
+buena noticia para cualquiera que haga cola en Biddinghuizen.
 
 ## «Hard gaan»: el concepto
 
@@ -138,7 +140,8 @@ En **2017** el departamento de marketing tiró del freno de emergencia y cambió
 el eslogan por **«Dare to get Real»**. Aguantó exactamente una temporada. En un
 documento interno del otoño de 2017 se leía que el resultado había «quedado por
 debajo de las expectativas», que el mensaje era «demasiado complicado y
-demasiado profundo» y que se había «apuntado probablemente a un público
+demasiado profundo» (no cualquier eslogan de parque de atracciones se gana
+un reproche así) y que se había «apuntado probablemente a un público
 demasiado reducido». En **2018** `#Hardgaan` estaba de vuelta, y desde entonces es el sello de la
 casa.
 
@@ -167,9 +170,8 @@ bien, solo que aquí todo apunta a otra cosa: quiere que grites. Seis montañas 
 edificio donde refugiarse de la lluvia, y en cambio música en cada camino y un
 volumen que nadie ha ajustado por descuido.
 
-Quien viene buscando un segundo Efteling vuelve a casa decepcionado. Quien
-espera un parque de montañas rusas con un festival al otro lado de la valla
-recibe exactamente eso, a todo volumen.
+Quien viene buscando un segundo Efteling no encontrará ningún bosque de cuentos,
+pero sí un bajo que lo persigue hasta la cola de las patatas fritas.
 
 ### Cuando el concepto va demasiado lejos
 
@@ -209,8 +211,8 @@ https://www.youtube.com/watch?v=fFPGRQAs-Xk
 ## Untamed
 
 En el lugar donde hoy está Untamed estuvo de 2000 a 2018 **Robin Hood**, una
-montaña rusa de madera de Vekoma con una reputación dudosa: ruidosa y cada vez
-más incómoda con los años. Circuló por última vez el **28 de octubre de 2018**.
+montaña rusa de madera de Vekoma con una reputación dudosa: ruidosa, y cada año
+un poco más cerca de una hernia discal. Circuló por última vez el **28 de octubre de 2018**.
 Después llegó **Rocky Mountain Construction**, de Idaho, arrancó los raíles de
 madera, dejó en pie buena parte de la estructura y colocó encima un raíl de
 acero que se dobla en formas imposibles con madera. El **1 de julio de 2019**
@@ -274,7 +276,8 @@ cruzar el Atlántico.
 En los Golden Ticket Awards, Untamed quedó quinta entre las mejores novedades de
 2019, y desde entonces aparece de forma estable en el top 50 mundial de acero
 (2024: puesto 42; 2025: puesto 48). Yo la pondría
-claramente más arriba, por una cualidad difícil de medir: después de siete años sigue siendo suave.
+claramente más arriba, por una cualidad difícil de medir: después de siete años sigue siendo suave,
+sobre la misma estructura de madera en la que Robin Hood reordenaba vértebras.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -306,7 +309,8 @@ fue el **5 de abril de 2025**.
 
 Si viajas con un niño justo en la frontera entre «quiere» y «todavía no se
 atreve», aquí está la solución más elegante que conozco: montáis a la vez, os
-veis todo el rato y aun así cada uno hace el recorrido que le encaja.
+veis todo el rato, cada uno hace el recorrido que le encaja y luego nadie puede
+decir que el otro se rajó.
 
 ![El letrero «Goliath» en la entrada, detrás el lift de la atracción | Goliath, la montaña rusa más alta del parque desde 2002. | left](/media/walibi-holland/goliath-4x3.jpg)
 
@@ -451,7 +455,8 @@ Atracción por atracción queda así:
 La mejor atracción del parque no tiene la cola más larga, esa es la de la
 novedad. Untamed queda en la zona media, a la altura de un SLC de 1994 y de una
 Mack de 680 metros. No es una
-crítica a YOY, una novedad siempre tira. Pero significa esto: si por la mañana
+crítica a YOY. Una novedad siempre tira, y media Holanda hace cola por principio
+allí donde la pintura aún está fresca. Pero significa esto: si por la mañana
 vas directo a la Wilderness, habrás montado en Untamed antes de que la
 cola de YOY haya avanzado de verdad.
 
@@ -464,7 +469,7 @@ mismo método de cálculo, todos los días de apertura medidos:
 
 En el tiempo que pasas **una vez** en la cola de
 [Taron](ref:phantasialand/taron) en Phantasialand, montas Untamed varias
-veces. A nivel de parque el cuadro es el mismo:
+veces y aún te queda tiempo para unas patatas. A nivel de parque el cuadro es el mismo:
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
 
@@ -700,7 +705,8 @@ de querer ser dos cosas a la vez el mismo día. Después de doce años de
 
 ## Cuándo ir
 
-La temporada va de **abril a principios de noviembre**, después cierra. En
+La temporada va de **abril a principios de noviembre**, después el pólder
+hiberna. En
 primavera y otoño el parque abre los miércoles, los fines de semana y en
 vacaciones; de finales de junio a finales de agosto, a diario.
 
@@ -763,7 +769,8 @@ cuesta distinto según la fecha.
 
 - **Precio en taquilla, entrada de día:** 46 € (a partir de 12 años). Quien
   reserve online y para un día tranquilo paga, según la fecha, desde
-  **24,50 €**. Usar la taquilla es aquí la decisión más cara posible.
+  **24,50 €**. Usar la taquilla es aquí la decisión más cara posible,
+  por delante del tercer helado.
 - **Niños:** de 3 a 5 años 23 €, de 6 a 11 años 36 €, menores de 2 gratis.
   Mayores de 55 y visitantes con discapacidad, también 36 €.
 - **Aparcamiento:** 12 € por coche y día, con veinte puntos de carga para
@@ -807,7 +814,8 @@ es la solución más relajada, porque después de una noche en el matadero no
 tienes además dos horas y media de autopista por delante.
 
 **Comida.** Aquí seré directo: la restauración es la parte más floja del parque.
-Hay patatas fritas, hamburguesas, pizza, todo correcto, nada por lo que volver.
+Hay patatas fritas, hamburguesas, pizza, comida de comedor correcta, nada por lo
+que volver.
 El food court **Flavors**, junto a la nueva zona de YOY y con terraza al agua,
 es la dirección más agradable, aunque solo sea por las vistas a las dos vías.
 Come pronto, hacia las once y media, o tarde a partir de las dos y media.

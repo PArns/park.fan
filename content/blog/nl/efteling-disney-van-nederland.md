@@ -1,5 +1,5 @@
 ---
-title: 'Efteling: de Disney van Nederland, drie jaar vóór Disneyland'
+title: 'Efteling: de Disney van Nederland, drie jaar ouder dan het origineel'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
 updatedAt: '2026-09-22'
@@ -7,10 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De Efteling heet de Disney van Nederland, maar ging drie jaar eerder open dan
-  Disneyland. Het park is van geen enkel concern, maar van een stichting die
-  niets mag uitkeren en die naast de deur een vakantiehuis voor ernstig zieke
-  kinderen heeft neergezet. En omdat een natuurvergunning de grens bij vijf
+  De Efteling heet de Disney van Nederland, maar was er drie jaar eerder. Het park is van een stichting in plaats van aandeelhouders, heeft prullenbakken die dank u wel zeggen en naast de deur een vakantiehuis voor ernstig zieke kinderen. En omdat een natuurvergunning de grens bij vijf
   miljoen bezoekers legt, zijn de rijen hier voor 5,78 miljoen bezoeken
   verrassend kort.
 tags:
@@ -33,10 +30,9 @@ coverImage:
   caption: 'Symbolica op een winteravond. Linksboven zweeft de Pagode door het beeld.'
   credit: 'park.fan'
 seo:
-  title: 'Efteling: wachttijden, tips & beste reistijd'
+  title: 'Efteling: wachttijden, tips en een beleefde prullenbak'
   description: >-
-    De Efteling met echte, zelf gemeten wachttijddata: beste reistijd,
-    tickets en waarom er maar vijf miljoen bezoekers per jaar naar binnen mogen.
+    Zelf gemeten wachttijden in de Efteling: wanneer het rustig is, wat tickets kosten, waarom er maar vijf miljoen in mogen en wat een ei bij Python deed.
   keywords:
     - Efteling
     - Efteling wachttijden
@@ -69,8 +65,7 @@ dat hier nog geen enkele achtbaan stond.
 De [Efteling](ref:efteling?long) in Kaatsheuvel wordt graag de Disney van
 Nederland genoemd, en ik gebruik die zin zelf ook. Alleen klopt de volgorde erin
 niet. Het Sprookjesbos opende op **31 mei 1952** met tien sprookjes. Disneyland in
-Anaheim ging drie jaar later open, in juli 1955. Als hier iemand naar iemand
-vernoemd zou moeten worden, dan andersom.
+Anaheim ging drie jaar later open, in juli 1955. Strikt genomen zou Disneyland dus de Efteling van Amerika moeten heten.
 
 Op een tweede punt gaat de vergelijking nog harder mank. Disney is van
 aandeelhouders. De Efteling is van niemand.
@@ -88,7 +83,7 @@ Een sprookjesbos waar sinds 1952 steeds nieuwe taferelen bij worden gebouwd,
 waarvan er niet één een passagier telt. Een boottocht uit 1986 die al veertig jaar
 geen ander doel dient dan mooi zijn. Twaalf prullenbakken met een stem.
 
-Klein is de onderneming daarmee niet. In 2025 telde de Efteling **5,78 miljoen
+Een hobbyclubje vanuit een tuinhuisje is het daarmee nog niet. In 2025 telde de Efteling **5,78 miljoen
 bezoeken** van 4,98 miljoen gasten, daarbij 347 miljoen euro bedrijfsopbrengsten,
 27,2 miljoen euro winst en zo’n 3.000 medewerkers op 72 hectare parkterrein.
 Daarmee is het het best bezochte pretpark van Nederland en een van de drie
@@ -101,26 +96,23 @@ Efteling in het **Randstad Employer Brand Research** tot **aantrekkelijkste
 werkgever van het land** in het bedrijfsleven. Kantar ondervraagt daarvoor
 jaarlijks meer dan tienduizend mensen over de 150 grootste werkgevers van
 Nederland, en genoemd werden bij de Efteling reputatie, werksfeer en financiële
-gezondheid. De titel is inmiddels van ASML, drie keer op rij, maar in 2023 stond
-een pretpark boven alle concerns van het land. In een branche waar je eerder aan
+gezondheid. De titel is inmiddels van ASML, drie keer op rij, maar in 2023 stond een park met pratende prullenbakken boven alle concerns van het land. In een branche waar je eerder aan
 seizoenscontracten en minimumloon denkt, is dat een behoorlijk zeldzame kop.
 
 Het begon met twee mannen en een sportpark. **Anton Pieck**, illustrator, tekende
 de sprookjes en in de decennia daarna ruim duizend ontwerpen voor attracties,
 pleinen en horeca. **Peter Reijnders**, fotograaf en filmer, bouwde de techniek
-eronder: de bewegingen, het geluid, later Holle Bolle Gijs. Piecks regel voor het
-bos was dat niets eruit mocht zien als een machine. Je ziet hem nog aan elke
+eronder: de bewegingen, het geluid, later Holle Bolle Gijs. Piecks regel voor het bos was dat niets eruit mocht zien als een machine, een behoorlijk sportieve opdracht voor een park vol machines. Je ziet hem nog aan elke
 dakrand terug.
 
 Van de tien sprookjes uit 1952 zijn er ruim dertig geworden, het jongste is de
 Prinses op de Erwt uit 2025. Voor de **75e verjaardag in 2027** komt er volgens
 het park nummer 32 bij.
 
-## De vijf rijken
+## De vijf rijken en wat erin rijdt
 
 Het park valt uiteen in vijf gebieden: Marerijk, Reizenrijk, Anderrijk, Ruigrijk,
-Fantasierijk. De namen spreken voor zich, en in het Ruigrijk staan inderdaad de
-wildere banen. Plus het Sprookjesbos, dat sinds november 2023 als eigen gebied
+Fantasierijk. De namen spreken voor zich, en voor één keer doet een naam wat hij belooft: in het Ruigrijk staan de wildere banen. Plus het Sprookjesbos, dat sinds november 2023 als eigen gebied
 meetelt.
 
 ![Het paleis van Symbolica bij nacht, blauw aangelicht, met een fontein ervoor | Het paleis is van buiten te belopen zonder aan te sluiten. De rit begint in de kelder eronder. | right](/media/efteling/symbolica-4x3.jpg)
@@ -141,8 +133,7 @@ dat is vermoedelijk de bedoeling.
 **[Baron 1898](ref:efteling/baron-1898)** is de baan waarvoor liefhebbers komen:
 een dive coaster van **Bolliger & Mabillard**, open sinds 1 juli 2015, met een val
 van 37,5 meter, 87 graden en 90 km/u. Drie treinen van 18 plaatsen, zes naast
-elkaar in drie rijen, en boven die seconden waarin de trein over de rand hangt en
-je naar beneden kijkt in plaats van vooruit. Het verhaal eromheen is typisch voor
+elkaar in drie rijen, en boven die seconden waarin de trein over de rand hangt en je naar beneden kijkt, omdat er geen andere richting meer over is. Het verhaal eromheen is typisch voor
 dit park en volledig verzonnen: baron Gustave Hooghmoed vindt goud in een oude
 kolenschacht, de Witte Wieven bewaken het, en op een gegeven moment kappen ze de
 kabel van de liftkooi. Twee voorshows met animatronics vertellen dat allemaal
@@ -185,11 +176,10 @@ Ook materieel is er meer van het Spookslot over dan het van buiten lijkt. Toen h
 gebouw in september 2022 werd leeggehaald, ging alles wat bruikbaar was het
 archief in. De **kandelaars** uit de wachtrij in de achthoekige toren zijn
 gerepareerd, opnieuw gelakt en één op één terug. De **saters** waren gedetailleerd
-genoeg om direct opnieuw te gebruiken. Van de **waterspuwers** is een 3D-model
-gemaakt en vergroot, ze dragen nu de plafondbalken. De grote **kroonluchters** uit
+genoeg om direct opnieuw te gebruiken. De **waterspuwers** kregen promotie: er is een 3D-model van gemaakt en vergroot, en nu dragen ze de plafondbalken. De grote **kroonluchters** uit
 de tunnel naast het oude slot hangen tegenwoordig in _In den Swarte Kat_, en de
 **oude ingang van het Spookslot** is de ingang van de souvenirwinkel
-_Dr. Charlatans Kwalycke Zaken_ geworden. De neonkleurige **viool**, het
+_Dr. Charlatans Kwalycke Zaken_ geworden, wat je als commentaar op de branche kunt lezen, maar niet hoeft. De neonkleurige **viool**, het
 hoofdpersonage van het Spookslot, keert niet in haar oude vorm terug, maar krijgt
 in de nieuwe show wel weer een grote rol.
 
@@ -219,15 +209,14 @@ trein kunt zien verliezen doet Joris wel iets wat Troy niet kan.
 
 **[De Vliegende Hollander](ref:efteling/de-vliegende-hollander)** uit 2007 is half
 darkride, half waterachtbaan. Je gaat eerst door een havenstad en het spookschip,
-dan buiten een stuk rail, dan een afdaling het water in die de eerste rij
-betrouwbaar te pakken heeft.
+dan buiten een stuk rail, dan een afdaling het water in die de eerste rij betrouwbaar te pakken heeft, en zo grondig dat de sokken er tot de avond wat aan hebben.
 
 ![De loopings van Python bij nacht, paars aangelicht | ’s Nachts paars aangelicht, wat haar bouwjaar opvallend goed verbergt. | right](/media/efteling/python-4x3.jpg)
 
 **[Python](ref:efteling/python)** is de oldtimer van **Vekoma**, geopend op
 12 april 1981: 750 meter, 29 meter hoog, vier inversies in de vorm van twee
 loopings en twee kurkentrekkers. Ze was lang de baan waaraan Nederland afmat wat
-een achtbaan is, en ze had jarenlang de naam flink te schudden. Begin 2018 liet het
+een achtbaan is, en jarenlang ook de baan waarna je je wervels één voor één naliep. Begin 2018 liet het
 park daarom voor 4,5 miljoen euro de complete staalconstructie tussen de eerste
 afdaling en de eindrem vervangen. De lay-out bleef gelijk, een paar bochten werden
 ruimer genomen en anders overhelt. De treinen zijn de oude gebleven.
@@ -245,11 +234,10 @@ betrouwbaarste verkoeling van het park.
 familiebanen van Mack, vernoemd naar de twee deugnieten, en
 **[Hooghmoed](ref:efteling/hooghmoed)** is de nieuwigheid van dit seizoen: sinds
 **1 mei 2026** staat naast Baron een schoorsteen van 14,5 meter waarin drie kleine
-valtorens al draaiend tot 9,5 meter omhoog gaan en dan zes meter vallen. Vanaf
-90 centimeter, ongeveer 600 gasten per uur.
+valtorens al draaiend tot 9,5 meter omhoog gaan en dan zes meter vallen. Vanaf 90 centimeter, ongeveer 600 gasten per uur: Baron voor iedereen die daar nog op de meetlat strandt.
 
 **[Villa Volta](ref:efteling/villa-volta)** in het Marerijk was in 1996 het **eerste moderne
-madhouse ter wereld**: een ruimte die om je heen draait terwijl je bank stilstaat,
+madhouse ter wereld**: een ruimte die om je heen draait terwijl je bank stilstaat (je evenwichtsorgaan gelooft er geen woord van),
 gebouwd door Vekoma, verteld als vloek over rover Hugo van den Loonsche Duinen.
 De madhouses die daarna in half Europa zijn neergezet gaan allemaal op dit model
 terug.
@@ -282,10 +270,9 @@ Fata Morgana. 17 miljoen euro, ruim 900 lampen, tien minuten, plek voor 6.500
 toeschouwers. Na de Dubai Fountain en het Bellagio in Las Vegas is het de op twee
 na grootste fonteinshow ter wereld.
 
-## Het Sprookjesbos
+## Het Sprookjesbos was er eerst
 
-Veel bezoekers behandelen het Sprookjesbos als kinderprogramma en lopen er één
-keer stevig doorheen. Het is alleen niet de bijlage bij het park, het wás het
+Veel bezoekers behandelen het Sprookjesbos als kinderprogramma en lopen er één keer stevig doorheen, met de blik van iemand die eigenlijk naar Baron wil. Het is alleen niet de bijlage bij het park, het wás het
 park. Al het andere is er later omheen gegroeid.
 
 Op 31 mei 1952 stonden er tien taferelen tussen de bomen: Doornroosje,
@@ -319,8 +306,7 @@ Helemaal zonder kassa kan ook het Sprookjesbos niet. Alleen zit zelfs die in het
 decor verstopt. **Kogeloog**, de kraam voor
 koffie en stroopwafels, staat pal tegenover Langnek en heet zo omdat Kogeloog een
 van de zes dienaren uit precies dat sprookje is. Aan de gevel hangen zijn buste en
-ovale lijsten met alle zes. De kraam bestaat sinds 1967, ging in 2002 wegens
-gebrek aan omzet dicht en is sinds 26 april 2019 weer open.
+ovale lijsten met alle zes. De kraam bestaat sinds 1967, ging in 2002 wegens gebrek aan omzet dicht (stroopwafels niet verkocht krijgen, dat moet je in Nederland maar net klaarspelen) en is sinds 26 april 2019 weer open.
 
 En passant is dit stuk bos de beste truc tegen rijen die het park heeft. Er is
 geen wachtrij,
@@ -333,9 +319,9 @@ route te veel is geworden voor één doorloop. Er komen vier gelijkwaardige in- 
 uitgangen, plus de **Dreven**: bruin bestrate hoofdassen van noord naar zuid en van
 oost naar west, die elkaar op het Herautenplein kruisen, met rood bestrate
 zijpaden naar de afzonderlijke taferelen. De gele sluiproutes verdwijnen. Daarna
-kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
+kun je het bos in twee porties op twee dagen zien zonder te verdwalen. In een sprookje is verdwalen meestal het halve verhaal.
 
-## Hoe lang je hier in de rij staat
+## Hoe lang je hier in de rij staat, en waarom zo kort
 
 “Een park voor het hele gezin” staat in elke folder. Of het hele gezin dan ook
 ergens in komt, staat in de wachttijden.
@@ -356,7 +342,7 @@ Twee dingen vallen op.
 Ten eerste duikt de stoomtrein geregeld in deze lijst op. Een trein uit 1969 die
 een rondje door het park rijdt, tussen allemaal darkrides en achtbanen. Dat komt door
 de capaciteit, niet door de populariteit: twee treinen, een strakke dienstregeling,
-en in de zomer veel gezinnen die met moe geworden kinderen niet meer willen lopen.
+en in de zomer veel gezinnen voor wie ’s middags een trein met een bankje de aantrekkelijkste attractie van het park is.
 De meetbasis is wel duidelijk dunner dan bij de rest (kolom dagen), omdat de
 stations niet het hele jaar wachttijden doorgeven. Ik zou de volgorde daarachter
 niet te zwaar belasten, maar de orde van grootte klopt.
@@ -381,8 +367,7 @@ publiek heeft hier daadwerkelijk meer dan de drievoudige capaciteit.
 
 En één detail uit die tabel vind ik bijzonder mooi: **Voltron** in het Europa-Park,
 geopend in 2024, de duurste nieuwbouw uit de parkgeschiedenis, staat in de kolom met
-de langste rij ongeveer gelijk met **Joris en de Draak**, een houten achtbaan uit 2010 die de
-Efteling niet eens als hoofdattractie in de markt zet.
+de langste rij ongeveer gelijk met **Joris en de Draak**, een houten achtbaan uit 2010 die de Efteling niet eens als hoofdattractie in de markt zet. In Rust zou ik dat niet hardop zeggen.
 
 ## Het plafond van vijf miljoen
 
@@ -394,7 +379,7 @@ natuurvergunning voor zijn uitbreiding kreeg, werd de stikstofdepositie berekend
 basis van **vijf miljoen bezoekers per jaar**. Dat getal staat sindsdien als
 voorwaarde in de vergunning. Geen streefwaarde, geen advies, een bovengrens.
 
-Het park groeide er toch overheen. In 2017 waren het er 5,18 miljoen, in 2018
+Het park groeide er vrolijk overheen. In 2017 waren het er 5,18 miljoen, in 2018
 5.351.572 en in 2019 ongeveer 5,26 miljoen. Omwonenden verzochten de provincie
 Noord-Brabant om handhaving. De provincie wees dat eerst af, met verwijzing naar
 het economische belang van het park. De rechtbank in Den Bosch gaf de omwonenden
@@ -408,7 +393,7 @@ hotel of vakantiepark overnacht telt één keer, hoe vaak hij die week ook door 
 poortje gaat. Precies daarom passen de cijfers van 2025 bij elkaar: **5,78 miljoen
 bezoeken van 4,98 miljoen gasten**, en daarmee net onder de grens.
 
-De omwonenden gingen verder naar de **Raad van State**. Op **15 mei 2024**
+Je kunt dat pragmatisch noemen of creatief. De omwonenden kozen voor creatief en gingen verder naar de **Raad van State**. Op **15 mei 2024**
 verloren zij, maar op een grond die de zaak openlaat: de Raad achtte hen geen
 belanghebbenden, omdat hun huizen 1,5 tot 1,8 kilometer van het beschermde gebied
 liggen met de provinciale weg N261 ertussen. Of de Efteling de voorwaarde
@@ -472,7 +457,7 @@ weer op het podium staat. De Nederlandse parkwereld is kleiner dan hij lijkt.
 
 ## Wanneer je moet gaan
 
-De Efteling is 365 dagen per jaar open, en dat verschuift de gebruikelijke regels.
+De Efteling is 365 dagen per jaar open. Of het park open is, hoef je dus nooit op te zoeken. Alleen hoeveel anderen hetzelfde idee hadden.
 
 **Per maand** is april in onze data de rustigste van de grote seizoensmaanden.
 Mei, juni en juli liggen dicht bij elkaar, augustus trekt merkbaar aan, en het
@@ -495,7 +480,7 @@ liggen tussen een dinsdag en een zaterdag werelden, hier maakt de dag nauwelijks
 uit. **Maandag** is in onze data zelfs de drukste dag, wat eerst absurd klinkt en
 oplost zodra je de Nederlandse vakantieweken ernaast legt: wie een week in een
 vakantiepark of het parkhotel boekt, begint op maandag. Bij zo’n 20 meetdagen per
-weekdag zou ik verschillen van twee minuten toch niet als advies verkopen. Het
+weekdag zou ik zulke kleine verschillen toch niet als advies verkopen. Het
 maandageffect is zichtbaar, de volgorde daartussen is ruis.
 
 Het praktische gevolg: **bij de Efteling bepaalt niet de dag, maar de week.**
@@ -547,19 +532,15 @@ staan: je getal in de ring leggen, een pijl wijst de goede kant. De dag erna hin
 er in plaats daarvan gekleurde borden. En op **21 juni** stond bij de ingang een
 groot wit ei op een houten sokkel, waar elk groepslid een hand op legt, waarna er
 afhankelijk van het aantal handen een kleur oplicht die de rij toewijst. Drie
-methodes in drie dagen, zonder één woord officiële communicatie. Looopings schreef
-dat het inmiddels meer aan een kunstproject doet denken dan aan
-capaciteitsoptimalisatie, en daar zit wat in.
+methodes in drie dagen, zonder één woord officiële communicatie. Looopings schreef dat het inmiddels meer aan een kunstproject deed denken dan aan capaciteitsoptimalisatie. Het zat er niet ver naast: twee dagen later legde het park uit dat de proeven bij het afstudeeronderzoek van een student van de TU Delft hoorden. Dat onderzoek is afgerond, en Python heeft weer een doodgewone rij.
 
-Voor jou komt het er hoe dan ook op neer: niets te kopen, en bij Python doe je wat
-het ei zegt.
+Voor jou komt het er hoe dan ook op neer: niets te kopen, en bij Python doe je wat het park die dag heeft bedacht. Staat er toch weer een ei, hand erop.
 
-## De perfecte dag
+## De perfecte dag, zo ongeveer
 
 Blijft timing over, en in de Efteling werkt dat anders dan in een compact park.
 
-Ga bij opening het **Ruigrijk** in, naar de achterste hoek. De weg daarheen is
-lang, precies daarom is hij ’s ochtends leeg.
+Ga bij opening het **Ruigrijk** in, naar de achterste hoek. De weg daarheen is lang, en precies daarom is hij ’s ochtends leeg: de meeste mensen blijven onderweg aan iets moois hangen.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) is onze duidelijkste
 rope-drop-tip voor dit park, die baan bouwt haar rij het snelst op. Er pal naast
 staan [Baron 1898](ref:efteling/baron-1898),
@@ -590,7 +571,7 @@ de parkeerplaats verklaart.
 
 ```
 
-## De kleine dingen
+## De kleine dingen waar bijna niemand voor in de rij staat
 
 Tussen de grote attracties staat hier spul dat zich nooit terugverdient en waarvoor
 ik toch terugkom.
@@ -605,8 +586,7 @@ je staat ervoor en kijkt. De meeste mensen lopen er langs.
 Het **[Volk van Laaf](ref:efteling/volk-van-laaf)** is sinds 15 juni 1990 een
 compleet verzonnen volkje van Ton van de Ven, met een eigen nederzetting, een
 eigen mythologie en een verhaal waarin het zich door de aarde naar Kaatsheuvel
-heeft gegraven. Er is geen bron voor, geen sprookje, geen boek. Het park heeft
-ze gewoon zelf verzonnen.
+heeft gegraven. Er is geen bron voor, geen sprookje, geen boek. Andere parken kopen filmfiguren in, de Efteling verzon meteen een heel volk.
 
 De **[Gondoletta](ref:efteling/gondoletta)** vaart sinds 13 april 1981 met veertig
 boten over 1.081 meter water, en één rondje duurt **twintig minuten**. Twintig
@@ -640,8 +620,7 @@ blokkeerdagen sowieso.
 anderhalf tot twee uur rijden en vanaf Keulen en het Ruhrgebied ruim twee uur, in
 beide gevallen via de A67 en A2. Wie toch in de grensstreek is, combineert het
 bezoek goed met [Toverland](ref:attractiepark-toverland), dat precies op de route ligt. Met de
-trein is het lastiger: tot 's-Hertogenbosch of Tilburg, dan de bus. Reken op
-overstappen en plan de terugreis vooraf.
+trein is het lastiger: tot 's-Hertogenbosch of Tilburg, dan de bus. Reken op overstappen en plan de terugreis vooraf, niet pas na Aquanura met het halve park bij de bushalte.
 
 **Slapen.** Vier mogelijkheden direct aan het park: het **Efteling Grand Hotel**,
 open sinds 1 augustus 2025 met 140 kamers en suites, twee restaurants en een zwembad,
@@ -656,7 +635,7 @@ klassieker met kinderen. En **In den Swarte Kat** in het Huyverwoud, de donkere,
 zware tegenhanger, gebouwd samen met
 [Danse Macabre](ref:efteling/danse-macabre). Voor tussendoor staan er op elke hoek
 poffertjes, en het advies is hetzelfde als overal: eet om half twaalf of vanaf half
-drie, dan sluit je op het drukste moment niet dubbel aan.
+drie, dan sluit je op het drukste moment niet nog een keer aan, dit keer voor patat.
 
 ## Winter Efteling
 
@@ -683,7 +662,7 @@ rond de ruïnekerk van Danse Macabre ziet er in juli nu eenmaal niet zo uit.
 
 ## Wat er nog aankomt
 
-Het park blijft bouwen, in een tempo dat verder alleen concerns zich veroorloven.
+Voor een park dat van niemand is, bouwt de Efteling in een tempo dat verder alleen concerns zich veroorloven.
 
 Op **4 januari 2026** speelde **Raveleijn** voor het laatst, de openluchtshow met
 vijf ruiters, raven en vuur die sinds 2011 meerdere keren per dag voor de stadsmuur
@@ -707,7 +686,7 @@ in kleinere vorm naast terug.
 **In 2029** komt **Missie Luminar**, voor 50 miljoen euro: de eerste suspended
 launch coaster van het park, 80 km/u, ruim twee minuten rijtijd, 18 personen per
 trein die onder de rail hangen. Thematisch start de rit in een onderzoeksinstituut
-dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
+dat de lichtgrens wil doorbreken, wat dat natuurkundig ook mag betekenen. Gebouwd wordt ze op het Eiland van de Vijf
 Zintuigen, dus pal achter de hoofdingang.
 
 Wat het park daarentegen blijft laten: Halloween. “Wees gerust, de Efteling viert
@@ -749,8 +728,7 @@ Nee. De Efteling verkoopt geen fast pass, geen express pass en geen voorrang per
 rit. Gratis zijn er single-riderrijen bij een aantal attracties en baby switch.
 Overnachtende gasten komen 30 minuten voor alle anderen het park in, dat is het
 enige voordeel dat je kunt kopen. Het park test wel doorlopend virtuele wachtrijen,
-laatst bij [Droomvlucht](ref:efteling/droomvlucht) via de gratis app, en sorteert
-bij [Python](ref:efteling/python) sinds mei 2026 op groepsgrootte.
+laatst bij [Droomvlucht](ref:efteling/droomvlucht) via de gratis app, en experimenteerde in juni 2026 bij [Python](ref:efteling/python) met rijen op groepsgrootte.
 
 ### Waarom begrenst de Efteling het aantal bezoekers?
 
@@ -828,7 +806,7 @@ bedankt sinds 1959 iedereen persoonlijk.
 - Het einde van de paardenshow Raveleijn en wat er in 2026 volgt: [“De Efteling stopt na vijftien jaar met omstreden show met paarden” (NOS)](https://nos.nl/artikel/2580130-de-efteling-stopt-na-vijftien-jaar-met-omstreden-show-met-paarden) · [Raveleijn op nl.wikipedia](<https://nl.wikipedia.org/wiki/Raveleijn_(attractie)>)
 - Missie Luminar 2029 en Sprookjesbibliotheek 2027: [“New attraction in 2029: Missie Luminar” (officieel)](https://www.efteling.com/en/blog/nieuws/new-attraction-in-2029-mission-luminar) · [Missie Luminar (blooloop)](https://blooloop.com/news/efteling-missie-luminar-launch-coaster) · [“Efteling deelt eerste informatie over 32e sprookje” (Pretwerk)](https://pretwerk.nl/geen-categorie/efteling-deelt-eerst-informatie-over-32e-sprookje-in-het-sprookjesbos/101709/)
 - Aquanura: [Aquanura (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/attraktionen/aquanura-s133)
-- Experimenten met de wachtrij: [Boarding-pass-proef bij Python vanaf 15 september 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [virtuele wachtrij bij Droomvlucht, zomer 2024 (officieel)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [even en oneven groepen bij Python vanaf 18 mei 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [het rad vanaf 19 juni 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [het ei vanaf 21 juni 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html)
+- Experimenten met de wachtrij: [Boarding-pass-proef bij Python vanaf 15 september 2017 (Eftelingfansite)](https://www.eftelingfansite.de/news/591-efteling-testet-virtuelle-warteschlange-bei-python) · [virtuele wachtrij bij Droomvlucht, zomer 2024 (officieel)](https://www.efteling.com/nl/blog/nieuws/deze-zomer-virtueel-in-de-rij-bij-droomvlucht) · [even en oneven groepen bij Python vanaf 18 mei 2026 (Looopings)](https://www.looopings.nl/weblog/32754/Nieuwe-werkwijze-bij-Python-in-de-Efteling-wachtrij-voor-even-en-oneven-groepen.html) · [het rad vanaf 19 juni 2026 (Looopings)](https://www.looopings.nl/weblog/33118/Bij-de-Python-in-de-Efteling-laat-een-rad-voortaan-zien-welke-kant-je-op-moet.html) · [het ei vanaf 21 juni 2026 (Looopings)](https://www.looopings.nl/weblog/33142/Het-houdt-niet-op-Efteling-laat-bezoekers-nu-een-ei-aanraken-om-juiste-Python-wachtrij-te-kiezen.html) · [de verklaring: afstudeeronderzoek aan de TU Delft, proef afgelopen (Looopings)](https://www.looopings.nl/weblog/33163/Mysterie-opgelost-Efteling-legt-uit-wat-experimenten-bij-de-Python-moesten-voorstellen.html)
 - Wachtrijen, single rider en eerder naar binnen: [Wachtrijen in de Efteling (officieel)](https://www.efteling.com/nl/park/informatie/wachtrijen) · [Eerder het park in (officieel)](https://www.efteling.com/en/overnight-stays/enjoy-extra-early)
 - Geen Halloween: [“Geen Halloween in de Efteling” (officieel)](https://www.efteling.com/nl/park/events/halloween) · [onze Halloween-gids](/blog/halloween-pretparken-2026)
 - Prijzen, parkeren en jaarkaarten 2026: [Ticketoverzicht (officieel)](https://www.efteling.com/en/park/information/ticket-overview) · [Prijzen & openingstijden (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jaarkaartvergelijking (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)

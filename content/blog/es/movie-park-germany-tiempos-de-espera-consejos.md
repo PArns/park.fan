@@ -7,11 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De esa pérdida el parque ha hecho una costumbre: construye atracciones sobre
-  sí mismo. Por su trigésimo cumpleaños, una guía con tiempos de espera
-  medidos, el día de la semana en el que los consejos habituales se equivocan,
-  el calendario a partir de septiembre y el Halloween Horror Festival desde el
-  26 de septiembre.
+  Sin Batman, sin Bugs Bunny, y desde entonces el parque construye atracciones
+  sobre sí mismo. Por su 30 cumpleaños: tiempos de espera medidos, el día de la
+  semana en el que casi todas las guías se equivocan, el calendario desde
+  septiembre y el Halloween Horror Festival desde el 26 de septiembre.
 tags:
   - movie-park
   - tiempos-de-espera
@@ -32,11 +31,11 @@ coverImage:
   caption: 'Seis semanas al año este parque se llama Horrorwood Studios. El rótulo de la entrada se transforma para la ocasión, no se cambia.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park: tiempos de espera, mejores días y Halloween 2026'
+  title: 'Movie Park: tiempos de espera y Halloween 2026, sin Batman'
   description: >-
-    Movie Park Germany con datos reales de tiempos de espera: el día más
-    tranquilo, el calendario de jueves a domingo desde septiembre, el Halloween
-    Horror Festival desde el 26 de septiembre, precios 2026 y cómo llegar.
+    Movie Park con esperas medidas: el día en que las guías fallan, el
+    calendario de otoño, Halloween desde el 26/9 y cómo no pagar el recargo de
+    taquilla.
   keywords:
     - Movie Park Germany
     - Movie Park tiempos de espera
@@ -64,7 +63,8 @@ después entró el público de pago.
 De las marcas por las que se hizo todo aquel esfuerzo no queda hoy ni una. Bugs
 Bunny fuera, Batman fuera, los Gremlins fuera, Police Academy fuera. El parque se
 llama de otra manera desde 2005, pertenece a un grupo español desde 2010 y
-celebra su trigésimo cumpleaños precisamente con una atracción de Paramount.
+celebra su trigésimo cumpleaños precisamente con una atracción de Paramount. Es
+como si en la tarta de las bodas de perla apareciera el nombre del vecino.
 
 A eso se suma una cifra que no encaja en absoluto con la fama de este parque. A
 lo largo de todos los días de apertura que hemos medido hasta ahora, en el
@@ -74,7 +74,7 @@ sur.
 
 Y el día de la semana más vacío es el que ninguna guía de internet te dice.
 
-## Un parque que perdió todas las marcas con las que se construyó
+## Bugs Bunny, Batman, los Gremlins: todos se mudaron
 
 El terreno empezó como **Kirchhellener Märchenwald**, que la familia Allekötter
 abrió en 1967. De ahí salió el Traumlandpark, y a principios de los noventa
@@ -90,12 +90,13 @@ Siguió ocho años. En octubre de 1999 Time Warner vendió el 97 por ciento a
 estadounidenses vendieron su negocio europeo al fondo **Palamon Capital
 Partners**, y con esa venta terminaron los contratos de licencia. En el invierno
 de 2004/05 el parque tuvo que rebautizar prácticamente todo lo que llevaba un
-nombre salido de una película de Warner. En marzo de 2005 reabrió como **Movie
+nombre salido de una película de Warner, una mudanza en la que los muebles se
+quedan y solo cambian los nombres del buzón. En marzo de 2005 reabrió como **Movie
 Park Germany**. Cinco años después, el 17 de mayo de 2010, tomó el relevo la
 operadora española **Parques Reunidos**.
 
-Por eso cinco de las atracciones más conocidas cambiaron de nombre, cada vez
-porque en algún despacho vencía un contrato:
+Por eso cinco de las atracciones más conocidas siguen viviendo con otro nombre,
+como testigos protegidos:
 
 | Inaugurada como          | Año  | Se llama hoy                                     |
 | ------------------------ | ---- | ------------------------------------------------ |
@@ -119,8 +120,8 @@ proyecto, porque en España se hundían las visitas. No se volvió a construir h
 
 Esa prehistoria explica la fama que el Movie Park sigue teniendo hoy en el mundo
 de las montañas rusas. Quien lo visitó entre 2012 y 2016 vio un parque en el que
-se movía poco y cuya promesa publicitaria se apoyaba en películas que ya no podía
-mostrar.
+se movía poco, un poco como un cine que sigue teniendo en el vestíbulo los
+carteles de películas que ya no puede proyectar.
 
 ## La historia del cine que cuenta en su lugar
 
@@ -170,8 +171,8 @@ recinto real del estudio.
 Está construida en el edificio de **The Lost Temple** (2014), y debajo hay otra
 capa más: allí estuvo desde 1996 **Movie Magic**, la atracción con la que Warner
 explicaba a los visitantes cómo se hace una película. Treinta años después,
-Paramount explica lo mismo en el mismo sitio. Altura mínima 100 centímetros, a la
-salida una sala de exposición de Paramount.
+Paramount explica lo mismo en el mismo sitio. Altura mínima 100 centímetros. El
+caché del extra: la salida pasa por una sala de exposición de Paramount.
 
 ## Las otras siete montañas rusas
 
@@ -193,10 +194,12 @@ veinte personas.
 El desarrollo es poco habitual, porque te aceleran tres veces antes de que la
 atracción empiece siquiera. El tren se lanza hacia delante y hacia atrás por la
 vía de salida, y solo en el tercer intento hay velocidad suficiente para el top
-hat; después llegan un Immelmann, un heartline roll y un sacacorchos. La banda
+hat, como el coche familiar que intenta subir la rampa del garaje con nieve.
+Después llegan un Immelmann, un heartline roll y un sacacorchos. La banda
 sonora es de IMAscore, y antes hay un preshow con proyecciones.
 
-Es además la atracción en la que correr por la mañana más compensa: su cola es más larga en la segunda hora y nunca vuelve a serlo tanto.
+Es además la atracción en la que correr por la mañana más compensa: su cola es
+más larga en la segunda hora y nunca vuelve a serlo tanto.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -227,15 +230,15 @@ Oregón en el invierno de 2015/16.
 
 Traquetea. Después de 27 años es ruidosa y brusca, algo más llevadera en la cola
 del tren que delante, y a mí la segunda vuelta ya me deja dolor de cabeza. Una
-vez hay que montarla igualmente, pesa demasiado en la historia de las montañas
-rusas alemanas. Quien tome Colossos, en el [Heide-Park](ref:heide-park), como
+vez hay que montarla igualmente, como la visita obligada a la tía abuela: pesa
+demasiado en la historia de las montañas rusas alemanas como para saltársela. Quien tome Colossos, en el [Heide-Park](ref:heide-park), como
 referencia, que se quede en esa única vez.
 
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** es la
-atracción en la que más se espera en este parque, y sus datos principales no
-dejan adivinar por qué. Inaugurada el **18 de junio de 2011**, un bobsled coaster de
+atracción en la que más se espera en este parque, y sus datos principales
+parecen los de una atracción para cumpleaños infantiles. Inaugurada el **18 de junio de 2011**, un bobsled coaster de
 **Gerstlauer** en la antigua nave de los Gremlins, 3.000 metros cuadrados, ocho
 metros de altura, 400 metros de longitud, **36 km/h**. Parques Reunidos liberó
 cinco millones de euros para ella, un mes después de la compra.
@@ -252,7 +255,8 @@ fricción, de modo que la vagoneta gana velocidad mientras sube.
 
 La explicación está igualmente en la ficha técnica, una línea más abajo: **848
 personas por hora**. Para un parque que en los días fuertes deja entrar a decenas
-de miles, es poco, y se ve en nuestras cifras durante todo el día.
+de miles, es como tener una sola caja abierta un sábado en Ikea, y se ve en
+nuestras cifras durante todo el día.
 
 ```glossary-widget slug=ride-capacity
 
@@ -264,7 +268,7 @@ de miles, es poco, y se ve en nuestras cifras durante todo el día.
 Coaster** de Vekoma que existe en variantes ligeras por decenas en todo el mundo.
 Abrió el 6 de abril de 2001 como **Eraser**, 689 metros, 80 km/h, dos
 inversiones, dos trenes de veinte personas. Las piernas cuelgan libres y la
-cabeza queda entre dos arneses de hombro duros.
+cabeza queda entre dos arneses de hombro duros, como una nuez en el cascanueces.
 
 ```glossary-widget slug=suspended-coaster
 
@@ -298,7 +302,7 @@ es un speed rapid river de Intamin del año de apertura que ya ha tenido tres
 vidas: en 1996 como La historia interminable, desde 2005 como Mystery River, y
 desde el 7 de mayo de 2018 como leyenda artúrica con figuras oscuras, bosque
 encantado y un monstruo lacustre al final. De las tres versiones, la actual es la
-mejor, y moja.
+mejor, y moja, a veces hasta los calcetines.
 
 ```glossary-widget slug=river-rapids
 
@@ -327,8 +331,8 @@ eso.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
 por último, es el tronco del **Nickland**, hecho para niños de primaria, y aun
-así una de las colas más largas del parque, porque en las tardes calurosas
-medio parque se dirige a ella a la vez.
+así una de las colas más largas del parque, porque en las tardes calurosas medio
+parque descubre a la vez a su niño interior.
 
 Los escenarios forman parte de esto desde el primer día: un parque de estudio sin
 espectáculo de especialistas era impensable en 1996, así que en la inauguración
@@ -360,8 +364,8 @@ varias atracciones igualadas, entre ellas el tronco de la zona infantil. Star
 Trek, la atracción más grande del parque, queda a media tabla.
 
 Eso tiene poco que ver con la popularidad y mucho con la capacidad. Van Helsing
-saca 848 personas por hora, y como el recorrido va por dentro es además adonde se
-dirige medio parque cuando llueve. Cómo capacidad y demanda se convierten en un
+saca 848 personas por hora, y como el recorrido va por dentro es además el soportal bajo
+el que todo el mundo quiere meterse a la vez cuando llueve. Cómo capacidad y demanda se convierten en un
 tiempo de espera está explicado con detalle en
 [el arte de esperar](/blog/el-arte-de-esperar).
 
@@ -378,7 +382,8 @@ revés**. Dora, Excalibur y Area 51 tienen su hora llena a última hora de la
 tarde, porque con treinta grados en algún momento todo el mundo quiere mojarse.
 
 Y luego está Van Helsing. Esa línea se dispara en la segunda hora y a partir de
-ahí se queda en el mismo valor hasta el cierre. Quien no haya estado allí en los
+ahí se queda en el mismo valor hasta el cierre, como unas obras en la autovía que
+no empeoran, pero tampoco se acaban nunca. Quien no haya estado allí en los
 primeros sesenta minutos no encontrará un momento mejor en todo el día.
 
 En comparación con el vecindario:
@@ -473,8 +478,9 @@ Los más tranquilos de los próximos días de apertura según nuestro calendario
 ```
 
 De abril a junio cada mes aporta unos veinte a veinticinco días medidos, julio y
-agosto unos cuantos más. Esos cinco meses son sólidos, y dicen lo que todo el
-mundo supone: en vacaciones de verano se llena.
+agosto unos cuantos más. Esos cinco meses son sólidos, y dicen lo que supone
+cualquiera que haya buscado sitio en el aparcamiento en agosto: en vacaciones de
+verano se llena.
 
 En enero, marzo y diciembre, en cambio, solo hay tres o cuatro días medidos
 detrás del valor. El orden de magnitud es correcto, pero de ahí al minuto no me
@@ -498,7 +504,8 @@ Solo hay un pasaje nuevo, pero con un nombre que conoce hasta quien no
 soporta el género: **Jason Universe** trae a Jason Voorhees a Bottrop y recorre
 las entregas dos a seis de la serie. Los otros ocho vienen de años anteriores,
 dos de ellos revisados. El **Ahoj-Brause Horror Lab** ha recibido sustos
-adicionales y una nueva trama en torno a una cata y un laboratorio de pruebas, y
+adicionales y una nueva trama en torno a una cata y un laboratorio de pruebas (una frase
+que alguien tuvo que escribir en serio sobre unos polvos efervescentes), y
 el pasaje de crímenes reales **Murder Museum**, una escena de patología. A eso se
 suma **PHOBIA – The Live Horror Game Show** en el Studio 7, un espectáculo en el
 que el público juega en lugar de mirar.
@@ -617,8 +624,8 @@ El pase en sí esconde tres cosas en la letra pequeña:
 
 - **Bronze tiene más días bloqueados**: diciembre y enero enteros, además de
   todos los festivos, los sábados de las vacaciones de RNW, los sábados de
-  octubre y el propio Halloween. Es decir, justo los días en que la mayoría
-  quiere ir.
+  octubre y el propio Halloween. Es decir, justo los días en que tú quieres
+  ir.
 - **El aparcamiento solo está incluido a partir de Gold.** Con Bronze y Silber la
   tarjeta de temporada de aparcamiento cuesta 25 € aparte; si no, pagas los 9 €
   en cada visita.
@@ -643,7 +650,7 @@ los precios son la crítica más repetida en las reseñas de los visitantes. Par
 2026 el parque ha anunciado mejoras. Hasta ahora no he notado nada, y aquí como
 lo más rápido posible.
 
-Que llueva o no en Bottrop decide medio parque:
+Que llueva o no en Bottrop decide dónde se amontonan las colas:
 
 ```weather-widget slug=movie-park-germany
 

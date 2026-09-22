@@ -9,7 +9,7 @@ excerpt: >-
   A stroller by the Märchensee, a gondola ride through “1001 Nacht”, and thirty
   years later sixty minutes in the Taron queue wondering whether it was worth
   it. How a childhood at Phantasialand turned into a platform that can read a
-  park day.
+  park day, and why there is a Taron wheel on my desk.
 tags:
   - park-fan
   - phantasialand
@@ -29,10 +29,10 @@ coverImage:
   alt: 'Velocicoaster loop in front of Hogwarts castle, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: the Velocicoaster mid-loop, Hogwarts castle behind it.'
 seo:
-  title: 'From a Fairy-Tale Lake to a Wait-Time AI'
+  title: 'Why park.fan Exists: A Fairy-Tale Lake, Taron and Code'
   description: >-
-    A stroller by the Märchensee, nights full of code, an AI that reads park
-    days: the story of park.fan, and when your park visit is actually worth it.
+    A stroller by the Märchensee, an hour in the Taron queue and a lot of nights
+    full of code: how park.fan began, and when your park visit is worth it.
   keywords:
     - park.fan blog
     - park.fan story
@@ -149,7 +149,7 @@ I’m still sorting the pictures and the reports are in progress; both land righ
 here on the blog over the coming weeks. One thing up front: it was worth every
 single year of looking forward to it.
 
-## The second self: the developer
+## The second self: the developer with too many side projects
 
 Running alongside all those park years there was always a second self, one that
 has been building software for over twenty-five years. Many of those years in
@@ -194,7 +194,8 @@ predicts a packed Saturday for the first time, days before it happens.
 The point was never displaying the current number. The park puts that up
 itself. It gets interesting one step earlier: a model of our own had to learn
 that a rainy bridge day in October is something completely different from a
-sunny holiday Saturday in July. That school holidays, weather, opening hours and
+sunny holiday Saturday in July. Nobody who has ever sat in a car with children
+needs that explained; a computer does. That school holidays, weather, opening hours and
 the operating days we have recorded together form a pattern you can read, if you
 stare at it stubbornly enough.
 
@@ -216,7 +217,7 @@ wait time actually measured, and whatever comes out of that is on the
 ## The best day is rarely the one you’d guess
 
 It’s always the same three questions a park visit raises, long before anyone is
-in the car. When is the best day? Is a Sunday worth it? And how busy will it
+in the car asking from the back seat whether we’re there yet. When is the best day? Is a Sunday worth it? And how busy will it
 really get?
 
 That’s exactly what park.fan was built for. Every park page has a calendar of
@@ -226,13 +227,13 @@ Tuesday during the North Rhine-Westphalian summer holidays. A bridge day is
 almost never a good idea. And the “insider tip” of going in the rain works
 exactly as long as it takes everyone else to read the same insider tip.
 
-“Sundays are busy” is therefore not a usable answer. A Sunday in late November at
+“Sundays are busy” is therefore about as useful as “summer is warm”. A Sunday in late November at
 Phantasialand is a different question from a Sunday in early August at
 Europa-Park, and that is how the calendar answers it: with a park and a date.
 Once you’re in the park, the live data tells you whether the queue in front of
 you is the exception or the rule.
 
-## What park.fan does differently
+## What park.fan does that the display at the entrance doesn’t
 
 There are good sites that show you how long the queue is right now. We do that
 too, every five minutes, worldwide. But park.fan was built for the question that
@@ -264,8 +265,8 @@ completely different depending on the ride and the day:
 
 ![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park, running since 2024. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
-The number is in the chart. From now on the story behind it is here, in three
-formats.
+The chart gives you the number. For the story behind it, there is now this
+blog, in three flavours.
 
 **Trip reports.** Long, opinionated, with photos, and with real data from
 exactly the park being visited. Not “it was lovely”, but:
@@ -287,8 +288,8 @@ as of right now:
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-Because weather is the factor that tips a park day fastest, here’s the
-situation right now at the [Phantasialand](ref:phantasialand?bare) entrance:
+Because weather is the factor that tips a park day fastest, preferably while
+your rain jacket is back in the car, here’s the situation right now at the [Phantasialand](ref:phantasialand?bare) entrance:
 
 ```weather-widget slug=phantasialand
 

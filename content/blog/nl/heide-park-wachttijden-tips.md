@@ -1,5 +1,5 @@
 ---
-title: 'Heide Park: Colossos wordt 25, en ernaast staan vier Duitse primeurs'
+title: 'Heide Park: Colossos van hout, en ernaast de ene Duitse primeur na de andere'
 translationKey: heide-park-guide
 date: '2026-09-20'
 updatedAt: '2026-09-22'
@@ -8,10 +8,11 @@ mode: published
 featured: false
 excerpt: >-
   In Soltau staat de hoogste échte houten achtbaan van Europa, en bijna drie
-  jaar lang mocht niemand erin. Colossos wordt 25 in 2026. Daaromheen haalde
-  het park vier bouwsoorten voor het eerst naar Duitsland, plus een toren van
-  103 meter die als uitkijkpunt begon. Wanneer het druk wordt, wat het seizoen
-  2026 van plan is en waarom de Big Loop nieuw onderstel kreeg.
+  jaar lang mocht niemand erin. Hij opende in 2001. Daaromheen haalde
+  het park vier bouwsoorten als eerste naar Duitsland, en zijn toren van 103
+  meter begon als uitkijkpunt. Verder: wanneer het druk wordt, waarom een
+  rustige maandag in Soltau meestal een gesloten maandag is en waarom de Big
+  Loop na ruim veertig jaar een nieuw onderstel kreeg.
 tags:
   - heide-park
   - colossos
@@ -31,11 +32,10 @@ parkLinks:
 rideLinks:
   - heide-park/*
 seo:
-  title: 'Heide Park: wachttijden, Colossos & tips 2026'
+  title: 'Heide Park 2026: Colossos, wachttijden en de beste dag'
   description: >-
-    Heide Park Soltau met echte wachttijddata voor Colossos, Krake en Flug der
-    Dämonen, plus seizoen 2026, halloweendata, het Express Ticket, minimale
-    lengtes en op welke weekdag het park het leegst is.
+    Heide Park Soltau: echte wachttijden voor Colossos en Krake, plus Halloween,
+    het Express Ticket, minimale lengtes en de weekdag met de kortste rijen.
   keywords:
     - Heide Park
     - Heide Park wachttijden
@@ -84,7 +84,8 @@ lang, vijf inversies.
 **[Desert Race](ref:heide-park/desert-race)** kwam op **15 mei 2007** als de
 eerste launch coaster van Duitsland: geen optakeling, maar een hydraulische
 katapult die de trein in twee seconden op **102 km/u** brengt. Daarna zijn het
-650 meter en 49 seconden terug naar het station.
+650 meter en 49 seconden terug naar het station, korter dan de discussie over
+wie voorin mag.
 
 ```glossary-widget slug=launch-coaster
 
@@ -95,7 +96,7 @@ dive coaster van Duitsland, gebouwd door Bolliger & Mabillard voor 12 miljoen
 euro. 41 meter hoog, zes mensen naast elkaar per rij, en boven stopt de trein
 tot de hele wagen over de rand hangt. Dan gaat het er 87 graden af, dus bijna
 verticaal, naar **103 km/u** en een immelmann. De hele rit duurt geen halve
-minuut.
+minuut, het hangen boven de rand voelt een stuk langer.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** was op **29 maart
 2014** de eerste wing coaster van het land. Bij die bouwwijze zit niemand boven
@@ -130,11 +131,11 @@ hij weer openging heette hij **Colossos – Kampf der Giganten** en had hij een
 heel themagebied om zich heen.
 
 Een stalen rail ligt er tot op vandaag niet op. Wie van houten achtbanen houdt,
-merkt dat vanaf de eerste drop.
+merkt dat vanaf de eerste drop, en zijn rug uiterlijk in de eerste bocht.
 
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## De rest van het park
+## De rest van het park: oudere heren en een toren
 
 De eerste achtbaan van het park is de
 **[Big Loop](ref:heide-park/big-loop)** uit **1983**, een Vekoma-looper met
@@ -174,7 +175,8 @@ De **[Dämonen Gruft](ref:heide-park/daemonen-gruft)** van Preston & Barbieri
 rijdt sinds **2024** door het oude station van de in 2011 gesloten tweede
 wildwaterbaan, vijf minuten lang. Het parcours van die waterbaan ligt onder
 Flug der Dämonen, de gebouwen bleven staan, en na dertien jaar nam het park er
-een van weer in gebruik.
+een van weer in gebruik. (Wie niets van zolder weggooit, heeft op een dag een
+nieuwe attractie.)
 
 Daar komen de attracties bij die in de zomer de langste rijen verzamelen zonder
 dat iemand erover schrijft: de
@@ -222,7 +224,7 @@ Bij de achtbanen liggen de dikke cellen allemaal in hetzelfde venster, vlak
 voor en vlak na de middag. De wildwaterbaan piekt uren later, als het warm
 geworden is. Dat past bij een park waarvan de gasten overwegend ’s ochtends met
 de auto aankomen: iedereen staat op hetzelfde moment voor dezelfde drie banen,
-en ’s middags trekt het uit elkaar.
+zoals op zaterdagochtend bij de Gamma, en ’s middags trekt het uit elkaar.
 
 Voor je planning betekent dat: het eerste uur is voor Colossos en Krake, omdat
 dat het enige moment is waarop ze allebei tegelijk kort zijn. Daarna loont het
@@ -295,7 +297,8 @@ scare zone en drie horrormazes wakker. Voor de mazes geldt een minimumleeftijd
 van **16 jaar** met identiteitscontrole, en elke maze vraagt een eigen
 tijdslotticket dat je alleen vooraf online krijgt (het bundeltje van drie lag
 laatst op € 22). Sta je te vroeg of te laat bij de ingang, dan kom je er niet
-in. Hoe zich dat verhoudt tot Toverland, Movie Park en Walibi staat in de
+in, en de maze-ingang laat daar net zo weinig over met zich praten als een
+portier op het Leidseplein. Hoe zich dat verhoudt tot Toverland, Movie Park en Walibi staat in de
 [halloweengids 2026](/blog/halloween-pretparken-2026).
 
 ## Van kermisbedrijf tot Merlin-park
@@ -315,7 +318,8 @@ Het bouwwerk dat het vroege Heide Park het best beschrijft, bestaat niet meer.
 Van **1986** tot de winter van 2011/2012 stond hier een 35 meter hoge replica
 van het Vrijheidsbeeld, ingewijd op 4 juli 1986 voor de honderdste verjaardag
 van het origineel, met een felicitatie van Ronald Reagan. Na de afbraak stond
-de bovenste helft nog een paar jaar als decoratie bij Colossos, en bij de
+de bovenste helft nog een paar jaar als decoratie bij Colossos, een late
+carrière die de Vrijheid zich vast anders had voorgesteld, en bij de
 heropening in 2019 ging ook de rest naar de sloop.
 
 Op **31 december 2001** kocht de Britse **Tussauds Group** het park, en begin
@@ -326,7 +330,7 @@ nog **1,68 miljoen**. Je ziet beide fases aan het park: de kermisherkomst aan
 de dichtheid van de attracties, het concern aan de licentiegebieden voor Peppa
 Pig en Ghostbusters.
 
-## Overnachten
+## Overnachten, desnoods in een Volkswagenbusje
 
 Wie uit Zuid-Duitsland komt, maakt er meestal twee dagen van. Het
 **Abenteuerhotel** heeft 680 bedden, vier sterren en werd in 2015 voor 20

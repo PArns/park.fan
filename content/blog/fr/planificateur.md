@@ -1,13 +1,14 @@
 ---
-title: 'Le planificateur calcule si ta journée au parc tient debout'
+title: 'Le planificateur calcule avant que tu sois dans la mauvaise file'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Un flux de temps d’attente te dit la longueur de la file maintenant. Il ne te
-  dit pas si ta liste tiendra jusqu’à la fermeture. C’est à ça que sert le
+  Un flux de temps d’attente te dit la longueur de la file maintenant. Si ta
+  liste tiendra jusqu’à la fermeture, il ne le dit pas : tu le découvres toi-même,
+  en général vers deux heures de l’après-midi. C’est à ça que sert le
   planificateur : tes attractions sur une frise, chaque bloc aussi haut que
   l’attente prévue, et la marche entre les deux.
 tags:
@@ -31,12 +32,11 @@ coverImage:
   caption: 'Fantasmic aux Hollywood Studios, juste avant le début. Dix mille personnes qui, pendant cette demi-heure, ne font la queue nulle part.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Un planificateur pour les parcs : compter les files avant de partir'
+  title: 'Journée au parc : compter les files avant de faire la queue'
   description: >-
-    Le nouveau planificateur de park.fan pose tes attractions sur une frise,
-    calcule avec les attentes prévues, connaît l’heure d’ouverture de chaque
-    attraction et les distances entre elles. Sans compte, tout dans ton
-    navigateur.
+    Le planificateur pose tes attractions sur une frise, compte avec
+    les attentes prévues et les trajets, et te dit d’avance si la journée tient.
+    Sans compte.
   keywords:
     - planifier une journée parc
     - planificateur parc attractions
@@ -91,7 +91,7 @@ Dix attractions, de l’ouverture à seize heures, et sous le plan la somme : c
 heures et quart rien qu’à faire la queue. C’est la version que l’optimiseur a
 jugée la meilleure. Sans ordre, tu attends tout autant et tu montes moins.
 
-## Entre deux attractions, il y a un chemin
+## Entre deux attractions, il y a un chemin, souvent autour d’un lac
 
 Un flux de temps d’attente peut dire qu’une attraction affiche cinquante
 minutes. Ce qu’il ne peut pas dire, c’est que depuis l’endroit où tu es, tu n’y
@@ -110,7 +110,7 @@ droite.
 Dans un parc compact, un transfert mal placé coûte trois minutes et personne ne
 le remarque. Dans un grand, il coûte un quart d’heure. Fais-le huit fois dans la
 journée et tu as perdu deux heures à marcher, qui n’apparaissent dans aucune
-statistique d’attente.
+statistique d’attente, mais très bien le soir dans tes mollets.
 
 « Juste » sur un transfert n’est pas une impression, c’est un calcul : ce
 transfert ne passe plus si la prévision se trompe autant qu’elle l’annonce
@@ -118,7 +118,8 @@ elle-même. L’API connaît cet écart pour chaque attraction.
 
 ## « Venir tôt » ne vaut pas pour toutes les attractions
 
-Le conseil qu’on lit partout tient en une phrase : la grosse attraction
+Le conseil qu’on lit sur tous les forums et qu’on entend de chaque beau-frère
+passé une fois par la Floride tient en une phrase : la grosse attraction
 d’abord, juste après l’ouverture. Parfois c’est vrai. Souvent non, et lequel des
 deux s’applique n’apparaît qu’en regardant les heures une par une.
 [Magic Kingdom](ref:magic-kingdom-park) s’y prête bien, parce que sa journée est
@@ -212,7 +213,8 @@ affirme volontairement moins qu’il ne pourrait.
 
 **La prévision se trompe, et de façon mesurable.** Chaque bloc sélectionné
 indique de combien les prévisions pour cette attraction se sont écartées en
-moyenne de ce que la journée a réellement apporté. « Typique » veut dire
+moyenne de ce que la journée a réellement apporté. (C’est ce que j’attends de
+la météo depuis des années.) « Typique » veut dire
 ici : la moitié des jours tombe plus loin. Le chiffre
 est donc présenté comme une erreur typique et jamais comme une fourchette qui
 contiendrait déjà la bonne réponse.
@@ -244,7 +246,8 @@ heure est la raison pour laquelle elle est conservée.
 Il n’y a ni compte, ni inscription, ni connexion. Ton plan est dans ton
 navigateur, et c’est le réglage par défaut, pas la version au rabais. Si tu
 nettoies les données du navigateur, il disparaît. Si tu ouvres park.fan sur ton
-téléphone, c’est un autre plan.
+téléphone, c’est un autre plan, et mieux vaut l’apprendre au petit-déjeuner
+qu’au tourniquet d’entrée.
 
 La seule exception, ce sont les notifications push. Pour pouvoir te dire qu’il
 est temps d’y aller, le plan doit se trouver sur notre serveur, et le
@@ -264,7 +267,8 @@ L’entrée passe par trois questions. Quel parc, quel jour, et qui vient.
 
 La première est un champ de recherche, et derrière se cache un détail qui part
 vite de travers. Tape « Disneyland » et tu obtiens cinq parcs sur trois
-continents qui portent tous ce nom.
+continents qui portent tous ce nom. Pour les baptêmes, la souris n’a pas fait
+preuve d’une grande imagination.
 
 ![Première étape de l’assistant : « Disneyland » saisi dans le champ de recherche, cinq parcs de cinq pays en dessous. | Un nom, cinq parcs. C’est pour ça que le planificateur retient le chemin de l’API et pas le nom.](/media/tagesplaner/planer-wizard-park-fr.webp)
 

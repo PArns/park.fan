@@ -7,8 +7,8 @@ author: patrick
 mode: published
 excerpt: >-
   Warum sich dieselbe Stunde in der Schlange mal wie zwanzig Minuten anfühlt
-  und mal wie ein halber Urlaubstag. Von der Pre-Show bis zu Little’s Law, und
-  mittendrin der Grund, warum es park.fan gibt.
+  und mal wie ein halber Urlaubstag. Mit einem atmenden Avatar, einer Formel
+  vom Bierdeckel und dem Beweis, dass Aufrücken nichts bringt.
 tags:
   - wartezeiten
   - warteschlangen
@@ -24,10 +24,10 @@ coverImage:
   alt: 'Der Baum des Lebens in Disneys Animal Kingdom, davor die Besuchermassen des Parks'
   caption: 'Disneys Animal Kingdom. Zehntausende Gäste, ein Baum, und jeder von ihnen rechnet gerade, wofür sich das Anstehen lohnt.'
 seo:
-  title: 'Wartezeiten-Psychologie im Freizeitpark'
+  title: 'Warum sich Warten im Freizeitpark so lang anfühlt'
   description: >-
-    Warum fühlen sich 60 Minuten Wartezeit an manchen Tagen wie 20 an? Die
-    Psychologie und Mathematik hinter Freizeitpark-Warteschlangen, erklärt.
+    Warum sich eine Stunde Schlange mal wie zwanzig Minuten anfühlt, warum
+    Aufrücken nichts bringt und welche Formel hinter jeder Wartezeit-Anzeige steckt.
   keywords:
     - Wartezeiten Freizeitpark
     - Warteschlangen Psychologie
@@ -53,8 +53,8 @@ um und erklärst deiner Begleitung, die Bahn sei „eh überbewertet“. An ande
 stehst du dieselben 60 Minuten und würdest hinterher schwören, es waren
 höchstens 25.
 
-Beide Male warst du derselbe Mensch in derselben Schlange. Den Unterschied
-machen zwei Dinge, die gute Parks gleichzeitig im Griff haben: Psychologie und
+Beide Male warst du derselbe Mensch in derselben Schlange, mit denselben müden
+Beinen. Den Unterschied machen zwei Dinge, die gute Parks gleichzeitig im Griff haben: Psychologie und
 Kapazität. Die eine entscheidet, wie sich das Warten _anfühlt_, die andere, wie
 lang die Schlange _wirklich_ ist.
 
@@ -65,7 +65,7 @@ dem Nachmittag eigentlich mit mir passiert war, wollte ich danach genau wissen.
 Es kommen dabei zwei Formeln vor, und beide passen zusammen auf einen
 Bierdeckel.
 
-## Warum sich Minuten dehnen
+## Warum sich Minuten wie Kaugummi ziehen
 
 Das Grundproblem hat **David Maister**, damals Professor an der Harvard Business School, schon 1985 in seinem
 Klassiker
@@ -83,7 +83,7 @@ Maister hat acht davon aufgeschrieben. Diese drei sieht man in jeder Queue:
   gleich mehr.
 - **Unfaires Warten ist unerträglich.** Nichts ruiniert die Stimmung schneller
   als das Gefühl, andere ziehen vorbei. Deshalb verstecken Parks ihre
-  Express-Spuren, so gut es eben geht.
+  Express-Spuren, so gut es eben geht, und meistens geht es nicht besonders gut.
 - **Warten auf etwas Wertvolles hält man länger durch.** Je größer die
   Vorfreude, desto geduldiger die Schlange. Für ein Flat Ride vom Jahrmarkt
   stehen wir keine 20 Minuten. Für den neuen Mega-Coaster reden wir uns 90
@@ -101,20 +101,21 @@ Kollegen schon 1991 unter dem schönen Titel
 [„Entertain, Enlighten, and Engage“](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 dass schon simple Ablenkung die empfundene Wartequalität deutlich verbessert.
 Im Experiment reichte dafür ein Nachrichten-Bildschirm in einer Bankfiliale.
+Keine Animatronic, kein Soundtrack, einfach ein Fernseher an der Wand.
 
 Der Mechanismus dahinter: Unser Gehirn kann Zeit nur dann akribisch mitzählen,
 wenn es sonst nichts zu tun hat. Richtet sich die Aufmerksamkeit auf Musik,
 Details im Theming oder eine Show, fehlen dem inneren Zähler schlicht die
 Ressourcen, und die Überschätzung schmilzt zusammen. Dafür ist alles da, was
 du in einer guten Warteschlange siehst: Soundtracks, Animatronics, interaktive
-Elemente, versteckte Details. Das ist viel Aufwand für einen Gang, durch den man
-eigentlich nur durchlaufen soll.
+Elemente, versteckte Details. Ziemlich viel Aufwand für einen Flur, den am
+Ende alle nur so schnell wie möglich hinter sich lassen wollen.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Pre-Shows
+### Pre-Shows: Warten, das sich als Programmpunkt tarnt
 
 Am gründlichsten löst das die **Pre-Show**, die das Warten zum Teil der
 Attraktion umdeklariert. Das Paradebeispiel steht in den
@@ -222,8 +223,8 @@ Dazu kommt hier ein Kapazitäts-Trick, der beiden Seiten hilft: die
 **Single-Rider-Spur**. Wer allein fährt und sich auf den freien
 Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt, kürzt die eigene
 Wartezeit drastisch ab und hilft nebenbei dem Park, jeden Wagen randvoll zu
-machen. Jeder sonst leere Sitz ist verschenkte Kapazität, und ein Einzelfahrer füllt
-ihn, ohne dass jemand seinen Platz verliert.
+machen. Der Preis: Deine Begleitung sitzt drei Reihen weiter vorne, und ob sie
+geschrien hat, erfährst du erst am Ausgang.
 
 ```glossary-widget slug=single-rider
 
@@ -248,11 +249,11 @@ alle fünf Minuten neu ein.
 
 ![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in den Hollywood Studios. Wer hier sitzt, steht gerade nirgends an. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Wie viele Menschen eine Bahn pro Stunde schafft
+## Durchsatz: die unscheinbare Zahl, die über deinen Tag entscheidet
 
 **Durchsatz** heißt schlicht: wie viele Menschen eine Attraktion pro Stunde
-tatsächlich befördert. Diese Zahl entscheidet, wie lang die Schlange am Ende
-wirklich ist.
+tatsächlich befördert. Auf keinem Werbeplakat steht diese Zahl, und trotzdem
+entscheidet sie mehr über die Länge der Schlange als jede Animatronic.
 
 ```glossary-widget slug=ride-capacity
 
@@ -377,7 +378,8 @@ Entscheidungsgrundlage geben, und sie soll dich nicht enttäuschen. Eine Anzeige
 die zu niedrig schätzt, produziert am Ausgang lauter Menschen, die sich
 betrogen fühlen; eine, die zu hoch schätzt, schickt ein paar Gäste weg, macht
 dafür aber alle anderen glücklich. Parks entscheiden sich systematisch für den
-zweiten Fehler. Wer mit 60 Minuten rechnet und nach 45 einsteigt, verlässt die
+zweiten Fehler, genau wie der Lieferdienst, der vierzig Minuten ansagt und nach
+dreißig klingelt. Wer mit 60 Minuten rechnet und nach 45 einsteigt, verlässt die
 Station als Gewinner. Peak-End-Regel, wir erinnern uns: Die Stunde endet
 besser als erwartet, und so wird sie abgespeichert.
 
@@ -390,12 +392,11 @@ Realität treffen, steht auf der [Fancast-Seite](/fancast).
 
 ## Warum Peter Pan’s Flight immer „eskaliert“
 
-Warum hat ausgerechnet **Peter Pan’s Flight**, ein gemütlicher Dark Ride von
-1955er-Bauart, keine Achterbahn, kein Thrill, in praktisch jedem Disney-Park
+**Peter Pan’s Flight** ist ein gemütlicher Dark Ride von 1955er-Bauart, keine
+Achterbahn, kein Thrill. Trotzdem steht davor in praktisch jedem Disney-Park
 der Welt, vom
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) bis
-nach Orlando, praktisch den ganzen Tag eine Schlange, die in keinem Verhältnis
-zur Fahrt steht?
+nach Orlando, den ganzen Tag eine Schlange, als gäbe es am Ende Freibier.
 
 Das hat mit der Bahn wenig zu tun und mit Arithmetik viel:
 
@@ -438,7 +439,7 @@ der Welt, und Disney wie Universal ziehen Gäste von allen Kontinenten an. Dazu
 kommt ein Faktor, den Europa in dieser Härte kaum kennt: Man kann sich dort an
 der Schlange vorbeikaufen. Lightning Lane und Express Pass verkaufen einen Teil
 der Kapazität an zahlende Gäste, und jede Express-Fahrt fehlt der
-Standby-Schlange. Headliner wie
+Standby-Schlange. Maisters unfaires Warten, diesmal mit Kassenbon. Headliner wie
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 haben deshalb trotz massiver stündlicher Kapazität regelmäßig lange Schlangen.
 
@@ -559,8 +560,8 @@ deine Beine statt. Die Wartezeit verschwindet nicht, aber sie frisst nicht mehr
 deinen Tag, und der Park verteilt die Nachfrage kontrollierter über die
 Stunden.
 
-Auf der Hardware-Seite arbeiten Parks parallel an der
-Abfertigungs-Geschwindigkeit, mit drei klassischen Mustern:
+Für alle, die lieber mit den Füßen anstehen als mit dem Daumen, schrauben die
+Parks parallel an der Station selbst:
 
 - **Getrennte Aus- und Einstiegsbereiche**, damit der Zug nicht aufs Aussteigen
   warten muss, bevor die nächste Gruppe einsteigt.
@@ -584,7 +585,7 @@ laufenden Fahrzeug, und die Attraktion schluckt so über 3.000 Gäste pro Stunde
 mehr als so mancher Mega-Coaster, mit einer Fahrzeugkette, die seit den
 Sechzigern klaglos ihre Runden dreht und nie nach einer Pause fragt.
 
-## Was davon auf park.fan steht
+## Was dir park.fan in der Schlange abnimmt
 
 Kürzer wird die nächste 60-Minuten-Schlange dadurch nicht. Aber sie liest sich
 anders, wenn man drei Dinge weiß, und die stehen auf park.fan:
@@ -603,11 +604,6 @@ anders, wenn man drei Dinge weiß, und die stehen auf park.fan:
 ```best-days-widget slug=europa-park
 
 ```
-
-Gegen die Psychologie können wir nichts tun. Ob sich die Stunde wie eine
-Stunde anfühlt oder wie der erste Akt der Fahrt, entscheidet der Park, der die
-Queue gebaut hat: mit Pre-Show, Theming und einem guten letzten Stück vor der
-Station.
 
 — Patrick
 

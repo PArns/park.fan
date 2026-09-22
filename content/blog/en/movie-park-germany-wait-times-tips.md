@@ -7,9 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The park has made a habit out of that loss: it builds rides about itself. A
-  guide for its 30th birthday, with measured wait times, the weekday every
-  other tip sheet gets wrong, the timetable from September and the Halloween
+  Batman gone, Bugs Bunny gone, and ever since the park has been building rides
+  about itself. For its 30th birthday: measured wait times, the weekday almost
+  every tip sheet gets wrong, the timetable from September and the Halloween
   Horror Festival from 26 September.
 tags:
   - movie-park
@@ -31,11 +31,11 @@ coverImage:
   caption: 'For six weeks a year this park is called Horrorwood Studios. The lettering at the entrance gets rebuilt for it, not swapped out.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park Wait Times, Best Days & Halloween 2026'
+  title: 'Movie Park Wait Times & Halloween 2026, minus Batman'
   description: >-
-    Movie Park Germany with real wait-time data: the quietest weekday, the
-    Thursday-to-Sunday timetable from September, the Halloween Horror Festival
-    from 26 September, 2026 prices and how to get there.
+    Movie Park with measured wait times: the weekday the tip sheets get wrong,
+    the autumn timetable, Halloween from 26 September and how to dodge the gate
+    price.
   keywords:
     - Movie Park Germany
     - Movie Park wait times
@@ -64,6 +64,7 @@ Of the brands all that effort was made for, not a single one is left. Bugs Bunny
 gone, Batman gone, the Gremlins gone, Police Academy gone. The park has had a
 different name since 2005, has belonged to a Spanish group since 2010, and is
 celebrating its thirtieth birthday with a ride from Paramount of all studios.
+Rather like a pearl anniversary cake with the neighbour’s name iced on it.
 
 There is also a number here that does not fit this park’s reputation at all.
 Across every operating day we have measured so far, you queue at
@@ -72,7 +73,7 @@ Across every operating day we have measured so far, you queue at
 
 And the emptiest weekday is the one no tip sheet online will tell you about.
 
-## A park that lost every brand it was built with
+## Bugs Bunny, Batman, the Gremlins: all moved out
 
 The site started out as the **Kirchhellener Märchenwald**, which the Allekötter
 family opened in 1967. That became the Traumlandpark, and in the early nineties
@@ -88,12 +89,13 @@ Parks**, who shortly afterwards renamed themselves **Six Flags**. In 2004 the
 Americans sold their European business to the private equity firm **Palamon
 Capital Partners**, and the licence agreements ended with the sale. Over the
 winter of 2004/05 the park had to rename practically everything that carried a
-name from a Warner film. In March 2005 it reopened as **Movie Park Germany**.
+name from a Warner film: a house move in which the furniture stays put and only
+the names on the doorbells change. In March 2005 it reopened as **Movie Park Germany**.
 Five years later, on 17 May 2010, the Spanish operator **Parques Reunidos**
 took over.
 
-Five of the best-known rides changed their names because of it, each time
-because a contract ran out somewhere in the background:
+Five of the best-known rides have lived under new names ever since, like
+witnesses in protection:
 
 | Opened as              | Year | Called today                                     |
 | ---------------------- | ---- | ------------------------------------------------ |
@@ -117,7 +119,8 @@ and it was something else.
 
 This backstory explains the reputation Movie Park still has in the coaster
 scene. Anyone who visited between 2012 and 2016 saw a park where little was
-moving, advertising itself with films it was no longer allowed to show.
+moving, rather like a cinema with posters in the foyer for films it is no
+longer allowed to show.
 
 ## The film history it tells instead
 
@@ -167,7 +170,8 @@ It is built inside the building of **The Lost Temple** (2014), and under that
 lies another layer: from 1996 that spot held **Movie Magic**, the attraction
 Warner used to explain to visitors how films are made. Thirty years later
 Paramount explains the same thing in the same place. Minimum height 100
-centimetres, a Paramount showroom at the exit.
+centimetres. Your fee as an extra: the exit leads through a Paramount
+showroom.
 
 ## The other seven coasters
 
@@ -188,12 +192,12 @@ each.
 
 The sequence is unusual, because you get accelerated three times before the ride
 even starts. The train is thrown forwards and backwards along the launch track,
-and only on the third run is there enough speed for the top hat, after which
-come an Immelmann, a heartline roll and a corkscrew. The soundtrack is by
+and only on the third run is there enough speed for the top hat, like an
+estate car trying to get up a snowy driveway. After that come an Immelmann, a heartline roll and a corkscrew. The soundtrack is by
 IMAscore, with a projection preshow before it.
 
-It is also the ride where racing for it in the morning pays off the most: its queue is at its longest in the second hour and never gets that
-long again.
+It is also the ride where racing for it in the morning pays off the most: its
+queue is at its longest in the second hour and never gets that long again.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -223,15 +227,15 @@ replaced around 200 metres of pine and Oregon pine track in the winter of
 
 It rattles. After 27 years it is loud and rough, a bit more bearable at the back
 of the train than at the front, and for me the second ride is where the headache
-starts. It still belongs on the list once, because it matters too much to German
-coaster history. If your benchmark is Colossos at [Heide-Park](ref:heide-park),
+starts. It still belongs on the list once, like the obligatory visit to a great-aunt:
+it matters too much to German coaster history to skip. If your benchmark is Colossos at [Heide-Park](ref:heide-park),
 leave it at that one ride.
 
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** is the
-ride with the longest queue in this park, and its headline numbers give no hint
-why.
+ride with the longest queue in this park, and its headline numbers read like
+those of a children’s party ride.
 Opened on **18 June 2011**, a bobsled coaster by **Gerstlauer** in the former
 Gremlins hall, 3,000 square metres, eight metres tall, 400 metres long,
 **36 km/h**. Parques Reunidos signed off five million euros for it, a month
@@ -248,8 +252,8 @@ thing surprisingly quiet inside, and the second lift hill pulls with friction
 wheels, so the car speeds up as it climbs.
 
 The reason is on the spec sheet anyway, one line further down: **848 people per
-hour**. For a park that lets in tens of thousands on a strong day, that is too
-little, and you can see it in our numbers all day long.
+hour**. For a park that lets in tens of thousands on a strong day, that is one open
+till at Ikea on a Saturday, and you can see it in our numbers all day long.
 
 ```glossary-widget slug=ride-capacity
 
@@ -261,7 +265,7 @@ little, and you can see it in our numbers all day long.
 Looping Coaster** that exists dozens of times over worldwide in slight
 variations. It opened on 6 April 2001 as **Eraser**, 689 metres, 80 km/h, two
 inversions, two trains of twenty people. Your legs hang free and your head sits
-between two hard shoulder restraints.
+between two hard shoulder restraints like a walnut in a nutcracker.
 
 ```glossary-widget slug=suspended-coaster
 
@@ -295,7 +299,7 @@ is a speed rapid river by Intamin from the opening year that has already had
 three lives: The NeverEnding Story in 1996, Mystery River from 2005, and since
 7 May 2018 an Arthurian tale with dark figures, an enchanted forest and a lake
 monster at the end. Of the three versions the current one is the best, and it
-gets you wet.
+gets you wet, often right down to your socks.
 
 ```glossary-widget slug=river-rapids
 
@@ -324,7 +328,7 @@ for exactly that reason.
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
 finally, is the log flume in **Nickland**, built for primary school children,
 and still one of the longest queues in the park, because on hot afternoons
-half the park heads for it at once.
+half the park discovers its inner child at once.
 
 The stages have been part of this place since day one: a studio park without a
 stunt show was unthinkable in 1996, so the Police Academy Stunt Show ran from
@@ -356,7 +360,7 @@ them. Star Trek, the biggest ride in the park, sits mid-table.
 
 That has little to do with popularity and a lot to do with throughput. Van
 Helsing manages 848 people per hour, and because the ride is indoors it is also
-what half the park heads for when it rains. How capacity and demand turn into a
+the porch everybody tries to squeeze under at once when it rains. How capacity and demand turn into a
 wait time is covered at length in
 [the art of waiting](/blog/the-art-of-waiting).
 
@@ -373,7 +377,8 @@ way round**. Dora, Excalibur and Area 51 have their busy hour in the late
 afternoon, because at thirty degrees everybody eventually wants to get wet.
 
 And then there is Van Helsing. That row jumps up in the second hour and then
-stays on the same value until closing. Anyone who was not there in the first
+stays on the same value until closing, like roadworks on the M25 that never
+get worse and never end. Anyone who was not there in the first
 sixty minutes will not find a better moment all day.
 
 Compared with the neighbourhood:
@@ -465,8 +470,9 @@ The quietest of the upcoming operating days according to our calendar:
 ```
 
 April to June each carry roughly twenty to twenty-five measured days, July and
-August a few more. Those five months are solid, and they say what everybody
-suspects: it gets busy during the summer holidays.
+August a few more. Those five months are solid, and they say what anyone who has
+hunted for a parking space in August suspects: it gets busy during the summer
+holidays.
 
 January, March and December, on the other hand, have only three or four measured
 days behind their value. The order of magnitude holds, but I would not commit to
@@ -489,7 +495,8 @@ Exactly one house is new, but it is one with a name even people who dislike the
 genre will know: **Jason Universe** brings Jason Voorhees to Bottrop and works
 its way through parts two to six of the series. The other eight come from
 previous years, two of them reworked. The **Ahoj-Brause Horror Lab** has been
-given extra scares and a new storyline around taste tests and a testing lab, the
+given extra scares and a new storyline around taste tests and a testing lab (not a
+sentence anyone expected to write about sherbet powder), the
 true crime house **Murder Museum** a pathology scene. On top of that there is
 **PHOBIA – The Live Horror Game Show** in Studio 7, a stage show where the
 audience plays along instead of watching.
@@ -607,8 +614,8 @@ The pass itself has three things in the small print:
 
 - **Bronze has the most blackout dates**: all of December and January, plus
   every public holiday, the Saturdays during the NRW holidays, the October
-  Saturdays and Halloween itself. Which is to say exactly the days most people
-  want to go.
+  Saturdays and Halloween itself. Which is to say exactly the days you want to
+  go.
 - **Parking is only included from Gold up.** With Bronze and Silver the parking
   season ticket costs €25 extra, otherwise you pay the €9 on every visit.
 - **There is a daily quota.** Every visit has to be registered beforehand, and
@@ -631,7 +638,7 @@ the prices are the most frequently named criticism in visitor reviews. The park
 has announced improvements for 2026. I have not noticed any so far, and I eat
 here as quickly as possible.
 
-Whether it is raining in Bottrop decides half the park:
+Whether it is raining in Bottrop decides where the queues pile up:
 
 ```weather-widget slug=movie-park-germany
 

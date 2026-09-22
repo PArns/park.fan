@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: “hard gaan”, Untamed en een polder die in 1957 nog zee was'
+title: 'Walibi Holland: “hard gaan”, Untamed en een akker waar in 1957 nog vissen zwommen'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-09-22'
@@ -7,13 +7,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland staat op land dat in 1957 nog onder water lag, adverteert al
-  twaalf jaar met een woord uit de hardstylescene en heeft met Untamed een van
-  de beste achtbanen van Europa, waarvoor je op een normale dag nauwelijks
-  wacht. Over
-  een park dat bezoekers stelselmatig verkeerd inschatten, over de
-  Halloween-experiences waar mensen vrijwillig voor betalen, en over het
-  kerstevenement dat het park zojuist heeft geschrapt.
+  Walibi Holland staat op een akker die in 1957 nog zee was, adverteert met
+  een slogan die het ooit zelfs op condooms drukte, en heeft met Untamed een
+  van de beste achtbanen van Europa, waarvoor je op een normale dag nauwelijks
+  wacht. Plus Halloween-experiences waarvoor mensen vrijwillig bijbetalen om
+  aan een plafondrail vastgegespt te worden, en een kerstevenement dat het
+  park net heeft geschrapt.
 tags:
   - walibi-holland
   - untamed
@@ -34,10 +33,11 @@ coverImage:
   caption: 'De ingang van Untamed. Het hout eronder komt grotendeels nog van Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: 'Walibi Holland: Untamed, wachttijden & Halloween'
+  title: 'Walibi Holland: Untamed, wachttijden & horror in de polder'
   description: >-
-    Walibi Holland begrijpen: het concept “hard gaan”, Untamed en YOY met echte
-    wachttijddata, de Halloween Fright Nights, prijzen en bereikbaarheid.
+    Achtbanen op oude zeebodem: Untamed en YOY met echte wachttijddata, de
+    Halloween Fright Nights waarvoor je graag bijbetaalt, prijzen en
+    bereikbaarheid.
   keywords:
     - Walibi Holland
     - Walibi Holland wachttijden
@@ -66,22 +66,22 @@ Daarna kiept de trein over een rand die steiler is dan verticaal.
 
 Ik rijd graag ver voor achtbanen, maar Walibi Holland is zelfs voor mijn doen
 een aanslag: ruim tweeënhalf uur vanaf Keulen, en in de tweede helft kom je
-niets meer tegen behalve windmolens en koolzaadvelden. Daarom wordt het park
-over het hoofd gezien. De [Efteling](ref:efteling) en
+niets meer tegen behalve windmolens en koolzaadvelden. Het park wordt dan ook
+vaak over het hoofd gezien. De [Efteling](ref:efteling) en
 [Toverland](ref:attractiepark-toverland) liggen dichterbij,
-[Phantasialand](ref:phantasialand) ligt om de hoek, en wie vanuit Noordrijn-Westfalen een dag Nederland plant, rijdt zelden dat extra uur naar Flevoland.
+[Phantasialand](ref:phantasialand) ligt om de hoek, en wie vanuit Noordrijn-Westfalen een dag Nederland plant, plakt er zelden vrijwillig nog een uur polder aan vast.
 
 Dat is een fout. Untamed alleen zou al genoeg zijn, maar de betere reden is een
 idee dat bij een eerste bezoek volstrekt zinloos lijkt en bij het derde alles
 verklaart. Het staat in twee woorden op half Biddinghuizen geplakt: **hard gaan**.
 
-## Een park op een voormalige zeebodem
+## Eerst zee, dan koeien, dan achtbanen
 
 Het begon hier allemaal met koeien.
 
 Op **21 mei 1971** opende prinses Beatrix op het verse polderland de
 **Flevohof**, een landbouwpark van 150 hectare. Het idee: stadskinderen laten
-zien waar melk vandaan komt. Er waren stallen, kassen, een kaasmakerij, een paar
+zien dat melk niet in pakken groeit. Er waren stallen, kassen, een kaasmakerij, een paar
 speeltoestellen. Twee decennia lang was het een uitje voor schoolklassen en
 gezinnen, daarna liep het financieel niet meer, en begin jaren negentig ging het
 bedrijf failliet. In 1992 opende de Flevohof voor het laatst.
@@ -114,9 +114,10 @@ De bezoekersaantallen lopen al jaren net onder de miljoengrens: 936.000 in
 boekjaar 2023, 919.000 in 2024 en laatstelijk **972.000** in het boekjaar
 oktober 2024 tot september 2025, een plus van bijna zes procent.
 Marketingdirecteur Marc Guffens noemde dat “het beste jaar ooit, als je de
-bezoekersaantallen uit de Six Flags-tijd niet meetelt”, omdat er destijds per
+bezoekersaantallen uit de Six Flags-tijd niet meetelt” (een record met een sterretje), omdat er destijds per
 gast veel minder bleef hangen. Ter vergelijking: de Efteling doet ongeveer het
-vijfvoudige.
+vijfvoudige, en daar heeft iedereen die in Biddinghuizen in de rij staat alleen
+maar plezier van.
 
 ## “Hard gaan”: het concept
 
@@ -134,7 +135,8 @@ ingang staan en deelde er zelf uit. Het park verkocht ze nog jaren.
 In **2017** trok de marketingafdeling aan de noodrem en verving de slogan door
 **“Dare to get Real”**. Dat hield precies één seizoen stand. In een intern stuk
 uit het najaar van 2017 stond dat het resultaat “achterbleef bij de
-verwachtingen”, de boodschap “te ingewikkeld en te diepzinnig” was, en dat men
+verwachtingen”, de boodschap “te ingewikkeld en te diepzinnig” was (dat verwijt moet
+een pretparkslogan maar eens verdienen), en dat men
 “waarschijnlijk een te kleine doelgroep had aangesproken”. In **2018** was
 `#Hardgaan` terug, en het is sindsdien de huisstijl.
 
@@ -163,9 +165,8 @@ alles op iets anders: het wil dat je schreeuwt. Zes achtbanen met inversies, nau
 waar je bij regen kunt schuilen, wel muziek op elk pad en een volume dat niemand
 per ongeluk heeft ingesteld.
 
-Wie hier een tweede Efteling zoekt, rijdt teleurgesteld naar huis. Wie een
-achtbaanpark met een festival achter het hek verwacht, krijgt precies dat, op
-vol volume.
+Wie hier een tweede Efteling zoekt, vindt geen Sprookjesbos, wel een bas die hem
+tot in de rij voor de friet achtervolgt.
 
 ### Als het concept te ver gaat
 
@@ -205,8 +206,8 @@ https://www.youtube.com/watch?v=fFPGRQAs-Xk
 ## Untamed
 
 Op de plek waar Untamed nu staat, stond van 2000 tot 2018 **Robin Hood**, een
-houten achtbaan van Vekoma met een twijfelachtige reputatie: luid en met de
-jaren steeds onaangenamer. Op **28 oktober 2018** reed hij voor het laatst.
+houten achtbaan van Vekoma met een twijfelachtige reputatie: luid, en elk jaar een
+stukje dichter bij een hernia. Op **28 oktober 2018** reed hij voor het laatst.
 Daarna kwam **Rocky Mountain Construction** uit Idaho, sloopte de houten rails,
 liet een groot deel van de houten constructie staan en legde daarop een stalen
 rail die zich in vormen laat buigen die met hout onmogelijk zijn. Op **1 juli
@@ -270,7 +271,8 @@ Bij de Golden Ticket Awards eindigde Untamed in 2019 op plek vijf van de beste
 nieuwe achtbanen van het jaar, en in de wereldwijde stalen ranglijsten staat hij
 sindsdien stabiel in de top 50 (2024: plek 42, 2025: plek 48). Ik zou hem
 duidelijk hoger zetten, en wel om een eigenschap die zich slecht laat meten: hij is na zeven jaar nog altijd
-soepel.
+soepel, op hetzelfde houten frame waar Robin Hood vroeger de tussenwervelschijven
+herschikte.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -302,8 +304,8 @@ lifthill en lopen de hele rit naast, om en langs elkaar. De opening was op
 
 Wie met een kind op pad is dat precies op de grens zit tussen “wil wel” en
 “durft nog niet”, vindt hier de elegantste oplossing die ik ken: jullie rijden
-tegelijk, jullie zien elkaar de hele tijd, en toch rijdt ieder de baan die bij
-hem past.
+tegelijk, jullie zien elkaar de hele tijd, ieder rijdt de baan die bij hem past,
+en achteraf kan niemand beweren dat de ander heeft afgehaakt.
 
 ![De letters “Goliath” bij de ingang, daarachter de lifthill van de baan | Goliath, sinds 2002 de hoogste achtbaan van het park. | left](/media/walibi-holland/goliath-4x3.jpg)
 
@@ -444,8 +446,9 @@ Per baan ziet het er zo uit:
 
 De beste baan van het park heeft niet de langste rij, die is voor de
 nieuwigheid. Untamed zit in de middenmoot, op één lijn met een SLC uit 1994 en
-een Mack-baan van 680 meter. Dat is geen kritiek op YOY, een nieuwe baan trekt
-altijd. Maar het betekent wel: loop je ’s ochtends meteen de Wilderness in, dan
+een Mack-baan van 680 meter. Dat is geen kritiek op YOY. Een nieuwe baan trekt
+altijd, en half Nederland gaat uit principe eerst daar in de rij staan waar de verf
+nog nat is. Maar het betekent wel: loop je ’s ochtends meteen de Wilderness in, dan
 heb je Untamed al gereden voordat de YOY-rij echt is opgeschoven.
 
 Interessanter wordt het in vergelijking met de buurt. Zelfde databasis, zelfde
@@ -456,7 +459,7 @@ rekenmethode, alle gemeten openingsdagen:
 ```
 
 In de tijd dat je in Phantasialand **één keer** voor
-[Taron](ref:phantasialand/taron) staat, rijd je Untamed een paar keer. Op
+[Taron](ref:phantasialand/taron) staat, rijd je Untamed een paar keer en heb je daarna nog tijd voor friet. Op
 parkniveau ontstaat hetzelfde beeld:
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
@@ -686,7 +689,8 @@ houdt op om op één dag twee dingen tegelijk te willen zijn. Na twaalf jaar
 
 ## Wanneer je moet gaan
 
-Het seizoen loopt van **april tot begin november**, daarna is het dicht. In het
+Het seizoen loopt van **april tot begin november**, daarna houdt de polder
+winterslaap. In het
 voorjaar en het najaar opent het park op woensdagen, in het weekend en in de
 vakanties, van eind juni tot eind augustus dagelijks.
 
@@ -747,7 +751,7 @@ datum verschillend.
 
 - **Kassaprijs dagticket:** € 46 (vanaf 12 jaar). Wie online en voor een rustige
   dag boekt, betaalt afhankelijk van de datum vanaf **€ 24,50**. De kassa
-  gebruiken is hier de duurst denkbare beslissing.
+  gebruiken is hier de duurst denkbare beslissing, nog voor het derde softijsje.
 - **Kinderen:** 3 tot 5 jaar € 23, 6 tot 11 jaar € 36, onder de 2 gratis.
   Senioren vanaf 55 en gasten met een beperking eveneens € 36.
 - **Parkeren:** € 12 per auto per dag, twintig laadpunten voor elektrische
@@ -791,7 +795,7 @@ omdat je na een nacht in het slachthuis niet ook nog tweeënhalf uur snelweg voo
 de boeg hebt.
 
 **Eten.** Hier ben ik nuchter: de horeca is het zwakste deel van het park. Er
-zijn friet, burgers, pizza, allemaal prima, niets waarvoor je terugkomt. De
+zijn friet, burgers, pizza, degelijke kantinekost, niets waarvoor je terugkomt. De
 foodcourt **Flavors** bij het nieuwe YOY-gebied met terras aan het water is het
 aangenaamste adres, alleen al vanwege het uitzicht op de twee banen. Eet vroeg,
 rond half twaalf, of laat vanaf half drie.

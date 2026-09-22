@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: twee parken, en het kleinste heeft de langste rijen'
+title: 'Disneyland Paris: twee parken, en uitgerekend het kleine heeft de lange rijen'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
@@ -7,11 +7,11 @@ mode: published
 featured: false
 excerpt: >-
   Het Disneyland Park heeft 43 attracties waarvoor we wachttijden meten,
-  Disney Adventure World veertien. Toch sta je in het kleine park langer in de
-  rij, en in twee jaar meten kwam het omgekeerde geen enkele maand en geen
-  enkele weekdag voor. Verder: waarom de langste rij van het grote park bij
-  een dark ride uit 1992 hoort, wat het tweede park sinds 29 maart 2026
-  anders doet, en welke achtbaan sinds 7 september tien maanden dicht is.
+  Disney Adventure World veertien, en toch sta je in het kleine park langer in
+  de rij. In twee jaar meten kwam het omgekeerde geen enkele maand en geen
+  enkele weekdag voor. Verder: waarom de langste rij van het grote park staat
+  voor anderhalve minuut dark ride uit 1992, wat het tweede park sinds 29 maart
+  2026 anders doet en welke achtbaan sinds 7 september tien maanden pauze heeft.
 tags:
   - disneyland-paris
   - wachttijden
@@ -32,11 +32,11 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Onder de rotssokkel zit een zeventien meter lange draak.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris: wachttijden, beste tijd & tips 2026'
+  title: 'Disneyland Paris 2026: waar de rijen echt lang zijn'
   description: >-
-    Echte wachttijdcijfers uit twee jaar meten: welk van de twee Parijse
-    parken je langer laat wachten, wanneer het er het rustigst is en hoe je
-    de dag over beide verdeelt.
+    Twee jaar wachttijdcijfers: waarom het kleinere Parijse park de langere
+    rijen heeft, wanneer het rustiger wordt en met welk park je de dag beter
+    begint.
   keywords:
     - Disneyland Paris
     - Disneyland Paris wachttijden
@@ -76,7 +76,7 @@ Disney Resort, zo'n 32 kilometer ten oosten van Parijs in de nieuwe stad
 Marne-la-Vallée. Het terrein beslaat ongeveer **2.100 hectare**, ruim de
 helft daarvan is bebouwd. Het is tot op vandaag het best bezochte pretpark
 van Europa en met circa 17.000 medewerkers de grootste werkgever van
-Frankrijk op één locatie.
+Frankrijk op één locatie. (Iemand moet die churros tenslotte bakken.)
 
 Op dat terrein staan twee parken. Het
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) is dat uit
@@ -118,15 +118,16 @@ vertrekt vanuit het station aan de oever, duikt een tunnel in onder de
 Rivers of the Far West en komt pas op het eiland weer aan de oppervlakte,
 waar het eigenlijke traject begint. Gebouwd door Vekoma, geopend op de
 allereerste dag van het park, minimale lengte 102 centimeter. In 2015 en
-2016 lag de baan een jaar stil: nieuwe remmen, opnieuw geschilderde decors
-en een paar effecten overgenomen uit de Californische versie.
+2016 lag de baan een jaar stil en kwam terug met nieuwe remmen, verse verf
+en een paar effecten die ze in Californië hadden geleend.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
 is de Parijse Haunted Mansion, met één verschil waarvoor fans speciaal
 afreizen: de versies in Florida en Californië vertellen bewust geen
 doorlopend verhaal. Parijs wel: Melanie Ravenswood wacht sinds haar
 mislukte bruiloft nog altijd in haar trouwjurk, en haar vader Henry heeft
-haar aanbidders een voor een vermoord, iets wat de renovatie van 2019 voor
+haar aanbidders een voor een vermoord (een schoonvader met nogal eigen ideeën
+over kennismaken), iets wat de renovatie van 2019 voor
 het eerst expliciet uitspreekt. Zes minuten in de Omnimover, 92
 animatronics, plus de Engelse vertellersstem van Vincent Price, waarvan in
 2019 delen zijn teruggebracht in de attractie. Na vijftien maanden
@@ -152,8 +153,8 @@ De langste rij van het park hoort bij **Peter Pan's Flight**, een dark
 ride uit 1992 die in anderhalve minuut voorbij is. Populariteit verklaart
 daar maar de helft van. De andere helft is doorstroming: Hyperspace
 Mountain rijdt met vier treinen en verwerkt bijna 2.000 mensen per uur, en
-werkt zijn rij dus de hele dag door af. Een dark ride met kleine gondels
-kan dat niet. Wie de ochtend aan de achtbanen besteedt, staat 's middags
+werkt zijn rij dus de hele dag door af. Kleine vliegende piratenschepen
+waar net één gezin in past, redden dat niet. Wie de ochtend aan de achtbanen besteedt, staat 's middags
 voor anderhalve minuut dark ride in de langste rij van het park.
 
 Drie andere attracties kosten die ochtend ook tijd.
@@ -201,11 +202,13 @@ rijdt de baan niet meer. Het park heeft haar uit bedrijf genomen voor de
 grootste renovatie sinds de opening: besturing, sensoren,
 communicatietechniek en delen van de rails worden vervangen, daarnaast
 wordt er gereinigd, geschilderd en gerepareerd. De geplande terugkeer is
-**zomer 2027**, dus zo'n tien maanden later.
+**zomer 2027**. Zo'n tien maanden lang moet de Oost-Australische Stroom het
+dus zonder passagiers stellen.
 
 In onze data zie je dat zonder enig persbericht: de laatste live wachttijd
-van deze attractie dateert van **6 september, 20:21 UTC**. Elke andere
-gesloten attractie van het park kreeg daarna nog gewoon nieuwe waarden.
+van deze attractie dateert van **6 september, 20:21 UTC**. Daarna viel ze gewoon
+stil, terwijl elke andere gesloten attractie van het park keurig haar status
+bleef doorgeven.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
@@ -244,7 +247,7 @@ Zo verdeelt een dag in het Disneyland Park zich over de uren:
 
 ```
 
-## Wanneer je moet gaan
+## Wanneer je moet gaan als het park nooit dichtgaat
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
@@ -269,7 +272,8 @@ opnieuw berekend:
 
 De fastlane heet in Parijs **Disney Premier Access** en wordt per attractie
 en per rit verkocht. Een vaste prijs bestaat niet: Disney vraagt
-afhankelijk van attractie, datum en tijdstip verschillende bedragen, in
+afhankelijk van attractie, datum en tijdstip verschillende bedragen, zoals je
+dat kent van vliegtickets in de zomervakantie. In
 onze database staat 5 euro per persoon als ondergrens, en naar boven toe is
 bij de populairste attracties flink wat ruimte. Daarnaast is er een
 dagvariant voor alle deelnemende attracties, die afhankelijk van de datum
@@ -281,15 +285,18 @@ eveneens sterk schommelt.
 
 Voordat je dat koopt, loont een blik op de ranglijst hierboven. De prijs
 volgt de vraag, en de hoogste vraag hebben niet per se de attracties waar
-je zelf het langst zou staan.
+je zelf het langst zou staan. Wie betaalt voor een achtbaan die rond het
+middaguur toch vlot doorloopt en daarna braaf achteraan aansluit bij Peter
+Pan, heeft het geld in de verkeerde rij uitgegeven.
 
 ## Hoe ik de dag zou plannen
 
 Heb je maar één dag en kies je voor één park, neem dan het Disneyland
 Park: meer attracties, kortere rijen, en het kasteel is de reden waarom de
 meeste bezoekers hier sowieso komen. Loop bij opening meteen naar
-Fantasyland voor de dark rides, want die rijen haal je later op de dag niet
-meer in. Big Thunder Mountain, Hyperspace
+Fantasyland voor de dark rides, ook al voelt het verkeerd om Hyperspace
+Mountain links te laten liggen voor een vliegend piratenschip: die rijen haal
+je later op de dag niet meer in. Big Thunder Mountain, Hyperspace
 Mountain en Indiana Jones passen goed in het middaguur, als iedereen aan
 het eten is. En boek je beide parken, draai dan de gebruikelijke volgorde
 om en begin in Adventure World, waar onze rope-drop-analyse voor
@@ -318,8 +325,9 @@ aankoop, niet bij het draaihekje. Actuele prijzen voor jouw datum staan op
 
 **Eten.** Beide parken hebben tafelrestaurants met reservering en volop
 snelle horeca ertussenin. Onze database telt 35 horecagelegenheden in het
-Disneyland Park en 19 in Adventure World. Rond het middaguur, als de rijen
-zich bij de balies vormen, zakken die bij de attracties even in.
+Disneyland Park en 19 in Adventure World. Rond het middaguur verhuist de rij
+van de attracties naar de balies, en is de patatkraam even de populairste
+attractie van het park.
 
 ## Veelgestelde vragen over Disneyland Paris
 

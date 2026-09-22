@@ -9,7 +9,7 @@ excerpt: >-
   Een kinderwagen aan het sprookjesmeer, een gondelvaart door “1001 Nacht”, en
   dertig jaar later zestig minuten in de rij bij Taron met de vraag of dat het
   waard is. Hoe een jeugd in Phantasialand uitgroeide tot een platform dat
-  pretparkdagen kan lezen.
+  pretparkdagen kan lezen, en waarom er een wiel van Taron op mijn bureau ligt.
 tags:
   - park-fan
   - phantasialand
@@ -29,11 +29,10 @@ coverImage:
   alt: 'Velocicoaster-looping voor het kasteel van Zweinstein, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: de Velocicoaster in de looping, daarachter het kasteel van Zweinstein.'
 seo:
-  title: 'Waarom park.fan bestaat'
+  title: 'Waarom park.fan bestaat: sprookjesmeer, Taron en code'
   description: >-
-    Een kinderwagen aan het sprookjesmeer, nachten vol code, een AI die
-    pretparkdagen leest: het verhaal achter park.fan en wanneer je bezoek de
-    moeite waard is.
+    Een kinderwagen aan het sprookjesmeer, een uur in de rij bij Taron en veel
+    nachten vol code: hoe park.fan ontstond en wanneer je bezoek loont.
   keywords:
     - park.fan blog
     - park.fan verhaal
@@ -154,7 +153,7 @@ De foto’s ben ik nog aan het sorteren, de verslagen zijn in de maak; allebei
 landen ze de komende weken precies hier op de blog. Alvast dit: het was elk
 afzonderlijk jaar voorpret waard.
 
-## Het tweede ik: de ontwikkelaar
+## Het tweede ik: de ontwikkelaar met te veel zijprojecten
 
 Parallel aan al die parkjaren was er altijd een tweede ik, een dat al meer dan
 vijfentwintig jaar software bouwt. Veel van die jaren in de VPN-wereld, eerst
@@ -199,7 +198,8 @@ dagen voordat die plaatsvindt.
 Het ging nooit om het tonen van het actuele getal. Dat hangt het park zelf op.
 Interessant wordt het een stap eerder: een eigen model moest leren dat een
 regenachtige brugdag in oktober iets totaal anders is dan een zonnige
-vakantiezaterdag in juli. Dat vakantiekalenders, weer, openingstijden en de
+vakantiezaterdag in juli. Wie ooit met kinderen in de auto zat, hoeft dat niet
+uitgelegd te krijgen, een computer wel. Dat vakantiekalenders, weer, openingstijden en de
 bijgehouden openingsdagen samen een patroon vormen dat je kunt lezen, als je
 maar hardnekkig genoeg kijkt.
 
@@ -221,7 +221,7 @@ staat op de [Fancast-pagina](/fancast).
 ## De beste dag is zelden de dag die je vermoedt
 
 Het zijn altijd dezelfde drie vragen die een parkbezoek oproept, lang voordat
-iemand in de auto zit. Wanneer is de beste dag? Is een zondag de moeite waard?
+iemand in de auto zit en van achteren vraagt of we er al bijna zijn. Wanneer is de beste dag? Is een zondag de moeite waard?
 En hoe druk wordt het echt?
 
 Precies daarvoor is park.fan gebouwd. Elke parkpagina heeft een kalender van de
@@ -231,20 +231,21 @@ zomervakantie van Noordrijn-Westfalen. Een brugdag is bijna nooit een goed idee.
 En de “geheime tip” om bij regen te gaan werkt precies zolang tot alle anderen
 diezelfde geheime tip gelezen hebben.
 
-“Zondagen zijn druk” is daarom geen bruikbaar antwoord. Een zondag eind november
+“Zondagen zijn druk” is daarom ongeveer even nuttig als “in de zomer is het
+warm”. Een zondag eind november
 in het Phantasialand is een andere vraag dan een zondag begin augustus in het
 Europa-Park, en de kalender beantwoordt de vraag ook zo: met park en datum. Sta
 je eenmaal in het park, dan laat de live data zien of de rij voor je de
 uitzondering is of de regel.
 
-## Wat park.fan anders doet
+## Wat park.fan anders doet dan de aanduiding bij de ingang
 
 Er zijn goede sites die je laten zien hoe lang de rij op dit moment is. Dat
 kunnen wij ook, elke vijf minuten, wereldwijd. Maar park.fan is gebouwd voor de vraag
 die daaraan voorafgaat: _is het überhaupt de moeite om te gaan?_
 
-Daarom kijkt het model tot **365 dagen** vooruit in plaats van alleen naar het
-bord boven de ingang, en de kalender van de beste dagen maakt daar één antwoord
+Daarom kijkt het model tot **365 dagen** vooruit in plaats van alleen naar de
+aanduiding bij de ingang, en de kalender van de beste dagen maakt daar één antwoord
 van: gaan of liever niet. Of het model het goed heeft, hoef je mij niet te
 geloven, dat staat op de [Fancast-pagina](/fancast).
 
@@ -269,8 +270,8 @@ totaal anders, afhankelijk van de baan en de dag:
 
 ![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park, sinds 2024 in bedrijf. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
-Het getal staat in de grafiek. Het verhaal erachter staat vanaf nu hier, in drie
-vormen.
+Het getal levert de grafiek. Voor het verhaal erachter is er vanaf nu deze blog,
+in drie smaken.
 
 **Reisverslagen.** Lang, met een mening, met foto’s, en met echte data uit precies
 het park dat bezocht is. Geen “was leuk”, maar:
@@ -292,8 +293,8 @@ dit verhaal, stand van dit moment:
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-Omdat het weer de factor is die een parkdag het snelst doet kantelen, hier de
-situatie precies nu bij de ingang van
+Omdat het weer de factor is die een parkdag het snelst doet kantelen, het
+liefst als de regenjas nog in de auto ligt, hier de situatie precies nu bij de ingang van
 [Phantasialand](ref:phantasialand?bare):
 
 ```weather-widget slug=phantasialand

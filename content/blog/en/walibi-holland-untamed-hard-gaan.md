@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: "hard gaan", Untamed and a polder that was sea in 1957'
+title: 'Walibi Holland: "hard gaan", Untamed and a field where fish swam in 1957'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-09-22'
@@ -7,11 +7,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland stands on land that was still under water in 1957, has been
-  advertising with a word from the hardstyle scene for twelve years, and has in
-  Untamed one of the best coasters in Europe, which on an ordinary day you
-  barely queue for. About a park visitors keep misreading, the Halloween experiences
-  people pay extra for, and the Christmas event the park has just cancelled.
+  Walibi Holland stands on a field that was sea in 1957, advertises with a
+  slogan it once printed on condoms, and has in Untamed one of Europe’s best
+  coasters, which on an ordinary day you barely queue for. Add Halloween
+  experiences where people pay extra to be strapped to a ceiling rail, and a
+  Christmas event the park has just cancelled.
 tags:
   - walibi-holland
   - untamed
@@ -32,10 +32,11 @@ coverImage:
   caption: 'The entrance to Untamed. Most of the timber underneath still dates from Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: 'Walibi Holland: Untamed, Wait Times & Halloween'
+  title: 'Walibi Holland: Untamed, Wait Times & Horror in a Polder'
   description: >-
-    Understanding Walibi Holland: the "hard gaan" concept, Untamed and YOY with
-    real wait-time data, the Halloween Fright Nights, prices and getting there.
+    Coasters on a former sea floor: Untamed and YOY with real wait-time
+    data, the Halloween Fright Nights people happily pay extra for, prices
+    and getting there.
   keywords:
     - Walibi Holland
     - Walibi Holland wait times
@@ -64,23 +65,23 @@ Then the train tips over an edge that is steeper than vertical.
 
 I happily drive a long way for coasters, but Walibi Holland is a stretch even by
 my standards: a good two and a half hours from Cologne, and for the second half
-you pass nothing but wind turbines and rapeseed. The park gets overlooked
-because of it. The [Efteling](ref:efteling) and
+you pass nothing but wind turbines and rapeseed. So the park gets overlooked a
+lot. The [Efteling](ref:efteling) and
 [Toverland](ref:attractiepark-toverland) are closer,
 [Phantasialand](ref:phantasialand) is on the doorstep, and anyone planning a day
-in the Netherlands rarely drives the extra hour into Flevoland.
+in the Netherlands rarely volunteers for an extra hour of polder.
 
 That is a mistake. Untamed alone would be reason enough, but the better reason
 is an idea that looks completely pointless on a first visit and explains
 everything by the third. It is plastered in two words all over Biddinghuizen: **hard gaan**.
 
-## A park on a former sea floor
+## First sea, then cows, then coasters
 
 It all started with cows.
 
 On **21 May 1971** Princess Beatrix opened the **Flevohof** on the fresh polder
-land, a 150-hectare agricultural park. The idea: let city kids see where milk
-comes from. There were stables, greenhouses, a dairy, a few pieces of play
+land, a 150-hectare agricultural park. The idea: show city kids that milk does
+not grow in cartons. There were stables, greenhouses, a dairy, a few pieces of play
 equipment. For two decades it was a destination for school trips and families,
 then the sums stopped working, and in the early nineties the business went
 bankrupt. The Flevohof opened for the last time in 1992.
@@ -113,8 +114,9 @@ Attendance has been running just below the million mark for years: 936,000 in
 financial year 2023, 919,000 in 2024 and most recently **972,000** for October
 2024 to September 2025, up by almost six per cent. Marketing director Marc
 Guffens called it "the best year ever, if you leave out the attendance from the
-Six Flags era", because back then far less of it stuck per guest. For scale: the
-Efteling does around five times as much.
+Six Flags era" (a record with an asterisk), because back then far less of it stuck per guest. For scale: the
+Efteling does around five times as much, which is good news for anyone queueing
+in Biddinghuizen.
 
 ## "Hard gaan": the concept
 
@@ -132,7 +134,8 @@ on principle and handed out their own. The park kept selling them for years.
 In **2017** the marketing department pulled the ripcord and swapped the slogan
 for **"Dare to get Real"**. It lasted exactly one season. An internal paper from
 autumn 2017 said the result had "fallen short of expectations", the message was
-"too complicated and too profound", and they had "probably addressed too narrow
+"too complicated and too profound" (a charge few theme-park slogans ever
+manage to earn), and they had "probably addressed too narrow
 an audience". By **2018** `#Hardgaan` was back, and it has been the house style ever since.
 
 What turns all of this into more than an advertising line is the neighbours.
@@ -159,9 +162,8 @@ here everything aims at something else: it wants you to scream. Six coasters wit
 shelter in when it rains, music on every path and a volume level nobody set by
 accident.
 
-Come looking for a second Efteling and you will drive home disappointed. Come
-expecting a coaster park with a festival over the fence and that is exactly
-what you get, at full volume.
+Come looking for a second Efteling and you will find no fairy-tale forest, just
+a bass line that follows you into the queue for fries.
 
 ### When the concept goes too far
 
@@ -200,8 +202,8 @@ https://www.youtube.com/watch?v=fFPGRQAs-Xk
 ## Untamed
 
 Where Untamed stands today, **Robin Hood** stood from 2000 to 2018, a Vekoma
-wooden coaster with a questionable reputation: loud, and increasingly unpleasant
-over the years. It ran for the last time on **28 October 2018**. Then **Rocky
+wooden coaster with a questionable reputation: loud, and every year a little
+closer to a slipped disc. It ran for the last time on **28 October 2018**. Then **Rocky
 Mountain Construction** from Idaho arrived, tore off the wooden track, left most
 of the timber structure standing and laid a steel rail on top of it, one that
 bends into shapes wood could never manage. On **1 July 2019** **Untamed** opened,
@@ -265,7 +267,8 @@ At the Golden Ticket Awards, Untamed came fifth among the best new coasters of
 2019, and it has since sat steadily in the global steel top 50 (2024: 42nd,
 2025: 48th). I would rank it a good deal higher, because
 of a quality that is hard to measure: after
-seven years it is still smooth.
+seven years it is still smooth, on the same timber frame where Robin Hood used to
+rearrange people’s spines.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -295,8 +298,8 @@ whole ride alongside, around and past each other. It opened on **5 April 2025**.
 
 If you are travelling with a child right on the line between "wants to" and
 "doesn’t quite dare", this is the most elegant solution I know: you ride at the
-same time, you can see each other the whole way, and each of you still rides the
-version that suits you.
+same time, you can see each other the whole way, each of you rides the version
+that suits you, and afterwards nobody gets to claim the other one chickened out.
 
 ![The "Goliath" lettering at the entrance, the ride’s lift hill behind it | Goliath, the tallest coaster in the park since 2002. | left](/media/walibi-holland/goliath-4x3.jpg)
 
@@ -434,7 +437,8 @@ Ride by ride it looks like this:
 
 The best ride in the park does not have the longest queue, the new one does.
 Untamed sits mid-table, level with an SLC from 1994 and a Mack ride 680 metres
-long. That is no criticism of YOY, a new ride always pulls. But it does mean
+long. That is no criticism of YOY. A new ride always pulls, and half of Holland
+queues on principle wherever the paint is still fresh. But it does mean
 this: walk straight into the Wilderness in the morning and you will have ridden
 Untamed before the YOY queue has got anywhere much.
 
@@ -446,7 +450,7 @@ method, every operating day we have measured:
 ```
 
 In the time you queue **once** for [Taron](ref:phantasialand/taron) at
-Phantasialand, you ride Untamed several times. At park level the picture
+Phantasialand, you ride Untamed several times and still have time for fries. At park level the picture
 is the same:
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
@@ -675,7 +679,8 @@ mascot for six-year-olds, that was overdue.
 
 ## When to go
 
-The season runs from **April to early November**, after which it closes. In
+The season runs from **April to early November**, after which the polder
+hibernates. In
 spring and autumn the park opens on Wednesdays, at weekends and during holidays,
 and daily from late June to the end of August.
 
@@ -736,7 +741,7 @@ amounts depending on the date.
 
 - **Gate price, day ticket:** €46 (from age 12). Book online and for a quiet day
   and you pay from **€24.50** depending on the date. Using the ticket office
-  here is the most expensive decision available.
+  here is the most expensive decision available, ahead of the third ice cream.
 - **Children:** ages 3 to 5 €23, ages 6 to 11 €36, under 2 free. Seniors from 55
   and guests with disabilities also €36.
 - **Parking:** €12 per car per day, twenty charging points for EVs on site.
@@ -778,7 +783,7 @@ relaxed option, because after a night in the slaughterhouse you do not also have
 two and a half hours of motorway ahead of you.
 
 **Food.** I will be blunt here: catering is the weakest part of the park. There
-are fries, burgers, pizza, all fine, nothing you come back for. The **Flavors**
+are fries, burgers, pizza, decent canteen food, nothing you come back for. The **Flavors**
 food court at the new YOY area with its waterside terrace is the most pleasant
 address, if only for the view of the two tracks. Eat early, around half eleven,
 or late from half two.

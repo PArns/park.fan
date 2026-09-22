@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Belgium: der andere Walibi, mit der höchsten Achterbahn der Beneluxstaaten'
+title: 'Walibi Belgium: der Walibi, an den keiner denkt, mit der höchsten Bahn im Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
 updatedAt: '2026-09-22'
@@ -7,14 +7,13 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Wer in Deutschland „Walibi“ hört, denkt an Holland und an Untamed. Dabei
-  liegt der ältere der beiden Parks in Wavre, eine halbe Autostunde hinter
-  Brüssel, heißt seit 1975 so, abgesehen von drei Jahren als Six Flags
-  Belgium, und hat seit 2021 mit Kondaa die höchste und
-  schnellste Achterbahn der Beneluxstaaten stehen. Wartezeiten, Technik,
-  ein Gründer, der eigentlich nur einen Wasserski-Teich bauen wollte, und
-  hundert Millionen Euro, die Compagnie des Alpes gerade in acht neue
-  Themenwelten steckt.
+  Wer in Deutschland „Walibi“ hört, denkt an Holland und an Untamed. Das
+  Original steht aber in Wavre, eine halbe Autostunde hinter Brüssel, heißt
+  seit 1975 so (abgesehen von drei Jahren als Six Flags Belgium) und hat seit
+  2021 mit Kondaa die höchste und schnellste Achterbahn der Beneluxstaaten.
+  Wartezeiten, Technik, ein Gründer, der eigentlich nur einen Wasserski-Teich
+  wollte, und hundert Millionen Euro für acht neue Themenwelten, die sich etwas
+  mehr Zeit lassen als geplant.
 tags:
   - walibi-belgium
   - kondaa
@@ -33,11 +32,11 @@ coverImage:
   caption: 'Kondaa in der Ibilaw-Saison 2025. Tagsüber fehlt das Skelettboot, an der Physik der Bahn ändert das nichts.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Walibi Belgium: Wartezeiten, Kondaa & Tipps 2026'
+  title: 'Walibi Belgium: Kondaa, Wartezeiten & Tipps vom Original'
   description: >-
-    Walibi Belgium in Wavre: echte Wartezeit-Daten zu Kondaa, der höchsten
-    Achterbahn der Beneluxstaaten, dazu Firmengeschichte, Ibilaw-Halloween und
-    der Vergleich mit dem bekannteren Walibi Holland.
+    Das ältere Walibi steht in Wavre: Wartezeiten zu Kondaa, der höchsten
+    Achterbahn im Benelux, dazu Geschichte, Ibilaw und warum trotzdem alle
+    an Holland denken.
   keywords:
     - Walibi Belgium
     - Walibi Belgium Wartezeiten
@@ -67,9 +66,10 @@ oben. Der Magen nicht.
 Das ist [Kondaa](ref:walibi-belgium/kondaa), und wenn du in Deutschland
 „Walibi“ sagst, denkt so gut wie niemand zuerst an diese Bahn. Die meisten
 denken an [Walibi Holland](ref:walibi-holland) und an
-[Untamed](ref:walibi-holland/untamed). Dabei ist Wavre der ältere der beiden
-Parks, er hat der ganzen Kette den Namen gegeben, und seit Mai 2021 steht hier
-die höchste und schnellste Achterbahn der Beneluxstaaten.
+[Untamed](ref:walibi-holland/untamed). Dabei ist Wavre das Original, das alle
+für die Kopie halten: der ältere der beiden Parks, der Namensgeber der ganzen
+Kette, und seit Mai 2021 auch noch der mit der höchsten und schnellsten
+Achterbahn der Beneluxstaaten.
 
 ## Zwei Parks, ein Name
 
@@ -84,8 +84,9 @@ steht in unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026).
 Beide Parks gehören seit 2006 demselben Konzern, dem französischen
 **Compagnie des Alpes** (über die Tochter Grévin & Cie), zu dem auch der
 [Parc Astérix](ref:parc-asterix) zählt. Verwechseln lassen sie sich trotzdem
-kaum, sobald man einmal drinsteht: Wavre ist kompakter, älter im Baubestand und
-fährt ein völlig anderes Flaggschiff.
+kaum, jedenfalls nicht, sobald man drinsteht: Wavre ist kompakter, älter im
+Baubestand und fährt ein völlig anderes Flaggschiff. Vorher, beim Eintippen ins
+Navi, sieht das anders aus.
 
 So stehen die drei belgisch-niederländischen Coaster-Parks der Region gerade
 zueinander:
@@ -113,16 +114,18 @@ Fahrt.
 
 Mit der Eröffnung holte Kondaa zwei Rekorde auf einmal. Sie
 wurde die höchste und die schnellste Achterbahn der Beneluxstaaten und
-verdrängte damit [Goliath](ref:walibi-holland/goliath) im eigenen
-Schwesterpark [Walibi Holland](ref:walibi-holland) von der Höhe und
+verdrängte damit ausgerechnet [Goliath](ref:walibi-holland/goliath) im
+eigenen Schwesterpark [Walibi Holland](ref:walibi-holland) von der Höhe
+(Konzernfeiern stelle ich mir seitdem etwas angespannt vor) und
 [Fury](ref:bobbejaanland/fury) im belgischen
 [Bobbejaanland](ref:bobbejaanland) vom Tempo. 25 Millionen Euro hat der Bau
 gekostet, zwei Züge mit je sechs Wagen zu vier Personen befördern rund 1.080
 Gäste pro Stunde durch die anderthalb Minuten Fahrzeit. Mitfahren darf, wer
 zwischen 130 und 195 cm groß ist.
 
-Ich fahre für einzelne Achterbahnen weite Strecken, Kondaa ist eine davon.
-Dass sie sich kein einziges Mal überschlägt, fehlt ihr nicht. Sie zieht dich
+Ich fahre für einzelne Achterbahnen Strecken, die andere nur für Hochzeiten
+fahren, und Kondaa ist eine davon. Den fehlenden Looping vermisst man nach der
+ersten Airtime nicht mehr. Sie zieht dich
 fünfzig Meter hoch und lässt dich danach anderthalb Minuten lang nicht mehr
 los.
 
@@ -134,16 +137,17 @@ los.
 
 ```
 
-Die ruhigsten Tage der kommenden Wochen, live berechnet:
+Die ruhigsten Tage der kommenden Wochen, live berechnet, damit du nicht
+ausgerechnet an dem Samstag kommst, an dem halb Wallonien dieselbe Idee hatte:
 
 ```best-days-widget slug=walibi-belgium
 
 ```
 
-## Der Rest des Parks
+## Der Rest des Parks, vom Oldtimer bis zum Hafen
 
 Kondaa bekommt die Schlagzeilen. Die älteste Achterbahn im Park ist 39 Jahre
-älter und fährt immer noch.
+älter und denkt nicht an Rente.
 
 **[Turbine](ref:walibi-belgium/turbine)** ist diese Bahn, ein
 **Schwarzkopf Shuttle Loop** von 1982. Der Zug
@@ -160,14 +164,16 @@ zurückgegeben.
 Zug hängt unter der Schiene, und die Füße baumeln in jeder Kurve frei.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)**
 (1992, ursprünglich „Colorado“ getauft) ist die klassische Minenachterbahn auf
-785 Metern Strecke, gemütliches Tempo, enge Kurven, ideal zum Reinkommen.
+785 Metern Strecke, gemütliches Tempo, enge Kurven, ideal zum Reinkommen oder
+für alle, die nach Kondaa „erst mal was Ruhiges“ brauchen.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) ist ein **Boomerang**: Der Zug
 wird rückwärts einen Lifthill hochgezogen, durchfährt vorwärts einen
 Doppel-Looping (Cobra Roll) und fährt dieselbe Strecke danach rückwärts noch
 einmal. Damit hat der Park zwei Cobra Rolls: eine, die dich auf den Kopf
 stellt, und die von Kondaa, die es bleiben lässt. **[Loup-Garou](ref:walibi-belgium/loup-garou)**, ebenfalls seit 2001,
 ist eine hölzerne Konstruktion von Vekoma, einem Hersteller, den man eher mit
-Stahl verbindet.
+Stahl verbindet. Ein Holz-Vekoma ist ungefähr so häufig wie ein Belgier, der
+seine Pommes ohne Mayo bestellt.
 
 Jünger sind **[Pulsar](ref:walibi-belgium/pulsar)** (2016, Mack Rides,
 Launched-Wasserachterbahn), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
@@ -188,12 +194,14 @@ Familienbereich steht mit **Kondaala** eine Kinderattraktion, die sich ihren
 Namen bei Kondaa geliehen hat.
 
 Von den beiden Neuheiten im Park ist Mecalodon die, die mich mehr überrascht hat.
-Ein Familiencoaster hat es schwer, neben einer 50-Meter-Bahn überhaupt
-wahrgenommen zu werden, und Dock World schafft es trotzdem. Der Hafen wirkt
+Ein Familiencoaster neben einer 50-Meter-Bahn ist normalerweise die Vorband,
+bei der alle noch am Bierstand stehen. Dock World schafft es trotzdem, dass man
+hinschaut. Der Hafen wirkt
 gebaut und nicht hingestellt, mit Details, an denen man auch ohne Fahrgeschäft
 lange stehen bleibt.
 
-Wer nach der Achterbahn-Runde noch Zeit hat: **Aqualibi**, das angeschlossene
+Wer nach der Achterbahn-Runde noch Zeit und die Badehose im Kofferraum hat:
+**Aqualibi**, das angeschlossene
 Freizeitbad mit Wellenbecken und Rutschen, kostet seit 2008 separaten Eintritt
 und zählt nicht zum normalen Tagesticket.
 
@@ -208,7 +216,8 @@ Wasserski vorzuführen. Aus der Vorführfläche wurde in wenigen Jahren ein
 richtiger Park, und am **26. Juli 1975** öffnete Walibi seine Tore, mit rund
 **47.000 Besuchern** in der ersten Saison. Das Maskottchen, ein Känguru,
 stand von Anfang an neben dem Eingang. Dass „Walibi“ fast wie „wallaby“ klingt,
-ist Zufall, der Name kommt von den drei Gemeinden.
+ist Zufall, der Name kommt von den drei Gemeinden. Das Känguru hat den Zufall
+trotzdem dankend angenommen.
 
 Der Park wuchs schnell über Wavre hinaus. Aus dem einen Standort wurde eine
 kleine europäische Kette mit Ablegern in Frankreich (unter anderem
@@ -240,7 +249,7 @@ rund **100 Millionen Euro**, mit denen 75 % der Fläche in acht neue
 Themenwelten verwandelt werden sollten, dazu zehn neue Attraktionen. Fertig
 sein sollte das Ganze 2023. Die erste große Welt kam mit **Kondaa** 2021, die
 bislang letzte, **Dock World** mit Mecalodon, 2025, also zwei Jahre nach dem
-Zieltermin.
+Zieltermin. Am BER hätte man dafür Sekt aufgemacht.
 
 Durchgezogen wird der Plan trotzdem, und nicht nur in Wavre: Im Schwesterpark
 [Walibi Holland](ref:walibi-holland) hat die **Compagnie des Alpes** im selben
@@ -260,7 +269,7 @@ Dazu kommen mehrere Spukhäuser und Scare Zones, etwa der Clownzirkus
 **Psycho Circus** und **Arachnophobia**, und das Ganze ist familienfreundlicher
 als die strikten Ab-16-Events anderer Parks. Eines der Spukhäuser, **Aquarium**, steht im selben Dock-World-Areal,
 in dem tagsüber Mecalodon fährt, in einem angeblich seit den Neunzigern
-geschlossenen Schauaquarium. Den **Speedy Pass**, die Fast-Lane des Parks, gibt
+geschlossenen Schauaquarium, nach dessen Fischen man besser nicht fragt. Den **Speedy Pass**, die Fast-Lane des Parks, gibt
 es zu Ibilaw auch in Varianten, die die Spukhäuser einschließen. Wie sich das gegen Toverland, Movie Park und Co.
 schlägt, steht in unserem
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
@@ -289,14 +298,15 @@ seinen Neuheitenbonus hat. Die Klassiker **Vampire**,
 du sowieso zwischen den Zonen wechselst, **Cobra** und **Loup-Garou** eignen
 sich als Lückenfüller zwischen zwei größeren Bahnen. Wasserfahrten wie
 **Pulsar** und **Flash Back** hebst du dir für die heißeste Stunde des Tages
-auf, und wer noch Zeit und ein zweites Ticket hat, hängt einen Nachmittag im
-**Aqualibi** dran.
+auf, dann sind die Socken bis zum Parkplatz wieder trocken, und wer noch Zeit
+und ein zweites Ticket hat, hängt einen Nachmittag im **Aqualibi** dran.
 
 ## Praktisches: Anreise, Tickets, Öffnungszeiten
 
 **Anreise.** Walibi Belgium liegt in **Wavre** (Provinz Wallonisch-Brabant),
 direkt an der N238, rund eine halbe Autostunde von Brüssel. Aus dem deutschen
-Grenzgebiet (Aachen, Köln) sind es je nach Route deutlich unter drei Stunden;
+Grenzgebiet (Aachen, Köln) sind es je nach Route deutlich unter drei Stunden,
+den Brüsseler Ring im Berufsverkehr nicht mitgerechnet;
 mit dem Zug fährt man nach Brüssel und von dort weiter Richtung Wavre.
 
 **Öffnungszeiten.** Die Saison läuft von Anfang April bis in den November,
@@ -308,7 +318,7 @@ Uhrzeiten zeigt die [Parkseite](ref:walibi-belgium) tagesaktuell.
 
 **Essen.** Imbissstände gibt es überall im Park. Wer sitzen will, geht in den
 Themenbereich um Kondaa, dort steht ein Restaurant, das nach der Bahn daneben
-benannt ist.
+benannt ist. Namen leiht man sich in diesem Park offenbar gern, siehe Kondaala.
 
 **Tickets.** Der Park verkauft seine Tickets online günstiger als am
 Schalter, mit wechselnden Aktionspreisen im Lauf der Saison (im September etwa

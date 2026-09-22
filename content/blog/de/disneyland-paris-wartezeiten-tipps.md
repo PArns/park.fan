@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris: zwei Parks, und der kleinere hat die längeren Schlangen'
+title: 'Disneyland Paris: zwei Parks, und ausgerechnet der kleine hat die langen Schlangen'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
@@ -7,11 +7,11 @@ mode: published
 featured: false
 excerpt: >-
   Disneyland Park hat 43 Attraktionen mit Wartezeiten, Disney Adventure World
-  vierzehn. Trotzdem steht man im kleinen Park länger an, und in zwei Jahren
+  vierzehn, und trotzdem steht man im kleinen Park länger an. In zwei Jahren
   Messung war es in keinem Monat und an keinem Wochentag umgekehrt. Dazu: warum
-  die längste Schlange im großen Park an einer Dunkelfahrt von 1992 hängt, was
-  der zweite Park seit dem 29. März 2026 anders macht, und welche Bahn seit dem
-  7. September für zehn Monate zu ist.
+  sich die längste Schlange im großen Park vor anderthalb Minuten Dunkelfahrt
+  von 1992 bildet, was der zweite Park seit dem 29. März 2026 anders macht und
+  welche Bahn seit dem 7. September zehn Monate Pause hat.
 tags:
   - disneyland-paris
   - wartezeiten
@@ -32,11 +32,11 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Unter dem Felssockel sitzt ein siebzehn Meter langer Drache.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris: Wartezeiten, beste Zeit & Tipps 2026'
+  title: 'Disneyland Paris 2026: wo die Schlangen wirklich lang sind'
   description: >-
-    Echte Wartezeit-Daten aus zwei Jahren Messung: welcher der beiden Pariser
-    Parks länger anstehen lässt, wann es dort am ruhigsten ist und wie du den
-    Tag auf beide verteilst.
+    Zwei Jahre Wartezeit-Daten: warum der kleinere Pariser Park die längeren
+    Schlangen hat, wann es ruhiger wird und mit welchem Park du den Tag besser
+    anfängst.
   keywords:
     - Disneyland Paris
     - Disneyland Paris Wartezeiten
@@ -73,7 +73,8 @@ Disneyland Paris hat am **12. April 1992** eröffnet, damals noch als Euro Disne
 Resort, rund 32 Kilometer östlich von Paris in der Neustadt Marne-la-Vallée. Das
 Gelände misst etwa **2.100 Hektar**, gut die Hälfte davon ist bebaut. Bis heute
 ist es der meistbesuchte Freizeitpark Europas und mit rund 17.000 Beschäftigten
-der größte Arbeitgeber Frankreichs an einem einzigen Standort.
+der größte Arbeitgeber Frankreichs an einem einzigen Standort. (Irgendwer muss
+die Churros ja frittieren.)
 
 Auf diesem Gelände stehen zwei Parks. Der
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ist der
@@ -113,16 +114,17 @@ ist die größte Ausgabe dieser Bahn in allen Disney-Parks und die einzige, die
 Station am Ufer los, taucht in einen Tunnel unter den Rivers of the Far West ab
 und kommt erst auf der Insel wieder ans Tageslicht, wo die eigentliche Strecke
 beginnt. Gebaut hat sie Vekoma, eröffnet wurde sie am ersten Tag des Parks,
-Mindestgröße 102 Zentimeter. 2015 und 2016 war sie ein Jahr lang zu: neue
-Bremsen, neu lackierte Kulissen und ein paar Effekte aus der kalifornischen
-Fassung.
+Mindestgröße 102 Zentimeter. 2015 und 2016 war sie ein Jahr lang zu und kam
+mit neuen Bremsen, frischer Farbe und ein paar Effekten zurück, die man sich in
+Kalifornien ausgeliehen hatte.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
 ist die Pariser Haunted Mansion, mit einem Unterschied, für den Fans eigens
 anreisen: Die Fassungen in Florida und Kalifornien erzählen bewusst keine
 zusammenhängende Geschichte. Paris schon: Melanie Ravenswood wartet seit ihrer
 geplatzten Hochzeit im Brautkleid, und ihr Vater Henry hat die Bewerber der
-Reihe nach umgebracht, was die Überarbeitung von 2019 zum ersten Mal eindeutig
+Reihe nach umgebracht (ein Brautvater mit sehr eigenen Vorstellungen vom
+Kennenlernen), was die Überarbeitung von 2019 zum ersten Mal eindeutig
 ausspricht. Sechs Minuten im Omnimover, 92 Animatronics, dazu die englische
 Erzählstimme von Vincent Price, von der 2019 Teile zurück in die Anlage kamen.
 Nach fünfzehn Monaten Umbau lief sie am 3. Mai 2019 wieder.
@@ -147,7 +149,8 @@ Die längste Schlange des Parks gehört **Peter Pan's Flight**, einer Dunkelfahr
 von 1992, die in anderthalb Minuten vorbei ist. Beliebtheit erklärt davon nur
 die Hälfte. Die andere Hälfte ist Durchsatz: Hyperspace Mountain fährt vier Züge
 und schafft knapp 2.000 Personen in der Stunde, arbeitet ihre Schlange also den
-ganzen Tag über ab. Eine Dunkelfahrt mit kleinen Gondeln kann das nicht. Wer den
+ganzen Tag über ab. Kleine fliegende Piratenschiffe, in die gerade eine
+Familie passt, schaffen das nicht. Wer den
 Morgen an den Achterbahnen verbringt, steht nachmittags für anderthalb Minuten
 Dunkelfahrt in der längsten Schlange des Parks.
 
@@ -193,11 +196,13 @@ Datenbasis und mit deutlichem Abstand. Seit dem **7. September 2026** fährt sie
 nicht mehr. Der Park hat sie für die größte Instandsetzung seit ihrer Eröffnung
 aus dem Betrieb genommen: Steuerungen, Sensoren, Kommunikationstechnik und
 Teile der Schienen werden ersetzt, dazu wird gereinigt, lackiert und repariert.
-Geplante Rückkehr ist der **Sommer 2027**, also rund zehn Monate.
+Geplante Rückkehr ist der **Sommer 2027**. Rund zehn Monate lang muss der
+Ostaustralstrom also ohne Fahrgäste auskommen.
 
 In unseren Daten sieht man das ohne jede Pressemitteilung: Die letzte
-Live-Wartezeit dieser Bahn stammt vom **6. September, 20:21 UTC**. Jede andere
-geschlossene Attraktion des Parks wurde danach weiter fortgeschrieben.
+Live-Wartezeit dieser Bahn stammt vom **6. September, 20:21 UTC**. Danach ist
+sie einfach verstummt, während jede andere geschlossene Attraktion des Parks
+brav weiter ihren Status gemeldet hat.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
@@ -236,7 +241,7 @@ So verteilt sich ein Tag im Disneyland Park über die Stunden:
 
 ```
 
-## Wann du hinfahren solltest
+## Wann du hinfahren solltest, wenn der Park nie zumacht
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
@@ -262,7 +267,8 @@ hier, laufend neu berechnet:
 
 Die Fast-Lane heißt in Paris **Disney Premier Access** und wird pro Bahn und pro
 Fahrt verkauft. Einen festen Preis gibt es nicht: Disney ruft je nach
-Attraktion, Datum und Tageszeit unterschiedliche Beträge auf, in unserer
+Attraktion, Datum und Tageszeit unterschiedliche Beträge auf, das Prinzip kennst
+du von Flugtickets in den Sommerferien. In unserer
 Datenbank steht als Untergrenze 5 Euro pro Person, nach oben ist bei den
 gefragten Bahnen erheblich Luft. Dazu gibt es eine Tagesvariante für alle
 teilnehmenden Attraktionen, die je nach Datum ebenfalls stark schwankt.
@@ -273,14 +279,19 @@ teilnehmenden Attraktionen, die je nach Datum ebenfalls stark schwankt.
 
 Bevor du das kaufst, lohnt ein Blick auf die Rangliste weiter oben. Der Preis
 richtet sich nach der Nachfrage, und die höchste Nachfrage haben nicht
-zwangsläufig die Bahnen, an denen du am längsten stehen würdest.
+zwangsläufig die Bahnen, an denen du am längsten stehen würdest. Wer für eine
+Achterbahn bezahlt, die mittags ohnehin gut durchläuft, und sich danach bei
+Peter Pan brav hinten anstellt, hat das Geld an der falschen Schlange
+ausgegeben.
 
 ## Wie ich den Tag planen würde
 
 Wenn du nur einen Tag hast und nur einen Park nimmst, nimm den Disneyland Park:
 mehr Fahrgeschäfte, kürzere Schlangen, und das Schloss ist der Grund, aus dem
 die meisten überhaupt kommen. Lauf bei Öffnung nach Fantasyland zu den
-Dunkelfahrten, denn deren Schlangen holst du später am Tag nicht mehr ein. Big Thunder Mountain, Hyperspace Mountain und Indiana Jones passen gut
+Dunkelfahrten, auch wenn es sich falsch anfühlt, Hyperspace Mountain links
+liegen zu lassen und in ein fliegendes Piratenschiff zu steigen: Deren Schlangen
+holst du später am Tag nicht mehr ein. Big Thunder Mountain, Hyperspace Mountain und Indiana Jones passen gut
 in die Mittagsstunden, wenn alle anderen essen. Und wenn du zwei Parks buchst,
 dreh die übliche Reihenfolge um und fang in Adventure World an, wo unsere
 Rope-Drop-Auswertung für Ratatouille und den Tower of Terror die größte Ersparnis
@@ -308,8 +319,9 @@ Kauf, nicht am Drehkreuz. Aktuelle Preise für dein Datum stehen auf
 
 **Essen.** Beide Parks haben Tischrestaurants mit Reservierung und viel
 Schnellgastronomie dazwischen. Unsere Datenbank führt 35 Gastronomiebetriebe im
-Disneyland Park und 19 in Adventure World. Mittags, wenn sich die Schlangen vor
-den Theken bilden, geben die an den Bahnen kurz nach.
+Disneyland Park und 19 in Adventure World. Mittags wandert die Schlange von den
+Bahnen an die Theken und macht die Pommesbude für eine Weile zur gefragtesten
+Attraktion im Park.
 
 ## Häufige Fragen zu Disneyland Paris
 

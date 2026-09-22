@@ -1,5 +1,5 @@
 ---
-title: 'Hansa-Park: de Kärnan haalt 127 km/u, en het seizoen kent geen sluitingsdag'
+title: 'Hansa-Park: de snelste achtbaan van Duitsland staat half aan de Oostzee'
 translationKey: hansa-park-guide
 date: '2026-09-22'
 updatedAt: '2026-09-22'
@@ -7,10 +7,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Sierksdorf staat de hoogste en snelste achtbaan van Duitsland, samen met
-  Silver Star, plus de hoogste gyro drop tower ter wereld. Daarbij een kalender
-  zonder één sluitingsdag, 16 avonden vol lichtfiguren in oktober en acht
-  achtbanen, waarvan er vier voor kinderen zijn gebouwd.
+  In Sierksdorf deelt de Kärnan met Silver Star de titel van hoogste en
+  snelste achtbaan van Duitsland, en ernaast staat de hoogste gyro drop tower
+  ter wereld. Daarbij een kalender zonder één sluitingsdag, 16 oktoberavonden
+  met lichtfiguren in plaats van horrormazes en acht achtbanen, waarvan de helft
+  voor kinderen is gebouwd.
 tags:
   - hansa-park
   - kaernan
@@ -30,11 +31,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: tips, openingstijden, prijzen, Kärnan'
+  title: 'Hansa-Park 2026: tips, prijzen en de Kärnan aan zee'
   description: >-
-    Hansa-Park Sierksdorf: openingstijden van het seizoen 2026, Herbstzauber van
-    10 tot 25 oktober, ticket- en parkeerprijzen, alle acht achtbanen met hun
-    cijfers en de kalender zonder sluitingsdag.
+    Hansa-Park Sierksdorf 2026: geen enkele sluitingsdag, Herbstzauber in
+    oktober, prijzen, parkeren (de elektrische auto betaalt meer) en alle acht
+    achtbanen.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -82,7 +83,7 @@ seizoen open is en in oktober 2.000 lichtfiguren ophangt, waar andere parken maz
 
 [Hansa-Park](ref:hansa-park?full)
 
-## De achtbanen
+## De achtbanen, van de toren tot de kleine tsaar
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** opende in 2015 en was tot dan toe de grootste investering van het park.
 Gerstlauer bouwde hem als Infinity Coaster: **1.235 meter** baan, vanaf 1,30 meter. De lifthill zit
@@ -106,8 +107,8 @@ voorbij verticaal, en die zit in het donker. Tot 2020 heette hij Fluch von Novgo
 Novgorod; in 2021 kwam er een t bij en werd de vloek een vlucht.
 
 **[Nessie](ref:hansa-park/nessie)** bouwde Anton Schwarzkopf in **1980**: 26 meter hoog, 741 meter lang, 85 km/u, met één verticale
-looping, destijds de grootste loopingbaan van Europa. Hij rijdt al 46 jaar, en sinds 2019 doet hij
-dat in een opnieuw gethematiseerd gebied.
+looping, destijds de grootste loopingbaan van Europa. Hij rijdt al 46 jaar en kreeg in 2019 een
+opnieuw gethematiseerd gebied, zoals anderen op die leeftijd een nieuwe keuken.
 
 Vier andere zijn voor kinderen gebouwd. **[Crazy Mine](ref:hansa-park/crazy-mine)** van Maurer Rides
 rijdt sinds 1997 als wilde muis in mijnschachtdecor, 13 meter hoog en na 70 seconden voorbij. De
@@ -119,8 +120,8 @@ Zar](ref:hansa-park/the-little-tsar)** sinds 2017 bij 95 centimeter, met maar li
 De jongste kwam dit seizoen erbij. De **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opende op **23 mei 2026**, opnieuw Gerstlauer,
 18 meter hoog, ruim 570 meter lang, vanaf 90 centimeter. Het park telt **zeven launches** in één
-ronde, vooruit en achteruit. Zeven versnellingen over 570 meter is veel voor een familiebaan, en je
-merkt ze aan de rijtijd: 1:45 minuten, langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) met elk 1:10.
+ronde, vooruit en achteruit. Zo vaak trek je anders alleen op in de file op de A1 bij Lübeck, op de
+eerste vakantiedag. Voor een familiebaan is dat veel, en je merkt het aan de rijtijd: 1:45 minuten, langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) met elk 1:10.
 
 ## De toren die Soltau het record afnam
 
@@ -149,7 +150,8 @@ najaar regelmatig uit de kalender, en het Movie Park sluit buiten het hoogseizoe
 weekdagen. Wie in Sierksdorf een rustige doordeweekse dag zoekt, krijgt die dus ook echt als
 openingsdag en niet als gesloten poort.
 
-De tijden zijn bijna even eenvormig. Tot **9 oktober** opent het park dagelijks om **10.00 uur** en
+De tijden zijn bijna even eentonig, in de beste zin: wie hier plant, heeft geen
+kalender met voetnoten nodig. Tot **9 oktober** opent het park dagelijks om **10.00 uur** en
 sluiten de attracties om **18.00 uur**. Precies drie dagen vallen uit de toon. Op Goede Vrijdag, 3 april,
 rijden de attracties pas vanaf 11.00 uur. Op 11 augustus blijft het terrein open tot 19.00 uur en op
 12 augustus tot 18.30 uur, maar de banen staan beide avonden toch om 18.00 uur stil. Alleen de laatste
@@ -178,7 +180,7 @@ voor in de rij zou gaan staan.
 
 Op zo'n avond zetten drie tijdstippen je dag om. De
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) en
-[Super Splash](ref:hansa-park/super-splash) sluiten al om **16.00 uur**. De [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) en [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) en [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) hebben hun **laatste rit om 19.30 uur**, omdat het vuurwerk
+[Super Splash](ref:hansa-park/super-splash) sluiten al om **16.00 uur**, waar vooral je sokken op een oktoberavond blij mee zijn. De [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) en [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) en [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) hebben hun **laatste rit om 19.30 uur**, omdat het vuurwerk
 wordt voorbereid. En tijdens de lichtparade staan elf andere attracties stil, waaronder [Highlander](ref:hansa-park/highlander?bare),
 [Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
@@ -219,7 +221,9 @@ Rudolf Erich Leicht kocht het in het najaar van 1976, samen met twee investeerde
 schatte hun aandeel in 1977 op zo'n 10 miljoen mark. Met de eerste directeur Horst Hamelberg
 ontwierp Leicht een concept rond het thema van de maritieme Hanze, en daar hoorde een verandering bij
 die nu vanzelfsprekend lijkt: in het Legoland kostte elke attractie apart, in het Hansaland werd
-stapsgewijs een alles-inclusiefkaartje ingevoerd.
+stapsgewijs een alles-inclusiefkaartje ingevoerd. Wie nu aan de kassa even
+slikt, mag zich voorstellen dat je voor elk rondje draaimolen opnieuw je
+portemonnee moest trekken.
 
 Veel Legoland-attracties bleven gewoon staan en kregen een nieuw uiterlijk. De
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), die in oktober als lichtkanaal vaart,
@@ -243,7 +247,8 @@ Landungsbrücken en ontstaat gevel voor gevel, in acht gedocumenteerde bouwfasen
 Holstentor als entree, in 2010 Brugge, Visby, Lübeck, Hamburg en Rostock, in 2011 Groningen en
 Parijs, in 2012 Londen, Ribe en Bergen, in 2013 zes andere van Kopenhagen tot Neurenberg, in 2018
 Gdańsk en Krakau, en in 2021 de tot dan grootste fase met 14 gevels uit Krakau, Stockholm, Stralsund,
-Helsinki, Riga en Venetië. Er was twintig jaar voor begroot. De laatste fase, het Palacio de Braga,
+Helsinki, Riga en Venetië. Er was twintig jaar voor begroot, een planning die je verder vooral van
+wegwerkzaamheden kent. De laatste fase, het Palacio de Braga,
 is nog niet af.
 
 De jaren sinds 2021 lezen navenant kleinschalig: Awildas Welt, de Peterhof von Novgorod in plaats van
@@ -251,7 +256,7 @@ het houthakkerskamp, New Lübeck in plaats van het westernstadje Bonanza City, h
 Baltique, de Lost Trails of Roanoke, Einars Fjordfahrt. Geen van die nieuwigheden is een achtbaan.
 Die kwam in 2026.
 
-## Overnachten
+## Overnachten: drie nachten of geen
 
 Het **HANSA-PARK Resort am Meer** ligt aan de rand van Sierksdorf, tussen het vakantiepark en het
 pretpark loopt de spoorlijn. Boeken gaat via Landal of Ostseezeit, het minimumverblijf is **drie
@@ -271,7 +276,7 @@ wegwijzer richting strand en vermijdt zo de trap.
 **Parkeren.** **€ 7** per dag voor een auto op de grote parkeerplaats, maximale doorrijhoogte 2,30
 meter. Motoren staan gratis, campers betalen € 15 per begonnen twaalf uur. Het vreemde geval is de
 e-parkeerplaats: een elektrische auto kost **€ 16 per dag**, meer dan het dubbele van een
-benzineauto. Seizoenkaarthouders vanaf 18 betalen € 2 op de grote parkeerplaats. De kortparkeerzone
+benzineauto, een tarief dat je twee keer moet lezen. Seizoenkaarthouders vanaf 18 betalen € 2 op de grote parkeerplaats. De kortparkeerzone
 voor halen en brengen is 30 minuten gratis.
 
 **Tickets 2026.** **€ 53** vanaf 12 jaar, **€ 43** voor kinderen van 4 tot en met 11 jaar, gratis

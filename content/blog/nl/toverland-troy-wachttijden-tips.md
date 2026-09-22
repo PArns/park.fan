@@ -1,5 +1,5 @@
 ---
-title: 'Toverland: Troy, de houten achtbaan waar niemand voor staat'
+title: 'Toverland: Troy, de houten achtbaan waar iedereen langsrijdt'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
 updatedAt: '2026-09-22'
@@ -10,8 +10,8 @@ excerpt: >-
   Toverland is het kleine park waar het halve Rijnland langsrijdt op
   weg naar de Efteling. Terwijl in Sevenum met Troy een houten achtbaan van GCI
   staat waar je zo’n kwartier voor wacht, en de woodie op de eindbestemming
-  ruim het dubbele kost. Over een park waar ik ooit backstage zelf een keer scare actor mocht zijn, en dat
-  tot vandaag geen fastpass verkoopt.
+  ruim het dubbele kost. Over een park zonder fastpass, waar ik zelf een keer
+  scare actor mocht zijn, voor een leeg huis.
 tags:
   - attractiepark-toverland
   - troy
@@ -35,11 +35,10 @@ coverImage:
   caption: 'Het Trojaanse paard in Ithaka. Achter de bomen erachter ligt Troy.'
   credit: 'park.fan'
 seo:
-  title: 'Toverland: Troy, wachttijden & halloweengids'
+  title: 'Toverland: Troy, wachttijden & halloween zonder fastpass'
   description: >-
-    Waarom Troy in Toverland de rustigste topachtbaan van hout in Europa is:
-    echte wachttijdcijfers, Fēnix, de Swinging Bobsled, tickets en Halloween
-    Nights.
+    Troy in Toverland: een van de beste houten achtbanen van Europa, en bijna
+    niemand neemt de afslag. Wachttijddata, Fēnix, tickets en Halloween Nights.
   keywords:
     - Toverland
     - Toverland wachttijden
@@ -76,7 +75,7 @@ niemand. Dus eruit, door de lege rij, en er weer in.
 
 Dat is het stuk dat ik moeilijk uitgelegd krijg. Troy hoort bij de beste houten
 achtbanen van Europa en staat in een park waar elk jaar heel wat
-achtbaanfans langsrijden zonder af te slaan: op de A67 tussen Venlo en
+achtbaanfans langsrijden zonder ook maar hun knipperlicht aan te zetten: op de A67 tussen Venlo en
 Eindhoven, afrit Sevenum. De meesten hebben dan nog een klein uur voor de boeg,
 tot Kaatsheuvel, naar de [Efteling](ref:efteling), de Disney van Nederland.
 
@@ -85,23 +84,24 @@ van dezelfde Amerikaanse fabrikant. Voor de ene wacht je doorgaans zo’n
 kwartier, voor de andere ruim het dubbele. De kortste rij staat in Sevenum.
 
 [Toverland](ref:attractiepark-toverland?long) in Sevenum, voor mij een van de
-mooiste kleine parken van Europa, wordt dit jaar 25. Ik heb er zelfs ooit in
-kostuum aan de andere kant gestaan.
+mooiste kleine parken van Europa, wordt dit jaar 25. Ik heb er zelfs ooit aan
+de andere kant gestaan, in kostuum en met de opdracht mensen te laten schrikken.
+Er waren er geen, maar daarover later meer.
 
-## Wat Troy zo goed maakt
+## Troy op papier en Troy in de trein
 
 De technische gegevens zijn netjes, maar niet spectaculair: 35 meter hoog,
 1.077 meter lang, 90 km/u, ruim 20.000 vierkante meter grondoppervlak. Daarmee
 is ze tot vandaag de hoogste, langste en snelste houten achtbaan van de Benelux,
-en toch verklaren die cijfers weinig. Er zijn grotere woodies die veel taaier
-aanvoelen.
+en toch verklaren die cijfers weinig. Er zijn grotere woodies die aanvoelen als
+een lange rit over de A2: veel kilometers, weinig gebeurtenissen.
 
 Het verschil zit in twee keuzes.
 
 De eerste is de layout. Troy is een **twister**, geen out-and-back met heuvels
 op een rij. In plaats van rechtdoor te rijden en daarbij omhoog en omlaag te
 gaan, verandert de baan permanent van richting en steekt ze elke meter hoogte in
-een richtingswisseling. Op papier leest de reeks elementen onschuldig:
+een richtingswisseling. Op papier leest de reeks elementen als een boodschappenlijstje:
 optakeling, first drop, airtime hill, overbanked turn, camelback, double down,
 remstuk. In de trein kom je nooit tot rust.
 
@@ -117,7 +117,8 @@ klassieke houten achtbaantrein zijn gasten door elkaar zou schudden. 24 personen
 per trein, twee treinen, 850 gasten per uur.
 
 Blijft het vooroordeel dat elke houten achtbaan vanaf een zekere leeftijd
-meesleept: dat ze rammelt. Daar werkt het park sinds **2024** aan. In een meerjarige **retrack** vervangt het elke winter zo’n 198 meter
+meesleept: dat ze rammelt. (Bij haar vaste rijders begint het vanaf een zekere
+leeftijd ook te kraken, maar daar gaat het hier niet over.) Daar werkt het park sinds **2024** aan. In een meerjarige **retrack** vervangt het elke winter zo’n 198 meter
 traject op beide rails, samen bijna 400 strekkende meter hout per seizoen. Er
 wordt gewerkt onder een tijdelijk dak, zodat regen en vorst de werkzaamheden
 niet ophouden, door twintig speciaal daarvoor opgeleide mensen uit het eigen
@@ -155,7 +156,8 @@ kosten de grote namen van de regio aan wachttijd, hout én staal:
 
 De twee Toverland-banen staan onderaan, met afstand. Voor de tijd die je in
 Phantasialand **één keer** bij [Taron](ref:phantasialand/taron) staat, rijd je
-hier [Troy](ref:attractiepark-toverland/troy) een paar keer.
+hier [Troy](ref:attractiepark-toverland/troy) een paar keer, patatpauze
+inbegrepen.
 
 Daarachter zit de rekensom uit [De kunst van het
 wachten](/blog/de-kunst-van-het-wachten), vraag gedeeld door capaciteit.
@@ -170,11 +172,11 @@ oktober. Op alle andere dagen is de rij die je ziet, de rij die er is. Een
 single rider-rij is er sinds 2023 overigens wel, maar bij één enkele attractie,
 de valtoren Dragonwatch, en die kost niets extra.
 
-## De rest van het park
+## De rest van het park: liggend, ondersteboven en nat
 
 ![Fēnix met een trein ondersteboven in de baan, blauwe rails tegen een zomerhemel | Fēnix, de langste wing coaster van Europa. De stoelen hangen links en rechts naast de rail. | left](/media/toverland/fenix-4x3.jpg)
 
-Troy is de reden dat liefhebbers komen. Maar het park leeft niet van één baan.
+Troy is de reden dat liefhebbers de afslag nemen. Maar het park leeft niet van één baan.
 
 **[Fēnix](ref:attractiepark-toverland/fenix)** is het prestigeproject van 2018: een wing
 coaster van **Bolliger & Mabillard**, 40 meter hoog, 813 meter lang, tot
@@ -191,10 +193,12 @@ zaak toch beter maakt. Wachttijd: dezelfde orde van grootte als bij Troy.
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** is de vreemde eend en mijn
 tweede favoriet hier. Vekoma bouwde in 2004 in Sevenum het wereldwijde prototype
 van de motorachtbaan: je zit niet, je ligt op een motor, handen aan het stuur,
-knieën opgetrokken, en wordt dan als launch coaster weggeschoten. Een
-ongemakkelijke, absurde, prachtige baan. Met haar mediaan heeft
-uitgerekend zij de langste typische wachttijd van alle coasters in het park, wat
-komt doordat je één voor één en liggend instapt, en dat duurt nu eenmaal.
+knieën opgetrokken, ergens tussen MotoGP en tandartsstoel, en wordt dan als
+launch coaster weggeschoten. Een ongemakkelijke, absurde, prachtige baan. Met
+haar mediaan heeft uitgerekend zij de langste typische wachttijd van alle
+coasters in het park, wat komt doordat je één voor één en liggend instapt, en
+op je buik instappen ziet er bij de meeste mensen minder elegant uit dan ze
+hopen.
 
 **[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** van Mack Rides is een spinning
 coaster in het donker, half darkride, half achtbaan, met vrij draaiende gondels
@@ -245,7 +249,8 @@ daarvoor nergens was.
 **Wunderwald**. En daarmee [Booster Bike](ref:attractiepark-toverland/booster-bike), het
 wereldwijde prototype van de motorachtbaan van Vekoma. Een park dat buiten
 Limburg nauwelijks iemand kende, liet een bouwwijze ontwikkelen die nog niet
-bestond.
+bestond. Dat is ongeveer alsof het dorpscafé bij de brouwerij een eigen bier
+bestelt, en de brouwerij zegt ja.
 
 **2007** volgde het eerste echte buitengebied: **Ithaka**, Griekse oudheid,
 gebouwd rond één enkele baan. Voor 6,5 miljoen euro kreeg een park met destijds
@@ -254,7 +259,8 @@ vijfvoudige aan publiek er een neerzetten. Troy was pas de tweede GCI-installati
 in Europa, na Thunderbird in het Finse PowerPark, en de elfde wereldwijd. In
 maart 2007, kort voor de opening, waaide een deel van het halfafgebouwde
 liftgestel om tijdens een storm. Het park bouwde het weer op en opende toch op
-tijd voor het seizoen.
+tijd voor het seizoen. Wie vandaag de lifthill op ratelt, zit dus op een
+constructie die twee keer gebouwd moest worden.
 
 **2013** ontstond de **Magische Vallei** rond de “Dwervels”, met
 [Dwervelwind](ref:attractiepark-toverland/dwervelwind) en
@@ -290,7 +296,7 @@ niet op zou komen. Sinds **18 april** loopt “Magic Memories”, een illusiesho
 van diezelfde Hans Klok die 25 jaar geleden de poorten opendeed, zo’n 30 minuten
 lang, meermaals per dag, bij de entree inbegrepen. En in het **weekend van
 27/28 juni** was Toverland voor het eerst in zijn geschiedenis 25 uur aan één
-stuk open, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
+stuk open, één per levensjaar, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
 
 ```map-widget slug=attractiepark-toverland
 
@@ -322,7 +328,8 @@ heel verschillende evenementen:
 De nieuwigheid van **2026** groeit letterlijk: **“Entwined: The Maze”**, een
 **maisveld van zeven hectare** met metershoge wanden achter Fēnix, volgens het
 park twee keer zo groot als het hele Avalon-gebied en vermarkt als grootste
-halloween-experience van Europa. Het vervangt het jarenlange rattenlabyrint
+halloween-experience van Europa (nagemeten hebben we dat niet, verdwalen zouden
+we er meteen). Het vervangt het jarenlange rattenlabyrint
 “Trapped”. De enige regel die er telt: wie stil blijft staan, wordt gepakt.
 
 ![Het entreebord van Troy, omgebouwd tot “DesTROY – The Ride”, eronder twee Halloween Nights-banners | Van Troy wordt DesTROY. Het park schroeft daarvoor het entreebord van de achtbaan om. | right](/media/toverland-halloween/03-destroy-schild.jpg)
@@ -330,7 +337,7 @@ halloween-experience van Europa. Het vervangt het jarenlange rattenlabyrint
 Voor Troy-fans komt het beste deel echter nog. Een van de scare zones heet
 **“DesTroy”** en ligt in **Ithaka**, dus pal naast en onder de houten achtbaan.
 Gemuteerde Trojaanse soldaten bewaken de ruïnes van de stadsmuur, en Troy rijdt
-er middendoor. Er zijn in Europa niet veel gelegenheden om een eersteklas houten
+er middendoor. Homerus zou vragen hebben. Er zijn in Europa niet veel gelegenheden om een eersteklas houten
 achtbaan in het donker door een bespeelde scare zone te rijden, met nevel in het
 remstuk en acteurs in de wachtrij.
 
@@ -341,6 +348,7 @@ Een van de zes experiences heeft voor mij nog een dubbele bodem. Met de
 vereniging van kermis- en pretparkliefhebbers, liep ik backstage door de
 **Maison de la Magie**, en we mochten daar zelf een keer de kant van de scare actors uitproberen.
 Niet tijdens de openingsuren, zonder echte gasten, alleen wij en een leeg huis.
+Of ik iemand had laten schrikken, zal dus nooit worden opgehelderd.
 
 ![Een roze aangelichte gevel met balkon, popfiguur en lichtreclame “The Dollhouse” | “The Dollhouse”, een van de zes haunted experiences. Overdag is dat Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
@@ -366,7 +374,7 @@ voor ons nam, past bij dit park.
 
 [Toverland](ref:attractiepark-toverland?full)
 
-## Wat er verder aankomt
+## Een afscheid met remhendel, en wat erna komt
 
 ![Een gesneden siermotief aan de Maximus' Blitz Bahn, blauw aangelicht, ernaast oude gloeilampen aan kabels | Een detail van de Blitz Bahn, zoals ze er negentien jaar bij stond. Bijna alles hier was handwerk. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
@@ -379,7 +387,7 @@ attractie met de langste typische wachttijd van het hele park.
 Dat lag aan een rekensom die nooit kon uitkomen: in een wagen pasten één,
 hooguit twee personen. En omdat bij de uitgang het actuele record met foto hing,
 namen stellen regelmatig twee wagens in plaats van één, zodat ieder zijn eigen
-tijd kon rijden. De capaciteit zakte precies op het punt waar de baan het meeste
+tijd kon rijden. (Relaties zijn op minder stukgelopen.) De capaciteit zakte precies op het punt waar de baan het meeste
 plezier gaf. Een lange rij voor een korte afdaling, en de mensen stonden er
 toch voor, keer op keer, omdat er vooraan een naam op een bord stond die je
 wilde verslaan.
@@ -394,7 +402,7 @@ stapte zelf in en reed zijn eigen constructie een laatste keer naar beneden.
 Je kunt dat flauw vinden, een verzonnen figuur in een bobwagen. Ik vond het
 juist. Negentien jaar lang heeft deze baan haar verhaal serieus genomen, en op
 haar laatste dag heeft het park het afgemaakt in plaats van gewoon de stroom
-eraf te halen. Precies daarom mag ik dit park graag.
+eraf te halen.
 
 Haar opvolger is de reden dat ik Toverland het dapperste kleine park van Europa
 vind. In de winter opent daar een **Swinging Bobsled**, een attractietype dat er
@@ -446,7 +454,8 @@ openingsdagen:
 
 Eén ding moet je daarbij meedenken: de **Nederlandse** vakanties slaan hier
 harder door dan de Duitse, vooral de herfst- en meivakantie van de zuidelijke
-provincies.
+provincies. Woon je zelf in het zuiden: als jouw kinderen vrij hebben, heeft de
+rest van Limburg dat ook.
 
 ## Een dag zonder fastpass
 
@@ -458,8 +467,9 @@ maar een houten achtbaan is ’s ochtends nog koud en loopt in de loop van de da
 meetbaar sneller. Rijd haar vroeg **én** laat, dan heb je twee
 verschillende banen gereden. Daarna **Fēnix** in Avalon, de twee headliners
 liggen praktisch muur aan muur. Als derde **Booster Bike**, omdat zij in onze
-data de langste typische wachttijd van alle coasters heeft. De
-**waterattracties** bewaar je voor de middaghitte. Als “Magic Memories” draait,
+data de langste typische wachttijd van alle coasters heeft (instappen op je buik,
+weet je nog). De **waterattracties** bewaar je voor de middaghitte, dan zijn je
+sokken tegen de terugrit weer droog, meestal. Als “Magic Memories” draait,
 zit een aanzienlijk deel van de gasten een half uur in het theater, buiten is
 het dan opvallend rustig. En het laatste uur is weer voor Ithaka: Troy in de
 schemering, als de constructie wordt aangelicht en de trein hoorbaar sneller
@@ -615,7 +625,7 @@ En de twee waar het hier om ging, met hun actuele cijfers:
 
 Neem bij afrit Sevenum een keer de afslag in plaats van erlangs te rijden. En
 als je dan in Troy zit en achter je wacht niemand: stap uit, loop door de lege rij
-en rijd nog eens. En daarna nog een keer. Op een dinsdag in juni lukt dat hier. In de
+en rijd nog eens. En daarna nog een keer, tot je rug zijn veto uitspreekt. Op een dinsdag in juni lukt dat hier. In de
 meeste andere parken van Europa kun je het vergeten.
 
 — Patrick

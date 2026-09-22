@@ -1,5 +1,5 @@
 ---
-title: 'Heide Park: Colossos wird 25, und nebenan stehen vier deutsche Premieren'
+title: 'Heide Park: Colossos aus Holz, und nebenan eine Deutschland-Premiere nach der anderen'
 translationKey: heide-park-guide
 date: '2026-09-20'
 updatedAt: '2026-09-22'
@@ -8,11 +8,11 @@ mode: published
 featured: false
 excerpt: >-
   In Soltau steht die höchste reine Holzachterbahn Europas, und fast drei
-  Jahre lang durfte sie niemand fahren. 2026 wird Colossos 25. Drumherum
-  hat der Park vier Bauarten zum ersten Mal nach Deutschland geholt, dazu
-  einen 103 Meter hohen Turm, der als Aussichtsplattform angefangen hat.
-  Wann es voll wird, was die Saison 2026 vorhat und warum der Big Loop ein
-  neues Fahrwerk bekommen hat.
+  Jahre lang durfte sie niemand fahren. Eröffnet hat sie 2001. Drumherum
+  hat der Park vier Bauarten als Erster nach Deutschland geholt, und sein
+  103 Meter hoher Turm hat als Aussichtsplattform angefangen. Dazu: wann es
+  voll wird, warum ein ruhiger Montag in Soltau meistens ein geschlossener ist
+  und wieso der Big Loop nach über vierzig Jahren ein neues Fahrwerk bekommen hat.
 tags:
   - heide-park
   - colossos
@@ -32,11 +32,10 @@ parkLinks:
 rideLinks:
   - heide-park/*
 seo:
-  title: 'Heide Park: Wartezeiten, Colossos & Tipps 2026'
+  title: 'Heide Park 2026: Colossos, Wartezeiten und der beste Tag'
   description: >-
-    Heide Park Soltau: echte Wartezeit-Daten zu Colossos, Krake und Flug der
-    Dämonen, dazu Saison 2026, Halloween-Termine, Express Ticket, Mindestgrößen
-    und die Frage, an welchem Wochentag der Park am leersten ist.
+    Heide Park Soltau: echte Wartezeiten zu Colossos und Krake, dazu Halloween,
+    Express Ticket, Mindestgrößen und der Wochentag mit den kürzesten Schlangen.
   keywords:
     - Heide Park
     - Heide Park Wartezeiten
@@ -85,7 +84,8 @@ und die Füße frei baumeln. 33 Meter hoch, 689 Meter lang, fünf Überschläge.
 **[Desert Race](ref:heide-park/desert-race)** kam am **15. Mai 2007** und war
 Deutschlands erster Launch Coaster: kein Lifthill, sondern eine hydraulische
 Katapultstrecke, die den Zug in zwei Sekunden auf **102 km/h** bringt.
-Danach sind es 650 Meter und 49 Sekunden bis zurück in die Station.
+Danach sind es 650 Meter und 49 Sekunden bis zurück in die Station, weniger
+Zeit, als die Diskussion gedauert hat, wer vorne sitzen darf.
 
 ```glossary-widget slug=launch-coaster
 
@@ -96,7 +96,7 @@ erster Dive Coaster, gebaut von Bolliger & Mabillard für 12 Millionen Euro.
 41 Meter hoch, sechs Leute nebeneinander pro Reihe, und oben hält der Zug an,
 bis der ganze Wagen über die Kante hinausragt. Dann geht es 87 Grad abwärts,
 also fast senkrecht, in **103 km/h** und einen Immelmann. Die ganze Fahrt
-dauert keine halbe Minute.
+dauert keine halbe Minute, das Hängen an der Kante gefühlt deutlich länger.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** war am
 **29. März 2014** der erste Wing Coaster des Landes. Bei dieser Bauart sitzt
@@ -131,11 +131,11 @@ und als sie wieder aufmachte, hieß sie **Colossos – Kampf der Giganten** und
 hatte einen ganzen Themenbereich um sich herum.
 
 Eine Stahlschiene liegt bis heute nicht darauf. Wer Holzachterbahnen mag, merkt
-das ab dem ersten Drop.
+das ab dem ersten Drop, und sein Rücken spätestens in der ersten Kurve.
 
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## Der Rest des Parks
+## Der Rest des Parks: ältere Herrschaften und ein Turm
 
 Die erste Achterbahn des Parks ist der **[Big Loop](ref:heide-park/big-loop)**
 von **1983**, ein Vekoma-Looper mit zwei Loopings und einem
@@ -176,6 +176,7 @@ Preston & Barbieri fährt seit **2024** durch die alte Station der 2011
 geschlossenen zweiten Wildwasserbahn, fünf Minuten lang. Die Strecke der
 Wasserbahn liegt unter dem Flug der Dämonen, die Gebäude sind stehen geblieben,
 und nach dreizehn Jahren hat der Park eines davon wieder in Betrieb genommen.
+(Wer auf dem Dachboden nichts wegwirft, hat irgendwann eine neue Attraktion.)
 
 Dazu kommen die Fahrgeschäfte, die im Sommer die längsten Schlangen
 einsammeln, ohne dass jemand darüber schreibt: die
@@ -223,7 +224,8 @@ Bei den Achterbahnen liegen die fetten Zellen alle im selben Fenster, kurz vor
 und kurz nach Mittag. Die Wildwasserbahn hat ihr Maximum Stunden später, wenn
 es warm geworden ist. Das passt zu einem Park, dessen Gäste überwiegend
 morgens mit dem Auto anreisen: Alle stehen zur selben Zeit vor denselben drei
-Bahnen, und nachmittags zieht es sich auseinander.
+Bahnen, wie samstags um elf im Baumarkt, und nachmittags zieht es sich
+auseinander.
 
 Für die Planung heißt das: Die erste Stunde gehört Colossos und der Krake, weil
 das der einzige Zeitpunkt ist, an dem beide gleichzeitig kurz sind. Danach
@@ -296,7 +298,8 @@ wachen die Scare Zone und drei Horror-Mazes auf. Für die Mazes gilt ein
 Mindestalter von **16 Jahren** samt Ausweiskontrolle, und jedes braucht ein
 eigenes Zeitfenster-Ticket, das es nur online im Voraus gibt (das Dreierbundle
 lag zuletzt bei 22 €). Wer zu früh oder zu spät am Eingang steht, kommt nicht
-rein. Wie sich das im Vergleich zu Toverland, Movie Park und Walibi schlägt,
+rein, und der Maze-Eingang verhandelt da ungefähr so gern wie ein Türsteher auf
+der Reeperbahn. Wie sich das im Vergleich zu Toverland, Movie Park und Walibi schlägt,
 steht im [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
 ## Vom Schaustellerbetrieb zum Merlin-Park
@@ -316,7 +319,8 @@ Den Bau, der den frühen Heide Park am besten beschreibt, gibt es nicht mehr.
 Von **1986** bis zum Winter 2011/2012 stand hier ein 35 Meter hoher Nachbau
 der Freiheitsstatue, eingeweiht am 4. Juli 1986 zum hundertsten Geburtstag des
 Originals, mit einem Glückwunsch von Ronald Reagan. Nach dem Abbau stand die
-obere Hälfte noch einige Jahre als Dekoration an Colossos herum, und zur
+obere Hälfte noch einige Jahre als Dekoration an Colossos herum, eine
+Spätkarriere, die sich die Freiheit so wohl nicht vorgestellt hatte, und zur
 Wiedereröffnung 2019 wurde auch der Rest verschrottet.
 
 Am **31. Dezember 2001** kaufte die britische **Tussauds Group** den Park, und
@@ -327,7 +331,7 @@ noch **1,68 Millionen**. Man merkt dem Park beide Phasen an: die
 Schaustellerherkunft an der Dichte der Fahrgeschäfte, den Konzern an den
 Lizenzbereichen für Peppa Pig und Ghostbusters.
 
-## Übernachten
+## Übernachten, zur Not im VW-Bus
 
 Wer aus Süddeutschland anreist, macht daraus meistens zwei Tage. Das
 **Abenteuerhotel** hat 680 Betten, vier Sterne und ist 2015 für 20 Millionen

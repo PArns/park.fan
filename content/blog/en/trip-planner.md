@@ -1,13 +1,14 @@
 ---
-title: 'The trip planner checks whether your park day adds up'
+title: 'The trip planner checks your day before you join the wrong queue'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  A wait-time feed tells you how long the queue is right now. It does not tell
-  you whether your list makes it to closing time. That is what the trip planner
+  A wait-time feed tells you how long the queue is right now. Whether your list
+  makes it to closing time it leaves you to find out, usually around two in the
+  afternoon. That is what the trip planner
   is for: your rides on a timeline, every block as tall as the wait predicted
   for it, and the walk in between.
 tags:
@@ -30,11 +31,10 @@ coverImage:
   caption: 'Fantasmic at Hollywood Studios, just before it starts. Ten thousand people who are not queueing anywhere for that half hour.'
   credit: 'Patrick Arns'
 seo:
-  title: 'A trip planner for theme parks: count the queues before you go'
+  title: 'Plan a theme park day: count the queues before you join them'
   description: >-
-    The new park.fan trip planner lays your rides on a timeline, works with the
-    predicted waits, knows when each individual ride opens and how far apart
-    they are. No account, all in your browser.
+    The trip planner lays your rides on a timeline, works with predicted waits
+    and walks, and shows before you go whether the day adds up. No account.
   keywords:
     - plan a theme park day
     - theme park trip planner
@@ -86,7 +86,7 @@ Ten rides, from opening to four in the afternoon, and under the plan sits the
 total: five and a quarter hours of queueing. That is the version the optimiser
 considered best. Without an order you queue just as long and ride less.
 
-## Between two rides there is a walk
+## Between two rides there is a walk, often around a lake
 
 A wait-time feed can tell you that a ride is showing fifty minutes. What it
 cannot tell you is that you will not get there in time from where you are
@@ -103,7 +103,8 @@ rather than walking pace and adds two thirds of the straight line as a detour.
 
 At a compact park a clumsy transfer costs three minutes and nobody notices. At a
 large one it costs a quarter of an hour. Do that eight times in a day and you
-have walked away two hours that show up in no wait-time statistic.
+have walked away two hours that show up in no wait-time statistic, only in
+your calves that evening.
 
 “Tight” on a transfer is not a mood, it is arithmetic: the transfer stops
 working if the forecast is as far off as it says it can be. The API knows that
@@ -111,8 +112,9 @@ margin for every ride.
 
 ## “Get there early” does not apply to every ride
 
-The advice you read everywhere goes like this: the big coaster first, right
-after opening. Sometimes it holds. Often it does not, and which of the two
+The advice you read on every forum, and hear from every brother-in-law who
+has been to Florida once, goes like this: the big coaster first, right after
+opening. Sometimes it holds. Often it does not, and which of the two
 applies only shows once you look at the hours one by one.
 [Magic Kingdom](ref:magic-kingdom-park) suits that well, because its day is long
 enough for the curves to pull far apart.
@@ -204,7 +206,8 @@ it could.
 
 **The forecast is off, and measurably so.** Every selected block says how far
 the predictions for that ride sat, on average, from what the day actually
-brought. “Typical” here means: half the days land further out. So the number
+brought. (I have wanted the same from weather forecasts for years.)
+“Typical” here means: half the days land further out. So the number
 stands there as a typical error and never as a range that already
 contains the right answer.
 
@@ -232,7 +235,7 @@ all.
 You sign in nowhere. Your plan sits in your browser, and that is the default
 rather than the stripped-down version. Clear your
 browser data and it is gone. Open park.fan on your phone and it is a different
-plan.
+plan, which is better learned over breakfast than at the turnstiles.
 
 The one exception is push notifications. For us to tell you it is time to head
 over, the plan has to sit on our server, and the planner writes down what that
@@ -252,7 +255,7 @@ coming.
 
 The first is a search field, and there is a small thing behind it that goes
 wrong easily. Type “Disneyland” and you get five parks on three continents that
-all go by that name.
+all go by that name. The mouse was not feeling inventive when it came to names.
 
 ![Step one of the planner wizard: “Disneyland” typed into the search field, five parks from five countries listed below it. | One name, five parks. Which is why the planner remembers the path from the API and not the name.](/media/tagesplaner/planer-wizard-park-en.webp)
 

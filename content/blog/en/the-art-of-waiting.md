@@ -7,8 +7,8 @@ author: patrick
 mode: published
 excerpt: >-
   Why the same hour in a queue can feel like twenty minutes one day and half
-  your holiday the next. From the pre-show to Little’s Law, and right in the
-  middle of it, the reason park.fan exists.
+  your holiday the next. With a breathing avatar, a formula that fits on a beer
+  mat, and proof that shuffling forward gets you nowhere.
 tags:
   - wait-times
   - queues
@@ -24,10 +24,10 @@ coverImage:
   alt: 'The Tree of Life at Disney’s Animal Kingdom, with the crowds of the park in front of it'
   caption: 'Disney’s Animal Kingdom. Tens of thousands of guests, one tree, and every one of them working out which ride is worth the wait.'
 seo:
-  title: 'Queue Psychology at Theme Parks'
+  title: 'Why Theme Park Queues Feel So Long'
   description: >-
-    Theme-park queue psychology and capacity math explained: why 60 minutes can
-    feel like 20, and how park.fan tracks it live.
+    Why an hour in a queue can feel like twenty minutes, why closing the gap
+    gets you nowhere, and the formula behind every wait-time display.
   keywords:
     - theme park wait times
     - queue psychology
@@ -52,7 +52,8 @@ on the display: **“60-minute wait.”** On some days you spin on your heel and
 inform your companion that the ride is “overrated anyway.” On others you stand
 in that exact same 60-minute line and would swear afterward it was 25 at most.
 
-Both times you were the same person in the same queue. The difference comes
+Both times you were the same person in the same queue, on the same tired legs.
+The difference comes
 down to two things a good park has under control at once: psychology and
 capacity. One decides how the wait _feels_, the other how long the line
 _really_ is.
@@ -64,7 +65,7 @@ happening to me back there was something I wanted to know exactly. Two formulas
 come into it, and the two of them fit together on the back of a single beer
 mat.
 
-## Why minutes stretch
+## Why minutes stretch like chewing gum
 
 **David Maister**, then a professor at Harvard Business School, dissected the core problem back in 1985
 in his classic
@@ -82,7 +83,7 @@ Maister wrote down eight of them. These three turn up in every queue:
   shortly.
 - **Unfair waiting is unbearable.** Nothing ruins the mood faster than the
   feeling that others are slipping past, which is why parks hide their express
-  lanes as well as they can.
+  lanes as well as they can. Which usually isn’t very well.
 - **Waiting for something valuable is easier to endure.** The greater the
   anticipation, the more patient the line. We won’t stand 20 minutes for a
   fairground flat ride. For the new mega-coaster, we’ll happily talk ourselves
@@ -100,20 +101,21 @@ back in 1991, the MIT queueing researcher **Richard Larson** and colleagues
 showed, under the lovely title
 ["Entertain, Enlighten, and Engage"](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 that even simple distraction markedly improves the perceived quality of the
-wait. In the experiment, a news screen in a bank branch was enough.
+wait. In the experiment, a news screen in a bank branch was enough. No
+animatronics, no soundtrack, just a TV on the wall.
 
 The mechanism behind it: our brain can only count time precisely when it has
 nothing else to do. Once attention turns to music, theming details or a show,
 the internal counter simply runs out of resources, and the overestimation melts
 away. That’s what everything you see in a good queue is there for:
-soundtracks, animatronics, interactive elements, hidden details. It’s a lot of
-effort for a corridor you’re only supposed to walk through.
+soundtracks, animatronics, interactive elements, hidden details. Quite a lot of
+effort for a corridor everyone is trying to get out of as fast as possible.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Pre-shows
+### Pre-shows: waiting in disguise
 
 The most thorough answer is the **pre-show**, which redefines the wait as part
 of the attraction. The textbook example sits in
@@ -216,9 +218,9 @@ seconds.
 And there is a capacity trick here that helps both sides: the
 **single rider line**. If you ride alone and let yourself be slotted into the
 odd seat a group of four leaves behind, you cut your own wait drastically and
-help the park fill every car to the brim along the way. Every otherwise
-empty seat is wasted capacity, and a solo rider fills it without anybody losing
-their place.
+help the park fill every car to the brim along the way. The catch: your
+companion ends up three rows ahead, and you only find out at the exit whether
+they screamed.
 
 ```glossary-widget slug=single-rider
 
@@ -242,10 +244,11 @@ that are why we re-read the wait times every five minutes.
 
 ![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney’s Hollywood Studios | Fantasmic! at Hollywood Studios. Everyone sitting here is, for once, not queueing. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## How many people a ride moves in an hour
+## Throughput: the dull number that runs your day
 
 **Throughput** simply means how many people an attraction actually moves per
-hour. That number decides how long the queue really is.
+hour. You won’t find it on any poster, yet it has more say over the length of
+the queue than any animatronic.
 
 ```glossary-widget slug=ride-capacity
 
@@ -365,7 +368,8 @@ on purpose. The display has to do two contradictory things at once. It should gi
 shouldn’t disappoint you. A display that underestimates produces a stream of
 people at the exit who feel cheated; one that overestimates sends a few guests
 away but makes everybody else happy. Parks systematically opt for the second
-error. If you budget 60 minutes and board after 45, you leave the station a
+error, like the pizza place that says forty minutes and rings the bell at
+thirty. If you budget 60 minutes and board after 45, you leave the station a
 winner. Peak-end rule, remember: the hour ends better than expected, and
 that’s how it gets filed away.
 
@@ -378,11 +382,10 @@ move?). How often our forecasts match reality is on the
 
 ## Why Peter Pan’s Flight always “escalates”
 
-Why does **Peter Pan’s Flight**, of all things, a leisurely dark ride of 1955
-vintage, no coaster, no thrill, have a queue out of all proportion to the ride
-practically all day, in practically every Disney park in the world, from
+**Peter Pan’s Flight** is a leisurely dark ride of 1955 vintage: no coaster,
+no thrill. Yet in practically every Disney park in the world, from
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) to
-Orlando?
+Orlando, it has a queue all day long, as if there were free beer at the end.
 
 That has little to do with the ride and a lot to do with arithmetic:
 
@@ -424,7 +427,7 @@ world, and both Disney and Universal pull guests from every continent. On top
 of that comes a factor Europe barely knows in this severity: over there you can
 buy your way past the queue. Lightning Lane and Express Pass sell part of the
 capacity to paying guests, and every express ride is one the standby queue
-doesn’t get. Headliners like
+doesn’t get. Maister’s unfair wait, now with a receipt. Headliners like
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 therefore regularly have long queues despite massive hourly capacity.
 
@@ -544,8 +547,8 @@ The queue still exists, it just happens without your legs. The wait doesn’t
 disappear, but it no longer eats your day, and the park spreads demand across
 the hours in a more controlled way.
 
-On the hardware side, parks work in parallel on dispatch speed, with three
-classic patterns:
+For those who’d rather queue with their feet than their thumbs, parks are
+tinkering with the station itself at the same time:
 
 - **Separate unload and load areas**, so the train doesn’t have to wait for
   people to get off before the next group boards.
@@ -568,7 +571,7 @@ vehicle, and the attraction swallows over 3,000 guests an hour that way, more
 than many a mega-coaster, with a vehicle chain that has been doing its rounds
 uncomplainingly since the sixties and never asks for a break.
 
-## What of all this ends up on park.fan
+## What park.fan does for you in the queue
 
 The next 60-minute queue won’t get any shorter for it. But it reads
 differently once you know three things, and those are on park.fan:
@@ -587,10 +590,6 @@ differently once you know three things, and those are on park.fan:
 ```best-days-widget slug=europa-park
 
 ```
-
-We can’t do anything about the psychology. Whether the hour feels like an hour
-or like the first act of the ride is up to the park that built the queue: the
-pre-show, the theming and a good last stretch before the station.
 
 — Patrick
 

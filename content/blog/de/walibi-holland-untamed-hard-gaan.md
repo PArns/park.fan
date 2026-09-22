@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland: „hard gaan“, Untamed und ein Polder, der 1957 noch Meer war'
+title: 'Walibi Holland: „hard gaan“, Untamed und ein Acker, auf dem 1957 noch Fische schwammen'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-09-22'
@@ -7,11 +7,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland steht auf Land, das 1957 noch unter Wasser lag, wirbt seit
-  zwölf Jahren mit einem Wort aus der Hardstyle-Szene und hat mit Untamed eine
-  der besten Achterbahnen Europas, für die du an einem normalen Tag kaum
-  anstehst. Über einen Park, den deutsche Besucher regelmäßig missverstehen,
-  über die Halloween-Experiences, für die man freiwillig zahlt, und über das
+  Walibi Holland steht auf einem Acker, der 1957 noch Meer war, wirbt mit
+  einem Slogan, den es früher sogar auf Kondome gedruckt hat, und hat mit
+  Untamed eine der besten Achterbahnen Europas, für die du an einem normalen
+  Tag kaum anstehst. Dazu Halloween-Experiences, bei denen man freiwillig
+  extra zahlt, um an eine Deckenschiene geschnallt zu werden, und ein
   Weihnachtsevent, das der Park gerade abgesagt hat.
 tags:
   - walibi-holland
@@ -33,11 +33,11 @@ coverImage:
   caption: 'Der Eingang von Untamed. Das Holz darunter stammt größtenteils noch von Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: 'Walibi Holland: Untamed, Wartezeiten & Halloween'
+  title: 'Walibi Holland: Untamed, Wartezeiten & Horror im Polder'
   description: >-
-    Walibi Holland verstehen: das Konzept „hard gaan“, Untamed und YOY mit
-    echten Wartezeit-Daten, die Halloween Fright Nights samt Experiences, Preise
-    und Anreise.
+    Achterbahnen auf altem Meeresboden: Untamed und YOY mit echten
+    Wartezeiten, die Halloween Fright Nights, für die man gern extra zahlt,
+    Preise und Anreise.
   keywords:
     - Walibi Holland
     - Walibi Holland Wartezeiten
@@ -66,24 +66,24 @@ Danach kippt der Zug über eine Kante, die steiler ist als senkrecht.
 
 Ich fahre gerne weit für Achterbahnen, aber Walibi Holland ist selbst für meine
 Verhältnisse eine Ansage: gut zweieinhalb Stunden ab Köln, und in der zweiten
-Hälfte fährst du an nichts mehr vorbei außer Windrädern und Rapsfeldern. Der
-Park wird deshalb übersehen. Das [Efteling](ref:efteling) und das
+Hälfte fährst du an nichts mehr vorbei außer Windrädern und Rapsfeldern.
+Entsprechend oft wird der Park übersehen. Das [Efteling](ref:efteling) und das
 [Toverland](ref:attractiepark-toverland) liegen näher, das
 [Phantasialand](ref:phantasialand) liegt vor der Haustür, und wer aus NRW einen
-Tag in den Niederlanden plant, fährt selten die zusätzliche Stunde nach
-Flevoland.
+Tag in den Niederlanden plant, hängt selten freiwillig noch eine Stunde Polder
+dran.
 
 Das ist ein Fehler. Untamed allein würde schon reichen, aber der bessere Grund ist eine
 Idee, die beim ersten Besuch völlig sinnlos wirkt und beim dritten alles
 erklärt. Sie klebt in zwei Wörtern auf halb Biddinghuizen: **hard gaan**.
 
-## Ein Park auf ehemaligem Meeresboden
+## Erst Meer, dann Kühe, dann Achterbahnen
 
 Angefangen hat hier alles mit Kühen.
 
 Am **21. Mai 1971** eröffnete Prinzessin Beatrix auf dem frischen Polderland die
 **Flevohof**, einen 150 Hektar großen Landwirtschaftspark. Die Idee: Stadtkinder
-sollen sehen, wo Milch herkommt. Es gab Ställe, Gewächshäuser, eine Käserei, ein
+sollen sehen, dass Milch nicht im Tetrapak wächst. Es gab Ställe, Gewächshäuser, eine Käserei, ein
 paar Spielgeräte. Zwei Jahrzehnte lang war das ein Ausflugsziel für Schulklassen
 und Familien, dann rechnete es sich nicht mehr, und Anfang der Neunziger ging
 der Betrieb pleite. 1992 öffnete die Flevohof zum letzten Mal.
@@ -120,9 +120,10 @@ Die Besucherzahlen laufen seit Jahren knapp unter der Millionengrenze her:
 936.000 im Geschäftsjahr 2023, 919.000 in 2024 und zuletzt **972.000** im
 Geschäftsjahr Oktober 2024 bis September 2025, ein Plus von knapp sechs Prozent.
 Marketingchef Marc Guffens nannte das „das beste Jahr aller Zeiten, wenn man die
-Besucherzahlen aus der Six-Flags-Zeit nicht mitzählt“, weil damals pro Gast
+Besucherzahlen aus der Six-Flags-Zeit nicht mitzählt“ (ein Rekord mit
+Sternchen), weil damals pro Gast
 deutlich weniger hängenblieb. Zum Vergleich: Das Efteling kommt auf etwa das
-Fünffache.
+Fünffache, was für jeden, der in Biddinghuizen ansteht, eine gute Nachricht ist.
 
 ## „Hard gaan“: das Konzept
 
@@ -142,7 +143,8 @@ sie noch Jahre.
 **2017** zog die Marketingabteilung dann die Reißleine und tauschte den Slogan
 gegen **„Dare to get Real“** aus. Das hielt genau eine Saison. In einem internen
 Papier aus dem Herbst 2017 stand, das Ergebnis sei „hinter den Erwartungen
-zurückgeblieben“, die Botschaft „zu kompliziert und zu tiefsinnig“, und man habe
+zurückgeblieben“, die Botschaft „zu kompliziert und zu tiefsinnig“ (einen
+solchen Vorwurf muss sich ein Freizeitpark-Slogan erst mal einhandeln), und man habe
 „vermutlich eine zu kleine Zielgruppe angesprochen“. **2018** war `#Hardgaan`
 zurück, und es ist bis heute die Tonlage des Hauses.
 
@@ -173,9 +175,8 @@ nur zielt hier alles auf etwas anderes: Es will, dass du schreist. Sechs Achterb
 dafür Musik auf jedem Weg und eine Lautstärke, die niemand versehentlich
 eingestellt hat.
 
-Wer hier ein zweites Efteling sucht, fährt enttäuscht nach Hause. Wer einen
-Achterbahnpark mit Festival am Zaun erwartet, bekommt genau das, in voller
-Lautstärke.
+Wer hier ein zweites Efteling sucht, findet keinen Märchenwald, dafür einen
+Bass, der ihm bis in die Pommesschlange folgt.
 
 ### Wenn das Konzept zu weit geht
 
@@ -216,8 +217,8 @@ https://www.youtube.com/watch?v=fFPGRQAs-Xk
 ## Untamed
 
 An der Stelle, an der Untamed heute steht, stand von 2000 bis 2018 **Robin
-Hood**, eine Holzachterbahn von Vekoma mit zweifelhaftem Ruf: laut und mit den
-Jahren zunehmend unangenehm. Am **28. Oktober 2018** fuhr sie zum letzten Mal. Danach
+Hood**, eine Holzachterbahn von Vekoma mit zweifelhaftem Ruf: laut, und mit
+jedem Jahr ein Stück näher am Bandscheibenvorfall. Am **28. Oktober 2018** fuhr sie zum letzten Mal. Danach
 kam **Rocky Mountain Construction** aus Idaho, riss die Holzschienen herunter,
 ließ einen Großteil des Holzgerüsts stehen und legte darauf eine Stahlschiene,
 die sich in Formen biegen lässt, die mit Holz unmöglich wären. Am **1. Juli
@@ -281,7 +282,8 @@ in Orlando. Zwei Bahnen in vielen Jahren, und für die in Flevoland brauchst du 
 Bei den Golden Ticket Awards landete Untamed 2019 auf Platz fünf der besten
 Achterbahn-Neuheiten des Jahres, in den weltweiten Stahl-Rankings taucht sie
 seither stabil in den Top 50 auf (2024: Platz 42, 2025: Platz 48). Ich würde sie deutlich weiter oben einsortieren, und zwar wegen einer
-Eigenschaft, die sich schlecht messen lässt: Sie ist nach sieben Jahren immer noch glatt.
+Eigenschaft, die sich schlecht messen lässt: Sie ist nach sieben Jahren immer noch glatt,
+auf demselben Holzgerüst, auf dem Robin Hood früher die Bandscheiben sortiert hat.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -313,8 +315,9 @@ umeinander und aneinander vorbei. Eröffnet wurde am **5. April 2025**.
 
 Wer mit einem Kind unterwegs ist, das gerade an der Grenze zwischen „will schon“
 und „traut sich noch nicht“ steht, findet hier die eleganteste Lösung, die ich
-kenne: Ihr fahrt gleichzeitig, ihr seht euch die ganze Zeit, und trotzdem fährt
-jeder die Bahn, die zu ihm passt.
+kenne: Ihr fahrt gleichzeitig, ihr seht euch die ganze Zeit, jeder fährt die
+Bahn, die zu ihm passt, und hinterher kann keiner behaupten, der andere hätte
+gekniffen.
 
 ![Der Schriftzug „Goliath“ am Eingang, dahinter der Lifthill der Bahn | Goliath, seit 2002 die höchste Achterbahn des Parks. | left](/media/walibi-holland/goliath-4x3.jpg)
 
@@ -458,7 +461,7 @@ Für die Bahnen einzeln sieht es so aus:
 
 Die beste Bahn im Park hat nicht die längste Schlange, die gehört der Neuheit.
 Untamed liegt im Mittelfeld, in einer Reihe mit einem SLC von 1994 und einer
-Mack-Bahn mit 680 Metern Länge. Das ist keine Kritik an YOY, eine Neuheit zieht immer.
+Mack-Bahn mit 680 Metern Länge. Das ist keine Kritik an YOY. Eine Neuheit zieht immer, und halb Holland stellt sich aus Prinzip erst mal dort an, wo es noch nach frischer Farbe riecht.
 Aber es heißt eben: Wenn du morgens direkt ins Wilderness läufst, hast du Untamed hinter dir, bevor die YOY-Schlange nennenswert vorangekommen ist.
 
 Interessanter wird es im Vergleich mit der Nachbarschaft. Gleiche Datenbasis,
@@ -469,7 +472,8 @@ gleiche Rechenmethode, alle gemessenen Öffnungstage:
 ```
 
 Für die Zeit, die du im Phantasialand **einmal** bei
-[Taron](ref:phantasialand/taron) anstehst, fährst du Untamed gleich mehrmals.
+[Taron](ref:phantasialand/taron) anstehst, fährst du Untamed gleich mehrmals und
+hast danach noch Zeit für Pommes.
 Auf Parkebene ergibt sich dasselbe Bild:
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
@@ -706,7 +710,8 @@ Jahren `#Hardgaan` neben einem Maskottchen für Sechsjährige war das überfäll
 
 ## Wann du hinfahren solltest
 
-Die Saison läuft von **April bis Anfang November**, danach ist zu. Im Frühjahr
+Die Saison läuft von **April bis Anfang November**, danach hält der Polder
+Winterschlaf. Im Frühjahr
 und im Herbst öffnet der Park mittwochs, an Wochenenden und in den Ferien, von
 Ende Juni bis Ende August täglich.
 
@@ -767,7 +772,8 @@ Datum unterschiedlich viel.
 
 - **Kassenpreis Tagesticket:** 46 € (ab 12 Jahren). Wer online und für einen
   ruhigen Tag bucht, zahlt je nach Datum ab **24,50 €**. Die Tageskasse zu
-  benutzen ist hier die teuerste denkbare Entscheidung.
+  benutzen ist hier die teuerste denkbare Entscheidung, noch vor dem dritten
+  Softeis.
 - **Kinder:** 3 bis 5 Jahre 23 €, 6 bis 11 Jahre 36 €, unter 2 Jahren frei.
   Senioren ab 55 und Gäste mit Behinderung ebenfalls 36 €.
 - **Parken:** 12 € pro Auto und Tag, zwanzig Ladepunkte für E-Autos auf dem
@@ -810,7 +816,7 @@ entspannteste Lösung, weil du nach einer Nacht im Schlachthof nicht noch
 zweieinhalb Stunden Autobahn vor dir hast.
 
 **Essen.** Hier bin ich nüchtern: Die Gastronomie ist der schwächste Teil des
-Parks. Es gibt Pommes, Burger, Pizza, alles in Ordnung, nichts, wofür man
+Parks. Es gibt Pommes, Burger, Pizza, solide Kantine, nichts, wofür man
 wiederkommt. Der Foodcourt **Flavors** am neuen YOY-Bereich mit Terrasse am
 Wasser ist die angenehmste Adresse, allein wegen der Aussicht auf die beiden
 Strecken. Iss früh, gegen halb zwölf, oder spät ab halb drei.

@@ -1,5 +1,5 @@
 ---
-title: 'Pretparken in de winter: wie in december opengaat en wie zich dat niet kan veroorloven'
+title: 'Pretparken in de winter: wie in december opengaat en wie dat niet kan betalen'
 translationKey: winter-parks-2026
 date: '2026-09-03'
 updatedAt: '2026-09-22'
@@ -34,11 +34,11 @@ coverImage:
   caption: 'Wintertraum in Phantasialand. Negen uur bedrijf, waarvan drieënhalf in het donker.'
   credit: 'park.fan'
 seo:
-  title: 'Pretparken open in de winter 2026/27: data & wachttijden'
+  title: 'Pretparken in de winter 2026/27: wie is open, hoe druk'
   description: >-
-    IJsbanen, kerstmarkten en 800.000 lichtjes: welke pretparken open zijn
-    in de winter van 2026/27. Winter Efteling, Wintertraum, Walibi Winter en
-    acht andere, met data, prijzen en echte wachttijdcijfers.
+    IJsbanen, glühwein en 800.000 lichtjes: welke pretparken in winter
+    2026/27 open zijn, wat het kost en waarom je in december langer in de rij
+    staat dan in mei.
   keywords:
     - pretparken open in de winter
     - pretpark kerst 2026
@@ -106,7 +106,8 @@ tot 24 januari 2027**, dagelijks van **11 tot 20 uur**. Dat zijn 67
 bedrijfsdagen, ruim anderhalf keer zoveel als in het Europa-Park.
 
 Gesloten is het op vijf dagen: 24 en 25 december, 1 januari en 12 en
-13 januari 2027. Op oudejaarsavond stopt het om 18 uur. Tickets beginnen bij **€29** en
+13 januari 2027. Op oudejaarsavond stopt het om 18 uur, op tijd voor je eigen
+vuurwerk. Tickets beginnen bij **€29** en
 worden online op een vaste datum geboekt.
 
 ![De toren van Mystery Castle in de mist, van onderen aangelicht | Mystery Castle zit in de berg. Daarom rijdt het ook als het buiten ijzelt. | wide](/media/phantasialand/mystery-castle.jpg)
@@ -167,7 +168,8 @@ dienen. [Droomvlucht](ref:efteling/droomvlucht),
 [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana,
 [Danse Macabre](ref:efteling/danse-macabre): een hele verzameling attracties
 waar regen, wind en duisternis niets aan doen, en waarvan er meerdere in de
-schemering beter werken dan in de zon.
+schemering beter werken dan in de zon. Eindelijk een park dat baat heeft bij
+het Nederlandse weer.
 
 ![Het blauw aangelichte kasteel van Symbolica bij nacht, ervoor een fontein | Symbolica op een winteravond. In december wordt het hier om half vijf donker, en het park wint daarbij. | wide](/media/efteling/symbolica.jpg)
 
@@ -241,14 +243,15 @@ dagen in dit venster, van 11 tot 19 uur, op 24 en 31 december tot 18 uur; op
 25 december en 1 januari blijft het park dicht.
 
 In Kasterlee zit **alles in het dagticket**, van het schaatsen tot de
-tubingbaan. Bijboeken hoeft niet.
+tubingbaan. Bijboeken hoeft niet, dus je portemonnee kan in je jas blijven tot
+aan het frietkot.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ### Movie Park Germany: Hollywood Christmas, 27 november tot 5 januari
 
-Zes weken in het najaar heet het park Horrorwood Studios, en dat is nog maar net
-voorbij of het studioterrein wordt kerstelijk. **Movie Park’s Hollywood
+Zes weken in het najaar heet het park Horrorwood Studios, en het nepbloed is
+nog maar net weggepoetst of het studioterrein wordt kerstelijk. **Movie Park’s Hollywood
 Christmas** loopt van **27 november 2026 tot 5 januari 2027**: meer dan
 800.000 lichtjes, vier kerstgebieden, een ijsbaan, de winterversie van de
 parade, een Christmas Tree Celebration, een Meet Santa-station en nieuw een
@@ -271,8 +274,9 @@ shows en een Lego-kerstboom.
 
 Open zijn vooral de binnenattracties, plus enkele banen buiten. Genoemd worden
 onder meer MAXIMUS, Temple X-pedition, LEGO NINJAGO The Ride en de Techno
-Schleuder. Reis je met een kind dat precies één bepaalde baan wil? Lees eerst de
-lijst van het park.
+Schleuder. Reis je met een kind dat precies één bepaalde baan wil, lees dan eerst
+de lijst van het park. Anders voer je de discussie bij een gesloten baan met
+iemand van een meter lang die gelijk heeft.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -319,8 +323,8 @@ drukste dagen van het Italiaanse seizoen in het park.
 ## De parken die dicht blijven
 
 Het [Heide-Park](ref:heide-park) draait het seizoen 2026 van 28 maart tot
-**31 oktober** en gaat daarna dicht. Winterbedrijf is er in Soltau niet, en een
-kerstmarkt evenmin. Wat er in de zeven maanden daarvoor gebeurt, staat in de
+**31 oktober** en gaat daarna dicht. Winterbedrijf is er in Soltau niet, een
+kerstmarkt evenmin: Colossos houdt winterslaap. Wat er in de zeven maanden daarvoor gebeurt, staat in de
 [Heide-Park-gids](/blog/heide-park-wachttijden-tips).
 
 [Walibi Holland](ref:walibi-holland) blijft na het einde van Bright Nights ook
@@ -335,7 +339,7 @@ Göteborg lag begin september simpelweg nog geen rooster voorbij oktober klaar, 
 allebei zijn ze in december bekend open. Een dag verschijnt pas op park.fan als
 het park hem gepubliceerd heeft.
 
-## Wat de cijfers zeggen
+## Wat de cijfers zeggen: voelt leeg, meet vol
 
 De winter voelt leeg. Het is donker, het is koud, op de paden hangt mist en het
 halve park is verlicht in plaats van bevolkt. De rijen zijn het niet.
@@ -432,7 +436,7 @@ park over meerdere niveaus verdeelt. Een model dat een seizoen nooit
 gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
 het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.
 
-## Datum, attractielijst, duisternis
+## Datum, attractielijst, dikke jas
 
 1. **De prijs hangt aan de datum.** Bijna alle wintertickets zijn
    datumgebonden en per dag gestaffeld. De Wintertraum begint bij €29, en die
@@ -455,7 +459,8 @@ nog één keer wil rijden, heeft tot 9 januari de tijd om naar Rust te komen.
 
 Met kinderen en zonder zin in bijboeken: in Kasterlee zit alles wat er die weken
 in het park staat in de dagprijs. Na de
-Halloweenweken, waarin elk spookhuis apart verkocht wordt, is dat even wennen.
+Halloweenweken, waarin elk spookhuis apart verkocht wordt, is dat even wennen,
+maar het went snel.
 
 Wat er op jouw wensdag daadwerkelijk rijdt en hoe lang de rijen op dit moment
 zijn, staat de hele winter op de pagina van het park zelf.

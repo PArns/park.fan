@@ -1,5 +1,5 @@
 ---
-title: 'Heide Park : Colossos fête ses 25 ans, et à côté se dressent quatre premières allemandes'
+title: 'Heide Park : Colossos tout en bois, et autour les premières allemandes s’enchaînent'
 translationKey: heide-park-guide
 date: '2026-09-20'
 updatedAt: '2026-09-22'
@@ -9,10 +9,11 @@ featured: false
 excerpt: >-
   Soltau abrite les montagnes russes entièrement en bois les plus hautes
   d’Europe, et pendant presque trois ans personne n’a eu le droit d’y monter.
-  Colossos fête ses 25 ans en 2026. Autour, le parc a fait venir quatre types
-  d’attractions pour la première fois en Allemagne, plus une tour de 103 mètres
-  qui a débuté comme plateforme panoramique. Quand l’affluence monte, ce que
-  prévoit la saison 2026 et pourquoi le Big Loop roule sur de nouveaux trains.
+  Elles ont ouvert en 2001. Autour, le parc a fait venir quatre types
+  d’attractions pour la première fois en Allemagne, et sa tour de 103 mètres a
+  débuté comme plateforme panoramique. Au programme aussi : quand l’affluence
+  monte, pourquoi un lundi calme à Soltau est le plus souvent un lundi fermé, et
+  pourquoi le Big Loop a eu droit à de nouveaux châssis après plus de quarante ans.
 tags:
   - heide-park
   - colossos
@@ -32,11 +33,11 @@ parkLinks:
 rideLinks:
   - heide-park/*
 seo:
-  title: 'Heide Park : temps d’attente, Colossos & conseils 2026'
+  title: 'Heide Park 2026 : Colossos, temps d’attente et le bon jour'
   description: >-
-    Heide Park Soltau avec de vraies données d’attente pour Colossos, Krake et
-    Flug der Dämonen, plus la saison 2026, les dates d’Halloween, l’Express
-    Ticket, les tailles minimales et le jour de la semaine le plus calme.
+    Heide Park Soltau : vrais temps d’attente pour Colossos et Krake, plus
+    Halloween, l’Express Ticket, les tailles minimales et le jour aux files les
+    plus courtes.
   keywords:
     - Heide Park
     - Heide Park temps d’attente
@@ -87,7 +88,8 @@ inversions.
 **[Desert Race](ref:heide-park/desert-race)** est arrivé le **15 mai 2007**,
 premier launch coaster d’Allemagne : pas de lift, mais une catapulte
 hydraulique qui emmène le train à **102 km/h** en deux secondes. Ensuite, ce
-sont 650 mètres et 49 secondes jusqu’au retour en gare.
+sont 650 mètres et 49 secondes jusqu’au retour en gare, moins que la discussion
+pour savoir qui s’assoit devant.
 
 ```glossary-widget slug=launch-coaster
 
@@ -98,7 +100,8 @@ coaster d’Allemagne, construit par Bolliger & Mabillard pour 12 millions
 d’euros. 41 mètres de haut, six personnes de front par rangée, et en haut le
 train s’arrête jusqu’à ce que le wagon entier dépasse du bord. Puis la descente
 se fait à 87 degrés, donc presque à la verticale, jusqu’à **103 km/h** et un
-Immelmann. Le tour complet dure moins d’une demi-minute.
+Immelmann. Le tour complet dure moins d’une demi-minute, le moment suspendu au bord
+paraît nettement plus long.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** a été, le
 **29 mars 2014**, le premier wing coaster du pays. Sur ce type de tracé,
@@ -136,11 +139,12 @@ puis montée. Au bout de quinze ans elle était finie, l’attraction a fermé e
 d’elle.
 
 Aucun rail en acier n’y repose à ce jour. Quand on aime les coasters en bois,
-cela se sent dès la première descente.
+cela se sent dès la première descente, et le dos le confirme au premier
+virage.
 
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## Le reste du parc
+## Le reste du parc : des anciens et une tour
 
 Le premier coaster du parc est le **[Big Loop](ref:heide-park/big-loop)** de
 **1983**, un looper Vekoma avec deux loopings et un double tire-bouchon,
@@ -178,7 +182,8 @@ La plus jeune attraction occupe un bâtiment qui aurait dû disparaître. La
 traverse depuis **2024** l’ancienne gare de la deuxième bûche, fermée en 2011,
 pendant cinq minutes. Le parcours de cette attraction aquatique passe sous Flug
 der Dämonen, les bâtiments sont restés debout, et après treize ans le parc en a
-remis un en service.
+remis un en service. (À force de ne rien jeter au grenier, on finit par avoir
+une nouvelle attraction.)
 
 À cela s’ajoutent les attractions qui récoltent les plus longues files en été
 sans que personne n’en parle : la
@@ -229,7 +234,8 @@ Sur les coasters, les cases en gras tombent toutes dans la même fenêtre, juste
 avant et juste après midi. La bûche atteint son maximum des heures plus tard,
 une fois qu’il fait chaud. Cela colle à un parc dont les visiteurs arrivent
 surtout en voiture le matin : tout le monde se retrouve au même moment devant
-les trois mêmes attractions, et l’après-midi cela se disperse.
+les trois mêmes attractions, comme un samedi à onze heures chez Leroy Merlin,
+et l’après-midi cela se disperse.
 
 Pour la planification, cela veut dire que la première heure appartient à
 Colossos et à Krake, parce que c’est le seul moment où les deux sont courts en
@@ -303,7 +309,8 @@ environ, la scare zone et trois horror mazes se réveillent. Les mazes imposent
 un âge minimum de **16 ans** avec contrôle d’identité, et chacun demande son
 propre billet horodaté, vendu uniquement en ligne à l’avance (le lot de trois
 était dernièrement à 22 €). Arriver trop tôt ou trop tard à l’entrée, c’est ne
-pas entrer. La comparaison avec Toverland, Movie Park et Walibi se trouve dans
+pas entrer, et l’entrée du maze négocie à peu près autant qu’un videur de
+Pigalle. La comparaison avec Toverland, Movie Park et Walibi se trouve dans
 le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
 
 ## De la famille foraine au parc Merlin
@@ -325,7 +332,8 @@ La construction qui décrit le mieux le Heide Park des débuts n’existe plus. 
 statue de la Liberté, inaugurée le 4 juillet 1986 pour le centenaire de
 l’original, avec les félicitations de Ronald Reagan. Après le démontage, la
 moitié supérieure est restée plantée en décor à côté de Colossos pendant
-quelques années encore, et le reste est parti à la ferraille pour la
+quelques années encore, une fin de carrière que la Liberté n’avait sans doute
+pas imaginée, et le reste est parti à la ferraille pour la
 réouverture de 2019.
 
 Le **31 décembre 2001**, le britannique **Tussauds Group** a racheté le parc,
@@ -336,7 +344,7 @@ années quatre-vingt-dix, Soltau comptait jusqu’à deux millions de visiteurs,
 se voient dans le parc : l’héritage forain à la densité des attractions, le
 groupe aux zones sous licence pour Peppa Pig et Ghostbusters.
 
-## Dormir sur place
+## Dormir sur place, au besoin dans un combi VW
 
 Quand on vient du sud de l’Allemagne, on en fait le plus souvent deux jours.
 L’**Abenteuerhotel** compte 680 lits, quatre étoiles, et a été transformé en

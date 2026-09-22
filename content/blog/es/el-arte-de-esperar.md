@@ -7,8 +7,8 @@ author: patrick
 mode: published
 excerpt: >-
   Por qué la misma hora de cola un día pasa como veinte minutos y otro como
-  medio día de vacaciones tirado. Del pre-show a la ley de Little, y en medio la
-  razón por la que existe park.fan.
+  medio día de vacaciones tirado. Con un avatar que respira, una fórmula que cabe
+  en un posavasos y la prueba de que pegarse al de delante no sirve de nada.
 tags:
   - tiempos-de-espera
   - colas
@@ -24,10 +24,10 @@ coverImage:
   alt: 'El Árbol de la Vida en el Animal Kingdom de Disney, con las multitudes de visitantes del parque delante'
   caption: 'El Animal Kingdom de Disney. Decenas de miles de visitantes, un árbol, y cada uno de ellos calculando qué atracción merece la cola.'
 seo:
-  title: 'Psicología de las colas en parques'
+  title: 'Por qué las colas del parque se hacen tan largas'
   description: >-
-    Tiempos de espera en parques: la psicología y las matemáticas de las colas,
-    explicadas, y cómo park.fan las lee en vivo.
+    Por qué una hora de cola a veces pasa como veinte minutos, por qué pegarse al
+    de delante no sirve de nada y qué fórmula hay detrás de cada panel de espera.
   keywords:
     - tiempos de espera parques de atracciones
     - psicología de las colas
@@ -52,7 +52,8 @@ Doblas la esquina hacia tu atracción favorita y ahí está el panel, encendido:
 acompañante que la atracción «está sobrevalorada de todas formas». Otros haces
 esos mismos 60 minutos y jurarías después que fueron 25 como mucho.
 
-Las dos veces eras la misma persona en la misma cola. La diferencia está en
+Las dos veces eras la misma persona en la misma cola, con las mismas piernas
+cansadas. La diferencia está en
 dos cosas que un buen parque controla a la vez: la psicología y la capacidad.
 Una decide cómo se _siente_ la espera, la otra cuánto mide _realmente_ la cola.
 
@@ -62,7 +63,7 @@ completa está aquí](/blog/un-cochecito-una-gondola-y-park-fan)). Qué me estab
 pasando allí en realidad, quise saberlo después con exactitud. Entran en juego
 dos fórmulas, y las dos caben juntas en un posavasos.
 
-## Por qué los minutos se estiran
+## Por qué los minutos se estiran como un chicle
 
 El problema de fondo lo diseccionó **David Maister**, entonces profesor de la Harvard Business School,
 ya en 1985 en su clásico
@@ -79,7 +80,7 @@ Maister anotó ocho. Estas tres se ven en cualquier cola:
   hablamos enseguida.
 - **La espera injusta es insoportable.** Nada arruina el ambiente más rápido
   que la sensación de que otros te adelantan. Por eso los parques esconden sus
-  carriles exprés todo lo que pueden.
+  carriles exprés todo lo que pueden, que casi nunca es mucho.
 - **Esperar por algo valioso se aguanta mejor.** Cuanta más ilusión, más
   paciente la cola. Por una atracción de feria no aguantamos 20 minutos. Por la
   nueva megamontaña nos convencemos de aguantar 90.
@@ -96,7 +97,8 @@ la calcula más corta de lo que fue. Y ya en 1991 el investigador de colas del M
 [«Entertain, Enlighten, and Engage»](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 que incluso una distracción sencilla mejora notablemente la calidad percibida
 de la espera. En el experimento bastó con una pantalla de noticias en una
-sucursal bancaria.
+sucursal bancaria. Ni animatrónicos ni banda sonora: una tele colgada en la
+pared.
 
 El mecanismo detrás: nuestro cerebro solo puede contar el tiempo con
 meticulosidad cuando no tiene nada más que hacer. En cuanto la atención se
@@ -104,13 +106,13 @@ dirige a la música, a los detalles de la tematización o a un espectáculo, al
 contador interno le faltan sencillamente recursos, y la sobrestimación se
 derrite. Para eso está todo lo que ves en una buena cola: bandas sonoras,
 animatrónicos, elementos interactivos, detalles escondidos. Mucho esfuerzo para
-un pasillo que en teoría solo hay que atravesar.
+un pasillo del que todo el mundo quiere salir cuanto antes.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Pre-shows
+### Pre-shows: la espera disfrazada de programa
 
 Lo que mejor lo resuelve es el **pre-show**, que declara la espera parte de la
 atracción. El ejemplo de manual
@@ -217,9 +219,9 @@ verdad la cabeza no mira el móvil cada diez segundos.
 Y aquí hay además un truco de capacidad que ayuda a las dos partes: la **fila
 de single rider**. Quien va solo y deja que lo coloquen en el asiento suelto
 que deja libre un grupo de cuatro acorta drásticamente su propia espera y de
-paso ayuda al parque a llenar cada vagón hasta el borde. Cada
-asiento que si no iría vacío es capacidad desperdiciada; la fila de single
-rider lo llena sin que nadie pierda su sitio.
+paso ayuda al parque a llenar cada vagón hasta el borde. El precio: tu
+acompañante va tres filas más adelante, y si gritó o no, te enteras a la
+salida.
 
 ```glossary-widget slug=single-rider
 
@@ -243,10 +245,11 @@ releemos los tiempos de espera cada cinco minutos.
 
 ![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney’s Hollywood Studios | Fantasmic! en los Hollywood Studios. Quien está sentado aquí no está haciendo cola en ningún sitio. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Cuántas personas mueve una atracción por hora
+## Rendimiento: la cifra discreta que decide tu día
 
 **Rendimiento** significa sencillamente cuántas personas transporta realmente
-una atracción por hora. Esa cifra decide lo larga que es la cola de verdad.
+una atracción por hora. No sale en ningún cartel publicitario y, aun así,
+decide la longitud de la cola más que cualquier animatrónico.
 
 ```glossary-widget slug=ride-capacity
 
@@ -370,7 +373,8 @@ El panel tiene que hacer dos cosas contradictorias a la vez. Debe darte una base
 panel que se queda corto produce a la salida un montón de gente que se siente
 estafada; uno que se pasa manda a unos pocos visitantes a otra parte pero deja
 contentos a todos los demás. Los parques eligen sistemáticamente el segundo
-error. Quien cuenta con 60 minutos y sube a los 45 sale de la estación como
+error, igual que el repartidor que te dice cuarenta minutos y llama al timbre a
+los treinta. Quien cuenta con 60 minutos y sube a los 45 sale de la estación como
 ganador. Regla del pico-final, recordemos: la hora termina mejor de lo
 esperado, y así queda archivada.
 
@@ -384,12 +388,12 @@ Fancast](/fancast).
 
 ## Por qué Peter Pan’s Flight siempre «se desmadra»
 
-¿Por qué precisamente **Peter Pan’s Flight**, un dark ride tranquilo de factura
-de 1955, sin montaña rusa, sin emoción fuerte, tiene casi todo el día una cola
-que no guarda proporción con la atracción, en prácticamente todos los parques
+**Peter Pan’s Flight** es un dark ride tranquilo de factura de 1955, sin
+montaña rusa, sin emoción fuerte. Aun así, en prácticamente todos los parques
 Disney del mundo, desde
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) hasta
-Orlando?
+Orlando, tiene delante casi todo el día una cola como si al final regalaran
+cerveza.
 
 Tiene poco que ver con la atracción y mucho con la aritmética:
 
@@ -431,7 +435,8 @@ visitado del mundo, y tanto Disney como Universal atraen visitantes de todos
 los continentes. A eso se suma un factor que Europa apenas conoce con esta
 dureza: allí uno puede comprarse el paso por delante de la cola. Lightning Lane
 y Express Pass venden parte de la capacidad a visitantes que pagan, y cada
-viaje exprés le falta a la cola standby. Cabezas de cartel como
+viaje exprés le falta a la cola standby. La espera injusta de Maister, esta vez
+con tique de caja. Cabezas de cartel como
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 tienen por eso con regularidad colas largas pese a una capacidad horaria
 enorme.
@@ -553,8 +558,8 @@ de compras o ves un espectáculo. La cola sigue existiendo, solo que transcurre
 sin tus piernas. La espera no desaparece, pero deja de comerte el día, y el
 parque reparte la demanda de forma más controlada a lo largo de las horas.
 
-En el lado del hardware, los parques trabajan en paralelo en la velocidad de
-despacho, con tres patrones clásicos:
+Para quien prefiere hacer cola con los pies y no con el pulgar, los parques
+trabajan a la vez en la propia estación:
 
 - **Zonas de bajada y subida separadas**, para que el tren no tenga que esperar
   a que la gente baje antes de que suba el siguiente grupo.
@@ -580,7 +585,7 @@ vehículo en marcha, y la atracción se traga así más de 3.000 visitantes por
 hora, más que más de una megamontaña rusa, con una cadena de vehículos que da
 sus vueltas sin rechistar desde los años sesenta y nunca pide un descanso.
 
-## Qué parte de esto está en park.fan
+## Lo que park.fan te ahorra en la cola
 
 La próxima cola de 60 minutos no se acortará por ello. Pero se lee de otra
 manera cuando sabes tres cosas, y están en park.fan:
@@ -599,11 +604,6 @@ manera cuando sabes tres cosas, y están en park.fan:
 ```best-days-widget slug=europa-park
 
 ```
-
-Contra la psicología no podemos hacer nada. Que la hora se sienta como una
-hora o como el primer acto de la atracción lo decide el parque que construyó la
-cola: con el pre-show, la tematización y un buen último tramo antes de la
-estación.
 
 — Patrick
 

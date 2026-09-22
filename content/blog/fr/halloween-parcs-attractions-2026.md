@@ -1,17 +1,15 @@
 ---
-title: 'Halloween 2026 dans les parcs d’Europe : nuits d’horreur et mazes'
+title: 'Halloween 2026 dans les parcs d’Europe : tronçonneuse, citrouille ou rien du tout'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
 updatedAt: '2026-09-22'
 author: patrick
 mode: published
 excerpt: >-
-  Du « plus grand » événement Halloween du continent au Movie Park, en passant
-  par l’intransigeante Traumatica, jusqu’aux fameuses Walibi-Experiences pour
-  lesquelles on paie un supplément de son plein gré : le panorama de la
-  saison Halloween 2026 en Allemagne, aux Pays-Bas, en Belgique et en France.
-  Avec les deux parcs de tête qui font ostensiblement le mort devant tout ce
-  cirque, et la question de savoir quand l’affluence est à son comble.
+  Tronçonneuse à Bottrop, crochet de boucher à Biddinghuizen, vin chaud et
+  patience à Brühl : Halloween 2026 en Allemagne, aux Pays-Bas, en Belgique et
+  en France, avec toutes les dates, les deux grands parcs qui boudent tout ce
+  cirque, et les soirs où l’on ne fait pas la queue une éternité.
 tags:
   - halloween
   - parc-attractions
@@ -33,11 +31,10 @@ coverImage:
   alt: 'Phénix géant formé de milliers de citrouilles lumineuses, ailes déployées, la nuit, avec au premier plan un acteur muni d’une masse'
   caption: 'Des milliers de citrouilles pour un seul phénix, et l’homme à la masse veille à ce que personne n’en emporte une.'
 seo:
-  title: 'Halloween parcs d’attractions 2026'
+  title: 'Halloween parcs d’attractions 2026 : dates et frissons'
   description: >-
-    Halloween 2026 dans les parcs d’Europe : Movie Park et ses neuf mazes,
-    Traumatica, Walibi, Toverland, plus les réfractaires et les jours les plus
-    vides.
+    Halloween 2026 : les neuf mazes du Movie Park, Traumatica, le crochet de
+    Walibi, le maïs de Toverland, deux parcs qui boudent et les soirs calmes.
   keywords:
     - Halloween parc attractions 2026
     - Halloween Horror Festival Movie Park 2026
@@ -66,9 +63,9 @@ cette crise cardiaque sous contrôle.
 La frousse se moque des frontières. Le plus grand événement Halloween du
 continent se trouve à Bottrop, les fameuses experiences de Walibi environ deux
 heures de route plus loin, à Biddinghuizen, simplement dans un autre pays. La
-question à laquelle on répond le plus rarement, c’est celle de la
-date : quels soirs on entre dans ces machines à fumée sans faire d’abord la
-queue une petite éternité devant.
+question que presque personne ne traite est à la fois la plus ennuyeuse et la
+plus importante : quels soirs on entre dans ces machines à fumée sans d’abord
+geler sur place dans le froid d’octobre.
 
 > **Un mot sur les dates :** les parcs peaufinent leurs programmes d’Halloween
 > tout l’été. Pour chaque parc, nous renvoyons vers la page officielle de
@@ -169,7 +166,7 @@ la tête de l’Europa-Park, et le chanteur **Marc Terenzi** montent sur le mod�
 américain les premières « Terenzi Horror Nights ». Terenzi porte l’événement
 jusqu’en 2012, puis leurs chemins se séparent ; de 2013 à 2016, cela s’appelle
 simplement « Horror Nights », avant de se réinventer en **Traumatica** en
-**2017**. Depuis, l’ancienne expérience collectionne les prix : « Best Live
+**2017**. Depuis, l’ancienne expérience collectionne les prix comme d’autres les magnets de frigo : « Best Live
 Horror Attraction » (European Travel Awards 2024), un prix ScareCON
 de la meilleure scare zone (2025), le Board of Directors Award de la Haunted
 Attraction Association américaine (2025) et, tout récemment, le Scare Award 2026
@@ -189,7 +186,8 @@ Le déroulé est minuté : ouverture des portes à 17 h 45, food court à parti
 18 h (le repas du condamné, en somme), mondes d’horreur à partir de 19 h, fin à
 23 h 30. L’accès se fait par des pass échelonnés, de l’**Event Pass** (à partir
 de 33 €) au **Shoxter Pass** avec accès prioritaire (à partir de 96 €) jusqu’au
-**Psycho Pass** pour les endurcis (18 ans et plus, tout compris, 349 €).
+**Psycho Pass** pour les endurcis dotés d’un solide découvert autorisé (18 ans
+et plus, tout compris, 349 €).
 Certains frissons supplémentaires se paient en plus : l’experience en contact
 intégral THE HOTEL (29 €), le club THE FORBIDDEN (10 €) et une courte VR
 d’horreur (6 €).
@@ -198,12 +196,13 @@ Pour l’anniversaire, le **Vampire’s Club** revient, et pour exactement quatr
 nuits : les 25 et 26 septembre, les 2 et 3 octobre. Ces soirs-là, il prend la
 place de THE FORBIDDEN, et Marc Terenzi y monte lui-même sur scène. Après plus
 d’une décennie de distance entre lui et l’événement, c’est le genre de note de
-bas de page qui réjouit surtout ceux qui étaient là en 2007.
+bas de page qui réjouit surtout ceux qui étaient là en 2007 et qui préfèrent
+aujourd’hui être au lit avant minuit.
 
 Le soir, le site tient moins du parcours de maison hantée que du terrain de
 chasse : ruelles noyées de brume où des meutes entières d’acteurs traquent les
 individus, spectacles pyrotechniques et un vacarme qui vous reste dans
-l’oreille sur le trajet du retour.
+l’oreille jusque sur l’A5 du retour.
 
 De jour, Rust est un autre parc, et un parc aux files étonnamment courtes pour
 sa taille. Le [guide Europa-Park](/blog/europa-park-temps-d-attente-conseils)
@@ -331,7 +330,8 @@ classiques comme _Wrecked_, _Alice in Horrorland_ ou _Texas Butcher_.
 Plutôt que des sursauts bon marché, la maison Paramount mise sur l’ambiance
 rampante du found footage qui a fait la réputation de la série : couloirs
 étroits, peu de lumière et, en continu, la désagréable impression que quelque
-chose va se produire.
+chose va se produire, un peu comme dans un appartement où les enfants sont
+soudain très silencieux.
 
 À Kasterlee, Halloween dure du **10 octobre au 7 novembre 2026**, mais les sept
 maisons hantées ne sont ouvertes en même temps qu’à partir du 31 octobre.
@@ -434,7 +434,7 @@ plus connu Walibi Holland, se trouve dans notre
 [guide Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils).
 
 Le terrain est compact, les trajets entre les frayeurs sont courts, et les
-acteurs aiment venir tout près. [Bobbejaanland](ref:bobbejaanland) se trouve à
+acteurs ne croient pas beaucoup aux distances de sécurité. [Bobbejaanland](ref:bobbejaanland) se trouve à
 une bonne heure de route : si vous allez en Belgique de toute façon, mettez les
 deux sur le même week-end.
 
@@ -588,8 +588,9 @@ les plus calmes** dans notre calendrier d’affluence par IA :
 
 ```
 
-L’affluence habituelle à Bottrop par jour de la semaine et par mois, d’après les
-mesures des saisons passées :
+L’affluence habituelle à Bottrop par jour de la semaine et par mois, d’après nos
+mesures. Elles ne commencent qu’en décembre 2025, octobre manque donc encore, et
+Halloween, il faudra l’imaginer pour l’instant :
 
 **Movie Park Germany, temps d’attente typiques par jour de semaine & mois**
 

@@ -1,14 +1,14 @@
 ---
-title: 'Settanta minuti sono tanti? Dipende dal giorno della settimana'
+title: 'Settanta minuti sono tanti? Dipende se è martedì'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 author: patrick
 mode: published
 excerpt: >-
-  All’ingresso di Taron c’è un numero, e da solo non dice quasi niente. Solo il
-  confronto con ogni martedì misurato lo trasforma in una risposta. Perché
-  park.fan archivia i tempi di attesa, cosa succede loro di notte e dove
-  preferiamo non dire proprio nulla.
+  All’ingresso di Taron c’è un numero, e da solo dice quanto una temperatura
+  senza la stagione. Solo il confronto con ogni martedì misurato lo trasforma in
+  una risposta. Perché park.fan non butta via niente, cosa succede di notte e
+  perché ad agosto non consigliamo più di pattinare.
 tags:
   - tempi-di-attesa
   - park-fan
@@ -31,9 +31,8 @@ coverImage:
 seo:
   title: 'Leggere bene un tempo di attesa: 70 minuti sono tanti?'
   description: >-
-    Perché un tempo di attesa senza valore di confronto non dice nulla, cosa
-    significano «tipico» e «pieno» su un’attrazione e come park.fan trasforma
-    milioni di rilevazioni in una risposta.
+    Un tempo di attesa senza confronto è come una temperatura senza la stagione.
+    Cosa vogliono dire «tipico» e «pieno» e come park.fan ne ricava una risposta.
   keywords:
     - tempi di attesa parco divertimenti
     - come leggere i tempi di attesa
@@ -52,7 +51,7 @@ sfavore ([il perché è qui](/blog/l-arte-dell-attesa)).
 
 Il numero in sé non è il problema. I parchi lo espongono, di solito è più o meno
 giusto e ci costa una richiesta ogni cinque minuti. Il problema è che sta da
-solo. Settanta minuti di un martedì di maggio sono una cosa completamente
+solo, come una temperatura senza la stagione. Settanta minuti di un martedì di maggio sono una cosa completamente
 diversa da 70 minuti di un sabato delle vacanze estive, e senza la seconda metà
 di questa frase non ci fai niente.
 
@@ -81,12 +80,14 @@ Quello che c’è qui è in tempo reale. Se rileggi questo articolo tra tre mesi
 tabella ci saranno altri numeri, e il testo attorno starà ancora in piedi. È
 esattamente a questo che servono questi widget: in quattro articoli più vecchi i
 numeri erano digitati a mano in tabelle Markdown, distribuiti su sei lingue, e
-dopo qualche settimana si erano allontanati in silenzio.
+dopo qualche settimana si erano allontanati in silenzio, come gli orologi di una
+casa vacanze.
 
 ## La giornata ha una forma
 
 Un’attrazione non ha la stessa fila tutto il giorno. Il movimento di fondo lo
-conoscono tutti: all’apertura è corta, poi tira, verso sera torna sopportabile.
+conoscono tutti: all’apertura è corta, poi il resto del mondo finisce la
+colazione, e verso sera torna sopportabile.
 Dove cada esattamente il massimo cambia da attrazione ad attrazione, e sono
 proprio quelle differenze la parte utile.
 
@@ -114,7 +115,8 @@ regioni sono in vacanza, se c’è un ponte attaccato, se piove e se oltre confi
 sta succedendo qualcosa.
 
 L’ultimo punto viene volentieri sottovalutato. Un parco vicino al confine si
-accorge subito di quando iniziano le vacanze accanto, quindi contiamo anche le
+accorge subito di quando iniziano le vacanze accanto, di solito già dalle targhe
+nel parcheggio. Per questo contiamo anche le
 regioni entro circa 200 chilometri e le contrassegniamo a parte nel calendario.
 Tre parchi a confronto, ciascuno con il suo giorno più tranquillo:
 
@@ -133,7 +135,8 @@ chieda. Così ogni notte gira una catena di job, e il loro ordine è fissato,
 perché ogni passo poggia sul precedente. Alle 02:00 UTC i percentili per ora,
 alle 03:00 i valori di riferimento per parco, alle 04:30 il riassunto di ieri,
 alle 05:15 i consigli rope drop, che leggono proprio quel riassunto. Alle 06:00
-il modello di previsione si riaddestra con i tempi di attesa del giorno prima.
+il modello di previsione si riaddestra con i tempi di attesa del giorno prima,
+mentre i fan del rope drop sono già in coda in autostrada.
 
 Poi c’è l’altra metà: non buttiamo via niente. I periodi più vecchi vengono
 compressi, ma ogni analisi continua a girare su tutte le rilevazioni mai
@@ -147,13 +150,15 @@ nella propria app, e soltanto per i dispositivi collegati al wi-fi del parco. No
 un’interfaccia pubblica. Nei dati grezzi questo parco somiglia a qualunque altro
 alle tre di notte: nessuna attrazione riporta niente. Se ne traessimo la
 conclusione ovvia, lì ci sarebbero tutte le attrazioni del parco su «molto bassa», più una media
-di 0 minuti e una previsione fondata su zero osservazioni. Al suo posto, sulla
+di 0 minuti e una previsione fondata su zero osservazioni. Il sogno di ogni
+visitatore, e completamente inventato. Al suo posto, sulla
 pagina del parco c’è un avviso che qui non c’è niente da leggere.
 
 La stessa regola in un punto più piccolo: la pista di pattinaggio del
 Phantasialand va da novembre a gennaio. Ad agosto nessuno riporta niente su di
 essa, perché non c’è niente da riportare. Leggere quel silenzio come «aperta»
-sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco. E i
+sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco:
+pattini ai piedi in pieno agosto, con la nostra benedizione. E i
 mesi di esercizio di un’attrazione li indichiamo solo dopo 330 giorni di
 osservazione: prima non compare alcun mese, perché «va da dicembre ad aprile»
 descriverebbe il periodo in cui per caso abbiamo già misurato.

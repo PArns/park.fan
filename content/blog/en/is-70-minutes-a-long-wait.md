@@ -1,14 +1,14 @@
 ---
-title: 'Is 70 Minutes a Long Wait? Depends on the Weekday'
+title: 'Is 70 Minutes a Long Wait? Depends Whether It’s a Tuesday'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 author: patrick
 mode: published
 excerpt: >-
-  There is a number at the entrance to Taron, and on its own it says almost
-  nothing. Only the comparison with every Tuesday on record turns it into an
-  answer. Why park.fan archives wait times, what happens to them overnight and
-  where we would rather say nothing at all.
+  There is a number at the entrance to Taron, and on its own it says about as
+  much as a temperature without a season. Only the comparison with every Tuesday
+  on record turns it into an answer. Why park.fan throws nothing away, what
+  happens overnight and why we no longer recommend ice skating in August.
 tags:
   - wait-times
   - park-fan
@@ -31,9 +31,8 @@ coverImage:
 seo:
   title: 'How to Read a Wait Time: Is 70 Minutes a Lot?'
   description: >-
-    Why a wait time means nothing without a reference value, what “typical” and
-    “busy” stand for on a ride, and how park.fan turns millions of readings into
-    an answer.
+    A wait time without a reference is a temperature without a season. What
+    “typical” and “busy” mean, and how park.fan turns it into an answer.
   keywords:
     - theme park wait times
     - how to read wait times
@@ -52,7 +51,7 @@ against you anyway ([here is why](/blog/the-art-of-waiting)).
 
 The number itself is not the problem. The parks post it, it is usually roughly
 right, and it costs us one request every five minutes. The problem is that it
-stands alone. Seventy minutes on a Tuesday in May is a completely different
+stands alone, like a temperature without a season. Seventy minutes on a Tuesday in May is a completely different
 thing from 70 minutes on a Saturday in the summer holidays, and without the
 second half of that sentence there is nothing you can do with it.
 
@@ -80,13 +79,13 @@ What is in there is live. Read this article again in three months and the table
 will hold different numbers, while the text around it still holds. That is what
 these widgets are for: four older articles had their figures typed by hand into
 Markdown tables, spread across six languages, and after a few weeks they had
-quietly drifted apart.
+quietly drifted apart, like the clocks in a holiday rental.
 
 ## The day has a shape
 
 A ride does not carry the same queue all day. Everybody knows the basic
-movement: short at opening, then it picks up, and towards the evening it becomes
-bearable again. Where exactly the high point sits differs from ride to ride, and
+movement: short at opening, then the rest of the world finishes breakfast, and
+towards the evening it becomes bearable again. Where exactly the high point sits differs from ride to ride, and
 those differences are the useful part.
 
 ```hourly-profile-widget slug=phantasialand top=6
@@ -113,7 +112,8 @@ holiday, whether a bridge day is attached, whether it rains, and whether
 something is going on across the border.
 
 That last point tends to get underestimated. A park near a border notices
-immediately when the holidays start next door, so we count regions within
+immediately when the holidays start next door, usually from the number plates
+in the car park. So we count regions within
 roughly 200 kilometres and mark them separately in the calendar. Three parks
 side by side, each with its quietest weekday:
 
@@ -132,7 +132,8 @@ of jobs runs every night, and their order is fixed, because each step sits on
 the one before. At 02:00 UTC the percentiles per hour, at 03:00 the park
 baselines, at 04:30 the roll-up of yesterday, at 05:15 the rope-drop
 recommendations, which read exactly that roll-up. At 06:00 the forecast model
-retrains itself on the previous day’s wait times.
+retrains itself on the previous day’s wait times, while the rope-drop crowd is
+already stuck on the motorway.
 
 Then there is the other half: we throw nothing away. Older periods get
 compressed, but every analysis still runs over every reading that ever arrived.
@@ -146,13 +147,15 @@ own app, and only for devices on the park’s Wi-Fi. There is no public interfac
 this park looks like any other at three in the morning: no ride is reporting
 anything. If we drew the obvious conclusion, every attraction in the park would be sitting
 there at “very low”, plus an average of 0 minutes and a forecast built on zero
-observations. Instead there is a notice on the park page saying that there is
+observations. A dream day for every visitor, and entirely made up. Instead
+there is a notice on the park page saying that there is
 nothing to read here.
 
 The same rule in a smaller place: the ice rink at Phantasialand runs from
 November to January. In August nobody reports anything about it, because there
 is nothing to report. Reading that silence as “open” would be the convenient
-mistake, and it did actually say that on the park page once. And we do not name
+mistake, and it did actually say that on the park page once: ice skating in
+high summer, with our blessing. And we do not name
 a ride’s operating months until 330 days of observation: before that it carries
 no months at all, because “runs from December to April” would describe the
 period we happen to have measured.

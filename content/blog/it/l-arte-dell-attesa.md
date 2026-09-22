@@ -7,8 +7,8 @@ author: patrick
 mode: published
 excerpt: >-
   Perché la stessa ora in coda un giorno passa come venti minuti e un altro come
-  mezza giornata di vacanza buttata. Dal pre-show alla legge di Little, e
-  proprio nel mezzo il motivo per cui park.fan esiste.
+  mezza giornata di vacanza buttata. Con un avatar che respira, una formula da
+  sottobicchiere e la prova che avanzare non serve a niente.
 tags:
   - tempi-di-attesa
   - code
@@ -24,10 +24,10 @@ coverImage:
   alt: 'L’Albero della Vita nell’Animal Kingdom di Disney, davanti le folle di visitatori del parco'
   caption: 'Animal Kingdom di Disney. Decine di migliaia di ospiti, un albero, e ognuno di loro sta calcolando per quale attrazione valga la coda.'
 seo:
-  title: 'Psicologia dei tempi di attesa nei parchi'
+  title: 'Perché nei parchi l’attesa sembra infinita'
   description: >-
-    Tempi di attesa nei parchi: la psicologia e la matematica dietro le code, e
-    perché 60 minuti a volte sembrano 20. Su park.fan.
+    Perché un’ora di coda a volte vola come venti minuti, perché avanzare non
+    serve e quale formula sta dietro ogni tabellone dell’attesa.
   keywords:
     - tempi di attesa parco divertimenti
     - psicologia delle code
@@ -52,7 +52,8 @@ Giri l’angolo verso la tua attrazione preferita ed ecco il tabellone, acceso:
 accompagna che quella giostra “è comunque sopravvalutata”. Altri giorni fai
 quegli stessi 60 minuti e giureresti poi che erano al massimo 25.
 
-Entrambe le volte eri la stessa persona nella stessa coda. La differenza la
+Entrambe le volte eri la stessa persona nella stessa coda, con le stesse gambe
+stanche. La differenza la
 fanno due cose che un buon parco tiene sotto controllo insieme: la psicologia e
 la capacità. La prima decide come _pesa_ l’attesa, la seconda quanto è
 _davvero_ lunga la fila.
@@ -63,7 +64,7 @@ completa è qui](/blog/un-passeggino-una-gondola-e-park-fan)). Cosa mi stesse
 succedendo davvero quel pomeriggio, volevo poi saperlo con precisione. Entrano
 in gioco due formule, e stanno insieme sul retro di un sottobicchiere.
 
-## Perché i minuti si allungano
+## Perché i minuti si allungano come una gomma da masticare
 
 Il problema di fondo lo sezionò **David Maister**, allora professore alla Harvard Business School, già
 nel 1985 nel suo classico
@@ -81,7 +82,7 @@ Maister ne ha messe per iscritto otto. Queste tre si vedono in ogni coda:
   volentieri. Tra poco ci torniamo.
 - **L’attesa ingiusta è insopportabile.** Niente rovina l’umore più in fretta
   della sensazione che altri ti superino. Per questo i parchi nascondono le
-  corsie express meglio che possono.
+  corsie express meglio che possono, cioè di solito non granché bene.
 - **Aspettare per qualcosa di prezioso si sopporta più a lungo.** Più grande è
   l’attesa, più paziente è la fila. Per una giostra da luna park non stiamo 20
   minuti. Per il nuovo mega coaster ci convinciamo a starne 90.
@@ -98,7 +99,8 @@ quanto è stata. E già nel 1991 il ricercatore di code del MIT
 [“Entertain, Enlighten, and Engage”](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 che già una semplice distrazione migliora nettamente la qualità percepita
 dell’attesa. Nell’esperimento bastò uno schermo di notizie in una filiale
-bancaria.
+bancaria. Niente animatronica, niente colonna sonora: un televisore appeso al
+muro, e via.
 
 Il meccanismo dietro: il nostro cervello riesce a contare il tempo con
 meticolosità solo quando non ha altro da fare. Non appena l’attenzione si
@@ -106,13 +108,13 @@ rivolge alla musica, ai dettagli della tematizzazione o a uno spettacolo, al
 contatore interno mancano semplicemente le risorse, e la sovrastima si
 scioglie. A questo serve tutto ciò che vedi in una buona coda: colonne sonore,
 animatronica, elementi interattivi, dettagli nascosti. Un bel po’ di fatica per
-un corridoio che in teoria si deve solo attraversare.
+un corridoio da cui tutti, alla fine, vogliono solo uscire il prima possibile.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Pre-show
+### Pre-show: l’attesa travestita da programma della giornata
 
 A risolverlo più a fondo è il **pre-show**, che dichiara l’attesa parte
 dell’attrazione. L’esempio da manuale sta ai
@@ -219,9 +221,8 @@ secondi.
 E poi qui c’è un trucco di capacità che aiuta entrambe le parti: la **fila
 single rider**. Chi va da solo e si lascia sistemare sul posto spaiato che un
 gruppo di quattro lascia libero accorcia drasticamente la propria attesa e intanto aiuta il
-parco a riempire ogni vettura fino all’orlo. Ogni sedile
-altrimenti vuoto è capacità buttata via, e chi va da solo lo riempie senza che
-nessuno perda il proprio posto.
+parco a riempire ogni vettura fino all’orlo. Il prezzo: chi è con te siede tre
+file più avanti, e se ha urlato lo scopri solo all’uscita.
 
 ```glossary-widget slug=single-rider
 
@@ -246,10 +247,11 @@ attesa ogni cinque minuti.
 
 ![Migliaia di spettatori nell’anfiteatro notturno di Fantasmic! ai Disney’s Hollywood Studios | Fantasmic! agli Hollywood Studios. Chi è seduto qui non sta facendo la coda da nessuna parte. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Quante persone smaltisce un’attrazione in un’ora
+## Portata: il numero senza fascino che decide la tua giornata
 
 **Portata** vuol dire semplicemente quante persone un’attrazione trasporta
-davvero all’ora. È quel numero a decidere quanto è lunga la coda per davvero.
+davvero all’ora. Non lo trovi su nessun cartellone pubblicitario, eppure sulla
+lunghezza della coda pesa più di qualsiasi animatronica.
 
 ```glossary-widget slug=ride-capacity
 
@@ -374,7 +376,9 @@ precisione lì si aggiunge volentieri un generoso margine di sicurezza, e di
 proposito. Il tabellone deve infatti fare due cose contraddittorie insieme. Deve darti una base affidabile per decidere, e non deve deluderti. Un
 tabellone che sottostima produce all’uscita un mucchio di persone che si
 sentono fregate; uno che sovrastima manda via qualche ospite ma rende felici
-tutti gli altri. I parchi scelgono sistematicamente il secondo errore. Chi
+tutti gli altri. I parchi scelgono sistematicamente il secondo errore, come
+l’app delle consegne che annuncia quaranta minuti e poi il fattorino suona dopo
+trenta. Chi
 mette in conto 60 minuti e sale dopo 45 lascia la stazione da vincitore. Regola
 picco-fine, ricordi? L’ora finisce meglio del previsto, ed è così che viene
 archiviata.
@@ -389,12 +393,12 @@ sulla [pagina di Fancast](/fancast).
 
 ## Perché Peter Pan’s Flight “esplode” sempre
 
-Perché proprio **Peter Pan’s Flight**, un tranquillo dark ride di fattura 1955,
-niente montagne russe, niente brivido, ha quasi tutto il giorno una coda che non
-ha niente a che vedere con il giro, in praticamente ogni parco Disney del mondo,
-da
+**Peter Pan’s Flight** è un tranquillo dark ride di fattura 1955, niente
+montagne russe, niente brivido. Eppure in praticamente ogni parco Disney del
+mondo, da
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) fino a
-Orlando?
+Orlando, ha davanti per tutto il giorno una coda come se alla fine offrissero la
+birra gratis.
 
 Con l’attrazione c’entra poco, con l’aritmetica molto:
 
@@ -435,7 +439,8 @@ visitato al mondo, e sia Disney sia Universal attirano ospiti da tutti i
 continenti. A questo si aggiunge un fattore che l’Europa conosce a malapena con
 questa durezza: là ci si può comprare il passaggio davanti alla coda. Lightning
 Lane ed Express Pass vendono una parte della capacità a ospiti paganti, e ogni
-giro express manca alla coda standby. Attrazioni di punta come
+giro express manca alla coda standby. L’attesa ingiusta di Maister, stavolta
+con lo scontrino. Attrazioni di punta come
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 hanno perciò regolarmente code lunghe nonostante una capacità oraria enorme.
 
@@ -557,8 +562,8 @@ shopping o guardi uno spettacolo. La coda continua a esistere, semplicemente si
 svolge senza le tue gambe. L’attesa non sparisce, ma non ti divora più la
 giornata, e il parco distribuisce la domanda sulle ore in modo più controllato.
 
-Sul lato hardware i parchi lavorano in parallelo sulla velocità di smistamento,
-con tre schemi classici:
+Per chi preferisce fare la fila con i piedi anziché con il pollice, i parchi
+lavorano in parallelo sulla stazione stessa:
 
 - **Aree di discesa e salita separate**, così il treno non deve aspettare che
   la gente scenda prima che salga il gruppo successivo.
@@ -584,7 +589,7 @@ veicolo in movimento, e l’attrazione inghiotte così oltre 3.000 ospiti l’or
 più di parecchi mega coaster, con una catena di veicoli che dagli anni Sessanta
 gira senza lamentarsi e non chiede mai una pausa.
 
-## Che cosa di tutto questo sta su park.fan
+## Cosa ti risparmia park.fan quando sei in coda
 
 La prossima coda da 60 minuti non si accorcerà per questo. Ma si legge in modo
 diverso quando sai tre cose, e stanno su park.fan:
@@ -603,10 +608,6 @@ diverso quando sai tre cose, e stanno su park.fan:
 ```best-days-widget slug=europa-park
 
 ```
-
-Contro la psicologia non possiamo farci nulla. Se l’ora sembri un’ora o il
-primo atto del giro lo decide il parco che ha costruito la coda: con il
-pre-show, la tematizzazione e un buon ultimo tratto prima della stazione.
 
 — Patrick
 

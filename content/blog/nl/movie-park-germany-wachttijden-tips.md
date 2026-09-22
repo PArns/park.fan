@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Van dat verlies heeft het park een gewoonte gemaakt: het bouwt attracties
-  over zichzelf. Voor de dertigste verjaardag een gids met gemeten
-  wachttijden, de weekdag waar de gangbare tips naast zitten, het rooster
-  vanaf september en het Halloween Horror Festival vanaf 26 september.
+  Batman weg, Bugs Bunny weg, en sindsdien bouwt het park attracties over
+  zichzelf. Voor de dertigste verjaardag: gemeten wachttijden, de weekdag
+  waar bijna elke tipsite naast zit, het rooster vanaf september en het
+  Halloween Horror Festival vanaf 26 september.
 tags:
   - movie-park
   - wachttijden
@@ -31,11 +31,10 @@ coverImage:
   caption: 'Zes weken per jaar heet dit park Horrorwood Studios. De letters bij de ingang worden daarvoor omgebouwd, niet vervangen.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park wachttijden, beste dagen & Halloween 2026'
+  title: 'Movie Park wachttijden & Halloween 2026, zonder Batman'
   description: >-
-    Movie Park Germany met echte wachttijdgegevens: de rustigste weekdag, het
-    rooster van donderdag tot en met zondag vanaf september, het Halloween
-    Horror Festival vanaf 26 september, prijzen 2026 en de route.
+    Movie Park met gemeten wachttijden: de weekdag waar tipsites naast zitten,
+    het najaarsrooster, Halloween vanaf 26/9 en hoe je de kassatoeslag ontloopt.
   keywords:
     - Movie Park Germany
     - Movie Park wachttijden
@@ -63,7 +62,8 @@ later mocht het betalende publiek naar binnen.
 Van de merken waarvoor al die moeite werd gedaan is er vandaag geen enkele meer
 over. Bugs Bunny weg, Batman weg, de Gremlins weg, Police Academy weg. Het park
 heet sinds 2005 anders, is sinds 2010 van een Spaans concern en viert zijn
-dertigste verjaardag uitgerekend met een attractie van Paramount.
+dertigste verjaardag uitgerekend met een attractie van Paramount. Alsof er op de
+taart voor de parelbruiloft de naam van de buurman staat.
 
 Daar komt een getal bij dat helemaal niet past bij de reputatie van dit park.
 Over alle openingsdagen die we tot nu toe gemeten hebben, sta je in het
@@ -72,7 +72,7 @@ Over alle openingsdagen die we tot nu toe gemeten hebben, sta je in het
 
 En de leegste weekdag is de dag die geen enkele tipsite je noemt.
 
-## Een park dat elk merk kwijtraakte waarmee het gebouwd is
+## Bugs Bunny, Batman, Gremlins: allemaal verhuisd
 
 Het terrein begon als **Kirchhellener Märchenwald**, dat de familie Allekötter
 in 1967 opende. Daaruit ontstond het Traumlandpark, en begin jaren negentig
@@ -87,12 +87,14 @@ Die bleef acht jaar. In oktober 1999 verkocht Time Warner 97 procent aan
 **Premier Parks**, dat kort daarna **Six Flags** ging heten. In 2004 verkochten
 de Amerikanen hun Europese tak aan investeerder **Palamon Capital Partners**, en
 met die verkoop liepen de licenties af. In de winter van 2004/05 moest het park
-zo goed als alles hernoemen wat een naam uit een Warner-film droeg. In maart
+zo goed als alles hernoemen wat een naam uit een Warner-film droeg: een
+verhuizing waarbij de meubels blijven staan en alleen de naambordjes bij de
+deurbel nieuw zijn. In maart
 2005 ging het weer open als **Movie Park Germany**. Vijf jaar later, op 17 mei
 2010, nam de Spaanse exploitant **Parques Reunidos** het over.
 
-Vijf van de bekendste attracties zijn daardoor van naam veranderd, telkens omdat
-er ergens op de achtergrond een contract afliep:
+Vijf van de bekendste attracties leven daardoor onder een nieuwe naam verder,
+als kroongetuigen in een beschermingsprogramma:
 
 | Geopend als            | Jaar | Heet nu                                          |
 | ---------------------- | ---- | ------------------------------------------------ |
@@ -115,7 +117,8 @@ toen iets anders.
 
 Die voorgeschiedenis verklaart de reputatie die Movie Park in de coasterwereld
 tot vandaag heeft. Wie er tussen 2012 en 2016 kwam, zag een park waar weinig
-bewoog en dat zichzelf aanprees met films die het niet meer mocht laten zien.
+bewoog, een beetje als een bioscoop die in de hal nog de posters heeft hangen van
+films die hij niet meer mag draaien.
 
 ## De filmgeschiedenis die het in plaats daarvan vertelt
 
@@ -163,8 +166,8 @@ studioterrein opgenomen.
 Het is gebouwd in het pand van **The Lost Temple** (2014), en daaronder ligt nog
 een laag: daar stond vanaf 1996 **Movie Magic**, de attractie waarmee Warner de
 bezoekers uitlegde hoe film gemaakt wordt. Dertig jaar later legt Paramount op
-dezelfde plek hetzelfde uit. Minimumlengte 100 centimeter, bij de uitgang een
-Paramount-showroom.
+dezelfde plek hetzelfde uit. Minimumlengte 100 centimeter.
+De gage voor je figurantenrol: de uitgang loopt door een Paramount-showroom.
 
 ## De andere zeven achtbanen
 
@@ -186,7 +189,8 @@ personen.
 
 Het verloop is ongewoon, omdat je drie keer versneld wordt voordat de baan
 überhaupt begint. De trein wordt op het startspoor heen en weer geslingerd, pas
-bij de derde aanloop is de snelheid genoeg voor de top hat, en daarna volgen
+bij de derde aanloop is de snelheid genoeg voor de top hat, zoals een bestelbus
+die bij ijzel de oprit van de parkeergarage op wil. Daarna volgen
 Immelmann, heartline roll en kurkentrekker. De soundtrack is van IMAscore, met
 daarvoor een preshow met projecties.
 
@@ -221,15 +225,16 @@ meter rails van grenen en Oregon pine.
 
 Hij rammelt. Na 27 jaar is hij luid en ruw, achterin de trein iets draaglijker
 dan voorin, en bij mij is de tweede rit genoeg voor hoofdpijn. Eén keer hoort er
-toch bij, daarvoor is hij te belangrijk voor de Duitse achtbaangeschiedenis. Wie
+toch bij, zoals het verplichte bezoek aan een oudtante: hij is te belangrijk voor
+de Duitse achtbaangeschiedenis om over te slaan. Wie
 Colossos in het [Heide-Park](ref:heide-park) als maatstaf neemt, moet het bij die
 ene keer laten.
 
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** is de
-attractie waar in dit park het langst voor wordt gewacht, en aan de kerncijfers
-zie je dat niet af. Geopend op **18 juni 2011**, een bobsled coaster van
+attractie waar in dit park het langst voor wordt gewacht, en de kerncijfers
+lezen als die van een baan voor een kinderfeestje. Geopend op **18 juni 2011**, een bobsled coaster van
 **Gerstlauer** in de voormalige Gremlins-hal, 3.000 vierkante meter, acht meter
 hoog, 400 meter lang, **36 km/u**. Parques Reunidos gaf er vijf miljoen euro voor
 vrij, een maand na de overname.
@@ -245,8 +250,8 @@ verrassend stil is, en de tweede lifthill trekt aan met wrijvingswielen, zodat
 het wagentje al klimmend sneller wordt.
 
 De verklaring staat toch in het datablad, één regel lager: **848 personen per
-uur**. Voor een park dat op drukke dagen tienduizenden binnenlaat is dat te
-weinig, en je ziet het in onze cijfers de hele dag terug.
+uur**. Voor een park dat op drukke dagen tienduizenden binnenlaat is dat één
+open kassa bij Ikea op zaterdag, en je ziet het in onze cijfers de hele dag terug.
 
 ```glossary-widget slug=ride-capacity
 
@@ -258,7 +263,7 @@ weinig, en je ziet het in onze cijfers de hele dag terug.
 Looping Coaster** die in lichte varianten wereldwijd tientallen keren staat.
 Geopend op 6 april 2001 als **Eraser**, 689 meter, 80 km/u, twee inversies, twee
 treinen van twintig personen. De benen hangen vrij, het hoofd zit tussen twee
-harde schouderbeugels.
+harde schouderbeugels als een walnoot in de notenkraker.
 
 ```glossary-widget slug=suspended-coaster
 
@@ -292,7 +297,7 @@ is een speed rapid river van Intamin uit het openingsjaar die al drie levens
 heeft gehad: in 1996 als Het Oneindige Verhaal, vanaf 2005 als Mystery River,
 sinds 7 mei 2018 als Arthurlegende met duistere figuren, een betoverd woud en
 een meermonster op het eind. Van de drie versies is de huidige de beste, en je
-wordt nat.
+wordt nat, graag tot in je sokken.
 
 ```glossary-widget slug=river-rapids
 
@@ -321,7 +326,7 @@ daarom de moeite waard.
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 tot slot is de wildwaterbaan in **Nickland**, gebouwd voor basisschoolkinderen,
 en toch een van de langste rijen van het park, omdat op warme middagen het
-halve park er tegelijk op afgaat.
+halve park tegelijk zijn innerlijke kind ontdekt.
 
 De podia horen hier vanaf dag één bij: een studiopark zonder stuntshow was in
 1996 ondenkbaar, dus liep bij de opening de Police Academy Stunt Show. In 2026
@@ -352,8 +357,8 @@ meerdere attracties gelijk, waaronder de wildwaterbaan uit het kinderdeel. Star
 Trek, de grootste baan van het park, staat in de middenmoot.
 
 Dat heeft weinig met populariteit te maken en veel met capaciteit. Van Helsing
-haalt 848 personen per uur, en omdat de rit binnen ligt is het bovendien waar het
-halve park bij regen op afgaat. Hoe capaciteit en vraag samen een wachttijd
+haalt 848 personen per uur, en omdat de rit binnen ligt is het bovendien het
+afdakje waar bij regen iedereen tegelijk onder wil staan. Hoe capaciteit en vraag samen een wachttijd
 worden, staat uitgebreid in
 [de kunst van het wachten](/blog/de-kunst-van-het-wachten).
 
@@ -370,7 +375,8 @@ omgekeerde**. Dora, Excalibur en Area 51 hebben hun volle uur laat in de middag,
 omdat bij dertig graden iedereen op een gegeven moment nat wil worden.
 
 En dan is er Van Helsing. Die regel schiet in het tweede uur omhoog en blijft
-daarna tot sluitingstijd op dezelfde waarde staan. Wie er niet in de eerste
+daarna tot sluitingstijd op dezelfde waarde staan, zoals wegwerkzaamheden op de
+A2: het wordt niet erger, het houdt alleen nooit op. Wie er niet in de eerste
 zestig minuten was, vindt de hele dag geen beter moment meer.
 
 In vergelijking met de buren:
@@ -464,7 +470,8 @@ De rustigste van de komende openingsdagen volgens onze kalender:
 
 April tot en met juni dragen elk zo’n twintig tot vijfentwintig meetdagen, juli
 en augustus nog een paar meer. Die vijf maanden zijn stevig onderbouwd, en ze
-zeggen wat iedereen vermoedt: in de zomervakantie wordt het druk.
+zeggen wat iedereen vermoedt die ooit in augustus op de parkeerplaats een plekje
+zocht: in de zomervakantie wordt het druk.
 
 Bij januari, maart en december staan er daarentegen maar drie tot vier meetdagen
 achter de waarde. De orde van grootte klopt, op de minuut zou ik me daar niet
@@ -489,7 +496,7 @@ die het genre niet mogen: **Jason Universe** haalt Jason Voorhees naar Bottrop e
 werkt zich door deel twee tot en met zes van de reeks. De andere acht komen uit
 eerdere jaren, twee daarvan herzien. Het **Ahoj-Brause Horror Lab** heeft extra
 schrikmomenten en een nieuwe verhaallijn rond een smaaktest en een testlab
-gekregen, het true-crimehuis **Murder Museum** een pathologiescène. Daar komt
+gekregen (een zin die iemand over bruispoeder ook maar moet opschrijven), het true-crimehuis **Murder Museum** een pathologiescène. Daar komt
 **PHOBIA – The Live Horror Game Show** in Studio 7 bij, een podiumshow waarin het
 publiek meespeelt in plaats van toekijkt.
 
@@ -604,7 +611,7 @@ Bij de pas zelf staan drie dingen in de kleine lettertjes:
 
 - **Bronze heeft de meeste gesloten dagen**: december en januari compleet, plus
   alle feestdagen, de zaterdagen in de NRW-vakanties, de zaterdagen in oktober en
-  Halloween zelf. Dus uitgerekend de dagen waarop de meesten willen gaan.
+  Halloween zelf. Dus uitgerekend de dagen waarop jij wilt gaan.
 - **Parkeren zit er pas vanaf Gold bij.** Bij Bronze en Silber kost de
   seizoenkaart voor het parkeren € 25 extra, anders betaal je de € 9 bij elk
   bezoek.
@@ -628,7 +635,7 @@ prijzen zijn het meest genoemde kritiekpunt in bezoekersrecensies. Voor 2026
 heeft het park verbeteringen aangekondigd. Daar heb ik tot nu toe niets van
 gemerkt, en ik eet hier zo snel mogelijk.
 
-Of het in Bottrop regent, bepaalt de helft van het park:
+Of het in Bottrop regent, bepaalt waar de rijen zich opstapelen:
 
 ```weather-widget slug=movie-park-germany
 

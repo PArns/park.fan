@@ -1,5 +1,5 @@
 ---
-title: 'Hansa-Park: Der Kärnan fährt 127 km/h, und die Saison hat keinen Schließtag'
+title: 'Hansa-Park: Deutschlands schnellste Achterbahn steht zur Hälfte an der Ostsee'
 translationKey: hansa-park-guide
 date: '2026-09-22'
 updatedAt: '2026-09-22'
@@ -7,10 +7,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Sierksdorf steht die zusammen mit dem Silver Star höchste und schnellste
-  Achterbahn Deutschlands, dazu der höchste Gyro-Drop-Tower der Welt. Außerdem ein
-  Kalender ohne einen einzigen Schließtag, 16 Leuchtfiguren-Abende im Oktober
-  und acht Achterbahnen, von denen vier für Kinder gebaut sind.
+  In Sierksdorf teilt sich der Kärnan mit dem Silver Star den Titel der höchsten
+  und schnellsten Achterbahn Deutschlands, nebenan steht der höchste
+  Gyro-Drop-Tower der Welt. Dazu ein Kalender ohne einen einzigen Schließtag,
+  16 Oktoberabende mit Leuchtfiguren statt Horror-Mazes und acht Achterbahnen,
+  von denen die Hälfte für Kinder gebaut ist.
 tags:
   - hansa-park
   - kaernan
@@ -30,11 +31,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: Tipps, Öffnungszeiten, Preise, Kärnan'
+  title: 'Hansa-Park 2026: Tipps, Preise und der Kärnan am Meer'
   description: >-
-    Hansa-Park Sierksdorf: Öffnungszeiten der Saison 2026, Herbstzauber vom
-    10. bis 25. Oktober, Ticketpreise und Parkgebühren, alle acht Achterbahnen
-    mit Daten und der Kalender ohne Schließtag.
+    Hansa-Park Sierksdorf 2026: kein einziger Schließtag, Herbstzauber im
+    Oktober, Preise, Parkgebühren (das E-Auto zahlt mehr) und alle acht
+    Achterbahnen.
   keywords:
     - Hansa-Park
     - Hansa-Park Tipps
@@ -84,7 +85,7 @@ Saison geöffnet und hängt im Oktober 2.000 Leuchtfiguren auf, wo andere Parks 
 
 [Hansa-Park](ref:hansa-park?full)
 
-## Die Achterbahnen
+## Die Achterbahnen, vom Turm bis zum kleinen Zaren
 
 **Der Schwur des Kärnan** kam 2015 und kostete den Park seine bis dahin größte Investition. Gebaut
 hat ihn Gerstlauer als Infinity Coaster: **1.235 Meter** Strecke, ab 1,30 Meter. Der Lifthill
@@ -110,7 +111,8 @@ Novgorod, seit 2021 hängt ein t dran.
 
 **[Nessie](ref:hansa-park/nessie)** baute Anton Schwarzkopf **1980**, 26 Meter hoch, 741 Meter lang, 85 km/h, mit
 einem einzelnen senkrechten Looping, und sie war damals die größte Loopingbahn Europas. Sie fährt
-seit 46 Jahren, und seit 2019 tut sie das in einem neu thematisierten Bereich.
+seit 46 Jahren und hat 2019 einen neu thematisierten Bereich bekommen, so wie
+andere in dem Alter eine neue Küche.
 
 Vier weitere sind für Kinder gebaut. **[Crazy
 Mine](ref:hansa-park/crazy-mine)** von Maurer Rides fährt seit 1997 als Wilde Maus im Bergwerksdekor,
@@ -122,8 +124,9 @@ ganzen drei Metern Höhe.
 
 Die jüngste kam in dieser Saison dazu. Der **[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster)** hat am
 **23. Mai 2026** eröffnet, wieder Gerstlauer, 18 Meter hoch, rund 570 Meter lang, ab 90 Zentimetern.
-Der Park zählt **sieben Launches** auf einer Runde, vorwärts und rückwärts. Sieben
-Beschleunigungen auf 570 Metern sind für eine Familienbahn viel, und man merkt sie an der Fahrzeit:
+Der Park zählt **sieben Launches** auf einer Runde, vorwärts und rückwärts. So oft fährt man
+sonst nur auf der A1 vor Lübeck an, am ersten Ferientag. Für eine Familienbahn ist das viel, und
+man merkt es an der Fahrzeit:
 1:45 Minuten, länger als Crazy Mine und Royal Scotsman mit je 1:10.
 
 ## Der Turm, der Soltau den Rekord abgenommen hat
@@ -154,7 +157,8 @@ und im Herbst regelmäßig aus dem Kalender, der Movie Park schließt außerhalb
 mehreren Wochentagen. Wer in Sierksdorf einen ruhigen Wochentag sucht, bekommt ihn deshalb auch
 wirklich als Öffnungstag und nicht als verschlossenes Tor.
 
-Die Uhrzeiten sind fast genauso gleichförmig. Bis zum **9. Oktober** öffnet der Park täglich um
+Die Uhrzeiten sind fast genauso eintönig, im besten Sinn: Wer hier plant, braucht keinen Kalender
+mit Fußnoten. Bis zum **9. Oktober** öffnet der Park täglich um
 **10 Uhr**, und die Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fallen aus der Reihe.
 Am Karfreitag, dem 3. April, fahren die Attraktionen erst ab 11 Uhr. Am 11. August bleibt das
 Gelände bis 19 Uhr offen, am 12. August bis 18:30, die Bahnen stehen an beiden Abenden trotzdem um
@@ -182,7 +186,8 @@ ich mich zuerst anstellen würde.
 
 An so einem Abend bauen drei Uhrzeiten den Tag um.
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) und
-[Super Splash](ref:hansa-park/super-splash) schließen schon um **16 Uhr**. Der
+[Super Splash](ref:hansa-park/super-splash) schließen schon um **16 Uhr**, worüber sich an einem
+Oktoberabend vor allem die Socken freuen. Der
 [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare),
 [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare),
 [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) und
@@ -235,7 +240,8 @@ Rudolf Erich Leicht kaufte es im Herbst 1976, zusammen mit zwei Investoren. Der 
 deren Beteiligung 1977 auf etwa 10 Millionen DM. Mit dem ersten Geschäftsführer Horst Hamelberg
 entwarf Leicht ein Konzept unter dem Thema „maritime Hanse“, und dazu gehörte eine Änderung, die
 man heute für selbstverständlich hält: Im Legoland kostete jede Fahrattraktion einzeln, im
-Hansaland wurde schrittweise das Inklusivsystem eingeführt.
+Hansaland wurde schrittweise das Inklusivsystem eingeführt. Wer heute an der Kasse schluckt, darf
+sich kurz vorstellen, vor jeder Karussellrunde noch einmal das Portemonnaie zu zücken.
 
 Viele Legoland-Attraktionen blieben einfach stehen und bekamen ein neues Aussehen. Die
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), die im Oktober als Leuchtfiguren-Kanal
@@ -260,7 +266,8 @@ Landungsbrücken und entsteht Fassade für Fassade, in acht dokumentierten Bauab
 Holstentor als Eingang, 2010 Brügge, Visby, Lübeck, Hamburg und Rostock, 2011 Groningen und Paris,
 2012 London, Ribe und Bergen, 2013 sechs weitere von Kopenhagen bis Nürnberg, 2018 Danzig und
 Krakau, und 2021 der bis dahin größte Abschnitt mit 14 Fassaden aus Krakau, Stockholm, Stralsund,
-Helsinki, Riga und Venedig. Veranschlagt war das auf 20 Jahre. Der letzte Abschnitt, der Palacio de
+Helsinki, Riga und Venedig. Veranschlagt war das auf 20 Jahre, ein Zeitplan, den man sonst von Autobahnbaustellen kennt. Der
+letzte Abschnitt, der Palacio de
 Braga, ist noch nicht fertig.
 
 Die Jahre seit 2021 lesen sich entsprechend kleinteilig: Awildas Welt, der Peterhof von Novgorod
@@ -268,7 +275,7 @@ anstelle des Holzfällerlagers, New Lübeck anstelle der Westernstadt Bonanza Ci
 Baltique, die Lost Trails of Roanoke, Einars Fjordfahrt. Keine dieser Neuheiten ist eine
 Achterbahn. Die kam 2026.
 
-## Übernachten
+## Übernachten: drei Nächte oder keine
 
 Das **HANSA-PARK Resort am Meer** liegt am Ortsrand von Sierksdorf, zwischen Ferienpark und
 Freizeitpark verläuft die Bahnlinie. Gebucht wird über Landal oder Ostseezeit, der Mindestaufenthalt
@@ -288,7 +295,7 @@ dem Wegweiser Richtung Strand und umgeht damit die Treppe.
 **Parken.** **7 €** pro Tag für den PKW auf dem Großparkplatz, maximale Einfahrthöhe 2,30 Meter.
 Motorräder stehen kostenlos, Wohnmobile zahlen 15 € je angefangene zwölf Stunden. Der Sonderfall
 steht auf dem E-Parkplatz: Ein Elektroauto kostet **16 € pro Tag**, mehr als das Doppelte des
-Verbrenners. Saisonkarteninhaber ab 18 zahlen 2 € auf dem Großparkplatz. Die Kurzparkzone zum
+Verbrenners, ein Tarif, den man zweimal lesen muss. Saisonkarteninhaber ab 18 zahlen 2 € auf dem Großparkplatz. Die Kurzparkzone zum
 Bringen und Abholen ist 30 Minuten lang kostenlos.
 
 **Tickets 2026.** Ab 12 Jahren **53 €**, Kinder von 4 bis 11 Jahren **43 €**, unter 4 Jahren frei,

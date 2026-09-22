@@ -85,21 +85,22 @@ export function ContentES() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Cuándo se llena un parque de atracciones es sorprendentemente previsible. El día de la
-          semana, las vacaciones escolares, el tiempo y la temporada deciden en buena parte si en la
-          montaña rusa esperas diez minutos o hora y media. Y como cada visita deja tiempos de
-          espera detrás, eso se puede recalcular con bastante precisión.
+          Cuándo se llena un parque de atracciones es sorprendentemente previsible, desde luego más
+          que el humor de un niño de seis años a las tres de la tarde. El día de la semana, las
+          vacaciones escolares, el tiempo y la temporada deciden en buena parte si en la montaña
+          rusa esperas diez minutos o hora y media. Y como cada día de parque deja tiempos de espera
+          detrás, eso se puede recalcular con bastante precisión.
         </Lead>
         <P>
-          Eso es justo lo que hemos hecho: analizar los tiempos de espera registrados en más de 200
-          parques. Aquí están los días laborables y los meses más tranquilos, las horas más
-          tranquilas del día y las fechas que conviene esquivar. El calendario de afluencia te busca
-          después el día que le va a tu parque.
+          Así que hicimos las cuentas, con los tiempos de espera registrados en más de 200 parques.
+          Más abajo están los días laborables y los meses más tranquilos, las horas más tranquilas
+          del día y las fechas en las que es mejor quedarse en el sofá. El calendario de afluencia
+          te busca después el día que le va a tu parque.
         </P>
         <Highlight>
-          Versión corta: de martes a jueves fuera de las vacaciones escolares, llegar a la apertura
-          y dejar que una previsión de tiempo variable haga por ti la criba de la multitud. Todo lo
-          de abajo es la letra pequeña.
+          Versión corta para los que tienen prisa: de martes a jueves fuera de las vacaciones
+          escolares, en la puerta a la hora de apertura, y una previsión de tiempo variable tomada
+          como un regalo, siempre que haya un chubasquero en la mochila.
         </Highlight>
       </div>
 
@@ -112,8 +113,8 @@ export function ContentES() {
         icon={CalendarRange}
       >
         <PG>
-          Empecemos por las dos palancas más grandes: el día de la semana y el mes. Las dos están
-          promediadas entre todos los parques, a partir de los tiempos de espera medidos:
+          Lo que más mueve la afluencia es el día de la semana y el mes. Hemos promediado los dos
+          entre todos los parques, a partir de los tiempos de espera que se midieron de verdad:
         </PG>
         <BestTimesData locale="es" labels={DATA_LABELS} />
         <QuietestDaysByPark locale="es" />
@@ -140,17 +141,17 @@ export function ContentES() {
                   A la apertura (<GlossaryTermLink termId="rope-drop">rope drop</GlossaryTermLink>)
                 </>
               ),
-              body: 'La primera hora es de oro: quien está dentro a la apertura sube a las atracciones estrella a menudo por una fracción de la espera posterior.',
+              body: 'La primera hora después de abrir es la mejor del día. Quien está puntual en la puerta suele subir a las grandes atracciones antes de que se forme ninguna cola.',
             },
             {
               icon: Users,
               title: 'A la hora de comer',
-              body: 'Cuando la multitud come, las colas se vacían. Aprovecha ese rato para las atracciones populares y come más tarde.',
+              body: 'Cuando todos están sentados comiendo, las colas se acortan. Aprovecha ese rato para las atracciones populares y come más tarde. Las patatas fritas saben igual a las tres menos cuarto.',
             },
             {
               icon: Sun,
-              title: 'Los últimos 90 minutos',
-              body: 'Muchos visitantes de un día se marchan pronto. Justo antes del cierre, las esperas suelen bajar de nuevo de forma notable.',
+              title: 'La última hora',
+              body: 'Muchas familias se van a casa antes del final. En la última hora antes del cierre, las esperas suelen bajar otra vez de forma notable.',
             },
             {
               icon: Ticket,
@@ -167,8 +168,8 @@ export function ContentES() {
         >
           En las atracciones estrella, la primera hora tras la apertura suele dar más vueltas que
           dos de la tarde. Pero no vale en todas partes: algunas van igual de llenas todo el día y
-          otras solo se animan después de comer. La página de cada atracción trae su propia curva
-          del día, y ahí se ve si a esa le compensa el despertador más temprano.
+          otras no se despiertan hasta después de comer. La página de cada atracción trae su propia
+          curva del día, y ahí se ve si a esa le compensa el despertador más temprano.
         </SplitFigure>
       </SectionShell>
 
@@ -181,8 +182,8 @@ export function ContentES() {
         icon={Ban}
       >
         <PG>
-          Tan importantes como los días tranquilos son los concurridos. En estas fechas cuenta con
-          aglomeraciones: o te preparas para ellas, o planificas esquivándolas.
+          Igual de útil es saber cuándo mejor no ir. En estas fechas los parques están a reventar.
+          Puedes prepararte con bocadillos y mucha paciencia, o planificar esquivándolas:
         </PG>
         <SplitFigure
           src="/media/walibi-holland/goliath.jpg"
@@ -196,9 +197,10 @@ export function ContentES() {
             </GlossaryTermLink>
           }
         >
-          La combinación punta clásica, un sábado de vacaciones en pleno verano, reúne casi todos
-          los factores de afluencia a la vez. Si puedes, coge mejor el martes siguiente. El mismo
-          parque se siente completamente distinto.
+          Un sábado de vacaciones de verano con un tiempo espléndido es el peor caso: todos están
+          libres, todos quieren salir, todos están aquí. Si eres flexible, coge mejor el martes
+          siguiente. El mismo parque parece entonces reformado durante la noche por alguien que se
+          olvidó de las colas.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -217,12 +219,12 @@ export function ContentES() {
             {
               icon: Sun,
               title: 'Puentes y sábados de vacaciones en pleno verano',
-              body: 'La combinación punta clásica: buen tiempo, todos libres, todos allí. Si puedes, mejor el martes siguiente.',
+              body: 'Sol, día libre y temporada alta coinciden aquí. De todas las combinaciones del calendario, es la más llena.',
             },
             {
               icon: Sparkles,
               title: 'Novedades en su primer verano',
-              body: 'Una montaña rusa recién estrenada atrae a todo el mundo en su primera temporada. En un estreno, cuenta con colas largas.',
+              body: 'Una montaña rusa recién estrenada, todo el mundo quiere haberla probado en su primera temporada, a ser posible antes que los compañeros de trabajo. En un estreno, cuenta con colas largas.',
             },
           ]}
         />
@@ -256,7 +258,7 @@ export function ContentES() {
                   <GlossaryTermLink termId="virtual-queue">colas virtuales</GlossaryTermLink>
                 </>
               ),
-              body: 'Sube solo en los asientos sueltos o haz cola desde la app mientras comes o das una vuelta. En los días llenos, es tiempo regalado.',
+              body: 'Rellena como single rider los asientos sueltos o haz cola desde la app mientras comes o das una vuelta. No iréis sentados juntos, pero os sentaréis antes.',
             },
           ]}
         />
@@ -275,7 +277,7 @@ export function ContentES() {
         icon={Ticket}
       >
         <P>
-          Los patrones de arriba son el punto de partida. El mejor día exacto está en el{' '}
+          Los patrones de arriba son el marco general. El mejor día para tu parque está en el{' '}
           <GlossaryTermLink termId="crowd-calendar">calendario de afluencia</GlossaryTermLink> de
           cada página de parque: verde, amarillo o rojo para cada día publicado, con las vacaciones
           y los festivos de la región que toca.
@@ -291,9 +293,9 @@ export function ContentES() {
             </GlossaryTermLink>
           }
         >
-          Cada página de parque lleva una previsión día a día que incorpora las vacaciones escolares
-          y los festivos de esa región exacta. Elige un día verde y habrás hecho el noventa por
-          ciento de la planificación antes incluso de reservar.
+          Cada página de parque lleva una previsión día a día que conoce las vacaciones escolares y
+          los festivos de la región correcta, también los que nunca has oído nombrar. Elige un día
+          verde y lo más importante de la planificación estará hecho antes de comprar la entrada.
         </SplitFigure>
         <P>Unos cuantos parques populares para empezar directamente:</P>
         <PopularParksGrid />

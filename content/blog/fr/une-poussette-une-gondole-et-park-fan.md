@@ -10,7 +10,7 @@ excerpt: >-
   travers « 1001 Nuits », et trente ans plus tard soixante minutes de file à
   Taron avec la question de savoir si ça en vaut la peine. Comment une enfance
   à Phantasialand est devenue une plateforme capable de lire une journée de
-  parc.
+  parc, et pourquoi une roue de Taron trône sur mon bureau.
 tags:
   - park-fan
   - phantasialand
@@ -30,11 +30,10 @@ coverImage:
   alt: 'Looping du Velocicoaster devant le château de Poudlard, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure à Orlando : le Velocicoaster en plein looping, le château de Poudlard derrière.'
 seo:
-  title: 'Du lac aux contes à l’IA des files'
+  title: 'Pourquoi park.fan existe : lac aux contes, Taron et code'
   description: >-
-    Une poussette au bord du lac aux contes, des nuits de code, une IA qui lit
-    les journées de parc : l’histoire de park.fan et quand votre visite vaut le
-    coup.
+    Une poussette au bord du lac aux contes, une heure de file à Taron et bien
+    des nuits de code : comment park.fan est né et quand votre visite vaut le coup.
   keywords:
     - blog park.fan
     - histoire park.fan
@@ -160,7 +159,7 @@ Je trie encore les photos, les récits sont en préparation ; les deux
 atterriront ici même sur le blog dans les semaines à venir. Juste ceci d’avance :
 ça valait chacune de ces années d’impatience.
 
-## Le second moi : le développeur
+## Le second moi : le développeur aux trop nombreux projets annexes
 
 Parallèlement à toutes ces années de parc, il y a toujours eu un second moi,
 celui qui construit des logiciels depuis plus de vingt-cinq ans. Beaucoup de
@@ -209,7 +208,9 @@ première fois, un samedi bondé, des jours avant qu’il n’arrive.
 Il n’a jamais été question d’afficher le chiffre du moment. Le parc l’affiche
 lui-même. Cela devient intéressant un cran avant : un modèle maison devait
 apprendre qu’un pont pluvieux en octobre n’a rien à voir avec un samedi
-ensoleillé de vacances en juillet. Que les calendriers scolaires, la météo, les
+ensoleillé de vacances en juillet. Quiconque a déjà fait la route avec des
+enfants à l’arrière le sait sans qu’on le lui explique ; un ordinateur, lui,
+doit l’apprendre. Que les calendriers scolaires, la météo, les
 horaires d’ouverture et les jours d’ouverture que nous avons relevés forment
 ensemble un motif qu’on peut lire, à condition de le regarder avec assez
 d’obstination.
@@ -234,7 +235,8 @@ la [page Fancast](/fancast).
 ## Le meilleur jour est rarement celui qu’on croit
 
 Ce sont toujours les trois mêmes questions que soulève une visite de parc, bien
-avant que quiconque monte en voiture. Quel est le meilleur jour ? Un dimanche,
+avant que quiconque monte en voiture et demande depuis la banquette arrière
+quand on arrive. Quel est le meilleur jour ? Un dimanche,
 ça vaut le coup ? Et à quel point ce sera vraiment plein ?
 
 C’est exactement pour ça que park.fan a été construit. Chaque page de parc
@@ -245,13 +247,14 @@ Rhénanie-du-Nord-Westphalie. Un jour de pont n’est presque jamais une bonne
 idée. Et le « tuyau d’initié » consistant à y aller sous la pluie fonctionne
 exactement jusqu’à ce que tous les autres aient lu le même tuyau d’initié.
 
-« Les dimanches sont chargés » n’est donc pas une réponse utilisable. Un
+« Les dimanches sont chargés » est donc à peu près aussi utile
+que « en été, il fait chaud ». Un
 dimanche de fin novembre au Phantasialand est une autre question qu’un dimanche
 de début août à l’Europa-Park, et c’est ainsi que le calendrier y répond : avec
 un parc et une date. Une fois dans le parc, les données en direct vous montrent
 si la file devant vous est l’exception ou la règle.
 
-## Ce que park.fan fait autrement
+## Ce que park.fan fait autrement que l’affichage à l’entrée
 
 Il existe de bons sites qui vous montrent la longueur de la file en ce moment
 même. Nous savons faire ça aussi, toutes les cinq minutes, dans le monde entier.
@@ -285,8 +288,8 @@ chose de complètement différent selon l’attraction et selon le jour :
 
 ![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l’Europa-Park, en service depuis 2024. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
-Le chiffre est dans le graphique. L’histoire derrière se trouve désormais ici,
-sous trois formes.
+Le chiffre, c’est le graphique qui le donne. Pour l’histoire derrière, il y a
+désormais ce blog, en trois saveurs.
 
 **Récits de visite.** Longs, assumés, avec des photos, et avec de vraies données
 du parc précisément visité. Pas « c’était sympa », mais :
@@ -309,7 +312,7 @@ Les deux acteurs principaux de cette histoire, à l’instant :
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
 Comme la météo est le facteur qui fait basculer une journée de parc le plus
-vite, voici la situation en cet instant précis à l’entrée de
+vite, de préférence quand l’imperméable est resté dans la voiture, voici la situation en cet instant précis à l’entrée de
 [Phantasialand](ref:phantasialand?bare) :
 
 ```weather-widget slug=phantasialand

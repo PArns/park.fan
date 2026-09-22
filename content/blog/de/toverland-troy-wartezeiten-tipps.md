@@ -1,5 +1,5 @@
 ---
-title: 'Toverland: Troy, der Geheimtipp unter Europas Holzachterbahnen'
+title: 'Toverland: Troy, die Holzachterbahn, an der alle vorbeifahren'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
 updatedAt: '2026-09-22'
@@ -10,8 +10,9 @@ excerpt: >-
   Das Toverland ist der kleine Park, an dem halb Köln und
   Düsseldorf auf dem Weg zum Efteling vorbeifahren. Dabei steht in Sevenum mit
   Troy eine Holzachterbahn von GCI, für die man rund eine Viertelstunde ansteht,
-  während der Woodie am Ziel mehr als das Doppelte kostet. Über einen Park, in dem ich hinter den Kulissen mal
-  selbst einmal Erschrecker spielen durfte, und der bis heute keinen Fast Pass verkauft.
+  während der Woodie am Ziel mehr als das Doppelte kostet. Über einen Park ohne
+  Fast Pass, in dem ich einmal selbst Erschrecker spielen durfte, vor einem
+  leeren Haus.
 tags:
   - attractiepark-toverland
   - troy
@@ -35,11 +36,10 @@ coverImage:
   caption: 'Das trojanische Pferd in Ithaka. Hinter den Bäumen dahinter liegt Troy.'
   credit: 'park.fan'
 seo:
-  title: 'Toverland: Troy, Wartezeiten & Halloween-Guide'
+  title: 'Toverland: Troy, Wartezeiten & Halloween ohne Fast Pass'
   description: >-
-    Warum Troy im Toverland der Geheimtipp unter Europas Holzachterbahnen ist:
-    echte Wartezeit-Daten, Fēnix, Swinging Bobsled, Tickets und Halloween
-    Nights.
+    Troy im Toverland: eine der besten Holzachterbahnen Europas, und kaum
+    jemand biegt ab. Wartezeit-Daten, Fēnix, Tickets und Halloween Nights.
   keywords:
     - Toverland
     - Toverland Wartezeiten
@@ -77,7 +77,7 @@ wieder rein.
 
 Das ist der Teil, den ich schwer erklärt bekomme. Troy gehört zu den besten
 Holzachterbahnen Europas und steht in einem Park, an dem jedes Jahr
-jede Menge Achterbahnfans vorbeifahren, ohne abzubiegen: auf der A67
+jede Menge Achterbahnfans vorbeifahren, ohne auch nur den Blinker zu setzen: auf der A67
 zwischen Venlo und Eindhoven, Ausfahrt Sevenum. Die meisten haben dann noch eine
 gute Stunde vor sich, bis nach Kaatsheuvel, zum [Efteling](ref:efteling), dem
 Disney der Niederlande.
@@ -89,23 +89,24 @@ Schlange steht in Sevenum.
 
 Das [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, das ich für einen der schönsten kleinen Parks Europas halte, wird
-dieses Jahr 25. Ich habe dort sogar einmal im Kostüm auf der anderen Seite
-gestanden.
+dieses Jahr 25. Ich habe dort sogar einmal auf der anderen Seite gestanden, im
+Kostüm und mit dem Auftrag, Leute zu erschrecken. Es waren dann keine da, aber
+dazu später.
 
-## Was Troy so gut macht
+## Troy auf dem Papier und Troy im Zug
 
 Die technischen Daten sind ordentlich, aber nicht spektakulär: 35 Meter hoch,
 1.077 Meter lang, 90 km/h, gut 20.000 Quadratmeter Grundfläche. Damit ist sie
 bis heute die höchste, längste und schnellste Holzachterbahn der Beneluxstaaten,
-und trotzdem erklären diese Zahlen wenig. Es gibt größere Woodies, die sich zäher
-anfühlen.
+und trotzdem erklären diese Zahlen wenig. Es gibt größere Woodies, die sich
+anfühlen wie eine lange Autobahnfahrt: viel Strecke, wenig los.
 
 Der Unterschied liegt in zwei Entscheidungen.
 
 Die erste ist das Layout. Troy ist ein **Twister**, kein Out-and-Back mit
 aufgereihten Hügeln. Statt geradeaus zu fahren und dabei hoch und runter zu
 gehen, dreht die Bahn permanent die Richtung und steckt jeden Meter Höhe in einen
-Richtungswechsel. Auf dem Papier liest sich die Elementfolge harmlos: Lifthill,
+Richtungswechsel. Auf dem Papier liest sich die Elementfolge wie ein Einkaufszettel: Lifthill,
 First Drop, Airtime Hill, Overbanked Turn, Camelback, Double Down, Bremsstrecke.
 Im Zug kommst du nie zur Ruhe.
 
@@ -121,7 +122,8 @@ klassischer Holzachterbahnzug seine Gäste durchschütteln würde. 24 Personen p
 Zug, zwei Züge, 850 Gäste pro Stunde.
 
 Bleibt das Vorurteil, das jede Holzachterbahn ab einem gewissen Alter
-mitschleppt: dass sie rappelt. Daran arbeitet der Park seit **2024**. In einem mehrjährigen **Retrack** ersetzt er jeden Winter rund
+mitschleppt: dass sie rappelt. (Bei ihren Stammfahrern knirscht es ab einem
+gewissen Alter auch, aber um die geht es hier nicht.) Daran arbeitet der Park seit **2024**. In einem mehrjährigen **Retrack** ersetzt er jeden Winter rund
 198 Meter Strecke auf beiden Schienen, in Summe knapp 400 laufende Meter Holz pro
 Saison. Gearbeitet wird unter einem provisorischen Dach, damit Regen und Frost
 die Arbeiten nicht aufhalten, und von zwanzig eigens dafür geschulten Leuten aus
@@ -162,7 +164,8 @@ Das kosten die großen Namen der Region an Wartezeit, Holz wie Stahl:
 
 Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du
-hier [Troy](ref:attractiepark-toverland/troy) gleich mehrmals.
+hier [Troy](ref:attractiepark-toverland/troy) gleich mehrmals, Pommespause
+inklusive.
 
 Dahinter steckt die Rechnung aus der
 [Kunst des Wartens](/blog/die-kunst-des-wartens), Nachfrage geteilt durch
@@ -179,12 +182,12 @@ siehst, die Schlange, die es gibt. Eine Single-Rider-Spur gibt es seit 2023
 übrigens auch, aber nur an einer einzigen Attraktion, dem Fallturm Dragonwatch,
 und die kostet nichts extra.
 
-## Der Rest des Parks
+## Der Rest des Parks: liegend, kopfüber und nass
 
 ![Fēnix mit einem Zug kopfüber in der Bahn, blaue Schienen vor Sommerhimmel | Fēnix, der längste Wing Coaster Europas. Die Sitze hängen links und rechts neben der Schiene. | left](/media/toverland/fenix-4x3.jpg)
 
-Troy ist der Grund, warum Enthusiasten kommen. Der Park lebt aber nicht von einer
-Bahn.
+Troy ist der Grund, warum Enthusiasten die Ausfahrt nehmen. Der Park lebt aber
+nicht von einer Bahn.
 
 **[Fēnix](ref:attractiepark-toverland/fenix)** ist der Prestigebau von 2018: ein Wing Coaster
 von **Bolliger & Mabillard**, 40 Meter hoch, 813 Meter lang, bis zu 95 km/h,
@@ -201,10 +204,11 @@ besser macht. Wartezeit: dieselbe Größenordnung wie bei Troy.
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** ist der Sonderling und mein
 zweiter Liebling hier. Vekoma baute 2004 in Sevenum den weltweiten Prototyp der
 Motorrad-Achterbahn: Du sitzt nicht, du liegst auf einem Motorrad, Hände am
-Lenker, Knie angezogen, und wirst dann als Launch Coaster losgeschossen. Eine
-unbequeme, absurde, wunderbare Bahn. Mit ihrem Median hat
-ausgerechnet sie die längste typische Wartezeit aller Coaster im Park, was daran
-liegt, dass man einzeln und liegend einsteigt und das eben dauert.
+Lenker, Knie angezogen, irgendwo zwischen Motorradrennen und Zahnarztstuhl, und
+wirst dann als Launch Coaster losgeschossen. Eine unbequeme, absurde, wunderbare
+Bahn. Mit ihrem Median hat ausgerechnet sie die längste typische Wartezeit aller
+Coaster im Park, was daran liegt, dass man einzeln und liegend einsteigt, und
+Einsteigen in Bauchlage sieht bei den wenigsten so elegant aus, wie sie hoffen.
 
 **[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** von Mack Rides ist ein Spinning
 Coaster im Dunkeln, halb Dark Ride, halb Achterbahn, mit frei drehenden Gondeln
@@ -257,7 +261,8 @@ etwas, das es vorher nirgends gab.
 **Wunderwald**. Und mit ihr [Booster Bike](ref:attractiepark-toverland/booster-bike), der
 weltweite Prototyp der Motorrad-Achterbahn von Vekoma. Ein Park, den außerhalb
 Limburgs kaum jemand kannte, ließ sich eine Bauart entwickeln, die es noch nicht
-gab.
+gab. Das ist ungefähr so, als bestellte die Dorfkneipe bei der Brauerei eine
+eigene Sorte, und die Brauerei sagt ja.
 
 **2007** folgte der erste echte Außenbereich: **Ithaka**, griechische Antike,
 gebaut um eine einzige Bahn herum. Für 6,5 Millionen Euro bekam ein Park mit
@@ -266,7 +271,8 @@ sonst Häuser mit dem Fünffachen an Publikum hinstellen. Troy war erst die zwei
 GCI-Anlage in Europa, nach Thunderbird im finnischen PowerPark, und die elfte
 weltweit. Im März 2007, kurz vor der Eröffnung, fiel ein Teil des halbfertigen
 Lifthill-Gerüsts bei einem Sturm um. Der Park baute es wieder auf und öffnete
-trotzdem pünktlich zur Saison.
+trotzdem pünktlich zur Saison. Wer heute den Lifthill hinaufklackert, sitzt also
+auf einem Gerüst, das zweimal gebaut werden musste.
 
 **2013** entstand die **Magische Vallei** rund um die „Dwervels“, mit
 [Dwervelwind](ref:attractiepark-toverland/dwervelwind) und
@@ -303,7 +309,7 @@ Konzern nicht käme. Seit dem **18. April** läuft „Magic Memories“, eine
 Illusionsshow von eben jenem Hans Klok, der vor 25 Jahren die Tore aufgemacht
 hat, rund 30 Minuten lang, mehrmals täglich, im Eintritt enthalten. Und am
 **Wochenende des 27./28. Juni** hatte das Toverland zum ersten Mal in seiner
-Geschichte 25 Stunden am Stück geöffnet, mit einer Überraschung alle fünf
+Geschichte 25 Stunden am Stück geöffnet, eine pro Lebensjahr, mit einer Überraschung alle fünf
 Stunden, einer XXL-Parade und Feuerwerk.
 
 ```map-widget slug=attractiepark-toverland
@@ -336,7 +342,8 @@ sehr unterschiedliche Veranstaltungen:
 Die Neuheit **2026** wächst buchstäblich: **„Entwined: The Maze“**, ein
 **sieben Hektar großes Maisfeld** mit meterhohen Wänden hinter Fēnix, laut Park
 doppelt so groß wie der gesamte Avalon-Bereich und vermarktet als größte
-Halloween-Experience Europas. Es ersetzt das langjährige Ratten-Labyrinth
+Halloween-Experience Europas (nachgemessen haben wir das nicht, verlaufen würden
+wir uns darin trotzdem sofort). Es ersetzt das langjährige Ratten-Labyrinth
 „Trapped“. Die einzige Regel, die dort zählt: Wer stehen bleibt, wird geschnappt.
 
 ![Das Eingangsschild von Troy, zu „DesTROY – The Ride“ umdekoriert, darunter zwei Halloween-Nights-Banner | Aus Troy wird DesTROY. Der Park schraubt dafür das Eingangsschild der Achterbahn um. | right](/media/toverland-halloween/03-destroy-schild.jpg)
@@ -344,7 +351,7 @@ Halloween-Experience Europas. Es ersetzt das langjährige Ratten-Labyrinth
 Für Troy-Fans kommt der beste Teil aber erst. Eine der Scare Zones heißt
 **„DesTroy“** und liegt in **Ithaka**, also direkt an und unter der
 Holzachterbahn. Mutierte trojanische Soldaten bewachen die Ruinen der Stadtmauer,
-und Troy fährt mitten hindurch. Es gibt in Europa nicht viele Gelegenheiten, eine
+und Troy fährt mitten hindurch. Homer hätte Fragen. Es gibt in Europa nicht viele Gelegenheiten, eine
 erstklassige Holzachterbahn im Dunkeln durch eine bespielte Scare Zone zu fahren,
 mit Nebel im Bremsabschnitt und Darstellern in der Warteschlange.
 
@@ -354,7 +361,8 @@ Eine der sechs Experiences hat für mich noch einen zweiten Boden. Mit dem
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/) war ich in der
 **Maison de la Magie** hinter den Kulissen unterwegs, und wir durften dort selbst
 einmal die Seite der Erschrecker ausprobieren. Nicht im laufenden Betrieb, ohne echte Gäste, nur
-wir und ein leeres Haus.
+wir und ein leeres Haus. Ob ich jemanden erschreckt hätte, wird sich also nie
+klären lassen.
 
 ![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
@@ -382,7 +390,7 @@ Park.
 
 [Toverland](ref:attractiepark-toverland?full)
 
-## Was sonst noch ansteht
+## Ein Abschied mit Bremshebel, und was danach kommt
 
 ![Ein geschnitztes Zierdetail an der Maximus' Blitz Bahn, blau angestrahlt, daneben alte Glühbirnen an Kabeln | Ein Detail der Blitz Bahn, wie sie neunzehn Jahre lang dastand. Fast alles hier war handgemacht. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
@@ -395,7 +403,7 @@ sie die Attraktion mit der längsten typischen Wartezeit des ganzen Parks.
 Das lag an einer Rechnung, die nie aufgehen konnte: In einen Wagen passten eine,
 höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushing,
 nahmen Paare regelmäßig zwei Wagen statt einem, damit jeder seine eigene Zeit
-fahren konnte. Der Durchsatz brach genau an der Stelle ein, an der die Bahn am
+fahren konnte. (Beziehungen sind schon an kleineren Fragen gescheitert.) Der Durchsatz brach genau an der Stelle ein, an der die Bahn am
 meisten Spaß machte. Eine lange Schlange für eine kurze Abfahrt, und die Leute standen
 sie trotzdem, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
 man schlagen wollte.
@@ -410,7 +418,7 @@ stieg selbst ein und fuhr seine eigene Konstruktion ein letztes Mal hinunter.
 Man kann das albern finden, eine erfundene Figur in einem Bobwagen. Ich fand es
 richtig. Neunzehn Jahre lang hat diese Bahn ihre Geschichte ernst genommen, und
 an ihrem letzten Tag hat der Park sie zu Ende erzählt, statt einfach den Strom
-abzuschalten. Genau dafür mag ich diesen Park.
+abzuschalten.
 
 Ihre Nachfolgerin ist der Grund, warum ich das Toverland für den mutigsten
 kleinen Park Europas halte. Im Winter eröffnet dort ein **Swinging Bobsled**, ein
@@ -462,7 +470,8 @@ gemessenen Öffnungstagen:
 
 Eines solltest du dabei mitdenken: Die **niederländischen** Ferien schlagen hier
 stärker durch als die deutschen, vor allem die Herbst- und Maiferien der
-südlichen Provinzen.
+südlichen Provinzen. Der niederländische Ferienkalender ist für diesen Park also
+Pflichtlektüre, so trocken er sich auch liest.
 
 ## Ein Tag ohne Fast Pass
 
@@ -474,8 +483,9 @@ nicht, aber eine Holzachterbahn ist morgens noch kalt und läuft im Laufe des
 Tages messbar schneller. Fahr sie früh **und** spät, dann bist du zwei
 verschiedene Bahnen gefahren. Danach **Fēnix** in Avalon, die beiden Headliner
 liegen praktisch Wand an Wand. Als Drittes **Booster Bike**, weil sie in unseren
-Daten die längste typische Wartezeit aller Coaster hat. Die **Wasserbahnen**
-hebst du dir für die Mittagshitze auf. Wenn „Magic Memories“ läuft, sitzt ein
+Daten die längste typische Wartezeit aller Coaster hat (die Bauchlage, du
+erinnerst dich). Die **Wasserbahnen** hebst du dir für die Mittagshitze auf, dann
+sind die Socken bis zur Heimfahrt wieder trocken, meistens. Wenn „Magic Memories“ läuft, sitzt ein
 erheblicher Teil der Gäste eine halbe Stunde im Theater, draußen ist dann
 auffällig wenig los. Und die letzte Stunde gehört wieder Ithaka: Troy in der
 Dämmerung, wenn die Konstruktion angestrahlt wird und der Zug hörbar
@@ -630,7 +640,7 @@ Und die zwei, um die es hier ging, mit ihren aktuellen Zahlen:
 
 Fahr an der Ausfahrt Sevenum einmal raus statt vorbei. Und wenn du dann bei Troy
 sitzt und hinter dir wartet keiner: Steig aus, lauf durch die leere Schlange und fahr nochmal. Und
-danach noch einmal. An einem Dienstag im Juni klappt das hier. In den meisten
+danach noch einmal, bis dein Rücken sein Veto einlegt. An einem Dienstag im Juni klappt das hier. In den meisten
 anderen Parks Europas kannst du es vergessen.
 
 — Patrick

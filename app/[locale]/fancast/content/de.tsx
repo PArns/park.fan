@@ -49,7 +49,7 @@ const LIVE_LABELS: FancastLiveLabels = {
   moreAccurate: 'genauer',
   topTitle: 'Wo Fancast zuletzt am treffsichersten war',
   topIntro:
-    'Die Attraktionen, bei denen die jüngsten Prognosen am nächsten an der echten Wartezeit lagen – durchschnittliche Abweichung in Minuten, live aus dem Modell.',
+    'Die Attraktionen, bei denen die jüngsten Prognosen am dichtesten an der echten Wartezeit lagen. Angegeben ist die durchschnittliche Abweichung in Minuten, live aus dem Modell.',
   colAttraction: 'Attraktion',
   colPark: 'Park',
   colError: 'Ø-Fehler',
@@ -60,7 +60,7 @@ const FAQ = [
   {
     question: 'Wie genau sind die Prognosen von Fancast?',
     answer:
-      'Die aktuelle Genauigkeit steht live oben in der Scorecard – als MAE (durchschnittliche Abweichung in Minuten), RMSE und MAPE. Diese Werte stammen aus dem echten Abgleich vergangener Vorhersagen mit den tatsächlich gemessenen Wartezeiten, nicht aus einem geschönten Testlabor. Sie ändern sich, sobald das Modell neu trainiert hat.',
+      'Die aktuelle Genauigkeit steht live weiter oben auf dieser Seite, als MAE (durchschnittliche Abweichung in Minuten), RMSE und MAPE. Die Werte kommen aus dem Abgleich vergangener Vorhersagen mit den Wartezeiten, die danach tatsächlich gemessen wurden. Nach jedem Training ändern sie sich.',
   },
   {
     question: 'Wie weit im Voraus kann Fancast vorhersagen?',
@@ -70,7 +70,7 @@ const FAQ = [
   {
     question: 'Woher weiß Fancast, dass ein Ferien-Samstag voll wird?',
     answer:
-      'Aus dem Zusammenspiel vieler Signale: Schulferien- und Feiertagskalender (auch der Nachbarregionen), Wochentag, Wetterprognose, Sonderevents und der kompletten Wartezeit-Historie des Parks. Ein Ferien-Samstag im Hochsommer trägt fast alle dieser Faktoren gleichzeitig – deshalb schlägt die Prognose dort nach oben aus, während ein verregneter Dienstag im November grün bleibt.',
+      'Aus mehreren Signalen, die es zusammen liest: Schulferien- und Feiertagskalender (auch der Nachbarregionen), Wochentag, Wetterprognose, Sonderevents und die komplette Wartezeit-Historie des Parks. Ein Ferien-Samstag im Hochsommer bringt fast alle diese Faktoren auf einmal mit. Deshalb schlägt die Prognose dort nach oben aus, während ein verregneter Dienstag im November grün bleibt.',
   },
   {
     question: 'Wie oft wird das Modell aktualisiert?',
@@ -80,7 +80,7 @@ const FAQ = [
   {
     question: 'Kann ich Fancast für einen bestimmten Park und Tag nutzen?',
     answer:
-      'Ja. Jede Parkseite auf park.fan hat einen Crowd-Kalender, der dir für jeden veröffentlichten Tag eine grüne, gelbe oder rote Prognose zeigt – vom Europa-Park über Phantasialand und Efteling bis zu Walt Disney World. Zusätzlich bekommst du stündliche Wartezeit-Prognosen für die einzelnen Attraktionen.',
+      'Ja. Jede Parkseite auf park.fan hat einen Crowd-Kalender, der dir für jeden veröffentlichten Tag eine grüne, gelbe oder rote Prognose zeigt, vom Europa-Park über das Phantasialand und das Efteling bis zu Walt Disney World. Dazu kommen stündliche Wartezeit-Prognosen für die einzelnen Attraktionen.',
   },
   {
     question: 'Welche Daten nutzt Fancast?',
@@ -90,7 +90,7 @@ const FAQ = [
   {
     question: 'Warum zeigt ein Park „Keine Prognose“?',
     answer:
-      'Fancast bewertet einen Park erst, wenn genügend Betriebsdaten vorliegen – mindestens rund 30 Betriebstage. Für ganz neue oder selten geöffnete Parks fehlt diese Grundlage noch. Dann steht dort „Keine Prognose“ statt einer geratenen Zahl.',
+      'Fancast bewertet einen Park erst, wenn genügend Betriebsdaten vorliegen, also mindestens rund 30 Betriebstage. Für ganz neue oder selten geöffnete Parks fehlt diese Grundlage noch. Dann steht dort „Keine Prognose“ statt einer geratenen Zahl.',
   },
   {
     question: 'Kostet Fancast etwas?',
@@ -105,19 +105,19 @@ export function ContentDE() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Fancast ist unser hauseigenes Prognose-Modell – der Teil von park.fan, der in die Zukunft
-          schaut. Der Name? Reiner Größenwahn mit System: <strong>fan</strong> wie park.
+          Fancast ist unser eigenes Prognose-Modell, also der Teil von park.fan, der heute schon
+          wissen will, wie lang die Schlange am Samstag wird. Den Namen haben wir uns ohne
+          Werbeagentur ausgedacht, und man merkt es: <strong>fan</strong> wie park.
           <strong>fan</strong>, <strong>cast</strong> wie fore<strong>cast</strong>. Ein
-          Wetterbericht für Warteschlangen, quasi.
+          Wetterbericht für Warteschlangen, nur ohne Moderatorin vor der Karte.
         </Lead>
         <P>
-          Und weil wir Zahlen nur trauen, wenn sie sich beweisen müssen, benotet Fancast sich
-          selbst. Jede Vorhersage wird später gegen die tatsächlich gemessene Wartezeit gehalten –
-          öffentlich, auf dieser Seite.
+          Vorhersagen, die keiner nachprüft, kann jedes Horoskop. Fancast muss dagegen jeden Tag zur
+          Zeugnisausgabe, und das Zeugnis hängt öffentlich auf dieser Seite.
         </P>
         <Highlight>
           Jede Prognose wird am Tag darauf gegen die gemessene Wartezeit gelegt. Was dabei
-          herauskommt, steht oben auf dieser Seite als MAE, RMSE und MAPE, gut oder schlecht.
+          herauskommt, steht im nächsten Abschnitt als MAE, RMSE und MAPE, auch an schlechten Tagen.
         </Highlight>
       </div>
 
@@ -130,8 +130,8 @@ export function ContentDE() {
         icon={Gauge}
       >
         <P>
-          Hier die Note, live und ungeschönt. Diese Zahlen zieht Fancast in diesem Moment aus dem
-          eigenen Dashboard; sie ändern sich mit dem nächsten Trainingslauf morgen früh.
+          Die Noten hier kommen live aus dem Modell, nicht aus einer Pressemappe. Mit dem nächsten
+          Trainingslauf morgen früh ändern sie sich, also bitte nicht einrahmen.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -148,25 +148,25 @@ export function ContentDE() {
         icon={Database}
       >
         <PG>
-          Ein verregneter Brückentag im Oktober ist eben etwas völlig anderes als ein sonniger
-          Ferien-Samstag im Juli – und genau das muss ein Modell erst einmal lernen. Fancast füttert
-          sich dafür aus mehreren Quellen gleichzeitig:
+          Wer oft in Parks geht, weiß: Ein verregneter Brückentag im Oktober und ein sonniger
+          Ferien-Samstag im Juli sind zwei verschiedene Sportarten. Ein Modell muss das erst lernen,
+          und dafür liest Fancast sechs Quellen gleichzeitig:
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live-Wartezeiten" delay={0}>
-            Alle fünf Minuten eine Messung je Warteschlange, aus über 200 Parks. Darauf steht alles
-            Weitere.
+            Alle fünf Minuten eine Messung je Warteschlange, aus über 200 Parks. Darauf baut alles
+            andere auf.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Kalender & Ferien" delay={60}>
-            Wochenenden, Feiertage und Schulferien – auch die der Nachbarregionen, denn Tagesgäste
-            kennen keine Landesgrenzen.
+            Wochenenden, Feiertage und Schulferien, auch die der Nachbarregionen. Tagesgäste aus den
+            Niederlanden richten sich nun mal nicht nach dem Ferienplan von NRW.
           </IngredientCard>
           <IngredientCard icon={CloudSun} title="Wetter" delay={120}>
             Regenwahrscheinlichkeit und Temperatur biegen die kurzfristigen Prognosen zurecht. Sonne
-            zieht an, Dauerregen leert die Wege.
+            lockt alle raus, Dauerregen schickt sie aufs Sofa.
           </IngredientCard>
           <IngredientCard icon={PartyPopper} title="Events & Saison" delay={0}>
-            Halloween, Sommerferien, Brückentage, Neuheiten im ersten Sommer – die üblichen
+            Halloween, Sommerferien, Brückentage, Neuheiten im ersten Sommer: die üblichen
             Verdächtigen für volle Tage.
           </IngredientCard>
           <IngredientCard icon={History} title="Historie" delay={60}>
@@ -174,12 +174,12 @@ export function ContentDE() {
             Wochen- und Saisonrhythmus.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Öffnungszeiten & Kapazität" delay={120}>
-            Wann öffnet der Park, wie lange, mit wie viel Betrieb – der Rahmen, in den sich alles
-            andere einfügt.
+            Wann öffnet der Park, wie lange, mit wie viel Betrieb. Das ist der Rahmen, in den der
+            Rest passen muss.
           </IngredientCard>
         </IngredientGrid>
         <P>
-          Aus diesem Gemenge macht das Modell zwei Dinge: eine{' '}
+          Aus diesem Eintopf kocht das Modell zwei Dinge: eine{' '}
           <strong>stündliche Wartezeit-Prognose</strong> für einzelne Attraktionen und eine{' '}
           <strong>tagesgenaue Crowd-Level-Note</strong> für den ganzen Park.
         </P>
@@ -194,8 +194,8 @@ export function ContentDE() {
         icon={Compass}
       >
         <P>
-          Am konkreten Park wird das greifbarer. Drei Beispiele, wie aus denselben Zutaten drei
-          völlig verschiedene Prognosen werden:
+          Aus denselben Zutaten werden je nach Park und Datum ganz verschiedene Tage. Drei
+          Beispiele:
         </P>
         <SplitFigure
           src="/media/europa-park/silver-star.jpg"
@@ -204,10 +204,11 @@ export function ContentDE() {
           title="Ruhig, grün, unter 30 Minuten"
           badge={<CrowdLevelBadge level="very_low" />}
         >
-          Fancast sieht: Schulferien nur in einem einzigen Nachbar-Bundesland, Wetter durchwachsen,
-          kein Sonderevent. Ergebnis: eine ruhige, grüne Prognose – Voltron Nevera vermutlich unter
-          30 Minuten, blue fire zum Mitnehmen. Derselbe Park drei Wochen später am Ferien-Samstag?
-          Tiefrot. Sechs Millionen Jahresgäste verteilen sich eben nicht von allein.
+          Fancast sieht Schulferien in genau einem Nachbar-Bundesland, durchwachsenes Wetter und
+          kein Sonderevent. Heraus kommt eine ruhige, grüne Prognose: Voltron Nevera vermutlich
+          unter 30 Minuten, blue fire fast im Vorbeigehen. Derselbe Park drei Wochen später an einem
+          Ferien-Samstag ist tiefrot, weil sich sechs Millionen Jahresgäste nun mal nicht freiwillig
+          gleichmäßig übers Jahr verteilen.
         </SplitFigure>
         <SplitFigure
           src="/media/phantasialand/taron.jpg"
@@ -217,22 +218,23 @@ export function ContentDE() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          Kompakter Park, wenige Headliner, alle wollen zu Taron – die Sättigung ist schneller
-          erreicht, als das erste Bier gezapft ist. Fancast weiß das und malt den Tag orange bis
-          rot. Der Kalender daneben schlägt dir gleich den Dienstag drauf vor, an dem du Taron am
-          Stück fahren kannst, statt ihn nur anzuschmachten.
+          Kompakter Park, wenige Headliner, und alle wollen zu Taron. Voll ist es hier schneller,
+          als am Kiosk das erste Bier gezapft ist. Fancast weiß das und malt den Tag orange bis rot.
+          Der Crowd-Kalender auf der Parkseite schlägt dir dafür gleich einen Dienstag vor, an dem
+          du Taron mehrmals hintereinander fahren kannst, statt ihn nur vom Weg aus anzuschmachten.
         </SplitFigure>
         <SplitFigure
           src="/media/efteling/baron-1898.jpg"
-          alt="Baron 1898 in der Efteling"
+          alt="Baron 1898 im Efteling"
           kicker="Efteling · verregneter Dienstag im November"
           title="Der Geheimtipp, den das Modell mitrechnet"
           badge={<CrowdLevelBadge level="low" />}
         >
-          Genau der Tag, den Bauchgefühl-Planer meiden – und den Fancast grün färbt. Wenig Ferien,
-          mieses Wetter, kurze Schlangen. Das funktioniert exakt so lange, bis alle denselben
-          Geheimtipp gelesen haben; deshalb rechnet das Modell die Regenwahrscheinlichkeit gleich
-          selbst mit ein, statt sich auf Folklore zu verlassen.
+          Genau den Tag, den Bauchgefühl-Planer meiden, färbt Fancast grün: kaum Ferien, mieses
+          Wetter, kurze Schlangen. Nasse Socken gibt es gratis dazu. Der Haken an jedem Geheimtipp
+          ist, dass er nur hält, bis ihn alle gelesen haben. Deshalb rechnet das Modell die
+          Regenwahrscheinlichkeit für genau diesen Tag selbst mit ein, statt der Folklore zu
+          glauben.
         </SplitFigure>
       </SectionShell>
 
@@ -245,20 +247,20 @@ export function ContentDE() {
         icon={RefreshCw}
       >
         <P>
-          Der wichtigste Trick ist ein unspektakulärer: Fancast trainiert sich{' '}
+          Der wichtigste Trick ist ungefähr so aufregend wie Zähneputzen. Fancast trainiert sich{' '}
           <strong>einmal am Tag neu</strong>, um 06:00 UTC. Was gestern im Park passiert ist, steckt
           ab dem nächsten Morgen in der Prognose.
         </P>
         <P>
-          Getestet wird dabei nur an Tagen, die das Modell <strong>noch nie gesehen hat</strong> –
-          an der Zukunft, nicht an auswendig gelernten Vergangenheitstagen. Alles andere wäre, als
-          würde man sich die Klausurfragen vorher selbst zustecken und sich dann für sein
-          Einser-Zeugnis feiern.
+          Getestet wird nur an Tagen, die das Modell <strong>noch nie gesehen hat</strong>. Alles
+          andere wäre, als würde man sich die Klausurfragen vorher selbst zustecken und dann die
+          Eins feiern.
         </P>
         <P>
-          Zusätzlich beobachtet Fancast, ob es mit der Zeit <strong>abdriftet</strong> – ob die
-          Realität ihm langsam davonläuft. Und neue Modellversionen gehen nur dann live, wenn sie im
-          fairen Vergleich die alte tatsächlich schlagen.
+          Außerdem prüft Fancast, ob es mit der Zeit <strong>abdriftet</strong>, ob ihm die Realität
+          also langsam davonläuft. Eine neue Modellversion geht erst live, wenn sie die alte im
+          direkten Vergleich schlägt. Befördert wird hier nur, wer wirklich besser ist, was man
+          nicht von jeder Firma behaupten kann.
         </P>
       </SectionShell>
 
@@ -286,15 +288,15 @@ export function ContentDE() {
             },
             {
               level: 'moderate',
-              text: 'Normaler Betrieb. Die Headliner ziehen an, der Rest bleibt gemütlich. Ein guter Kompromiss-Tag.',
+              text: 'Normaler Betrieb. An den Headlinern wird es voller, der Rest bleibt gemütlich. Ein grober Plan reicht.',
             },
             {
               level: 'high',
-              text: 'Spürbar voll. Bei den Top-Attraktionen lohnt sich frühes Aufstehen – oder Geduld mitbringen.',
+              text: 'Spürbar voll. Für die großen Bahnen lohnt sich der Wecker, sonst brauchst du Geduld und ein Hörbuch.',
             },
             {
               level: 'very_high',
-              text: 'Richtig was los. Lange Schlangen an den Highlights, Planung schlägt Spontaneität deutlich.',
+              text: 'Richtig was los. Lange Schlangen an den großen Bahnen, und wer spontan bleibt, verbringt den Tag im Zickzack-Gitter.',
             },
             {
               level: 'extreme',
@@ -313,8 +315,9 @@ export function ContentDE() {
         icon={Ticket}
       >
         <P>
-          Fancast läuft auf jeder Parkseite mit, hier ein paar beliebte zum direkten Ausprobieren.
-          Klick dich rein, öffne den Crowd-Kalender und schau, welche Farbe dein Wunschtag hat:
+          Fancast läuft auf jeder Parkseite mit. Hier ein paar beliebte zum Ausprobieren: Park
+          anklicken, Crowd-Kalender öffnen und nachsehen, welche Farbe dein Wunschtag hat. Ist er
+          rot, lohnt ein Blick auf die Tage drumherum.
         </P>
         <PopularParksGrid />
       </SectionShell>
@@ -328,8 +331,8 @@ export function ContentDE() {
         icon={MapPin}
       >
         <P>
-          Fancast lebt nicht auf einer einsamen Unterseite – es steckt überall in park.fan, meist
-          ohne sich groß vorzustellen:
+          Diese Seite ist bloß das Büro. Zu tun hat Fancast überall sonst auf park.fan, und es
+          stellt sich dabei selten vor:
         </P>
         <TouchpointGrid
           items={[
@@ -343,8 +346,8 @@ export function ContentDE() {
               title: 'Crowd-Kalender',
               body: (
                 <>
-                  der <Link href="/parks">Kalender der besten Besuchstage</Link> auf jeder Parkseite
-                  – grün, gelb, rot, so weit der Zeitplan reicht.
+                  der <Link href="/parks">Kalender der besten Besuchstage</Link> auf jeder
+                  Parkseite: grün, gelb, rot, so weit der Zeitplan reicht.
                 </>
               ),
             },
@@ -354,7 +357,7 @@ export function ContentDE() {
               body: (
                 <>
                   die ruhigsten Wochentage und die kommenden Geheimtipp-Tage, aus denselben Daten
-                  destilliert. Wirf einen Blick auf die{' '}
+                  gezogen. Wirf einen Blick auf die{' '}
                   <Link href={`/${BEST_TIME_SEGMENTS.de}`}>beste Reisezeit</Link>.
                 </>
               ),
@@ -383,8 +386,8 @@ export function ContentDE() {
         />
         <P>
           Wie das alles im Park zusammenspielt, erklärt die{' '}
-          <Link href={`/${HOWTO_SEGMENTS.de}`}>vollständige Anleitung</Link> Schritt für Schritt –
-          inklusive Crowd-Kalender, Badges und Live-Wartezeiten.
+          <Link href={`/${HOWTO_SEGMENTS.de}`}>vollständige Anleitung</Link> Schritt für Schritt,
+          mit Crowd-Kalender, Badges und Live-Wartezeiten.
         </P>
       </SectionShell>
 

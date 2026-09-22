@@ -7,8 +7,9 @@ author: patrick
 mode: published
 excerpt: >-
   Pourquoi la même heure de file passe un jour comme vingt minutes et le
-  lendemain comme une demi-journée de vacances perdue. Du pre-show à la loi de
-  Little, et en plein milieu la raison d’être de park.fan.
+  lendemain comme une demi-journée de vacances perdue. Avec un avatar qui
+  respire, une formule qui tient sur un sous-bock et la preuve que se rapprocher
+  ne sert à rien.
 tags:
   - temps-d-attente
   - files-attente
@@ -24,10 +25,10 @@ coverImage:
   alt: 'L’Arbre de Vie du Disney’s Animal Kingdom, avec devant lui la foule des visiteurs du parc'
   caption: 'Disney’s Animal Kingdom. Des dizaines de milliers de visiteurs, un arbre, et chacun d’eux en train de calculer quelle attraction vaut l’attente.'
 seo:
-  title: 'Psychologie des files d’attente en parc'
+  title: 'Pourquoi l’attente au parc paraît si longue'
   description: >-
-    Temps d’attente en parc : la psychologie et les maths des files, expliquées
-    par park.fan, et pourquoi 60 minutes en paraissent parfois 20.
+    Pourquoi une heure de file passe parfois comme vingt minutes, pourquoi se
+    rapprocher ne sert à rien et quelle formule se cache derrière l’affichage.
   keywords:
     - temps d’attente parc d’attractions
     - psychologie des files d’attente
@@ -53,7 +54,8 @@ expliquant à votre compagnon de route que l’attraction est « de toute faç
 surcotée ». D’autres jours, vous faites ces mêmes 60 minutes et vous jureriez
 ensuite qu’il y en avait 25 tout au plus.
 
-Les deux fois, vous étiez la même personne dans la même file. La différence
+Les deux fois, vous étiez la même personne dans la même file, avec les mêmes
+jambes fatiguées. La différence
 tient à deux choses qu’un bon parc maîtrise en même temps : la psychologie et la
 capacité. L’une décide de l’effet que _fait_ l’attente, l’autre de la longueur
 _réelle_ de la file.
@@ -65,7 +67,7 @@ qui m’arrivait vraiment cet après-midi-là, j’ai voulu ensuite le savoir
 précisément. Deux formules entrent en jeu, et les deux tiennent ensemble au dos
 d’un sous-bock.
 
-## Pourquoi les minutes s’étirent
+## Pourquoi les minutes s’étirent comme du chewing-gum
 
 **David Maister**, alors professeur à la Harvard Business School, a disséqué le problème de fond dès
 1985 dans son classique
@@ -83,7 +85,8 @@ Maister en a noté huit. Ces trois-là, on les voit dans toutes les files :
   dans un instant.
 - **L’attente injuste est insupportable.** Rien ne gâche l’ambiance plus vite
   que le sentiment que d’autres vous doublent. C’est pour ça que les parcs
-  cachent leurs files express du mieux qu’ils peuvent.
+  cachent leurs files express du mieux qu’ils peuvent, c’est-à-dire rarement
+  très bien.
 - **On tient plus longtemps quand on attend quelque chose de précieux.** Plus
   l’impatience est grande, plus la file est patiente. Pour un flat ride de
   fête foraine, on ne fera pas 20 minutes. Pour le nouveau méga-coaster, on se
@@ -101,6 +104,7 @@ en l’estimant plus courte qu’elle ne l’était. Et dès 1991, le chercheur 
 [« Entertain, Enlighten, and Engage »](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 qu’une simple distraction améliore nettement la qualité perçue de l’attente.
 Dans l’expérience, un écran d’informations dans une agence bancaire a suffi.
+Pas d’animatronique, pas de bande-son, juste une télé accrochée au mur.
 
 Le mécanisme derrière : notre cerveau ne peut compter le temps méticuleusement
 que lorsqu’il n’a rien d’autre à faire. Dès que l’attention se porte sur la
@@ -108,13 +112,13 @@ musique, sur des détails de thématisation ou sur un spectacle, le compteur
 interne manque tout simplement de ressources, et la surestimation fond. C’est à
 ça que sert tout ce que vous voyez dans une bonne file : bandes-son,
 animatroniques, éléments interactifs, détails cachés. Beaucoup d’efforts pour
-un couloir qu’on est censé simplement traverser.
+un couloir que tout le monde veut quitter au plus vite.
 
 ```glossary-widget slug=pre-show
 
 ```
 
-### Les pre-shows
+### Les pre-shows : l’attente déguisée en numéro du programme
 
 C’est le **pre-show** qui règle cela le plus complètement, en déclarant
 l’attente partie intégrante de l’attraction. L’exemple d’école se
@@ -225,8 +229,8 @@ Et puis il y a ici une astuce de capacité qui arrange les deux côtés : la
 **file single rider**. Quand on roule seul et qu’on se laisse
 placer sur le siège isolé qu’un groupe de quatre laisse libre, on raccourcit
 drastiquement sa propre attente et on aide au passage le parc à remplir chaque
-wagon à ras bord. Chaque siège autrement vide est de la capacité
-gaspillée, et un visiteur seul la remplit sans que personne ne perde sa place.
+wagon à ras bord. Le prix à payer : votre compagnon de route est assis trois
+rangs plus loin, et vous ne saurez qu’à la sortie s’il a crié.
 
 ```glossary-widget slug=single-rider
 
@@ -252,11 +256,12 @@ cinq minutes.
 
 ![Des milliers de spectateurs dans l’amphithéâtre nocturne de Fantasmic! à Disney’s Hollywood Studios | Fantasmic! aux Hollywood Studios. Qui est assis ici ne fait la queue nulle part. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Combien de personnes une attraction fait passer par heure
+## Le débit : le chiffre discret qui décide de votre journée
 
 Le **débit**, c’est tout simplement le nombre de personnes qu’une attraction
-transporte réellement par heure. Ce chiffre décide de la longueur réelle de la
-file.
+transporte réellement par heure. Ce chiffre ne figure sur aucune affiche, et
+pourtant il pèse plus lourd sur la longueur de la file que n’importe quelle
+animatronique.
 
 ```glossary-widget slug=ride-capacity
 
@@ -386,7 +391,8 @@ voulu. L’affichage doit en effet faire deux choses contradictoires à la fois.
 de décision fiable, et il ne doit pas vous décevoir. Un affichage qui
 sous-estime produit à la sortie une foule de gens qui se sentent floués ; un
 affichage qui surestime renvoie quelques visiteurs mais rend tous les autres
-heureux. Les parcs choisissent systématiquement la seconde erreur. Qui compte
+heureux. Les parcs choisissent systématiquement la seconde erreur, exactement
+comme le livreur qui annonce quarante minutes et sonne au bout de trente. Qui compte
 60 minutes et embarque au bout de 45 quitte la gare en vainqueur. Règle du
 pic-fin, souvenez-vous : l’heure se termine mieux que prévu, et c’est ainsi
 qu’elle est archivée.
@@ -401,12 +407,12 @@ nos prévisions collent à la réalité figure sur la [page Fancast](/fancast).
 
 ## Pourquoi Peter Pan’s Flight « déraille » toujours
 
-Pourquoi **Peter Pan’s Flight**, précisément, un dark ride tranquille de
-facture 1955, pas de montagnes russes, pas de sensations fortes, a-t-il
-presque toute la journée une file sans commune mesure avec l’attraction, dans
-pratiquement tous les parcs Disney du monde, de
+**Peter Pan’s Flight** est un dark ride tranquille de facture 1955, pas de
+montagnes russes, pas de sensations fortes. Pourtant, dans pratiquement tous
+les parcs Disney du monde, de
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
-jusqu’à Orlando ?
+jusqu’à Orlando, il traîne toute la journée une file digne d’une distribution
+gratuite de champagne.
 
 Cela tient peu à l’attraction et beaucoup à l’arithmétique :
 
@@ -451,7 +457,8 @@ fréquenté au monde, et Disney comme Universal attirent des visiteurs de tous
 les continents. S’y ajoute un facteur que l’Europe ne connaît guère avec cette
 dureté : là-bas, on peut s’acheter un passage devant la file. Lightning Lane
 et Express Pass vendent une part de la capacité à des visiteurs payants, et
-chaque passage express manque à la file standby. Des têtes d’affiche comme
+chaque passage express manque à la file standby. L’attente injuste de Maister,
+ticket de caisse compris. Des têtes d’affiche comme
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 ont donc régulièrement de longues files malgré une capacité horaire massive.
 
@@ -580,8 +587,8 @@ spectacle. La file existe toujours, elle se déroule simplement sans vos jambes.
 L’attente ne disparaît pas, mais elle ne dévore plus votre journée, et le parc
 répartit la demande de façon plus contrôlée sur les heures.
 
-Côté matériel, les parcs travaillent en parallèle sur la vitesse d’expédition,
-avec trois schémas classiques :
+Pour ceux qui préfèrent faire la queue avec leurs pieds plutôt qu’avec leur
+pouce, les parcs travaillent en parallèle sur la gare elle-même :
 
 - **Des zones de débarquement et d’embarquement séparées**, pour que le train
   n’ait pas à attendre que tout le monde descende avant que le groupe suivant
@@ -608,7 +615,7 @@ mouvement, et l’attraction avale ainsi plus de 3 000 visiteurs par heure, plus
 que bien des méga-coasters, avec une chaîne de véhicules qui tourne sans
 broncher depuis les années soixante et ne demande jamais de pause.
 
-## Ce que park.fan en affiche
+## Ce que park.fan vous épargne dans la file
 
 La prochaine file de 60 minutes n’en sera pas plus courte. Mais elle se lit
 autrement quand on sait trois choses, et elles sont sur park.fan :
@@ -629,11 +636,6 @@ autrement quand on sait trois choses, et elles sont sur park.fan :
 ```best-days-widget slug=europa-park
 
 ```
-
-Contre la psychologie, nous ne pouvons rien. Que l’heure ressemble à une heure
-ou au premier acte de l’attraction, c’est le parc qui a construit la file qui
-en décide : avec le pre-show, la thématisation et un bon dernier tronçon avant
-la gare.
 
 — Patrick
 

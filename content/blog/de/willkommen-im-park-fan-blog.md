@@ -9,7 +9,8 @@ excerpt: >-
   Ein Kinderwagen am Märchensee, eine Gondelfahrt durch „1001 Nacht“, und
   dreißig Jahre später sechzig Minuten Taron-Schlange mit der Frage, ob sich
   das gerade lohnt. Wie aus einer Kindheit im Phantasialand eine Plattform
-  wurde, die Parktage lesen kann.
+  wurde, die Parktage lesen kann, und warum auf meinem Schreibtisch ein
+  Taron-Rad liegt.
 tags:
   - park-fan
   - phantasialand
@@ -29,11 +30,10 @@ coverImage:
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: der Velocicoaster im Looping, dahinter das Hogwarts-Schloss.'
 seo:
-  title: 'Warum es park.fan gibt'
+  title: 'Warum es park.fan gibt: Märchensee, Taron und Code'
   description: >-
-    Ein Kinderwagen am Märchensee, Nächte voller Code, eine KI, die Parktage
-    liest: die Geschichte von park.fan und wann sich dein Parkbesuch wirklich
-    lohnt.
+    Ein Kinderwagen am Märchensee, eine Stunde Taron-Schlange und viele Nächte
+    voller Code: wie park.fan entstand und wann sich dein Parkbesuch lohnt.
   keywords:
     - park.fan Blog
     - park.fan Geschichte
@@ -157,7 +157,7 @@ Die Bilder davon sortiere ich noch, die Berichte sind in Arbeit, beides landet
 in den kommenden Wochen genau hier im Blog. Nur so viel vorweg: Es war jedes
 einzelne Jahr der Vorfreude wert.
 
-## Das zweite Ich: der Entwickler
+## Das zweite Ich: der Entwickler mit zu vielen Side-Projects
 
 Parallel zu all diesen Parkjahren gab es immer ein zweites Ich, eines, das seit
 über fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt,
@@ -205,7 +205,8 @@ vorhersagt, Tage bevor er stattfindet.
 Der Punkt war nie die Anzeige der aktuellen Zahl. Die schreibt der Park selbst
 an. Interessant wird es einen Schritt davor: Ein eigenes Modell musste lernen,
 dass ein verregneter Brückentag im Oktober etwas völlig anderes ist als ein
-sonniger Ferien-Samstag im Juli. Dass Ferienkalender,
+sonniger Ferien-Samstag im Juli. Jedem, der schon mal mit Kindern im Auto saß,
+muss man das nicht erklären, einem Computer schon. Dass Ferienkalender,
 Wetter, Öffnungszeiten und die mitgeschriebenen Öffnungstage zusammen ein Muster
 ergeben, das man lesen kann, wenn man nur hartnäckig genug hinschaut.
 
@@ -227,7 +228,7 @@ steht auf der [Fancast-Seite](/fancast).
 ## Der beste Tag ist selten der, den man vermutet
 
 Es sind immer dieselben drei Fragen, die ein Parkbesuch aufwirft, lange bevor
-irgendjemand im Auto sitzt. Wann ist der beste Tag? Lohnt sich ein Sonntag? Und
+irgendjemand im Auto sitzt und von hinten fragt, wann wir endlich da sind. Wann ist der beste Tag? Lohnt sich ein Sonntag? Und
 wie voll wird es wirklich?
 
 Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der besten
@@ -238,14 +239,15 @@ NRW-Sommerferien. Ein Brückentag ist fast nie eine gute Idee. Und der
 „Geheimtipp“, bei Regen zu fahren, funktioniert exakt so lange, bis alle
 anderen denselben Geheimtipp gelesen haben.
 
-„Sonntage sind voll“ ist deshalb keine brauchbare Auskunft. Ein Sonntag Ende
+„Sonntage sind voll“ ist deshalb ungefähr so hilfreich wie „im Sommer ist es
+warm“. Ein Sonntag Ende
 November im Phantasialand ist eine andere Frage als ein Sonntag Anfang August im
 Europa-Park, und der Kalender beantwortet die Frage genau so: mit Park und
 Datum. Wenn du dann schon
 im Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade die
 Ausnahme ist oder die Regel.
 
-## Was park.fan anders macht
+## Was park.fan anders macht als die Anzeige am Eingang
 
 Es gibt gute Seiten, die dir zeigen, wie lang die Schlange jetzt gerade ist.
 Das können wir auch, alle fünf Minuten, weltweit. Aber park.fan wurde für die
@@ -278,8 +280,8 @@ Tag etwas völlig anderes:
 
 ![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park, seit 2024 in Betrieb. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
-Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier, in
-drei Formaten.
+Die Zahl liefert das Diagramm. Für die Geschichte dahinter gibt es ab jetzt
+diesen Blog, in drei Geschmacksrichtungen.
 
 **Reiseberichte.** Lang, mit Haltung, mit Fotos, und mit echten Daten aus genau
 dem Park, der gerade besucht wurde. Kein „war schön“, sondern:
@@ -301,7 +303,7 @@ dieser Geschichte, Stand jetzt:
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
 Weil das Wetter der Faktor ist, der einen Parktag am schnellsten kippen lässt,
-hier die Lage genau jetzt am
+bevorzugt dann, wenn die Regenjacke im Auto liegt, hier die Lage genau jetzt am
 [Phantasialand](ref:phantasialand?bare)-Eingang:
 
 ```weather-widget slug=phantasialand

@@ -1,5 +1,5 @@
 ---
-title: 'Disneyland Paris : deux parcs, et le plus petit a les plus longues files d’attente'
+title: 'Disneyland Paris : deux parcs, et c’est justement le petit qui a les longues files'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
@@ -7,12 +7,12 @@ mode: published
 featured: false
 excerpt: >-
   Disneyland Park compte 43 attractions à temps d’attente, Disney Adventure
-  World quatorze. On attend pourtant plus longtemps dans le petit parc, et sur
+  World quatorze, et c’est pourtant dans le petit parc qu’on attend le plus. Sur
   deux ans de mesure, ça n’a jamais été l’inverse, ni un mois ni un jour de
-  semaine. Au programme aussi : pourquoi la plus longue file du grand parc
-  revient à un dark ride de 1992, ce que le second parc fait autrement depuis
-  le 29 mars 2026, et quelle attraction est fermée pour dix mois depuis le
-  7 septembre.
+  semaine. Au programme aussi : pourquoi la plus longue file du grand parc se
+  forme devant une minute et demie de dark ride de 1992, ce que le second parc
+  fait autrement depuis le 29 mars 2026, et quelle attraction s’offre dix mois
+  de pause depuis le 7 septembre.
 tags:
   - disneyland-paris
   - temps-d-attente
@@ -33,11 +33,11 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Sous le socle rocheux se trouve un dragon de dix-sept mètres de long.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris : temps d’attente, meilleure période et conseils 2026'
+  title: 'Disneyland Paris 2026 : où les files sont vraiment longues'
   description: >-
-    Des données réelles sur deux ans de mesure : lequel des deux parcs
-    parisiens fait le plus attendre, quand c’est le plus calme, et comment
-    répartir ta journée entre les deux.
+    Deux ans de temps d’attente mesurés : pourquoi le plus petit parc parisien
+    fait plus attendre, quand c’est plus calme et par quel parc commencer ta
+    journée.
   keywords:
     - Disneyland Paris
     - Disneyland Paris temps d’attente
@@ -77,7 +77,8 @@ Disney Resort à l’époque, à environ 32 kilomètres à l’est de Paris, dan
 ville nouvelle de Marne-la-Vallée. Le domaine s’étend sur environ
 **2 100 hectares**, dont un peu plus de la moitié est aménagée. C’est toujours
 le parc à thème le plus visité d’Europe, et avec environ 17 000 salariés, le
-premier employeur de France sur un site unique.
+premier employeur de France sur un site unique. (Il faut bien quelqu’un pour
+faire frire les churros.)
 
 Deux parcs se partagent ce domaine. Le
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) est celui de
@@ -117,16 +118,17 @@ la seule construite sur une île. Le train
 part de la station au bord de l’eau, plonge dans un tunnel sous les Rivers of
 the Far West et ne refait surface que sur l’île, où commence le véritable
 parcours. Elle a été construite par Vekoma, ouverte le premier jour du parc,
-taille minimale 102 centimètres. Fermée pendant un an, en 2015 et 2016 :
-nouveaux freins, décors repeints et quelques effets empruntés à la version
-californienne.
+taille minimale 102 centimètres. Fermée pendant un an, en 2015 et 2016, elle
+est revenue avec des freins neufs, un coup de peinture et quelques effets
+empruntés à la version californienne.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
 est la Haunted Mansion de Paris, avec une différence pour laquelle les fans
 font le déplacement : les versions de Floride et de Californie évitent
 délibérément de raconter une histoire suivie. Celle de Paris, si : Melanie Ravenswood attend
 dans sa robe de mariée depuis que son mariage a tourné court, et son père Henry
-a tué ses prétendants l’un après l’autre, ce que la rénovation de 2019 rend
+a tué ses prétendants l’un après l’autre (un père de la mariée qui avait sa
+propre idée des présentations), ce que la rénovation de 2019 rend
 explicite pour la première fois. Six minutes dans l’Omnimover, 92 animatronics,
 et la voix off anglaise de Vincent Price, dont une partie est revenue dans
 l’attraction en 2019. Après quinze mois de travaux, elle a rouvert le
@@ -153,7 +155,8 @@ La plus longue file du parc revient à **Peter Pan's Flight**, un dark ride de
 1992 qui dure une minute et demie. La popularité n’explique que la moitié du
 phénomène. L’autre moitié, c’est le débit : Hyperspace Mountain fait rouler
 quatre trains et évacue près de 2 000 personnes à l’heure, elle digère donc sa
-file toute la journée. Un dark ride à petites nacelles n’y arrive pas. Qui
+file toute la journée. De petits bateaux pirates volants, où tient tout juste
+une famille, n’y arrivent pas. Qui
 passe la matinée sur les montagnes russes se retrouve l’après-midi dans la
 plus longue file du parc, pour une minute et demie de dark ride.
 
@@ -203,12 +206,13 @@ large base de données et avec une avance nette. Depuis le
 sa plus grande remise en état depuis l’ouverture : commandes, capteurs,
 technologie de communication et certaines sections de rails sont remplacés, en
 plus du nettoyage, de la peinture et des réparations. Le retour est prévu pour
-l’**été 2027**, soit environ dix mois.
+l’**été 2027**. Pendant une dizaine de mois, le courant est-australien devra
+donc se passer de passagers.
 
 Dans nos données, ça se voit sans aucun communiqué de presse : le dernier
 temps d’attente en direct de cette attraction date du **6 septembre,
-20 h 21 UTC**. Toutes les autres attractions fermées du parc, elles, ont
-continué d’être mises à jour après cette date.
+20 h 21 UTC**. Ensuite, elle s’est tue, tandis que toutes les autres
+attractions fermées du parc continuaient sagement de donner leur statut.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
@@ -248,7 +252,7 @@ Voici comment se répartit une journée au Disneyland Park, heure par heure :
 
 ```
 
-## Quand y aller
+## Quand y aller, dans un parc qui ne ferme jamais
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
@@ -275,9 +279,10 @@ c’est ici, recalculé en continu :
 
 La voie rapide s’appelle ici **Disney Premier Access**, et elle se vend
 attraction par attraction, tour par tour. Il n’existe pas de prix fixe :
-Disney fait varier les montants selon l’attraction, la date et l’heure, avec
-dans notre base de données un plancher à **5 €** par personne, et une marge
-considérable vers le haut pour les attractions les plus demandées. Il existe
+Disney fait varier les montants selon l’attraction, la date et l’heure, sur le
+principe des billets d’avion en plein mois d’août. Notre base de données
+retient un plancher de **5 €** par personne, avec une marge considérable vers
+le haut pour les attractions les plus demandées. Il existe
 aussi une formule journée valable pour toutes les attractions participantes,
 qui fluctue elle aussi fortement selon la date.
 
@@ -287,15 +292,18 @@ qui fluctue elle aussi fortement selon la date.
 
 Avant d’acheter, un coup d’œil au classement plus haut vaut le coup. Le prix
 suit la demande, et les attractions les plus demandées ne sont pas forcément
-celles où tu attendrais le plus longtemps.
+celles où tu attendrais le plus longtemps. Payer pour une montagne russe qui
+défile de toute façon bien à midi, puis faire sagement la queue pour Peter Pan,
+c’est avoir dépensé son argent dans la mauvaise file.
 
 ## Comment j’organiserais la journée
 
 Si tu n’as qu’une journée et qu’un seul parc, prends le Disneyland Park : plus
 d’attractions, des files plus courtes, et le château est la raison pour
 laquelle la plupart des gens viennent d’abord. File vers Fantasyland dès
-l’ouverture, pour les dark rides : une fois leurs files formées, tu ne les
-rattraperas plus de la journée. Big Thunder Mountain, Hyperspace Mountain et Indiana Jones se placent
+l’ouverture, pour les dark rides, même si ça fait bizarre de laisser Hyperspace
+Mountain de côté pour grimper dans un bateau pirate volant : une fois leurs
+files formées, tu ne les rattraperas plus de la journée. Big Thunder Mountain, Hyperspace Mountain et Indiana Jones se placent
 bien sur l’heure du déjeuner, quand tout le monde mange. Si tu réserves les
 deux parcs, inverse l’ordre habituel et commence par Adventure World, où notre
 analyse du rope drop montre le plus gros gain à démarrer tôt sur Ratatouille
@@ -324,8 +332,8 @@ pas au tourniquet. Les tarifs actuels pour ta date sont sur
 **Restauration.** Les deux parcs ont des restaurants avec service à table sur
 réservation, et beaucoup de restauration rapide entre les deux. Notre base de
 données recense 35 établissements au Disneyland Park et 19 à Adventure World.
-À midi, quand les files se forment devant les comptoirs, celles des
-attractions se relâchent un moment.
+À midi, la file quitte les attractions pour les comptoirs, et le stand de
+frites devient pour un moment l’attraction la plus demandée du parc.
 
 ## Questions fréquentes sur Disneyland Paris
 

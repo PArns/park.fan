@@ -1,5 +1,5 @@
 ---
-title: 'Hansa-Park : le Kärnan atteint 127 km/h, et la saison n’a aucun jour de fermeture'
+title: 'Hansa-Park : les montagnes russes les plus rapides d’Allemagne sont à moitié sur la Baltique'
 translationKey: hansa-park-guide
 date: '2026-09-22'
 updatedAt: '2026-09-22'
@@ -7,11 +7,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Sierksdorf abrite les montagnes russes les plus hautes et les plus rapides
-  d’Allemagne, à égalité avec Silver Star, plus la plus haute gyro drop tower du
-  monde. À cela s’ajoutent un calendrier sans un seul jour de fermeture,
-  16 soirées de figures lumineuses en octobre et huit coasters, dont quatre
-  construits pour les enfants.
+  À Sierksdorf, le Kärnan partage avec Silver Star le titre des montagnes
+  russes les plus hautes et les plus rapides d’Allemagne, et juste à côté se
+  dresse la plus haute gyro drop tower du monde. Ajoute un calendrier sans un
+  seul jour de fermeture, 16 soirées d’octobre avec des figures lumineuses au
+  lieu de labyrinthes d’horreur, et huit coasters, dont la moitié construits
+  pour les enfants.
 tags:
   - hansa-park
   - kaernan
@@ -31,11 +32,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026 : conseils, horaires, tarifs, Kärnan'
+  title: 'Hansa-Park 2026 : conseils, tarifs et le Kärnan à la mer'
   description: >-
-    Hansa-Park Sierksdorf : horaires de la saison 2026, Herbstzauber du 10 au
-    25 octobre, tarifs des billets et du parking, les huit coasters avec leurs
-    chiffres et le calendrier sans jour de fermeture.
+    Hansa-Park Sierksdorf 2026 : pas un seul jour de fermeture, Herbstzauber en
+    octobre, tarifs, parking (la voiture électrique paie plus) et les huit
+    coasters.
   keywords:
     - Hansa-Park
     - Hansa-Park conseils
@@ -84,7 +85,7 @@ labyrinthes.
 
 [Hansa-Park](ref:hansa-park?full)
 
-## Les montagnes russes
+## Les montagnes russes, de la tour au petit tsar
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** a ouvert en 2015 et représentait alors le plus gros investissement du parc.
 Gerstlauer l’a construit en Infinity Coaster : **1 235 mètres** de voie, à partir de 1,30 mètre. Le
@@ -111,7 +112,8 @@ la malédiction est devenue une fuite.
 
 Anton Schwarzkopf a construit **[Nessie](ref:hansa-park/nessie)** en **1980** : 26 mètres de haut, 741 mètres de long,
 85 km/h, un seul looping vertical, et à l’époque le plus grand looping d’Europe. Elle roule depuis
-46 ans, et depuis 2019 elle le fait dans une zone rethématisée.
+46 ans et s’est offert en 2019 une zone rethématisée, comme d’autres à cet âge
+refont leur cuisine.
 
 Quatre autres sont conçues pour les enfants. **[Crazy Mine](ref:hansa-park/crazy-mine)** de Maurer
 Rides roule depuis 1997 en souris folle dans un décor de mine, 13 mètres de haut et terminée au bout
@@ -124,8 +126,9 @@ du haut de ses trois mètres.
 La plus récente est arrivée cette saison. Le **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** a ouvert le **23 mai 2026**, de nouveau
 Gerstlauer, 18 mètres de haut, environ 570 mètres de long, à partir de 90 centimètres. Le parc compte
-**sept lancements** sur un tour, en avant et en arrière. Sept accélérations sur 570 mètres, c’est
-beaucoup pour une attraction familiale, et ça se sent dans la durée du tour : 1 min 45, plus long que [Crazy Mine](ref:hansa-park/crazy-mine?bare) et [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) avec 1 min 10 chacun.
+**sept lancements** sur un tour, en avant et en arrière. Autant de redémarrages, d’ordinaire, on
+n’en fait que sur l’A7 un samedi de chassé-croisé. Pour une attraction familiale, c’est beaucoup, et
+ça se sent dans la durée du tour : 1 min 45, plus long que [Crazy Mine](ref:hansa-park/crazy-mine?bare) et [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) avec 1 min 10 chacun.
 
 ## La tour qui a pris le record à Soltau
 
@@ -155,7 +158,8 @@ calendrier au printemps et en automne, et le Movie Park ferme plusieurs jours de
 saison. Qui cherche à Sierksdorf un jour de semaine calme l’obtient donc vraiment comme jour
 d’ouverture et non comme portail fermé.
 
-Les horaires sont presque aussi uniformes. Jusqu’au **9 octobre**, le parc ouvre chaque jour à
+Les horaires sont presque aussi monotones, dans le bon sens du terme : pour planifier ici, pas
+besoin d’un calendrier bardé de notes de bas de page. Jusqu’au **9 octobre**, le parc ouvre chaque jour à
 **10 h** et les attractions ferment à **18 h**. Exactement trois jours sortent du lot. Le Vendredi saint, le 3 avril, les
 attractions ne démarrent qu’à 11 h. Le 11 août, le site reste ouvert jusqu’à 19 h, le 12 août jusqu’à
 18 h 30, mais les attractions s’arrêtent quand même à 18 h les deux soirs. Seuls les 16 derniers
@@ -184,7 +188,8 @@ ferais la queue en premier.
 
 Trois horaires réorganisent une soirée pareille. La
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) et le
-[Super Splash](ref:hansa-park/super-splash) ferment dès **16 h**. Le [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare)
+[Super Splash](ref:hansa-park/super-splash) ferment dès **16 h**, ce dont les chaussettes se
+réjouiront surtout un soir d’octobre. Le [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare)
 et [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) et [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) font leur **dernier tour à 19 h 30**, parce que le feu d’artifice se
 prépare. Et pendant la parade, onze autres attractions s’arrêtent, dont le [Highlander](ref:hansa-park/highlander?bare), [Nessie](ref:hansa-park/nessie?bare) et le
 [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
@@ -228,7 +233,8 @@ Rudolf Erich Leicht l’a racheté à l’automne 1976 avec deux investisseurs. 
 leur participation à environ 10 millions de marks en 1977. Avec Horst Hamelberg comme premier
 directeur, Leicht a conçu un projet autour du thème de la Hanse maritime, et il s’accompagnait d’un
 changement qui paraît évident aujourd’hui : au Legoland, chaque attraction se payait séparément ; au
-Hansaland, un billet tout compris a été introduit progressivement.
+Hansaland, un billet tout compris a été introduit progressivement. Qui grimace aujourd’hui à la
+caisse peut s’imaginer un instant ressortir son porte-monnaie avant chaque tour de manège.
 
 Beaucoup d’attractions du Legoland sont simplement restées en place avec une nouvelle apparence. La
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), celle qui devient un canal de lumières
@@ -253,7 +259,8 @@ anciennes Landungsbrücken et se construit façade par façade, en huit phases d
 Holstentor comme entrée, en 2010 Bruges, Visby, Lübeck, Hambourg et Rostock, en 2011 Groningue et
 Paris, en 2012 Londres, Ribe et Bergen, en 2013 six autres de Copenhague à Nuremberg, en 2018 Gdańsk
 et Cracovie, et en 2021 la plus grande phase à ce jour avec 14 façades de Cracovie, Stockholm,
-Stralsund, Helsinki, Riga et Venise. Vingt ans étaient prévus. La dernière phase, le Palacio de
+Stralsund, Helsinki, Riga et Venise. Vingt ans étaient prévus, un calendrier qu’on connaît d’ordinaire des chantiers d’autoroute. La
+dernière phase, le Palacio de
 Braga, n’est pas terminée.
 
 Les années depuis 2021 se lisent en conséquence à petite échelle : Awildas Welt, le Peterhof von
@@ -261,7 +268,7 @@ Novgorod à la place de l’ancien camp de bûcherons, New Lübeck à la place d
 City, le Carrousel Baltique, les Lost Trails of Roanoke, Einars Fjordfahrt. Aucune de ces nouveautés
 n’est un coaster. Celui-là est arrivé en 2026.
 
-## Où dormir
+## Où dormir : trois nuits ou aucune
 
 Le **HANSA-PARK Resort am Meer** se trouve en bordure de Sierksdorf, la ligne de chemin de fer
 passant entre le village de vacances et le parc. La réservation se fait par Landal ou Ostseezeit, le
@@ -281,7 +288,7 @@ de la plage, elle aussi fléchée, et tu évites l’escalier.
 **Stationnement.** **7 €** par jour pour une voiture sur le grand parking, hauteur maximale
 2,30 mètres. Les motos stationnent gratuitement, les camping-cars paient 15 € par tranche de douze
 heures entamée. Le cas à part est le parking pour véhicules électriques : une voiture électrique
-coûte **16 € par jour**, plus du double d’une thermique. Les détenteurs d’une carte de saison de plus
+coûte **16 € par jour**, plus du double d’une thermique, un tarif qu’on relit deux fois. Les détenteurs d’une carte de saison de plus
 de 18 ans paient 2 € sur le grand parking. La zone de dépose est gratuite pendant 30 minutes.
 
 **Billets 2026.** **53 €** à partir de 12 ans, **43 €** pour les enfants de 4 à 11 ans, gratuit avant

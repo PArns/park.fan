@@ -1,5 +1,5 @@
 ---
-title: 'Walibi Holland : « hard gaan », Untamed et un polder qui était encore la mer en 1957'
+title: 'Walibi Holland : « hard gaan », Untamed et un champ où nageaient encore des poissons en 1957'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-09-22'
@@ -7,12 +7,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland est bâti sur des terres encore sous l’eau en 1957, communique
-  depuis douze ans avec un mot venu de la scène hardstyle et possède avec
-  Untamed l’un des meilleurs coasters d’Europe, pour lequel on ne patiente
-  presque pas un jour ordinaire. Portrait d’un parc que les visiteurs se
-  figurent de travers, des experiences d’Halloween que l’on paie de son plein
-  gré, et de l’événement de Noël que le parc vient d’annuler.
+  Walibi Holland est bâti sur un champ qui était encore la mer en 1957,
+  communique avec un slogan qu’il a même imprimé sur des préservatifs, et
+  possède avec Untamed l’un des meilleurs coasters d’Europe, pour lequel on ne
+  patiente presque pas un jour ordinaire. Sans oublier des experiences
+  d’Halloween où l’on paie un supplément pour se faire sangler sous un rail au
+  plafond, et un événement de Noël que le parc vient d’annuler.
 tags:
   - walibi-holland
   - untamed
@@ -33,10 +33,11 @@ coverImage:
   caption: 'L’entrée d’Untamed. Le bois en dessous provient encore en grande partie de Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: 'Walibi Holland : Untamed, temps d’attente et Halloween'
+  title: 'Walibi Holland : Untamed, attente et frissons dans le polder'
   description: >-
-    Comprendre Walibi Holland : le concept « hard gaan », Untamed et YOY avec de
-    vraies données d’attente, les Halloween Fright Nights, tarifs et accès.
+    Des coasters sur un ancien fond marin : Untamed et YOY avec de vraies
+    données d’attente, les Halloween Fright Nights qu’on paie avec plaisir,
+    tarifs et accès.
   keywords:
     - Walibi Holland
     - Walibi Holland temps d’attente
@@ -67,23 +68,23 @@ Ensuite, le train bascule par-dessus une arête plus raide que la verticale.
 J’aime rouler loin pour des coasters, mais Walibi Holland reste une expédition
 même à mon échelle : deux heures et demie bien tassées depuis Cologne, et sur la
 seconde moitié tu ne croises plus rien que des éoliennes et des champs de colza.
-C’est pour cela que le parc passe à la trappe. L’[Efteling](ref:efteling) et
+Pas étonnant que le parc passe si souvent à la trappe. L’[Efteling](ref:efteling) et
 [Toverland](ref:attractiepark-toverland) sont plus près,
 [Phantasialand](ref:phantasialand) est à la porte, et qui prévoit une journée
-aux Pays-Bas fait rarement l’heure supplémentaire jusqu’au Flevoland.
+aux Pays-Bas s’offre rarement, de son plein gré, une heure de polder en rab.
 
 C’est une erreur. Untamed suffirait déjà, mais la meilleure raison, c’est une
 idée qui paraît totalement absurde lors d’une première visite et qui explique
 tout à la troisième. Elle tient en deux mots placardés sur la
 moitié de Biddinghuizen : **hard gaan**.
 
-## Un parc sur un ancien fond marin
+## D’abord la mer, puis les vaches, puis les coasters
 
 Tout a commencé ici avec des vaches.
 
 Le **21 mai 1971**, la princesse Beatrix inaugurait sur ces terres neuves de
 polder la **Flevohof**, un parc agricole de 150 hectares. L’idée : montrer aux
-enfants des villes d’où vient le lait. Il y avait des étables, des serres, une
+enfants des villes que le lait ne pousse pas dans les briques. Il y avait des étables, des serres, une
 fromagerie, quelques jeux. Pendant deux décennies ce fut une sortie pour classes
 et familles, puis les comptes ont cessé de tomber juste, et au début des années
 quatre-vingt-dix l’exploitation a fait faillite. La Flevohof a ouvert pour la
@@ -120,9 +121,10 @@ La fréquentation longe la barre du million depuis des années : 936 000 sur
 l’exercice 2023, 919 000 en 2024 et dernièrement **972 000** sur l’exercice
 octobre 2024 à septembre 2025, soit près de six pour cent de plus. Le directeur
 marketing Marc Guffens a parlé de « la meilleure année de tous les temps, si on
-ne compte pas la fréquentation de l’époque Six Flags », parce qu’à l’époque il
+ne compte pas la fréquentation de l’époque Six Flags » (un record avec astérisque), parce qu’à l’époque il
 restait beaucoup moins par visiteur. Pour comparaison : l’Efteling fait environ
-cinq fois plus.
+cinq fois plus, ce qui est une excellente nouvelle pour quiconque fait la queue à
+Biddinghuizen.
 
 ## « Hard gaan » : le concept
 
@@ -142,7 +144,8 @@ parc en a vendu encore des années.
 En **2017**, le service marketing a tiré le frein d’urgence et a remplacé le
 slogan par **« Dare to get Real »**. Cela a tenu exactement une saison. Un
 document interne de l’automne 2017 indiquait que le résultat était « en deçà des
-attentes », que le message était « trop compliqué et trop profond », et qu’on
+attentes », que le message était « trop compliqué et trop profond » (un reproche
+qu’un slogan de parc d’attractions doit quand même mériter), et qu’on
 avait « probablement visé un public trop restreint ». En **2018**, `#Hardgaan`
 était de retour, et c’est resté la marque de la maison.
 
@@ -171,9 +174,8 @@ sauf qu’ici tout vise autre chose : il veut que tu cries. Six coasters avec i
 où t’abriter de la pluie, en revanche de la musique sur chaque allée et un
 volume que personne n’a réglé par mégarde.
 
-Qui vient chercher un deuxième Efteling rentre déçu. Qui s’attend à un parc de
-coasters avec un festival derrière la clôture obtient exactement ça, volume à
-fond.
+Qui vient chercher un deuxième Efteling ne trouvera pas de forêt des contes, mais
+une ligne de basse qui le suit jusque dans la queue des frites.
 
 ### Quand le concept va trop loin
 
@@ -214,8 +216,8 @@ https://www.youtube.com/watch?v=fFPGRQAs-Xk
 ## Untamed
 
 À l’endroit où se dresse Untamed aujourd’hui se trouvait de 2000 à 2018
-**Robin Hood**, un coaster en bois de Vekoma à la réputation douteuse : bruyant
-et de plus en plus désagréable au fil des ans. Il a roulé pour la dernière fois
+**Robin Hood**, un coaster en bois de Vekoma à la réputation douteuse : bruyant,
+et chaque année un peu plus proche de la hernie discale. Il a roulé pour la dernière fois
 le **28 octobre 2018**. Puis **Rocky Mountain Construction**, de l’Idaho, est
 arrivé, a arraché les rails en bois, a laissé debout l’essentiel de la charpente
 et a posé dessus un rail d’acier qui se plie dans des formes impossibles en
@@ -280,7 +282,8 @@ besoin de traverser l’Atlantique.
 Aux Golden Ticket Awards, Untamed s’est classé cinquième des meilleures
 nouveautés de 2019, et il figure depuis régulièrement dans le top 50 mondial des
 coasters en acier (2024 : 42e, 2025 : 48e). Moi, je le
-classerais nettement plus haut, à cause d’une qualité qui se mesure mal : après sept ans, il est toujours doux.
+classerais nettement plus haut, à cause d’une qualité qui se mesure mal : après sept ans, il est toujours doux, sur la même charpente en bois où Robin Hood
+remettait autrefois les vertèbres dans le désordre.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
@@ -313,8 +316,8 @@ L’ouverture a eu lieu le **5 avril 2025**.
 
 Si tu voyages avec un enfant pile sur la ligne entre « il a envie » et « il
 n’ose pas encore », c’est la solution la plus élégante que je connaisse : vous
-roulez en même temps, vous vous voyez tout du long, et chacun fait quand même le
-parcours qui lui convient.
+roulez en même temps, vous vous voyez tout du long, chacun fait le parcours qui
+lui convient, et après, personne ne peut prétendre que l’autre s’est dégonflé.
 
 ![Le lettrage « Goliath » à l’entrée, derrière lui le lift du coaster | Goliath, le plus haut coaster du parc depuis 2002. | left](/media/walibi-holland/goliath-4x3.jpg)
 
@@ -461,7 +464,8 @@ Coaster par coaster, cela donne ceci :
 
 Le meilleur coaster du parc n’a pas la file la plus longue, c’est la nouveauté
 qui l’a. Untamed se situe en milieu de tableau, au même niveau qu’un SLC de 1994
-et qu’un Mack de 680 mètres. Ce n’est pas une critique de YOY, une nouveauté attire toujours.
+et qu’un Mack de 680 mètres. Ce n’est pas une critique de YOY. Une nouveauté attire toujours, et la moitié de la
+Hollande fait la queue par principe là où la peinture est encore fraîche.
 Mais cela signifie ceci : si tu files le matin directement dans la Wilderness,
 tu auras fait Untamed avant que la file de YOY n’ait vraiment avancé.
 
@@ -473,7 +477,7 @@ méthode de calcul, tous les jours d’ouverture mesurés :
 ```
 
 Dans le temps où tu fais **une fois** la file de [Taron](ref:phantasialand/taron)
-à Phantasialand, tu fais Untamed plusieurs fois. À l’échelle des parcs le
+à Phantasialand, tu fais Untamed plusieurs fois, et il te reste encore du temps pour les frites. À l’échelle des parcs le
 tableau est le même :
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
@@ -711,7 +715,7 @@ temps.
 
 ## Quand y aller
 
-La saison court d’**avril à début novembre**, après quoi c’est fermé. Au
+La saison court d’**avril à début novembre**, après quoi le polder hiberne. Au
 printemps et à l’automne le parc ouvre les mercredis, les week-ends et pendant
 les vacances, et tous les jours de fin juin à fin août.
 
@@ -775,7 +779,8 @@ donc différemment selon la date.
 
 - **Prix guichet, billet journée :** 46 € (à partir de 12 ans). Qui réserve en
   ligne et pour un jour calme paie selon la date à partir de **24,50 €**.
-  Utiliser la caisse sur place est ici la décision la plus coûteuse possible.
+  Utiliser la caisse sur place est ici la décision la plus coûteuse possible,
+  devant la troisième glace à l’italienne.
 - **Enfants :** 3 à 5 ans 23 €, 6 à 11 ans 36 €, moins de 2 ans gratuit. Seniors
   à partir de 55 ans et visiteurs en situation de handicap également 36 €.
 - **Parking :** 12 € par voiture et par jour, vingt bornes de recharge pour
@@ -820,7 +825,7 @@ particulier c’est la solution la plus détendue, parce qu’après une nuit à
 l’abattoir tu n’as pas en plus deux heures et demie d’autoroute devant toi.
 
 **Restauration.** Je serai direct : la restauration est le point faible du parc.
-Il y a des frites, des burgers, des pizzas, tout cela correct, rien pour quoi on
+Il y a des frites, des burgers, des pizzas, de la cantine correcte, rien pour quoi on
 revient. Le food court **Flavors** près de la nouvelle zone YOY, avec sa
 terrasse au bord de l’eau, est l’adresse la plus agréable, ne serait-ce que pour
 la vue sur les deux voies. Mange tôt, vers onze heures et demie, ou tard à

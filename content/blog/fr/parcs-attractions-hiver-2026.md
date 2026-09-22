@@ -34,11 +34,11 @@ coverImage:
   caption: 'Wintertraum à Phantasialand. Neuf heures d’exploitation, dont trois et demie dans le noir.'
   credit: 'park.fan'
 seo:
-  title: 'Parcs ouverts en hiver 2026/27 : dates & temps d’attente'
+  title: 'Parcs en hiver 2026/27 : qui ouvre, et quelle affluence'
   description: >-
-    Patinoires, marchés de Noël et 800 000 lumières : quels parcs sont
-    ouverts en hiver 2026/27. Noël Gaulois, Wintertraum, Winter Efteling,
-    Walibi Winter et huit autres, avec dates, tarifs et vrais temps d’attente.
+    Patinoires, vin chaud et 800 000 lumières : quels parcs ouvrent en hiver
+    2026/27, à quel prix, et pourquoi on attend plus longtemps en décembre
+    qu’en mai.
   keywords:
     - parcs d’attractions ouverts en hiver
     - Parc Astérix Noël 2026
@@ -108,7 +108,8 @@ plus longue saison d’hiver que fasse un parc allemand : du **14 novembre 2026
 d’exploitation, une bonne fois et demie ce que fait Europa-Park.
 
 Le parc ferme cinq jours : les 24 et 25 décembre, le 1er janvier, puis les 12
-et 13 janvier 2027. Le 31 décembre, l’exploitation s’arrête à 18 h. Les billets
+et 13 janvier 2027. Le 31 décembre, l’exploitation s’arrête à 18 h, à temps
+pour votre propre feu d’artifice. Les billets
 démarrent à **29 €** et se réservent en ligne pour une date fixe.
 
 ![La tour du Mystery Castle dans le brouillard, éclairée par en dessous | Mystery Castle est dans la montagne. C’est pour cela qu’il tourne quand il gèle dehors. | wide](/media/phantasialand/mystery-castle.jpg)
@@ -172,7 +173,8 @@ rides. [Droomvlucht](ref:efteling/droomvlucht),
 [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana,
 [Danse Macabre](ref:efteling/danse-macabre) : toute une collection d’attractions
 que la pluie, le vent et l’obscurité n’atteignent pas, et dont plusieurs
-fonctionnent mieux au crépuscule qu’en plein soleil.
+fonctionnent mieux au crépuscule qu’en plein soleil. Pour une fois, un parc à
+qui la météo néerlandaise rend service.
 
 ![Le château de Symbolica éclairé en bleu la nuit, une fontaine devant | Symbolica un soir d’hiver. En décembre, la nuit tombe ici à seize heures trente, et le parc y gagne. | wide](/media/efteling/symbolica.jpg)
 
@@ -245,15 +247,16 @@ Ice, plus une parade d’hiver, un spectacle de feu et de lumière et l’illumi
 du sapin. Ouvert 18 jours dans cette fenêtre, de 11 h à 19 h, jusqu’à 18 h les 24 et
 31 décembre, fermé le 25 décembre et le 1er janvier.
 
-À Kasterlee, **tout est compris dans le billet journalier**, du patinage à la piste de tubing. Rien à réserver en
-plus.
+À Kasterlee, **tout est compris dans le billet journalier**, du patinage à la
+piste de tubing. Rien à réserver en plus : le porte-monnaie peut rester dans la
+poche jusqu’à la baraque à frites.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ### Movie Park Germany : Hollywood Christmas, du 27 novembre au 5 janvier
 
-Six semaines à l’automne, le parc s’appelle Horrorwood Studios, et c’est à peine
-terminé que le plateau de tournage passe à Noël. **Movie Park’s Hollywood
+Six semaines à l’automne, le parc s’appelle Horrorwood Studios, et à peine le
+faux sang essuyé, le plateau de tournage passe à Noël. **Movie Park’s Hollywood
 Christmas** tourne du **27 novembre 2026 au 5 janvier 2027** : plus de 800 000
 lumières, quatre zones de Noël, une patinoire, la version hivernale de la
 parade, une Christmas Tree Celebration, une station Meet Santa et, nouveauté, un
@@ -276,8 +279,9 @@ des spectacles et un sapin en Lego.
 
 Ce qui tourne, c’est surtout l’intérieur, plus quelques attractions dehors : sont
 cités entre autres MAXIMUS, Temple X-pedition, LEGO NINJAGO The Ride et le
-Techno Schleuder. Vous voyagez avec un enfant qui veut une attraction précise ?
-Lisez d’abord la liste du parc.
+Techno Schleuder. Si vous voyagez avec un enfant qui veut une attraction
+précise, lisez d’abord la liste du parc. Sinon, la discussion devant
+l’attraction fermée se fera avec quelqu’un qui mesure un mètre et qui a raison.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -325,7 +329,7 @@ plus chargés de la saison italienne.
 
 Le [Heide-Park](ref:heide-park) fait sa saison 2026 du 28 mars au
 **31 octobre**, puis ferme. Pas d’exploitation hivernale à Soltau, pas de marché
-de Noël non plus. Ce qui se passe pendant les sept mois précédents est dans le
+de Noël non plus : Colossos hiberne. Ce qui se passe pendant les sept mois précédents est dans le
 [guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).
 
 [Walibi Holland](ref:walibi-holland) reste également fermé depuis la fin de
@@ -340,7 +344,7 @@ n’avaient tout simplement pas publié de planning au-delà d’octobre, et les
 ouvrent notoirement en décembre. Un jour n’apparaît sur park.fan qu’une fois que
 le parc l’a publié.
 
-## Ce que disent les chiffres
+## Ce que disent les chiffres : vide en apparence, plein en réalité
 
 L’hiver donne une impression de vide. Il fait sombre, il fait froid, du
 brouillard traîne sur les allées et la moitié du parc est éclairée plutôt que
@@ -441,7 +445,7 @@ qu’il répartit juillet, dans le même parc, sur plusieurs niveaux. Un modèle
 n’a jamais vu une saison la croit calme, et cela vaut aussi pour les journées
 d’hiver à Europa-Park et à Efteling. Dès l’hiver prochain, il les connaîtra.
 
-## Trois choses qui changent en hiver
+## La date, la liste des attractions, le gros manteau
 
 1. **Le prix dépend de la date.** Presque tous les billets
    d’hiver sont datés et échelonnés selon le jour. Le Wintertraum commence à
@@ -466,7 +470,7 @@ Et pour refaire un tour d’[Euro-Mir](ref:europa-park/euro-mir), il reste jusqu
 
 Avec des enfants et sans envie de suppléments : à Kasterlee, tout ce qui est
 installé dans le parc ces semaines-là est dans le prix de la journée. Après les semaines d’Halloween, où chaque maison
-hantée se vend séparément, cela déroute un peu.
+hantée se vend séparément, cela déroute un peu, mais on s’y fait très vite.
 
 Ce qui tourne réellement le jour que vous visez et la longueur des files en ce
 moment, c’est sur la page de chaque parc, tout l’hiver.

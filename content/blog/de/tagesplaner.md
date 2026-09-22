@@ -1,13 +1,14 @@
 ---
-title: 'Der Tagesplaner rechnet nach, ob dein Parktag aufgeht'
+title: 'Der Tagesplaner rechnet nach, bevor du in der falschen Schlange stehst'
 translationKey: trip-planner-launch
 date: '2026-09-05'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Ein Wartezeiten-Feed sagt dir, wie lang die Schlange gerade ist. Er sagt dir
-  nicht, ob deine Liste bis zum Parkschluss durchkommt. Dafür gibt es jetzt den
+  Ein Wartezeiten-Feed sagt dir, wie lang die Schlange gerade ist. Ob deine
+  Liste bis zum Parkschluss durchkommt, sagt er nicht, das merkst du selbst,
+  meistens gegen zwei Uhr nachmittags. Dafür gibt es jetzt den
   Tagesplaner: deine Bahnen auf einer Zeitleiste, jeder Block so hoch wie seine
   vorhergesagte Wartezeit, und dazwischen der Weg.
 tags:
@@ -30,11 +31,11 @@ coverImage:
   caption: 'Fantasmic im Hollywood Studios, kurz vor Beginn. Zehntausend Leute, die für diese halbe Stunde nirgends anstehen.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Tagesplaner für den Freizeitpark: Wartezeiten vorher einrechnen'
+  title: 'Parktag planen: Wartezeiten einrechnen, bevor du anstehst'
   description: >-
-    Der neue park.fan-Tagesplaner legt deine Bahnen auf eine Zeitleiste, rechnet
-    mit den vorhergesagten Wartezeiten, kennt die Öffnungszeit jeder einzelnen
-    Bahn und die Wege dazwischen. Ohne Konto, alles im Browser.
+    Der Tagesplaner legt deine Bahnen auf eine Zeitleiste, rechnet mit
+    vorhergesagten Wartezeiten und Wegen und zeigt vorher, ob der Tag aufgeht.
+    Ohne Konto.
   keywords:
     - Freizeitpark Tag planen
     - Tagesplaner Freizeitpark
@@ -88,7 +89,7 @@ Summe: fünf Stunden und eine Viertelstunde nur Anstehen. Das ist die Fassung,
 die der Sortierer für die beste gehalten hat. Ohne Reihenfolge stehst du genauso
 lange, fährst aber weniger.
 
-## Zwischen zwei Bahnen liegt ein Weg
+## Zwischen zwei Bahnen liegt ein Weg, gern um einen See herum
 
 Ein Wartezeiten-Feed kann sagen, dass an einer Bahn fünfzig Minuten stehen. Was
 er nicht sagen kann: dass du von dort, wo du gerade stehst, nicht mehr
@@ -107,7 +108,7 @@ Schrittgeschwindigkeit und legt zwei Drittel Umweg auf die Luftlinie.
 In einem kompakten Park kostet ein ungeschickter Umstieg drei Minuten und fällt
 niemandem auf. In einem großen kostet er eine Viertelstunde. Wer den achtmal am
 Tag macht, hat zwei Stunden verlaufen, die in keiner Wartezeit-Statistik
-auftauchen.
+auftauchen, abends aber sehr wohl in den Waden.
 
 „Knapp“ am Umstieg ist keine Stimmungsangabe, das ist gerechnet: Der Umstieg
 geht nicht mehr auf, wenn die Prognose so weit danebenliegt, wie sie selbst
@@ -115,8 +116,8 @@ angibt. Wie weit das ist, weiß die API für jede Bahn.
 
 ## „Früh kommen“ gilt nicht für jede Bahn
 
-Der Rat, den man überall liest, geht so: die große Bahn zuerst, direkt nach der
-Öffnung. Manchmal stimmt er. Oft stimmt er nicht, und welches von beidem gilt,
+Der Rat, den man in jedem Forum liest und von jedem Schwager hört, der schon
+mal in Florida war, geht so: die große Bahn zuerst, direkt nach der Öffnung. Manchmal stimmt er. Oft stimmt er nicht, und welches von beidem gilt,
 sieht man erst, wenn man sich die Stunden einzeln ansieht. Das
 [Magic Kingdom](ref:magic-kingdom-park) eignet sich dafür gut, weil sein Tag
 lang genug ist, dass die Kurven weit auseinanderlaufen.
@@ -209,8 +210,9 @@ weniger behauptet, als er könnte.
 
 **Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
 steht, wie weit die Vorhersagen für diese Bahn im Schnitt von dem entfernt
-lagen, was der Tag dann wirklich brachte. „Typisch“ heißt hier: Die Hälfte der
-Tage liegt weiter daneben. Deshalb steht die Zahl als typischer Fehler da und nie als Spanne, in der die richtige Antwort schon
+lagen, was der Tag dann wirklich brachte. (Von der Wettervorhersage wünsche ich
+mir das seit Jahren.) „Typisch“ heißt hier: Die Hälfte der Tage liegt weiter
+daneben. Deshalb steht die Zahl als typischer Fehler da und nie als Spanne, in der die richtige Antwort schon
 drin wäre.
 
 **Showzeiten sind zweierlei.** Was der Park für heute veröffentlicht hat, ist
@@ -238,7 +240,7 @@ ist der Grund, warum er überhaupt aufbewahrt wird.
 Du meldest dich nirgends an. Dein Plan liegt in deinem Browser, und das ist die
 Voreinstellung, nicht die Sparversion. Räumst du
 die Browserdaten auf, ist er weg. Öffnest du park.fan auf dem Handy, ist es ein
-anderer Plan.
+anderer Plan, und das weißt du besser beim Frühstück als an der Parkkasse.
 
 Die eine Ausnahme sind Push-Benachrichtigungen. Damit wir dir sagen können, dass
 du gleich losmusst, muss der Plan auf unserem Server liegen, und der Planer
@@ -259,7 +261,8 @@ und wer kommt mit.
 
 Die erste ist ein Suchfeld, und dahinter steckt eine Kleinigkeit, die schnell
 schiefgeht. Tipp „Disneyland“ ein, und du bekommst fünf Parks auf drei
-Kontinenten, die alle so heißen.
+Kontinenten, die alle so heißen. Bei der Namensfindung war die Maus nicht
+besonders erfinderisch.
 
 ![Schritt eins des Planer-Assistenten: ins Suchfeld ist „Disneyland“ getippt, darunter fünf Parks aus fünf Ländern. | Ein Name, fünf Parks. Deswegen merkt sich der Planer den Pfad aus der API und nicht den Namen.](/media/tagesplaner/planer-wizard-park-de.webp)
 

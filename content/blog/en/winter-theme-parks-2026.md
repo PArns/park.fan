@@ -34,11 +34,10 @@ coverImage:
   caption: 'Wintertraum at Phantasialand. Nine hours of operation, three and a half of them after dark.'
   credit: 'park.fan'
 seo:
-  title: 'Theme Parks Open in Winter 2026/27: Dates & Wait Times'
+  title: 'Theme Parks Open in Winter 2026/27: Who, When, How Busy'
   description: >-
-    Ice rinks, Christmas markets and 800,000 lights: which European theme
-    parks are open in winter 2026/27. Wintertraum, Winter Efteling, Walibi
-    Winter and eight more, with dates, prices and real wait-time data.
+    Ice rinks, mulled wine and 800,000 lights: which theme parks open in winter
+    2026/27, what it costs, and why you queue longer in December than in May.
   keywords:
     - theme parks open in winter
     - theme park christmas 2026
@@ -107,7 +106,8 @@ from **11:00 to 20:00**. That is 67 operating days, a good half again as many as
 Europa-Park.
 
 The park is closed on five days: 24 and 25 December, 1 January, and 12 and
-13 January 2027. On New Year’s Eve it stops at 18:00. Tickets start at **€29**
+13 January 2027. On New Year’s Eve it stops at 18:00, in good time for your own
+fireworks. Tickets start at **€29**
 and are booked online for a fixed date.
 
 ![The tower of Mystery Castle in fog, lit from below | Mystery Castle sits inside the mountain. Which is why it runs when there is freezing rain outside. | wide](/media/phantasialand/mystery-castle.jpg)
@@ -167,7 +167,8 @@ The [Efteling](ref:efteling) is the park that shows what dark rides are for.
 [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica),
 Villa Volta, Fata Morgana, [Danse Macabre](ref:efteling/danse-macabre): a whole
 collection of attractions that rain, wind and darkness cannot touch, several of
-which work better at dusk than in sunshine.
+which work better at dusk than in sunshine. For once, a park the Dutch weather
+is doing a favour.
 
 ![The blue-lit Symbolica castle at night with a fountain in front of it | Symbolica on a winter evening. It gets dark here at half past four in December, and the park gains from it. | wide](/media/efteling/symbolica.jpg)
 
@@ -241,14 +242,14 @@ illumination. Open 11:00 to 19:00, until 18:00 on 24 and 31 December, closed on
 
 The ticket structure is unusual: in Kasterlee **everything is included in
 the day ticket**, from the skating to the tubing slide. There is nothing to book
-on top.
+on top, so your wallet can stay in your coat until the chip stand.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ### Movie Park Germany: Hollywood Christmas, 27 November to 5 January
 
 For six weeks in autumn the park is called Horrorwood Studios, and no sooner is
-that over than the studio lot turns festive. **Movie Park’s Hollywood
+the fake blood mopped up than the studio lot turns festive. **Movie Park’s Hollywood
 Christmas** runs from **27 November 2026 to 5 January 2027**: more than
 800,000 lights, four Christmas-themed areas, an ice rink, the winter version of
 the parade, a Christmas Tree Celebration, a Meet Santa station and a new winter
@@ -272,7 +273,8 @@ curling, shows and a Lego fir tree.
 What is open is mostly the indoor line-up plus a few outdoor rides, among them
 MAXIMUS, Temple X-pedition, LEGO NINJAGO The Ride and the Techno Schleuder.
 Travelling with a child who wants one particular ride? Read the park’s list
-first.
+first. Otherwise you will be arguing in front of a closed ride with someone a
+metre tall who happens to be right.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -320,7 +322,7 @@ the busiest days of the Italian season.
 
 [Heide-Park](ref:heide-park) runs its 2026 season from 28 March to
 **31 October** and then closes. There is no winter operation in Soltau and no
-Christmas market either. What happens in the seven months before that is in the
+Christmas market either; Colossos is hibernating. What happens in the seven months before that is in the
 [Heide Park guide](/blog/heide-park-wait-times-tips).
 
 [Walibi Holland](ref:walibi-holland) also stays shut now that Bright Nights has
@@ -334,7 +336,7 @@ closed. Disneyland Paris and Liseberg in Gothenburg simply had no schedule
 published beyond October in early September, and both are famously open in
 December. A day only appears on park.fan once the park has published it.
 
-## What the numbers say
+## What the numbers say: feels empty, measures full
 
 Winter feels empty. It is dark, it is cold, there is fog on the paths, and half
 the park is lit rather than populated. The queues are not.
@@ -428,7 +430,7 @@ park gets spread over several levels. A model that has never seen a season takes
 a quiet one, and the same goes for the winter days at Europa-Park and the
 Efteling. From next winter it will know them.
 
-## Three things that work differently in winter
+## The date, the ride list and a warmer coat
 
 1. **The price hangs on the date.** Almost all winter tickets are
    date-bound and tiered by day. Wintertraum starts at €29, and you will not get
@@ -451,7 +453,7 @@ the best attractions is indoors anyway. And anyone who wants one more ride on
 
 With children and no appetite for add-on tickets: in Kasterlee everything
 standing in the park during these weeks is in the day price. After the Halloween weeks, where every haunted house is sold
-separately, that takes some getting used to.
+separately, that is a change you get used to very quickly.
 
 What is actually running on the day you want, and how long the queues are right
 now, is on each park’s own page all winter.

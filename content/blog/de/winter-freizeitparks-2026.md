@@ -1,5 +1,5 @@
 ---
-title: 'Freizeitparks im Winter: wer im Dezember aufmacht und wer es sich nicht leisten kann'
+title: 'Freizeitparks im Winter: wer im Dezember öffnet, wer es sich nicht leisten kann'
 translationKey: winter-parks-2026
 date: '2026-09-03'
 updatedAt: '2026-09-22'
@@ -34,11 +34,11 @@ coverImage:
   caption: 'Wintertraum im Phantasialand. Neun Stunden Betrieb, davon dreieinhalb im Dunkeln.'
   credit: 'park.fan'
 seo:
-  title: 'Freizeitparks im Winter 2026/27: Termine & Wartezeiten'
+  title: 'Freizeitparks im Winter 2026/27: wer aufhat, wie voll es ist'
   description: >-
-    Eisbahnen, Weihnachtsmärkte und 800.000 Lichter: welche Freizeitparks
-    im Winter 2026/27 geöffnet haben. Wintertraum, Winter Efteling, Walibi
-    Winter und acht weitere, mit Terminen, Preisen und echten Wartezeit-Daten.
+    Eisbahnen, Glühwein und 800.000 Lichter: welche Freizeitparks im Winter
+    2026/27 aufhaben, was es kostet und warum man im Dezember länger ansteht
+    als im Mai.
   keywords:
     - Freizeitparks im Winter
     - Freizeitpark Winter geöffnet
@@ -108,8 +108,9 @@ symbolischer Kürbis. Dafür startet das [Phantasialand](ref:phantasialand) am
 67 Betriebstage, gut anderthalbmal so viele wie im Europa-Park.
 
 Geschlossen bleibt an fünf Tagen: am 24. und 25. Dezember, am 1. Januar sowie
-am 12. und 13. Januar 2027. An Silvester endet der Betrieb um 18 Uhr. Tickets
-gibt es ab **29 €**, gebucht wird online auf ein festes Datum.
+am 12. und 13. Januar 2027. An Silvester endet der Betrieb um 18 Uhr,
+rechtzeitig fürs eigene Feuerwerk. Tickets gibt es ab **29 €**, gebucht wird
+online auf ein festes Datum.
 
 ![Der Turm des Mystery Castle im Nebel, von unten angeleuchtet | Mystery Castle steht im Berg. Deshalb fährt es auch, wenn draußen Eisregen fällt. | wide](/media/phantasialand/mystery-castle.jpg)
 
@@ -168,7 +169,8 @@ gut sind. [Droomvlucht](ref:efteling/droomvlucht),
 [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana,
 [Danse Macabre](ref:efteling/danse-macabre): eine ganze Sammlung von
 Attraktionen, denen Regen, Wind und Dunkelheit nichts anhaben, und von denen
-mehrere in der Dämmerung besser wirken als bei Sonnenschein.
+mehrere in der Dämmerung besser wirken als bei Sonnenschein. Ein Park, dem das
+niederländische Wetter ausnahmsweise in die Karten spielt.
 
 ![Das blau angeleuchtete Schloss von Symbolica bei Nacht, davor ein Springbrunnen | Symbolica an einem Winterabend. Im Dezember wird es hier um halb fünf dunkel, und der Park gewinnt dabei. | wide](/media/efteling/symbolica.jpg)
 
@@ -241,14 +243,15 @@ Ice, dazu Winterparade, Feuer-und-Licht-Show und die Weihnachtsbaum-Illumination
 Geöffnet ist an 18 Tagen in diesem Fenster, von 11 bis 19 Uhr, am 24. und 31. Dezember bis 18 Uhr; am 25. Dezember und 1. Januar bleibt der Park zu.
 
 In Kasterlee ist **alles im Tagesticket drin**, vom Eislaufen bis zur
-Tubing-Rutsche. Zusatzbuchungen gibt es keine.
+Tubing-Rutsche. Zusatzbuchungen gibt es keine, das Portemonnaie kann also bis
+zur Pommesbude in der Jacke bleiben.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ### Movie Park Germany: Hollywood Christmas, 27. November bis 5. Januar
 
 Sechs Wochen im Herbst heißt der Park Horrorwood Studios, und kaum ist das
-vorbei, wird das Studiogelände weihnachtlich. **Movie Park’s Hollywood
+Kunstblut weggewischt, wird das Studiogelände weihnachtlich. **Movie Park’s Hollywood
 Christmas** läuft vom **27. November 2026 bis 5. Januar 2027**: über 800.000
 Lichter, vier weihnachtliche Bereiche, eine Eisbahn, die Winterversion der Parade, eine Christmas Tree Celebration, eine Meet-Santa-
 Station und neu eine Wintershow mit dem Illusionisten Christian Farla.
@@ -271,7 +274,9 @@ eine Eisbahn, Curling, Shows und eine Lego-Tanne.
 Offen sind vor allem die Indoor-Attraktionen, dazu einzelne Bahnen draußen.
 Genannt werden unter anderem MAXIMUS, Temple X-pedition, LEGO NINJAGO The Ride
 und die Techno Schleuder. Wer mit einem Kind anreist, das genau eine bestimmte
-Bahn fahren will, schaut vorher in die Liste des Parks.
+Bahn fahren will, schaut vorher in die Liste des Parks. Die Diskussion vor
+einer geschlossenen Bahn führst du sonst mit jemandem, der einen Meter groß ist
+und recht hat.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -317,7 +322,7 @@ einem der vollsten Tage der italienischen Saison im Park.
 
 Der [Heide-Park](ref:heide-park) fährt die Saison 2026 vom 28. März bis zum
 **31. Oktober** und macht danach zu. Winterbetrieb gibt es in Soltau nicht,
-auch keinen Weihnachtsmarkt. Was in den sieben Monaten davor passiert, steht im
+auch keinen Weihnachtsmarkt, Colossos hält Winterschlaf. Was in den sieben Monaten davor passiert, steht im
 [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 [Walibi Holland](ref:walibi-holland) bleibt nach dem Ende von Bright Nights
@@ -332,7 +337,7 @@ September schlicht noch kein Fahrplan über den Oktober hinaus vor, und beide
 haben im Dezember bekanntlich geöffnet. Ein Tag erscheint auf park.fan erst,
 wenn der Park ihn veröffentlicht hat.
 
-## Was die Zahlen sagen
+## Was die Zahlen sagen: gefühlt leer, gemessen voll
 
 Der Winter fühlt sich leer an. Es ist dunkel, es ist kalt, auf den Wegen steht
 Nebel, und der halbe Park ist beleuchtet statt bevölkert. Die Schlangen sind es
@@ -431,7 +436,7 @@ Modell, das eine Saison nie gesehen hat, hält sie für ruhig, und dasselbe gilt
 für die Wintertage im Europa-Park und im Efteling. Ab dem nächsten Winter kennt
 es sie.
 
-## Datum, Attraktionsliste, Dunkelheit
+## Datum, Attraktionsliste, dicke Jacke
 
 1. **Der Preis hängt am Datum.** Fast alle
    Wintertickets sind datumsgebunden und nach Tag gestaffelt. Der Wintertraum
@@ -456,7 +461,7 @@ ein guter Teil der besten Attraktionen ohnehin drinnen liegt. Und wer die
 
 Mit Kindern und ohne Lust auf Zusatztickets: In Kasterlee ist alles im
 Tagespreis drin, was in diesen Wochen im Park steht. Nach den Halloween-Wochen, in denen jedes Spukhaus einzeln
-verkauft wird, ist das eine Umstellung.
+verkauft wird, ist das eine Umstellung, an die man sich schnell gewöhnt.
 
 Was an deinem Wunschtag tatsächlich läuft und wie lang die Schlangen gerade
 sind, steht den ganzen Winter über auf der jeweiligen Parkseite.

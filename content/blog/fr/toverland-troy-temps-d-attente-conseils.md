@@ -1,5 +1,5 @@
 ---
-title: 'Toverland : Troy, les montagnes russes en bois où personne ne fait la queue'
+title: 'Toverland : Troy, les montagnes russes en bois que tout le monde dépasse'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
 updatedAt: '2026-09-22'
@@ -10,8 +10,8 @@ excerpt: >-
   Toverland, c’est le petit parc que la moitié de la Rhénanie dépasse en
   filant vers l’Efteling. Sauf qu’à Sevenum se dresse Troy, un coaster en bois
   signé GCI pour lequel on attend environ un quart d’heure, quand le woodie de la
-  destination en coûte plus du double. Sur un parc où j’ai un jour joué moi-même les
-  effrayeurs en coulisses, et qui ne vend toujours aucun coupe-file.
+  destination en coûte plus du double. Sur un parc sans coupe-file, où j’ai un
+  jour joué moi-même les effrayeurs, devant une maison vide.
 tags:
   - attractiepark-toverland
   - troy
@@ -35,10 +35,10 @@ coverImage:
   caption: 'Le cheval de Troie à Ithaka. Derrière les arbres se cache Troy.'
   credit: 'park.fan'
 seo:
-  title: 'Toverland : Troy, temps d’attente & guide Halloween'
+  title: 'Toverland : Troy, attente & Halloween sans coupe-file'
   description: >-
-    Pourquoi Troy à Toverland est le coaster en bois de classe mondiale le plus
-    tranquille d’Europe : vrais temps d’attente, Fēnix, billets et Halloween
+    Troy à Toverland, l’un des meilleurs coasters en bois d’Europe, et presque
+    personne ne prend la sortie : temps d’attente, Fēnix, billets et Halloween
     Nights.
   keywords:
     - Toverland
@@ -77,7 +77,7 @@ tu remontes.
 
 C’est la partie que j’ai du mal à expliquer. Troy fait partie des meilleures
 montagnes russes en bois d’Europe et se trouve dans un parc que bon nombre de
-passionnés dépassent chaque année sans prendre la sortie : sur l’A67
+passionnés dépassent chaque année sans même mettre le clignotant : sur l’A67
 entre Venlo et Eindhoven, sortie Sevenum. La plupart ont encore une bonne heure
 devant eux, jusqu’à Kaatsheuvel, jusqu’à l’[Efteling](ref:efteling), le Disney
 des Pays-Bas.
@@ -89,23 +89,24 @@ courte est à Sevenum.
 
 Le [Toverland](ref:attractiepark-toverland?long) de Sevenum, que je tiens pour
 l’un des plus beaux petits parcs d’Europe, fête ses 25 ans cette année. Je m’y
-suis même retrouvé une fois en costume, de l’autre côté.
+suis même retrouvé une fois de l’autre côté, en costume, avec pour mission de
+faire peur aux gens. Il n’y en avait pas, mais on y reviendra.
 
-## Ce qui fait la force de Troy
+## Troy sur le papier, et Troy dans le train
 
 Les données techniques sont correctes, sans être spectaculaires : 35 mètres de
 haut, 1 077 mètres de long, 90 km/h, un peu plus de 20 000 mètres carrés
 d’emprise au sol. Cela en fait aujourd’hui encore le coaster en bois le plus
 haut, le plus long et le plus rapide du Benelux, et pourtant ces chiffres
-expliquent peu de chose. Il existe de plus gros woodies qui donnent une
-sensation bien plus lourde.
+expliquent peu de chose. Il existe de plus gros woodies qui ressemblent à un
+long trajet d’autoroute : beaucoup de kilomètres, rien à signaler.
 
 La différence tient à deux décisions.
 
 La première, c’est le tracé. Troy est un **twister**, pas un out-and-back avec
 des bosses alignées. Au lieu d’aller tout droit en montant et en descendant, le
 tracé change en permanence de direction et convertit chaque mètre de hauteur en
-changement de direction. Sur le papier, la liste des éléments paraît anodine :
+changement de direction. Sur le papier, la liste des éléments se lit comme une liste de courses :
 lift, first drop, airtime hill, overbanked turn, camelback, double down, freins.
 Dans le train, tu n’as jamais un instant de répit.
 
@@ -122,7 +123,8 @@ secouerait ses passagers. 24 personnes par train, deux trains, 850 personnes par
 heure.
 
 Reste le préjugé que traîne tout coaster en bois passé un certain âge : qu’il
-tape. Le parc s’y attaque depuis **2024**. Dans le cadre
+tape. (Chez ses habitués aussi, ça commence à grincer passé un certain âge,
+mais ce n’est pas le sujet.) Le parc s’y attaque depuis **2024**. Dans le cadre
 d’un **retrack** pluriannuel, il remplace chaque hiver environ 198 mètres de
 parcours sur les deux rails, soit près de 400 mètres linéaires de bois par
 saison. Les travaux se font sous un toit provisoire, pour que la pluie et le gel
@@ -166,7 +168,8 @@ acier :
 Les deux attractions de Toverland sont tout en bas, avec de la marge. Dans le
 temps que tu passes à faire **une seule** fois la queue pour
 [Taron](ref:phantasialand/taron) à Phantasialand, tu fais
-[Troy](ref:attractiepark-toverland/troy) plusieurs fois ici.
+[Troy](ref:attractiepark-toverland/troy) plusieurs fois ici, pause frites
+comprise.
 
 Derrière, il y a le calcul de [L’art d’attendre](/blog/l-art-d-attendre), la
 demande divisée par la capacité. Toverland a accueilli **1 137 000 visiteurs**
@@ -182,11 +185,11 @@ la file qui existe. Une file single rider existe bien depuis 2023, cela dit,
 mais sur une seule attraction, la tour de chute Dragonwatch, et elle ne coûte
 rien de plus.
 
-## Le reste du parc
+## Le reste du parc : allongé, la tête en bas et mouillé
 
 ![Fēnix avec un train à l’envers sur la voie, rails bleus sur ciel d’été | Fēnix, le plus long wing coaster d’Europe. Les sièges sont à gauche et à droite du rail. | left](/media/toverland/fenix-4x3.jpg)
 
-Troy est la raison pour laquelle les passionnés viennent. Mais le parc ne vit
+Troy est la raison pour laquelle les passionnés prennent la sortie. Mais le parc ne vit
 pas d’une seule attraction.
 
 **[Fēnix](ref:attractiepark-toverland/fenix)** est le grand œuvre de 2018 : un wing coaster de
@@ -204,11 +207,12 @@ qu’elle ne l’est. En chemin, un phénix te vaporise de la brume, ce qui n’
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** est l’original de la maison et
 mon deuxième coup de cœur ici. En 2004, Vekoma a construit à Sevenum le
 prototype mondial du coaster à moto : tu n’es pas assis, tu es allongé sur une
-moto, mains au guidon, genoux repliés, et on te catapulte. Une attraction
-inconfortable, absurde, formidable. Avec sa médiane, c’est elle
-qui affiche le temps d’attente typique le plus long de tous les coasters du
-parc, tout simplement parce qu’on embarque un par un et allongé, et que ça prend
-du temps.
+moto, mains au guidon, genoux repliés, quelque part entre le MotoGP et le
+fauteuil du dentiste, et on te catapulte. Une attraction inconfortable, absurde,
+formidable. Avec sa médiane, c’est elle qui affiche le temps d’attente typique
+le plus long de tous les coasters du parc, tout simplement parce qu’on embarque
+un par un et allongé, et que monter à plat ventre est rarement aussi élégant
+qu’on l’espère.
 
 **[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** de Mack Rides est un spinning
 coaster dans le noir, mi-dark ride, mi-coaster, avec des nacelles qui tournent
@@ -265,7 +269,8 @@ fois quelque chose qui n’existait nulle part.
 **Wunderwald**. Et avec elle [Booster Bike](ref:attractiepark-toverland/booster-bike), le
 prototype mondial du coaster à moto de Vekoma. Un parc que presque personne ne
 connaissait hors du Limbourg a fait développer un type d’attraction qui
-n’existait pas encore.
+n’existait pas encore. Un peu comme si le bistrot du village commandait à la
+brasserie une bière rien qu’à lui, et que la brasserie disait oui.
 
 **2007** suit la première vraie zone extérieure : **Ithaka**, l’Antiquité
 grecque, bâtie autour d’une seule attraction. Pour 6,5 millions d’euros, un parc
@@ -274,7 +279,9 @@ comme s’en offrent des maisons au public cinq fois supérieur. Troy n’était
 la deuxième installation GCI en Europe, après Thunderbird au PowerPark
 finlandais, et la onzième au monde. En mars 2007, peu avant l’ouverture, une
 partie de la structure du lift à moitié terminée s’effondre lors d’une tempête.
-Le parc la reconstruit et ouvre malgré tout à temps pour la saison.
+Le parc la reconstruit et ouvre malgré tout à temps pour la saison. Ceux qui grimpent aujourd’hui la
+montée en cliquetant roulent donc sur une structure qu’il a fallu construire
+deux fois.
 
 **2013** voit naître la **Magische Vallei** autour des « Dwervels », avec
 [Dwervelwind](ref:attractiepark-toverland/dwervelwind) et
@@ -312,7 +319,8 @@ viendrait pas à l’esprit d’un groupe. Depuis le **18 avril** se joue « Ma
 Memories », un spectacle d’illusion de ce même Hans Klok qui a ouvert les portes
 il y a 25 ans, une trentaine de minutes, plusieurs fois par jour, compris dans
 l’entrée. Et le **week-end des 27 et 28 juin**, Toverland est resté ouvert
-25 heures d’affilée pour la première fois de son histoire, avec une surprise
+25 heures d’affilée pour la première fois de son histoire, une par année
+d’existence, avec une surprise
 toutes les cinq heures, une parade XXL et un feu d’artifice.
 
 ```map-widget slug=attractiepark-toverland
@@ -347,7 +355,8 @@ La saison court **du 3 octobre au 8 novembre 2026** et se divise en deux
 La nouveauté **2026** pousse au sens propre : **« Entwined: The Maze »**, un
 **champ de maïs de sept hectares** aux parois de plusieurs mètres derrière
 Fēnix, deux fois plus grand que toute la zone Avalon selon le parc, et
-commercialisé comme la plus grande expérience Halloween d’Europe. Il remplace le
+commercialisé comme la plus grande expérience Halloween d’Europe (nous ne
+l’avons pas mesuré, mais nous nous y perdrions tout de suite). Il remplace le
 labyrinthe aux rats « Trapped », en place depuis des années. La seule règle qui
 compte là-dedans : celui qui s’arrête se fait attraper.
 
@@ -356,7 +365,7 @@ compte là-dedans : celui qui s’arrête se fait attraper.
 Pour les fans de Troy, le meilleur reste pourtant à venir. L’une des scare zones
 s’appelle **« DesTroy »** et se trouve à **Ithaka**, donc juste à côté et sous
 le coaster en bois. Des soldats troyens mutés gardent les ruines du rempart, et
-Troy leur passe au travers. Il n’y a pas beaucoup d’occasions en Europe de faire
+Troy leur passe au travers. Homère aurait des questions. Il n’y a pas beaucoup d’occasions en Europe de faire
 un coaster en bois de premier ordre dans le noir, à travers une scare zone
 animée, avec de la brume sur les freins et des comédiens dans la file.
 
@@ -367,7 +376,7 @@ L’une des six expériences a pour moi un double fond. Avec le
 allemande d’amateurs de fêtes foraines et de parcs, je suis passé en coulisses
 dans la **Maison de la Magie**, et nous avons pu y essayer nous-mêmes le rôle des
 effrayeurs. Pas en exploitation, sans vrais visiteurs, juste nous et une maison
-vide.
+vide. Impossible, donc, de savoir si j’aurais fait peur à quelqu’un.
 
 ![Une façade éclairée en rose avec balcon, figure de poupée et enseigne lumineuse « The Dollhouse » | « The Dollhouse », l’une des six haunted experiences. En journée, c’est Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
@@ -395,7 +404,7 @@ ressemble bien.
 
 [Toverland](ref:attractiepark-toverland?full)
 
-## Ce qui arrive ensuite
+## Des adieux au levier de frein, et la suite
 
 ![Un détail sculpté sur la Maximus' Blitz Bahn, éclairé en bleu, avec de vieilles ampoules sur câbles à côté | Un détail de la Blitz Bahn, telle qu’elle est restée dix-neuf ans. Presque tout ici était fait main. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
@@ -409,7 +418,8 @@ d’attente typique le plus long de tout le parc.
 Cela tenait à un calcul qui ne pouvait pas tomber juste : un chariot accueillait
 une personne, deux au maximum. Et comme le record en cours était affiché à la
 sortie avec photo, les couples prenaient régulièrement deux chariots au lieu
-d’un, pour que chacun fasse son propre temps. Le débit s’effondrait exactement à
+d’un, pour que chacun fasse son propre temps. (Des couples se sont séparés pour
+moins que ça.) Le débit s’effondrait exactement à
 l’endroit où l’attraction était la plus amusante. Une longue file pour une
 descente courte, et les gens faisaient quand même la queue, encore et
 encore, parce qu’il y avait devant un nom sur un tableau qu’on voulait battre.
@@ -425,7 +435,7 @@ dernière fois.
 On peut trouver ça ridicule, un personnage inventé dans un bob. Moi, j’ai trouvé
 ça juste. Dix-neuf ans durant, cette attraction a pris son histoire au sérieux,
 et le jour de sa fermeture, le parc l’a menée à son terme au lieu de simplement
-couper le courant. C’est exactement pour cela que j’aime ce parc.
+couper le courant.
 
 Sa remplaçante est la raison pour laquelle je considère Toverland comme le petit
 parc le plus audacieux d’Europe. Cet hiver y ouvre un **Swinging Bobsled**, un
@@ -479,7 +489,9 @@ calculée sur les jours d’ouverture mesurés :
 ```
 
 Une chose à garder en tête : les vacances **néerlandaises** pèsent ici plus que
-les allemandes, surtout celles d’automne et de mai des provinces du sud.
+les allemandes, surtout celles d’automne et de mai des provinces du sud. Le
+calendrier scolaire néerlandais devient donc une lecture obligatoire pour ce
+parc, aussi aride soit-il.
 
 ## Une journée sans coupe-file
 
@@ -492,8 +504,9 @@ mesurablement plus vite au fil de la journée. Fais-la tôt **et** tard, et
 tu auras fait deux attractions différentes. Ensuite **Fēnix** à Avalon, les deux
 têtes d’affiche sont pratiquement mur à mur. En troisième **Booster Bike**,
 parce qu’elle a dans nos données le temps d’attente typique le plus long de tous
-les coasters. Les **attractions aquatiques**, tu les gardes pour la chaleur de
-midi. Quand « Magic Memories » se joue, une part appréciable des visiteurs passe
+les coasters (l’embarquement à plat ventre, tu te souviens). Les **attractions
+aquatiques**, tu les gardes pour la chaleur de midi, et tes chaussettes auront
+séché d’ici le retour, en général. Quand « Magic Memories » se joue, une part appréciable des visiteurs passe
 une demi-heure au théâtre, et dehors c’est nettement plus calme. Et la dernière
 heure revient à Ithaka : Troy au crépuscule, quand la structure est éclairée et
 que le train file dans la gare, audiblement plus vite que le matin.
@@ -654,7 +667,7 @@ Et les deux dont il était question ici, avec leurs chiffres actuels :
 
 Prends la sortie Sevenum une fois, au lieu de passer devant. Et quand tu seras
 assis dans Troy et que personne n’attendra derrière toi : descends, retraverse la
-file vide et refais un tour. Puis encore un. Un mardi de juin, ça marche ici. Dans la
+file vide et refais un tour. Puis encore un, jusqu’à ce que ton dos pose son veto. Un mardi de juin, ça marche ici. Dans la
 plupart des autres parcs d’Europe, tu peux oublier.
 
 — Patrick
