@@ -7,10 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   In Sierksdorf staat de hoogste en snelste achtbaan van Duitsland, samen met
-  Silver Star, plus de hoogste gyro drop tower ter wereld. Van de negen Duitse
-  parken in onze catalogus is Hansa-Park het enige waarvan we geen enkele
-  wachttijd hebben. Wat je wel kunt plannen: een kalender zonder rustdag,
-  16 avonden in oktober en acht achtbanen.
+  Silver Star, plus de hoogste gyro drop tower ter wereld. Daarbij een kalender
+  zonder één sluitingsdag, 16 avonden vol lichtfiguren in oktober en acht
+  achtbanen, waarvan er vier voor kinderen zijn gebouwd.
 tags:
   - hansa-park
   - kaernan
@@ -34,7 +33,7 @@ seo:
   description: >-
     Hansa-Park Sierksdorf: openingstijden van het seizoen 2026, Herbstzauber van
     10 tot 25 oktober, ticket- en parkeerprijzen, alle acht achtbanen met hun
-    cijfers, en waarom er voor dit park geen live wachttijden zijn.
+    cijfers en de kalender zonder sluitingsdag.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -50,13 +49,12 @@ seo:
     - Hansa-Park seizoenkaart
     - Hansa-Park parkeren
     - Herbstzauber am Meer
-    - Hansa-Park wachttijden
     - pretpark Oostzee
     - Hansa-Park seizoen 2026
 ---
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)** is **73 meter** hoog en haalt
-**127 km/u**. Beide cijfers deelt hij sinds **2015** met Silver Star in het Europa-Park, en daarmee
+**127 km/u**. Beide cijfers deelt hij sinds **2015** met [Silver Star](ref:europa-park/silver-star?bare) in het Europa-Park, en daarmee
 staat de helft van het Duitse hoogte- en snelheidsrecord in een Oostzeebadplaats die de meeste
 bezoekers vooraf niet kenden.
 
@@ -64,28 +62,28 @@ Sierksdorf ligt 24 kilometer hemelsbreed ten noorden van Lübeck. Het park noemt
 Duitse pretpark aan zee, en dat is deze keer geen reclamepraat: achter het hek begint het strand, en
 tussen het park en de vakantiehuizen rijdt de spoorlijn naar Puttgarden.
 
-## Waarom hier geen aantal minuten staat
+## Wat dit park anders maakt
 
-Van de negen Duitse parken in onze catalogus leveren er acht hun wachttijden aan een interface die
-iedereen kan uitlezen. Hansa-Park is de negende. Onze meetreeks voor dit park staat al twee jaar op
-**nul dagen**, en dat is geen gat in de berekening maar de stand van zaken sinds dag één: er valt
-niets op te halen.
+Hansa-Park doet het met **46 hectare**. Het Heide Park heeft er 85, en dat verschil merk je als
+eerste in je benen: twee achtbanen liggen hier zelden meer dan een paar minuten uit elkaar, en de
+elf themagebieden lopen in elkaar over in plaats van door weilanden gescheiden te zijn.
 
-```glossary-widget slug=realtime-wait-time
+Op die oppervlakte staan twee records. De [Highlander](ref:hansa-park/highlander?bare) is de hoogste gyro drop tower ter wereld, en
+[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) deelt met [Silver Star](ref:europa-park/silver-star?bare) de titel van hoogste en snelste achtbaan van Duitsland.
+De rest van het park is uitgesproken familiegebied, met een kanaalvaart uit 1977 en vier achtbanen
+die voor kinderen zijn gebouwd.
 
-```
-
-Op de [parkpagina](ref:hansa-park) zie je daarom de kalender, de openingstijden, het weer en alle 82
-attracties uit de catalogus, maar geen getal boven een rij. Op de attractiepagina's staat de status
-op “onbekend” in plaats van op een verzonnen nul. En de planning die in Soltau of Brühl om het eerste
-uur en de middagpiek draait, verschuift hier naar de kalender, de tijden van de avondshows en de
-loopafstanden.
+Het geld gaat hier ook niet naar een nieuwigheid om de drie jaar. Sinds 2008 bouwt het park verder
+aan één themagebied, gevel voor gevel en stad voor stad, en tussen 2019 en 2025 kwam er geen enkele
+achtbaan bij. Wie een park zoekt dat om het jaar een coaster neerzet, zit hier verkeerd. Wie er een
+zoekt dat elke dag van zijn seizoen open is en in oktober 2.000 lichtfiguren ophangt in plaats van
+mazes te bouwen, zit goed.
 
 [Hansa-Park](ref:hansa-park?full)
 
 ## De achtbanen
 
-**Der Schwur des Kärnan** opende in 2015 en was tot dan toe de grootste investering van het park.
+**[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** opende in 2015 en was tot dan toe de grootste investering van het park.
 Gerstlauer bouwde hem als Infinity Coaster: **1.235 meter** baan, vanaf 1,30 meter. De lifthill zit
 volledig in een **toren van 79 meter** die de trein verticaal omhoogtrekt, en de eerste afdaling valt
 67 meter.
@@ -121,15 +119,15 @@ De jongste kwam dit seizoen erbij. De **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opende op **23 mei 2026**, opnieuw Gerstlauer,
 18 meter hoog, ruim 570 meter lang, vanaf 90 centimeter. Het park telt **zeven launches** in één
 ronde, vooruit en achteruit. Zeven versnellingen over 570 meter is veel voor een familiebaan, en ze
-leveren rijtijd op: 1:45 minuten, langer dan Crazy Mine en Royal Scotsman met elk 1:10.
+leveren rijtijd op: 1:45 minuten, langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) met elk 1:10.
 
 ## De toren die Soltau het record afnam
 
 In **april 2019** opende de **[Highlander](ref:hansa-park/highlander)**, en sindsdien staat de
 hoogste gyro drop tower ter wereld aan de Oostzee. **120 meter** bouwwerk, **103 meter** vrije val,
 120 km/u, de stoelen 30 graden voorover gekanteld, gebouwd door Funtime. De titel was tot dan van
-Scream in het [Heide Park](/blog/heide-park-wachttijden-tips), 103 meter hoog. Precies die 103 meter
-laat de Highlander je vallen, en daarboven staat er nog eens 17.
+[Scream](ref:heide-park/scream?bare) in het [Heide Park](/blog/heide-park-wachttijden-tips), 103 meter hoog. Precies die 103 meter
+laat de [Highlander](ref:hansa-park/highlander?bare) je vallen, en daarboven staat er nog eens 17.
 
 ```glossary-widget slug=drop-tower
 
@@ -178,10 +176,9 @@ uitgerekend in oktober de attractie waarvoor de omweg het meest oplevert.
 
 Op zo'n avond zetten drie tijdstippen je dag om. De
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) en
-[Super Splash](ref:hansa-park/super-splash) sluiten al om **16.00 uur**. De Kärnan, Störtebekers
-Kaperfahrt en de twee Awilda-attracties hebben hun **laatste rit om 19.30 uur**, omdat het vuurwerk
-wordt voorbereid. En tijdens de lichtparade staan elf andere attracties stil, waaronder Highlander,
-Nessie en de Royal Scotsman.
+[Super Splash](ref:hansa-park/super-splash) sluiten al om **16.00 uur**. De [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) en [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) en [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) hebben hun **laatste rit om 19.30 uur**, omdat het vuurwerk
+wordt voorbereid. En tijdens de lichtparade staan elf andere attracties stil, waaronder [Highlander](ref:hansa-park/highlander?bare),
+[Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
 Wil je die vier banen nog rijden, doe het dan voor half acht. De rest van het park draait door tot
 20.30 uur, met de pauze tijdens de parade.
@@ -197,10 +194,10 @@ schrikreacties bij de kleinsten.
 Bij de meeste parken staat bij elke ingang een aantal centimeters. Hier staat er vaak een leeftijd,
 en dat verandert het plannen met kinderen.
 
-De Highlander vraagt 1,40 meter, de Kärnan 1,30, de Flucht von Novgorod 1,25. Bij Crazy Mine volstaat
-1,10 meter, maar pas **vanaf 9 jaar**. Nessie en de Royal Scotsman laten kinderen zonder begeleiding
-pas **vanaf 10 jaar** rijden. De Schlange von Midgard en de Cornwall Coaster beginnen bij 90
-centimeter, Der kleine Zar bij 95.
+De [Highlander](ref:hansa-park/highlander?bare) vraagt 1,40 meter, de [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) 1,30, de [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) 1,25. Bij [Crazy Mine](ref:hansa-park/crazy-mine?bare) volstaat
+1,10 meter, maar pas **vanaf 9 jaar**. [Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) laten kinderen zonder begeleiding
+pas **vanaf 10 jaar** rijden. De [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) en de [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) beginnen bij 90
+centimeter, [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) bij 95.
 
 Een kind van zeven met 1,25 meter komt hier dus op minder banen dan je op grond van de lengte zou
 denken. Omgekeerd is het park onder achtbaanniveau breed uitgerust: de attractielijst in de catalogus
@@ -232,7 +229,7 @@ dolfijnenshows. In 1984 opende het showtheater met een productie van Frank Elstn
 optraden die hun weddenschap bij “Wetten, dass..?” hadden verloren. In de jaren daarna stonden Wim
 Thoelke en Michael Schanze op hetzelfde podium.
 
-Daartussendoor groeide het attractieaanbod: **1980** Nessie, **1986** de Super Splash, **1987** de
+Daartussendoor groeide het attractieaanbod: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** de [Super Splash](ref:hansa-park/super-splash?bare), **1987** de
 naamswijziging in Hansa-Park bij het tienjarig bestaan, plus de 100 meter hoge Holsteinturm met zijn
 draaicabine. Die is sinds **januari 2025** weg, afgebroken wegens technische problemen die niet meer
 te repareren waren. De Metroliner uit 1989 verging het vergelijkbaar: een elektrische trein op een in
@@ -288,15 +285,15 @@ onderdelen zoals het goudwassen kosten extra.
 ## Wat er in 2027 komt
 
 Het park heeft de volgende nieuwigheid al aangekondigd: de **Buddenbrook-Turm** in de Hansa-Garten,
-overdekt, opening in de loop van het seizoen 2027. Meer staat nog niet vast. Na de Cornwall Coaster
+overdekt, opening in de loop van het seizoen 2027. Meer staat nog niet vast. Na de [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare)
 zouden dat twee nieuwigheden in twee jaar zijn, na een periode van 2019 tot 2025 zonder ook maar één
 nieuwe achtbaan.
 
 ## Veelgestelde vragen over Hansa-Park
 
-### Hoe hoog en hoe snel is Der Schwur des Kärnan?
+### Hoe hoog en hoe snel is [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)?
 
-73 meter baanhoogte, 127 km/u, 1.235 meter baan. Daarmee is hij samen met Silver Star in het
+73 meter baanhoogte, 127 km/u, 1.235 meter baan. Daarmee is hij samen met [Silver Star](ref:europa-park/silver-star?bare) in het
 Europa-Park de hoogste en snelste achtbaan van Duitsland. Gerstlauer bouwde hem en hij opende in 2015.
 
 ### Wanneer is Hansa-Park in 2026 open?
@@ -305,16 +302,10 @@ Van 26 maart tot en met 25 oktober 2026, zonder één sluitingsdag ertussen. Tot
 uur met attracties tot 18.00 uur, van 10 tot en met 25 oktober van 11.00 tot 21.00 uur. De
 gepubliceerde kalender staat op de [parkpagina](ref:hansa-park), dagelijks bijgewerkt.
 
-### Waarom zijn er voor Hansa-Park geen live wachttijden?
-
-Het park publiceert geen wachttijden aan een interface die je kunt opvragen. Onze meetreeks staat
-daarom al twee jaar op nul dagen, en we laten voor dit park liever niets zien dan een verzonnen
-getal. De kalender, de openingstijden, het weer en de attractiecatalogus zijn daar niet door geraakt.
-
 ### Hoeveel achtbanen heeft Hansa-Park?
 
-Acht, sinds de Cornwall Coaster op 23 mei 2026 opende. Vier daarvan zijn junior- of familiebanen:
-Royal Scotsman, Schlange von Midgard, Der kleine Zar en de Cornwall Coaster.
+Acht, sinds de [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) op 23 mei 2026 opende. Vier daarvan zijn junior- of familiebanen:
+[Royal Scotsman](ref:hansa-park/royal-scotsman?bare), [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare), [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) en de Cornwall Coaster.
 
 ### Wat kost de entree van Hansa-Park?
 
@@ -323,9 +314,8 @@ ticket hetzelfde als aan de kassa. Parkeren kost € 7 per dag, met een elektris
 
 ### Vanaf welke lengte mag mijn kind mee?
 
-Highlander vanaf 1,40 m, Der Schwur des Kärnan vanaf 1,30 m, Flucht von Novgorod vanaf 1,25 m, Crazy
-Mine vanaf 1,10 m en 9 jaar, Der kleine Zar vanaf 95 cm, Schlange von Midgard en Cornwall Coaster
-vanaf 90 cm. Nessie en Royal Scotsman laten kinderen zonder begeleiding vanaf 10 jaar rijden.
+[Highlander](ref:hansa-park/highlander?bare) vanaf 1,40 m, Der Schwur des [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) vanaf 1,30 m, [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) vanaf 1,25 m, [Crazy Mine](ref:hansa-park/crazy-mine?bare) vanaf 1,10 m en 9 jaar, Der kleine Zar vanaf 95 cm, Schlange von Midgard en Cornwall Coaster
+vanaf 90 cm. [Nessie](ref:hansa-park/nessie?bare) en Royal Scotsman laten kinderen zonder begeleiding vanaf 10 jaar rijden.
 
 ### Wat is Herbstzauber am Meer?
 
@@ -360,9 +350,6 @@ Je betaalt ervoor met de ligging. Hamburg ligt 78 kilometer hemelsbreed verderop
 daarvan aanzienlijk verder, en wie alleen voor de acht achtbanen komt, is in de vroege middag klaar.
 Het park gaat ervan uit dat je toch al aan de Oostzee zit.
 
-En over het ontbrekende aantal minuten: wij missen het ook. Zodra het park zijn wachttijden
-publiceert, staat de tabel hier de volgende ochtend.
-
 — Patrick
 
 ---
@@ -396,5 +383,5 @@ publiceert, staat de tabel hier de volgende ochtend.
   Aankomst met de trein: [Trein (officieel)](https://www.hansapark.de/bahn/)
 - Vakantiehuizen en minimumverblijf:
   [HANSA-PARK Resort am Meer (officieel)](https://www.hansapark.de/hansa-park-resort/)
-- Openingsdagen dag voor dag, openingstijden, attractiecatalogus en de ontbrekende wachttijdbron:
+- Openingsdagen dag voor dag, openingstijden en attractiecatalogus:
   onze [parkpagina](ref:hansa-park), uit de kalenderfeed van de API

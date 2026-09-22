@@ -7,10 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   In Sierksdorf steht die zusammen mit dem Silver Star höchste und schnellste
-  Achterbahn Deutschlands, dazu der höchste Gyro-Drop-Tower der Welt. Von den
-  neun deutschen Parks in unserem Katalog ist der Hansa-Park der einzige, für
-  den wir keine einzige Wartezeit haben. Was man stattdessen planen kann: einen
-  Kalender ohne Ruhetag, 16 Abende im Oktober und acht Achterbahnen.
+  Achterbahn Deutschlands, dazu der höchste Gyro-Drop-Tower der Welt. Dazu ein
+  Kalender ohne einen einzigen Schließtag, 16 Leuchtfiguren-Abende im Oktober
+  und acht Achterbahnen, von denen vier für Kinder gebaut sind.
 tags:
   - hansa-park
   - kaernan
@@ -34,7 +33,7 @@ seo:
   description: >-
     Hansa-Park Sierksdorf: Öffnungszeiten der Saison 2026, Herbstzauber vom
     10. bis 25. Oktober, Ticketpreise und Parkgebühren, alle acht Achterbahnen
-    mit Daten, und warum es für diesen Park keine Live-Wartezeiten gibt.
+    mit Daten und der Kalender ohne Schließtag.
   keywords:
     - Hansa-Park
     - Hansa-Park Tipps
@@ -50,13 +49,13 @@ seo:
     - Hansa-Park Saisonkarte
     - Hansa-Park Parken
     - Herbstzauber am Meer
-    - Hansa-Park Wartezeiten
     - Freizeitpark Ostsee
     - Hansa-Park Saison 2026
 ---
 
 Der **[Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)** ist **73 Meter** hoch und fährt
-**127 km/h**. Beide Werte teilt er sich seit **2015** mit dem Silver Star im Europa-Park, und damit
+**127 km/h**. Beide Werte teilt er sich seit **2015** mit dem
+**[Silver Star](ref:europa-park/silver-star)** im Europa-Park, und damit
 steht die höchste und schnellste Achterbahn des Landes zur Hälfte in einem Ostseebad, das die
 meisten Besucher vorher nicht kannten.
 
@@ -64,22 +63,24 @@ Sierksdorf liegt 24 Kilometer Luftlinie nördlich von Lübeck. Der Park nennt si
 „Deutschlands einziger Erlebnispark am Meer“, und diesmal ist das kein Werbewort: hinter dem
 Gelände liegt der Strand, und zwischen Park und Ferienhäusern fährt die Bahnlinie nach Puttgarden.
 
-## Warum hier keine Minutenzahl steht
+## Was diesen Park von den anderen unterscheidet
 
-Von den neun deutschen Parks in unserem Katalog liefern acht ihre Wartezeiten an eine Schnittstelle,
-die jeder lesen kann. Der Hansa-Park ist der neunte. Unsere Messreihe für diesen Park steht über
-zwei Jahre hinweg bei **null Tagen**, und das ist keine Lücke im Rechner, sondern der Zustand seit
-dem ersten Tag: Es gibt nichts abzuholen.
+Der Hansa-Park kommt mit **46 Hektar** aus. Der Heide Park hat 85, und dieser Unterschied ist der
+erste, den du im Bein spürst: Zwischen zwei Achterbahnen liegen hier selten mehr als ein paar
+Minuten, und die elf Themenbereiche gehen ineinander über, statt durch Wiesen getrennt zu sein.
 
-```glossary-widget slug=realtime-wait-time
+Auf dieser Fläche stehen zwei Rekorde. Der [Highlander](ref:hansa-park/highlander?bare) ist der
+höchste Gyro-Drop-Tower der Welt, und der
+[Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) teilt sich mit dem
+[Silver Star](ref:europa-park/silver-star?bare) die höchste und schnellste Achterbahn Deutschlands.
+Der Rest des Parks ist ausgesprochen familiär, mit einer Kanalfahrt von 1977 und vier Achterbahnen,
+die für Kinder gebaut sind.
 
-```
-
-Auf der [Parkseite](ref:hansa-park) siehst du deshalb Kalender, Öffnungszeiten, Wetter und alle 82
-Attraktionen im Katalog, aber keine Zahl über einer Warteschlange. Auf den Ride-Seiten steht der
-Status auf „unbekannt“ statt auf einer erfundenen Null. Und die Planung, die bei Soltau oder Brühl
-über die erste Stunde und die Mittagsspitze läuft, verschiebt sich hier auf den Kalender, den
-Fahrplan der Abendshows und die Wege im Park.
+Das Geld geht hier auch nicht in eine Neuheit alle drei Jahre. Seit 2008 baut der Park an einem
+einzigen Themenbereich weiter, Fassade für Fassade und Stadt für Stadt, und zwischen 2019 und 2025
+kam keine einzige Achterbahn dazu. Wer einen Park sucht, der alle zwei Jahre einen Coaster
+hinstellt, ist hier falsch. Wer einen sucht, der jeden Tag seiner Saison geöffnet hat und im Oktober
+2.000 Leuchtfiguren aufhängt, statt Mazes zu bauen, ist richtig.
 
 [Hansa-Park](ref:hansa-park?full)
 
@@ -130,7 +131,8 @@ ein: 1:45 Minuten, länger als Crazy Mine und Royal Scotsman mit je 1:10.
 Im **April 2019** eröffnete der **[Highlander](ref:hansa-park/highlander)**, und seitdem steht der
 höchste Gyro-Drop-Tower der Welt an der Ostsee. **120 Meter** Bauwerk, **103 Meter** freier Fall,
 120 km/h, die Sitze um 30 Grad nach vorn geneigt, gebaut von Funtime. Den Titel hatte bis dahin
-Scream im [Heide Park](/blog/heide-park-wartezeiten-tipps), 103 Meter hoch. Genau diese 103 Meter
+[Scream](ref:heide-park/scream) im [Heide Park](/blog/heide-park-wartezeiten-tipps), 103 Meter
+hoch. Genau diese 103 Meter
 lässt der Highlander fallen, und darüber stehen noch einmal 17.
 
 ```glossary-widget slug=drop-tower
@@ -178,10 +180,15 @@ ausgerechnet im Oktober die Attraktion, für die sich der Umweg am meisten lohnt
 
 An so einem Abend bauen drei Uhrzeiten den Tag um.
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) und
-[Super Splash](ref:hansa-park/super-splash) schließen schon um **16 Uhr**. Der Kärnan, Störtebekers
-Kaperfahrt und die beiden Awilda-Attraktionen haben ihre **letzte Fahrt um 19:30 Uhr**, weil das
-Feuerwerk vorbereitet wird. Und während der Lichter-Parade stehen elf weitere Fahrgeschäfte still,
-darunter Highlander, Nessie und der Royal Scotsman.
+[Super Splash](ref:hansa-park/super-splash) schließen schon um **16 Uhr**. Der
+[Kärnan](ref:hansa-park/the-oath-of-kaernan?bare),
+[Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare),
+[Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) und
+[Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) haben ihre **letzte Fahrt um 19:30 Uhr**,
+weil das Feuerwerk vorbereitet wird. Und während der Lichter-Parade stehen elf weitere
+Fahrgeschäfte still, darunter [Highlander](ref:hansa-park/highlander?bare),
+[Nessie](ref:hansa-park/nessie?bare) und der
+[Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
 Wer die vier genannten Bahnen noch fahren will, fährt vor halb acht. Der übrige Fahrbetrieb läuft
 bis 20:30 Uhr weiter, mit der Pause während der Parade.
@@ -197,10 +204,15 @@ Abendshow selbst ist laut, und der Park warnt vor Schreckreaktionen bei den Klei
 Bei den meisten Parks steht am Eingang jeder Bahn eine Zentimeterangabe. Hier steht oft ein Alter,
 und das ändert die Planung mit Kindern.
 
-Der Highlander verlangt 1,40 Meter, der Kärnan 1,30, die Flucht von Novgorod 1,25. Bei Crazy Mine
-reichen 1,10 Meter, aber erst ab **9 Jahren**. Nessie und der Royal Scotsman lassen Kinder ohne
-Begleitung erst **ab 10 Jahren** fahren. Die Schlange von Midgard und der Cornwall Coaster fangen
-bei 90 Zentimetern an, Der kleine Zar bei 95.
+Der [Highlander](ref:hansa-park/highlander?bare) verlangt 1,40 Meter, der
+[Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) 1,30, die
+[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) 1,25. Bei
+[Crazy Mine](ref:hansa-park/crazy-mine?bare) reichen 1,10 Meter, aber erst ab **9 Jahren**.
+[Nessie](ref:hansa-park/nessie?bare) und der [Royal Scotsman](ref:hansa-park/royal-scotsman?bare)
+lassen Kinder ohne Begleitung erst **ab 10 Jahren** fahren. Die
+[Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) und der
+[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) fangen bei 90 Zentimetern an,
+[Der kleine Zar](ref:hansa-park/the-little-tsar?bare) bei 95.
 
 Ein siebenjähriges Kind mit 1,25 Metern kommt hier also an weniger Bahnen als seine Größe vermuten
 lässt. Umgekehrt ist der Park für alles unterhalb der Achterbahnen breit aufgestellt: Die
@@ -232,7 +244,8 @@ auf Delfinshows. 1984 eröffnete das Showtheater mit einer Produktion von Frank 
 Kandidaten auftraten, die ihre Wette bei „Wetten, dass..?“ verloren hatten. In den Jahren darauf
 standen Wim Thoelke und Michael Schanze auf derselben Bühne.
 
-Dazwischen wuchs der Fahrbetrieb: **1980** Nessie, **1986** der Super Splash, **1987** die
+Dazwischen wuchs der Fahrbetrieb: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** der
+[Super Splash](ref:hansa-park/super-splash?bare), **1987** die
 Umbenennung in Hansa-Park zum zehnjährigen Bestehen, dazu der 100 Meter hohe Holsteinturm mit
 seiner Drehkabine. Der ist seit **Januar 2025** weg, abgebaut wegen technischer Probleme, die sich
 nicht mehr reparieren ließen. Ähnlich erging es dem Metroliner von 1989, einem Elektrozug auf einer
@@ -297,8 +310,8 @@ Achterbahn dazugekommen war.
 ### Wie hoch und wie schnell ist Der Schwur des Kärnan?
 
 73 Meter Bahnhöhe, 127 km/h, 1.235 Meter Strecke. Damit ist er zusammen mit dem
-Silver Star im Europa-Park die höchste und schnellste Achterbahn Deutschlands. Gebaut hat ihn
-Gerstlauer, eröffnet wurde er 2015.
+[Silver Star](ref:europa-park/silver-star?bare) im Europa-Park die höchste und schnellste
+Achterbahn Deutschlands. Gebaut hat ihn Gerstlauer, eröffnet wurde er 2015.
 
 ### Wann hat der Hansa-Park 2026 geöffnet?
 
@@ -306,17 +319,12 @@ Vom 26. März bis zum 25. Oktober 2026, ohne einen Schließtag dazwischen. Bis z
 10 Uhr mit Fahrbetrieb bis 18 Uhr, vom 10. bis 25. Oktober von 11 bis 21 Uhr. Den veröffentlichten
 Kalender zeigt die [Parkseite](ref:hansa-park), tagesaktuell.
 
-### Warum gibt es für den Hansa-Park keine Live-Wartezeiten?
-
-Der Park veröffentlicht keine Wartezeiten an einer Schnittstelle, die sich abrufen lässt. Unsere
-Messreihe steht deshalb über zwei Jahre bei null Tagen, und wir zeigen für diesen Park lieber
-nichts als eine ausgedachte Zahl. Kalender, Öffnungszeiten, Wetter und der Attraktionskatalog sind
-davon nicht betroffen.
-
 ### Wie viele Achterbahnen hat der Hansa-Park?
 
-Acht, seit der Cornwall Coaster am 23. Mai 2026 eröffnet hat. Vier davon sind Junior- oder
-Family-Coaster: Royal Scotsman, Schlange von Midgard, Der kleine Zar und der Cornwall Coaster.
+Acht, seit der [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) am 23. Mai 2026 eröffnet hat. Vier davon sind Junior- oder Family-Coaster:
+[Royal Scotsman](ref:hansa-park/royal-scotsman?bare),
+[Schlange von Midgard](ref:hansa-park/midgard-serpent?bare),
+[Der kleine Zar](ref:hansa-park/the-little-tsar?bare) und der Cornwall Coaster.
 
 ### Was kostet der Eintritt in den Hansa-Park?
 
@@ -325,9 +333,15 @@ Ticket dasselbe wie an der Kasse. Parken kostet 7 € pro Tag, mit dem Elektroau
 
 ### Ab welcher Größe darf mein Kind mitfahren?
 
-Highlander ab 1,40 m, Der Schwur des Kärnan ab 1,30 m, Flucht von Novgorod ab 1,25 m, Crazy Mine ab
-1,10 m und 9 Jahren, Der kleine Zar ab 95 cm, Schlange von Midgard und Cornwall Coaster ab 90 cm.
-Nessie und Royal Scotsman lassen Kinder ohne Begleitung ab 10 Jahren fahren.
+[Highlander](ref:hansa-park/highlander?bare) ab 1,40 m,
+[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) ab 1,30 m,
+[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) ab 1,25 m,
+[Crazy Mine](ref:hansa-park/crazy-mine?bare) ab 1,10 m und 9 Jahren,
+[Der kleine Zar](ref:hansa-park/the-little-tsar?bare) ab 95 cm,
+[Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) und
+[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) ab 90 cm.
+[Nessie](ref:hansa-park/nessie?bare) und [Royal Scotsman](ref:hansa-park/royal-scotsman?bare)
+lassen Kinder ohne Begleitung ab 10 Jahren fahren.
 
 ### Was ist der Herbstzauber am Meer?
 
@@ -337,7 +351,9 @@ Halloween hat es nichts zu tun.
 
 ### Lohnt sich der Hansa-Park für Achterbahnfans?
 
-Für den Kärnan und die Flucht von Novgorod auf jeden Fall, dazu der Highlander. Wer aus
+Für den [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) und die
+[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) auf jeden Fall, dazu der
+[Highlander](ref:hansa-park/highlander?bare). Wer aus
 Süddeutschland anreist, plant besser einen Ostseeurlaub mit Parktag als eine Parkfahrt mit
 Strandbesuch.
 
@@ -363,9 +379,6 @@ Der Hansa-Park stellt beides nebeneinander auf 46 Hektar.
 Bezahlt wird das mit der Lage. Hamburg liegt 78 Kilometer Luftlinie entfernt, alles südlich davon
 deutlich weiter, und wer nur wegen der acht Achterbahnen kommt, ist am frühen Nachmittag durch. Der
 Park rechnet damit, dass du ohnehin an der Ostsee bist.
-
-Und zur fehlenden Minutenzahl: Sie fehlt uns auch. Wenn der Park seine Wartezeiten eines Tages
-veröffentlicht, steht die Tabelle hier am nächsten Morgen.
 
 — Patrick
 
@@ -399,5 +412,5 @@ veröffentlicht, steht die Tabelle hier am nächsten Morgen.
   Anreise mit der Bahn: [Bahn (offiziell)](https://www.hansapark.de/bahn/)
 - Ferienhäuser und Mindestaufenthalt:
   [HANSA-PARK Resort am Meer (offiziell)](https://www.hansapark.de/hansa-park-resort/)
-- Öffnungstage Tag für Tag, Öffnungszeiten, Attraktionskatalog und die fehlende Wartezeit-Quelle:
+- Öffnungstage Tag für Tag, Öffnungszeiten und Attraktionskatalog:
   unsere [Parkseite](ref:hansa-park), aus dem Kalender-Feed der API
