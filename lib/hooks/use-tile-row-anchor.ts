@@ -20,6 +20,9 @@ import { scrollWhenSettled } from '@/lib/utils/scroll-when-settled';
  * in the VIEWPORT at the moment of the click, the two scroll-to-top mechanisms are told to stand
  * down, and the row on the destination page corrects itself back to that offset — a few pixels at
  * most, because both pages build the row into the same shell and only the H1 above it differs.
+ * Those few pixels are the whole correction, which is why it is skipped for a visitor who clicked
+ * at the document top: there the same pixels move the page's own top instead, and the reasoning
+ * is at the guard in `useTileRowAnchor`.
  *
  * Standing the scroll down takes THREE calls, not one, and each answers a different piece of code:
  * `scroll={false}` on the link is the router's; `suppressScrollToTopFor()` is this app's own
@@ -45,6 +48,8 @@ interface TileRowHandoff {
   park: string;
   /** The row's `getBoundingClientRect().top` at the moment the visitor left. */
   top: number;
+  /** The document's scroll offset at the click — see `useTileRowAnchor` for what reads it. */
+  scrollY: number;
   /** `performance.now()` at the click — monotonic, and the document is the same one. */
   at: number;
 }
@@ -78,7 +83,14 @@ function liveHandoff(park: string): TileRowHandoff | null {
  */
 export function rememberTileRow(cell: HTMLElement | null, park: string) {
   const row = cell?.closest<HTMLElement>(`[${TILE_ROW_ATTR}]`);
-  handoff = row ? { park, top: row.getBoundingClientRect().top, at: performance.now() } : null;
+  handoff = row
+    ? {
+        park,
+        top: row.getBoundingClientRect().top,
+        scrollY: window.scrollY,
+        at: performance.now(),
+      }
+    : null;
 }
 
 /**
@@ -97,6 +109,21 @@ export function useTileRowAnchor(rowRef: RefObject<HTMLElement | null>, park: st
   useEffect(() => {
     const record = liveHandoff(park);
     if (!record) return;
+    // A visitor who had not scrolled has no position to hand over, and correcting for them costs
+    // the part of the page they are looking at. The pages of a park are the same shell, but the
+    // title card above the row is as tall as its own H1 and intro: on Phantasialand the
+    // calendar's card measures 240 px against the park page's 262 at 1280, 483 against 493 at
+    // 360, and 324 against 306 at 768, where the H1 wraps the other way. So the walk back from
+    // the calendar, clicked at the document top with the row on screen, put the park page at
+    // scrollY = 23 — the breadcrumb 23 px higher in the window than on the page it came from,
+    // which is what a reader reports as the two pages being spaced differently. The other
+    // direction never showed it: the calendar's row sits higher, so its correction is negative
+    // and already clamps to 0.
+    //
+    // The record itself stays. `hasTileRowHandoff()` is what keeps `useTabHashRouting` from
+    // scrolling to the row on arrival, and every chapter cell links with a hash. Only the
+    // correction stands down, and the destination keeps the top the visitor was already at.
+    if (record.scrollY === 0) return;
     // Instant, and there is nothing to see: the row is already within a few pixels of where it
     // was, because nothing scrolled on the way here. What this corrects is the difference between
     // the two pages' headings — and then keeps correcting, because the panel above the row fills
