@@ -3,7 +3,6 @@ import { cache } from 'react';
 import { api, ApiError } from './client';
 import { CACHE_TTL } from './cache-config';
 import { parkCacheTag } from './park-live-projection';
-import { withSeedTimeout } from './seed-timeout';
 import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
 import type {
   CrowdLevel,
@@ -517,33 +516,6 @@ export async function getParkYearlyPredictions(
   } catch {
     return null;
   }
-}
-
-/**
- * How long the streamed outlook chapter may wait for the forecast before the page gives up on it.
- *
- * Same posture and the same number as the best-days seed: the response is a Redis read on a warm
- * cache, but a cold one falls through to a CatBoost rebuild that can take seconds, and this
- * chapter sits eight screens down the page. On timeout the section renders nothing for that one
- * request while `after()` keeps the fetch alive so the next reader finds the cache warm.
- */
-const YEARLY_PREDICTIONS_SEED_TIMEOUT_MS = 3000;
-
-/**
- * Timeout-bounded {@link getParkYearlyPredictions} for the park page's streamed outlook chapter.
- *
- * Consumed inside a `<Suspense>` boundary, so it never gates first byte.
- */
-export function getParkYearlyPredictionsSeed(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string
-): Promise<ParkYearlyPredictions | null> {
-  return withSeedTimeout(
-    getParkYearlyPredictions(continent, country, city, parkSlug),
-    YEARLY_PREDICTIONS_SEED_TIMEOUT_MS
-  );
 }
 
 /**

@@ -1,6 +1,11 @@
 import { after } from 'next/server';
 
 /**
+ * SERVER ONLY. `after` comes from `next/server`, and this module may not be reached from a client
+ * component's import graph — `lib/api/parks.ts` is one such graph (`use-live-park-data.ts` pulls
+ * it into the browser bundle), which is why the yearly forecast's fetch lives there and its
+ * timeout wrapper does not.
+ *
  * Wait for a streamed SEO seed, but not for long, and never leave a timer behind.
  *
  * Three fetches on the park page's tail have the same posture: they are started during the render,

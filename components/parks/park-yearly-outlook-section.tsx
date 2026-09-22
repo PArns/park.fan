@@ -4,7 +4,8 @@ import { CalendarRange } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { TILE_GLASS } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { getParkYearlyPredictionsSeed } from '@/lib/api/parks';
+import { getParkYearlyPredictions } from '@/lib/api/parks';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
@@ -25,8 +26,8 @@ import { buildYearlyOutlook, type OutlookMonth } from '@/lib/utils/yearly-outloo
  * forecast is stable for a day (`CACHE_TTL.predictions`), so a client query would spend a second
  * download on bytes the first render already had, and it would put this chapter out of reach of
  * every crawler. What it borrows from the client path instead is the posture: the fetch is
- * timeout-bounded (`getParkYearlyPredictionsSeed`) and consumed inside its own `<Suspense>`
- * boundary, so a cold forecast holds up a chunk eight screens down and never first byte.
+ * timeout-bounded and consumed inside its own `<Suspense>` boundary, so a cold forecast holds up
+ * a chunk eight screens down and never first byte.
  *
  * **Twelve rows always.** The endpoint answers with about six months, not twelve (measured
  * 2026-09-22 across fifteen parks: fourteen answered, all of them stopping on today + 182), and
@@ -55,6 +56,16 @@ interface ParkYearlyOutlookSectionProps {
 /** Height of one month's day strip. Read by the placeholder too, which reserves the same box. */
 const STRIP_HEIGHT = 'h-5';
 
+/**
+ * How long this chapter may wait for the forecast before the page gives up on it.
+ *
+ * Same posture and the same number as the best-days seed: the response is a Redis read on a warm
+ * cache, but a cold one falls through to a CatBoost rebuild that can take seconds, and this
+ * chapter sits eight screens down. On timeout the section renders nothing for that one request
+ * while `after()` keeps the fetch alive, so the next reader finds the data cache warm.
+ */
+const FORECAST_TIMEOUT_MS = 3000;
+
 /** The list's own box — the band above it squares off its bottom edge, so it drops its top one. */
 export const OUTLOOK_LIST_CLASS = cn(
   TILE_GLASS,
@@ -80,7 +91,14 @@ export function outlookMonthLabel(locale: string, year: number, month: number): 
 function MonthStrip({ month }: { month: OutlookMonth }) {
   return (
     <div
-      className={cn('flex min-w-0 flex-1 gap-px overflow-hidden rounded-[3px]', STRIP_HEIGHT)}
+      // `w-full shrink-0` below `sm` and `flex-1` only from `sm` up: the row is a COLUMN on a
+      // phone, where `flex-1` would put the basis on the height instead of the width and collapse
+      // `h-5` to nothing — which is exactly what it did, and the strip was invisible at 360 px
+      // while every other part of the row rendered.
+      className={cn(
+        'flex w-full min-w-0 shrink-0 gap-px overflow-hidden rounded-[3px] sm:flex-1',
+        STRIP_HEIGHT
+      )}
       aria-hidden="true"
     >
       {month.days.map((level, index) => (
@@ -126,13 +144,24 @@ export function OutlookMonthRow({
 
       <MonthStrip month={month} />
 
-      <span className="flex items-center gap-2 sm:w-60 sm:shrink-0 sm:justify-end">
+      {/* Two fixed slots rather than one right-aligned pair: the badge's width follows its word,
+        so „Sehr niedrig" and „Hoch" put the count beside them at two different x positions and
+        twelve rows of that read as a ragged edge. */}
+      <span className="flex items-center gap-2 sm:shrink-0">
         {/* `unknown` is the palette's own „no forecast" badge — a park with too little history
           gets it from this same component on the calendar, and a month past the horizon means
           the same thing. */}
-        <CrowdLevelBadge level={month.dominant ?? 'unknown'} className={cn(muted && 'invisible')} />
+        <span className="flex sm:w-36">
+          <CrowdLevelBadge
+            level={month.dominant ?? 'unknown'}
+            className={cn(muted && 'invisible')}
+          />
+        </span>
         <span
-          className={cn('text-muted-foreground text-xs whitespace-nowrap', muted && 'invisible')}
+          className={cn(
+            'text-muted-foreground text-xs whitespace-nowrap sm:w-28 sm:text-right',
+            muted && 'invisible'
+          )}
         >
           {recommendedLabel ?? '—'}
         </span>
@@ -150,7 +179,10 @@ export async function ParkYearlyOutlookSection({
   locale,
   className,
 }: ParkYearlyOutlookSectionProps) {
-  const forecast = await getParkYearlyPredictionsSeed(continent, country, city, parkSlug);
+  const forecast = await withSeedTimeout(
+    getParkYearlyPredictions(continent, country, city, parkSlug),
+    FORECAST_TIMEOUT_MS
+  );
 
   // Nothing at all — a park the ML service has no forecast for (one of the fifteen sampled), or a
   // seed that timed out. A chapter of twelve empty rows would be worse than no chapter.
