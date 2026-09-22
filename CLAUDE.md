@@ -114,7 +114,8 @@ carries the reasoning, the measurements and the counter-examples.
 - **[The admin holds no credential](docs/rules/the-admin-holds-no-credential.md)** — an httpOnly session cookie; `adminFetch` is a plain same-origin
   fetch and `app/api/admin/[...path]` turns the cookie into a bearer token server-side. Four things
   in that proxy are load-bearing. Turnstile is checked for **action and hostname**, not just
-  `success: true`. The login's step change replaces the `<form>` node — `pnpm check:admin-login-step`.
+  `success: true`. The login asks for e-mail, password and code in **one** form and one request —
+  `pnpm check:admin-login-form`.
 - **[The header menu is three kinds of content, and the split is about the link graph](docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md)** — the parks
   panel server-renders continents and countries only; cities and parks arrive per opened country.
   The band is glass, positioned against the `<header>`. Card widths come from

@@ -123,15 +123,14 @@ way in to fix it. `pnpm test:turnstile` covers both, and the cross-surface case.
 
 Two consequences that are easy to trip over:
 
-- **A token is single-use.** An account with two-factor signs in over two
-  requests, and the password step spends the first token. The form resets its
-  widget in the `finally` of every attempt, successful or not, and waits for the
-  new token before it will send the code — which is why `canSubmit` includes it
-  and why the button spins while the challenge is still running. Since the two
-  steps are two separate forms (below), the credentials → code transition
-  unmounts one and mounts the other, and the widget that comes up with the code
-  step mints its fresh token that way; the reset is what covers a second attempt
-  on the same step, where nothing unmounts.
+- **A token is single-use**, and one login is now one token. It used not to be:
+  an account with two-factor signed in over two requests and spent a token on
+  each, so the challenge ran twice for one sign-in. One form and one request
+  (below) means one solve. The form still resets its widget in the `finally` of
+  every attempt, successful or not, because a second attempt after a wrong
+  password needs a token Cloudflare has not already retired — which is why
+  `canSubmit` includes it and why the button spins while the challenge is still
+  running.
 - **A missing secret in production is a hard failure**, by design and now on one
   surface more than before. `verifyTurnstile` refuses rather than waving traffic
   through, so an unset `TURNSTILE_SECRET_KEY` on the frontend deployment locks
@@ -174,7 +173,7 @@ would otherwise pick a different one. The dashboard asks for the **same**
 half-hour window, so the park somebody signs in on is the park that greets them
 once they are in.
 
-The second-factor step looks like six boxes and is **one input**. The boxes are
+The second-factor field looks like six boxes and is **one input**. The boxes are
 drawn — a transparent field lies over the whole row and the cells underneath
 render what is in it, with a caret in the one that is next. Six boxes is still
 the right picture: it is what makes "which digit am I on" answerable at a glance,
@@ -190,32 +189,57 @@ that had missed. One field carries everything a manager, iOS and Android actuall
 look for (`autocomplete="one-time-code"`, `inputMode="numeric"`, a six-character
 limit).
 
-There used to be a hidden, `readOnly` username field riding along on this step
-(PAR-291), on the theory that a manager with nothing to match on would offer codes
-from every item that has one rather than the account being signed in to. Two
-follow-ups tried to fix the resulting misdetection at the DOM level — first a
-per-step `key` on a shared `<form>` (PAR-291), then two true sibling `<form>`
-elements that never share a node, a position or a field list (PAR-345) — on the
-reading that 1Password was fingerprinting the form once as "username + password"
-and not re-scanning it. Tested against a real vault, neither helped: the code
-step kept offering a full sign-in against the hidden `username` field and the
-`otp` field beside it (PAR-404). That rules out DOM identity as the cause, or at
-least as the only one. The next-best reading is the field itself: an
-`autocomplete="username"` input next to any other fillable field, hidden or not,
-is plausibly what 1Password's login-form detector keys on. So the field is gone
-(PAR-404) — the two steps stay two sibling `<form>` elements regardless, since
-that split is independently correct for `attempt()`'s abandoned-step handling
-(PAR-305) and costs nothing on its own. 1Password's one-time-code suggestion is
-scoped to the domain and its saved items rather than to a specific form field, so
-it does not need a username field to find the right code, at least for the
-common case of one admin account per person.
+### There is no second step, and that took three tries to arrive at
 
-Whether this one moves 1Password is, again, a question about an extension and
-can only be answered by trying it. The half that _is_ checkable — that the two
-steps really are separate `<form>` elements, sharing no node — has a check now:
-`pnpm check:admin-login-step` (PAR-304) drives the step change in a browser
-against a stubbed `{"status":"totp-required"}` and fails if a future edit folds
-the two forms back into one with swapped children.
+The code field used to be a second screen. The login asked for e-mail and
+password, sent them, and drew the six boxes once the backend answered
+`totp-required`. No password manager would fill them there, and three tickets
+tried to fix that by changing what the second form looked like:
+
+| Ticket  | Theory                                                            | Shipped as                                                                                                | Vault test                                            |
+| ------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| PAR-291 | A manager needs a username to match the code against              | a hidden `readOnly` `autocomplete="username"` field beside the code, and a per-step `key` on one `<form>` | negative                                              |
+| PAR-345 | It fingerprints origin plus field list, so remount is not enough  | two sibling `<form>` elements sharing no node, position or field list                                     | negative                                              |
+| PAR-404 | The hidden username field is itself what trips the login detector | that field removed, leaving the code as the only input on the step                                        | negative — no one-time-code suggestion offered at all |
+
+Three theories about the shape of the second form, three negatives. The
+assumption they share is the one that was wrong. 1Password's own form design
+guidelines say it plainly: _"Don't dynamically add or remove fields from the
+DOM. Reuse fields and hide them when you don't need them"_, and _"group related
+fields (like usernames and passwords) together in the same `<form>` element"_.
+An extension fills a login from what is in the document at the moment it looks.
+A field that only exists after a round trip was never part of that login, and no
+amount of shaping it afterwards makes it one.
+
+So the second step is gone (PAR-405). One `<form>` holds e-mail, password and
+the code from the first paint, and one POST carries all three. **The backend
+needed no change**: `AdminAuthService.login()` answers `totp-required` when an
+account has a second factor and the request carried no code — it is a reply to
+something missing, never a step the API insists on. An account without a second
+factor leaves the field empty, gets `ok`, and never sees that answer; an account
+with one that submits without a code gets it, and the field is already on screen
+to say so in.
+
+Two things follow. A login with a second factor now solves Turnstile **once**
+instead of twice — the token is single-use, so two requests meant two
+challenges. And the abandoned-step race (PAR-305) is gone with the button that
+caused it: "Andere Anmeldung" let somebody leave the code step while an attempt
+was in flight, and `needsTotpRef`, `answersTheCurrentStep` and `leaveTotpStep`
+existed to keep that answer from being applied to the form they had moved on to.
+None of them survive a single step.
+
+The code field takes no focus on mount — the e-mail field does. Most accounts
+have no second factor and never touch it, and a caret that starts in the third
+field of three starts in the wrong one.
+
+Whether 1Password now fills all three in one pass is, as every time before, a
+question about an extension that only a person with a real vault can answer. The
+half that _is_ checkable has a check: `pnpm check:admin-login-form` asserts that
+the three fields are in the document at the first paint, that they share one
+form, that the code field carries `autocomplete="one-time-code"`, that nothing
+but the e-mail claims to be the username, that the caret starts in the e-mail
+field, and that filling all three sends exactly one POST carrying all three. It
+replaces `check-admin-login-step.mjs`, which asserted the split this removed.
 
 A complete code submits itself. That is the other half of making the field
 fillable rather than a flourish — six pasted digits sitting behind a button have
