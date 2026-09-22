@@ -154,6 +154,11 @@ export function LoginScreen() {
         if (!answersTheCurrentStep()) return;
 
         setNeedsTotp(true);
+        // Written here and not left to the effect that syncs it after a render:
+        // the effect is a passive one, so between the commit and the flush
+        // there is a slice in which a second answer would read the old step.
+        // The step changes when this line runs, so the ref changes with it.
+        needsTotpRef.current = true;
         // Same rule as the "Andere Anmeldung" button below: the step change
         // unmounts the credentials form, so the widget this flag describes goes
         // out with it, and a challenge that errored while this request was in flight
@@ -208,6 +213,12 @@ export function LoginScreen() {
       // The token is spent whatever the answer was — including the successful
       // password step of a two-step login, whose code step is still to come.
       // Ask for a fresh one rather than replaying one Cloudflare has retired.
+      //
+      // Not gated on the step, although a step change has mounted a new widget
+      // by the time this runs and the token in state may be its fresh one: the
+      // spent token is in that state until this line clears it, and leaving it
+      // there would send it a second time. The cost of clearing one that was
+      // still good is a button disabled until the widget mints again.
       setTurnstileToken('');
       turnstileRef.current?.reset();
     }
@@ -216,6 +227,29 @@ export function LoginScreen() {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     void attempt();
+  }
+
+  /**
+   * Back to the credentials step, from the button under the code form. A named
+   * function rather than an arrow in the JSX, because it writes a ref and the
+   * compiler reads a handler declared in the render as part of the render.
+   */
+  function leaveTotpStep() {
+    setNeedsTotp(false);
+    // Written here and not left to the effect that syncs it after a render: the
+    // effect is a passive one, so between the commit and the flush there is a
+    // slice in which an answer still in flight would read the step this press
+    // just ended. The step changes when this line runs, so the ref does too.
+    needsTotpRef.current = false;
+    setTotpCode('');
+    setError(null);
+    // Same rule as the step forward in `attempt()`: this form goes out and
+    // takes its widget with it, so a challenge that failed here has nothing
+    // left to describe. Left standing, "could not be loaded" would sit over a
+    // freshly mounted one until its own error fired again — and one that really
+    // cannot load says so again on the next mount, because
+    // `loadTurnstileScript` drops its failed promise and retries.
+    setTurnstileBroken(false);
   }
 
   // The auto-submit below must call the *current* attempt, not the one captured
@@ -490,19 +524,7 @@ export function LoginScreen() {
 
               <button
                 type="button"
-                onClick={() => {
-                  setNeedsTotp(false);
-                  setTotpCode('');
-                  setError(null);
-                  // Same rule as the step forward in `attempt()`: this form goes
-                  // out and takes its widget with it, so a challenge that failed
-                  // here has nothing left to describe. Left standing, "could not
-                  // be loaded" would sit over a freshly mounted one until its own
-                  // error fired again — and one that really cannot load says so
-                  // again on the next mount, because `loadTurnstileScript` drops
-                  // its failed promise and retries.
-                  setTurnstileBroken(false);
-                }}
+                onClick={leaveTotpStep}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
               >
                 <ArrowLeft className="h-3 w-3" />
