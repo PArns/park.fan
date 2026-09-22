@@ -32,6 +32,12 @@ export interface InParkBlockInput {
   /** Ride id → coordinates, from the park page's own attraction list. */
   rideCoordinates: ReadonlyMap<string, { lat: number; lng: number }>;
   nearby: NearbyResponse | undefined;
+  /**
+   * The nearby query has no answer for the current key yet (React Query `isPending`, or it is
+   * painting `placeholderData` from the previous key). With a fix already in hand this must not
+   * read as "away": the answer that would place the visitor in the park is on its way.
+   */
+  nearbyPending: boolean;
   position: { lat: number; lng: number } | null;
   accuracy: number | null;
   permissionGranted: boolean;
@@ -84,6 +90,8 @@ export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
   if (input.permissionDenied) return { kind: 'blocked' };
   if (!input.permissionGranted) return { kind: 'ask' };
   if (!input.position) return input.loading ? { kind: 'pending' } : { kind: 'ask' };
+
+  if (!data && input.nearbyPending) return { kind: 'pending' };
 
   if (data) {
     const showDistances = input.accuracy == null || input.accuracy <= IN_PARK_FALLBACK_DISTANCE_M;

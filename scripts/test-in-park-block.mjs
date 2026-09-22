@@ -45,6 +45,7 @@ const base = {
   parkLongitude: PARK.lng,
   rideCoordinates: new Map([['r1', RIDE_POINT]]),
   nearby: undefined,
+  nearbyPending: false,
   position: null,
   accuracy: null,
   permissionGranted: false,
@@ -96,6 +97,16 @@ test('granted and in THIS park: lists, distances measured from the current fix',
   assert.ok(taron.distance > 70 && taron.distance < 110, `taron at ${taron.distance} m`);
   // A ride the page has no point for keeps the API's distance.
   assert.equal(s.rides.find((r) => r.id === 'r2').distance, 400);
+});
+
+test('a fix inside the park while the nearby answer is still pending: pending, never away', () => {
+  const s = resolveInParkBlock({
+    ...base,
+    permissionGranted: true,
+    position: PARK,
+    nearbyPending: true,
+  });
+  assert.deepEqual(s, { kind: 'pending' });
 });
 
 test('in another park: away, with the distance to this one', () => {

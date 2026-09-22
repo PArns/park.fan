@@ -54,7 +54,11 @@ export function ParkInParkBlock({
     refresh,
     setIsInPark,
   } = useGeolocation();
-  const { data: nearby } = useHomeNearbyParks();
+  const nearbyQuery = useHomeNearbyParks();
+  const nearby = nearbyQuery.data;
+  // `placeholderData` counts too: when the fix arrives, the query key changes and React Query
+  // paints the previous answer (usually the GeoIP one) until the request with coordinates returns.
+  const nearbyPending = nearbyQuery.isPending || nearbyQuery.isPlaceholderData;
 
   // Everything below reads browser state, so the server pass and the hydration pass must both
   // see "nothing known yet" — a local guard, not the provider's (the rule in
@@ -89,6 +93,7 @@ export function ParkInParkBlock({
             parkLongitude: park.longitude,
             rideCoordinates,
             nearby,
+            nearbyPending,
             position,
             accuracy,
             permissionGranted,
@@ -105,6 +110,7 @@ export function ParkInParkBlock({
       park.longitude,
       rideCoordinates,
       nearby,
+      nearbyPending,
       position,
       accuracy,
       permissionGranted,
