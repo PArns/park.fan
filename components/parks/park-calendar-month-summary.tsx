@@ -3,7 +3,6 @@ import { CalendarRange, Clock, GraduationCap, Timer } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 import { Skeleton } from '@/components/ui/skeleton';
-import { cn } from '@/lib/utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getParkArticleForms } from '@/lib/faq/park-faq';
 import type { CalendarMonthSummary, NamedCalendarDay } from '@/lib/parks/calendar-month-summary';
@@ -263,12 +262,16 @@ export function ParkCalendarMonthSummarySkeleton() {
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {/* Four from `sm` up, where they are one row either way — below it the grid is two
-          columns, so a fourth entry is a whole second row, and only the first fact is
-          unconditional. Reserving two rows for a month that renders one is the same
-          over-reservation this file spent its other numbers avoiding. */}
+        {/* Four entries at every width. From `sm` up that is one row; below it the two-column grid
+          makes it two, which is what the real list takes — measured on the running site at 390px
+          for Phantasialand, Europa-Park, Heide-Park, Efteling, Movie Park and Toverland, where the
+          real `dl` is 108px on all six and only the first fact is formally optional. Two of these
+          entries used to be `hidden sm:flex` against the argument that a month might render one
+          row; no sampled month did, and the one row reserved 40px under a real 108. The 16px that
+          are still missing are the label wrapping to two lines at that width, which varies by
+          locale and is not worth a second guess. */}
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className={cn('flex flex-col gap-1', i >= 2 && 'hidden sm:flex')}>
+          <div key={i} className="flex flex-col gap-1">
             <Skeleton className="h-[16px] w-24" />
             <Skeleton className="h-[20px] w-16" />
           </div>

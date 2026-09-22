@@ -6,9 +6,11 @@ import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
 
 /**
  * Loading placeholder for <ParkBestDaysSection> (non-compact). Its job is to hold the exact box the
- * real section will occupy: on the park page this sits inside the streamed best-days slot, and on
- * desktop the whole attraction grid hangs below it — so every pixel the reservation is off by is a
- * pixel the ride list jumps when the boundary resolves.
+ * real section will occupy. That is the CALENDAR page and nowhere else: the park page renders no
+ * best-days chapter at all, and the blog widget passes `compact`, which returns null rather than
+ * this. On the calendar page the chapter sits a third of the way down and the whole rest of the
+ * article hangs below it — the statistics, the nearby parks, the park's address, the share row —
+ * so every pixel the reservation is off by is a pixel all of that jumps when the boundary resolves.
  *
  * It renders the REAL header (see <ParkBestDaysHeader>) instead of grey boxes shaped like one: the
  * header needs no calendar data, and its height depends on how the park name and subtitle wrap,
@@ -58,10 +60,14 @@ export function ParkBestDaysSectionSkeleton({
         />
 
         {/* The three data cards. Chip geometry mirrors <DayChip> (`px-3 py-1 text-sm` → 30px tall,
-          `gap-2` between them) so the rows line up with the real ones. The date card carries five
-          chips because that is what wraps to the same two rows the real list takes at both
-          breakpoints — its length varies with the park (0–8 upcoming quiet days), so this is the
-          middle of the range rather than a value that is exact for one park and wrong for the next. */}
+          `gap-2` between them) so the rows line up with the real ones. The date card carries SEVEN
+          chips, which is three rows at both breakpoints — five was two rows, and the real list is
+          three. Measured against the running site on six parks (Phantasialand, Europa-Park,
+          Heide-Park, Efteling, Movie Park, Toverland): the real grid is 160px on all six at 1440px,
+          against the 122px two rows reserved, and 160px on three of them / 198px on the other three
+          at 390px. So three rows is exact on desktop everywhere in the sample and reserves no more
+          than the real card anywhere — which is the direction to be wrong in, because the card
+          sits above everything else on the calendar page. */}
         {/* Mirrors the real columns exactly — same wrapper, same `PANEL_CELL`, same caption line.
           Anything that differs here is a jump the moment the seed lands, and on the park page the
           whole attraction grid hangs below this section. */}
@@ -78,7 +84,7 @@ export function ParkBestDaysSectionSkeleton({
             {[
               { titleWidth: 'w-40', chips: 3, chipWidth: 'w-12' }, // quietest weekdays
               { titleWidth: 'w-36', chips: 1, chipWidth: 'w-12' }, // best weekend day
-              { titleWidth: 'w-36', chips: 5, chipWidth: 'w-24' }, // upcoming quiet days
+              { titleWidth: 'w-36', chips: 7, chipWidth: 'w-24' }, // upcoming quiet days
             ].map((card, i) => (
               <div key={i} className={PANEL_CELL} aria-hidden="true">
                 <div className="flex min-w-0 flex-col gap-1.5">
