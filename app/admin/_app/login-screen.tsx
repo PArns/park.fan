@@ -616,12 +616,26 @@ function TotpField({
       </label>
 
       <div className="relative h-14">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex gap-2">
+        {/* Above the input, not below it, and that is the whole reason this
+            wrapper has a `z-10`. A password manager paints the field it filled
+            — 1Password gives it a blue background — and the field here is the
+            transparent one lying over these boxes, so its fill used to cover
+            them while its own text stayed `text-transparent`: a blue bar with
+            no code in it. Drawn on top, the digits survive whatever colour an
+            extension chooses, and nothing is lost by it, because these boxes
+            take no pointer events and the input underneath is still the full
+            size of the row. */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 flex gap-2">
           {Array.from({ length: CODE_LENGTH }, (_, index) => (
             <div
               key={index}
               className={cn(
-                'border-border/60 bg-background/50 flex h-14 min-w-0 flex-1 items-center justify-center rounded-xl border text-xl font-semibold tabular-nums transition-[color,box-shadow,border-color]',
+                // Opaque, unlike the other two fields' `/50`: these boxes are
+                // what covers the input a password manager has painted, and a
+                // translucent one lets its blue through as a grey wash. The
+                // card behind them is dark enough that the difference is
+                // invisible until something is filled.
+                'border-border/60 bg-background flex h-14 min-w-0 flex-1 items-center justify-center rounded-xl border text-xl font-semibold tabular-nums transition-[color,box-shadow,border-color]',
                 wanted && !code && 'border-amber-400/60',
                 code[index] && 'border-primary/40',
                 index === caretAt && 'border-primary/60 ring-primary/25 ring-2'
