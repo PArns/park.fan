@@ -31,7 +31,9 @@
 # shapes a careless allowlist gets wrong: a commit touching documentation AND a
 # post (a real one did, 08764e8), and `content/blog/README.md`, which an
 # unanchored `README.md` pattern would swallow — plus the `[skip deploy]` marker
-# below, in production and in preview. It is part of `release:check`.
+# below against a bare repository standing in for `origin`: in production with
+# the tip ahead and with the tip unmoved, in preview, without the marker, and
+# with `ls-remote` failing. It is part of `release:check`.
 set -uo pipefail
 
 # A batch of merges. The PO squash-merges every PR of a batch but the last with
@@ -44,17 +46,60 @@ set -uo pipefail
 # Production only. A preview belongs to its pull request, where the marker in
 # the eventual squash message has no business.
 #
-# To build a marked HEAD anyway — the last merge of a batch failed and the tip
-# still carries the marker — redeploy it from the dashboard with the
-# "Use project's Ignore Build Step" checkbox unchecked, which is what that
-# checkbox is for (vercel.com/docs/monorepos#ignoring-the-build-step). A plain
-# redeploy is not enough: this script runs for one. The way that needs nobody's
-# dashboard is a commit without the marker on top, since only HEAD is read.
+# The marker alone does not skip. A batch can end early — the last merge
+# conflicts, its checks turn red, the PO is called away — and then the marked
+# commit stays the tip of `main` with nothing behind it. Skipping that one
+# serves the previous deployment until somebody happens to push again, which is
+# the silent failure this script exists to avoid. So the marker only asks a
+# question and the tip of `origin/main` answers it:
+#
+#   tip is a newer commit  → the batch moved on and that build carries this
+#                            commit's files too → skip
+#   tip is this commit      → poll until the timeout, then build
+#   ls-remote fails         → build
+#
+# Polling, not one look: the ignore step runs seconds after the push, and the
+# next merge of a batch is a minute or two behind it. The wait is the ignore
+# step's own runtime, which is not Build CPU; the build it avoids is ~5 minutes
+# of it. IGNORE_BUILD_POLL_INTERVAL and IGNORE_BUILD_POLL_TIMEOUT are seconds
+# and exist so `pnpm test:ignore-build` does not sit through five minutes.
+#
+# `refs/heads/main` is written out rather than taken from VERCEL_GIT_COMMIT_REF,
+# because this block is about the production branch and about nothing else.
 if [ "${VERCEL_ENV:-}" = "production" ] &&
   git log -1 --pretty=%B HEAD 2>/dev/null | grep -qF '[skip deploy]'; then
-  echo "ignore-build: HEAD is marked [skip deploy] — skipping this production build."
-  echo "  the next merge without the marker builds this commit too (it diffs against the last successful deploy)."
-  exit 0
+  SELF="${VERCEL_GIT_COMMIT_SHA:-$(git rev-parse HEAD 2>/dev/null || true)}"
+  POLL_INTERVAL="${IGNORE_BUILD_POLL_INTERVAL:-15}"
+  POLL_TIMEOUT="${IGNORE_BUILD_POLL_TIMEOUT:-300}"
+  POLL_DEADLINE=$(($(date +%s) + POLL_TIMEOUT))
+
+  if [ -z "$SELF" ]; then
+    # Without a SHA of our own there is nothing to compare the tip against.
+    echo "ignore-build: HEAD is marked [skip deploy] but this commit's SHA is unknown — building."
+  else
+    echo "ignore-build: HEAD is marked [skip deploy] — waiting up to ${POLL_TIMEOUT}s for the rest of the batch."
+    while :; do
+      TIP="$(git ls-remote origin refs/heads/main 2>/dev/null | awk 'NR == 1 { print $1 }')"
+
+      if [ -z "$TIP" ]; then
+        echo "ignore-build: could not read the tip of origin/main — building."
+        break
+      fi
+
+      if [ "$TIP" != "$SELF" ]; then
+        echo "ignore-build: origin/main has moved on to $TIP — skipping this production build."
+        echo "  that commit's build carries this one too (it diffs against the last successful deploy)."
+        exit 0
+      fi
+
+      if [ "$(date +%s)" -ge "$POLL_DEADLINE" ]; then
+        echo "ignore-build: marked commit is still the tip of origin/main after ${POLL_TIMEOUT}s — building."
+        break
+      fi
+
+      sleep "$POLL_INTERVAL"
+    done
+  fi
 fi
 
 # What the previous SUCCESSFUL deployment built. Vercel only exposes this once
