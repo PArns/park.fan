@@ -950,6 +950,11 @@
       "bestTimeLink": "Beste tijd in alle parken",
       "viewCalendarLink": "Volledige druktekalender bekijken"
     },
+    "yearlyOutlook": {
+      "title": "De komende twaalf maanden",
+      "hint": "Wat de prognose verwacht, dag voor dag, samengevat per maand.",
+      "recommendedDays": "{count}/{total} aanbevolen"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Gering",

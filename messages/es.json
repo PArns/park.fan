@@ -950,6 +950,11 @@
       "bestTimeLink": "Mejor época en todos los parques",
       "viewCalendarLink": "Ver calendario de afluencia completo"
     },
+    "yearlyOutlook": {
+      "title": "Los próximos doce meses",
+      "hint": "Lo que anuncia la previsión, día a día, agrupado por meses.",
+      "recommendedDays": "{count}/{total} recomendados"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Menor",

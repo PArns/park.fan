@@ -37,6 +37,8 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
+import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
+import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
@@ -397,6 +399,23 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             parkName={parkName}
             className="mt-8"
           />
+        }
+        /* How busy the next twelve months look — the one chapter that reaches past the rolling
+           90 days `/best-days` is capped at. Streamed in its own boundary: the forecast is a
+           day-cached read, but a cold one falls through to an ML rebuild, and this chapter sits
+           eight screens down. The placeholder is the same chapter over an empty frame, so it
+           reserves the real height rather than a typed-in number. */
+        outlookSection={
+          <Suspense fallback={<ParkYearlyOutlookSkeleton todayIso={todayIso} locale={locale} />}>
+            <ParkYearlyOutlookSection
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              todayIso={todayIso}
+              locale={locale}
+            />
+          </Suspense>
         }
         faqSection={
           /* No `<Separator>` in front of it any more: the FAQ is a `ChapterPanel` now, so it

@@ -950,6 +950,11 @@
       "bestTimeLink": "Best time to visit, across all parks",
       "viewCalendarLink": "View full crowd calendar"
     },
+    "yearlyOutlook": {
+      "title": "The next twelve months",
+      "hint": "What the forecast expects, day by day, gathered into months.",
+      "recommendedDays": "{count}/{total} recommended"
+    },
     "weatherWarnings": {
       "severity": {
         "minor": "Minor",
