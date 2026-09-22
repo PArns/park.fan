@@ -544,7 +544,7 @@ export function ContentES() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="En la página de una atracción"
-              note="Valores reales de Taron, consultados el 24 de agosto de 2026."
+              note="Valores reales de Taron, consultados el 10 de septiembre de 2026."
               href={TARON}
               hrefLabel="Valores reales de Taron →"
             >
@@ -1032,7 +1032,8 @@ export function ContentES() {
               </>,
               <>
                 A partir del mediodía, decidir por afluencia y no por minutos. Una atracción «baja»
-                con 25 minutos es mejor elección que una «alta» con 20.
+                con 25 minutos es mejor elección que una «alta» con 20: la primera está tan vacía
+                como pocas veces, la segunda volverá a acortarse más tarde.
               </>,
               <>
                 Los espectáculos, en la pestaña del mismo nombre. Los horarios están ahí para todo

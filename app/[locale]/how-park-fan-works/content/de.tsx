@@ -548,7 +548,7 @@ export function ContentDE() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Auf der Seite einer Bahn"
-              note="Echte Werte von Taron, abgerufen am 24. August 2026."
+              note="Echte Werte von Taron, abgerufen am 10. September 2026."
               href={TARON}
               hrefLabel="Echte Werte für Taron →"
             >
@@ -1036,7 +1036,8 @@ export function ContentDE() {
               </>,
               <>
                 Ab Mittag nach Auslastung entscheiden statt nach Minuten. Eine „niedrige“ Bahn mit
-                25 Minuten ist die bessere Wahl als eine „hohe“ mit 20.
+                25 Minuten ist die bessere Wahl als eine „hohe“ mit 20: Die erste ist gerade so
+                leer, wie sie selten wird, die zweite wird später wieder kürzer.
               </>,
               <>
                 Shows im gleichnamigen Reiter. Die Zeiten stehen dort für den ganzen Tag, und

@@ -185,7 +185,7 @@ El desarrollo está cronometrado: acceso a las 17:45, food court desde las 18
 (la última cena, por así decirlo), mundos de terror desde las 19, cierre a las
 23:30. La entrada funciona con pases escalonados, desde el **Event Pass**
 (desde 33 €) pasando por el **Shoxter Pass** con acceso prioritario (desde
-96 €) hasta el **Psycho Pass** para curtidos con una tarjeta que aguante (a partir de
+96 €, ya agotado) hasta el **Psycho Pass** para curtidos con una tarjeta que aguante (a partir de
 18, todo incluido, 349 €). Algunos extras se pagan aparte: la experience de contacto pleno THE
 HOTEL (29 €), el club THE FORBIDDEN (10 €) y una breve VR de terror (6 €).
 

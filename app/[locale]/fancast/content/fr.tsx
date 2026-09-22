@@ -171,8 +171,8 @@ export function ContentFR() {
             habituels d’une journée bondée.
           </IngredientCard>
           <IngredientCard icon={History} title="Historique" delay={60}>
-            Chaque jour d’ouverture qu’un parc a passé sous nos relevés, sans trou depuis avril. De
-            là viennent le rythme de la semaine et celui des saisons.
+            Chaque jour d’ouverture qu’un parc a passé sous nos relevés, sans trou depuis avril
+            2026. De là viennent le rythme de la semaine et celui des saisons.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Horaires & capacité" delay={120}>
             Quand le parc ouvre, pour combien de temps, à quelle capacité. C’est le cadre dans

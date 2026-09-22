@@ -179,7 +179,8 @@ settembre al 7 novembre 2026**, più tre giovedì (22 e 29 ottobre, 5 novembre).
 Lo svolgimento è cronometrato: ingresso alle 17:45, food court dalle 18
 (l’ultimo pasto, per così dire), mondi horror dalle 19, chiusura alle 23:30.
 L’accesso passa da pass scaglionati, dall’**Event Pass** (da 33 €) allo
-**Shoxter Pass** con accesso prioritario (da 96 €) fino al **Psycho Pass** per
+**Shoxter Pass** con accesso prioritario (da 96 €, ormai
+esaurito) fino al **Psycho Pass** per
 i più temprati, con un fido in banca a prova di bomba (dai 18, tutto incluso,
 349 €). Alcuni brividi extra si pagano a
 parte: l’experience a contatto pieno THE HOTEL (29 €), il club THE FORBIDDEN

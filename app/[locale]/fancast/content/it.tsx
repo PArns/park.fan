@@ -171,8 +171,8 @@ export function ContentIT() {
             una giornata affollata.
           </IngredientCard>
           <IngredientCard icon={History} title="Cronologia" delay={60}>
-            Ogni giorno di apertura registrato di un parco, senza buchi da aprile. Da lì escono il
-            ritmo della settimana e quello della stagione.
+            Ogni giorno di apertura registrato di un parco, senza buchi da aprile 2026. Da lì escono
+            il ritmo della settimana e quello della stagione.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Orari e capacità" delay={120}>
             Quando apre il parco, per quanto, con quale capacità. È la cornice in cui deve stare

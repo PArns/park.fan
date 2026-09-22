@@ -185,7 +185,8 @@ jeudis (22 et 29 octobre, 5 novembre).
 Le déroulé est minuté : ouverture des portes à 17 h 45, food court à partir de
 18 h (le repas du condamné, en somme), mondes d’horreur à partir de 19 h, fin à
 23 h 30. L’accès se fait par des pass échelonnés, de l’**Event Pass** (à partir
-de 33 €) au **Shoxter Pass** avec accès prioritaire (à partir de 96 €) jusqu’au
+de 33 €) au **Shoxter Pass** avec accès prioritaire (à partir de 96 €, désormais
+épuisé) jusqu’au
 **Psycho Pass** pour les endurcis dotés d’un solide découvert autorisé (18 ans
 et plus, tout compris, 349 €).
 Certains frissons supplémentaires se paient en plus : l’experience en contact

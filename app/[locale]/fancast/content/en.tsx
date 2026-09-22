@@ -171,7 +171,7 @@ export function ContentEN() {
             suspects for a packed day.
           </IngredientCard>
           <IngredientCard icon={History} title="History" delay={60}>
-            Every operating day a park has been recorded on, without a gap since April. That is
+            Every operating day a park has been recorded on, without a gap since April 2026. That is
             where the weekly and seasonal rhythm come from.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Hours & capacity" delay={120}>

@@ -549,7 +549,7 @@ export function ContentFR() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sur la page d’une attraction"
-              note="Valeurs réelles de Taron, relevées le 24 août 2026."
+              note="Valeurs réelles de Taron, relevées le 10 septembre 2026."
               href={TARON}
               hrefLabel="Valeurs réelles pour Taron →"
             >
@@ -1040,7 +1040,8 @@ export function ContentFR() {
               </>,
               <>
                 À partir de midi, décider selon l’affluence plutôt que selon les minutes. Une
-                attraction « faible » à 25 minutes est un meilleur choix qu’une « élevée » à 20.
+                attraction « faible » à 25 minutes est un meilleur choix qu’une « élevée » à 20 : la
+                première est aussi calme qu’elle le sera jamais, la seconde raccourcira plus tard.
               </>,
               <>
                 Les spectacles sont dans l’onglet du même nom. Les horaires y figurent pour toute la

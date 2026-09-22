@@ -183,7 +183,8 @@ und 29. Oktober, 5. November).
 Der Ablauf ist durchgetaktet: Einlass 17:45 Uhr, Food Court ab 18 Uhr
 (Henkersmahlzeit sozusagen), Horror-Welten ab 19 Uhr, Schluss um 23:30 Uhr. Der
 Eintritt läuft über gestaffelte Pässe, vom **Event Pass** (ab 33 €) über den
-**Shoxter Pass** mit Priority-Zugang (ab 96 €) bis zum **Psycho Pass** für
+**Shoxter Pass** mit Priority-Zugang (ab 96 €, inzwischen
+ausverkauft) bis zum **Psycho Pass** für
 Hartgesottene mit belastbarem Dispo (ab 18, All-inclusive, 349 €). Manche Extra-Kitzel kosten
 obendrauf: die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
 (10 €) und eine kurze Horror-VR (6 €).

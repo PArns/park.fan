@@ -542,7 +542,7 @@ export function ContentIT() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sulla pagina di un’attrazione"
-              note="Valori reali di Taron, rilevati il 24 agosto 2026."
+              note="Valori reali di Taron, rilevati il 10 settembre 2026."
               href={TARON}
               hrefLabel="Valori reali per Taron →"
             >
@@ -1032,7 +1032,8 @@ export function ContentIT() {
               </>,
               <>
                 Da mezzogiorno decidere in base all’affollamento e non ai minuti. Un’attrazione
-                «bassa» con 25 minuti è la scelta migliore rispetto a una «alta» con 20.
+                «bassa» con 25 minuti è la scelta migliore rispetto a una «alta» con 20: la prima è
+                vuota come capita di rado, la seconda più tardi tornerà ad accorciarsi.
               </>,
               <>
                 Gli spettacoli nella scheda omonima. Gli orari sono lì per l’intera giornata, e le

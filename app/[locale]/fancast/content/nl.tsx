@@ -170,8 +170,8 @@ export function ContentNL() {
             bekende verdachten voor een volle dag.
           </IngredientCard>
           <IngredientCard icon={History} title="Historie" delay={60}>
-            Elke geregistreerde openingsdag van een park, sinds april zonder gaten. Daar komt het
-            week- en seizoensritme uit.
+            Elke geregistreerde openingsdag van een park, sinds april 2026 zonder gaten. Daar komt
+            het week- en seizoensritme uit.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Openingstijden & capaciteit" delay={120}>
             Wanneer het park opent, hoe lang, met welke capaciteit. Dat is het kader waarin de rest

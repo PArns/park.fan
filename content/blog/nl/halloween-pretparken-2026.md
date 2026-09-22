@@ -179,7 +179,8 @@ tot 7 november 2026**, plus drie donderdagen (22 en 29 oktober, 5 november).
 Het verloop is strak getimed: inloop 17.45 uur, food court vanaf 18 uur (het
 laatste avondmaal, zeg maar), horrorwerelden vanaf 19 uur, einde om 23.30 uur.
 De toegang loopt via gestaffelde passen, van de **Event Pass** (vanaf € 33) via
-de **Shoxter Pass** met priority-toegang (vanaf € 96) tot de **Psycho Pass**
+de **Shoxter Pass** met priority-toegang (vanaf € 96, inmiddels
+uitverkocht) tot de **Psycho Pass**
 voor doorgewinterden met een ruime roodstand (vanaf 18, all-inclusive, € 349). Sommige extra prikkels
 kosten bovenop: de vollecontact-experience THE HOTEL (€ 29), de club THE
 FORBIDDEN (€ 10) en een korte horror-VR (€ 6).

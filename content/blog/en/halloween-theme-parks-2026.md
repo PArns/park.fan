@@ -177,7 +177,8 @@ September**, then runs **Friday to Sunday from 25 September to 7 November
 The schedule is tightly timed: doors at 5:45 p.m., food court from 6 p.m. (your
 last meal, so to speak), horror worlds from 7 p.m., closing at 11:30 p.m.
 Admission runs on tiered passes, from the **Event Pass** (from €33) through the
-**Shoxter Pass** with priority access (from €96) to the **Psycho Pass** for the
+**Shoxter Pass** with priority access (from €96, now sold
+out) to the **Psycho Pass** for the
 hardened with a forgiving overdraft (18+, all-inclusive, €349). Some extra thrills cost on top: the
 full-contact experience THE HOTEL (€29), the club THE FORBIDDEN (€10) and a
 short horror VR (€6).

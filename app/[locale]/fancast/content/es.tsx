@@ -171,8 +171,8 @@ export function ContentES() {
             sospechosos habituales de un día abarrotado.
           </IngredientCard>
           <IngredientCard icon={History} title="Historial" delay={60}>
-            Cada día de apertura registrado de un parque, sin huecos desde abril. De ahí salen el
-            ritmo de la semana y el de la temporada.
+            Cada día de apertura registrado de un parque, sin huecos desde abril de 2026. De ahí
+            salen el ritmo de la semana y el de la temporada.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Horarios y capacidad" delay={120}>
             Cuándo abre el parque, durante cuánto tiempo, con qué capacidad. Es el marco en el que

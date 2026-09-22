@@ -170,8 +170,8 @@ export function ContentDE() {
             Verdächtigen für volle Tage.
           </IngredientCard>
           <IngredientCard icon={History} title="Historie" delay={60}>
-            Jeder mitgeschriebene Öffnungstag eines Parks, seit April lückenlos. Daraus kommt der
-            Wochen- und Saisonrhythmus.
+            Jeder mitgeschriebene Öffnungstag eines Parks, seit April 2026 lückenlos. Daraus kommt
+            der Wochen- und Saisonrhythmus.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Öffnungszeiten & Kapazität" delay={120}>
             Wann öffnet der Park, wie lange, mit wie viel Betrieb. Das ist der Rahmen, in den der

@@ -540,7 +540,7 @@ export function ContentNL() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Op de pagina van een attractie"
-              note="Echte waarden van Taron, opgehaald op 24 augustus 2026."
+              note="Echte waarden van Taron, opgehaald op 10 september 2026."
               href={TARON}
               hrefLabel="Echte waarden voor Taron →"
             >
@@ -1024,7 +1024,8 @@ export function ContentNL() {
               </>,
               <>
                 Vanaf de middag op drukte beslissen in plaats van op minuten. Een “lage” attractie
-                met 25 minuten is de betere keuze dan een “hoge” met 20.
+                met 25 minuten is de betere keuze dan een “hoge” met 20: de eerste is zo rustig als
+                hij zelden wordt, de tweede wordt later vanzelf weer korter.
               </>,
               <>
                 Shows in het gelijknamige tabblad. De tijden staan daar voor de hele dag, en parades

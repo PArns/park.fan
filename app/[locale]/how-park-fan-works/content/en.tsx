@@ -541,7 +541,7 @@ export function ContentEN() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="On a ride’s own page"
-              note="Real values for Taron, fetched on 24 August 2026."
+              note="Real values for Taron, fetched on 10 September 2026."
               href={TARON}
               hrefLabel="Live values for Taron →"
             >
@@ -1018,7 +1018,8 @@ export function ContentEN() {
               </>,
               <>
                 From midday, decide by crowd level rather than by minutes. A “low” ride at 25
-                minutes is the better call than a “high” one at 20.
+                minutes is the better call than a “high” one at 20: the first is about as empty as
+                it ever gets, the second will be shorter again later.
               </>,
               <>
                 Shows are in the tab of the same name. The times are listed there for the whole day,
