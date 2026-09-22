@@ -124,7 +124,16 @@ export function LoginScreen() {
     setBusy(true);
     setError(null);
 
-    const wasTotpStep = needsTotp;
+    // The step this request is sent from. The "Andere Anmeldung" button stays
+    // live while one is in flight, so by the time the answer lands the operator
+    // may be standing somewhere else.
+    const sentFromTotpStep = needsTotp;
+
+    // Read when the answer arrives, never when it was sent: `needsTotpRef`
+    // carries the step of the last committed render. False means the operator
+    // has left the step this answer is about, and then everything the answer
+    // says about that step describes a form nobody is looking at any more.
+    const answersTheCurrentStep = () => needsTotpRef.current === sentFromTotpStep;
 
     try {
       const result = await adminFetch<LoginResponse>('/api/admin/session', {
@@ -138,6 +147,12 @@ export function LoginScreen() {
       });
 
       if (result.status === 'totp-required') {
+        // "You still owe me a code" is a fact about the step, so it lapses with
+        // it: somebody who pressed "Andere Anmeldung" while this was in flight
+        // asked to start over, and pulling them back onto the step they just
+        // left is the opposite of what they pressed.
+        if (!answersTheCurrentStep()) return;
+
         setNeedsTotp(true);
         // Same rule as the "Andere Anmeldung" button below: the step change
         // unmounts the credentials form, so the widget this flag describes goes
@@ -147,15 +162,13 @@ export function LoginScreen() {
         // to a request sent FROM the code step is a React bailout, and clearing
         // the flag there would take the notice and its retry link away from a
         // widget that is still broken.
-        //
-        // The ref, not `wasTotpStep`: that is the step the request was sent
-        // from, and the back button stays live while one is in flight. Only
-        // this flag is settled here; two other places in `attempt()` mishandle
-        // the same race and predate this change — PAR-305.
-        if (!needsTotpRef.current) setTurnstileBroken(false);
+        if (!sentFromTotpStep) setTurnstileBroken(false);
         return;
       }
       if (result.status === 'locked' || result.status === 'rate-limited') {
+        // Not gated on the step, unlike everything else in here: a lockout is a
+        // fact about the account, it is true on whichever form is on screen,
+        // and both of them render `lockedFor`.
         setLockedFor(result.retryAfterSeconds);
         setError(
           result.status === 'locked'
@@ -165,8 +178,18 @@ export function LoginScreen() {
         return;
       }
 
+      // Also not gated on the step: the session cookie is set by the time this
+      // line runs, and a login screen drawn over a live session is a worse
+      // answer than one the operator did not expect.
       await client.invalidateQueries({ queryKey: adminKeys.session });
     } catch (err) {
+      // A failed attempt says something about the step it was made on, and
+      // nothing that survives leaving it. A 401 on a code nobody is entering
+      // any more would put "Der Code stimmt nicht" over a form with no code
+      // field, and the field resets below would empty a password somebody has
+      // started retyping on the form that replaced it.
+      if (!answersTheCurrentStep()) return;
+
       // On the code step it is the code that was wrong, not the password. The
       // old version said "E-Mail oder Passwort stimmt nicht" and cleared the
       // password field, so a single mistyped digit sent people back to the
@@ -174,12 +197,12 @@ export function LoginScreen() {
       const message =
         err instanceof AdminApiError && err.status !== 401
           ? err.message
-          : wasTotpStep
+          : sentFromTotpStep
             ? 'Der Code stimmt nicht. Er wechselt alle 30 Sekunden.'
             : 'E-Mail oder Passwort stimmt nicht.';
       setError(message);
       setTotpCode('');
-      if (!wasTotpStep) setPassword('');
+      if (!sentFromTotpStep) setPassword('');
     } finally {
       setBusy(false);
       // The token is spent whatever the answer was — including the successful
@@ -196,10 +219,10 @@ export function LoginScreen() {
   }
 
   // The auto-submit below must call the *current* attempt, not the one captured
-  // on the render that armed it. `needsTotpRef` rides along for the same reason
-  // one line further out: an answer arrives after the request was sent, and the
-  // step may have changed in between — the back button is live while a request
-  // is in flight.
+  // on the render that armed it. `needsTotpRef` rides along for the same
+  // reason, and `attempt()` reads it through `answersTheCurrentStep`: an answer
+  // arrives after the request was sent, and the step may have changed in
+  // between — the back button is live while a request is in flight.
   const attemptRef = useRef(attempt);
   const needsTotpRef = useRef(needsTotp);
   useEffect(() => {
