@@ -1,7 +1,7 @@
 ---
 title: 'Heide Park: Colossos wird 25, und nebenan stehen vier deutsche Premieren'
 translationKey: heide-park-guide
-date: '2026-09-25'
+date: '2026-09-20'
 author: patrick
 mode: published
 featured: false
@@ -63,7 +63,7 @@ niemand fahren durfte. Am **28. Juli 2016** ging
 Netz, weil die Schienen nach fünfzehn Jahren verschlissen waren. Wieder
 gefahren wurde sie erst am **19. April 2019**.
 
-Zurückgekommen ist sie als Holzachterbahn, und das ist der bemerkenswerte Teil.
+Zurückgekommen ist sie als Holzachterbahn.
 Der übliche Weg wäre ein anderer gewesen: Wenn einer Holzbahn die Strecke
 wegrottet, bekommt sie heute meistens Stahlschienen auf das alte Gerüst
 geschraubt und fährt als Hybrid weiter. Der Heide Park hat neue Holzschienen
@@ -273,8 +273,8 @@ Der Wochentag ist hier ein kleiner Hebel. Sechs von sieben Tagen liegen in der
 Tabelle darüber dicht beieinander, heraus sticht nur der Samstag, und unten
 stehen Freitag und Sonntag. Der Montag steht dabei auf gut der Hälfte der
 Messtage der anderen Tage, weil der Park ihn im Frühjahr und im Herbst
-regelmäßig aus dem Kalender nimmt. Ein ruhiger Montag ist in Soltau meistens
-ein geschlossener Montag.
+regelmäßig aus dem Kalender nimmt. Seine niedrige Zahl kommt also größtenteils
+daher, dass an diesen Tagen gar nicht geöffnet war.
 
 ### Der Monat
 
@@ -441,17 +441,17 @@ gegenseitig lesen lassen.
 
 ## Was ich dir für Soltau mitgebe
 
-Dieser Park tut am wenigsten so, als wäre er etwas anderes. Es gibt keine
-durchgehende Erzählung wie in Brühl und keine 18 Länder wie in Rust, und die
-beiden Lizenzbereiche sind genau so groß, wie ein Konzern sie bezahlt. Was hier
-steht, steht wegen der Bahnen: vier Bauarten, die es vorher in Deutschland
-nicht gab, eine Holzachterbahn, die zweimal gebaut wurde, und ein Freifallturm,
-den der Park aus einem vorhandenen Aussichtsturm gemacht hat.
+Der Heide Park hat keine durchgehende Erzählung wie Brühl und keine 18 Länder
+wie Rust. Er hat Bahnen. Vier Bauarten standen hier zuerst in Deutschland,
+Colossos ist zweimal gebaut worden, und Scream war ein Aussichtsturm, bevor er
+ein Freifallturm wurde. Die Lizenzbereiche für Peppa Pig und Ghostbusters sind
+genau so groß, wie ein Konzern sie bezahlt.
 
-Der Preis dafür ist die Fläche. 85 Hektar mit wenig Schatten und langen Wegen
-zwischen den großen Bahnen, und an einem Augustsamstag merkst du jeden Meter
-davon. Deshalb steht in diesem Text so viel über den Kalender: Der Unterschied
-zwischen einem guten und einem zähen Tag in Soltau fällt zu Hause, beim Datum.
+Dafür zahlst du mit 85 Hektar. Wenig Schatten, lange Wege zwischen den großen
+Bahnen, und an einem Augustsamstag merkst du jeden Meter. Wer nicht laufen will,
+nimmt einen Freitag im September statt eines Samstags im August. Wochentag und
+Monat verschieben einzeln etwa gleich viel und zusammen das Doppelte, und diese
+Entscheidung fällt zu Hause.
 
 Und wenn du im Oktober kommst: Die langen Samstage fangen erst um zwölf an. Wer
 um zehn vor dem Tor steht, wartet zwei Stunden auf einer Wiese.

@@ -1,7 +1,7 @@
 ---
 title: 'Heide Park: Colossos wordt 25, en ernaast staan vier Duitse primeurs'
 translationKey: heide-park-guide
-date: '2026-09-25'
+date: '2026-09-20'
 author: patrick
 mode: published
 featured: false

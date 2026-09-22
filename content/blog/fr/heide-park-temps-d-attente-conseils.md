@@ -1,7 +1,7 @@
 ---
 title: 'Heide Park : Colossos fête ses 25 ans, et à côté se dressent quatre premières allemandes'
 translationKey: heide-park-guide
-date: '2026-09-25'
+date: '2026-09-20'
 author: patrick
 mode: published
 featured: false
