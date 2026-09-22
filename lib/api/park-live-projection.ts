@@ -54,6 +54,14 @@ export interface LiveAttractionSnapshot {
   /** Not on `ParkAttraction`; `attraction-card` reads it via an `in` check. */
   effectiveStatus?: ParkAttraction['status'];
   crowdLevel?: ParkAttraction['crowdLevel'];
+  /**
+   * Travels beside `crowdLevel` because it is the other half of that reading: the ride card's
+   * tooltip turns the badge into minutes with it. The number itself moves once a day, but whether
+   * it is THERE does not — the API sends it only while the ride has a live wait, so a server render
+   * made before the park opened has none, and without the poll's copy the tooltip would stay
+   * missing all day under a badge the poll keeps current.
+   */
+  baseline?: ParkAttraction['baseline'];
   trend?: ParkAttraction['trend'];
   /**
    * Volatile, and it has to travel on EVERY poll rather than only when present.
@@ -110,8 +118,9 @@ export interface LiveParkSnapshot {
  * Note what is NOT here. `schedule` looks live but every consumer already receives it as a prop
  * from the (per-request, force-dynamic) server render and falls back to that prop — the poll
  * copy was never the one on screen. `ropeDrop`/`typicalWaits`/`rideProfile` are derived from
- * months of history and move once a day at most. `comparison` and `baseline` come down from the
- * API on every attraction and nothing in the app has ever rendered them.
+ * months of history and move once a day at most. `comparison` comes down from the API on every
+ * attraction and nothing in the app has ever rendered it. (`baseline` was in that sentence until
+ * the ride card's crowd-scale tooltip started rendering it.)
  *
  * `shows` and `restaurants` are the third case: they move once a day, not every five minutes, but
  * they DO move — and until `daily` existed nothing carried them, so whatever the shell fetch had
@@ -157,6 +166,9 @@ export function leanParkForLivePoll(
       // the proxy fetches the whole park on every poll either way.
       isCurrentlyInSeason: a.isCurrentlyInSeason,
       crowdLevel: a.crowdLevel,
+      // `null`, not `undefined`: JSON drops an undefined key, and an omitted key keeps the
+      // previous poll's baseline under a ride that is no longer rated.
+      baseline: a.baseline ?? null,
       trend: a.trend,
       // Always the key, never a conditional spread: an omitted key leaves the
       // server render's outage in place forever. See LiveAttractionSnapshot.

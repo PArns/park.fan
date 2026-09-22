@@ -758,6 +758,15 @@ export interface ParkAttraction {
   currentLoad?: ParkLoad | null;
   // added fields
   crowdLevel?: CrowdLevel;
+  /**
+   * The wait `crowdLevel` was rated against, in minutes: the ride's P50 over its samples (P90
+   * only for a ride too new to have one). `crowdLevel` is `current ÷ baseline`, so this is what
+   * turns the badge's word back into this ride's minutes — see `rideCrowdMinuteRanges`.
+   *
+   * Present only while the ride is rated: an operating ride with a live wait in a ratable park.
+   * Everything else, a closed park included, has it null or absent.
+   */
+  baseline?: number | null;
   trend?: TrendDirection;
   statistics?: AttractionStatistics;
   history?: AttractionHistoryDay[];

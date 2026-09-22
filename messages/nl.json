@@ -532,6 +532,14 @@
       "between": "{min}–{max}%",
       "above": "meer dan {min}%"
     },
+    "rideCrowdScale": {
+      "title": "Drukte bij deze attractie",
+      "note": "Gemeten aan de gebruikelijke wachttijd van deze attractie: {baseline} min. Elke attractie heeft een eigen schaal.",
+      "upTo": "tot {max} min",
+      "exactly": "{min} min",
+      "between": "{min}–{max} min",
+      "from": "vanaf {min} min"
+    },
     "avgWaitTime": "Gem. Wachttijd",
     "openAttractions": "Open attracties",
     "closedAttractions": "Gesloten attracties",
