@@ -855,20 +855,52 @@ export function ParkTodayPanel({
           neighbours are full-bleed, so the card read as a box with a smaller box loose in it. The
           overrides have to reach the two absolutely-positioned overlay layers as well — they
           carry their own `rounded-xl`, and left round inside a square strip they show the panel
-          background through all four corners. */}
-      <WeatherNowcastBanner
-        continent={continent}
-        country={country}
-        city={city}
-        parkSlug={parkSlug}
-        initialData={null}
-        className="border-border/50 space-y-0 rounded-none border-x-0 border-t border-b-0 px-5 py-2.5 shadow-none empty:hidden [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
-      />
+          background through all four corners.
+
+          THE BOX IS HELD WHETHER OR NOT A BANNER COMES, and the reservation is the whole point of
+          the wrapper. `useWeatherNowcast` is `enabled: typeof window !== 'undefined'` and this call
+          site seeds `initialData={null}`, so the strip is in NO park's first HTML on ANY day: when
+          it appears, it always appears late. Measured on Universal Islands of Adventure while it
+          actually had rain forecast (2026-09-21), the banner landed 2.5 s after paint and pushed
+          everything under it by 134 px — a reader parked at y=1300 on a phone paid CLS 0.1476.
+
+          The two numbers are measured off the real strip on parks that were showing a banner, not
+          off the `/ui` demo (which sits at `p-4` against this strip's `py-2.5` and reads 13 px
+          taller). Across en/de/fr/it and 360–1440 px the rain strip is 135 px below `sm` and
+          104 px from `sm` up — `sm` is the switch because that is where the banner's own body/
+          timeline row turns from a column into a row.
+
+          It is a reservation, not a guarantee: a sentence that takes one more line (360 px, the
+          French copy up to 430 px) and the storm/hail/thunderstorm wordings each add ~23 px, and
+          those still shift by that much. 23 px instead of 134 is the trade; a constant that fit
+          every kind in every locale would have to reserve the tallest, which is 180 px of empty
+          card on the 94.8 % of parks (199 of 210, counted 2026-09-21) that have no alert at all. */}
+      <div className="min-h-[135px] sm:min-h-[104px]">
+        <WeatherNowcastBanner
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          initialData={null}
+          className="border-border/50 space-y-0 rounded-none border-x-0 border-t border-b-0 px-5 py-2.5 shadow-none empty:hidden [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
+        />
+      </div>
 
       {/* Holiday context — the "why is it so busy" behind the forecast. One band now: this used
           to be a grey chip row for the park's own state followed by a much louder amber panel for
           the neighbouring ones, which put the emphasis on the wrong region. Renders nothing when
-          neither half has anything to say. */}
+          neither half has anything to say.
+
+          NO RESERVATION HERE, and unlike the nowcast strip above that is not a deliberate gap —
+          this row cannot shift. It reads `initialData.schedule`, which `leanParkForShell` keeps
+          whole, and `useTodaySchedule` falls back to `schedule[0]` before the clock mounts. All
+          210 parks the API serves answer with `schedule[0].date` equal to today in their own
+          timezone (checked 2026-09-21), carrying `isHoliday`, `isSchoolHoliday`, `isBridgeDay` and
+          `influencingHolidays`, so the pre-mount entry and the post-mount entry are the same row
+          and the band is in the first HTML at full height. Measured on Lotte World Adventure,
+          which had a bridge day that day: 96 px with JavaScript off, 96 px settled, same chips.
+          Reserving a box for it would hold empty space on the 147 parks that have no holiday
+          today against a shift that does not happen. */}
       <ParkHolidayRow
         initialData={initialData}
         continent={continent}
