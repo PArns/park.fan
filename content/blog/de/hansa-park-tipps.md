@@ -83,7 +83,7 @@ Fahrplan der Abendshows und die Wege im Park.
 
 [Hansa-Park](ref:hansa-park?full)
 
-## Die acht Achterbahnen
+## Die Achterbahnen
 
 **Der Schwur des Kärnan** kam 2015 und kostete den Park seine bis dahin größte Investition. Gebaut
 hat ihn Gerstlauer als Infinity Coaster: **1.235 Meter** Strecke, ab 1,30 Meter. Der Lifthill
@@ -119,7 +119,7 @@ Midgard](ref:hansa-park/midgard-serpent)** steht seit 2011 im Wikingerland und f
 Zentimetern an, **[Der kleine Zar](ref:hansa-park/the-little-tsar)** seit 2017 bei 95 Zentimetern und
 drei Metern Höhe.
 
-Die achte ist die neue. Der **[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster)** hat am
+Die jüngste kam in dieser Saison dazu. Der **[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster)** hat am
 **23. Mai 2026** eröffnet, wieder Gerstlauer, 18 Meter hoch, rund 570 Meter lang, ab 90 Zentimetern.
 Der Park zählt **sieben Launches** auf einer Runde, vorwärts und rückwärts. Sieben
 Beschleunigungen auf 570 Metern sind für eine Familienbahn viel, und sie zahlen auf die Fahrzeit
@@ -152,9 +152,10 @@ mehreren Wochentagen. Wer in Sierksdorf einen ruhigen Wochentag sucht, bekommt i
 wirklich als Öffnungstag und nicht als verschlossenes Tor.
 
 Die Uhrzeiten sind fast genauso gleichförmig. Bis zum **9. Oktober** öffnet der Park täglich um
-**10 Uhr**, und die Fahrattraktionen schließen um **18 Uhr**. Zwei Abende im August fallen aus der
-Reihe: Am 11. August bleibt das Gelände bis 19 Uhr offen, am 12. bis 18:30, die Bahnen stehen
-trotzdem um 18 Uhr still. Die letzten 16 Tage der Saison haben einen eigenen Grund.
+**10 Uhr**, und die Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fallen aus der Reihe,
+und an allen dreien geht es um das Gelände, nicht um die Bahnen: Am Karfreitag, dem 3. April,
+fahren die Attraktionen erst ab 11 Uhr. Am 11. August bleibt das Gelände bis 19 Uhr offen, am 12. August bis 18:30, während die Bahnen an beiden Abenden um 18 Uhr stillstehen. Die letzten
+16 Tage der Saison haben einen eigenen Grund.
 
 ```map-widget slug=hansa-park
 
