@@ -1399,7 +1399,14 @@
     "day": "{count, plural, =1 {dag} other {dagen}}",
     "week": "{count, plural, =1 {week} other {weken}}",
     "offseason": "Buiten seizoen",
-    "nearbyParksArea": "In de omgeving"
+    "nearbyParksArea": "In de omgeving",
+    "parkPage": {
+      "heading": "Bij jou in de buurt",
+      "inParkCoarse": "Je bent in het park",
+      "ask": "In het park? Toon attracties bij jou in de buurt",
+      "blocked": "Locatietoegang is geblokkeerd in je browser",
+      "away": "Je bent {distance} van het park"
+    }
   },
   "geo": {
     "continent": "Continent",

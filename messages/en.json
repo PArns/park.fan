@@ -1399,7 +1399,14 @@
     "day": "{count, plural, =1 {day} other {days}}",
     "week": "{count, plural, =1 {week} other {weeks}}",
     "offseason": "Off-season",
-    "nearbyParksArea": "In the area"
+    "nearbyParksArea": "In the area",
+    "parkPage": {
+      "heading": "Near you",
+      "inParkCoarse": "You are in the park",
+      "ask": "At the park? Show rides near you",
+      "blocked": "Location access is blocked in your browser",
+      "away": "You are {distance} from the park"
+    }
   },
   "geo": {
     "continent": "Continent",
