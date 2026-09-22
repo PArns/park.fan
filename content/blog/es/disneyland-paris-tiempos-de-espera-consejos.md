@@ -90,8 +90,8 @@ los dos, y quien quiera cambiar de parque necesita la modalidad de dos
 parques. Es la única decisión del día que ya no puedes corregir por la tarde
 en ninguna taquilla.
 
-Así se comparan los dos entre sí, junto a otros dos parques que desde Alemania
-quedan a una distancia parecida:
+Así se comparan los dos entre sí, y como referencia, otros dos parques que desde
+Alemania quedan a una distancia parecida:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,parc-asterix,europa-park show=quietest highlight=/parks/europe/france/paris/disneyland-park
 
@@ -110,7 +110,7 @@ salir de ahí, y otros que directamente no quieren entrar.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 es la versión más grande de esta atracción en todos los parques Disney, y la
-única que no está junto a la estación, sino en una isla. El tren sale de la
+única construida en una isla. El tren sale de la
 estación en la orilla, se mete en un túnel bajo los Rivers of the Far West y no
 vuelve a ver la luz hasta la isla, donde empieza el recorrido propiamente
 dicho. La construyó Vekoma, abrió el primer día del parque, y su altura mínima
@@ -119,9 +119,9 @@ nuevos, decorados repintados y algunos efectos tomados de la versión
 californiana.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-es la razón por la que los aficionados a este género viajan hasta París. La
-Haunted Mansion de Florida y California no cuenta, a propósito, una historia
-continua. La de París sí: Melanie Ravenswood espera con su vestido de novia
+es la Haunted Mansion de París, con una diferencia por la que los aficionados
+viajan hasta aquí: las versiones de Florida y California no cuentan, a
+propósito, una historia continua. La de París sí: Melanie Ravenswood espera con su vestido de novia
 desde que su boda se rompió, y su padre Henry fue matando uno tras otro a sus
 pretendientes, algo que la reforma de 2019 dejó claro por primera vez. Seis
 minutos en el Omnimover, 92 animatronics y la narración en inglés de Vincent
@@ -134,8 +134,9 @@ _Space Mountain: De la Terre à la Lune_, inspirada en Jules Verne, con un cañ�
 como sistema de lanzamiento. Ese cañón sigue ahí: el tren pasa de 0 a 71 km/h
 en 1,8 segundos mientras sube la montaña. Tres inversiones, un kilómetro de
 recorrido, hasta 5 g. De todas las Space Mountain del mundo, es la única con
-lanzamiento y la única con inversiones, y fue también la que salvó al parque
-tras los años de pérdidas de sus inicios.
+lanzamiento y la única con inversiones. Michael Eisner, entonces jefe de Disney,
+la llamó la salvadora del parque: gracias a su éxito, Disneyland Paris tuvo sus
+primeros beneficios tras los años de pérdidas del principio.
 
 Aun así, no encabeza nuestra clasificación.
 
@@ -148,7 +149,8 @@ La cola más larga del parque es la de **Peter Pan's Flight**, una dark ride de
 mitad es el caudal de gente que puede mover cada atracción: Hyperspace Mountain
 circula con cuatro trenes y da salida a casi 2.000 personas por hora, así que
 va vaciando su cola durante todo el día. Una dark ride con góndolas pequeñas no
-puede hacer eso. Quien solo mira las montañas rusas planea mal la mañana.
+puede hacer eso. Quien pasa la mañana en las montañas rusas acaba por la tarde
+en la cola más larga del parque, para minuto y medio de dark ride.
 
 Otras tres atracciones también quitan tiempo esa mañana.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**,
@@ -158,8 +160,8 @@ que la convierte en el recorrido más largo del parque.
 abrió el 30 de julio de 1993 como la primera montaña rusa de un parque Disney
 con una inversión, construida por Intamin, con 600 metros de recorrido y
 58 km/h de velocidad punta. Entre abril de 2000 y noviembre de 2004 funcionó
-marcha atrás. Su altura mínima de 140 centímetros es la más alta de toda
-atracción Disney en el mundo, lo que allí mismo separa familias con cierta
+marcha atrás. Su altura mínima de 140 centímetros es la más alta de todas
+las atracciones Disney del mundo, lo que allí mismo separa familias con cierta
 frecuencia. Y **[«it's a small world»](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
 es exactamente lo que te temes.
 
@@ -206,11 +208,12 @@ actualizándose después de esa fecha.
 
 ```
 
-Lo que eso significa para un día allí: desaparece la atracción que hasta ahora
-se comía media mañana, y sus visitantes se reparten entre un parque que de por
-sí tiene poca capacidad. En la tabla de arriba, Crush's Coaster todavía
-aparece con sus valores históricos, porque la clasificación cubre dos años
-hacia atrás. Para tu visita, las filas que cuentan son las de debajo.
+Para un día allí, eso significa que desaparece la atracción que hasta ahora se
+comía media mañana, y sus visitantes se reparten por un parque que de por sí
+tiene poca capacidad. En la tabla de arriba, Crush's Coaster todavía aparece
+con sus valores históricos, porque la clasificación cubre dos años hacia
+atrás, un poco como ese plato que sigue en la carta aunque en la cocina se
+acabó en septiembre. Para tu visita, las filas que cuentan son las de debajo.
 
 ## Cuánta gente hay en realidad
 
@@ -231,7 +234,6 @@ popularidad tiene poco que ver, con la aritmética mucho: en 2023 entraron 10,4
 millones de visitantes al Disneyland Park y 5,7 millones al segundo. Si se
 reparte esa cifra entre las atracciones que nos reportan tiempos de espera,
 salen unos **242.000 visitantes por atracción y año** frente a **407.000**.
-Esa misma cuenta se convierte cada día en cola sobre el asfalto.
 
 Así se reparte un día en el Disneyland Park a lo largo de las horas:
 
@@ -252,8 +254,7 @@ francesas, que caen en fechas distintas a las alemanas y están escalonadas por
 zonas, además de las semanas de half-term británicas, porque una parte notable
 de los visitantes llega en Eurostar.
 
-Lo plana que sale la curva por día de la semana se ve en la tabla de arriba, y
-sale plana. Un parque que abre 365 días al año y se anuncia en media docena de
+La curva por día de la semana de arriba es plana, y tiene su motivo: un parque que abre 365 días al año y se anuncia en media docena de
 países no tiene un martes muerto al que escaparse. Cuáles de las próximas
 semanas son, aun así, las más tranquilas, está aquí, recalculado en todo
 momento:
@@ -280,14 +281,14 @@ Antes de comprarlo, merece la pena mirar la clasificación de más arriba. El
 precio se fija según la demanda, y la mayor demanda no la tienen
 necesariamente las atracciones en las que más tiempo esperarías.
 
-## El día perfecto, en cuatro frases
+## Cómo planificaría yo el día
 
 Si solo tienes un día y eliges un parque, elige el Disneyland Park: más
 atracciones, colas más cortas, y el castillo es la razón por la que viene la
-mayoría. Ve a la apertura directo a Fantasyland, a las dark rides, porque la
-ventaja de llegar temprano no se recupera en el resto del día. Big Thunder
-Mountain, Hyperspace Mountain e Indiana Jones encajan bien a la hora de comer,
-cuando todos los demás están comiendo. Y si reservas los dos parques, invierte
+mayoría. Ve a la apertura directo a Fantasyland, a las dark rides, porque una
+vez que se forman sus colas ya no las alcanzas en todo el día. Big Thunder
+Mountain, Hyperspace Mountain e Indiana Jones encajan bien a mediodía,
+mientras todos los demás comen. Y si reservas los dos parques, invierte
 el orden habitual y empieza en Adventure World, donde nuestro análisis de rope
 drop marca en Ratatouille y en la Tower of Terror el mayor ahorro por salir
 temprano.
@@ -314,8 +315,9 @@ comprar, no en el torniquete. Los precios actuales para tu fecha están en
 
 **Comer.** Los dos parques tienen restaurantes de mesa con reserva y mucha
 oferta de comida rápida entre medias. Nuestra base de datos recoge 35 locales
-de restauración en el Disneyland Park y 19 en Adventure World. A la hora de
-comer es cuando las colas en las atracciones ceden un poco.
+de restauración en el Disneyland Park y 19 en Adventure World. A mediodía,
+cuando las colas se forman delante de los mostradores, las de las atracciones
+ceden un poco.
 
 ## Preguntas frecuentes sobre Disneyland Paris
 
@@ -338,9 +340,10 @@ están en la tabla comparativa de arriba.
 ### ¿Por qué el Walt Disney Studios Park ahora se llama Disney Adventure World?
 
 El nuevo nombre rige desde el 29 de marzo de 2026 y se había anunciado desde
-el 12 de abril de 2024. Llegó junto con la zona World of Frozen y marca el
-final de la temática de estudio de cine, que desde 2002 encajaba cada vez
-menos con lo que realmente hay allí.
+el 12 de abril de 2024. Llegó junto con la zona World of Frozen y acaba con la
+temática de estudio de cine, que desde 2002 encajaba cada vez menos con lo que
+realmente hay allí. Una montaña de Frozen de 36 metros con su propio fiordo ya
+no cuela como decorado de rodaje.
 
 ### ¿Funciona ahora mismo Crush's Coaster?
 
@@ -377,7 +380,7 @@ distancia similar: sobre [Walibi Belgium](/blog/walibi-belgium-tiempos-de-espera
 y sobre el [Efteling](/blog/efteling-el-disney-de-los-paises-bajos) ya hay aquí
 sendos textos. Y si tu viaje cae entre ahora y el verano de 2027: Adventure
 World funciona en estos meses con trece atracciones en vez de catorce. Quien
-ya dudaba si el ticket de dos parques merece el sobreprecio, tiene ahora un
+ya dudaba de si el ticket de dos parques merece el sobreprecio tiene ahora un
 argumento menos a favor.
 
 — Patrick

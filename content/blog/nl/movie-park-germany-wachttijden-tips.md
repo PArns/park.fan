@@ -2,6 +2,7 @@
 title: '30 jaar Movie Park Germany, en geen enkel merk uit 1996 is er nog'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -65,10 +66,9 @@ heet sinds 2005 anders, is sinds 2010 van een Spaans concern en viert zijn
 dertigste verjaardag uitgerekend met een attractie van Paramount.
 
 Daar komt een getal bij dat helemaal niet past bij de reputatie van dit park.
-Over **135 gemeten openingsdagen** sta je in het
+Over alle openingsdagen die we tot nu toe gemeten hebben, sta je in het
 [Movie Park](ref:movie-park-germany) ruim half zo lang aan als in het
-[Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker. Daar is
-het dertig.
+[Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker.
 
 En de leegste weekdag is de dag die geen enkele tipsite je noemt.
 
@@ -79,8 +79,8 @@ in 1967 opende. Daaruit ontstond het Traumlandpark, en begin jaren negentig
 probeerde Bavaria Film het hier met een eigen **Bavaria Filmpark**. Die hield
 het van 1992 tot 1994 vol.
 
-Toen kwam Warner. Op **30 juni 1996** ging het park open voor betalende gasten,
-en de rekensom erachter was simpel: een studio leent zijn figuren uit aan een
+Toen kwam Warner, met Michael Douglas en alles erop en eraan. De rekensom
+erachter was simpel: een studio leent zijn figuren uit aan een
 park, het park verkoopt kaartjes, iedereen wint. Zolang de studio blijft.
 
 Die bleef acht jaar. In oktober 1999 verkocht Time Warner 97 procent aan
@@ -91,9 +91,8 @@ zo goed als alles hernoemen wat een naam uit een Warner-film droeg. In maart
 2005 ging het weer open als **Movie Park Germany**. Vijf jaar later, op 17 mei
 2010, nam de Spaanse exploitant **Parques Reunidos** het over.
 
-Wat dat concreet betekent zie je het best aan de attracties zelf. Vijf van de
-bekendste hier zijn van naam veranderd omdat op de achtergrond een contract
-afliep:
+Vijf van de bekendste attracties zijn daardoor van naam veranderd, telkens omdat
+er ergens op de achtergrond een contract afliep:
 
 | Geopend als            | Jaar | Heet nu                                          |
 | ---------------------- | ---- | ------------------------------------------------ |
@@ -107,17 +106,16 @@ De tussenstations zijn dan nog niet eens meegeteld. De hal van de Looney Tunes
 herbergde van 2005 tot 2016 **Ice Age Adventure**, tot ook die licentie niet
 verlengd werd en de boottocht dichtging. Vier jaar stond het gebouw leeg.
 
-Daartussen ligt de episode die veel vertelt over de jaren tien in Bottrop. In
-2012 legde het park de gemeente Bottrop plannen voor voor een **45 meter hoge
+Het mooiste verhaal uit de jaren tien gaat over een achtbaan die nooit af kwam.
+In 2012 legde het park de gemeente Bottrop plannen voor voor een **45 meter hoge
 achtbaan** vlak achter de ingang, tien miljoen euro, opening in 2014. De
 funderingen werden gestort. Toen stopte Parques Reunidos het project, omdat in
 Spanje de bezoekersaantallen wegzakten. Er werd pas in 2017 weer gebouwd, en
 toen iets anders.
 
 Die voorgeschiedenis verklaart de reputatie die Movie Park in de coasterwereld
-tot vandaag heeft. Wie er tussen 2012 en 2016 kwam, zag een park dat zijn
-gevels in stapjes van twee per jaar opknapte en dat zichzelf aanprees met films
-die het niet meer mocht laten zien.
+tot vandaag heeft. Wie er tussen 2012 en 2016 kwam, zag een park waar weinig
+bewoog en dat zichzelf aanprees met films die het niet meer mocht laten zien.
 
 ## De filmgeschiedenis die het in plaats daarvan vertelt
 
@@ -143,9 +141,9 @@ een scène driekwart ronddraait, en een wissel in het traject.
 In twaalf scènes wordt de geschiedenis van het park zelf verteld. Je rijdt door
 een filmarchief, door de afdeling special effects, door de geluidsafdeling, door
 een maquettewerkplaats, en overal staan verwijzingen naar attracties die hier
-ooit waren. King Kong hapt tussendoor naar de trein. De baan opende voor de
-25ste verjaardag, en daarmee is het het verjaardagscadeau van een park aan
-zichzelf.
+ooit waren. King Kong hapt tussendoor naar de trein. Het park opende de baan
+voor zijn eigen 25ste verjaardag en gaf zichzelf dus een achtbaan over zichzelf
+cadeau.
 
 ![Een maquette van een parkterrein op een werkbank, ernaast opgerolde tekeningen en een koffiebeker | Een van de twaalf scènes: de maquettewerkplaats, waar het parkterrein als schaalmodel op tafel staat, hal en parkeerplaats incluis. | wide](/media/movie-park-germany/movie-park-studio-tour.jpg)
 
@@ -156,7 +154,7 @@ en het is de enige plek in het park waar de verdwenen attracties nog voorkomen.
 ### Journey to the Forbidden Chamber
 
 In 2026 heeft het park het precies zo gedaan. Op **14 mei 2026** opende
-**Journey to the Forbidden Chamber**, een exclusieve Paramount-attractie: een
+**Journey to the Forbidden Chamber**, een Paramount-attractie: een
 immersive tunnel van **Simworx**, dus een bewegend platform voor een projectie,
 met effecten in de ruimte. Je speelt een figurant in een productie van Paramount
 Studios in Los Angeles. De film daarvoor werd in november 2025 op het echte
@@ -192,7 +190,7 @@ bij de derde aanloop is de snelheid genoeg voor de top hat, en daarna volgen
 Immelmann, heartline roll en kurkentrekker. De soundtrack is van IMAscore, met
 daarvoor een preshow met projecties.
 
-Het is bovendien de enige baan van het park waar rennen ’s ochtends echt loont:
+Het is bovendien de baan waar rennen ’s ochtends het meest oplevert:
 de rij is in het tweede uur op zijn langst en wordt daarna nooit meer zo lang.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
@@ -230,8 +228,8 @@ ene keer laten.
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** is de
-attractie waar in dit park het langst voor wordt gewacht, en op papier valt dat
-niet uit te leggen. Geopend op **18 juni 2011**, een bobsled coaster van
+attractie waar in dit park het langst voor wordt gewacht, en aan de kerncijfers
+zie je dat niet af. Geopend op **18 juni 2011**, een bobsled coaster van
 **Gerstlauer** in de voormalige Gremlins-hal, 3.000 vierkante meter, acht meter
 hoog, 400 meter lang, **36 km/u**. Parques Reunidos gaf er vijf miljoen euro voor
 vrij, een maand na de overname.
@@ -246,8 +244,8 @@ eruit als een Amerikaanse garage. De rails is gevuld, waardoor het ding binnen
 verrassend stil is, en de tweede lifthill trekt aan met wrijvingswielen, zodat
 het wagentje al klimmend sneller wordt.
 
-Het knelpunt staat in het datablad: **848 personen per uur**. Voor de populairste
-attractie van een park dat op drukke dagen tienduizenden binnenlaat is dat te
+De verklaring staat toch in het datablad, één regel lager: **848 personen per
+uur**. Voor een park dat op drukke dagen tienduizenden binnenlaat is dat te
 weinig, en je ziet het in onze cijfers de hele dag terug.
 
 ```glossary-widget slug=ride-capacity
@@ -285,8 +283,9 @@ meestgenoemde antwoord: slopen.
 
 ## En de rest, waar het park eigenlijk op draait
 
-Acht achtbanen is voor een park van deze omvang geen bijzonder goede score.
-Movie Park leeft van de dingen ertussen.
+Acht achtbanen klinkt als meer dan het is: drie ervan zijn klein, en de twee
+binnenbanen komen niet boven de 60 km/u. Movie Park leeft sowieso van de dingen
+ertussen.
 
 **[Excalibur – Secrets of the Dark Forest](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest)**
 is een speed rapid river van Intamin uit het openingsjaar die al drie levens
@@ -321,7 +320,7 @@ daarom de moeite waard.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 tot slot is de wildwaterbaan in **Nickland**, gebouwd voor basisschoolkinderen,
-en toch een van de twee langste rijen van het park, omdat op warme middagen het
+en toch een van de langste rijen van het park, omdat op warme middagen het
 halve park er tegelijk op afgaat.
 
 De podia horen hier vanaf dag één bij: een studiopark zonder stuntshow was in
@@ -337,11 +336,9 @@ uur.
 
 ```
 
-## Twintig minuten, en een rij die nooit korter wordt
+## Korte rijen, op één na
 
-Onze wachttijdhistorie voor Bottrop begint in **december 2025** en beslaat
-**135 bruikbare openingsdagen**. Over alle weekdagen gerekend ligt de typische
-wachttijd in het parkgemiddelde op twintig minuten (mediaan).
+Onze wachttijdhistorie voor Bottrop begint in **december 2025**.
 
 De tien attracties waar je het langst staat:
 
@@ -352,7 +349,7 @@ De tien attracties waar je het langst staat:
 Bovenaan staat geen achtbaan met 90 km/u, maar een binnenrit met 36. Van
 Helsing’s Factory heeft de hoogste mediaan van het park, en daarachter liggen
 meerdere attracties gelijk, waaronder de wildwaterbaan uit het kinderdeel. Star
-Trek staat in de middenmoot, terwijl de meesten juist voor die baan komen.
+Trek, de grootste baan van het park, staat in de middenmoot.
 
 Dat heeft weinig met populariteit te maken en veel met capaciteit. Van Helsing
 haalt 848 personen per uur, en omdat de rit binnen ligt is het bovendien waar het
@@ -389,8 +386,8 @@ maar op een gewone dag rij je er meer.
 
 > [!NOTE]
 > Eén beperking die voor dit park extra telt. Onze historie begint in december
-> 2025, en voor **september, oktober en november staat er geen enkele bruikbare
-> dag in**. Uitgerekend de weken van het Halloween Horror Festival zijn bij ons
+> 2025, en voor **oktober en november staat er nog geen enkele bruikbare dag
+> in**, voor september alleen de eerste weken. Uitgerekend de weken van het Halloween Horror Festival zijn bij ons
 > dus niet gemeten. Wat de kalender verderop voor het najaar laat zien is een
 > prognose, geen meting.
 
@@ -411,7 +408,7 @@ inderdaad langer dan op zondag, en beide zijn bij ons ongeveer even vaak gemeten
 dus direct vergelijkbaar. Alleen is zaterdag nu eenmaal niet de drukste dag van
 de week.
 
-Bij maandag en dinsdag is dat juist niet het geval, en het aantal meetdagen zegt
+Maandag en dinsdag kun je zo niet vergelijken, en het aantal meetdagen zegt
 waarom. Buiten de vakanties is het park op die dagen dicht, dus komen onze
 maandagen en dinsdagen bijna uitsluitend uit de zomervakantie, en
 zomervakantiedagen zijn de drukste van het jaar. Op de
@@ -434,14 +431,14 @@ Movie Park lijkt, ziet de week er trouwens bijna hetzelfde uit, nagerekend in de
 
 ### Het rooster vanaf 2 september
 
-Het belangrijkste voor iedereen die dit najaar wil gaan, staat niet in de
-wachttijdtabel maar in de kalender.
+Wie dit najaar wil gaan, heeft de kalender harder nodig dan welke
+wachttijdtabel ook.
 
 De **zomervakantie in Noordrijn-Westfalen eindigt op 1 september 2026**. Een dag
 later schakelt het park over op het najaarsbedrijf en gaat dan alleen nog van
 **donderdag tot en met zondag** open. Maandag, dinsdag en woensdag is het dicht.
-Het advies “ga doordeweeks” is vanaf september dus niet alleen slecht, het is
-onuitvoerbaar.
+Het advies “ga doordeweeks” was al slecht, en vanaf september kun je het niet
+eens meer opvolgen.
 
 Daarmee blijft er voor de twee maanden tot het einde van het seizoen een heel
 korte aanbeveling over: **donderdag, vrijdag of zondag, niet zaterdag.**
@@ -471,7 +468,8 @@ zeggen wat iedereen vermoedt: in de zomervakantie wordt het druk.
 
 Bij januari, maart en december staan er daarentegen maar drie tot vier meetdagen
 achter de waarde. De orde van grootte klopt, op de minuut zou ik me daar niet
-vastleggen. September tot en met november ontbreken helemaal.
+vastleggen. Van september hebben we tot nu toe alleen de eerste weken, oktober
+en november ontbreken helemaal.
 
 ## Halloween Horror Festival: 26 september tot 8 november
 
@@ -498,8 +496,7 @@ publiek meespeelt in plaats van toekijkt.
 Eén dag zou ik apart noteren. Op **17 oktober** draait voor de vijfde keer de
 eventdag **Haunters Against Hate**. Bottrop hield die in 2022 als eerste pretpark
 ooit, en het idee erachter bevalt me. Mensen wier werk zes weken lang bestaat uit
-vreemden laten schrikken, gaan een dag lang publiekelijk staan voor het
-tegendeel van uitsluiting.
+vreemden laten schrikken, komen een dag lang publiekelijk op tegen uitsluiting.
 
 Hoe het geheel zich verhoudt tot Traumatica, Walibi en Toverland, welke huizen
 wat kosten en waar het echt pijn doet, staat uitgebreid in onze
@@ -517,9 +514,10 @@ kettingzaag. Vanaf de vroege avond lopen de acteurs door het park, en de scare
 zones zijn uitdrukkelijk niet voor zesjarigen gemaakt. Wie er met
 basisschoolkinderen is, plant het vertrek vooraf in.
 
-Een halloweenavond is trouwens de langste parkdag van het jaar. Het park
-verlengt daarvoor tot 22 uur, het dagticket loopt door, en daarmee kom je aan
-twaalf uur aan één stuk. Langer was alleen de verjaardag in juli open.
+Een halloweenavond levert je trouwens bijna de langste parkdag van het jaar op.
+Het park verlengt daarvoor tot 22 uur, het dagticket loopt door, en daarmee kom
+je aan twaalf uur aan één stuk. Alleen op de verjaardag in juli was het langer
+open.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -569,26 +567,24 @@ met een GdB van 100 en een van de kenmerken aG, Bl, B of H komen gratis binnen,
 de begeleider betaalt € 29,90. Voorkeursparkeren dichter bij de ingang kost
 € 19,90 en is alleen online te koop.
 
-**Seizoenpassen.** Hier zit de eigenlijke prijstip, en deze week in het
-bijzonder. Vier niveaus, voor volwassenen en kinderen dezelfde prijs. Regulier
-kosten ze Bronze € 89,90, Silber € 135,90, Gold € 155,90 en Platin € 179,90. In
-de voorverkoop voor het seizoen 2027, die nog tot **6 september 2026** loopt,
-zijn het Silber € 81,50, Gold € 93,50 en Platin € 107,90. De pas geldt vanaf het
-ophalen, dekt dus de rest van dit seizoen inclusief het complete Halloween Horror
-Festival en daarna heel 2027.
+**Seizoenpassen.** Hier zit de eigenlijke prijstip. Vier niveaus, voor
+volwassenen en kinderen dezelfde prijs: Bronze € 89,90, Silber € 135,90, Gold
+€ 155,90 en Platin € 179,90. Wat nu verkocht wordt, is al de pas voor 2027, en
+die geldt vanaf de aankoop tot en met **7 november 2027**. Wie nu koopt, heeft
+dus de rest van dit seizoen inclusief het complete Halloween Horror Festival en
+daarna het hele seizoen 2027. Wie al een pas voor 2026 heeft en verlengt, betaalt
+aan de infokassa per niveau € 15 minder; online krijg je die korting niet.
 
-Die twee regels zijn het vergelijken waard. Bronze krijgt geen korting en kost in
-de voorverkoop dus € 89,90, Gold € 93,50. Voor € 3,60 verschil vervallen alle
-gesloten dagen, zit het parkeren erbij en komt de Bonus Club erbovenop. Bronze
-kopen zolang de sale loopt, slaat nergens op.
+Tussen Bronze en Gold zit € 66. Daarvoor vervallen alle gesloten dagen, zit het
+parkeren erbij en komt de Bonus Club erbovenop.
 
 **De Bonus Club** is het deel waar in Bottrop bijna niemand aan denkt. Hij hangt
 aan Gold en Platin en aan de definitieve plastic kaart met foto, en hij zet een
 hele rij vreemde parken op je ticket:
 
 - **Eén keer gratis entree** per kalenderjaar in de [Efteling](ref:efteling). Een
-  dagticket daar kost regulier zo’n vijftig euro, ongeveer de helft van wat de
-  Gold-pas op dit moment zelf kost.
+  dagticket daar kost regulier zo’n vijftig euro, ongeveer een derde van wat de
+  Gold-pas zelf kost.
 - **Drie keer gratis entree** in [Bobbejaanland](ref:bobbejaanland), in
   Attractiepark Slagharen (zonder Aqua Mexicana) en in Weltvogelpark Walsrode.
   Alle drie horen net als Movie Park bij Parques Reunidos.
@@ -598,13 +594,13 @@ hele rij vreemde parken op je ticket:
 - **Kortingen** daarbovenop: 40 % in beide Walibi-parken en in de Plopsa-parken,
   50 % bij Belantis, Fort Fun en in het Schwaben Park.
 
-De kleine lettertjes zijn kort, maar ze tellen. Tropical Islands is uitgesloten
+De lijst heeft een paar haken en ogen. Tropical Islands is uitgesloten
 op zaterdagen, op feestdagen en in de vakanties van Berlijn, Brandenburg en
 Saksen, de voordelen zijn niet met andere aanbiedingen te combineren, en de lijst
 geldt telkens voor één seizoen. Voor 2026 staat hij als pdf bij het park, de
 versie voor 2027 komt nog.
 
-Drie dingen staan er verder nog in de kleine lettertjes:
+Bij de pas zelf staan drie dingen in de kleine lettertjes:
 
 - **Bronze heeft de meeste gesloten dagen**: december en januari compleet, plus
   alle feestdagen, de zaterdagen in de NRW-vakanties, de zaterdagen in oktober en
@@ -642,8 +638,8 @@ Of het in Bottrop regent, bepaalt de helft van het park:
 
 ### Hoe lang zijn de wachttijden in Movie Park?
 
-Over 135 gemeten openingsdagen ligt de typische wachttijd in het parkgemiddelde
-op **twintig minuten** (mediaan). De hoogste waarde van het park heeft [Van
+Korter dan bij de grote buren: over alle tot nu toe gemeten openingsdagen sta je
+hier ruim half zo lang als in het Phantasialand. De hoogste waarde van het park heeft [Van
 Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), niet de grote
 achtbaan. De actuele cijfers staan op de [Movie
 Park-parkpagina](ref:movie-park-germany?bare).
@@ -676,15 +672,16 @@ vergelijking met de andere Europese evenementen staan in de
 Aan de kassa **€ 59,90** vanaf 12 jaar en € 54,90 voor kinderen van 4 tot en met
 11, online **vanaf € 34,90** voor allebei. Gereduceerd kost de dag € 29,90,
 kinderen onder de vier zijn gratis, parkeren kost € 9. De seizoenpassen kosten
-regulier € 89,90 (Bronze) tot € 179,90 (Platin); in de voorverkoop voor 2027, nog
-tot 6 september 2026, is Gold € 93,50 en Platin € 107,90.
+€ 89,90 (Bronze) tot € 179,90 (Platin). Verkocht wordt al de pas voor 2027, die
+vanaf de aankoop tot en met 7 november 2027 geldt, de rest van het najaar 2026
+dus inbegrepen.
 
 ### Hoeveel achtbanen heeft Movie Park?
 
 Acht: Star Trek™: Operation Enterprise, The Bandit, Van Helsing’s Factory, Movie
 Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron’s Atomic Flyer en
 Backyardigans Mission to Mars. Twee daarvan liggen volledig binnen, en met Bandit
-staat hier de eerste moderne houten achtbaan van Duitsland.
+staat hier de houten achtbaan die in 1999 de enige van Duitsland was.
 
 ### Kom je zonder auto bij Movie Park?
 
@@ -700,12 +697,11 @@ het Halloween Horror Festival een ander bedrijf. Wie vooral grote achtbanen zoek
 zit in het [Phantasialand](ref:phantasialand) of het
 [Heide-Park](ref:heide-park) beter.
 
-## Wat ik je voor Bottrop meegeef
+## Waarom ik er toch graag heen ga
 
 Ik heb dit park lang tekortgedaan. Vanuit het Rijnland rijd je het Phantasialand
-voorbij om in Bottrop te komen, en wie dat doet wil een reden. Twintig minuten
-mediaan is er om te beginnen geen, dat klinkt naar een park waar niets te doen
-is. Terwijl dat juist de reden is: je rijdt hier op een gewone dag meer dan in
+voorbij om in Bottrop te komen, en wie dat doet wil een reden. Korte rijen zijn
+er om te beginnen geen, die klinken naar een park waar niets te doen is. Terwijl dat juist de reden is: je rijdt hier op een gewone dag meer dan in
 het Phantasialand of het Europa-Park, en zes weken per jaar staat in dezelfde
 decors het naar eigen telling grootste Halloween-evenement van het continent.
 
@@ -717,20 +713,19 @@ kwam in 2017, de laatste geplande ligt sinds 2012 als fundering onder het gras,
 en de nieuwigheid in het jubileumjaar is een filmtunnel in het gebouw van een
 attractie uit 2014.
 
-En toch heeft bijna geen Duits park zo veel mensen die telkens terugkomen. In
+En toch komen verrassend veel mensen telkens terug. In
 oktober reizen ze uit het hele land naar Bottrop, velen van hen elk jaar, en wie
 hier met een seizoenpas door de Streets of New York loopt, doet dat niet omdat er
 de laatste tijd veel in geïnvesteerd zou zijn. Op 45 hectare staat een decorstad
 die in 1996 met het geld van een Hollywoodstudio is gebouwd en waarvan de gevels
 er nog steeds staan, hoewel de studio al tweeëntwintig jaar weg is. Het park
-heeft vier eigenaren achter zich, elk merk verloren waarmee het begon, en is op
-een gegeven moment attracties over zijn eigen verleden gaan bouwen. De beste hal
-van het park vertelt vandaag over de attracties die hier ooit waren.
+is drie keer van eigenaar gewisseld, heeft elk merk verloren waarmee het begon, en is op
+een gegeven moment attracties over zijn eigen verleden gaan bouwen.
 
 Ga je er dit najaar heen: neem de zondag, niet de zaterdag, sta om tien uur bij
 de ingang en ga eerst bij Star Trek in de rij. En loop je na sluitingstijd terug
 over de parkeerplaats, draai je dan nog één keer om. De oude Vekoma die iedereen
-wil slopen staat dan paars uitgelicht voor de maan.
+wil slopen is dan paars uitgelicht, en met een beetje geluk staat de maan erachter.
 
 — Patrick
 
@@ -756,7 +751,7 @@ wil slopen staat dan paars uitgelicht voor de maan.
 - PHOBIA – The Live Horror Game Show in Studio 7 en de monsterparade: [Shows (officieel)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (sinds 2022, in 2026 de vijfde editie op 17 oktober): [Haunters Against Hate (officieel)](https://www.movieparkgermany.de/en/halloween/hah) · [“Haunters Against Hate” bij Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
 - Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (officieel)](https://www.movieparkgermany.de/en/christmas)
-- Prijzen, seizoenpassen, voorverkoop 2027 (tot 6 september 2026) en parkeergeld: [Onze prijzen & aanbiedingen (officieel)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Seizoenpas (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Entreeprijzen 2026 (NRW-Parks, Duits)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
+- Prijzen, seizoenpassen 2027 (geldig vanaf aankoop tot en met 7 november 2027, verlengingskorting aan de infokassa) en parkeergeld: [Onze prijzen & aanbiedingen (officieel)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Seizoenpas (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Entreeprijzen 2026 (NRW-Parks, Duits)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
 - Bonus Club: voordelen alleen voor Gold en Platin, gratis entree in de Efteling per kalenderjaar, drie keer Bobbejaanland, Slagharen en Weltvogelpark Walsrode, plus de kortingslijst: [Bonus Club (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Voordelen 2026, parken van de groep (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf) · [Voordelen 2026, pretparken, dierentuinen en co. (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-%28bonusclub%28/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf)
 - Route, station Feldhausen, SB16: [Route & parkeren (officieel)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Uitstapje met de trein (DB Regio NRW, Duits)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Herfstvakantie NRW 2026 (17 tot en met 31 oktober): [Vakantieregeling Noordrijn-Westfalen (Bildungsportal NRW, Duits)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)

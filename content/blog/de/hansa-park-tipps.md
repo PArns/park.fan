@@ -2,12 +2,13 @@
 title: 'Hansa-Park: Der Kärnan fährt 127 km/h, und die Saison hat keinen Schließtag'
 translationKey: hansa-park-guide
 date: '2026-09-22'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   In Sierksdorf steht die zusammen mit dem Silver Star höchste und schnellste
-  Achterbahn Deutschlands, dazu der höchste Gyro-Drop-Tower der Welt. Dazu ein
+  Achterbahn Deutschlands, dazu der höchste Gyro-Drop-Tower der Welt. Außerdem ein
   Kalender ohne einen einzigen Schließtag, 16 Leuchtfiguren-Abende im Oktober
   und acht Achterbahnen, von denen vier für Kinder gebaut sind.
 tags:
@@ -63,24 +64,23 @@ Sierksdorf liegt 24 Kilometer Luftlinie nördlich von Lübeck. Der Park nennt si
 „Deutschlands einziger Erlebnispark am Meer“, und diesmal ist das kein Werbewort: hinter dem
 Gelände liegt der Strand, und zwischen Park und Ferienhäusern fährt die Bahnlinie nach Puttgarden.
 
-## Was diesen Park von den anderen unterscheidet
+## Kurze Wege, anderthalb Rekorde
 
 Der Hansa-Park kommt mit **46 Hektar** aus. Der Heide Park hat 85, und dieser Unterschied ist der
 erste, den du im Bein spürst: Zwischen zwei Achterbahnen liegen hier selten mehr als ein paar
 Minuten, und die elf Themenbereiche gehen ineinander über, statt durch Wiesen getrennt zu sein.
 
-Auf dieser Fläche stehen zwei Rekorde. Der [Highlander](ref:hansa-park/highlander?bare) ist der
-höchste Gyro-Drop-Tower der Welt, und der
-[Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) teilt sich mit dem
-[Silver Star](ref:europa-park/silver-star?bare) die höchste und schnellste Achterbahn Deutschlands.
+Auf dieser Fläche stehen anderthalb Rekorde. Der [Highlander](ref:hansa-park/highlander?bare) ist
+der höchste Gyro-Drop-Tower der Welt. Beim
+[Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) gehört dem Park der halbe Titel, die
+andere Hälfte fährt als [Silver Star](ref:europa-park/silver-star?bare) in Rust.
 Der Rest des Parks ist ausgesprochen familiär, mit einer Kanalfahrt von 1977 und vier Achterbahnen,
 die für Kinder gebaut sind.
 
-Das Geld geht hier auch nicht in eine Neuheit alle drei Jahre. Seit 2008 baut der Park an einem
-einzigen Themenbereich weiter, Fassade für Fassade und Stadt für Stadt, und zwischen 2019 und 2025
-kam keine einzige Achterbahn dazu. Wer einen Park sucht, der alle zwei Jahre einen Coaster
-hinstellt, ist hier falsch. Wer einen sucht, der jeden Tag seiner Saison geöffnet hat und im Oktober
-2.000 Leuchtfiguren aufhängt, statt Mazes zu bauen, ist richtig.
+Das Geld geht hier nicht in eine neue Achterbahn alle paar Jahre. Seit 2008 baut der Park an einem
+einzigen Themenbereich weiter, Stadt für Stadt, und zwischen 2019 und 2025 kam keine einzige
+Achterbahn dazu. Wer Neuheiten zählen will, fährt woanders hin. Dafür hat der Park jeden Tag seiner
+Saison geöffnet und hängt im Oktober 2.000 Leuchtfiguren auf, wo andere Parks Mazes bauen.
 
 [Hansa-Park](ref:hansa-park?full)
 
@@ -93,8 +93,9 @@ erste Abgang fällt aus 67 Metern.
 
 Der eigentliche Trick liegt aber im Turm und ist von außen nicht zu sehen. Auf halber Strecke
 fährt der Zug dort wieder hinein und fällt rückwärts, im Dunkeln, aus über 60 Metern. Der Park
-nennt das weltweit einzigartig und hat die Fallgeschwindigkeit 2017 von rund 5 auf rund 11 Meter
-pro Sekunde mehr als verdoppelt.
+nennt das weltweit einzigartig, fand es zwei Jahre nach der Eröffnung aber offenbar noch zu
+gemächlich: 2017 hat er die Fallgeschwindigkeit von rund 5 auf rund 11 Meter pro Sekunde mehr als
+verdoppelt.
 
 ```glossary-widget slug=infinity-coaster
 
@@ -105,10 +106,9 @@ Die zweite große Bahn fährt seit **2009**, heute im Themenbereich Peterhof von
 hoch, 750 Meter lang, **107 km/h**, und sie kombiniert zwei Dinge, die sonst getrennt vorkommen:
 einen LSM-Launch und einen senkrechten Kettenlift in derselben Anlage. Ihr erster Abgang fällt mit
 **97 Grad** über die Senkrechte hinaus, und er liegt im Dunkeln. Bis 2020 hieß sie Fluch von
-Novgorod. Der Park hat 2021 einen Buchstaben getauscht und die Umbenennung selbst erklärt.
+Novgorod, seit 2021 hängt ein t dran.
 
-**[Nessie](ref:hansa-park/nessie)** ist die Bahn, wegen der dieser Park Anfang der Achtziger in der
-Zeitung stand. Anton Schwarzkopf baute sie **1980**, 26 Meter hoch, 741 Meter lang, 85 km/h, mit
+**[Nessie](ref:hansa-park/nessie)** baute Anton Schwarzkopf **1980**, 26 Meter hoch, 741 Meter lang, 85 km/h, mit
 einem einzelnen senkrechten Looping, und sie war damals die größte Loopingbahn Europas. Sie fährt
 seit 46 Jahren, und seit 2019 tut sie das in einem neu thematisierten Bereich.
 
@@ -117,14 +117,14 @@ Mine](ref:hansa-park/crazy-mine)** von Maurer Rides fährt seit 1997 als Wilde M
 13 Meter hoch und nach 70 Sekunden vorbei. Der **[Royal Scotsman](ref:hansa-park/royal-scotsman)**
 ist ein Vekoma-Juniorcoaster von **1993**, der bis 2019 Rasender Roland hieß. Die **[Schlange von
 Midgard](ref:hansa-park/midgard-serpent)** steht seit 2011 im Wikingerland und fängt bei 90
-Zentimetern an, **[Der kleine Zar](ref:hansa-park/the-little-tsar)** seit 2017 bei 95 Zentimetern und
-drei Metern Höhe.
+Zentimetern an, **[Der kleine Zar](ref:hansa-park/the-little-tsar)** seit 2017 bei 95 Zentimetern, mit
+ganzen drei Metern Höhe.
 
 Die jüngste kam in dieser Saison dazu. Der **[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster)** hat am
 **23. Mai 2026** eröffnet, wieder Gerstlauer, 18 Meter hoch, rund 570 Meter lang, ab 90 Zentimetern.
 Der Park zählt **sieben Launches** auf einer Runde, vorwärts und rückwärts. Sieben
-Beschleunigungen auf 570 Metern sind für eine Familienbahn viel, und sie zahlen auf die Fahrzeit
-ein: 1:45 Minuten, länger als Crazy Mine und Royal Scotsman mit je 1:10.
+Beschleunigungen auf 570 Metern sind für eine Familienbahn viel, und man merkt sie an der Fahrzeit:
+1:45 Minuten, länger als Crazy Mine und Royal Scotsman mit je 1:10.
 
 ## Der Turm, der Soltau den Rekord abgenommen hat
 
@@ -139,7 +139,8 @@ lässt der Highlander fallen, und darüber stehen noch einmal 17.
 
 ```
 
-Praktisch heißt das 1,40 Meter Mindestgröße, die höchste Hürde im ganzen Park.
+Für Familien zählt am Highlander vor allem eine andere Zahl: 1,40 Meter Mindestgröße, die höchste
+Hürde im ganzen Park.
 
 ## Ein Kalender ohne Schließtag
 
@@ -154,10 +155,10 @@ mehreren Wochentagen. Wer in Sierksdorf einen ruhigen Wochentag sucht, bekommt i
 wirklich als Öffnungstag und nicht als verschlossenes Tor.
 
 Die Uhrzeiten sind fast genauso gleichförmig. Bis zum **9. Oktober** öffnet der Park täglich um
-**10 Uhr**, und die Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fallen aus der Reihe,
-und an allen dreien geht es um das Gelände, nicht um die Bahnen: Am Karfreitag, dem 3. April,
-fahren die Attraktionen erst ab 11 Uhr. Am 11. August bleibt das Gelände bis 19 Uhr offen, am 12. August bis 18:30, während die Bahnen an beiden Abenden um 18 Uhr stillstehen. Die letzten
-16 Tage der Saison haben einen eigenen Grund.
+**10 Uhr**, und die Fahrattraktionen schließen um **18 Uhr**. Genau drei Tage fallen aus der Reihe.
+Am Karfreitag, dem 3. April, fahren die Attraktionen erst ab 11 Uhr. Am 11. August bleibt das
+Gelände bis 19 Uhr offen, am 12. August bis 18:30, die Bahnen stehen an beiden Abenden trotzdem um
+18 Uhr still. Anders laufen nur die letzten 16 Tage der Saison, und das liegt am Herbstzauber.
 
 ```map-widget slug=hansa-park
 
@@ -175,8 +176,9 @@ Park hängt stattdessen rund **2.000 Leuchtfiguren** auf und fährt zwei Program
   mit einem Feuerwerk aus den Arenamauern.
 
 In der [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour) tanzen nach Einbruch der
-Dunkelheit knapp 1.000 Leuchtfiguren zu klassischer Musik. Die Kanalfahrt von **1977** ist damit
-ausgerechnet im Oktober die Attraktion, für die sich der Umweg am meisten lohnt.
+Dunkelheit knapp 1.000 Leuchtfiguren zu klassischer Musik. Ausgerechnet die Kanalfahrt von
+**1977**, im Sommer eher etwas für die Mittagspause, ist damit im Oktober die Attraktion, für die
+ich mich zuerst anstellen würde.
 
 An so einem Abend bauen drei Uhrzeiten den Tag um.
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) und
@@ -196,8 +198,9 @@ bis 20:30 Uhr weiter, mit der Pause während der Parade.
 Im [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) stehen zehn Parks. Acht davon
 bespielen genau diesen Zeitraum mit Mazes und Scare Zones, zwei lassen Halloween ganz aus. Der
 Hansa-Park macht etwas Drittes: dieselben Abende, volles Programm, nur ohne Schrecken. Wer mit
-Kindern unter zehn fährt, ist hier deshalb besser aufgehoben als bei einem Maze-Abend. Die
-Abendshow selbst ist laut, und der Park warnt vor Schreckreaktionen bei den Kleinsten.
+Kindern unter zehn fährt, ist hier deshalb besser aufgehoben als bei einem Maze-Abend. Ganz ohne
+Schrecken geht es aber auch hier nicht: Die Abendshow ist laut, und der Park warnt selbst vor
+Schreckreaktionen bei den Kleinsten.
 
 ## Dieser Park rechnet in Jahren, nicht nur in Zentimetern
 
@@ -214,9 +217,10 @@ lassen Kinder ohne Begleitung erst **ab 10 Jahren** fahren. Die
 [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) fangen bei 90 Zentimetern an,
 [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) bei 95.
 
-Ein siebenjähriges Kind mit 1,25 Metern kommt hier also an weniger Bahnen als seine Größe vermuten
-lässt. Umgekehrt ist der Park für alles unterhalb der Achterbahnen breit aufgestellt: Die
-Attraktionsliste im Katalog zählt **82 Einträge**, und der Park selbst wirbt mit über 125.
+Ein siebenjähriges Kind mit 1,25 Metern kommt hier also an weniger Bahnen, als seine Größe vermuten
+lässt, und wird dir das an der Einstiegskontrolle von Crazy Mine vermutlich laut mitteilen.
+Unterhalb der Achterbahnen gibt es dafür reichlich: Unser Katalog zählt **82 Attraktionen**, der
+Park selbst wirbt mit über 125 und zählt offenbar großzügiger.
 
 ## Vom Legoland zum Hansa-Park
 
@@ -240,9 +244,9 @@ kam die erste originalamerikanische Wildwasserbahn Deutschlands dazu. Auch die f
 
 Die ersten zwanzig Jahre waren vor allem Show-Jahre. **1978** eröffnete hier das damals größte und
 modernste Kuppelbau-Delfinarium Europas mit 1.400 Sitzplätzen; seit **1994** verzichtet der Park
-auf Delfinshows. 1984 eröffnete das Showtheater mit einer Produktion von Frank Elstner, in der
-Kandidaten auftraten, die ihre Wette bei „Wetten, dass..?“ verloren hatten. In den Jahren darauf
-standen Wim Thoelke und Michael Schanze auf derselben Bühne.
+auf Delfinshows. 1984 eröffnete das Showtheater mit „Wetten Spaß“ von Frank Elstner: Wer bei
+„Wetten, dass..?“ seine Wette verloren hatte, bekam in Sierksdorf eine zweite Chance. In den Jahren darauf standen Wim Thoelke und Michael Schanze auf
+derselben Bühne.
 
 Dazwischen wuchs der Fahrbetrieb: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** der
 [Super Splash](ref:hansa-park/super-splash?bare), **1987** die
@@ -272,8 +276,8 @@ beträgt **drei Nächte**, kürzer geht nur auf Anfrage. Gegenüber den Parkhote
 ist das eine andere Bauart: Ferienhaus statt Themenhotel, und die Kalkulation geht eher über den
 Ostseeurlaub als über den Parktag.
 
-Für einen einzelnen Besuch ist das selten die richtige Antwort. Für eine Woche im Juli, in der der
-Park zwei der sieben Tage füllt, schon.
+Für einen einzelnen Parktag lohnen sich drei Nächte selten. Für eine Woche im Juli, in der der Park
+zwei der sieben Tage füllt, schon.
 
 ## Praktisches: Anreise, Tickets, Parken
 
@@ -292,8 +296,7 @@ ab 70 Jahren 43 €. Wer am Geburtstag kommt und höchstens 12 wird, kommt koste
 aber nur an der Kasse. Das 2-Tagesticket kostet 85 € beziehungsweise 65 € und wird per
 Gesichtserkennung personalisiert. Die Saisonkarte liegt bei **135 €**.
 
-Der Online-Preis ist derselbe wie der Kassenpreis. Das ist erwähnenswert, weil es in Soltau
-27 € Unterschied sind: Hier sparst du mit dem Vorverkauf keinen Cent, nur die Schlange an der Kasse.
+Der Online-Preis ist derselbe wie der Kassenpreis. In Soltau sind es 27 € Unterschied, hier sparst du mit dem Vorverkauf keinen Cent, nur die Schlange an der Kasse.
 
 **Im Eintritt enthalten.** Alle Fahrattraktionen, Shows und Mitmachattraktionen, die in Betrieb
 sind. Einzelne Angebote wie das Goldwaschen kosten extra.
@@ -302,8 +305,7 @@ sind. Einzelne Angebote wie das Goldwaschen kosten extra.
 
 Der Park hat die nächste Neuheit schon angekündigt: den **Buddenbrook-Turm** im Hansa-Garten,
 überdacht, Eröffnung im Laufe der Saison 2027. Mehr steht bisher nicht fest. Nach dem Cornwall
-Coaster wären das zwei Neuheiten in zwei Jahren, nachdem zwischen 2019 und 2025 keine einzige
-Achterbahn dazugekommen war.
+Coaster wären das zwei Neuheiten in zwei Jahren, für diesen Park fast schon Hektik.
 
 ## Häufige Fragen zum Hansa-Park
 
@@ -369,14 +371,11 @@ ob Lichter-Parade und Abendshow überhaupt laufen:
 Und wenn du gerade den Norden planst: Der [Heide Park](/blog/heide-park-wartezeiten-tipps) liegt
 131 Kilometer Luftlinie südwestlich und lässt sich in derselben Woche mitnehmen.
 
-## Was ich dir für Sierksdorf mitgebe
+## Wo der Haken liegt
 
-Dieser Park hat zwei Gesichter. Das eine ist ein 79 Meter hoher Turm mit der
-schnellsten Achterbahn des Landes darin, das andere ein Familienpark mit einer Kanalfahrt von 1977
-und Leuchtfiguren im Oktober. Die meisten Parks entscheiden sich irgendwann für eines von beidem.
-Der Hansa-Park stellt beides nebeneinander auf 46 Hektar.
-
-Bezahlt wird das mit der Lage. Hamburg liegt 78 Kilometer Luftlinie entfernt, alles südlich davon
+Ein 79 Meter hoher Turm mit dem Kärnan darin und eine Kanalfahrt von 1977 mit Leuchtfiguren stehen
+hier auf denselben 46 Hektar. Die meisten Parks hätten sich längst für eines von beiden
+entschieden. Bezahlt wird das mit der Lage. Hamburg liegt 78 Kilometer Luftlinie entfernt, alles südlich davon
 deutlich weiter, und wer nur wegen der acht Achterbahnen kommt, ist am frühen Nachmittag durch. Der
 Park rechnet damit, dass du ohnehin an der Ostsee bist.
 

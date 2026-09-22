@@ -2,6 +2,7 @@
 title: 'Efteling: the Disney of the Netherlands, three years before Disneyland'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -10,8 +11,8 @@ excerpt: >-
   before Disneyland. It belongs to no corporation, only to a foundation that
   isn’t allowed to pay anyone out and that built a holiday village for
   seriously ill children next door. And because a nature permit draws the line
-  at five million guests, you still typically wait only a good quarter of an
-  hour here despite 5.78 million visits.
+  at five million guests, the queues here are surprisingly short for 5.78
+  million visits.
 tags:
   - efteling
   - wait-times
@@ -34,7 +35,7 @@ coverImage:
 seo:
   title: 'Efteling: wait times, tips & best time to visit'
   description: >-
-    Efteling with real wait-time data from more than 150 operating days: best time to go,
+    Efteling with real wait-time data we measured ourselves: best time to go,
     tickets, Winter Efteling, and why only five million visitors a year are
     allowed in.
   keywords:
@@ -73,7 +74,7 @@ Fairytale Forest opened on **31 May 1952** with ten fairy tale scenes. Disneylan
 in Anaheim opened three years later, in July 1955. If anyone here should be named
 after anyone, it is the other way round.
 
-The comparison limps worse in a second place. Disney belongs to shareholders.
+The comparison falls down in a second place too. Disney belongs to shareholders.
 Efteling belongs to nobody.
 
 ## A park that belongs to nobody
@@ -96,14 +97,14 @@ biggest in Europe (only
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in Paris and
 [Europa-Park](ref:europa-park) in Rust sit above it).
 
-Those 3,000 staff are worth a second look. In 2023 the Dutch voted Efteling the
+And the 3,000 people who work there seem to like it. In 2023 the Dutch voted Efteling the
 **most attractive employer in the country** in the private sector, in the
 **Randstad Employer Brand Research**. Kantar surveys more than ten thousand people
 about the 150 largest employers in the Netherlands every year, and what came up
 for Efteling was reputation, working atmosphere and financial health. ASML holds
 the title now, three years running, but in 2023 a theme park finished ahead of
-every corporation in the country. For an industry that elsewhere stands for
-seasonal contracts and minimum wage, that is not a given.
+every corporation in the country. In an industry better known for seasonal
+contracts and minimum wage, that is not a headline you see often.
 
 It started with two men and a sports park. **Anton Pieck**, an illustrator, drew
 the fairy tales and, over the following decades, well over a thousand designs for
@@ -113,14 +114,15 @@ Holle Bolle Gijs. Pieck’s rule for the forest was that nothing was allowed to 
 like a machine. You can still see it on every roof overhang.
 
 The ten fairy tales of 1952 have grown to more than thirty, the newest being the
-Princess and the Pea from 2025. For the **75th birthday in 2027** the
-Sprookjesbibliotheek joins them, a walk-in library of fairy tales and, according
-to the park, number 32.
+Princess and the Pea from 2025. For the **75th birthday in 2027**, according to
+the park, number 32 joins them.
 
 ## The five realms
 
-The park splits into five areas, and the names say more about the character than
-any map does: Marerijk, Reizenrijk, Anderrijk, Ruigrijk, Fantasierijk. Plus the
+The park splits into five areas: Marerijk, Reizenrijk, Anderrijk, Ruigrijk,
+Fantasierijk. Roughly translated that is the realms of fairy tales, travel, the
+other, the rough and fantasy, and the rough realm really is where the wilder
+rides are. Plus the
 Fairytale Forest, counted as an area of its own since November 2023.
 
 ![The Symbolica palace at night, lit blue, with a fountain in front | You can walk through the palace from the outside without queueing. The ride itself starts in the cellar below. | right](/media/efteling/symbolica-4x3.jpg)
@@ -160,7 +162,7 @@ down.
 the literal sense. Swiss manufacturer **Intamin** developed the ride system
 together with the park, it is called the **Dynamic Motion Stage**, and the one in
 Kaatsheuvel is the first of its kind anywhere. It went into service on
-31 October 2024, on the plot of the legendary Spookslot, which had closed after
+31 October 2024, on the plot of the old Spookslot, which had closed after
 44 years. Together with the new Huyverwoud themed area the park put roughly
 **35 million euros** into it.
 
@@ -191,7 +193,7 @@ ceiling beams. The big **chandeliers** from the tunnel beside the old castle han
 in the restaurant _In den Swarte Kat_ today, and the **old Spookslot entrance** has
 become the entrance to the souvenir shop _Dr. Charlatans Kwalycke Zaken_. The
 neon **violin**, the Spookslot’s lead character, does not return in its old form,
-but it carries a good deal of the new show.
+but it does get a big moment in the new show.
 
 The whole thing won the **Thea Award** from the Themed Entertainment Association
 in 2025. In May 2025 the park sharpened it up: more of a view into the crypt, an
@@ -236,9 +238,9 @@ a few curves were widened and re-banked. The trains are the old ones.
 ![A giant golden bird with outstretched wings above the entrance to Vogel Rok | Rok, the giant bird from the Thousand and One Nights. Behind him it goes into the mountain. | left](/media/efteling/vogel-rok-4x3.jpg)
 
 **[Vogel Rok](ref:efteling/vogel-rok)** has run entirely in the dark since 1998,
-643 metres, 65 km/h, without a single inversion but with on-board audio. It is the
-proof that a coaster does not have to be fast to feel fast: when you cannot see
-where you are going, 65 km/h is plenty.
+643 metres, 65 km/h, without a single inversion but with on-board audio. On paper
+that sounds like a family coaster. When you cannot see where you are going,
+though, 65 km/h is plenty.
 
 **[Piraña](ref:efteling/pirana)** is the rapids ride from 1983 and the most
 reliable way to cool off here. **[Max & Moritz](ref:efteling/max-and-moritz)**
@@ -248,8 +250,7 @@ one: since **1 May 2026** there has been a 14.5 metre chimney next to Baron, wit
 three small drop towers that rotate their way up to 9.5 metres and then fall six.
 From 90 centimetres, around 600 guests an hour.
 
-The part many people underrate sits in Marerijk.
-**[Villa Volta](ref:efteling/villa-volta)** was, in 1996, the **first modern
+**[Villa Volta](ref:efteling/villa-volta)** in Marerijk was, in 1996, the **first modern
 madhouse in the world**: a room that turns around you while your bench stays put,
 built by Vekoma, told as a curse on the highwayman Hugo van den Loonsche Duinen.
 The madhouses put up across half of Europe afterwards all go back to this model.
@@ -258,18 +259,18 @@ The madhouses put up across half of Europe afterwards all go back to this model.
 
 **[Droomvlucht](ref:efteling/droomvlucht)** from 1993 is the elf ride that turns
 Dutch adults to mush. You float in gondolas through forests, fairy castles and a
-night sequence where the track briefly drops away. If you want to know why a dark
-ride without a single scare produces the typical wait it does, ride it once and
-you will get it.
+night sequence where the track briefly drops away. If you are wondering why a
+dark ride without a single scare has a queue like that in front of it, ride it
+once and you will stop wondering.
 
 ![Fata Morgana’s minaret at blue hour, the bazaar’s domes behind it | You see nothing of the attraction from outside. It sits entirely behind this facade. | left](/media/efteling/fata-morgana-4x3.jpg)
 
 **[Fata Morgana](ref:efteling/fata-morgana)** from 1986 is an eight-minute boat
 ride through fourteen scenes from the Thousand and One Nights, without a single
 drop, designed by Ton van de Ven. 1,800 guests an hour, which explains why it
-rarely shows up in the wait-time table despite being popular. Practically nothing
-happens in there, and it still turns up on almost every list of Europe’s best
-dark rides.
+rarely shows up in the wait-time table despite being popular. By coaster
+standards nothing happens in there at all. I would still put it among Europe’s
+best dark rides.
 
 ![The Stoomcarrousel and its gilded horses under an orange canvas roof | The Gavioli organ is as old as the carousel. The steam engine went out in 1944, the name stayed. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -313,19 +314,18 @@ or quietly cleared it away.
 **The Sprookjesboom** took the opposite route. First came the animated series on
 Dutch television from October 2006, in which a talking tree watches the figures of
 the forest bicker. Four years later, on 1 April 2010, the nine metre oak actually
-appeared in the Sprookjesbos, opposite the Little Match Girl. A park building
-itself an attraction out of its own TV series.
+appeared in the Sprookjesbos, opposite the Little Match Girl.
 
-Things do get sold here, of course, and the forest costs you an admission ticket
-like everything else. Even that is built into the scenery, though. **Kogeloog**,
+Even the fairytale forest has a till somewhere. It is just built into the scenery
+too. **Kogeloog**,
 the coffee and stroopwafel stand, sits directly opposite Langnek and is named
 that way because Kogeloog is one of the six servants from that very fairy tale.
 His bust hangs on the facade, along with oval frames holding all six. The stand
 has been there since 1967, closed in 2002 for lack of custom, and has been open
 again since 26 April 2019.
 
-The practical value of this patch of woodland is enormous, incidentally. There is
-no queue, no capacity limit and no ride time. Several thousand guests can be in
+This patch of woodland is also the best trick against queues the park has. There
+is no queue, no capacity limit and no ride time. Several thousand guests can be in
 here at once without a wait time ever having to go up at the entrance. That is one
 reason a park with almost six million visits has bearable wait times.
 
@@ -336,14 +336,14 @@ north-south and east-west that cross at the Herautenplein, with red-paved side
 paths to the individual scenes. The yellow shortcuts are going. After that you can
 take the forest in two portions on two days without getting lost.
 
-## A good quarter of an hour, measured across 150 operating days
+## How long you will queue here
 
-"A park for the whole family" is in every brochure. The only way to back it up is
-with queues.
+"A park for the whole family" is in every brochure. Whether the whole family ever
+gets on anything is a question for the wait times.
 
 Our history for Efteling covers **more than 150 operating days** with wait-time data,
 recorded since December 2025. Across all days of the week the typical park-wide
-wait sits at **a good quarter of an hour** (median); on the one day in ten when
+wait sits **under half an hour** (median); on the one day in ten when
 there really is something going on, it is about half as long again.
 
 The ten most in-demand attractions:
@@ -354,17 +354,16 @@ The ten most in-demand attractions:
 
 Two things stand out.
 
-First, the steam railway is in seventh place. A train from 1969 that does a lap of
-the park has a longer typical queue than Droomvlucht. That is down to capacity
+First, the steam railway keeps turning up in this list. A train from 1969 that
+does a lap of the park, in among the dark rides and coasters. That is down to capacity
 rather than popularity: two trains, a tight timetable, and in summer a lot of
 families who have stopped wanting to walk with tired children. The measurement
-base is much thinner than the others at 32 and 41 days, because the stations do
+base is much thinner than the others (see the days column), because the stations do
 not report wait times all year. I would not lean on the exact ordering behind
 that, but the order of magnitude holds.
 
-Second: a good half hour for the longest queue in the park is, measured against
-almost six million visits, very little. For comparison, same data base, same
-method. Attendance for 2025 alongside it: Europa-Park 7 m across the resort,
+Second, even the longest queue in the park is short for almost six million
+visits. For comparison, same data, same method. Attendance for 2025 alongside it: Europa-Park 7 m across the resort,
 Efteling 5.78 m, Toverland 1.14 m.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
@@ -381,12 +380,12 @@ plus a fairytale forest that absorbs several thousand people without any of them
 queueing anywhere. A park with three times the crowd really does have more than
 three times the capacity here.
 
-And one number in that table I find particularly nice: **Voltron** at Europa-Park,
-opened in 2024, the most expensive new build in the park’s history, has exactly
-the same typical wait as **Joris en de Draak**, a 2010 wooden coaster that Efteling
+And one detail in that table I find particularly nice: **Voltron** at Europa-Park,
+opened in 2024, the most expensive new build in the park’s history, sits roughly
+level in the longest-queue column with **Joris en de Draak**, a 2010 wooden coaster that Efteling
 does not even market as a headliner.
 
-## The visitor cap: five million, and not one more
+## The five million ceiling
 
 There is a second reason for the short queues. It sits in a government file rather
 than a brochure.
@@ -455,8 +454,7 @@ It is carried by close to **300 volunteers**, running costs come to about
 **1.3 million euros a year**, and it is funded entirely by donations. Villa
 Pardoes holds the CBF seal and ANBI status.
 
-One decision here I find remarkable. The villa deliberately has **no medical
-station**. Anyone who comes has to manage a week without intensive treatment.
+One thing is missing from the villa on purpose: **a medical station**. Anyone who comes has to manage a week without intensive treatment.
 That rules out children who need continuous care. The villa sticks with it anyway,
 so that for seven days the illness is not what writes the daily schedule.
 
@@ -473,16 +471,13 @@ back on stage there this year. The Dutch park scene is smaller than it looks.
 > [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) is the platform for your
 > own campaigns.
 
-The house has been run by volunteers and on donations, week after week, for
-twenty-five years.
-
 ## When to go
 
 Efteling is open 365 days a year, and that shifts the usual rules.
 
 **By month**, April is the most relaxed of the main season months in our data.
 May, June and July sit close together, August picks up noticeably, and the
-hardest work is **December**, the Winter Efteling season.
+most crowded is **December**, the Winter Efteling season.
 
 That comes with a caveat, otherwise it reads as more precise than it is: April
 through August each have a full month of measured days behind them, December,
@@ -541,8 +536,8 @@ app**. You pick your group size, join digitally, get a notification on your phon
 and then use a separate entrance to scan in. Unlike 2017 it was voluntary this
 time, with the normal queue still running alongside.
 
-And then there was June 2026 at **[Python](ref:efteling/python)**, which is worth
-studying. From **18 to 29 May 2026** the park replaced the single rider line with
+And then came early summer 2026 at **[Python](ref:efteling/python)**. From
+**18 to 29 May 2026** the park replaced the single rider line with
 two queues by group size: even-numbered groups on the left (two, four, six, eight),
 odd-numbered ones and solo riders on the right, each with its own wait-time
 display. The thinking is simple. Turn up as a three and you mathematically leave a
@@ -612,8 +607,8 @@ and look. Most people walk past.
 The **[Volk van Laaf](ref:efteling/volk-van-laaf)** has been an entire invented
 people by Ton van de Ven since 15 June 1990, with its own settlement, its own
 mythology and a backstory in which it dug its way through the earth to Kaatsheuvel.
-There is no source material for it. The park made it up, built it and has looked
-after it since.
+There is no source material, no fairy tale, no book. The park simply made
+them up.
 
 The **[Gondoletta](ref:efteling/gondoletta)** has been running since 13 April 1981,
 forty boats across 1,081 metres of water, and one lap takes **twenty minutes**.
@@ -625,8 +620,8 @@ park.
 
 **Tickets.** Prices are dynamic and run between **40 and 56 €** a day in 2026,
 children up to and including three go free. Unlike at
-[Phantasialand](ref:phantasialand) there is no dated obligation here: the standard
-ticket is valid for a year from purchase, and so is a flexible undated one. Guests
+[Phantasialand](ref:phantasialand) you do not have to commit to a date: the
+standard ticket is valid for a year from purchase, and so is a flexible undated one. Guests
 with a disability and up to three companions pay 2 € less. **Parking costs 15 €**,
 and the parking ticket then stays valid for a year for further visits.
 
@@ -681,8 +676,8 @@ the hills.
 
 And then the downside: **December is the busiest month of the year in our data**.
 In December you are waiting about as long everywhere in the park as you otherwise only wait at Joris en de
-Draak. On top of that comes the halted ticket sale as soon as a holiday day brings
-the permit limit within reach. If you want to see the winter season in peace, take
+Draak. On top of that, ticket sales stop as soon as a holiday brings the permit
+limit within reach. If you want to see the winter season in peace, take
 a weekday in November or the second half of January, not the week between
 Christmas and New Year.
 
@@ -704,9 +699,9 @@ without animals in future regardless.
 **At the end of 2026** the area comes back as a whole: a new show in the rebuilt
 open-air theatre, with a new plot, more show technology and the same performers,
 plus a thrill attraction outside the city wall on which you are supposed to spin
-through the air as if under a raven’s wings. Whether that makes up for the horse
-version remains to be seen. That a park makes this decision voluntarily rather than
-after a scandal speaks for it.
+through the air as if under a raven’s wings. Whether that makes up for the horses
+remains to be seen. Nobody forced the park’s hand, at any rate: the authority had
+found nothing.
 
 **In 2027**, for the 75th birthday, the **Sprookjesbibliotheek** opens as the 32nd
 fairy tale. Rather than a scene you walk past, it will be a library you can enter,
@@ -722,8 +717,8 @@ which is to say right behind the main entrance.
 
 What the park continues not to do is Halloween. "Wees gerust, de Efteling viert
 geen Halloween", rest assured, we do not celebrate Halloween, is on their own
-website word for word. How it can still be one of Europe’s most atmospheric autumn
-parks is something I wrote up in the
+website word for word. Why an autumn visit is worth it anyway is
+something I wrote up in the
 [Halloween guide](/blog/halloween-theme-parks-2026). Short version: long evenings
 until 8 pm, lanterns in the trees, the Huyverwoud, and nobody with a chainsaw.
 
@@ -741,9 +736,10 @@ more in a day than the attendance figure would suggest.
 ### How long are the wait times at Efteling?
 
 Across every operating day we have measured the typical park-wide wait is
-**a good quarter of an hour** (median). The longest queue is
-[Joris en de Draak](ref:efteling/joris-en-de-draak), followed
-by [Danse Macabre](ref:efteling/danse-macabre). Current numbers are on the
+**under half an hour** (median). The longest queues are at the coasters
+and the big dark rides, above all
+[Joris en de Draak](ref:efteling/joris-en-de-draak) and
+[Danse Macabre](ref:efteling/danse-macabre). Current numbers are on the
 [Efteling park page](ref:efteling).
 
 ### When is Efteling least busy?
@@ -791,13 +787,13 @@ After that come the Sprookjesbibliotheek in 2027 and Missie Luminar in 2029.
 
 ## A bin that says thank you
 
-Three of the ten most in-demand attractions are dark rides, two are stations on
-the same steam railway, and the part almost every guest walks through once is a
+The most in-demand attractions include dark rides and a steam railway from
+1969, and the part almost every guest walks through once is a
 patch of woodland without a single ride in it.
 
-So the line about the Disney of the Netherlands holds up if you mean it as a
-compliment about craft, detail and the will to tell a story. As a description of
-where it came from it does not. Nobody copied this park. It was here first.
+So as a compliment to the craftsmanship, the line about the Disney of the
+Netherlands is fine. As a description of where the park came from it is wrong,
+and I will keep using it anyway.
 
 Whether it is raining in Kaatsheuvel decides half the day:
 
@@ -810,8 +806,8 @@ And the two you will queue longest for, with their current numbers:
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)
 
-If you do go: take the hour for the Fairytale Forest, even if there is a coaster
-outside sitting at 20 minutes. And on your way past, throw something into the
+If you do go: take the hour for the Fairytale Forest, even if Joris happens to
+have a short queue. And on your way past, throw something into the
 yellow fellow with the open mouth. He has been saying thank you to every single
 person since 1959.
 

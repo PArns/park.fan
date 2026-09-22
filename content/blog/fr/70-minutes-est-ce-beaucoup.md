@@ -65,11 +65,11 @@ mesurés, la file la plus longue était plus courte que cette valeur, sur l’au
 moitié plus longue. **Chargé** est le 90e centile de la même série, soit à peu
 près le jour sur dix où il y avait vraiment du monde.
 
-Ce sont deux centiles et non des moyennes, et ce n’est pas un détail. Une
+Ce sont des centiles, pas des moyennes. Une
 moyenne se laisse déplacer par une seule journée exceptionnelle : un après-midi
 avec une panne et 150 minutes d’engorgement tire vers le haut la moyenne d’un
 mois entier, alors que pendant 29 jours on n’en a rien senti. La médiane ne
-bronche pas devant une journée pareille. Le record figure donc à part, avec sa
+bronche même pas devant une journée pareille. Le record figure donc à part, avec sa
 date, pour qu’on le voie sans qu’il touche aux deux autres chiffres.
 
 Pour [Phantasialand](ref:phantasialand), le classement ressemble à ceci. La colonne des jours
@@ -110,11 +110,11 @@ parc.
 
 ## L’essentiel se joue avant le départ
 
-L’heure te fait gagner une demi-heure. La date te fait gagner la journée. Entre
+L’heure te fait gagner une demi-heure, la date jusqu’à une heure entière. Entre
 deux jours de la même semaine de vacances, il peut y avoir une demi-heure
 d’attente moyenne d’écart, et un calendrier ordinaire n’en laisse rien voir. Ce
 qui fait la différence : quelles régions sont en vacances, s’il y a un pont
-accroché derrière, s’il pleut, et s’il se passe quelque chose de l’autre côté de
+accroché derrière, s’il pleut et s’il se passe quelque chose de l’autre côté de
 la frontière.
 
 Ce dernier point est volontiers sous-estimé. Un parc proche d’une frontière
@@ -145,17 +145,13 @@ sont compressées, mais chaque analyse continue de porter sur tous les relevés
 jamais arrivés. Commencer à enregistrer la troisième année, c’est avoir un an d’historique la
 troisième année, et les deux précédentes sont perdues pour de bon.
 
-## Et les endroits où nous ne disons rien
-
-Une page où tous les champs sont remplis est facile à construire. Elle ne
-devient intéressante que lorsqu’on peut se fier aux champs remplis, et pour cela
-quelques champs doivent avoir le droit de rester vides.
+## Là où nous préférons ne rien dire
 
 [Hansa-Park](ref:hansa-park), par exemple, ne donne ses temps d’attente que dans sa propre
 application, et seulement pour les appareils connectés au wifi du parc. Il
 n’existe aucune interface publique. Dans les données brutes, ce parc ressemble à
 n’importe quel autre à trois heures du matin : aucune attraction ne remonte quoi
-que ce soit. Si nous en tirions la conclusion évidente, 82 attractions y
+que ce soit. Si nous en tirions la conclusion évidente, toutes les attractions du parc y
 seraient en « très faible », avec une moyenne de 0 minute et une prévision
 fondée sur zéro observation. À la place, la page du parc porte une mention
 disant qu’il n’y a rien à lire ici.
@@ -179,7 +175,6 @@ Quatre situations de visite concrètes s’y trouvent aussi, de la famille penda
 les vacances d’automne à l’abonné annuel à sept heures du soir.
 
 Et la prochaine fois que tu seras devant l’entrée à fixer l’affichage : regarde
-ce qui est normal sur cette attraction un mardi. En dix secondes, tu sauras s’il
-y a de quoi râler ou si c’est simplement mardi.
+ce qui est normal sur cette attraction un mardi.
 
 — Patrick

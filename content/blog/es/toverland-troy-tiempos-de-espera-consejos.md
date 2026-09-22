@@ -2,15 +2,16 @@
 title: 'Toverland: Troy, la montaña rusa de madera por la que nadie hace cola'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Toverland es un parque pequeño y encantado por delante del cual pasa media
+  Toverland es ese parque pequeño por delante del cual pasa media
   Renania camino del Efteling. Y mientras tanto, en Sevenum hay una montaña rusa
-  de madera de GCI por la que esperas un cuarto de hora largo, cuando la de madera
-  del destino cuesta más del doble. Sobre un parque en el que una vez hice yo mismo de espanto
-  entre bastidores, y que a día de hoy no vende ningún pase rápido.
+  de madera de GCI por la que esperas más o menos un cuarto de hora, cuando la de madera
+  del destino cuesta más del doble. Sobre un parque en el que una vez hice yo mismo de actor de
+  sustos entre bastidores, y que a día de hoy no vende ningún pase rápido.
 tags:
   - attractiepark-toverland
   - troy
@@ -69,25 +70,24 @@ mismo, cruza su propia vía y, en algún momento a mitad del recorrido, atravies
 agachan por puro reflejo.
 
 A los 110 segundos vuelves a estar donde arrancaste, y te giras. Detrás de ti:
-nadie. Puedes quedarte sentado.
+nadie. Así que bajas, cruzas la cola vacía y vuelves a subir.
 
 ![El caballo de Troya de madera en Ithaka, sobre un carro, con luz de otoño | El caballo de Troya vigila la entrada de Ithaka. La montaña rusa se esconde detrás, entre los árboles. | right](/media/toverland/troy-4x3.jpg)
 
 Esa es la parte que me cuesta explicar. Troy está entre las mejores montañas
 rusas de madera de Europa y se encuentra en un parque por delante del cual pasan
-cada año cientos de miles de aficionados sin desviarse: por la A67 entre Venlo y
+cada año montones de aficionados sin desviarse: por la A67 entre Venlo y
 Eindhoven, salida Sevenum. A la mayoría le queda entonces una buena hora por
 delante, hasta Kaatsheuvel, hasta el [Efteling](ref:efteling), el Disney de los
 Países Bajos.
 
 Setenta kilómetros separan los dos parques. En ambos hay una montaña rusa de
-madera del mismo fabricante estadounidense. Por una esperas normalmente un buen
-cuarto de hora, por la otra más del doble. La cola más corta está en Sevenum.
+madera del mismo fabricante estadounidense. Por una esperas normalmente más o menos
+un cuarto de hora, por la otra más del doble. La cola más corta está en Sevenum.
 
-El [Toverland](ref:attractiepark-toverland?long)
-de Sevenum cumple este año 25, lo considero uno de los parques pequeños
-más bonitos de Europa, y en el que una vez estuve yo mismo disfrazado, al otro
-lado.
+El [Toverland](ref:attractiepark-toverland?long) de Sevenum, que para mí es uno
+de los parques pequeños más bonitos de Europa, cumple este año 25. Una vez
+incluso estuve allí disfrazado, al otro lado.
 
 ## Qué hace tan buena a Troy
 
@@ -118,8 +118,7 @@ los que un tren de madera clásico zarandearía a sus pasajeros. 24 personas por
 tren, dos trenes, 850 personas por hora.
 
 Queda el prejuicio que arrastra toda montaña rusa de madera a partir de cierta
-edad: que traquetea. En eso trabaja el parque de forma muy sistemática desde
-**2024**. En un **retrack** de varios años sustituye cada invierno unos
+edad: que traquetea. En eso trabaja el parque desde **2024**. En un **retrack** de varios años sustituye cada invierno unos
 198 metros de recorrido en ambos raíles, cerca de 400 metros lineales de madera
 por temporada. Se trabaja bajo un techo provisional para que la lluvia y las
 heladas no frenen las obras, y lo hacen veinte personas del propio equipo
@@ -133,10 +132,10 @@ brusca»: vuelve a montar.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## Lo que Troy cuesta de verdad, medido a lo largo de 150 días de funcionamiento
+## Lo que Troy te cuesta en cola
 
 Calculado sobre más de 150 días de funcionamiento con datos de espera, el tiempo
-de espera típico de Troy es de **un cuarto de hora escaso** (mediana). Incluso
+de espera típico de Troy es de **más o menos un cuarto de hora** (mediana). Incluso
 ese día de cada diez en el que más movimiento hay, se queda por debajo de la
 media hora. Eso no es el martes muerto de marzo, es la media de todos los días
 de apertura.
@@ -150,9 +149,9 @@ por su doble recorrido. Misma base de datos, mismo método de cálculo:
 ```
 
 Más del doble, para una atracción que en los European Star Awards nunca quedó
-por encima de Troy. Si cruzamos tipos de construcción, la imagen se vuelve
-aún más clara. ¿Qué cuestan en tiempo de espera los grandes nombres de la
-región, sean de madera o de acero?
+por encima de Troy. Si sumas el acero, a los vecinos no les va
+mejor. Esto cuestan en tiempo de espera los grandes nombres de la región, de
+madera o de acero:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, acero;phantasialand/fly|F.L.Y.|Flying, acero;efteling/joris-en-de-draak|Joris en de Draak|Madera;efteling/baron-1898|Baron 1898|Dive coaster, acero;attractiepark-toverland/troy|Troy|Madera;attractiepark-toverland/fenix|Fēnix|Wing, acero columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -160,7 +159,7 @@ región, sean de madera o de acero?
 
 Las dos atracciones de Toverland están abajo, con distancia. En el tiempo que
 haces cola **una sola vez** para [Taron](ref:phantasialand/taron) en
-Phantasialand, aquí montas tres veces en [Troy](ref:attractiepark-toverland/troy).
+Phantasialand, aquí montas varias veces en [Troy](ref:attractiepark-toverland/troy).
 
 Detrás está la cuenta de [El arte de esperar](/blog/el-arte-de-esperar), demanda
 dividida entre capacidad. Toverland tuvo **1.137.000 visitantes** en 2025 y los
@@ -234,16 +233,15 @@ El departamento mojado y oscuro es mejor que su fama:
 - **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse de Vekoma que te
   convence a pies juntillas de que giras tú y la sala está quieta.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), una torre panorámica de
-  40 metros desde la que se ve lo pequeño que es en realidad este parque, y lo
-  completo.
+  40 metros desde la que se ve lo pequeño que es en realidad este parque y
+  cuánto le han metido dentro.
 
 ## De nave contra la lluvia a parque temático
 
-Pocos parques de este tamaño tienen una prehistoria tan improbable. Empieza sin
-una sola montaña rusa.
+La historia de este parque de montañas rusas empieza sin una sola montaña rusa.
 
 El **19 de mayo de 2001**, la familia Gelissen abrió en Sevenum un centro de
-juegos cubierto. Ni parque temático, ni montaña rusa, ni decorados: 2.000 metros
+juegos cubierto. Ni parque temático ni decorados, solo 2.000 metros
 cuadrados techados con estructuras para trepar, toboganes y piscina de bolas,
 construidos para los días de lluvia de una región que tiene muchos. Una empresa
 familiar en la frontera cuyo modelo de negocio consistía en que los niños tienen
@@ -251,9 +249,8 @@ que ir a algún sitio cuando cae un diluvio. La inauguración corrió a cargo de
 joven ilusionista neerlandés que todavía no tenía carrera internacional:
 **Hans Klok**.
 
-Lo que vino después es una historia de crecimiento poco habitual, porque este
-parque nunca tuvo dinero que pudiera desperdiciar y aun así construyó dos veces
-algo que antes no existía en ninguna parte.
+Dinero para desperdiciar, este parque nunca lo tuvo. Aun así construyó dos
+veces algo que antes no existía en ninguna parte.
 
 En **2004** llegó la segunda nave, entonces «Magic Forest», hoy el
 **Wunderwald**. Y con ella [Booster Bike](ref:attractiepark-toverland/booster-bike), el
@@ -288,11 +285,10 @@ justo detrás del ganador, con una atracción que entonces tenía once años. En
 **2023** Avalon siguió creciendo, entre otras cosas con la torre panorámica de
 40 metros [Dragonwatch](ref:attractiepark-toverland/dragonwatch).
 
-Las cifras de visitantes cuentan la misma historia en números: 620.000 en 2013,
+Las cifras de visitantes: 620.000 en 2013,
 862.000 en el último año antes del covid, 2019, por encima del millón de forma
 constante desde 2022 y, por último, **1.137.000 en 2025**. Eso es
-aproximadamente un tercio de lo que mueven el Efteling o Europa-Park, y ahí está
-justamente el encanto.
+aproximadamente un tercio de lo que mueven el Efteling o Europa-Park.
 
 ![El carrusel de cadenas Djinn iluminado en la nave Land van Toos, con visitantes en movimiento en las góndolas | Djinn da vueltas sobre el mercado oriental de Land van Toos, y lo hace completamente bajo techo. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
@@ -363,7 +359,7 @@ Una de las seis experiencias tiene para mí un doble fondo. Con el
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/), una asociación
 alemana de aficionados a las ferias y los parques, estuve entre bastidores en la
 **Maison de la Magie**, y allí pudimos probar nosotros mismos a hacer de
-espanto. No en funcionamiento, sin visitantes reales, solo nosotros y una casa
+actores de sustos. No en funcionamiento, sin visitantes reales, solo nosotros y una casa
 vacía.
 
 ![Una fachada iluminada en rosa con balcón, figura de muñeca y rótulo luminoso «The Dollhouse» | «The Dollhouse», una de las seis haunted experiences. De día es Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
@@ -374,9 +370,8 @@ hace eso cinco horas en una noche, y de modo que el grupo número doscientos se
 lleve el mismo susto que el primero, está logrando algo de lo que desde fuera
 nunca te enteras. Desde entonces, en cada scare zone veo primero a las personas
 dentro de los disfraces y solo después los disfraces. Que esa misma noche
-apareciera el director del parque y se tomara su tiempo encaja con este sitio:
-lo bastante pequeño como para que algo así pueda pasar, y por lo visto lo
-bastante importante como para que pase.
+apareciera el director del parque y se tomara un rato para nosotros es muy de
+este sitio.
 
 > [!TIP]
 > **El consejo que los que conocen Toverland dan enseguida: el Fear Pass.** Por
@@ -401,15 +396,14 @@ Quien lleve tiempo sin ir echará en falta una atracción. El **17 de mayo de
 2026**, la **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** del
 Wunderwald abrió por última vez, la pista de bobsleigh de Mack de 2007, en la
 que con una palanca de freno decidías tú mismo a qué velocidad bajabas. Mientras
-la estuvimos midiendo fue la atracción con la espera más larga de todo
-el parque, y en los días llenos hubo también colas de 60
-o 90 minutos.
+la estuvimos midiendo fue la atracción con la espera típica más larga de todo
+el parque.
 
 Eso se debía a una cuenta que nunca podía salir: en un vagón cabían una, como
 mucho dos personas. Y como en la salida estaba colgado el récord vigente con
 foto, las parejas cogían con frecuencia dos vagones en vez de uno, para que cada
 uno hiciera su propio tiempo. La capacidad se hundía justo en el punto en el que
-la atracción era más divertida. Noventa minutos por noventa segundos, y la gente
+la atracción era más divertida. Una cola larga para una bajada corta, y la gente
 hacía la cola igualmente, una y otra vez, porque delante había un nombre en un
 panel al que se quería ganar.
 
@@ -417,8 +411,8 @@ El último día no fue silencioso. El parque la despidió con una fiesta de verd
 con programa paralelo y recuerdos editados para la ocasión, y la cola fue una
 última vez tan larga como en sus mejores años. La última vuelta, sin embargo,
 fue para quien, según la historia de la casa, siempre ha sido el dueño de la
-atracción: **Maximus Müller**, el inventor excéntrico que habita el Wunderwald,
-se subió él mismo y bajó su propia construcción una última vez.
+atracción: **Maximus Müller**, el inventor excéntrico que vive en el Wunderwald.
+Se subió él mismo y bajó su propia construcción una última vez.
 
 Se puede considerar una tontería, un personaje inventado en un trineo. A mí me
 pareció lo correcto. Durante diecinueve años esta atracción se tomó en serio su
@@ -432,7 +426,7 @@ atracción que hasta ahora no existe en ningún lugar del mundo. Se desarrolló 
 30 kilómetros del parque. El principio de la Blitz Bahn se mantiene, sigues
 regulando tú mismo la velocidad, pero los vehículos se desplazan dinámicamente
 en determinados puntos. Los vagones llegan con estética steampunk, a juego con
-los inventos del manitas Maximus Müller, que habita la zona. El nombre y la
+los inventos de Maximus Müller. El nombre y la
 historia el parque aún no los ha desvelado. Es la tercera vez que aquí nace una
 primicia mundial.
 
@@ -449,10 +443,10 @@ según nuestros datos, entre los meses más llenos del año.
 La respuesta sale muy relajada: casi siempre.
 
 **Por meses**, de marzo a julio todo queda muy junto, y por encima destacan
-**agosto** y las semanas de invierno de **diciembre**. Eso sorprende a mucha
-gente: el periodo más lleno no es solo el verano, sino también la corta y muy
-demandada temporada de invierno, en la que solo funciona una parte de las
-atracciones y el parque abre solo los miércoles y los fines de semana. Una
+**agosto** y las semanas de invierno de **diciembre**. Que el invierno le
+aguante el pulso a pleno verano se debe a que la temporada de invierno es corta
+y muy demandada: solo funciona una parte de las atracciones, y el parque abre
+solo los miércoles y los fines de semana. Una
 salvedad: el invierno y la pretemporada tienen tan pocos días de apertura que
 detrás de esos valores mensuales hay bastantes menos días de medición que detrás
 de los meses de verano. La dirección es clara, el decimal no.
@@ -480,14 +474,14 @@ días de apertura medidos:
 Una cosa a tener en cuenta: las vacaciones **neerlandesas** pesan aquí más que
 las alemanas, sobre todo las de otoño y de mayo de las provincias del sur.
 
-## El día perfecto, en seis frases
+## Un día sin pase rápido
 
 Como no hay pase rápido, aquí solo te ayuda el momento. Aunque tampoco vas a
 necesitar mucho.
 
-Al abrir, ve directo a Ithaka a por **Troy**, no porque si no se vaya a llenar,
-sino porque una montaña rusa de madera todavía está fría por la mañana y a lo
-largo del día circula de forma medible más rápido. Móntala temprano **y** tarde,
+Al abrir, ve directo a Ithaka a por **Troy**. Tampoco se va a llenar más tarde,
+pero una montaña rusa de madera todavía está fría por la mañana y a lo largo del
+día circula de forma medible más rápido. Móntala temprano **y** tarde,
 y habrás montado en dos atracciones distintas. Después **Fēnix** en Avalon, las
 dos grandes están prácticamente pared con pared. En tercer lugar **Booster
 Bike**, porque en nuestros datos tiene la espera típica más larga de todas las
@@ -524,8 +518,7 @@ En este último punto conviene mirar al otro lado de la frontera: Toverland vend
 un pase anual de lo más normal con Halloween incluido. Phantasialand suprimió el
 suyo tras la pandemia y, pese a varias peticiones de fans, no lo ha recuperado.
 Quien viva en la zona fronteriza y vaya varias veces al año a un buen parque
-ahorra con el pase anual de Toverland lo que Phantasialand ya ni siquiera
-ofrece.
+encuentra en Sevenum lo que Phantasialand ya ni siquiera vende.
 
 **Cómo llegar.** Toverland está en **Sevenum** (municipio de Horst aan de Maas),
 Toverlaan 2, a unos diez minutos en coche al oeste de Venlo. Por la **A67**
@@ -566,12 +559,12 @@ colas. Con alrededor de un millón de visitantes al año el parque es pequeño
 comparado con el Efteling o Europa-Park, pero tiene en [Troy](ref:attractiepark-toverland/troy)
 una de las mejores montañas rusas de madera de Europa y en
 [Fēnix](ref:attractiepark-toverland/fenix) el wing coaster más largo del continente, con
-esperas típicas de un cuarto de hora largo.
+esperas típicas de más o menos un cuarto de hora.
 
 ### ¿Cuánto se espera en Toverland?
 
 A lo largo de todos los días de apertura medidos, la espera típica en el
-conjunto del parque es de un cuarto de hora escaso, y Troy y Fēnix están en ese
+conjunto del parque es de más o menos un cuarto de hora, y Troy y Fēnix están en ese
 mismo orden. Las cifras actuales están en la [página del parque
 Toverland](ref:attractiepark-toverland).
 
@@ -598,8 +591,8 @@ necesitas ningún atajo en un día normal.
 [Balder](ref:liseberg/balder) en [Liseberg](ref:liseberg). Entre los
 aficionados, sin embargo, Troy aparece con regularidad en el grupo de cabeza
 europeo, y con 35 metros de altura, 1.077 metros de longitud y 90 km/h es la
-montaña rusa de madera más alta, más larga y más rápida del Benelux. Una cosa sí
-que es, desde luego: la woodie europea de primer nivel con la cola más corta.
+montaña rusa de madera más alta, más larga y más rápida del Benelux. Y su cola es bastante
+más corta que la de su prima de GCI, Joris en de Draak, en el Efteling.
 
 ### ¿Qué hay nuevo en Toverland en 2026?
 
@@ -624,7 +617,7 @@ atracciones en total caben en un día con estas esperas, con tiempo para repetir
 en Troy. Con niños pequeños y las dos naves cubiertas, en cambio, se llenan dos
 días sin problema.
 
-## Quédate sentado
+## Otra vuelta
 
 «Discover your own magic» es el lema del parque, y tengo claro que una frase así
 sale de un departamento de marketing. Lo que pasa es que aquí es cierta.
@@ -652,8 +645,8 @@ Y las dos de las que iba todo esto, con sus cifras actuales:
 [Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Toma alguna vez la salida de Sevenum en lugar de pasar de largo. Y cuando estés
-sentado en Troy y detrás de ti no espere nadie: quédate sentado y vuelve a
-montar. Y después otra vez. Un martes de junio aquí funciona. En la mayoría de
+sentado en Troy y detrás de ti no espere nadie: bájate, cruza la cola vacía y
+vuelve a montar. Y después otra vez. Un martes de junio aquí funciona. En la mayoría de
 los demás parques de Europa, olvídate.
 
 — Patrick

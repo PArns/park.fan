@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos turns 25, and next to it stand four German firsts'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -62,7 +63,7 @@ nobody was allowed to ride. On **28 July 2016**
 middle of the season, because after fifteen years the track was worn out. It
 did not run again until **19 April 2019**.
 
-It came back as a wooden coaster, and that is the remarkable part. The usual
+It came back as a wooden coaster. The usual
 route would have been a different one: when the track of a woodie rots away,
 these days it mostly gets steel rails bolted onto the old structure and carries
 on as a hybrid. Heide Park had new wooden track built instead, new trains to go
@@ -196,8 +197,8 @@ came for.
 
 ## How busy it really gets
 
-This park is not measured by a single ride. The table below stands on two years
-of measurement, each ride with its own number of measured days:
+The table below rests on two years of measurement, each ride with its own
+number of measured days:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -210,7 +211,7 @@ Bobbahn from 1993 and the log flume from 1980, two rides that appear in nobody�
 trip report as a reason to drive to Soltau. For the Bobbahn, the ride time
 explains part of it; for the log flume, the weather does.
 
-More interesting than how high the queues get is when they happen.
+What tells you more is the hour at which the queues grow.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -244,7 +245,9 @@ be bought off. The **Express Ticket** comes in four tiers: Bronze from **€25**
 for the log flume, Big Loop and Bobbahn, Silver from €39 with Krake and Desert
 Race, Gold from €59 adding Colossos and Scream, Platinum from €99 with no
 limit. Two things about it are easy to miss. The three lower tiers include
-**one ride per attraction**, not as many as you like. And it is sold on
+**one ride per attraction**, not as many as you like: if you want a second go
+on Colossos with Gold, you join the back of the normal queue like everyone
+else. And it is sold on
 selected days only and in advance only, which means not at the gate.
 
 ## When to go
@@ -267,11 +270,12 @@ actually been published for the coming weeks is in the calendar on the
 
 ### The weekday
 
-The weekday is a small lever here. Six of the seven days sit close together in
+The weekday matters less here than you might think. Six of the seven days sit close together in
 the table above, only Saturday stands out, and Friday and Sunday sit at the
-bottom. Monday does that on roughly half as many measured days as the rest,
-because the park regularly takes it out of the calendar in spring and autumn. A
-quiet Monday in Soltau is usually a closed Monday.
+bottom. Monday rests on only about half as many measured days as the rest,
+because the park regularly takes it out of the calendar in spring and autumn. So
+the Mondays that do get counted are mostly high-season ones, and those are not
+quiet. A quiet Monday in Soltau is usually a closed Monday.
 
 ### The month
 
@@ -303,15 +307,14 @@ keep being kept. On the first day 2,000 guests came, in the first season around
 
 Three of those six still run today, under different names: the raft ride, the
 elevated railway (now the Panoramabahn) and the western railway, which has been
-called Heide-Park Express since 1997.
+called Heide Park Express since 1997.
 
 The structure that describes the early Heide Park best no longer exists. From
 **1986** until the winter of 2011/2012 a 35-metre replica of the Statue of
 Liberty stood here, unveiled on 4 July 1986 for the original’s hundredth
 birthday, with congratulations from Ronald Reagan. After it came down, the
-upper half served as decoration at Colossos for a few more years, and the rest
-was scrapped for the 2019 reopening. This was the era in which German parks
-rebuilt landmarks instead of buying licences.
+upper half stood around as decoration at Colossos for a few more years, and the
+rest was scrapped for the 2019 reopening.
 
 On **31 December 2001** the British **Tussauds Group** bought the park, and in
 early 2007 **Merlin Entertainments** took the majority of Tussauds off Dubai
@@ -352,8 +355,8 @@ and Hannover, exit **Soltau-Ost**, signposted from there. The site has around
 8,000 parking spaces plus 300 for coaches and motorhomes; parking costs €14
 online for a car and €20 for a motorhome, more on site and by card only. By
 train you go to Soltau or to Wolterdingen; from Wolterdingen it is a 20-minute
-walk, and the Heide Park Express coach runs from Hamburg and Hannover straight
-to the gate.
+walk, and a coach runs from Hamburg and Hannover straight to the gate. It is
+called Heide-Park-Express, like the park railway, and has nothing to do with it.
 
 **Opening hours.** 28 March to 31 October 2026, daily in the core of the
 season, by calendar in spring and autumn and without most Mondays.
@@ -440,18 +443,13 @@ alongside each other.
 
 ## What I would tell you about Soltau
 
-This park pretends least of all to be something else. There is no continuous
-narrative like in Brühl and no 18 countries like in Rust, and the two licensed
-areas are exactly as large as a corporation pays for. What stands here stands
-because of the rides: four layouts that had not existed in Germany before, a
-wooden coaster that was built twice, and a drop tower the park made out of an
-observation tower it already had.
+Heide Park has no continuous story like Brühl and no 18 countries like Rust.
+It has rides, and with four of them it was first in Germany.
 
-The price for that is the acreage. 85 hectares with little shade and long
-distances between the big rides, and on a Saturday in August you feel every
-metre of it. That is why this text spends so much time on the calendar: the
-difference between a good day and a slow day in Soltau is decided at home, on
-the date.
+You pay for that in acreage. 85 hectares with little shade and long distances
+between the big rides, and on a Saturday in August you feel every metre of it.
+If you would rather not, take a Friday in September instead of a Saturday in
+August, and make that call at home, not in the queue for Colossos.
 
 And if you come in October: the long Saturdays do not start until noon. Stand
 in front of the gate at ten and you will spend two hours on a meadow.

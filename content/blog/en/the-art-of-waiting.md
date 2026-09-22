@@ -2,13 +2,13 @@
 title: 'The Art of Waiting: Why We (Gladly) Queue for Some Rides'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 excerpt: >-
-  Sixty minutes of waiting, and yet the time simply flies by? Behind every good
-  queue lie psychology, storytelling and hard-nosed capacity math. From the
-  pre-show to Little’s Law, and right in the middle of it, the reason park.fan
-  exists.
+  Why the same hour in a queue can feel like twenty minutes one day and half
+  your holiday the next. From the pre-show to Little’s Law, and right in the
+  middle of it, the reason park.fan exists.
 tags:
   - wait-times
   - queues
@@ -22,7 +22,7 @@ category: behind-the-scenes
 coverImage:
   src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: 'The Tree of Life at Disney’s Animal Kingdom, with the crowds of the park in front of it'
-  caption: 'Disney’s Animal Kingdom: tens of thousands of guests, one Tree of Life, and everywhere the question of how long you’ll wait for what.'
+  caption: 'Disney’s Animal Kingdom. Tens of thousands of guests, one tree, and every one of them working out which ride is worth the wait.'
 seo:
   title: 'Queue Psychology at Theme Parks'
   description: >-
@@ -52,12 +52,12 @@ on the display: **“60-minute wait.”** On some days you spin on your heel and
 inform your companion that the ride is “overrated anyway.” On others you stand
 in that exact same 60-minute line and would swear afterward it was 25 at most.
 
-That isn’t self-delusion, because both times you were the same person in the
-same queue. It’s the product of two disciplines that mesh perfectly in a good
-park: the psychology of time perception and the mathematics of capacity. One
-decides how the wait _feels_. The other, how long the line _really_ is.
+Both times you were the same person in the same queue. The difference comes
+down to two things a good park has under control at once: psychology and
+capacity. One decides how the wait _feels_, the other how long the line
+_really_ is.
 
-The topic won’t let go of me for a very specific reason. park.fan was invented
+The topic won’t let go of me for a fairly personal reason. park.fan was invented
 in a Taron queue, out of pure frustration over what felt like an eternity
 ([the whole story is here](/blog/welcome-to-park-fan-blog)). What was actually
 happening to me back there was something I wanted to know exactly. Two formulas
@@ -66,7 +66,7 @@ mat.
 
 ## Why minutes stretch
 
-The Harvard economist **David Maister** dissected the core problem back in 1985
+**David Maister**, then a professor at Harvard Business School, dissected the core problem back in 1985
 in his classic
 ["The Psychology of Waiting Lines"](https://www.columbia.edu/~ww2040/4615S13/Psychology_of_Waiting_Lines.pdf).
 His first and most important rule: unoccupied time feels longer than occupied
@@ -77,12 +77,12 @@ almost normal speed.
 Maister wrote down eight of them. These three turn up in every queue:
 
 - **Uncertain waits feel longer than explained waits.** That’s why the queue is
-  marked every few metres with time-remaining signs, and a wait-time display
+  marked every few metres with time-remaining markers, and a wait-time display
   hangs at the entrance, which, by the way, loves to lie to you. More on that
   shortly.
 - **Unfair waiting is unbearable.** Nothing ruins the mood faster than the
-  feeling that others are slipping past, which is precisely why parks route
-  their express lanes as discreetly as physically possible.
+  feeling that others are slipping past, which is why parks hide their express
+  lanes as well as they can.
 - **Waiting for something valuable is easier to endure.** The greater the
   anticipation, the more patient the line. We won’t stand 20 minutes for a
   fairground flat ride. For the new mega-coaster, we’ll happily talk ourselves
@@ -105,9 +105,9 @@ wait. In the experiment, a news screen in a bank branch was enough.
 The mechanism behind it: our brain can only count time precisely when it has
 nothing else to do. Once attention turns to music, theming details or a show,
 the internal counter simply runs out of resources, and the overestimation melts
-away. That’s exactly what everything you see in a good queue is designed to
-exploit: soundtracks, animatronics, interactive elements, hidden details. The
-decoration is not only decoration, it keeps the counter busy.
+away. That’s what everything you see in a good queue is there for:
+soundtracks, animatronics, interactive elements, hidden details. It’s a lot of
+effort for a corridor you’re only supposed to walk through.
 
 ```glossary-widget slug=pre-show
 
@@ -122,14 +122,13 @@ of the attraction. The textbook example sits in
 you don’t shuffle down a corridor; you move through the dusty lobby of the
 Hollywood Tower Hotel into a library where a video in the style of the
 “Twilight Zone” tells the building’s story. You’re checking into a hotel you’ll
-later check out of in freefall, and you never notice that you’re currently
-“playing” queue. Technically you’re still waiting. It feels as though the ride
-started long ago. The European counterpart stands at
+later check out of in freefall. Technically you’re still waiting; nobody
+mentions it. The European counterpart stands at
 [Disney Adventure World](ref:disney-adventure-world?bare) in Paris, with the
 same dramaturgy:
 [The Twilight Zone Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror?bare).
 
-### The peak-end effect: the last few metres count double
+### Why the last few metres count double
 
 The psychologist and Nobel laureate **Daniel Kahneman** showed that our memory
 doesn’t rate experiences as an average, but by two points: the emotional peak
@@ -145,14 +144,14 @@ principle.
 
 ## When the queue is the show
 
-Three modern masterpieces show how far you can push this, all in Orlando, all
-with queues people voluntarily turn up early for.
+Three rides in Orlando show how far you can push this. Their queues are worth
+a look even if you never got on the ride.
 
 ### Avatar Flight of Passage: a museum as a queue
 
 The queue for
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
-at [Disney’s Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) is essentially a
+at [Disney’s Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) is a
 walk-through museum with a flight simulator at the exit. First the path winds
 through Pandora’s landscape and caves painted by the Na’vi, then through an
 abandoned research lab, complete with a life-sized avatar floating in an amnio
@@ -169,8 +168,8 @@ groups and turn the final quarter of an hour into part of the attraction, which
 is exactly the phase the peak-end rule says will be remembered most strongly.
 They’re also the capacity backbone: you fly in theatre-style **link chambers**
 with 16 seats per level, three levels stacked, four theatres in parallel. Just
-under 200 guests at a time, around 1,400 an hour. Stand there for 120 minutes
-and what you talk about afterwards is the breathing avatar in the tank.
+under 200 guests at a time, around 1,400 an hour. Stand there half the morning
+and what you still talk about afterwards is the breathing avatar in the tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
@@ -178,8 +177,8 @@ and what you talk about afterwards is the breathing avatar in the tank.
 
 [EPCOT](ref:epcot?bare) takes it a step further with
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
-The attraction sees itself as a complete “pavilion” experience: on your way to
-the ride you pass through the **Galaxarium**, a planetarium-like exhibition
+The attraction is built as a whole pavilion: on your way to the ride you pass
+through the **Galaxarium**, a planetarium-like exhibition
 about Xandar and Earth, followed by a briefing from the **Nova Corps**. The
 ride itself, a story coaster with freely rotating vehicles and a backwards
 launch, is the finale of a production that started twenty minutes earlier.
@@ -188,11 +187,11 @@ launch, is the finale of a production that started twenty minutes earlier.
 
 ```
 
-The capacity side is remarkable too. Cosmic Rewind opened in May 2022 with no
-conventional standby queue at all. Access came **836 days in a row**
-exclusively via a virtual queue in the app. For two and a half years, EPCOT’s
-most famous line was one nobody ever stood in; a permanent standby queue only
-arrived in early 2025. The physical queue existed practically as a story route
+EPCOT went its own way on capacity, too. Cosmic Rewind opened in May 2022 with
+no conventional standby queue at all. Access came exclusively via a virtual
+queue in the app, right up to **25 February 2025**. For almost three years,
+EPCOT’s most famous line was one nobody ever stood in; only then did a
+permanent standby queue arrive. The physical queue existed practically as a story route
 rather than as holding space, and that on a ride shifting around 2,000 guests
 an hour with trains of 20.
 
@@ -204,8 +203,8 @@ in [Islands of Adventure](ref:universal-islands-of-adventure?bare), only with
 teeth. The queue leads straight through the **raptor paddock** from _Jurassic
 World_: past torn-open enclosure fences, animatronic raptors within reach and a
 planted atrium where even the concrete walls look like Isla Nublar. You’re not
-waiting for a coaster, you’re on a paddock tour that happens to end in a
-quadruple launch. This is exactly what Maister means by **“occupied time”**:
+waiting for a coaster, you’re on a paddock tour that happens to end on a
+coaster with two launches. This is what Maister means by **“occupied time”**:
 occupied time feels shorter, and anyone busy checking whether the raptor behind
 the fence really did turn its head isn’t looking at their phone every ten
 seconds.
@@ -227,22 +226,21 @@ their place.
 
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?full)
 
-### Shows: the quiet capacity helpers
+### Why an evening show empties the queues
 
 And then there’s a trick that doesn’t happen at the attraction at all. A parade,
 a firework or a stunt show ties
 up thousands of guests in one go, people who aren’t standing in a single ride
 queue during that hour. The amphitheatre for **Fantasmic!** at Hollywood
-Studios holds close to 10,000 people per show including standing room. So a
-single show swallows an entire wave of visitors: ten thousand people guaranteed
-to be sitting somewhere other than in front of your favourite coaster for the
-next half hour. Wait times across the rest of the park breathe noticeably as a
-result. You can watch this effect live in the charts on park.fan: during the
+Studios holds close to 10,000 people per show including standing room. That’s
+ten thousand people guaranteed to be sitting somewhere other than in front of
+your favourite coaster for the next half hour, and the rest of the park gets
+room to breathe. You can watch this effect live in the charts on park.fan: during the
 big evening show, headliner wait times measurably dip, and anyone who’s already
 seen the show rides at the best value of the day in that hour. Moments like
-that are exactly why we re-read the wait times every five minutes.
+that are why we re-read the wait times every five minutes.
 
-![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney’s Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show, a whole wave of visitors guaranteed not to be standing in a single coaster line for this half hour. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
+![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney’s Hollywood Studios | Fantasmic! at Hollywood Studios. Everyone sitting here is, for once, not queueing. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## How many people a ride moves in an hour
 
@@ -264,7 +262,7 @@ train who sits next to whom, or the one loose shoe holding up a dispatch. Real,
 operational throughput is therefore practically always lower. The formula gets
 interesting because parks combine the two factors completely differently,
 either on the buffet principle or the tapas principle. Two Orlando rides that
-delivered almost identical numbers on paper show it perfectly:
+delivered almost identical numbers on paper show the difference:
 
 ![Two routes to similar throughput: few large trains on the Hulk, many small cars on Rip Ride Rockit | Same league, completely different strategy: mass per train vs. frequency. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
@@ -272,8 +270,8 @@ delivered almost identical numbers on paper show it perfectly:
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)
 at [Universal Islands of Adventure](ref:universal-islands-of-adventure?bare)
 goes for large portions: eight cars, four people abreast, making **32 seats per
-dispatch**. Dispatching roughly once a minute lands the ride at a theoretical
-capacity of **1,920 people per hour** (32 × 60). One train swallows more people
+dispatch**. Its theoretical capacity is **1,920 people per hour**, which works
+out at 60 full trains, one a minute (32 × 60). One train swallows more people
 in one go than fit inside some dark rides at once.
 
 **Example B, the tapas bar.** The counter-model ran right next door until
@@ -335,8 +333,8 @@ determined bicycle), every second the train isn’t standing still counts.
 
 ## Little’s Law: the formula behind every wait-time display
 
-The formula that ties both sides together is one of the most elegant results in
-queueing theory. The MIT professor **John D. C. Little**
+The formula that ties both sides together is the second one from the beer mat.
+The MIT professor **John D. C. Little**
 proved the relationship in 1961 that is known today as
 [Little’s Law](https://en.wikipedia.org/wiki/Little%27s_law):
 
@@ -349,10 +347,10 @@ For a park visit you simply rearrange it:
 
 If 640 people are queueing for the Hulk and the ride handles 1,920 an hour, you
 wait **20 minutes** (640 ÷ 1,920 = ⅓ of an hour). Those same 640 people in
-front of a ride with 800 capacity? **48 minutes.** The elegance of Little’s
-formula is that it holds for any stable queue, no matter how irregularly guests
-turn up. And that exact calculation sits, in refined form, behind every
-wait-time display. Parks estimate the number of people waiting and divide by
+front of a ride with 800 capacity? **48 minutes.** The nice thing about
+Little’s formula is that it holds for any stable queue, no matter how
+irregularly guests turn up. And that calculation sits, in refined form, behind
+every wait-time display. Parks estimate the number of people waiting and divide by
 current throughput, or they measure the time directly, for instance with timing
 cards a guest receives at the queue entrance and hands back at the station.
 
@@ -362,30 +360,27 @@ three today, λ falls, and W rises immediately without a single extra guest
 being in the park.
 
 And the display at the entrance, the one that lies to you? On top of the
-precisely calculated number, a generous safety margin tends to get added. That
-isn’t sloppiness, it’s psychology. The display has to do two contradictory
-things at once. It should give you a reliable basis for a decision, and it
+precisely calculated number, a generous safety margin tends to get added, and
+on purpose. The display has to do two contradictory things at once. It should give you a reliable basis for a decision, and it
 shouldn’t disappoint you. A display that underestimates produces a stream of
 people at the exit who feel cheated; one that overestimates sends a few guests
 away but makes everybody else happy. Parks systematically opt for the second
 error. If you budget 60 minutes and board after 45, you leave the station a
-winner. Peak-end rule, remember: the experience ends better than expected, and
-that’s exactly how it gets filed away. So the display really does lie, but it
-lies in your favour.
+winner. Peak-end rule, remember: the hour ends better than expected, and
+that’s how it gets filed away.
 
-park.fan hangs off this very formula. The live wait times show every five
-minutes what L and λ are actually doing, and when our model forecasts wait times
-up to 365 days ahead, at its core it’s modelling nothing other than those two quantities:
-**demand** (how many people want to ride this thing today?) and **throughput**
-(how many can it move?). Little would probably be astonished at what his
-formula gets used for these days. How often our forecasts match reality is on
-the [Fancast page](/fancast).
+park.fan hangs off this formula. The live wait times show every five minutes
+what L and λ are actually doing, and when our model forecasts wait times up to
+365 days ahead, it works with those same two quantities: **demand** (how many
+people want to ride this thing today?) and **throughput** (how many can it
+move?). How often our forecasts match reality is on the
+[Fancast page](/fancast).
 
 ## Why Peter Pan’s Flight always “escalates”
 
 Why does **Peter Pan’s Flight**, of all things, a leisurely dark ride of 1955
-vintage, no coaster, no thrill, sit at a near-permanent 45+ minutes on the
-board in practically every Disney park in the world, from
+vintage, no coaster, no thrill, have a queue out of all proportion to the ride
+practically all day, in practically every Disney park in the world, from
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) to
 Orlando?
 
@@ -400,7 +395,7 @@ That has little to do with the ride and a lot to do with arithmetic:
    [original version at the Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    manages only around 800. A single Hulk train carries twice as many people
    per dispatch as Peter Pan has ships. And for comparison in its own house:
-   Pirates of the Caribbean right next door swallows nearly four times as many
+   Pirates of the Caribbean right next door swallows several times as many
    with its large boats.
 2. **Saturation from breakfast onwards.** Once demand reaches maximum capacity
    (saturation = 1.0), the queue grows linearly with every additional guest. It
@@ -413,17 +408,15 @@ That has little to do with the ride and a lot to do with arithmetic:
    So everybody joins all the more eagerly, and the wait becomes a
    self-fulfilling prophecy.
 
-The phenomenon is measurable worldwide, incidentally. Here are the live wait
-times for the Orlando version in the world’s busiest park, straight from our
-data:
+Here are the live wait times for the Orlando version, in the world’s busiest
+park:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europe waits differently: Phantasialand and Europa-Park vs. Orlando
 
-How much demand and capacity determine the wait-time level of an entire park is
-clearest in a comparison of heavyweights, Europe’s big parks against the
-Orlando giants.
+How much demand and capacity set the wait-time level of an entire park is
+easiest to see when you put two big European parks next to Orlando.
 
 **Orlando plays in a demand league of its own.** The
 [Magic Kingdom](ref:magic-kingdom-park?bare) is the busiest theme park in the
@@ -433,15 +426,15 @@ buy your way past the queue. Lightning Lane and Express Pass sell part of the
 capacity to paying guests, and every express ride is one the standby queue
 doesn’t get. Headliners like
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
-therefore regularly sit at 60 to 120 minutes despite massive hourly capacity.
+therefore regularly have long queues despite massive hourly capacity.
 
 **[Europa-Park](ref:europa-park?bare) is the counter-model.** Germany’s largest
 park, and after Disneyland Paris the busiest in Europe, spreads its roughly six
-million guests a year across **fifteen roller coasters** plus dozens of themed
+million guests a year across **fourteen roller coasters** plus dozens of themed
 rides. That sheer volume of parallel capacity works like a pressure relief
 valve: demand disperses, and hardly any queue runs into permanent saturation.
-Which is why even busy days in Rust rarely feel like Orlando, and only new
-arrivals like Voltron regularly break the 60-minute mark.
+Which is why even busy days in Rust rarely feel like Orlando, and the really
+long queues gather mostly in front of new arrivals like Voltron.
 
 **[Phantasialand](ref:phantasialand?bare), on the other hand, is the extreme
 case in the other direction:** one of the most compact large parks in Europe,
@@ -449,22 +442,20 @@ with few attractions but extraordinarily elaborate theming. The load
 concentrates on a handful of headliners, and when everyone wants
 [Taron](ref:phantasialand/taron?bare) on a holiday Saturday (greetings, I’m
 usually one of them), saturation arrives just as fast as it does for Peter Pan
-in Paris. A small audience doesn’t protect you from long queues when only a few
-attractions can absorb the demand at once.
+in Paris.
 
 The numbers are almost funny. Taron handles around **1,200 guests per hour**,
 which is almost exactly what Peter Pan’s Flight in Paris manages. The
-difference sits in the denominator: in what the demand around it can spread
-across. In Paris, Peter Pan stands among dozens of alternatives. In Brühl, on a holiday
-Saturday, a substantial share of the park has the same single ride in mind at
-the same time. And Voltron at Europa-Park, at 1,600 an hour, is only a third
-higher, yet keeps its queue far shorter because twelve other coasters next door
-siphon demand away. A capacity figure on its own says very little. What matters
-is its ratio to everything else that’s open.
+difference sits in the denominator, in everything else the demand can spread
+across. In Paris, Peter Pan stands among dozens of alternatives. In Brühl, on a
+holiday Saturday, what feels like half the park has the same single ride in
+mind. And Voltron at Europa-Park, at 1,600 an hour, is only a third higher, yet
+keeps its queue far shorter because the other coasters next door siphon demand
+away.
 
-Those profiles are exactly why every park page on park.fan shows long-term
-statistics alongside the live wait times. Because “busy” is relative: 45
-minutes is a bad day in Brühl and a gift at the Magic Kingdom. Look at the same
+That’s why every park page on park.fan shows long-term statistics alongside
+the live wait times. “Busy” is relative: the same wait is a bad day in Brühl
+and a gift at the Magic Kingdom. Look at the same
 data set for both parks, typical wait times by month and weekday, from every
 operating day we have measured.
 
@@ -485,8 +476,8 @@ across the year already look.
 
 ```
 
-Patterns like these are exactly what our model learns from when working out
-whether a visit is worth it.
+Patterns like these are what our model learns from when working out whether a
+visit is worth it.
 
 ## Closing the gap achieves nothing, and actually slows the queue down
 
@@ -508,8 +499,8 @@ single instruction to drive at a constant speed and equal spacing. Within a few
 minutes a stop-and-go jam formed with no bottleneck whatsoever, running
 backwards through the column. MIT mathematicians call these self-sustaining
 waves “jamitons”, because they behave like detonation waves. In dense crowds
-exactly the same thing happens, and there such backward-running waves are even
-a feared early warning sign.
+exactly the same thing happens: in the 2006 Hajj disaster at Mina, waves like
+these ran through the crowd before the deadly crush.
 
 The culprit is **start-up lost time**, which everyone knows from traffic
 lights. When they go green, the whole column doesn’t move off together: each
@@ -520,22 +511,20 @@ waiting adds up to a surprising amount of nothing.
 
 If everyone simply walked on evenly and slowly instead of standing, closing up
 and standing again, the queue would move more fluidly and on average faster.
-Less jostling, more flow. Traffic research knows
-this as the “faster-is-slower” effect: pushing harder at a bottleneck lowers
-throughput because everyone wedges into everyone else, a result Dirk Helbing
-demonstrated in _Nature_ in 2000. The one condition: you have to stay below the
-critical density. And that’s exactly why keeping your distance helps more than
-closing up.
+Traffic research knows this as the “faster-is-slower” effect: pushing harder at
+a bottleneck lowers throughput because everyone wedges into everyone else. Dirk
+Helbing demonstrated it in _Nature_ in 2000. The one condition: you have to stay
+below the critical density.
 
-On the vehicle side, parks solved this exact problem long ago. The Haunted
+On the vehicle side, parks solved this problem long ago. The Haunted
 Mansion’s omnimover and YOY’s rolling station never stop, no halt, no start-up
 lost time, maximum flow. Only the guests in the queue in front are the last
-stop-and-go system nobody has designed away yet. Until then, the lever that
-helps most is the one you already hold yourself: come on a day when the queue
+stop-and-go system nobody has designed away yet. Until then, the one thing
+that helps is up to you: come on a day when the queue
 never runs into a jam in the first place. Which day that is, the calendar of
 best days will tell you.
 
-## Modern solutions: virtual queues and double stations
+## Virtual queues and double stations
 
 Because physical capacity can’t be raised indefinitely, parks increasingly move
 the waiting to where it doesn’t hurt: onto your phone.
@@ -572,7 +561,7 @@ classic patterns:
   Matterhorn Bobsleds at Disneyland, the world’s first coaster with tubular
   steel track, also with two courses.
 
-And the premier class of throughput manages without a station entirely. On the
+The highest throughput of all comes from a system with no station at all. On the
 **omnimover**, Disney’s continuous vehicle chain of the kind the Haunted
 Mansion uses, the belt never stops. Boarding and alighting happen on the moving
 vehicle, and the attraction swallows over 3,000 guests an hour that way, more
@@ -582,14 +571,14 @@ uncomplainingly since the sixties and never asks for a break.
 ## What of all this ends up on park.fan
 
 The next 60-minute queue won’t get any shorter for it. But it reads
-differently. Three questions remain, and park.fan has an answer for each:
+differently once you know three things, and those are on park.fan:
 
 - **How long is the queue _really_, right now?** That’s what our **live wait
   times** are for: over 200 parks, 7,000 attractions, refreshed every five
   minutes. Little’s Law in real time, without you having to count the 640 people
   in front of you yourself.
 - **Is that a lot or normal?** The **long-term statistics** for each attraction
-  tell you, because 45 minutes is either an annoyance or a lottery win
+  tell you, because the same number is either an annoyance or a lottery win
   depending on the park.
 - **And do I have to queue at all?** That’s usually decided when you pick the
   day. Which is what the **calendar of best days to visit** is for, with
@@ -599,11 +588,9 @@ differently. Three questions remain, and park.fan has an answer for each:
 
 ```
 
-The only thing we can’t do anything about is the psychology. Whether the hour
-feels like an hour or like a first act is decided by pre-shows, theming and the
-peak-end effect, and by the parks that have mastered that craft. Two minutes
-before you set off, the number is there on the park page. After that it makes
-no difference how long the hour feels.
+We can’t do anything about the psychology. Whether the hour feels like an hour
+or like the first act of the ride is up to the park that built the queue: the
+pre-show, the theming and a good last stretch before the station.
 
 — Patrick
 
@@ -622,7 +609,8 @@ sense of time is exaggerating by 36 percent while I do._
 - Daniel Kahneman et al.: [Peak-end rule](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
 - John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little’s Law explained](https://en.wikipedia.org/wiki/Little%27s_law)
 - On phantom traffic jams: Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT “jamitons”](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
+- On stop-and-go waves in crowds: Helbing, Johansson & Al-Abideen, [Dynamics of crowd disasters: An empirical study](https://arxiv.org/abs/physics/0701203) (Physical Review E, 2007)
 - On the “faster-is-slower” effect: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Technical data: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) and [YOY](https://rcdb.com/20669.htm) on RCDB · [Mack Rides factsheet for Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [The tech behind Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY with rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)
-- Capacity deep dives: [THRC vs. OHRC at Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Flight of Passage facts at TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/)
-- Europa-Park: [VirtualLine official](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park)
+- Capacity deep dives: [THRC vs. OHRC at Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Flight of Passage facts at TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/) · [Cosmic Rewind: the end of the virtual queue (WDWMagic)](https://www.wdwmagic.com/attractions/guardians-of-the-galaxy/news/25feb2025-guardians-of-the-galaxy-cosmic-rewind-opens-standby-queue-as-virtual-queue-ends-at-epcot,-hits-170-minute-wait.htm)
+- Europa-Park: [roller coasters on RCDB](https://rcdb.com/4870.htm) · [VirtualLine official](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park)

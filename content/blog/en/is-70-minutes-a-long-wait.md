@@ -44,8 +44,8 @@ seo:
     - crowd calendar
 ---
 
-You are standing in front of [Taron](ref:phantasialand/taron), the display says **70 minutes**, and
-your head immediately does the wrong thing: it compares that number with your
+You are standing in front of [Taron](ref:phantasialand/taron), the display says
+**70 minutes**, and your head immediately does the wrong thing: it compares that number with your
 memory. Last visit it was 40, so today is worse. The visit before that it was
 90, so today is great. Two visits are not a basis, and your memory rounds
 against you anyway ([here is why](/blog/the-art-of-waiting)).
@@ -63,15 +63,14 @@ of the daily peaks: on half of all days measured the longest queue was shorter
 than that value, on the other half longer. **Busy** is the 90th percentile of
 the same series, roughly the one day in ten when there really was a crowd.
 
-Both are percentiles rather than averages. A mean can
-be shifted by a single exceptional day: one afternoon with a breakdown and a
+Both are percentiles rather than averages. A mean can be shifted by a single exceptional day: one afternoon with a breakdown and a
 150-minute backlog drags a whole month’s average upwards, even though on 29 days
-none of it was noticeable. The median does not flinch at a day like that. The
+none of it was noticeable. The median does not even flinch at a day like that. The
 record is therefore listed separately, with its date, so you can see it without
 it touching the other two numbers.
 
-For [Phantasialand](ref:phantasialand) the ranking looks like this. The column with the days measured
-is the important one: it says how much weight a row carries.
+For [Phantasialand](ref:phantasialand) the ranking looks like this. The column
+with the days measured is the important one: it says how much weight a row carries.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
@@ -140,12 +139,12 @@ compressed, but every analysis still runs over every reading that ever arrived.
 Start storing in your third year and you have one year of history in your third
 year, and the two before it are gone for good.
 
-## And the places where we say nothing
+## Where we would rather say nothing
 
-[Hansa-Park](ref:hansa-park), for instance, only publishes its wait times in its own app, and only
-for devices on the park’s Wi-Fi. There is no public interface. In the raw data
+[Hansa-Park](ref:hansa-park), for instance, only publishes its wait times in its
+own app, and only for devices on the park’s Wi-Fi. There is no public interface. In the raw data
 this park looks like any other at three in the morning: no ride is reporting
-anything. If we drew the obvious conclusion, 82 attractions would be sitting
+anything. If we drew the obvious conclusion, every attraction in the park would be sitting
 there at “very low”, plus an average of 0 minutes and a forecast built on zero
 observations. Instead there is a notice on the park page saying that there is
 nothing to read here.

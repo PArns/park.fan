@@ -2,15 +2,16 @@
 title: 'Toverland: Troy, the wooden coaster nobody queues for'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Toverland is a small, enchanted park that half of the Rhineland drives past on
+  Toverland is the small park that half of the Rhineland drives past on
   the way to the Efteling. Yet Sevenum has Troy, a GCI wooden coaster you queue
-  about a quarter of an hour for, while the woodie at the destination costs more
+  around a quarter of an hour for, while the woodie at the destination costs more
   than twice that. About a park
-  where I once got to play the haunt myself, backstage, and which to this day
+  where I once got to be one of the scare actors myself, backstage, and which to this day
   sells no fast pass.
 tags:
   - attractiepark-toverland
@@ -69,24 +70,24 @@ crosses its own track, and somewhere in the middle of the ride it fires
 waiting, who duck without meaning to.
 
 110 seconds later you are back where you started, and you turn around. Behind
-you: nobody. You can stay in your seat.
+you: nobody. So out you get, through the empty queue, and back in.
 
 ![The wooden Trojan horse in Ithaka, on a cart, in autumn light | The Trojan horse guards the entrance to Ithaka. The coaster itself hides in the trees behind it. | right](/media/toverland/troy-4x3.jpg)
 
 That is the part I struggle to explain. Troy is one of the best wooden coasters
-in Europe, and it sits in a park that hundreds of thousands of coaster fans
+in Europe, and it sits in a park that plenty of coaster fans
 drive past every year without turning off: the A67 between Venlo and Eindhoven,
 exit Sevenum. Most of them still have a good hour ahead of them, on to
 Kaatsheuvel and the [Efteling](ref:efteling), the Disney of the Netherlands.
 
 Seventy kilometres separate the two parks. Both have a wooden coaster from the
-same American manufacturer. For one of them you typically wait a good quarter of
+same American manufacturer. For one of them you typically wait around a quarter of
 an hour, for the other more than twice that. The shorter queue is the one in
 Sevenum.
 
-[Toverland](ref:attractiepark-toverland?long) in Sevenum turns 25 this year, I
-consider it one of the loveliest small parks in Europe, and I once stood on the
-other side of it all there, in costume.
+[Toverland](ref:attractiepark-toverland?long) in Sevenum, which I consider one
+of the loveliest small parks in Europe, turns 25 this year. I once even stood on
+the other side of it all there, in costume.
 
 ## What Troy gets right
 
@@ -116,8 +117,7 @@ riders of a classic wooden coaster train. 24 people per train, two trains, 850
 guests per hour.
 
 That leaves the prejudice every wooden coaster picks up past a certain age:
-that it gets rough. The park has been working on it very methodically since
-**2024**. A multi-year **retrack** replaces around 198 metres of layout on both
+that it gets rough. The park has been working on it since **2024**. A multi-year **retrack** replaces around 198 metres of layout on both
 rails every winter, close to 400 running metres of wood per season. The work
 happens under a temporary roof so rain and frost can’t hold it up, carried out
 by twenty people from the park’s own team, trained specifically for the job.
@@ -130,10 +130,10 @@ remember it as "brilliant, but rough": ride it again.
 
 [Troy](ref:attractiepark-toverland/troy?full)
 
-## What Troy really costs you, measured across 150 operating days
+## What Troy costs you in queueing
 
 Calculated from more than 150 operating days with wait-time data, Troy’s typical
-wait is **just under a quarter of an hour** (median). Even on the one day in ten
+wait is **around a quarter of an hour** (median). Even on the one day in ten
 with the most going on, it stays under half an hour.
 That is not some dead Tuesday in March, that is the average across every
 operating day.
@@ -147,9 +147,8 @@ racing coaster. Same data basis, same method:
 ```
 
 More than double, for a ride that has never finished above Troy at the European
-Star Awards.
-Across ride types the picture gets clearer still. What do the big names of the
-region cost you in waiting time, wood or steel?
+Star Awards. Add the steel coasters and the neighbours don't look any better.
+Here is what the big names of the region cost you in waiting, wood or steel:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, steel;phantasialand/fly|F.L.Y.|Flying, steel;efteling/joris-en-de-draak|Joris en de Draak|Wood;efteling/baron-1898|Baron 1898|Dive coaster, steel;attractiepark-toverland/troy|Troy|Wood;attractiepark-toverland/fenix|Fēnix|Wing, steel columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -157,7 +156,7 @@ region cost you in waiting time, wood or steel?
 
 Both Toverland rides sit at the bottom, by a margin. In the time it takes you to
 queue **once** for [Taron](ref:phantasialand/taron) at Phantasialand, you ride
-[Troy](ref:attractiepark-toverland/troy) three times here.
+[Troy](ref:attractiepark-toverland/troy) several times here.
 
 Behind that sits the arithmetic from [The Art of
 Waiting](/blog/the-art-of-waiting), demand divided by capacity. Toverland had
@@ -227,23 +226,22 @@ The wet-and-dark department is better than its reputation:
 - **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, a Vekoma madhouse that convinces
   you, utterly, that you are the one turning and the room is standing still.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), a 40-metre observation
-  tower from which you see how small this park actually is, and how complete.
+  tower from which you see how small this park actually is, and how much they
+  still fitted into it.
 
 ## From rainy-day hall to theme park
 
-Few parks this size have such an unlikely backstory. It starts without a single
-roller coaster.
+The story of this coaster park starts, of all things, without a coaster.
 
 On **19 May 2001** the Gelissen family opened an indoor playhall in Sevenum. No
-theme park, no coaster, no scenery: 2,000 square metres under a roof with
+theme park, no scenery, just 2,000 square metres under a roof with
 climbing frames, slides and a ball pit, built for rainy days in a region that
 has plenty. A family business in the borderlands, whose business model was that
 children have to go somewhere when it pours. The opening was performed by a
 young Dutch illusionist who had no world career yet: **Hans Klok**.
 
-What followed is an unusual growth story, because this park never had money it
-could afford to waste, and still built something twice over that had never
-existed anywhere.
+This park never had money to waste. It still managed, twice, to build something
+that had never existed anywhere.
 
 **2004** brought the second hall, then "Magic Forest", today the
 **Wunderwald**. And with it [Booster Bike](ref:attractiepark-toverland/booster-bike), Vekoma’s
@@ -276,10 +274,10 @@ with a ride that was eleven years old at the time. **2023** grew Avalon further,
 among other things by the 40-metre observation tower
 [Dragonwatch](ref:attractiepark-toverland/dragonwatch).
 
-The visitor numbers tell the same story in figures: 620,000 in 2013, 862,000 in
+The visitor numbers: 620,000 in 2013, 862,000 in
 the last pre-covid year of 2019, consistently above a million since 2022, most
 recently **1,137,000 in 2025**. That is roughly a third of what the Efteling or
-Europa-Park push through, and that is precisely the appeal.
+Europa-Park push through.
 
 ![The illuminated Djinn swing carousel in the Land van Toos hall, guests in the seats mid-flight | Djinn circles above the oriental market in Land van Toos, entirely under a roof. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
@@ -345,7 +343,7 @@ the brake run and performers in the queue.
 One of the six experiences has a second layer for me. With the
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/), a German
 funfair and theme park enthusiasts' association, I went backstage in the
-**Maison de la Magie**, and we got to try being the haunt ourselves. Not during
+**Maison de la Magie**, and we got to try the scare actors' side ourselves. Not during
 operating hours, no real guests, just us and an empty house.
 
 ![A pink-lit facade with a balcony, a doll figure and a "The Dollhouse" neon sign | "The Dollhouse", one of the six haunted experiences. By day this is Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
@@ -355,9 +353,9 @@ position from which you can see almost nothing, and you are expected to be on
 cue to the second anyway. Anyone doing that for five hours an evening, in a way
 that gives the two-hundredth group the same fright as the first, is achieving
 something you never notice from the outside. Ever since, in every scare zone I
-see the people in the costumes first and the costumes second. That the park
-manager came by the same evening and took the time says a lot about this place:
-small enough that it can happen, and evidently important enough that it does.
+see the people in the costumes first and the costumes second. The park
+manager came by the same evening and took time for us, which is very much this
+park.
 
 > [!TIP]
 > **The tip Toverland regulars give straight away: the Fear Pass.** For 62.50 €
@@ -381,22 +379,21 @@ If you haven’t been for a while, one attraction will be missing. On
 **17 May 2026**, **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in
 the Wunderwald opened for the last time, the 2007 Mack bobsled where a brake
 lever let you decide how fast you went downhill. For as long as we measured it, it was
-the attraction with the longest wait in the entire park, and on busy days it hit
-60 or 90 minutes.
+the attraction with the longest typical wait in the entire park.
 
 That came down to arithmetic that could never work out: one car held one, maybe
 two people. And because the current record was posted at the exit with a photo,
 couples regularly took two cars instead of one so each of them could set their
 own time. Throughput collapsed at exactly the point where the ride was most fun.
-Ninety minutes for ninety seconds, and people queued for it anyway, again and
+A long queue for a short run downhill, and people queued for it anyway, again and
 again, because there was a name on a board up front they wanted to beat.
 
 The last day was not a quiet one. The park sent it off with a proper party, with
 a supporting programme and souvenirs made for the occasion, and the queue was
 one last time as long as in its best years. The very last ride, though, belonged
-to the one the ride has always belonged to, according to house lore:
-**Maximus Müller**, the eccentric inventor who lives in the Wunderwald, climbed
-in himself and took his own contraption down one final time.
+to the one it has always belonged to, according to house lore: **Maximus
+Müller**, the eccentric inventor who lives in the Wunderwald. He climbed in
+himself and took his own contraption down one final time.
 
 You can find that silly, a fictional character in a bobsled. I thought it was
 right. For nineteen years this ride took its own story seriously, and on its
@@ -409,8 +406,7 @@ not exist anywhere in the world yet. It was developed with **ETF Ride Systems**
 from Nederweert, from the same province of Limburg, 30 kilometres from the park.
 The principle of the Blitz Bahn stays, you still control your own speed, but the
 vehicles swing out dynamically at certain points. The cars come in a steampunk
-look, matching the inventions of the tinkerer Maximus Müller who lives in the
-area. The park has not revealed a name or a story yet. This is the third time a
+look, to match Maximus Müller's inventions. The park has not revealed a name or a story yet. This is the third time a
 world first has been created here.
 
 After Halloween the park closes briefly and opens from **28 November 2026 to
@@ -425,10 +421,9 @@ one of the fullest months of the year in our data.
 The answer is a relaxed one: almost always.
 
 **By month**, March through July sit close together, and what stands out above
-them is **August** and the winter weeks in **December**. That surprises a lot of
-people: the busiest period is not only summer, it is also the short, heavily
-booked winter season, when only part of the attractions run and the park only
-opens on Wednesdays and weekends. One caveat: winter and early season have so
+them is **August** and the winter weeks in **December**. Winter keeps up with high
+summer because the winter season is short and in heavy demand: only part of the
+attractions run, and the park opens only on Wednesdays and weekends. One caveat: winter and early season have so
 few operating days that these monthly values rest on far fewer measurement days
 than the summer months. The direction is clear, the decimal place is not.
 
@@ -454,14 +449,14 @@ operating days we have measured:
 One thing to keep in mind: the **Dutch** holidays hit harder here than the
 German ones, especially the autumn and May breaks in the southern provinces.
 
-## The perfect day, in six sentences
+## A day without a fast pass
 
 Since there is no fast pass, all you have here is timing. You won’t need much of
 it though.
 
-At opening, head straight to Ithaka for **Troy**, not because it gets busy
-otherwise, but because a wooden coaster is still cold in the morning and runs
-measurably faster as the day goes on. Ride it early **and** late, and you will
+At opening, head straight to Ithaka for **Troy**. It won't get busy later
+either, but a wooden coaster is still cold in the morning and runs measurably
+faster as the day goes on. Ride it early **and** late, and you will
 have ridden two different coasters. Then **Fēnix** in Avalon, the two headliners
 are practically wall to wall. Third **Booster Bike**, because it has the longest
 typical wait of any coaster in our data. Save the **water rides** for the midday
@@ -494,7 +489,7 @@ That last point is worth a look across the border: Toverland sells a perfectly
 ordinary annual pass with Halloween included. Phantasialand scrapped theirs
 after the pandemic and, despite several fan petitions, has not brought it back.
 If you live in the border region and visit a good park more than once a year,
-the Toverland annual pass saves you what Phantasialand no longer sells at all.
+Toverland sells you something Phantasialand no longer does.
 
 **Getting there.** Toverland is in **Sevenum** (municipality of Horst aan de
 Maas), Toverlaan 2, about ten minutes' drive west of Venlo. Via the **A67** you
@@ -532,12 +527,12 @@ Yes, especially for coaster fans who have had enough of queues. With around a
 million guests a year the park is small compared with the Efteling or
 Europa-Park, but it has one of Europe’s best wooden coasters in
 [Troy](ref:attractiepark-toverland/troy) and the continent’s longest wing coaster in
-[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of a good quarter of an hour.
+[Fēnix](ref:attractiepark-toverland/fenix), at typical waits of around a quarter of an hour.
 
 ### How long are the wait times at Toverland?
 
-Across every operating day we have measured the typical park-wide wait is just
-under a quarter of an hour, and Troy and Fēnix sit in the same range. Current
+Across every operating day we have measured the typical park-wide wait is
+around a quarter of an hour, and Troy and Fēnix sit in the same range. Current
 figures are on the
 [Toverland park page](ref:attractiepark-toverland).
 
@@ -564,8 +559,8 @@ normal day anyway.
 and [Balder](ref:liseberg/balder) at [Liseberg](ref:liseberg). Among
 enthusiasts, though, Troy sits in the European top group regularly, and at 35
 metres tall, 1,077 metres long and 90 km/h it is the tallest, longest and
-fastest wooden coaster in the Benelux. One thing it definitely is: the
-world-class European woodie with the shortest queue.
+fastest wooden coaster in the Benelux. And its queue is a good deal shorter
+than that of its GCI sibling, Joris en de Draak at the Efteling.
 
 ### What’s new at Toverland in 2026?
 
@@ -589,7 +584,7 @@ fit into one day at these wait times, with room for repeat rides on Troy. With
 small children and the two indoor halls you can comfortably fill two days
 though.
 
-## Stay in your seat
+## Go again
 
 "Discover your own magic" is the park’s claim, and I am well aware that a
 sentence like that comes out of a marketing department. It just happens to be
@@ -616,8 +611,8 @@ And the two this was about, with their current numbers:
 [Troy](ref:attractiepark-toverland/troy?full)
 [Fēnix](ref:attractiepark-toverland/fenix?full)
 
-Take the Sevenum exit once instead of driving past it. And when you’re sitting
-in Troy and nobody is waiting behind you: just stay in your seat and go again.
+Take the Sevenum exit once instead of driving past it. And when you climb
+out of Troy and nobody is waiting behind you: walk through the empty queue and go again.
 And then once more. On a Tuesday in June that works here. In most other parks in
 Europe you can forget it.
 

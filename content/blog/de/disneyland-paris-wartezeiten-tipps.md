@@ -88,8 +88,8 @@ und wer wechseln will, braucht die Zwei-Park-Variante. Das ist die einzige
 Entscheidung an diesem Tag, die du nachmittags an keiner Kasse mehr korrigieren
 kannst.
 
-So stehen die beiden zueinander, und daneben zwei Parks, die aus Deutschland
-ähnlich weit weg sind:
+So stehen die beiden zueinander, dazu zum Vergleich zwei Parks, die aus
+Deutschland ähnlich weit weg sind:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,parc-asterix,europa-park show=quietest highlight=/parks/europe/france/paris/disneyland-park
 
@@ -109,7 +109,7 @@ rein.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 ist die größte Ausgabe dieser Bahn in allen Disney-Parks und die einzige, die
-nicht neben dem Bahnhof steht, sondern **auf einer Insel**. Der Zug fährt in der
+**auf einer Insel** steht. Der Zug fährt in der
 Station am Ufer los, taucht in einen Tunnel unter den Rivers of the Far West ab
 und kommt erst auf der Insel wieder ans Tageslicht, wo die eigentliche Strecke
 beginnt. Gebaut hat sie Vekoma, eröffnet wurde sie am ersten Tag des Parks,
@@ -118,8 +118,8 @@ Bremsen, neu lackierte Kulissen und ein paar Effekte aus der kalifornischen
 Fassung.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-ist der Grund, aus dem Fans dieses Genres überhaupt nach Paris fahren. Die
-Haunted Mansion in Florida und Kalifornien erzählt bewusst keine
+ist die Pariser Haunted Mansion, mit einem Unterschied, für den Fans eigens
+anreisen: Die Fassungen in Florida und Kalifornien erzählen bewusst keine
 zusammenhängende Geschichte. Paris schon: Melanie Ravenswood wartet seit ihrer
 geplatzten Hochzeit im Brautkleid, und ihr Vater Henry hat die Bewerber der
 Reihe nach umgebracht, was die Überarbeitung von 2019 zum ersten Mal eindeutig
@@ -133,8 +133,9 @@ _Space Mountain: De la Terre à la Lune_, nach Jules Verne, mit einer Kanone als
 Startanlage. Die gibt es immer noch: Der Zug wird in 1,8 Sekunden von 0 auf
 71 km/h den Berg hinaufgeschossen. Drei Überschläge, ein Kilometer Strecke, bis
 zu 5 g. Von allen Space Mountains weltweit ist das die einzige mit Launch und
-die einzige mit Inversionen, und sie war es auch, die den Park nach den
-Verlustjahren der Anfangszeit gerettet hat.
+die einzige mit Inversionen. Michael Eisner, damals Disney-Chef, nannte sie den
+Retter des Parks: Mit ihrem Erfolg schrieb Disneyland Paris nach den
+Verlustjahren der Anfangszeit erstmals Gewinne.
 
 Trotzdem steht sie in unserer Rangliste nicht oben.
 
@@ -146,8 +147,9 @@ Die längste Schlange des Parks gehört **Peter Pan's Flight**, einer Dunkelfahr
 von 1992, die in anderthalb Minuten vorbei ist. Beliebtheit erklärt davon nur
 die Hälfte. Die andere Hälfte ist Durchsatz: Hyperspace Mountain fährt vier Züge
 und schafft knapp 2.000 Personen in der Stunde, arbeitet ihre Schlange also den
-ganzen Tag über ab. Eine Dunkelfahrt mit kleinen Gondeln kann das nicht. Wer nur
-die Achterbahnen im Blick hat, plant den falschen Vormittag.
+ganzen Tag über ab. Eine Dunkelfahrt mit kleinen Gondeln kann das nicht. Wer den
+Morgen an den Achterbahnen verbringt, steht nachmittags für anderthalb Minuten
+Dunkelfahrt in der längsten Schlange des Parks.
 
 Drei weitere Bahnen kosten an diesem Vormittag Zeit.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
@@ -201,11 +203,12 @@ geschlossene Attraktion des Parks wurde danach weiter fortgeschrieben.
 
 ```
 
-Was das für einen Tag dort bedeutet: Die Bahn, die bisher den halben Vormittag
+Für einen Tag dort heißt das: Die Bahn, die bisher den halben Vormittag
 gefressen hat, fällt weg, und ihre Gäste verteilen sich auf einen Park, der
-ohnehin wenig Kapazität hat. In der Tabelle darüber steht Crush's Coaster noch
-mit ihren historischen Werten, weil die Rangliste zwei Jahre zurückreicht. Für
-deinen Besuch sind die Zeilen darunter die, die zählen.
+ohnehin wenig Kapazität hat. In der Tabelle darüber steht Crush's Coaster
+trotzdem noch mit ihren historischen Werten, weil die Rangliste zwei Jahre
+zurückreicht, ungefähr wie ein Gericht, das noch auf der Karte steht und seit
+September aus ist. Für deinen Besuch zählen die Zeilen darunter.
 
 ## Wie voll es wirklich ist
 
@@ -225,8 +228,7 @@ das Andrangsniveau in Adventure World höher. Mit Beliebtheit hat das wenig zu
 tun, mit Arithmetik viel: 2023 kamen 10,4 Millionen Besucher in den Disneyland
 Park und 5,7 Millionen in den zweiten. Rechnet man das auf die Attraktionen um,
 die uns Wartezeiten melden, sind das rund **242.000 Gäste pro Attraktion und
-Jahr** gegenüber **407.000**. Dieselbe Rechnung steht jeden Tag als Schlange
-auf dem Asphalt.
+Jahr** gegenüber **407.000**.
 
 So verteilt sich ein Tag im Disneyland Park über die Stunden:
 
@@ -247,8 +249,7 @@ Schulferien, die anders liegen als die deutschen und nach Zonen gestaffelt
 sind, dazu die britischen Half-Term-Wochen, weil ein spürbarer Teil der Gäste
 über den Eurostar kommt.
 
-Wie flach die Wochentagskurve ausfällt, steht in der Tabelle darüber, und sie
-fällt flach aus. Ein Park, der 365 Tage im Jahr aufhat und in einem halben
+Die Wochentagskurve darüber ist flach, und das hat einen Grund: Ein Park, der 365 Tage im Jahr aufhat und in einem halben
 Dutzend Ländern beworben wird, hat keinen toten Dienstag, auf den man
 ausweichen könnte. Welche der nächsten Wochen trotzdem die ruhigsten sind, steht
 hier, laufend neu berechnet:
@@ -274,13 +275,12 @@ Bevor du das kaufst, lohnt ein Blick auf die Rangliste weiter oben. Der Preis
 richtet sich nach der Nachfrage, und die höchste Nachfrage haben nicht
 zwangsläufig die Bahnen, an denen du am längsten stehen würdest.
 
-## Der perfekte Tag, in vier Sätzen
+## Wie ich den Tag planen würde
 
 Wenn du nur einen Tag hast und nur einen Park nimmst, nimm den Disneyland Park:
 mehr Fahrgeschäfte, kürzere Schlangen, und das Schloss ist der Grund, aus dem
 die meisten überhaupt kommen. Lauf bei Öffnung nach Fantasyland zu den
-Dunkelfahrten, die den Vorsprung des frühen Morgens am ganzen Tag nicht wieder
-hergeben. Big Thunder Mountain, Hyperspace Mountain und Indiana Jones passen gut
+Dunkelfahrten, denn deren Schlangen holst du später am Tag nicht mehr ein. Big Thunder Mountain, Hyperspace Mountain und Indiana Jones passen gut
 in die Mittagsstunden, wenn alle anderen essen. Und wenn du zwei Parks buchst,
 dreh die übliche Reihenfolge um und fang in Adventure World an, wo unsere
 Rope-Drop-Auswertung für Ratatouille und den Tower of Terror die größte Ersparnis
@@ -308,8 +308,8 @@ Kauf, nicht am Drehkreuz. Aktuelle Preise für dein Datum stehen auf
 
 **Essen.** Beide Parks haben Tischrestaurants mit Reservierung und viel
 Schnellgastronomie dazwischen. Unsere Datenbank führt 35 Gastronomiebetriebe im
-Disneyland Park und 19 in Adventure World. Zur Mittagszeit ist das der Moment,
-in dem die Schlangen an den Bahnen kurz nachgeben.
+Disneyland Park und 19 in Adventure World. Mittags, wenn sich die Schlangen vor
+den Theken bilden, geben die an den Bahnen kurz nach.
 
 ## Häufige Fragen zu Disneyland Paris
 
@@ -331,9 +331,10 @@ oben.
 ### Warum heißt der Walt Disney Studios Park jetzt Disney Adventure World?
 
 Der neue Name gilt seit dem 29. März 2026 und war seit dem 12. April 2024
-angekündigt. Er kam zusammen mit dem Bereich World of Frozen und markiert das
-Ende des Studio-Themas, das seit 2002 immer weniger zu dem passte, was dort
-tatsächlich steht.
+angekündigt. Er kam zusammen mit dem Bereich World of Frozen und beendet das
+Studio-Thema, das seit 2002 immer weniger zu dem passte, was dort tatsächlich
+steht: Einen 36 Meter hohen Frozen-Berg samt Fjord kauft einem niemand mehr als
+Filmkulisse ab.
 
 ### Fährt Crush's Coaster gerade?
 

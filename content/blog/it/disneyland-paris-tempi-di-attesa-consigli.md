@@ -90,8 +90,8 @@ dei due, e chi vuole passare dall’uno all’altro ha bisogno della variante pe
 due parchi. È l’unica decisione della giornata che al pomeriggio non puoi più
 correggere a nessuna cassa.
 
-Ecco come si confrontano i due tra loro, e accanto a due parchi che dalla
-Germania distano più o meno lo stesso:
+Ecco come si confrontano i due tra loro, più, per avere un termine di
+paragone, due parchi che dalla Germania distano più o meno lo stesso:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,parc-asterix,europa-park show=quietest highlight=/parks/europe/france/paris/disneyland-park
 
@@ -110,7 +110,7 @@ uscire, altre volte non ci vogliono nemmeno entrare.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 è la versione più grande di questa attrazione fra tutti i parchi Disney, ed è
-l’unica che sorge su un’isola invece che accanto alla stazione. Il treno parte
+l’unica che sorge su un’isola. Il treno parte
 dalla stazione sulla riva, si tuffa in un tunnel sotto i Rivers of the Far West
 e riemerge alla luce solo sull’isola, dove comincia il vero e proprio
 percorso. L’ha costruita Vekoma, ha aperto il primo giorno del parco, altezza
@@ -119,9 +119,9 @@ freni, scenografie riverniciate e alcuni effetti presi dalla versione
 californiana.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-è il motivo per cui i fan del genere fanno apposta il viaggio fino a Parigi. La
-Haunted Mansion in Florida e in California non racconta di proposito una
-storia continua. A Parigi invece sì: Melanie Ravenswood aspetta in abito da
+è la Haunted Mansion di Parigi, con una differenza per cui i fan fanno apposta
+il viaggio: le versioni in Florida e in California non raccontano di proposito
+una storia continua. Quella di Parigi invece sì: Melanie Ravenswood aspetta in abito da
 sposa da quando il suo matrimonio è saltato, e suo padre Henry ha ucciso i
 pretendenti uno dopo l’altro, cosa che la revisione del 2019 dice per la prima
 volta in modo esplicito. Sei minuti a bordo dell’Omnimover, 92 animatronic,
@@ -135,8 +135,9 @@ _Space Mountain: De la Terre à la Lune_, ispirata a Jules Verne, con un
 cannone come sistema di lancio. C’è ancora: il treno viene sparato su per la
 montagna da 0 a 71 km/h in 1,8 secondi. Tre capovolgimenti, un chilometro di
 percorso, fino a 5 g. Fra tutte le Space Mountain del mondo è l’unica con un
-lancio ed è l’unica con inversioni, ed è stata anche lei a salvare il parco
-dopo gli anni in perdita dei primi tempi.
+lancio ed è l’unica con inversioni. Michael Eisner, allora capo della Disney,
+la chiamò la salvatrice del parco: grazie al suo successo Disneyland Paris
+chiuse in utile per la prima volta dopo gli anni in perdita degli inizi.
 
 Eppure nella nostra classifica non è in cima.
 
@@ -149,8 +150,9 @@ La coda più lunga del parco appartiene a **Peter Pan's Flight**, una dark ride 
 L’altra metà è una questione di portata oraria: Hyperspace Mountain fa
 viaggiare quattro treni e smaltisce quasi 2.000 persone all’ora, quindi si
 libera della propria coda nel corso di tutta la giornata. Una dark ride con
-gondole piccole non può farlo. Chi guarda solo le montagne russe pianifica la
-mattinata sbagliata.
+gondole piccole non può farlo. Chi passa la mattina sulle montagne russe si
+ritrova il pomeriggio nella coda più lunga del parco, per un minuto e mezzo di
+dark ride.
 
 Altre tre attrazioni fanno perdere tempo in quella mattinata.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**,
@@ -209,11 +211,12 @@ continuato a essere aggiornata.
 
 ```
 
-Cosa significa questo per una giornata lì: l’attrazione che finora si
-mangiava mezza mattinata sparisce, e i suoi visitatori si distribuiscono su un
-parco che di capacità ne ha comunque poca. Nella tabella qui sopra Crush's
-Coaster compare ancora con i suoi valori storici, perché la classifica copre
-due anni. Per la tua visita, contano le righe sotto di lei.
+Per una giornata lì vuol dire che l’attrazione che finora si mangiava mezza
+mattinata sparisce, e i suoi visitatori si distribuiscono su un parco che di
+capacità ne ha comunque poca. Nella tabella qui sopra Crush's Coaster compare
+ancora con i suoi valori storici, perché la classifica copre due anni, un po’
+come un piatto ancora stampato sul menu che in cucina è finito a settembre.
+Per la tua visita contano le righe sotto di lei.
 
 ## Quanto è pieno per davvero
 
@@ -233,8 +236,7 @@ affollamento resta più alto ad Adventure World. C’entra poco la popolarità e
 molto l’aritmetica: nel 2023 sono arrivati 10,4 milioni di visitatori al
 Disneyland Park e 5,7 milioni al secondo parco. Riportando questi numeri sulle
 attrazioni che ci segnalano tempi di attesa, si ottengono circa **242.000
-ospiti per attrazione all’anno** contro **407.000**. Lo stesso calcolo si vede
-ogni giorno come coda sull’asfalto.
+ospiti per attrazione all’anno** contro **407.000**.
 
 Ecco come si distribuisce una giornata al Disneyland Park nell’arco delle ore:
 
@@ -255,8 +257,7 @@ cadono in periodi diversi da quelle tedesche e sono scaglionate per zone, più
 le settimane di half-term britanniche, perché una parte consistente dei
 visitatori arriva con l’Eurostar.
 
-Quanto sia piatta la curva dei giorni della settimana lo mostra la tabella qui
-sopra, ed è piatta per davvero. Un parco aperto 365 giorni all’anno e
+La curva dei giorni della settimana qui sopra è piatta, e c’è un motivo: un parco aperto 365 giorni all’anno e
 pubblicizzato in una mezza dozzina di paesi non ha un martedì morto su cui
 rifugiarsi. Quali fra le prossime settimane siano comunque le più tranquille,
 lo dice questo calendario, ricalcolato di continuo:
@@ -283,13 +284,13 @@ Prima di comprarlo conviene dare un’occhiata alla classifica più in alto. Il
 prezzo segue la domanda, e la domanda più alta non riguarda per forza le
 attrazioni dove aspetteresti più a lungo.
 
-## La giornata perfetta, in quattro frasi
+## Come organizzerei la giornata
 
 Se hai solo un giorno e scegli un solo parco, prendi il Disneyland Park: più
 attrazioni, code più corte, e il castello è il motivo per cui la maggior parte
 delle persone viene fin qui. All’apertura vai subito a Fantasyland, verso le
-dark ride, il cui vantaggio del primo mattino non si recupera più per il resto
-della giornata. Big Thunder Mountain, Hyperspace Mountain e Indiana Jones si
+dark ride: una volta che le loro code si sono formate, non le recuperi più per
+il resto della giornata. Big Thunder Mountain, Hyperspace Mountain e Indiana Jones si
 incastrano bene nelle ore del pranzo, quando tutti gli altri mangiano. E se
 prenoti entrambi i parchi, inverti l’ordine consueto e parti da Adventure
 World, dove la nostra analisi del rope drop indica per Ratatouille e per il
@@ -317,8 +318,9 @@ all’acquisto, non al tornello. I prezzi aggiornati per la tua data sono su
 
 **Mangiare.** Entrambi i parchi hanno ristoranti con servizio al tavolo su
 prenotazione e molta ristorazione veloce nel mezzo. Il nostro database conta
-35 locali nel Disneyland Park e 19 in Adventure World. È all’ora di pranzo che
-le code alle attrazioni si allentano per un po’.
+35 locali nel Disneyland Park e 19 in Adventure World. All’ora di pranzo,
+quando le code si formano davanti ai banconi, quelle alle attrazioni si
+allentano per un po’.
 
 ## Domande frequenti su Disneyland Paris
 
@@ -341,9 +343,10 @@ di confronto più in alto.
 ### Perché il Walt Disney Studios Park ora si chiama Disney Adventure World?
 
 Il nuovo nome è in vigore dal 29 marzo 2026 ed era stato annunciato dal 12
-aprile 2024. È arrivato insieme all’area World of Frozen e segna la fine del
-tema da studio cinematografico che dal 2002 in poi corrispondeva sempre meno
-a quello che si trova davvero lì.
+aprile 2024. È arrivato insieme all’area World of Frozen e chiude con il tema
+da studio cinematografico, che dal 2002 in poi corrispondeva sempre meno a
+quello che si trova davvero lì. Una montagna di Frozen alta 36 metri, con tanto
+di fiordo, non la spacci più per un set.
 
 ### Crush's Coaster è in funzione in questo momento?
 
@@ -362,7 +365,7 @@ giornaliera per tutte le attrazioni partecipanti.
 
 In treno fino a **Marne-la-Vallée – Chessy**, la stazione fra i due ingressi
 dei parchi. Lì fermano TGV, Eurostar, ICE e la RER A. Dalla Renania e
-dall’area del Reno-Meno sono realistiche circa quattro ore abbondanti con un
+dall’area del Reno-Meno sono realistiche quattro ore abbondanti con un
 cambio.
 
 ## Per approfondire

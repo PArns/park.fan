@@ -2,6 +2,7 @@
 title: 'Hansa-Park: de Kärnan haalt 127 km/u, en het seizoen kent geen sluitingsdag'
 translationKey: hansa-park-guide
 date: '2026-09-22'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -62,22 +63,22 @@ Sierksdorf ligt 24 kilometer hemelsbreed ten noorden van Lübeck. Het park noemt
 Duitse pretpark aan zee, en dat is deze keer geen reclamepraat: achter het hek begint het strand, en
 tussen het park en de vakantiehuizen rijdt de spoorlijn naar Puttgarden.
 
-## Wat dit park anders maakt
+## Korte afstanden, anderhalf record
 
 Hansa-Park doet het met **46 hectare**. Het Heide Park heeft er 85, en dat verschil merk je als
 eerste in je benen: twee achtbanen liggen hier zelden meer dan een paar minuten uit elkaar, en de
 elf themagebieden lopen in elkaar over in plaats van door weilanden gescheiden te zijn.
 
-Op die oppervlakte staan twee records. De [Highlander](ref:hansa-park/highlander?bare) is de hoogste gyro drop tower ter wereld, en
-[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) deelt met [Silver Star](ref:europa-park/silver-star?bare) de titel van hoogste en snelste achtbaan van Duitsland.
+Op die oppervlakte staat anderhalf record. De [Highlander](ref:hansa-park/highlander?bare) is de hoogste gyro drop tower ter wereld.
+Met [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) heeft het park de halve titel, de andere helft rijdt als
+[Silver Star](ref:europa-park/silver-star?bare) in Rust.
 De rest van het park is uitgesproken familiegebied, met een kanaalvaart uit 1977 en vier achtbanen
 die voor kinderen zijn gebouwd.
 
-Het geld gaat hier ook niet naar een nieuwigheid om de drie jaar. Sinds 2008 bouwt het park verder
-aan één themagebied, gevel voor gevel en stad voor stad, en tussen 2019 en 2025 kwam er geen enkele
-achtbaan bij. Wie een park zoekt dat om het jaar een coaster neerzet, zit hier verkeerd. Wie er een
-zoekt dat elke dag van zijn seizoen open is en in oktober 2.000 lichtfiguren ophangt in plaats van
-mazes te bouwen, zit goed.
+Het geld gaat hier niet naar een nieuwe achtbaan om de paar jaar. Sinds 2008 bouwt het park verder
+aan één themagebied, stad voor stad, en tussen 2019 en 2025 kwam er geen enkele achtbaan bij. Wie
+nieuwigheden wil turven, moet ergens anders heen. Daar staat tegenover dat het park elke dag van zijn
+seizoen open is en in oktober 2.000 lichtfiguren ophangt, waar andere parken mazes bouwen.
 
 [Hansa-Park](ref:hansa-park?full)
 
@@ -89,8 +90,9 @@ volledig in een **toren van 79 meter** die de trein verticaal omhoogtrekt, en de
 67 meter.
 
 De echte truc zit in de toren en is van buitenaf niet te zien. Halverwege rijdt de trein er weer
-naar binnen en valt achteruit, in het donker, van ruim 60 meter. Het park noemt dat wereldwijd uniek
-en verdubbelde de valsnelheid in 2017 ruimschoots, van ongeveer 5 naar ongeveer 11 meter per seconde.
+naar binnen en valt achteruit, in het donker, van ruim 60 meter. Het park noemt dat wereldwijd uniek,
+maar vond het twee jaar na de opening kennelijk nog te tam: in 2017 verdubbelde het de valsnelheid
+ruimschoots, van ongeveer 5 naar ongeveer 11 meter per seconde.
 
 ```glossary-widget slug=infinity-coaster
 
@@ -100,11 +102,10 @@ De tweede grote rijdt sinds **2009**, tegenwoordig in het themagebied Peterhof v
 **[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod)** is ook van Gerstlauer, 40 meter hoog,
 750 meter lang, **107 km/u**, en hij combineert twee dingen die elders gescheiden voorkomen: een
 LSM-launch en een verticale kettinglift in dezelfde baan. De eerste afdaling gaat **97 graden**, dus
-voorbij verticaal, en die zit in het donker. Tot 2020 heette hij Fluch von Novgorod. Het park
-verwisselde in 2021 één letter en legde de naamswijziging zelf uit.
+voorbij verticaal, en die zit in het donker. Tot 2020 heette hij Fluch von Novgorod, de vloek van
+Novgorod; in 2021 kwam er een t bij en werd de vloek een vlucht.
 
-**[Nessie](ref:hansa-park/nessie)** is de baan waarmee dit park begin jaren tachtig de krant haalde.
-Anton Schwarzkopf bouwde hem in **1980**: 26 meter hoog, 741 meter lang, 85 km/u, met één verticale
+**[Nessie](ref:hansa-park/nessie)** bouwde Anton Schwarzkopf in **1980**: 26 meter hoog, 741 meter lang, 85 km/u, met één verticale
 looping, destijds de grootste loopingbaan van Europa. Hij rijdt al 46 jaar, en sinds 2019 doet hij
 dat in een opnieuw gethematiseerd gebied.
 
@@ -113,13 +114,13 @@ rijdt sinds 1997 als wilde muis in mijnschachtdecor, 13 meter hoog en na 70 seco
 **[Royal Scotsman](ref:hansa-park/royal-scotsman)** is een Vekoma-juniorcoaster uit **1993** die tot
 2019 Rasender Roland heette. De **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** staat sinds
 2011 in Wikingerland en begint bij 90 centimeter, **[Der kleine
-Zar](ref:hansa-park/the-little-tsar)** sinds 2017 bij 95 centimeter en drie meter hoogte.
+Zar](ref:hansa-park/the-little-tsar)** sinds 2017 bij 95 centimeter, met maar liefst drie meter hoogte.
 
 De jongste kwam dit seizoen erbij. De **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opende op **23 mei 2026**, opnieuw Gerstlauer,
 18 meter hoog, ruim 570 meter lang, vanaf 90 centimeter. Het park telt **zeven launches** in één
-ronde, vooruit en achteruit. Zeven versnellingen over 570 meter is veel voor een familiebaan, en ze
-leveren rijtijd op: 1:45 minuten, langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) met elk 1:10.
+ronde, vooruit en achteruit. Zeven versnellingen over 570 meter is veel voor een familiebaan, en je
+merkt ze aan de rijtijd: 1:45 minuten, langer dan [Crazy Mine](ref:hansa-park/crazy-mine?bare) en [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) met elk 1:10.
 
 ## De toren die Soltau het record afnam
 
@@ -133,7 +134,8 @@ laat de [Highlander](ref:hansa-park/highlander?bare) je vallen, en daarboven sta
 
 ```
 
-In de praktijk betekent dat 1,40 meter minimumlengte, de hoogste drempel in het hele park.
+Voor gezinnen telt bij de Highlander vooral een ander getal: 1,40 meter minimumlengte, de hoogste
+drempel in het hele park.
 
 ## Een kalender zonder sluitingsdag
 
@@ -148,11 +150,10 @@ weekdagen. Wie in Sierksdorf een rustige doordeweekse dag zoekt, krijgt die dus 
 openingsdag en niet als gesloten poort.
 
 De tijden zijn bijna even eenvormig. Tot **9 oktober** opent het park dagelijks om **10.00 uur** en
-sluiten de attracties om **18.00 uur**. Precies drie dagen vallen uit de toon, en alle drie gaat het
-om het terrein en niet om de banen: op Goede Vrijdag, 3 april, rijden de attracties pas vanaf 11.00
-uur. Op 11 augustus blijft het terrein open tot 19.00 uur en op 12 augustus tot 18.30 uur, terwijl de
-banen beide avonden om 18.00 uur stilstaan. De laatste 16 dagen van het seizoen hebben een eigen
-reden.
+sluiten de attracties om **18.00 uur**. Precies drie dagen vallen uit de toon. Op Goede Vrijdag, 3 april,
+rijden de attracties pas vanaf 11.00 uur. Op 11 augustus blijft het terrein open tot 19.00 uur en op
+12 augustus tot 18.30 uur, maar de banen staan beide avonden toch om 18.00 uur stil. Alleen de laatste
+16 dagen van het seizoen lopen anders, en dat komt door de Herbstzauber.
 
 ```map-widget slug=hansa-park
 
@@ -171,8 +172,9 @@ draait twee programmaonderdelen:
   vuurwerk uit de arenamuren.
 
 In de [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour) dansen na het invallen van de
-duisternis bijna 1.000 lichtfiguren op klassieke muziek. Daarmee is de kanaalvaart uit **1977**
-uitgerekend in oktober de attractie waarvoor de omweg het meest oplevert.
+duisternis bijna 1.000 lichtfiguren op klassieke muziek. Uitgerekend de kanaalvaart uit **1977**,
+'s zomers eerder iets voor de middagpauze, is daarmee in oktober de attractie waar ik als eerste
+voor in de rij zou gaan staan.
 
 Op zo'n avond zetten drie tijdstippen je dag om. De
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) en
@@ -186,8 +188,8 @@ Wil je die vier banen nog rijden, doe het dan voor half acht. De rest van het pa
 In de [halloweengids 2026](/blog/halloween-pretparken-2026) staan tien parken. Acht daarvan vullen
 precies deze periode met mazes en scare zones, twee slaan Halloween helemaal over. Hansa-Park doet
 iets derds: dezelfde avonden, vol programma, alleen zonder schrik. Met kinderen onder de tien zit je
-hier dus beter dan op een maze-avond. De avondshow zelf is luid, en het park waarschuwt voor
-schrikreacties bij de kleinsten.
+hier dus beter dan op een maze-avond. Helemaal zonder schrik gaat het hier ook niet: de avondshow is
+luid, en het park waarschuwt zelf voor schrikreacties bij de kleinsten.
 
 ## Dit park rekent in jaren, niet alleen in centimeters
 
@@ -200,8 +202,9 @@ pas **vanaf 10 jaar** rijden. De [Schlange von Midgard](ref:hansa-park/midgard-s
 centimeter, [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) bij 95.
 
 Een kind van zeven met 1,25 meter komt hier dus op minder banen dan je op grond van de lengte zou
-denken. Omgekeerd is het park onder achtbaanniveau breed uitgerust: de attractielijst in de catalogus
-telt **82 vermeldingen**, en het park adverteert zelf met meer dan 125.
+denken, en laat je dat bij de toegangscontrole van Crazy Mine waarschijnlijk luid weten. Onder
+achtbaanniveau is er genoeg ter compensatie: onze catalogus telt **82 attracties**, het park
+adverteert zelf met meer dan 125 en telt kennelijk ruimer.
 
 ## Van Legoland naar Hansa-Park
 
@@ -225,8 +228,8 @@ eerste origineel Amerikaanse wildwaterbaan van Duitsland erbij. Ook die vaart no
 
 De eerste twintig jaar waren vooral showjaren. In **1978** opende hier het destijds grootste en
 modernste koepeldolfinarium van Europa met 1.400 zitplaatsen; sinds **1994** ziet het park af van
-dolfijnenshows. In 1984 opende het showtheater met een productie van Frank Elstner, waarin kandidaten
-optraden die hun weddenschap bij “Wetten, dass..?” hadden verloren. In de jaren daarna stonden Wim
+dolfijnenshows. In 1984 opende het showtheater met “Wetten Spaß” van Frank Elstner: wie zijn
+weddenschap bij “Wetten, dass..?” had verloren, kreeg in Sierksdorf een tweede kans. In de jaren daarna stonden Wim
 Thoelke en Michael Schanze op hetzelfde podium.
 
 Daartussendoor groeide het attractieaanbod: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** de [Super Splash](ref:hansa-park/super-splash?bare), **1987** de
@@ -256,7 +259,7 @@ nachten**, korter kan alleen op aanvraag. Vergeleken met de parkhotels in Rust o
 ander bouwwerk: vakantiehuis in plaats van themahotel, en de rekensom loopt eerder via de
 Oostzeevakantie dan via de parkdag.
 
-Voor één bezoek is dat zelden het juiste antwoord. Voor een week in juli waarin het park twee van de
+Voor één parkdag zijn drie nachten zelden de moeite. Voor een week in juli waarin het park twee van de
 zeven dagen vult wel.
 
 ## Praktisch: aankomst, tickets, parkeren
@@ -276,8 +279,7 @@ onder de 4, € 43 vanaf 70 jaar. Wie op zijn verjaardag komt en hoogstens 12 wo
 binnen, maar dat kan alleen aan de kassa. Het tweedagenticket kost € 85 respectievelijk € 65 en wordt
 via gezichtsherkenning op naam gezet. De seizoenkaart ligt op **€ 135**.
 
-De onlineprijs is dezelfde als de kassaprijs. Dat is het vermelden waard, want in Soltau scheelt het
-€ 27: hier bespaar je met vooruit boeken geen cent, alleen de rij aan de kassa.
+De onlineprijs is dezelfde als de kassaprijs. In Soltau scheelt het € 27, hier bespaar je met vooruit boeken geen cent, alleen de rij aan de kassa.
 
 **Inbegrepen bij het ticket.** Alle attracties, shows en doe-attracties die in bedrijf zijn. Losse
 onderdelen zoals het goudwassen kosten extra.
@@ -286,8 +288,7 @@ onderdelen zoals het goudwassen kosten extra.
 
 Het park heeft de volgende nieuwigheid al aangekondigd: de **Buddenbrook-Turm** in de Hansa-Garten,
 overdekt, opening in de loop van het seizoen 2027. Meer staat nog niet vast. Na de [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare)
-zouden dat twee nieuwigheden in twee jaar zijn, na een periode van 2019 tot 2025 zonder ook maar één
-nieuwe achtbaan.
+zouden dat twee nieuwigheden in twee jaar zijn, voor dit park bijna hectisch.
 
 ## Veelgestelde vragen over Hansa-Park
 
@@ -340,13 +341,11 @@ de avondshow überhaupt doorgaan:
 En als je net het noorden plant: het [Heide Park](/blog/heide-park-wachttijden-tips) ligt 131
 kilometer hemelsbreed naar het zuidwesten en past in dezelfde week.
 
-## Wat ik je voor Sierksdorf meegeef
+## Waar het addertje zit
 
-Dit park heeft twee gezichten. Het ene is een toren van 79 meter met de snelste achtbaan van het land
-erin, het andere een familiepark met een kanaalvaart uit 1977 en lichtfiguren in oktober. De meeste
-parken kiezen op een gegeven moment voor een van beide. Hansa-Park zet ze naast elkaar op 46 hectare.
-
-Je betaalt ervoor met de ligging. Hamburg ligt 78 kilometer hemelsbreed verderop, alles ten zuiden
+Een toren van 79 meter met de Kärnan erin en een kanaalvaart uit 1977 vol lichtfiguren staan hier op
+dezelfde 46 hectare. De meeste parken hadden allang voor een van beide gekozen. Je betaalt ervoor met
+de ligging. Hamburg ligt 78 kilometer hemelsbreed verderop, alles ten zuiden
 daarvan aanzienlijk verder, en wie alleen voor de acht achtbanen komt, is in de vroege middag klaar.
 Het park gaat ervan uit dat je toch al aan de Oostzee zit.
 

@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos wird 25, und nebenan stehen vier deutsche Premieren'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -197,8 +198,8 @@ Bahnen, wegen derer die Eltern gekommen sind.
 
 ## Wie voll es wirklich ist
 
-Der Park misst sich nicht an einer einzelnen Bahn. Diese Tabelle steht auf zwei
-Jahren Messung, jede Bahn mit ihrer eigenen Zahl an Messtagen:
+Diese Tabelle steht auf zwei Jahren Messung, jede Bahn mit ihrer eigenen Zahl
+an Messtagen:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -212,7 +213,7 @@ in keinem Reisebericht als Grund für die Fahrt nach Soltau auftauchen. Bei der
 Bobbahn erklärt die Fahrzeit einen Teil davon, bei der Wildwasserbahn das
 Wetter.
 
-Interessanter als die Höhe der Schlangen ist ihr Tagesverlauf.
+Mehr verrät, zu welcher Uhrzeit die Schlangen wachsen.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -246,8 +247,10 @@ kaufen. Das **Express Ticket** gibt es in vier Stufen: Bronze ab **25 €** für
 Wildwasserbahn, Big Loop und Bobbahn, Silber ab 39 € mit Krake und Desert Race,
 Gold ab 59 € zusätzlich mit Colossos und Scream, Platin ab 99 € ohne Limit.
 Zwei Dinge daran übersieht man leicht. In den drei unteren Stufen ist **pro
-Attraktion eine Fahrt** enthalten, nicht beliebig viele. Und es gibt das Ticket
-nur an ausgewählten Tagen und nur im Vorverkauf, an der Kasse also gar nicht.
+Attraktion eine Fahrt** enthalten, nicht beliebig viele: Wer mit Gold ein zweites
+Mal Colossos fahren will, stellt sich dafür ganz normal hinten an. Und es gibt
+das Ticket nur an ausgewählten Tagen und nur im Vorverkauf, an der Kasse also
+gar nicht.
 
 ## Wann du hinfahren solltest
 
@@ -269,12 +272,13 @@ veröffentlicht ist, steht im Kalender auf der [Parkseite](ref:heide-park).
 
 ### Der Wochentag
 
-Der Wochentag ist hier ein kleiner Hebel. Sechs von sieben Tagen liegen in der
+Am Wochentag hängt hier weniger, als man denkt. Sechs von sieben Tagen liegen in der
 Tabelle darüber dicht beieinander, heraus sticht nur der Samstag, und unten
-stehen Freitag und Sonntag. Der Montag steht dabei auf gut der Hälfte der
-Messtage der anderen Tage, weil der Park ihn im Frühjahr und im Herbst
-regelmäßig aus dem Kalender nimmt. Seine niedrige Zahl kommt also größtenteils
-daher, dass an diesen Tagen gar nicht geöffnet war.
+stehen Freitag und Sonntag. Der Montag steht auf nur gut halb so vielen
+Messtagen wie die anderen, weil der Park ihn im Frühjahr und im Herbst
+regelmäßig aus dem Kalender nimmt. Gezählt werden also vor allem Montage in der
+Hauptsaison, und ruhig sind die nicht. Ein ruhiger Montag ist in Soltau meistens
+ein geschlossener.
 
 ### Der Monat
 
@@ -306,15 +310,14 @@ Saison rund **600.000**, und aus den sechs Fahrgeschäften wurden 85 Hektar Park
 
 Drei von diesen sechs fahren heute noch, unter anderen Namen: die Floßfahrt,
 die Hochbahn (heute Panoramabahn) und die Westerneisenbahn, die seit 1997
-Heide-Park Express heißt.
+Heide Park Express heißt.
 
 Den Bau, der den frühen Heide Park am besten beschreibt, gibt es nicht mehr.
 Von **1986** bis zum Winter 2011/2012 stand hier ein 35 Meter hoher Nachbau
 der Freiheitsstatue, eingeweiht am 4. Juli 1986 zum hundertsten Geburtstag des
-Originals, mit einem Glückwunsch von Ronald Reagan. Nach dem Abbau diente die
-obere Hälfte noch einige Jahre als Dekoration an Colossos, und zur
-Wiedereröffnung 2019 wurde auch der Rest verschrottet. Es war die Zeit, in der
-deutsche Parks Wahrzeichen nachbauten, statt Lizenzen einzukaufen.
+Originals, mit einem Glückwunsch von Ronald Reagan. Nach dem Abbau stand die
+obere Hälfte noch einige Jahre als Dekoration an Colossos herum, und zur
+Wiedereröffnung 2019 wurde auch der Rest verschrottet.
 
 Am **31. Dezember 2001** kaufte die britische **Tussauds Group** den Park, und
 Anfang 2007 übernahm **Merlin Entertainments** die Mehrheit an Tussauds von
@@ -354,8 +357,9 @@ Hannover, Abfahrt **Soltau-Ost**, ab da ausgeschildert. Auf dem Gelände stehen
 rund 8.000 Parkplätze plus 300 Stellplätze für Busse und Wohnmobile; Parken
 kostet online 14 € für den PKW und 20 € für Wohnmobile, vor Ort mehr und nur
 mit Karte. Mit der Bahn fährt man bis Soltau oder bis Wolterdingen, von
-Wolterdingen sind es 20 Minuten zu Fuß, und aus Hamburg und Hannover fährt der
-Heide Park Express direkt vors Tor.
+Wolterdingen sind es 20 Minuten zu Fuß, und aus Hamburg und Hannover fährt ein
+Bus direkt vors Tor. Er heißt Heide-Park-Express, wie die Parkbahn, hat mit ihr
+aber nichts zu tun.
 
 **Öffnungszeiten.** 28. März bis 31. Oktober 2026, im Kern der Saison täglich,
 im Frühjahr und Herbst nach Kalender und ohne die meisten Montage.
@@ -436,22 +440,18 @@ Wie das Wetter über dem Park aussieht, wenn du hinfährst:
 
 Und wer gerade den Norden plant: Der
 [Movie Park Germany](/blog/movie-park-germany-wartezeiten-tipps) ähnelt dem
-Heide Park in der Wochenstruktur so stark, dass sich die beiden Guides
-gegenseitig lesen lassen.
+Heide Park in der Wochenstruktur so stark, dass man die beiden Guides gut
+nebeneinanderlegen kann.
 
 ## Was ich dir für Soltau mitgebe
 
 Der Heide Park hat keine durchgehende Erzählung wie Brühl und keine 18 Länder
-wie Rust. Er hat Bahnen. Vier Bauarten standen hier zuerst in Deutschland,
-Colossos ist zweimal gebaut worden, und Scream war ein Aussichtsturm, bevor er
-ein Freifallturm wurde. Die Lizenzbereiche für Peppa Pig und Ghostbusters sind
-genau so groß, wie ein Konzern sie bezahlt.
+wie Rust. Er hat Bahnen, und bei vier davon war er in Deutschland der Erste.
 
 Dafür zahlst du mit 85 Hektar. Wenig Schatten, lange Wege zwischen den großen
-Bahnen, und an einem Augustsamstag merkst du jeden Meter. Wer nicht laufen will,
-nimmt einen Freitag im September statt eines Samstags im August. Wochentag und
-Monat verschieben einzeln etwa gleich viel und zusammen das Doppelte, und diese
-Entscheidung fällt zu Hause.
+Bahnen, und an einem Augustsamstag merkst du jeden Meter. Wer das nicht will,
+nimmt einen Freitag im September statt eines Samstags im August, und diese
+Entscheidung fällt zu Hause, nicht erst in der Schlange vor Colossos.
 
 Und wenn du im Oktober kommst: Die langen Samstage fangen erst um zwölf an. Wer
 um zehn vor dem Tor steht, wartet zwei Stunden auf einer Wiese.

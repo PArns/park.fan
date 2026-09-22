@@ -2,6 +2,7 @@
 title: 'Walibi Belgium: de andere Walibi, met de hoogste achtbaan van de Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -65,21 +66,19 @@ blijft boven. Je maag niet.
 Dat is [Kondaa](ref:walibi-belgium/kondaa), en wie hier “Walibi” zegt, denkt
 vrijwel nooit als eerste aan deze baan. De meesten denken aan
 [Walibi Holland](ref:walibi-holland) en aan
-[Untamed](ref:walibi-holland/untamed). Terwijl het park waar het hier over gaat
-de oudste van de twee is, de naamgever van de hele keten, en sinds mei 2021 de
-hoogste en snelste achtbaan van de Benelux heeft staan.
+[Untamed](ref:walibi-holland/untamed). Terwijl Waver het oudste van de twee parken
+is, de hele keten zijn naam gaf en sinds mei 2021 de hoogste en snelste
+achtbaan van de Benelux heeft.
 
 ## Twee parken, één naam
 
-[Walibi Belgium](ref:walibi-belgium?long) ligt in **Waver**, een goed half uur
+[Walibi Belgium](ref:walibi-belgium?long) ligt in **Waver**, zo’n half uur
 rijden ten zuidoosten van Brussel en vanuit Antwerpen ongeveer een uur. Het park
 ging open op **26 juli 1975**, negentien jaar voordat zijn Nederlandse
 tegenhanger in 1994 de naam Walibi kreeg. Die naam zelf is een samentrekking van
 de drie gemeenten waarop het park ligt, in hun Franse vorm: **Wa**vre,
-**Li**mal en **Bi**erges. De uitgebreide versie van dat verhaal, inclusief de
-halloweenwending die het park eraan geeft, staat in onze
-[halloweengids](/blog/halloween-pretparken-2026); hier gaat het over de rest van
-het jaar.
+**Li**mal en **Bi**erges. Wat het park met halloween met die naam doet, staat in
+onze [halloweengids](/blog/halloween-pretparken-2026).
 
 Beide parken zijn sinds 2006 van hetzelfde concern, het Franse
 **Compagnie des Alpes** (via dochter Grévin & Cie), waar ook
@@ -94,7 +93,7 @@ moment tot elkaar:
 
 ```
 
-## Kondaa: 50 meter, 113 km/u, wereldwijd een unicum
+## Kondaa: 50 meter hoog en geen enkele keer over de kop
 
 ```ride-waits-widget rides=walibi-belgium/kondaa|Kondaa|Intamin Mega Coaster, 2021;walibi-holland/goliath|Goliath|B&M Hyper Coaster;bobbejaanland/fury|Fury columns=park,type,peak highlight=walibi-belgium/kondaa
 
@@ -102,8 +101,8 @@ moment tot elkaar:
 
 **[Kondaa](ref:walibi-belgium/kondaa)** opende op 8 mei 2021 als
 **Intamin Mega Coaster**: 50 meter hoog, 1.200 meter lang, topsnelheid
-113 km/u, geen enkele keer over de kop en toch de genoemde non-inverting cobra
-roll, destijds een wereldprimeur, plus een zijwaarts hellend
+113 km/u, geen enkele inversie. Wel die cobra roll van hierboven, die je
+níét op je kop zet, destijds een wereldprimeur, plus een zijwaarts hellend
 double-down-element en volgens het park vijftien airtimemomenten in één rit.
 
 ```glossary-widget slug=airtime
@@ -119,10 +118,9 @@ euro, twee treinen met elk zes wagens voor vier personen brengen zo’n 1.080
 gasten per uur door de anderhalve minuut rittijd. Meerijden mag wie tussen de
 130 en 195 cm lang is.
 
-Ik rijd flinke afstanden voor één enkele achtbaan, en Kondaa hoort voor mij in
-die categorie. Ze gaat nergens over de kop en heeft dat ook niet nodig. Wat ze
-in plaats daarvan doet: je vijftig meter omhoog trekken en je daarna anderhalve
-minuut niet meer loslaten.
+Ik rijd flinke afstanden voor één enkele achtbaan, en Kondaa is er zo een. Dat
+ze nergens over de kop gaat, mis je geen moment. Ze trekt je vijftig meter
+omhoog en laat je daarna anderhalve minuut niet meer los.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -140,12 +138,11 @@ De rustigste dagen van de komende weken, live berekend:
 
 ## De rest van het park
 
-Kondaa haalt de koppen, maar de oudste achtbaan van het park is bouwjaar 1982 en
-rijdt nog. Daar zit precies de charme van Waver: een klassieker van Schwarzkopf
-en een nieuwe Intamin uit 2021 staan hier op hetzelfde terrein.
+Kondaa haalt de koppen. De oudste achtbaan van het park is 39 jaar ouder en
+rijdt nog altijd.
 
-**[Turbine](ref:walibi-belgium/turbine)** is de oudste baan, een
-**Schwarzkopf Shuttle Loop** uit 1982 en daarmee een echte zeldzaamheid. De
+**[Turbine](ref:walibi-belgium/turbine)** is die baan, een
+**Schwarzkopf Shuttle Loop** uit 1982. De
 trein wordt met 85,3 km/u vooruit het station uit geschoten, neemt de enige
 looping van de installatie, klimt de toren daarachter op en rolt hetzelfde
 traject achteruit weer terug, door die looping heen en achter het station de
@@ -156,15 +153,15 @@ verbouwing tot Dock World heeft haar de naam Turbine teruggegeven.
 
 **Vampire** (1999) is een **Vekoma SLC** (Suspended Looping Coaster, model 689)
 en was bij de opening de eerste baan van dit type in België. De trein hangt
-onder de rail in plaats van erop, zodat je voeten in elke bocht vrij door de
-lucht zwaaien, zonder dat er onder je een vloer te zien is.
+onder de rail, en je voeten bungelen in elke bocht vrij.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, oorspronkelijk
 “Colorado” gedoopt) is de klassieke mijnachtbaan over 785 meter, rustig tempo,
 krappe bochten, ideaal om in te komen.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) is een **Boomerang**: de trein
 wordt achteruit een lifthill op getrokken, gaat vooruit door een dubbele looping
-(cobra roll) en doet aan het andere eind van het traject precies hetzelfde nog
-eens achteruit, omdat er maar één trein op de hele installatie rijdt.
+(cobra roll) en rijdt daarna het hele traject nog eens achteruit. Het park heeft
+dus twee cobra rolls: een die je op je kop zet, en die van Kondaa, die daar
+geen zin in heeft.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, eveneens uit 2001, is een
 houten constructie van Vekoma, een fabrikant die je eerder met staal verbindt.
 
@@ -176,14 +173,15 @@ gelanceerde waterachtbaan), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
 ![Een vuurtoren met het opschrift “Port Wavre” aan een havenkom, ervoor boten en paalwoningen | Port Wavre, het fictieve havenplaatsje in het nieuwe gebied Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
 
 De jongste nieuwigheid is **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
-Gerstlauer), een launch coaster in het volledig nieuw gebouwde gebied
+Gerstlauer), een launch coaster die het park bij zijn familieattracties
+indeelt, in het volledig nieuw gebouwde gebied
 **Dock World**. Het hart daarvan is het fictieve havenplaatsje **Port Wavre**,
 met vuurtoren, steigers en paalwoningen, waarin het park meteen twee oudere
 banen heeft ingebouwd in plaats van ze gewoon te laten staan: de wildwaterbaan
 **[Flash Back](ref:walibi-belgium/flash-back)** en dus
-**[Turbine](ref:walibi-belgium/turbine)**, terug onder haar oude naam. In het
-familiegebied staat daarnaast **Kondaala**, een kleinere, kindvriendelijke
-afgeleide van de naam Kondaa.
+**[Turbine](ref:walibi-belgium/turbine)**, terug onder haar oude naam. En in het
+familiegebied staat **Kondaala**, een kinderattractie die haar naam van Kondaa
+heeft geleend.
 
 Van de twee nieuwigheden in het park heeft Mecalodon me het meest verrast. Een
 familiecoaster wordt naast een baan van vijftig meter al gauw over het hoofd
@@ -201,13 +199,13 @@ aparte entree en zit niet bij het gewone dagticket.
 
 ## Van waterskivijver tot pretpark
 
-Begonnen is dit alles niet met een achtbaan, maar met een vijver. Rond 1970
+Het begon met een vijver. Rond 1970
 kocht ondernemer **Eddy Meeùs** een plas in Limal om er waterski te
 demonstreren. Uit die demonstratieplek groeide in een paar jaar een echt park,
 en op **26 juli 1975** ging Walibi open, met zo’n **47.000 bezoekers** in het
 eerste seizoen. De mascotte, een kangoeroe, stond vanaf het begin naast de
-ingang en past tot vandaag toevallig goed bij de naam: “Walibi” klinkt bijna als
-“wallaby”, ook al ligt de werkelijke herkomst elders.
+ingang. Dat “Walibi” bijna als “wallaby” klinkt, is toeval: de naam komt van de
+drie gemeenten.
 
 Het park groeide snel over Waver heen. Uit die ene vestiging ontstond een kleine
 Europese keten met filialen in Frankrijk (onder meer Walibi Rhône-Alpes, 1981) en Nederland. In 1998 kocht de Amerikaanse groep Premier Parks, die
@@ -227,45 +225,39 @@ Walibi-vestigingen. Sindsdien zijn Waver, Biddinghuizen en
 Het zwaarste jaar tot nu toe kwam zonder enige naamswisseling. Op **15 juli 2021**
 trof het hoogwater dat grote delen van West- en Midden-Europa verwoestte ook het
 dal van de Dijle, waar het park aan ligt. De schade was genoeg voor een sluiting
-van maanden midden in het hoogseizoen, in het jaar waarin Kondaa tien weken
-eerder was opengegaan.
+van maanden midden in het hoogseizoen, tien weken na de opening van Kondaa.
 
 ## Worlds of Walibi: honderd miljoen euro voor acht nieuwe themagebieden
 
 Op **22 juni 2017** presenteerde het park een investeringsplan waar in zijn
 geschiedenis niets aan voorafging: **“Worlds of Walibi”**, zo’n
 **100 miljoen euro**, waarmee 75 % van het terrein in acht nieuwe themagebieden
-moest veranderen, plus tien nieuwe attracties. De oorspronkelijke horizon was 2023. Toen was er pas een deel klaar, wat bij een verbouwing van deze omvang
-eerder regel dan uitzondering is: **Kondaa** (2021) was het eerste grote gebied,
-**Dock World** met Mecalodon (2025) tot nu toe het laatste.
+moest veranderen, plus tien nieuwe attracties. In 2023 moest alles af zijn. Het eerste grote
+gebied kwam in 2021 met **Kondaa**, het tot nu toe laatste, **Dock World** met
+Mecalodon, in 2025, twee jaar na de deadline.
 
-Naast andere Europese ketens valt me vooral één ding op. De
-**Compagnie des Alpes** zet dit ook echt door, en niet alleen in Waver. In
-zusterpark [Walibi Holland](ref:walibi-holland) kwamen in dezelfde periode met
-[Untamed](ref:walibi-holland/untamed) en de dubbelbaan YOY nog twee grote
-nieuwigheden bij. Voor een keten die je makkelijk zou kunnen verwijten dat ze
-alleen de bekendste namen verzorgt, gaat er hier zichtbaar geld naar precies de
-vestigingen die je eerder over het hoofd ziet. Of in 2026 of in 2027 het
-volgende van de acht gebieden klaar is, laat het park tot nu toe niet los.
-
-Een concern zou die acht jaar ook heel anders kunnen besteden, met
-kostenbesparing in plaats van nieuwbouw, en op korte termijn betere cijfers
-hebben. In plaats daarvan krijgt een park dat bij de meesten niet eens op het
-lijstje staat binnen vier jaar twee nieuwe achtbanen en een compleet nieuw
-gebied.
+Doorgezet wordt het plan wel, en niet alleen in Waver: in zusterpark
+[Walibi Holland](ref:walibi-holland) bouwde de **Compagnie des Alpes** in
+dezelfde periode met [Untamed](ref:walibi-holland/untamed) en de dubbelbaan YOY
+nog twee grote nieuwigheden. Een park dat bij de meesten niet eens op het
+lijstje staat, kreeg binnen vier jaar twee nieuwe achtbanen en een compleet
+nieuw gebied. Of in 2026 of in 2027 het volgende van de acht gebieden klaar is,
+laat het park tot nu toe niet los.
 
 ## Ibilaw: Halloween achterstevoren gelezen
 
 ![Vervallen houten gebouw met het opschrift Aquarium, blauwgroen verlicht bij nacht | Het spookhuis Aquarium, midden in Dock World, waar overdag Mecalodon rijdt. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
 Met halloween draait het park zijn eigen naam om: **“Ibilaw”** is “Walibi”
-achterstevoren, sinds 2024 met mascotte **Bill** en meerdere spookhuizen en
-scare zones zoals het clowneske **Psycho Circus** en **Arachnophobia**,
-gezinsvriendelijker dan de strikte vanaf-16-events van andere parken. Een van de
+achterstevoren, en heeft sinds 2024 een eigen mascotte, **Bill**. Er zijn
+meerdere spookhuizen en scare zones, zoals het clowncircus **Psycho Circus** en
+**Arachnophobia**, en het geheel is gezinsvriendelijker dan de strikte
+vanaf-16-events van andere parken. Een van de
 spookhuizen, **Aquarium**, staat in datzelfde Dock World waar overdag Mecalodon
 rijdt, in een zogenaamd sinds de jaren negentig gesloten publieksaquarium. De
-**Speedy Pass** is hier de fast lane, ook buiten het seizoen. De volledige
-vergelijking met Toverland, Movie Park en de rest staat in onze
+**Speedy Pass**, de fast lane van het park, bestaat tijdens Ibilaw ook in
+varianten waar de spookhuizen bij zitten. Hoe dat zich verhoudt tot
+Toverland, Movie Park en de rest, staat in onze
 [halloweengids 2026](/blog/halloween-pretparken-2026).
 
 ## Wanneer je moet gaan
@@ -274,10 +266,8 @@ vergelijking met Toverland, Movie Park en de rest staat in onze
 
 ```
 
-Als seizoenspark zonder winterbedrijf buiten de kerstvakantie valt het antwoord
-hier heel anders uit dan bij de Duitse parken die het hele jaar door open zijn:
-wie in februari een lege dinsdag zoekt, zoekt tevergeefs, want dan is er
-helemaal niet open. Binnen het
+Buiten het seizoen en de kerstvakantie is Walibi Belgium dicht. Wie in februari
+een lege dinsdag zoekt, vindt er een, alleen achter een gesloten hek. Binnen het
 seizoen bepalen vooral twee dingen hoe druk het wordt: de Belgische
 schoolvakanties, de Waalse voorop, die dit park harder voelt dan zijn Duitse
 buren, en de weekdagen buiten de zomervakantie, waarop het park toch al niet
@@ -299,21 +289,21 @@ tweede ticket heeft, plakt er een middag **Aqualibi** achteraan.
 ## Praktisch: route, tickets, openingstijden
 
 **Route.** Walibi Belgium ligt in **Waver** (provincie Waals-Brabant), pal aan
-de N238, zo’n 25 autominuten van Brussel. Vanuit Antwerpen ben je er in
+de N238, zo’n half uur rijden van Brussel. Vanuit Antwerpen ben je er in
 ongeveer een uur, vanuit Eindhoven in ruim anderhalf uur en vanuit de Randstad
 in ruim twee; met de trein reis je naar Brussel en van daaruit verder richting
 Waver.
 
-**Openingstijden.** Het reguliere seizoen loopt van begin april tot begin
-november, buiten de zomervakantie niet dagelijks, maar volgens seizoenskalender,
-met losse openingsdagen in het vroege najaar, tot in oktober het dagelijkse
-Ibilaw-bedrijf begint. Sinds 2023 komt daar een winteropening over de
+**Openingstijden.** Het seizoen loopt van begin april tot in november, buiten
+de zomervakantie niet dagelijks, maar volgens seizoenskalender. In oktober
+wordt het park Ibilaw, in 2026 van 10 oktober tot 11 november, en ook dan is
+het alleen op geselecteerde dagen open. Sinds 2023 komt daar een winteropening over de
 kerstvakantie bij. De actuele kalender en de tijden staan dag voor dag op de
 [parkpagina](ref:walibi-belgium).
 
-**Eten.** Voor de snelle honger tussendoor staan er snackkramen door het hele
-park; wie langer wil zitten, vindt in het themagebied rond Kondaa een eigen
-restaurant, vernoemd naar de achtbaan ernaast.
+**Eten.** Snackkramen staan overal in het park. Wie wil zitten, gaat naar het
+themagebied rond Kondaa, daar zit een restaurant dat naar de achtbaan ernaast
+heet.
 
 **Tickets.** Online zijn de kaartjes goedkoper dan aan de kassa, met wisselende
 actieprijzen in de loop van het seizoen (in september bijvoorbeeld zo’n
@@ -371,15 +361,15 @@ afgeronde onderdelen.
 
 ## Verder lezen
 
-Hoe druk het deze week werkelijk is, en wat het weer daarbij doet:
+Hoe het weer in Waver eruitziet als je gaat:
 
 ```weather-widget slug=walibi-belgium
 
 ```
 
 Het park dat de hele keten zijn naam gaf, staat al vijftig jaar aan de Dijle,
-tussen Waver, Limal en Bierges, en het grootste deel van die tijd in de schaduw
-van zijn Nederlandse naamgenoot. Wie erheen gaat, moet Kondaa twee keer rijden:
+tussen Waver, Limal en Bierges, en staat toch in de schaduw van zijn
+Nederlandse naamgenoot. Wie erheen gaat, moet Kondaa twee keer rijden:
 vooraan, waar je de drop ziet aankomen, en op de laatste rij, waar hij je al te
 pakken heeft voordat de trein helemaal boven is.
 

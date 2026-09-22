@@ -44,8 +44,8 @@ seo:
     - calendario affollamento
 ---
 
-Sei davanti a [Taron](ref:phantasialand/taron), il display segna **70 minuti**, e la tua testa fa
-subito la cosa sbagliata: confronta quel numero con il tuo ricordo. L’ultima
+Sei davanti a [Taron](ref:phantasialand/taron), il display segna
+**70 minuti**, e la tua testa fa subito la cosa sbagliata: confronta quel numero con il tuo ricordo. L’ultima
 volta erano 40, quindi oggi va peggio. La volta prima 90, quindi oggi va
 benissimo. Due visite non sono una base, e la memoria arrotonda comunque a tuo
 sfavore ([il perché è qui](/blog/l-arte-dell-attesa)).
@@ -64,15 +64,14 @@ più lunga è stata più corta di quel valore, nell’altra metà più lunga. **
 è il 90° percentile della stessa serie, all’incirca quel giorno su dieci in cui
 c’era davvero movimento.
 
-Sono entrambi percentili e non medie. Una media si lascia
-spostare da una singola giornata eccezionale: un pomeriggio con un guasto e 150
+Sono entrambi percentili e non medie. Una media si lascia spostare da una singola giornata eccezionale: un pomeriggio con un guasto e 150
 minuti di coda tira su la media di un mese intero, anche se per 29 giorni non se
-n’è sentito nulla. La mediana davanti a una giornata così non si muove. Per
+n’è sentito nulla. La mediana davanti a una giornata così non batte ciglio. Per
 questo il record sta a parte, con la data, così lo si vede senza che tocchi gli
 altri due numeri.
 
-Per il [Phantasialand](ref:phantasialand) la classifica è questa. La colonna dei giorni misurati è
-la più importante: dice quanto peso porta una riga.
+Per il [Phantasialand](ref:phantasialand) la classifica è questa. La colonna
+dei giorni misurati è la più importante: dice quanto peso porta una riga.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
@@ -111,7 +110,7 @@ pagina di ogni attrazione, con un orario concreto nell’ora del parco.
 L’orario ti fa risparmiare mezz’ora, la data fino a un’ora intera. Tra due giorni della
 stessa settimana di vacanza ci può essere mezz’ora di attesa media di
 differenza, e da un calendario normale non si vede. A fare la differenza: quali
-regioni sono in vacanza, se c’è un ponte attaccato, se piove, e se oltre confine
+regioni sono in vacanza, se c’è un ponte attaccato, se piove e se oltre confine
 sta succedendo qualcosa.
 
 L’ultimo punto viene volentieri sottovalutato. Un parco vicino al confine si
@@ -141,19 +140,19 @@ compressi, ma ogni analisi continua a girare su tutte le rilevazioni mai
 arrivate. Chi comincia a salvare al terzo anno, al terzo anno ha un anno di storico, e i
 due precedenti sono persi per sempre.
 
-## E i punti in cui non diciamo nulla
+## Dove preferiamo non dire nulla
 
-[Hansa-Park](ref:hansa-park), per esempio, fornisce i suoi tempi di attesa solo nella propria app,
-e soltanto per i dispositivi collegati al wi-fi del parco. Non esiste
+[Hansa-Park](ref:hansa-park), per esempio, fornisce i suoi tempi di attesa solo
+nella propria app, e soltanto per i dispositivi collegati al wi-fi del parco. Non esiste
 un’interfaccia pubblica. Nei dati grezzi questo parco somiglia a qualunque altro
 alle tre di notte: nessuna attrazione riporta niente. Se ne traessimo la
-conclusione ovvia, lì ci sarebbero 82 attrazioni su «molto bassa», più una media
+conclusione ovvia, lì ci sarebbero tutte le attrazioni del parco su «molto bassa», più una media
 di 0 minuti e una previsione fondata su zero osservazioni. Al suo posto, sulla
 pagina del parco c’è un avviso che qui non c’è niente da leggere.
 
 La stessa regola in un punto più piccolo: la pista di pattinaggio del
-Phantasialand va da novembre a gennaio. Ad agosto su di essa non riporta niente
-nessuno, perché non c’è niente da riportare. Leggere quel silenzio come «aperta»
+Phantasialand va da novembre a gennaio. Ad agosto nessuno riporta niente su di
+essa, perché non c’è niente da riportare. Leggere quel silenzio come «aperta»
 sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco. E i
 mesi di esercizio di un’attrazione li indichiamo solo dopo 330 giorni di
 osservazione: prima non compare alcun mese, perché «va da dicembre ad aprile»

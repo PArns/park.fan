@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos compie 25 anni, e accanto ci sono quattro debutti tedeschi'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -63,7 +64,7 @@ montagne russe di legno su cui nessuno poteva salire. Il **28 luglio 2016**
 stagione, perché dopo quindici anni il binario era consumato. È tornato a
 viaggiare solo il **19 aprile 2019**.
 
-È tornato come montagna russa di legno, ed è questa la parte notevole. La
+È tornato come montagna russa di legno. La
 strada abituale sarebbe stata un’altra: quando il tracciato di una woodie
 marcisce, oggi di solito le si avvitano rotaie d’acciaio sulla vecchia
 struttura e prosegue come ibrida. Heide Park ha fatto posare un binario di
@@ -201,7 +202,7 @@ per cui i genitori sono venuti.
 
 ## Quanta gente c’è davvero
 
-Questo parco non si misura su una sola attrazione. La tabella qui sotto poggia
+La tabella qui sotto poggia
 su due anni di rilevazioni, ogni attrazione con il proprio numero di giorni
 misurati:
 
@@ -217,7 +218,7 @@ nessun racconto di viaggio compaiono come motivo per guidare fino a Soltau.
 Nella Bobbahn una parte la spiega la durata del giro; nella log flume, il
 tempo che fa.
 
-Più interessante dell’altezza delle file è il loro andamento nella giornata.
+Dice di più l’ora in cui le file crescono.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -251,7 +252,9 @@ dell’attesa si può comprare. L’**Express Ticket** esiste in quattro livelli
 Bronze da **25 €** per log flume, Big Loop e Bobbahn, Silver da 39 € con Krake
 e Desert Race, Gold da 59 € con in più Colossos e Scream, Platinum da 99 €
 senza limite. Due cose sfuggono facilmente. Nei tre livelli inferiori è
-compreso **un giro per attrazione**, non quanti se ne vogliono. E il biglietto
+compreso **un giro per attrazione**, non quanti se ne vogliono: chi con il Gold
+vuole rifare Colossos si rimette in fondo alla fila normale, come tutti. E il
+biglietto
 esiste solo in giornate selezionate e solo in prevendita, quindi non alla
 cassa.
 
@@ -275,11 +278,13 @@ settimane sta nel calendario sulla [pagina del parco](ref:heide-park).
 
 ### Il giorno della settimana
 
-Il giorno della settimana è qui una leva piccola. Sei giorni su sette stanno
+Il giorno della settimana qui conta meno di quanto si pensi. Sei giorni su sette stanno
 vicini nella tabella qui sopra, si stacca solo il sabato, e in fondo ci sono
-venerdì e domenica. Il lunedì lo fa su poco più della metà dei giorni misurati
+venerdì e domenica. Il lunedì poggia su poco più della metà dei giorni misurati
 degli altri, perché il parco in primavera e in autunno lo toglie regolarmente
-dal calendario. Un lunedì tranquillo, a Soltau, di solito è un lunedì chiuso.
+dal calendario. I lunedì che contano cadono quindi soprattutto in alta stagione,
+e quelli tranquilli non sono. Un lunedì tranquillo, a Soltau, di solito è un
+lunedì chiuso.
 
 ### Il mese
 
@@ -313,15 +318,14 @@ attrazioni sono nati 85 ettari di parco.
 
 Tre di quelle sei viaggiano ancora oggi, con altri nomi: la discesa sulle
 zattere, la ferrovia sopraelevata (oggi la Panoramabahn) e la ferrovia western,
-che dal 1997 si chiama Heide-Park Express.
+che dal 1997 si chiama Heide Park Express.
 
 La costruzione che descrive meglio il primo Heide Park non esiste più. Dal
 **1986** all’inverno 2011/2012 qui si ergeva una replica alta 35 metri della
 Statua della Libertà, inaugurata il 4 luglio 1986 per il centesimo compleanno
 dell’originale, con gli auguri di Ronald Reagan. Dopo lo smontaggio la metà
-superiore ha fatto da decorazione a Colossos ancora per qualche anno, e il
-resto è finito in rottami per la riapertura del 2019. Era l’epoca in cui i
-parchi tedeschi ricostruivano monumenti invece di comprare licenze.
+superiore è rimasta piazzata come decorazione accanto a Colossos ancora per
+qualche anno, e il resto è finito in rottami per la riapertura del 2019.
 
 Il **31 dicembre 2001** il britannico **Tussauds Group** ha comprato il parco,
 e all’inizio del 2007 **Merlin Entertainments** ha rilevato la maggioranza di
@@ -363,8 +367,9 @@ Hannover, uscita **Soltau-Ost**, da lì è segnalato. Nell’area ci sono circa
 8.000 posti auto più 300 per bus e camper; il parcheggio costa 14 € online per
 l’auto e 20 € per il camper, di più sul posto e solo con carta. In treno si
 arriva a Soltau o a Wolterdingen; da Wolterdingen sono 20 minuti a piedi, e da
-Amburgo e Hannover il pullman Heide Park Express arriva fin davanti al
-cancello.
+Amburgo e Hannover un pullman arriva fin davanti al cancello. Si chiama
+Heide-Park-Express, come il trenino del parco, ma con quello non ha niente a che
+fare.
 
 **Orari.** Dal 28 marzo al 31 ottobre 2026, tutti i giorni nel cuore della
 stagione, a calendario in primavera e in autunno e senza la maggior parte dei
@@ -448,21 +453,17 @@ Che tempo farà sopra il parco quando ci andrai:
 E per chi sta pianificando il nord proprio adesso: il
 [Movie Park Germany](/blog/movie-park-germany-tempi-di-attesa-consigli)
 assomiglia all’Heide Park nella struttura della settimana al punto che le due
-guide si leggono bene insieme.
+guide si possono tenere una accanto all’altra.
 
 ## Che cosa mi porto via da Soltau
 
-Questo parco è quello che finge meno di essere altro. Non c’è un racconto
-continuo come a Brühl né 18 paesi come a Rust, e le due aree su licenza sono
-esattamente grandi quanto un gruppo paga. Quello che c’è qui c’è per le
-attrazioni: quattro tipi di tracciato che in Germania prima non esistevano, una
-montagna russa di legno costruita due volte e una torre di caduta che il parco
-ha ricavato da una torre panoramica già presente.
+L’Heide Park non ha un racconto continuo come Brühl né 18 paesi come Rust. Ha
+le attrazioni, e con quattro di queste è stato il primo in Germania.
 
-Il prezzo è la superficie. 85 ettari con poca ombra e lunghi tragitti fra le
-grandi attrazioni, e un sabato di agosto se ne sente ogni metro. Per questo
-questo testo parla tanto di calendario: la differenza fra una buona giornata e
-una giornata pesante a Soltau si decide a casa, sulla data.
+Lo si paga in superficie. 85 ettari con poca ombra e lunghi tragitti fra le
+grandi attrazioni, e un sabato di agosto se ne sente ogni metro. Se vuoi
+risparmiartelo, prendi un venerdì di settembre invece di un sabato di agosto,
+e decidilo a casa, non nella fila di Colossos.
 
 E se vieni in ottobre: i sabati lunghi cominciano solo a mezzogiorno. Chi alle
 dieci sta davanti al cancello aspetta due ore su un prato.

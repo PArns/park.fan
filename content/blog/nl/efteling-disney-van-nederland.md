@@ -2,6 +2,7 @@
 title: 'Efteling: de Disney van Nederland, drie jaar vóór Disneyland'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -10,8 +11,8 @@ excerpt: >-
   Disneyland. Het park is van geen enkel concern, maar van een stichting die
   niets mag uitkeren en die naast de deur een vakantiehuis voor ernstig zieke
   kinderen heeft neergezet. En omdat een natuurvergunning de grens bij vijf
-  miljoen bezoekers legt, wacht je hier ondanks 5,78 miljoen bezoeken
-  doorgaans niet langer dan een ruim kwartier.
+  miljoen bezoekers legt, zijn de rijen hier voor 5,78 miljoen bezoeken
+  verrassend kort.
 tags:
   - efteling
   - wachttijden
@@ -34,7 +35,7 @@ coverImage:
 seo:
   title: 'Efteling: wachttijden, tips & beste reistijd'
   description: >-
-    De Efteling met echte wachttijddata uit meer dan 150 bedrijfsdagen: beste reistijd,
+    De Efteling met echte, zelf gemeten wachttijddata: beste reistijd,
     tickets en waarom er maar vijf miljoen bezoekers per jaar naar binnen mogen.
   keywords:
     - Efteling
@@ -95,14 +96,14 @@ grootste van Europa (alleen het
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in Parijs en
 het [Europa-Park](ref:europa-park) in Rust staan erboven).
 
-Bij die 3.000 medewerkers loont een tweede blik. In 2023 kozen de Nederlanders de
+En die 3.000 mensen werken er blijkbaar graag. In 2023 kozen de Nederlanders de
 Efteling in het **Randstad Employer Brand Research** tot **aantrekkelijkste
 werkgever van het land** in het bedrijfsleven. Kantar ondervraagt daarvoor
 jaarlijks meer dan tienduizend mensen over de 150 grootste werkgevers van
 Nederland, en genoemd werden bij de Efteling reputatie, werksfeer en financiële
 gezondheid. De titel is inmiddels van ASML, drie keer op rij, maar in 2023 stond
-een pretpark boven alle concerns van het land. Voor een branche die elders
-synoniem is met seizoenscontracten en minimumloon is dat niet vanzelfsprekend.
+een pretpark boven alle concerns van het land. In een branche waar je eerder aan
+seizoenscontracten en minimumloon denkt, is dat een behoorlijk zeldzame kop.
 
 Het begon met twee mannen en een sportpark. **Anton Pieck**, illustrator, tekende
 de sprookjes en in de decennia daarna ruim duizend ontwerpen voor attracties,
@@ -112,15 +113,14 @@ bos was dat niets eruit mocht zien als een machine. Je ziet hem nog aan elke
 dakrand terug.
 
 Van de tien sprookjes uit 1952 zijn er ruim dertig geworden, het jongste is de
-Prinses op de Erwt uit 2025. Voor de **75e verjaardag in 2027** komt de
-Sprookjesbibliotheek erbij, een binnenloopbare bibliotheek van sprookjes en
-volgens het park nummer 32.
+Prinses op de Erwt uit 2025. Voor de **75e verjaardag in 2027** komt er volgens
+het park nummer 32 bij.
 
 ## De vijf rijken
 
-Het park valt uiteen in vijf gebieden, en de namen zeggen meer over het karakter
-dan welke plattegrond ook: Marerijk, Reizenrijk, Anderrijk, Ruigrijk,
-Fantasierijk. Plus het Sprookjesbos, dat sinds november 2023 als eigen gebied
+Het park valt uiteen in vijf gebieden: Marerijk, Reizenrijk, Anderrijk, Ruigrijk,
+Fantasierijk. De namen spreken voor zich, en in het Ruigrijk staan inderdaad de
+wildere banen. Plus het Sprookjesbos, dat sinds november 2023 als eigen gebied
 meetelt.
 
 ![Het paleis van Symbolica bij nacht, blauw aangelicht, met een fontein ervoor | Het paleis is van buiten te belopen zonder aan te sluiten. De rit begint in de kelder eronder. | right](/media/efteling/symbolica-4x3.jpg)
@@ -160,7 +160,7 @@ voordat je überhaupt zit.
 keer letterlijk. De Zwitserse fabrikant **Intamin** ontwikkelde het rijsysteem
 samen met het park, het heet **Dynamic Motion Stage**, en de installatie in
 Kaatsheuvel is de eerste van dat type ter wereld. Op 31 oktober 2024 ging ze in
-gebruik, op de plek van het legendarische Spookslot dat na 44 jaar dicht was
+gebruik, op de plek van het oude Spookslot dat na 44 jaar dicht was
 gegaan. Samen met het nieuwe themagebied Huyverwoud stopte het park er ongeveer
 **35 miljoen euro** in.
 
@@ -190,8 +190,8 @@ gemaakt en vergroot, ze dragen nu de plafondbalken. De grote **kroonluchters** u
 de tunnel naast het oude slot hangen tegenwoordig in _In den Swarte Kat_, en de
 **oude ingang van het Spookslot** is de ingang van de souvenirwinkel
 _Dr. Charlatans Kwalycke Zaken_ geworden. De neonkleurige **viool**, het
-hoofdpersonage van het Spookslot, keert niet in haar oude vorm terug, maar speelt
-in de nieuwe show een dragende rol.
+hoofdpersonage van het Spookslot, keert niet in haar oude vorm terug, maar krijgt
+in de nieuwe show wel weer een grote rol.
 
 In 2025 leverde het geheel de **Thea Award** van de Themed Entertainment
 Association op. In mei 2025 heeft het park nog bijgeschaafd: meer zicht in de
@@ -235,9 +235,9 @@ ruimer genomen en anders overhelt. De treinen zijn de oude gebleven.
 ![Een reusachtige gouden vogel met gespreide vleugels boven de ingang van Vogel Rok | Rok, de reuzenvogel uit Duizend-en-één-nacht. Daarachter gaat het de berg in. | left](/media/efteling/vogel-rok-4x3.jpg)
 
 **[Vogel Rok](ref:efteling/vogel-rok)** rijdt sinds 1998 volledig in het donker,
-643 meter, 65 km/u, zonder één inversie maar met boordgeluid. Ze is het bewijs dat
-een achtbaan niet snel hoeft te zijn om snel te voelen: als je niet ziet waar het
-heen gaat, is 65 km/u ruim genoeg.
+643 meter, 65 km/u, zonder één inversie maar met boordgeluid. Op papier klinkt dat als
+een familiebaan. Als je niet ziet waar het heen gaat, is 65 km/u alleen ruim
+genoeg.
 
 **[Piraña](ref:efteling/pirana)** is de wildwaterbaan uit 1983 en de
 betrouwbaarste verkoeling van het park.
@@ -248,8 +248,7 @@ familiebanen van Mack, vernoemd naar de twee deugnieten, en
 valtorens al draaiend tot 9,5 meter omhoog gaan en dan zes meter vallen. Vanaf
 90 centimeter, ongeveer 600 gasten per uur.
 
-Het deel dat velen onderschatten staat in het Marerijk.
-**[Villa Volta](ref:efteling/villa-volta)** was in 1996 het **eerste moderne
+**[Villa Volta](ref:efteling/villa-volta)** in het Marerijk was in 1996 het **eerste moderne
 madhouse ter wereld**: een ruimte die om je heen draait terwijl je bank stilstaat,
 gebouwd door Vekoma, verteld als vloek over rover Hugo van den Loonsche Duinen.
 De madhouses die daarna in half Europa zijn neergezet gaan allemaal op dit model
@@ -259,17 +258,18 @@ terug.
 
 **[Droomvlucht](ref:efteling/droomvlucht)** uit 1993 is de elfenrit waar
 Nederlandse volwassenen week van worden. Je zweeft in gondels door bossen,
-elfenkastelen en een nachtstuk waarin de baan even wegzakt. Wie wil weten waarom
-een darkride zonder één schrikmoment zoveel typische wachttijd oplevert, rijdt
-hem één keer en snapt het.
+elfenkastelen en een nachtstuk waarin de baan even wegzakt. Wie zich afvraagt
+waarom er voor een darkride zonder één schrikmoment zo’n rij staat, gaat één keer
+mee en vraagt het daarna niet meer.
 
 ![De minaret van Fata Morgana in het blauwe uur, met de koepels van de bazaar erachter | Van buiten zie je niets van de attractie. Ze ligt volledig achter deze gevel. | left](/media/efteling/fata-morgana-4x3.jpg)
 
 **[Fata Morgana](ref:efteling/fata-morgana)** uit 1986 is een boottocht van acht
 minuten door veertien taferelen uit Duizend-en-één-nacht, zonder één afdaling,
 ontworpen door Ton van de Ven. 1.800 gasten per uur, wat verklaart waarom ze
-ondanks haar populariteit zelden in de wachttijdtabel opduikt. Er gebeurt praktisch
-niets, en toch staat ze in vrijwel elke lijst van beste Europese darkrides.
+ondanks haar populariteit zelden in de wachttijdtabel opduikt. Naar achtbaanmaatstaven
+gebeurt er helemaal niets. Voor mij hoort ze toch bij de beste
+darkrides van Europa.
 
 ![Het Stoomcarrousel met vergulde paarden onder een oranje tentdak | Het Gavioli-orgel is even oud als de molen zelf. De stoommachine ging er in 1944 uit, de naam bleef. | right](/media/efteling/stoomcarrousel-4x3.jpg)
 
@@ -314,16 +314,16 @@ gemaakt of het stilletjes weggehaald.
 animatieserie op de Nederlandse televisie, waarin een pratende boom de figuren van
 het bos ziet kibbelen. Vier jaar later, op 1 april 2010, stond de negen meter hoge
 eik daadwerkelijk in het Sprookjesbos, tegenover het Meisje met de Zwavelstokjes.
-Een park dat een attractie nabouwt uit zijn eigen televisieserie.
 
-Verkocht wordt er hier natuurlijk gewoon, een entreekaartje kost het bos immers
-ook. Alleen is zelfs dat in het decor ingebouwd. **Kogeloog**, de kraam voor
+Helemaal zonder kassa kan ook het Sprookjesbos niet. Alleen zit zelfs die in het
+decor verstopt. **Kogeloog**, de kraam voor
 koffie en stroopwafels, staat pal tegenover Langnek en heet zo omdat Kogeloog een
 van de zes dienaren uit precies dat sprookje is. Aan de gevel hangen zijn buste en
 ovale lijsten met alle zes. De kraam bestaat sinds 1967, ging in 2002 wegens
 gebrek aan omzet dicht en is sinds 26 april 2019 weer open.
 
-De praktische waarde van dit stuk bos is en passant enorm. Er is geen wachtrij,
+En passant is dit stuk bos de beste truc tegen rijen die het park heeft. Er is
+geen wachtrij,
 geen capaciteitsgrens en geen ritduur. Er kunnen hier duizenden gasten tegelijk
 rondlopen zonder dat er bij de ingang ooit een wachttijd hoeft te hangen. Precies dat is een
 reden dat een park met bijna zes miljoen bezoeken draaglijke wachttijden heeft.
@@ -335,14 +335,14 @@ oost naar west, die elkaar op het Herautenplein kruisen, met rood bestrate
 zijpaden naar de afzonderlijke taferelen. De gele sluiproutes verdwijnen. Daarna
 kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
-## Een ruim kwartier, gemeten over 150 bedrijfsdagen
+## Hoe lang je hier in de rij staat
 
-“Een park voor het hele gezin” staat in elke folder. Aantonen kun je dat alleen
-met rijen.
+“Een park voor het hele gezin” staat in elke folder. Of het hele gezin dan ook
+ergens in komt, staat in de wachttijden.
 
 Onze historie voor de Efteling omvat **meer dan 150 bedrijfsdagen** met
 wachttijddata, opgenomen sinds december 2025. Over alle weekdagen gerekend ligt
-de typische wachttijd parkbreed op **een ruim kwartier** (mediaan); op die ene
+de typische wachttijd parkbreed **onder het half uur** (mediaan); op die ene
 dag van de tien waarop het echt druk is, is het ruim anderhalf keer zo veel.
 
 De tien meest gevraagde attracties:
@@ -353,17 +353,16 @@ De tien meest gevraagde attracties:
 
 Twee dingen vallen op.
 
-Ten eerste staat de stoomtrein op plek zeven. Een trein uit 1969 die een rondje
-door het park rijdt heeft een langere typische rij dan Droomvlucht. Dat komt door
+Ten eerste duikt de stoomtrein geregeld in deze lijst op. Een trein uit 1969 die
+een rondje door het park rijdt, tussen allemaal darkrides en achtbanen. Dat komt door
 de capaciteit, niet door de populariteit: twee treinen, een strakke dienstregeling,
 en in de zomer veel gezinnen die met moe geworden kinderen niet meer willen lopen.
-De meetbasis is met 32 en 41 dagen wel duidelijk dunner dan bij de rest, omdat de
+De meetbasis is wel duidelijk dunner dan bij de rest (kolom dagen), omdat de
 stations niet het hele jaar wachttijden doorgeven. Ik zou de volgorde daarachter
 niet te zwaar belasten, maar de orde van grootte klopt.
 
-Ten tweede: een klein half uur voor de langste rij van het park is, afgezet tegen
-bijna zes miljoen bezoeken, weinig. Ter vergelijking, dezelfde databasis, dezelfde
-rekenmethode. De bezoekcijfers van 2025 erbij: Europa-Park 7 mln voor het hele
+Ten tweede is zelfs de langste rij van het park, afgezet tegen bijna zes miljoen
+bezoeken, kort. Ter vergelijking, dezelfde databasis, dezelfde rekenmethode. De bezoekcijfers van 2025 erbij: Europa-Park 7 mln voor het hele
 resort, Efteling 5,78 mln, Toverland 1,14 mln.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
@@ -380,12 +379,12 @@ uurcapaciteit van vier cijfers, plus een sprookjesbos dat duizenden mensen
 tegelijk opneemt zonder dat ze ergens aansluiten. Een park met het drievoudige
 publiek heeft hier daadwerkelijk meer dan de drievoudige capaciteit.
 
-En één getal uit die tabel vind ik bijzonder mooi: **Voltron** in het Europa-Park,
-geopend in 2024, de duurste nieuwbouw uit de parkgeschiedenis, heeft exact dezelfde
-typische wachttijd als **Joris en de Draak**, een houten achtbaan uit 2010 die de
+En één detail uit die tabel vind ik bijzonder mooi: **Voltron** in het Europa-Park,
+geopend in 2024, de duurste nieuwbouw uit de parkgeschiedenis, staat in de kolom met
+de langste rij ongeveer gelijk met **Joris en de Draak**, een houten achtbaan uit 2010 die de
 Efteling niet eens als hoofdattractie in de markt zet.
 
-## Het bezoekersplafond: vijf miljoen, en geen een meer
+## Het plafond van vijf miljoen
 
 Voor de korte rijen is er nog een tweede reden. Die staat in een dossier bij de
 provincie en niet in de folder.
@@ -436,7 +435,7 @@ heeft.
 World”, een vakantiedorp voor ernstig zieke kinderen naast Disney World. Hij kwam
 terug met het idee zoiets naast het eigen park te zetten. De stichting legde er
 **8,5 miljoen gulden** in, omgerekend krap vier miljoen euro. Op **26 oktober
-2000** opende **Villa Pardoes**, vernoemd naar Pardoes, de hofnar die het
+2000** opende **Villa Pardoes**, vernoemd naar Pardoes, de hofnar die de
 mascotte van het park is.
 
 Opgenomen worden gezinnen met een ernstig ziek kind tussen vier en twaalf. Ze
@@ -453,7 +452,7 @@ jaar** in. Gedragen wordt het door bijna **300 vrijwilligers**, de bedrijfskoste
 liggen rond **1,3 miljoen euro per jaar**, en de financiering komt volledig uit
 giften. Villa Pardoes heeft het CBF-keurmerk en de ANBI-status.
 
-Eén keuze daarin vind ik opmerkelijk. In de villa is **bewust geen medische post**.
+Eén ding ontbreekt in de villa met opzet: **een medische post**.
 Wie komt, moet een week zonder intensieve behandeling toe kunnen. Dat sluit kinderen
 uit die doorlopend verzorgd moeten worden. De villa houdt er toch aan vast, zodat
 zeven dagen lang een keer niet de ziekte het dagprogramma schrijft.
@@ -470,9 +469,6 @@ weer op het podium staat. De Nederlandse parkwereld is kleiner dan hij lijkt.
 > opknappen van een slaapkamer. Wie liever zelf inzamelt, vindt op
 > [voorvillapardoes.nl](https://www.voorvillapardoes.nl/) het platform voor eigen
 > acties.
-
-Gedraaid wordt het huis door vrijwilligers en op giften, week na week,
-vijfentwintig jaar lang.
 
 ## Wanneer je moet gaan
 
@@ -538,8 +534,8 @@ Efteling-app**. Je kiest je groepsgrootte, sluit digitaal aan, krijgt een meldin
 op je telefoon en gaat dan via een eigen ingang scannen. Anders dan in 2017 was het
 deze keer vrijwillig, de normale rij bleef ernaast bestaan.
 
-En dan was er juni 2026 bij **[Python](ref:efteling/python)**, dat als leerstuk
-kan dienen. Van **18 tot en met 29 mei 2026** verving het park de single-riderrij
+En toen kwam de vroege zomer van 2026 bij **[Python](ref:efteling/python)**. Van
+**18 tot en met 29 mei 2026** verving het park de single-riderrij
 door twee rijen op groepsgrootte: links even groepen (twee, vier, zes, acht),
 rechts oneven en eenlingen, elk met een eigen wachttijdweergave. De gedachte
 erachter is simpel. Wie met z’n drieën komt, laat rekenkundig een plek leeg, en
@@ -609,8 +605,8 @@ je staat ervoor en kijkt. De meeste mensen lopen er langs.
 Het **[Volk van Laaf](ref:efteling/volk-van-laaf)** is sinds 15 juni 1990 een
 compleet verzonnen volkje van Ton van de Ven, met een eigen nederzetting, een
 eigen mythologie en een verhaal waarin het zich door de aarde naar Kaatsheuvel
-heeft gegraven. Er is geen bron voor. Het park heeft het bedacht, gebouwd en
-sindsdien onderhouden.
+heeft gegraven. Er is geen bron voor, geen sprookje, geen boek. Het park heeft
+ze gewoon zelf verzonnen.
 
 De **[Gondoletta](ref:efteling/gondoletta)** vaart sinds 13 april 1981 met veertig
 boten over 1.081 meter water, en één rondje duurt **twintig minuten**. Twintig
@@ -622,7 +618,8 @@ park.
 
 **Tickets.** De prijzen zijn dynamisch en liggen in 2026 tussen **40 en 56 €** per
 dag, kinderen tot en met drie jaar gratis. Anders dan in het
-[Phantasialand](ref:phantasialand) geldt hier geen datumplicht: het standaardticket
+[Phantasialand](ref:phantasialand) hoef je je hier niet op een datum vast te
+leggen: het standaardticket
 is vanaf aankoop een jaar geldig, een flexibel ticket zonder datum ook. Gasten met
 een beperking en tot drie begeleiders betalen 2 € minder. **Parkeren kost 15 €**,
 en het parkeerkaartje blijft daarna een jaar geldig voor volgende bezoeken.
@@ -698,9 +695,8 @@ dierenmishandeling. Het park heeft toch besloten voortaan zonder dieren te spele
 **Eind 2026** komt het gebied als geheel terug: een nieuwe show in het verbouwde
 openluchttheater, met een nieuw verhaal, meer showtechniek en dezelfde acteurs, plus
 een thrill-attractie buiten de stadsmuur waarop je als onder ravenvleugels door de
-lucht moet draaien. Of dat opweegt tegen de paardenversie, zullen we zien. Dat een
-park dit besluit uit zichzelf neemt en niet pas na een schandaal, pleit voor het
-park.
+lucht moet draaien. Of dat opweegt tegen de paarden, zullen we zien. Gedwongen heeft
+niemand het park in elk geval, de NVWA had niets gevonden.
 
 **In 2027**, voor de 75e verjaardag, opent de **Sprookjesbibliotheek** als 32e
 sprookje. In plaats van een tafereel om langs te lopen wordt het een bibliotheek om
@@ -715,8 +711,8 @@ dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
 Zintuigen, dus pal achter de hoofdingang.
 
 Wat het park daarentegen blijft laten: Halloween. “Wees gerust, de Efteling viert
-geen Halloween” staat letterlijk op de eigen site. Hoe het dan tóch een van de meest
-sfeervolle herfstparken van Europa kan zijn, heb ik in de
+geen Halloween” staat letterlijk op de eigen site. Waarom een bezoek in de herfst tóch loont, heb
+ik in de
 [Halloween-gids](/blog/halloween-pretparken-2026) opgeschreven. Korte versie: lange
 avonden tot 20 uur, lantaarns in de bomen, het Huyverwoud, en niemand met een
 kettingzaag.
@@ -734,9 +730,9 @@ je op grond van het bezoekcijfer zou verwachten.
 
 ### Hoe lang zijn de wachttijden in de Efteling?
 
-Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed op **een
-ruim kwartier** (mediaan). Het langst sta je bij [Joris en
-de Draak](ref:efteling/joris-en-de-draak), gevolgd door
+Over alle gemeten openingsdagen ligt de typische wachttijd parkbreed **onder
+het half uur** (mediaan). Het langst sta je bij de achtbanen en de grote
+darkrides, voorop [Joris en de Draak](ref:efteling/joris-en-de-draak) en
 [Danse Macabre](ref:efteling/danse-macabre). Actuele cijfers staan op de
 [Efteling-parkpagina](ref:efteling).
 
@@ -784,13 +780,13 @@ volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 
 ## Een prullenbak die dank u wel zegt
 
-Drie van de tien meest gevraagde attracties zijn darkrides, twee zijn stations van
-dezelfde stoomtrein, en het deel waar bijna elke gast één keer doorheen loopt is een
+Tussen de meest gevraagde attracties staan darkrides en een stoomtrein uit
+1969, en het deel waar bijna elke gast één keer doorheen loopt is een
 stuk bos zonder één attractie.
 
-De zin over de Disney van Nederland klopt dus, als je hem bedoelt als compliment
-voor afwerking, detail en vertellust. Als herkomstbeschrijving klopt hij niet. Dit
-park heeft niemand gekopieerd. Het was er eerder.
+Als compliment voor de afwerking kan de zin over de Disney van Nederland dus
+prima. Als herkomstbeschrijving klopt hij niet, en ik blijf hem toch gewoon
+gebruiken.
 
 Of het in Kaatsheuvel regent, bepaalt de helft van je dag:
 
@@ -803,8 +799,8 @@ En de twee waar je het langst voor staat, met hun actuele cijfers:
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)
 
-Als je gaat: neem dat uur voor het Sprookjesbos, ook al staat er buiten een baan op
-20 minuten. En gooi in het voorbijgaan iets in die gele kerel met de open mond. Hij
+Als je gaat: neem dat uur voor het Sprookjesbos, ook al heeft Joris net een korte
+rij. En gooi in het voorbijgaan iets in die gele kerel met de open mond. Hij
 bedankt sinds 1959 iedereen persoonlijk.
 
 — Patrick

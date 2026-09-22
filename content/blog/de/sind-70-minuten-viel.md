@@ -44,8 +44,8 @@ seo:
     - Crowd Kalender
 ---
 
-Du stehst vor [Taron](ref:phantasialand/taron), die Anzeige sagt **70 Minuten**, und dein Kopf macht
-sofort das Falsche: Er vergleicht die Zahl mit deiner Erinnerung. Beim letzten
+Du stehst vor [Taron](ref:phantasialand/taron), die Anzeige sagt **70 Minuten**,
+und dein Kopf macht sofort das Falsche: Er vergleicht die Zahl mit deiner Erinnerung. Beim letzten
 Besuch waren es 40, also ist heute schlimmer. Beim vorletzten 90, also ist
 heute super. Zwei Besuche sind keine Grundlage, und dein Gedächtnis rundet
 ohnehin zu deinen Ungunsten
@@ -64,15 +64,14 @@ der Tagesspitzen: An der Hälfte aller gemessenen Tage war die längste Schlange
 kürzer als dieser Wert, an der anderen Hälfte länger. **Voll** ist das 90. Perzentil derselben Reihe, also ungefähr der eine Tag von zehn, an dem
 richtig was los war.
 
-Beides sind Perzentile und keine Durchschnitte. Ein
-Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
+Beides sind Perzentile und keine Durchschnitte. Ein Mittelwert lässt sich von einem einzigen Ausnahmetag verschieben: Ein Nachmittag
 mit Betriebsstörung und 150 Minuten Rückstau zieht den Schnitt eines ganzen
 Monats nach oben, obwohl an 29 Tagen nichts davon zu spüren war. Der Median
-zuckt bei so einem Tag nicht. Der Rekord steht deshalb separat daneben, mit
-Datum, damit man ihn sieht, ohne dass er die anderen beiden Zahlen anfasst.
+zuckt bei so einem Tag nicht einmal. Der Rekord steht deshalb extra, mit Datum,
+damit man ihn sieht, ohne dass er die anderen beiden Zahlen anfasst.
 
-Für [Phantasialand](ref:phantasialand) sieht die Rangliste so aus. Die Spalte mit den Messtagen ist
-die wichtigste: Sie sagt, wie viel Gewicht eine Zeile trägt.
+Für das [Phantasialand](ref:phantasialand) sieht die Rangliste so aus. Die
+Spalte mit den Messtagen ist die wichtigste: Sie sagt, wie viel Gewicht eine Zeile trägt.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
@@ -112,7 +111,7 @@ Die Uhrzeit spart dir eine halbe Stunde, das Datum bis zu einer ganzen. Zwischen
 zwei Tagen derselben Ferienwoche kann eine halbe Stunde Durchschnittswartezeit
 liegen, und einem gewöhnlichen Kalender sieht man das nicht an. Was den
 Unterschied macht: welche Bundesländer gerade frei haben, ob ein Brückentag
-dranhängt, ob es regnet, und ob im Nachbarland etwas los ist.
+dranhängt, ob es regnet und ob im Nachbarland etwas los ist.
 
 Der letzte Punkt wird gern unterschätzt. Ein Park nahe der Grenze merkt sofort,
 wenn nebenan die Ferien anfangen, also rechnen wir Regionen im Umkreis von rund
@@ -142,13 +141,13 @@ komprimiert, aber jede Auswertung läuft weiterhin über alle Messwerte, die je
 angekommen sind. Wer im dritten Jahr anfängt zu speichern, hat im dritten Jahr
 ein Jahr Historie, und die beiden Jahre davor sind für immer weg.
 
-## Und die Stellen, an denen wir nichts sagen
+## Wo wir lieber gar nichts sagen
 
-[Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der eigenen App aus, und
-nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
+Der [Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der
+eigenen App aus, und nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
 Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
-meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort 82
-Attraktionen auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
+meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort sämtliche
+Attraktionen des Parks auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
 die auf null Beobachtungen beruht. Stattdessen steht auf der Parkseite ein
 Hinweis, dass es hier nichts zu lesen gibt.
 

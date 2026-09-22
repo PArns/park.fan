@@ -44,8 +44,8 @@ seo:
     - calendario de afluencia
 ---
 
-Estás delante de [Taron](ref:phantasialand/taron), el panel marca **70 minutos**, y tu cabeza hace
-enseguida lo que no debe: comparar esa cifra con tu recuerdo. La última vez
+Estás delante de [Taron](ref:phantasialand/taron), el panel marca
+**70 minutos**, y tu cabeza hace enseguida lo que no debe: comparar esa cifra con tu recuerdo. La última vez
 fueron 40, así que hoy es peor. La anterior 90, así que hoy va genial. Dos
 visitas no son una base, y además tu memoria redondea en tu contra
 ([aquí está el porqué](/blog/el-arte-de-esperar)).
@@ -64,20 +64,19 @@ larga fue más corta que ese valor, en la otra mitad más larga. **Lleno** es el
 percentil 90 de la misma serie, aproximadamente ese día de cada diez en que
 había de verdad gente.
 
-Los dos son percentiles y no promedios. Una media se
-deja mover por un único día excepcional: una tarde con avería y 150 minutos de
+Los dos son percentiles y no promedios. Una media se deja mover por un único día excepcional: una tarde con avería y 150 minutos de
 atasco tira hacia arriba del promedio de un mes entero, aunque durante 29 días
-no se notara nada. La mediana no se inmuta ante un día así. Por eso el récord
+no se notara nada. La mediana ni se inmuta ante un día así. Por eso el récord
 aparece aparte, con su fecha, para que se vea sin tocar las otras dos cifras.
 
-Para [Phantasialand](ref:phantasialand) la clasificación se ve así. La columna de días medidos es la
-más importante: dice cuánto peso soporta cada fila.
+Para [Phantasialand](ref:phantasialand) la clasificación se ve así. La columna
+de días medidos es la más importante: dice cuánto peso soporta cada fila.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-Lo que hay aquí es en directo. Si vuelves a leer este artículo dentro de tres
+Lo que ves aquí va en directo. Si vuelves a leer este artículo dentro de tres
 meses, la tabla tendrá otras cifras y el texto de alrededor seguirá siendo
 válido. Para eso están estos widgets: en cuatro artículos más antiguos las
 cifras estaban tecleadas a mano en tablas de Markdown, repartidas por seis
@@ -140,13 +139,13 @@ comprimen, pero cada análisis sigue corriendo sobre todas las mediciones que ha
 llegado alguna vez. Quien empieza a guardar en el tercer año tiene en el tercer año un año de
 historial, y los dos anteriores se han perdido para siempre.
 
-## Y los sitios donde no decimos nada
+## Donde preferimos no decir nada
 
-[Hansa-Park](ref:hansa-park), por ejemplo, publica sus tiempos de espera solo en su propia
-aplicación y únicamente para dispositivos conectados a la wifi del parque. No
+[Hansa-Park](ref:hansa-park), por ejemplo, publica sus tiempos de espera solo en
+su propia aplicación y únicamente para dispositivos conectados a la wifi del parque. No
 hay ninguna interfaz pública. En los datos en bruto este parque se ve como
 cualquier otro a las tres de la madrugada: ninguna atracción informa de nada. Si
-sacáramos la conclusión evidente, ahí habría 82 atracciones en «muy baja», con
+sacáramos la conclusión evidente, ahí estarían todas las atracciones del parque en «muy baja», con
 una media de 0 minutos y una previsión basada en cero observaciones. En su lugar,
 la página del parque lleva un aviso de que aquí no hay nada que leer.
 

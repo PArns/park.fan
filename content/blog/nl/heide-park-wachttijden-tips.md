@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos wordt 25, en ernaast staan vier Duitse primeurs'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -62,7 +63,7 @@ waar niemand in mocht. Op **28 juli 2016** ging
 uit de lucht, omdat de rails na vijftien jaar versleten waren. Pas op
 **19 april 2019** reed hij weer.
 
-Hij kwam terug als houten achtbaan, en dat is het opmerkelijke eraan. De
+Hij kwam terug als houten achtbaan. De
 gebruikelijke weg zou een andere zijn geweest: als bij een woodie het spoor
 wegrot, krijgt hij tegenwoordig meestal stalen rails op het oude houtwerk
 geschroefd en rijdt hij als hybride verder. Heide Park liet nieuw houten spoor
@@ -197,8 +198,8 @@ zijn.
 
 ## Hoe druk het echt is
 
-Dit park meet zich niet aan één baan. Deze tabel staat op twee jaar meten,
-elke baan met zijn eigen aantal meetdagen:
+Deze tabel rust op twee jaar meten, elke baan met zijn eigen aantal
+meetdagen:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -211,7 +212,7 @@ uit 1993 en de wildwaterbaan uit 1980, twee attracties die in geen enkel
 reisverslag als reden voor de rit naar Soltau opduiken. Bij de Bobbahn
 verklaart de rijtijd een deel, bij de wildwaterbaan het weer.
 
-Interessanter dan de hoogte van de rijen is hun verloop over de dag.
+Meer zegt het uur waarop de rijen groeien.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -245,7 +246,8 @@ afkopen. Het **Express Ticket** bestaat in vier trappen: Bronze vanaf **€ 25**
 voor wildwaterbaan, Big Loop en Bobbahn, Silver vanaf € 39 met Krake en Desert
 Race, Gold vanaf € 59 met daarbij Colossos en Scream, Platinum vanaf € 99
 zonder limiet. Twee dingen zie je er makkelijk overheen. In de drie onderste
-trappen zit **één rit per attractie**, niet zo veel als je wilt. En het ticket
+trappen zit **één rit per attractie**, niet zo veel als je wilt: wie met Gold een tweede
+keer Colossos wil, sluit gewoon achteraan aan. En het ticket
 is er alleen op geselecteerde dagen en alleen in de voorverkoop, dus niet aan
 de kassa.
 
@@ -269,12 +271,13 @@ kalender op de [parkpagina](ref:heide-park).
 
 ### De weekdag
 
-De weekdag is hier een kleine knop. Zes van de zeven dagen liggen in de tabel
+Aan de weekdag hangt hier minder dan je denkt. Zes van de zeven dagen liggen in de tabel
 hierboven dicht bij elkaar, alleen de zaterdag steekt eruit, en onderaan staan
-vrijdag en zondag. De maandag doet dat op ruim de helft van de meetdagen van de
+vrijdag en zondag. De maandag staat op maar ruim half zoveel meetdagen als de
 andere dagen, omdat het park hem in het voorjaar en het najaar regelmatig uit
-de kalender haalt. Een rustige maandag is in Soltau meestal een gesloten
-maandag.
+de kalender haalt. Wat er aan maandagen meetelt, valt dus vooral in het
+hoogseizoen, en rustig zijn die niet. Een rustige maandag is in Soltau meestal
+een gesloten maandag.
 
 ### De maand
 
@@ -305,16 +308,15 @@ worden. Op de eerste dag kwamen 2.000 gasten, in het eerste seizoen ongeveer
 **600.000**, en uit die zes attracties groeide 85 hectare park.
 
 Drie van die zes rijden vandaag nog, onder andere namen: de vlottentocht, de
-hoogbaan (nu de Panoramabahn) en de westernspoorbaan, die sinds 1997 Heide-Park
+hoogbaan (nu de Panoramabahn) en de westernspoorbaan, die sinds 1997 Heide Park
 Express heet.
 
 Het bouwwerk dat het vroege Heide Park het best beschrijft, bestaat niet meer.
 Van **1986** tot de winter van 2011/2012 stond hier een 35 meter hoge replica
 van het Vrijheidsbeeld, ingewijd op 4 juli 1986 voor de honderdste verjaardag
-van het origineel, met een felicitatie van Ronald Reagan. Na de afbraak diende
+van het origineel, met een felicitatie van Ronald Reagan. Na de afbraak stond
 de bovenste helft nog een paar jaar als decoratie bij Colossos, en bij de
-heropening in 2019 ging ook de rest naar de sloop. Het was de tijd waarin
-Duitse parken monumenten nabouwden in plaats van licenties in te kopen.
+heropening in 2019 ging ook de rest naar de sloop.
 
 Op **31 december 2001** kocht de Britse **Tussauds Group** het park, en begin
 2007 nam **Merlin Entertainments** de meerderheid in Tussauds over van Dubai
@@ -354,8 +356,9 @@ Hannover, afrit **Soltau-Ost**, vanaf daar bewegwijzerd. Op het terrein liggen
 zo’n 8.000 parkeerplaatsen plus 300 plekken voor bussen en campers; parkeren
 kost online € 14 voor de auto en € 20 voor de camper, ter plekke meer en alleen
 met kaart. Met de trein ga je tot Soltau of tot Wolterdingen; vanaf Wolterdingen
-is het 20 minuten lopen, en vanuit Hamburg en Hannover rijdt de Heide Park
-Express tot voor de poort.
+is het 20 minuten lopen, en vanuit Hamburg en Hannover rijdt een bus tot voor
+de poort. Die heet Heide-Park-Express, net als de parktrein, maar heeft daar
+niets mee te maken.
 
 **Openingstijden.** 28 maart tot en met 31 oktober 2026, in het hart van het
 seizoen dagelijks, in voorjaar en najaar volgens kalender en zonder de meeste
@@ -438,23 +441,19 @@ Hoe het weer boven het park eruitziet wanneer je gaat:
 
 En wie nu het noorden plant: het
 [Movie Park Germany](/blog/movie-park-germany-wachttijden-tips) lijkt in de
-opbouw van de week zo sterk op Heide Park dat de twee gidsen elkaar goed laten
-lezen.
+opbouw van de week zo sterk op Heide Park dat je de twee gidsen prima naast
+elkaar kunt leggen.
 
 ## Wat ik je over Soltau meegeef
 
-Dit park doet het minst alsof het iets anders is. Er is geen doorlopend verhaal
-zoals in Brühl en geen 18 landen zoals in Rust, en de twee licentiegebieden
-zijn precies zo groot als een concern ervoor betaalt. Wat hier staat, staat
-vanwege de banen: vier bouwsoorten die er in Duitsland nog niet waren, een
-houten achtbaan die twee keer gebouwd werd, en een valtoren die het park van
-een al bestaande uitkijktoren maakte.
+Heide Park heeft geen doorlopend verhaal zoals Brühl en geen 18 landen zoals
+Rust. Het heeft banen, en bij vier daarvan was het de eerste in Duitsland.
 
-De prijs daarvoor is de oppervlakte. 85 hectare met weinig schaduw en lange
+Daar betaal je voor met oppervlakte. 85 hectare met weinig schaduw en lange
 loopafstanden tussen de grote banen, en op een zaterdag in augustus voel je
-elke meter daarvan. Daarom gaat deze tekst zo veel over de kalender: het
-verschil tussen een goede en een stroperige dag in Soltau valt thuis, bij de
-datum.
+elke meter. Wie dat niet wil, neemt een vrijdag in september in plaats van een
+zaterdag in augustus, en die keuze maak je thuis, niet pas in de rij voor
+Colossos.
 
 En kom je in oktober: de lange zaterdagen beginnen pas om twaalf uur. Wie om
 tien uur voor de poort staat, wacht twee uur op een weiland.

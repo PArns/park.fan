@@ -2,6 +2,7 @@
 title: 'Hansa-Park: Kärnan does 127 km/h, and the season has no closing day'
 translationKey: hansa-park-guide
 date: '2026-09-22'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
@@ -62,22 +63,22 @@ Sierksdorf sits 24 kilometres north of Lübeck as the crow flies. The park calls
 only theme park by the sea", and for once that is not marketing: the beach starts behind the fence,
 and the railway line to Puttgarden runs between the park and the holiday houses.
 
-## What sets this park apart
+## Short walks, one and a half records
 
 Hansa-Park makes do with **46 hectares**. Heide Park has 85, and that difference is the first one
 your legs notice: two coasters are rarely more than a few minutes apart here, and the eleven themed
 areas run into one another instead of being separated by lawns.
 
-Two records stand on that ground. The [Highlander](ref:hansa-park/highlander?bare) is the tallest gyro drop tower in the world, and
-[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) shares the title of Germany's tallest and fastest coaster with [Silver Star](ref:europa-park/silver-star?bare).
+One and a half records stand on that ground. The [Highlander](ref:hansa-park/highlander?bare) is the tallest gyro drop tower in the
+world. With [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) the park owns half a title; the other half runs at Rust as
+[Silver Star](ref:europa-park/silver-star?bare).
 The rest of the park is decidedly family territory, with a canal boat ride from 1977 and four
 coasters built for children.
 
-The money here does not go into a new ride every three years either. Since 2008 the park has kept
-building on a single themed area, façade by façade and city by city, and between 2019 and 2025 not
-one coaster was added. If you want a park that puts up a coaster every other year, this is the wrong
-one. If you want one that opens every day of its season and hangs up 2,000 illuminated figures in
-October instead of building mazes, it is the right one.
+The money here does not go into a new coaster every few years. Since 2008 the park has kept building
+on a single themed area, city by city, and between 2019 and 2025 not one coaster was added. If you
+collect new rides, go elsewhere. What you get instead is a park that opens every day of its season
+and hangs up 2,000 illuminated figures in October where other parks build mazes.
 
 [Hansa-Park](ref:hansa-park?full)
 
@@ -90,7 +91,8 @@ sits entirely inside a **79-metre tower** that pulls the train straight up, and 
 
 The part that matters is inside the tower, where nobody outside can see it. Halfway round the train
 goes back in and falls backwards, in the dark, from more than 60 metres. The park calls that a world
-first and more than doubled the drop speed in 2017, from around 5 to around 11 metres per second.
+first, and two years after opening it apparently still found it too leisurely: in 2017 it more than
+doubled the drop speed, from around 5 to around 11 metres per second.
 
 ```glossary-widget slug=infinity-coaster
 
@@ -100,11 +102,10 @@ The second big one has been running since **2009**, these days in the Peterhof v
 **[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod)** is another Gerstlauer, 40 metres tall,
 750 metres long, **107 km/h**, and it puts two things in one ride that usually come separately: an
 LSM launch and a vertical chain lift. Its first drop goes **97 degrees**, past vertical, and it
-happens in the dark. Until 2020 it was called Fluch von Novgorod. The park swapped one letter in 2021
-and explained the change itself.
+happens in the dark. Until 2020 it was called Fluch von Novgorod, the curse of Novgorod; in 2021 the park
+added a t and turned the curse into an escape.
 
-**[Nessie](ref:hansa-park/nessie)** is the ride that put this park in the papers in the early
-eighties. Anton Schwarzkopf built it in **1980**: 26 metres tall, 741 metres long, 85 km/h, one
+Anton Schwarzkopf built **[Nessie](ref:hansa-park/nessie)** in **1980**: 26 metres tall, 741 metres long, 85 km/h, one
 vertical loop, and at the time the largest looping coaster in Europe. It has been running for 46
 years, and since 2019 it has done so in a rethemed area.
 
@@ -113,13 +114,13 @@ as a wild mouse in mine-shaft dressing since 1997, 13 metres tall and over in 70
 **[Royal Scotsman](ref:hansa-park/royal-scotsman)** is a Vekoma junior coaster from **1993** that was
 called Rasender Roland until 2019. The **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** has
 stood in Wikingerland since 2011 and starts at 90 centimetres, **[Der kleine
-Zar](ref:hansa-park/the-little-tsar)** since 2017 at 95 centimetres and three metres of height.
+Zar](ref:hansa-park/the-little-tsar)** since 2017 at 95 centimetres, all three metres of it.
 
 The newest arrived this season. The **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** opened on **23 May 2026**, Gerstlauer again, 18
 metres tall, roughly 570 metres long, from 90 centimetres. The park counts **seven launches** on one
 circuit, forwards and backwards. Seven accelerations over 570 metres is a lot for a family coaster,
-and they buy ride time: 1:45 minutes, longer than [Crazy Mine](ref:hansa-park/crazy-mine?bare) and [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) at 1:10 each.
+and you notice them in the ride time: 1:45 minutes, longer than [Crazy Mine](ref:hansa-park/crazy-mine?bare) and [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) at 1:10 each.
 
 ## The tower that took the record off Soltau
 
@@ -133,7 +134,8 @@ belonged to [Scream](ref:heide-park/scream?bare) at [Heide Park](/blog/heide-par
 
 ```
 
-In practice that means a 1.40-metre minimum, the highest bar anywhere in the park.
+For families, the number that matters at the Highlander is a different one: a 1.40-metre minimum,
+the highest bar anywhere in the park.
 
 ## A calendar with no closing day
 
@@ -148,10 +150,10 @@ if you look for a quiet weekday in Sierksdorf, you get it as an opening day rath
 gate.
 
 The hours are nearly as uniform. Until **9 October** the park opens daily at **10:00** and the rides
-close at **18:00**. Exactly three days depart from that, and all three are about the grounds rather
-than the rides: on Good Friday, 3 April, the attractions do not start until 11:00. On 11 August the
-grounds stay open until 19:00 and on 12 August until 18:30, while the rides stop at 18:00 on both
-evenings. The last 16 days of the season have a reason of their own.
+close at **18:00**. Exactly three days depart from that. On Good Friday, 3 April, the attractions do not
+start until 11:00. On 11 August the grounds stay open until 19:00 and on 12 August until 18:30, but
+the rides still stop at 18:00 on both evenings. Only the last 16 days of the season run differently,
+and that is down to Herbstzauber.
 
 ```map-widget slug=hansa-park
 
@@ -169,8 +171,8 @@ of 16. The park hangs up around **2,000 illuminated figures** instead and runs t
   with fireworks out of the arena walls.
 
 On the [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), close to 1,000 illuminated
-figures dance to classical music once it gets dark. That makes the canal boat ride from **1977** the
-attraction most worth the detour, of all months in October.
+figures dance to classical music once it gets dark. So the canal boat ride from **1977**, in summer
+more of a lunch-break ride, becomes in October the one I would queue for first.
 
 Three times rearrange an evening like that. The
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) and
@@ -184,8 +186,8 @@ until 20:30, with the pause during the parade.
 The [Halloween guide 2026](/blog/halloween-theme-parks-2026) covers ten parks. Eight of them fill
 this exact window with mazes and scare zones, two skip Halloween entirely. Hansa-Park does a third
 thing: the same evenings, a full programme, just nothing frightening. With children under ten you are
-better off here than at a maze night. The evening show itself is loud, and the park warns that it can
-startle the youngest visitors.
+better off here than at a maze night. It is not entirely fright-free, though: the evening show is
+loud, and the park itself warns that it can startle the youngest visitors.
 
 ## This park counts in years, not only in centimetres
 
@@ -197,9 +199,10 @@ but only from **age 9**. [Nessie](ref:hansa-park/nessie?bare) and the [Royal Sco
 age 10**. The [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) and the [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) start at 90 centimetres, [Der kleine Zar](ref:hansa-park/the-little-tsar?bare)
 at 95.
 
-A seven-year-old at 1.25 metres therefore gets onto fewer rides here than their height suggests. The
-other way round, the park is broad below coaster level: the attraction list in the catalogue holds
-**82 entries**, and the park itself advertises more than 125.
+A seven-year-old at 1.25 metres therefore gets onto fewer rides here than their height suggests, and
+will probably tell you so, loudly, at the Crazy Mine entrance check. Below coaster level there is
+plenty to make up for it: our catalogue counts **82 attractions**, the park itself advertises more
+than 125 and evidently counts more generously.
 
 ## From Legoland to Hansa-Park
 
@@ -223,8 +226,8 @@ year Germany's first genuinely American log flume joined it. That one is still r
 
 The first twenty years were show years above all. In **1978** the largest and most modern domed
 dolphinarium in Europe opened here, with 1,400 seats; since **1994** the park has done without
-dolphin shows. The show theatre opened in 1984 with a production by Frank Elstner, featuring
-contestants who had lost their bet on "Wetten, dass..?". Wim Thoelke and Michael Schanze stood on the
+dolphin shows. The show theatre opened in 1984 with Frank Elstner's "Wetten Spaß": contestants
+who had lost their bet on "Wetten, dass..?" got a second chance in Sierksdorf. Wim Thoelke and Michael Schanze stood on the
 same stage in the years after.
 
 The ride side grew alongside it: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** the [Super Splash](ref:hansa-park/super-splash?bare), **1987** the renaming to
@@ -253,8 +256,8 @@ stay is **three nights**, and anything shorter is on request only. Compared with
 Rust or Brühl this is a different build: holiday house rather than themed hotel, and the sums work
 out over a Baltic holiday rather than over a park day.
 
-For a single visit it is rarely the right answer. For a week in July where the park fills two of the
-seven days, it is.
+For a single park day, three nights rarely make sense. For a week in July where the park fills two of
+the seven days, they do.
 
 ## Practicalities: getting there, tickets, parking
 
@@ -271,8 +274,8 @@ holders over 18 pay €2 in the main car park. The drop-off zone is free for 30 
 The two-day ticket costs €85 or €65 and is personalised by facial recognition. The season pass is
 **€135**.
 
-The online price is the same as the gate price. That is worth saying because at Soltau the gap is
-€27: here booking ahead saves you nothing at all, only the queue at the till.
+The online price is the same as the gate price. At Soltau the gap is €27; here booking ahead saves you
+nothing at all, only the queue at the till.
 
 **Included in the ticket.** Every ride, show and hands-on attraction that is running. A few extras,
 such as the gold panning, cost separately.
@@ -281,8 +284,7 @@ such as the gold panning, cost separately.
 
 The park has already announced its next addition: the **Buddenbrook-Turm** in the Hansa-Garten,
 covered, opening during the 2027 season. Nothing else is settled yet. After the [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) that
-would be two new attractions in two years, following a stretch from 2019 to 2025 without a single new
-coaster.
+would be two new attractions in two years, which by this park's standards is practically a frenzy.
 
 ## Frequently asked questions about Hansa-Park
 
@@ -335,13 +337,11 @@ parade and the evening show run at all:
 And if you are planning the north right now: [Heide Park](/blog/heide-park-wait-times-tips) lies 131
 kilometres southwest as the crow flies and fits into the same week.
 
-## What I would tell you about Sierksdorf
+## The catch
 
-This park has two faces. One is a 79-metre tower with the fastest coaster in the country inside it,
-the other a family park with a canal boat ride from 1977 and illuminated figures in October. Most
-parks pick one of the two eventually. Hansa-Park puts both side by side on 46 hectares.
-
-The location is what you pay with. Hamburg is 78 kilometres away as the crow flies, everything south
+A 79-metre tower with Kärnan inside it and a 1977 canal boat ride full of illuminated figures share
+the same 46 hectares here. Most parks would have picked one of the two long ago. The location is
+what you pay for it with. Hamburg is 78 kilometres away as the crow flies, everything south
 of it considerably further, and anyone coming only for the eight coasters is done by early afternoon.
 The park assumes you are on the Baltic anyway.
 

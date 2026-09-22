@@ -87,7 +87,7 @@ Studios Park en draagt sinds **29 maart 2026** de naam
 al op 12 april 2024 aangekondigd en ging in op de dag waarop het nieuwe
 gebied World of Frozen openging.
 
-Voor beide parken betaal je apart. Het dagticket geldt voor **een** van de
+Voor beide parken betaal je apart. Het dagticket geldt voor **één** van de
 twee, en wie wil wisselen heeft de twee-parkenvariant nodig. Het is de
 enige beslissing van die dag die je 's middags bij geen enkele kassa meer
 kunt herstellen.
@@ -113,7 +113,7 @@ niet naar binnen.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 is de grootste uitvoering van deze achtbaan in alle Disneyparken en de
-enige die niet naast het station staat, maar **op een eiland**. De trein
+enige die **op een eiland** staat. De trein
 vertrekt vanuit het station aan de oever, duikt een tunnel in onder de
 Rivers of the Far West en komt pas op het eiland weer aan de oppervlakte,
 waar het eigenlijke traject begint. Gebouwd door Vekoma, geopend op de
@@ -122,8 +122,8 @@ allereerste dag van het park, minimale lengte 102 centimeter. In 2015 en
 en een paar effecten overgenomen uit de Californische versie.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-is de reden waarom liefhebbers van dit genre helemaal naar Parijs
-afreizen. De Haunted Mansion in Florida en Californië vertelt bewust geen
+is de Parijse Haunted Mansion, met één verschil waarvoor fans speciaal
+afreizen: de versies in Florida en Californië vertellen bewust geen
 doorlopend verhaal. Parijs wel: Melanie Ravenswood wacht sinds haar
 mislukte bruiloft nog altijd in haar trouwjurk, en haar vader Henry heeft
 haar aanbidders een voor een vermoord, iets wat de renovatie van 2019 voor
@@ -138,8 +138,9 @@ als _Space Mountain: De la Terre à la Lune_, naar Jules Verne, met een
 kanon als lanceersysteem. Dat kanon is er nog steeds: de trein wordt in 1,8
 seconden van 0 naar 71 km/u de berg op geschoten. Drie inversies, een
 kilometer traject, tot 5 g. Van alle Space Mountains wereldwijd is dit de
-enige met launch en de enige met inversies, en deze baan was het ook die
-het park redde na de verlieslatende beginjaren.
+enige met launch en de enige met inversies. Michael Eisner, toen de baas van
+Disney, noemde haar de redder van het park: dankzij haar succes maakte
+Disneyland Paris na de verlieslatende beginjaren voor het eerst winst.
 
 Toch staat deze baan niet bovenaan onze ranglijst.
 
@@ -152,8 +153,8 @@ ride uit 1992 die in anderhalve minuut voorbij is. Populariteit verklaart
 daar maar de helft van. De andere helft is doorstroming: Hyperspace
 Mountain rijdt met vier treinen en verwerkt bijna 2.000 mensen per uur, en
 werkt zijn rij dus de hele dag door af. Een dark ride met kleine gondels
-kan dat niet. Wie alleen naar de achtbanen kijkt, plant de verkeerde
-ochtend.
+kan dat niet. Wie de ochtend aan de achtbanen besteedt, staat 's middags
+voor anderhalve minuut dark ride in de langste rij van het park.
 
 Drie andere attracties kosten die ochtend ook tijd.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
@@ -210,11 +211,12 @@ gesloten attractie van het park kreeg daarna nog gewoon nieuwe waarden.
 
 ```
 
-Wat dat betekent voor een dag daar: de attractie die tot nu toe een halve
+Voor een dag daar betekent dat: de attractie die tot nu toe een halve
 ochtend opslokte, valt weg, en haar bezoekers verspreiden zich over een
 park dat toch al weinig capaciteit heeft. In de tabel hierboven staat
 Crush's Coaster nog met haar historische cijfers, omdat de ranglijst twee
-jaar teruggaat. Voor jouw bezoek tellen de rijen eronder.
+jaar teruggaat, een beetje zoals een gerecht dat nog op de kaart staat maar
+sinds september op is. Voor jouw bezoek tellen de rijen eronder.
 
 ## Hoe druk het echt is
 
@@ -234,7 +236,7 @@ populariteit te maken en veel met rekenkunde: in 2023 kwamen er 10,4
 miljoen bezoekers naar het Disneyland Park en 5,7 miljoen naar het tweede
 park. Reken je dat om naar de attracties die ons wachttijden doorgeven, dan
 kom je op zo'n **242.000 gasten per attractie per jaar** tegenover
-**407.000**. Dezelfde som staat elke dag als rij op het asfalt.
+**407.000**.
 
 Zo verdeelt een dag in het Disneyland Park zich over de uren:
 
@@ -254,8 +256,7 @@ de drukte wel bepaalt, zijn de Franse schoolvakanties, die per zone zijn
 gespreid en anders liggen dan de Duitse, plus de Britse half-termweken,
 omdat een flink deel van de bezoekers met de Eurostar komt.
 
-Hoe vlak de weekdagcurve uitvalt, staat in de tabel hierboven, en ze valt
-vlak uit. Een park dat 365 dagen per jaar open is en in een half dozijn
+De weekdagcurve hierboven is vlak, en dat heeft een reden: een park dat 365 dagen per jaar open is en in een half dozijn
 landen wordt geadverteerd, heeft geen dode dinsdag om naar uit te wijken.
 Welke van de komende weken toch het rustigst zijn, staat hier, doorlopend
 opnieuw berekend:
@@ -282,13 +283,13 @@ Voordat je dat koopt, loont een blik op de ranglijst hierboven. De prijs
 volgt de vraag, en de hoogste vraag hebben niet per se de attracties waar
 je zelf het langst zou staan.
 
-## De perfecte dag, in vier zinnen
+## Hoe ik de dag zou plannen
 
 Heb je maar één dag en kies je voor één park, neem dan het Disneyland
 Park: meer attracties, kortere rijen, en het kasteel is de reden waarom de
 meeste bezoekers hier sowieso komen. Loop bij opening meteen naar
-Fantasyland voor de dark rides, die de voorsprong van de vroege ochtend de
-rest van de dag niet meer inleveren. Big Thunder Mountain, Hyperspace
+Fantasyland voor de dark rides, want die rijen haal je later op de dag niet
+meer in. Big Thunder Mountain, Hyperspace
 Mountain en Indiana Jones passen goed in het middaguur, als iedereen aan
 het eten is. En boek je beide parken, draai dan de gebruikelijke volgorde
 om en begin in Adventure World, waar onze rope-drop-analyse voor
@@ -317,8 +318,8 @@ aankoop, niet bij het draaihekje. Actuele prijzen voor jouw datum staan op
 
 **Eten.** Beide parken hebben tafelrestaurants met reservering en volop
 snelle horeca ertussenin. Onze database telt 35 horecagelegenheden in het
-Disneyland Park en 19 in Adventure World. Rond het middaguur is het
-moment waarop de rijen bij de attracties even kort inzakken.
+Disneyland Park en 19 in Adventure World. Rond het middaguur, als de rijen
+zich bij de balies vormen, zakken die bij de attracties even in.
 
 ## Veelgestelde vragen over Disneyland Paris
 
@@ -340,9 +341,10 @@ vergelijkingstabel hierboven.
 ### Waarom heet het Walt Disney Studios Park nu Disney Adventure World?
 
 De nieuwe naam geldt sinds 29 maart 2026 en was al sinds 12 april 2024
-aangekondigd. Hij ging in samen met het gebied World of Frozen en markeert
-het einde van het studiothema, dat sinds 2002 steeds minder paste bij wat
-er daadwerkelijk staat.
+aangekondigd. Hij ging in samen met het gebied World of Frozen en maakt een
+einde aan het studiothema, dat sinds 2002 steeds minder paste bij wat er
+daadwerkelijk staat. Een Frozen-berg van 36 meter met een eigen fjord
+verkoop je niemand meer als filmdecor.
 
 ### Rijdt Crush's Coaster op dit moment?
 
