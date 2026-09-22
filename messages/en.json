@@ -532,6 +532,14 @@
       "between": "{min}–{max}%",
       "above": "over {min}%"
     },
+    "rideCrowdScale": {
+      "title": "Crowd levels for this ride",
+      "note": "Measured against this ride's typical wait of {baseline} min. Every ride has its own scale.",
+      "upTo": "up to {max} min",
+      "exactly": "{min} min",
+      "between": "{min}–{max} min",
+      "from": "{min} min or more"
+    },
     "avgWaitTime": "Avg. Wait Time",
     "openAttractions": "Open Attractions",
     "closedAttractions": "Closed Attractions",
