@@ -117,9 +117,12 @@ export const TARON_BASELINE = 45;
 export const TARON_RECORD = 135;
 export const TARON_RECORD_DATE = '2026-07-16';
 
-/** Days behind the two summary buckets on the ride's card. */
-export const TARON_WEEKDAY_DAYS = 97;
-export const TARON_WEEKEND_DAYS = 38;
+/**
+ * Days behind the two summary buckets on the ride's card. Read off the fixture above rather than
+ * typed: they were 97 and 38 from an older fetch while the card beside the prose said 107 and 39.
+ */
+export const TARON_WEEKDAY_DAYS = TARON_TYPICAL_WAITS.weekday.sampleDays;
+export const TARON_WEEKEND_DAYS = TARON_TYPICAL_WAITS.weekend.sampleDays;
 
 /** Upper end of the scale the figure draws. Above Taron's record, so nothing clips. */
 export const WAIT_SCALE_MAX = 140;

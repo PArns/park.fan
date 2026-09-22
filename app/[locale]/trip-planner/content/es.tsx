@@ -21,16 +21,15 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Un bloque es una atracción, y su altura es la espera prevista para su hora. Arrastra el
           mismo bloque a una hora con más gente y crece; colócalo en una más tranquila y encoge.
-          Entre dos bloques no hay hueco vacío, sino el traslado: cuánto hay que andar y si queda
-          tiempo para hacerlo. Salir de la estación y el viaje en sí se cuentan ahí, no en el
-          bloque.
+          Entre dos bloques está el traslado: cuánto hay que andar y si queda tiempo para hacerlo.
+          Salir de la estación y el viaje en sí se cuentan ahí, no en el bloque.
         </P>
         <P>
           Nada de lo que sigue está redibujado. Son las mismas piezas que mueve el planificador,
           alimentadas con la respuesta que dio la API el 4 de septiembre de 2026 para el sábado 12
           de septiembre en <A href={PARK}>Phantasialand</A>. Arrastra un bloque a otra hora: encaja
           en pasos de cinco minutos, recalcula su altura y los traslados de al lado también. Aquí no
-          se guarda nada.
+          se guarda nada, así que arrastra todo lo que quieras.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -48,11 +47,11 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
       >
         <P>
           Para cada atracción la API devuelve una curva del día, hora a hora. Ese sábado Taron marca
-          45 minutos a las diez, 50 a las once, 40 a la una y otra vez 50 por la tarde. Esa es la
-          verdadera razón para montar en Taron pronto: no porque la mañana sea siempre más
-          tranquila, sino porque ese día no tiene ninguna hora floja para esa atracción. Black Mamba
-          hace lo contrario y baja de 35 minutos al mediodía a 20 a las seis, y Chiapas sube de 20 a
-          35.
+          45 minutos a las diez, 50 a las once, 40 a la una y otra vez 50 por la tarde: en todo el
+          día hay diez minutos de diferencia. Ese sábado, Taron está solicitado a todas horas y
+          punto. Para una atracción así no hay buena franja, y el planificador la coloca donde el
+          resto del día lo permite. Black Mamba, en cambio, baja de 35 minutos al mediodía a 20 a
+          las seis, y Chiapas va al revés, de 20 a 35.
         </P>
         <P>
           A eso se suma cuánto se suele desviar la cifra, y eso sigue al nivel: cuanto más larga la
@@ -139,12 +138,13 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
           mejorar.
         </P>
         <P>
-          Se ordena por tres cosas, y la jerarquía entre ellas es la decisión de fondo. Primero, que
-          todo llegue a tiempo antes del cierre: un plan con una atracción menos que de verdad
-          ocurre gana a otro con una más que ya no cabe. Después, la suma de las esperas, que es lo
-          que se había pedido. Y cuando dos órdenes cuestan lo mismo, gana el que termina antes. No
-          hay ningún control deslizante que ponga la cola frente al rato muerto: ese número no lo
-          podría defender nadie.
+          Se ordena por cuatro cosas, y la jerarquía entre ellas es la decisión de fondo. Arriba del
+          todo va la tuya: lo que pones delante es lo último que se cae. Después, que todo llegue a
+          tiempo antes del cierre: un plan con una atracción menos que de verdad ocurre gana a otro
+          con una más que ya no cabe. Después, la suma de las esperas, que es lo que se había
+          pedido. Y cuando dos órdenes cuestan lo mismo, gana el que termina antes. No hay ningún
+          control deslizante que ponga la cola frente al rato muerto: ese número no lo podría
+          defender nadie.
         </P>
         <P>
           Ahí dentro no hay ninguna regla sobre la primera hora de la mañana. El planificador solo
@@ -163,15 +163,16 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
           horas.
         </P>
         <P>
-          Una pausa para comer a la una se queda a la una, y una atracción marcada ya está montada y
-          no se vuelve a planificar; lo demás se ordena alrededor. Después pone lo que ha pasado.
-          «18 min menos de cola» es la diferencia entre dos cuentas hechas igual, una antes del clic
-          y otra después; si no hay nada que ganar, pone que el orden ya es el bueno y el plan se
-          queda como estaba. El botón de las atracciones estrella no anuncia ahorro, porque con las
-          nuevas atracciones el día se alarga; en su lugar cuenta cuántas se han añadido y cuántas
-          no encajan con el grupo. Lo que al final ya no cabe en el día se indica después de
-          cualquiera de los dos botones. Lo acompaña un «Deshacer» que devuelve el estado anterior
-          al clic mientras el planificador siga abierto.
+          Una pausa para comer a la una se queda a la una (el planificador no negocia con niños
+          hambrientos), y una atracción marcada ya está montada y no se vuelve a planificar; lo
+          demás se ordena alrededor. Después pone lo que ha pasado. «18 min menos de cola» es la
+          diferencia entre dos cuentas hechas igual, una antes del clic y otra después; si no hay
+          nada que ganar, pone que el orden ya es el bueno y el plan se queda como estaba. El botón
+          de las atracciones estrella no anuncia ahorro, porque con las nuevas atracciones el día se
+          alarga; en su lugar cuenta cuántas se han añadido y cuántas no encajan con el grupo. Lo
+          que al final ya no cabe en el día se indica después de cualquiera de los dos botones. Lo
+          acompaña un «Deshacer» que devuelve el estado anterior al clic mientras el planificador
+          siga abierto.
         </P>
         <Note>
           Donde no llega ningún tiempo de espera, los dos botones ni siquiera aparecen. En el
@@ -219,15 +220,17 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           Y lo que un plan cuesta de verdad lo decide el día. Una atracción se para, un espectáculo
-          se cancela, una tormenta le da la vuelta a la tarde. El plan no es un horario, sino un
-          cálculo sobre si el día puede cuadrar así. En el parque vas marcando lo que has montado, y
-          el planificador anota la espera que realmente había.
+          se cancela, una tormenta le da la vuelta a la tarde, y un niño en la cola de Taron decide
+          que al final prefiere las tazas giratorias. El plan no es un horario, sino un cálculo
+          sobre si el día puede cuadrar así. En el parque vas marcando lo que has montado, y el
+          planificador anota la espera que realmente había.
         </P>
         <P>
-          Todo eso vive en tu navegador. Sin cuenta, sin servidor, sin sincronización: el plan es un
-          archivo en tu propio almacenamiento, y quien abre el planificador sin ninguno se encuentra
-          con el asistente y sus tres preguntas previas. Qué parque, qué día, quién viene. El día se
-          elige mejor en el{' '}
+          Todo eso vive en tu navegador, sin cuenta: el plan es un archivo en tu propio
+          almacenamiento. Solo cuando activas las notificaciones se guarda una copia en el servidor,
+          y el planificador lo avisa en ese momento. Quien abre el planificador sin plan se
+          encuentra con el asistente y sus cuatro preguntas previas: qué parque, qué día, quién
+          viene y qué grandes atracciones entran en el día. El día adecuado se encuentra mejor en el{' '}
           <A href={`${PARK}/calendario-tiempos-espera`}>calendario de tiempos de espera</A> del
           parque.
         </P>

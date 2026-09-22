@@ -1,19 +1,18 @@
 ---
-title: 'Walibi Holland: «hard gaan», Untamed e il polder su cui sorge'
+title: 'Walibi Holland: «hard gaan», Untamed e un campo dove nel 1957 nuotavano ancora i pesci'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
-updatedAt: '2026-08-19'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland sorge su terra che nel 1957 era ancora sott’acqua, da dodici
-  anni si promuove con una parola presa dalla scena hardstyle e con Untamed ha
-  uno dei migliori coaster d’Europa, per il quale in un giorno normale non
-  aspetti quasi nulla. Su
-  un parco che i visitatori fraintendono con regolarità, sulle experience di
-  Halloween che si pagano volontariamente e sull’evento natalizio che il parco
-  ha appena cancellato.
+  Walibi Holland sorge su un campo che nel 1957 era ancora mare, si promuove
+  con uno slogan che un tempo ha stampato persino sui preservativi e con
+  Untamed ha uno dei migliori coaster d’Europa, per il quale in un giorno
+  normale non aspetti quasi nulla. In più le experience di Halloween in cui si
+  paga un extra per farsi legare a una rotaia sul soffitto, e un evento
+  natalizio che il parco ha appena cancellato.
 tags:
   - walibi-holland
   - untamed
@@ -34,10 +33,10 @@ coverImage:
   caption: 'L’ingresso di Untamed. Il legno sottostante proviene ancora in gran parte da Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: 'Walibi Holland: Untamed, tempi di attesa e Halloween'
+  title: 'Walibi Holland: Untamed, attese e horror nel polder'
   description: >-
-    Capire Walibi Holland: il concetto «hard gaan», Untamed e YOY con dati reali
-    di attesa, le Halloween Fright Nights e le loro experience, prezzi e come
+    Coaster su un ex fondale marino: Untamed e YOY con dati reali di attesa,
+    le Halloween Fright Nights che si pagano volentieri, prezzi e come
     arrivare.
   keywords:
     - Walibi Holland
@@ -60,38 +59,39 @@ Il 29 giugno 1957 la parte orientale del Flevoland è emersa,
 nel 1963 in questo polder è stato fondato il villaggio di Biddinghuizen, e
 tuttora si trova circa tre metri sotto il livello del mare. Quando sei in cima
 al lift di [Untamed](ref:walibi-holland/untamed), sei sospeso a 36,5 metri sopra
-un campo che a sua volta sta sotto il livello del mare. Tutta la terra sotto
-questo coaster è più giovane della maggior parte delle persone che ci salgono.
+un campo che a sua volta sta sotto il livello del mare. La terra sotto
+questo coaster è più giovane di qualche pensionato in coda.
 
 Poi il treno si ribalta oltre uno spigolo più ripido della verticale.
 
 Guido volentieri a lungo per i coaster, ma Walibi Holland è impegnativo anche
 per i miei standard: due ore e mezza abbondanti da Colonia, e nella seconda metà
-non incroci più nulla se non pale eoliche e campi di colza. Per questo il parco
-passa inosservato. L’[Efteling](ref:efteling) e
+non incroci più nulla se non pale eoliche e campi di colza. Non stupisce che il
+parco passi così spesso inosservato. L’[Efteling](ref:efteling) e
 [Toverland](ref:attractiepark-toverland) sono più vicini,
 [Phantasialand](ref:phantasialand) è dietro l’angolo, e chi pianifica una
-giornata nei Paesi Bassi raramente fa l’ora in più fino al Flevoland.
+giornata nei Paesi Bassi raramente si concede di sua volontà un’ora di polder in
+sovrappiù.
 
-È un errore. Untamed da solo basterebbe già, ma la ragione migliore è un’altra.
-Questo parco ha un’idea che alla prima visita sembra del tutto insensata e che
-alla terza spiega tutto. Sta scritta in due parole su mezza Biddinghuizen:
+È un errore. Untamed da solo basterebbe già, ma la ragione migliore è
+un’idea che alla prima visita sembra del tutto insensata e che alla terza spiega
+tutto. Sta appiccicata in due parole su mezza Biddinghuizen:
 **hard gaan**.
 
-## Un parco su un ex fondale marino
+## Prima il mare, poi le mucche, poi i coaster
 
 Qui è cominciato tutto con delle mucche.
 
 Il **21 maggio 1971** la principessa Beatrice inaugurò su quella terra di polder
 appena guadagnata la **Flevohof**, un parco agricolo di 150 ettari. L’idea: far
-vedere ai bambini di città da dove viene il latte. C’erano stalle, serre, un
+vedere ai bambini di città che il latte non cresce nei cartoni. C’erano stalle, serre, un
 caseificio, qualche gioco. Per due decenni è stata una gita per scolaresche e
 famiglie, poi i conti hanno smesso di tornare e all’inizio degli anni Novanta
 l’azienda è fallita. La Flevohof ha aperto per l’ultima volta nel 1992.
 
 Il **gruppo Walibi**, belga, ha rilevato tutto, ha ricostruito per un anno a
-porte chiuse e ha aperto nel **1994** come **Walibi Flevo**. Quel che è seguito è
-una delle storie di nomi più agitate del settore:
+porte chiuse e ha aperto nel **1994** come **Walibi Flevo**. Quel che è seguito è una
+storia di nomi da seguire con il taccuino in mano:
 
 | Anni      | Nome              |
 | --------- | ----------------- |
@@ -110,18 +110,18 @@ se n’erano già andati. Dal **2006** il parco appartiene al gruppo francese
 **Compagnie des Alpes**, proprietario anche di
 [Walibi Belgium](ref:walibi-belgium) e del [Parc Astérix](ref:parc-asterix).
 
-![Una vecchia maggiolino su un’intelaiatura d’acciaio sopra l’insegna «Speed Zone» | L’ingresso della Speed Zone. La sottigliezza non è mai stata l’obiettivo. | wide](/media/walibi-holland/background.jpg)
+![Un vecchio maggiolino su un’intelaiatura d’acciaio sopra l’insegna «Speed Zone» | L’ingresso della Speed Zone. La sottigliezza non è mai stata l’obiettivo. | wide](/media/walibi-holland/background.jpg)
 
 Oggi il parco occupa circa **40 ettari**, a cui si aggiungono 20 ettari di parco
 vacanze (Walibi Village) e un’**area eventi di 80 ettari** proprio accanto.
-Quell’area conta, ci arriviamo subito.
 
 I numeri dei visitatori corrono da anni appena sotto il milione: 936.000
 nell’esercizio 2023, 919.000 nel 2024 e da ultimo **972.000** nell’esercizio da
 ottobre 2024 a settembre 2025, quasi il sei per cento in più. Il direttore
 marketing Marc Guffens l’ha definito «il miglior anno di sempre, se non si
-contano i numeri dell’epoca Six Flags», perché allora per ogni ospite restava
-molto meno. Per confronto: l’Efteling fa circa il quintuplo.
+contano i numeri dell’epoca Six Flags» (un record con asterisco), perché allora per ogni ospite restava
+molto meno. Per confronto: l’Efteling fa circa il quintuplo, ottima notizia per chiunque
+faccia la coda a Biddinghuizen.
 
 ## «Hard gaan»: il concetto
 
@@ -142,11 +142,12 @@ Nel **2017** il reparto marketing ha tirato il freno d’emergenza e ha sostitui
 lo slogan con **«Dare to get Real»**. È durato esattamente una stagione. In un
 documento interno dell’autunno 2017 si leggeva che il risultato era «rimasto al
 di sotto delle aspettative», che il messaggio era «troppo complicato e troppo
-profondo» e che ci si era «probabilmente rivolti a un pubblico troppo
-ristretto». Nel **2018** `#Hardgaan` era di ritorno, ed è tuttora il tono della
-casa.
+profondo» (un rimprovero che uno slogan da parco divertimenti deve pure
+guadagnarsi) e che ci si era «probabilmente rivolti a un pubblico troppo
+ristretto». Nel **2018** `#Hardgaan` era di ritorno, ed è da allora il marchio
+di fabbrica della casa.
 
-Ma ciò che trasforma tutto questo in un concetto è il vicinato.
+A farne qualcosa di più di uno slogan sono i vicini.
 
 Sull’area eventi accanto, quella che appartiene a Walibi, dal **2011** si tiene
 ogni anno il **Defqon.1**: il più grande festival hardstyle del mondo, quattro
@@ -154,10 +155,9 @@ giorni, ben oltre 50.000 persone da più di cento paesi. Sulla stessa area si
 tiene **Lowlands**. Chi a giugno sta in prima fila al Defqon.1 guarda oltre la
 recinzione lo stesso lift che risalirà ad agosto.
 
-Il parco non è dunque andato a pescare un linguaggio giovanile in una
-presentazione d’agenzia. Ha adottato il vocabolario delle persone che stanno già
-sul suo terreno. «Hard gaan» è lingua hardstyle, e qui l’hardstyle è il
-vicinato.
+Nessuna agenzia ha dovuto dunque inventarsi questo gergo giovanile. Il parco ha
+semplicemente adottato il vocabolario della gente che salta già sul suo
+terreno.
 
 Una volta capito questo, il resto trova all’improvviso un senso. Le aree si
 chiamano **Speed Zone** e **Zero Zone**. I coaster si chiamano Untamed, Lost
@@ -172,38 +172,31 @@ molto bene, solo che qui tutto punta ad altro: vuole che tu urli. Sei coaster co
 cui ripararti dalla pioggia, in compenso musica su ogni vialetto e un volume che
 nessuno ha impostato per sbaglio.
 
-Chi arriva aspettandosi un «parco tematico olandese» resta deluso. Chi arriva
-aspettandosi un «parco di coaster su un’area da festival» passa una giornata
-splendida.
+Chi viene a cercare un secondo Efteling non troverà nessun bosco delle fiabe, ma
+un giro di basso che lo insegue fin nella coda delle patatine.
 
 ### Quando il concetto va troppo oltre
-
-Di questa lettura fa parte anche il fatto che il tono ogni tanto scarti.
 
 Nell’agosto 2025 il parco ha promosso le Halloween Fright Nights con un filmato
 sul tema dell’anno «Souls for Sale»: Eddie il Clown mette all’asta il lotto
 numero 666, una donna terrorizzata dentro una teca di vetro. Dopo l’offerta più
-alta lei scende, le pareti si tingono di rosso. Lo spot ha scatenato una delle
-più grandi ondate di reclami pubblicitari mai viste nei Paesi Bassi. Alla
+alta lei scende, le pareti si tingono di rosso. Nei Paesi Bassi non ha riso nessuno. Alla
 Stichting Reclame Code sono arrivati **889 reclami**, più che per qualunque
 altra pubblicità olandese del 2025 (la seconda si è fermata a 442). La Reclame
 Code Commissie ha stabilito che una donna non può essere mostrata come merce che
 subisce violenza, nemmeno dentro una storia horror. Il parco ha tolto il filmato
 il 21 agosto.
 
-A mio parere la commissione ha deciso bene. Dell’episodio resta comunque
-qualcosa che va oltre una campagna mal riuscita. Chi costruisce l’intera
-promessa sull’andare più in là di tutti gli altri non ha un pedale del freno
-incorporato. Walibi paga questo prezzo più o meno ogni pochi anni.
+A mio parere la commissione ha deciso bene. Lo scivolone però non è
+piovuto dal cielo. Un parco che da anni si vende come quello che va più in là di
+tutti non ha un pedale del freno, e stavolta ha frenato al posto suo la
+Stichting Reclame Code.
 
 Vedere oggi lo spot dell’asta richiede giri larghi. Sul canale del parco resta
 online un secondo filmato della stessa campagna, e mostra bene come appare il
 tutto senza la parte che ha provocato i reclami:
 
 https://www.youtube.com/watch?v=5uXmHjiLbG4
-
-Questa è la versione addolcita. Stesso tono, stessa estetica, soltanto senza
-l’asta.
 
 Un anno dopo Eddie ci prova con il peluche.
 
@@ -217,13 +210,11 @@ sudore nella sua tana con l’ascia in mano e niente di tutto questo è successo
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Nel 2026 non è arrivato ancora un reclamo.
-
 ## Untamed
 
 Dove oggi sorge Untamed, dal 2000 al 2018 c’era **Robin Hood**, un coaster in
-legno della Vekoma con una reputazione dubbia: rumoroso e con gli anni sempre più
-sgradevole. Ha girato per l’ultima volta il **28 ottobre 2018**. Poi è arrivata
+legno della Vekoma con una reputazione dubbia: rumoroso, e ogni anno un po’
+più vicino all’ernia del disco. Ha girato per l’ultima volta il **28 ottobre 2018**. Poi è arrivata
 **Rocky Mountain Construction** dall’Idaho, ha strappato i binari di legno, ha
 lasciato in piedi gran parte dell’ossatura e ci ha posato sopra una rotaia
 d’acciaio che si piega in forme impossibili con il legno. Il **1º luglio 2019**
@@ -238,8 +229,8 @@ ha aperto **Untamed**, il primo coaster ibrido d’Europa.
 I dati: **36,5 metri di altezza**, prima discesa di **35,4 metri**, **92 km/h**,
 **1.085 metri** di tracciato, **cinque inversioni**, secondo il costruttore **14
 momenti di airtime**, 1:46 di durata, capacità di 900 persone all’ora, altezza
-minima 120 cm. Sulla carta è un coaster di media taglia. Sul treno è un’altra
-cosa.
+minima 120 cm. Sulla carta è un coaster di media taglia. Sul treno non ci
+crede nessuno.
 
 La prima discesa supera la verticale, e subito dopo arriva l’elemento per cui il
 parco all’apertura rivendicò un record mondiale: il **Double Inverting 270
@@ -251,8 +242,7 @@ semplicemente a girare.
 
 ```
 
-Ciò che rende Untamed così valido non è però l’elemento da record. È il ritmo
-che viene dopo. Uno step-up under-flip, una collina di airtime, uno zero-g
+Quello che viene dopo l’elemento da record è ancora meglio. Uno step-up under-flip, una collina di airtime, uno zero-g
 stall, un twisted horseshoe roll, un wave turn, un barrel roll drop. Nessun
 elemento si ripete, nessuno arriva dove te lo aspetti, e il tracciato non molla
 mai il passo nel mezzo. Dopo 106 secondi sei di nuovo in stazione senza più
@@ -270,36 +260,33 @@ Il lift svetta ben visibile sopra il verde dell’area **Wilderness**, e in cima
 sono lettere alte quanto una persona ricoperte di lampadine. Lì **LOVE**
 risplende verso il cielo, e in coda si legge **BE BRAVE**. La stazione ha una
 cascata e un suono di partenza costruito perché l’intero treno alzi le mani e
-applauda la partenza. Sconosciuti che due minuti prima non si conoscevano. Dopo
+applauda la partenza. Anche gente che due minuti prima non si era mai vista. Dopo
 il tramonto l’intera struttura resta immersa nel rosa e nel viola.
-
-Non ci sono molte attrazioni in cui la festa comincia prima del lift.
 
 Al mio primo giro ho iniziato a ridere da qualche parte a metà e non ho più
 smesso fino al freno. Non una risatina, una risata vera, con le lacrime agli
 occhi. In stazione mezzo treno si è girato verso di me, e in qualsiasi altra
-situazione mi sarebbe risultato imbarazzante. Lì no. Quello che questa
-attrazione libera in endorfine aveva fatto di me, in quei 106 secondi, qualcuno
-che non voleva più trattenersi affatto. È per questo che si fa tutto questo giro.
+situazione mi sarebbe risultato imbarazzante. Lì no. In 106 secondi l’attrazione mi aveva tolto ogni
+vergogna. È per questo che si fa tutto questo giro.
 
 Da allora mi è successo esattamente un’altra volta, a maggio di quest’anno al
 mio primo giro sul
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
-di Orlando. Due attrazioni in molti anni. Una di esse sta in un polder del
-Flevoland.
+di Orlando. Due attrazioni in molti anni, e per quella del Flevoland non serve
+attraversare l’Atlantico.
 
 Ai Golden Ticket Awards, Untamed si è piazzato quinto tra le migliori novità del
 2019, e da allora compare stabilmente nella top 50 mondiale dell’acciaio (2024:
-42º; 2025: 48º). Tra gli appassionati europei sta nettamente più in alto di
-quanto quei numeri lascino intendere, e questo dipende da una qualità difficile
-da misurare: dopo sette anni è ancora morbido.
+42º; 2025: 48º). Io lo metterei
+nettamente più in alto, per una qualità difficile da misurare: dopo sette anni è ancora morbido,
+sulla stessa struttura di legno dove Robin Hood un tempo riordinava le vertebre.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
 ## YOY, Goliath e il resto
 
-Untamed è la ragione per venire. Ma il parco ha altri nove coaster, e due di
-essi valgono anch’essi la deviazione.
+Untamed è la ragione per venire. Ma il parco ha altri nove coaster, e due
+valgono anche loro la deviazione.
 
 ![Due treni percorrono affiancati una curva sui tracciati verde e blu di YoY | YOY Chill e YOY Thrill affiancati. Qui il tracciato è largo esattamente una rotaia. | wide](/media/walibi-holland/yoy-chill.jpg)
 
@@ -313,8 +300,8 @@ dietro l’altro come su una moto, senza niente a sinistra e a destra.
 
 ```
 
-La vera particolarità è il raddoppio. Walibi non ne ha costruito uno, ma **due
-intrecciati fra loro**, e una cosa così non esisteva in nessuna parte del mondo.
+La vera particolarità: Walibi ne ha costruiti subito **due**, **intrecciati
+fra loro**, e una cosa così non esisteva in nessuna parte del mondo.
 **[YOY THRILL](ref:walibi-holland/yoy-thrill)** (verde) è lungo 655 metri, va a
 80 km/h, ha **sei inversioni** e tira fino a 4 g.
 **[YOY CHILL](ref:walibi-holland/yoy-chill)** (blu) sale agli stessi 29 metri,
@@ -324,7 +311,8 @@ avvenuta il **5 aprile 2025**.
 
 Se sei in giro con un bambino esattamente sul confine tra «vorrebbe» e «non se
 la sente ancora», qui c’è la soluzione più elegante che conosca: salite insieme,
-vi vedete per tutto il tempo, e ciascuno fa comunque il tracciato adatto a lui.
+vi vedete per tutto il tempo, ciascuno fa il tracciato adatto a lui, e dopo
+nessuno può sostenere che l’altro si sia tirato indietro.
 
 ![La scritta «Goliath» all’ingresso, dietro il lift dell’attrazione | Goliath, dal 2002 il coaster più alto del parco. | left](/media/walibi-holland/goliath-4x3.jpg)
 
@@ -343,7 +331,7 @@ nel **2016**: 32 metri, 87 km/h, 680 metri, due inversioni, più sedili senza
 pavimento nelle file esterne. L’area tematica attorno è una raccolta di cose che
 lì non c’entrano nulla, un container, un’auto ribaltata, vecchi segnali
 ferroviari, e il tracciato stesso ti ribalta oltre lo spigolo in una discesa
-oltre la verticale. Corto, compatto, sorprendentemente cattivo.
+oltre la verticale. È corto, e molto più cattivo di quanto sembri.
 
 E poi ci sono i tre vecchi, liquidati come contorno in ogni resoconto. Sono
 invece proprio loro a prendere il motto del parco più alla lettera.
@@ -366,17 +354,16 @@ Il vero colpo però non è scritto da nessuna parte all’ingresso. **Questo
 tracciato probabilmente lo conosci già.** Vekoma ha costruito lo stesso percorso
 per Disney: si ritrova quasi identico nel **Rock 'n' Roller Coaster Starring
 Aerosmith** di Orlando e in **Avengers Assemble: Flight Force** a Disneyland
-Paris. A Biddinghuizen risulta persino un po' più generoso, perché qui i treni
+Paris. A Biddinghuizen risulta persino un po’ più generoso, perché qui i treni
 sono più leggeri senza l’impianto audio di bordo ed escono dal lancio più in
-fretta. Lo stesso coaster che da Disney, senza coda e senza supplemento.
+fretta. Lo stesso coaster che da Disney, solo senza la coda da Disney.
 
 Ha aperto nell’aprile 2000 come **Superman The Ride**, dal 2005 si è chiamato
 semplicemente **Express** e dal 2014 porta il nome della stazione.
 
 ### Condor, il prototipo che distribuisce
 
-**[Condor](ref:walibi-holland/condor)** pesa storicamente più di quanto la sua
-coda lasci immaginare. Ha aperto nel 1994 come **El Condor** ed è stato il
+**[Condor](ref:walibi-holland/condor)** pesa storicamente più di quanto sembri. Ha aperto nel 1994 come **El Condor** ed è stato il
 **primo Suspended Looping Coaster al mondo**, il tipo che Vekoma ha poi venduto
 a decine in tutto il pianeta. Del modello prototipo ne sono stati costruiti
 soltanto due, e questo gira ancora dopo oltre trent’anni.
@@ -458,7 +445,7 @@ ciò che il parco ha deciso negli ultimi due anni.
 ## Quanto costa davvero Untamed
 
 Calcolato da **più di 130 giorni di apertura con dati di attesa utilizzabili**,
-l’**attesa tipica nella media del parco è di un quarto d’ora scarso** (mediana).
+l’**attesa tipica nella media del parco resta ben sotto la mezz’ora** (mediana).
 In quel giorno su dieci in cui c’è più movimento è una volta e mezza tanto.
 
 Attrazione per attrazione si presenta così:
@@ -467,11 +454,12 @@ Attrazione per attrazione si presenta così:
 
 ```
 
-La migliore attrazione del parco sta nella metà bassa di quella tabella. Si
-aspetta più a lungo per la novità, per un SLC del 1994 e per un Mack da 680
-metri. Non è una critica a YOY, una novità tira sempre. Ma significa questo: se
-la mattina vai dritto nella Wilderness, avrai fatto Untamed tre volte prima che
-la coda di YOY abbia compiuto un giro.
+La migliore attrazione del parco non ha la fila più lunga, quella spetta alla
+novità. Untamed sta a metà classifica, alla pari con un SLC del 1994 e con un
+Mack da 680 metri. Non è una critica a YOY. Una novità tira sempre, e mezza Olanda si mette in coda
+per principio là dove la vernice è ancora fresca. Ma significa questo: se
+la mattina vai dritto nella Wilderness, avrai fatto Untamed prima che
+la coda di YOY si sia davvero mossa.
 
 Diventa più interessante nel confronto con il vicinato. Stessa base dati, stesso
 metodo di calcolo, tutti i giorni di apertura misurati:
@@ -481,7 +469,8 @@ metodo di calcolo, tutti i giorni di apertura misurati:
 ```
 
 Nel tempo in cui a Phantasialand fai **una volta** la coda di
-[Taron](ref:phantasialand/taron), fai Untamed due volte e mezza. A livello di
+[Taron](ref:phantasialand/taron), fai Untamed più volte e ti resta
+ancora il tempo per le patatine. A livello di
 parco il quadro è lo stesso:
 
 ```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
@@ -496,30 +485,26 @@ dell’attesa](/blog/l-arte-dell-attesa).
 
 Una precisazione prima che qualcuno prenda i numeri troppo sul serio: il nostro
 storico per questo parco comincia a dicembre 2025, e Walibi apre solo da aprile
-a ottobre. Dietro i valori mensili da aprile ad agosto ci sono ogni volta da 11 a
+a inizio novembre. Dietro i valori mensili da aprile ad agosto ci sono ogni volta da 11 a
 30 giorni misurati, e questo regge. Da settembre a marzo non abbiamo quasi dati,
-per questo lì non compare alcun numero. Un mese con undici giorni misurati ti dice se viaggi nella stagione giusta, non
-se risparmi cinque minuti.
+per questo lì non compare alcun numero. Se viaggi nella stagione giusta te lo dice anche un mese con undici
+giorni misurati. Cinque minuti su di lui non li scommetterei.
 
 ## Halloween: il programma più duro del Benelux
 
 > [!NOTE]
-> **Al 19 agosto 2026:** il calendario c’è. Le Fright Nights girano tutti i fine
-> settimana fra il 3 ottobre e il 1° novembre, più venerdì 16, giovedì 22 e
-> venerdì 23 ottobre. Gli Spooky Days hanno giorni propri: 14, 15, 19, 20 e 21
-> ottobre. I biglietti early bird per la sera costano da 32,50 a 38,50 €. Quali
-> case e quali experience ci saranno, il parco continua a non dirlo.
+> **Al 22 settembre 2026:** calendario, case e prezzi dei pacchetti per il 2026
+> sono noti e inseriti in questa sezione.
 
-Sei settimane all’anno questo parco smette di essere un parco divertimenti.
+Le sere di ottobre questo parco smette di essere un parco divertimenti.
 
 Le **Halloween Fright Nights** esistono dai tempi di Six Flags,
 **il 2025 è stata la 25ª edizione**. Il 31 ottobre il parco l’ha festeggiato con
 una serata anniversario dedicata dalle 17 alle 23, con biglietti in numero
 limitato, uno spettacolo con Eddie il Clown e una spilla per ogni ospite. Tutto
-era cominciato intorno al 2000 con una sola casa stregata piena di pupazzi
-animati. Oggi è l’evento con cui si misura tutto l’horror europeo.
+era cominciato intorno al 2000 con una sola casa stregata piena di pupazzi animati.
 
-![Un’attrice truccata da bambola di porcellana rotta con crepe sul viso, dietro di lei un’area bambini colorata con peluche appesi | L’area bambini dove a mezzogiorno i sei anni dipingono zucche. Dal 2026 le due cose non avvengono più lo stesso giorno. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
+![Un’attrice truccata da bambola di porcellana rotta con crepe sul viso, dietro di lei un’area bambini colorata con peluche appesi | L’area bambini dove a mezzogiorno i bambini di sei anni dipingono zucche. Dal 2026 le due cose non avvengono più lo stesso giorno. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Come si colloca rispetto a Movie Park, Traumatica e Toverland sta nella nostra
 [guida di Halloween](/blog/halloween-parchi-divertimenti-2026). Ciò su cui
@@ -582,12 +567,11 @@ Halloween d’Europa» sta, a suo stesso dire, al
 [Movie Park](ref:movie-park-germany) di Bottrop, con nove maze e oltre 300
 mostri. Grande e duro sono però due discipline diverse. La roba davvero malata
 succede due ore d’auto più a nord, in un polder dove ti appendono a una rotaia a
-soffitto e ti timbrano. Bottrop ha il numero più grande. Biddinghuizen ha le
-storie che a tavola è meglio tenersi per sé.
+soffitto e ti timbrano. Bottrop ha il numero più grande,
+Biddinghuizen le storie che a cena è meglio tenersi per sé.
 
-I prezzi per il 2026 non sono ancora fissati, il parco mette di solito in vendita
-le case a fine estate. Come orientamento, quindi, la tabella della stagione 2025,
-che restituisce l’ordine di grandezza in modo affidabile (prevendita / in
+Per l’ordine di grandezza, la tabella dei prezzi della stagione 2025. Per il
+2026 il parco vende le case soprattutto in pacchetti, ne parlo subito dopo (prevendita / in
 cassa):
 
 | Categoria                                               | Prezzo             |
@@ -605,15 +589,20 @@ cassa):
 | R.I.P. Pass (3 case + 1 walkthrough, fast lane)         | 57,50 €            |
 
 Nel 2025 hanno funzionato in parallelo quattro scare zone gratuite: Tangled
-Twigs, Pirates Cove, Ghostly Graveyard e Nightmares.
+Twigs, Pirates Cove, Ghostly Graveyard e Nightmares. Nel 2026 la nuova zona Camp
+Dead End sostituisce Tangled Twigs, e si aggiunge la fright area Halloween Town.
 
-Chi vuole davvero fare tutto paga **almeno 116,50 € a persona**, e per giunta in
-aggiunta all’ingresso. È la combinazione più economica possibile, con il
-pacchetto Before Dark per le quattro case semplici e tutto in prevendita. Con il
-R.I.P. Pass al posto dei biglietti singoli si arriva a circa 149 €, e chi
-prenota solo la sera in cassa supera i 156 €. L’ingresso si aggiunge ogni volta.
-A questo punto la maggior parte decide di limitarsi a due case e una experience.
-Un piano ragionevole.
+Nel 2025 chi voleva davvero fare tutto pagava **almeno 116,50 € a persona**, e
+per giunta in aggiunta all’ingresso. Era la combinazione più economica
+possibile, con il pacchetto Before Dark per le quattro case semplici e tutto in
+prevendita. Con il R.I.P. Pass al posto dei biglietti singoli si arrivava a
+circa 149 €, e chi prenotava solo la sera in cassa superava i 156 €. L’ingresso
+si aggiungeva ogni volta. Per il 2026 i pacchetti costano a prezzo pieno 30 €
+(Before Dark, fino alle 19), 40 € (Haunted House Package: The Villa, Psychoshock,
+Jefferson Manor e Camp of Curiosities), 52,50 € (lo stesso più US vs YOU) e
+60 € (R.I.P. Pass, le stesse quattro da un ingresso dedicato).
+A questo punto io rifarei i
+conti e mi limiterei a due case e una experience.
 
 > [!TIP]
 > Prenota in anticipo le experience, non le case stregate. Nelle case entri la
@@ -628,9 +617,8 @@ questa stagione il parco **separa i due eventi su giorni diversi**. La
 motivazione da Biddinghuizen è di una prosaicità rinfrescante: nel pomeriggio il
 parco si riempiva di ospiti della sera, le famiglie con bambini piccoli
 restavano a casa e gli attori dovevano passare in poche ore dal registro adatto
-ai bambini a quello senza compromessi. I visitatori delle Fright Nights avranno
-invece un programma pomeridiano dedicato, i cui dettagli mancavano ancora alla
-chiusura di redazione.
+ai bambini a quello senza compromessi. Per i visitatori delle Fright Nights, invece,
+le prime case aprono già nel pomeriggio, con pacchetti Before Dark dedicati.
 
 Ora il calendario c’è, e mostra la separazione nero su bianco. Le **Fright
 Nights** si prendono tutti i fine settimana fra il **3 ottobre e il 1° novembre**,
@@ -638,10 +626,12 @@ più venerdì 16, giovedì 22 e venerdì 23 ottobre. Halloween cade di sabato e 
 Gli **Spooky Days** stanno sul **14, 15, 19, 20 e 21 ottobre**, giorni feriali in
 piena settimana di vacanze autunnali olandesi: esattamente i giorni in cui
 arrivano le famiglie e non gli ospiti della sera. I biglietti early bird per la
-sera costano da 32,50 a 38,50 €, sotto i 37,50 a 39,50 € della stagione 2025.
-Quali case e quali experience ci saranno, il parco continua a non dirlo; la
-[pagina dell’evento](https://www.walibi.nl/halloween/en/halloween-fright-nights)
-finora vende solo l’ingresso.
+sera costavano da 32,50 a 38,50 €; a inizio settembre l’ingresso andava da 35,50
+a 44,50 € a seconda della data. Da settembre sono in vendita anche le case:
+tornano The Villa, US vs YOU, Psychoshock e Jefferson Manor, con Camp of
+Curiosities, le experience Below, Slaughterhouse e The Clinic, The Unhappy Hour
+e il Backstage Tour. È tutto sulla
+[pagina dell’evento](https://www.walibi.nl/halloween/en/halloween-fright-nights).
 
 [Walibi Holland](ref:walibi-holland?full)
 
@@ -671,9 +661,7 @@ d’estate.
 Chi punta tutto sui coaster, d’inverno ha un problema di fisica. I coaster non
 girano con gelo, tempesta e pioggia gelata, e **Walibi Holland non ha quasi
 attrazioni al coperto**. Se la tecnica si ferma, agli ospiti resta lo spettacolo
-di luci, e uno spettacolo di luci non regge un biglietto. La concentrazione su
-grandi tracciati a cielo aperto rende il parco imbattibile a luglio e indifeso a
-dicembre. L’Efteling riempie lo stesso periodo con dark ride e un parco che
+di luci, e uno spettacolo di luci non regge un biglietto. L’Efteling riempie lo stesso periodo con dark ride e un parco che
 sotto la pioggia è persino più bello. Walibi non può farlo, e a quanto pare ci
 sono voluti quattro anni per dirlo ad alta voce.
 
@@ -694,23 +682,21 @@ Ciò che Walibi fa dell’inverno liberato è la parte più interessante della
 notizia. Il parco sposta l’energia risparmiata sull’estate e sulla manutenzione,
 che finora andava incastrata attorno all’esercizio natalizio.
 
-In concreto, nel 2026 ci sono due formati serali, e sono suddivisi come tutto
-qui:
+In concreto, nell’estate 2026 ci sono stati due formati serali, suddivisi come
+tutto qui:
 
-**#Lekkergaan** si tiene sei mercoledì, il **15, il 22 e il 29 luglio e il 5, il
+**#Lekkergaan** si è tenuto sei mercoledì, il **15, il 22 e il 29 luglio e il 5, il
 12 e il 19 agosto 2026**, ogni volta fino alle 22. È la prosecuzione del formato
 partito nel 2017 come festival estivo: dj, più palchi, un’area spiaggia alla
 Main Stage, tutte le attrazioni in funzione. Salire sui coaster con il sole
 della sera mentre da qualche parte girano i bassi. Il nome è la sorella gentile
 di «hard gaan»: «lekker gaan» significa più o meno andare che è una meraviglia,
-e chi conosce entrambe le parole conosce le due modalità operative di questo
-parco.
+ed è la versione che si può spiegare anche ai genitori.
 
-**Zomerse Zaterdagen** ne sono l’esatta controparte, il **25 luglio e il 1º,
-l'8, il 15 e il 22 agosto 2026**, anch’essi fino alle 22. Di giorno c’è lo
+**Zomerse Zaterdagen** ne sono stati l’esatta controparte, il **25 luglio e il 1º, l’8, il 15 e il 22 agosto 2026**, anch’essi fino alle 22. Di giorno c’era lo
 spettacolo per famiglie Walibi & Friends, di sera lo spettacolo **Summer Beats**
-con fuochi d’artificio sopra la Main Stage. In quei giorni esiste un biglietto
-**Half Day Half Price** con cui si entra dalle 16.
+con fuochi d’artificio sopra la Main Stage. In quei giorni c’era un biglietto
+**Half Day Half Price** con cui si entrava dalle 16.
 
 Il mercoledì i bassi, il sabato i fuochi. Dietro c’è la stessa decisione della
 separazione di Halloween e della fine delle Bright Nights: il parco smette di
@@ -719,17 +705,18 @@ voler essere due cose insieme nello stesso giorno. Dopo dodici anni di
 
 ## Quando andarci
 
-La stagione va da **aprile a inizio novembre**, dopodiché chiude. In primavera e
+La stagione va da **aprile a inizio novembre**, dopodiché il polder va in
+letargo. In primavera e
 in autunno il parco apre il mercoledì, nei fine settimana e durante le vacanze;
-a luglio e agosto tutti i giorni.
+da fine giugno a fine agosto tutti i giorni.
 
 **Per mese** il quadro è tranquillo: lungo la stagione i mesi si distinguono a
 malapena. Dove qualcosa si muove, Pasqua, il Giorno del Re e le vacanze olandesi
 di maggio cadono nello stesso periodo. Chi arriva dalla Germania deve inoltre sapere che
 le **vacanze scolastiche olandesi** pesano qui molto più delle proprie.
 
-**Per giorno della settimana** la cosa si fa curiosa. Il giorno pieno non è il
-sabato:
+**Per giorno della settimana** la cosa si fa curiosa. Il sabato non è più pieno del resto
+della settimana:
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -740,7 +727,9 @@ stanno sullo stesso valore. Qui, quindi, il fine settimana semplicemente non è 
 caso speciale, e il motivo è banale: fuori
 dalle vacanze estive il parco apre comunque quasi solo il mercoledì e nei fine
 settimana, per cui i pochi giorni feriali sono più spesso della media giorni di
-vacanza. Chi può scegliere prende un giovedì di maggio o luglio.
+vacanza. Chi può scegliere prende un giorno feriale nell’ultima settimana di giugno: il
+parco apre già tutti i giorni e le vacanze estive olandesi non sono ancora
+iniziate.
 
 Invece di tirare a indovinare, ecco i prossimi giorni più tranquilli dal nostro
 calendario dell’affluenza:
@@ -780,7 +769,8 @@ giornaliero costa in modo diverso a seconda della data.
 
 - **Prezzo in cassa, biglietto giornaliero:** 46 € (dai 12 anni). Chi prenota
   online e per un giorno tranquillo paga, a seconda della data, da **24,50 €**.
-  Usare la cassa in loco è qui la decisione più cara possibile.
+  Usare la cassa in loco è qui la decisione più cara possibile,
+  prima ancora del terzo gelato.
 - **Bambini:** da 3 a 5 anni 23 €, da 6 a 11 anni 36 €, sotto i 2 gratis. Over
   55 e ospiti con disabilità anch’essi 36 €.
 - **Parcheggio:** 12 € per auto al giorno, con venti punti di ricarica per
@@ -803,8 +793,7 @@ giornaliero costa in modo diverso a seconda della data.
 Un confronto che mi colpisce ogni volta: il
 [Toverland](ref:attractiepark-toverland), un centinaio abbondante di chilometri
 più a sud, non vende alcun fast pass, mentre Walibi ne ha subito un intero
-scaffale, abbonamento annuale al saltafila compreso. Con una mediana di venti
-minuti il parco vende così la soluzione a un problema che la maggior parte degli
+scaffale, abbonamento annuale al saltafila compreso. Con le attese viste più sopra il parco vende così la soluzione a un problema che la maggior parte degli
 ospiti nella maggior parte dei giorni non ha.
 
 **Come arrivare.** Il parco si trova in Spijkweg 30 a **Biddinghuizen**, comune
@@ -825,7 +814,8 @@ Nights è la soluzione più rilassata, perché dopo una notte al mattatoio non t
 restano anche due ore e mezza di autostrada.
 
 **Mangiare.** Qui sono diretto: la ristorazione è la parte più debole del parco.
-Ci sono patatine, hamburger, pizza, tutto accettabile, niente per cui si torni.
+Ci sono patatine, hamburger, pizza, dignitosa cucina da mensa, niente per cui si
+torni.
 Il food court **Flavors** vicino alla nuova area YOY, con la terrazza sull’acqua,
 è l’indirizzo più piacevole, non fosse che per la vista sui due tracciati.
 Mangia presto, verso le undici e mezza, o tardi dalle due e mezza.
@@ -844,7 +834,7 @@ Per gli appassionati di coaster sì. Il parco ha in
 [Untamed](ref:walibi-holland/untamed) il primo coaster ibrido d’Europa, in
 [YOY](ref:walibi-holland/yoy-thrill) il primo impianto in duello su rotaia
 singola al mondo e in [Goliath](ref:walibi-holland/goliath) un Mega Coaster
-Intamin del 2002, e tutto questo con un’attesa tipica di un quarto d’ora abbondante. Chi cerca
+Intamin del 2002, e tutto questo con un’attesa tipica ben sotto la mezz’ora. Chi cerca
 dark ride, un’ambientazione senza cuciture e indipendenza dal meteo sta meglio all’[Efteling](ref:efteling)
 o a [Phantasialand](ref:phantasialand).
 
@@ -859,8 +849,8 @@ Defqon.1, il più grande festival hardstyle del mondo.
 ### Quanto si aspetta a Walibi Holland?
 
 Su tutti i giorni di apertura misurati l’attesa tipica nella media del parco è
-di un quarto d’ora scarso (mediana). Untamed e Goliath restano appena sotto, e
-la novità YOY THRILL detiene di gran lunga il valore più alto del parco. I
+ben sotto la mezz’ora (mediana). Untamed e Goliath stanno più o meno nella
+media del parco, e la fila più lunga di solito è quella della novità YOY THRILL. I
 numeri aggiornati stanno sulla [pagina del parco Walibi
 Holland](ref:walibi-holland).
 
@@ -884,9 +874,9 @@ bambini da 6 a 11 anni pagano 36 €, da 3 a 5 anni 23 €. Il parcheggio costa
 In quattro livelli: **Spooky Days** di giorno per i bambini, **Fright Nights** di
 sera dai 16, più le **case stregate** e le **experience**, che costano entrambe a
 parte. Nel 2025 le case andavano da 9,50 a 17,50 € e le experience da 19,50 a
-25,50 €; tutto insieme costava almeno 116,50 € oltre all’ingresso. I prezzi per
-il 2026 il parco non li ha ancora pubblicati; l’ingresso serale costa da 32,50 a
-38,50 € in early bird. La novità è che dal 2026 Spooky Days e Fright Nights si
+25,50 €; tutto insieme costava almeno 116,50 € oltre all’ingresso. Per il 2026
+il parco vende le case soprattutto in pacchetti da 30 a 60 € a prezzo pieno; a
+inizio settembre l’ingresso serale andava da 35,50 a 44,50 € a seconda della data. La novità è che dal 2026 Spooky Days e Fright Nights si
 svolgono in **giorni diversi**, non più nello stesso: le Fright Nights tutti i
 fine settimana dal 3 ottobre al 1° novembre più il 16, il 22 e il 23 ottobre,
 gli Spooky Days il 14, 15, 19, 20 e 21 ottobre.
@@ -910,7 +900,7 @@ Mi piacciono i parchi che sanno che cosa sono. L’[Efteling](ref:efteling) lo s
 dal 1952, [Phantasialand](ref:phantasialand) se l’è conquistato a fatica, e
 Walibi Holland, dopo quattro nomi nuovi e uno slogan fallito, si è accorto a un
 certo punto che la risposta stava già sul proprio terreno. Tra un festival
-hardstyle e un polder più giovane della maggior parte dei suoi visitatori.
+hardstyle e un campo dove qualche decennio fa nuotavano ancora i pesci.
 
 Questo parco non fa tutto bene. Il cibo è mediocre, alcune attrazioni sono
 soprattutto il proprio passato, e d’inverno l’intero concetto crolla, come ha
@@ -955,7 +945,7 @@ più a niente.
 - Lo spot «Souls for Sale», 889 reclami, decisione della Reclame Code Commissie: [«Geen enkele Nederlandse reclame leverde vorig jaar meer klachten op» (Looopings)](https://www.looopings.nl/weblog/32698/Geen-enkele-Nederlandse-reclame-leverde-vorig-jaar-meer-klachten-op-dan-die-van-Walibi-Holland.html) · [«Commissie: Horror-reclamespot Walibi in strijd met menselijke waardigheid» (Omroep Flevoland)](https://www.omroepflevoland.nl/nieuws/443747/commissie-in-ophef-geraakte-walibi-spot-in-strijd-met-reclame-code)
 - Defqon.1 e Lowlands sull’area eventi: [Event Site Walibi Holland (ufficiale)](https://www.walibi.nl/en/business/possibilities/locations/evenemententerrein-walibi-holland)
 - Halloween Fright Nights (struttura, experience, 25ª edizione nel 2025): [Halloween Fright Nights (ufficiale)](https://www.walibi.nl/halloween/en/halloween-fright-nights) · [Experiences (ufficiale)](https://www.walibi.nl/halloween/en/halloween-fright-nights/experiences) · [«Walibi viert 25 jaar Halloween Fright Nights» (comunicato)](https://pers.walibi.nl/walibi-viert-25-jaar-halloween-fright-nights-met-exclusieve-jubileumavond) · [Storia delle Fright Nights (ScareZone)](https://scarezone.nl/2021/02/11/de-halloween-fright-nights-van-six-flags-holland-naar-walibi-holland/)
-- Prezzi di Halloween 2025 e line-up: [«Halloween Fright Nights 2025: een overzicht van alle spookhuizen en prijzen» (Backseaters)](https://backseaters.nl/halloween-fright-nights-2025-een-overzicht-van-alle-spookhuizen-en-prijzen/) · [la nostra guida di Halloween](/blog/halloween-parchi-divertimenti-2026)
+- Prezzi di Halloween 2025 e line-up: [«Halloween Fright Nights 2025: een overzicht van alle spookhuizen en prijzen» (Backseaters)](https://backseaters.nl/halloween-fright-nights-2025-een-overzicht-van-alle-spookhuizen-en-prijzen/) · Line-up, pacchetti e ingresso 2026: [Halloween Fright Nights (ufficiale)](https://www.walibi.nl/halloween/en/halloween-fright-nights) · [«Walibi Holland zet tickets voor spookhuizen online» (Backseaters)](https://backseaters.nl/walibi-holland-zet-tickets-voor-spookhuizen-online-dit-is-het-complete-overzicht-van-halloween-fright-nights-2026/) · [la nostra guida di Halloween](/blog/halloween-parchi-divertimenti-2026)
 - I filmati incorporati provengono tutti dal canale ufficiale del parco: [«Souls for Sale: De geest»](https://www.youtube.com/watch?v=5uXmHjiLbG4) · [«Slaughterhouse, Halloween Fright Nights 2024»](https://www.youtube.com/watch?v=A5AZcy7PIkc) · [«Below (NIEUW)», 2017](https://www.youtube.com/watch?v=YHXW1odvwvE) · [«Back to Reality», 2026](https://www.youtube.com/watch?v=fFPGRQAs-Xk)
 - Separazione di Spooky Days e Fright Nights dal 2026: [«Nieuw concept voor Halloween in Walibi» (Looopings)](https://www.looopings.nl/weblog/32505/Nieuw-concept-voor-Halloween-in-Walibi-Fright-Nights-en-Spooky-Days-worden-van-elkaar-gescheiden.html)
 - Fine delle Bright Nights e concentrazione sull’estate: [«Walibi Holland concentreert zich volledig op zomerseizoen» (comunicato)](https://pers.walibi.nl/walibi-holland-concentreert-zich-volledig-op-zomerseizoen-en-introduceert-zomerse-zaterdagen) · [«Walibi Holland stopt na vier jaar met Bright Nights» (Looopings)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html) · [«Waarom stopt Walibi plots met Bright Nights?» (Looopings)](https://www.looopings.nl/weblog/32516/Donderslag-bij-heldere-hemel-waarom-stopt-Walibi-plots-met-Bright-Nights.html)

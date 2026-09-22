@@ -21,15 +21,15 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Een blok is een attractie, en de hoogte ervan is de wachttijd die voor dat uur voorspeld
           wordt. Sleep hetzelfde blok naar een druk uur en het groeit; zet het in een rustig uur en
-          het krimpt. Tussen twee blokken staat geen lege ruimte maar de overstap: hoe ver het is,
-          en of daar tijd voor is. Het uitstappen en de rit zelf zitten daarin, niet in het blok.
+          het krimpt. Tussen twee blokken staat de overstap: hoe ver het is, en of daar tijd voor
+          is. Het uitstappen en de rit zelf zitten daarin, niet in het blok.
         </P>
         <P>
           Wat hieronder staat is niet nagetekend. Het zijn dezelfde onderdelen die in de planner
           draaien, gevoed met het antwoord dat de API op 4 september 2026 gaf voor zaterdag 12
           september in <A href={PARK}>Phantasialand</A>. Sleep een blok naar een ander uur: het
           klikt op vijf minuten vast, rekent zijn hoogte opnieuw uit en de overstappen ernaast ook.
-          Er wordt hier niets opgeslagen.
+          Er wordt hier niets opgeslagen, dus schuif gerust naar hartenlust.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -47,11 +47,11 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
       >
         <P>
           Voor elke attractie levert de API een curve over de dag, uur voor uur. Taron staat op deze
-          zaterdag op 45 minuten om tien, 50 om elf, 40 om één en weer 50 &apos;s avonds. Dat is de
-          echte reden om Taron vroeg te rijden: niet omdat het &apos;s ochtends altijd rustiger is,
-          maar omdat deze dag voor deze attractie geen rustig uur heeft. Black Mamba doet het
-          omgekeerd en zakt van 35 minuten rond het middaguur naar 20 om zes, en Chiapas klimt van
-          20 naar 35.
+          zaterdag op 45 minuten om tien, 50 om elf, 40 om één en weer 50 &apos;s avonds: over de
+          hele dag zit er tien minuten tussen. Taron is op deze zaterdag dus gewoon altijd gewild.
+          Voor zo&apos;n attractie bestaat geen goed venster, en de planner zet hem waar de rest van
+          de dag het toelaat. Black Mamba zakt daarentegen van 35 minuten rond het middaguur naar 20
+          om zes, en Chiapas gaat andersom, van 20 naar 35.
         </P>
         <P>
           Daar komt bij hoever het getal er meestal naast zit, en dat volgt het niveau: hoe langer
@@ -116,9 +116,9 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
           hemelsbrede afstand voor de omweg.
         </P>
         <Note>
-          &bdquo;Krap&rdquo; betekent niet smal. Het betekent dat deze overstap niet meer uitkomt
+          &ldquo;Krap&rdquo; betekent niet smal. Het betekent dat deze overstap niet meer uitkomt
           als de voorspelling er zo ver naast zit als ze zelf aangeeft. Waar de API geen spreiding
-          levert, blijft het oordeel op &bdquo;goed&rdquo; staan en zegt dat er in de titel bij.
+          levert, blijft het oordeel op &ldquo;goed&rdquo; staan en zegt dat er in de titel bij.
         </Note>
       </Chapter>
 
@@ -130,23 +130,24 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
         title="De dag kan zichzelf op volgorde zetten"
       >
         <P>
-          Twee knoppen nemen dat over. &bdquo;Alle headliners inplannen&rdquo; haalt de grote
+          Twee knoppen nemen dat over. &ldquo;Alle headliners inplannen&rdquo; haalt de grote
           attracties van het park erbij die nog niet in de dag staan en zet daarna alles op
-          volgorde. &bdquo;Dag optimaliseren&rdquo; voegt niets toe en herschikt alleen wat er al
+          volgorde. &ldquo;Dag optimaliseren&rdquo; voegt niets toe en herschikt alleen wat er al
           gepland is. Achter allebei draait dezelfde som; het zijn twee knoppen omdat het twee
           vragen zijn: vul mijn dag, en kan de volgorde beter.
         </P>
         <P>
-          Er wordt op drie dingen gesorteerd, en de rangorde daartussen is de eigenlijke keuze.
-          Eerst telt dat alles nog voor sluitingstijd aan de beurt komt: een plan met één attractie
-          minder die echt doorgaat, wint van een plan met er één meer die het niet haalt. Daarna de
-          som van de wachttijden, waar het om gevraagd was. En kosten twee volgordes evenveel, dan
-          wint de volgorde die eerder klaar is. Een schuifje dat wachten tegen rondhangen afweegt is
-          er niet: dat getal zou niemand kunnen verdedigen.
+          Er wordt op vier dingen gesorteerd, en de rangorde daartussen is de eigenlijke keuze.
+          Bovenaan staat jouw eigen rangorde: wat je naar voren haalt, valt als laatste af. Daarna
+          telt dat alles nog voor sluitingstijd aan de beurt komt: een plan met één attractie minder
+          die echt doorgaat, wint van een plan met er één meer die het niet haalt. Daarna de som van
+          de wachttijden, waar het om gevraagd was. En kosten twee volgordes evenveel, dan wint de
+          volgorde die eerder klaar is. Een schuifje dat wachten tegen rondhangen afweegt is er
+          niet: dat getal zou niemand kunnen verdedigen.
         </P>
         <P>
           Een regel over de vroege ochtend zit er niet in. De planner kent alleen de uurcurve van
-          elke afzonderlijke attractie. Ligt die vlak na opening het laagst, dan rolt &bdquo;eerst
+          elke afzonderlijke attractie. Ligt die vlak na opening het laagst, dan rolt &ldquo;eerst
           de grote attractie&rdquo; er vanzelf uit; ligt hij vlak, dan komt er iets anders uit. Op
           een gemeten dag staat Taron uur na uur op 60, 60, 54, 53 en 59 minuten, terwijl Chiapas 22
           minuten stijgt. Een vaste regel zou allebei hetzelfde adviseren.
@@ -161,15 +162,16 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
           dus een rij van meer dan twee uur vragen.
         </P>
         <P>
-          Een middagpauze om één uur blijft om één uur, en een afgevinkte attractie is gereden en
-          wordt niet opnieuw ingepland; daar wordt omheen gepland. Achteraf staat er wat er gebeurd
-          is. &bdquo;18 min. minder wachten&rdquo; is het verschil tussen twee sommen van dezelfde
-          rekenwijze, één voor en één na de klik; valt er niets te winnen, dan staat er dat het al
-          goed staat en blijft het plan zoals het was. Bij de headlinerknop ontbreekt die winst,
-          omdat de dag met de nieuwe attracties langer wordt; geteld wordt dan hoeveel attracties
-          erbij zijn gekomen en hoeveel er niet bij het gezelschap passen. Wat er aan het eind niet
-          meer in de dag past, wordt na allebei de knoppen gemeld. Er hoort een &bdquo;Ongedaan
-          maken&rdquo; bij dat de stand van voor de klik terugzet, zolang de planner openstaat.
+          Een middagpauze om één uur blijft om één uur (met hongerige kinderen onderhandelt de
+          planner niet), en een afgevinkte attractie is gereden en wordt niet opnieuw ingepland;
+          daar wordt omheen gepland. Achteraf staat er wat er gebeurd is. &ldquo;18 min. minder
+          wachten&rdquo; is het verschil tussen twee sommen van dezelfde rekenwijze, één voor en één
+          na de klik; valt er niets te winnen, dan staat er dat het al goed staat en blijft het plan
+          zoals het was. Bij de headlinerknop ontbreekt die winst, omdat de dag met de nieuwe
+          attracties langer wordt; geteld wordt dan hoeveel attracties erbij zijn gekomen en hoeveel
+          er niet bij het gezelschap passen. Wat er aan het eind niet meer in de dag past, wordt na
+          allebei de knoppen gemeld. Er hoort een &ldquo;Ongedaan maken&rdquo; bij dat de stand van
+          voor de klik terugzet, zolang de planner openstaat.
         </P>
         <Note>
           Waar geen wachttijden binnenkomen, verschijnen de twee knoppen helemaal niet. In het
@@ -190,7 +192,7 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
           enkele bron de tijden vooraf, dus wordt de laatste gelijke weekdag doorgerekend, met de
           datum erbij waar de tijden vandaan komen en uit hoeveel dagen. Die twee mogen er niet
           hetzelfde uitzien: een doorrekening krijgt een tilde voor het tijdstip en het woord
-          &bdquo;verwacht&rdquo;, een opgave van het park geen van beide.
+          &ldquo;verwacht&rdquo;, een opgave van het park geen van beide.
         </P>
         <P>
           Op deze zaterdag zijn alle speeltijden doorgerekend: die van Dragon Drago en Kroka&apos;s
@@ -213,19 +215,21 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
           in de eigen app op het wifi van het park, dus komt er voor dat park nooit een getal binnen
           en verzint de planner er ook geen. Voor dagen die ver weg liggen is er geen weer: de
           verwachting reikt ongeveer twee weken, en daarna staat dat er, in plaats van een gat dat
-          leest als &bdquo;blijft droog&rdquo;.
+          leest als &ldquo;blijft droog&rdquo;.
         </P>
         <P>
           En wat een plan echt kost, beslist de dag zelf. Een attractie valt stil, een show gaat
-          niet door, onweer draait de middag om. Het plan is dus geen dienstregeling maar een som
-          over de vraag of de dag zo kan kloppen. In het park vink je af wat je gereden hebt, en de
-          planner noteert de wachttijd die er werkelijk stond.
+          niet door, onweer draait de middag om, en een kind in de rij voor Taron besluit dat de
+          theekopjes toch leuker zijn. Het plan is dus geen dienstregeling maar een som over de
+          vraag of de dag zo kan kloppen. In het park vink je af wat je gereden hebt, en de planner
+          noteert de wachttijd die er werkelijk stond.
         </P>
         <P>
-          Dat alles staat in je eigen browser. Geen account, geen server, geen synchronisatie: het
-          plan is een bestand in je eigen opslag, en wie de planner zonder plan opent, krijgt de
-          assistent met de drie vragen die eerst aan de beurt zijn. Welk park, welke dag, wie er
-          meegaat. De dag zelf kies je het makkelijkst in de{' '}
+          Dat alles staat in je eigen browser, zonder account: het plan is een bestand in je eigen
+          opslag. Pas als je meldingen aanzet, gaat er een kopie naar de server, en de planner zegt
+          dat op dat moment ook. Wie de planner zonder plan opent, krijgt de assistent met de vier
+          vragen die eerst beantwoord moeten zijn: welk park, welke dag, wie er meegaat en welke
+          grote attracties in de dag moeten. De passende dag vind je het makkelijkst in de{' '}
           <A href={`${PARK}/wachttijden-kalender`}>wachttijdenkalender</A> van een park.
         </P>
       </Chapter>

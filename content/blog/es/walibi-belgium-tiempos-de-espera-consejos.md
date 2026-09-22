@@ -1,18 +1,19 @@
 ---
-title: 'Walibi Belgium: el otro Walibi, con la montaña rusa más alta del Benelux'
+title: 'Walibi Belgium: el Walibi en el que nadie piensa y la más alta del Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Quien oye «Walibi» piensa en Holanda y en Untamed. Y resulta que el más
-  antiguo de los dos parques está en Wavre, a media hora de coche de Bruselas,
-  se llama así desde 1975, salvo por tres años como Six Flags Belgium, y tiene
-  desde 2021 en Kondaa la montaña rusa más alta y más rápida del Benelux.
-  Tiempos de espera, técnica, un fundador que en realidad solo quería un
-  estanque para hacer esquí acuático y cien millones de euros que Compagnie des
-  Alpes está metiendo ahora mismo en ocho mundos temáticos nuevos.
+  Quien oye «Walibi» piensa en Holanda y en Untamed. Pero el original está en
+  Wavre, a media hora de coche de Bruselas, se llama así desde 1975 (salvo tres
+  años como Six Flags Belgium) y tiene desde 2021 en Kondaa la montaña rusa más
+  alta y más rápida del Benelux. Tiempos de espera, técnica, un fundador que en
+  realidad solo quería un estanque para hacer esquí acuático y cien millones de
+  euros para ocho mundos temáticos nuevos que se toman algo más de tiempo del
+  previsto.
 tags:
   - walibi-belgium
   - kondaa
@@ -31,11 +32,11 @@ coverImage:
   caption: 'Kondaa en la temporada de Ibilaw de 2025. De día no está el barco esqueleto, y a la física de la atracción eso le da igual.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Walibi Belgium: tiempos de espera, Kondaa y consejos 2026'
+  title: 'Walibi Belgium: Kondaa, esperas y consejos del original'
   description: >-
-    Walibi Belgium en Wavre: datos reales de espera de Kondaa, la montaña rusa
-    más alta del Benelux, además de la historia de la empresa, el Halloween de
-    Ibilaw y la comparación con el más conocido Walibi Holland.
+    El Walibi más antiguo está en Wavre: esperas de Kondaa, la montaña rusa más
+    alta del Benelux, su historia, Ibilaw y por qué todos siguen pensando en
+    Holanda.
   keywords:
     - Walibi Belgium
     - Walibi Belgium tiempos de espera
@@ -66,28 +67,28 @@ no.
 Eso es [Kondaa](ref:walibi-belgium/kondaa), y cuando alguien dice «Walibi»,
 casi nadie piensa primero en esta atracción. La mayoría piensa en
 [Walibi Holland](ref:walibi-holland) y en
-[Untamed](ref:walibi-holland/untamed). Y sin embargo el parque del que va todo
-esto es el más antiguo de los dos, el que le dio nombre a la cadena entera, y
-desde mayo de 2021 tiene en pie la montaña rusa más alta y más rápida del
-Benelux.
+[Untamed](ref:walibi-holland/untamed). Y sin embargo Wavre es el original al
+que todos toman por la copia: el más antiguo de los dos parques, el que le dio
+nombre a la cadena entera y, desde mayo de 2021, encima el de la montaña rusa
+más alta y más rápida del Benelux.
 
 ## Dos parques, un nombre
 
-[Walibi Belgium](ref:walibi-belgium?long) está en **Wavre**, a una buena media
+[Walibi Belgium](ref:walibi-belgium?long) está en **Wavre**, a cosa de media
 hora de coche al sureste de Bruselas y a menos de tres horas de Colonia o
 Aquisgrán. Abrió el **26 de julio de 1975**, diecinueve años antes de que su
 homólogo neerlandés recibiera el nombre de Walibi en 1994. El nombre en sí es
 la abreviatura de los tres municipios sobre cuyo término está el parque:
-**Wa**vre, **Li**mal y **Bi**erges. La versión larga de esa historia, con el
-giro de Halloween que el parque le saca, está en nuestra
-[guía de Halloween](/blog/halloween-parques-atracciones-2026); aquí quiero
-hablar del resto del año.
+**Wa**vre, **Li**mal y **Bi**erges. Lo que el parque hace con ese nombre en
+Halloween está en nuestra
+[guía de Halloween](/blog/halloween-parques-atracciones-2026).
 
 Los dos parques pertenecen desde 2006 al mismo grupo, el francés
 **Compagnie des Alpes** (a través de su filial Grévin & Cie), al que también
-pertenece el [Parc Astérix](ref:parc-asterix). Aun así, cuesta confundirlos en
-cuanto entras: Wavre es más compacto, tiene atracciones más antiguas y su buque
-insignia es de otra clase por completo.
+pertenece el [Parc Astérix](ref:parc-asterix). Aun así, cuesta confundirlos,
+al menos una vez dentro: Wavre es más compacto, tiene atracciones más antiguas
+y su buque insignia es de otra clase por completo. Antes, al teclear el destino
+en el GPS, la cosa cambia.
 
 Así están ahora mismo, unos frente a otros, los tres parques de montañas rusas
 de la zona:
@@ -96,7 +97,7 @@ de la zona:
 
 ```
 
-## Kondaa: 50 metros, 113 km/h y un elemento que no existía en ninguna parte
+## Kondaa: 50 metros de altura y ni una sola inversión
 
 ```ride-waits-widget rides=walibi-belgium/kondaa|Kondaa|Intamin Mega Coaster, 2021;walibi-holland/goliath|Goliath|B&M Hyper Coaster;bobbejaanland/fury|Fury columns=park,type,peak highlight=walibi-belgium/kondaa
 
@@ -104,9 +105,9 @@ de la zona:
 
 **[Kondaa](ref:walibi-belgium/kondaa)** abrió el 8 de mayo de 2021 como
 **Mega Coaster de Intamin**: 50 metros de altura, 1.200 metros de recorrido,
-velocidad punta de 113 km/h, ni un solo tramo cabeza abajo y aun así el
-non-inverting cobra roll del que hablaba antes, entonces una novedad mundial,
-más un double down inclinado de lado y, según el parque, quince momentos de
+velocidad punta de 113 km/h, ni una sola inversión. A cambio, ese cobra roll
+que nunca te pone cabeza abajo, entonces una novedad mundial, más un double
+down inclinado de lado y, según el parque, quince momentos de
 airtime en un único viaje.
 
 ```glossary-widget slug=airtime
@@ -114,19 +115,20 @@ airtime en un único viaje.
 ```
 
 Al abrir se llevó dos récords de una tacada: pasó a ser la montaña rusa más
-alta y más rápida del Benelux, y con eso destronó en altura a
+alta y más rápida del Benelux, y con eso destronó en altura nada menos que a
 [Goliath](ref:walibi-holland/goliath), en su propio parque hermano
-[Walibi Holland](ref:walibi-holland), y en velocidad a
+[Walibi Holland](ref:walibi-holland) (desde entonces me imagino las cenas de
+empresa del grupo un poco tensas), y en velocidad a
 [Fury](ref:bobbejaanland/fury), en el belga
 [Bobbejaanland](ref:bobbejaanland). La obra costó 25 millones de euros; dos
 trenes de seis vagones de cuatro plazas mueven unas 1.080 personas por hora a
 lo largo del minuto y medio que dura el recorrido. Pueden montar quienes midan
 entre 130 y 195 cm.
 
-Conduzco lejos por montañas rusas concretas, y Kondaa entra para mí en esa
-categoría. No tiene ni una inversión y tampoco le hace falta. Lo que hace en su
-lugar es subirte cincuenta metros y no volver a soltarte durante el minuto y
-medio siguiente.
+Por algunas montañas rusas hago viajes que otros solo hacen para una boda, y
+Kondaa es una de ellas. El looping que le falta deja de echarse de menos con el
+primer airtime. Te sube cincuenta
+metros y ya no te suelta durante el minuto y medio siguiente.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -136,21 +138,20 @@ medio siguiente.
 
 ```
 
-Los días más tranquilos de las próximas semanas, calculados en vivo:
+Los días más tranquilos de las próximas semanas, calculados en vivo, para que
+no aparezcas justo el sábado en que media Valonia ha tenido la misma idea:
 
 ```best-days-widget slug=walibi-belgium
 
 ```
 
-## El resto del parque
+## El resto del parque, del veterano al puerto
 
-Kondaa se lleva los titulares, pero la montaña rusa más antigua del parque es
-de 1982 y sigue funcionando. Ahí está justamente la gracia de Wavre: un clásico
-de Schwarzkopf y una obra nueva de Intamin de 2021 conviven en el mismo recinto.
+Kondaa se lleva los titulares. La montaña rusa más antigua del parque le saca
+39 años y no piensa en jubilarse.
 
-**[Turbine](ref:walibi-belgium/turbine)** es la atracción más antigua del
-parque, un **Schwarzkopf Shuttle Loop** de 1982 y con ello una rareza de
-verdad. Al tren lo disparan hacia delante desde la estación a 85,3 km/h, se
+**[Turbine](ref:walibi-belgium/turbine)** es esa montaña rusa, un
+**Schwarzkopf Shuttle Loop** de 1982. Al tren lo disparan hacia delante desde la estación a 85,3 km/h, se
 mete en el único looping de la instalación, sube la torre que hay detrás y
 vuelve a recorrer lo mismo marcha atrás, otra vez por el looping y, ya pasada
 la estación, torre arriba por el otro lado. Solo entonces frena. Schwarzkopf
@@ -160,18 +161,20 @@ temática de terror como **«Psyké Underground»**, y la reforma para Dock Worl
 le ha devuelto el nombre de Turbine.
 
 **Vampire** (1999) es un **SLC de Vekoma** (Suspended Looping Coaster, modelo 689) y en su día fue la primera atracción de este tipo en Bélgica: el tren
-cuelga bajo el raíl en lugar de ir encima, así que los pies vuelan libres en
-cada curva sin que debajo se vea ningún suelo.
+cuelga bajo el raíl y los pies van colgando libres en cada curva.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)** (1992, bautizada al
 principio «Colorado») es la montaña rusa minera clásica, 785 metros de
-recorrido, ritmo tranquilo, curvas cerradas, ideal para ir entrando en calor.
+recorrido, ritmo tranquilo, curvas cerradas, ideal para ir entrando en calor o
+para quien, después de Kondaa, necesita «primero algo tranquilito».
 **[Cobra](ref:walibi-belgium/cobra)** (2001) es un **Boomerang**: al tren lo
 suben marcha atrás por una torre, atraviesa hacia delante un doble looping
-(cobra roll) y al otro extremo del recorrido repite exactamente lo mismo marcha
-atrás, porque un único tren se reparte toda la instalación.
+(cobra roll) y después repite todo el recorrido marcha atrás. Así que el parque
+tiene dos cobra rolls: uno que te pone cabeza abajo y el de Kondaa, que ni se
+molesta.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, también desde 2001, es una
 construcción de madera de Vekoma, un fabricante al que uno asocia más bien con
-el acero.
+el acero. Un Vekoma de madera es más o menos tan frecuente como un belga que
+pide las patatas fritas sin mayonesa.
 
 Más jóvenes son **[Pulsar](ref:walibi-belgium/pulsar)** (2016, Mack Rides,
 montaña rusa acuática con lanzamiento),
@@ -182,22 +185,25 @@ los visitantes más pequeños).
 ![Un faro con el rótulo «Port Wavre» junto a una dársena, delante barcas y casas sobre pilotes | Port Wavre, el pueblo portuario ficticio de la nueva zona Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
 
 La novedad más reciente es **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
-Gerstlauer), un launch coaster en la zona **Dock World**, construida entera de
+Gerstlauer), un launch coaster que el parque clasifica entre sus atracciones
+familiares, en la zona **Dock World**, construida entera de
 cero. Su corazón es el pueblo portuario ficticio de **Port Wavre**, con faro,
 pantalanes y casas sobre pilotes, y el parque metió dentro dos atracciones más
 antiguas en vez de dejarlas donde estaban: la atracción de troncos
 **[Flash Back](ref:walibi-belgium/flash-back)** y la propia
 **[Turbine](ref:walibi-belgium/turbine)**, de vuelta con su nombre de siempre.
-A eso se suma **Kondaala**, una versión pequeña y apta para niños del nombre de
-Kondaa, en la zona familiar.
+Y en la zona familiar está **Kondaala**, una atracción infantil que le ha
+tomado prestado el nombre a Kondaa.
 
 De las dos novedades del parque, Mecalodon es la que más me sorprendió. Una
-montaña rusa familiar lo tiene difícil para que alguien se fije en ella al lado
-de una atracción de 50 metros, y Dock World lo consigue igualmente: el puerto
+montaña rusa familiar al lado de una atracción de 50 metros suele ser el
+telonero, ese al que todos escuchan desde la barra. Dock World consigue igualmente
+que lo mires: el puerto
 parece construido y no colocado, con detalles delante de los que te quedas
 parado un buen rato aunque no haya ninguna atracción cerca.
 
-A quien le sobre tiempo después de la ronda de montañas rusas: **Aqualibi**, el
+A quien le sobre tiempo después de la ronda de montañas rusas, y lleve el
+bañador en el maletero: **Aqualibi**, el
 parque acuático anexo con piscina de olas y toboganes, cobra entrada aparte
 desde 2008 y no va incluido en la entrada de día normal.
 
@@ -207,14 +213,14 @@ desde 2008 y no va incluido en la entrada de día normal.
 
 ## De estanque de esquí acuático a parque de atracciones
 
-Todo esto no empezó con una montaña rusa, sino con un estanque. Hacia 1970, el
+Al principio hubo un estanque. Hacia 1970, el
 empresario **Eddy Meeùs** compró una lámina de agua en Limal para hacer allí
 exhibiciones de esquí acuático. En pocos años, aquella pista de exhibición se
 convirtió en un parque de verdad, y el **26 de julio de 1975** Walibi abrió sus
 puertas, con unos **47.000 visitantes** en la primera temporada. La mascota, un
-canguro, estaba junto a la entrada desde el primer día y hasta hoy le pega por
-casualidad al nombre: «Walibi» suena casi como «wallaby», aunque el origen real
-sea otro.
+canguro, estaba junto a la entrada desde el primer día. Que «Walibi» suene casi
+como «wallaby» es pura casualidad: el nombre viene de los tres municipios. El
+canguro, eso sí, aceptó la casualidad encantado.
 
 El parque creció deprisa más allá de Wavre. De aquel único recinto salió una
 pequeña cadena europea con sucursales en Francia (entre ellas
@@ -235,46 +241,41 @@ Walibi. Desde entonces, Wavre, Biddinghuizen y el
 El año más duro hasta la fecha llegó sin cambio de nombre. El **15 de julio de
 2021**, la riada que arrasó buena parte de Europa occidental y central alcanzó
 también el valle del Dyle, junto al que está el parque. Los daños dieron para
-varios meses de cierre en plena temporada alta, el mismo año en que Kondaa
-había abierto apenas diez semanas antes.
+varios meses de cierre en plena temporada alta, diez semanas después de la
+apertura de Kondaa.
 
 ## Worlds of Walibi: cien millones de euros para ocho mundos temáticos nuevos
 
 El **22 de junio de 2017** el parque presentó un plan de inversión sin nada
 comparable en toda su historia: **«Worlds of Walibi»**, unos
 **100 millones de euros** con los que el 75 % de la superficie debía
-convertirse en ocho mundos temáticos nuevos, más diez atracciones. El horizonte
-inicial era 2023. Para entonces solo había una parte terminada, lo que en una
-reforma de este tamaño es más la regla que la excepción: **Kondaa** (2021) fue
-el primer mundo grande y **Dock World** con Mecalodon (2025) el último hasta
-ahora.
+convertirse en ocho mundos temáticos nuevos, más diez atracciones. Todo tenía
+que estar listo en 2023. El primer mundo grande llegó con **Kondaa** en 2021 y
+el último hasta ahora, **Dock World** con Mecalodon, en 2025, dos años después
+del plazo. Para una obra de este tamaño, casi puntual.
 
-Lo que me llama la atención cuando miro otras cadenas europeas es que la
-**Compagnie des Alpes** lo está sacando adelante de verdad, y no solo en Wavre.
-En el parque hermano [Walibi Holland](ref:walibi-holland) nacieron en el mismo
-periodo otras dos grandes novedades, [Untamed](ref:walibi-holland/untamed) y la
-doble YOY. A una cadena así sería fácil reprocharle que solo cuida los nombres
-más conocidos, y en cambio aquí se ve el dinero entrando justo en los recintos
-que uno pasa por alto. Si el siguiente de los ocho mundos estará listo en 2026
-o en 2027, el parque no lo dice.
-
-Un grupo podría pasar estos ocho años de otra manera, recortando costes en vez
-de construir, y a corto plazo tendría mejores cifras. Lo que ocurre aquí es que
-un parque que casi nadie tiene en su lista recibe en cuatro años dos montañas
-rusas nuevas y una zona entera.
+Aun así, el plan sigue adelante, y no solo en Wavre: en el parque hermano
+[Walibi Holland](ref:walibi-holland), la **Compagnie des Alpes** levantó en el
+mismo periodo otras dos grandes novedades, [Untamed](ref:walibi-holland/untamed)
+y la doble YOY. Un parque que casi nadie tiene en su lista ha recibido en
+cuatro años dos montañas rusas nuevas y una zona entera. Si el siguiente de los
+ocho mundos estará listo en 2026 o en 2027, el parque no lo dice.
 
 ## Ibilaw: Halloween leído del revés
 
 ![Edificio de madera en ruinas con el rótulo Aquarium, iluminado en azul y verde de noche | La casa del terror Aquarium, dentro de Dock World, donde de día circula Mecalodon. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
 Por Halloween el parque le da la vuelta a su propio nombre: **«Ibilaw»** es
-«Walibi» del revés, desde 2024 con la mascota **Bill** y varias casas del
-terror y scare zones como el payasesco **Psycho Circus** y **Arachnophobia**,
-más familiar que los estrictos eventos a partir de 16 años de otros parques.
+«Walibi» del revés, y desde 2024 tiene mascota propia, **Bill**. Hay varias
+casas del terror y scare zones, como el circo de payasos **Psycho Circus** y
+**Arachnophobia**, y el conjunto es más familiar que los estrictos eventos a
+partir de 16 años de otros parques.
 Una de las casas, **Aquarium**, está en la misma zona de Dock World por la que
-de día circula Mecalodon, en un supuesto acuario cerrado desde los noventa. El
-**Speedy Pass** es aquí la fast lane, también fuera de temporada. La
-comparación completa con Toverland, Movie Park y compañía está en nuestra
+de día circula Mecalodon, en un supuesto acuario cerrado desde los noventa, y
+mejor no preguntar qué fue de los peces. El
+**Speedy Pass**, la fast lane del parque, tiene durante Ibilaw versiones que
+incluyen las casas del terror. Cómo queda
+frente a Toverland, Movie Park y compañía está en nuestra
 [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
 
 ## Cuándo ir
@@ -283,10 +284,9 @@ comparación completa con Toverland, Movie Park y compañía está en nuestra
 
 ```
 
-Este es un parque de temporada que en invierno solo abre en Navidad, así que la
-respuesta aquí es muy distinta de la de los parques que funcionan todo el año.
-Quien busque un martes vacío de febrero lo va a buscar en vano, porque en
-febrero no hay nada abierto. Dentro de la temporada hay sobre todo dos cosas
+Fuera de la temporada y de las vacaciones de Navidad, Walibi Belgium está
+cerrado. Quien busque un martes vacío en febrero lo encontrará, eso sí, detrás
+de una verja cerrada. Dentro de la temporada hay sobre todo dos cosas
 que deciden lo lleno que estará: las vacaciones escolares belgas y valonas, que
 este parque nota bastante más que sus vecinos, y los días entre semana fuera
 del verano, cuando el parque no abre
@@ -302,27 +302,27 @@ de la novedad. Los clásicos **Vampire**, **Calamity Mine** y **Turbine**
 encajan bien a mediodía, cuando de todas formas vas cambiando de
 zona, y **Cobra** y **Loup-Garou** sirven para rellenar huecos entre dos
 atracciones grandes. Las acuáticas, **Pulsar** y **Flash Back**, te las guardas
-para la hora de más calor, y quien tenga tiempo y una segunda entrada le añade
-una tarde en el **Aqualibi**.
+para la hora de más calor, así los calcetines llegan secos al aparcamiento, y
+quien tenga tiempo y una segunda entrada le añade una tarde en el **Aqualibi**.
 
 ## Práctico: cómo llegar, entradas, horarios
 
 **Cómo llegar.** Walibi Belgium está en **Wavre** (provincia del Brabante
-Valón), justo en la N238, a unos 25 minutos en coche de Bruselas. Desde la zona
+Valón), justo en la N238, a una media hora en coche de Bruselas. Desde la zona
 fronteriza alemana (Aquisgrán, Colonia) son bastante menos de tres horas según
-la ruta; en tren se llega a Bruselas y desde allí se sigue hacia Wavre.
+la ruta, sin contar la circunvalación de Bruselas en hora punta; en tren se llega a Bruselas y desde allí se sigue hacia Wavre.
 
-**Horarios.** La temporada regular va de principios de abril a principios de
-noviembre; fuera del verano no abre a diario, sino según calendario, con días
-sueltos a comienzos de otoño, antes de que en octubre arranque el Ibilaw
-diario. Desde 2023 se añade una apertura de invierno durante las vacaciones de
+**Horarios.** La temporada va de principios de abril hasta bien entrado
+noviembre; fuera del verano no abre a diario, sino según calendario. En octubre
+el parque se convierte en Ibilaw, en 2026 del 10 de octubre al 11 de noviembre,
+y tampoco entonces abre todos los días. Desde 2023 se añade una apertura de invierno durante las vacaciones de
 Navidad. El calendario y las horas exactas los muestra la
 [página del parque](ref:walibi-belgium), actualizados a diario.
 
-**Comer.** Para el hambre rápida de entre horas hay puestos repartidos por todo
-el parque; quien quiera sentarse un rato encuentra en la zona temática de
-Kondaa un restaurante propio, con el nombre de la montaña rusa que tiene al
-lado.
+**Comer.** Hay puestos de comida por todo el parque. Quien quiera sentarse,
+que vaya a la zona temática de Kondaa: allí hay un restaurante que se llama
+como la montaña rusa de al lado. En este parque, por lo visto, los nombres se
+prestan con gusto: ahí está Kondaala.
 
 **Entradas.** El parque vende más barato online que en taquilla, con precios
 promocionales que van cambiando a lo largo de la temporada (en septiembre, por
@@ -382,15 +382,15 @@ más grandes hasta ahora.
 
 ## Para seguir leyendo
 
-Cuánta gente hay esta semana en realidad, y qué tiempo se espera:
+Qué tiempo hará en Wavre cuando vayas:
 
 ```weather-widget slug=walibi-belgium
 
 ```
 
 El parque que le dio el nombre a toda la cadena lleva cincuenta años a orillas
-del Dyle, entre Wavre, Limal y Bierges, y la mayor parte de ese tiempo la ha
-pasado a la sombra de su tocayo neerlandés. Quien vaya debería montar Kondaa
+del Dyle, entre Wavre, Limal y Bierges, y aun así sigue a la sombra de su
+tocayo neerlandés. Quien vaya debería montar Kondaa
 dos veces: delante, donde ves venir la caída, y en la última fila, donde te
 pilla antes de que el tren haya llegado del todo arriba.
 

@@ -21,16 +21,17 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Un blocco è un&apos;attrazione, e la sua altezza è l&apos;attesa prevista per la sua ora.
           Trascina lo stesso blocco in un&apos;ora affollata e cresce; mettilo in una più tranquilla
-          e si accorcia. Fra due blocchi non c&apos;è spazio vuoto ma il trasferimento: quanta
-          strada c&apos;è e se il tempo basta. L&apos;uscita dalla stazione e il giro stesso sono
-          contati lì, non nel blocco.
+          e si accorcia. Fra due blocchi c&apos;è il trasferimento: quanta strada c&apos;è e se il
+          tempo basta. L&apos;uscita dalla stazione e il giro stesso sono contati lì, non nel
+          blocco.
         </P>
         <P>
           Niente di quello che segue è ridisegnato. Sono gli stessi componenti che girano nel
           pianificatore, alimentati con la risposta che l&apos;API ha dato il 4 settembre 2026 per
           sabato 12 settembre al <A href={PARK}>Phantasialand</A>. Trascina un blocco su
           un&apos;altra ora: si aggancia a passi di cinque minuti, ricalcola la propria altezza e
-          con essa i trasferimenti accanto. Qui non viene salvato nulla.
+          con essa i trasferimenti accanto. Qui non viene salvato nulla, quindi trascina pure a
+          volontà.
         </P>
         <PlannerDayDemo day={day} entries={entries} selected="demo-taron" />
         <Note>
@@ -49,10 +50,11 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         <P>
           Per ogni attrazione l&apos;API restituisce una curva sulla giornata, ora per ora. Quel
           sabato Taron segna 45 minuti alle dieci, 50 alle undici, 40 all&apos;una e di nuovo 50 la
-          sera. È il vero motivo per fare Taron presto: non perché la mattina sia sempre più
-          tranquilla, ma perché quella giornata non ha nessuna ora scarica per
-          quell&apos;attrazione. Black Mamba fa il contrario e scende da 35 minuti a mezzogiorno a
-          20 alle sei, mentre Chiapas sale da 20 a 35.
+          sera: su tutta la giornata ci sono dieci minuti di differenza. Quel sabato Taron è
+          semplicemente richiesto a tutte le ore. Per un&apos;attrazione così non esiste una buona
+          finestra, e il pianificatore la mette dove il resto della giornata lo consente. Black
+          Mamba invece scende da 35 minuti a mezzogiorno a 20 alle sei, e Chiapas fa il contrario,
+          da 20 a 35.
         </P>
         <P>
           A questo si aggiunge di quanto il numero sbaglia di solito, e questo segue il livello: più
@@ -138,12 +140,13 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
           giornata, e l&apos;ordine si può fare meglio.
         </P>
         <P>
-          Si ordina secondo tre cose, e la gerarchia fra loro è la decisione vera. Prima di tutto
-          che ci sia ancora tempo prima della chiusura: un piano con un&apos;attrazione in meno che
-          si fa davvero batte un piano con una in più che non si farà. Poi la somma delle attese,
-          che è quello che era stato chiesto. E a parità di costo vince l&apos;ordine che finisce
-          prima. Non c&apos;è nessun cursore che bilanci la coda con il tempo passato ad aspettare:
-          quel numero non lo saprebbe difendere nessuno.
+          Si ordina secondo quattro cose, e la gerarchia fra loro è la decisione vera. In cima
+          c&apos;è la tua: quello che porti in testa è l&apos;ultimo a saltare. Poi che ci sia
+          ancora tempo prima della chiusura: un piano con un&apos;attrazione in meno che si fa
+          davvero batte un piano con una in più che non si farà. Poi la somma delle attese, che è
+          quello che era stato chiesto. E a parità di costo vince l&apos;ordine che finisce prima.
+          Non c&apos;è nessun cursore che bilanci la coda con il tempo passato ad aspettare: quel
+          numero non lo saprebbe difendere nessuno.
         </P>
         <P>
           Non c&apos;è dentro nessuna regola sul mattino presto. Il pianificatore conosce solo la
@@ -163,16 +166,16 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
           ore.
         </P>
         <P>
-          Una pausa pranzo all&apos;una resta all&apos;una, e un&apos;attrazione spuntata è già
-          stata fatta e non viene ripianificata; il resto si dispone intorno. Dopo c&apos;è scritto
-          che cosa è successo. «18 min di coda in meno» è la differenza fra due conti fatti allo
-          stesso modo, uno prima del clic e uno dopo; se non c&apos;è niente da guadagnare, c&apos;è
-          scritto che l&apos;ordine va già bene e il piano resta com&apos;era. Il pulsante delle
-          attrazioni principali non annuncia un risparmio, perché con le nuove attrazioni la
-          giornata si allunga; conta invece quante attrazioni sono state aggiunte e quante non fanno
-          per il gruppo. Quello che alla fine non entra più nella giornata viene segnalato dopo
-          entrambi i pulsanti. Insieme arriva un «Annulla» che rimette lo stato di prima del clic,
-          finché il pianificatore resta aperto.
+          Una pausa pranzo all&apos;una resta all&apos;una (il pianificatore non tratta con bambini
+          affamati), e un&apos;attrazione spuntata è già stata fatta e non viene ripianificata; il
+          resto si dispone intorno. Dopo c&apos;è scritto che cosa è successo. «18 min di coda in
+          meno» è la differenza fra due conti fatti allo stesso modo, uno prima del clic e uno dopo;
+          se non c&apos;è niente da guadagnare, c&apos;è scritto che l&apos;ordine va già bene e il
+          piano resta com&apos;era. Il pulsante delle attrazioni principali non annuncia un
+          risparmio, perché con le nuove attrazioni la giornata si allunga; conta invece quante
+          attrazioni sono state aggiunte e quante non fanno per il gruppo. Quello che alla fine non
+          entra più nella giornata viene segnalato dopo entrambi i pulsanti. Insieme arriva un
+          «Annulla» che rimette lo stato di prima del clic, finché il pianificatore resta aperto.
         </P>
         <Note>
           Dove non arriva nessun tempo di attesa, i due pulsanti non compaiono nemmeno.
@@ -220,16 +223,19 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
         </P>
         <P>
           E quanto costi davvero un piano lo decide la giornata. Un&apos;attrazione si ferma, uno
-          spettacolo salta, un temporale ribalta il pomeriggio. Il piano non è quindi un orario ma
-          un conto sulla domanda se la giornata possa reggere così. Nel parco spunti quello che hai
+          spettacolo salta, un temporale ribalta il pomeriggio, e un bambino in coda per Taron
+          decide che in fondo preferisce le tazze rotanti. Il piano non è quindi un orario ma un
+          conto sulla domanda se la giornata possa reggere così. Nel parco spunti quello che hai
           fatto, e il pianificatore annota l&apos;attesa che c&apos;era davvero.
         </P>
         <P>
-          Tutto questo resta nel tuo browser. Nessun account, nessun server, nessuna
-          sincronizzazione: il piano è un file nella tua memoria, e chi apre il pianificatore senza
-          averne uno trova l&apos;assistente con le tre domande che vengono prima. Quale parco,
-          quale giorno, chi viene. Il giorno si sceglie meglio nel{' '}
-          <A href={`${PARK}/calendario-tempi-attesa`}>calendario dei tempi di attesa</A> del parco.
+          Tutto questo resta nel tuo browser, senza account: il piano è un file nella memoria del
+          tuo dispositivo. Solo quando attivi le notifiche una copia finisce sul server, e il
+          pianificatore lo dice in quel momento. Chi apre il pianificatore senza un piano trova
+          l&apos;assistente con le quattro domande da chiarire prima: quale parco, quale giorno, chi
+          viene e quali grandi attrazioni devono entrare nella giornata. Il giorno giusto si trova
+          meglio nel <A href={`${PARK}/calendario-tempi-attesa`}>calendario dei tempi di attesa</A>{' '}
+          del parco.
         </P>
       </Chapter>
     </>

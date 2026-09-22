@@ -24,8 +24,10 @@ plan is theirs.
 
 ## The wizard is the way in
 
-`PlannerWizard` asks three questions in the order somebody answers them, then
-lands on the park's own page with the panel open.
+`PlannerWizard` asks four questions in the order somebody answers them
+(`type Step = 'park' | 'date' | 'setup' | 'headliners'`), then lands on the
+park's own page with the panel open. The fourth step lists the park's headliners
+for that day (`headlinersToAdd`) and how many of them the day holds.
 
 1. **Which park** — the site's own `/api/search`, filtered to `type === 'park'`.
    The four URL slugs a plan is filed under are **taken from the API's own

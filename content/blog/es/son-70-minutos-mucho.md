@@ -1,14 +1,14 @@
 ---
-title: '¿Son 70 minutos mucho? Depende del día de la semana'
+title: '¿Son 70 minutos mucho? Depende de si es martes'
 translationKey: is-seventy-minutes-a-lot
 date: '2026-08-24'
 author: patrick
 mode: published
 excerpt: >-
-  En la entrada de Taron hay una cifra, y por sí sola no dice casi nada. Solo la
-  comparación con cada martes medido la convierte en una respuesta. Por qué
-  park.fan archiva los tiempos de espera, qué pasa con ellos de noche y dónde
-  preferimos no decir nada.
+  En la entrada de Taron hay una cifra, y sola dice tanto como una temperatura
+  sin estación del año. Solo la comparación con cada martes medido la convierte
+  en una respuesta. Por qué park.fan no tira nada, qué pasa de noche con los
+  datos y por qué ya no recomendamos patinar sobre hielo en agosto.
 tags:
   - tiempos-de-espera
   - park-fan
@@ -31,9 +31,9 @@ coverImage:
 seo:
   title: 'Leer bien un tiempo de espera: ¿son 70 minutos mucho?'
   description: >-
-    Por qué un tiempo de espera sin valor de comparación no dice nada, qué
-    significan «típico» y «lleno» en una atracción y cómo park.fan convierte
-    millones de mediciones en una respuesta.
+    Un tiempo de espera sin comparación es como una temperatura sin estación.
+    Qué significan «típico» y «lleno» y cómo park.fan lo convierte en una
+    respuesta.
   keywords:
     - tiempos de espera parque temático
     - interpretar tiempos de espera
@@ -44,15 +44,15 @@ seo:
     - calendario de afluencia
 ---
 
-Estás delante de [Taron](ref:phantasialand/taron), el panel marca **70 minutos**, y tu cabeza hace
-enseguida lo que no debe: comparar esa cifra con tu recuerdo. La última vez
+Estás delante de [Taron](ref:phantasialand/taron), el panel marca
+**70 minutos**, y tu cabeza hace enseguida lo que no debe: comparar esa cifra con tu recuerdo. La última vez
 fueron 40, así que hoy es peor. La anterior 90, así que hoy va genial. Dos
 visitas no son una base, y además tu memoria redondea en tu contra
 ([aquí está el porqué](/blog/el-arte-de-esperar)).
 
 La cifra en sí no es el problema. Los parques la anuncian, suele ser
 aproximadamente correcta y nos cuesta una consulta cada cinco minutos. El
-problema es que está sola. Setenta minutos un martes de mayo son algo
+problema es que está sola, como una temperatura sin estación del año. Setenta minutos un martes de mayo son algo
 completamente distinto de 70 minutos un sábado de las vacaciones de verano, y
 sin la segunda mitad de esa frase no puedes hacer nada con ellos.
 
@@ -64,30 +64,30 @@ larga fue más corta que ese valor, en la otra mitad más larga. **Lleno** es el
 percentil 90 de la misma serie, aproximadamente ese día de cada diez en que
 había de verdad gente.
 
-Los dos son percentiles y no promedios. Una media se
-deja mover por un único día excepcional: una tarde con avería y 150 minutos de
+Los dos son percentiles y no promedios. Una media se deja mover por un único día excepcional: una tarde con avería y 150 minutos de
 atasco tira hacia arriba del promedio de un mes entero, aunque durante 29 días
-no se notara nada. La mediana no se inmuta ante un día así. Por eso el récord
+no se notara nada. La mediana ni se inmuta ante un día así. Por eso el récord
 aparece aparte, con su fecha, para que se vea sin tocar las otras dos cifras.
 
-Para [Phantasialand](ref:phantasialand) la clasificación se ve así. La columna de días medidos es la
-más importante: dice cuánto peso soporta cada fila.
+Para [Phantasialand](ref:phantasialand) la clasificación se ve así. La columna
+de días medidos es la más importante: dice cuánto peso soporta cada fila.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-Lo que hay aquí es en directo. Si vuelves a leer este artículo dentro de tres
+Lo que ves aquí va en directo. Si vuelves a leer este artículo dentro de tres
 meses, la tabla tendrá otras cifras y el texto de alrededor seguirá siendo
 válido. Para eso están estos widgets: en cuatro artículos más antiguos las
 cifras estaban tecleadas a mano en tablas de Markdown, repartidas por seis
-idiomas, y al cabo de unas semanas se habían separado en silencio.
+idiomas, y al cabo de unas semanas se habían separado en silencio, como los
+relojes de un apartamento de vacaciones.
 
 ## El día tiene una forma
 
 Una atracción no tiene la misma cola todo el día. El movimiento de fondo lo
-conoce cualquiera: a la apertura es corta, después tira hacia arriba y al
-atardecer vuelve a ser llevadera. Dónde está exactamente el máximo cambia de una
+conoce cualquiera: a la apertura es corta, luego el resto del mundo termina de
+desayunar y al atardecer vuelve a ser llevadera. Dónde está exactamente el máximo cambia de una
 atracción a otra, y esas diferencias son la parte útil.
 
 ```hourly-profile-widget slug=phantasialand top=6
@@ -114,7 +114,8 @@ están de vacaciones, si hay un puente pegado, si llueve y si al otro lado de la
 frontera pasa algo.
 
 Este último punto se subestima con facilidad. Un parque cerca de la frontera
-nota enseguida cuándo empiezan las vacaciones al lado, así que contamos también
+nota enseguida cuándo empiezan las vacaciones al lado, casi siempre ya por las
+matrículas del aparcamiento. Así que contamos también
 las regiones en un radio de unos 200 kilómetros y las marcamos aparte en el
 calendario. Tres parques comparados, cada uno con su día más tranquilo:
 
@@ -133,27 +134,30 @@ Así que cada noche corre una cadena de tareas, y su orden está fijado, porque
 cada paso se apoya en el anterior. A las 02:00 UTC los percentiles por hora, a
 las 03:00 los valores base por parque, a las 04:30 el resumen de ayer, a las
 05:15 las recomendaciones de rope drop, que leen justo ese resumen. A las 06:00
-el modelo de previsión se reentrena con los tiempos de espera del día anterior.
+el modelo de previsión se reentrena con los tiempos de espera del día anterior,
+mientras los del rope drop ya están en la autopista.
 
 A eso se suma la otra mitad: no tiramos nada. Los periodos antiguos se
 comprimen, pero cada análisis sigue corriendo sobre todas las mediciones que han
 llegado alguna vez. Quien empieza a guardar en el tercer año tiene en el tercer año un año de
 historial, y los dos anteriores se han perdido para siempre.
 
-## Y los sitios donde no decimos nada
+## Donde preferimos no decir nada
 
-[Hansa-Park](ref:hansa-park), por ejemplo, publica sus tiempos de espera solo en su propia
-aplicación y únicamente para dispositivos conectados a la wifi del parque. No
+[Hansa-Park](ref:hansa-park), por ejemplo, publica sus tiempos de espera solo en
+su propia aplicación y únicamente para dispositivos conectados a la wifi del parque. No
 hay ninguna interfaz pública. En los datos en bruto este parque se ve como
 cualquier otro a las tres de la madrugada: ninguna atracción informa de nada. Si
-sacáramos la conclusión evidente, ahí habría 82 atracciones en «muy baja», con
-una media de 0 minutos y una previsión basada en cero observaciones. En su lugar,
+sacáramos la conclusión evidente, ahí estarían todas las atracciones del parque en «muy baja», con
+una media de 0 minutos y una previsión basada en cero observaciones. El día
+soñado de cualquier visitante, y totalmente inventado. En su lugar,
 la página del parque lleva un aviso de que aquí no hay nada que leer.
 
 La misma regla en un sitio más pequeño: la pista de hielo de Phantasialand
 funciona de noviembre a enero. En agosto nadie informa de nada sobre ella,
 porque no hay nada que informar. Leer ese silencio como «abierta» sería el error
-cómodo, y así llegó a figurar realmente en la página del parque. Y los meses de
+cómodo, y así llegó a figurar realmente en la página del parque: patinaje en
+pleno verano, con nuestra bendición. Y los meses de
 funcionamiento de una atracción no los nombramos hasta 330 días de observación:
 antes de eso no aparece ningún mes, porque «funciona de diciembre a abril»
 describiría el periodo en el que casualmente ya hemos medido.

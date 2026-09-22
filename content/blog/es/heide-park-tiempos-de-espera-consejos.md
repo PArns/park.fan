@@ -1,17 +1,18 @@
 ---
-title: 'Heide Park: Colossos cumple 25 años, y al lado hay cuatro estrenos alemanes'
+title: 'Heide Park: Colossos, pura madera, y a su alrededor un estreno alemán tras otro'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   En Soltau está la montaña rusa íntegramente de madera más alta de Europa, y
-  durante casi tres años nadie pudo subirse a ella. Colossos cumple 25 años en
-  2026. A su alrededor, el parque trajo cuatro tipos de atracción por primera
-  vez a Alemania, más una torre de 103 metros que empezó como mirador. Cuándo
-  se llena, qué trae la temporada 2026 y por qué el Big Loop rueda sobre
-  bastidores nuevos.
+  durante casi tres años nadie pudo subirse a ella. Abrió en
+  2001. A su alrededor, el parque fue el primero en traer cuatro tipos de
+  atracción a Alemania, y su torre de 103 metros empezó como mirador. Además:
+  cuándo se llena, por qué un lunes tranquilo en Soltau suele ser un lunes
+  cerrado y por qué el Big Loop estrena bastidores después de más de cuarenta años.
 tags:
   - heide-park
   - colossos
@@ -31,11 +32,10 @@ parkLinks:
 rideLinks:
   - heide-park/*
 seo:
-  title: 'Heide Park: tiempos de espera, Colossos y consejos 2026'
+  title: 'Heide Park 2026: Colossos, tiempos de espera y el mejor día'
   description: >-
-    Heide Park Soltau con datos reales de espera de Colossos, Krake y Flug der
-    Dämonen, además de la temporada 2026, las fechas de Halloween, el Express
-    Ticket, las alturas mínimas y qué día de la semana está más vacío.
+    Heide Park Soltau: esperas reales en Colossos y Krake, además de Halloween,
+    Express Ticket, alturas mínimas y el día de la semana con menos cola.
   keywords:
     - Heide Park
     - Heide Park tiempos de espera
@@ -63,7 +63,7 @@ madera en la que nadie podía subir. El **28 de julio de 2016**,
 temporada, porque tras quince años la vía estaba desgastada. No volvió a rodar
 hasta el **19 de abril de 2019**.
 
-Volvió como montaña rusa de madera, y eso es lo notable. El camino habitual
+Volvió como montaña rusa de madera. El camino habitual
 habría sido otro: cuando a una woodie se le pudre el recorrido, hoy lo normal
 es atornillarle carriles de acero sobre la estructura vieja y seguir como
 híbrido. Heide Park mandó montar vía de madera nueva, con trenes nuevos, y en
@@ -86,7 +86,8 @@ inversiones.
 **[Desert Race](ref:heide-park/desert-race)** llegó el **15 de mayo de 2007**
 como el primer launch coaster de Alemania: sin rampa de subida, con una
 catapulta hidráulica que lleva el tren a **102 km/h** en dos segundos. Después
-son 650 metros y 49 segundos hasta volver a la estación.
+son 650 metros y 49 segundos hasta volver a la estación, menos de lo que duró
+la discusión sobre quién se sentaba delante.
 
 ```glossary-widget slug=launch-coaster
 
@@ -97,7 +98,8 @@ primer dive coaster de Alemania, construido por Bolliger & Mabillard por
 12 millones de euros. 41 metros de altura, seis personas por fila y, arriba, el
 tren se detiene hasta que el vagón entero sobresale del borde. Después baja a
 87 grados, casi en vertical, hasta **103 km/h** y un Immelmann. El viaje entero
-dura menos de medio minuto.
+dura menos de medio minuto; el rato colgando del borde se hace bastante más
+largo.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** fue, el **29 de marzo
 de 2014**, el primer wing coaster del país. En ese tipo de trazado nadie se
@@ -133,11 +135,12 @@ cuando volvió a abrir, se llamaba **Colossos – Kampf der Giganten** y tenía
 toda un área temática alrededor.
 
 Hasta hoy no lleva ningún carril de acero. Quien disfruta de las montañas rusas
-de madera lo nota desde la primera caída.
+de madera lo nota desde la primera caída, y su espalda como muy tarde en la
+primera curva.
 
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## El resto del parque
+## El resto del parque: veteranos y una torre
 
 La primera montaña rusa del parque es el
 **[Big Loop](ref:heide-park/big-loop)** de **1983**, un looper de Vekoma con
@@ -177,7 +180,8 @@ La atracción más joven ocupa un edificio que debía haber desaparecido. La
 recorre desde **2024** la antigua estación del segundo tronco de agua, cerrado
 en 2011, durante cinco minutos. El trazado de aquella atracción pasa por debajo
 de Flug der Dämonen, los edificios se quedaron en pie y, trece años después, el
-parque volvió a poner uno en servicio.
+parque volvió a poner uno en servicio. (Quien no tira nada del trastero acaba
+teniendo una atracción nueva.)
 
 A eso se suman las atracciones que recogen las colas más largas del verano sin
 que nadie escriba sobre ellas: la
@@ -201,8 +205,8 @@ las atracciones por las que han venido los padres.
 
 ## Cuánta gente hay de verdad
 
-Este parque no se mide por una sola atracción. La tabla siguiente se apoya en
-dos años de medición, cada atracción con su propio número de días medidos:
+La tabla siguiente se apoya en dos años de medición, cada atracción con su
+propio número de días medidos:
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -216,7 +220,7 @@ atracciones que no aparecen en ninguna crónica de viaje como motivo para
 conducir hasta Soltau. En la Bobbahn, parte lo explica la duración del viaje;
 en el tronco, el tiempo que haga.
 
-Más interesante que la altura de las colas es su reparto a lo largo del día.
+Dice más la hora a la que crecen las colas.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -226,7 +230,8 @@ En las montañas rusas, las celdas gruesas caen todas en la misma ventana, justo
 antes y justo después del mediodía. El tronco de agua alcanza su máximo horas
 más tarde, cuando ya hace calor. Eso encaja con un parque cuyos visitantes
 llegan sobre todo en coche por la mañana: todo el mundo se pone al mismo tiempo
-delante de las mismas tres atracciones, y por la tarde se reparte.
+delante de las mismas tres atracciones, como en el Ikea un sábado a las once, y
+por la tarde se reparte.
 
 Para la planificación eso significa que la primera hora es de Colossos y de
 Krake, porque es el único momento en el que las dos están cortas a la vez.
@@ -250,7 +255,9 @@ El **Express Ticket** tiene cuatro niveles: Bronze desde **25 €** para el
 tronco de agua, el Big Loop y la Bobbahn, Silver desde 39 € con Krake y Desert
 Race, Gold desde 59 € añadiendo Colossos y Scream, Platinum desde 99 € sin
 límite. Dos cosas se pasan por alto con facilidad. Los tres niveles inferiores
-incluyen **un viaje por atracción**, no tantos como quieras. Y el billete solo
+incluyen **un viaje por atracción**, no tantos como quieras: quien quiera
+repetir Colossos con el Gold vuelve al final de la cola normal, como todo el
+mundo. Y el billete solo
 existe en días seleccionados y solo en venta anticipada, o sea, no en taquilla.
 
 ## Cuándo ir
@@ -274,12 +281,13 @@ semanas aparece en el calendario de la
 
 ### El día de la semana
 
-El día de la semana es aquí una palanca pequeña. Seis de los siete días quedan
+El día de la semana pesa aquí menos de lo que parece. Seis de los siete días quedan
 muy juntos en la tabla de arriba, solo el sábado destaca, y abajo están el
-viernes y el domingo. El lunes lo hace sobre algo más de la mitad de los días
-medidos que tienen los demás, porque el parque lo saca del calendario con
-regularidad en primavera y en otoño. Un lunes tranquilo en Soltau suele ser un
-lunes cerrado.
+viernes y el domingo. El lunes descansa sobre apenas algo más de la mitad de
+los días medidos que tienen los demás, porque el parque lo saca del calendario
+con regularidad en primavera y en otoño. Los lunes que cuentan caen sobre todo
+en temporada alta, y esos no son tranquilos. Un lunes tranquilo en Soltau suele
+ser un lunes cerrado.
 
 ### El mes
 
@@ -297,7 +305,8 @@ despiertan la scare zone y tres horror mazes. Los mazes tienen una edad mínima
 de **16 años** con control de documento, y cada uno exige su propia entrada con
 franja horaria, que solo se vende por internet y con antelación (el pack de
 tres estuvo por última vez en 22 €). Llegar demasiado pronto o demasiado tarde
-a la entrada significa quedarse fuera. Cómo queda eso frente a Toverland, Movie
+a la entrada significa quedarse fuera, y ahí la puerta del maze negocia más o
+menos lo mismo que un portero de discoteca a las tres de la mañana. Cómo queda eso frente a Toverland, Movie
 Park y Walibi está en la
 [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
 
@@ -313,15 +322,15 @@ primera temporada unos **600.000**, y de aquellas seis atracciones salieron
 
 Tres de esas seis siguen funcionando hoy con otros nombres: el paseo en balsa,
 el tren elevado (ahora la Panoramabahn) y el tren del oeste, que desde 1997 se
-llama Heide-Park Express.
+llama Heide Park Express.
 
 La construcción que mejor describe al Heide Park de los inicios ya no existe.
 De **1986** hasta el invierno de 2011/2012 hubo aquí una réplica de 35 metros
 de la Estatua de la Libertad, inaugurada el 4 de julio de 1986 por el
 centenario del original, con una felicitación de Ronald Reagan. Tras el
-desmontaje, la mitad superior sirvió unos años más como decoración en Colossos,
-y el resto fue a la chatarra para la reapertura de 2019. Era la época en la que
-los parques alemanes copiaban monumentos en lugar de comprar licencias.
+desmontaje, la mitad superior se quedó unos años más plantada como decoración
+junto a Colossos, una jubilación que la Libertad seguramente no tenía en mente,
+y el resto fue a la chatarra para la reapertura de 2019.
 
 El **31 de diciembre de 2001** el británico **Tussauds Group** compró el
 parque, y a principios de 2007 **Merlin Entertainments** se hizo con la mayoría
@@ -331,7 +340,7 @@ los noventa Soltau contaba hasta dos millones de visitantes, en 2001 fueron
 parque: el origen ferial en la densidad de atracciones, el grupo en las áreas
 con licencia de Peppa Pig y Ghostbusters.
 
-## Dormir allí
+## Dormir allí, aunque sea en una furgoneta
 
 Quien viene del sur de Alemania suele hacer dos días de la visita. El
 **Abenteuerhotel** tiene 680 camas, cuatro estrellas y se reformó en 2015 por
@@ -362,8 +371,9 @@ Hannover, salida **Soltau-Ost**, señalizado desde ahí. El recinto tiene unas
 8.000 plazas de aparcamiento más 300 para autobuses y autocaravanas; aparcar
 cuesta 14 € por internet para el coche y 20 € para la autocaravana, más allí
 mismo y solo con tarjeta. En tren se va hasta Soltau o hasta Wolterdingen;
-desde Wolterdingen son 20 minutos a pie, y desde Hamburgo y Hannover el autocar
-Heide Park Express llega hasta la puerta.
+desde Wolterdingen son 20 minutos a pie, y desde Hamburgo y Hannover un autocar
+llega hasta la puerta. Se llama Heide-Park-Express, como el tren del parque,
+pero no tiene nada que ver con él.
 
 **Horarios.** Del 28 de marzo al 31 de octubre de 2026, a diario en el núcleo
 de la temporada, por calendario en primavera y otoño y sin la mayoría de los
@@ -448,22 +458,18 @@ Qué tiempo hará sobre el parque cuando vayas:
 
 Y para quien esté planificando el norte ahora mismo: el
 [Movie Park Germany](/blog/movie-park-germany-tiempos-de-espera-consejos) se
-parece tanto al Heide Park en la forma de su semana que las dos guías se leen
-bien juntas.
+parece tanto al Heide Park en la forma de su semana que las dos guías se pueden
+leer una al lado de la otra.
 
 ## Lo que me llevo de Soltau
 
-Este parque es el que menos finge ser otra cosa. No hay un relato continuo como
-en Brühl ni 18 países como en Rust, y las dos áreas con licencia son
-exactamente del tamaño que paga un grupo empresarial. Lo que hay aquí está por
-las atracciones: cuatro tipos de trazado que antes no existían en Alemania, una
-montaña rusa de madera construida dos veces y una torre de caída que el parque
-sacó de un mirador que ya tenía.
+El Heide Park no tiene un relato continuo como Brühl ni 18 países como Rust.
+Tiene atracciones, y con cuatro de ellas fue el primero de Alemania.
 
-El precio de eso es la superficie. 85 hectáreas con poca sombra y trayectos
-largos entre las grandes atracciones, y un sábado de agosto se nota cada metro.
-Por eso este texto habla tanto del calendario: la diferencia entre un buen día
-y un día espeso en Soltau se decide en casa, con la fecha.
+Eso se paga en superficie. 85 hectáreas con poca sombra y trayectos largos
+entre las grandes atracciones, y un sábado de agosto se nota cada metro. Si
+prefieres ahorrártelo, elige un viernes de septiembre en lugar de un sábado de
+agosto, y decídelo en casa, no en la cola de Colossos.
 
 Y si vienes en octubre: los sábados largos no empiezan hasta las doce. Quien se
 planta a las diez delante de la puerta espera dos horas en un prado.

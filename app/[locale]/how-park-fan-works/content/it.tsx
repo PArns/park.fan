@@ -168,7 +168,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Allerta meteo',
-    body: 'Avvisi ufficiali di DWD e MeteoAlarm, ripresi senza modifiche. Nessun giudizio nostro sul tempo.',
+    body: 'Avvisi ufficiali di DWD e MeteoAlarm, ripresi senza modifiche. Non ci improvvisiamo meteorologi.',
     example: 'Il testo del DWD, invariato. Per i parchi fuori dalla Germania quello di MeteoAlarm.',
     demo: <WeatherWarningBannerDemo />,
     onlyWhen: 'è attivo un avviso per la località.',
@@ -365,19 +365,20 @@ export function ContentIT() {
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan è nato in una coda. Taron, pomeriggio, il display segnava qualcosa a tre cifre, e
-          nessuno sapeva dire se fosse sfortuna o semplicemente martedì.
+          nessuno in coda sapeva se fosse sfortuna o semplicemente un martedì qualunque.
         </Lead>
         <P>
-          È ancora quella domanda a stare al centro del sito. Mostrare un tempo di attesa attuale è
-          la parte facile: la maggior parte dei parchi lo pubblica da sé, all’ingresso e nella
-          propria app, che spesso funziona solo sul wi-fi del parco. Diventa interessante solo
-          quando accanto c’è scritto com’è una giornata normale a quell’attrazione, quando la fila
-          di solito si accorcia e se oggi sia perfino un buon giorno.
+          La domanda è rimasta, la coda per fortuna no. Mostrare un tempo di attesa attuale è la
+          parte facile: la maggior parte dei parchi lo pubblica da sé, all’ingresso e nella propria
+          app, che spesso funziona solo sul wi-fi del parco, cioè quando sei già dentro. Il numero
+          diventa interessante solo quando accanto c’è scritto com’è una giornata normale a
+          quell’attrazione, quando la fila di solito si accorcia e se oggi sia perfino un buon
+          giorno.
         </P>
         <P>
-          Su questa pagina non c’è nessuno screenshot. Ogni card, ogni badge e ogni tabella qui
-          sotto sono pezzi veri di park.fan, qui solo riempiti con numeri d’esempio fissi. Le stesse
-          card ti staranno davanti un’ora dopo, nel parco.
+          Qui non c’è niente di fotografato. Ogni card, ogni badge e ogni tabella più in basso è un
+          pezzo vero di park.fan, solo alimentato con numeri d’esempio fissi. Un’ora dopo avrai le
+          stesse card sul telefono, dentro al parco, con i numeri del giorno.
         </P>
 
         <Reveal>
@@ -410,17 +411,17 @@ export function ContentIT() {
         icon={Gauge}
       >
         <P>
-          All’ingresso di Taron campeggiano 70 minuti, nient’altro. La coda si accalca già dalla
-          prima scalinata. Sul telefono compare lo stesso numero. Nessuno dei due ti dice se
-          conviene mettersi in coda adesso o più tardi nella giornata. Su park.fan lo accompagnano
-          altre quattro informazioni: un livello di affollamento, una tendenza, la seconda coda e
+          All’ingresso di Taron c’è scritto 70 minuti, e lì finiscono le informazioni. La coda si
+          accalca fino alla prima scalinata, il telefono mostra lo stesso numero e nessuno dei due
+          ti dice se metterti in fila adesso o dopo pranzo. Su park.fan lo accompagnano altre
+          quattro informazioni: un livello di affollamento, una tendenza, la seconda coda e
           l’altezza minima.
         </P>
 
         <BareNumberVsCard
           unit="minuti"
           signLabel="Quello che espone il parco"
-          signCaption="Un numero, senza riferimento. Se oggi sia buono o cattivo lo sa solo chi è già stato qui abbastanza volte."
+          signCaption="Un numero, senza riferimento. Se oggi sia buono o cattivo lo sa solo chi qui ha consumato un abbonamento annuale."
           cardLabel="Quello che park.fan ne ricava"
           cardCaption="Gli stessi 70 minuti, più livello di affollamento, tendenza, tempo single rider, altezza minima e l’indicazione di quando è prevedibile che si calmi."
         />
@@ -434,15 +435,15 @@ export function ContentIT() {
           </P>
           <PG>
             Il secondo valore sulla card è la coda single rider. Molte attrazioni gestiscono più
-            code in parallelo, e quale di queste esista all’ingresso non si scopre quasi mai.
-            Accanto l’altezza minima, così nessuno attraversa mezzo parco con un bambino di 130
-            centimetri.
+            code in parallelo, e quale di queste esista spesso lo scopri quando sei già in quella
+            sbagliata. Poi l’altezza minima, così nessuno attraversa tutto il parco con un bambino
+            di 130 centimetri solo per aprire una lunghissima trattativa davanti al misuratore.
           </PG>
         </div>
 
         <DemoFrame
           label="Due attrazioni, lo stesso minuto"
-          note="Le due card vengono dallo stesso istante nello stesso parco, Taron a Klugheim e Black Mamba a Deep in Africa. Una fila cresce, l’altra smaltisce. Qui su park.fan tutte le attrazioni del parco stanno così, una accanto all’altra e raggruppate per area."
+          note="Le due card vengono dallo stesso istante nello stesso parco, Taron a Klugheim e Black Mamba a Deep in Africa. Una fila cresce, l’altra smaltisce, a poche aree di distanza. Sulla pagina del parco tutte le attrazioni stanno così, insieme e raggruppate per area."
           href={PARK}
           hrefLabel="Phantasialand su park.fan →"
         >
@@ -465,10 +466,10 @@ export function ContentIT() {
             note="Il 16 luglio 2026, durante le vacanze estive. Un solo giorno su 365, ed è per questo che la scala ragiona per percentili invece che sul massimo."
           >
             <P>
-              Per collocare un numero servono due valori di confronto e l’indicazione di cosa si
-              basano. park.fan usa per questo la mediana dei picchi giornalieri e il 90° percentile
-              della stessa serie. In chiaro: quanto è lunga di solito la fila più lunga della
-              giornata, e quanto lo era nel dieci per cento di giorni più pieni.
+              Per collocare un numero servono due valori di confronto e l’indicazione di su cosa si
+              basano. Su park.fan sono la mediana dei picchi giornalieri e il 90° percentile della
+              stessa serie. Tradotto dallo statistichese: quanto è lunga di solito la fila più lunga
+              della giornata, e quanto lo era nel dieci per cento di giorni più pieni.
             </P>
           </IntroWithAside>
 
@@ -488,33 +489,34 @@ export function ContentIT() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                     {i === 0 && 'Per un lunedì, 70 minuti sono tanti'}
-                    {i === 1 && 'Per un sabato è esattamente la norma'}
+                    {i === 1 && 'Di sabato è un sabato come tanti'}
                     {i === 2 && 'E una volta sono stati 135'}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {i === 0 && (
                       <>
-                        Di lunedì il picco della giornata è di {step.typical} minuti, e in nove
-                        lunedì su dieci resta sotto i {step.busy}. I {TARON_WAIT_NOW} esposti stanno
-                        sopra. Chi si trova qui ha beccato il lunedì più pieno da settimane, e le
-                        attrazioni accanto sono di solito l’idea migliore.
+                        Di lunedì il picco della giornata è di solito di {step.typical} minuti, e in
+                        nove lunedì su dieci non supera i {step.busy}. I {TARON_WAIT_NOW} esposti
+                        stanno esattamente su quella linea. Chi si trova qui ha beccato uno di quei
+                        rari lunedì pieni, e le attrazioni accanto sono di solito l’idea migliore.
                       </>
                     )}
                     {i === 1 && (
                       <>
-                        Di sabato {step.typical} minuti sono la mediana. Stesso numero, stesso
-                        posto, stessa attrazione: in questa giornata è semplicemente nella media.
-                        Arrabbiarsi non serve, cambiare programma nemmeno, perché le attrazioni
-                        accanto hanno lo stesso sabato.
+                        Di sabato {step.typical} minuti sono la mediana. Stesso numero, stessa
+                        attrazione, e in questa giornata è semplicemente nella media. Arrabbiarsi
+                        non serve, cambiare programma nemmeno: le attrazioni accanto hanno lo stesso
+                        sabato e la stessa gente.
                       </>
                     )}
                     {i === 2 && (
                       <>
-                        Su tutti i {step.sampleDays} giorni feriali misurati il picco sta a{' '}
-                        {step.typical} minuti. La linea tratteggiata più a destra è la giornata da{' '}
-                        {TARON_RECORD} minuti del 16 luglio. È proprio per giornate così che «pieno»
-                        è un percentile e non un massimo: un solo valore estremo sposterebbe una
-                        media e renderebbe inutilizzabile tutto quello che sta sotto.
+                        Su tutti i {step.sampleDays} giorni feriali misurati il picco sta di solito
+                        a {step.typical} minuti. La linea tratteggiata in fondo alla scala è la
+                        giornata da {TARON_RECORD} minuti del 16 luglio, un giorno in cui qualsiasi
+                        altro posto sarebbe andato meglio. È proprio per giornate così che «pieno» è
+                        un percentile e non un massimo: un solo valore estremo sposterebbe una media
+                        e renderebbe inutilizzabile tutto quello che sta sotto.
                       </>
                     )}
                   </p>
@@ -540,7 +542,7 @@ export function ContentIT() {
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Sulla pagina di un’attrazione"
-              note="Valori reali di Taron, rilevati il 24 agosto 2026."
+              note="Valori reali di Taron, rilevati il 10 settembre 2026."
               href={TARON}
               hrefLabel="Valori reali per Taron →"
             >
@@ -551,8 +553,8 @@ export function ContentIT() {
               <P>
                 La stessa distribuzione in barre, giorno della settimana per giorno della settimana.
                 Il numero sopra ogni barra è la soglia «pieno» di quel giorno, la parte piena sotto
-                è il valore tipico, in basso a destra il record con la data. Un giorno senza base
-                non riceve una barra stimata, non ne riceve nessuna.
+                è il valore tipico, e più in basso c’è il record con la data. Un giorno senza base
+                non riceve nessuna barra, nemmeno una stimata.
               </P>
               <P>
                 Il sabato è l’unico giorno in cui i {TARON_WAIT_NOW} dell’inizio cadono esattamente
@@ -578,9 +580,10 @@ export function ContentIT() {
           </DemoFrame>
 
           <Highlight>
-            Questa tabella è il motivo per cui archiviamo i tempi di attesa. Un numero in tempo
-            reale si può chiedere nel momento in cui qualcuno lo domanda. Una mediana su ogni
-            martedì misurato deve essere già pronta prima che la domanda arrivi.
+            Questa tabella è il motivo per cui conserviamo ogni tempo di attesa, anche quelli noiosi
+            del martedì mattina. Un numero in tempo reale si può chiedere nel momento in cui
+            qualcuno lo domanda. Una mediana su ogni martedì misurato non la calcola nessuno al volo
+            mentre guardi il telefono in coda.
           </Highlight>
         </SectionShell>
       </Ambience>
@@ -594,9 +597,9 @@ export function ContentIT() {
         icon={Sunrise}
       >
         <P>
-          «Arriva presto» è il consiglio che danno tutti. Vale solo se la fila nel corso della
-          giornata cresce davvero, e non è affatto così ovunque. Sei attrazioni dello stesso parco,
-          la stessa tabella, lo stesso anno:
+          «Arriva presto» è il consiglio che danno tutti, compresi quelli che si presentano all’ora
+          di pranzo. Vale solo se la fila nel corso della giornata cresce davvero, e non è affatto
+          così ovunque. Sei attrazioni dello stesso parco, la stessa tabella, lo stesso anno:
         </P>
 
         <DemoFrame
@@ -610,11 +613,12 @@ export function ContentIT() {
 
         <div className="space-y-4 pt-2">
           <P>
-            Taron è il caso in cui l’orario non decide quasi nulla: la riga resta tutto il giorno in
-            una banda stretta, e a fare la differenza è il giorno della settimana del capitolo 02.
-            Con Chiapas è il contrario: i valori salgono nettamente fino al pomeriggio. Una regola
-            unica per tutto il parco sarebbe sbagliata per una delle due, ed è per questo che viene
-            calcolata attrazione per attrazione.
+            Taron è il caso in cui l’orario conta pochissimo: la riga resta tutto il giorno in una
+            banda stretta, e l’attrazione è gettonata la mattina quanto il pomeriggio. A fare la
+            differenza è il giorno della settimana del capitolo 02. Con Chiapas è il contrario: i
+            valori salgono nettamente fino al pomeriggio. Una regola unica per tutto il parco
+            sarebbe sbagliata per una delle due, ed è per questo che viene calcolata attrazione per
+            attrazione.
           </P>
         </div>
 
@@ -629,15 +633,15 @@ export function ContentIT() {
           <div className="space-y-4">
             <PG>
               La card indica tre numeri e un orario: il tempo di attesa tipico all’apertura, il
-              picco della giornata, la differenza e la finestra in cui il vantaggio tiene. Dopo è
-              finito, e c’è scritto così.
+              picco della giornata, la differenza e la finestra in cui il vantaggio tiene. Dopo il
+              vantaggio è finito, e la card non lo nasconde.
             </PG>
             <P>
-              La card indica anche il momento più tranquillo della giornata, ma solo se cade fuori
-              dalla finestra mattutina. Per Taron non ci cade: entrambi stanno nella stessa ora,
-              perciò qui non c’è un secondo orario. Per altre attrazioni è la sera, e allora la card
-              indica quell’orario. Per tutto il parco, il riepilogo delle attrazioni elenca quelle
-              in cui alzarsi presto rende di più, ordinate per minuti risparmiati.
+              Si aggiunge il momento più tranquillo della giornata, ma solo se cade fuori dalla
+              finestra mattutina. Per Taron entrambi stanno nella stessa ora, perciò qui non c’è un
+              secondo orario. Per altre attrazioni è la sera, e allora la card indica quell’orario.
+              Per tutto il parco, il riepilogo delle attrazioni elenca quelle in cui la sveglia
+              rende di più, ordinate per minuti risparmiati.
             </P>
           </div>
         </div>
@@ -653,13 +657,14 @@ export function ContentIT() {
       >
         <P>
           La data decide più dell’orario. Tra due giorni della stessa settimana ci può essere
-          mezz’ora di attesa media di differenza, e da un calendario normale non si vede. A fare la
-          differenza sono vacanze scolastiche, festività, ponti e meteo.
+          mezz’ora di attesa media di differenza, e dal calendario appeso in cucina non si vede. A
+          fare la differenza sono vacanze scolastiche, festività, ponti e meteo, cioè esattamente le
+          cose su cui tutti gli altri programmano la gita.
         </P>
 
         <DemoFrame
           label="Quattro giorni delle vacanze autunnali"
-          note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove. Il 19 è grigio perché quel giorno il parco è chiuso. Su park.fan lo stesso calendario procede mese per mese, fin dove arriva la previsione per quel parco."
+          note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove, e la pioggia tiene a casa una quantità sorprendente di gente. Il 19 è grigio perché quel giorno il parco è chiuso. Su park.fan lo stesso calendario procede mese per mese, fin dove arriva la previsione per quel parco."
         >
           <CalendarDaysDemo />
         </DemoFrame>
@@ -720,17 +725,18 @@ export function ContentIT() {
         icon={CalendarClock}
       >
         <P>
-          Fin qui si trattava di collocare un numero e di trovare il giorno giusto. Il pianificatore
-          mette insieme le due cose: dispone le attrazioni che vuoi fare su una linea del tempo e
-          calcola se la giornata regge. Ogni blocco è un’attrazione, la sua altezza è il tempo di
-          attesa previsto per quell’ora, e tra due blocchi c’è il tragitto dall’una all’altra.
+          Collocare un numero, trovare il giorno giusto: il pianificatore mette insieme le due cose.
+          Dispone le attrazioni che vuoi fare su una linea del tempo e calcola se la giornata regge,
+          prima che te lo dicano i piedi alle cinque del pomeriggio. Ogni blocco è un’attrazione, la
+          sua altezza è il tempo di attesa previsto per quell’ora, e tra due blocchi c’è il tragitto
+          dall’una all’altra.
         </P>
         <P>
           L’esempio qui sotto non è un disegno. Sono gli stessi pezzi che girano nel pianificatore,
           alimentati con la risposta che l’API ha dato il 4 settembre 2026 per sabato 12 settembre
           al Phantasialand: aperto dalle 9 alle 18, poca gente, pioviggine. Trascina un blocco su un
-          altro orario: ricalcola la sua altezza, e anche i trasferimenti accanto. Nel tuo piano non
-          finisce nulla di tutto questo.
+          altro orario: ricalcola la sua altezza, e anche i trasferimenti accanto. Il tuo piano non
+          ne sa niente, quindi trascina pure a piacere.
         </P>
 
         <DemoFrame
@@ -780,7 +786,8 @@ export function ContentIT() {
             </Highlight>
             <PG>
               Le schede ricordano la scelta nell’indirizzo. Chi ha aperto il calendario e passa il
-              link, invia il calendario e non l’elenco delle attrazioni.
+              link, invia il calendario e non l’elenco delle attrazioni. Comodo quando la famiglia
+              deve votare la data nella chat di gruppo.
             </PG>
             <div className="pt-1">
               <Link
@@ -843,13 +850,15 @@ export function ContentIT() {
             <P>
               La seconda metà avviene di notte, mentre i parchi sono chiusi. «Quanto è lunga la fila
               di Taron in un martedì qualunque» è una mediana su ogni martedì misurato dell’ultimo
-              anno. Una cosa così non si lancia quando qualcuno apre una pagina, ci mette troppo.
-              Deve essere già lì prima che arrivi la domanda.
+              anno. Una cosa così non si lancia quando qualcuno apre una pagina, altrimenti
+              toccherebbe fare la coda anche davanti al sito. Deve essere pronta prima che arrivi la
+              domanda.
             </P>
             <P>
               Sei passi in ordine fisso, ogni notte. Ognuno legge quello che ha scritto il
-              precedente, quindi nessuno può passare avanti. Quando apri la pagina la mattina, tutto
-              questo è già calcolato.
+              precedente, quindi nessuno può saltare la fila, che su un sito dedicato alle code
+              sarebbe pure di cattivo gusto. Quando apri la pagina la mattina, tutto questo è già
+              calcolato.
             </P>
           </div>
 
@@ -870,8 +879,8 @@ export function ContentIT() {
         icon={HelpCircle}
       >
         <P>
-          Alcune caselle qui restano vuote, ed è voluto. Tre casi in cui park.fan preferisce non
-          dire nulla piuttosto che tirare a indovinare.
+          Alcune caselle qui restano vuote, ed è voluto. Tre casi in cui park.fan preferisce tacere
+          piuttosto che tirare a indovinare, anche quando un numero inventato farebbe più figura.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -918,8 +927,8 @@ export function ContentIT() {
         icon={Users}
       >
         <P>
-          Gli stessi dati rispondono a domande molto diverse. Quattro esempi, ciascuno con il
-          percorso che faremmo noi.
+          Stessi dati, domande molto diverse, a seconda di chi va al parco e con chi. Quattro
+          esempi, ciascuno con il percorso che faremmo noi.
         </P>
 
         <div className="grid gap-5 lg:grid-cols-2">
@@ -944,8 +953,8 @@ export function ContentIT() {
               </>,
               <>
                 Su ogni card di attrazione c’è l’altezza minima, dove il parco la pubblica. Taron
-                chiede 140 centimetri, Colorado Adventure 120, e questo decide la giornata più di
-                qualsiasi tempo di attesa.
+                chiede 140 centimetri, Colorado Adventure 120, e questo decide l’umore in macchina
+                al ritorno più di qualsiasi tempo di attesa.
               </>,
               <>
                 Segnare le attrazioni per bambini come preferite nella scheda{' '}
@@ -1018,12 +1027,13 @@ export function ContentIT() {
                 delle attrazioni sono collegati direttamente nel testo.
               </>,
               <>
-                La mattina seguire il consiglio rope drop del parco. È l’unico ordine che si basa su
-                dati misurati e non sull’intuito.
+                La mattina seguire il consiglio rope drop del parco. Quell’ordine si basa su
+                giornate misurate e non sull’intuito di chi nel gruppo alza di più la voce.
               </>,
               <>
                 Da mezzogiorno decidere in base all’affollamento e non ai minuti. Un’attrazione
-                «bassa» con 25 minuti è la scelta migliore rispetto a una «alta» con 20.
+                «bassa» con 25 minuti è la scelta migliore rispetto a una «alta» con 20: la prima è
+                vuota come capita di rado, la seconda più tardi tornerà ad accorciarsi.
               </>,
               <>
                 Gli spettacoli nella scheda omonima. Gli orari sono lì per l’intera giornata, e le
@@ -1084,9 +1094,8 @@ export function ContentIT() {
               title: 'Pianificatore',
               body: (
                 <>
-                  La linguetta sul bordo destro della finestra lo apre da qualsiasi pagina. Il piano
-                  resta nel browser, senza account. Il capitolo 05 mostra cosa ricava da una
-                  giornata al parco.
+                  Si apre da qualsiasi pagina. Il piano resta nel browser, senza account. Il
+                  capitolo 05 mostra cosa ricava da una giornata al parco.
                 </>
               ),
             },
