@@ -550,7 +550,7 @@ export function CuratedFieldsEditor({
           colour — how many hold an unsaved edit. The save bar below still lists
           every change across all groups. */}
       {groups.length > 1 && (
-        <div role="tablist" className="border-border/50 flex flex-wrap gap-x-1 border-b">
+        <div className="border-border/50 flex flex-wrap gap-x-1 border-b">
           {groups.map(([group, groupFields]) => {
             const selected = group === activeGroup?.[0];
             const overridden = groupFields.filter((field) => field.overridden).length;
@@ -559,8 +559,7 @@ export function CuratedFieldsEditor({
               <button
                 key={group}
                 type="button"
-                role="tab"
-                aria-selected={selected}
+                aria-pressed={selected}
                 onClick={() => setChosenGroup(group)}
                 className={cn(
                   '-mb-px flex items-center gap-1.5 border-b-2 px-2.5 py-1.5 text-xs transition-colors',
@@ -593,7 +592,7 @@ export function CuratedFieldsEditor({
       )}
 
       {activeGroup && (
-        <section role={groups.length > 1 ? 'tabpanel' : undefined}>
+        <section>
           {groups.length === 1 && (
             <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">
               {activeGroup[0]}
