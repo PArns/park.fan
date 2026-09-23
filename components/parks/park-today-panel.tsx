@@ -559,14 +559,37 @@ export function ParkTodayPanel({
 
           {/* ── Andrang ── */}
           <div className={cell}>
-            <div className="flex flex-wrap gap-x-6 gap-y-3">
+            {/* Always stacked, at every width.
+
+                This was `flex flex-wrap`, so whether „Prognose heute" sat beside „Andrang jetzt"
+                or under it depended on how wide the two values happened to be, and both change
+                after the first paint: the forecast goes from an 80 px loading pill to a badge
+                plus chevron when the (deliberately last) calendar query lands, and „Andrang
+                jetzt" goes between an em dash and a badge while the live status settles. On
+                Phantasialand at 1280 px, both „Sehr niedrig", the pair needed 282 px of a 271 px
+                cell, so it wrapped at ~4.4 s and moved the rest of the card 16 px (CLS 0.027 at
+                y=0).
+
+                Dropping the chevron would not have settled it. Measured across all six locales
+                and every crowd level (2026-09-23), the widest pair is 289 px, and in Dutch the
+                caption „PROGNOSE VANDAAG" alone is 159 px, so the pair there still flips with
+                „Andrang jetzt" alone. The dashes carry the badge's 22 px line box for the same
+                reason: stacked, a value that goes from „—" to a badge is otherwise 2 px of shift
+                per metric.
+
+                Stacked, the cell came out 229 px against the 213 px of the headliner column
+                beside it (1280 and 1920 px), so it would have set the row and grown the card by
+                16 px. The 19 px it gives back: `gap-2` between the two metrics instead of the
+                cell's `gap-3`, and in the occupancy block below `gap-1` and a `leading-none`
+                percentage, whose `text-lg` line box was the tallest thing in its row. */}
+            <div className="flex flex-col gap-2">
               <PanelMetric caption={t('crowdNow')}>
                 {isOpenish && currentCrowd ? (
                   // The park's own "how busy is it right now", and the one badge here that
                   // nothing interactive encloses — so this is where the scale is explained.
                   <CrowdLevelBadge level={currentCrowd} withScale />
                 ) : (
-                  <span className="text-muted-foreground text-sm">—</span>
+                  <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                 )}
               </PanelMetric>
               {/* Once today's full CalendarDay is loaded the value becomes a button (chevron =
@@ -586,7 +609,7 @@ export function ParkTodayPanel({
                       {predictedToday ? (
                         <CrowdLevelBadge level={predictedToday} />
                       ) : (
-                        <span className="text-muted-foreground text-sm">—</span>
+                        <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                       )}
                       <ChevronRight
                         className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
@@ -596,7 +619,7 @@ export function ParkTodayPanel({
                   ) : predictedToday ? (
                     <CrowdLevelBadge level={predictedToday} />
                   ) : (
-                    <span className="text-muted-foreground text-sm">—</span>
+                    <span className="text-muted-foreground text-sm leading-[22px]">—</span>
                   )
                 ) : (
                   <Pending />
@@ -606,10 +629,10 @@ export function ParkTodayPanel({
 
             {/* Reserved whether or not occupancy lands — it rides the live poll, and gating the
                 block on it moved the whole panel a beat after paint. */}
-            <div className="mt-auto flex min-h-[4rem] flex-col gap-1.5">
+            <div className="mt-auto flex min-h-[4rem] flex-col gap-1">
               <div className="flex items-baseline justify-between">
                 <span className="text-muted-foreground text-xs">{t('occupancy')}</span>
-                <span className="text-lg font-bold tabular-nums">
+                <span className="text-lg leading-none font-bold tabular-nums">
                   {occupancy ? `${Math.round(occupancy.current)} %` : '—'}
                 </span>
               </div>
