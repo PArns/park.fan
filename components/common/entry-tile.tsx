@@ -72,7 +72,13 @@ export function EntryTileBody({
       >
         {label}
         {count !== undefined && (
-          <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
+          <>
+            {/* The label and the count are adjacent inline boxes with no space between them, so
+                without this there is no place to break: in a third of a 390 px row „Attraktionen"
+                fills the line and the count was pushed past the edge and clipped. */}
+            <wbr />
+            <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
+          </>
         )}
       </span>
       {hint !== undefined && (

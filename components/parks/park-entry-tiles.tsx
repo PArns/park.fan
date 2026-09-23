@@ -109,17 +109,17 @@ export const tileCell = cn(
   // legible one.
   'text-foreground dark:text-foreground',
   'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50',
-  // Phone: a third of the row. Chip and label side by side, the hint hidden — 50 px against the
-  // 148 px the stacked cell took, and the 44 px a touch target needs with room to spare.
-  'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2.5'
+  // Phone: a third of the row. Chip and label side by side, the hint hidden — 47 px against the
+  // 148 px the stacked cell took, and above the 44 px a touch target needs.
+  'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2'
 );
 
 /**
  * The row on a phone: three columns instead of two, and no second line in the cells.
  *
  * Two columns put seven cells in four rows, 596 px on Phantasialand at 390 × 664 — most of the
- * first screen, and the seventh cell alone in the last row. Three columns of 50 px cells are
- * three rows and 150 px. Both rows use it, the park's (`ParkTileGrid`) and the ride's
+ * first screen, and the seventh cell alone in the last row. Three columns of 47 px cells are
+ * three rows and 141 px. Both rows use it, the park's (`ParkTileGrid`) and the ride's
  * (`RideNavTiles`); from `sm` up the grids are unchanged.
  */
 export const tileRowPhone = 'max-sm:grid-cols-3';
