@@ -1,6 +1,7 @@
 import 'server-only';
 import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getImagesByRole, getParkPagePath, getParkRefBySlug } from '@/lib/media';
+import { focusToObjectPosition } from '@/lib/media/focus';
 
 /**
  * The six photo cards in the parks menu, and why they are a fixed set rather than a thumbnail
@@ -35,6 +36,8 @@ export interface FeaturedParkCard {
   countrySlug: string;
   /** Pre-cut 16:9 crop where the generator made one, else the original. */
   image: string;
+  /** Focal point for the original. Absent for a crop: it was cut around the focal point already. */
+  imagePosition?: string;
 }
 
 export function getFeaturedParksMenu(locale: string): FeaturedParkCard[] {
@@ -61,6 +64,7 @@ export function getFeaturedParksMenu(locale: string): FeaturedParkCard[] {
     // A photo whose park the API no longer lists has no page to link to. Skip rather than render
     // a card that goes nowhere.
     if (!image || !ref || !href) continue;
+    const crop = image.variants?.find((v) => v.endsWith('-16x9.jpg'));
 
     cards.push({
       slug,
@@ -70,7 +74,8 @@ export function getFeaturedParksMenu(locale: string): FeaturedParkCard[] {
       countrySlug: ref.countrySlug ?? '',
       // `?v=` is not decoration: retargeting a focal point rewrites a crop's bytes at an unchanged
       // URL, so the hash is what makes the new cut visible.
-      image: `${image.variants?.find((v) => v.endsWith('-16x9.jpg')) ?? image.src}?v=${image.version}`,
+      image: `${crop ?? image.src}?v=${image.version}`,
+      imagePosition: crop ? undefined : focusToObjectPosition(image.focus),
     });
   }
 

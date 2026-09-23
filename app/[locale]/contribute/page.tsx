@@ -15,6 +15,7 @@ import { RightsNotice } from '@/components/contribute/rights-notice';
 import { ExampleGallery } from '@/components/contribute/example-gallery';
 import { parseEntityFromParams } from '@/lib/contribute/prefill';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { RouteMessages } from '@/i18n/route-messages';
 
 interface ContributePageProps {
@@ -82,6 +83,7 @@ export default async function ContributePage({ params, searchParams }: Contribut
   const initialEntity = parseEntityFromParams(await searchParams);
   const t = await getTranslations('contribute.hero');
   const tBanner = await getTranslations('contribute.banner');
+  const heroSrc = getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
 
   return (
     <RouteMessages route="/contribute">
@@ -89,12 +91,13 @@ export default async function ContributePage({ params, searchParams }: Contribut
         {/* Hero with a themed photo backdrop */}
         <header className="relative mb-10 overflow-hidden rounded-3xl border shadow-sm">
           <Image
-            src={getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg'}
+            src={heroSrc}
             alt=""
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 1024px"
             className="object-cover"
+            style={{ objectPosition: objectPositionForSrc(heroSrc, '50% 50%') }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/35" />
           <div className="relative flex flex-col items-center px-6 py-14 text-center text-white sm:py-20">

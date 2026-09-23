@@ -83,6 +83,9 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
                       width={640}
                       height={360}
                       sizes="(min-width: 1024px) 480px, 100vw"
+                      style={
+                        lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined
+                      }
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </span>
@@ -130,6 +133,11 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
                             alt=""
                             fill
                             sizes="128px"
+                            style={
+                              post.imagePosition
+                                ? { objectPosition: post.imagePosition }
+                                : undefined
+                            }
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </span>

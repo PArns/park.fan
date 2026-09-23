@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { getTranslations } from 'next-intl/server';
 import { Sparkles } from 'lucide-react';
 
@@ -65,6 +66,7 @@ export async function ExampleGallery() {
               alt={`${ex.ride} — ${ex.park}`}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              style={{ objectPosition: objectPositionForSrc(ex.src, '50% 50%') }}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             {/* gradient + caption */}

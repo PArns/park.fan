@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -91,6 +92,7 @@ export function Hero({
         quality={60}
         sizes="100vw"
         className="object-cover motion-safe:scale-105"
+        style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
       />
       {/* Title/tagline sit directly on the photo (no panel). Readability comes from
           a theme-aware tint that fades into the page background — a dark tint in
@@ -372,6 +374,7 @@ export function SplitFigure({
             fill
             sizes="(max-width: 768px) 100vw, 500px"
             className="object-cover"
+            style={{ objectPosition: objectPositionForSrc(src, '50% 50%') }}
           />
         </div>
         <div className="space-y-3">
@@ -411,6 +414,7 @@ export function Figure({
             fill
             sizes="(max-width: 768px) 100vw, 800px"
             className="object-cover"
+            style={{ objectPosition: objectPositionForSrc(src, '50% 50%') }}
             priority={priority}
           />
         </div>

@@ -303,6 +303,9 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                       fill
                       sizes="112px"
                       draggable={false}
+                      style={
+                        lead.imagePosition ? { objectPosition: lead.imagePosition } : undefined
+                      }
                       className={cn(
                         'object-cover transition-transform duration-700',
                         !reduceMotion && 'group-hover/link:scale-110'

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { Reveal, ScrollCue } from '@/components/marketing/scroll-reveal';
 
 /**
@@ -133,6 +134,7 @@ export function GuideHero({
         quality={60}
         sizes="100vw"
         className="object-cover motion-safe:scale-105"
+        style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
       />
       {/* Theme-aware tint fading into the page background, so the photo keeps its
           own colours in light mode and never fades dark→white. Same approach as

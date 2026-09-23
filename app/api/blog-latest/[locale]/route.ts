@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { listPosts } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
-import { versionedPath } from '@/lib/media/focus';
+import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import type { LatestPost, LatestPostsPayload } from '@/lib/blog/new-posts';
 
@@ -66,6 +66,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
           ? resolveCategoryLabel(category, locale, category.split('/').filter(Boolean).pop() ?? '')
           : undefined,
         image: versionedPath(cover) ?? cover,
+        imagePosition: objectPositionForSrc(cover, '50% 50%'),
       };
     });
 
