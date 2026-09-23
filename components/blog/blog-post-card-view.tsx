@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
+import { postPath } from '@/lib/blog/paths';
 
 /**
  * What the row below `sm` actually paints: a 96px thumbnail. The panelled card is
@@ -62,7 +63,7 @@ export function BlogPostCardView({
 }: BlogPostCardViewProps) {
   const f = useFormatter();
   const t = useTranslations('blog');
-  const { frontmatter, slug, isFallback, readingTimeMinutes } = post;
+  const { frontmatter, isFallback, readingTimeMinutes } = post;
 
   const date = new Date(frontmatter.date);
 
@@ -111,7 +112,7 @@ export function BlogPostCardView({
       />
 
       <Link
-        href={`/blog/${slug}` as '/'}
+        href={postPath(post) as '/'}
         className={cn(
           // The card provides its own row tracks from `sm` up, where the 220px
           // floor opens the photo row even when the surrounding grid has none.
@@ -373,12 +374,12 @@ function BlogPostRow({
 }: BlogPostRowProps) {
   const f = useFormatter();
   const t = useTranslations('blog');
-  const { frontmatter, slug, isFallback, readingTimeMinutes } = post;
+  const { frontmatter, isFallback, readingTimeMinutes } = post;
   const date = new Date(frontmatter.date);
 
   return (
     <Link
-      href={`/blog/${slug}` as '/'}
+      href={postPath(post) as '/'}
       className={cn(
         'group bg-card hover:bg-accent/30 flex items-start gap-3 rounded-lg p-2 transition-colors',
         className

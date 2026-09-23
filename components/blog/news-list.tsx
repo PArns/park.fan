@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { NewsAge } from '@/components/blog/news-age';
 import { cn } from '@/lib/utils';
+import { newsPostPath } from '@/lib/blog/paths';
 
 export interface NewsListItem {
   slug: string;
@@ -32,7 +33,7 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
       {items.map((item) => (
         <li key={item.slug}>
           <Link
-            href={`/blog/${item.slug}` as '/'}
+            href={newsPostPath(item.slug) as '/'}
             prefetch={false}
             className="group hover:bg-muted/60 -mx-2 flex items-center gap-3 rounded-xl px-2 py-2 transition-colors"
           >

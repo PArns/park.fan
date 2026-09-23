@@ -6,6 +6,7 @@ import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import type { LatestPost, LatestPostsPayload } from '@/lib/blog/new-posts';
+import { postPath } from '@/lib/blog/paths';
 
 /**
  * The newest blog posts of one locale, for the "new since your last visit" toast
@@ -59,7 +60,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
       const cover = post.frontmatter.coverImage?.src;
       return {
         key: post.translationKey,
-        slug: post.slug,
+        path: postPath(post),
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         category: category

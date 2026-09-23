@@ -115,14 +115,15 @@ export function Header({
   const isHowto = Object.values(HOWTO_SEGMENTS).some((s) => pathname === '/' + s);
   // The blog index (not its sub-pages) opens with the same full-bleed hero.
   const isBlogIndex = pathname === '/blog';
-  // Blog articles open with a full-bleed cover banner (always dark: a cover
-  // image or a dark fallback gradient). The listing sub-pages (category/tag/
-  // author) keep the normal header.
+  // Blog articles and news posts open with a full-bleed cover banner (always
+  // dark: a cover image or a dark fallback gradient). The listing sub-pages
+  // (category/tag/author, and the news overview) keep the normal header.
   const isBlogPost =
-    pathname.startsWith('/blog/') &&
-    !pathname.startsWith('/blog/category/') &&
-    !pathname.startsWith('/blog/tag/') &&
-    !pathname.startsWith('/blog/authors/');
+    pathname.startsWith('/news/') ||
+    (pathname.startsWith('/blog/') &&
+      !pathname.startsWith('/blog/category/') &&
+      !pathname.startsWith('/blog/tag/') &&
+      !pathname.startsWith('/blog/authors/'));
   // Pages that open with a full-bleed hero the header floats over: transparent at
   // the top, solidifying to the normal bar on scroll. All of these heroes now show
   // the photo in its natural colours (no dark wash) with a frosted glass panel for

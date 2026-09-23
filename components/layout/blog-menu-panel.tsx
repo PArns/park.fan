@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { NewsList } from '@/components/blog/news-list';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
+import { categoryPath } from '@/lib/blog/paths';
 
 /**
  * The blog menu: one post given room, the rest as rows, the categories as a footer.
@@ -71,7 +72,7 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
           {lead && (
             <div data-menu-stagger>
               <Link
-                href={`/blog/${lead.slug}`}
+                href={lead.path}
                 prefetch={false}
                 className="group focus-visible:ring-ring block rounded-xl focus-visible:ring-2 focus-visible:outline-none"
               >
@@ -116,9 +117,9 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
             <div data-menu-stagger>
               <ul className="flex flex-col gap-1">
                 {rest.map((post) => (
-                  <li key={post.slug}>
+                  <li key={post.path}>
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={post.path}
                       prefetch={false}
                       className="group hover:bg-muted/60 -mx-2 flex items-start gap-3 rounded-lg px-2 py-2 transition-colors"
                     >
@@ -181,7 +182,7 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
       {/* News: its own strip, a size smaller than the articles — see the docblock. */}
       {news.length > 0 && (
         <div data-menu-stagger>
-          <MenuSectionHeading label={newsLabel} href={`/blog/category/${newsPath}`} />
+          <MenuSectionHeading label={newsLabel} href={newsPath} />
           <NewsList items={news} className="sm:grid-cols-3" />
         </div>
       )}
@@ -198,7 +199,7 @@ export function BlogMenuPanel({ categories, recent, news, newsLabel, newsPath }:
           {categories.map((category) => (
             <Link
               key={category.path}
-              href={`/blog/category/${category.path}`}
+              href={categoryPath(category.path)}
               prefetch={false}
               className="border-border/70 text-muted-foreground hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
             >

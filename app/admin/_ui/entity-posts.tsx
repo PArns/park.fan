@@ -5,6 +5,7 @@ import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { ExternalLink, PenLine } from 'lucide-react';
 import { useAdminQuery } from '../_lib/api';
+import { postPath } from '@/lib/blog/paths';
 import {
   Chip,
   EmptyState,
@@ -125,7 +126,7 @@ export function EntityPostsPanel({
                 <PenLine className="h-3.5 w-3.5" />
               </Link>
               <a
-                href={`https://park.fan/de/blog/${post.slug}`}
+                href={`https://park.fan/de${postPath({ slug: post.slug, frontmatter: { category: post.category } })}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground shrink-0 rounded p-1.5"

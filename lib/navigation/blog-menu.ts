@@ -2,6 +2,7 @@ import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
 import { listArticlesByRecency, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
+import { NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
 /**
@@ -79,7 +80,8 @@ export interface BlogMenuCategory {
 }
 
 export interface BlogMenuPost {
-  slug: string;
+  /** Locale-relative URL of the post, from `postPath` (`lib/blog/paths.ts`). */
+  path: string;
   title: string;
   /** ISO date — the panel formats it in the reader's locale. */
   date: string;
@@ -112,7 +114,7 @@ export interface BlogMenu {
   news: BlogMenuNewsItem[];
   /** The news category's label in this locale, for the strip's heading. */
   newsLabel: string;
-  /** The news category's path, for the heading link. */
+  /** The news overview's locale-relative path, for the heading link. */
   newsPath: string;
 }
 
@@ -130,7 +132,7 @@ export function getBlogMenu(locale: Locale): BlogMenu {
     recent: listArticlesByRecency(locale)
       .slice(0, RECENT_LIMIT)
       .map((post, index) => ({
-        slug: post.slug,
+        path: postPath(post),
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         readingTimeMinutes: post.readingTimeMinutes,
@@ -168,6 +170,6 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
       })),
     newsLabel: resolveCategoryLabel(NEWS_CATEGORY, locale, 'News'),
-    newsPath: NEWS_CATEGORY,
+    newsPath: NEWS_INDEX_PATH,
   };
 }

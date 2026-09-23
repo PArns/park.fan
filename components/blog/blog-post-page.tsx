@@ -1,0 +1,382 @@
+import type { Metadata } from 'next';
+import { notFound, permanentRedirect, redirect } from 'next/navigation';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { routing, type Locale } from '@/i18n/routing';
+import { locales, localeNames, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { buildPostAlternates, getPostByLocaleSlug, getTranslationIndex } from '@/lib/blog';
+import {
+  categoryPath,
+  isNewsCategory,
+  NEWS_CATEGORY,
+  NEWS_INDEX_PATH,
+  postPath,
+} from '@/lib/blog/paths';
+import { BlogContent } from '@/components/blog/blog-content';
+import { BlogPostBanner } from '@/components/blog/blog-post-banner';
+import { HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { cn } from '@/lib/utils';
+import { BlogLanguageNotice } from '@/components/blog/blog-language-notice';
+import { BlogToc } from '@/components/blog/blog-toc';
+import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
+import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
+import { extractToc } from '@/lib/blog/toc';
+import { resolveAuthor } from '@/lib/blog/authors';
+import { ShareButtons } from '@/components/common/share-buttons';
+import { BlogPostNav } from '@/components/blog/blog-post-nav';
+import { BlogReadingProgress } from '@/components/blog/blog-reading-progress';
+import { BlogGallery } from '@/components/blog/blog-gallery';
+import { resolveGallery } from '@/lib/blog/gallery';
+import { BlogTags } from '@/components/blog/blog-tags';
+import { BlogRelatedPosts } from '@/components/blog/blog-related-posts';
+import { BlogReferences } from '@/components/blog/blog-references';
+import { PageBottomSections } from '@/components/common/page-bottom-sections';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { getOgImageUrl } from '@/lib/utils/og-image';
+import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
+import { versionedPath } from '@/lib/media/focus';
+import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
+import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
+import { PageContainer } from '@/components/common/page-container';
+import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
+import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
+import type { Breadcrumb } from '@/lib/api/types';
+import { blogFeedAlternates } from '@/lib/blog/feed';
+
+/**
+ * The post page, shared by `/blog/[slug]` and `/news/[slug]`. The two routes serve the same page
+ * for different posts: news under `/news`, every other post under `/blog` (`lib/blog/paths.ts`).
+ * A post asked for under the wrong section is answered here — a news post under `/blog` 308s to
+ * `/news` (the proxy normally answers first, see `lib/blog/news-redirects-rule.ts`), an article
+ * under `/news` is a 404, so no post is reachable under both paths.
+ */
+export type PostSection = 'blog' | 'news';
+
+interface PostParams {
+  locale: string;
+  slug: string;
+}
+
+export async function buildPostMetadata(
+  { locale, slug }: PostParams,
+  section: PostSection
+): Promise<Metadata> {
+  if (!routing.locales.includes(locale as Locale)) return {};
+  const post = getPostByLocaleSlug(slug, locale as Locale);
+  if (!post || isNewsCategory(post.frontmatter.category) !== (section === 'news')) return {};
+
+  const t = await getTranslations({ locale, namespace: 'blog' });
+  const { frontmatter, translationKey } = post;
+  const title = frontmatter.seo?.title ?? frontmatter.title;
+  const description = frontmatter.seo?.description ?? frontmatter.excerpt;
+  // Google shows ~60 characters. The " | Blog · park.fan" suffix costs 18 of
+  // them, which clipped the tail off 18 of 42 post titles — the longest ran to
+  // 75. Same ladder the park pages use: full template, then brand only, then
+  // the bare title, which always fits because the frontmatter keeps it short.
+  const fullTitle = fitWithin(
+    MAX_TITLE_LENGTH,
+    `${title} | ${t('title')} · park.fan`,
+    `${title} · park.fan`,
+    title
+  );
+  // Only locales with a real translation — fallback locales serve the EN
+  // content and must not advertise themselves as translations.
+  const alternates = buildPostAlternates(translationKey);
+  const localeUrl = alternates[locale] ?? `${SITE_URL}/${locale}${postPath(post)}`;
+  // A fallback URL (EN content under another locale prefix) is a duplicate of
+  // the EN original — point its canonical there instead of at itself.
+  const canonicalUrl = alternates[locale] ?? alternates['en'] ?? localeUrl;
+  // OG image priority:
+  //   1. explicit seo.ogImage frontmatter override
+  //   2. cover image from frontmatter (the post hero) — but only when it is a
+  //      raster image. WhatsApp/Facebook/X don't render SVG og:images, so an
+  //      SVG cover is skipped in favour of the PNG generated by /api/og.
+  //   3. dynamic OG image generated from the title (/api/og)
+  // Hardened to absolutise paths and never produce a dangling
+  // `https://park.fan` URL when nothing is set.
+  // Content-versioned, like the structured data and the feed. A social scraper
+  // caches an og:image by its URL and re-fetches on its own schedule, so an
+  // unversioned crop keeps showing the old framing in every shared link after a
+  // focal point moves.
+  const rasterCover =
+    frontmatter.coverImage?.src && !/\.svg(\?|$)/i.test(frontmatter.coverImage.src)
+      ? (versionedPath(frontmatter.coverImage.src) ?? frontmatter.coverImage.src)
+      : undefined;
+  const ogImageSource =
+    frontmatter.seo?.ogImage ?? rasterCover ?? getOgImageUrl([locale, 'blog', post.slug]);
+  const fullOgImage = ogImageSource.startsWith('http')
+    ? ogImageSource
+    : `${SITE_URL}${ogImageSource.startsWith('/') ? '' : '/'}${ogImageSource}`;
+
+  // Merge `tags` with the optional `seo.keywords` frontmatter field — both
+  // feed Google's keywords meta, the tag list anchors the in-app archive.
+  const extraKeywords = Array.isArray(frontmatter.seo?.keywords)
+    ? frontmatter.seo!.keywords
+    : typeof frontmatter.seo?.keywords === 'string'
+      ? frontmatter.seo.keywords
+          .split(',')
+          .map((k) => k.trim())
+          .filter(Boolean)
+      : [];
+  const allKeywords = Array.from(new Set([...(frontmatter.tags ?? []), ...extraKeywords]));
+
+  const seoIndex = frontmatter.seo?.noindex !== true;
+  const canonicalOverride = frontmatter.seo?.canonical;
+  const metaAuthor = resolveAuthor(frontmatter.author, locale as Locale);
+
+  return {
+    title: { absolute: fullTitle },
+    description,
+    authors: [{ name: metaAuthor.name, url: metaAuthor.url }],
+    keywords: allKeywords.length > 0 ? allKeywords : undefined,
+    openGraph: {
+      title: fullTitle,
+      description,
+      locale: localeToOpenGraphLocale[locale as Locale],
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
+      url: localeUrl,
+      siteName: 'park.fan',
+      type: 'article',
+      publishedTime: frontmatter.date,
+      modifiedTime: frontmatter.updatedAt ?? frontmatter.date,
+      tags: frontmatter.tags,
+      images: [
+        {
+          url: fullOgImage,
+          width: 1200,
+          height: 630,
+          alt: frontmatter.coverImage?.alt ?? frontmatter.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+      images: [fullOgImage],
+    },
+    alternates: {
+      canonical: canonicalOverride ?? canonicalUrl,
+      languages: {
+        ...alternates,
+        'x-default': alternates['en'] ?? localeUrl,
+      },
+      types: blogFeedAlternates(locale as Locale),
+    },
+    robots: {
+      index: seoIndex,
+      follow: seoIndex,
+      googleBot: {
+        index: seoIndex,
+        follow: seoIndex,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
+export async function BlogPostPageBody({
+  locale,
+  slug,
+  section,
+}: PostParams & { section: PostSection }) {
+  if (!routing.locales.includes(locale as Locale)) notFound();
+  setRequestLocale(locale);
+
+  const post = getPostByLocaleSlug(slug, locale as Locale);
+  if (!post) notFound();
+
+  const isNews = isNewsCategory(post.frontmatter.category);
+  // An article has no `/news` URL. A news post under `/blog` is normally 308'd by the proxy
+  // before anything renders; this is the net for a URL the proxy's generated map did not know.
+  if (isNews && section === 'blog') permanentRedirect(`/${locale}${postPath(post)}`);
+  if (!isNews && section === 'news') notFound();
+
+  // Canonicalize: if a translation exists for this locale but the user landed
+  // on a different-locale's slug, redirect to the canonical URL for the
+  // requested locale. This keeps URLs clean and SEO consistent.
+  const index = getTranslationIndex();
+  const localeMap = index.get(post.translationKey);
+  const canonicalSlugForRequested = localeMap?.get(locale as Locale);
+  if (canonicalSlugForRequested && canonicalSlugForRequested !== slug) {
+    redirect(`/${locale}${postPath({ ...post, slug: canonicalSlugForRequested })}`);
+  }
+
+  const tBlog = await getTranslations({ locale, namespace: 'blog' });
+
+  // BreadcrumbNav breadcrumbs (excluding the current page — that's `currentPage`).
+  // News sits outside the blog, so its trail starts at the news overview, not at "Blog".
+  const navBreadcrumbs: Breadcrumb[] = isNews
+    ? [
+        {
+          name: resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News'),
+          url: NEWS_INDEX_PATH,
+        },
+      ]
+    : [
+        { name: tBlog('blog'), url: '/blog' },
+        ...categoryPathBreadcrumbs(post.frontmatter.category).map((segments) => {
+          const fullPath = segments.join('/');
+          return {
+            name: resolveCategoryLabel(fullPath, locale as Locale, segments[segments.length - 1]),
+            url: categoryPath(fullPath),
+          };
+        }),
+      ];
+
+  // SEO crumbs include the current post for the BreadcrumbList JSON-LD.
+  const seoBreadcrumbs: Breadcrumb[] = [
+    ...navBreadcrumbs,
+    { name: post.frontmatter.title, url: postPath(post) },
+  ];
+
+  // Eyebrow above the banner title: the deepest category, or the blog badge.
+  const kicker =
+    isNews || navBreadcrumbs.length > 1
+      ? navBreadcrumbs[navBreadcrumbs.length - 1].name
+      : tBlog('badge');
+
+  // Language-switch offers for the hero notice. Each offer's label is
+  // pre-translated in ITS OWN target language (not the current UI locale): a
+  // German reader whose browser prefers English sees "This article is also
+  // available in English", because the offer leads to the English version and
+  // should read in that language. Labels are built server-side per locale.
+  const languageOffers = localeMap
+    ? await Promise.all(
+        [...localeMap]
+          .filter(([l]) => l !== post.loadedLocale)
+          .map(async ([l, s]) => {
+            const tl = await getTranslations({ locale: l, namespace: 'blog' });
+            return {
+              locale: l,
+              href: `/${l}${postPath({ ...post, slug: s })}`,
+              label: tl('languageNotice.available', { language: localeNames[l] }),
+            };
+          })
+      )
+    : [];
+
+  // Fallback notice (requested locale untranslated → showing loadedLocale):
+  // written in the reader's SELECTED locale — that's the language they chose to
+  // browse in — while naming the language actually shown, localized to that
+  // same selected locale (so an English reader sees "the German version", not
+  // "the Deutsch version").
+  const loadedLanguageName =
+    new Intl.DisplayNames([locale], { type: 'language' }).of(post.loadedLocale) ??
+    localeNames[post.loadedLocale];
+  const fallbackLabel = post.isFallback
+    ? tBlog('languageNotice.fallback', { language: loadedLanguageName })
+    : null;
+
+  const shareUrl = `${SITE_URL}/${locale}${postPath(post)}`;
+  const hasToc = extractToc(post.content).length >= 3;
+
+  return (
+    <>
+      <BlogReadingProgress />
+
+      {/* No manual `<link rel="preload">` for the cover: the banner renders it
+          through next/image, so the preload pointed at the ORIGINAL file while the
+          browser then fetched the optimized rendition — a second, full-size
+          download of an image nothing displayed. `<Image priority>` in the banner
+          emits the correct preload on its own. */}
+      {/* Full-bleed cover banner — the header floats transparent over it. */}
+      <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
+
+      {/* Pulled up over the banner on phones — see `HERO_FLOW_INTO_PULL`, which
+            owns the number so it stays paired with the banner's bottom padding.
+            `relative` puts this above the banner's stacking context. */}
+      <PageContainer className={cn('relative pt-0 sm:pt-8', HERO_FLOW_INTO_PULL)}>
+        <BlogPostingStructuredData post={post} locale={locale} path={postPath(post)} />
+        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
+
+        <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
+
+        <BlogLanguageNotice
+          currentLocale={locale as Locale}
+          loadedLocale={post.loadedLocale}
+          languageOffers={languageOffers}
+          fallbackLabel={fallbackLabel}
+        />
+
+        <article className="mt-4 sm:mt-6">
+          <div
+            className={
+              hasToc
+                ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8'
+                : undefined
+            }
+          >
+            {hasToc && (
+              // Desktop only. On a phone the ToC is not a sidebar, it is a 998px
+              // block of chapter links between the breadcrumb and the first
+              // sentence — a full screen of navigation before any article. The
+              // two panels under it were already `hidden lg:block`, so this aside
+              // held nothing else on mobile.
+              <aside
+                data-toc-scroll
+                className="blog-sidebar-scroll hidden space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:block lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+              >
+                <BlogToc markdown={post.content} title={post.frontmatter.title} />
+                {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
+                <div className="hidden space-y-6 lg:block">
+                  <BlogCategoryTree locale={locale as Locale} />
+                  <BlogTagCloud locale={locale as Locale} />
+                </div>
+              </aside>
+            )}
+
+            <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+              <BlogContent markdown={post.content} locale={locale as Locale} />
+
+              {(() => {
+                const images = resolveGallery(post.frontmatter.gallery, locale);
+                return images.length > 0 ? <BlogGallery images={images} /> : null;
+              })()}
+
+              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                <div className="border-border/60 mt-12 border-t pt-6">
+                  <BlogTags tags={post.frontmatter.tags} />
+                </div>
+              )}
+
+              <div className="border-border/60 mt-8 border-t pt-6">
+                <ShareButtons url={shareUrl} title={post.frontmatter.title} />
+              </div>
+
+              {/* Marks the end of the readable article body — the reading-progress
+                 bar fills to 100% here, before the references/related sections. */}
+              <div id="blog-progress-end" aria-hidden="true" />
+
+              {/* Reader just finished the article — the most receptive moment for a
+                 soft "make park.fan your preferred Google source" ask. */}
+              <PreferredSourcePrompt className="mt-8" />
+
+              {/* Prev/next as a standalone, full-width bar right under the article
+                 so it doesn't get buried under the footer sections. */}
+              <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
+
+              {/* Post footer: keep-reading first (more posts), then the parks &
+                 rides referenced here. */}
+              <div className="bg-card mt-8 rounded-xl border px-6 shadow-sm">
+                <BlogRelatedPosts
+                  locale={locale as Locale}
+                  currentTranslationKey={post.translationKey}
+                  category={post.frontmatter.category}
+                  tags={post.frontmatter.tags ?? []}
+                />
+
+                {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
+                   the post — inline link references, embedded widgets, plus the
+                   explicit relatedParks / relatedAttractions frontmatter. */}
+                <BlogReferences post={post} />
+              </div>
+            </div>
+          </div>
+        </article>
+      </PageContainer>
+
+      <PageBottomSections locale={locale} />
+    </>
+  );
+}

@@ -43,7 +43,7 @@ export function NewPostsWatcher({ enabled }: { enabled: boolean }) {
   const locale = useLocale();
   const pathname = usePathname();
   const [found, setFound] = useState<Found | null>(null);
-  const onBlog = pathname === '/blog' || pathname.startsWith('/blog/');
+  const onBlog = /^\/(blog|news)(\/|$)/.test(pathname);
 
   // Somebody who opens the blog on their own while the toast is up does not need it any more —
   // not now, and not again on the way out of the blog.

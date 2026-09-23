@@ -7,6 +7,7 @@ import { versionedPath } from '@/lib/media/focus';
 import { getMediaImageBySrc } from '@/lib/media';
 import { WEBSUB_HUB } from '@/lib/websub';
 import { BLOG_FEED_DESCRIPTION, BLOG_FEED_TITLE, blogFeedUrl } from '@/lib/blog/feed';
+import { postPath } from '@/lib/blog/paths';
 
 /**
  * How many items a feed carries. Items hold the excerpt, not the article, so
@@ -137,8 +138,8 @@ export async function GET(
 
   const items = posts
     .map((post) => {
-      const { frontmatter, slug } = post;
-      const url = `${SITE_URL}/${locale}/blog/${slug}`;
+      const { frontmatter } = post;
+      const url = `${SITE_URL}/${locale}${postPath(post)}`;
       const author = resolveAuthor(frontmatter.author, locale).name;
       const pubDate = rfc822(new Date(frontmatter.date));
       // Content-versioned like every other media URL. A feed reader caches an

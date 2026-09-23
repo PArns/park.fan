@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { listPosts } from '@/lib/blog/listing';
+import { postPath } from '@/lib/blog/paths';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 
@@ -36,7 +37,7 @@ export async function BlogPostNav({ locale, currentTranslationKey }: BlogPostNav
     >
       {prev && (
         <Link
-          href={`/blog/${prev.slug}` as '/'}
+          href={postPath(prev) as '/'}
           className="border-border/60 bg-background/60 hover:border-primary/40 hover:bg-background/80 group flex flex-col gap-1 rounded-lg border p-4 backdrop-blur-md transition-colors"
         >
           <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
@@ -50,7 +51,7 @@ export async function BlogPostNav({ locale, currentTranslationKey }: BlogPostNav
       )}
       {next && (
         <Link
-          href={`/blog/${next.slug}` as '/'}
+          href={postPath(next) as '/'}
           className={cn(
             'border-border/60 bg-background/60 hover:border-primary/40 hover:bg-background/80 group flex flex-col gap-1 rounded-lg border p-4 backdrop-blur-md transition-colors',
             both && 'text-right sm:col-start-2'
