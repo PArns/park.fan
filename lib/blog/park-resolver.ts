@@ -172,7 +172,7 @@ export const resolvePark = cache(
  * card's sparkline, and reads several fields off it best-effort through a `Record` cast, so
  * narrowing it here would silently blank them.
  *
- * An allowlist, not the `delete`-based shape used for parks: only 9 of 25 fields survive, and a
+ * An allowlist, not the `delete`-based shape used for parks: only 10 of 25 fields survive, and a
  * new heavy field on the API side should stay out by default rather than have to be remembered.
  */
 function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
@@ -189,6 +189,10 @@ function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
     currentLoad: detail.currentLoad,
     statistics: detail.statistics,
     bestVisitTimes: detail.bestVisitTimes,
+    // One enum value, and the card's transport badge has nothing else to read.
+    // `ref:efteling/stoomtrein-marerijk` stands in the Efteling post in all six
+    // locales, so leaving it out drops a badge from six pages.
+    attractionKind: detail.attractionKind ?? null,
   };
 }
 

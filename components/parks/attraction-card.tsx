@@ -18,7 +18,6 @@ import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
-import { attractionPathSlugs } from '@/lib/utils/transport-attractions';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -150,10 +149,6 @@ export function AttractionCard({
       : undefined);
   const crowdLevel = getCrowdLevel(attraction);
   const href = getHref(attraction, parkPath);
-  // The park a ride belongs to reaches this card four different ways depending
-  // on the call site, but every one of them ends up in `href` — so the curated
-  // transport lookup reads the pair out of the link rather than a new prop.
-  const pathSlugs = attractionPathSlugs(href);
   const backgroundImage =
     propBackgroundImage ?? ('backgroundImage' in attraction ? attraction.backgroundImage : null);
   // Attached alongside the path by `enrichAttractionsWithImages`, so the focal point
@@ -451,10 +446,7 @@ export function AttractionCard({
                 number: on a station the queue is people waiting for the next
                 departure, so a high reading says the train is due rather than
                 that the ride is popular. */}
-            <TransportSystemBadge
-              parkSlug={pathSlugs?.parkSlug}
-              attractionSlug={pathSlugs?.attractionSlug}
-            />
+            <TransportSystemBadge attractionKind={attraction.attractionKind} />
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
             {ropeDrop && <RopeDropBadge strength={ropeDrop.strength} savings={ropeDrop.savings} />}
