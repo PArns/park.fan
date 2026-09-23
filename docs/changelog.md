@@ -4,6 +4,18 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: „Andrang jetzt" und „Prognose heute" stehen immer untereinander
+
+Die beiden Metriken lagen in einer `flex-wrap`-Reihe, ob sie nebeneinander passten, hing also an der
+Breite der Werte. Die Prognose lädt als letztes (~4,4 s) und wird dabei von einem 80-px-Platzhalter
+zu Badge plus Pfeil; auf Phantasialand bei 1280 px (beide „Sehr niedrig") brauchte das Paar 282 px
+von 271 und brach dann um, die Karte darunter rutschte 16 px (CLS 0.027 bei y=0). Den Pfeil
+wegzulassen hätte nicht gereicht: Auf Niederländisch ist allein die Beschriftung „PROGNOSE VANDAAG"
+159 px breit. Jetzt stehen die beiden in jeder Breite untereinander, die Striche als Platzhalter
+haben die 22 px Zeilenhöhe des Badges. Damit die Zelle die Karte nicht streckt (gestapelt 229 px
+gegen 213 px der Headliner-Spalte), sind die Abstände enger: `gap-2` zwischen den Metriken, `gap-1`
+und `leading-none` im Auslastungsblock. Jetzt 210 px.
+
 ## Unreleased – fix: der Toast für neue Beiträge meldet News auch im offenen Tab
 
 Der Toast aus PAR-444 zählte News schon immer mit, fragte aber nur einmal pro
