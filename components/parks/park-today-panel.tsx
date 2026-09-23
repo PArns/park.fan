@@ -38,6 +38,10 @@ import type { ParkWithAttractions } from '@/lib/api/types';
  *  four show rows and six headliner rows come out at about the same height. */
 const HEADLINER_ROWS = 6;
 const SHOW_ROWS = 4;
+/** Below `sm` the headliner column is full width and stacked under everything else, so each row
+ *  is a row of the page rather than of a column. Four is where the list stops being "which one
+ *  now" and becomes the ride list, which the „Alle N Attraktionen" link under it already is. */
+const HEADLINER_ROWS_PHONE = 4;
 
 interface ParkTodayPanelProps {
   initialData: ParkWithAttractions;
@@ -46,6 +50,40 @@ interface ParkTodayPanelProps {
   city: string;
   parkSlug: string;
   parkPath: string;
+  /**
+   * The server's clock at render time, in ms. Only a `force-dynamic` page may pass it — on a
+   * cached one it would be the time the cache was filled. It lets the first HTML already know
+   * whether any showtime is left today, which the browser clock cannot tell before it mounts.
+   * Without it the show column keeps its reserved rows, as it always did.
+   */
+  renderedAtMs?: number;
+}
+
+type HeadlinerRow = { name: string; slug: string; wait: number | null };
+
+/**
+ * The headliner rows for one park payload. `isHeadliner` is the API's own classification and the
+ * exact predicate `useAttractionFilter` uses for the Highlights section, so the two lists can
+ * never disagree about what a headliner is.
+ *
+ * Shortest first: the top row is the recommendation, not the trophy. A headliner with no standby
+ * reading sorts last and renders a dash rather than shortening the column.
+ */
+function pickHeadliners(park: ParkWithAttractions): HeadlinerRow[] {
+  if (!hasReadableWaitTimes(park)) return [];
+  return (park.attractions ?? [])
+    .filter((a) => a.isHeadliner && isInSeason(a))
+    .map((a) => ({
+      name: stripNewPrefix(a.name),
+      slug: a.slug,
+      wait: getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
+    }))
+    .sort((a, b) => {
+      if (a.wait === null) return 1;
+      if (b.wait === null) return -1;
+      return a.wait - b.wait;
+    })
+    .slice(0, HEADLINER_ROWS);
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
@@ -93,6 +131,7 @@ export function ParkTodayPanel({
   city,
   parkSlug,
   parkPath,
+  renderedAtMs,
 }: ParkTodayPanelProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
@@ -204,27 +243,44 @@ export function ParkTodayPanel({
     : null;
   const todayReady = detailDate !== null || !!detailDay;
 
-  // `isHeadliner` is the API's own classification and the exact predicate `useAttractionFilter`
-  // uses for the Highlights section, so the two lists can never disagree about what a headliner is.
+  const headliners = useMemo(() => pickHeadliners(park), [park]);
+  const initialHeadliners = useMemo(() => pickHeadliners(initialData), [initialData]);
+
+  // No headliner has a number — the park is shut, or open with nothing reported. The column then
+  // says so in one line instead of drawing a dash per ride (six of them on a closed Phantasialand).
   //
-  // Shortest first: the top row is the recommendation, not the trophy. A headliner with no standby
-  // reading sorts last and renders a dash rather than shortening the column.
-  const headliners = useMemo(() => {
-    if (!waitsReadable) return [];
-    return (park.attractions ?? [])
-      .filter((a) => a.isHeadliner && isInSeason(a))
-      .map((a) => ({
-        name: stripNewPrefix(a.name),
-        slug: a.slug,
-        wait: getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
-      }))
-      .sort((a, b) => {
-        if (a.wait === null) return 1;
-        if (b.wait === null) return -1;
-        return a.wait - b.wait;
-      })
-      .slice(0, HEADLINER_ROWS);
-  }, [park.attractions, park.status, waitsReadable]);
+  // Asked of the server render AND the live data, so the column only ever grows while somebody
+  // looks at it: a park that opens mid-visit swaps the line for its rows — the numbers the reader
+  // is waiting for — but a park that closes mid-visit keeps its rows and dashes, as before, rather
+  // than folding the panel up under the reader's thumb at closing time.
+  const headlinersIdle =
+    headliners.length > 0 &&
+    headliners.every((h) => h.wait === null) &&
+    initialHeadliners.every((h) => h.wait === null);
+
+  // What the idle line says. The countdown and the next opening need the clock, so before mount it
+  // is the plain status — one line either way, so the swap moves nothing.
+  const headlinersIdleLine = (() => {
+    if (isOpenish) return t('noLiveWaitTimes.title');
+    if (sched.timeUntil?.variant === 'opening') return sched.timeUntil.message;
+    if (sched.offseason) return sched.offseason.message;
+    const next = sched.currentTime ? initialData.nextSchedule?.openingTime : null;
+    const nextOpening = next ? new Date(next) : null;
+    if (nextOpening && sched.currentTime && nextOpening > sched.currentTime) {
+      const date = nextOpening.toLocaleDateString(locale, {
+        day: 'numeric',
+        month: 'long',
+        timeZone: timezone,
+      });
+      const time = nextOpening.toLocaleTimeString(locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: timezone,
+      });
+      return `${t('opensOn')} ${date} · ${time}`;
+    }
+    return t('status.CLOSED');
+  })();
 
   // Same reasoning as `headliners` above: a fresh `.map()` on every render of this panel (a tab
   // switch, `detailDate` changing, anything unrelated to `park`) would hand `RideAlertsEntryButton`
@@ -255,6 +311,19 @@ export function ParkTodayPanel({
         (park.shows ?? []).filter(isInSeason).reduce((n, s) => n + (s.showtimes?.length ?? 0), 0)
       ),
     [park.shows]
+  );
+  // Whether any showtime was still ahead when the SERVER rendered — `null` when the page did not
+  // hand its clock down. Read off `initialData`, so both sides of hydration answer the same.
+  const showsLeftAtRender = useMemo(
+    () =>
+      renderedAtMs === undefined
+        ? null
+        : (initialData.shows ?? [])
+            .filter(isInSeason)
+            .some((s) =>
+              (s.showtimes ?? []).some((st) => new Date(st.startTime).getTime() > renderedAtMs)
+            ),
+    [initialData.shows, renderedAtMs]
   );
 
   // The next few showtimes across the whole park, not per show: the question here is what starts
@@ -344,7 +413,15 @@ export function ParkTodayPanel({
    */
   const chapterHref = (chapter: string) => `/${locale}${parkPath}#${chapter}`;
 
-  const cell = PANEL_CELL;
+  // Below `sm` status and crowd share a row, so each gets half a phone: the padding comes down to
+  // what the two halves can spare. The full-width columns under them keep the panel's own.
+  const halfCell = cn(PANEL_CELL, 'max-sm:px-4');
+  const fullCell = cn(PANEL_CELL, 'col-span-2 sm:col-span-1');
+  // Nothing left today, known from the first HTML on. Below `sm` the show column is then one line
+  // instead of four reserved rows with a sentence centred over them; from `sm` up it sits beside
+  // columns of the same height, so the reservation costs nothing there and stays. A day that runs
+  // out WHILE somebody looks keeps its rows at every width, so the panel does not shrink under them.
+  const showsCollapsed = showsLeftAtRender === false && nextShows.length === 0;
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
@@ -504,9 +581,12 @@ export function ParkTodayPanel({
             than written down. At a fixed four-column track set a park with no headliners and no
             showtimes left two empty tracks sitting inside the panel's border — which is exactly
             what shipped. */}
-        <PanelGrid columnCount={columnCount}>
+        {/* Two tracks from the smallest width: below `sm` status and crowd are the first row and
+            the headliner and show columns span both tracks under them. One track per column
+            stacked those two short cells into 378 px of a 390 × 664 phone. */}
+        <PanelGrid columnCount={columnCount} className="grid-cols-2">
           {/* ── Status ── */}
-          <div className={cell}>
+          <div className={halfCell}>
             <PanelMetric caption={t('statusLabel')}>
               {sched.showStatusBadge && sched.badgeStatus ? (
                 <ParkStatusBadge status={sched.badgeStatus} />
@@ -514,10 +594,14 @@ export function ParkTodayPanel({
                 <Pending />
               )}
             </PanelMetric>
-            <div className="flex min-h-[3.25rem] flex-col gap-0.5">
+            {/* Below `sm` this is half a phone (~147 px of text at 390), so the countdown can wrap to
+                a second line — and it arrives after mount, off the browser clock. The reservation
+                there is the hours line plus two `text-xs` lines, so a wrapped countdown fills
+                reserved space instead of growing the row. */}
+            <div className="flex min-h-[3.25rem] flex-col gap-0.5 max-sm:min-h-[3.75rem]">
               {sched.isOperatingToday && sched.openingTime && sched.closingTime ? (
                 <>
-                  <span className="text-xl font-bold tabular-nums">
+                  <span className="text-base font-bold tabular-nums sm:text-xl">
                     <ParkTimeRange
                       openingTime={sched.openingTime}
                       closingTime={sched.closingTime}
@@ -529,7 +613,7 @@ export function ParkTodayPanel({
                   {sched.timeUntil && (
                     <span
                       className={cn(
-                        'text-sm font-medium',
+                        'text-xs font-medium sm:text-sm',
                         sched.timeUntil.variant === 'opening'
                           ? 'text-primary'
                           : 'text-amber-600 dark:text-amber-400'
@@ -540,25 +624,29 @@ export function ParkTodayPanel({
                   )}
                 </>
               ) : sched.offseason ? (
-                <span className="text-sm font-medium">{sched.offseason.message}</span>
+                <span className="text-xs font-medium sm:text-sm">{sched.offseason.message}</span>
               ) : (
                 <span className="text-muted-foreground text-sm">{t('status.CLOSED')}</span>
               )}
             </div>
             {stats && (
               <p className="text-muted-foreground mt-auto flex items-center gap-1.5 text-xs">
-                <Users className="h-3 w-3" aria-hidden="true" />
-                {t.rich('attractionsOpenOf', {
-                  open: stats.operatingAttractions,
-                  total: stats.totalAttractions,
-                  strong: (c) => <strong className="text-foreground font-semibold">{c}</strong>,
-                })}
+                <Users className="h-3 w-3 shrink-0" aria-hidden="true" />
+                {/* One flex item: bare, the number and the words around it were separate items,
+                    and in a half-width cell the number stood in a column of its own. */}
+                <span>
+                  {t.rich('attractionsOpenOf', {
+                    open: stats.operatingAttractions,
+                    total: stats.totalAttractions,
+                    strong: (c) => <strong className="text-foreground font-semibold">{c}</strong>,
+                  })}
+                </span>
               </p>
             )}
           </div>
 
           {/* ── Andrang ── */}
-          <div className={cell}>
+          <div className={halfCell}>
             {/* Always stacked, at every width.
 
                 This was `flex flex-wrap`, so whether „Prognose heute" sat beside „Andrang jetzt"
@@ -695,7 +783,7 @@ export function ParkTodayPanel({
 
           {/* ── Headliner jetzt ── */}
           {headlinerSlots > 0 && (
-            <div className={cell}>
+            <div className={fullCell}>
               <PanelMetric
                 caption={t('headlinersNow')}
                 action={
@@ -710,11 +798,17 @@ export function ParkTodayPanel({
                   ) : null
                 }
               >
-                <ul className="flex flex-col gap-0.5">
+                {headlinersIdle && (
+                  <p className="text-muted-foreground truncate text-sm">{headlinersIdleLine}</p>
+                )}
+                <ul className={cn('flex flex-col gap-0.5', headlinersIdle && 'hidden')}>
                   {Array.from({ length: headlinerSlots }, (_, i) => {
                     const ride = headliners[i];
                     return (
-                      <li key={i} className="text-sm">
+                      <li
+                        key={i}
+                        className={cn('text-sm', i >= HEADLINER_ROWS_PHONE && 'max-sm:hidden')}
+                      >
                         {ride ? (
                           // The WHOLE row is the link, not just the name. The wait time beside it
                           // is the reason somebody reaches for this row at all, and a target that
@@ -765,7 +859,7 @@ export function ParkTodayPanel({
 
           {/* ── Nächste Shows ── */}
           {showSlots > 0 && (
-            <div className={cell}>
+            <div className={fullCell}>
               <PanelMetric
                 caption={t('nextShows')}
                 action={
@@ -777,7 +871,12 @@ export function ParkTodayPanel({
                   </a>
                 }
               >
-                <div className="relative">
+                {showsCollapsed && (
+                  <p className="text-muted-foreground text-sm sm:hidden">
+                    {tCommon('noShowtimesToday')}
+                  </p>
+                )}
+                <div className={cn('relative', showsCollapsed && 'max-sm:hidden')}>
                   {/* Nothing left today, and the park does have shows — `showSlots > 0` is counted
                     from `park.shows`, so this column is not even rendered for a park without any.
                     The sentence is centred over the rows the column has already reserved rather
