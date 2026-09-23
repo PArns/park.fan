@@ -18,7 +18,7 @@ tags:
   - tiempos-de-espera
   - predicciones-ia
   - entre-bastidores
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany

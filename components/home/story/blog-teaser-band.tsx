@@ -2,7 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Newspaper } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
-import { listPostsByRecency } from '@/lib/blog/listing';
+import { listArticlesByRecency } from '@/lib/blog/listing';
+import { NewsRow } from '@/components/blog/news-row';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -17,7 +18,10 @@ import type { Locale } from '@/i18n/config';
  * different shape (a lead card with four beside it), so nothing is lost on a
  * phone; what would be lost by keeping this one there is the fold.
  *
- * **No `<Suspense>`, and that is the point.** `listPostsByRecency` reads the
+ * The three are articles only; news has its own smaller row under them
+ * ({@link NewsRow}), so a busy news week does not push the guides out of the band.
+ *
+ * **No `<Suspense>`, and that is the point.** `listArticlesByRecency` reads the
  * generated manifest synchronously, so there is no async work to defer and a
  * boundary here would drop the band out of the first HTML and put it back a
  * moment later — a shift on the highest-traffic page in the app, for nothing.
@@ -37,7 +41,7 @@ export async function BlogTeaserBand({ locale }: { locale: Locale }) {
     getTranslations('blog'),
   ]);
 
-  const posts = listPostsByRecency(locale).slice(0, 3);
+  const posts = listArticlesByRecency(locale).slice(0, 3);
   if (posts.length === 0) return null;
 
   return (
@@ -68,6 +72,8 @@ export async function BlogTeaserBand({ locale }: { locale: Locale }) {
               <BlogPostCard key={post.translationKey} post={post} />
             ))}
           </div>
+
+          <NewsRow locale={locale} className="mt-5" />
         </div>
       </div>
     </section>

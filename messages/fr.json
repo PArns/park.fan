@@ -486,6 +486,7 @@
     "bestTime": "Meilleure période",
     "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc.",
     "latestPosts": "Derniers articles",
+    "allNews": "Toutes les actualités",
     "moreCities": "{count, plural, =1 {1 autre ville} other {# autres villes}}",
     "categories": "Catégories",
     "popularParks": "Parcs populaires",
@@ -1335,6 +1336,7 @@
       "maxHeightLabel": "Jusqu’à",
       "mayGetWet": "Vous risquez d’être mouillé",
       "singleRider": "Single Rider",
+      "virtualLine": "File virtuelle",
       "fastPassFree": "gratuit",
       "fastPassFrom": "à partir de",
       "rcdbLabel": "{attraction} sur RCDB",
@@ -1405,7 +1407,14 @@
     "day": "{count, plural, =1 {jour} other {jours}}",
     "week": "{count, plural, =1 {semaine} other {semaines}}",
     "offseason": "Hors saison",
-    "nearbyParksArea": "Dans les environs"
+    "nearbyParksArea": "Dans les environs",
+    "parkPage": {
+      "heading": "Près de vous",
+      "inParkCoarse": "Vous êtes dans le parc",
+      "ask": "Au parc ? Afficher les attractions près de vous",
+      "blocked": "La localisation est bloquée dans votre navigateur",
+      "away": "Vous êtes à {distance} du parc"
+    }
   },
   "geo": {
     "continent": "Continent",
@@ -1980,6 +1989,14 @@
       "playHint": "Charge le lecteur YouTube seulement au clic."
     }
   },
+  "blogToast": {
+    "eyebrow": "Nouveau sur le blog",
+    "read": "Lire l’article",
+    "close": "Fermer",
+    "moreOne": "Et {count} autre nouvel article",
+    "moreOther": "Et {count} autres nouveaux articles",
+    "allPosts": "Tout voir"
+  },
   "contribute": {
     "gallery": {
       "title": "Ces parcs et attractions attendent vos photos",
@@ -2328,7 +2345,11 @@
         "show-times": "Horaires des spectacles",
         "ride-status": "Quand une attraction prévue ferme ou rouvre",
         "wait-change": "Quand une attente prévue change nettement"
-      }
+      },
+      "share": "Partager un lien vers ce plan",
+      "shareCopied": "Lien copié",
+      "shareManual": "La copie n’a pas fonctionné. Voici le lien à sélectionner :",
+      "shareTitle": "Mon plan sur park.fan"
     },
     "page": {
       "kicker": "Planificateur",
@@ -2426,6 +2447,21 @@
     "plans": {
       "title": "Mes plans"
     },
-    "planDayInWizard": "Planifier ce jour"
+    "planDayInWizard": "Planifier ce jour",
+    "shared": {
+      "metaTitle": "Plan partagé | park.fan",
+      "title": "Plan partagé",
+      "subtitle": "Quelqu’un vous a envoyé un plan du planificateur.",
+      "loading": "Chargement du plan…",
+      "missing": "Aucun plan ne correspond à ce lien. Il a peut-être été copié en partie ou a expiré, ou l’expéditeur a désactivé les notifications, ce qui supprime le plan.",
+      "failed": "Le plan n’a pas pu être chargé pour le moment.",
+      "retry": "Réessayer",
+      "empty": "Ce plan ne contient encore aucune attraction.",
+      "copyNote": "En reprenant ce plan, vous obtenez votre propre copie. Ce que vous y changez reste chez vous, et le plan de l’expéditeur ne change pas.",
+      "replaces": "Un plan existe déjà sur cet appareil. Il sera remplacé par le plan partagé.",
+      "adopt": "Reprendre dans mon planificateur",
+      "adopted": "Le plan est maintenant dans votre planificateur.",
+      "open": "Ouvrir le planificateur"
+    }
   }
 }

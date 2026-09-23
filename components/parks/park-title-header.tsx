@@ -91,7 +91,12 @@ export async function ParkTitleHeader({
         {park.id && <ParkFavoriteButton parkId={park.id} />}
       </div>
 
-      <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">{intro}</p>
+      {/* Clamped to two lines below `sm`: at five lines it was 114 px of a 664 px phone screen
+        in front of "Heute im Park". The clamp is CSS only, so the whole paragraph is still in the
+        served HTML — it is the crawlable text the live grid cannot give (see the park page). */}
+      <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
+        {intro}
+      </p>
 
       {/* One row for everything this header offers to press: the park's own site, ticket shop and
         Wikipedia entry on the left, the way into the planner pushed to the right edge. They used

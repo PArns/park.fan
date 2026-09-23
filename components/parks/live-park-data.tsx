@@ -2,6 +2,7 @@
 
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
+import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { useMemo } from 'react';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
@@ -129,6 +130,8 @@ export function LiveParkData({
           twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
           `display:none` does not skip hydration, which was the dominant mobile-INP source on
           large parks like PortAventura. */}
+      {/* "Near you" for a visitor standing in this park: one reserved row for everybody else. */}
+      <ParkInParkBlock park={currentPark} />
       {tabsWithHash}
     </>
   );

@@ -486,6 +486,7 @@
     "bestTime": "Periodo migliore",
     "bestTimeHint": "I giorni e i mesi più tranquilli, parco per parco.",
     "latestPosts": "Ultimi articoli",
+    "allNews": "Tutte le notizie",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
@@ -1335,6 +1336,7 @@
       "maxHeightLabel": "Fino a",
       "mayGetWet": "Potresti bagnarti",
       "singleRider": "Single Rider",
+      "virtualLine": "Coda virtuale",
       "fastPassFree": "gratuito",
       "fastPassFrom": "da",
       "rcdbLabel": "{attraction} su RCDB",
@@ -1405,7 +1407,14 @@
     "day": "{count, plural, =1 {giorno} other {giorni}}",
     "week": "{count, plural, =1 {settimana} other {settimane}}",
     "offseason": "Fuori stagione",
-    "nearbyParksArea": "Nei dintorni"
+    "nearbyParksArea": "Nei dintorni",
+    "parkPage": {
+      "heading": "Vicino a te",
+      "inParkCoarse": "Sei nel parco",
+      "ask": "Sei al parco? Mostra le attrazioni vicine",
+      "blocked": "La posizione è bloccata nel browser",
+      "away": "Sei a {distance} dal parco"
+    }
   },
   "geo": {
     "continent": "Continente",
@@ -1980,6 +1989,14 @@
       "playHint": "Carica il player di YouTube solo al tocco."
     }
   },
+  "blogToast": {
+    "eyebrow": "Novità sul blog",
+    "read": "Leggi l’articolo",
+    "close": "Chiudi",
+    "moreOne": "E {count} altro articolo nuovo",
+    "moreOther": "E altri {count} articoli nuovi",
+    "allPosts": "Vedi tutti"
+  },
   "contribute": {
     "gallery": {
       "title": "Questi parchi e queste attrazioni aspettano le tue foto",
@@ -2328,7 +2345,11 @@
         "show-times": "Orari degli spettacoli",
         "ride-status": "Quando un’attrazione in programma chiude o riapre",
         "wait-change": "Quando un’attesa in programma cambia molto"
-      }
+      },
+      "share": "Condividi un link a questo piano",
+      "shareCopied": "Link copiato",
+      "shareManual": "La copia non è riuscita. Ecco il link da selezionare:",
+      "shareTitle": "Il mio piano su park.fan"
     },
     "page": {
       "kicker": "Pianificatore",
@@ -2426,6 +2447,21 @@
     "plans": {
       "title": "I miei piani"
     },
-    "planDayInWizard": "Pianifica il giorno"
+    "planDayInWizard": "Pianifica il giorno",
+    "shared": {
+      "metaTitle": "Piano condiviso | park.fan",
+      "title": "Piano condiviso",
+      "subtitle": "Qualcuno ti ha inviato un piano dal pianificatore.",
+      "loading": "Caricamento del piano…",
+      "missing": "A questo link non corrisponde nessun piano. Forse è stato copiato a metà o è scaduto, oppure chi lo ha inviato ha disattivato le notifiche, e così il piano è stato cancellato.",
+      "failed": "Al momento non è stato possibile caricare il piano.",
+      "retry": "Riprova",
+      "empty": "In questo piano non c’è ancora nessuna attrazione.",
+      "copyNote": "Se prendi il piano, ne ricevi una copia tua. Quello che cambi resta a te, e il piano di chi lo ha inviato non cambia.",
+      "replaces": "Su questo dispositivo c’è già un piano. Verrà sostituito da quello condiviso.",
+      "adopt": "Aggiungi al mio pianificatore",
+      "adopted": "Il piano ora è nel tuo pianificatore.",
+      "open": "Apri pianificatore"
+    }
   }
 }

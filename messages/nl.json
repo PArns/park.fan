@@ -486,6 +486,7 @@
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
     "latestPosts": "Nieuwste berichten",
+    "allNews": "Al het nieuws",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
@@ -1335,6 +1336,7 @@
       "maxHeightLabel": "Tot",
       "mayGetWet": "Je kunt nat worden",
       "singleRider": "Single Rider",
+      "virtualLine": "Virtuele wachtrij",
       "fastPassFree": "gratis",
       "fastPassFrom": "vanaf",
       "rcdbLabel": "{attraction} in de RCDB",
@@ -1405,7 +1407,14 @@
     "day": "{count, plural, =1 {dag} other {dagen}}",
     "week": "{count, plural, =1 {week} other {weken}}",
     "offseason": "Buiten seizoen",
-    "nearbyParksArea": "In de omgeving"
+    "nearbyParksArea": "In de omgeving",
+    "parkPage": {
+      "heading": "Bij jou in de buurt",
+      "inParkCoarse": "Je bent in het park",
+      "ask": "In het park? Toon attracties bij jou in de buurt",
+      "blocked": "Locatietoegang is geblokkeerd in je browser",
+      "away": "Je bent {distance} van het park"
+    }
   },
   "geo": {
     "continent": "Continent",
@@ -1980,6 +1989,14 @@
       "playHint": "Laadt de YouTube-speler pas als je tikt."
     }
   },
+  "blogToast": {
+    "eyebrow": "Nieuw op de blog",
+    "read": "Artikel lezen",
+    "close": "Sluiten",
+    "moreOne": "En nog {count} nieuw artikel",
+    "moreOther": "En nog {count} nieuwe artikelen",
+    "allPosts": "Alles bekijken"
+  },
   "contribute": {
     "gallery": {
       "title": "Deze parken en attracties wachten op jouw foto’s",
@@ -2328,7 +2345,11 @@
         "show-times": "Speeltijden van de shows",
         "ride-status": "Als een geplande attractie sluit of weer opengaat",
         "wait-change": "Als een geplande wachttijd flink verandert"
-      }
+      },
+      "share": "Link naar dit plan delen",
+      "shareCopied": "Link gekopieerd",
+      "shareManual": "Kopiëren lukte niet. Hier is de link om te selecteren:",
+      "shareTitle": "Mijn plan op park.fan"
     },
     "page": {
       "kicker": "Dagplanner",
@@ -2426,6 +2447,21 @@
     "plans": {
       "title": "Mijn plannen"
     },
-    "planDayInWizard": "Dag plannen"
+    "planDayInWizard": "Dag plannen",
+    "shared": {
+      "metaTitle": "Gedeeld plan | park.fan",
+      "title": "Gedeeld plan",
+      "subtitle": "Iemand heeft je een plan uit de dagplanner gestuurd.",
+      "loading": "Plan wordt geladen…",
+      "missing": "Bij deze link hoort geen plan. Misschien is hij niet volledig gekopieerd of verlopen, of heeft de afzender de meldingen uitgezet en het plan daarmee verwijderd.",
+      "failed": "Het plan kon nu niet worden geladen.",
+      "retry": "Opnieuw proberen",
+      "empty": "In dit plan staat nog geen attractie.",
+      "copyNote": "Neem je het plan over, dan krijg je een eigen kopie. Wat je eraan verandert, blijft bij jou. Het plan van de afzender verandert daardoor niet.",
+      "replaces": "Op dit apparaat staat al een plan. Het wordt vervangen door het gedeelde plan.",
+      "adopt": "Overnemen in mijn planner",
+      "adopted": "Het plan staat nu in je planner.",
+      "open": "Planner openen"
+    }
   }
 }

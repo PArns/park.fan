@@ -486,6 +486,7 @@
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
     "latestPosts": "Neueste Beiträge",
+    "allNews": "Alle News",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
@@ -1335,6 +1336,7 @@
       "maxHeightLabel": "Bis",
       "mayGetWet": "Nässegefahr",
       "singleRider": "Single Rider",
+      "virtualLine": "Virtuelle Warteschlange",
       "fastPassFree": "kostenlos",
       "fastPassFrom": "ab",
       "rcdbLabel": "{attraction} in der RCDB",
@@ -1405,7 +1407,14 @@
     "day": "{count, plural, =1 {Tag} other {Tagen}}",
     "week": "{count, plural, =1 {Woche} other {Wochen}}",
     "offseason": "Nebensaison",
-    "nearbyParksArea": "In der Umgebung"
+    "nearbyParksArea": "In der Umgebung",
+    "parkPage": {
+      "heading": "In deiner Nähe",
+      "inParkCoarse": "Du bist im Park",
+      "ask": "Im Park? Fahrten in deiner Nähe zeigen",
+      "blocked": "Standortzugriff ist im Browser blockiert",
+      "away": "Du bist {distance} vom Park entfernt"
+    }
   },
   "geo": {
     "continent": "Kontinent",
@@ -1980,6 +1989,14 @@
       "playHint": "Lädt den YouTube-Player erst beim Tippen."
     }
   },
+  "blogToast": {
+    "eyebrow": "Neu im Blog",
+    "read": "Beitrag lesen",
+    "close": "Schließen",
+    "moreOne": "Und {count} weiterer neuer Beitrag",
+    "moreOther": "Und {count} weitere neue Beiträge",
+    "allPosts": "Alle ansehen"
+  },
   "contribute": {
     "gallery": {
       "title": "Diese Parks und Rides warten auf deine Fotos",
@@ -2328,7 +2345,11 @@
         "show-times": "Vorstellungszeiten der Shows",
         "ride-status": "Wenn eine geplante Bahn schließt oder wieder öffnet",
         "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert"
-      }
+      },
+      "share": "Link zum Plan teilen",
+      "shareCopied": "Link kopiert",
+      "shareManual": "Kopieren hat nicht geklappt. Hier ist der Link zum Markieren:",
+      "shareTitle": "Mein Plan auf park.fan"
     },
     "page": {
       "kicker": "Tagesplaner",
@@ -2426,6 +2447,21 @@
     "plans": {
       "title": "Meine Pläne"
     },
-    "planDayInWizard": "Tag planen"
+    "planDayInWizard": "Tag planen",
+    "shared": {
+      "metaTitle": "Geteilter Plan | park.fan",
+      "title": "Geteilter Plan",
+      "subtitle": "Jemand hat dir einen Plan aus dem Tagesplaner geschickt.",
+      "loading": "Plan wird geladen…",
+      "missing": "Zu diesem Link gibt es keinen Plan. Vielleicht ist er unvollständig kopiert oder abgelaufen, oder der Absender hat die Benachrichtigungen ausgeschaltet und den Plan damit gelöscht.",
+      "failed": "Der Plan ließ sich gerade nicht laden.",
+      "retry": "Noch einmal versuchen",
+      "empty": "In diesem Plan steht noch keine Bahn.",
+      "copyNote": "Übernimmst du den Plan, bekommst du eine eigene Kopie. Was du daran änderst, bleibt bei dir. Der Plan des Absenders ändert sich dadurch nicht.",
+      "replaces": "Auf diesem Gerät liegt schon ein Plan. Er wird durch den geteilten ersetzt.",
+      "adopt": "In meinen Planer übernehmen",
+      "adopted": "Der Plan steht jetzt in deinem Planer.",
+      "open": "Planer öffnen"
+    }
   }
 }

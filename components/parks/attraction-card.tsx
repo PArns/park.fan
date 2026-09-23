@@ -30,6 +30,7 @@ import { WorksPeriodBadge } from './works-period-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
+import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { TransportSystemBadge } from './transport-system-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
@@ -486,6 +487,10 @@ export function AttractionCard({
                 degrades to a tooltip rather than nesting an <a> inside one. */}
             <SingleRiderBadge
               hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
+              insideLink
+            />
+            <VirtualLineBadge
+              hasVirtualLine={'hasVirtualLine' in attraction ? attraction.hasVirtualLine : null}
               insideLink
             />
             <FastPassBadge

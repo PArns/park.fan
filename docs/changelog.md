@@ -4,6 +4,79 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: „Andrang jetzt" und „Prognose heute" stehen immer untereinander
+
+Die beiden Metriken lagen in einer `flex-wrap`-Reihe, ob sie nebeneinander passten, hing also an der
+Breite der Werte. Die Prognose lädt als letztes (~4,4 s) und wird dabei von einem 80-px-Platzhalter
+zu Badge plus Pfeil; auf Phantasialand bei 1280 px (beide „Sehr niedrig") brauchte das Paar 282 px
+von 271 und brach dann um, die Karte darunter rutschte 16 px (CLS 0.027 bei y=0). Den Pfeil
+wegzulassen hätte nicht gereicht: Auf Niederländisch ist allein die Beschriftung „PROGNOSE VANDAAG"
+159 px breit. Jetzt stehen die beiden in jeder Breite untereinander, die Striche als Platzhalter
+haben die 22 px Zeilenhöhe des Badges. Damit die Zelle die Karte nicht streckt (gestapelt 229 px
+gegen 213 px der Headliner-Spalte), sind die Abstände enger: `gap-2` zwischen den Metriken, `gap-1`
+und `leading-none` im Auslastungsblock. Jetzt 210 px.
+
+## Unreleased – fix: der Toast für neue Beiträge meldet News auch im offenen Tab
+
+Der Toast aus PAR-444 zählte News schon immer mit, fragte aber nur einmal pro
+`sessionStorage`-Session nach. Die lebt so lange wie der Tab, und ein wiederhergestellter Tab oder
+die installierte App behält sie tagelang: Nach einem News-Deploy brachte ein Reload keine Anfrage
+und keinen Toast, nur ein neuer Tab. Im Browser nachgestellt, vorher und nachher.
+
+Jetzt fragt der Watcher nach dem ersten Seitenaufruf, nach jeder clientseitigen Navigation und wenn
+ein Tab wieder nach vorn kommt, höchstens einmal alle zehn Minuten über alle Tabs
+(`claimCheck`, `localStorage['pf:blog-seen-checked-at']`). `/api/blog-latest` bleibt an der Edge
+zehn Minuten statt einer Stunde frisch, weil Cloudflare niemand purgen kann und eine News in den
+Stunden nach dem Deploy am meisten wert ist. Ein Toast, der beim Wechsel in den Blog verschwindet,
+kommt beim Verlassen nicht wieder. Tests: `pnpm test:new-posts`. Doku:
+[New-posts toast](features/new-posts-toast.md).
+
+## Unreleased – fix: keine leere Mitte mehr in „Heute im Park"
+
+Zwischen den vier Spalten und der Kachelreihe lag auf fast jedem Park ein 104 px hohes leeres Band
+(135 px auf dem Handy). Es war die Reservierung für den Regen-/Unwetter-Streifen aus dem Nowcast,
+der clientseitig geladen wird und ohne Platzhalter die Seite 2,5 s nach dem ersten Paint um 134 px
+nach unten schob. Nur 11 von 210 Parks hatten an dem Tag, an dem sie eingebaut wurde, überhaupt eine
+Warnung.
+
+Die Warnung steht jetzt als eine Zeile in der Titelzeile des Panels, an der Stelle der
+Wetterbeschreibung (`useNowcastAlert`, `NowcastAlertToggle`). Die Zeile ist auf jedem Park da und
+bleibt mit und ohne Warnung 45 px hoch, also verschiebt eine spät ankommende Warnung nichts. Ein
+Druck darauf klappt das volle Banner mit Zeitleiste darunter auf; eine Verschiebung direkt nach
+einer Eingabe zählt nicht als CLS. Auf dem Handy machen Überschrift und Uhr der Warnung Platz,
+sonst blieb von „Gewitter in ca. 25 Min." nur „Gewitter in c…". `WeatherNowcastBanner` rendert für
+`/ui` und die Guide-Seite unverändert das ganze Banner. Regel:
+[A streamed section owes the page its height](rules/a-streamed-section-owes-the-page-its-height.md).
+
+## Unreleased – News stehen neben den Artikeln, nicht zwischen ihnen
+
+Beiträge der Kategorie `news` laufen auf den Teaser-Flächen nicht mehr in derselben Liste wie die
+Artikel. Startseite (Band unter dem Hero und Blog-Kapitel), Blog-Panel im Header-Menü sowie Park-
+und Attraktionsseiten zeigen oben nur Artikel und darunter eine kleinere News-Zeile (`NewsRow`,
+`NewsList`). Jede News zeigt ihr Alter („heute", „vor 3 Wochen"), die ersten sieben Tage in der
+Akzentfarbe. Ausgeblendet wird wegen des Alters nichts. Das Header-Menü zeigt dafür fünf statt sechs
+Artikel, damit das Panel nicht höher wird. Regel:
+[News is set apart from the articles](rules/news-is-set-apart-from-the-articles.md).
+
+## Unreleased – feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
+
+Wer wiederkommt und neue Beiträge verpasst hat, bekommt einmal einen Toast mit dem neuesten davon,
+beim Erstbesuch nie. Die ganze Karte ist der Link auf den Beitrag (ein gestrecktes `::after`),
+darüber liegen nur das X und „Alle ansehen“, das immer dasteht; „Und N weitere neue Beiträge“
+erscheint nur, wenn es mehr als einen gibt. Auf dem Handy sitzt der Toast unten über dem
+Home-Indicator und wird nach unten weggewischt, ab `sm` oben rechts 15 px unter dem Header, nach
+rechts wegzuwischen, auf `z-40` unter den Menübändern des Headers, unter dem Sprach-Banner, falls
+der offen ist, und neben dem offenen Planer-Panel. Nach 12 s schließt er sich, der Balken unten
+ist der Countdown und hält bei Hover, Fokus und verstecktem Tab an.
+
+Der Watcher im Locale-Layout fragt 2,5 s nach dem Laden und nur einmal pro Sitzung
+`/api/blog-latest/<locale>` ab (statisches JSON aus dem Blog-Manifest, samt der Strings des
+Toasts), die Toast-UI mit framer-motion wird nur geladen, wenn es etwas zu zeigen gibt. Keine Seite
+trägt dafür etwas im RSC-Payload. Verglichen wird über Translation-Keys plus Datumsuntergrenze in
+`localStorage`, nicht über einen Zeitstempel, weil `date` ein Tag ist. Neues Umami-Event
+`blog_toast_opened` ohne Properties. Details:
+[features/new-posts-toast.md](features/new-posts-toast.md).
+
 ## Unreleased – fix: die OG-Funktion trägt 18 MB Fotos statt 256
 
 Der Deploy scheiterte an `The Vercel Function "api/og/[...path]" is 290.96mb uncompressed`, zum

@@ -18,7 +18,7 @@ tags:
   - tipps
   - orlando
   - hinter-den-kulissen
-category: news
+category: park-fan
 parkLinks:
   # Hansa-Park bekommt einen eigenen Absatz darüber, warum der Planer dort keine
   # Knöpfe anbietet. Genau das fragt sich jemand auf dieser Parkseite.

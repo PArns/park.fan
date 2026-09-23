@@ -106,7 +106,7 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
       {elements.length > 0 && (
         <a
           href="#ride-profile"
-          className="text-primary hover:bg-primary/10 ml-auto inline-flex items-center gap-1 rounded-md px-2 py-1 text-sm font-medium transition-colors"
+          className="text-primary hover:bg-primary/10 ml-auto inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors"
         >
           {t('figureCount', { count: elements.length })}
           <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
