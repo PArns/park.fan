@@ -4,6 +4,23 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: keine leere Mitte mehr in „Heute im Park"
+
+Zwischen den vier Spalten und der Kachelreihe lag auf fast jedem Park ein 104 px hohes leeres Band
+(135 px auf dem Handy). Es war die Reservierung für den Regen-/Unwetter-Streifen aus dem Nowcast,
+der clientseitig geladen wird und ohne Platzhalter die Seite 2,5 s nach dem ersten Paint um 134 px
+nach unten schob. Nur 11 von 210 Parks hatten an dem Tag, an dem sie eingebaut wurde, überhaupt eine
+Warnung.
+
+Die Warnung steht jetzt als eine Zeile in der Titelzeile des Panels, an der Stelle der
+Wetterbeschreibung (`useNowcastAlert`, `NowcastAlertToggle`). Die Zeile ist auf jedem Park da und
+bleibt mit und ohne Warnung 45 px hoch, also verschiebt eine spät ankommende Warnung nichts. Ein
+Druck darauf klappt das volle Banner mit Zeitleiste darunter auf; eine Verschiebung direkt nach
+einer Eingabe zählt nicht als CLS. Auf dem Handy machen Überschrift und Uhr der Warnung Platz,
+sonst blieb von „Gewitter in ca. 25 Min." nur „Gewitter in c…". `WeatherNowcastBanner` rendert für
+`/ui` und die Guide-Seite unverändert das ganze Banner. Regel:
+[A streamed section owes the page its height](rules/a-streamed-section-owes-the-page-its-height.md).
+
 ## Unreleased – News stehen neben den Artikeln, nicht zwischen ihnen
 
 Beiträge der Kategorie `news` laufen auf den Teaser-Flächen nicht mehr in derselben Liste wie die

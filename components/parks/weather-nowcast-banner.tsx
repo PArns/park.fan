@@ -2,7 +2,14 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
+import {
+  AlertTriangle,
+  ChevronDown,
+  CloudHail,
+  CloudLightning,
+  CloudRain,
+  Wind,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
@@ -12,15 +19,18 @@ import { formatWindSpeed } from '@/lib/utils/temperature';
 import { formatShortDuration } from '@/lib/utils/duration';
 import type { WeatherNowcast } from '@/lib/api/types';
 
-interface WeatherNowcastBannerProps {
+interface UseNowcastAlertParams {
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
   initialData: WeatherNowcast | null;
-  className?: string;
   /** Disable the polling query (e.g. on the /ui showcase page). */
   enabled?: boolean;
+}
+
+interface WeatherNowcastBannerProps extends UseNowcastAlertParams {
+  className?: string;
 }
 
 type BannerKind = 'storm' | 'hail' | 'thunderstorm' | 'rain';
@@ -190,15 +200,30 @@ const BANNER_STYLES: Record<
   },
 };
 
-export function WeatherNowcastBanner({
+/** A nowcast warning that is due now, worded and ready to draw. */
+export interface NowcastAlert {
+  kind: BannerKind;
+  heading: string;
+  body: string;
+  data: WeatherNowcast;
+}
+
+/**
+ * The nowcast warning due right now, or `null` — the query, the clock, the pick and the wording,
+ * without the box.
+ *
+ * Split out of {@link WeatherNowcastBanner} so the park header can say the same thing in one line
+ * of its title row and open the full banner on a press. Both read this hook, so the one-line
+ * version and the banner can never pick a different warning or word it differently.
+ */
+export function useNowcastAlert({
   continent,
   country,
   city,
   parkSlug,
   initialData,
-  className,
   enabled = true,
-}: WeatherNowcastBannerProps) {
+}: UseNowcastAlertParams): NowcastAlert | null {
   const t = useTranslations('parks.weatherNowcast');
   const locale = useLocale();
   const { unit } = useTemperatureUnit();
@@ -212,42 +237,35 @@ export function WeatherNowcastBanner({
     enabled,
   });
 
-  // Live clock so countdowns recompute every second. Starts at 0 on BOTH the server and the
-  // hydration render (a `typeof window` initializer would bake epoch-based countdown text into
-  // server-rendered banners and mismatch on hydration); the effect below stamps the real time
-  // right after mount.
+  // Live clock so countdowns recompute. Starts at 0 on BOTH the server and the hydration render
+  // (a `typeof window` initializer would bake epoch-based countdown text into server-rendered
+  // markup and mismatch on hydration); the effect below stamps the real time right after mount.
   const [now, setNow] = useState(0);
 
-  // `now > 0` keeps the banner hidden until the clock mounts, so SSR and hydration agree.
+  // `now > 0` keeps the warning hidden until the clock mounts, so SSR and hydration agree.
   const banner = useMemo(() => (data && now > 0 ? pickBanner(data, now) : null), [data, now]);
 
-  // Tick per second only while a banner is actually visible ON SCREEN (its countdown
-  // needs it); scrolled away or in a background tab the fast tick pauses. Without a
-  // banner — the common case on most park pages — a slow minute tick (skipped while
-  // the tab is hidden) keeps `now` fresh enough to surface an upcoming warning,
-  // instead of re-rendering the component every second forever just to return null.
   // No `useActiveOnScreen` here any more, and its absence is the point.
   //
   // It was left behind when the per-second tick became a flat 60-second one: nothing read its
   // `active` value, but the hook still mounted an IntersectionObserver and a `visibilitychange`
-  // listener, and still called `setOnScreen`/`setTabVisible`. Every one of those re-rendered THIS
-  // component — the one that owns the full-bleed `backdrop-blur-md` layer below — so scrolling
-  // the banner into view or switching tabs cost exactly the backdrop invalidation the tick had
-  // cost, just on a different trigger. Which also fits „irregular and not reproducible" better
-  // than a timer does. The interval checks `document.hidden` itself; nothing else needed it.
+  // listener, and still called `setOnScreen`/`setTabVisible`. Every one of those re-rendered the
+  // component that owns the full-bleed `backdrop-blur-md` layer below — so scrolling the banner
+  // into view or switching tabs cost exactly the backdrop invalidation the tick had cost, just on
+  // a different trigger. Which also fits „irregular and not reproducible" better than a timer
+  // does. The interval checks `document.hidden` itself; nothing else needed it.
   useEffect(() => {
     // Deferred initial stamp (same pattern as useBrowserNow) — no synchronous
-    // set-state-in-effect; the banner appears one tick after mount when applicable.
+    // set-state-in-effect; the warning appears one tick after mount when applicable.
     const init = window.setTimeout(() => setNow(Date.now()), 0);
-    // Sixty seconds, always. Everything this component derives from `now` is minute-granular —
-    // `minutesUntil` rounds to whole minutes, `isInPast` and `dayKey` are coarser still — so a
-    // per-second tick bought no accuracy anywhere on screen. What it bought was a re-render of
-    // this component sixty times a minute, and this component owns a full-bleed
-    // `backdrop-blur-md` layer (see the panel below). Chromium has to re-read what is behind a
-    // backdrop filter whenever its subtree paints, so every one of those ticks was a backdrop
-    // re-rasterisation; miss a frame and the blur flattens for exactly that frame, which is the
-    // „Heute im Park" card going transparent for an instant, irregularly, and then sitting still
-    // for seconds. The one thing that genuinely needs seconds is the mm:ss countdown, and it
+    // Sixty seconds, always. Everything derived from `now` is minute-granular — `minutesUntil`
+    // rounds to whole minutes, `isInPast` and `dayKey` are coarser still — so a per-second tick
+    // bought no accuracy anywhere on screen. What it bought was a re-render sixty times a minute
+    // of a component that owns a full-bleed `backdrop-blur-md` layer. Chromium has to re-read what
+    // is behind a backdrop filter whenever its subtree paints, so every one of those ticks was a
+    // backdrop re-rasterisation; miss a frame and the blur flattens for exactly that frame, which
+    // is the „Heute im Park" card going transparent for an instant, irregularly, and then sitting
+    // still for seconds. The one thing that genuinely needs seconds is the mm:ss countdown, and it
     // keeps its own ticker — scoped to itself, gated on visibility, and painted in isolation.
     const id = window.setInterval(() => {
       if (!document.hidden) setNow(Date.now());
@@ -265,9 +283,6 @@ export function WeatherNowcastBanner({
   }, []);
 
   if (!data || !banner) return null;
-
-  const styles = BANNER_STYLES[banner.kind];
-  const Icon = styles.icon;
 
   // Build heading + body per banner kind
   let heading: string;
@@ -350,8 +365,80 @@ export function WeatherNowcastBanner({
     }
   }
 
+  return { kind: banner.kind, heading, body, data };
+}
+
+/**
+ * The warning as one line — the park header's title row carries it where the weather reading
+ * otherwise sits, and a press opens the full {@link NowcastAlertBanner} under that row.
+ *
+ * The pill is exactly as tall as the row's own content: `py-0.5` plus the 1 px border is 6 px on
+ * top of the `text-sm` line, and `-my-[3px]` hands those 6 px back. The row is what holds the
+ * panel's header height, so a pill that grew it would move the whole card the moment the
+ * nowcast landed — the shift this one-line form exists to avoid.
+ */
+export function NowcastAlertToggle({
+  alert,
+  expanded,
+  onToggle,
+  controls,
+  className,
+}: {
+  alert: NowcastAlert;
+  expanded: boolean;
+  onToggle: () => void;
+  /** Id of the banner the toggle opens. */
+  controls: string;
+  className?: string;
+}) {
+  const styles = BANNER_STYLES[alert.kind];
+  const Icon = styles.icon;
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={expanded}
+      aria-controls={controls}
+      title={alert.body}
+      className={cn(
+        'relative -my-[3px] flex max-w-full min-w-0 cursor-pointer items-center gap-1.5 rounded-full border py-0.5 pr-1.5 pl-2 text-sm font-medium transition-colors',
+        styles.border,
+        styles.bg,
+        styles.text,
+        'focus-visible:ring-primary hover:brightness-110 focus-visible:ring-2 focus-visible:outline-none',
+        className
+      )}
+    >
+      <Icon className={cn('h-4 w-4 shrink-0', styles.iconColor)} aria-hidden="true" />
+      <span className="min-w-0 truncate">{alert.body}</span>
+      <ChevronDown
+        className={cn(
+          'h-3.5 w-3.5 shrink-0 opacity-70 transition-transform',
+          expanded && 'rotate-180'
+        )}
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
+
+/** The full warning: heading, sentence, update countdown and the precipitation timeline. */
+export function NowcastAlertBanner({
+  alert,
+  id,
+  className,
+}: {
+  alert: NowcastAlert;
+  id?: string;
+  className?: string;
+}) {
+  const { data, heading, body } = alert;
+  const styles = BANNER_STYLES[alert.kind];
+  const Icon = styles.icon;
+
   return (
     <section
+      id={id}
       className={cn(
         'relative rounded-xl border p-4 shadow-sm',
         styles.border,
@@ -413,4 +500,11 @@ export function WeatherNowcastBanner({
       </div>
     </section>
   );
+}
+
+/** The banner on its own, for surfaces that show it outright (the /ui showcase, the guide page). */
+export function WeatherNowcastBanner({ className, ...params }: WeatherNowcastBannerProps) {
+  const alert = useNowcastAlert(params);
+  if (!alert) return null;
+  return <NowcastAlertBanner alert={alert} className={className} />;
 }
