@@ -20,6 +20,9 @@
  *
  * Keys, not slugs: a slug differs per locale, so switching the language would announce every
  * post again.
+ *
+ * News and articles alike. The teaser surfaces keep the two apart (`isNewsPost`), but this is
+ * not a teaser: it announces what arrived, and news is what arrives most often.
  */
 
 /** One post as the endpoint sends it — already resolved for the requested locale. */
@@ -63,8 +66,44 @@ export interface SeenRecord {
 }
 
 export const SEEN_STORAGE_KEY = 'pf:blog-seen';
-/** Set once per browser session, so the check costs one request per visit, not per page. */
-export const CHECKED_SESSION_KEY = 'pf:blog-seen-checked';
+
+/**
+ * When this browser last asked for the list, in epoch milliseconds. In `localStorage`, so every
+ * tab of the site shares one clock and the check costs one request per interval, not per page.
+ *
+ * It replaced a once-per-session flag in `sessionStorage`, which never expired while the tab
+ * lived. A tab left open, a tab the browser restores on startup and an installed app all keep
+ * their session for days, so a reload after a news post went live never asked again — only a
+ * new tab did.
+ */
+export const CHECKED_AT_STORAGE_KEY = 'pf:blog-seen-checked-at';
+
+/**
+ * How long one answer counts. The same ten minutes the browser may keep `/api/blog-latest` for
+ * (`max-age=600`): asking sooner would only be answered from the HTTP cache.
+ */
+export const CHECK_INTERVAL_MS = 10 * 60_000;
+
+/**
+ * Is it time to ask again? If so, the check is claimed before the request goes out, so a second
+ * tab or a second trigger in this one waits for the next interval instead of asking alongside.
+ *
+ * `false` when storage throws: without it there is no record of a last visit to compare with,
+ * so there is nothing worth asking for.
+ */
+export function claimCheck(now: number = Date.now()): boolean {
+  try {
+    const last = Number(localStorage.getItem(CHECKED_AT_STORAGE_KEY));
+    // A time in the future is a clock that was wrong or has been set back: ask, rather than
+    // wait for that clock to catch up.
+    const recent = Number.isFinite(last) && last > 0 && last <= now;
+    if (recent && now - last < CHECK_INTERVAL_MS) return false;
+    localStorage.setItem(CHECKED_AT_STORAGE_KEY, String(now));
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 function isSeenRecord(value: unknown): value is SeenRecord {
   if (typeof value !== 'object' || value === null) return false;

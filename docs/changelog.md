@@ -4,6 +4,21 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: der Toast für neue Beiträge meldet News auch im offenen Tab
+
+Der Toast aus PAR-444 zählte News schon immer mit, fragte aber nur einmal pro
+`sessionStorage`-Session nach. Die lebt so lange wie der Tab, und ein wiederhergestellter Tab oder
+die installierte App behält sie tagelang: Nach einem News-Deploy brachte ein Reload keine Anfrage
+und keinen Toast, nur ein neuer Tab. Im Browser nachgestellt, vorher und nachher.
+
+Jetzt fragt der Watcher nach dem ersten Seitenaufruf, nach jeder clientseitigen Navigation und wenn
+ein Tab wieder nach vorn kommt, höchstens einmal alle zehn Minuten über alle Tabs
+(`claimCheck`, `localStorage['pf:blog-seen-checked-at']`). `/api/blog-latest` bleibt an der Edge
+zehn Minuten statt einer Stunde frisch, weil Cloudflare niemand purgen kann und eine News in den
+Stunden nach dem Deploy am meisten wert ist. Ein Toast, der beim Wechsel in den Blog verschwindet,
+kommt beim Verlassen nicht wieder. Tests: `pnpm test:new-posts`. Doku:
+[New-posts toast](features/new-posts-toast.md).
+
 ## Unreleased – fix: keine leere Mitte mehr in „Heute im Park"
 
 Zwischen den vier Spalten und der Kachelreihe lag auf fast jedem Park ein 104 px hohes leeres Band
