@@ -12,6 +12,10 @@
  * sitemap, so there is nothing a translated slug would help rank.
  */
 
+import { plannerStore } from './store';
+import { getTripId, syncTrip } from './trip-sync';
+import type { PlannerState } from './types';
+
 /** The page's path under the locale. */
 export const SHARED_TRIP_PATH = '/trip-planner/shared';
 
@@ -42,4 +46,22 @@ export function tripIdFromHash(hash: string): string | null {
   }
   value = value.trim();
   return TRIP_ID.test(value) ? value : null;
+}
+
+/**
+ * Take a shared plan over as this browser's own.
+ *
+ * The plan replaces the local one, and the sender's id is not stored anywhere.
+ * Every write that follows therefore goes to THIS browser's trip, if it has
+ * one, and never to the sender's.
+ *
+ * With push on, the viewer's own copy on the server is updated right away. The
+ * auto-sync would not do it: it is armed only while the push switch is mounted
+ * (the open panel or the planner page), and it reacts to edits made after it
+ * subscribed. Without this call, the notification job would keep reading the
+ * viewer's previous plan until their next edit.
+ */
+export async function adoptSharedPlan(plan: PlannerState): Promise<void> {
+  plannerStore.update((current) => ({ ...plan, version: current.version }));
+  if (getTripId() !== null) await syncTrip();
 }

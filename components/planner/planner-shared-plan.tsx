@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CalendarCheck, Loader2, MapPin, RotateCw, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
-import { tripIdFromHash } from '@/lib/planner/trip-share';
+import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
 import { hasAnyPlan, type PlannerState } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 
@@ -15,8 +15,8 @@ import { plannerUi } from '@/lib/planner/ui-store';
  * The copy is the whole point (PAR-82, option A). The plan is written into THIS
  * browser's store and the sender's trip id is kept nowhere, so nothing here can
  * ever `PUT` to it: what the visitor changes afterwards is theirs, and the
- * sender's plan stays as it was. If this browser has push on, its own auto-sync
- * uploads the copy under its own id, which is the ordinary path.
+ * sender's plan stays as it was. If this browser has push on, `adoptSharedPlan`
+ * uploads the copy under this browser's own id.
  *
  * Nothing is written until the button is pressed. Opening a link must not
  * replace a plan the visitor already has, so when there is one the page says
@@ -56,7 +56,11 @@ export function PlannerSharedPlan() {
 
   const [loaded, setLoaded] = useState<{ id: string; attempt: number; load: Load } | null>(null);
   const [attempt, setAttempt] = useState(0);
-  const [adopted, setAdopted] = useState(false);
+  // The id that was taken over, not a boolean. A second link opened in the
+  // same tab changes only the fragment, and a boolean would then show "the
+  // plan is now in your planner" under a plan that is not.
+  const [adoptedId, setAdoptedId] = useState<string | null>(null);
+  const adopted = tripId !== undefined && tripId !== null && adoptedId === tripId;
 
   useEffect(() => {
     if (!tripId) return;
@@ -113,9 +117,9 @@ export function PlannerSharedPlan() {
           .filter((park) => park.days.length > 0)
           .sort((a, b) => a.name.localeCompare(b.name, locale));
 
-  const adopt = (plan: PlannerState) => {
-    plannerStore.update((current) => ({ ...plan, version: current.version }));
-    setAdopted(true);
+  const adopt = (id: string, plan: PlannerState) => {
+    void adoptSharedPlan(plan);
+    setAdoptedId(id);
   };
 
   if (load.kind === 'loading') {
@@ -203,7 +207,7 @@ export function PlannerSharedPlan() {
               {t('shared.replaces')}
             </p>
           )}
-          <Button onClick={() => adopt(load.plan)}>{t('shared.adopt')}</Button>
+          <Button onClick={() => tripId && adopt(tripId, load.plan)}>{t('shared.adopt')}</Button>
         </div>
       )}
     </div>
