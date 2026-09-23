@@ -106,12 +106,17 @@ export function InParkView({
 }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
+  const tStatus = useTranslations('parks.status');
 
   if (!data || !data.park) {
     return null;
   }
 
   const park = data.park;
+  // `park.status` is the raw API enum (OPERATING, CLOSED, …); show its translated label, and drop
+  // it rather than print an enum value the status labels do not cover.
+  const statusLabel = tStatus.has(park.status) ? tStatus(park.status) : null;
+  const youAreHere = statusLabel ? `${t('youAreIn')} · ${statusLabel}` : t('youAreIn');
   // Drop rides that are clearly out of their season. The API already hides
   // `isCurrentlyInSeason === false`, but we filter defensively so off-season attractions never
   // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
@@ -198,9 +203,7 @@ export function InParkView({
                     <h3 className="text-lg font-semibold">{stripNewPrefix(park.name)}</h3>
                     <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
                   </div>
-                  <p className="text-muted-foreground text-sm">
-                    {t('youAreIn')} · {park.status}
-                  </p>
+                  <p className="text-muted-foreground text-sm">{youAreHere}</p>
                 </div>
                 {park.analytics?.crowdLevel &&
                   (park.status === 'OPERATING' || park.status === 'UNKNOWN') && (
@@ -235,9 +238,7 @@ export function InParkView({
               <article className="flex items-start justify-between">
                 <div>
                   <h3 className="text-lg font-semibold">{stripNewPrefix(park.name)}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {t('youAreIn')} · {park.status}
-                  </p>
+                  <p className="text-muted-foreground text-sm">{youAreHere}</p>
                 </div>
                 {park.analytics?.crowdLevel &&
                   (park.status === 'OPERATING' || park.status === 'UNKNOWN') && (
