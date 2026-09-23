@@ -499,6 +499,12 @@
     "toggle": "Cambiar tema"
   },
   "parks": {
+    "liveFreshness": {
+      "asOf": "Actualizado",
+      "outdated": "Desactualizado",
+      "offline": "Sin conexión",
+      "retry": "Reintentar"
+    },
     "blogPosts": {
       "title": "{park} en el blog",
       "intro": "Artículos de nuestro blog en los que aparece {park}.",

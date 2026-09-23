@@ -499,6 +499,12 @@
     "toggle": "Design wechseln"
   },
   "parks": {
+    "liveFreshness": {
+      "asOf": "Stand",
+      "outdated": "Nicht aktuell",
+      "offline": "Offline",
+      "retry": "Erneut versuchen"
+    },
     "blogPosts": {
       "title": "{park} im Blog",
       "intro": "Beiträge aus unserem Blog, in denen {park} vorkommt.",

@@ -499,6 +499,12 @@
     "toggle": "Toggle theme"
   },
   "parks": {
+    "liveFreshness": {
+      "asOf": "As of",
+      "outdated": "Not up to date",
+      "offline": "Offline",
+      "retry": "Try again"
+    },
     "blogPosts": {
       "title": "{park} on the blog",
       "intro": "Posts from our blog that feature {park}.",
