@@ -60,7 +60,7 @@ export function EntryTileBody({
       <span data-tile-stagger className={cn(entryTileChip, chipClassName)}>
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <span data-tile-stagger className="text-sm leading-tight font-semibold">
+      <span data-tile-stagger data-tile-label className="text-sm leading-tight font-semibold">
         {label}
         {count !== undefined && (
           <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
