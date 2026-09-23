@@ -436,6 +436,16 @@ export function ParkTileGrid({
         // the panel's own column band does one row up. No `gap`: the cells touch and the rules
         // between them are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
+        // Every label holds two lines, wrapped or not. „Wartezeiten-Kalender" sits at the edge of
+        // its cell: one line in „Geist Fallback", two in Geist. On a first visit the row painted
+        // at 132 px and grew to 148 px when the web font arrived (~440 ms), and with
+        // `auto-rows-fr` every cell grew with it. Measured 2026-09-23 with the font held back:
+        // de and nl at 390, 1280 and 1440 px, es at 800 px. The label stays whole because it is
+        // also the link text to the calendar page. The cost is 16 px of row where no label
+        // wraps (English everywhere). On the grid rather than in `EntryTileBody`, so both
+        // renderings of this row get it and the ride page's row, which reuses the body, does
+        // not.
+        '[&_[data-tile-label]]:min-h-[2lh]',
         // Seven cells need more room than six, not the same room divided further: at the
         // 1024 px the six-cell row starts at, seven cells are 146 px wide and „Restaurants"
         // wraps. 1180 px puts a seven-cell row back at the same 168 px per cell that six cells

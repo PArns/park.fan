@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
+
+„Wartezeiten-Kalender" passt in der Ersatzschrift („Geist Fallback") gerade noch in eine Zeile, in
+Geist nicht. Beim Erstbesuch malte die Kachelreihe deshalb mit 132 px und wuchs auf 148 px, sobald
+die Webfont da war (~440 ms), und mit `auto-rows-fr` jede Kachel mit ihr. Gemessen mit
+zurückgehaltener Schrift: de und nl bei 390, 1280 und 1440 px, es bei 800 px. Jetzt hält jeder
+Titel der Reihe zwei Zeilen (`[&_[data-tile-label]]:min-h-[2lh]` auf `ParkTileGrid`), der Titel
+selbst bleibt unverändert, weil er auch der Linktext zur Kalenderseite ist. Kosten: 16 px mehr
+Reihe, wo kein Titel umbricht (Englisch überall). Die Kachelreihe der Attraktionsseite nutzt
+denselben Kachelinhalt, aber nicht dieses Grid, und bleibt wie sie ist.
+
 ## Unreleased – fix: „Andrang jetzt" und „Prognose heute" stehen immer untereinander
 
 Die beiden Metriken lagen in einer `flex-wrap`-Reihe, ob sie nebeneinander passten, hing also an der
