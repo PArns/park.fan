@@ -175,12 +175,15 @@ export function RideNowPanel({
         park panel's, down to the static dot — an `animate-pulse` inside a `backdrop-filter` box
         dirties its region every frame and costs the card a repaint, which is what made the park
         header flicker. */}
-      {/* 46 px = `py-3` over the tallest thing the row can hold, which is the accuracy badge
-        (16 px of `text-xs` + `py-0.5` + its 1 px borders = 22) rather than the 20 px heading. The
-        badge is not in the shell — `leanParkForShell` strips `predictionAccuracy`, so it arrives
-        with the client detail fetch — and without the reservation its arrival moved this row, the
-        card, and the whole page under it by two pixels. */}
-      <div className="border-border/50 flex min-h-[46px] items-center gap-3 border-b px-5 py-3">
+      {/* 47 px = `py-3` over the tallest thing the row can hold, which is the accuracy badge
+        (16 px of `text-xs` + `py-0.5` + its 1 px borders = 22) rather than the 20 px heading, plus
+        the row's own 1 px `border-b` (the box is border-box). The badge is not in the shell —
+        `leanParkForShell` strips `predictionAccuracy`, so it arrives with the client detail fetch
+        — and without the reservation its arrival moved this row, the card, and the whole page
+        under it. The reservation read 46 and the trigger was a block box, whose line box put the
+        22 px badge in 24 px: the row settled at 49 and the shift was 3 px (0.0071 at y=0 on
+        Taron's phone layout once PAR-427 lifted this card into the first screen). */}
+      <div className="border-border/50 flex min-h-[47px] items-center gap-3 border-b px-5 py-3">
         <div className="flex shrink-0 items-center gap-2">
           <span
             className={cn(
@@ -201,7 +204,7 @@ export function RideNowPanel({
 
         {accuracy && (
           <Tooltip>
-            <TooltipTrigger className="min-w-0 cursor-default">
+            <TooltipTrigger className="flex min-w-0 cursor-default">
               <Badge className={cn('gap-1.5', ACCURACY_BADGE_CLASS[accuracy.badge])}>
                 <Sparkles className="h-3 w-3" aria-hidden="true" />
                 {/* „Gut" on its own says nothing about what is good. The prefix names it where
