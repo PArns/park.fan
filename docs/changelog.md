@@ -7,11 +7,20 @@ Short log of notable changes; details live in the linked docs.
 ## Unreleased – feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
 
 Wer wiederkommt und neue Beiträge verpasst hat, bekommt einmal einen Toast mit dem neuesten davon,
-beim Erstbesuch nie. Der Watcher im Locale-Layout fragt 2,5 s nach dem Laden und nur einmal pro
-Sitzung `/api/blog-latest/<locale>` ab (statisches JSON aus dem Blog-Manifest, samt der Strings des
+beim Erstbesuch nie. Die ganze Karte ist der Link auf den Beitrag (ein gestrecktes `::after`),
+darüber liegen nur das X und „Alle ansehen“, das immer dasteht; „Und N weitere neue Beiträge“
+erscheint nur, wenn es mehr als einen gibt. Auf dem Handy sitzt der Toast unten über dem
+Home-Indicator und wird nach unten weggewischt, ab `sm` oben rechts 15 px unter dem Header, nach
+rechts wegzuwischen, auf `z-40` unter den Menübändern des Headers, unter dem Sprach-Banner, falls
+der offen ist, und neben dem offenen Planer-Panel. Nach 12 s schließt er sich, der Balken unten
+ist der Countdown und hält bei Hover, Fokus und verstecktem Tab an.
+
+Der Watcher im Locale-Layout fragt 2,5 s nach dem Laden und nur einmal pro Sitzung
+`/api/blog-latest/<locale>` ab (statisches JSON aus dem Blog-Manifest, samt der Strings des
 Toasts), die Toast-UI mit framer-motion wird nur geladen, wenn es etwas zu zeigen gibt. Keine Seite
 trägt dafür etwas im RSC-Payload. Verglichen wird über Translation-Keys plus Datumsuntergrenze in
-`localStorage`, nicht über einen Zeitstempel, weil `date` ein Tag ist. Details:
+`localStorage`, nicht über einen Zeitstempel, weil `date` ein Tag ist. Neues Umami-Event
+`blog_toast_opened` ohne Properties. Details:
 [features/new-posts-toast.md](features/new-posts-toast.md).
 
 ## Unreleased – fix: die OG-Funktion trägt 18 MB Fotos statt 256
