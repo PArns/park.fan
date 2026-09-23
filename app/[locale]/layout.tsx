@@ -29,6 +29,7 @@ import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { PushTimezoneSync } from '@/components/push/push-timezone-sync';
 import { WebMcpTools } from '@/components/agents/webmcp-tools';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
+import { NewPostsWatcher } from '@/components/blog/new-posts-watcher';
 import {
   OrganizationStructuredData,
   SiteNavigationStructuredData,
@@ -294,6 +295,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     which has its own — never carries it. */}
                 <WebMcpTools locale={locale} />
                 <LanguageBanner currentLocale={locale as Locale} />
+                {/* "New on the blog since your last visit". Renders nothing on a first visit
+                    and nothing until the page is idle; the posts and the toast's strings are
+                    fetched then, once per session, so no page carries them in its payload. */}
+                <NewPostsWatcher enabled={showBlog} />
               </Suspense>
               {/* `min-h-dvh`, not `min-h-screen`: `100vh` is the LARGE viewport, the height with
                   the URL bar retracted, so every short page (`/contribute/thanks`, a thin glossary

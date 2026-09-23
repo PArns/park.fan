@@ -1974,6 +1974,14 @@
       "playHint": "Lädt den YouTube-Player erst beim Tippen."
     }
   },
+  "blogToast": {
+    "eyebrow": "Neu im Blog",
+    "read": "Beitrag lesen",
+    "close": "Schließen",
+    "moreOne": "Und {count} weiterer neuer Beitrag",
+    "moreOther": "Und {count} weitere neue Beiträge",
+    "allPosts": "Alle ansehen"
+  },
   "contribute": {
     "gallery": {
       "title": "Diese Parks und Rides warten auf deine Fotos",

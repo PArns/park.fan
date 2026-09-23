@@ -4,6 +4,16 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
+
+Wer wiederkommt und neue Beiträge verpasst hat, bekommt einmal einen Toast mit dem neuesten davon,
+beim Erstbesuch nie. Der Watcher im Locale-Layout fragt 2,5 s nach dem Laden und nur einmal pro
+Sitzung `/api/blog-latest/<locale>` ab (statisches JSON aus dem Blog-Manifest, samt der Strings des
+Toasts), die Toast-UI mit framer-motion wird nur geladen, wenn es etwas zu zeigen gibt. Keine Seite
+trägt dafür etwas im RSC-Payload. Verglichen wird über Translation-Keys plus Datumsuntergrenze in
+`localStorage`, nicht über einen Zeitstempel, weil `date` ein Tag ist. Details:
+[features/new-posts-toast.md](features/new-posts-toast.md).
+
 ## Unreleased – fix: die OG-Funktion trägt 18 MB Fotos statt 256
 
 Der Deploy scheiterte an `The Vercel Function "api/og/[...path]" is 290.96mb uncompressed`, zum

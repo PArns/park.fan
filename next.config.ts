@@ -1052,6 +1052,12 @@ const nextConfig: NextConfig = {
         source: '/api/glossary-term-ids',
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
+      {
+        // The newest blog posts for the new-posts toast. Built from the manifest, so it only
+        // changes with a deploy; the browser may keep it for ten minutes.
+        source: '/api/blog-latest/:locale',
+        headers: sharedCache('public, max-age=600, s-maxage=3600, stale-while-revalidate=86400'),
+      },
       // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
       // is now settled on the platform they actually run on, not just locally.
       //
