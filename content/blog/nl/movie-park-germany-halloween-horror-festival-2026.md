@@ -9,7 +9,7 @@ excerpt: >-
   Op zaterdag 26 september begint in Bottrop het 28ste Halloween Horror
   Festival: negen horrormazes, nieuw is Jason Universe vanaf 16 jaar, plus de
   liveshow PHOBIA en 22 avonden tot 8 november. Data, tickets en waarom je
-  kostuum thuis blijft.
+  kostuum thuisblijft.
 tags:
   - nieuws
   - movie-park
@@ -23,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'De ingang van Van Helsing’s Factory: een roestige tankstationgevel met schuine PETROL-letters, ervoor bezoekers op de stoep.'
-  caption: 'Van Helsing’s Factory begin september. Vanaf zaterdagavond is de monsterjager hier flink in de minderheid.'
+  caption: 'Van Helsing’s Factory begin september. Vanaf zaterdag is de monsterjager hier ’s avonds flink in de minderheid.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026: data & tickets'
@@ -48,14 +48,14 @@ vroege avond lopen er meer dan 300 monsters rond in Bottrop-Kirchhellen: het
 “Legends Never Die”.
 
 Met het [familiefeest bij Disney](/blog/disneyland-paris-halloween-2026), dat op
-dezelfde zaterdag begint, heeft dit weinig te maken. In Bottrop zijn er 's avonds
+dezelfde zaterdag begint, heeft dit weinig te maken. In Bottrop zijn er ’s avonds
 nepbloed, kettingzagen en mist, en de scare zones zijn niet gemaakt voor
 basisschoolkinderen.
 
 ## Wanneer het loopt
 
-Na het openingsweekend van 26 en 27 september is vanaf 2 oktober elk weekend van
-vrijdag tot en met zondag een horrorweekend, tot de laatste seizoensdag op
+Na het openingsweekend van 26 en 27 september is er vanaf 2 oktober elke
+vrijdag, zaterdag en zondag een horroravond, tot de laatste seizoensdag op
 **8 november**. In de herfstvakantie van Noordrijn-Westfalen komen de
 donderdagen 22 en 29 oktober erbij. Samen zijn dat 22 avonden.
 
@@ -103,17 +103,17 @@ De mazes en PHOBIA zitten **niet in de toegang**. Elke maze heeft een eigen
 ticket met tijdslot nodig, en dat is alleen online te koop. Een prijs per maze
 noemt het park op zijn Halloween-pagina's niet, die zie je pas in de webshop.
 
-Wie alle negen wil, rekent het best af tegen de **S.I.K. Pass**: € 215 met
+Wie alle negen wil, vergelijkt het best met de **S.I.K. Pass**: € 215 met
 parktoegang, € 185 voor wie al een ticket of abonnement heeft. Daarmee kom je
-één keer in elke maze zonder een tijdslot te boeken, en je krijgt er een
-gereserveerde plek op de voorste rijen bij PHOBIA bij, twee drankjes, een
+één keer in elke maze zonder een tijdslot te boeken. Verder krijg je een
+gereserveerde plek op de voorste rijen bij PHOBIA, twee drankjes, een
 Coca-Cola Freestyle-beker om bij te vullen en een parkeerplek vlak bij de
 hoofdingang.
 
 Met een abonnement moet je je bezoekdag vooraf op de website van het park
 aanmelden.
 
-## Wat thuis blijft
+## Wat thuisblijft
 
 Anders dan bij Disney op 31 oktober zijn **eigen kostuums, maskers en
 horrormake-up** in Movie Park op geen enkele avond toegestaan. Alcohol mag ook
@@ -121,9 +121,9 @@ niet mee naar binnen, bij de ingang worden tassen gecontroleerd.
 
 ## Welke avond
 
-We meten in Bottrop pas sinds december 2025, dus een Halloween-herfst zit er nog
-niet in. In wat we hebben, sta je op vrijdag en zondag het kortst in de rij, op
-zaterdag langer. Daarbij valt de feestdag op 3 oktober, de Dag van de Duitse
+We meten in Bottrop pas sinds december 2025, dus er zit nog geen
+halloweenseizoen in onze metingen. In wat we hebben, sta je op vrijdag en
+zondag het kortst in de rij, op zaterdag langer. Daarbij valt de feestdag op 3 oktober, de Dag van de Duitse
 Eenheid, op een zaterdag, en vanaf 17 oktober is het herfstvakantie in
 Noordrijn-Westfalen. Wie kan, neemt een vrijdag of zondag daarvoor: 2, 4, 9, 11
 of 16 oktober.
@@ -136,7 +136,7 @@ of 16 oktober.
 
 Hoe het festival zich verhoudt tot Traumatica, Walibi en Toverland, staat in het
 [Halloween-overzicht](/blog/halloween-pretparken-2026). Welke weekdag in Movie
-Park verder de rustigste is en hoe de herfstdienstregeling eruitziet, staat in de
+Park verder de rustigste is en hoe het rooster in de herfst eruitziet, staat in de
 [Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).
 
 [Movie Park Germany](ref:movie-park-germany?full)

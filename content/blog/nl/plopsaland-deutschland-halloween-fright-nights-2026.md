@@ -70,7 +70,7 @@ blijft dicht bij huis: ergens in het Pfälzerwald ligt een vervloekte plek waar
 mensen spoorloos verdwijnen, en jij volgt de legende het donker in.
 
 Terug zijn [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
-waar een circusdirecteur nieuw talent zoekt,
+waar een circusdirectrice nieuw talent zoekt,
 [Titty Twister](ref:plopsaland-deutschland/titty-twister), een bar met de naam
 uit _From Dusk Till Dawn_ en een waardin die Miss Monique heet,
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), met mensen die na experimenten

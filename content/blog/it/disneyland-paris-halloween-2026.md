@@ -49,7 +49,7 @@ adulti possono entrare in costume. Comincia **sabato 26 settembre** e dura fino
 a **domenica 1° novembre 2026**. Tutto il programma è compreso in un normale
 biglietto.
 
-Viene decorato solo il Disneyland Park. Accanto, la
+Solo il Disneyland Park viene decorato e animato. Accanto, la
 [Disney Adventure World](ref:disney-adventure-world) non ha un programma di
 Halloween suo. Se lì vuoi spaventarti, sali sulla
 [Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
@@ -62,25 +62,24 @@ piccola strega, Paperino un vampiro e Paperina una dama pipistrello. Tutti e
 quattro portano la stessa spilla, un pipistrello con una pietra di colore
 diverso per ciascuno.
 
-Crudelia, Malefica, Jafar e la Regina di Cuori tornano per gli incontri con i
-cattivi. Per la prima volta dal 2021 torna anche il **Dr. Facilier** de _La
+Tra i cattivi tornano Crudelia, Malefica, Jafar e la Regina di Cuori. Per la prima volta dal 2021 torna anche il **Dr. Facilier** de _La
 principessa e il ranocchio_, a Frontierland. Jack Skellington e Sally di _Nightmare Before Christmas_ tornano
 in alcuni giorni e si possono incontrare solo con la coda virtuale dell'app di
-Disneyland Paris. Ci si iscrive dal telefono il giorno stesso, senza fare la
-fila.
+Disneyland Paris. Ci si mette in coda dal telefono il giorno della visita, non sul
+posto.
 
 Main Street riceve una quarantina di zucche nuove, 170 candele nuove a forma di
 Topolino, ghirlande in stile vittoriano, una colonna sonora composta apposta e,
 la sera, proiezioni sulle facciate. Nella stazione all'ingresso ci sono quattro
 nuove vetrate art déco con Malefica e Ursula. In fondo alla strada, sul Royal
-Castle Stage, spine, corvi e stemmi dei cattivi si avvolgono ai cancelli del
-castello.
+Castle Stage, spine, corvi e stemmi dei cattivi si avvolgono attorno ai cancelli
+del castello.
 
 A Frontierland, _The Lucky Nugget Saloon_ torna a essere _The Unlucky Nugget
 Saloon_. La storia viene da
 [Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor):
 sei ospite al ricevimento di nozze di Melanie Ravenswood, quello che non si è
-mai tenuto. Quest'anno apre anche il **piano di sopra**, arredato come i
+mai tenuto. Quest'anno apre anche il **piano di sopra**, ispirato ai
 ritratti che cambiano dentro Phantom Manor, e il menù è nuovo.
 
 ## Parata, foto e cibo
@@ -103,7 +102,7 @@ alle **23**, con incontri speciali con i personaggi, uno spettacolo di fuochi
 d'artificio tutto suo e dolcetti offerti da M&M'S. Non serve un biglietto a
 parte: la serata è compresa nell'ingresso normale, che
 però quel giorno costa più che nel resto del festival. Il parco comunicherà prima
-quali costumi sono ammessi. Guarda l'app prima di passare una settimana su una
+quali costumi sono ammessi. Controlla l'app prima di partire, e prima di passare ore a costruire una
 maschera che dovrà restare all'ingresso.
 
 Sabato, Halloween, costumi e serata aperta a tutti quelli con il biglietto:

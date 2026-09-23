@@ -7,8 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   El sábado 26 de septiembre arranca en Bottrop el 28.º Halloween Horror
-  Festival: nueve pasajes del terror, entre ellos el nuevo Jason Universe para
-  mayores de 16, el espectáculo PHOBIA y 22 noches hasta el 8 de noviembre.
+  Festival: nueve pasajes del terror (el nuevo es Jason Universe, para mayores de
+  16), el espectáculo en directo PHOBIA y 22 noches hasta el 8 de noviembre.
   Fechas, entradas y por qué tu disfraz se queda en casa.
 tags:
   - noticias
@@ -23,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'La entrada de Van Helsing’s Factory: una fachada oxidada de gasolinera con letras PETROL inclinadas y visitantes en la acera.'
-  caption: 'Van Helsing’s Factory a principios de septiembre. Desde el sábado por la noche, el cazador de monstruos está en clara desventaja numérica.'
+  caption: 'Van Helsing’s Factory a principios de septiembre. Desde el sábado, por las noches, el cazador de monstruos está en clara desventaja numérica.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026: fechas y entradas'
@@ -104,8 +104,8 @@ cuestan ahora 38,90 € según el parque. En taquilla son 59,90 € a partir de
 
 Los pasajes y PHOBIA **no están incluidos**. Cada pasaje necesita su propia
 entrada con franja horaria, que solo se vende en línea. Las páginas de
-Halloween del parque no dan un precio por pasaje, que solo aparece en la tienda
-en línea.
+Halloween del parque no dan un precio por pasaje. Solo aparece en la tienda en
+línea.
 
 Si quieres los nueve, haz la cuenta frente al **S.I.K. Pass**: 215 € con la
 entrada al parque, 185 € si ya tienes entrada o pase anual. Con él entras una

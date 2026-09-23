@@ -23,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'L’ingresso di Van Helsing’s Factory: una facciata arrugginita da stazione di servizio con la scritta PETROL inclinata, davanti visitatori sul marciapiede.'
-  caption: 'Van Helsing’s Factory a inizio settembre. Da sabato sera il cacciatore di mostri è decisamente in minoranza.'
+  caption: 'Van Helsing’s Factory a inizio settembre. Da sabato, la sera, il cacciatore di mostri è decisamente in minoranza.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026: date e biglietti'
@@ -102,7 +102,7 @@ al momento 38,90 € secondo il parco, alla cassa 59,90 € dai 12 anni in su.
 
 Le case e PHOBIA **non sono comprese**. Ogni casa richiede un proprio biglietto
 a fascia oraria, in vendita solo online. Le pagine Halloween del parco non
-indicano un prezzo per casa, che compare solo nel negozio online.
+indicano un prezzo per casa. Lo si trova solo nel negozio online.
 
 Se vuoi tutte e nove, fai il conto con il **S.I.K. Pass**: 215 € con l’ingresso
 al parco, 185 € se hai già un biglietto o un abbonamento. Ti porta una volta in

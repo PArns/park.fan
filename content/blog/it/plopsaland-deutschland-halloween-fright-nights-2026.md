@@ -29,7 +29,7 @@ seo:
   description: >-
     Halloween Fright Nights al Plopsaland Deutschland dal 2 al 31 ottobre 2026,
     venerdì e sabato fino alle 22: novità NEXUS AI e Lost, tre scare zone,
-    biglietti per casa, Nightmare Society Pass ed età consigliata.
+    biglietti per le singole case, Nightmare Society Pass ed età consigliata.
   keywords:
     - Plopsaland Halloween 2026
     - Halloween Fright Nights 2026
@@ -44,8 +44,9 @@ Il [Plopsaland Deutschland](ref:plopsaland-deutschland) di Haßloch, nel
 Palatinato, si chiamava Holiday Park fino a giugno 2025. È il fratello tedesco
 del [Plopsaland De Panne](ref:plopsaland-belgium) e in **dieci sere di
 ottobre** organizza le **Halloween Fright Nights**, che il parco stesso conta
-tra i più grandi eventi di Halloween in Germania. Chi va già verso
-l'[Europa-Park](ref:europa-park) lo trova quasi sulla strada.
+tra i più grandi eventi di Halloween in Germania. A differenza di Traumatica,
+all'[Europa-Park](ref:europa-park), qui non si resta fuori se si hanno meno di
+16 anni.
 
 ## Date e orari
 
@@ -70,7 +71,7 @@ maledetto dove la gente sparisce senza lasciare traccia, e tu segui la leggenda
 nel buio.
 
 Tornano [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
-dove un direttore di circo cerca nuovi talenti;
+dove una direttrice di circo cerca nuovi talenti;
 [Titty Twister](ref:plopsaland-deutschland/titty-twister), un bar con il nome
 preso da _Dal tramonto all'alba_ e una padrona che si chiama Miss Monique;
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), con persone trasformate in ratti
@@ -102,13 +103,13 @@ Come al Movie Park, le case dell'orrore **non sono comprese nell'ingresso**.
 | Biglietto              | Prezzo                               | Comprende                                                        |
 | ---------------------- | ------------------------------------ | ---------------------------------------------------------------- |
 | Biglietto con data     | da 39 € (prezzo pieno 58 €)          | parco fino alle 22, scare zone, spettacoli, Fright Festival      |
-| Biglietto casa         | da 3 € a casa                        | una casa con fascia oraria, solo insieme al biglietto d'ingresso |
+| Biglietto singola casa | da 3 € per casa                      | una casa con fascia oraria, solo insieme al biglietto d'ingresso |
 | Tutte e sei le case    | 49 €                                 | pacchetto senza ingresso al parco                                |
 | Nightmare Society Pass | da 109 € (abbonamento annuale: 79 €) | ingresso, ogni casa una volta senza fascia, parcheggio, spilla   |
 
 Ogni casa funziona con fasce orarie che scegli al momento dell'acquisto. Solo il
-Nightmare Society Pass ne fa a meno, e dà anche accesso a un'area riservata agli
-spettacoli. Chi ha l'abbonamento annuale Plopsaland entra alle Fright Nights
+Nightmare Society Pass ne fa a meno, e dà anche accesso a un'area riservata durante
+gli spettacoli. Chi ha l'abbonamento annuale Plopsaland entra alle Fright Nights
 senza sovrapprezzo e riceve fino al 30 settembre, fino a esaurimento, un
 biglietto gratuito per Mad Rat.
 

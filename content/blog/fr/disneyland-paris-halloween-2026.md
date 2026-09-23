@@ -50,7 +50,7 @@ un soir où les adultes aussi peuvent venir déguisés. Il commence le **samedi
 26 septembre** et dure jusqu’au **dimanche 1er novembre 2026**. Tout le
 programme est compris dans un billet ordinaire.
 
-Seul le Parc Disneyland est décoré. Juste à côté,
+Seul le Parc Disneyland est décoré et animé. Juste à côté,
 [Disney Adventure World](ref:disney-adventure-world) n’a pas de programme
 Halloween à lui. Pour frissonner là-bas, il reste
 [Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror).
@@ -91,7 +91,7 @@ de citrouilles, de lanternes et de bottes de foin. Daisy ouvre la marche, des
 personnages rares comme Clarabelle et Horace apparaissent en route, et à la
 fin Mickey change de costume sur son char en quelques secondes. Autour de la
 Casa de Coco, à Frontierland, la décoration passe au Día de los Muertos, et
-Stitch attend les photos en vampire au kiosque de Casey’s Corner.
+Stitch, déguisé en vampire, pose pour les photos au kiosque de Casey’s Corner.
 
 Côté assiette, les méchants sont à l’honneur, par exemple avec un « Devilish
 Brookie » au Market House Deli ou un gâteau Ursula au Victoria’s Home-Style
@@ -104,9 +104,9 @@ adultes aussi peuvent entrer déguisés. Le Parc Disneyland reste ouvert jusqu�
 **23 h**, avec des rencontres de personnages spéciales, un feu d’artifice
 unique et des friandises offertes par M&M’S. Pas besoin de billet de soirée à
 part : tout est compris dans l’entrée normale, mais
-l’entrée elle-même coûte plus cher ce jour-là que le reste du festival. Le parc précisera à l’avance
-quels déguisements sont autorisés. Consultez l’application avant de passer une
-semaine sur un masque qui devra rester à l’entrée.
+l’entrée elle-même coûte plus cher ce jour-là que les autres jours du festival. Le parc précisera à l’avance
+quels déguisements sont autorisés. Consultez l’application avant de partir, et
+avant de passer des heures sur un masque qui devra rester à l’entrée.
 
 Samedi, Halloween, déguisements, soirée ouverte à tous les détenteurs d’un
 billet : ce sera bondé. Si vous pouvez vous passer de la soirée costumée, les
@@ -122,8 +122,8 @@ mois s’y ajoutent les vacances scolaires britanniques.
 
 ```
 
-Le prix du Premier Access, les jours plus calmes dans un parc qui ne ferme
-jamais, et comment faire les deux parcs en une journée : tout est dans le
+Le prix du Premier Access, les jours plus calmes dans un parc ouvert toute
+l’année, et comment faire les deux parcs en une journée : tout est dans le
 [guide Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils). Ce
 que Movie Park, Traumatica, Walibi et Toverland proposent le même automne à
 ceux qui viennent sans enfants, c’est dans le

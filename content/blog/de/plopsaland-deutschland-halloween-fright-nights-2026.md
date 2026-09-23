@@ -69,7 +69,7 @@ bleibt in der Gegend: Irgendwo im Pfälzerwald liegt ein verfluchter Ort, an dem
 Leute spurlos verschwinden, und du folgst der Legende in die Dunkelheit.
 
 Zurück sind [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
-wo ein Zirkusdirektor neue Talente sucht,
+wo eine Zirkusdirektorin neue Talente sucht,
 [Titty Twister](ref:plopsaland-deutschland/titty-twister), eine Bar mit dem
 Namen aus _From Dusk Till Dawn_ und einer Wirtin namens Miss Monique,
 [Mad Rat](ref:plopsaland-deutschland/mad-rat) mit Menschen, die nach

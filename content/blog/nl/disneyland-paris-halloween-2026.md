@@ -23,10 +23,10 @@ rideLinks: false
 coverImage:
   src: /media/disneyland-park/background.jpg
   alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
-  caption: 'Nog zonder doornen. Vanaf zaterdag hangen de schurken hun wapens aan de kasteelpoort.'
+  caption: 'Nog zonder doornen. Vanaf zaterdag nemen de schurken de kasteelpoort over.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris Halloween 2026: data, nieuw, 31 oktober'
+  title: 'Disneyland Paris Halloween 2026: data, wat er nieuw is, 31 oktober'
   description: >-
     Disney Halloween Festival van 26 september tot 1 november 2026: nieuwe
     kostuums, Dr. Facilier, Jack & Sally, de Unlucky Nugget Saloon en de
@@ -73,7 +73,7 @@ van Mickey, slingers in Victoriaanse stijl, speciaal gecomponeerde muziek en 's
 avonds projecties op de gevels. In het station bij de ingang hangen vier
 nieuwe glas-in-loodramen in art-decostijl met Maleficent en Ursula. Aan het
 eind van de straat kronkelen op de Royal Castle Stage doornen, raven en
-schurkenwapens om de kasteelpoort.
+schurkenwapenschilden om de kasteelpoort.
 
 In Frontierland wordt _The Lucky Nugget Saloon_ weer _The Unlucky Nugget
 Saloon_. Het verhaal komt uit
@@ -102,8 +102,8 @@ waarop ook volwassenen verkleed het park in mogen. Disneyland Park blijft tot
 snoep van M&M'S. Een apart feestticket is niet nodig, ook deze avond zit in de
 gewone toegang. Die toegang kost op deze dag wel meer dan op de andere
 festivaldagen. Welke kostuums precies mogen, maakt het park vooraf bekend.
-Kijk dus in de app voordat je een week aan een masker knutselt dat bij de
-ingang moet blijven.
+Kijk dus voor vertrek in de app, voordat je urenlang aan een masker knutselt
+dat bij de ingang moet blijven.
 
 Zaterdag, Halloween, kostuums, avondprogramma voor iedereen met een ticket: dat
 wordt vol. Wie de kostuumavond kan missen, heeft meer aan de versiering op een

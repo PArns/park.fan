@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Desde el 2 de octubre, Haßloch se convierte cada viernes y sábado en un parque
   del terror: seis casas del terror, dos de ellas nuevas, tres scare zones, tres
-  espectáculos y un cierre cada noche. Fechas, precios y lo que no incluye la
+  espectáculos y un espectáculo de cierre cada noche. Fechas, precios y lo que no incluye la
   entrada.
 tags:
   - noticias
@@ -45,8 +45,9 @@ seo:
 Palatinado alemán, se llamó Holiday Park hasta junio de 2025. Es el hermano
 alemán de [Plopsaland De Panne](ref:plopsaland-belgium), y durante **diez
 noches de octubre** organiza las **Halloween Fright Nights**, que el propio
-parque cuenta entre los mayores eventos de Halloween de Alemania. Si ya vas a
-viajar a [Europa-Park](ref:europa-park), te pilla casi de camino.
+parque cuenta entre los mayores eventos de Halloween de Alemania. A diferencia de
+Traumatica, en [Europa-Park](ref:europa-park), aquí nadie se queda fuera por
+tener menos de 16 años.
 
 ## Fechas y horarios
 
@@ -71,7 +72,7 @@ maldito donde la gente desaparece sin dejar rastro, y tú sigues la leyenda en l
 oscuridad.
 
 Vuelven [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
-donde un director de circo busca nuevos talentos;
+donde una directora de circo busca nuevos talentos;
 [Titty Twister](ref:plopsaland-deutschland/titty-twister), un bar con el nombre
 sacado de _Abierto hasta el amanecer_ y una dueña llamada Miss Monique;
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), con personas convertidas en
@@ -90,7 +91,7 @@ el nuevo cierre **Carnival Inferno**, y antes pinchan DJ en el Fright Festival.
 
 Con la entrada normal tienes [Skrämma](ref:plopsaland-deutschland/skraemma),
 con vikingos no muertos; [Scarecrow](ref:plopsaland-deutschland/scarecrow), con
-espantapájaros y cuervos en círculo; y
+espantapájaros y cuervos que vuelan en círculo; y
 [Murder District](ref:plopsaland-deutschland/murder-district), una calle en la
 que, según el parque, no hay reglas. Aquí son los actores los que vienen a ti,
 sin franja horaria y sin suplemento.
@@ -112,16 +113,16 @@ los espectáculos. Con pase anual de Plopsaland entras a las Fright Nights sin
 coste extra y, hasta el 30 de septiembre y mientras queden, te regalan una
 entrada para Mad Rat.
 
-Si quieres las seis casas, la cuenta es corta: la entrada más barata más el
+Si quieres las seis casas, la cuenta es sencilla: la entrada más barata más el
 paquete de 49 € suman 88 € por persona; el pase cuesta 109 € y te ahorra
-reservar seis franjas. Un sábado lleno de octubre, coge el pase.
+reservar seis franjas. Si vas un sábado de octubre con el parque lleno, coge el pase.
 
 ## Para quién es
 
 El parque recomienda las Fright Nights **a partir de 16 años**. Es una
 recomendación y no una norma de acceso como en Traumatica. Si vas con gente
 más joven o asustadiza, Majaland y el pabellón Plopsa Indoor quedan libres de
-monstruos, y allí mismo te dan un «Schreck-Stopp»: quien lo lleva no recibe
+monstruos, y en el parque puedes conseguir un «Schreck-Stopp»: quien lo lleva no recibe
 sustos de los actores. A partir de 12 años están prohibidos las máscaras, el
 maquillaje elaborado y los disfraces, para que en la oscuridad quede claro
 quién trabaja allí.

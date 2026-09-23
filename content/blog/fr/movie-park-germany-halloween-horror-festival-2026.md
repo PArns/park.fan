@@ -23,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'L’entrée de Van Helsing’s Factory : une façade de station-service rouillée avec des lettres PETROL en biais, des visiteurs sur le trottoir devant.'
-  caption: 'Van Helsing’s Factory début septembre. Dès samedi soir, le chasseur de monstres est nettement en infériorité numérique.'
+  caption: 'Van Helsing’s Factory début septembre. Dès samedi, le soir, le chasseur de monstres est nettement en infériorité numérique.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026 : dates et billets'
@@ -100,7 +100,7 @@ ce moment 38,90 € selon le parc, contre 59,90 € au guichet à partir de 12 a
 
 Les mazes et PHOBIA ne sont **pas compris**. Chaque maze demande son propre
 billet à créneau horaire, vendu uniquement en ligne. Les pages Halloween du parc
-n’indiquent pas de prix par maze, il n’apparaît que dans la boutique en ligne.
+n’indiquent pas de prix par maze. On ne le trouve que dans la boutique en ligne.
 
 Si vous voulez les neuf, faites le calcul face au **S.I.K. Pass** : 215 € avec
 l’entrée du parc, 185 € si vous avez déjà un billet ou un pass annuel. Il donne
@@ -116,8 +116,8 @@ site du parc.
 
 Contrairement à Disney le 31 octobre, le Movie Park n’autorise **ni
 déguisements, ni masques, ni maquillage d’horreur** apportés par les visiteurs,
-quelle que soit la soirée. L’alcool est interdit aussi, et les sacs sont fouillés
-à l’entrée.
+quelle que soit la soirée. On ne peut pas non plus entrer avec de l’alcool, et
+les sacs sont fouillés à l’entrée.
 
 ## Quelle soirée
 

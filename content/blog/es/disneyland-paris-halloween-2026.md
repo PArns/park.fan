@@ -65,8 +65,8 @@ Cruella, Maléfica, Jafar y la Reina de Corazones vuelven a los encuentros con
 villanos. Por primera vez desde 2021 vuelve también el **Dr. Facilier**, de
 _Tiana y el sapo_, en Frontierland. Jack Skellington y Sally, de _Pesadilla antes de Navidad_,
 regresan algunos días concretos y solo se les puede ver a través de la cola
-virtual de la app de Disneyland Paris. Te apuntas desde el móvil el mismo día,
-no haciendo fila.
+virtual de la app de Disneyland Paris. Te pones en la cola desde el móvil el día de tu visita,
+no allí en persona.
 
 Main Street recibe unas cuarenta calabazas nuevas, 170 velas nuevas con forma
 de Mickey, guirnaldas de estilo victoriano, una banda sonora compuesta para la
@@ -103,9 +103,9 @@ también pueden entrar disfrazados. Disneyland Park abre hasta las **23:00**,
 con encuentros especiales con personajes, un espectáculo de fuegos artificiales
 propio y caramelos de M&M'S. No hace falta ninguna entrada aparte para la
 fiesta: la noche está incluida en la entrada normal, aunque ese día la entrada cuesta
-más que el resto del festival. El parque publicará antes
-qué disfraces se permiten. Mira la app antes de pasarte una semana con una
-máscara que se va a quedar en la puerta.
+más que los demás días del festival. El parque publicará antes
+qué disfraces se permiten. Antes de salir, mira la app: no vaya a ser que pases horas haciendo una
+máscara que tenga que quedarse en la puerta.
 
 Sábado, Halloween, disfraces y programa nocturno para todo el que tenga
 entrada: estará lleno. Si puedes pasar sin la noche de disfraces, la decoración
@@ -121,8 +121,8 @@ la última semana del mes se suman las británicas.
 
 ```
 
-Cuánto cuesta el Premier Access, qué días hay menos gente en un parque que no
-cierra nunca y cómo ver los dos parques en un día: todo está en la
+Cuánto cuesta el Premier Access, qué días hay menos gente en un parque que abre
+todo el año y cómo ver los dos parques en un día: todo está en la
 [guía de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos).
 Lo que hacen ese mismo otoño Movie Park, Traumatica, Walibi y Toverland para
 quien va sin niños lo compara el
