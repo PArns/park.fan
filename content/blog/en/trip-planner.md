@@ -18,7 +18,7 @@ tags:
   - tips
   - orlando
   - behind-the-scenes
-category: news
+category: park-fan
 parkLinks:
   # Hansa-Park gets a paragraph of its own about why the planner offers no
   # buttons there. That is exactly the question somebody on that park page has.

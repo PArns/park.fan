@@ -18,7 +18,7 @@ tags:
   - conseils
   - orlando
   - coulisses
-category: news
+category: park-fan
 parkLinks:
   # Hansa-Park a droit à son propre paragraphe sur l’absence de boutons dans le
   # planificateur. C’est exactement la question que se pose un lecteur sur cette
