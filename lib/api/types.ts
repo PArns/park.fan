@@ -817,6 +817,14 @@ export interface ParkAttraction {
    * never "no": most of the catalogue has never been checked.
    */
   hasSingleRider?: boolean | null;
+  /**
+   * Whether the ride runs a virtual queue (return times or boarding groups) at all.
+   *
+   * Same split as `hasSingleRider`: a curated fact, not today's reading — the
+   * live `RETURN_TIME` / `BOARDING_GROUP` entries in `queues` answer that. Null or
+   * absent means unknown, never "no".
+   */
+  hasVirtualLine?: boolean | null;
   /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
@@ -1100,6 +1108,14 @@ export interface AttractionResponse {
    * never "no": most of the catalogue has never been checked.
    */
   hasSingleRider?: boolean | null;
+  /**
+   * Whether the ride runs a virtual queue (return times or boarding groups) at all.
+   *
+   * Same split as `hasSingleRider`: a curated fact, not today's reading — the
+   * live `RETURN_TIME` / `BOARDING_GROUP` entries in `queues` answer that. Null or
+   * absent means unknown, never "no".
+   */
+  hasVirtualLine?: boolean | null;
   /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
