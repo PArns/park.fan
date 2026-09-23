@@ -10,14 +10,26 @@ import {
   SlidersHorizontal,
   Ticket,
   Users,
+  X,
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { FilterToggle } from '@/components/parks/filter-toggle';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
 import { TILE_GLASS } from '@/components/common/glass-card';
 import type { WetMode } from '@/lib/hooks/use-attraction-filter';
+import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
+import { formatRiderHeight } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
 
 interface AttractionFilterPanelProps {
@@ -43,6 +55,8 @@ interface AttractionFilterPanelProps {
   wetCount: number;
   wetMode: WetMode;
   onCycleWet: () => void;
+  /** Turns the wet filter off from either state — the phone's chip, where a cycle would flip it. */
+  onClearWet: () => void;
   /** Rides selling a queue-jump product, and the park's own name for it. */
   fastPassCount: number;
   fastPassLabel: string | null;
@@ -117,6 +131,16 @@ function CellDivider() {
  * the server rendered. Which is why the pre-mount branch of `TabsWithHash` renders
  * this same component rather than a spacer shaped like it: a placeholder would have
  * to write every one of those numbers down a second time, and be wrong about one.
+ *
+ * **Below `sm` it is one row.** Open, the panel was 515 px on a 390 px phone and the
+ * first ride started 3.9 screens down (PAR-430). So on a phone the box holds only the
+ * search box and a „Filter" button; the heading, the height slider and the pills are
+ * `max-sm:hidden` in the box and render again inside a bottom sheet the button opens.
+ * The switch is CSS, not a media query read in JS: the server cannot know the width,
+ * and both branches of `TabsWithHash` must render the same markup. The sheet's
+ * controls are the same two render functions the box uses, over the same state, so a
+ * pill set in the sheet is the pill lit in the box. What is set shows as chips under
+ * the row, each a lit pill that turns its filter off.
  */
 export function AttractionFilterPanel({
   inputRef,
@@ -137,6 +161,7 @@ export function AttractionFilterPanel({
   wetCount,
   wetMode,
   onCycleWet,
+  onClearWet,
   fastPassCount,
   fastPassLabel,
   onlyFastPass,
@@ -146,7 +171,9 @@ export function AttractionFilterPanel({
   onToggleOnlySingleRider,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
+  const { unit } = useTemperatureUnit();
   const [isFocused, setIsFocused] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   // A pill stays on screen while it is doing something even once its count drops to
   // zero: the "open now" one loses its rides the moment the park shuts, and a control
@@ -177,19 +204,129 @@ export function AttractionFilterPanel({
   ];
   const wetLabel = wetLabels[wetMode === null ? 0 : wetMode === 'only' ? 1 : 2];
 
+  /** Everything the phone's „Filter" button hides — without it the row is the search alone. */
+  const hasSheet = heightStops !== null || hasPills;
+  /** Set filters, the number on the button and one chip each. The search is not one: it is in the row. */
+  const activeCount =
+    (riderHeight !== null ? 1 : 0) +
+    (onlyOpen ? 1 : 0) +
+    (showOffSeason ? 1 : 0) +
+    (wetMode !== null ? 1 : 0) +
+    (onlyFastPass ? 1 : 0) +
+    (onlySingleRider ? 1 : 0);
+
+  const renderHeight = (className?: string) =>
+    heightStops && (
+      <RiderHeightFilter
+        className={className}
+        stops={heightStops}
+        value={riderHeight}
+        onChange={onRiderHeightChange}
+        rideableCount={rideableCount}
+        totalCount={totalCount}
+      />
+    );
+
+  const renderPills = (className?: string) =>
+    hasPills && (
+      <div className={cn('flex flex-wrap gap-x-7 gap-y-3', className)}>
+        {/* `invisible` rather than unmounted: the search reaches past every one of
+            these, so while it runs they govern nothing — and controls that came and
+            went as somebody types would move the whole list under them. */}
+        {hasToday && (
+          <div className={cn(isSearching && 'invisible')}>
+            <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
+              {t('filterSection.todayLabel')}
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {showOpen && (
+                <FilterToggle
+                  size="md"
+                  icon={DoorOpen}
+                  label={t('filterSection.openNow')}
+                  pressed={onlyOpen}
+                  onToggle={onToggleOnlyOpen}
+                />
+              )}
+              {offSeasonCount > 0 && (
+                <OffSeasonToggle
+                  size="md"
+                  count={offSeasonCount}
+                  shown={showOffSeason}
+                  onToggle={onToggleOffSeason}
+                />
+              )}
+            </div>
+          </div>
+        )}
+
+        {hasToday && hasTraits && (
+          <div
+            aria-hidden="true"
+            className="bg-foreground/12 dark:bg-foreground/15 mt-6 hidden w-px self-stretch sm:block"
+          />
+        )}
+
+        {hasTraits && (
+          <div className={cn(isSearching && 'invisible')}>
+            <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
+              {t('filterSection.traitsLabel')}
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {showWet && (
+                <FilterToggle
+                  size="md"
+                  icon={wetMode === 'hide' ? DropletOff : Droplet}
+                  label={wetLabel}
+                  labels={wetLabels}
+                  pressed={wetMode !== null}
+                  onToggle={onCycleWet}
+                />
+              )}
+              {showFastPass && (
+                <FilterToggle
+                  size="md"
+                  icon={Ticket}
+                  label={fastPassLabel ?? t('filterSection.fastPass')}
+                  pressed={onlyFastPass}
+                  onToggle={onToggleOnlyFastPass}
+                />
+              )}
+              {showSingleRider && (
+                <FilterToggle
+                  size="md"
+                  icon={Users}
+                  label={t('filterSection.singleRider')}
+                  pressed={onlySingleRider}
+                  onToggle={onToggleOnlySingleRider}
+                />
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+
+  // `max-sm:p-2`: the phone box is the 44 px row plus 8 px each side and the border, 62 px,
+  // under the 64 px PAR-430 set for the collapsed panel.
   return (
-    <div className={cn('border-border/50 mb-4 rounded-xl border p-3 shadow-sm sm:p-4', TILE_GLASS)}>
+    <div
+      className={cn(
+        'border-border/50 mb-4 rounded-xl border p-3 shadow-sm max-sm:p-2 sm:p-4',
+        TILE_GLASS
+      )}
+    >
       <ChapterHeading
         icon={SlidersHorizontal}
         as="h3"
         title={t('filterSection.title')}
         hint={t('filterSection.hint')}
-        className="mb-3 gap-3 pb-3 sm:gap-3"
+        className="mb-3 gap-3 pb-3 max-sm:hidden sm:gap-3"
       />
 
-      <div className="flex flex-col gap-3 @min-[768px]/page:flex-row @min-[768px]/page:items-start @min-[768px]/page:gap-4">
-        <div className="@min-[768px]/page:w-[220px] @min-[1024px]/page:w-[260px]">
-          <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
+      <div className="flex flex-col gap-3 max-sm:flex-row max-sm:items-center max-sm:gap-2 @min-[768px]/page:flex-row @min-[768px]/page:items-start @min-[768px]/page:gap-4">
+        <div className="max-sm:min-w-0 max-sm:flex-1 @min-[768px]/page:w-[220px] @min-[1024px]/page:w-[260px]">
+          <p className="text-muted-foreground flex h-6 items-center text-xs font-medium max-sm:hidden">
             {t('filterSection.searchLabel')}
           </p>
           <div className="group relative">
@@ -219,98 +356,124 @@ export function AttractionFilterPanel({
           </div>
         </div>
 
+        {hasSheet && (
+          <Button
+            type="button"
+            variant="outline"
+            className="shrink-0 bg-transparent sm:hidden dark:bg-transparent"
+            aria-haspopup="dialog"
+            aria-expanded={sheetOpen}
+            onClick={() => setSheetOpen(true)}
+          >
+            <SlidersHorizontal aria-hidden="true" />
+            {t('filterSection.openFilters')}
+            {activeCount > 0 && (
+              <>
+                <Badge variant="default" aria-hidden="true" className="tabular-nums">
+                  {activeCount}
+                </Badge>
+                <span className="sr-only">
+                  {t('filterSection.activeCount', { count: activeCount })}
+                </span>
+              </>
+            )}
+          </Button>
+        )}
+
         {heightStops && (
           <>
             <CellDivider />
-            <RiderHeightFilter
-              className="@min-[768px]/page:w-[280px] @min-[1024px]/page:w-[320px]"
-              stops={heightStops}
-              value={riderHeight}
-              onChange={onRiderHeightChange}
-              rideableCount={rideableCount}
-              totalCount={totalCount}
-            />
+            {renderHeight('max-sm:hidden @min-[768px]/page:w-[280px] @min-[1024px]/page:w-[320px]')}
           </>
         )}
       </div>
 
-      {hasPills && (
-        <div className="mt-3 flex flex-wrap gap-x-7 gap-y-3">
-          {/* `invisible` rather than unmounted: the search reaches past every one of
-              these, so while it runs they govern nothing — and controls that came and
-              went as somebody types would move the whole list under them. */}
-          {hasToday && (
-            <div className={cn(isSearching && 'invisible')}>
-              <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
-                {t('filterSection.todayLabel')}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                {showOpen && (
-                  <FilterToggle
-                    size="md"
-                    icon={DoorOpen}
-                    label={t('filterSection.openNow')}
-                    pressed={onlyOpen}
-                    onToggle={onToggleOnlyOpen}
-                  />
-                )}
-                {offSeasonCount > 0 && (
-                  <OffSeasonToggle
-                    size="md"
-                    count={offSeasonCount}
-                    shown={showOffSeason}
-                    onToggle={onToggleOffSeason}
-                  />
-                )}
-              </div>
-            </div>
-          )}
+      {renderPills('mt-3 max-sm:hidden')}
 
-          {hasToday && hasTraits && (
-            <div
-              aria-hidden="true"
-              className="bg-foreground/12 dark:bg-foreground/15 mt-6 hidden w-px self-stretch sm:block"
+      {/* What is set, one chip each, on the phone only — the box above shows it on its own
+          controls. Each chip is the lit pill of its filter with an ×, and pressing it turns
+          the filter off, which is what a lit pill does anywhere else on this panel. */}
+      {activeCount > 0 && (
+        <div className="mt-2 flex flex-wrap gap-2 sm:hidden">
+          {riderHeight !== null && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={`${t('heightFilter.label')}: ${formatRiderHeight(riderHeight, unit)}`}
+              pressed
+              onToggle={() => onRiderHeightChange(null)}
             />
           )}
-
-          {hasTraits && (
-            <div className={cn(isSearching && 'invisible')}>
-              <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
-                {t('filterSection.traitsLabel')}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                {showWet && (
-                  <FilterToggle
-                    size="md"
-                    icon={wetMode === 'hide' ? DropletOff : Droplet}
-                    label={wetLabel}
-                    labels={wetLabels}
-                    pressed={wetMode !== null}
-                    onToggle={onCycleWet}
-                  />
-                )}
-                {showFastPass && (
-                  <FilterToggle
-                    size="md"
-                    icon={Ticket}
-                    label={fastPassLabel ?? t('filterSection.fastPass')}
-                    pressed={onlyFastPass}
-                    onToggle={onToggleOnlyFastPass}
-                  />
-                )}
-                {showSingleRider && (
-                  <FilterToggle
-                    size="md"
-                    icon={Users}
-                    label={t('filterSection.singleRider')}
-                    pressed={onlySingleRider}
-                    onToggle={onToggleOnlySingleRider}
-                  />
-                )}
-              </div>
-            </div>
+          {onlyOpen && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={t('filterSection.openNow')}
+              pressed
+              onToggle={onToggleOnlyOpen}
+              className={cn(isSearching && 'invisible')}
+            />
+          )}
+          {showOffSeason && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={t('offSeasonCount', { count: offSeasonCount })}
+              pressed
+              onToggle={onToggleOffSeason}
+              className={cn(isSearching && 'invisible')}
+            />
+          )}
+          {wetMode !== null && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={wetLabel}
+              pressed
+              // Straight to off: cycling from „Nur mit Nässe" would land on „Ohne Nässe",
+              // a chip that turned into the opposite filter rather than going away.
+              onToggle={onClearWet}
+              className={cn(isSearching && 'invisible')}
+            />
+          )}
+          {onlyFastPass && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={fastPassLabel ?? t('filterSection.fastPass')}
+              pressed
+              onToggle={onToggleOnlyFastPass}
+              className={cn(isSearching && 'invisible')}
+            />
+          )}
+          {onlySingleRider && (
+            <FilterToggle
+              size="md"
+              icon={X}
+              label={t('filterSection.singleRider')}
+              pressed
+              onToggle={onToggleOnlySingleRider}
+              className={cn(isSearching && 'invisible')}
+            />
           )}
         </div>
+      )}
+
+      {hasSheet && (
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+          {/* The scroll sits on a child, not on `SheetContent`: that is the × button's
+              positioned ancestor and would scroll it away with the controls. */}
+          <SheetContent side="bottom" className="max-h-[85dvh] gap-0 rounded-t-xl">
+            <SheetHeader className="pr-14">
+              <SheetTitle>{t('filterSection.title')}</SheetTitle>
+              <SheetDescription>{t('filterSection.hint')}</SheetDescription>
+            </SheetHeader>
+            <div className="space-y-4 overflow-y-auto px-4 pb-6">
+              {renderHeight()}
+              {renderPills()}
+            </div>
+          </SheetContent>
+        </Sheet>
       )}
     </div>
   );

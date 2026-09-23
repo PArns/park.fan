@@ -623,7 +623,9 @@
       "singleRider": "Single rider",
       "resetWet": "Azzera il filtro acqua",
       "resetFastPass": "Azzera il filtro salta fila",
-      "resetSingleRider": "Azzera il filtro single rider"
+      "resetSingleRider": "Azzera il filtro single rider",
+      "openFilters": "Filtri",
+      "activeCount": "{count, plural, one {# attivo} other {# attivi}}"
     },
     "heightFilter": {
       "label": "Altezza",

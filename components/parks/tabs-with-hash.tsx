@@ -200,6 +200,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       wetCount={wetAttractionCount}
       wetMode={wetMode}
       onCycleWet={() => setWetMode(nextWetMode)}
+      onClearWet={() => setWetMode(null)}
       fastPassCount={fastPassAttractionCount}
       fastPassLabel={fastPassLabel}
       onlyFastPass={onlyFastPass}

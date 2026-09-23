@@ -884,7 +884,9 @@
       "singleRider": "Single Rider",
       "resetWet": "Nässe-Filter zurücksetzen",
       "resetFastPass": "Quickpass-Filter zurücksetzen",
-      "resetSingleRider": "Single-Rider-Filter zurücksetzen"
+      "resetSingleRider": "Single-Rider-Filter zurücksetzen",
+      "openFilters": "Filter",
+      "activeCount": "{count} aktiv"
     },
     "heightFilter": {
       "label": "Körpergröße",

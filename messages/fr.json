@@ -623,7 +623,9 @@
       "singleRider": "Single rider",
       "resetWet": "Réinitialiser le filtre mouillé",
       "resetFastPass": "Réinitialiser le filtre coupe-file",
-      "resetSingleRider": "Réinitialiser le filtre single rider"
+      "resetSingleRider": "Réinitialiser le filtre single rider",
+      "openFilters": "Filtres",
+      "activeCount": "{count, plural, one {# actif} other {# actifs}}"
     },
     "heightFilter": {
       "label": "Taille du visiteur",
