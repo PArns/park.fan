@@ -37,6 +37,8 @@ export interface LatestPost {
   category?: string;
   /** Versioned 16:9 cover crop, where the post has one. */
   image?: string;
+  /** The cover's focal point as a CSS `object-position`, resolved by the route. */
+  imagePosition?: string;
 }
 
 /**

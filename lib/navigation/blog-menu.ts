@@ -90,6 +90,8 @@ export interface BlogMenuPost {
   category?: string;
   /** Cover image, where the post has one. All seven currently do. */
   image?: string;
+  /** The cover's focal point as a CSS `object-position` — the panel cannot read the manifest. */
+  imagePosition?: string;
 }
 
 export interface BlogMenuNewsItem {
@@ -154,6 +156,7 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         // until someone clears it. This rail sits in the header, i.e. on ~35,000 pages, which is
         // why it was the largest source of unversioned media URLs on the site.
         image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
+        imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
       })),
     news: listNewsByDate(locale)
       .slice(0, NEWS_LIMIT)
