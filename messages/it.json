@@ -500,6 +500,12 @@
     "toggle": "Cambia tema"
   },
   "parks": {
+    "liveFreshness": {
+      "asOf": "Aggiornato",
+      "outdated": "Non aggiornato",
+      "offline": "Offline",
+      "retry": "Riprova"
+    },
     "blogPosts": {
       "title": "{park} sul blog",
       "intro": "Articoli dal nostro blog in cui compare {park}.",

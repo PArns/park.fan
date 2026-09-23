@@ -20,6 +20,7 @@ import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
+import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
@@ -209,6 +210,19 @@ export const TabsWithHash = memo(function TabsWithHash({
     />
   );
 
+  // "As of 14:35" between the filters and the rides, on both sides of hydration. It carries its
+  // own subscription to the live query, so a poll re-renders this row and not the grid.
+  const freshnessLine = (
+    <LiveDataFreshness
+      park={park}
+      todayIso={todayIso}
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+    />
+  );
+
   // Attractions grouped by Land — ONE tree, rendered by both branches below.
   //
   // It used to be two: before the mount the tab showed `AttractionWaitOverview`, a compact row
@@ -385,6 +399,7 @@ export const TabsWithHash = memo(function TabsWithHash({
               paint, and the mount finds the class already in place. */}
           <TabsContent value={defaultValue} className={ATTRACTIONS_PANEL_ENTER}>
             {filterPanel}
+            {freshnessLine}
             {attractionsPanel}
           </TabsContent>
         </Tabs>
@@ -399,6 +414,7 @@ export const TabsWithHash = memo(function TabsWithHash({
 
         <TabsContent value="attractions" className={ATTRACTIONS_PANEL_ENTER}>
           {filterPanel}
+          {freshnessLine}
           {attractionsPanel}
         </TabsContent>
 

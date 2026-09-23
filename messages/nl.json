@@ -500,6 +500,12 @@
     "toggle": "Thema wisselen"
   },
   "parks": {
+    "liveFreshness": {
+      "asOf": "Bijgewerkt",
+      "outdated": "Niet actueel",
+      "offline": "Offline",
+      "retry": "Opnieuw proberen"
+    },
     "blogPosts": {
       "title": "{park} op het blog",
       "intro": "Artikelen uit ons blog waarin {park} voorkomt.",

@@ -3,10 +3,7 @@
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
-import { Card } from '@/components/ui/card';
-import { AlertCircle } from 'lucide-react';
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
@@ -41,7 +38,7 @@ interface LiveParkDataProps {
  * - Uses initial SSR data for instant render
  * - Refreshes on window focus (when user returns to tab)
  * - Shows live indicator when data is fresh
- * - Gracefully falls back to last known state on error
+ * - Gracefully falls back to last known state on error (the warning is <LiveDataFreshness>)
  */
 export function LiveParkData({
   initialData,
@@ -56,13 +53,7 @@ export function LiveParkData({
   otherAttractionsLabel,
   todayPanel,
 }: LiveParkDataProps) {
-  const t = useTranslations('common');
-
-  const {
-    data: park,
-    isError,
-    error,
-  } = useLiveParkData({
+  const { data: park } = useLiveParkData({
     continent,
     country,
     city,
@@ -117,24 +108,9 @@ export function LiveParkData({
 
   return (
     <>
-      {/* Error State - Still show data but warn user */}
-      {isError && (
-        <Card className="mb-6 border-red-500 bg-red-50 p-4 dark:bg-red-950/20">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="mt-0.5 h-5 w-5 text-red-600 dark:text-red-400" />
-            <div className="flex-1">
-              <p className="text-sm font-medium text-red-900 dark:text-red-100">
-                {t('failedToLoadLiveData')}
-              </p>
-              <p className="mt-1 text-sm text-red-700 dark:text-red-300">
-                {t('showingLastKnownState')}
-                {error instanceof Error && ` (${error.message})`}
-              </p>
-            </div>
-          </div>
-        </Card>
-      )}
-
+      {/* A failed poll used to open a red card here, above the tabs, and every pixel of the page
+          below it moved by the card's height. It is now a warning on the "as of" line above the
+          ride list (<LiveDataFreshness>), in a row that is there in every state. */}
       {/* The "wird aktualisiert" indicator used to sit here, in a permanently reserved `mb-4 h-4`
           slot — 32 px of nothing between the header stack and its own navigation, on every view of
           every park page, so that the spinner appearing on each 5-minute poll would not shift the
