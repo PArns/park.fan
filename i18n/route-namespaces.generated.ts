@@ -128,6 +128,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/search': [],
   '/trip-planner': ['parks.weather', 'planner'],
+  '/trip-planner/shared': ['planner'],
   '/ui': [
     'attractions',
     'nearby',

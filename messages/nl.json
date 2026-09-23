@@ -2339,7 +2339,11 @@
         "show-times": "Speeltijden van de shows",
         "ride-status": "Als een geplande attractie sluit of weer opengaat",
         "wait-change": "Als een geplande wachttijd flink verandert"
-      }
+      },
+      "share": "Link naar dit plan delen",
+      "shareCopied": "Link gekopieerd",
+      "shareManual": "Kopiëren lukte niet. Hier is de link om te selecteren:",
+      "shareTitle": "Mijn plan op park.fan"
     },
     "page": {
       "kicker": "Dagplanner",
@@ -2437,6 +2441,21 @@
     "plans": {
       "title": "Mijn plannen"
     },
-    "planDayInWizard": "Dag plannen"
+    "planDayInWizard": "Dag plannen",
+    "shared": {
+      "metaTitle": "Gedeeld plan | park.fan",
+      "title": "Gedeeld plan",
+      "subtitle": "Iemand heeft je een plan uit de dagplanner gestuurd.",
+      "loading": "Plan wordt geladen…",
+      "missing": "Bij deze link hoort geen plan. Misschien is hij niet volledig gekopieerd of verlopen, of heeft de afzender de meldingen uitgezet en het plan daarmee verwijderd.",
+      "failed": "Het plan kon nu niet worden geladen.",
+      "retry": "Opnieuw proberen",
+      "empty": "In dit plan staat nog geen attractie.",
+      "copyNote": "Neem je het plan over, dan krijg je een eigen kopie. Wat je eraan verandert, blijft bij jou. Het plan van de afzender verandert daardoor niet.",
+      "replaces": "Op dit apparaat staat al een plan. Het wordt vervangen door het gedeelde plan.",
+      "adopt": "Overnemen in mijn planner",
+      "adopted": "Het plan staat nu in je planner.",
+      "open": "Planner openen"
+    }
   }
 }

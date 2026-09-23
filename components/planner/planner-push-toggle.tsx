@@ -5,6 +5,7 @@ import { Bell, BellOff, Loader2 } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { usePushSubscription } from '@/lib/planner/use-push-subscription';
+import { PlannerShareLink } from './planner-share-link';
 
 interface PlannerPushToggleProps {
   /**
@@ -180,6 +181,10 @@ export function PlannerPushToggle({ variant = 'row' }: PlannerPushToggleProps = 
           {t('push.storedHint')}
         </p>
       )}
+
+      {/* Right under the sentence that says the link is the password, so the
+          warning and the button that hands the link out are read together. */}
+      {on && <PlannerShareLink />}
 
       {/* Notifications did stop; the stored plan did not go with them. Said
           out loud because the visible half of the press worked, so nothing
