@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Avant-première ce soir, ouverture vendredi : Traumatica, à Europa-Park, fête sa dixième édition avec THE HOTEL, une expérience en contact physique pour les 18 ans et plus, et ramène le Vampire’s Club deux week-ends.
+  Avant-première ce soir, ouverture vendredi : Traumatica, à Europa-Park, fête sa dixième édition avec THE HOTEL, une expérience en contact physique pour les 18 ans et plus, et ramène le Vampire’s Club pour deux week-ends.
 tags:
   - actualites
   - europa-park
@@ -60,7 +60,7 @@ La saison dure jusqu’au 7 novembre, du vendredi au dimanche et trois jeudis
 même accompagné de ses parents. L’Event Pass démarre à 33 € ; le Shoxter Pass
 avec accès prioritaire est déjà complet.
 
-La comparaison avec Movie Park, Walibi et Toverland est dans le
+Ce que proposent Movie Park, Walibi et Toverland cet automne est dans le
 [tour d’horizon d’Halloween](/blog/halloween-parcs-attractions-2026).
 
 [Europa-Park](ref:europa-park?full)

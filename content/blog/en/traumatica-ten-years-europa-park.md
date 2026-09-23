@@ -59,7 +59,7 @@ The season runs until 7 November, Friday to Sunday plus three Thursdays
 coming with your parents doesn't change that. The Event Pass starts at €33;
 the Shoxter Pass with priority access has already sold out.
 
-How Traumatica compares with Movie Park, Walibi and Toverland is in the
+What Movie Park, Walibi and Toverland are putting on this autumn is in the
 [Halloween overview](/blog/halloween-theme-parks-2026).
 
 [Europa-Park](ref:europa-park?full)

@@ -54,13 +54,13 @@ También vuelve el **Vampire's Club**, con el propio Marc Terenzi en el
 escenario, pero solo el 25 y 26 de septiembre y el 2 y 3 de octubre, de 23:00 a
 3:00, para mayores de 18.
 
-La temporada dura hasta el 7 de noviembre, de viernes a domingo y tres jueves
+La temporada dura hasta el 7 de noviembre, de viernes a domingo, además de tres jueves
 (22 y 29 de octubre, 5 de noviembre). Las ocho atracciones de terror abren de
 19:00 a 23:30. Hay que tener al menos 16 años y llevar un documento de
 identidad original, aunque vengas con tus padres. El Event Pass cuesta desde
 33 €; el Shoxter Pass con acceso prioritario ya está agotado.
 
-Cómo queda Traumatica frente a Movie Park, Walibi y Toverland lo cuenta el
+Lo que preparan este otoño Movie Park, Walibi y Toverland está en el
 [resumen de Halloween](/blog/halloween-parques-atracciones-2026).
 
 [Europa-Park](ref:europa-park?full)

@@ -38,7 +38,7 @@ seo:
     - Traumatica leeftijd
 ---
 
-Vanavond draait in [Europa-Park](ref:europa-park) de voorpremière, vrijdag
+Vanavond draait in [Europa-Park](ref:europa-park) de voorpremière, en vrijdag
 25 september gaat Traumatica officieel van start. Het is de tiende editie onder
 die naam. Het begon in 2007 als “Terenzi Horror Nights”, vandaar het motto
 “20 jaar horror, 10 jaar Traumatica”.
@@ -58,7 +58,7 @@ van 19 tot 23.30 uur. Je moet minstens 16 zijn en een origineel
 identiteitsbewijs meenemen, ook als je ouders erbij zijn. De Event Pass kost
 vanaf € 33, de Shoxter Pass met voorrangstoegang is al uitverkocht.
 
-Hoe Traumatica zich verhoudt tot Movie Park, Walibi en Toverland, staat in het
+Wat Movie Park, Walibi en Toverland dit najaar organiseren, staat in het
 [halloweenoverzicht](/blog/halloween-pretparken-2026).
 
 [Europa-Park](ref:europa-park?full)

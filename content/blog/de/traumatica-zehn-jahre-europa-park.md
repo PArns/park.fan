@@ -54,11 +54,11 @@ allerdings nur am 25. und 26. September sowie am 2. und 3. Oktober, jeweils
 
 Gespielt wird bis 7. November, freitags bis sonntags und an drei Donnerstagen
 (22. und 29. Oktober, 5. November). Die acht Horror-Attraktionen laufen von 19
-bis 23:30 Uhr. Reinkommt nur, wer mindestens 16 ist und einen Originalausweis
-dabei hat, auch in Begleitung der Eltern. Der Event Pass kostet ab 33 €, der
+bis 23:30 Uhr. Rein kommt nur, wer mindestens 16 ist und einen Originalausweis
+dabei hat. Daran ändern auch mitgebrachte Eltern nichts. Der Event Pass kostet ab 33 €, der
 Shoxter Pass mit Priority-Zugang ist schon ausverkauft.
 
-Wie Traumatica neben Movie Park, Walibi und Toverland abschneidet, steht im
+Was Movie Park, Walibi und Toverland in diesem Herbst veranstalten, steht im
 [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
 [Europa-Park](ref:europa-park?full)
