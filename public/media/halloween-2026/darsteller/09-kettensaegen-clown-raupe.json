@@ -1,4 +1,5 @@
 {
+  "title": "09-kettensaegen-clown-raupe",
   "park": "walibi-holland",
   "tags": ["halloween", "performer", "photo"],
   "alt": {
@@ -20,5 +21,9 @@
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.4539,
+    "y": 0.2948
   }
 }
