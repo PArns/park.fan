@@ -2339,7 +2339,11 @@
         "show-times": "Horarios de los espectáculos",
         "ride-status": "Cuando una atracción planificada cierra o vuelve a abrir",
         "wait-change": "Cuando una espera planificada cambia mucho"
-      }
+      },
+      "share": "Compartir un enlace a este plan",
+      "shareCopied": "Enlace copiado",
+      "shareManual": "No se pudo copiar. Aquí tienes el enlace para seleccionarlo:",
+      "shareTitle": "Mi plan en park.fan"
     },
     "page": {
       "kicker": "Planificador",
@@ -2437,6 +2441,21 @@
     "plans": {
       "title": "Mis planes"
     },
-    "planDayInWizard": "Planificar el día"
+    "planDayInWizard": "Planificar el día",
+    "shared": {
+      "metaTitle": "Plan compartido | park.fan",
+      "title": "Plan compartido",
+      "subtitle": "Alguien te ha enviado un plan del planificador.",
+      "loading": "Cargando el plan…",
+      "missing": "No hay ningún plan detrás de este enlace. Puede que se copiara incompleto o que haya caducado, o que quien lo envió desactivara las notificaciones, lo que borra el plan.",
+      "failed": "Ahora mismo no se ha podido cargar el plan.",
+      "retry": "Volver a intentarlo",
+      "empty": "Este plan todavía no tiene ninguna atracción.",
+      "copyNote": "Si te quedas con el plan, recibes tu propia copia. Lo que cambies se queda contigo y el plan de quien lo envió no cambia.",
+      "replaces": "En este dispositivo ya hay un plan. El compartido lo sustituirá.",
+      "adopt": "Pasar a mi planificador",
+      "adopted": "El plan ya está en tu planificador.",
+      "open": "Abrir planificador"
+    }
   }
 }

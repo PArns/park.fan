@@ -2339,7 +2339,11 @@
         "show-times": "Show times",
         "ride-status": "When a planned ride closes or reopens",
         "wait-change": "When a planned wait changes a lot"
-      }
+      },
+      "share": "Share a link to this plan",
+      "shareCopied": "Link copied",
+      "shareManual": "Copying didn’t work. Here is the link to select:",
+      "shareTitle": "My plan on park.fan"
     },
     "page": {
       "kicker": "Trip planner",
@@ -2437,6 +2441,21 @@
     "plans": {
       "title": "My plans"
     },
-    "planDayInWizard": "Plan this day"
+    "planDayInWizard": "Plan this day",
+    "shared": {
+      "metaTitle": "Shared plan | park.fan",
+      "title": "Shared plan",
+      "subtitle": "Someone sent you a plan from the trip planner.",
+      "loading": "Loading the plan…",
+      "missing": "There is no plan behind this link. It may have been copied incompletely or have expired, or the sender turned notifications off, which deletes the plan.",
+      "failed": "The plan couldn’t be loaded just now.",
+      "retry": "Try again",
+      "empty": "This plan has no rides in it yet.",
+      "copyNote": "Taking the plan gives you your own copy. Whatever you change stays with you, and the sender’s plan is not affected.",
+      "replaces": "There is already a plan on this device. The shared one will replace it.",
+      "adopt": "Add to my planner",
+      "adopted": "The plan is now in your planner.",
+      "open": "Open planner"
+    }
   }
 }

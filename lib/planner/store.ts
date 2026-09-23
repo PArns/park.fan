@@ -156,7 +156,29 @@ function toEntry(value: unknown): PlannerEntry | null {
  * if it were whole is worse than an empty one.
  */
 function parseState(raw: string): PlannerState {
-  const parsed = secureJsonParse(raw);
+  return toPlannerState(secureJsonParse(raw));
+}
+
+/**
+ * A plan from outside this browser's storage, read by the same rules.
+ *
+ * The one caller is the shared-plan page, which gets somebody else's plan back
+ * from `GET /api/trips/<id>`. That payload was written by another browser, maybe
+ * an older build, and the API checks its outline and nothing more, so it is
+ * exactly as untrusted as what `readState` pulls out of localStorage.
+ */
+export function parsePlannerPayload(raw: string): PlannerState | null {
+  let body: unknown;
+  try {
+    body = secureJsonParse(raw);
+  } catch {
+    return null;
+  }
+  if (typeof body !== 'object' || body === null) return null;
+  return toPlannerState((body as Record<string, unknown>).payload);
+}
+
+function toPlannerState(parsed: unknown): PlannerState {
   if (typeof parsed !== 'object' || parsed === null) return EMPTY_PLANNER_STATE;
 
   const input = parsed as Record<string, unknown>;
