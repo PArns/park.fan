@@ -520,6 +520,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               city={city}
               parkSlug={parkSlug}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+              renderedAtMs={seedNowMs}
             />
           }
         />
