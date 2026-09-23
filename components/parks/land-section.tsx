@@ -81,8 +81,10 @@ export const LandSection = memo(function LandSection({
           8 px between rows and each <li> drops the subgrid the card no longer uses.
           `grid-cols-1` is `minmax(0, 1fr)`: without it the one column is `auto` and grows to the
           max-content of the row's one-line badge strip, which pushed the wait time and the
-          circles off the right edge of a 390 px screen. */}
-      <ul className="grid grid-cols-1 [grid-auto-rows:auto_1fr_auto] gap-2 sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
+          circles off the right edge of a 390 px screen. `max-sm:auto-rows-auto` for the same
+          reason the <li> drops its subgrid: in an auto-height grid every `1fr` track takes the
+          size of the tallest, so one row with an outage note made every row in the land as tall. */}
+      <ul className="grid [grid-auto-rows:auto_1fr_auto] grid-cols-1 gap-2 max-sm:auto-rows-auto sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
         {attractions.map((attraction) => {
           // The photo and its focal point ride along on the attraction itself,
           // attached by `enrichAttractionsWithImages` in the park API proxy. Looking
