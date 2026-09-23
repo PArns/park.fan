@@ -27,6 +27,7 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
+import { isParkDayOver } from '@/lib/utils/park-day-over';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
 import { ShowFollowBell } from '@/components/push/show-follow-bell';
@@ -52,38 +53,11 @@ interface ParkTodayPanelProps {
   parkPath: string;
   /**
    * The server's clock at render time, in ms. Only a `force-dynamic` page may pass it — on a
-   * cached one it would be the time the cache was filled. It lets the first HTML already know
-   * whether any showtime is left today, which the browser clock cannot tell before it mounts.
-   * Without it the show column keeps its reserved rows, as it always did.
+   * cached one it would be the time the cache was filled. With it the first HTML already knows
+   * whether the park's day is over ({@link isParkDayOver}), which the browser clock cannot tell
+   * before it mounts. Without it the panel draws its rows at every width, as it always did.
    */
   renderedAtMs?: number;
-}
-
-type HeadlinerRow = { name: string; slug: string; wait: number | null };
-
-/**
- * The headliner rows for one park payload. `isHeadliner` is the API's own classification and the
- * exact predicate `useAttractionFilter` uses for the Highlights section, so the two lists can
- * never disagree about what a headliner is.
- *
- * Shortest first: the top row is the recommendation, not the trophy. A headliner with no standby
- * reading sorts last and renders a dash rather than shortening the column.
- */
-function pickHeadliners(park: ParkWithAttractions): HeadlinerRow[] {
-  if (!hasReadableWaitTimes(park)) return [];
-  return (park.attractions ?? [])
-    .filter((a) => a.isHeadliner && isInSeason(a))
-    .map((a) => ({
-      name: stripNewPrefix(a.name),
-      slug: a.slug,
-      wait: getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
-    }))
-    .sort((a, b) => {
-      if (a.wait === null) return 1;
-      if (b.wait === null) return -1;
-      return a.wait - b.wait;
-    })
-    .slice(0, HEADLINER_ROWS);
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
@@ -243,44 +217,70 @@ export function ParkTodayPanel({
     : null;
   const todayReady = detailDate !== null || !!detailDay;
 
-  const headliners = useMemo(() => pickHeadliners(park), [park]);
-  const initialHeadliners = useMemo(() => pickHeadliners(initialData), [initialData]);
-
-  // No headliner has a number — the park is shut, or open with nothing reported. The column then
-  // says so in one line instead of drawing a dash per ride (six of them on a closed Phantasialand).
+  // `isHeadliner` is the API's own classification and the exact predicate `useAttractionFilter`
+  // uses for the Highlights section, so the two lists can never disagree about what a headliner is.
   //
-  // Asked of the server render AND the live data, so the column only ever grows while somebody
-  // looks at it: a park that opens mid-visit swaps the line for its rows — the numbers the reader
-  // is waiting for — but a park that closes mid-visit keeps its rows and dashes, as before, rather
-  // than folding the panel up under the reader's thumb at closing time.
-  const headlinersIdle =
-    headliners.length > 0 &&
-    headliners.every((h) => h.wait === null) &&
-    initialHeadliners.every((h) => h.wait === null);
+  // Shortest first: the top row is the recommendation, not the trophy. A headliner with no standby
+  // reading sorts last and renders a dash rather than shortening the column.
+  const headliners = useMemo(() => {
+    if (!waitsReadable) return [];
+    return (park.attractions ?? [])
+      .filter((a) => a.isHeadliner && isInSeason(a))
+      .map((a) => ({
+        name: stripNewPrefix(a.name),
+        slug: a.slug,
+        wait: getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
+      }))
+      .sort((a, b) => {
+        if (a.wait === null) return 1;
+        if (b.wait === null) return -1;
+        return a.wait - b.wait;
+      })
+      .slice(0, HEADLINER_ROWS);
+  }, [park.attractions, park.status, waitsReadable]);
 
-  // What the idle line says. The countdown and the next opening need the clock, so before mount it
-  // is the plain status — one line either way, so the swap moves nothing.
-  const headlinersIdleLine = (() => {
-    if (isOpenish) return t('noLiveWaitTimes.title');
-    if (sched.timeUntil?.variant === 'opening') return sched.timeUntil.message;
-    if (sched.offseason) return sched.offseason.message;
-    const next = sched.currentTime ? initialData.nextSchedule?.openingTime : null;
-    const nextOpening = next ? new Date(next) : null;
-    if (nextOpening && sched.currentTime && nextOpening > sched.currentTime) {
-      const date = nextOpening.toLocaleDateString(locale, {
-        day: 'numeric',
-        month: 'long',
-        timeZone: timezone,
-      });
-      const time = nextOpening.toLocaleTimeString(locale, {
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: timezone,
-      });
-      return `${t('opensOn')} ${date} · ${time}`;
-    }
-    return t('status.CLOSED');
-  })();
+  // The park's day is over — shut today, or past today's closing time — by the SERVER's clock and
+  // the schedule. Below `sm` the headliner and show columns are then one line each instead of six
+  // dashes and four empty rows.
+  //
+  // Decided once and kept for the visit. Not from the waits or showtimes: `initialData` is a
+  // structure snapshot cached for up to a day, so those are often yesterday's and the first poll
+  // replaces them straight after mount — a layout read off them would change one poll after every
+  // load. The schedule is in the same snapshot but covers 17 days, so today's entry is there and
+  // the poll does not move it. A park that closes while somebody reads keeps its rows, as before.
+  const dayOverAtRender = useMemo(
+    () =>
+      renderedAtMs === undefined
+        ? null
+        : isParkDayOver(initialData.schedule, timezone, renderedAtMs),
+    [initialData.schedule, timezone, renderedAtMs]
+  );
+  const headlinersFolded = dayOverAtRender === true;
+
+  // What the folded headliner column says: when the park opens next. Taken from the schedule the
+  // decision above read, measured from the same instant, and formatted only after mount — the
+  // server's and the browser's `Intl` need not spell a month the same, and one line of „Geschlossen"
+  // before it is the same height.
+  const nextOpeningLine = useMemo(() => {
+    if (!headlinersFolded || !browserNow || renderedAtMs === undefined) return null;
+    const next = (initialData.schedule ?? [])
+      .filter((s) => s.scheduleType === 'OPERATING' && s.openingTime)
+      .map((s) => new Date(s.openingTime as string))
+      .filter((d) => d.getTime() > renderedAtMs)
+      .sort((a, b) => a.getTime() - b.getTime())[0];
+    if (!next) return null;
+    const date = next.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      timeZone: timezone,
+    });
+    const time = next.toLocaleTimeString(locale, {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: timezone,
+    });
+    return `${t('opensOn')} ${date} · ${time}`;
+  }, [headlinersFolded, browserNow, renderedAtMs, initialData.schedule, locale, timezone, t]);
 
   // Same reasoning as `headliners` above: a fresh `.map()` on every render of this panel (a tab
   // switch, `detailDate` changing, anything unrelated to `park`) would hand `RideAlertsEntryButton`
@@ -311,19 +311,6 @@ export function ParkTodayPanel({
         (park.shows ?? []).filter(isInSeason).reduce((n, s) => n + (s.showtimes?.length ?? 0), 0)
       ),
     [park.shows]
-  );
-  // Whether any showtime was still ahead when the SERVER rendered — `null` when the page did not
-  // hand its clock down. Read off `initialData`, so both sides of hydration answer the same.
-  const showsLeftAtRender = useMemo(
-    () =>
-      renderedAtMs === undefined
-        ? null
-        : (initialData.shows ?? [])
-            .filter(isInSeason)
-            .some((s) =>
-              (s.showtimes ?? []).some((st) => new Date(st.startTime).getTime() > renderedAtMs)
-            ),
-    [initialData.shows, renderedAtMs]
   );
 
   // The next few showtimes across the whole park, not per show: the question here is what starts
@@ -417,11 +404,11 @@ export function ParkTodayPanel({
   // what the two halves can spare. The full-width columns under them keep the panel's own.
   const halfCell = cn(PANEL_CELL, 'max-sm:px-4');
   const fullCell = cn(PANEL_CELL, 'col-span-2 sm:col-span-1');
-  // Nothing left today, known from the first HTML on. Below `sm` the show column is then one line
-  // instead of four reserved rows with a sentence centred over them; from `sm` up it sits beside
-  // columns of the same height, so the reservation costs nothing there and stays. A day that runs
-  // out WHILE somebody looks keeps its rows at every width, so the panel does not shrink under them.
-  const showsCollapsed = showsLeftAtRender === false && nextShows.length === 0;
+  // The day is over, so below `sm` the show column is one line instead of four reserved rows with a
+  // sentence centred over them; from `sm` up it sits beside columns of the same height, so the
+  // reservation costs nothing there and stays. A performance still ahead after closing (a night
+  // show) unfolds it again once the clock has mounted — a real answer beats the saved height.
+  const showsFolded = headlinersFolded && nextShows.length === 0;
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
@@ -798,10 +785,12 @@ export function ParkTodayPanel({
                   ) : null
                 }
               >
-                {headlinersIdle && (
-                  <p className="text-muted-foreground truncate text-sm">{headlinersIdleLine}</p>
+                {headlinersFolded && (
+                  <p className="text-muted-foreground truncate text-sm sm:hidden">
+                    {nextOpeningLine ?? t('status.CLOSED')}
+                  </p>
                 )}
-                <ul className={cn('flex flex-col gap-0.5', headlinersIdle && 'hidden')}>
+                <ul className={cn('flex flex-col gap-0.5', headlinersFolded && 'max-sm:hidden')}>
                   {Array.from({ length: headlinerSlots }, (_, i) => {
                     const ride = headliners[i];
                     return (
@@ -871,12 +860,12 @@ export function ParkTodayPanel({
                   </a>
                 }
               >
-                {showsCollapsed && (
+                {showsFolded && (
                   <p className="text-muted-foreground text-sm sm:hidden">
                     {tCommon('noShowtimesToday')}
                   </p>
                 )}
-                <div className={cn('relative', showsCollapsed && 'max-sm:hidden')}>
+                <div className={cn('relative', showsFolded && 'max-sm:hidden')}>
                   {/* Nothing left today, and the park does have shows — `showSlots > 0` is counted
                     from `park.shows`, so this column is not even rendered for a park without any.
                     The sentence is centred over the rows the column has already reserved rather

@@ -45,6 +45,7 @@
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",
+    "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
     "test:typical-waits": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-typical-waits.mjs",
     "test:ride-crowd-scale": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-crowd-scale.mjs",
     "test:planner-actions": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-actions.mjs",
