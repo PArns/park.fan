@@ -623,7 +623,9 @@
       "singleRider": "Single rider",
       "resetWet": "Clear the wet-ride filter",
       "resetFastPass": "Clear the queue-jump filter",
-      "resetSingleRider": "Clear the single-rider filter"
+      "resetSingleRider": "Clear the single-rider filter",
+      "openFilters": "Filters",
+      "activeCount": "{count} active"
     },
     "heightFilter": {
       "label": "Rider height",

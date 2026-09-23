@@ -623,7 +623,9 @@
       "singleRider": "Single rider",
       "resetWet": "Natfilter wissen",
       "resetFastPass": "Wachtrijfilter wissen",
-      "resetSingleRider": "Single-riderfilter wissen"
+      "resetSingleRider": "Single-riderfilter wissen",
+      "openFilters": "Filters",
+      "activeCount": "{count} actief"
     },
     "heightFilter": {
       "label": "Lichaamslengte",
