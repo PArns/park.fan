@@ -1974,6 +1974,14 @@
       "playHint": "Carica il player di YouTube solo al tocco."
     }
   },
+  "blogToast": {
+    "eyebrow": "Novità sul blog",
+    "read": "Leggi l’articolo",
+    "close": "Chiudi",
+    "moreOne": "E {count} altro articolo nuovo",
+    "moreOther": "E altri {count} articoli nuovi",
+    "allPosts": "Vedi tutti"
+  },
   "contribute": {
     "gallery": {
       "title": "Questi parchi e queste attrazioni aspettano le tue foto",

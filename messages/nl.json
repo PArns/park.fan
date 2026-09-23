@@ -1974,6 +1974,14 @@
       "playHint": "Laadt de YouTube-speler pas als je tikt."
     }
   },
+  "blogToast": {
+    "eyebrow": "Nieuw op de blog",
+    "read": "Artikel lezen",
+    "close": "Sluiten",
+    "moreOne": "En nog {count} nieuw artikel",
+    "moreOther": "En nog {count} nieuwe artikelen",
+    "allPosts": "Alles bekijken"
+  },
   "contribute": {
     "gallery": {
       "title": "Deze parken en attracties wachten op jouw foto’s",

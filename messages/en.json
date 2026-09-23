@@ -1974,6 +1974,14 @@
       "playHint": "Loads the YouTube player only when you tap."
     }
   },
+  "blogToast": {
+    "eyebrow": "New on the blog",
+    "read": "Read post",
+    "close": "Close",
+    "moreOne": "Plus {count} more new post",
+    "moreOther": "Plus {count} more new posts",
+    "allPosts": "See all"
+  },
   "contribute": {
     "gallery": {
       "title": "These parks and rides are waiting for your photos",
