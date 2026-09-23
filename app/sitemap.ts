@@ -13,6 +13,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
+import { categoryPath, postPath } from '@/lib/blog/paths';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -433,7 +434,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Blog posts — alternates per translationKey use locale-specific slugs.
+  // Blog posts — alternates per translationKey use locale-specific slugs, and
+  // news posts sit under `/news` (`postPath`, lib/blog/paths.ts).
   // Only locales with a real translation are listed: EN-fallback URLs
   // (e.g. /de/blog/<en-slug>) canonicalize to the EN original and must not
   // appear in the sitemap or in hreflang alternates.
@@ -449,7 +451,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (!post) continue;
       const lastMod = post.frontmatter.updatedAt ?? post.frontmatter.date;
       routes.push({
-        url: alternates[locale] ?? `${BASE_URL}/${locale}/blog/${post.slug}`,
+        url: alternates[locale] ?? `${BASE_URL}/${locale}${postPath(post)}`,
         lastModified: new Date(lastMod),
         changeFrequency: 'monthly',
         priority: 0.6,
@@ -458,18 +460,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Blog category pages
+  // Blog category pages. The news category's page is the news overview at `/news`.
   for (const locale of blogLocales) {
     const posts = listPosts(locale as import('@/i18n/config').Locale);
     const { flat } = buildCategoryTree(locale as import('@/i18n/config').Locale);
     for (const path of flat.keys()) {
       routes.push({
-        url: `${BASE_URL}/${locale}/blog/category/${path}`,
+        url: `${BASE_URL}/${locale}${categoryPath(path)}`,
         // Descendants included, exactly as the page lists them.
         lastModified: newestPostDate(filterPostsByCategory(posts, parseCategoryPath(path))),
         changeFrequency: 'weekly',
         priority: 0.4,
-        alternates: buildBlogAlternates(() => `/blog/category/${path}`),
+        alternates: buildBlogAlternates(() => categoryPath(path)),
       });
     }
   }

@@ -2,6 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 import { parkCalendarRedirect } from './lib/parks/calendar-redirects';
+import { newsRedirect } from './lib/blog/news-redirects-rule';
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -20,6 +21,13 @@ export default function proxy(request: NextRequest) {
   const calendarTarget = parkCalendarRedirect(request.nextUrl.pathname);
   if (calendarTarget) {
     return NextResponse.redirect(new URL(calendarTarget, request.url), 308);
+  }
+
+  // News posts moved from `/blog/<slug>` to `/news/<slug>`, and `/blog/category/news` became
+  // `/news`. Same shape and same reason as the calendar above; `lib/blog/news-redirects-rule.ts`.
+  const newsTarget = newsRedirect(request.nextUrl.pathname);
+  if (newsTarget) {
+    return NextResponse.redirect(new URL(newsTarget, request.url), 308);
   }
 
   const response = handleI18nRouting(request);

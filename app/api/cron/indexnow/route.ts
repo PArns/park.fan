@@ -86,23 +86,28 @@ export async function GET(request: Request) {
   // category and tag pages genuinely reshuffle whenever anything is published, so
   // there is nothing here worth a change detector.
   try {
-    const { listPosts, getTranslationIndex } = await import('@/lib/blog');
+    const { listPosts, getMetaIndex } = await import('@/lib/blog');
     const { buildCategoryTree } = await import('@/lib/blog/categories');
     const { listTags } = await import('@/lib/blog/tags');
-    const translationIndex = getTranslationIndex();
+    const { categoryPath, postPath } = await import('@/lib/blog/paths');
+    const metaIndex = getMetaIndex();
 
     for (const locale of locales) {
       urls.push(`${BASE_URL}/${locale}/blog`);
       // Posts — only real translations; EN-fallback URLs canonicalize to the
       // EN original and shouldn't be submitted.
-      for (const [, localeMap] of translationIndex) {
-        const slug = localeMap.get(locale);
-        if (slug) urls.push(`${BASE_URL}/${locale}/blog/${slug}`);
+      for (const [, localeMap] of metaIndex) {
+        const entry = localeMap.get(locale);
+        if (entry) {
+          urls.push(
+            `${BASE_URL}/${locale}${postPath({ slug: entry.slug, frontmatter: entry.fm })}`
+          );
+        }
       }
       // Categories + tags
       const { flat } = buildCategoryTree(locale);
       for (const path of flat.keys()) {
-        urls.push(`${BASE_URL}/${locale}/blog/category/${path}`);
+        urls.push(`${BASE_URL}/${locale}${categoryPath(path)}`);
       }
       for (const tag of listTags(locale)) {
         urls.push(`${BASE_URL}/${locale}/blog/tag/${tag.slug}`);

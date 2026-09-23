@@ -17,6 +17,11 @@
  *   lib/blog/manifest-bodies.ts    BLOG_POST_BODIES — the markdown itself,
  *                                  keyed `<locale>/<slug>`. Imported by the
  *                                  blog post page and nothing else.
+ *   lib/blog/news-redirects.ts     NEWS_POST_TARGETS — which `/blog/<slug>`
+ *                                  is a news post now served under `/news`,
+ *                                  per locale. A few hundred bytes, because
+ *                                  `proxy.ts` imports it and runs without a
+ *                                  file system (lib/blog/news-redirects-rule.ts).
  */
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
@@ -37,6 +42,7 @@ const rootDir = resolve(__dirname, '..');
 const BLOG_ROOT = resolve(rootDir, 'content/blog');
 const OUTPUT_META = resolve(rootDir, 'lib/blog/manifest.ts');
 const OUTPUT_BODIES = resolve(rootDir, 'lib/blog/manifest-bodies.ts');
+const OUTPUT_NEWS_REDIRECTS = resolve(rootDir, 'lib/blog/news-redirects.ts');
 
 // Only locale-code directories hold posts (en, de, …). Reserved dirs such as
 // `authors/` live alongside them and must not be scanned as locales.
@@ -257,8 +263,51 @@ const bodiesModule = `/**
 export const BLOG_POST_BODIES: Record<string, string> = ${JSON.stringify(bodies, null, 2)};
 `;
 
+/**
+ * For every locale, each slug that `/<locale>/blog/<slug>` would resolve to a news post, mapped to
+ * the slug that post has under `/<locale>/news/`. Mirrors what the post page does with the same
+ * URL — the locale's own translation, else the EN one, else any (`resolveEntryForLocale` in
+ * lib/blog/listing.ts) — so the proxy answers the canonical URL in one hop, including a slug
+ * from another locale. A draft is served by nothing and gets no entry. News is
+ * `category: news` or `news/…`, the same test as `isNewsCategory` in lib/blog/paths.ts.
+ */
+function buildNewsRedirects(posts) {
+  const isNews = (category) => category === 'news' || String(category ?? '').startsWith('news/');
+  const groups = new Map();
+  for (const post of posts) {
+    const key = post.frontmatter.translationKey?.trim() || post.slug;
+    const group = groups.get(key) ?? new Map();
+    group.set(post.locale, post);
+    groups.set(key, group);
+  }
+  const out = {};
+  for (const locale of [...LOCALE_DIRS].sort()) out[locale] = {};
+  for (const group of groups.values()) {
+    const slugs = [...group.values()].map((post) => post.slug);
+    for (const locale of Object.keys(out)) {
+      const served = group.get(locale) ?? group.get('en') ?? group.get([...group.keys()].sort()[0]);
+      if ((served.frontmatter.mode ?? 'published') === 'draft') continue;
+      if (!isNews(served.frontmatter.category)) continue;
+      for (const slug of slugs) out[locale][slug] = served.slug;
+    }
+  }
+  return out;
+}
+
+const newsRedirectsModule = `/**
+ * \`/<locale>/blog/<slug>\` → the slug under \`/<locale>/news/\`, for news posts only. Read by
+ * lib/blog/news-redirects-rule.ts, which \`proxy.ts\` runs on every request.
+ */
+export const NEWS_POST_TARGETS: Record<string, Record<string, string>> = ${JSON.stringify(
+  buildNewsRedirects(posts),
+  null,
+  2
+)};
+`;
+
 writeFileSync(OUTPUT_META, banner + metaModule);
 writeFileSync(OUTPUT_BODIES, banner + bodiesModule);
+writeFileSync(OUTPUT_NEWS_REDIRECTS, banner + newsRedirectsModule);
 
 const kb = (file) => Math.round(readFileSync(file, 'utf8').length / 1024);
 console.log(

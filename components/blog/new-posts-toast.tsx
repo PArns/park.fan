@@ -279,7 +279,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
               </div>
 
               <Link
-                href={`/blog/${lead.slug}`}
+                href={lead.path}
                 prefetch={false}
                 onClick={(event) => {
                   if (dragged.current) {

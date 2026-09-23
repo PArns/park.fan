@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { NewsList, type NewsListItem } from '@/components/blog/news-list';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
+import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
@@ -71,7 +72,7 @@ export async function NewsRow({
           {label}
         </span>
         <Link
-          href={`/blog/category/${NEWS_CATEGORY}` as '/'}
+          href={NEWS_INDEX_PATH as '/'}
           prefetch={false}
           className="text-primary inline-flex items-center gap-1.5 text-xs font-semibold hover:underline"
         >

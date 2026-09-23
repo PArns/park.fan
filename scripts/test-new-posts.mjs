@@ -47,7 +47,13 @@ function reset() {
   storageThrows = false;
 }
 
-const post = (key, date, category = 'News') => ({ key, slug: key, title: key, date, category });
+const post = (key, date, category = 'News') => ({
+  key,
+  path: `/blog/${key}`,
+  title: key,
+  date,
+  category,
+});
 
 // The German list on 2026-09-23 at 08:46, when the toast went live: one news post on top.
 const MORNING = [

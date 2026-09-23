@@ -29,7 +29,8 @@
 export interface LatestPost {
   /** Translation key — the same across locales. */
   key: string;
-  slug: string;
+  /** Locale-relative URL of the post (`/blog/…` or `/news/…`, see `lib/blog/paths.ts`). */
+  path: string;
   title: string;
   /** Publication day, `YYYY-MM-DD`. */
   date: string;

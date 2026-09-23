@@ -4,7 +4,7 @@ One standing rule. It is indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md),
 
 ## The rule
 
-A post in the `news` category (or below it, `news/…`) is **news**; every other post is an **article**. `isNewsPost()` in `lib/blog/listing.ts` is the one place that decides it — never compare the category string at a call site.
+A post in the `news` category (or below it, `news/…`) is **news**; every other post is an **article**. `isNewsCategory()` in `lib/blog/paths.ts` is the one place that decides it (`isNewsPost()` in `lib/blog/listing.ts` wraps it) — never compare the category string at a call site. News posts also have their own URL, see [news lives under `/news`](news-live-under-news.md).
 
 Every surface that shows "the newest posts" as a teaser keeps the two apart:
 

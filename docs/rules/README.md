@@ -43,6 +43,7 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 - [Ride ↔ Glossary link](ride-and-glossary-link.md)
 - [Blog manifest is split (REQUIREMENT)](blog-manifest-is-split.md)
 - [News is set apart from the articles, and it is never hidden for its age (REQUIREMENT)](news-is-set-apart-from-the-articles.md)
+- [News posts live under `/news`, and every post URL comes from `postPath` (REQUIREMENT)](news-live-under-news.md)
 
 ## Design and layout
 

@@ -4,6 +4,7 @@ import { ChevronRight, FolderTree } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { buildCategoryTree } from '@/lib/blog/categories';
+import { categoryPath } from '@/lib/blog/paths';
 import type { CategoryNode } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
 
@@ -36,7 +37,7 @@ function CategoryNodeView({
   return (
     <li>
       <Link
-        href={`/blog/category/${node.path}` as '/'}
+        href={categoryPath(node.path) as '/'}
         className={cn(
           'group hover:bg-accent/40 flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors',
           isActive
