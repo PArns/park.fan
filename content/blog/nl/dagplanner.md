@@ -18,7 +18,7 @@ tags:
   - tips
   - orlando
   - achter-de-schermen
-category: news
+category: park-fan
 parkLinks:
   # Hansa-Park krijgt een eigen alinea over waarom de planner daar geen knoppen
   # aanbiedt. Precies dat vraagt iemand zich op die parkpagina af.

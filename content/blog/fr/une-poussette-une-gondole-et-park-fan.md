@@ -18,7 +18,7 @@ tags:
   - temps-d-attente
   - previsions-ia
   - coulisses
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany

@@ -3,20 +3,44 @@
 A returning visitor who has not seen the newest blog posts gets one toast about them. A first
 visit never does. Linear: PAR-444.
 
+News counts like every other post. The teaser surfaces keep news apart from the articles
+([rule](../rules/news-is-set-apart-from-the-articles.md)); the toast is not a teaser, it announces
+what arrived, and news is what arrives most often. The route lists `listPosts(locale)` and never
+filters with `isNewsPost` — `pnpm test:new-posts` greps for it.
+
 | Piece                                   | Job                                                                   |
 | --------------------------------------- | --------------------------------------------------------------------- |
 | `app/api/blog-latest/[locale]/route.ts` | Static JSON per locale: the six newest posts plus the toast's strings |
 | `lib/blog/new-posts.ts`                 | Client-safe: the stored record, and which posts count as unseen       |
-| `components/blog/new-posts-watcher.tsx` | Mounted in the locale layout; checks once per session                 |
+| `components/blog/new-posts-watcher.tsx` | Mounted in the locale layout; checks at most once per ten minutes     |
 | `components/blog/new-posts-toast.tsx`   | The toast itself, loaded only when there is something to show         |
 
 ## What it costs a page
 
 Nothing in the payload. The layout renders `<NewPostsWatcher enabled={showBlog} />`, a few hundred
-bytes of client code that does nothing until 2.5 s after mount. Then, once per browser session
-(`sessionStorage['pf:blog-seen-checked']`), it fetches `/api/blog-latest/<locale>`. That file is
-built from the blog manifest, so it only changes with a deployment, and it is served with
-`max-age=600, s-maxage=3600`.
+bytes of client code that does nothing until 2.5 s after the page settles. Then it fetches
+`/api/blog-latest/<locale>` — at most once per ten minutes (`CHECK_INTERVAL_MS`), across all tabs:
+`claimCheck()` keeps the time of the last check in `localStorage['pf:blog-seen-checked-at']` and
+claims the next one before the request goes out. That file is built from the blog manifest, so it
+only changes with a deployment, and it is served with `max-age=600, s-maxage=600` — the same ten
+minutes, in the browser and at the edge.
+
+It asks at three moments, each 2.5 s after the fact:
+
+- the first page of a visit,
+- every client-side navigation,
+- a tab that comes back to the front (`visibilitychange`). A browser that restores its tabs on
+  startup, or an installed app resumed from the background, loads no page, so this is the only
+  moment such a visitor ever gives.
+
+Until 2026-09-23 it asked **once per `sessionStorage` session**. That session lives as long as the
+tab, and a restored tab or an installed app keeps it for days: a reload after a news post went live
+asked nothing, only a new tab did. Reproduced in a browser before the fix (reload: no request, no
+toast; new tab: toast) and pinned by `pnpm test:new-posts`.
+
+Ten minutes at the edge rather than an hour, because nothing can purge Cloudflare and a news post
+("from Saturday") is worth announcing mostly in the hours after it goes live. The file is static,
+so a revalidation reaches no function.
 
 The toast's strings come with that JSON rather than through `NextIntlClientProvider`. A
 `useTranslations` in a component the layout mounts would put the namespace into
@@ -48,9 +72,13 @@ announced a second time.
 - **Record, unseen posts** → store the list and show the toast. Stored before it is shown, so a
   reload does not repeat it.
 - **On a `/blog` route** → store the list, show nothing: the posts are on screen already. A toast
-  that is up when the visitor navigates into the blog disappears.
+  that is up when the visitor navigates into the blog disappears, and does not come back on the
+  way out.
 
-Accepted gap: a post back-dated to before the last visit is never announced.
+Accepted gap: a post back-dated to before the last visit is never announced. With news this is
+the one to watch: a news post dated the day it was written and merged the next morning, after a
+visitor already saw a post dated that morning, is never announced to them. Date a news post the day
+it goes live.
 
 Only publication order counts. `updatedAt` does not make a post new, and `featured` does not move
 it to the front.
@@ -84,8 +112,10 @@ In the browser console on any page:
 
 ```js
 localStorage.setItem('pf:blog-seen', JSON.stringify({ newest: '2000-01-01', keys: [] }));
-sessionStorage.removeItem('pf:blog-seen-checked');
+localStorage.removeItem('pf:blog-seen-checked-at');
 location.reload();
 ```
 
 That announces all six posts. `localStorage.removeItem('pf:blog-seen')` simulates a first visit.
+Removing `pf:blog-seen-checked-at` stands in for the ten minutes a real visitor waits between
+checks; without it a second try inside that window asks nothing, which is correct.

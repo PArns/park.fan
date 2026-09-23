@@ -1054,9 +1054,10 @@ const nextConfig: NextConfig = {
       },
       {
         // The newest blog posts for the new-posts toast. Built from the manifest, so it only
-        // changes with a deploy; the browser may keep it for ten minutes.
+        // changes with a deploy; browser and edge may keep it for ten minutes, so a news post is
+        // announced within minutes of its deploy (nothing can purge Cloudflare).
         source: '/api/blog-latest/:locale',
-        headers: sharedCache('public, max-age=600, s-maxage=3600, stale-while-revalidate=86400'),
+        headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
       },
       // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
       // is now settled on the platform they actually run on, not just locally.
