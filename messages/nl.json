@@ -1330,6 +1330,7 @@
       "maxHeightLabel": "Tot",
       "mayGetWet": "Je kunt nat worden",
       "singleRider": "Single Rider",
+      "virtualLine": "Virtuele wachtrij",
       "fastPassFree": "gratis",
       "fastPassFrom": "vanaf",
       "rcdbLabel": "{attraction} in de RCDB",
@@ -1400,7 +1401,14 @@
     "day": "{count, plural, =1 {dag} other {dagen}}",
     "week": "{count, plural, =1 {week} other {weken}}",
     "offseason": "Buiten seizoen",
-    "nearbyParksArea": "In de omgeving"
+    "nearbyParksArea": "In de omgeving",
+    "parkPage": {
+      "heading": "Bij jou in de buurt",
+      "inParkCoarse": "Je bent in het park",
+      "ask": "In het park? Toon attracties bij jou in de buurt",
+      "blocked": "Locatietoegang is geblokkeerd in je browser",
+      "away": "Je bent {distance} van het park"
+    }
   },
   "geo": {
     "continent": "Continent",
@@ -1974,6 +1982,14 @@
       "play": "Video afspelen",
       "playHint": "Laadt de YouTube-speler pas als je tikt."
     }
+  },
+  "blogToast": {
+    "eyebrow": "Nieuw op de blog",
+    "read": "Artikel lezen",
+    "close": "Sluiten",
+    "moreOne": "En nog {count} nieuw artikel",
+    "moreOther": "En nog {count} nieuwe artikelen",
+    "allPosts": "Alles bekijken"
   },
   "contribute": {
     "gallery": {

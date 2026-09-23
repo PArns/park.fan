@@ -1330,6 +1330,7 @@
       "maxHeightLabel": "Jusqu’à",
       "mayGetWet": "Vous risquez d’être mouillé",
       "singleRider": "Single Rider",
+      "virtualLine": "File virtuelle",
       "fastPassFree": "gratuit",
       "fastPassFrom": "à partir de",
       "rcdbLabel": "{attraction} sur RCDB",
@@ -1400,7 +1401,14 @@
     "day": "{count, plural, =1 {jour} other {jours}}",
     "week": "{count, plural, =1 {semaine} other {semaines}}",
     "offseason": "Hors saison",
-    "nearbyParksArea": "Dans les environs"
+    "nearbyParksArea": "Dans les environs",
+    "parkPage": {
+      "heading": "Près de vous",
+      "inParkCoarse": "Vous êtes dans le parc",
+      "ask": "Au parc ? Afficher les attractions près de vous",
+      "blocked": "La localisation est bloquée dans votre navigateur",
+      "away": "Vous êtes à {distance} du parc"
+    }
   },
   "geo": {
     "continent": "Continent",
@@ -1974,6 +1982,14 @@
       "play": "Lire la vidéo",
       "playHint": "Charge le lecteur YouTube seulement au clic."
     }
+  },
+  "blogToast": {
+    "eyebrow": "Nouveau sur le blog",
+    "read": "Lire l’article",
+    "close": "Fermer",
+    "moreOne": "Et {count} autre nouvel article",
+    "moreOther": "Et {count} autres nouveaux articles",
+    "allPosts": "Tout voir"
   },
   "contribute": {
     "gallery": {

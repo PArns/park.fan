@@ -127,7 +127,11 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
     // whole 48 px bar plus the first ~60 px of the page, and while it was up a visitor could
     // reach neither the burger, nor the search, nor the logo. The number is the header's height
     // (components/layout/header.tsx, `h-12`); it moves with it.
-    <div className="animate-in slide-in-from-top fixed top-12 right-0 left-0 z-[60] duration-300">
+    <div
+      className="animate-in slide-in-from-top fixed top-12 right-0 left-0 z-[60] duration-300"
+      // Read by the new-posts toast, which sits below this from `sm` instead of under it.
+      data-language-banner
+    >
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
         <div className="border-border/50 bg-background/95 supports-[backdrop-filter]:bg-background/80 relative overflow-hidden rounded-lg border p-3 shadow-lg backdrop-blur sm:p-4">
           {/* Glassmorphism effect */}

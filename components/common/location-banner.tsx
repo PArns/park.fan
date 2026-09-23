@@ -50,6 +50,8 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
       aria-label={ariaLabel ?? tCommon('locationBannerLabel')}
       data-nosnippet
       data-noindex
+      // Read by the new-posts toast, which stacks above this on a phone instead of covering it.
+      data-location-banner
     >
       <div
         // `pr-9` (36 px) clears the 24 px close button in its 8 px corner. Below `sm` that button
