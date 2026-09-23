@@ -295,7 +295,14 @@ export const TabsWithHash = memo(function TabsWithHash({
                 <LazyMount
                   key={landName}
                   eager={index === 0 || isSearching}
-                  grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
+                  // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
+                  // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
+                  grid={{
+                    count: attractions.length,
+                    rowHeight: 340,
+                    phoneRowHeight: 80,
+                    headerHeight: 64,
+                  }}
                 >
                   <LandSection
                     landName={landName}

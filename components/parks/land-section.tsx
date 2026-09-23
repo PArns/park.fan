@@ -77,7 +77,9 @@ export const LandSection = memo(function LandSection({
         </div>
       </div>
 
-      <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+      {/* Below `sm` every card is a compact row (`phoneRow`, PAR-431), so the list tightens to
+          8 px between rows and each <li> drops the subgrid the card no longer uses. */}
+      <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-2 sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
         {attractions.map((attraction) => {
           // The photo and its focal point ride along on the attraction itself,
           // attached by `enrichAttractionsWithImages` in the park API proxy. Looking
@@ -85,7 +87,10 @@ export const LandSection = memo(function LandSection({
           // inside `tabs-with-hash`, a Client Component — so the whole catalog would
           // land in the browser's bundle.
           return (
-            <li key={attraction.id} className="row-span-3 grid [grid-template-rows:subgrid]">
+            <li
+              key={attraction.id}
+              className="row-span-3 grid [grid-template-rows:subgrid] max-sm:block"
+            >
               <MemoAttractionCard
                 attraction={attraction}
                 parkPath={parkPath}
@@ -93,6 +98,7 @@ export const LandSection = memo(function LandSection({
                 timezone={timezone}
                 todayIso={todayIso}
                 parkName={parkName}
+                phoneRow
               />
             </li>
           );
