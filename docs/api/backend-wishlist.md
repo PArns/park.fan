@@ -161,8 +161,9 @@ can 301 deterministically without GSC forensics.
 
 ## P3 · Top-level snapshot timestamp
 
-The park page's "Datenstand" line currently derives from `max(queues[].lastUpdated)` across
-attractions. A top-level `park.dataTimestamp` would be cheaper and unambiguous (e.g. for parks
+The park page's "as of" row (`LiveDataFreshness`) derives its pre-poll value from
+`max(queues[].lastUpdated)` across attractions; after the first client poll it uses the query's own
+`dataUpdatedAt`. A top-level `park.dataTimestamp` would be cheaper and unambiguous (e.g. for parks
 where all queues are closed and carry stale `lastUpdated`).
 
 ---
