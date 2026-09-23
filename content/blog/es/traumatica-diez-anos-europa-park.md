@@ -1,12 +1,16 @@
 ---
-title: 'Traumatica cumple diez años, con un hotel nuevo donde los actores pueden tocarte'
+title: 'Traumatica cumple diez años, y el regalo de cumpleaños es un hotel donde los actores pueden tocarte'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Preestreno esta noche, apertura el viernes: Traumatica, en Europa-Park, celebra su décima edición con THE HOTEL, una experiencia de contacto físico para mayores de 18, y recupera el Vampire's Club durante dos fines de semana.
+  Esta noche es el preestreno y el viernes empieza la temporada: Traumatica, en
+  Europa-Park, llega a su décima edición con ese nombre y a veinte años de
+  noches de terror en Rust. La novedad es THE HOTEL, que se recorre solo y con
+  contacto físico. Vuelve el Vampire's Club. Fechas, edad mínima y precios hasta
+  el 7 de noviembre.
 tags:
   - noticias
   - europa-park
@@ -38,33 +42,90 @@ seo:
     - Traumatica edad mínima
 ---
 
-Esta noche hay preestreno en [Europa-Park](ref:europa-park), y Traumatica abre
-oficialmente el viernes 25 de septiembre. Es la décima edición con ese nombre.
-Empezó en 2007 como «Terenzi Horror Nights», de ahí el lema de este año:
-«20 años de terror, 10 años de Traumatica».
+En otoño de 2007, [Europa-Park](ref:europa-park) soltó por primera vez, de
+noche, a actores con sangre falsa entre sus visitantes. Se llamaba «Terenzi
+Horror Nights», por el cantante Marc Terenzi, que había traído la idea de
+Estados Unidos junto con Michael Mack. Desde 2017 se llama Traumatica, así que
+2026 es la décima edición con ese nombre. El lema suma las dos cosas: «20 años
+de terror, 10 años de Traumatica».
 
-La novedad es **THE HOTEL**, la primera experiencia de contacto físico del
-evento: recorres solo un hotel abandonado y los actores pueden tocarte. Es para
-mayores de 18, no es accesible en silla de ruedas y cuesta 29 € además de la
-entrada, según el
-[Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html).
-Cuánto dura, el parque no lo dice.
+El preestreno es esta noche, miércoles 23 de septiembre. El estreno oficial
+llega el viernes 25 de septiembre, y la temporada sigue hasta el sábado 7 de
+noviembre.
 
-También vuelve el **Vampire's Club**, con el propio Marc Terenzi en el
-escenario, pero solo el 25 y 26 de septiembre y el 2 y 3 de octubre, de 23:00 a
-3:00, para mayores de 18.
+## Lo nuevo del aniversario
 
-La temporada dura hasta el 7 de noviembre, de viernes a domingo, además de tres jueves
-(22 y 29 de octubre, 5 de noviembre). Las ocho atracciones de terror abren de
-19:00 a 23:30. Hay que tener al menos 16 años y llevar un documento de
-identidad original, aunque vengas con tus padres. El Event Pass cuesta desde
-33 €; el Shoxter Pass con acceso prioritario ya está agotado.
+**THE HOTEL** es la primera experiencia de contacto físico de Traumatica.
+Entras solo en un hotel abandonado, sin grupo detrás del que esconderte, y los
+actores pueden tocarte. Según el
+[Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html),
+no es accesible en silla de ruedas y solo admite mayores de 18. Cuesta 29 €
+además de la entrada de Traumatica. Cuánto dura, el parque no lo dice, y
+seguramente es a propósito.
 
-Lo que preparan este otoño Movie Park, Walibi y Toverland está en el
-[resumen de Halloween](/blog/halloween-parques-atracciones-2026).
+Vuelve el **Vampire's Club**, pero solo los dos primeros fines de semana: 25 y
+26 de septiembre, 2 y 3 de octubre, de 23:00 a 3:00, para mayores de 18. Esas
+noches sustituye a THE FORBIDDEN, el club que el resto de viernes y sábados
+abre en el mismo horario. La entrada cuesta 10 €, o 29 € la versión VIP con
+zona propia y bebida de bienvenida. Marc Terenzi sube él mismo al escenario,
+más de diez años después de que sus caminos y los del evento se separaran.
+
+Hay dos cambios más pequeños. El food court abre ahora a las 18:00, una hora
+antes que las casas del terror, para que nadie baje a las catacumbas con el
+estómago vacío. Y el Murderdome vuelve como «Bonus Round», con obstáculos
+nuevos y tramos de recorrido añadidos.
+
+## Las ocho atracciones de terror
+
+- Wakala's Wonderland, un mundo de juegos de colores chillones donde mejor no
+  jugar
+- Day One, el primer día del apocalipsis, y tú buscas la salida
+- Tarot-House – Last Descent, una cripta maldita donde Madame Monroe colecciona
+  almas nuevas
+- Dark Remains, catacumbas donde no todo lo enterrado duerme
+- The Hill – Hide and Seek, un escondite con una bruja mientras buscas a unos
+  niños desaparecidos
+- Murderdome – Bonus Round, con los obstáculos nuevos de los que hablábamos
+  arriba
+- Studio-13 – Callback, un casting de cine para un papel que no quieres
+- THE HOTEL, solo y para mayores de 18
+
+Además está Brain Shocker, un viaje corto de realidad virtual por 6 €, hay
+espectáculos en escenario y actores que cazan por todo el recinto.
+
+## Quién puede entrar y cuánto cuesta
+
+Traumatica es **a partir de 16 años, sin excepciones**. Venir con tus padres no
+cambia nada, y en la entrada piden un documento de identidad original. Una foto
+en el móvil no sirve, por muy convincente que sea la cara que pongas.
+THE HOTEL, THE FORBIDDEN y el Vampire's Club son para mayores de 18.
+
+Hay función de viernes a domingo y, además, tres jueves: 22 y 29 de octubre y
+5 de noviembre. El acceso abre a las 17:45, el food court a las 18:00, y las
+atracciones de terror funcionan de 19:00 a 23:30.
+
+| Entrada              | Precio               |
+| -------------------- | -------------------- |
+| Event Pass           | desde 33 €           |
+| Shoxter Pass         | desde 96 € (agotado) |
+| Psycho Pass (+18)    | 349 €                |
+| Visitantes en silla  | 20 €                 |
+| THE HOTEL            | + 29 €               |
+| Vampire's Club / VIP | + 10 € / + 29 €      |
+| THE FORBIDDEN        | + 10 €               |
+
+Los precios «desde» son para las fechas más baratas, y el Shoxter Pass con
+acceso prioritario ya se ha agotado.
+
+Si antes pasas el día en el parque, la
+[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos) muestra qué
+días hay colas cortas, y el
+[resumen de Halloween](/blog/halloween-parques-atracciones-2026) compara
+Traumatica con lo que hacen este otoño Movie Park, Walibi y Toverland.
 
 [Europa-Park](ref:europa-park?full)
 
-Todas las fechas y entradas: [Traumatica en Europa-Park](https://www.europapark.de/en/events/traumatica).
+Todas las fechas y entradas están en la
+[página de Traumatica de Europa-Park](https://www.europapark.de/en/events/traumatica).
 
 — Patrick
