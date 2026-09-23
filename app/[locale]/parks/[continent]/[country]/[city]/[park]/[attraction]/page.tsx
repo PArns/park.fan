@@ -21,6 +21,7 @@ import { TransportSystemBadge } from '@/components/parks/transport-system-badge'
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
+import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { ChapterPanel } from '@/components/common/chapter-panel';
@@ -312,6 +313,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     attraction.maximumHeight != null ||
     Boolean(attraction.mayGetWet) ||
     attraction.hasSingleRider === true ||
+    attraction.hasVirtualLine === true ||
     Boolean(attraction.fastPass) ||
     attraction.rcdbId != null;
 
@@ -543,6 +545,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         pass is a fact about the visit, like the height limits, and
                         not part of the ride's identity. */}
                     <SingleRiderBadge hasSingleRider={attraction.hasSingleRider} />
+                    <VirtualLineBadge hasVirtualLine={attraction.hasVirtualLine} />
                     <FastPassBadge fastPass={attraction.fastPass} />
                     {attraction.rideProfile ? (
                       <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
