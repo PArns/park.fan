@@ -55,7 +55,7 @@ The Fright Nights run on **Fridays and Saturdays from 2 to 31 October 2026**:
 2, 3, 9, 10, 16, 17, 23, 24, 30 and 31 October. On those days the park is open
 from **10 a.m. to 10 p.m.** and every ride keeps running until closing. The
 only exceptions are the two water rides, DinoSplash and Wickie Splash, which
-stop at 8 p.m. In October, nobody will mind.
+stop at 8 p.m., which in October will probably bother nobody.
 
 During the day there is a child-friendly Plopsa Autumn Festival. The monsters
 come out in the evening.
@@ -72,8 +72,8 @@ vanish without a trace, and you follow the legend into the dark.
 
 Returning are [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 where a circus director is looking for new talent;
-[Titty Twister](ref:plopsaland-deutschland/titty-twister), a bar with the name
-from _From Dusk Till Dawn_ and a landlady called Miss Monique;
+[Titty Twister](ref:plopsaland-deutschland/titty-twister), a bar named after the
+one in _From Dusk Till Dawn_, with a landlady called Miss Monique;
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), with people turned into giant
 rats by an experiment; and the
 [Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus), known for its
@@ -112,7 +112,7 @@ Nightmare Society Pass skips them, and it adds a reserved area at the shows.
 Plopsaland annual pass holders get into the Fright Nights at no extra cost and,
 until 30 September and while stocks last, a free ticket for Mad Rat.
 
-If you want all six houses, the maths is short. The cheapest day ticket plus
+If you want all six houses, the maths is simple. The cheapest day ticket plus
 the €49 bundle comes to €88 a head; the pass costs €109 and saves you booking
 six time slots. On a busy October Saturday, take the pass.
 
@@ -121,8 +121,8 @@ six time slots. On a busy October Saturday, take the pass.
 The park recommends the Fright Nights **for ages 16 and up**. That is advice,
 not an entry rule as it is at Traumatica. If you bring younger or easily
 startled company, Majaland and the Plopsa Indoor hall stay monster-free, and
-on site you can get a "Schreck-Stopp" badge that tells the actors to leave you
-alone. From age 12, masks, heavy make-up and costumes are not allowed, so that
+on site you can get a "Schreck-Stopp" to wear, and the actors leave whoever
+wears one alone. From age 12, masks, heavy make-up and costumes are not allowed, so that
 it stays clear in the dark who works there.
 
 Haßloch sits between the A65 and the B9, and a shuttle bus runs from Haßloch

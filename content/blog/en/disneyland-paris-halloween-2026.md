@@ -23,10 +23,10 @@ rideLinks: false
 coverImage:
   src: /media/disneyland-park/background.jpg
   alt: 'The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.'
-  caption: 'Still without thorns. From Saturday the villains get the castle gates.'
+  caption: 'Still without thorns. From Saturday the villains take over the castle gates.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris Halloween 2026: dates, new for 2026, 31 October'
+  title: 'Disneyland Paris Halloween 2026: dates, what’s new, 31 October'
   description: >-
     Disney Halloween Festival from 26 September to 1 November 2026: new
     outfits, Dr. Facilier, Jack & Sally, the Unlucky Nugget Saloon and the
@@ -58,14 +58,15 @@ of its own. If you want a scare over there, ride
 
 Mickey, Minnie, Donald and Daisy are wearing **Victorian Halloween outfits**:
 Mickey as a mysterious count, Minnie as a little witch, Donald as a vampire and
-Daisy as a bat lady. All four wear the same brooch: a bat with a stone set in it.
-The stones differ.
+Daisy as a bat lady. All four wear the same brooch, a bat set with a stone, each in a different
+colour.
 
 Cruella, Maleficent, Jafar and the Queen of Hearts are back for villain
 meet-and-greets. **Dr. Facilier** from _The Princess and the Frog_ returns for
 the first time since 2021, in Frontierland. Jack Skellington and Sally from _The Nightmare Before
 Christmas_ return on selected days, and you can only meet them through the
-virtual queue in the Disneyland Paris app. No phone, no Jack.
+virtual queue in the Disneyland Paris app. You join it on your phone on the day
+of your visit, not in person.
 
 Main Street gets around forty new pumpkins, 170 new Mickey-shaped candles,
 Victorian garlands, a newly composed soundtrack and projections on the
@@ -101,11 +102,11 @@ adults may wear a costume into the park. Disneyland Park stays open until
 sweets handed out by M&M'S. There is no separate party ticket: the evening is
 part of normal admission, although admission itself costs more that day than
 on the rest of the festival. The park will publish the costume rules in advance,
-so check the app before you spend a week on a mask that has to stay at the
+so check the app before you spend hours on a mask that has to stay at the
 gate.
 
-A Saturday, Halloween, costumes, and an evening programme open to everyone
-who has a ticket. It will be packed. If you can live without the costume night, the
+A Saturday, Halloween, costumes and an evening programme for everyone with a
+ticket: it will be packed. If you can live without the costume night, the
 decorations are easier to enjoy on a weekday in late September or early
 October. French schools break up in mid-October, and the last week of the
 month is UK half term as well.
