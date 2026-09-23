@@ -29,10 +29,13 @@ function InParkAttractionRow({
   attraction,
   awayLabel,
   headlinerLabel,
+  showDistance = true,
 }: {
   attraction: AttractionWithDistance;
   awayLabel: string;
   headlinerLabel?: string;
+  /** False when the fix is too coarse for a per-ride distance to mean anything. */
+  showDistance?: boolean;
 }) {
   // Non-operating rides (e.g. whole park closed) get a colored status badge instead of a wait time.
   const showStatusBadge =
@@ -65,9 +68,11 @@ function InParkAttractionRow({
                 </Badge>
               )}
             </div>
-            <p className="text-muted-foreground text-xs">
-              {formatDistance(attraction.distance)} {awayLabel}
-            </p>
+            {showDistance && (
+              <p className="text-muted-foreground text-xs">
+                {formatDistance(attraction.distance)} {awayLabel}
+              </p>
+            )}
           </div>
           <div className="flex items-center gap-2">
             {attraction.status === 'OPERATING' ? (
@@ -94,6 +99,96 @@ function InParkAttractionRow({
 }
 
 /**
+ * The rides an in-park view lists: every in-season headliner, then the nearest other rides.
+ * Shared by the homepage's `InParkView` and the park page's "near you" block, so both list the
+ * same rides in the same order.
+ */
+export function splitInParkRides(rides: AttractionWithDistance[] | undefined) {
+  // Drop rides that are clearly out of their season. The API already hides
+  // `isCurrentlyInSeason === false`, but we filter defensively so off-season attractions never
+  // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
+  const inSeasonRides = (rides || []).filter((a) => a.isCurrentlyInSeason !== false);
+
+  // Headliners (top/marquee attractions, flagged by the API). All of them are shown above the
+  // regular list, sorted by distance. Closed ones are kept and carry a status badge — a headliner
+  // is worth pointing out even when the park (or just that ride) isn't operating right now.
+  const headliners = inSeasonRides
+    .filter((a) => a.isHeadliner)
+    .sort((a, b) => a.distance - b.distance);
+  const headlinerIds = new Set(headliners.map((h) => h.id));
+
+  // The remaining (non-headliner) rides, nearest first. Closed/refurbishment rides are kept (they
+  // show a status badge) so the list isn't empty when the park is currently closed — otherwise the
+  // user would only ever see headliners. Off-season rides are already dropped via inSeasonRides.
+  const attractions = inSeasonRides
+    .filter((a) => !headlinerIds.has(a.id))
+    .sort((a, b) => a.distance - b.distance)
+    .slice(0, NEAREST_LIMIT);
+
+  return { headliners, attractions };
+}
+
+/**
+ * The two ride lists of an in-park view (headliners, then the nearest other rides), from the
+ * output of `splitInParkRides`. `showDistance={false}` drops the "120 m away" line on every row.
+ */
+export function InParkRideLists({
+  headliners,
+  attractions,
+  showDistance = true,
+}: {
+  headliners: AttractionWithDistance[];
+  attractions: AttractionWithDistance[];
+  showDistance?: boolean;
+}) {
+  const t = useTranslations('nearby');
+  return (
+    <>
+      {/* Headliners — always shown above the nearest attractions */}
+      {headliners.length > 0 && (
+        <div>
+          <h4 className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
+            <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+            {t('headliners')}
+          </h4>
+          <ul className="space-y-2">
+            {headliners.map((attraction) => (
+              <InParkAttractionRow
+                key={attraction.id}
+                attraction={attraction}
+                awayLabel={t('awayFrom')}
+                headlinerLabel={t('headlinerBadge')}
+                showDistance={showDistance}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Nearest Attractions */}
+      {attractions.length > 0 && (
+        <div>
+          <h4 className="text-muted-foreground mb-2 text-sm font-medium">
+            {t('nearestAttractions')}
+          </h4>
+          <ul className="space-y-2">
+            {attractions.map((attraction) => (
+              <InParkAttractionRow
+                key={attraction.id}
+                attraction={attraction}
+                awayLabel={t('awayFrom')}
+                headlinerLabel={t('headlinerBadge')}
+                showDistance={showDistance}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
+  );
+}
+
+/**
  * "You are in a park" view: full-bleed park banner with headliners and the nearest attractions.
  * Rendered when the nearby response classifies the user as inside a park.
  */
@@ -113,30 +208,12 @@ export function InParkView({
   }
 
   const park = data.park;
+  const { headliners, attractions } = splitInParkRides(data.rides);
+
   // `park.status` is the raw API enum (OPERATING, CLOSED, …); show its translated label, and drop
   // it rather than print an enum value the status labels do not cover.
   const statusLabel = tStatus.has(park.status) ? tStatus(park.status) : null;
   const youAreHere = statusLabel ? `${t('youAreIn')} · ${statusLabel}` : t('youAreIn');
-  // Drop rides that are clearly out of their season. The API already hides
-  // `isCurrentlyInSeason === false`, but we filter defensively so off-season attractions never
-  // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
-  const inSeasonRides = (data.rides || []).filter((a) => a.isCurrentlyInSeason !== false);
-
-  // Headliners (top/marquee attractions, flagged by the API). All of them are shown above the
-  // regular list, sorted by distance. Closed ones are kept and carry a status badge — a headliner
-  // is worth pointing out even when the park (or just that ride) isn't operating right now.
-  const headliners = inSeasonRides
-    .filter((a) => a.isHeadliner)
-    .sort((a, b) => a.distance - b.distance);
-  const headlinerIds = new Set(headliners.map((h) => h.id));
-
-  // The remaining (non-headliner) rides, nearest first. Closed/refurbishment rides are kept (they
-  // show a status badge) so the list isn't empty when the park is currently closed — otherwise the
-  // user would only ever see headliners. Off-season rides are already dropped via inSeasonRides.
-  const attractions = inSeasonRides
-    .filter((a) => !headlinerIds.has(a.id))
-    .sort((a, b) => a.distance - b.distance)
-    .slice(0, NEAREST_LIMIT);
 
   // Park page URL (for "Go to park page" CTA); fallback from first known ride (headliner or
   // regular attraction) when the park itself doesn't carry a url.
@@ -270,44 +347,7 @@ export function InParkView({
             </>
           )}
 
-          {/* Headliners — always shown above the nearest attractions */}
-          {headliners.length > 0 && (
-            <div>
-              <h4 className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
-                <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                {t('headliners')}
-              </h4>
-              <ul className="space-y-2">
-                {headliners.map((attraction) => (
-                  <InParkAttractionRow
-                    key={attraction.id}
-                    attraction={attraction}
-                    awayLabel={t('awayFrom')}
-                    headlinerLabel={t('headlinerBadge')}
-                  />
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Nearest Attractions */}
-          {attractions.length > 0 && (
-            <div>
-              <h4 className="text-muted-foreground mb-2 text-sm font-medium">
-                {t('nearestAttractions')}
-              </h4>
-              <ul className="space-y-2">
-                {attractions.map((attraction) => (
-                  <InParkAttractionRow
-                    key={attraction.id}
-                    attraction={attraction}
-                    awayLabel={t('awayFrom')}
-                    headlinerLabel={t('headlinerBadge')}
-                  />
-                ))}
-              </ul>
-            </div>
-          )}
+          <InParkRideLists headliners={headliners} attractions={attractions} />
         </div>
       </div>
     </section>

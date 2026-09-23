@@ -1400,7 +1400,14 @@
     "day": "{count, plural, =1 {giorno} other {giorni}}",
     "week": "{count, plural, =1 {settimana} other {settimane}}",
     "offseason": "Fuori stagione",
-    "nearbyParksArea": "Nei dintorni"
+    "nearbyParksArea": "Nei dintorni",
+    "parkPage": {
+      "heading": "Vicino a te",
+      "inParkCoarse": "Sei nel parco",
+      "ask": "Sei al parco? Mostra le attrazioni vicine",
+      "blocked": "La posizione è bloccata nel browser",
+      "away": "Sei a {distance} dal parco"
+    }
   },
   "geo": {
     "continent": "Continente",
