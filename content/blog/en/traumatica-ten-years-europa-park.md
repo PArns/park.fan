@@ -1,15 +1,12 @@
 ---
-title: 'Traumatica turns ten, and its birthday present is a hotel where the actors can touch you'
+title: 'Traumatica turns ten, with a new hotel where the actors can touch you'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The preview runs tonight and the season opens on Friday: Europa-Park's
-  Traumatica reaches its tenth edition under that name, and twenty years of
-  horror nights in Rust. New is THE HOTEL, walked alone and full-contact.
-  Back is the Vampire's Club. Dates, age limits and prices through 7 November.
+  Preview tonight, opening Friday: Europa-Park's Traumatica marks its tenth edition with THE HOTEL, a full-contact experience for over-18s, and brings back the Vampire's Club for two weekends.
 tags:
   - news
   - europa-park
@@ -41,87 +38,32 @@ seo:
     - Traumatica age limit
 ---
 
-In autumn 2007 [Europa-Park](ref:europa-park) let actors with fake blood loose
-on its evening guests for the first time. It was called "Terenzi Horror Nights",
-after the pop singer Marc Terenzi, who had brought the idea back from the US
-with Michael Mack. Since 2017 it has been Traumatica, which makes 2026 the tenth
-edition under that name. The motto adds the two together: "20 years of horror,
-10 years of Traumatica".
+The preview runs at [Europa-Park](ref:europa-park) tonight, and Traumatica
+opens properly on Friday 25 September. It is the tenth edition under that name.
+It started in 2007 as "Terenzi Horror Nights", hence this year's motto:
+"20 years of horror, 10 years of Traumatica".
 
-The preview is tonight, Wednesday 23 September. The official premiere is on
-Friday 25 September, and the season runs until Saturday 7 November.
+New is **THE HOTEL**, the event's first full-contact experience: you walk
+through an abandoned hotel on your own, and the actors are allowed to touch
+you. It is 18+, not wheelchair accessible and €29 on top of the ticket,
+according to the
+[Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html).
+The park won't say how long you're in there.
 
-## New for the anniversary
+The **Vampire's Club** is back too, with Marc Terenzi himself on stage, but only
+on 25 and 26 September and 2 and 3 October, 11 pm to 3 am, 18+.
 
-**THE HOTEL** is Traumatica's first full-contact experience. You walk into an
-abandoned hotel on your own, with no group to hide behind, and the actors are
-allowed to touch you. According to the
-[Schwarzwälder Bote](https://www.schwarzwaelder-bote.de/lokales/lahr/einige-attraktionen-sind-ab-18-das-plant-der-europa-park-fuer-die-zehnte-auflage-von-traumatica-79428406.html),
-it is not wheelchair accessible and strictly 18+. It costs €29 on top of a
-Traumatica ticket. The park doesn't say how long you're in there, which is
-probably the idea.
+The season runs until 7 November, Friday to Sunday plus three Thursdays
+(22 and 29 October, 5 November). The eight horror attractions are open from
+7 pm to 11:30 pm. You need to be at least 16 and bring an original ID, and
+coming with your parents doesn't change that. The Event Pass starts at €33;
+the Shoxter Pass with priority access has already sold out.
 
-The **Vampire's Club** is back, but only for the first two weekends: 25 and 26
-September, 2 and 3 October, 11 pm to 3 am, 18+. On those nights it takes the
-place of THE FORBIDDEN, the club that otherwise opens on Fridays and Saturdays
-at the same hours. Entry is €10, or €29 for VIP with its own area and a welcome
-drink. Marc Terenzi is on stage there himself, more than ten years after he and
-the event went separate ways.
-
-Two smaller changes. The food court now opens at 6 pm, an hour before the
-horror houses, so nobody has to enter the catacombs on an empty stomach. And
-the Murderdome comes back as "Bonus Round", with extra obstacles and new
-sections of route.
-
-## The eight horror attractions
-
-- Wakala's Wonderland, a brightly coloured playland you would rather not play in
-- Day One, the first day of the apocalypse, and you are looking for the exit
-- Tarot-House – Last Descent, a cursed crypt where Madame Monroe collects new
-  souls
-- Dark Remains, catacombs where not everything buried is asleep
-- The Hill – Hide and Seek, a game with a witch while you search for missing
-  children
-- Murderdome – Bonus Round, with the new obstacles mentioned above
-- Studio-13 – Callback, a film casting for a part you don't want
-- THE HOTEL, alone and 18+
-
-On top of that there is Brain Shocker, a short VR ride for €6, stage shows, and
-actors hunting across the whole site.
-
-## Who gets in, and what it costs
-
-Traumatica is **16+ with no exceptions**. Coming with your parents doesn't
-help, and the gate wants an original ID. A photo of it on your phone won't do,
-however convincing the face you pull. THE HOTEL, THE FORBIDDEN and the
-Vampire's Club are 18+.
-
-It runs Friday to Sunday, plus three Thursdays: 22 and 29 October and
-5 November. Entry opens at 5:45 pm, the food court at 6 pm, and the horror
-attractions run from 7 pm to 11:30 pm.
-
-| Ticket               | Price               |
-| -------------------- | ------------------- |
-| Event Pass           | from €33            |
-| Shoxter Pass         | from €96 (sold out) |
-| Psycho Pass (18+)    | €349                |
-| Wheelchair users     | €20                 |
-| THE HOTEL            | + €29               |
-| Vampire's Club / VIP | + €10 / + €29       |
-| THE FORBIDDEN        | + €10               |
-
-The "from" prices are for the cheapest dates, and the Shoxter Pass with
-priority access has already gone.
-
-If you are spending the day in the park first, the
-[Europa-Park guide](/blog/europa-park-wait-times-tips) shows which days have
-short queues, and the [Halloween overview](/blog/halloween-theme-parks-2026)
-puts Traumatica next to what Movie Park, Walibi and Toverland are doing this
-autumn.
+How Traumatica compares with Movie Park, Walibi and Toverland is in the
+[Halloween overview](/blog/halloween-theme-parks-2026).
 
 [Europa-Park](ref:europa-park?full)
 
-All dates and tickets are on
-[Europa-Park's Traumatica page](https://www.europapark.de/en/events/traumatica).
+All dates and tickets: [Traumatica at Europa-Park](https://www.europapark.de/en/events/traumatica).
 
 — Patrick
