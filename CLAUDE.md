@@ -133,6 +133,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — teasers (homepage, header menu, park/ride
   pages) list articles and news separately (`isNewsPost`, `listArticlesByRecency`, `NewsRow`/`NewsList`). News shows its
   age (`NewsAge`) and is never hidden for it.
+- **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /
+  `categoryPath` (`lib/blog/paths.ts`); `proxy.ts` 308s old `/blog/` news URLs via `newsRedirect()`.
+  `pnpm test:news-redirects`.
 
 ### Design and layout
 

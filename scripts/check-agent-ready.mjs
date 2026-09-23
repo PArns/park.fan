@@ -267,6 +267,7 @@ const FEED_LINKED_PAGES = [
   ['/en/blog', 'blog index'],
   ['/en/blog/category/guides', 'category page'],
   ['/en/blog/tag/wait-times', 'tag page'],
+  ['/en/news', 'news overview'],
 ];
 for (const [path, label] of FEED_LINKED_PAGES) {
   const page = await get(path);
