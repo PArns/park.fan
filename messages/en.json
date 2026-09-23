@@ -486,6 +486,7 @@
     "bestTime": "Best Time to Visit",
     "bestTimeHint": "The quietest weekdays and months, park by park.",
     "latestPosts": "Latest posts",
+    "allNews": "All news",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
     "categories": "Categories",
     "popularParks": "Popular parks",

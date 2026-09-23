@@ -486,6 +486,7 @@
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
     "latestPosts": "Neueste Beiträge",
+    "allNews": "Alle News",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
