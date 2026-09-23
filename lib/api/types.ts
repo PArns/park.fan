@@ -15,6 +15,19 @@ export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
 
 /**
+ * What an attraction is FOR, hand-decided by an editor. Contract with the API —
+ * see `docs/frontend/attraction-kind.md` in v4.api.park.fan.
+ *
+ * These four are the whole list; the API's `ATTRACTION_KIND_VALUES` is the same
+ * set, and the Swagger enum and the admin dropdown read it too.
+ *
+ * Distinct from the upstream's own free-text `attractionType`, which never
+ * reaches the public payload: upstream files water rides as ATTRACTION and
+ * walkthroughs as RIDE, so a label may never seed a kind.
+ */
+export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH';
+
+/**
  * Why a park's wait times cannot be read. Contract with the API — see
  * `docs/frontend/live-wait-times-availability.md` in v4.api.park.fan.
  *
@@ -818,6 +831,15 @@ export interface ParkAttraction {
    */
   hasSingleRider?: boolean | null;
   /**
+   * What this attraction is for: a ride, a transport system (railway, cable
+   * car, monorail), a show or a walkthrough. Curated one editor decision at a
+   * time.
+   *
+   * Null or absent means nobody has judged it, which is true of nearly the
+   * whole catalogue — and it never means "it is a ride". Render nothing for it.
+   */
+  attractionKind?: AttractionKind | null;
+  /**
    * Whether the ride runs a virtual queue (return times or boarding groups) at all.
    *
    * Same split as `hasSingleRider`: a curated fact, not today's reading — the
@@ -1108,6 +1130,15 @@ export interface AttractionResponse {
    * never "no": most of the catalogue has never been checked.
    */
   hasSingleRider?: boolean | null;
+  /**
+   * What this attraction is for: a ride, a transport system (railway, cable
+   * car, monorail), a show or a walkthrough. Curated one editor decision at a
+   * time.
+   *
+   * Null or absent means nobody has judged it, which is true of nearly the
+   * whole catalogue — and it never means "it is a ride". Render nothing for it.
+   */
+  attractionKind?: AttractionKind | null;
   /**
    * Whether the ride runs a virtual queue (return times or boarding groups) at all.
    *

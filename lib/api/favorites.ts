@@ -8,6 +8,7 @@ import type {
   BestVisitSlot,
   RopeDropInfo,
   LiveWaitTimes,
+  AttractionKind,
 } from '@/lib/api/types';
 
 export interface FavoritePark {
@@ -128,6 +129,12 @@ export interface FavoriteAttraction {
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Not yet delivered by /v1/favorites — typed so cards light up once the API ships it. */
   ropeDrop?: RopeDropInfo | null;
+  /**
+   * Also not yet delivered by /v1/favorites, like every other curated fact —
+   * the response carries none of `hasSingleRider`, `hasVirtualLine` or this.
+   * Typed so the card's transport badge lights up here once the API ships it.
+   */
+  attractionKind?: AttractionKind | null;
 }
 
 export interface FavoriteShow {
