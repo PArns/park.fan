@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
-import { versionedPath } from '@/lib/media/focus';
+import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { OWN_PHOTO_AUTHOR } from '@/lib/media/types';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import type { Locale } from '@/i18n/config';
@@ -74,6 +74,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           quality={60}
           sizes="100vw"
           className="object-cover"
+          style={{ objectPosition: objectPositionForSrc(cover, '50% 50%') }}
         />
       ) : (
         <div className="from-primary/15 via-background to-muted absolute inset-0 bg-gradient-to-br" />

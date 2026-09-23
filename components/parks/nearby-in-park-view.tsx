@@ -245,6 +245,7 @@ export function InParkView({
             imageSrc={park.backgroundImage}
             alt={stripNewPrefix(park.name)}
             sizes="100vw"
+            objectPosition={park.backgroundPosition}
           />
           <div className="from-background/10 via-background/50 to-background absolute inset-0 bg-gradient-to-b" />
         </div>
