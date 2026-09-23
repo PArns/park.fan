@@ -84,6 +84,7 @@ export function buildAttractionPayload(
       park: parkContext,
       statistics: detail.statistics ? buildFavoriteStats(detail.statistics) : undefined,
       bestVisitTimes: detail.bestVisitTimes ?? null,
+      attractionKind: detail.attractionKind ?? null,
     };
   }
 
