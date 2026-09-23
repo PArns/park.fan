@@ -13,10 +13,15 @@ import type { LatestPost, LatestPostsPayload } from '@/lib/blog/new-posts';
  *
  * Fetched, not rendered into the layout: the toast shows on a small share of page views, and
  * the RSC payload of every page is paid by every request, the crawler's included. The browser
- * asks for this once per session, after the page is idle.
+ * asks for this at most once per ten minutes, after the page is idle.
  *
  * Built from the generated manifest only, so nothing here changes until the next deployment —
- * one static file per locale.
+ * one static file per locale. News is in it like every other post: the toast announces what
+ * arrived, it is not one of the teaser lists that keep news apart.
+ *
+ * Ten minutes at the edge, not an hour: nothing can purge Cloudflare, and a news post ("from
+ * Saturday") is worth announcing mostly in the hours after it goes live. The file is static,
+ * so a revalidation costs the origin no function call.
  */
 
 /**
@@ -79,6 +84,6 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
   };
 
   return NextResponse.json(payload, {
-    headers: cdnCacheHeaders('public, max-age=600, s-maxage=3600, stale-while-revalidate=86400'),
+    headers: cdnCacheHeaders('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
   });
 }

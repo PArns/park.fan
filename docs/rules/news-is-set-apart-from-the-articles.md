@@ -19,6 +19,8 @@ News is always drawn a step below the articles (a 112 px cover, a semibold title
 
 The blog index, the category and tag pages and `feed.xml` are the archive and list both kinds together — this rule is about the teasers only.
 
+The [new-posts toast](../features/new-posts-toast.md) is not a teaser either: it announces what arrived since the last visit, news included, and must never filter with `isNewsPost`.
+
 ## Why
 
 News is short and will be published far more often than the articles. In one list ordered by date, a busy news month takes every slot a measured guide had — on the homepage, in the header menu on ~35,000 pages, and on the park page the guide was written for.
