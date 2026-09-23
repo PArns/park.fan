@@ -30,6 +30,7 @@ import { WorksPeriodBadge } from './works-period-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
+import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { TransportSystemBadge } from './transport-system-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
@@ -301,9 +302,10 @@ export function AttractionCard({
             34px circle, so two adjacent circles' 44px zones reach past their
             shared edge — measured, `gap-2` (8px) left a 2px sliver where a
             tap could land on either icon's zone. `gap-3` (12px, 34+12=46 ≥
-            44) puts the zones edge-to-edge with room to spare. */}
+            44) puts the zones edge-to-edge with room to spare. From `sm` up
+            the touch targets are gone, so the row tightens to `gap-2`. */}
         {attraction.id && (
-          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3">
+          <div className="absolute top-3 right-3 z-[4] flex items-center gap-3 sm:gap-2">
             {/* `attraction.id` on a blog fallback card (its live detail failed
                 to resolve at build time) is `attractionSlug`, not a UUID —
                 `POST /push/ride-alerts` 400s on that, so the bell needs a real
@@ -485,6 +487,10 @@ export function AttractionCard({
                 degrades to a tooltip rather than nesting an <a> inside one. */}
             <SingleRiderBadge
               hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
+              insideLink
+            />
+            <VirtualLineBadge
+              hasVirtualLine={'hasVirtualLine' in attraction ? attraction.hasVirtualLine : null}
               insideLink
             />
             <FastPassBadge

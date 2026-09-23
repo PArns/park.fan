@@ -279,6 +279,13 @@ A form written field by field would be a second, drifting copy of which columns
 are curatable — and the drift shows up as a field somebody cannot edit and
 cannot see why.
 
+The editor shows one group at a time, as a row of tabs taken from each
+descriptor's `group` in the order the backend sends them, today seven for a
+ride and seven for a park. With only one group there is no tab row. Each tab counts its
+corrected fields, and a primary-coloured badge counts the unsaved edits in it,
+so an edit in a group that is not open is still visible; the save bar keeps
+listing every change across all groups.
+
 Two rules the controls exist to protect:
 
 - **Empty is not zero.** On a curated height, `0` means "there is no minimum at

@@ -1329,6 +1329,7 @@
       "maxHeightLabel": "Hasta",
       "mayGetWet": "Puedes mojarte",
       "singleRider": "Single Rider",
+      "virtualLine": "Cola virtual",
       "fastPassFree": "gratis",
       "fastPassFrom": "desde",
       "rcdbLabel": "{attraction} en RCDB",
@@ -1980,6 +1981,14 @@
       "play": "Reproducir vídeo",
       "playHint": "Carga el reproductor de YouTube solo al pulsar."
     }
+  },
+  "blogToast": {
+    "eyebrow": "Nuevo en el blog",
+    "read": "Leer artículo",
+    "close": "Cerrar",
+    "moreOne": "Y {count} artículo nuevo más",
+    "moreOther": "Y {count} artículos nuevos más",
+    "allPosts": "Ver todos"
   },
   "contribute": {
     "gallery": {

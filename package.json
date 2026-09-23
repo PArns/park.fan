@@ -122,6 +122,7 @@
     "impeccable:update": "npx -y impeccable@3 update",
     "measure:cls": "node scripts/measure-cls.mjs",
     "measure:function-size": "node scripts/measure-function-size.mjs",
+    "measure:mobile-height": "node scripts/measure-mobile-height.mjs",
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {

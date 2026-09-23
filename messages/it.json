@@ -1329,6 +1329,7 @@
       "maxHeightLabel": "Fino a",
       "mayGetWet": "Potresti bagnarti",
       "singleRider": "Single Rider",
+      "virtualLine": "Coda virtuale",
       "fastPassFree": "gratuito",
       "fastPassFrom": "da",
       "rcdbLabel": "{attraction} su RCDB",
@@ -1980,6 +1981,14 @@
       "play": "Riproduci video",
       "playHint": "Carica il player di YouTube solo al tocco."
     }
+  },
+  "blogToast": {
+    "eyebrow": "Novità sul blog",
+    "read": "Leggi l’articolo",
+    "close": "Chiudi",
+    "moreOne": "E {count} altro articolo nuovo",
+    "moreOther": "E altri {count} articoli nuovi",
+    "allPosts": "Vedi tutti"
   },
   "contribute": {
     "gallery": {

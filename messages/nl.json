@@ -1329,6 +1329,7 @@
       "maxHeightLabel": "Tot",
       "mayGetWet": "Je kunt nat worden",
       "singleRider": "Single Rider",
+      "virtualLine": "Virtuele wachtrij",
       "fastPassFree": "gratis",
       "fastPassFrom": "vanaf",
       "rcdbLabel": "{attraction} in de RCDB",
@@ -1980,6 +1981,14 @@
       "play": "Video afspelen",
       "playHint": "Laadt de YouTube-speler pas als je tikt."
     }
+  },
+  "blogToast": {
+    "eyebrow": "Nieuw op de blog",
+    "read": "Artikel lezen",
+    "close": "Sluiten",
+    "moreOne": "En nog {count} nieuw artikel",
+    "moreOther": "En nog {count} nieuwe artikelen",
+    "allPosts": "Alles bekijken"
   },
   "contribute": {
     "gallery": {
