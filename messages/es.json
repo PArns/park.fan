@@ -486,6 +486,7 @@
     "bestTime": "Mejor época",
     "bestTimeHint": "Los días y los meses más tranquilos, parque por parque.",
     "latestPosts": "Últimas entradas",
+    "allNews": "Todas las noticias",
     "moreCities": "{count, plural, =1 {1 ciudad más} other {# ciudades más}}",
     "categories": "Categorías",
     "popularParks": "Parques populares",

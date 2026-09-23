@@ -407,3 +407,46 @@ export function listPostsByRecency(requestedLocale: Locale): readonly BlogListIt
   POSTS_BY_RECENCY.set(requestedLocale, frozen);
   return frozen;
 }
+
+/**
+ * The category path that marks a post as news. Subcategories (`news/…`) count too.
+ *
+ * News and articles publish at very different rates — a news post is a short note
+ * about a ride opening or an anniversary, an article is a measured guide — so the
+ * surfaces that show "the newest posts" keep them apart: otherwise a week of news
+ * pushes every guide off the homepage and out of the header menu.
+ */
+export const NEWS_CATEGORY = 'news';
+
+export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
+  const category = post.frontmatter.category;
+  return category === NEWS_CATEGORY || !!category?.startsWith(`${NEWS_CATEGORY}/`);
+}
+
+const ARTICLES_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
+const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
+
+/** {@link listPostsByRecency} without the news posts. Frozen and memoised. */
+export function listArticlesByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = ARTICLES_BY_RECENCY.get(requestedLocale);
+  if (memo) return memo;
+  const frozen = Object.freeze(listPostsByRecency(requestedLocale).filter((p) => !isNewsPost(p)));
+  ARTICLES_BY_RECENCY.set(requestedLocale, frozen);
+  return frozen;
+}
+
+/**
+ * The news posts only, newest first by publication date — not by last edit: a
+ * corrected typo does not make an anniversary note news again. Frozen and memoised.
+ */
+export function listNewsByDate(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = NEWS_BY_DATE.get(requestedLocale);
+  if (memo) return memo;
+  const frozen = Object.freeze(
+    [...listPosts(requestedLocale)]
+      .filter(isNewsPost)
+      .sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
+  );
+  NEWS_BY_DATE.set(requestedLocale, frozen);
+  return frozen;
+}

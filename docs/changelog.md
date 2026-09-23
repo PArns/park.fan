@@ -4,6 +4,16 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – News stehen neben den Artikeln, nicht zwischen ihnen
+
+Beiträge der Kategorie `news` laufen auf den Teaser-Flächen nicht mehr in derselben Liste wie die
+Artikel. Startseite (Band unter dem Hero und Blog-Kapitel), Blog-Panel im Header-Menü sowie Park-
+und Attraktionsseiten zeigen oben nur Artikel und darunter eine kleinere News-Zeile (`NewsRow`,
+`NewsList`). Jede News zeigt ihr Alter („heute", „vor 3 Wochen"), die ersten sieben Tage in der
+Akzentfarbe. Ausgeblendet wird wegen des Alters nichts. Das Header-Menü zeigt dafür fünf statt sechs
+Artikel, damit das Panel nicht höher wird. Regel:
+[News is set apart from the articles](rules/news-is-set-apart-from-the-articles.md).
+
 ## Unreleased – feat: Toast bei neuen Blog-Beiträgen seit dem letzten Besuch (PAR-444)
 
 Wer wiederkommt und neue Beiträge verpasst hat, bekommt einmal einen Toast mit dem neuesten davon,

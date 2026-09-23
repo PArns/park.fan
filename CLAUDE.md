@@ -130,6 +130,9 @@ carries the reasoning, the measurements and the counter-examples.
   are intentional. Never dedupe or sort. This app is the only place a term id is defined.
 - **[Blog manifest is split](docs/rules/blog-manifest-is-split.md)** — import listings from `@/lib/blog/listing`; `@/lib/blog` drags every
   post body into the bundle of a route the root layout imports.
+- **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — teasers (homepage, header menu, park/ride
+  pages) list articles and news separately (`isNewsPost`, `listArticlesByRecency`, `NewsRow`/`NewsList`). News shows its
+  age (`NewsAge`) and is never hidden for it.
 
 ### Design and layout
 

@@ -1,7 +1,7 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
-import { listPostsByRecency } from '@/lib/blog/listing';
+import { listArticlesByRecency, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
 import { versionedPath } from '@/lib/media/focus';
 
 /**
@@ -11,9 +11,9 @@ import { versionedPath } from '@/lib/media/focus';
  * 1, news 1), **31 tags** and one author. So:
  *
  * - **Categories are in.** Three stable hubs; that is what a template link is for.
- * - **The newest posts are in.** Six links (`RECENT_LIMIT` below), server-rendered. At this
- *   publishing rate the "the template's link set changes with every post" objection costs nothing
- *   — it is six URLs on a
+ * - **The newest articles are in, and the newest news in a strip of its own.** Five plus three
+ *   links (`RECENT_LIMIT`, `NEWS_LIMIT` below), server-rendered. At this publishing rate the "the
+ *   template's link set changes with every post" objection costs nothing — it is eight URLs on a
  *   site that publishes a handful of times a year. If the blog ever reaches the point where the
  *   front of the list turns over weekly, move this pane to a fetch the way the parks menu does
  *   with its cities.
@@ -29,14 +29,24 @@ import { versionedPath } from '@/lib/media/focus';
  */
 
 /**
- * Posts in the panel.
+ * Articles in the panel.
  *
- * Six, not four: an opener plus five rows fills the band's right half, and every one of them is a
- * crawlable link with a date and a teaser on ~35,000 pages. What this may NOT become is the whole
- * blog — see the note above on why 31 tags stayed out. Six is the point where the rows still fit
- * beside the opener without the band scrolling.
+ * Five: an opener plus four rows. It was six (five rows) while the panel held nothing else; the news
+ * strip under the rows now takes the height the fifth row had, and four rows end level with the
+ * opener, so the band still fits without scrolling. What this may NOT become is the whole blog —
+ * see the note above on why 31 tags stayed out.
  */
-const RECENT_LIMIT = 6;
+const RECENT_LIMIT = 5;
+
+/**
+ * News posts in their own strip under the articles: cover, title and date, no teaser.
+ *
+ * News is expected to outnumber the articles, so it no longer competes for the article slots above —
+ * a busy week of short notes would otherwise push every guide out of the header. Three is one line
+ * of the strip at `lg`; the rest is one click away on the news category. The item carries its date
+ * and the panel shows its age next to it (`NewsAge`): with news, how old it is decides the click.
+ */
+const NEWS_LIMIT = 3;
 
 /**
  * How much of a post's teaser reaches the header.
@@ -82,9 +92,24 @@ export interface BlogMenuPost {
   image?: string;
 }
 
+export interface BlogMenuNewsItem {
+  slug: string;
+  title: string;
+  /** ISO date — the panel formats it in the reader's locale. */
+  date: string;
+  /** Cover, versioned like the article rows' covers. */
+  image?: string;
+}
+
 export interface BlogMenu {
   categories: BlogMenuCategory[];
+  /** Articles only — news posts are in `news`. */
   recent: BlogMenuPost[];
+  news: BlogMenuNewsItem[];
+  /** The news category's label in this locale, for the strip's heading. */
+  newsLabel: string;
+  /** The news category's path, for the heading link. */
+  newsPath: string;
 }
 
 export function getBlogMenu(locale: Locale): BlogMenu {
@@ -98,7 +123,7 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         postCount: node.totalPostCount,
       }))
       .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label)),
-    recent: listPostsByRecency(locale)
+    recent: listArticlesByRecency(locale)
       .slice(0, RECENT_LIMIT)
       .map((post, index) => ({
         slug: post.slug,
@@ -128,5 +153,15 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         // why it was the largest source of unversioned media URLs on the site.
         image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
       })),
+    news: listNewsByDate(locale)
+      .slice(0, NEWS_LIMIT)
+      .map((post) => ({
+        slug: post.slug,
+        title: post.frontmatter.title,
+        date: post.frontmatter.date,
+        image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
+      })),
+    newsLabel: resolveCategoryLabel(NEWS_CATEGORY, locale, 'News'),
+    newsPath: NEWS_CATEGORY,
   };
 }

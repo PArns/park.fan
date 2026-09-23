@@ -486,6 +486,7 @@
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
     "latestPosts": "Nieuwste berichten",
+    "allNews": "Al het nieuws",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
     "categories": "Categorieën",
     "popularParks": "Populaire parken",

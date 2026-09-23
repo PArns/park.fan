@@ -42,6 +42,7 @@ _Trip planner, header menu, admin, weather chart, guide page, glossary, blog man
 - [The guide page teaches the real cards with the ride's real numbers (REQUIREMENT)](the-guide-page-teaches-the-real-cards-with-the-rides-real.md)
 - [Ride ↔ Glossary link](ride-and-glossary-link.md)
 - [Blog manifest is split (REQUIREMENT)](blog-manifest-is-split.md)
+- [News is set apart from the articles, and it is never hidden for its age (REQUIREMENT)](news-is-set-apart-from-the-articles.md)
 
 ## Design and layout
 
