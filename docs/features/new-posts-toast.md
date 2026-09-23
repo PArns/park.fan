@@ -64,6 +64,8 @@ it to the front.
   location banner, the right edge is the planner tab.
 - Auto-dismiss after 12 s. The bar along the bottom edge is the countdown (a Web Animation), and it
   pauses on hover, on focus and while the tab is hidden.
+- The whole card is the link to the post (a stretched `::after` on the post link). The close
+  button and "see all" sit above it with `z-10`; a swipe that ends on the card does not open it.
 - More than one new post: up to two sheets peek out behind the card, and a footer row links to
   `/blog`.
 - `prefers-reduced-motion`: a fade instead of the spring, no pulsing dot, no image zoom.

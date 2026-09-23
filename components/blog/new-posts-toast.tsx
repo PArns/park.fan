@@ -218,7 +218,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                 // Near-opaque on purpose: page text under a toast has to be gone, not blurred, and a
                 // backdrop-filter under framer-motion's opacity entrance cannot be relied on.
                 'border-primary/25 bg-card/[0.97] ring-1 ring-black/5 dark:ring-white/5',
-                'shadow-primary/10'
+                'shadow-primary/10 group/link cursor-pointer'
               )}
             >
               {/* A soft wash of the accent colour from the corner the card came in from. */}
@@ -248,7 +248,8 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                   aria-label={labels.close}
                   // 24 px drawn, 44 px to a finger through the pseudo-element — the same pattern
                   // (and the same reason) as the location banner's close button.
-                  className="text-muted-foreground hover:text-foreground hover:bg-muted relative -mr-1.5 ml-auto inline-flex items-center justify-center rounded-md p-1 transition-colors after:absolute after:top-1/2 after:left-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']"
+                  // `z-10`: above the post link, which covers the whole card.
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted relative z-10 -mr-1.5 ml-auto inline-flex items-center justify-center rounded-md p-1 transition-colors after:absolute after:top-1/2 after:left-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -266,7 +267,10 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                   close();
                 }}
                 draggable={false}
-                className="group/link focus-visible:ring-ring relative flex items-center gap-3 rounded-xl px-4 pt-2 pb-3 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-inset"
+                // The whole card is this link: the pseudo-element stretches it over the card (the
+                // nearest positioned ancestor), so a tap anywhere opens the post. The close button
+                // and "see all" sit above it with `z-10`. Not `relative` itself for that reason.
+                className="focus-visible:after:ring-ring flex items-center gap-3 px-4 pt-2 pb-3 after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-inset"
               >
                 <span className="bg-muted relative block aspect-[16/10] w-24 shrink-0 overflow-hidden rounded-lg sm:w-28">
                   {lead.image ? (
@@ -296,17 +300,12 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                     {relativeDay(lead.date, locale)}
                   </span>
                 </span>
-                <span
-                  aria-hidden
-                  className="bg-primary text-primary-foreground flex h-9 w-9 shrink-0 items-center justify-center rounded-full shadow-md transition-transform group-hover/link:translate-x-0.5"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </span>
                 <span className="sr-only">{labels.read}</span>
               </Link>
 
               {more > 0 && (
-                <div className="border-border/50 relative flex items-center justify-between gap-3 border-t px-4 py-2">
+                // Click-through: a tap on the count text still opens the post; only the link below stops it.
+                <div className="border-border/50 pointer-events-none relative flex items-center justify-between gap-3 border-t px-4 py-2">
                   <span className="text-muted-foreground text-xs">{moreLabel}</span>
                   <Link
                     href="/blog"
@@ -316,7 +315,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                       else close();
                     }}
                     draggable={false}
-                    className="text-primary hover:text-primary/80 inline-flex min-h-8 items-center gap-1 text-xs font-semibold transition-colors"
+                    className="text-primary hover:text-primary/80 pointer-events-auto relative z-10 inline-flex min-h-8 items-center gap-1 text-xs font-semibold transition-colors"
                   >
                     {labels.allPosts}
                     <ArrowRight className="h-3 w-3" />
@@ -328,7 +327,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
               <div
                 ref={barRef}
                 aria-hidden
-                className="from-primary to-primary/40 absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r"
+                className="from-primary to-primary/40 pointer-events-none absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r"
               />
             </div>
           </motion.div>
