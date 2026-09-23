@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   BarChart3,
@@ -109,27 +109,31 @@ export const tileCell = cn(
   // legible one.
   'text-foreground dark:text-foreground',
   'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50',
-  // Phone: a fixed-width cell of `tileRowPhone`. Chip and label on the first line, the hint on
-  // the second across the whole cell — 69 px against the 128–150 px the stacked cell took. The
-  // width is fixed rather than sized to the text, because the hints arrive after the first paint
-  // and a cell that grew with its hint would push every cell after it sideways. 168 px shows two
-  // cells and 22 px of the third at 390, which is what says the row goes on.
-  'max-sm:grid max-sm:w-[10.5rem] max-sm:flex-none max-sm:snap-start',
-  'max-sm:grid-cols-[auto_minmax(0,1fr)] max-sm:content-start max-sm:items-center',
-  'max-sm:gap-x-2 max-sm:gap-y-1 max-sm:px-3 max-sm:py-2'
+  // Phone: a third of the row. Chip and label side by side, the hint hidden — 50 px against the
+  // 148 px the stacked cell took, and the 44 px a touch target needs with room to spare.
+  'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2.5'
 );
 
 /**
- * The row on a phone: one line of cells that scrolls sideways instead of a two-column grid.
+ * The row on a phone: three columns instead of two, and no second line in the cells.
  *
- * The grid put seven cells in four rows, 526 px on Phantasialand at 390 × 664 — most of the first
- * screen, and the seventh cell alone in the last row. One scrolling line is 69 px whatever the
- * cell count, so a park with three cells and a park with seven take the same room and neither
- * leaves an empty cell. Both rows use it, the park's (`ParkTileGrid`) and the ride's
+ * Two columns put seven cells in four rows, 596 px on Phantasialand at 390 × 664 — most of the
+ * first screen, and the seventh cell alone in the last row. Three columns of 50 px cells are
+ * three rows and 150 px. Both rows use it, the park's (`ParkTileGrid`) and the ride's
  * (`RideNavTiles`); from `sm` up the grids are unchanged.
  */
-export const tileRowPhone =
-  'no-scrollbar max-sm:flex max-sm:snap-x max-sm:snap-proximity max-sm:overflow-x-auto max-sm:overscroll-x-contain';
+export const tileRowPhone = 'max-sm:grid-cols-3';
+
+/**
+ * The span of the LAST cell on a phone, so the three-column row never ends on an empty cell: one
+ * cell left over takes the whole row, two share it. The last item of both rows' item lists is
+ * also the visually last cell — the park row's `order` classes reproduce the list order.
+ */
+export function phoneLastCellSpan(index: number, count: number): string | undefined {
+  if (index !== count - 1) return undefined;
+  const rest = count % 3;
+  return rest === 1 ? 'max-sm:col-span-3' : rest === 2 ? 'max-sm:col-span-2' : undefined;
+}
 
 /**
  * The selected cell's bar, along its top edge.
@@ -447,7 +451,6 @@ export function ParkTileGrid({
   // Two of the six cells lead to another PAGE of the same park, and the row is on that page too.
   // This is the half that puts it back where the visitor left it — see `useTileRowAnchor`.
   useTileRowAnchor(rowRef, parkSlug);
-  useSelectedTileInView(rowRef);
   return (
     <div
       ref={rowRef}
@@ -482,39 +485,6 @@ export function ParkTileGrid({
       {children}
     </div>
   );
-}
-
-/**
- * Scrolls the phone row so the selected cell is on screen.
- *
- * In the grid every cell was always visible. In the scrolling row only the first two and a bit
- * are, and the cell a sub-page marks as current is often not one of them: „Statistik" is the
- * last of seven. So the row scrolls to it on mount, and again whenever a tab is selected by
- * something other than a tap on it (the hash router, a link elsewhere on the page). A no-op when
- * the row does not overflow, which is every width from `sm` up.
- */
-function useSelectedTileInView(rowRef: React.RefObject<HTMLDivElement | null>) {
-  useEffect(() => {
-    const row = rowRef.current;
-    if (!row) return;
-    const reveal = (smooth: boolean) => {
-      if (row.scrollWidth <= row.clientWidth) return;
-      const cell = row.querySelector<HTMLElement>('[aria-current="page"], [data-state="active"]');
-      if (!cell) return;
-      const rowBox = row.getBoundingClientRect();
-      const cellBox = cell.getBoundingClientRect();
-      // Already fully visible: leave the row where the visitor put it.
-      if (cellBox.left >= rowBox.left && cellBox.right <= rowBox.right) return;
-      const left = row.scrollLeft + cellBox.left - rowBox.left - (rowBox.width - cellBox.width) / 2;
-      row.scrollTo({ left, behavior: smooth ? 'smooth' : 'instant' });
-    };
-    reveal(false);
-    const observer = new MutationObserver(() =>
-      reveal(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-    );
-    observer.observe(row, { subtree: true, attributes: true, attributeFilter: ['data-state'] });
-    return () => observer.disconnect();
-  }, [rowRef]);
 }
 
 /** The chip's active treatment, shared so a tab's selected state and a link's current state

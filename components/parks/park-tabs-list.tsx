@@ -9,6 +9,7 @@ import {
   EntryTileBody,
   ParkTileGrid,
   SelectionBar,
+  phoneLastCellSpan,
   activeCell,
   activeChip,
   tileCell,
@@ -63,7 +64,11 @@ export function ParkTabsList(props: ParkTileSource) {
           sitting inside `role="tablist"`. */}
       <TabsList className="contents h-auto rounded-none bg-transparent p-0">
         {tabs.map((item) => (
-          <TabTile key={item.key} item={item} />
+          <TabTile
+            key={item.key}
+            item={item}
+            span={phoneLastCellSpan(items.indexOf(item), tileCount)}
+          />
         ))}
       </TabsList>
 
@@ -73,7 +78,7 @@ export function ParkTabsList(props: ParkTileSource) {
           <Link
             key={item.key}
             href={href}
-            className={cn(item.order, tileCell)}
+            className={cn(item.order, tileCell, phoneLastCellSpan(items.indexOf(item), tileCount))}
             // The cells in this row that leave the page, and all three of these are one decision:
             // hand the row's current position to the copy of itself on the page being opened, and
             // stop both scroll-to-top mechanisms from throwing it away first. `getPathname`
@@ -98,9 +103,9 @@ export function ParkTabsList(props: ParkTileSource) {
   );
 }
 
-function TabTile({ item }: { item: ParkTileItem }) {
+function TabTile({ item, span }: { item: ParkTileItem; span?: string }) {
   return (
-    <TabsTrigger value={item.key} className={cn(item.order, tileCell, activeCell)}>
+    <TabsTrigger value={item.key} className={cn(item.order, tileCell, activeCell, span)}>
       <SelectionBar />
       <EntryTileBody
         icon={item.icon}

@@ -7,6 +7,7 @@ import type { LucideIcon } from 'lucide-react';
 import {
   EntryTileBody,
   SelectionBar,
+  phoneLastCellSpan,
   tileCell,
   tileRowPhone,
 } from '@/components/parks/park-entry-tiles';
@@ -259,8 +260,12 @@ export function RideNavTiles({
         items.length === 1 && 'grid-cols-1'
       )}
     >
-      {items.map((item) => (
-        <a key={item.href} href={item.href} className={cn('group', tileCell)}>
+      {items.map((item, index) => (
+        <a
+          key={item.href}
+          href={item.href}
+          className={cn('group', tileCell, phoneLastCellSpan(index, items.length))}
+        >
           <SelectionBar />
           <EntryTileBody icon={item.icon} label={item.label} count={item.count} hint={item.hint} />
         </a>

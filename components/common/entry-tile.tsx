@@ -57,18 +57,18 @@ export function EntryTileBody({
           and never on the tile itself: the box carries `backdrop-blur-md`, and a transform on a
           backdrop-filtered element (or any ancestor) makes it a backdrop root and flattens the
           blur for the length of the animation. */}
-      <span data-tile-stagger className={cn(entryTileChip, chipClassName)}>
+      <span
+        data-tile-stagger
+        className={cn(entryTileChip, 'max-sm:h-6 max-sm:w-6 max-sm:shrink-0', chipClassName)}
+      >
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      {/* Below `sm` the tile is a cell in a horizontally scrolling row (`tileRowPhone`): chip and
-          label side by side, the hint on one full-width line under both. The label keeps two
-          reserved lines there, because „Planifier le meilleur moment pour visiter" is one of
-          them and a row whose height depends on the locale's longest label is a row that moves
-          when the font arrives. */}
+      {/* Below `sm` the tile is a third of the row (`tileRowPhone`): a smaller chip, the label
+          in `text-xs` beside it and clamped to its two reserved lines, and no hint. */}
       <span
         data-tile-stagger
         data-tile-label
-        className="text-sm leading-tight font-semibold max-sm:line-clamp-2 max-sm:min-h-[2lh] max-sm:text-[13px]"
+        className="text-sm leading-tight font-semibold max-sm:line-clamp-2 max-sm:min-w-0 max-sm:text-xs"
       >
         {label}
         {count !== undefined && (
@@ -78,7 +78,7 @@ export function EntryTileBody({
       {hint !== undefined && (
         <span
           data-tile-stagger
-          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug max-sm:col-span-2 max-sm:line-clamp-1 max-sm:min-h-[1lh]"
+          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug max-sm:hidden"
         >
           {hint}
         </span>
