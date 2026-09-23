@@ -15,7 +15,7 @@ Every surface that shows "the newest posts" as a teaser keeps the two apart:
 | Header menu (blog panel)      | opener + rows, `recent` in `getBlogMenu()`                   | strip between rows and category pills, `news` |
 | Park and ride pages           | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                |
 
-News is always drawn a size smaller than the articles, through one component: `NewsList` (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages and used directly by the client-side menu panel.
+News is always drawn a step below the articles (a 112 px cover, a semibold title, no teaser), but with its own accent label, through one component: `NewsList` (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages and used directly by the client-side menu panel.
 
 The blog index, the category and tag pages and `feed.xml` are the archive and list both kinds together — this rule is about the teasers only.
 

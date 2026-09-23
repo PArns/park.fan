@@ -34,8 +34,8 @@ import type { BlogMenu } from '@/lib/navigation/blog-menu';
  * for three links; as pills they cost one line and read as what they are, a filter rather than a
  * section of their own.
  *
- * News sits in a strip of its own between the articles and the categories: age and title only
- * (`NewsList`, no covers), three in a line. There will be more news than articles, and a list of
+ * News sits in a strip of its own between the articles and the categories: small cover, age and
+ * title (`NewsList`), three in a line. There will be more news than articles, and a list of
  * the newest posts would soon be nothing but news — the articles keep the opener and the rows,
  * whatever gets published.
  *

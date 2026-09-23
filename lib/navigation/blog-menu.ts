@@ -39,7 +39,7 @@ import { versionedPath } from '@/lib/media/focus';
 const RECENT_LIMIT = 5;
 
 /**
- * News posts in their own strip under the articles: title and date, no teaser, no cover.
+ * News posts in their own strip under the articles: cover, title and date, no teaser.
  *
  * News is expected to outnumber the articles, so it no longer competes for the article slots above —
  * a busy week of short notes would otherwise push every guide out of the header. Three is one line
@@ -97,6 +97,8 @@ export interface BlogMenuNewsItem {
   title: string;
   /** ISO date — the panel formats it in the reader's locale. */
   date: string;
+  /** Cover, versioned like the article rows' covers. */
+  image?: string;
 }
 
 export interface BlogMenu {
@@ -157,6 +159,7 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         slug: post.slug,
         title: post.frontmatter.title,
         date: post.frontmatter.date,
+        image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
       })),
     newsLabel: resolveCategoryLabel(NEWS_CATEGORY, locale, 'News'),
     newsPath: NEWS_CATEGORY,

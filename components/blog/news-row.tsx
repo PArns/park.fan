@@ -64,9 +64,9 @@ export async function NewsRow({
         className
       )}
     >
-      <div className="mb-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
-        <span className="text-muted-foreground inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.14em] uppercase">
-          <Megaphone className="h-3.5 w-3.5" aria-hidden="true" />
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
+        <span className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase">
+          <Megaphone className="h-4 w-4" aria-hidden="true" />
           {label}
         </span>
         <Link
