@@ -23,6 +23,9 @@ interface NewPostsToastProps {
   onDone: () => void;
 }
 
+/** From `sm`: the header's 48 px bar, its 1 px border, and a 15 px gap. */
+const DESKTOP_TOP = 64;
+
 /** Below Tailwind's `sm`, the same line the classes below switch on. */
 const PHONE_QUERY = '(max-width: 639.98px)';
 
@@ -59,9 +62,9 @@ function relativeDay(date: string, locale: string): string {
  * there is anything to say — this file only draws it.
  *
  * Phones: a sheet-like card along the bottom edge, clear of the home indicator, swiped down to
- * dismiss. From `sm`: a card in the bottom-left corner, swiped left. The bottom-right corner is
- * taken by the location banner and the planner's edge tab sits on the right edge, so the left
- * side is the one nothing else claims.
+ * dismiss. From `sm`: a card in the top-right corner under the header, swiped right. It sits on
+ * `z-40`, under the header's `z-50`, so a menu band opened from the bar covers it rather than the
+ * other way round.
  */
 export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   const locale = useLocale();
@@ -71,6 +74,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   const [focused, setFocused] = useState(false);
   const [tabHidden, setTabHidden] = useState(false);
   const [lift, setLift] = useState(0);
+  const [top, setTop] = useState(DESKTOP_TOP);
   const barRef = useRef<HTMLDivElement>(null);
   const countdown = useRef<Animation | null>(null);
   /** A swipe that ends over the link must not also open it. */
@@ -92,6 +96,21 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     const measure = () => {
       const banner = document.querySelector<HTMLElement>('[data-location-banner]');
       setLift(banner ? banner.getBoundingClientRect().height + 8 : 0);
+    };
+    measure();
+    const observer = new MutationObserver(measure);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [isPhone]);
+
+  // From `sm` the language banner (`fixed top-12`, `z-[60]`) can own the strip under the header.
+  // Sit below it while it is up. `offsetTop`/`offsetHeight`, not the client rect: the banner
+  // slides in with a transform, and a rect measured mid-slide would be short.
+  useEffect(() => {
+    if (isPhone) return;
+    const measure = () => {
+      const banner = document.querySelector<HTMLElement>('[data-language-banner]');
+      setTop(banner ? banner.offsetTop + banner.offsetHeight + 4 : DESKTOP_TOP);
     };
     measure();
     const observer = new MutationObserver(measure);
@@ -138,8 +157,8 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
   }, [paused]);
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
-    const offset = isPhone ? info.offset.y : -info.offset.x;
-    const velocity = isPhone ? info.velocity.y : -info.velocity.x;
+    const offset = isPhone ? info.offset.y : info.offset.x;
+    const velocity = isPhone ? info.velocity.y : info.velocity.x;
     // Below the threshold the zero constraints spring the card back on their own.
     if (offset > SWIPE_DISTANCE || velocity > SWIPE_VELOCITY) close();
   };
@@ -153,7 +172,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     ? { opacity: 0 }
     : isPhone
       ? { opacity: 0, y: 96, scale: 0.96 }
-      : { opacity: 0, x: -48, y: 12, scale: 0.96 };
+      : { opacity: 0, x: 48, y: -12, scale: 0.96 };
 
   return (
     <AnimatePresence onExitComplete={onDone}>
@@ -171,16 +190,18 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
           transition={
             reduceMotion ? { duration: 0.2 } : { type: 'spring', stiffness: 380, damping: 32 }
           }
-          style={{ bottom: isPhone ? lift : 0 }}
+          style={isPhone ? { bottom: lift } : { top }}
           className={cn(
-            'fixed inset-x-0 z-50 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]',
-            'sm:inset-x-auto sm:left-4 sm:w-[25rem] sm:px-0 sm:pb-4'
+            'fixed inset-x-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]',
+            'sm:inset-x-auto sm:right-4 sm:w-[25rem] sm:px-0 sm:pb-0',
+            // Beside the open planner panel, not over it — the same inset the page is reflowed by.
+            'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]'
           )}
         >
           <motion.div
             drag={isPhone ? 'y' : 'x'}
             dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-            dragElastic={isPhone ? { top: 0.05, bottom: 0.9 } : { left: 0.9, right: 0.05 }}
+            dragElastic={isPhone ? { top: 0.05, bottom: 0.9 } : { left: 0.05, right: 0.9 }}
             onPointerDown={() => {
               dragged.current = false;
             }}
@@ -198,17 +219,19 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
             className="relative"
           >
             {/* The stack behind the card: one sheet per further new post, up to two. It says
-                "there is more than this one" before a word of it is read. */}
+                "there is more than this one" before a word of it is read. It peeks out on the
+                side away from the screen edge the card is anchored to: above it on a phone,
+                below it from `sm`. */}
             {more > 0 && (
               <div
                 aria-hidden
-                className="border-border/60 bg-card/90 absolute inset-x-4 -top-2 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md"
+                className="border-border/60 bg-card/90 absolute inset-x-4 -top-2 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-2 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
               />
             )}
             {more > 1 && (
               <div
                 aria-hidden
-                className="border-border/50 bg-card/75 absolute inset-x-8 -top-4 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md"
+                className="border-border/50 bg-card/75 absolute inset-x-8 -top-4 h-6 rounded-t-2xl border border-b-0 backdrop-blur-md sm:top-auto sm:-bottom-4 sm:rounded-t-none sm:rounded-b-2xl sm:border-t-0 sm:border-b"
               />
             )}
 
@@ -303,25 +326,25 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
                 <span className="sr-only">{labels.read}</span>
               </Link>
 
-              {more > 0 && (
-                // Click-through: a tap on the count text still opens the post; only the link below stops it.
-                <div className="border-border/50 pointer-events-none relative flex items-center justify-between gap-3 border-t px-4 py-2">
-                  <span className="text-muted-foreground text-xs">{moreLabel}</span>
-                  <Link
-                    href="/blog"
-                    prefetch={false}
-                    onClick={(event) => {
-                      if (dragged.current) event.preventDefault();
-                      else close();
-                    }}
-                    draggable={false}
-                    className="text-primary hover:text-primary/80 pointer-events-auto relative z-10 inline-flex min-h-8 items-center gap-1 text-xs font-semibold transition-colors"
-                  >
-                    {labels.allPosts}
-                    <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              )}
+              {/* Always drawn, so the card has the same shape whatever the count; only the count
+                  line depends on there being more than one. Click-through: a tap on the count
+                  text still opens the post, only the link stops it. */}
+              <div className="border-border/50 pointer-events-none relative flex items-center gap-3 border-t px-4 py-2">
+                {more > 0 && <span className="text-muted-foreground text-xs">{moreLabel}</span>}
+                <Link
+                  href="/blog"
+                  prefetch={false}
+                  onClick={(event) => {
+                    if (dragged.current) event.preventDefault();
+                    else close();
+                  }}
+                  draggable={false}
+                  className="text-primary hover:text-primary/80 pointer-events-auto relative z-10 ml-auto inline-flex min-h-8 items-center gap-1 text-xs font-semibold transition-colors"
+                >
+                  {labels.allPosts}
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
 
               {/* The countdown, as a line that drains. Stops while somebody is reading. */}
               <div

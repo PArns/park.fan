@@ -60,14 +60,18 @@ it to the front.
 - **Phones** (below `sm`): full width with a 12 px gutter, above the home indicator
   (`env(safe-area-inset-bottom)`), with a handle. Swipe down to dismiss. The location banner uses
   the same strip on the homepage; the toast measures `[data-location-banner]` and sits above it.
-- **From `sm`**: 400 px card in the bottom-left corner, swipe left to dismiss. Bottom right is the
-  location banner, the right edge is the planner tab.
+- **From `sm`**: 400 px card in the top-right corner, 15 px under the header, swipe right to
+  dismiss. `z-40`, under the header's `z-50`, so a menu band opened from the bar covers the toast
+  and not the other way round. When the language banner is up (`[data-language-banner]`, fixed
+  under the header on `z-[60]`), the toast moves below it. With the planner panel open it moves
+  left by `--planner-inset` (`planner-wide:`), the same inset the page is reflowed by. The stack
+  sheets peek out below the card here, above it on a phone.
 - Auto-dismiss after 12 s. The bar along the bottom edge is the countdown (a Web Animation), and it
   pauses on hover, on focus and while the tab is hidden.
 - The whole card is the link to the post (a stretched `::after` on the post link). The close
   button and "see all" sit above it with `z-10`; a swipe that ends on the card does not open it.
-- More than one new post: up to two sheets peek out behind the card, and a footer row links to
-  `/blog`.
+- A footer row always links to `/blog`. With more than one new post it also says how many more,
+  and up to two sheets peek out behind the card.
 - `prefers-reduced-motion`: a fade instead of the spring, no pulsing dot, no image zoom.
 - Escape closes it. The close button is 24 px drawn and 44 px to a finger (the same
   pseudo-element pattern as the location banner).
