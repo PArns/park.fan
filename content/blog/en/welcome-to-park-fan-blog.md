@@ -17,7 +17,7 @@ tags:
   - wait-times
   - ai-predictions
   - behind-the-scenes
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany

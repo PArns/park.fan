@@ -18,7 +18,7 @@ tags:
   - tempi-di-attesa
   - previsioni-ia
   - dietro-le-quinte
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany

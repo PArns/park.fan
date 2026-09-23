@@ -18,7 +18,7 @@ tags:
   - consigli
   - orlando
   - dietro-le-quinte
-category: news
+category: park-fan
 parkLinks:
   # Hansa-Park ha un paragrafo tutto suo sul perché lì il pianificatore non
   # offre pulsanti. È esattamente la domanda di chi sta su quella pagina.

@@ -18,7 +18,7 @@ tags:
   - consejos
   - orlando
   - entre-bastidores
-category: news
+category: park-fan
 parkLinks:
   # Hansa-Park tiene un párrafo propio sobre por qué el planificador no ofrece
   # botones allí. Es justo lo que se pregunta quien está en esa página de parque.

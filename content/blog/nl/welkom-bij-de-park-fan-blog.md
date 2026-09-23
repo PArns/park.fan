@@ -17,7 +17,7 @@ tags:
   - wachttijden
   - ai-voorspellingen
   - achter-de-schermen
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany

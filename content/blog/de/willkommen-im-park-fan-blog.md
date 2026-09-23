@@ -18,7 +18,7 @@ tags:
   - wartezeiten
   - ki-prognosen
   - hinter-den-kulissen
-category: news
+category: park-fan
 parkLinks:
   - phantasialand
   - movie-park-germany
