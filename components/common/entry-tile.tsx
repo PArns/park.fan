@@ -60,7 +60,16 @@ export function EntryTileBody({
       <span data-tile-stagger className={cn(entryTileChip, chipClassName)}>
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <span data-tile-stagger data-tile-label className="text-sm leading-tight font-semibold">
+      {/* Below `sm` the tile is a cell in a horizontally scrolling row (`tileRowPhone`): chip and
+          label side by side, the hint on one full-width line under both. The label keeps two
+          reserved lines there, because „Planifier le meilleur moment pour visiter" is one of
+          them and a row whose height depends on the locale's longest label is a row that moves
+          when the font arrives. */}
+      <span
+        data-tile-stagger
+        data-tile-label
+        className="text-sm leading-tight font-semibold max-sm:line-clamp-2 max-sm:min-h-[2lh] max-sm:text-[13px]"
+      >
         {label}
         {count !== undefined && (
           <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
@@ -69,7 +78,7 @@ export function EntryTileBody({
       {hint !== undefined && (
         <span
           data-tile-stagger
-          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug"
+          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug max-sm:col-span-2 max-sm:line-clamp-1 max-sm:min-h-[1lh]"
         >
           {hint}
         </span>
