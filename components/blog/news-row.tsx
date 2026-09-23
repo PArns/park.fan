@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { NewsList, type NewsListItem } from '@/components/blog/news-list';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
-import { versionedPath } from '@/lib/media/focus';
+import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
@@ -17,6 +17,7 @@ export function toNewsListItem(post: BlogListItem): NewsListItem {
     title: post.frontmatter.title,
     date: post.frontmatter.date,
     image: versionedPath(src) ?? src ?? null,
+    imagePosition: objectPositionForSrc(src, '50% 50%'),
   };
 }
 

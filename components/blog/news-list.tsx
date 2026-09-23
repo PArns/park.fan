@@ -10,6 +10,8 @@ export interface NewsListItem {
   date: string;
   /** Cover, already versioned. A post without one gets a text-only row. */
   image?: string | null;
+  /** The cover's focal point as a CSS `object-position`, resolved on the server. */
+  imagePosition?: string;
 }
 
 /**
@@ -41,6 +43,7 @@ export function NewsList({ items, className }: { items: NewsListItem[]; classNam
                   alt=""
                   fill
                   sizes="112px"
+                  style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </span>

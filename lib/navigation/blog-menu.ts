@@ -2,7 +2,7 @@ import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
 import { listArticlesByRecency, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
-import { versionedPath } from '@/lib/media/focus';
+import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
 /**
  * What the blog menu shows, and what it deliberately leaves out.
@@ -99,6 +99,8 @@ export interface BlogMenuNewsItem {
   date: string;
   /** Cover, versioned like the article rows' covers. */
   image?: string;
+  /** The cover's focal point as a CSS `object-position` — the panel cannot read the manifest. */
+  imagePosition?: string;
 }
 
 export interface BlogMenu {
@@ -160,6 +162,7 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
+        imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
       })),
     newsLabel: resolveCategoryLabel(NEWS_CATEGORY, locale, 'News'),
     newsPath: NEWS_CATEGORY,
