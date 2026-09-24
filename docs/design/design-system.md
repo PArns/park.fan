@@ -174,6 +174,33 @@ It is the same component the `compact` variant already was — the list beside t
 post. The thumbnail takes the card's `objectPosition`, so a focal point tuned in the admin holds at
 96 × 64 too.
 
+### The park card is a row too
+
+A park card collapsed onto its panels kept all of its content, but it was 146 px high and one per
+row: nine of them on the Germany page, ten on the homepage. Since PAR-432 `ParkCard` renders a row
+below `sm` (`data-park-card-row`, `sm:hidden`) and the panelled card from `sm` up (`hidden sm:grid`),
+both inside the same `Link`, so every caller and every grid that spans the card over three rows
+gets it without a change.
+
+| line     | content                                                           | height |
+| -------- | ----------------------------------------------------------------- | ------ |
+| 1        | name, one line, cut with an ellipsis; favourite star at the right | 18 px  |
+| 2        | city, country · distance                                          | 16 px  |
+| 3        | `ParkStatusBadge`, `CrowdLevelBadge`, "nearest open"              | 22 px  |
+| 4        | `ParkCardScheduleFooter compact`: closing or opening time only    | 16 px  |
+| together | with the gaps, 8 px padding and a 1 px border                     | 100 px |
+
+Four fixed lines, not three with the time beside the badges: next to "Geöffnet" and "Sehr niedrig"
+the time does not fit at 360 px, and a line that wraps only for some parks gave the rows of one list
+different heights. The badge line keeps `min-h-[22px]` because on the region pages the badges arrive
+with the client batch call after the row is painted. The thumbnail is 64 × 48, not the blog row's
+96 × 64, because a 96 px thumbnail leaves the badge line 204 px at 360 px and the two badges need 228. It is only drawn when the park has a photo (9 of 212). The hidden card's two photo layers claim
+the same `64px` for the phone segment of their `sizes`, for the reason given above.
+`ParkCardNearbySkeleton` draws the same four lines. The grids around the card keep
+`[grid-auto-rows:auto_1fr_auto]` from `sm` up and drop it below (`max-sm:auto-rows-auto`, the same
+switch as the ride list in `LandSection`): in one column a `1fr` track sizes every row to the tallest,
+so one park with a third badge gave every other row of the nearby list 40 px of empty space.
+
 **And it has no variants of its own.** The first version had two: a border and a three-line title
 where the row replaced a card, an `-mx-2` bleed and two lines where it sat in a list, reading time
 only in the first. On the homepage those two meet — below `lg` the lead post is a row and so are
