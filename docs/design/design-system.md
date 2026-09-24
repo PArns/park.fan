@@ -699,7 +699,8 @@ page and in both states of the bar, so the width budget above is the whole budge
 
 Below a **640 px bar** (`@max-[640px]:hidden`, the bar's width like every switch in it) the locale
 switcher, the theme switch and the °C/°F button are not in the bar at all. They are one row,
-„Einstellungen", at the end of the burger sheet — the same three components, so a change to one is
+„Einstellungen", at the top of the burger sheet (at its end they sat at y=662 of a 664 px
+sheet) — the same three components, so a change to one is
 a change to both. The sheet copy is unconditional: the sheet exists only below a 1024 px bar and a
 portal cannot ask the header's container anything, so between 640 and 1023 the three are in both
 places, which costs nothing, while two conditions that could disagree might leave them in neither.

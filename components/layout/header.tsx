@@ -608,7 +608,7 @@ export function Header({
               corner pill that used to hold a second one while the bar floated.
 
               Not on a phone (PAR-434): below a 640 px bar the three move into the burger sheet,
-              where they are one row at the end of the list. They were three controls of 24–34 px
+              where they are the first row. They were three controls of 24–34 px
               in a row with 25 px of slack at 360, and they are preferences a visitor sets once,
               not navigation. The bar's width and not the window's, like every switch in here.
               The sheet copy is unconditional, because the sheet exists only below 1024 and a
@@ -662,6 +662,22 @@ export function Header({
                   className="mt-8 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
                   aria-label="Mobile navigation"
                 >
+                  {/* The three preferences the bar no longer carries on a phone. FIRST in the
+                      sheet, above the favourites: at the end of the list they sat at y=662 of a
+                      664 px sheet (390 × 664, no favourites saved), and every saved favourite
+                      pushes them further out of sight. The same components as the bar's, so a
+                      change to one is a change to both. */}
+                  <div
+                    data-sheet-stagger
+                    className="border-border/60 flex items-center justify-between gap-3 border-b pb-4"
+                  >
+                    <span className="text-muted-foreground text-sm">{t('preferences')}</span>
+                    <div className="flex items-center gap-1">
+                      <LocaleSwitcher />
+                      <ThemeToggle />
+                      <TemperatureUnitToggle />
+                    </div>
+                  </div>
                   {showNearbyPark && (
                     <Link
                       href={convertApiUrlToFrontendUrl(nearestPark.url)}
@@ -770,20 +786,6 @@ export function Header({
                       Favoriten-Panel darüber, siehe `MoreMenuLinks` samt Begründung, warum das
                       Sheet die Zeile überhaupt bekommt. */}
                   <MoreMenuLinks variant="sheet" />
-                  {/* The three preferences the bar no longer carries on a phone. Last, because
-                      they are set once and then left alone; the same components as the bar's,
-                      so a change to one is a change to both. */}
-                  <div
-                    data-sheet-stagger
-                    className="border-border/60 flex items-center justify-between gap-3 border-t pt-4"
-                  >
-                    <span className="text-muted-foreground text-sm">{t('preferences')}</span>
-                    <div className="flex items-center gap-1">
-                      <LocaleSwitcher />
-                      <ThemeToggle />
-                      <TemperatureUnitToggle />
-                    </div>
-                  </div>
                 </nav>
               </SheetContent>
             </Sheet>

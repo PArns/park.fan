@@ -7,7 +7,7 @@ Short log of notable changes; details live in the linked docs.
 ## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
 
 Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
-Zeile „Einstellungen" am Ende des Menüs. Im Header bleiben Logo, Suche, Menü und neu ein
+erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
 Kalender-Knopf für den Tagesplaner. Die senkrechte Lasche am rechten Rand wird auf dem Handy nicht
 mehr gezeichnet, weil sie mit 24 × 102 px über Text und Karten lag. Beide Einstiege fragen dieselbe
 Variante (`planner-phone`), es gibt also bei jeder Größe genau einen.
