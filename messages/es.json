@@ -1416,6 +1416,11 @@
       "ask": "¿En el parque? Mostrar atracciones cerca de ti",
       "blocked": "La ubicación está bloqueada en tu navegador",
       "away": "Estás a {distance} del parque"
+    },
+    "nextRide": {
+      "heading": "Más corto ahora que después",
+      "reason": "Ahora {now} min, desde las {time} se prevén {later} min",
+      "saving": "{minutes} min menos"
     }
   },
   "geo": {

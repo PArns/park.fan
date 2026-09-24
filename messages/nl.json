@@ -1416,6 +1416,11 @@
       "ask": "In het park? Toon attracties bij jou in de buurt",
       "blocked": "Locatietoegang is geblokkeerd in je browser",
       "away": "Je bent {distance} van het park"
+    },
+    "nextRide": {
+      "heading": "Nu korter dan straks",
+      "reason": "Nu {now} min, vanaf {time} volgens de prognose {later} min",
+      "saving": "{minutes} min minder"
     }
   },
   "geo": {

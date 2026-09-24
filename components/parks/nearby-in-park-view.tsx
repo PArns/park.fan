@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { NextBestRides } from '@/components/parks/next-best-rides';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
@@ -348,6 +349,11 @@ export function InParkView({
             </>
           )}
 
+          <NextBestRides
+            park={{ slug: park.slug, timezone: park.timezone }}
+            rides={data.rides}
+            showDistance
+          />
           <InParkRideLists headliners={headliners} attractions={attractions} />
         </div>
       </div>
