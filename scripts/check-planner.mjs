@@ -1388,12 +1388,27 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         const hit = document.elementFromPoint(x, y);
         return hit !== null && (hit === el || el.contains(hit));
       };
-      if (!hits(Math.round(box.top + box.height / 2))) return { width: box.width, height: 0 };
+      const y = Math.round(box.top + box.height / 2);
+      if (!hits(y)) return { width: 0, height: 0 };
       let up = 0;
       while (up < 30 && hits(Math.ceil(box.top) - 1 - up)) up += 1;
       let down = 0;
       while (down < 30 && hits(Math.ceil(box.bottom) + down)) down += 1;
-      return { width: box.width, height: Math.round(box.height) + up + down };
+      // And across, for the same reason: the box is 32 px wide since the bell
+      // joined this row, and the target reaches through the row's padding to
+      // the sheet's edge (`after:-right-3`).
+      const across = (px) => {
+        const hit = document.elementFromPoint(px, y);
+        return hit !== null && (hit === el || el.contains(hit));
+      };
+      let left = 0;
+      while (left < 30 && across(Math.ceil(box.left) - 1 - left)) left += 1;
+      let right = 0;
+      while (right < 30 && across(Math.ceil(box.right) + right)) right += 1;
+      return {
+        width: Math.round(box.width) + left + right,
+        height: Math.round(box.height) + up + down,
+      };
     })
     .catch(() => null);
   check(
