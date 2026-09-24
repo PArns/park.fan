@@ -294,6 +294,17 @@ export function ParkTodayPanel({
         slug: a.slug,
         currentWaitTime:
           getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
+        // Attached by the live poll's route (`enrichAttractionsWithImages`), not
+        // declared on `ParkAttraction` — read the way `AttractionCard` reads them.
+        // Until the first poll lands the picker shows its placeholder instead.
+        backgroundImage:
+          'backgroundImage' in a && typeof a.backgroundImage === 'string'
+            ? a.backgroundImage
+            : null,
+        backgroundPosition:
+          'backgroundPosition' in a && typeof a.backgroundPosition === 'string'
+            ? a.backgroundPosition
+            : undefined,
       })),
     [park.attractions, park.status]
   );
