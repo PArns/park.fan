@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
  *
  * The numbers are the card's own rows, read off a rendered one rather than guessed:
  * top panel 100 px, photo row 220 px, bottom panel 45 px — 365 px against a live card's 365.6.
- * Below `sm` `ParkCard` is not a card but a row, and so is this placeholder: 82 px.
+ * Below `sm` `ParkCard` is not a card but a row, and so is this placeholder: 100 px.
  *
  * The breakpoint matters: a placeholder with one height for every breakpoint was 360 px
  * everywhere, which on a phone over-reserved by a factor of 2.4 — the featured-parks grid
@@ -40,17 +40,18 @@ import { cn } from '@/lib/utils';
 export function ParkCardNearbySkeleton({ withPhoto = true }: { withPhoto?: boolean }) {
   return (
     <>
-      {/* Below `sm` the card is a row (see `ParkCard`), built from the same lines: 8 px
-          padding + name 20 + 2 + location 16 + 6 + badge line 22 + 8 px. No thumbnail: it
-          is 64 px tall and sits beside the text, so it never sets the height, and only 9
-          parks have one. */}
-      <div className="bg-card rounded-xl p-2 sm:hidden">
-        <Skeleton className="h-5 w-40 max-w-[70%]" />
+      {/* Below `sm` the card is a row (see `ParkCard`), built from the same four lines:
+          1 px border + 8 px padding + name 18 + 2 + location 16 + 4 + badges 22 + 4 + time 16
+          + 8 + 1 = 100 px. No thumbnail: it is 48 px tall beside 82 px of text, so it never
+          sets the height, and only 9 parks have one. */}
+      <div className="bg-card border-border/60 rounded-xl border p-2 sm:hidden">
+        <Skeleton className="h-[18px] w-40 max-w-[70%]" />
         <Skeleton className="mt-0.5 h-4 w-28 opacity-60" />
-        <div className="mt-1.5 flex gap-1.5">
+        <div className="mt-1 flex gap-1.5">
           <Skeleton className="h-[22px] w-20 rounded-full opacity-60" />
           <Skeleton className="h-[22px] w-16 rounded-full opacity-40" />
         </div>
+        <Skeleton className="mt-1 h-4 w-24 opacity-40" />
       </div>
       <ParkCardSkeletonPanels withPhoto={withPhoto} />
     </>

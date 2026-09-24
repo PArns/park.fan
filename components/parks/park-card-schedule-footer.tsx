@@ -154,7 +154,10 @@ export function ParkCardScheduleFooter({
   ) : (
     /* Closed footer */
     <div
-      className={cn('relative flex items-center gap-[6px] text-[12px]', compact && 'min-w-0')}
+      className={cn(
+        'relative flex items-center gap-[6px] text-[12px]',
+        compact && 'min-w-0 leading-4'
+      )}
       style={{ color: 'var(--pk-text-2)' }}
     >
       <Calendar

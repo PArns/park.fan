@@ -17,14 +17,14 @@ import type { ScheduleSummary } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
-/** What the phone row paints: a 96 × 64 thumbnail. */
-const ROW_THUMB_SIZES = '96px';
+/** What the phone row paints: a 64 × 48 thumbnail. */
+const ROW_THUMB_SIZES = '64px';
 /**
- * The card's own photo layers claim the row's 96 px for the phone segment. The card is
+ * The card's own photo layers claim the row's 64 px for the phone segment. The card is
  * `display:none` there, and with the default `100vw` both would pick a different srcset
  * candidate than the row beside them: two requests for one picture instead of one.
  */
-const CARD_PHOTO_SIZES = '(max-width: 640px) 96px, (max-width: 1024px) 50vw, 33vw';
+const CARD_PHOTO_SIZES = '(max-width: 640px) 64px, (max-width: 1024px) 50vw, 33vw';
 
 interface ParkCardProps {
   name: string;
@@ -184,12 +184,13 @@ export function ParkCard({
           that spans this card over three rows gets the row without a change. */}
       <div
         data-park-card-row
-        className="group bg-card hover:bg-accent/30 relative row-span-3 flex items-center gap-3 rounded-xl p-2 transition-colors sm:hidden"
+        className="group bg-card hover:bg-accent/30 border-border/60 relative row-span-3 flex items-start gap-3 rounded-xl border p-2 transition-colors sm:hidden"
       >
         {backgroundImage && (
           // The whole thumbnail is the visible box, so the focal point is applied to it
-          // directly; 96 × 64 keeps a landscape photo some vertical range.
-          <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-lg">
+          // directly. 64 px wide, not the blog row's 96: at 360 px the badge line needs
+          // 228 px for "Geöffnet" and "Sehr niedrig", and a 96 px thumbnail leaves 204.
+          <div className="relative mt-0.5 h-12 w-16 shrink-0 overflow-hidden rounded-lg">
             <Image
               src={backgroundImage}
               alt={name}
@@ -201,10 +202,15 @@ export function ParkCard({
             />
           </div>
         )}
+        {/* Four fixed lines: name 18 · 2 · location 16 · 4 · badges 22 · 4 · time 16, so
+            98 px with the padding and 100 with the border. The time has a line of its own
+            because next to two badges it does not fit at 360 px, and a line that wraps only
+            sometimes gives the rows of one list different heights. `ParkCardNearbySkeleton`
+            draws the same lines. */}
         <div className="min-w-0 flex-1">
           <h3
             className={cn(
-              'text-foreground group-hover:text-primary truncate text-[15px] leading-5 font-bold transition-colors',
+              'text-foreground group-hover:text-primary truncate text-[15px] leading-[18px] font-bold transition-colors',
               effectiveParkId && 'pr-8'
             )}
           >
@@ -219,19 +225,15 @@ export function ParkCard({
             <MapPin className="h-[11px] w-[11px] shrink-0 opacity-70" aria-hidden="true" />
             {locationLine}
           </div>
-          {/* Badges first, the time after them; the time drops to its own line only when
-              the badges leave it no room, and is cut rather than wrapped there. `min-h` is
-              one badge: on the region pages the badges arrive with the client batch call,
-              after the time line is already painted, and must not grow the row. */}
-          <div className="mt-1.5 flex min-h-[22px] min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1">
-            {badges}
-            <Suspense fallback={<Skeleton className="h-4 w-20" />}>
-              <div className="max-w-full min-w-0">{scheduleFooter(true)}</div>
-            </Suspense>
+          {/* `min-h` is one badge: on the region pages the badges arrive with the client
+              batch call, after the row is painted, and must not grow it. */}
+          <div className="mt-1 flex min-h-[22px] flex-wrap items-center gap-1.5">{badges}</div>
+          <div className="mt-1 flex h-4 min-w-0 items-center">
+            <Suspense fallback={<Skeleton className="h-4 w-24" />}>{scheduleFooter(true)}</Suspense>
           </div>
         </div>
         {effectiveParkId && (
-          <div className="absolute top-2 right-2 h-7 w-7">
+          <div className="absolute top-1.5 right-1.5 h-7 w-7">
             <FavoriteStar
               type="park"
               id={effectiveParkId}
