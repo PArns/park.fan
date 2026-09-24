@@ -2472,8 +2472,6 @@
     "filter": {
       "label": "Filteren op park",
       "all": "Alle parken"
-    },
-    "moreFromPark": "Meer nieuws uit {park}",
-    "byline": "Door {author}"
+    }
   }
 }

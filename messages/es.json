@@ -2472,8 +2472,6 @@
     "filter": {
       "label": "Filtrar por parque",
       "all": "Todos los parques"
-    },
-    "moreFromPark": "Más noticias de {park}",
-    "byline": "Por {author}"
+    }
   }
 }

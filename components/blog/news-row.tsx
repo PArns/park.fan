@@ -40,13 +40,10 @@ export async function NewsRow({
   locale,
   posts,
   boxed = false,
-  title,
   className,
 }: {
   locale: Locale;
   posts?: readonly BlogListItem[];
-  /** Replaces the section's name in the label, e.g. "Mehr News aus Europa-Park" on a news post. */
-  title?: string;
   /**
    * Draw the row on a card of its own instead of under a hairline. For the park and
    * ride pages, whose sections stand on the park photo: bare text there is unreadable.
@@ -72,7 +69,7 @@ export async function NewsRow({
       <div className="mb-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
         <span className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase">
           <Megaphone className="h-4 w-4" aria-hidden="true" />
-          {title ?? label}
+          {label}
         </span>
         <Link
           href={NEWS_INDEX_PATH as '/'}

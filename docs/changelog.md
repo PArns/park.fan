@@ -13,10 +13,9 @@ und ein kleines Bild. Über dem Strom filtern Pillen nach Park (`?park=<slug>`),
 Parks mit News. Die Seite bleibt statisch, der Filter läuft im Browser und die Canonical bleibt
 `/news`.
 
-Ein News-Beitrag öffnet nicht mehr mit dem Vollbild-Hero der Artikel, sondern mit einem Kopf im
-Seitenfluss: News-Label und Park, Datum mit Alter, Titel, Teaser, Autor und das Titelbild als Band.
-Die Lesezeit entfällt. Am Ende steht „Mehr News aus <Park>“, und wenn es davon keine gibt, die
-neuesten anderen News. Der Header ist auf `/news/…` deshalb keine Hero-Seite mehr.
+Der einzelne Beitrag unter `/news/<slug>` bleibt, wie er war: Er liest sich wie ein Artikel, mit
+Vollbild-Hero und Lesezeit. Ein eigener, schlanker Kopf für Beiträge war kurz Teil dieser Änderung
+und ist auf Patricks Wunsch wieder raus.
 
 Der Park einer Meldung ist der erste Eintrag in `parkLinks`, ohne Eintrag der bestbewertete Park,
 den der Beitrag erwähnt (`getNewsParkRef`). Siehe `docs/rules/news-live-under-news.md`.

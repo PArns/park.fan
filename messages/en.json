@@ -2472,8 +2472,6 @@
     "filter": {
       "label": "Filter by park",
       "all": "All parks"
-    },
-    "moreFromPark": "More news from {park}",
-    "byline": "By {author}"
+    }
   }
 }

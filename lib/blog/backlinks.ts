@@ -315,7 +315,7 @@ export function getPostsForPark(
 }
 
 /**
- * The one park a news post is about, for its label on `/news` and its "more news from" list.
+ * The one park a news post is about, for its label and the park filter on `/news`.
  *
  * A news item belongs to one park, and every news post so far names it in `parkLinks`. So the
  * first configured entry wins, in the order the author wrote them — the Disneyland Paris note
