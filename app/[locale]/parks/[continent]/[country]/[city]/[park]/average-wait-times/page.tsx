@@ -21,6 +21,7 @@ import { parkStatsPath } from '@/lib/parks/stats-segments';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import {
+  cityHasOwnPage,
   findParkPageRedirect,
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
@@ -198,7 +199,9 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // Not `catchNonFatal`, for the reason `getParkStatsForPage` below throws: swallowed, an outage
+  // became a `notFound()` this ISR route then stored for a day.
+  const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
 
   // The same three redirects the park page and the calendar run, for the same reason: this URL is
   // reachable directly from search and a stale geo path must transfer rather than 404. The
@@ -265,6 +268,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
     continentName: translateContinent(tGeo, continent, locale),
     countryName,
     cityName,
+    cityHasPage: await cityHasOwnPage(continent, country, city),
     parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),

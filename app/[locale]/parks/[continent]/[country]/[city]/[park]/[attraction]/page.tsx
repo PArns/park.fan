@@ -72,7 +72,11 @@ import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
-import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
+import {
+  cityHasOwnPage,
+  findRelocatedParkRedirect,
+  findRenamedParkRedirect,
+} from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { parkArgs } from '@/lib/i18n/park-phrase';
@@ -248,7 +252,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // no longer bakes into every per-attraction × per-locale ISR write (the dominant write source).
   // The park-embedded attraction carries everything the shell + JSON-LD + FAQ need (name,
   // statistics, bestVisitTimes); live status/wait times still come from the client poll.
-  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // Not `catchNonFatal`: a failed fetch must throw rather than 404 — see the park page.
+  const park = await getParkByGeoPath(continent, country, city, parkSlug);
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
   if (!park) {
@@ -290,6 +295,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     continentName,
     countryName,
     cityName,
+    cityHasPage: await cityHasOwnPage(continent, country, city),
     parkName,
     attractionName,
     homeLabel: tCommon('home'),

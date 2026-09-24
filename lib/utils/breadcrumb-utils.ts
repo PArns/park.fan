@@ -84,6 +84,23 @@ export function generateCityBreadcrumbs({
 }
 
 /**
+ * The city crumb, or nothing when the city has no page of its own.
+ *
+ * A city with a single park answers with a 308 to that park, so linking it sends the reader, and
+ * every crawler walking the trail or its BreadcrumbList JSON-LD, to a redirect that lands on the
+ * park they came from. `cityHasPage` comes from `cityHasOwnPage()` in `./redirect-utils`.
+ */
+function cityCrumb(
+  continent: string,
+  country: string,
+  city: string,
+  cityName: string,
+  cityHasPage: boolean
+): Breadcrumb[] {
+  return cityHasPage ? [{ name: cityName, url: `/parks/${continent}/${country}/${city}` }] : [];
+}
+
+/**
  * Generate breadcrumbs for park pages
  */
 export function generateParkBreadcrumbs({
@@ -93,6 +110,7 @@ export function generateParkBreadcrumbs({
   continentName,
   countryName,
   cityName,
+  cityHasPage,
   parkName,
   homeLabel,
   continentsLabel,
@@ -103,6 +121,8 @@ export function generateParkBreadcrumbs({
   continentName: string;
   countryName: string;
   cityName: string;
+  /** Whether the city has its own page; see {@link cityCrumb}. */
+  cityHasPage: boolean;
   parkName: string;
   homeLabel: string;
   continentsLabel: string;
@@ -113,7 +133,7 @@ export function generateParkBreadcrumbs({
       { name: continentsLabel, url: '/parks' },
       { name: continentName, url: `/parks/${continent}` },
       { name: countryName, url: `/parks/${continent}/${country}` },
-      { name: cityName, url: `/parks/${continent}/${country}/${city}` },
+      ...cityCrumb(continent, country, city, cityName, cityHasPage),
     ],
     currentPage: parkName,
   };
@@ -130,6 +150,7 @@ export function generateAttractionBreadcrumbs({
   continentName,
   countryName,
   cityName,
+  cityHasPage,
   parkName,
   attractionName,
   homeLabel,
@@ -142,6 +163,8 @@ export function generateAttractionBreadcrumbs({
   continentName: string;
   countryName: string;
   cityName: string;
+  /** Whether the city has its own page; see {@link cityCrumb}. */
+  cityHasPage: boolean;
   parkName: string;
   attractionName: string;
   homeLabel: string;
@@ -153,7 +176,7 @@ export function generateAttractionBreadcrumbs({
       { name: continentsLabel, url: '/parks' },
       { name: continentName, url: `/parks/${continent}` },
       { name: countryName, url: `/parks/${continent}/${country}` },
-      { name: cityName, url: `/parks/${continent}/${country}/${city}` },
+      ...cityCrumb(continent, country, city, cityName, cityHasPage),
       { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
     ],
     currentPage: attractionName,

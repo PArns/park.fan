@@ -115,6 +115,7 @@ sessions that need them.
 | Doc                                                       | Description                                                                                                                           |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | [SEO Analysis](seo/analysis.md)                           | Current status, optimizations, checklist                                                                                              |
+| [Crawl budget](seo/crawl-budget.md)                       | What Googlebot spends its requests on: the 2026-09-24 baseline, reading the Search Console exports, wasted fetches and their fixes    |
 | [Agent readiness](seo/agent-readiness.md)                 | What the site tells machines: robots policy, llms.txt, API catalog, skills, MCP, WebMCP                                               |
 | [Blog feeds](seo/blog-feeds.md)                           | The six RSS feeds: autodiscovery, full-text items, enclosures, WebSub                                                                 |
 | [Favicon](seo/favicon.md)                                 | The icon in the search result: one generated set, why the wordmark is out and the tile is in                                          |
