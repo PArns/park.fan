@@ -90,6 +90,8 @@ export function NextBestRides({
         {suggestions.map((s) => {
           const ride = bySlug.get(s.slug);
           if (!ride) return null;
+          const now = roundWaitTo5(s.waitNow);
+          const later = roundWaitTo5(s.laterWait);
           return (
             <li key={s.slug}>
               <Link
@@ -104,8 +106,8 @@ export function NextBestRides({
                     </p>
                     <p className="text-muted-foreground text-xs">
                       {t('reason', {
-                        now: roundWaitTo5(s.waitNow),
-                        later: roundWaitTo5(s.laterWait),
+                        now,
+                        later,
                         time: formatGridTime(s.laterHour * 60),
                       })}
                       {showDistance && (
@@ -118,7 +120,9 @@ export function NextBestRides({
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     <Badge className="border-transparent bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
-                      {t('saving', { minutes: roundWaitDeltaTo5(s.saving) })}
+                      {/* The difference of the two numbers printed beside it, not the raw gap
+                          rounded on its own, or 22 → 33 would read "20 … 35" next to "−10". */}
+                      {t('saving', { minutes: roundWaitDeltaTo5(later - now) })}
                     </Badge>
                     <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
                   </div>
