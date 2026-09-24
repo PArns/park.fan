@@ -12,8 +12,8 @@ Prognose der nächsten zwei Stunden liegt („Jetzt 5 Min., ab 13:00 laut Progno
 Regel `suggestNextRides` (`lib/planner/next-best-ride.ts`) liest die Kurve aus `/plan/day`, zählt
 eine Stunde erst ab der Ankunft (Laufzeit nach `leg.ts`), nie die Schließstunde, und lässt
 geschlossene, außer Saison stehende und nicht lesbare Fahrten weg, ebenso solche, für die
-jemand aus der Gruppe zu klein ist. Die Körpergröße kommt
-aus den Planer-Einstellungen des Tages. `/plan/day` wird nur im Park geholt. Geprüft von
+jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Einstellungen des Tages.
+`/plan/day` wird nur im Park geholt. Geprüft von
 `pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
 
 ## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
