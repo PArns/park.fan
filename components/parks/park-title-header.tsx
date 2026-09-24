@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { ParkDistance } from '@/components/common/park-distance';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
@@ -8,6 +9,10 @@ import { ParkQuickLinks } from '@/components/parks/park-quick-links';
 import type { Locale } from '@/i18n/config';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
+/** Muted like the line it sits in; the dotted underline is what says it can be pressed. */
+const ADDRESS_LINK =
+  'hover:text-foreground underline decoration-dotted underline-offset-4 transition-colors';
+
 interface ParkTitleHeaderProps {
   park: ParkWithAttractions;
   parkName: string;
@@ -15,6 +20,13 @@ interface ParkTitleHeaderProps {
   /** Country slug + its already-translated name, for the address line. */
   country: string;
   countryName: string;
+  /**
+   * Make the city and the country in the address line links to their pages. The park page passes
+   * them and hides its breadcrumb on a phone, so these are the way one level up there (PAR-434).
+   * A city without a page of its own gets no `cityHref` and stays text.
+   */
+  cityHref?: string;
+  countryHref?: string;
   /** For the planner link's localized path. */
   locale: Locale | string;
   /**
@@ -48,6 +60,8 @@ export async function ParkTitleHeader({
   cityName,
   country,
   countryName,
+  cityHref,
+  countryHref,
   locale,
   suffix,
   intro,
@@ -57,6 +71,7 @@ export async function ParkTitleHeader({
   // The planner button's sentence, resolved HERE rather than inside the button: that one is a
   // Client Component now (it opens the panel instead of navigating), and `parks` is 15.1 KB.
   const tParks = await getTranslations('parks');
+  const countryLabel = translateGeoSlug(tGeo, 'countries', country, countryName);
 
   return (
     <>
@@ -80,7 +95,21 @@ export async function ParkTitleHeader({
             <address className="flex items-center gap-1 not-italic">
               <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
               <span>
-                {cityName}, {translateGeoSlug(tGeo, 'countries', country, countryName)}
+                {cityHref ? (
+                  <Link href={cityHref} prefetch={false} className={ADDRESS_LINK}>
+                    {cityName}
+                  </Link>
+                ) : (
+                  cityName
+                )}
+                ,{' '}
+                {countryHref ? (
+                  <Link href={countryHref} prefetch={false} className={ADDRESS_LINK}>
+                    {countryLabel}
+                  </Link>
+                ) : (
+                  countryLabel
+                )}
               </span>
             </address>
             {/* How far the visitor is from this park — client-only (needs their position), so it

@@ -390,6 +390,8 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
+        // On a phone the address line's links are the way one level up — see `cityHref`.
+        phoneBreadcrumb="hidden"
         pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
         // The two chapters that belong to the PARK rather than to any one of its pages, handed in
         // rather than switched on: what the shell imports, every route that uses it pays for in
@@ -469,6 +471,12 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             cityName={cityName}
             country={country}
             countryName={countryName}
+            // Read off the trail rather than rebuilt, so the address links exactly the pages the
+            // breadcrumb would: a city without a page of its own has no crumb and stays text.
+            cityHref={
+              breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url
+            }
+            countryHref={breadcrumbs.find((c) => c.url === `/parks/${continent}/${country}`)?.url}
             locale={locale}
             suffix={t('h1Suffix')}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the

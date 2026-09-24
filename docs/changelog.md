@@ -17,6 +17,19 @@ die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung
 bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
 Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
 
+## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
+
+Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
+erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
+Kalender-Knopf für den Tagesplaner. Die senkrechte Lasche am rechten Rand wird auf dem Handy nicht
+mehr gezeichnet, weil sie mit 24 × 102 px über Text und Karten lag. Beide Einstiege fragen dieselbe
+Variante (`planner-phone`), es gibt also bei jeder Größe genau einen.
+
+Der Brotkrümel zeigt auf dem Handy nur noch einen Link eine Ebene nach oben statt
+„Startseite › … › Phantasialand". Auf Park- und Ride-Seite fällt die Zeile auf dem Handy ganz weg:
+dort sind Land (und Stadt, wenn sie eine Seite hat) bzw. der Park in der Titelkarte verlinkt. Die
+H1 steht dort bei 390 px jetzt bei y=105 statt 151, gemessen mit `pnpm measure:mobile-height`.
+
 ## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
 
 Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
