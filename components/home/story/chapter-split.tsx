@@ -16,6 +16,9 @@ import { cn } from '@/lib/utils';
  * **The prose comes first in the DOM, whichever side it is drawn on.** The
  * exhibit is a table of numbers; the argument for reading it belongs ahead of it
  * for a screen reader and for a crawler. `order` moves the box, never the source.
+ * Below a 768 px page the prose is drawn under the exhibit: a phone reads the
+ * chapter as heading, then the live component, then the argument behind "show
+ * more" (PAR-435).
  *
  * **The exhibit is not wrapped in `Reveal`.** `Reveal` keeps a `translate-y-0`
  * on its wrapper for good, and a transform makes that wrapper a backdrop root —
@@ -52,7 +55,9 @@ export function ChapterSplit({
         className
       )}
     >
-      <Reveal className={cn(exhibitAtStart && 'lg:order-2')}>{children}</Reveal>
+      <Reveal className={cn('@max-[768px]/page:order-last', exhibitAtStart && 'lg:order-2')}>
+        {children}
+      </Reveal>
 
       <div className={cn(exhibitAtStart ? 'lg:order-1 lg:-ml-8 xl:-ml-14' : 'lg:-mr-8 xl:-mr-14')}>
         {exhibit}

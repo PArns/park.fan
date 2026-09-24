@@ -12,6 +12,7 @@ import {
 import { Link } from '@/i18n/navigation';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { Locale } from '@/i18n/config';
@@ -25,7 +26,10 @@ import type { Locale } from '@/i18n/config';
  * (`/how-park-fan-works`). A page of claims with nothing to open is a brochure.
  */
 export async function WhyParkFan({ locale }: { locale: Locale }) {
-  const t = await getTranslations('homeStory.why');
+  const [t, tCommon] = await Promise.all([
+    getTranslations('homeStory.why'),
+    getTranslations('common'),
+  ]);
 
   const reasons = [
     { icon: Cpu, key: 'r1' },
@@ -35,6 +39,24 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
     { icon: Globe, key: 'r5' },
     { icon: BookOpen, key: 'r6' },
   ] as const;
+
+  // The stagger runs over all six, so a reason keeps its delay whichever half it is drawn in.
+  const renderReason = (reason: (typeof reasons)[number]) => {
+    const { icon: Icon, key } = reason;
+    return (
+      <Reveal key={key} delay={reasons.indexOf(reason) * 60}>
+        <div className="border-border bg-card hover:border-primary/40 h-full rounded-2xl border p-5 shadow-sm transition-colors">
+          <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
+            <Icon className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <h3 className="font-semibold">{t(`${key}.title` as 'r1.title')}</h3>
+          <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+            <GlossaryInject>{t(`${key}.text` as 'r1.text')}</GlossaryInject>
+          </p>
+        </div>
+      </Reveal>
+    );
+  };
 
   return (
     <section className="border-border border-t px-4 py-16 sm:py-18">
@@ -49,20 +71,13 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
           />
         </Reveal>
 
+        {/* On a phone the first two reasons show and the other four open on request (PAR-435).
+            `contents` keeps all six items of one grid from 768 px up. */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map(({ icon: Icon, key }, i) => (
-            <Reveal key={key} delay={i * 60}>
-              <div className="border-border bg-card hover:border-primary/40 h-full rounded-2xl border p-5 shadow-sm transition-colors">
-                <span className="bg-primary/10 text-primary mb-3 flex size-10 items-center justify-center rounded-xl">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <h3 className="font-semibold">{t(`${key}.title` as 'r1.title')}</h3>
-                <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                  <GlossaryInject>{t(`${key}.text` as 'r1.text')}</GlossaryInject>
-                </p>
-              </div>
-            </Reveal>
-          ))}
+          {reasons.slice(0, 2).map(renderReason)}
+          <MobileMore label={tCommon('showMore')} contents buttonClassName="sm:col-span-2">
+            {reasons.slice(2).map(renderReason)}
+          </MobileMore>
         </div>
 
         <Reveal delay={120}>

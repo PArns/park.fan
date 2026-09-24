@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Database, Hourglass, Thermometer } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { BestTimeGrid } from './best-time-grid';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
@@ -28,8 +29,9 @@ import { getCurveCandidates } from './lead-park';
  * behind their own bars.
  */
 export async function ChapterBestTime({ locale }: { locale: string }) {
-  const [t, parks] = await Promise.all([
+  const [t, tCommon, parks] = await Promise.all([
     getTranslations('homeStory.bestTime'),
+    getTranslations('common'),
     getCurveCandidates(locale),
   ]);
 
@@ -59,28 +61,31 @@ export async function ChapterBestTime({ locale }: { locale: string }) {
           }))}
         >
           <div className="space-y-4">
-            {/* The two windows are drawn ON the chart; naming them again here
+            {/* On a phone the curve is the chapter; where it comes from opens on request. */}
+            <MobileMore label={tCommon('showMore')} className="space-y-4">
+              {/* The two windows are drawn ON the chart; naming them again here
                 would be the same claim twice, so this card carries what the
                 chart cannot: where the curve comes from. */}
-            <div className="border-border bg-card/55 rounded-2xl border p-5">
-              <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                <Database className="h-3.5 w-3.5" aria-hidden="true" />
-                {t('historyTitle')}
+              <div className="border-border bg-card/55 rounded-2xl border p-5">
+                <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                  <Database className="h-3.5 w-3.5" aria-hidden="true" />
+                  {t('historyTitle')}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed">
+                  <GlossaryInject>{t('historyText')}</GlossaryInject>
+                </p>
               </div>
-              <p className="mt-3 text-sm leading-relaxed">
-                <GlossaryInject>{t('historyText')}</GlossaryInject>
-              </p>
-            </div>
 
-            <div className="border-crowd-high/35 bg-crowd-high/8 rounded-2xl border p-5">
-              <div className="text-crowd-high flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                <Thermometer className="h-3.5 w-3.5" aria-hidden="true" />
-                {t('heatTitle')}
+              <div className="border-crowd-high/35 bg-crowd-high/8 rounded-2xl border p-5">
+                <div className="text-crowd-high flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                  <Thermometer className="h-3.5 w-3.5" aria-hidden="true" />
+                  {t('heatTitle')}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed">
+                  <GlossaryInject>{t('heatText')}</GlossaryInject>
+                </p>
               </div>
-              <p className="mt-2 text-sm leading-relaxed">
-                <GlossaryInject>{t('heatText')}</GlossaryInject>
-              </p>
-            </div>
+            </MobileMore>
 
             <Link
               href={`/${BEST_TIME_SEGMENTS[locale as Locale]}` as '/'}

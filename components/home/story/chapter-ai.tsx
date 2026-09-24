@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Ban, Cpu, Minus, TriangleAlert } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 
@@ -20,7 +21,10 @@ import { MLStatsSection } from '@/components/home/ml-stats-section';
  * claim about them that nobody re-checks.
  */
 export async function ChapterAI() {
-  const t = await getTranslations('homeStory.ai');
+  const [t, tCommon] = await Promise.all([
+    getTranslations('homeStory.ai'),
+    getTranslations('common'),
+  ]);
 
   const approaches = [
     {
@@ -48,7 +52,11 @@ export async function ChapterAI() {
 
   return (
     <section className="px-4 py-16 sm:py-18">
-      <div className="container mx-auto">
+      {/* On a phone the chapter is its claim and its evidence: the heading, then the live
+          error numbers. The comparison and the answer card sit behind "show more", drawn under
+          the numbers (`order`), since a button between the heading and the numbers would read
+          as the end of the chapter. */}
+      <div className="container mx-auto @max-[768px]/page:flex @max-[768px]/page:flex-col">
         <Reveal containsGlass>
           <ChapterHeading
             variant="tile"
@@ -60,45 +68,51 @@ export async function ChapterAI() {
           />
         </Reveal>
 
-        <Reveal>
-          <h3 className="text-xl font-semibold">{t('compareTitle')}</h3>
-          <p className="text-muted-foreground mt-1.5 max-w-3xl text-sm leading-relaxed">
-            {t('compareLead')}
-          </p>
-        </Reveal>
-
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {approaches.map(({ icon: Icon, kicker, title, text, limit }, i) => (
-            <Reveal key={title} delay={i * 70}>
-              <div className="border-border bg-card/55 flex h-full flex-col rounded-2xl border p-5">
-                <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
-                  <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                  {kicker}
-                </div>
-                <h4 className="mt-2.5 font-semibold">{title}</h4>
-                <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
-                  <GlossaryInject>{text}</GlossaryInject>
-                </p>
-                <p className="border-border text-muted-foreground mt-4 border-t pt-3 text-xs italic">
-                  {limit}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={80}>
-          <div className="border-primary/25 bg-primary/[0.06] mt-8 rounded-2xl border p-6 sm:p-7">
-            <h3 className="text-xl font-bold text-balance sm:text-2xl">
-              <GlossaryInject noUnderline>{t('answerTitle')}</GlossaryInject>
-            </h3>
-            <p className="text-muted-foreground mt-2.5 max-w-3xl leading-relaxed">
-              <GlossaryInject>{t('answerText')}</GlossaryInject>
+        <MobileMore
+          label={tCommon('showMore')}
+          className="@max-[768px]/page:order-2 @max-[768px]/page:mt-8"
+          buttonClassName="@max-[768px]/page:order-1"
+        >
+          <Reveal>
+            <h3 className="text-xl font-semibold">{t('compareTitle')}</h3>
+            <p className="text-muted-foreground mt-1.5 max-w-3xl text-sm leading-relaxed">
+              {t('compareLead')}
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        <div className="mt-8">
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {approaches.map(({ icon: Icon, kicker, title, text, limit }, i) => (
+              <Reveal key={title} delay={i * 70}>
+                <div className="border-border bg-card/55 flex h-full flex-col rounded-2xl border p-5">
+                  <div className="text-muted-foreground flex items-center gap-2 text-[11px] font-bold tracking-[0.1em] uppercase">
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                    {kicker}
+                  </div>
+                  <h4 className="mt-2.5 font-semibold">{title}</h4>
+                  <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
+                    <GlossaryInject>{text}</GlossaryInject>
+                  </p>
+                  <p className="border-border text-muted-foreground mt-4 border-t pt-3 text-xs italic">
+                    {limit}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={80}>
+            <div className="border-primary/25 bg-primary/[0.06] mt-8 rounded-2xl border p-6 sm:p-7">
+              <h3 className="text-xl font-bold text-balance sm:text-2xl">
+                <GlossaryInject noUnderline>{t('answerTitle')}</GlossaryInject>
+              </h3>
+              <p className="text-muted-foreground mt-2.5 max-w-3xl leading-relaxed">
+                <GlossaryInject>{t('answerText')}</GlossaryInject>
+              </p>
+            </div>
+          </Reveal>
+        </MobileMore>
+
+        <div className="mt-8 @max-[768px]/page:mt-0">
           <MLStatsSection variant="bare" linkToFancast />
         </div>
       </div>

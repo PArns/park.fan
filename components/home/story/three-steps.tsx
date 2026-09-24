@@ -3,6 +3,7 @@ import { CalendarRange, Check, Compass, Lightbulb, Sunrise } from 'lucide-react'
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { MobileMore } from '@/components/common/mobile-more';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { CROWD_DOT_CLASS, CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
@@ -72,7 +73,10 @@ function StepCard({
 }
 
 export async function ThreeSteps() {
-  const t = await getTranslations('homeStory.steps');
+  const [t, tCommon] = await Promise.all([
+    getTranslations('homeStory.steps'),
+    getTranslations('common'),
+  ]);
 
   return (
     // `relative z-30` because step 1 opens a floating dropdown that reaches past
@@ -126,66 +130,70 @@ export async function ThreeSteps() {
             </StepCard>
           </div>
 
-          {/* 2 — check the day. */}
-          <Reveal delay={80}>
-            <StepCard
-              step={2}
-              title={t('two.title')}
-              text={t('two.text')}
-              tip={<GlossaryInject>{t('two.tip')}</GlossaryInject>}
-            >
-              <div className="grid grid-cols-7 gap-1.5" aria-hidden="true">
-                {MONTH_SHAPE.map((level, i) => (
-                  <span
-                    key={i}
-                    className={cn(
-                      'box-border aspect-square rounded-md opacity-60',
-                      CROWD_DOT_CLASS[CROWD_LEVEL_ORDER[level]],
-                      i === MONTH_BEST_INDEX && 'ring-crowd-low opacity-100 ring-2'
-                    )}
-                  />
-                ))}
-              </div>
-              <p className="text-muted-foreground mt-2.5 text-[11px] leading-relaxed">
-                {t('two.caption')}
-              </p>
-              <p className="text-crowd-low mt-1.5 flex items-center gap-1.5 text-[11px]">
-                <Check className="h-3 w-3 shrink-0" aria-hidden="true" />
-                {t('two.legendLow')}
-                <CalendarRange className="ml-auto h-3 w-3 shrink-0" aria-hidden="true" />
-              </p>
-            </StepCard>
-          </Reveal>
+          {/* On a phone, steps 2 and 3 open on request (PAR-435); `contents` keeps them items
+              of this grid from 768 px up. */}
+          <MobileMore label={tCommon('showMore')} contents>
+            {/* 2 — check the day. */}
+            <Reveal delay={80}>
+              <StepCard
+                step={2}
+                title={t('two.title')}
+                text={t('two.text')}
+                tip={<GlossaryInject>{t('two.tip')}</GlossaryInject>}
+              >
+                <div className="grid grid-cols-7 gap-1.5" aria-hidden="true">
+                  {MONTH_SHAPE.map((level, i) => (
+                    <span
+                      key={i}
+                      className={cn(
+                        'box-border aspect-square rounded-md opacity-60',
+                        CROWD_DOT_CLASS[CROWD_LEVEL_ORDER[level]],
+                        i === MONTH_BEST_INDEX && 'ring-crowd-low opacity-100 ring-2'
+                      )}
+                    />
+                  ))}
+                </div>
+                <p className="text-muted-foreground mt-2.5 text-[11px] leading-relaxed">
+                  {t('two.caption')}
+                </p>
+                <p className="text-crowd-low mt-1.5 flex items-center gap-1.5 text-[11px]">
+                  <Check className="h-3 w-3 shrink-0" aria-hidden="true" />
+                  {t('two.legendLow')}
+                  <CalendarRange className="ml-auto h-3 w-3 shrink-0" aria-hidden="true" />
+                </p>
+              </StepCard>
+            </Reveal>
 
-          {/* 3 — plan the route. */}
-          <Reveal delay={160}>
-            <StepCard
-              step={3}
-              title={t('three.title')}
-              text={t('three.text')}
-              tip={<GlossaryInject>{t('three.tip')}</GlossaryInject>}
-            >
-              <div className="flex h-[74px] items-end gap-[3px]" aria-hidden="true">
-                {DAY_SHAPE.map((h, i) => (
-                  <span
-                    key={i}
-                    style={{ height: `${h}%` }}
-                    className={cn(
-                      'flex-1 rounded-t-[3px]',
-                      CROWD_DOT_CLASS[CROWD_LEVEL_ORDER[Math.min(5, Math.floor((h - 1) / 17))]]
-                    )}
-                  />
-                ))}
-              </div>
-              <p className="text-muted-foreground mt-2.5 text-[11px] leading-relaxed">
-                {t('three.caption')}
-              </p>
-              <p className="text-crowd-very-low mt-1.5 flex items-center gap-1.5 text-[11px]">
-                <Sunrise className="h-3 w-3 shrink-0" aria-hidden="true" />
-                {t('three.best')}
-              </p>
-            </StepCard>
-          </Reveal>
+            {/* 3 — plan the route. */}
+            <Reveal delay={160}>
+              <StepCard
+                step={3}
+                title={t('three.title')}
+                text={t('three.text')}
+                tip={<GlossaryInject>{t('three.tip')}</GlossaryInject>}
+              >
+                <div className="flex h-[74px] items-end gap-[3px]" aria-hidden="true">
+                  {DAY_SHAPE.map((h, i) => (
+                    <span
+                      key={i}
+                      style={{ height: `${h}%` }}
+                      className={cn(
+                        'flex-1 rounded-t-[3px]',
+                        CROWD_DOT_CLASS[CROWD_LEVEL_ORDER[Math.min(5, Math.floor((h - 1) / 17))]]
+                      )}
+                    />
+                  ))}
+                </div>
+                <p className="text-muted-foreground mt-2.5 text-[11px] leading-relaxed">
+                  {t('three.caption')}
+                </p>
+                <p className="text-crowd-very-low mt-1.5 flex items-center gap-1.5 text-[11px]">
+                  <Sunrise className="h-3 w-3 shrink-0" aria-hidden="true" />
+                  {t('three.best')}
+                </p>
+              </StepCard>
+            </Reveal>
+          </MobileMore>
         </div>
       </div>
     </section>
