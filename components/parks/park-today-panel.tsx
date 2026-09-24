@@ -495,7 +495,6 @@ export function ParkTodayPanel({
             aria-label={t('weatherAndHourly')}
             className={cn(
               'hover:text-primary flex min-w-0 items-center gap-2 transition-colors',
-              PHONE_HIT_AREA,
               // With a warning in the row the reading keeps icon and temperature and gives the
               // warning the room; below `sm` there is not room for both, and the warning wins.
               nowcastAlert && 'hidden shrink-0 sm:flex'
