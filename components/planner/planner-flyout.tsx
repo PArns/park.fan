@@ -1443,6 +1443,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               <div
                 className={cn(
                   'grid min-h-0 flex-1 grid-rows-[auto_auto_minmax(0,1fr)]',
+                  /* `basis-auto` on a phone, since the sheet has a definite
+                     height (PAR-482). `flex-1` is a ZERO basis, and against a
+                     definite height that hands this box only what the rows
+                     around it leave: the ride search kept its full 32svh and
+                     the axis fell to its 200 px floor (372 → 200 px in
+                     `check:planner`). With its content as the basis the
+                     overflow is shared out by size, the way it was under
+                     `h-auto`, and the search is again what gives way. The
+                     landscape row keeps the zero basis — there this box shares
+                     a ROW, where a content basis would be a width. */
+                  'planner-phone:basis-auto planner-landscape:basis-0',
                   secondColumn ? 'grid-cols-2' : 'grid-cols-1'
                 )}
               >
