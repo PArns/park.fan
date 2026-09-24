@@ -739,6 +739,132 @@
   }
 }
 
+/*
+ * Planner: the empty day's drag, acted out (`PlannerDragDemo`, PAR-521). Seven poses over
+ * 3.2 s: the hand comes down on the card (14 %), closes (20 %), lifts it (26 %), carries it
+ * onto the slot (54 %), sets it down (62 %), opens (68 %) and draws back (80 %); the card
+ * fades out on the slot and in at its start. Eased between poses, never cut, and the two
+ * hands crossfade. Under reduced motion none of this runs and the scene holds its static
+ * pose, the fist on the card.
+ */
+@keyframes planner-drag-card {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  6%,
+  20% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  26% {
+    transform: translate(0, -3px) scale(1.1);
+  }
+  54% {
+    transform: translate(32px, 13px) scale(1.1);
+  }
+  62%,
+  86% {
+    transform: translate(32px, 16px) scale(1);
+    opacity: 1;
+  }
+  94%,
+  100% {
+    transform: translate(32px, 16px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-hand {
+  0% {
+    transform: translate(8px, -10px);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  14%,
+  20% {
+    transform: translate(0, 0);
+  }
+  26% {
+    transform: translate(0, -3px);
+  }
+  54% {
+    transform: translate(32px, 13px);
+  }
+  62%,
+  68% {
+    transform: translate(32px, 16px);
+  }
+  80% {
+    transform: translate(36px, 0);
+    opacity: 1;
+  }
+  88%,
+  100% {
+    transform: translate(36px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-open {
+  0%,
+  14%,
+  68%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  62% {
+    opacity: 0;
+  }
+}
+
+@keyframes planner-drag-closed {
+  0%,
+  14%,
+  68%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  62% {
+    opacity: 1;
+  }
+}
+
+@keyframes planner-drag-slot {
+  0%,
+  58%,
+  94%,
+  100% {
+    opacity: 0;
+  }
+  64%,
+  86% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .planner-drag-card {
+    animation: planner-drag-card 3.2s ease-in-out infinite;
+  }
+  .planner-drag-hand {
+    animation: planner-drag-hand 3.2s ease-in-out infinite;
+  }
+  .planner-drag-open {
+    animation: planner-drag-open 3.2s ease-in-out infinite;
+  }
+  .planner-drag-closed {
+    animation: planner-drag-closed 3.2s ease-in-out infinite;
+  }
+  .planner-drag-slot {
+    animation: planner-drag-slot 3.2s ease-in-out infinite;
+  }
+}
+
 /* Maintenance page: slowly drifting aurora blobs for a living gradient */
 @keyframes maintenance-drift-1 {
   0%,

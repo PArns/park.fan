@@ -37,8 +37,10 @@ export function PlannerDragCoach({ show }: { show: boolean }) {
          the axis — and on `planner-phone` the sheet is MODAL, so the page it
          points at is covered and inert. At 844x390 `sm:` still drew it, over a
          page nobody could reach. Same pairing, same message key, as the empty
-         day's two lines in `planner-day-grid.tsx` (PAR-76). */
-      className="border-primary/30 bg-primary/10 planner-wide:flex mx-2 mt-2 hidden shrink-0 items-start gap-2 rounded-md border px-2 py-1.5"
+         day's two lines in `planner-day-grid.tsx` (PAR-76). `my-2`: it is the
+         panel's last row since the push switch went to the header (PAR-521),
+         and with `mt-2` alone it sat on the panel's bottom edge. */
+      className="border-primary/30 bg-primary/10 planner-wide:flex mx-2 my-2 hidden shrink-0 items-start gap-2 rounded-md border px-2 py-1.5"
     >
       <MousePointer2 className="text-primary mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
       <p className="text-foreground/90 min-w-0 flex-1 text-[11px] leading-snug">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
-import { Grab, Theater } from 'lucide-react';
+import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
   DRAG_SNAP_MIN_FINE,
@@ -52,6 +52,7 @@ import {
 import { BAND_FADE, bandGeometry } from '@/lib/planner/block-band';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
+import { PlannerDragDemo } from './planner-drag-demo';
 import { partyFlags } from '@/lib/planner/party';
 import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
@@ -1215,12 +1216,9 @@ export function PlannerDayGrid({
             ref={measureEmptyCard}
             className="text-muted-foreground border-border/60 bg-background/90 absolute inset-x-4 top-1/3 z-30 mx-auto max-w-sm rounded-lg border px-4 py-3 text-center text-xs shadow-sm backdrop-blur-sm transition-opacity duration-300 starting:opacity-0"
           >
-            {/* The gesture's own mark on the desktop, where the sentence under
-                it is the drag. */}
-            <Grab
-              className="text-primary planner-wide:block mx-auto mb-1.5 hidden size-5"
-              aria-hidden="true"
-            />
+            {/* The gesture itself on the desktop, where the sentence under it
+                is the drag: a hand carrying a card onto the axis. */}
+            <PlannerDragDemo className="planner-wide:block mx-auto mb-1.5 hidden" />
             <p className="text-foreground text-sm font-medium">{t('empty.title')}</p>
             {/* One sentence per pointer, chosen by CSS rather than by
                 `useMediaQuery`, whose server snapshot is `false` and would ship

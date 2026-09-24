@@ -1917,7 +1917,8 @@ to the side panel too, and several things were found on the way.
   (`data-planner-optimize-undo`), and the plain report under the row is read
   out but not drawn. The notification switch left its row under the foot and
   is the bell in the header, between „+" and the column switch; the check opens
-  it with `openPushBell`.
+  it with `openPushBell`. The drag coach is the panel's last row now and has
+  `my-2` so it does not sit on the bottom edge.
 - **A clash is something to optimise.** A pause dropped on top of a ride left
   the waits where they were, so neither figure the call to action reads changed
   and the button stayed quiet over a day it would have fixed. `clashCount` counts
@@ -1944,9 +1945,15 @@ to the side panel too, and several things were found on the way.
   full; a fine pointer only, since a tap leaves `:hover` stuck on a touch screen.
 - **The empty day says how to start, legibly.** The drag sentence was muted text
   a third of the way down, and the show pills ran through it. It is a card over
-  the axis now, with the grab mark on the desktop. A pill whose line falls under
-  the card is not drawn: the card is measured (it wraps differently per locale
-  and width), and at its edge half a pill used to peek over it.
+  the axis now. On the desktop it plays the gesture above the sentence
+  (`PlannerDragDemo`, keyframes `planner-drag-*` in `app/globals.css`): an open
+  hand comes down on a small ride card, closes, carries it onto a dashed slot on
+  a strip of axis, lets go and draws back, seven poses over 3.2 s, eased and with
+  the two hands crossfading; under reduced motion it holds the fist on the card.
+  A still grab icon said "hand" and nothing about where it goes. A pill whose
+  line falls under the card is not drawn: the card is measured (it wraps
+  differently per locale and width), and at its edge half a pill used to peek
+  over it.
 - **The foot's buttons are one height.** „Alle Headliner einplanen" was one line
   at 24 px beside a call to action of two lines at 36. All three are `h-9` on the
   desktop now, like the undo, and 32 px on a phone as before.

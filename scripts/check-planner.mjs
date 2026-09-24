@@ -2888,20 +2888,38 @@ step: {
   // top eight rendered twice. What it said now sits on the ride's own row as a
   // crown, and this asserts the two halves of that — every ride is offered, and
   // the crown is on the curated headliners and on nothing else.
+  //
+  // On the desktop that list is the column's search since PAR-521: one row at
+  // rest beside „Eigener Block", and rows only while a query is typed. So the
+  // resting field is asserted to draw none, and the list is read per query.
   const rows = hl.locator(`${SHEET} ul li button[draggable="true"]`);
-  const listed = await rows.evaluateAll((els) =>
-    els.map((el) => ({
-      // The NAME span, not the first one: the first is the thumbnail's box, and
-      // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
-      // reported a crown on every row in the park.
-      name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
-      crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
-    }))
-  );
+  const readRows = () =>
+    rows.evaluateAll((els) =>
+      els.map((el) => ({
+        // The NAME span, not the first one: the first is the thumbnail's box, and
+        // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
+        // reported a crown on every row in the park.
+        name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
+        crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
+      }))
+    );
+  const atRest = await rows.count();
+  check('am Rechner zeigt die ruhende Suche keine Liste', atRest === 0, `${atRest} Zeilen`);
+  const search = hl.locator(`${SHEET} [data-planner-ride-search] input`).first();
+  const listFor = async (query) => {
+    await search.fill(query);
+    await hl.waitForTimeout(400);
+    return readRows();
+  };
+  const fly = await listFor('fly');
+  const mamba = await listFor('mamba');
+  // „a" finds Taron and Black Mamba and not F.L.Y.: two rows to order.
+  const listed = await listFor('a');
+  await search.fill('');
   check(
     'der fehlende Headliner wird angeboten',
-    listed.some((r) => r.name === 'F.L.Y.'),
-    JSON.stringify(listed.map((r) => r.name))
+    fly.some((r) => r.name === 'F.L.Y.'),
+    JSON.stringify(fly.map((r) => r.name))
   );
   // The regression this replaced the band with: the list used to be
   // `day.rides.slice(0, 8)` over a payload the API sorts busiest first, so at
@@ -2909,20 +2927,21 @@ step: {
   // found. Black Mamba is the fixture's non-headliner.
   check(
     'eine gewöhnliche Bahn steht auch in der Liste',
-    listed.some((r) => r.name === 'Black Mamba'),
-    JSON.stringify(listed.map((r) => r.name))
+    mamba.some((r) => r.name === 'Black Mamba'),
+    JSON.stringify(mamba.map((r) => r.name))
   );
   check(
     'die Liste steht alphabetisch',
-    listed.map((r) => r.name).join('|') ===
-      [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
+    listed.length >= 2 &&
+      listed.map((r) => r.name).join('|') ===
+        [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
     JSON.stringify(listed.map((r) => r.name))
   );
   check(
     'die Krone sitzt auf den Headlinern und nur dort',
-    listed.find((r) => r.name === 'F.L.Y.')?.crown === true &&
-      listed.find((r) => r.name === 'Black Mamba')?.crown === false,
-    JSON.stringify(listed)
+    fly.find((r) => r.name === 'F.L.Y.')?.crown === true &&
+      mamba.find((r) => r.name === 'Black Mamba')?.crown === false,
+    JSON.stringify([...fly, ...mamba])
   );
   // And the band names what the plan is still missing. It was taken out once,
   // because the eight rows under it repeated the same rides, and asked for back:
@@ -3219,6 +3238,11 @@ step: {
     /Zieh eine Bahn/.test(coachText) && !/planner\./.test(coachText),
     coachText.replace(/\s+/g, ' ').slice(0, 80)
   );
+  // The query devtools' logo is fixed to the window's bottom right in `next
+  // dev`, which is where the coach's × sits since the panel foot lost its push
+  // row (PAR-521). It is not in a production build, so it is taken out of the
+  // way rather than the coach moved for it.
+  await drag.addStyleTag({ content: '.tsqd-parent-container { display: none !important; }' });
   await drag.locator(`${SHEET} [data-planner-drag-coach] button`).click();
   await drag.waitForTimeout(300);
   check('ausgeblendet bleibt ausgeblendet', (await coach.count()) === 0);
