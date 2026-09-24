@@ -1369,19 +1369,41 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
   // And a drawn way out beside him (PAR-483). PAR-188 took the × off the
   // phone sheet and left the handle as the exit; a tap on the handle pulls the
   // sheet to 100svh, where the shield is gone, and people got stuck there. So
-  // the × is back, in the handle row rather than in `SheetContent`'s corner
-  // (that corner is the day picker on a phone) — exactly ONE close button, a
-  // 44 px one, and one that takes a press rather than sitting under something.
+  // the × is back, as the last control of the header row rather than in
+  // `SheetContent`'s corner (that corner is the day picker on a phone) —
+  // exactly ONE close button, a 44 px one, and one that takes a press rather
+  // than sitting under something.
+  //
+  // 44 px is the REACH, walked with `elementFromPoint` like the sweep below,
+  // never the bounding box: the header row is drawn 32 px tall since PAR-482
+  // and every control in it keeps its 44 through an `after:` overhang
+  // (`PHONE_TARGET_32`), which `boundingBox()` cannot see. Asserting the box
+  // failed a button that measured 32 + 6 + 6.
   const sheetClose = phone.locator(`${SHEET} [data-planner-sheet-close]`);
-  const sheetCloseBox = await sheetClose.boundingBox().catch(() => null);
+  const sheetCloseReach = await sheetClose
+    .evaluate((el) => {
+      const box = el.getBoundingClientRect();
+      const x = Math.round(box.left + box.width / 2);
+      const hits = (y) => {
+        const hit = document.elementFromPoint(x, y);
+        return hit !== null && (hit === el || el.contains(hit));
+      };
+      if (!hits(Math.round(box.top + box.height / 2))) return { width: box.width, height: 0 };
+      let up = 0;
+      while (up < 30 && hits(Math.ceil(box.top) - 1 - up)) up += 1;
+      let down = 0;
+      while (down < 30 && hits(Math.ceil(box.bottom) + down)) down += 1;
+      return { width: box.width, height: Math.round(box.height) + up + down };
+    })
+    .catch(() => null);
   check(
-    'das Handy-Sheet hat genau einen ×-Knopf, 44 px, in der Griff-Zeile',
+    'das Handy-Sheet hat genau einen ×-Knopf, 44 px, in der Kopfzeile',
     (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1 &&
-      sheetCloseBox !== null &&
-      Math.round(sheetCloseBox.width) >= 44 &&
-      Math.round(sheetCloseBox.height) >= 44,
-    sheetCloseBox
-      ? `${Math.round(sheetCloseBox.width)}×${Math.round(sheetCloseBox.height)} px`
+      sheetCloseReach !== null &&
+      Math.round(sheetCloseReach.width) >= 44 &&
+      sheetCloseReach.height >= 44,
+    sheetCloseReach
+      ? `${Math.round(sheetCloseReach.width)}×${sheetCloseReach.height} px Trefferfläche`
       : 'kein ×'
   );
 
@@ -7619,7 +7641,7 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // together for the same reason the portrait pass does it — either half
     // alone passes over exactly that state.
     check(
-      'und im Querformat trägt es genau einen ×-Knopf, den in der Griff-Zeile',
+      'und im Querformat trägt es genau einen ×-Knopf, den in der Kopfzeile',
       (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1 &&
         (await land.locator(`${SHEET} [data-planner-sheet-close]`).count()) === 1
     );

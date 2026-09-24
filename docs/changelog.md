@@ -11,7 +11,7 @@ Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Ein
 danach stand die Seite auf 1,14×, das fixierte Sheet lief rechts über den Rand und Griff und
 Kopfzeile oben aus dem Bild. Jetzt rendert jedes Textfeld im Planer-Sheet auf Touch-Geräten mit
 16 px (`[data-planner-sheet]` in `app/globals.css`). Dazu hat das Handy-Sheet wieder einen ×-Knopf,
-in der Griff-Zeile rechts (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
+rechts in der Park- und Datumszeile (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
 nur noch eine 90-px-Wischgeste herausführte.
 
 Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (105 statt
