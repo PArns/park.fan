@@ -1475,8 +1475,46 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
         ? `der Zug von ${DRAG_PX} px hat das Sheet geschlossen — über SHEET_DISMISS_PX`
         : back === before
           ? `${back} px`
-          : `${back} px statt ${before} px — Weg ${DRAG_PX} px, Schwelle SHEET_EXPAND_PX`
+          : `${back} px statt ${before} px — Weg ${DRAG_PX} px, nächster Rastpunkt`
     );
+
+    // The third detent, and the drag that reaches it (PAR-482). The grabber
+    // works like an iOS sheet's: the sheet follows the finger while it moves —
+    // asserted halfway, before the release — and snaps to half the screen when
+    // let go near it. A tap then steps back up to where the sheet opened, which
+    // is also the state every assertion after this one is written for.
+    if (stillOpen) {
+      const sheetTop = () =>
+        phone.locator(SHEET).evaluate((el) => Math.round(el.getBoundingClientRect().top));
+      const restTop = await sheetTop();
+      const box = await grab.boundingBox();
+      const x = box.x + box.width / 2;
+      const y = box.y + box.height / 2;
+      await phone.mouse.move(x, y);
+      await phone.mouse.down();
+      await phone.mouse.move(x, y + 130, { steps: 10 });
+      const midTop = await sheetTop();
+      await phone.mouse.move(x, y + 260, { steps: 10 });
+      await phone.mouse.up();
+      await phone.waitForTimeout(700);
+      const halfTop = await sheetTop();
+      const half = await phone.evaluate(() => Math.round(window.innerHeight / 2));
+      const detentNow = await grab.getAttribute('data-planner-sheet-detent');
+      check(
+        'das Sheet folgt dem Finger und rastet halb hoch ein',
+        midTop >= restTop + 120 && detentNow === 'medium' && Math.abs(halfTop - half) <= 4,
+        `Ruhe ${restTop} px · beim Ziehen ${midTop} px · losgelassen ${halfTop} px (${detentNow}, Mitte ${half})`
+      );
+      await grab.click();
+      await phone.waitForTimeout(700);
+      const backTop = await sheetTop();
+      check(
+        'und ein Tipp auf den Griff holt es wieder hoch',
+        (await grab.getAttribute('data-planner-sheet-detent')) === 'large' &&
+          Math.abs(backTop - restTop) <= 1,
+        `${backTop} px gegen ${restTop} px`
+      );
+    }
   }
 
   const geometry = await phone.evaluate((sel) => {

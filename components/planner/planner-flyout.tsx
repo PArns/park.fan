@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { flushSync } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown, Columns2, Plus, X } from 'lucide-react';
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -65,11 +66,45 @@ interface PlannerFlyoutProps {
 /** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
 const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
 
-/** Far enough that it cannot be a tap; short enough for a thumb. */
-const SHEET_EXPAND_PX = 24;
+/**
+ * The heights the phone sheet rests at, the way an iOS sheet has detents.
+ *
+ * - `large` is where it opens: everything under the site header (PAR-313).
+ * - `full` is the whole screen, for the most day at once.
+ * - `medium` is half the screen, to see the page behind — the ride cards a
+ *   plan is filled from — without closing the plan.
+ *
+ * The sheet follows the finger while its grabber is dragged and snaps to the
+ * nearest of these on release. See `handleSheetGrab`.
+ */
+type SheetDetent = 'medium' | 'large' | 'full';
 /** Under this, the gesture was a tap and the tap handler owns it. */
 const SHEET_TAP_SLOP_PX = 6;
+/** Released this far below the smallest detent, the sheet closes. */
 const SHEET_DISMISS_PX = 90;
+/**
+ * A release faster than this, in px per ms, moves one detent on from where the
+ * drag started even if the finger has not travelled far: a flick, the way a
+ * sheet on iOS answers one.
+ */
+const SHEET_FLICK_PX_PER_MS = 0.5;
+/** How far past the top of the screen a pull may stretch the sheet, rubber-banded. */
+const SHEET_OVERPULL_PX = 24;
+
+/**
+ * The three detents in pixels, for the drag. At rest the sheet is sized by the
+ * CSS twins of these (`--planner-sheet-large`, `--planner-sheet-medium` in
+ * `app/globals.css`); the drag needs numbers to compare against, and it reads
+ * the same arithmetic off the window it is running in.
+ */
+function sheetDetentHeights(viewport: number, withMedium: boolean) {
+  const large = Math.max(0.92 * viewport, viewport - 48);
+  return [
+    ...(withMedium ? [{ detent: 'medium' as const, height: 0.5 * viewport }] : []),
+    { detent: 'large' as const, height: large },
+    { detent: 'full' as const, height: viewport },
+  ];
+}
 
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
@@ -104,7 +139,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // the panel opens from a launcher on whatever page the visitor is reading, and
   // coming back to a sheet that eats the screen because of a drag three pages ago
   // is a surprise rather than a setting.
-  const [expanded, setExpanded] = useState(false);
+  const [detent, setDetent] = useState<SheetDetent>('large');
+  /** The sheet element itself, which the grabber moves while it is dragged. */
+  const sheetRef = useRef<HTMLDivElement>(null);
   /** Whether the gesture that just ended was a drag, so the tap can stand down. */
   const draggedSheet = useRef(false);
   /**
@@ -117,7 +154,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const handleOpenChange = (next: boolean) => {
     if (!next) {
       setShowOverview(false);
-      setExpanded(false);
+      setDetent('large');
     }
     onOpenChange(next);
   };
@@ -136,6 +173,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * a hook having answered before it can be laid out.
    */
   const isLandscape = useMediaQuery(PLANNER_LANDSCAPE_QUERY);
+  // A landscape phone has no `medium` detent (half of a 390 px window is not a
+  // day), so a sheet left there in portrait comes back to `large` on rotation.
+  // Adjusted during render rather than in an effect, like `focusSecond` below:
+  // an effect would draw one frame of a half-height landscape sheet first.
+  if (isLandscape && detent === 'medium') setDetent('large');
   const router = useRouter();
   /**
    * Whether the page behind the panel is the planner's own.
@@ -602,20 +644,33 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const phoneHead = isPhone && !showOverview && parks.length > 0;
 
   /**
-   * The sheet's own height, on a phone.
+   * The grabber, dragged: the sheet follows the finger and snaps to a detent on
+   * release, the way a sheet on iOS does (PAR-482).
    *
-   * Reset on close rather than remembered: the panel opens from a launcher on
-   * whatever page the visitor is reading, and coming back to a sheet that eats
-   * the screen because of a drag three pages ago is a surprise, not a setting.
-   */
-
-  /**
-   * Pull up to see more of the day, push down to put it away.
+   * It used to commit on release against a distance and do nothing while the
+   * finger moved, with two heights to choose from — so the grabber could make
+   * the sheet bigger but never smaller, and nothing on screen answered the
+   * drag until it was over. Now every move places the sheet, and the release
+   * picks the detent nearest to where it was let go; a flick moves one detent
+   * on from where the drag started even over a short distance, and a flick
+   * down from `medium`, or a release well under it, closes the sheet.
    *
-   * Committed on release against a distance, not live: a live height would fight
-   * Radix's own open/close transition on the same element, and the two
-   * directions mean different things — one resizes, the other dismisses — so a
-   * continuous drag would have to guess which is happening while it happened.
+   * **Nothing here writes a `transform`.** The sheet is glass — a
+   * `backdrop-blur` over the page — and a transform on it or an ancestor makes
+   * it a backdrop root, which flattens the blur for as long as the transform is
+   * there (see the note on the class list below). So the drag moves the sheet
+   * with `bottom` and grows it with `height`, both plain layout properties:
+   * below its layout height the sheet slides down with its bottom edge past
+   * the screen, which is exactly how an iOS sheet's medium detent looks, and
+   * only a pull above that height resizes it. Written straight onto the
+   * element for the length of the gesture, not through React state — one
+   * style write per pointer move instead of a render of the whole panel.
+   *
+   * On release the detent is committed with `flushSync` and the inline styles
+   * come off in the same task, so the class transition (the iOS sheet curve,
+   * see below) carries the sheet from where the finger left it to the detent.
+   * A dismiss keeps them on, so the close animation starts where the sheet is
+   * rather than jumping back to a detent first.
    */
   // A plain function, like `handleOpenChange` above it and for the same reason:
   // it closes over that one, which is not memoized, so a `useCallback` here would
@@ -623,6 +678,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const handleSheetGrab = (event: React.PointerEvent<HTMLElement>) => {
     if (event.button !== 0) return;
     const handle = event.currentTarget;
+    const sheet = sheetRef.current;
+    if (!sheet) return;
     const pointerId = event.pointerId;
     // Through the shared claim, like the grid's two gestures. A bare
     // `setPointerCapture` throws `NotFoundError` for a pointer id that is not
@@ -640,23 +697,93 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     // height came back 717 px before and 717 px after an 80 px pull.
     draggedSheet.current = false;
 
+    // Where the sheet is, in the numbers the drag works in: how much of it is
+    // on screen, and how tall its box is laid out. Taken once, at the press.
+    const viewport = window.innerHeight;
+    const box = sheet.getBoundingClientRect();
+    const startVisible = viewport - box.top;
+    const layoutHeight = box.height;
+    // No `medium` on a landscape phone: half of a 390 px window is not a day.
+    const detents = sheetDetentHeights(viewport, !isLandscape);
+    const startDetent = detent;
+    let moved = false;
+    // The last two moves, for the release velocity.
+    let lastY = startY;
+    let lastT = event.timeStamp;
+    let prevY = startY;
+    let prevT = event.timeStamp;
+
+    const place = (visible: number) => {
+      const height = Math.max(layoutHeight, visible);
+      sheet.style.transition = 'none';
+      sheet.style.height = `${height}px`;
+      sheet.style.maxHeight = `${height}px`;
+      sheet.style.bottom = `${visible - height}px`;
+    };
+    const unplace = () => {
+      sheet.style.removeProperty('transition');
+      sheet.style.removeProperty('height');
+      sheet.style.removeProperty('max-height');
+      sheet.style.removeProperty('bottom');
+    };
+    const visibleAt = (clientY: number) => {
+      const visible = startVisible - (clientY - startY);
+      const top = viewport;
+      // Past the top of the screen the sheet resists, and stops.
+      if (visible <= top) return Math.max(0, visible);
+      return top + Math.min(SHEET_OVERPULL_PX, (visible - top) / 3);
+    };
+
+    const onMove = (moveEvent: PointerEvent) => {
+      if (!isSamePointer(moveEvent, pointerId)) return;
+      prevY = lastY;
+      prevT = lastT;
+      lastY = moveEvent.clientY;
+      lastT = moveEvent.timeStamp;
+      if (!moved && Math.abs(moveEvent.clientY - startY) <= SHEET_TAP_SLOP_PX) return;
+      moved = true;
+      place(visibleAt(moveEvent.clientY));
+    };
     const finish = (upEvent: PointerEvent) => {
       // The gesture's own finger. On the document fallback a second pointer's
       // `pointerup` would otherwise decide this sheet's height from a `dy`
       // measured against a `startY` it never had.
       if (!isSamePointer(upEvent, pointerId)) return;
+      detach();
       const dy = upEvent.clientY - startY;
       if (Math.abs(dy) > SHEET_TAP_SLOP_PX) draggedSheet.current = true;
-      if (dy > SHEET_DISMISS_PX) handleOpenChange(false);
-      else if (dy < -SHEET_EXPAND_PX) setExpanded(true);
-      else if (dy > SHEET_EXPAND_PX) setExpanded(false);
-      detach();
+      if (!draggedSheet.current) {
+        unplace();
+        return;
+      }
+      const visible = visibleAt(upEvent.clientY);
+      const velocity = lastT > prevT ? (lastY - prevY) / (lastT - prevT) : 0;
+      const nearest = detents.reduce((best, candidate) =>
+        Math.abs(candidate.height - visible) < Math.abs(best.height - visible) ? candidate : best
+      );
+      const startIndex = detents.findIndex((candidate) => candidate.detent === startDetent);
+      let target: SheetDetent | 'dismiss' = nearest.detent;
+      if (visible < detents[0].height - SHEET_DISMISS_PX) target = 'dismiss';
+      else if (Math.abs(velocity) > SHEET_FLICK_PX_PER_MS && nearest.detent === startDetent) {
+        // A flick that did not travel as far as the next detent still means it.
+        const step = startIndex + (velocity > 0 ? -1 : 1);
+        target = step < 0 ? 'dismiss' : detents[Math.min(step, detents.length - 1)].detent;
+      }
+      if (target === 'dismiss') {
+        handleOpenChange(false);
+        return;
+      }
+      const next = target;
+      flushSync(() => setDetent(next));
+      unplace();
     };
     const cancel = (cancelEvent: PointerEvent) => {
       if (!isSamePointer(cancelEvent, pointerId)) return;
       detach();
+      unplace();
     };
     const detach = () => {
+      bus.removeEventListener('pointermove', onMove as EventListener);
       bus.removeEventListener('pointerup', finish as EventListener);
       bus.removeEventListener('pointercancel', cancel as EventListener);
       releasePointer(handle, pointerId);
@@ -666,6 +793,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     // listeners outlive the panel, and this one closes over `handleOpenChange`.
     sheetGesture.current?.();
     sheetGesture.current = detach;
+    bus.addEventListener('pointermove', onMove as EventListener);
     bus.addEventListener('pointerup', finish as EventListener);
     bus.addEventListener('pointercancel', cancel as EventListener);
   };
@@ -732,7 +860,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // makes `vh` taller than what is actually visible, and the summary row
         // at the bottom would sit under it.
         className={cn(
-          'planner-phone:rounded-t-xl flex w-full flex-col gap-0 p-0',
+          'planner-phone:rounded-t-2xl flex w-full flex-col gap-0 p-0',
           // Glass, like the header's menu band: a translucent dark ground with
           // a real gaussian blur behind it, so the page keeps showing through
           // while the plan stays readable over a park photo. `/80` rather than
@@ -815,14 +943,36 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // branch would have caught the first of those and quietly made the
           // other two SHORTER than they were. `max` takes whichever rule gives
           // the sheet more, at every size, with no size named anywhere.
-          expanded
-            ? 'planner-phone:max-h-[100svh]'
-            : 'planner-phone:max-h-[max(92svh,calc(100svh-3rem))]'
+          //
+          // **Three detents since PAR-482, and a height rather than a cap.** The
+          // resting height above is `large` (`--planner-sheet-large` in
+          // `app/globals.css`, the same `max()`), 100svh is `full`, and
+          // `medium` is half the screen: the sheet keeps its `large` box and
+          // slides down with `bottom`, its lower half past the screen's edge,
+          // which is what an iOS sheet's medium detent looks like and costs the
+          // layout nothing. `h-*` beside `max-h-*` because the detent has to be
+          // a place the sheet IS — with `h-auto` a short day drew a short
+          // sheet, and `medium`'s offset, measured from the top of a `large`
+          // box, would have pushed it off the screen. The `max-h` stays the
+          // same value, which is what `check:planner` reads as the ceiling.
+          detent === 'full'
+            ? 'planner-phone:h-svh planner-phone:max-h-svh'
+            : 'planner-phone:h-(--planner-sheet-large) planner-phone:max-h-(--planner-sheet-large)',
+          detent === 'medium' &&
+            'planner-phone:bottom-[calc(var(--planner-sheet-medium)_-_var(--planner-sheet-large))]',
+          // Snapping to a detent, and opening and closing, on the curve iOS
+          // uses for its sheets rather than a symmetric ease-in-out: fast off
+          // the mark, long settle. `--tw-ease` and `--tw-duration` are what
+          // `animate-in` reads too, so the slide in and out gets the same curve
+          // (PAR-190). The desktop panel keeps its 300 ms: it is timed against
+          // the page's own inset transition, which a phone does not have.
+          'planner-phone:transition-[height,max-height,bottom] planner-phone:duration-[400ms] planner-phone:ease-[cubic-bezier(0.32,0.72,0,1)]'
         )}
         // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
         // a bottom sheet spanning the viewport, and an inline pixel width would
         // hold it at 448 px in the middle of a 390 px screen.
         style={isPhone ? undefined : { width: panelWidth }}
+        ref={sheetRef}
       >
         {/* First child, so everything after it paints over it.
 
@@ -845,10 +995,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             because `useMediaQuery` answers `false` on the server snapshot and a
             control that decides its own existence from that flickers.
 
-            It does the two things a bottom sheet's handle is expected to do —
-            pull up to see more of the day, push down to put it away — and a tap
-            toggles, because a tap is what most people try first. The 8 px rail
-            is what is drawn.
+            It does what an iOS sheet's grabber does (PAR-482): drag it and the
+            sheet follows the finger, let go and it snaps to the nearest of three
+            heights — half the screen, under the header, the whole screen — and a
+            flick down from half closes it. A tap steps up one height and from
+            the top back to where the sheet opened, because a tap is what most
+            people try first. The 36×5 px pill is what is drawn, iOS's own size;
+            the target is 160×44 so a thumb finds it without aiming.
 
             **The 44 px used to be a pseudo-element and is the button now**,
             which costs this row 22 px and is worth them. Centred on a 16 px
@@ -868,14 +1021,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             onPointerDown={handleSheetGrab}
             onClick={() => {
               if (draggedSheet.current) return;
-              setExpanded((value) => !value);
+              setDetent((value) =>
+                value === 'medium' ? 'large' : value === 'large' ? 'full' : 'large'
+              );
             }}
             data-planner-sheet-handle=""
+            data-planner-sheet-detent={detent}
             aria-label={t('sheet.handle')}
-            aria-expanded={expanded}
-            className="planner-phone:h-11 planner-phone:w-24 relative flex h-4 w-16 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
+            aria-expanded={detent === 'full'}
+            className="planner-phone:h-11 planner-phone:w-40 relative flex h-4 w-16 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
           >
-            <span className="bg-muted-foreground/40 h-1.5 w-10 rounded-full" />
+            <span className="bg-muted-foreground/45 h-[5px] w-9 rounded-full" />
           </button>
           {/* Notifications, and this row is where they fit (PAR-313).
               The report asked for an icon at the top instead of the text row at
@@ -889,9 +1045,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
               `absolute`, so the handle stays centred on the SHEET rather than
               on what is left of the row. LEFT since PAR-483, because the right
-              margin now carries the close button: the handle is 96 px wide from
-              x=132 at 360 px, the bell 44 from x=8 and the × 44 from x=308, so
-              none of the three meet.
+              margin now carries the close button: the handle is 160 px wide from
+              x=100 at 360 px (x=80 at 320), the bell 44 from x=8 and the × 44
+              from x=308, so none of the three meet.
 
               Same gate as the foot's copy had — a plan with nothing in it has
               nothing to be notified about — plus `isPhone`, because the
@@ -922,9 +1078,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             <SheetClose
               data-planner-sheet-close=""
               aria-label={t('sheet.close')}
-              className="text-muted-foreground hover:text-foreground hover:bg-accent absolute top-0 right-2 flex size-11 items-center justify-center rounded-md transition-colors"
+              className="group text-muted-foreground hover:text-foreground absolute top-0 right-2 flex size-11 items-center justify-center"
             >
-              <X className="size-5" aria-hidden="true" />
+              {/* The round grey × of an iOS sheet: a 28 px disc drawn inside the
+                  44 px target. */}
+              <span className="bg-foreground/10 group-hover:bg-foreground/15 flex size-7 items-center justify-center rounded-full transition-colors">
+                <X className="size-4" aria-hidden="true" />
+              </span>
             </SheetClose>
           )}
         </div>

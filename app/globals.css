@@ -78,6 +78,21 @@
  * keeps the panel non-modal and the ride-card drag alive. See the note on
  * `PLANNER_PHONE_QUERY`.
  */
+/*
+ * The phone sheet's detents, as CSS so the resting heights need no script.
+ *
+ * `large` is where the sheet opens: everything under the 48 px site header, or
+ * 92svh where that is more (see the note on the class list in
+ * `planner-flyout.tsx`). `medium` is half the screen, reached by dragging the
+ * grabber down; the sheet keeps its `large` box there and slides down with
+ * `bottom`. `sheetDetentHeights()` in the same file is the JS twin the drag
+ * compares against, and the two change together.
+ */
+:root {
+  --planner-sheet-large: max(92svh, calc(100svh - 3rem));
+  --planner-sheet-medium: 50svh;
+}
+
 @variant planner-phone {
   @media (width < 40rem) {
     @slot;

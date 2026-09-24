@@ -24,6 +24,12 @@ nach der ersten Bahn. Die Achse wächst damit von 319 auf 366 px (390×844) und 
 (360×800). Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
 Trocken-Bleiben der Gruppe passt, statt „es fehlt keine große Bahn mehr" (PAR-484).
 
+Der Griff oben am Handy-Sheet arbeitet jetzt wie bei einem iOS-Sheet: Das Sheet folgt beim Ziehen
+dem Finger und rastet beim Loslassen auf halber Höhe, unter dem Header oder bildschirmfüllend ein;
+ein Wisch nach unten aus der halben Höhe schließt es. Einrasten, Öffnen und Schließen laufen auf der
+iOS-Kurve (400 ms). Bewegt wird über `bottom` und `height`, nie per `transform`, damit die Unschärfe
+des Glas-Hintergrunds erhalten bleibt.
+
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt

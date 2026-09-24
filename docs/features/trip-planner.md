@@ -1769,6 +1769,28 @@ the two share one row at 360 px in German. Measured with Europa-Park, eight ride
 lunch block: the axis went from 319 to 366 px at 390 × 844 and from 262 to 311 at
 360 × 800.
 
+**The grabber works like an iOS sheet's.** It used to commit on release against a
+distance and do nothing while the finger moved, with two heights to choose between —
+the sheet could be pulled bigger and never smaller. Now it follows the finger and snaps
+to one of three detents on release: `large` (where it opens, under the header), `full`
+(100svh) and `medium` (half the screen, to see the page the rides come from). The
+nearest detent wins; a flick (over 0.5 px/ms) moves one detent on from where the drag
+started even over a short distance; a flick down from `medium`, or a release 90 px under
+it, closes the sheet; a tap steps up one detent and from `full` back to `large`. A
+landscape phone has no `medium`, half of 390 px is not a day. The drag writes `bottom`
+and `height` straight onto the element — never a `transform`, which would make the glass
+a backdrop root and flatten its blur — so below its `large` box the sheet slides down
+with its lower half past the screen, the way iOS draws a medium detent. At rest the
+detents are classes on the CSS variables `--planner-sheet-large` and
+`--planner-sheet-medium` (`app/globals.css`), with `sheetDetentHeights()` as the drag's
+JS twin; the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
+measured from the top of a `large` box and a short day with `h-auto` would have slid off
+the screen. Snapping, opening and closing run on the iOS sheet curve,
+`cubic-bezier(0.32, 0.72, 0, 1)` over 400 ms (PAR-190's first half); the desktop panel
+keeps its 300 ms, timed against the page's inset. `check:planner` drags the grabber
+halfway, asserts the sheet is already following, releases at `medium` and taps back to
+`large`.
+
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to
 stay dry, and an empty list used to land in the same branch as "every headliner is
