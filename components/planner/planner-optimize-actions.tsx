@@ -258,11 +258,7 @@ export function PlannerOptimizeActions({
   }, [grid, day, deferredEntries, date, timezone, nowTick]);
 
   /** The row with the bell alone, where there is nothing to optimise. */
-  const bare = trailing ? (
-    <div className="border-border/60 planner-phone:pt-2 planner-phone:pb-1 flex shrink-0 justify-end border-t px-3 py-2">
-      {trailing}
-    </div>
-  ) : null;
+  const bare = trailing ? <OptimizeRow marked={false} trailing={trailing} /> : null;
   if (!grid || !canOptimize(day, grid) || !day) return bare;
   // A day that has been walked is a record. Both buttons plan FOR the visitor,
   // and there is nothing left to plan — the engine refuses it too, so this is
@@ -420,93 +416,82 @@ export function PlannerOptimizeActions({
   };
 
   return (
-    <div
-      data-planner-optimize=""
-      /* The buttons are drawn 32 px tall on a phone and reach the 44 px
-         `check:planner` asserts with an overhang of 12 px ABOVE them
-         (PAR-482): 8 of this row's top padding, its border and 3 px of the
-         band above, which stay clear of the headliner pills' own overhang.
-         Nothing reaches down, so the row closes on 4 px and the summary line
-         under it carries no target at all — the bell is the last item of this
-         row since PAR-482. PAR-313 had kept the button itself at 44 and
-         taken the padding instead; the report since was that the CTAs were
-         still too tall, so now the drawn button gives way and the target
-         does not. */
-      className="border-border/60 planner-phone:pt-2 planner-phone:pb-1 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
-    >
-      <div className="flex flex-wrap items-center gap-1.5">
-        {missing.length > 0 && (
-          <button
-            type="button"
-            onClick={() => attempt(missing)}
-            data-planner-optimize-headliners=""
-            aria-label={t('optimize.headliners')}
-            title={t('optimize.hint')}
-            className={cn(
-              'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
-              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
-              // (PAR-482). See `PHONE_TARGET_32_UP`.
-              'planner-phone:py-0 planner-phone:px-2.5',
-              PHONE_TARGET_32_UP
-            )}
-          >
-            <Crown className="planner-phone:size-4 size-3.5 shrink-0" aria-hidden="true" />
-            {/* The crown alone on a phone, where this button shares its row with
+    <OptimizeRow
+      marked
+      trailing={trailing}
+      buttons={
+        <>
+          {missing.length > 0 && (
+            <button
+              type="button"
+              onClick={() => attempt(missing)}
+              data-planner-optimize-headliners=""
+              aria-label={t('optimize.headliners')}
+              title={t('optimize.hint')}
+              className={cn(
+                'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
+                // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
+                // (PAR-482). See `PHONE_TARGET_32_UP`.
+                'planner-phone:py-0 planner-phone:px-2.5',
+                PHONE_TARGET_32_UP
+              )}
+            >
+              <Crown className="planner-phone:size-4 size-3.5 shrink-0" aria-hidden="true" />
+              {/* The crown alone on a phone, where this button shares its row with
                 the optimise call to action and the notification bell (PAR-482):
                 the band right above it is the crown's own colour and lists the
                 rides it adds, and the name is the button's `aria-label`. */}
-            <span className="planner-phone:hidden truncate">{t('optimize.headliners')}</span>
-          </button>
-        )}
-        {/* A call to action where the day would gain from it, the quiet button
+              <span className="planner-phone:hidden truncate">{t('optimize.headliners')}</span>
+            </button>
+          )}
+          {/* A call to action where the day would gain from it, the quiet button
             it always was where it would not — see `gain`. Filled with the
             primary colour and stretched over the rest of the row, so it is
             the one thing in the foot that reads as "press me", and it names
             what the press is worth in the same words the result line will use
             afterwards. */}
-        {canSort && (
-          <button
-            type="button"
-            onClick={() => attempt([])}
-            data-planner-optimize-run=""
-            data-planner-optimize-gain={gain ? '' : undefined}
-            title={t('optimize.hint')}
-            className={cn(
-              'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
-              // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
-              // (PAR-482). See `PHONE_TARGET_32_UP`.
-              'planner-phone:py-0 planner-phone:px-2.5',
-              PHONE_TARGET_32_UP,
-              gain
-                ? // Grows into the rest of the row, and WRAPS onto a row of its
-                  // own rather than shrinking into "Tag op…" beside a long
-                  // headliner label: `flex-[1_0_auto]` never shrinks below its
-                  // content, `max-w-full` keeps it inside the row.
-                  'bg-primary text-primary-foreground hover:bg-primary/90 max-w-full flex-[1_0_auto] justify-center shadow-sm'
-                : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-            )}
-          >
-            <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />
-            {gain ? (
-              /* Two lines, the verb over what it is worth, so the pair fits
+          {canSort && (
+            <button
+              type="button"
+              onClick={() => attempt([])}
+              data-planner-optimize-run=""
+              data-planner-optimize-gain={gain ? '' : undefined}
+              title={t('optimize.hint')}
+              className={cn(
+                'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
+                // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
+                // (PAR-482). See `PHONE_TARGET_32_UP`.
+                'planner-phone:py-0 planner-phone:px-2.5',
+                PHONE_TARGET_32_UP,
+                gain
+                  ? // Grows into the rest of the row, and WRAPS onto a row of its
+                    // own rather than shrinking into "Tag op…" beside a long
+                    // headliner label: `flex-[1_0_auto]` never shrinks below its
+                    // content, `max-w-full` keeps it inside the row.
+                    'bg-primary text-primary-foreground hover:bg-primary/90 max-w-full flex-[1_0_auto] justify-center shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+              )}
+            >
+              <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />
+              {gain ? (
+                /* Two lines, the verb over what it is worth, so the pair fits
                  beside the headliner button at 360 px in German. */
-              <span className="flex min-w-0 flex-col items-start text-left leading-tight">
-                <span className="max-w-full truncate font-semibold">{t('optimize.run')}</span>
-                <span className="max-w-full truncate text-[11px] opacity-85">
-                  {gain.fitted > 0
-                    ? t('optimize.fitted', { count: gain.fitted })
-                    : t('optimize.saved', { minutes: gain.saved })}
+                <span className="flex min-w-0 flex-col items-start text-left leading-tight">
+                  <span className="max-w-full truncate font-semibold">{t('optimize.run')}</span>
+                  <span className="max-w-full truncate text-[11px] opacity-85">
+                    {gain.fitted > 0
+                      ? t('optimize.fitted', { count: gain.fitted })
+                      : t('optimize.saved', { minutes: gain.saved })}
+                  </span>
                 </span>
-              </span>
-            ) : (
-              <span className="truncate">{t('optimize.run')}</span>
-            )}
-          </button>
-        )}
-        {/* At the row's end whatever the buttons before it do; `ml-auto` for
-            the day whose optimise button is the quiet one and does not grow. */}
-        {trailing && <div className="ml-auto flex shrink-0 items-center">{trailing}</div>}
-      </div>
+              ) : (
+                <span className="truncate">{t('optimize.run')}</span>
+              )}
+            </button>
+          )}
+        </>
+      }
+    >
       {/* Polite rather than assertive: it reports something the reader asked for
           and can see on the axis above, so it does not interrupt them. The undo
           sits IN the sentence that says what happened, because that sentence is
@@ -593,6 +578,60 @@ export function PlannerOptimizeActions({
           }}
         />
       )}
+    </OptimizeRow>
+  );
+}
+
+/**
+ * The row's frame, shared by the day that can be optimised and the day that
+ * cannot.
+ *
+ * One frame and not two because of what `trailing` is on a phone: the
+ * notification bell, whose `usePushSubscription()` asks `/api/push` when it
+ * mounts. The row is drawn for the bell alone until the day's plan has
+ * arrived, and when the buttons joined it the bell used to move from a bare
+ * `div` into this one — a different place in the tree, so React unmounted it,
+ * mounted a new one, and the bell vanished for the length of a second request
+ * (measured: gone at 4160 ms, back at 4677 with the plan held for 4 s). Here
+ * it is the second child of the same element in both cases.
+ *
+ * `data-planner-optimize` only where there is something to press, which is
+ * what `check:planner` counts it for.
+ *
+ * The buttons are drawn 32 px tall on a phone and reach the 44 px
+ * `check:planner` asserts with an overhang of 12 px ABOVE them (PAR-482): 8 of
+ * this row's top padding, its border and 3 px of the band above, which stay
+ * clear of the headliner pills' own overhang. Nothing reaches down, so the row
+ * closes on 4 px and the summary line under it carries no target at all — the
+ * bell is the last item of this row since PAR-482. PAR-313 had kept the button
+ * itself at 44 and taken the padding instead; the report since was that the
+ * CTAs were still too tall, so now the drawn button gives way and the target
+ * does not.
+ */
+function OptimizeRow({
+  marked,
+  buttons,
+  trailing,
+  children,
+}: {
+  marked: boolean;
+  buttons?: ReactNode;
+  trailing?: ReactNode;
+  children?: ReactNode;
+}) {
+  return (
+    <div
+      data-planner-optimize={marked ? '' : undefined}
+      className="border-border/60 planner-phone:pt-2 planner-phone:pb-1 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
+    >
+      <div className="flex flex-wrap items-center gap-1.5">
+        {buttons}
+        {/* At the row's end whatever the buttons before it do; `ml-auto` for
+            the day whose optimise button is the quiet one and does not grow,
+            and for the day that has no buttons at all. */}
+        {trailing && <div className="ml-auto flex shrink-0 items-center">{trailing}</div>}
+      </div>
+      {children}
     </div>
   );
 }

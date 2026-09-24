@@ -6973,10 +6973,25 @@ step: {
   // column's box is 295 px of a 716 px sheet there and this row measures 195, so
   // inside the column it would leave the axis 100 px. Two copies in the DOM
   // would also be two of every selector below.
+  //
+  // Waited for, not counted at a fixed moment: the optimise row carries
+  // `data-planner-optimize` only once the day's plan has arrived, and until
+  // then it is the bell alone. Two seconds after the open were enough on a
+  // quiet server and not forty minutes into this run, where the count came
+  // back 0 with the row on screen. A wait that runs out still fails below.
+  await phone
+    .locator(`${SHEET} [data-planner-optimize]`)
+    .first()
+    .waitFor({ timeout: 15_000 })
+    .catch(() => {});
+  const footCounts = {
+    optimize: await phone.locator(`${SHEET} [data-planner-optimize]`).count(),
+    summary: await phone.locator(`${SHEET} [data-planner-summary]`).count(),
+  };
   check(
     'der Fuß wird auf dem Telefon genau einmal gezeichnet',
-    (await phone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
-      (await phone.locator(`${SHEET} [data-planner-summary]`).count()) === 1
+    footCounts.optimize === 1 && footCounts.summary === 1,
+    `Optimieren ${footCounts.optimize} · Summe ${footCounts.summary}`
   );
 
   // Nothing in the sheet paints over anything else. It did: with the foot inside
