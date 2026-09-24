@@ -2282,6 +2282,7 @@
       "saved": "{minutes} min di coda in meno",
       "already": "L’ordine va già bene",
       "fitted": "{count, plural, one {una attrazione ora entra nella giornata} other {# attrazioni ora entrano nella giornata}}",
+      "resolved": "{count, plural, one {un conflitto in meno} other {# conflitti in meno}}",
       "sameWait": "Riorganizzata, stessa coda",
       "resorted": "La giornata è stata riorganizzata",
       "added": "{count, plural, one {Una attrazione aggiunta} other {# attrazioni aggiunte}}",

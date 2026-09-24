@@ -64,6 +64,17 @@ interface PlannerRideSearchProps {
    * and so does a narrow window under a mouse, which drags rows out of it.
    */
   compact?: boolean;
+  /**
+   * The desktop's copy, drawn by each column inside its foot row beside the
+   * free-block button (PAR-482 follow-up: „die Suche ist auf Desktop ganz
+   * verschwunden"). No border or padding of its own and no free-block button
+   * of its own — the row it sits in carries both — and the list only while a
+   * query is typed: the desktop's first way in is still a ride card dragged
+   * off the park page, and a list of every ride under each column would take
+   * the axis a third of the panel, which is why it was taken away there. The
+   * rows found are clicked or dragged onto the axis like the phone's.
+   */
+  inline?: boolean;
 }
 
 /** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
@@ -105,16 +116,25 @@ export function PlannerRideSearch({
   searching = false,
   onSearchingChange,
   compact = false,
+  inline = false,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
   /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   const locale = useLocale();
-  const { addRide, activeEntries } = usePlanner();
+  const { state, addRide } = usePlanner();
+  // This day's entries, read by park and date rather than off the ACTIVE day:
+  // the desktop draws one search per column, and a second column is a
+  // different day whose ticks and free slots are its own. The phone's panel
+  // passes the active day, so there the two are the same.
+  const dayEntries = useMemo(
+    () => state.parks[parkSlug]?.days[date]?.entries ?? [],
+    [state, parkSlug, date]
+  );
   const [query, setQuery] = useState('');
   const fieldRef = useRef<HTMLInputElement>(null);
   /** The one-row state: a portrait phone that is not searching. See `compact`. */
-  const resting = compact && !searching;
+  const resting = (compact && !searching) || (inline && query.trim().length === 0);
 
   // How often each ride is already in this day — a COUNT, because a ride can
   // legitimately be planned twice (a morning lap on a walk-on, an evening one for
@@ -122,13 +142,13 @@ export function PlannerRideSearch({
   // reason nobody found the second lap the store has always allowed.
   const planned = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const entry of activeEntries) {
+    for (const entry of dayEntries) {
       // A free block has no slug and belongs to no row in this list.
       if (!entry.attractionSlug) continue;
       counts.set(entry.attractionSlug, (counts.get(entry.attractionSlug) ?? 0) + 1);
     }
     return counts;
-  }, [activeEntries]);
+  }, [dayEntries]);
 
   // Where the next ride goes. Recomputed per render rather than per click so a
   // second add after a first one lands after it, not on it — and PER RIDE,
@@ -143,7 +163,7 @@ export function PlannerRideSearch({
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
-          activeEntries.map((entry) => ({
+          dayEntries.map((entry) => ({
             startMinute: entry.startMinute,
             spanMinutes: occupiedMinutes(day, entry),
           })),
@@ -208,7 +228,9 @@ export function PlannerRideSearch({
         compact && 'planner-phone:py-1.5',
         // In search mode the block is the sheet's, and the list is what scrolls:
         // the field stays put above it.
-        searching && 'flex min-h-0 flex-1 flex-col'
+        searching && 'flex min-h-0 flex-1 flex-col',
+        // Inside the desktop foot's row, which draws the rule and the room.
+        inline && 'border-t-0 p-0'
       )}
     >
       {/* 32 px on a phone, down from 44 (PAR-482: „Bahn suchen nicht so hoch",
@@ -224,7 +246,11 @@ export function PlannerRideSearch({
           onChange={(event) => setQuery(event.target.value)}
           onFocus={() => onSearchingChange?.(true)}
           placeholder={t('search.placeholder')}
-          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 planner-phone:h-8 h-9 w-full min-w-0 flex-1 rounded-md pr-2 pl-7 text-sm transition-colors outline-none"
+          className={cn(
+            'bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 planner-phone:h-8 h-9 w-full min-w-0 flex-1 rounded-md pr-2 pl-7 text-sm transition-colors outline-none',
+            // The height of the free-block button beside it in the desktop row.
+            inline && 'h-8'
+          )}
         />
         {/* The way out of search mode, where iOS puts it. It empties the field
             too: the rows a query left are not the ones the day was being read
@@ -279,7 +305,9 @@ export function PlannerRideSearch({
           what this sentence says, and on a phone its two lines are 30 px the
           axis does not have — measured at 390×844 with a filled day, the axis
           was the smallest thing in the sheet. */}
-      {planned.size === 0 && (
+      {/* Not in the desktop row: it describes a tap, and the desktop's way in
+          is the drag the empty axis already names. */}
+      {planned.size === 0 && !inline && (
         <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
           {t('search.tapHint')}
         </p>

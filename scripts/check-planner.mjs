@@ -381,6 +381,26 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     .catch(() => {});
 }
 
+/**
+ * Read a value until it is the expected one or the time is up, and hand back the
+ * last reading either way.
+ *
+ * For an assertion on a state a transition arrives at. A fixed wait read the
+ * shows switch as broken on a loaded full run (3 → 3 lines at 500 ms) that
+ * reads 3 → 0 on its own, because the lines fade for 200 ms before they go
+ * (PAR-521) and on a busy machine the commit that starts the fade comes late.
+ * The state asserted does not change; only the moment it is read does.
+ */
+async function until(read, done, timeoutMs = 3000) {
+  const started = Date.now();
+  let value = await read();
+  while (!done(value) && Date.now() - started < timeoutMs) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    value = await read();
+  }
+  return value;
+}
+
 /** How long the edge tab is waited for before a step gives up on it. */
 const LAUNCHER_TIMEOUT_MS = 20_000;
 /**
@@ -420,6 +440,23 @@ if (!PLANNER_PHONE_QUERY) {
   console.log(
     'ℹ️  PLANNER_PHONE_QUERY steht nicht mehr in lib/planner/use-grid-scale.ts — es wird vor jedem Druck gewartet'
   );
+}
+
+/**
+ * Opens the notification bell, where the switch lives.
+ *
+ * The switch was a row of its own under the desktop's foot until the PAR-482
+ * follow-up moved it into the header's bell, as the phone had it: its body is a
+ * popover now, mounted only while open, so every step that reads or presses it
+ * opens the bell first. Answers false where there is no bell, which is also
+ * what a deploy with no push draws.
+ */
+async function openPushBell(page) {
+  const bell = page.locator(`${SHEET} [data-planner-push-trigger]`).first();
+  if ((await bell.count()) === 0) return false;
+  await bell.click();
+  await page.waitForTimeout(400);
+  return true;
 }
 
 /**
@@ -2875,20 +2912,38 @@ step: {
   // top eight rendered twice. What it said now sits on the ride's own row as a
   // crown, and this asserts the two halves of that — every ride is offered, and
   // the crown is on the curated headliners and on nothing else.
+  //
+  // On the desktop that list is the column's search since PAR-521: one row at
+  // rest beside „Eigener Block", and rows only while a query is typed. So the
+  // resting field is asserted to draw none, and the list is read per query.
   const rows = hl.locator(`${SHEET} ul li button[draggable="true"]`);
-  const listed = await rows.evaluateAll((els) =>
-    els.map((el) => ({
-      // The NAME span, not the first one: the first is the thumbnail's box, and
-      // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
-      // reported a crown on every row in the park.
-      name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
-      crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
-    }))
-  );
+  const readRows = () =>
+    rows.evaluateAll((els) =>
+      els.map((el) => ({
+        // The NAME span, not the first one: the first is the thumbnail's box, and
+        // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
+        // reported a crown on every row in the park.
+        name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
+        crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
+      }))
+    );
+  const atRest = await rows.count();
+  check('am Rechner zeigt die ruhende Suche keine Liste', atRest === 0, `${atRest} Zeilen`);
+  const search = hl.locator(`${SHEET} [data-planner-ride-search] input`).first();
+  const listFor = async (query) => {
+    await search.fill(query);
+    await hl.waitForTimeout(400);
+    return readRows();
+  };
+  const fly = await listFor('fly');
+  const mamba = await listFor('mamba');
+  // „a" finds Taron and Black Mamba and not F.L.Y.: two rows to order.
+  const listed = await listFor('a');
+  await search.fill('');
   check(
     'der fehlende Headliner wird angeboten',
-    listed.some((r) => r.name === 'F.L.Y.'),
-    JSON.stringify(listed.map((r) => r.name))
+    fly.some((r) => r.name === 'F.L.Y.'),
+    JSON.stringify(fly.map((r) => r.name))
   );
   // The regression this replaced the band with: the list used to be
   // `day.rides.slice(0, 8)` over a payload the API sorts busiest first, so at
@@ -2896,20 +2951,21 @@ step: {
   // found. Black Mamba is the fixture's non-headliner.
   check(
     'eine gewöhnliche Bahn steht auch in der Liste',
-    listed.some((r) => r.name === 'Black Mamba'),
-    JSON.stringify(listed.map((r) => r.name))
+    mamba.some((r) => r.name === 'Black Mamba'),
+    JSON.stringify(mamba.map((r) => r.name))
   );
   check(
     'die Liste steht alphabetisch',
-    listed.map((r) => r.name).join('|') ===
-      [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
+    listed.length >= 2 &&
+      listed.map((r) => r.name).join('|') ===
+        [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
     JSON.stringify(listed.map((r) => r.name))
   );
   check(
     'die Krone sitzt auf den Headlinern und nur dort',
-    listed.find((r) => r.name === 'F.L.Y.')?.crown === true &&
-      listed.find((r) => r.name === 'Black Mamba')?.crown === false,
-    JSON.stringify(listed)
+    fly.find((r) => r.name === 'F.L.Y.')?.crown === true &&
+      mamba.find((r) => r.name === 'Black Mamba')?.crown === false,
+    JSON.stringify([...fly, ...mamba])
   );
   // And the band names what the plan is still missing. It was taken out once,
   // because the eight rows under it repeated the same rides, and asked for back:
@@ -3206,6 +3262,11 @@ step: {
     /Zieh eine Bahn/.test(coachText) && !/planner\./.test(coachText),
     coachText.replace(/\s+/g, ' ').slice(0, 80)
   );
+  // The query devtools' logo is fixed to the window's bottom right in `next
+  // dev`, which is where the coach's × sits since the panel foot lost its push
+  // row (PAR-521). It is not in a production build, so it is taken out of the
+  // way rather than the coach moved for it.
+  await drag.addStyleTag({ content: '.tsqd-parent-container { display: none !important; }' });
   await drag.locator(`${SHEET} [data-planner-drag-coach] button`).click();
   await drag.waitForTimeout(300);
   check('ausgeblendet bleibt ausgeblendet', (await coach.count()) === 0);
@@ -3219,8 +3280,10 @@ step: {
   const badge = card.locator('[data-planner-drag-hint]');
   const restOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
   await card.hover();
-  await drag.waitForTimeout(300);
-  const hoverOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
+  const hoverOpacity = await until(
+    () => badge.evaluate((el) => getComputedStyle(el).opacity),
+    (opacity) => opacity === '1'
+  );
   check(
     'der Anfasser erscheint erst unter dem Zeiger',
     restOpacity === '0' && hoverOpacity === '1',
@@ -3664,7 +3727,10 @@ step: {
       /Zieh eine Bahn/.test(lines) && !/unten/.test(lines),
       lines.slice(0, 90)
     );
-    check('und es gibt dort keine Suche, auf die es zeigen könnte', searchVisible === false);
+    // The desktop has its own search since the PAR-482 follow-up, one per
+    // column in the foot row. The sentence still names the drag, which is the
+    // desktop's first way in; the search is the second.
+    check('und die Suche steht am Rechner trotzdem bereit', searchVisible === true);
     // The same sentence twice, 300 px apart, is how a hint stops reading as one.
     check(
       'der Hinweis am Fuß schweigt, solange das Raster leer ist',
@@ -3981,6 +4047,28 @@ step: {
     pillText.slice(0, 80)
   );
 
+  // A pill of names may not lie on a block (PAR-482 follow-up): it covered the
+  // name and the times of every ride a show fell into. Over a block or a
+  // transfer chip the grid draws the mask alone.
+  const namesOnBlocks = await shows.evaluate((sheet) => {
+    const blocks = [...document.querySelectorAll(`${sheet} [data-planner-block]`)].map((el) =>
+      el.getBoundingClientRect()
+    );
+    return [
+      ...document.querySelectorAll(`${sheet} [data-planner-show]:not([data-planner-show-covered])`),
+    ].filter((pill) => {
+      const r = pill.getBoundingClientRect();
+      return blocks.some(
+        (b) => r.left < b.right && r.right > b.left && r.top < b.bottom && r.bottom > b.top
+      );
+    }).length;
+  }, SHEET);
+  check(
+    'keine Show-Pille mit Namen liegt auf einem Block',
+    namesOnBlocks === 0,
+    `${namesOnBlocks} auf Blöcken`
+  );
+
   // Two shows at one minute share a line and BOTH are named — and the 15:05 one
   // is folded in by the 14 px rule, which used to drop it silently:
   // `collapsedWith` was written and read by nothing.
@@ -4080,8 +4168,7 @@ step: {
     );
 
     await chip.click();
-    await phoneShows.waitForTimeout(500);
-    const hidden = await linesShown();
+    const hidden = await until(linesShown, (count) => count === 0);
     check(
       'der Schalter nimmt die Show-Linien aus dem Raster',
       hidden === 0 && (await chip.getAttribute('data-planner-shows-button')) === 'off',
@@ -4089,8 +4176,7 @@ step: {
     );
 
     await chip.click();
-    await phoneShows.waitForTimeout(500);
-    const back = await linesShown();
+    const back = await until(linesShown, (count) => count === before);
     check(
       'und derselbe Schalter holt sie zurück',
       back === before && (await chip.getAttribute('data-planner-shows-button')) === 'on',
@@ -4434,6 +4520,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   // `[aria-pressed]`: since PAR-82 the switched-on toggle also carries the
   // "Link zum Plan teilen" button, so a bare `button` matched two elements and
@@ -4492,13 +4579,17 @@ step: {
 
     // Reopening must still say "on". The state is read back from the browser's
     // own subscription AND the stored id, so losing either has to read as off.
-    await push.locator(`${SHEET} button[aria-label]`).first().press('Escape');
+    // Twice: the first Escape closes the bell's popover, the second the sheet.
+    await push.keyboard.press('Escape');
+    await push.waitForTimeout(300);
+    await push.keyboard.press('Escape');
     await push.waitForTimeout(400);
     if (!(await openSheet(push, 'Benachrichtigungen, zweiter Aufbau'))) {
       await push.close();
       break step;
     }
     await push.waitForTimeout(1500);
+    await openPushBell(push);
     check(
       'nach dem Wiederöffnen sind sie immer noch an',
       (await push.locator('[data-planner-push="on"]').count()) === 1
@@ -4762,9 +4853,14 @@ step: {
     `${winja?.height} px, Foto: ${winja?.photo}`
   );
 
-  // Every ride search row carries its photo.
+  // Every ride search row carries its photo. On the desktop the rows are
+  // drawn only while a query is typed (PAR-521), and „a" finds both rides.
+  await photos.locator(`${SHEET} [data-planner-ride-search] input`).first().fill('a');
+  await photos.waitForTimeout(400);
   const searchThumbs = await photos
-    .locator(`${SHEET} img[src*="taron"], ${SHEET} img[src*="black-mamba"]`)
+    .locator(
+      `${SHEET} [data-planner-ride-search] img[src*="taron"], ${SHEET} [data-planner-ride-search] img[src*="black-mamba"]`
+    )
     .count();
   check('die Suchzeilen tragen ihre Fotos', searchThumbs >= 2, `${searchThumbs}`);
 
@@ -4846,9 +4942,13 @@ step: {
     await push.close();
     break step;
   }
+  // The bell too, not only its body: the body is a popover that is not mounted
+  // until the bell is pressed, so counting it alone would pass over a bell that
+  // opens onto nothing.
   check(
     'ohne Schlüssel gibt es keinen Schalter',
-    (await push.locator('[data-planner-push]').count()) === 0
+    (await push.locator('[data-planner-push]').count()) === 0 &&
+      (await push.locator('[data-planner-push-trigger]').count()) === 0
   );
   await push.close();
 }
@@ -4900,6 +5000,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   const toggle = push.locator('[data-planner-push]');
   check('mit Schlüssel steht der Schalter da', (await toggle.count()) === 1);
@@ -4973,6 +5074,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   const denied = push.locator('[data-planner-push="denied"]');
   check('ein abgelehnter Browser bekommt eine Erklärung', (await denied.count()) === 1);

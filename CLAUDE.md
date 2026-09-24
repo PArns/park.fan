@@ -107,7 +107,8 @@ carries the reasoning, the measurements and the counter-examples.
 - **[The planner's day ends when the park closes, and a headliner is not a residual](docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md)** —
   `closeHour` is the hour the closing time falls in. `closeMin` is the certifiable end,
   `closeSlackMin` (60) is drawn and draggable but never planned into. The rule runs on the start
-  (`fits = start < closeMin`). Which headliner falls out is decided by `dropWeight`, not by cost.
+  (`fits = start < closeMin`). Which headliner falls out is decided by `dropWeight`, not by cost,
+  and per entry: a second go on a ride is given up before any first ride.
 - **[A day that does not fit opens an assistant, not a footnote](docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md)** — both presses probe with
   `needsFitHelp` and open `PlannerFitAssistant`. Every hint is a measured difference between two
   plans (`fitLevers`), never advice. `pnpm test:planner-fit`, `pnpm check:planner`.
@@ -170,6 +171,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
   `tile.openstreetmap.org` is for OSM's own site, not for embedding; hotlinking it got park.fan
   hard-blocked on 2026-09-18. Both `TileLayer`s use CARTO's basemap CDN, credited alongside OSM.
+- **[A fade is animated, never a cut](docs/rules/a-fade-is-animated-never-a-cut.md)** — opacity and
+  visibility change over a transition: `starting:opacity-0` to appear, `invisible opacity-0` kept
+  mounted to leave, and a ghost's snapped steps glide. `transition-colors` does not cover opacity.
 
 ### SEO and the machine-facing surface
 

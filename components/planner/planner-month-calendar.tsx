@@ -101,7 +101,7 @@ export function PlannerMonthCalendar({
           disabled={!canStepBack}
           aria-label={t('calendar.prevMonth')}
           className={cn(
-            'hover:bg-accent flex items-center justify-center rounded-md transition-colors',
+            'hover:bg-accent flex items-center justify-center rounded-md transition',
             roomy ? 'size-8' : 'size-7',
             // The phone floor, on both sizes: the compact arrows measured 32 px
             // in the day picker's popover and the roomy ones 32 in the wizard.
@@ -125,7 +125,7 @@ export function PlannerMonthCalendar({
           disabled={!canStepOn}
           aria-label={t('calendar.nextMonth')}
           className={cn(
-            'hover:bg-accent flex items-center justify-center rounded-md transition-colors',
+            'hover:bg-accent flex items-center justify-center rounded-md transition',
             roomy ? 'size-8' : 'size-7',
             // The phone floor, on both sizes: the compact arrows measured 32 px
             // in the day picker's popover and the roomy ones 32 in the wizard.

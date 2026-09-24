@@ -621,22 +621,45 @@ function isWanted(ride: PlanDayRide, priority: readonly string[] | undefined): b
 function rankHeadliners(
   add: readonly PlanDayRide[],
   priority: readonly string[] | undefined
-): Map<string, number> {
-  const heads = add.filter((ride) => isWanted(ride, priority));
-  const weights = new Map<string, number>();
+): number[] {
+  const weights = add.map(() => 0);
+  const heads = add
+    .map((ride, index) => ({ ride, index }))
+    .filter(({ ride }) => isWanted(ride, priority));
   if (heads.length === 0) return weights;
 
-  const rank = (ride: PlanDayRide) => {
-    const said = priority?.indexOf(ride.attractionSlug) ?? -1;
-    return said >= 0 ? said : (priority?.length ?? 0) + heads.length;
-  };
-  const ordered = [...heads].sort(
+  // Per RIDE IN THE LIST, not per slug: a ride the day holds twice is two
+  // entries here, and a weight keyed on the slug gave the second lap the
+  // first's rank — so the fit assistant kept Chiapas three times and struck
+  // Winja's Fear and Raik, which nobody had ridden yet (PAR-482 follow-up:
+  // „eher Doppelfahrten raus nehmen"). The n-th time a slug appears here is
+  // matched to its n-th place in `priority`.
+  //
+  // And a lap ranks behind EVERY first ride, named or not: a second go on a
+  // ride is the easiest thing in the day to give up, whatever position the
+  // list happens to hold it in. `LAPS` clears the largest first-ride rank.
+  const places = new Map<string, number[]>();
+  priority?.forEach((slug, index) => places.set(slug, [...(places.get(slug) ?? []), index]));
+  const seen = new Map<string, number>();
+  const unnamed = (priority?.length ?? 0) + heads.length;
+  const LAPS = unnamed + 1;
+  const ranked = heads.map(({ ride, index }) => {
+    const lap = seen.get(ride.attractionSlug) ?? 0;
+    seen.set(ride.attractionSlug, lap + 1);
+    const said = places.get(ride.attractionSlug)?.[lap] ?? -1;
+    const rank = (lap > 0 ? LAPS : 0) + (said >= 0 ? said : unnamed);
+    return { ride, index, rank };
+  });
+  ranked.sort(
     (a, b) =>
-      rank(a) - rank(b) ||
-      (b.dayPeak ?? 0) - (a.dayPeak ?? 0) ||
-      a.attractionSlug.localeCompare(b.attractionSlug)
+      a.rank - b.rank ||
+      (b.ride.dayPeak ?? 0) - (a.ride.dayPeak ?? 0) ||
+      a.ride.attractionSlug.localeCompare(b.ride.attractionSlug) ||
+      a.index - b.index
   );
-  ordered.forEach((ride, index) => weights.set(ride.attractionSlug, ordered.length - index));
+  ranked.forEach(({ index }, position) => {
+    weights[index] = ranked.length - position;
+  });
   return weights;
 }
 
@@ -1531,14 +1554,14 @@ function buildContext(input: OptimizeInput): Context | null {
         ...tabulate(day, slug),
       };
     }),
-    ...addKept.map((ride) => ({
+    ...addKept.map((ride, index) => ({
       entryId: null,
       slug: ride.attractionSlug,
       name: ride.attractionName,
       ride,
       floorMin: rideFloor(grid, ride, clock).softMin,
       headliner: isWanted(ride, input.priority),
-      dropWeight: weights.get(ride.attractionSlug) ?? 0,
+      dropWeight: weights[index] ?? 0,
       ...tabulate(day, ride.attractionSlug),
     })),
   ];
@@ -1602,33 +1625,37 @@ function peeled(input: OptimizeInput, ctx: Context): Scored {
   const add = input.add ?? [];
   if (best.overflowHeadliners === 0) return best;
 
-  // Least important first, which is the order they are given up in.
+  // Least important first, which is the order they are given up in. By index
+  // rather than by slug, for the reason `rankHeadliners` gives: setting aside
+  // "chiapas" by name took all three laps of it at once.
   const weights = rankHeadliners(add, input.priority);
   const givable = add
-    .filter((ride) => weights.has(ride.attractionSlug))
+    .map((ride, index) => ({ ride, index, weight: weights[index] ?? 0 }))
+    .filter(({ weight }) => weight > 0)
     .sort(
       (a, b) =>
-        (weights.get(a.attractionSlug) ?? 0) - (weights.get(b.attractionSlug) ?? 0) ||
-        a.attractionSlug.localeCompare(b.attractionSlug)
+        a.weight - b.weight ||
+        a.ride.attractionSlug.localeCompare(b.ride.attractionSlug) ||
+        a.index - b.index
     );
 
   // Only rides the full search actually holds: `MAX_STOPS` may have cut some
   // of `add` before it ever reached the context, and setting one of THOSE
-  // aside would produce an order that does not cover the candidates.
-  const inPlay = givable.filter((ride) =>
-    ctx.candidates.some((c) => c.entryId === null && c.slug === ride.attractionSlug)
-  );
+  // aside would produce an order that does not cover the candidates. The
+  // context takes `add` from the front, so what it holds is a prefix.
+  const addInContext = ctx.candidates.filter((c) => c.entryId === null).length;
+  const inPlay = givable.filter(({ index }) => index < addInContext);
 
   const from = Math.min(best.overflowHeadliners, inPlay.length);
   for (let round = 0; round < MAX_PEEL_ROUNDS; round++) {
     const asideCount = from + round;
     if (asideCount >= inPlay.length) break;
-    const asideRides = inPlay.slice(0, asideCount);
-    const aside = new Set(asideRides.map((ride) => ride.attractionSlug));
+    const asideRides = inPlay.slice(0, asideCount).map(({ ride }) => ride);
+    const aside = new Set(inPlay.slice(0, asideCount).map(({ index }) => index));
 
     const reduced = buildContext({
       ...input,
-      add: add.filter((r) => !aside.has(r.attractionSlug)),
+      add: add.filter((_, index) => !aside.has(index)),
     });
     if (!reduced) break;
     const plan = scheduleOrder(reduced, improve(reduced, search(reduced, BEAM_WIDTH)));
@@ -1873,6 +1900,48 @@ export function scoreOrder(
     // rides a plan gave up and not only how many. `better` reads exactly this.
     overflowKey: overflowKey(scored),
   };
+}
+
+/**
+ * How many times, in the part of the day still ahead, the next thing starts
+ * before the one before it is over and walked away from.
+ *
+ * Pairs of neighbours, in start order, judged the way the grid judges its legs
+ * (`legBetween`'s `broken`): the second begins before the first's queue or
+ * block has run out plus the SHORTEST walk between them. A free block counts
+ * with its own length and no walk. That is the conflict the grid draws a ring
+ * and „fehlen … Min." for, and a pause dropped on top of a ride is one.
+ *
+ * `scoreCurrent` does not see these: it sums queues where the blocks are, and
+ * two things at the same minute cost it nothing extra — so a day made
+ * impossible by a drag scored exactly as well as before it, and the call to
+ * action stayed quiet over a day the button would have fixed (PAR-482
+ * follow-up: „Pause parallel zu einer Bahn gezogen, der CTA wird nicht
+ * aktiv"). A ride with no wait figure has no moment it ends and is skipped,
+ * like the grid's `unknown` leg.
+ */
+export function clashCount(
+  day: PlanDay,
+  entries: readonly PlannerEntry[],
+  clock?: DayClock
+): number {
+  const ahead = entries
+    .filter((entry) => !entry.done && !hasStarted(entry, clock))
+    .filter((entry) => entry.custom || entry.attractionSlug)
+    .sort((a, b) => a.startMinute - b.startMinute);
+  const rideOf = (entry: PlannerEntry) =>
+    entry.attractionSlug
+      ? (day.rides.find((ride) => ride.attractionSlug === entry.attractionSlug) ?? null)
+      : null;
+  let clashes = 0;
+  for (let index = 1; index < ahead.length; index++) {
+    const from = ahead[index - 1];
+    const to = ahead[index];
+    if (!from.custom && estimateFor(day, from).wait === null) continue;
+    const walk = transferBetween(rideOf(from), rideOf(to)).floorMinutes;
+    if (to.startMinute < from.startMinute + plannedMinutes(day, from) + walk) clashes++;
+  }
+  return clashes;
 }
 
 /**

@@ -60,6 +60,7 @@ _Layout, a component, a breakpoint, the header, a card, three.js._
 - [Blog spotlight cards](blog-spotlight-cards.md)
 - [A blog card is a row on phones (REQUIREMENT)](a-blog-card-is-a-row-on-phones.md)
 - [Map tiles are CARTO, never OSM's own tile server (REQUIREMENT)](map-tiles-are-carto-not-osms-own-tile-server.md)
+- [A fade is animated, never a cut (REQUIREMENT)](a-fade-is-animated-never-a-cut.md)
 
 ## SEO and the machine-facing surface
 

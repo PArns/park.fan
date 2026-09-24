@@ -417,7 +417,14 @@ export function PlannerBlock({
         // pointer, which is why it read as "the colour does not change". The
         // dragging branch stays transition-free or the drop fights the transform.
         !dragging &&
-          'transition-[box-shadow,opacity,background-color,border-color,color] duration-300'
+          (ghost
+            ? // The ghost glides from one snapped minute to the next instead of
+              // jumping there (PAR-482 follow-up: „auch für das Verschieben
+              // eines Ghosts"), and fades in rather than appearing. Short, so
+              // it keeps up with a quick drag, which crosses a step every few
+              // frames.
+              'transition-[top,height,left,width,box-shadow,opacity,background-color,border-color,color] duration-150 ease-out starting:opacity-0'
+            : 'transition-[box-shadow,opacity,background-color,border-color,color] duration-300')
       )}
       style={{
         top,

@@ -775,3 +775,61 @@ export function showLinePositions(
 
   return out;
 }
+
+/**
+ * Half a show pill's drawn height, rounded up: one `text-[10px]` line at the
+ * pill's leading, its 1 px padding and its border, 19 px measured at 1280×900.
+ */
+export const SHOW_PILL_HALF_PX = 10;
+
+/** Something drawn on the axis that a show pill may not be laid over. */
+export type ShowLineObstacle =
+  | {
+      kind: 'block';
+      topPx: number;
+      bottomPx: number;
+      /** How many blocks stand side by side there; 1 for a block alone. */
+      columns: number;
+    }
+  | { kind: 'chip'; topPx: number; bottomPx: number };
+
+/** What a show line runs through, which decides how its pill is drawn. */
+export type ShowLineCover =
+  | { kind: 'free' }
+  | {
+      kind: 'block';
+      columns: number;
+      /** A transfer chip is in the way too, on the block's edge. */
+      chip: boolean;
+    }
+  | { kind: 'chip' };
+
+/**
+ * What a show line runs through (PAR-482 follow-up).
+ *
+ * A show pill is centred on its line and as wide as the axis allows, so over a
+ * planned ride it lay on the ride's name, its times, its lateness hint and the
+ * transfer chip below it: on a park with an hourly show that was every other
+ * block of a full day. Only on free axis does the grid draw the names. Over a
+ * block it draws the mask alone, centred in the first column, the one strip of
+ * a block that carries no figure. Over a transfer chip alone the middle is the
+ * chip's own end, so the mask goes to the right end of the axis, which in a gap
+ * between two blocks nothing is drawn on. A line through both is on the edge
+ * where a chip meets the next block, whose wait figure takes the right end, so
+ * there the grid puts the mask three quarters across the first column, between
+ * the chip's end and the figure.
+ *
+ * The pill's own half height counts, so a line a few pixels above a block's top
+ * edge is over the block's name line too.
+ */
+export function showLineCover(y: number, obstacles: readonly ShowLineObstacle[]): ShowLineCover {
+  let columns = 0;
+  let chip = false;
+  for (const box of obstacles) {
+    if (y <= box.topPx - SHOW_PILL_HALF_PX || y >= box.bottomPx + SHOW_PILL_HALF_PX) continue;
+    if (box.kind === 'block') columns = Math.max(columns, box.columns);
+    else chip = true;
+  }
+  if (columns > 0) return { kind: 'block', columns, chip };
+  return chip ? { kind: 'chip' } : { kind: 'free' };
+}

@@ -2282,6 +2282,7 @@
       "saved": "{minutes} min d’attente en moins",
       "already": "L’ordre est déjà le bon",
       "fitted": "{count, plural, one {une attraction entre maintenant dans la journée} other {# attractions entrent maintenant dans la journée}}",
+      "resolved": "{count, plural, one {un conflit en moins} other {# conflits en moins}}",
       "sameWait": "Réorganisée, même temps d’attente",
       "resorted": "La journée a été réorganisée",
       "added": "{count, plural, one {Une attraction ajoutée} other {# attractions ajoutées}}",

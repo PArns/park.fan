@@ -2282,6 +2282,7 @@
       "saved": "{minutes} min less queueing",
       "already": "Already in the right order",
       "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
+      "resolved": "{count, plural, one {one clash fixed} other {# clashes fixed}}",
       "sameWait": "Rearranged, same time queueing",
       "resorted": "The day has been rearranged",
       "added": "{count, plural, one {One ride added} other {# rides added}}",
