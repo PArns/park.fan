@@ -703,9 +703,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   chapter down, rather than restating the title. It names no window, because the
                   two cards under it are computed over different ones and only one of them
                   publishes its length — a figure here would be a claim about data this page does
-                  not hold. Length is measured, not guessed: the heading's text column is 244 px
-                  at a 360 px viewport, i.e. ~34 characters a line, so at 43–60 characters this
-                  wraps to two lines there and one at 1440 in all six locales. The first draft ran
+                  not hold. Length is measured, not guessed: the heading's text column is 256 px
+                  at a 360 px viewport (PAR-433), so English at 37 characters takes one line there
+                  and the other five at 43–60 characters take two; at 1440 all six take one. The first draft ran
                   71–90 characters and took three lines on every phone. */
                 hint={t('sectionPlanVisitHint')}
                 id="plan"
