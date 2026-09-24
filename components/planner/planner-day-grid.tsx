@@ -41,12 +41,14 @@ import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/poi
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { PlannerGridGround } from './planner-grid-ground';
 import { PlannerWeatherRail } from './planner-weather-rail';
-import { PlannerBlock } from './planner-block';
+import { PlannerBlock, type PlannerBlockShow } from './planner-block';
 import { PlannerLeg } from './planner-leg';
 import {
   SHOW_PILL_HALF_PX,
   showLineCover,
+  showLineHost,
   showLinePositions,
+  type ShowLineHostCandidate,
   type ShowLineObstacle,
 } from '@/lib/planner/day-grid';
 import { BAND_FADE, bandGeometry } from '@/lib/planner/block-band';
@@ -949,6 +951,18 @@ export function PlannerDayGrid({
         };
       }),
     ];
+    // The blocks a line may be written into, over their drawn box: the line a
+    // show is written on is in the box, not in the queue band under it.
+    const hosts: ShowLineHostCandidate[] = layout.rows.map((row) => {
+      const top = yFor(grid, row.entry.startMinute);
+      const box = drawnBoxPx(grid, row.wait);
+      return {
+        id: row.entry.id,
+        topPx: top,
+        bottomPx: top + box,
+        column: layout.lanes.get(row.entry.id)?.column ?? 0,
+      };
+    });
     return showLinePositions(
       grid,
       showLines.map((line) => line.minute)
@@ -958,11 +972,23 @@ export function PlannerDayGrid({
         const minutes = [line.minute, ...line.collapsedWith];
         const shows = minutes.flatMap((m) => byMinute.get(m) ?? []);
         const names = [...new Set(shows.map((show) => show.name))];
-        // See the pill below for what it changes.
+        // See the pill below for what these two change.
         const cover = showLineCover(line.y, obstacles);
-        return { ...line, minutes, names, source: lineSource(shows), cover };
+        const host = showLineHost(line.y, hosts);
+        return { ...line, minutes, names, source: lineSource(shows), cover, host };
       });
   }, [showLines, grid, layout]);
+  // The shows each block writes on its own second line, by entry.
+  const showsByEntry = useMemo(() => {
+    const byEntry = new Map<string, PlannerBlockShow[]>();
+    for (const line of showRows ?? []) {
+      if (line.host === null) continue;
+      const list = byEntry.get(line.host) ?? [];
+      list.push({ minute: line.minute, names: line.names, source: line.source });
+      byEntry.set(line.host, list);
+    }
+    return byEntry;
+  }, [showRows]);
   // The empty day's card, where the canvas draws it. It sits at a third of the
   // canvas and is as tall as its sentence wraps, so it is measured rather than
   // computed, and a pill whose line falls under it is not drawn: at its edge
@@ -1145,50 +1171,61 @@ export function PlannerDayGrid({
                 free, CENTRED, and with the band's mask icon, so the line and
                 the list above it read as the same subject.
 
-                Where the line runs through a block or a transfer chip, the
-                block wins (PAR-482 follow-up: „hier sehe ich den rechten Text
-                vom Ride gar nicht mehr", then the same on a whole planned day).
-                A pill of names as wide as the axis lay on the name, the times
-                and the lateness hint of every block a show fell into, which on
-                a park with an hourly show was every other block. There the pill
-                is the mask alone, placed by `showLineCover`, and the names stay
-                in the markup for a screen reader; the time is in the gutter and
-                the names in the band. */}
-            <div
-              data-planner-show=""
-              data-planner-show-source={line.source}
-              data-planner-show-covered={line.cover.kind === 'free' ? undefined : line.cover.kind}
-              className={cn(
-                'glass-light pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full text-[10px] shadow-sm',
-                line.cover.kind === 'free' ? 'px-1.5 py-px' : 'p-1',
-                line.source === 'projected' ? 'text-muted-foreground italic' : 'text-foreground',
-                showFade,
-                underEmptyCard(line.y) && 'invisible',
-                // The pointer on a block is somebody reading or moving that
-                // block, so every show mark steps back for as long as it is
-                // there, and fades rather than blinks. A fine pointer only: a
-                // tap leaves `:hover` stuck on a touch screen.
-                'pointer-fine:group-has-[[data-planner-block]:hover]/grid:opacity-20'
-              )}
-              style={{
-                top: line.y,
-                ...(line.cover.kind === 'block'
-                  ? { left: `${(line.cover.chip ? 75 : 50) / line.cover.columns}%` }
-                  : line.cover.kind === 'chip'
-                    ? { left: 'calc(100% - 18px)' }
-                    : null),
-              }}
-            >
-              <Theater className="size-2.5 shrink-0" aria-hidden="true" />
-              <span className={line.cover.kind === 'free' ? 'truncate' : 'sr-only'}>
-                {line.names.join(' · ')}
-              </span>
-              {line.minutes.length > 1 && line.cover.kind === 'free' && (
-                <span className="text-muted-foreground shrink-0 tabular-nums">
-                  +{line.minutes.length - 1}
+                Where the line runs into a block, the block writes the show on
+                its own second line (`showLineHost`, PAR-521: „jetzt sieht man
+                die Shows gar nicht mehr") and the grid draws nothing here. A
+                pill as wide as the axis had lain on the name, the times and the
+                lateness hint of every block a show fell into (PAR-482
+                follow-up), and the mask it was then reduced to said nothing
+                about which show. In the gap between two blocks the pill keeps
+                its names at the right end, clear of the transfer chip at the
+                left; 240 px is that chip at its widest plus its inset, and the
+                names truncate to the mask where the lane is narrower. A line
+                grazing a block's edge without falling into it gets the mask
+                alone, placed by `showLineCover`. */}
+            {line.host === null && (
+              <div
+                data-planner-show=""
+                data-planner-show-source={line.source}
+                data-planner-show-covered={line.cover.kind === 'free' ? undefined : line.cover.kind}
+                className={cn(
+                  'glass-light pointer-events-none absolute z-20 flex max-w-[80%] -translate-y-1/2 items-center gap-1 rounded-full text-[10px] shadow-sm',
+                  line.cover.kind === 'chip'
+                    ? 'right-2 px-1.5 py-px'
+                    : line.cover.kind === 'free'
+                      ? 'left-1/2 -translate-x-1/2 px-1.5 py-px'
+                      : 'left-1/2 -translate-x-1/2 p-1',
+                  line.source === 'projected' ? 'text-muted-foreground italic' : 'text-foreground',
+                  showFade,
+                  underEmptyCard(line.y) && 'invisible',
+                  // The pointer on a block is somebody reading or moving that
+                  // block, so every show mark steps back for as long as it is
+                  // there, and fades rather than blinks. A fine pointer only: a
+                  // tap leaves `:hover` stuck on a touch screen.
+                  'pointer-fine:group-has-[[data-planner-block]:hover]/grid:opacity-20'
+                )}
+                style={{
+                  top: line.y,
+                  ...(line.cover.kind === 'block'
+                    ? { left: `${(line.cover.chip ? 75 : 50) / line.cover.columns}%` }
+                    : line.cover.kind === 'chip'
+                      ? { maxWidth: 'max(20px, calc(100% - 240px))' }
+                      : null),
+                }}
+              >
+                <Theater className="size-2.5 shrink-0" aria-hidden="true" />
+                <span
+                  className={line.cover.kind === 'block' ? 'sr-only' : 'min-w-0 truncate pr-0.5'}
+                >
+                  {line.names.join(' · ')}
                 </span>
-              )}
-            </div>
+                {line.minutes.length > 1 && line.cover.kind !== 'block' && (
+                  <span className="text-muted-foreground shrink-0 tabular-nums">
+                    +{line.minutes.length - 1}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         ))}
 
@@ -1417,6 +1454,8 @@ export function PlannerDayGrid({
                   lane={layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
                   land={row.ride?.land}
                   metresFromPrevious={previous?.leg.metres ?? null}
+                  shows={showsByEntry.get(row.entry.id)}
+                  showsHidden={showsHidden}
                   showBandFigure={showBandFigure}
                   live={row.live}
                   photo={

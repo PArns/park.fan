@@ -833,3 +833,32 @@ export function showLineCover(y: number, obstacles: readonly ShowLineObstacle[])
   if (columns > 0) return { kind: 'block', columns, chip };
   return chip ? { kind: 'chip' } : { kind: 'free' };
 }
+
+/** A planned block as {@link showLineHost} sees it. */
+export interface ShowLineHostCandidate {
+  id: string;
+  topPx: number;
+  bottomPx: number;
+  /** Its lane; the leftmost of two blocks side by side takes the show. */
+  column: number;
+}
+
+/**
+ * The block a show line falls into, which then says so itself (PAR-521:
+ * „jetzt sieht man die Shows gar nicht mehr").
+ *
+ * Over a block the grid drew the mask alone, which kept the ride legible and
+ * said nothing about which show it was. A block that falls on a show now writes
+ * it itself, on its second line beside its times or, where it has none, on its
+ * first between the name and the figure, and the browser truncates the show
+ * before either; the grid then draws no mark of its own for that line. A line
+ * that only grazes a block's edge has no host, and there the mask stays.
+ */
+export function showLineHost(y: number, blocks: readonly ShowLineHostCandidate[]): string | null {
+  let host: ShowLineHostCandidate | null = null;
+  for (const block of blocks) {
+    if (y < block.topPx || y >= block.bottomPx) continue;
+    if (host === null || block.column < host.column) host = block;
+  }
+  return host?.id ?? null;
+}

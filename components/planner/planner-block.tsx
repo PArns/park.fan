@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { AlertTriangle, Droplets, X } from 'lucide-react';
+import { AlertTriangle, Droplets, Theater, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_DOT_CLASS,
@@ -16,7 +16,7 @@ import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import { actualVsEstimate, type PlannerEstimate } from '@/lib/planner/estimate';
-import type { PlanDayTier } from '@/lib/api/types';
+import type { PlanDayShowSource, PlanDayTier } from '@/lib/api/types';
 
 /**
  * The bordered div's `border`, doubled — the two pixels the resize edge's touch
@@ -81,6 +81,13 @@ const RANGE_MIN_PX = 34;
 const WARN_SENTENCE_PX = 54;
 const WARN_SENTENCE_WITH_LAND_PX = 69;
 
+/** A show line that falls into a block, as the block writes it. */
+export interface PlannerBlockShow {
+  minute: number;
+  names: readonly string[];
+  source: PlanDayShowSource;
+}
+
 interface PlannerBlockProps {
   entry: PlannerEntry;
   estimate: PlannerEstimate;
@@ -91,6 +98,13 @@ interface PlannerBlockProps {
   land?: string | null;
   /** Straight-line metres from the previous entry, for the "auf den Karten" reading. */
   metresFromPrevious?: number | null;
+  /**
+   * The shows that fall into this block, written on its second line (see
+   * `showLineHost`). Empty or absent where none do.
+   */
+  shows?: readonly PlannerBlockShow[];
+  /** The shows switch is off: the line's show fades out with the grid's. */
+  showsHidden?: boolean;
   /** Whether the band may carry a figure at this distance. */
   showBandFigure: boolean;
   /** A live standby reading replacing the forecast, when one applies. */
@@ -186,6 +200,8 @@ export function PlannerBlock({
   lane,
   land,
   metresFromPrevious,
+  shows,
+  showsHidden = false,
   showBandFigure,
   live = false,
   photo = null,
@@ -250,6 +266,43 @@ export function PlannerBlock({
 
   const endMinute = entry.startMinute + (custom ? custom.durationMinutes : (wait ?? 0));
   const range = `${formatGridTime(entry.startMinute)}–${formatGridTime(endMinute)}`;
+
+  // The shows that fall into this ride (PAR-521: „jetzt sieht man die Shows gar
+  // nicht mehr"). The grid's pill lay on the block's name and times, and the
+  // mask it was reduced to said nothing about which show, so the block writes
+  // them itself: on its second line beside the times where it has one, on its
+  // first line between the name and the figure where it does not. Either way
+  // it is `flex-1` from a basis of 0, so it gets the room the name, the times
+  // and the figure leave and not a pixel of theirs: shrinking it with them,
+  // however unevenly, took a pixel off the name, and a pixel is an ellipsis.
+  // Each show with its own time, `~` on a projection as in the gutter.
+  const showLabel =
+    shows && shows.length > 0 ? (
+      <span
+        data-planner-show=""
+        data-planner-show-in-block=""
+        data-planner-show-source={
+          shows.some((show) => show.source === 'projected') ? 'projected' : 'scheduled'
+        }
+        className={cn(
+          'text-muted-foreground flex min-w-0 flex-1 items-center justify-end gap-1 text-[10px] font-normal transition-[opacity,visibility] duration-200',
+          shows.every((show) => show.source === 'projected') && 'italic',
+          showsHidden && 'invisible opacity-0'
+        )}
+      >
+        <Theater className="size-2.5 shrink-0" aria-hidden="true" />
+        {/* `pr-0.5`: a projection is italic, and an italic's last glyph leans
+            past the box `truncate` clips at — „Rock on Ic" without it. */}
+        <span className="truncate pr-0.5">
+          {shows
+            .map(
+              (show) =>
+                `${show.source === 'projected' ? '~' : ''}${formatGridTime(show.minute)} ${show.names.join(', ')}`
+            )
+            .join(' · ')}
+        </span>
+      </span>
+    ) : null;
 
   /**
    * Whether this block starts after the park shuts, and how sure we are.
@@ -799,9 +852,10 @@ export function PlannerBlock({
               )}
             >
               {CustomIcon && <CustomIcon className="size-3 shrink-0" />}
-              <span className="min-w-0 flex-1 truncate">
+              <span className={cn('min-w-0 truncate', !showLabel && 'flex-1')}>
                 {custom ? custom.label : entry.attractionName}
               </span>
+              {showLabel}
               {/* The warning rides on this row too, and that is not a flourish:
                   the sentence and the triangle both used to start at the
                   two-row branch, so a block under 30 px carried no sign at all
@@ -851,7 +905,11 @@ export function PlannerBlock({
               <div className="flex items-baseline justify-between gap-1">
                 <span
                   className={cn(
-                    'flex min-w-0 flex-1 items-center gap-1.5 truncate',
+                    'flex min-w-0 items-center gap-1.5 truncate',
+                    // `flex-1` hands the name the row before anything else is
+                    // sized, which is right until a show shares the row: then
+                    // the name keeps its own width and the show gives way.
+                    !(boxPx < RANGE_MIN_PX && showLabel) && 'flex-1',
                     boxPx >= 48 ? 'text-sm' : 'text-[11px]',
                     done && 'line-through',
                     tone && !done && CROWD_TEXT_CLASS[tone]
@@ -860,6 +918,7 @@ export function PlannerBlock({
                   {CustomIcon && <CustomIcon className="size-3.5 shrink-0" />}
                   <span className="truncate">{custom ? custom.label : entry.attractionName}</span>
                 </span>
+                {boxPx < RANGE_MIN_PX && showLabel}
                 {warnLabel && (
                   <AlertTriangle
                     className={cn('size-3 shrink-0', warnTone)}
@@ -905,11 +964,14 @@ export function PlannerBlock({
               </div>
 
               {boxPx >= RANGE_MIN_PX && (
-                <p className="text-muted-foreground truncate text-[10px] tabular-nums">
-                  {range}
-                  {typeof metresFromPrevious === 'number' && (
-                    <span className="ml-1.5">↑ {formatDistance(metresFromPrevious)}</span>
-                  )}
+                <p className="text-muted-foreground flex items-center gap-1.5 text-[10px] tabular-nums">
+                  <span className="min-w-0 truncate">
+                    {range}
+                    {typeof metresFromPrevious === 'number' && (
+                      <span className="ml-1.5">↑ {formatDistance(metresFromPrevious)}</span>
+                    )}
+                  </span>
+                  {showLabel}
                 </p>
               )}
 

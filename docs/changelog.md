@@ -4,6 +4,16 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: der Tagesplaner nennt die Shows wieder (PAR-521, Nachtrag)
+
+Über einer Bahn stand von einer Show nur noch die Maske, man sah also nicht, welche Show läuft.
+Jetzt schreibt der Block die Shows, die in ihn fallen, selbst hin: neben die Zeiten oder, bei
+einem kurzen Block, zwischen Namen und Wartezeit, jeweils mit Uhrzeit. Der Name der Bahn behält
+Vorrang, gekürzt wird die Show. In den Lücken zwischen zwei Bahnen stehen die Namen rechts neben
+dem Umstiegs-Chip.
+
+Details: [trip-planner.md](features/trip-planner.md).
+
 ## Unreleased – fix: der Tagesplaner auf dem Desktop wie auf dem Handy (PAR-482, Nachtrag)
 
 Jede Desktop-Spalte hat wieder eine Bahnsuche, in einer Zeile mit „Eigener Block"; die Treffer
