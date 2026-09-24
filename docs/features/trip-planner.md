@@ -1852,8 +1852,8 @@ above. Where the overhangs go is the design:
 Measured with `elementFromPoint` on every one of them: 32 + 6 + 6, 32 + 12 + 0 or, for
 the pills, 26 + 12 + 6, i.e. 44. Header 61 → 55 px, band 96 → 70 px, the optimise row
 53 → 45 px, the summary line 45 → 29 px, and the show band, 44 px over the top of the
-axis, gone. The axis is 310 px at 390 × 664 and 290 px at 360 × 640 once the context band is
-one line again (see below).
+axis, gone. The axis is 347 px at 390 × 664 and 323 px at 360 × 640, with the context band on one
+line and the search at rest in one row (see below).
 
 **Undo sits in the button row, and a search gets the sheet.** On a phone the undo
 after „Tag optimieren" is an icon at the end of the optimise row, left of the shows
@@ -1868,11 +1868,18 @@ fills the sheet right under the header, its list scrolling under a field that st
 put. „Fertig" beside the field, where iOS puts it, empties the field and gives the
 day back. Leaving the field does not end the mode, because a tap on a row blurs the
 field before the row's click lands, and a layout that jumped back on blur would
-move the row out from under that click. The field is 36 px rather than 44, the
-height of iOS's own search field. In the context band „Ferien nebenan" is a palm
+move the row out from under that click. At rest on a portrait phone the block is
+one row — the field and „Eigener Block" beside it — and the ride list is drawn only
+in search mode: the list at rest was what the sheet squeezed away, and at
+390 × 664 the block was handed about 100 px, which cut the free-block row in half
+and showed no ride at all („Eigener Block abgeschnitten"). The row is 45 px, the
+field 32 px like every other control in the sheet, the free-block button reaches
+44 px into the row's own 6 px padding, and the block is `shrink-0` so the sheet
+cannot clip it. The axis is 347 px at 390 × 664 and 323 px at 360 × 640 with it.
+A landscape phone keeps the list, in its own column. In the context band „Ferien nebenan" is a palm
 on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
-brings the chip row back to one line at 360 px: the band is 60 px there again and
-the axis 290.
+brings the chip row back to one line at 360 px: the band is 60 px there again, 20 px
+that go to the axis.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

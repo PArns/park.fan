@@ -43,10 +43,10 @@ Text, und die Summenzeile ist eine schlanke Textzeile. Das Show-Band über der A
 weg; sein Schalter sind dort die Theatermasken am Ende der Optimieren-Zeile. Die Headliner-Pillen sind
 26 px hoch, „Tag optimieren" ohne Ersparnis ist getönt statt grau und nimmt immer die volle Breite;
 Rückgängig ist auf dem Handy ein Symbol in derselben Zeile. Ein Tipp in die Bahnsuche gibt ihr das
-ganze Sheet (Achse und Fuß treten zur Seite), „Fertig" holt den Tag zurück; das Suchfeld ist 36 statt
-44 px hoch. „Ferien nebenan" ist auf dem Handy eine Palme, die Infozeile passt bei 360 px wieder in
+ganze Sheet (Achse und Fuß treten zur Seite), „Fertig" holt den Tag zurück. In Ruhe ist die Suche eine
+Zeile: das 32-px-Feld und „Eigener Block" daneben, die Bahnliste gibt es erst im Suchmodus. „Ferien nebenan" ist auf dem Handy eine Palme, die Infozeile passt bei 360 px wieder in
 eine Zeile. Kopfzeile 61 → 55 px, Band 96 → 70 px, Summenzeile 45 → 29 px; die Achse hat
-bei 390×664 jetzt 310 px, bei 360×640 290 px.
+bei 390×664 jetzt 347 px, bei 360×640 323 px.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 

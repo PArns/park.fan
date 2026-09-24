@@ -2192,7 +2192,7 @@
       "hoursObservedHint": "Le parc n’a rien publié pour cette date. Ces horaires viennent d’heures que nous avons relevées, et la journée peut être plus longue."
     },
     "search": {
-      "placeholder": "Chercher une attraction",
+      "placeholder": "Rechercher",
       "noResults": "Aucune attraction trouvée.",
       "tapHint": "Touchez une attraction : elle se place au prochain créneau libre. Touchez ensuite le bloc pour le déplacer par quarts d'heure.",
       "opensAt": "dès {time}",

@@ -1723,7 +1723,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       'planner-phone:max-h-[32svh] planner-wide:hidden planner-landscape:shrink-0 min-h-0 shrink overflow-y-auto overscroll-y-contain',
                       // Search mode: the sheet is this block's, and the list
                       // inside it scrolls rather than the block.
-                      searchMode && 'planner-phone:max-h-none flex flex-1 flex-col overflow-hidden'
+                      searchMode && 'planner-phone:max-h-none flex flex-1 flex-col overflow-hidden',
+                      // At rest on a portrait phone the block is one 45 px row
+                      // (see `compact`), with nothing below it to give away:
+                      // squeezed, it would clip the row it is.
+                      isPhone && !isLandscape && !searchMode && 'shrink-0'
                     )}
                   >
                     <PlannerRideSearch
@@ -1738,6 +1742,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       onAddCustom={addFreeBlock}
                       searching={searchMode}
                       onSearchingChange={setSearching}
+                      compact={isPhone && !isLandscape}
                     />
                   </div>
                 )}
