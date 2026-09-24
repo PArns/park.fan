@@ -1714,7 +1714,6 @@
     "rideDialog": {
       "title": "Avisos de tiempo de espera",
       "subtitle": "Para {park} – te avisamos en cuanto la espera baje del límite elegido.",
-      "soloSubtitle": "{park} – te avisamos en cuanto la espera baje del límite elegido.",
       "loading": "Cargando…",
       "empty": "Todavía no hay avisos para este parque.",
       "thresholdLabel": "menos de {minutes} min",
@@ -1733,8 +1732,6 @@
       "close": "Cerrar",
       "entry": "Avisos de tiempo de espera",
       "entryWithCount": "Avisos de tiempo de espera ({count})",
-      "removeShort": "Quitar",
-      "save": "Guardar",
       "outOfSeason": "Solo en invierno",
       "retired": "Retirada",
       "errorRateLimited": "Demasiados intentos. Vuelve a intentarlo en {seconds} segundos.",
