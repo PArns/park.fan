@@ -96,7 +96,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
 
   return (
     <footer className="bg-card border-t" role="contentinfo">
-      <div className="container mx-auto px-4 py-8 sm:py-12">
+      <div className="container mx-auto px-4 pt-8 pb-6 sm:py-12">
         <div className="grid gap-8 md:grid-cols-6">
           {/* Brand */}
           <section className="space-y-3 sm:space-y-4 md:col-span-2">
@@ -140,7 +140,9 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 className="hidden h-[25px] w-auto md:h-[38px] dark:block"
               />
             </Link>
-            <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
+            <p className="text-muted-foreground text-base leading-normal sm:leading-relaxed">
+              {t('description')}
+            </p>
             <PreferredSourceButton />
             <nav
               className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
