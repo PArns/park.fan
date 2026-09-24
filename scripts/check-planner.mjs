@@ -170,7 +170,11 @@ const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
   String(i + 1).padStart(2, '0')
 ).join('');
 
-const LAUNCHER = '[data-planner-edge-tab]';
+// The way in, whichever of the two this viewport draws: the edge tab, or on a phone
+// (`planner-phone`) the header's calendar button, which replaces it (PAR-434). Both
+// carry the attribute and exactly one is ever displayed, so `:visible` is the whole
+// selector — a bare attribute would resolve `.first()` to the hidden one.
+const LAUNCHER = '[data-planner-launcher]:visible';
 const SHEET = '[data-slot="sheet-content"]';
 
 const results = [];

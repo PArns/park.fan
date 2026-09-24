@@ -33,8 +33,9 @@
  *
  * Without markers added for this script: a ride card is the element carrying
  * `data-planner-ride` (the root of `AttractionCard`), a park card is an `article[data-card-fx]`
- * that is not inside one (`ParkCard`). Cards per row is the largest number of cards sharing
- * one top edge.
+ * that is not inside one, or the `[data-park-card-row]` that `ParkCard` renders in its place
+ * below `sm`. Only visible ones count, so a card and its row are never both. Cards per row is
+ * the largest number of cards sharing one top edge.
  *
  * Needs a PRODUCTION site (`pnpm build && pnpm start`) at `localhost` — a `next dev` server
  * ships its CSS through JavaScript and lays out differently until it lands, and the live site
@@ -167,9 +168,9 @@ function collect() {
     .pop();
 
   const rideCards = [...document.querySelectorAll('[data-planner-ride]')];
-  const parkCards = [...document.querySelectorAll('article[data-card-fx]')].filter(
-    (a) => !a.closest('[data-planner-ride]')
-  );
+  const parkCards = [
+    ...document.querySelectorAll('article[data-card-fx], [data-park-card-row]'),
+  ].filter((a) => !a.closest('[data-planner-ride]'));
 
   return {
     total: Math.round(document.documentElement.scrollHeight),

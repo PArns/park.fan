@@ -470,19 +470,23 @@ source is unreadable the estimate is `missing: 'no-source'` with no figure at
 all, and the block says so; `pnpm test:planner-estimate` pins both directions,
 including that a ride the payload _does_ carry still reports its number.
 
-## The tab is on every page, so it has a phone tier
+## The tab is on every page but a phone's
 
-The edge tab is drawn on **every** page whether or not anything is planned, which
-is right — the feature has to be findable from a park page — and on a phone it
-was a permanent strip down the right edge at 34 × 130 px in German and 136 in
-French, against a 390 px screen. Below `sm` everything in it steps down one size:
-the padding, the two gaps, the icon and the word. Measured 34 × 130 → **28 × 102**
-(de) and 136 → 107 (fr), with 640 px and up unchanged to the pixel.
+The edge tab is drawn on every page whether or not anything is planned, which is right — the
+feature has to be findable from a park page. On a phone it was the opposite of findable: even
+after a phone tier took it from 34 × 130 to 24 × 102 px it lay over the right edge of every page,
+across card text and prices, on a 390 px screen (PAR-434).
 
-It is deliberately not reduced to the icon alone, which would halve it again and
-turn the one control that opens the feature into a glyph nobody has seen before.
-The word is also the button's accessible name, so hiding it would need an
-`aria-label` saying the same thing twice.
+So on `planner-phone` it is not drawn at all, open or closed, and the way in is
+`PlannerHeaderButton`: a calendar icon in the header bar, beside the burger, with the same count
+badge. Both ask `planner-phone` and not a width, so exactly one of the two exists at any size —
+including 844 × 390 on a coarse pointer, where the bar is 844 px wide and a container query would
+have hidden the button while the variant hid the tab. The button only opens (the sheet it opens is
+modal and closes itself) and reports `planner_opened` with `source: header`. The room for it in the
+bar came from the three preference controls, which moved into the burger sheet on a phone — see
+[design system → header geometry](../design/design-system.md#header-geometry).
+
+`check:planner` finds whichever of the two is displayed through `[data-planner-launcher]:visible`.
 
 ## The axis is the park's day, and the canvas is not
 

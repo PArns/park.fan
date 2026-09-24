@@ -491,7 +491,8 @@
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
     "readingTime": "{minutes} Min.",
-    "nearby": "In deiner Nähe"
+    "nearby": "In deiner Nähe",
+    "preferences": "Einstellungen"
   },
   "theme": {
     "light": "Hell",
@@ -1416,6 +1417,11 @@
       "ask": "Im Park? Fahrten in deiner Nähe zeigen",
       "blocked": "Standortzugriff ist im Browser blockiert",
       "away": "Du bist {distance} vom Park entfernt"
+    },
+    "nextRide": {
+      "heading": "Jetzt kürzer als später",
+      "reason": "Jetzt {now} Min., ab {time} laut Prognose {later} Min.",
+      "saving": "−{minutes} Min."
     }
   },
   "geo": {
@@ -1714,7 +1720,6 @@
     "rideDialog": {
       "title": "Wartezeit-Alarme",
       "subtitle": "Für {park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
-      "soloSubtitle": "{park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
       "loading": "Lädt …",
       "empty": "Noch keine Alarme für diesen Park.",
       "thresholdLabel": "unter {minutes} Min.",
@@ -1733,8 +1738,6 @@
       "close": "Schließen",
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
-      "removeShort": "Entfernen",
-      "save": "Speichern",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",

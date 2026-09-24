@@ -22,6 +22,66 @@ Ziehen, die Drop-Linie und die gedimmten Zustände gleiten oder blenden weich.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
+## Unreleased – „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
+
+Wer im Park steht und keinen Plan hat, sieht auf der Parkseite („In deiner Nähe“) und auf der
+Startseite (`InParkView`) bis zu drei Fahrten, deren Live-Wartezeit mindestens 10 Min. unter der
+Prognose der nächsten zwei Stunden liegt („Jetzt 5 Min., ab 13:00 laut Prognose 30 Min.“). Die
+Regel `suggestNextRides` (`lib/planner/next-best-ride.ts`) liest die Kurve aus `/plan/day`, zählt
+eine Stunde erst ab der Ankunft (Laufzeit nach `leg.ts`), nie die Schließstunde, und lässt
+geschlossene, außer Saison stehende und nicht lesbare Fahrten weg, ebenso solche, für die
+jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Einstellungen des Tages.
+`/plan/day` wird nur im Park geholt. Geprüft von
+`pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
+
+## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
+
+Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
+40 px und das Band mit `pt-2.5 pb-3`. Die Startseiten-Variante (`tile`) hat eine 48-px-Plakette
+und einen `text-2xl`-Titel. `ChapterPanel`, `PageSection` und `AttractionHistoryPanel` beginnen
+mit 24 statt 40 px Abstand. Gemessen mit `pnpm measure:mobile-height` bei 390 × 664: Startseite
+−798 px, Ride-Seite Taron −226 px, Statistik −92 px, Parkseite −84 px, Kalender −80 px. Ab `sm`
+ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen Werten). Die
+Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
+den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
+
+## Unreleased – Park-Karten sind auf dem Handy eine Zeile (PAR-432)
+
+Unter `sm` rendert `ParkCard` keine Karte mehr, sondern eine Zeile mit vier festen Zeilen: Name mit
+Favoriten-Stern, Ort · Entfernung, `ParkStatusBadge` und `CrowdLevelBadge`, dann Schließ- oder
+Öffnungszeit (`ParkCardScheduleFooter compact`). Hat der Park ein Foto, steht links ein Thumbnail
+64 × 40 mit dem Fokuspunkt. „Nächster offen“ steht als Text hinter der Uhrzeit statt als drittes Badge. Die Zeile ist 100 px hoch, die Karte war 146 px. Gemessen mit
+`measure:mobile-height` bei 390 × 664: Startseite 27.905 → 27.420 px, Deutschland 3.724 → 3.312 px,
+Niederlande 2.706 → 2.522 px, Phantasialand 12.232 → 12.141 px. `measure:cls --late` auf der
+Deutschland-Seite mobil, spät: 0,2322 → kein Wert mehr, weil die Badges mit dem Batch-Call kommen und
+die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung mit, der Desktop
+bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
+Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
+
+## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
+
+Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
+erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
+Kalender-Knopf für den Tagesplaner. Die senkrechte Lasche am rechten Rand wird auf dem Handy nicht
+mehr gezeichnet, weil sie mit 24 × 102 px über Text und Karten lag. Beide Einstiege fragen dieselbe
+Variante (`planner-phone`), es gibt also bei jeder Größe genau einen.
+
+Der Brotkrümel zeigt auf dem Handy nur noch einen Link eine Ebene nach oben statt
+„Startseite › … › Phantasialand". Auf Park- und Ride-Seite fällt die Zeile auf dem Handy ganz weg:
+dort sind Land (und Stadt, wenn sie eine Seite hat) bzw. der Park in der Titelkarte verlinkt. Die
+H1 steht dort bei 390 px jetzt bei y=105 statt 151, gemessen mit `pnpm measure:mobile-height`.
+
+## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
+
+Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
+davon waren die drei Link-Spalten mit elf 44-px-Zeilen. Unter `sm` ist jede Spalte jetzt eine
+zugeklappte Zeile, die ihre Links per Tipp aufklappt (`FooterLinkGroup`). Die Links bleiben dabei im
+HTML, zugeklappt nur per `max-sm:hidden` ausgeblendet. Dazu knappere Abstände unter `sm`, und die
+zweite „Arns.dev"-Zeile fällt dort weg, weil derselbe Link oben in der Marke steht. Ergebnis: 636 px
+in de/en/nl/it, 660 px in fr/es. Ab `sm` ist der Footer unverändert, der Screenshot bei 1440 px ist
+byte-gleich. Der 562-px-Block, der im DOM vor dem Footer steht, ist `ParkBackground`: `position:
+fixed` hinter dem Seitenkopf, er belegt keine Höhe.
+
 ## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
 
 Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter

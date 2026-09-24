@@ -37,6 +37,12 @@ interface ParkPageShellProps {
   countryName: string;
   breadcrumbs: Breadcrumb[];
   currentPage: string;
+  /**
+   * What the breadcrumb shows on a phone — see `BreadcrumbNav`'s `phone`. The park page passes
+   * "hidden" because its address line links the city, i.e. the level above it; the calendar and
+   * the record keep the default "back", which is the park.
+   */
+  phoneBreadcrumb?: 'back' | 'hidden';
   /** The title card's contents — the H1 and whatever belongs beside and under it. Every page of
    *  a park has a different one; the card around it is the same. */
   header: React.ReactNode;
@@ -129,6 +135,7 @@ export async function ParkPageShell({
   countryName,
   breadcrumbs,
   currentPage,
+  phoneBreadcrumb,
   header,
   head,
   pagePath,
@@ -185,7 +192,11 @@ export async function ParkPageShell({
           occupied 24px, the real nav 46px, so the whole article jumped 22px down the moment the
           boundary resolved — worth ~0.22 CLS on desktop and the reason this URL group failed Core
           Web Vitals. */}
-        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={currentPage} />
+        <BreadcrumbNav
+          breadcrumbs={breadcrumbs}
+          currentPage={currentPage}
+          phone={phoneBreadcrumb}
+        />
 
         <article itemScope itemType="https://schema.org/AmusementPark">
           <div className="mb-4">

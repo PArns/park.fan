@@ -491,7 +491,8 @@
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
     "readingTime": "{minutes} min",
-    "nearby": "Vicino a te"
+    "nearby": "Vicino a te",
+    "preferences": "Impostazioni"
   },
   "theme": {
     "light": "Chiaro",
@@ -1416,6 +1417,11 @@
       "ask": "Sei al parco? Mostra le attrazioni vicine",
       "blocked": "La posizione è bloccata nel browser",
       "away": "Sei a {distance} dal parco"
+    },
+    "nextRide": {
+      "heading": "Più breve ora che dopo",
+      "reason": "Ora {now} min, dalle {time} previsti {later} min",
+      "saving": "−{minutes} min"
     }
   },
   "geo": {
@@ -1714,7 +1720,6 @@
     "rideDialog": {
       "title": "Avvisi sul tempo di attesa",
       "subtitle": "Per {park} – ti avvisiamo appena l’attesa scende sotto la soglia scelta.",
-      "soloSubtitle": "{park} – ti avvisiamo appena l’attesa scende sotto la soglia scelta.",
       "loading": "Caricamento…",
       "empty": "Ancora nessun avviso per questo parco.",
       "thresholdLabel": "sotto {minutes} min",
@@ -1733,8 +1738,6 @@
       "close": "Chiudi",
       "entry": "Avvisi sul tempo di attesa",
       "entryWithCount": "Avvisi sul tempo di attesa ({count})",
-      "removeShort": "Rimuovi",
-      "save": "Salva",
       "outOfSeason": "Solo in inverno",
       "retired": "Dismessa",
       "errorRateLimited": "Troppi tentativi. Riprova tra {seconds} secondi.",

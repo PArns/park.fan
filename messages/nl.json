@@ -491,7 +491,8 @@
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
     "readingTime": "{minutes} min.",
-    "nearby": "Bij jou in de buurt"
+    "nearby": "Bij jou in de buurt",
+    "preferences": "Instellingen"
   },
   "theme": {
     "light": "Licht",
@@ -1416,6 +1417,11 @@
       "ask": "In het park? Toon attracties bij jou in de buurt",
       "blocked": "Locatietoegang is geblokkeerd in je browser",
       "away": "Je bent {distance} van het park"
+    },
+    "nextRide": {
+      "heading": "Nu korter dan straks",
+      "reason": "Nu {now} min, vanaf {time} volgens de prognose {later} min",
+      "saving": "−{minutes} min"
     }
   },
   "geo": {
@@ -1714,7 +1720,6 @@
     "rideDialog": {
       "title": "Wachttijdmeldingen",
       "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
-      "soloSubtitle": "{park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
       "loading": "Laden…",
       "empty": "Nog geen meldingen voor dit park.",
       "thresholdLabel": "onder {minutes} min.",
@@ -1733,8 +1738,6 @@
       "close": "Sluiten",
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
-      "removeShort": "Verwijderen",
-      "save": "Opslaan",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",

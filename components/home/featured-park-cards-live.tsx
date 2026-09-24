@@ -63,7 +63,7 @@ export function FeaturedParkCardsLive({ parks }: { parks: FeaturedCardStatic[] }
   const { liveByParkId } = useLiveParksByRegion(regions);
 
   return (
-    <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3">
       {parks.map((park) => (
         <FeaturedLiveCard key={park.slug} park={park} live={liveByParkId?.[park.parkId]} />
       ))}
