@@ -1420,7 +1420,7 @@
     "nextRide": {
       "heading": "Nu korter dan straks",
       "reason": "Nu {now} min, vanaf {time} volgens de prognose {later} min",
-      "saving": "{minutes} min minder"
+      "saving": "−{minutes} min"
     }
   },
   "geo": {

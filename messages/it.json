@@ -1420,7 +1420,7 @@
     "nextRide": {
       "heading": "Più breve ora che dopo",
       "reason": "Ora {now} min, dalle {time} previsti {later} min",
-      "saving": "{minutes} min in meno"
+      "saving": "−{minutes} min"
     }
   },
   "geo": {
