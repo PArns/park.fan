@@ -60,8 +60,8 @@ interface PlannerFlyoutProps {
  * The scroll belongs to the list, never to `SheetContent`: that element is the
  * positioned ancestor of the desktop's close button, so scrolling it takes the
  * close button off screen. `components/ui/sheet.tsx` says so at the button, and
- * the burger menu solves it the same way. (The phone sheet drops that button
- * altogether — `hideClose` — and closes on its grab handle instead.)
+ * the burger menu solves it the same way. (The phone sheet draws its own ×
+ * instead, in the header row beside the day picker — see `hideClose` below.)
  */
 /** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
 const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
@@ -88,37 +88,52 @@ const SHEET_DISMISS_PX = 90;
  * sheet on iOS answers one.
  */
 const SHEET_FLICK_PX_PER_MS = 0.5;
+/** A finger that rested this long before letting go placed the sheet; it did not flick it. */
+const SHEET_FLICK_HOLD_MS = 100;
 /** How far past the top of the screen a pull may stretch the sheet, rubber-banded. */
 const SHEET_OVERPULL_PX = 24;
 
 /**
  * Where the window is too short to spare the site header a strip (PAR-482).
- * There `large` opens the sheet over the header, up to `SHEET_TOP_GAP_PX`
- * under the top edge; on a taller window it stops under the header as before.
- * The CSS twin is the `@media` block beside `--planner-sheet-large`.
+ * There `large` opens the sheet over the header, 12 px under the top edge; on
+ * a taller window it stops under the header as before. The detent itself is
+ * CSS (`--planner-sheet-large` and its `@media` twin in `app/globals.css`);
+ * this copy of the query only answers whether the grabber has anything to
+ * toggle on a landscape phone, where `large` is then the only detent.
  */
 const SHEET_SHORT_QUERY = '(height < 50rem)';
-/** What a `large` sheet leaves of the page above it on a short window. */
-const SHEET_TOP_GAP_PX = 12;
 /** Under this, `full` is a sliver above `large` and is not offered. */
 const SHEET_MIN_DETENT_STEP_PX = 24;
 
+/** A CSS length, resolved in pixels by the page's own stylesheet. */
+function cssLengthPx(value: string): number {
+  const probe = document.createElement('div');
+  probe.style.cssText = `position:fixed;top:0;left:0;width:0;visibility:hidden;pointer-events:none;height:${value}`;
+  document.body.appendChild(probe);
+  const px = probe.getBoundingClientRect().height;
+  probe.remove();
+  return px;
+}
+
 /**
- * The detents in pixels, for the drag, smallest first. At rest the sheet is
- * sized by the CSS twins of these (`--planner-sheet-large`,
- * `--planner-sheet-medium` in `app/globals.css`); the drag needs numbers to
- * compare against, and it reads the same arithmetic off the window it is
- * running in.
+ * The detents in pixels, for the drag, smallest first.
+ *
+ * Measured off the stylesheet rather than recomputed from `innerHeight`: the
+ * sheet RESTS on `svh`, and on iOS Safari `innerHeight` and `100svh` differ
+ * whenever the toolbar collapses, so a drag that snapped against its own
+ * arithmetic would pick one height and the CSS would then settle at another —
+ * a second jump after the release. A probe with the very values the classes
+ * use gives the drag the numbers the sheet will land on.
  */
-function sheetDetentHeights(viewport: number, withMedium: boolean) {
-  const short = window.matchMedia(SHEET_SHORT_QUERY).matches;
-  const large = short ? viewport - SHEET_TOP_GAP_PX : Math.max(0.92 * viewport, viewport - 48);
+function sheetDetentHeights(withMedium: boolean) {
+  const large = cssLengthPx('var(--planner-sheet-large)');
+  const full = cssLengthPx('100svh');
   return [
-    ...(withMedium ? [{ detent: 'medium' as const, height: 0.5 * viewport }] : []),
-    { detent: 'large' as const, height: large },
-    ...(viewport - large > SHEET_MIN_DETENT_STEP_PX
-      ? [{ detent: 'full' as const, height: viewport }]
+    ...(withMedium
+      ? [{ detent: 'medium' as const, height: cssLengthPx('var(--planner-sheet-medium)') }]
       : []),
+    { detent: 'large' as const, height: large },
+    ...(full - large > SHEET_MIN_DETENT_STEP_PX ? [{ detent: 'full' as const, height: full }] : []),
   ];
 }
 
@@ -178,6 +193,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    */
   const sheetGesture = useRef<(() => void) | null>(null);
   useEffect(() => () => sheetGesture.current?.(), []);
+  /**
+   * A dismiss drag leaves its inline placement on the sheet, so the close
+   * animation starts where the finger let go (see `handleSheetGrab`). Radix
+   * keeps the same node when the panel is reopened before that animation has
+   * finished, and it would come back half off the screen with no transition —
+   * so an open always starts from the classes.
+   */
+  useEffect(() => {
+    if (!open) return;
+    const sheet = sheetRef.current;
+    if (!sheet) return;
+    for (const property of ['transition', 'height', 'max-height', 'bottom']) {
+      sheet.style.removeProperty(property);
+    }
+  }, [open]);
   const handleOpenChange = (next: boolean) => {
     if (!next) {
       setShowOverview(false);
@@ -200,6 +230,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * a hook having answered before it can be laid out.
    */
   const isLandscape = useMediaQuery(PLANNER_LANDSCAPE_QUERY);
+  /**
+   * Whether a tap on the grabber has anywhere to go. A landscape phone has no
+   * `medium`, and a short window no `full`, so there `large` is the only
+   * detent and the grabber is a drag surface for dismissing and nothing else —
+   * it then stays out of the tab order and the accessibility tree rather than
+   * announcing "vergrößern oder verkleinern" for a press that does neither.
+   * The × beside it is the named way out.
+   */
+  const isShortWindow = useMediaQuery(SHEET_SHORT_QUERY);
+  const grabberToggles = !(isLandscape && isShortWindow);
   // A landscape phone has no `medium` detent (half of a 390 px window is not a
   // day), so a sheet left there in portrait comes back to `large` on rotation.
   // Adjusted during render rather than in an effect, like `focusSecond` below:
@@ -343,9 +383,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * grows is the canvas, and the room it gains is outside opening hours by
    * construction, so it is hatched like every other minute out there.
    */
-  const grid = growGridForSpans(
-    buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin),
-    spans
+  // Memoised, so the grid keeps its identity across renders that do not move
+  // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
+  const openHour = day?.context.openHour;
+  const closeHour = day?.context.closeHour;
+  const grid = useMemo(
+    () => growGridForSpans(buildDayGrid(openHour, closeHour, pxPerMin), spans),
+    [openHour, closeHour, pxPerMin, spans]
   );
 
   /**
@@ -731,7 +775,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     const startVisible = viewport - box.top;
     const layoutHeight = box.height;
     // No `medium` on a landscape phone: half of a 390 px window is not a day.
-    const detents = sheetDetentHeights(viewport, !isLandscape);
+    const detents = sheetDetentHeights(!isLandscape);
     const startDetent = detent;
     let moved = false;
     // The last two moves, for the release velocity.
@@ -784,7 +828,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         return;
       }
       const visible = visibleAt(upEvent.clientY);
-      const velocity = lastT > prevT ? (lastY - prevY) / (lastT - prevT) : 0;
+      // The speed of the last move, and only if the finger was still moving
+      // when it let go: a fast pull that stopped and was held before the
+      // release is a placement, not a flick.
+      const held = upEvent.timeStamp - lastT > SHEET_FLICK_HOLD_MS;
+      const velocity = !held && lastT > prevT ? (lastY - prevY) / (lastT - prevT) : 0;
       const nearest = detents.reduce((best, candidate) =>
         Math.abs(candidate.height - visible) < Math.abs(best.height - visible) ? candidate : best
       );
@@ -1062,7 +1110,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             onPointerDown={handleSheetGrab}
             onClick={() => {
               if (draggedSheet.current) return;
-              const available = sheetDetentHeights(window.innerHeight, !isLandscape).map(
+              const available = sheetDetentHeights(!isLandscape).map(
                 (candidate) => candidate.detent
               );
               setDetent((value) => nextDetentOnTap(value, available));
@@ -1070,7 +1118,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             data-planner-sheet-handle=""
             data-planner-sheet-detent={detent}
             aria-label={t('sheet.handle')}
-            aria-expanded={detent !== 'medium'}
+            aria-expanded={grabberToggles ? detent !== 'medium' : undefined}
+            aria-hidden={grabberToggles ? undefined : true}
+            tabIndex={grabberToggles ? undefined : -1}
             className="planner-wide:hidden absolute inset-0 cursor-grab touch-none active:cursor-grabbing"
           >
             {/* iOS's own grabber: 36 × 5 px, centred in the strip. */}
@@ -1698,10 +1748,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 nothing at all where push cannot work — see the component.
 
                 `!isPhone` since PAR-313: on a phone the same component is the
-                bell in the handle row, and two copies would be two
-                `[data-planner-push]` for a selector to pick the wrong one of —
-                and two `usePushSubscription()`, i.e. two `/api/push` requests
-                and two states free to disagree about whether it is on. */}
+                bell at the end of the foot's summary row (PAR-482; it sat in the
+                grabber's row before that row was folded into the header), and two
+                copies would be two `[data-planner-push]` for a selector to pick
+                the wrong one of — and two `usePushSubscription()`, i.e. two
+                `/api/push` requests and two states free to disagree about whether
+                it is on. */}
                 {!isPhone && activeEntries.length > 0 && (
                   <div className="border-border/60 shrink-0 border-t">
                     <PlannerPushToggle />

@@ -115,7 +115,10 @@ export function PlannerMissingHeadliners({
   if (clock.phase === 'past') return null;
 
   return (
-    <div data-planner-headliner-hint="" className="border-border/60 shrink-0 border-t px-2 py-2">
+    <div
+      data-planner-headliner-hint=""
+      className="border-border/60 planner-phone:py-1.5 shrink-0 border-t px-2 py-2"
+    >
       {/* Its own ground, and only ONE of them: this shipped as
           `bg-crowd-high/10 bg-background/70`, which is two `background-color`
           declarations on one element — the tint never painted, and the band was
@@ -134,7 +137,7 @@ export function PlannerMissingHeadliners({
           `planner-phone:` for the whole arrangement and not `max-sm:`, for the
           reason the rest of the sheet gives: the band rations HEIGHT, which a
           landscape phone is short of (PAR-76), not width. */}
-      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
+      <div className="border-crowd-high/40 bg-crowd-high/10 planner-phone:py-1 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
           {/* The line is one flex item, not three. `t.rich` splits the sentence into
@@ -167,7 +170,17 @@ export function PlannerMissingHeadliners({
             })}
           </span>
         </p>
-        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] mt-1 flex flex-wrap gap-1">
+        {/* The pills are 32 px on a phone and their 44 px target is an `after:`
+            reaching 6 px past the border above and below — `-inset-y-[7px]`,
+            since an absolute box is placed from the PADDING edge and the pill
+            has a 1 px border (PAR-482: "die Headliner-Pillen sind
+            viel zu hoch"). A scroller clips its children for hit-testing as
+            much as for paint, so the row carries 8 px of padding (2 more than
+            the overhang, or the clip edge takes a pixel off each side) and
+            hands them back with negative margins: the pseudo-elements land
+            inside the scroller, and the band is no taller for them. Above is
+            the heading, which is text; below is the band's own padding. */}
+        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] planner-phone:-mt-1 planner-phone:-mb-2 planner-phone:py-2 mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (
             <button
               key={ride.attractionSlug}
@@ -205,7 +218,7 @@ export function PlannerMissingHeadliners({
                   }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:min-h-11 planner-phone:max-w-56 planner-phone:shrink-0 planner-wide:cursor-grab planner-wide:active:cursor-grabbing flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:h-8 planner-phone:max-w-56 planner-phone:shrink-0 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-[7px] planner-phone:after:content-[''] planner-wide:cursor-grab planner-wide:active:cursor-grabbing relative flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
             >
               {/* The ride's picture, at 16 px. A pill was a word in a rounded
                   box, which is what a filter chip looks like — and these are

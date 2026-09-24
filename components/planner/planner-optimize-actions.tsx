@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useSyncExternalStore } from 'react';
+import { useDeferredValue, useMemo, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, Crown, SlidersHorizontal, Undo2, Wand2 } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -212,56 +212,33 @@ export function PlannerOptimizeActions({
    * does it — same engine, same input, same `scoreCurrent` before-figure —
    * and the button turns into the panel's call to action where that answer
    * beats the plan on screen. The figure it prints is the difference between
-   * those two scores, i.e. what the press will then report, never an
-   * estimate of its own.
+   * those two scores, i.e. what `run` reports when it applies the plan, never
+   * an estimate of its own. Where the day still cannot hold everything, the
+   * press opens `PlannerFitAssistant` first, as it always has, and the figure
+   * is then what the assistant's plan starts from rather than a promise.
    *
    * Only where the two figures cover the same rides, which is the rule `run`
    * prints a saving under too: a plan the engine had to cut short
    * (`MAX_STOPS`) or one that parked a ride outside the day would compare a
    * before over N rides with an after over fewer.
    *
-   * Memoised on the grid's NUMBERS rather than on the grid object: the panel
-   * rebuilds it on every render, and one search is 5–50 ms. `nowTick` is what
-   * moves the answer on today's date, once a minute, the same way the
-   * buttons' own visibility follows the clock (and the same pattern the
+   * It reads a DEFERRED copy of the entries, which is the rule in
+   * `docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md`:
+   * typing a free block's label writes the entry on every keystroke, and a
+   * 5–50 ms search in the same commit as the keystroke is a field that lags.
+   * The grid arrives memoised from the caller, so it is a stable key.
+   * `nowTick` moves the answer on today's date, once a minute, the same way
+   * the buttons' own visibility follows the clock (and the same pattern the
    * grid's now line uses).
    */
-  const openMin = grid?.openMin;
-  const closeMin = grid?.closeMin;
-  const closeSlackMin = grid?.closeSlackMin;
-  const gridStartMin = grid?.gridStartMin;
-  const gridEndMin = grid?.gridEndMin;
-  const heightPx = grid?.heightPx;
-  const pxPerMin = grid?.pxPerMin;
-  const closeIsTruncated = grid?.closeIsTruncated;
+  const deferredEntries = useDeferredValue(entries);
   const gain = useMemo(() => {
-    if (
-      openMin === undefined ||
-      closeMin === undefined ||
-      closeSlackMin === undefined ||
-      gridStartMin === undefined ||
-      gridEndMin === undefined ||
-      heightPx === undefined ||
-      pxPerMin === undefined ||
-      closeIsTruncated === undefined
-    )
-      return null;
-    const probeGrid: DayGrid = {
-      openMin,
-      closeMin,
-      closeSlackMin,
-      gridStartMin,
-      gridEndMin,
-      heightPx,
-      pxPerMin,
-      closeIsTruncated,
-    };
-    if (nowTick < 0 || !day || !canOptimize(day, probeGrid)) return null;
+    if (nowTick < 0 || !grid || !day || !canOptimize(day, grid)) return null;
     const now = dayClock(date, resolveTimeZone(timezone));
     if (now.phase === 'past') return null;
-    const movableNow = movableEntries(entries, now);
+    const movableNow = movableEntries(deferredEntries, now);
     if (movableNow.length < 2) return null;
-    const input = { day, grid: probeGrid, entries, clock: now };
+    const input = { day, grid, entries: deferredEntries, clock: now };
     const before = scoreCurrent(input);
     const plan = optimizeDay(input);
     if (!before || !plan || plan.stops.length !== movableNow.length) return null;
@@ -269,21 +246,7 @@ export function PlannerOptimizeActions({
     const saved = roundWaitDeltaTo5(before.totalWaitMinutes - plan.totalWaitMinutes);
     if (fitted <= 0 && saved < 5) return null;
     return { fitted: Math.max(0, fitted), saved: Math.max(0, saved) };
-  }, [
-    openMin,
-    closeMin,
-    closeSlackMin,
-    gridStartMin,
-    gridEndMin,
-    heightPx,
-    pxPerMin,
-    closeIsTruncated,
-    day,
-    entries,
-    date,
-    timezone,
-    nowTick,
-  ]);
+  }, [grid, day, deferredEntries, date, timezone, nowTick]);
 
   if (!grid || !canOptimize(day, grid) || !day) return null;
   // A day that has been walked is a record. Both buttons plan FOR the visitor,
@@ -444,12 +407,14 @@ export function PlannerOptimizeActions({
   return (
     <div
       data-planner-optimize=""
-      /* `planner-phone:py-1` (PAR-313). The report asked for a lower "Tag
-         optimieren", and the button itself is at the floor: `planner-phone:min-h-11`
-         is the 44 px `CLAUDE.md` states and `check:planner` asserts, so what
-         gives way is the room around it and never the target. Measured at
-         360 px the row goes 61 → 53 px; the button stays 44. */
-      className="border-border/60 planner-phone:py-1 flex shrink-0 flex-col gap-1 border-t px-3 py-2"
+      /* The row's padding and gap are 6 px on a phone because that is what
+         the buttons' targets reach into (PAR-482): each is drawn 32 px tall
+         and grows to the 44 px `check:planner` asserts with an `after:` 6 px
+         above and below. PAR-313 had kept the button itself at 44 and taken
+         the padding instead; the report since was that the CTAs are still too
+         tall, so now the drawn button gives way and the target does not.
+         Measured at 390 px the row goes 53 → 45 px. */
+      className="border-border/60 planner-phone:py-1.5 flex shrink-0 flex-col gap-1.5 border-t px-3 py-2"
     >
       <div className="flex flex-wrap items-center gap-1.5">
         {missing.length > 0 && (
@@ -460,7 +425,10 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
-              'planner-phone:min-h-11 planner-phone:px-2.5'
+              // 32 px drawn, 44 px to a finger: the `after:` reaches 6 px above and
+              // below, into this row's padding and the gap before the result line,
+              // where nothing else takes a press (PAR-482).
+              "planner-phone:h-8 planner-phone:py-0 planner-phone:px-2.5 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-1.5 planner-phone:after:content-[''] relative"
             )}
           >
             <Crown className="size-3.5 shrink-0" aria-hidden="true" />
@@ -488,7 +456,10 @@ export function PlannerOptimizeActions({
             title={t('optimize.hint')}
             className={cn(
               'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
-              'planner-phone:min-h-11 planner-phone:px-2.5',
+              // 32 px drawn, 44 px to a finger: the `after:` reaches 6 px above and
+              // below, into this row's padding and the gap before the result line,
+              // where nothing else takes a press (PAR-482).
+              "planner-phone:h-8 planner-phone:py-0 planner-phone:px-2.5 planner-phone:after:absolute planner-phone:after:inset-x-0 planner-phone:after:-inset-y-1.5 planner-phone:after:content-[''] relative",
               gain
                 ? // Grows into the rest of the row, and WRAPS onto a row of its
                   // own rather than shrinking into "Tag op…" beside a long

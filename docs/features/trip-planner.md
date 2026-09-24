@@ -1782,8 +1782,9 @@ and `height` straight onto the element — never a `transform`, which would make
 a backdrop root and flatten its blur — so below its `large` box the sheet slides down
 with its lower half past the screen, the way iOS draws a medium detent. At rest the
 detents are classes on the CSS variables `--planner-sheet-large` and
-`--planner-sheet-medium` (`app/globals.css`), with `sheetDetentHeights()` as the drag's
-JS twin; the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
+`--planner-sheet-medium` (`app/globals.css`), and the drag measures those very values
+with a probe element (`sheetDetentHeights()`) rather than recomputing them from
+`innerHeight`, which on iOS differs from `svh` whenever the toolbar collapses; the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
 measured from the top of a `large` box and a short day with `h-auto` would have slid off
 the screen. Snapping, opening and closing run on the iOS sheet curve,
 `cubic-bezier(0.32, 0.72, 0, 1)` over 400 ms (PAR-190's first half); the desktop panel
@@ -1801,13 +1802,26 @@ control is — the strip, the row's side padding — and a control is never unde
 away on a phone to pay for it: at 390 px the park name keeps 115 px), and the bell
 went to the end of the foot's summary row. 61 px instead of 89. On a window under
 50rem tall — which is every iPhone in Safari, whose visible page is 660–750 px — `large`
-opens over the site header too, 12 px under the top edge (`SHEET_SHORT_QUERY` and the
-`@media` twin of `--planner-sheet-large`), and `full` is not offered there, being a
+opens over the site header too, 12 px under the top edge (the `@media` twin of
+`--planner-sheet-large`), and `full` is not offered there, being a
 12 px sliver above it; a tap then toggles between half and large. Taller windows keep
 the header visible. Measured with Europa-Park, eight rides and a lunch block: the axis
 is 264 px at 390 × 664, 382 px at 390 × 844 (366 before) and 316 px at 844 × 390 (269).
 `check:planner` grabs the strip rather than the handle's centre, which is under the
 day picker now, and asserts the landscape sheet at 378 px.
+
+**The headliner pills and the two buttons under them are drawn at 32 px.** Both
+rows were 44 px tall to a finger and 44 px tall to the eye, and on a 664 px window
+that was the report: "die Headliner-Pillen sind viel zu hoch, die CTAs auch". They
+are 32 px now and keep a 44 px target with an `after:` reaching 6 px above and below,
+into padding and text that take no press — the party chip's trade, which the section
+on targets above explains. Two details decide whether that holds. A scroller clips
+its children for hit-testing as well as for paint, so the pill row carries 8 px of
+padding and hands it back with negative margins; and an absolute box is placed from
+the padding edge, so the bordered pill needs `-inset-y-[7px]` to reach 6 px past its
+border. Measured with `elementFromPoint`: pill, "Headliner einplanen" and "Tag
+optimieren" each 32 + 6 + 6. The band went 96 → 76 px and the button row 53 → 45 px;
+the axis is 287 px at 390 × 664 and 405 px at 390 × 844.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

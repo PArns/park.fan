@@ -35,6 +35,10 @@ Datum, das × steht rechts in dieser Zeile, die Glocke am Ende der Summenzeile. 
 knapper Fensterhöhe (unter 800 px, also auf jedem iPhone in Safari) öffnet das Sheet bis 12 px unter
 den oberen Rand und verdeckt den park.fan-Header.
 
+Headliner-Pillen und die beiden Knöpfe darunter sind auf dem Handy 32 statt 44 px hoch gezeichnet,
+die Trefferfläche bleibt 44 px (unsichtbarer Überstand in Leerraum). Band 96 → 76 px, Knopfzeile
+53 → 45 px.
+
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt

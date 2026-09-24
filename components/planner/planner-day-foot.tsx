@@ -141,8 +141,12 @@ export function PlannerDayFoot({
           data-planner-summary=""
           className={cn(
             'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
-            // A 44 px bell in the row: it sets the height, so the padding goes.
-            summaryTrailing && 'items-center py-0 pr-1'
+            // A 44 px bell in the row, so the row is 44 px — as a floor with
+            // the text centred in it, not as the bell's height: the toggle
+            // renders nothing while it checks and where push cannot work (iOS
+            // Safari outside the home screen), and the row may neither jump
+            // when it arrives nor squash its text where it never does.
+            summaryTrailing && 'min-h-11 items-center py-0 pr-1'
           )}
         >
           <span>

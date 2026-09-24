@@ -329,9 +329,13 @@ export function PlannerDayColumn({
    * untouched by the growth, so the opening-hours band still marks the park's
    * real day and every placement rule still speaks for the park.
    */
-  const grid = growGridForSpans(
-    buildDayGrid(day?.context.openHour, day?.context.closeHour, pxPerMin),
-    spans
+  // Memoised, so the grid keeps its identity across renders that do not move
+  // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
+  const openHour = day?.context.openHour;
+  const closeHour = day?.context.closeHour;
+  const grid = useMemo(
+    () => growGridForSpans(buildDayGrid(openHour, closeHour, pxPerMin), spans),
+    [openHour, closeHour, pxPerMin, spans]
   );
 
   const dayFacts = usePlannerDayFacts(park, open);

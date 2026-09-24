@@ -37,6 +37,32 @@
 }
 
 /*
+ * The phone sheet's detents, as CSS so the resting heights need no script.
+ *
+ * `large` is where the sheet opens: everything under the 48 px site header, or
+ * 92svh where that is more (see the note on the class list in
+ * `planner-flyout.tsx`), and on a short window nearly the whole screen (below).
+ * `medium` is half the screen, reached by dragging the grabber down; the sheet
+ * keeps its `large` box there and slides down with `bottom`. The drag measures
+ * these very values with a probe (`sheetDetentHeights()` in the same file), so
+ * this is the only place they are written down.
+ */
+:root {
+  --planner-sheet-large: max(92svh, calc(100svh - 3rem));
+  --planner-sheet-medium: 50svh;
+}
+/* A short window gives the day the header's strip too: `large` opens 12 px
+   under the top edge, over the site header, and the sheet reads as a sheet by
+   the sliver of dimmed page above it. `SHEET_SHORT_QUERY` in
+   `planner-flyout.tsx` repeats the query for the one thing CSS cannot answer:
+   whether the grabber still has a second detent to toggle to. */
+@media (height < 50rem) {
+  :root {
+    --planner-sheet-large: calc(100svh - 0.75rem);
+  }
+}
+
+/*
  * What the PLANNER means by "phone", in CSS — the other half of
  * `PLANNER_PHONE_QUERY` in `lib/planner/use-grid-scale.ts`.
  *
@@ -78,30 +104,6 @@
  * keeps the panel non-modal and the ride-card drag alive. See the note on
  * `PLANNER_PHONE_QUERY`.
  */
-/*
- * The phone sheet's detents, as CSS so the resting heights need no script.
- *
- * `large` is where the sheet opens: everything under the 48 px site header, or
- * 92svh where that is more (see the note on the class list in
- * `planner-flyout.tsx`) — and on a short window nearly the whole screen, below. `medium` is half the screen, reached by dragging the
- * grabber down; the sheet keeps its `large` box there and slides down with
- * `bottom`. `sheetDetentHeights()` in the same file is the JS twin the drag
- * compares against, and the two change together.
- */
-:root {
-  --planner-sheet-large: max(92svh, calc(100svh - 3rem));
-  --planner-sheet-medium: 50svh;
-}
-/* A short window gives the day the header's strip too: `large` opens up to
-   12 px under the top edge, over the site header, and the sheet reads as a
-   sheet by the sliver of dimmed page above it. `SHEET_SHORT_QUERY` and
-   `SHEET_TOP_GAP_PX` in `planner-flyout.tsx` are the JS twins. */
-@media (height < 50rem) {
-  :root {
-    --planner-sheet-large: calc(100svh - 0.75rem);
-  }
-}
-
 @variant planner-phone {
   @media (width < 40rem) {
     @slot;
