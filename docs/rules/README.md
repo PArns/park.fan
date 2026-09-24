@@ -17,6 +17,7 @@ _Page payload, caching, `revalidate`, streaming, CLS, translations reaching the 
 - [An interaction may not rebuild the grid in the commit that answers it (REQUIREMENT)](an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md)
 - [API budget per page (REQUIREMENT)](api-budget-per-page.md)
 - [The page render is the bigger half of the API budget, and it was never audited (ANTI-PATTERN)](the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md)
+- [A day in the park has a byte budget (REQUIREMENT)](a-day-in-the-park-has-a-byte-budget.md)
 - [A `revalidate` at a call site is somebody else's page (REQUIREMENT)](a-revalidate-at-a-call-site-is-somebody-elses-page.md)
 - [A redirect thrown from a render carries the layout as its body (REQUIREMENT)](a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)
 - [An ISR route needs both halves, and one of them is an empty `generateStaticParams` (REQUIREMENT)](an-isr-route-needs-both-halves.md)
