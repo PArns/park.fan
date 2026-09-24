@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
+
+Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
+davon waren die drei Link-Spalten mit elf 44-px-Zeilen. Unter `sm` ist jede Spalte jetzt eine
+zugeklappte Zeile, die ihre Links per Tipp aufklappt (`FooterLinkGroup`). Die Links bleiben dabei im
+HTML, zugeklappt nur per `max-sm:hidden` ausgeblendet. Dazu knappere Abstände unter `sm`, und die
+zweite „Arns.dev"-Zeile fällt dort weg, weil derselbe Link oben in der Marke steht. Ergebnis: 636 px
+in de/en/nl/it, 660 px in fr/es. Ab `sm` ist der Footer unverändert, der Screenshot bei 1440 px ist
+byte-gleich. Der 562-px-Block, der im DOM vor dem Footer steht, ist `ParkBackground`: `position:
+fixed` hinter dem Seitenkopf, er belegt keine Höhe.
+
 ## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
 
 Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
