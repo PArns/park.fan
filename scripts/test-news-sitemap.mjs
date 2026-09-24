@@ -7,7 +7,7 @@
  *   - the window is the build day and the two days before it, both ends inclusive
  *   - only news posts, only real translations (no EN fallback), no future-dated post
  *   - each entry carries publication name, language, date and the escaped title
- *   - an empty window is still a valid `<urlset>` with the news namespace
+ *   - an empty window is still a well-formed `<urlset>` with the news namespace
  *   - never more than 1000 entries, and the cap drops the oldest
  *
  * One more test runs the builder over the real manifest, so a post that breaks the XML (an
@@ -102,7 +102,7 @@ test('an entry names publication, language, date and the escaped title', () => {
   assert.match(xml, /<news:title>Peur &amp; &lt;frissons&gt;<\/news:title>/);
 });
 
-test('an empty window is a valid urlset with the news namespace', () => {
+test('an empty window is a well-formed urlset with the news namespace', () => {
   const xml = buildNewsSitemap([['de', [post('old', '2026-01-01')]]], TODAY);
   assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.match(

@@ -30,7 +30,7 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 - **Real translations only.** A locale that serves the EN original as fallback gets no entry, the same rule as the post URLs in `/sitemap.xml`.
 - **`<news:publication_date>` is the frontmatter date as written** (`2026-09-23`), which Google accepts as a W3C date. A time or an offset would be invented precision, the same reason `<lastmod>` is observed rather than stamped (below).
 - **`<news:name>` is `park.fan`.** It has to match the publication name in the Google News Publisher Center.
-- **Empty is valid.** Most days nothing is news; the file then is a `<urlset>` with no `<url>`, never a 404, because its URL stays in `robots.txt` permanently.
+- **Empty is served, not a 404.** Most days nothing is news; the file then is a `<urlset>` with no `<url>`, because its URL stays in `robots.txt` permanently. The sitemaps.org XSD asks for at least one `<url>`, so a strict schema check rejects the empty file (`xmllint --schema`, 2026-09-24). A file with entries validates against the sitemaps.org and the Google News XSD together.
 - **At most 1000 entries**, newest first, Google's limit for this format.
 - **`revalidate = 3600`**, the route's own window: it makes no fetch, it reads the post manifest and the date, so a post may linger or wait up to an hour after UTC midnight moves the window.
 

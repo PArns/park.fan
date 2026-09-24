@@ -91,7 +91,7 @@ for (const url of sitemapUrls) {
     sitemap.status === 200 && sitemap.type.includes('xml') && sitemap.text.startsWith('<?xml')
   );
 }
-// Empty on most days, and valid anyway: the file is in robots.txt permanently.
+// Empty on most days, and served anyway: the file is in robots.txt permanently.
 const newsSitemap = await get('/sitemap-news.xml');
 check(
   'the news sitemap declares the news namespace',

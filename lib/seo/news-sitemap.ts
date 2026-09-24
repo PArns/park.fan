@@ -44,8 +44,10 @@ export function newsWindowStart(today: string, days: number = NEWS_SITEMAP_WINDO
  * The news sitemap document. `postsByLocale` holds each locale's listed posts (articles included;
  * they are filtered out here), `today` is the UTC date the file is built on.
  *
- * An empty window yields a valid `<urlset>` with no entries, never a 404: the file's URL sits in
- * robots.txt permanently, and most days nothing is news.
+ * An empty window yields a well-formed `<urlset>` with no entries, never a 404: the file's URL sits
+ * in robots.txt permanently, and most days nothing is news. The sitemaps.org XSD asks for at least
+ * one `<url>`, so that empty file does not pass a strict schema check; a 404 on a listed sitemap is
+ * the worse of the two.
  *
  * `<news:publication_date>` is the frontmatter date as written. That is a valid W3C date for
  * Google, and adding a time or an offset would state a precision the post does not have
