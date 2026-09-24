@@ -245,9 +245,10 @@ export const TabsWithHash = memo(function TabsWithHash({
         // box is deferred — the rope-drop picks and the headliner cards are real cards
         // too, so leaving them out of this branch kept the urgent commit expensive and the
         // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
-        <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+        // `phoneRow` and `gap-2` below `sm`, matching what `LandSection` renders there.
+        <div className="grid gap-2 sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
           {Array.from({ length: 6 }, (_, i) => (
-            <AttractionCardSkeleton key={i} />
+            <AttractionCardSkeleton key={i} phoneRow />
           ))}
         </div>
       ) : (
@@ -296,7 +297,14 @@ export const TabsWithHash = memo(function TabsWithHash({
                 <LazyMount
                   key={landName}
                   eager={index === 0 || isSearching}
-                  grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
+                  // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
+                  // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
+                  grid={{
+                    count: attractions.length,
+                    rowHeight: 340,
+                    phoneRowHeight: 80,
+                    headerHeight: 64,
+                  }}
                 >
                   <LandSection
                     landName={landName}

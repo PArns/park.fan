@@ -5,7 +5,8 @@
  * indication to the visitor of why — `defaultThresholdFor`, the slider's
  * seeded starting point, and `maxThresholdFor` /
  * `hasUsableThresholdRange`, which keep it from offering a threshold that
- * is already true.
+ * is already true — and `lib/push/ride-alert-picker.ts`, which applies that
+ * rule to the ride list in `RideAlertDialog`.
  *
  * Run: `pnpm test:threshold-minutes`
  */
@@ -19,6 +20,12 @@ import {
   maxThresholdFor,
   parseThresholdMinutes,
 } from '../lib/push/threshold-minutes.ts';
+import {
+  filterRideAlertPickerRows,
+  resolveRideAlertSelection,
+  rideAlertPickerRows,
+} from '../lib/push/ride-alert-picker.ts';
+import { roundWaitTo5 } from '../lib/utils/wait-time.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -147,6 +154,88 @@ test('hasUsableThresholdRange allows anything longer, and anything unknown', () 
   assert.equal(hasUsableThresholdRange(110), true);
   assert.equal(hasUsableThresholdRange(null), true);
   assert.equal(hasUsableThresholdRange(undefined), true);
+});
+
+// Phantasialand on 2026-09-23, park shut: Talocan read 0 and the dialog's
+// default pick opened a slider running from 5 to 5.
+const PARK = [
+  { id: 'talocan', name: 'Talocan', currentWaitTime: 0 },
+  { id: 'taron', name: 'Taron', currentWaitTime: 45 },
+  { id: 'chiapas', name: 'Chiapas', currentWaitTime: 10 },
+  { id: 'fly', name: 'F.L.Y.', currentWaitTime: null },
+  { id: 'winjas', name: "Winja's Fear", currentWaitTime: 15 },
+];
+
+test('picker rows are sorted by name and leave out rides that already have an alert', () => {
+  const rows = rideAlertPickerRows(PARK, new Set(['taron']), 'de');
+  assert.deepEqual(
+    rows.map((r) => r.attraction.id),
+    ['chiapas', 'fly', 'talocan', 'winjas']
+  );
+});
+
+test('a ride too short a queue for an alert is listed but not selectable', () => {
+  const rows = rideAlertPickerRows(PARK, new Set(), 'de');
+  const selectable = Object.fromEntries(rows.map((r) => [r.attraction.id, r.selectable]));
+  assert.deepEqual(selectable, {
+    chiapas: false,
+    fly: true,
+    talocan: false,
+    taron: true,
+    winjas: true,
+  });
+});
+
+test('no selectable row opens a slider whose top is already true', () => {
+  // The 5-to-5 case: a selectable ride with a reading must leave the slider a
+  // threshold below that reading, or the alert fires the second it is saved.
+  const waits = [0, 3, 5, 8, 10, 12, 15, 20, 45, 110, null];
+  const rows = rideAlertPickerRows(
+    waits.map((w, i) => ({ id: `r${i}`, name: `Ride ${i}`, currentWaitTime: w })),
+    new Set(),
+    'en'
+  );
+  for (const { attraction, selectable } of rows) {
+    if (!selectable || attraction.currentWaitTime == null) continue;
+    assert.ok(
+      maxThresholdFor(attraction.currentWaitTime) < roundWaitTo5(attraction.currentWaitTime),
+      `${attraction.currentWaitTime}`
+    );
+  }
+});
+
+test('the default selection skips rides that are not selectable', () => {
+  const rows = rideAlertPickerRows(PARK, new Set(), 'de');
+  // Chiapas sorts first but reads 10 minutes, so the form starts on F.L.Y.
+  assert.equal(resolveRideAlertSelection(rows, ''), 'fly');
+  assert.equal(resolveRideAlertSelection(rows, 'talocan'), 'fly');
+  assert.equal(resolveRideAlertSelection(rows, 'taron'), 'taron');
+  // A pick that has since gained an alert falls back the same way.
+  const withoutTaron = rideAlertPickerRows(PARK, new Set(['taron']), 'de');
+  assert.equal(resolveRideAlertSelection(withoutTaron, 'taron'), 'fly');
+});
+
+test('no selection at all when no ride can take an alert', () => {
+  const rows = rideAlertPickerRows(
+    [
+      { id: 'a', name: 'A', currentWaitTime: 0 },
+      { id: 'b', name: 'B', currentWaitTime: 5 },
+    ],
+    new Set(),
+    'en'
+  );
+  assert.equal(resolveRideAlertSelection(rows, ''), '');
+  assert.equal(resolveRideAlertSelection(rows, 'a'), '');
+});
+
+test('the search folds case, accents and punctuation', () => {
+  const rows = rideAlertPickerRows(PARK, new Set(), 'de');
+  const ids = (q) => filterRideAlertPickerRows(rows, q).map((r) => r.attraction.id);
+  assert.deepEqual(ids('winjas'), ['winjas']);
+  assert.deepEqual(ids('fly'), ['fly']);
+  assert.deepEqual(ids('TAR'), ['taron']);
+  assert.deepEqual(ids(''), ['chiapas', 'fly', 'talocan', 'taron', 'winjas']);
+  assert.deepEqual(ids('zzz'), []);
 });
 
 console.log(`\n${passed} assertions passed.`);

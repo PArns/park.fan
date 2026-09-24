@@ -44,6 +44,24 @@ bei 390×664 jetzt 305 px.
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
 
+## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
+
+Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprache ein `<url>` mit
+`<news:news>` (Name `park.fan`, Sprache, Datum aus dem Frontmatter, Titel). Nur echte
+Übersetzungen, höchstens 1000 Einträge, leer ohne News statt 404. Eingetragen in `robots.txt`,
+geprüft von `pnpm test:news-sitemap` und `pnpm check:agent-ready`. Details:
+[sitemaps](seo/sitemaps.md#the-news-sitemap).
+
+## Unreleased – Ride-Karten sind auf dem Handy eine Zeile (PAR-431)
+
+Unter `sm` rendert die Ride-Liste der Park-Seite (`LandSection`) jede `AttractionCard` als Zeile:
+Name und Wartezeit oben, die Badges einzeilig darunter, kein unteres Panel. Die Zeile ist 72 px hoch,
+die Karte war 121 px (Park zu) bis 318 px (Park offen). Gemessen mit `measure:mobile-height`:
+Phantasialand-Liste 6.503 → 4.328 px, Magic Kingdom 12.053 → 4.136 px. Glocke und Stern behalten
+ihre 34-px-Kreise mit 44-px-Trefferfläche. Die Prop heißt `phoneRow`, die anderen sieben
+Einbettungen der Karte und der Desktop bleiben gleich. `LazyMount` reserviert für eine Spalte jetzt
+80 px je Zeile (`phoneRowHeight`), das Tab-Skeleton hat dieselbe Zeilenform.
+
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
 
 „Wartezeiten-Kalender" passt in der Ersatzschrift („Geist Fallback") gerade noch in eine Zeile, in

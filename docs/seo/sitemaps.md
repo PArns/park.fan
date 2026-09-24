@@ -1,10 +1,11 @@
 # Sitemap Strategy
 
-park.fan uses **three sitemap entry points**, all referenced from `robots.txt`:
+park.fan uses **four sitemap entry points**, all referenced from `robots.txt`:
 
 1. `/sitemap.xml` (`app/sitemap.ts`) — all core pages, every entry with the full hreflang alternate block.
 2. `/sitemap-attractions.xml` (`app/sitemap-attractions.xml/route.ts`) — a **sitemap index** over six per-locale children, `/sitemap-attractions/<locale>.xml` (`app/sitemap-attractions/[locale]/route.ts`), each holding that locale's 7,101 attraction URLs as **lean `<loc>`-only entries**.
 3. `/sitemap-calendar.xml` (`app/sitemap-calendar.xml/route.ts`) — the same shape again, over `/sitemap-calendar/<locale>.xml`, each holding that locale's **calendar month** URLs — 970 per locale on 2026-09-21 (210 parks, two past months and a forward edge trimmed per park; the count moves with the span, the catalogue and each park's published schedule, see below).
+4. `/sitemap-news.xml` (`app/sitemap-news.xml/route.ts`, built by `lib/seo/news-sitemap.ts`) — a **Google News sitemap**: the news posts of the last two days, one `<url>` per post and locale with a `<news:news>` block. See [the news sitemap](#the-news-sitemap) below.
 
 The URL of the index is the one submitted in Search Console, which is why the split kept it and changed only what it contains.
 
@@ -19,6 +20,21 @@ Three rules decide which months are listed, and each prevents a specific wrong U
 Month URLs carry **no `<lastmod>`**: a crowd forecast is the moving half of a park by definition, shifting a little every morning on all 212 at once, which is precisely the identical-date-everywhere value the fingerprint detector exists to avoid emitting (see below).
 
 Hub + attraction pages were re-added in July 2026: SERP checks showed competitors ranking exactly these page types (queue-times/wartezeiten.app ride pages for "taron wartezeit", country overviews for "freizeitparks deutschland") while park.fan kept them out of the sitemap.
+
+---
+
+## The news sitemap
+
+`/sitemap-news.xml` lists only posts in the `news` category (and its subcategories) whose `date` is the build day or one of the two days before it, counted in UTC. Google reads news sitemaps for articles of the last 48 hours; a post carries a date but no time, so a post dated two days back may be 25 or 71 hours old, and the whole day stays in rather than cutting a young post. Google ignores the entries past its own cut-off. A future-dated post is left out until its day.
+
+- **Real translations only.** A locale that serves the EN original as fallback gets no entry, the same rule as the post URLs in `/sitemap.xml`.
+- **`<news:publication_date>` is the frontmatter date as written** (`2026-09-23`), which Google accepts as a W3C date. A time or an offset would be invented precision, the same reason `<lastmod>` is observed rather than stamped (below).
+- **`<news:name>` is `park.fan`.** It has to match the publication name in the Google News Publisher Center.
+- **Empty is served, not a 404.** Most days nothing is news; the file then is a `<urlset>` with no `<url>`, because its URL stays in `robots.txt` permanently. The sitemaps.org XSD asks for at least one `<url>`, so a strict schema check rejects the empty file (`xmllint --schema`, 2026-09-24). A file with entries validates against the sitemaps.org and the Google News XSD together.
+- **At most 1000 entries**, newest first, Google's limit for this format.
+- **`revalidate = 3600`**, the route's own window: it makes no fetch, it reads the post manifest and the date, so a post may linger or wait up to an hour after UTC midnight moves the window.
+
+`pnpm test:news-sitemap` pins the window, the filters and the escaping; `pnpm check:agent-ready` fetches every `Sitemap:` line of `robots.txt` from a running site.
 
 ---
 
