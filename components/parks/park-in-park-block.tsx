@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { LocateFixed, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { InParkRideLists, splitInParkRides } from '@/components/parks/nearby-in-park-view';
+import { NextBestRides } from '@/components/parks/next-best-rides';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { resolveInParkBlock } from '@/lib/utils/in-park-block';
@@ -179,6 +180,11 @@ export function ParkInParkBlock({
 
       {lists && (lists.headliners.length > 0 || lists.attractions.length > 0) && (
         <div className="mt-2 space-y-4">
+          <NextBestRides
+            park={{ slug: park.slug, timezone: park.timezone }}
+            rides={state.kind === 'inPark' ? state.rides : []}
+            showDistance={state.kind === 'inPark' && state.showDistances}
+          />
           <InParkRideLists
             headliners={lists.headliners}
             attractions={lists.attractions}

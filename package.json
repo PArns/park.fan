@@ -81,6 +81,7 @@
     "test:content-changes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-content-changes.mjs",
     "test:nearby-cache": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-nearby-cache.mjs",
     "test:in-park-block": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-in-park-block.mjs",
+    "test:next-best-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-next-best-ride.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",
     "test:admin-cookie": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-cookie.mjs",

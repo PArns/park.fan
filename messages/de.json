@@ -1417,6 +1417,11 @@
       "ask": "Im Park? Fahrten in deiner Nähe zeigen",
       "blocked": "Standortzugriff ist im Browser blockiert",
       "away": "Du bist {distance} vom Park entfernt"
+    },
+    "nextRide": {
+      "heading": "Jetzt kürzer als später",
+      "reason": "Jetzt {now} Min., ab {time} laut Prognose {later} Min.",
+      "saving": "−{minutes} Min."
     }
   },
   "geo": {

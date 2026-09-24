@@ -1417,6 +1417,11 @@
       "ask": "Au parc ? Afficher les attractions près de vous",
       "blocked": "La localisation est bloquée dans votre navigateur",
       "away": "Vous êtes à {distance} du parc"
+    },
+    "nextRide": {
+      "heading": "Plus court maintenant que plus tard",
+      "reason": "Maintenant {now} min, {later} min prévues à partir de {time}",
+      "saving": "−{minutes} min"
     }
   },
   "geo": {

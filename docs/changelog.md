@@ -4,6 +4,18 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – „Jetzt kürzer als später“: nächste Fahrt ohne Plan (PAR-419)
+
+Wer im Park steht und keinen Plan hat, sieht auf der Parkseite („In deiner Nähe“) und auf der
+Startseite (`InParkView`) bis zu drei Fahrten, deren Live-Wartezeit mindestens 10 Min. unter der
+Prognose der nächsten zwei Stunden liegt („Jetzt 5 Min., ab 13:00 laut Prognose 30 Min.“). Die
+Regel `suggestNextRides` (`lib/planner/next-best-ride.ts`) liest die Kurve aus `/plan/day`, zählt
+eine Stunde erst ab der Ankunft (Laufzeit nach `leg.ts`), nie die Schließstunde, und lässt
+geschlossene, außer Saison stehende und nicht lesbare Fahrten weg, ebenso solche, für die
+jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Einstellungen des Tages.
+`/plan/day` wird nur im Park geholt. Geprüft von
+`pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
+
 ## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
 
 Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
