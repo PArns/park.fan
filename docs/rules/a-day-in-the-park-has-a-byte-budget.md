@@ -28,7 +28,7 @@ for the throttled rows. Measured on 2026-09-24 against `pnpm build && pnpm start
 | Coming back to the tab                   |       8.5 KB |        10 KB |
 | **A day in the park** (projection below) | **1,594 KB** | **1,700 KB** |
 
-The ceilings sit just above today's figures on purpose. They are a floor against regressions, not
+The ceilings sit just above today's figures on purpose. They guard against regressions and are not
 a target: the three items under [what the park does not need](#what-the-park-does-not-need) are
 where the numbers go down.
 
