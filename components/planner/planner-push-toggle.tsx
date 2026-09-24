@@ -10,7 +10,8 @@ import { PlannerShareLink } from './planner-share-link';
 
 interface PlannerPushToggleProps {
   /**
-   * `row` is the block this has always been; `icon` is the phone's bell.
+   * `row` is the block this has always been; `icon` is the bell in the panel's
+   * header, on the phone and, since the PAR-482 follow-up, on the desktop.
    *
    * A variant rather than a second component, and that is forced rather than
    * chosen: {@link usePushSubscription} holds its own state and asks
@@ -260,11 +261,13 @@ function PushPopover({
           aria-label={label}
           title={label}
           className={cn(
-            'text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:w-8 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
+            'text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:w-8 flex size-7 shrink-0 items-center justify-center rounded-md transition-colors',
             // Drawn 32 × 32 beside the × in the phone's header row and 32 × 44
             // to a finger (PAR-482): 6 px of overhang above and below, like
             // every control in that row. The park name pays for its width,
-            // so it is drawn no wider than the chevrons beside it.
+            // so it is drawn no wider than the chevrons beside it. On the
+            // desktop it is one of the header's 28 px icon buttons, beside
+            // „+" and the column switch.
             PHONE_TARGET_32
           )}
         >

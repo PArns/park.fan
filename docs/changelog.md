@@ -4,6 +4,22 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: der Tagesplaner auf dem Desktop wie auf dem Handy (PAR-482, Nachtrag)
+
+Jede Desktop-Spalte hat wieder eine Bahnsuche, in einer Zeile mit „Eigener Block"; die Treffer
+erscheinen beim Tippen und lassen sich anklicken oder auf die Achse ziehen. Der Fuß ist der des
+Handys: „Tag optimieren" über die volle Breite, Rückgängig als Symbol, die Glocke oben in der
+Kopfzeile statt einer eigenen Zeile unten. Eine Pause über einer Bahn gilt jetzt als Konflikt,
+und der CTA bietet an, ihn aufzulösen („ein Konflikt weniger"). Der Fit-Assistent streicht
+Wiederholungsfahrten vor Bahnen, die noch niemand gefahren ist, und „Anpassen" öffnet ihn wieder
+mit der letzten Wahl. Eine Show-Linie, die durch eine Bahn oder einen Umstieg läuft, zeigt dort nur
+noch die Masken statt einer Namensleiste über dem Block, und mit der Maus auf einem Block treten
+alle Shows zurück. Ein leerer Tag zeigt den Drag-&-Drop-Hinweis als gut lesbare Karte. Die Knöpfe
+im Fuß sind gleich hoch, und im Planer blendet nichts mehr hart um: Show-Linien, der Ghost beim
+Ziehen, die Drop-Linie und die gedimmten Zustände gleiten oder blenden weich.
+
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
 ## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
 
 Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter

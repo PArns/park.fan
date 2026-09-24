@@ -419,6 +419,23 @@ if (!PLANNER_PHONE_QUERY) {
 }
 
 /**
+ * Opens the notification bell, where the switch lives.
+ *
+ * The switch was a row of its own under the desktop's foot until the PAR-482
+ * follow-up moved it into the header's bell, as the phone had it: its body is a
+ * popover now, mounted only while open, so every step that reads or presses it
+ * opens the bell first. Answers false where there is no bell, which is also
+ * what a deploy with no push draws.
+ */
+async function openPushBell(page) {
+  const bell = page.locator(`${SHEET} [data-planner-push-trigger]`).first();
+  if ((await bell.count()) === 0) return false;
+  await bell.click();
+  await page.waitForTimeout(400);
+  return true;
+}
+
+/**
  * Open the planner and answer whether it is on screen. Never throws.
  *
  * Every flow in this file starts with the same two lines — press the edge tab,
@@ -3660,7 +3677,10 @@ step: {
       /Zieh eine Bahn/.test(lines) && !/unten/.test(lines),
       lines.slice(0, 90)
     );
-    check('und es gibt dort keine Suche, auf die es zeigen könnte', searchVisible === false);
+    // The desktop has its own search since the PAR-482 follow-up, one per
+    // column in the foot row. The sentence still names the drag, which is the
+    // desktop's first way in; the search is the second.
+    check('und die Suche steht am Rechner trotzdem bereit', searchVisible === true);
     // The same sentence twice, 300 px apart, is how a hint stops reading as one.
     check(
       'der Hinweis am Fuß schweigt, solange das Raster leer ist',
@@ -3975,6 +3995,28 @@ step: {
     'der Name steht an der Linie, nicht nur im Band',
     /Miji African Dancers/.test(pillText),
     pillText.slice(0, 80)
+  );
+
+  // A pill of names may not lie on a block (PAR-482 follow-up): it covered the
+  // name and the times of every ride a show fell into. Over a block or a
+  // transfer chip the grid draws the mask alone.
+  const namesOnBlocks = await shows.evaluate((sheet) => {
+    const blocks = [...document.querySelectorAll(`${sheet} [data-planner-block]`)].map((el) =>
+      el.getBoundingClientRect()
+    );
+    return [
+      ...document.querySelectorAll(`${sheet} [data-planner-show]:not([data-planner-show-covered])`),
+    ].filter((pill) => {
+      const r = pill.getBoundingClientRect();
+      return blocks.some(
+        (b) => r.left < b.right && r.right > b.left && r.top < b.bottom && r.bottom > b.top
+      );
+    }).length;
+  }, SHEET);
+  check(
+    'keine Show-Pille mit Namen liegt auf einem Block',
+    namesOnBlocks === 0,
+    `${namesOnBlocks} auf Blöcken`
   );
 
   // Two shows at one minute share a line and BOTH are named — and the 15:05 one
@@ -4430,6 +4472,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   // `[aria-pressed]`: since PAR-82 the switched-on toggle also carries the
   // "Link zum Plan teilen" button, so a bare `button` matched two elements and
@@ -4488,13 +4531,17 @@ step: {
 
     // Reopening must still say "on". The state is read back from the browser's
     // own subscription AND the stored id, so losing either has to read as off.
-    await push.locator(`${SHEET} button[aria-label]`).first().press('Escape');
+    // Twice: the first Escape closes the bell's popover, the second the sheet.
+    await push.keyboard.press('Escape');
+    await push.waitForTimeout(300);
+    await push.keyboard.press('Escape');
     await push.waitForTimeout(400);
     if (!(await openSheet(push, 'Benachrichtigungen, zweiter Aufbau'))) {
       await push.close();
       break step;
     }
     await push.waitForTimeout(1500);
+    await openPushBell(push);
     check(
       'nach dem Wiederöffnen sind sie immer noch an',
       (await push.locator('[data-planner-push="on"]').count()) === 1
@@ -4842,9 +4889,13 @@ step: {
     await push.close();
     break step;
   }
+  // The bell too, not only its body: the body is a popover that is not mounted
+  // until the bell is pressed, so counting it alone would pass over a bell that
+  // opens onto nothing.
   check(
     'ohne Schlüssel gibt es keinen Schalter',
-    (await push.locator('[data-planner-push]').count()) === 0
+    (await push.locator('[data-planner-push]').count()) === 0 &&
+      (await push.locator('[data-planner-push-trigger]').count()) === 0
   );
   await push.close();
 }
@@ -4896,6 +4947,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   const toggle = push.locator('[data-planner-push]');
   check('mit Schlüssel steht der Schalter da', (await toggle.count()) === 1);
@@ -4969,6 +5021,7 @@ step: {
     break step;
   }
   await push.waitForTimeout(2000);
+  await openPushBell(push);
 
   const denied = push.locator('[data-planner-push="denied"]');
   check('ein abgelehnter Browser bekommt eine Erklärung', (await denied.count()) === 1);

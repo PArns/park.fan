@@ -775,6 +775,20 @@ weight`, `MAX_STOPS` being 24) rather than added as Pareto axes, because a
    own error. Same day after the change: nine of the ten are planned, Taron and
    F.L.Y. among them, and what is given up is Colorado Adventure.
 
+   **The weight belongs to a ride in the list, not to a slug.** A day can hold
+   a ride twice, and the fit assistant hands the engine every planned ride as
+   one entry of `add`. The weight was keyed on `attractionSlug` and ranked off
+   `priority.indexOf(slug)`, so a second go on Chiapas took the rank of the
+   first and survived, and on Phantasialand the assistant struck Winja's Fear
+   and Raik — rides nobody had had yet — to keep Chiapas three times and
+   Winja's Force twice („eher Doppelfahrten raus nehmen"). `rankHeadliners`
+   now answers one weight per entry: the n-th time a slug appears is matched
+   to its n-th place in `priority`, and a lap ranks behind EVERY first ride,
+   named or not. `peeled()` sets aside by index for the same reason (by slug it
+   took all three laps at once), and `fitOrder` draws the laps at the bottom of
+   the assistant's list, so „gestrichen wird von unten" stays true. A pinned lap
+   stays where it was pinned. `test:planner-fit` §11.
+
    **And the set is decided before the order, because the beam cannot do it.**
    Overflow only appears on the last stop of an order, so every prefix scores
    `overflow: 0` and is ranked on cost alone — by the time the tier that decides
@@ -1885,6 +1899,64 @@ on. In the context band „Ferien nebenan" is a palm
 on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
 brings the chip row back to one line at 360 px: the band is 60 px there again, 20 px
 that go to the axis.
+
+**The desktop follows (PAR-482 follow-up).** What the phone sheet learned went
+to the side panel too, and several things were found on the way.
+
+- **A ride search per column.** The desktop had none: `planner-wide:hidden` on
+  the panel's copy, on the argument that a mouse drags ride cards off the park
+  page. It is back as `inline` on `PlannerRideSearch`, drawn by each column in
+  its foot row beside „Eigener Block" — one row, like the phone — and its list
+  opens under the field only while a query is typed. Rows are clicked or
+  dragged onto the axis. The search reads its day's entries by park and date
+  rather than `activeEntries`, since a second column is a different day, and
+  the panel's phone copy is now gated on `isPhone` like the foot, so the desktop
+  sheet holds one `input[type=search]` per column and no hidden extra.
+- **The foot is the phone's.** „Tag optimieren" takes the rest of the row in
+  both states, the undo is the tinted icon in the row
+  (`data-planner-optimize-undo`), and the plain report under the row is read
+  out but not drawn. The notification switch left its row under the foot and
+  is the bell in the header, between „+" and the column switch; the check opens
+  it with `openPushBell`.
+- **A clash is something to optimise.** A pause dropped on top of a ride left
+  the waits where they were, so neither figure the call to action reads changed
+  and the button stayed quiet over a day it would have fixed. `clashCount` counts
+  neighbours that start before the one before them is over and walked away from,
+  judged like the grid's `broken` leg, and `gain` compares it on the day with it
+  on the day `optimizeDay` would write: fewer clashes light the button with
+  „ein Konflikt weniger". `run` reports the same number.
+- **„Anpassen" asks the question again.** It re-ran the press, and after the
+  assistant's answer the day fits, so there was nothing to ask and the link did
+  nothing. The result now keeps the assistant's input and answer, and the link
+  reopens the assistant on them; applying a revision keeps the undo pointing at
+  the day before the first answer.
+- **A show pill does not lie on a block.** The pill of names was centred on the
+  axis and up to 80 % of its width, so wherever a show fell inside a planned ride
+  it covered the ride's name, its times, its lateness hint or the transfer chip
+  under it; on Europa-Park, with a show every hour, that was every other block of
+  a full day, and with two blocks side by side the middle was the second one's
+  name. Only on free axis does the grid draw the names now. Over a block or a
+  chip it draws the mask alone, and `showLineCover` (`lib/planner/day-grid.ts`)
+  says where: centred in the first column over a block, three quarters across it
+  where a chip meets the next block, at the axis' right end over a chip alone.
+  The names stay in the markup for a screen reader, the time in the gutter. With
+  a mouse on any block every show mark fades to 20 %, so a ride can be read in
+  full; a fine pointer only, since a tap leaves `:hover` stuck on a touch screen.
+- **The empty day says how to start, legibly.** The drag sentence was muted text
+  a third of the way down, and the show pills ran through it. It is a card over
+  the axis now, with the grab mark on the desktop. A pill whose line falls under
+  the card is not drawn: the card is measured (it wraps differently per locale
+  and width), and at its edge half a pill used to peek over it.
+- **The foot's buttons are one height.** „Alle Headliner einplanen" was one line
+  at 24 px beside a call to action of two lines at 36. All three are `h-9` on the
+  desktop now, like the undo, and 32 px on a phone as before.
+- **Nothing fades in one frame.** See
+  [the rule](../rules/a-fade-is-animated-never-a-cut.md). The show switch keeps
+  its lines mounted and fades them (`showsHidden` on the grid, with `visibility`
+  flipping at the end), the ghost glides from one snapped minute to the next,
+  the drop line glides and fades in, and the empty card and the undo icon fade
+  in. The day picker's and the calendar's arrows, a ticked entry and an unticked
+  row in the fit assistant fade to their dimmed state instead of switching.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

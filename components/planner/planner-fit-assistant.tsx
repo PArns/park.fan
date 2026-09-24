@@ -35,6 +35,13 @@ interface PlannerFitAssistantProps {
   input: FitInput;
   /** The visitor's answer: what to plan, in what order, with which blocks. */
   onConfirm: (choice: FitChoice) => void;
+  /**
+   * The answer to start from. Absent on a fresh conflict, where everything is
+   * ticked; the answer given last time on „Anpassen", which reopens this on the
+   * same question so the visitor revises what they chose rather than choosing
+   * again from scratch.
+   */
+  initialChoice?: FitChoice;
 }
 
 /**
@@ -80,6 +87,7 @@ export function PlannerFitAssistant({
   dateLabel,
   input,
   onConfirm,
+  initialChoice,
 }: PlannerFitAssistantProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -93,7 +101,7 @@ export function PlannerFitAssistant({
    * cascading render that still has to guard against inheriting the previous
    * day's keys.
    */
-  const [choice, setChoice] = useState<FitChoice>(() => fitChoiceAll());
+  const [choice, setChoice] = useState<FitChoice>(() => initialChoice ?? fitChoiceAll());
   const steps: FitStep[] =
     input.blocks.length > 0 ? ['levers', 'rides', 'result'] : ['rides', 'result'];
   const [step, setStep] = useState<FitStep>(steps[0]);

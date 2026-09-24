@@ -1335,6 +1335,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     <Plus className="size-4" aria-hidden="true" />
                   </button>
                 )}
+                {/* The notification bell, up here on the desktop as on the
+                    phone (PAR-482 follow-up: „die Benachrichtigungen sollten so
+                    wie in Mobile nach oben"). It was a row of its own under the
+                    foot, the last and least tidy thing in the panel; the switch,
+                    its topics and the share link now open from the bell. Only
+                    with something planned, like before: switching it on
+                    uploads the plan. */}
+                {!isPhone && activeEntries.length > 0 && <PlannerPushToggle variant="icon" />}
                 {/* The second column, on and off. The day picker that used to
                     sit here moved onto the column with the park name, because
                     with two of them a panel-level picker cannot say which day
@@ -1694,18 +1702,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   </div>
                 )}
 
-                {/* PHONE ONLY, and that is the whole shape of this feature now.
+                {/* The PHONE's search, the panel's own copy for the active day.
                 A coarse pointer has no drag and drop, so the search is the way
-                a ride gets into a plan and it does the inserting. A fine
-                pointer drags the ride card itself out of the page behind the
-                panel — which is a better gesture, because it picks the hour at
-                the same time — so the list below would be a second way in that
-                costs the axis a third of the panel.
+                a ride gets into a plan and it does the inserting. The desktop
+                has its own since the PAR-482 follow-up, one per column inside
+                the column's foot row (`inline` on {@link PlannerRideSearch}),
+                beside a ride card dragged off the page, which is still the
+                better gesture there because it picks the hour at the same time.
 
-                `planner-wide:hidden` rather than `!isPhone`: `useMediaQuery` answers
-                `false` on the server snapshot, so a JS branch ships the phone's
-                markup in every desktop's first HTML and then deletes it. */}
-                {park && activeDate && (
+                `isPhone` rather than the `planner-wide:hidden` it was, for the
+                reason the foot below gives: this panel is mounted client-side
+                and never server-rendered, so the hook is right on its first
+                render, and with the desktop drawing a search of its own a
+                CSS-hidden copy here would be a second `input[type=search]` in
+                the sheet. */}
+                {isPhone && park && activeDate && (
                   /* NOT `shrink-0`, unlike its neighbours: this is the block that
                  has to give way when the sheet runs out of room, or the floor
                  above it just moves the overflow onto the summary row. It keeps
@@ -1809,7 +1820,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   </div>
                 )}
 
-                {/* Above the push toggle and below the search, because it is an
+                {/* Below the search, because it is an
                 offer about a DIFFERENT day than the one on screen — putting it
                 in the header would read as a statement about the plan being
                 looked at. Renders nothing unless the visitor is inside a park
@@ -1817,23 +1828,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 <div className={cn('contents', searchMode && 'hidden')}>
                   <PlannerInParkCta activeParkSlug={activeParkSlug} />
                 </div>
-
-                {/* Under the ride search, above the summary: it belongs to the DAY
-                rather than to the panel's chrome, and it is the last thing
-                somebody decides once the plan is actually built. Renders
-                nothing at all where push cannot work — see the component.
-
-                `!isPhone` since PAR-313: on a phone the same component is the
-                bell beside the × in the header row (PAR-482), and two copies
-                would be two `[data-planner-push]` for a selector to pick the
-                wrong one of — and two `usePushSubscription()`, i.e. two
-                `/api/push` requests and two states free to disagree about whether
-                it is on. */}
-                {!isPhone && activeEntries.length > 0 && (
-                  <div className="border-border/60 shrink-0 border-t">
-                    <PlannerPushToggle />
-                  </div>
-                )}
               </div>
             </div>
           </>

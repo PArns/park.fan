@@ -2279,6 +2279,7 @@
       "saved": "{minutes} Min. weniger Warten",
       "already": "Passt schon so",
       "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
+      "resolved": "{count, plural, one {ein Konflikt weniger} other {# Konflikte weniger}}",
       "sameWait": "Umgestellt, gleiche Wartezeit",
       "resorted": "Der Tag ist umgestellt",
       "added": "{count, plural, one {Eine Bahn ergänzt} other {# Bahnen ergänzt}}",

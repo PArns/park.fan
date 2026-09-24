@@ -2279,6 +2279,7 @@
       "saved": "{minutes} min. minder wachten",
       "already": "Staat al goed",
       "fitted": "{count, plural, one {één attractie past nu in de dag} other {# attracties passen nu in de dag}}",
+      "resolved": "{count, plural, one {één conflict minder} other {# conflicten minder}}",
       "sameWait": "Anders ingedeeld, even lang wachten",
       "resorted": "De dag is anders ingedeeld",
       "added": "{count, plural, one {Eén attractie toegevoegd} other {# attracties toegevoegd}}",

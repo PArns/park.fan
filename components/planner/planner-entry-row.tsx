@@ -93,7 +93,7 @@ export function PlannerEntryRow({
     <li
       data-planner-entry={entry.id}
       className={cn(
-        'group relative flex h-14 items-center gap-2 rounded-lg px-2 transition-colors',
+        'group relative flex h-14 items-center gap-2 rounded-lg px-2 transition',
         done && 'opacity-70'
       )}
     >

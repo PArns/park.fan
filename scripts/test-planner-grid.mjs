@@ -36,6 +36,8 @@ import {
   rideFloor,
   MAX_SHOW_LINES,
   showLinePositions,
+  showLineCover,
+  SHOW_PILL_HALF_PX,
   snapTo,
   unfoldedCloseHour,
   yFor,
@@ -345,6 +347,31 @@ test(
     sparse.every((line) => line.collapsedWith.length === 0),
     true
   );
+}
+
+// ── 14c. A show pill steps back where the axis is taken ─────────────────────
+// A pill of names centred on its line lay on the name and the times of every
+// block a show fell into, and on the transfer chip between two of them.
+{
+  const block = { kind: 'block', topPx: 100, bottomPx: 160, columns: 1 };
+  const pair = { kind: 'block', topPx: 200, bottomPx: 260, columns: 2 };
+  const chip = { kind: 'chip', topPx: 300, bottomPx: 321 };
+  const all = [block, pair, chip];
+  const kind = (y) => showLineCover(y, all).kind;
+  test('a line on free axis keeps the whole pill', kind(50), 'free');
+  test('a line through a block is on the block', kind(130), 'block');
+  test('…and through blocks side by side says how many', showLineCover(230, all).columns, 2);
+  test('a line through a transfer chip alone is on the chip', kind(310), 'chip');
+  const edge = showLineCover(310, [chip, { ...block, topPx: 305, bottomPx: 340 }]);
+  test('a line through a chip and a block is on the block', edge.kind, 'block');
+  test('…and says the chip is in the way', edge.chip, true);
+  test('a block alone has no chip in the way', showLineCover(130, all).chip, false);
+  test(
+    'a line just above a block counts the pill that reaches into it',
+    kind(100 - SHOW_PILL_HALF_PX + 1),
+    'block'
+  );
+  test('…and one a whole pill above it does not', kind(100 - SHOW_PILL_HALF_PX), 'free');
 }
 
 // ── 15. Snapping and placement ───────────────────────────────────────────────

@@ -7,6 +7,7 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import {
   MAX_STOPS,
   canOptimize,
+  clashCount,
   headlinersSkipped,
   headlinersToAdd,
   movableEntries,
@@ -159,6 +160,14 @@ export function PlannerOptimizeActions({
      * A day that lost nothing keeps the muted line it always had.
      */
     alert: boolean;
+    /**
+     * The question and the answer behind an assistant's result, kept so
+     * „Anpassen" can put the same question again. Without it the link re-ran
+     * the press, and on a day the answer had just made fit there was no
+     * conflict left to open the assistant on: the link did nothing (PAR-482
+     * follow-up: „wenn man auf Anpassen klickt, passiert nix").
+     */
+    fit?: { input: FitInput; choice: FitChoice };
   } | null>(null);
   const [undoTo, setUndoTo] = useState<{
     parkSlug: string;
@@ -180,6 +189,8 @@ export function PlannerOptimizeActions({
     /** Increments per press, so the dialog remounts with a fresh answer. */
     nonce: number;
     input: FitInput;
+    /** The answer to open on, where this is „Anpassen" on an earlier one. */
+    choice?: FitChoice;
   } | null>(null);
 
   // Memoised so the search below (`gain`) keys on the day's entries and not on
@@ -254,8 +265,17 @@ export function PlannerOptimizeActions({
     if (!before || !plan || plan.stops.length !== movableNow.length) return null;
     const fitted = before.overflow - plan.overflow;
     const saved = roundWaitDeltaTo5(before.totalWaitMinutes - plan.totalWaitMinutes);
-    if (fitted <= 0 && saved < 5) return null;
-    return { fitted: Math.max(0, fitted), saved: Math.max(0, saved) };
+    // Clashes the plan takes out: a pause dragged onto a ride leaves the waits
+    // where they were and the day impossible, which neither figure above sees.
+    const resolved =
+      clashCount(day, deferredEntries, now) -
+      clashCount(day, withPlan(deferredEntries, plan.stops), now);
+    if (fitted <= 0 && saved < 5 && resolved <= 0) return null;
+    return {
+      fitted: Math.max(0, fitted),
+      saved: Math.max(0, saved),
+      resolved: Math.max(0, resolved),
+    };
   }, [grid, day, deferredEntries, date, timezone, nowTick]);
 
   /** The row with its trailing control alone, where there is nothing to optimise. */
@@ -375,13 +395,20 @@ export function PlannerOptimizeActions({
       // On the five-minute grid, like every wait figure on screen and like the
       // call to action that promised this number before the press (`gain`).
       const shownSaved = roundWaitDeltaTo5(saved);
+      // The clashes the press took out, counted as the call to action counted
+      // them before it (`gain`), so the promise and the report agree.
+      const resolved =
+        clashCount(day, entries, clock) - clashCount(day, withPlan(entries, plan.stops), clock);
+      if (resolved > 0) parts.push(t('optimize.resolved', { count: resolved }));
       if (fitted > 0) parts.push(t('optimize.fitted', { count: fitted }));
       if (shownSaved > 0) parts.push(t('optimize.saved', { minutes: shownSaved }));
       // A rebuilt day that queues the same amount says so. Where it queues MORE
       // and gained nothing that fits, the only honest line is that it moved:
       // `optimizeDay` only returns such a plan for a day that could not be
       // walked in the first place, so there is no before-figure worth quoting.
-      else if (fitted <= 0) parts.push(saved < 0 ? t('optimize.resorted') : t('optimize.sameWait'));
+      else if (fitted <= 0 && resolved <= 0) {
+        parts.push(saved < 0 ? t('optimize.resorted') : t('optimize.sameWait'));
+      }
     }
     if (skipped > 0 && add.length > 0) parts.push(t('optimize.skipped', { count: skipped }));
     if (plan.overflow > 0) parts.push(t('optimize.overflow', { count: plan.overflow }));
@@ -402,9 +429,14 @@ export function PlannerOptimizeActions({
    * undo snapshot is taken before both, so „Rückgängig" puts back the day that
    * was on screen when the dialog opened.
    */
-  const applyChoice = (input: FitInput, choice: FitChoice) => {
+  const applyChoice = (input: FitInput, choice: FitChoice, revising = false) => {
     const outcome = evaluateFit(input, choice);
-    setUndoTo({ parkSlug, date, entries: entries.map((entry) => ({ ...entry })) });
+    // A revision starts from the day the question was first asked about —
+    // `input.entries`, which is that day — so the way back is still to THAT
+    // day, not to the answer being revised.
+    if (!(revising && shownUndo)) {
+      setUndoTo({ parkSlug, date, entries: entries.map((entry) => ({ ...entry })) });
+    }
     restoreDay(parkSlug, date, outcome.entries);
     applyPlan({
       parkSlug,
@@ -424,7 +456,13 @@ export function PlannerOptimizeActions({
     const left = outcome.missed.length + choice.dropped.size;
     const parts = [t('fit.applied', { count: outcome.fitted.length })];
     if (left > 0) parts.push(t('fit.leftOut', { count: left }));
-    setResult({ parkSlug, date, text: parts.join(' · '), alert: left > 0 });
+    setResult({
+      parkSlug,
+      date,
+      text: parts.join(' · '),
+      alert: left > 0,
+      fit: left > 0 ? { input, choice } : undefined,
+    });
   };
 
   return (
@@ -440,7 +478,10 @@ export function PlannerOptimizeActions({
               data-planner-optimize-headliners=""
               title={t('optimize.hint')}
               className={cn(
-                'bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
+                'bg-primary/10 text-primary hover:bg-primary/20 flex h-9 items-center gap-1.5 rounded-md px-2 text-xs font-medium transition-colors',
+                // 36 px on the desktop like the call to action beside it, whose
+                // two lines need them; a one-line button beside a two-line one
+                // read as two sizes of button (PAR-482 follow-up).
                 // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
                 // (PAR-482). See `PHONE_TARGET_32_UP`. `w-min` on a phone: as
                 // wide as its longest word, so the label always takes two lines
@@ -450,7 +491,7 @@ export function PlannerOptimizeActions({
                 // left it and carried empty space beside "Headliner / planen".
                 // Never below the longest word: with `min-w-0` it went below,
                 // and French lost the "s" of "Attractions".
-                'planner-phone:py-0 planner-phone:px-2.5 planner-phone:w-min',
+                'planner-phone:px-2.5 planner-phone:w-min',
                 PHONE_TARGET_32_UP
               )}
             >
@@ -482,10 +523,10 @@ export function PlannerOptimizeActions({
               data-planner-optimize-gain={gain ? '' : undefined}
               title={t('optimize.hint')}
               className={cn(
-                'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
+                'flex h-9 items-center gap-1.5 rounded-md px-2 text-xs transition-colors',
                 // 32 px drawn, 44 px to a finger, all of the overhang ABOVE
                 // (PAR-482). See `PHONE_TARGET_32_UP`.
-                'planner-phone:py-0 planner-phone:px-2.5',
+                'planner-phone:px-2.5',
                 PHONE_TARGET_32_UP,
                 gain
                   ? // Grows into the rest of the row, and WRAPS onto a row of its
@@ -497,9 +538,9 @@ export function PlannerOptimizeActions({
                     // gain, so the row reads as one set of buttons rather than
                     // a button and a stray word (PAR-482: "gleiche Farbe,
                     // wenn's nix zu optimieren gibt"). It still sorts the day.
-                    // On a phone it takes the rest of the row either way
-                    // ("CTA volle Breite").
-                    'bg-primary/10 text-primary hover:bg-primary/20 planner-phone:flex-[1_0_auto] planner-phone:justify-center font-medium'
+                    // It takes the rest of the row either way ("CTA volle
+                    // Breite"), on a phone and on the desktop alike.
+                    'bg-primary/10 text-primary hover:bg-primary/20 flex-[1_0_auto] justify-center font-medium'
               )}
             >
               <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />
@@ -509,9 +550,11 @@ export function PlannerOptimizeActions({
                 <span className="flex min-w-0 flex-col items-start text-left leading-tight">
                   <span className="max-w-full truncate font-semibold">{t('optimize.run')}</span>
                   <span className="max-w-full truncate text-[11px] opacity-85">
-                    {gain.fitted > 0
-                      ? t('optimize.fitted', { count: gain.fitted })
-                      : t('optimize.saved', { minutes: gain.saved })}
+                    {gain.resolved > 0
+                      ? t('optimize.resolved', { count: gain.resolved })
+                      : gain.fitted > 0
+                        ? t('optimize.fitted', { count: gain.fitted })
+                        : t('optimize.saved', { minutes: gain.saved })}
                   </span>
                 </span>
               ) : (
@@ -519,25 +562,25 @@ export function PlannerOptimizeActions({
               )}
             </button>
           )}
-          {/* The phone's undo: the icon, in this row, and only while there is
-              something to undo (PAR-482). The sentence under the row keeps what
-              the press did; the way back sits with the buttons, where the
-              thumb already is, instead of as a link at the end of that line.
-              36 × 32 drawn and 36 × 44 to a finger, all of the overhang above
-              like its neighbours; none to the sides, so it stays clear of the
-              show switch's reach 4 px into the gap beside it. The wide
-              arrangement keeps the link in the sentence. */}
+          {/* The undo: the icon, in this row, and only while there is
+              something to undo (PAR-482, on the desktop too since its
+              follow-up). The way back sits with the buttons instead of as a
+              link at the end of the report line, which is read out but not
+              drawn. 36 × 32 drawn and 36 × 44 to a finger, all of the
+              overhang above like its neighbours; none to the sides, so it
+              stays clear of the show switch's reach 4 px into the gap beside
+              it. */}
           {shownUndo && (
             <button
               type="button"
               onClick={undo}
-              data-planner-optimize-undo-icon=""
+              data-planner-optimize-undo=""
               aria-label={t('optimize.undo')}
               title={t('optimize.undo')}
               className={cn(
                 // The row's tint, like the buttons beside it: ghosted, it read
                 // as a gap between the call to action and the show switch.
-                'planner-wide:hidden bg-primary/10 text-primary hover:bg-primary/20 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
+                'bg-primary/10 text-primary hover:bg-primary/20 flex size-9 shrink-0 items-center justify-center rounded-md transition starting:opacity-0',
                 PHONE_TARGET_32_UP
               )}
             >
@@ -568,13 +611,14 @@ export function PlannerOptimizeActions({
             'flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[11px] leading-snug',
             shownResult.alert
               ? 'border-crowd-high/40 bg-crowd-high/10 text-crowd-high rounded-md border px-2 py-1.5'
-              : // Read out but not drawn on a phone (PAR-482: „worauf bezieht
-                // sich das?"). With the undo moved into the button row the
-                // plain report stood alone under it, a sentence with nothing
-                // to say what it was about; the day it describes is right
-                // above, and the undo icon is the press's trace. An alert
-                // stays drawn: it carries „Anpassen", something to do.
-                'text-muted-foreground planner-phone:sr-only'
+              : // Read out but not drawn (PAR-482: „worauf bezieht sich
+                // das?"; on the desktop too since its follow-up). With the
+                // undo moved into the button row the plain report stood alone
+                // under it, a sentence with nothing to say what it was about;
+                // the day it describes is right above, and the undo icon is
+                // the press's trace. An alert stays drawn: it carries
+                // „Anpassen", something to do.
+                'sr-only'
           )}
         >
           {shownResult.alert && (
@@ -586,30 +630,28 @@ export function PlannerOptimizeActions({
           {shownResult.alert && (
             <button
               type="button"
-              onClick={() => attempt([])}
+              onClick={() => {
+                const asked = shownResult.fit;
+                // The assistant's own answer: the same question again, opened
+                // on that answer. Otherwise the plan ran out of day on its own,
+                // and the press asks the question afresh.
+                if (asked) {
+                  setFit({
+                    parkSlug,
+                    date,
+                    nonce: (fit?.nonce ?? 0) + 1,
+                    input: asked.input,
+                    choice: asked.choice,
+                  });
+                } else {
+                  attempt([]);
+                }
+              }}
               data-planner-optimize-adjust=""
               className="hover:bg-crowd-high/15 inline-flex items-center gap-1 rounded px-1 py-0.5 underline underline-offset-2 transition-colors"
             >
               <SlidersHorizontal className="size-3 shrink-0" aria-hidden="true" />
               {t('fit.adjust')}
-            </button>
-          )}
-          {shownUndo && (
-            <button
-              type="button"
-              onClick={undo}
-              data-planner-optimize-undo=""
-              className={cn(
-                // On a phone the undo is an icon in the button row instead —
-                // see `data-planner-optimize-undo-icon`.
-                'planner-phone:hidden inline-flex items-center gap-1 underline underline-offset-2 transition-colors',
-                shownResult.alert
-                  ? 'hover:bg-crowd-high/15 rounded px-1 py-0.5'
-                  : 'hover:text-foreground'
-              )}
-            >
-              <Undo2 className="size-3 shrink-0" aria-hidden="true" />
-              {t('optimize.undo')}
             </button>
           )}
         </div>
@@ -628,13 +670,31 @@ export function PlannerOptimizeActions({
           parkName={parkName}
           dateLabel={longDate(date, locale)}
           input={shownFit.input}
+          initialChoice={shownFit.choice}
           onConfirm={(choice) => {
             setFit(null);
-            applyChoice(shownFit.input, choice);
+            applyChoice(shownFit.input, choice, Boolean(shownFit.choice));
           }}
         />
       )}
     </OptimizeRow>
+  );
+}
+
+/**
+ * The day as a plan leaves it: each planned entry at its new minute, everything
+ * else where it was. What {@link clashCount} is asked about on the far side of
+ * a press, so the call to action compares the day on screen with the day the
+ * press would write.
+ */
+function withPlan(
+  entries: readonly PlannerEntry[],
+  stops: readonly { entryId: string | null; startMinute: number }[]
+): PlannerEntry[] {
+  const moved = new Map<string, number>();
+  for (const stop of stops) if (stop.entryId) moved.set(stop.entryId, stop.startMinute);
+  return entries.map((entry) =>
+    moved.has(entry.id) ? { ...entry, startMinute: moved.get(entry.id) as number } : entry
   );
 }
 
