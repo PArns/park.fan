@@ -58,6 +58,14 @@ export interface OutlookMonth {
   /** Of the RATED days, how many carry `recommended` or `highly_recommended`. */
   recommendedDays: number;
   /**
+   * How many days of this month the backend marks `closed` against the park's schedule.
+   *
+   * Counted apart because a month the park is shut for is not a month without a forecast: Legoland
+   * Billund answered on 2026-09-24 with January to March 2027 as `closed` on every day, and a
+   * badge reading „no forecast" there would hide the one thing the forecast does say.
+   */
+  closedDays: number;
+  /**
    * The month's headline crowd level: the most frequent of the six coloured tiers.
    *
    * A tie goes to the BUSIER tier. A month that is half quiet and half busy is a month worth
@@ -130,11 +138,13 @@ export function buildYearlyOutlook(
     let coveredDays = 0;
     let ratedDays = 0;
     let recommendedDays = 0;
+    let closedDays = 0;
 
     for (let index = 0; index < length; index++) {
       const level = days[index];
       if (level === null) continue;
       coveredDays++;
+      if (level === 'closed') closedDays++;
       if (!isColoredCrowdLevel(level)) continue;
       ratedDays++;
       tierCounts.set(level, (tierCounts.get(level) ?? 0) + 1);
@@ -161,9 +171,20 @@ export function buildYearlyOutlook(
       coveredDays,
       ratedDays,
       recommendedDays,
+      closedDays,
       dominant,
     });
   }
 
   return result;
+}
+
+/**
+ * The level a month's badge names: its dominant tier, else `closed` when every day the forecast
+ * covers is a closed day, else `unknown` („no forecast").
+ */
+export function outlookBadgeLevel(month: OutlookMonth): ColoredCrowdLevel | 'closed' | 'unknown' {
+  if (month.dominant) return month.dominant;
+  if (month.closedDays > 0 && month.closedDays === month.coveredDays) return 'closed';
+  return 'unknown';
 }

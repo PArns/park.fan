@@ -11,7 +11,11 @@
  * of cells per park and close the gaps by sliding later days leftwards.
  */
 import assert from 'node:assert/strict';
-import { buildYearlyOutlook, OUTLOOK_MONTHS } from '../lib/utils/yearly-outlook.ts';
+import {
+  buildYearlyOutlook,
+  outlookBadgeLevel,
+  OUTLOOK_MONTHS,
+} from '../lib/utils/yearly-outlook.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -167,6 +171,29 @@ test('closed and unknown days are covered but not rated', () => {
   assert.equal(months[0].dominant, null);
   assert.equal(months[0].days[0], 'closed');
   assert.equal(months[0].days[1], 'unknown');
+  assert.equal(months[0].closedDays, 1);
+  assert.equal(outlookBadgeLevel(months[0]), 'unknown', 'one closed day among unrated ones');
+});
+
+test('a month the park is shut for says closed, not „no forecast"', () => {
+  // Legoland Billund, 2026-09-24: January to March 2027 came back `closed` on every day.
+  const january = Array.from({ length: 31 }, (_, i) =>
+    day(`2027-01-${String(i + 1).padStart(2, '0')}`, 'closed', 'closed')
+  );
+  const months = buildYearlyOutlook(january, '2026-12-15');
+  assert.equal(months[1].closedDays, 31);
+  assert.equal(months[1].ratedDays, 0);
+  assert.equal(outlookBadgeLevel(months[1]), 'closed');
+  assert.equal(outlookBadgeLevel(months[0]), 'unknown', 'December carries no entry at all');
+  assert.equal(outlookBadgeLevel(months[2]), 'unknown', 'past the horizon');
+});
+
+test('a month with rated days names its tier, closed days or not', () => {
+  const months = buildYearlyOutlook(
+    [day('2026-10-01', 'closed', 'closed'), day('2026-10-02', 'low')],
+    '2026-10-01'
+  );
+  assert.equal(outlookBadgeLevel(months[0]), 'low');
 });
 
 test('an unrateable park recommends nothing, however the endpoint labels it', () => {

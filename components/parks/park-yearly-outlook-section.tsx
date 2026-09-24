@@ -9,7 +9,11 @@ import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
-import { buildYearlyOutlook, type OutlookMonth } from '@/lib/utils/yearly-outlook';
+import {
+  buildYearlyOutlook,
+  outlookBadgeLevel,
+  type OutlookMonth,
+} from '@/lib/utils/yearly-outlook';
 
 /**
  * How busy the next twelve months look, month by month.
@@ -145,12 +149,9 @@ function OutlookMonthRow({
       <span className="flex items-center gap-2 sm:shrink-0">
         {/* `unknown` is the palette's own „no forecast" badge — a park with too little history
           gets it from this same component on the calendar, and a month past the horizon means
-          the same thing. */}
+          the same thing. A month the park is shut for says `closed` instead. */}
         <span className="flex sm:w-36">
-          <CrowdLevelBadge
-            level={month.dominant ?? 'unknown'}
-            className={cn(muted && 'invisible')}
-          />
+          <CrowdLevelBadge level={outlookBadgeLevel(month)} className={cn(muted && 'invisible')} />
         </span>
         <span
           className={cn(
