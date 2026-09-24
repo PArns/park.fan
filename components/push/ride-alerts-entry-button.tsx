@@ -3,6 +3,8 @@
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { listRideAlertsLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { RideAlertDialog, type RideAlertDialogAttraction } from './ride-alert-dialog';
@@ -43,7 +45,10 @@ export function RideAlertsEntryButton({ parkName, attractions }: RideAlertsEntry
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="text-primary flex items-center gap-1 text-xs whitespace-nowrap hover:underline"
+        className={cn(
+          'text-primary flex items-center gap-1 text-xs whitespace-nowrap hover:underline',
+          PHONE_HIT_AREA
+        )}
       >
         <Bell className="size-3 shrink-0" aria-hidden="true" />
         {count > 0 ? t('entryWithCount', { count }) : t('entry')}

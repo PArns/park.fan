@@ -32,6 +32,7 @@ import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-pane
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
 import { ShowFollowBell } from '@/components/push/show-follow-bell';
 import { stripNewPrefix, cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /** Rows the headliner and show columns ever show. The show column runs one short of the
@@ -494,6 +495,7 @@ export function ParkTodayPanel({
             aria-label={t('weatherAndHourly')}
             className={cn(
               'hover:text-primary flex min-w-0 items-center gap-2 transition-colors',
+              PHONE_HIT_AREA,
               // With a warning in the row the reading keeps icon and temperature and gives the
               // warning the room; below `sm` there is not room for both, and the warning wins.
               nowcastAlert && 'hidden shrink-0 sm:flex'
@@ -614,7 +616,9 @@ export function ParkTodayPanel({
                         'text-xs font-medium sm:text-sm',
                         sched.timeUntil.variant === 'opening'
                           ? 'text-primary'
-                          : 'text-amber-600 dark:text-amber-400'
+                          : // 700, not 600: amber-600 on white is 3.2:1, and this is the line
+                            // that says when the park closes.
+                            'text-amber-700 dark:text-amber-400'
                       )}
                     >
                       {sched.timeUntil.message}
@@ -690,7 +694,10 @@ export function ParkTodayPanel({
                       title={t('dayDetail.openToday')}
                       aria-label={t('dayDetail.openToday')}
                       aria-haspopup="dialog"
-                      className="group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                      className={cn(
+                        'group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none',
+                        PHONE_HIT_AREA
+                      )}
                     >
                       {predictedToday ? (
                         <CrowdLevelBadge level={predictedToday} />
@@ -846,7 +853,7 @@ export function ParkTodayPanel({
               <div className="mt-auto flex items-center justify-between gap-2">
                 <a
                   href={chapterHref('attractions')}
-                  className="text-primary text-left text-xs hover:underline"
+                  className={cn('text-primary text-left text-xs hover:underline', PHONE_HIT_AREA)}
                 >
                   {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
                 </a>
@@ -865,7 +872,10 @@ export function ParkTodayPanel({
                 action={
                   <a
                     href={chapterHref('shows')}
-                    className="text-primary text-xs whitespace-nowrap hover:underline"
+                    className={cn(
+                      'text-primary text-xs whitespace-nowrap hover:underline',
+                      PHONE_HIT_AREA
+                    )}
                   >
                     {t('allShowsLink', { count: park.shows?.length ?? 0 })}
                   </a>

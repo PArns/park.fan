@@ -11,6 +11,7 @@ import {
   CROWD_LEVEL_PERCENT_RANGE,
   type ColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 
 /**
  * The trigger's box. Exported because the ride card's stand-in button has to be the same box, or
@@ -21,8 +22,12 @@ import {
  * — 22 px of cursor-help over nothing, with the tooltip anchored to the middle of the empty box
  * instead of to the badge.
  */
-export const CROWD_SCALE_TRIGGER_CLASS =
-  'focus-visible:ring-ring/60 inline-flex w-fit cursor-help rounded-full focus-visible:ring-2 focus-visible:outline-none';
+export const CROWD_SCALE_TRIGGER_CLASS = cn(
+  'focus-visible:ring-ring/60 inline-flex w-fit cursor-help rounded-full focus-visible:ring-2 focus-visible:outline-none',
+  // The badge is 22 px high and opens its scale on a tap; on a ride card a miss by a few pixels
+  // navigates to the ride instead.
+  PHONE_HIT_AREA
+);
 
 interface CrowdScaleTooltipProps {
   /** The level the wrapped badge shows; it is the row that gets highlighted. */

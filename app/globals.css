@@ -298,6 +298,12 @@
   --color-crowd-high: var(--crowd-high);
   --color-crowd-very-high: var(--crowd-very-high);
   --color-crowd-extreme: var(--crowd-extreme);
+  --color-crowd-ink-very-low: var(--crowd-ink-very-low);
+  --color-crowd-ink-low: var(--crowd-ink-low);
+  --color-crowd-ink-moderate: var(--crowd-ink-moderate);
+  --color-crowd-ink-high: var(--crowd-ink-high);
+  --color-crowd-ink-very-high: var(--crowd-ink-very-high);
+  --color-crowd-ink-extreme: var(--crowd-ink-extreme);
   --color-element-launch: var(--element-launch);
   --color-element-airtime: var(--element-airtime);
   --color-element-inversion: var(--element-inversion);
@@ -780,6 +786,19 @@
   --crowd-very-high: oklch(0.58 0.22 52);
   --crowd-extreme: oklch(0.55 0.24 25);
 
+  /* The same six tiers as TEXT. The fills above sit at L 0.55 … 0.62, which is right for a tile
+     or a dot and wrong for a number: as text on white they measured 3.3 … 3.9:1, and a wait time
+     in the headliner list is 14 px. These are darkened until each clears 4.5:1 on a ground as
+     dark as a light photo under glass (luminance 0.75), which puts them at about 6:1 on white.
+     Only text reads these; the fills keep theirs, because `CROWD_SCALE_CLASS` sets near-black on
+     them and darker fills would cost that contrast instead. */
+  --crowd-ink-very-low: oklch(0.47 0.13 192);
+  --crowd-ink-low: oklch(0.46 0.18 162);
+  --crowd-ink-moderate: oklch(0.47 0.2 145);
+  --crowd-ink-high: oklch(0.5 0.2 78);
+  --crowd-ink-very-high: oklch(0.52 0.22 52);
+  --crowd-ink-extreme: oklch(0.5 0.24 25);
+
   /* Track-figure colors — what a figure DOES to you, for the ride profile rail.
      Deliberately distinct hues from the crowd band above: the two appear on the
      same page and must not read as the same scale. */
@@ -798,19 +817,23 @@
   --status-closed: oklch(0.577 0.245 27.325); /* red – same as destructive */
   --status-refurbishment: oklch(0.623 0.214 259.815);
 
-  /* Badge background colors — light mode mirrors status/crowd (already dark enough for /60 on white) */
-  --badge-status-operating: var(--status-operating);
-  --badge-status-down: var(--status-down);
-  --badge-status-closed: var(--status-closed);
-  --badge-status-refurbishment: var(--status-refurbishment);
-  --badge-crowd-very-low: var(--crowd-very-low);
-  --badge-crowd-low: var(--crowd-low);
-  --badge-crowd-moderate: var(--crowd-moderate);
-  --badge-crowd-high: var(--crowd-high);
-  --badge-crowd-very-high: var(--crowd-very-high);
-  --badge-crowd-extreme: var(--crowd-extreme);
+  /* Badge background colors. The status and crowd badges carry white text, and in light mode they
+     used to be the status/crowd colours at /60 — on white that measured 2.1 … 3.2:1 (PAR-422).
+     They now take the darker fills dark mode already had, fully opaque (`--badge-fill`), which
+     puts white at 5.4 … 7.9:1 whatever is underneath. */
+  --badge-fill: 100%;
+  --badge-status-operating: oklch(0.46 0.17 142);
+  --badge-status-down: oklch(0.5 0.18 47);
+  --badge-status-closed: oklch(0.46 0.22 27);
+  --badge-status-refurbishment: oklch(0.48 0.16 259);
+  --badge-crowd-very-low: oklch(0.42 0.14 192);
+  --badge-crowd-low: oklch(0.48 0.19 162);
+  --badge-crowd-moderate: oklch(0.48 0.2 145);
+  --badge-crowd-high: oklch(0.5 0.2 78);
+  --badge-crowd-very-high: oklch(0.46 0.22 52);
+  --badge-crowd-extreme: oklch(0.42 0.23 25);
   --badge-primary: var(--primary);
-  --badge-muted: var(--muted-foreground);
+  --badge-muted: oklch(0.46 0.02 238);
   --badge-trend-up: var(--trend-up);
   --badge-trend-down: var(--trend-down);
   --badge-trend-stable: var(--trend-stable);
@@ -870,6 +893,14 @@
   --crowd-very-high: oklch(0.8 0.2 52);
   --crowd-extreme: oklch(0.74 0.22 25);
 
+  /* On the dark ground the fills are already light enough to be text. */
+  --crowd-ink-very-low: var(--crowd-very-low);
+  --crowd-ink-low: var(--crowd-low);
+  --crowd-ink-moderate: var(--crowd-moderate);
+  --crowd-ink-high: var(--crowd-high);
+  --crowd-ink-very-high: var(--crowd-very-high);
+  --crowd-ink-extreme: var(--crowd-extreme);
+
   /* Track-figure colors — lifted for the navy background */
   --element-launch: oklch(0.78 0.16 45);
   --element-airtime: oklch(0.76 0.13 245);
@@ -883,7 +914,9 @@
   --status-closed: oklch(0.704 0.191 22.216); /* red – same as dark destructive */
   --status-refurbishment: oklch(0.707 0.165 254.624);
 
-  /* Badge background colors — darker for dark mode (white text on near-black panels) */
+  /* Badge background colors — darker for dark mode (white text on near-black panels). Translucent
+     here: over a near-black panel the /60 fill still leaves white at 9.9:1 or better. */
+  --badge-fill: 60%;
   --badge-status-operating: oklch(0.46 0.17 142);
   --badge-status-down: oklch(0.5 0.18 47);
   --badge-status-closed: oklch(0.46 0.22 27);
@@ -1167,39 +1200,39 @@
 
   /* Status */
   .badge-status-operating {
-    @apply bg-badge-status-operating/60 border-status-operating/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-status-operating/(--badge-fill) border-status-operating/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-down {
-    @apply bg-badge-status-down/60 border-status-down/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-status-down/(--badge-fill) border-status-down/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-closed {
-    @apply bg-badge-status-closed/60 border-status-closed/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-status-closed/(--badge-fill) border-status-closed/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-refurbishment {
-    @apply bg-badge-status-refurbishment/60 border-status-refurbishment/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-status-refurbishment/(--badge-fill) border-status-refurbishment/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-unknown {
-    @apply bg-badge-muted/60 border-muted-foreground/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-muted/(--badge-fill) border-muted-foreground/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
 
   /* Crowd level */
   .badge-crowd-very-low {
-    @apply bg-badge-crowd-very-low/60 border-crowd-very-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-crowd-very-low/(--badge-fill) border-crowd-very-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-low {
-    @apply bg-badge-crowd-low/60 border-crowd-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-crowd-low/(--badge-fill) border-crowd-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-moderate {
-    @apply bg-badge-crowd-moderate/60 border-crowd-moderate/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-crowd-moderate/(--badge-fill) border-crowd-moderate/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-high {
-    @apply bg-badge-crowd-high/60 border-crowd-high/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-crowd-high/(--badge-fill) border-crowd-high/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-very-high {
-    @apply bg-badge-crowd-very-high/60 border-crowd-very-high/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-crowd-very-high/(--badge-fill) border-crowd-very-high/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-extreme {
-    @apply bg-badge-crowd-extreme/60 border-crowd-extreme/25 border font-bold tracking-wide text-white uppercase shadow-md;
+    @apply bg-badge-crowd-extreme/(--badge-fill) border-crowd-extreme/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
 
   /* Primary / Queue */
