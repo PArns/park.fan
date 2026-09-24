@@ -73,8 +73,8 @@ route adds; the chunks already fetched come from the browser cache.
 
 ## What the park does not need
 
-The three largest items that nobody standing in the park needs, measured, not guessed. Each has
-its own ticket in the project "Im Park".
+The three largest items that nobody standing in the park needs, measured, not guessed. Each is
+written up as a ticket body on PAR-421, to be filed in the project "Im Park".
 
 1. **The trip planner's code, on every first visit — 82 KB gzip.** `app/[locale]/layout.tsx`
    imports `PlannerLauncher`, which imports `PlannerFlyout` statically, so the whole planner ships
