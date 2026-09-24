@@ -57,7 +57,7 @@ export function AttractionHistoryPanel({
   const reservation = historyGridReservation();
 
   return (
-    <section id="history" className={cn('mt-6 scroll-mt-24 sm:mt-10', className)}>
+    <section id="history" className={cn('mt-10 scroll-mt-24 max-sm:mt-6', className)}>
       <ChapterHeading
         icon={CalendarDays}
         title={t('historyCalendar')}

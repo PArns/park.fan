@@ -45,7 +45,7 @@ export function PageSection({
   children,
 }: PageSectionProps) {
   return (
-    <section id={id} className={cn('mt-6 sm:mt-10', id && 'scroll-mt-24', className)}>
+    <section id={id} className={cn('mt-10 max-sm:mt-6', id && 'scroll-mt-24', className)}>
       <SectionHeading icon={icon} title={title} hint={hint} badge={badge} frosted={frosted} />
       {children}
     </section>

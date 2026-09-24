@@ -169,10 +169,17 @@ export function ChapterHeading({
         // „below this the two do not share a line" rather than a breakpoint that guesses at the
         // width of six languages' worth of buttons.
         aside && 'flex-wrap',
+        // The phone step of the spacing is a `max-sm:` class ADDED to the desktop value, never a
+        // base value with an `sm:` one over it. Call sites override these classes — `ChapterPanel`
+        // passes `mb-0`, the trip planner `mb-5 pb-4`, the guide `mb-8 pb-5` — and `twMerge` only
+        // drops the unprefixed class it conflicts with: an `sm:mb-6` here would survive their
+        // `mb-0` and open a 24 px gap between a panel's band and its body from `sm` up. The bottom
+        // margin has no phone step for the same reason, since a `max-sm:mb-4` would do that below
+        // `sm`. `pb` gets one only at the site scale; the guide's `lg` heading keeps its own.
         tile
-          ? 'mb-6 gap-3 pb-4 sm:mb-8 sm:gap-4 sm:pb-5'
-          : 'mb-4 gap-3 pb-3 sm:mb-6 sm:gap-4 sm:pb-4',
-        frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-2.5 sm:pt-3'),
+          ? 'mb-8 gap-4 pb-5 max-sm:mb-6 max-sm:gap-3 max-sm:pb-4'
+          : cn('mb-6 gap-3 pb-4 sm:gap-4', size === 'md' && 'max-sm:pb-3'),
+        frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3 max-sm:pt-2.5'),
         className
       )}
     >
