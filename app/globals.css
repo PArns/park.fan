@@ -2180,3 +2180,27 @@ html[data-temp-unit] .u-force-metric .u-imperial {
     font-size: 16px;
   }
 }
+
+/* ─── The planner sheet on a touch screen (PAR-485, PAR-483) ─────────────────
+ *
+ * The same iOS zoom as above, and in the planner it was worse than a scrollbar.
+ * The ride search and a free block's label are `text-sm` fields, so one tap into
+ * either left the page at 16/14 = 1.14×. The bottom sheet is `position: fixed`
+ * against the layout viewport, so at that zoom its right edge ran past the
+ * screen (every row cut off mid-word) and its top, where the grab handle and the
+ * header sit, above it. The field report read "Buttons außerhalb der View" and
+ * "der Planer lässt sich nicht schließen", and both were this.
+ *
+ * Keyed on the pointer, not on the width: the zoom is a touch-screen behaviour
+ * and hits an iPad as much as a phone, while a narrow desktop window has no
+ * reason to change. Only fields somebody types into; a checkbox or a range has
+ * no text to zoom to. Scoped to the sheet by its own attribute, so the rest of
+ * the public site keeps its typography — the house `Input` already renders at
+ * 16 px below `md`. */
+@media (pointer: coarse) {
+  [data-planner-sheet] input:not([type='checkbox'], [type='radio'], [type='range']),
+  [data-planner-sheet] textarea,
+  [data-planner-sheet] select {
+    font-size: 16px;
+  }
+}

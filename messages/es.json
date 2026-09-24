@@ -2254,6 +2254,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minutos menos",
       "longer": "15 minutos más",
+      "iconPick": "Icono: {icon}. Elegir otro",
       "icon": {
         "break": "Descanso",
         "food": "Comida",
@@ -2317,7 +2318,8 @@
       "adjust": "Ajustar"
     },
     "sheet": {
-      "handle": "Ampliar o cerrar el planificador",
+      "handle": "Ampliar o reducir el planificador",
+      "close": "Cerrar el planificador",
       "resize": "Ajustar el ancho"
     },
     "headliners": {
@@ -2420,6 +2422,9 @@
         "hintTight": "Antes del cierre hay sitio para {fits} de {total}.",
         "conflict": "Caben {fits} de {total}. Desmarca aquello de lo que puedes prescindir o sube lo que quieres montar sí o sí.",
         "none": "Para este día no falta ninguna atracción estrella.",
+        "noneFitHeight": "Ninguna atracción estrella encaja con tu grupo: {count, plural, one {la única del parque pide} other {las # piden}} una altura mínima mayor que la de la persona más baja. En el planificador puedes añadirlas igualmente una a una.",
+        "noneFitWet": "Ninguna atracción estrella encaja con tu grupo: {count, plural, one {la única del parque moja} other {las # mojan}}, y queréis manteneros secos. En el planificador puedes añadirlas igualmente una a una.",
+        "noneFitBoth": "Ninguna atracción estrella encaja con tu grupo: {count, plural, one {la única del parque pide una altura que la persona más baja no alcanza, o moja} other {cada una de las # pide una altura que la persona más baja no alcanza, o moja}}. En el planificador puedes añadirlas igualmente una a una.",
         "resolved": "{count, plural, one {Así cabe la atracción en el día} other {Así caben las # atracciones en el día}}. Puedes seguir cambiando tu selección."
       },
       "facts": {

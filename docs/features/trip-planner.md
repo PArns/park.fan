@@ -1536,25 +1536,24 @@ the sheet, so tapping outside is no longer a way out and what remains has to be
 real: the handle brings the sheet back down by drag **or** tap, which is why the
 tap toggles rather than only dismissing. At rest the shield is back.
 
-**And the × is gone from the phone sheet**, which is what makes that handle the
-pulled-up state's only exit. Three ways out of a bottom sheet were one too many,
-and the one that went is the one parked in the corner a thumb reaches worst;
-`SheetContent` takes a `hideClose` prop for it, opt-in per call site rather than
-a breakpoint inside the component, because the same component draws the header's
-burger menu and that sheet has nothing else to close it with. The planner keys it
-on `isPhone`, the same value as `side` and `modal` two lines up, so a class does
-not become a fourth copy of `PLANNER_PHONE_QUERY` free to drift from the other
-three. That is also what keeps the trade honest at 844 × 390: the handle's
-wrapper is `planner-wide:hidden` and `planner-wide:` is the exact complement of
-`planner-phone:`, which is the CSS twin of that query — so the × goes exactly
-where the handle arrives, and there is no window that loses both. A `max-sm:`
-class would have taken the × off a landscape phone without giving it a handle,
-because 844 px is over `sm`. The desktop panel keeps its ×: a side panel has no
-handle, and its outside press is deliberately swallowed, so there the × and
-Escape are the whole list. `check:planner` asserts the pair at all three:
-no close button beside the existing `der Anfasser ist da` at 390 × 844, the same
-beside the handle assertion at 844 × 390, and a close button still present at
-1400 px.
+**The × was gone from the phone sheet from PAR-188 to PAR-483, and it is back.**
+PAR-188 took it off on the reasoning that three ways out of a bottom sheet were one
+too many: the handle drags the sheet away, the shield beside it closes it on a tap,
+and the × was parked in the corner a thumb reaches worst. What the field then found
+is that the first thing anybody does with a handle is tap it, a tap pulls the sheet
+up to 100svh, and at 100svh the shield is 0 px tall — so the only exit left was a
+90 px drag that nothing on screen names ("der Planer lässt sich nicht schließen").
+The × now sits in the handle row, `SheetClose` with `data-planner-sheet-close`,
+right of the handle, and the push bell moved to the left margin to make room. It is
+not `SheetContent`'s own corner button, because on a phone that corner is the sheet
+header's day picker, which is what PAR-188 was about in the first place; the planner
+still passes `hideClose={isPhone}` and draws its own. The desktop panel keeps the
+corner ×: a side panel has no handle, and its outside press is deliberately
+swallowed, so there the × and Escape are the whole list. `check:planner` asserts
+exactly one close button at 390 × 844 (44 px, in the handle row), that it takes a
+press while the sheet is pulled up, the same single button at 844 × 390, and the
+corner × at 1400 px. The handle's label says what a press does and nothing more:
+„Planer vergrößern oder verkleinern" (PAR-203).
 
 ### Every target in the sheet is 44 px, and three of them are not what they measure
 
@@ -1711,6 +1710,69 @@ also be bought by deleting rows, and the check should be able to tell the two
 apart. The covering assertion also gained `axisVisible === axis`: without it an
 axis pushed past the sheet's own bottom edge reports "nothing is over me",
 because `elementFromPoint` answers `null` outside the window.
+
+### The phone sheet, measured against an iPhone screenshot (PAR-482)
+
+The report was three sentences — buttons outside the view, a planner that will not
+close, no warning when every headliner is too tall for the children — and the first
+two turned out to be one bug that no Chromium run could have shown.
+
+**iOS zooms in on a text field under 16 px and never zooms back out.** The ride
+search and a free block's label were `text-sm`, so one tap into either left the page
+at 16/14 = 1.14×. The sheet is `position: fixed` against the layout viewport, so at
+that zoom its right edge ran past the screen (every row cut mid-word, which read as
+an overflow) and its top — the handle and the header — above it. The screenshot
+gives the zoom away: the search field is 110 image pixels tall where a 1× render of
+the same screen gives about 94. In Chromium nothing overflowed at 320, 360 or 390 px
+in German or French, `scrollWidth === clientWidth` on every page behind the sheet.
+The admin had hit the same zoom before and carries a rule for it; the planner gets
+its own in `app/globals.css`: under `(pointer: coarse)`, every text field inside
+`[data-planner-sheet]` renders at 16 px. Keyed on the pointer and not the width,
+because the zoom is a touch-screen behaviour and hits an iPad too.
+
+**The selected block's action bar was the biggest thing in the sheet.** With
+`max-sm:flex-wrap` and 44 px targets it wrapped into four lines — the name, two
+moves, seven icon buttons, the durations and a bare "×" — about 200 px docked over a
+scroller of about 240, so the block being edited was usually underneath it. It is two
+lines now, about 105 px at 390: the name and the deselect "×" first, the controls spread
+across the second. The seven icon buttons became one dropdown (the trigger shows the
+current icon), delete is a bin in the bar on every size again (the block's corner ✕
+from PAR-313 stays as the shortcut), and every icon button is one class, `size-8`
+with `gap-1` inside a group and 44 px on a coarse pointer (PAR-326). A block selected
+under the bar is scrolled clear of it (PAR-332): the scroller gets the bar's height
+as bottom padding while a block is selected, so even the last block of the day can
+rise above it, and the column scrolls by as much as the bar covers. The scroll follows
+the CLICK and not the selection, because a drag selects its block on `pointerdown`
+and moving the day under a finger that is still holding the grip would move the drop
+target with it.
+
+**„Tag optimieren" is a call to action where it would change something (PAR-493).**
+It was a grey ghost button at the top of the foot, two rows away from the total it
+lowers, and nobody saw it. The foot now reads headliner band, free block, optimise,
+summary — so the button stands directly over „Wartezeit 3:45 Std." — and the panel
+runs the optimiser once before anybody presses it, with the same input and the same
+`scoreCurrent` before-figure `run` uses. Where the answer beats the plan on screen by
+at least five minutes, or brings a ride back inside the day, the button is filled with
+the primary colour, takes the rest of its row and says what the press is worth
+(„70 Min. weniger Warten") on a second line. The figure is on the five-minute grid,
+and so is the result line after the press, so the promise and the report cannot
+disagree. The search is memoised on the grid's numbers rather than the grid object,
+because the panel rebuilds that object on every render and one search is 5–50 ms.
+
+**The rest of the room went to the axis.** The missing-headliner band is one row of
+pills scrolled sideways on a phone instead of two capped rows with a scroller of
+their own, and the ride search drops its two-line tap hint once the day has a ride in
+it — by then the tap has done what the sentence says. At 390 × 844 with a filled day
+the axis went from about 270 px to 320.
+
+**A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
+headliner that is too tall for the smallest rider or wet for a party that wants to
+stay dry, and an empty list used to land in the same branch as "every headliner is
+already planned": „Für diesen Tag fehlt keine große Bahn mehr" over a family whose
+children fit none of them. The wizard now counts `headlinersSkipped` and, where that
+is what emptied the list, draws a notice in the crowd tint naming the reason (height,
+water or both) and the way on: the rides can still be added one by one in the panel,
+where the search flags them rather than hiding them.
 
 ## Checking it
 

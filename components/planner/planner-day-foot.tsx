@@ -24,8 +24,9 @@ interface PlannerDayFootProps {
 }
 
 /**
- * Everything a day is filled and summed with: optimise, the missing headliners,
- * a free block, and what it all comes to.
+ * Everything a day is filled and summed with: the missing headliners, a free
+ * block, optimise, and what it all comes to — optimise last but one, so it
+ * stands against the total it lowers (PAR-493).
  *
  * **Its own component because it is rendered in two places and must be one
  * implementation.** Every control in here names a park AND a date, and once the
@@ -71,21 +72,6 @@ export function PlannerDayFoot({
 
   return (
     <>
-      {/* Letting the day sort itself, above the band that names what is missing
-          from it — the headliner button is the same question one gesture
-          further on ("and put them in"), so the two belong together and in that
-          order. */}
-      <PlannerOptimizeActions
-        parkSlug={parkSlug}
-        parkName={parkName}
-        geo={geo}
-        date={date}
-        day={day}
-        grid={grid}
-        timezone={timezone}
-        prefs={prefs}
-      />
-
       {/* Which of the park's big rides are still missing. Outside the phone's
           ride search, because it is the one thing down here that both pointers
           need: the phone adds by tapping a pill, the desktop drags one onto an
@@ -121,6 +107,25 @@ export function PlannerDayFoot({
         <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
         <span className="truncate">{t('custom.add')}</span>
       </button>
+
+      {/* Letting the day sort itself, directly above what the day adds up to
+          (PAR-493). It used to open the foot, above the headliner band, and the
+          report was that nobody saw it — a grey button two rows away from the
+          total it changes. Next to "Wartezeit 3:20 Std." the button and the
+          figure it would lower are read together, and where it would lower it
+          the button is the foot's call to action and says by how much. The
+          headliner button in the same row follows the band that lists what it
+          adds, which is the order the two are read in. */}
+      <PlannerOptimizeActions
+        parkSlug={parkSlug}
+        parkName={parkName}
+        geo={geo}
+        date={date}
+        day={day}
+        grid={grid}
+        timezone={timezone}
+        prefs={prefs}
+      />
 
       {entries.length > 0 && (
         <div

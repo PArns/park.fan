@@ -2254,6 +2254,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minuti in meno",
       "longer": "15 minuti in più",
+      "iconPick": "Icona: {icon}. Scegline un’altra",
       "icon": {
         "break": "Pausa",
         "food": "Pasto",
@@ -2317,7 +2318,8 @@
       "adjust": "Modifica"
     },
     "sheet": {
-      "handle": "Ingrandisci o chiudi il pianificatore",
+      "handle": "Ingrandisci o riduci il pianificatore",
+      "close": "Chiudi il pianificatore",
       "resize": "Regola la larghezza"
     },
     "headliners": {
@@ -2420,6 +2422,9 @@
         "hintTight": "Prima della chiusura c’è posto per {fits} su {total}.",
         "conflict": "Ne entrano {fits} su {total}. Togli la spunta a ciò di cui puoi fare a meno, oppure porta in cima quello che vuoi assolutamente fare.",
         "none": "Per questa giornata non manca nessuna attrazione principale.",
+        "noneFitHeight": "Nessuna attrazione principale va bene per il vostro gruppo: {count, plural, one {l’unica del parco richiede} other {tutte le # richiedono}} un’altezza minima superiore a quella della persona più bassa. Nel pianificatore puoi comunque aggiungerle una alla volta.",
+        "noneFitWet": "Nessuna attrazione principale va bene per il vostro gruppo: {count, plural, one {l’unica del parco bagna} other {tutte le # bagnano}}, e volete restare asciutti. Nel pianificatore puoi comunque aggiungerle una alla volta.",
+        "noneFitBoth": "Nessuna attrazione principale va bene per il vostro gruppo: {count, plural, one {l’unica del parco richiede un’altezza che la persona più bassa non raggiunge, oppure bagna} other {ognuna delle # richiede un’altezza che la persona più bassa non raggiunge, oppure bagna}}. Nel pianificatore puoi comunque aggiungerle una alla volta.",
         "resolved": "{count, plural, one {Così l’attrazione entra nella giornata} other {Così entrano tutte le # attrazioni nella giornata}}. Puoi continuare a cambiare la selezione."
       },
       "facts": {

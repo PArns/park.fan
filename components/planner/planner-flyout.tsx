@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown, Columns2, Plus } from 'lucide-react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { CalendarPlus, ChevronDown, Columns2, Plus, X } from 'lucide-react';
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerDayColumn } from './planner-day-column';
@@ -691,14 +691,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       <SheetContent
         modal={isPhone}
         side={isPhone ? 'bottom' : 'right'}
-        /* No × on the phone. The bottom sheet already has two ways out that a
-           finger finds first — the grab handle right above the header, which
-           drags the sheet away and toggles its height on a tap, and the shield
-           beside it while the sheet rests at 92svh — and the × was a third,
-           parked in the one corner a thumb reaches worst. The desktop keeps it:
-           a side panel has no handle, and its outside press is deliberately
-           swallowed by `onInteractOutside` below, so there the × and Escape are
-           the whole list.
+        /* Scopes the iOS no-zoom rule in `app/globals.css`: every text field in
+           here has to render at 16 px on a touch screen, or focusing it zooms
+           the page in for good and pushes the handle off the screen. */
+        data-planner-sheet=""
+        /* Not `SheetContent`'s own × on the phone: that one is drawn in the
+           sheet's top-right corner, which on a phone is the sheet header's day
+           picker. The phone draws its close button in the handle row instead
+           (PAR-483), beside the handle that drags the sheet away and toggles
+           its height on a tap. The desktop keeps this one: a side panel has no
+           handle, and its outside press is deliberately swallowed by
+           `onInteractOutside` below, so there the × and Escape are the whole
+           list.
 
            Keyed on `isPhone` and not on a `max-sm:` class, because that is the
            condition the sheet's SHAPE is keyed on two lines up — `side` and
@@ -779,12 +783,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // Pulled up, the modal shield is behind the sheet and tapping beside
           // it is no longer a way out — so what remains has to be real, and it
           // is: the handle takes the sheet back down (a drag, or a tap, which
-          // is why the tap toggles rather than only dismissing). It used to
-          // have the × beside it; `hideClose` above takes that away on the
-          // phone, which is what makes this handle the state's only exit and
-          // the reason it may not become decoration. Resting at 92 the shield
-          // is back. Only the pulled-up state gives it up, and only for as long
-          // as somebody holds it there.
+          // is why the tap toggles rather than only dismissing), and the × in
+          // the handle row closes it outright. That × was gone from PAR-188 to
+          // PAR-483, and in that time a tap on the handle led into a state
+          // whose only exit was a 90 px drag nobody was told about.
           //
           // **A PORTRAIT phone rests on the header instead of on a percentage**
           // (PAR-313). 92svh is 736 px at 800 and leaves 64, of which the site
@@ -870,6 +872,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             }}
             data-planner-sheet-handle=""
             aria-label={t('sheet.handle')}
+            aria-expanded={expanded}
             className="planner-phone:h-11 planner-phone:w-24 relative flex h-4 w-16 cursor-grab touch-none items-center justify-center active:cursor-grabbing"
           >
             <span className="bg-muted-foreground/40 h-1.5 w-10 rounded-full" />
@@ -885,19 +888,44 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               the sheet's chrome has.
 
               `absolute`, so the handle stays centred on the SHEET rather than
-              on what is left of the row — it is the sheet's only exit at
-              100svh and may not drift with a control that comes and goes. The
-              handle is 96 px wide from x=132, this is 44 from x=296: they do
-              not meet, and `elementFromPoint` over both says so.
+              on what is left of the row. LEFT since PAR-483, because the right
+              margin now carries the close button: the handle is 96 px wide from
+              x=132 at 360 px, the bell 44 from x=8 and the × 44 from x=308, so
+              none of the three meet.
 
               Same gate as the foot's copy had — a plan with nothing in it has
               nothing to be notified about — plus `isPhone`, because the
               desktop keeps its row at the foot. The component still renders
               nothing at all in three of its seven states. */}
           {isPhone && park && activeDate && activeEntries.length > 0 && (
-            <div className="absolute top-0 right-2">
+            <div className="absolute top-0 left-2">
               <PlannerPushToggle variant="icon" />
             </div>
+          )}
+          {/* A drawn way out, on the phone as well (PAR-483). PAR-188 took the ×
+              off this sheet and left the handle as the exit: a drag past
+              `SHEET_DISMISS_PX`, or a tap on the shield beside the sheet. Both
+              failed in the field. A tap on the handle — the first thing anybody
+              tries — pulls the sheet UP to 100svh, and there the shield is 0 px
+              tall, so the only exit left was a 90 px drag nothing on screen
+              names. And on iOS a focused field under 16 px zooms the page in
+              and never zooms back (see `[data-planner-sheet]` in
+              `app/globals.css`), which slid the handle off the top of the
+              screen altogether: "der Planer lässt sich nicht schließen".
+
+              It lives in the handle row rather than in `SheetContent`'s own
+              corner slot, because that one would sit on top of the sheet
+              header's day picker, which is what PAR-188 was about. The row is
+              44 px and has two free margins of 120 px; this takes the right
+              one, where a close control is on every other sheet in the OS. */}
+          {isPhone && (
+            <SheetClose
+              data-planner-sheet-close=""
+              aria-label={t('sheet.close')}
+              className="text-muted-foreground hover:text-foreground hover:bg-accent absolute top-0 right-2 flex size-11 items-center justify-center rounded-md transition-colors"
+            >
+              <X className="size-5" aria-hidden="true" />
+            </SheetClose>
           )}
         </div>
 

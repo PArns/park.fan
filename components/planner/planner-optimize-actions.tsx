@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useSyncExternalStore } from 'react';
+import { useMemo, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, Crown, SlidersHorizontal, Undo2, Wand2 } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -34,7 +34,11 @@ import {
 import type { DayGrid } from '@/lib/planner/day-grid';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from '@/lib/planner/types';
+import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
+
+/** The entries of a day that has none, as one array rather than a new one per render. */
+const NO_ENTRIES: readonly PlannerEntry[] = [];
 
 interface PlannerOptimizeActionsProps {
   parkSlug: string;
@@ -168,7 +172,12 @@ export function PlannerOptimizeActions({
     input: FitInput;
   } | null>(null);
 
-  const entries = state.parks[parkSlug]?.days[date]?.entries ?? [];
+  // Memoised so the search below (`gain`) keys on the day's entries and not on
+  // a fresh empty array per render where the day has none.
+  const entries = useMemo(
+    () => state.parks[parkSlug]?.days[date]?.entries ?? NO_ENTRIES,
+    [state, parkSlug, date]
+  );
 
   /**
    * Where this day stands against the park's clock, re-read every minute.
@@ -183,15 +192,98 @@ export function PlannerOptimizeActions({
    */
   const zone = resolveTimeZone(timezone);
   const isToday = date === parkToday(zone);
-  // Subscribed for the re-render alone — the value is a counter nobody reads
-  // here. `subscribeToNothing` on any other date, so a plan for next Saturday
-  // installs no 60-second interval.
-  useSyncExternalStore(
+  // Subscribed for the re-render, and the counter itself keys the `gain`
+  // search below so that it follows the clock too. `subscribeToNothing` on any
+  // other date, so a plan for next Saturday installs no 60-second interval.
+  const nowTick = useSyncExternalStore(
     isToday ? subscribeToMinute : subscribeToNothing,
     isToday ? getMinuteTick : getZero,
     getZero
   );
   const clock = dayClock(date, zone);
+
+  /**
+   * What pressing „Tag optimieren" would gain, worked out before anybody
+   * presses it (PAR-493).
+   *
+   * The button was a grey ghost among grey rows, and the report was that
+   * nobody saw it. It is only worth shouting about when it would change
+   * something, so the day is optimised once here, exactly the way `run`
+   * does it — same engine, same input, same `scoreCurrent` before-figure —
+   * and the button turns into the panel's call to action where that answer
+   * beats the plan on screen. The figure it prints is the difference between
+   * those two scores, i.e. what the press will then report, never an
+   * estimate of its own.
+   *
+   * Only where the two figures cover the same rides, which is the rule `run`
+   * prints a saving under too: a plan the engine had to cut short
+   * (`MAX_STOPS`) or one that parked a ride outside the day would compare a
+   * before over N rides with an after over fewer.
+   *
+   * Memoised on the grid's NUMBERS rather than on the grid object: the panel
+   * rebuilds it on every render, and one search is 5–50 ms. `nowTick` is what
+   * moves the answer on today's date, once a minute, the same way the
+   * buttons' own visibility follows the clock (and the same pattern the
+   * grid's now line uses).
+   */
+  const openMin = grid?.openMin;
+  const closeMin = grid?.closeMin;
+  const closeSlackMin = grid?.closeSlackMin;
+  const gridStartMin = grid?.gridStartMin;
+  const gridEndMin = grid?.gridEndMin;
+  const heightPx = grid?.heightPx;
+  const pxPerMin = grid?.pxPerMin;
+  const closeIsTruncated = grid?.closeIsTruncated;
+  const gain = useMemo(() => {
+    if (
+      openMin === undefined ||
+      closeMin === undefined ||
+      closeSlackMin === undefined ||
+      gridStartMin === undefined ||
+      gridEndMin === undefined ||
+      heightPx === undefined ||
+      pxPerMin === undefined ||
+      closeIsTruncated === undefined
+    )
+      return null;
+    const probeGrid: DayGrid = {
+      openMin,
+      closeMin,
+      closeSlackMin,
+      gridStartMin,
+      gridEndMin,
+      heightPx,
+      pxPerMin,
+      closeIsTruncated,
+    };
+    if (nowTick < 0 || !day || !canOptimize(day, probeGrid)) return null;
+    const now = dayClock(date, resolveTimeZone(timezone));
+    if (now.phase === 'past') return null;
+    const movableNow = movableEntries(entries, now);
+    if (movableNow.length < 2) return null;
+    const input = { day, grid: probeGrid, entries, clock: now };
+    const before = scoreCurrent(input);
+    const plan = optimizeDay(input);
+    if (!before || !plan || plan.stops.length !== movableNow.length) return null;
+    const fitted = before.overflow - plan.overflow;
+    const saved = roundWaitDeltaTo5(before.totalWaitMinutes - plan.totalWaitMinutes);
+    if (fitted <= 0 && saved < 5) return null;
+    return { fitted: Math.max(0, fitted), saved: Math.max(0, saved) };
+  }, [
+    openMin,
+    closeMin,
+    closeSlackMin,
+    gridStartMin,
+    gridEndMin,
+    heightPx,
+    pxPerMin,
+    closeIsTruncated,
+    day,
+    entries,
+    date,
+    timezone,
+    nowTick,
+  ]);
 
   if (!grid || !canOptimize(day, grid) || !day) return null;
   // A day that has been walked is a record. Both buttons plan FOR the visitor,
@@ -294,14 +386,16 @@ export function PlannerOptimizeActions({
     if (add.length === 0 && before && replanned === movable.length) {
       const fitted = before.overflow - plan.overflow;
       const saved = before.totalWaitMinutes - plan.totalWaitMinutes;
+      // On the five-minute grid, like every wait figure on screen and like the
+      // call to action that promised this number before the press (`gain`).
+      const shownSaved = roundWaitDeltaTo5(saved);
       if (fitted > 0) parts.push(t('optimize.fitted', { count: fitted }));
-      if (saved > 0) parts.push(t('optimize.saved', { minutes: saved }));
+      if (shownSaved > 0) parts.push(t('optimize.saved', { minutes: shownSaved }));
       // A rebuilt day that queues the same amount says so. Where it queues MORE
       // and gained nothing that fits, the only honest line is that it moved:
       // `optimizeDay` only returns such a plan for a day that could not be
       // walked in the first place, so there is no before-figure worth quoting.
-      else if (fitted <= 0)
-        parts.push(saved === 0 ? t('optimize.sameWait') : t('optimize.resorted'));
+      else if (fitted <= 0) parts.push(saved < 0 ? t('optimize.resorted') : t('optimize.sameWait'));
     }
     if (skipped > 0 && add.length > 0) parts.push(t('optimize.skipped', { count: skipped }));
     if (plan.overflow > 0) parts.push(t('optimize.overflow', { count: plan.overflow }));
@@ -373,19 +467,46 @@ export function PlannerOptimizeActions({
             <span className="truncate">{t('optimize.headliners')}</span>
           </button>
         )}
+        {/* A call to action where the day would gain from it, the quiet button
+            it always was where it would not — see `gain`. Filled with the
+            primary colour and stretched over the rest of the row, so it is
+            the one thing in the foot that reads as "press me", and it names
+            what the press is worth in the same words the result line will use
+            afterwards. */}
         {canSort && (
           <button
             type="button"
             onClick={() => attempt([])}
             data-planner-optimize-run=""
+            data-planner-optimize-gain={gain ? '' : undefined}
             title={t('optimize.hint')}
             className={cn(
-              'text-muted-foreground hover:text-foreground hover:bg-accent flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
-              'planner-phone:min-h-11 planner-phone:px-2.5'
+              'flex items-center gap-1.5 rounded-md px-2 py-1 text-xs transition-colors',
+              'planner-phone:min-h-11 planner-phone:px-2.5',
+              gain
+                ? // Grows into the rest of the row, and WRAPS onto a row of its
+                  // own rather than shrinking into "Tag op…" beside a long
+                  // headliner label: `flex-[1_0_auto]` never shrinks below its
+                  // content, `max-w-full` keeps it inside the row.
+                  'bg-primary text-primary-foreground hover:bg-primary/90 max-w-full flex-[1_0_auto] justify-center shadow-sm'
+                : 'text-muted-foreground hover:text-foreground hover:bg-accent'
             )}
           >
             <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />
-            <span className="truncate">{t('optimize.run')}</span>
+            {gain ? (
+              /* Two lines, the verb over what it is worth, so the pair fits
+                 beside the headliner button at 360 px in German. */
+              <span className="flex min-w-0 flex-col items-start text-left leading-tight">
+                <span className="max-w-full truncate font-semibold">{t('optimize.run')}</span>
+                <span className="max-w-full truncate text-[11px] opacity-85">
+                  {gain.fitted > 0
+                    ? t('optimize.fitted', { count: gain.fitted })
+                    : t('optimize.saved', { minutes: gain.saved })}
+                </span>
+              </span>
+            ) : (
+              <span className="truncate">{t('optimize.run')}</span>
+            )}
           </button>
         )}
       </div>

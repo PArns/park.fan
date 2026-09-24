@@ -2254,6 +2254,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minutes shorter",
       "longer": "15 minutes longer",
+      "iconPick": "Icon: {icon}. Pick another",
       "icon": {
         "break": "Break",
         "food": "Food",
@@ -2317,7 +2318,8 @@
       "adjust": "Adjust"
     },
     "sheet": {
-      "handle": "Resize or close the planner",
+      "handle": "Expand or shrink the planner",
+      "close": "Close the planner",
       "resize": "Drag to resize"
     },
     "headliners": {
@@ -2420,6 +2422,9 @@
         "hintTight": "There is room for {fits} of {total} before the park closes.",
         "conflict": "{fits} of {total} fit. Untick what you can do without, or move up what you really want to ride.",
         "none": "No big ride is missing from this day.",
+        "noneFitHeight": "No big ride suits your group: {count, plural, one {the one here has} other {all # have}} a minimum height above your smallest rider. You can still add them one by one in the planner.",
+        "noneFitWet": "No big ride suits your group: {count, plural, one {the one here gets} other {all # get}} you wet, and you want to stay dry. You can still add them one by one in the planner.",
+        "noneFitBoth": "No big ride suits your group: {count, plural, one {the one here needs a height your smallest rider does not reach, or gets you wet} other {each of the # needs a height your smallest rider does not reach, or gets you wet}}. You can still add them one by one in the planner.",
         "resolved": "{count, plural, one {The ride fits into the day like this} other {All # rides fit into the day like this}}. You can keep changing your selection."
       },
       "facts": {

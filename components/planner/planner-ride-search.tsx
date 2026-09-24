@@ -201,9 +201,15 @@ export function PlannerRideSearch({
           gives back is leading rather than words: `leading-snug` draws the same
           two lines in 30 px instead of 33, and the 4 px off the margin come out
           of the gap to a field that carries its own background anyway. */}
-      <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
-        {t('search.tapHint')}
-      </p>
+      {/* Only until the first ride is in (PAR-482). By then the tap has done
+          what this sentence says, and on a phone its two lines are 30 px the
+          axis does not have — measured at 390×844 with a filled day, the axis
+          was the smallest thing in the sheet. */}
+      {planned.size === 0 && (
+        <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
+          {t('search.tapHint')}
+        </p>
+      )}
 
       {/* The phone's copy of the free-block offer, under its own name so the
           two can be counted together without disturbing what counts the foot's:

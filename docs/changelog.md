@@ -4,6 +4,27 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
+
+Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
+16 px heran und nicht wieder heraus. Die Bahnsuche und der Name eines eigenen Blocks waren 14 px,
+danach stand die Seite auf 1,14×, das fixierte Sheet lief rechts über den Rand und Griff und
+Kopfzeile oben aus dem Bild. Jetzt rendert jedes Textfeld im Planer-Sheet auf Touch-Geräten mit
+16 px (`[data-planner-sheet]` in `app/globals.css`). Dazu hat das Handy-Sheet wieder einen ×-Knopf,
+in der Griff-Zeile rechts (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
+nur noch eine 90-px-Wischgeste herausführte.
+
+Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (rund 105 px
+statt rund 200): Symbol als Dropdown, Löschen als Papierkorb in der Leiste, ein
+Größensystem für alle Knöpfe (PAR-326), und ein ausgewählter Block wird über die Leiste gescrollt
+(PAR-332). „Tag optimieren" steht jetzt direkt über der Gesamtwartezeit und ist ein gefüllter
+Knopf mit der gemessenen Ersparnis, sobald die Optimierung etwas bringt (PAR-493). Die Headliner
+stehen auf dem Handy in einer seitlich scrollbaren Reihe, der Hinweis unter der Suche verschwindet
+nach der ersten Bahn. Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
+Trocken-Bleiben der Gruppe passt, statt „es fehlt keine große Bahn mehr" (PAR-484).
+
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
 ## Unreleased – fix: die Kachelreihe springt nicht mehr, wenn die Schrift nachlädt
 
 „Wartezeiten-Kalender" passt in der Ersatzschrift („Geist Fallback") gerade noch in eine Zeile, in

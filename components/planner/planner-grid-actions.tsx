@@ -1,7 +1,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Check, ChevronDown, ChevronUp, Minus, Plus, X } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, Minus, Plus, Trash2, X } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { formatGridTime } from '@/lib/planner/park-time';
 import { SNAP_MIN_FINE } from '@/lib/planner/day-grid';
@@ -56,6 +62,17 @@ interface PlannerGridActionsProps {
 const NUDGE_MIN = SNAP_MIN_FINE;
 
 /**
+ * Every icon button in the bar, one class (PAR-326).
+ *
+ * 32 px on a fine pointer and 44 on a coarse one, which is the floor
+ * `check:planner` sweeps the sheet for. `planner-phone:` rather than `max-sm:`
+ * for the reason the rest of the sheet gives: a landscape phone is 844 px wide
+ * and still a finger.
+ */
+const ICON_BUTTON =
+  'text-muted-foreground hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-8 shrink-0 items-center justify-center rounded-md transition-colors';
+
+/**
  * Tick-off and remove for the selected block.
  *
  * They are not on the block, and that is forced rather than chosen: a block can
@@ -98,15 +115,31 @@ export function PlannerGridActions({
           minutes: Math.abs(delta.minutes),
         });
 
+  const CurrentIcon = custom ? PLANNER_BLOCK_ICON_COMPONENTS[custom.icon] : null;
+
   return (
-    /* `max-sm:flex-wrap` and nothing above `sm`: the row gained a second pair of
-       44 px buttons, and on a free block that is four icons, two durations, two
-       moves and a delete beside a label — over 400 px in a 390 px screen. It
-       wraps on a phone, where the label takes the first line, and lays out
-       exactly as it did on every wider box. */
+    /* One size system and one gap for every button in the bar (PAR-326), and
+       two lines on a phone instead of four (PAR-482).
+
+       The bar used to mix `size-9` (moves, tick, delete), `size-7` (seven icon
+       buttons, the two durations) and a bare padded "×", with no gap inside
+       the pairs, so neighbouring targets touched. On a phone every one of them
+       grew to 44 px and the row wrapped the way it happened to: the name, then
+       the two moves, then seven icons, then the durations and the "×" — about
+       200 px, docked over a scroller that is not much taller, so the selected
+       block sat underneath the bar that was meant to act on it.
+
+       Now: every icon button is `size-8` with `gap-1` inside a group and
+       `gap-2` between groups, and 44 px where the pointer is coarse. The seven
+       icon buttons became one dropdown, the only change that buys real width,
+       and delete is a bin rather than a second "×" beside the deselect "×". On
+       a phone the name and the deselect share the first line and the controls
+       the second, spread over the width — 105 px at 390 px with a ride
+       selected, which `check:planner` holds under 110. */
     <div
+      data-planner-grid-actions=""
       className={cn(
-        'border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t px-3 py-1.5 backdrop-blur-sm max-sm:flex-wrap',
+        'border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex flex-wrap items-center gap-x-2 gap-y-1 border-t px-3 py-1.5 backdrop-blur-sm',
         // Gone for the length of the drag, and gone rather than faded: at any
         // opacity above zero the old figure is still readable beside the new
         // one, and that is half of what this is for. `invisible` also takes it
@@ -117,7 +150,7 @@ export function PlannerGridActions({
         standBack && 'invisible'
       )}
     >
-      <div className="min-w-0 flex-1 max-sm:basis-full">
+      <div className="min-w-0 flex-1">
         {custom && onEditCustom ? (
           <input
             value={custom.label}
@@ -179,74 +212,93 @@ export function PlannerGridActions({
         </p>
       </div>
 
-      {/* Move, and it is for EVERY entry rather than for free blocks only.
-          Dragging is one gesture on one 44 px strip of a box whose height is a
-          queue, and on a phone that strip is the only pointer path there is —
-          so the day depended on a gesture landing. These two buttons are the
-          same write (`moveEntry`, through the caller's clamp), reachable with a
-          thumb, and they say what they do: up is earlier, down is later, which
-          is the axis's own direction and not a description of this row. */}
-      {onNudge && (
-        <div className="flex shrink-0 items-center">
-          <button
-            type="button"
-            onClick={() => onNudge(entry.id, -NUDGE_MIN)}
-            aria-label={t('entry.earlier', { minutes: NUDGE_MIN })}
-            title={t('entry.earlier', { minutes: NUDGE_MIN })}
-            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-9 items-center justify-center rounded-md transition-colors"
-          >
-            <ChevronUp className="size-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => onNudge(entry.id, NUDGE_MIN)}
-            aria-label={t('entry.later', { minutes: NUDGE_MIN })}
-            title={t('entry.later', { minutes: NUDGE_MIN })}
-            className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-9 items-center justify-center rounded-md transition-colors"
-          >
-            <ChevronDown className="size-4" />
-          </button>
-        </div>
-      )}
-
-      {/* Icon and duration, for a free block only. The pointer path is the
-          bottom edge of the block; these are the touch and keyboard path, and
-          the only way to change the icon at all. */}
-      {custom && onEditCustom && (
-        <>
-          <div className="flex shrink-0 items-center gap-0.5">
-            {PLANNER_BLOCK_ICONS.map((key) => {
-              const Icon = PLANNER_BLOCK_ICON_COMPONENTS[key];
-              const active = custom.icon === key;
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => onEditCustom(entry.id, { icon: key })}
-                  aria-label={t(`custom.icon.${key}`)}
-                  aria-pressed={active}
-                  className={cn(
-                    'planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors',
-                    active
-                      ? 'bg-accent text-foreground'
-                      : 'text-muted-foreground/50 hover:bg-accent/60 hover:text-foreground'
-                  )}
-                >
-                  <Icon className="size-3.5" />
-                </button>
-              );
-            })}
+      {/* The controls. One group per verb, and on a phone the whole set is the
+          bar's second line (`basis-full`), spread across it so a thumb does not
+          have to aim into one corner. `order-2` because the deselect "×" is
+          last in the DOM — where a keyboard reaches it after the controls, as
+          on the desktop — but belongs on the first line of a phone's bar. */}
+      <div className="planner-phone:order-2 planner-phone:basis-full planner-phone:justify-between flex shrink-0 items-center gap-2">
+        {/* Move, and it is for EVERY entry rather than for free blocks only.
+            Dragging is one gesture on one 44 px strip of a box whose height is a
+            queue, and on a phone that strip is the only pointer path there is —
+            so the day depended on a gesture landing. These two buttons are the
+            same write (`moveEntry`, through the caller's clamp), reachable with a
+            thumb, and they say what they do: up is earlier, down is later, which
+            is the axis's own direction and not a description of this row. */}
+        {onNudge && (
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => onNudge(entry.id, -NUDGE_MIN)}
+              aria-label={t('entry.earlier', { minutes: NUDGE_MIN })}
+              title={t('entry.earlier', { minutes: NUDGE_MIN })}
+              className={ICON_BUTTON}
+            >
+              <ChevronUp className="size-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => onNudge(entry.id, NUDGE_MIN)}
+              aria-label={t('entry.later', { minutes: NUDGE_MIN })}
+              title={t('entry.later', { minutes: NUDGE_MIN })}
+              className={ICON_BUTTON}
+            >
+              <ChevronDown className="size-4" />
+            </button>
           </div>
-          <div className="flex shrink-0 items-center">
+        )}
+
+        {/* Icon and duration, for a free block only. The pointer path is the
+            bottom edge of the block; these are the touch and keyboard path, and
+            the only way to change the icon at all.
+
+            The icon is a dropdown and not seven buttons. Seven 44 px targets
+            are 320 px, which is a whole line of a phone's bar on their own, for
+            a choice somebody makes once per block. The trigger shows the icon
+            the block has, so the bar still says what it is set to. */}
+        {custom && onEditCustom && CurrentIcon && (
+          <div className="flex items-center gap-1">
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger
+                aria-label={t('custom.iconPick', { icon: t(`custom.icon.${custom.icon}`) })}
+                title={t('custom.iconPick', { icon: t(`custom.icon.${custom.icon}`) })}
+                data-planner-block-icon-pick=""
+                className="text-foreground hover:bg-accent data-[state=open]:bg-accent planner-phone:h-11 planner-phone:min-w-11 flex h-8 items-center justify-center gap-0.5 rounded-md px-1.5 transition-colors"
+              >
+                <CurrentIcon className="size-4" aria-hidden="true" />
+                <ChevronDown className="text-muted-foreground size-3" aria-hidden="true" />
+              </DropdownMenuTrigger>
+              {/* `z-[80]`, above the sheet's `z-[70]` — the menu is portalled to
+                  `<body>` like the day picker's popover and has the same need. */}
+              <DropdownMenuContent align="start" side="top" className="z-[80] min-w-44">
+                {PLANNER_BLOCK_ICONS.map((key) => {
+                  const Icon = PLANNER_BLOCK_ICON_COMPONENTS[key];
+                  const active = custom.icon === key;
+                  return (
+                    <DropdownMenuItem
+                      key={key}
+                      onSelect={() => onEditCustom(entry.id, { icon: key })}
+                      aria-current={active ? 'true' : undefined}
+                      className={cn('planner-phone:min-h-11', active && 'bg-accent/60')}
+                    >
+                      <Icon className="size-4" aria-hidden="true" />
+                      <span className="flex-1">{t(`custom.icon.${key}`)}</span>
+                      {active && <Check className="size-3.5" aria-hidden="true" />}
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <button
               type="button"
               onClick={() =>
                 onEditCustom(entry.id, { durationMinutes: custom.durationMinutes - 15 })
               }
               aria-label={t('custom.shorter')}
-              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors"
+              title={t('custom.shorter')}
+              className={ICON_BUTTON}
             >
-              <Minus className="size-3.5" />
+              <Minus className="size-4" />
             </button>
             <button
               type="button"
@@ -254,63 +306,62 @@ export function PlannerGridActions({
                 onEditCustom(entry.id, { durationMinutes: custom.durationMinutes + 15 })
               }
               aria-label={t('custom.longer')}
-              className="text-muted-foreground/60 hover:bg-accent hover:text-foreground planner-phone:size-11 flex size-7 items-center justify-center rounded-md transition-colors"
+              title={t('custom.longer')}
+              className={ICON_BUTTON}
             >
-              <Plus className="size-3.5" />
+              <Plus className="size-4" />
             </button>
           </div>
-        </>
-      )}
+        )}
 
-      {!custom && (
-        <button
-          type="button"
-          onClick={() => onToggleDone(entry.id, !done)}
-          aria-pressed={done}
-          aria-label={done ? t('entry.markUndone') : t('entry.markDone')}
-          className={cn(
-            'planner-phone:size-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
-            done
-              ? 'bg-crowd-low/25 text-crowd-low'
-              : 'text-muted-foreground/60 hover:bg-accent hover:text-foreground'
+        <div className="flex items-center gap-1">
+          {!custom && (
+            <button
+              type="button"
+              onClick={() => onToggleDone(entry.id, !done)}
+              aria-pressed={done}
+              aria-label={done ? t('entry.markUndone') : t('entry.markDone')}
+              title={done ? t('entry.markUndone') : t('entry.markDone')}
+              className={cn(
+                ICON_BUTTON,
+                done && 'bg-crowd-low/25 text-crowd-low hover:bg-crowd-low/30 hover:text-crowd-low'
+              )}
+            >
+              <Check className="size-4" />
+            </button>
           )}
-        >
-          <Check className="size-4" />
-        </button>
-      )}
-      {/* Delete, and on a phone it is not here any more (PAR-313): the block
-          itself carries a ✕ at its top right, where the thing being deleted is
-          under the finger deleting it. This bar is docked to the grid's lower
-          edge, so on a 200 px scroller it can be a screen away from the block
-          it names. `planner-phone:hidden` rather than a branch — the desktop
-          keeps the row it has always had, and the two are the complementary
-          pair `app/globals.css` asks every `planner-phone:` class to be part
-          of. Everything else in this bar stays: ticking off, the ±15-minute
-          nudge and a free block's icon and duration are four more 44 px
-          targets, and a twenty-pixel block has room for one. */}
-      <button
-        type="button"
-        onClick={() => onRemove(entry.id)}
-        aria-label={t('removeRide')}
-        className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive planner-phone:hidden flex size-9 shrink-0 items-center justify-center rounded-md transition-colors"
-      >
-        <X className="size-4" />
-      </button>
-      {/* `planner-phone:size-11` wie bei den vier Knöpfen darüber, und aus demselben Grund: dies ist
-          ein Ziel für einen Finger, und ohne die Klasse maß es 14×16 px in einer Zeile, deren
-          andere Knöpfe 44×44 haben. Auf dem Desktop bleibt es bei der Textbreite — die
-          Nachbarn sind dort `size-9`, dieser Knopf war dort immer kleiner und soll es bleiben.
-          `flex items-center justify-center` gehört dazu, nicht zur Zier: ohne sie säße das `×`
-          in der 44-px-Box oben links statt in ihrer Mitte, und der Knopf wäre nur formal groß
-          genug. Kein `rounded-md` und kein `hover:bg-*`: die tragen die Nachbarn, hier wären
-          sie eine Gestaltungsänderung an einer Leiste, die keine bekommen soll. */}
+          {/* Delete, on every size again (PAR-482). PAR-313 moved it off the
+              phone's bar onto the block's own corner ✕, because a four-line bar
+              could be a screen away from the block it named. The bar is two
+              lines now and the block is scrolled clear of it on selection (see
+              `PlannerDayColumn`), and the corner ✕ is a 20 px glyph on a block
+              that may be 20 px tall — so the bar carries the named, full-size
+              delete, and the corner ✕ stays as the shortcut it was. A bin, not
+              an "×": the "×" at the end of this bar only lets go of the
+              selection, and two identical marks for "remove the ride" and
+              "close this bar" is how the wrong one gets pressed. */}
+          <button
+            type="button"
+            onClick={() => onRemove(entry.id)}
+            aria-label={t('removeRide')}
+            title={t('removeRide')}
+            data-planner-grid-remove=""
+            className={cn(ICON_BUTTON, 'hover:bg-destructive/15 hover:text-destructive')}
+          >
+            <Trash2 className="size-4" />
+          </button>
+        </div>
+      </div>
+
       <button
         type="button"
         onClick={onClose}
         aria-label={t('close')}
-        className="text-muted-foreground/40 hover:text-foreground planner-phone:size-11 flex shrink-0 items-center justify-center px-1 text-xs"
+        title={t('close')}
+        data-planner-grid-deselect=""
+        className={cn(ICON_BUTTON, 'planner-phone:order-1 shrink-0')}
       >
-        ×
+        <X className="size-4" />
       </button>
     </div>
   );

@@ -122,32 +122,19 @@ export function PlannerMissingHeadliners({
           the panel's ground with a crown on it. The photo behind the panel is
           in a negative layer now and no longer thins anything, so the band can
           go back to being what it says it is: the crowd tint, over the panel. */}
-      {/* Capped on a phone, where this band and the ride search under it are two
-          ways to add the same ride and 716 px of sheet has to carry both: a park
-          with ten missing headliners drew three rows of pills, 127 px, and took
-          them off the axis. Every pill stays reachable — the box scrolls — and
-          on the wide arrangement there is nothing to ration.
+      {/* ONE row on a phone, scrolled sideways (PAR-482). The band used to wrap
+          and was capped at 126 px with a vertical scroller of its own — two
+          rows of 44 px pills, which at 390×844 was more than a third of what
+          the axis had left, and a park with ten missing headliners still hid
+          most of them below a scroll nobody saw. A single row is 44 px plus the
+          heading, every pill stays reachable with a swipe, and the count in the
+          heading says how many there are. The desktop keeps the wrapping row,
+          where there is nothing to ration.
 
-          126 px rather than the 5.5rem it was, and the number follows the
-          pills: they are 44 px tall now instead of 23, so 88 px held the
-          heading and ONE row with the second cut off mid-pill — a scroll
-          container whose first screen shows no reason to scroll.
-
-          The content it has to fit is 112 px: 20 for the heading and its
-          `mt-1`, then 44 + `gap-1` + 44 for two whole rows, which is what
-          5.5rem used to show at the old pill height. `max-h` is a BORDER-box
-          measurement, though, so the box's own `py-1.5` and 1 px border have to
-          be in the number or the second row is clipped again at the exact
-          moment it was sized to fit: 112 + 12 + 2 = 126. Only on a park that is
-          actually missing a headliner — this whole band renders nothing
-          otherwise. */}
-      {/* `planner-phone:` for all three, and they are one decision: the cap, the
-          scroller it needs to stay usable, and the overscroll that keeps the
-          sheet from dragging with it. The band is rationing HEIGHT, which is
-          the axis a landscape phone is short of (PAR-76) — at 844x390 it took
-          101 px of a 359 px sheet uncapped, with no scroller of its own. Split
-          the three and the cap clips the list with no way to reach the rest. */}
-      <div className="planner-phone:max-h-[126px] planner-phone:overflow-y-auto planner-phone:overscroll-y-contain border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
+          `planner-phone:` for the whole arrangement and not `max-sm:`, for the
+          reason the rest of the sheet gives: the band rations HEIGHT, which a
+          landscape phone is short of (PAR-76), not width. */}
+      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
           {/* The line is one flex item, not three. `t.rich` splits the sentence into
@@ -180,7 +167,7 @@ export function PlannerMissingHeadliners({
             })}
           </span>
         </p>
-        <div className="mt-1 flex flex-wrap gap-1">
+        <div className="planner-phone:flex-nowrap planner-phone:overflow-x-auto planner-phone:overscroll-x-contain planner-phone:[scrollbar-width:none] mt-1 flex flex-wrap gap-1">
           {missing.map((ride) => (
             <button
               key={ride.attractionSlug}
@@ -218,7 +205,7 @@ export function PlannerMissingHeadliners({
                   }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:min-h-11 planner-wide:cursor-grab planner-wide:active:cursor-grabbing flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 planner-phone:min-h-11 planner-phone:max-w-56 planner-phone:shrink-0 planner-wide:cursor-grab planner-wide:active:cursor-grabbing flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors"
             >
               {/* The ride's picture, at 16 px. A pill was a word in a rounded
                   box, which is what a filter chip looks like — and these are

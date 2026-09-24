@@ -1366,17 +1366,40 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
 
   check('der Anfasser ist da', (await grab.count()) === 1);
 
-  // And he is the only way out that is drawn, which is why the line above is
-  // not a formality any more. The × went off the phone sheet with PAR-188 —
-  // three exits were one too many, and the one that went is the one parked in
-  // the corner a thumb reaches worst — so the pair has to be asserted
-  // together: no close button, AND a handle that is
-  // there. Either one alone would pass over a sheet with no visible exit at
-  // all, which is exactly the state at 100svh, where the modal shield sits
-  // behind the sheet and tapping beside it does nothing.
+  // And a drawn way out beside him (PAR-483). PAR-188 took the × off the
+  // phone sheet and left the handle as the exit; a tap on the handle pulls the
+  // sheet to 100svh, where the shield is gone, and people got stuck there. So
+  // the × is back, in the handle row rather than in `SheetContent`'s corner
+  // (that corner is the day picker on a phone) — exactly ONE close button, a
+  // 44 px one, and one that takes a press rather than sitting under something.
+  const sheetClose = phone.locator(`${SHEET} [data-planner-sheet-close]`);
+  const sheetCloseBox = await sheetClose.boundingBox().catch(() => null);
   check(
-    'und auf dem Handy trägt das Sheet keinen ×-Knopf mehr',
-    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+    'das Handy-Sheet hat genau einen ×-Knopf, 44 px, in der Griff-Zeile',
+    (await phone.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1 &&
+      sheetCloseBox !== null &&
+      Math.round(sheetCloseBox.width) >= 44 &&
+      Math.round(sheetCloseBox.height) >= 44,
+    sheetCloseBox
+      ? `${Math.round(sheetCloseBox.width)}×${Math.round(sheetCloseBox.height)} px`
+      : 'kein ×'
+  );
+
+  // Every field somebody types into renders at 16 px on a coarse pointer. Under
+  // that iOS zooms the page in on focus and never back out, and at 1.14× the
+  // fixed sheet ran off the right edge and its handle off the top — the
+  // "Buttons außerhalb der View" and "lässt sich nicht schließen" of PAR-485.
+  // Chromium does not zoom, so the rule is asserted rather than the zoom.
+  const fieldSizes = await phone.evaluate((sel) => {
+    const sheet = document.querySelector(sel);
+    return [...(sheet?.querySelectorAll('input, textarea, select') ?? [])]
+      .filter((el) => !['checkbox', 'radio', 'range'].includes(el.getAttribute('type') ?? ''))
+      .map((el) => parseFloat(getComputedStyle(el).fontSize));
+  }, SHEET);
+  check(
+    'kein Textfeld im Sheet ist auf dem Grobzeiger kleiner als 16 px',
+    fieldSizes.length > 0 && fieldSizes.every((size) => size >= 16),
+    `${fieldSizes.length} Felder: ${fieldSizes.join(', ')} px`
   );
   if (await grab.count()) {
     /**
@@ -1423,6 +1446,17 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       after > before + 40,
       `${before} px -> ${after} px (Weg ${DRAG_PX} px)`
     );
+
+    // The state PAR-483 was about: pulled up to 100svh there is no shield
+    // beside the sheet, so the × has to be there AND reachable. Asked as a
+    // trial click, which runs the whole actionability chain and names whatever
+    // intercepts the press, without closing the sheet the rest of this pass
+    // measures.
+    const closeUp = await sheetClose
+      .click({ trial: true, timeout: 5_000 })
+      .then(() => 'ok')
+      .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
+    check('und auch hochgezogen ist der ×-Knopf erreichbar', closeUp === 'ok', closeUp);
 
     // And back down, so the geometry assertions below measure the sheet in the
     // state they were written for.
@@ -1629,6 +1663,41 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
           `${before} -> ${after}`
         );
       }
+
+      // The bar a selection docks, measured on the phone (PAR-492, PAR-332).
+      // It used to wrap into four lines — about 200 px over a scroller not much
+      // taller — and a block selected low in the day sat underneath it. Two
+      // lines now, and the selected block is scrolled clear of it: its middle
+      // answers to the block, not to the bar.
+      const barFacts = await phone.evaluate(
+        ([sel, id]) => {
+          const sheet = document.querySelector(sel);
+          const bar = sheet?.querySelector('[data-planner-grid-actions]');
+          const block = sheet?.querySelector(`li[data-planner-entry="${id}"]`);
+          if (!bar || !block) return null;
+          const b = block.getBoundingClientRect();
+          const hit = document.elementFromPoint(
+            b.left + b.width / 2,
+            b.top + Math.min(b.height / 2, 10)
+          );
+          return {
+            bar: Math.round(bar.getBoundingClientRect().height),
+            covered: Boolean(hit && bar.contains(hit)),
+            remove: Boolean(bar.querySelector('[data-planner-grid-remove]')),
+          };
+        },
+        [SHEET, entryId]
+      );
+      check(
+        'die Aktionsleiste ist auf dem Handy höchstens zwei Zeilen hoch und trägt Löschen',
+        barFacts !== null && barFacts.bar <= 110 && barFacts.remove,
+        barFacts ? `${barFacts.bar} px, Löschen ${barFacts.remove}` : 'keine Leiste'
+      );
+      check(
+        'und der ausgewählte Block liegt nicht unter ihr',
+        barFacts !== null && !barFacts.covered,
+        barFacts ? `verdeckt ${barFacts.covered}` : 'keine Leiste'
+      );
     }
 
     // What is left for the day after the chrome has taken its share. The
@@ -7483,8 +7552,9 @@ const AXIS_MIN_LANDSCAPE_PX = 216;
     // together for the same reason the portrait pass does it — either half
     // alone passes over exactly that state.
     check(
-      'und im Querformat trägt es keinen ×-Knopf',
-      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 0
+      'und im Querformat trägt es genau einen ×-Knopf, den in der Griff-Zeile',
+      (await land.locator(`${SHEET} [data-slot="sheet-close"]`).count()) === 1 &&
+        (await land.locator(`${SHEET} [data-planner-sheet-close]`).count()) === 1
     );
 
     // The two PAIRS this change is built on, asserted rather than assumed.
