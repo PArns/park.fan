@@ -24,6 +24,7 @@ import { ThemeToggle } from '@/components/common/theme-toggle';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
+import { PlannerHeaderButton } from '@/components/planner/planner-header-button';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -603,9 +604,17 @@ export function Header({
             <SearchCommand trigger="button" size="sm" />
           </div>
 
-          {/* Locale + theme + unit. The only copy — see the handoff note above for the corner
-              pill that used to hold a second one while the bar floated. */}
-          <div className="flex items-center gap-1">
+          {/* Locale + theme + unit. The only copy IN THE BAR — see the handoff note above for the
+              corner pill that used to hold a second one while the bar floated.
+
+              Not on a phone (PAR-434): below a 640 px bar the three move into the burger sheet,
+              where they are one row at the end of the list. They were three controls of 24–34 px
+              in a row with 25 px of slack at 360, and they are preferences a visitor sets once,
+              not navigation. The bar's width and not the window's, like every switch in here.
+              The sheet copy is unconditional, because the sheet exists only below 1024 and a
+              portal cannot ask this container anything — between 640 and 1023 the three are in
+              both places, which costs nothing, while a mismatch could leave them in neither. */}
+          <div className="flex items-center gap-1 @max-[640px]:hidden">
             <LocaleSwitcher />
             <ThemeToggle />
             {/* The unit lived in the weather card's header, i.e. on park pages only, while it
@@ -615,6 +624,10 @@ export function Header({
                 this bar has at 360 px and where the space for it came from. */}
             <TemperatureUnitToggle />
           </div>
+
+          {/* The planner's way in on a phone, where the edge tab is not drawn — see
+              PlannerHeaderButton for why it asks `planner-phone` rather than this bar. */}
+          <PlannerHeaderButton label={t('planner')} />
 
           {/* Mobile Menu */}
           <div>
@@ -757,6 +770,20 @@ export function Header({
                       Favoriten-Panel darüber, siehe `MoreMenuLinks` samt Begründung, warum das
                       Sheet die Zeile überhaupt bekommt. */}
                   <MoreMenuLinks variant="sheet" />
+                  {/* The three preferences the bar no longer carries on a phone. Last, because
+                      they are set once and then left alone; the same components as the bar's,
+                      so a change to one is a change to both. */}
+                  <div
+                    data-sheet-stagger
+                    className="border-border/60 flex items-center justify-between gap-3 border-t pt-4"
+                  >
+                    <span className="text-muted-foreground text-sm">{t('preferences')}</span>
+                    <div className="flex items-center gap-1">
+                      <LocaleSwitcher />
+                      <ThemeToggle />
+                      <TemperatureUnitToggle />
+                    </div>
+                  </div>
                 </nav>
               </SheetContent>
             </Sheet>

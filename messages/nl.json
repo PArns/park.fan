@@ -491,7 +491,8 @@
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
     "readingTime": "{minutes} min.",
-    "nearby": "Bij jou in de buurt"
+    "nearby": "Bij jou in de buurt",
+    "preferences": "Instellingen"
   },
   "theme": {
     "light": "Licht",

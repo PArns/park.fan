@@ -35,9 +35,11 @@ import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/poi
  * own blur, and the label's height varies by locale so a fixed margin cannot do
  * the job either.
  *
- * On a phone it disappears while the panel is open: there the panel is a modal
- * bottom sheet with a grab handle of its own, and a tab clinging to the right
- * edge would be a second handle for the same object, over the overlay.
+ * On a phone (`planner-phone`) it is not drawn at all. Open, the panel is a
+ * modal bottom sheet with a grab handle of its own, and a tab clinging to the
+ * right edge would be a second handle for the same object, over the overlay.
+ * Closed, it was a 34 px strip over the right edge of every page (PAR-434), so
+ * the way in there is `PlannerHeaderButton` in the bar instead.
  */
 export function PlannerEdgeTab({
   open,
@@ -141,7 +143,13 @@ export function PlannerEdgeTab({
         // whole window, i.e. an unreachable control over an opaque one. The
         // `style` below is inert once this applies, which is why the offset
         // needs no second term of its own.
-        open && 'planner-phone:hidden',
+        //
+        // And it is hidden there while CLOSED as well (PAR-434): on a 390 px
+        // screen the closed tab was a 34 px strip laid over the right edge of
+        // every page, across card text and prices. The way in on a phone is
+        // `PlannerHeaderButton` in the bar, which asks the same variant, so
+        // exactly one of the two exists at any size.
+        'planner-phone:hidden',
         // One clock for the three things that move together — the panel, the
         // page's inset and this tab. See the note in `components/ui/sheet.tsx`.
         !dragging && 'transition-[right] duration-300 ease-in-out'
@@ -167,6 +175,7 @@ export function PlannerEdgeTab({
         onDoubleClick={() => open && plannerPanelWidth.commit(PANEL_WIDTH_DEFAULT)}
         aria-expanded={open}
         data-planner-edge-tab=""
+        data-planner-launcher=""
         data-planner-resize-edge={open ? '' : undefined}
         className={cn(
           // Blue, and solid enough to be the loudest thing at the edge: this is
@@ -184,26 +193,18 @@ export function PlannerEdgeTab({
           // is, and at `pr-1` the word ran under it. The left has no scrollbar
           // to clear and gives its 2 px. 6 + 16 + 8 = 30 px, measured.
           'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-2 pl-1.5 shadow-lg ring-1',
-          // A tier below `sm`, because this tab is drawn on EVERY page and on a
-          // phone it is a permanent strip down the right edge: 34 × 130 px in
-          // German, 136 in French, against a 390 px screen. Everything here is
-          // one step down — the padding, the gaps, the icon and the word — for
-          // a tab that still says what it is. It is deliberately not reduced to
-          // the icon alone, which would halve it again and turn the one control
-          // that opens the feature into a glyph nobody has seen before.
-          'max-sm:gap-1 max-sm:py-2.5 max-sm:pr-1.5 max-sm:pl-1',
           'supports-[backdrop-filter]:bg-primary/90 backdrop-blur-md',
           'hover:bg-primary/95 transition-colors',
           open ? 'cursor-col-resize touch-none' : 'cursor-pointer'
         )}
       >
-        <CalendarPlus className="size-4 shrink-0 max-sm:size-3.5" aria-hidden="true" />
+        <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
         {/* `vertical-rl` plus a half turn, which is the pair that reads
             bottom-to-top — `vertical-rl` alone runs top-to-bottom and puts the
             first letter under the icon rather than beside the panel it names.
             This is also the button's accessible name, so there is no
             `aria-label` duplicating it. */}
-        <span className="[transform:rotate(180deg)] text-[10px] font-semibold tracking-wide whitespace-nowrap uppercase [writing-mode:vertical-rl] max-sm:text-[9px] max-sm:tracking-normal">
+        <span className="[transform:rotate(180deg)] text-[10px] font-semibold tracking-wide whitespace-nowrap uppercase [writing-mode:vertical-rl]">
           {t('planner')}
         </span>
         {/* No badge at zero: opened from the calendar there is nothing planned
@@ -215,17 +216,14 @@ export function PlannerEdgeTab({
              than a fixed size, so a three-digit total still gets its room — one
              and two digits, which is every plan anybody has, fit the circle with
              none to spare and cost nothing. */
-          <span className="bg-primary-foreground/20 flex min-w-4 items-center justify-center rounded-full px-0.5 py-0.5 font-mono text-[10px] tabular-nums max-sm:min-w-3.5 max-sm:text-[9px]">
+          <span className="bg-primary-foreground/20 flex min-w-4 items-center justify-center rounded-full px-0.5 py-0.5 font-mono text-[10px] tabular-nums">
             {total}
           </span>
         )}
         {/* Only while it is open, because only then is there anything to drag.
             Drawn when closed it would promise a gesture that does nothing. */}
         {open && (
-          <GripVertical
-            className="text-primary-foreground/70 size-4 shrink-0 max-sm:size-3.5"
-            aria-hidden="true"
-          />
+          <GripVertical className="text-primary-foreground/70 size-4 shrink-0" aria-hidden="true" />
         )}
       </button>
     </div>

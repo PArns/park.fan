@@ -491,7 +491,8 @@
     "categories": "Categorie",
     "popularParks": "Parchi popolari",
     "readingTime": "{minutes} min",
-    "nearby": "Vicino a te"
+    "nearby": "Vicino a te",
+    "preferences": "Impostazioni"
   },
   "theme": {
     "light": "Chiaro",
