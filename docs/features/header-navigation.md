@@ -218,7 +218,9 @@ in French.
 360 px does not move and cannot: the nav is `@min-[1024px]:flex`, so at a phone's width it does not
 exist. The ~25 px of slack the
 [header geometry requirement](../design/design-system.md#header-geometry) counts there is the
-actions row — lockup, search, locale, theme, °C/°F, burger — and none of this touches it.
+actions row — lockup, search, locale, theme, °C/°F, burger — and none of this touches it. (Since
+PAR-434 a phone's row is lockup, search, planner, burger; the three preferences moved into the
+sheet.)
 
 Four entries moved one level down, behind a trigger with no page of its own. Three of them are
 still there: **Beste Reisezeit**, **Wörterbuch** and **So funktioniert's**, a heading and a line

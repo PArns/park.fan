@@ -1,10 +1,12 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus } from 'lucide-react';
 import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
 import { totalsFor } from '@/lib/planner/estimate';
+import { cn } from '@/lib/utils';
 import { formatShortDuration } from '@/lib/utils/duration';
 import type { DayGrid } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
@@ -21,11 +23,19 @@ interface PlannerDayFootProps {
   prefs?: PlannerDayPrefs;
   entries: readonly PlannerEntry[];
   onAddFreeBlock: () => void;
+  /**
+   * Drawn at the end of the optimise row: the phone's show switch since
+   * PAR-482 (the notification bell before it went up beside the ×). Not in
+   * the summary row below, because two rows of 44 px targets stacked cost the
+   * foot about 86 px, and the summary line without one is 29.
+   */
+  actionsTrailing?: ReactNode;
 }
 
 /**
- * Everything a day is filled and summed with: optimise, the missing headliners,
- * a free block, and what it all comes to.
+ * Everything a day is filled and summed with: the missing headliners, a free
+ * block, optimise, and what it all comes to — optimise last but one, so it
+ * stands against the total it lowers (PAR-493).
  *
  * **Its own component because it is rendered in two places and must be one
  * implementation.** Every control in here names a park AND a date, and once the
@@ -64,6 +74,7 @@ export function PlannerDayFoot({
   prefs,
   entries,
   onAddFreeBlock,
+  actionsTrailing,
 }: PlannerDayFootProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -71,21 +82,6 @@ export function PlannerDayFoot({
 
   return (
     <>
-      {/* Letting the day sort itself, above the band that names what is missing
-          from it — the headliner button is the same question one gesture
-          further on ("and put them in"), so the two belong together and in that
-          order. */}
-      <PlannerOptimizeActions
-        parkSlug={parkSlug}
-        parkName={parkName}
-        geo={geo}
-        date={date}
-        day={day}
-        grid={grid}
-        timezone={timezone}
-        prefs={prefs}
-      />
-
       {/* Which of the park's big rides are still missing. Outside the phone's
           ride search, because it is the one thing down here that both pointers
           need: the phone adds by tapping a pill, the desktop drags one onto an
@@ -122,10 +118,36 @@ export function PlannerDayFoot({
         <span className="truncate">{t('custom.add')}</span>
       </button>
 
+      {/* Letting the day sort itself, directly above what the day adds up to
+          (PAR-493). It used to open the foot, above the headliner band, and the
+          report was that nobody saw it — a grey button two rows away from the
+          total it changes. Next to "Wartezeit 3:20 Std." the button and the
+          figure it would lower are read together, and where it would lower it
+          the button is the foot's call to action and says by how much. The
+          headliner button in the same row follows the band that lists what it
+          adds, which is the order the two are read in. */}
+      <PlannerOptimizeActions
+        parkSlug={parkSlug}
+        parkName={parkName}
+        geo={geo}
+        date={date}
+        day={day}
+        grid={grid}
+        timezone={timezone}
+        prefs={prefs}
+        trailing={actionsTrailing}
+      />
+
       {entries.length > 0 && (
         <div
           data-planner-summary=""
-          className="border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs"
+          className={cn(
+            'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
+            // A line of text and nothing to press, so on a phone it is only as
+            // tall as the text wants (PAR-482: "im Footer die Abstände nach
+            // oben und unten verringern"): 29 px, where a bell in it made it 39.
+            'planner-phone:py-1.5'
+          )}
         >
           <span>
             {t('summary.rides', { count: entries.length - totals.custom })}

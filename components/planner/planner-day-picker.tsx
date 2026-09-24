@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerMonthCalendar } from './planner-month-calendar';
 import type { CalendarDay } from '@/lib/api/types';
@@ -65,10 +66,10 @@ export function PlannerDayPicker({
        `CLAUDE.md` states and `check:planner` asserts, and the row around them
        carries `planner-phone:py-0`, so the bar is exactly 44 px + its rule.
        There is nothing left to take off the height.
-       The width came from the chevron that used to sit to the right of this
-       bar — 44 px plus an 8 px gap, see `planner-flyout.tsx`. Measured at
-       360 px: the bar goes 174 → 196 px (48 + 2 + 96 + 2 + 48) and the park
-       name grows from 106 to 132. */
+       The chevrons were 48 wide from PAR-313, when the width came free from a
+       chevron that used to sit beside this bar. PAR-482 put the bell and the
+       × into the same row, and at 360 px the park name was down to "E…":
+       the chevrons are 32 now and the bar 148 px (32 + 2 + 80 + 2 + 32). */
     <div className="planner-phone:gap-0.5 flex items-center gap-1">
       <button
         type="button"
@@ -80,9 +81,11 @@ export function PlannerDayPicker({
           // them. Stepping a day is the most-pressed control in the panel and
           // it was a 28 px square; the row it sits in is 44 px tall now, so
           // this costs the axis nothing beyond what the row already spent.
-          // 48 WIDE since PAR-313 — the height is at its floor, so what the
-          // freed chevron buys the most-pressed control is width.
-          'hover:bg-accent planner-phone:h-11 planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
+          // 48 wide from PAR-313 until PAR-482 put the bell and the × into
+          // this row: 32 now, which the park name was paying for ("E…" at
+          // 360 px). 32 × 44 to a finger.
+          'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition-colors',
+          PHONE_TARGET_32,
           atStart && 'pointer-events-none opacity-30'
         )}
       >
@@ -95,9 +98,15 @@ export function PlannerDayPicker({
             type="button"
             data-planner-day-trigger=""
             aria-label={t('day.pick')}
-            className="bg-accent/40 hover:bg-accent planner-phone:h-11 planner-phone:min-w-24 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors"
+            className={cn(
+              'bg-accent/40 hover:bg-accent planner-phone:min-w-20 planner-phone:justify-center flex h-7 items-center gap-1.5 rounded-md px-2 text-xs transition-colors',
+              PHONE_TARGET_32
+            )}
           >
-            <CalendarDays className="size-3.5 shrink-0" aria-hidden="true" />
+            {/* Not on a phone (PAR-482): the sheet's × joined this row there, and
+                the 20 px of the icon are what the park name would otherwise pay
+                for it. The date and the two chevrons say what this is. */}
+            <CalendarDays className="planner-phone:hidden size-3.5 shrink-0" aria-hidden="true" />
             {dayLabel(value, today, locale, t)}
           </button>
         </PopoverTrigger>
@@ -143,8 +152,9 @@ export function PlannerDayPicker({
         disabled={atEnd}
         aria-label={t('calendar.nextDay')}
         className={cn(
-          // 48 × 44 on a phone, like its twin above — see the note on the row.
-          'hover:bg-accent planner-phone:h-11 planner-phone:w-12 flex size-7 items-center justify-center rounded-md transition-colors',
+          // 32 × 44 on a phone, like its twin above — see the note on the row.
+          'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition-colors',
+          PHONE_TARGET_32,
           atEnd && 'pointer-events-none opacity-30'
         )}
       >

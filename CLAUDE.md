@@ -71,6 +71,9 @@ carries the reasoning, the measurements and the counter-examples.
   half these pages' bytes and is paid by every request including the crawler's. A page that renders
   none of a thing must not ship it. Judge compressed, A/B both sides in one build, and measure on a
   cache-busted URL.
+- **[A day in the park has a byte budget](docs/rules/a-day-in-the-park-has-a-byte-budget.md)** — park page on a phone: first live
+  wait time ≤ 2.5 s Slow 4G / 7.0 s 3G, first visit ≤ 850 KB, lean poll ≤ 5 KB brotli, a day ≤ 1,700 KB.
+  `next start` does not compress `/api/*`, so weigh poll bodies with brotli yourself.
 - **[A `revalidate` at a call site is somebody else's page](docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md)** — Next takes the shortest `revalidate` a
   route executes. Never pass a numeric TTL at a call site: put it in `CACHE_TTL` or the helper's
   default, and set it from the data's cadence, not as a floor under some page. Prove it against
@@ -161,6 +164,7 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Blog spotlight cards](docs/rules/blog-spotlight-cards.md)** — the row template sits on the card itself, never on a shared wrapper that
   also holds the heading.
 - **[A blog card is a row on phones](docs/rules/a-blog-card-is-a-row-on-phones.md)** — below `sm` the card is not rendered at all; `BlogPostRow` is.
+  `ParkCard` does the same with its own four-line row (`data-park-card-row`).
   Two markups, not one responsive tree. The hero overlap is safe by construction:
   `HERO_FLOW_INTO_PULL` (176 px) must stay smaller than the hero's mobile `pb-48`.
 - **[Map tiles are CARTO, never OSM's own tile server](docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md)** —
@@ -224,7 +228,7 @@ carries the reasoning, the measurements and the counter-examples.
 | i18n            | [internationalization](docs/i18n/internationalization.md) · [translations](docs/i18n/translations.md) · [pluralization](docs/i18n/pluralization.md)                                                                                                                                                                                                                                                                                                   |
 | Features        | [admin](docs/features/admin.md) · [media database](docs/features/media-database.md) · [glossary](docs/features/glossary.md) · [the guide page](docs/features/how-park-fan-works.md) · [trip planner](docs/features/trip-planner.md) · [new-posts toast](docs/features/new-posts-toast.md)                                                                                                                                                             |
 | API & backend   | [backend integration](docs/api/backend-integration.md) · [calendar status](docs/api/calendar-status-closed.md) · [parks without wait times](docs/api/parks-without-wait-times.md)                                                                                                                                                                                                                                                                     |
-| SEO             | [SEO analysis](docs/seo/analysis.md) · [agent readiness](docs/seo/agent-readiness.md) · [featured parks](docs/seo/featured-parks.md) · [sitemaps](docs/seo/sitemaps.md)                                                                                                                                                                                                                                                                               |
+| SEO             | [SEO analysis](docs/seo/analysis.md) · [agent readiness](docs/seo/agent-readiness.md) · [featured parks](docs/seo/featured-parks.md) · [sitemaps](docs/seo/sitemaps.md) · [crawl budget](docs/seo/crawl-budget.md)                                                                                                                                                                                                                                    |
 | Troubleshooting | [common issues](docs/troubleshooting/common-issues.md)                                                                                                                                                                                                                                                                                                                                                                                                |
 | Other           | [changelog](docs/changelog.md)                                                                                                                                                                                                                                                                                                                                                                                                                        |
 

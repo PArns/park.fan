@@ -4,6 +4,7 @@ import { useMemo, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Eye, EyeOff, Theater } from 'lucide-react';
 import type { PlannerShowLine } from '@/lib/planner/shows';
+import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import {
   getMinuteTick,
   getZero,
@@ -12,6 +13,7 @@ import {
 } from '@/lib/planner/minute-tick';
 import { formatGridTime, parkMinuteNow } from '@/lib/planner/park-time';
 import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32_UP } from '@/lib/planner/touch-target';
 
 interface PlannerShowBandProps {
   /** `null` while the day payload is still on its way. */
@@ -23,6 +25,8 @@ interface PlannerShowBandProps {
   visible?: boolean;
   /** Absent where there is nothing to switch — a day with no shows at all. */
   onToggle?: () => void;
+  /** The planner passes `planner-phone:hidden`: see {@link PlannerShowsButton}. */
+  className?: string;
 }
 
 /**
@@ -51,6 +55,7 @@ export function PlannerShowBand({
   isToday,
   visible = true,
   onToggle,
+  className,
 }: PlannerShowBandProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -100,89 +105,39 @@ export function PlannerShowBand({
   // switch on it. Collapsing THAT would take a strip away and leave nothing to
   // bring it back with.
   const switchable = Boolean(onToggle) && lines !== null && lines.length > 0;
-  // The phone's hidden state: no strip, just the switch.
-  const collapsed = switchable && !visible;
 
   return (
     <div
       data-planner-show-band=""
-      // `max-sm:min-h-11`, and it is the strip that grows rather than only the
-      // switch inside it. A 44 px pseudo-element hanging out of a 22 px strip
-      // was tried and is wrong here: this strip is `sticky top-0` INSIDE the
-      // grid's scroller, so the overhang follows the scroll across the blocks —
-      // and a block is selected by a plain `onClick` on its own `<li>` with no
-      // pointer-type gate (`planner-block.tsx`), so the top-right corner of
-      // whatever block passed underneath would toggle the shows instead of
-      // opening its action row.
+      // Not drawn on a phone since PAR-482: the planner hides it there with
+      // `className` and the switch below becomes a button in the foot
+      // (`PlannerShowsButton`). The strip was `sticky top-0` inside the axis'
+      // scroller and grew to 44 px on a phone to carry a 44 px switch, which
+      // is 44 px of axis covered for a line that repeats what the grid already
+      // draws at every show. So what is left here is the desktop's strip, and
+      // the trip-planner page's demos, which render it without a switch.
       //
-      // Growing costs the axis nothing, which is the part worth writing down:
-      // the strip is scrolled CONTENT, not part of the scroller's box, so
-      // `check:planner`'s axis measurement is unmoved. What it does cost is
-      // coverage — stuck at the top it hides 44 px of grid instead of 22 — and
-      // that is recoverable by scrolling, where a stolen tap is not.
-      //
-      // **`max-sm:` and not `planner-phone:`, and that trade is why** (PAR-76).
-      // "Recoverable by scrolling" assumes the viewport is taller than the
-      // strip. On a landscape phone it is not: the axis' scroller is 16 px
-      // there, so a 44 px strip stuck at its top covers the whole of it,
-      // permanently, and no amount of scrolling moves a `sticky top-0` child
-      // out of the way. The 22 px version at least leaves something to look at.
-      // The tap this gives up is the shows toggle's, in the one arrangement
-      // where the axis it would reveal is 16 px tall — the same bargain the
-      // axis' own 200 px floor makes two files over, and the same reason: the
-      // chrome there is 343 px of a 359 px sheet, and a class cannot mint room.
-      // Both are PAR-168's to spend.
-      //
-      // Unconditional, though the switch it was raised for renders only where
-      // there are shows: a height that depends on the answer is not a
-      // reservation, and this strip's whole job in the loading state is to keep
-      // the grid from moving when `/plan/day` lands. Tying `min-h-11` to
-      // `lines?.length` would buy back 22 px on a park with no shows and pay
-      // for it with a 22 px jump on every park that has them, one second after
-      // the panel opens.
-      //
-      // `collapsed` is the one state that gives the 44 px back, and it is the
-      // state a reader ASKED for: the switch is off, so there is nothing to
-      // reserve room for. Below `sm` the strip then goes to `h-0` and drops its
-      // rule, its glass and its text, and the switch alone hangs into the grid
-      // from the top right — 44 × 44 of cover instead of 44 × the full width.
-      // The way back is where the way out was, which is what makes it a switch
-      // rather than a one-way door; the header row this could otherwise have
-      // moved to has 119 px left for the park name at 390 px — 63 until
-      // PAR-188 dropped the ×, which is where the other 56 came from — and the
-      // name itself measures 80 of them, so a fourth 44 px control there is
-      // still paid for out of the park name (the arithmetic is in
-      // `planner-flyout.tsx`, and what the extra room does or does not buy
-      // that row is PAR-202). A row of its own in `PlannerDayFoot` would cost
-      // more chrome than the strip gives back.
-      //
-      // It is the phone's state alone: every class here is `max-sm:`, so the
-      // desktop keeps the "Ausgeblendet" strip it has always had. CSS rather
-      // than a `useMediaQuery` branch, because this component is also
-      // server-rendered by the guide's demos, where the hook's snapshot would
-      // ship the phone's markup to every desktop and then delete it.
+      // The strip reserves its height in every state, so the grid does not move
+      // when `/plan/day` lands; `min-h` rather than a height tied to
+      // `lines?.length`, which would jump on every park that has shows.
       className={cn(
         'border-border/60 bg-background/95 text-muted-foreground sticky top-0 z-40 flex min-h-[22px] items-center gap-1.5 border-b px-2 text-[10px] backdrop-blur-sm',
-        collapsed
-          ? 'max-sm:pointer-events-none max-sm:h-0 max-sm:min-h-0 max-sm:items-start max-sm:border-b-0 max-sm:bg-transparent max-sm:backdrop-blur-none'
-          : 'max-sm:min-h-11'
+        className
       )}
       // Supplementary rather than load-bearing: the label already says the times
       // are a projection, and this says which day they were taken from.
       title={observedOn ? t('shows.projectedFrom', { date: observedOn }) : undefined}
     >
-      <Theater className={cn('size-3 shrink-0', collapsed && 'max-sm:hidden')} aria-hidden="true" />
+      <Theater className="size-3 shrink-0" aria-hidden="true" />
       {lines === null ? (
         <span aria-hidden="true">&nbsp;</span>
       ) : lines.length === 0 ? (
         <span className="truncate">{t('shows.none')}</span>
       ) : !visible ? (
-        /* Hidden, and on a desktop the band says so rather than disappearing
-           with them: there the strip is not what is short, and a reader who
-           turned the shows off by accident would otherwise have nothing left to
-           read. On a phone the sentence goes with the strip — the switch stays,
-           so nothing is lost but the row. */
-        <span className={cn('truncate', collapsed && 'max-sm:hidden')}>{t('shows.hidden')}</span>
+        /* Hidden, and the band says so rather than disappearing with them: a
+           reader who turned the shows off by accident would otherwise have
+           nothing left to read. */
+        <span className="truncate">{t('shows.hidden')}</span>
       ) : next ? (
         <>
           <span className="shrink-0">{label}</span>
@@ -215,19 +170,7 @@ export function PlannerShowBand({
           data-planner-shows-toggle={visible ? 'on' : 'off'}
           aria-pressed={visible}
           title={visible ? t('shows.hide') : t('shows.show')}
-          // 16 px measured, and the smallest target in the panel. It grows
-          // inside a strip that grew with it — see the strip's own note for why
-          // this is the one place a pseudo-element was the wrong instrument.
-          //
-          // Collapsed, it is the only thing left of the strip: it takes back the
-          // pointer its parent gave up, and it carries the glass the strip was
-          // wearing, because on its own it sits over the grid's own blocks and
-          // an unbacked icon there is a shape in a drawing.
-          className={cn(
-            'hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors max-sm:-my-0 max-sm:size-11',
-            collapsed &&
-              'max-sm:border-border/60 max-sm:bg-background/95 max-sm:pointer-events-auto max-sm:rounded-md max-sm:border max-sm:shadow-sm max-sm:backdrop-blur-sm'
-          )}
+          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors"
         >
           {visible ? (
             <Eye className="size-3" aria-hidden="true" />
@@ -238,5 +181,54 @@ export function PlannerShowBand({
         </button>
       )}
     </div>
+  );
+}
+
+/**
+ * The phone's switch for the shows, at the end of the foot's optimise row.
+ *
+ * The phone does not draw {@link PlannerShowBand} (PAR-482), and the band was
+ * where the switch lived. It sat in the context band as a chip for a while,
+ * where it pushed the chip row onto a second line; the row that took the
+ * notification bell had room once the bell went up beside the ×. Same store,
+ * same toggle: a reader who turned the shows off on the desktop finds them off
+ * here, with the way back in sight.
+ *
+ * The theatre masks and nothing else, for the row's width: at 360 px the row
+ * holds the headliner button, the call to action and this, in every locale.
+ * The masks are the mark every show line in the grid carries, so the button
+ * names what it hides by looking like it, and `aria-pressed` with the primary
+ * tint says whether they are on. Drawn 36 × 32, reaching 44 × 44 like the
+ * buttons beside it: 12 px up and 4 px to each side.
+ *
+ * The caller renders it only where {@link dayHasShowLines} holds.
+ */
+export function PlannerShowsButton() {
+  const t = useTranslations('planner');
+  const visible = useSyncExternalStore(
+    plannerShowsVisible.subscribe,
+    plannerShowsVisible.getSnapshot,
+    plannerShowsVisible.getServerSnapshot
+  );
+
+  return (
+    <button
+      type="button"
+      onClick={plannerShowsVisible.toggle}
+      data-planner-shows-button={visible ? 'on' : 'off'}
+      aria-pressed={visible}
+      aria-label={t('shows.chip')}
+      title={visible ? t('shows.hide') : t('shows.show')}
+      className={cn(
+        'flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
+        PHONE_TARGET_32_UP,
+        'planner-phone:after:-inset-x-1',
+        visible
+          ? 'bg-primary/10 text-primary hover:bg-primary/20'
+          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+      )}
+    >
+      <Theater className="size-4" aria-hidden="true" />
+    </button>
   );
 }

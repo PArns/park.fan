@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Bell, BellOff, Loader2 } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { usePushSubscription } from '@/lib/planner/use-push-subscription';
 import { PlannerShareLink } from './planner-share-link';
 
@@ -258,7 +259,14 @@ function PushPopover({
           data-planner-push-trigger={state}
           aria-label={label}
           title={label}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:size-11 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors"
+          className={cn(
+            'text-muted-foreground hover:text-foreground hover:bg-accent planner-phone:w-8 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
+            // Drawn 32 × 32 beside the × in the phone's header row and 32 × 44
+            // to a finger (PAR-482): 6 px of overhang above and below, like
+            // every control in that row. The park name pays for its width,
+            // so it is drawn no wider than the chevrons beside it.
+            PHONE_TARGET_32
+          )}
         >
           {icon}
         </button>

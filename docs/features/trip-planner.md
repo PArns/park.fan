@@ -268,40 +268,33 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
-**They switch off, and on a phone the strip goes with them.** Shows are the one
-thing on the grid nobody put there — a plan is what somebody dragged in, and four
-dotted rules across it are context. The switch lives in the band
-(`lib/planner/shows-visible.ts`, an external store on `localStorage` so the
-decision survives a reload) and hides the rules. It renders only where there is
-something to switch: on a day the API answered with no shows, a control that
-toggles an empty set is a control that does nothing.
+**They switch off, and a phone has no strip at all.** Shows are the one thing on
+the grid nobody put there — a plan is what somebody dragged in, and four dotted
+rules across it are context. The switch (`lib/planner/shows-visible.ts`, an
+external store on `localStorage` so the decision survives a reload) hides the
+rules. It renders only where there is something to switch: on a day the API
+answered with no shows, a control that toggles an empty set is a control that
+does nothing.
 
-What the switch may take away depends on which screen is asking, and the reason
-is that only one of them is short. On a **desktop** the strip stays and says
-„Spielzeiten ausgeblendet": 22 px is not what is missing there, and a strip that
-vanished would take the switch with it. On a **phone** it is 45 px of a **776 px**
-sheet (measured at 390 × 844 — the sheet is `max-sm:max-h-[92svh]`, so the 716
-that older notes in this feature quote is the 85svh figure), so below `sm` the
-strip collapses to `h-0` — rule, glass, symbol and sentence with it — and the
-switch alone stays, as a 44 × 44 field in the top right of the grid's scroller.
-Measured at 390 × 844, in both themes: the grid's first block moves 449 → 404 px,
-and the strip comes back at its full 45 px on the next press. The way back is the way out, which is what let this stay
-a switch rather than move somewhere else: the panel's header row has 119 px left
-for the park name at 390 px and the name measures 80 of them (63 until PAR-188
-dropped the ×; see the arithmetic in `planner-flyout.tsx`, and PAR-202 for what
-the 56 px it gave back are worth), so a fourth control there comes out of the
-park name — and a row of its own in `PlannerDayFoot` would have cost about 35 px
-of chrome to give 45 back. It costs the corner: 44 × 44 of grid under a visible control, against
-44 px across the full width before.
+On a **desktop** the switch lives in the band, and the band stays when the shows
+are off and says „Spielzeiten ausgeblendet": 22 px is not what is missing there,
+and a strip that vanished would take the switch with it.
 
-That state is expressed in CSS (`max-sm:` throughout, gated on a `collapsed`
-flag), never in a `useMediaQuery` branch — this component is also server-rendered
-by the guide's demos, where the hook's snapshot would ship the phone's markup to
-every desktop and then delete it. And the collapse is gated on the switch
-EXISTING: `visible` is the panel's state rather than the day's, so it can be
-false over a park with no shows, where the strip reads „keine Spielzeiten" and
-carries no switch. Collapsing that one would remove a strip and leave nothing to
-bring it back with.
+On a **phone** the band is not drawn (PAR-482, „lass uns das Showband ausblenden").
+It used to collapse to its switch when the shows were off and stand 44 px tall
+when they were on, `sticky` at the top of the axis' scroller, so the default
+state covered 44 px of the day with a sentence the grid already says at every
+show. The planner passes it `planner-phone:hidden`; the trip-planner page's demos
+render it without a switch and are unaffected. The switch is `PlannerShowsButton`
+there, the theatre masks at the end of the foot's optimise row — the mark every
+show line in the grid carries, so the button looks like what it hides — with
+`aria-pressed` and the primary tint for on. It was a chip „Shows" in the context
+band first, which pushed that band's chip row onto a second line at 390 px (60 →
+80 px); the optimise row had room once the notification bell went up beside the ×.
+The flyout passes it only for a day with shows (`dayHasShowLines` in
+`lib/planner/shows.ts`, asked exactly as the grid asks), because the row is drawn
+for its trailing control alone where there is nothing to optimise, and a switch
+over nothing would leave that row empty.
 
 ## The photo behind the panel sits in a NEGATIVE layer
 
@@ -477,19 +470,23 @@ source is unreadable the estimate is `missing: 'no-source'` with no figure at
 all, and the block says so; `pnpm test:planner-estimate` pins both directions,
 including that a ride the payload _does_ carry still reports its number.
 
-## The tab is on every page, so it has a phone tier
+## The tab is on every page but a phone's
 
-The edge tab is drawn on **every** page whether or not anything is planned, which
-is right — the feature has to be findable from a park page — and on a phone it
-was a permanent strip down the right edge at 34 × 130 px in German and 136 in
-French, against a 390 px screen. Below `sm` everything in it steps down one size:
-the padding, the two gaps, the icon and the word. Measured 34 × 130 → **28 × 102**
-(de) and 136 → 107 (fr), with 640 px and up unchanged to the pixel.
+The edge tab is drawn on every page whether or not anything is planned, which is right — the
+feature has to be findable from a park page. On a phone it was the opposite of findable: even
+after a phone tier took it from 34 × 130 to 24 × 102 px it lay over the right edge of every page,
+across card text and prices, on a 390 px screen (PAR-434).
 
-It is deliberately not reduced to the icon alone, which would halve it again and
-turn the one control that opens the feature into a glyph nobody has seen before.
-The word is also the button's accessible name, so hiding it would need an
-`aria-label` saying the same thing twice.
+So on `planner-phone` it is not drawn at all, open or closed, and the way in is
+`PlannerHeaderButton`: a calendar icon in the header bar, beside the burger, with the same count
+badge. Both ask `planner-phone` and not a width, so exactly one of the two exists at any size —
+including 844 × 390 on a coarse pointer, where the bar is 844 px wide and a container query would
+have hidden the button while the variant hid the tab. The button only opens (the sheet it opens is
+modal and closes itself) and reports `planner_opened` with `source: header`. The room for it in the
+bar came from the three preference controls, which moved into the burger sheet on a phone — see
+[design system → header geometry](../design/design-system.md#header-geometry).
+
+`check:planner` finds whichever of the two is displayed through `[data-planner-launcher]:visible`.
 
 ## The axis is the park's day, and the canvas is not
 
@@ -1536,25 +1533,24 @@ the sheet, so tapping outside is no longer a way out and what remains has to be
 real: the handle brings the sheet back down by drag **or** tap, which is why the
 tap toggles rather than only dismissing. At rest the shield is back.
 
-**And the × is gone from the phone sheet**, which is what makes that handle the
-pulled-up state's only exit. Three ways out of a bottom sheet were one too many,
-and the one that went is the one parked in the corner a thumb reaches worst;
-`SheetContent` takes a `hideClose` prop for it, opt-in per call site rather than
-a breakpoint inside the component, because the same component draws the header's
-burger menu and that sheet has nothing else to close it with. The planner keys it
-on `isPhone`, the same value as `side` and `modal` two lines up, so a class does
-not become a fourth copy of `PLANNER_PHONE_QUERY` free to drift from the other
-three. That is also what keeps the trade honest at 844 × 390: the handle's
-wrapper is `planner-wide:hidden` and `planner-wide:` is the exact complement of
-`planner-phone:`, which is the CSS twin of that query — so the × goes exactly
-where the handle arrives, and there is no window that loses both. A `max-sm:`
-class would have taken the × off a landscape phone without giving it a handle,
-because 844 px is over `sm`. The desktop panel keeps its ×: a side panel has no
-handle, and its outside press is deliberately swallowed, so there the × and
-Escape are the whole list. `check:planner` asserts the pair at all three:
-no close button beside the existing `der Anfasser ist da` at 390 × 844, the same
-beside the handle assertion at 844 × 390, and a close button still present at
-1400 px.
+**The × was gone from the phone sheet from PAR-188 to PAR-483, and it is back.**
+PAR-188 took it off on the reasoning that three ways out of a bottom sheet were one
+too many: the handle drags the sheet away, the shield beside it closes it on a tap,
+and the × was parked in the corner a thumb reaches worst. What the field then found
+is that the first thing anybody does with a handle is tap it, a tap pulls the sheet
+up to 100svh, and at 100svh the shield is 0 px tall — so the only exit left was a
+90 px drag that nothing on screen names ("der Planer lässt sich nicht schließen").
+The × now sits in the handle row, `SheetClose` with `data-planner-sheet-close`,
+right of the handle, and the push bell moved to the left margin to make room. It is
+not `SheetContent`'s own corner button, because on a phone that corner is the sheet
+header's day picker, which is what PAR-188 was about in the first place; the planner
+still passes `hideClose={isPhone}` and draws its own. The desktop panel keeps the
+corner ×: a side panel has no handle, and its outside press is deliberately
+swallowed, so there the × and Escape are the whole list. `check:planner` asserts
+exactly one close button at 390 × 844 (44 px, in the handle row), that it takes a
+press while the sheet is pulled up, the same single button at 844 × 390, and the
+corner × at 1400 px. The handle's label says what a press does and nothing more:
+„Planer vergrößern oder verkleinern" (PAR-203).
 
 ### Every target in the sheet is 44 px, and three of them are not what they measure
 
@@ -1711,6 +1707,197 @@ also be bought by deleting rows, and the check should be able to tell the two
 apart. The covering assertion also gained `axisVisible === axis`: without it an
 axis pushed past the sheet's own bottom edge reports "nothing is over me",
 because `elementFromPoint` answers `null` outside the window.
+
+### The phone sheet, measured against an iPhone screenshot (PAR-482)
+
+The report was three sentences — buttons outside the view, a planner that will not
+close, no warning when every headliner is too tall for the children — and the first
+two turned out to be one bug that no Chromium run could have shown.
+
+**iOS zooms in on a text field under 16 px and never zooms back out.** The ride
+search and a free block's label were `text-sm`, so one tap into either left the page
+at 16/14 = 1.14×. The sheet is `position: fixed` against the layout viewport, so at
+that zoom its right edge ran past the screen (every row cut mid-word, which read as
+an overflow) and its top — the handle and the header — above it. The screenshot
+gives the zoom away: the search field is 110 image pixels tall where a 1× render of
+the same screen gives about 94. In Chromium nothing overflowed at 320, 360 or 390 px
+in German or French, `scrollWidth === clientWidth` on every page behind the sheet.
+The admin had hit the same zoom before and carries a rule for it; the planner gets
+its own in `app/globals.css`: under `(pointer: coarse)`, every text field inside
+`[data-planner-sheet]` renders at 16 px. Keyed on the pointer and not the width,
+because the zoom is a touch-screen behaviour and hits an iPad too.
+
+**The selected block's action bar was the biggest thing in the sheet.** With
+`max-sm:flex-wrap` and 44 px targets it wrapped into four lines — the name, two
+moves, seven icon buttons, the durations and a bare "×" — about 200 px docked over a
+scroller of about 240 (measured: 210 px at 390 × 844 with a free block selected), so
+the block being edited was usually underneath it. It is two
+lines now, about 105 px at 390: the name and the deselect "×" first, the controls spread
+across the second. The seven icon buttons became one dropdown (the trigger shows the
+current icon), delete is a bin in the bar on every size again (the block's corner ✕
+from PAR-313 stays as the shortcut), and every icon button is one class, `size-8`
+with `gap-1` inside a group and 44 px on a coarse pointer (PAR-326). A block selected
+under the bar is scrolled clear of it (PAR-332): the scroller gets the bar's height
+as bottom padding while a block is selected, so even the last block of the day can
+rise above it, and the column scrolls by as much as the bar covers. The scroll follows
+the CLICK and not the selection, because a drag selects its block on `pointerdown`
+and moving the day under a finger that is still holding the grip would move the drop
+target with it.
+
+**„Tag optimieren" is a call to action where it would change something (PAR-493).**
+It was a grey ghost button at the top of the foot, two rows away from the total it
+lowers, and nobody saw it. The foot now reads headliner band, free block, optimise,
+summary — so the button stands directly over „Wartezeit 3:45 Std." — and the panel
+runs the optimiser once before anybody presses it, with the same input and the same
+`scoreCurrent` before-figure `run` uses. Where the answer beats the plan on screen by
+at least five minutes, or brings a ride back inside the day, the button is filled with
+the primary colour, takes the rest of its row and says what the press is worth
+(„70 Min. weniger Warten") on a second line. The figure is on the five-minute grid,
+and so is the result line after the press, so the promise and the report cannot
+disagree. The search is memoised on the grid's numbers rather than the grid object,
+because the panel rebuilds that object on every render and one search is 5–50 ms.
+
+**The rest of the room went to the axis.** The missing-headliner band is one row of
+pills scrolled sideways on a phone instead of two capped rows with a scroller of
+their own, and the ride search drops its two-line tap hint once the day has a ride in
+it — by then the tap has done what the sentence says. On a phone the headliner button
+beside the call to action takes the wizard's shorter label („Headliner einplanen"), so
+the two share one row at 360 px in German. Measured with Europa-Park, eight rides and a
+lunch block: the axis went from 319 to 366 px at 390 × 844 and from 262 to 311 at
+360 × 800.
+
+**The grabber works like an iOS sheet's.** It used to commit on release against a
+distance and do nothing while the finger moved, with two heights to choose between —
+the sheet could be pulled bigger and never smaller. Now it follows the finger and snaps
+to one of three detents on release: `large` (where it opens, under the header), `full`
+(100svh) and `medium` (half the screen, to see the page the rides come from). The
+nearest detent wins; a flick (over 0.5 px/ms) moves one detent on from where the drag
+started even over a short distance; a flick down from `medium`, or a release 90 px under
+it, closes the sheet; a tap steps up one detent and from `full` back to `large`. A
+landscape phone has no `medium`, half of 390 px is not a day. The drag writes `bottom`
+and `height` straight onto the element — never a `transform`, which would make the glass
+a backdrop root and flatten its blur — so below its `large` box the sheet slides down
+with its lower half past the screen, the way iOS draws a medium detent. At rest the
+detents are classes on the CSS variables `--planner-sheet-large` and
+`--planner-sheet-medium` (`app/globals.css`), and the drag measures those very values
+with a probe element (`sheetDetentHeights()`) rather than recomputing them from
+`innerHeight`, which on iOS differs from `svh` whenever the toolbar collapses; the sheet has a definite `h-*` now beside its `max-h-*`, because `medium` is
+measured from the top of a `large` box and a short day with `h-auto` would have slid off
+the screen. Snapping, opening and closing run on the iOS sheet curve,
+`cubic-bezier(0.32, 0.72, 0, 1)` over 400 ms (PAR-190's first half); the desktop panel
+keeps its 300 ms, timed against the page's inset. `check:planner` drags the grabber
+halfway, asserts the sheet is already following, releases at `medium` and taps back to
+`large`.
+
+**The grabber is the header, and a short window gives up the site header.** The
+grabber had a 44 px row of its own with the bell and the × in its margins, so a
+phone spent 89 px on chrome before the park name. The pill now sits in a 16 px strip
+at the top of the sheet header, and the grabber is a button laid BEHIND the header
+(`absolute inset-0`, the row painting over it), so a press lands on it wherever no
+control is — the strip, the row's side padding — and a control is never under it. The
+× is the last control of the park/date row with the bell beside it (the day picker
+folds its calendar icon away on a phone, its chevrons are 32 px wide and the row's
+gaps 4 px to pay for them: the park name keeps 127 px at 390 and 97 at 360). The × is
+drawn 32 px wide so its disc sits 12 px from the sheet's edge, like the park button
+on the left, and its target reaches through the row's padding to the edge. The bell
+was at the end of the optimise row for a while; it went up when the shows switch
+needed that place (see the section on shows). 61 px instead of 89. On a window under
+50rem tall — which is every iPhone in Safari, whose visible page is 660–750 px — `large`
+opens over the site header too, 12 px under the top edge (the `@media` twin of
+`--planner-sheet-large`), and `full` is not offered there, being a
+12 px sliver above it; a tap then toggles between half and large. Taller windows keep
+the header visible. Measured with Europa-Park, eight rides and a lunch block: the axis
+is 264 px at 390 × 664, 382 px at 390 × 844 (366 before) and 316 px at 844 × 390 (269).
+`check:planner` grabs the strip rather than the handle's centre, which is under the
+day picker now, and asserts the landscape sheet at 378 px.
+
+**Every row of controls in the phone sheet is drawn at 32 px.** The park and date
+buttons, the headliner pills, "Headliner einplanen", "Tag optimieren" and the bell were
+44 px tall to a finger and 44 px tall to the eye, and on a 664 px window that was the
+report: "die Headliner-Pillen sind viel zu hoch, die CTAs auch", then "die Datums- und
+Parkanzeige hat noch viel Platz nach oben und unten". They are drawn at 32 now and keep
+a 44 px target with an `::after` overhang, which is the party chip's trade that the
+section on targets above explains, written down once in `lib/planner/touch-target.ts`:
+`PHONE_TARGET_32` reaches 6 px above and below, `PHONE_TARGET_32_UP` puts all 12 px
+above. Where the overhangs go is the design:
+
+- the header row's reach 6 px up into the grabber's 16 px strip (the pill sits in the
+  10 px above that, where a press still lands on the grabber) and 6 px down into the
+  header's `pb-1.5`;
+- the pills are the exception: drawn 26 px, so the 16 px thumbnail sits 4 px from
+  the pill's border above and below as it does on the left ("oben zu groß"), and the
+  box around them keeps 4 px on every side of the pills too. Their reach goes 12 px
+  up into the heading, which is text, and 6 px down, 1 px into the band's padding and
+  clear of the optimise buttons' reach from below. A scroller clips its children for
+  hit-testing as well as for paint, so the pill row carries 14 px of padding above and
+  8 below and hands it back with negative margins, and an absolute box is placed from
+  the padding edge, so the bordered pill needs `-top-[13px]` and `-bottom-[7px]`. The
+  band's heading keeps its own line: folded into the pill row it took 150 of the
+  356 px the pills scroll in, which left two of them on screen;
+- the two optimise buttons and the shows switch beside them reach only UP, 12 px,
+  through their row's top padding and 3 px into the band, stopping short of the pills'
+  reach. A third 44 px row of targets under this one would cost the foot about 43 px
+  however the padding is shared out, so the summary line under it carries nothing to
+  press and is as tall as its text. The shows switch is drawn 36 px wide and reaches
+  4 px to each side, into the row's gap and its padding. On a phone the headliner
+  button says a shorter label (`optimize.headlinersShort`, „Headliner planen") and is
+  `w-min`: as wide as its longest word, so the label always takes two lines like the
+  call to action beside it and the call to action grows into the rest (a box does not
+  shrink to text that has wrapped). The row does not wrap on a phone either: a
+  wrapping flex row breaks the line before it shrinks anything, and at 360 px that
+  put the last control on a line of its own. It was the crown alone for a while; the
+  report was that nobody reads a crown as "add the headliners". Where there is nothing
+  to gain, "Tag optimieren" is tinted like the headliner button rather than grey. All
+  six locales fit at 360 px with the row at 45. On a day with nothing to optimise the
+  row is drawn for the shows switch alone, and only on a day that has shows
+  (`dayHasShowLines`), in the same frame (`OptimizeRow`), so the switch keeps its
+  place in the tree when the buttons arrive.
+
+Measured with `elementFromPoint` on every one of them: 32 + 6 + 6, 32 + 12 + 0 or, for
+the pills, 26 + 12 + 6, i.e. 44. Header 61 → 55 px, band 96 → 70 px, the optimise row
+53 → 45 px, the summary line 45 → 29 px, and the show band, 44 px over the top of the
+axis, gone. The axis is 347 px at 390 × 664 and 323 px at 360 × 640, with the context band on one
+line and the search at rest in one row (see below).
+
+**Undo sits in the button row, and a search gets the sheet.** On a phone the undo
+after „Tag optimieren" is an icon at the end of the optimise row, left of the shows
+switch, drawn only while there is something to undo, and the sentence that reports
+the press is read out but not drawn there („worauf bezieht sich das?": with the undo
+gone from it, it stood under the row with nothing to say what it was about). A
+report that is an alert stays drawn, because it carries „Anpassen". The wide
+arrangement keeps the sentence and the undo as a link in it. The call to action takes the rest of the row in both of its states.
+The ride search was the block the sheet squeezes, so with a day in it the rows a
+query found sat under the search's own head, and on an iPhone under the keyboard
+as well: „da kann man nix drin suchen". A tap into the field now turns on a search
+mode (portrait only): the axis and the foot are hidden, kept mounted, and the search
+fills the sheet right under the header, its list scrolling under a field that stays
+put. „Fertig" beside the field, where iOS puts it, empties the field and gives the
+day back. Leaving the field does not end the mode, because a tap on a row blurs the
+field before the row's click lands, and a layout that jumped back on blur would
+move the row out from under that click. At rest on a portrait phone the block is
+one row — the field and „Eigener Block" beside it — and the ride list is drawn only
+in search mode: the list at rest was what the sheet squeezed away, and at
+390 × 664 the block was handed about 100 px, which cut the free-block row in half
+and showed no ride at all („Eigener Block abgeschnitten"). The row is 45 px, the
+field 32 px like every other control in the sheet, the free-block button reaches
+44 px into the row's own 6 px padding, and the block is `shrink-0` so the sheet
+cannot clip it. The axis is 347 px at 390 × 664 and 323 px at 360 × 640 with it.
+A landscape phone keeps the list, in its own column, and so does a narrow window
+under a mouse: both halves ask `(pointer: coarse)` as well, because a mouse drags
+rows out of that list onto the axis, and search mode would hide the axis it drops
+on. In the context band „Ferien nebenan" is a palm
+on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
+brings the chip row back to one line at 360 px: the band is 60 px there again, 20 px
+that go to the axis.
+
+**A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
+headliner that is too tall for the smallest rider or wet for a party that wants to
+stay dry, and an empty list used to land in the same branch as "every headliner is
+already planned": „Für diesen Tag fehlt keine große Bahn mehr" over a family whose
+children fit none of them. The wizard now counts `headlinersSkipped` and, where that
+is what emptied the list, draws a notice in the crowd tint naming the reason (height,
+water or both) and the way on: the rides can still be added one by one in the panel,
+where the search flags them rather than hiding them.
 
 ## Checking it
 

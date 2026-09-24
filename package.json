@@ -129,7 +129,10 @@
     "measure:cls": "node scripts/measure-cls.mjs",
     "measure:function-size": "node scripts/measure-function-size.mjs",
     "measure:mobile-height": "node scripts/measure-mobile-height.mjs",
-    "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
+    "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs",
+    "test:page-fetch-misses": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-page-fetch-misses.mjs",
+    "test:breadcrumb-city": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-breadcrumb-city.mjs",
+    "test:unprefixed-redirect": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-unprefixed-redirect.mjs"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.1",

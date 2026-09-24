@@ -24,6 +24,8 @@ export interface Vocabulary {
   licenses: MediaLicense[];
   parks: { park: string; count: number }[];
   collections: string[];
+  /** Images per collection id, for the folder rail. Parents are summed client-side. */
+  collectionCounts: { collection: string; count: number }[];
   lowResLongEdge: number;
 }
 

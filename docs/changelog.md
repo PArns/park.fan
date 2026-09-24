@@ -16,6 +16,102 @@ jemand aus der Gruppe zu klein ist. Die Körpergröße kommt aus den Planer-Eins
 `/plan/day` wird nur im Park geholt. Geprüft von
 `pnpm test:next-best-ride` mit Fixtures aus drei echten Parks.
 
+## Unreleased – Kapitelköpfe auf dem Handy eine Stufe kleiner (PAR-433)
+
+Unter `sm` zeichnet `ChapterHeading` den Titel in `text-xl` statt `text-2xl`, das Icon mit 28 statt
+40 px und das Band mit `pt-2.5 pb-3`. Die Startseiten-Variante (`tile`) hat eine 48-px-Plakette
+und einen `text-2xl`-Titel. `ChapterPanel`, `PageSection` und `AttractionHistoryPanel` beginnen
+mit 24 statt 40 px Abstand. Gemessen mit `pnpm measure:mobile-height` bei 390 × 664: Startseite
+−798 px, Ride-Seite Taron −226 px, Statistik −92 px, Parkseite −84 px, Kalender −80 px. Ab `sm`
+ist nichts anders (104 Kapitelköpfe auf zehn Seiten bei 1440 px mit identischen Werten). Die
+Kapitel der Parkseite setzen ihren Abstand mit `mt-8` an der Aufrufstelle und sparen deshalb nur
+den kleineren Kopf. Details in [design-system → chapter headings](design/design-system.md#chapter-headings).
+
+## Unreleased – Park-Karten sind auf dem Handy eine Zeile (PAR-432)
+
+Unter `sm` rendert `ParkCard` keine Karte mehr, sondern eine Zeile mit vier festen Zeilen: Name mit
+Favoriten-Stern, Ort · Entfernung, `ParkStatusBadge` und `CrowdLevelBadge`, dann Schließ- oder
+Öffnungszeit (`ParkCardScheduleFooter compact`). Hat der Park ein Foto, steht links ein Thumbnail
+64 × 40 mit dem Fokuspunkt. „Nächster offen“ steht als Text hinter der Uhrzeit statt als drittes Badge. Die Zeile ist 100 px hoch, die Karte war 146 px. Gemessen mit
+`measure:mobile-height` bei 390 × 664: Startseite 27.905 → 27.420 px, Deutschland 3.724 → 3.312 px,
+Niederlande 2.706 → 2.522 px, Phantasialand 12.232 → 12.141 px. `measure:cls --late` auf der
+Deutschland-Seite mobil, spät: 0,2322 → kein Wert mehr, weil die Badges mit dem Batch-Call kommen und
+die Zeile ihnen eine Badge-Höhe reserviert. Alle Aufrufer ziehen ohne Änderung mit, der Desktop
+bleibt gleich. `ParkCardNearbySkeleton` hat unter `sm` dieselbe Zeilenform, und die Raster der
+Park-Karten lassen unter `sm` die `1fr`-Spur weg (`max-sm:auto-rows-auto`).
+
+## Unreleased – Header und Brotkrümel auf dem Handy (PAR-434)
+
+Unter einer 640 px breiten Leiste stehen Sprache, Theme und °C/°F nicht mehr im Header, sondern als
+erste Zeile „Einstellungen" im Menü. Im Header bleiben Logo, Suche, Menü und neu ein
+Kalender-Knopf für den Tagesplaner. Die senkrechte Lasche am rechten Rand wird auf dem Handy nicht
+mehr gezeichnet, weil sie mit 24 × 102 px über Text und Karten lag. Beide Einstiege fragen dieselbe
+Variante (`planner-phone`), es gibt also bei jeder Größe genau einen.
+
+Der Brotkrümel zeigt auf dem Handy nur noch einen Link eine Ebene nach oben statt
+„Startseite › … › Phantasialand". Auf Park- und Ride-Seite fällt die Zeile auf dem Handy ganz weg:
+dort sind Land (und Stadt, wenn sie eine Seite hat) bzw. der Park in der Titelkarte verlinkt. Die
+H1 steht dort bei 390 px jetzt bei y=105 statt 151, gemessen mit `pnpm measure:mobile-height`.
+
+## Unreleased – improvement: der Footer auf dem Handy (PAR-437)
+
+Der Footer war auf dem Handy 1.102 px hoch (390 × 664), 1,7 Bildschirme am Ende jeder Seite. 438 px
+davon waren die drei Link-Spalten mit elf 44-px-Zeilen. Unter `sm` ist jede Spalte jetzt eine
+zugeklappte Zeile, die ihre Links per Tipp aufklappt (`FooterLinkGroup`). Die Links bleiben dabei im
+HTML, zugeklappt nur per `max-sm:hidden` ausgeblendet. Dazu knappere Abstände unter `sm`, und die
+zweite „Arns.dev"-Zeile fällt dort weg, weil derselbe Link oben in der Marke steht. Ergebnis: 636 px
+in de/en/nl/it, 660 px in fr/es. Ab `sm` ist der Footer unverändert, der Screenshot bei 1440 px ist
+byte-gleich. Der 562-px-Block, der im DOM vor dem Footer steht, ist `ParkBackground`: `position:
+fixed` hinter dem Seitenkopf, er belegt keine Höhe.
+
+## Unreleased – fix: der Tagesplaner auf dem Handy (PAR-482)
+
+Drei Meldungen, zwei davon ein einziger Fehler: iOS zoomt beim Tippen in ein Eingabefeld unter
+16 px heran und nicht wieder heraus. Die Bahnsuche und der Name eines eigenen Blocks waren 14 px,
+danach stand die Seite auf 1,14×, das fixierte Sheet lief rechts über den Rand und Griff und
+Kopfzeile oben aus dem Bild. Jetzt rendert jedes Textfeld im Planer-Sheet auf Touch-Geräten mit
+16 px (`[data-planner-sheet]` in `app/globals.css`). Dazu hat das Handy-Sheet wieder einen ×-Knopf,
+rechts in der Park- und Datumszeile (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
+nur noch eine 90-px-Wischgeste herausführte.
+
+Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (105 statt
+210 px bei 390 px): Symbol als Dropdown, Löschen als Papierkorb in der Leiste, ein
+Größensystem für alle Knöpfe (PAR-326), und ein ausgewählter Block wird über die Leiste gescrollt
+(PAR-332). „Tag optimieren" steht jetzt direkt über der Gesamtwartezeit und ist ein gefüllter
+Knopf mit der gemessenen Ersparnis, sobald die Optimierung etwas bringt (PAR-493). Die Headliner
+stehen auf dem Handy in einer seitlich scrollbaren Reihe, der Hinweis unter der Suche verschwindet
+nach der ersten Bahn. Die Achse wächst damit von 319 auf 366 px (390×844) und von 262 auf 311 px
+(360×800). Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
+Trocken-Bleiben der Gruppe passt, statt „es fehlt keine große Bahn mehr" (PAR-484).
+
+Der Griff oben am Handy-Sheet arbeitet jetzt wie bei einem iOS-Sheet: Das Sheet folgt beim Ziehen
+dem Finger und rastet beim Loslassen auf halber Höhe, unter dem Header oder bildschirmfüllend ein;
+ein Wisch nach unten aus der halben Höhe schließt es. Einrasten, Öffnen und Schließen laufen auf der
+iOS-Kurve (400 ms). Bewegt wird über `bottom` und `height`, nie per `transform`, damit die Unschärfe
+des Glas-Hintergrunds erhalten bleibt.
+
+Die Griff-Zeile ist in die Kopfzeile gewandert: Der Griff liegt als schmale Leiste über Park und
+Datum, das × steht rechts in dieser Zeile, die Glocke daneben. 61 statt 89 px. Bei
+knapper Fensterhöhe (unter 800 px, also auf jedem iPhone in Safari) öffnet das Sheet bis 12 px unter
+den oberen Rand und verdeckt den park.fan-Header.
+
+Alle Bedienzeilen im Handy-Sheet (Park, Datum, Headliner-Pillen, die beiden Knöpfe darunter, die
+Glocke) sind 32 statt 44 px hoch gezeichnet, die Trefferfläche bleibt 44 px über einen unsichtbaren
+Überstand in Leerraum (`lib/planner/touch-target.ts`). Die Glocke steht jetzt rechts in der
+Kopfzeile neben dem ×, „Headliner planen" steht in der Optimieren-Zeile als kurzer zweizeiliger
+Text, und die Summenzeile ist eine schlanke Textzeile. Das Show-Band über der Achse fällt auf dem Handy
+weg; sein Schalter sind dort die Theatermasken am Ende der Optimieren-Zeile. Die Headliner-Pillen sind
+26 px hoch, „Tag optimieren" ohne Ersparnis ist getönt statt grau und nimmt immer die volle Breite;
+Rückgängig ist auf dem Handy ein Symbol in derselben Zeile, und die Rückmeldung darunter entfällt dort
+(außer als Warnung mit „Anpassen"). Ein Tipp in die Bahnsuche gibt ihr das
+ganze Sheet (Achse und Fuß treten zur Seite), „Fertig" holt den Tag zurück. In Ruhe ist die Suche eine
+Zeile: das 32-px-Feld und „Eigener Block" daneben, die Bahnliste gibt es erst im Suchmodus. Beides nur
+mit Touch; ein schmales Fenster mit Maus behält die Liste zum Ziehen. „Ferien nebenan" ist auf dem Handy eine Palme, die Infozeile passt bei 360 px wieder in
+eine Zeile. Kopfzeile 61 → 55 px, Band 96 → 70 px, Summenzeile 45 → 29 px; die Achse hat
+bei 390×664 jetzt 347 px, bei 360×640 323 px.
+
+Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
+
 ## Unreleased – feat: Google-News-Sitemap unter `/sitemap-news.xml`
 
 Neue Sitemap mit den News-Beiträgen der letzten zwei Tage, je Beitrag und Sprache ein `<url>` mit

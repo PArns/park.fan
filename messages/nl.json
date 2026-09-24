@@ -491,7 +491,8 @@
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
     "readingTime": "{minutes} min.",
-    "nearby": "Bij jou in de buurt"
+    "nearby": "Bij jou in de buurt",
+    "preferences": "Instellingen"
   },
   "theme": {
     "light": "Licht",
@@ -1719,7 +1720,6 @@
     "rideDialog": {
       "title": "Wachttijdmeldingen",
       "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
-      "soloSubtitle": "{park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
       "loading": "Laden…",
       "empty": "Nog geen meldingen voor dit park.",
       "thresholdLabel": "onder {minutes} min.",
@@ -1738,8 +1738,6 @@
       "close": "Sluiten",
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
-      "removeShort": "Verwijderen",
-      "save": "Opslaan",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",
@@ -2200,7 +2198,8 @@
       "placeholder": "Attractie zoeken",
       "noResults": "Geen attractie gevonden.",
       "tapHint": "Tik op een attractie en die belandt op het eerstvolgende vrije tijdstip. Tik daarna op het blok om het per kwartier te verschuiven.",
-      "opensAt": "vanaf {time}"
+      "opensAt": "vanaf {time}",
+      "done": "Klaar"
     },
     "clearDay": "Dag leegmaken",
     "clearDayTitle": "Dag leegmaken?",
@@ -2247,7 +2246,8 @@
       "more": "{count, plural, =1 {+1 meer} other {+# meer}}",
       "hidden": "Speeltijden verborgen",
       "hide": "Speeltijden verbergen",
-      "show": "Speeltijden tonen"
+      "show": "Speeltijden tonen",
+      "chip": "Shows"
     },
     "warn": {
       "closedNow": "Meldt nu gesloten.",
@@ -2262,6 +2262,7 @@
       "duration": "{minutes} min",
       "shorter": "15 minuten korter",
       "longer": "15 minuten langer",
+      "iconPick": "Pictogram: {icon}. Ander kiezen",
       "icon": {
         "break": "Pauze",
         "food": "Eten",
@@ -2274,6 +2275,7 @@
     },
     "optimize": {
       "headliners": "Alle headliners inplannen",
+      "headlinersShort": "Headliners plannen",
       "run": "Dag optimaliseren",
       "running": "Sorteren …",
       "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
@@ -2325,7 +2327,8 @@
       "adjust": "Aanpassen"
     },
     "sheet": {
-      "handle": "Planner vergroten of sluiten",
+      "handle": "Planner vergroten of verkleinen",
+      "close": "Planner sluiten",
       "resize": "Breedte slepen"
     },
     "headliners": {
@@ -2428,6 +2431,9 @@
         "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}.",
         "conflict": "Er passen {fits} van {total}. Vink uit wat kan vervallen, of zet bovenaan wat je zeker wilt rijden.",
         "none": "Voor deze dag ontbreekt geen grote attractie meer.",
+        "noneFitHeight": "Geen grote attractie past bij jullie groep: {count, plural, one {de enige hier heeft} other {alle # hebben}} een hogere minimumlengte dan de kleinste persoon. In de planner kun je ze toch los inplannen.",
+        "noneFitWet": "Geen grote attractie past bij jullie groep: {count, plural, one {de enige hier maakt} other {alle # maken}} je nat, en jullie willen droog blijven. In de planner kun je ze toch los inplannen.",
+        "noneFitBoth": "Geen grote attractie past bij jullie groep: {count, plural, one {de enige hier vraagt een lengte die de kleinste persoon niet haalt, of maakt je nat} other {elk van de # vraagt een lengte die de kleinste persoon niet haalt, of maakt je nat}}. In de planner kun je ze toch los inplannen.",
         "resolved": "{count, plural, one {Zo past de attractie in de dag} other {Zo passen alle # attracties in de dag}}. Je kunt je keuze verder aanpassen."
       },
       "facts": {

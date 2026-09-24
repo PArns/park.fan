@@ -90,7 +90,7 @@ block, did anybody let it sort itself.
 
 It is the top of the funnel and it was the piece that was missing: with only the two below, a quiet
 month cannot be read. "Nobody opens the planner" and "everybody opens it and walks away again" bill
-the same and look the same. `source` is a closed union (`tab`, `park-header`, `calendar-day`,
+the same and look the same. `source` is a closed union (`tab`, `header`, `park-header`, `calendar-day`,
 `wizard`, `plan-list`, `shared-link`) rather than a free string, so the report cannot end up with two spellings of
 one entry point — and it is the only property here that leads to a decision, because several ways in
 were added over a few weeks and whether they earn their place is exactly what it answers.

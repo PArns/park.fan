@@ -491,7 +491,8 @@
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
     "readingTime": "{minutes} Min.",
-    "nearby": "In deiner Nähe"
+    "nearby": "In deiner Nähe",
+    "preferences": "Einstellungen"
   },
   "theme": {
     "light": "Hell",
@@ -1719,7 +1720,6 @@
     "rideDialog": {
       "title": "Wartezeit-Alarme",
       "subtitle": "Für {park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
-      "soloSubtitle": "{park} – wir melden uns, sobald die Wartezeit unter die eingestellte Marke fällt.",
       "loading": "Lädt …",
       "empty": "Noch keine Alarme für diesen Park.",
       "thresholdLabel": "unter {minutes} Min.",
@@ -1738,8 +1738,6 @@
       "close": "Schließen",
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
-      "removeShort": "Entfernen",
-      "save": "Speichern",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",
@@ -2200,7 +2198,8 @@
       "placeholder": "Bahn suchen",
       "noResults": "Keine Bahn gefunden.",
       "tapHint": "Tippe eine Bahn an – sie landet auf der nächsten freien Uhrzeit. Tippst du den Block danach an, kannst du ihn in Viertelstunden verschieben.",
-      "opensAt": "ab {time}"
+      "opensAt": "ab {time}",
+      "done": "Fertig"
     },
     "clearDay": "Tag leeren",
     "clearDayTitle": "Tag leeren?",
@@ -2247,7 +2246,8 @@
       "more": "{count, plural, =1 {+1 weitere} other {+# weitere}}",
       "hidden": "Spielzeiten ausgeblendet",
       "hide": "Spielzeiten ausblenden",
-      "show": "Spielzeiten einblenden"
+      "show": "Spielzeiten einblenden",
+      "chip": "Shows"
     },
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",
@@ -2262,6 +2262,7 @@
       "duration": "{minutes} Min.",
       "shorter": "15 Minuten kürzer",
       "longer": "15 Minuten länger",
+      "iconPick": "Symbol: {icon}. Anderes wählen",
       "icon": {
         "break": "Pause",
         "food": "Essen",
@@ -2274,6 +2275,7 @@
     },
     "optimize": {
       "headliners": "Alle Headliner einplanen",
+      "headlinersShort": "Headliner planen",
       "run": "Tag optimieren",
       "running": "Sortiert …",
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
@@ -2325,7 +2327,8 @@
       "adjust": "Anpassen"
     },
     "sheet": {
-      "handle": "Planer vergrößern oder schließen",
+      "handle": "Planer vergrößern oder verkleinern",
+      "close": "Planer schließen",
       "resize": "Breite ziehen"
     },
     "headliners": {
@@ -2428,6 +2431,9 @@
         "hintTight": "Vor Parkschluss ist Platz für {fits} von {total}.",
         "conflict": "Es passen {fits} von {total}. Nimm den Haken raus, worauf du verzichtest, oder heb hoch, was du unbedingt fahren willst.",
         "none": "Für diesen Tag fehlt keine große Bahn mehr.",
+        "noneFitHeight": "Keine große Bahn passt zu eurer Gruppe: {count, plural, one {die eine hier hat} other {alle # haben}} eine höhere Mindestgröße, als die kleinste Person misst. Im Planer kannst du sie trotzdem einzeln einplanen.",
+        "noneFitWet": "Keine große Bahn passt zu eurer Gruppe: {count, plural, one {die eine hier macht} other {alle # machen}} nass, und ihr wollt trocken bleiben. Im Planer kannst du sie trotzdem einzeln einplanen.",
+        "noneFitBoth": "Keine große Bahn passt zu eurer Gruppe: {count, plural, one {die eine hier verlangt mehr Körpergröße, als die kleinste Person hat, oder macht nass} other {jede der # verlangt mehr Körpergröße, als die kleinste Person hat, oder macht nass}}. Im Planer kannst du sie trotzdem einzeln einplanen.",
         "resolved": "{count, plural, one {So passt die Bahn in den Tag} other {So passen alle # Bahnen in den Tag}}. Du kannst deine Auswahl weiter ändern."
       },
       "facts": {

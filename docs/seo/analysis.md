@@ -64,6 +64,7 @@ As of June 2026 (full-code review). Earlier February-2026 findings that are done
 ## Related
 
 - [Sitemaps](sitemaps.md)
+- [Crawl budget](crawl-budget.md) — Search Console baseline 2026-09-24, wasted crawl requests
 - [Featured Parks](featured-parks.md)
 - [SEO Roadmap](seo-roadmap.md)
 - [Internationalization](../i18n/internationalization.md)

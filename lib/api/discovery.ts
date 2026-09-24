@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { api } from './client';
 import { CACHE_TTL } from './cache-config';
 import { stripUnreadableWaitStats } from '@/lib/utils/live-wait-times';
@@ -21,13 +22,18 @@ export function getGeoStructure(revalidate: number = CACHE_TTL.geo): Promise<Geo
 }
 
 /**
- * Get all continents.
+ * Get all continents, with their countries, cities and parks.
+ *
+ * Wrapped in React `cache()` because the layout reads this on every page (`getGeoMenu()`) and the
+ * park, ride, calendar and stats pages read it again for their breadcrumb (`cityHasOwnPage()`).
+ * The Data Cache dedupes the network but hands each call site its own `Response`, so without this
+ * the ~160 KB body would be parsed twice per render. Callers must not mutate the result.
  */
-export function getContinents(): Promise<Continent[]> {
+export const getContinents = cache((): Promise<Continent[]> => {
   return api.get<Continent[]>('/v1/discovery/continents', {
     next: { revalidate: CACHE_TTL.continents, tags: ['geo'] },
   });
-}
+});
 
 /**
  * Get countries in a continent with hydrated park data and breadcrumbs.
