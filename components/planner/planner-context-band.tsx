@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { CalendarDays, CloudOff, Clock, Droplets } from 'lucide-react';
+import { CalendarDays, CloudOff, Clock, Droplets, TreePalm } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -273,9 +273,22 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
             {t('context.weekend')}
           </Badge>
         )}
+        {/* A palm on a phone, the words everywhere else (PAR-482: „Ferien
+            nebenan kürzen, damit das oben wieder 1 Zeile wird"). At 360 px the
+            chip row ran 10 px over with the words in it and put the party chip
+            on a line of its own; the palm is 26 px where the words were 97.
+            The words stay for a screen reader (`sr-only`) and in the `title`.
+            Only this badge: „Ferien" for the park's own region is one short
+            word already. */}
         {context.neighborHolidays && context.neighborHolidays.length > 0 && (
-          <Badge variant="outline" className="text-[11px]">
-            {t('context.neighborHolidays')}
+          <Badge
+            variant="outline"
+            className="planner-phone:px-1.5 text-[11px]"
+            title={t('context.neighborHolidays')}
+            data-planner-neighbor-holidays=""
+          >
+            <TreePalm className="planner-wide:hidden size-3" aria-hidden="true" />
+            <span className="planner-phone:sr-only">{t('context.neighborHolidays')}</span>
           </Badge>
         )}
 

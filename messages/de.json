@@ -2195,7 +2195,8 @@
       "placeholder": "Bahn suchen",
       "noResults": "Keine Bahn gefunden.",
       "tapHint": "Tippe eine Bahn an – sie landet auf der nächsten freien Uhrzeit. Tippst du den Block danach an, kannst du ihn in Viertelstunden verschieben.",
-      "opensAt": "ab {time}"
+      "opensAt": "ab {time}",
+      "done": "Fertig"
     },
     "clearDay": "Tag leeren",
     "clearDayTitle": "Tag leeren?",

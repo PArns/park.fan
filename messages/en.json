@@ -2195,7 +2195,8 @@
       "placeholder": "Search rides",
       "noResults": "No ride found.",
       "tapHint": "Tap a ride and it lands on the next free time. Tap the block afterwards to move it in quarter hours.",
-      "opensAt": "from {time}"
+      "opensAt": "from {time}",
+      "done": "Done"
     },
     "clearDay": "Clear the day",
     "clearDayTitle": "Clear this day?",

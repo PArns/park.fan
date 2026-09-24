@@ -2195,7 +2195,8 @@
       "placeholder": "Cerca un’attrazione",
       "noResults": "Nessuna attrazione trovata.",
       "tapHint": "Tocca un'attrazione e si posiziona sul primo orario libero. Poi tocca il blocco per spostarlo di un quarto d'ora alla volta.",
-      "opensAt": "dalle {time}"
+      "opensAt": "dalle {time}",
+      "done": "Fine"
     },
     "clearDay": "Svuota il giorno",
     "clearDayTitle": "Svuotare il giorno?",

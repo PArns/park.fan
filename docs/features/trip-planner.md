@@ -1852,8 +1852,27 @@ above. Where the overhangs go is the design:
 Measured with `elementFromPoint` on every one of them: 32 + 6 + 6, 32 + 12 + 0 or, for
 the pills, 26 + 12 + 6, i.e. 44. Header 61 → 55 px, band 96 → 70 px, the optimise row
 53 → 45 px, the summary line 45 → 29 px, and the show band, 44 px over the top of the
-axis, gone. The axis is 308 px at 390 × 664, 270 px at 360 × 640 and 425 px at
-390 × 844.
+axis, gone. The axis is 310 px at 390 × 664 and 290 px at 360 × 640 once the context band is
+one line again (see below).
+
+**Undo sits in the button row, and a search gets the sheet.** On a phone the undo
+after „Tag optimieren" is an icon at the end of the optimise row, left of the shows
+switch, drawn only while there is something to undo; the sentence under the row
+still says what the press did, and the wide arrangement keeps the undo as a link in
+that sentence. The call to action takes the rest of the row in both of its states.
+The ride search was the block the sheet squeezes, so with a day in it the rows a
+query found sat under the search's own head, and on an iPhone under the keyboard
+as well: „da kann man nix drin suchen". A tap into the field now turns on a search
+mode (portrait only): the axis and the foot are hidden, kept mounted, and the search
+fills the sheet right under the header, its list scrolling under a field that stays
+put. „Fertig" beside the field, where iOS puts it, empties the field and gives the
+day back. Leaving the field does not end the mode, because a tap on a row blurs the
+field before the row's click lands, and a layout that jumped back on blur would
+move the row out from under that click. The field is 36 px rather than 44, the
+height of iOS's own search field. In the context band „Ferien nebenan" is a palm
+on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
+brings the chip row back to one line at 360 px: the band is 60 px there again and
+the axis 290.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

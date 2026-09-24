@@ -2195,7 +2195,8 @@
       "placeholder": "Buscar atracción",
       "noResults": "No se encontró ninguna atracción.",
       "tapHint": "Toca una atracción y se coloca en el siguiente hueco libre. Después toca el bloque para moverlo en cuartos de hora.",
-      "opensAt": "desde {time}"
+      "opensAt": "desde {time}",
+      "done": "Listo"
     },
     "clearDay": "Vaciar el día",
     "clearDayTitle": "¿Vaciar el día?",

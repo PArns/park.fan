@@ -2195,7 +2195,8 @@
       "placeholder": "Chercher une attraction",
       "noResults": "Aucune attraction trouvée.",
       "tapHint": "Touchez une attraction : elle se place au prochain créneau libre. Touchez ensuite le bloc pour le déplacer par quarts d'heure.",
-      "opensAt": "dès {time}"
+      "opensAt": "dès {time}",
+      "done": "OK"
     },
     "clearDay": "Vider la journée",
     "clearDayTitle": "Vider la journée ?",

@@ -185,6 +185,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // coming back to a sheet that eats the screen because of a drag three pages ago
   // is a surprise rather than a setting.
   const [detent, setDetent] = useState<SheetDetent>('large');
+  /**
+   * The phone's search mode (PAR-482): the ride search has the sheet, the axis
+   * and the foot step aside. On in portrait only — a landscape phone draws the
+   * search in its own column beside the axis, where it already has room. See
+   * `searching` on {@link PlannerRideSearch} for when it turns on and off.
+   */
+  const [searching, setSearching] = useState(false);
+  if (!open && searching) setSearching(false);
   /** The sheet element itself, which the grabber moves while it is dragged. */
   const sheetRef = useRef<HTMLDivElement>(null);
   /** Whether the gesture that just ended was a drag, so the tap can stand down. */
@@ -233,6 +241,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * a hook having answered before it can be laid out.
    */
   const isLandscape = useMediaQuery(PLANNER_LANDSCAPE_QUERY);
+  const searchMode = searching && isPhone && !isLandscape;
   /**
    * Whether a tap on the grabber has anywhere to go. A landscape phone has no
    * `medium`, and a short window no `full`, so there `large` is the only
@@ -1530,7 +1539,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                      landscape row keeps the zero basis — there this box shares
                      a ROW, where a content basis would be a width. */
                   'planner-phone:basis-auto planner-landscape:basis-0',
-                  secondColumn ? 'grid-cols-2' : 'grid-cols-1'
+                  secondColumn ? 'grid-cols-2' : 'grid-cols-1',
+                  // Stepped aside while the phone searches, and kept mounted:
+                  // a selected block and the grid's scroll position survive.
+                  searchMode && 'hidden'
                 )}
               >
                 <PlannerDayColumn
@@ -1706,7 +1718,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                  reporting a box and clipping to nothing. Measured. The column
                  scrolls there, which is the answer the stacked sheet does not
                  have: nothing has to give way, so nothing may. */
-                  <div className="planner-phone:max-h-[32svh] planner-wide:hidden planner-landscape:shrink-0 min-h-0 shrink overflow-y-auto overscroll-y-contain">
+                  <div
+                    className={cn(
+                      'planner-phone:max-h-[32svh] planner-wide:hidden planner-landscape:shrink-0 min-h-0 shrink overflow-y-auto overscroll-y-contain',
+                      // Search mode: the sheet is this block's, and the list
+                      // inside it scrolls rather than the block.
+                      searchMode && 'planner-phone:max-h-none flex flex-1 flex-col overflow-hidden'
+                    )}
+                  >
                     <PlannerRideSearch
                       parkSlug={park.slug}
                       parkName={park.name}
@@ -1717,6 +1736,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       timezone={day?.timezone ?? park?.timezone}
                       prefs={prefs}
                       onAddCustom={addFreeBlock}
+                      searching={searchMode}
+                      onSearchingChange={setSearching}
                     />
                   </div>
                 )}
@@ -1747,7 +1768,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 `data-planner-optimize` for a selector to pick the wrong one
                 of. */}
                 {isPhone && park && activeDate && (
-                  <>
+                  /* `contents`, so the foot's rows stay rows of the sheet;
+                     `hidden` while the phone searches, and kept mounted, so an
+                     undo waiting in the optimise row is still there after. */
+                  <div className={cn('contents', searchMode && 'hidden')}>
                     <PlannerDayFoot
                       parkSlug={park.slug}
                       parkName={park.name}
@@ -1767,7 +1791,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                          leave that row empty. See `actionsTrailing`. */
                       actionsTrailing={dayHasShowLines(day) ? <PlannerShowsButton /> : undefined}
                     />
-                  </>
+                  </div>
                 )}
 
                 {/* Above the push toggle and below the search, because it is an
@@ -1775,7 +1799,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 in the header would read as a statement about the plan being
                 looked at. Renders nothing unless the visitor is inside a park
                 that is not the one being planned. */}
-                <PlannerInParkCta activeParkSlug={activeParkSlug} />
+                <div className={cn('contents', searchMode && 'hidden')}>
+                  <PlannerInParkCta activeParkSlug={activeParkSlug} />
+                </div>
 
                 {/* Under the ride search, above the summary: it belongs to the DAY
                 rather than to the panel's chrome, and it is the last thing

@@ -279,6 +279,16 @@ export function PlannerOptimizeActions({
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
   const shownFit = fit?.parkSlug === parkSlug && fit?.date === date ? fit : null;
 
+  /** Puts the day back as it was before the last press. */
+  const undo = (snapshot: NonNullable<typeof shownUndo>) => {
+    // The snapshot's own key, not the props: they are equal here by the guard
+    // above, and writing it this way means the day being restored is the day
+    // the entries were copied from.
+    restoreDay(snapshot.parkSlug, snapshot.date, snapshot.entries);
+    setUndoTo(null);
+    setResult(null);
+  };
+
   /** Everything the assistant reasons over, for one press. */
   const fitInputFor = (add: readonly PlanDayRide[]): FitInput => ({
     day,
@@ -486,7 +496,9 @@ export function PlannerOptimizeActions({
                     // gain, so the row reads as one set of buttons rather than
                     // a button and a stray word (PAR-482: "gleiche Farbe,
                     // wenn's nix zu optimieren gibt"). It still sorts the day.
-                    'bg-primary/10 text-primary hover:bg-primary/20 font-medium'
+                    // On a phone it takes the rest of the row either way
+                    // ("CTA volle Breite").
+                    'bg-primary/10 text-primary hover:bg-primary/20 planner-phone:flex-[1_0_auto] planner-phone:justify-center font-medium'
               )}
             >
               <Wand2 className="size-3.5 shrink-0" aria-hidden="true" />
@@ -504,6 +516,31 @@ export function PlannerOptimizeActions({
               ) : (
                 <span className="truncate">{t('optimize.run')}</span>
               )}
+            </button>
+          )}
+          {/* The phone's undo: the icon, in this row, and only while there is
+              something to undo (PAR-482). The sentence under the row keeps what
+              the press did; the way back sits with the buttons, where the
+              thumb already is, instead of as a link at the end of that line.
+              36 × 32 drawn and 36 × 44 to a finger, all of the overhang above
+              like its neighbours; none to the sides, so it stays clear of the
+              show switch's reach 4 px into the gap beside it. The wide
+              arrangement keeps the link in the sentence. */}
+          {shownUndo && (
+            <button
+              type="button"
+              onClick={() => undo(shownUndo)}
+              data-planner-optimize-undo-icon=""
+              aria-label={t('optimize.undo')}
+              title={t('optimize.undo')}
+              className={cn(
+                // The row's tint, like the buttons beside it: ghosted, it read
+                // as a gap between the call to action and the show switch.
+                'planner-wide:hidden bg-primary/10 text-primary hover:bg-primary/20 flex size-9 shrink-0 items-center justify-center rounded-md transition-colors',
+                PHONE_TARGET_32_UP
+              )}
+            >
+              <Undo2 className="size-4" aria-hidden="true" />
             </button>
           )}
         </>
@@ -553,17 +590,12 @@ export function PlannerOptimizeActions({
           {shownUndo && (
             <button
               type="button"
-              onClick={() => {
-                // The snapshot's own key, not the props: they are equal here by
-                // the guard above, and writing it this way means the day being
-                // restored is the day the entries were copied from.
-                restoreDay(shownUndo.parkSlug, shownUndo.date, shownUndo.entries);
-                setUndoTo(null);
-                setResult(null);
-              }}
+              onClick={() => undo(shownUndo)}
               data-planner-optimize-undo=""
               className={cn(
-                'inline-flex items-center gap-1 underline underline-offset-2 transition-colors',
+                // On a phone the undo is an icon in the button row instead —
+                // see `data-planner-optimize-undo-icon`.
+                'planner-phone:hidden inline-flex items-center gap-1 underline underline-offset-2 transition-colors',
                 shownResult.alert
                   ? 'hover:bg-crowd-high/15 rounded px-1 py-0.5'
                   : 'hover:text-foreground'

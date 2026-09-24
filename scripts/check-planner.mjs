@@ -1422,6 +1422,49 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       : 'kein ×'
   );
 
+  // The phone's search mode (PAR-482). The ride search is the block the sheet
+  // squeezes, so with a day in it the rows a query finds were under the
+  // search's own head, and on an iPhone under the keyboard too: „da kann man
+  // nix drin suchen". A tap into the field hands it the sheet — axis and foot
+  // step aside — and „Fertig" gives the day back, field emptied.
+  {
+    const field = phone.locator(`${SHEET} [data-planner-ride-search] input`);
+    const gridShown = () =>
+      phone
+        .locator(`${SHEET} [data-planner-grid]`)
+        .first()
+        .evaluate((el) => el.getClientRects().length > 0)
+        .catch(() => false);
+    await field.tap();
+    await phone.waitForTimeout(400);
+    const inMode = {
+      mode: await phone.locator(`${SHEET} [data-planner-search-mode="on"]`).count(),
+      grid: await gridShown(),
+      foot: await phone.locator(`${SHEET} [data-planner-optimize]:visible`).count(),
+      top: await phone
+        .locator(`${SHEET} [data-planner-ride-search]`)
+        .evaluate((el) => Math.round(el.getBoundingClientRect().top)),
+    };
+    check(
+      'ein Tipp ins Suchfeld gibt der Suche das Sheet, Achse und Fuß treten zur Seite',
+      inMode.mode === 1 && !inMode.grid && inMode.foot === 0 && inMode.top < 120,
+      `Modus ${inMode.mode} · Achse ${inMode.grid} · Fuß ${inMode.foot} · oben ${inMode.top} px`
+    );
+    await field.fill('silver');
+    await phone.locator(`${SHEET} [data-planner-search-done]`).tap();
+    await phone.waitForTimeout(400);
+    const after = {
+      mode: await phone.locator(`${SHEET} [data-planner-search-mode="on"]`).count(),
+      grid: await gridShown(),
+      query: await field.inputValue(),
+    };
+    check(
+      '„Fertig" gibt den Tag zurück und leert das Feld',
+      after.mode === 0 && after.grid && after.query === '',
+      `Modus ${after.mode} · Achse ${after.grid} · Feld „${after.query}"`
+    );
+  }
+
   // Every field somebody types into renders at 16 px on a coarse pointer. Under
   // that iOS zooms the page in on focus and never back out, and at 1.14× the
   // fixed sheet ran off the right edge and its handle off the top — the
