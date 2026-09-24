@@ -568,7 +568,13 @@ export function PlannerOptimizeActions({
             'flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[11px] leading-snug',
             shownResult.alert
               ? 'border-crowd-high/40 bg-crowd-high/10 text-crowd-high rounded-md border px-2 py-1.5'
-              : 'text-muted-foreground'
+              : // Read out but not drawn on a phone (PAR-482: „worauf bezieht
+                // sich das?"). With the undo moved into the button row the
+                // plain report stood alone under it, a sentence with nothing
+                // to say what it was about; the day it describes is right
+                // above, and the undo icon is the press's trace. An alert
+                // stays drawn: it carries „Anpassen", something to do.
+                'text-muted-foreground planner-phone:sr-only'
           )}
         >
           {shownResult.alert && (

@@ -1857,9 +1857,11 @@ line and the search at rest in one row (see below).
 
 **Undo sits in the button row, and a search gets the sheet.** On a phone the undo
 after „Tag optimieren" is an icon at the end of the optimise row, left of the shows
-switch, drawn only while there is something to undo; the sentence under the row
-still says what the press did, and the wide arrangement keeps the undo as a link in
-that sentence. The call to action takes the rest of the row in both of its states.
+switch, drawn only while there is something to undo, and the sentence that reports
+the press is read out but not drawn there („worauf bezieht sich das?": with the undo
+gone from it, it stood under the row with nothing to say what it was about). A
+report that is an alert stays drawn, because it carries „Anpassen". The wide
+arrangement keeps the sentence and the undo as a link in it. The call to action takes the rest of the row in both of its states.
 The ride search was the block the sheet squeezes, so with a day in it the rows a
 query found sat under the search's own head, and on an iPhone under the keyboard
 as well: „da kann man nix drin suchen". A tap into the field now turns on a search
@@ -1876,7 +1878,10 @@ and showed no ride at all („Eigener Block abgeschnitten"). The row is 45 px, t
 field 32 px like every other control in the sheet, the free-block button reaches
 44 px into the row's own 6 px padding, and the block is `shrink-0` so the sheet
 cannot clip it. The axis is 347 px at 390 × 664 and 323 px at 360 × 640 with it.
-A landscape phone keeps the list, in its own column. In the context band „Ferien nebenan" is a palm
+A landscape phone keeps the list, in its own column, and so does a narrow window
+under a mouse: both halves ask `(pointer: coarse)` as well, because a mouse drags
+rows out of that list onto the axis, and search mode would hide the axis it drops
+on. In the context band „Ferien nebenan" is a palm
 on a phone (26 px instead of 97, the words stay as `sr-only` and `title`), which
 brings the chip row back to one line at 360 px: the band is 60 px there again, 20 px
 that go to the axis.

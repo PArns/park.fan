@@ -55,12 +55,13 @@ interface PlannerRideSearchProps {
   searching?: boolean;
   onSearchingChange?: (searching: boolean) => void;
   /**
-   * A portrait phone: out of search mode the block is ONE row — the field and
+   * A portrait phone under a finger: out of search mode the block is ONE row — the field and
    * the free-block button beside it — and the ride list is drawn only in search
    * mode. The list at rest was the part the sheet squeezed away anyway: at
    * 390×664 the block was handed about 100 px, which cut the free-block row in
    * half and showed no ride at all (PAR-482: „Eigener Block abgeschnitten").
-   * A landscape phone draws the search in a column of its own and keeps it.
+   * A landscape phone draws the search in a column of its own and keeps it,
+   * and so does a narrow window under a mouse, which drags rows out of it.
    */
   compact?: boolean;
 }
