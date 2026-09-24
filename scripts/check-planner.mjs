@@ -1948,8 +1948,14 @@ if (await openSheet(phone, 'Handy, Hochformat')) {
       // press this assertion is about, so a trial click on one times out and
       // reports the overlap defect over a button that is merely off today —
       // the day picker's `›` is exactly that at the best-days horizon (G-56).
+      // Not the grabber: since PAR-482 it lies BEHIND the whole header as its
+      // drag surface, so its box reaches the right edge while the controls
+      // sit on top of it. The row's last control is what this asks about.
       const controls = [...header.querySelectorAll('button')].filter(
-        (el) => el.getBoundingClientRect().width > 0 && !el.disabled
+        (el) =>
+          el.getBoundingClientRect().width > 0 &&
+          !el.disabled &&
+          !el.hasAttribute('data-planner-sheet-handle')
       );
       if (controls.length === 0) return null;
       const last = controls.reduce((a, b) =>
