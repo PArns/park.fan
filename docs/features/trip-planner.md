@@ -1733,7 +1733,8 @@ because the zoom is a touch-screen behaviour and hits an iPad too.
 **The selected block's action bar was the biggest thing in the sheet.** With
 `max-sm:flex-wrap` and 44 px targets it wrapped into four lines — the name, two
 moves, seven icon buttons, the durations and a bare "×" — about 200 px docked over a
-scroller of about 240, so the block being edited was usually underneath it. It is two
+scroller of about 240 (measured: 210 px at 390 × 844 with a free block selected), so
+the block being edited was usually underneath it. It is two
 lines now, about 105 px at 390: the name and the deselect "×" first, the controls spread
 across the second. The seven icon buttons became one dropdown (the trigger shows the
 current icon), delete is a bin in the bar on every size again (the block's corner ✕
@@ -1762,8 +1763,11 @@ because the panel rebuilds that object on every render and one search is 5–50 
 **The rest of the room went to the axis.** The missing-headliner band is one row of
 pills scrolled sideways on a phone instead of two capped rows with a scroller of
 their own, and the ride search drops its two-line tap hint once the day has a ride in
-it — by then the tap has done what the sentence says. At 390 × 844 with a filled day
-the axis went from about 270 px to 320.
+it — by then the tap has done what the sentence says. On a phone the headliner button
+beside the call to action takes the wizard's shorter label („Headliner einplanen"), so
+the two share one row at 360 px in German. Measured with Europa-Park, eight rides and a
+lunch block: the axis went from 319 to 366 px at 390 × 844 and from 262 to 311 at
+360 × 800.
 
 **A party that fits no headliner is told so (PAR-484).** `headlinersToAdd` drops a
 headliner that is too tall for the smallest rider or wet for a party that wants to

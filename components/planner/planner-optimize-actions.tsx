@@ -464,7 +464,13 @@ export function PlannerOptimizeActions({
             )}
           >
             <Crown className="size-3.5 shrink-0" aria-hidden="true" />
-            <span className="truncate">{t('optimize.headliners')}</span>
+            {/* The wizard's shorter label on a phone, where this button shares
+                its row with the optimise call to action: at 360 px the long one
+                pushed that onto a row of its own and took back the 48 px the
+                axis had just been given. The band right above names the rides,
+                so "all" is not lost. */}
+            <span className="planner-phone:hidden truncate">{t('optimize.headliners')}</span>
+            <span className="planner-wide:hidden truncate">{t('wizard.headliners.label')}</span>
           </button>
         )}
         {/* A call to action where the day would gain from it, the quiet button

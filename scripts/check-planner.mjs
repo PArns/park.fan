@@ -4329,7 +4329,11 @@ step: {
   }
   await push.waitForTimeout(2000);
 
-  const toggle = push.locator('[data-planner-push] button');
+  // `[aria-pressed]`: since PAR-82 the switched-on toggle also carries the
+  // "Link zum Plan teilen" button, so a bare `button` matched two elements and
+  // the first strict click ended the run.
+  const TOGGLE = '[data-planner-push] button[aria-pressed]';
+  const toggle = push.locator(TOGGLE);
   check('der Schalter ist erreichbar', (await toggle.count()) === 1);
 
   if (await toggle.count()) {
@@ -4395,7 +4399,7 @@ step: {
     );
 
     // ── Off ──────────────────────────────────────────────────────────────────
-    await push.locator('[data-planner-push] button').click();
+    await push.locator(TOGGLE).click();
     await push.waitForTimeout(1500);
 
     check('ausschalten geht auch', (await push.locator('[data-planner-push="off"]').count()) === 1);
@@ -4415,7 +4419,7 @@ step: {
 
     // ── And on again ─────────────────────────────────────────────────────────
     // A switch that only works once is the shape of bug that survives a demo.
-    await push.locator('[data-planner-push] button').click();
+    await push.locator(TOGGLE).click();
     await push.waitForTimeout(1500);
     check('und wieder an', (await push.locator('[data-planner-push="on"]').count()) === 1);
   }

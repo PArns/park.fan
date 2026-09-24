@@ -14,13 +14,14 @@ Kopfzeile oben aus dem Bild. Jetzt rendert jedes Textfeld im Planer-Sheet auf To
 in der Griff-Zeile rechts (PAR-483), weil ein Tipp auf den Griff das Sheet auf 100svh zog und dort
 nur noch eine 90-px-Wischgeste herausführte.
 
-Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (rund 105 px
-statt rund 200): Symbol als Dropdown, Löschen als Papierkorb in der Leiste, ein
+Die Aktionsleiste eines ausgewählten Blocks ist auf dem Handy zwei statt vier Zeilen hoch (105 statt
+210 px bei 390 px): Symbol als Dropdown, Löschen als Papierkorb in der Leiste, ein
 Größensystem für alle Knöpfe (PAR-326), und ein ausgewählter Block wird über die Leiste gescrollt
 (PAR-332). „Tag optimieren" steht jetzt direkt über der Gesamtwartezeit und ist ein gefüllter
 Knopf mit der gemessenen Ersparnis, sobald die Optimierung etwas bringt (PAR-493). Die Headliner
 stehen auf dem Handy in einer seitlich scrollbaren Reihe, der Hinweis unter der Suche verschwindet
-nach der ersten Bahn. Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
+nach der ersten Bahn. Die Achse wächst damit von 319 auf 366 px (390×844) und von 262 auf 311 px
+(360×800). Und der Wizard sagt, wenn keine große Bahn zur Körpergröße oder zum
 Trocken-Bleiben der Gruppe passt, statt „es fehlt keine große Bahn mehr" (PAR-484).
 
 Details: [trip-planner.md](features/trip-planner.md#the-phone-sheet-measured-against-an-iphone-screenshot-par-482).
