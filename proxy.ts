@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 import { parkCalendarRedirect } from './lib/parks/calendar-redirects';
 import { newsRedirect } from './lib/blog/news-redirects-rule';
+import { unprefixedPathRedirect } from './lib/i18n/unprefixed-redirect';
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -28,6 +29,23 @@ export default function proxy(request: NextRequest) {
   const newsTarget = newsRedirect(request.nextUrl.pathname);
   if (newsTarget) {
     return NextResponse.redirect(new URL(newsTarget, request.url), 308);
+  }
+
+  // A path without a locale prefix, where the target does not depend on the visitor: a localized
+  // park sub-page segment names its own locale, and a request without `Accept-Language` (every
+  // Googlebot fetch) has nothing to negotiate. Those get a 308 instead of next-intl's 307, and a
+  // calendar or news target resolves in the same hop. `lib/i18n/unprefixed-redirect.ts` has the
+  // measurements; everything else still goes to next-intl below.
+  const prefixed = unprefixedPathRedirect(
+    request.nextUrl.pathname,
+    request.headers.has('accept-language')
+  );
+  if (prefixed) {
+    const onward = parkCalendarRedirect(prefixed) ?? newsRedirect(prefixed);
+    const target = new URL(onward ?? `${prefixed}${request.nextUrl.search}`, request.url);
+    const redirect = NextResponse.redirect(target, 308);
+    redirect.headers.set('Vary', 'Accept-Language');
+    return redirect;
   }
 
   const response = handleI18nRouting(request);

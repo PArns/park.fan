@@ -120,6 +120,16 @@ Malformed URLs (e.g. missing city) are checked **before** returning 404 and redi
 - `localePrefix: 'always'` in `i18n/routing.ts`
 - Automatic language detection via `Accept-Language`
 
+**Unprefixed paths are crawled even though nothing links them.** `Link` from `@/i18n/navigation`
+takes a locale-relative `href`, and that prop is serialized into the RSC payload at the end of every
+document, where Google finds it as a string. Search Console's crawl stats for 2026-06-26…09-22 counted
+5.9 % of Googlebot requests as temporary redirects, 971 of 981 examples unprefixed. next-intl answers
+them with a 307 to the `Accept-Language` locale, which for Googlebot (no header) is always `/en/…`, and
+`/en/…/calendrier-temps-attente/…` is a 404. `proxy.ts` therefore answers first with a 308 where the
+target does not depend on the visitor (`lib/i18n/unprefixed-redirect.ts`): a localized park sub-page
+segment goes to its own locale, and a request without `Accept-Language` goes to the default locale.
+Browsers keep the 307 and their language; `/` is never touched. `pnpm test:unprefixed-redirect`.
+
 ---
 
 ## Link Prefetching
