@@ -11,7 +11,7 @@ import {
   getParkImageSet,
 } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
-import { catchNonFatal } from '@/lib/api/client';
+import { catchNonFatal, nullOnNotFound } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
@@ -79,8 +79,10 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
  * `city.parks.length > 1` predicate all along. This list did not, so the build
  * prerendered **618 of 870** city pages (71 %, 103 cities × 6 locales) whose
  * entire output is a redirect — not in the sitemap, not linked from anywhere
- * (the country page links straight to `/…/<city>/<park>`), and reachable only
- * by someone holding an old URL.
+ * (the country page links straight to `/…/<city>/<park>`, and the breadcrumb
+ * leaves such a city out, see `cityHasOwnPage()`), and reachable only by
+ * someone holding an old URL. Until 2026-09-24 the breadcrumb did link it, on
+ * every page of all 103 parks.
  *
  * Dropping them from the list does not drop the redirect: `dynamicParams`
  * defaults to true, so such a URL still renders on demand and still 308s. It is
@@ -116,7 +118,8 @@ export default async function CityPage({ params }: CityPageProps) {
   const tExplore = await getTranslations('explore');
 
   // Fetch cities with parks
-  const response = await catchNonFatal(getCitiesWithParks(continent, country));
+  // Only the API's own 404 may end in `notFound()` — see the continent page.
+  const response = await nullOnNotFound(getCitiesWithParks(continent, country));
 
   if (!response || !response.data) {
     notFound();

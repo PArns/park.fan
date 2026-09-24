@@ -10,7 +10,7 @@
  */
 
 import { cache } from 'react';
-import { getGeoStructure } from '@/lib/api/discovery';
+import { getContinents, getGeoStructure } from '@/lib/api/discovery';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 /**
@@ -52,6 +52,44 @@ export interface ParkLookupResult {
   city: string;
   parkSlug: string;
 }
+
+/**
+ * Parks per city, keyed `continent/country/city`, memoized per request like the park-slug index
+ * above. Read from `getContinents()` rather than `getGeoStructure()`: the layout parses that one
+ * on every page for the header menu, so on these routes the tree is already in memory.
+ */
+const getCityParkCounts = cache(async (): Promise<Map<string, number>> => {
+  const counts = new Map<string, number>();
+  try {
+    for (const continent of await getContinents()) {
+      for (const country of continent.countries ?? []) {
+        for (const city of country.cities ?? []) {
+          counts.set(`${continent.slug}/${country.slug}/${city.slug}`, city.parks.length);
+        }
+      }
+    }
+  } catch (error) {
+    console.error('[RedirectUtils] Failed to fetch continents:', error);
+  }
+  return counts;
+});
+
+/**
+ * Whether a city answers with a page of its own rather than a 308 to its only park. It is the
+ * rule `app/[locale]/parks/[continent]/[country]/[city]/page.tsx` redirects by and `app/sitemap.ts`
+ * lists by: `city.parks.length > 1`.
+ *
+ * Breadcrumbs ask this before they link a city. 103 of the 144 cities hold a single park
+ * (2026-09-24), so an unconditional city crumb sent every park, ride, calendar and stats page of
+ * those 103 parks to a redirect, in the visible trail and in its BreadcrumbList JSON-LD. A city
+ * the snapshot does not know keeps its crumb, which is what every page did before.
+ */
+export const cityHasOwnPage = cache(
+  async (continent: string, country: string, citySlug: string): Promise<boolean> => {
+    const count = (await getCityParkCounts()).get(`${continent}/${country}/${citySlug}`);
+    return count === undefined || count > 1;
+  }
+);
 
 /**
  * Find all locations a park slug exists at — O(1) via index.
