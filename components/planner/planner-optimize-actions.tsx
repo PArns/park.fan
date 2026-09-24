@@ -279,12 +279,13 @@ export function PlannerOptimizeActions({
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
   const shownFit = fit?.parkSlug === parkSlug && fit?.date === date ? fit : null;
 
-  /** Puts the day back as it was before the last press. */
-  const undo = (snapshot: NonNullable<typeof shownUndo>) => {
+  /** Puts the day back as it was before the last press; the phone's icon and the link share it. */
+  const undo = () => {
+    if (!shownUndo) return;
     // The snapshot's own key, not the props: they are equal here by the guard
     // above, and writing it this way means the day being restored is the day
     // the entries were copied from.
-    restoreDay(snapshot.parkSlug, snapshot.date, snapshot.entries);
+    restoreDay(shownUndo.parkSlug, shownUndo.date, shownUndo.entries);
     setUndoTo(null);
     setResult(null);
   };
@@ -529,7 +530,7 @@ export function PlannerOptimizeActions({
           {shownUndo && (
             <button
               type="button"
-              onClick={() => undo(shownUndo)}
+              onClick={undo}
               data-planner-optimize-undo-icon=""
               aria-label={t('optimize.undo')}
               title={t('optimize.undo')}
@@ -590,7 +591,7 @@ export function PlannerOptimizeActions({
           {shownUndo && (
             <button
               type="button"
-              onClick={() => undo(shownUndo)}
+              onClick={undo}
               data-planner-optimize-undo=""
               className={cn(
                 // On a phone the undo is an icon in the button row instead —
