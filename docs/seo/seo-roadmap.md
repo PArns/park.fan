@@ -101,11 +101,14 @@ Neue FAQ-Frage mit datengenerierter Antwort → landet in `FAQStructuredData` �
 
 ## Phase 3 — Statistiken & Landingpages
 
-> **Stand 2026-09-21:** 3B ist gebaut, 3A halb — die Komponenten stehen, ihre Zahlen stehen aber in
-> keinem crawlbaren HTML. Das Konzept für den verbleibenden Teil samt Zensus über alle 201 Parks
-> und Aufwandsschätzung: [dedicated-landing-pages.md](dedicated-landing-pages.md).
+> **Stand 2026-09-21:** 3A und 3B sind gebaut. 3A ist die Route
+> `app/[locale]/parks/[continent]/[country]/[city]/[park]/average-wait-times`
+> ([PAR-371](https://linear.app/parkfan/issue/PAR-371)): `ParkStatsSection` und
+> `ParkHourlyProfileCard` server-gerendert, ISR mit einem Tag, nur für Parks mit
+> `meta.displayable` (119 von 201). Konzept, Zensus und Entscheidungen:
+> [dedicated-landing-pages.md](dedicated-landing-pages.md).
 
-### 3A · Park-Statistiken
+### 3A · Park-Statistiken ✅
 
 Historische Wartezeit-Durchschnitte pro Attraktion und Crowd-Level nach Monat/Wochentag.
 
@@ -118,6 +121,9 @@ die Karten: `ParkStatsSection` und `ParkHourlyProfileCard`. Was fehlt, ist eine 
 server-seitig rendert. `ParkStatsSection` steht auf der Parkseite, läuft dort aber bewusst
 client-seitig, weil der kalte Stats-Compute deren Prerender gekippt hätte; `ParkHourlyProfileCard`
 rendert heute nur das Blog-Widget und die Guide-Seite, keine Park-Route.
+
+Gebaut als `average-wait-times`-Route (Segmente je Sprache in `lib/parks/stats-segments.ts`): beide
+Karten mit `initialStats` bzw. `initialProfile` vom Server, die Zahlen stehen also im ersten HTML.
 
 ### 3B · Landingpage-Texte für Top-Länder ✅
 
