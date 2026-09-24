@@ -704,6 +704,42 @@ five-minute window still sends nothing, and `placeholderData` still paints the p
 while the new one loads, because that comes from the previous query's in-memory data and not from
 this entry. Guarded by `pnpm test:nearby-cache`, whose first two cases fail without the guard.
 
+## Offline: nothing is stored, by decision (Sep 2026)
+
+A cold start without network shows the browser's own error page on a park or ride page. That
+includes a tab the OS discarded and a visitor opening the site in a dead spot in the queue. This is
+known and was decided in PAR-423: **nothing gets built**. The gap stays open (G4 in
+`docs/product/personas-and-scenarios.md`).
+
+**Storing the last `LiveParkSnapshot` per park locally does not help on its own.** Measured
+2026-09-24 with `curl -D -` against production: park and ride pages answer
+`private, no-cache, no-store, max-age=0, must-revalidate`, the homepage
+`public, max-age=0, must-revalidate`. The `no-store` cannot be replaced from `headers()` or
+`proxy.ts` (see the NOTE in `next.config.ts` above the page rules), so the browser never keeps the
+HTML of these pages. Checked in Chromium with `setOffline(true)` against a local server sending the
+same headers:
+
+| Header                              | Back button                 | Reload                      | New navigation or tab       |
+| ----------------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `no-store` (park, ride)             | `ERR_INTERNET_DISCONNECTED` | `ERR_INTERNET_DISCONNECTED` | `ERR_INTERNET_DISCONNECTED` |
+| `max-age=0, must-revalidate` (home) | copy from the HTTP cache    | `ERR_INTERNET_DISCONNECTED` | `ERR_INTERNET_DISCONNECTED` |
+
+A discarded tab is restored like a history navigation, which is the back-button column, and that
+fails under `no-store`. Without HTML no script runs, so a snapshot in IndexedDB would never be read.
+It could not fill the page anyway: `useLiveParkData` merges the snapshot onto the server-rendered
+`initialData` through `select`, and the snapshot is a projection, not the park. While the tab is
+alive, React Query already holds the last state in memory; making its age visible is PAR-420.
+
+**What would work, and was not chosen.** Offline needs a `fetch` listener in `public/sw.js`. The
+argument in that file is against a worker that answers navigations from its own store **first**. A
+network-first worker (always the network, with navigation preload; every good response copied into
+Cache Storage, which also stores `no-store` responses; the last copy served only on a network error)
+never serves anything stale while online, so it survives a deploy and a purge the same way the site
+does now. The price is registering the worker on every park page for every visitor, where today it
+is registered only after a push opt-in. That gives it scope over the whole origin and starts it on
+every navigation. The decision was to not pay that price. If the question comes back, start from
+this paragraph, and measure TTFB with and without the worker before merging anything.
+
 ## Related
 
 - [System Overview](system-overview.md)
