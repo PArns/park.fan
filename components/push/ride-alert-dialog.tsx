@@ -330,9 +330,16 @@ export function RideAlertDialog({
                             size={8}
                           />
                           <span className="min-w-0 flex-1 truncate">{attraction.name}</span>
-                          {!selectable ? (
+                          {/* A row that cannot be picked still says what the queue
+                              reads — "no queue" only where it really is zero. The
+                              greyed row is what says it cannot be picked. */}
+                          {wait === 0 ? (
                             <span className="text-muted-foreground shrink-0 text-xs">
                               {t('noQueueNow')}
+                            </span>
+                          ) : !selectable && wait !== null ? (
+                            <span className="text-muted-foreground shrink-0 text-xs tabular-nums">
+                              {wait} {t('minutes')}
                             </span>
                           ) : wait !== null ? (
                             <span className="shrink-0 text-sm font-semibold tabular-nums">
