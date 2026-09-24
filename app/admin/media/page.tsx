@@ -6,8 +6,10 @@ import { AlertTriangle, Crosshair, GitPullRequest, ImageIcon, Plus, Search } fro
 
 import { cn } from '@/lib/utils';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
+import { FolderRail } from './_components/folder-rail';
 import { MediaDetail } from './_components/media-detail';
 import { MediaUpload } from './_components/media-upload';
+import type { FolderView } from './_lib/folders';
 import type { MediaRow, MediaStats, Vocabulary } from './_lib/types';
 import { AdminPage } from '../_ui/primitives';
 
@@ -93,6 +95,8 @@ export default function MediaAdminPage() {
   // Shown as a removable chip below, because a filter nobody can see is a
   // browser that looks empty for no reason.
   const [ride, setRide] = useState(() => params.get('ride') ?? '');
+  // Set only by the folder rail; `searchMedia` matches sub-collections too.
+  const [collection, setCollection] = useState(() => params.get('collection') ?? '');
   const [quick, setQuick] = useState<QuickFilter | null>(null);
 
   const [detailId, setDetailId] = useState<string | null>(
@@ -117,10 +121,11 @@ export default function MediaAdminPage() {
     if (q.trim()) search.set('q', q.trim());
     if (park) search.set('park', park);
     if (ride) search.set('ride', ride);
+    if (collection) search.set('collection', collection);
     if (tag) search.set('tag', tag);
     if (quick) search.set(quick, '1');
     return search.toString();
-  }, [q, park, ride, tag, quick]);
+  }, [q, park, ride, collection, tag, quick]);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -183,6 +188,12 @@ export default function MediaAdminPage() {
   if (!data) return <LoadingPanel label="Loading the media database…" />;
 
   const { stats, vocabulary, images, total } = data;
+
+  const onFolder = (view: FolderView, value: string) => {
+    if (view === 'collection') setCollection(value);
+    else if (view === 'park') setPark(value);
+    else setTag(value);
+  };
 
   return (
     <AdminPage width="wide">
@@ -323,150 +334,180 @@ export default function MediaAdminPage() {
         </div>
 
         <Section title="Browse" icon={ImageIcon}>
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <div className="relative min-w-[220px] flex-1">
-              <Search className="text-muted-foreground absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2" />
-              <input
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="Search park, ride, tag, caption — in any language"
-                className="border-border bg-background focus:border-foreground w-full rounded-md border py-1.5 pr-2 pl-8 text-sm outline-none"
-              />
-            </div>
+          <div className="lg:flex lg:items-start lg:gap-4">
+            <FolderRail
+              vocabulary={vocabulary}
+              total={stats.total}
+              active={{ collection, park, tag }}
+              onSelect={onFolder}
+            />
+            <div className="min-w-0 flex-1">
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <div className="relative min-w-[220px] flex-1">
+                  <Search className="text-muted-foreground absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2" />
+                  <input
+                    value={q}
+                    onChange={(e) => setQ(e.target.value)}
+                    placeholder="Search park, ride, tag, caption — in any language"
+                    className="border-border bg-background focus:border-foreground w-full rounded-md border py-1.5 pr-2 pl-8 text-sm outline-none"
+                  />
+                </div>
 
-            <select
-              value={park}
-              onChange={(e) => setPark(e.target.value)}
-              className="border-border bg-background rounded-md border px-2 py-1.5 text-sm"
-            >
-              <option value="">All parks</option>
-              {vocabulary.parks.map((p) => (
-                <option key={p.park} value={p.park}>
-                  {p.park} ({p.count})
-                </option>
-              ))}
-            </select>
+                <select
+                  value={park}
+                  onChange={(e) => setPark(e.target.value)}
+                  className="border-border bg-background rounded-md border px-2 py-1.5 text-sm"
+                >
+                  <option value="">All parks</option>
+                  {vocabulary.parks.map((p) => (
+                    <option key={p.park} value={p.park}>
+                      {p.park} ({p.count})
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              value={tag}
-              onChange={(e) => setTag(e.target.value)}
-              className="border-border bg-background rounded-md border px-2 py-1.5 text-sm"
-            >
-              <option value="">All tags</option>
-              {vocabulary.tags.map((t) => (
-                <option key={t.tag} value={t.tag}>
-                  {t.tag} ({t.count})
-                </option>
-              ))}
-            </select>
+                <select
+                  value={tag}
+                  onChange={(e) => setTag(e.target.value)}
+                  className="border-border bg-background rounded-md border px-2 py-1.5 text-sm"
+                >
+                  <option value="">All tags</option>
+                  {vocabulary.tags.map((t) => (
+                    <option key={t.tag} value={t.tag}>
+                      {t.tag} ({t.count})
+                    </option>
+                  ))}
+                </select>
 
-            <button
-              type="button"
-              onClick={() => setUploading(true)}
-              className="bg-foreground text-background flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium"
-            >
-              <Plus className="h-4 w-4" />
-              Add images
-            </button>
-          </div>
-
-          {ride && (
-            // Arrived by link and otherwise invisible: without this the browser
-            // shows one photo of a hundred and looks broken.
-            <div className="mb-3 flex items-center gap-2 text-xs">
-              <span className="border-primary/40 bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5">
-                Ride: {ride}
                 <button
                   type="button"
-                  onClick={() => setRide('')}
-                  className="hover:text-foreground"
-                  aria-label="Ride-Filter entfernen"
+                  onClick={() => setUploading(true)}
+                  className="bg-foreground text-background flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium"
                 >
-                  ×
+                  <Plus className="h-4 w-4" />
+                  Add images
                 </button>
-              </span>
-            </div>
-          )}
+              </div>
 
-          <div className="mb-4 flex flex-wrap gap-1">
-            {QUICK_FILTERS.map((filter) => (
-              <button
-                key={filter.id}
-                type="button"
-                onClick={() => setQuick(quick === filter.id ? null : filter.id)}
-                className={cn(
-                  'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
-                  quick === filter.id
-                    ? 'border-foreground bg-foreground text-background'
-                    : 'border-border text-muted-foreground hover:border-foreground'
-                )}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
+              {(ride || collection) && (
+                // Arrived by link and otherwise invisible: without this the browser
+                // shows one photo of a hundred and looks broken.
+                <div className="mb-3 flex flex-wrap items-center gap-2 text-xs">
+                  {collection && (
+                    // The rail highlights it too, but the rail is collapsible and
+                    // on a phone it is a select scrolled out of view.
+                    <span className="border-primary/40 bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5">
+                      Ordner: {collection}
+                      <button
+                        type="button"
+                        onClick={() => setCollection('')}
+                        className="hover:text-foreground"
+                        aria-label="Ordner-Filter entfernen"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  {ride && (
+                    <span className="border-primary/40 bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5">
+                      Ride: {ride}
+                      <button
+                        type="button"
+                        onClick={() => setRide('')}
+                        className="hover:text-foreground"
+                        aria-label="Ride-Filter entfernen"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                </div>
+              )}
 
-          <p className="text-muted-foreground mb-3 text-xs">
-            {loading ? 'Searching…' : `${total} image${total === 1 ? '' : 's'}`}
-          </p>
+              <div className="mb-4 flex flex-wrap gap-1">
+                {QUICK_FILTERS.map((filter) => (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    onClick={() => setQuick(quick === filter.id ? null : filter.id)}
+                    className={cn(
+                      'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
+                      quick === filter.id
+                        ? 'border-foreground bg-foreground text-background'
+                        : 'border-border text-muted-foreground hover:border-foreground'
+                    )}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
 
-          {images.length === 0 ? (
-            <EmptyPanel label="Nothing matches those filters." />
-          ) : (
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-              {images.map((image) => (
-                <button
-                  key={image.id}
-                  type="button"
-                  onClick={() => setDetailId(image.id)}
-                  className="border-border hover:border-foreground group overflow-hidden rounded-lg border text-left transition-colors"
-                >
-                  <div className="bg-muted relative aspect-[4/3]">
-                    {/* eslint-disable-next-line @next/next/no-img-element -- admin grid, the optimizer adds nothing here */}
-                    <img
-                      src={image.src}
-                      alt={image.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                      style={{
-                        objectPosition: image.focus
-                          ? `${image.focus.x * 100}% ${image.focus.y * 100}%`
-                          : '50% 50%',
-                      }}
-                    />
-                    <div className="absolute top-1 right-1 flex gap-1">
-                      {image.focus && (
-                        <span title="Focal point set" className="bg-background/80 rounded p-0.5">
-                          <Crosshair className="h-3 w-3" />
-                        </span>
-                      )}
-                    </div>
-                    {/* Low resolution is a to-do, not a footnote — it says what is
+              <p className="text-muted-foreground mb-3 text-xs">
+                {loading ? 'Searching…' : `${total} image${total === 1 ? '' : 's'}`}
+              </p>
+
+              {images.length === 0 ? (
+                <EmptyPanel label="Nothing matches those filters." />
+              ) : (
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+                  {images.map((image) => (
+                    <button
+                      key={image.id}
+                      type="button"
+                      onClick={() => setDetailId(image.id)}
+                      className="border-border hover:border-foreground group overflow-hidden rounded-lg border text-left transition-colors"
+                    >
+                      <div className="bg-muted relative aspect-[4/3]">
+                        {/* eslint-disable-next-line @next/next/no-img-element -- admin grid, the optimizer adds nothing here */}
+                        <img
+                          src={image.src}
+                          alt={image.title}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                          style={{
+                            objectPosition: image.focus
+                              ? `${image.focus.x * 100}% ${image.focus.y * 100}%`
+                              : '50% 50%',
+                          }}
+                        />
+                        <div className="absolute top-1 right-1 flex gap-1">
+                          {image.focus && (
+                            <span
+                              title="Focal point set"
+                              className="bg-background/80 rounded p-0.5"
+                            >
+                              <Crosshair className="h-3 w-3" />
+                            </span>
+                          )}
+                        </div>
+                        {/* Low resolution is a to-do, not a footnote — it says what is
                       wrong and what the click will let you do about it, because an
                       icon-only warning here left no clue that the fix exists. */}
-                    {image.lowRes && (
-                      <span className="absolute inset-x-1 bottom-1 flex items-center gap-1 rounded bg-amber-500/95 px-1.5 py-0.5 text-[10px] font-medium text-black">
-                        <AlertTriangle className="h-3 w-3 shrink-0" />
-                        <span className="truncate">
-                          {image.width}×{image.height} · replace
-                        </span>
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-2">
-                    <p className="truncate text-xs font-medium">{image.title}</p>
-                    <p className="text-muted-foreground truncate text-[11px]">
-                      {image.park ?? 'no park'}
-                      {image.ride ? ` · ${image.ride}` : ''}
-                    </p>
-                    <p className="text-muted-foreground truncate font-mono text-[10px]">
-                      {image.id}
-                    </p>
-                  </div>
-                </button>
-              ))}
+                        {image.lowRes && (
+                          <span className="absolute inset-x-1 bottom-1 flex items-center gap-1 rounded bg-amber-500/95 px-1.5 py-0.5 text-[10px] font-medium text-black">
+                            <AlertTriangle className="h-3 w-3 shrink-0" />
+                            <span className="truncate">
+                              {image.width}×{image.height} · replace
+                            </span>
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-2">
+                        <p className="truncate text-xs font-medium">{image.title}</p>
+                        <p className="text-muted-foreground truncate text-[11px]">
+                          {image.park ?? 'no park'}
+                          {image.ride ? ` · ${image.ride}` : ''}
+                        </p>
+                        <p className="text-muted-foreground truncate font-mono text-[10px]">
+                          {image.id}
+                        </p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </Section>
 
         {detailId && (
