@@ -215,14 +215,6 @@ export function RideAlertDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        // Radix focuses the first tabbable child on open, which is now the ride
-        // search whenever this park has no alerts yet. On a touch screen that
-        // raises the keyboard over half the dialog before anybody asked to type,
-        // so there the focus stays on the dialog itself (Radix's own fallback
-        // when the default is prevented). A keyboard user still lands in the field.
-        onOpenAutoFocus={(event) => {
-          if (window.matchMedia?.('(pointer: coarse)').matches) event.preventDefault();
-        }}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-md"
       >
         <PushDialogHero
